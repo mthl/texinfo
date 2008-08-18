@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 2.3.1 First steps</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 2.3.1 First steps">
+<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.1 First steps">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="First-steps"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3 Getting started" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_7.htm#Rings-and-standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.2 Rings and standard bases" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2. Introduction" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">2.3.1 First steps</h3>
+
+<p>Once <small>SINGULAR</small> is started, it awaits an input after the prompt
+<code>&gt;</code>.  Every statement has to be terminated by <code>;</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">37+5;
+&rarr; 42
+</pre></td></tr></table>
+
+<p>All objects have a type, e.g., integer variables are defined by
+the word <code>int</code>. An assignment is done by the symbol <code>=</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int k = 2;
+</pre></td></tr></table>
+
+<p>Test for equality resp. inequality is done using <code>==</code>
+resp. <code>!=</code> (or <code>&lt;&gt;</code>), where <code>0</code> represents the boolean
+value FALSE, any other value represents TRUE.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">k == 2;
+&rarr; 1
+k != 2;
+&rarr; 0
+</pre></td></tr></table>
+
+<p>The value of an object is displayed by simply typing its name.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">k;
+&rarr; 2
+</pre></td></tr></table>
+
+<p>On the other hand the output is suppressed if an assignment
+is made.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int j;
+j = k+1;
+</pre></td></tr></table>
+
+<p>The last displayed (!) result is always available
+with the special symbol <code>_</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">2*_;   // the value from k displayed above
+&rarr; 4
+</pre></td></tr></table>
+
+<p>Text starting with <code>//</code> denotes a comment and is ignored in
+calculations, as seen in the previous example. Furthermore <small>SINGULAR</small>
+maintains a history of the previous lines of input, which may be accessed by
+<code>CTRL-P</code> (previous) and <code>CTRL-N</code> (next) or the arrows on the
+keyboard. Note that the history is not available on Macintosh systems.
+</p>
+<p>The whole manual is available online by typing the command <code>help;</code> .
+Explanation on single topics, e.g., on <code>intmat</code>, which defines a
+matrix of integers, are obtained by
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">help intmat;
+</pre></td></tr></table>
+
+<p>This shows the text of <a href="sing_81.htm#intmat">intmat</a>, in the printed manual.
+</p>
+<p>Next, we define a
+<SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_1.png"
+ ALT="$3 \times 3$"></SPAN>
+ matrix of integers and initialize it with some values, row by row
+from left to right:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
+</pre></td></tr></table>
+
+<p>A single matrix entry may be selected and changed using
+square brackets <code>[</code> and <code>]</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">m[1,2]=0;
+m;
+&rarr; 1,0,3,
+&rarr; 4,5,6,
+&rarr; 7,8,9
+</pre></td></tr></table>
+
+<p>To calculate the trace of this matrix, we use a <code>for</code> loop. The
+curly brackets <code>{</code> and <code>}</code> denote the beginning resp.
+end of a block. If you define a variable without giving an initial
+value, as the variable <code>tr</code> in the example below, <small>SINGULAR</small>
+assigns a default value for the specific type. In this case, the default
+value for integers is <code>0</code>. Note that the integer variable <code>j</code>
+has already been defined above.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int tr;
+for ( j=1; j &lt;= 3; j++ ) { tr=tr + m[j,j]; }
+tr;
+&rarr; 15
+</pre></td></tr></table>
+
+<p>Variables of type string can also be defined and used without a ring
+being active. Strings are delimited by <code>&quot;</code> (double quotes). They
+may be used to comment the output of a computation or to give it a nice
+format. If a string contains valid <small>SINGULAR</small> commands, it can be
+executed using the function <code>execute</code>. The result is the same as if
+the commands would have been written on the command line. This feature
+is especially useful to define new rings inside procedures.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">&quot;example for strings:&quot;;
+&rarr; example for strings:
+string s=&quot;The element of m &quot;;
+s = s + &quot;at position [2,3] is:&quot;;  // concatenation of strings by +
+s , m[2,3] , &quot;.&quot;;
+&rarr; The element of m at position [2,3] is: 6 .
+s=&quot;m[2,1]=0; m;&quot;;
+execute(s);
+&rarr; 1,0,3,
+&rarr; 0,5,6,
+&rarr; 7,8,9
+</pre></td></tr></table>
+
+<p>This example shows that expressions can be separated by <code>,</code> (comma)
+giving a list of expressions. <small>SINGULAR</small> evaluates each expression in
+this list and prints all results separated by spaces.
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#Rings-and-standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.2 Rings and standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2. Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

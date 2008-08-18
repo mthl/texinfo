@@ -1,0 +1,44 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Test macro with include file and macro in macro
+
+@c makeinfo doesn't like:
+@c a new macro: @@<: @< !!!
+
+@c makeinfo doesn't like:
+@c @@aa without brace @aa
+
+
+The file included:
+content of included file with arg2: \arg2\
+File has been included.
+
+
+Right. result of a macro with @samp{first arg
+
+no ?} and 
+content of included file with arg2: \arg2\
+second arg
+Now define macro2
+Call macro2
+With a doubles arg a simple @code{
+arg}
+ and re a simple @code{
+arg}
+
+
+Call macro2 with 2 args
+With a doubles arg arg with comma , here  and re arg with comma , here 
+
+Define macro3
+Call macro3
+@example 
+/arg/
+
+
+/arg/
+@end example
+
+@contents
+@bye

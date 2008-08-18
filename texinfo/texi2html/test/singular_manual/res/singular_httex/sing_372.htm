@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.1 Standard bases</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.1 Standard bases">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.1 Standard bases">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Standard-bases"></a>
+<a name="SEC372"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">C.1 Standard bases</h2>
+
+<a name="HEAD41"></a>
+<h3 class="subheading">Definition</h3>
+<p>
+Let <span 
+class="cmmi-10">R </span>= Loc<sub><span 
+class="cmmi-7">&#x003C;</span></sub><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>] and let <span 
+class="cmmi-10">I </span>be a submodule of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup>. Note that for r=1 this means that <span 
+class="cmmi-10">I </span>is an ideal
+in <span 
+class="cmmi-10">R</span>. Denote by <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>) the submodule of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> generated by the leading terms of elements of <span 
+class="cmmi-10">I</span>, i.e. by
+<img 
+src="sing_tex4ht_tex49x.png" alt="{L(f) | f &#x2208; I}"  class="left" align="middle">. Then <span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,f</span><sub><span 
+class="cmmi-7">s</span></sub> <span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">I </span>is called a <span 
+class="cmbx-10">standard basis </span>of <span 
+class="cmmi-10">I </span>if <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub>)<span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,L</span>(<span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">s</span></sub>) generate <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>).  
+</p>
+<a name="HEAD42"></a>
+<h3 class="subheading">Properties</h3>
+<dl compact="compact">
+<dt> normal form:</dt>
+<dd><a name="IDX247"></a>
+<p> A function
+NF : <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> <span 
+class="cmsy-10">&#x00D7;{</span><span 
+class="cmmi-10">G</span><span 
+class="cmsy-10">&#x2223;</span><span 
+class="cmmi-10">G</span><span 
+class="cmmi-10">&#x00A0;</span> a standard basis<span 
+class="cmsy-10">}&#x2192; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">,</span>(<span 
+class="cmmi-10">p,G</span>)<img 
+src="sing_tex4ht_tex50x.png" alt="&#x21A6;&#x2192;"  class="mapsto" >NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>), is called a <span 
+class="cmbx-10">normal form </span>if for any <span 
+class="cmmi-10">p </span><span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> and any
+standard basis <span 
+class="cmmi-10">G </span>the following holds: if NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>) <span 
+class="cmsy-10">&#x2044;</span>= 0 then <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">g</span>) does not divide <span 
+class="cmmi-10">L</span>(NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>)) for all
+<span 
+class="cmmi-10">g </span><span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">G</span>.
+<!--l. 1456--><p class="noindent" >NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>) is called a <span 
+class="cmbx-10">normal form of </span><span 
+class="cmmi-10">p </span><span 
+class="cmbx-10">with respect to </span><span 
+class="cmmi-10">G </span>(note that such a function is not unique).  
+</p></dd>
+<dt> ideal membership:</dt>
+<dd><a name="IDX248"></a>
+<p> For a
+standard basis <span 
+class="cmmi-10">G </span>of <span 
+class="cmmi-10">I </span>the following holds: <span 
+class="cmmi-10">f </span><span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">I </span>if and only if NF(<span 
+class="cmmi-10">f,G</span>) = 0.  
+</p></dd>
+<dt> Hilbert function:</dt>
+<dd><p> Let <span 
+class="cmmi-10">I </span><span 
+class="cmsy-10">&#x2286; </span><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>]<sup><span 
+class="cmmi-7">r</span></sup> be a
+homogeneous module, then the Hilbert function <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">I</span></sub> of <span 
+class="cmmi-10">I </span>(see below) and the Hilbert function <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">L</span><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">I</span><span 
+class="cmr-7">)</span></sub> of the
+leading module <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>) coincide, i.e., <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">I</span></sub> = <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">L</span><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">I</span><span 
+class="cmr-7">)</span></sub>.  
+</p></dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.3 Syzygies and resolutions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Syzygies-and-resolutions"></a>
+<a name="SEC374"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_375.htm#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">C.3 Syzygies and resolutions</h2>
+
+<a name="HEAD43"></a>
+<h3 class="subheading">Syzygies</h3>
+<p>Let <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_49.png"
+ ALT="$R$"></SPAN> be a quotient of <!-- MATH
+ $\hbox{Loc}_< K[\underline{x}]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="69" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_382.png"
+ ALT="$\hbox{Loc}_&lt; K[\underline{x}]$"></SPAN> and let <!-- MATH
+ $I=(g_1, ..., g_s)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="96" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_383.png"
+ ALT="$I=(g_1, ..., g_s)$"></SPAN> be a submodule of <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_346.png"
+ ALT="$R^r$"></SPAN>.
+Then the <B>module of syzygies</B> (or <B>1st syzygy module</B>, <B>module of relations</B>) of <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>, syz(<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>), is defined to be the kernel of the map <!-- MATH
+ $R^s \rightarrow R^r,\; \sum_{i=1}^s w_ie_i \mapsto \sum_{i=1}^s w_ig_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="229" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_384.png"
+ ALT="$R^s \rightarrow R^r,\; \sum_{i=1}^s w_ie_i \mapsto \sum_{i=1}^s w_ig_i$"></SPAN>.
+</p>
+<p>The <strong>k-th syzygy module</strong> is defined inductively to be the module
+of syzygies of the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_385.png"
+ ALT="$(k-1)$"></SPAN>-st
+ syzygy module.
+</p>
+<p>Note, that the syzygy modules of <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN> depend on a choice of generators <SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_386.png"
+ ALT="$g_1, ..., g_s$"></SPAN>.
+But one can show that they depend on <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN> uniquely up to direct summands.
+</p>
+<dl compact="compact">
+<dt> <code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal i=ux, vx, uy, vy;
+  print(syz(i));
+&rarr; -y,0, -v,0, 
+&rarr; 0, -y,u, 0, 
+&rarr; x, 0, 0, -v,
+&rarr; 0, x, 0, u  
+</pre></td></tr></table>
+</dd>
+</dl>
+
+<a name="HEAD44"></a>
+<h3 class="subheading">Free resolutions</h3>
+<p>Let <!-- MATH
+ $I=(g_1,...,g_s)\subseteq R^r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="134" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_387.png"
+ ALT="$I=(g_1,...,g_s)\subseteq R^r$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_388.png"
+ ALT="$M= R^r/I$"></SPAN>.
+A <B>free resolution of <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN></B> is a long exact sequence
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1
+\buildrel{A_1}\over{\longrightarrow} F_0\longrightarrow M\longrightarrow
+0,
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="249" HEIGHT="25" BORDER="0"
+ SRC="sing_389.png"
+ ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
+...1}\over{\longrightarrow} F_0\longrightarrow M\longrightarrow
+0,\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<br>where the columns of the matrix
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_131.png"
+ ALT="$A_1$"></SPAN>
+generate 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>
+. Note, that resolutions need not to be finite (i.e., of
+finite length). The Hilbert Syzygy Theorem states, that for 
+<!-- MATH
+ $R=\hbox{Loc}_< K[\underline{x}]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_345.png"
+ ALT="$R = \hbox{Loc}_&lt; K[\underline{x}]$"></SPAN>
+there exists a (&quot;minimal&quot;) resolution of length not exceeding the number of
+variables.
+</p>
+<dl compact="compact">
+<dt> <code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // The matrix A_1 is given by
+  print(matrix(resI[1]));
+&rarr; vy,uy,vx,ux
+  // We see that the columns of A_1 generate I.
+  // The matrix A_2 is given by
+  print(matrix(resI[3]));
+&rarr; u, 
+&rarr; -v,
+&rarr; -x,
+&rarr; y  
+</pre></td></tr></table>
+</dd>
+</dl>
+
+<a name="HEAD45"></a>
+<h3 class="subheading">Betti numbers and regularity</h3>
+<a name="IDX249"></a>
+<a name="IDX250"></a>
+<p>Let <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_49.png"
+ ALT="$R$"></SPAN> be a graded ring (e.g., <!-- MATH
+ $R = \hbox{Loc}_< K[\underline{x}]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_345.png"
+ ALT="$R = \hbox{Loc}_&lt; K[\underline{x}]$"></SPAN>) and
+let <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_390.png"
+ ALT="$I \subset R^r$"></SPAN> be a graded submodule. Let
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+R^r = \bigoplus_a R\cdot e_{a,0} \buildrel A_1 \over \longleftarrow
+        \bigoplus_a R\cdot e_{a,1} \longleftarrow \ldots \longleftarrow
+        \bigoplus_a R\cdot e_{a,n} \longleftarrow 0
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="406" HEIGHT="41" BORDER="0"
+ SRC="sing_391.png"
+ ALT="\begin{displaymath}
+R^r = \bigoplus_a R\cdot e_{a,0} \buildrel A_1 \over \longl...
+...ts \longleftarrow
+\bigoplus_a R\cdot e_{a,n} \longleftarrow 0
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+be a minimal free resolution of <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_392.png"
+ ALT="$R^n/I$"></SPAN> considered with homogeneous maps
+of degree 0. Then the <B>graded Betti number</B> <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_393.png"
+ ALT="$b_{i,j}$"></SPAN> of <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_394.png"
+ ALT="$R^r/I$"></SPAN> is
+the minimal number of generators <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_395.png"
+ ALT="$e_{a,j}$"></SPAN> in degree <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_136.png"
+ ALT="$i+j$"></SPAN> of the <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_51.png"
+ ALT="$j$"></SPAN>-th
+syzygy module of <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_394.png"
+ ALT="$R^r/I$"></SPAN> (i.e., the <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_396.png"
+ ALT="$(j-1)$"></SPAN>-st syzygy module of
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>). Note, that by definition the <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_2.png"
+ ALT="$0$"></SPAN>-th syzygy module of <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_394.png"
+ ALT="$R^r/I$"></SPAN> is <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_346.png"
+ ALT="$R^r$"></SPAN>
+and the 1st syzygy module of <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_394.png"
+ ALT="$R^r/I$"></SPAN> is <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>.
+</p>
+<p>The <strong>regularity</strong> of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>
+ is the smallest integer 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_141.png"
+ ALT="$s$"></SPAN>
+</p>
+<p>such that
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{deg}(e_{a,j}) \le s+j-1 \quad \hbox{for all $j$.}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="203" HEIGHT="27" BORDER="0"
+ SRC="sing_397.png"
+ ALT="\begin{displaymath}
+\hbox{deg}(e_{a,j}) \le s+j-1 \quad \hbox{for all $j$.}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+</p>
+<dl compact="compact">
+<dt> <code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // the betti number:
+  print(betti(resI), &quot;betti&quot;);
+&rarr;            0     1     2     3
+&rarr; ------------------------------
+&rarr;     0:     1     -     -     -
+&rarr;     1:     -     4     4     1
+&rarr; ------------------------------
+&rarr; total:     1     4     4     1
+  // the regularity:
+  regularity(resI);
+&rarr; 2
+</pre></td></tr></table>
+</dd>
+</dl>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_375.htm#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

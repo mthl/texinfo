@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.121 std</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.121 std">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.121 std">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="std"></a>
+<a name="SEC276"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_275.htm#status" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.120 status" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_277.htm#stdfglm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.122 stdfglm" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">5.1.121 std</h3>
+<dl compact="compact">
+<dt> <code><strong>Syntax:</strong></code></dt>
+<dd><p><code>std (</code> ideal_expression<code>)</code>
+<br><code>std (</code> module_expression<code>)</code>
+<br><code>std (</code> ideal_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>std (</code> module_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>std (</code> ideal_expression<code>,</code> intvec_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>std (</code> module_expression<code>,</code> intvec_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>std (</code> ideal_expression<code>,</code> poly_expression <code>)</code>
+<br><code>std (</code> module_expression<code>,</code> vector_expression <code>)</code>
+</p></dd>
+<dt> <code><strong>Type:</strong></code></dt>
+<dd><p>ideal or module
+</p></dd>
+<dt> <code><strong>Purpose:</strong></code></dt>
+<dd><p>returns a standard basis of an ideal or module with respect to the
+monomial ordering of the basering.
+A standard basis is a set of generators such that
+the leading terms generate the leading ideal, resp. module.
+<br>Use an optional
+second argument of type intvec as Hilbert series
+(result of <code>hilb(i,1)</code>, see <a href="sing_200.htm#hilb">hilb</a>),
+if the ideal, resp. module, is homogeneous
+(Hilbert driven standard basis computation, <a href="sing_278.htm#stdhilb">stdhilb</a>).
+If the ideal is quasihomogeneous with some weights w and if the Hilbert series
+is computed w.r.t. to these weights, then use w as third argument.
+<br>Use an optional second argument of type poly, resp. vector,
+to construct the standard basis from an already computed one (given as the
+first argument) and one additional generator (the second argument).
+</p></dd>
+<dt> <code><strong>Note:</strong></code></dt>
+<dd><p>The
+standard basis is computed with a (more or less) straight-forward
+implementation of the classical
+Buchberger (resp. Mora) algorithm. For global orderings, use the
+<code>groebner</code> command instead (see <a href="sing_197.htm#groebner">groebner</a>), which heuristically
+chooses the &quot;best&quot; algorithm to compute a Groebner basis.
+<br>To view the progress of long running computations, use
+<code>option(prot)</code> (see <a href="sing_244.htm#option_0028prot_0029">option(prot)</a>).
+</p>
+</dd>
+<dt> <code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // local computation
+  ring r=32003,(x,y,z),ds;
+  poly s1=1x2y+151xyz10+169y21;
+  poly s2=1xz14+6x2y4+3z24;
+  poly s3=5y10z10x+2y20z10+y10z20+11x3;
+  ideal i=s1,s2,s3;
+  ideal j=std(i);
+  degree(j);
+&rarr; 0
+  // Hilbert driven elimination (standard)
+  ring rhom=32003,(x,y,z,h),dp;
+  ideal i=homog(imap(r,i),h);
+  ideal j=std(i);
+  intvec iv=hilb(j,1);
+  ring rlex=32003,(x,y,z,h),lp;
+  ideal i=fetch(rhom,i);
+  ideal j=std(i,iv);
+  j=subst(j,h,1);
+  j[1];
+&rarr; z64
+  // Hilbert driven elimination (ideal is quasihomogeneous)
+  intvec w=10,1,1;
+  ring whom=32003,(x,y,z),wp(w);
+  ideal i=fetch(r,i);
+  ideal j=std(i);
+  intvec iw=hilb(j,1,w);
+  ring wlex=32003,(x,y,z),lp;
+  ideal i=fetch(whom,i);
+  ideal j=std(i,iw,w);
+  j[1];
+&rarr; z64
+</pre></td></tr></table>
+</dd>
+</dl>
+<p>See
+<a href="sing_184.htm#facstd">facstd</a>;
+<a href="sing_187.htm#fglm">fglm</a>;
+<a href="sing_197.htm#groebner">groebner</a>;
+<a href="sing_69.htm#ideal">ideal</a>;
+<a href="sing_234.htm#mstd">mstd</a>;
+<a href="sing_244.htm#option">option</a>;
+<a href="sing_139.htm#ring">ring</a>;
+<a href="sing_277.htm#stdfglm">stdfglm</a>;
+<a href="sing_278.htm#stdhilb">stdhilb</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_275.htm#status" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.120 status" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_277.htm#stdfglm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.122 stdfglm" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

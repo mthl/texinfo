@@ -1,0 +1,27 @@
+texi no_monolithic.texi
+texi navigation.texi
+texi formatting_regions.texi
+no_monolithic no_monolithic.texi -no-monolithic
+no_monolithic_only_toc_out no_monolithic.texi -no-monolithic -init only_toc_out.init
+navigation navigation.texi
+navigation_no_header navigation.texi --no-header
+navigation_noheaders_init navigation.texi -init noheaders.init
+navigation_vertical navigation.texi -init vertical_nav.init
+navigation_no_header_vertical navigation.texi -init vertical_nav.init --no-header
+navigation_chapter navigation.texi -split chapter
+navigation_section navigation.texi -split section
+navigation_node navigation.texi -split node
+navigation_chapter_no_header navigation.texi -split chapter -no-header
+navigation_section_no_header navigation.texi -split section -no-header
+navigation_node_no_header navigation.texi -split node -no-header
+navigation_chapter_noheaders_init navigation.texi -split chapter -init noheaders.init
+navigation_section_noheaders_init navigation.texi -split section -init noheaders.init
+navigation_node_noheaders_init navigation.texi -split node  -init noheaders.init
+navigation_chapter_vertical navigation.texi -init vertical_nav.init -split chapter
+navigation_section_vertical navigation.texi -init vertical_nav.init -split section
+navigation_node_vertical navigation.texi -init vertical_nav.init -split node
+navigation_chapter_no_header_vertical navigation.texi -init vertical_nav.init -split chapter -no-header
+navigation_section_no_header_vertical navigation.texi -init vertical_nav.init -split section -no-header
+navigation_node_no_header_vertical navigation.texi -init vertical_nav.init -split node -no-header
+formatting_regions formatting_regions.texi
+formatting_exotic ../coverage/formatting.texi -split section -no-header -nonumber-sections -toc-links -def-table -short-ref -footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 1.3 Info files</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 1.3 Info files">
+<meta name="keywords" content="GNU Texinfo 4.2: 1.3 Info files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Info-Files"></a>
+<a name="SEC5"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Using-Texinfo.html#Using-Texinfo" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Printed-Books.html#Printed-Books" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Overview.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Overview.html#Overview" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Texinfo-Mode.html#Texinfo-Mode" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2 class="section">1.3 Info files</h2>
+
+<p>An Info file is a Texinfo file formatted so that the Info documentation
+reading program can operate on it.  (<code>makeinfo</code>
+and <code>texinfo-format-buffer</code> are two commands that convert a Texinfo file
+into an Info file.)
+</p>
+<p>Info files are divided into pieces called <em>nodes</em>, each of which
+contains the discussion of one topic.  Each node has a name, and
+contains both text for the user to read and pointers to other nodes,
+which are identified by their names.  The Info program displays one node
+at a time, and provides commands with which the user can move to other
+related nodes.
+</p>
+<p>See <a href="../info/index.html#Top">info: (info)Top</a>, for more information about using Info.
+</p>
+<p>Each node of an Info file may have any number of child nodes that
+describe subtopics of the node&rsquo;s topic.  The names of child
+nodes are listed in a <em>menu</em> within the parent node; this
+allows you to use certain Info commands to move to one of the child
+nodes.  Generally, an Info file is organized like a book.  If a node
+is at the logical level of a chapter, its child nodes are at the level
+of sections; likewise, the child nodes of sections are at the level
+of subsections.
+</p>
+<p>All the children of any one parent are linked together in a
+bidirectional chain of &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers.  The &lsquo;Next&rsquo;
+pointer provides a link to the next section, and the &lsquo;Previous&rsquo; pointer
+provides a link to the previous section.  This means that all the nodes
+that are at the level of sections within a chapter are linked together.
+Normally the order in this chain is the same as the order of the
+children in the parent&rsquo;s menu.  Each child node records the parent node
+name as its &lsquo;Up&rsquo; pointer.  The last child has no &lsquo;Next&rsquo; pointer, and the
+first child has the parent both as its &lsquo;Previous&rsquo; and as its &lsquo;Up&rsquo;
+pointer.<a name="DOCF2" href="texinfo_fot.html#FOOT2">(2)</a>
+</p>
+<p>The book-like structuring of an Info file into nodes that correspond
+to chapters, sections, and the like is a matter of convention, not a
+requirement.  The &lsquo;Up&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Next&rsquo; pointers of a node can
+point to any other nodes, and a menu can contain any other nodes.
+Thus, the node structure can be any directed graph.  But it is usually
+more comprehensible to follow a structure that corresponds to the
+structure of chapters and sections in a printed book or report.
+</p>
+<p>In addition to menus and to &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers, Info
+provides pointers of another kind, called references, that can be
+sprinkled throughout the text.  This is usually the best way to
+represent links that do not fit a hierarchical structure.
+</p>
+<p>Usually, you will design a document so that its nodes match the
+structure of chapters and sections in the printed output.  But
+occasionally there are times when this is not right for the material
+being discussed.  Therefore, Texinfo uses separate commands to specify
+the node structure for the Info file and the section structure for the
+printed output.
+</p>
+<p>Generally, you enter an Info file through a node that by convention is
+named &lsquo;Top&rsquo;.  This node normally contains just a brief summary of the
+file&rsquo;s purpose, and a large menu through which the rest of the file is
+reached.  From this node, you can either traverse the file
+systematically by going from node to node, or you can go to a specific
+node listed in the main menu, or you can search the index menus and then
+go directly to the node that has the information you want.  Alternatively,
+with the standalone Info program, you can specify specific menu items on
+the command line (see <a href="../info/index.html#Top">(info)Top</a> section &lsquo;Top&rsquo; in <cite>Info</cite>).
+</p>
+<p>If you want to read through an Info file in sequence, as if it were a
+printed manual, you can hit &lt;SPC&gt; repeatedly, or you get the whole
+file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html#Expert">Advanced Info commands: (info)Expert</a>.)
+</p>
+<p>The &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</tt>&rsquo; directory serves as the
+departure point for the whole Info system.  From it, you can reach the
+&lsquo;Top&rsquo; nodes of each of the documents in a complete Info system.
+</p>
+<a name="IDX12"></a>
+<p>If you wish to refer to an Info file in a URI, you can use the
+(unofficial) syntax exemplified in the following.  This works with
+Emacs/W3, for example:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">info:///usr/info/emacs#Dissociated%20Press
+info:emacs#Dissociated%20Press
+info://localhost/usr/info/emacs#Dissociated%20Press
+</pre></td></tr></table>
+
+<p>The <code>info</code> program itself does not follow URI&rsquo;s of any kind.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Using-Texinfo.html#Using-Texinfo" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Printed-Books.html#Printed-Books" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Overview.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Overview.html#Overview" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Texinfo-Mode.html#Texinfo-Mode" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

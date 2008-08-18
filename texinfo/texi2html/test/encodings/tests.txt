@@ -1,0 +1,33 @@
+texi nodetest.texi
+texi nodetest_utf8.texi
+texi nodetest_latin1.texi
+texi multi_lang.texi 
+texi unknown_language.texi
+texi umlaut.texi
+texi accentenc.texi
+texi accent.texi
+texi weird_accents.texi
+nodetest nodetest.texi
+nodetest_chapter nodetest.texi -split chapter
+nodetest_use_nodes_no_unicode nodetest.texi -init no_unicode.init -node-files -use-nodes -split node
+nodetest_use_nodes_no_unidecode nodetest.texi -init no_unidecode.init -node-files -use-nodes -split node
+nodetest_use_nodes nodetest.texi -node-files -use-nodes -split node
+nodetest_no_unicode nodetest.texi -init no_unicode.init
+nodetest_utf8 nodetest_utf8.texi
+nodetest_utf8_no_unicode nodetest_utf8.texi -init no_unicode.init
+nodetest_utf8_use_nodes nodetest_utf8.texi -node-files -use-nodes -split node
+nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi -init no_unidecode.init -node-files -use-nodes -split node
+nodetest_to_utf8_latin1 nodetest_latin1.texi -init utf8.init
+nodetest_latin1 nodetest_latin1.texi
+nodetest_latin1_no_unicode nodetest_latin1.texi -init no_unicode.init
+multi_lang multi_lang.texi
+unknown_language unknown_language.texi
+umlaut umlaut.texi
+formatting_fr ../coverage/formatting.texi -document-language fr
+formatting_fr_icons ../coverage/formatting.texi -document-language fr -init icons.init
+formatting_converted_to_utf8 ../coverage/formatting.texi -init utf8.init
+accentenc accentenc.texi
+accentenc_encoding accentenc.texi -init enable_encoding.init
+accent accent.texi
+weird_accents weird_accents.texi
+weird_accents_encoding weird_accents.texi -init enable_encoding.init

@@ -1,0 +1,57 @@
+texi def_cmds.texi
+texi menus.texi
+texi quotation.texi
+texi float_with_at_commands.texi
+texi float_copying.texi
+texi macro_in_menu.texi
+texi ref_in_anchor.texi
+texi tex.texi -l2h -expand tex
+texi block_EOL.texi
+texi detailmenus.texi
+texi commands_in_ifset.texi
+texi simplest.texi
+texi punctuation.texi
+texi def_end_of_line.texi
+texi center.texi
+texi tables.texi
+texi formats_in_menu.texi
+texi heading.texi
+texi quotes.texi
+texi indicateurl_paragraph.texi
+texi complex_command_in_simple_command.texi
+texi symbol_after_block.texi
+texi html-extrali.texi
+texi html-para.texi
+texi html-title.texi
+def_cmds def_cmds.texi
+menus menus.texi
+menus_simple menus.texi -init simple_menu.init
+quotation quotation.texi
+float_with_at_commands float_with_at_commands.texi
+float_copying float_copying.texi -split chapter
+macro_in_menu macro_in_menu.texi
+ref_in_anchor ref_in_anchor.texi
+tex tex.texi -l2h -expand tex -init l2h_tmp_dir.init
+tex_notex tex.texi
+tex_httex tex.texi -init tex4ht.init --iftex
+block_EOL block_EOL.texi
+detailmenus detailmenus.texi
+detailmenus_simple detailmenus.texi -init simple_menu.init
+commands_in_ifset commands_in_ifset.texi
+simplest_test_css simplest.texi -css-include file.css
+punctuation punctuation.texi
+def_end_of_line def_end_of_line.texi
+center center.texi
+tables tables.texi
+formats_in_menu formats_in_menu.texi
+heading heading.texi
+quotes quotes.texi
+indicateurl_paragraph indicateurl_paragraph.texi
+complex_command_in_simple_command complex_command_in_simple_command.texi
+symbol_after_block symbol_after_block.texi
+formatting_weird_quotes ../coverage/formatting.texi -init weird_quotes.init
+comments_redefine_need ../coverage/comments.texi -init redefine_need.init
+simplest_httex simplest.texi -init tex4ht.init --iftex
+html-extrali html-extrali.texi -init makeinfo.init
+html-para html-para.texi
+html-title html-title.texi

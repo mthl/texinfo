@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.7.1.7 hilbvec</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.7.1.7 hilbvec">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.1.7 hilbvec">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="hilbvec"></a>
+<a name="SEC821"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_820.htm#findvars" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.6 findvars" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_822.htm#linearpart" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.8 linearpart" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.7.1.7 hilbvec</h4>
+<p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>hilbvec(id[,c,o]); id=poly/ideal/vector/module/matrix, c,o=strings,<br>
+c=char, o=ordering used by <code>hilb</code><br>
+(default: c=&quot;32003&quot;, o=&quot;dp&quot;)
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>intvec of 1-st Hilbert-series of id, computed in char c and ordering o
+</p>
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>id must be homogeneous (i.e. all vars have weight 1)
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+ring s   = 0,(e,f,x,y,z,t,u,v,w,a,b,c,d,H),dp;
+ideal id = w2+f2-1, x2+t2+a2-1,  y2+u2+b2-1, z2+v2+c2-1,
+d2+e2-1, f4+2u, wa+tf, xy+tu+ab;
+id = homog(id,H);
+hilbvec(id);
+&rarr; 1,0,-7,0,20,0,-28,0,14,0,14,0,-28,0,20,0,-7,0,1,0
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_820.htm#findvars" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.6 findvars" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_822.htm#linearpart" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.8 linearpart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

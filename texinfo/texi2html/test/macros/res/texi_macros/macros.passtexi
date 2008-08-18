@@ -1,0 +1,43 @@
+macros.texi(,2) 
+macros.texi(,3) @node Top
+macros.texi(,4) @top Test macro with include file and macro in macro
+macros.texi(,5) 
+macros.texi(,6) @c makeinfo doesn't like:
+macros.texi(,7) @c a new macro: @@<: @< !!!
+macros.texi(,8) 
+macros.texi(,9) @c makeinfo doesn't like:
+macros.texi(,10) @c @@aa without brace @aa
+macros.texi(,11) 
+macros.texi(,12) 
+macros.texi(,13) The file included:
+file.texi(,1) content of included file with arg2: \arg2\
+macros.texi(,15) File has been included.
+macros.texi(,16) 
+macros.texi(,22) 
+macros.texi(macro1,25) Right. macros.texi(macro1,25) result of a macro with @samp{first arg
+macros.texi(macro1,25) 
+macros.texi(macro1,25) no ?} and 
+file.texi(,1) content of included file with arg2: \arg2\
+macros.texi(macro1,25) second argmacros.texi(macro1,25) 
+macros.texi(,26) Now define macro2
+macros.texi(,31) Call macro2
+macros.texi(macro2,34) With a doubles arg a simple @code{
+macros.texi(macro2,34) arg}
+macros.texi(macro2,34)  and re a simple @code{
+macros.texi(macro2,34) arg}
+macros.texi(macro2,34) 
+macros.texi(macro2,34) 
+macros.texi(,35) Call macro2 with 2 args
+macros.texi(macro2,36) With a doubles arg arg with comma , here  and re arg with comma , here 
+macros.texi(macro2,36) 
+macros.texi(,37) Define macro3
+macros.texi(,46) Call macro3
+macros.texi(macro3,47) @example 
+macros.texi(macro3,47) /arg/
+macros.texi(macro3,47) 
+macros.texi(macro3,47) 
+macros.texi(macro3,47) /arg/
+macros.texi(macro3,47) @end examplemacros.texi(macro3,47) 
+macros.texi(,48) 
+macros.texi(,49) @contents
+macros.texi(,50) @bye

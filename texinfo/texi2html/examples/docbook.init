@@ -823,8 +823,10 @@ sub docbook_one_section($$)
 sub docbook_insertcopying($)
 {
     my $text = shift;
+    my $comment = shift;
+    my $simple_text = shift;
+
     return $text;
-    #return "<bookinfo>\n<legalnotice>\n$text</bookinfo>\n</legalnotice>\n";
 }
 
 sub docbook_acronym_like($$$$$$)
@@ -1065,7 +1067,7 @@ sub docbook_table_list($$$$$$$$$)
         }
         my $mark = '';
        $mark = " mark=\"$itemfunction\"" if (defined($itemfunction) and $itemfunction ne '');
-        return "<itemizedlist${mark}>$text</itemizedlist>";
+        return docbook_add_id('itemizedlist')."${mark}>$text</itemizedlist>";
     }
     elsif ($format_command eq 'enumerate')
     {

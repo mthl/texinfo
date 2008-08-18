@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.7.2.4 mp_res_mat</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.7.2.4 mp_res_mat">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.4 mp_res_mat">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="mp_005fres_005fmat"></a>
+<a name="SEC835"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_834.htm#ures_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.3 ures_solve" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_836.htm#interpolate" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.5 interpolate" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.7.2.4 mp_res_mat</h4>
+<p>Procedure from library <code>solve.lib</code> (see <a href="sing_831.htm#solve_005flib">solve_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>mp_res_mat(i [, k] ); i ideal, k integer,
+</p><table><tr><td>&nbsp;</td><td><pre class="format">    k=0: sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+    k=1: resultant matrix of Macaulay (k=0 is default)
+</pre></td></tr></table>
+
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>The number of elements in the input system must be the number of
+variables in the basering plus one;
+<br>if k=1 then i must be homogeneous.
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>module representing the multipolynomial resultant matrix
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+// compute resultant matrix in ring with parameters (sparse resultant matrix)
+ring rsq= (0,u0,u1,u2),(x1,x2),lp;
+ideal i= u0+u1*x1+u2*x2,x1^2 + x2^2 - 10,x1^2 + x1*x2 + 2*x2^2 - 16;
+module m = mp_res_mat(i);
+print(m);
+&rarr; -16,0,  -10,0,  (u0),0,   0,  0,   0,   0,  
+&rarr; 0,  -16,0,  -10,(u2),(u0),0,  0,   0,   0,  
+&rarr; 2,  0,  1,  0,  0,   (u2),0,  0,   0,   0,  
+&rarr; 0,  2,  0,  1,  0,   0,   0,  0,   0,   0,  
+&rarr; 0,  0,  0,  0,  (u1),0,   -10,(u0),0,   -16,
+&rarr; 1,  0,  0,  0,  0,   (u1),0,  (u2),(u0),0,  
+&rarr; 0,  1,  0,  0,  0,   0,   1,  0,   (u2),2,  
+&rarr; 1,  0,  1,  0,  0,   0,   0,  (u1),0,   0,  
+&rarr; 0,  1,  0,  1,  0,   0,   0,  0,   (u1),1,  
+&rarr; 0,  0,  0,  0,  0,   0,   1,  0,   0,   1   
+// computing sparse resultant
+det(m);
+&rarr; (-2*u0^4+18*u0^2*u1^2+4*u0^2*u1*u2+22*u0^2*u2^2-16*u1^4+80*u1^3*u2-52*u1^\
+   2*u2^2-120*u1*u2^3-36*u2^4)
+// compute resultant matrix (Macaulay resultant matrix)
+ring rdq= (0,u0,u1,u2),(x0,x1,x2),lp;
+ideal h=  homog(imap(rsq,i),x0);
+h;
+&rarr; h[1]=(u0)*x0+(u1)*x1+(u2)*x2
+&rarr; h[2]=-10*x0^2+x1^2+x2^2
+&rarr; h[3]=-16*x0^2+x1^2+x1*x2+2*x2^2
+module m = mp_res_mat(h,1);
+print(m);
+&rarr; x0, x1, x2, 0, 0, 0, 0,0, 0, 0,
+&rarr; 0,  x0, 0,  x1,x2,0, 0,0, 0, 0,
+&rarr; 0,  0,  x0, 0, x1,x2,0,0, 0, 0,
+&rarr; -10,0,  0,  1, 0, 1, 0,0, 0, 0,
+&rarr; 0,  0,  0,  0, x0,0, 0,x1,x2,0,
+&rarr; -16,0,  0,  1, 1, 2, 0,0, 0, 0,
+&rarr; 0,  -10,0,  0, 0, 0, 1,0, 1, 0,
+&rarr; 0,  0,  -10,0, 0, 0, 0,1, 0, 1,
+&rarr; 0,  -16,0,  0, 0, 0, 1,1, 2, 0,
+&rarr; 0,  0,  -16,0, 0, 0, 0,1, 1, 2 
+// computing Macaulay resultant (should be the same as above!)
+det(m);
+&rarr; 2*x0^4-18*x0^2*x1^2-4*x0^2*x1*x2-22*x0^2*x2^2+16*x1^4-80*x1^3*x2+52*x1^2*\
+   x2^2+120*x1*x2^3+36*x2^4
+// compute numerical sparse resultant matrix
+setring rsq;
+ideal ir= 15+2*x1+5*x2,x1^2 + x2^2 - 10,x1^2 + x1*x2 + 2*x2^2 - 16;
+module mn = mp_res_mat(ir);
+print(mn);
+&rarr; 15,0, -10,0,  0, 0, 0,  -16,0,  0,  
+&rarr; 5, 15,0,  -10,0, 0, 0,  0,  -16,0,  
+&rarr; 0, 5, 1,  0,  0, 0, 0,  2,  0,  0,  
+&rarr; 0, 0, 0,  1,  0, 0, 0,  0,  2,  0,  
+&rarr; 2, 0, 0,  0,  15,0, -10,0,  0,  -16,
+&rarr; 0, 2, 0,  0,  5, 15,0,  1,  0,  0,  
+&rarr; 0, 0, 0,  0,  0, 5, 1,  0,  1,  2,  
+&rarr; 0, 0, 1,  0,  2, 0, 0,  1,  0,  0,  
+&rarr; 0, 0, 0,  1,  0, 2, 0,  0,  1,  1,  
+&rarr; 0, 0, 0,  0,  0, 0, 1,  0,  0,  1   
+// computing sparse resultant
+det(mn);
+&rarr; -7056
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_834.htm#ures_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.3 ures_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_836.htm#interpolate" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.5 interpolate" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Kernel-of-module-homomorphisms"></a>
+<a name="SEC355"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_354.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_356.htm#Algebraic-dependence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.25 Algebraic dependence" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">A.24 Kernel of module homomorphisms</h2>
+<p>Let 
+ <span 
+class="cmmi-10">A </span> 
+, 
+ <span 
+class="cmmi-10">B </span> 
+ be two matrices of size
+ <span 
+class="cmmi-10">m </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmmi-10">r </span>and <span 
+class="cmmi-10">m </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmmi-10">s </span> 
+over the ring 
+ <span 
+class="cmmi-10">R </span> 
+ and consider the corresponding maps
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex21x.png" alt="Rr -A&#x2192;  Rm &#x2190;B- Rs .  " class="math-display" ></center>  
+We want to compute the kernel of the map
+
+<span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup>  <span 
+class="cmmi-7">A</span>
+  <span 
+class="cmsy-10">-</span> <span 
+class="cmsy-10">&#x2192;</span> <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">m</span></sup><span 
+class="cmsy-10">-</span> <span 
+class="cmsy-10">&#x2192;</span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">m</span></sup><span 
+class="cmmi-10">&#x2215;</span>Im(<span 
+class="cmmi-10">B</span>) <span 
+class="cmmi-10">. </span> 
+This can be done using the <code>modulo</code> command:
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex22x.png" alt="modulo(A,B ) = ker(Rr -A&#x2192; Rm &#x2215;Im (B)) .  " class="math-display" ></center>  
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
+  matrix A[2][2]=x,y,z,1;
+  matrix B[2][2]=x2,y2,z2,xz;
+  print(modulo(A,B));
+&rarr; yz2-x2, xyz-y2,  x2z-xy, x3-y2z,
+&rarr; x2z-xz2,-x2z+y2z,xyz-yz2,0      
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_354.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_356.htm#Algebraic-dependence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.25 Algebraic dependence" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

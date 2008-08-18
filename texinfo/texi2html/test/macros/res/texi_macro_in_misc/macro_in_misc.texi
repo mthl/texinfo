@@ -1,0 +1,145 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename macro_in_misc.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+ }
+
+
+@node Top
+@top top atext
+@subheading Comment like: atext
+
+Text line followed by a comment on the same line and another below @c comment @text{}
+@c comment @text{}
+
+
+
+@pagesizes @pagesizes{}
+@afourpaper
+@headings on line following headings @text{}
+@oddfooting some text ignored @text{}
+@everyheading on line following everyheading @text{}
+
+
+@need @need{}
+
+@raisesections
+@lowersections
+
+@c tex error: Use of \ doesn't match its definition.
+@@definfoenclose phoo,//,\\  
+//bar\\
+
+phi,:,:
+
+@c this is required
+
+@phi{bar}
+
+
+@strong{very strong}
+
+strong,(strong:,:)
+
+@strong{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@kbdinputstyle @kbdinputstyle_arg{}
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+
+@paragraphindent @asis_arg{}
+@paragraphindent @zero{}
+@paragraphindent @none_arg{}
+@paragraphindent @four{}
+@firstparagraphindent @none_arg{}
+@exampleindent @six{}
+
+@footnotestyle @end_arg{}
+@footnotestyle @separate_arg{}
+
+@documentencoding @latin1{}
+
+@frenchspacing @on_arg{}
+@frenchspacing @off_arg{}
+
+@c accepts 10 or 11
+@fonttextsize @ten{}
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@allowcodebreaks @false_arg{}
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@allowcodebreaks @true_arg{}
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@subheading command removed
+
+@finalout
+
+
+@@page @page @@noindent @noindent @@refill @refill something
+
+@noindent     noindent at beginning of line
+@noindent  
+noindent on the preceding line
+  @noindent    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @page   @@noindent @noindent    @@refill @refill
+
+@contents
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@exdent line after exdent
+
+And now sp:
+
+@sp @two{}
+
+
+@clickstyle @result_macro{}
+
+@menu
+* node atext::
+* bidule::
+* bidule2::
+@end menu
+
+
+@node node atext
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+@contents
+
+@node bidule
+@chapter bidule
+
+@shortcontents
+
+@node bidule2
+@chapter last
+
+@bye

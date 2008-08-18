@@ -1,0 +1,9 @@
+\input texinfo @c -*-texinfo-*-
+
+
+@node Top
+
+after end macro
+
+
+

@@ -1,0 +1,285 @@
+complex_command_in_simple_command.texi(,2) 
+complex_command_in_simple_command.texi(,3) @setfilename complex_command_in_simple_command.info
+complex_command_in_simple_command.texi(,4) 
+complex_command_in_simple_command.texi(,5) @node Top
+complex_command_in_simple_command.texi(,6) @top Complex commands in simple commands
+complex_command_in_simple_command.texi(,7) 
+complex_command_in_simple_command.texi(,8) The complex commands.
+complex_command_in_simple_command.texi(,9) 
+complex_command_in_simple_command.texi(,10) Table 
+complex_command_in_simple_command.texi(,11) 
+complex_command_in_simple_command.texi(,12) @table @asis
+complex_command_in_simple_command.texi(,13) @item item 
+complex_command_in_simple_command.texi(,14) line
+complex_command_in_simple_command.texi(,15) @end table
+complex_command_in_simple_command.texi(,16) After table.
+complex_command_in_simple_command.texi(,17) 
+complex_command_in_simple_command.texi(,18) 
+complex_command_in_simple_command.texi(,19) Multitable
+complex_command_in_simple_command.texi(,20) @multitable {truc} {machin}
+complex_command_in_simple_command.texi(,21) @item truc @tab machin
+complex_command_in_simple_command.texi(,22) @end multitable
+complex_command_in_simple_command.texi(,23) 
+complex_command_in_simple_command.texi(,24) Enumerate.
+complex_command_in_simple_command.texi(,25) 
+complex_command_in_simple_command.texi(,26) @enumerate 1
+complex_command_in_simple_command.texi(,27) @item item
+complex_command_in_simple_command.texi(,28) @end enumerate
+complex_command_in_simple_command.texi(,29) 
+complex_command_in_simple_command.texi(,30) After enumerate.
+complex_command_in_simple_command.texi(,31) 
+complex_command_in_simple_command.texi(,32) Example
+complex_command_in_simple_command.texi(,33) 
+complex_command_in_simple_command.texi(,34) @example
+complex_command_in_simple_command.texi(,35) Example
+complex_command_in_simple_command.texi(,36) @end example
+complex_command_in_simple_command.texi(,37) 
+complex_command_in_simple_command.texi(,38) After example
+complex_command_in_simple_command.texi(,39) 
+complex_command_in_simple_command.texi(,40) defun
+complex_command_in_simple_command.texi(,41) 
+complex_command_in_simple_command.texi(,42) @defun name args...
+complex_command_in_simple_command.texi(,43) text
+complex_command_in_simple_command.texi(,44) @end defun
+complex_command_in_simple_command.texi(,45) 
+complex_command_in_simple_command.texi(,46) After defun.
+complex_command_in_simple_command.texi(,47) 
+complex_command_in_simple_command.texi(,48) Flushright
+complex_command_in_simple_command.texi(,49) 
+complex_command_in_simple_command.texi(,50) @flushright
+complex_command_in_simple_command.texi(,51) in flushright
+complex_command_in_simple_command.texi(,52) @end flushright
+complex_command_in_simple_command.texi(,53) 
+complex_command_in_simple_command.texi(,54) Centered line
+complex_command_in_simple_command.texi(,55) 
+complex_command_in_simple_command.texi(,56) @center in centered line
+complex_command_in_simple_command.texi(,57) 
+complex_command_in_simple_command.texi(,58) Before quotation
+complex_command_in_simple_command.texi(,59) 
+complex_command_in_simple_command.texi(,60) @quotation
+complex_command_in_simple_command.texi(,61) a q--uotation
+complex_command_in_simple_command.texi(,62) @end quotation
+complex_command_in_simple_command.texi(,63) 
+complex_command_in_simple_command.texi(,64) After quotation
+complex_command_in_simple_command.texi(,65) 
+complex_command_in_simple_command.texi(,66) Before cartouche
+complex_command_in_simple_command.texi(,67) 
+complex_command_in_simple_command.texi(,68) @cartouche
+complex_command_in_simple_command.texi(,69) Cartouche
+complex_command_in_simple_command.texi(,70) @end cartouche
+complex_command_in_simple_command.texi(,71) 
+complex_command_in_simple_command.texi(,72) After cartouche
+complex_command_in_simple_command.texi(,73) 
+complex_command_in_simple_command.texi(,74) @subheading In samp
+complex_command_in_simple_command.texi(,75) 
+complex_command_in_simple_command.texi(,76) @samp{
+complex_command_in_simple_command.texi(,77) in code 
+complex_command_in_simple_command.texi(,78) 
+complex_command_in_simple_command.texi(,79) Table 
+complex_command_in_simple_command.texi(,80) 
+complex_command_in_simple_command.texi(,81) @table @asis
+complex_command_in_simple_command.texi(,82) @item item 
+complex_command_in_simple_command.texi(,83) line
+complex_command_in_simple_command.texi(,84) @end table
+complex_command_in_simple_command.texi(,85) After table.
+complex_command_in_simple_command.texi(,86) 
+complex_command_in_simple_command.texi(,87) Multitable
+complex_command_in_simple_command.texi(,88) @multitable {truc} {machin}
+complex_command_in_simple_command.texi(,89) @item truc @tab machin
+complex_command_in_simple_command.texi(,90) @end multitable
+complex_command_in_simple_command.texi(,91) 
+complex_command_in_simple_command.texi(,92) After multitable.
+complex_command_in_simple_command.texi(,93) 
+complex_command_in_simple_command.texi(,94) Enumerate.
+complex_command_in_simple_command.texi(,95) 
+complex_command_in_simple_command.texi(,96) @enumerate 1
+complex_command_in_simple_command.texi(,97) @item item
+complex_command_in_simple_command.texi(,98) @end enumerate
+complex_command_in_simple_command.texi(,99) 
+complex_command_in_simple_command.texi(,100) After enumerate.
+complex_command_in_simple_command.texi(,101) 
+complex_command_in_simple_command.texi(,102) Example
+complex_command_in_simple_command.texi(,103) 
+complex_command_in_simple_command.texi(,104) @example
+complex_command_in_simple_command.texi(,105) Example
+complex_command_in_simple_command.texi(,106) @end example
+complex_command_in_simple_command.texi(,107) 
+complex_command_in_simple_command.texi(,108) After example
+complex_command_in_simple_command.texi(,109) 
+complex_command_in_simple_command.texi(,110) defun
+complex_command_in_simple_command.texi(,111) 
+complex_command_in_simple_command.texi(,112) @defun name args...
+complex_command_in_simple_command.texi(,113) text
+complex_command_in_simple_command.texi(,114) @end defun
+complex_command_in_simple_command.texi(,115) 
+complex_command_in_simple_command.texi(,116) After defun.
+complex_command_in_simple_command.texi(,117) 
+complex_command_in_simple_command.texi(,118) Flushright
+complex_command_in_simple_command.texi(,119) 
+complex_command_in_simple_command.texi(,120) @flushright
+complex_command_in_simple_command.texi(,121) in flushright
+complex_command_in_simple_command.texi(,122) @end flushright
+complex_command_in_simple_command.texi(,123) 
+complex_command_in_simple_command.texi(,124) Centered line
+complex_command_in_simple_command.texi(,125) 
+complex_command_in_simple_command.texi(,126) @center in centered line
+complex_command_in_simple_command.texi(,127) 
+complex_command_in_simple_command.texi(,128) Before quotation
+complex_command_in_simple_command.texi(,129) 
+complex_command_in_simple_command.texi(,130) @quotation
+complex_command_in_simple_command.texi(,131) a q--uotation
+complex_command_in_simple_command.texi(,132) @end quotation
+complex_command_in_simple_command.texi(,133) 
+complex_command_in_simple_command.texi(,134) After quotation
+complex_command_in_simple_command.texi(,135) 
+complex_command_in_simple_command.texi(,136) Before cartouche
+complex_command_in_simple_command.texi(,137) 
+complex_command_in_simple_command.texi(,138) @cartouche
+complex_command_in_simple_command.texi(,139) Cartouche
+complex_command_in_simple_command.texi(,140) @end cartouche
+complex_command_in_simple_command.texi(,141) 
+complex_command_in_simple_command.texi(,142) After cartouche
+complex_command_in_simple_command.texi(,143) 
+complex_command_in_simple_command.texi(,144) }
+complex_command_in_simple_command.texi(,145) 
+complex_command_in_simple_command.texi(,146) @subheading in b
+complex_command_in_simple_command.texi(,147) 
+complex_command_in_simple_command.texi(,148) @b{
+complex_command_in_simple_command.texi(,149) in b
+complex_command_in_simple_command.texi(,150) 
+complex_command_in_simple_command.texi(,151) Table 
+complex_command_in_simple_command.texi(,152) 
+complex_command_in_simple_command.texi(,153) @table @asis
+complex_command_in_simple_command.texi(,154) @item item 
+complex_command_in_simple_command.texi(,155) line
+complex_command_in_simple_command.texi(,156) @end table
+complex_command_in_simple_command.texi(,157) After table.
+complex_command_in_simple_command.texi(,158) 
+complex_command_in_simple_command.texi(,159) Multitable
+complex_command_in_simple_command.texi(,160) @multitable {truc} {machin}
+complex_command_in_simple_command.texi(,161) @item truc @tab machin
+complex_command_in_simple_command.texi(,162) @end multitable
+complex_command_in_simple_command.texi(,163) 
+complex_command_in_simple_command.texi(,164) 
+complex_command_in_simple_command.texi(,165) Enumerate.
+complex_command_in_simple_command.texi(,166) 
+complex_command_in_simple_command.texi(,167) @enumerate 1
+complex_command_in_simple_command.texi(,168) @item item
+complex_command_in_simple_command.texi(,169) @end enumerate
+complex_command_in_simple_command.texi(,170) 
+complex_command_in_simple_command.texi(,171) After enumerate.
+complex_command_in_simple_command.texi(,172) Example
+complex_command_in_simple_command.texi(,173) 
+complex_command_in_simple_command.texi(,174) @example
+complex_command_in_simple_command.texi(,175) Example
+complex_command_in_simple_command.texi(,176) @end example
+complex_command_in_simple_command.texi(,177) 
+complex_command_in_simple_command.texi(,178) After example
+complex_command_in_simple_command.texi(,179) 
+complex_command_in_simple_command.texi(,180) defun
+complex_command_in_simple_command.texi(,181) 
+complex_command_in_simple_command.texi(,182) @defun name args...
+complex_command_in_simple_command.texi(,183) text
+complex_command_in_simple_command.texi(,184) @end defun
+complex_command_in_simple_command.texi(,185) 
+complex_command_in_simple_command.texi(,186) After defun.
+complex_command_in_simple_command.texi(,187) 
+complex_command_in_simple_command.texi(,188) Flushright
+complex_command_in_simple_command.texi(,189) 
+complex_command_in_simple_command.texi(,190) @flushright
+complex_command_in_simple_command.texi(,191) in flushright
+complex_command_in_simple_command.texi(,192) @end flushright
+complex_command_in_simple_command.texi(,193) 
+complex_command_in_simple_command.texi(,194) Centered line
+complex_command_in_simple_command.texi(,195) 
+complex_command_in_simple_command.texi(,196) @center in centered line
+complex_command_in_simple_command.texi(,197) 
+complex_command_in_simple_command.texi(,198) Before quotation
+complex_command_in_simple_command.texi(,199) 
+complex_command_in_simple_command.texi(,200) @quotation
+complex_command_in_simple_command.texi(,201) a q--uotation
+complex_command_in_simple_command.texi(,202) @end quotation
+complex_command_in_simple_command.texi(,203) 
+complex_command_in_simple_command.texi(,204) After quotation
+complex_command_in_simple_command.texi(,205) 
+complex_command_in_simple_command.texi(,206) Before cartouche
+complex_command_in_simple_command.texi(,207) 
+complex_command_in_simple_command.texi(,208) @cartouche
+complex_command_in_simple_command.texi(,209) Cartouche
+complex_command_in_simple_command.texi(,210) @end cartouche
+complex_command_in_simple_command.texi(,211) 
+complex_command_in_simple_command.texi(,212) After cartouche
+complex_command_in_simple_command.texi(,213) }
+complex_command_in_simple_command.texi(,214) 
+complex_command_in_simple_command.texi(,215) @subheading in code
+complex_command_in_simple_command.texi(,216) @code{
+complex_command_in_simple_command.texi(,217) In code.
+complex_command_in_simple_command.texi(,218) 
+complex_command_in_simple_command.texi(,219) Table 
+complex_command_in_simple_command.texi(,220) 
+complex_command_in_simple_command.texi(,221) @table @asis
+complex_command_in_simple_command.texi(,222) @item item 
+complex_command_in_simple_command.texi(,223) line
+complex_command_in_simple_command.texi(,224) @end table
+complex_command_in_simple_command.texi(,225) After table.
+complex_command_in_simple_command.texi(,226) 
+complex_command_in_simple_command.texi(,227) 
+complex_command_in_simple_command.texi(,228) Multitable
+complex_command_in_simple_command.texi(,229) @multitable {truc} {machin}
+complex_command_in_simple_command.texi(,230) @item truc @tab machin
+complex_command_in_simple_command.texi(,231) @end multitable
+complex_command_in_simple_command.texi(,232) 
+complex_command_in_simple_command.texi(,233) Enumerate.
+complex_command_in_simple_command.texi(,234) 
+complex_command_in_simple_command.texi(,235) @enumerate 1
+complex_command_in_simple_command.texi(,236) @item item
+complex_command_in_simple_command.texi(,237) @end enumerate
+complex_command_in_simple_command.texi(,238) 
+complex_command_in_simple_command.texi(,239) After enumerate.
+complex_command_in_simple_command.texi(,240) 
+complex_command_in_simple_command.texi(,241) Example
+complex_command_in_simple_command.texi(,242) 
+complex_command_in_simple_command.texi(,243) @example
+complex_command_in_simple_command.texi(,244) Example
+complex_command_in_simple_command.texi(,245) @end example
+complex_command_in_simple_command.texi(,246) 
+complex_command_in_simple_command.texi(,247) After example
+complex_command_in_simple_command.texi(,248) 
+complex_command_in_simple_command.texi(,249) defun
+complex_command_in_simple_command.texi(,250) 
+complex_command_in_simple_command.texi(,251) @defun name args...
+complex_command_in_simple_command.texi(,252) text
+complex_command_in_simple_command.texi(,253) @end defun
+complex_command_in_simple_command.texi(,254) 
+complex_command_in_simple_command.texi(,255) After defun.
+complex_command_in_simple_command.texi(,256) 
+complex_command_in_simple_command.texi(,257) Flushright
+complex_command_in_simple_command.texi(,258) 
+complex_command_in_simple_command.texi(,259) @flushright
+complex_command_in_simple_command.texi(,260) in flushright
+complex_command_in_simple_command.texi(,261) @end flushright
+complex_command_in_simple_command.texi(,262) 
+complex_command_in_simple_command.texi(,263) Centered line
+complex_command_in_simple_command.texi(,264) 
+complex_command_in_simple_command.texi(,265) @center in centered line
+complex_command_in_simple_command.texi(,266) 
+complex_command_in_simple_command.texi(,267) Before quotation
+complex_command_in_simple_command.texi(,268) 
+complex_command_in_simple_command.texi(,269) @quotation
+complex_command_in_simple_command.texi(,270) a q--uotation
+complex_command_in_simple_command.texi(,271) @end quotation
+complex_command_in_simple_command.texi(,272) 
+complex_command_in_simple_command.texi(,273) After quotation
+complex_command_in_simple_command.texi(,274) 
+complex_command_in_simple_command.texi(,275) Before cartouche
+complex_command_in_simple_command.texi(,276) 
+complex_command_in_simple_command.texi(,277) @cartouche
+complex_command_in_simple_command.texi(,278) Cartouche
+complex_command_in_simple_command.texi(,279) @end cartouche
+complex_command_in_simple_command.texi(,280) 
+complex_command_in_simple_command.texi(,281) After cartouche
+complex_command_in_simple_command.texi(,282) }
+complex_command_in_simple_command.texi(,283) 
+complex_command_in_simple_command.texi(,284) After the tests.
+complex_command_in_simple_command.texi(,285) 
+complex_command_in_simple_command.texi(,286) @bye

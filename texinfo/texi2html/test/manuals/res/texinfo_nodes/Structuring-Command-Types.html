@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 5.2 Structuring Command Types</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 5.2 Structuring Command Types">
+<meta name="keywords" content="GNU Texinfo 4.2: 5.2 Structuring Command Types">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Structuring-Command-Types"></a>
+<a name="SEC57"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Tree-Structuring.html#Tree-Structuring" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="makeinfo-top.html#makeinfo-top" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Structuring.html#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Structuring.html#Structuring" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2 class="section">5.2 Structuring Command Types</h2>
+
+<p>The chapter structuring commands fall into four groups or series, each
+of which contains structuring commands corresponding to the
+hierarchical levels of chapters, sections, subsections, and
+subsubsections.
+</p>
+<p>The four groups are the <code>@chapter</code> series, the
+<code>@unnumbered</code> series, the <code>@appendix</code> series, and the
+<code>@heading</code> series.
+</p>
+<p>Each command produces titles that have a different appearance on the
+printed page or Info file; only some of the commands produce
+titles that are listed in the table of contents of a printed book or
+manual.
+</p>
+<ul>
+<li>
+The <code>@chapter</code> and <code>@appendix</code> series of commands produce
+numbered or lettered entries both in the body of a printed work and in
+its table of contents.
+
+</li><li>
+The <code>@unnumbered</code> series of commands produce unnumbered entries
+both in the body of a printed work and in its table of contents.  The
+<code>@top</code> command, which has a special use, is a member of this
+series (see section <a href="makeinfo-top.html#makeinfo-top"><code>@top</code></a>).
+
+</li><li>
+The <code>@heading</code> series of commands produce unnumbered headings
+that do not appear in a table of contents.  The heading commands never
+start a new page.
+
+</li><li>
+The <code>@majorheading</code> command produces results similar to using
+the <code>@chapheading</code> command but generates a larger vertical
+whitespace before the heading.
+
+</li><li>
+When an <code>@setchapternewpage</code> command says to do so, the
+<code>@chapter</code>, <code>@unnumbered</code>, and <code>@appendix</code> commands
+start new pages in the printed manual; the <code>@heading</code> commands
+do not.
+</li></ul>
+
+<p>Here are the four groups of chapter structuring commands:
+</p>
+
+<table>
+<tr><td width="19%">                        </td><td width="30%">                              </td><td width="28%">                       </td><td width="22%"><p> No new page
+</p></td></tr>
+<tr><td width="19%"><p> <i>Numbered</i>           </p></td><td width="30%"><p> <i>Unnumbered</i>               </p></td><td width="28%"><p> <i>Lettered/numbered</i> </p></td><td width="22%"><p> <i>Unnumbered</i>
+</p></td></tr>
+<tr><td width="19%"><p> In contents            </p></td><td width="30%"><p> In contents                  </p></td><td width="28%"><p> In contents           </p></td><td width="22%"><p> Omitted from<br>contents
+</p></td></tr>
+<tr><td width="19%">                        </td><td width="30%"><p> <code>@top</code>                 </p></td><td width="28%">                       </td><td width="22%"><p> <code>@majorheading</code>
+</p></td></tr>
+<tr><td width="19%"><p> <code>@chapter</code>       </p></td><td width="30%"><p> <code>@unnumbered</code>          </p></td><td width="28%"><p> <code>@appendix</code> </p></td><td width="22%"><p> <code>@chapheading</code>
+</p></td></tr>
+<tr><td width="19%"><p> <code>@section</code>       </p></td><td width="30%"><p> <code>@unnumberedsec</code>       </p></td><td width="28%"><p> <code>@appendixsec</code> </p></td><td width="22%"><p> <code>@heading</code>
+</p></td></tr>
+<tr><td width="19%"><p> <code>@subsection</code>    </p></td><td width="30%"><p> <code>@unnumberedsubsec</code>    </p></td><td width="28%"><p> <code>@appendixsubsec</code> </p></td><td width="22%"><p> <code>@subheading</code>
+</p></td></tr>
+<tr><td width="19%"><p> <code>@subsubsection</code> </p></td><td width="30%"><p> <code>@unnumberedsubsubsec</code> </p></td><td width="28%"><p> <code>@appendixsubsubsec</code> </p></td><td width="22%"><p> <code>@subsubheading</code>
+</p></td></tr>
+</table>
+
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Tree-Structuring.html#Tree-Structuring" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="makeinfo-top.html#makeinfo-top" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Structuring.html#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Structuring.html#Structuring" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

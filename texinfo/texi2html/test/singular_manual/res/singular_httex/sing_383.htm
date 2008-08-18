@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.6.2.4 The algorithm of Di Biase and Urbanke</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.6.2.4 The algorithm of Di Biase and Urbanke">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.6.2.4 The algorithm of Di Biase and Urbanke">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Di-Biase-and-Urbanke"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_382.htm#Hosten-and-Sturmfels" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2.3 The algorithm of Hosten and Sturmfels" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_384.htm#Bigatti-and-La-Scala-and-Robbiano" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+
+<a name="SEC383"></a>
+<h4 class="subsubsection">C.6.2.4 The algorithm of Di Biase and Urbanke</h4>
+
+<p>Like the algorithm of Hosten and Sturmfels, the algorithm of Di Biase
+and Urbanke (see <a href="sing_387.htm#g_t_005bDBUr95_005d">[DBUr95]</a>) performs up
+
+to <span 
+class="cmmi-10">n&#x2215;</span>2 Groebner basis computations. It needs no auxiliary variables, but a supplementary precondition; namely, the
+existence of a vector without zero components in the kernel of <span 
+class="cmmi-10">A</span>.
+<!--l. 1772--><p class="indent" >    The main idea comes from the following observation:
+<!--l. 1774--><p class="indent" >    Let <span 
+class="cmmi-10">B </span>be an integer matrix, <span 
+class="cmmi-10">u</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,u</span><sub><span 
+class="cmmi-7">r</span></sub> a lattice basis of the integer kernel of <span 
+class="cmmi-10">B</span>. Assume that all components of <span 
+class="cmmi-10">u</span><sub><span 
+class="cmr-7">1</span></sub>
+are positive. Then
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex70x.png" alt="       u+    u-
+IB =&#x003C; x i - x i |i = 1,...,r &#x003E;,  " class="math-display" ></center> i.e.,
+the ideal on the right is already saturated w.r.t. all variables.
+<!--l. 1780--><p class="indent" >    The algorithm starts by finding a lattice basis <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">r</span></sub> of the kernel of <span 
+class="cmmi-10">A </span>such that <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub> has no zero component.
+Let <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">i</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,i</span><sub><span 
+class="cmmi-7">l</span></sub><span 
+class="cmsy-10">} </span>be the set of indices <span 
+class="cmmi-10">i </span>with <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span><span 
+class="cmmi-7">,i</span></sub> <span 
+class="cmmi-10">&#x003C; </span>0. Multiplying the components <span 
+class="cmmi-10">i</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,i</span><sub><span 
+class="cmmi-7">l</span></sub> of <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">r</span></sub> and the columns
+<span 
+class="cmmi-10">i</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,i</span><sub><span 
+class="cmmi-7">l</span></sub> of <span 
+class="cmmi-10">A </span>by <span 
+class="cmsy-10">-</span>1 yields a matrix <span 
+class="cmmi-10">B </span>and a lattice basis <span 
+class="cmmi-10">u</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,u</span><sub><span 
+class="cmmi-7">r</span></sub> of the kernel of <span 
+class="cmmi-10">B </span>that fulfill the assumption of the
+observation above. We are then able to compute a generating set of <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">A</span></sub> by applying the following &#8220;variable flip&#8221;
+successively to <span 
+class="cmmi-10">i </span>= <span 
+class="cmmi-10">i</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,i</span><sub><span 
+class="cmmi-7">l</span></sub>:
+<!--l. 1790--><p class="indent" >    Let <span 
+class="cmmi-10">&#x003E; </span>be an elimination ordering for <span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">i</span></sub>. Let <span 
+class="cmmi-10">A</span><sub><span 
+class="cmmi-7">i</span></sub> be the matrix obtained by multiplying the <span 
+class="cmmi-10">i</span>-th column of <span 
+class="cmmi-10">A</span>
+with <span 
+class="cmsy-10">-</span>1. Let
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex71x.png" alt="  rj a    b
+{xi xj - xj|j &#x2208; J} " class="math-display" ></center> be a
+Groebner basis of <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">A</span><sub><span 
+class="cmmi-5">i</span></sub></sub> w.r.t. <span 
+class="cmmi-10">&#x003E; </span>(where <span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">i</span></sub> is neither involved in <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">a</span><sub><span 
+class="cmmi-5">j</span></sub></sup> nor in <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">b</span><sub><span 
+class="cmmi-5">j</span></sub></sup>). Then
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex72x.png" alt="{xaj - xrjxbj|j &#x2208; J}
+       i " class="math-display" ></center> is a
+generating set for <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">A</span></sub>.  
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_382.htm#Hosten-and-Sturmfels" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2.3 The algorithm of Hosten and Sturmfels" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_384.htm#Bigatti-and-La-Scala-and-Robbiano" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

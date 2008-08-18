@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Conti-and-Traverso"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2 Algorithms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_381.htm#Pottier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.2 The algorithm of Pottier" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+
+<a name="SEC380"></a>
+<h4 class="subsubsection">C.6.2.1 The algorithm of Conti and Traverso</h4>
+
+
+<p>The algorithm of Conti and Traverso (see <a href="sing_387.htm#g_t_005bCoTr91_005d">[CoTr91]</a>)
+ computes <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">A</span></sub> via the extended matrix <span 
+class="cmmi-10">B </span>= (<span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">A</span>), where <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">m</span></sub> is the <span 
+class="cmmi-10">m </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmmi-10">m </span>unity matrix. A
+lattice basis of <span 
+class="cmmi-10">B </span>is given by the set of vectors (<span 
+class="cmmi-10">a</span><sup><span 
+class="cmmi-7">j</span></sup><span 
+class="cmmi-10">,</span><span 
+class="cmsy-10">-</span><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub>) <span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">ZZ</span><sup><span 
+class="cmmi-7">m</span><span 
+class="cmr-7">+</span><span 
+class="cmmi-7">n</span></sup>, where <span 
+class="cmmi-10">a</span><sup><span 
+class="cmmi-7">j</span></sup> is the <span 
+class="cmmi-10">j</span>-th row of <span 
+class="cmmi-10">A </span>and <span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub> the
+<span 
+class="cmmi-10">j</span>-th coordinate vector. We look at the ideal in <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">y</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,y</span><sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>] corresponding to these vectors,
+namely
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex66x.png" alt="I1 = &#x003C; ya+j - xjya-j |j = 1,...,n &#x003E; .  " class="math-display" ></center> We
+introduce a further variable <span 
+class="cmmi-10">t </span>and adjoin the binomial <span 
+class="cmmi-10">t</span><span 
+class="cmsy-10">&#x22C5;</span><span 
+class="cmmi-10">y</span><sub><span 
+class="cmr-7">1</span></sub> <span 
+class="cmsy-10">&#x22C5;</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmsy-10">&#x22C5;</span><span 
+class="cmmi-10">y</span><sub><span 
+class="cmmi-7">m</span></sub> <span 
+class="cmsy-10">- </span>1 to the generating set of <span 
+class="cmmi-10">I</span><sub><span 
+class="cmr-7">1</span></sub>, obtaining an ideal
+<span 
+class="cmmi-10">I</span><sub><span 
+class="cmr-7">2</span></sub> in the polynomial ring <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">t,y</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,y</span><sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]. <span 
+class="cmmi-10">I</span><sub><span 
+class="cmr-7">2</span></sub> is saturated w.r.t. all variables because all variables are
+invertible modulo <span 
+class="cmmi-10">I</span><sub><span 
+class="cmr-7">2</span></sub>. Now <span 
+class="cmmi-10">I</span><sub><span 
+class="cmmi-7">A</span></sub> can be computed from <span 
+class="cmmi-10">I</span><sub><span 
+class="cmr-7">2</span></sub> by eliminating the variables <span 
+class="cmmi-10">t,y</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,y</span><sub><span 
+class="cmmi-7">m</span></sub>.  
+</p>
+<p>Because of the big number of auxiliary variables needed to compute a
+toric ideal, this algorithm is rather slow in practice. However, it has
+a special importance in the application to integer programming
+(see <a href="sing_386.htm#Integer-programming">Integer programming</a>).
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_381.htm#Pottier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.2 The algorithm of Pottier" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

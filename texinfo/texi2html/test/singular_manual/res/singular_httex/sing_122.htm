@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 4.11.1 number declarations</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 4.11.1 number declarations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.11.1 number declarations">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="number-declarations"></a>
+<a name="SEC122"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_121.htm#number" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.11 number" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_123.htm#number-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.11.2 number expressions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5. Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_121.htm#number" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.11 number" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">4.11.1 number declarations</h3>
+
+<dl compact="compact">
+<dt> <strong>Syntax:</strong></dt>
+<dd><p><code>number</code> name <code>=</code> number_expression <code>;</code>
+</p>
+</dd>
+<dt> <strong>Purpose:</strong></dt>
+<dd><p>defines a number.
+</p>
+</dd>
+<dt> <strong>Default:</strong></dt>
+<dd><p>0
+</p>
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>Numbers may only be declared w.r.t. the coefficient field of the current
+basering, i.e., a ring
+has to be defined prior to any number declaration. See <a href="sing_28.htm#Rings-and-orderings">Rings and orderings</a> for a list of the available coefficient fields.
+</p>
+</dd>
+<dt> <strong>Example:</strong></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // finite field Z/p, p&lt;= 32003
+  ring r = 32003,(x,y,z),dp;
+  number n = 4/6;
+  n;
+&rarr; -10667
+  // finite field GF(p^n), p^n &lt;= 32767
+  // z is a primitive root of the minimal polynomial
+  ring rg= (7^2,z),x,dp;
+  number n = 4/9+z;
+  n;
+&rarr; z11
+  // the rational numbers
+  ring r0 = 0,x,dp;
+  number n = 4/6;
+  n;
+&rarr; 2/3
+  // algebraic extensions of Z/p or Q
+  ring ra=(0,a),x,dp;
+  minpoly=a^2+1;
+  number n=a3+a2+2a-1;
+  n;
+&rarr; (a-2)
+  a^2;
+&rarr; -1
+  // transcedental extensions of Z/p or Q
+  ring rt=(0,a),x,dp;
+  number n=a3+a2+2a-1;
+  n;
+&rarr; (a3+a2+2a-1)
+  a^2;
+&rarr; (a2)
+  // machine floating point numbers, single precision
+  ring R_0=real,x,dp;
+  number n=4/6;
+  n;
+&rarr; 6.667e-01
+  n=0.25e+2;
+  n;
+&rarr; 2.500e+01
+  // floating point numbers, arbitrary prescribed precision
+  ring R_1=(real,50),x,dp;
+  number n=4.0/6;
+  n;
+&rarr; 0.66666666666666666666666666666666666666666666666667
+  n=0.25e+2;
+  n;
+&rarr; 25
+  // floating point complex numbers, arbitrary prescribed precision
+  // the third parameter gives the name of the imaginary unit
+  ring R_2=(complex,50,i),x,dp;
+  number n=4.0/6;
+  n;
+&rarr; 0.66666666666666666666666666666666666666666666666667
+  n=0.25e+2*i+n;
+  n;
+&rarr; (0.66666666666666666666666666666666666666666666666667+i*25)
+</pre></td></tr></table>
+</dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_121.htm#number" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.11 number" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_123.htm#number-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.11.2 number expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5. Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_121.htm#number" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.11 number" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

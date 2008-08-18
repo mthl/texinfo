@@ -120,8 +120,8 @@ sub book_print_Top($$)
 
     my $buttons = \@MISC_BUTTONS;
     &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
-    my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-    &$titlepage([],$titlepage_text, $titlepage_no_texi); 
+    my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+    &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
     print $fh $Texi2HTML::TITLEPAGE;
     print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
         unless ($has_top_heading);

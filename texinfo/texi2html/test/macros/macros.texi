@@ -1,0 +1,51 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Test macro with include file and macro in macro
+
+@c makeinfo doesn't like:
+@c a new macro: @@<: @< !!!
+
+@c makeinfo doesn't like:
+@c @@aa without brace @aa
+
+
+The file included:
+@include file.texi
+File has been included.
+
+@macro macro1 {arg1, arg2 }
+result of a macro with \arg1\ and 
+@include file.texi
+\arg2\
+@end macro
+
+Right. @macro1 { @samp{first arg
+
+no ?}, second arg}
+Now define macro2
+@macro macro2 { arg }
+With a doubles arg \arg\ and re \arg\
+
+@end macro
+Call macro2
+@macro2 { a simple @code{
+arg}
+}
+Call macro2 with 2 args
+@macro2 { arg with comma , here }
+Define macro3
+@macro macro3 { arg }
+@example 
+/arg/
+
+
+/arg/
+@end example
+@end macro
+Call macro3
+@macro3 { an arg }
+
+@contents
+@bye
+

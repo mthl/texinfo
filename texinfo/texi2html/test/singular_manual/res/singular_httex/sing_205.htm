@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.50 indepSet</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.50 indepSet">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.50 indepSet">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="indepSet"></a>
+<a name="SEC205"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_204.htm#impart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.49 impart" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_206.htm#insert" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.51 insert" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">5.1.50 indepSet</h3>
+
+<dl compact="compact">
+<dt> <code><strong>Syntax:</strong></code></dt>
+<dd><p><code>indepSet (</code> ideal_expression <code>)</code>
+</p></dd>
+<dt> <code><strong>Type:</strong></code></dt>
+<dd><p>intvec
+</p></dd>
+<dt> <code><strong>Purpose:</strong></code></dt>
+<dd><p>computes a maximal set U of independent variables of the ideal given by
+a standard basis.  If <code>v</code> is the result then <code>v[i]</code> is 1 if and
+only if the i-th variable of the ring, <code>x(i)</code>, is an independent
+variable.  Hence, the set U consisting of all variables <code>x(i)</code> with
+<code>v[i]=1</code> is a maximal independent set.
+</p>
+
+</dd>
+<dt> <code><strong>Note:</strong></code></dt>
+<dd><p>U is a set of independent variables for I if and only if
+ <span 
+class="cmmi-10">I </span><span 
+class="cmsy-10">&#x2229; </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">U</span>] = (0),  
+i.e., eliminating the remaining variables gives (0).
+U is maximal if dim(I)=#U.
+</p></dd>
+<dt> <code><strong>Syntax:</strong></code></dt>
+<dd><p><code>indepSet (</code> ideal_expression, int_expression <code>)</code>
+</p></dd>
+<dt> <code><strong>Type:</strong></code></dt>
+<dd><p>list
+</p></dd>
+<dt> <code><strong>Purpose:</strong></code></dt>
+<dd><p>computes a list of all maximal independent sets of the leading ideal
+(if the flag is 0), resp. of all those sets of independent variables
+of the leading ideal which cannot be enlarged.
+</p></dd>
+<dt> <code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,u,v,w),dp;
+  ideal I=xyw,yvw,uyw,xv;
+  attrib(I,&quot;isSB&quot;,1);
+  indepSet(I);
+&rarr; 1,1,1,0,0
+  eliminate(I,vw);
+&rarr; _[1]=0
+  indepSet(I,0);
+&rarr; [1]:
+&rarr;    1,1,1,0,0
+&rarr; [2]:
+&rarr;    0,1,1,1,0
+&rarr; [3]:
+&rarr;    1,0,1,0,1
+&rarr; [4]:
+&rarr;    0,0,1,1,1
+  indepSet(I,1);
+&rarr; [1]:
+&rarr;    1,1,1,0,0
+&rarr; [2]:
+&rarr;    0,1,1,1,0
+&rarr; [3]:
+&rarr;    1,0,1,0,1
+&rarr; [4]:
+&rarr;    0,0,1,1,1
+&rarr; [5]:
+&rarr;    0,1,0,0,1
+  eliminate(I,xuv);
+&rarr; _[1]=0
+</pre></td></tr></table>
+</dd>
+</dl>
+<p>See
+<a href="sing_69.htm#ideal">ideal</a>;
+<a href="sing_276.htm#std">std</a>.
+</p></td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_204.htm#impart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.49 impart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_206.htm#insert" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.51 insert" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

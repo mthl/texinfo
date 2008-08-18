@@ -1,0 +1,8 @@
+texi testkb.texi
+texi verbatim_html.texi
+texi viper.texi -ifinfo
+testkb testkb.texi
+verbatim_html verbatim_html.texi
+viper_unsplit viper.texi -ifinfo
+viper_chapter_split viper.texi -split chapter -ifinfo
+formatting_html32 ../coverage/formatting.texi -init html32.init

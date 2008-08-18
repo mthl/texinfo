@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nodes_before_top
+
+@node first, Top, ,(dir)
+
+in first node
+@menu
+* node in menu before top::
+@end menu
+
+@titlefont{A titlefont in a node}
+
+@node node in menu before top,,,first
+
+node in menu before top text
+
+@node Top,,first
+@top top section 
+Top node
+@menu
+* second node::
+@end menu
+
+@node second node
+@chapter a chapter
+
+second node
+
+
+
+@bye

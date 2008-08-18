@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.3.2 cupproduct</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.2 cupproduct">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.2 cupproduct">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="cupproduct"></a>
+<a name="SEC552"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_551.htm#cup" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.1 cup" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_553.htm#depth" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.3 depth" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.4.3.2 cupproduct</h4>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_550.htm#homolog_005flib">homolog_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>cupproduct(M,N,P,p,q[,any]); M,N,P modules, p,q integers
+</p>
+</dd>
+<dt> <strong>Compute:</strong></dt>
+<dd><p>cup-product Ext^p(M&rsquo;,N&rsquo;) x Ext^q(N&rsquo;,P&rsquo;) &mdash;&gt; Ext^p+q(M&rsquo;,P&rsquo;),
+where M&rsquo;:=R^m/M, if M in R^m, R basering (i.e. M&rsquo;:=coker(matrix(M)))
+</p>
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>all Ext&rsquo;s are of finite dimension
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>- if called with 5 arguments: matrix of the associated linear map
+Ext^p (tensor) Ext^q &ndash;&gt; Ext^p+q, i.e. the columns of &lt;matrix&gt;
+present the coordinates of the cup products (b_i &amp; c_j) with respect
+to a kbase of Ext^p+q (b_i resp. c_j are the choosen bases of Ext^p,
+resp. Ext^q).<br>
+- if called with 6 arguments: list L,
+</p><table><tr><td>&nbsp;</td><td><pre class="format">      L[1] = matrix (see above)
+      L[2] = matrix of kbase of Ext^p(M',N')
+      L[3] = matrix of kbase of Ext^q(N',P')
+      L[4] = matrix of kbase of Ext^p+q(N',P')
+</pre></td></tr></table>
+
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>printlevel &gt;=1; shows what is going on.
+<br>printlevel &gt;=2; shows the result in another representation.<br>
+For computing the cupproduct of M,N itself, apply proc to syz(M),
+syz(N)!
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+int p      = printlevel;
+ring  rr   = 32003,(x,y,z),(dp,C);
+ideal  I   = x4+y3+z2;
+qring  o   = std(I);
+module M   = [x,y,0,z],[y2,-x3,z,0],[z,0,-y,-x3],[0,z,x,-y2];
+print(cupproduct(M,M,M,1,3));
+&rarr; 0,1,0, 0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,-1,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, -1,0,0,0,0,0,1,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, 0, 1,0,0,1,0,0,-1,0,0,1,0,0,0 
+printlevel = 3;
+list l     = (cupproduct(M,M,M,1,3,&quot;any&quot;));
+&rarr; // vdim Ext(M,N) = 4
+&rarr; // kbase of Ext^p(M,N)
+&rarr; //  - the columns present the kbase elements in Hom(F(p),G(0))
+&rarr; //  - F(*),G(*) are free resolutions of M and N
+&rarr; 0, 0, 1, 0,  
+&rarr; 0, y, 0, 0,  
+&rarr; 1, 0, 0, 0,  
+&rarr; 0, 0, 0, y,  
+&rarr; 0, -1,0, 0,  
+&rarr; 0, 0, x2,0,  
+&rarr; 0, 0, 0, -x2,
+&rarr; 1, 0, 0, 0,  
+&rarr; 0, 0, 0, -1, 
+&rarr; -1,0, 0, 0,  
+&rarr; 0, 1, 0, 0,  
+&rarr; 0, 0, 1, 0,  
+&rarr; -1,0, 0, 0,  
+&rarr; 0, 0, 0, x2y,
+&rarr; 0, 0, x2,0,  
+&rarr; 0, -y,0, 0   
+&rarr; // vdim Ext(N,P) = 4
+&rarr; // kbase of Ext(N,P):
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 0, 0,  y,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, -1,0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, 0, 0,  -x2,
+&rarr; 0, 0, -x2,0,  
+&rarr; 0, 0, 0,  -1, 
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 1, 0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; -1,0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, 0, x2, 0,  
+&rarr; 0, 0, 0,  -x2y
+&rarr; // kbase of Ext^q(N,P)
+&rarr; //  - the columns present the kbase elements in Hom(G(q),H(0))
+&rarr; //  - G(*),H(*) are free resolutions of N and P
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 0, 0,  y,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, -1,0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, 0, 0,  -x2,
+&rarr; 0, 0, -x2,0,  
+&rarr; 0, 0, 0,  -1, 
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 1, 0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; -1,0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, 0, x2, 0,  
+&rarr; 0, 0, 0,  -x2y
+&rarr; // vdim Ext(M,P) = 4
+&rarr; // kbase of Ext^p+q(M,P)
+&rarr; //  - the columns present the kbase elements in Hom(F(p+q),H(0))
+&rarr; //  - F(*),H(*) are free resolutions of M and P
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 0, 0,  y,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, -1,0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; 0, 0, 0,  -x2,
+&rarr; 0, 0, -x2,0,  
+&rarr; 0, 0, 0,  -1, 
+&rarr; 0, 0, 1,  0,  
+&rarr; 0, 1, 0,  0,  
+&rarr; 1, 0, 0,  0,  
+&rarr; -1,0, 0,  0,  
+&rarr; 0, -y,0,  0,  
+&rarr; 0, 0, x2, 0,  
+&rarr; 0, 0, 0,  -x2y
+&rarr; // lifting of kbase of Ext^p(M,N)
+&rarr; //  - the columns present liftings of kbase elements in Hom(F(p+q),G(q))
+&rarr; 1,0, 0, 0,  
+&rarr; 0,-y,0, 0,  
+&rarr; 0,0, x2,0,  
+&rarr; 0,0, 0, x2y,
+&rarr; 0,1, 0, 0,  
+&rarr; 1,0, 0, 0,  
+&rarr; 0,0, 0, -x2,
+&rarr; 0,0, x2,0,  
+&rarr; 0,0, -1,0,  
+&rarr; 0,0, 0, y,  
+&rarr; 1,0, 0, 0,  
+&rarr; 0,y, 0, 0,  
+&rarr; 0,0, 0, -1, 
+&rarr; 0,0, -1,0,  
+&rarr; 0,-1,0, 0,  
+&rarr; 1,0, 0, 0   
+&rarr; // matrix of cup-products (in Ext^p+q)
+&rarr; 0,0, 0, -1, 0,   0, 0, 0,   y,   1,  0,  0,  0,  0,   y,   0,  0,   
+&rarr; 0,0, 0, 0,  y,   0, 0, y,   0,   0,  -y, 0,  0,  y,   0,   0,  0,   
+&rarr; 0,1, 0, 0,  0,   0, y, 0,   0,   0,  0,  x2, 0,  0,   0,   0,  -x2y,
+&rarr; 0,0, y, 0,  0,   -y,0, 0,   0,   0,  0,  0,  x2y,0,   0,   x2y,0,   
+&rarr; 0,0, 1, 0,  0,   -1,0, 0,   0,   0,  0,  0,  x2, 0,   0,   x2, 0,   
+&rarr; 0,1, 0, 0,  0,   0, y, 0,   0,   0,  0,  x2, 0,  0,   0,   0,  -x2y,
+&rarr; 0,0, 0, 0,  -x2, 0, 0, -x2, 0,   0,  x2, 0,  0,  -x2, 0,   0,  0,   
+&rarr; 0,0, 0, x2, 0,   0, 0, 0,   -x2y,-x2,0,  0,  0,  0,   -x2y,0,  0,   
+&rarr; 0,0, 0, 0,  -1,  0, 0, -1,  0,   0,  1,  0,  0,  -1,  0,   0,  0,   
+&rarr; 0,0, 0, -1, 0,   0, 0, 0,   y,   1,  0,  0,  0,  0,   y,   0,  0,   
+&rarr; 0,0, -1,0,  0,   1, 0, 0,   0,   0,  0,  0,  -x2,0,   0,   -x2,0,   
+&rarr; 0,1, 0, 0,  0,   0, y, 0,   0,   0,  0,  x2, 0,  0,   0,   0,  -x2y,
+&rarr; 0,-1,0, 0,  0,   0, -y,0,   0,   0,  0,  -x2,0,  0,   0,   0,  x2y, 
+&rarr; 0,0, y, 0,  0,   -y,0, 0,   0,   0,  0,  0,  x2y,0,   0,   x2y,0,   
+&rarr; 0,0, 0, -x2,0,   0, 0, 0,   x2y, x2, 0,  0,  0,  0,   x2y, 0,  0,   
+&rarr; 0,0, 0, 0,  -x2y,0, 0, -x2y,0,   0,  x2y,0,  0,  -x2y,0,   0,  0    
+&rarr; ////// end level 2 //////
+&rarr; // the associated matrices of the bilinear mapping 'cup' 
+&rarr; // corresponding to the kbase elements of Ext^p+q(M,P) are shown,
+&rarr; //  i.e. the rows of the final matrix are written as matrix of
+&rarr; //  a bilinear form on Ext^p x Ext^q
+&rarr; //----component 1:
+&rarr; 0,1,0,0,
+&rarr; 0,0,0,0,
+&rarr; 0,0,0,0,
+&rarr; 0,0,0,0 
+&rarr; //----component 2:
+&rarr; 0,0,-1,0,
+&rarr; 0,1,0, 0,
+&rarr; 0,0,0, 0,
+&rarr; 0,0,0, 0 
+&rarr; //----component 3:
+&rarr; 0,0,0,-1,
+&rarr; 0,0,0,0, 
+&rarr; 0,1,0,0, 
+&rarr; 0,0,0,0  
+&rarr; //----component 4:
+&rarr; 0,0,0, 0,
+&rarr; 1,0,0, 1,
+&rarr; 0,0,-1,0,
+&rarr; 0,1,0, 0 
+&rarr; ////// end level 3 //////
+show(l[1]);show(l[2]);
+&rarr; // matrix, 4x17
+&rarr; 0,1,0, 0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,-1,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, -1,0,0,0,0,0,1,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, 0, 1,0,0,1,0,0,-1,0,0,1,0,0,0 
+&rarr; // matrix, 16x4
+&rarr; 0, 0, 1, 0,  
+&rarr; 0, y, 0, 0,  
+&rarr; 1, 0, 0, 0,  
+&rarr; 0, 0, 0, y,  
+&rarr; 0, -1,0, 0,  
+&rarr; 0, 0, x2,0,  
+&rarr; 0, 0, 0, -x2,
+&rarr; 1, 0, 0, 0,  
+&rarr; 0, 0, 0, -1, 
+&rarr; -1,0, 0, 0,  
+&rarr; 0, 1, 0, 0,  
+&rarr; 0, 0, 1, 0,  
+&rarr; -1,0, 0, 0,  
+&rarr; 0, 0, 0, x2y,
+&rarr; 0, 0, x2,0,  
+&rarr; 0, -y,0, 0   
+printlevel = p;
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_551.htm#cup" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.1 cup" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_553.htm#depth" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.3 depth" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

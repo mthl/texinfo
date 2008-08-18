@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 14. Making and Preventing Breaks</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
+<meta name="keywords" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Breaks"></a>
+<a name="SEC182"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_14.html#Images" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Line-Breaks" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_14.html#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">14. Making and Preventing Breaks</h1>
+
+<p>Usually, a Texinfo file is processed both by TeX and by one of the
+Info formatting commands.  Line, paragraph, or page breaks sometimes
+occur in the &lsquo;wrong&rsquo; place in one or other form of output.  You must
+ensure that text looks right both in the printed manual and in the
+Info file.
+</p>
+<a name="IDX255"></a>
+<a name="IDX256"></a>
+<p>For example, in a printed manual, page breaks may occur awkwardly in
+the middle of an example; to prevent this, you can hold text together
+using a grouping command that keeps the text from being split across
+two pages.  Conversely, you may want to force a page break where none
+would occur normally.  Fortunately, problems like these do not often
+arise.  When they do, use the break, break prevention, or pagination
+commands.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Break-Commands">&bull; Break Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Cause and prevent splits.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Line-Breaks">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to force a single line to use two lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#g_t_002d-and-hyphenation">14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to tell TeX about hyphenation points.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#w">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                           How to prevent unwanted line breaks.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#sp">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                          How to insert blank lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#page">14.5 <code>@page</code>: Start a New Page</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to force the start of a new page.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#group">14.6 <code>@group</code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to prevent unwanted page breaks.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#need">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Another way to prevent unwanted page breaks.
+</td></tr>
+</table>
+
+
+<a name="Break-Commands"></a>
+<a name="HEAD24"></a>
+<h2 class="heading">Break Commands</h2>
+
+<p>The break commands create or allow line and paragraph breaks:
+</p>
+<dl compact="compact">
+<dt> <code>@*</code></dt>
+<dd><p>Force a line break.
+</p>
+</dd>
+<dt> <code>@sp <var>n</var></code></dt>
+<dd><p>Skip <var>n</var> blank lines.
+</p>
+</dd>
+<dt> <code>@-</code></dt>
+<dd><p>Insert a discretionary hyphen.
+</p>
+</dd>
+<dt> <code>@hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
+<dd><p>Define hyphen points in <var>hy-phen-a-ted words</var>.
+</p></dd>
+</dl>
+
+<p>The line-break-prevention command holds text together all on one
+line:
+</p>
+<dl compact="compact">
+<dt> <code>@w{<var>text</var>}</code></dt>
+<dd><p>Prevent <var>text</var> from being split and hyphenated across two lines.
+</p></dd>
+</dl>
+
+<p>The pagination commands apply only to printed output, since Info
+files do not have pages.
+</p>
+<dl compact="compact">
+<dt> <code>@page</code></dt>
+<dd><p>Start a new page in the printed manual.
+</p>
+</dd>
+<dt> <code>@group</code></dt>
+<dd><p>Hold text together that must appear on one printed page.
+</p>
+</dd>
+<dt> <code>@need <var>mils</var></code></dt>
+<dd><p>Start a new printed page if not enough space on this one.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="Line-Breaks"></a>
+<a name="SEC183"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Breaks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#g_t_002d-and-hyphenation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.1 <code>@*</code>: Generate Line Breaks</h2>
+
+<p>The <code>@*</code> command forces a line break in both the printed manual and
+in Info.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line
+ is broken
+in two places.
+</pre></td></tr></table>
+
+<p>(Note that the space after the first <code>@*</code> command is faithfully
+carried down to the next line.)
+</p>
+<p>The <code>@*</code> command is often used in a file&rsquo;s copyright page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
+and is for &hellip;
+</pre></td></tr></table>
+
+<p>In this case, the <code>@*</code> command keeps TeX from stretching the
+line across the whole page in an ugly manner.
+</p>
+<blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
+they are not needed.
+</p>
+<p>Do not write an <code>@refill</code> command at the end of a paragraph
+containing an <code>@*</code> command; it will cause the paragraph to be
+refilled after the line break occurs, negating the effect of the line
+break.
+</p></blockquote>
+
+
+<hr size="6">
+<a name="g_t_002d-and-hyphenation"></a>
+<a name="SEC184"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Line-Breaks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#w" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate</h2>
+
+
+<p>Although TeX&rsquo;s hyphenation algorithm is generally pretty good, it
+does miss useful hyphenation points from time to time.  (Or, far more
+rarely, insert an incorrect hyphenation.)  So, for documents with an
+unusual vocabulary or when fine-tuning for a printed edition, you may
+wish to help TeX out.  Texinfo supports two commands for this:
+</p>
+<dl compact="compact">
+<dt> <code>@-</code></dt>
+<dd><p>Insert a discretionary hyphen, i.e., a place where TeX can (but does
+not have to) hyphenate.  This is especially useful when you notice an
+overfull hbox is due to TeX missing a hyphenation (see section <a href="texinfo_20.html#Overfull-hboxes">Overfull &ldquo;hboxes&rdquo;</a>).  TeX will not insert any hyphenation points itself into a
+word containing <code>@-</code>.
+</p>
+</dd>
+<dt> <code>@hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
+<dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
+put a &lsquo;<samp>-</samp>&rsquo; at each hyphenation point.  For example:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@hyphenation{man-u-script man-u-scripts}
+</pre></td></tr></table>
+<p>TeX only uses the specified hyphenation points when the
+words match exactly, so give all necessary variants.
+</p></dd>
+</dl>
+
+<p>Info output is not hyphenated, so these commands have no effect there.
+</p>
+<hr size="6">
+<a name="w"></a>
+<a name="SEC185"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#g_t_002d-and-hyphenation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#sp" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</h2>
+
+<p><code>@w{<var>text</var>}</code> outputs <var>text</var> and prohibits line breaks
+within <var>text</var>.
+</p>
+<p>You can use the <code>@w</code> command to prevent TeX from automatically
+hyphenating a long name or phrase that happens to fall near the end of a
+line.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">You can copy GNU software from @w{@samp{ftp.gnu.org}}.
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<blockquote><p>You can copy GNU software from &lsquo;<samp>ftp.gnu.org</samp>&rsquo;.
+</p></blockquote>
+
+<a name="IDX257"></a>
+<a name="IDX258"></a>
+<a name="IDX259"></a>
+<p>You can also use <code>@w</code> to produce a non-breakable space:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">None of the formatters will break at this@w{ }space.
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="sp"></a>
+<a name="SEC186"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#w" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#page" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</h2>
+
+<p>A line beginning with and containing only <code>@sp <var>n</var></code>
+generates <var>n</var> blank lines of space in both the printed manual and
+the Info file.  <code>@sp</code> also forces a paragraph break.  For
+example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
+</pre></td></tr></table>
+
+<p>generates two blank lines.
+</p>
+<p>The <code>@sp</code> command is most often used in the title page.
+</p>
+
+
+<hr size="6">
+<a name="page"></a>
+<a name="SEC187"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#sp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#group" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.5 <code>@page</code>: Start a New Page</h2>
+
+<p>A line containing only <code>@page</code> starts a new page in a printed
+manual.  The command has no effect on Info files since they are not
+paginated.  An <code>@page</code> command is often used in the <code>@titlepage</code>
+section of a Texinfo file to start the copyright page.
+</p>
+
+<hr size="6">
+<a name="group"></a>
+<a name="SEC188"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#page" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#need" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.6 <code>@group</code>: Prevent Page Breaks</h2>
+
+<p>The <code>@group</code> command (on a line by itself) is used inside an
+<code>@example</code> or similar construct to begin an unsplittable vertical
+group, which will appear entirely on one page in the printed output.
+The group is terminated by a line containing only <code>@end group</code>.
+These two lines produce no output of their own, and in the Info file
+output they have no effect at all.
+</p>
+<p>Although <code>@group</code> would make sense conceptually in a wide
+variety of contexts, its current implementation works reliably only
+within <code>@example</code> and variants, and within <code>@display</code>,
+<code>@format</code>, <code>@flushleft</code> and <code>@flushright</code>.
+See section <a href="texinfo_11.html#Quotations-and-Examples">Quotations and Examples</a>.  (What all these commands have in
+common is that each line of input produces a line of output.)  In
+other contexts, <code>@group</code> can cause anomalous vertical
+spacing.
+</p>
+<p>This formatting requirement means that you should write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
+@group
+&hellip;
+@end group
+@end example
+</pre></td></tr></table>
+
+<p>with the <code>@group</code> and <code>@end group</code> commands inside the
+<code>@example</code> and <code>@end example</code> commands.
+</p>
+<p>The <code>@group</code> command is most often used to hold an example
+together on one page.  In this Texinfo manual, more than 100 examples
+contain text that is enclosed between <code>@group</code> and <code>@end
+group</code>.
+</p>
+<p>If you forget to end a group, you may get strange and unfathomable
+error messages when you run TeX.  This is because TeX keeps
+trying to put the rest of the Texinfo file onto the one page and does
+not start to generate error messages until it has processed
+considerable text.  It is a good rule of thumb to look for a missing
+<code>@end group</code> if you get incomprehensible error messages in
+TeX.
+</p>
+<hr size="6">
+<a name="need"></a>
+<a name="SEC189"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#group" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Breaks" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</h2>
+
+<p>A line containing only <code>@need <var>n</var></code> starts
+a new page in a printed manual if fewer than <var>n</var> mils (thousandths
+of an inch) remain on the current page.  Do not use
+braces around the argument <var>n</var>.  The <code>@need</code> command has no
+effect on Info files since they are not paginated.
+</p>
+<p>This paragraph is preceded by an <code>@need</code> command that tells
+TeX to start a new page if fewer than 800 mils (eight-tenths
+inch) remain on the page.  It looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@need 800
+This paragraph is preceded by &hellip;
+</pre></td></tr></table>
+
+<p>The <code>@need</code> command is useful for preventing orphans (single
+lines at the bottoms of printed pages).
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_16.html#Definition-Commands" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

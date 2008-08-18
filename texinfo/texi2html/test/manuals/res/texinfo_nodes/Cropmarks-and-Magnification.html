@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 19.14 Cropmarks and Magnification</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 19.14 Cropmarks and Magnification">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.14 Cropmarks and Magnification">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Cropmarks-and-Magnification"></a>
+<a name="SEC234"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="pagesizes.html#pagesizes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="PDF-Output.html#PDF-Output" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#Creating-and-Installing-Info-Files" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2 class="section">19.14 Cropmarks and Magnification</h2>
+<p>You can (attempt to) direct TeX to print cropmarks at the corners of
+pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</code>
+command on a line by itself between <code>@iftex</code> and <code>@end
+iftex</code> lines near the beginning of the Texinfo file, before the title
+page, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+@cropmarks
+@end iftex
+</pre></td></tr></table>
+
+<p>This command is mainly for printers that typeset several pages on one
+sheet of film; but you can attempt to use it to mark the corners of a
+book set to 7 by 9.25 inches with the <code>@smallbook</code> command.
+(Printers will not produce cropmarks for regular sized output that is
+printed on regular sized paper.)  Since different printing machines work
+in different ways, you should explore the use of this command with a
+spirit of adventure.  You may have to redefine the command in
+&lsquo;<tt>texinfo.tex</tt>&rsquo;.
+</p>
+<a name="IDX355"></a>
+<a name="IDX356"></a>
+<a name="IDX357"></a>
+<p>You can attempt to direct TeX to typeset pages larger or smaller than
+usual with the <code>\mag</code> TeX command.  Everything that is typeset
+is scaled proportionally larger or smaller.  (<code>\mag</code> stands for
+&ldquo;magnification&rdquo;.)  This is <em>not</em> a Texinfo @-command, but is a
+plain TeX command that is prefixed with a backslash.  You have to
+write this command between <code>@tex</code> and <code>@end tex</code>
+(see section <a href="Raw-Formatter-Commands.html#Raw-Formatter-Commands">Raw Formatter Commands</a>).
+</p>
+<p>Follow the <code>\mag</code> command with an &lsquo;<samp>=</samp>&rsquo; and then a number that
+is 1000 times the magnification you desire.  For example, to print pages
+at 1.2 normal size, write the following near the beginning of the
+Texinfo file, before the title page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+\mag=1200
+@end tex
+</pre></td></tr></table>
+
+<p>With some printing technologies, you can print normal-sized copies that
+look better than usual by giving a larger-than-normal master to your
+print shop.  They do the reduction, thus effectively increasing the
+resolution.
+</p>
+<p>Depending on your system, DVI files prepared with a
+nonstandard-<code>\mag</code> may not print or may print only with certain
+magnifications.  Be prepared to experiment.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="pagesizes.html#pagesizes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="PDF-Output.html#PDF-Output" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#Creating-and-Installing-Info-Files" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

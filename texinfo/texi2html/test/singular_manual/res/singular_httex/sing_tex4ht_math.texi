@@ -1,0 +1,5 @@
+\input texinfo
+@setfilename sing_tex4ht_math.info
+@c Automatically generated
+
+@bye

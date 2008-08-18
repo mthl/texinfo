@@ -1,0 +1,867 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 10. Quotations and Examples</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 10. Quotations and Examples">
+<meta name="keywords" content="GNU Texinfo 4.2: 10. Quotations and Examples">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Quotations-and-Examples"></a>
+<a name="SEC120"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_10.html#Fonts" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Block-Enclosing-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_10.html#Marking-Text" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">10. Quotations and Examples</h1>
+
+<p>Quotations and examples are blocks of text consisting of one or more
+whole paragraphs that are set off from the bulk of the text and
+treated differently.  They are usually indented.
+</p>
+<p>In Texinfo, you always begin a quotation or example by writing an
+@-command at the beginning of a line by itself, and end it by writing
+an <code>@end</code> command that is also at the beginning of a line by
+itself.  For instance, you begin an example by writing <code>@example</code>
+by itself at the beginning of a line and end the example by writing
+<code>@end example</code> on a line by itself, at the beginning of that
+line.
+<a name="IDX132"></a>
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Block-Enclosing-Commands">10.1 Block Enclosing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Different constructs for different purposes.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#quotation">10.2 <code>@quotation</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Writing a quotation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#example">10.3 <code>@example</code>: Example Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Writing an example in a fixed-width font.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#verbatim">10.4 <code>@verbatim</code>: Literal Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Writing a verbatim example.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#verbatiminclude">10.5 <code>@verbatiminclude</code> <var>file</var>: Include a File Verbatim</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Including a file verbatim.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#lisp">10.6 <code>@lisp</code>: Marking a Lisp Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Illustrating Lisp code.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#small">10.7 <code>@small&hellip;</code> Block Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Forms for <code>@smallbook</code>.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#display">10.8 <code>@display</code> and <code>@smalldisplay</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Writing an example in the current font.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#format">10.9 <code>@format</code> and <code>@smallformat</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Writing an example without narrowed margins.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#exdent">10.10 <code>@exdent</code>: Undoing a Line&rsquo;s Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Undo indentation on a line.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#flushleft-_0026-flushright">10.11 <code>@flushleft</code> and <code>@flushright</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Pushing text flush left or flush right.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#noindent">10.12 <code>@noindent</code>: Omitting Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Preventing paragraph indentation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#cartouche">10.13 <code>@cartouche</code>: Rounded Rectangles Around Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Drawing rounded rectangles around examples.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="Block-Enclosing-Commands"></a>
+<a name="SEC121"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#quotation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.1 Block Enclosing Commands</h2>
+
+<p>Here are commands for quotations and examples, explained further in the
+following sections:
+</p>
+<dl compact="compact">
+<dt> <code>@quotation</code></dt>
+<dd><p>Indicate text that is quoted. The text is filled, indented, and
+printed in a roman font by default.
+</p>
+</dd>
+<dt> <code>@example</code></dt>
+<dd><p>Illustrate code, commands, and the like. The text is printed
+in a fixed-width font, and indented but not filled.
+</p>
+</dd>
+<dt> <code>@verbatim</code></dt>
+<dd><p>Mark a piece of text that is to be printed verbatim; no character 
+substitutions are made and all commands are ignored, until the next
+<code>@end verbatim</code>.  The text is printed in a fixed-width font, 
+and not indented or filled.  Extra spaces and blank lines are 
+significant, and tabs are expanded.
+</p>
+</dd>
+<dt> <code>@smallexample</code></dt>
+<dd><p>Same as <code>@example</code>, except that in TeX this command typesets
+text in a smaller font.
+</p>
+</dd>
+<dt> <code>@lisp</code></dt>
+<dd><p>Like <code>@example</code>, but specifically for illustrating Lisp code. The
+text is printed in a fixed-width font, and indented but not filled.
+</p>
+</dd>
+<dt> <code>@smalllisp</code></dt>
+<dd><p>Is to <code>@lisp</code> as <code>@smallexample</code> is to <code>@example</code>.
+</p>
+</dd>
+<dt> <code>@display</code></dt>
+<dd><p>Display illustrative text.  The text is indented but not filled, and
+no font is selected (so, by default, the font is roman).
+</p>
+</dd>
+<dt> <code>@smalldisplay</code></dt>
+<dd><p>Is to <code>@display</code> as <code>@smallexample</code> is to <code>@example</code>.
+</p>
+</dd>
+<dt> <code>@format</code></dt>
+<dd><p>Like <code>@display</code> (the text is not filled and no font is selected),
+but the text is not indented.
+</p>
+</dd>
+<dt> <code>@smallformat</code></dt>
+<dd><p>Is to <code>@format</code> as <code>@smallexample</code> is to <code>@example</code>.
+</p></dd>
+</dl>
+
+<p>The <code>@exdent</code> command is used within the above constructs to
+undo the indentation of a line.
+</p>
+<p>The <code>@flushleft</code> and <code>@flushright</code> commands are used to line
+up the left or right margins of unfilled text.
+</p>
+<p>The <code>@noindent</code> command may be used after one of the above
+constructs to prevent the following text from being indented as a new
+paragraph.
+</p>
+<p>You can use the <code>@cartouche</code> command within one of the above
+constructs to highlight the example or quotation by drawing a box with
+rounded corners around it.  See section <a href="#cartouche">Drawing Cartouches Around Examples</a>.
+</p>
+
+<hr size="6">
+<a name="quotation"></a>
+<a name="SEC122"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Block-Enclosing-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#example" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.2 <code>@quotation</code></h2>
+
+<p>The text of a quotation is processed normally except that:
+</p>
+<ul>
+<li>
+the margins are closer to the center of the page, so the whole of the
+quotation is indented;
+
+</li><li>
+the first lines of paragraphs are indented no more than other
+lines;
+
+</li><li>
+in the printed output, interparagraph spacing is reduced.
+</li></ul>
+
+<blockquote><p>This is an example of text written between an <code>@quotation</code>
+command and an <code>@end quotation</code> command.  An <code>@quotation</code>
+command is most often used to indicate text that is excerpted from
+another (real or hypothetical) printed work.
+</p></blockquote>
+
+<p>Write an <code>@quotation</code> command as text on a line by itself.  This
+line will disappear from the output.  Mark the end of the quotation
+with a line beginning with and containing only <code>@end quotation</code>.
+The <code>@end quotation</code> line will likewise disappear from the
+output.  Thus, the following,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@quotation
+This is
+a foo.
+@end quotation
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<blockquote><p>This is a foo.
+</p></blockquote>
+
+
+<hr size="6">
+<a name="example"></a>
+<a name="SEC123"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#quotation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#verbatim" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.3 <code>@example</code>: Example Text</h2>
+
+<p>The <code>@example</code> command is used to indicate an example that is
+not part of the running text, such as computer input or output.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is an example of text written between an
+<code>@example</code> command
+and an <code>@end example</code> command.
+The text is indented but not filled.
+</pre><pre class="example">
+</pre><pre class="example">In the printed manual, the text is typeset in a
+fixed-width font, and extra spaces and blank lines are
+significant.  In the Info file, an analogous result is
+obtained by indenting each line with five spaces.
+</pre></td></tr></table>
+
+<p>Write an <code>@example</code> command at the beginning of a line by itself.
+Mark the end of the example
+with an <code>@end example</code> command, also written at the beginning of a
+line by itself.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
+mv foo bar
+@end example
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">mv foo bar
+</pre></td></tr></table>
+
+<p>The lines containing <code>@example</code> and <code>@end example</code>
+will disappear from the output.
+To make the output look good,
+you should put a blank line before the
+<code>@example</code> and another blank line after the <code>@end example</code>.
+Note that blank lines inside the beginning
+<code>@example</code> and the ending <code>@end example</code> will appear in
+the output.
+</p>
+<blockquote><p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
+else in Texinfo (except in verbatim environments)!  The TeX
+implementation of Texinfo treats tabs as single spaces, and that is not
+what they look like.  (If necessary, in Emacs, you can use <kbd>M-x
+untabify</kbd> to convert tabs in a region to multiple spaces.)
+</p></blockquote>
+
+<p>Examples are often, logically speaking, &ldquo;in the middle&rdquo; of a
+paragraph, and the text that continues after an example should not be
+indented.  The <code>@noindent</code> command prevents a piece of text from
+being indented as if it were a new paragraph.
+(See section <a href="#noindent"><code>@noindent</code>: Omitting Indentation</a>.)
+</p>
+<p>(The <code>@code</code> command is used for examples of code that are
+embedded within sentences, not set off from preceding and following
+text.  See section <a href="texinfo_10.html#code"><code>@code</code></a>.)
+</p>
+
+<hr size="6">
+<a name="verbatim"></a>
+<a name="SEC124"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#verbatiminclude" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.4 <code>@verbatim</code>: Literal Text</h2>
+
+<p>Use the <code>@verbatim</code> environment for printing of text that may
+contain special characters or commands that should not be interpreted,
+such as computer input or output (<code>@example</code> interprets its text
+as regular Texinfo commands).  This is especially useful for including
+automatically generated output in a Texinfo manual.  Here is an example;
+the output you see is just the same as the input, with a line
+<code>@verbatim</code> before and a line <code>@end verbatim</code> after.
+</p>
+<pre class="verbatim">This is an example of text written in a @verbatim
+block.  No character substitutions are made.  All commands
+are ignored, until `&lt;at&gt;end verbatim'.
+
+In the printed manual, the text is typeset in a
+fixed-width font, and not indented or filled.  All
+spaces and blank lines are significant, including tabs.
+</pre>
+<p>Write a <code>@verbatim</code> command at the beginning of a line by itself.
+This line will disappear from the output.  Mark the end of the verbatim
+block with a <code>@end verbatim</code> command, also written at the
+beginning of a line by itself.  The <code>@end verbatim</code> will also
+disappear from the output.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@verbatim
+{
+&lt;tab&gt;@command with strange characters: @'e 
+expand&lt;tab&gt;me
+}
+@end verbatim
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<pre class="verbatim">{
+	@command with strange characters: @'e 
+expand	me
+}
+</pre>
+<p>Since the lines containing <code>@verbatim</code> and <code>@end verbatim</code>
+produce no output, tyically you should put a blank line before the
+<code>@verbatim</code> and another blank line after the <code>@end
+verbatim</code>.  Blank lines between the beginning <code>@verbatim</code> and the
+ending <code>@end verbatim</code> will appear in the output.
+</p>
+
+<hr size="6">
+<a name="verbatiminclude"></a>
+<a name="SEC125"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#verbatim" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#lisp" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.5 <code>@verbatiminclude</code> <var>file</var>: Include a File Verbatim</h2>
+
+<p>You can include the exact contents of a file in the document with the
+<code>@verbatiminclude</code> command:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@verbatiminclude <var>filename</var>
+</pre></td></tr></table>
+
+<p>The contents of <var>filename</var> is printed in a verbatim environment
+(see section <a href="#verbatim"><code>@verbatim</code></a>).  Generally, the file is printed
+exactly as it is, with all special characters and white space retained.
+</p>
+
+<hr size="6">
+<a name="lisp"></a>
+<a name="SEC126"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#verbatiminclude" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#small" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.6 <code>@lisp</code>: Marking a Lisp Example</h2>
+
+<p>The <code>@lisp</code> command is used for Lisp code.  It is synonymous
+with the <code>@example</code> command.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">This is an example of text written between an
+<code>@lisp</code> command and an <code>@end lisp</code> command.
+</pre></td></tr></table>
+
+<p>Use <code>@lisp</code> instead of <code>@example</code> to preserve information
+regarding the nature of the example.  This is useful, for example, if
+you write a function that evaluates only and all the Lisp code in a
+Texinfo file.  Then you can use the Texinfo file as a Lisp
+library.<a name="DOCF7" href="texinfo_fot.html#FOOT7">(7)</a>
+</p>
+<p>Mark the end of <code>@lisp</code> with <code>@end lisp</code> on a line by
+itself.
+</p>
+
+<hr size="6">
+<a name="small"></a>
+<a name="SEC127"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#lisp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.7 <code>@small&hellip;</code> Block Commands</h2>
+
+<p>In addition to the regular <code>@example</code> and <code>@lisp</code> commands,
+Texinfo has &ldquo;small&rdquo; example-style commands.  These are
+<code>@smalldisplay</code>, <code>@smallexample</code>, <code>@smallformat</code>, and
+<code>@smalllisp</code>.
+</p>
+<p>In TeX, the <code>@small&hellip;</code> commands typeset text in a smaller
+font than the non-small example commands.  Consequently, many examples
+containing long lines fit on a page without needing to be shortened.
+</p>
+<p>In Info, the <code>@small&hellip;</code> commands are equivalent to their
+non-small companion commands.
+</p>
+<p>Mark the end of an <code>@small&hellip;</code> block with a corresponding
+<code>@end small&hellip;</code>.  For example, pair <code>@smallexample</code> with
+<code>@end smallexample</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">This is an example of text written between <code>@smallexample</code> and
+<code>@end smallexample</code>.  In Info this text appears in its normal size;
+but in a 7 by 9.25 inch manual, this text appears in a smaller font.
+</pre></td></tr></table>
+
+<p>The <code>@small&hellip;</code> commands make it easier to prepare manuals
+without forcing you to edit examples by hand to fit them onto narrower
+pages.
+</p>
+<p>As a general rule, a printed document looks better if you use only one
+of (for example) <code>@example</code> or in <code>@smallexample</code>
+consistently within a chapter.  Only occasionally should you mix the two
+formats.
+</p>
+<p>See section <a href="texinfo_20.html#smallbook">Printing &ldquo;Small&rdquo; Books</a>, for more information
+about the <code>@smallbook</code> command.
+</p>
+
+<hr size="6">
+<a name="display"></a>
+<a name="SEC128"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#small" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#format" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.8 <code>@display</code> and <code>@smalldisplay</code></h2>
+
+<p>The <code>@display</code> command begins a kind of example.  It is like the
+<code>@example</code> command
+except that, in
+a printed manual, <code>@display</code> does not select the fixed-width
+font.  In fact, it does not specify the font at all, so that the text
+appears in the same font it would have appeared in without the
+<code>@display</code> command.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="display">This is an example of text written between an <code>@display</code> command
+and an <code>@end display</code> command.  The <code>@display</code> command
+indents the text, but does not fill it.
+</pre></td></tr></table>
+
+<a name="IDX133"></a>
+<p>Texinfo also provides a command <code>@smalldisplay</code>, which is like
+<code>@display</code> but uses a smaller font in <code>@smallbook</code> format.
+See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
+</p>
+
+<hr size="6">
+<a name="format"></a>
+<a name="SEC129"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#display" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#exdent" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.9 <code>@format</code> and <code>@smallformat</code></h2>
+
+<p>The <code>@format</code> command is similar to <code>@example</code> except
+that, in the printed manual, <code>@format</code> does not select the
+fixed-width font and does not narrow the margins.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="format">This is an example of text written between an <code>@format</code> command
+and an <code>@end format</code> command.  As you can see
+from this example,
+the <code>@format</code> command does not fill the text.
+</pre></td></tr></table>
+
+<a name="IDX134"></a>
+<p>Texinfo also provides a command <code>@smallformat</code>, which is like
+<code>@format</code> but uses a smaller font in <code>@smallbook</code> format.
+See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
+</p>
+
+
+<hr size="6">
+<a name="exdent"></a>
+<a name="SEC130"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#format" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#flushleft-_0026-flushright" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.10 <code>@exdent</code>: Undoing a Line&rsquo;s Indentation</h2>
+
+<p>The <code>@exdent</code> command removes any indentation a line might have.
+The command is written at the beginning of a line and applies only to
+the text that follows the command that is on the same line.  Do not use
+braces around the text.  In a printed manual, the text on an
+<code>@exdent</code> line is printed in the roman font.
+</p>
+<p><code>@exdent</code> is usually used within examples.  Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
+This line follows an @@example command.
+@exdent This line is exdented.
+This line follows the exdented line.
+The @@end example comes on the next line.
+@end group
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line follows an @example command.
+This line is exdented.
+This line follows the exdented line.
+The @end example comes on the next line.
+</pre></td></tr></table>
+
+<p>In practice, the <code>@exdent</code> command is rarely used.
+Usually, you un-indent text by ending the example and
+returning the page to its normal width.
+</p>
+
+<hr size="6">
+<a name="flushleft-_0026-flushright"></a>
+<a name="SEC131"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#exdent" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#noindent" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.11 <code>@flushleft</code> and <code>@flushright</code></h2>
+
+<p>The <code>@flushleft</code> and <code>@flushright</code> commands line up the
+ends of lines on the left and right margins of a page,
+but do not fill the text.  The commands are written on lines of their
+own, without braces.  The <code>@flushleft</code> and <code>@flushright</code>
+commands are ended by <code>@end flushleft</code> and <code>@end
+flushright</code> commands on lines of their own.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@flushleft
+This text is
+written flushleft.
+@end flushleft
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<blockquote><p align="left">This text is
+written flushleft.
+</p></blockquote>
+
+
+<p><code>@flushright</code> produces the type of indentation often used in the
+return address of letters.  For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@flushright
+Here is an example of text written
+flushright.  The @code{@flushright} command
+right justifies every line but leaves the
+left end ragged.
+@end flushright
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<p align="right">Here is an example of text written
+flushright.  The <code>@flushright</code> command
+right justifies every line but leaves the
+left end ragged.
+</p>
+
+<hr size="6">
+<a name="noindent"></a>
+<a name="SEC132"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#flushleft-_0026-flushright" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#cartouche" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.12 <code>@noindent</code>: Omitting Indentation</h2>
+
+<p>An example or other inclusion can break a paragraph into segments.
+Ordinarily, the formatters indent text that follows an example as a new
+paragraph.  However, you can prevent this by writing <code>@noindent</code>
+at the beginning of a line by itself preceding the continuation
+text.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
+This is an example
+@end example
+
+@noindent
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+@code{@@display} and @code{@@end display}.)
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><pre class="example">This is an example
+</pre></td></tr></table>
+<pre class="display">
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+<code>@display</code> and <code>@end display</code>.)
+</pre></td></tr></table>
+
+<p>To adjust the number of blank lines properly in the Info file output,
+remember that the line containing <code>@noindent</code> does not generate a
+blank line, and neither does the <code>@end example</code> line.
+</p>
+<p>In the Texinfo source file for this manual, each line that says
+&lsquo;produces&rsquo; is preceded by a line containing <code>@noindent</code>.
+</p>
+<p>Do not put braces after an <code>@noindent</code> command; they are not
+necessary, since <code>@noindent</code> is a command used outside of
+paragraphs (see section <a href="texinfo_29.html#Command-Syntax">@-Command Syntax</a>).
+</p>
+
+<hr size="6">
+<a name="cartouche"></a>
+<a name="SEC133"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#noindent" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.13 <code>@cartouche</code>: Rounded Rectangles Around Examples</h2>
+
+<p>In a printed manual, the <code>@cartouche</code> command draws a box with
+rounded corners around its contents.  You can use this command to
+further highlight an example or quotation.  For instance, you could
+write a manual in which one type of example is surrounded by a cartouche
+for emphasis.
+</p>
+<p><code>@cartouche</code> affects only the printed manual; it has no effect in
+other output files.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
+@cartouche
+% pwd
+/usr/local/share/emacs
+@end cartouche
+@end example
+</pre></td></tr></table>
+
+<p>surrounds the two-line example with a box with rounded corners, in the
+printed manual.
+</p>
+
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Quotations-and-Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_12.html#Lists-and-Tables" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

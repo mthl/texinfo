@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.9.1.5 extcurve</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.9.1.5 extcurve">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.5 extcurve">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="extcurve"></a>
+<a name="SEC900"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_899.htm#Weierstrass" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.4 Weierstrass" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fL" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.6 AGcode_L" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.9.1.5 extcurve</h4>
+<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_895.htm#brnoeth_005flib">brnoeth_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>extcurve( d, CURVE ); d an integer, CURVE a list
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>list L which is the update of the list CURVE with additional entries
+   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][3]: ring (p,a),(x,y),lp (affine),
+   L[1][4]: ring (p,a),(x,y,z),lp (projective),
+   L[1][5]: ring (p,a),(x,y,t),ls (local),
+   L[2][3]: int  (the number of rational places),
+   </pre></td></tr></table>
+<p>the rings being defined over a field extension of degree d. <br>
+If d&lt;2 then <code>extcurve(d,CURVE);</code> creates a list L which
+is the update of the list CURVE with additional entries
+   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][5]: ring p,(x,y,t),ls,
+   L[2][3]: int  (the number of computed places over the base field).
+   </pre></td></tr></table>
+<p>In both cases, in the ring L[1][5] lists with the data for all the
+computed rational places (after a field extension of degree d) are
+created (see <a href="sing_896.htm#Adj_005fdiv">Adj_div</a>):
+   </p><table><tr><td>&nbsp;</td><td><pre class="format">   lists POINTS, LOC_EQS, BRANCHES, PARAMETRIZATIONS.
+   </pre></td></tr></table>
+
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>The list CURVE should be the output of <code>NSplaces</code>,
+and must contain (at least) one place of degree d. <br>
+You actually need all the places with degree dividing d.
+Otherwise, not all the places are computed, but only part of them. <br>
+This procedure must be executed before constructing AG codes,
+even if no extension is needed. The ring L[1][4] must be active
+when constructing codes over the field extension.<br>
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+int plevel=printlevel;
+printlevel=-1;
+ring s=2,(x,y),lp;
+list C=Adj_div(x5+y2+y);
+&rarr; The genus of the curve is 2
+C=NSplaces(1..4,C);
+// since we have all points up to degree 4, we can extend the curve
+// to that extension, in order to get rational points over F_16;
+C=extcurve(4,C);
+&rarr; Total number of rational places : NrRatPl = 33
+// e.g., display the basepoint of place no. 32:
+def R=C[1][5];
+setring R;
+POINTS[32];
+&rarr; [1]:
+&rarr;    (a3+a2+a+1)
+&rarr; [2]:
+&rarr;    (a2+a)
+&rarr; [3]:
+&rarr;    1
+printlevel=plevel;
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_901.htm#AGcode_005fL">AGcode_L</a>;
+<a href="sing_902.htm#AGcode_005fOmega">AGcode_Omega</a>;
+<a href="sing_896.htm#Adj_005fdiv">Adj_div</a>;
+<a href="sing_897.htm#NSplaces">NSplaces</a>;
+<a href="sing_905.htm#closed_005fpoints">closed_points</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_899.htm#Weierstrass" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.4 Weierstrass" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fL" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.6 AGcode_L" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -2270,7 +2270,88 @@ INSTALL_STRIP_PROGRAM="\$(install_sh) -c -s"
 
 AMTAR=${AMTAR-"${am_missing_run}tar"}
 
-am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
+
+{ $as_echo "$as_me:$LINENO: checking how to create a pax tar archive" >&5
+$as_echo_n "checking how to create a pax tar archive... " >&6; }
+# Loop over all known methods to create a tar archive until one works.
+_am_tools='gnutar  pax cpio none'
+_am_tools=${am_cv_prog_tar_pax-$_am_tools}
+# Do not fold the above two line into one, because Tru64 sh and
+# Solaris sh will not grok spaces in the rhs of `-'.
+for _am_tool in $_am_tools
+do
+  case $_am_tool in
+  gnutar)
+    for _am_tar in tar gnutar gtar;
+    do
+      { echo "$as_me:$LINENO: $_am_tar --version" >&5
+   ($_am_tar --version) >&5 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); } && break
+    done
+    am__tar="$_am_tar --format=posix -chf - "'"$$tardir"'
+    am__tar_="$_am_tar --format=posix -chf - "'"$tardir"'
+    am__untar="$_am_tar -xf -"
+    ;;
+  plaintar)
+    # Must skip GNU tar: if it does not support --format= it doesn't create
+    # ustar tarball either.
+    (tar --version) >/dev/null 2>&1 && continue
+    am__tar='tar chf - "$$tardir"'
+    am__tar_='tar chf - "$tardir"'
+    am__untar='tar xf -'
+    ;;
+  pax)
+    am__tar='pax -L -x pax -w "$$tardir"'
+    am__tar_='pax -L -x pax -w "$tardir"'
+    am__untar='pax -r'
+    ;;
+  cpio)
+    am__tar='find "$$tardir" -print | cpio -o -H pax -L'
+    am__tar_='find "$tardir" -print | cpio -o -H pax -L'
+    am__untar='cpio -i -H pax -d'
+    ;;
+  none)
+    am__tar=false
+    am__tar_=false
+    am__untar=false
+    ;;
+  esac
+
+  # If the value was cached, stop now.  We just wanted to have am__tar
+  # and am__untar set.
+  test -n "${am_cv_prog_tar_pax}" && break
+
+  # tar/untar a dummy directory, and stop if the command works
+  rm -rf conftest.dir
+  mkdir conftest.dir
+  echo GrepMe > conftest.dir/file
+  { echo "$as_me:$LINENO: tardir=conftest.dir && eval $am__tar_ >conftest.tar" >&5
+   (tardir=conftest.dir && eval $am__tar_ >conftest.tar) >&5 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }
+  rm -rf conftest.dir
+  if test -s conftest.tar; then
+    { echo "$as_me:$LINENO: $am__untar <conftest.tar" >&5
+   ($am__untar <conftest.tar) >&5 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }
+    grep GrepMe conftest.dir/file >/dev/null 2>&1 && break
+  fi
+done
+rm -rf conftest.dir
+
+if test "${am_cv_prog_tar_pax+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+  am_cv_prog_tar_pax=$_am_tool
+fi
+
+{ $as_echo "$as_me:$LINENO: result: $am_cv_prog_tar_pax" >&5
+$as_echo "$am_cv_prog_tar_pax" >&6; }
 
 
 
@@ -2617,7 +2698,7 @@ ac_config_files="$ac_config_files check_texinfo.pl"
 ac_config_files="$ac_config_files manage_i18n.pl"
 
 
-ac_config_files="$ac_config_files Makefile Tests/Makefile doc/Makefile"
+ac_config_files="$ac_config_files Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile doc/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3097,7 +3178,7 @@ _ACEOF
 
 cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
 # Files that config.status was made for.
-config_files="$ac_config_files"
+config_files="`echo $ac_config_files`"
 
 _ACEOF
 
@@ -3235,6 +3316,26 @@ do
     "manage_i18n.pl") CONFIG_FILES="$CONFIG_FILES manage_i18n.pl" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "Tests/Makefile") CONFIG_FILES="$CONFIG_FILES Tests/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
+    "test/contents/Makefile") CONFIG_FILES="$CONFIG_FILES test/contents/Makefile" ;;
+    "test/coverage/Makefile") CONFIG_FILES="$CONFIG_FILES test/coverage/Makefile" ;;
+    "test/formatting/Makefile") CONFIG_FILES="$CONFIG_FILES test/formatting/Makefile" ;;
+    "test/indices/Makefile") CONFIG_FILES="$CONFIG_FILES test/indices/Makefile" ;;
+    "test/invalid/Makefile") CONFIG_FILES="$CONFIG_FILES test/invalid/Makefile" ;;
+    "test/misc/Makefile") CONFIG_FILES="$CONFIG_FILES test/misc/Makefile" ;;
+    "test/encodings/Makefile") CONFIG_FILES="$CONFIG_FILES test/encodings/Makefile" ;;
+    "test/macros/Makefile") CONFIG_FILES="$CONFIG_FILES test/macros/Makefile" ;;
+    "test/manuals/Makefile") CONFIG_FILES="$CONFIG_FILES test/manuals/Makefile" ;;
+    "test/nested_formats/Makefile") CONFIG_FILES="$CONFIG_FILES test/nested_formats/Makefile" ;;
+    "test/sectionning/Makefile") CONFIG_FILES="$CONFIG_FILES test/sectionning/Makefile" ;;
+    "test/htmlxref/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref/Makefile" ;;
+    "test/htmlxref-only_mono/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref-only_mono/Makefile" ;;
+    "test/htmlxref-only_split/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref-only_split/Makefile" ;;
+    "test/xemacs_manual/Makefile") CONFIG_FILES="$CONFIG_FILES test/xemacs_manual/Makefile" ;;
+    "test/texi2html_manual/Makefile") CONFIG_FILES="$CONFIG_FILES test/texi2html_manual/Makefile" ;;
+    "test/tar_manual/Makefile") CONFIG_FILES="$CONFIG_FILES test/tar_manual/Makefile" ;;
+    "test/singular_manual/Makefile") CONFIG_FILES="$CONFIG_FILES test/singular_manual/Makefile" ;;
+    "test/layout/Makefile") CONFIG_FILES="$CONFIG_FILES test/layout/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5

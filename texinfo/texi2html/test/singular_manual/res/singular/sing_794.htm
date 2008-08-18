@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.6.3 rinvar_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.6.3 rinvar_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3 rinvar_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="rinvar_005flib"></a>
+<a name="SEC794"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_793.htm#sortier" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.8 sortier" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_795.htm#HilbertSeries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.1 HilbertSeries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">D.6.3 rinvar_lib</h3>
+<dl compact="compact">
+<dt> <strong>Library:</strong></dt>
+<dd><p>rinvar.lib
+</p></dd>
+<dt> <strong>Purpose:</strong></dt>
+<dd><p>      Invariant Rings of Reductive Groups
+</p></dd>
+<dt> <strong>Author:</strong></dt>
+<dd><p>Thomas Bayer, tbayer@in.tum.de
+<br>http://wwwmayr.informatik.tu-muenchen.de/personen/bayert/
+Current Adress: Institut fuer Informatik, TU Muenchen
+</p>
+</dd>
+<dt> <strong>Overview:</strong></dt>
+<dd><p>Implementation based on Derksen&rsquo;s algorithm. Written in the frame of the
+diploma thesis (advisor: Prof. Gert-Martin Greuel) &rsquo;Computations of moduli
+spaces of semiquasihomogeneous singularities and an implementation in Singular&rsquo;
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_795.htm#HilbertSeries">D.6.3.1 HilbertSeries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hilbert series of the ideal I w.r.t. weight w
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_796.htm#HilbertWeights">D.6.3.2 HilbertWeights</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> weighted degrees of the generators of I
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_797.htm#ImageVariety">D.6.3.3 ImageVariety</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ideal of the image variety F(variety(I))
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_798.htm#ImageGroup">D.6.3.4 ImageGroup</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ideal of G w.r.t. the induced representation
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_799.htm#InvariantRing">D.6.3.5 InvariantRing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> generators of the invariant ring of G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_800.htm#InvariantQ">D.6.3.6 InvariantQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> decide if f is invariant w.r.t. G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_801.htm#LinearizeAction">D.6.3.7 LinearizeAction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> linearization of the action &rsquo;Gaction&rsquo; of G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_802.htm#LinearActionQ">D.6.3.8 LinearActionQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> decide if action is linear in var(s..nvars)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_803.htm#LinearCombinationQ">D.6.3.9 LinearCombinationQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> decide if f is in the linear hull of &rsquo;base&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_804.htm#MinimalDecomposition">D.6.3.10 MinimalDecomposition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> minimal decomposition of f (like coef)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_805.htm#NullCone">D.6.3.11 NullCone</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ideal of the null cone of the action &rsquo;act&rsquo; of G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_806.htm#ReynoldsImage">D.6.3.12 ReynoldsImage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> image of f under the Reynolds operator &rsquo;RO&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_807.htm#ReynoldsOperator">D.6.3.13 ReynoldsOperator</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Reynolds operator of the group G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_808.htm#SimplifyIdeal">D.6.3.14 SimplifyIdeal</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> simplify the ideal I (try to reduce variables)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_809.htm#TransferIdeal">D.6.3.15 TransferIdeal</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> transfer the ideal &rsquo;name&rsquo; from R to basering
+</td></tr>
+</table></blockquote>
+<p><strong>See also:</strong>
+<a href="sing_710.htm#qhmoduli_005flib">qhmoduli_lib</a>;
+<a href="sing_852.htm#zeroset_005flib">zeroset_lib</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_793.htm#sortier" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.8 sortier" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_795.htm#HilbertSeries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.1 HilbertSeries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

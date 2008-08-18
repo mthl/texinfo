@@ -1,0 +1,1700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3. Beginning a Texinfo File</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3. Beginning a Texinfo File">
+<meta name="keywords" content="GNU Texinfo 4.2: 3. Beginning a Texinfo File">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Beginning-a-File"></a>
+<a name="SEC24"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_3.html#Texinfo-Mode-Summary" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sample-Beginning" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_3.html#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">3. Beginning a Texinfo File</h1>
+
+<p>Certain pieces of information must be provided at the beginning of a
+Texinfo file, such as the name for the output file(s), the title of the
+document, and the Top node.
+</p>
+<p>This chapter expands on the minimal complete Texinfo source file
+previously given (see section <a href="texinfo_2.html#Six-Parts">Six Parts of a Texinfo File</a>).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Sample-Beginning">3.1 Sample Texinfo File Beginning</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            A sample beginning for a Texinfo file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Texinfo-File-Header">3.2 Texinfo File Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         The first lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Document-Permissions">3.3 Document Permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Ensuring your manual is free.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Titlepage-_0026-Copyright-Page">3.4 Title and Copyright Pages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Creating the title and copyright pages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#The-Top-Node">3.5 The &lsquo;Top&rsquo; Node and Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Creating the &lsquo;Top&rsquo; node and master menu.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Global-Document-Commands">3.6 Global Document Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Affecting formatting throughout.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Software-Copying-Permissions">3.7 Software Copying Permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Ensure that you and others continue to
+                                    have the right to use and share software.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="Sample-Beginning"></a>
+<a name="SEC25"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Beginning-a-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.1 Sample Texinfo File Beginning</h2>
+
+
+<p>The following sample shows what is needed.  The elements given here are
+explained in more detail in the following sections.  Other commands are
+often included at the beginning of Texinfo files, but the ones here are
+the most critical.
+</p>
+<p>See section <a href="texinfo_24.html#GNU-Sample-Texts">GNU Sample Texts</a>, for the full texts to be used in GNU manuals.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename <var>infoname</var>.info
+@settitle <var>name-of-manual</var> <var>version</var>
+@c %**end of header
+
+@copying
+This manual is for <var>program</var>, version <var>version</var>.
+
+Copyright @copyright{} <var>years</var> <var>copyright-owner</var>.
+
+</pre><pre class="example">@quotation
+Permission is granted to &hellip;
+@end quotation
+@end copying
+</pre><pre class="example">
+</pre><pre class="example">@titlepage
+@title <var>name-of-manual-when-printed</var>
+@subtitle <var>subtitle-if-any</var>
+@subtitle <var>second-subtitle</var>
+@author <var>author</var>
+</pre><pre class="example">
+</pre><pre class="example">@c  The following two commands
+@c  start the copyright page.
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+</pre><pre class="example">
+Published by &hellip;
+@end titlepage
+
+@c So the toc is printed in the right place.
+@contents
+
+@ifnottex
+@node Top
+@top <var>title</var>
+
+@insertcopying
+@end ifnottex
+
+</pre><pre class="example">@menu
+* First Chapter::    Getting started &hellip;
+* Second Chapter::          &hellip;
+  &hellip;
+* Copying::          Your rights and freedoms.
+@end menu
+</pre><pre class="example">
+</pre><pre class="example">@node First Chapter
+@chapter First Chapter
+
+@cindex first chapter
+@cindex chapter, first
+&hellip;
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="Texinfo-File-Header"></a>
+<a name="SEC26"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Sample-Beginning" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#First-Line" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.2 Texinfo File Header</h2>
+
+<p>Texinfo files start with at least three lines that provide Info and
+TeX with necessary information.  These are the <code>\input texinfo</code>
+line, the <code>@settitle</code> line, and the <code>@setfilename</code> line.
+</p>
+<p>Also, if you want to format just part of the Texinfo file, you must
+write the <code>@settitle</code> and <code>@setfilename</code> lines between
+start-of-header and end-of-header lines.  The start- and end-of-header
+lines are optional, but they do no harm, so you might as well always
+include them.
+</p>
+<p>Any command that affects document formatting as a whole makes sense to
+include in the header.  <code>@synindex</code> (see section <a href="texinfo_13.html#synindex"><code>@synindex</code></a>), for
+instance, is another command often included in the header.  See section <a href="texinfo_24.html#GNU-Sample-Texts">GNU Sample Texts</a>, for complete sample texts.
+</p>
+<p>Thus, the beginning of a Texinfo file generally looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample.info
+@settitle Sample Manual 1.0
+@c %**end of header
+</pre></td></tr></table>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#First-Line">3.2.1 The First Line of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The first line of a Texinfo file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Start-of-Header">3.2.2 Start of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Formatting a region requires this.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#setfilename">3.2.3 <code>@setfilename</code>: Set the output file name</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Tell Info the name of the Info file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#settitle">3.2.4 <code>@settitle</code>: Set the document title</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Create a title for the printed work.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#End-of-Header">3.2.5 End of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Formatting a region requires this.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="First-Line"></a>
+<a name="SEC27"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Start-of-Header" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.1 The First Line of a Texinfo File</h3>
+
+<p>Every Texinfo file that is to be the top-level input to TeX must begin
+with a line that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+</pre></td></tr></table>
+
+<p>This line serves two functions:
+</p>
+<ol>
+<li>
+When the file is processed by TeX, the &lsquo;<samp>\input texinfo</samp>&rsquo; command
+tells TeX to load the macros needed for processing a Texinfo file.
+These are in a file called &lsquo;<tt>texinfo.tex</tt>&rsquo;, which should have been
+installed on your system along with either the TeX or Texinfo
+software.  TeX uses the backslash, &lsquo;<samp>\</samp>&rsquo;, to mark the beginning of
+a command, exactly as Texinfo uses &lsquo;<samp>@</samp>&rsquo;.  The &lsquo;<tt>texinfo.tex</tt>&rsquo;
+file causes the switch from &lsquo;<samp>\</samp>&rsquo; to &lsquo;<samp>@</samp>&rsquo;; before the switch
+occurs, TeX requires &lsquo;<samp>\</samp>&rsquo;, which is why it appears at the
+beginning of the file.
+
+</li><li>
+When the file is edited in GNU Emacs, the &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; mode
+specification tells Emacs to use Texinfo mode.
+</li></ol>
+
+
+<hr size="6">
+<a name="Start-of-Header"></a>
+<a name="SEC28"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#First-Line" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#setfilename" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.2 Start of Header</h3>
+
+<p>A start-of-header line is a Texinfo comment that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@c %**start of header
+</pre></td></tr></table>
+
+<p>Write the start-of-header line on the second line of a Texinfo file.
+Follow the start-of-header line with <code>@setfilename</code> and
+<code>@settitle</code> lines and, optionally, with other commands that
+globally affect the document formatting, such as <code>@synindex</code> or
+<code>@footnotestyle</code>; and then by an end-of-header line (see section <a href="#End-of-Header">End of Header</a>).
+</p>
+<p>The start- and end-of-header lines allow you to format only part of a
+Texinfo file for Info or printing.  See section <a href="texinfo_21.html#texinfo_002dformat-commands">The <code>texinfo-format&hellip;</code> Commands</a>.
+</p>
+<p>The odd string of characters, &lsquo;<samp>%**</samp>&rsquo;, is to ensure that no other
+comment is accidentally taken for a start-of-header line.  You can
+change it if you wish by setting the <code>tex-start-of-header</code> and/or
+<code>tex-end-of-header</code> Emacs variables.  See section <a href="texinfo_20.html#Texinfo-Mode-Printing">Formatting and Printing in Texinfo Mode</a>.
+</p>
+
+<hr size="6">
+<a name="setfilename"></a>
+<a name="SEC29"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Start-of-Header" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#settitle" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.3 <code>@setfilename</code>: Set the output file name</h3>
+
+<p>In order to serve as the primary input file for either <code>makeinfo</code>
+or TeX, a Texinfo file must contain a line that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@setfilename <var>info-file-name</var>
+</pre></td></tr></table>
+
+<p>Write the <code>@setfilename</code> command at the beginning of a line and
+follow it on the same line by the Info file name.  Do not write anything
+else on the line; anything on the line after the command is considered
+part of the file name, including what would otherwise be a
+comment.
+</p>
+<a name="IDX66"></a>
+<a name="IDX67"></a>
+<p>The Info formatting commands ignore everything written before the
+<code>@setfilename</code> line, which is why the very first line of
+the file (the <code>\input</code> line) does not show up in the output.
+</p>
+<p>The <code>@setfilename</code> line specifies the name of the output file to
+be generated.  This name must be different from the name of the Texinfo
+file.  There are two conventions for choosing the name: you can either
+remove the extension (such as &lsquo;<samp>.texi</samp>&rsquo;) entirely from the input file
+name, or, preferably, replace it with the &lsquo;<samp>.info</samp>&rsquo; extension.
+</p>
+<a name="IDX68"></a>
+<a name="IDX69"></a>
+<a name="IDX70"></a>
+<p>Although an explicit &lsquo;<samp>.info</samp>&rsquo; extension is preferable, some
+operating systems cannot handle long file names.  You can run into a
+problem even when the file name you specify is itself short enough.
+This occurs because the Info formatters split a long Info file into
+short indirect subfiles, and name them by appending &lsquo;<samp>-1</samp>&rsquo;,
+&lsquo;<samp>-2</samp>&rsquo;, &hellip;, &lsquo;<samp>-10</samp>&rsquo;, &lsquo;<samp>-11</samp>&rsquo;, and so on, to the original
+file name.  (See section <a href="texinfo_21.html#Tag-and-Split-Files">Tag Files and Split Files</a>.)  The subfile name
+&lsquo;<tt>texinfo.info-10</tt>&rsquo;, for example, is too long for old systems with a
+14-character limit on filenames; so the Info file name for this document
+is &lsquo;<tt>texinfo</tt>&rsquo; rather than &lsquo;<tt>texinfo.info</tt>&rsquo;.  When <code>makeinfo</code>
+is running on operating systems such as MS-DOS which impose severe
+limits on file names, it may remove some characters from the original
+file name to leave enough space for the subfile suffix, thus producing
+files named &lsquo;<tt>texin-10</tt>&rsquo;, &lsquo;<tt>gcc.i12</tt>&rsquo;, etc.
+</p>
+<p>When producing HTML output, <code>makeinfo</code> will replace any extension
+with &lsquo;<samp>html</samp>&rsquo;, or add &lsquo;<samp>.html</samp>&rsquo; if the given name has no
+extension.
+</p>
+<a name="IDX71"></a>
+<p>The <code>@setfilename</code> line produces no output when you typeset a
+manual with TeX, but it is nevertheless essential: it opens the
+index, cross-reference, and other auxiliary files used by Texinfo, and
+also reads &lsquo;<tt>texinfo.cnf</tt>&rsquo; if that file is present on your system
+(see section <a href="texinfo_20.html#Preparing-for-TeX">Preparing for TeX</a>).
+</p>
+
+<hr size="6">
+<a name="settitle"></a>
+<a name="SEC30"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#setfilename" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#End-of-Header" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.4 <code>@settitle</code>: Set the document title</h3>
+
+<p>In order to be made into a printed manual, a Texinfo file must contain
+a line that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@settitle <var>title</var>
+</pre></td></tr></table>
+
+<p>Write the <code>@settitle</code> command at the beginning of a line and
+follow it on the same line by the title.  This tells TeX the title to
+use in a header or footer.  Do not write anything else on the line;
+anything on the line after the command is considered part of the title,
+including what would otherwise be a comment.
+</p>
+<p>The <code>@settitle</code> command should precede everything that generates
+actual output in TeX.
+</p>
+<a name="IDX72"></a>
+<p>In the HTML file produced by <code>makeinfo</code>, <var>title</var> also serves
+as the document &lsquo;<samp>&lt;title&gt;</samp>&rsquo; and the default document description in
+the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; part; see <a href="#documentdescription"><code>@documentdescription</code>: Summary text</a>, for how to change
+that.
+</p>
+<p>The title in the <code>@settitle</code> command does not affect the title as
+it appears on the title page.  Thus, the two do not need not match
+exactly.  A practice we recommend is to include the version or edition
+number of the manual in the <code>@settitle</code> title; on the title page,
+the version number generally appears as a <code>@subtitle</code> so it would
+be omitted from the <code>@title</code>.  (See section <a href="#titlepage"><code>@titlepage</code></a>.)
+</p>
+<p>Conventionally, when TeX formats a Texinfo file for double-sided
+output, the title is printed in the left-hand (even-numbered) page
+headings and the current chapter title is printed in the right-hand
+(odd-numbered) page headings.  (TeX learns the title of each chapter
+from each <code>@chapter</code> command.)  By default, no page footer is
+printed.
+</p>
+<p>Even if you are printing in a single-sided style, TeX looks for an
+<code>@settitle</code> command line, in case you include the manual title
+in the heading.
+</p>
+<p>TeX prints page headings only for that text that comes after the
+<code>@end titlepage</code> command in the Texinfo file, or that comes
+after an <code>@headings</code> command that turns on headings.
+(See section <a href="#headings-on-off">The <code>@headings</code> Command</a>, for more
+information.)
+</p>
+<p>You may, if you wish, create your own, customized headings and footings.
+See section <a href="texinfo_26.html#Headings">Page Headings</a>, for a detailed discussion of this.
+</p>
+
+<hr size="6">
+<a name="End-of-Header"></a>
+<a name="SEC31"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#settitle" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Document-Permissions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Texinfo-File-Header" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.5 End of Header</h3>
+
+<p>Follow the header lines with an end-of-header line, which is a
+Texinfo comment that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@c %**end of header
+</pre></td></tr></table>
+
+<p>See section <a href="#Start-of-Header">Start of Header</a>.
+</p>
+
+<hr size="6">
+<a name="Document-Permissions"></a>
+<a name="SEC32"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#End-of-Header" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#copying" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.3 Document Permissions</h2>
+
+<p>The copyright notice and copying permissions for a document need to
+appear in several places in the various Texinfo output formats.
+Therefore, Texinfo provides a command (<code>@copying</code>) to declare
+this text once, and another command (<code>@insertcopying</code>) to
+insert the text at appropriate points.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#copying">3.3.1 <code>@copying</code>: Declare copying permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Declare the document&rsquo;s copying permissions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#insertcopying">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Where to insert the permissions.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="copying"></a>
+<a name="SEC33"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Document-Permissions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#insertcopying" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Document-Permissions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.3.1 <code>@copying</code>: Declare copying permissions</h3>
+
+<p>The <code>@copying</code> command should be given very early in the document;
+right after the header material (see section <a href="#Texinfo-File-Header">Texinfo File Header</a>) is the
+recommended location.  It conventionally consists of a sentence or two
+about what the program is, the legal copyright line, and the copying
+permissions.  Here is a skeletal example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+This manual is for <var>program</var> (version <var>version</var>),
+which &hellip;
+
+Copyright @copyright{} <var>years</var> <var>copyright-owner</var>.
+
+@quotation
+Permission is granted to &hellip;
+@end quotation
+@end copying
+</pre></td></tr></table>
+
+<p>The <code>@quotation</code> has no legal significance; it&rsquo;s there to improve
+readability in some contexts.
+</p>
+<p>See section <a href="texinfo_24.html#GNU-Sample-Texts">GNU Sample Texts</a>, for the full text to be used in GNU manuals.
+See section <a href="texinfo_31.html#GNU-Free-Documentation-License">GNU Free Documentation License</a>, for the license itself under
+which GNU and other free manuals are distributed.
+</p>
+<p>The text of <code>@copying</code> is output as a comment at the beginning of
+Info, HTML, and XML output files.  It is <em>not</em> output implicitly in
+plain text or TeX; it&rsquo;s up to you to use <code>@insertcopying</code> to
+emit the copying information.  See the next section for details.
+</p>
+<a name="IDX73"></a>
+<p>In output formats that support it (print and HTML), the
+<code>@copyright{}</code> command generates a &lsquo;<samp>c</samp>&rsquo; inside a circle.  In
+Info and plain text, it generates &lsquo;<samp>(C)</samp>&rsquo;.  The copyright notice
+itself has the following legally defined sequence:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
+</pre></td></tr></table>
+
+<a name="IDX74"></a>
+<p>The word &lsquo;Copyright&rsquo; must always be written in English, even if the
+manual is otherwise in another language.  This is due to international
+law.
+</p>
+<a name="IDX75"></a>
+<p>The list of years should include all years in which a version was
+completed (even if it was released in a subsequent year).  Ranges are
+not allowed, each year must be written out individually, separated by
+commas.
+</p>
+<a name="IDX76"></a>
+<p>The copyright owner (or owners) is whoever holds legal copyright on the
+work.  In the case of works assigned to the FSF, the owner is &lsquo;Free
+Software Foundation, Inc.&rsquo;.
+</p>
+<p>See <a href="../maintain/Copyright-Notices.html#Copyright-Notices">(maintain)Copyright Notices</a> section &lsquo;Copyright Notices&rsquo; in <cite>GNU Maintenance Instructions</cite>, for
+additional information.
+</p>
+
+<hr size="6">
+<a name="insertcopying"></a>
+<a name="SEC34"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#copying" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Document-Permissions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.3.2 <code>@insertcopying</code>: Include permissions text</h3>
+
+<p>The <code>@insertcopying</code> command is simply written on a line by
+itself, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
+</pre></td></tr></table>
+
+<p>It inserts the text previously defined by <code>@copying</code>.  Legally, it
+must be used on the copyright page in the printed manual
+(see section <a href="#Copyright">Copyright Page</a>).
+</p>
+<p>Although it&rsquo;s not a legal requirement, we also strongly recommend using
+<code>@insertcopying</code> in the Top node of your manual (see section <a href="#The-Top-Node">The &lsquo;Top&rsquo; Node and Master Menu</a>).  Here&rsquo;s why:
+</p>
+<p>The <code>@copying</code> command itself causes the permissions text to
+appear in an Info file <em>before</em> the first node.  The text is also
+copied into the beginning of each split Info output file, as is legally
+necessary.  This location implies a human reading the manual using Info
+does <em>not</em> see this text (except when using the advanced Info
+command <kbd>g *</kbd>).  Therefore, an explicit <code>@insertcopying</code>
+in the Top node makes it apparent to readers that the manual is free.
+</p>
+<p>Similarly, the <code>@copying</code> text is automatically included at the
+beginning of each HTML output file, as an HTML comment.  Again, this
+text is not visible (unless the reader views the HTML source).  And
+therefore again, the <code>@insertcopying</code> in the Top node is valuable
+because it makes the copying permissions visible and thus promotes
+freedom.
+</p>
+<p>The permissions text defined by <code>@copying</code> also appears
+automatically at the beginning of the XML output file.
+</p>
+
+<hr size="6">
+<a name="Titlepage-_0026-Copyright-Page"></a>
+<a name="SEC35"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#insertcopying" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#titlepage" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.4 Title and Copyright Pages</h2>
+
+<p>In hard copy output, the manual&rsquo;s name and author are usually printed on
+a title page.  Copyright information is usually printed on the back of
+the title page.
+</p>
+<p>The title and copyright pages appear in the printed manual, but not in
+the Info file.  Because of this, it is possible to use several slightly
+obscure TeX typesetting commands that cannot be used in an Info file.
+In addition, this part of the beginning of a Texinfo file contains the
+text of the copying permissions that appears in the printed manual.
+</p>
+<a name="IDX77"></a>
+<a name="IDX78"></a>
+<p>You may wish to include titlepage-like information for plain text
+output.  Simply place any such leading material between
+<code>@ifplaintext</code> and <code>@end ifplaintext</code>; <code>makeinfo</code>
+includes this when writing plain text (&lsquo;<samp>--no-headers</samp>&rsquo;), along with
+an <code>@insertcopying</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#titlepage">3.4.1 <code>@titlepage</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Create a title for the printed document.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#titlefont-center-sp">3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         The <code>@titlefont</code>, <code>@center</code>,
+                                  and <code>@sp</code> commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#title-subtitle-author">3.4.3 <code>@title</code>, <code>@subtitle</code>, and <code>@author</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       The <code>@title</code>, <code>@subtitle</code>,
+                                  and <code>@author</code> commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Copyright">3.4.4 Copyright Page</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to write the copyright notice and
+                                  include copying permissions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#end-titlepage">3.4.5 Heading Generation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Turn on page headings after the title and
+                                  copyright pages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#headings-on-off">3.4.6 The <code>@headings</code> Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             An option for turning headings on and off
+                                  and double or single sided printing.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="titlepage"></a>
+<a name="SEC36"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#titlefont-center-sp" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.1 <code>@titlepage</code></h3>
+
+<p>Start the material for the title page and following copyright page
+with <code>@titlepage</code> on a line by itself and end it with
+<code>@end titlepage</code> on a line by itself.
+</p>
+<p>The <code>@end titlepage</code> command starts a new page and turns on page
+numbering.  (See section <a href="texinfo_26.html#Headings">Page Headings</a>, for details about how to
+generate page headings.)  All the material that you want to appear on
+unnumbered pages should be put between the <code>@titlepage</code> and
+<code>@end titlepage</code> commands.  You can force the table of contents to
+appear there with the <code>@setcontentsaftertitlepage</code> command
+(see section <a href="texinfo_5.html#Contents">Generating a Table of Contents</a>).
+</p>
+<a name="IDX79"></a>
+<p>By using the <code>@page</code> command you can force a page break within the
+region delineated by the <code>@titlepage</code> and <code>@end titlepage</code>
+commands and thereby create more than one unnumbered page.  This is how
+the copyright page is produced.  (The <code>@titlepage</code> command might
+perhaps have been better named the <code>@titleandadditionalpages</code>
+command, but that would have been rather long!)
+</p>
+<p>When you write a manual about a computer program, you should write the
+version of the program to which the manual applies on the title page.
+If the manual changes more frequently than the program or is independent
+of it, you should also include an edition number<a name="DOCF5" href="texinfo_fot.html#FOOT5">(5)</a> for the manual.
+This helps readers keep track of which manual is for which version of
+the program.  (The &lsquo;Top&rsquo; node should also contain this information; see
+<a href="#The-Top-Node">The &lsquo;Top&rsquo; Node and Master Menu</a>.)
+</p>
+<p>Texinfo provides two main methods for creating a title page.  One method
+uses the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code> commands
+to generate a title page in which the words on the page are
+centered.
+</p>
+<p>The second method uses the <code>@title</code>, <code>@subtitle</code>, and
+<code>@author</code> commands to create a title page with black rules under
+the title and author lines and the subtitle text set flush to the
+right hand side of the page.  With this method, you do not specify any
+of the actual formatting of the title page.  You specify the text
+you want, and Texinfo does the formatting.
+</p>
+<p>You may use either method, or you may combine them; see the examples in
+the sections below.
+</p>
+<a name="IDX80"></a>
+<a name="IDX81"></a>
+<a name="IDX82"></a>
+<p>For extremely simple applications, and for the bastard title page in
+traditional book front matter, Texinfo also provides a command
+<code>@shorttitlepage</code> which takes the rest of the line as the title.
+The argument is typeset on a page by itself and followed by a blank
+page.
+</p>
+
+<hr size="6">
+<a name="titlefont-center-sp"></a>
+<a name="SEC37"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#titlepage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#title-subtitle-author" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code></h3>
+
+<p>You can use the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code>
+commands to create a title page for a printed document.  (This is the
+first of the two methods for creating a title page in Texinfo.)
+</p>
+<p>Use the <code>@titlefont</code> command to select a large font suitable for
+the title itself.  You can use <code>@titlefont</code> more than once if you
+have an especially long title.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlefont{Texinfo}
+</pre></td></tr></table>
+
+<p>Use the <code>@center</code> command at the beginning of a line to center
+the remaining text on that line.  Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@center @titlefont{Texinfo}
+</pre></td></tr></table>
+
+<p>centers the title, which in this example is &ldquo;Texinfo&rdquo; printed
+in the title font.
+</p>
+<p>Use the <code>@sp</code> command to insert vertical space.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
+</pre></td></tr></table>
+
+<p>This inserts two blank lines on the printed page.  (See section <a href="texinfo_15.html#sp"><code>@sp</code></a>, for more information about the <code>@sp</code>
+command.)
+</p>
+<p>A template for this method looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+@sp 10
+@center @titlefont{<var>name-of-manual-when-printed</var>}
+@sp 2
+@center <var>subtitle-if-any</var>
+@sp 2
+@center <var>author</var>
+&hellip;
+@end titlepage
+</pre></td></tr></table>
+
+<p>The spacing of the example fits an 8.5 by 11 inch manual.
+</p>
+
+<hr size="6">
+<a name="title-subtitle-author"></a>
+<a name="SEC38"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#titlefont-center-sp" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Copyright" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.3 <code>@title</code>, <code>@subtitle</code>, and <code>@author</code></h3>
+
+<p>You can use the <code>@title</code>, <code>@subtitle</code>, and <code>@author</code>
+commands to create a title page in which the vertical and horizontal
+spacing is done for you automatically.  This contrasts with the method
+described in the previous section, in which the <code>@sp</code> command is
+needed to adjust vertical spacing.
+</p>
+<p>Write the <code>@title</code>, <code>@subtitle</code>, or <code>@author</code>
+commands at the beginning of a line followed by the title, subtitle,
+or author.
+</p>
+<p>The <code>@title</code> command produces a line in which the title is set
+flush to the left-hand side of the page in a larger than normal font.
+The title is underlined with a black rule.  Only a single line is
+allowed; the <code>@*</code> command may not be used to break the title into
+two lines.  To handle very long titles, you may find it profitable to
+use both <code>@title</code> and <code>@titlefont</code>; see the final example in
+this section.
+</p>
+<p>The <code>@subtitle</code> command sets subtitles in a normal-sized font
+flush to the right-hand side of the page.
+</p>
+<p>The <code>@author</code> command sets the names of the author or authors in
+a middle-sized font flush to the left-hand side of the page on a line
+near the bottom of the title page.  The names are underlined with a
+black rule that is thinner than the rule that underlines the title.
+(The black rule only occurs if the <code>@author</code> command line is
+followed by an <code>@page</code> command line.)
+</p>
+<p>There are two ways to use the <code>@author</code> command: you can write
+the name or names on the remaining part of the line that starts with
+an <code>@author</code> command:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@author by Jane Smith and John Doe
+</pre></td></tr></table>
+
+<p>or you can write the names one above each other by using two (or more)
+<code>@author</code> commands:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@author Jane Smith
+@author John Doe
+</pre></td></tr></table>
+
+<p>(Only the bottom name is underlined with a black rule.)
+</p>
+<p>A template for this method looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+@title <var>name-of-manual-when-printed</var>
+@subtitle <var>subtitle-if-any</var>
+@subtitle <var>second-subtitle</var>
+@author <var>author</var>
+@page
+&hellip;
+@end titlepage
+</pre></td></tr></table>
+
+<p>You may also combine the <code>@titlefont</code> method described in the
+previous section and <code>@title</code> method described in this one.  This
+may be useful if you have a very long title.  Here is a real-life example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+@titlefont{GNU Software}
+@sp 1
+@title for MS-Windows and MS-DOS
+@subtitle Edition @value{e} for Release @value{cde}
+@author by Daniel Hagerty, Melissa Weisshaus
+@author and Eli Zaretskii
+</pre></td></tr></table>
+
+<p>(The use of <code>@value</code> here is explained in <a href="texinfo_17.html#value-Example"><code>@value</code> Example</a>.
+</p>
+
+<hr size="6">
+<a name="Copyright"></a>
+<a name="SEC39"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#title-subtitle-author" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#end-titlepage" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.4 Copyright Page</h3>
+
+<p>By international treaty, the copyright notice for a book must be either
+on the title page or on the back of the title page.  When the copyright
+notice is on the back of the title page, that page is customarily not
+numbered.  Therefore, in Texinfo, the information on the copyright page
+should be within <code>@titlepage</code> and <code>@end titlepage</code>
+commands.
+</p>
+<a name="IDX83"></a>
+<a name="IDX84"></a>
+<p>Use the <code>@page</code> command to cause a page break.  To push the
+copyright notice and the other text on the copyright page towards the
+bottom of the page, use the following incantantion after <code>@page</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@vskip 0pt plus 1filll
+</pre></td></tr></table>
+
+<p>This is a TeX command that is not supported by the Info formatting
+commands.  The <code>@vskip</code> command inserts whitespace.  The &lsquo;<samp>0pt
+plus 1filll</samp>&rsquo; means to put in zero points of mandatory whitespace, and as
+much optional whitespace as needed to push the following text to the
+bottom of the page.  Note the use of three &lsquo;<samp>l</samp>&rsquo;s in the word
+&lsquo;<samp>filll</samp>&rsquo;; this is correct.
+</p>
+<p>To insert the copyright text itself, write <code>@insertcopying</code>
+next (see section <a href="#Document-Permissions">Document Permissions</a>):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
+</pre></td></tr></table>
+
+<p>Follow the copying text by the publisher, ISBN numbers, cover art
+credits, and other such information.
+</p>
+<p>Here is an example putting all this together:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+&hellip;
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+
+Published by &hellip;
+
+Cover art by &hellip;
+@end titlepage
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="end-titlepage"></a>
+<a name="SEC40"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Copyright" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#headings-on-off" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.5 Heading Generation</h3>
+
+<p>The <code>@end titlepage</code> command must be written on a line by itself.
+It not only marks the end of the title and copyright pages, but also
+causes TeX to start generating page headings and page numbers.
+</p>
+<p>To repeat what is said elsewhere,  Texinfo has two standard page heading
+formats, one for documents which are printed on one side of each sheet of paper
+(single-sided printing), and the other for documents which are printed on both
+sides of each sheet (double-sided printing).
+You can specify these formats in different ways:
+</p>
+<ul>
+<li>
+The conventional way is to write an <code>@setchapternewpage</code> command
+before the title page commands, and then have the <code>@end
+titlepage</code> command start generating page headings in the manner desired.
+(See section <a href="#setchapternewpage"><code>@setchapternewpage</code>:</a>.)
+
+</li><li>
+Alternatively, you can use the <code>@headings</code> command to prevent page
+headings from being generated or to start them for either single or
+double-sided printing.  (Write an <code>@headings</code> command immediately
+after the <code>@end titlepage</code> command.  See section <a href="#headings-on-off">The <code>@headings</code> Command</a>, for more information.)
+
+</li><li>
+Or, you may specify your own page heading and footing format.
+See section <a href="texinfo_26.html#Headings">Page Headings</a>, for detailed
+information about page headings and footings.
+</li></ul>
+
+<p>Most documents are formatted with the standard single-sided or
+double-sided format, using <code>@setchapternewpage odd</code> for
+double-sided printing and no <code>@setchapternewpage</code> command for
+single-sided printing.
+</p>
+
+<hr size="6">
+<a name="headings-on-off"></a>
+<a name="SEC41"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#end-titlepage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-Top-Node" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Titlepage-_0026-Copyright-Page" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.4.6 The <code>@headings</code> Command</h3>
+
+<p>The <code>@headings</code> command is rarely used.  It specifies what kind of
+page headings and footings to print on each page.  Usually, this is
+controlled by the <code>@setchapternewpage</code> command.  You need the
+<code>@headings</code> command only if the <code>@setchapternewpage</code> command
+does not do what you want, or if you want to turn off pre-defined page
+headings prior to defining your own.  Write an <code>@headings</code> command
+immediately after the <code>@end titlepage</code> command.
+</p>
+<p>You can use <code>@headings</code> as follows:
+</p>
+<dl compact="compact">
+<dt> <code>@headings off</code></dt>
+<dd><p>Turn off printing of page headings.
+</p>
+</dd>
+<dt> <code>@headings single</code></dt>
+<dd><p>Turn on page headings appropriate for single-sided printing.
+
+</p>
+</dd>
+<dt> <code>@headings double</code></dt>
+<dt> <code>@headings on</code></dt>
+<dd><p>Turn on page headings appropriate for double-sided printing.  The two
+commands, <code>@headings on</code> and <code>@headings double</code>, are
+synonymous.
+</p>
+</dd>
+<dt> <code>@headings singleafter</code></dt>
+<dt> <code>@headings doubleafter</code></dt>
+<dd><p>Turn on <code>single</code> or <code>double</code> headings, respectively, after the
+current page is output.
+</p>
+</dd>
+<dt> <code>@headings on</code></dt>
+<dd><p>Turn on page headings: <code>single</code> if &lsquo;<samp>@setchapternewpage
+on</samp>&rsquo;, <code>double</code> otherwise.
+</p></dd>
+</dl>
+
+<p>For example, suppose you write <code>@setchapternewpage off</code> before the
+<code>@titlepage</code> command to tell TeX to start a new chapter on the
+same page as the end of the last chapter.  This command also causes
+TeX to typeset page headers for single-sided printing.  To cause
+TeX to typeset for double sided printing, write <code>@headings
+double</code> after the <code>@end titlepage</code> command.
+</p>
+<p>You can stop TeX from generating any page headings at all by
+writing <code>@headings off</code> on a line of its own immediately after the
+line containing the <code>@end titlepage</code> command, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@end titlepage
+@headings off
+</pre></td></tr></table>
+
+<p>The <code>@headings off</code> command overrides the <code>@end titlepage</code>
+command, which would otherwise cause TeX to print page
+headings.
+</p>
+<p>You can also specify your own style of page heading and footing.
+See section <a href="texinfo_26.html#Headings">Page Headings</a>, for more information.
+</p>
+
+<hr size="6">
+<a name="The-Top-Node"></a>
+<a name="SEC42"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#headings-on-off" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top-Node-Example" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.5 The &lsquo;Top&rsquo; Node and Master Menu</h2>
+
+<p>The &lsquo;Top&rsquo; node is the node in which a reader enters an Info manual.  As
+such, it should begin with the <code>@insertcopying</code> command
+(see section <a href="#Document-Permissions">Document Permissions</a>) to provide a brief description of the
+manual (including the version number) and copying permissions, and end
+with a master menu for the whole manual.  Of course you should include
+any other general information you feel a reader would find helpful.
+</p>
+<a name="IDX85"></a>
+<p>It is also conventional to write an <code>@top</code> sectioning command line
+containing the title of the document immediately after the <code>@node
+Top</code> line (see section <a href="texinfo_7.html#makeinfo-top-command">The <code>@top</code> Sectioning Command</a>).
+</p>
+<p>The contents of the &lsquo;Top&rsquo; node should appear only in the online output;
+none of it should appear in printed output, so enclose it between
+<code>@ifnottex</code> and <code>@end ifnottex</code> commands.  (TeX does not
+print either an <code>@node</code> line or a menu; they appear only in Info;
+strictly speaking, you are not required to enclose these parts between
+<code>@ifnottex</code> and <code>@end ifnottext</code>, but it is simplest to do
+so.  See section <a href="texinfo_17.html#Conditionals">Conditionally Visible Text</a>.)
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Top-Node-Example">3.5.1 Top Node Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Master-Menu-Parts">3.5.2 Parts of a Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="Top-Node-Example"></a>
+<a name="SEC43"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#The-Top-Node" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Master-Menu-Parts" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-Top-Node" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.5.1 Top Node Example</h3>
+
+
+<p>Here is an example of a Top node.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+@node Top
+@top Sample Title
+
+@insertcopying
+</pre><pre class="example">
+Additional general information.
+
+</pre><pre class="example">@menu
+* First Chapter::
+* Second Chapter::
+&hellip;
+* Index::
+</pre><pre class="example">@end menu
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="Master-Menu-Parts"></a>
+<a name="SEC44"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top-Node-Example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-Top-Node" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.5.2 Parts of a Master Menu</h3>
+
+<p>A <em>master menu</em> is a detailed main menu listing all the nodes in a
+file.
+</p>
+<p>A master menu is enclosed in <code>@menu</code> and <code>@end menu</code>
+commands and does not appear in the printed document.
+</p>
+<p>Generally, a master menu is divided into parts.
+</p>
+<ul>
+<li>
+The first part contains the major nodes in the Texinfo file: the nodes
+for the chapters, chapter-like sections, and the appendices.
+
+</li><li>
+The second part contains nodes for the indices.
+
+</li><li>
+The third and subsequent parts contain a listing of the other, lower
+level nodes, often ordered by chapter.  This way, rather than go
+through an intermediary menu, an inquirer can go directly to a
+particular node when searching for specific information.  These menu
+items are not required; add them if you think they are a
+convenience.  If you do use them, put <code>@detailmenu</code> before the
+first one, and <code>@end detailmenu</code> after the last; otherwise,
+<code>makeinfo</code> will get confused.
+</li></ul>
+
+<p>Each section in the menu can be introduced by a descriptive line.  So
+long as the line does not begin with an asterisk, it will not be
+treated as a menu entry.  (See section <a href="texinfo_8.html#Writing-a-Menu">Writing a Menu</a>, for more
+information.)
+</p>
+<p>For example, the master menu for this manual looks like the following
+(but has many more entries):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+* Copying Conditions::  Your rights.
+* Overview::            Texinfo in brief.
+&hellip;
+</pre><pre class="example">* Command and Variable Index::
+* Concept Index::       
+</pre><pre class="example">
+</pre><pre class="example">@detailmenu
+ --- The Detailed Node Listing ---
+
+Overview of Texinfo
+
+* Reporting Bugs:: &hellip;
+&hellip;
+</pre><pre class="example">
+</pre><pre class="example">Beginning a Texinfo File
+
+* Sample Beginning:: &hellip;
+&hellip;
+@end detailmenu
+@end menu
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="Global-Document-Commands"></a>
+<a name="SEC45"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Master-Menu-Parts" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#documentdescription" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.6 Global Document Commands</h2>
+
+<p>Besides the basic commands mentioned in the previous sections, here are
+additional commands which affect the document as a whole.  They are
+generally all given before the Top node, if they are given at all.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#documentdescription">3.6.1 <code>@documentdescription</code>: Summary text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Document summary for the HTML output.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#setchapternewpage">3.6.2 <code>@setchapternewpage</code>:</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Start chapters on right-hand pages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#paragraphindent">3.6.3 Paragraph Indenting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Specify paragraph indentation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#exampleindent">3.6.4 <code>@exampleindent</code>: Environment Indenting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Specify environment indentation.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="documentdescription"></a>
+<a name="SEC46"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#setchapternewpage" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.6.1 <code>@documentdescription</code>: Summary text</h3>
+
+<p>When producing HTML output for a document, <code>makeinfo</code> writes a
+&lsquo;<samp>&lt;meta&gt;</samp>&rsquo; element in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; to give some idea of the
+content of the document.  By default, this <em>description</em> is the title
+of the document, taken from the <code>@settitle</code> command
+(see section <a href="#settitle"><code>@settitle</code>: Set the document title</a>).  To change this, use the <code>@documentdescription</code>
+environment, as in:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@documentdescription
+descriptive text.
+@end documentdescription
+</pre></td></tr></table>
+
+<p>This will produce the following output in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; of the HTML:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
+</pre></td></tr></table>
+
+<p><code>@documentdescription</code> must be specified before the first node of
+the document.
+</p>
+
+<hr size="6">
+<a name="setchapternewpage"></a>
+<a name="SEC47"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#documentdescription" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#paragraphindent" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.6.2 <code>@setchapternewpage</code>:</h3>
+
+<p>In an officially bound book, text is usually printed on both sides of
+the paper, chapters start on right-hand pages, and right-hand pages have
+odd numbers.  But in short reports, text often is printed only on one
+side of the paper.  Also in short reports, chapters sometimes do not
+start on new pages, but are printed on the same page as the end of the
+preceding chapter, after a small amount of vertical whitespace.
+</p>
+<p>You can use the <code>@setchapternewpage</code> command with various
+arguments to specify how TeX should start chapters and whether it
+should format headers for printing on one or both sides of the paper
+(single-sided or double-sided printing).
+</p>
+<p>Write the <code>@setchapternewpage</code> command at the beginning of a
+line followed by its argument.
+</p>
+<p>For example, you would write the following to cause each chapter to
+start on a fresh odd-numbered page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
+</pre></td></tr></table>
+
+<p>You can specify one of three alternatives with the
+<code>@setchapternewpage</code> command:
+</p>
+<dl compact="compact">
+<dt> <code>@setchapternewpage off</code></dt>
+<dd><p>Cause TeX to typeset a new chapter on the same page as the last
+chapter, after skipping some vertical whitespace.  Also, cause TeX to
+format page headers for single-sided printing.
+</p>
+</dd>
+<dt> <code>@setchapternewpage on</code></dt>
+<dd><p>Cause TeX to start new chapters on new pages and to format page
+headers for single-sided printing.  This is the form most often used for
+short reports or personal printing. This is the default.
+</p>
+</dd>
+<dt> <code>@setchapternewpage odd</code></dt>
+<dd><p>Cause TeX to start new chapters on new, odd-numbered pages
+(right-handed pages) and to typeset for double-sided printing.  This is
+the form most often used for books and manuals.
+</p></dd>
+</dl>
+
+<p>Texinfo does not have an <code>@setchapternewpage even</code> command,
+because there is no printing tradition of starting chapters or books on
+an even-numbered page.
+</p>
+<p>If you don&rsquo;t like the default headers that <code>@setchapternewpage</code>
+sets, you can explicit control them with the <code>@headings</code> command.
+See section <a href="#headings-on-off">The <code>@headings</code> Command</a>.
+</p>
+<p>At the beginning of a manual or book, pages are not numbered&mdash;for
+example, the title and copyright pages of a book are not numbered.  By
+convention, table of contents and frontmatter pages are numbered with
+roman numerals and not in sequence with the rest of the document.
+</p>
+<p>Since an Info file does not have pages, the <code>@setchapternewpage</code>
+command has no effect on it.
+</p>
+<p>We recommend not including any <code>@setchapternewpage</code> command in
+your manual sources at all, since the desired output is not intrinsic to
+the document.  For a particular hard copy run, if you don&rsquo;t want the
+default option (no blank pages, same headers on all pages) use the
+&lsquo;<samp>--texinfo</samp>&rsquo; option to <code>texi2dvi</code> to specify the output
+you want.
+</p>
+
+<hr size="6">
+<a name="paragraphindent"></a>
+<a name="SEC48"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#setchapternewpage" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#exampleindent" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.6.3 Paragraph Indenting</h3>
+
+<p>The Texinfo processors may insert whitespace at the beginning of the
+first line of each paragraph, thereby indenting that paragraph.  You can
+use the <code>@paragraphindent</code> command to specify this indentation.
+Write an <code>@paragraphindent</code> command at the beginning of a line
+followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
+</pre></td></tr></table>
+
+<p>The indentation is according to the value of <var>indent</var>:
+</p>
+<dl compact="compact">
+<dt> <code>asis</code></dt>
+<dd><p>Do not change the existing indentation (not implemented in TeX).
+</p>
+</dd>
+<dt> <code>none</code></dt>
+<dt> 0</dt>
+<dd><p>Omit all indentation.
+</p>
+</dd>
+<dt> <var>n</var></dt>
+<dd><p>Indent by <var>n</var> space characters in Info output, by <var>n</var> ems in
+TeX.
+</p>
+</dd>
+</dl>
+
+<p>The default value of <var>indent</var> is 3.  <code>@paragraphindent</code> is
+ignored for HTML output.
+</p>
+<p>It is best to write the <code>@paragraphindent</code> command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  See section <a href="#Start-of-Header">Start of Header</a>.
+</p>
+<p>A peculiarity of the <code>texinfo-format-buffer</code> and
+<code>texinfo-format-region</code> commands is that they do not indent (nor
+fill) paragraphs that contain <code>@w</code> or <code>@*</code> commands.
+See section <a href="texinfo_28.html#Refilling-Paragraphs">Refilling Paragraphs</a>, for further information.
+</p>
+
+<hr size="6">
+<a name="exampleindent"></a>
+<a name="SEC49"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#paragraphindent" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Software-Copying-Permissions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-Document-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.6.4 <code>@exampleindent</code>: Environment Indenting</h3>
+
+<p>The Texinfo processors indent each line of <code>@example</code> and similar
+environments.  You can use the <code>@exampleindent</code> command to specify
+this indentation.  Write an <code>@exampleindent</code> command at the
+beginning of a line followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@exampleindent <var>indent</var>
+</pre></td></tr></table>
+
+<p>The indentation is according to the value of <var>indent</var>:
+</p>
+<dl compact="compact">
+<dt> <code>asis</code></dt>
+<dd><p>Do not change the existing indentation (not implemented in TeX).
+</p>
+</dd>
+<dt> 0</dt>
+<dd><p>Omit all indentation.
+</p>
+</dd>
+<dt> <var>n</var></dt>
+<dd><p>Indent environments by <var>n</var> space characters in Info output, by
+<var>n</var> ems in TeX.
+</p>
+</dd>
+</dl>
+
+<p>The default value of <var>indent</var> is 5.  <code>@exampleindent</code> is
+ignored for HTML output.
+</p>
+<p>It is best to write the <code>@exampleindent</code> command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  See section <a href="#Start-of-Header">Start of Header</a>.
+</p>
+
+<hr size="6">
+<a name="Software-Copying-Permissions"></a>
+<a name="SEC50"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#exampleindent" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Beginning-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.7 Software Copying Permissions</h2>
+
+<p>If the Texinfo file has a section containing the &ldquo;General Public
+License&rdquo; and the distribution information and a warranty disclaimer for
+the software that is documented, we recommend placing this right after
+the &lsquo;Top&rsquo; node.  The General Public License is very important to Project
+GNU software.  It ensures that you and others will continue to have a
+right to use and share the software.
+</p>
+<p>The copying and distribution information and the disclaimer are followed
+by an introduction or else by the first chapter of the manual.
+</p>
+<a name="IDX86"></a>
+<p>Although an introduction is not a required part of a Texinfo file, it
+is very helpful.  Ideally, it should state clearly and concisely what
+the file is about and who would be interested in reading it.  In
+general, an introduction would follow the licensing and distribution
+information, although sometimes people put it earlier in the document.
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

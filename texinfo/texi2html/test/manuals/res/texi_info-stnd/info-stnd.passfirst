@@ -1,0 +1,2516 @@
+info-stnd.texi(,2) @comment Id: info-stnd.texi,v 1.1 2003/02/03 16:10:29 pertusus Exp $
+info-stnd.texi(,3) @comment %**start of header
+info-stnd.texi(,4) @setfilename info-stnd.info
+version-stnd.texi(,1) @set UPDATED 23 March 2002
+version-stnd.texi(,2) @set UPDATED-MONTH March 2002
+version-stnd.texi(,3) @set EDITION 4.2
+version-stnd.texi(,4) @set VERSION 4.2
+info-stnd.texi(,6) @settitle GNU Info 4.2
+info-stnd.texi(,7) @syncodeindex vr cp
+info-stnd.texi(,8) @syncodeindex fn cp
+info-stnd.texi(,9) @syncodeindex ky cp
+info-stnd.texi(,10) @comment %**end of header
+info-stnd.texi(,11) 
+info-stnd.texi(,34) 
+info-stnd.texi(,35) @dircategory Texinfo documentation system
+info-stnd.texi(,40) 
+info-stnd.texi(,49) 
+info-stnd.texi(,50) @contents
+info-stnd.texi(,51) 
+info-stnd.texi(,53) @node Top
+info-stnd.texi(,54) @top GNU Info
+info-stnd.texi(,55) 
+info-stnd.texi(,56) @insertcopying
+info-stnd.texi(,57) 
+info-stnd.texi(,58) This documentation is different from the documentation for the Info
+info-stnd.texi(,59) reader that is part of GNU Emacs.  If you do not know how to use Info,
+info-stnd.texi(,60) but have a working Info reader, you should read the Emacs documentation
+info-stnd.texi(,61) first, as it includes more background information and a thorough tutorial.
+info-stnd.texi(,63) 
+info-stnd.texi(,64) @menu
+info-stnd.texi(,65) * What is Info::                What is Info?
+info-stnd.texi(,66) * Invoking Info::               Options you can pass on the command line.
+info-stnd.texi(,67) * Cursor Commands::             Commands which move the cursor within a node.
+info-stnd.texi(,68) * Scrolling Commands::          Commands for reading the text within a node.
+info-stnd.texi(,69) * Node Commands::               Commands for selecting a new node.
+info-stnd.texi(,70) * Searching Commands::          Commands for searching an Info file.
+info-stnd.texi(,71) * Xref Commands::               Commands for selecting cross references.
+info-stnd.texi(,72) * Window Commands::             Commands which manipulate multiple windows.
+info-stnd.texi(,73) * Printing Nodes::              How to print out the contents of a node.
+info-stnd.texi(,74) * Miscellaneous Commands::      A few commands that defy categories.
+info-stnd.texi(,75) * Variables::                   How to change the default behavior of Info.
+info-stnd.texi(,76) * Custom Key Bindings::         How to define your own key-to-command
+info-stnd.texi(,77) 				  bindings.
+info-stnd.texi(,78) * Copying This Manual::         The GNU Free Documentation License.
+info-stnd.texi(,79) * Index::                       Global index containing keystrokes,
+info-stnd.texi(,80)                                   command names, variable names,
+info-stnd.texi(,81)                                   and general concepts.
+info-stnd.texi(,82) @end menu
+info-stnd.texi(,83) 
+info-stnd.texi(,84) 
+info-stnd.texi(,85) @node What is Info
+info-stnd.texi(,86) @chapter What is Info?
+info-stnd.texi(,87) 
+info-stnd.texi(,88) @dfn{Info} is a program which is used to view Info files on an ASCII
+info-stnd.texi(,89) terminal.  @dfn{Info files} are the result of processing Texinfo files
+info-stnd.texi(,90) with the program @code{makeinfo} or with one of the Emacs commands, such
+info-stnd.texi(,91) as @code{M-x texinfo-format-buffer}.  Texinfo itself is a documentation
+info-stnd.texi(,92) system that uses a single source file to produce both on-line
+info-stnd.texi(,93) information and printed output.  You can typeset and print the files
+info-stnd.texi(,94) that you read in Info.
+info-stnd.texi(,95) 
+info-stnd.texi(,96) 
+info-stnd.texi(,97) @node Invoking Info
+info-stnd.texi(,98) @chapter Invoking Info
+info-stnd.texi(,99) 
+info-stnd.texi(,100) @cindex Info, invoking
+info-stnd.texi(,101) @cindex invoking Info
+info-stnd.texi(,102) @cindex command line options
+info-stnd.texi(,103) @cindex options, command line
+info-stnd.texi(,104) @cindex arguments, command line
+info-stnd.texi(,105) 
+info-stnd.texi(,106) GNU Info accepts several options to control the initial node being
+info-stnd.texi(,107) viewed, and to specify which directories to search for Info files.  Here
+info-stnd.texi(,108) is a template showing an invocation of GNU Info from the shell:
+info-stnd.texi(,109) 
+info-stnd.texi(,110) @example
+info-stnd.texi(,111) info [@var{option}]@dots{} [@var{menu-item}@dots{}]
+info-stnd.texi(,112) @end example
+info-stnd.texi(,113) 
+info-stnd.texi(,114) The program accepts the following options:
+info-stnd.texi(,115) 
+info-stnd.texi(,116) @table @code
+info-stnd.texi(,117) @anchor{--apropos}
+info-stnd.texi(,118) @item --apropos=@var{string}
+info-stnd.texi(,119) @cindex Searching all indices
+info-stnd.texi(,120) @cindex Info files@r{, searching all indices}
+info-stnd.texi(,121) @cindex Apropos@r{, in Info files}
+info-stnd.texi(,122) Specify a string to search in every index of every Info file installed
+info-stnd.texi(,123) on your system.  Info looks up the named @var{string} in all the indices
+info-stnd.texi(,124) it can find, prints the results to standard output, and then exits.  If
+info-stnd.texi(,125) you are not sure which Info file explains certain issues, this option is
+info-stnd.texi(,126) your friend.  Note that if your system has a lot of Info files
+info-stnd.texi(,127) installed, searching all of them might take some time.
+info-stnd.texi(,128) 
+info-stnd.texi(,129) You can invoke the apropos command from inside Info; see
+info-stnd.texi(,130) @ref{Searching Commands}.
+info-stnd.texi(,131) 
+info-stnd.texi(,132) @cindex directory path
+info-stnd.texi(,133) @item --directory @var{directory-path}
+info-stnd.texi(,134) @itemx -d @var{directory-path}
+info-stnd.texi(,135) Prepend @var{directory-path} to the list of directory paths searched
+info-stnd.texi(,136) when Info needs to find a file.  You may issue @code{--directory}
+info-stnd.texi(,137) multiple times; once for each directory which contains Info files.  The
+info-stnd.texi(,138) list of directories searched by Info is constructed from the value of
+info-stnd.texi(,139) the environment variable @code{INFOPATH}; @code{--directory} causes the
+info-stnd.texi(,140) named @var{directory-path} to be prepended to that list.  The value of
+info-stnd.texi(,141) @code{INFOPATH} is a list of directories usually separated by a colon;
+info-stnd.texi(,142) on MS-DOS/MS-Windows systems, the semicolon is used.  If you do not
+info-stnd.texi(,143) define @code{INFOPATH}, Info uses a default path defined when Info was
+info-stnd.texi(,144) built as the initial list of directories.  If the value of
+info-stnd.texi(,145) @code{INFOPATH} ends with a colon (or semicolon on MS-DOS/MS-Windows),
+info-stnd.texi(,146) the initial list of directories is constructed by appending the
+info-stnd.texi(,147) build-time default to the value of @code{INFOPATH}.
+info-stnd.texi(,148) 
+info-stnd.texi(,149) @cindex keystrokes, recording
+info-stnd.texi(,150) @cindex remembering user keystrokes
+info-stnd.texi(,151) @item --dribble=@var{dribble-file}
+info-stnd.texi(,152) Specify a file where all user keystrokes will be recorded.  This file
+info-stnd.texi(,153) can be used later to replay the same sequence of commands, see the
+info-stnd.texi(,154) @samp{--restore} option below.
+info-stnd.texi(,155) 
+info-stnd.texi(,156) @item --file @var{filename}
+info-stnd.texi(,157) @itemx -f @var{filename}
+info-stnd.texi(,158) @cindex Info file, selecting
+info-stnd.texi(,159) Specify a particular Info file to visit.  By default, Info visits
+info-stnd.texi(,160) the file @code{dir}; if you use this option, Info will start with
+info-stnd.texi(,161) @code{(@var{filename})Top} as the first file and node.
+info-stnd.texi(,162) 
+info-stnd.texi(,163) @cindex relative Info file names
+info-stnd.texi(,164) @cindex file names, relative
+info-stnd.texi(,165) @cindex Info files, relative
+info-stnd.texi(,166) If @var{filename} is an absolute file name, or begins with @file{./} or
+info-stnd.texi(,167) @file{../}, Info looks for @var{filename} only in the directory of the
+info-stnd.texi(,168) specified @var{filename}, and adds the directory of @var{filename} to
+info-stnd.texi(,169) the value of @code{INFOPATH}.  In contrast, if @var{filename} is in the
+info-stnd.texi(,170) form of a relative file name, but without the @file{./} or @file{../}
+info-stnd.texi(,171) prefix, Info will only look for it in the directories specified in
+info-stnd.texi(,172) @code{INFOPATH}.  In other words, Info does @emph{not} treat file names
+info-stnd.texi(,173) which lack @file{./} and @file{../} prefix as relative to the current
+info-stnd.texi(,174) directory.
+info-stnd.texi(,175) 
+info-stnd.texi(,176) @cindex compressed Info files
+info-stnd.texi(,177) @cindex files, compressed
+info-stnd.texi(,178) @cindex Info files, compressed
+info-stnd.texi(,179) In every directory Info tries, if @var{filename} is not found, Info
+info-stnd.texi(,180) looks for it with a number of known extensions of Info files@footnote{
+info-stnd.texi(,181) @file{.info}, @file{-info}, @file{/index}, and @file{.inf}.}.  For every
+info-stnd.texi(,182) known extension, Info looks for a compressed file, if a regular file
+info-stnd.texi(,183) isn't found.  Info supports files compressed with @code{gzip},
+info-stnd.texi(,184) @code{bzip2}, @code{compress} and @code{yabba} programs; it calls
+info-stnd.texi(,185) @code{gunzip}, @code{bunzip2}, @code{uncompress} and @code{unyabba},
+info-stnd.texi(,186) accordingly, to decompress such files.  Compressed Info files are
+info-stnd.texi(,187) assumed to have @file{.z}, @file{.gz}, @file{.bz2}, @file{.Z}, or
+info-stnd.texi(,188) @file{.Y} extensions, possibly in addition to one of the known Info
+info-stnd.texi(,189) files extensions@footnote{The MS-DOS version allows for the Info
+info-stnd.texi(,190) extension, such as @code{.inf}, and the short compressed file
+info-stnd.texi(,191) extensions, such as @file{.z} and @file{.gz}, to be merged into a single
+info-stnd.texi(,192) extension, since DOS doesn't allow more than a single dot in the
+info-stnd.texi(,193) basename of a file.  Thus, on MS-DOS, if Info looks for @file{bison},
+info-stnd.texi(,194) file names like @file{bison.igz} and @file{bison.inz} will be found and
+info-stnd.texi(,195) decompressed by @code{gunzip}.}.
+info-stnd.texi(,196) 
+info-stnd.texi(,197) @item --help
+info-stnd.texi(,198) @itemx -h
+info-stnd.texi(,199) Produces a relatively brief description of the available Info options.
+info-stnd.texi(,200) 
+info-stnd.texi(,201) @item --index-search @var{string}
+info-stnd.texi(,202) @cindex index search, selecting from the command line
+info-stnd.texi(,203) @cindex online help, using Info as
+info-stnd.texi(,204) After processing all command-line arguments, go to the index in the Info
+info-stnd.texi(,205) file and search for index entries which matche @var{string}.  If such an
+info-stnd.texi(,206) entry is found, the Info session begins with displaying the node pointed
+info-stnd.texi(,207) to by the first matching index entry; press @kbd{,} to step through the
+info-stnd.texi(,208) rest of the matching entries.  If no such entry exists, print @samp{no
+info-stnd.texi(,209) entries found} and exit with nonzero status.  This can be used from
+info-stnd.texi(,210) another program as a way to provide online help, or as a quick way of
+info-stnd.texi(,211) starting to read an Info file at a certain node when you don't know the
+info-stnd.texi(,212) exact name of that node.
+info-stnd.texi(,213) 
+info-stnd.texi(,214) This command can also be invoked from inside Info; see @ref{Searching
+info-stnd.texi(,215) Commands}.
+info-stnd.texi(,216) 
+info-stnd.texi(,217) @item --node @var{nodename}
+info-stnd.texi(,218) @itemx -n @var{nodename}
+info-stnd.texi(,219) @cindex node, selecting from the command line
+info-stnd.texi(,220) Specify a particular node to visit in the initial file that Info
+info-stnd.texi(,221) loads.  This is especially useful in conjunction with
+info-stnd.texi(,222) @code{--file}@footnote{Of course, you can specify both the file and node
+info-stnd.texi(,223) in a @code{--node} command; but don't forget to escape the open and
+info-stnd.texi(,224) close parentheses and whitespace from the shell as in: @code{info --node
+info-stnd.texi(,225) "(emacs)Buffers"}.}.  You may specify @code{--node} multiple times; for
+info-stnd.texi(,226) an interactive Info, each @var{nodename} is visited in its own window,
+info-stnd.texi(,227) for a non-interactive Info (such as when @code{--output} is given) each
+info-stnd.texi(,228) @var{nodename} is processed sequentially.
+info-stnd.texi(,229) 
+info-stnd.texi(,230) @item --output @var{filename}
+info-stnd.texi(,231) @itemx -o @var{filename}
+info-stnd.texi(,232) @cindex file, outputting to
+info-stnd.texi(,233) @cindex outputting to a file
+info-stnd.texi(,234) Specify @var{filename} as the name of a file to which to direct output.
+info-stnd.texi(,235) Each node that Info visits will be output to @var{filename} instead of
+info-stnd.texi(,236) interactively viewed.  A value of @code{-} for @var{filename} specifies
+info-stnd.texi(,237) the standard output.
+info-stnd.texi(,238) 
+info-stnd.texi(,239) @cindex colors in man pages
+info-stnd.texi(,240) @cindex ANSI escape sequences in man pages
+info-stnd.texi(,241) @item --raw-escapes
+info-stnd.texi(,242) @itemx -R
+info-stnd.texi(,243) Do not remove ANSI escape sequences from man pages.  Some versions of
+info-stnd.texi(,244) Groff, the GNU document formatter, produce man pages with ANSI escape
+info-stnd.texi(,245) sequences for bold, italics, and underlined characters, and for
+info-stnd.texi(,246) colorized text.  By default, Info removes those escape sequences
+info-stnd.texi(,247) before it displays the man page.  If your terminal supports these
+info-stnd.texi(,248) escapes, use @code{--raw-escapes} to let the terminal handle them and
+info-stnd.texi(,249) display the man pages with those attributes.
+info-stnd.texi(,250) 
+info-stnd.texi(,251) @cindex replaying recorded keystrokes
+info-stnd.texi(,252) @item --restore=@var{dribble-file}
+info-stnd.texi(,253) Read keystrokes from @var{dribble-file}, presumably recorded during
+info-stnd.texi(,254) previous Info session (see the description of the @samp{--dribble}
+info-stnd.texi(,255) option above).  When the keystrokes in the files are all read, Info
+info-stnd.texi(,256) reverts its input to the usual interactive operation.
+info-stnd.texi(,257) 
+info-stnd.texi(,258) @anchor{--show-options}
+info-stnd.texi(,259) @cindex command-line options, how to find
+info-stnd.texi(,260) @cindex invocation description, how to find
+info-stnd.texi(,261) @item --show-options
+info-stnd.texi(,262) @itemx --usage
+info-stnd.texi(,263) @itemx -O
+info-stnd.texi(,264) This option causes Info to look for the node that describes how to
+info-stnd.texi(,265) invoke the program and its command-line options, and begin the session
+info-stnd.texi(,266) by displaying that node.  It is provided to make it easier to find the
+info-stnd.texi(,267) most important usage information in a manual without the need to wade
+info-stnd.texi(,268) through complex menu hierarchies.  The effect is similar to the
+info-stnd.texi(,269) @code{M-x goto-invocation} command (@pxref{goto-invocation}) from inside
+info-stnd.texi(,270) Info.
+info-stnd.texi(,271) 
+info-stnd.texi(,272) @cindex speech synthesizers
+info-stnd.texi(,273) @item --speech-friendly
+info-stnd.texi(,274) @itemx -b
+info-stnd.texi(,275) On MS-DOS/MS-Windows only, this option causes Info to use standard file
+info-stnd.texi(,276) I/O functions for screen writes.  (By default, Info uses direct writes
+info-stnd.texi(,277) to the video memory on these systems, for faster operation and colored
+info-stnd.texi(,278) display support.)  This allows the speech synthesizers used by blind
+info-stnd.texi(,279) persons to catch the output and convert it to audible speech.
+info-stnd.texi(,280) 
+info-stnd.texi(,281) @item --subnodes
+info-stnd.texi(,282) @cindex @code{--subnodes}, command line option
+info-stnd.texi(,283) This option only has meaning when given in conjunction with
+info-stnd.texi(,284) @code{--output}.  It means to recursively output the nodes appearing in
+info-stnd.texi(,285) the menus of each node being output.  Menu items which resolve to
+info-stnd.texi(,286) external Info files are not output, and neither are menu items which are
+info-stnd.texi(,287) members of an index.  Each node is only output once.
+info-stnd.texi(,288) 
+info-stnd.texi(,289) @item --version
+info-stnd.texi(,290) @cindex version information
+info-stnd.texi(,291) Prints the version information of Info and exits.
+info-stnd.texi(,292) 
+info-stnd.texi(,293) @anchor{--vi-keys}
+info-stnd.texi(,294) @cindex vi-like key bindings
+info-stnd.texi(,295) @cindex Less-like key bindings
+info-stnd.texi(,296) @item --vi-keys
+info-stnd.texi(,297) This option binds functions to keys differently, to emulate the key
+info-stnd.texi(,298) bindings of @code{vi} and Less.  The default key bindings are generally
+info-stnd.texi(,299) modeled after Emacs.
+info-stnd.texi(,300) (@xref{Custom Key Bindings},
+info-stnd.texi(,301) for a more general way of altering GNU Info's key bindings.)
+info-stnd.texi(,302) 
+info-stnd.texi(,303) @item @var{menu-item}
+info-stnd.texi(,304) @cindex menu, following
+info-stnd.texi(,305) @anchor{command-line menu items}
+info-stnd.texi(,306) Info treats its remaining arguments as the names of menu items.  The
+info-stnd.texi(,307) first argument is a menu item in the initial node visited (generally
+info-stnd.texi(,308) @code{dir}), the second argument is a menu item in the first argument's
+info-stnd.texi(,309) node, etc.  You can easily move to the node of your choice by specifying
+info-stnd.texi(,310) the menu names which describe the path to that node.  For example,
+info-stnd.texi(,311) 
+info-stnd.texi(,312) @example
+info-stnd.texi(,313) info emacs buffers
+info-stnd.texi(,314) @end example
+info-stnd.texi(,315) 
+info-stnd.texi(,316) @noindent
+info-stnd.texi(,317) first selects the menu item @samp{Emacs} in the node @samp{(dir)Top},
+info-stnd.texi(,318) and then selects the menu item @samp{Buffers} in the node
+info-stnd.texi(,319) @samp{(emacs)Top}.
+info-stnd.texi(,320) @end table
+info-stnd.texi(,321) 
+info-stnd.texi(,322) To avoid searching the @file{dir} files and just show some arbitrary
+info-stnd.texi(,323) file, use @samp{-f} and the filename, as in @samp{info -f ./foo.info}.
+info-stnd.texi(,324) 
+info-stnd.texi(,325) The index search and the search for the node which describes program
+info-stnd.texi(,326) invocation and command-line options begins @emph{after} processing all
+info-stnd.texi(,327) the command-line menu items.  Therefore, the Info file searched for the
+info-stnd.texi(,328) index or the invocation node is the file where Info finds itself after
+info-stnd.texi(,329) following all the menu items given on the command line.  This is so
+info-stnd.texi(,330) @samp{info emacs --show-options} does what you'd expect.
+info-stnd.texi(,331) 
+info-stnd.texi(,332) @c FIXME: the feature with lowercasing the file name isn't documented
+info-stnd.texi(,333) 
+info-stnd.texi(,334) 
+info-stnd.texi(,335) @node Cursor Commands
+info-stnd.texi(,336) @chapter Moving the Cursor
+info-stnd.texi(,337) @cindex cursor, moving
+info-stnd.texi(,338) @cindex moving the cursor
+info-stnd.texi(,339) 
+info-stnd.texi(,340) Many people find that reading screens of text page by page is made
+info-stnd.texi(,341) easier when one is able to indicate particular pieces of text with some
+info-stnd.texi(,342) kind of pointing device.  Since this is the case, GNU Info (both the
+info-stnd.texi(,343) Emacs and standalone versions) have several commands which allow you to
+info-stnd.texi(,344) move the cursor about the screen.  The notation used in this manual to
+info-stnd.texi(,345) describe keystrokes is identical to the notation used within the Emacs
+info-stnd.texi(,346) manual, and the GNU Readline manual.  @xref{Characters, , Character
+info-stnd.texi(,347) Conventions, emacs, the GNU Emacs Manual}, if you are unfamiliar with the
+info-stnd.texi(,348) notation@footnote{
+info-stnd.texi(,349) Here's a short summary.  @kbd{C-@var{x}} means press the @kbd{CTRL} key
+info-stnd.texi(,350) and the key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
+info-stnd.texi(,351) the key @var{x}.  On many terminals th @kbd{META} key is known as the
+info-stnd.texi(,352) @kbd{ALT} key.  @kbd{SPC} is the space bar.  The other keys are usually
+info-stnd.texi(,353) called by the names imprinted on them.}.
+info-stnd.texi(,354) 
+info-stnd.texi(,355) The following table lists the basic cursor movement commands in Info.
+info-stnd.texi(,356) Each entry consists of the key sequence you should type to execute the
+info-stnd.texi(,357) cursor movement, the @code{M-x}@footnote{@code{M-x} is also a command; it
+info-stnd.texi(,358) invokes @code{execute-extended-command}.  @xref{M-x, , Executing an
+info-stnd.texi(,359) extended command, emacs, the GNU Emacs Manual}, for more detailed
+info-stnd.texi(,360) information.} command name (displayed in parentheses), and a short
+info-stnd.texi(,361) description of what the command does.  All of the cursor motion commands
+info-stnd.texi(,362) can take a @dfn{numeric} argument (see @ref{Miscellaneous Commands,
+info-stnd.texi(,363) @code{universal-argument}, to find out how to supply them}.  With a
+info-stnd.texi(,364) numeric argument, the motion commands are simply executed that
+info-stnd.texi(,365) many times; for example, a numeric argument of 4 given to
+info-stnd.texi(,366) @code{next-line} causes the cursor to move down 4 lines.  With a
+info-stnd.texi(,367) negative numeric argument, the motion is reversed; an argument of -4
+info-stnd.texi(,368) given to the @code{next-line} command would cause the cursor to move
+info-stnd.texi(,369) @emph{up} 4 lines.
+info-stnd.texi(,370) 
+info-stnd.texi(,371) @table @asis
+info-stnd.texi(,372) @item @key{C-n} (@code{next-line})
+info-stnd.texi(,373) @itemx @key{DOWN} (an arrow key)
+info-stnd.texi(,374) @kindex C-n
+info-stnd.texi(,375) @kindex DOWN (an arrow key)
+info-stnd.texi(,376) @findex next-line
+info-stnd.texi(,377) Move the cursor down to the next line.
+info-stnd.texi(,378) 
+info-stnd.texi(,379) @item @key{C-p} (@code{prev-line})
+info-stnd.texi(,380) @itemx @key{UP} (an arrow key)
+info-stnd.texi(,381) @kindex C-p
+info-stnd.texi(,382) @kindex UP (an arrow key)
+info-stnd.texi(,383) @findex prev-line
+info-stnd.texi(,384) Move the cursor up to the previous line.
+info-stnd.texi(,385) 
+info-stnd.texi(,386) @item @key{C-a} (@code{beginning-of-line})
+info-stnd.texi(,387) @itemx @key{Home} (on DOS/Windows only)
+info-stnd.texi(,388) @kindex C-a, in Info windows
+info-stnd.texi(,389) @kindex Home
+info-stnd.texi(,390) @findex beginning-of-line
+info-stnd.texi(,391) Move the cursor to the start of the current line.
+info-stnd.texi(,392) 
+info-stnd.texi(,393) @item @key{C-e} (@code{end-of-line})
+info-stnd.texi(,394) @itemx @key{End} (on DOS/Windows only)
+info-stnd.texi(,395) @kindex C-e, in Info windows
+info-stnd.texi(,396) @kindex End
+info-stnd.texi(,397) @findex end-of-line
+info-stnd.texi(,398) Move the cursor to the end of the current line.
+info-stnd.texi(,399) 
+info-stnd.texi(,400) @item @key{C-f} (@code{forward-char})
+info-stnd.texi(,401) @itemx @key{RIGHT} (an arrow key)
+info-stnd.texi(,402) @kindex C-f, in Info windows
+info-stnd.texi(,403) @kindex RIGHT (an arrow key)
+info-stnd.texi(,404) @findex forward-char
+info-stnd.texi(,405) Move the cursor forward a character.
+info-stnd.texi(,406) 
+info-stnd.texi(,407) @item @key{C-b} (@code{backward-char})
+info-stnd.texi(,408) @itemx @key{LEFT} (an arrow key)
+info-stnd.texi(,409) @kindex C-b, in Info windows
+info-stnd.texi(,410) @kindex LEFT (an arrow key)
+info-stnd.texi(,411) @findex backward-char
+info-stnd.texi(,412) Move the cursor backward a character.
+info-stnd.texi(,413) 
+info-stnd.texi(,414) @item @key{M-f} (@code{forward-word})
+info-stnd.texi(,415) @itemx @kbd{C-@key{RIGHT}} (on DOS/Windows only)
+info-stnd.texi(,416) @kindex M-f, in Info windows
+info-stnd.texi(,417) @kindex C-RIGHT
+info-stnd.texi(,418) @findex forward-word
+info-stnd.texi(,419) Move the cursor forward a word.
+info-stnd.texi(,420) 
+info-stnd.texi(,421) @item @key{M-b} (@code{backward-word})
+info-stnd.texi(,422) @itemx @kbd{C-@key{LEFT}} (on DOS/Windows only)
+info-stnd.texi(,423) @kindex M-b, in Info windows
+info-stnd.texi(,424) @kindex C-LEFT
+info-stnd.texi(,425) @findex backward-word
+info-stnd.texi(,426) Move the cursor backward a word.
+info-stnd.texi(,427) 
+info-stnd.texi(,428) @item @key{M-<} (@code{beginning-of-node})
+info-stnd.texi(,429) @itemx @key{C-@key{Home}} (on DOS/Windows only)
+info-stnd.texi(,430) @itemx @key{b}
+info-stnd.texi(,431) @itemx @key{M-b}, vi-like operation
+info-stnd.texi(,432) @kindex b, in Info windows
+info-stnd.texi(,433) @kindex M-<
+info-stnd.texi(,434) @kindex C-Home
+info-stnd.texi(,435) @kindex M-b, vi-like operation
+info-stnd.texi(,436) @findex beginning-of-node
+info-stnd.texi(,437) Move the cursor to the start of the current node.
+info-stnd.texi(,438) 
+info-stnd.texi(,439) @item @key{M->} (@code{end-of-node})
+info-stnd.texi(,440) @itemx @key{C-@key{End}} (on DOS/Windows only)
+info-stnd.texi(,441) @itemx @key{e}
+info-stnd.texi(,442) @kindex M->
+info-stnd.texi(,443) @kindex e, in Info windows
+info-stnd.texi(,444) @kindex C-End
+info-stnd.texi(,445) @findex end-of-node
+info-stnd.texi(,446) Move the cursor to the end of the current node.
+info-stnd.texi(,447) 
+info-stnd.texi(,448) @item @key{M-r} (@code{move-to-window-line})
+info-stnd.texi(,449) @kindex M-r
+info-stnd.texi(,450) @findex move-to-window-line
+info-stnd.texi(,451) Move the cursor to a specific line of the window.  Without a numeric
+info-stnd.texi(,452) argument, @code{M-r} moves the cursor to the start of the line in the
+info-stnd.texi(,453) center of the window.  With a numeric argument of @var{n}, @code{M-r}
+info-stnd.texi(,454) moves the cursor to the start of the @var{n}th line in the window.
+info-stnd.texi(,455) @end table
+info-stnd.texi(,456) 
+info-stnd.texi(,457) 
+info-stnd.texi(,458) @node Scrolling Commands
+info-stnd.texi(,459) @chapter Moving Text Within a Window
+info-stnd.texi(,460) @cindex scrolling
+info-stnd.texi(,461) 
+info-stnd.texi(,462) Sometimes you are looking at a screenful of text, and only part of the
+info-stnd.texi(,463) current paragraph you are reading is visible on the screen.  The
+info-stnd.texi(,464) commands detailed in this section are used to shift which part of the
+info-stnd.texi(,465) current node is visible on the screen.
+info-stnd.texi(,466) 
+info-stnd.texi(,467) Scrolling commands are bound differently when @samp{--vi-keys} operation
+info-stnd.texi(,468) (@pxref{--vi-keys}) is in effect.  These key bindings are designated
+info-stnd.texi(,469) with ``vi-like operation''.
+info-stnd.texi(,470) 
+info-stnd.texi(,471) @table @asis
+info-stnd.texi(,472) @item @key{SPC} (@code{scroll-forward})
+info-stnd.texi(,473) @kindex SPC, in Info windows
+info-stnd.texi(,474) @findex scroll-forward
+info-stnd.texi(,475) Shift the text in this window up.  That is, show more of the node which
+info-stnd.texi(,476) is currently below the bottom of the window.  With a numeric argument,
+info-stnd.texi(,477) show that many more lines at the bottom of the window; a numeric
+info-stnd.texi(,478) argument of 4 would shift all of the text in the window up 4 lines
+info-stnd.texi(,479) (discarding the top 4 lines), and show you four new lines at the bottom
+info-stnd.texi(,480) of the window.  Without a numeric argument, @key{SPC} takes the bottom
+info-stnd.texi(,481) two lines of the window and places them at the top of the window,
+info-stnd.texi(,482) redisplaying almost a completely new screenful of lines.  If you are at
+info-stnd.texi(,483) the end of a node, @key{SPC} takes you to the ``next'' node, so that you can
+info-stnd.texi(,484) read an entire manual from start to finish by repeating @key{SPC}.
+info-stnd.texi(,485) 
+info-stnd.texi(,486) The default scroll size is one screen-full, but it can be changed by
+info-stnd.texi(,487) invoking the (@code{scroll-forward-page-only-set-window}) command,
+info-stnd.texi(,488) @samp{z} under @samp{--vi-keys}, with a numeric argument.
+info-stnd.texi(,489) 
+info-stnd.texi(,490) @item @key{NEXT} (an arrow key) (@code{scroll-forward-page-only})
+info-stnd.texi(,491) @itemx @key{C-v}
+info-stnd.texi(,492) @itemx @key{C-f}, vi-like operation
+info-stnd.texi(,493) @itemx @key{f}, vi-like operation
+info-stnd.texi(,494) @itemx @key{M-SPC}, vi-like operation
+info-stnd.texi(,495) @kindex NEXT
+info-stnd.texi(,496) @kindex C-v
+info-stnd.texi(,497) @kindex C-f, vi-like operation
+info-stnd.texi(,498) @kindex f, vi-like operation
+info-stnd.texi(,499) @kindex M-SPC, vi-like operation
+info-stnd.texi(,500) @findex scroll-forward-page-only
+info-stnd.texi(,501) Shift the text in this window up.  This is identical to the @key{SPC}
+info-stnd.texi(,502) operation above, except that it never scrolls beyond the end of the
+info-stnd.texi(,503) current node.
+info-stnd.texi(,504) 
+info-stnd.texi(,505) @kindex PageDown
+info-stnd.texi(,506) The @key{NEXT} key is known as the @key{PageDown} key on some
+info-stnd.texi(,507) keyboards.
+info-stnd.texi(,508) 
+info-stnd.texi(,509) @item @key{z} (@code{scroll-forward-page-only-set-window}, vi-like operation)
+info-stnd.texi(,510) @kindex z, vi-like operation
+info-stnd.texi(,511) @findex scroll-forward-page-only-set-window
+info-stnd.texi(,512) Scroll forward, like with @key{NEXT}, but if a numeric argument is
+info-stnd.texi(,513) specified, it becomes the default scroll size for subsequent
+info-stnd.texi(,514) @code{scroll-forward} and @code{scroll-backward} commands and their
+info-stnd.texi(,515) ilk.
+info-stnd.texi(,516) 
+info-stnd.texi(,517) @item @key{DEL} (@code{scroll-backward})
+info-stnd.texi(,518) @kindex DEL, in Info windows
+info-stnd.texi(,519) @findex scroll-backward
+info-stnd.texi(,520) Shift the text in this window down.  The inverse of
+info-stnd.texi(,521) @code{scroll-forward}.
+info-stnd.texi(,522) If you are at the start of a node, @key{DEL} takes you to the
+info-stnd.texi(,523) ``previous'' node, so that you can read an entire manual from finish to
+info-stnd.texi(,524) start by repeating @key{DEL}.  The default scroll size can be changed by
+info-stnd.texi(,525) invoking the (@code{scroll-backward-page-only-set-window}) command,
+info-stnd.texi(,526) @samp{w} under @samp{--vi-keys}, with a numeric argument.
+info-stnd.texi(,527) 
+info-stnd.texi(,528) @itemx @key{PREVIOUS} (arrow key) (@code{scroll-backward-page-only})
+info-stnd.texi(,529) @itemx @key{PRIOR} (arrow key)
+info-stnd.texi(,530) @itemx @key{M-v}
+info-stnd.texi(,531) @itemx @key{b}, vi-like operation
+info-stnd.texi(,532) @itemx @key{C-b}, vi-like operation
+info-stnd.texi(,533) @kindex PREVIOUS
+info-stnd.texi(,534) @kindex M-v
+info-stnd.texi(,535) @kindex b, vi-like operation
+info-stnd.texi(,536) @kindex C-b, vi-like operation
+info-stnd.texi(,537) @findex scroll-backward-page-only
+info-stnd.texi(,538) Shift the text in this window down.  The inverse of
+info-stnd.texi(,539) @code{scroll-forward-page-only}.  Does not scroll beyond the start of
+info-stnd.texi(,540) the current node.  The default scroll size can be changed by invoking
+info-stnd.texi(,541) the(@code{scroll-backward-page-only-set-window}) command, @samp{w} under
+info-stnd.texi(,542) @samp{--vi-keys}, with a numeric argument.
+info-stnd.texi(,543) 
+info-stnd.texi(,544) @item @key{w} (@code{scroll-backward-page-only-set-window}, vi-like operation)
+info-stnd.texi(,545) @kindex w, vi-like operation
+info-stnd.texi(,546) @findex scroll-backward-page-only-set-window
+info-stnd.texi(,547) Scroll backward, like with @key{PREVIOUS}, but if a numeric argument is
+info-stnd.texi(,548) specified, it becomes the default scroll size for subsequent
+info-stnd.texi(,549) @code{scroll-forward} and @code{scroll-backward} commands.
+info-stnd.texi(,550) 
+info-stnd.texi(,551) @item @key{C-n} (@code{down-line}, vi-like operation)
+info-stnd.texi(,552) @itemx @key{C-e}, vi-like operation
+info-stnd.texi(,553) @itemx @key{RET}, vi-like operation
+info-stnd.texi(,554) @itemx @key{LFD}, vi-like operation
+info-stnd.texi(,555) @itemx @key{DOWN}, vi-like operation
+info-stnd.texi(,556) @kindex C-n, vi-like operation
+info-stnd.texi(,557) @kindex C-e, vi-like operation
+info-stnd.texi(,558) @kindex RET, vi-like operation
+info-stnd.texi(,559) @kindex LFD, vi-like operation
+info-stnd.texi(,560) @kindex DOWN, vi-like operation
+info-stnd.texi(,561) @findex down-line
+info-stnd.texi(,562) Scroll forward by one line.  With a numeric argument, scroll forward
+info-stnd.texi(,563) that many lines.
+info-stnd.texi(,564) 
+info-stnd.texi(,565) @item @key{C-p} (@code{up-line}, vi-like operation)
+info-stnd.texi(,566) @itemx @key{UP}, vi-like operation
+info-stnd.texi(,567) @itemx @key{y}, vi-like operation
+info-stnd.texi(,568) @itemx @key{k}, vi-like operation
+info-stnd.texi(,569) @itemx @key{C-k}, vi-like operation
+info-stnd.texi(,570) @itemx @key{C-y}, vi-like operation
+info-stnd.texi(,571) @kindex C-p, vi-like operation
+info-stnd.texi(,572) @kindex UP, vi-like operation
+info-stnd.texi(,573) @kindex y, vi-like operation
+info-stnd.texi(,574) @kindex k, vi-like operation
+info-stnd.texi(,575) @kindex C-k, vi-like operation
+info-stnd.texi(,576) @kindex C-y, vi-like operation
+info-stnd.texi(,577) @findex up-line
+info-stnd.texi(,578) Scroll backward one line.  With a numeric argument, scroll backward that
+info-stnd.texi(,579) many lines.
+info-stnd.texi(,580) 
+info-stnd.texi(,581) @item @key{d} (@code{scroll-half-screen-down}, vi-like operation)
+info-stnd.texi(,582) @itemx @key{C-d}, vi-like operation
+info-stnd.texi(,583) @kindex d, vi-like operation
+info-stnd.texi(,584) @kindex C-d, vi-like operation
+info-stnd.texi(,585) @findex scroll-half-screen-down
+info-stnd.texi(,586) Scroll forward by half of the screen size.  With a numeric argument,
+info-stnd.texi(,587) scroll that many lines.  If an argument is specified, it becomes the new
+info-stnd.texi(,588) default number of lines to scroll for subsequent @samp{d} and @samp{u}
+info-stnd.texi(,589) commands.
+info-stnd.texi(,590) 
+info-stnd.texi(,591) @item @key{u} (@code{scroll-half-screen-up}, vi-like operation)
+info-stnd.texi(,592) @itemx @key{C-u}, vi-like operation
+info-stnd.texi(,593) @kindex u, vi-like operation
+info-stnd.texi(,594) @kindex C-u, vi-like operation
+info-stnd.texi(,595) @findex scroll-half-screen-up
+info-stnd.texi(,596) Scroll back by half of the screen size.  With a numeric argument,
+info-stnd.texi(,597) scroll that many lines.  If an argument is specified, it becomes the new
+info-stnd.texi(,598) default number of lines to scroll for subsequent @samp{u} and @samp{d}
+info-stnd.texi(,599) commands.
+info-stnd.texi(,600) @end table
+info-stnd.texi(,601) 
+info-stnd.texi(,602) @cindex scrolling through node structure
+info-stnd.texi(,603) The @code{scroll-forward} and @code{scroll-backward} commands can also
+info-stnd.texi(,604) move forward and backward through the node structure of the file.  If
+info-stnd.texi(,605) you press @key{SPC} while viewing the end of a node, or @key{DEL} while
+info-stnd.texi(,606) viewing the beginning of a node, what happens is controlled by the
+info-stnd.texi(,607) variable @code{scroll-behavior}.  @xref{Variables,
+info-stnd.texi(,608) @code{scroll-behavior}}, for more information.
+info-stnd.texi(,609) 
+info-stnd.texi(,610) The @code{scroll-forward-page-only} and @code{scroll-backward-page-only}
+info-stnd.texi(,611) commands never scroll beyond the current node.
+info-stnd.texi(,612) 
+info-stnd.texi(,613) @kindex PageUp
+info-stnd.texi(,614) The @key{PREVIOUS} key is the @key{PageUp} key on many keyboards.  Emacs
+info-stnd.texi(,615) refers to it by the name @key{PRIOR}.  When you use @key{PRIOR} or
+info-stnd.texi(,616) @key{PageUp} to scroll, Info never scrolls beyond the beginning of the
+info-stnd.texi(,617) current node.
+info-stnd.texi(,618) 
+info-stnd.texi(,619) @kindex BS (backspace)
+info-stnd.texi(,620) If your keyboard lacks the @key{DEL} key, look for a key called
+info-stnd.texi(,621) @key{BS}, or @samp{BackSpace}, sometimes designated with an arrow which
+info-stnd.texi(,622) points to the left, which should perform the same function.
+info-stnd.texi(,623) 
+info-stnd.texi(,624) @table @asis
+info-stnd.texi(,625) @item @key{C-l} (@code{redraw-display})
+info-stnd.texi(,626) @kindex C-l
+info-stnd.texi(,627) @findex redraw-display
+info-stnd.texi(,628) Redraw the display from scratch, or shift the line containing the cursor
+info-stnd.texi(,629) to a specified location.  With no numeric argument, @samp{C-l} clears
+info-stnd.texi(,630) the screen, and then redraws its entire contents.  Given a numeric
+info-stnd.texi(,631) argument of @var{n}, the line containing the cursor is shifted so that
+info-stnd.texi(,632) it is on the @var{n}th line of the window.
+info-stnd.texi(,633) 
+info-stnd.texi(,634) @item @kbd{C-x @key{w}} (@code{toggle-wrap})
+info-stnd.texi(,635) @kindex C-w
+info-stnd.texi(,636) @findex toggle-wrap
+info-stnd.texi(,637) Toggles the state of line wrapping in the current window.  Normally,
+info-stnd.texi(,638) lines which are longer than the screen width @dfn{wrap}, i.e., they are
+info-stnd.texi(,639) continued on the next line.  Lines which wrap have a @samp{\} appearing
+info-stnd.texi(,640) in the rightmost column of the screen.  You can cause such lines to be
+info-stnd.texi(,641) terminated at the rightmost column by changing the state of line
+info-stnd.texi(,642) wrapping in the window with @code{C-x w}.  When a line which needs more
+info-stnd.texi(,643) space than one screen width to display is displayed, a @samp{$} appears
+info-stnd.texi(,644) in the rightmost column of the screen, and the remainder of the line is
+info-stnd.texi(,645) invisible.  When long lines are truncated, the modeline displays the
+info-stnd.texi(,646) @samp{$} character near its left edge.
+info-stnd.texi(,647) @end table
+info-stnd.texi(,648) 
+info-stnd.texi(,649) 
+info-stnd.texi(,650) @node Node Commands
+info-stnd.texi(,651) @chapter Selecting a Node
+info-stnd.texi(,652) @cindex nodes, selection of
+info-stnd.texi(,653) 
+info-stnd.texi(,654) This section details the numerous Info commands which select a new node
+info-stnd.texi(,655) to view in the current window.
+info-stnd.texi(,656) 
+info-stnd.texi(,657) The most basic node commands are @samp{n}, @samp{p}, @samp{u}, and
+info-stnd.texi(,658) @samp{l}.  Note that the commands to select nodes are mapped differently
+info-stnd.texi(,659) when @samp{--vi-keys} is in effect; these keybindings are designated
+info-stnd.texi(,660) below as ``vi-like operation''.
+info-stnd.texi(,661) 
+info-stnd.texi(,662) When you are viewing a node, the top line of the node contains some Info
+info-stnd.texi(,663) @dfn{pointers} which describe where the next, previous, and up nodes
+info-stnd.texi(,664) are.  Info uses this line to move about the node structure of the file
+info-stnd.texi(,665) when you use the following commands:
+info-stnd.texi(,666) 
+info-stnd.texi(,667) @table @asis
+info-stnd.texi(,668) @item @key{n} (@code{next-node})
+info-stnd.texi(,669) @itemx @kbd{C-@key{NEXT}} (on DOS/Windows only)
+info-stnd.texi(,670) @itemx @kbd{C-x @key{n}}, vi-like operation
+info-stnd.texi(,671) @kindex n
+info-stnd.texi(,672) @kindex C-NEXT
+info-stnd.texi(,673) @kindex C-x n, vi-like operation
+info-stnd.texi(,674) @findex next-node
+info-stnd.texi(,675) Select the `Next' node.
+info-stnd.texi(,676) 
+info-stnd.texi(,677) @kindex C-PgDn
+info-stnd.texi(,678) The @key{NEXT} key is known as the @key{PgDn} key on some
+info-stnd.texi(,679) keyboards.
+info-stnd.texi(,680) 
+info-stnd.texi(,681) @item @key{p} (@code{prev-node})
+info-stnd.texi(,682) @itemx @kbd{C-@key{PREVIOUS}} (on DOS/Windows only)
+info-stnd.texi(,683) @kindex p
+info-stnd.texi(,684) @kindex C-PREVIOUS
+info-stnd.texi(,685) @findex prev-node
+info-stnd.texi(,686) Select the `Prev' node.
+info-stnd.texi(,687) 
+info-stnd.texi(,688) @kindex C-PgUp
+info-stnd.texi(,689) The @key{PREVIOUS} key is known as the @key{PgUp} key on some
+info-stnd.texi(,690) keyboards.
+info-stnd.texi(,691) 
+info-stnd.texi(,692) @item @key{u} (@code{up-node})
+info-stnd.texi(,693) @itemx @kbd{C-@key{UP}} (an arrow key on DOS/Windows only)
+info-stnd.texi(,694) @itemx @kbd{C-x @key{u}}, vi-like operation
+info-stnd.texi(,695) @kindex u
+info-stnd.texi(,696) @kindex C-UP
+info-stnd.texi(,697) @kindex C-x u, vi-like operation
+info-stnd.texi(,698) @findex up-node
+info-stnd.texi(,699) Select the `Up' node.
+info-stnd.texi(,700) @end table
+info-stnd.texi(,701) 
+info-stnd.texi(,702) You can easily select a node that you have already viewed in this window
+info-stnd.texi(,703) by using the @samp{l} command -- this name stands for "last", and
+info-stnd.texi(,704) actually moves backwards through the history of visited nodes for this
+info-stnd.texi(,705) window.  This is handy when you followed a reference to another node,
+info-stnd.texi(,706) possibly to read about a related issue, and would like then to resume
+info-stnd.texi(,707) reading at the same place where you started the excursion.
+info-stnd.texi(,708) 
+info-stnd.texi(,709) Each node where you press @samp{l} is discarded from the history.  Thus,
+info-stnd.texi(,710) by the time you get to the first node you visited in a window, the
+info-stnd.texi(,711) entire history of that window is discarded.
+info-stnd.texi(,712) 
+info-stnd.texi(,713) @table @asis
+info-stnd.texi(,714) @item @key{l} (@code{history-node})
+info-stnd.texi(,715) @itemx @key{C-@key{CENTER}} (on DOS/Windows only)
+info-stnd.texi(,716) @itemx @key{'}, vi-like operation
+info-stnd.texi(,717) @kindex l
+info-stnd.texi(,718) @kindex C-CENTER
+info-stnd.texi(,719) @kindex ', vi-like operation
+info-stnd.texi(,720) @findex history-node
+info-stnd.texi(,721) Pop the most recently selected node in this window from the node
+info-stnd.texi(,722) history.
+info-stnd.texi(,723) @end table
+info-stnd.texi(,724) 
+info-stnd.texi(,725) Two additional commands make it easy to select the most commonly
+info-stnd.texi(,726) selected nodes; they are @samp{t} and @samp{d}.
+info-stnd.texi(,727) 
+info-stnd.texi(,728) @table @asis
+info-stnd.texi(,729) @item @key{t} (@code{top-node})
+info-stnd.texi(,730) @itemx @key{M-t}, vi-like operation
+info-stnd.texi(,731) @kindex t
+info-stnd.texi(,732) @kindex M-t, vi-like operation
+info-stnd.texi(,733) @findex top-node
+info-stnd.texi(,734) Select the node @samp{Top} in the current Info file.
+info-stnd.texi(,735) 
+info-stnd.texi(,736) @item @key{d} (@code{dir-node})
+info-stnd.texi(,737) @itemx @key{M-d}, vi-like operation
+info-stnd.texi(,738) @kindex d
+info-stnd.texi(,739) @kindex M-d, vi-like operation
+info-stnd.texi(,740) @findex dir-node
+info-stnd.texi(,741) Select the directory node (i.e., the node @samp{(dir)}).
+info-stnd.texi(,742) @end table
+info-stnd.texi(,743) 
+info-stnd.texi(,744) Here are some other commands which immediately result in the selection
+info-stnd.texi(,745) of a different node in the current window:
+info-stnd.texi(,746) 
+info-stnd.texi(,747) @table @asis
+info-stnd.texi(,748) @item @key{<} (@code{first-node})
+info-stnd.texi(,749) @itemx @key{g}, vi-like operation
+info-stnd.texi(,750) @kindex <
+info-stnd.texi(,751) @kindex g, vi-like operation
+info-stnd.texi(,752) @findex first-node
+info-stnd.texi(,753) Selects the first node which appears in this file.  This node is most
+info-stnd.texi(,754) often @samp{Top}, but it does not have to be.  With a numeric argument
+info-stnd.texi(,755) @var{N}, select the @var{N}th node (the first node is node 1).  An
+info-stnd.texi(,756) argument of zero is the same as the argument of 1.
+info-stnd.texi(,757) 
+info-stnd.texi(,758) @item @key{>} (@code{last-node})
+info-stnd.texi(,759) @itemx @key{G}, vi-like operation
+info-stnd.texi(,760) @kindex >
+info-stnd.texi(,761) @kindex G, vi-like operation
+info-stnd.texi(,762) @findex last-node
+info-stnd.texi(,763) Select the last node which appears in this file.  With a numeric argument
+info-stnd.texi(,764) @var{N}, select the @var{N}th node (the first node is node 1).  An
+info-stnd.texi(,765) argument of zero is the same as no argument, i.e., it selects the last
+info-stnd.texi(,766) node.
+info-stnd.texi(,767) 
+info-stnd.texi(,768) @item @key{]} (@code{global-next-node})
+info-stnd.texi(,769) @kindex ]
+info-stnd.texi(,770) @findex global-next-node
+info-stnd.texi(,771) Move forward or down through node structure.  If the node that you are
+info-stnd.texi(,772) currently viewing has a @samp{Next} pointer, that node is selected.
+info-stnd.texi(,773) Otherwise, if this node has a menu, the first menu item is selected.  If
+info-stnd.texi(,774) there is no @samp{Next} and no menu, the same process is tried with the
+info-stnd.texi(,775) @samp{Up} node of this node.
+info-stnd.texi(,776) 
+info-stnd.texi(,777) @item @key{[} (@code{global-prev-node})
+info-stnd.texi(,778) @kindex [
+info-stnd.texi(,779) @findex global-prev-node
+info-stnd.texi(,780) Move backward or up through node structure.  If the node that you are
+info-stnd.texi(,781) currently viewing has a @samp{Prev} pointer, that node is selected.
+info-stnd.texi(,782) Otherwise, if the node has an @samp{Up} pointer, that node is selected,
+info-stnd.texi(,783) and if it has a menu, the last item in the menu is selected.
+info-stnd.texi(,784) @end table
+info-stnd.texi(,785) 
+info-stnd.texi(,786) You can get the same behavior as @code{global-next-node} and
+info-stnd.texi(,787) @code{global-prev-node} while simply scrolling through the file with
+info-stnd.texi(,788) @key{SPC} and @key{DEL}; @xref{Variables, @code{scroll-behavior}}, for
+info-stnd.texi(,789) more information.
+info-stnd.texi(,790) 
+info-stnd.texi(,791) @table @asis
+info-stnd.texi(,792) @anchor{goto-node}
+info-stnd.texi(,793) @item @key{g} (@code{goto-node})
+info-stnd.texi(,794) @itemx @kbd{C-x @key{g}}, vi-like operation
+info-stnd.texi(,795) @kindex g
+info-stnd.texi(,796) @kindex C-x g, vi-like operation
+info-stnd.texi(,797) @findex goto-node
+info-stnd.texi(,798) Read the name of a node and select it.  While reading the node name,
+info-stnd.texi(,799) completion (@pxref{The Echo Area, completion}) is only done for the
+info-stnd.texi(,800) nodes which reside in one of the Info files that were loaded in the
+info-stnd.texi(,801) current Info session; if the desired node resides in some other file,
+info-stnd.texi(,802) you must type the node exactly as it appears in that Info file, and you
+info-stnd.texi(,803) must include the Info file of the other file.  For example,
+info-stnd.texi(,804) 
+info-stnd.texi(,805) @example
+info-stnd.texi(,806) @code{g(emacs)Buffers}
+info-stnd.texi(,807) @end example
+info-stnd.texi(,808) 
+info-stnd.texi(,809) finds the node @samp{Buffers} in the Info file @file{emacs}.
+info-stnd.texi(,810) 
+info-stnd.texi(,811) @anchor{goto-invocation}
+info-stnd.texi(,812) @item @key{O} (@code{goto-invocation}
+info-stnd.texi(,813) @itemx @key{I}
+info-stnd.texi(,814) @kindex O
+info-stnd.texi(,815) @kindex I
+info-stnd.texi(,816) @findex goto-invocation
+info-stnd.texi(,817) @cindex finding the Invocation node
+info-stnd.texi(,818) Read the name of a program and look for a node in the current Info file
+info-stnd.texi(,819) which describes the invocation and the command-line options for that
+info-stnd.texi(,820) program.  The default program name is derived from the name of the
+info-stnd.texi(,821) current Info file.  This command does the same as the
+info-stnd.texi(,822) @samp{--show-options} command-line option (@pxref{--show-options}), but
+info-stnd.texi(,823) it also allows to specify the program name; this is important for those
+info-stnd.texi(,824) manuals which describe several programs.
+info-stnd.texi(,825) 
+info-stnd.texi(,826) If you need to find the Invocation node of a program that is documented
+info-stnd.texi(,827) in another Info file, you need to visit that file before invoking
+info-stnd.texi(,828) @samp{I}.  For example, if you are reading the Emacs manual and want to
+info-stnd.texi(,829) see the command-line options of the @code{makeinfo} program, type @kbd{g
+info-stnd.texi(,830) (texinfo) @key{RET}} and then @kbd{I makeinfo @key{RET}}.  If you don't
+info-stnd.texi(,831) know what Info file documents the command, or if invoking @samp{I}
+info-stnd.texi(,832) doesn't display the right node, go to the @samp{(dir)} node (using the
+info-stnd.texi(,833) @samp{d} command) and invoke @samp{I} from there.
+info-stnd.texi(,834) 
+info-stnd.texi(,835) @item @key{G} (@code{menu-sequence})
+info-stnd.texi(,836) @kindex G
+info-stnd.texi(,837) @findex menu-sequence
+info-stnd.texi(,838) @cindex menu, following, from inside Info
+info-stnd.texi(,839) Read a sequence of menu entries and follow it.  Info prompts for a
+info-stnd.texi(,840) sequence of menu items separated by commas.  (Since commas are not
+info-stnd.texi(,841) allowed in a node name, they are a natural choice for a delimiter in a
+info-stnd.texi(,842) list of menu items.)  Info then looks up the first item in the menu of
+info-stnd.texi(,843) the node @samp{(dir)} (if the @samp{(dir)} node cannot be found, Info
+info-stnd.texi(,844) uses @samp{Top}).  If such an entry is found, Info goes to the node it
+info-stnd.texi(,845) points to and looks up the second item in the menu of that node, etc.
+info-stnd.texi(,846) In other words, you can specify a complete path which descends through
+info-stnd.texi(,847) the menu hierarchy of a particular Info file starting at the
+info-stnd.texi(,848) @samp{(dir)} node.  This has the same effect as if you typed the menu
+info-stnd.texi(,849) item sequence on Info's command line, see @ref{command-line menu items,,
+info-stnd.texi(,850) Info command-line arguments processing}.  For example,
+info-stnd.texi(,851) 
+info-stnd.texi(,852) @example
+info-stnd.texi(,853)  @kbd{G Texinfo,Overview,Reporting Bugs @key{RET}}
+info-stnd.texi(,854) @end example
+info-stnd.texi(,855) 
+info-stnd.texi(,856) @noindent
+info-stnd.texi(,857) displays the node @samp{Reporting Bugs} in the Texinfo manual.  (You
+info-stnd.texi(,858) don't actually need to type the menu items in their full length, or in
+info-stnd.texi(,859) their exact letter-case.  However, if you do type the menu items
+info-stnd.texi(,860) exactly, Info will find it faster.)
+info-stnd.texi(,861) 
+info-stnd.texi(,862) If any of the menu items you type are not found, Info stops at the last
+info-stnd.texi(,863) entry it did find and reports an error.
+info-stnd.texi(,864) 
+info-stnd.texi(,865) @item @kbd{C-x @key{k}} (@code{kill-node})
+info-stnd.texi(,866) @kindex C-x k
+info-stnd.texi(,867) @findex kill-node
+info-stnd.texi(,868) Kill a node.  The node name is prompted for in the echo area, with a
+info-stnd.texi(,869) default of the current node.  @dfn{Killing} a node means that Info tries
+info-stnd.texi(,870) hard to forget about it, removing it from the list of history nodes kept
+info-stnd.texi(,871) for the window where that node is found.  Another node is selected in
+info-stnd.texi(,872) the window which contained the killed node.
+info-stnd.texi(,873) 
+info-stnd.texi(,874) @item @kbd{C-x C-f} (@code{view-file})
+info-stnd.texi(,875) @kindex C-x C-f
+info-stnd.texi(,876) @findex view-file
+info-stnd.texi(,877) Read the name of a file and selects the entire file.  The command
+info-stnd.texi(,878) @example
+info-stnd.texi(,879) @code{C-x C-f @var{filename}}
+info-stnd.texi(,880) @end example
+info-stnd.texi(,881) is equivalent to typing
+info-stnd.texi(,882) @example
+info-stnd.texi(,883) @code{g(@var{filename})*}
+info-stnd.texi(,884) @end example
+info-stnd.texi(,885) 
+info-stnd.texi(,886) @item @kbd{C-x C-b} (@code{list-visited-nodes})
+info-stnd.texi(,887) @kindex C-x C-b
+info-stnd.texi(,888) @findex list-visited-nodes
+info-stnd.texi(,889) Make a window containing a menu of all of the currently visited nodes.
+info-stnd.texi(,890) This window becomes the selected window, and you may use the standard
+info-stnd.texi(,891) Info commands within it.
+info-stnd.texi(,892) 
+info-stnd.texi(,893) @item @kbd{C-x @key{b}} (@code{select-visited-node})
+info-stnd.texi(,894) @kindex C-x b
+info-stnd.texi(,895) @findex select-visited-node
+info-stnd.texi(,896) Select a node which has been previously visited in a visible window.
+info-stnd.texi(,897) This is similar to @samp{C-x C-b} followed by @samp{m}, but no window is
+info-stnd.texi(,898) created.
+info-stnd.texi(,899) @end table
+info-stnd.texi(,900) 
+info-stnd.texi(,901) 
+info-stnd.texi(,902) @node Searching Commands
+info-stnd.texi(,903) @chapter Searching an Info File
+info-stnd.texi(,904) @cindex searching
+info-stnd.texi(,905) 
+info-stnd.texi(,906) GNU Info allows you to search for a sequence of characters throughout an
+info-stnd.texi(,907) entire Info file, search through the indices of an Info file, or find
+info-stnd.texi(,908) areas within an Info file which discuss a particular topic.
+info-stnd.texi(,909) 
+info-stnd.texi(,910) @table @asis
+info-stnd.texi(,911) @item @key{s} (@code{search})
+info-stnd.texi(,912) @itemx @key{/}
+info-stnd.texi(,913) @kindex s
+info-stnd.texi(,914) @kindex /
+info-stnd.texi(,915) @findex search
+info-stnd.texi(,916) Read a string in the echo area and search for it.  If the string
+info-stnd.texi(,917) includes upper-case characters, the Info file is searched
+info-stnd.texi(,918) case-sensitively; otherwise Info ignores the letter case.  With a
+info-stnd.texi(,919) numeric argument of @var{N}, search for @var{N}th occurrence of the
+info-stnd.texi(,920) string.  Negative arguments search backwards.
+info-stnd.texi(,921) 
+info-stnd.texi(,922) @item @key{?} (@code{search-backward}, vi-like operation)
+info-stnd.texi(,923) @kindex ?, vi-like operation
+info-stnd.texi(,924) @findex search-backward
+info-stnd.texi(,925) Read a string in the echo area and search backward through the Info file
+info-stnd.texi(,926) for that string.  If the string includes upper-case characters, the Info
+info-stnd.texi(,927) file is searched case-sensitively; otherwise Info ignores the letter
+info-stnd.texi(,928) case.  With a numeric argument of @var{N}, search for @var{N}th
+info-stnd.texi(,929) occurrence of the string.  Negative arguments search forward.
+info-stnd.texi(,930) 
+info-stnd.texi(,931) @item @key{S} (@code{search-case-sensitively}
+info-stnd.texi(,932) @kindex S
+info-stnd.texi(,933) @findex search-case-sensitively
+info-stnd.texi(,934) @cindex search, case-sensitive
+info-stnd.texi(,935) @cindex case-sensitive search
+info-stnd.texi(,936) Read a string in the echo area and search for it case-sensitively, even
+info-stnd.texi(,937) if the string includes only lower-case letters.  With a numeric argument
+info-stnd.texi(,938) of @var{N}, search for @var{N}th occurrence of the string.  Negative
+info-stnd.texi(,939) arguments search backwards.
+info-stnd.texi(,940) 
+info-stnd.texi(,941) @item @kbd{C-x @key{n}} (@code{search-next})
+info-stnd.texi(,942) @itemx @key{n}, vi-like operation
+info-stnd.texi(,943) @kindex C-x n
+info-stnd.texi(,944) @kindex n, vi-like operation
+info-stnd.texi(,945) @findex search-next
+info-stnd.texi(,946) @cindex repeated search
+info-stnd.texi(,947) Search for the same string used in the last search command, in the same
+info-stnd.texi(,948) direction, and with the same case-sensitivity option.  With a numeric
+info-stnd.texi(,949) argument of @var{N}, search for @var{N}th next occurrence.
+info-stnd.texi(,950) 
+info-stnd.texi(,951) @item @kbd{C-x @key{N}} (@code{search-previous})
+info-stnd.texi(,952) @itemx @key{N}, vi-like operation
+info-stnd.texi(,953) @kindex C-x N
+info-stnd.texi(,954) @kindex n, vi-like operation
+info-stnd.texi(,955) @findex search-previous
+info-stnd.texi(,956) Search for the same string used in the last search command, and with the
+info-stnd.texi(,957) same case-sensitivity option, but in the reverse direction.  With a
+info-stnd.texi(,958) numeric argument of @var{N}, search for @var{N}th previous occurrence.
+info-stnd.texi(,959) 
+info-stnd.texi(,960) @item @key{C-s} (@code{isearch-forward})
+info-stnd.texi(,961) @kindex C-s
+info-stnd.texi(,962) @findex isearch-forward
+info-stnd.texi(,963) @cindex incremental search
+info-stnd.texi(,964) Interactively search forward through the Info file for a string as you
+info-stnd.texi(,965) type it.  If the string includes upper-case characters, the search is
+info-stnd.texi(,966) case-sensitive; otherwise Info ignores the letter case.
+info-stnd.texi(,967) 
+info-stnd.texi(,968) @item @key{C-r} (@code{isearch-backward})
+info-stnd.texi(,969) @kindex C-r
+info-stnd.texi(,970) @findex isearch-backward
+info-stnd.texi(,971) Interactively search backward through the Info file for a string as
+info-stnd.texi(,972) you type it.  If the string includes upper-case characters, the search
+info-stnd.texi(,973) is case-sensitive; otherwise Info ignores the letter case.
+info-stnd.texi(,974) 
+info-stnd.texi(,975) @item @key{i} (@code{index-search})
+info-stnd.texi(,976) @kindex i
+info-stnd.texi(,977) @findex index-search
+info-stnd.texi(,978) @cindex index, searching
+info-stnd.texi(,979) @cindex searching, in the indices
+info-stnd.texi(,980) Look up a string in the indices for this Info file, and select a node
+info-stnd.texi(,981) where the found index entry points to.
+info-stnd.texi(,982) 
+info-stnd.texi(,983) @item @key{,} (@code{next-index-match})
+info-stnd.texi(,984) @kindex ,
+info-stnd.texi(,985) @findex next-index-match
+info-stnd.texi(,986) Move to the node containing the next matching index item from the last
+info-stnd.texi(,987) @samp{i} command.
+info-stnd.texi(,988) 
+info-stnd.texi(,989) @item @kbd{M-x index-apropos}
+info-stnd.texi(,990) @findex index-apropos
+info-stnd.texi(,991) Grovel the indices of all the known Info files on your system for a
+info-stnd.texi(,992) string, and build a menu of the possible matches.
+info-stnd.texi(,993) @end table
+info-stnd.texi(,994) 
+info-stnd.texi(,995) The most basic searching command is @samp{s} or @samp{/}
+info-stnd.texi(,996) (@code{search}).  The @samp{s} command prompts you for a string in the
+info-stnd.texi(,997) echo area, and then searches the remainder of the Info file for an
+info-stnd.texi(,998) occurrence of that string.  If the string is found, the node containing
+info-stnd.texi(,999) it is selected, and the cursor is left positioned at the start of the
+info-stnd.texi(,1000) found string.  Subsequent @samp{s} commands show you the default search
+info-stnd.texi(,1001) string within @samp{[} and @samp{]}; pressing @key{RET} instead of
+info-stnd.texi(,1002) typing a new string will use the default search string.  Under
+info-stnd.texi(,1003) @samp{--vi-keys} (@pxref{--vi-keys}), using the @samp{n} or @samp{N}
+info-stnd.texi(,1004) commands is a faster way of searching for the same string.
+info-stnd.texi(,1005) 
+info-stnd.texi(,1006) @dfn{Incremental searching} is similar to basic searching, but the
+info-stnd.texi(,1007) string is looked up while you are typing it, instead of waiting until
+info-stnd.texi(,1008) the entire search string has been specified.
+info-stnd.texi(,1009) 
+info-stnd.texi(,1010) @cindex search, and case-sensitivity
+info-stnd.texi(,1011) @cindex case-sensitivity, and search
+info-stnd.texi(,1012) Both incremental and non-incremental search by default ignore the case
+info-stnd.texi(,1013) of letters when comparing the Info file text with the search string.
+info-stnd.texi(,1014) However, an uppercase letter in the search string makes the search
+info-stnd.texi(,1015) case-sensitive.  You can force a case-sensitive non-incremental search,
+info-stnd.texi(,1016) even for a string that includes only lower-case letters, by using the
+info-stnd.texi(,1017) @samp{S} command (@code{search-case-sensitively}).  The @samp{n} and
+info-stnd.texi(,1018) @samp{N} commands operate case-sensitively if the last search command
+info-stnd.texi(,1019) was @samp{S}.
+info-stnd.texi(,1020) 
+info-stnd.texi(,1021) The most efficient means of finding something quickly in a manual is
+info-stnd.texi(,1022) the @samp{i} command (@code{index-search}).  This command prompts for
+info-stnd.texi(,1023) a string, and then looks for that string in all the indices of the
+info-stnd.texi(,1024) current Info manual.  If it finds a matching index entry, it displays
+info-stnd.texi(,1025) the node to which that entry refers and prints the full text of the
+info-stnd.texi(,1026) entry in the echo area.  You can press @samp{,}
+info-stnd.texi(,1027) (@code{next-index-match}) to find more matches.  A good Info manual
+info-stnd.texi(,1028) has all of its important concepts indexed, so the @samp{i} command
+info-stnd.texi(,1029) lets you use a manual as a reference.
+info-stnd.texi(,1030) 
+info-stnd.texi(,1031) If you don't know what manual documents something, try the @kbd{M-x
+info-stnd.texi(,1032) index-apropos}.  It prompts for a string and then looks up that string
+info-stnd.texi(,1033) in all the indices of all the Info documents installed on your system.
+info-stnd.texi(,1034) It can also be invoked from the command line; see @ref{--apropos}.
+info-stnd.texi(,1035) 
+info-stnd.texi(,1036) 
+info-stnd.texi(,1037) @node Xref Commands
+info-stnd.texi(,1038) @chapter Selecting Cross References
+info-stnd.texi(,1039) 
+info-stnd.texi(,1040) We have already discussed the @samp{Next}, @samp{Prev}, and @samp{Up}
+info-stnd.texi(,1041) pointers which appear at the top of a node.  In addition to these
+info-stnd.texi(,1042) pointers, a node may contain other pointers which refer you to a
+info-stnd.texi(,1043) different node, perhaps in another Info file.  Such pointers are called
+info-stnd.texi(,1044) @dfn{cross references}, or @dfn{xrefs} for short.
+info-stnd.texi(,1045) 
+info-stnd.texi(,1046) @menu
+info-stnd.texi(,1047) * Parts of an Xref::            What a cross reference is made of.
+info-stnd.texi(,1048) * Selecting Xrefs::             Commands for selecting menu or note items.
+info-stnd.texi(,1049) @end menu
+info-stnd.texi(,1050) 
+info-stnd.texi(,1051) @node Parts of an Xref, Selecting Xrefs,  , Xref Commands
+info-stnd.texi(,1052) @section Parts of an Xref
+info-stnd.texi(,1053) 
+info-stnd.texi(,1054) Cross references have two major parts: the first part is called the
+info-stnd.texi(,1055) @dfn{label}; it is the name that you can use to refer to the cross
+info-stnd.texi(,1056) reference, and the second is the @dfn{target}; it is the full name of
+info-stnd.texi(,1057) the node that the cross reference points to.
+info-stnd.texi(,1058) 
+info-stnd.texi(,1059) The target is separated from the label by a colon @samp{:}; first the
+info-stnd.texi(,1060) label appears, and then the target.  For example, in the sample menu
+info-stnd.texi(,1061) cross reference below, the single colon separates the label from the
+info-stnd.texi(,1062) target.
+info-stnd.texi(,1063) 
+info-stnd.texi(,1064) @example
+info-stnd.texi(,1065) * Foo Label: Foo Target.        More information about Foo.
+info-stnd.texi(,1066) @end example
+info-stnd.texi(,1067) 
+info-stnd.texi(,1068) Note the @samp{.} which ends the name of the target.  The @samp{.} is
+info-stnd.texi(,1069) not part of the target; it serves only to let Info know where the target
+info-stnd.texi(,1070) name ends.
+info-stnd.texi(,1071) 
+info-stnd.texi(,1072) A shorthand way of specifying references allows two adjacent colons to
+info-stnd.texi(,1073) stand for a target name which is the same as the label name:
+info-stnd.texi(,1074) 
+info-stnd.texi(,1075) @example
+info-stnd.texi(,1076) * Foo Commands::                Commands pertaining to Foo.
+info-stnd.texi(,1077) @end example
+info-stnd.texi(,1078) 
+info-stnd.texi(,1079) In the above example, the name of the target is the same as the name of
+info-stnd.texi(,1080) the label, in this case @code{Foo Commands}.
+info-stnd.texi(,1081) 
+info-stnd.texi(,1082) You will normally see two types of cross reference while viewing nodes:
+info-stnd.texi(,1083) @dfn{menu} references, and @dfn{note} references.  Menu references
+info-stnd.texi(,1084) appear within a node's menu; they begin with a @samp{*} at the beginning
+info-stnd.texi(,1085) of a line, and continue with a label, a target, and a comment which
+info-stnd.texi(,1086) describes what the contents of the node pointed to contains.
+info-stnd.texi(,1087) 
+info-stnd.texi(,1088) Note references appear within the body of the node text; they begin with
+info-stnd.texi(,1089) @code{*Note}, and continue with a label and a target.
+info-stnd.texi(,1090) 
+info-stnd.texi(,1091) Like @samp{Next}, @samp{Prev}, and @samp{Up} pointers, cross references
+info-stnd.texi(,1092) can point to any valid node.  They are used to refer you to a place
+info-stnd.texi(,1093) where more detailed information can be found on a particular subject.
+info-stnd.texi(,1094) Here is a cross reference which points to a node within the Texinfo
+info-stnd.texi(,1095) documentation:  @xref{xref, , Writing an Xref, texinfo, the Texinfo
+info-stnd.texi(,1096) Manual}, for more information on creating your own texinfo cross
+info-stnd.texi(,1097) references.
+info-stnd.texi(,1098) 
+info-stnd.texi(,1099) @node Selecting Xrefs,  , Parts of an Xref, Xref Commands
+info-stnd.texi(,1100) @section Selecting Xrefs
+info-stnd.texi(,1101) 
+info-stnd.texi(,1102) The following table lists the Info commands which operate on menu items.
+info-stnd.texi(,1103) 
+info-stnd.texi(,1104) @table @asis
+info-stnd.texi(,1105) @item @key{1} (@code{menu-digit})
+info-stnd.texi(,1106) @itemx @key{2} @dots{} @key{9}
+info-stnd.texi(,1107) @itemx @key{M-1}, vi-like operation
+info-stnd.texi(,1108) @itemx @key{M-2} @dots{} @key{M-9}, vi-like operation
+info-stnd.texi(,1109) @cindex 1 @dots{} 9, in Info windows
+info-stnd.texi(,1110) @cindex M-1 @dots{} M-9, vi-like operation
+info-stnd.texi(,1111) @kindex 1 @dots{} 9, in Info windows
+info-stnd.texi(,1112) @kindex M-1 @dots{} M-9, vi-like operation
+info-stnd.texi(,1113) @findex menu-digit
+info-stnd.texi(,1114) Within an Info window, pressing a single digit, (such as @samp{1}),
+info-stnd.texi(,1115) selects that menu item, and places its node in the current window.
+info-stnd.texi(,1116) For convenience, there is one exception; pressing @samp{0} selects the
+info-stnd.texi(,1117) @emph{last} item in the node's menu.  When @samp{--vi-keys} is in
+info-stnd.texi(,1118) effect, digits set the numeric argument, so these commands are remapped
+info-stnd.texi(,1119) to their @samp{M-} varieties.  For example, to select the last menu
+info-stnd.texi(,1120) item, press @key{M-0}.
+info-stnd.texi(,1121) 
+info-stnd.texi(,1122) @item @key{0} (@code{last-menu-item})
+info-stnd.texi(,1123) @itemx @key{M-0}, vi-like operation
+info-stnd.texi(,1124) @kindex 0, in Info windows
+info-stnd.texi(,1125) @kindex M-0, vi-like operation
+info-stnd.texi(,1126) @findex last-menu-item
+info-stnd.texi(,1127) Select the last item in the current node's menu.
+info-stnd.texi(,1128) 
+info-stnd.texi(,1129) @item @key{m} (@code{menu-item})
+info-stnd.texi(,1130) @kindex m
+info-stnd.texi(,1131) @findex menu-item
+info-stnd.texi(,1132) Reads the name of a menu item in the echo area and selects its node.
+info-stnd.texi(,1133) Completion is available while reading the menu label.  @xref{The Echo
+info-stnd.texi(,1134) Area, completion}.
+info-stnd.texi(,1135) 
+info-stnd.texi(,1136) @item @kbd{M-x find-menu}
+info-stnd.texi(,1137) @findex find-menu
+info-stnd.texi(,1138) Move the cursor to the start of this node's menu.
+info-stnd.texi(,1139) @end table
+info-stnd.texi(,1140) 
+info-stnd.texi(,1141) This table lists the Info commands which operate on cross references.
+info-stnd.texi(,1142) 
+info-stnd.texi(,1143) @table @asis
+info-stnd.texi(,1144) @item @key{f} (@code{xref-item})
+info-stnd.texi(,1145) @itemx @key{r}
+info-stnd.texi(,1146) @item @key{M-f}, vi-like operation
+info-stnd.texi(,1147) @itemx @kbd{C-x @key{r}}, vi-like operation
+info-stnd.texi(,1148) @kindex f
+info-stnd.texi(,1149) @kindex r
+info-stnd.texi(,1150) @kindex M-f, vi-like operation
+info-stnd.texi(,1151) @kindex C-x r, vi-like operation
+info-stnd.texi(,1152) @findex xref-item
+info-stnd.texi(,1153) Reads the name of a note cross reference in the echo area and selects
+info-stnd.texi(,1154) its node.  Completion is available while reading the cross reference
+info-stnd.texi(,1155) label.  @xref{The Echo Area, completion}.
+info-stnd.texi(,1156) @end table
+info-stnd.texi(,1157) 
+info-stnd.texi(,1158) Finally, the next few commands operate on menu or note references alike:
+info-stnd.texi(,1159) 
+info-stnd.texi(,1160) @table @asis
+info-stnd.texi(,1161) @item @key{TAB} (@code{move-to-next-xref})
+info-stnd.texi(,1162) @kindex TAB, in Info windows
+info-stnd.texi(,1163) @findex move-to-next-xref
+info-stnd.texi(,1164) Move the cursor to the start of the next nearest menu item or note
+info-stnd.texi(,1165) reference in this node.  You can then use @key{RET}
+info-stnd.texi(,1166) (@code{select-reference-this-line}) to select the menu or note reference.
+info-stnd.texi(,1167) 
+info-stnd.texi(,1168) @item @key{M-TAB} (@code{move-to-prev-xref})
+info-stnd.texi(,1169) @itemx @key{Shift-@key{TAB}} (on DOS/Windows only)
+info-stnd.texi(,1170) @kindex M-TAB, in Info windows
+info-stnd.texi(,1171) @findex move-to-prev-xref
+info-stnd.texi(,1172) Move the cursor the start of the nearest previous menu item or note
+info-stnd.texi(,1173) reference in this node.
+info-stnd.texi(,1174) 
+info-stnd.texi(,1175) @kindex Shift-TAB, in Info windows
+info-stnd.texi(,1176) @kindex BackTab, in Info windows
+info-stnd.texi(,1177) On DOS/Windows only, the @kbd{Shift-@key{TAB}} key is an alias for
+info-stnd.texi(,1178) @kbd{M-@key{TAB}}.  This key is sometimes called @samp{BackTab}.
+info-stnd.texi(,1179) 
+info-stnd.texi(,1180) @item @key{RET} (@code{select-reference-this-line})
+info-stnd.texi(,1181) @itemx @key{M-g}, vi-like operation
+info-stnd.texi(,1182) @kindex RET, in Info windows
+info-stnd.texi(,1183) @kindex M-g, vi-like operation
+info-stnd.texi(,1184) @findex select-reference-this-line
+info-stnd.texi(,1185) Select the menu item or note reference appearing on this line.
+info-stnd.texi(,1186) @end table
+info-stnd.texi(,1187) 
+info-stnd.texi(,1188) 
+info-stnd.texi(,1189) @node Window Commands
+info-stnd.texi(,1190) @chapter Manipulating Multiple Windows
+info-stnd.texi(,1191) @cindex windows, manipulating
+info-stnd.texi(,1192) 
+info-stnd.texi(,1193) A @dfn{window} is a place to show the text of a node.  Windows have a
+info-stnd.texi(,1194) view area where the text of the node is displayed, and an associated
+info-stnd.texi(,1195) @dfn{mode line}, which briefly describes the node being viewed.
+info-stnd.texi(,1196) 
+info-stnd.texi(,1197) GNU Info supports multiple windows appearing in a single screen; each
+info-stnd.texi(,1198) window is separated from the next by its modeline.  At any time, there
+info-stnd.texi(,1199) is only one @dfn{active} window, that is, the window in which the cursor
+info-stnd.texi(,1200) appears.  There are commands available for creating windows, changing
+info-stnd.texi(,1201) the size of windows, selecting which window is active, and for deleting
+info-stnd.texi(,1202) windows.
+info-stnd.texi(,1203) 
+info-stnd.texi(,1204) @menu
+info-stnd.texi(,1205) * The Mode Line::               What appears in the mode line?
+info-stnd.texi(,1206) * Basic Windows::               Manipulating windows in Info.
+info-stnd.texi(,1207) * The Echo Area::               Used for displaying errors and reading input.
+info-stnd.texi(,1208) @end menu
+info-stnd.texi(,1209) 
+info-stnd.texi(,1210) @node The Mode Line, Basic Windows,  , Window Commands
+info-stnd.texi(,1211) @section The Mode Line
+info-stnd.texi(,1212) 
+info-stnd.texi(,1213) A @dfn{mode line} is a line of inverse video which appears at the bottom
+info-stnd.texi(,1214) of an Info window.  It describes the contents of the window just above
+info-stnd.texi(,1215) it; this information includes the name of the file and node appearing in
+info-stnd.texi(,1216) that window, the number of screen lines it takes to display the node,
+info-stnd.texi(,1217) and the percentage of text that is above the top of the window.  It can
+info-stnd.texi(,1218) also tell you if the indirect tags table for this Info file needs to be
+info-stnd.texi(,1219) updated, and whether or not the Info file was compressed when stored on
+info-stnd.texi(,1220) disk.
+info-stnd.texi(,1221) 
+info-stnd.texi(,1222) Here is a sample mode line for a window containing an uncompressed file
+info-stnd.texi(,1223) named @file{dir}, showing the node @samp{Top}.
+info-stnd.texi(,1224) 
+info-stnd.texi(,1225) @example
+info-stnd.texi(,1226) @group
+info-stnd.texi(,1227) -----Info: (dir)Top, 40 lines --Top-------------------------------------
+info-stnd.texi(,1228)             ^^   ^   ^^^        ^^
+info-stnd.texi(,1229)           (file)Node #lines    where
+info-stnd.texi(,1230) @end group
+info-stnd.texi(,1231) @end example
+info-stnd.texi(,1232) 
+info-stnd.texi(,1233) When a node comes from a file which is compressed on disk, this is
+info-stnd.texi(,1234) indicated in the mode line with two small @samp{z}'s.  In addition, if
+info-stnd.texi(,1235) the Info file containing the node has been split into subfiles, the name
+info-stnd.texi(,1236) of the subfile containing the node appears in the modeline as well:
+info-stnd.texi(,1237) 
+info-stnd.texi(,1238) @example
+info-stnd.texi(,1239) --zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
+info-stnd.texi(,1240) @end example
+info-stnd.texi(,1241) 
+info-stnd.texi(,1242) Truncation of long lines (as opposed to wrapping them to the next
+info-stnd.texi(,1243) display line, @pxref{Scrolling Commands, toggle-wrap}) is indicated by a
+info-stnd.texi(,1244) @samp{$} at the left edge of the mode line:
+info-stnd.texi(,1245) 
+info-stnd.texi(,1246) @example
+info-stnd.texi(,1247) --$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
+info-stnd.texi(,1248) @end example
+info-stnd.texi(,1249) 
+info-stnd.texi(,1250) When Info makes a node internally, such that there is no corresponding
+info-stnd.texi(,1251) info file on disk, the name of the node is surrounded by asterisks
+info-stnd.texi(,1252) (@samp{*}).  The name itself tells you what the contents of the window
+info-stnd.texi(,1253) are; the sample mode line below shows an internally constructed node
+info-stnd.texi(,1254) showing possible completions:
+info-stnd.texi(,1255) 
+info-stnd.texi(,1256) @example
+info-stnd.texi(,1257) -----Info: *Completions*, 7 lines --All---------------------------------
+info-stnd.texi(,1258) @end example
+info-stnd.texi(,1259) 
+info-stnd.texi(,1260) @node Basic Windows, The Echo Area, The Mode Line, Window Commands
+info-stnd.texi(,1261) @section Window Commands
+info-stnd.texi(,1262) 
+info-stnd.texi(,1263) It can be convenient to view more than one node at a time.  To allow
+info-stnd.texi(,1264) this, Info can display more than one @dfn{window}.  Each window has its
+info-stnd.texi(,1265) own mode line (@pxref{The Mode Line}) and history of nodes viewed in that
+info-stnd.texi(,1266) window (@pxref{Node Commands, , @code{history-node}}).
+info-stnd.texi(,1267) 
+info-stnd.texi(,1268) @table @asis
+info-stnd.texi(,1269) @item @kbd{C-x @key{o}} (@code{next-window})
+info-stnd.texi(,1270) @cindex windows, selecting
+info-stnd.texi(,1271) @kindex C-x o
+info-stnd.texi(,1272) @findex next-window
+info-stnd.texi(,1273) Select the next window on the screen.  Note that the echo area can only be
+info-stnd.texi(,1274) selected if it is already in use, and you have left it temporarily.
+info-stnd.texi(,1275) Normally, @samp{C-x o} simply moves the cursor into the next window on
+info-stnd.texi(,1276) the screen, or if you are already within the last window, into the first
+info-stnd.texi(,1277) window on the screen.  Given a numeric argument, @samp{C-x o} moves over
+info-stnd.texi(,1278) that many windows.  A negative argument causes @samp{C-x o} to select
+info-stnd.texi(,1279) the previous window on the screen.
+info-stnd.texi(,1280) 
+info-stnd.texi(,1281) @item @kbd{M-x prev-window}
+info-stnd.texi(,1282) @findex prev-window
+info-stnd.texi(,1283) Select the previous window on the screen.  This is identical to
+info-stnd.texi(,1284) @samp{C-x o} with a negative argument.
+info-stnd.texi(,1285) 
+info-stnd.texi(,1286) @item @kbd{C-x @key{2}} (@code{split-window})
+info-stnd.texi(,1287) @cindex windows, creating
+info-stnd.texi(,1288) @kindex C-x 2
+info-stnd.texi(,1289) @findex split-window
+info-stnd.texi(,1290) Split the current window into two windows, both showing the same node.
+info-stnd.texi(,1291) Each window is one half the size of the original window, and the cursor
+info-stnd.texi(,1292) remains in the original window.  The variable @code{automatic-tiling}
+info-stnd.texi(,1293) can cause all of the windows on the screen to be resized for you
+info-stnd.texi(,1294) automatically, please @pxref{Variables, , automatic-tiling} for more
+info-stnd.texi(,1295) information.
+info-stnd.texi(,1296) 
+info-stnd.texi(,1297) @item @kbd{C-x @key{0}} (@code{delete-window})
+info-stnd.texi(,1298) @cindex windows, deleting
+info-stnd.texi(,1299) @kindex C-x 0
+info-stnd.texi(,1300) @findex delete-window
+info-stnd.texi(,1301) Delete the current window from the screen.  If you have made too many
+info-stnd.texi(,1302) windows and your screen appears cluttered, this is the way to get rid of
+info-stnd.texi(,1303) some of them.
+info-stnd.texi(,1304) 
+info-stnd.texi(,1305) @item @kbd{C-x @key{1}} (@code{keep-one-window})
+info-stnd.texi(,1306) @kindex C-x 1
+info-stnd.texi(,1307) @findex keep-one-window
+info-stnd.texi(,1308) Delete all of the windows excepting the current one.
+info-stnd.texi(,1309) 
+info-stnd.texi(,1310) @item @kbd{ESC @key{C-v}} (@code{scroll-other-window})
+info-stnd.texi(,1311) @kindex ESC C-v, in Info windows
+info-stnd.texi(,1312) @findex scroll-other-window
+info-stnd.texi(,1313) Scroll the other window, in the same fashion that @samp{C-v} might
+info-stnd.texi(,1314) scroll the current window.  Given a negative argument, scroll the
+info-stnd.texi(,1315) "other" window backward.
+info-stnd.texi(,1316) 
+info-stnd.texi(,1317) @item @kbd{C-x @key{^}} (@code{grow-window})
+info-stnd.texi(,1318) @kindex C-x ^
+info-stnd.texi(,1319) @findex grow-window
+info-stnd.texi(,1320) Grow (or shrink) the current window.  Given a numeric argument, grow
+info-stnd.texi(,1321) the current window that many lines; with a negative numeric argument,
+info-stnd.texi(,1322) shrink the window instead.
+info-stnd.texi(,1323) 
+info-stnd.texi(,1324) @item @kbd{C-x @key{t}} (@code{tile-windows})
+info-stnd.texi(,1325) @cindex tiling
+info-stnd.texi(,1326) @kindex C-x t
+info-stnd.texi(,1327) @findex tile-windows
+info-stnd.texi(,1328) Divide the available screen space among all of the visible windows.
+info-stnd.texi(,1329) Each window is given an equal portion of the screen in which to display
+info-stnd.texi(,1330) its contents.  The variable @code{automatic-tiling} can cause
+info-stnd.texi(,1331) @code{tile-windows} to be called when a window is created or deleted.
+info-stnd.texi(,1332) @xref{Variables, , @code{automatic-tiling}}.
+info-stnd.texi(,1333) @end table
+info-stnd.texi(,1334) 
+info-stnd.texi(,1335) @node The Echo Area,  , Basic Windows, Window Commands
+info-stnd.texi(,1336) @section The Echo Area
+info-stnd.texi(,1337) @cindex echo area
+info-stnd.texi(,1338) 
+info-stnd.texi(,1339) The @dfn{echo area} is a one line window which appears at the bottom of
+info-stnd.texi(,1340) the screen.  It is used to display informative or error messages, and to
+info-stnd.texi(,1341) read lines of input from you when that is necessary.  Almost all of the
+info-stnd.texi(,1342) commands available in the echo area are identical to their Emacs
+info-stnd.texi(,1343) counterparts, so please refer to that documentation for greater depth of
+info-stnd.texi(,1344) discussion on the concepts of editing a line of text.  The following
+info-stnd.texi(,1345) table briefly lists the commands that are available while input is being
+info-stnd.texi(,1346) read in the echo area:
+info-stnd.texi(,1347) 
+info-stnd.texi(,1348) @table @asis
+info-stnd.texi(,1349) @item @key{C-f} (@code{echo-area-forward})
+info-stnd.texi(,1350) @itemx @key{RIGHT} (an arrow key)
+info-stnd.texi(,1351) @itemx @key{M-h}, vi-like operation
+info-stnd.texi(,1352) @kindex C-f, in the echo area
+info-stnd.texi(,1353) @kindex RIGHT, in the echo area
+info-stnd.texi(,1354) @kindex M-h, in the echo area, vi-like operation
+info-stnd.texi(,1355) @findex echo-area-forward
+info-stnd.texi(,1356) Move forward a character.
+info-stnd.texi(,1357) 
+info-stnd.texi(,1358) @item @key{C-b} (@code{echo-area-backward})
+info-stnd.texi(,1359) @itemx @key{LEFT} (an arrow key)
+info-stnd.texi(,1360) @itemx @key{M-l}, vi-like operation
+info-stnd.texi(,1361) @kindex LEFT, in the echo area
+info-stnd.texi(,1362) @kindex C-b, in the echo area
+info-stnd.texi(,1363) @kindex M-l, in the echo area, vi-like operation
+info-stnd.texi(,1364) @findex echo-area-backward
+info-stnd.texi(,1365) Move backward a character.
+info-stnd.texi(,1366) 
+info-stnd.texi(,1367) @item @key{C-a} (@code{echo-area-beg-of-line})
+info-stnd.texi(,1368) @itemx @key{M-0}, vi-like operation
+info-stnd.texi(,1369) @kindex C-a, in the echo area
+info-stnd.texi(,1370) @kindex M-0, in the echo area, vi-like operation
+info-stnd.texi(,1371) @findex echo-area-beg-of-line
+info-stnd.texi(,1372) Move to the start of the input line.
+info-stnd.texi(,1373) 
+info-stnd.texi(,1374) @item @key{C-e} (@code{echo-area-end-of-line})
+info-stnd.texi(,1375) @itemx @key{M-$}, vi-like operation
+info-stnd.texi(,1376) @kindex C-e, in the echo area
+info-stnd.texi(,1377) @kindex M-$, vi-like operation
+info-stnd.texi(,1378) @findex echo-area-end-of-line
+info-stnd.texi(,1379) Move to the end of the input line.
+info-stnd.texi(,1380) 
+info-stnd.texi(,1381) @item @key{M-f} (@code{echo-area-forward-word})
+info-stnd.texi(,1382) @itemx @key{C-@key{RIGHT}} (DOS/Windows only)
+info-stnd.texi(,1383) @itemx @key{M-w}, vi-like operation
+info-stnd.texi(,1384) @kindex M-f, in the echo area
+info-stnd.texi(,1385) @kindex M-w, in the echo area, vi-like operation
+info-stnd.texi(,1386) @findex echo-area-forward-word
+info-stnd.texi(,1387) Move forward a word.
+info-stnd.texi(,1388) 
+info-stnd.texi(,1389) @kindex C-RIGHT, in the echo area
+info-stnd.texi(,1390) On DOS/Windows, @kbd{C-@key{RIGHT}} moves forward by words.
+info-stnd.texi(,1391) 
+info-stnd.texi(,1392) @item @key{M-b} (@code{echo-area-backward-word})
+info-stnd.texi(,1393) @itemx @key{C-@key{LEFT}} (DOS/Windows only)
+info-stnd.texi(,1394) @kindex M-b, in the echo area
+info-stnd.texi(,1395) @findex echo-area-backward-word
+info-stnd.texi(,1396) Move backward a word.
+info-stnd.texi(,1397) 
+info-stnd.texi(,1398) @kindex C-LEFT, in the echo area
+info-stnd.texi(,1399) On DOS/Windows, @kbd{C-@key{LEFT}} moves backward by words.
+info-stnd.texi(,1400) 
+info-stnd.texi(,1401) @item @key{C-d} (@code{echo-area-delete})
+info-stnd.texi(,1402) @itemx @key{M-x}, vi-like operation
+info-stnd.texi(,1403) @kindex C-d, in the echo area
+info-stnd.texi(,1404) @kindex M-x, in the echo area, vi-like operation
+info-stnd.texi(,1405) @findex echo-area-delete
+info-stnd.texi(,1406) Delete the character under the cursor.
+info-stnd.texi(,1407) 
+info-stnd.texi(,1408) @item @key{DEL} (@code{echo-area-rubout})
+info-stnd.texi(,1409) @kindex DEL, in the echo area
+info-stnd.texi(,1410) @findex echo-area-rubout
+info-stnd.texi(,1411) Delete the character behind the cursor.
+info-stnd.texi(,1412) 
+info-stnd.texi(,1413) On some keyboards, this key is designated @key{BS}, for
+info-stnd.texi(,1414) @samp{BackSpace}.  Those keyboards will usually bind @key{DEL} in the
+info-stnd.texi(,1415) echo area to @code{echo-area-delete}.
+info-stnd.texi(,1416) 
+info-stnd.texi(,1417) @item @key{C-g} (@code{echo-area-abort})
+info-stnd.texi(,1418) @itemx @key{C-u}, vi-like operation
+info-stnd.texi(,1419) @kindex C-g, in the echo area
+info-stnd.texi(,1420) @kindex C-u, in the echo area, vi-like operation
+info-stnd.texi(,1421) @findex echo-area-abort
+info-stnd.texi(,1422) Cancel or quit the current operation.  If completion is being read, this
+info-stnd.texi(,1423) command discards the text of the input line which does not match any
+info-stnd.texi(,1424) completion.  If the input line is empty, it aborts the calling function.
+info-stnd.texi(,1425) 
+info-stnd.texi(,1426) @item @key{RET} (@code{echo-area-newline})
+info-stnd.texi(,1427) @kindex RET, in the echo area
+info-stnd.texi(,1428) @findex echo-area-newline
+info-stnd.texi(,1429) Accept (or forces completion of) the current input line.
+info-stnd.texi(,1430) 
+info-stnd.texi(,1431) @item @key{C-q} (@code{echo-area-quoted-insert})
+info-stnd.texi(,1432) @itemx @key{C-v}, vi-like operation
+info-stnd.texi(,1433) @kindex C-q, in the echo area
+info-stnd.texi(,1434) @kindex C-v, in the echo area, vi-like operation
+info-stnd.texi(,1435) @findex echo-area-quoted-insert
+info-stnd.texi(,1436) Insert the next character verbatim.  This is how you can insert control
+info-stnd.texi(,1437) characters into a search string, for example, or the @samp{?} character
+info-stnd.texi(,1438) when Info prompts with completion.
+info-stnd.texi(,1439) 
+info-stnd.texi(,1440) @item @var{printing character} (@code{echo-area-insert})
+info-stnd.texi(,1441) @kindex printing characters, in the echo area
+info-stnd.texi(,1442) @findex echo-area-insert
+info-stnd.texi(,1443) Insert the character.  Characters that have their 8th bit set, and not
+info-stnd.texi(,1444) bound to @samp{M-} commands, are also inserted verbatim; this is useful
+info-stnd.texi(,1445) for terminals which support Latin scripts.
+info-stnd.texi(,1446) 
+info-stnd.texi(,1447) @item @key{M-TAB} (@code{echo-area-tab-insert})
+info-stnd.texi(,1448) @itemx @key{Shift-@key{TAB}} (on DOS/Windows only)
+info-stnd.texi(,1449) @kindex M-TAB, in the echo area
+info-stnd.texi(,1450) @kindex Shift-TAB, in the echo area
+info-stnd.texi(,1451) @findex echo-area-tab-insert
+info-stnd.texi(,1452) Insert a TAB character.
+info-stnd.texi(,1453) 
+info-stnd.texi(,1454) @kindex Shift-TAB, in the echo area
+info-stnd.texi(,1455) @kindex BackTab, in the echo area
+info-stnd.texi(,1456) On DOS/Windows only, the @kbd{Shift-@key{TAB}} key is an alias for
+info-stnd.texi(,1457) @kbd{M-@key{TAB}}.  This key is sometimes called @samp{BackTab}.
+info-stnd.texi(,1458) 
+info-stnd.texi(,1459) @item @key{C-t} (@code{echo-area-transpose-chars})
+info-stnd.texi(,1460) @kindex C-t, in the echo area
+info-stnd.texi(,1461) @findex echo-area-transpose-chars
+info-stnd.texi(,1462) Transpose the characters at the cursor.
+info-stnd.texi(,1463) @end table
+info-stnd.texi(,1464) 
+info-stnd.texi(,1465) The next group of commands deal with @dfn{killing}, and @dfn{yanking}
+info-stnd.texi(,1466) text@footnote{
+info-stnd.texi(,1467) Some people are used to calling these operations @dfn{cut} and
+info-stnd.texi(,1468) @dfn{paste}, respectively.}.   For an in depth discussion of killing and
+info-stnd.texi(,1469) yanking, @pxref{Killing, , Killing and Deleting, emacs, the GNU Emacs
+info-stnd.texi(,1470) Manual}
+info-stnd.texi(,1471) 
+info-stnd.texi(,1472) @table @asis
+info-stnd.texi(,1473) @item @key{M-d} (@code{echo-area-kill-word})
+info-stnd.texi(,1474) @itemx @key{M-X}, vi-like operation
+info-stnd.texi(,1475) @kindex M-d, in the echo area
+info-stnd.texi(,1476) @kindex M-X, in the echo area, vi-like operation
+info-stnd.texi(,1477) @findex echo-area-kill-word
+info-stnd.texi(,1478) Kill the word following the cursor.
+info-stnd.texi(,1479) 
+info-stnd.texi(,1480) @item @key{M-DEL} (@code{echo-area-backward-kill-word})
+info-stnd.texi(,1481) @itemx @key{M-@key{BS}}
+info-stnd.texi(,1482) @kindex M-DEL, in the echo area
+info-stnd.texi(,1483) @findex echo-area-backward-kill-word
+info-stnd.texi(,1484) Kill the word preceding the cursor.
+info-stnd.texi(,1485) 
+info-stnd.texi(,1486) @kindex M-BS, in the echo area
+info-stnd.texi(,1487) On some keyboards, the @code{Backspace} key is used instead of
+info-stnd.texi(,1488) @code{DEL}, so @code{M-@key{Backspace}} has the same effect as
+info-stnd.texi(,1489) @code{M-@key{DEL}}.
+info-stnd.texi(,1490) 
+info-stnd.texi(,1491) @item @key{C-k} (@code{echo-area-kill-line})
+info-stnd.texi(,1492) @kindex C-k, in the echo area
+info-stnd.texi(,1493) @findex echo-area-kill-line
+info-stnd.texi(,1494) Kill the text from the cursor to the end of the line.
+info-stnd.texi(,1495) 
+info-stnd.texi(,1496) @item @kbd{C-x @key{DEL}} (@code{echo-area-backward-kill-line})
+info-stnd.texi(,1497) @kindex C-x DEL, in the echo area
+info-stnd.texi(,1498) @findex echo-area-backward-kill-line
+info-stnd.texi(,1499) Kill the text from the cursor to the beginning of the line.
+info-stnd.texi(,1500) 
+info-stnd.texi(,1501) @item @key{C-y} (@code{echo-area-yank})
+info-stnd.texi(,1502) @kindex C-y, in the echo area
+info-stnd.texi(,1503) @findex echo-area-yank
+info-stnd.texi(,1504) Yank back the contents of the last kill.
+info-stnd.texi(,1505) 
+info-stnd.texi(,1506) @item @key{M-y} (@code{echo-area-yank-pop})
+info-stnd.texi(,1507) @kindex M-y, in the echo area
+info-stnd.texi(,1508) @findex echo-area-yank-pop
+info-stnd.texi(,1509) Yank back a previous kill, removing the last yanked text first.
+info-stnd.texi(,1510) @end table
+info-stnd.texi(,1511) 
+info-stnd.texi(,1512) @cindex completion
+info-stnd.texi(,1513) Sometimes when reading input in the echo area, the command that needed
+info-stnd.texi(,1514) input will only accept one of a list of several choices.  The choices
+info-stnd.texi(,1515) represent the @dfn{possible completions}, and you must respond with one
+info-stnd.texi(,1516) of them.  Since there are a limited number of responses you can make,
+info-stnd.texi(,1517) Info allows you to abbreviate what you type, only typing as much of the
+info-stnd.texi(,1518) response as is necessary to uniquely identify it.  In addition, you can
+info-stnd.texi(,1519) request Info to fill in as much of the response as is possible; this
+info-stnd.texi(,1520) is called @dfn{completion}.
+info-stnd.texi(,1521) 
+info-stnd.texi(,1522) The following commands are available when completing in the echo area:
+info-stnd.texi(,1523) 
+info-stnd.texi(,1524) @table @asis
+info-stnd.texi(,1525) @item @key{TAB} (@code{echo-area-complete})
+info-stnd.texi(,1526) @itemx @key{SPC}
+info-stnd.texi(,1527) @kindex TAB, in the echo area
+info-stnd.texi(,1528) @kindex SPC, in the echo area
+info-stnd.texi(,1529) @findex echo-area-complete
+info-stnd.texi(,1530) Insert as much of a completion as is possible.
+info-stnd.texi(,1531) 
+info-stnd.texi(,1532) @item @key{?} (@code{echo-area-possible-completions})
+info-stnd.texi(,1533) @kindex ?, in the echo area
+info-stnd.texi(,1534) @findex echo-area-possible-completions
+info-stnd.texi(,1535) Display a window containing a list of the possible completions of what
+info-stnd.texi(,1536) you have typed so far.  For example, if the available choices are:
+info-stnd.texi(,1537) 
+info-stnd.texi(,1538) @example
+info-stnd.texi(,1539) @group
+info-stnd.texi(,1540) bar
+info-stnd.texi(,1541) foliate
+info-stnd.texi(,1542) food
+info-stnd.texi(,1543) forget
+info-stnd.texi(,1544) @end group
+info-stnd.texi(,1545) @end example
+info-stnd.texi(,1546) 
+info-stnd.texi(,1547) @noindent
+info-stnd.texi(,1548) and you have typed an @samp{f}, followed by @samp{?}, Info will pop up a
+info-stnd.texi(,1549) window showing a node called @samp{*Completions*} which lists the
+info-stnd.texi(,1550) possible completions like this:
+info-stnd.texi(,1551) 
+info-stnd.texi(,1552) @example
+info-stnd.texi(,1553) @group
+info-stnd.texi(,1554) 3 completions:
+info-stnd.texi(,1555) foliate         food
+info-stnd.texi(,1556) forget
+info-stnd.texi(,1557) @end group
+info-stnd.texi(,1558) @end example
+info-stnd.texi(,1559) 
+info-stnd.texi(,1560) @noindent
+info-stnd.texi(,1561) i.e., all of the choices which begin with @samp{f}.  Pressing @key{SPC}
+info-stnd.texi(,1562) or @key{TAB} would result in @samp{fo} appearing in the echo area, since
+info-stnd.texi(,1563) all of the choices which begin with @samp{f} continue with @samp{o}.
+info-stnd.texi(,1564) Now, typing @samp{l} followed by @samp{TAB} results in @samp{foliate}
+info-stnd.texi(,1565) appearing in the echo area, since that is the only choice which begins
+info-stnd.texi(,1566) with @samp{fol}.
+info-stnd.texi(,1567) 
+info-stnd.texi(,1568) @item @key{ESC C-v} (@code{echo-area-scroll-completions-window})
+info-stnd.texi(,1569) @kindex ESC C-v, in the echo area
+info-stnd.texi(,1570) @findex echo-area-scroll-completions-window
+info-stnd.texi(,1571) Scroll the completions window, if that is visible, or the "other"
+info-stnd.texi(,1572) window if not.
+info-stnd.texi(,1573) @end table
+info-stnd.texi(,1574) 
+info-stnd.texi(,1575) 
+info-stnd.texi(,1576) @node Printing Nodes
+info-stnd.texi(,1577) @chapter Printing Nodes
+info-stnd.texi(,1578) @cindex printing
+info-stnd.texi(,1579) 
+info-stnd.texi(,1580) In general, we recommend that you use @TeX{} to format the document and
+info-stnd.texi(,1581) print sections of it, by running @code{tex} on the Texinfo source file.
+info-stnd.texi(,1582) However, you may wish to print out the contents of a node as a quick
+info-stnd.texi(,1583) reference document for later use, or if you don't have @TeX{} installed.
+info-stnd.texi(,1584) Info provides you with a command for doing this.
+info-stnd.texi(,1585) 
+info-stnd.texi(,1586) @table @asis
+info-stnd.texi(,1587) @item @kbd{M-x print-node}
+info-stnd.texi(,1588) @findex print-node
+info-stnd.texi(,1589) @cindex INFO_PRINT_COMMAND, environment variable
+info-stnd.texi(,1590) Pipe the contents of the current node through the command in the
+info-stnd.texi(,1591) environment variable @code{INFO_PRINT_COMMAND}.  If the variable does not
+info-stnd.texi(,1592) exist, the node is simply piped to @code{lpr} (on DOS/Windows, the
+info-stnd.texi(,1593) default is to print the node to the local printer device, @file{PRN}).
+info-stnd.texi(,1594) 
+info-stnd.texi(,1595) @cindex printing nodes to the local printer
+info-stnd.texi(,1596) @cindex local printer device
+info-stnd.texi(,1597) The value of @code{INFO_PRINT_COMMAND} may begin with the @samp{>}
+info-stnd.texi(,1598) character, as in @samp{>/dev/printer}, in which case Info treats the
+info-stnd.texi(,1599) rest as the name of a file or a device.  Instead of piping to a command,
+info-stnd.texi(,1600) Info opens the file, writes the node contents, and closes the file,
+info-stnd.texi(,1601) under the assumption that text written to that file will be printed by
+info-stnd.texi(,1602) the underlying OS.
+info-stnd.texi(,1603) @end table
+info-stnd.texi(,1604) 
+info-stnd.texi(,1605) 
+info-stnd.texi(,1606) @node Miscellaneous Commands
+info-stnd.texi(,1607) @chapter Miscellaneous Commands
+info-stnd.texi(,1608) 
+info-stnd.texi(,1609) GNU Info contains several commands which self-document GNU Info:
+info-stnd.texi(,1610) 
+info-stnd.texi(,1611) @table @asis
+info-stnd.texi(,1612) @item @kbd{M-x describe-command}
+info-stnd.texi(,1613) @cindex functions, describing
+info-stnd.texi(,1614) @cindex commands, describing
+info-stnd.texi(,1615) @findex describe-command
+info-stnd.texi(,1616) Read the name of an Info command in the echo area and then display a
+info-stnd.texi(,1617) brief description of what that command does.
+info-stnd.texi(,1618) 
+info-stnd.texi(,1619) @item @kbd{M-x describe-key}
+info-stnd.texi(,1620) @cindex keys, describing
+info-stnd.texi(,1621) @findex describe-key
+info-stnd.texi(,1622) Read a key sequence in the echo area, and then display the name and
+info-stnd.texi(,1623) documentation of the Info command that the key sequence invokes.
+info-stnd.texi(,1624) 
+info-stnd.texi(,1625) @item @kbd{M-x describe-variable}
+info-stnd.texi(,1626) Read the name of a variable in the echo area and then display a brief
+info-stnd.texi(,1627) description of what the variable affects.
+info-stnd.texi(,1628) 
+info-stnd.texi(,1629) @item @kbd{M-x where-is}
+info-stnd.texi(,1630) @findex where-is
+info-stnd.texi(,1631) Read the name of an Info command in the echo area, and then display
+info-stnd.texi(,1632) a key sequence which can be typed in order to invoke that command.
+info-stnd.texi(,1633) 
+info-stnd.texi(,1634) @item @key{C-h} (@code{get-help-window})
+info-stnd.texi(,1635) @itemx @key{?}
+info-stnd.texi(,1636) @itemx @key{F1} (on DOS/Windows only)
+info-stnd.texi(,1637) @itemx h, vi-like operation
+info-stnd.texi(,1638) @kindex C-h
+info-stnd.texi(,1639) @kindex ?, in Info windows
+info-stnd.texi(,1640) @kindex F1
+info-stnd.texi(,1641) @kindex h, vi-like operation
+info-stnd.texi(,1642) @findex get-help-window
+info-stnd.texi(,1643) Create (or Move into) the window displaying @code{*Help*}, and place
+info-stnd.texi(,1644) a node containing a quick reference card into it.  This window displays
+info-stnd.texi(,1645) the most concise information about GNU Info available.
+info-stnd.texi(,1646) 
+info-stnd.texi(,1647) @item @key{h} (@code{get-info-help-node})
+info-stnd.texi(,1648) @itemx @key{M-h}, vi-like operation
+info-stnd.texi(,1649) @kindex h
+info-stnd.texi(,1650) @kindex M-h, vi-like operation
+info-stnd.texi(,1651) @findex get-info-help-node
+info-stnd.texi(,1652) Try hard to visit the node @code{(info)Help}.  The Info file
+info-stnd.texi(,1653) @file{info.texi} distributed with GNU Info contains this node.  Of
+info-stnd.texi(,1654) course, the file must first be processed with @code{makeinfo}, and then
+info-stnd.texi(,1655) placed into the location of your Info directory.
+info-stnd.texi(,1656) @end table
+info-stnd.texi(,1657) 
+info-stnd.texi(,1658) Here are the commands for creating a numeric argument:
+info-stnd.texi(,1659) 
+info-stnd.texi(,1660) @table @asis
+info-stnd.texi(,1661) @item @key{C-u} (@code{universal-argument})
+info-stnd.texi(,1662) @cindex numeric arguments
+info-stnd.texi(,1663) @kindex C-u
+info-stnd.texi(,1664) @findex universal-argument
+info-stnd.texi(,1665) Start (or multiply by 4) the current numeric argument.  @samp{C-u} is
+info-stnd.texi(,1666) a good way to give a small numeric argument to cursor movement or
+info-stnd.texi(,1667) scrolling commands; @samp{C-u C-v} scrolls the screen 4 lines, while
+info-stnd.texi(,1668) @samp{C-u C-u C-n} moves the cursor down 16 lines.  @samp{C-u} followed
+info-stnd.texi(,1669) by digit keys sets the numeric argument to the number thus typed:
+info-stnd.texi(,1670) @kbd{C-u 1 2 0} sets the argument to 120.
+info-stnd.texi(,1671) 
+info-stnd.texi(,1672) @item @key{M-1} (@code{add-digit-to-numeric-arg})
+info-stnd.texi(,1673) @itemx @key{1}, vi-like operation
+info-stnd.texi(,1674) @itemx @key{M-2} @dots{} @key{M-9}
+info-stnd.texi(,1675) @itemx @key{2} @dots{} @key{9}, vi-like operation
+info-stnd.texi(,1676) @itemx @key{M-0}
+info-stnd.texi(,1677) @itemx @key{0}, vi-like operation
+info-stnd.texi(,1678) @kindex M-0 @dots{} M-9
+info-stnd.texi(,1679) @kindex 0 @dots{} 9, vi-like operation
+info-stnd.texi(,1680) @findex add-digit-to-numeric-arg
+info-stnd.texi(,1681) Add the digit value of the invoking key to the current numeric
+info-stnd.texi(,1682) argument.  Once Info is reading a numeric argument, you may just type
+info-stnd.texi(,1683) the digits of the argument, without the Meta prefix.  For example, you
+info-stnd.texi(,1684) might give @samp{C-l} a numeric argument of 32 by typing:
+info-stnd.texi(,1685) 
+info-stnd.texi(,1686) @example
+info-stnd.texi(,1687) @kbd{C-u 3 2 C-l}
+info-stnd.texi(,1688) @end example
+info-stnd.texi(,1689) 
+info-stnd.texi(,1690) @noindent
+info-stnd.texi(,1691) or
+info-stnd.texi(,1692) 
+info-stnd.texi(,1693) @example
+info-stnd.texi(,1694) @kbd{M-3 2 C-l}
+info-stnd.texi(,1695) @end example
+info-stnd.texi(,1696) 
+info-stnd.texi(,1697) @item @key{M--} (@code{add-digit-to-numeric-arg}
+info-stnd.texi(,1698) @itemx @key{-}
+info-stnd.texi(,1699) @kindex M--
+info-stnd.texi(,1700) @kindex -
+info-stnd.texi(,1701) @cindex negative arguments
+info-stnd.texi(,1702) @cindex arguments, negative
+info-stnd.texi(,1703) @cindex numeric arguments, negative
+info-stnd.texi(,1704) To make a negative argument, type @kbd{-}.  Typing @kbd{-} alone makes a
+info-stnd.texi(,1705) negative argument with a value of -1.  If you continue to type digit or
+info-stnd.texi(,1706) Meta-digit keys after @kbd{-}, the result is a negative number produced
+info-stnd.texi(,1707) by those digits.
+info-stnd.texi(,1708) 
+info-stnd.texi(,1709) @kbd{-} doesn't work when you type in the echo area, because you need to
+info-stnd.texi(,1710) be able to insert the @samp{-} character itself; use @kbd{M--} instead,
+info-stnd.texi(,1711) if you need to specify negative arguments in the echo area.
+info-stnd.texi(,1712) @end table
+info-stnd.texi(,1713) 
+info-stnd.texi(,1714) @samp{C-g} is used to abort the reading of a multi-character key
+info-stnd.texi(,1715) sequence, to cancel lengthy operations (such as multi-file searches) and
+info-stnd.texi(,1716) to cancel reading input in the echo area.
+info-stnd.texi(,1717) 
+info-stnd.texi(,1718) @table @asis
+info-stnd.texi(,1719) @item @key{C-g} (@code{abort-key})
+info-stnd.texi(,1720) @itemx @key{C-u}, vi-like operation
+info-stnd.texi(,1721) @cindex cancelling typeahead
+info-stnd.texi(,1722) @cindex cancelling the current operation
+info-stnd.texi(,1723) @kindex C-g, in Info windows
+info-stnd.texi(,1724) @kindex C-u cancels typeahead, vi-like operation
+info-stnd.texi(,1725) @findex abort-key
+info-stnd.texi(,1726) Cancel current operation.
+info-stnd.texi(,1727) @end table
+info-stnd.texi(,1728) 
+info-stnd.texi(,1729) The @samp{q} command of Info simply quits running Info.  Under
+info-stnd.texi(,1730) @samp{--vi-keys} (@pxref{--vi-keys}), you can also exit with @samp{:q}
+info-stnd.texi(,1731) or @samp{ZZ}.
+info-stnd.texi(,1732) 
+info-stnd.texi(,1733) @table @asis
+info-stnd.texi(,1734) @item @key{q} (@code{quit})
+info-stnd.texi(,1735) @itemx @kbd{C-x C-c}
+info-stnd.texi(,1736) @itemx @kbd{:q}, vi-like operation
+info-stnd.texi(,1737) @itemx @kbd{ZZ}, vi-like operation
+info-stnd.texi(,1738) @cindex quitting
+info-stnd.texi(,1739) @kindex q
+info-stnd.texi(,1740) @kindex C-x C-c
+info-stnd.texi(,1741) @kindex ZZ, vi-like operation
+info-stnd.texi(,1742) @findex quit
+info-stnd.texi(,1743) Exit GNU Info.
+info-stnd.texi(,1744) @end table
+info-stnd.texi(,1745) 
+info-stnd.texi(,1746) If the operating system tells GNU Info that the screen is 60 lines tall,
+info-stnd.texi(,1747) and it is actually only 40 lines tall, here is a way to tell Info that
+info-stnd.texi(,1748) the operating system is correct.
+info-stnd.texi(,1749) 
+info-stnd.texi(,1750) @table @asis
+info-stnd.texi(,1751) @item @kbd{M-x set-screen-height}
+info-stnd.texi(,1752) @findex set-screen-height
+info-stnd.texi(,1753) @cindex screen, changing the height of
+info-stnd.texi(,1754) Read a height value in the echo area and set the height of the
+info-stnd.texi(,1755) displayed screen to that value.
+info-stnd.texi(,1756) @end table
+info-stnd.texi(,1757) 
+info-stnd.texi(,1758) On MS-DOS/MS-Windows, this command actually tries to change the
+info-stnd.texi(,1759) dimensions of the visible screen to the value you type in the echo
+info-stnd.texi(,1760) area.
+info-stnd.texi(,1761) 
+info-stnd.texi(,1762) Finally, Info provides a convenient way to display footnotes which might
+info-stnd.texi(,1763) be associated with the current node that you are viewing:
+info-stnd.texi(,1764) 
+info-stnd.texi(,1765) @table @asis
+info-stnd.texi(,1766) @item @key{ESC C-f} (@code{show-footnotes})
+info-stnd.texi(,1767) @kindex ESC C-f
+info-stnd.texi(,1768) @findex show-footnotes
+info-stnd.texi(,1769) @cindex footnotes, displaying
+info-stnd.texi(,1770) Show the footnotes (if any) associated with the current node in another
+info-stnd.texi(,1771) window.  You can have Info automatically display the footnotes
+info-stnd.texi(,1772) associated with a node when the node is selected by setting the variable
+info-stnd.texi(,1773) @code{automatic-footnotes}.  @xref{Variables, , @code{automatic-footnotes}}.
+info-stnd.texi(,1774) @end table
+info-stnd.texi(,1775) 
+info-stnd.texi(,1776) 
+info-stnd.texi(,1777) @node Variables
+info-stnd.texi(,1778) @chapter Manipulating Variables
+info-stnd.texi(,1779) 
+info-stnd.texi(,1780) GNU Info contains several @dfn{variables} whose values are looked at by
+info-stnd.texi(,1781) various Info commands.  You can change the values of these variables,
+info-stnd.texi(,1782) and thus change the behavior of Info to more closely match your
+info-stnd.texi(,1783) environment and Info file reading manner.
+info-stnd.texi(,1784) 
+info-stnd.texi(,1785) There are two ways to set the value of a variable: interactively, using
+info-stnd.texi(,1786) the @code{set-variable} command described below, or in the @code{#var}
+info-stnd.texi(,1787) section of the @code{.infokey} file.  @xref{Custom Key Bindings}.
+info-stnd.texi(,1788) 
+info-stnd.texi(,1789) @table @asis
+info-stnd.texi(,1790) @item @kbd{M-x set-variable}
+info-stnd.texi(,1791) @cindex variables, setting
+info-stnd.texi(,1792) @findex set-variable
+info-stnd.texi(,1793) Read the name of a variable, and the value for it, in the echo area and
+info-stnd.texi(,1794) then set the variable to that value.  Completion is available when
+info-stnd.texi(,1795) reading the variable name (@pxref{The Echo Area, completion}); often,
+info-stnd.texi(,1796) completion is available when reading the value to give to the variable,
+info-stnd.texi(,1797) but that depends on the variable itself.  If a variable does @emph{not}
+info-stnd.texi(,1798) supply multiple choices to complete over, it expects a numeric value.
+info-stnd.texi(,1799) 
+info-stnd.texi(,1800) @item @kbd{M-x describe-variable}
+info-stnd.texi(,1801) @cindex variables, describing
+info-stnd.texi(,1802) @findex describe-variable
+info-stnd.texi(,1803) Read the name of a variable in the echo area and then display a brief
+info-stnd.texi(,1804) description of what the variable affects.
+info-stnd.texi(,1805) @end table
+info-stnd.texi(,1806) 
+info-stnd.texi(,1807) Here is a list of the variables that you can set in Info.
+info-stnd.texi(,1808) 
+info-stnd.texi(,1809) @table @code
+info-stnd.texi(,1810) @item automatic-footnotes
+info-stnd.texi(,1811) @vindex automatic-footnotes
+info-stnd.texi(,1812) When set to @code{On}, footnotes appear and disappear automatically.
+info-stnd.texi(,1813) This variable is @code{On} by default.  When a node is selected, a
+info-stnd.texi(,1814) window containing the footnotes which appear in that node is created,
+info-stnd.texi(,1815) and the footnotes are displayed within the new window.  The window that
+info-stnd.texi(,1816) Info creates to contain the footnotes is called @samp{*Footnotes*}.  If
+info-stnd.texi(,1817) a node is selected which contains no footnotes, and a @samp{*Footnotes*}
+info-stnd.texi(,1818) window is on the screen, the @samp{*Footnotes*} window is deleted.
+info-stnd.texi(,1819) Footnote windows created in this fashion are not automatically tiled so
+info-stnd.texi(,1820) that they can use as little of the display as is possible.
+info-stnd.texi(,1821) 
+info-stnd.texi(,1822) @item automatic-tiling
+info-stnd.texi(,1823) @vindex automatic-tiling
+info-stnd.texi(,1824) When set to @code{On}, creating or deleting a window resizes other
+info-stnd.texi(,1825) windows.  This variable is @code{Off} by default.  Normally, typing
+info-stnd.texi(,1826) @samp{C-x 2} divides the current window into two equal parts.  When
+info-stnd.texi(,1827) @code{automatic-tiling} is set to @code{On}, all of the windows are
+info-stnd.texi(,1828) resized automatically, keeping an equal number of lines visible in each
+info-stnd.texi(,1829) window.  There are exceptions to the automatic tiling; specifically, the
+info-stnd.texi(,1830) windows @samp{*Completions*} and @samp{*Footnotes*} are @emph{not}
+info-stnd.texi(,1831) resized through automatic tiling; they remain their original size.
+info-stnd.texi(,1832) 
+info-stnd.texi(,1833) @item errors-ring-bell
+info-stnd.texi(,1834) @vindex errors-ring-bell
+info-stnd.texi(,1835) When set to @code{On}, errors cause the bell to ring.  The default
+info-stnd.texi(,1836) setting of this variable is @code{On}.
+info-stnd.texi(,1837) 
+info-stnd.texi(,1838) @item gc-compressed-files
+info-stnd.texi(,1839) @vindex gc-compressed-files
+info-stnd.texi(,1840) When set to @code{On}, Info garbage collects files which had to be
+info-stnd.texi(,1841) uncompressed.  The default value of this variable is @code{Off}.
+info-stnd.texi(,1842) Whenever a node is visited in Info, the Info file containing that node
+info-stnd.texi(,1843) is read into core, and Info reads information about the tags and nodes
+info-stnd.texi(,1844) contained in that file.  Once the tags information is read by Info, it
+info-stnd.texi(,1845) is never forgotten.  However, the actual text of the nodes does not need
+info-stnd.texi(,1846) to remain in core unless a particular Info window needs it.  For
+info-stnd.texi(,1847) non-compressed files, the text of the nodes does not remain in core when
+info-stnd.texi(,1848) it is no longer in use.  But de-compressing a file can be a time
+info-stnd.texi(,1849) consuming operation, and so Info tries hard not to do it twice.
+info-stnd.texi(,1850) @code{gc-compressed-files} tells Info it is okay to garbage collect the
+info-stnd.texi(,1851) text of the nodes of a file which was compressed on disk.
+info-stnd.texi(,1852) 
+info-stnd.texi(,1853) @item ISO-Latin
+info-stnd.texi(,1854) @cindex ISO Latin characters
+info-stnd.texi(,1855) @vindex ISO-Latin
+info-stnd.texi(,1856) When set to @code{On}, Info accepts and displays ISO Latin characters.
+info-stnd.texi(,1857) By default, Info assumes an ASCII character set.  @code{ISO-Latin} tells
+info-stnd.texi(,1858) Info that it is running in an environment where the European standard
+info-stnd.texi(,1859) character set is in use, and allows you to input such characters to
+info-stnd.texi(,1860) Info, as well as display them.
+info-stnd.texi(,1861) 
+info-stnd.texi(,1862) @item scroll-behavior
+info-stnd.texi(,1863) @vindex scroll-behavior
+info-stnd.texi(,1864) Control what happens when forward scrolling is requested at the end of
+info-stnd.texi(,1865) a node, or when backward scrolling is requested at the beginning of a
+info-stnd.texi(,1866) node.  The default value for this variable is @code{Continuous}.  There
+info-stnd.texi(,1867) are three possible values for this variable:
+info-stnd.texi(,1868) 
+info-stnd.texi(,1869) @table @code
+info-stnd.texi(,1870) @item Continuous
+info-stnd.texi(,1871) Try to get the first item in this node's menu, or failing that, the
+info-stnd.texi(,1872) @samp{Next} node, or failing that, the @samp{Next} of the @samp{Up}.
+info-stnd.texi(,1873) This behavior is identical to using the @samp{]}
+info-stnd.texi(,1874) (@code{global-next-node}) and @samp{[} (@code{global-prev-node})
+info-stnd.texi(,1875) commands.
+info-stnd.texi(,1876) 
+info-stnd.texi(,1877) @item Next Only
+info-stnd.texi(,1878) Only try to get the @samp{Next} node.
+info-stnd.texi(,1879) 
+info-stnd.texi(,1880) @item Page Only
+info-stnd.texi(,1881) Simply give up, changing nothing.  If @code{scroll-behavior} is
+info-stnd.texi(,1882) @code{Page Only}, no scrolling command can change the node that is being
+info-stnd.texi(,1883) viewed.
+info-stnd.texi(,1884) @end table
+info-stnd.texi(,1885) 
+info-stnd.texi(,1886) @item scroll-step
+info-stnd.texi(,1887) @vindex scroll-step
+info-stnd.texi(,1888) The number of lines to scroll when the cursor moves out of the window.
+info-stnd.texi(,1889) Scrolling happens automatically if the cursor has moved out of the
+info-stnd.texi(,1890) visible portion of the node text when it is time to display.  Usually
+info-stnd.texi(,1891) the scrolling is done so as to put the cursor on the center line of the
+info-stnd.texi(,1892) current window.  However, if the variable @code{scroll-step} has a
+info-stnd.texi(,1893) nonzero value, Info attempts to scroll the node text by that many lines;
+info-stnd.texi(,1894) if that is enough to bring the cursor back into the window, that is what
+info-stnd.texi(,1895) is done.  The default value of this variable is 0, thus placing the
+info-stnd.texi(,1896) cursor (and the text it is attached to) in the center of the window.
+info-stnd.texi(,1897) Setting this variable to 1 causes a kind of "smooth scrolling" which
+info-stnd.texi(,1898) some people prefer.
+info-stnd.texi(,1899) 
+info-stnd.texi(,1900) @item show-index-match
+info-stnd.texi(,1901) @vindex show-index-match
+info-stnd.texi(,1902) When set to @code{On}, the portion of the matched search string is
+info-stnd.texi(,1903) highlighted in the message which explains where the matched search
+info-stnd.texi(,1904) string was found.  The default value of this variable is @code{On}.
+info-stnd.texi(,1905) When Info displays the location where an index match was found,
+info-stnd.texi(,1906) (@pxref{Searching Commands, , @code{next-index-match}}), the portion of the
+info-stnd.texi(,1907) string that you had typed is highlighted by displaying it in the inverse
+info-stnd.texi(,1908) case from its surrounding characters.
+info-stnd.texi(,1909) 
+info-stnd.texi(,1910) @item visible-bell
+info-stnd.texi(,1911) @vindex visible-bell
+info-stnd.texi(,1912) When set to @code{On}, GNU Info attempts to flash the screen instead of
+info-stnd.texi(,1913) ringing the bell.  This variable is @code{Off} by default.  Of course,
+info-stnd.texi(,1914) Info can only flash the screen if the terminal allows it; in the case
+info-stnd.texi(,1915) that the terminal does not allow it, the setting of this variable has no
+info-stnd.texi(,1916) effect.  However, you can make Info perform quietly by setting the
+info-stnd.texi(,1917) @code{errors-ring-bell} variable to @code{Off}.
+info-stnd.texi(,1918) 
+info-stnd.texi(,1919) @end table
+info-stnd.texi(,1920) 
+info-stnd.texi(,1921) 
+info-stnd.texi(,1922) @node Custom Key Bindings
+info-stnd.texi(,1923) @chapter Customizing Key Bindings and Variables
+info-stnd.texi(,1924) 
+info-stnd.texi(,1925) @cindex default key bindings, overriding
+info-stnd.texi(,1926) @cindex overriding default key bindings
+info-stnd.texi(,1927) @cindex customizing key bindings
+info-stnd.texi(,1928) @cindex key bindings, customizing
+info-stnd.texi(,1929) @cindex infokey
+info-stnd.texi(,1930) @cindex .info
+info-stnd.texi(,1931) @cindex .infokey
+info-stnd.texi(,1932) @cindex _info file (MS-DOS)
+info-stnd.texi(,1933) 
+info-stnd.texi(,1934) For those whose editor/pager of choice is not Emacs and who are not
+info-stnd.texi(,1935) entirely satisfied with the --vi-keys option (@pxref{--vi-keys}), GNU
+info-stnd.texi(,1936) Info provides a way to define different key-to-command bindings and
+info-stnd.texi(,1937) variable settings from the defaults described in this document.
+info-stnd.texi(,1938) 
+info-stnd.texi(,1939) On startup, GNU Info looks for a configuration file in the invoker's
+info-stnd.texi(,1940) HOME directory called @file{.info}@footnote{Due to the limitations of
+info-stnd.texi(,1941) DOS filesystems, the MS-DOS version of Info looks for a file
+info-stnd.texi(,1942) @file{_info} instead.  If the @env{HOME} variable is not defined, Info
+info-stnd.texi(,1943) additionally looks in the current directory.}.  If it is present, and
+info-stnd.texi(,1944) appears to contain Info configuration data, and was created with the
+info-stnd.texi(,1945) current version of the @code{infokey} command, then Info adopts the
+info-stnd.texi(,1946) key bindings and variable settings contained therein.
+info-stnd.texi(,1947) 
+info-stnd.texi(,1948) The @file{.info} file contains compact, non-textual data for reasons of
+info-stnd.texi(,1949) efficiency and because its design was lifted wholesale from the GNU Less
+info-stnd.texi(,1950) program, which also does it that way.  It must be created by compiling a
+info-stnd.texi(,1951) textual source file using the @code{infokey} command.
+info-stnd.texi(,1952) 
+info-stnd.texi(,1953) @menu
+info-stnd.texi(,1954) * Invoking infokey::
+info-stnd.texi(,1955) * infokey source format::
+info-stnd.texi(,1956) @end menu
+info-stnd.texi(,1957) 
+info-stnd.texi(,1958) 
+info-stnd.texi(,1959) @node Invoking infokey
+info-stnd.texi(,1960) @section Invoking @command{infokey}
+info-stnd.texi(,1961) 
+info-stnd.texi(,1962) @cindex invoking infokey
+info-stnd.texi(,1963) @cindex infokey, invoking
+info-stnd.texi(,1964) @cindex _infokey file (MS-DOS)
+info-stnd.texi(,1965) 
+info-stnd.texi(,1966) @command{infokey} compiles a source file
+info-stnd.texi(,1967) (@file{$HOME/.infokey}@footnote{This file is named @file{_infokey} in
+info-stnd.texi(,1968) the MS-DOS version, and is looked for in the current directory if
+info-stnd.texi(,1969) @env{HOME} is undefined.} by default) containing Info customizations
+info-stnd.texi(,1970) into a binary format (@file{$HOME/.info} by default).  GNU Info reads
+info-stnd.texi(,1971) the binary file at startup to override the default key bindings and
+info-stnd.texi(,1972) variable definitions.  Synopsis:
+info-stnd.texi(,1973) 
+info-stnd.texi(,1974) @example
+info-stnd.texi(,1975) infokey [@var{option}@dots{}] [@var{input-file}]
+info-stnd.texi(,1976) @end example
+info-stnd.texi(,1977) 
+info-stnd.texi(,1978) Besides the standard @option{--help} and @option{--version}, the only
+info-stnd.texi(,1979) option is @option{--output @var{file}}.  This tells @command{infokey} to
+info-stnd.texi(,1980) write the binary data to @var{file} instead of @file{$HOME/.info}.
+info-stnd.texi(,1981) 
+info-stnd.texi(,1982) 
+info-stnd.texi(,1983) @node infokey source format
+info-stnd.texi(,1984) @section @command{infokey} source format
+info-stnd.texi(,1985) 
+info-stnd.texi(,1986) @cindex infokey source format
+info-stnd.texi(,1987) @cindex .infokey source format
+info-stnd.texi(,1988) @cindex format of .infokey source
+info-stnd.texi(,1989) 
+info-stnd.texi(,1990) The format of the source file read by @command{infokey} is most easily
+info-stnd.texi(,1991) illustrated by example.  For instance, here is a sample @file{.infokey}
+info-stnd.texi(,1992) source file suitable for aficionados of @command{vi} or @command{less}:
+info-stnd.texi(,1993) 
+info-stnd.texi(,1994) @example
+info-stnd.texi(,1995) #info
+info-stnd.texi(,1996) j       next-line
+info-stnd.texi(,1997) k       prev-line
+info-stnd.texi(,1998) l       forward-char
+info-stnd.texi(,1999) h       backward-char
+info-stnd.texi(,2000) \kd     next-line
+info-stnd.texi(,2001) \ku     prev-line
+info-stnd.texi(,2002) \kr     forward-char
+info-stnd.texi(,2003) \kl     backward-char
+info-stnd.texi(,2004) \       scroll-forward
+info-stnd.texi(,2005) \kD     scroll-forward-page-only
+info-stnd.texi(,2006) b       scroll-backward
+info-stnd.texi(,2007) \kU     scroll-backward-page-only
+info-stnd.texi(,2008) g       beginning-of-node
+info-stnd.texi(,2009) \kh     beginning-of-node
+info-stnd.texi(,2010) G       end-of-node
+info-stnd.texi(,2011) \ke     end-of-node
+info-stnd.texi(,2012) \t      select-reference-this-line
+info-stnd.texi(,2013) -       history-node
+info-stnd.texi(,2014) n       next-node
+info-stnd.texi(,2015) p       prev-node
+info-stnd.texi(,2016) u       up-node
+info-stnd.texi(,2017) t       top-node
+info-stnd.texi(,2018) d       dir-node
+info-stnd.texi(,2019) #var
+info-stnd.texi(,2020) scroll-step=1
+info-stnd.texi(,2021) @end example
+info-stnd.texi(,2022) 
+info-stnd.texi(,2023) The source file consists of one or more @dfn{sections}.
+info-stnd.texi(,2024) Each section starts with a line that identifies the type of section.
+info-stnd.texi(,2025) Possible sections are:
+info-stnd.texi(,2026) 
+info-stnd.texi(,2027) @table @code
+info-stnd.texi(,2028) @item #info
+info-stnd.texi(,2029) Key bindings for Info windows.
+info-stnd.texi(,2030) The start of this section is indicated by a line containing just
+info-stnd.texi(,2031) @code{#info} by itself.  If this is the first section in the source
+info-stnd.texi(,2032) file, the @code{#info} line can be omitted.  The rest of this section
+info-stnd.texi(,2033) consists of lines of the form:
+info-stnd.texi(,2034) 
+info-stnd.texi(,2035) @example
+info-stnd.texi(,2036) @var{string} whitespace @var{action} [ whitespace [ # comment ] ] newline
+info-stnd.texi(,2037) @end example
+info-stnd.texi(,2038) 
+info-stnd.texi(,2039) Whitespace is any sequence of one or more spaces and/or tabs.  Comment
+info-stnd.texi(,2040) is any sequence of any characters, excluding newline.  @var{string} is
+info-stnd.texi(,2041) the key sequence which invokes the action.  @var{action} is the name of
+info-stnd.texi(,2042) an Info command.  The characters in @var{string} are interpreted
+info-stnd.texi(,2043) literally or prefixed by a caret (@code{^}) to indicate a control
+info-stnd.texi(,2044) character.  A backslash followed by certain characters specifies input
+info-stnd.texi(,2045) keystrokes as follows:
+info-stnd.texi(,2046) 
+info-stnd.texi(,2047) @table @code
+info-stnd.texi(,2048) @item \b
+info-stnd.texi(,2049) Backspace
+info-stnd.texi(,2050) @item \e
+info-stnd.texi(,2051) Escape (ESC)
+info-stnd.texi(,2052) @item \n
+info-stnd.texi(,2053) Newline
+info-stnd.texi(,2054) @item \r
+info-stnd.texi(,2055) Return
+info-stnd.texi(,2056) @item \t
+info-stnd.texi(,2057) Tab
+info-stnd.texi(,2058) @item \ku
+info-stnd.texi(,2059) Up arrow
+info-stnd.texi(,2060) @item \kd
+info-stnd.texi(,2061) Down arrow
+info-stnd.texi(,2062) @item \kl
+info-stnd.texi(,2063) Left arrow
+info-stnd.texi(,2064) @item \kr
+info-stnd.texi(,2065) Right arrow
+info-stnd.texi(,2066) @item \kU
+info-stnd.texi(,2067) Page Up
+info-stnd.texi(,2068) @item \kD
+info-stnd.texi(,2069) Page Down
+info-stnd.texi(,2070) @item \kh
+info-stnd.texi(,2071) HOME
+info-stnd.texi(,2072) @item \ke
+info-stnd.texi(,2073) END
+info-stnd.texi(,2074) @item \kx
+info-stnd.texi(,2075) Delete (DEL)
+info-stnd.texi(,2076) @item \m@var{x}
+info-stnd.texi(,2077) Meta-@var{x} where @var{x} is any character as described above.
+info-stnd.texi(,2078) @end table
+info-stnd.texi(,2079) 
+info-stnd.texi(,2080) Backslash followed by any other character indicates that character is to
+info-stnd.texi(,2081) be taken literally.  Characters which must be preceded by a backslash
+info-stnd.texi(,2082) include caret, space, tab, and backslash itself.
+info-stnd.texi(,2083) 
+info-stnd.texi(,2084) @item #echo-area
+info-stnd.texi(,2085) Key bindings for the echo area.
+info-stnd.texi(,2086) The start of this section is indicated by a line containing just
+info-stnd.texi(,2087) @code{#echo-area} by itself.  The rest of this section has a syntax
+info-stnd.texi(,2088) identical to that for the key definitions for the Info area, described
+info-stnd.texi(,2089) above.
+info-stnd.texi(,2090) 
+info-stnd.texi(,2091) @item #var
+info-stnd.texi(,2092) Variable initializations.
+info-stnd.texi(,2093) The start of this section is indicated by a line containing just
+info-stnd.texi(,2094) @code{#var} by itself.  Following this line is a list of variable
+info-stnd.texi(,2095) assignments, one per line.  Each line consists of a variable name
+info-stnd.texi(,2096) (@xref{Variables},) followed by @code{=} followed by a value.
+info-stnd.texi(,2097) There may be no white space between the variable name and the @code{=},
+info-stnd.texi(,2098) and all characters following the @code{=}, including white space,
+info-stnd.texi(,2099) are included in the value.
+info-stnd.texi(,2100) @end table
+info-stnd.texi(,2101) 
+info-stnd.texi(,2102) Blank lines and lines starting with @code{#} are ignored, except for
+info-stnd.texi(,2103) the special section header lines.
+info-stnd.texi(,2104) 
+info-stnd.texi(,2105) Key bindings defined in the @file{.info} file take precedence over GNU
+info-stnd.texi(,2106) Info's default key bindings, whether or not @samp{--vi-keys} is used.  A
+info-stnd.texi(,2107) default key binding may be disabled by overriding it in the @file{.info}
+info-stnd.texi(,2108) file with the action @code{invalid}.  In addition, @emph{all} default
+info-stnd.texi(,2109) key bindings can be disabled by adding this line @emph{anywhere} in the
+info-stnd.texi(,2110) relevant section:
+info-stnd.texi(,2111) 
+info-stnd.texi(,2112) @example
+info-stnd.texi(,2113) #stop
+info-stnd.texi(,2114) @end example
+info-stnd.texi(,2115) 
+info-stnd.texi(,2116) This will cause GNU Info to ignore all the default key commands for that
+info-stnd.texi(,2117) section.
+info-stnd.texi(,2118) 
+info-stnd.texi(,2119) Beware: @code{#stop} can be dangerous.  Since it disables all default
+info-stnd.texi(,2120) key bindings, you must supply enough new key bindings to enable all
+info-stnd.texi(,2121) necessary actions.  Failure to bind any key to the @code{quit} command,
+info-stnd.texi(,2122) for example, can lead to frustration.
+info-stnd.texi(,2123) 
+info-stnd.texi(,2124) The order in which key bindings are defined in the @file{.info} file is
+info-stnd.texi(,2125) not important, except that the command summary produced by the
+info-stnd.texi(,2126) @code{get-help-window} command only displays the @emph{first} key that
+info-stnd.texi(,2127) is bound to each command.
+info-stnd.texi(,2128) 
+info-stnd.texi(,2129) 
+info-stnd.texi(,2130) @c the following is incomplete
+info-stnd.texi(,2175) 
+info-stnd.texi(,2176) 
+info-stnd.texi(,2177) @node Copying This Manual
+info-stnd.texi(,2178) @appendix Copying This Manual
+info-stnd.texi(,2179) 
+info-stnd.texi(,2180) @menu
+info-stnd.texi(,2181) * GNU Free Documentation License::  License for copying this manual.
+info-stnd.texi(,2182) @end menu
+info-stnd.texi(,2183) 
+fdl.texi(,1) 
+fdl.texi(,2) @node GNU Free Documentation License
+fdl.texi(,3) @appendixsec GNU Free Documentation License
+fdl.texi(,4) 
+fdl.texi(,5) @cindex FDL, GNU Free Documentation License
+fdl.texi(,6) @center Version 1.1, March 2000
+fdl.texi(,7) 
+fdl.texi(,8) @display
+fdl.texi(,9) Copyright @copyright{} 2000 Free Software Foundation, Inc.
+fdl.texi(,10) 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
+fdl.texi(,11) 
+fdl.texi(,12) Everyone is permitted to copy and distribute verbatim copies
+fdl.texi(,13) of this license document, but changing it is not allowed.
+fdl.texi(,14) @end display
+fdl.texi(,15) 
+fdl.texi(,16) @enumerate 0
+fdl.texi(,17) @item
+fdl.texi(,18) PREAMBLE
+fdl.texi(,19) 
+fdl.texi(,20) The purpose of this License is to make a manual, textbook, or other
+fdl.texi(,21) written document @dfn{free} in the sense of freedom: to assure everyone
+fdl.texi(,22) the effective freedom to copy and redistribute it, with or without
+fdl.texi(,23) modifying it, either commercially or noncommercially.  Secondarily,
+fdl.texi(,24) this License preserves for the author and publisher a way to get
+fdl.texi(,25) credit for their work, while not being considered responsible for
+fdl.texi(,26) modifications made by others.
+fdl.texi(,27) 
+fdl.texi(,28) This License is a kind of ``copyleft'', which means that derivative
+fdl.texi(,29) works of the document must themselves be free in the same sense.  It
+fdl.texi(,30) complements the GNU General Public License, which is a copyleft
+fdl.texi(,31) license designed for free software.
+fdl.texi(,32) 
+fdl.texi(,33) We have designed this License in order to use it for manuals for free
+fdl.texi(,34) software, because free software needs free documentation: a free
+fdl.texi(,35) program should come with manuals providing the same freedoms that the
+fdl.texi(,36) software does.  But this License is not limited to software manuals;
+fdl.texi(,37) it can be used for any textual work, regardless of subject matter or
+fdl.texi(,38) whether it is published as a printed book.  We recommend this License
+fdl.texi(,39) principally for works whose purpose is instruction or reference.
+fdl.texi(,40) 
+fdl.texi(,41) @item
+fdl.texi(,42) APPLICABILITY AND DEFINITIONS
+fdl.texi(,43) 
+fdl.texi(,44) This License applies to any manual or other work that contains a
+fdl.texi(,45) notice placed by the copyright holder saying it can be distributed
+fdl.texi(,46) under the terms of this License.  The ``Document'', below, refers to any
+fdl.texi(,47) such manual or work.  Any member of the public is a licensee, and is
+fdl.texi(,48) addressed as ``you''.
+fdl.texi(,49) 
+fdl.texi(,50) A ``Modified Version'' of the Document means any work containing the
+fdl.texi(,51) Document or a portion of it, either copied verbatim, or with
+fdl.texi(,52) modifications and/or translated into another language.
+fdl.texi(,53) 
+fdl.texi(,54) A ``Secondary Section'' is a named appendix or a front-matter section of
+fdl.texi(,55) the Document that deals exclusively with the relationship of the
+fdl.texi(,56) publishers or authors of the Document to the Document's overall subject
+fdl.texi(,57) (or to related matters) and contains nothing that could fall directly
+fdl.texi(,58) within that overall subject.  (For example, if the Document is in part a
+fdl.texi(,59) textbook of mathematics, a Secondary Section may not explain any
+fdl.texi(,60) mathematics.)  The relationship could be a matter of historical
+fdl.texi(,61) connection with the subject or with related matters, or of legal,
+fdl.texi(,62) commercial, philosophical, ethical or political position regarding
+fdl.texi(,63) them.
+fdl.texi(,64) 
+fdl.texi(,65) The ``Invariant Sections'' are certain Secondary Sections whose titles
+fdl.texi(,66) are designated, as being those of Invariant Sections, in the notice
+fdl.texi(,67) that says that the Document is released under this License.
+fdl.texi(,68) 
+fdl.texi(,69) The ``Cover Texts'' are certain short passages of text that are listed,
+fdl.texi(,70) as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+fdl.texi(,71) the Document is released under this License.
+fdl.texi(,72) 
+fdl.texi(,73) A ``Transparent'' copy of the Document means a machine-readable copy,
+fdl.texi(,74) represented in a format whose specification is available to the
+fdl.texi(,75) general public, whose contents can be viewed and edited directly and
+fdl.texi(,76) straightforwardly with generic text editors or (for images composed of
+fdl.texi(,77) pixels) generic paint programs or (for drawings) some widely available
+fdl.texi(,78) drawing editor, and that is suitable for input to text formatters or
+fdl.texi(,79) for automatic translation to a variety of formats suitable for input
+fdl.texi(,80) to text formatters.  A copy made in an otherwise Transparent file
+fdl.texi(,81) format whose markup has been designed to thwart or discourage
+fdl.texi(,82) subsequent modification by readers is not Transparent.  A copy that is
+fdl.texi(,83) not ``Transparent'' is called ``Opaque''.
+fdl.texi(,84) 
+fdl.texi(,85) Examples of suitable formats for Transparent copies include plain
+fdl.texi(,86) @sc{ascii} without markup, Texinfo input format, La@TeX{} input format,
+fdl.texi(,87) @acronym{SGML} or @acronym{XML} using a publicly available
+fdl.texi(,88) @acronym{DTD}, and standard-conforming simple @acronym{HTML} designed
+fdl.texi(,89) for human modification.  Opaque formats include PostScript,
+fdl.texi(,90) @acronym{PDF}, proprietary formats that can be read and edited only by
+fdl.texi(,91) proprietary word processors, @acronym{SGML} or @acronym{XML} for which
+fdl.texi(,92) the @acronym{DTD} and/or processing tools are not generally available,
+fdl.texi(,93) and the machine-generated @acronym{HTML} produced by some word
+fdl.texi(,94) processors for output purposes only.
+fdl.texi(,95) 
+fdl.texi(,96) The ``Title Page'' means, for a printed book, the title page itself,
+fdl.texi(,97) plus such following pages as are needed to hold, legibly, the material
+fdl.texi(,98) this License requires to appear in the title page.  For works in
+fdl.texi(,99) formats which do not have any title page as such, ``Title Page'' means
+fdl.texi(,100) the text near the most prominent appearance of the work's title,
+fdl.texi(,101) preceding the beginning of the body of the text.
+fdl.texi(,102) 
+fdl.texi(,103) @item
+fdl.texi(,104) VERBATIM COPYING
+fdl.texi(,105) 
+fdl.texi(,106) You may copy and distribute the Document in any medium, either
+fdl.texi(,107) commercially or noncommercially, provided that this License, the
+fdl.texi(,108) copyright notices, and the license notice saying this License applies
+fdl.texi(,109) to the Document are reproduced in all copies, and that you add no other
+fdl.texi(,110) conditions whatsoever to those of this License.  You may not use
+fdl.texi(,111) technical measures to obstruct or control the reading or further
+fdl.texi(,112) copying of the copies you make or distribute.  However, you may accept
+fdl.texi(,113) compensation in exchange for copies.  If you distribute a large enough
+fdl.texi(,114) number of copies you must also follow the conditions in section 3.
+fdl.texi(,115) 
+fdl.texi(,116) You may also lend copies, under the same conditions stated above, and
+fdl.texi(,117) you may publicly display copies.
+fdl.texi(,118) 
+fdl.texi(,119) @item
+fdl.texi(,120) COPYING IN QUANTITY
+fdl.texi(,121) 
+fdl.texi(,122) If you publish printed copies of the Document numbering more than 100,
+fdl.texi(,123) and the Document's license notice requires Cover Texts, you must enclose
+fdl.texi(,124) the copies in covers that carry, clearly and legibly, all these Cover
+fdl.texi(,125) Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+fdl.texi(,126) the back cover.  Both covers must also clearly and legibly identify
+fdl.texi(,127) you as the publisher of these copies.  The front cover must present
+fdl.texi(,128) the full title with all words of the title equally prominent and
+fdl.texi(,129) visible.  You may add other material on the covers in addition.
+fdl.texi(,130) Copying with changes limited to the covers, as long as they preserve
+fdl.texi(,131) the title of the Document and satisfy these conditions, can be treated
+fdl.texi(,132) as verbatim copying in other respects.
+fdl.texi(,133) 
+fdl.texi(,134) If the required texts for either cover are too voluminous to fit
+fdl.texi(,135) legibly, you should put the first ones listed (as many as fit
+fdl.texi(,136) reasonably) on the actual cover, and continue the rest onto adjacent
+fdl.texi(,137) pages.
+fdl.texi(,138) 
+fdl.texi(,139) If you publish or distribute Opaque copies of the Document numbering
+fdl.texi(,140) more than 100, you must either include a machine-readable Transparent
+fdl.texi(,141) copy along with each Opaque copy, or state in or with each Opaque copy
+fdl.texi(,142) a publicly-accessible computer-network location containing a complete
+fdl.texi(,143) Transparent copy of the Document, free of added material, which the
+fdl.texi(,144) general network-using public has access to download anonymously at no
+fdl.texi(,145) charge using public-standard network protocols.  If you use the latter
+fdl.texi(,146) option, you must take reasonably prudent steps, when you begin
+fdl.texi(,147) distribution of Opaque copies in quantity, to ensure that this
+fdl.texi(,148) Transparent copy will remain thus accessible at the stated location
+fdl.texi(,149) until at least one year after the last time you distribute an Opaque
+fdl.texi(,150) copy (directly or through your agents or retailers) of that edition to
+fdl.texi(,151) the public.
+fdl.texi(,152) 
+fdl.texi(,153) It is requested, but not required, that you contact the authors of the
+fdl.texi(,154) Document well before redistributing any large number of copies, to give
+fdl.texi(,155) them a chance to provide you with an updated version of the Document.
+fdl.texi(,156) 
+fdl.texi(,157) @item
+fdl.texi(,158) MODIFICATIONS
+fdl.texi(,159) 
+fdl.texi(,160) You may copy and distribute a Modified Version of the Document under
+fdl.texi(,161) the conditions of sections 2 and 3 above, provided that you release
+fdl.texi(,162) the Modified Version under precisely this License, with the Modified
+fdl.texi(,163) Version filling the role of the Document, thus licensing distribution
+fdl.texi(,164) and modification of the Modified Version to whoever possesses a copy
+fdl.texi(,165) of it.  In addition, you must do these things in the Modified Version:
+fdl.texi(,166) 
+fdl.texi(,167) @enumerate A
+fdl.texi(,168) @item
+fdl.texi(,169) Use in the Title Page (and on the covers, if any) a title distinct
+fdl.texi(,170) from that of the Document, and from those of previous versions
+fdl.texi(,171) (which should, if there were any, be listed in the History section
+fdl.texi(,172) of the Document).  You may use the same title as a previous version
+fdl.texi(,173) if the original publisher of that version gives permission.
+fdl.texi(,174) 
+fdl.texi(,175) @item
+fdl.texi(,176) List on the Title Page, as authors, one or more persons or entities
+fdl.texi(,177) responsible for authorship of the modifications in the Modified
+fdl.texi(,178) Version, together with at least five of the principal authors of the
+fdl.texi(,179) Document (all of its principal authors, if it has less than five).
+fdl.texi(,180) 
+fdl.texi(,181) @item
+fdl.texi(,182) State on the Title page the name of the publisher of the
+fdl.texi(,183) Modified Version, as the publisher.
+fdl.texi(,184) 
+fdl.texi(,185) @item
+fdl.texi(,186) Preserve all the copyright notices of the Document.
+fdl.texi(,187) 
+fdl.texi(,188) @item
+fdl.texi(,189) Add an appropriate copyright notice for your modifications
+fdl.texi(,190) adjacent to the other copyright notices.
+fdl.texi(,191) 
+fdl.texi(,192) @item
+fdl.texi(,193) Include, immediately after the copyright notices, a license notice
+fdl.texi(,194) giving the public permission to use the Modified Version under the
+fdl.texi(,195) terms of this License, in the form shown in the Addendum below.
+fdl.texi(,196) 
+fdl.texi(,197) @item
+fdl.texi(,198) Preserve in that license notice the full lists of Invariant Sections
+fdl.texi(,199) and required Cover Texts given in the Document's license notice.
+fdl.texi(,200) 
+fdl.texi(,201) @item
+fdl.texi(,202) Include an unaltered copy of this License.
+fdl.texi(,203) 
+fdl.texi(,204) @item
+fdl.texi(,205) Preserve the section entitled ``History'', and its title, and add to
+fdl.texi(,206) it an item stating at least the title, year, new authors, and
+fdl.texi(,207) publisher of the Modified Version as given on the Title Page.  If
+fdl.texi(,208) there is no section entitled ``History'' in the Document, create one
+fdl.texi(,209) stating the title, year, authors, and publisher of the Document as
+fdl.texi(,210) given on its Title Page, then add an item describing the Modified
+fdl.texi(,211) Version as stated in the previous sentence.
+fdl.texi(,212) 
+fdl.texi(,213) @item
+fdl.texi(,214) Preserve the network location, if any, given in the Document for
+fdl.texi(,215) public access to a Transparent copy of the Document, and likewise
+fdl.texi(,216) the network locations given in the Document for previous versions
+fdl.texi(,217) it was based on.  These may be placed in the ``History'' section.
+fdl.texi(,218) You may omit a network location for a work that was published at
+fdl.texi(,219) least four years before the Document itself, or if the original
+fdl.texi(,220) publisher of the version it refers to gives permission.
+fdl.texi(,221) 
+fdl.texi(,222) @item
+fdl.texi(,223) In any section entitled ``Acknowledgments'' or ``Dedications'',
+fdl.texi(,224) preserve the section's title, and preserve in the section all the
+fdl.texi(,225) substance and tone of each of the contributor acknowledgments
+fdl.texi(,226) and/or dedications given therein.
+fdl.texi(,227) 
+fdl.texi(,228) @item
+fdl.texi(,229) Preserve all the Invariant Sections of the Document,
+fdl.texi(,230) unaltered in their text and in their titles.  Section numbers
+fdl.texi(,231) or the equivalent are not considered part of the section titles.
+fdl.texi(,232) 
+fdl.texi(,233) @item
+fdl.texi(,234) Delete any section entitled ``Endorsements''.  Such a section
+fdl.texi(,235) may not be included in the Modified Version.
+fdl.texi(,236) 
+fdl.texi(,237) @item
+fdl.texi(,238) Do not retitle any existing section as ``Endorsements''
+fdl.texi(,239) or to conflict in title with any Invariant Section.
+fdl.texi(,240) @end enumerate
+fdl.texi(,241) 
+fdl.texi(,242) If the Modified Version includes new front-matter sections or
+fdl.texi(,243) appendices that qualify as Secondary Sections and contain no material
+fdl.texi(,244) copied from the Document, you may at your option designate some or all
+fdl.texi(,245) of these sections as invariant.  To do this, add their titles to the
+fdl.texi(,246) list of Invariant Sections in the Modified Version's license notice.
+fdl.texi(,247) These titles must be distinct from any other section titles.
+fdl.texi(,248) 
+fdl.texi(,249) You may add a section entitled ``Endorsements'', provided it contains
+fdl.texi(,250) nothing but endorsements of your Modified Version by various
+fdl.texi(,251) parties---for example, statements of peer review or that the text has
+fdl.texi(,252) been approved by an organization as the authoritative definition of a
+fdl.texi(,253) standard.
+fdl.texi(,254) 
+fdl.texi(,255) You may add a passage of up to five words as a Front-Cover Text, and a
+fdl.texi(,256) passage of up to 25 words as a Back-Cover Text, to the end of the list
+fdl.texi(,257) of Cover Texts in the Modified Version.  Only one passage of
+fdl.texi(,258) Front-Cover Text and one of Back-Cover Text may be added by (or
+fdl.texi(,259) through arrangements made by) any one entity.  If the Document already
+fdl.texi(,260) includes a cover text for the same cover, previously added by you or
+fdl.texi(,261) by arrangement made by the same entity you are acting on behalf of,
+fdl.texi(,262) you may not add another; but you may replace the old one, on explicit
+fdl.texi(,263) permission from the previous publisher that added the old one.
+fdl.texi(,264) 
+fdl.texi(,265) The author(s) and publisher(s) of the Document do not by this License
+fdl.texi(,266) give permission to use their names for publicity for or to assert or
+fdl.texi(,267) imply endorsement of any Modified Version.
+fdl.texi(,268) 
+fdl.texi(,269) @item
+fdl.texi(,270) COMBINING DOCUMENTS
+fdl.texi(,271) 
+fdl.texi(,272) You may combine the Document with other documents released under this
+fdl.texi(,273) License, under the terms defined in section 4 above for modified
+fdl.texi(,274) versions, provided that you include in the combination all of the
+fdl.texi(,275) Invariant Sections of all of the original documents, unmodified, and
+fdl.texi(,276) list them all as Invariant Sections of your combined work in its
+fdl.texi(,277) license notice.
+fdl.texi(,278) 
+fdl.texi(,279) The combined work need only contain one copy of this License, and
+fdl.texi(,280) multiple identical Invariant Sections may be replaced with a single
+fdl.texi(,281) copy.  If there are multiple Invariant Sections with the same name but
+fdl.texi(,282) different contents, make the title of each such section unique by
+fdl.texi(,283) adding at the end of it, in parentheses, the name of the original
+fdl.texi(,284) author or publisher of that section if known, or else a unique number.
+fdl.texi(,285) Make the same adjustment to the section titles in the list of
+fdl.texi(,286) Invariant Sections in the license notice of the combined work.
+fdl.texi(,287) 
+fdl.texi(,288) In the combination, you must combine any sections entitled ``History''
+fdl.texi(,289) in the various original documents, forming one section entitled
+fdl.texi(,290) ``History''; likewise combine any sections entitled ``Acknowledgments'',
+fdl.texi(,291) and any sections entitled ``Dedications''.  You must delete all sections
+fdl.texi(,292) entitled ``Endorsements.''
+fdl.texi(,293) 
+fdl.texi(,294) @item
+fdl.texi(,295) COLLECTIONS OF DOCUMENTS
+fdl.texi(,296) 
+fdl.texi(,297) You may make a collection consisting of the Document and other documents
+fdl.texi(,298) released under this License, and replace the individual copies of this
+fdl.texi(,299) License in the various documents with a single copy that is included in
+fdl.texi(,300) the collection, provided that you follow the rules of this License for
+fdl.texi(,301) verbatim copying of each of the documents in all other respects.
+fdl.texi(,302) 
+fdl.texi(,303) You may extract a single document from such a collection, and distribute
+fdl.texi(,304) it individually under this License, provided you insert a copy of this
+fdl.texi(,305) License into the extracted document, and follow this License in all
+fdl.texi(,306) other respects regarding verbatim copying of that document.
+fdl.texi(,307) 
+fdl.texi(,308) @item
+fdl.texi(,309) AGGREGATION WITH INDEPENDENT WORKS
+fdl.texi(,310) 
+fdl.texi(,311) A compilation of the Document or its derivatives with other separate
+fdl.texi(,312) and independent documents or works, in or on a volume of a storage or
+fdl.texi(,313) distribution medium, does not as a whole count as a Modified Version
+fdl.texi(,314) of the Document, provided no compilation copyright is claimed for the
+fdl.texi(,315) compilation.  Such a compilation is called an ``aggregate'', and this
+fdl.texi(,316) License does not apply to the other self-contained works thus compiled
+fdl.texi(,317) with the Document, on account of their being thus compiled, if they
+fdl.texi(,318) are not themselves derivative works of the Document.
+fdl.texi(,319) 
+fdl.texi(,320) If the Cover Text requirement of section 3 is applicable to these
+fdl.texi(,321) copies of the Document, then if the Document is less than one quarter
+fdl.texi(,322) of the entire aggregate, the Document's Cover Texts may be placed on
+fdl.texi(,323) covers that surround only the Document within the aggregate.
+fdl.texi(,324) Otherwise they must appear on covers around the whole aggregate.
+fdl.texi(,325) 
+fdl.texi(,326) @item
+fdl.texi(,327) TRANSLATION
+fdl.texi(,328) 
+fdl.texi(,329) Translation is considered a kind of modification, so you may
+fdl.texi(,330) distribute translations of the Document under the terms of section 4.
+fdl.texi(,331) Replacing Invariant Sections with translations requires special
+fdl.texi(,332) permission from their copyright holders, but you may include
+fdl.texi(,333) translations of some or all Invariant Sections in addition to the
+fdl.texi(,334) original versions of these Invariant Sections.  You may include a
+fdl.texi(,335) translation of this License provided that you also include the
+fdl.texi(,336) original English version of this License.  In case of a disagreement
+fdl.texi(,337) between the translation and the original English version of this
+fdl.texi(,338) License, the original English version will prevail.
+fdl.texi(,339) 
+fdl.texi(,340) @item
+fdl.texi(,341) TERMINATION
+fdl.texi(,342) 
+fdl.texi(,343) You may not copy, modify, sublicense, or distribute the Document except
+fdl.texi(,344) as expressly provided for under this License.  Any other attempt to
+fdl.texi(,345) copy, modify, sublicense or distribute the Document is void, and will
+fdl.texi(,346) automatically terminate your rights under this License.  However,
+fdl.texi(,347) parties who have received copies, or rights, from you under this
+fdl.texi(,348) License will not have their licenses terminated so long as such
+fdl.texi(,349) parties remain in full compliance.
+fdl.texi(,350) 
+fdl.texi(,351) @item
+fdl.texi(,352) FUTURE REVISIONS OF THIS LICENSE
+fdl.texi(,353) 
+fdl.texi(,354) The Free Software Foundation may publish new, revised versions
+fdl.texi(,355) of the GNU Free Documentation License from time to time.  Such new
+fdl.texi(,356) versions will be similar in spirit to the present version, but may
+fdl.texi(,357) differ in detail to address new problems or concerns.  See
+fdl.texi(,358) @uref{http://www.gnu.org/copyleft/}.
+fdl.texi(,359) 
+fdl.texi(,360) Each version of the License is given a distinguishing version number.
+fdl.texi(,361) If the Document specifies that a particular numbered version of this
+fdl.texi(,362) License ``or any later version'' applies to it, you have the option of
+fdl.texi(,363) following the terms and conditions either of that specified version or
+fdl.texi(,364) of any later version that has been published (not as a draft) by the
+fdl.texi(,365) Free Software Foundation.  If the Document does not specify a version
+fdl.texi(,366) number of this License, you may choose any version ever published (not
+fdl.texi(,367) as a draft) by the Free Software Foundation.
+fdl.texi(,368) @end enumerate
+fdl.texi(,369) 
+fdl.texi(,370) @page
+fdl.texi(,371) @appendixsubsec ADDENDUM: How to use this License for your documents
+fdl.texi(,372) 
+fdl.texi(,373) To use this License in a document you have written, include a copy of
+fdl.texi(,374) the License in the document and put the following copyright and
+fdl.texi(,375) license notices just after the title page:
+fdl.texi(,376) 
+fdl.texi(,377) @smallexample
+fdl.texi(,378) @group
+fdl.texi(,379)   Copyright (C)  @var{year}  @var{your name}.
+fdl.texi(,380)   Permission is granted to copy, distribute and/or modify this document
+fdl.texi(,381)   under the terms of the GNU Free Documentation License, Version 1.1
+fdl.texi(,382)   or any later version published by the Free Software Foundation;
+fdl.texi(,383)   with the Invariant Sections being @var{list their titles}, with the
+fdl.texi(,384)   Front-Cover Texts being @var{list}, and with the Back-Cover Texts being @var{list}.
+fdl.texi(,385)   A copy of the license is included in the section entitled ``GNU
+fdl.texi(,386)   Free Documentation License''.
+fdl.texi(,387) @end group
+fdl.texi(,388) @end smallexample
+fdl.texi(,389) 
+fdl.texi(,390) If you have no Invariant Sections, write ``with no Invariant Sections''
+fdl.texi(,391) instead of saying which ones are invariant.  If you have no
+fdl.texi(,392) Front-Cover Texts, write ``no Front-Cover Texts'' instead of
+fdl.texi(,393) ``Front-Cover Texts being @var{list}''; likewise for Back-Cover Texts.
+fdl.texi(,394) 
+fdl.texi(,395) If your document contains nontrivial examples of program code, we
+fdl.texi(,396) recommend releasing these examples in parallel under your choice of
+fdl.texi(,397) free software license, such as the GNU General Public License,
+fdl.texi(,398) to permit their use in free software.
+fdl.texi(,399) 
+fdl.texi(,400) @c Local Variables:
+fdl.texi(,401) @c ispell-local-pdict: "ispell-dict"
+fdl.texi(,402) @c End:
+fdl.texi(,403) 
+info-stnd.texi(,2185) 
+info-stnd.texi(,2186) 
+info-stnd.texi(,2187) @node Index
+info-stnd.texi(,2188) @appendix Index
+info-stnd.texi(,2189) 
+info-stnd.texi(,2190) @printindex cp
+info-stnd.texi(,2191) 
+info-stnd.texi(,2192) @bye

@@ -1,0 +1,1384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User's Manual: 12. Searching and Replacement</title>
+
+<meta name="description" content="XEmacs User's Manual: 12. Searching and Replacement">
+<meta name="keywords" content="XEmacs User's Manual: 12. Searching and Replacement">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Search"></a>
+<a name="SEC115"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_14.html#Display-Vars" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Incremental-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_14.html#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">12. Searching and Replacement</h1>
+
+<p>  Like other editors, Emacs has commands for searching for occurrences of
+a string.  The principal search command is unusual in that it is
+<em>incremental</em>: it begins to search before you have finished typing the
+search string.  There are also non-incremental search commands more like
+those of other editors.
+</p>
+<p>  Besides the usual <code>replace-string</code> command that finds all
+occurrences of one string and replaces them with another, Emacs has a fancy
+replacement command called <code>query-replace</code> which asks interactively
+which occurrences to replace.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Incremental-Search">12.1 Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Search happens as you type the string.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Non_002dIncremental-Search">12.2 Non-Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Specify entire string and then search.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Word-Search">12.3 Word Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Search for sequence of words.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Regexp-Search">12.4 Regular Expression Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Search for match for a regexp.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Regexps">12.5 Syntax of Regular Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Syntax of regular expressions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Search-Case">12.6 Searching and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            To ignore case while searching, or not.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Replace">12.7 Replacement Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Search, and replace some or all matches.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Other-Repeating-Search">12.8 Other Search-and-Loop Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Operating on all matches for some regexp.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Incremental-Search"></a>
+<a name="SEC116"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC117" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.1 Incremental Search</h2>
+
+<p>  An incremental search begins searching as soon as you type the first
+character of the search string.  As you type in the search string, Emacs
+shows you where the string (as you have typed it so far) is found.
+When you have typed enough characters to identify the place you want, you
+can stop.  Depending on what you do next, you may or may not need to
+terminate the search explicitly with a &lt;RET&gt;.
+</p>
+<dl compact="compact">
+<dt> <kbd>C-s</kbd></dt>
+<dd><p>Incremental search forward (<code>isearch-forward</code>).
+</p></dd>
+<dt> <kbd>C-r</kbd></dt>
+<dd><p>Incremental search backward (<code>isearch-backward</code>).
+</p></dd>
+</dl>
+
+<a name="IDX407"></a>
+<a name="IDX408"></a>
+<a name="IDX409"></a>
+<a name="IDX410"></a>
+<p>  <kbd>C-s</kbd> starts an incremental search.  <kbd>C-s</kbd> reads characters from
+the keyboard and positions the cursor at the first occurrence of the
+characters that you have typed.  If you type <kbd>C-s</kbd> and then <kbd>F</kbd>,
+the cursor moves right after the first &lsquo;<samp>F</samp>&rsquo;.  Type an <kbd>O</kbd>, and see
+the cursor move to after the first &lsquo;<samp>FO</samp>&rsquo;.  After another <kbd>O</kbd>, the
+cursor is after the first &lsquo;<samp>FOO</samp>&rsquo; after the place where you started the
+search.  Meanwhile, the search string &lsquo;<samp>FOO</samp>&rsquo; has been echoed in the
+echo area.
+</p>
+<p>  The echo area display ends with three dots when actual searching is going
+on.  When search is waiting for more input, the three dots are removed.
+(On slow terminals, the three dots are not displayed.)
+</p>
+<p>  If you make a mistake in typing the search string, you can erase
+characters with &lt;DEL&gt;.  Each &lt;DEL&gt; cancels the last character of the
+search string.  This does not happen until Emacs is ready to read another
+input character; first it must either find, or fail to find, the character
+you want to erase.  If you do not want to wait for this to happen, use
+<kbd>C-g</kbd> as described below.
+</p>
+<p>  When you are satisfied with the place you have reached, you can type
+&lt;RET&gt; (or &lt;C-m&gt;), which stops searching, leaving the cursor where 
+the search brought it.  Any command not specially meaningful in searches also
+stops the search and is then executed.  Thus, typing <kbd>C-a</kbd> exits the
+search and then moves to the beginning of the line.  &lt;RET&gt; is necessary
+only if the next command you want to type is a printing character,
+&lt;DEL&gt;, &lt;ESC&gt;, or another control character that is special
+within searches (<kbd>C-q</kbd>, <kbd>C-w</kbd>, <kbd>C-r</kbd>, <kbd>C-s</kbd>, or <kbd>C-y</kbd>).
+</p>
+<p>  Sometimes you search for &lsquo;<samp>FOO</samp>&rsquo; and find it, but were actually
+looking for a different occurrence of it.  To move to the next occurrence
+of the search string, type another <kbd>C-s</kbd>.  Do this as often as
+necessary.  If you overshoot, you can cancel some <kbd>C-s</kbd>
+characters with &lt;DEL&gt;.
+</p>
+<p>  After you exit a search, you can search for the same string again by
+typing just <kbd>C-s C-s</kbd>: the first <kbd>C-s</kbd> is the key that invokes
+incremental search, and the second <kbd>C-s</kbd> means &ldquo;search again&rdquo;.
+</p>
+<p>  If the specified string is not found at all, the echo area displays
+the text &lsquo;<samp>Failing I-Search</samp>&rsquo;.  The cursor is after the place where
+Emacs found as much of your string as it could.  Thus, if you search for
+&lsquo;<samp>FOOT</samp>&rsquo;, and there is no &lsquo;<samp>FOOT</samp>&rsquo;, the cursor may be after the
+&lsquo;<samp>FOO</samp>&rsquo; in &lsquo;<samp>FOOL</samp>&rsquo;.  At this point there are several things you
+can do.  If you mistyped the search string, correct it.  If you like the
+place you have found, you can type &lt;RET&gt; or some other Emacs command
+to &ldquo;accept what the search offered&rdquo;.  Or you can type <kbd>C-g</kbd>, which
+removes from the search string the characters that could not be found
+(the &lsquo;<samp>T</samp>&rsquo; in &lsquo;<samp>FOOT</samp>&rsquo;), leaving those that were found (the
+&lsquo;<samp>FOO</samp>&rsquo; in &lsquo;<samp>FOOT</samp>&rsquo;).  A second <kbd>C-g</kbd> at that point cancels
+the search entirely, returning point to where it was when the search
+started.
+</p>
+<p>  If a search is failing and you ask to repeat it by typing another
+<kbd>C-s</kbd>, it starts again from the beginning of the buffer.  Repeating
+a failing backward search with <kbd>C-r</kbd> starts again from the end.  This
+is called <em>wrapping around</em>.  &lsquo;<samp>Wrapped</samp>&rsquo; appears in the search
+prompt once this has happened.
+</p>
+<a name="IDX411"></a>
+<p>  The <kbd>C-g</kbd> &ldquo;quit&rdquo; character does special things during searches;
+just what it does depends on the status of the search.  If the search has
+found what you specified and is waiting for input, <kbd>C-g</kbd> cancels the
+entire search.  The cursor moves back to where you started the search.  If
+<kbd>C-g</kbd> is typed when there are characters in the search string that have
+not been found&mdash;because Emacs is still searching for them, or because it
+has failed to find them&mdash;then the search string characters which have not
+been found are discarded from the search string.  The
+search is now successful and waiting for more input, so a second <kbd>C-g</kbd>
+cancels the entire search.
+</p>
+<p>  To search for a control character such as <kbd>C-s</kbd> or &lt;DEL&gt; or
+&lt;ESC&gt;, you must quote it by typing <kbd>C-q</kbd> first.  This function
+of <kbd>C-q</kbd> is analogous to its meaning as an Emacs command: it causes
+the following character to be treated the way a graphic character would
+normally be treated in the same context.
+</p>
+<p> To search backwards, you can use <kbd>C-r</kbd> instead of <kbd>C-s</kbd> to
+start the search; <kbd>C-r</kbd> is the key that runs the command
+(<code>isearch-backward</code>) to search backward.  You can also use
+<kbd>C-r</kbd> to change from searching forward to searching backwards.  Do
+this if a search fails because the place you started was too far down in the
+file.  Repeated <kbd>C-r</kbd> keeps looking for more occurrences backwards.
+<kbd>C-s</kbd> starts going forward again.  You can cancel <kbd>C-r</kbd> in a
+search with &lt;DEL&gt;.
+</p>
+<p>  The characters <kbd>C-y</kbd> and <kbd>C-w</kbd> can be used in incremental search
+to grab text from the buffer into the search string.  This makes it
+convenient to search for another occurrence of text at point.  <kbd>C-w</kbd>
+copies the word after point as part of the search string, advancing
+point over that word.  Another <kbd>C-s</kbd> to repeat the search will then
+search for a string including that word.  <kbd>C-y</kbd> is similar to <kbd>C-w</kbd>
+but copies the rest of the current line into the search string.
+</p>
+<p>  The characters <kbd>M-p</kbd> and <kbd>M-n</kbd> can be used in an incremental
+search to recall things which you have searched for in the past.  A
+list of the last 16 things you have searched for is retained, and 
+<kbd>M-p</kbd> and <kbd>M-n</kbd> let you cycle through that ring.
+</p>
+<p>The character <kbd>M-&lt;TAB&gt;</kbd> does completion on the elements in 
+the search history ring.  For example, if you know that you have
+recently searched for the string <code>POTATOE</code>, you could type
+<kbd>C-s P O M-&lt;TAB&gt;</kbd>.  If you had searched for other strings
+beginning with <code>PO</code> then you would be shown a list of them, and
+would need to type more to select one. 
+</p>
+<p>  You can change any of the special characters in incremental search via
+the normal keybinding mechanism: simply add a binding to the 
+<code>isearch-mode-map</code>.  For example, to make the character
+<kbd>C-b</kbd> mean &ldquo;search backwards&rdquo; while in isearch-mode, do this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
+</pre></td></tr></table>
+
+<p>These are the default bindings of isearch-mode:
+</p>
+<a name="IDX412"></a>
+<a name="IDX413"></a>
+<a name="IDX414"></a>
+<a name="IDX415"></a>
+<a name="IDX416"></a>
+<a name="IDX417"></a>
+<a name="IDX418"></a>
+<a name="IDX419"></a>
+<a name="IDX420"></a>
+<a name="IDX421"></a>
+<a name="IDX422"></a>
+
+<a name="IDX423"></a>
+<a name="IDX424"></a>
+<a name="IDX425"></a>
+<a name="IDX426"></a>
+<a name="IDX427"></a>
+<a name="IDX428"></a>
+<a name="IDX429"></a>
+<a name="IDX430"></a>
+<a name="IDX431"></a>
+<a name="IDX432"></a>
+<a name="IDX433"></a>
+
+<dl compact="compact">
+<dt> <kbd>DEL</kbd></dt>
+<dd><p>Delete a character from the incremental search string (<code>isearch-delete-char</code>).
+</p></dd>
+<dt> <kbd>RET</kbd></dt>
+<dd><p>Exit incremental search (<code>isearch-exit</code>).
+</p></dd>
+<dt> <kbd>C-q</kbd></dt>
+<dd><p>Quote special characters for incremental search (<code>isearch-quote-char</code>).
+</p></dd>
+<dt> <kbd>C-s</kbd></dt>
+<dd><p>Repeat incremental search forward (<code>isearch-repeat-forward</code>).
+</p></dd>
+<dt> <kbd>C-r</kbd></dt>
+<dd><p>Repeat incremental search backward (<code>isearch-repeat-backward</code>).
+</p></dd>
+<dt> <kbd>C-y</kbd></dt>
+<dd><p>Pull rest of line from buffer into search string (<code>isearch-yank-line</code>).
+</p></dd>
+<dt> <kbd>C-w</kbd></dt>
+<dd><p>Pull next word from buffer into search string (<code>isearch-yank-word</code>).
+</p></dd>
+<dt> <kbd>C-g</kbd></dt>
+<dd><p>Cancels input back to what has been found successfully, or aborts the 
+isearch (<code>isearch-abort</code>).
+</p></dd>
+<dt> <kbd>M-p</kbd></dt>
+<dd><p>Recall the previous element in the isearch history ring 
+(<code>isearch-ring-retreat</code>).
+</p></dd>
+<dt> <kbd>M-n</kbd></dt>
+<dd><p>Recall the next element in the isearch history ring 
+(<code>isearch-ring-advance</code>).
+</p></dd>
+<dt> <kbd>M-&lt;TAB&gt;</kbd></dt>
+<dd><p>Do completion on the elements in the isearch history ring 
+(<code>isearch-complete</code>).
+</p>
+</dd>
+</dl>
+
+<p>Any other character which is normally inserted into a buffer when typed
+is automatically added to the search string in isearch-mode.
+</p>
+<hr size="6">
+<a name="SEC117"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Incremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Non_002dIncremental-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Incremental-Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">12.1.1 Slow Terminal Incremental Search</h3>
+
+<p>  Incremental search on a slow terminal uses a modified style of display
+that is designed to take less time.  Instead of redisplaying the buffer at
+each place the search gets to, it creates a new single-line window and uses
+that to display the line the search has found.  The single-line window
+appears as soon as point gets outside of the text that is already
+on the screen.
+</p>
+<p>  When the search is terminated, the single-line window is removed.  Only
+at this time the window in which the search was done is redisplayed to show
+its new value of point.
+</p>
+<p>  The three dots at the end of the search string, normally used to indicate
+that searching is going on, are not displayed in slow style display.
+</p>
+<a name="IDX434"></a>
+<p>  The slow terminal style of display is used when the terminal baud rate is
+less than or equal to the value of the variable <code>search-slow-speed</code>,
+initially 1200.
+</p>
+<a name="IDX435"></a>
+<p>  The number of lines to use in slow terminal search display is controlled
+by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
+</p>
+<hr size="6">
+<a name="Non_002dIncremental-Search"></a>
+<a name="SEC118"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Word-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.2 Non-Incremental Search</h2>
+
+<p>  Emacs also has conventional non-incremental search commands, which require
+you type the entire search string before searching begins.
+</p>
+<dl compact="compact">
+<dt> <kbd>C-s &lt;RET&gt; <var>string</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Search for <var>string</var>.
+</p></dd>
+<dt> <kbd>C-r &lt;RET&gt; <var>string</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Search backward for <var>string</var>.
+</p></dd>
+</dl>
+
+<p>  To do a non-incremental search, first type <kbd>C-s &lt;RET&gt;</kbd>
+(or <kbd>C-s C-m</kbd>).  This enters the minibuffer to read the search string.
+Terminate the string with &lt;RET&gt; to start the search.  If the string
+is not found, the search command gets an error.
+</p>
+<p> By default, <kbd>C-s</kbd> invokes incremental search, but if you give it an
+empty argument, which would otherwise be useless, it invokes non-incremental
+search.  Therefore, <kbd>C-s &lt;RET&gt;</kbd> invokes non-incremental search. 
+<kbd>C-r &lt;RET&gt;</kbd> also works this way.
+</p>
+<a name="IDX436"></a>
+<a name="IDX437"></a>
+<p>  Forward and backward non-incremental searches are implemented by the
+commands <code>search-forward</code> and <code>search-backward</code>.  You can bind
+these commands to keys.  The reason that incremental
+search is programmed to invoke them as well is that <kbd>C-s &lt;RET&gt;</kbd>
+is the traditional sequence of characters used in Emacs to invoke
+non-incremental search.
+</p>
+<p> Non-incremental searches performed using <kbd>C-s &lt;RET&gt;</kbd> do
+not call <code>search-forward</code> right away.  They first check
+if the next character is <kbd>C-w</kbd>, which requests a word search.
+See section <a href="#Word-Search">Word Search</a>.
+</p>
+<hr size="6">
+<a name="Word-Search"></a>
+<a name="SEC119"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Non_002dIncremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexp-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.3 Word Search</h2>
+
+<p>  Word search looks for a sequence of words without regard to how the
+words are separated.  More precisely, you type a string of many words,
+using single spaces to separate them, and the string is found even if
+there are multiple spaces, newlines or other punctuation between the words.
+</p>
+<p>  Word search is useful in editing documents formatted by text formatters.
+If you edit while looking at the printed, formatted version, you can&rsquo;t tell
+where the line breaks are in the source file.  Word search, allows you
+to search  without having to know the line breaks.
+</p>
+<dl compact="compact">
+<dt> <kbd>C-s &lt;RET&gt; C-w <var>words</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Search for <var>words</var>, ignoring differences in punctuation.
+</p></dd>
+<dt> <kbd>C-r &lt;RET&gt; C-w <var>words</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Search backward for <var>words</var>, ignoring differences in punctuation.
+</p></dd>
+</dl>
+
+<p>  Word search is a special case of non-incremental search.  It is invoked
+with <kbd>C-s &lt;RET&gt; C-w</kbd> followed by the search string, which
+must always be terminated with another &lt;RET&gt;.  Being non-incremental, this
+search does not start until the argument is terminated.  It works by
+constructing a regular expression and searching for that.  See section <a href="#Regexp-Search">Regular Expression Search</a>.
+</p>
+<p> You can do a backward word search with <kbd>C-r &lt;RET&gt; C-w</kbd>.
+</p>
+<a name="IDX438"></a>
+<a name="IDX439"></a>
+<p>  Forward and backward word searches are implemented by the commands
+<code>word-search-forward</code> and <code>word-search-backward</code>.  You can
+bind these commands to keys.  The reason that incremental
+search is programmed to invoke them as well is that <kbd>C-s &lt;RET&gt; C-w</kbd>
+is the traditional Emacs sequence of keys for word search.
+</p>
+<hr size="6">
+<a name="Regexp-Search"></a>
+<a name="SEC120"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Word-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexps" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.4 Regular Expression Search</h2>
+
+<p>  A <em>regular expression</em> (<em>regexp</em>, for short) is a pattern that
+denotes a (possibly infinite) set of strings.  Searching for matches
+for a regexp is a powerful operation that editors on Unix systems have
+traditionally offered.
+</p>
+<p> To gain a thorough understanding of regular expressions and how to use
+them to best advantage, we recommend that you study <cite>Mastering
+Regular Expressions, by Jeffrey E.F. Friedl, O&rsquo;Reilly and Associates,
+1997</cite>. (It&rsquo;s known as the &quot;Hip Owls&quot; book, because of the picture on its
+cover.)  You might also read the manuals to <a href="../gawk/index.html#Top">(gawk)Top</a>,
+<a href="../ed/index.html#Top">(ed)Top</a>, <cite>sed</cite>, <cite>grep</cite>, <a href="../perl/index.html#Top">(perl)Top</a>,
+<a href="../regex/index.html#Top">(regex)Top</a>, <a href="../rx/index.html#Top">(rx)Top</a>, <cite>pcre</cite>, and <a href="../flex/index.html#Top">(flex)Top</a>, which
+also make good use of regular expressions.
+</p>
+<p> The XEmacs regular expression syntax most closely resembles that of
+<cite>ed</cite>, or <cite>grep</cite>, the GNU versions of which all utilize the GNU
+<cite>regex</cite> library.  XEmacs&rsquo; version of <cite>regex</cite> has recently been
+extended with some Perl&ndash;like capabilities, described in the next
+section.
+</p>
+<p> In XEmacs, you can search for the next match for a regexp either
+incrementally or not.
+</p>
+<a name="IDX440"></a>
+<a name="IDX441"></a>
+<a name="IDX442"></a>
+<a name="IDX443"></a>
+<p>  Incremental search for a regexp is done by typing <kbd>M-C-s</kbd>
+(<code>isearch-forward-regexp</code>).  This command reads a search string
+incrementally just like <kbd>C-s</kbd>, but it treats the search string as a
+regexp rather than looking for an exact match against the text in the
+buffer.  Each time you add text to the search string, you make the regexp
+longer, and the new regexp is searched for.  A reverse regexp search command
+<code>isearch-backward-regexp</code> also exists, bound to <kbd>M-C-r</kbd>.
+</p>
+<p>  All of the control characters that do special things within an ordinary
+incremental search have the same functionality in incremental regexp search.
+Typing <kbd>C-s</kbd> or <kbd>C-r</kbd> immediately after starting a search
+retrieves the last incremental search regexp used:
+incremental regexp and non-regexp searches have independent defaults.
+</p>
+<a name="IDX444"></a>
+<a name="IDX445"></a>
+<p>  Non-incremental search for a regexp is done by the functions
+<code>re-search-forward</code> and <code>re-search-backward</code>.  You can invoke
+them with <kbd>M-x</kbd> or bind them to keys.  You can also call
+<code>re-search-forward</code> by way of incremental regexp search with
+<kbd>M-C-s &lt;RET&gt;</kbd>; similarly for <code>re-search-backward</code> with
+<kbd>M-C-r &lt;RET&gt;</kbd>.
+</p>
+<hr size="6">
+<a name="Regexps"></a>
+<a name="SEC121"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Regexp-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search-Case" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.5 Syntax of Regular Expressions</h2>
+
+<p>  Regular expressions have a syntax in which a few characters are
+special constructs and the rest are <em>ordinary</em>.  An ordinary
+character is a simple regular expression that matches that character and
+nothing else.  The special characters are &lsquo;<samp>.</samp>&rsquo;, &lsquo;<samp>*</samp>&rsquo;, &lsquo;<samp>+</samp>&rsquo;,
+&lsquo;<samp>?</samp>&rsquo;, &lsquo;<samp>[</samp>&rsquo;, &lsquo;<samp>]</samp>&rsquo;, &lsquo;<samp>^</samp>&rsquo;, &lsquo;<samp>$</samp>&rsquo;, and &lsquo;<samp>\</samp>&rsquo;; no new
+special characters will be defined in the future.  Any other character
+appearing in a regular expression is ordinary, unless a &lsquo;<samp>\</samp>&rsquo;
+precedes it.
+</p>
+<p>For example, &lsquo;<samp>f</samp>&rsquo; is not a special character, so it is ordinary, and
+therefore &lsquo;<samp>f</samp>&rsquo; is a regular expression that matches the string
+&lsquo;<samp>f</samp>&rsquo; and no other string.  (It does <em>not</em> match the string
+&lsquo;<samp>ff</samp>&rsquo;.)  Likewise, &lsquo;<samp>o</samp>&rsquo; is a regular expression that matches
+only &lsquo;<samp>o</samp>&rsquo;.
+</p>
+<p>Any two regular expressions <var>a</var> and <var>b</var> can be concatenated.  The
+result is a regular expression that matches a string if <var>a</var> matches
+some amount of the beginning of that string and <var>b</var> matches the rest of
+the string.
+</p>
+<p>As a simple example, we can concatenate the regular expressions &lsquo;<samp>f</samp>&rsquo;
+and &lsquo;<samp>o</samp>&rsquo; to get the regular expression &lsquo;<samp>fo</samp>&rsquo;, which matches only
+the string &lsquo;<samp>fo</samp>&rsquo;.  Still trivial.  To do something more powerful, you
+need to use one of the special characters.  Here is a list of them:
+</p>
+<dl compact="compact">
+<dt> <kbd>. <span class="roman">(Period)</span></kbd></dt>
+<dd><a name="IDX446"></a>
+<p>is a special character that matches any single character except a newline.
+Using concatenation, we can make regular expressions like &lsquo;<samp>a.b</samp>&rsquo;, which
+matches any three-character string that begins with &lsquo;<samp>a</samp>&rsquo; and ends with
+&lsquo;<samp>b</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>*</kbd></dt>
+<dd><a name="IDX447"></a>
+<p>is not a construct by itself; it is a quantifying suffix operator that
+means to repeat the preceding regular expression as many times as
+possible.  In &lsquo;<samp>fo*</samp>&rsquo;, the &lsquo;<samp>*</samp>&rsquo; applies to the &lsquo;<samp>o</samp>&rsquo;, so
+&lsquo;<samp>fo*</samp>&rsquo; matches one &lsquo;<samp>f</samp>&rsquo; followed by any number of &lsquo;<samp>o</samp>&rsquo;s.
+The case of zero &lsquo;<samp>o</samp>&rsquo;s is allowed: &lsquo;<samp>fo*</samp>&rsquo; does match
+&lsquo;<samp>f</samp>&rsquo;.
+</p>
+<p>&lsquo;<samp>*</samp>&rsquo; always applies to the <em>smallest</em> possible preceding
+expression.  Thus, &lsquo;<samp>fo*</samp>&rsquo; has a repeating &lsquo;<samp>o</samp>&rsquo;, not a
+repeating &lsquo;<samp>fo</samp>&rsquo;.
+</p>
+<p>The matcher processes a &lsquo;<samp>*</samp>&rsquo; construct by matching, immediately, as
+many repetitions as can be found; it is &quot;greedy&quot;.  Then it continues
+with the rest of the pattern.  If that fails, backtracking occurs,
+discarding some of the matches of the &lsquo;<samp>*</samp>&rsquo;-modified construct in
+case that makes it possible to match the rest of the pattern.  For
+example, in matching &lsquo;<samp>ca*ar</samp>&rsquo; against the string &lsquo;<samp>caaar</samp>&rsquo;, the
+&lsquo;<samp>a*</samp>&rsquo; first tries to match all three &lsquo;<samp>a</samp>&rsquo;s; but the rest of the
+pattern is &lsquo;<samp>ar</samp>&rsquo; and there is only &lsquo;<samp>r</samp>&rsquo; left to match, so this
+try fails.  The next alternative is for &lsquo;<samp>a*</samp>&rsquo; to match only two
+&lsquo;<samp>a</samp>&rsquo;s.  With this choice, the rest of the regexp matches
+successfully.
+</p>
+<p>Nested repetition operators can be extremely slow if they specify
+backtracking loops.  For example, it could take hours for the regular
+expression &lsquo;<samp>\(x+y*\)*a</samp>&rsquo; to match the sequence
+&lsquo;<samp>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxz</samp>&rsquo;.  The slowness is because
+Emacs must try each imaginable way of grouping the 35 &lsquo;<samp>x</samp>&rsquo;&rsquo;s before
+concluding that none of them can work.  To make sure your regular
+expressions run fast, check nested repetitions carefully.
+</p>
+</dd>
+<dt> <kbd>+</kbd></dt>
+<dd><a name="IDX448"></a>
+<p>is a quantifying suffix operator similar to &lsquo;<samp>*</samp>&rsquo; except that the
+preceding expression must match at least once.  It is also &quot;greedy&quot;.
+So, for example, &lsquo;<samp>ca+r</samp>&rsquo; matches the strings &lsquo;<samp>car</samp>&rsquo; and
+&lsquo;<samp>caaaar</samp>&rsquo; but not the string &lsquo;<samp>cr</samp>&rsquo;, whereas &lsquo;<samp>ca*r</samp>&rsquo; matches
+all three strings.
+</p>
+</dd>
+<dt> <kbd>?</kbd></dt>
+<dd><a name="IDX449"></a>
+<p>is a quantifying suffix operator similar to &lsquo;<samp>*</samp>&rsquo;, except that the
+preceding expression can match either once or not at all.  For example,
+&lsquo;<samp>ca?r</samp>&rsquo; matches &lsquo;<samp>car</samp>&rsquo; or &lsquo;<samp>cr</samp>&rsquo;, but does not match anything
+else.
+</p>
+</dd>
+<dt> <kbd>*?</kbd></dt>
+<dd><a name="IDX450"></a>
+<p>works just like &lsquo;<samp>*</samp>&rsquo;, except that rather than matching the longest
+match, it matches the shortest match.  &lsquo;<samp>*?</samp>&rsquo; is known as a
+<em>non-greedy</em> quantifier, a regexp construct borrowed from Perl.
+</p>
+<p>This construct is very useful for when you want to match the text inside
+a pair of delimiters.  For instance, &lsquo;<samp>/\*.*?\*/</samp>&rsquo; will match C
+comments in a string.  This could not easily be achieved without the use
+of a non-greedy quantifier.
+</p>
+<p>This construct has not been available prior to XEmacs 20.4.  It is not
+available in FSF Emacs.
+</p>
+</dd>
+<dt> <kbd>+?</kbd></dt>
+<dd><a name="IDX451"></a>
+<p>is the non-greedy version of &lsquo;<samp>+</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>??</kbd></dt>
+<dd><a name="IDX452"></a>
+<p>is the non-greedy version of &lsquo;<samp>?</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>\{n,m\}</kbd></dt>
+<dd><a name="IDX453"></a>
+<p>serves as an interval quantifier, analogous to &lsquo;<samp>*</samp>&rsquo; or &lsquo;<samp>+</samp>&rsquo;, but
+specifies that the expression must match at least <var>n</var> times, but no
+more than <var>m</var> times.  This syntax is supported by most Unix regexp
+utilities, and has been introduced to XEmacs for the version 20.3.
+</p>
+<p>Unfortunately, the non-greedy version of this quantifier does not exist
+currently, although it does in Perl.
+</p>
+</dd>
+<dt> <kbd>[ &hellip; ]</kbd></dt>
+<dd><a name="IDX454"></a>
+<a name="IDX455"></a>
+<a name="IDX456"></a>
+<p>&lsquo;<samp>[</samp>&rsquo; begins a <em>character set</em>, which is terminated by a
+&lsquo;<samp>]</samp>&rsquo;.  In the simplest case, the characters between the two brackets
+form the set.  Thus, &lsquo;<samp>[ad]</samp>&rsquo; matches either one &lsquo;<samp>a</samp>&rsquo; or one
+&lsquo;<samp>d</samp>&rsquo;, and &lsquo;<samp>[ad]*</samp>&rsquo; matches any string composed of just &lsquo;<samp>a</samp>&rsquo;s
+and &lsquo;<samp>d</samp>&rsquo;s (including the empty string), from which it follows that
+&lsquo;<samp>c[ad]*r</samp>&rsquo; matches &lsquo;<samp>cr</samp>&rsquo;, &lsquo;<samp>car</samp>&rsquo;, &lsquo;<samp>cdr</samp>&rsquo;,
+&lsquo;<samp>caddaar</samp>&rsquo;, etc.
+</p>
+<p>The usual regular expression special characters are not special inside a
+character set.  A completely different set of special characters exists
+inside character sets: &lsquo;<samp>]</samp>&rsquo;, &lsquo;<samp>-</samp>&rsquo; and &lsquo;<samp>^</samp>&rsquo;.
+</p>
+<p>&lsquo;<samp>-</samp>&rsquo; is used for ranges of characters.  To write a range, write two
+characters with a &lsquo;<samp>-</samp>&rsquo; between them.  Thus, &lsquo;<samp>[a-z]</samp>&rsquo; matches any
+lower case letter.  Ranges may be intermixed freely with individual
+characters, as in &lsquo;<samp>[a-z$%.]</samp>&rsquo;, which matches any lower case letter
+or &lsquo;<samp>$</samp>&rsquo;, &lsquo;<samp>%</samp>&rsquo;, or a period.
+</p>
+<p>To include a &lsquo;<samp>]</samp>&rsquo; in a character set, make it the first character.
+For example, &lsquo;<samp>[]a]</samp>&rsquo; matches &lsquo;<samp>]</samp>&rsquo; or &lsquo;<samp>a</samp>&rsquo;.  To include a
+&lsquo;<samp>-</samp>&rsquo;, write &lsquo;<samp>-</samp>&rsquo; as the first character in the set, or put it
+immediately after a range.  (You can replace one individual character
+<var>c</var> with the range &lsquo;<samp><var>c</var>-<var>c</var></samp>&rsquo; to make a place to put the
+&lsquo;<samp>-</samp>&rsquo;.)  There is no way to write a set containing just &lsquo;<samp>-</samp>&rsquo; and
+&lsquo;<samp>]</samp>&rsquo;.
+</p>
+<p>To include &lsquo;<samp>^</samp>&rsquo; in a set, put it anywhere but at the beginning of
+the set.
+</p>
+</dd>
+<dt> <kbd>[^ &hellip; ]</kbd></dt>
+<dd><a name="IDX457"></a>
+<p>&lsquo;<samp>[^</samp>&rsquo; begins a <em>complement character set</em>, which matches any
+character except the ones specified.  Thus, &lsquo;<samp>[^a-z0-9A-Z]</samp>&rsquo;
+matches all characters <em>except</em> letters and digits.
+</p>
+<p>&lsquo;<samp>^</samp>&rsquo; is not special in a character set unless it is the first
+character.  The character following the &lsquo;<samp>^</samp>&rsquo; is treated as if it
+were first (thus, &lsquo;<samp>-</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo; are not special there).
+</p>
+<p>Note that a complement character set can match a newline, unless
+newline is mentioned as one of the characters not to match.
+</p>
+</dd>
+<dt> <kbd>^</kbd></dt>
+<dd><a name="IDX458"></a>
+<a name="IDX459"></a>
+<p>is a special character that matches the empty string, but only at the
+beginning of a line in the text being matched.  Otherwise it fails to
+match anything.  Thus, &lsquo;<samp>^foo</samp>&rsquo; matches a &lsquo;<samp>foo</samp>&rsquo; that occurs at
+the beginning of a line.
+</p>
+<p>When matching a string instead of a buffer, &lsquo;<samp>^</samp>&rsquo; matches at the
+beginning of the string or after a newline character &lsquo;<samp>\n</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>$</kbd></dt>
+<dd><a name="IDX460"></a>
+<p>is similar to &lsquo;<samp>^</samp>&rsquo; but matches only at the end of a line.  Thus,
+&lsquo;<samp>x+$</samp>&rsquo; matches a string of one &lsquo;<samp>x</samp>&rsquo; or more at the end of a line.
+</p>
+<p>When matching a string instead of a buffer, &lsquo;<samp>$</samp>&rsquo; matches at the end
+of the string or before a newline character &lsquo;<samp>\n</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>\</kbd></dt>
+<dd><a name="IDX461"></a>
+<p>has two functions: it quotes the special characters (including
+&lsquo;<samp>\</samp>&rsquo;), and it introduces additional special constructs.
+</p>
+<p>Because &lsquo;<samp>\</samp>&rsquo; quotes special characters, &lsquo;<samp>\$</samp>&rsquo; is a regular
+expression that matches only &lsquo;<samp>$</samp>&rsquo;, and &lsquo;<samp>\[</samp>&rsquo; is a regular
+expression that matches only &lsquo;<samp>[</samp>&rsquo;, and so on.
+</p>
+
+</dd>
+</dl>
+
+<p><strong>Please note:</strong> For historical compatibility, special characters
+are treated as ordinary ones if they are in contexts where their special
+meanings make no sense.  For example, &lsquo;<samp>*foo</samp>&rsquo; treats &lsquo;<samp>*</samp>&rsquo; as
+ordinary since there is no preceding expression on which the &lsquo;<samp>*</samp>&rsquo;
+can act.  It is poor practice to depend on this behavior; quote the
+special character anyway, regardless of where it appears.
+</p>
+<p>For the most part, &lsquo;<samp>\</samp>&rsquo; followed by any character matches only
+that character.  However, there are several exceptions: characters
+that, when preceded by &lsquo;<samp>\</samp>&rsquo;, are special constructs.  Such
+characters are always ordinary when encountered on their own.  Here
+is a table of &lsquo;<samp>\</samp>&rsquo; constructs:
+</p>
+<dl compact="compact">
+<dt> <kbd>\|</kbd></dt>
+<dd><a name="IDX462"></a>
+<a name="IDX463"></a>
+<p>specifies an alternative.
+Two regular expressions <var>a</var> and <var>b</var> with &lsquo;<samp>\|</samp>&rsquo; in
+between form an expression that matches anything that either <var>a</var> or
+<var>b</var> matches.
+</p>
+<p>Thus, &lsquo;<samp>foo\|bar</samp>&rsquo; matches either &lsquo;<samp>foo</samp>&rsquo; or &lsquo;<samp>bar</samp>&rsquo;
+but no other string.
+</p>
+<p>&lsquo;<samp>\|</samp>&rsquo; applies to the largest possible surrounding expressions.  Only a
+surrounding &lsquo;<samp>\( &hellip; \)</samp>&rsquo; grouping can limit the grouping power of
+&lsquo;<samp>\|</samp>&rsquo;.
+</p>
+<p>Full backtracking capability exists to handle multiple uses of &lsquo;<samp>\|</samp>&rsquo;.
+</p>
+</dd>
+<dt> <kbd>\( &hellip; \)</kbd></dt>
+<dd><a name="IDX464"></a>
+<a name="IDX465"></a>
+<a name="IDX466"></a>
+<p>is a grouping construct that serves three purposes:
+</p>
+<ol>
+<li>
+To enclose a set of &lsquo;<samp>\|</samp>&rsquo; alternatives for other operations.
+Thus, &lsquo;<samp>\(foo\|bar\)x</samp>&rsquo; matches either &lsquo;<samp>foox</samp>&rsquo; or &lsquo;<samp>barx</samp>&rsquo;.
+
+</li><li>
+To enclose an expression for a suffix operator such as &lsquo;<samp>*</samp>&rsquo; to act
+on.  Thus, &lsquo;<samp>ba\(na\)*</samp>&rsquo; matches &lsquo;<samp>bananana</samp>&rsquo;, etc., with any
+(zero or more) number of &lsquo;<samp>na</samp>&rsquo; strings.
+
+</li><li>
+To record a matched substring for future reference.
+</li></ol>
+
+<p>This last application is not a consequence of the idea of a
+parenthetical grouping; it is a separate feature that happens to be
+assigned as a second meaning to the same &lsquo;<samp>\( &hellip; \)</samp>&rsquo; construct
+because there is no conflict in practice between the two meanings.
+Here is an explanation of this feature:
+</p>
+</dd>
+<dt> <kbd>\<var>digit</var></kbd></dt>
+<dd><p>matches the same text that matched the <var>digit</var>th occurrence of a
+&lsquo;<samp>\( &hellip; \)</samp>&rsquo; construct.
+</p>
+<p>In other words, after the end of a &lsquo;<samp>\( &hellip; \)</samp>&rsquo; construct.  the
+matcher remembers the beginning and end of the text matched by that
+construct.  Then, later on in the regular expression, you can use
+&lsquo;<samp>\</samp>&rsquo; followed by <var>digit</var> to match that same text, whatever it
+may have been.
+</p>
+<p>The strings matching the first nine &lsquo;<samp>\( &hellip; \)</samp>&rsquo; constructs
+appearing in a regular expression are assigned numbers 1 through 9 in
+the order that the open parentheses appear in the regular expression.
+So you can use &lsquo;<samp>\1</samp>&rsquo; through &lsquo;<samp>\9</samp>&rsquo; to refer to the text matched
+by the corresponding &lsquo;<samp>\( &hellip; \)</samp>&rsquo; constructs.
+</p>
+<p>For example, &lsquo;<samp>\(.*\)\1</samp>&rsquo; matches any newline-free string that is
+composed of two identical halves.  The &lsquo;<samp>\(.*\)</samp>&rsquo; matches the first
+half, which may be anything, but the &lsquo;<samp>\1</samp>&rsquo; that follows must match
+the same exact text.
+</p>
+</dd>
+<dt> <kbd>\(?: &hellip; \)</kbd></dt>
+<dd><a name="IDX467"></a>
+<a name="IDX468"></a>
+<p>is called a <em>shy</em> grouping operator, and it is used just like
+&lsquo;<samp>\( &hellip; \)</samp>&rsquo;, except that it does not cause the matched
+substring to be recorded for future reference.
+</p>
+<p>This is useful when you need a lot of grouping &lsquo;<samp>\( &hellip; \)</samp>&rsquo;
+constructs, but only want to remember one or two &ndash; or if you have
+more than nine groupings and need to use backreferences to refer to
+the groupings at the end.
+</p>
+<p>Using &lsquo;<samp>\(?: &hellip; \)</samp>&rsquo; rather than &lsquo;<samp>\( &hellip; \)</samp>&rsquo; when you
+don&rsquo;t need the captured substrings ought to speed up your programs some,
+since it shortens the code path followed by the regular expression
+engine, as well as the amount of memory allocation and string copying it
+must do.  The actual performance gain to be observed has not been
+measured or quantified as of this writing.
+</p>
+<p>The shy grouping operator has been borrowed from Perl, and has not been
+available prior to XEmacs 20.3, nor is it available in FSF Emacs.
+</p>
+</dd>
+<dt> <kbd>\w</kbd></dt>
+<dd><a name="IDX469"></a>
+<p>matches any word-constituent character.  The editor syntax table
+determines which characters these are.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
+</p>
+</dd>
+<dt> <kbd>\W</kbd></dt>
+<dd><a name="IDX470"></a>
+<p>matches any character that is not a word constituent.
+</p>
+</dd>
+<dt> <kbd>\s<var>code</var></kbd></dt>
+<dd><a name="IDX471"></a>
+<p>matches any character whose syntax is <var>code</var>.  Here <var>code</var> is a
+character that represents a syntax code: thus, &lsquo;<samp>w</samp>&rsquo; for word
+constituent, &lsquo;<samp>-</samp>&rsquo; for whitespace, &lsquo;<samp>(</samp>&rsquo; for open parenthesis,
+etc.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>, for a list of syntax codes and the characters that
+stand for them.
+</p>
+</dd>
+<dt> <kbd>\S<var>code</var></kbd></dt>
+<dd><a name="IDX472"></a>
+<p>matches any character whose syntax is not <var>code</var>.
+</p></dd>
+</dl>
+
+<p>  The following regular expression constructs match the empty string&mdash;that is,
+they don&rsquo;t use up any characters&mdash;but whether they match depends on the
+context.
+</p>
+<dl compact="compact">
+<dt> <kbd>\`</kbd></dt>
+<dd><a name="IDX473"></a>
+<p>matches the empty string, but only at the beginning
+of the buffer or string being matched against.
+</p>
+</dd>
+<dt> <kbd>\'</kbd></dt>
+<dd><a name="IDX474"></a>
+<p>matches the empty string, but only at the end of
+the buffer or string being matched against.
+</p>
+</dd>
+<dt> <kbd>\=</kbd></dt>
+<dd><a name="IDX475"></a>
+<p>matches the empty string, but only at point.
+(This construct is not defined when matching against a string.)
+</p>
+</dd>
+<dt> <kbd>\b</kbd></dt>
+<dd><a name="IDX476"></a>
+<p>matches the empty string, but only at the beginning or
+end of a word.  Thus, &lsquo;<samp>\bfoo\b</samp>&rsquo; matches any occurrence of
+&lsquo;<samp>foo</samp>&rsquo; as a separate word.  &lsquo;<samp>\bballs?\b</samp>&rsquo; matches
+&lsquo;<samp>ball</samp>&rsquo; or &lsquo;<samp>balls</samp>&rsquo; as a separate word.
+</p>
+</dd>
+<dt> <kbd>\B</kbd></dt>
+<dd><a name="IDX477"></a>
+<p>matches the empty string, but <em>not</em> at the beginning or
+end of a word.
+</p>
+</dd>
+<dt> <kbd>\&lt;</kbd></dt>
+<dd><a name="IDX478"></a>
+<p>matches the empty string, but only at the beginning of a word.
+</p>
+</dd>
+<dt> <kbd>\&gt;</kbd></dt>
+<dd><a name="IDX479"></a>
+<p>matches the empty string, but only at the end of a word.
+</p></dd>
+</dl>
+
+<p>  Here is a complicated regexp used by Emacs to recognize the end of a
+sentence together with any whitespace that follows.  It is given in Lisp
+syntax to enable you to distinguish the spaces from the tab characters.  In
+Lisp syntax, the string constant begins and ends with a double-quote.
+&lsquo;<samp>\&quot;</samp>&rsquo; stands for a double-quote as part of the regexp, &lsquo;<samp>\\</samp>&rsquo; for a
+backslash as part of the regexp, &lsquo;<samp>\t</samp>&rsquo; for a tab and &lsquo;<samp>\n</samp>&rsquo; for a
+newline.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
+</pre></td></tr></table>
+
+<p>This regexp contains four parts: a character set matching
+period, &lsquo;<samp>?</samp>&rsquo; or &lsquo;<samp>!</samp>&rsquo;; a character set matching close-brackets,
+quotes or parentheses, repeated any number of times; an alternative in
+backslash-parentheses that matches end-of-line, a tab or two spaces; and
+a character set matching whitespace characters, repeated any number of
+times.
+</p>
+<hr size="6">
+<a name="Search-Case"></a>
+<a name="SEC122"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Regexps" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.6 Searching and Case</h2>
+
+<p>  All searches in Emacs normally ignore the case of the text they
+are searching through; if you specify searching for &lsquo;<samp>FOO</samp>&rsquo;,
+&lsquo;<samp>Foo</samp>&rsquo; and &lsquo;<samp>foo</samp>&rsquo; are also considered a match.  Regexps, and in
+particular character sets, are included: &lsquo;<samp>[aB]</samp>&rsquo; matches &lsquo;<samp>a</samp>&rsquo;
+or &lsquo;<samp>A</samp>&rsquo; or &lsquo;<samp>b</samp>&rsquo; or &lsquo;<samp>B</samp>&rsquo;.
+</p>
+<p>  If you want a case-sensitive search, set the variable
+<code>case-fold-search</code> to <code>nil</code>.  Then all letters must match
+exactly, including case. <code>case-fold-search</code> is a per-buffer
+variable; altering it affects only the current buffer, but
+there is a default value which you can change as well.  See section <a href="xemacs_30.html#Locals">Local Variables</a>. 
+You can also use <b>Case Sensitive Search</b> from the <b>Options</b> menu 
+on your screen.
+</p>
+<hr size="6">
+<a name="Replace"></a>
+<a name="SEC123"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Search-Case" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Unconditional-Replace" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.7 Replacement Commands</h2>
+
+<p>  Global search-and-replace operations are not needed as often in Emacs as
+they are in other editors, but they are available.  In addition to the
+simple <code>replace-string</code> command which is like that found in most
+editors, there is a <code>query-replace</code> command which asks you, for each
+occurrence of a pattern, whether to replace it.
+</p>
+<p>  The replace commands all replace one string (or regexp) with one
+replacement string.  It is possible to perform several replacements in
+parallel using the command <code>expand-region-abbrevs</code>.  See section <a href="xemacs_26.html#Expanding-Abbrevs">Controlling Abbrev Expansion</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Unconditional-Replace">12.7.1 Unconditional Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Replacing all matches for a string.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Regexp-Replace">12.7.2 Regexp Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Replacing all matches for a regexp.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Replacement-and-Case">12.7.3 Replace Commands and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How replacements preserve case of letters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Query-Replace">12.7.4 Query Replace</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to use querying.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Unconditional-Replace"></a>
+<a name="SEC124"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Regexp-Replace" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">12.7.1 Unconditional Replacement</h3>
+
+<dl compact="compact">
+<dt> <kbd>M-x replace-string &lt;RET&gt; <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Replace every occurrence of <var>string</var> with <var>newstring</var>.
+</p></dd>
+<dt> <kbd>M-x replace-regexp &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Replace every match for <var>regexp</var> with <var>newstring</var>.
+</p></dd>
+</dl>
+
+<p>  To replace every instance of &lsquo;<samp>foo</samp>&rsquo; after point with &lsquo;<samp>bar</samp>&rsquo;,
+use the command <kbd>M-x replace-string</kbd> with the two arguments
+&lsquo;<samp>foo</samp>&rsquo; and &lsquo;<samp>bar</samp>&rsquo;.  Replacement occurs only after point: if you
+want to cover the whole buffer you must go to the beginning first.  By
+default, all occurrences up to the end of the buffer are replaced.  To
+limit replacement to part of the buffer, narrow to that part of the
+buffer before doing the replacement (see section <a href="xemacs_29.html#Narrowing">Narrowing</a>).
+</p>
+<p>  When <code>replace-string</code> exits, point is left at the last occurrence
+replaced.  The value of point when the <code>replace-string</code> command was
+issued is remembered on the mark ring; <kbd>C-u C-&lt;SPC&gt;</kbd> moves back
+there.
+</p>
+<p>  A numeric argument restricts replacement to matches that are surrounded
+by word boundaries.
+</p>
+<hr size="6">
+<a name="Regexp-Replace"></a>
+<a name="SEC125"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Unconditional-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replacement-and-Case" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">12.7.2 Regexp Replacement</h3>
+
+<p>  <code>replace-string</code> replaces exact matches for a single string.  The
+similar command <code>replace-regexp</code> replaces any match for a specified
+pattern.
+</p>
+<p>  In <code>replace-regexp</code>, the <var>newstring</var> need not be constant.  It
+can refer to all or part of what is matched by the <var>regexp</var>.  &lsquo;<samp>\&amp;</samp>&rsquo;
+in <var>newstring</var> stands for the entire text being replaced.
+&lsquo;<samp>\<var>d</var></samp>&rsquo; in <var>newstring</var>, where <var>d</var> is a digit, stands for
+whatever matched the <var>d</var>&rsquo;th parenthesized grouping in <var>regexp</var>.
+For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; c[ad]+r &lt;RET&gt; \&amp;-safe &lt;RET&gt;
+</pre></td></tr></table>
+
+<p>would replace (for example) &lsquo;<samp>cadr</samp>&rsquo; with &lsquo;<samp>cadr-safe</samp>&rsquo; and &lsquo;<samp>cddr</samp>&rsquo;
+with &lsquo;<samp>cddr-safe</samp>&rsquo;.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; \(c[ad]+r\)-safe &lt;RET&gt; \1 &lt;RET&gt;
+</pre></td></tr></table>
+
+<p>would perform exactly the opposite replacements.  To include a &lsquo;<samp>\</samp>&rsquo;
+in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
+</p>
+<hr size="6">
+<a name="Replacement-and-Case"></a>
+<a name="SEC126"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Regexp-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Query-Replace" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">12.7.3 Replace Commands and Case</h3>
+
+<p>  If the arguments to a replace command are in lower case, the command
+preserves case when it makes a replacement.  Thus, the following command:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string &lt;RET&gt; foo &lt;RET&gt; bar &lt;RET&gt;
+</pre></td></tr></table>
+
+<p>replaces a lower-case &lsquo;<samp>foo</samp>&rsquo; with a lower case &lsquo;<samp>bar</samp>&rsquo;, &lsquo;<samp>FOO</samp>&rsquo;
+with &lsquo;<samp>BAR</samp>&rsquo;, and &lsquo;<samp>Foo</samp>&rsquo; with &lsquo;<samp>Bar</samp>&rsquo;.  If upper-case letters are
+used in the second argument, they remain upper-case every time that
+argument is inserted.  If upper-case letters are used in the first
+argument, the second argument is always substituted exactly as given, with
+no case conversion.  Likewise, if the variable <code>case-replace</code> is set
+to <code>nil</code>, replacement is done without case conversion.  If
+<code>case-fold-search</code> is set to <code>nil</code>, case is significant in
+matching occurrences of &lsquo;<samp>foo</samp>&rsquo; to replace; also, case conversion of the
+replacement string is not done.
+</p>
+<hr size="6">
+<a name="Query-Replace"></a>
+<a name="SEC127"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Replacement-and-Case" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-Repeating-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Replace" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">12.7.4 Query Replace</h3>
+
+<dl compact="compact">
+<dt> <kbd>M-% <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dt> <kbd>M-x query-replace &lt;RET&gt; <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Replace some occurrences of <var>string</var> with <var>newstring</var>.
+</p></dd>
+<dt> <kbd>M-x query-replace-regexp &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Replace some matches for <var>regexp</var> with <var>newstring</var>.
+</p></dd>
+</dl>
+
+<a name="IDX480"></a>
+<a name="IDX481"></a>
+<p>  If you want to change only some of the occurrences of &lsquo;<samp>foo</samp>&rsquo; to
+&lsquo;<samp>bar</samp>&rsquo;, not all of them, you can use <code>query-replace</code> instead of
+<kbd>M-%</kbd>.  This command finds occurrences of &lsquo;<samp>foo</samp>&rsquo; one by one,
+displays each occurrence, and asks you whether to replace it.  A numeric
+argument to <code>query-replace</code> tells it to consider only occurrences
+that are bounded by word-delimiter characters.
+</p>
+<a name="IDX482"></a>
+<p>  Aside from querying, <code>query-replace</code> works just like
+<code>replace-string</code>, and <code>query-replace-regexp</code> works
+just like <code>replace-regexp</code>.
+</p>
+<p>  The things you can type when you are shown an occurrence of <var>string</var>
+or a match for <var>regexp</var> are:
+</p>
+<a name="IDX483"></a>
+<a name="IDX484"></a>
+<a name="IDX485"></a>
+<a name="IDX486"></a>
+<a name="IDX487"></a>
+<a name="IDX488"></a>
+<a name="IDX489"></a>
+<a name="IDX490"></a>
+<a name="IDX491"></a>
+<a name="IDX492"></a>
+
+<dl compact="compact">
+<dt> <kbd>&lt;SPC&gt;</kbd></dt>
+<dd><p>to replace the occurrence with <var>newstring</var>.  This preserves case, just
+like <code>replace-string</code>, provided <code>case-replace</code> is non-<code>nil</code>,
+as it normally is.
+</p>
+</dd>
+<dt> <kbd>&lt;DEL&gt;</kbd></dt>
+<dd><p>to skip to the next occurrence without replacing this one.
+</p>
+</dd>
+<dt> <kbd>, <span class="roman">(Comma)</span></kbd></dt>
+<dd><p>to replace this occurrence and display the result.  You are then
+prompted for another input character.  However, since the replacement has
+already been made, &lt;DEL&gt; and &lt;SPC&gt; are equivalent.  At this
+point, you can type <kbd>C-r</kbd> (see below) to alter the replaced text.  To
+undo the replacement, you can type <kbd>C-x u</kbd>. 
+This exits the <code>query-replace</code>.  If you want to do further
+replacement you must use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> to restart (see section <a href="xemacs_9.html#Repetition">Repeating Minibuffer Commands</a>).
+</p>
+</dd>
+<dt> <kbd>&lt;ESC&gt;</kbd></dt>
+<dd><p>to exit without doing any more replacements.
+</p>
+</dd>
+<dt> <kbd>. <span class="roman">(Period)</span></kbd></dt>
+<dd><p>to replace this occurrence and then exit.
+</p>
+</dd>
+<dt> <kbd>!</kbd></dt>
+<dd><p>to replace all remaining occurrences without asking again.
+</p>
+</dd>
+<dt> <kbd>^</kbd></dt>
+<dd><p>to go back to the location of the previous occurrence (or what used to
+be an occurrence), in case you changed it by mistake.  This works by
+popping the mark ring.  Only one <kbd>^</kbd> in a row is allowed, because
+only one previous replacement location is kept during <code>query-replace</code>.
+</p>
+</dd>
+<dt> <kbd>C-r</kbd></dt>
+<dd><p>to enter a recursive editing level, in case the occurrence needs to be
+edited rather than just replaced with <var>newstring</var>.  When you are
+done, exit the recursive editing level with <kbd>C-M-c</kbd> and the next
+occurrence will be displayed.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
+</p>
+</dd>
+<dt> <kbd>C-w</kbd></dt>
+<dd><p>to delete the occurrence, and then enter a recursive editing level as
+in <kbd>C-r</kbd>.  Use the recursive edit to insert text to replace the
+deleted occurrence of <var>string</var>.  When done, exit the recursive
+editing level with <kbd>C-M-c</kbd> and the next occurrence will be
+displayed.
+</p>
+</dd>
+<dt> <kbd>C-l</kbd></dt>
+<dd><p>to redisplay the screen and then give another answer.
+</p>
+</dd>
+<dt> <kbd>C-h</kbd></dt>
+<dd><p>to display a message summarizing these options, then give another
+answer.
+</p></dd>
+</dl>
+
+<p>  If you type any other character, Emacs exits the <code>query-replace</code>, and
+executes the character as a command.  To restart the <code>query-replace</code>,
+use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, which repeats the <code>query-replace</code> because it
+used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#Repetition">C-x ESC ESC</a>.
+</p>
+<hr size="6">
+<a name="Other-Repeating-Search"></a>
+<a name="SEC128"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Query-Replace" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Search" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">12.8 Other Search-and-Loop Commands</h2>
+
+<p>  Here are some other commands that find matches for a regular expression.
+They all operate from point to the end of the buffer.
+</p>
+<a name="IDX493"></a>
+<a name="IDX494"></a>
+<a name="IDX495"></a>
+<a name="IDX496"></a>
+<a name="IDX497"></a>
+<dl compact="compact">
+<dt> <kbd>M-x occur</kbd></dt>
+<dd><p>Print each line that follows point and contains a match for the
+specified regexp.  A numeric argument specifies the number of context
+lines to print before and after each matching line; the default is
+none.
+</p>
+<a name="IDX498"></a>
+<p>The buffer &lsquo;<samp>*Occur*</samp>&rsquo; containing the output serves as a menu for
+finding occurrences in their original context.  Find an occurrence
+as listed in &lsquo;<samp>*Occur*</samp>&rsquo;, position point there, and type <kbd>C-c
+C-c</kbd>; this switches to the buffer that was searched and moves point to
+the original of the same occurrence.
+</p>
+</dd>
+<dt> <kbd>M-x list-matching-lines</kbd></dt>
+<dd><p>Synonym for <kbd>M-x occur</kbd>.
+</p>
+</dd>
+<dt> <kbd>M-x count-matches</kbd></dt>
+<dd><p>Print the number of matches following point for the specified regexp.
+</p>
+</dd>
+<dt> <kbd>M-x delete-non-matching-lines</kbd></dt>
+<dd><p>Delete each line that follows point and does not contain a match for
+the specified regexp.
+</p>
+</dd>
+<dt> <kbd>M-x delete-matching-lines</kbd></dt>
+<dd><p>Delete each line that follows point and contains a match for the
+specified regexp.
+</p></dd>
+</dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

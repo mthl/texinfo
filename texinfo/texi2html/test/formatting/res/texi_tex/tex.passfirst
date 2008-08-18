@@ -1,0 +1,31 @@
+tex.texi(,2) 
+tex.texi(,3) @node Top
+tex.texi(,4) @top Tests
+tex.texi(,5) 
+tex.texi(,14) Now tex on the same line @special_tex_1{} bidule
+tex.texi(,15) Some text one the line following @@end tex
+tex.texi(,17) 
+tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).
+tex.texi(,22) @special_tex_2{}
+tex.texi(,23) 
+tex.texi(,24) Same that @@html (but empty following line not ignored).
+tex.texi(,25) 
+tex.texi(,26) Test of @@math
+tex.texi(,27) Here some @special_math_1{}.
+tex.texi(,28) 
+tex.texi(,29) Maths with protected \:
+tex.texi(,30) @special_math_2{}.
+tex.texi(,31) 
+tex.texi(,32) Maths with code @@-command:
+tex.texi(,33) 
+tex.texi(,34) @special_math_3{}
+tex.texi(,35) 
+tex.texi(,36) Maths with code @@-command and braces:
+tex.texi(,37) 
+tex.texi(,38) @special_math_4{}
+tex.texi(,39) 
+tex.texi(,40) @@\ outside of math
+tex.texi(,41) 
+tex.texi(,42) @\
+tex.texi(,43) 
+tex.texi(,44) @bye

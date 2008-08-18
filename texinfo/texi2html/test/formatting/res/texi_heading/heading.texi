@@ -1,0 +1,44 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename headings.info
+
+@copying
+
+@heading in copying @@ @emph{heading}
+@cindex cindex copying
+
+@subheading second in copying @@ @emph{subheading}
+@end copying
+
+@heading before Top
+
+@node Top
+@top Test headings
+
+@heading in top @@ @emph{heading}
+
+@chapter A chapter
+
+@footnote{
+@heading heading in footnote @@ @emph{heading}
+@cindex heading in footnote
+@heading second heading in footnote @@ @emph{heading}
+}
+
+First insertcopying:
+@insertcopying
+
+Second insertcopying:
+@insertcopying
+
+@chapter index
+
+@printindex cp
+
+@quotation
+
+@heading in quotation @@ @emph{heading}
+
+@end quotation
+
+@bye

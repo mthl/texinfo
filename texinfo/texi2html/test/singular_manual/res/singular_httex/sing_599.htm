@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.6.4 deltaLoc</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.6.4 deltaLoc">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.6.4 deltaLoc">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="deltaLoc"></a>
+<a name="SEC599"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_598.htm#genus" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6.3 genus" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_600.htm#primdec_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.7 primdec_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.4.6.4 deltaLoc</h4>
+<p>Procedure from library <code>normal.lib</code> (see <a href="sing_595.htm#normal_005flib">normal_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>deltaLoc(f,J); f poly, J ideal
+</p>
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>f is reduced bivariate polynomial; basering has exactly two variables;
+J is irreducible prime component of the singular locus of f (e.g., one
+entry of the output of <code>minAssGTZ(I);</code>, I = &lt;f,jacob(f)&gt;).
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>list L:
+</p>
+<dl compact="compact">
+<dt> <code>L[1]</code>; int:</dt>
+<dd><p>         the sum of (local) delta invariants of f at the (conjugated) singular
+         points given by J.
+</p></dd>
+<dt> <code>L[2]</code>; int:</dt>
+<dd><p>         the sum of (local) Tjurina numbers of f at the (conjugated) singular
+         points given by J.
+</p></dd>
+<dt> <code>L[3]</code>; int:</dt>
+<dd><p>         the sum of (local) number of branches of f at the (conjugated) 
+         singular points given by J.
+</p></dd>
+</dl>
+
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>procedure makes use of <code>execute</code>; increasing printlevel displays
+more comments (default: printlevel=0).
+</p>
+<a name="IDX255"></a>
+<a name="IDX256"></a>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;normal.lib&quot;;
+ring r=0,(x,y),dp;
+poly f=(x2+y^2-1)^3 +27x2y2;
+ideal I=f,jacob(f);
+I=std(I);
+list qr=minAssGTZ(I);
+size(qr);
+&rarr; 6
+// each component of the singular locus either describes a cusp or a pair
+// of conjugated nodes:
+deltaLoc(f,qr[1]); 
+&rarr; [1]:
+&rarr;    1
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    1
+deltaLoc(f,qr[2]); 
+&rarr; [1]:
+&rarr;    1
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    1
+deltaLoc(f,qr[3]); 
+&rarr; [1]:
+&rarr;    1
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    1
+deltaLoc(f,qr[4]); 
+&rarr; [1]:
+&rarr;    1
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    1
+deltaLoc(f,qr[5]); 
+&rarr; [1]:
+&rarr;    2
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    4
+deltaLoc(f,qr[6]);
+&rarr; [1]:
+&rarr;    2
+&rarr; [2]:
+&rarr;    2
+&rarr; [3]:
+&rarr;    4
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_696.htm#delta">delta</a>;
+<a href="sing_735.htm#tjurina">tjurina</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_598.htm#genus" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6.3 genus" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_600.htm#primdec_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.7 primdec_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

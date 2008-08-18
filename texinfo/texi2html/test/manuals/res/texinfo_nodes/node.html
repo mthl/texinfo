@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.3 The @node Command</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.3 The @node Command">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3 The @node Command">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="node"></a>
+<a name="SEC71"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Menu-Illustration.html#Node-Menu-Illustration" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Node-Names.html#Node-Names" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Menus.html#Menus" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2 class="section">6.3 The <code>@node</code> Command</h2>
+
+
+<p>A <em>node</em> is a segment of text that begins at an <code>@node</code>
+command and continues until the next <code>@node</code> command.  The
+definition of node is different from that for chapter or section.  A
+chapter may contain sections and a section may contain subsections;
+but a node cannot contain subnodes; the text of a node continues only
+until the next <code>@node</code> command in the file.  A node usually
+contains only one chapter structuring command, the one that follows
+the <code>@node</code> line.  On the other hand, in printed output nodes
+are used only for cross references, so a chapter or section may
+contain any number of nodes.  Indeed, a chapter usually contains
+several nodes, one for each section, subsection, and
+subsubsection.
+</p>
+<p>To create a node, write an <code>@node</code> command at the beginning of a
+line, and follow it with up to four arguments, separated by commas, on
+the rest of the same line.  The first argument is required; it is the
+name of this node.  The subsequent arguments are the names of the
+&lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers, in that order, and may be omitted
+if your Texinfo document is hierarchically organized (see section <a href="makeinfo-Pointer-Creation.html#makeinfo-Pointer-Creation">Creating Pointers with <code>makeinfo</code></a>).
+</p>
+<p>You may insert spaces before each name if you wish; the spaces are
+ignored.  You must write the name of the node and the names of the
+&lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers all on the same line.  Otherwise,
+the formatters fail.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for more information
+about nodes in Info.)
+</p>
+<p>Usually, you write one of the chapter-structuring command lines
+immediately after an <code>@node</code> line&mdash;for example, an
+<code>@section</code> or <code>@subsection</code> line.  (See section <a href="Structuring-Command-Types.html#Structuring-Command-Types">Structuring Command Types</a>.)
+</p>
+<blockquote><p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
+only with Texinfo files in which <code>@node</code> lines are followed by chapter
+structuring lines.  See section <a href="Updating-Requirements.html#Updating-Requirements">Updating Requirements</a>.
+</p></blockquote>
+
+<p>TeX uses <code>@node</code> lines to identify the names to use for cross
+references.  For this reason, you must write <code>@node</code> lines in a
+Texinfo file that you intend to format for printing, even if you do not
+intend to format it for Info.  (Cross references, such as the one at the
+end of this sentence, are made with <code>@xref</code> and related commands;
+see <a href="Cross-References.html#Cross-References">Cross References</a>.)
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="Node-Names.html#Node-Names">6.3.1 Choosing Node and Pointer Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  How to choose node and pointer names.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Writing-a-Node.html#Writing-a-Node">6.3.2 How to Write an <code>@node</code> Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to write an <code>@node</code> line.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Node-Line-Tips.html#Node-Line-Tips">6.3.3 <code>@node</code> Line Tips</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Keep names short.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Node-Line-Requirements.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Keep names unique, without @-commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="First-Node.html#First-Node">6.3.5 The First Node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  How to write a &lsquo;Top&rsquo; node.
+</td></tr>
+<tr><td align="left" valign="top"><a href="makeinfo-top-command.html#makeinfo-top-command">6.3.6 The <code>@top</code> Sectioning Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to use the <code>@top</code> command.
+</td></tr>
+</table>
+
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Menu-Illustration.html#Node-Menu-Illustration" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Node-Names.html#Node-Names" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Menus.html#Menus" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

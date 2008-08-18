@@ -1,3 +1,27 @@
+2008-08-18  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: in the default case, don't complete image paths
+	as suggested by Reinhold. It is what makeinfo does, completing
+	paths is confusing and use case is dubious. Complete paths 
+	if $COMPLETE_IMAGE_PATHS is set.
+	* texi2html.pl, texi2html.init: remove the possibility to have
+	format_in_paragraph for any @-commands, but only for raw 
+	@-commands. Otherwise the nesting may be messed up, if
+	such command is closed in the middle of a paragraph, or a paragraph
+	is closed in the middle of such command.
+	Give simple_text formatted output for special region formatting.
+	* texi2html.pl: accept accent commands followed by spaces for 
+	accent command not consisting in special characters.
+	Handle better documents without elements.
+	Never use $_ (report from Reinhold).
+	* l2h.init: move to ...
+	* examples/l2h.init: comment out variables that override the
+	command line.
+	* examples/enable_encoding.init: new init file, should do the 
+	same than makeinfo --enable-encoding.
+	* test/: test suite replacing the old one in Test, with better
+	design and the same files used, + texinfo test files.
+
 2008-08-14  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: only use the basename when dumping texi.

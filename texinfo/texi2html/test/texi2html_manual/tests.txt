@@ -1,0 +1,2 @@
+texi texi2html.texi
+texi2html texi2html.texi

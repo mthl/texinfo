@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Top-20-Emacs-commands"></a>
+<a name="SEC27"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3 Rings and orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">3.2.6 Top 20 Emacs commands</h3>
+
+<p>Here is a list of the 20 probably most useful commands when using the
+<small>SINGULAR</small> Emacs interface.
+</p>
+<p>Starting and stopping of <small>SINGULAR</small>:
+</p>
+<ul>
+<li> <code>singular</code> (menu <code>Singular-&gt;Start Default...</code>): starts
+<small>SINGULAR</small> using default arguments.
+
+</li><li> <code>singular-other</code> (menu <code>Singular-&gt;Start</code>): starts
+<small>SINGULAR</small> asking for several arguments in the minibuffer area.
+
+</li><li> <code>singular-exit</code> (key <code>C-c $</code> or menu
+<code>Singular-&gt;Exit</code>): kills the <small>SINGULAR</small> process running in the
+current buffer (but does not kill the buffer).
+
+</li><li> <code>singular-restart</code> (key <code>C-c C-r</code> or menu
+<code>Singular-&gt;Restart</code>): kills the <small>SINGULAR</small> process running in
+the current buffer and starts a new <small>SINGULAR</small> process with exactly
+the same arguments as before.
+
+</li></ul>
+
+<p>Editing input and output:
+</p>
+<ul>
+<li> <code>singular-beginning-of-line</code> (key <code>C-a</code>): moves point to
+beginning of line, then skip past the <small>SINGULAR</small> prompt, if any.
+
+</li><li> <code>singular-toggle-truncate-lines</code> (key <code>C-c C-t</code> or menu
+<code>Commands-&gt;Truncate lines</code>): toggles whether long lines should be
+truncated or not. If lines are not truncated, the commands
+<code>singular-scroll-left</code> and <code>singular-scroll-right</code> are useful
+to scroll left and right, resp.
+
+</li><li> <code>singular-dynamic-complete</code> (key <code>TAB</code>): performs
+context specific completion. If point is inside a string, file name
+completion is done. If point is at the end of a help command (i.e.,
+<code>help</code> or <code>?</code>), completion on <small>SINGULAR</small> help topics is
+done. If point is at the end of an example command (i.e.,
+<code>example</code>), completion is done on <small>SINGULAR</small> examples. In all
+other cases, completion on <small>SINGULAR</small> commands is done.
+
+</li><li> <code>singular-folding-toggle-fold-latest-output</code> (key <code>C-c
+C-o</code> or menu <code>Commands-&gt;Fold/ Unfold Latest Output</code>): toggles
+folding of the latest output section. If your last <small>SINGULAR</small> command
+produced a huge output, simply type <code>C-c C-o</code> and it will be
+replaced by a single line.
+
+</li><li> <code>singular-folding-toggle-fold-at-point</code> (key <code>C-c C-f</code>
+or menu <code>Commands-&gt;Fold/Unfold At Point</code>): toggles folding of the
+section the point currently is in.
+
+</li><li> <code>singular-folding-fold-all-output</code> (menu <code>Commands-&gt;Fold
+All Output</code>): folds all <small>SINGULAR</small> output, replacing each output
+section by a single line.
+
+</li><li> <code>singular-folding-unfold-all-output</code> (menu
+<code>Commands-&gt;Unfold All Output</code>): unfolds all <small>SINGULAR</small> output
+sections showing their true contents.
+
+</li></ul>
+
+<p>Loading of files and <small>SINGULAR</small> demo mode:
+</p>
+<ul>
+<li> <code>singular-load-library</code> (key <code>C-c C-l</code> or menu
+<code>Commands-&gt;Libraries-&gt;other...</code>): asks for a standard library name
+or a library file in the minibuffer (hit <code>TAB</code> for completion) and
+loads the library into <small>SINGULAR</small>. The submenu <code>Libraries</code> of
+the <code>Commands</code> menu also provides a separate menu item for each
+standard library.
+
+</li><li> <code>singular-load-file</code> (key <code>C-c &lt;</code> or menu
+<code>Commands-&gt;Load File...</code>): asks for a file name in the minibuffer
+(which is expanded using <code>expand-file-name</code> if given a prefix
+argument) and loads the file into <small>SINGULAR</small>.
+
+</li><li> <code>singular-demo-load</code> (key <code>C-c C-d</code> or menu
+<code>Commands-&gt;Load Demo...</code>): asks for a file name of a <small>SINGULAR</small>
+demo file in the minibuffer area (hit <code>SPACE</code> for completion) and
+enters the <small>SINGULAR</small> demo mode showing the first chunk of the demo.
+
+</li><li> <code>singular-demo-exit</code> (menu <code>Commands-&gt;Exit Demo</code>):
+exits from <small>SINGULAR</small> demo mode and cleans up everything that is
+left from the demo.
+
+</li></ul>
+
+<p>Help and Customization:
+</p>
+<ul>
+<li> <code>singular-help</code> (key <code>C-h C-s</code> or menu
+<code>Singular-&gt;Singular Help</code>): asks for a <small>SINGULAR</small> help topic in
+the minibuffer (hit <code>TAB</code> for completion) and shows the help text
+in a separate buffer.
+
+</li><li> <code>singular-example</code> (key <code>C-c C-e</code> or menu
+<code>Singular-&gt;Singular Example</code>): asks for a <small>SINGULAR</small> command in
+the minibuffer (hit <code>TAB</code> for completion) and executes the example
+of this command in the current <small>SINGULAR</small> buffer.
+
+</li><li> <code>customize-group</code> (menu <code>Singular-&gt;Preferences</code>): enters
+the customization group of the <small>SINGULAR</small> Emacs interface. (If called
+via <code>M-x customize-group</code> give argument <code>singular-interactive</code>
+in the minibuffer area.)
+
+</li></ul>
+
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

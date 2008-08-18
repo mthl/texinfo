@@ -1,0 +1,16 @@
+$element_file_name = \&toc_out_element_file_name;
+
+sub toc_out_element_file_name($$$)
+{
+    my $element = shift;
+    my $type = shift;
+    my $prefix = shift;
+
+    if ($type and ($type ne 'top') and ($type ne 'toc'))
+    {
+        return "$prefix.$Texi2HTML::THISDOC{'extension'}";
+    }
+    return undef;
+}
+
+1;

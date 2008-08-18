@@ -1,0 +1,104 @@
+@comment -*-texinfo-*-
+@comment Id: NEWS.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
+@comment this file contains the News about Singular versions
+@comment Unix
+@ifclear VERSION
+@include version.texi
+@end ifclear
+
+@majorheading NEWS in SINGULAR @value{VERSION}
+
+@ifclear singularmanual
+@macro nref{what}
+\what\
+@end macro
+@end ifclear
+
+@ifset singularmanual
+@macro nref{what}
+@ref{\what\}
+@end macro
+@end ifset
+
+The current version @value{VERSION} is an update to the 
+release series version 2-0. 
+
+Changes with respect to version 2-0-3:
+
+@heading Factorizing algorithms revisited
+Starting with version 2-0-4, we use NTL (by Victor Shoup) for factoring
+univariate polynomials. The multivariate factoring code in libfac/factory
+does now also work over algebraic extension fields.
+
+@heading Help system is configurable via LIB/help.cnf
+The help browsers of Singular can be configured via the file
+LIB/help.cnf, also the addition of new help browsers is possible.
+
+@heading Extensions of the ring concept
+
+@table @asis
+@item new coefficient domains: arbitrary long real and complex numbers
+@item no restriction on number of parameters
+@item degree bound on exponent values (maximum is now 2^31, standard 2^15)
+@item non-positives weights get a better handling (converts wp/Wp to ws/Ws)
+@item handle blocks of mixed orders correctly
+@item maximal prime characteristic is now 2147483629 instead of 32003
+@c @item TBC: parameters over real/complex
+@c @item TBC: declaration with "ring of ring".
+@end table
+
+@heading Changes in @sc{Singular} libraries
+The documentation of libraries was generally improved.
+@table @asis
+@item @nref{equising_lib}
+procedures esStratum, isEquising now also for reducible polynomials
+@*new procedures: tau_es (codim of mu-const stratum in semi-universal def. base);
+esIdeal ((Wahl's) equisingularity ideal)
+@item @nref{gaussman_lib}
+added bernstein: roots of the Bernstein polynomial of t
+@item @nref{hnoether_lib}
+HNdevelop, reddevelop, essdevelop are obsolete, replaced by hnexpansion
+@*multsequence is "repaired" (since branches computed by hnexpansion
+et al) are now ordered according to the needs of multsequence.
+@*newtonpoly needs no longer that ordering of the basering is ls
+@*new procedures: is_NND      test if f is Newton non-degenerate
+@item @nref{homolog_lib}
+new procedures: depth, fitting, flatteningStrat, isCM, isFlat, isLocallyFree,
+isReg, KoszulHomology, tensorMod, Tor
+@item @nref{matrix_lib}
+in proc tensor(A,B):  check if ncols(A)==0
+@item @nref{normal_lib}
+new procedure: deltaLoc(f,S);      (sum of) delta invariant(s) at conjugated
+singular points
+@*proc genus makes now use of is_NND of hnoether.lib
+@item @nref{primdec_lib}
+optimizations again
+@item @nref{solve_lib}
+procedure laguerre_solve ignores no longer the 2nd parameter (precision of 
+internal computation)
+@* new procedure simplexOut:     prints solution of simplex in nice format
+@end table
+
+@heading Internal Changes
+@table @asis
+@item normal form computation uses
+Bucket representation of polynomials.
+@item factorization
+revisited, missing cases implemented
+@item NTL
+NTL is used for univariate factorization
+@item source code
+adapted for use with gcc 3.1/3.2, gmp 4.x
+@end table
+
+@heading Porting
+@itemize @bullet
+@item Singular is available for ix86-libc5, ix86-libc6, HPUX_9, HPUX_10,
+SunOS-4, SunOS-5, IRIX-6, ix86-Win (Windows 95/98/ME/NT/2K/XP),
+FreeBSD 4.x, MacOS X
+@c @item @code{dbm} functionality is not available on 
+Windows 95/98/ME/NT/2K/XP and MacOS X
+@item @code{MP} functionality is not available on
+Windows 95/98/ME/NT/2K/XP and MacOS X.
+@item Singular 2-0-2 was the last version for MacOS 9
+@end itemize

@@ -58,6 +58,7 @@ export T2H_HOME=../..
 #(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 (cd $dir && perl -x -w ../../texi2html.pl $options $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && perl -x -w ../../texi2html.pl $options $texi_file) 2>$dir/$stderr_file
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -385,5 +386,5 @@ test_texi tar ../tar_texi/tar.texi
 test_texi ccvs_mediawiki ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init -split chapter -output ." 0 texinfo
 test_texi ccvs_mediawiki_nosplit ../ccvs/cvs.texinfo "-init ../../examples/mediawiki.init" 0 texinfo
 # takes too long
-#test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
-#test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags
+test_texi singular_httex ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -init ../../examples/tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing #ignore_tags

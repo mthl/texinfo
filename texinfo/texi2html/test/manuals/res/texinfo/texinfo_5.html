@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 4. Ending a Texinfo File</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 4. Ending a Texinfo File">
+<meta name="keywords" content="GNU Texinfo 4.2: 4. Ending a Texinfo File">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Ending-a-File"></a>
+<a name="SEC51"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_4.html#Software-Copying-Permissions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Printing-Indices-_0026-Menus" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">4. Ending a Texinfo File</h1>
+
+<p>The end of a Texinfo file should include commands to create indices and
+(perhaps) to generate both the full and summary tables of contents.
+Finally, it must include the <code>@bye</code> command that marks the last
+line to be processed.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Index
+@unnumbered Index
+
+@printindex cp
+
+@shortcontents
+@contents
+
+@bye
+</pre></td></tr></table>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Printing-Indices-_0026-Menus">4.1 Printing Indices and Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How to print an index in hardcopy and
+                                  generate index menus in Info.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Contents">4.2 Generating a Table of Contents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    How to create a table of contents.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#File-End">4.3 <code>@bye</code> File Ending</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    How to mark the end of a file.
+</td></tr>
+</table>
+
+
+<hr size="6">
+<a name="Printing-Indices-_0026-Menus"></a>
+<a name="SEC52"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Ending-a-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Contents" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">4.1 Printing Indices and Menus</h2>
+
+<p>To print an index means to include it as part of a manual or Info file.
+This does not happen automatically just because you use <code>@cindex</code>
+or other index-entry generating commands in the Texinfo file; those just
+cause the raw data for the index to be accumulated.  To generate an
+index, you must include the <code>@printindex</code> command at the place in
+the document where you want the index to appear.  Also, as part of the
+process of creating a printed manual, you must run a program called
+<code>texindex</code> (see section <a href="texinfo_20.html#Hardcopy">Formatting and Printing Hardcopy</a>) to sort the raw data to produce a
+sorted index file.  The sorted index file is what is actually used to
+print the index.
+</p>
+<p>Texinfo offers six separate types of predefined index, each with a
+two-letter abbreviation, as illustrated in the following table.
+However, you may merge indices (see section <a href="texinfo_13.html#Combining-Indices">Combining Indices</a>) or define
+your own indices (see section <a href="texinfo_13.html#New-Indices">Defining New Indices</a>).
+</p>
+<p>Here are the predefined indices, their abbreviations, and the
+corresponding index entry commands:
+</p>
+<dl compact="compact">
+<dt> &lsquo;<samp>cp</samp>&rsquo;</dt>
+<dd><p>concept index (<code>@cindex</code>)
+</p></dd>
+<dt> &lsquo;<samp>fn</samp>&rsquo;</dt>
+<dd><p>function index (<code>@findex</code>)
+</p></dd>
+<dt> &lsquo;<samp>vr</samp>&rsquo;</dt>
+<dd><p>variable index (<code>@index</code>)
+</p></dd>
+<dt> &lsquo;<samp>ky</samp>&rsquo;</dt>
+<dd><p>key index (<code>@kindex</code>)
+</p></dd>
+<dt> &lsquo;<samp>pg</samp>&rsquo;</dt>
+<dd><p>program index (<code>@pindex</code>)
+</p></dd>
+<dt> &lsquo;<samp>tp</samp>&rsquo;</dt>
+<dd><p>data type index (<code>@tindex</code>)
+</p></dd>
+</dl>
+
+<p>The <code>@printindex</code> command takes a two-letter index abbreviation,
+reads the corresponding sorted index file and formats it appropriately
+into an index.
+</p>
+<p>The <code>@printindex</code> command does not generate a chapter heading for
+the index.  Consequently, you should precede the <code>@printindex</code>
+command with a suitable section or chapter command (usually
+<code>@appendix</code> or <code>@unnumbered</code>) to supply the chapter heading
+and put the index into the table of contents.  Precede the
+<code>@unnumbered</code> command with an <code>@node</code> line.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node Variable Index
+@unnumbered Variable Index
+
+@printindex vr
+</pre><pre class="smallexample">
+</pre><pre class="smallexample">@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+</pre></td></tr></table>
+
+
+<p>We recommend placing the concept index last, since that makes it easiest
+to find.  We also recommend having a single index whenever possible,
+since then readers have only one place to look (see section <a href="texinfo_13.html#Combining-Indices">Combining Indices</a>).
+</p>
+
+<hr size="6">
+<a name="Contents"></a>
+<a name="SEC53"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Printing-Indices-_0026-Menus" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-End" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">4.2 Generating a Table of Contents</h2>
+
+<p>The <code>@chapter</code>, <code>@section</code>, and other structuring commands
+supply the information to make up a table of contents, but they do not
+cause an actual table to appear in the manual.  To do this, you must use
+the <code>@contents</code> and/or <code>@summarycontents</code> command(s).
+</p>
+<dl compact="compact">
+<dt> <code>@contents</code></dt>
+<dd><p>Generate a table of contents in a printed manual, including all
+chapters, sections, subsections, etc., as well as appendices and
+unnumbered chapters.  Headings generated by the <code>@heading</code>
+series of commands do not appear in the table of contents.
+</p>
+</dd>
+<dt> <code>@shortcontents</code></dt>
+<dt> <code>@summarycontents</code></dt>
+<dd><p>(<code>@summarycontents</code> is a synonym for <code>@shortcontents</code>.)
+</p>
+<p>Generate a short or summary table of contents that lists only the
+chapters, appendices, and unnumbered chapters.  Sections, subsections
+and subsubsections are omitted.  Only a long manual needs a short table
+of contents in addition to the full table of contents.
+</p>
+</dd>
+</dl>
+
+<p>Both contents commands should be written on a line by themselves.
+The contents commands automatically generate a chapter-like heading at
+the top of the first table of contents page, so don&rsquo;t include any
+sectioning command such as <code>@unnumbered</code> before them.
+</p>
+<p>Since an Info file uses menus instead of tables of contents, the Info
+formatting commands ignore the contents commands.  But the contents are
+included in plain text output (generated by <code>makeinfo
+--no-headers</code>), unless <code>makeinfo</code> is writing its output to standard
+output.
+</p>
+<p>When <code>makeinfo</code> writes a short table of contents while producing
+html output, the links in the short table of contents point to
+corresponding entries in the full table of contents rather than the text
+of the document. The links in the full table of contents point to the
+main text of the document.
+</p>
+<p>The contents commands can be placed either at the very end of the file,
+after any indices (see the previous section) and just before the
+<code>@bye</code> (see the next section), or near the beginning of the file,
+after the <code>@end titlepage</code> (see section <a href="texinfo_4.html#titlepage"><code>@titlepage</code></a>).  The advantage to
+the former is that then the contents output is always up to date,
+because it reflects the processing just done.  The advantage to the
+latter is that the contents are printed in the proper place, thus you do
+not need to rearrange the DVI file with <code>dviselect</code> or shuffle
+paper.
+</p>
+<a name="IDX87"></a>
+<a name="IDX88"></a>
+<a name="IDX89"></a>
+<a name="IDX90"></a>
+<p>As an author, you can put the contents commands wherever you prefer.
+But if you are a user simply printing a manual, you may wish to print
+the contents after the title page even if the author put the contents
+commands at the end of the document (as is the case in most existing
+Texinfo documents, at this writing).  You can do this by specifying
+<code>@setcontentsaftertitlepage</code> and/or
+<code>@setshortcontentsaftertitlepage</code>.  The first prints only the main
+contents after the <code>@end titlepage</code>; the second prints both the
+short contents and the main contents.  In either case, any subsequent
+<code>@contents</code> or <code>@shortcontents</code> is ignored (unless no
+<code>@end titlepage</code> is ever encountered).
+</p>
+<p>You need to include the <code>@set&hellip;contentsaftertitlepage</code>
+commands early in the document (just after <code>@setfilename</code>, for
+example).  We recommend using <code>texi2dvi</code> (see section <a href="texinfo_20.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>) to specify this without altering the source file at all.  For
+example:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
+</pre></td></tr></table>
+
+
+<hr size="6">
+<a name="File-End"></a>
+<a name="SEC54"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Contents" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ending-a-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">4.3 <code>@bye</code> File Ending</h2>
+
+<p>An <code>@bye</code> command terminates TeX or Info formatting.  None of
+the formatting commands reading anything following <code>@bye</code>.  The
+<code>@bye</code> command should be on a line by itself.
+</p>
+<p>If you wish, you may follow the <code>@bye</code> line with notes. These
+notes will not be formatted and will not appear in either Info or a
+printed manual; it is as if text after <code>@bye</code> were within
+<code>@ignore</code> &hellip; <code>@end ignore</code>.  Also, you may follow the
+<code>@bye</code> line with a local variables list for Emacs.
+See section <a href="texinfo_20.html#Compile_002dCommand">Using Local Variables and the Compile Command</a>,
+for more information.
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Ending-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_6.html#Structuring" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.12 Computation of Ext</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Computation-of-Ext"></a>
+<a name="SEC343"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">A.12 Computation of Ext</h2>
+
+<p>We start by showing how to calculate the 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_17.png"
+ ALT="$n$"></SPAN>
+-th Ext group of an
+ideal. The ingredients to do this are by the definition of Ext the
+following: calculate a (minimal) resolution at least up to length
+</p>
+<p><SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_17.png"
+ ALT="$n$"></SPAN>
+, apply the Hom-functor, and calculate the 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_17.png"
+ ALT="$n$"></SPAN>
+-th homology
+group, that is form the quotient
+<!-- MATH
+ $\hbox{\rm ker} / \hbox{\rm Im}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_189.png"
+ ALT="$\hbox{\rm ker} / \hbox{\rm Im}$"></SPAN>
+in the resolution sequence.
+</p>
+<p>The Hom functor is given simply by transposing (hence dualizing) the
+module or the corresponding matrix with the command <code>transpose</code>.
+The image of the 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_190.png"
+ ALT="$(n-1)$"></SPAN>
+-st map is generated by the columns of the
+corresponding matrix. To calculate the kernel apply the command
+<code>syz</code> at the 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_190.png"
+ ALT="$(n-1)$"></SPAN>
+-st transposed entry of the resolution.
+Finally, the quotient is obtained by the command <code>modulo</code>, which
+gives for two modules A = ker, B = Im the module of relations of
+<SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_191.png"
+ ALT="$A/(A \cap B)$"></SPAN>
+in the usual way. As we have a chain complex this is obviously the same
+as ker/Im.
+</p>
+<p>We collect these statements in the following short procedure:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
+{
+  resolution rs = mres(I,n+1);
+  module tAn    = transpose(rs[n+1]);
+  module tAn_1  = transpose(rs[n]);
+  module ext_n  = modulo(syz(tAn),tAn_1);
+  return(ext_n);
+}
+</pre></td></tr></table>
+
+<p>Now consider the following example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
+ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
+print(ext(2,I));
+&rarr; 1,0,0,0,0,0,0,
+&rarr; 0,1,0,0,0,0,0,
+&rarr; 0,0,1,0,0,0,0,
+&rarr; 0,0,0,1,0,0,0,
+&rarr; 0,0,0,0,1,0,0,
+&rarr; 0,0,0,0,0,1,0,
+&rarr; 0,0,0,0,0,0,1
+ext(3,I);   // too big to be displayed here
+</pre></td></tr></table>
+
+<p>The library <code>homolog.lib</code> contains several procedures for computing
+Ext-modules and related modules, which are much more general and
+sophisticated then the above one. They are used in the following
+example.
+</p>
+<p>If 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>
+ is a module, then
+<!-- MATH
+ $\hbox{Ext}^1(M,M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_192.png"
+ ALT="$\hbox{Ext}^1(M,M)$"></SPAN>, resp. <!-- MATH
+ $\hbox{Ext}^2(M,M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_193.png"
+ ALT="$\hbox{Ext}^2(M,M)$"></SPAN>,
+are the modules of infinitesimal deformations, resp. of obstructions, of
+</p>
+<p><SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>
+ (like T1 and T2 for a singularity).  Similar to the treatment
+for singularities, the semiuniversal deformation of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>
+ can be
+computed (if
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_194.png"
+ ALT="$\hbox{Ext}^1$"></SPAN>
+is finite dimensional) with the help of
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_194.png"
+ ALT="$\hbox{Ext}^1$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_195.png"
+ ALT="$\hbox{Ext}^2$"></SPAN>
+and the cup product. There is an extra procedure for
+<!-- MATH
+ $\hbox{Ext}^k(R/J,R)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="92" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_196.png"
+ ALT="$\hbox{Ext}^k(R/J,R)$"></SPAN>
+if 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_197.png"
+ ALT="$J$"></SPAN>
+ is an ideal in 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_49.png"
+ ALT="$R$"></SPAN>
+ since this is faster than the
+general Ext.
+</p>
+<p>We compute
+</p><ul>
+<li>
+the infinitesimal deformations
+(<!-- MATH
+ $=\hbox{Ext}^1(K,K)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="95" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_198.png"
+ ALT="$=\hbox{Ext}^1(K,K)$"></SPAN>)
+and obstructions
+(<!-- MATH
+ $=\hbox{Ext}^2(K,K)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="95" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_199.png"
+ ALT="$=\hbox{Ext}^2(K,K)$"></SPAN>)
+of the residue field 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_200.png"
+ ALT="$K=R/m$"></SPAN>
+ of an ordinary cusp,
+<!-- MATH
+ $R=Loc_m K[x,y]/(x^2-y^3)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="183" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_201.png"
+ ALT="$R=Loc_m K[x,y]/(x^2-y^3)$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_202.png"
+ ALT="$m=(x,y)$"></SPAN>.
+To compute
+<!-- MATH
+ $\hbox{Ext}^1(m,m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_203.png"
+ ALT="$\hbox{Ext}^1(m,m)$"></SPAN>
+we have to apply <code>Ext(1,syz(m),syz(m))</code> with
+<code>syz(m)</code> the first syzygy module of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_161.png"
+ ALT="$m$"></SPAN>
+, which is isomorphic to
+<!-- MATH
+ $\hbox{Ext}^2(K,K)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_204.png"
+ ALT="$\hbox{Ext}^2(K,K)$"></SPAN>.
+</li><li>
+<!-- MATH
+ $\hbox{Ext}^k(R/i,R)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="89" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_205.png"
+ ALT="$\hbox{Ext}^k(R/i,R)$"></SPAN>
+for some ideal 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_53.png"
+ ALT="$i$"></SPAN>
+ and with an extra option.
+</li></ul>
+
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
+  ring R=0,(x,y),ds;
+  ideal i=x2-y3;
+  qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
+  ideal m = maxideal(1);
+  module T1K = Ext(1,m,m);  // computes Ext^1(R/m,R/m)
+&rarr; // dimension of Ext^1:  0
+&rarr; // vdim of Ext^1:       2
+&rarr; 
+  print(T1K);
+&rarr; 0,  0,y,x,0,y,0,    x2-y3,
+&rarr; -y2,x,x,0,y,0,x2-y3,0,    
+&rarr; 1,  0,0,0,0,0,0,    0     
+  printlevel=2;             // gives more explanation
+  module T2K=Ext(2,m,m);    // computes Ext^2(R/m,R/m)
+&rarr; // Computing Ext^2 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F2,G0)--&gt;Hom(F3,G0) is given by:
+&rarr; y2,x,
+&rarr; x, y 
+&rarr; // and Hom(F1,G0) + Hom(F2,G1)--&gt;Hom(F2,G0) is given by:
+&rarr; -y,x,  x,0,y,0,
+&rarr; x, -y2,0,x,0,y 
+&rarr; 
+&rarr; // dimension of Ext^2:  0
+&rarr; // vdim of Ext^2:       2
+&rarr; 
+  print(std(T2K));
+&rarr; -y2,0,x,0,y,
+&rarr; 0,  x,0,y,0,
+&rarr; 1,  0,0,0,0 
+  printlevel=0;
+  module E = Ext(1,syz(m),syz(m));
+&rarr; // dimension of Ext^1:  0
+&rarr; // vdim of Ext^1:       2
+&rarr; 
+  print(std(E));
+&rarr; -y,x, 0, 0,0,x,0,y,
+&rarr; 0, -y,-y,0,x,0,y,0,
+&rarr; 0, 0, 0, 1,0,0,0,0,
+&rarr; 0, 0, 1, 0,0,0,0,0,
+&rarr; 0, 1, 0, 0,0,0,0,0,
+&rarr; 1, 0, 0, 0,0,0,0,0 
+  //The matrices which we have just computed are presentation matrices
+  //of the modules T2K and E. Hence we may ignore those columns
+  //containing 1 as an entry and see that T2K and E are isomorphic
+  //as expected, but differently presented.
+  //-------------------------------------------
+  ring S=0,(x,y,z),dp;
+  ideal  i = x2y,y2z,z3x;
+  module E = Ext_R(2,i);
+&rarr; // dimension of Ext^2:  1
+&rarr; 
+  print(E);
+&rarr; 0,y,0,z2,
+&rarr; z,0,0,-x,
+&rarr; 0,0,x,-y 
+  // if a 3-rd argument is given (of any type)
+  // a list of Ext^k(R/i,R), a SB of Ext^k(R/i,R) and a vector space basis
+  // is returned:
+  list LE = Ext_R(3,i,&quot;&quot;);
+&rarr; // dimension of Ext^3:  0
+&rarr; // vdim of Ext^3:       2
+&rarr; 
+  LE;
+&rarr; [1]:
+&rarr;    _[1]=y*gen(1)
+&rarr;    _[2]=x*gen(1)
+&rarr;    _[3]=z2*gen(1)
+&rarr; [2]:
+&rarr;    _[1]=y*gen(1)
+&rarr;    _[2]=x*gen(1)
+&rarr;    _[3]=z2*gen(1)
+&rarr; [3]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=1
+  print(LE[2]);
+&rarr; y,x,z2
+  print(kbase(LE[2]));
+&rarr; z,1
+</pre></td></tr></table>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

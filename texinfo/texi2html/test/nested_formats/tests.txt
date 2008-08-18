@@ -1,0 +1,14 @@
+texi nested_formats.texi
+nested_group nested_formats.texi
+nested_itemize nested_formats.texi -D format_itemize
+nested_menu nested_formats.texi -D format_menu
+# nested floats are broken. Not a big deal 
+#nested_float nested_formats.texi -D format_float
+nested_table nested_formats.texi -D format_table
+nested_flushright nested_formats.texi -D format_flushright
+nested_multitable nested_formats.texi -D format_multitable
+nested_cartouche nested_formats.texi -D format_cartouche
+nested_enumerate nested_formats.texi -D format_enumerate
+nested_deffn nested_formats.texi -D format_deffn
+nested_example nested_formats.texi -D format_example
+nested_quotation nested_formats.texi -D format_quotation

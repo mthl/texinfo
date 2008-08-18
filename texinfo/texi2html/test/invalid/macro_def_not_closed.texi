@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+
+@macro the_macro {arg1, arg2}
+
+Macro body
+

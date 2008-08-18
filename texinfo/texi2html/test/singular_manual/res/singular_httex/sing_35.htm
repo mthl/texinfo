@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.5.2 Special characters</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.5.2 Special characters">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.2 Special characters">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Special-characters"></a>
+<a name="SEC35"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.1 General command syntax" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_36.htm#Names" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.3 Names" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">3.5.2 Special characters</h3>
+<p>The following characters and operators have special meaning:
+</p><dl compact="compact">
+<dt> <code>=</code></dt>
+<dd><a name="IDX88"></a>
+<p>assignment
+</p></dd>
+<dt> <code>(</code>, <code>)</code></dt>
+<dd><a name="IDX89"></a>
+<a name="IDX90"></a>
+<a name="IDX91"></a>
+<p>in expressions, for indexed names and for argument lists
+</p></dd>
+<dt> <code>[</code>, <code>]</code></dt>
+<dd><a name="IDX92"></a>
+<a name="IDX93"></a>
+<p>access operator for strings, integer vectors, ideals, matrices,
+polynomials, resolutions, and lists.  Used to build vectors of
+polynomials.  Example: <code>s[3]</code>, <code>m[1,3]</code>, <code>i[1..3]</code>,
+<code>[f,g+x,0,0,1]</code>.
+</p></dd>
+<dt> <code>+</code></dt>
+<dd><a name="IDX94"></a>
+<p>addition operator
+</p></dd>
+<dt> <code>-</code></dt>
+<dd><a name="IDX95"></a>
+<p>subtraction operator
+</p></dd>
+<dt> <code>*</code></dt>
+<dd><a name="IDX96"></a>
+<p>multiplication operator
+</p></dd>
+<dt> <code>/</code></dt>
+<dd><a name="IDX97"></a>
+<p>division  operator.  See <a href="sing_329.htm#Miscellaneous-oddities">Miscellaneous oddities</a>, for the difference
+between the division operators <code>/</code> and <code>div</code>.
+</p></dd>
+<dt> <code>%</code></dt>
+<dd><a name="IDX98"></a>
+<p>modulo operator
+</p></dd>
+<dt> <code>^</code> or <code>**</code></dt>
+<dd><a name="IDX99"></a>
+<a name="IDX100"></a>
+<p>exponentiation operator
+</p></dd>
+<dt> <code>==</code></dt>
+<dd><a name="IDX101"></a>
+<p>comparison operator equal
+</p></dd>
+<dt> <code>!=</code> or <code>&lt;&gt;</code></dt>
+<dd><a name="IDX102"></a>
+<a name="IDX103"></a>
+<p>comparison operator not equal
+</p></dd>
+<dt> <code>&gt;=</code></dt>
+<dd><a name="IDX104"></a>
+<p>comparison operator bigger or equal
+</p></dd>
+<dt> <code>&gt;</code></dt>
+<dd><a name="IDX105"></a>
+<p>comparison operator bigger
+</p></dd>
+<dt> <code>&lt;=</code></dt>
+<dd><a name="IDX106"></a>
+<p>comparison operator smaller or equal
+</p></dd>
+<dt> <code>&lt;</code></dt>
+<dd><a name="IDX107"></a>
+<p>comparison operator smaller.  Also used for file input.  See <a href="sing_189.htm#filecmd">filecmd</a>.
+</p></dd>
+<dt> <code>!</code></dt>
+<dd><a name="IDX108"></a>
+<p>boolean operator not
+</p></dd>
+<dt> <code>&amp;&amp;</code></dt>
+<dd><a name="IDX109"></a>
+<p>boolean operator and
+</p></dd>
+<dt> <code>||</code></dt>
+<dd><a name="IDX110"></a>
+<p>boolean operator or
+</p></dd>
+<dt> <code>&quot;</code></dt>
+<dd><a name="IDX111"></a>
+<p>delimiter for string constants
+</p></dd>
+<dt> <code>`</code></dt>
+<dd><a name="IDX112"></a>
+<p>delimiter for name substitution
+</p></dd>
+<dt> <code>?</code></dt>
+<dd><a name="IDX113"></a>
+<p>synonym for <code>help</code>
+</p></dd>
+<dt> <code>//</code></dt>
+<dd><a name="IDX114"></a>
+<p>comment delimiter.  Comment extends to end of line.
+</p></dd>
+<dt> <code>/*</code></dt>
+<dd><a name="IDX115"></a>
+<p>comment delimiter.  Starts a comment which ends with <code>*/</code>.
+</p></dd>
+<dt> <code>*/</code></dt>
+<dd><a name="IDX116"></a>
+<p>comment delimiter.  Ends a comment which starts with <code>/*</code>.
+</p></dd>
+<dt> <code>;</code></dt>
+<dd><a name="IDX117"></a>
+<p>statement separator
+</p></dd>
+<dt> <code>,</code></dt>
+<dd><p>separator for expression lists and function arguments
+</p></dd>
+<dt> <code>\</code></dt>
+<dd><a name="IDX118"></a>
+<p>escape character for <code>&quot;</code> and <code>\</code> within strings
+</p></dd>
+<dt> <code>..</code></dt>
+<dd><a name="IDX119"></a>
+<p>interval specifier returning intvec.
+E.g., <code>1..3</code> which is equivalent to the intvec <code>1, 2, 3</code>.
+</p></dd>
+<dt> <code>_</code></dt>
+<dd><a name="IDX120"></a>
+<p>value of expression last displayed
+</p></dd>
+<dt> <code>~</code></dt>
+<dd><a name="IDX121"></a>
+<p>breakpoint in procedures
+</p></dd>
+<dt> <code>#</code></dt>
+<dd><a name="IDX122"></a>
+<p>list of parameters in procedures without explicit parameter list
+</p></dd>
+<dt> <code>$</code></dt>
+<dd><a name="IDX123"></a>
+<p>terminates <small>SINGULAR</small>
+</p></dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.1 General command syntax" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_36.htm#Names" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.3 Names" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

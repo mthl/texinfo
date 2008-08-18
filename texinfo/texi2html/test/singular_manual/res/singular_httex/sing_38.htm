@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.5.5 Type conversion and casting</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.5.5 Type conversion and casting">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.5 Type conversion and casting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Type-conversion-and-casting"></a>
+<a name="SEC38"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_37.htm#Objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.4 Objects" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_39.htm#Flow-control" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.6 Flow control" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">3.5.5 Type conversion and casting</h3>
+
+<a name="HEAD27"></a>
+<h4 class="subsubheading">Type conversion</h4>
+<p>Assignments convert the type of the right-hand side to the type of the
+left-hand side of the assignment, if possible.  Operators and functions
+which require certain types of operands can also implicitly convert the
+type of an expression.  It is, for example, possible to multiply a
+polynomial by an integer because the integer is automatically converted to
+a polynomial.  Type conversions do not act transitively.  Possible
+conversions are:
+</p>
+
+<table>
+<tr><td width="5%">
+<p>&nbsp;  1. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>ideal</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  2. </p></td><td width="18%"><p> <code>poly</code>  </p></td><td width="81%"><p> &rarr; <code>ideal</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  3. </p></td><td width="18%"><p> <code>intvec</code>  </p></td><td width="81%"><p> &rarr; <code>intmat</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  4. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>intvec</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  5. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>intmat</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  6. </p></td><td width="18%"><p> <code>string</code>  </p></td><td width="81%"><p> &rarr; <code>link</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  7. </p></td><td width="18%"><p> <code>resolution</code> </p></td><td width="81%"><p> &rarr; <code>list</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  8. </p></td><td width="18%"><p> <code>ideal</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  9. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 10. </p></td><td width="18%"><p> <code>intmat</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 11. </p></td><td width="18%"><p> <code>intvec</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 12. </p></td><td width="18%"><p> <code>module</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 13. </p></td><td width="18%"><p> <code>number</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 14. </p></td><td width="18%"><p> <code>poly</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 15. </p></td><td width="18%"><p> <code>vector</code>  </p></td><td width="81%"><p> &rarr; <code>matrix</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 16. </p></td><td width="18%"><p> <code>ideal</code>  </p></td><td width="81%"><p> &rarr; <code>module</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 17. </p></td><td width="18%"><p> <code>matrix</code>  </p></td><td width="81%"><p> &rarr; <code>module</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 18. </p></td><td width="18%"><p> <code>vector</code>  </p></td><td width="81%"><p> &rarr; <code>module</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 19. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>number</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 20. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>poly</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 21. </p></td><td width="18%"><p> <code>number</code>  </p></td><td width="81%"><p> &rarr; <code>poly</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 22. </p></td><td width="18%"><p> <code>string</code>  </p></td><td width="81%"><p> &rarr; <code>proc</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 23. </p></td><td width="18%"><p> <code>list</code>  </p></td><td width="81%"><p> &rarr; <code>resolution</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 24. </p></td><td width="18%"><p> <code>int</code>  </p></td><td width="81%"><p> &rarr; <code>vector</code>
+  (i &rarr; i*<code>gen(1)</code>)
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp; 25. </p></td><td width="18%"><p> <code>poly</code>  </p></td><td width="81%"><p> &rarr; <code>vector</code>
+  (p &rarr; p*<code>gen(1)</code>)
+</p></td></tr>
+</table>
+
+<a name="HEAD28"></a>
+<h4 class="subsubheading">Type casting</h4>
+<a name="IDX124"></a>
+<p>An expression can be casted to another type by using a type cast
+expression:
+<br> type <code>(</code> expression <code>)</code>.
+</p>
+<p>Possible type casts are:
+</p>
+<table>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p> to </p></td><td width="83%"><p> from
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>ideal</code> </p></td><td width="83%"><p>  expression lists of <code>int</code>, <code>number</code>, <code>poly</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>ideal</code> </p></td><td width="83%"><p>  <code>int</code>, <code>matrix</code>, <code>module</code>, <code>number</code>, <code>poly</code>, <code>vector</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>int</code> </p></td><td width="83%"><p>    <code>number</code>, <code>poly</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>intvec</code> </p></td><td width="83%"><p> expression lists of <code>int</code>, <code>intmat</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>intmat</code> </p></td><td width="83%"><p> <code>intvec</code> (see <a href="sing_84.htm#intmat-type-cast">intmat type cast</a>)
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>list</code> </p></td><td width="83%"><p>   expression lists of any type
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>matrix</code> </p></td><td width="83%"><p> <code>module</code>, <code>ideal</code>,
+<code>vector</code>, <code>matrix</code>.
+<br> There are two forms to convert something to a matrix: if <code>matrix(</code>
+expression <code>)</code> is used then the size of the matrix is determined
+by the size of expression.
+<br> But <code>matrix(</code> expression <code>,</code> m <code>,</code> n <code>)</code> may also be
+used - the result is a
+ <span 
+class="cmmi-10">m </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmmi-10">n </span> 
+matrix (see <a href="sing_113.htm#matrix-type-cast">matrix type cast</a>)
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>module</code> </p></td><td width="83%"><p> expression lists of <code>int</code>, <code>number</code>,
+<code>poly</code>, <code>vector</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>module</code> </p></td><td width="83%"><p> <code>ideal</code>, <code>matrix</code>, <code>vector</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;   </p></td><td width="15%"><p>  <code>number</code> </p></td><td width="83%"><p> <code>poly</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  </p></td><td width="15%"><p>  <code>poly</code> </p></td><td width="83%"><p>   <code>int</code>, <code>number</code>
+</p></td></tr>
+<tr><td width="5%">
+<p>&nbsp;  </p></td><td width="15%"><p>  <code>string</code> </p></td><td width="83%"><p>   any type (see <a href="sing_146.htm#string-type-cast">string type cast</a>)
+</p></td></tr>
+</table>
+
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,x,(c,dp);
+  number(3x);
+&rarr; 0
+  number(poly(3));
+&rarr; 3
+  ideal i=1,2,3,4,5,6;
+  print(matrix(i));
+&rarr; 1,2,3,4,5,6
+  print(matrix(i,3,2));
+&rarr; 1,2,
+&rarr; 3,4,
+&rarr; 5,6 
+  vector v=[1,2];
+  print(matrix(v));
+&rarr; 1,
+&rarr; 2 
+  module(matrix(i,3,2));
+&rarr; _[1]=[1,3,5]
+&rarr; _[2]=[2,4,6]
+</pre></td></tr></table>
+
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_37.htm#Objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.4 Objects" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_39.htm#Flow-control" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.6 Flow control" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

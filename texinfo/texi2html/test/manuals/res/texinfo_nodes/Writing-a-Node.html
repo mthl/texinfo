@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.3.2 How to Write an @node Line</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.3.2 How to Write an @node Line">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3.2 How to Write an @node Line">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Writing-a-Node"></a>
+<a name="SEC73"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Names.html#Node-Names" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Node-Line-Tips.html#Node-Line-Tips" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="node.html#node" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Menus.html#Menus" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h3 class="subsection">6.3.2 How to Write an <code>@node</code> Line</h3>
+
+<p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
+at the beginning of a line and then the name of the node, like
+this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
+</pre></td></tr></table>
+
+<p>If you are using GNU Emacs, you can use the update node commands
+provided by Texinfo mode to insert the names of the pointers; or you
+can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
+insert node pointers into the Info file it creates.  (See section <a href="Texinfo-Mode.html#Texinfo-Mode">Using Texinfo Mode</a>, and <a href="makeinfo-Pointer-Creation.html#makeinfo-Pointer-Creation">Creating Pointers with <code>makeinfo</code></a>.)
+</p>
+<p>Alternatively, you can insert the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
+pointers yourself.  If you do this, you may find it helpful to use the
+Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
+&lsquo;<samp>@node</samp>&rsquo; and a comment line listing the names of the pointers in
+their proper order.  The comment line helps you keep track of which
+arguments are for which pointers.  This comment line is especially useful
+if you are not familiar with Texinfo.
+</p>
+<p>The template for a fully-written-out node line with &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;,
+and &lsquo;Up&rsquo; pointers looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
+</pre></td></tr></table>
+
+<p>If you wish, you can ignore <code>@node</code> lines altogether in your first
+draft and then use the <code>texinfo-insert-node-lines</code> command to
+create <code>@node</code> lines for you.  However, we do not recommend this
+practice.  It is better to name the node itself at the same time that
+you write a segment so you can easily make cross references.  A large
+number of cross references are an especially important feature of a good
+Info file.
+</p>
+<p>After you have inserted an <code>@node</code> line, you should immediately
+write an @-command for the chapter or section and insert its name.
+Next (and this is important!), put in several index entries.  Usually,
+you will find at least two and often as many as four or five ways of
+referring to the node in the index.  Use them all.  This will make it
+much easier for people to find the node.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Node-Names.html#Node-Names" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Node-Line-Tips.html#Node-Line-Tips" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Nodes.html#Nodes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="node.html#node" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Menus.html#Menus" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

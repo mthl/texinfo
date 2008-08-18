@@ -1,0 +1,350 @@
+@comment -*-texinfo-*-
+@comment Id: TROUBLESHOOTING_win.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
+@c FILE:    INSTALL.texi
+@c PURPOSE: Installation instructions for Singular on MSWindows
+@c          This file is displayed during installation and copied to
+@c          /etc/INSTALL
+
+@ifclear VERSION
+@include version.texi
+@end ifclear
+
+@ifclear singularmanual
+@majorheading Troubleshooting for Singular on MS Windows.
+@end ifclear
+
+@strong{RECOMMENDATIONS:}
+@itemize
+
+@item If possible, install @code{Singular} in the directory, containing no spaces (that is, rather in @code{C:\Singular} than in @code{C:\Program Files\Singular})
+@item If you have any earlier version of @code{Singular} installed, please uninstall it before setting up a newer version
+@end itemize
+
+@strong{GENERAL CONSIDERATIONS:}
+@enumerate
+@item In the text below, we assume the directory @code{C:\Singular} to be
+the destination folder for the Singular installation.
+@item For typing system commands (if required), you can use one of the three shells:
+@itemize
+@item rxvt terminal (Start->Programs->Singular 2.0->Tools->rxvt terminal, runs Unix Bash shell)
+@item Bash shell (Start->Programs->Singular 2.0->Tools->Bash shell)
+@item MS-DOS Command Prompt (Start->Programs->MS-DOS Command Prompt)
+@end itemize
+We highly recommend to use rxvt terminal.
+@end enumerate
+
+@table @strong
+
+@item While extracting files, there is a message @code{Setup failed to launch installation engine:} @code{Error loading type library/DLL}.
+
+Such a problem could appear on Win 95/98. 
+You need to download and execute Microsoft DCOM98 package
+@uref{http://www.microsoft.com/com/dcom/dcom98/download.asp}. 
+
+
+@item On startup, the DLL @code{cygwin1.dll} can not be found.
+@itemize
+@item
+Make sure that (1) the installation did not generate any error messages;
+(2) you have rebooted your machine after a
+successful installation (Win95/98/ME only);  
+(3) the @code{BasicCygwin} component was not de-selected
+during a custom installation.
+@c and (4) (eventually Win 95/98) the destination folder chosen during the installation does not contain folder names which are longer than 8 characters, or contain spaces or periods.
+@item
+Make sure that the file @code{C:\Singular\bin\cygwin1.dll} is present in your system.
+@item
+If the problem persists, please try to localize the source of the
+problem as explained below, and, in any case, @emph{please send} an email
+to  @email{singular@@mathematik.uni-kl-de} with a description of your problem.
+@item
+Make sure the directories @code{C:\Singular\bin} and @code{C:\Singular\usr\local\Singular\@value{VERSION}\ix86-Win}
+are contained in your @code{PATH} environment variable. To
+check this, open either an MS-DOS command prompt and type @code{PATH}
+or an rxvt terminal and type @code{echo $PATH}. If these
+directories are not contained in the listings of directories of the
+@code{PATH} variable, set them as follows and then (on Win 95/98/ME only)
+@emph{restart} your computer :
+@*On Windows 95/98/ME, add the following line to your @code{AUTOEXEC.BAT}
+file:
+@example
+SET PATH=C:\SINGULAR\BIN;C:\SINGULAR\USR\LOCAL\SINGBIN;%PATH%
+@end example
+On Windows NT/2K/XP add these paths to the @code{PATH} variable in your @code{Environment}
+control panel.
+
+@item
+Make sure that your chosen destination folder is correctly mounted to the
+root of your (Cygwin) file system: Open an rxvt terminal, and type in
+@code{mount}. This should produce an output which looks like:
+@example
+Device              Directory           Type         Flags
+C:\Singular         /                   system       binmode
+@end example
+If not, make sure that the @code{mount.exe} command is contained in this
+directory, and then type at the command line:
+@example
+mount -f -s -t C:\Singular /
+@end example
+@end itemize
+
+@item Could not get expanded executable from @code{/usr/local/Singular/@value{VERSION}/ix86-Win/Singular}
+@item Error: Couldn't find @code{ESingular} anywhere
+@* These problems have common origin - they indicate that @code{cygwin}
+mounts are not correctly set.
+
+@itemize
+@item @strong{Step 1}. Searching for the wrong setting
+@* Open an rxvt terminal and type @code{mount}. You will get a list of mounts,
+present in the system. @code{Singular} installation creates
+the following three mounts (they are of crucial importance for running
+@code{Singular}) :
+@example
+C:\Singular\usr\lib on /usr/lib type system (binmode)
+C:\Singular\bin on /usr/bin type system (binmode)
+C:\Singular on / type system (binmode)
+@end example
+Moreover, if you create your own mounts, say,
+executing @code{mount -f -u -t C: /C}, you will see more lines like this:
+@example
+C: on /C type user (textmode)
+@end example
+@item @strong{Step 2}. Removing the problem
+@* If you see any extra mount points, which have the same posix name
+(like "/", "/usr/bin", "/usr/lib"), you have to remove them.
+@* Suppose there are two "root" mount points, namely 
+@example
+C:\Singular on / type system (binmode)
+C: on / type user (textmode)
+@end example 
+You have to call the "unmount" procedure, which in this concrete
+example will be @code{umount -u / }. Thus you remove the wrong
+user mount and the correct one will be activated.
+Type @code{umount --help} for more information on this command.
+
+@item @strong{Alternative}
+@* If you have problems removing or setting mount, you can
+do it also with the Registry Editor. However, this is recommended
+for advanced users.
+
+@enumerate
+@item Close all your cygwin-related applications
+@item open Registry Editor
+@item navigate either to @code{HKEY_CURRENT_USER} or 
+@code{HKEY_USERS\Default} window 
+(on Win NT/2K/XP you can also check @code{HKEY_LOCAL_MASHINE}).
+@item go to @code{SOFTWARE/Cygwin Solutions/Cygwin/mounts v2}.
+It is the place, where mount points are described. Suppose we
+have an extra "/" mount like in the previous step.
+Find the mount you need (that is, "/") and check its properties, 
+then delete the whole key (graphically it looks like the folder), 
+which corresponds to @code{C:} (do not delete the one 
+corresponding to @code{C:\Singular}!). After this, close
+the Registry Editor, open rxvt terminal and type "mount" again.
+Now the mounts should be correct.
+@end enumerate
+@end itemize
+
+
+@item During the installation, an error is displayed complaining that an environment variable can not be set.
+@*Repeat the installation, and make sure that:
+@itemize
+@item On Windows 95/98/ME, the file @code{C:\AUTOEXEC.BAT} is not
+hidden and not write-protected.
+@item On Windows NT/2K/XP, you are logged on either as user
+@code{Administrator} or as a user with the Administrator rights during the installation.
+@end itemize
+
+@item @*On start-up of @code{ESingular}, the @code{xemacs} editor can not be found.
+@*Make sure that (1) the folder @code{C:\Singular\usr\local\Singular\@value{VERSION}\ix86-Win} is contained in your
+@code{PATH} (see above for details) and (2) that the file
+@code{C:\Singular\usr\local\Singular\@value{VERSION}\ix86-Win\xemacs.exe} exists.
+@*Open an rxvt terminal and type @code{xemacs}
+(or, alternatively, @code{which xemacs}). 
+If this fails (or returns nothing), make sure your root mount "/" is set correctly (see above).
+
+@item @*What help systems are available for @code{Singular}?
+@*There are following help files in @code{C:\Singular\usr\local\Singular\@value{VERSION}}:
+@itemize
+@item @code{\info\singular.hlp} - Singular Manual in texinfo format,
+@item @code{\html\Manual.hlp} - Singular Manual in Windows Help format (is set by default),
+@item @code{\html\*.htm} (in the Typical and Custom setup components) - Singular Manual in HTML format.
+@end itemize
+@c @* The default help browser for Windows is set to @code{winhlp}.
+@* You can tell Singular which help to use either from the command-line (e.g. @code{system("--browser","html")})
+or add this command to the file @code{\LIB\.singularrc}.
+
+
+@item @*There are @code{Singular.exe}, @code{TSingular.exe} and @code{ESingular.exe} files. What is the difference between them?
+@*The most important executables in @code{C:\Singular\usr\local\Singular\@value{VERSION}\ix86-Win} are :
+@itemize
+@item @code{runESingular.exe} - Singular inside the XEmacs editor (appears only if XEmacs is installed),
+@item @code{runTSingular.exe} - Singular inside the Cygwin xterm (rxvt) application,
+@item @code{Singular.exe} - could be run from the command line either in a Bash shell, or in an MS-DOS command prompt.
+For users convenience, the file @code{Singular-@value{VERSION}.exe} is just a link to @code{Singular.exe}.
+@end itemize
+
+@item @*How do I cut and paste with the mouse?
+@*First of all, we remind what we call Unix-like cut and paste with the mouse : marking a region while
+pressing a left button copies it to a buffer, a click on a middle-button pastes the current buffer at the current cursor position.
+@itemize
+@item @code{TSingular} and @code{ESingular} - under xterm and XEmacs, cut and paste works like under Unix
+@item @code{Singular.exe} from a Bash shell - you can copy and paste a region selected with the
+mouse using the @code{CTRL-Insert} (for copying) and @code{CTRL-Shift} (for paste) keys.
+@item @code{Singular.exe} from a DOS window - under Windows NT/2K/XP, you can configure the shortcut
+calling the Singular to work in the following manner: marking the region with a left-button,
+pressing @code{Enter}, and then right mouse button to paste.
+To enable this non-default feature, right-click on the Singular shortcut
+on your desktop, check Properties, click on tab Options,
+where check the "Quick-Edit Mode" and "Insert (Exclusive) Mode" boxes and apply changes.
+Under Windows 95/98/ME, this unfortunately doesn't work properly.
+@end itemize
+
+@item @*How to uninstall Singular-@value{VERSION} under Windows manually?
+@*The installation of Singular-@value{VERSION} for Windows consists of the three following components:
+@*(C1) Essential files ( in the installation directory)
+@*(C2) Shortcuts in Start Menu and on the Desktop
+@*(C3) Registry entries (Win NT/2K/XP) or @code{autoexec.bat} entries (Win 95/98/ME)
+
+@*To uninstall it, do the following :
+
+@*(C1) The essential files can be removed directly using the Explorer.
+@*(C2) To delete the shortcuts: right-click on the Start button, select
+Open - All Users. Then you go to  the Program Files folder and you'll see
+the Singular 2.0 folder there, which is to be deleted. The shortcuts on the Desktop could be removed directly using the Explorer.
+@*(C3) At first, 
+@itemize
+@item For Win 95/98/ME users : open the file @code{autoexec.bat} 
+@item For Win NT/2K/XP users : click  Start->Settings->Control Panel->System->Environment.
+@end itemize
+
+@* And then : just remove the line @code{HOME=...} if it corresponds to Singular-@value{VERSION} (i.e. if it looks like @code{HOME=C:\Singular\home\Singular}). 
+You can leave the @code{PATH} variable as it is,
+but if you want to clean it anyway, try to figure out paths in it, which look like 
+@code{C:\Singular\bin; C:\Singular\usr\local\Singular\@value{VERSION}\ix86-Win}. 
+@strong{But don't delete the string @code{PATH} itself!} 
+
+@item @*How to configure Singular-@value{VERSION} for use by many users under Win NT/2K/XP?
+@* You are installing Singular-@value{VERSION} with the administrator rights, the 
+@emph{system variables} @code{Path} and @code{HOME} are set by default. There exists also a 
+@emph{user variable} @code{HOME}, which overruns the system variable for the current user.
+@* Assume that you have Singular-@value{VERSION} installed in the @code{C:\Singular} directory and your user is named @code{NewUser}.
+
+@*1) Create the directory, say, @code{C:\Singular\home\NewUser}
+@*2) Copy and edit the files @code{.profile} and @code{.bashrc} to this directory from the 
+@code{C:\Singular\home\Singular}.
+@*3) Set @emph{user variable} @code{HOME} to @code{C:\Singular\home\NewUser} by clicking and editing Start->Settings->Control Panel->System->Environment. User variables are listed in the respective subwindow below.
+@*4) Click the "Apply changes" button.
+
+The Singular-specific global settings for all the users you can add to the .singularrc file, which you can find in @code{C:\Singular\usr\local\Singular\@value{VERSION}\LIB}.
+For more information on @code{.singularrc}, see the Singular manual. 
+
+@item Conflicting @code{HOME} variables
+
+The system variable @code{HOME} is used by Singular and other programs. The
+modifications of this variable during the installation procedure may
+lead to conflicts.
+@enumerate
+
+@item Where is the variable @code{HOME} defined?
+
+@itemize
+@item Windows 95/98/ME
+
+@code{HOME} is defined by a line @code{SET HOME = ...} in the file @code{autoexec.bat}. 
+@item Windows NT/2K/XP
+
+Under "Environment" in the "Control Panel" there could be two
+definitions of @code{HOME}, namely as a @emph{system variable} (in the upper subwindow) and as a @emph{user variable} (in the lower subwindow). By default, the variable @code{HOME}
+appears only as a @emph{system variable} or does not appear at all.
+@end itemize
+
+@item How is the variable @code{HOME} modified by the Singular installation?
+
+@itemize
+@item Windows 95/98/ME
+
+A new line @code{SET HOME = ...} defining the Singular home directory is
+inserted in the file @code{autoexec.bat} after the existing line 
+@code{SET HOME =...} defining the user home directory.
+To prevent the system from destroying the old settings, replace the line
+@code{SET HOME = ...} defining the user home directory by the line
+@code{REM SET HOME = ...} or copy it to another place.
+
+@item Windows NT/2K/XP
+
+If the value of the variable @code{HOME} is correct (i.e. the given directory
+exists), the installation proceed as follows.
+First, a copy of the old variable @code{HOME} is moved to the new variable
+@code{OLDHOME}. You will be prompted by the Setup program if
+such replacements take place. 
+Afterwards, the variable @code{HOME} is set to the Singular home directory.
+If either the variable @code{HOME} is not defined or
+it contains a non-existing path, then
+the variable @code{HOME} is set to the Singular home directory.
+@end itemize
+
+@item Where is the value of the variable @code{HOME} relevant?
+
+@itemize
+@item Some versions of @code{(X)Emacs} for Windows and other programs
+(like Star Office) need this variable to find their home directory.
+So need it the @code{XEmacs} version 21.1.13, which is included in the
+Singular-@value{VERSION} distribution.
+In order to use different versions of (X)Emacs, one has to run (X)Emacs
+and ESingular (which works as an application within the XEmacs 21.1.13,
+shipped with the distribution) separately and eventually use some tricks
+(like batch files or registry macros) for changing the value
+of the variable @code{HOME} appropriately.
+
+@item Shortcuts like Singular, TSingular, ESingular, Bash Shell, or Xemacs
+will be run from the directory defined by the variable @code{HOME}.
+In order to run Singular, TSingular, and ESingular programs via
+shortcuts from the directory, which is different from the one defined in @code{HOME},
+you can proceed as follows:
+@enumerate
+@item Define a new variable ( @code{SINGHOME}, for example) containing the path of the
+directory you wish to use.
+@item Right click on one of the shortcuts Singular, TSingular, or ESingular
+and choose "Shortcut tab".
+@item Enter @code{%SINGHOME%} in the field "Start in". By default,
+this field contains the string @code{%HOME%}.
+Note that there are two types of independent shortcuts, namely on the
+desktop and in the "Start" menu.
+@end enumerate
+
+@item Troubleshooting and additional information
+
+The following variables could be set additionally
+for various troubleshooting operations :
+@table @asis
+@item @code{ESINGULAR_EMACS} = the full path to @code{emacs.exe} or @code{xemacs.exe},
+@item @code{ESINGULAR_SINGULAR} = the full path to your file @code{Singular.exe},
+@item @code{ESINGULAR_EMACS_LOAD} = the full path to your file @code{.emacs-singular},
+@item @code{ESINGULAR_EMACS_DIR} = the full path to your directory @code{/Singular/@value{VERSION}/emacs}.
+@end table
+
+If some of these variables are present in the system,
+Singular will use them internally for calling the respective data.
+@end itemize
+@end enumerate
+
+@item @*On a Laptop which is not connected to the network, Xemacs hangs.
+Remove your network card and restart Xemacs.
+@end table
+
+
+
+For any other troubles, please visit the @strong{Singular Forum} 
+at @uref{http://www.singular.uni-kl.de/forum} or
+send an email to @email{singular@@mathematik.uni-kl.de}
+and include the header which is displayed by starting up @code{Singular}
+with the @code{-v} option, and a description of your machine and
+operating system.
+
+@include info.texi
+
+@ifclear singularmanual
+GOOD LUCK and ENJOY!
+Your @code{Singular} team.
+@end ifclear

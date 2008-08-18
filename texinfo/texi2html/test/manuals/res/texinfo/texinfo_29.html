@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: H. @-Command Syntax</title>
+
+<meta name="description" content="GNU Texinfo 4.2: H. @-Command Syntax">
+<meta name="keywords" content="GNU Texinfo 4.2: H. @-Command Syntax">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Command-Syntax"></a>
+<a name="SEC279"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_28.html#Refilling-Paragraphs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_30.html#Obtaining-TeX" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo_28.html#Refilling-Paragraphs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_30.html#Obtaining-TeX" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="appendix">H. @-Command Syntax</h1>
+
+<p>The character &lsquo;<samp>@</samp>&rsquo; is used to start special Texinfo commands.
+(It has the same meaning that &lsquo;<samp>\</samp>&rsquo; has in plain TeX.)  Texinfo
+has four types of @-command:
+</p>
+<dl compact="compact">
+<dt> 1. Non-alphabetic commands.</dt>
+<dd><p>These commands consist of an @ followed by a punctuation mark or other
+character that is not part of the alphabet.  Non-alphabetic commands are
+almost always part of the text within a paragraph, and never take any
+argument.  The two characters (@ and the other one) are complete in
+themselves; none is followed by braces.  The non-alphabetic commands
+are: <code>@.</code>, <code>@:</code>, <code>@*</code>, <code>@<kbd>SPACE</kbd></code>,
+<code>@<kbd>TAB</kbd></code>, <code>@<kbd>NL</kbd></code>, <code>@@</code>, <code>@{</code>, and
+<code>@}</code>.
+</p>
+</dd>
+<dt> 2. Alphabetic commands that do not require arguments.</dt>
+<dd><p>These commands start with @ followed by a word followed by left- and
+right-hand braces.  These commands insert special symbols in the
+document; they do not require arguments.  For example,
+<code>@dots{}</code> &rArr; &lsquo;<samp>&hellip;</samp>&rsquo;, <code>@equiv{}</code>
+&rArr; &lsquo;<samp>&equiv;</samp>&rsquo;, <code>@TeX{}</code> &rArr; &lsquo;TeX&rsquo;,
+and <code>@bullet{}</code> &rArr; &lsquo;<samp>&bull;</samp>&rsquo;.
+</p>
+</dd>
+<dt> 3. Alphabetic commands that require arguments within braces.</dt>
+<dd><p>These commands start with @ followed by a letter or a word, followed by an
+argument within braces.  For example, the command <code>@dfn</code> indicates
+the introductory or defining use of a term; it is used as follows: &lsquo;<samp>In
+Texinfo, @@-commands are @dfn{mark-up} commands.</samp>&rsquo;
+</p>
+</dd>
+<dt> 4. Alphabetic commands that occupy an entire line.</dt>
+<dd><p>These commands occupy an entire line.  The line starts with @,
+followed by the name of the command (a word); for example, <code>@center</code>
+or <code>@cindex</code>.  If no argument is needed, the word is followed by
+the end of the line.  If there is an argument, it is separated from
+the command name by a space.  Braces are not used.
+</p></dd>
+</dl>
+
+<a name="IDX464"></a>
+<p>Thus, the alphabetic commands fall into classes that have
+different argument syntaxes.  You cannot tell to which class a command
+belongs by the appearance of its name, but you can tell by the
+command&rsquo;s meaning: if the command stands for a glyph, it is in
+class 2 and does not require an argument; if it makes sense to use the
+command together with other text as part of a paragraph, the command
+is in class 3 and must be followed by an argument in braces;
+otherwise, it is in class 4 and uses the rest of the line as its
+argument.
+</p>
+<p>The purpose of having a different syntax for commands of classes 3 and
+4 is to make Texinfo files easier to read, and also to help the GNU
+Emacs paragraph and filling commands work properly.  There is only one
+exception to this rule: the command <code>@refill</code>, which is always
+used at the end of a paragraph immediately following the final period
+or other punctuation character.  <code>@refill</code> takes no argument and
+does <em>not</em> require braces.  <code>@refill</code> never confuses the
+Emacs paragraph commands because it cannot appear at the beginning of
+a line.
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="texinfo_28.html#Refilling-Paragraphs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_30.html#Obtaining-TeX" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

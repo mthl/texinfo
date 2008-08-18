@@ -1,0 +1,34 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename commands_not_closed.info
+
+@node Top
+
+@'{e
+
+@chapter Chapter 1
+
+@anchor{an
+
+anchor}
+
+@anchor{my anchor
+
+@chapter Chapter 2
+
+See @ref{my anchor}, and @ref{an anchor}, and @ref{footnote anchor}
+
+@chapter Chapter 3
+
+@ref{an anchor
+
+@chapter Chapter 4
+
+@math{A
+@chapter Chapter 5
+
+Footnote@footnote{
+Footnote
+@anchor{footnote anchor}
+
+@bye

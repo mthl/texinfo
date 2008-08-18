@@ -1,0 +1,287 @@
+<div id="SEC_Contents"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[[#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+== Table of Contents ==
+<div class="contents">
+
+<ul>
+  <li><div id="TOC1"></div>[cvs: Overview#Overview Overview]
+  <ul>
+    <li><div id="TOC2"></div>[cvs: Overview#What-is-CVS_003f What is CVS?]</li>
+    <li><div id="TOC3"></div>[cvs: Overview#What-is-CVS-not_003f What is CVS not?]</li>
+    <li><div id="TOC4"></div>[cvs: Overview#A-sample-session A sample session]
+    <ul>
+      <li><div id="TOC5"></div>[cvs: Overview#Getting-the-source Getting the source]</li>
+      <li><div id="TOC6"></div>[cvs: Overview#Committing-your-changes Committing your changes]</li>
+      <li><div id="TOC7"></div>[cvs: Overview#Cleaning-up Cleaning up]</li>
+      <li><div id="TOC8"></div>[cvs: Overview#Viewing-differences Viewing differences]</li>
+    </ul>
+</li>
+  </ul></li>
+  <li><div id="TOC9"></div>[cvs: The Repository#Repository The Repository]
+  <ul>
+    <li><div id="TOC10"></div>[cvs: The Repository#Specifying-a-repository Telling CVS where your repository is]</li>
+    <li><div id="TOC11"></div>[cvs: The Repository#Repository-storage How data is stored in the repository]
+    <ul>
+      <li><div id="TOC12"></div>[cvs: The Repository#Repository-files Where files are stored within the repository]</li>
+      <li><div id="TOC13"></div>[cvs: The Repository#File-permissions File permissions]</li>
+      <li><div id="TOC14"></div>[cvs: The Repository#Windows-permissions File Permission issues specific to Windows]</li>
+      <li><div id="TOC15"></div>[cvs: The Repository#Attic The attic]</li>
+      <li><div id="TOC16"></div>[cvs: The Repository#CVS-in-repository The CVS directory in the repository]</li>
+      <li><div id="TOC17"></div>[cvs: The Repository#Locks CVS locks in the repository]</li>
+      <li><div id="TOC18"></div>[cvs: The Repository#CVSROOT-storage How files are stored in the CVSROOT directory]</li>
+    </ul></li>
+    <li><div id="TOC19"></div>[cvs: The Repository#Working-directory-storage How data is stored in the working directory]</li>
+    <li><div id="TOC20"></div>[cvs: The Repository#Intro-administrative-files The administrative files]
+    <ul>
+      <li><div id="TOC21"></div>[cvs: The Repository#SEC21 Editing administrative files]</li>
+    </ul></li>
+    <li><div id="TOC22"></div>[cvs: The Repository#Multiple-repositories Multiple repositories]</li>
+    <li><div id="TOC23"></div>[cvs: The Repository#Creating-a-repository Creating a repository]</li>
+    <li><div id="TOC24"></div>[cvs: The Repository#Backing-up Backing up a repository]</li>
+    <li><div id="TOC25"></div>[cvs: The Repository#Moving-a-repository Moving a repository]</li>
+    <li><div id="TOC26"></div>[cvs: The Repository#Remote-repositories Remote repositories]
+    <ul>
+      <li><div id="TOC27"></div>[cvs: The Repository#Server-requirements Server requirements]</li>
+      <li><div id="TOC28"></div>[cvs: The Repository#Connecting-via-rsh Connecting with rsh]</li>
+      <li><div id="TOC29"></div>[cvs: The Repository#Password-authenticated Direct connection with password authentication]
+      <ul>
+        <li><div id="TOC30"></div>[cvs: The Repository#Password-authentication-server Setting up the server for password authentication]</li>
+        <li><div id="TOC31"></div>[cvs: The Repository#Password-authentication-client Using the client with password authentication]</li>
+        <li><div id="TOC32"></div>[cvs: The Repository#Password-authentication-security Security considerations with password authentication]</li>
+      </ul></li>
+      <li><div id="TOC33"></div>[cvs: The Repository#GSSAPI-authenticated Direct connection with GSSAPI]</li>
+      <li><div id="TOC34"></div>[cvs: The Repository#Kerberos-authenticated Direct connection with kerberos]</li>
+      <li><div id="TOC35"></div>[cvs: The Repository#Connecting-via-fork Connecting with fork]</li>
+    </ul></li>
+    <li><div id="TOC36"></div>[cvs: The Repository#Read_002donly-access Read-only repository access]</li>
+    <li><div id="TOC37"></div>[cvs: The Repository#Server-temporary-directory Temporary directories for the server]</li>
+  </ul></li>
+  <li><div id="TOC38"></div>[cvs: Starting a project with CVS#Starting-a-new-project Starting a project with CVS]
+  <ul>
+    <li><div id="TOC39"></div>[cvs: Starting a project with CVS#Setting-up-the-files Setting up the files]
+    <ul>
+      <li><div id="TOC40"></div>[cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files]</li>
+      <li><div id="TOC41"></div>[cvs: Starting a project with CVS#From-other-version-control-systems Creating Files From Other Version Control Systems]</li>
+      <li><div id="TOC42"></div>[cvs: Starting a project with CVS#From-scratch Creating a directory tree from scratch]</li>
+    </ul></li>
+    <li><div id="TOC43"></div>[cvs: Starting a project with CVS#Defining-the-module Defining the module]</li>
+  </ul></li>
+  <li><div id="TOC44"></div>[cvs: Revisions#Revisions Revisions]
+  <ul>
+    <li><div id="TOC45"></div>[cvs: Revisions#Revision-numbers Revision numbers]</li>
+    <li><div id="TOC46"></div>[cvs: Revisions#Versions-revisions-releases Versions, revisions and releases]</li>
+    <li><div id="TOC47"></div>[cvs: Revisions#Assigning-revisions Assigning revisions]</li>
+    <li><div id="TOC48"></div>[cvs: Revisions#Tags Tags&ndash;Symbolic revisions]</li>
+    <li><div id="TOC49"></div>[cvs: Revisions#Tagging-the-working-directory Specifying what to tag from the working directory]</li>
+    <li><div id="TOC50"></div>[cvs: Revisions#Tagging-by-date_002ftag Specifying what to tag by date or revision]</li>
+    <li><div id="TOC51"></div>[cvs: Revisions#Modifying-tags Deleting, moving, and renaming tags]</li>
+    <li><div id="TOC52"></div>[cvs: Revisions#Tagging-add_002fremove Tagging and adding and removing files]</li>
+    <li><div id="TOC53"></div>[cvs: Revisions#Sticky-tags Sticky tags]</li>
+  </ul></li>
+  <li><div id="TOC54"></div>[cvs: Branching and merging#Branching-and-merging Branching and merging]
+  <ul>
+    <li><div id="TOC55"></div>[cvs: Branching and merging#Branches-motivation What branches are good for]</li>
+    <li><div id="TOC56"></div>[cvs: Branching and merging#Creating-a-branch Creating a branch]</li>
+    <li><div id="TOC57"></div>[cvs: Branching and merging#Accessing-branches Accessing branches]</li>
+    <li><div id="TOC58"></div>[cvs: Branching and merging#Branches-and-revisions Branches and revisions]</li>
+    <li><div id="TOC59"></div>[cvs: Branching and merging#Magic-branch-numbers Magic branch numbers]</li>
+    <li><div id="TOC60"></div>[cvs: Branching and merging#Merging-a-branch Merging an entire branch]</li>
+    <li><div id="TOC61"></div>[cvs: Branching and merging#Merging-more-than-once Merging from a branch several times]</li>
+    <li><div id="TOC62"></div>[cvs: Branching and merging#Merging-two-revisions Merging differences between any two revisions]</li>
+    <li><div id="TOC63"></div>[cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]</li>
+    <li><div id="TOC64"></div>[cvs: Branching and merging#Merging-and-keywords Merging and keywords]</li>
+  </ul></li>
+  <li><div id="TOC65"></div>[cvs: Recursive behavior#Recursive-behavior Recursive behavior]</li>
+  <li><div id="TOC66"></div>[cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding, removing, and renaming files and directories]
+  <ul>
+    <li><div id="TOC67"></div>[cvs: Adding, removing, and renaming files and directories#Adding-files Adding files to a directory]</li>
+    <li><div id="TOC68"></div>[cvs: Adding, removing, and renaming files and directories#Removing-files Removing files]</li>
+    <li><div id="TOC69"></div>[cvs: Adding, removing, and renaming files and directories#Removing-directories Removing directories]</li>
+    <li><div id="TOC70"></div>[cvs: Adding, removing, and renaming files and directories#Moving-files Moving and renaming files]
+    <ul>
+      <li><div id="TOC71"></div>[cvs: Adding, removing, and renaming files and directories#Outside The Normal way to Rename]</li>
+      <li><div id="TOC72"></div>[cvs: Adding, removing, and renaming files and directories#Inside Moving the history file]</li>
+      <li><div id="TOC73"></div>[cvs: Adding, removing, and renaming files and directories#Rename-by-copying Copying the history file]</li>
+    </ul></li>
+    <li><div id="TOC74"></div>[cvs: Adding, removing, and renaming files and directories#Moving-directories Moving and renaming directories]</li>
+  </ul></li>
+  <li><div id="TOC75"></div>[cvs: History browsing#History-browsing History browsing]
+  <ul>
+    <li><div id="TOC76"></div>[cvs: History browsing#log-messages Log messages]</li>
+    <li><div id="TOC77"></div>[cvs: History browsing#history-database The history database]</li>
+    <li><div id="TOC78"></div>[cvs: History browsing#user_002ddefined-logging User-defined logging]</li>
+    <li><div id="TOC79"></div>[cvs: History browsing#annotate Annotate command]</li>
+  </ul></li>
+  <li><div id="TOC80"></div>[cvs: Handling binary files#Binary-files Handling binary files]
+  <ul>
+    <li><div id="TOC81"></div>[cvs: Handling binary files#Binary-why The issues with binary files]</li>
+    <li><div id="TOC82"></div>[cvs: Handling binary files#Binary-howto How to store binary files]</li>
+  </ul></li>
+  <li><div id="TOC83"></div>[cvs: Multiple developers#Multiple-developers Multiple developers]
+  <ul>
+    <li><div id="TOC84"></div>[cvs: Multiple developers#File-status File status]</li>
+    <li><div id="TOC85"></div>[cvs: Multiple developers#Updating-a-file Bringing a file up to date]</li>
+    <li><div id="TOC86"></div>[cvs: Multiple developers#Conflicts-example Conflicts example]</li>
+    <li><div id="TOC87"></div>[cvs: Multiple developers#Informing-others Informing others about commits]</li>
+    <li><div id="TOC88"></div>[cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]</li>
+    <li><div id="TOC89"></div>[cvs: Multiple developers#Watches Mechanisms to track who is editing files]
+    <ul>
+      <li><div id="TOC90"></div>[cvs: Multiple developers#Setting-a-watch Telling CVS to watch certain files]</li>
+      <li><div id="TOC91"></div>[cvs: Multiple developers#Getting-Notified Telling CVS to notify you]</li>
+      <li><div id="TOC92"></div>[cvs: Multiple developers#Editing-files How to edit a file which is being watched]</li>
+      <li><div id="TOC93"></div>[cvs: Multiple developers#Watch-information Information about who is watching and editing]</li>
+      <li><div id="TOC94"></div>[cvs: Multiple developers#Watches-Compatibility Using watches with old versions of CVS]</li>
+    </ul></li>
+    <li><div id="TOC95"></div>[cvs: Multiple developers#Choosing-a-model Choosing between reserved or unreserved checkouts]</li>
+  </ul></li>
+  <li><div id="TOC96"></div>[cvs: Revision management#Revision-management Revision management]
+  <ul>
+    <li><div id="TOC97"></div>[cvs: Revision management#When-to-commit When to commit?]</li>
+  </ul></li>
+  <li><div id="TOC98"></div>[cvs: Keyword substitution#Keyword-substitution Keyword substitution]
+  <ul>
+    <li><div id="TOC99"></div>[cvs: Keyword substitution#Keyword-list Keyword List]</li>
+    <li><div id="TOC100"></div>[cvs: Keyword substitution#Using-keywords Using keywords]</li>
+    <li><div id="TOC101"></div>[cvs: Keyword substitution#Avoiding-substitution Avoiding substitution]</li>
+    <li><div id="TOC102"></div>[cvs: Keyword substitution#Substitution-modes Substitution modes]</li>
+    <li><div id="TOC103"></div>[cvs: Keyword substitution#Configuring-keyword-expansion Configuring Keyord Expansion]</li>
+    <li><div id="TOC104"></div>[cvs: Keyword substitution#Log-keyword Problems with the $<i></i>Log$ keyword.]</li>
+  </ul></li>
+  <li><div id="TOC105"></div>[cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources]
+  <ul>
+    <li><div id="TOC106"></div>[cvs: Tracking third-party sources#First-import Importing for the first time]</li>
+    <li><div id="TOC107"></div>[cvs: Tracking third-party sources#Update-imports Updating with the import command]</li>
+    <li><div id="TOC108"></div>[cvs: Tracking third-party sources#Reverting-local-changes Reverting to the latest vendor release]</li>
+    <li><div id="TOC109"></div>[cvs: Tracking third-party sources#Binary-files-in-imports How to handle binary files with cvs import]</li>
+    <li><div id="TOC110"></div>[cvs: Tracking third-party sources#Keywords-in-imports How to handle keyword substitution with cvs import]</li>
+    <li><div id="TOC111"></div>[cvs: Tracking third-party sources#Multiple-vendor-branches Multiple vendor branches]</li>
+  </ul></li>
+  <li><div id="TOC112"></div>[cvs: How your build system interacts with CVS#Builds How your build system interacts with CVS]</li>
+  <li><div id="TOC113"></div>[cvs: Special Files#Special-Files Special Files]</li>
+  <li><div id="TOC114"></div>[cvs: Guide to CVS commands#CVS-commands Guide to CVS commands]
+  <ul>
+    <li><div id="TOC115"></div>[cvs: Guide to CVS commands#Structure Overall structure of CVS commands]</li>
+    <li><div id="TOC116"></div>[cvs: Guide to CVS commands#Exit-status CVS&rsquo;s exit status]</li>
+    <li><div id="TOC117"></div>[cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]</li>
+    <li><div id="TOC118"></div>[cvs: Guide to CVS commands#Global-options Global options]</li>
+    <li><div id="TOC119"></div>[cvs: Guide to CVS commands#Common-options Common command options]</li>
+    <li><div id="TOC120"></div>[cvs: Guide to CVS commands#admin admin&mdash;Administration]
+    <ul>
+      <li><div id="TOC121"></div>[cvs: Guide to CVS commands#admin-options admin options]</li>
+    </ul></li>
+    <li><div id="TOC122"></div>[cvs: Guide to CVS commands#checkout checkout&mdash;Check out sources for editing]
+    <ul>
+      <li><div id="TOC123"></div>[cvs: Guide to CVS commands#checkout-options checkout options]</li>
+      <li><div id="TOC124"></div>[cvs: Guide to CVS commands#checkout-examples checkout examples]</li>
+    </ul></li>
+    <li><div id="TOC125"></div>[cvs: Guide to CVS commands#commit commit&mdash;Check files into the repository]
+    <ul>
+      <li><div id="TOC126"></div>[cvs: Guide to CVS commands#commit-options commit options]</li>
+      <li><div id="TOC127"></div>[cvs: Guide to CVS commands#commit-examples commit examples]
+      <ul>
+        <li><div id="TOC128"></div>[cvs: Guide to CVS commands#SEC128 Committing to a branch]</li>
+        <li><div id="TOC129"></div>[cvs: Guide to CVS commands#SEC129 Creating the branch after editing]</li>
+      </ul>
+</li>
+    </ul></li>
+    <li><div id="TOC130"></div>[cvs: Guide to CVS commands#diff diff&mdash;Show differences between revisions]
+    <ul>
+      <li><div id="TOC131"></div>[cvs: Guide to CVS commands#diff-options diff options]
+      <ul>
+        <li><div id="TOC132"></div>[cvs: Guide to CVS commands#Line-group-formats Line group formats]</li>
+        <li><div id="TOC133"></div>[cvs: Guide to CVS commands#Line-formats Line formats]</li>
+      </ul></li>
+      <li><div id="TOC134"></div>[cvs: Guide to CVS commands#diff-examples diff examples]</li>
+    </ul></li>
+    <li><div id="TOC135"></div>[cvs: Guide to CVS commands#export export&mdash;Export sources from CVS, similar to checkout]
+    <ul>
+      <li><div id="TOC136"></div>[cvs: Guide to CVS commands#export-options export options]</li>
+    </ul></li>
+    <li><div id="TOC137"></div>[cvs: Guide to CVS commands#history history&mdash;Show status of files and users]
+    <ul>
+      <li><div id="TOC138"></div>[cvs: Guide to CVS commands#history-options history options]</li>
+    </ul></li>
+    <li><div id="TOC139"></div>[cvs: Guide to CVS commands#import import&mdash;Import sources into CVS, using vendor branches]
+    <ul>
+      <li><div id="TOC140"></div>[cvs: Guide to CVS commands#import-options import options]</li>
+      <li><div id="TOC141"></div>[cvs: Guide to CVS commands#import-output import output]</li>
+      <li><div id="TOC142"></div>[cvs: Guide to CVS commands#import-examples import examples]</li>
+    </ul></li>
+    <li><div id="TOC143"></div>[cvs: Guide to CVS commands#log log&mdash;Print out log information for files]
+    <ul>
+      <li><div id="TOC144"></div>[cvs: Guide to CVS commands#log-options log options]</li>
+      <li><div id="TOC145"></div>[cvs: Guide to CVS commands#log-examples log examples]</li>
+    </ul></li>
+    <li><div id="TOC146"></div>[cvs: Guide to CVS commands#rdiff rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases]
+    <ul>
+      <li><div id="TOC147"></div>[cvs: Guide to CVS commands#rdiff-options rdiff options]</li>
+      <li><div id="TOC148"></div>[cvs: Guide to CVS commands#rdiff-examples rdiff examples]</li>
+    </ul></li>
+    <li><div id="TOC149"></div>[cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]
+    <ul>
+      <li><div id="TOC150"></div>[cvs: Guide to CVS commands#release-options release options]</li>
+      <li><div id="TOC151"></div>[cvs: Guide to CVS commands#release-output release output]</li>
+      <li><div id="TOC152"></div>[cvs: Guide to CVS commands#release-examples release examples]</li>
+    </ul></li>
+    <li><div id="TOC153"></div>[cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository]
+    <ul>
+      <li><div id="TOC154"></div>[cvs: Guide to CVS commands#update-options update options]</li>
+      <li><div id="TOC155"></div>[cvs: Guide to CVS commands#update-output update output]</li>
+    </ul>
+</li>
+  </ul></li>
+  <li><div id="TOC156"></div>[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands]</li>
+  <li><div id="TOC157"></div>[cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]
+  <ul>
+    <li><div id="TOC158"></div>[cvs: Reference manual for Administrative files#modules The modules file]
+    <ul>
+      <li><div id="TOC159"></div>[cvs: Reference manual for Administrative files#Alias-modules Alias modules]</li>
+      <li><div id="TOC160"></div>[cvs: Reference manual for Administrative files#Regular-modules Regular modules]</li>
+      <li><div id="TOC161"></div>[cvs: Reference manual for Administrative files#Ampersand-modules Ampersand modules]</li>
+      <li><div id="TOC162"></div>[cvs: Reference manual for Administrative files#Excluding-directories Excluding directories]</li>
+      <li><div id="TOC163"></div>[cvs: Reference manual for Administrative files#Module-options Module options]</li>
+      <li><div id="TOC164"></div>[cvs: Reference manual for Administrative files#Module-program-options How the modules file &ldquo;program options&rdquo; programs are run]</li>
+    </ul></li>
+    <li><div id="TOC165"></div>[cvs: Reference manual for Administrative files#Wrappers The cvswrappers file]</li>
+    <li><div id="TOC166"></div>[cvs: Reference manual for Administrative files#commit-files The commit support files]
+    <ul>
+      <li><div id="TOC167"></div>[cvs: Reference manual for Administrative files#syntax The common syntax]</li>
+      <li><div id="TOC168"></div>[cvs: Reference manual for Administrative files#commitinfo Commitinfo]</li>
+      <li><div id="TOC169"></div>[cvs: Reference manual for Administrative files#verifymsg Verifying log messages]</li>
+      <li><div id="TOC170"></div>[cvs: Reference manual for Administrative files#editinfo Editinfo]
+      <ul>
+        <li><div id="TOC171"></div>[cvs: Reference manual for Administrative files#editinfo-example Editinfo example]</li>
+      </ul></li>
+      <li><div id="TOC172"></div>[cvs: Reference manual for Administrative files#loginfo Loginfo]
+      <ul>
+        <li><div id="TOC173"></div>[cvs: Reference manual for Administrative files#loginfo-example Loginfo example]</li>
+        <li><div id="TOC174"></div>[cvs: Reference manual for Administrative files#Keeping-a-checked-out-copy Keeping a checked out copy]</li>
+      </ul>
+</li>
+    </ul></li>
+    <li><div id="TOC175"></div>[cvs: Reference manual for Administrative files#rcsinfo Rcsinfo]</li>
+    <li><div id="TOC176"></div>[cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]</li>
+    <li><div id="TOC177"></div>[cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file]</li>
+    <li><div id="TOC178"></div>[cvs: Reference manual for Administrative files#history-file The history file]</li>
+    <li><div id="TOC179"></div>[cvs: Reference manual for Administrative files#Variables Expansions in administrative files]</li>
+    <li><div id="TOC180"></div>[cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]</li>
+  </ul></li>
+  <li><div id="TOC181"></div>[cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]</li>
+  <li><div id="TOC182"></div>[cvs: Compatibility between CVS Versions#Compatibility Compatibility between CVS Versions]</li>
+  <li><div id="TOC183"></div>[cvs: Troubleshooting#Troubleshooting Troubleshooting]
+  <ul>
+    <li><div id="TOC184"></div>[cvs: Troubleshooting#Error-messages Partial list of error messages]</li>
+    <li><div id="TOC185"></div>[cvs: Troubleshooting#Connection Trouble making a connection to a CVS server]</li>
+    <li><div id="TOC186"></div>[cvs: Troubleshooting#Other-problems Other common problems]</li>
+  </ul></li>
+  <li><div id="TOC187"></div>[cvs: Credits#Credits Credits]</li>
+  <li><div id="TOC188"></div>[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual]</li>
+  <li><div id="TOC189"></div>[cvs: Index#Index Index]</li>
+</ul>
+</div>
+<hr size="1">

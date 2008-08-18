@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.9.1 Procedures in a library</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.9.1 Procedures in a library">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.9.1 Procedures in a library">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Procedures-in-a-library"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_49.htm#Guidelines-for-writing-a-library" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9 Guidelines for writing a library" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_51.htm#Documentation-of-a-library" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.9.2 Documentation of a library" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_49.htm#Guidelines-for-writing-a-library" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.9 Guidelines for writing a library" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+
+<a name="SEC50"></a>
+<h3 class="subsection">3.9.1 Procedures in a library</h3>
+
+<p>In this section we list miscellaneous recommendations on how procedures
+contained in a library should be implemented.
+</p><ol>
+<li>
+The info- and version-string should appear at the beginning of the
+library, before procedure definitions.
+
+</li><li>
+The info-string should have the format as explained in <a href="sing_54.htm#The-help-string-of-a-library">The help string of a library</a>.
+
+</li><li>
+Each procedure which should not be accessible by users should be
+declared <code>static</code>.
+
+</li><li>
+Each procedure which is not declared <code>static</code> should have a
+help and example section as explained in <a href="sing_42.htm#Procedure-definition">Procedure definition</a>.
+<br>Such procedures should furthermore carefully check any assumptions
+made about their input (like the type of list elements), and, if
+necessary, omit an error using the  function <a href="sing_179.htm#ERROR">ERROR</a>.
+
+</li><li>
+No procedures should be defined within the body of another procedure.
+
+</li><li>
+If the value of
+the reserved variable <code>printlevel</code> (see <a href="sing_313.htm#printlevel">printlevel</a>) is greater
+than 0 then interactive user-input, i.e., the usage of functions like
+<code>pause(&quot;..&quot;)</code> or <code>read(&quot;&quot;);</code> (see <a href="sing_260.htm#read">read</a>), may be requested.
+
+</li><li>
+If the value of
+the reserved variable <code>printlevel</code> (see <a href="sing_313.htm#printlevel">printlevel</a>) is 0
+then interactive user-input, i.e., the usage of functions like
+<code>pause(&quot;..&quot;)</code> or <code>read(&quot;&quot;);</code> (see <a href="sing_260.htm#read">read</a>), may <strong>not</strong> be
+requested. Instead, an error (using the function
+<a href="sing_179.htm#ERROR">ERROR</a>) should be reported together with the recommendation on
+increasing the value of the reserved variable <code>printlevel</code>.
+
+</li><li>
+It is often useful for a procedure to print out comments, either to
+explain results or to display intermediate computations. However,
+if this procedure is called by another procedure, such comments are
+confusing and disturbing in most cases.
+
+<p><small>SINGULAR</small> offers an elegant solution, which requires the usage of
+the <small>SINGULAR</small> function <a href="sing_167.htm#dbprint">dbprint</a> and the reserved variables
+<a href="sing_313.htm#printlevel">printlevel</a>, and <a href="sing_318.htm#voice">voice</a> (<code>voice</code> counts the nesting of
+procedures; It has the value 1 on the top level, 2 inside the first
+procedure etc.; <code>printlevel</code> has the value 0 by default, but can be
+set to any integer value by the user).
+</p>
+<p>For example, if the following procedure <code>Test</code> is called
+directly from the top level then &lsquo;<samp>comment1</samp>&rsquo; is displayed (i.e.,
+printed out) but not
+&lsquo;<samp>comment2</samp>&rsquo;; and nothing is displayed if  <code>Test</code> is called
+from within any other procedure.
+However, if <code>printlevel</code> is set to  a value k with k&gt;0, then
+&lsquo;<samp>comment1</samp>&rsquo; (resp. &lsquo;<samp>comment2</samp>&rsquo;) is displayed provided that
+<code>Test</code> is called from other procedures, with a nesting level up to
+k (resp. k-1).
+</p>
+<p>Note furthermore, that the example part of a procedure
+behaves in this respect like a procedure (i.e., the value of <code>voice</code>
+is 1). Therefore, the command <code>printlevel=1;</code> is necessary for
+&lsquo;<samp>comment1</samp>&rsquo; to be displayed on <code> example Test;</code>. However,
+since printlevel is a global variable, it should be reset to the old
+value at the end of the example part.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc Test
+&quot;USAGE:   ...
+         ...
+EXAMPLE: example Test; shows an example
+&quot;
+{   ...
+   int p = printlevel - voice + 3;
+    ...
+   dbprint(p,&quot;comment1&quot;);
+   dbprint(p-1,&quot;comment2&quot;);
+   // dbprint prints only if p &gt; 0
+    ...
+}
+example
+{ &quot;EXAMPLE:&quot;; echo = 2;
+   int p = printlevel;   //store old value of printlevel
+   printlevel = 1;       //assign new value to printlevel
+    ...
+   Test();
+   printlevel = p;       //reset printlevel to old value
+}
+</pre></td></tr></table>
+
+</li></ol>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_49.htm#Guidelines-for-writing-a-library" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9 Guidelines for writing a library" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_51.htm#Documentation-of-a-library" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.9.2 Documentation of a library" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_49.htm#Guidelines-for-writing-a-library" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.9 Guidelines for writing a library" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

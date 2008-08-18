@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.219 2008-08-14 16:32:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.220 2008-08-18 18:01:46 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -303,6 +303,7 @@ $USER
 $USE_NUMERIC_ENTITY
 $USE_SETFILENAME
 $IGNORE_BEFORE_SETFILENAME
+$COMPLETE_IMAGE_PATHS
 $DATE
 %ACTIVE_ICONS
 %NAVIGATION_TEXT
@@ -517,6 +518,12 @@ $def_argument_separator_delimiters
 @command_handler_process
 @command_handler_finish
 %command_handler
+);
+
+# subject to change
+use vars qw(
+%makeinfo_encoding_to_map
+%makeinfo_eight_bit_map
 );
 
 # needed in this namespace for translations
@@ -823,6 +830,7 @@ sub t2h_cross_manual_normal_text($$$$$)
              }
              else
              { # wild guess that should work for latin1
+               # FIXME to be fixed with unicode to 8bit tables
                   $result .= '_' . '00' . lc(sprintf("%02x",ord($1)));
              }
         }
@@ -968,6 +976,7 @@ my $AUTO_PREFIX;
 my $CHILDLINE;
 my $DEBUG;
 my $DESTDIR;
+my $DVIPS;
 my $ERROR;
 my $EXTERNAL_FILE;
 my $EXTERNAL_IMAGES;
@@ -1740,8 +1749,8 @@ sub cross_manual_line($;$)
 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
 # command-line options and whose values are a hash with the following keys:
-# type    ==> one of !|=i|:i|=s|:s (see GetOpt::Long for more info)
-# linkage ==> ref to scalar, array, or subroutine (see GetOpt::Long for more info)
+# type    ==> one of !|=i|:i|=s|:s (see Getopt::Long for more info)
+# linkage ==> ref to scalar, array, or subroutine (see Getopt::Long for more info)
 # verbose ==> short description of option (displayed by -h)
 # noHelp  ==> if 1 -> for "not so important options": only print description on -h 1
 #                2 -> for obsolete options: only print description on -h 2
@@ -1783,6 +1792,14 @@ $T2H_OPTIONS -> {'dump-texi'} =
  linkage => \$Texi2HTML::Config::DUMP_TEXI,
  verbose => 'dump the output of first pass into a file with extension passfirst and exit',
  noHelp => 1
+};
+
+$T2H_OPTIONS -> {'E'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::MACRO_EXPAND,
+ verbose => 'output macro expanded source in <file>',
+ noHelp => 2
 };
 
 $T2H_OPTIONS -> {'macro-expand'} =
@@ -1857,12 +1874,13 @@ $T2H_OPTIONS -> {'ifplaintext'} =
  verbose => "expand ifplaintext sections",
 };
 
+# actually a noop, since it is not used anywhere
 $T2H_OPTIONS -> {'invisible'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::INVISIBLE_MARK,
  verbose => 'use text in invisble anchor',
- noHelp  => 1,
+ noHelp  => 2,
 };
 
 $T2H_OPTIONS -> {'iso'} =
@@ -2002,6 +2020,14 @@ $T2H_OPTIONS -> {'prefix'} =
  verbose => 'use as prefix for output files, instead of <docname>',
 };
 
+$T2H_OPTIONS -> {'o'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::OUT,
+ verbose => 'output goes to $s (directory if split)',
+ noHelp => 2,
+};
+
 $T2H_OPTIONS -> {'output'} =
 {
  type => '=s',
@@ -2037,6 +2063,15 @@ $T2H_OPTIONS -> {'def-table'} =
  linkage => \$Texi2HTML::Config::DEF_TABLE,
  verbose => 'if set, \@def.. are converted using tables.',
  noHelp  => 1,
+};
+
+# disambiguate verbose and version, like makeinfo does
+$T2H_OPTIONS -> {'v'} =
+{
+ type => '!',
+ linkage=> \$Texi2HTML::Config::VERBOSE,
+ verbose => 'print progress info to stdout',
+ noHelp  => 2,
 };
 
 $T2H_OPTIONS -> {'verbose'} =
@@ -2495,6 +2530,10 @@ $T2H_OPTIONS -> {'help'} =
 $T2H_OBSOLETE_OPTIONS->{'help'} = 0;
 $T2H_OBSOLETE_OPTIONS->{'version'} = 0;
 $T2H_OBSOLETE_OPTIONS->{'verbose'} = 0;
+
+# this is more compatible with makeinfo. But it changes how command lines
+# are parsed, for example -init file.init dodesn't work anymore.
+#Getopt::Long::Configure ("gnu_getopt");
 
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
@@ -3188,35 +3227,35 @@ sub process_css_file ($$)
     my $in_string = 0;
     my $rules = [];
     my $imports = [];
-    while (<$fh>)
+    while (my $line = <$fh>)
     {
-	    #print STDERR "Line: $_";
+	    #print STDERR "Line: $line";
         if ($in_rules)
         {
-            push @$rules, $_;
+            push @$rules, $line;
             next;
         }
         my $text = '';
         while (1)
         { 
 		#sleep 1;
-		#print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $_";
+		#print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $line";
              if ($in_comment)
              {
-                 if (s/^(.*?\*\/)//)
+                 if ($line =~ s/^(.*?\*\/)//)
                  {
                      $text .= $1;
                      $in_comment = 0;
                  }
                  else
                  {
-                     push @$imports, $text . $_;
+                     push @$imports, $text . $line;
                      last;
                  }
              }
-             elsif (!$in_string and s/^\///)
+             elsif (!$in_string and $line =~ s/^\///)
              { # what do '\' do here ?
-                 if (s/^\*//)
+                 if ($line =~ s/^\*//)
                  {
                      $text .= '/*';
                      $in_comment = 1;
@@ -3224,51 +3263,51 @@ sub process_css_file ($$)
                  else
                  {
                      push (@$imports, $text. "\n") if ($text ne '');
-                     push (@$rules, '/' . $_);
+                     push (@$rules, '/' . $line);
                      $in_rules = 1;
                      last;
                  }
              }
-             elsif (!$in_string and $in_import and s/^([\"\'])//)
+             elsif (!$in_string and $in_import and $line =~ s/^([\"\'])//)
              { # strings outside of import start rules
                  $text .= "$1";
                  $in_string = quotemeta("$1");
              }
-             elsif ($in_string and s/^(\\$in_string)//)
+             elsif ($in_string and $line =~ s/^(\\$in_string)//)
              {
                  $text .= $1;
              }
-             elsif ($in_string and s/^($in_string)//)
+             elsif ($in_string and $line =~ s/^($in_string)//)
              {
                  $text .= $1;
                  $in_string = 0;
              }
-             elsif ((! $in_string and !$in_import) and (s/^([\\]?\@import)$// or s/^([\\]?\@import\s+)//))
+             elsif ((! $in_string and !$in_import) and ($line =~ s/^([\\]?\@import)$// or $line =~ s/^([\\]?\@import\s+)//))
              {
                  $text .= $1;
                  $in_import = 1;
              }
-             elsif (!$in_string and $in_import and s/^\;//)
+             elsif (!$in_string and $in_import and $line =~ s/^\;//)
              {
                  $text .= ';';
                  $in_import = 0;
              }
-             elsif (($in_import or $in_string) and s/^(.)//)
+             elsif (($in_import or $in_string) and $line =~ s/^(.)//)
              {
                   $text .= $1;
              }
-             elsif (!$in_import and s/^([^\s])//)
+             elsif (!$in_import and $line =~ s/^([^\s])//)
              { 
                   push (@$imports, $text. "\n") if ($text ne '');
-                  push (@$rules, $1 . $_);
+                  push (@$rules, $1 . $line);
                   $in_rules = 1;
                   last;
              }
-             elsif (s/^(\s)//)
+             elsif ($line =~ s/^(\s)//)
              {
                   $text .= $1;
              }
-             elsif ($_ eq '')
+             elsif ($line eq '')
              {
                   push (@$imports, $text);
                   last;
@@ -3294,13 +3333,13 @@ foreach my $file (@texinfo_htmlxref_files)
          warn "Cannot open html refs config file ${file}: $!";
          next;
     }
-    while (<HTMLXREF>)
+    while (my $hline = <HTMLXREF>)
     {
-        my $line = $_;
-        s/[#]\s.*//;
-        s/^\s*//;
-        next if /^\s*$/;
-        my @htmlxref = split /\s+/;
+        my $line = $hline;
+        $hline =~ s/[#]\s.*//;
+        $hline =~ s/^\s*//;
+        next if $hline =~ /^\s*$/;
+        my @htmlxref = split /\s+/, $hline;
         my $manual = shift @htmlxref;
         my $split_or_mono = shift @htmlxref;
         if (!defined($split_or_mono) or ($split_or_mono ne 'split' and $split_or_mono ne 'mono'))
@@ -3407,32 +3446,33 @@ sub pass_texi()
     initialise_state_texi($state);
     my @stack;
     my $text;
- INPUT_LINE: while (defined($_ = next_line($texi_line_number))) 
+    my $cline;
+ INPUT_LINE: while (defined($cline = next_line($texi_line_number))) 
     {
         #
         # remove the lines preceding \input or an @-command
         # 
         if ($first_lines)
         {
-            if (/^\\input/)
+            if ($cline =~ /^\\input/)
             {
-                push @first_lines, $_;
+                push @first_lines, $cline;
                 $first_lines = 0;
                 next;
             }
-            if (/^\s*\@/)
+            if ($cline =~ /^\s*\@/)
             {
                 $first_lines = 0;
             }
             else
             {
-                push @first_lines, $_;
+                push @first_lines, $cline;
                 next;
             }
         }
-	#print STDERR "PASS_TEXI($texi_line_number->{'line_nr'})$_";
-        my $chomped_line = $_;
-        if (scan_texi ($_, \$text, \@stack, $state, $texi_line_number) and chomp($chomped_line))
+	#print STDERR "PASS_TEXI($texi_line_number->{'line_nr'})$cline";
+        my $chomped_line = $cline;
+        if (scan_texi ($cline, \$text, \@stack, $state, $texi_line_number) and chomp($chomped_line))
         {
         #print STDERR "==> new page (line_nr $texi_line_number->{'line_nr'},$texi_line_number->{'file_name'},$texi_line_number->{'macro'})\n";
             push (@lines_numbers, { 'file_name' => $texi_line_number->{'file_name'},
@@ -3449,15 +3489,15 @@ sub pass_texi()
             #dump_stack(\$text, \@stack, $state);
         }
         next if (@stack);
-        $_ = $text;
+        $cline = $text;
         $text = '';
-        if (!defined($_))
+        if (!defined($cline))
         {# FIXME: remove the error message if it is reported too often
-            print STDERR "# \$_ undefined after scan_texi. This may be a bug, or not.\n";
+            print STDERR "# \$cline undefined after scan_texi. This may be a bug, or not.\n";
             print STDERR "# Report (with texinfo file) if you want, otherwise ignore that message.\n";
             next unless ($state->{'bye'});
         }
-        push @lines, split_lines($_);
+        push @lines, split_lines($cline);
         last if ($state->{'bye'});
     }
     # close stack at the end of pass texi
@@ -3633,32 +3673,32 @@ sub pass_structure()
 
     while (@lines or $state->{'in_deff_line'})
     {
-        $_ = shift @lines;
-        my $chomped_line = $_;
+        my $cline = shift @lines;
+        my $chomped_line = $cline;
         if (@lines and !chomp($chomped_line))
         {
-             $lines[0] = $_ . $lines[0];
+             $lines[0] = $cline . $lines[0];
              next;
         }
         if ($state->{'in_deff_line'})
         { # line stored in $state->{'in_deff_line'} was protected by @
           # and can be concatenated with the next line
-            if (defined($_))
+            if (defined($cline))
             {
-                $_ = $state->{'in_deff_line'} . $_;
+                $cline = $state->{'in_deff_line'} . $cline;
             }
             else
             {# end of line protected at the very end of the file
-                $_ = $state->{'in_deff_line'};
+                $cline = $state->{'in_deff_line'};
             }
             delete $state->{'in_deff_line'};
         }
         $line_nr = shift (@lines_numbers);
-        #print STDERR "PASS_STRUCTURE: $_";
+        #print STDERR "PASS_STRUCTURE: $cline";
         if (!$state->{'raw'} and !$state->{'verb'})
         {
             my $tag = '';
-            if (/^\s*\@(\w+)\b/)
+            if ($cline =~ /^\s*\@(\w+)\b/)
             {
                 $tag = $1;
             }
@@ -3668,7 +3708,7 @@ sub pass_structure()
             #
             if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex')
             {
-                #$_ = substitute_texi_line($_); 
+                #$cline = substitute_texi_line($cline); 
                 if ($tag eq 'node' or defined($sec2level{$tag}))
                 {# in pass structure node shouldn't appear in formats
                     close_stack_texi_structure(\$text, \@stack, $state, $line_nr);
@@ -3689,7 +3729,7 @@ sub pass_structure()
                 {
                     my $node_ref;
                     my $auto_directions;
-                    my @node_res = scan_node_line($_);
+                    my @node_res = scan_node_line($cline);
                     $auto_directions = 1 if (scalar(@node_res) == 1);
                     my ($node, $node_next, $node_prev, $node_up) = @node_res;
                     if (defined($node) and ($node ne ''))
@@ -3756,7 +3796,7 @@ sub pass_structure()
                     }
                     else
                     {
-                        echo_error ("Node is undefined: $_ (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)", $line_nr);
+                        echo_error ("Node is undefined: $cline (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)", $line_nr);
                         next;
                     }
 
@@ -3775,7 +3815,7 @@ sub pass_structure()
                 }
                 elsif (defined($sec2level{$tag}))
                 { # section
-                    if (/^\@$tag\s*(.*)$/)
+                    if ($cline =~ /^\@$tag\s*(.*)$/)
                     {
                         my $name = $1;
                         my $section_ref = new_section_heading($tag, $name, $state);
@@ -3834,7 +3874,7 @@ sub pass_structure()
                         ################# end debug 
                     }
                 }
-                elsif (/^\@printindex\s+(\w+)/)
+                elsif ($cline =~ /^\@printindex\s+(\w+)/)
                 {
                     unless (@all_elements)
                     {
@@ -3852,38 +3892,38 @@ sub pass_structure()
                 }
                 if (exists($state->{'region_lines'}))
                 {
-                    push @{$region_lines{$state->{'region_lines'}->{'format'}}}, $_;
+                    push @{$region_lines{$state->{'region_lines'}->{'format'}}}, $cline;
                     if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
                     {
-                        push @doc_lines, $_;
+                        push @doc_lines, $cline;
                         push @doc_numbers, $line_nr;
                     }
                 }
                 else
                 {
-                    push @doc_lines, $_;
+                    push @doc_lines, $cline;
                     push @doc_numbers, $line_nr;
                 }
                 next;
             }
         }
-        if (scan_structure ($_, \$text, \@stack, $state, $line_nr) and (!exists($state->{'region_lines'}) or $Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}}))
+        if (scan_structure ($cline, \$text, \@stack, $state, $line_nr) and (!exists($state->{'region_lines'}) or $Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}}))
         {
             push (@doc_numbers, $line_nr);
         }
         next if (scalar(@stack) or $state->{'in_deff_line'});
-        $_ = $text;
+        $cline = $text;
         $text = '';
-        next if (!defined($_));
+        next if (!defined($cline));
         if ($state->{'region_lines'})
         {
-            push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines($_) unless ($state->{'region_lines'}->{'first_line'});
+            push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines($cline) unless ($state->{'region_lines'}->{'first_line'});
             delete $state->{'region_lines'}->{'first_line'};
-            push @doc_lines, split_lines($_) if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}});
+            push @doc_lines, split_lines($cline) if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}});
         }
         else
         {
-            push @doc_lines, split_lines($_);
+            push @doc_lines, split_lines($cline);
         }
     }
     if (@stack)
@@ -3942,8 +3982,8 @@ sub do_documentlanguage($$$$)
         {
             $return_value = set_document_language($lang, 0, $silent, $line_nr);
             # warning, this is not the language of the document but the one that
-            # appear in the texinfo. It may be different if $cmd_line_lang 
-            # is set
+            # appear in the texinfo. It could have been different 
+            # if $cmd_line_lang was set and not taken into account in the if
             $Texi2HTML::THISDOC{$macro} = $lang;
         }
     }
@@ -4455,7 +4495,7 @@ sub misc_command_text($$$$$$)
         }
         else
         {
-            echo_error ("Bad \@$macro line: $_", $line_nr);
+            echo_error ("Bad \@$macro line: $line", $line_nr);
         }
     }
     elsif ($macro eq 'indent' or $macro eq 'noindent')
@@ -6197,6 +6237,7 @@ sub enter_index_entry($$$$$$$$)
         if ($T2H_DEBUG & $DEBUG_INDEX);
     if ($key =~ /^\s*$/)
     {
+        # makeinfo doesn't warn, but texi2dvi breaks.
         echo_warn("Empty index entry for \@$command",$line_nr);
         # don't add the index entry to the list of index entries used for index
         # entry formatting,if the index entry appears in a region like copying 
@@ -6415,15 +6456,15 @@ sub pass_text()
     my @text =();
     my @section_lines = ();
     my @head_lines = ();
-    my $one_section = 1 if (@elements_list == 1);
+    my $one_section = 1 if (@elements_list <= 1);
 
     push_state(\%state);
 
-    if (@elements_list == 0)
-    {
-        warn "$WARN empty document\n";
-        exit (0);
-    }
+    #if (@elements_list == 0)
+    #{
+    #    warn "$WARN empty document\n";
+    #    exit (0);
+    #}
 
     set_special_names();
     # We set titlefont only if the titlefont appeared in the top element
@@ -6588,13 +6629,13 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     # avoid messing with information that has to be set in the main document.
     # also the error messages will appear even though the corresponding 
     # texinfo is never used.
-    my ($region_text, $region_no_texi);
-    ($region_text, $region_no_texi) = do_special_region_lines('documentdescription');
-    $documentdescription_text = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi);
+    my ($region_text, $region_no_texi, $region_simple_format);
+    ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('documentdescription');
+    $documentdescription_text = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi, $region_simple_format);
     
     # do copyright notice inserted in comment at the beginning of the files
-    ($region_text, $region_no_texi) = do_special_region_lines('copying');
-    $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'}, $region_text, $region_no_texi);
+    ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('copying');
+    $copying_comment = &$Texi2HTML::Config::copying_comment($region_lines{'copying'}, $region_text, $region_no_texi, $region_simple_format);
 
     $Texi2HTML::THISDOC{'copying_comment'} = $copying_comment;
     # must be after toc_body, but before titlepage
@@ -6605,9 +6646,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         @{$Texi2HTML::THISDOC{'inline_contents'}->{$element_tag}} = @$toc_lines if (defined($toc_lines));
     }
     
-    ($region_text, $region_no_texi) = do_special_region_lines('titlepage');
+    ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('titlepage');
 
-    $titlepage_text = &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi);
+    $titlepage_text = &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi, $region_simple_format);
 
     &$Texi2HTML::Config::init_out();
     $to_encoding = $Texi2HTML::Config::OUT_ENCODING;
@@ -6642,26 +6683,28 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     my $line_nr;
     my $first_section = 0; # 1 if it is the first section of a page
     my $previous_is_top = 0; # 1 if it is the element following the top element
+
+    my $cline;
     while (@doc_lines)
     {
         unless ($index_pages)
         { # not in a index split over sections
-            $_ = shift @doc_lines;
-            my $chomped_line = $_;
+            $cline = shift @doc_lines;
+            my $chomped_line = $cline;
             if (!chomp($chomped_line) and @doc_lines)
             { # if the line has no end of line it is concatenated with the next
-                 $doc_lines[0] = $_ . $doc_lines[0];
+                 $doc_lines[0] = $cline . $doc_lines[0];
                  next;
             }
             $line_nr = shift (@doc_numbers);
-            #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $_" if ($line_nr);
+            #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
         }
-	#print STDERR "PASS_TEXT: $_";
+	#print STDERR "PASS_TEXT: $cline";
 	#dump_stack(\$text, \@stack, \%state);
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
-            $tag = $1 if (/^\@(\w+)/ and !$index_pages);
+            $tag = $1 if ($cline =~ /^\@(\w+)/ and !$index_pages);
             if ($tag eq 'setfilename' and $Texi2HTML::Config::IGNORE_BEFORE_SETFILENAME)
             {
                 @section_lines = ();
@@ -6696,7 +6739,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     {
                         print STDERR 'SECTION ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     }
-                    print STDERR ": $_" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    print STDERR ": $cline" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     ########################## end debug section
 
                     # The element begins a new section if there is no previous
@@ -6715,7 +6758,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     if (!$current_element->{'node'} and !$current_element->{'index_page'} and ($section_element ne $current_element))
                     {
                          print STDERR "NODE: $element->{'texi'}\n" if ($element->{'node'});
-                         warn "elements_list and all_elements not in sync (elements $section_element->{'texi'}, all $current_element->{'texi'}): $_";
+                         warn "elements_list and all_elements not in sync (elements $section_element->{'texi'}, all $current_element->{'texi'}): $cline";
                     }
                     ########################### end debug
                 }
@@ -6847,7 +6890,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                     print STDERR "." if ($T2H_VERBOSE);
                     print STDERR "\n" if ($T2H_DEBUG);
                 }
-                my $label = &$Texi2HTML::Config::element_label($current_element->{'id'}, $current_element, $tag, $_);
+                my $label = &$Texi2HTML::Config::element_label($current_element->{'id'}, $current_element, $tag, $cline);
                 if (@section_lines)
                 {
                     push (@section_lines, $label);
@@ -6878,7 +6921,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 {
                     &$Texi2HTML::Config::print_element_header($FH, $first_section, $previous_is_top) if (!$one_section and !$current_element->{'top'});
                     #&$Texi2HTML::Config::print_element_header($FH, $first_section, $previous_is_top) if (!$one_section);
-                    my $line = $_;
+                    my $line = $cline;
                     $line =~ s/\@$tag\s*//;
                     my $heading_formatted = &$Texi2HTML::Config::heading($current_element, $tag, $line, substitute_line($line), undef, $one_section);
                     push @section_lines, $heading_formatted if (defined($heading_formatted) and ($heading_formatted ne ''));
@@ -6887,7 +6930,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
             }
             elsif ($tag eq 'printindex')
             {
-                s/\s+(\w+)\s*//;
+                $cline =~ s/\s+(\w+)\s*//;
                 my $name = $1;
                 close_paragraph(\$text, \@stack, \%state);
                 if (!$index_names{$name} or $empty_indices{$name})
@@ -6932,8 +6975,8 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
                 next unless (exists($Texi2HTML::Config::misc_command{$tag}) and $Texi2HTML::Config::misc_command{$tag}->{'keep'});
             }
         }
-        scan_line($_, \$text, \@stack, \%state, $line_nr);
-	#print STDERR "after scan_line: $_";
+        scan_line($cline, \$text, \@stack, \%state, $line_nr);
+	#print STDERR "after scan_line: $cline";
 	#dump_stack(\$text, \@stack, \%state);
         next if (@stack);
         if ($text ne '' )
@@ -6956,6 +6999,12 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     # if no sections, then simply print document as is
     if ($one_section)
     {
+        # may happen if there are 0 sections
+        if (! defined($FH))
+        {
+          $FH = open_out("$docu_rdir$docu_doc");
+          &$Texi2HTML::Config::print_page_head($FH);
+        }
         if (@foot_lines)
         {
             &$Texi2HTML::Config::foot_section (\@foot_lines);
@@ -7191,7 +7240,7 @@ sub do_node_files()
         $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
         if (!$redirection_file)
         {
-             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless ($novalidate);
+             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless ($novalidate or !$node->{'seen'});
              next;
         }
         next if ($redirection_file eq $node->{'node_file'});
@@ -7379,11 +7428,17 @@ sub dump_texi($$;$$)
     {
         my $number_information = '';
         my $chomped_line = $line;
+        # if defined, it means that an output of the file is asked for
         if (defined($numbers))
         {
            my $basefile = $numbers->[$index]->{'file_name'};
+           $basefile = 'no file' if (!defined($basefile));
            $basefile =~ s|.*/||;
-           $number_information = "${basefile}($numbers->[$index]->{'macro'},$numbers->[$index]->{'line_nr'}) ";
+           my $macro_name = $numbers->[$index]->{'macro'};
+           $macro_name = '' if (!defined($macro_name));
+           my $line_number = $numbers->[$index]->{'line_nr'};
+           $line_number = '' if (!defined($line_number));
+           $number_information = "${basefile}($macro_name,$line_number) ";
         }
         print DMPTEXI "${number_information}$line";
         $index++ if (chomp($chomped_line));
@@ -7403,11 +7458,22 @@ sub next_tag($)
     return '';
 }
 
-sub top_stack($)
+sub top_stack($;$)
 {
     my $stack = shift;
-    return undef unless(@$stack);
-    return $stack->[-1];
+    my $ignore_para = shift;
+
+    my $index = scalar (@$stack);
+    return undef unless ($index);
+
+    return $stack->[-1] unless ($ignore_para);
+    while ($index and exists($stack->[$index-1]->{'format'})
+      and ($stack->[$index-1]->{'format'} eq 'paragraph' or $stack->[$index-1]->{'format'} eq 'preformatted'))
+    {
+       $index--;
+    }
+    return undef unless ($index);
+    return $stack->[$index-1];
 }
 
 # return the next element with balanced {}
@@ -7602,10 +7668,18 @@ sub get_format_command($)
         $format->{'stack_at_beginning'});
 }
 
-sub do_paragraph($$)
+sub do_paragraph($$;$)
 {
     my $text = shift;
     my $state = shift;
+    my $stack = shift;
+
+    if (!defined ($state->{'paragraph_context'}))
+    {
+        echo_error ("paragraph_context undef");
+        dump_stack (undef, $stack, $state);
+    }
+
     my ($format, $paragraph_command, $paragraph_number, $term, $item_nr, 
         $enumerate_type, $number,$stack_at_beginning) 
          = get_format_command ($state->{'paragraph_context'});
@@ -7641,10 +7715,18 @@ sub do_paragraph($$)
     return &$Texi2HTML::Config::paragraph($text, $align, $indent_style, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $item_nr, $enumerate_type, $number,$state->{'command_stack'},$stack_at_beginning);
 }
 
-sub do_preformatted($$)
+sub do_preformatted($$;$)
 {
     my $text = shift;
     my $state = shift;
+    my $stack = shift;
+
+    if (!defined ($state->{'preformatted_context'}))
+    {
+        echo_error ("preformatted_context undef");
+        dump_stack (undef, $stack, $state);
+    }
+
     my ($format, $leading_command, $preformatted_number, $term, $item_nr, 
         $enumerate_type, $number,$stack_at_beginning) 
         = get_format_command($state->{'preformatted_context'});
@@ -7908,7 +7990,7 @@ sub do_special_region_lines($;$)
         print STDERR " in $state->{'region'}, outside document\n" if ($T2H_DEBUG);
     }
 
-    return ('','') unless @{$region_lines{$region}};
+    return ('','','') unless @{$region_lines{$region}};
     my $new_state = duplicate_formatting_state($state);
     foreach my $key (keys(%{$region_initial_state{$region}}))
     {
@@ -7926,14 +8008,23 @@ sub do_special_region_lines($;$)
     }
     my $removed_texi = substitute_text($remove_texi_state, undef, @{$region_lines{$region}});
     $region_initial_state{$region}->{'region_pass'}++;
-    return ($text, $removed_texi);
+
+    my $simple_format_state = duplicate_formatting_state($state);
+    foreach my $key (keys(%{$region_initial_state{$region}}))
+    {
+        $simple_format_state->{$key} = $region_initial_state{$region}->{$key};
+    }
+    my $simple_format = simple_format($simple_format_state, undef, @{$region_lines{$region}});
+    $region_initial_state{$region}->{'region_pass'}++;
+
+    return ($text, $removed_texi, $simple_format);
 }
 
 sub do_insertcopying($)
 {
     my $state = shift;
-    my ($text, $comment) = do_special_region_lines('copying', $state);
-    return &$Texi2HTML::Config::insertcopying($text);
+    my ($text, $comment, $simple_formatted) = do_special_region_lines('copying', $state);
+    return &$Texi2HTML::Config::insertcopying($text, $comment, $simple_formatted);
 }
 
 sub get_deff_index($$$)
@@ -8428,10 +8519,8 @@ sub begin_format($$$$$$)
 
     $line = &$Texi2HTML::Config::begin_format_texi($macro, $line, $state);
 
-    unless ($Texi2HTML::Config::format_in_paragraph{$macro})
-    {
-        close_paragraph($text, $stack, $state, $line_nr);
-    }
+    close_paragraph($text, $stack, $state, $line_nr);
+
     if ($format_type{$macro} eq 'menu')
     {
         close_menu($text, $stack, $state, $line_nr);
@@ -8493,7 +8582,7 @@ sub begin_format($$$$$$)
 #        $state->{'deff_line'}->{'type'} = substitute_line($type, undef, $line_nr) if (defined($type));
 #        $state->{'deff_line'}->{'class'} = substitute_line($class, undef, $line_nr) if (defined($class));
 #        # the remaining of the line (the argument)
-#        #print STDERR "DEFF: open_cmd_line do_def_line $_";
+#        #print STDERR "DEFF: open_cmd_line do_def_line $line";
 #        # it is now parsed in $args_array
 #        open_cmd_line($stack, $state, ['keep'], \&do_def_line);
 #
@@ -8560,10 +8649,8 @@ sub begin_format($$$$$$)
         $class = $complex_format->{'class'} if (defined($complex_format->{'class'}));
         push @{$state->{'preformatted_stack'}}, {'pre_style' =>$complex_format->{'pre_style'}, 'class' => $class };
         push @$stack, $format;
-        unless ($Texi2HTML::Config::format_in_paragraph{$macro})
-        {
-            begin_paragraph($stack, $state);
-        }
+
+        begin_paragraph($stack, $state);
     }
     elsif ($Texi2HTML::Config::paragraph_style{$macro})
     {
@@ -9008,7 +9095,7 @@ sub do_xref($$$$)
                 # the 2 file will be the same thus there won't be the file name
                 $file = $element->{'file'} unless ($Texi2HTML::Config::SPLIT);
             }
-	    #print STDERR "SUBHREF in ref to node `$node_texi': $_";
+	    #print STDERR "SUBHREF in ref to node `$node_texi'";
             my $href = href($element, $file, $line_nr);
             my $section_or_cross_ref = $section;
             $section_or_cross_ref = $cross_ref if ($section eq '');
@@ -9607,8 +9694,6 @@ sub simple_format($$@)
     }
     $state->{'remove_texi'} = 1;
     $state->{'simple_format'} = 1;
-    # WARNING currently it is only used for lines. It may change in the future.
-    $state->{'no_paragraph'} = 1;
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_format_simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::simple_format_style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::simple_format_texi_map;
@@ -9649,12 +9734,12 @@ sub scan_texi($$$$;$)
     my $line_nr = shift;
     
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
-    local $_ = $line;
+    my $cline = $line;
 
     while(1)
     {
         # scan_texi
-        #print STDERR "WHILE:$_";
+        #print STDERR "WHILE:$cline";
         #print STDERR "ARG_EXPANSION: $state->{'arg_expansion'}\n" if ($state->{'arg_expansion'});
         #dump_stack($text, $stack, $state);
         #print STDERR "ifvalue_inside $state->{'ifvalue_inside'}\n";
@@ -9671,24 +9756,24 @@ sub scan_texi($$$$;$)
         # in macro definition
         if ($state->{'macro_inside'})
         {
-            if (s/^([^\\\@]*\\)//)
+            if ($cline =~ s/^([^\\\@]*\\)//)
             {# protected character or @end macro
                  $state->{'macro'}->{'body'} .= $1 unless ($state->{'ignored'});
-                 if (s/^\\//)
+                 if ($cline =~ s/^\\//)
                  {
                       $state->{'macro'}->{'body'} .= '\\' unless ($state->{'ignored'});
                       next;
                  }
                  # I believe it is correct, although makeinfo don't do that.
-                 elsif (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s)//o
-                      or s/^(\@r?macro\s+\w+\s*.*)//o) 
+                 elsif ($cline =~ s/^(\@end\sr?macro)$//o or $cline =~ s/^(\@end\sr?macro\s)//o
+                      or $cline =~ s/^(\@r?macro\s+\w+\s*.*)//o) 
                  {
                       $state->{'macro'}->{'body'} .= $1 unless ($state->{'ignored'});
                       next;
                  }
             }
-            #if (s/^(.*?)\@end\sr?macro$//o or s/^(.*?)\@end\sr?macro\s+//o)
-            if (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s+)//o)
+            #if ($cline =~ s/^(.*?)\@end\sr?macro$//o or $cline =~ s/^(.*?)\@end\sr?macro\s+//o)
+            if ($cline =~ s/^(\@end\sr?macro)$//o or $cline =~ s/^(\@end\sr?macro\s+)//o)
             {
                  $state->{'macro_inside'}--;
                  next if ($state->{'ignored'});
@@ -9701,37 +9786,37 @@ sub scan_texi($$$$;$)
                  print STDERR "# end macro def. Body:\n$state->{'macro'}->{'body'}"
                      if ($T2H_DEBUG & $DEBUG_MACROS);
                  delete $state->{'macro'};
-                 return if (/^\s*$/);
+                 return if ($cline =~ /^\s*$/);
                  next;
             }
-            elsif(/^(\@r?macro\s+\w+\s*.*)/)
+            elsif($cline =~ /^(\@r?macro\s+\w+\s*.*)/)
             {
-                 $state->{'macro'}->{'body'} .= $_ unless ($state->{'ignored'});
+                 $state->{'macro'}->{'body'} .= $cline unless ($state->{'ignored'});
                  $state->{'macro_inside'}++;
                  return;
             }
-            elsif (s/^\@(.)//)
+            elsif ($cline =~ s/^\@(.)//)
             {
                  $state->{'macro'}->{'body'} .= '@' . $1 unless ($state->{'ignored'});
                  next;
             }
-            elsif (s/^\@//)
+            elsif ($cline =~ s/^\@//)
             {
                  $state->{'macro'}->{'body'} .= '@' unless ($state->{'ignored'});
                  next;
             }
             else
             {
-                 s/([^\@\\]*)//;
+                 $cline =~ s/([^\@\\]*)//;
                  if ($state->{'ignored'})
                  {
-                     return if (/^$/);
+                     return if ($cline =~ /^$/);
                      next;
                  }
                  $state->{'macro'}->{'body'} .= $1 if (defined($1));
-                 if (/^$/)
+                 if ($cline =~ /^$/)
                  {
-                      $state->{'macro'}->{'body'} .= $_;
+                      $state->{'macro'}->{'body'} .= $cline;
                       return;
                  }
                  next;
@@ -9749,16 +9834,16 @@ sub scan_texi($$$$;$)
             $special_chars .= quotemeta(',') if ($multi_args);
             if ($state->{'macro_args'}->[-1] eq '')
             {# remove space at the very beginning
-                s/^\s*//o;
+                $cline =~ s/^\s*//o;
             }
-            if (s/^([^$special_chars]*)([$special_chars])//)
+            if ($cline =~ s/^([^$special_chars]*)([$special_chars])//)
             {
                 $state->{'macro_args'}->[-1] .= $1 if defined($1);
                 # \ protects any character in macro arguments
                 if ($2 eq '\\')
                 {
                     print STDERR "# macro call: protected char\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-                    if (s/^(.)//)
+                    if ($cline =~ s/^(.)//)
                     {
                         $state->{'macro_args'}->[-1] .= $1;
                     }
@@ -9776,7 +9861,7 @@ sub scan_texi($$$$;$)
                     else
                     { # separate args
                         print STDERR "# macro call: new arg\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-                        s/^\s*//o;
+                        $cline =~ s/^\s*//o;
                         push @{$state->{'macro_args'}}, '';
                     }
                 }
@@ -9786,7 +9871,7 @@ sub scan_texi($$$$;$)
                     if ($state->{'macro_depth'} == 0)
                     { 
                         print STDERR "# expanding macro $state->{'macro_name'}\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-                        $_ = expand_macro($state->{'macro_name'}, $state->{'macro_args'}, $_, $line_nr, $state);
+                        $cline = expand_macro($state->{'macro_name'}, $state->{'macro_args'}, $cline, $line_nr, $state);
                         delete $state->{'macro_name'};
                         delete $state->{'macro_depth'};
                         delete $state->{'macro_args'};
@@ -9807,7 +9892,7 @@ sub scan_texi($$$$;$)
                 next;
             }
             print STDERR "# macro call: end of line\n" if ($T2H_DEBUG & $DEBUG_MACROS);
-            $state->{'macro_args'}->[-1] .= $_;
+            $state->{'macro_args'}->[-1] .= $cline;
             return;
         }
         # in a raw format, verbatim, tex or html
@@ -9819,15 +9904,15 @@ sub scan_texi($$$$;$)
             if (! @$stack or ($stack->[-1]->{'style'} ne $tag))
             {
                 print STDERR "Bug: raw or special: $tag but not on top of stack\n";
-                print STDERR "line: $_";
+                print STDERR "line: $cline";
                 dump_stack($text, $stack, $state);
                 exit 1;
             }
 	    
             # macro_regexp
-            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
+            if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
             {
-                s/^(.*?)(\@end\s$tag)//;
+                $cline =~ s/^(.*?)(\@end\s$tag)//;
             # we add it even if 'ignored', it'll be discarded when there is
             # the @end
                 add_prev ($text, $stack, $1);
@@ -9847,7 +9932,7 @@ sub scan_texi($$$$;$)
             else
             {# we add it even if 'ignored', it'll be discarded when there is 
              # the @end
-                 add_prev ($text, $stack, $_);
+                 add_prev ($text, $stack, $cline);
                  last;
             }
         }
@@ -9858,7 +9943,7 @@ sub scan_texi($$$$;$)
             #dump_stack($text, $stack, $state);
             my $char = quotemeta($state->{'verb'});
             #print STDERR "VERB $char\n";
-            if (s/^(.*?)$char\}/\}/)
+            if ($cline =~ s/^(.*?)$char\}/\}/)
             {# we add it even if 'ignored', it'll be discarded when closing
                  add_prev($text, $stack, $1 . $state->{'verb'});
                  $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
@@ -9867,7 +9952,7 @@ sub scan_texi($$$$;$)
             }
             else
             {# we add it even if 'ignored', it'll be discarded when closing
-                 add_prev($text, $stack, $_);
+                 add_prev($text, $stack, $cline);
                  last;
             }
         }
@@ -9875,11 +9960,11 @@ sub scan_texi($$$$;$)
         if ($state->{'ignored'})
         {
             #print STDERR "IGNORED(ifvalue($state->{'ifvalue_inside'})): $state->{'ignored'}\n";
-            if (/^.*?\@end(\s+)([a-zA-Z]\w+)/)
+            if ($cline =~ /^.*?\@end(\s+)([a-zA-Z]\w+)/)
             {
                 if ($2 eq $state->{'ignored'})
                 {
-                    s/^(.*?\@end)(\s+)([a-zA-Z]\w+)//; 
+                    $cline =~ s/^(.*?\@end)(\s+)([a-zA-Z]\w+)//; 
                     my $end_ignore = $1.$2.$3;
                     if (($state->{'ifvalue_inside'}) and $state->{'ignored'} eq $state->{'ifvalue'})
                     {
@@ -9901,11 +9986,11 @@ sub scan_texi($$$$;$)
                         add_prev ($text, $stack, $end_ignore);
                         next;
                     }
-                    return if /^\s*$/o;
+                    return if ($cline =~ /^\s*$/o);
                     next;
                 }
             }
-            add_prev ($text, $stack, $_) if ($state->{'arg_expansion'});
+            add_prev ($text, $stack, $cline) if ($state->{'arg_expansion'});
             # we could theoretically continue for ignored commands other
             # than ifset or ifclear, however it isn't usefull.
             return unless ($state->{'ifvalue_inside'} and ($state->{'ignored'} eq $state->{'ifvalue'}));
@@ -9914,7 +9999,7 @@ sub scan_texi($$$$;$)
 	
         # an @end tag
         # macro_regexp
-        if (s/^([^{}@]*)\@end(\s+)([a-zA-Z][\w-]*)//)
+        if ($cline =~ s/^([^{}@]*)\@end(\s+)([a-zA-Z][\w-]*)//)
         {
             my $leading_text = $1;
             my $space = $2;
@@ -9937,7 +10022,7 @@ sub scan_texi($$$$;$)
                 {
                     #print STDERR "End $end_tag\n";
                     #dump_stack($text, $stack, $state);
-                    return if (/^\s*$/);
+                    return if ($cline =~ /^\s*$/);
                 }
             }
             elsif ($Texi2HTML::Config::texi_formats_map{$end_tag})
@@ -9951,7 +10036,7 @@ sub scan_texi($$$$;$)
             next;
         }
         # macro_regexp
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {# ARG_EXPANSION
             add_prev($text, $stack, $1) unless $state->{'ignored'};
             my $macro = $2;
@@ -9968,7 +10053,7 @@ sub scan_texi($$$$;$)
                  !$Texi2HTML::Config::misc_command{$macro}->{'texi'})
             {# ARG_EXPANSION
                  my $line;
-                 ($_, $line) = misc_command_texi($_, $macro, $state, 
+                 ($cline, $line) = misc_command_texi($cline, $macro, $state, 
                        $line_nr);
                  add_prev ($text, $stack, "\@$macro" . $line) unless $state->{'ignored'}; 
             }
@@ -9983,7 +10068,7 @@ sub scan_texi($$$$;$)
             elsif ($macro =~ /^r?macro$/)
             { #FIXME what to do if 'arg_expansion' is true (ie within another
               # macro call arguments?
-                if (/^\s+(\w[\w-]*)\s*(.*)/)
+                if ($cline =~ /^\s+(\w[\w-]*)\s*(.*)/)
                 {
                     my $name = $1;
                     unless ($state->{'ignored'})
@@ -10022,7 +10107,7 @@ sub scan_texi($$$$;$)
                 }
                 else
                 {# it means we have a macro without a name
-                    echo_error ("Macro definition without macro name $_", $line_nr)
+                    echo_error ("Macro definition without macro name $cline", $line_nr)
                         unless ($state->{'ignored'});
                 }
                 return;
@@ -10030,7 +10115,7 @@ sub scan_texi($$$$;$)
             elsif (defined($Texi2HTML::Config::texi_formats_map{$macro}))
             {
                 my $tag;
-                ($_, $tag) = do_text_macro($macro, $_, $state, $stack, $line_nr); 
+                ($cline, $tag) = do_text_macro($macro, $cline, $state, $stack, $line_nr); 
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later, unless we are in an 'ignored'.
                 # if in 'arg_expansion' we keep everything.
@@ -10042,7 +10127,7 @@ sub scan_texi($$$$;$)
                 }
                 #dump_stack ($text, $stack, $state);
                 next if $macro_kept;
-                return if (/^\s*$/);
+                return if ($cline =~ /^\s*$/);
             }
             elsif ($macro eq 'definfoenclose')
             {
@@ -10053,11 +10138,11 @@ sub scan_texi($$$$;$)
                 # texinfo @-commands like @i. It is what we do here.
                 if ($state->{'arg_expansion'})
                 {
-                    add_prev($text, $stack, "\@$macro" . $_);
+                    add_prev($text, $stack, "\@$macro" . $cline);
                     return;
                 }
                 return if ($state->{'ignored'});
-                if (s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
+                if ($cline =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
                 {
                     $info_enclose{$1} = [ $2, $3 ];
                 }
@@ -10065,19 +10150,19 @@ sub scan_texi($$$$;$)
                 {
                     echo_error("Bad \@$macro", $line_nr);
                 }
-                return if (/^\s*$/);
-                s/^\s*//;
+                return if ($cline =~ /^\s*$/);
+                $cline =~ s/^\s*//;
             }
             elsif ($macro eq 'include')
             {
                 if ($state->{'arg_expansion'})
                 {
-                    add_prev($text, $stack, "\@$macro" . $_);
+                    add_prev($text, $stack, "\@$macro" . $cline);
                     return;
                 }
                 return if ($state->{'ignored'});
                 #if (s/^\s+([\/\w.+-]+)//o)
-                if (s/^(\s+)(.*)//o)
+                if ($cline =~ s/^(\s+)(.*)//o)
                 {
                     my $file_name = $2;
                     $file_name =~ s/\s*$//;
@@ -10094,14 +10179,14 @@ sub scan_texi($$$$;$)
                 }
                 else
                 {
-                    echo_error ("Bad include line: $_", $line_nr);
+                    echo_error ("Bad include line: $cline", $line_nr);
                     return;
                 } 
                 return;
             }
             elsif ($macro eq 'value')
             {
-                if (s/^{($VARRE)}//)
+                if ($cline =~ s/^{($VARRE)}//)
                 {
                     my $value = $1;
                     if ($state->{'arg_expansion'})
@@ -10112,7 +10197,7 @@ sub scan_texi($$$$;$)
                     next if ($state->{'ignored'});
                     my $expansion = "No value for $value";
                     $expansion = $value{$value} if (defined($value{$value}));
-                    $_ = $expansion . $_;
+                    $cline = $expansion . $cline;
                 }
                 else
                 {
@@ -10129,18 +10214,18 @@ sub scan_texi($$$$;$)
             { #FIXME with 'arg_expansion' should it be passed unmodified ?
                 if ($state->{'ignored'})
                 {
-                    s/^\s+(\w+)//;
+                    $cline =~ s/^\s+(\w+)//;
                 }
                 else
                 {
-                    delete $macros->{$1} if (s/^\s+(\w+)//);
+                    delete $macros->{$1} if ($cline =~ s/^\s+(\w+)//);
                 }
-                return if (/^\s*$/);
-                s/^\s*//;
+                return if ($cline =~ /^\s*$/);
+                $cline =~ s/^\s*//;
             }
             elsif ($macro eq 'alias')
             { # FIXME what to do with 'arg_expansion' ?
-                if (s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//)
+                if ($cline =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//)
                 {
                     if ($state->{'arg_expansion'})
                     {
@@ -10167,7 +10252,7 @@ sub scan_texi($$$$;$)
 
                 my $ref = $macros->{$macro}->{'args'};
                 # we remove any space/new line before the argument
-                if (s/^\s*{\s*//)
+                if ($cline =~ s/^\s*{\s*//)
                 { # the macro has args
                     $state->{'macro_args'} = [ "" ];
                     $state->{'macro_name'} = $macro;
@@ -10175,17 +10260,17 @@ sub scan_texi($$$$;$)
                 }
                 elsif (($#$ref >= 1) or ($#$ref <0))
                 { # no brace -> no arg
-                    $_ = expand_macro ($macro, [], $_, $line_nr, $state);
+                    $cline = expand_macro ($macro, [], $cline, $line_nr, $state);
                     return;
                 }
                 else
                 { # macro with one arg on the line
-                    chomp $_;
-                    $_ = expand_macro ($macro, [$_], "\n", $line_nr, $state);
+                    chomp $cline;
+                    $cline = expand_macro ($macro, [$cline], "\n", $line_nr, $state);
                     return;
                 }
             }
-            elsif (s/^{//)
+            elsif ($cline =~ s/^{//)
             {# we add nested commands in a stack. verb is also on the stack
              # but handled specifically.
              # we add it the comands even in 'ignored' as their result is 
@@ -10193,14 +10278,14 @@ sub scan_texi($$$$;$)
              # iclear is closed.
                 if ($macro eq 'verb')
                 {
-                    if (/^$/)
+                    if ($cline =~ /^$/)
                     {
                         echo_error ("without associated character", $line_nr);
                         #warn "$ERROR verb at end of line";
                     }
                     else
                     {
-                        s/^(.)//;
+                        $cline =~ s/^(.)//;
                         $state->{'verb'} = $1;
                     }
                 }
@@ -10208,20 +10293,20 @@ sub scan_texi($$$$;$)
             }
             else
             {
-                $_ = do_unknown(0, $macro, $_, $text, $stack, $state, $line_nr);
+                $cline = do_unknown(0, $macro, $cline, $text, $stack, $state, $line_nr);
             }
             next;
         }
         #elsif(s/^([^{}@]*)\@(.)//o)
-        elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
+        elsif($cline =~ s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
         {# ARG_EXPANSION
             # No need to warn here for @ followed by a character that
             # is not in any @-command and it is done later
             add_prev($text, $stack, $1) unless($state->{'ignored'});
-            $_ = do_unknown(0, $2, $_, $text, $stack, $state, $line_nr);
+            $cline = do_unknown(0, $2, $cline, $text, $stack, $state, $line_nr);
             next;
         }
-        elsif (s/^([^{}]*)([{}])//o)
+        elsif ($cline =~ s/^([^{}]*)([{}])//o)
         {
          # in ignored section we cannot be sure that there is an @-command
          # already opened so we must discard the text.
@@ -10263,7 +10348,7 @@ sub scan_texi($$$$;$)
                         next;
                     }
                     add_prev ($text, $stack, $result);
-                    #print STDERR "MACRO end $style->{'style'} remaining: $_";
+                    #print STDERR "MACRO end $style->{'style'} remaining: $cline";
                     next;
                 }
                 else
@@ -10275,8 +10360,8 @@ sub scan_texi($$$$;$)
         }
         else
         {# ARG_EXPANSION
-            #print STDERR "END_LINE $_";
-            add_prev($text, $stack, $_) unless($state->{'ignored'});
+            #print STDERR "END_LINE $cline";
+            add_prev($text, $stack, $cline) unless($state->{'ignored'});
             last;
         }
     }
@@ -10356,22 +10441,22 @@ sub scan_structure($$$$;$)
     my $line_nr = shift;
 
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
-    local $_ = $line;
+    my $cline = $line;
     #print STDERR "SCAN_STRUCTURE: $line";
     #dump_stack ($text, $stack, $state); 
     if (!$state->{'raw'} and (!exists($state->{'region_lines'})))
     { 
-        if (!$state->{'verb'} and $state->{'menu'} and /^\*/o)
+        if (!$state->{'verb'} and $state->{'menu'} and $cline =~ /^\*/o)
         {
         # new menu entry
             delete ($state->{'after_element'});
-            my $menu_line = $_;
+            my $menu_line = $cline;
             my $node;
-            if (/^\*\s+($NODERE)::/)
+            if ($cline =~ /^\*\s+($NODERE)::/)
             {
                 $node = $1;
             }
-            elsif (/^\*\s+([^:]+):\s*([^\t,\.\n]+)[\t,\.\n]/)
+            elsif ($cline =~ /^\*\s+([^:]+):\s*([^\t,\.\n]+)[\t,\.\n]/)
             {
                 #$name = $1;
                 $node = $2;
@@ -10381,7 +10466,7 @@ sub scan_structure($$$$;$)
                 menu_entry_texi(normalise_node($node), $state, $line_nr);
             }
         }
-        unless (no_line($_))
+        unless (no_line($cline))
         {
             delete $state->{'after_element'};
         }
@@ -10390,7 +10475,7 @@ sub scan_structure($$$$;$)
     while(1)
     {
         # scan structure
-	#print STDERR "WHILE (s):$_";
+	#print STDERR "WHILE (s):$cline";
 	#dump_stack($text, $stack, $state);
 
         # as texinfo 4.5
@@ -10425,15 +10510,15 @@ sub scan_structure($$$$;$)
             if (! @$stack or ($stack->[-1]->{'style'} ne $tag))
             {
                 print STDERR "Bug: raw or special: $tag but not on top of stack\n";
-                print STDERR "line: $_";
+                print STDERR "line: $cline";
                 dump_stack($text, $stack, $state);
                 exit 1;
             }
             ################# end debug 
             # macro_regexp
-            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
+            if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
             {
-                s/^(.*?)\@end\s$tag//;
+                $cline =~ s/^(.*?)\@end\s$tag//;
                 add_prev ($text, $stack, $1);
                 delete $state->{'raw'};
                 my $style = pop @$stack;
@@ -10449,7 +10534,7 @@ sub scan_structure($$$$;$)
                 {
                     add_prev ($text, $stack, $style->{'text'} . "\@end $tag");
                 }
-                unless (no_line($_))
+                unless (no_line($cline))
                 {
                     delete ($state->{'after_element'});
                 }
@@ -10457,7 +10542,7 @@ sub scan_structure($$$$;$)
             }
             else
             {
-                add_prev ($text, $stack, $_);
+                add_prev ($text, $stack, $cline);
                 return if (defined($Texi2HTML::Config::command_handler{$tag})); 
                 last;
             }
@@ -10466,7 +10551,7 @@ sub scan_structure($$$$;$)
         if (defined($state->{'verb'}))
         {
             my $char = quotemeta($state->{'verb'});
-            if (s/^(.*?)$char\}/\}/)
+            if ($cline =~ s/^(.*?)$char\}/\}/)
             {
                 add_prev($text, $stack, $1 . $state->{'verb'});
                 $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
@@ -10475,17 +10560,17 @@ sub scan_structure($$$$;$)
             }
             else
             {
-                add_prev($text, $stack, $_);
+                add_prev($text, $stack, $cline);
                 last;
             }
         }
 	
-        unless (no_line($_))
+        unless (no_line($cline))
         {
             delete $state->{'after_element'};
         }
         # macro_regexp
-        if (s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
+        if ($cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             add_prev($text, $stack, $1);
             my $end_tag = $2;
@@ -10517,7 +10602,7 @@ sub scan_structure($$$$;$)
                 {
 			#print STDERR "End $end_tag\n";
 			#dump_stack($text, $stack, $state);
-                    return if (/^\s*$/);
+                    return if ($cline =~ /^\s*$/);
                 }
                 $state->{'menu'}-- if ($end_tag eq 'menu');
             }
@@ -10542,9 +10627,9 @@ sub scan_structure($$$$;$)
             }
             next;
         }
-        #elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
+        #elsif ($cline =~ s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -10553,20 +10638,20 @@ sub scan_structure($$$$;$)
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
                  my $line;
-                 ($_, $line) = misc_command_structure($_, $macro, $state, 
+                 ($cline, $line) = misc_command_structure($cline, $macro, $state, 
                        $line_nr);
                  add_prev ($text, $stack, "\@$macro".$line); 
                  next;
             }
             elsif ($macro eq 'detailmenu')
             {
-                add_prev ($text, $stack, "\@$macro" .  $_);
+                add_prev ($text, $stack, "\@$macro" .  $cline);
                 $state->{'detailmenu'}++;
                 last;
             }
             elsif ($sec2level{$macro})
             {
-                if (/^\s*(.*)$/)
+                if ($cline =~ /^\s*(.*)$/)
                 {
                     my $name = $1;
                     my $heading_ref = new_section_heading($macro, $name, $state);
@@ -10596,18 +10681,18 @@ sub scan_structure($$$$;$)
                     push @{$state->{'place'}}, $heading_ref;
                     $headings{$heading_ref->{'sec_num'}} = $heading_ref;
                 }
-                add_prev ($text, $stack, "\@$macro" .  $_);
+                add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }
             elsif ($macro =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'))
             {
                 my $index_prefix = $1;
-                my $key = $_;
+                my $key = $cline;
                 $key =~ s/^\s*//;
-                $_ = substitute_texi_line($_);
+                $cline = substitute_texi_line($cline);
                 set_no_line_macro($macro, 1);
                 enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro, $state->{'region'});
-                add_prev ($text, $stack, "\@$macro" .  $_);
+                add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }
             elsif (defined($Texi2HTML::Config::texi_formats_map{$macro}))
@@ -10655,11 +10740,11 @@ sub scan_structure($$$$;$)
                 }
                 next if $macro_kept;
                 #dump_stack ($text, $stack, $state);
-                return if (/^\s*$/);
+                return if ($cline =~ /^\s*$/);
             }
             elsif ($macro eq 'float')
             { 
-                my ($style_texi, $label_texi) = split(/,/, $_);
+                my ($style_texi, $label_texi) = split(/,/, $cline);
                 $style_texi = normalise_space($style_texi);
                 $label_texi = undef if (defined($label_texi) and ($label_texi =~ /^\s*$/));
                 if (defined($label_texi))
@@ -10669,9 +10754,9 @@ sub scan_structure($$$$;$)
                          and $nodes{$label_texi}->{'seen'})
                     {
                         echo_error ("Duplicate label found: $label_texi", $line_nr);
-                        while ($_ =~ /,/)
+                        while ($cline =~ /,/)
                         {
-                            $_ =~ s/,.*$//;
+                            $cline =~ s/,.*$//;
                         }
                     }
                     else
@@ -10699,20 +10784,20 @@ sub scan_structure($$$$;$)
                         push @floats, $float;
                     }
                 }
-                add_prev($text, $stack, "\@$macro" . $_);
+                add_prev($text, $stack, "\@$macro" . $cline);
                 last;
             }
             elsif (defined($Texi2HTML::Config::def_map{$macro}))
             {
                 # @ may protect end of line in @def. We reconstruct lines here.
                 # in the texinfo manual is said that spaces after @ collapse 
-                if (/(\@+)\s*$/)
+                if ($cline =~ /(\@+)\s*$/)
                 {
                     my $at_at_end_of_line = $1;
                     if ((length($at_at_end_of_line) % 2) == 1)
                     {
-                        #print STDERR "Line continue $_";
-                        my $def_line = $_;
+                        #print STDERR "Line continue $cline";
+                        my $def_line = $cline;
                         $def_line =~ s/\@\s*$//;
                         chomp($def_line);
                         $state->{'in_deff_line'} = "\@$macro" .$def_line;
@@ -10720,14 +10805,14 @@ sub scan_structure($$$$;$)
                     }
                 }
                 #We must enter the index entries
-                my ($prefix, $entry, $argument) = get_deff_index($macro, $_, $line_nr);
+                my ($prefix, $entry, $argument) = get_deff_index($macro, $cline, $line_nr);
                 # use deffn instead of deffnx for @-command record 
                 # associated with index entry
                 my $idx_macro = $macro;
                 $idx_macro =~ s/x$//;
                 enter_index_entry($prefix, $line_nr, $entry, $state->{'place'},
                    $state->{'element'}, 0, $idx_macro, $state->{'region'}) if ($prefix);
-                s/(.*)//;
+                $cline =~ s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
                 # the text is discarded but we must handle correctly bad
                 # texinfo with 2 @def-like commands on the same line
@@ -10752,18 +10837,18 @@ sub scan_structure($$$$;$)
                 push @{$state->{'table_stack'}}, $macro;
                 add_prev($text, $stack, "\@$macro");
             }
-            elsif (s/^{//)
+            elsif ($cline =~ s/^{//)
             {
                 if ($macro eq 'verb')
                 {
-                    if (/^$/)
+                    if ($cline =~ /^$/)
                     {
                         # We already warned in pass texi
                         #warn "$ERROR verb at end of line";
                     }
                     else
                     {
-                        s/^(.)//;
+                        $cline =~ s/^(.)//;
                         $state->{'verb'} = $1;
                     }
                 }
@@ -10778,18 +10863,18 @@ sub scan_structure($$$$;$)
             }
             else
             {
-                $_ = do_unknown (1, $macro, $_, $text, $stack, $state, $line_nr);
+                $cline = do_unknown (1, $macro, $cline, $text, $stack, $state, $line_nr);
             }
             next;
         }
-        #elsif(s/^([^{}@]*)\@(.)//o)
-        elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
+        #elsif($cline =~ s/^([^{}@]*)\@(.)//o)
+        elsif($cline =~ s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
         {
             add_prev($text, $stack, $1);
-            $_ = do_unknown (1, $2, $_, $text, $stack, $state, $line_nr);
+            $cline = do_unknown (1, $2, $cline, $text, $stack, $state, $line_nr);
             next;
         }
-        elsif (s/^([^{}]*)([{}])//o)
+        elsif ($cline =~ s/^([^{}]*)([{}])//o)
         {
             add_prev($text, $stack, $1);
             if ($2 eq '{')
@@ -10815,8 +10900,8 @@ sub scan_structure($$$$;$)
         }
         else
         {
-            #print STDERR "END_LINE $_";
-            add_prev($text, $stack, $_);
+            #print STDERR "END_LINE $cline";
+            add_prev($text, $stack, $cline);
             enter_table_index_entry($text, $stack, $state, $line_nr);
             last;
         }
@@ -10833,7 +10918,7 @@ sub scan_line($$$$;$)
     my $line_nr = shift;
 
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
-    local $_ = $line;
+    my $cline = $line;
     #print STDERR "SCAN_LINE (@{$state->{'command_stack'}}): $line";
     #dump_stack($text, $stack,  $state );
     my $new_menu_entry; # true if there is a new menu entry
@@ -10841,7 +10926,7 @@ sub scan_line($$$$;$)
                                 # but in another format section (@table....)
     if (defined($state->{'prepend_text'}))
     {
-        $_ = $state->{'prepend_text'} . $_;
+        $cline = $state->{'prepend_text'} . $cline;
         $state->{'prepend_text'} = undef;
         delete $state->{'prepend_text'};
     }
@@ -10853,12 +10938,12 @@ sub scan_line($$$$;$)
         if (!$state->{'raw'} and !$state->{'verb'} and $state->{'menu'})
         { # new menu entry
             my ($node, $name, $ending);
-            if (s/^\*(\s+$NODERE)(::)//o)
+            if ($cline =~ s/^\*(\s+$NODERE)(::)//o)
             {
                 $node = $1;
                 $ending = $2;
             }
-            elsif (s/^\*(\s+[^:]+):(\s*[^\t,\.\n]+)([\t,\.\n])//o)
+            elsif ($cline =~ s/^\*(\s+[^:]+):(\s*[^\t,\.\n]+)([\t,\.\n])//o)
             {
                 $name = $1;
                 $node = $2;
@@ -10906,7 +10991,7 @@ sub scan_line($$$$;$)
             if ($state->{'menu_entry'} and !$new_menu_entry)
             {
                 my $top_stack = top_stack($stack);
-                if (/\S/ or (!$top_stack->{'format'} or ($top_stack->{'format'} ne 'menu_description')))
+                if ($cline =~ /\S/ or (!$top_stack->{'format'} or ($top_stack->{'format'} ne 'menu_description')))
                 { # description continues
                     $menu_description_in_format = 1 if ($top_stack->{'format'} and ($top_stack->{'format'} ne 'menu_description'));
                     print STDERR "# Description continues\n" if ($T2H_DEBUG & $DEBUG_MENU);
@@ -10925,20 +11010,20 @@ sub scan_line($$$$;$)
             
                     add_prev ($text, $stack, do_menu_description($descr->{'text'}, $state));
                     delete $state->{'menu_entry'};
-                    begin_format($text, $stack, $state, 'menu_comment', $_, $line_nr);
+                    begin_format($text, $stack, $state, 'menu_comment', $cline, $line_nr);
                 }
             }
         }
         if (($state->{'menu_entry'} and !$menu_description_in_format) or $state->{'raw'} or $state->{'preformatted'}  or $state->{'no_paragraph'} or $state->{'keep_texi'} or $state->{'remove_texi'})
         { # empty lines are left unmodified
-            if (/^\s*$/)
+            if ($cline =~ /^\s*$/)
             {
-                add_prev($text, $stack, $_);
+                add_prev($text, $stack, $cline);
                 return;
             }
             elsif (!$state->{'raw'})
             {
-                my $next_tag = next_tag($_);
+                my $next_tag = next_tag($cline);
                 if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
                 {
                     begin_deff_item($stack, $state);
@@ -10947,25 +11032,25 @@ sub scan_line($$$$;$)
         }
         else
         {
-            if (/^\s*$/)
+            if ($cline =~ /^\s*$/)
             {
                 if ($state->{'paragraph_context'})
                 { # An empty line ends a paragraph
                     close_paragraph($text, $stack, $state, $line_nr);
                 }
-                add_prev($text, $stack, &$Texi2HTML::Config::empty_line($_,$state));
+                add_prev($text, $stack, &$Texi2HTML::Config::empty_line($cline,$state));
                 return 1;
            }
            else
            {
                #print STDERR "a line not empty and not in no paragraph format\n";
-                my $next_tag = next_tag($_);
+                my $next_tag = next_tag($cline);
                 if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
                 { # finish opening the deff, as this is not a deff tag, it can't be 
                   # a deff macro with x
                     begin_deff_item($stack, $state);
                 }
-                if (!no_paragraph($state,$_))
+                if (!no_paragraph($state,$cline))
                 { # open a paragraph, unless the line begins with a macro that
                   # shouldn't trigger a paragraph opening
                     begin_paragraph($stack, $state);
@@ -10979,17 +11064,17 @@ sub scan_line($$$$;$)
     while(1)
     {
         # scan_line
-        #print STDERR "WHILE (l): $_|";
+        #print STDERR "WHILE (l): $cline|";
         # dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
         {
             (dump_stack($text, $stack, $state), die "Bug for raw ($state->{'raw'})") if (! @$stack or ! ($stack->[-1]->{'style'} eq $state->{'raw'}));
             # macro_regexp
-            if (/^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $state->{'raw'}))
+            if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $state->{'raw'}))
             # don't protect html, it is done by Texi2HTML::Config::raw if needed
             {
-                s/^(.*?)\@end\s$state->{'raw'}//;
+                $cline =~ s/^(.*?)\@end\s$state->{'raw'}//;
                 print STDERR "# end raw $state->{'raw'}\n" if ($T2H_DEBUG & $DEBUG_FORMATS);
                 add_prev ($text, $stack, $1);
                 my $style = pop @$stack;
@@ -11014,15 +11099,15 @@ sub scan_line($$$$;$)
                     # if raw format is html the preformatted wasn't interrupted
                     begin_paragraph($stack, $state) if ($state->{'preformatted'} and (!$Texi2HTML::Config::format_in_paragraph{$state->{'raw'}})); 
                     delete $state->{'raw'};
-                    return if (/^\s*$/);
+                    return if ($cline =~ /^\s*$/);
                 }
                 delete $state->{'raw'};
                 next;
             }
             else
             {
-                print STDERR "#within raw $state->{'raw'}:$_" if ($T2H_DEBUG & $DEBUG_FORMATS);
-                add_prev ($text, $stack, $_);
+                print STDERR "#within raw $state->{'raw'}:$cline" if ($T2H_DEBUG & $DEBUG_FORMATS);
+                add_prev ($text, $stack, $cline);
                 last;
             }
         }
@@ -11031,7 +11116,7 @@ sub scan_line($$$$;$)
         if (defined($state->{'verb'}))
         {
             my $char = quotemeta($state->{'verb'});
-            if (s/^(.*?)$char\}/\}/)
+            if ($cline =~ s/^(.*?)$char\}/\}/)
             {
                  if ($state->{'keep_texi'})
                  {
@@ -11051,7 +11136,7 @@ sub scan_line($$$$;$)
             }
             else
             {
-                 add_prev($text, $stack, $_);
+                 add_prev($text, $stack, $cline);
                  last;
             }
         }
@@ -11065,28 +11150,28 @@ sub scan_line($$$$;$)
         # in pass_structure
         if ($state->{'end_of_line_protected'} and $state->{'deff_line'})
         { 
-            print STDERR "Bug: 'end_of_line_protected' with text following: $_\n" 
-                unless /^$/;
+            print STDERR "Bug: 'end_of_line_protected' with text following: $cline\n" 
+                unless $cline =~ /^$/;
             return;
         }
 
         # We handle now the end tags 
         # macro_regexp
-        if ($state->{'keep_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
+        if ($state->{'keep_texi'} and $cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             my $end_tag = $2;
             add_prev($text, $stack, $1 . "\@end $end_tag");
             next;
         }
         # macro_regexp
-        elsif ($state->{'remove_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
+        elsif ($state->{'remove_texi'} and $cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             add_prev($text, $stack, $1);
             next;
         }
 	# macro_regexp
         #if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)$//o)
-        if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)//o)
+        if ($cline =~ s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $end_tag = $2;
@@ -11114,11 +11199,7 @@ sub scan_line($$$$;$)
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
-            unless ($Texi2HTML::Config::format_in_paragraph{$end_tag})
-            { # If the $end_tag is wrong we may be keeping paragraph 
-              # for a format with paragraphs on the stack
-                close_paragraph($text, $stack, $state, $line_nr); 
-            }
+            close_paragraph($text, $stack, $state, $line_nr); 
 
             $top_stack = top_stack($stack);
             if (!$top_stack or (!defined($top_stack->{'format'})))
@@ -11201,10 +11282,10 @@ sub scan_line($$$$;$)
             # We should now be able to handle the format
             if (defined($format_type{$end_tag}) and $format_type{$end_tag} ne 'fake')
             {# remove the space or new line following the @end command
-                s/\s//;
+                $cline =~ s/\s//;
                 if (end_format($text, $stack, $state, $end_tag, $line_nr))
                 { # if end_format is false, paragraph is already begun
-                    begin_paragraph_after_command($state,$stack,$end_tag,$_);
+                    begin_paragraph_after_command($state,$stack,$end_tag,$cline);
                 }
             }
             else 
@@ -11218,7 +11299,7 @@ sub scan_line($$$$;$)
         # This is a macro
 	#elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif (s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             my $before_macro = $1;
             my $macro = $2;
@@ -11232,12 +11313,12 @@ sub scan_line($$$$;$)
             add_prev($text, $stack, &$Texi2HTML::Config::colon_command($punct)) if (defined($punct));
             $macro = $alias{$macro} if (exists($alias{$macro}));
 	    #print STDERR "MACRO $macro\n";
-	    #print STDERR "LINE $_";
+	    #print STDERR "LINE $cline";
 	    #dump_stack ($text, $stack, $state);
             # This is a macro added by close_stack to mark paragraph end
             if ($macro eq 'end_paragraph')
             {
-                s/^\{\}//;
+                $cline =~ s/^\{\}//;
                 my $top_stack = top_stack($stack);
                 #################################### debug
                 if (!$top_stack or !$top_stack->{'format'} 
@@ -11248,16 +11329,16 @@ sub scan_line($$$$;$)
                     next;
                 }
                 #################################### end debug
-                s/^\s//;
+                $cline =~ s/^\s//;
                 my $paragraph = pop @$stack;
-                add_prev ($text, $stack, do_paragraph($paragraph->{'text'}, $state));
+                add_prev ($text, $stack, do_paragraph($paragraph->{'text'}, $state, $stack));
                 next;
             }
             # Handle macro added by close_stack to mark preformatted region end
             elsif ($macro eq 'end_preformatted')
             {
                 #print STDERR "END_PREFORMATTED\n";
-                s/^\{\}//;
+                $cline =~ s/^\{\}//;
                 my $top_stack = top_stack($stack);
                 #################################### debug
                 if (!$top_stack or !$top_stack->{'format'} 
@@ -11269,19 +11350,19 @@ sub scan_line($$$$;$)
                 }
                 #################################### end debug
                 my $paragraph = pop @$stack;
-                s/^\s//;
-                add_prev ($text, $stack, do_preformatted($paragraph->{'text'}, $state));
+                $cline =~ s/^\s//;
+                add_prev ($text, $stack, do_preformatted($paragraph->{'text'}, $state, $stack));
                 next;
             }
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
                 # Handle the misc command
-                $_ = misc_command_text($_, $macro, $stack, $state, $text, $line_nr);
-                return unless (defined($_));
+                $cline = misc_command_text($cline, $macro, $stack, $state, $text, $line_nr);
+                return unless (defined($cline));
                 unless ($Texi2HTML::Config::misc_command{$macro}->{'keep'})
                 {
                      begin_paragraph($stack, $state) if 
-                       (!no_paragraph($state,$_));
+                       (!no_paragraph($state,$cline));
                      next;
                 }
             }
@@ -11289,7 +11370,7 @@ sub scan_line($$$$;$)
             {
                 if ($state->{'keep_texi'})
                 {
-                    if (s/(.*)//o)
+                    if ($cline =~ s/(.*)//o)
                     {
                         add_prev($text, $stack, "\@$macro" . $1);
                     }
@@ -11297,7 +11378,7 @@ sub scan_line($$$$;$)
                 }
                 return undef if ($state->{'remove_texi'});
                 
-                if (s/^(\s+)(.*)//o)
+                if ($cline =~ s/^(\s+)(.*)//o)
                 {
                     my $arg = $2;
                     my $style_id = cross_manual_line(normalise_space($arg));
@@ -11328,25 +11409,25 @@ sub scan_line($$$$;$)
                 }
                 else
                 {
-                    echo_error ("Bad \@$macro line: $_", $line_nr);
+                    echo_error ("Bad \@$macro line: $cline", $line_nr);
                 } 
                 return undef;
             }
             # This is a @macroname{...} construct. We add it on top of stack
             # It will be handled when we encounter the '}'
             # There is a special case for def macros as @deffn{def} is licit
-            if (!$Texi2HTML::Config::def_map{$macro} and s/^{//)
+            if (!$Texi2HTML::Config::def_map{$macro} and $cline =~ s/^{//)
             {
                 if ($macro eq 'verb')
                 {
-                    if (/^$/)
+                    if ($cline =~ /^$/)
                     {
                         # Allready warned 
                         #warn "$ERROR verb at end of line";
                     }
                     else
                     {
-                        s/^(.)//;
+                        $cline =~ s/^(.)//;
                         $state->{'verb'} = $1;
                     }
                 } 
@@ -11382,8 +11463,8 @@ sub scan_line($$$$;$)
                 # We treat specially formats accepting {} on command line
                 if ($macro eq 'multitable' or defined($Texi2HTML::Config::def_map{$macro}) or defined($sec2level{$macro}))
                 {
-                    add_prev($text, $stack, "\@$macro" . $_);
-                    $_ = '';
+                    add_prev($text, $stack, "\@$macro" . $cline);
+                    $cline = '';
                     next;
                 }
                 # @ at the end of line may protect the end of line even when
@@ -11416,15 +11497,18 @@ sub scan_line($$$$;$)
                 }
                 $state->{'raw'} = $macro;
                 push (@$stack, {'style' => $macro, 'text' => ''});
-                return if (/^\s*$/);
+                return if ($cline =~ /^\s*$/);
                 next;
             }
             my $simple_macro = 1;
             # An accent macro
             if (exists($Texi2HTML::Config::accent_map{$macro}))
             {
-                push (@{$state->{'command_stack'}}, $macro);
-                if (s/^(\S)//o)
+                # the command itself is not in the command stack, since with
+                # braces, it is already popped when do_simple is called
+                #push (@{$state->{'command_stack'}}, $macro);
+                $cline =~ s/^\s*// if ($macro =~ /^[a-zA-Z]/);
+                if ($cline =~ s/^(\S)//o)
                 {
                     add_prev($text, $stack, do_simple($macro, $1, $state, [ $1 ], $line_nr));
                 }
@@ -11432,7 +11516,7 @@ sub scan_line($$$$;$)
                 { # The accent is at end of line
                     add_prev($text, $stack, do_text($macro, $state));
                 }
-                pop @{$state->{'command_stack'}};
+                #pop @{$state->{'command_stack'}};
             }
             # an @-command which should be like @command{}. We handle it...
             elsif ($::things_map_ref->{$macro})
@@ -11452,7 +11536,7 @@ sub scan_line($$$$;$)
             if ($simple_macro)
             {# if the macro didn't triggered a paragraph start it might now
                 begin_paragraph($stack, $state) if 
-                   ($Texi2HTML::Config::no_pagraph_commands{$macro} and !no_paragraph($state,$_));
+                   ($Texi2HTML::Config::no_pagraph_commands{$macro} and !no_paragraph($state,$cline));
                 next;
             }
             # the following macros are modified or ignored if we are 
@@ -11469,14 +11553,14 @@ sub scan_line($$$$;$)
                  elsif ($macro eq 'enumerate')
                  {
                       my $spec;
-                      ($_, $spec) = parse_enumerate ($_);
-                      return if (/^\s*$/);
+                      ($cline, $spec) = parse_enumerate ($cline);
+                      return if ($cline =~ /^\s*$/);
                       next;
                  }
                  elsif (defined($Texi2HTML::Config::def_map{$macro}))
                  {
                      my ($command, $style, $category, $name, $type, $class, $arguments, $args_array);
-                     ($command, $style, $category, $name, $type, $class, $arguments, $args_array) = parse_def($macro, $_, $line_nr); 
+                     ($command, $style, $category, $name, $type, $class, $arguments, $args_array) = parse_def($macro, $cline, $line_nr); 
                      # FIXME -- --- ''... lead to simple text in texi2html
                      # while they are kept as is in html coments by makeinfo
                      $category = remove_texi($category) if (defined($category));
@@ -11502,7 +11586,7 @@ sub scan_line($$$$;$)
                         $num = $global_head_num;
                     }
                     my $heading_element = $headings{$num};
-                    add_prev($text, $stack, &$Texi2HTML::Config::heading_no_texi($heading_element, $macro, $_));
+                    add_prev($text, $stack, &$Texi2HTML::Config::heading_no_texi($heading_element, $macro, $cline));
                     return;
                 }
 
@@ -11527,16 +11611,16 @@ sub scan_line($$$$;$)
                      $num = $global_head_num;
                  }
                  my $heading_element = $headings{$num};
-                 add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element, $macro, $_));
-                 add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $_, substitute_line($_), $state->{'preformatted'}));
+                 add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element, $macro, $cline));
+                 add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $cline, substitute_line($cline), $state->{'preformatted'}));
                  return;
             }
 
             if (($macro =~ /^(\w+?)index$/) and ($1 ne 'print' and $1 ne 'syncode' and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode')))
             {
                 my $index_name = $1;
-                s/^\s*//;
-                my $entry_texi = $_;
+                $cline =~ s/^\s*//;
+                my $entry_texi = $cline;
                 chomp($entry_texi);
                 $entry_texi =~ s/\s*$//;
                 # FIXME multiple_pass?
@@ -11560,14 +11644,14 @@ sub scan_line($$$$;$)
             }
             if ($macro =~ /^itemx?$/o or ($macro eq 'headitem'))
             {
-		    #print STDERR "ITEM: $_";
+		    #print STDERR "ITEM: $cline";
 		    #dump_stack($text, $stack, $state);
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph
                 close_paragraph($text, $stack, $state, $line_nr);
                 # these functions return the format if in the right context
                 my $format;
-                if ($format = add_item($text, $stack, $state, $line_nr, $_))
+                if ($format = add_item($text, $stack, $state, $line_nr, $cline))
                 { # handle lists
                 }
                 elsif ($format = add_term($text, $stack, $state, $line_nr))
@@ -11578,8 +11662,8 @@ sub scan_line($$$$;$)
                 }
                 if ($format)
                 {
-                    my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $_, $format->{'prepended'}, $format->{'command'});
-                    $_ = $line if (defined($line));
+                    my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $cline, $format->{'prepended'}, $format->{'command'});
+                    $cline = $line if (defined($line));
                     if ($open_command)
                     { 
                          open_arg($format->{'command'},0, $state);
@@ -11607,7 +11691,7 @@ sub scan_line($$$$;$)
                     push @$stack, {'format' => 'cell', 'text' => ''};
                     $format->{'cell'} = 1;
                     
-                    begin_paragraph_after_command($state,$stack,$macro,$_);
+                    begin_paragraph_after_command($state,$stack,$macro,$cline);
                 }
                 else
                 {
@@ -11642,35 +11726,35 @@ sub scan_line($$$$;$)
                 {
                     push @$stack, {'format' => 'cell', 'text' => ''};
                 }
-                begin_paragraph_after_command($state,$stack,$macro,$_);
+                begin_paragraph_after_command($state,$stack,$macro,$cline);
                 next;
             }
             # Macro opening a format (table, list, deff, example...)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
-                $_ = begin_format($text, $stack, $state, $macro, $_, $line_nr);
+                $cline = begin_format($text, $stack, $state, $macro, $cline, $line_nr);
                 # we keep the end of line for @center, and for formats
                 # that have cmd_line opened and need to see the end of line
                 next if (($macro eq 'center') or 
                    (defined($Texi2HTML::Config::def_map{$macro}))
                    or ($macro eq 'float') or ($macro eq 'quotation'));
-                return if (/^\s*$/);
+                return if ($cline =~ /^\s*$/);
                 next;
             }
-            $_ = do_unknown (2, $macro, $_, $text, $stack, $state, $line_nr);
+            $cline = do_unknown (2, $macro, $cline, $text, $stack, $state, $line_nr);
             next;
         }
-        elsif(s/^([^{}@,]*)\@([^\s\}\{\@]*)//o)
+        elsif($cline =~ s/^([^{}@,]*)\@([^\s\}\{\@]*)//o)
         { # A macro with a character which shouldn't appear in macro name
             add_prev($text, $stack, do_text($1, $state));
-            $_ = do_unknown (2, $2, $_, $text, $stack, $state, $line_nr);
+            $cline = do_unknown (2, $2, $cline, $text, $stack, $state, $line_nr);
             next;
         }
         # a brace, or an end of line and 'cmd_line' is on the top
         # of the stack
-        elsif (s/^([^{},]*)([{}])//o or (@$stack and 
+        elsif ($cline =~ s/^([^{},]*)([{}])//o or (@$stack and 
              defined($stack->[-1]->{'style'}) and
-             ($stack->[-1]->{'style'} eq 'cmd_line') and /^([^{},]*)$/o))
+             ($stack->[-1]->{'style'} eq 'cmd_line') and $cline =~ /^([^{},]*)$/o))
         {
             my $leading_text = $1;
             my $brace = $2;
@@ -11686,7 +11770,7 @@ sub scan_line($$$$;$)
                 {
                     unless ($state->{'keep_texi'} or $state->{'remove_texi'})
                     {
-                        echo_error ("'{' without macro. Before: $_", $line_nr);
+                        echo_error ("'{' without macro. Before: $cline", $line_nr);
                     }
                 }
             }
@@ -11709,7 +11793,7 @@ sub scan_line($$$$;$)
                 }
                 else
                 {
-                    echo_error("'}' without opening '{' before: $_", $line_nr);
+                    echo_error("'}' without opening '{' before: $cline", $line_nr);
                 }
             }
             else
@@ -11739,6 +11823,7 @@ sub scan_line($$$$;$)
                     if ($::style_map_ref->{$command} and (defined($style_type{$command})) and ((!$style->{'no_close'} and ($style_type{$command} eq 'style')) or ($style_type{$command} eq 'accent')))
                     {
                         my $style_command = pop @{$state->{'command_stack'}};
+                        ############################ debug
                         if ($style_command ne $command)
                         {
                             print STDERR "Bug: $style_command on 'command_stack', not $command\n";
@@ -11748,6 +11833,7 @@ sub scan_line($$$$;$)
                             dump_stack($text, $stack, $state);
                             pop @$stack;
                         }
+                        ############################ end debug
                     }
                     if ($state->{'keep_texi'})
                     { # don't expand @-commands in anchor, refs...
@@ -11759,11 +11845,11 @@ sub scan_line($$$$;$)
                         $result = do_simple($command, $style->{'text'}, $state, $style->{'args'}, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                         if ($state->{'code_style'} < 0)
                         {
-                            echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_", $line_nr);
+                            echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$cline", $line_nr);
                         }
                         if ($state->{'math_style'} < 0)
                         {
-                            echo_error ("Bug: negative math_style: $state->{'math_style'}, line:$_", $line_nr);
+                            echo_error ("Bug: negative math_style: $state->{'math_style'}, line:$cline", $line_nr);
                         }
                     }
                 }
@@ -11809,7 +11895,7 @@ sub scan_line($$$$;$)
                 }
             }
         }
-        elsif (s/^([^,]*)[,]//o)
+        elsif ($cline =~ s/^([^,]*)[,]//o)
         {
              add_prev($text, $stack, do_text($1, $state));
              if (@$stack and defined($stack->[-1]->{'style'})
@@ -11832,8 +11918,8 @@ sub scan_line($$$$;$)
         }
         else
         { # no macro nor '}', but normal text
-            add_prev($text, $stack, do_text($_, $state));
-            #print STDERR "END LINE:$_!!!\n";
+            add_prev($text, $stack, do_text($cline, $state));
+            #print STDERR "END LINE:$cline!!!\n";
             #dump_stack($text, $stack, $state);
             
             # @item line is closed by end of line
@@ -11850,10 +11936,7 @@ sub scan_line($$$$;$)
                and !$state->{'closing_center'} and !$state->{'keep_texi'})
             {
                 $state->{'closing_center'} = 1;
-                unless ($Texi2HTML::Config::format_in_paragraph{'center'})
-                {
-                    close_paragraph($text, $stack, $state, $line_nr); 
-                }
+                close_paragraph($text, $stack, $state, $line_nr); 
                 close_stack($text, $stack, $state, $line_nr, undef, 'center');
                 delete $state->{'closing_center'};
                 my $center = pop @$stack;
@@ -11864,7 +11947,7 @@ sub scan_line($$$$;$)
                 my $bottom_command_stack = shift @{$state->{'command_stack'}};
                 print STDERR "Bug: closing center, top_paragraph_style: $top_paragraph_style, bottom_command_stack: $bottom_command_stack.\n"
                    if ($bottom_command_stack ne 'center' or $top_paragraph_style ne 'center');
-                $_ = '';
+                $cline = '';
                 next;
             }
             last;
@@ -12784,14 +12867,14 @@ sub close_paragraph($$$;$$)
     if ($top_stack and ($top_stack->{'format'} eq 'paragraph'))
     {
         my $paragraph = pop @$stack;
-        add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
+        add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state, $stack));
         $state->{'paragraph_macros'} = $new_stack;
         return 1;
     }
     elsif ($top_stack and ($top_stack->{'format'} eq 'preformatted') and !$no_preformatted_closing)
     {
         my $paragraph = pop @$stack;
-        add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
+        add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state, $stack));
         $state->{'paragraph_macros'} = $new_stack;
         return 1;
     }

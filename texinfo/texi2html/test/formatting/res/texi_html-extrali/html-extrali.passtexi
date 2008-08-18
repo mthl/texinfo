@@ -1,0 +1,10 @@
+html-extrali.texi(,2) @setfilename menuli.info
+html-extrali.texi(,3) 
+html-extrali.texi(,4) @c extra li generated after <menu>
+html-extrali.texi(,5) @c From: Marius Groeger <mag@sysgo.de>, 13nov98.
+html-extrali.texi(,6) 
+html-extrali.texi(,7) @menu
+html-extrali.texi(,8) * entry1:: 
+html-extrali.texi(,9) @end menu
+html-extrali.texi(,10) 
+html-extrali.texi(,11) @bye

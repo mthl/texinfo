@@ -1,7 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
 AC_INIT([texi2html], [1.79], [texi2html-bug@nongnu.org])
-AM_INIT_AUTOMAKE([gnu 1.7 dist-bzip2 dist-zip])
+dnl 1.9 because we need tar-pax, and tar-pax because we have very long 
+dnl filenames for some test files
+AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2 dist-zip tar-pax])
 
 dnl Disable Autoconf, Automake, and some other maintainer tools without the
 dnl --enable-maintainer-mode argument.
@@ -106,6 +108,26 @@ dnl The bulk config files.
 AC_CONFIG_FILES([\
                  Makefile \
                  Tests/Makefile \
+                 test/Makefile \
+                 test/contents/Makefile \
+                 test/coverage/Makefile \
+                 test/formatting/Makefile \
+                 test/indices/Makefile \
+                 test/invalid/Makefile \
+                 test/misc/Makefile \
+                 test/encodings/Makefile \
+                 test/macros/Makefile \
+                 test/manuals/Makefile \
+                 test/nested_formats/Makefile \
+                 test/sectionning/Makefile \
+                 test/htmlxref/Makefile \
+                 test/htmlxref-only_mono/Makefile \
+                 test/htmlxref-only_split/Makefile \
+                 test/xemacs_manual/Makefile \
+                 test/texi2html_manual/Makefile \
+                 test/tar_manual/Makefile \
+                 test/singular_manual/Makefile \
+                 test/layout/Makefile \
                  doc/Makefile 
                  ])
 AC_OUTPUT

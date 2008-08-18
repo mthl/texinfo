@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 2. Miniker model programming</title>
+
+<meta name="description" content="Miniker 102 manual: 2. Miniker model programming">
+<meta name="keywords" content="Miniker 102 manual: 2. Miniker model programming">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<ul><a href="mini_ker.html#Top">Miniker 102 manual</a> <br>
+</ul>
+</ul>
+<a name="A-model-with-Miniker"></a>
+<a name="SEC8"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Linearization-and-discretization.html#Linearization-and-discretization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Structure-of-the-code.html#Structure-of-the-code" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter"> 2. Miniker model programming </h1>
+<ul>
+<a href="Structure-of-the-code.html#Structure-of-the-code">2.1 General structure of the code</a> <br>
+<a href="A-model-description.html#A-model-description">2.2 Miniker programming illustrated</a> <br>
+<ul>
+<a href="A-model-description.html#A-note-about-mortran-and-cmz-directives">2.2.1 All you need to know about mortran and cmz directives</a> <br>
+<a href="A-model-description.html#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a> <br>
+</ul>
+<a href="Setting-and-running-a-model.html#Setting-and-running-a-model">2.3 Setting and running a model</a> <br>
+<ul>
+<a href="Setting-and-running-a-model.html#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a> <br>
+<a href="Setting-and-running-a-model.html#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a> <br>
+<a href="Setting-and-running-a-model.html#Simulation-and-output">2.3.3 Running a simulation and using the output</a> <br>
+<a href="Setting-and-running-a-model.html#Graphics">2.3.4 Doing graphics</a> <br>
+</ul>
+<a href="Controlling-the-run.html#Controlling-the-run">2.4 Controlling the run</a> <br>
+<ul>
+<a href="Controlling-the-run.html#End-of-time-step">2.4.1 Executing code at the end of each time step</a> <br>
+<a href="Controlling-the-run.html#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a> <br>
+</ul>
+</ul>
+
+
+<p>Miniker works by combining the model specification code given by 
+the user and other source files provided in the package. The code is
+assembled, preprocessed, compiled, linked and the resulting program 
+can be run to produce the model trajectory and dynamic analysis.
+</p>
+<p>The code provided in the package contains a principal program, some usefull
+subroutines and pieces of code called <em>sequences</em> combined with the
+different codes. Among these sequences some hold the code describing the model
+and are to be written by the user (sequences are similar to
+Fortran include files).
+</p>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,110 @@
+Prerequisites
+=============
+
+To run this testsuite, sed, awk, diff, mktemp are used. To find the same
+results, tex4ht, latex2HTML, perl with unicode support and the 
+Text::Unidecode perl module have to be installed (with their dependencies). 
+It is likely that some test results involving tex4ht and latex2HTML
+depend on the setup and version of these tools, so you may get false 
+negative.
+
+
+Running the testsuite
+=====================
+
+This testsuite can be run 
+
+* using the makefile rules: check for the base tests, long-check for 
+  the long tests, or all-checks for both.
+* using ./tests.sh with the list of directories in argument one want to
+  run the tests in.
+* by going in one directory and running ../run_test.sh, like
+$ cd formatting
+$ ../run_test.sh
+* by going in one directory and running one specific test, like
+$ cd formatting
+$ ../run_test.sh quotes
+
+The test results are in the out/ directory; the reference results are
+in res/; the diffs are put in diffs. 
+
+If a test failed,
+ F: a_test_directory 
+is printed, if there is a diff with the references, a
+ D: a_test_directory
+is printed. If there are no reference to compare with, 
+ no res: a_test_directory
+is printed.
+
+If a whole directory check run using ./tests.sh had no failure, 
+the directory name is printed followed by a 0, it is followed 
+by a 1 if there was some failure.
+
+The test results are in a directory below the out/ directory. This 
+directory name can be considered as the test name. Let's call it a_test
+for the remaining of the explanation. The stderr output is in 
+out/a_test/a_test.2, stdout output is concatenated in tests.out. All 
+the commands called are output in tests.log.
+
+giving -copy in argument to tests.sh or ../run_test.sh will cause the
+references to be regenerated. This can also be achieved with the 
+copy-tests make target.
+
+
+Tests specification
+===================
+
+The tests ran are driven by the content of the tests.txt file. It is a 
+line oriented file. A # starts a comment. Each line describes a test. 
+The first word on the line is the test name which corresponds also with 
+the resulting directory (we called it a_test in the previous examples). 
+It is followed by the source manual name. The source manual name has to 
+have the .texi extension. Optionnally additional arguments can be given 
+on the remaining of the line.
+
+So, for example
+
+a_test manual.texi
+
+specifies that the results of processing manual.texi are put in the a_test
+directory.
+
+a_test_split_chapter manual.texi --split chapter
+
+specifies that the results of the processing of manual.texi with additional
+command line arguments --split chapter will be in the a_test_split_chapter
+directory.
+
+Using 'texi' as the test name is special. In that case the directory name 
+is constructed by appending _ followed by the manual name without the .texi
+extension to 'texi'. And the result is not processed normally, but instead
+macros are expanded and regions that are not processed removed and the 
+result is put in a file with the same name than the manual. Similar result 
+files but with include file, macro and line number informations are put in 
+files with the .texi extension replaced by .passtexi and .passfirst. More
+precisely, the .passtexi file corresponds with the texi after the first 
+pass and the .passfirst file corresponds with the result after the second 
+pass.
+
+So, for example, if 
+
+texi manual.texi
+
+appears in the tests.txt file, in the directory out/texi_manual the file 
+manual.texi will have macros expanded and ignored regions removed, and the
+files manual.passtexi and manual.passfirst will contain the additionaly
+include file and line number informations corresponding with the texinfo
+at the end of the first and second pass.
+
+
+Misc
+====
+
+For the tests that use latex2html, to avoid the test failing if there is 
+a dot in the cwd, mktemp is used to create a temporary directory, hopefully
+in /tmp, and the directory can be passed through the l2h_tmp_dir.init 
+file, generated automatically in every test directory.
+
+A common .texi file should be in the top-level directory (there is such an
+example with coverage_macro.texi). Currently there is no support for common
+init file, but it could be added easily.

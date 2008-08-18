@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+
+
+@titlepage
+
+This is in title page
+
+
+@titlepage
+
+And still in title page
+

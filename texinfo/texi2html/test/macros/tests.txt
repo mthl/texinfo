@@ -1,0 +1,41 @@
+texi test_include.texi
+texi macros.texi
+texi simple_macro.texi
+texi nested_macro_calls.texi
+texi glossary.texi
+texi imbricated_macros.texi
+texi expansion_order.texi
+texi ifclear_in_macro.texi
+texi macro_call_in_ifset.texi
+texi ifset_in_macro.texi
+texi_ifset_defined ifset_in_macro.texi -D notes --macro-expand=out/texi_ifset_defined/ifset_in_macro.texi
+dumptexi_ifset_defined ifset_in_macro.texi -D notes -dump-texi
+texi not_ifset_text.texi
+texi bib-example.texi
+texi quote-args.texi
+texi macro-at.texi
+texi alias.texi
+texi nested_ignore.texi
+texi include_macro.texi
+# wrong
+texi include-value.texi
+# wrong
+texi value_in_misc_valid.texi
+# wrong
+texi macro_in_misc.texi
+# in the texinfo test suite, the default is info, and there is also a 
+# test with --html which doesn't make much sense here, replaced with --xml
+# though it is not the same
+cond cond.texi
+cond_xml cond.texi --init xml.init
+cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
+cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+defcondx_Dbar defxcond.texi -D bar
+defcondx_Ubar defxcond.texi -U bar
+macro-at macro-at.texi
+# wrong
+include-value include-value.texi
+# wrong
+value_in_misc value_in_misc_valid.texi --iftex
+# wrong
+macro_in_misc macro_in_misc.texi

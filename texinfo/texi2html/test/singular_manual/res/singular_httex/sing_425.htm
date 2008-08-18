@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.2.3.9 writelist</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.2.3.9 writelist">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.9 writelist">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="writelist"></a>
+<a name="SEC425"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_424.htm#tab" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.8 tab" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_426.htm#pause" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.10 pause" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.2.3.9 writelist</h4>
+<p>Procedure from library <code>inout.lib</code> (see <a href="sing_416.htm#inout_005flib">inout_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>writelist(file,name,L); file,name strings (file-name, list-name),
+L a list.
+</p>
+</dd>
+<dt> <strong>Create:</strong></dt>
+<dd><p>a file with name &lsquo;file&lsquo;, write the content of the list L into it and
+call the list &lsquo;name&lsquo;, keeping the list structure
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>no return value
+</p>
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>The syntax of writelist uses and is similar to the syntax of the
+write command of Singular which does not manage lists properly.
+If (file,name) = (&quot;listfile&quot;,&quot;L1&quot;), writelist creates (resp.
+appends if listfile exists) a file with name listfile and stores
+there the list L under the name L1. The Singular command
+execute(read(&quot;listfile&quot;)); assigns the content of L (stored in
+listfile) to a list L1.
+<br> On a UNIX system, write(&quot;&gt;file&quot;,...) overwrites an existing file
+&lsquo;file&lsquo; while write(&quot;file&quot;,...) and write(&quot;&gt;&gt;file&quot;,...) append.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;inout.lib&quot;;
+ring r;
+ideal i=x,y,z;
+list k=&quot;Hi&quot;,nameof(basering),i,37;
+writelist(&quot;zumSpass&quot;,&quot;lustig&quot;,k);
+read(&quot;zumSpass&quot;);
+&rarr; list lustig;
+&rarr;    lustig[1]=
+&rarr; Hi;
+&rarr;    lustig[2]=
+&rarr; r;
+&rarr;    lustig[3]=
+&rarr; x,y,z;
+&rarr;    lustig[4]=
+&rarr; 37;
+&rarr; 
+list L=res(i,0);                    //resolution of the ideal i
+writelist(&quot;res_list&quot;,&quot;res-name&quot;,L); &quot;&quot;;
+&rarr; 
+read(&quot;res_list&quot;);
+&rarr; list res-name;
+&rarr;    res-name[1]=
+&rarr; z,y,x;
+&rarr;    res-name[2]=
+&rarr; -y*gen(1)+z*gen(2),-x*gen(1)+z*gen(3),-x*gen(2)+y*gen(3);
+&rarr;    res-name[3]=
+&rarr; x*gen(1)-y*gen(2)+z*gen(3);
+&rarr; 
+// execute(read(&quot;res_list&quot;)); would create a list with name res-name,
+// which is the resolution of i (the same content as L)
+system(&quot;sh&quot;,&quot;/bin/rm res_list zumSpass&quot;);
+&rarr; 0
+// Under UNIX, this removes the files 'res_list' and 'zumSpass'
+// Type help system; to get more information about the shell escape
+// If your operating system does not accept the shell escape, you
+// must remove the just created files 'zumSpass' and 'res_list' directly
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_424.htm#tab" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.8 tab" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#pause" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.10 pause" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

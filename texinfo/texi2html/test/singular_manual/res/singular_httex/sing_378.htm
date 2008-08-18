@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.6.1 Toric ideals</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.6.1 Toric ideals">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.6.1 Toric ideals">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Toric-ideals"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_377.htm#Toric-ideals-and-integer-programming" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6 Toric ideals and integer programming" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2 Algorithms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_377.htm#Toric-ideals-and-integer-programming" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6 Toric ideals and integer programming" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+
+<a name="SEC378"></a>
+<h3 class="subsection">C.6.1 Toric ideals</h3>
+
+<p>
+Let <span 
+class="cmmi-10">A </span>denote an <span 
+class="cmmi-10">m </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmmi-10">n </span>matrix with integral coefficients. For <span 
+class="cmmi-10">u </span><span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">ZZ</span><sup><span 
+class="cmmi-7">n</span></sup>, we define <span 
+class="cmmi-10">u</span><sup><span 
+class="cmr-7">+</span></sup><span 
+class="cmmi-10">,u</span><sup><span 
+class="cmsy-7">-</span></sup> to be the uniquely
+determined vectors with nonnegative coefficients and disjoint support (i.e., <span 
+class="cmmi-10">u</span><sub><span 
+class="cmmi-7">i</span></sub><sup><span 
+class="cmr-7">+</span></sup> = 0 or <span 
+class="cmmi-10">u</span><sub><span 
+class="cmmi-7">i</span></sub><sup><span 
+class="cmsy-7">-</span></sup> = 0 for
+each component <span 
+class="cmmi-10">i</span>) such that <span 
+class="cmmi-10">u </span>= <span 
+class="cmmi-10">u</span><sup><span 
+class="cmr-7">+</span></sup> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">u</span><sup><span 
+class="cmsy-7">-</span></sup>. For <span 
+class="cmmi-10">u </span><span 
+class="cmsy-10">&#x2265; </span>0 component-wise, let <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">u</span></sup> denote the monomial
+<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><sup><span 
+class="cmmi-7">u</span><sub><span 
+class="cmr-5">1</span></sub></sup> <span 
+class="cmsy-10">&#x22C5;</span><span 
+class="cmmi-10">&#x2026;</span> <span 
+class="cmsy-10">&#x22C5; </span><span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">n</span></sub><sup><span 
+class="cmmi-7">u</span><sub><span 
+class="cmmi-5">n</span></sub></sup> <span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>].
+<!--l. 1697--><p class="indent" >    The ideal
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex63x.png" alt="         +    -
+IA := &#x003C; xu - xu |u &#x2208; ker(A)&#x2229; ZZn &#x003E; &#x2282; K [x1,...,xn]  " class="math-display" ></center> is
+called a <span 
+class="cmbx-10">toric ideal.</span>
+<!--l. 1702--><p class="indent" >    The first problem in computing toric ideals is to find a finite generating set: Let <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">r</span></sub> be a lattice basis of
+ker(<span 
+class="cmmi-10">A</span>) <span 
+class="cmsy-10">&#x2229; </span><span 
+class="cmmi-10">ZZ</span><sup><span 
+class="cmmi-7">n</span></sup> (i.e, a basis of the <span 
+class="cmmi-10">ZZ</span>-module). Then
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex64x.png" alt="IA := I : (x1 &#x22C5;...&#x22C5;xn)&#x221E; " class="math-display" ></center>
+where
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex65x.png" alt="I = &#x003C; xv+i - xv-i |i = 1,...,r &#x003E;  " class="math-display" ></center>  
+</p>
+
+<p>The required lattice basis can be computed using the LLL-algorithm (see <a href="sing_387.htm#g_t_005bCoh93_005d">[Coh93]</a>). For the computation of the saturation, there are various
+possibilities described in the
+
+section Algorithms.  
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_379.htm#Algorithms">C.6.2 Algorithms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Various algorithms for computing toric ideals.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_385.htm#Buchberger-algorithm">C.6.3 The Buchberger algorithm for toric ideals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Specializing it for toric ideals.
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_377.htm#Toric-ideals-and-integer-programming" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6 Toric ideals and integer programming" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_377.htm#Toric-ideals-and-integer-programming" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6 Toric ideals and integer programming" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

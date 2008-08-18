@@ -1,0 +1,289 @@
+imbrications.texi(,2) 
+imbrications.texi(,3) @setfilename imbrications.info
+imbrications.texi(,4) 
+imbrications.texi(,5) @syncodeindex pg cp
+imbrications.texi(,6) 
+imbrications.texi(,7) @node Top,First node,(dir)
+imbrications.texi(,8) @top
+imbrications.texi(,9) @menu
+imbrications.texi(,10) * First node::    node 1
+imbrications.texi(,11) * name:Second node.    node 2
+imbrications.texi(,12) @end menu
+imbrications.texi(,13) @c * node in table::
+imbrications.texi(,14) @c * node in example::
+imbrications.texi(,15) @c * node in flushright::
+imbrications.texi(,16) @c *node in defun -> bug
+imbrications.texi(,17) @node First node
+imbrications.texi(,18) @chapter first node chapter
+imbrications.texi(,19) 
+imbrications.texi(,20) @cindex elem
+imbrications.texi(,21) 
+imbrications.texi(,31) 
+imbrications.texi(,32) @node Second node
+imbrications.texi(,33) @chapter second
+imbrications.texi(,34) 
+imbrications.texi(,35) Some text
+imbrications.texi(,36) 
+imbrications.texi(,37) @deffn Function buffer-end flag
+imbrications.texi(,38) A nice function
+imbrications.texi(,39) 
+imbrications.texi(,40) makeinfo accepts a menu within defun but it isn't possible
+imbrications.texi(,41) to follow it
+imbrications.texi(,42) 
+imbrications.texi(,43) @menu
+imbrications.texi(,44) * node within defun menu::
+imbrications.texi(,45) @end menu
+imbrications.texi(,46) @c makeinfo accepts the following but cannot properly close defun
+imbrications.texi(,47) @c @node node within defun menu
+imbrications.texi(,48) @c @section within menu
+imbrications.texi(,49) 
+imbrications.texi(,50) end of the function
+imbrications.texi(,51) @end deffn
+imbrications.texi(,52) 
+imbrications.texi(,53) @node node within defun menu
+imbrications.texi(,54) @section the node is within menu
+imbrications.texi(,55) 
+imbrications.texi(,56) Test @@option inside @@emph
+imbrications.texi(,57) Foo @emph{emphasized and referring to @option{--some} option}.
+imbrications.texi(,58) 
+imbrications.texi(,59) Table imbricated in code:@*
+imbrications.texi(,60) @code{
+imbrications.texi(,61) in code
+imbrications.texi(,62) @table @emph
+imbrications.texi(,63) @item line
+imbrications.texi(,64) text
+imbrications.texi(,65) @end table
+imbrications.texi(,66) }
+imbrications.texi(,67)                            
+imbrications.texi(,68) ref with uref within:@*                                                     
+imbrications.texi(,69) @ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}
+imbrications.texi(,70) 
+imbrications.texi(,71) footnote with code within:@*                                                                                
+imbrications.texi(,72) @footnote{ in footnote  @code{par1
+imbrications.texi(,73)                                                                                 
+imbrications.texi(,74) par2}}
+imbrications.texi(,75) 
+imbrications.texi(,76) Refs in samp:@*
+imbrications.texi(,77) 
+imbrications.texi(,78) Refs without samp: empty section name see @ref{other node}.
+imbrications.texi(,79) With a chapter: @ref{Second node}.
+imbrications.texi(,80) 
+imbrications.texi(,81) A ref in samp to a node with empty section name:
+imbrications.texi(,82) see @samp{@ref{other node}}.
+imbrications.texi(,83) 
+imbrications.texi(,84) Same but to a regular node associated with a chapter:
+imbrications.texi(,85) see @samp{@ref{Second node}}.
+imbrications.texi(,86) 
+imbrications.texi(,87) code with table and example within:@*                                                    
+imbrications.texi(,88) @code{
+imbrications.texi(,89) in code
+imbrications.texi(,90) @table @emph
+imbrications.texi(,91) @item line
+imbrications.texi(,92) in code and table
+imbrications.texi(,93) @example
+imbrications.texi(,94)   in example
+imbrications.texi(,95) @end example
+imbrications.texi(,96) @end table
+imbrications.texi(,97) }
+imbrications.texi(,98) 
+imbrications.texi(,99) 
+imbrications.texi(,100) @table @bullet
+imbrications.texi(,101) @item item
+imbrications.texi(,102) @c @node node in table
+imbrications.texi(,103) @c @chapter in table
+imbrications.texi(,104) @end table
+imbrications.texi(,105) 
+imbrications.texi(,106) @example
+imbrications.texi(,107) @c @node node in example
+imbrications.texi(,108) @c @chapter example
+imbrications.texi(,109) 
+imbrications.texi(,110) an example
+imbrications.texi(,111) @end example
+imbrications.texi(,112) 
+imbrications.texi(,113) @cindex other entry
+imbrications.texi(,114) 
+imbrications.texi(,115) @example
+imbrications.texi(,116) @html
+imbrications.texi(,117) 
+imbrications.texi(,118) Some html <code>some code</code>.
+imbrications.texi(,119) 
+imbrications.texi(,120) @end html
+imbrications.texi(,121) after html in example
+imbrications.texi(,122) 
+imbrications.texi(,123) 
+imbrications.texi(,124) two line breaks
+imbrications.texi(,125) Tex doesn't like math in @@example
+imbrications.texi(,137) @cindex index in example
+imbrications.texi(,138) 
+imbrications.texi(,139) Now a content within example
+imbrications.texi(,140) 
+imbrications.texi(,141) @contents
+imbrications.texi(,142) 
+imbrications.texi(,143) @printindex cp
+imbrications.texi(,144) printindex  works but cannot be followed in info, in TeX
+imbrications.texi(,145) the result is quite strange.
+imbrications.texi(,146) 
+imbrications.texi(,147) and now yes---now and ``so''.
+imbrications.texi(,148) 
+imbrications.texi(,149) @end example
+imbrications.texi(,150) after example and now yes---now and ``so''.
+imbrications.texi(,151) @flushright
+imbrications.texi(,152) 
+imbrications.texi(,153) is the text
+imbrications.texi(,154) flushed right ?
+imbrications.texi(,155) @c @node node in flushright
+imbrications.texi(,156) @c @chapter flushright
+imbrications.texi(,157) 
+imbrications.texi(,158) 
+imbrications.texi(,159) @end flushright
+imbrications.texi(,160) 
+imbrications.texi(,161) @flushright
+imbrications.texi(,162) @example
+imbrications.texi(,163) text flushed  right and then example
+imbrications.texi(,164) 
+imbrications.texi(,165) it should be flushed
+imbrications.texi(,166) @end example
+imbrications.texi(,167) @end flushright
+imbrications.texi(,168) 
+imbrications.texi(,169) @example
+imbrications.texi(,170) @flushright
+imbrications.texi(,171) example and then text flushed  right
+imbrications.texi(,172) @end flushright
+imbrications.texi(,173) @end example
+imbrications.texi(,174) 
+imbrications.texi(,175) @display
+imbrications.texi(,176) simple displayed text
+imbrications.texi(,177) @end display
+imbrications.texi(,178) 
+imbrications.texi(,179) a display within example
+imbrications.texi(,180) @example
+imbrications.texi(,181) example
+imbrications.texi(,182) @display
+imbrications.texi(,183) display
+imbrications.texi(,184) @end display
+imbrications.texi(,185) @end example
+imbrications.texi(,186) 
+imbrications.texi(,187) @cartouche
+imbrications.texi(,188) A cartouched text
+imbrications.texi(,189) @end cartouche
+imbrications.texi(,190) 
+imbrications.texi(,191) A cartouche within example
+imbrications.texi(,192) @example
+imbrications.texi(,193) example
+imbrications.texi(,194) @cartouche
+imbrications.texi(,195) A cartouched text
+imbrications.texi(,196) @end cartouche
+imbrications.texi(,197) @end example
+imbrications.texi(,198) 
+imbrications.texi(,199) An example with table, multitable, quotation, enumerate 
+imbrications.texi(,200) @example
+imbrications.texi(,201) a table within example
+imbrications.texi(,202) @table @bullet
+imbrications.texi(,203) @item item
+imbrications.texi(,204) text
+imbrications.texi(,205) @end table
+imbrications.texi(,206) a multitable
+imbrications.texi(,207) @multitable {a} {b}
+imbrications.texi(,208) @item beginnin
+imbrications.texi(,209) 
+imbrications.texi(,210) @item @dots{}
+imbrications.texi(,211) @tab 
+imbrications.texi(,212) 
+imbrications.texi(,213) a new column                          no splitting ???????????????????                             
+imbrications.texi(,214) @end multitable
+imbrications.texi(,215) 
+imbrications.texi(,216) a menu
+imbrications.texi(,217) @menu
+imbrications.texi(,218) * node menu::      a node in menu
+imbrications.texi(,219) 
+imbrications.texi(,220) in menu comment
+imbrications.texi(,221) html
+imbrications.texi(,222) @html
+imbrications.texi(,223) <cite>cite me</cite> a cite in html
+imbrications.texi(,224) @end html
+imbrications.texi(,225) 
+imbrications.texi(,226) A ref in samp in menu comment to a node with empty section name:
+imbrications.texi(,227) @samp{@ref{other node}}.
+imbrications.texi(,228) 
+imbrications.texi(,229) Same but to a regular node associated with a chapter:
+imbrications.texi(,230) @samp{@ref{Second node}}.
+imbrications.texi(,231) 
+imbrications.texi(,232) * a menu name:other node. 
+imbrications.texi(,233)       description of other
+imbrications.texi(,234)       node
+imbrications.texi(,235) 
+imbrications.texi(,236) @end menu
+imbrications.texi(,237) 
+imbrications.texi(,238) A quotation
+imbrications.texi(,239) @quotation
+imbrications.texi(,240) This is a pre
+imbrications.texi(,241) quotation
+imbrications.texi(,242) 
+imbrications.texi(,243) @end quotation
+imbrications.texi(,244) 
+imbrications.texi(,245) Enumerate
+imbrications.texi(,246) 
+imbrications.texi(,247) @enumerate
+imbrications.texi(,248) @item first item
+imbrications.texi(,249) @item second  item
+imbrications.texi(,250) 
+imbrications.texi(,251) still second
+imbrications.texi(,252) @end enumerate
+imbrications.texi(,253) 
+imbrications.texi(,254) @end example
+imbrications.texi(,255) 
+imbrications.texi(,256) example with deff-like commands
+imbrications.texi(,257) @example
+imbrications.texi(,258) deffs
+imbrications.texi(,259) @defun {my def} args @var{arg} @dots{}
+imbrications.texi(,260) @defunx {other def} no args
+imbrications.texi(,261) @deffnx {type} {name} and now the args
+imbrications.texi(,262) @defvar {variables} variable-name
+imbrications.texi(,263) 
+imbrications.texi(,264) @defvarx {variables too} other-variable
+imbrications.texi(,265) THis is the defvar
+imbrications.texi(,266) 
+imbrications.texi(,267) A table within the def
+imbrications.texi(,268) @table @asis
+imbrications.texi(,269) @item item
+imbrications.texi(,270) text
+imbrications.texi(,271) 
+imbrications.texi(,272) more text
+imbrications.texi(,273) @item second item
+imbrications.texi(,274) @end table
+imbrications.texi(,275) 
+imbrications.texi(,276) explanation
+imbrications.texi(,277) @end defvar
+imbrications.texi(,278) @end deffn
+imbrications.texi(,279) @end defun
+imbrications.texi(,280) 
+imbrications.texi(,281) @end example
+imbrications.texi(,282) 
+imbrications.texi(,283) table within display within example
+imbrications.texi(,284) @example
+imbrications.texi(,285) @display
+imbrications.texi(,286) @table @asis
+imbrications.texi(,287) @item item
+imbrications.texi(,288) Line
+imbrications.texi(,289) @end table
+imbrications.texi(,290) @end display
+imbrications.texi(,291) @end example
+imbrications.texi(,292) 
+imbrications.texi(,293) table within example within display
+imbrications.texi(,294) @display
+imbrications.texi(,295) @example
+imbrications.texi(,296) @table @asis
+imbrications.texi(,297) @item item
+imbrications.texi(,298) Line
+imbrications.texi(,299) @end table
+imbrications.texi(,300) @end example
+imbrications.texi(,301) @end display
+imbrications.texi(,302) 
+imbrications.texi(,303) @node  node menu
+imbrications.texi(,304) @unnumberedsubsec
+imbrications.texi(,305) @node other node
+imbrications.texi(,306) @unnumberedsubsec
+imbrications.texi(,307) 
+imbrications.texi(,308) 
+imbrications.texi(,309) @contents
+imbrications.texi(,310) @bye

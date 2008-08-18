@@ -1,0 +1,142 @@
+htfcss: cmtt font-family: monospace;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmmi font-style: italic;
+htfcss: cmmib font-style: italic; font-weight: bold;
+File: sing_tex4ht_tex.html
+File: sing_tex4ht_tex.css
+File: sing_tex4ht_tex.tmp
+Font_Class(1,"1"): <img  src="" alt="" class="%s-%dx-x-%x" />
+Css: p.noindent { text-indent: 0em }
+Css: td p.noindent { text-indent: 0em; margin-top:0em; }
+Css: p.nopar { text-indent: 0em; }
+Css: p.indent{ text-indent: 1.5em }
+Css: @media print {div.crosslinks {visibility:hidden;}}
+Css: a img { border-top: 0; border-left: 0; border-right: 0; }
+Font_Css("4"): .small-caps{font-variant: small-caps; }
+Font_Css("10"): .htf-cmbx {font-weight: bold; font-style:normal;}
+Font_Css("12"): .htf-calligraphy {font-family:cursive}
+Font_Css("14"): .htf-italic {font-style: italic;}
+Font_Css("16"): .htf-bold {font-weight: bold;}
+Font_Css("12"): .htf-calligraphy-bold {font-family:cursive ; font-weight: bold; }
+Css: center { margin-top:1em; margin-bottom:1em; }
+Css: td center { margin-top:0em; margin-bottom:0em; }
+Css: .Canvas { position:relative; }
+Css: img.math{vertical-align:middle;}
+Css: .obeylines-h,.obeylines-v {white-space: nowrap; }
+Css: div.obeylines-v p { margin-top:0; margin-bottom:0; }
+Css: .overline{ text-decoration:overline; }
+Css: .overline img{ border-top: 1px solid black; }
+Css: td.displaylines {text-align:center; white-space:nowrap;}
+Css: .centerline {text-align:center;}
+Css: .rightline {text-align:right;}
+Css: span.TEX {letter-spacing: -0.125em; }
+Css: span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
+Css: a span.TEX span.E {text-decoration: none; }
+Css: .underline{ text-decoration:underline; }
+Css: .underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+Css: div.proclaim { margin-top: 1em; margin-bottom: 1em; }
+Css: p.item {text-indent:-2em; margin-left:2em;}
+Css: p.itemitem {text-indent:-2em; margin-left:4em;}
+Css: span.item, span.itemitem {width:2em; margin-right:0.4em;}
+Css: td.eqalign3 { text-align:right; margin-left:10em;}
+Css: .eqalign td { white-space: nowrap; }
+Css: div.eqalign {text-align:center;}
+Css: td.eqalignno3, td.leqalignno3 { text-align:right; margin-left:10em;}
+Css: .leqalignno td, .eqalignno td { white-space: nowrap; }
+Css: .leqalignno td.noalign, .eqalignno td.noalign { width:5%; white-space: normal; }
+Css: table.leqalignno, table.eqalignno {width:100%;}
+Css: img.cdots{vertical-align:middle;}
+Css: div.pmatrix {text-align:center;}
+Css: table.pmatrix {width:100%;}
+--- needs --- sing_tex4ht_tex.idv[1] ==> sing_tex4ht_tex0x.png ---
+--- needs --- sing_tex4ht_tex.idv[2] ==> sing_tex4ht_tex1x.png ---
+--- needs --- sing_tex4ht_tex.idv[3] ==> sing_tex4ht_tex2x.png ---
+--- needs --- sing_tex4ht_tex.idv[4] ==> sing_tex4ht_tex3x.png ---
+--- needs --- sing_tex4ht_tex.idv[5] ==> sing_tex4ht_tex4x.png ---
+--- needs --- sing_tex4ht_tex.idv[6] ==> sing_tex4ht_tex5x.png ---
+--- needs --- sing_tex4ht_tex.idv[7] ==> sing_tex4ht_tex6x.png ---
+--- needs --- sing_tex4ht_tex.idv[8] ==> sing_tex4ht_tex7x.png ---
+--- needs --- sing_tex4ht_tex.idv[9] ==> sing_tex4ht_tex8x.png ---
+--- needs --- sing_tex4ht_tex.idv[10] ==> sing_tex4ht_tex9x.png ---
+--- needs --- sing_tex4ht_tex.idv[11] ==> sing_tex4ht_tex10x.png ---
+--- needs --- sing_tex4ht_tex.idv[12] ==> sing_tex4ht_tex11x.png ---
+--- needs --- sing_tex4ht_tex.idv[13] ==> sing_tex4ht_tex12x.png ---
+--- needs --- sing_tex4ht_tex.idv[14] ==> sing_tex4ht_tex13x.png ---
+--- needs --- sing_tex4ht_tex.idv[15] ==> sing_tex4ht_tex14x.png ---
+--- needs --- sing_tex4ht_tex.idv[16] ==> sing_tex4ht_tex15x.png ---
+--- needs --- sing_tex4ht_tex.idv[17] ==> sing_tex4ht_tex16x.png ---
+--- needs --- sing_tex4ht_tex.idv[18] ==> sing_tex4ht_tex17x.png ---
+--- needs --- sing_tex4ht_tex.idv[19] ==> sing_tex4ht_tex18x.png ---
+--- needs --- sing_tex4ht_tex.idv[20] ==> sing_tex4ht_tex19x.png ---
+--- needs --- sing_tex4ht_tex.idv[21] ==> sing_tex4ht_tex20x.png ---
+--- needs --- sing_tex4ht_tex.idv[22] ==> sing_tex4ht_tex21x.png ---
+--- needs --- sing_tex4ht_tex.idv[23] ==> sing_tex4ht_tex22x.png ---
+--- needs --- sing_tex4ht_tex.idv[24] ==> sing_tex4ht_tex23x.png ---
+--- needs --- sing_tex4ht_tex.idv[25] ==> sing_tex4ht_tex24x.png ---
+--- needs --- sing_tex4ht_tex.idv[26] ==> sing_tex4ht_tex25x.png ---
+--- needs --- sing_tex4ht_tex.idv[27] ==> sing_tex4ht_tex26x.png ---
+--- needs --- sing_tex4ht_tex.idv[28] ==> sing_tex4ht_tex27x.png ---
+--- needs --- sing_tex4ht_tex.idv[29] ==> sing_tex4ht_tex28x.png ---
+--- needs --- sing_tex4ht_tex.idv[30] ==> sing_tex4ht_tex29x.png ---
+--- needs --- sing_tex4ht_tex.idv[31] ==> sing_tex4ht_tex30x.png ---
+--- needs --- sing_tex4ht_tex.idv[32] ==> sing_tex4ht_tex31x.png ---
+--- needs --- sing_tex4ht_tex.idv[33] ==> sing_tex4ht_tex32x.png ---
+--- needs --- sing_tex4ht_tex.idv[34] ==> sing_tex4ht_tex33x.png ---
+--- needs --- sing_tex4ht_tex.idv[35] ==> sing_tex4ht_tex34x.png ---
+--- needs --- sing_tex4ht_tex.idv[36] ==> sing_tex4ht_tex35x.png ---
+--- needs --- sing_tex4ht_tex.idv[37] ==> sing_tex4ht_tex36x.png ---
+--- needs --- sing_tex4ht_tex.idv[38] ==> sing_tex4ht_tex37x.png ---
+--- needs --- sing_tex4ht_tex.idv[39] ==> sing_tex4ht_tex38x.png ---
+--- needs --- sing_tex4ht_tex.idv[40] ==> sing_tex4ht_tex39x.png ---
+--- needs --- sing_tex4ht_tex.idv[41] ==> sing_tex4ht_tex40x.png ---
+--- needs --- sing_tex4ht_tex.idv[42] ==> sing_tex4ht_tex41x.png ---
+--- needs --- sing_tex4ht_tex.idv[43] ==> sing_tex4ht_tex42x.png ---
+--- needs --- sing_tex4ht_tex.idv[44] ==> sing_tex4ht_tex43x.png ---
+--- needs --- sing_tex4ht_tex.idv[45] ==> sing_tex4ht_tex44x.png ---
+--- needs --- sing_tex4ht_tex.idv[46] ==> sing_tex4ht_tex45x.png ---
+--- needs --- sing_tex4ht_tex.idv[47] ==> sing_tex4ht_tex46x.png ---
+--- needs --- sing_tex4ht_tex.idv[48] ==> sing_tex4ht_tex47x.png ---
+--- needs --- sing_tex4ht_tex.idv[49] ==> sing_tex4ht_tex48x.png ---
+--- needs --- sing_tex4ht_tex.idv[50] ==> sing_tex4ht_tex49x.png ---
+--- needs --- sing_tex4ht_tex.idv[51] ==> sing_tex4ht_tex50x.png ---
+--- needs --- sing_tex4ht_tex.idv[52] ==> sing_tex4ht_tex51x.png ---
+--- needs --- sing_tex4ht_tex.idv[53] ==> sing_tex4ht_tex52x.png ---
+--- needs --- sing_tex4ht_tex.idv[54] ==> sing_tex4ht_tex53x.png ---
+--- needs --- sing_tex4ht_tex.idv[55] ==> sing_tex4ht_tex54x.png ---
+--- needs --- sing_tex4ht_tex.idv[56] ==> sing_tex4ht_tex55x.png ---
+--- needs --- sing_tex4ht_tex.idv[57] ==> sing_tex4ht_tex56x.png ---
+--- needs --- sing_tex4ht_tex.idv[58] ==> sing_tex4ht_tex57x.png ---
+--- needs --- sing_tex4ht_tex.idv[59] ==> sing_tex4ht_tex58x.png ---
+--- needs --- sing_tex4ht_tex.idv[60] ==> sing_tex4ht_tex59x.png ---
+--- needs --- sing_tex4ht_tex.idv[61] ==> sing_tex4ht_tex60x.png ---
+--- needs --- sing_tex4ht_tex.idv[62] ==> sing_tex4ht_tex61x.png ---
+--- needs --- sing_tex4ht_tex.idv[63] ==> sing_tex4ht_tex62x.png ---
+--- needs --- sing_tex4ht_tex.idv[64] ==> sing_tex4ht_tex63x.png ---
+--- needs --- sing_tex4ht_tex.idv[65] ==> sing_tex4ht_tex64x.png ---
+--- needs --- sing_tex4ht_tex.idv[66] ==> sing_tex4ht_tex65x.png ---
+--- needs --- sing_tex4ht_tex.idv[67] ==> sing_tex4ht_tex66x.png ---
+--- needs --- sing_tex4ht_tex.idv[68] ==> sing_tex4ht_tex67x.png ---
+--- needs --- sing_tex4ht_tex.idv[69] ==> sing_tex4ht_tex68x.png ---
+--- needs --- sing_tex4ht_tex.idv[70] ==> sing_tex4ht_tex69x.png ---
+--- needs --- sing_tex4ht_tex.idv[71] ==> sing_tex4ht_tex70x.png ---
+--- needs --- sing_tex4ht_tex.idv[72] ==> sing_tex4ht_tex71x.png ---
+--- needs --- sing_tex4ht_tex.idv[73] ==> sing_tex4ht_tex72x.png ---
+--- needs --- sing_tex4ht_tex.idv[74] ==> sing_tex4ht_tex73x.png ---
+--- characters ---
+Font("cmr","10","10","100")
+Font("cmr","7","7","100")
+Font("cmr","5","5","100")
+Font("cmmi","10","10","100")
+Font("cmmi","7","7","100")
+Font("cmmi","5","5","100")
+Font("cmsy","10","10","100")
+--- needs --- sing_tex4ht_tex.idv[75] ==> cmsy10-32.png ---
+Font("cmsy","7","7","100")
+Font("cmsy","5","5","100")
+Font("cmex","10","10","100")
+Font("cmbx","10","10","100")
+Font("cmbx","7","7","100")
+Font("cmtt","10","10","100")

@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: B.2.3 Global orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: B.2.3 Global orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.3 Global orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Global-orderings"></a>
+<a name="SEC365"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.2 General definitions for orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.4 Local orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: B. Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">B.2.3 Global orderings</h3>
+
+<p>For all these orderings: Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN> = <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN>
+</p>
+<dl compact="compact">
+<dt> lp:</dt>
+<dd><p>lexicographical ordering:
+<a name="IDX219"></a>
+<a name="IDX220"></a>
+<br>
+<!-- MATH
+ $x^\alpha < x^\beta  \Leftrightarrow  \exists\; 1 \le i \le n :
+\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i <
+\beta_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="385" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_272.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \exists\; 1 \le i \le n :
+\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i &lt;
+\beta_i$"></SPAN>.
+</p></dd>
+<dt> rp:</dt>
+<dd><p>reverse lexicographical ordering:
+<a name="IDX221"></a>
+<a name="IDX222"></a>
+<br>
+<!-- MATH
+ $x^\alpha < x^\beta  \Leftrightarrow  \exists\; 1 \le i \le n :
+\alpha_n = \beta_n,
+    \ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i > \beta_i.$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="391" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_273.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \exists\; 1 \le i \le n :
+\alpha_n = \beta_n,
+\ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i &gt; \beta_i.$"></SPAN>
+</p></dd>
+<dt> dp:</dt>
+<dd><p>degree reverse lexicographical ordering:
+<a name="IDX223"></a>
+<a name="IDX224"></a>
+<br>
+let <!-- MATH
+ $\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="167" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_274.png"
+ ALT="$\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$"></SPAN> then
+    <!-- MATH
+ $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) < \deg(x^\beta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_275.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &lt; \deg(x^\beta)$"></SPAN> or
+<br>
+    <!-- MATH
+ $\deg(x^\alpha) =
+    \deg(x^\beta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="126" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_276.png"
+ ALT="$ \deg(x^\alpha) =
+\deg(x^\beta)$"></SPAN> and <!-- MATH
+ $\exists\ 1 \le i \le n: \alpha_n = \beta_n,
+    \ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i > \beta_i.$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="315" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_277.png"
+ ALT="$\exists\ 1 \le i \le n: \alpha_n = \beta_n,
+\ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i &gt; \beta_i.$"></SPAN>
+</p></dd>
+<dt> Dp:</dt>
+<dd><p>degree lexicographical ordering:
+<a name="IDX225"></a>
+<a name="IDX226"></a>
+<br>
+let <!-- MATH
+ $\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="167" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_274.png"
+ ALT="$\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$"></SPAN> then
+    <!-- MATH
+ $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) < \deg(x^\beta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_275.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &lt; \deg(x^\beta)$"></SPAN> or
+<br>
+     <!-- MATH
+ $\deg(x^\alpha) =
+    \deg(x^\beta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="126" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_276.png"
+ ALT="$ \deg(x^\alpha) =
+\deg(x^\beta)$"></SPAN> and <!-- MATH
+ $\exists\ 1 \le i \le n:\alpha_1 = \beta_1,
+    \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i < \beta_i.$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="313" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_278.png"
+ ALT="$\exists\ 1 \le i \le n:\alpha_1 = \beta_1,
+\ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i &lt; \beta_i.$"></SPAN>
+</p></dd>
+<dt> wp:</dt>
+<dd><p>weighted reverse lexicographical ordering:
+<a name="IDX227"></a>
+<a name="IDX228"></a>
+<br>
+let <!-- MATH
+ $w_1, \ldots, w_n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_279.png"
+ ALT="$w_1, \ldots, w_n$"></SPAN> be positive integers. Then <!-- MATH
+ ${\tt wp}(w_1, \ldots,
+w_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="101" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_280.png"
+ ALT="${\tt wp}(w_1, \ldots,
+w_n)$"></SPAN>
+ is defined as <code>dp</code>
+ but with
+<!-- MATH
+ $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="204" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_281.png"
+ ALT="$\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$"></SPAN>
+</p></dd>
+<dt> Wp:</dt>
+<dd><p>weighted lexicographical ordering:
+<a name="IDX229"></a>
+<a name="IDX230"></a>
+<br>
+let <!-- MATH
+ $w_1, \ldots, w_n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_279.png"
+ ALT="$w_1, \ldots, w_n$"></SPAN> be positive integers. Then <!-- MATH
+ ${\tt Wp}(w_1, \ldots,
+w_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="101" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_282.png"
+ ALT="${\tt Wp}(w_1, \ldots,
+w_n)$"></SPAN>
+ is defined as <code>Dp</code>
+ but with
+<!-- MATH
+ $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="204" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_281.png"
+ ALT="$\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$"></SPAN>
+</p></dd>
+</dl>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.2 General definitions for orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.4 Local orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: B. Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

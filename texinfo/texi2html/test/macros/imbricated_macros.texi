@@ -1,0 +1,84 @@
+\input texinfo.tex
+
+@setfilename imbricated_macros
+
+@node Top
+
+@macro macro1
+a, @macro2
+@end macro
+@macro macro11
+a, macro2
+@end macro
+
+@macro macro2{arg}
+coucou \arg\ after arg
+@end macro
+
+@macro macro3{text, arg}
+\text\
+&&&& \arg\
+@end macro
+
+@macro macro4 {}
+1
+2
+3
+4
+@end macro
+
+@c the arguments are broken at , before macro expansion 
+@c @ protect the following @.
+@c 
+@macro3{@macro1{}text for macro2}
+
+@c the macro inside @macro1 is expanded before the remaining args
+@c are appended.
+
+@macro3{@macro11{}text for macro2}
+
+@macro3{@verb{% @macro2 %}
+@c @macro4
+@pagesizes 4 @macro4
+@headings doubleafter @macro4
+@verbatim
+@macro2
+@end verbatim
+@ignore
+@macro4
+@end ignore
+@macro macro7 {truc}
+@emph{\\truc\\}
+@end macro
+macro7 defined
+@ifinfo
+@macro4
+@end ifinfo
+@iftex
+@macro2{aa\,bb}
+@end iftex
+@macro4
+}
+
+Call macro7
+@macro7{aaa}
+
+@bye
+
+@c makeinfo doesn't like not closed environments
+@macro v1{}
+@verbatim
+
+@end macro
+
+@macro v2{}
+@c @end verbatim
+
+@end macro
+
+@v1
+
+@c @v2
+@c @end verbatim
+
+@bye

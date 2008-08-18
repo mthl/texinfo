@@ -1,0 +1,13 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename ifclear_in_macro.info
+
+@node Top
+
+arg
+
+
+
+text
+
+@bye

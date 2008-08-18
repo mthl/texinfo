@@ -1,0 +1,11 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top test inclusion of a file defining a macro
+
+@include macro_included.texi
+
+Call macro
+@themacro
+
+@bye

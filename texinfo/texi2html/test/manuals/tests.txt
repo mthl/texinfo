@@ -1,0 +1,11 @@
+texi info-stnd.texi
+texi texinfo.texi -ifinfo
+texi cvs.texi
+texi mini_ker.texi
+info-stnd info-stnd.texi -split chapter -node-files 
+texinfo texinfo.texi -split chapter -ifinfo 
+texinfo_nodes texinfo.texi -split node -node-files -ifinfo
+ccvs cvs.texi -split chapter
+ccvs_mediawiki cvs.texi -init mediawiki.init -split chapter
+ccvs_mediawiki_nosplit cvs.texi -init mediawiki.init
+mini_ker mini_ker.texi --split section --node-files --use-nodes --iftex --init book.init --init mini_ker_t2h.init --init tex4ht.init

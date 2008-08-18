@@ -1,0 +1,2 @@
+htmlxref ../sectionning/test_refs.texi
+htmlxref_nodes ../sectionning/test_refs.texi --split node --use-nodes --node-files

@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.7 2008-07-30 12:23:40 pertusus Exp $
+# $Id: mediawiki.init,v 1.8 2008-08-18 18:01:49 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -192,8 +192,8 @@ sub mediawiki_print_Top
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview
         # redo the titlepage with the actual state
-        my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-        &$titlepage([],$titlepage_text, $titlepage_no_texi); 
+        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
         print $fh $Texi2HTML::TITLEPAGE;
         if (@{$Texi2HTML::OVERVIEW})
         {
@@ -214,11 +214,12 @@ sub mediawiki_print_misc
     &$print_misc_footer($fh, $buttons);
 }
 
-sub mediawiki_titlepage()
+sub mediawiki_titlepage($$$$)
 {
     my $titlepage_lines = shift;
     my $titlepage_text = shift;
     my $titlepage_no_texi = shift;
+    my $titlepage_simple_text = shift;
 
     my $result = '';
     if (@{$Texi2HTML::THISDOC{'titles'}} 

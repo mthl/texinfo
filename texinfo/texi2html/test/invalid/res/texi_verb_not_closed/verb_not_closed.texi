@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+
+@verb{*
+
+In verb
+
+*
+*}

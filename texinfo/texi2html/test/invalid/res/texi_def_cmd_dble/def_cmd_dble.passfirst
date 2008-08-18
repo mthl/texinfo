@@ -1,0 +1,13 @@
+def_cmd_dble.texi(,2) @setfilename def_cmd_dble.info
+def_cmd_dble.texi(,3) @node Top
+def_cmd_dble.texi(,4) @top Test for double definition commands
+def_cmd_dble.texi(,5) 
+def_cmd_dble.texi(,6) @deffn func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
+def_cmd_dble.texi(,7) aaa
+def_cmd_dble.texi(,8) @end deffn
+def_cmd_dble.texi(,9) 
+def_cmd_dble.texi(,10) @deffn func aaaa args  @defvr c--ategory d--efvr_name
+def_cmd_dble.texi(,11) bbb
+def_cmd_dble.texi(,12) @end deffn
+def_cmd_dble.texi(,13) 
+def_cmd_dble.texi(,14) @bye

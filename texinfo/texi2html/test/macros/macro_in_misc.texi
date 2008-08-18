@@ -1,0 +1,244 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename macro_in_misc.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+ }
+
+@macro text 
+atext
+@end macro
+
+@node Top
+@top top @text{}
+@subheading Comment like: @text{}
+
+Text line followed by a comment on the same line and another below @c comment @text{}
+@c comment @text{}
+
+@macro pagesizes 
+200mm,150mm
+@end macro
+
+@macro afourpaper_macro 
+@afourpaper
+@end macro
+
+@pagesizes @pagesizes{}
+@afourpaper_macro{}
+@headings on line following headings @text{}
+@oddfooting some text ignored @text{}
+@everyheading on line following everyheading @text{}
+
+@macro need 
+0.1
+@end macro
+
+@need @need{}
+
+@macro raisesections_macro 
+@raisesections
+@end macro
+@raisesections_macro{}
+@macro lowersections_macro 
+@lowersections
+@end macro
+@lowersections_macro{}
+
+@c tex error: Use of \ doesn't match its definition.
+@ifnottex
+@@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
+@phoo{bar}
+@end ifnottex
+
+@macro definfoenclose_name 
+phi
+@end macro
+@definfoenclose @definfoenclose_name{},:,:
+
+@c this is required
+@iftex
+@global@let@phi=@i
+@end iftex
+
+@phi{bar}
+
+@macro strong_macro 
+@strong
+@end macro
+@macro strong_name 
+strong
+@end macro
+
+@strong_macro{}{very strong}
+
+@definfoenclose @strong_name{},(@strong_name{}:,:)
+
+@strong_macro{}{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@macro kbdinputstyle_arg 
+code
+@end macro
+@kbdinputstyle @kbdinputstyle_arg{}
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+@macro asis_arg 
+asis
+@end macro
+@macro zero 
+0
+@end macro
+@macro none_arg 
+none
+@end macro
+@macro four 
+4
+@end macro
+@macro six 
+6
+@end macro
+
+@paragraphindent @asis_arg{}
+@paragraphindent @zero{}
+@paragraphindent @none_arg{}
+@paragraphindent @four{}
+@firstparagraphindent @none_arg{}
+@exampleindent @six{}
+
+@macro end_arg 
+end
+@end macro
+@macro separate_arg 
+separate 
+@end macro
+@footnotestyle @end_arg{}
+@footnotestyle @separate_arg{}
+
+@macro latin1 
+ISO-8859-1
+@end macro
+@documentencoding @latin1{}
+
+@macro on_arg 
+on
+@end macro
+@macro off_arg 
+off
+@end macro
+@frenchspacing @on_arg{}
+@frenchspacing @off_arg{}
+
+@c accepts 10 or 11
+@macro ten 
+10
+@end macro
+@fonttextsize @ten{}
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@macro false_arg 
+false
+@end macro
+@macro true_arg
+true
+@end macro
+@allowcodebreaks @false_arg{}
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@allowcodebreaks @true_arg{}
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@subheading command removed
+
+@finalout
+
+@macro page_macro 
+@page
+@end macro
+@macro noindent_macro 
+@noindent
+@end macro
+@macro refill_macro 
+@refill
+@end macro
+
+@@page @page_macro{} @@noindent @noindent_macro{} @@refill @refill_macro{} something
+
+@noindent_macro{}     noindent at beginning of line
+@noindent_macro{}  
+noindent on the preceding line
+  @noindent_macro{}    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @page_macro{}   @@noindent @noindent_macro{}    @@refill @refill_macro{}
+
+@macro contents_macro 
+@contents
+@end macro
+@contents_macro{}
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@macro exdent_macro 
+@exdent
+@end macro
+@exdent_macro{} line after exdent
+
+And now sp:
+
+@macro two 
+2
+@end macro
+@sp @two{}
+
+@macro result_macro 
+@result
+@end macro
+
+@clickstyle @result_macro{}
+
+@menu
+* node @text{}::
+* bidule::
+* bidule2::
+@end menu
+
+
+@node node @text{}
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+@contents_macro{}
+
+@node bidule
+@chapter bidule
+
+@macro shortcontents_macro 
+@shortcontents
+@end macro
+@shortcontents_macro{}
+
+@node bidule2
+@chapter last
+
+@bye

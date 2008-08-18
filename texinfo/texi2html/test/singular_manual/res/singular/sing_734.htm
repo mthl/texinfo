@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.8.13 Tjurina</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.8.13 Tjurina">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.8.13 Tjurina">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Tjurina"></a>
+<a name="SEC734"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_733.htm#qhspectrum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8.12 qhspectrum" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_735.htm#tjurina" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.14 tjurina" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.5.8.13 Tjurina</h4>
+<p>Procedure from library <code>sing.lib</code> (see <a href="sing_721.htm#sing_005flib">sing_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>Tjurina(id[,&lt;any&gt;]); id=ideal or poly
+</p>
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>id=ICIS (isolated complete intersection singularity)
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>standard basis of Tjurina-module of id,
+<br>of type module if id=ideal, resp. of type ideal if id=poly.
+If a second argument is present (of any type) return a list: <br>
+[1] = Tjurina number,
+<br>[2] = k-basis of miniversal deformation,
+<br>[3] = SB of Tjurina module,
+<br>[4] = Tjurina module
+</p>
+</dd>
+<dt> <strong>Display:</strong></dt>
+<dd><p>Tjurina number if printlevel &gt;= 0 (default)
+</p>
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>Tjurina number = -1 implies that id is not an ICIS
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
+int p      = printlevel;
+printlevel = 1;
+ring r     = 0,(x,y,z),ds;
+poly f     = x5+y6+z7+xyz;        // singularity T[5,6,7]
+list T     = Tjurina(f,&quot;&quot;);
+&rarr; // Tjurina number = 16
+show(T[1]);                       // Tjurina number, should be 16
+&rarr; // int, size 1
+&rarr; 16
+show(T[2]);                       // basis of miniversal deformation
+&rarr; // ideal, 16 generator(s)
+&rarr; z6,
+&rarr; z5,
+&rarr; z4,
+&rarr; z3,
+&rarr; z2,
+&rarr; z,
+&rarr; y5,
+&rarr; y4,
+&rarr; y3,
+&rarr; y2,
+&rarr; y,
+&rarr; x4,
+&rarr; x3,
+&rarr; x2,
+&rarr; x,
+&rarr; 1
+show(T[3]);                       // SB of Tjurina ideal
+&rarr; // ideal, 6 generator(s)
+&rarr; xy+7z6,
+&rarr; xz+6y5,
+&rarr; yz+5x4,
+&rarr; 5x5-6y6,
+&rarr; 6y6,
+&rarr; z7
+show(T[4]); &quot;&quot;;                   // Tjurina ideal
+&rarr; // ideal, 4 generator(s)
+&rarr; yz+5x4,
+&rarr; xz+6y5,
+&rarr; xy+7z6,
+&rarr; xyz+x5+y6+z7
+&rarr; 
+ideal j    = x2+y2+z2,x2+2y2+3z2;
+show(kbase(Tjurina(j)));          // basis of miniversal deformation
+&rarr; // Tjurina number = 5
+&rarr; // module, 5 generator(s)
+&rarr; [z]
+&rarr; [y]
+&rarr; [x]
+&rarr; [1]
+&rarr; [0,1]
+hilb(Tjurina(j));                 // Hilbert series of Tjurina module
+&rarr; // Tjurina number = 5
+&rarr; //         2 t^0
+&rarr; //        -3 t^1
+&rarr; //        -3 t^2
+&rarr; //         7 t^3
+&rarr; //        -3 t^4
+&rarr; 
+&rarr; //         2 t^0
+&rarr; //         3 t^1
+&rarr; // dimension (local)   = 0
+&rarr; // multiplicity = 5
+printlevel = p;
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_733.htm#qhspectrum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8.12 qhspectrum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_735.htm#tjurina" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.14 tjurina" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

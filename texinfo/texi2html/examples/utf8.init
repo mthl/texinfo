@@ -5,7 +5,7 @@ $ENCODING_NAME = 'utf-8';
 use Encode;
 use Unicode::Normalize;
 
-foreach my $key (keys(%unicode_accents))
+foreach my $key (keys(%unicode_accents), 'dotless')
 {
     $style_map{$key}->{'function'} = \&t2h_utf8_accent;
     $style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;

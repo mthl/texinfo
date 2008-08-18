@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = . doc Tests
+SUBDIRS = . doc Tests test
 imagesdir = $(pkgdatadir)/images
 i18ndir = $(pkgdatadir)/i18n
 
@@ -15,12 +15,12 @@ texi2html_additional_scripts = \
 	T2h_i18n.pm \
 	texi2html.init \
 	translations.pl \
-	l2h.init \
+	examples/l2h.init \
 	T2h_l2h.pm
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
-noinst_SCRIPTS = manage_i18n.pl buildt2h.sh
+noinst_SCRIPTS = manage_i18n.pl buildt2h.sh parse_8bit_makeinfo_maps.pl
 
 EXTRA_DIST = \
 	MySimple.pod \
@@ -33,7 +33,7 @@ EXTRA_DIST = \
 	texi2html.pl \
 	$(texi2html_additional_scripts)
 
-dist_pkgdata_DATA = l2h.init \
+dist_pkgdata_DATA = examples/l2h.init \
 	examples/makeinfo.init \
 	examples/xhtml.init \
 	examples/html32.init \
@@ -41,8 +41,12 @@ dist_pkgdata_DATA = l2h.init \
 	examples/noheaders.init \
 	examples/inlinestyle.init \
 	examples/utf8.init \
+	examples/enable_encoding.init \
 	examples/chm.init \
 	examples/roff.init \
+	examples/xml.init \
+	examples/mediawiki.init \
+	examples/docbook.init \
 	examples/tex4ht.init \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \

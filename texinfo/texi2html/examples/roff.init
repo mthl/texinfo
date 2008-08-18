@@ -60,8 +60,8 @@ sub T2H_ROFF_print_Top($$)
     my $buttons = \@MISC_BUTTONS;
     &$print_head_navigation($fh, $buttons);
     # redo the titlepage with the actual state
-    my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-    &$titlepage([],$titlepage_text, $titlepage_no_texi); 
+    my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+    &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
     print $fh $Texi2HTML::TITLEPAGE;
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
 }
@@ -74,11 +74,12 @@ sub T2H_ROFF_print_misc
     &$print_misc_footer($fh);
 }
 
-sub T2H_ROFF_titlepage ()
+sub T2H_ROFF_titlepage ($$$$)
 {
     my $titlepage_lines = shift;
     my $titlepage_text = shift;
     my $titlepage_no_texi = shift;
+    my $titlepage_simple_text = shift;
 
     my $result = '';
     if (@{$Texi2HTML::THISDOC{'titles'}} 

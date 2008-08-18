@@ -1,0 +1,41 @@
+texi html-top.texi
+sectionning sectionning.texi
+sectionning_directions sectionning.texi -init test_directions.init
+makeinfo_novalidate_split novalidate.texi -init makeinfo.init -no-node-file
+makeinfo_novalidate_unsplit novalidate.texi -init makeinfo.init -split no -no-node-file
+first_section_no_node first_section_no_node.texi
+nodes_before_top nodes_before_top.texi
+nodes_after_top nodes_after_top.texi
+section_nodes_before_top section_nodes_before_top.texi
+nodes_after_top_before_section nodes_after_top_before_section.texi -split chapter
+nodes_test nodes_test.texi
+no_section no_section.texi
+no_section_directions no_section.texi -init test_directions.init
+no_node no_node.texi
+no_node_directions no_node.texi -init test_directions.init
+no_node_chapter_split no_node.texi -split chapter
+no_section_no_top no_section_no_top.texi
+one_section one_section.texi
+one_node one_node.texi
+one_node_and_section one_node_and_section.texi
+first_section_and_nodes first_section_and_nodes.texi
+double_top double_top.texi
+rec_nodes rec_nodes.texi
+makeinfo_rec_nodes rec_nodes.texi -init makeinfo.init -no-node-files
+lower_subsub lower_subsub.texi
+raiselowersections raiselowersections.texi
+top_without_node top_without_node.texi
+before_node_and_section before_node_and_section.texi
+section_before_chapter section_before_chapter.texi
+node_footnote_end node_footnote.texi --footnote-style=end
+node_footnote_use_node node_footnote.texi -use-node -node-files --footnote-style=end -split node
+test_refs test_refs.texi
+test_refs_chapter test_refs.texi -split chapter
+test_refs_nodes test_refs.texi -split node -node-files -use-nodes
+at_commands_in_refs at_commands_in_refs.texi
+equivalent_nodes equivalent_nodes.texi
+html-top_no_Top_node html-top.texi
+menu-whitespace menu-whitespace.texi -init makeinfo.init
+menu-whitespace_xml menu-whitespace.texi -init xml.init
+#nodename_parentheses nodename_parentheses.texi
+nodes_id_docbook nodes_id.texi --init docbook.init

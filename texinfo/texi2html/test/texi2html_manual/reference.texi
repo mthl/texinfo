@@ -1,0 +1,67 @@
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here you can find the description on all
+@c   subs in the original Perl file.
+@c
+@c ========================================================
+@appendix Function Reference
+
+@menu
+* Refptocframe::           Print ToC Frame.
+* Refpphead::              Print page head.
+@end menu
+
+@c Global variables:
+@c T2H_USER which is created throught main part
+@c (texi2html.pl)
+@c You can use it. (On Windows? On Unix ?)
+@c --------------------------------------------------------
+@node Refptocframe,Refpphead,,Reference
+@appendixsec Print ToC Frame
+
+
+@defun T2H_DEFAULT_print_toc_frame (FileName)
+@sp 1
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+@end defun
+
+
+@c --------------------------------------------------------
+@node Refpphead,,Refptocframe,Reference
+@appendixsec Print Page Head
+@defun T2H_DEFAULT_print_page_head (FileName)
+@sp 1
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+@end defun

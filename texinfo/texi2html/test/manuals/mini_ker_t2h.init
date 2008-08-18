@@ -1,0 +1,26 @@
+$DO_SCONTENTS = 1;
+
+$print_Top		      = \&mini_ker_print_Top;
+
+sub mini_ker_print_Top
+{
+    my $fh = shift;
+    my $has_top_heading = shift;
+
+    # for redefining navigation buttons use:
+    # my $buttons = [...];
+    # as it is, 'Top', 'Contents', 'Index', 'About' are printed
+    my $buttons = \@MISC_BUTTONS;
+    &$print_head_navigation($fh, $buttons);
+    my $nw;
+        # top-level node is fully enclosed in @ifnothtml
+        # print fulltitle, subtitle, author, Overview
+        print $fh $Texi2HTML::TITLEPAGE;
+        if (@{$Texi2HTML::OVERVIEW})
+        {
+             print $fh '<h2> ' . &$I('Overview:') . "</h2>\n" . "<blockquote>\n";
+             my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
+             print $fh "</blockquote>\n";
+        }
+}
+

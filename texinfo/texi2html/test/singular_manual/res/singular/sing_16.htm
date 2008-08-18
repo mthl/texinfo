@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.1.3 The online help system</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.1.3 The online help system">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.1.3 The online help system">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="The-online-help-system"></a>
+<a name="SEC16"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_15.htm#The-SINGULAR-prompt" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.2 The SINGULAR prompt" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_17.htm#Interrupting-SINGULAR" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.4 Interrupting SINGULAR" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">3.1.3 The online help system</h3>
+
+<p>The online help system is invoked with the <code>help</code> command.
+<code>?</code> may be used as a synonym for <code>help</code>.  Simply typing
+<code>help;</code> displays the &ldquo;top&rdquo; of the help system (i.e., the title
+page of the <small>SINGULAR</small> manual) which offers a
+short table of contents.  Typing <code>help</code> topic<code>;</code> shows the
+available documentation on topic.  Here, topic may be either a function
+name or, more generally, any index entry of the <small>SINGULAR</small>
+manual. Furthermore, topic may contain wildcard characters.
+See <a href="sing_198.htm#help">help</a>, for more information.
+</p>
+<a name="IDX18"></a>
+<a name="IDX19"></a>
+<p>Online help information can be displayed in various help browsers. The
+following table lists a summary of the supported browsers. See below for
+more details about particular browsers.
+</p>
+<table>
+<tr><td width="20%"><p> <strong>Browser</strong> </p></td><td width="20%"><p> <strong>Platform</strong>
+</p></td><td width="60%"><p> <strong>Description</strong>
+</p>
+</td></tr>
+<tr><td width="20%"><p> html
+<a name="IDX20"></a>
+<a name="IDX21"></a>
+</p></td><td width="20%"><p> Windows
+</p></td><td width="60%"><p> displays html version of manual in your default html browser
+</p>
+</td></tr>
+<tr><td width="20%"><p> winhlp
+<a name="IDX22"></a>
+<a name="IDX23"></a>
+</p></td><td width="20%"><p> Windows
+</p></td><td width="60%"><p> displays Windows help (.hlp) version of manual
+</p>
+</td></tr>
+<tr><td width="20%"><p> netscape
+<a name="IDX24"></a>
+<a name="IDX25"></a>
+</p></td><td width="20%"><p> Unix, Windows
+</p></td><td width="60%"><p> uses <code>netscape</code> to display html version of manual
+</p>
+</td></tr>
+<tr><td width="20%"><p> tkinfo
+<a name="IDX26"></a>
+<a name="IDX27"></a>
+</p></td><td width="20%"><p> Unix
+</p></td><td width="60%"><p> uses the <code>tkinfo</code> program to display texinfo version of manual
+</p>
+</td></tr>
+<tr><td width="20%"><p> xinfo
+<a name="IDX28"></a>
+<a name="IDX29"></a>
+</p></td><td width="20%"><p> Unix, Windows
+</p></td><td width="60%"><p> uses the <code>info</code> program to display texinfo version of manual in an
+extra <code>xterm</code>
+</p>
+</td></tr>
+<tr><td width="20%"><p> info
+<a name="IDX30"></a>
+<a name="IDX31"></a>
+</p></td><td width="20%"><p> Unix, Windows
+</p></td><td width="60%"><p> uses the <code>info</code> program to display texinfo version of manual
+</p>
+</td></tr>
+<tr><td width="20%"><p> builtin
+<a name="IDX32"></a>
+</p></td><td width="20%"><p> all
+</p></td><td width="60%"><p> simply outputs the help information in plain ASCII format
+</p>
+</td></tr>
+<tr><td width="20%"><p> emacs
+<a name="IDX33"></a>
+</p></td><td width="20%"><p> Unix, Windows
+</p></td><td width="60%"><p> when running <small>SINGULAR</small> within (X)emacs, display help in
+(X)emacs info buffer.
+</p>
+</td></tr>
+<tr><td width="20%"><p> dummy
+</p></td><td width="20%"><p> all
+<a name="IDX34"></a>
+</p></td><td width="60%"><p> displays error message about no available help browser
+</p></td></tr>
+</table>
+
+<p>The browser which is used to display the help information, can be either
+set at startup time with the command line option  (see <a href="sing_19.htm#Command-line-options">Command line options</a>)
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">--brower=&lt;browser&gt;
+</pre></td></tr></table>
+<p>or with the <small>SINGULAR</small> command (see <a href="sing_280.htm#system">system</a>)
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;--browser&quot;, &lt;browser&gt;);
+</pre></td></tr></table>
+<p>The  <small>SINGULAR</small> command
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;browsers&quot;);
+</pre></td></tr></table>
+<p>lists all available browsers and the command
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;--browser&quot;);
+</pre></td></tr></table>
+<p>returns the currently used browser.
+</p>
+<p>If no browser is explicitly set by the user, then the first (w.r.t. the
+order of the browsers in the table above) available browser is
+chosen. In other words, the default browser is <code>netscape</code> for Unix
+platforms, and <code>html</code> for Windows, unless
+your local set-up does not allow to run it.
+</p>
+<p>The <code>.singularrc</code> (see <a href="sing_20.htm#Startup-sequence">Startup sequence</a>) file is a good place
+to set your default browser. Recall that if a file
+<code>$HOME/.singularrc</code> exists on your system, then the content of this
+file is executed before the first user input. Hence, putting
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // keep backwards-compatibility
+{
+  if (! system(&quot;--emacs&quot;)
+  {
+    // only set help browser if not running within emacs
+    system(&quot;--browser&quot;, &quot;info&quot;);
+  }
+  // if help browser is later on set to netscape,
+  // allow it to fetch HTML pages from the net
+  system(&quot;--allow-net&quot;, 1);
+}; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
+</pre></td></tr></table>
+<p>in your file <code>$HOME/.singularrc</code> sets your default browser to
+<code>info</code>, unless <small>SINGULAR</small> is run within emacs (in which case the
+default browser is set automatically to <code>emacs</code>).
+</p>
+
+<p>Obviously, certain external files and programs are required for the
+<small>SINGULAR</small> help system to work correctly. If something is not available
+or goes wrong, here are some tips for troubleshooting the help system:
+</p>
+<ul>
+<li>
+<a name="IDX35"></a>
+<a name="IDX36"></a>
+Under Unix, the environment variable <code>DISPLAY</code> has to be set for
+the browsers <code>netscape</code>, <code>tkinfo</code>, and <code>xinfo</code> to work.
+
+</li><li>
+<a name="IDX37"></a>
+<a name="IDX38"></a>
+<a name="IDX39"></a>
+<a name="IDX40"></a>
+<a name="IDX41"></a>
+The help browsers <code>netscape</code>, <code>tkinfo</code>, <code>xinfo</code>, and
+<code>info</code> are only available if the respective programs are installed
+on your system (for <code>xinfo</code>, the programs <code>xterm</code> and
+<code>info</code> are necessary). You can explicitly specify which program to
+use, by setting appropriate environment variables (whose names
+are the names of the respective programs in all up-case letters).
+<br>For example,
+to use the program <code>navigator</code> with a private colormap as
+<code>netscape</code> help browser, set the environment variable
+<code>NETSCAPE</code> to the value
+<code>&quot;navigator -install&quot;</code>.
+
+</li><li>
+If the help browser <code>netscape</code> can not find the local html
+pages of the <small>SINGULAR</small> manual (which it looks for at
+<code>$RootDir/html</code> &ndash; see <a href="sing_47.htm#Loading-of-a-library">Loading of a library</a> for more info on
+<code>$RootDir</code>) <em>and</em> the (command-line) option <code>--allow-net</code>
+has <em>explicitly</em> been set (see <a href="sing_19.htm#Command-line-options">Command line options</a> and
+<a href="sing_280.htm#system">system</a> for more info on
+setting values of command-line options), then it dispatches the html
+pages from
+<a href="http://www.singular.uni-kl.de/Manual">http://www.singular.uni-kl.de/Manual</a> (note that
+the non-local net-access of HTML pages is disabled, by default).
+<br>An
+alternative location of a local directory where the html pages reside
+can be specified by setting the environment variable
+<code>SINGULAR_HTML_DIR</code>.
+
+</li><li>
+The help browsers <code>tkinfo</code>, <code>xinfo</code>, <code>info</code>, and
+<code>builtin</code> need the (info) file <code>singular.hlp</code> which it looks
+for at <code>$RootDir/info/singular.hlp</code> (see <a href="sing_47.htm#Loading-of-a-library">Loading of a library</a>
+for more info on <code>$RootDir</code>).  An alternative
+location of the info file of the manual can be specified by setting the
+environment variable <code>SINGULAR_INFO_FILE</code>.
+</li></ul>
+
+<p><strong>See also:</strong>
+<a href="sing_19.htm#Command-line-options">Command line options</a>;
+<a href="sing_47.htm#Loading-of-a-library">Loading of a library</a>;
+<a href="sing_20.htm#Startup-sequence">Startup sequence</a>;
+<a href="sing_280.htm#system">system</a>.
+</p>
+<a name="HEAD7"></a>
+<h4 class="subsubheading">Info help browsers</h4>
+<a name="IDX42"></a>
+
+<p>The help browsers <code>tkinfo</code>, <code>xinfo</code> and <code>info</code> (so-called
+info help browsers) are based on the
+<code>info</code> program from the Gnu <code>texinfo</code> package.  See <a href="../info/index.html#Top">An Introduction to Info: (info)Top</a> section &lsquo;Getting started&rsquo; in <cite>The Info Manual</cite>, for more
+information.
+</p>
+<p>For info help browsers, the online manual is decomposed into &ldquo;nodes&rdquo;
+of information, closely
+related to the division of the printed manual into sections and
+subsections.  A node contains text describing a specific topic at a
+specific level of detail.  The top line of a node is its &ldquo;header&rdquo;.
+The node&rsquo;s header tells the name of the current node (<code>Node:</code>), the
+name of the next node (<code>Next:</code>), the name of the previous node
+(<code>Prev:</code>), and the name of the upper node (<code>Up:</code>).
+</p>
+<p>To move within info, type commands consisting of single characters.  Do
+not type <code>RETURN</code>.  Do not use cursor keys, either.  Using some of
+the cursor keys by accident might pop to some totally different node.
+Type <code>l</code> to return to the original node.  Some of the <code>info</code>
+commands read input from the command line at the bottom line.  The
+<code>TAB</code> key may be used to complete partially entered input.
+</p>
+<p>The most important commands are:
+</p><dl compact="compact">
+<dt> <code>q</code></dt>
+<dd><p>leaves the online help system
+</p></dd>
+<dt> <code>n</code></dt>
+<dd><p>goes to the next node
+</p></dd>
+<dt> <code>p</code></dt>
+<dd><p>goes to the previous node
+</p></dd>
+<dt> <code>u</code></dt>
+<dd><p>goes to the upper node
+</p></dd>
+<dt> <code>m</code></dt>
+<dd><p>picks a menu item specified by name
+</p></dd>
+<dt> <code>f</code></dt>
+<dd><p>follows a cross reference
+</p></dd>
+<dt> <code>l</code></dt>
+<dd><p>goes to the previously visited node
+</p></dd>
+<dt> <code>b</code></dt>
+<dd><p>goes to the beginning of the current node
+</p></dd>
+<dt> <code>e</code></dt>
+<dd><p>goes to the end of the current node
+</p></dd>
+<dt> <code>SPACE</code></dt>
+<dd><p>scrolls forward a page
+</p></dd>
+<dt> <code>DEL</code></dt>
+<dd><p>scrolls backward a page
+</p></dd>
+<dt> <code>h</code></dt>
+<dd><p>invokes info tutorial (use <code>l</code> to return to the manual or
+<code>CTRL-X 0</code> to remove extra window)
+</p></dd>
+<dt> <code>CTRL-H</code></dt>
+<dd><p>shows a short overview on the online help system (use <code>l</code> to return
+to the manual or <code>CTRL-X 0</code> to remove extra window)
+</p></dd>
+<dt> <code>s</code></dt>
+<dd><p>searches through the manual for a specified string, and selects the node in
+which the next occurrence is found
+</p></dd>
+<dt> <code>1</code>, &hellip;, <code>9</code></dt>
+<dd><p>picks i-th subtopic from a menu
+</p></dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_15.htm#The-SINGULAR-prompt" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.2 The SINGULAR prompt" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_17.htm#Interrupting-SINGULAR" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.4 Interrupting SINGULAR" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

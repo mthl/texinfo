@@ -1,0 +1,101 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nodes_id.info
+
+@node Top
+@top Test nodes before constructs for docbook id construction
+
+@menu
+* node1::
+* node2::
+* node3::
+* node4::
+* node5::
+* node6::
+* node7::
+* node8::
+* node9::
+* node10::
+* node11::
+* node12::
+* node13::
+* node14::
+@end menu
+
+
+@node node1,,Top,Top
+
+Text.
+
+@node node2,,,Top
+
+@table @asis
+@item table
+descr
+@end table
+
+@node node3,,,Top
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@node node4,,,Top
+
+@inforef{chapter, cross ref name, file name}
+
+@node node5,,,Top
+
+@xref{node4, cross ref name, title, file name, manual}.
+
+@node node6,,,Top
+
+@xref{node5}.
+
+@node node7,,,Top
+
+@cartouche 
+cartouche
+@end cartouche
+
+@node node8,,,Top
+
+@itemize
+@item item
+@end itemize
+
+@node node9,,,Top
+
+@code{some code}.
+
+@node node10,,,Top
+
+@group
+@example
+example
+@end example
+@end group
+
+@node node11,,,Top
+
+@footnote{@cite{footnote}}.
+
+@node node12,,,Top
+
+@float Text
+float
+@caption{Caption}
+@end float
+
+@node node13,,,Top
+
+@subheading subheading
+
+@node node14,,,Top
+
+@image{image}.
+
+@bye

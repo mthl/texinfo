@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 13.10.1 Footnote Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 13.10.1 Footnote Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.10.1 Footnote Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Footnote-Commands"></a>
+<a name="SEC179"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Footnotes.html#Footnotes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Footnote-Styles.html#Footnote-Styles" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Insertions.html#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Footnotes.html#Footnotes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h3 class="subsection">13.10.1 Footnote Commands</h3>
+
+<p>In Texinfo, footnotes are created with the <code>@footnote</code> command.
+This command is followed immediately by a left brace, then by the text
+of the footnote, and then by a terminating right brace.  Footnotes may
+be of any length (they will be broken across pages if necessary), but
+are usually short.  The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</pre></td></tr></table>
+
+<p>As shown here, the <code>@footnote</code> command should come right after the
+text being footnoted, with no intervening space; otherwise, the footnote
+marker might end up starting a line.
+</p>
+<p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
+this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source&hellip;
+</pre></td></tr></table>
+
+<p>As you can see, the source includes two punctuation marks next to each
+other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal (the
+first ends the footnote and the second belongs to the sentence being
+footnoted), so don&rsquo;t worry that it looks odd.
+</p>
+<p>In a printed manual or book, the reference mark for a footnote is a
+small, superscripted number; the text of the footnote appears at the
+bottom of the page, below a horizontal line.
+</p>
+<p>In Info, the reference mark for a footnote is a pair of parentheses
+with the footnote number between them, like this: &lsquo;<samp>(1)</samp>&rsquo;.  The
+reference mark is followed by a cross-reference link to the footnote&rsquo;s
+text.
+</p>
+<p>In the HTML output, footnote references are marked with a small,
+superscripted number which is rendered as a hypertext link to the
+footnote text.
+</p>
+<p>By the way, footnotes in the argument of an <code>@item</code> command for a
+<code>@table</code> must be on the same line as the <code>@item</code>
+(as usual).  See section <a href="Two_002dcolumn-Tables.html#Two_002dcolumn-Tables">Making a Two-column Table</a>.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Footnotes.html#Footnotes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Footnote-Styles.html#Footnote-Styles" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Insertions.html#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Footnotes.html#Footnotes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

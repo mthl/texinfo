@@ -1,0 +1,18 @@
+recursive_copying.texi(,2) 
+recursive_copying.texi(,3) @setfilename recursive_copying.info
+recursive_copying.texi(,4) 
+recursive_copying.texi(,5) @copying
+recursive_copying.texi(,6) 
+recursive_copying.texi(,7) In copying.
+recursive_copying.texi(,8) 
+recursive_copying.texi(,9) @insertcopying
+recursive_copying.texi(,10) @end copying
+recursive_copying.texi(,11) 
+recursive_copying.texi(,12) @node Top
+recursive_copying.texi(,13) @top Test recursive copying
+recursive_copying.texi(,14) 
+recursive_copying.texi(,15) Test recursive copying.
+recursive_copying.texi(,16) 
+recursive_copying.texi(,17) @insertcopying
+recursive_copying.texi(,18) 
+recursive_copying.texi(,19) @bye

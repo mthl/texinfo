@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.1.5 Editing input</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.1.5 Editing input">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.1.5 Editing input">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Editing-input"></a>
+<a name="SEC18"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_17.htm#Interrupting-SINGULAR" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.4 Interrupting SINGULAR" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_19.htm#Command-line-options" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.6 Command line options" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">3.1.5 Editing input</h3>
+
+
+<p>The following keys can be used for editing the input and retrieving
+previous input lines:
+</p><dl compact="compact">
+<dt> <code>TAB</code></dt>
+<dd><p>provides command line completion for function names and file names
+</p></dd>
+<dt> <code>CTRL-B</code></dt>
+<dd><p>moves cursor left
+</p></dd>
+<dt> <code>CTRL-F</code></dt>
+<dd><p>moves cursor right
+</p></dd>
+<dt> <code>CTRL-A</code></dt>
+<dd><p>moves cursor to beginning of line
+</p></dd>
+<dt> <code>CTRL-E</code></dt>
+<dd><p>moves cursor to end of line
+</p></dd>
+<dt> <code>CTRL-D</code></dt>
+<dd><p>deletes character under cursor
+<br> Warning: on an empty line, <code>CTRL-D</code> is interpreted as the
+<code>EOF</code> character which immediately terminates <small>SINGULAR</small>.
+</p></dd>
+<dt> <code>BACKSPACE</code></dt>
+<dt> <code>DELETE</code></dt>
+<dt> <code>CTRL-H</code></dt>
+<dd><p>deletes character before cursor
+</p></dd>
+<dt> <code>CTRL-K</code></dt>
+<dd><p>kills from cursor to end of line
+</p></dd>
+<dt> <code>CTRL-U</code></dt>
+<dd><p>kills from cursor to beginning of line
+</p></dd>
+<dt> <code>CTRL-N</code></dt>
+<dd><p>saves current line on history and gives next line
+</p></dd>
+<dt> <code>CTRL-P</code></dt>
+<dd><p>saves current line on history and gives previous line
+</p></dd>
+<dt> <code>RETURN</code></dt>
+<dd><p>saves the current line to the history and
+sends it to the <small>SINGULAR</small> parser for interpretation
+</p></dd>
+</dl>
+
+<p>When run under a Unix-like operating system and in its ASCII-terminal
+user interface,   <small>SINGULAR</small> tries to dynamically link at runtime
+with the GNU Readline library. See <a href="../readline/Command-Line-Editing.html#Command-Line-Editing">GNU Readline Library: (readline)Command Line Editing</a> section &lsquo;Command Line Editing&rsquo; in <cite>The GNU Readline Library Manual</cite>, for more information. If a shared version of this library can
+be found on your machine, then additional command-line editing
+features like  history completion are available.
+In particular, if <small>SINGULAR</small> is able to load that library and
+if the environment
+variable <code>SINGULARHIST</code> is set and has a name of a file as value,
+then the input history is stored across sessions using this
+file. Otherwise, i.e., if the environment variable <code>SINGULARHIST</code>
+is not set, then the history of the last inputs is only available for
+the commands of the current session.
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_17.htm#Interrupting-SINGULAR" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.4 Interrupting SINGULAR" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_19.htm#Command-line-options" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.6 Command line options" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

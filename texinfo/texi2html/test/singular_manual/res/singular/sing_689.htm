@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.5.7 invariants</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.7 invariants">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.7 invariants">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="invariants"></a>
+<a name="SEC689"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_688.htm#displayHNE" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.6 displayHNE" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_690.htm#displayInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.8 displayInvariants" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.5.5.7 invariants</h4>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>invariants(INPUT); INPUT list or poly
+</p>
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>INPUT is the output of <code>develop(f)</code>, or of
+<code>extdevelop(develop(f),n)</code>, or one entry in the list <code>hne</code>
+of the HNEring created by <code>hnexpansion</code>.
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>list, if INPUT contains a valid HNE:
+</p><table><tr><td>&nbsp;</td><td><pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
+    invariants(INPUT)[2]:  intvec    (generators of the semigroup)
+    invariants(INPUT)[3]:  intvec    (Puiseux pairs, 1st components)
+    invariants(INPUT)[4]:  intvec    (Puiseux pairs, 2nd components)
+    invariants(INPUT)[5]:  int       (degree of the conductor)
+    invariants(INPUT)[6]:  intvec    (sequence of multiplicities)
+</pre></td></tr></table>
+<p>an empty list, if INPUT contains no valid HNE.
+</p>
+</dd>
+<dt> <strong>Assume:</strong></dt>
+<dd><p>INPUT is bivariate polynomial f or the output of <code>hnexpansion(f[,&quot;ess&quot;])</code>,
+or the list <code>hne</code> in the HNEring created by <code>hnexpansion</code>.
+</p>
+</dd>
+<dt> <strong>Return:</strong></dt>
+<dd><p>list INV, such that INV[i] is the output of <code>invariants(develop(f[i]))</code>
+as above, where f[i] is the ith branch of the curve f, and the last
+entry contains further invariants of f in the format:
+</p><table><tr><td>&nbsp;</td><td><pre class="format">    INV[i][1]    : intvec    (characteristic exponents)
+    INV[i][2]    : intvec    (generators of the semigroup)
+    INV[i][3]    : intvec    (Puiseux pairs, 1st components)
+    INV[i][4]    : intvec    (Puiseux pairs, 2nd components)
+    INV[i][5]    : int       (degree of the conductor)
+    INV[i][6]    : intvec    (sequence of multiplicities)
+    INV[last][1] : intmat    (contact matrix of the branches)
+    INV[last][2] : intmat    (intersection multiplicities of the branches)
+    INV[last][3] : int       (delta invariant of f)
+</pre></td></tr></table>
+
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>In case the Hamburger-Noether expansion of the curve f is needed
+for other purposes as well it is better to calculate this first
+with the aid of <code>hnexpansion</code> and use it as input instead of
+the polynomial itself.
+</p>
+<a name="IDX332"></a>
+<a name="IDX333"></a>
+<a name="IDX334"></a>
+<a name="IDX335"></a>
+<a name="IDX336"></a>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+ring exring=0,(x,y),dp;
+list hne=develop(y4+2x3y2+x6+x5y);
+list INV=invariants(hne);
+INV[1];                   // the characteristic exponents
+&rarr; 4,6,7
+INV[2];                   // the generators of the semigroup of values
+&rarr; 4,6,13
+INV[3],INV[4];            // the Puiseux pairs in packed form
+&rarr; 3,7 2,2
+INV[5] / 2;               // the delta-invariant
+&rarr; 8
+INV[6];                   // the sequence of multiplicities
+&rarr; 4,2,2,1,1
+// To display the invariants more 'nicely':
+displayInvariants(hne);
+&rarr;  characteristic exponents  : 4,6,7
+&rarr;  generators of semigroup   : 4,6,13
+&rarr;  Puiseux pairs             : (3,2)(7,2)
+&rarr;  degree of the conductor   : 16
+&rarr;  delta invariant           : 8
+&rarr;  sequence of multiplicities: 4,2,2,1,1
+/////////////////////////////
+INV=invariants((x2-y3)*(x3-y5));
+INV[1][1];                // the characteristic exponents of the first branch
+&rarr; 2,3
+INV[2][6];                // the sequence of multiplicities of the second branch
+&rarr; 3,2,1,1
+print(INV[size(INV)][1]);         // the contact matrix of the branches
+&rarr;      0     3
+&rarr;      3     0
+print(INV[size(INV)][2]);         // the intersection numbers of the branches
+&rarr;      0     9
+&rarr;      9     0
+INV[size(INV)][3];                // the delta invariant of the curve
+&rarr; 14
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_685.htm#develop">develop</a>;
+<a href="sing_690.htm#displayInvariants">displayInvariants</a>;
+<a href="sing_693.htm#intersection">intersection</a>;
+<a href="sing_691.htm#multsequence">multsequence</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_688.htm#displayHNE" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.6 displayHNE" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_690.htm#displayInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.8 displayInvariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

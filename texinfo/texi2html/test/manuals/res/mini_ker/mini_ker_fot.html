@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: Footnotes</title>
+
+<meta name="description" content="Miniker 102 manual: Footnotes">
+<meta name="keywords" content="Miniker 102 manual: Footnotes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="SEC_Foot"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1>Footnotes</h1>
+<h3><a name="FOOT1" href="A-model-description.html#DOCF1">(1)</a></h3>
+<p>In fact
+the variables names are transformed into fortran array elements
+by mortran generated macros, so the symbolic names defined in the
+mortran blocks never appears in the generated fortran code, they are
+replaced by the fortran arrays.
+</p><h3><a name="FOOT2" href="Setting-and-running-a-model.html#DOCF2">(2)</a></h3>
+<p>&lsquo;<tt>dres.data</tt>&rsquo; has another time related variable as second column:
+<a name="IDX20"></a>
+<a name="IDX21"></a>
+<code>dt</code>, the time step that can vary in the course of a simulation.
+</p><h3><a name="FOOT3" href="Rule-of-programming-non-continuous-models.html#DOCF3">(3)</a></h3>
+<p>This naming is a joke
+for &ldquo;Inert&rdquo; Heaviside function.
+</p><h3><a name="FOOT4" href="Explicit-model-size.html#DOCF4">(4)</a></h3>
+<p><code>fun_set</code>, or equivalently <code>f_set</code>, is a 
+general mortran macro associating a symbol with a fortran expression. 
+Here, it is the name of the symbol (<code>eta</code>) that has a particular meaning
+for the building of the model.
+</p><h3><a name="FOOT5" href="Sensitivities.html#DOCF5">(5)</a></h3>
+<p>For a short introduction to automatic 
+sensitivity analysis, see the document:<br>
+<a href="http://lmd.jussieu.fr/zoom/doc/sensibilite.ps">http://lmd.jussieu.fr/zoom/doc/sensibilite.ps</a>, in French,
+or ask for the more complete research document to a member of the TEF-ZOOM
+collaboration
+</p><h3><a name="FOOT6" href="Adjoint-model-and-optimisation.html#DOCF6">(6)</a></h3>
+<p>General Tangent Linear System, i.e. the TLS circulating along a trajectory.
+See the explanation in the document
+<a href="http://www.lmd.jussieu.fr/Zoom/doc/Adjoint.pdf">http://www.lmd.jussieu.fr/Zoom/doc/Adjoint.pdf</a> (in French).
+</p><h3><a name="FOOT7" href="Adjoint-model-and-optimisation.html#DOCF7">(7)</a></h3>
+<p>For detailed explanation of the adjoint model,
+see the document in 
+<a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">pdf</a>
+or <a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">.ps.gz</a>
+</p><h3><a name="FOOT8" href="Feedback-gain.html#DOCF8">(8)</a></h3>
+
+<p>More generally, the Borel sweep allows 
+the numerical study of the dependency in       &#x03C4; of the Borel transform 
+of various coefficients in the system coupling  matrix.
+</p><h3><a name="FOOT9" href="Stability-of-fastest-modes.html#DOCF9">(9)</a></h3>
+<p>Explanation in
+the research paper about SLTC (Al1 2003) available on request.
+</p><h3><a name="FOOT10" href="Generalized-TLS.html#DOCF10">(10)</a></h3>
+<p>cf our research texts about propagator analyses in
+SLTC, and &ldquo;les Gains sur champs (Al1 2003-2004)&rdquo;
+</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

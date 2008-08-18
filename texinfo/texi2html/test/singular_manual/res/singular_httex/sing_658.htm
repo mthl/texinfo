@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.4 gaussman_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.4 gaussman_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.4 gaussman_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="gaussman_005flib"></a>
+<a name="SEC658"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_657.htm#control_005fMatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.5 control_Matrix" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_659.htm#gmsring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.1 gmsring" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_630.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">D.5.4 gaussman_lib</h3>
+<dl compact="compact">
+<dt> <strong>Library:</strong></dt>
+<dd><p>gaussman.lib
+</p></dd>
+<dt> <strong>Purpose:</strong></dt>
+<dd><p>  Algorithmic Gauss-Manin Connection
+</p>
+</dd>
+<dt> <strong>Author:</strong></dt>
+<dd><p>Mathias Schulze, email: mschulze@mathematik.uni-kl.de
+</p>
+</dd>
+<dt> <strong>Overview:</strong></dt>
+<dd><p>A library to compute Hodge-theoretic invariants
+<br>of isolated hypersurface singularities
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_659.htm#gmsring">D.5.4.1 gmsring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin system of t with variable s
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_660.htm#gmsnf">D.5.4.2 gmsnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin normal form of p
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_661.htm#gmscoeffs">D.5.4.3 gmscoeffs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin basis representation of p
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_662.htm#bernstein">D.5.4.4 bernstein</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> roots of the Bernstein polynomial of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_663.htm#monodromy">D.5.4.5 monodromy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan data of complex monodromy of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_664.htm#spectrum">D.5.4.6 spectrum</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> singularity spectrum of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_665.htm#sppairs">D.5.4.7 sppairs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectral pairs of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_666.htm#spnf">D.5.4.8 spnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectrum normal form of (a,m,V)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_667.htm#sppnf">D.5.4.9 sppnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectral pairs normal form of (a,w,m,V)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_668.htm#vfilt">D.5.4.10 vfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> V-filtration of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_669.htm#vwfilt">D.5.4.11 vwfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> weighted V-filtration of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_670.htm#tmatrix">D.5.4.12 tmatrix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> C[[s]]-matrix of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_671.htm#endvfilt">D.5.4.13 endvfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> endomorphism V-filtration on Jacobian algebra
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_672.htm#spprint">D.5.4.14 spprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_673.htm#sppprint">D.5.4.15 sppprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print spectral pairs spp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_674.htm#spadd">D.5.4.16 spadd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sum of spectra sp1 and sp2
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_675.htm#spsub">D.5.4.17 spsub</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> difference of spectra sp1 and sp2
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_676.htm#spmul">D.5.4.18 spmul</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> linear combination of spectra sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_677.htm#spissemicont">D.5.4.19 spissemicont</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> semicontinuity test of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_678.htm#spsemicont">D.5.4.20 spsemicont</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> semicontinuous combinations of spectra sp0 in sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_679.htm#spmilnor">D.5.4.21 spmilnor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Milnor number of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_680.htm#spgeomgenus">D.5.4.22 spgeomgenus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> geometrical genus of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_681.htm#spgamma">D.5.4.23 spgamma</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gamma invariant of spectrum sp
+</td></tr>
+</table></blockquote>
+<a name="IDX262"></a>
+<a name="IDX263"></a>
+<a name="IDX264"></a>
+<a name="IDX265"></a>
+<a name="IDX266"></a>
+<a name="IDX267"></a>
+<a name="IDX268"></a>
+<a name="IDX269"></a>
+<a name="IDX270"></a>
+<p><strong>See also:</strong>
+<a href="sing_704.htm#mondromy_005flib">mondromy_lib</a>;
+<a href="sing_750.htm#spectrum_005flib">spectrum_lib</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_657.htm#control_005fMatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.5 control_Matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_659.htm#gmsring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.1 gmsring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

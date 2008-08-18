@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.101 quot</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.101 quot">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.101 quot">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="quot"></a>
+<a name="SEC256"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_255.htm#qhweight" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.100 qhweight" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_257.htm#quote" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.102 quote" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">5.1.101 quot</h3>
+<p>Procedure from library <code>standard.lib</code> (see <a href="sing_390.htm#standard_005flib">standard_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Syntax:</strong></dt>
+<dd><p><code>quot (</code> module_expression<code>,</code> module_expression <code>)</code>
+<br><code>quot (</code> module_expression<code>,</code> module_expression<code>,</code>
+int_expression <code>)</code>
+<br><code>quot (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>quot (</code> ideal_expression<code>,</code> ideal_expression<code>,</code>
+int_expression <code>)</code>
+</p>
+</dd>
+<dt> <strong>Type:</strong></dt>
+<dd><p>ideal
+</p>
+</dd>
+<dt> <strong>Syntax:</strong></dt>
+<dd><p><code>quot (</code> module_expression<code>,</code> ideal_expression <code>)</code>
+</p>
+</dd>
+<dt> <strong>Type:</strong></dt>
+<dd><p>module
+</p>
+</dd>
+<dt> <strong>Purpose:</strong></dt>
+<dd><p>computes the quotient of the 1st and the 2nd argument.
+If a 3rd argument &rsquo;n&rsquo; is given the n-th method is used
+(n=1...5).
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=181,(x,y,z),(c,ls);
+ideal id1=maxideal(4);
+ideal id2=x2+xyz,y2-z3y,z3+y5xz;
+option(prot);
+ideal id3=quotient(id1,id2);
+&rarr; [1023:1]4(14)s(13)s(12)s(11)s(10)s(9)s(8)s(7)s(6)s(5)s(4)s(3)s(2)sss
+&rarr; product criterion:12 chain criterion:0
+&rarr; {3}[1023:3]8(2)s(4)s(5)s9s.s.s.s.s.s
+&rarr; product criterion:0 chain criterion:39
+id3;
+&rarr; id3[1]=z2
+&rarr; id3[2]=yz
+&rarr; id3[3]=y2
+&rarr; id3[4]=xz
+&rarr; id3[5]=xy
+&rarr; id3[6]=x2
+ideal id4=quot(id1,id2,1);
+&rarr; [1023:2]4(14)s(13)s(12)s(11)s(10)s(9)s(8)s(7)s(6)s(5)s(4)s(3)s(2)sss
+&rarr; product criterion:0 chain criterion:0
+&rarr; (S:3)rtrtrt
+&rarr; {1}[1023:3]4(2)s(4)s(5)s5s.s(3)s(2)sss
+&rarr; product criterion:0 chain criterion:39
+&rarr; {1}[1023:3]4(5)s(4)s(3)s(2)sss
+&rarr; product criterion:0 chain criterion:9
+&rarr; [255:3]3(11)s(10)sss(9)s(10)s(8)ss(7)s(8)s(6)s(7)s4(5)-----
+&rarr; product criterion:12 chain criterion:9
+&rarr; {1}[1023:3]4(2)sss
+&rarr; product criterion:0 chain criterion:12
+&rarr; [255:3]2(8)s(7)s(6)s3(5)ssssss4-----
+&rarr; product criterion:15 chain criterion:3
+id4;
+&rarr; id4[1]=z2
+&rarr; id4[2]=yz
+&rarr; id4[3]=xz
+&rarr; id4[4]=y2
+&rarr; id4[5]=xy
+&rarr; id4[6]=x2
+ideal id5=quot(id1,id2,2);
+&rarr; [1023:2]4(14)s(13)s(12)s(11)s(10)s(9)s(8)s(7)s(6)s(5)s(4)s(3)s(2)sss
+&rarr; product criterion:0 chain criterion:0
+&rarr; (S:3)rtrtrt
+&rarr; {1}[1023:3]4(2)sss
+&rarr; product criterion:0 chain criterion:12
+&rarr; {1}[1023:3]4(5)s(4)s(3)s(2)sss
+&rarr; product criterion:0 chain criterion:9
+&rarr; [255:3]2(8)s(7)s(6)s3(5)s(4)s(3)s(2)sss
+&rarr; product criterion:15 chain criterion:0
+id5;
+&rarr; id5[1]=z2
+&rarr; id5[2]=yz
+&rarr; id5[3]=xz
+&rarr; id5[4]=y2
+&rarr; id5[5]=xy
+&rarr; id5[6]=x2
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_258.htm#quotient">quotient</a>.
+</p>
+
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_255.htm#qhweight" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.100 qhweight" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_257.htm#quote" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.102 quote" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5. Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6. Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+@comment -*-texinfo-*-
+@comment Id: INSTALL_rpm.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
+@c FILE: INSTALL_rpm.texi
+@c PURPOSE: Installation instruction for Singular on RPM based Linux systems
+@c
+
+@ifclear VERSION
+@include version.texi
+@end ifclear
+
+@ifclear singularmanual
+@majorheading Installation of @sc{Singular} @value{RPM_VERSION} on @sc{rpm} based @sc{Linux} systems
+@end ifclear
+
+@sc{rpm} is a powerful package manager, which can be used to build, install, query, verify, update, and erase individual software packages.
+@sc{Singular} can be installed on an @sc{rpm} based @sc{Linux} system.
+The installation of @sc{Singular} on a general @sc{Unix} system is described in @code{INSTALL_unix}.
+
+@heading @sc{Singular} @sc{rpm} packages
+
+There are the following @sc{Singular} @sc{rpm} packages.
+
+@table @code
+@item @uref{Singular-@value{RPM_VERSION}-1.i386.rpm}
+contains architecture dependend executables like the Singular program.
+@item @uref{Singular-static-@value{RPM_VERSION}-1.i386.rpm}
+contains the static version of the architecture dependend executables.
+@item @uref{Singular-share-@value{RPM_VERSION}-1.noarch.rpm}
+contains architecture independend data like documentation and libraries.
+@item @uref{Singular-desktop-@value{RPM_VERSION}-1.noarch.rpm}
+contains icons and menues for @sc{gnome} and @sc{kde}.
+@end table
+
+The above @sc{rpm} packages are available at
+@display
+@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX}.
+@end display
+
+@include register.texi
+
+@heading Usage of @sc{rpm} packages
+@enumerate
+@item
+You can only use the @sc{Singular} @sc{rpm} packages for an @sc{rpm} based @sc{Linux} system like @sc{RedHat Linux} or @sc{SuSE Linux}.
+You can check this by typing 
+@smallexample
+rpm
+@end smallexample
+in a command shell. This should produce an output like
+@smallexample
+RPM Version 4.0.3
+Copyright (C) 1998-2000 - Red Hat, Inc.
+This program may be freely redistributed under the terms of the GNU GPL
+
+Usage: rpm @{--help@}
+       rpm @{--version@}
+@end smallexample
+@item
+To deal with @sc{rpm} packages, you can either use the @sc{rpm} command line tool @code{rpm} or a graphical @sc{rpm} frontend like e.g. @code{gnorpm} under @sc{gnome} or @code{kpackage} under @sc{kde}.
+For a description of the usage of @code{rpm}, type 
+@smallexample
+rpm -h
+@end smallexample
+in a command shell.
+@item
+To install or deinstall @sc{rpm} packages, you have to be superuser.
+To become superuser, type
+@smallexample
+su
+@end smallexample
+in a command shell and enter the root password.
+@end enumerate
+
+
+@heading Installation of @sc{Singular} @sc{rpm} packages
+
+In the following, we describe how to install @sc{Singular} using the @sc{rpm} command line tool @code{rpm}.
+Alternatively, you can use a graphical @sc{rpm} frontend like e.g. @code{gnorpm} under @sc{gnome} or @code{kpackage} under @sc{kde}.
+
+@enumerate
+@item
+The installation requires about 20MB of free disk space under @code{/opt}.
+You can check the free disk space by typing
+@smallexample
+df -h
+@end smallexample
+in a command shell.
+@item
+Different versions of @sc{Singular} @sc{rpm} packages coexist without conflicts.
+@item
+To install the @sc{Singular} binary @sc{rpm} package, type
+@smallexample
+rpm -ivh Singular-@value{RPM_VERSION}-1.i386.rpm
+@end smallexample
+in a command shell.
+
+This requires several shared libraries.
+If these are not present in your system, @code{rpm} will give an error report.
+In this case, you have to install @sc{rpm} packages providing these shared libraries and retry.
+Alternatively, you can install the @sc{Singular} static binary @sc{rpm} package by typing
+@smallexample
+rpm -ivh Singular-static-@value{RPM_VERSION}-1.i386.rpm
+@end smallexample
+in a command shell.
+@item
+To install the @sc{Singular} shared @sc{rpm} package, type
+@smallexample
+rpm -ivh Singular-share-@value{RPM_VERSION}-1.noarch.rpm
+@end smallexample
+in a command shell.
+@item
+To install a @sc{Singular} menu @sc{rpm} package, @sc{gnome} or @sc{kde} have to be installed.
+Type
+@smallexample
+rpm -ivh Singular-desktop-@value{RPM_VERSION}-1.noarch.rpm
+@end smallexample
+in a command shell.
+@item
+To deinstall a @sc{Singular} @sc{rpm} package, type
+@smallexample
+rpm -e Singular-...-@value{RPM_VERSION}
+@end smallexample
+in a command shell.
+@end enumerate
+
+@heading Starting @sc{Singular}
+@enumerate
+@item
+To run @sc{Singular} @value{RPM_VERSION}, type
+@smallexample
+Singular-@value{VERSION}
+@end smallexample
+in a command shell.
+To run @sc{Singular} @value{RPM_VERSION} under @sc{Emacs}, type
+@smallexample
+ESingular-@value{VERSION}
+@end smallexample
+in a command shell.
+@item
+There is a menu @code{Singular @value{RPM_VERSION}} in the @sc{gnome} and @sc{kde} menu with menu items @code{TSingular}, @code{ESingular}, and @code{Manual}.
+Click on the menu item @code{TSingular} to run @sc{Singular} @value{RPM_VERSION} in a terminal, on the menu item @code{ESingular} to run @sc{Singular} @value{RPM_VERSION} under @sc{Emacs}, and on the menu item @code{Manual} to read the @sc{Singular} @value{RPM_VERSION} manual.
+@end enumerate
+
+
+@include info.texi
+
+@ifclear singularmanual
+Good luck and enjoy! Your @sc{Singular} team.
+@end ifclear

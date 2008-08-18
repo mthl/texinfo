@@ -1,0 +1,41 @@
+imbricated_macros.texi(,2) 
+imbricated_macros.texi(,3) @setfilename imbricated_macros
+imbricated_macros.texi(,4) 
+imbricated_macros.texi(,5) @node Top
+imbricated_macros.texi(,6) 
+imbricated_macros.texi(,13) 
+imbricated_macros.texi(,17) 
+imbricated_macros.texi(,22) 
+imbricated_macros.texi(,29) 
+imbricated_macros.texi(,30) @c the arguments are broken at , before macro expansion 
+imbricated_macros.texi(,31) @c @ protect the following @.
+imbricated_macros.texi(,32) @c 
+imbricated_macros.texi(macro3,33) a, coucou  after arg
+imbricated_macros.texi(macro3,33) text for macro2
+imbricated_macros.texi(macro3,33) &&&& 
+imbricated_macros.texi(,34) 
+imbricated_macros.texi(,35) @c the macro inside @macro1 is expanded before the remaining args
+imbricated_macros.texi(,36) @c are appended.
+imbricated_macros.texi(,37) 
+imbricated_macros.texi(macro3,38) a, macro2text for macro2
+imbricated_macros.texi(macro3,38) &&&& 
+imbricated_macros.texi(,39) 
+imbricated_macros.texi(macro3,61) @verb{% @macro2 %}
+imbricated_macros.texi(macro3,61) @c @macro4
+imbricated_macros.texi(macro3,61) @pagesizes 4 @macro4
+imbricated_macros.texi(macro3,61) @headings doubleafter @macro4
+imbricated_macros.texi(macro3,61) @verbatim
+imbricated_macros.texi(macro3,61) @macro2
+imbricated_macros.texi(macro3,61) @end verbatim
+imbricated_macros.texi(macro3,61) macro7 defined
+imbricated_macros.texi(macro3,61) 1
+imbricated_macros.texi(macro3,61) 2
+imbricated_macros.texi(macro3,61) 3
+imbricated_macros.texi(macro3,61) 4
+imbricated_macros.texi(macro3,61) 
+imbricated_macros.texi(macro3,61) &&&& 
+imbricated_macros.texi(,62) 
+imbricated_macros.texi(,63) Call macro7
+imbricated_macros.texi(macro7,64) @emph{aaa}
+imbricated_macros.texi(,65) 
+imbricated_macros.texi(,66) @bye

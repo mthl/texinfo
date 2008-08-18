@@ -1,0 +1,174 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename value_in_misc.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+ }
+
+@set text atext
+
+@node Top
+@top top atext
+@subheading Comment like: atext
+
+Text line followed by a comment on the same line and another below @c comment @value{text}
+@c comment @value{text}
+
+@set pagesizes 200mm,150mm
+@set afourpaper_macro @afourpaper
+
+@pagesizes @value{pagesizes}
+@afourpaper
+@headings on line following headings @value{text}
+@oddfooting some text ignored @value{text}
+@everyheading on line following everyheading @value{text}
+
+@set need 0.1
+
+@need @value{need}
+
+@set raisesections_macro @raisesections
+@raisesections
+@set lowersections_macro @lowersections
+@lowersections
+
+@c tex error: Use of \ doesn't match its definition.
+@@definfoenclose phoo,//,\\  
+//bar\\
+
+@set definfoenclose_name phi
+phi,:,:
+
+
+@phi{bar}
+
+@set strong_macro @strong
+@set strong_name strong
+
+@strong{very strong}
+
+strong,(strong:,:)
+
+@strong{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@set kbdinputstyle_arg code
+@kbdinputstyle @value{kbdinputstyle_arg}
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+@set asis_arg asis
+@set zero 0
+@set none_arg none
+@set four 4
+@set six 6
+
+@paragraphindent @value{asis_arg}
+@paragraphindent @value{zero}
+@paragraphindent @value{none_arg}
+@paragraphindent @value{four}
+@firstparagraphindent @value{none_arg}
+@exampleindent @value{six}
+
+@set end_arg end
+@set separate_arg separate 
+@footnotestyle @value{end_arg}
+@footnotestyle @value{separate_arg}
+
+@set latin1 ISO-8859-1
+@documentencoding @value{latin1}
+
+@set on_arg on
+@set off_arg off
+@frenchspacing @value{on_arg}
+@frenchspacing @value{off_arg}
+
+@c accepts 10 or 11
+@set ten 10
+@fonttextsize @value{ten}
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@set false_arg false
+@set true_arg true
+@allowcodebreaks @value{false_arg}
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@allowcodebreaks @value{true_arg}
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@subheading command removed
+
+@finalout
+
+@set page_macro @page
+@set noindent_macro @noindent
+@set refill_macro @refill
+
+@@page @page @@noindent @noindent @@refill @refill something
+
+@noindent     noindent at beginning of line
+@noindent  
+noindent on the preceding line
+  @noindent    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @page   @@noindent @noindent    @@refill @refill
+
+@set contents_macro @contents
+@contents
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@set exdent_macro @exdent
+@exdent line after exdent
+
+And now sp:
+
+@set two 2
+@sp 2
+
+@set result_macro @result
+
+@clickstyle @value{result_macro}
+
+@menu
+* node atext::
+* bidule::
+* bidule2::
+@end menu
+
+
+@node node atext
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+@contents
+
+@node bidule
+@chapter bidule
+
+@set shortcontents_macro @shortcontents
+@shortcontents
+
+@node bidule2
+@chapter last
+
+@bye

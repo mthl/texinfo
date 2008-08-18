@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.2.6 ring_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.2.6 ring_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6 ring_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="ring_005flib"></a>
+<a name="SEC461"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_460.htm#randomBinomial" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.11 randomBinomial" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_462.htm#changechar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.1 changechar" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_391.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">D.2.6 ring_lib</h3>
+<dl compact="compact">
+<dt> <strong>Library:</strong></dt>
+<dd><p>ring.lib
+</p></dd>
+<dt> <strong>Purpose:</strong></dt>
+<dd><p>      Manipulating Rings and Maps
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_462.htm#changechar">D.2.6.1 changechar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> make a copy R of basering [ring r] with new char c
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_463.htm#changeord">D.2.6.2 changeord</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> make a copy R of basering [ring r] with new ord o
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_464.htm#changevar">D.2.6.3 changevar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> make a copy R of basering [ring r] with new vars v
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_465.htm#defring">D.2.6.4 defring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> define a ring R in specified char c, n vars v, ord o
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_466.htm#defrings">D.2.6.5 defrings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> define ring Sn in n vars, char 32003 [p], ord ds
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_467.htm#defringp">D.2.6.6 defringp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> define ring Pn in n vars, char 32003 [p], ord dp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_468.htm#extendring">D.2.6.7 extendring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> extend given ring by n vars v, ord o and name it R
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_469.htm#fetchall">D.2.6.8 fetchall</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> fetch all objects of ring R to basering
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_470.htm#imapall">D.2.6.9 imapall</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> imap all objects of ring R to basering
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_471.htm#mapall">D.2.6.10 mapall</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> map all objects of ring R via ideal i to basering
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_472.htm#ord_005ftest">D.2.6.11 ord_test</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test whether ordering of R is global, local or mixed
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_473.htm#ringtensor">D.2.6.12 ringtensor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> create ring R, tensor product of rings s,t,...
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_474.htm#ringweights">D.2.6.13 ringweights</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> intvec of weights of ring variables of ring r
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_460.htm#randomBinomial" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.11 randomBinomial" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_462.htm#changechar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.1 changechar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_391.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

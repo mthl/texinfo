@@ -1,0 +1,23 @@
+macro_in_menu.texi(,2) 
+macro_in_menu.texi(,8) 
+macro_in_menu.texi(,9) @node Top
+macro_in_menu.texi(,10) 
+macro_in_menu.texi(,11) @menu
+macro_in_menu.texi(themacro,12) * (gcc):: @html
+macro_in_menu.texi(themacro,12) bidule
+macro_in_menu.texi(themacro,12) @end html
+macro_in_menu.texi(,13) @end menu
+macro_in_menu.texi(,14) 
+macro_in_menu.texi(,15) Some text.
+macro_in_menu.texi(,16) 
+macro_in_menu.texi(,17) @menu
+macro_in_menu.texi(,18) * (manual):: desc
+macro_in_menu.texi(,19) comment
+macro_in_menu.texi(,20) * (info):: before verbatim @verbatim
+macro_in_menu.texi(,21) some @ verb{' atim
+macro_in_menu.texi(,22) * (texinfo):: in @ verbatim
+macro_in_menu.texi(,23) @end verbatim
+macro_in_menu.texi(,24) @end menu
+macro_in_menu.texi(,25) After menu
+macro_in_menu.texi(,26) 
+macro_in_menu.texi(,27) @bye

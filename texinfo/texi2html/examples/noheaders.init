@@ -85,8 +85,8 @@ sub T2H_NOHEAD_print_Top
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview
         # redo the titlepage with the actual state
-        my ($titlepage_text, $titlepage_no_texi) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-        &$titlepage([],$titlepage_text, $titlepage_no_texi); 
+        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
         print $fh $Texi2HTML::TITLEPAGE;
         if (@{$Texi2HTML::OVERVIEW})
         {

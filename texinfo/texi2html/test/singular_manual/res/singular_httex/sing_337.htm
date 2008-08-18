@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.6 Parameters</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.6 Parameters">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.6 Parameters">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Parameters"></a>
+<a name="SEC337"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_336.htm#Long-coefficients" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.5 Long coefficients" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_338.htm#T1-and-T2" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.7 T1 and T2" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">A.6 Parameters</h2>
+
+<p>Let us deform the above ideal now by introducing a parameter t
+and compute over the ground field Q(t).
+We compute the dimension at the generic point,
+i.e.,
+ <span 
+class="cmmi-10">dim</span><sub><span 
+class="cmmi-7">Q</span><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">t</span><span 
+class="cmr-7">)</span></sub><span 
+class="cmmi-10">Q</span>(<span 
+class="cmmi-10">t</span>)[<span 
+class="cmmi-10">x,y</span>]<span 
+class="cmmi-10">&#x2215;j</span>.  
+(This gives the
+same result as for the deformed ideal above. Hence, the above small
+deformation was &quot;generic&quot;.)
+</p>
+<p>For almost all
+ <span 
+class="cmmi-10">a </span><span 
+class="cmsy-10"><img 
+src="cmsy10-32.png" alt="&#x2208;" class="10x-x-32" /> </span><span 
+class="cmmi-10">Q </span> 
+this is the same as
+ <span 
+class="cmmi-10">dim</span><sub><span 
+class="cmmi-7">Q</span></sub><span 
+class="cmmi-10">Q</span>[<span 
+class="cmmi-10">x,y</span>]<span 
+class="cmmi-10">&#x2215;j</span><sub><span 
+class="cmr-7">0</span></sub>,  
+where
+ <span 
+class="cmmi-10">j</span><sub><span 
+class="cmr-7">0</span></sub> = <span 
+class="cmmi-10">j</span><span 
+class="cmsy-10">|</span><sub><span 
+class="cmmi-7">t</span><span 
+class="cmr-7">=</span><span 
+class="cmmi-7">a</span></sub>.  
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring Rt = (0,t),(x,y),lp;
+  Rt;
+&rarr; //   characteristic : 0
+&rarr; //   1 parameter    : t 
+&rarr; //   minpoly        : 0
+&rarr; //   number of vars : 2
+&rarr; //        block   1 : ordering lp
+&rarr; //                  : names    x y 
+&rarr; //        block   2 : ordering C
+  poly f = x5+y11+xy9+x3y9;
+  ideal i = jacob(f);
+  ideal j = i,i[1]*i[2]+t*x5y8;  // deformed ideal, parameter t
+  vdim(std(j));
+&rarr; 40
+  ring R=0,(x,y),lp;
+  ideal i=imap(Rt,i);
+  int a=random(1,30000);
+  ideal j=i,i[1]*i[2]+a*x5y8;  // deformed ideal, fixed integer a
+  vdim(std(j));
+&rarr; 40
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_336.htm#Long-coefficients" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.5 Long coefficients" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_338.htm#T1-and-T2" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.7 T1 and T2" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: B. Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: A. Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

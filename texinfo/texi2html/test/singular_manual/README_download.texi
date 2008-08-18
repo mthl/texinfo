@@ -1,0 +1,146 @@
+@comment -*-texinfo-*-
+@comment Id: README_download.texi,v 1.1 2003/08/08 14:27:06 pertusus Exp $
+@c FILE: README_download.texi
+@c PURPOSE: downloading instructions, to be includeded in manual and README_ftp
+@c
+
+@ifclear VERSION
+@include version.texi
+@end ifclear
+
+@heading To download @sc{Singular} for a Unix platform
+
+Make sure that you have approximately 20 MByte of free disk space and follow
+these steps.
+
+@enumerate
+@item
+You need to download two (archive) files:
+@table @code
+@item Singular-@value{VERSION}-share.tar.gz 
+contains architecture independent data like documentation and libraries
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-share.tar.gz}
+@item Singular-@value{VERSION}-<uname>.tar.gz
+contains architecture dependent executables, like the @sc{Singular}
+program.
+@end table
+@code{<uname>} is a description of the processor and operating
+system for which @sc{Singular} is compiled. Choose one of the following:
+@multitable @columnfractions .2 .8
+@item @code{ix86-Linux}
+@tab PC's running under Linux with @code{libc} version 6 (e.g., for SuSe
+Linux distribution version >= 6; RedHat Linux distribution version >= 5.2).
+@*
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-ix86-Linux.tar.gz}
+@item @code{ix86-Linux-libc5}
+@tab PC's running under Linux with @code{libc} version 5 (if you are not 
+sure which @code{libc} version you have, run @code{ldd /bin/ls}).
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-ix86-Linux-libc5.tar.gz}
+@item @code{ix86-freebsd}
+@tab 's running under FreeBSD
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-ix86-freebsd.tar.gz}
+@item @code{ix86-Win}
+@tab PC's running Windows 95/98/ME/NT/2K/XP which have Cygwin version 1.3.9 (or
+higher) already installed. Unless you are familiar with Cygwin, we
+recommend that you download one of the self-extracting archives as
+described below.
+@item @code{HPUX-9}
+@tab HP workstations running under HPUX version 9
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-HPUX-9.tar.gz}
+@item @code{HPUX-10}
+@tab HP workstations running under HPUX version 10
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-HPUX-10.tar.gz}
+@item @code{SunOS-5}
+@tab Sun workstations running Solaris version 5
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-SunOS-5.tar.gz}
+@item @code{IRIX-6}
+@tab IRIX workstations running IRIX version 6
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-IRIX-6.tar.gz}
+@item @code{AIX-4}
+@tab AIX workstations running AIX version 4
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-AIX-4.tar.gz}
+@item @code{PowerMacintosh-darwin}
+@tab PowerMacintosh running Mac OS X
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/OsX/Singular-@value{VERSION}-PowerMacintosh-darwin.tar.gz}
+@item @code{DecAlpha-Linux}
+@tab Digital Dec Alpha running Linux (RedHat 5.2)
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-DecAlpha-Linux.tar.gz}
+@item @code{DecAlpha-OSF1}
+@tab Digital Dec Alpha running OSF 1
+@*@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-@value{VERSION}-DecAlpha-OSF1.tar.gz}
+@end multitable
+Please contact us if
+you can not find an appropriate architecture dependent archive.
+
+@item
+Simply change to the directory in which you wish to install
+@sc{Singular} (usually wherever you install 3rd-party software):
+@smallexample
+cd /usr/local/	
+@end smallexample
+
+@sc{Singular} specific subdirectories will be created in such a way
+that multiple versions and multiple architecture dependent files
+of @sc{Singular} can peaceably coexist under the same @code{/usr/local/}
+tree.
+
+@item
+Unpack the archives:
+@smallexample
+gzip -dc Singular-@value{VERSION}-<uname>.tar.gz | tar -pxf -
+gzip -dc Singular-@value{VERSION}-share.tar.gz | tar -pxf -
+@end smallexample
+If you have downloaded @code{Singular-@value{VERSION}-share.zip},
+unpack with 
+@smallexample
+unzip -u Singular-@value{VERSION}-share.zip
+@end smallexample
+
+@item 
+After unpacking, see the created file
+@code{Singular/@value{VERSION}/INSTALL} (which is also located at
+@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/INSTALL_unix.html}
+for details on how to finish the installation.
+@end enumerate
+
+@heading To download @sc{Singular} for Windows 95/98/ME/NT/2K/XP
+
+@enumerate
+@item
+Download one of the following self-extracting archives:
+@table @code
+@item @uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/Singular-@value{VERSION}-Compact.exe,Singular-@value{VERSION}-Compact.exe}
+Minimal archive to download. Installs Singular and minimal set of needed
+tools and DLLs.
+@item @uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/Singular-@value{VERSION}-Typical.exe,Singular-@value{VERSION}-Typical.exe}
+Typical archive to download. Installs Singular and the XEmacs editor to
+run ESingular.
+@end table
+
+@item 
+Double-click (or, execute), the self-extracting archives, and
+@strong{carefully} follow the instructions given there.
+
+@item 
+If, while running setup, you obtain the following message 
+@code{Setup failed to launch installation engine:} 
+@code{Error loading type library/DLL}, then you need to download and execute Microsoft DCOM98 package
+@uref{http://www.microsoft.com/com/dcom/dcom98/download.asp}. 
+Such a problem could appear on Win 95/98.
+
+@item
+In case of problems, see the created file 
+@code{/etc/INSTALL.txt} (which is also located at
+@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/INSTALL_win.htm}
+for details on how to finish the installation.
+@end enumerate
+
+@heading To download @sc{Singular} for the Macintosh
+For the @sc{Singular} version for Mac OS X refer to the Unix section.
+@*The @sc{Singular} version for Mac OS 9 is available as 
+@uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-2-html.sea.hqx} (documentation) and @uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-2-ppc-MPW.sea.hqx} (binaries and libraries). 
+The file @uref{ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/INSTALL_mac.html}
+gives details on how to finish the installation.
+
+
+

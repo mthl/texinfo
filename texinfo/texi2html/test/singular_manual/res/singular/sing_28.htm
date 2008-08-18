@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.3 Rings and orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.3 Rings and orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.3 Rings and orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Rings-and-orderings"></a>
+<a name="SEC28"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_27.htm#Top-20-Emacs-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_29.htm#Examples-of-ring-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.1 Examples of ring declarations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3. General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h2 class="section">3.3 Rings and orderings</h2>
+
+<p>All non-trivial algorithms in <small>SINGULAR</small> require the prior definition of
+a ring. Such a ring can be
+</p>
+<ol>
+<li>
+a polynomial ring over a field,
+</li><li>
+a localization of a polynomial ring,
+</li><li>
+a quotient ring by an ideal of one of 1. or 2.,
+</li><li>
+a tensor product of one of 1. or 2.
+</li></ol>
+
+<p>Except for quotient rings, all of these rings are realized by choosing a
+coefficient field, ring variables, and an appropriate global or local
+monomial ordering on the ring variables.  See <a href="sing_31.htm#Term-orderings">Term orderings</a>,
+<a href="sing_371.htm#Mathematical-background">Mathematical background</a>.
+</p>
+<p>The coefficient field of the rings may be
+</p>
+<a name="IDX86"></a>
+<a name="IDX87"></a>
+<ol>
+<li>
+the field of rational numbers 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_3.png"
+ ALT="$Q$"></SPAN>
+,
+</li><li>
+finite fields <SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_22.png"
+ ALT="$Z/p$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_23.png"
+ ALT="$p$"></SPAN> a prime <!-- MATH
+ $\le 2147483629$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="95" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_24.png"
+ ALT="$\le 2147483629$"></SPAN>,
+</li><li>
+finite fields <!-- MATH
+ $\hbox{GF}(p^n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_25.png"
+ ALT="$\hbox{GF}(p^n)$"></SPAN> with <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_26.png"
+ ALT="$p^n$"></SPAN> elements, <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_23.png"
+ ALT="$p$"></SPAN> a prime, <!-- MATH
+ $p^n \le 2^{15}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_27.png"
+ ALT="$p^n \le 2^{15}$"></SPAN>,
+</li><li>
+transcendental extension of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_3.png"
+ ALT="$Q$"></SPAN>
+ or 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_22.png"
+ ALT="$Z/p$"></SPAN>
+,
+</li><li>
+simple algebraic extension of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_3.png"
+ ALT="$Q$"></SPAN>
+ or 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_22.png"
+ ALT="$Z/p$"></SPAN>
+,
+</li><li>
+the field of real numbers represented by floating point
+numbers of a user defined precision.
+</li><li>
+the field of complex numbers represented by (pairs of) floating point
+numbers of a user defined precision.
+</li></ol>
+
+<p>Throughout this manual, the current active ring in <small>SINGULAR</small> is
+called basering.  The reserved name <code>basering</code> in <small>SINGULAR</small> is
+an alias for the current active ring.  The basering can be set by
+declaring a new ring as described in the following subsections or with
+the commands <code>setring</code> and <code>keepring</code>.  See <a href="sing_302.htm#keepring">keepring</a>,
+<a href="sing_268.htm#setring">setring</a>.
+</p>
+<p>Objects of ring dependent types are local to a ring. To access them
+after a change of the basering they have to be mapped using <code>map</code> or by
+the functions <code>imap</code> or <code>fetch</code>.  See <a href="sing_37.htm#Objects">Objects</a>, <a href="sing_186.htm#fetch">fetch</a>,
+<a href="sing_203.htm#imap">imap</a>, <a href="sing_106.htm#map">map</a>.
+</p>
+<p>All changes of the basering in a procedure are local to this procedure
+unless a <code>keepring</code> command is used as the last statement of the
+procedure.  See <a href="sing_41.htm#Procedures">Procedures</a>, <a href="sing_302.htm#keepring">keepring</a>.
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_29.htm#Examples-of-ring-declarations">3.3.1 Examples of ring declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_30.htm#General-syntax-of-a-ring-declaration">3.3.2 General syntax of a ring declaration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_31.htm#Term-orderings">3.3.3 Term orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_27.htm#Top-20-Emacs-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_29.htm#Examples-of-ring-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.1 Examples of ring declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4. Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3. General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

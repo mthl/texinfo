@@ -11,6 +11,7 @@ This file contains a list of things yet to be done (see also in doc/TODO):
   - How complicated could it be to get a creation of XML, what about SGML ?
   - to LaTeX
   - to RTF
+  - to open document
 
 * document css classes, and have similar classes with makeinfo
 -  makeinfo classes:
@@ -34,19 +35,26 @@ h? unnumbered chapter appendix...,
 h1 settitle (title before contents, if not set by titlefont),
 h1 titlefont (@titlefont),
 
-* Document Texi2HTML::THIS_ELEMENT
-
-* Document $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
+* Document 
+  Texi2HTML::THIS_ELEMENT
+  $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
   $Texi2HTML::THISDOC{'htmlxref'}
   $Texi2HTML::THISDOC{'current_lang'}
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
 
-* Test the back path stuff for images.
+  $copying_comment, $titlepage better and $documentdescription
+  $program_string
+
+* document the 'math' in 'args', in style_map, and simple_*math*. It
+  could also be more flexible and similar with other environments, that
+  is not only add a fixed key, but duplicate all the keys and add one.
+  Documentation should only done once the interface is stable.
+
 
 * don't double in title when the @top and @settitle are the same
 
-* handle right things like
+* the following is erroneous, but maybe it could be better handled anyway
 -> error with @item on same line than @table
 @xref{node,
 @table @emph
@@ -55,13 +63,17 @@ text
 @end table
 }
 
+* handle right things like
 @code{
 @printindex cp
 }
 
 * maybe some @-commands appearing on lines should stop paragraphs, namely
 @page or @indent. That's not sure. More likely this should be up to the 
-writer to add a line.
+writer to add a line. There is a Config hash now for @style_map commands.
+formats automatically stop paragraphs.
+
+* honor stop_paragraph_command for misc_commands?
 
 * handle better things like
 @itemize @bullet
@@ -92,10 +104,6 @@ option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
 
-* BUG?: @special in multitable extracted but ignored later.
-The real fix would be to give to multitable each header within brace 
-texi and formatted result. And also give the fractions and maybe use them.
-
 * handling of images should be more configurable for other formats.
 
 * add f--ile to the repository, and do a test in another directory for
@@ -108,19 +116,11 @@ texi and formatted result. And also give the fractions and maybe use them.
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?
 
-* document the 'math' in 'args', in style_map, and simple_*math*. It
-  could also be more flexible and similar with other environments, that
-  is not only add a fixed key, but duplicate all the keys and add one.
-  Documentation should only done once the interface is stable.
-
-* roff is certainly not uptodate. At least the @quote* and @guillem*
-
-* ducument $documentdescription, $copying_comment and $titlepage.
 
 * maybe be quiet during special region expansion outside of document. It
-  is not very clear that it is wrong, though.
-
-* document program_string
+  is not very clear that it is wrong, though. multiple_pass could be passed
+  down to echo_warn/echo_error and no warning would be produced with
+  multiple_pass > 1.
 
 * antispam @email
 <script type="text/javascript">
@@ -149,6 +149,8 @@ function clean_antispam() {
 * a FIXME in Tests/formatting/detailmenus.texi with a warning missing 
   for a menu entry for a spurious entry with no corresponding node entry.
 
+* roff is certainly not uptodate. At least the @quote* and @guillem*
+
 * the code of xml.c in makeinfo shows specific treatement of & in 
   definition arguments. I don't know what it corresponds with. All
   the definition argument parsing stuff is certainly worth asking
@@ -165,8 +167,6 @@ function clean_antispam() {
   is error free.
 
 * formatting/nodename_parentheses.texi gives wrong output.
-
-* Formatting of ?@: and similar constructs should be possible.
 
 * in @example, makeinfo --xml 
 
@@ -232,3 +232,51 @@ texi2html:
 </item>
 </enumerate>
 
+* add @detailmenu in coverage, and @group
+
+* in imbrications.texi there should be a warning for
+@defun aaaa
+@deffnx bbbb
+@end deffn
+@end defun
+ Makeinfo gives:
+imbrications.texi:241: Must be in `@deffn' environment to use `@deffnx'.
+imbrications.texi:259: `@end' expected `defun', but saw `deffn'.
+
+* makeinfo doesn't warn for empty heading commands, like
+** unnumberedsubsec without name (l. 284)
+
+* makeinfo warn when there is no @ßettitle not @top where it finds its title
+in texi2tml there is no warning, and also the title is constructe 
+differently.
+
+* makeinfo don't warn for empty deffn, but texi2dvi cannot process them
+
+* copy relevant makeinfo tests
+
+* with the 8bit maps, the following FIXME could be fixed.
+FIXME to be fixed with unicode to 8bit tables
+
+* enable_encoding.init is certainly dependent on USE_UNICODE through
+the use of non 8 bit representation of characters.
+
+* makeinfo in title, for @code{something} leads to `something'. In 
+texi2html all the style commands are removed without extra formatting.
+
+* include-value.texi is broken. And a test of substitution of @value and
+@macro is other commands, like syncodeindex and similar is missing. Done
+in mny misc commands, remains to be done in pass0 macros and for coverage.
+
+* test for @deffn with end of line protected in @footnote (to test 
+end of line protection in keep_texi).
+
+* empty lines in @hyphenation are not vaild for texi2dvi
+
+* texinfo expands @-commands normally in @documentdescription, but keeps --,
+texi2html uses simple_format which removes most @commands but uses entities
+
+* in menu-whitespace, with --xml (also seen in the html output), 
+in Top <nodenext>first</nodenext> in texi2html, not in makeinfo
+
+* clean formatting/def_cmds.texi to remove invalid texinfo and put it
+in an ifset.

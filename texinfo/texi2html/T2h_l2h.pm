@@ -97,7 +97,7 @@ my %global_count = ();         # associate a command name and the
 sub init()
 {
     $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
-    $docu_rdir = $Texi2HTML::THISDOC{'out_dir'};
+    $docu_rdir = $Texi2HTML::THISDOC{'destination_directory'};
     $docu_ext = $Texi2HTML::THISDOC{'extension'};
     $l2h_name =  "${docu_name}_l2h";
     $l2h_latex_file = "$docu_rdir${l2h_name}.tex";

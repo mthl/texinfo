@@ -1,0 +1,214 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename value_in_misc.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+ }
+
+@set text atext
+
+@node Top
+@top top @value{text}
+@subheading Comment like: @value{text}
+
+Text line followed by a comment on the same line and another below @c comment @value{text}
+@c comment @value{text}
+
+@set pagesizes 200mm,150mm
+@set afourpaper_macro @afourpaper
+
+@ifnottex
+@pagesizes @value{pagesizes}
+@end ifnottex
+@value{afourpaper_macro}
+@headings on line following headings @value{text}
+@oddfooting some text ignored @value{text}
+@everyheading on line following everyheading @value{text}
+
+@set need 0.1
+
+@ifnottex
+@need @value{need}
+@end ifnottex
+
+@set raisesections_macro @raisesections
+@value{raisesections_macro}
+@set lowersections_macro @lowersections
+@value{lowersections_macro}
+
+@c tex error: Use of \ doesn't match its definition.
+@ifnottex
+@@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
+@phoo{bar}
+@end ifnottex
+
+@set definfoenclose_name phi
+@definfoenclose @value{definfoenclose_name},:,:
+
+@ifclear texi2html
+@c this is required
+@iftex
+@global@let@phi=@i
+@end iftex
+@end ifclear
+
+@phi{bar}
+
+@set strong_macro @strong
+@set strong_name strong
+
+@iftex
+@value{strong_macro}{very strong}
+@end iftex
+@strong{very strong}
+
+@definfoenclose @value{strong_name},(@value{strong_name}:,:)
+
+@iftex
+@value{strong_macro}{ is it really strong? }
+@end iftex
+@strong{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@set kbdinputstyle_arg code
+@ifnottex
+@kbdinputstyle @value{kbdinputstyle_arg}
+@end ifnottex
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+@set asis_arg asis
+@set zero 0
+@set none_arg none
+@set four 4
+@set six 6
+
+@ifnottex
+@paragraphindent @value{asis_arg}
+@paragraphindent @value{zero}
+@paragraphindent @value{none_arg}
+@paragraphindent @value{four}
+@firstparagraphindent @value{none_arg}
+@exampleindent @value{six}
+@end ifnottex
+
+@set end_arg end
+@set separate_arg separate 
+@footnotestyle @value{end_arg}
+@footnotestyle @value{separate_arg}
+
+@set latin1 ISO-8859-1
+@ifnottex
+@documentencoding @value{latin1}
+@end ifnottex
+
+@set on_arg on
+@set off_arg off
+@ifnottex
+@frenchspacing @value{on_arg}
+@frenchspacing @value{off_arg}
+@end ifnottex
+
+@c accepts 10 or 11
+@set ten 10
+@ifnottex
+@fonttextsize @value{ten}
+@end ifnottex
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@set false_arg false
+@set true_arg true
+@ifnottex
+@allowcodebreaks @value{false_arg}
+@end ifnottex
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@ifnottex
+@allowcodebreaks @value{true_arg}
+@end ifnottex
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@subheading command removed
+
+@finalout
+
+@set page_macro @page
+@set noindent_macro @noindent
+@set refill_macro @refill
+
+@@page @value{page_macro} @@noindent @value{noindent_macro} @@refill @value{refill_macro} something
+
+@value{noindent_macro}     noindent at beginning of line
+@value{noindent_macro}  
+noindent on the preceding line
+  @value{noindent_macro}    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @value{page_macro}   @@noindent @value{noindent_macro}    @@refill @value{refill_macro}
+
+@set contents_macro @contents
+@value{contents_macro}
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@set exdent_macro @exdent
+@ifnottex
+@value{exdent_macro} line after exdent
+@end ifnottex
+
+And now sp:
+
+@set two 2
+@iftex
+@ifnottex
+@sp @value{two}
+@end ifnottex
+@end iftex
+@sp 2
+
+@set result_macro @result
+
+@clickstyle @value{result_macro}
+
+@menu
+* node @value{text}::
+* bidule::
+* bidule2::
+@end menu
+
+
+@node node @value{text}
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+@value{contents_macro}
+
+@node bidule
+@chapter bidule
+
+@set shortcontents_macro @shortcontents
+@value{shortcontents_macro}
+
+@node bidule2
+@chapter last
+
+@bye

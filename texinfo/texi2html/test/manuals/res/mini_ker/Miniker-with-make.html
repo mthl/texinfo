@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: A.4 Miniker with make</title>
+
+<meta name="description" content="Miniker 102 manual: A.4 Miniker with make">
+<meta name="keywords" content="Miniker 102 manual: A.4 Miniker with make">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<ul><a href="mini_ker.html#Top">Miniker 102 manual</a> <br>
+<ul><a href="Installation.html#Installation">A. Installation</a> <br>
+</ul>
+</ul>
+</ul>
+<a name="Miniker-with-make"></a>
+<a name="SEC81"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Miniker-with-cmz.html#Miniker-with-cmz" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Additional-requirements" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="appendixsec"> A.4 Miniker with make </h2>
+<ul>
+<a href="#Additional-requirements">A.4.1 Additional requirements for Miniker with make</a> <br>
+<a href="#Configuration">A.4.2 Configuration</a> <br>
+<a href="#Installation-with-make">A.4.3 Installation with make</a> <br>
+</ul>
+
+
+<hr size="2">
+<a name="Additional-requirements"></a>
+<a name="SEC82"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Miniker-with-make" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Configuration" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="appendixsubsec"> A.4.1 Additional requirements for Miniker with make </h3>
+
+
+<p>The package has been tested with GNU <code>make</code> and solaris
+<code>make</code>. 
+</p>
+<p>Suitable preprocessors should also be installed. Two preprocessors are 
+required, one that preprocess the cmz directives, and a mortran 
+preprocessor. A cmz directives processor written in <code>perl</code>,
+is distributed in the <code>car2txt</code> package available at
+<a href="http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html">http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html</a>. A <code>mortran</code>
+package with a command able to preprocess a mortran file given on
+the command line with a syntax similar with the <code>cpp</code> command line 
+syntax is also required.
+Such a mortran is available at <a href="http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html">http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html</a>.
+</p>
+
+
+<hr size="2">
+<a name="Configuration"></a>
+<a name="SEC83"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Additional-requirements" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation-with-make" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="appendixsubsec"> A.4.2 Configuration </h3>
+
+
+<p>The package is available at <a href="http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html">http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html</a>. It is 
+available as a compresssed tar archive. On UNIX, with GNU <code>tar</code> it 
+may be unpacked using 
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ tar xzvf mini_ker-4.2.tar.gz
+</pre></td></tr></table>
+
+<p>The detection of the compiler, the preprocessors (car2txt and mortran), 
+and the libraries are performed by the configure script. This script
+sets the
+apropriate variables in makefiles. It can be run with:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd mini_ker-4.2
+$ ./configure
+</pre></td></tr></table>
+
+<p>If the output of <code>./configure</code> doesn&rsquo;t show any error it means that
+all the components are here. It is possible to give <code>./configure</code>
+switches and also specify environment variables (see also 
+<code>./configure --help</code>):
+</p>
+<dl compact="compact">
+<dt> <code>--disable-cernlib</code></dt>
+<dd><p>Use the internal cernlib source files, even if a cernlib is detected.
+</p></dd>
+<dt> <code>--with-static-cernlib</code></dt>
+<dd><p>This command line switch forces a static linking with the cernlib (or a dynamic linking 
+if set to no).
+</p></dd>
+<dt> <code>--with-cernlib</code></dt>
+<dd><p>This command line switch can be used to specify the cernlib location
+(if not detected or you want to use a specific cernlib).
+</p></dd>
+<dt> <code>--with-blas</code></dt>
+<dt> <code>--with-lapack</code></dt>
+<dd><p>With this command switch, you can specify the location of the blas and lapack
+libraries.
+</p>
+<p>For example, on mac OS X this can be used to specify the blas and lapack from 
+the Apple frameworks:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">./configure \
+--with-blas=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib \
+--with-lapack=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib
+</pre></td></tr></table>
+
+</dd>
+<dt> <code>F77</code></dt>
+<dt> <code>FC</code></dt>
+<dt> <code>FFLAGS</code></dt>
+<dt> <code>LDFLAGS</code> </dt>
+<dd><p>Classical compiler, compiler flags and linker flags.
+</p></dd>
+<dt> <code>MORTRAN</code></dt>
+<dd><p>This environment variable holds the mortran preprocessor command
+(default is <code>mortran</code>).
+</p></dd>
+<dt> <code>MTNFLAGS</code></dt>
+<dd><p>This environment variable holds command line arguments for the mortran
+preprocessor. It is empty in the default case.
+</p></dd>
+<dt> <code>MTN</code></dt>
+<dd><p>This environment variable may be used to specify the mortran executable
+name and/or path, it should be used by the <code>mortran</code> commmand.
+(default is empty, which leads to a mortran executable called <code>mtn</code>).
+</p></dd>
+<dt> <code>MTNDEPEND</code></dt>
+<dd><p>This environment variable may be used to specify the mortran dependencies
+checker executable. It should be used by the <code>mortran</code> commmand.
+(default is empty, which leads to a mortran dependencies checker 
+called <code>mtndepend</code>).
+</p></dd>
+</dl>
+
+<p>After a proper configuration, if <code>make</code> is run then the example 
+models should be build. You have to perform the configuration only once.
+</p>
+<hr size="2">
+<a name="Installation-with-make"></a>
+<a name="SEC84"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Configuration" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Cmz-directives-reference.html#Cmz-directives-reference" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="appendixsubsec"> A.4.3 Installation with make </h3>
+
+<p>Miniker can be installed by running 
+</p><table><tr><td>&nbsp;</td><td><pre class="example">make install
+</pre></td></tr></table>
+
+
+<p>It should copy the sources 
+and the &lsquo;<tt>Makefile.miniker</tt>&rsquo; file in 
+a &lsquo;<tt>mini_ker</tt>&rsquo; directory in the <code>$(includedir)</code> directory, and
+copy the templates in &lsquo;<tt>$(datadir)/mini_ker</tt>&rsquo;. The default for
+<code>$(includedir)</code> is &lsquo;<tt>/usr/local/include</tt>&rsquo; and the default for
+<code>$(datadir)</code> is &lsquo;<tt>/usr/local/share</tt>&rsquo;, these defaults may be 
+changed by <code>./configure</code> switches &lsquo;<samp>--prefix</samp>&rsquo;,
+&lsquo;<samp>--includedir</samp>&rsquo;  and &lsquo;<samp>--datadir</samp>&rsquo;. See <code>./configure --help</code>
+and the &lsquo;<tt>INSTALL</tt>&rsquo; file for more informations. The helper script
+&lsquo;<tt>start_miniker</tt>&rsquo; should also be installed.
+</p>
+
+ 
+<p>The installation is not required to use comfortably Miniker. Indeed
+the only thing that changes with the sources and the &lsquo;<tt>Makefile.miniker</tt>&rsquo;
+directory location is the <code>miniker_dir</code> variable in a 
+project <code>Makefile</code>.
+</p>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: B.2.7 Product orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: B.2.7 Product orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.7 Product orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="Product-orderings"></a>
+<a name="SEC369"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.6 Matrix orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.8 Extra weight vector" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: B. Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: C. Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h3 class="subsection">B.2.7 Product orderings</h3>
+
+<p>Let
+<!-- MATH
+ $x = (x_1, \ldots, x_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="109" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_269.png"
+ ALT="$x = (x_1, \ldots, x_n)$"></SPAN> and <!-- MATH
+ $y = (y_1, \ldots, y_m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="109" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_332.png"
+ ALT="$y = (y_1, \ldots, y_m)$"></SPAN>
+be two ordered sets of variables,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_333.png"
+ ALT="$&lt;_1$"></SPAN> a monomial
+ordering on <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_334.png"
+ ALT="$&lt;_2$"></SPAN> a monomial ordering on <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_335.png"
+ ALT="$K[y]$"></SPAN>.   The product
+ordering (or block ordering) <!-- MATH
+ $<\ := (<_1,<_2)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="96" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_336.png"
+ ALT="$&lt;\ := (&lt;_1,&lt;_2)$"></SPAN> on <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_337.png"
+ ALT="$K[x,y]$"></SPAN> is the following:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^a y^b < x^A y^B \Leftrightarrow x^a <_1 x^A$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="174" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_338.png"
+ ALT="$x^a y^b &lt; x^A y^B \Leftrightarrow x^a &lt;_1 x^A $"></SPAN> or (<SPAN CLASS="MATH"><IMG
+ WIDTH="58" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_339.png"
+ ALT="$x^a =
+x^A$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="63" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_340.png"
+ ALT="$y^b &lt;_2 y^B$"></SPAN>).
+</p>
+<p>Inductively one defines the product ordering of more than two monomial
+orderings.
+</p>
+<p>In <small>SINGULAR</small>, any of the above global orderings, local orderings or matrix
+orderings may be combined (in an arbitrary manner and length) to a product
+ordering.   E.g., <code>(lp(3), M(1, 2, 3, 1, 1, 1, 1, 0, 0), ds(4),
+ws(1,2,3))</code> 
+defines: <code>lp</code> on the first 3 variables, the matrix ordering
+<code>M(1, 2, 3, 1, 1, 1, 1, 0, 0)</code> on the next 3 variables,
+<code>ds</code> on the next 4 variables and
+<code>ws(1,2,3)</code> on the last 3 variables.
+</p>
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.6 Matrix orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.8 Extra weight vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: B. Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: C. Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename not_ifset_text.info
+
+@node Top
+@top Top
+
+@ifset a
+
+Flag a is set.
+
+@end ifset
+
+@bye

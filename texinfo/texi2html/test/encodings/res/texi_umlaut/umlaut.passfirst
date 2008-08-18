@@ -1,0 +1,123 @@
+umlaut.texi(,2) @c
+umlaut.texi(,3) @c
+umlaut.texi(,4) @c
+umlaut.texi(,5) @setfilename umlaut.info
+umlaut.texi(,6) @documentlanguage de
+umlaut.texi(,7) @c @documentlanguage zv
+umlaut.texi(,8) @settitle Test for Umlaute, accent etc.
+umlaut.texi(,9) @setchapternewpage on
+umlaut.texi(,10) @footnotestyle separate
+umlaut.texi(,23) @page
+umlaut.texi(,24) @chapter This is what you get
+umlaut.texi(,25) Copright Sign: @copyright{} @*
+umlaut.texi(,26) Pound Sign: @pounds{} @*
+umlaut.texi(,27) Minus Zeichen: @minus{} @*
+umlaut.texi(,28) TeX Logo: @TeX{}@*
+umlaut.texi(,29) dots@{@}: @dots{}@*
+umlaut.texi(,30) bullet@{@}:@bullet{}@*
+umlaut.texi(,31) Vertical Bar:@*
+umlaut.texi(,32) |
+umlaut.texi(,33) 
+umlaut.texi(,34) valid umlaut
+umlaut.texi(,35) @"a @"e @"i @"o @"u @"y
+umlaut.texi(,36) @"A @"E @"I @"O @"U
+umlaut.texi(,37) 
+umlaut.texi(,38) 
+umlaut.texi(,39) Non valid umlaut:@*
+umlaut.texi(,40) @"X @"x @"Q @"Y
+umlaut.texi(,41) 
+umlaut.texi(,42) 
+umlaut.texi(,43) Special characters in HTML:@*
+umlaut.texi(,44)  < > &
+umlaut.texi(,45) 
+umlaut.texi(,46) 
+umlaut.texi(,47) acute accent:@*
+umlaut.texi(,48) @'a @'e @'i @'o @'u @'y
+umlaut.texi(,49) @'A @'E @'I @'O @'U @'Y
+umlaut.texi(,50) 
+umlaut.texi(,51) invalid acute accent:@*
+umlaut.texi(,52) @'z @'q @'r
+umlaut.texi(,53) @'Z @'Q @'R
+umlaut.texi(,54) 
+umlaut.texi(,55) valid Cedilla:@*
+umlaut.texi(,56) @,{c} @,{C}
+umlaut.texi(,57) 
+umlaut.texi(,58) 
+umlaut.texi(,59) non valid Cedilla:@*
+umlaut.texi(,60) @,{H} @,{h}
+umlaut.texi(,61) 
+umlaut.texi(,62) macron:@*
+umlaut.texi(,63) @=o
+umlaut.texi(,64) 
+umlaut.texi(,65) I don't know any invalid macron:@*
+umlaut.texi(,66) 
+umlaut.texi(,67) 
+umlaut.texi(,68) valid circumflex:@*
+umlaut.texi(,69) @^a @^e @^i @^o @^u
+umlaut.texi(,70) @^A @^E @^I @^O @^U 
+umlaut.texi(,71) 
+umlaut.texi(,72) 
+umlaut.texi(,73) invalid circumflex:@*
+umlaut.texi(,74) @^z @^r @^t @^k
+umlaut.texi(,75) @^Z @^R @^T @^K
+umlaut.texi(,76) 
+umlaut.texi(,77) 
+umlaut.texi(,78) grave accent:@*
+umlaut.texi(,79) @`a @`e @`i @`o @`u
+umlaut.texi(,80) @`A @`E @`I @`O @`U
+umlaut.texi(,81) 
+umlaut.texi(,82) 
+umlaut.texi(,83) invalid grave accent:@*
+umlaut.texi(,84) @`z @`m @`p
+umlaut.texi(,85) 
+umlaut.texi(,86) 
+umlaut.texi(,87) 
+umlaut.texi(,88) tilde accent:@*
+umlaut.texi(,89) @~a @~n @~o
+umlaut.texi(,90) @~A @~O
+umlaut.texi(,91) 
+umlaut.texi(,92) invalid tilde accent:@*
+umlaut.texi(,93) @~Z @~s
+umlaut.texi(,94) 
+umlaut.texi(,95) 
+umlaut.texi(,96) 
+umlaut.texi(,97) @dotaccent{o}
+umlaut.texi(,98) @H{o}
+umlaut.texi(,99) @ringaccent{o}
+umlaut.texi(,100) @tieaccent{oo}
+umlaut.texi(,101) @u{o}
+umlaut.texi(,102) @ubaraccent{o}
+umlaut.texi(,103) @udotaccent{o}
+umlaut.texi(,104) @v{o}
+umlaut.texi(,105) @exclamdown{}
+umlaut.texi(,106) @questiondown{}
+umlaut.texi(,107) @aa{} @AA{}
+umlaut.texi(,108) @ae{} @AE{}
+umlaut.texi(,109) @dotless{i}
+umlaut.texi(,110) @dotless{j}
+umlaut.texi(,111) @l{} @L{}
+umlaut.texi(,112) @o{} @O{}
+umlaut.texi(,113) @oe{} @OE{}
+umlaut.texi(,114) @ss{}
+umlaut.texi(,115) 
+umlaut.texi(,116) What about @@url and @@uref
+umlaut.texi(,117) 
+umlaut.texi(,118) @url{http://www.fido.de/~kama}
+umlaut.texi(,119) 
+umlaut.texi(,120) Referenz:@*
+umlaut.texi(,121) @uref{http://www.fido.de/~kama}
+umlaut.texi(,122) 
+umlaut.texi(,123) Referenz mit Display Text:@*
+umlaut.texi(,124) @uref{http://www.fido.de/~kama, Second Argument of uref}
+umlaut.texi(,125) 
+umlaut.texi(,126) Referenz mit Display Text and special:@*
+umlaut.texi(,127) @uref{http://www.fido.de/~kama, Second Argument of uref, Third Argument of uref}
+umlaut.texi(,128) 
+umlaut.texi(,129) Email:@*
+umlaut.texi(,130) @email{kama@@hippo.fido.de}
+umlaut.texi(,131) 
+umlaut.texi(,132) Email mit display:@*
+umlaut.texi(,133) @email{kama@@hippo.fido.de, Anzeige der email Adrese}
+umlaut.texi(,134) @c I don't need any contents.
+umlaut.texi(,135) @contents
+umlaut.texi(,136) @bye

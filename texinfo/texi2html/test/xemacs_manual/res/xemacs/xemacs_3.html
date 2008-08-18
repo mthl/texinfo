@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User's Manual: Introduction</title>
+
+<meta name="description" content="XEmacs User's Manual: Introduction">
+<meta name="keywords" content="XEmacs User's Manual: Introduction">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Intro"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_2.html#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_2.html#Distrib" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="unnumbered">Introduction</h1>
+
+<p>  You are reading about XEmacs, an incarnation of the advanced,
+self-documenting, customizable, extensible real-time display editor
+Emacs.  XEmacs provides many powerful display and user-interface
+capabilities not found in other Emacsen and is mostly upwardly
+compatible with GNU Emacs from the Free Software Foundation
+(referred to as <em>FSF Emacs</em> in this manual).  XEmacs also
+comes standard with a great number of useful packages.
+</p>
+<p>  We say that XEmacs is a <em>display</em> editor because normally the text
+being edited is visible on the screen and is updated automatically as you
+type.  See section <a href="xemacs_4.html#Frame">Display</a>.
+</p>
+<p>  We call XEmacs a <em>real-time</em> editor because the display is updated very
+frequently, usually after each character or pair of characters you
+type.  This minimizes the amount of information you must keep in your
+head as you edit.  See section <a href="xemacs_7.html#Basic">Basic Editing</a>.
+</p>
+<p>  We call XEmacs advanced because it provides facilities that go beyond
+simple insertion and deletion: filling of text; automatic indentation of
+programs; viewing two or more files at once; and dealing in terms of
+characters, words, lines, sentences, paragraphs, and pages, as well as
+expressions and comments in several different programming languages.  It is
+much easier to type one command meaning &ldquo;go to the end of the paragraph&rdquo;
+than to find that spot with simple cursor keys.
+</p>
+<p>  <em>Self-documenting</em> means that at any time you can type a special
+character, <kbd>Control-h</kbd>, to find out what your options are.  You can
+also use <kbd>C-h</kbd> to find out what a command does, or to find all the
+commands relevant to a topic.  See section <a href="xemacs_11.html#Help">Help</a>.
+</p>
+<p>  <em>Customizable</em> means you can change the definitions of XEmacs
+commands.  For example, if you use a programming language in
+which comments start with &lsquo;<samp>&lt;**</samp>&rsquo; and end with &lsquo;<samp>**&gt;</samp>&rsquo;, you can tell
+the XEmacs comment manipulation commands to use those strings
+(see section <a href="xemacs_24.html#Comments">Manipulating Comments</a>).  Another sort of customization is rearrangement of the
+command set.  For example, you can set up the four basic cursor motion
+commands (up, down, left and right) on keys in a diamond pattern on the
+keyboard if you prefer.  See section <a href="xemacs_30.html#Customization">Customization</a>.
+</p>
+<p>  <em>Extensible</em> means you can go beyond simple customization and
+write entirely new commands, programs in the Lisp language to be run by
+XEmacs&rsquo;s own Lisp interpreter.  XEmacs is an &ldquo;on-line extensible&rdquo;
+system: it is divided into many functions that call each other.  You can
+redefine any function in the middle of an editing session and replace
+any part of XEmacs without making a separate copy of all of XEmacs.  Most
+of the editing commands of XEmacs are written in Lisp; the few
+exceptions could have been written in Lisp but are written in C for
+efficiency.  Only a programmer can write an extension to XEmacs, but anybody
+can use it afterward.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_2.html#Distrib" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

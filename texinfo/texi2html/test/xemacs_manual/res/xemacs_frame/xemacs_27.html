@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User's Manual: 24. Editing Pictures</title>
+
+<meta name="description" content="XEmacs User's Manual: 24. Editing Pictures">
+<meta name="keywords" content="XEmacs User's Manual: 24. Editing Pictures">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Picture"></a>
+<a name="SEC280"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="xemacs_26.html#Dynamic-Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basic-Picture" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1 class="chapter">24. Editing Pictures</h1>
+
+<p>  If you want to create a picture made out of text characters (for example,
+a picture of the division of a register into fields, as a comment in a
+program), use the command <code>edit-picture</code> to enter Picture mode.
+</p>
+<p>  In Picture mode, editing is based on the <em>quarter-plane</em> model of
+text.  In this model, the text characters lie studded on an area that
+stretches infinitely far to the right and downward.  The concept of the end
+of a line does not exist in this model; the most you can say is where the
+last non-blank character on the line is found.
+</p>
+<p>  Of course, Emacs really always considers text as a sequence of
+characters, and lines really do have ends.  But in Picture mode most
+frequently-used keys are rebound to commands that simulate the
+quarter-plane model of text.  They do this by inserting spaces or by
+converting tabs to spaces.
+</p>
+<p>  Most of the basic editing commands of Emacs are redefined by Picture mode
+to do essentially the same thing but in a quarter-plane way.  In addition,
+Picture mode defines various keys starting with the <kbd>C-c</kbd> prefix to
+run special picture editing commands.
+</p>
+<p>  One of these keys, <kbd>C-c C-c</kbd>, is pretty important.  Often a picture
+is part of a larger file that is usually edited in some other major mode.
+<kbd>M-x edit-picture</kbd> records the name of the previous major mode. 
+You can then use the <kbd>C-c C-c</kbd> command (<code>picture-mode-exit</code>) to
+restore that mode.  <kbd>C-c C-c</kbd> also deletes spaces from the ends of
+lines, unless you give it a numeric argument.
+</p>
+<p>  The commands used in Picture mode all work in other modes (provided the
+&lsquo;<tt>picture</tt>&rsquo; library is loaded), but are only  bound to keys in
+Picture mode.  Note that the descriptions below talk of moving &ldquo;one
+column&rdquo; and so on, but all the picture mode commands handle numeric
+arguments as their normal equivalents do.
+</p>
+<a name="IDX1090"></a>
+<p>  Turning on Picture mode calls the value of the variable
+<code>picture-mode-hook</code> as a function, with no arguments, if that value
+exists and is non-<code>nil</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Basic-Picture">24.1 Basic Editing in Picture Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Basic concepts and simple commands of Picture Mode.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Insert-in-Picture">24.2 Controlling Motion After Insert</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Controlling direction of cursor motion
+                           after &quot;self-inserting&quot; characters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Tabs-in-Picture">24.3 Picture Mode Tabs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Various features for tab stops and indentation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Rectangles-in-Picture">24.4 Picture Mode Rectangle Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Clearing and superimposing rectangles.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Basic-Picture"></a>
+<a name="SEC281"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Picture" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insert-in-Picture" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Picture" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Picture" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">24.1 Basic Editing in Picture Mode</h2>
+
+<p>  Most keys do the same thing in Picture mode that they usually do, but do
+it in a quarter-plane style.  For example, <kbd>C-f</kbd> is rebound to run
+<code>picture-forward-column</code>, which moves point one column to
+the right, by inserting a space if necessary, so that the actual end of the
+line makes no difference.  <kbd>C-b</kbd> is rebound to run
+<code>picture-backward-column</code>, which always moves point left one column,
+converting a tab to multiple spaces if necessary.  <kbd>C-n</kbd> and <kbd>C-p</kbd>
+are rebound to run <code>picture-move-down</code> and <code>picture-move-up</code>,
+which can either insert spaces or convert tabs as necessary to make sure
+that point stays in exactly the same column.  <kbd>C-e</kbd> runs
+<code>picture-end-of-line</code>, which moves to after the last non-blank
+character on the line.  There was no need to change <kbd>C-a</kbd>, as the choice
+of screen model does not affect beginnings of lines.
+</p>
+<a name="IDX1091"></a>
+<p>  Insertion of text is adapted to the quarter-plane screen model through
+the use of Overwrite mode (see section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>).  Self-inserting characters
+replace existing text, column by column, rather than pushing existing text
+to the right.  &lt;RET&gt; runs <code>picture-newline</code>, which just moves to
+the beginning of the following line so that new text will replace that
+line.
+</p>
+<a name="IDX1092"></a>
+<a name="IDX1093"></a>
+<a name="IDX1094"></a>
+<p>  Text is erased instead of deleted and killed.  &lt;DEL&gt;
+(<code>picture-backward-clear-column</code>) replaces the preceding character
+with a space rather than removing it.  <kbd>C-d</kbd>
+(<code>picture-clear-column</code>) does the same in a forward direction.
+<kbd>C-k</kbd> (<code>picture-clear-line</code>) really kills the contents of lines,
+but never removes the newlines from a buffer.
+</p>
+<a name="IDX1095"></a>
+<p>  To do actual insertion, you must use special commands.  <kbd>C-o</kbd>
+(<code>picture-open-line</code>) creates a blank line, but does so after
+the current line; it never splits a line.  <kbd>C-M-o</kbd>, <code>split-line</code>,
+makes sense in Picture mode, so it remains unchanged.  &lt;LFD&gt;
+(<code>picture-duplicate-line</code>) inserts another line
+with the same contents below the current line.
+</p>
+<a name="IDX1096"></a>
+<a name="IDX1097"></a>
+ 
+<p>  To actually delete parts of the picture, use <kbd>C-w</kbd>, or with
+<kbd>C-c C-d</kbd> (which is defined as <code>delete-char</code>, as <kbd>C-d</kbd> is
+in other modes), or with one of the picture rectangle commands
+(see section <a href="#Rectangles-in-Picture">Picture Mode Rectangle Commands</a>).
+</p>
+<hr size="6">
+<a name="Insert-in-Picture"></a>
+<a name="SEC282"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Basic-Picture" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Tabs-in-Picture" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Picture" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Picture" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">24.2 Controlling Motion After Insert</h2>
+
+<p>  Since &ldquo;self-inserting&rdquo; characters just overwrite and move point in
+Picture mode, there is no essential restriction on how point should be
+moved.  Normally point moves right, but you can specify any of the eight
+orthogonal or diagonal directions for motion after a &ldquo;self-inserting&rdquo;
+character.  This is useful for drawing lines in the buffer.
+</p>
+<dl compact="compact">
+<dt> <kbd>C-c &lt;</kbd></dt>
+<dd><p>Move left after insertion (<code>picture-movement-left</code>).
+</p></dd>
+<dt> <kbd>C-c &gt;</kbd></dt>
+<dd><p>Move right after insertion (<code>picture-movement-right</code>).
+</p></dd>
+<dt> <kbd>C-c ^</kbd></dt>
+<dd><p>Move up after insertion (<code>picture-movement-up</code>).
+</p></dd>
+<dt> <kbd>C-c .</kbd></dt>
+<dd><p>Move down after insertion (<code>picture-movement-down</code>).
+</p></dd>
+<dt> <kbd>C-c `</kbd></dt>
+<dd><p>Move up and left (&ldquo;northwest&rdquo;) after insertion <br>(<code>picture-movement-nw</code>).
+</p></dd>
+<dt> <kbd>C-c '</kbd></dt>
+<dd><p>Move up and right (&ldquo;northeast&rdquo;) after insertion <br>
+(<code>picture-movement-ne</code>).
+</p></dd>
+<dt> <kbd>C-c /</kbd></dt>
+<dd><p>Move down and left (&ldquo;southwest&rdquo;) after insertion
+<br>(<code>picture-movement-sw</code>).
+</p></dd>
+<dt> <kbd>C-c \</kbd></dt>
+<dd><p>Move down and right (&ldquo;southeast&rdquo;) after insertion
+<br>(<code>picture-movement-se</code>).
+</p></dd>
+</dl>
+
+<a name="IDX1098"></a>
+<a name="IDX1099"></a>
+<a name="IDX1100"></a>
+<a name="IDX1101"></a>
+<p>  Two motion commands move based on the current Picture insertion
+direction.  The command <kbd>C-c C-f</kbd> (<code>picture-motion</code>) moves in the
+same direction as motion after &ldquo;insertion&rdquo; currently does, while <kbd>C-c
+C-b</kbd> (<code>picture-motion-reverse</code>) moves in the opposite direction.
+</p>
+<hr size="6">
+<a name="Tabs-in-Picture"></a>
+<a name="SEC283"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insert-in-Picture" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rectangles-in-Picture" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Picture" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Picture" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">24.3 Picture Mode Tabs</h2>
+ 
+<p>  Two kinds of tab-like action are provided in Picture mode.
+Context-based tabbing is done with <kbd>M-&lt;TAB&gt;</kbd>
+(<code>picture-tab-search</code>).  With no argument, it moves to a point
+underneath the next &ldquo;interesting&rdquo; character that follows whitespace in
+the previous non-blank line.  &ldquo;Next&rdquo; here means &ldquo;appearing at a
+horizontal position greater than the one point starts out at&rdquo;.  With an
+argument, as in <kbd>C-u M-&lt;TAB&gt;</kbd>, the command moves to the next such
+interesting character in the current line.  <kbd>M-&lt;TAB&gt;</kbd> does not
+change the text; it only moves point.  &ldquo;Interesting&rdquo; characters are
+defined by the variable <code>picture-tab-chars</code>, which contains a string
+of characters considered interesting.  Its default value is
+<code>&quot;!-~&quot;</code>.
+</p>
+<a name="IDX1102"></a>
+<p>  &lt;TAB&gt; itself runs <code>picture-tab</code>, which operates based on the
+current tab stop settings; it is the Picture mode equivalent of
+<code>tab-to-tab-stop</code>.  Without arguments it just moves point, but with
+a numeric argument it clears the text that it moves over.
+</p>
+<a name="IDX1103"></a>
+<a name="IDX1104"></a>
+<p>  The context-based and tab-stop-based forms of tabbing are brought
+together by the command <kbd>C-c &lt;TAB&gt;</kbd> (<code>picture-set-tab-stops</code>.)
+This command sets the tab stops to the positions which <kbd>M-&lt;TAB&gt;</kbd>
+would consider significant in the current line.  If you use this command
+with &lt;TAB&gt;, you can get the effect of context-based tabbing.  But
+<kbd>M-&lt;TAB&gt;</kbd> is more convenient in the cases where it is sufficient.
+</p>
+<hr size="6">
+<a name="Rectangles-in-Picture"></a>
+<a name="SEC284"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Tabs-in-Picture" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Picture" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Picture" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">24.4 Picture Mode Rectangle Commands</h2>
+
+<p>  Picture mode defines commands for working on rectangular pieces of the
+text in ways that fit with the quarter-plane model.  The standard rectangle
+commands may also be useful (see section <a href="xemacs_12.html#Rectangles">Rectangles</a>).
+</p>
+<dl compact="compact">
+<dt> <kbd>C-c C-k</kbd></dt>
+<dd><p>Clear out the region-rectangle (<code>picture-clear-rectangle</code>).  With
+argument, kill it.
+</p></dd>
+<dt> <kbd>C-c C-w <var>r</var></kbd></dt>
+<dd><p>Similar but save rectangle contents in register <var>r</var> first
+(<code>picture-clear-rectangle-to-register</code>).
+</p></dd>
+<dt> <kbd>C-c C-y</kbd></dt>
+<dd><p>Copy last killed rectangle into the buffer by overwriting, with upper
+left corner at point (<code>picture-yank-rectangle</code>).  With argument,
+insert instead.
+</p></dd>
+<dt> <kbd>C-c C-x <var>r</var></kbd></dt>
+<dd><p>Similar, but use the rectangle in register <var>r</var><br>
+(<code>picture-yank-rectangle-from-register</code>).
+</p></dd>
+</dl>
+
+<a name="IDX1105"></a>
+<a name="IDX1106"></a>
+<a name="IDX1107"></a>
+<a name="IDX1108"></a>
+<p>  The picture rectangle commands <kbd>C-c C-k</kbd>
+(<code>picture-clear-rectangle</code>) and <kbd>C-c C-w</kbd>
+(<code>picture-clear-rectangle-to-register</code>) differ from the standard
+rectangle commands in that they normally clear the rectangle instead of
+deleting it; this is analogous with the way <kbd>C-d</kbd> is changed in Picture
+mode.
+</p>
+<p>  However, deletion of rectangles can be useful in Picture mode, so these
+commands delete the rectangle if given a numeric argument.
+</p>
+<a name="IDX1109"></a>
+<a name="IDX1110"></a>
+<a name="IDX1111"></a>
+<a name="IDX1112"></a>
+<p>  The Picture mode commands for yanking rectangles differ from the standard
+ones in overwriting instead of inserting.  This is the same way that
+Picture mode insertion of other text is different from other modes.
+<kbd>C-c C-y</kbd> (<code>picture-yank-rectangle</code>) inserts (by overwriting) the
+rectangle that was most recently killed, while <kbd>C-c C-x</kbd>
+(<code>picture-yank-rectangle-from-register</code>) does for the
+rectangle found in a specified register.
+</p>
+<p>Since most region commands in Picture mode operate on rectangles, when you
+select a region of text with the mouse in Picture mode, it is highlighted
+as a rectangle.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Picture" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_28.html#Sending-Mail" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="math"></a>
+<a name="SEC169"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="minus.html#minus" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Glyphs.html#Glyphs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Insertions.html#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Insertions.html#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2 class="section">13.8 <code>@math</code>: Inserting Mathematical Expressions</h2>
+
+<p>You can write a short mathematical expression with the <code>@math</code>
+command.  Write the mathematical expression between braces, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</pre></td></tr></table>
+
+<p>This produces the following in Info:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</pre></td></tr></table>
+
+<p>Thus, the <code>@math</code> command has no effect on the Info output.
+</p>
+<p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
+write superscripts and subscripts (as in the above example), but also
+allows you to use any of the plain TeX math control sequences.  It&rsquo;s
+conventional to use &lsquo;<samp>\</samp>&rsquo; instead of &lsquo;<samp>@</samp>&rsquo; for these commands.
+As in:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
+</pre></td></tr></table>
+
+<p>which looks like the input in Info and HTML:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\sin 2\pi \equiv \cos 3\pi
+</pre></td></tr></table>
+
+<a name="IDX224"></a>
+<p>Since &lsquo;<samp>\</samp>&rsquo; is an escape character inside <code>@math</code>, you can use
+<code>@\</code> to get a literal backslash (<code>\\</code> will work in TeX,
+but you&rsquo;ll get the literal &lsquo;<samp>\\</samp>&rsquo; in Info).  <code>@\</code> is not
+defined outside of <code>@math</code>, since a &lsquo;<samp>\</samp>&rsquo; ordinarily produces a
+literal &lsquo;<samp>\</samp>&rsquo;.
+</p>
+
+<a name="IDX225"></a>
+<a name="IDX226"></a>
+<p>For displayed equations, you must at present use TeX directly
+(see section <a href="Raw-Formatter-Commands.html#Raw-Formatter-Commands">Raw Formatter Commands</a>).  
+</p>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

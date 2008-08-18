@@ -1,0 +1,23 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename one_node_and_section
+
+Garbage
+
+@node one node
+Top node
+
+anchor ref @anchor{ref}.
+
+@subsection One section
+
+@menu
+* (gcc):: ref to gcc
+@end menu
+
+
+ref to ref @ref{ref}.
+
+Some text@footnote{A footnote}.
+
+@bye

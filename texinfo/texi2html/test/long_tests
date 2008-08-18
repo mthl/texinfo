@@ -1,0 +1,8 @@
+#! /bin/sh
+
+if [ z"$srcdir" = 'z' ]; then
+  srcdir=.
+fi
+
+"$srcdir"/tests.sh \
+ misc manuals xemacs_manual texi2html_manual tar_manual singular_manual

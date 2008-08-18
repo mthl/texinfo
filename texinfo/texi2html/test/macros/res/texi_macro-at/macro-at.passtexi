@@ -1,0 +1,31 @@
+macro-at.texi(,2) @setfilename macro-at.info
+macro-at.texi(,3) @settitle AUTHORS -- who did what on GNU LilyPond
+macro-at.texi(,4) 
+macro-at.texi(,8) 
+macro-at.texi(,12) 
+macro-at.texi(,13) @node Top, , AUTHORS -- who did what on GNU LilyPond, (dir)
+macro-at.texi(,14) @top
+macro-at.texi(,15) @menu
+macro-at.texi(,16) * AUTHORS -- who did what on GNU LilyPond:: AUTHORS -- who did what.
+macro-at.texi(,17) @end menu
+macro-at.texi(,18) 
+macro-at.texi(,19) @node AUTHORS -- who did what on GNU LilyPond, Top, , Top
+macro-at.texi(,20) @chapter AUTHORS -- who did what on GNU LilyPond?
+macro-at.texi(,21) 
+macro-at.texi(,22) This file lists authors of GNU LilyPond, and what they wrote.
+macro-at.texi(,23) It also uses foobar@{.
+macro-at.texi(,24) 
+macro-at.texi(,25) @itemize @bullet
+macro-at.texi(,26) @item @email{pinard@@iro.montreal.ca, Fran@,{c}ois Pinard},
+macro-at.texi(,27)   parts of Documentation.
+macro-at.texi(,28) @item @email{foobar@@baz@@, The Foobar},
+macro-at.texi(,29)   the usual foobarical thing.
+macro-at.texi(,30) @item @email{another@@foobar@{, Buzzer},
+macro-at.texi(,31)   buzzed all the way.
+macro-at.texi(foo,32) @item @email{foo-expansion@@bar-expansion},
+macro-at.texi(,33)   also helped.
+macro-at.texi(,34) @item @email{tomcato@@xoommail.com, Tom Cato Amundsen},
+macro-at.texi(,35)   cembalo-partita in mundela.
+macro-at.texi(,36) @end itemize
+macro-at.texi(,37) 
+macro-at.texi(,38) @bye

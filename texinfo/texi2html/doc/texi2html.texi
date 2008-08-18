@@ -2625,7 +2625,8 @@ program should look for.
 Last, it is possible to control 
 the formatting of @code{@@image} by redefining:
 @deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_relative_path
-@var{$file_path} is the image file name with the path, @var{$basename}  
+@var{$file_path} is the image file name with the path from the output directory
+to the source manual directory prepended, @var{$basename}  
 the file name without extension (the first @code{@@image} argument). 
 @var{$preformatted} is true if the image 
 appears in preformatted text. @var{$file_name} is the file name without path 
@@ -2967,7 +2968,9 @@ the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 
 It is possible to avoid that a format closes the previous paragraph or
 preformatted region and reopens one, by putting the format command in a 
-hash, @variable{%format_in_paragraph} with a true value.
+hash, @variable{%format_in_paragraph} with a true value. This only 
+makes sense for few commands since otherwise the nesting of formats and
+paragraphs could become wrong.
 
 If the value of @variable{%no_paragraph_commands} associated with a command is
 true, no paragraph is started by the command if outside of a paragraph
@@ -4062,8 +4065,10 @@ default case. They can be kept if the value associated with the @@-command
 in the @variable{%region_formats_kept} hash is true.
 
 The @code{@@insertcopying} @@-command is formatted by 
-@deftypefn {Function Reference} $insertcopying insertcopying $text
+@deftypefn {Function Reference} $insertcopying insertcopying $text $comment $simple_text
 @var{$text} is the text appearing in @code{@@copying}, formatted.
+@var{$comment} is the text with texi removed, should be very simple
+text. @var{$simple_text} is the text formatted in string context.
 @end deftypefn
 
 The title page handling is described in @ref{Title page}.
@@ -4352,6 +4357,9 @@ argument is true if there really was an explicit name.
 the @code{&$menu} function reference is replaced by @code{&$menu_command}.
 @code{&$menu} is kept for backward compatibility. If @code{&$menu} is defined, 
 @code{@@detailmenu} is ignored.
+@item image file paths are not completed anymore in the default case. 
+  The previous
+  behaviour can be restored with @code{$COMPLETE_IMAGE_PATHS} set to true.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

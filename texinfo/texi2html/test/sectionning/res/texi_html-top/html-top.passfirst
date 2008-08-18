@@ -1,0 +1,6 @@
+html-top.texi(,2) @setfilename top.info
+html-top.texi(,3) 
+html-top.texi(,4) @node start
+html-top.texi(,5) @top
+html-top.texi(,6) 
+html-top.texi(,7) @bye

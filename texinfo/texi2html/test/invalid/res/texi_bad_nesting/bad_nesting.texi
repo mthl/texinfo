@@ -1,0 +1,46 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename bad_nesting.info
+
+@node Top
+@top Test for bad nestings
+
+Tests for environments not matching
+
+@quotation
+A quotation
+@end cartouche
+
+@deffn {Function Reference} print_navigation $filehandle
+Text
+@end deftypefun
+
+@table
+@item item
+line
+@end vtable
+
+@table @emph
+@item ref
+@example
+example
+@end display
+@end table
+
+@group
+in group
+@end table
+
+@group
+in group 2
+@end cartouche
+
+@cartouche
+cartouche
+@end group
+
+@cartouche
+carouche
+@end float
+
+@bye

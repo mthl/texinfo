@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.2.1 versal</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.2.1 versal">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.2.1 versal">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<a name="versal"></a>
+<a name="SEC647"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2 deform_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.2 mod_versal" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<h4 class="subsubsection">D.5.2.1 versal</h4>
+<p>Procedure from library <code>deform.lib</code> (see <a href="sing_646.htm#deform_005flib">deform_lib</a>).
+</p>
+<dl compact="compact">
+<dt> <strong>Usage:</strong></dt>
+<dd><p>versal(Fo[,d,any]); Fo=ideal, d=int, any=list
+</p>
+</dd>
+<dt> <strong>Compute:</strong></dt>
+<dd><p>miniversal deformation of Fo up to degree d (default d=100),
+</p>
+</dd>
+<dt> <strong>Create:</strong></dt>
+<dd><p>Rings (exported):
+<br>&rsquo;my&rsquo;Px = extending the basering Po by new variables given by
+&quot;A,B,..&quot; (deformation parameters), returns as basering; the
+new variables precede the old ones, the ordering is the
+product between &quot;ls&quot; and &quot;ord(Po)&quot;
+<br>&rsquo;my&rsquo;Qx = Px/Fo extending Qo=Po/Fo,
+<br>&rsquo;my&rsquo;So = the embedding-ring of the versal base space,
+<br>&rsquo;my&rsquo;Ox = Px/Js extending So/Js. (default my=&quot;&quot;)
+</p>
+<p>Matrices (in Px, exported):
+<br>Js = giving the versal base space (obstructions),
+<br>Fs = giving the versal family of Fo,
+<br>Rs = giving the lifting of Ro=syz(Fo).
+</p>
+<p>If d is defined (!=0), it computes up to degree d.
+<br>If &rsquo;any&rsquo; is defined and any[1] is no string, interactive version.
+<br>Otherwise &rsquo;any&rsquo; gives predefined strings: &quot;my&quot;,&quot;param&quot;,&quot;order&quot;,&quot;out&quot;
+(&quot;my&quot; prefix-string, &quot;param&quot; is a letter (e.g. &quot;A&quot;) for the name of
+first parameter or (e.g. &quot;A(&quot;) for index parameter variables, &quot;order&quot;
+ordering string for ring extension), &quot;out&quot; name of output-file).
+</p>
+</dd>
+<dt> <strong>Note:</strong></dt>
+<dd><p>printlevel &lt; 0 no output at all,
+<br>printlevel &gt;=0,1,2,.. informs you, what is going on;
+<br>this proc uses &rsquo;execute&rsquo;.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;deform.lib&quot;;
+int p          = printlevel;
+printlevel     = 0;
+ring r1        = 0,(x,y,z,u,v),ds;
+matrix m[2][4] = x,y,z,u,y,z,u,v;
+ideal Fo       = minor(m,2);
+// cone over rational normal curve of degree 4
+versal(Fo);
+&rarr; // ready: T_1 and T_2
+&rarr; // start computation in degree 2.
+&rarr; 
+&rarr; // Result belongs to ring Px.
+&rarr; // Equations of total space of miniversal deformation are 
+&rarr; // given by Fs, equations of miniversal base space by Js.
+&rarr; // Make Px the basering and list objects defined in Px by typing:
+&rarr;    setring Px; show(Px);
+&rarr;    listvar(matrix);
+&rarr; // NOTE: rings Qx, Px, So are alive!
+&rarr; // (use 'kill_rings(&quot;&quot;);' to remove)
+setring Px;
+// ___ Equations of miniversal base space ___:
+Js;&quot;&quot;;
+&rarr; Js[1,1]=BD
+&rarr; Js[1,2]=-AD+D2
+&rarr; Js[1,3]=-CD
+&rarr; 
+// ___ Equations of miniversal total space ___:
+Fs;&quot;&quot;;
+&rarr; Fs[1,1]=-u2+zv+Bu+Dv
+&rarr; Fs[1,2]=-zu+yv-Au+Du
+&rarr; Fs[1,3]=-yu+xv+Cu+Dz
+&rarr; Fs[1,4]=z2-yu+Az+By
+&rarr; Fs[1,5]=yz-xu+Bx-Cz
+&rarr; Fs[1,6]=-y2+xz+Ax+Cy
+&rarr; 
+</pre></td></tr></table>
+
+</td>
+</tr>
+</table>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.2 mod_versal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: D. SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E. Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F. Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

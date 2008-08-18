@@ -1,0 +1,45 @@
+bad_nesting.texi(,2) 
+bad_nesting.texi(,3) @setfilename bad_nesting.info
+bad_nesting.texi(,4) 
+bad_nesting.texi(,5) @node Top
+bad_nesting.texi(,6) @top Test for bad nestings
+bad_nesting.texi(,7) 
+bad_nesting.texi(,8) Tests for environments not matching
+bad_nesting.texi(,9) 
+bad_nesting.texi(,10) @quotation
+bad_nesting.texi(,11) A quotation
+bad_nesting.texi(,12) @end cartouche
+bad_nesting.texi(,13) 
+bad_nesting.texi(,14) @deffn {Function Reference} print_navigation $filehandle
+bad_nesting.texi(,15) Text
+bad_nesting.texi(,16) @end deftypefun
+bad_nesting.texi(,17) 
+bad_nesting.texi(,18) @table
+bad_nesting.texi(,19) @item item
+bad_nesting.texi(,20) line
+bad_nesting.texi(,21) @end vtable
+bad_nesting.texi(,22) 
+bad_nesting.texi(,23) @table @emph
+bad_nesting.texi(,24) @item ref
+bad_nesting.texi(,25) @example
+bad_nesting.texi(,26) example
+bad_nesting.texi(,27) @end display
+bad_nesting.texi(,28) @end table
+bad_nesting.texi(,29) 
+bad_nesting.texi(,30) @group
+bad_nesting.texi(,31) in group
+bad_nesting.texi(,32) @end table
+bad_nesting.texi(,33) 
+bad_nesting.texi(,34) @group
+bad_nesting.texi(,35) in group 2
+bad_nesting.texi(,36) @end cartouche
+bad_nesting.texi(,37) 
+bad_nesting.texi(,38) @cartouche
+bad_nesting.texi(,39) cartouche
+bad_nesting.texi(,40) @end group
+bad_nesting.texi(,41) 
+bad_nesting.texi(,42) @cartouche
+bad_nesting.texi(,43) carouche
+bad_nesting.texi(,44) @end float
+bad_nesting.texi(,45) 
+bad_nesting.texi(,46) @bye

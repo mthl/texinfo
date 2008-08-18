@@ -1,0 +1,9 @@
+nested_macro_calls.texi(,2) 
+nested_macro_calls.texi(,3) @setfilename nested_macro_calls
+nested_macro_calls.texi(,4) 
+nested_macro_calls.texi(,5) @node Top
+nested_macro_calls.texi(,6) 
+nested_macro_calls.texi(,10) 
+nested_macro_calls.texi(,15) 
+nested_macro_calls.texi(truc,16) Before nested_macro_calls.texi(truc,16) (machin)nested_macro_calls.texi(truc,16) 
+nested_macro_calls.texi(truc,16)  after truc. 
