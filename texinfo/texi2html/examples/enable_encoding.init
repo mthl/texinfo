@@ -1,0 +1,168 @@
+# -*-perl-*-
+
+# for debugging printouts
+#use Encode;
+
+if (!$ENABLE_ENCODING_USE_ENTITY)
+{
+  $USE_ISO = 0;
+}
+
+my $enable_encoding_default_init_out = $init_out;
+$init_out = \&enable_encoding_init_out;
+
+sub enable_encoding_is_entity($)
+{
+  my $text = shift;
+  return 0 if (!$ENABLE_ENCODING_USE_ENTITY);
+  return 1 if ($text =~ /^&/ and $text =~ /;$/);
+}
+
+sub enable_encoding_init_out()
+{
+  &$enable_encoding_default_init_out();
+  # like utf8.init
+  if ($ENCODING_NAME eq 'utf-8')
+  {
+    $normal_text       = \&t2h_utf8_normal_text unless ($ENABLE_ENCODING_USE_ENTITY);
+    foreach my $key (keys(%unicode_accents), 'dotless')
+    {
+      $style_map{$key}->{'function'} = \&t2h_utf8_accent;
+      $style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;
+      $style_map_pre{$key}->{'function'} = \&t2h_utf8_accent;
+    }
+
+    foreach my $key (%things_map)
+    {
+      if (exists($unicode_map{$key}) and ($unicode_map{$key} ne ''))
+      {
+        $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
+        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
+        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
+      }
+    }
+  }
+  elsif (exists($makeinfo_encoding_to_map{$ENCODING_NAME}))
+  {
+    my $enc_map = $makeinfo_encoding_to_map{$ENCODING_NAME};
+    foreach my $key (keys(%unicode_accents), 'dotless')
+    {
+      $enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
+      $enable_encoding_default_accent{'texi'}->{$key} = $style_map_texi{$key}->{'function'};
+      $enable_encoding_default_accent{'pre'}->{$key} = $style_map_pre{$key}->{'function'};
+      $style_map{$key}->{'function'} = \&enable_encoding_normal_accent;
+      $style_map_texi{$key}->{'function'} = \&enable_encoding_texi_accent;
+      $style_map_pre{$key}->{'function'} = \&enable_encoding_pre_accent;
+    }
+
+    foreach my $key (%things_map)
+    {
+      if (exists($unicode_map{$key}) and ($unicode_map{$key} ne '') and 
+        exists($makeinfo_eight_bit_map{$enc_map}->{$unicode_map{$key}}))
+      { # we let perl handle the conversion
+        $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
+        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
+        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
+      }
+    }
+  }
+}
+
+sub enable_encoding_normal_accent($$$)
+{
+  return enable_encoding_accent ('normal', @_);
+}
+sub enable_encoding_texi_accent($$$)
+{
+  return enable_encoding_accent ('texi', @_);
+}
+sub enable_encoding_pre_accent($$$)
+{
+  return enable_encoding_accent ('pre', @_);
+}
+
+my @enable_encoding_accent_stack;
+sub enable_encoding_accent($$$$)
+{
+  my $in = shift;
+  my @other_args = @_;
+
+  my $accent = shift;
+  my $args = shift;
+  my $style_stack = shift;
+  my $text = $args->[0];
+
+  if (scalar(@enable_encoding_accents_stack)) 
+  {
+    #print STDERR " doing nothing, still in stack (@enable_encoding_accents_stack), accent: $accent";
+    my $stack_accent = shift @enable_encoding_accents_stack;
+    #print STDERR " stack_accent $stack_accent\n";
+    return $text;
+  }
+
+  my @accents_stack = ();
+  my @styles = reverse(@$style_stack);
+
+  # first put the letter in the stack
+  my @utf8_partial_results = { 'result' => $text, 
+      'accents_stack' => [ @accents_stack ]};
+
+  # then the accent that is associated with the function call
+  my $current_accent = t2h_utf8_accent($accent,[$text],$style_stack);
+  @accents_stack = ($accent);
+  push @utf8_partial_results, { 'result' => $current_accent,
+       'accents_stack' => [ @accents_stack ]};
+
+  # and then all the other accents on the stack
+  while (scalar(@styles) and (defined($unicode_accents{$styles[0]}) or $styles[0] eq 'dotless'))
+  {
+    my $next_style = shift @styles;
+    my @new_stack = reverse(@styles);
+    $current_accent = t2h_utf8_accent($next_style,[$current_accent],\@new_stack);
+    push @accents_stack, $next_style;
+    push @utf8_partial_results, { 'result' => $current_accent,
+       'accents_stack' => [ @accents_stack ]}
+        ;
+  }
+
+  my $enc_map = $makeinfo_encoding_to_map{$ENCODING_NAME};
+  my $eight_bit;
+  my $result;
+  foreach my $partial_result (@utf8_partial_results)
+  {
+    my $char = $partial_result->{'result'};
+    my $new_eight_bit = '';
+    my $new_codepoint;
+    if (ord($char) <= 128)
+    {
+      $new_eight_bit =  uc(sprintf("%02x",ord($char)));
+      $new_codepoint = uc(sprintf("%04x",ord($char)));
+    }
+    elsif (ord($char) <= hex(0xFFFF))
+    {
+      $new_codepoint = uc(sprintf("%04x",ord($char)));
+      if (exists($makeinfo_eight_bit_map{$enc_map}->{$new_codepoint}))
+      {
+         $new_eight_bit = $makeinfo_eight_bit_map{$enc_map}->{$new_codepoint};
+      }
+    }
+    #print STDERR "" . encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), 8bit: $new_eight_bit\n";
+    last if ($new_eight_bit eq '');
+    last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit) 
+       and !($partial_result->{'accents_stack'}[0] eq 'dotless' and $char eq 'i')));
+    $result = $partial_result;
+    $eight_bit = $new_eight_bit;
+  }
+  if (defined($result) and scalar(@{$result->{'accents_stack'}}))
+  {
+  #print STDERR "Result: ".encode('utf8', $result->{'result'}) ." '$eight_bit' (@{$result->{'accents_stack'}})\n" if defined($result);
+     @enable_encoding_accents_stack = @{$result->{'accents_stack'}};
+     # remove the first, it is the accent being processed
+     shift @enable_encoding_accents_stack;
+     return $result->{'result'};
+  }
+  
+  return &{$enable_encoding_default_accent{$in}->{$accent}}(@other_args);
+}
+
+1;
