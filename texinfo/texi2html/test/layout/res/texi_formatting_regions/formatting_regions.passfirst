@@ -549,12 +549,12 @@ formatting_regions.texi(mymacro,46)
 formatting_regions.texi(mymacro,46) @verbatiminclude simplest.texi
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @verbatim
-formatting_regions.texi(mymacro,46) in verbatim
+formatting_regions.texi(mymacro,46) in verbatim ''
 formatting_regions.texi(mymacro,46) @end verbatim
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @html
-formatting_regions.texi(mymacro,46) html
+formatting_regions.texi(mymacro,46) html ''
 formatting_regions.texi(mymacro,46) @end html
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) 
@@ -1222,12 +1222,12 @@ formatting_regions.texi(mymacro,49)
 formatting_regions.texi(mymacro,49) @verbatiminclude simplest.texi
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @verbatim
-formatting_regions.texi(mymacro,49) in verbatim
+formatting_regions.texi(mymacro,49) in verbatim ''
 formatting_regions.texi(mymacro,49) @end verbatim
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @html
-formatting_regions.texi(mymacro,49) html
+formatting_regions.texi(mymacro,49) html ''
 formatting_regions.texi(mymacro,49) @end html
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) 

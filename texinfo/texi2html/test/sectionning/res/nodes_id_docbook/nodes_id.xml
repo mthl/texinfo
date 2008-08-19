@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
-    <!ENTITY tex "TeX">
+  <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
 ]>
 <book id="nodes_id.xml" lang="en">
@@ -57,7 +57,7 @@
 <bridgehead id="node13" renderas="sect2">subheading</bridgehead>
 
 
-<para><inlinemediaobject id="node14"><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>.
+<informalfigure><mediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
 </para>
 </chapter>
 </book><!-- Keep this comment at the end of the file

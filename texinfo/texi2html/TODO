@@ -37,7 +37,7 @@ h1 titlefont (@titlefont),
 
 * Document 
   Texi2HTML::THIS_ELEMENT
-  $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
+  $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT, $INLINE_INSERTCOPYING
   $Texi2HTML::THISDOC{'htmlxref'}
   $Texi2HTML::THISDOC{'current_lang'}
   $Texi2HTML::THISDOC{macro name}
@@ -243,6 +243,17 @@ texi2html:
 imbrications.texi:241: Must be in `@deffn' environment to use `@deffnx'.
 imbrications.texi:259: `@end' expected `defun', but saw `deffn'.
 
+* the following leads to an empty def item, this is wrong
+@deffn a b 
+@c aaaa
+@deffnx
+aaa
+@end 
+
+@item
+@something
+@itemx should also be tested
+
 * makeinfo doesn't warn for empty heading commands, like
 ** unnumberedsubsec without name (l. 284)
 
@@ -280,3 +291,18 @@ in Top <nodenext>first</nodenext> in texi2html, not in makeinfo
 
 * clean formatting/def_cmds.texi to remove invalid texinfo and put it
 in an ifset.
+
+
+* images formatting (how .txt may be used in conjunction with binary image
+files) is explained in texinfo manual, it should be implemented in the
+default case. In fact, texi2html should return an array with the files 
+found for all the extensions.
+
+* in nodes_id_docbook the . after the image doesn't start a new paragraph.
+
+* in book.init there are li missing in ul in pre-toc or the like.
+
+* in float.texi result, there is
+1.1 A section
+and
+1.1 Section within unnumbered

@@ -1,5 +1,5 @@
 include-value.texi(,2) @setfilename include-value.info
-include-value.texi(,3) @c $Id: include-value.passfirst,v 1.1 2008-08-18 18:04:32 pertusus Exp $
+include-value.texi(,3) @c 
 include-value.texi(,4) 
 include-value.texi(,5) @set testvar incl-incl.txi
 include-value.texi(,6) 

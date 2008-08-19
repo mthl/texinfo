@@ -540,23 +540,23 @@ f--lushright
 @verbatiminclude simplest.texi
 
 @verbatim
-in verbatim
+in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </xml>
+<para> xml para </xml> ''
 @end xml
 
 @html
-html
+html ''
 @end html
 
 @tex
-$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$ ''
 @end tex
 
 @docbook
-docbook
+docbook ''
 @end docbook
 
 @majorheading majorheading

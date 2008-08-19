@@ -153,7 +153,7 @@ long_tests = \
 
 htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
 DIST_SUBDIRS = $(base_tests) $(long_tests)
-TESTS = base_tests long_tests
+TESTS = base_tests
 all: all-recursive
 
 .SUFFIXES:

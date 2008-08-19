@@ -555,12 +555,12 @@ f--lushright
 @verbatiminclude simplest.texi
 
 @verbatim
-in verbatim
+in verbatim ''
 @end verbatim
 
 
 @html
-html
+html ''
 @end html
 
 
@@ -1236,12 +1236,12 @@ f--lushright
 @verbatiminclude simplest.texi
 
 @verbatim
-in verbatim
+in verbatim ''
 @end verbatim
 
 
 @html
-html
+html ''
 @end html
 
 
@@ -1917,12 +1917,12 @@ f--lushright
 @verbatiminclude simplest.texi
 
 @verbatim
-in verbatim
+in verbatim ''
 @end verbatim
 
 
 @html
-html
+html ''
 @end html
 
 
@@ -2592,12 +2592,12 @@ f--lushright
 @verbatiminclude simplest.texi
 
 @verbatim
-in verbatim
+in verbatim ''
 @end verbatim
 
 
 @html
-html
+html ''
 @end html
 
 

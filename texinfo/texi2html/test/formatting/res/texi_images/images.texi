@@ -1,0 +1,49 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename images.info
+
+@copying
+In copying.
+@image{f--ile}.
+
+Text in copying.
+@end copying
+
+@node Top
+@top top
+
+
+Insertcopying
+@insertcopying
+
+In normal context
+@image{f--ile}.
+
+On the same line, @code{f---ile}, @code{gr--a} extension @image{f---ile,,,,gr--a}.
+
+Image sparated from text:
+
+@image{f--ile}
+
+And the same, followed by a dot:
+
+@image{f--ile}.
+
+In example:
+
+@example
+Text. @code{f---ile} with jpeg extension.
+@image{f---ile,,,,jpeg}.
+
+@image{f--ile}.
+
+@end example
+
+@float
+In float.
+@image{f--ile}.
+
+@image{f--ile}.
+@end float
+
+@bye

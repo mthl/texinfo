@@ -637,7 +637,7 @@ sub xml_foot_line_and_ref($$$$$$$)
     return ([], $result . '</footnote>');
 }
 
-sub xml_image($$$$$$$$$$$)
+sub xml_image($$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -650,6 +650,8 @@ sub xml_image($$$$$$$$$$$)
     my $extension = shift;
     my $working_dir = shift;
     my $file_path = shift;
+    my $in_paragraph = shift;
+    my $file_locations = shift;
 
     $alt = '' if (!defined($alt));
     # dirty hack to avoid " that can be here because of a @verb 
@@ -659,7 +661,7 @@ sub xml_image($$$$$$$$$$$)
     $height = '' if (!defined($height));
 
     my $tag = 'inlineimage';
-    $tag = 'image' if ($preformatted);
+    $tag = 'image' if ($preformatted or !$in_paragraph);
 
     return "<$tag width=\"$width\" height=\"$height\" name=\"". &$protect_text($base)."\" extension=\"$extension\"><alttext>$alt</alttext></$tag>";
 }

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.220 2008-08-18 18:01:46 pertusus Exp $
+# $Id: texi2html.pl,v 1.221 2008-08-19 14:52:12 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -247,6 +247,7 @@ $IGNORE_PREAMBLE_TEXT
 @CSS_FILES
 @CSS_REFS
 $INLINE_CONTENTS
+$INLINE_INSERTCOPYING
 );
 
 # customization variables
@@ -1180,7 +1181,8 @@ sub set_no_line_macro($$)
 # those macros aren't considered as beginning a paragraph
 foreach my $no_line_macro ('alias', 'macro', 'unmacro', 'rmacro',
  'titlefont', 'include', 'copying', 'end copying', 'tab', 'item',
- 'itemx', '*', 'float', 'end float', 'caption', 'shortcaption', 'cindex')
+ 'itemx', '*', 'float', 'end float', 'caption', 'shortcaption', 'cindex',
+ 'image')
 {
     set_no_line_macro($no_line_macro, 1);
 }
@@ -3706,9 +3708,11 @@ sub pass_structure()
             #
             # analyze the tag
             #
-            if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex')
+            if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex' or ($tag eq 'insertcopying' and $Texi2HTML::Config::INLINE_INSERTCOPYING))
             {
-                #$cline = substitute_texi_line($cline); 
+                #$cline = substitute_texi_line($cline);
+                my @added_lines = ($cline);
+                my @added_numbers = ($line_nr);
                 if ($tag eq 'node' or defined($sec2level{$tag}))
                 {# in pass structure node shouldn't appear in formats
                     close_stack_texi_structure(\$text, \@stack, $state, $line_nr);
@@ -3890,19 +3894,33 @@ sub pass_structure()
                     push @{$all_elements[-1]->{'index_names'}}, { 'name' => $1, 'place' => $placed_elements };
                     $state->{'place'} = $placed_elements;
                 }
+                elsif ($cline =~ /^\@insertcopying\s*/)
+                {
+                    @added_lines = @{$region_lines{'copying'}};
+                    @added_numbers = ();
+                    my $copying_line_nr = 0;
+                    foreach my $line_added (@added_lines)
+                    {
+                       $copying_line_nr++;
+                       push @added_numbers, { 'file_name' => '', 'macro' => 'copying', 'line_nr' => $copying_line_nr };
+                    }
+                    unshift (@lines, @added_lines);
+                    unshift (@lines_numbers, @added_numbers);
+                    next;
+                }
                 if (exists($state->{'region_lines'}))
                 {
-                    push @{$region_lines{$state->{'region_lines'}->{'format'}}}, $cline;
+                    push @{$region_lines{$state->{'region_lines'}->{'format'}}}, @added_lines;
                     if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
                     {
-                        push @doc_lines, $cline;
-                        push @doc_numbers, $line_nr;
+                        push @doc_lines, @added_lines;
+                        push @doc_numbers, @added_numbers;
                     }
                 }
                 else
                 {
-                    push @doc_lines, $cline;
-                    push @doc_numbers, $line_nr;
+                    push @doc_lines, @added_lines;
+                    push @doc_numbers, @added_numbers;
                 }
                 next;
             }
@@ -3917,6 +3935,8 @@ sub pass_structure()
         next if (!defined($cline));
         if ($state->{'region_lines'})
         {
+            # the first line is like @copying, it is not put in the region
+            # lines
             push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines($cline) unless ($state->{'region_lines'}->{'first_line'});
             delete $state->{'region_lines'}->{'first_line'};
             push @doc_lines, split_lines($cline) if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}});
@@ -7969,11 +7989,11 @@ sub do_special_region_lines($;$)
     if (defined($state) and exists($state->{'region'}) and ($region eq $state->{'region'}))
     {
          echo_error("Recursively expanding region $region in $state->{'region'}");
-         return ('','');
+         return ('','', '');
          
     }
 
-    print STDERR "# do_special_region_lines for region $region" if ($T2H_DEBUG);
+    print STDERR "# do_special_region_lines for region $region ($region_initial_state{$region}->{'multiple_pass'}, region_initial_state{$region}->{'region_pass'})" if ($T2H_DEBUG);
     if (!defined($state))
     {
         fill_state($state);
@@ -9375,26 +9395,38 @@ sub do_image($$$$)
     $args[3] = '' if (!defined($args[3]));
     my $image;
     my $file_name;
+    my $image_name;
+    my @file_locations;
     my @file_names = &$Texi2HTML::Config::image_files($base,$args[4]);
 #    $image = locate_include_file("$base.$args[4]") if ($args[4] ne '');
     foreach my $file (@file_names)
     {
          if ($image = locate_include_file($file))
          {
-              $file_name = $file;
-              last;
+             if (!defined($file_name))
+             {
+                 $file_name = $file;
+                 $image_name = $image;
+             }
+             push @file_locations, [$file, $image];
+         }
+         else
+         {
+             push @file_locations, [$file, undef];
          }
     }
-    $image = '' if (!defined($image));
+    $image_name = '' if (!defined($image_name));
     
     my $alt; 
     if ($args[3] =~ /\S/)
     {
         $alt = simple_format(undef, $line_nr, $args[3]);
     }
-    return &$Texi2HTML::Config::image($path_to_working_dir . $image, $base, 
+    return &$Texi2HTML::Config::image($path_to_working_dir . $image_name, 
+        $base, 
         $state->{'preformatted'}, $file_name, $alt, $args[1], $args[2], 
-        $args[3], $args[4], $path_to_working_dir, $image);
+        $args[3], $args[4], $path_to_working_dir, $image_name, 
+        $state->{'paragraph_context'}, \@file_locations);
 }
 
 # usefull if we want to duplicate only the global state, nothing related with
@@ -9418,6 +9450,9 @@ sub duplicate_formatting_state($)
     my $state = shift;
     my $new_state = duplicate_state($state);
 
+    # Things passed here should be things that are not emptied/set to 0 by
+    # any command. Also they shouldn't need anything to be on the 
+    # stack. This rules out paragraphs, for example.
     foreach my $format_key ('preformatted', 'code_style', 'keep_texi',
           'keep_nr', 'preformatted_stack')
     {
@@ -10690,7 +10725,7 @@ sub scan_structure($$$$;$)
                 my $key = $cline;
                 $key =~ s/^\s*//;
                 $cline = substitute_texi_line($cline);
-                set_no_line_macro($macro, 1);
+                #set_no_line_macro($macro, 1);
                 enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro, $state->{'region'});
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
@@ -11354,6 +11389,7 @@ sub scan_line($$$$;$)
                 add_prev ($text, $stack, do_preformatted($paragraph->{'text'}, $state, $stack));
                 next;
             }
+            close_paragraph($text, $stack, $state, $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$macro} and !$state->{'keep_texi'});
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
                 # Handle the misc command
@@ -11434,7 +11470,6 @@ sub scan_line($$$$;$)
                 # currently if remove_texi and anchor/ref/footnote
                 # the text within the command is ignored
                 # see t2h_remove_command in texi2html.init
-                close_paragraph($text, $stack, $state, $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$macro} and !$state->{'keep_texi'});
                 push (@$stack, { 'style' => $macro, 'text' => '', 'arg_nr' => 0 });
                 $state->{'no_paragraph'}++ if ($no_paragraph_macro{$macro});
                 open_arg($macro, 0, $state);
@@ -11636,7 +11671,7 @@ sub scan_line($$$$;$)
             }
             if ($macro eq 'insertcopying')
             {
-                close_paragraph($text, $stack, $state, $line_nr);
+                #close_paragraph($text, $stack, $state, $line_nr);
                 add_prev($text, $stack, do_insertcopying($state));
                 # reopen a preformatted format if it was interrupted by the macro
                 begin_paragraph ($stack, $state) if ($state->{'preformatted'});
@@ -11892,6 +11927,11 @@ sub scan_line($$$$;$)
                     }
                     $state->{'no_paragraph'}--;
                     return;
+                }
+                elsif ($Texi2HTML::Config::no_pagraph_commands{$command} 
+                  and !$state->{'keep_texi'} and !no_paragraph($state,$cline))
+                {
+                   begin_paragraph($stack, $state);
                 }
             }
         }

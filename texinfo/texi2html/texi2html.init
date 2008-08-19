@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.148 2008-08-18 18:01:46 pertusus Exp $
+# $Id: texi2html.init,v 1.149 2008-08-19 14:52:11 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -545,6 +545,7 @@ $ICONS = 0;
     );
 
 @IMAGE_EXTENSIONS = ('png','jpg','jpeg','gif');
+#, 'txt');
 
 
 %misc_pages_targets = (
@@ -2096,7 +2097,7 @@ $pre_map{'enddots'} = '...';
 # by simple text
 #
 %simple_map_texi = (
-           "*", "",  
+           "*", "\n",  
            " ", " ",
            "\t", " ",
            "-", "-",  # soft hyphen
@@ -2905,7 +2906,8 @@ foreach my $symbol(keys(%unicode_map))
         );
 
 %stop_paragraph_command = (
- 'titlefont' => 1
+ 'titlefont' => 1,
+ 'insertcopying' => 1
 );
 
 # not used currently for html, but used in chm.init
@@ -4627,7 +4629,7 @@ sub in_small_caps($)
 sub t2h_default_normal_text($$$$$$)
 {
    my $text = shift;
-   my $in_raw_text = shift;
+   my $in_raw_text = shift; # remove_texi
    my $in_preformatted = shift;
    my $in_code = shift;
    my $in_simple = shift;
@@ -5820,7 +5822,7 @@ sub t2h_default_image_files($$)
 # extension
 # path to working dir
 # path to file relative from working dir
-sub t2h_default_image($$$$$$$$$$$)
+sub t2h_default_image($$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -5833,6 +5835,8 @@ sub t2h_default_image($$$$$$$$$$$)
     my $extension = shift;
     my $working_dir = shift;
     my $file_path = shift;
+    my $in_paragraph = shift;
+    my $file_locations = shift;
  
     if (!defined($file_path) or $file_path eq '')
     {

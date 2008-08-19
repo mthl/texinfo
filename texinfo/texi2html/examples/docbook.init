@@ -1,6 +1,6 @@
 $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
-    <!ENTITY tex "TeX">
+  <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
 ]>';
 $USE_MENU_DIRECTIONS = 0;
@@ -8,9 +8,10 @@ $USE_UP_FOR_ADJACENT_NODES = 0;
 $USE_NUMERIC_ENTITY = 0;
 $USE_SETFILENAME = 1;
 @EXPAND = ('docbook');
-@IMAGE_EXTENSIONS = ('jpg', 'txt');
+@IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
 $USE_ISO = 1;
 $SHOW_MENU = 0;
+$INLINE_INSERTCOPYING = 1;
 
 $misc_command{'c'}->{'keep'} = 1;
 $misc_command{'comment'}->{'keep'} = 1;
@@ -54,11 +55,23 @@ delete $style_map{'samp'}->{'attribute'};
 my $kept_footnote_function = $style_map{'footnote'}->{'function'};
 $style_map{'footnote'}->{'function'} = \&docbook_footnote;
 
-%style_map_pre = %style_map;
+foreach my $command (keys(%style_map))
+{
+    $style_map_pre{$command} = {};
+    $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
+    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
+        if (exists($style_map{$command}->{'args'}));
+ #print STDERR "COMMAND $command";
 
-$style_map{'b'}->{'attribute'} = 'lineannotation';
-$style_map{'i'}->{'attribute'} = 'lineannotation';
-$style_map{'r'}->{'attribute'} = 'lineannotation';
+    foreach my $key (keys(%{$style_map{$command}}))
+    {
+        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
+    }
+}
+
+$style_map_pre{'b'}->{'attribute'} = 'lineannotation';
+$style_map_pre{'i'}->{'attribute'} = 'lineannotation';
+$style_map_pre{'r'}->{'attribute'} = 'lineannotation';
 
 $colon_command_punctuation_characters{'.'} = '&period;';
 $colon_command_punctuation_characters{':'} = '&colon;';
@@ -66,6 +79,8 @@ $colon_command_punctuation_characters{'?'} = '&quest;';
 $colon_command_punctuation_characters{'!'} = '&excl;';
 
 delete $stop_paragraph_command{'titlefont'};
+
+$no_pagraph_commands{'anchor'} = 0;
 
 # FIXME
 delete $special_accents{'ringaccent'};
@@ -242,7 +257,7 @@ $table_line = \&docbook_table_line;
 $float = \&docbook_float;
 #$caption_shortcaption = \&docbook_caption_shortcaption;
 #$caption_shortcaption_command = \&docbook_caption_shortcaption_command;
-#$normal_text = \&docbook_normal_text;
+$normal_text = \&docbook_normal_text;
 #$paragraph_style_command = \&docbook_paragraph_style_command;
 $raw = \&docbook_raw;
 $cartouche = \&docbook_cartouche;
@@ -855,7 +870,7 @@ sub docbook_image_files($$)
     my $extension = shift;
     my @files = ();
     return @files if (!defined($base) or ($base eq ''));
-# FIXME doesn't look at extension argument
+# FIXME should look at extension argument? makeinfo doesn't
 #    push @files,"$base.$extension" if (defined($extension) and ($extension ne ''));
     foreach my $ext (@IMAGE_EXTENSIONS)
     {
@@ -865,7 +880,7 @@ sub docbook_image_files($$)
 }
 
 
-sub docbook_image($$$$$$$$$$$)
+sub docbook_image($$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -878,32 +893,82 @@ sub docbook_image($$$$$$$$$$$)
     my $extension = shift;
     my $working_dir = shift;
     my $file_path = shift;
+    my $in_paragraph = shift;
+    my $file_locations = shift;
 
-    if (!defined($file_path) or $file_path eq '')
-    {
+#    if (!defined($file_path) or $file_path eq '' or $file_path =~ /\.txt$/)
+#    {
 #        if (defined($extension) and $extension ne '')
 #        {
 #            $file = "$base.$extension";
 #        }
 #        else
 #        {
-            $file = "$base.jpg";
-            $extension = 'jpg';
+#            $file = "$base.jpg";
+#            $extension = 'jpg';
 #        }
-        main::echo_warn ("no image file for $base, (using $file)");
+#        main::echo_warn ("no image file for $base, (using $file)");
+#    }
+    my $txt_path;
+    my @files = ();
+    my @extensions = @IMAGE_EXTENSIONS;
+    foreach my $file_location (@$file_locations)
+    {
+        my ($file_located, $path) = @$file_location;
+        my $extension = shift @extensions;
+        if (defined($path))
+        {
+           if ($extension eq 'txt' and !defined($txt_path))
+           {
+              $txt_path = $path;
+           }
+           else
+           {
+              push @files, [$file_located, uc($extension)];
+           }
+        }
     }
-
-    my $format = uc($extension);
+    push @files, ["$base.jpg", 'JPG'] unless (@files);
 
     my $begin = docbook_add_id('inlinemediaobject').'>';
     my $end = '</inlinemediaobject>';
-    if ($preformatted)
+    if ($preformatted or !$in_paragraph)
     {
          $begin = docbook_add_id('informalfigure').'><mediaobject>';
          $end = '</mediaobject></informalfigure>';
     }
+    my $result = $begin;
+    foreach my $file_spec (@files)
+    {
+       $result .= "<imageobject><imagedata fileref=\"$file_spec->[0]\" format=\"$file_spec->[1]\"></imagedata></imageobject>";
+    }
+    if (defined($txt_path))
+    {
+       if (open(TXT, "<$txt_path"))
+       {
+          if (defined($IN_ENCODING) and $USE_UNICODE)
+          {
+              binmode(TXT, ":encoding($IN_ENCODING)");
+          }
+          $result.="<textobject><literallayout>";
+          while (my $img_txt = <TXT>)
+          {
+              $result .= $img_txt;
+          }
+          $result .= '</literallayout></textobject>';
+          close(TXT);
+       } 
+       else
+       {
+          main::echo_warn ("\@image file `$txt_path' unreadable: $!");
+       }
+    }
+    else
+    {
+        main::echo_warn ("Cannot find \@image file `$base.txt'");
+    }
 
-    return "$begin<imageobject><imagedata fileref=\"$file\" format=\"$format\"></imagedata></imageobject>$end";
+    return "$result$end";
 }
 
 sub docbook_format_list_item_texi($$$$)
@@ -1302,6 +1367,42 @@ sub docbook_float($$$$$)
     return $text if (!defined($label_texi) or $label_texi eq '');
 
     return docbook_anchor_label('',$label_texi) . $text;
+}
+
+sub docbook_normal_text($$$$$$)
+{
+   my $text = shift;
+   my $in_raw_text = shift; # remove_texi
+   my $in_preformatted = shift;
+   my $in_code = shift;
+   my $in_simple = shift;
+#print STDERR "Bug: in_raw_text in_simple $text\n" if ($in_raw_text and $in_simple);
+   my $style_stack = shift;
+   #$text = uc($text) if (in_cmd($style_stack, 'sc'));
+   $text = &$protect_text($text) unless($in_raw_text);
+   if (! $in_code and !$in_preformatted)
+   {
+       if (!$in_raw_text)
+       {
+           $text =~ s/---/\&mdash\;/g;
+           $text =~ s/--/\&ndash\;/g;
+           $text =~ s/``/\&ldquo\;/g;
+           $text =~ s/''/\&rdquo\;/g;
+       }
+       else
+       {
+           #FIXME really do that ? It is done by makeinfo in hhml
+            $text =~ s/``/"/g;
+            $text =~ s/''/"/g;
+            # temporary reuse '' to store --- !....
+            # FIXME won't '---' be handled wrongly?
+            # FIXME really do that in raw text?
+            $text =~ s/---/''/g;
+            $text =~ s/--/-/g;
+            $text =~ s/''/--/g;
+       }
+   }
+   return $text;
 }
 
 sub docbook_noop

@@ -1,0 +1,48 @@
+images.texi(,2) 
+images.texi(,3) @setfilename images.info
+images.texi(,4) 
+images.texi(,5) @copying
+images.texi(,6) In copying.
+images.texi(,7) @image{f--ile}.
+images.texi(,8) 
+images.texi(,9) Text in copying.
+images.texi(,10) @end copying
+images.texi(,11) 
+images.texi(,12) @node Top
+images.texi(,13) @top top
+images.texi(,14) 
+images.texi(,15) 
+images.texi(,16) Insertcopying
+images.texi(,17) @insertcopying
+images.texi(,18) 
+images.texi(,19) In normal context
+images.texi(,20) @image{f--ile}.
+images.texi(,21) 
+images.texi(,22) On the same line, @code{f---ile}, @code{gr--a} extension @image{f---ile,,,,gr--a}.
+images.texi(,23) 
+images.texi(,24) Image sparated from text:
+images.texi(,25) 
+images.texi(,26) @image{f--ile}
+images.texi(,27) 
+images.texi(,28) And the same, followed by a dot:
+images.texi(,29) 
+images.texi(,30) @image{f--ile}.
+images.texi(,31) 
+images.texi(,32) In example:
+images.texi(,33) 
+images.texi(,34) @example
+images.texi(,35) Text. @code{f---ile} with jpeg extension.
+images.texi(,36) @image{f---ile,,,,jpeg}.
+images.texi(,37) 
+images.texi(,38) @image{f--ile}.
+images.texi(,39) 
+images.texi(,40) @end example
+images.texi(,41) 
+images.texi(,42) @float
+images.texi(,43) In float.
+images.texi(,44) @image{f--ile}.
+images.texi(,45) 
+images.texi(,46) @image{f--ile}.
+images.texi(,47) @end float
+images.texi(,48) 
+images.texi(,49) @bye

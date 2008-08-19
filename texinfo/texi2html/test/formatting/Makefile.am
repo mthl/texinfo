@@ -5,6 +5,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  center.texi tables.texi formats_in_menu.texi heading.texi quotes.texi \
  indicateurl_paragraph.texi complex_command_in_simple_command.texi \
  symbol_after_block.texi html-extrali.texi html-para.texi html-title.texi \
+ images.texi \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

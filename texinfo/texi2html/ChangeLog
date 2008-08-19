@@ -1,3 +1,14 @@
+2008-08-19  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: images don't start a paragraph.
+	@* is better as a new line with remove texi.
+	Allow to have @insertcopying simply pasted during the second pass
+	with INLINE_INSERTCOPYING.
+	* texi2html.pl, texi2html.init, examples/*: pass all the files found
+	for images.
+	* docbook.init: correct @image handling and other fixes.
+	* test/*: adapt to cvs and regenerate.
+
 2008-08-18  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: in the default case, don't complete image paths

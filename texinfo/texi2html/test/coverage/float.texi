@@ -19,19 +19,23 @@ After the listoffloats.
 
 @float Text, text with a lot of features
 An example of float @enddots{}
+
+@c makeinfo --docbook segfaults
+@ifset texi2html
 An example.
 @example 
 example
 @end example
-
-An index entry
-@cindex float example
 
 A multitable.
 @multitable {truc} {bidule}
 @item truc @tab bidule
 @item truc @tab bidule
 @end multitable
+@end ifset
+
+An index entry
+@cindex float example
 
 A table.
 @table @emph

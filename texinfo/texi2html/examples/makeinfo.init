@@ -54,6 +54,7 @@ sub makeinfo_like_init_out()
    $NAVIGATION_TEXT{'Following'} = ' &gt; ';
 }
 
+# FIXME: images not in paragraphs are in <div class="block-image">
 
 @MISC_BUTTONS = @SECTION_BUTTONS;
 

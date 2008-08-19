@@ -16,7 +16,7 @@ copy-tests:
 clean-tests:
 	$(srcdir)/tests.sh -clean $(base_tests) $(long_tests)
 
-TESTS = base_tests long_tests
+TESTS = base_tests
 
 # mimic automake check for an optional
 long-check:

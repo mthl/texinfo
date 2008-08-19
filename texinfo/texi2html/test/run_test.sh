@@ -47,9 +47,6 @@ results_dir="$testdir/$srcdir_test/$res_dir"
 test_file='tests.txt'
 driving_file="$testdir/$srcdir_test/$test_file"
 
-echo "result_dir $results_dir, driving_file $driving_file" > $logfile
-echo "" > $stdout_file
-
 if [ -f "$driving_file" ]; then
   :
 else
@@ -73,8 +70,13 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
       [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     else
       if [ -d "$out_dir/$dir" ]; then
-        [ -d "$res_dir/$dir" ] && rm -rf "$res_dir/$dir"
-        cp -r "$out_dir/$dir" "$res_dir"
+        if [ -d "$res_dir/$dir" ]; then
+          # ugly hack to avoid CVS
+          rm "$res_dir/$dir/"*.*
+        else
+           mkdir "$res_dir/$dir/"
+        fi
+        cp -r "$out_dir/$dir/"* "$res_dir/$dir/"
       else
         echo "No dir $out_dir/$dir" 1>&2
       fi
@@ -93,7 +95,11 @@ else
   exit 1
 fi
 
+echo "result_dir $results_dir, driving_file $driving_file" > $logfile
+echo "" > $stdout_file
+
 return_code=0
+
 while read line
 do
   if echo $line | grep -qs '^ *#'; then continue; fi
@@ -109,8 +115,8 @@ do
     dir="texi_${basename}"
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2"
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$file $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2"
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$file $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
     ret=$?
   else
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"

@@ -557,12 +557,12 @@ formatting.texi(mymacro,38)
 formatting.texi(mymacro,38) @verbatiminclude simplest.texi
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @verbatim
-formatting.texi(mymacro,38) in verbatim
+formatting.texi(mymacro,38) in verbatim ''
 formatting.texi(mymacro,38) @end verbatim
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @html
-formatting.texi(mymacro,38) html
+formatting.texi(mymacro,38) html ''
 formatting.texi(mymacro,38) @end html
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) 
@@ -1231,12 +1231,12 @@ formatting.texi(mymacro,42)
 formatting.texi(mymacro,42) @verbatiminclude simplest.texi
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @verbatim
-formatting.texi(mymacro,42) in verbatim
+formatting.texi(mymacro,42) in verbatim ''
 formatting.texi(mymacro,42) @end verbatim
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @html
-formatting.texi(mymacro,42) html
+formatting.texi(mymacro,42) html ''
 formatting.texi(mymacro,42) @end html
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) 

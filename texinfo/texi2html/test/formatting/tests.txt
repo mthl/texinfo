@@ -23,6 +23,7 @@ texi symbol_after_block.texi
 texi html-extrali.texi
 texi html-para.texi
 texi html-title.texi
+texi images.texi -init docbook.init
 def_cmds def_cmds.texi
 menus menus.texi
 menus_simple menus.texi -init simple_menu.init
@@ -55,3 +56,7 @@ simplest_httex simplest.texi -init tex4ht.init --iftex
 html-extrali html-extrali.texi -init makeinfo.init
 html-para html-para.texi
 html-title html-title.texi
+images images.texi
+images_docbook images.texi -init docbook.init
+float_docbook ../coverage/float.texi -init docbook.init -U texi2html
+formatting_docbook ../coverage/formatting.texi -init docbook.init -U texi2html

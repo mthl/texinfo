@@ -37,5 +37,6 @@ equivalent_nodes equivalent_nodes.texi
 html-top_no_Top_node html-top.texi
 menu-whitespace menu-whitespace.texi -init makeinfo.init
 menu-whitespace_xml menu-whitespace.texi -init xml.init
+node-whitespace node-whitespace.texi -init makeinfo.init
 #nodename_parentheses nodename_parentheses.texi
 nodes_id_docbook nodes_id.texi --init docbook.init
