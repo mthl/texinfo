@@ -4713,7 +4713,7 @@ general.tex(,3870) defines the version number for the library. It is displayed w
 general.tex(,3871) library is loaded.
 general.tex(,3872) @item @strong{Example:}
 general.tex(,3873) @smallexample
-general.tex(,3874) version="$I@comment
+general.tex(,3874) version="$I@i{}@comment
 general.tex(,3875) @comment !! Do not erase the @comment at the end of the previous line !!
 general.tex(,3876) @comment !! It prevents cvs to substitute the id string                !!
 general.tex(,3877) d: sample.lib,v 1.2 1998/05/07 singular Exp $";

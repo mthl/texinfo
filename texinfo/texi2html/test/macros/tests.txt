@@ -23,6 +23,7 @@ texi include-value.texi
 texi value_in_misc_valid.texi
 # wrong
 texi macro_in_misc.texi
+test_include test_include.texi
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml
 # though it is not the same

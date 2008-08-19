@@ -115,8 +115,10 @@ do
     dir="texi_${basename}"
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2"
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$file $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
+    # -I $testdir/$srcdir_test/ is useful when file name is found using 
+    # @setfilename
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2"
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$file $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
     ret=$?
   else
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
@@ -124,8 +126,8 @@ do
     echo "$dir" >> $logfile
     echo >> $stdout_file
     echo "  ----> $dir" >> $stdout_file
-    echo "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2" >> $logfile
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2"
+    echo "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2" >> $logfile
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2"
     ret=$?
     rm -f $out_dir/$dir/*_l2h_images.log $out_dir/$dir/*_tex4ht_*.log \
       $out_dir/$dir/*_tex4ht_*.idv $out_dir/$dir/*_tex4ht_*.dvi \
@@ -133,7 +135,7 @@ do
   fi
   if [ $ret = 0 ]; then
     if [ -d "$results_dir/$dir" ]; then
-      diff -u --exclude=CVS -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
+      diff -u --exclude=CVS --exclude='*.png' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"

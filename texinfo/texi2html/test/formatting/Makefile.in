@@ -136,6 +136,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  indicateurl_paragraph.texi complex_command_in_simple_command.texi \
  symbol_after_block.texi html-extrali.texi html-para.texi html-title.texi \
  images.texi \
+ f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
