@@ -135,6 +135,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  center.texi tables.texi formats_in_menu.texi heading.texi quotes.texi \
  indicateurl_paragraph.texi complex_command_in_simple_command.texi \
  symbol_after_block.texi html-extrali.texi html-para.texi html-title.texi \
+ images.texi \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
@@ -203,6 +204,9 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	$(MAKE) $(AM_MAKEFLAGS) \
+	  top_distdir="$(top_distdir)" distdir="$(distdir)" \
+	  dist-hook
 check-am: all-am
 check: check-am
 all-am: Makefile
@@ -288,9 +292,9 @@ uninstall-am:
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am check check-am clean clean-generic distclean \
-	distclean-generic distclean-local distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
+.PHONY: all all-am check check-am clean clean-generic dist-hook \
+	distclean distclean-generic distclean-local distdir dvi dvi-am \
+	html html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
 	install-info-am install-man install-pdf install-pdf-am \
@@ -302,6 +306,9 @@ uninstall-am:
 
 distclean-local:
 	rm -rf out diffs
+
+dist-hook:
+	rm -rf `find $(distdir)/res -name CVS`
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
