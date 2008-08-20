@@ -7,8 +7,8 @@ This file records noteworthy changes.
 
 * handle @alias, @quote*, @guillem*, @textdegree, @allowcodebreaks,
   @fonttextsize, @hyphenation, @click, @clickstyle, @click, @arrow, 
-  @clicksequence, @geq, @leq. Handle @columnfractions and row prototypes 
-  in @multitable better.
+  @clicksequence, @geq, @leq, @*headingmarks, @*footingmarks.
+  Handle @columnfractions and row prototypes in @multitable better.
 
 * @documentlanguage is used to set the language each time it is seen (except
   if the language was set on the command line).

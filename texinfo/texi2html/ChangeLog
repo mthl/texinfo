@@ -2,6 +2,7 @@
 
 	* texi2html.pl: parse correctly menu node with name.
 	Simplify deff item opening.
+	Handle *headingmarks, *footingmarks.
 
 2008-08-19  Patrice Dumas  <dumas@centre-cired.fr>
 

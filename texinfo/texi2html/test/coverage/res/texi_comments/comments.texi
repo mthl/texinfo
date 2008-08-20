@@ -111,8 +111,11 @@ Special arg for documentencoding. makeinfo complains, not tex
 @c accepts 10 or 11
 @@fonttextsize @fonttextsize 10
 @c @@fonttextsize @fonttextsize 11
+@c accept bottom and top
+@c tex keeps the line, makeinfo doesn't
+@@everyheadingmarks @everyheadingmarks bottom on line following everyheadingmarks
 @c accept false or true
-@c makeinfo don't care about the arg and remove the remainiing of the line
+@c makeinfo don't care about the arg and remove the remaining of the line
 @allowcodebreaks false
 @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
@@ -167,6 +170,8 @@ Text line after the text line followed by the comment.
 
 A @click{} (result).
 
+@c invalid, makeinfo warns about @result needing braces
+@c others are also invalid
 @clickstyle @result on the same line
 
 A @click{} (result on the same line).

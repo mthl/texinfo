@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.222 2008-08-20 12:26:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.223 2008-08-20 16:02:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4345,6 +4345,18 @@ sub misc_command_structure($$$$)
             {
                 echo_error ("Unknown argument for \@$macro: $1", $line_nr);
             }
+        }
+        else
+        {
+            echo_error ("Bad \@$macro", $line_nr);
+        }
+    }
+    elsif (grep {$_ eq $macro} ('everyheadingmarks','everyfootingmarks',
+        'evenheadingmarks','oddheadingmarks','evenfootingmarks','oddfootingmarks'))
+    {
+        if (($line =~ /^\s+(top)[^\w\-]/) or ($line =~ /^\s+(bottom)[^\w\-]/))
+        {
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {
