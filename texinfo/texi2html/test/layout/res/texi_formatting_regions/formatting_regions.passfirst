@@ -281,10 +281,12 @@ formatting_regions.texi(mymacro,46) @item e--mph item
 formatting_regions.texi(mymacro,46) @end itemize
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @itemize @emph{after emph}
+formatting_regions.texi(mymacro,46) @c comment in itemize
 formatting_regions.texi(mymacro,46) @item e--mph item
 formatting_regions.texi(mymacro,46) @end itemize
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @itemize @bullet{} a--n itemize line
+formatting_regions.texi(mymacro,46) @cindex index entry within itemize
 formatting_regions.texi(mymacro,46) @item i--tem 1
 formatting_regions.texi(mymacro,46) @item i--tem 2
 formatting_regions.texi(mymacro,46) @end itemize
@@ -296,7 +298,9 @@ formatting_regions.texi(mymacro,46)
 formatting_regions.texi(mymacro,46) @multitable @columnfractions 6 7
 formatting_regions.texi(mymacro,46) @headitem mu--ltitable headitem @tab another tab
 formatting_regions.texi(mymacro,46) @item mu--ltitable item @tab multitable tab
+formatting_regions.texi(mymacro,46) @c comment in multitable
 formatting_regions.texi(mymacro,46) @item mu--ltitable item 2 @tab multitable tab 2
+formatting_regions.texi(mymacro,46) @cindex index entry within multitable
 formatting_regions.texi(mymacro,46) @item lone mu--ltitable item
 formatting_regions.texi(mymacro,46) @end multitable
 formatting_regions.texi(mymacro,46) 
@@ -346,6 +350,7 @@ formatting_regions.texi(mymacro,46) def--fn
 formatting_regions.texi(mymacro,46) @end deffn
 formatting_regions.texi(mymacro,46)  
 formatting_regions.texi(mymacro,46) @deffn fset @var{i} a g
+formatting_regions.texi(mymacro,46) @cindex index entry within deffn
 formatting_regions.texi(mymacro,46) @deffnx {cmde} truc {}
 formatting_regions.texi(mymacro,46) @deffnx Command {log trap} {}
 formatting_regions.texi(mymacro,46) @deffnx Command { log trap1} {}  
@@ -373,6 +378,7 @@ formatting_regions.texi(mymacro,46) @deffn empty deffn
 formatting_regions.texi(mymacro,46) @end deffn
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @deffn empty deffn with deffnx
+formatting_regions.texi(mymacro,46) @c comment between deffn and deffnx
 formatting_regions.texi(mymacro,46) @deffnx empty deffnx
 formatting_regions.texi(mymacro,46) @end deffn
 formatting_regions.texi(mymacro,46) 
@@ -518,17 +524,22 @@ formatting_regions.texi(mymacro,46) ref, a comma@comma{} in file}
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @table @bullet
+formatting_regions.texi(mymacro,46) @c comment in table
 formatting_regions.texi(mymacro,46) @item a
 formatting_regions.texi(mymacro,46) l--ine
 formatting_regions.texi(mymacro,46) @end table
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @vtable @asis
 formatting_regions.texi(mymacro,46) @item a
+formatting_regions.texi(mymacro,46) @c comment between item and itemx
+formatting_regions.texi(mymacro,46) @itemx b
 formatting_regions.texi(mymacro,46) l--ine
 formatting_regions.texi(mymacro,46) @end vtable
 formatting_regions.texi(mymacro,46) 
 formatting_regions.texi(mymacro,46) @ftable @minus
 formatting_regions.texi(mymacro,46) @item a
+formatting_regions.texi(mymacro,46) @cindex index entry between item and itemx
+formatting_regions.texi(mymacro,46) @itemx b
 formatting_regions.texi(mymacro,46) l--ine
 formatting_regions.texi(mymacro,46) @end ftable
 formatting_regions.texi(mymacro,46) 
@@ -954,10 +965,12 @@ formatting_regions.texi(mymacro,49) @item e--mph item
 formatting_regions.texi(mymacro,49) @end itemize
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @itemize @emph{after emph}
+formatting_regions.texi(mymacro,49) @c comment in itemize
 formatting_regions.texi(mymacro,49) @item e--mph item
 formatting_regions.texi(mymacro,49) @end itemize
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @itemize @bullet{} a--n itemize line
+formatting_regions.texi(mymacro,49) @cindex index entry within itemize
 formatting_regions.texi(mymacro,49) @item i--tem 1
 formatting_regions.texi(mymacro,49) @item i--tem 2
 formatting_regions.texi(mymacro,49) @end itemize
@@ -969,7 +982,9 @@ formatting_regions.texi(mymacro,49)
 formatting_regions.texi(mymacro,49) @multitable @columnfractions 6 7
 formatting_regions.texi(mymacro,49) @headitem mu--ltitable headitem @tab another tab
 formatting_regions.texi(mymacro,49) @item mu--ltitable item @tab multitable tab
+formatting_regions.texi(mymacro,49) @c comment in multitable
 formatting_regions.texi(mymacro,49) @item mu--ltitable item 2 @tab multitable tab 2
+formatting_regions.texi(mymacro,49) @cindex index entry within multitable
 formatting_regions.texi(mymacro,49) @item lone mu--ltitable item
 formatting_regions.texi(mymacro,49) @end multitable
 formatting_regions.texi(mymacro,49) 
@@ -1019,6 +1034,7 @@ formatting_regions.texi(mymacro,49) def--fn
 formatting_regions.texi(mymacro,49) @end deffn
 formatting_regions.texi(mymacro,49)  
 formatting_regions.texi(mymacro,49) @deffn fset @var{i} a g
+formatting_regions.texi(mymacro,49) @cindex index entry within deffn
 formatting_regions.texi(mymacro,49) @deffnx {cmde} truc {}
 formatting_regions.texi(mymacro,49) @deffnx Command {log trap} {}
 formatting_regions.texi(mymacro,49) @deffnx Command { log trap1} {}  
@@ -1046,6 +1062,7 @@ formatting_regions.texi(mymacro,49) @deffn empty deffn
 formatting_regions.texi(mymacro,49) @end deffn
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @deffn empty deffn with deffnx
+formatting_regions.texi(mymacro,49) @c comment between deffn and deffnx
 formatting_regions.texi(mymacro,49) @deffnx empty deffnx
 formatting_regions.texi(mymacro,49) @end deffn
 formatting_regions.texi(mymacro,49) 
@@ -1191,17 +1208,22 @@ formatting_regions.texi(mymacro,49) ref, a comma@comma{} in file}
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @table @bullet
+formatting_regions.texi(mymacro,49) @c comment in table
 formatting_regions.texi(mymacro,49) @item a
 formatting_regions.texi(mymacro,49) l--ine
 formatting_regions.texi(mymacro,49) @end table
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @vtable @asis
 formatting_regions.texi(mymacro,49) @item a
+formatting_regions.texi(mymacro,49) @c comment between item and itemx
+formatting_regions.texi(mymacro,49) @itemx b
 formatting_regions.texi(mymacro,49) l--ine
 formatting_regions.texi(mymacro,49) @end vtable
 formatting_regions.texi(mymacro,49) 
 formatting_regions.texi(mymacro,49) @ftable @minus
 formatting_regions.texi(mymacro,49) @item a
+formatting_regions.texi(mymacro,49) @cindex index entry between item and itemx
+formatting_regions.texi(mymacro,49) @itemx b
 formatting_regions.texi(mymacro,49) l--ine
 formatting_regions.texi(mymacro,49) @end ftable
 formatting_regions.texi(mymacro,49) 

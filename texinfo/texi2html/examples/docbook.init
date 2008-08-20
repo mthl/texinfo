@@ -446,6 +446,10 @@ sub docbook_paragraph($$$$$$$$$$$$)
     {
        $text = t2h_end_style($style, $text);
     }
+    if (defined($paragraph_number) and defined($$paragraph_number))
+    {
+       $$paragraph_number++;
+    }
 
     # no para in multitables, caption and shortcaptions.
     my $top_stack = '';
@@ -1089,6 +1093,8 @@ sub docbook_list_item($$$$$$$$$)
     my $prepended = shift;
     my $prepended_formatted = shift;
 
+#my $prep_t = 'UNDEF'; $prep_t = $prepended if (defined($prepended));
+#print STDERR "$prepended|$text";
     return '<listitem>' . $text . "</listitem>\n";
 }
 

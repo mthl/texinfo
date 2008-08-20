@@ -271,10 +271,12 @@ Note, the note
 @end itemize
 
 @itemize @emph{after emph}
+@c comment in itemize
 @item e--mph item
 @end itemize
 
 @itemize @bullet{} a--n itemize line
+@cindex index entry within itemize
 @item i--tem 1
 @item i--tem 2
 @end itemize
@@ -286,7 +288,9 @@ Note, the note
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
+@c comment in multitable
 @item mu--ltitable item 2 @tab multitable tab 2
+@cindex index entry within multitable
 @item lone mu--ltitable item
 @end multitable
 
@@ -337,6 +341,7 @@ def--fn
 @end deffn
  
 @deffn fset @var{i} a g
+@cindex index entry within deffn
 @deffnx {cmde} truc {}
 @deffnx Command {log trap} {}
 @deffnx Command { log trap1} {}  
@@ -364,6 +369,7 @@ def--fn
 @end deffn
 
 @deffn empty deffn with deffnx
+@c comment between deffn and deffnx
 @deffnx empty deffnx
 @end deffn
 
@@ -509,17 +515,22 @@ ref, a comma@comma{} in file}
 
 
 @table @bullet
+@c comment in table
 @item a
 l--ine
 @end table
 
 @vtable @asis
 @item a
+@c comment between item and itemx
+@itemx b
 l--ine
 @end vtable
 
 @ftable @minus
 @item a
+@cindex index entry between item and itemx
+@itemx b
 l--ine
 @end ftable
 

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.221 2008-08-19 14:52:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.222 2008-08-20 12:26:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7824,13 +7824,22 @@ sub node_to_id($)
     return $cross_ref_node_name;
 }
 
+# return an empty string if the command is not a index command, the prefix
+# if it is one
+sub index_command_prefix($)
+{
+   my $command = shift;
+   return $1 if ($command =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'));
+   return '';
+}
+
 # return 1 if the following tag shouldn't begin a line
 sub no_line($)
 {
     my $line = shift;
     my $next_tag = next_tag($line);
     return 1 if (($line =~ /^\s*$/) or $Texi2HTML::Config::no_pagraph_commands{$next_tag} or 
-       ($Texi2HTML::Config::no_pagraph_commands{'cindex'} and ($next_tag =~ /^(\w+?)index$/) and ($1 ne 'print')) or 
+       ($Texi2HTML::Config::no_pagraph_commands{'cindex'} and (index_command_prefix($next_tag) ne '')) or 
        (($line =~ /^\@end\s+(\w+)/) and  $Texi2HTML::Config::no_pagraph_commands{"end $1"}));
     return 0;
 }
@@ -8164,19 +8173,34 @@ sub parse_def($$$;$)
     return ($format, $style, $category, $name, $type, $class, $line, \@arguments, \@arg_types);
 }
 
-sub begin_deff_item($$;$)
+sub begin_deff_item_if_needed($$$)
 {
-    my $stack = shift;
-    my $state = shift;
-    my $no_paragraph = shift;
+   my $line = shift;
+   my $stack = shift;
+   my $state = shift;
+                
+   my $next_tag = next_tag($line);
+   ################################ debug
+   my $top_stack = top_stack($stack,1);
+   if ($state->{'deff_line'} and (!defined($top_stack) or 
+    !defined($top_stack->{'format'}) or 
+    !defined($Texi2HTML::Config::def_map{$top_stack->{'format'}}) or 
+    ($state->{'deff_line'}->{'command'} ne $top_stack->{'format'}))
+   )
+   {
+      print STDERR "BUG: $state->{'deff_line'}->{'command'} not equal to format def or top format not defined\n";
+   }
+   ################################ end debug
+
+   # the def item is started by anything else than a matching @DEFx
+   if ($state->{'deff_line'} and (!defined($Texi2HTML::Config::def_map{$next_tag}) or $next_tag ne "$state->{'deff_line'}->{'command'}x"))
+   {
     #print STDERR "DEF push deff_item for $state->{'deff'}\n";
-    push @$stack, { 'format' => 'deff_item', 'text' => '', 'deff_line' => $state->{'deff_line'}};
-    # there is no paragraph when a new deff just follows the deff we are
-    # opening
-    begin_paragraph($stack, $state) 
-       if ($state->{'preformatted'} and !$no_paragraph);
-    delete($state->{'deff_line'});
+      push @$stack, { 'format' => 'deff_item', 'text' => '', 'deff_line' => $state->{'deff_line'}};
+      begin_paragraph($stack, $state) if ($state->{'preformatted'});
+      delete($state->{'deff_line'});
     #dump_stack(undef, $stack, $state);
+   }
 }
 
 sub begin_paragraph($$)
@@ -8558,6 +8582,7 @@ sub begin_format($$$$$$)
         my $top_format = top_format($stack);
         if (defined($top_format) and ("$top_format->{'format'}x" eq $macro))
         {
+          # this is a matching @DEFx command.
           # the @DEFx macro has been put at the top of the 
           # command_stack, although there is no real format opening
              pop @{$state->{'command_stack'}};
@@ -8572,10 +8597,7 @@ sub begin_format($$$$$$)
         }
         else
         {
-             # The previous @def command isn't the same @def
-             # command. We begin the item for the previous @def
-             # command and immediately open the new one.
-             begin_deff_item($stack, $state, 1) if ($state->{'deff_line'});
+             # a new @def.             
              $macro =~ s/x$//o;
              # we remove what is on the stack and put it back,
              # to make sure that it is the form without x.
@@ -10491,7 +10513,7 @@ sub scan_structure($$$$;$)
             {
                 $node = $1;
             }
-            elsif ($cline =~ /^\*\s+([^:]+):\s*([^\t,\.\n]+)[\t,\.\n]/)
+            elsif ($cline =~ /^\*\s+([^:]+):\s*([^\t,\n]*?)([\t,\n]|\.\s)/)
             {
                 #$name = $1;
                 $node = $2;
@@ -10719,9 +10741,9 @@ sub scan_structure($$$$;$)
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }
-            elsif ($macro =~ /^(\w+?)index/ and ($1 ne 'print') and ($1 ne 'syncode') and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode'))
+            elsif (index_command_prefix($macro) ne '')
             {
-                my $index_prefix = $1;
+                my $index_prefix = index_command_prefix($macro);
                 my $key = $cline;
                 $key =~ s/^\s*//;
                 $cline = substitute_texi_line($cline);
@@ -10959,6 +10981,8 @@ sub scan_line($$$$;$)
     my $new_menu_entry; # true if there is a new menu entry
     my $menu_description_in_format; # true if we are in a menu description 
                                 # but in another format section (@table....)
+
+    # this can happen currently with quotations
     if (defined($state->{'prepend_text'}))
     {
         $cline = $state->{'prepend_text'} . $cline;
@@ -10966,10 +10990,11 @@ sub scan_line($$$$;$)
         delete $state->{'prepend_text'};
     }
 
+    # end of lines are really protected only for @def*
+    # this cannot happen anymore, because the lines are concatenated 
+    # in pass_structure
     unless ($state->{'end_of_line_protected'} and $state->{'deff_line'})
-    { # end of lines are really protected only for @def*
-      # this cannot happen anymore, because the lines are concatenated 
-      # in pass_structure
+    { 
         if (!$state->{'raw'} and !$state->{'verb'} and $state->{'menu'})
         { # new menu entry
             my ($node, $name, $ending);
@@ -10978,11 +11003,12 @@ sub scan_line($$$$;$)
                 $node = $1;
                 $ending = $2;
             }
-            elsif ($cline =~ s/^\*(\s+[^:]+):(\s*[^\t,\.\n]+)([\t,\.\n])//o)
+            elsif ($cline =~ s/^\*(\s+[^:]+):(\s*[^\t,\n]*?)(([\t,\n])|((\.)(\s)))/$7/o)
             {
                 $name = $1;
                 $node = $2;
-                $ending = $3;
+                $ending = $4;
+                $ending = $6 if (!$ending);
             }
             if ($node)
             {
@@ -11050,7 +11076,8 @@ sub scan_line($$$$;$)
             }
         }
         if (($state->{'menu_entry'} and !$menu_description_in_format) or $state->{'raw'} or $state->{'preformatted'}  or $state->{'no_paragraph'} or $state->{'keep_texi'} or $state->{'remove_texi'})
-        { # empty lines are left unmodified
+        { # empty lines are left unmodified in these contexts.
+          # the menu_entry is in fact the menu_description at this point
             if ($cline =~ /^\s*$/)
             {
                 add_prev($text, $stack, $cline);
@@ -11058,11 +11085,7 @@ sub scan_line($$$$;$)
             }
             elsif (!$state->{'raw'})
             {
-                my $next_tag = next_tag($cline);
-                if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
-                {
-                    begin_deff_item($stack, $state);
-                }
+                begin_deff_item_if_needed($cline, $stack, $state);
             }
         }
         else
@@ -11078,13 +11101,7 @@ sub scan_line($$$$;$)
            }
            else
            {
-               #print STDERR "a line not empty and not in no paragraph format\n";
-                my $next_tag = next_tag($cline);
-                if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
-                { # finish opening the deff, as this is not a deff tag, it can't be 
-                  # a deff macro with x
-                    begin_deff_item($stack, $state);
-                }
+                begin_deff_item_if_needed($cline, $stack, $state);
                 if (!no_paragraph($state,$cline))
                 { # open a paragraph, unless the line begins with a macro that
                   # shouldn't trigger a paragraph opening
@@ -11651,9 +11668,9 @@ sub scan_line($$$$;$)
                  return;
             }
 
-            if (($macro =~ /^(\w+?)index$/) and ($1 ne 'print' and $1 ne 'syncode' and ($1 ne 'syn') and ($1 ne 'def') and ($1 ne 'defcode')))
+            if (index_command_prefix($macro) ne '')
             {
-                my $index_name = $1;
+                my $index_name = index_command_prefix($macro);
                 $cline =~ s/^\s*//;
                 my $entry_texi = $cline;
                 chomp($entry_texi);
@@ -11922,7 +11939,7 @@ sub scan_line($$$$;$)
                     elsif ($state->{'preformatted'})
                     { # inconditionally begin a preformatted section for 
                       # non @def* commands (currently @float and @quotation)
-                      # for @def* it is done in begin_deff_item
+                      # for @def* it is done in begin_deff_item_if_needed
                         begin_paragraph($stack, $state);
                     }
                     $state->{'no_paragraph'}--;

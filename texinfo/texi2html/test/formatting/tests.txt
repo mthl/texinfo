@@ -60,3 +60,4 @@ images images.texi
 images_docbook images.texi -init docbook.init
 float_docbook ../coverage/float.texi -init docbook.init -U texi2html
 formatting_docbook ../coverage/formatting.texi -init docbook.init -U texi2html
+formatting_xml ../coverage/formatting.texi -init xml.init -U texi2html

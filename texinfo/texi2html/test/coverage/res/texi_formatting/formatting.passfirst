@@ -289,10 +289,12 @@ formatting.texi(mymacro,38) @item e--mph item
 formatting.texi(mymacro,38) @end itemize
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @itemize @emph{after emph}
+formatting.texi(mymacro,38) @c comment in itemize
 formatting.texi(mymacro,38) @item e--mph item
 formatting.texi(mymacro,38) @end itemize
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @itemize @bullet{} a--n itemize line
+formatting.texi(mymacro,38) @cindex index entry within itemize
 formatting.texi(mymacro,38) @item i--tem 1
 formatting.texi(mymacro,38) @item i--tem 2
 formatting.texi(mymacro,38) @end itemize
@@ -304,7 +306,9 @@ formatting.texi(mymacro,38)
 formatting.texi(mymacro,38) @multitable @columnfractions 6 7
 formatting.texi(mymacro,38) @headitem mu--ltitable headitem @tab another tab
 formatting.texi(mymacro,38) @item mu--ltitable item @tab multitable tab
+formatting.texi(mymacro,38) @c comment in multitable
 formatting.texi(mymacro,38) @item mu--ltitable item 2 @tab multitable tab 2
+formatting.texi(mymacro,38) @cindex index entry within multitable
 formatting.texi(mymacro,38) @item lone mu--ltitable item
 formatting.texi(mymacro,38) @end multitable
 formatting.texi(mymacro,38) 
@@ -354,6 +358,7 @@ formatting.texi(mymacro,38) def--fn
 formatting.texi(mymacro,38) @end deffn
 formatting.texi(mymacro,38)  
 formatting.texi(mymacro,38) @deffn fset @var{i} a g
+formatting.texi(mymacro,38) @cindex index entry within deffn
 formatting.texi(mymacro,38) @deffnx {cmde} truc {}
 formatting.texi(mymacro,38) @deffnx Command {log trap} {}
 formatting.texi(mymacro,38) @deffnx Command { log trap1} {}  
@@ -381,6 +386,7 @@ formatting.texi(mymacro,38) @deffn empty deffn
 formatting.texi(mymacro,38) @end deffn
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @deffn empty deffn with deffnx
+formatting.texi(mymacro,38) @c comment between deffn and deffnx
 formatting.texi(mymacro,38) @deffnx empty deffnx
 formatting.texi(mymacro,38) @end deffn
 formatting.texi(mymacro,38) 
@@ -526,17 +532,22 @@ formatting.texi(mymacro,38) ref, a comma@comma{} in file}
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @table @bullet
+formatting.texi(mymacro,38) @c comment in table
 formatting.texi(mymacro,38) @item a
 formatting.texi(mymacro,38) l--ine
 formatting.texi(mymacro,38) @end table
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @vtable @asis
 formatting.texi(mymacro,38) @item a
+formatting.texi(mymacro,38) @c comment between item and itemx
+formatting.texi(mymacro,38) @itemx b
 formatting.texi(mymacro,38) l--ine
 formatting.texi(mymacro,38) @end vtable
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @ftable @minus
 formatting.texi(mymacro,38) @item a
+formatting.texi(mymacro,38) @cindex index entry between item and itemx
+formatting.texi(mymacro,38) @itemx b
 formatting.texi(mymacro,38) l--ine
 formatting.texi(mymacro,38) @end ftable
 formatting.texi(mymacro,38) 
@@ -963,10 +974,12 @@ formatting.texi(mymacro,42) @item e--mph item
 formatting.texi(mymacro,42) @end itemize
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @itemize @emph{after emph}
+formatting.texi(mymacro,42) @c comment in itemize
 formatting.texi(mymacro,42) @item e--mph item
 formatting.texi(mymacro,42) @end itemize
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @itemize @bullet{} a--n itemize line
+formatting.texi(mymacro,42) @cindex index entry within itemize
 formatting.texi(mymacro,42) @item i--tem 1
 formatting.texi(mymacro,42) @item i--tem 2
 formatting.texi(mymacro,42) @end itemize
@@ -978,7 +991,9 @@ formatting.texi(mymacro,42)
 formatting.texi(mymacro,42) @multitable @columnfractions 6 7
 formatting.texi(mymacro,42) @headitem mu--ltitable headitem @tab another tab
 formatting.texi(mymacro,42) @item mu--ltitable item @tab multitable tab
+formatting.texi(mymacro,42) @c comment in multitable
 formatting.texi(mymacro,42) @item mu--ltitable item 2 @tab multitable tab 2
+formatting.texi(mymacro,42) @cindex index entry within multitable
 formatting.texi(mymacro,42) @item lone mu--ltitable item
 formatting.texi(mymacro,42) @end multitable
 formatting.texi(mymacro,42) 
@@ -1028,6 +1043,7 @@ formatting.texi(mymacro,42) def--fn
 formatting.texi(mymacro,42) @end deffn
 formatting.texi(mymacro,42)  
 formatting.texi(mymacro,42) @deffn fset @var{i} a g
+formatting.texi(mymacro,42) @cindex index entry within deffn
 formatting.texi(mymacro,42) @deffnx {cmde} truc {}
 formatting.texi(mymacro,42) @deffnx Command {log trap} {}
 formatting.texi(mymacro,42) @deffnx Command { log trap1} {}  
@@ -1055,6 +1071,7 @@ formatting.texi(mymacro,42) @deffn empty deffn
 formatting.texi(mymacro,42) @end deffn
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @deffn empty deffn with deffnx
+formatting.texi(mymacro,42) @c comment between deffn and deffnx
 formatting.texi(mymacro,42) @deffnx empty deffnx
 formatting.texi(mymacro,42) @end deffn
 formatting.texi(mymacro,42) 
@@ -1200,17 +1217,22 @@ formatting.texi(mymacro,42) ref, a comma@comma{} in file}
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @table @bullet
+formatting.texi(mymacro,42) @c comment in table
 formatting.texi(mymacro,42) @item a
 formatting.texi(mymacro,42) l--ine
 formatting.texi(mymacro,42) @end table
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @vtable @asis
 formatting.texi(mymacro,42) @item a
+formatting.texi(mymacro,42) @c comment between item and itemx
+formatting.texi(mymacro,42) @itemx b
 formatting.texi(mymacro,42) l--ine
 formatting.texi(mymacro,42) @end vtable
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @ftable @minus
 formatting.texi(mymacro,42) @item a
+formatting.texi(mymacro,42) @cindex index entry between item and itemx
+formatting.texi(mymacro,42) @itemx b
 formatting.texi(mymacro,42) l--ine
 formatting.texi(mymacro,42) @end ftable
 formatting.texi(mymacro,42) 
