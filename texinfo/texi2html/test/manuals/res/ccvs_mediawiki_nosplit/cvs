@@ -5079,6 +5079,7 @@ $ cvs add bar
 <dt><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i>
 <div id="IDX130"></div>
 </dt>
+
 <dd><p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
@@ -5185,6 +5186,7 @@ specified to <code>checkout</code> or <code>update</code>.
 <dt><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i>
 <div id="IDX132"></div>
 </dt>
+
 <dd><p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
 working directory are not processed).  This command
@@ -5746,6 +5748,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <dt><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i>
 <div id="IDX135"></div>
 </dt>
+
 <dd><p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last
 modification for each line.  For example:
@@ -6582,6 +6585,7 @@ certain files are to be watched.
 <dt><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
 <div id="IDX163"></div>
 </dt>
+
 <dd><div id="IDX164"></div>
 <p>Specify that developers should run <code>cvs edit</code>
 before editing <var>files</var>.  <small>CVS</small> will create working
@@ -6608,6 +6612,7 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [[#g_t_007e_002f_0
 <dt><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
 <div id="IDX166"></div>
 </dt>
+
 <dd><p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
 and <code>cvs unedit</code>.
@@ -6650,6 +6655,7 @@ command.
 <dt><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
 <div id="IDX168"></div>
 </dt>
+
 <dd><p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
 </p>
@@ -6709,6 +6715,7 @@ omitted, the action defaults to <code>all</code>.
 <dt><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
 <div id="IDX170"></div>
 </dt>
+
 <dd><p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
 watches for the specified actions are removed.
@@ -6792,6 +6799,7 @@ for obtaining a copy of the sources (see section [[#Getting-the-source|Getting t
 <dt><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
 <div id="IDX174"></div>
 </dt>
+
 <dd><p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
 <code>edit</code> notification for any of <var>files</var>.
@@ -6822,6 +6830,7 @@ the <code>cvs unedit</code> command.
 <dt><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
 <div id="IDX178"></div>
 </dt>
+
 <dd><p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
 <var>files</var> read-only for which users have requested notification using
@@ -6872,6 +6881,7 @@ successful <small>CVS</small> command.
 <dt><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
 <div id="IDX179"></div>
 </dt>
+
 <dd><p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
 </p>
@@ -6886,6 +6896,7 @@ includes the files being watched, and the mail address of each watcher.
 <dt><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
 <div id="IDX181"></div>
 </dt>
+
 <dd><p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
 working with the file, and the host and path of the working directory

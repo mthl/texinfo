@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top test multitable with too much cells
+
+
+@multitable
+@item item in empty multitable @tab tab in empty m @tab second tab in empty m
+@item item in empty m
+@end multitable
+
+@multitable {a}
+@item a @tab additional tab @tab other additional tab @tab 3rd  additiona tab
+@item a1
+@item a2 @tab additional tab2 @tab other additional tab2 @tab 3rd  additional tab2
+@item a3 @tab one additional tab
+@end multitable
+
+@multitable @columnfractions 0.4 0.6
+@item first @tab second @tab first out @tab second out @tab third out
+@item first1 
+@item first2 @tab second2 @tab first2 out
+@end multitable
+
+@bye

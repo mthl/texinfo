@@ -1,0 +1,13 @@
+style_not_closed_in_table_line.texi(,2) 
+style_not_closed_in_table_line.texi(,3) @setfilename style_not_closed_in_table_line.info
+style_not_closed_in_table_line.texi(,4) 
+style_not_closed_in_table_line.texi(,5) @node Top
+style_not_closed_in_table_line.texi(,6) @top Test command not closed on table line
+style_not_closed_in_table_line.texi(,7) 
+style_not_closed_in_table_line.texi(,8) @table @asis
+style_not_closed_in_table_line.texi(,9) @item first item
+style_not_closed_in_table_line.texi(,10) line
+style_not_closed_in_table_line.texi(,11) line @code{in code @item in item
+style_not_closed_in_table_line.texi(,12) @end table
+style_not_closed_in_table_line.texi(,13) 
+style_not_closed_in_table_line.texi(,14) @bye

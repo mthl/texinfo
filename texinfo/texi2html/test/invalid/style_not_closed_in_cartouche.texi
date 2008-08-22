@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename style_not_closed_in_cartouche.info
+
+@node Top
+@top Test command not closed in cartouche
+
+@cartouche
+cartouche @code{in code 
+@end cartouche
+
+@bye

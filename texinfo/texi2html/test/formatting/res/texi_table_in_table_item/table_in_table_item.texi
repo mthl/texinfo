@@ -1,0 +1,27 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename table_in_table_item.texi
+
+@node Top
+@top Test table nested in table item
+
+@table @asis
+@item item @table @asis
+   @item in nested table item
+   in nested table line
+   @end table
+in table line
+@end table
+
+And in code
+
+@code{
+@table @asis
+@item item @table @asis
+   @item in table in table item
+   in nested table line
+   @end table
+@end table
+}
+
+@bye

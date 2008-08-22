@@ -1,0 +1,22 @@
+index_in_item_line_table_in_code.texi(,2) 
+index_in_item_line_table_in_code.texi(,3) @setfilename index_in_item_line_table_in_code.info
+index_in_item_line_table_in_code.texi(,4) 
+index_in_item_line_table_in_code.texi(,5) @node Top
+index_in_item_line_table_in_code.texi(,6) @top test index entries in @@item @@table in @@code
+index_in_item_line_table_in_code.texi(,7) 
+index_in_item_line_table_in_code.texi(,8) @code{
+index_in_item_line_table_in_code.texi(,9) 
+index_in_item_line_table_in_code.texi(,10) @table @asis
+index_in_item_line_table_in_code.texi(,11) @item @cindex index
+index_in_item_line_table_in_code.texi(,12) @option{opt}
+index_in_item_line_table_in_code.texi(,13) More text
+index_in_item_line_table_in_code.texi(,14) @item @cindex 2 index
+index_in_item_line_table_in_code.texi(,15) @option{nopt}
+index_in_item_line_table_in_code.texi(,16) Even more
+index_in_item_line_table_in_code.texi(,17) @end table
+index_in_item_line_table_in_code.texi(,18) 
+index_in_item_line_table_in_code.texi(,19) }
+index_in_item_line_table_in_code.texi(,20) 
+index_in_item_line_table_in_code.texi(,21) @vindex another index
+index_in_item_line_table_in_code.texi(,22) 
+index_in_item_line_table_in_code.texi(,23) @bye

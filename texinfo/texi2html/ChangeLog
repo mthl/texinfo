@@ -1,3 +1,14 @@
+2008-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: simplify handling of table and list items, get
+	rid of table_list_stack, instead use the regular stack.
+	Close all formats closed by end of line (center and table term)
+	at end of line.
+	Don't call scan_line recursively in close_stack.
+	Keep the styles to be reopened in next paragraphs in close_paragraph
+	and not in close_stack.
+	Now format_style{'table'} is only for (|v|f)table.
+
 2008-08-20  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: parse correctly menu node with name.

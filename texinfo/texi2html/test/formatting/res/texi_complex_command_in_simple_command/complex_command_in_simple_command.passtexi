@@ -280,6 +280,81 @@ complex_command_in_simple_command.texi(,280)
 complex_command_in_simple_command.texi(,281) After cartouche
 complex_command_in_simple_command.texi(,282) }
 complex_command_in_simple_command.texi(,283) 
-complex_command_in_simple_command.texi(,284) After the tests.
-complex_command_in_simple_command.texi(,285) 
-complex_command_in_simple_command.texi(,286) @bye
+complex_command_in_simple_command.texi(,284) 
+complex_command_in_simple_command.texi(,285) @subheading in b and samp
+complex_command_in_simple_command.texi(,286) @samp{
+complex_command_in_simple_command.texi(,287) In samp.
+complex_command_in_simple_command.texi(,288) @b{
+complex_command_in_simple_command.texi(,289) In b
+complex_command_in_simple_command.texi(,290) 
+complex_command_in_simple_command.texi(,291) Table 
+complex_command_in_simple_command.texi(,292) 
+complex_command_in_simple_command.texi(,293) @table @asis
+complex_command_in_simple_command.texi(,294) @item item 
+complex_command_in_simple_command.texi(,295) line
+complex_command_in_simple_command.texi(,296) @end table
+complex_command_in_simple_command.texi(,297) After table.
+complex_command_in_simple_command.texi(,298) 
+complex_command_in_simple_command.texi(,299) 
+complex_command_in_simple_command.texi(,300) Multitable
+complex_command_in_simple_command.texi(,301) @multitable {truc} {machin}
+complex_command_in_simple_command.texi(,302) @item truc @tab machin
+complex_command_in_simple_command.texi(,303) @end multitable
+complex_command_in_simple_command.texi(,304) 
+complex_command_in_simple_command.texi(,305) Enumerate.
+complex_command_in_simple_command.texi(,306) 
+complex_command_in_simple_command.texi(,307) @enumerate 1
+complex_command_in_simple_command.texi(,308) @item item
+complex_command_in_simple_command.texi(,309) @end enumerate
+complex_command_in_simple_command.texi(,310) 
+complex_command_in_simple_command.texi(,311) After enumerate.
+complex_command_in_simple_command.texi(,312) 
+complex_command_in_simple_command.texi(,313) Example
+complex_command_in_simple_command.texi(,314) 
+complex_command_in_simple_command.texi(,315) @example
+complex_command_in_simple_command.texi(,316) Example
+complex_command_in_simple_command.texi(,317) @end example
+complex_command_in_simple_command.texi(,318) 
+complex_command_in_simple_command.texi(,319) After example
+complex_command_in_simple_command.texi(,320) 
+complex_command_in_simple_command.texi(,321) defun
+complex_command_in_simple_command.texi(,322) 
+complex_command_in_simple_command.texi(,323) @defun name args...
+complex_command_in_simple_command.texi(,324) text
+complex_command_in_simple_command.texi(,325) @end defun
+complex_command_in_simple_command.texi(,326) 
+complex_command_in_simple_command.texi(,327) After defun.
+complex_command_in_simple_command.texi(,328) 
+complex_command_in_simple_command.texi(,329) Flushright
+complex_command_in_simple_command.texi(,330) 
+complex_command_in_simple_command.texi(,331) @flushright
+complex_command_in_simple_command.texi(,332) in flushright
+complex_command_in_simple_command.texi(,333) @end flushright
+complex_command_in_simple_command.texi(,334) 
+complex_command_in_simple_command.texi(,335) Centered line
+complex_command_in_simple_command.texi(,336) 
+complex_command_in_simple_command.texi(,337) @center in centered line
+complex_command_in_simple_command.texi(,338) 
+complex_command_in_simple_command.texi(,339) Before quotation
+complex_command_in_simple_command.texi(,340) 
+complex_command_in_simple_command.texi(,341) @quotation
+complex_command_in_simple_command.texi(,342) a q--uotation
+complex_command_in_simple_command.texi(,343) @end quotation
+complex_command_in_simple_command.texi(,344) 
+complex_command_in_simple_command.texi(,345) After quotation
+complex_command_in_simple_command.texi(,346) 
+complex_command_in_simple_command.texi(,347) Before cartouche
+complex_command_in_simple_command.texi(,348) 
+complex_command_in_simple_command.texi(,349) @cartouche
+complex_command_in_simple_command.texi(,350) Cartouche
+complex_command_in_simple_command.texi(,351) @end cartouche
+complex_command_in_simple_command.texi(,352) 
+complex_command_in_simple_command.texi(,353) After cartouche
+complex_command_in_simple_command.texi(,354) 
+complex_command_in_simple_command.texi(,355) close b}
+complex_command_in_simple_command.texi(,356) and close samp
+complex_command_in_simple_command.texi(,357) }
+complex_command_in_simple_command.texi(,358) 
+complex_command_in_simple_command.texi(,359) After the tests.
+complex_command_in_simple_command.texi(,360) 
+complex_command_in_simple_command.texi(,361) @bye

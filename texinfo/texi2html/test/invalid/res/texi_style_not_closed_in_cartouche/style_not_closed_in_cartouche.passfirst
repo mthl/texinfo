@@ -1,0 +1,11 @@
+style_not_closed_in_cartouche.texi(,2) 
+style_not_closed_in_cartouche.texi(,3) @setfilename style_not_closed_in_cartouche.info
+style_not_closed_in_cartouche.texi(,4) 
+style_not_closed_in_cartouche.texi(,5) @node Top
+style_not_closed_in_cartouche.texi(,6) @top Test command not closed in cartouche
+style_not_closed_in_cartouche.texi(,7) 
+style_not_closed_in_cartouche.texi(,8) @cartouche
+style_not_closed_in_cartouche.texi(,9) cartouche @code{in code 
+style_not_closed_in_cartouche.texi(,10) @end cartouche
+style_not_closed_in_cartouche.texi(,11) 
+style_not_closed_in_cartouche.texi(,12) @bye

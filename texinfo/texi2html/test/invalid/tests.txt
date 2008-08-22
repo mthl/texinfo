@@ -20,6 +20,9 @@ texi titlepage_not_closed.texi
 texi footnote_not_closed.texi
 texi caption_not_closed.texi
 texi def_cmd_dble.texi
+texi style_not_closed_in_table_line.texi
+texi style_not_closed_in_cartouche.texi
+texi multitable_too_much_col.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -42,3 +45,6 @@ titlepage_not_closed titlepage_not_closed.texi
 footnote_not_closed footnote_not_closed.texi
 caption_not_closed caption_not_closed.texi
 def_cmd_dble def_cmd_dble.texi
+style_not_closed_in_table_line style_not_closed_in_table_line.texi
+style_not_closed_in_cartouche style_not_closed_in_cartouche.texi
+multitable_too_much_col multitable_too_much_col.texi

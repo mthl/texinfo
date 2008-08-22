@@ -300,3 +300,6 @@ and
 1.1 Section within unnumbered
 
 * document the new $image arguments
+
+* if a 'term' triggers no_paragraph, the ouput may be more valid, but the 
+center won't have effect in it.

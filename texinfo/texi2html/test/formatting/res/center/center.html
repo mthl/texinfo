@@ -68,8 +68,8 @@ ul.toc {list-style: none}
 <dt> <p align="center"> centered text in item
 </p></dt>
 <dd><p>table line </p><p align="center"> centered text in table line
-</p><p align="center"> centered line with item </p></dd>
-<dt> second item on center line</dt>
+</p><p align="center"> centered line with item </p> second item on center line
+</dd>
 </dl>
 
 <p align="center"> unclosed command on center line <code>in code
@@ -93,12 +93,12 @@ ul.toc {list-style: none}
 
 <p align="center"> after first center </p><p align="center"> after second center
 </p>
-<p align="center"> &lsquo;<samp>something </samp></p><p align="center"><samp> end of samp
+<p align="center"> &lsquo;<samp>something </samp></p><p align="center"><samp> end of samp</samp>&rsquo;
+</p>
+<p align="center"> after first center &lsquo;<samp></samp></p><p align="center"><samp> after second center
 </samp></p>
-<p align="center"><samp> after first center &lsquo;<samp></samp></samp></p><p align="center"><samp><samp> after second center
-</samp></samp></p>
-<p><samp><samp>End of samp
-</samp></samp></p>
+<p><samp>End of samp</samp>&rsquo;
+</p>
 <hr size="1">
 <a name="SEC1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -120,19 +120,17 @@ ul.toc {list-style: none}
 <h1 class="unnumbered">Heading</h1>
 
 <table>
-<tr><td><p><samp><samp> truc </samp></samp></p></td><td><p><samp><samp> bidule
-</samp></samp></p> </td></tr>
-<tr><td><p><samp><samp> ctruc </samp></samp></p></td><td><p><samp><samp> cbidule
-</samp></samp></p> </td></tr>
-<tr><td><p><samp><samp> cstruc
-</samp></samp></p></td></tr>
+<tr><td><p> truc </p></td><td><p> bidule
+</p>  ctruc <p align="center"> cbidule
+</p>  cstruc
+</td></tr>
 </table>
 
-<p align="center"><samp><samp> before the table </samp></samp></p><dl compact="compact">
+<p align="center"> before the table </p><dl compact="compact">
 <dt> item in center</dt>
 </dl>
-<p><samp><samp>Line in center
-</samp></samp></p> second item
+<p>Line in center
+</p> second item
 @end table
 
 <hr size="6">

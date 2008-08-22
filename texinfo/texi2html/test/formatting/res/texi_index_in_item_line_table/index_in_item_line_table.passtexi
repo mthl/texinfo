@@ -1,0 +1,18 @@
+index_in_item_line_table.texi(,2) 
+index_in_item_line_table.texi(,3) @setfilename index_in_item_line_table.info
+index_in_item_line_table.texi(,4) 
+index_in_item_line_table.texi(,5) @node Top
+index_in_item_line_table.texi(,6) @top test index entries in @@item @@table 
+index_in_item_line_table.texi(,7) 
+index_in_item_line_table.texi(,8) @table @asis
+index_in_item_line_table.texi(,9) @item @cindex index
+index_in_item_line_table.texi(,10) @option{opt}
+index_in_item_line_table.texi(,11) More text
+index_in_item_line_table.texi(,12) @item @cindex 2 index
+index_in_item_line_table.texi(,13) @option{nopt}
+index_in_item_line_table.texi(,14) Even more
+index_in_item_line_table.texi(,15) @end table
+index_in_item_line_table.texi(,16) 
+index_in_item_line_table.texi(,17) @vindex another index
+index_in_item_line_table.texi(,18) 
+index_in_item_line_table.texi(,19) @bye
