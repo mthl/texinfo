@@ -604,11 +604,9 @@ certain files are to be watched.
 </p>
 <div id="IDX162"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
-<div id="IDX163"></div>
-</dt>
-
-<dd><div id="IDX164"></div>
+<dt><div id="IDX163"></div><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<div id="IDX164"></div>
 <p>Specify that developers should run <code>cvs edit</code>
 before editing <var>files</var>.  <small>CVS</small> will create working
 copies of <var>files</var> read-only, to remind developers
@@ -631,11 +629,9 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS
 </dd></dl>
 
 <dl>
-<dt><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
-<div id="IDX166"></div>
-</dt>
-
-<dd><p>Do not create <var>files</var> read-only on checkout; thus,
+<dt><div id="IDX166"></div><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
 and <code>cvs unedit</code>.
 </p>
@@ -674,11 +670,9 @@ command.
 </p>
 <div id="IDX167"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
-<div id="IDX168"></div>
-</dt>
-
-<dd><p>Add the current user to the list of people to receive notification of
+<dt><div id="IDX168"></div><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
 </p>
 <p>The <code>-a</code> option specifies what kinds of events <small>CVS</small> should notify
@@ -734,11 +728,9 @@ omitted, the action defaults to <code>all</code>.
 
 <div id="IDX169"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
-<div id="IDX170"></div>
-</dt>
-
-<dd><p>Remove a notification request established using <code>cvs watch add</code>;
+<dt><div id="IDX170"></div><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
 watches for the specified actions are removed.
 </p>
@@ -818,11 +810,9 @@ for obtaining a copy of the sources (see section [cvs: Overview#Getting-the-sour
 </p>
 <div id="IDX173"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i>
-<div id="IDX174"></div>
-</dt>
-
-<dd><p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
+<dt><div id="IDX174"></div><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
 <code>edit</code> notification for any of <var>files</var>.
 </p>
@@ -849,11 +839,9 @@ the <code>cvs unedit</code> command.
 <div id="IDX176"></div>
 <div id="IDX177"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
-<div id="IDX178"></div>
-</dt>
-
-<dd><p>Abandon work on the working files <var>files</var>, and revert them to the
+<dt><div id="IDX178"></div><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
 <var>files</var> read-only for which users have requested notification using
 <code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code>
@@ -900,11 +888,9 @@ successful <small>CVS</small> command.
 ==== Information about who is watching and editing ====
 
 <dl>
-<dt><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
-<div id="IDX179"></div>
-</dt>
-
-<dd><p>List the users currently watching changes to <var>files</var>.  The report
+<dt><div id="IDX179"></div><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
 </p>
 <p>The <var>files</var> and options are processed as for the
@@ -915,11 +901,9 @@ includes the files being watched, and the mail address of each watcher.
 
 <div id="IDX180"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i>
-<div id="IDX181"></div>
-</dt>
-
-<dd><p>List the users currently working on <var>files</var>.  The report
+<dt><div id="IDX181"></div><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
 working with the file, and the host and path of the working directory
 containing the file.

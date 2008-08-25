@@ -88,11 +88,9 @@ $ cvs add bar
 
 <div id="IDX129"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i>
-<div id="IDX130"></div>
-</dt>
-
-<dd><p>Schedule <var>files</var> to be added to the repository.
+<dt><div id="IDX130"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dd>
+<p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
@@ -195,11 +193,9 @@ specified to <code>checkout</code> or <code>update</code>.
 </p>
 <div id="IDX131"></div>
 <dl>
-<dt><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i>
-<div id="IDX132"></div>
-</dt>
-
-<dd><p>Schedule file(s) to be removed from the repository
+<dt><div id="IDX132"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dd>
+<p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
 working directory are not processed).  This command
 does not actually remove the file from the repository

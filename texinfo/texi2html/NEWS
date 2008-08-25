@@ -25,6 +25,13 @@ This file records noteworthy changes.
 * COMPATIBILITY
   -------------
 
+* the API for the formatting of menus completly changed. $simple_menu_link
+  is removed, everything should be done in $menu_link.
+
+* change handling of @detailmenu and menu comments, with (among other changes)
+  the menu function reference replaced by the menu_command function reference
+  also handling @detailmenu.
+
 * tex4ht.init now may use a different external program for @tex and for
   @math, and therefore the configuration variables were doubled and
   their name changed.
@@ -63,10 +70,6 @@ This file records noteworthy changes.
   --Verbose becomes --verbose
   --lang becomes --document-language
 
-* change handling of @detailmenu and menu comments, with (among other changes)
-  the menu function reference replaced by the menu_command function reference
-  also handling @detailmenu.
-
 * everything before @setfilename is not outputted, like makeinfo. The previous
   behaviour can be restored with $IGNORE_BEFORE_SETFILENAME = 0;
 
@@ -79,6 +82,10 @@ This file records noteworthy changes.
 * top element heading may now be done in heading. It means that nothing 
   should be returned if the heading is done in another function 
   (like print_Top).
+
+* change in the heading API. Now the heading function reference is always 
+  called, and it is reported whether the heading is an element heading or 
+  not.
 
 * print_index is called if it appears, even if the index is not defined or
   there are no index entries.

@@ -69,3 +69,6 @@ index_in_item_line_table index_in_item_line_table.texi
 index_in_item_line_vtable index_in_item_line_vtable.texi
 index_in_item_line_table_in_code index_in_item_line_table_in_code.texi
 table_in_table_item table_in_table_item.texi
+menus_xml menus.texi -init xml.init
+menus_xml_makeinfo menus.texi -init xml.init -U texi2html
+float_xml ../coverage/float.texi -init xml.init

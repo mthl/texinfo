@@ -1,0 +1,61 @@
+node-expand.texi(,2) 
+node-expand.texi(,3) @setfilename node-expand.info
+node-expand.texi(,4) 
+node-expand.texi(,5) @c Makeinfo should expand non-macros such as @@ and @value
+node-expand.texi(,6) @c in node names and node references, including menus.
+node-expand.texi(,7) @c This file deliberately references "Node 1" both via
+node-expand.texi(,8) @c @value and directly; this should not trigger any errors,
+node-expand.texi(,9) @c as long as --commands-in-node-names is used.
+node-expand.texi(,10) @c Index entries should all be expanded as well.
+node-expand.texi(,11) 
+node-expand.texi(,12) @set node1 Node 1
+node-expand.texi(,13) 
+node-expand.texi(,15) 
+node-expand.texi(,16) @node Top, (dir), (dir), (dir)
+node-expand.texi(,17) @top Expansion in Node Names
+node-expand.texi(,18) 
+node-expand.texi(,20) 
+node-expand.texi(,21) @menu
+node-expand.texi(,22) * Node 1  ::
+node-expand.texi(,23) * @@node `2'::
+node-expand.texi(,24) * ``node'' with---tricks::
+node-expand.texi(,25) @end menu
+node-expand.texi(,26) 
+node-expand.texi(,27) @xref{@@node `2'}.
+node-expand.texi(,28) 
+node-expand.texi(,29) @node Node 1, @@node `2', Top, Top
+node-expand.texi(,30) @chapter Chapter 1
+node-expand.texi(,31) 
+node-expand.texi(,32) @cindex entry for chapter 1
+node-expand.texi(,33) This is chapter 1.
+node-expand.texi(,34) @xref{@@node `2'}.
+node-expand.texi(,35) 
+node-expand.texi(,36) @set sec1 Section 1.1
+node-expand.texi(,37) 
+node-expand.texi(,38) @menu
+node-expand.texi(,39) * Section 1.1::
+node-expand.texi(,40) @end menu
+node-expand.texi(,41) 
+node-expand.texi(,42) @node Section 1.1, , Node 1, Node 1
+node-expand.texi(,43) @comment  node-name,  next,  previous,  up
+node-expand.texi(,44) 
+node-expand.texi(,45) @cindex entry for section 1.1
+node-expand.texi(,46) This is section 1.1.
+node-expand.texi(,47) 
+node-expand.texi(,48) @node @@node `2', ``node'' with---tricks, Node 1, Top
+node-expand.texi(,49) @comment  node-name,  next,  previous,  up
+node-expand.texi(,50) @chapter Node 2
+node-expand.texi(,51) 
+node-expand.texi(,52) @cindex entry for chapter 2
+node-expand.texi(,53) This is chapter 2.
+node-expand.texi(,54) @xref{Node 1}.  @xref{Node 1}.
+node-expand.texi(,55) @xref{``node'' with---tricks, Node with some tricks}.
+node-expand.texi(,56) 
+node-expand.texi(,57) @node ``node'' with---tricks, , @@node `2', Top
+node-expand.texi(,58) 
+node-expand.texi(,59) @cindex tricks
+node-expand.texi(,60) Another node.
+node-expand.texi(,61) 
+node-expand.texi(,62) @printindex cp
+node-expand.texi(,63) 
+node-expand.texi(,64) @bye

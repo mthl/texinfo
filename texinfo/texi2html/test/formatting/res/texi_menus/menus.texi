@@ -10,7 +10,7 @@
 
 Menu comment
 
-* chapter2:description.   Chapter 2
+* description:chapter2,   Chapter 2
 @end menu
 
 Text.
@@ -95,6 +95,17 @@ Menu comment
 
 @node chapter2
 @chapter chapter 2
+
+@example
+@menu
+* section in chapter 2:: in description @cartouche
+in cartouche
+@end cartouche
+@end menu
+@end example
+
+@node section in chapter 2
+@section section in chapter 2
 
 @contents
 @shortcontents

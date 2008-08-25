@@ -184,6 +184,15 @@ $heading = \&book_heading;
 sub book_heading($)
 {
     my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+
+    return '' if (defined($command) and $command eq 'node' and !$element_heading);
+
     my $level = 3;
 
     return '' if ($element->{'top'});

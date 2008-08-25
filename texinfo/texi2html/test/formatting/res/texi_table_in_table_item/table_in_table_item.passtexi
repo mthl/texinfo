@@ -23,4 +23,29 @@ table_in_table_item.texi(,23)    @end table
 table_in_table_item.texi(,24) @end table
 table_in_table_item.texi(,25) }
 table_in_table_item.texi(,26) 
-table_in_table_item.texi(,27) @bye
+table_in_table_item.texi(,27) and in preformatted
+table_in_table_item.texi(,28) 
+table_in_table_item.texi(,29) @example
+table_in_table_item.texi(,30) @table @asis
+table_in_table_item.texi(,31) @item item in preformatted @table @asis
+table_in_table_item.texi(,32)    @item in table in table item in preformatted
+table_in_table_item.texi(,33)    in nested table line in preformatted
+table_in_table_item.texi(,34)    @end table
+table_in_table_item.texi(,35) @end table
+table_in_table_item.texi(,36) @end example
+table_in_table_item.texi(,37) 
+table_in_table_item.texi(,38) 
+table_in_table_item.texi(,39) and in preformatted in code
+table_in_table_item.texi(,40) 
+table_in_table_item.texi(,41) @code{
+table_in_table_item.texi(,42) @example
+table_in_table_item.texi(,43) @table @asis
+table_in_table_item.texi(,44) @item item in preformatted @table @asis
+table_in_table_item.texi(,45)    @item in table in table item in preformatted
+table_in_table_item.texi(,46)    in nested table line in preformatted
+table_in_table_item.texi(,47)    @end table
+table_in_table_item.texi(,48) @end table
+table_in_table_item.texi(,49) @end example
+table_in_table_item.texi(,50) }
+table_in_table_item.texi(,51) 
+table_in_table_item.texi(,52) @bye

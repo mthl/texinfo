@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.8 2008-08-18 18:01:49 pertusus Exp $
+# $Id: mediawiki.init,v 1.9 2008-08-25 16:25:32 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -333,6 +333,14 @@ $heading           = \&mediawiki_heading;
 sub mediawiki_heading($)
 {
     my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+
+    return '' if (defined($command) and $command eq 'node' and !$element_heading);
     my $level = 3;
     if (!$element->{'node'})
     {
@@ -566,19 +574,25 @@ sub mediawiki_index_summary($$)
 }
 
 
+## a simple menu entry ref in case we aren't in a standard menu context
+#$simple_menu_link  = \&mediawiki_simple_menu_link;
 
-# a simple menu entry ref in case we aren't in a standard menu context
-$simple_menu_link  = \&mediawiki_simple_menu_link;
+# a menu link. We are always in preformatted because of SIMPLE_MENU.
+$menu_link  = \&mediawiki_simple_menu_link;
 
 sub mediawiki_simple_menu_link($$$$$$$)
 {
     my $entry = shift;
-    my $preformatted = shift; # We assume this is true.
+#    my $preformatted = shift; # We assume this is true.
+    my $state = shift;
     my $href = shift;
     my $node = shift;
     my $title = shift;
     my $ending = shift;
     my $has_title = shift;
+    my $command_stack = shift;
+    my $preformatted = shift;
+
     $title = '' unless ($has_title);
     $ending = '' unless defined $ending;
     $entry = "</nowiki>";

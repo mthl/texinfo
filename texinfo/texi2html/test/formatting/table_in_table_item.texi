@@ -24,4 +24,29 @@ And in code
 @end table
 }
 
+and in preformatted
+
+@example
+@table @asis
+@item item in preformatted @table @asis
+   @item in table in table item in preformatted
+   in nested table line in preformatted
+   @end table
+@end table
+@end example
+
+
+and in preformatted in code
+
+@code{
+@example
+@table @asis
+@item item in preformatted @table @asis
+   @item in table in table item in preformatted
+   in nested table line in preformatted
+   @end table
+@end table
+@end example
+}
+
 @bye

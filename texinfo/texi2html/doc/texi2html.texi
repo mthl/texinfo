@@ -3497,7 +3497,8 @@ in @ref{Complex formats};
 part of the menu; 
 @end itemize
 
-The simple formatting is used if @variable{$SIMPLE_MENU} is true, 
+The simple formatting in a preformatted is used if 
+@variable{$SIMPLE_MENU} is true, 
 otherwise the format with tables is used (this is the default).
 
 If @variable{$USE_ACCESSKEY} is set, the @code{accesskey} attribute 
@@ -3530,9 +3531,9 @@ name.
 
 A menu entry begins with @samp{*} at the beginning of the line. It begins
 with the entry link, followed by the description. The description spans until
-the next menu entry, or some text begining at the first character of a line
-or an empty line, not contained within a command block which begun in the 
-description. An empty line or a line with text at the first character
+the next menu entry, 
+or an empty line not contained within a command block which begun in the 
+description. An empty line or
 starts a menu comment, which spans until the next menu entry.
 
 Here is an illustration of these rules:
@@ -3548,10 +3549,11 @@ Here is an illustration of these rules:
    A menu comment, after an empty line
 
 * node::                        description begins
-A menu comment. The line starts at the first character
+still in description.
 
 * last entry::         description begins @@emph@{text
-of the description, even if the line begins at the first character,
+
+of the description, even if there is an empty line,
 because we are in @@emph@}.
 @@end menu
 @end example
@@ -3560,29 +3562,50 @@ because we are in @@emph@}.
 @node Menu components formatting
 @subsection The formatting of the different menu components
 
-Three function references are associated with the formatting of the 
+If in a preformatted context (and @code{$SIMPLE_MENU} isn't set), the 
+menu link and description are put in the same preformatted environment.
+This can be avoided with @variable{$SEPARATE_DESCRIPTION}.
+
+Two function references are associated with the formatting of the 
 different parts of a menu:
-@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending $has_name
+@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending $has_name $command_stack $preformatted
 @var{$section} is the section name corresponding with the link, @var{$href}
 is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
-holds informations about the current context. The only key which could be
-of interest is @code{preformatted}, true if the context is a preformatted
-context. @xref{Three contexts}. 
+holds informations about the current context. 
+@c The only key which could be
+@c of interest is @code{preformatted}, true if the context is a preformatted
+@c context. 
 @var{$node} is the node name, @var{$name} is the
 name of the node. @var{$ending} is the text ending the link entry, 
 in general @samp{::} followed by some spaces.
 @var{$has_name} is true if the entry has an explicit name, otherwise
 @var{$name} has been constructed using the formatted node name.
+@var{$command_stack} is an array containing the commands enclosing
+the menu link. It is used in the default case to detect if the 
+menu link is right in the @command{@@menu} or not, since if it is not 
+right below the menu the formatting is simpler.
+@var{$preformatted} is true if in preformatted context.
+@xref{Three contexts}. 
 @end deftypefn
 
+This command is not called if @code{$SIMPLE_MENU} is set.
+
 @deftypefn {Function Reference} $description menu_description $description_text \%state $element_text
-@var{$description_text} is the text of the menu description. @var{\%state}
+@var{$description_text} is the text of the menu description. 
+The formatted link is also here if in preformatted context and 
+@code{$SEPARATE_DESCRIPTION} is not set.
+@var{\%state}
 should be used similarly than for the menu link. @var{$element_text}
 is the heading of the element associated with the node.
+@var{$command_stack} and @var{$preformatted} are the same than for the
+menu link.
 @end deftypefn
 
 The @dfn{menu comment} part is formatted like a normal command, 
-called @code{menu_comment}. The default is to have it be formatted
+called @code{menu_comment}. It is only used if not in preformatted 
+environment and if just below a @code{@@menu} since otherwise one
+cannot tell if it is a menu commment or normal text.
+The default is to have it be formatted
 like a @ref{Complex formats}, with
 @example
 $complex_format_map->@{'menu_comment'@} =
@@ -3597,19 +3620,19 @@ $complex_format_map->@{'menu_comment'@} =
 @c environment.
 @c @end deftypefn
 
-Another function reference corresponds with a special case. It
-is used when a menu entry appears within another block command, to
-avoid the possibilities of invalid @acronym{HTML} production.
-In that case the menu description and menu comments are not formatted 
-specially, but treated like normal text.
-@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending $has_name
-@var{$link_text} is the text corresponding with the link name, @var{$href}
-is the link hypertextual reference.
-@var{$node} is the node name, @var{$name} is the
-name of the node, and @var{$ending} is the text ending the link entry.
-@var{$has_name} is true if the entry has an explicit name, otherwise
-@var{$name} has been constructed using the formatted node name.
-@end deftypefn
+@c Another function reference corresponds with a special case. It
+@c is used when a menu entry appears within another block command, to
+@c avoid the possibilities of invalid @acronym{HTML} production.
+@c In that case the menu description and menu comments are not formatted 
+@c specially, but treated like normal text.
+@c @deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending $has_name
+@c @var{$link_text} is the text corresponding with the link name, @var{$href}
+@c is the link hypertextual reference.
+@c @var{$node} is the node name, @var{$name} is the
+@c name of the node, and @var{$ending} is the text ending the link entry.
+@c @var{$has_name} is true if the entry has an explicit name, otherwise
+@c @var{$name} has been constructed using the formatted node name.
+@c @end deftypefn
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Simple menu formatting
@@ -4346,6 +4369,9 @@ argument is true if there really was an explicit name.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 @item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 @item the $unknown function reference has a new argument, the pass number.
+@item change in the $heading API. Now the heading function reference is always 
+  called, and it is reported whether the heading is an element heading or 
+  not.
 @item @option{--sec-nav} is replaced by @option{--headers}.
 @item @option{--Verbose} is replaced by @option{--verbose}.
 @item @option{--lang} is replaced by @option{--document-language}.
@@ -4357,6 +4383,8 @@ argument is true if there really was an explicit name.
 the @code{&$menu} function reference is replaced by @code{&$menu_command}.
 @code{&$menu} is kept for backward compatibility. If @code{&$menu} is defined, 
 @code{@@detailmenu} is ignored.
+@item the API for the formatting of menus completly changed. $simple_menu_link
+  is removed, everything should be done in $menu_link.
 @item image file paths are not completed anymore in the default case. 
   The previous
   behaviour can be restored with @code{$COMPLETE_IMAGE_PATHS} set to true.

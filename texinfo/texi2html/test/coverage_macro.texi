@@ -555,7 +555,7 @@ in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </xml> ''
+<para> xml para </para> ''
 @end xml
 
 @html

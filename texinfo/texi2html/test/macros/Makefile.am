@@ -4,7 +4,7 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  not_ifset_text.texi bib-example.texi quote-args.texi alias.texi \
  test_include.texi nested_ignore.texi include_macro.texi \
  cond.texi defxcond.texi include-value.texi macro_in_misc.texi \
- value_in_misc_valid.texi macro-at.texi \
+ value_in_misc_valid.texi macro-at.texi node-expand.texi \
  file.texi inc_file.texi macro_included.texi my-bib-macros.texi \
  incl-incl.txi \
  tests.txt res

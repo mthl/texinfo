@@ -349,7 +349,7 @@ After clickstyle &rArr;
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><para><indexterm index="cp">index entry within deffn</indexterm></para></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -365,8 +365,8 @@ After clickstyle &rArr;
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -374,8 +374,8 @@ After clickstyle &rArr;
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -497,19 +497,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><para><indexterm index="cp">index entry between item and itemx</indexterm></para></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -533,7 +533,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -881,7 +881,7 @@ After clickstyle &rArr;
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><para><indexterm index="cp">index entry within deffn</indexterm></para></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -897,8 +897,8 @@ After clickstyle &rArr;
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -906,8 +906,8 @@ After clickstyle &rArr;
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -1029,19 +1029,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><para><indexterm index="cp">index entry between item and itemx</indexterm></para></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -1065,7 +1065,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -1408,7 +1408,7 @@ After clickstyle &rArr;
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><para><indexterm index="cp">index entry within deffn</indexterm></para></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -1424,8 +1424,8 @@ After clickstyle &rArr;
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -1433,8 +1433,8 @@ After clickstyle &rArr;
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -1556,19 +1556,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><para><indexterm index="cp">index entry between item and itemx</indexterm></para></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -1592,7 +1592,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -1936,7 +1936,7 @@ After clickstyle &rArr;
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><para><indexterm index="cp">index entry within deffn</indexterm></para></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -1952,8 +1952,8 @@ After clickstyle &rArr;
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -1961,8 +1961,8 @@ After clickstyle &rArr;
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -2084,19 +2084,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><para><indexterm index="cp">index entry between item and itemx</indexterm></para></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -2120,7 +2120,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -2462,7 +2462,7 @@ After clickstyle &rArr;
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><para><indexterm index="cp">index entry within deffn</indexterm></para></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -2478,8 +2478,8 @@ After clickstyle &rArr;
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -2487,8 +2487,8 @@ After clickstyle &rArr;
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -2610,19 +2610,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><para><indexterm index="cp">index entry between item and itemx</indexterm></para></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -2646,7 +2646,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -2988,7 +2988,7 @@ A quot---ation
 <definitionitem>def--fn
 </definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
-<definitionitem><indexterm index="cp">index entry within deffn</indexterm></definitionitem><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<indexterm index="cp">index entry within deffn</indexterm><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
 <definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
@@ -3004,8 +3004,8 @@ A quot---ation
 <definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
 <definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
 <definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
-<definitionitem><!-- comment -->
-</definitionitem><definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
 <definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
 <definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
@@ -3013,8 +3013,8 @@ A quot---ation
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
-<definitionitem><!-- comment between deffn and deffnx -->
-</definitionitem><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
 </definition>
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
 <definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
@@ -3136,19 +3136,19 @@ ref, a comma@comma{} in file}</code>
 See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 
 
-<table><item><!-- comment in table -->
-</item><tableitem><tableterm>&bullet; a</tableterm>
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
 <item>l--ine
 </item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
-<item><!-- comment between item and itemx -->
-</item><tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
 <item>l--ine
 </item></tableitem></table>
 
 <table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
-<item><indexterm index="cp">index entry between item and itemx</indexterm></item><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<indexterm index="cp">index entry between item and itemx</indexterm><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
 <item>l--ine
 </item></tableitem></table>
 
@@ -3172,7 +3172,7 @@ This is a very simple texi manual @  &lt;&gt;.
 </verbatim>
 <verbatim xml:space="preserve">in verbatim ''
 </verbatim>
-<para> xml para </xml> ''
+<para> xml para </para> ''
 
 
 
@@ -3228,8 +3228,12 @@ This is a very simple texi manual @  &lt;&gt;.
 </para></footnote>
 </para>
 <format xml:space="preserve"><menu>
-<a href="#s_002d_002dect_002cion">&bull; s--ect,ion</a>:: s--ect,ion
-
+<menuentry>
+<menunode> s--ect,ion</menunode>
+<menutitle> s--ect,ion</menutitle>
+<menucomment> s--ect,ion
+</menucomment>
+</menuentry>
 Menu comment
 ``simple-double--three---four----''&linebreak;
 

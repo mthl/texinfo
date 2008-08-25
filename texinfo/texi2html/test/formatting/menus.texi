@@ -10,7 +10,7 @@
 
 Menu comment
 
-* chapter2:description.   Chapter 2
+* description:chapter2,   Chapter 2
 @end menu
 
 Text.
@@ -27,6 +27,7 @@ Some text.
 @menu
 * (manual):: desc
 comment
+@ifset texi2html
 * (info):: before verbatim @verbatim
 some @ verb{' atim
 * (texinfo):: in @ verbatim
@@ -36,6 +37,7 @@ some @ verb{' atim
 
 <i></i>
 @end html
+@end ifset
 Log$
 * (truc):: @acronym{description
 acronym}
@@ -45,12 +47,14 @@ After menu
 @menu
 * (manual):: @table @asis
 @item item
+@ifset texi2html
 
 * (node)::
 menu comment ?
 * (node2):: description ?
   description continue ?
 comment.
+@end ifset
 @end table
 @end menu
 
@@ -81,20 +85,35 @@ Menu comment
 
 @menu
 @example
+@ifset texi2html
 * subsubsection::
 Menu comment
 
 * a description:(manual) other manual node.   Chapter 2
+@end ifset
 @end example
 @end menu
 
 @anchor{anchor}
 
+@ifset texi2html
 @node subsubsection
 @subsubsection subsubsection
+@end ifset
 
 @node chapter2
 @chapter chapter 2
+
+@example
+@menu
+* section in chapter 2:: in description @cartouche
+in cartouche
+@end cartouche
+@end menu
+@end example
+
+@node section in chapter 2
+@section section in chapter 2
 
 @contents
 @shortcontents

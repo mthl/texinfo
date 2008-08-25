@@ -116,3 +116,4 @@ Menu comment
 
 @contents
 @shortcontents
+@bye

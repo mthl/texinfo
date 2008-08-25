@@ -45,6 +45,7 @@ h1 titlefont (@titlefont),
 
   $copying_comment, $titlepage better and $documentdescription
   $program_string
+  $heading arguments.
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -116,7 +117,6 @@ all the CHM related parameters one can change).
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?
 
-
 * maybe be quiet during special region expansion outside of document. It
   is not very clear that it is wrong, though. multiple_pass could be passed
   down to echo_warn/echo_error and no warning would be produced with
@@ -138,10 +138,9 @@ function clean_antispam() {
 <tt>&lt;bug-gnulib<span id="span1" style="display:none;">-nospam</span>&#64;<span id="span2" style="display:none;">nospam.</span>gnu.org&gt;</tt>
 </body>
 
-* menu_description is menucomment in makeinfo. It is stopped by an empty line
-  or a command with $format_type{$command} eq 'menu'
+* menu_description is menucomment in makeinfo. 
   menuentry is the menunode+menutitle+menucomment
-  menu_comment has no name in makeinfo and is treated as normal text.
+  menu_comment is menu title in makeinfo and is treated as normal text.
 
 * Tests/formatting/code_not_closed.texi should trigger 2 errors, none
   are triggered currently.
@@ -157,7 +156,7 @@ function clean_antispam() {
   on the texinfo list.
 
 * makeinfo can proceed more than one file on the command line. The options
-  that are for one file (like -o ) apply to the first file only.
+  that are for one file (like -o ) apply to the first file only?
 
 * something like
 @math{@minus{} {\frac{1}{2}}} 
@@ -243,17 +242,6 @@ texi2html:
 imbrications.texi:241: Must be in `@deffn' environment to use `@deffnx'.
 imbrications.texi:259: `@end' expected `defun', but saw `deffn'.
 
-* the following leads to an empty def item, this is wrong
-@deffn a b 
-@c aaaa
-@deffnx
-aaa
-@end 
-
-@item
-@something
-@itemx should also be tested
-
 * makeinfo doesn't warn for empty heading commands, like
 ** unnumberedsubsec without name (l. 284)
 
@@ -276,7 +264,7 @@ texi2html all the style commands are removed without extra formatting.
 
 * include-value.texi is broken. And a test of substitution of @value and
 @macro is other commands, like syncodeindex and similar is missing. Done
-in mny misc commands, remains to be done in pass0 macros and for coverage.
+in many misc commands, remains to be done in pass0 macros and for coverage.
 
 * test for @deffn with end of line protected in @footnote (to test 
 end of line protection in keep_texi).
@@ -286,20 +274,31 @@ end of line protection in keep_texi).
 * texinfo expands @-commands normally in @documentdescription, but keeps --,
 texi2html uses simple_format which removes most @commands but uses entities
 
-* in menu-whitespace, with --xml (also seen in the html output), 
-in Top <nodenext>first</nodenext> in texi2html, not in makeinfo
-
 * clean formatting/def_cmds.texi to remove invalid texinfo and put it
 in an ifset.
 
 * in book.init there are li missing in ul in pre-toc or the like.
 
-* in float.texi result, there is
+2. * in float.texi result, there is
 1.1 A section
 and
 1.1 Section within unnumbered
 
 * document the new $image arguments
 
-* if a 'term' triggers no_paragraph, the ouput may be more valid, but the 
-center won't have effect in it.
+* if a 'term' triggers no_paragraph, the ouput may be more valid. But a 
+center won't have any effect in it.
+
+* in first @ref arg, ` is transformed to the corresponding entity, while
+  it is not done in @node, and seems like makeinfo doesn't do it either.
+
+* end of line after a @contents should certainly be kept in xml.init
+
+1. * display and format inherit code_style, so in @example should have
+  the example code-style, but in normal text the normal text 
+  code style. I'd say that it is the same for menu comments.
+
+* texi2dvi doesn't accept @table in @format
+
+* warnings and errors are somewhat random at present. Also it would be nice
+  to have the same error messages than makeinfo.

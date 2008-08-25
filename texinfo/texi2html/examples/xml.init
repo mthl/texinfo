@@ -4,6 +4,8 @@ $USE_MENU_DIRECTIONS = 0;
 $USE_UP_FOR_ADJACENT_NODES = 0;
 $USE_NUMERIC_ENTITY = 0;
 $USE_SETFILENAME = 1;
+$SEPARATE_DESCRIPTION = 1;
+$USE_NODES = 1;
 @EXPAND = ('xml');
 $USE_ISO = 0;
 
@@ -320,6 +322,7 @@ sub xml_heading($;$$$$)
     my $line = shift;
     my $in_preformatted = shift;
 
+#print STDERR "'$command' $line";
     if (defined($command) and $command =~ /heading/)
     {
         if (defined($line))
@@ -343,8 +346,9 @@ sub xml_heading($;$$$$)
     }
 
     my $result = '';
-    if (defined($node_element))
+    if (defined($node_element) and $command eq 'node')
     {
+#print STDERR "node $command $node_element->{'texi'}\n";
         $result .= "<node>\n";
         $result .= "<nodename>$node_element->{'text'}</nodename>\n";
         foreach my $direction('nodenext', 'nodeprev', 'nodeup')
@@ -911,12 +915,15 @@ sub xml_def_line($$$$$$$$$$$$$$$)
 # @end deffn
 # leads to the creation of a <definitionitem> with a comment within, 
 # while there should be no definitionitem 
-sub xml_def_item($)
+sub xml_def_item($$)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
+
     if ($text =~ /\S/)
     {
-       return '<definitionitem>' . $text . '</definitionitem>';
+       return '<definitionitem>' . $text . '</definitionitem>' unless $only_inter_item_commands;
+       return $text;
     }
     return '';
 }
@@ -1046,9 +1053,13 @@ sub xml_table_item($$$$$$$$$)
 sub xml_table_line($)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
     if ($text =~ /\S/)
     {
-        return "<item>$text</item>";
+        return "<item>$text</item>" unless $only_inter_item_commands;
+        return $text;
     }
     else
     {

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.150 2008-08-20 16:02:33 pertusus Exp $
+# $Id: texi2html.init,v 1.151 2008-08-25 16:25:30 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -314,6 +314,10 @@ $USE_SETFILENAME = 0;
 
 # if true, begin outputting at @setfilename, if this command is present.
 $IGNORE_BEFORE_SETFILENAME = 1;
+
+# if set always separate description and menu link, even in 
+# preformatted environment
+$SEPARATE_DESCRIPTION = 0;
 
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
@@ -784,6 +788,7 @@ sub t2h_default_init_out()
                  'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' };
             }
         }
+        #$SEPARATE_DESCRIPTION = 1;
         #$format_map{'menu_comment'} = '' if (!defined($format_map{'menu_comment'}));
     }
     elsif (!defined($format_map{'menu_comment'}) and !defined($complex_format_map->{'menu_comment'}))
@@ -3862,6 +3867,12 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
        'ftable'       =>  {},
        'itemize'      =>  { 'bullet'  => '' }
        );
+
+%inter_item_commands = (
+  'c' => 1,
+  'comment' => 1,
+  'cindex' => 1
+);
 #
 # texinfo format to align attribute of paragraphs
 #
@@ -4174,9 +4185,9 @@ $def_item          = \&t2h_default_def_item;
 $def               = \&t2h_default_def;
 $menu_command      = \&t2h_default_menu_command;
 $menu_link         = \&t2h_default_menu_link;
-$menu_comment      = \&t2h_default_menu_comment;
+#$menu_comment      = \&t2h_default_menu_comment;
 $menu_description  = \&t2h_default_menu_description;
-$simple_menu_link  = \&t2h_default_simple_menu_link;
+#$simple_menu_link  = \&t2h_default_simple_menu_link;
 $external_ref      = \&t2h_default_external_ref;
 $external_href     = \&t2h_default_external_href;
 $internal_ref      = \&t2h_default_internal_ref;
@@ -4734,14 +4745,16 @@ sub t2h_default_anchor($;$$$)
 #
 # $DEF_TABLE should be used to distinguish between @def formatted as table
 # and as definition lists.
-sub t2h_default_def_item($)
+sub t2h_default_def_item($$)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
     if ($text =~ /\S/)
     {
         if (! $DEF_TABLE)
         {
-            return '<dd>' . $text . '</dd>';
+            return '<dd>' . $text . '</dd>';# unless $only_inter_item_commands;
+            #return $text; # invalid without dd in ul
         }
         else
         {
@@ -4827,44 +4840,55 @@ my $menu_entry_index;
 #
 # argument:
 # whole menu text.
-sub t2h_default_menu_command($$)
+sub t2h_default_menu_command($$$)
 {
     my $format = shift;
     my $text = shift;
+    my $in_preformatted = shift;
+
     $menu_entry_index=0;
+
+    my $begin_row = '';
+    my $end_row = '';
+    if ($in_preformatted)
+    {
+        $begin_row = '<tr><td>';
+        $end_row = '</td></tr>';
+    }
     if ($text =~ /\S/)
     {
         return $text if ($format eq 'detailmenu');
-        return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">\n" 
-        . $text . "</table>\n";
+        return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">${begin_row}\n" 
+        . $text . "${end_row}</table>\n";
     }
 }
 
+# obsolete
 # a simple menu entry ref in case we aren't in a standard menu context
-sub t2h_default_simple_menu_link($$$$$$$)
-{
-    my $entry = shift;
-    my $preformatted = shift;
-    my $href = shift;
-    my $node = shift;
-    my $title = shift;
-    my $ending = shift;
-    my $has_title = shift;
-    $title = '' unless($has_title);
-    $ending = '' if (!defined($ending));
-    if (($entry eq '') or $NODE_NAME_IN_MENU or $preformatted)
-    {
-        $title .= ':' if ($title ne '');
-        $entry = "$MENU_SYMBOL$title$node";
-    }
-    $menu_entry_index++;
-    my $accesskey;
-    $accesskey = "accesskey=\"$menu_entry_index\"" if ($USE_ACCESSKEY and ($menu_entry_index < 10));
-    $entry = &$anchor('', $href, $entry, $accesskey) if ($href);
-    $entry .= $ending if ($preformatted);
-    $entry .= '&nbsp;' unless $preformatted;
-    return $entry;
-}
+#sub t2h_default_simple_menu_link($$$$$$$)
+#{
+#    my $entry = shift;
+#    my $preformatted = shift;
+#    my $href = shift;
+#    my $node = shift;
+#    my $title = shift;
+#    my $ending = shift;
+#    my $has_title = shift;
+#    $title = '' unless($has_title);
+#    $ending = '' if (!defined($ending));
+#    if (($entry eq '') or $NODE_NAME_IN_MENU or $preformatted)
+#    {
+#        $title .= ':' if ($title ne '');
+#        $entry = "$MENU_SYMBOL$title$node";
+#    }
+#    $menu_entry_index++;
+#    my $accesskey;
+#    $accesskey = "accesskey=\"$menu_entry_index\"" if ($USE_ACCESSKEY and ($menu_entry_index < 10));
+#    $entry = &$anchor('', $href, $entry, $accesskey) if ($href);
+#    $entry .= $ending if ($preformatted);
+#    $entry .= '&nbsp;' unless $preformatted;
+#    return $entry;
+#}
 
 # formats a menu entry link pointing to a node or section 
 #
@@ -4878,7 +4902,7 @@ sub t2h_default_simple_menu_link($$$$$$$)
 # href is optionnal. It is the reference to the section or the node anchor
 #     which should be used to make the link (typically it is the argument 
 #     of a href= attribute in a <a> element).
-sub t2h_default_menu_link($$$$$$)
+sub t2h_default_menu_link($$$$$$$$)
 {
     my $entry = shift;
     my $state = shift;
@@ -4887,9 +4911,15 @@ sub t2h_default_menu_link($$$$$$)
     my $title = shift;
     my $ending = shift;
     my $has_title = shift;
+    my $command_stack = shift;
+    my $preformatted = shift;
+
+    my $in_commands = 0;
+    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu');
+
     $title = '' unless ($has_title);
-#print STDERR  "MENU_LINK\n";
-    if (($entry eq '') or $NODE_NAME_IN_MENU or $state->{'preformatted'})
+#print STDERR  "MENU_LINK($in_commands)($state->{'preformatted'})\n";
+    if (($entry eq '') or $NODE_NAME_IN_MENU or $preformatted)
     {
         $title .= ':' if ($title ne '');
         $entry = "$MENU_SYMBOL$title$node";
@@ -4898,11 +4928,9 @@ sub t2h_default_menu_link($$$$$$)
     my $accesskey;
     $accesskey = "accesskey=\"$menu_entry_index\"" if ($USE_ACCESSKEY and ($menu_entry_index < 10));
     $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
-    return $entry if ($SIMPLE_MENU); 
-    if ($state->{'preformatted'})
-    {
-        return '<tr><td>' . main::do_preformatted($entry . $ending, $state);
-    }
+
+    return $entry.$ending if ($preformatted);
+    return $entry .'&nbsp;' if ($in_commands);
     return "<tr><td align=\"left\" valign=\"top\">$entry</td><td>&nbsp;&nbsp;</td>";
 }
 
@@ -4922,25 +4950,27 @@ sub simplify_text($)
 # the description text
 # the state. See menu_entry.
 # the heading of the element associated with the node.
-sub t2h_default_menu_description($$$)
+sub t2h_default_menu_description($$$$)
 {
     my $text = shift;
     my $state = shift;
     my $element_text = shift;
-    return $text if ($SIMPLE_MENU); 
-#print STDERR  "MENU_DESCRIPTION element_text!$element_text, text!$text\n";
-    if ($state->{'preformatted'})
-    {
-        return main::do_preformatted($text, $state) . '</td></tr>';
-    }
-    elsif ($AVOID_MENU_REDUNDANCY)
+    my $command_stack = shift;
+    my $preformatted = shift;
+
+    my $in_commands = 0;
+    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu');
+    return $text if ($preformatted or $in_commands);
+    # FIXME: the following is better-looking.
+    #return $text."<br>" if ($in_commands and !$state->{'preformatted'});
+    if ($AVOID_MENU_REDUNDANCY)
     {
         $text = '' if (simplify_text($element_text) eq simplify_text($text));
     }
     return "<td align=\"left\" valign=\"top\">$text</td></tr>\n";
 }
 
-# a menu comment (between menu lines)
+# a menu comment (between menu lines, obsolete)
 # formats the container of a menu comment. A menu comment is any text 
 # appearing between menu lines, either separated by an empty line from
 # the preceding menu entry, or a text beginning at the first character
@@ -4952,16 +4982,16 @@ sub t2h_default_menu_description($$$)
 #
 # argument
 # text contained in the menu comment.
-sub t2h_default_menu_comment($)
-{
-   my $text = shift;
-   return $text if ($SIMPLE_MENU); 
-   if ($text =~ /\S/)
-   {
-       return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">$text</th></tr>";
-   }
-   return '';
-}
+#sub t2h_default_menu_comment($)
+#{
+#   my $text = shift;
+#   return $text if ($SIMPLE_MENU); 
+#   if ($text =~ /\S/)
+#   {
+#       return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">$text</th></tr>";
+#   }
+#   return '';
+#}
 
 # Construct a href to an external source of information.
 # node is the node with texinfo @-commands
@@ -5312,13 +5342,18 @@ sub t2h_default_table_item($$$$$$$$$)
 }
 
 # format text on the line following the @item line (in table, vtable and ftable)
-sub t2h_default_table_line($)
+sub t2h_default_table_line($$$)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
     if ($text =~ /\S/)
     {
-         return '<dd>' . $text . '</dd>' . "\n";
+        return '<dd>' . $text . '</dd>' . "\n";# unless ($only_inter_item_commands);
+        #return $text; # invalid without dd in ul
     }
     return '';
 }
@@ -5326,7 +5361,7 @@ sub t2h_default_table_line($)
 #my $cell_nr = -1;
 
 # row in multitable
-sub t2h_default_row($$;$$)
+sub t2h_default_row($$$$$$$$)
 {
     my $text = shift;
     my $macro = shift;
@@ -5334,6 +5369,10 @@ sub t2h_default_row($$;$$)
     my $prototype_row = shift;
     my $prototype_lengths = shift;
     my $column_number = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
     # this is used to keep the cell number
     $t2h_default_multitable_stack[-1] = -1;
@@ -5350,7 +5389,7 @@ sub t2h_default_row($$;$$)
 }
 
 # cell in multitable
-sub t2h_default_cell($$;$$)
+sub t2h_default_cell($$$$$$$$)
 {
     my $text = shift;
     my $row_macro = shift;
@@ -5358,6 +5397,10 @@ sub t2h_default_cell($$;$$)
     my $prototype_row = shift;
     my $prototype_lengths = shift;
     my $column_number = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
     $t2h_default_multitable_stack[-1]++;
     my $cell_nr = $t2h_default_multitable_stack[-1];
@@ -5403,7 +5446,7 @@ sub t2h_default_format_list_item_texi($$$$)
 # format of the list (itemize or enumerate)
 # command passed as argument to the format
 # formatted_command leading command formatted, if it is a thing command
-sub t2h_default_list_item($$$$$$$$$)
+sub t2h_default_list_item($$$$$$$$$$$)
 {
     my $text = shift;
     my $format = shift;
@@ -5414,6 +5457,10 @@ sub t2h_default_list_item($$$$$$$$$)
     my $number = shift;
     my $prepended = shift;
     my $prepended_formatted = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
     $formatted_command = '' if (!defined($formatted_command) or 
           exists($special_list_commands{$format}->{$command}));
@@ -5647,6 +5694,10 @@ sub t2h_default_heading($;$$$$$)
     my $line = shift;
     my $in_preformatted = shift;
     my $one_section = shift;
+    my $element_heading = shift;
+
+    return '' if (defined($command) and $command eq 'node' and !$element_heading);  
+
 
     my $level = 3;
     if (!$element->{'node'})
@@ -5947,6 +5998,7 @@ sub t2h_default_def_line($$$$$$$$$$$$$$$$)
    my $original_command = shift;
 
    $index_label = '' if (!defined($index_label));
+   chomp($index_label);
    $category_prepared = '' if (!defined($category_prepared) or ($category_prepared =~ /^\s*$/));
    $name = '' if (!defined($name) or ($name =~ /^\s*$/));
    $type = '' if (!defined($type) or $type =~ /^\s*$/);
@@ -5962,16 +6014,16 @@ sub t2h_default_def_line($$$$$$$$$$$$$$$$)
    my $type_name = '';
    $type_name = " $type" if ($type ne '');
    $type_name .= ' <b>' . $name . '</b>' if ($name ne '');
-   $type_name .= $arguments . "\n";
+   $type_name .= $arguments;
    if (! $DEF_TABLE)
    {
-       return '<dt>'. '<u>' . $category_prepared . ':</u>' . $type_name . $index_label . "</dt>\n";
+       return '<dt>'. $index_label. '<u>' . $category_prepared . ':</u>' . $type_name . "</dt>\n";
    }
    else
    {
        
-       return "<tr>\n<td align=\"left\">" . $type_name . 
-       "</td>\n<td align=\"right\">" . $category_prepared . $index_label . "</td>\n" . "</tr>\n";
+       return "<tr><td align=\"left\">" . $type_name . 
+       "</td><td align=\"right\">" . $category_prepared . $index_label . "</td></tr>\n";
    }
 }
 

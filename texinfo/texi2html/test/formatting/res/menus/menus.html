@@ -55,7 +55,7 @@ ul.toc {list-style: none}
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; chapter2:description</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Chapter 2
+</pre></th></tr><tr><td align="left" valign="top"><a href="#chapter2">2. chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Chapter 2
 </td></tr>
 </table>
 
@@ -94,11 +94,11 @@ acronym</acronym>
 <dt> item</dt>
 <dd>
 <a href="node.html#Top">&bull; (node)</a>&nbsp;
-<p>menu comment ?
+menu comment ?
 <a href="node2.html#Top">&bull; (node2)</a>&nbsp; description ?
   description continue ?
 comment.
-</p></dd>
+</dd>
 </dl>
 </td></tr>
 </table>
@@ -126,14 +126,14 @@ comment.
 
 <p><a name="DOCF1" href="#FOOT1">(1)</a>
 </p>
-<table><tr><td>&nbsp;</td><td><table class="menu" border="0" cellspacing="0">
-<tr><td><pre class="menu-preformatted"><a href="#s_002d_002dect_002cion">&bull; s--ect,ion</a>::</pre><pre class="menu-preformatted"> s--ect,ion
-</pre></td></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+<table><tr><td>&nbsp;</td><td><table class="menu" border="0" cellspacing="0"><tr><td>
+<pre class="menu-preformatted"><a href="#s_002d_002dect_002cion">&bull; s--ect,ion</a>:: s--ect,ion
+</pre><pre class="menu-preformatted">
 Menu comment
 ``simple-double--three---four----''
 
 
-</pre></th></tr></table>
+</pre></td></tr></table>
 </td></tr></table>
 
 <hr size="6">
@@ -186,8 +186,8 @@ Menu comment
 <table class="menu" border="0" cellspacing="0">
 <tr><th colspan="3" align="left" valign="top"><table><tr><td>&nbsp;</td><td><pre class="example"><a href="#subsubsection">&bull; subsubsection</a>::
 Menu comment
-
-<a href="manual.html#other-manual-node">&bull; a description:(manual) other manual node</a>.   Chapter 2
+</pre><pre class="example">
+</pre><pre class="example"><a href="manual.html#other-manual-node">&bull; a description:(manual) other manual node</a>.   Chapter 2
 </pre></td></tr></table>
 </th></tr></table>
 
@@ -219,7 +219,7 @@ Menu comment
 <a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#subsubsection" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left">[<a href="#section-in-chapter-2" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -234,6 +234,34 @@ Menu comment
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">2. chapter 2</h1>
+
+<table><tr><td>&nbsp;</td><td><table class="menu" border="0" cellspacing="0"><tr><td>
+<pre class="menu-preformatted"><a href="#section-in-chapter-2">&bull; section in chapter 2</a>:: in description </pre><table class="cartouche" border="1"><tr><td>
+<pre class="menu-preformatted">in cartouche
+</pre></td></tr></table>
+</td></tr></table>
+</td></tr></table>
+
+<hr size="6">
+<a name="section-in-chapter-2"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#chapter2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#chapter2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#chapter2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">2.1 section in chapter 2</h2>
 
 
 <hr size="6">
@@ -271,7 +299,11 @@ Menu comment
     </ul>
 </li>
   </ul></li>
-  <li><a name="TOC5" href="#chapter2">2. chapter 2</a></li>
+  <li><a name="TOC5" href="#chapter2">2. chapter 2</a>
+  <ul class="toc">
+    <li><a name="TOC6" href="#section-in-chapter-2">2.1 section in chapter 2</a></li>
+  </ul>
+</li>
 </ul>
 </div>
 <hr size="1">

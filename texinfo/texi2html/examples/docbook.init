@@ -577,9 +577,12 @@ sub docbook_def_line($$$$$$$$$$$$$$$)
 sub docbook_def_item($)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
+
     if ($text =~ /\S/)
     {
-       return '<blockquote>' . $text . '</blockquote>';
+       return '<blockquote>' . $text . '</blockquote>' unless $only_inter_item_commands;
+       return $text;
     }
     return '';
 }
@@ -1071,9 +1074,13 @@ sub docbook_table_item($$$$$$$$$)
 sub docbook_table_line($)
 {
     my $text = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
     if ($text =~ /\S/)
     {
-        return "<listitem>$text</listitem>";
+        return "<listitem>$text</listitem>" unless $only_inter_item_commands;
+        return $text;
     }
     else
     {

@@ -9,7 +9,7 @@ menus.texi(,9) * chapter::               chapter
 menus.texi(,10) 
 menus.texi(,11) Menu comment
 menus.texi(,12) 
-menus.texi(,13) * chapter2:description.   Chapter 2
+menus.texi(,13) * description:chapter2,   Chapter 2
 menus.texi(,14) @end menu
 menus.texi(,15) 
 menus.texi(,16) Text.
@@ -26,76 +26,87 @@ menus.texi(,26)
 menus.texi(,27) @menu
 menus.texi(,28) * (manual):: desc
 menus.texi(,29) comment
-menus.texi(,30) * (info):: before verbatim @verbatim
-menus.texi(,31) some @ verb{' atim
-menus.texi(,32) * (texinfo):: in @ verbatim
-menus.texi(,33) 
-menus.texi(,34) @end verbatim
-menus.texi(,35) * (manual2):: $@html
-menus.texi(,36) 
-menus.texi(,37) <i></i>
-menus.texi(,38) @end html
-menus.texi(,39) Log$
-menus.texi(,40) * (truc):: @acronym{description
-menus.texi(,41) acronym}
-menus.texi(,42) @end menu
-menus.texi(,43) After menu
-menus.texi(,44) 
-menus.texi(,45) @menu
-menus.texi(,46) * (manual):: @table @asis
-menus.texi(,47) @item item
-menus.texi(,48) 
-menus.texi(,49) * (node)::
-menus.texi(,50) menu comment ?
-menus.texi(,51) * (node2):: description ?
-menus.texi(,52)   description continue ?
-menus.texi(,53) comment.
-menus.texi(,54) @end table
-menus.texi(,55) @end menu
-menus.texi(,56) 
-menus.texi(,57) @node chapter
-menus.texi(,58) @chapter chapter
-menus.texi(,59) 
-menus.texi(,60) @footnote{in footnote}
-menus.texi(,61) 
-menus.texi(,62) @format
-menus.texi(,63) @menu 
-menus.texi(,64) * s--ect@comma{}ion:: s--ect@comma{}ion
+menus.texi(,31) * (info):: before verbatim @verbatim
+menus.texi(,32) some @ verb{' atim
+menus.texi(,33) * (texinfo):: in @ verbatim
+menus.texi(,34) 
+menus.texi(,35) @end verbatim
+menus.texi(,36) * (manual2):: $@html
+menus.texi(,37) 
+menus.texi(,38) <i></i>
+menus.texi(,39) @end html
+menus.texi(,41) Log$
+menus.texi(,42) * (truc):: @acronym{description
+menus.texi(,43) acronym}
+menus.texi(,44) @end menu
+menus.texi(,45) After menu
+menus.texi(,46) 
+menus.texi(,47) @menu
+menus.texi(,48) * (manual):: @table @asis
+menus.texi(,49) @item item
+menus.texi(,51) 
+menus.texi(,52) * (node)::
+menus.texi(,53) menu comment ?
+menus.texi(,54) * (node2):: description ?
+menus.texi(,55)   description continue ?
+menus.texi(,56) comment.
+menus.texi(,58) @end table
+menus.texi(,59) @end menu
+menus.texi(,60) 
+menus.texi(,61) @node chapter
+menus.texi(,62) @chapter chapter
+menus.texi(,63) 
+menus.texi(,64) @footnote{in footnote}
 menus.texi(,65) 
-menus.texi(,66) Menu comment
-menus.texi(,67) ``simple-double--three---four----''@*
-menus.texi(,68) 
-menus.texi(,69) @end menu
-menus.texi(,70) @end format
-menus.texi(,71) 
-menus.texi(,72) @node s--ect@comma{}ion
-menus.texi(,73) @section A section
-menus.texi(,74) 
-menus.texi(,75) @menu
-menus.texi(,76) * subsection ``simple-double--three---four----'':: 
-menus.texi(,77) @end menu
+menus.texi(,66) @format
+menus.texi(,67) @menu 
+menus.texi(,68) * s--ect@comma{}ion:: s--ect@comma{}ion
+menus.texi(,69) 
+menus.texi(,70) Menu comment
+menus.texi(,71) ``simple-double--three---four----''@*
+menus.texi(,72) 
+menus.texi(,73) @end menu
+menus.texi(,74) @end format
+menus.texi(,75) 
+menus.texi(,76) @node s--ect@comma{}ion
+menus.texi(,77) @section A section
 menus.texi(,78) 
-menus.texi(,79) @node subsection ``simple-double--three---four----''
-menus.texi(,80) @subsection subsection ``simple-double--three---four----''
-menus.texi(,81) 
-menus.texi(,82) @menu
-menus.texi(,83) @example
-menus.texi(,84) * subsubsection::
-menus.texi(,85) Menu comment
-menus.texi(,86) 
-menus.texi(,87) * a description:(manual) other manual node.   Chapter 2
-menus.texi(,88) @end example
-menus.texi(,89) @end menu
-menus.texi(,90) 
-menus.texi(,91) @anchor{anchor}
-menus.texi(,92) 
-menus.texi(,93) @node subsubsection
-menus.texi(,94) @subsubsection subsubsection
-menus.texi(,95) 
-menus.texi(,96) @node chapter2
-menus.texi(,97) @chapter chapter 2
+menus.texi(,79) @menu
+menus.texi(,80) * subsection ``simple-double--three---four----'':: 
+menus.texi(,81) @end menu
+menus.texi(,82) 
+menus.texi(,83) @node subsection ``simple-double--three---four----''
+menus.texi(,84) @subsection subsection ``simple-double--three---four----''
+menus.texi(,85) 
+menus.texi(,86) @menu
+menus.texi(,87) @example
+menus.texi(,89) * subsubsection::
+menus.texi(,90) Menu comment
+menus.texi(,91) 
+menus.texi(,92) * a description:(manual) other manual node.   Chapter 2
+menus.texi(,94) @end example
+menus.texi(,95) @end menu
+menus.texi(,96) 
+menus.texi(,97) @anchor{anchor}
 menus.texi(,98) 
-menus.texi(,99) @contents
-menus.texi(,100) @shortcontents
-menus.texi(,101) 
-menus.texi(,102) @bye
+menus.texi(,100) @node subsubsection
+menus.texi(,101) @subsubsection subsubsection
+menus.texi(,103) 
+menus.texi(,104) @node chapter2
+menus.texi(,105) @chapter chapter 2
+menus.texi(,106) 
+menus.texi(,107) @example
+menus.texi(,108) @menu
+menus.texi(,109) * section in chapter 2:: in description @cartouche
+menus.texi(,110) in cartouche
+menus.texi(,111) @end cartouche
+menus.texi(,112) @end menu
+menus.texi(,113) @end example
+menus.texi(,114) 
+menus.texi(,115) @node section in chapter 2
+menus.texi(,116) @section section in chapter 2
+menus.texi(,117) 
+menus.texi(,118) @contents
+menus.texi(,119) @shortcontents
+menus.texi(,120) 
+menus.texi(,121) @bye

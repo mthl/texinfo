@@ -325,7 +325,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -341,8 +341,8 @@ After clickstyle &rArr;
 <synopsis role="truc"><indexterm role="fn"><primary>machin</primary></indexterm><function>machin</function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary> </primary></indexterm><function> </function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>followed</primary></indexterm><function>followed</function><replaceable> by</replaceable><replaceable> a</replaceable><replaceable> comment</replaceable></synopsis>
-<blockquote><!-- comment -->
-</blockquote><synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
+<!-- comment -->
+<synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
@@ -350,8 +350,8 @@ After clickstyle &rArr;
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function><replaceable> with</replaceable><replaceable> deffnx</replaceable></synopsis>
-<blockquote><!-- comment between deffn and deffnx -->
-</blockquote><synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
+<!-- comment between deffn and deffnx -->
+<synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
 <synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
@@ -473,19 +473,19 @@ ref, a comma@comma{} in file}</literal>
 *note a , in cross ref: (a comma, in file)s&ndash;ect,ion
 </para>
 
-<variablelist><listitem><!-- comment in table -->
-</listitem><varlistentry><term>&bull; a</term>
+<variablelist><!-- comment in table -->
+<varlistentry><term>&bull; a</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<listitem><!-- comment between item and itemx -->
-</listitem><term> b</term>
+<!-- comment between item and itemx -->
+<term> b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para></listitem><term>&minus; b</term>
+<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -847,7 +847,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -863,8 +863,8 @@ After clickstyle &rArr;
 <synopsis role="truc"><indexterm role="fn"><primary>machin</primary></indexterm><function>machin</function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary> </primary></indexterm><function> </function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>followed</primary></indexterm><function>followed</function><replaceable> by</replaceable><replaceable> a</replaceable><replaceable> comment</replaceable></synopsis>
-<blockquote><!-- comment -->
-</blockquote><synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
+<!-- comment -->
+<synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
@@ -872,8 +872,8 @@ After clickstyle &rArr;
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function><replaceable> with</replaceable><replaceable> deffnx</replaceable></synopsis>
-<blockquote><!-- comment between deffn and deffnx -->
-</blockquote><synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
+<!-- comment between deffn and deffnx -->
+<synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
 <synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
@@ -995,19 +995,19 @@ ref, a comma@comma{} in file}</literal>
 *note a , in cross ref: (a comma, in file)s&ndash;ect,ion
 </para>
 
-<variablelist><listitem><!-- comment in table -->
-</listitem><varlistentry><term>&bull; a</term>
+<variablelist><!-- comment in table -->
+<varlistentry><term>&bull; a</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<listitem><!-- comment between item and itemx -->
-</listitem><term> b</term>
+<!-- comment between item and itemx -->
+<term> b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para></listitem><term>&minus; b</term>
+<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1365,7 +1365,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -1381,8 +1381,8 @@ After clickstyle &rArr;
 <synopsis role="truc"><indexterm role="fn"><primary>machin</primary></indexterm><function>machin</function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary> </primary></indexterm><function> </function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>followed</primary></indexterm><function>followed</function><replaceable> by</replaceable><replaceable> a</replaceable><replaceable> comment</replaceable></synopsis>
-<blockquote><!-- comment -->
-</blockquote><synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
+<!-- comment -->
+<synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
@@ -1390,8 +1390,8 @@ After clickstyle &rArr;
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function><replaceable> with</replaceable><replaceable> deffnx</replaceable></synopsis>
-<blockquote><!-- comment between deffn and deffnx -->
-</blockquote><synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
+<!-- comment between deffn and deffnx -->
+<synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
 <synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
@@ -1513,19 +1513,19 @@ ref, a comma@comma{} in file}</literal>
 *note a , in cross ref: (a comma, in file)s&ndash;ect,ion
 </para>
 
-<variablelist><listitem><!-- comment in table -->
-</listitem><varlistentry><term>&bull; a</term>
+<variablelist><!-- comment in table -->
+<varlistentry><term>&bull; a</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<listitem><!-- comment between item and itemx -->
-</listitem><term> b</term>
+<!-- comment between item and itemx -->
+<term> b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para></listitem><term>&minus; b</term>
+<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1883,7 +1883,7 @@ After clickstyle &rArr;
 <blockquote>def--fn
 </blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -1899,8 +1899,8 @@ After clickstyle &rArr;
 <synopsis role="truc"><indexterm role="fn"><primary>machin</primary></indexterm><function>machin</function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary> </primary></indexterm><function> </function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>followed</primary></indexterm><function>followed</function><replaceable> by</replaceable><replaceable> a</replaceable><replaceable> comment</replaceable></synopsis>
-<blockquote><!-- comment -->
-</blockquote><synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
+<!-- comment -->
+<synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
@@ -1908,8 +1908,8 @@ After clickstyle &rArr;
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function><replaceable> with</replaceable><replaceable> deffnx</replaceable></synopsis>
-<blockquote><!-- comment between deffn and deffnx -->
-</blockquote><synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
+<!-- comment between deffn and deffnx -->
+<synopsis role="empty"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
 <synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
@@ -2031,19 +2031,19 @@ ref, a comma@comma{} in file}</literal>
 *note a , in cross ref: (a comma, in file)s--ect,ion
 
 
-<variablelist><listitem><!-- comment in table -->
-</listitem><varlistentry><term>&bull; a</term>
+<variablelist><!-- comment in table -->
+<varlistentry><term>&bull; a</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<listitem><!-- comment between item and itemx -->
-</listitem><term> b</term>
+<!-- comment between item and itemx -->
+<term> b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
+<indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm><term>&minus; b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 

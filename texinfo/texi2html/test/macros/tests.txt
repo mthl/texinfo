@@ -17,6 +17,7 @@ texi macro-at.texi
 texi alias.texi
 texi nested_ignore.texi
 texi include_macro.texi
+texi node-expand.texi
 # wrong
 texi include-value.texi
 # wrong
@@ -34,6 +35,8 @@ cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 macro-at macro-at.texi
+node-expand node-expand.texi -init makeinfo.init
+node-expand_xml node-expand.texi -init xml.init
 # wrong
 include-value include-value.texi
 # wrong

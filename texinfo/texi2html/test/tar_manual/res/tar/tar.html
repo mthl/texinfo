@@ -135,8 +135,7 @@ Appendices
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Index">H. Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment"> --- The Detailed Node Listing ---
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment"> --- The Detailed Node Listing ---
 
 Introduction
 
@@ -7494,17 +7493,13 @@ For more information about shell script syntax, please refer to
 <h3 class="subsection">5.4.1 General-Purpose Variables</h3>
 
 <dl>
-<dt><u>Backup variable:</u> <b>ADMINISTRATOR</b>
-<a name="IDX263"></a>
-</dt>
+<dt><a name="IDX263"></a><u>Backup variable:</u> <b>ADMINISTRATOR</b></dt>
 <dd><p>The user name of the backup administrator.  <code>Backup</code> scripts
 sends a backup report to this address.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>BACKUP_HOUR</b>
-<a name="IDX264"></a>
-</dt>
+<dt><a name="IDX264"></a><u>Backup variable:</u> <b>BACKUP_HOUR</b></dt>
 <dd><p>The hour at which the backups are done.  This can be a number from 0
 to 23, or the time specification in form <var>hours</var>:<var>minutes</var>,
 or the string &lsquo;<samp>now</samp>&rsquo;.
@@ -7514,11 +7509,9 @@ using &lsquo;<samp>--time</samp>&rsquo; option (see section <a href="#Scripted-B
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>TAPE_FILE</b>
-<a name="IDX265"></a>
-</dt>
-
-<dd><p>The device <code>tar</code> writes the archive to.  If <var>TAPE_FILE</var>
+<dt><a name="IDX265"></a><u>Backup variable:</u> <b>TAPE_FILE</b></dt>
+<dd>
+<p>The device <code>tar</code> writes the archive to.  If <var>TAPE_FILE</var>
 is a remote archive (see <a href="#remote_002ddev">remote-dev</a>), backup script will suppose
 that your <code>mt</code> is able to access remote devices.  If <var>RSH</var>
 (see <a href="#RSH">RSH</a>) is set, &lsquo;<samp>--rsh-command</samp>&rsquo; option will be added to
@@ -7526,20 +7519,16 @@ invocations of <code>mt</code>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>BLOCKING</b>
-<a name="IDX266"></a>
-</dt>
-
-<dd><p>The blocking factor <code>tar</code> will use when writing the dump archive.
+<dt><a name="IDX266"></a><u>Backup variable:</u> <b>BLOCKING</b></dt>
+<dd>
+<p>The blocking factor <code>tar</code> will use when writing the dump archive.
 See section <a href="#Blocking-Factor">The Blocking Factor of an Archive</a>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>BACKUP_DIRS</b>
-<a name="IDX267"></a>
-</dt>
-
-<dd><p>A list of file systems to be dumped (for <code>backup</code>), or restored
+<dt><a name="IDX267"></a><u>Backup variable:</u> <b>BACKUP_DIRS</b></dt>
+<dd>
+<p>A list of file systems to be dumped (for <code>backup</code>), or restored
 (for <code>restore</code>).  You can include any directory
 name in the list &mdash; subdirectories on that file system will be
 included, regardless of how they may look to other networked machines.
@@ -7562,20 +7551,16 @@ in a separate file.  This file is usually named
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>DIRLIST</b>
-<a name="IDX268"></a>
-</dt>
-
-<dd><p>A path to the file containing the list of the file systems to backup
+<dt><a name="IDX268"></a><u>Backup variable:</u> <b>DIRLIST</b></dt>
+<dd>
+<p>A path to the file containing the list of the file systems to backup
 or restore.  By default it is &lsquo;<tt>/etc/backup/dirs</tt>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>BACKUP_FILES</b>
-<a name="IDX269"></a>
-</dt>
-
-<dd><p>A list of individual files to be dumped (for <code>backup</code>), or restored
+<dt><a name="IDX269"></a><u>Backup variable:</u> <b>BACKUP_FILES</b></dt>
+<dd>
+<p>A list of individual files to be dumped (for <code>backup</code>), or restored
 (for <code>restore</code>).  These should be accessible from the machine on
 which the backup script is run.
 </p>
@@ -7586,26 +7571,20 @@ in a separate file.  This file is usually named
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>FILELIST</b>
-<a name="IDX270"></a>
-</dt>
-
-<dd><p>A path to the file containing the list of the individual files to backup
+<dt><a name="IDX270"></a><u>Backup variable:</u> <b>FILELIST</b></dt>
+<dd>
+<p>A path to the file containing the list of the individual files to backup
 or restore.  By default it is &lsquo;<tt>/etc/backup/files</tt>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>MT</b>
-<a name="IDX271"></a>
-</dt>
-
-<dd><p>Full file name of <code>mt</code> binary.
+<dt><a name="IDX271"></a><u>Backup variable:</u> <b>MT</b></dt>
+<dd>
+<p>Full file name of <code>mt</code> binary.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>RSH</b>
-<a name="IDX272"></a>
-</dt>
+<dt><a name="IDX272"></a><u>Backup variable:</u> <b>RSH</b></dt>
 <dd><p><a name="RSH"></a>
 Full file name of <code>rsh</code> binary or its equivalent.  You may wish to
 set it to <code>ssh</code>, to improve security.  In this case you will have
@@ -7613,30 +7592,24 @@ to use public key authentication.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>RSH_COMMAND</b>
-<a name="IDX273"></a>
-</dt>
-
-<dd><p>Full file name of <code>rsh</code> binary on remote mashines.  This will
+<dt><a name="IDX273"></a><u>Backup variable:</u> <b>RSH_COMMAND</b></dt>
+<dd>
+<p>Full file name of <code>rsh</code> binary on remote mashines.  This will
 be passed via &lsquo;<samp>--rsh-command</samp>&rsquo; option to the remote invocation
 of <acronym>GNU</acronym> <code>tar</code>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>VOLNO_FILE</b>
-<a name="IDX274"></a>
-</dt>
-
-<dd><p>Name of temporary file to hold volume numbers.  This needs to be accessible
+<dt><a name="IDX274"></a><u>Backup variable:</u> <b>VOLNO_FILE</b></dt>
+<dd>
+<p>Name of temporary file to hold volume numbers.  This needs to be accessible
 by all the machines which have file systems to be dumped.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>XLIST</b>
-<a name="IDX275"></a>
-</dt>
-
-<dd><p>Name of <em>exclude file list</em>.  An <em>exclude file list</em> is a file
+<dt><a name="IDX275"></a><u>Backup variable:</u> <b>XLIST</b></dt>
+<dd>
+<p>Name of <em>exclude file list</em>.  An <em>exclude file list</em> is a file
 located on the remote machine and containing the list of files to
 be excluded from the backup.  Exclude file lists are searched in
 /etc/tar-backup directory.  A common use for exclude file lists
@@ -7647,21 +7620,17 @@ is to exclude files containing security-sensitive information
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>SLEEP_TIME</b>
-<a name="IDX276"></a>
-</dt>
-
-<dd><p>Time to sleep between dumps of any two successive file systems
+<dt><a name="IDX276"></a><u>Backup variable:</u> <b>SLEEP_TIME</b></dt>
+<dd>
+<p>Time to sleep between dumps of any two successive file systems
 </p>
 <p>This variable affects only <code>backup</code>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>DUMP_REMIND_SCRIPT</b>
-<a name="IDX277"></a>
-</dt>
-
-<dd><p>Script to be run when it&rsquo;s time to insert a new tape in for the next
+<dt><a name="IDX277"></a><u>Backup variable:</u> <b>DUMP_REMIND_SCRIPT</b></dt>
+<dd>
+<p>Script to be run when it&rsquo;s time to insert a new tape in for the next
 volume.  Administrators may want to tailor this script for their site.
 If this variable isn&rsquo;t set, <acronym>GNU</acronym> <code>tar</code> will display its built-in
 prompt, and will expect confirmation from the console.  For the
@@ -7670,20 +7639,16 @@ description of the default prompt, see <a href="#change-volume-prompt">change vo
 </dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>SLEEP_MESSAGE</b>
-<a name="IDX278"></a>
-</dt>
-
-<dd><p>Message to display on the terminal while waiting for dump time.  Usually
+<dt><a name="IDX278"></a><u>Backup variable:</u> <b>SLEEP_MESSAGE</b></dt>
+<dd>
+<p>Message to display on the terminal while waiting for dump time.  Usually
 this will just be some literal text.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>TAR</b>
-<a name="IDX279"></a>
-</dt>
-
-<dd><p>Full file name of the <acronym>GNU</acronym> <code>tar</code> executable.  If this is not set, backup
+<dt><a name="IDX279"></a><u>Backup variable:</u> <b>TAR</b></dt>
+<dd>
+<p>Full file name of the <acronym>GNU</acronym> <code>tar</code> executable.  If this is not set, backup
 scripts will search <code>tar</code> in the current shell path.
 </p></dd></dl>
 
@@ -7713,9 +7678,7 @@ These functions take a single argument &ndash; the name of the tape
 device.  Their names are kept in the following variables:
 </p>
 <dl>
-<dt><u>Backup variable:</u> <b>MT_BEGIN</b>
-<a name="IDX280"></a>
-</dt>
+<dt><a name="IDX280"></a><u>Backup variable:</u> <b>MT_BEGIN</b></dt>
 <dd><p>The name of <em>begin</em> function.  This function is called before
 accessing the drive.  By default it retensions the tape:
 </p>
@@ -7728,9 +7691,7 @@ mt_begin() {
 </dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>MT_REWIND</b>
-<a name="IDX281"></a>
-</dt>
+<dt><a name="IDX281"></a><u>Backup variable:</u> <b>MT_REWIND</b></dt>
 <dd><p>The name of <em>rewind</em> function.  The default definition is as
 follows:
 </p>
@@ -7744,9 +7705,7 @@ mt_rewind() {
 </dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>MT_OFFLINE</b>
-<a name="IDX282"></a>
-</dt>
+<dt><a name="IDX282"></a><u>Backup variable:</u> <b>MT_OFFLINE</b></dt>
 <dd><p>The name of the function switching the tape off line.  By default
 it is defined as follows:
 </p>
@@ -7759,9 +7718,7 @@ mt_offline() {
 </dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>MT_STATUS</b>
-<a name="IDX283"></a>
-</dt>
+<dt><a name="IDX283"></a><u>Backup variable:</u> <b>MT_STATUS</b></dt>
 <dd><p>The name of the function used to obtain the status of the archive device,
 including error count.  Default definition:
 </p>
@@ -7802,9 +7759,7 @@ after restoring a file system.  Each user hook is a shell function
 taking four arguments:
 </p>
 <dl>
-<dt><u>User Hook Function:</u> <b>hook</b><i> <var>level</var> <var>host</var> <var>fs</var> <var>fsname</var></i>
-<a name="IDX284"></a>
-</dt>
+<dt><a name="IDX284"></a><u>User Hook Function:</u> <b>hook</b><i> <var>level</var> <var>host</var> <var>fs</var> <var>fsname</var></i></dt>
 <dd><p>Its arguments are:
 </p>
 <dl compact="compact">
@@ -7830,30 +7785,22 @@ is useful, e.g., for creating unique files.
 <p>Following variables keep the names of user hook functions
 </p>
 <dl>
-<dt><u>Backup variable:</u> <b>DUMP_BEGIN</b>
-<a name="IDX285"></a>
-</dt>
+<dt><a name="IDX285"></a><u>Backup variable:</u> <b>DUMP_BEGIN</b></dt>
 <dd><p>Dump begin function.  It is executed before dumping the file system.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>DUMP_END</b>
-<a name="IDX286"></a>
-</dt>
+<dt><a name="IDX286"></a><u>Backup variable:</u> <b>DUMP_END</b></dt>
 <dd><p>Executed after dumping the file system.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>RESTORE_BEGIN</b>
-<a name="IDX287"></a>
-</dt>
+<dt><a name="IDX287"></a><u>Backup variable:</u> <b>RESTORE_BEGIN</b></dt>
 <dd><p>Executed before restoring the file system.
 </p></dd></dl>
 
 <dl>
-<dt><u>Backup variable:</u> <b>RESTORE_END</b>
-<a name="IDX288"></a>
-</dt>
+<dt><a name="IDX288"></a><u>Backup variable:</u> <b>RESTORE_END</b></dt>
 <dd><p>Executed after restoring the file system.
 </p></dd></dl>
 
@@ -14325,9 +14272,7 @@ no-dup-args
 <p>Following variables are declared:
 </p>
 <dl>
-<dt><u>Help Output:</u> boolean <b>dup-args</b>
-<a name="IDX455"></a>
-</dt>
+<dt><a name="IDX455"></a><u>Help Output:</u> boolean <b>dup-args</b></dt>
 <dd><p>If true, arguments for an option are shown with both short and long
 options, even when a given option has both forms, for example:
 </p>
@@ -14348,9 +14293,7 @@ using <code>dup-args-note</code> (see below).
 </p></dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> boolean <b>dup-args-note</b>
-<a name="IDX456"></a>
-</dt>
+<dt><a name="IDX456"></a><u>Help Output:</u> boolean <b>dup-args-note</b></dt>
 <dd><p>If this variable is true, which is the default, the following notice
 is displayed at the end of the help output:
 </p>
@@ -14363,9 +14306,7 @@ variables <code>dup-args</code> or <code>dup-args-note</code> should be set.
 </p></dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>short-opt-col</b>
-<a name="IDX457"></a>
-</dt>
+<dt><a name="IDX457"></a><u>Help Output:</u> offset <b>short-opt-col</b></dt>
 <dd><p>Column in which short options start. Default is 2.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14376,9 +14317,7 @@ $ <kbd>ARGP_HELP_FMT=short-opt-col=6 tar --help|grep ARCHIVE</kbd>
 </dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>long-opt-col</b>
-<a name="IDX458"></a>
-</dt>
+<dt><a name="IDX458"></a><u>Help Output:</u> offset <b>long-opt-col</b></dt>
 <dd><p>Column in which long options start. Default is 6. For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14389,9 +14328,7 @@ $ <kbd>ARGP_HELP_FMT=long-opt-col=16 tar --help|grep ARCHIVE</kbd>
 </dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>doc-opt-col</b>
-<a name="IDX459"></a>
-</dt>
+<dt><a name="IDX459"></a><u>Help Output:</u> offset <b>doc-opt-col</b></dt>
 <dd><p>Column in which <em>doc options</em> start.  A doc option isn&rsquo;t actually
 an option, but rather an arbitrary piece of documentation that is
 displayed in much the same manner as the options.  For example, in
@@ -14427,9 +14364,7 @@ will look as follows:
 </dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>opt-doc-col</b>
-<a name="IDX460"></a>
-</dt>
+<dt><a name="IDX460"></a><u>Help Output:</u> offset <b>opt-doc-col</b></dt>
 <dd><p>Column in which option description starts. Default is 29.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14446,9 +14381,7 @@ $ <kbd>ARGP_HELP_FMT=opt-doc-col=9 tar --help|grep ARCHIVE</kbd>
 </p></dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>header-col</b>
-<a name="IDX461"></a>
-</dt>
+<dt><a name="IDX461"></a><u>Help Output:</u> offset <b>header-col</b></dt>
 <dd><p>Column in which <em>group headers</em> are printed.  A group header is a
 descriptive text preceding an option group.  For example, in the
 following text:
@@ -14464,17 +14397,13 @@ following text:
 </p></dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>usage-indent</b>
-<a name="IDX462"></a>
-</dt>
+<dt><a name="IDX462"></a><u>Help Output:</u> offset <b>usage-indent</b></dt>
 <dd><p>Indentation of wrapped usage lines. Affects &lsquo;<samp>--usage</samp>&rsquo;
 output. Default is 12.
 </p></dd></dl>
 
 <dl>
-<dt><u>Help Output:</u> offset <b>rmargin</b>
-<a name="IDX463"></a>
-</dt>
+<dt><a name="IDX463"></a><u>Help Output:</u> offset <b>rmargin</b></dt>
 <dd><p>Right margin of the text output. Used for wrapping.
 </p></dd></dl>
 

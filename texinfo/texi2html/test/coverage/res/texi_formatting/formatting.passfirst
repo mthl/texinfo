@@ -1460,3 +1460,4 @@ formatting.texi(,115) @printindex fn
 formatting.texi(,116) 
 formatting.texi(,117) @contents
 formatting.texi(,118) @shortcontents
+formatting.texi(,119) @bye

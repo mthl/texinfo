@@ -1,3 +1,21 @@
+2008-08-25  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: modify menu preformatted handling
+	such that the preformatted needs not be done in the formatting 
+	function. This allowed to remove simple_menu_link since now
+	menu_link is always like simple_menu_link with detection of
+	commands added. Now things should be right in html, and also
+	xml, and with SIMPLE_MENU even for complicated nestings in 
+	menus.
+	Give to formatting functions for formats like @itemize, @table,
+	@multitable... the information that the element is before the first
+	@item, or that only commands listed in %inter_item_commands
+	were seen.
+	Always call $heading when a heading is seen, even if it is not
+	associated with the element.
+	* texi2html.init: Keep better original code end of lines in 
+	@def* and put the anchor at the definition line beginning.
+
 2008-08-21  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: simplify handling of table and list items, get
