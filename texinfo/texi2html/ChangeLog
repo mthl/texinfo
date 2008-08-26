@@ -1,3 +1,20 @@
+2008-08-26  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, examples/makeinfo.init: put everything needed for
+	footnote formatting in the footnote state, to be able to use it in
+	formatting function. This allows to mimic the makeinfo formatting
+	of footnotes.
+	* texi2html.pl, doc/*: add function references to be able to modify
+	target and id for elements, placed items and nodes (Reinhold
+	suggestion).
+	* texi2html.pl: initialize file relative foot number to 0 (report
+	from Reinhold).
+	Fix numbering of numbered subsections in unnumbered such that every
+	numbered section has an increasing number.
+	* texi2html.pl, texi2html.init: @display and @format inherit the 
+	code_style and font.
+	* examples/book.init: better conformant ouput.
+
 2008-08-25  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: modify menu preformatted handling

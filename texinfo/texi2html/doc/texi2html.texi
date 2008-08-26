@@ -1105,7 +1105,7 @@ initialization files.
 * Customizing section::
 * Customizing footer::
 * Special pages::             Customizing table of contents, top, about page.
-* File names::                Customizing the file names.
+* File and target names::     Customizing the file and target names.
 * External index files::      Putting index entries in external files.
 @end menu
 
@@ -2002,9 +2002,12 @@ the function is called because a @code{@@contents} or
 @var{$element} is a hash reference containing informations about the
 table of contents context. Relevant keys are:
 @table @code
-@item id
+@item target
 The identifier associated with the table of contents, used for example
 to do references to the table of contents using href in @acronym{HTML}.
+@item id
+The identifier associated with the element, used to do labels. In 
+general the same than the @code{target}, but not necessarily.
 @item file
 The file name containing the table of contents.
 @end table
@@ -2116,8 +2119,10 @@ All the other function call @variable{$print_misc} which in turn calls
 for the footers.
 
 @c --------------------------------------------------------
-@node File names
-@section Customizing the file names
+@node File and target names
+@section Customizing the file and target names
+
+@subheading File names
 
 It is possible to specify the file names with more control than with the
 command line options (@pxref{Output files}). 
@@ -2127,8 +2132,8 @@ Two function references enable
 further customization. One is usefull in case @variable{$NODE_FILES} is true
 and it is used to customize the node file name. 
 
-@deftypefn {Function Reference} $node_file node_file_name $node
-@var{$node} is a hash reference with the following interesting keys (there
+@deftypefn {Function Reference} $node_file node_file_name \%node
+@var{\%node} is a hash reference with the following interesting keys (there
 are much more keys):
 @table @code
 @item texi
@@ -2142,8 +2147,8 @@ The result is the node file name @var{$node_file}.
 The other is used to
 customize the file names associated with each element, and the 
 name of the file associated with the special elements.
-@deftypefn {Function Reference} $file element_file_name $element $type $docu_name
-@var{$element} is undefined for the special elements (about, overview, 
+@deftypefn {Function Reference} $file element_file_name \%element $type $docu_name
+@var{\%element} is undefined for the special elements (about, overview, 
 table of contents, footnotes).
 Otherwise it is a hash reference with the following interesting keys (there
 are much more keys):
@@ -2170,6 +2175,56 @@ is also called for @samp{frame}, the frame file name, and
 @var{$docu_name} is the basename of the texinfo manual.
 The result is the element or special element file name.
 @end deftypefn
+
+@subheading target names
+
+Similarly target and id may be set. The @dfn{id} is placed where the 
+item is located, the @dfn{target} is used to construct references to
+that item. In general they are equal, but not always, for example
+in the default case, the target for a section is the node id.
+The following function reference, is
+for target items (nodes, anchors, floats):
+
+@deftypefn {Function Reference} {($target,$id)} node_target_name \%node, $default_target, $default_id
+@var{\%node} is the same as in the @code{node_file_name} function reference
+above.
+@var{$default_target} is the target already set (it is also 
+in @code{$node->@{'target'@}}), and @var{$default_id} is similarly
+the id already set.
+@end deftypefn
+
+For element associated with files (which may be nodes), the function 
+reference is:
+
+@deftypefn {Function Reference} ($target,$id) element_target_name \%element, $default_target, $default_id
+the @var{\%element} is the same than in @code{element_file_name}, and
+@var{$default_target} and @var{$default_id} are the target and id already set.
+@end deftypefn
+
+Placed items 
+(floats, footnotes, index entries, anchors, contents,
+shortcontents and headings)
+file and target may also be set. In the default case, they should 
+be rightly set, so be careful when changing them. The following 
+function reference can be used:
+
+@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item, \%element, $default_target, $default_file, $default_id, context
+@var{\%placed_item} is a hash reference describing the placed item,
+in the same vein than above.
+the @var{\%element} is the same than in @code{element_file_name}, 
+corresponding with the element containing the placed item.
+@var{$default_file}, @var{default_id} and
+@var{$default_target} are the file, id and target already set.
+@var{$context} describes the context, it is empty in the normal cases, 
+and can also be set to @samp{footnotes} if in footnotes, or to
+@samp{no_associated_element} if the placed item is out of any element
+(typically in @code{@@titlepage}, @code{@@copying}).
+@end deftypefn
+
+For special elements, the @variable{%misc_pages_targets} hash is 
+used to set the target and id. The possibilities for the keys 
+are @samp{Overview},
+@samp{Contents}, @samp{Footnotes} and @samp{About}.
 
 @c --------------------------------------------------------
 @node External index files

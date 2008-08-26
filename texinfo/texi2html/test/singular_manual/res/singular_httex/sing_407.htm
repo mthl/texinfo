@@ -104,14 +104,14 @@ ul.toc {list-style: none}
              actual monomial ordering (if no o is given):
              NOTE: generators with SMALLER(!) leading term come FIRST
              (e.g. sort(id); sorts backwards to actual monomial ordering)
-           - if id=list of intvec's or int's: consider a list element, say
+           - if id=list of intvec&rsquo;s or int&rsquo;s: consider a list element, say
              id[1]=3,2,5, as exponent vector of the monomial x^3*y^2*z^5;
              the corresponding monomials are ordered w.r.t. intvec v (s.a.).
              If no v is present, the monomials are sorted w.r.t. ordering o
              (if o is given) or w.r.t. lexicographical ordering (if no o is
              given). The corresponding ordered list of exponent vectors is
              returned.
-             (e.g. sort(id); sorts lexicographically, smaller int's come first)
+             (e.g. sort(id); sorts lexicographically, smaller int&rsquo;s come first)
              WARNING: Since negative exponents create the 0 polynomial in
              Singular, id should not contain negative integers: the result
              might not be as expected

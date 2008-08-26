@@ -305,17 +305,17 @@ After clickstyle &rArr;
 </screen>
 <screen>s--mallexample
 </screen>
-<literallayout>d--isplay
+<literallayout>d&ndash;isplay
 </literallayout>
-<literallayout>s--malldisplay
+<literallayout>s&ndash;malldisplay
 </literallayout>
 <programlisting>l--isp
 </programlisting>
 <programlisting>s--malllisp
 </programlisting>
-<abstract>f--ormat
+<abstract>f&ndash;ormat
 </abstract>
-<screen>s--mallformat
+<screen>s&ndash;mallformat
 </screen>
 <informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn
@@ -827,17 +827,17 @@ After clickstyle &rArr;
 </screen>
 <screen>s--mallexample
 </screen>
-<literallayout>d--isplay
+<literallayout>d&ndash;isplay
 </literallayout>
-<literallayout>s--malldisplay
+<literallayout>s&ndash;malldisplay
 </literallayout>
 <programlisting>l--isp
 </programlisting>
 <programlisting>s--malllisp
 </programlisting>
-<abstract>f--ormat
+<abstract>f&ndash;ormat
 </abstract>
-<screen>s--mallformat
+<screen>s&ndash;mallformat
 </screen>
 <informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn
@@ -1345,17 +1345,17 @@ After clickstyle &rArr;
 </screen>
 <screen>s--mallexample
 </screen>
-<literallayout>d--isplay
+<literallayout>d&ndash;isplay
 </literallayout>
-<literallayout>s--malldisplay
+<literallayout>s&ndash;malldisplay
 </literallayout>
 <programlisting>l--isp
 </programlisting>
 <programlisting>s--malllisp
 </programlisting>
-<abstract>f--ormat
+<abstract>f&ndash;ormat
 </abstract>
-<screen>s--mallformat
+<screen>s&ndash;mallformat
 </screen>
 <informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn

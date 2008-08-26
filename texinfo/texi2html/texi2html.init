@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.151 2008-08-25 16:25:30 pertusus Exp $
+# $Id: texi2html.init,v 1.152 2008-08-26 15:51:33 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -777,7 +777,8 @@ sub t2h_default_init_out()
     my $document_encoding = $DOCUMENT_ENCODING;
     $document_encoding = 'UNDEF' if (!defined($document_encoding));
     print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $ENCODING_NAME\n" if ($VERBOSE);
-        
+    
+    #FIXME check 'style' on bug-texinfo
     if ($SIMPLE_MENU)
     {
         foreach my $format ('menu', 'detailmenu')
@@ -785,7 +786,7 @@ sub t2h_default_init_out()
             if (!defined($complex_format_map->{$format}))
             { 
                 $complex_format_map->{$format} = { 'begin' => q{''} , 'end' => q{''},
-                 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' };
+                 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted', 'style' => 'code' };
             }
         }
         #$SEPARATE_DESCRIPTION = 1;
@@ -797,6 +798,7 @@ sub t2h_default_init_out()
         {
            'begin' => q{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"},
            'end' => q{"</th></tr>"}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
+            'style' => 'code'
         }
     }
     
@@ -2915,6 +2917,14 @@ foreach my $symbol(keys(%unicode_map))
  'insertcopying' => 1
 );
 
+# FIXME verify on bug-texinfo
+# currently it doesn't make sense since the section name normally formatted
+# is used
+#%format_code_style = (
+#  'menu_name' => 1,
+#  'menu_description' => 1
+#);
+
 # not used currently for html, but used in chm.init
 %numeric_entity_map = ();
 
@@ -3892,11 +3902,13 @@ $complex_format_map =
  {
   'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
   'end' => q{"</td></tr></table>\n"},
+  'style' => 'code',
  },
  'smallexample' =>
  {
   'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
   'end' => q{"</td></tr></table>\n"},
+  'style' => 'code',
  },
  'display' =>
  {
@@ -4149,6 +4161,8 @@ my %misc_command_old = (
          'pre.menu-comment'       => "$MENU_PRE_STYLE",
          'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
          'a.summary-letter'       => 'text-decoration: none',
+#         'pre.display'            => 'font-family: inherit',
+#         'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
          'pre.display'            => 'font-family: serif',
          'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
          'pre.smallexample'       => 'font-size: smaller',
@@ -5813,7 +5827,7 @@ sub t2h_default_raw_no_texi($$)
 # reference on an array containing the footnote text lines which should
 #     have been updated
 # the text for the reference pointing on the footnote text
-sub t2h_default_foot_line_and_ref($$$$$$$)
+sub t2h_default_foot_line_and_ref($$$$$$$$$)
 {
     my $number_in_doc = shift;
     my $number_in_page = shift;
@@ -5822,7 +5836,7 @@ sub t2h_default_foot_line_and_ref($$$$$$$)
     my $document_file = shift;
     my $footnote_file = shift;
     my $lines = shift;
-    my $state = shift;
+    my $document_state = shift;
     
     if ($document_file eq $footnote_file)
     {
@@ -5834,7 +5848,7 @@ sub t2h_default_foot_line_and_ref($$$$$$$)
           . "</h3>\n");
     # this is a bit obscure, this allows to add an anchor only if formatted
     # as part of the document.
-    $place_id = '' if ($state->{'outside_document'} or $state->{'multiple_pass'});
+    $place_id = '' if ($document_state->{'outside_document'} or $document_state->{'multiple_pass'});
     return ($lines, &$anchor($place_id,  $footnote_file . "#$footnote_id", 
            "($number_in_doc)"));
 }

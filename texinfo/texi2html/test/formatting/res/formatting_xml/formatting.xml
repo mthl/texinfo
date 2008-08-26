@@ -330,17 +330,17 @@ After clickstyle &rArr;
 </example>
 <smallexample xml:space="preserve">s--mallexample
 </smallexample>
-<display xml:space="preserve">d--isplay
+<display xml:space="preserve">d&ndash;isplay
 </display>
-<smalldisplay xml:space="preserve">s--malldisplay
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
 </smalldisplay>
 <lisp xml:space="preserve">l--isp
 </lisp>
 <smalllisp xml:space="preserve">s--malllisp
 </smalllisp>
-<format xml:space="preserve">f--ormat
+<format xml:space="preserve">f&ndash;ormat
 </format>
-<smallformat xml:space="preserve">s--mallformat
+<smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
 <definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
@@ -862,17 +862,17 @@ After clickstyle &rArr;
 </example>
 <smallexample xml:space="preserve">s--mallexample
 </smallexample>
-<display xml:space="preserve">d--isplay
+<display xml:space="preserve">d&ndash;isplay
 </display>
-<smalldisplay xml:space="preserve">s--malldisplay
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
 </smalldisplay>
 <lisp xml:space="preserve">l--isp
 </lisp>
 <smalllisp xml:space="preserve">s--malllisp
 </smalllisp>
-<format xml:space="preserve">f--ormat
+<format xml:space="preserve">f&ndash;ormat
 </format>
-<smallformat xml:space="preserve">s--mallformat
+<smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
 <definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
@@ -1389,17 +1389,17 @@ After clickstyle &rArr;
 </example>
 <smallexample xml:space="preserve">s--mallexample
 </smallexample>
-<display xml:space="preserve">d--isplay
+<display xml:space="preserve">d&ndash;isplay
 </display>
-<smalldisplay xml:space="preserve">s--malldisplay
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
 </smalldisplay>
 <lisp xml:space="preserve">l--isp
 </lisp>
 <smalllisp xml:space="preserve">s--malllisp
 </smalllisp>
-<format xml:space="preserve">f--ormat
+<format xml:space="preserve">f&ndash;ormat
 </format>
-<smallformat xml:space="preserve">s--mallformat
+<smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
 <definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
@@ -1917,17 +1917,17 @@ After clickstyle &rArr;
 </example>
 <smallexample xml:space="preserve">s--mallexample
 </smallexample>
-<display xml:space="preserve">d--isplay
+<display xml:space="preserve">d&ndash;isplay
 </display>
-<smalldisplay xml:space="preserve">s--malldisplay
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
 </smalldisplay>
 <lisp xml:space="preserve">l--isp
 </lisp>
 <smalllisp xml:space="preserve">s--malllisp
 </smalllisp>
-<format xml:space="preserve">f--ormat
+<format xml:space="preserve">f&ndash;ormat
 </format>
-<smallformat xml:space="preserve">s--mallformat
+<smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
 <definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
@@ -2443,17 +2443,17 @@ After clickstyle &rArr;
 </example>
 <smallexample xml:space="preserve">s--mallexample
 </smallexample>
-<display xml:space="preserve">d--isplay
+<display xml:space="preserve">d&ndash;isplay
 </display>
-<smalldisplay xml:space="preserve">s--malldisplay
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
 </smalldisplay>
 <lisp xml:space="preserve">l--isp
 </lisp>
 <smalllisp xml:space="preserve">s--malllisp
 </smalllisp>
-<format xml:space="preserve">f--ormat
+<format xml:space="preserve">f&ndash;ormat
 </format>
-<smallformat xml:space="preserve">s--mallformat
+<smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
 <definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
@@ -3266,7 +3266,7 @@ Menu comment
 <menu>
 <menuentry>
 <menunode> subsubsection ``simple-double--three---four----''</menunode>
-<menutitle> subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menutitle> subsubsection ``simple-double--three---four----''</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>

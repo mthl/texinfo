@@ -31,12 +31,12 @@ sub print_sub_toc($$)
 {
     my $parent_element = shift;
     my $element = shift;
-    my $result = &$anchor('', main::href($element, $parent_element->{'file'}), $element->{'text'}) . " <br>\n";
+    my $result = "<li> ".&$anchor('', main::href($element, $parent_element->{'file'}), $element->{'text'}) . " </li>\n";
 #print STDERR "SUB_TOC $element->{'text'}\n"; #sleep 1;
     if (exists($element->{'child'}))
     {
 #print STDERR "SUB_TOC child $element->{'child'}->{'text'}\n"; 
-         $result .= "<ul>\n". print_sub_toc($parent_element, $element->{'child'}) ."</ul>\n";
+         $result .= "<li><ul${NO_BULLET_LIST_ATTRIBUTE}>\n". print_sub_toc($parent_element, $element->{'child'}) ."</ul></li>\n";
     }
     if (exists($element->{'sectionnext'}))
     {
@@ -58,13 +58,15 @@ sub print_up_toc($$)
         $current_element = $current_element->{'sectionup'};
     }
     #print $fh "<ul>" . &$anchor('', $Texi2HTML::HREF{Contents}, '[' . $Texi2HTML::NAME{Contents} . ']') . " <br>\n";
+    my $elem = shift @elements;
+    print $fh "<ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
     foreach my $elem (@elements)
     {
-        print $fh "<ul>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " <br>\n";
+        print $fh "<li><ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
     }
     foreach my $elem (@elements)
     {
-        print $fh "</ul>\n";
+        print $fh "</ul></li>\n";
     }
     print $fh "</ul>\n";
 }
@@ -218,7 +220,7 @@ sub book_heading($)
     if (exists($element->{'child'}) 
         and ($element->{'tag_level'} !~ /heading/))
     {
-        $text .= "<ul>\n";
+        $text .= "<ul${NO_BULLET_LIST_ATTRIBUTE}>\n";
         $text .= "" . print_sub_toc($element, $element->{'child'});
         $text .= "</ul>\n";
     }

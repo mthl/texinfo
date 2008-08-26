@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.225 2008-08-25 16:25:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.226 2008-08-26 15:51:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -378,6 +378,9 @@ $init_out
 $finish_out
 $node_file_name
 $element_file_name
+$node_target_name
+$element_target_name
+$placed_target_file_name
 $inline_contents
 $program_string
 
@@ -487,6 +490,7 @@ $complex_format_map
 %command_type
 %paragraph_style
 %stop_paragraph_command
+%format_code_style
 %region_formats_kept
 %texi_formats_map
 %things_map
@@ -4624,6 +4628,52 @@ sub equivalent_nodes($)
     return @equivalent_nodes;
 }
 
+sub do_place_target_file($$$)
+{
+   my $place = shift;
+   my $element = shift;
+   my $context = shift;
+
+   $place->{'file'} = $element->{'file'};
+   $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
+   if (defined($Texi2HTML::Config::placed_target_file_name))
+   {
+      my ($target, $id, $file) = &$Texi2HTML::Config::placed_target_file_name($place,$element,$place->{'target'}, $place->{'id'}, $place->{'file'},$context);
+      $place->{'target'} = $target if (defined($target));
+      $place->{'file'} = $file if (defined($file));
+      $place->{'id'} = $id if (defined($id));
+   }
+}
+
+sub do_node_target_file($$)
+{
+    my $node = shift;
+    my $type_of_node = shift;
+    my $node_file = &$Texi2HTML::Config::node_file_name($node,$type_of_node);
+    $node->{'node_file'} = $node_file if (defined($node_file));
+    if (defined($Texi2HTML::Config::node_target_name))
+    {
+        my ($target,$id) = &$Texi2HTML::Config::node_target_name($node,$node->{'target'},$node->{'id'}, $type_of_node);
+        $node->{'target'} = $target if (defined($target));
+        $node->{'id'} = $id if (defined($id));
+    }
+}
+
+sub do_element_targets($)
+{
+   my $element = shift;
+   if (defined($Texi2HTML::Config::element_target_name))
+   {
+       my ($id,$target) = &$Texi2HTML::Config::element_target_name($element, $element->{'target'}, $element->{'id'});
+       $element->{'target'} = $target if (defined($target));
+       $element->{'id'} = $id if (defined($id));
+   }
+   foreach my $place(@{$element->{'place'}})
+   {
+      do_place_target_file($place,$element, '');
+   }
+}
+
 my %files = ();   # keys are files. This is used to avoid reusing an already
                   # used file name
 my %empty_indices = (); # value is true for an index name key if the index 
@@ -4717,7 +4767,7 @@ sub rearrange_elements()
         $section_level++ if ($section->{'tag'} eq 'top');
         for (my $level = $section_level + 1; $level < $MAX_LEVEL + 1 ; $level++)
         {
-            $previous_numbers[$level] = undef;
+            $previous_numbers[$level] = undef unless ($section->{'tag'} =~ /unnumbered/);
             $previous_sections[$level] = undef;
         }
         my $number_set;
@@ -5719,16 +5769,13 @@ sub rearrange_elements()
     }
     if ($node_as_top)
     {
-        my $node_file;
-        $node_file = &$Texi2HTML::Config::node_file_name($node_as_top,'top');
-        $node_as_top->{'node_file'} = $node_file if (defined($node_file));
+        do_node_target_file($node_as_top,'top');
     }
     foreach my $key (keys(%nodes))
     {
         my $node = $nodes{$key};
         next if (defined($node_as_top) and ($node eq $node_as_top));
-        my $node_file = &$Texi2HTML::Config::node_file_name($node,'');
-        $node->{'node_file'} = $node_file if (defined($node_file));
+        do_node_target_file($node,'');
     }
     
     print STDERR "# split and set files\n" 
@@ -5792,14 +5839,9 @@ sub rearrange_elements()
                     &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
                 $element->{'file'} = $filename if (defined($filename));
             }
+            do_element_targets($element);
             print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
-            foreach my $place(@{$element->{'place'}})
-            {
-                $place->{'file'} = $element->{'file'};
-                #$place->{'id'} = $element->{'id'} unless defined($place->{'id'});
-                $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
-            }
             if ($element->{'nodes'})
             {
                 foreach my $node (@{$element->{'nodes'}})
@@ -5817,12 +5859,7 @@ sub rearrange_elements()
         {
             $element->{'file'} = $docu_doc;
             $element->{'doc_nr'} = 0;
-            foreach my $place(@{$element->{'place'}})
-            {
-                $place->{'file'} = $element->{'file'};
-                #$place->{'id'} = $element->{'id'} unless defined($place->{'id'});
-                $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
-            }
+            do_element_targets($element);
         }
         foreach my $node(@nodes_list)
         {
@@ -5833,9 +5870,7 @@ sub rearrange_elements()
     # correct the id and file for the things placed in footnotes
     foreach my $place(@{$footnote_element->{'place'}})
     {
-        $place->{'file'} = $footnote_element->{'file'};
-        #$place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
-        $place->{'target'} = $footnote_element->{'target'} unless defined($place->{'target'});
+         do_place_target_file ($place,$footnote_element, 'footnotes');
     }
     # if setcontentsaftertitlepage is set, the contents should be associated
     # with the titlepage. That's wat is done there.
@@ -5847,9 +5882,8 @@ sub rearrange_elements()
     foreach my $place(@$no_element_associated_place)
     {
 #print STDERR "entry $place->{'entry'} texi $place->{'texi'}\n";
-        $place->{'file'} = $element_top->{'file'};
-        $place->{'target'} = $element_top->{'target'} unless defined($place->{'target'});
-        $place->{'element'} =  $element_top if (exists($place->{'element'}));
+        $place->{'element'} = $element_top if (exists($place->{'element'}));
+        do_place_target_file ($place, $element_top, 'no_associated_element');
     }
     foreach my $content_type(keys(%content_element))
     {
@@ -6097,7 +6131,7 @@ sub add_file($)
          $files{$file} = { 
            #'type' => 'section', 
            'counter' => 1,
-           'relative_foot_num' => 1,
+           'relative_foot_num' => 0,
            'foot_lines' => []
          };
     }
@@ -8494,7 +8528,7 @@ sub end_format($$$$$)
         }
         if ($Texi2HTML::Config::format_map{$format})
         { # table or list has a simple format
-            add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}));
+            add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}, $state));
         }
         else
         { # table or list handler defined by the user
@@ -8530,7 +8564,7 @@ sub end_format($$$$$)
         }
         else
         {
-            add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}));
+            add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}, $state));
         }
     }
     elsif ($format_type{$format} eq 'menu')
@@ -8595,6 +8629,44 @@ sub end_format($$$$$)
         return 0;
     }
     return 1;
+}
+
+sub push_complex_format_style($$$)
+{
+    my $command = shift;
+    my $complex_format = shift;
+    my $state = shift;
+    my $class = $command;
+    $class = $complex_format->{'class'} if (defined($complex_format->{'class'}));
+    my $format_style = {'pre_style' =>$complex_format->{'pre_style'}, 'class' => $class, 'command' => $command };
+    if (defined($complex_format->{'style'}))
+    {
+        $format_style->{'style'} = $complex_format->{'style'};
+    }
+    else
+    {
+        if ($state->{'preformatted'} and defined($state->{'preformatted_stack'}->[-1]->{'style'}))
+        {
+            $format_style->{'style'} = $state->{'preformatted_stack'}->[-1]->{'style'};
+        }
+        my $index = scalar(@{$state->{'preformatted_stack'}}) -1;
+        # since preformatted styles are not nested, the preformatted format
+        # of the first format with style has to be used
+        if ($index > 0)
+        {
+            while ($index)
+            {
+                if ($state->{'preformatted_stack'}->[$index]->{'style'})
+                {
+                    $format_style->{'class'} = $state->{'preformatted_stack'}->[$index]->{'class'} if (defined($state->{'preformatted_stack'}->[$index]->{'class'}));
+                    last;
+                }
+                $index--;
+            }
+        }
+    }
+    $state->{'preformatted'}++;
+    push @{$state->{'preformatted_stack'}}, $format_style;
 }
 
 sub begin_format($$$$$$);
@@ -8726,12 +8798,9 @@ sub begin_format($$$$$$)
     }
     elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
     { # handle menu if SIMPLE_MENU. see texi2html.init
-        $state->{'preformatted'}++;
         my $complex_format =  $Texi2HTML::Config::complex_format_map->{$macro};
         my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $complex_format->{'pre_style'} };
-        my $class = $macro;
-        $class = $complex_format->{'class'} if (defined($complex_format->{'class'}));
-        push @{$state->{'preformatted_stack'}}, {'pre_style' =>$complex_format->{'pre_style'}, 'class' => $class };
+        push_complex_format_style($macro, $complex_format, $state);
         push @$stack, $format;
 
         begin_paragraph($stack, $state);
@@ -8835,6 +8904,7 @@ sub begin_format($$$$$$)
     elsif (defined($Texi2HTML::Config::format_map{$macro}) or ($format_type{$macro} eq 'cartouche'))
     {
         push @$stack, { 'format' => $macro, 'text' => '' };
+        $state->{'code_style'}++ if ($Texi2HTML::Config::format_code_style{$macro});
         begin_paragraph_after_command($state,$stack,$macro,$line);
     }
     elsif ($format_type{$macro} eq 'menu')
@@ -8846,8 +8916,11 @@ sub begin_format($$$$$$)
         if ($state->{'preformatted'})
         {
         # add a fake complex style in order to have a given pre style
-            $state->{'preformatted'}++;
-            push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-preformatted' };
+        # FIXME check 'style' on bug-texinfo
+            push_complex_format_style('menu', {
+              'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 
+              'class' => 'menu-preformatted',
+              'style' => 'code' }, $state);
             begin_paragraph_after_command($state,$stack,$macro,$line);
         }
         else
@@ -8864,16 +8937,25 @@ sub do_text($;$)
     my $state = shift;
     return $text if ($state->{'keep_texi'});
     my $remove_texi = 1 if ($state->{'remove_texi'} and !$state->{'simple_format'});
-    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $state->{'preformatted'}, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}));
+    my $preformatted_style = 0;
+    if ($state->{'preformatted'})
+    {
+        $preformatted_style = $state->{'preformatted_stack'}->[-1]->{'style'};
+    }
+    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}));
 }
 
-sub end_simple_format($$)
+sub end_simple_format($$$)
 {
-    my $tag = shift;
+    my $command = shift;
     my $text = shift;
+    my $state = shift;
 
-    my $element = $Texi2HTML::Config::format_map{$tag};
-    return &$Texi2HTML::Config::format($tag, $element, $text);
+    my $element = $Texi2HTML::Config::format_map{$command};
+
+    my $result = &$Texi2HTML::Config::format($command, $element, $text);
+    $state->{'code_style'}-- if ($Texi2HTML::Config::format_code_style{$command});
+    return $result;
 }
 
 # only get there if not in SIMPLE_MENU and not in preformatted and 
@@ -8919,6 +9001,7 @@ sub close_menu_description($$$$;$)
         my $descr = pop(@$stack);
         add_prev($text, $stack, do_menu_description($descr, $state));
         print STDERR "# close_menu: close description\n" if ($T2H_DEBUG & $DEBUG_MENU);
+        $state->{'code_style'}-- if ($Texi2HTML::Config::format_code_style{'menu_description'});
         return 1;
     }
 }
@@ -8943,6 +9026,7 @@ sub do_menu_link($$$)
     # normalise_node is not used, so that spaces are kept, like makeinfo.
     # also code_style is used, like makeinfo.
     $node_substitution_state->{'code_style'} = 1;
+    $name_substitution_state->{'code_style'} = 1 if ($Texi2HTML::Config::format_code_style{'menu_name'});
     my $node_formatted = substitute_line($menu_entry->{'node'}, $node_substitution_state, $line_nr);
     my $name_formatted;
     my $has_name = 0;
@@ -9373,6 +9457,7 @@ sub do_footnote($$$$)
 #print STDERR "FOOTNOTE($global_foot_num, $doc_state->{'outside_document'} or $doc_state->{'multiple_pass'}) $text";
     my $foot_state = duplicate_state($doc_state);
     fill_state($foot_state);
+    push @{$foot_state->{'command_stack'}}, 'footnote';
 
     push_state($foot_state);
 
@@ -9407,6 +9492,14 @@ sub do_footnote($$$$)
     {
         $foot_state->{'element'} = $footnote_element;
     }
+    
+    $foot_state->{'footnote_number_in_doc'} = $$foot_num;
+    $foot_state->{'footnote_number_in_page'} = $$relative_foot_num;
+    $foot_state->{'footnote_footnote_id'} = $footid;
+    $foot_state->{'footnote_place_id'} = $docid;
+    $foot_state->{'footnote_document_file'} = $from_file;
+    $foot_state->{'footnote_footnote_file'} = $foot_state->{'element'}->{'file'};
+    $foot_state->{'footnote_document_state'} = $doc_state;
     
     # FIXME use split_lines ? It seems to work like it is now ?
     my @lines = substitute_text($foot_state, undef, map {$_ = $_."\n"} split (/\n/, $text));
@@ -11160,6 +11253,7 @@ sub scan_line($$$$;$)
                         $fusionned_description = 1;
                     }
                     push @$stack, {'format' => 'menu_description', 'text' => '', 'menu_entry' => $menu_entry, 'fusionned_description' => $fusionned_description};
+                    $state->{'code_style'}++ if ($Texi2HTML::Config::format_code_style{'menu_description'});
                     if ($fusionned_description)
                     {
                         begin_paragraph($stack, $state) if $state->{'preformatted'};
@@ -13066,7 +13160,8 @@ sub dump_stack($$$)
             $pre_style = $preformatted_style->{'pre_style'} if (exists $preformatted_style->{'pre_style'});
             my $class = '';
             $class = $preformatted_style->{'class'} if (exists $preformatted_style->{'class'});
-            print STDERR "($pre_style, $class)";
+            my $style = $preformatted_style->{'style'} if (exists $preformatted_style->{'style'});
+            print STDERR "($pre_style, $class,$style)";
         }
         print STDERR "\n";
     }

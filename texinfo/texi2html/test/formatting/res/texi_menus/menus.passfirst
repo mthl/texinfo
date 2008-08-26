@@ -35,7 +35,7 @@ menus.texi(,36) * (manual2):: $@html
 menus.texi(,37) 
 menus.texi(,38) <i></i>
 menus.texi(,39) @end html
-menus.texi(,41) Log$
+menus.texi(,41) Log $
 menus.texi(,42) * (truc):: @acronym{description
 menus.texi(,43) acronym}
 menus.texi(,44) @end menu

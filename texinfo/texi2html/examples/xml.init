@@ -79,9 +79,11 @@ foreach my $style (keys(%style_map))
 
 foreach my $complex_format (keys(%$complex_format_map))
 {
+   my $style = $complex_format_map->{$complex_format}->{'style'};
    delete $complex_format_map->{$complex_format};
    $complex_format_map->{$complex_format}->{'begin'} = "\"<$complex_format xml:space=\\\"preserve\\\">\"";
    $complex_format_map->{$complex_format}->{'end'} = "\"</$complex_format>\"";
+   $complex_format_map->{$complex_format}->{'style'} = $style if (defined($style));
 }
 
 delete $iso_symbols{'`'};
@@ -177,6 +179,10 @@ foreach my $misc_command (keys(%misc_command))
 }
 
 $format_map{'menu'} = 'menu';
+# FIXME check on bug-texinfo
+$format_code_style{'menu'} = 1;
+$format_code_style{'menu_name'} = 1;
+$format_code_style{'menu_description'} = 1;
 $format_map{'detailmenu'} = 'detailmenu';
 $format_map{'menu_comment'} = '';
 delete $format_map{'enumerate'};

@@ -1,0 +1,24 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nested_formats.info
+
+@node Top
+@top top
+
+@format
+@example
+
+in -- format/example
+
+@end example
+@end format
+
+@example
+@format
+
+in -- example/format
+
+@end format
+@end example
+
+@bye

@@ -36,7 +36,7 @@ some @ verb{' atim
 
 <i></i>
 @end html
-Log$
+Log $
 * (truc):: @acronym{description
 acronym}
 @end menu

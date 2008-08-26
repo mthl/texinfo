@@ -28,6 +28,7 @@ texi index_in_item_line_table.texi
 texi index_in_item_line_vtable.texi
 texi index_in_item_line_table_in_code.texi
 texi table_in_table_item.texi
+texi nested_formats.texi
 def_cmds def_cmds.texi
 menus menus.texi
 menus_simple menus.texi -init simple_menu.init
@@ -72,3 +73,4 @@ table_in_table_item table_in_table_item.texi
 menus_xml menus.texi -init xml.init
 menus_xml_makeinfo menus.texi -init xml.init -U texi2html
 float_xml ../coverage/float.texi -init xml.init
+nested_formats nested_formats.texi

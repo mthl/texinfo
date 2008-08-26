@@ -47,7 +47,7 @@
 <menutitle> (manual)</menutitle>
 <menucomment> desc
 comment
-Log$
+Log $
 </menucomment>
 </menuentry><menuentry>
 <menunode> (truc)</menunode>
@@ -103,7 +103,7 @@ Menu comment
 <menu>
 <menuentry>
 <menunode> subsection ``simple-double--three---four----''</menunode>
-<menutitle> subsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menutitle> subsection ``simple-double--three---four----''</menutitle>
 <menucomment> 
 </menucomment>
 </menuentry></menu>
