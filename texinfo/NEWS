@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.175 2008-06-28 08:10:43 gray Exp $
+$Id: NEWS,v 1.176 2008-08-28 22:53:30 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -26,7 +26,8 @@ one of the relevant sections:
   . new option --internal-links for HTML output, to write a tsv file
     mapping indexed/toc terms to links, for easy reference from external
     documents.
- 
+  . - as an input file name reads standard input. 
+
 * info:
   . support for multibyte encodings such as UTF-8.
   . new option --show-malformed-multibytes, to display malformed multibyte

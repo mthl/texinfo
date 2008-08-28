@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.122 2008-08-28 00:54:25 karl Exp $
+   $Id: makeinfo.c,v 1.123 2008-08-28 22:53:30 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -884,7 +884,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (!reading_from_stdin)
     {
       while (optind != argc)
-        convert_from_file (argv[optind++]);
+        {
+          if (STREQ (argv[optind], "-"))
+            convert_from_stream (stdin, "stdin");
+          else
+            convert_from_file (argv[optind]);
+          optind++;
+        }
     }
   else
     convert_from_stream (stdin, "stdin");
@@ -1342,7 +1348,7 @@ convert_from_stream (FILE *stream, char *name)
 
   /* Read until the end of the stream.  This isn't strictly correct, since
      the texinfo input may end before the stream ends, but it is a quick
-     working hueristic. */
+     working heuristic. */
   while (!feof (stream))
     {
       int count;
