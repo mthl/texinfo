@@ -1,3 +1,10 @@
+2008-08-27  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (EXECUTE_STRING_MAX): bump to 32k.
+	Report from Patrice, 20 Aug 2008 14:28:30.
+	A real fix is beyond me right now, and seems unnecessary
+	for the future since we're moving to a different implementation.
+
 2008-08-16  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.94.

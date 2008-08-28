@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.121 2008-08-15 22:14:44 karl Exp $
+   $Id: makeinfo.c,v 1.122 2008-08-28 00:54:25 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -4111,8 +4111,7 @@ maybe_update_execution_strings (char **text, unsigned int new_len)
   abort ();
 }
 
-/* FIXME: this is an arbitrary limit.  */
-#define EXECUTE_STRING_MAX 16*1024
+#define EXECUTE_STRING_MAX (32*1024) /* FIXXME: this is an arbitrary limit.  */
 
 /* Execute the string produced by formatting the ARGs with FORMAT.  This
    is like submitting a new file with @include. */
