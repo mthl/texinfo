@@ -5,7 +5,7 @@ texi mini_ker.texi
 info-stnd info-stnd.texi -split chapter -node-files 
 texinfo texinfo.texi -split chapter -ifinfo 
 texinfo_nodes texinfo.texi -split node -node-files -ifinfo
-ccvs cvs.texi -split chapter
+ccvs cvs.texi -split chapter -init cvs.init
 ccvs_mediawiki cvs.texi -init mediawiki.init -split chapter
-ccvs_mediawiki_nosplit cvs.texi -init mediawiki.init
+ccvs_mediawiki_nosplit cvs.texi -init mediawiki.init -init cvs.init
 mini_ker mini_ker.texi --split section --node-files --use-nodes --iftex --init book.init --init mini_ker_t2h.init --init tex4ht.init

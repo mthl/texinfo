@@ -135,59 +135,59 @@ disable an option. Notice that some options are ring dependent and reset
 to their default values on a change of the current basering.
 </p><dl compact="compact">
 <dt> <code>none</code></dt>
-<dd><a name="IDX142"></a>
+<dd><a name="index-none_002c-option"></a>
 <p>turns off all options (including the <code>prompt</code> option).
 </p></dd>
 <dt> <code>returnSB</code></dt>
-<dd><a name="IDX143"></a>
+<dd><a name="index-returnSB_002c-option"></a>
 <p>the functions <code>syz</code>, <code>intersect</code>, <code>quotient</code>,
 <code>modulo</code> return a standard base instead of a generating set if
 <code>returnSB</code> is set. This option should not be used for <code>lift</code>.
 </p></dd>
 <dt> <code>fastHC</code></dt>
-<dd><a name="IDX144"></a>
+<dd><a name="index-fastHC_002c-option"></a>
 <p>tries to the find the highest corner of the staircase (HC) as fast as
 possible during a standard basis computation (only used for local
 orderings).
 </p></dd>
 <dt> <code>intStrategy</code></dt>
-<dd><a name="IDX145"></a>
+<dd><a name="index-intStrategy_002c-option"></a>
 <p>avoids division of coefficients during standard basis
 computations. This option is ring dependent. By default, it is set for
 rings with characteristic 0 and not set for all other rings.
 </p></dd>
 <dt> <code>oldStd</code></dt>
-<dd><a name="IDX146"></a>
+<dd><a name="index-oldStd_002c-option"></a>
 <p>uses a more lazy approach in std computations,
 which was used in Singular version before 2-0
 (and which may lead to faster or slower computations, depending on the example)
 </p></dd>
 <dt> <code>minRes</code></dt>
-<dd><a name="IDX147"></a>
+<dd><a name="index-minRes_002c-option"></a>
 <p>special (additional) minimizing during computations (<code>res</code>, <code>mres</code>),
 <br>assumes homogeneous case and degree-compatible ordering.
 </p></dd>
 <dt> <code>notRegularity</code></dt>
-<dd><a name="IDX148"></a>
+<dd><a name="index-notRegularity_002c-option"></a>
 <p>disables the regularity bound for <code>res</code> and <code>mres</code> (see
 <a href="sing_262.htm#regularity">regularity</a>).
 </p></dd>
 <dt> <code>notSugar</code></dt>
-<dd><a name="IDX149"></a>
+<dd><a name="index-notSugar_002c-option"></a>
 <p>disables the sugar strategy during standard basis computation.
 <a name="option_0028prot_0029"></a>
 </p></dd>
 <dt> <code>notBuckets</code></dt>
-<dd><a name="IDX150"></a>
+<dd><a name="index-notBuckets_002c-option"></a>
 <p>disables the bucket representation of polynomials during standard basis
 computations. This option usually decreases the memory usage but
 increases the computation time. It should only be set for
 memory-critical standard basis computations.
 </p></dd>
 <dt> <code>prot</code></dt>
-<dd><a name="IDX151"></a>
-<a name="IDX152"></a>
-<a name="IDX153"></a>
+<dd><a name="index-prot_002c-option"></a>
+<a name="index-protocoll-of-computations"></a>
+<a name="index-progress-watch"></a>
 <p>shows protocol information indicating the
 progress during the following computations:
 <code>facstd</code>,
@@ -206,29 +206,29 @@ progress during the following computations:
 See below for more details.
 </p></dd>
 <dt> <code>redSB</code></dt>
-<dd><a name="IDX154"></a>
-<a name="IDX155"></a>
+<dd><a name="index-redSB_002c-option"></a>
+<a name="index-reduced-standard-basis"></a>
 <p>computes a reduced standard basis in any standard basis computation.
 </p></dd>
 <dt> <code>redTail</code></dt>
-<dd><a name="IDX156"></a>
+<dd><a name="index-redTail_002c-option"></a>
 <p>reduction of the tails of polynomials during standard basis
 computations. This option is ring dependent. By default, it is set for
 rings with global degree orderings and not set for all other rings.
 </p></dd>
 <dt> <code>redThrough</code></dt>
-<dd><a name="IDX157"></a>
+<dd><a name="index-redThrough_002c-option"></a>
 <p>for inhomogeneous input, polynomial reductions during standard basis
 computations are never postponed, but always finished through. This option
 is ring   dependent. By default, it is set for rings with global degree
 orderings and not set for all other rings.
 </p></dd>
 <dt> <code>sugarCrit</code></dt>
-<dd><a name="IDX158"></a>
+<dd><a name="index-sugarCrit_002c-option"></a>
 <p>uses criteria similar to the homogeneous case to keep more useless pairs.
 </p></dd>
 <dt> <code>weightM</code></dt>
-<dd><a name="IDX159"></a>
+<dd><a name="index-weightM_002c-option"></a>
 <p>automatically computes suitable weights for the weighted ecart and the
 weighted sugar method.
 </p></dd>
@@ -251,39 +251,39 @@ non-zero value assigned, the command <code>option()</code> prints the option.
 <p>The last set of options controls the output of <small>SINGULAR</small>:
 </p><dl compact="compact">
 <dt> <code>Imap</code></dt>
-<dd><a name="IDX160"></a>
+<dd><a name="index-Imap_002c-option"></a>
 <p>shows the mapping of variables with the fetch and imap commands.
 </p></dd>
 <dt> <code>loadLib</code></dt>
-<dd><a name="IDX161"></a>
+<dd><a name="index-loadLib_002c-option"></a>
 <p>shows loading of libraries (set by default).
 </p></dd>
 <dt> <code>debugLib</code></dt>
-<dd><a name="IDX162"></a>
+<dd><a name="index-debugLib_002c-option"></a>
 <p>warns about syntax errors during loading of libraries.
 </p></dd>
 <dt> <code>loadProc</code></dt>
-<dd><a name="IDX163"></a>
+<dd><a name="index-loadProc_002c-option"></a>
 <p>shows loading of procedures from libraries.
 </p></dd>
 <dt> <code>mem</code></dt>
-<dd><a name="IDX164"></a>
+<dd><a name="index-mem_002c-option"></a>
 <p>shows memory usage in square brackets (see <a href="sing_226.htm#memory">memory</a>).
 </p></dd>
 <dt> <code>prompt</code></dt>
-<dd><a name="IDX165"></a>
+<dd><a name="index-prompt_002c-option"></a>
 <p>shows prompt (<code>&gt;</code>, resp. <code>.</code>) if ready for input (default).
 </p></dd>
 <dt> <code>reading</code></dt>
-<dd><a name="IDX166"></a>
+<dd><a name="index-reading_002c-option"></a>
 <p>shows the number of characters read from a file.
 </p></dd>
 <dt> <code>redefine</code></dt>
-<dd><a name="IDX167"></a>
+<dd><a name="index-redefine_002c-option"></a>
 <p>warns about variable redefinitions (set by default).
 </p></dd>
 <dt> <code>usage</code></dt>
-<dd><a name="IDX168"></a>
+<dd><a name="index-usage_002c-option"></a>
 <p>shows correct usage in error messages (set by default).
 </p></dd>
 </dl>

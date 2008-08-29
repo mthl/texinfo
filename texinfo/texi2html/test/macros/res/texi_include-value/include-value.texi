@@ -13,16 +13,19 @@
 
 @node Top
 
-testvar include: 
-testvar verbatiminclude: @verbatiminclude @value{testvar}
+testvar include: This is the @emph{included} file (include-value2.txi).
+
+testvar verbatiminclude: @verbatiminclude incl-incl.txi
 
 
-test-var include: 
-test-var verbatiminclude: @verbatiminclude @value{test-var}i
+test-var include: This is the @emph{included} file (include-value2.txi).
+
+test-var verbatiminclude: @verbatiminclude incl-incl.txi
 
 
-test_var include: 
-test_var verbatiminclude: @verbatiminclude i@value{test_var}i
+test_var include: This is the @emph{included} file (include-value2.txi).
+
+test_var verbatiminclude: @verbatiminclude incl-incl.txi
 
 
 @bye

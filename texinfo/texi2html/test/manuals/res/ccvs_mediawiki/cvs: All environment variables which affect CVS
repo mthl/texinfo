@@ -22,20 +22,20 @@
 that affect <small>CVS</small>.
 </p>
 <dl compact="compact">
-<dd><div id="IDX292"></div>
+<dd><div id="index-CVSIGNORE_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should ignore. See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
 </p>
-<div id="IDX293"></div>
+<div id="index-CVSWRAPPERS_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should treat as wrappers. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
 </p>
-<div id="IDX294"></div>
-<div id="IDX295"></div>
+<div id="index-CVSREAD_002c-environment-variable"></div>
+<div id="index-Read_002donly-files_002c-and-CVSREAD"></div>
 </dd>
 <dt> <code>$CVSREAD</code></dt>
 <dd><p>If this is set, <code>checkout</code> and <code>update</code> will
@@ -43,7 +43,7 @@ try hard to make the files in your working directory
 read-only.  When this is not set, the default behavior
 is to permit modification of your working files.
 </p>
-<div id="IDX296"></div>
+<div id="index-CVSREADONLYFS_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVSREADONLYFS</code></dt>
 <dd><p>Turns on read-only repository mode. This allows one to
@@ -75,13 +75,13 @@ directory.
 </p>
 </dd>
 <dt> <code>$CVSEDITOR</code></dt>
-<dd><div id="IDX297"></div>
+<dd><div id="index-CVSEDITOR_002c-environment-variable-1"></div>
 </dd>
 <dt> <code>$EDITOR</code></dt>
-<dd><div id="IDX298"></div>
+<dd><div id="index-EDITOR_002c-environment-variable-1"></div>
 </dd>
 <dt> <code>$VISUAL</code></dt>
-<dd><div id="IDX299"></div>
+<dd><div id="index-VISUAL_002c-environment-variable-1"></div>
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
 <code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
@@ -89,20 +89,20 @@ See [cvs: Overview#Committing-your-changes Committing your changes] for more or
 [cvs: Guide to CVS commands#Global-options Global options] for alternative ways of specifying a
 log editor.
 </p>
-<div id="IDX300"></div>
+<div id="index-PATH_002c-environment-variable"></div>
 </dd>
 <dt> <code>$PATH</code></dt>
 <dd><p>If <code>$RCSBIN</code> is not set, and no path is compiled
 into <small>CVS</small>, it will use <code>$PATH</code> to try to find all
 programs it uses.
 </p>
-<div id="IDX301"></div>
+<div id="index-HOME_002c-environment-variable"></div>
 </dd>
 <dt> <code>$HOME</code></dt>
-<dd><div id="IDX302"></div>
+<dd><div id="index-HOMEPATH_002c-environment-variable"></div>
 </dd>
 <dt> <code>$HOMEPATH</code></dt>
-<dd><div id="IDX303"></div>
+<dd><div id="index-HOMEDRIVE_002c-environment-variable"></div>
 </dd>
 <dt> <code>$HOMEDRIVE</code></dt>
 <dd><p>Used to locate the directory where the &lsquo;<tt>.cvsrc</tt>&rsquo;
@@ -112,7 +112,7 @@ set <code>HOMEDRIVE</code>, for example to &lsquo;<samp>d:</samp>&rsquo; and <co
 for example to &lsquo;<tt>\joe</tt>&rsquo;.  On Windows 95, you&rsquo;ll
 probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 </p>
-<div id="IDX304"></div>
+<div id="index-CVS_005fRSH_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
@@ -143,14 +143,14 @@ via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication prot
 if the port is not specified in the CVSROOT.
 see section [cvs: The Repository#Remote-repositories Remote repositories]
 </p>
-<div id="IDX305"></div>
+<div id="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_RCMD_PORT</code></dt>
 <dd><p>Used in client-server mode.  If set, specifies the port
 number to be used when accessing the <small>RCMD</small> demon on
 the server side. (Currently not used for Unix clients).
 </p>
-<div id="IDX306"></div>
+<div id="index-CVS_005fCLIENT_005fLOG_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_CLIENT_LOG</code></dt>
 <dd><p>Used for debugging only in client-server
@@ -159,7 +159,7 @@ into &lsquo;<tt><code>$CVS_CLIENT_LOG</code>.in</tt>&rsquo; and everything
 sent from the server is logged into
 &lsquo;<tt><code>$CVS_CLIENT_LOG</code>.out</tt>&rsquo;.
 </p>
-<div id="IDX307"></div>
+<div id="index-CVS_005fSERVER_005fSLEEP_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_SERVER_SLEEP</code></dt>
 <dd><p>Used only for debugging the server side in
@@ -167,7 +167,7 @@ client-server mode.  If set, delays the start of the
 server child process the specified amount of
 seconds so that you can attach to it with a debugger.
 </p>
-<div id="IDX308"></div>
+<div id="index-CVS_005fIGNORE_005fREMOTE_005fROOT_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_IGNORE_REMOTE_ROOT</code></dt>
 <dd><p>For <small>CVS</small> 1.10 and older, setting this variable
@@ -177,7 +177,7 @@ Later versions of <small>CVS</small> do not rewrite
 &lsquo;<tt>CVS/Root</tt>&rsquo;, so <code>CVS_IGNORE_REMOTE_ROOT</code> has no
 effect.
 </p>
-<div id="IDX309"></div>
+<div id="index-CVS_005fLOCAL_005fBRANCH_005fNUM_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_LOCAL_BRANCH_NUM</code></dt>
 <dd><p>Setting this variable allows some control over the
@@ -188,22 +188,22 @@ the local repository, the revision numbers will look
 like 1.66.1000.xx. There is almost a dead-set certainty
 that there will be no conflicts with version numbers.
 </p>
-<div id="IDX310"></div>
+<div id="index-COMSPEC_002c-environment-variable"></div>
 </dd>
 <dt> <code>$COMSPEC</code></dt>
 <dd><p>Used under OS/2 only.  It specifies the name of the
 command interpreter and defaults to <small>CMD.EXE</small>.
 </p>
-<div id="IDX311"></div>
+<div id="index-TMPDIR_002c-environment-variable"></div>
 </dd>
 <dt> <code>$TMPDIR</code></dt>
-<dd><div id="IDX312"></div>
+<dd><div id="index-TMP_002c-environment-variable"></div>
 </dd>
 <dt> <code>$TMP</code></dt>
-<dd><div id="IDX313"></div>
+<dd><div id="index-TEMP_002c-environment-variable"></div>
 </dd>
 <dt> <code>$TEMP</code></dt>
-<dd><div id="IDX314"></div>
+<dd><div id="index-Temporary-files_002c-location-of"></div>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
 <code>TMPDIR</code>.  See section [cvs: Guide to CVS commands#Global-options Global options], for a
@@ -221,7 +221,7 @@ if your server and client are both running <small>CVS</small>
 1.9.10 or later, <small>CVS</small> will not invoke an external
 <code>patch</code> program.
 </p>
-<div id="IDX315"></div>
+<div id="index-CVS_005fPID_002c-environment-variable"></div>
 </dd>
 <dt> <code>$CVS_PID</code></dt>
 <dd><p>This is the process identification (aka pid) number of

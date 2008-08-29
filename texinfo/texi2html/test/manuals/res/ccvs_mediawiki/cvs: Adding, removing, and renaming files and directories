@@ -86,9 +86,9 @@ foo/bar</samp>&rsquo;!  Instead, you have to
 $ cvs add bar
 </nowiki></pre></td></tr></table>
 
-<div id="IDX129"></div>
+<div id="index-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="IDX130"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dt><div id="index-cvs-add"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
 <dd>
 <p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
@@ -191,9 +191,9 @@ name later.  <small>CVS</small> will correctly create or not create
 the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
 specified to <code>checkout</code> or <code>update</code>.
 </p>
-<div id="IDX131"></div>
+<div id="index-Remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="IDX132"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dt><div id="index-cvs-remove"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
 <dd>
 <p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the

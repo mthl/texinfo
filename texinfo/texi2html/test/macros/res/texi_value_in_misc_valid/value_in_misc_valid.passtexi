@@ -14,18 +14,18 @@ value_in_misc_valid.texi(,14)
 value_in_misc_valid.texi(,15) Text line followed by a comment on the same line and another below @c comment @value{text}
 value_in_misc_valid.texi(,16) @c comment @value{text}
 value_in_misc_valid.texi(,17) 
-value_in_misc_valid.texi(,18) @set pagesizes 200mm,150mm
+value_in_misc_valid.texi(,18) @set pagesizes_arg 200mm,150mm
 value_in_misc_valid.texi(,19) @set afourpaper_macro @afourpaper
 value_in_misc_valid.texi(,20) 
-value_in_misc_valid.texi(,22) @pagesizes @value{pagesizes}
+value_in_misc_valid.texi(,22) @pagesizes 200mm,150mm
 value_in_misc_valid.texi(,24) @afourpaper
-value_in_misc_valid.texi(,25) @headings on line following headings @value{text}
-value_in_misc_valid.texi(,26) @oddfooting some text ignored @value{text}
-value_in_misc_valid.texi(,27) @everyheading on line following everyheading @value{text}
+value_in_misc_valid.texi(,25) @headings on line following headings atext
+value_in_misc_valid.texi(,26) @oddfooting some text ignored atext
+value_in_misc_valid.texi(,27) @everyheading on line following everyheading atext
 value_in_misc_valid.texi(,28) 
-value_in_misc_valid.texi(,29) @set need 0.1
+value_in_misc_valid.texi(,29) @set need_arg 0.1
 value_in_misc_valid.texi(,30) 
-value_in_misc_valid.texi(,32) @need @value{need}
+value_in_misc_valid.texi(,32) @need 0.1
 value_in_misc_valid.texi(,34) 
 value_in_misc_valid.texi(,35) @set raisesections_macro @raisesections
 value_in_misc_valid.texi(,36) @raisesections
@@ -37,24 +37,22 @@ value_in_misc_valid.texi(,43) @@definfoenclose phoo,//,\\  value_in_misc_valid.t
 value_in_misc_valid.texi(,44) //bar\\
 value_in_misc_valid.texi(,46) 
 value_in_misc_valid.texi(,47) @set definfoenclose_name phi
-value_in_misc_valid.texi(,48) phi,:,:
 value_in_misc_valid.texi(,49) 
 value_in_misc_valid.texi(,56) 
-value_in_misc_valid.texi(,57) @phi{bar}
+value_in_misc_valid.texi(,57) :bar:
 value_in_misc_valid.texi(,58) 
 value_in_misc_valid.texi(,59) @set strong_macro @strong
 value_in_misc_valid.texi(,60) @set strong_name strong
 value_in_misc_valid.texi(,61) 
 value_in_misc_valid.texi(,65) @strong{very strong}
 value_in_misc_valid.texi(,66) 
-value_in_misc_valid.texi(,67) strong,(strong:,:)
 value_in_misc_valid.texi(,68) 
-value_in_misc_valid.texi(,72) @strong{ is it really strong? }
+value_in_misc_valid.texi(,72) (strong: is it really strong? :)
 value_in_misc_valid.texi(,73) 
 value_in_misc_valid.texi(,74) @kbd{something before kbdinputstyle}
 value_in_misc_valid.texi(,75) 
 value_in_misc_valid.texi(,76) @set kbdinputstyle_arg code
-value_in_misc_valid.texi(,78) @kbdinputstyle @value{kbdinputstyle_arg}
+value_in_misc_valid.texi(,78) @kbdinputstyle code
 value_in_misc_valid.texi(,80) 
 value_in_misc_valid.texi(,81) @kbd{truc}
 value_in_misc_valid.texi(,82) 
@@ -68,37 +66,37 @@ value_in_misc_valid.texi(,89) @set none_arg none
 value_in_misc_valid.texi(,90) @set four 4
 value_in_misc_valid.texi(,91) @set six 6
 value_in_misc_valid.texi(,92) 
-value_in_misc_valid.texi(,94) @paragraphindent @value{asis_arg}
-value_in_misc_valid.texi(,95) @paragraphindent @value{zero}
-value_in_misc_valid.texi(,96) @paragraphindent @value{none_arg}
-value_in_misc_valid.texi(,97) @paragraphindent @value{four}
-value_in_misc_valid.texi(,98) @firstparagraphindent @value{none_arg}
-value_in_misc_valid.texi(,99) @exampleindent @value{six}
+value_in_misc_valid.texi(,94) @paragraphindent asis
+value_in_misc_valid.texi(,95) @paragraphindent 0
+value_in_misc_valid.texi(,96) @paragraphindent none
+value_in_misc_valid.texi(,97) @paragraphindent 4
+value_in_misc_valid.texi(,98) @firstparagraphindent none
+value_in_misc_valid.texi(,99) @exampleindent 6
 value_in_misc_valid.texi(,101) 
 value_in_misc_valid.texi(,102) @set end_arg end
 value_in_misc_valid.texi(,103) @set separate_arg separate 
-value_in_misc_valid.texi(,104) @footnotestyle @value{end_arg}
-value_in_misc_valid.texi(,105) @footnotestyle @value{separate_arg}
+value_in_misc_valid.texi(,104) @footnotestyle end
+value_in_misc_valid.texi(,105) @footnotestyle separate 
 value_in_misc_valid.texi(,106) 
 value_in_misc_valid.texi(,107) @set latin1 ISO-8859-1
-value_in_misc_valid.texi(,109) @documentencoding @value{latin1}
+value_in_misc_valid.texi(,109) @documentencoding ISO-8859-1
 value_in_misc_valid.texi(,111) 
 value_in_misc_valid.texi(,112) @set on_arg on
 value_in_misc_valid.texi(,113) @set off_arg off
-value_in_misc_valid.texi(,115) @frenchspacing @value{on_arg}
-value_in_misc_valid.texi(,116) @frenchspacing @value{off_arg}
+value_in_misc_valid.texi(,115) @frenchspacing on
+value_in_misc_valid.texi(,116) @frenchspacing off
 value_in_misc_valid.texi(,118) 
 value_in_misc_valid.texi(,119) @c accepts 10 or 11
 value_in_misc_valid.texi(,120) @set ten 10
-value_in_misc_valid.texi(,122) @fonttextsize @value{ten}
+value_in_misc_valid.texi(,122) @fonttextsize 10
 value_in_misc_valid.texi(,124) @c accept false or true
 value_in_misc_valid.texi(,125) @c makeinfo don't care about the arg and remove the remainiing of the line
 value_in_misc_valid.texi(,126) @set false_arg false
 value_in_misc_valid.texi(,127) @set true_arg true
-value_in_misc_valid.texi(,129) @allowcodebreaks @value{false_arg}
+value_in_misc_valid.texi(,129) @allowcodebreaks false
 value_in_misc_valid.texi(,131) @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 value_in_misc_valid.texi(,132) 
-value_in_misc_valid.texi(,134) @allowcodebreaks @value{true_arg}
+value_in_misc_valid.texi(,134) @allowcodebreaks true
 value_in_misc_valid.texi(,136) @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 value_in_misc_valid.texi(,137) 
 value_in_misc_valid.texi(,138) @subheading command removed
@@ -141,7 +139,7 @@ value_in_misc_valid.texi(,181) @sp 2
 value_in_misc_valid.texi(,182) 
 value_in_misc_valid.texi(,183) @set result_macro @result
 value_in_misc_valid.texi(,184) 
-value_in_misc_valid.texi(,185) @clickstyle @value{result_macro}
+value_in_misc_valid.texi(,185) @clickstyle @result
 value_in_misc_valid.texi(,186) 
 value_in_misc_valid.texi(,187) @menu
 value_in_misc_valid.texi(,188) * node atext::

@@ -105,7 +105,7 @@ than one window; if it does, any changes in its text are displayed in all
 the windows that display it.  Windows showing the same buffer can
 show different parts of it, because each window has its own value of point.
 </p>
-<a name="IDX665"></a>
+<a name="index-selected-window"></a>
 <p>  At any time, one  window is the <em>selected window</em>; the buffer
  displayed by that window is the current buffer.  The cursor
 shows the location of point in that window.  Each other window has a
@@ -167,8 +167,8 @@ line.
 </p></dd>
 </dl>
 
-<a name="IDX666"></a>
-<a name="IDX667"></a>
+<a name="index-C_002dx-2"></a>
+<a name="index-split_002dwindow_002dvertically"></a>
 <p>  The command <kbd>C-x 2</kbd> (<code>split-window-vertically</code>) breaks the
 selected window into two windows, one above the other.  Both windows
 start out displaying the same buffer, with the same value of point.  By
@@ -176,8 +176,8 @@ default each of the two windows gets half the height of the window that
 was split.  A numeric argument specifies how many lines to give to the
 top window.
 </p>
-<a name="IDX668"></a>
-<a name="IDX669"></a>
+<a name="index-C_002dx-3"></a>
+<a name="index-split_002dwindow_002dhorizontally"></a>
 <p>  <kbd>C-x 3</kbd> (<code>split-window-horizontally</code>) breaks the selected
 window into two side-by-side windows.  A numeric argument specifies how
 many columns to give the one on the left.  A line of vertical bars
@@ -186,7 +186,7 @@ frame have truncated mode lines which do not always appear in inverse
 video, because Emacs display routines cannot display a region of inverse
 video that is only part of a line on the screen.
 </p>
-<a name="IDX670"></a>
+<a name="index-truncate_002dpartial_002dwidth_002dwindows"></a>
 <p>  When a window is less than the full width, many text lines are too
 long to fit.  Continuing all those lines might be confusing.  Set the
 variable <code>truncate-partial-width-windows</code> to non-<code>nil</code> to
@@ -197,8 +197,8 @@ See section <a href="xemacs_7.html#Continuation-Lines">Continuation Lines</a>.
 <p>  Horizontal scrolling is often used in side-by-side windows.
 See section <a href="xemacs_14.html#Display">Controlling the Display</a>.
 </p>
-<a name="IDX671"></a>
-<a name="IDX672"></a>
+<a name="index-jump_002dto_002dregister-1"></a>
+<a name="index-window_002dconfiguration_002dto_002dregister"></a>
 <p>You can resize a window and store that configuration in a register by
 supplying a <var>register</var> argument to <code>window-configuration-to-register</code>
 (<kbd>C-x 6</kbd>). To return to the window configuration established with
@@ -242,8 +242,8 @@ the text in the next window.
 </p></dd>
 </dl>
 
-<a name="IDX673"></a>
-<a name="IDX674"></a>
+<a name="index-C_002dx-o"></a>
+<a name="index-other_002dwindow"></a>
 <p>  To select a different window, use <kbd>C-x o</kbd> (<code>other-window</code>).
 That is an &lsquo;o&rsquo;, for &lsquo;other&rsquo;, not a zero.  When there are more than
 two windows, the command moves through all the windows in a cyclic
@@ -258,21 +258,21 @@ you can switch from the minibuffer window to one of the other windows,
 and later switch back and finish supplying the minibuffer argument that
 is requested.  See section <a href="xemacs_9.html#Minibuffer-Edit">Editing in the Minibuffer</a>.
 </p>
-<a name="IDX675"></a>
+<a name="index-other_002dwindow_002dany_002dframe"></a>
 <p> The command <kbd>M-x other-window-any-frame</kbd> also selects the window
 <var>n</var> steps away in the cyclic order.  However, unlike <code>other-window</code>,
 this command selects a window on the next or previous frame instead of
 wrapping around to the top or bottom of the current frame, when there
 are no more windows.
 </p>
-<a name="IDX676"></a>
-<a name="IDX677"></a>
+<a name="index-C_002dM_002dv-1"></a>
+<a name="index-scroll_002dother_002dwindow"></a>
 <p>  The usual scrolling commands (see section <a href="xemacs_14.html#Display">Controlling the Display</a>) apply to the selected
 window only.  <kbd>M-C-v</kbd> (<code>scroll-other-window</code>) scrolls the
 window that <kbd>C-x o</kbd> would select.  Like <kbd>C-v</kbd>, it takes positive
 and negative arguments.
 </p>
-<a name="IDX678"></a>
+<a name="index-compare_002dwindows-1"></a>
 <p>  The command <kbd>M-x compare-windows</kbd> compares the text in the current
 window with the text in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time,
@@ -312,11 +312,11 @@ also ignored.
 window.  Different <kbd>C-x 4</kbd> commands have different ways of finding the
 buffer to select.
 </p>
-<a name="IDX679"></a>
-<a name="IDX680"></a>
-<a name="IDX681"></a>
-<a name="IDX682"></a>
-<a name="IDX683"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dwindow-1"></a>
+<a name="index-find_002dfile_002dother_002dwindow-1"></a>
+<a name="index-find_002dtag_002dother_002dwindow"></a>
+<a name="index-dired_002dother_002dwindow-1"></a>
+<a name="index-mail_002dother_002dwindow"></a>
 <dl compact="compact">
 <dt> <kbd>C-x 4 b <var>bufname</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Select buffer <var>bufname</var> in another window.  This runs
@@ -342,7 +342,7 @@ This runs <code>dired-other-window</code>.  See section <a href="xemacs_17.html#
 </p></dd>
 </dl>
 
-<a name="IDX684"></a>
+<a name="index-display_002dbuffer_002dfunction"></a>
 <p>If the variable <code>display-buffer-function</code> is non-<code>nil</code>, its value is
 the function to call to handle <code>display-buffer</code>. It receives two
 arguments, the buffer and a flag that if non-<code>nil</code> means that the
@@ -391,8 +391,8 @@ is the only frame, it is not deleted.
 </p></dd>
 </dl>
 
-<a name="IDX685"></a>
-<a name="IDX686"></a>
+<a name="index-C_002dx-0"></a>
+<a name="index-delete_002dwindow"></a>
 <p>  To delete a window, type <kbd>C-x 0</kbd> (<code>delete-window</code>).  (That is a
 zero.)  The space occupied by the deleted window is distributed among the
 other active windows (but not the minibuffer window, even if that is active
@@ -401,19 +401,19 @@ there is no automatic way to make another window of the same shape or
 showing the same buffer.  The buffer continues to exist, and you can
 select it in any window with <kbd>C-x b</kbd>.
 </p>
-<a name="IDX687"></a>
-<a name="IDX688"></a>
+<a name="index-C_002dx-1"></a>
+<a name="index-delete_002dother_002dwindows"></a>
 <p>  <kbd>C-x 1</kbd> (<code>delete-other-windows</code>) is more powerful than <kbd>C-x 0</kbd>;
 it deletes all the windows except the selected one (and the minibuffer).
 The selected window expands to use the whole frame except for the echo
 area.
 </p>
-<a name="IDX689"></a>
-<a name="IDX690"></a>
-<a name="IDX691"></a>
-<a name="IDX692"></a>
-<a name="IDX693"></a>
-<a name="IDX694"></a>
+<a name="index-C_002dx-_005e"></a>
+<a name="index-enlarge_002dwindow"></a>
+<a name="index-C_002dx-_007d"></a>
+<a name="index-enlarge_002dwindow_002dhorizontally"></a>
+<a name="index-window_002dmin_002dheight"></a>
+<a name="index-window_002dmin_002dwidth"></a>
 <p>  To readjust the division of space among existing windows, use <kbd>C-x
 ^</kbd> (<code>enlarge-window</code>).  It makes the currently selected window
 longer by one line or as many lines as a numeric argument specifies.
@@ -432,9 +432,9 @@ button on a modeline, and dragging.
 <p>Clicking the right button on a mode line pops up a menu of common window
 manager operations.  This menu contains the following options:
 </p>
-<a name="IDX695"></a>
-<a name="IDX696"></a>
-<a name="IDX697"></a>
+<a name="index-Windows-menu"></a>
+<a name="index-Pull_002ddown-Menus-1"></a>
+<a name="index-menus-1"></a>
 <dl compact="compact">
 <dt> <b>Delete Window</b></dt>
 <dd><p>Remove the window above this modeline from the frame.

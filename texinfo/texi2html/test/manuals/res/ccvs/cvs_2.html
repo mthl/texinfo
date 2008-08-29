@@ -77,7 +77,7 @@ information.  Note that the repository is not a
 subdirectory of the working directory, or vice versa;
 they should be in separate locations.
 </p>
-<a name="IDX12"></a>
+<a name="index-_003alocal_003a_002c-setting-up"></a>
 <p><small>CVS</small> can access a repository by a variety of
 means.  It might be on the local computer, or it might
 be on a computer across the room or across the world.
@@ -155,11 +155,11 @@ repository on the command line explicitly, with the
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d /usr/local/cvsroot checkout yoyodyne/tc
 </pre></td></tr></table>
 
-<a name="IDX13"></a>
-<a name="IDX14"></a>
-<a name="IDX15"></a>
-<a name="IDX16"></a>
-<a name="IDX17"></a>
+<a name="index-_002eprofile_002c-setting-CVSROOT-in"></a>
+<a name="index-_002ecshrc_002c-setting-CVSROOT-in"></a>
+<a name="index-_002etcshrc_002c-setting-CVSROOT-in"></a>
+<a name="index-_002ebashrc_002c-setting-CVSROOT-in"></a>
+<a name="index-CVSROOT_002c-environment-variable"></a>
 <p>        Or you can set the <code>$CVSROOT</code> environment
 variable to an absolute path to the root of the
 repository, &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; in this example.
@@ -177,8 +177,8 @@ users should have this line in their &lsquo;<tt>.cshrc</tt>&rsquo; or
 export CVSROOT
 </pre></td></tr></table>
 
-<a name="IDX18"></a>
-<a name="IDX19"></a>
+<a name="index-Root-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fRoot-file"></a>
 <p>        A repository specified with <code>-d</code> will
 override the <code>$CVSROOT</code> environment variable.
 Once you&rsquo;ve checked a working copy out from the
@@ -331,8 +331,8 @@ the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
                  +--<tt>test2.t,v</tt>
 </pre></td></tr></table>
 
-<a name="IDX20"></a>
-<a name="IDX21"></a>
+<a name="index-History-files"></a>
+<a name="index-RCS-history-files"></a>
 <p>The history files contain, among other things, enough
 information to recreate any revision of the file, a log
 of all commit messages and the user-name of the person
@@ -409,8 +409,8 @@ created).
 checked it in.  This has little significance; what
 really matters is who owns the directories.
 </p>
-<a name="IDX22"></a>
-<a name="IDX23"></a>
+<a name="index-CVSUMASK_002c-environment-variable"></a>
+<a name="index-Umask_002c-for-repository-files"></a>
 <p><small>CVS</small> tries to set up reasonable file permissions
 for new directories that are added inside the tree, but
 you must fix the permissions manually when a new
@@ -439,10 +439,10 @@ of <small>CVS</small>; do not rely on the setting of
 permissions on the <small>CVSROOT</small> directory and
 directories above it in the tree; see <a href="#Password-authentication-security">Security considerations with password authentication</a>.
 </p>
-<a name="IDX24"></a>
-<a name="IDX25"></a>
-<a name="IDX26"></a>
-<a name="IDX27"></a>
+<a name="index-Setuid"></a>
+<a name="index-Setgid"></a>
+<a name="index-Security_002c-setuid"></a>
+<a name="index-Installed-images-_0028VMS_0029"></a>
 <p>Some operating systems have features which allow a
 particular program to run with the ability to perform
 operations which the caller of the program could not.
@@ -537,7 +537,7 @@ would be in
 <table><tr><td>&nbsp;</td><td><pre class="example">/usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 </pre></td></tr></table>
 
-<a name="IDX28"></a>
+<a name="index-Dead-state"></a>
 <p>instead.  It should not matter from a user point of
 view whether a file is in the attic; <small>CVS</small> keeps
 track of this and looks in the attic when it needs to.
@@ -690,7 +690,7 @@ described here, like <em>read lock</em>, <em>write lock</em>,
 and <em>deadlock</em>, you might consult the literature on
 operating systems or databases.
 </p>
-<a name="IDX29"></a>
+<a name="index-_0023cvs_002etfl"></a>
 <p>Any file in the repository with a name starting
 with &lsquo;<tt>#cvs.rfl.</tt>&rsquo; is a read lock.  Any file in
 the repository with a name starting with
@@ -796,9 +796,9 @@ to the files to be updated in this fashion, you can add
 them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
 (see section <a href="cvs_18.html#checkoutlist">The checkoutlist file</a>).
 </p>
-<a name="IDX30"></a>
-<a name="IDX31"></a>
-<a name="IDX32"></a>
+<a name="index-modules_002edb"></a>
+<a name="index-modules_002epag"></a>
+<a name="index-modules_002edir"></a>
 <p>By default, the &lsquo;<tt>modules</tt>&rsquo; file behaves as
 described above.  If the modules file is very large,
 storing it as a flat text file may make looking up
@@ -871,8 +871,8 @@ such systems either.
 <dd><p>This file contains the current <small>CVS</small> root, as
 described in <a href="#Specifying-a-repository">Telling CVS where your repository is</a>.
 </p>
-<a name="IDX33"></a>
-<a name="IDX34"></a>
+<a name="index-Repository-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fRepository-file"></a>
 </dd>
 <dt> &lsquo;<tt>Repository</tt>&rsquo;</dt>
 <dd><p>This file contains the directory within the repository
@@ -906,11 +906,11 @@ example, after the command
 <p>If the particular working directory does not correspond
 to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo;
 should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;.
-<a name="IDX35"></a>
-<a name="IDX36"></a>
+<a name="index-Emptydir_002c-in-CVSROOT-directory"></a>
+<a name="index-CVSROOT_002fEmptydir-directory"></a>
 </p>
-<a name="IDX37"></a>
-<a name="IDX38"></a>
+<a name="index-Entries-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries-file"></a>
 </dd>
 <dt> &lsquo;<tt>Entries</tt>&rsquo;</dt>
 <dd><p>This file lists the files and directories in the
@@ -989,8 +989,8 @@ for future expansion.  Programs which modify
 </p>
 <p>The lines in the &lsquo;<tt>Entries</tt>&rsquo; file can be in any order.
 </p>
-<a name="IDX39"></a>
-<a name="IDX40"></a>
+<a name="index-Entries_002eLog-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eLog-file"></a>
 </dd>
 <dt> &lsquo;<tt>Entries.Log</tt>&rsquo;</dt>
 <dd><p>This file does not record any information beyond that
@@ -1021,16 +1021,16 @@ here).
 <p>Programs which are writing rather than reading can
 safely ignore &lsquo;<tt>Entries.Log</tt>&rsquo; if they so choose.
 </p>
-<a name="IDX41"></a>
-<a name="IDX42"></a>
+<a name="index-Entries_002eBackup-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eBackup-file"></a>
 </dd>
 <dt> &lsquo;<tt>Entries.Backup</tt>&rsquo;</dt>
 <dd><p>This is a temporary file.  Recommended usage is to
 write a new entries file to &lsquo;<tt>Entries.Backup</tt>&rsquo;, and
 then to rename it (atomically, where possible) to &lsquo;<tt>Entries</tt>&rsquo;.
 </p>
-<a name="IDX43"></a>
-<a name="IDX44"></a>
+<a name="index-Entries_002eStatic-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eStatic-file"></a>
 </dd>
 <dt> &lsquo;<tt>Entries.Static</tt>&rsquo;</dt>
 <dd><p>The only relevant thing about this file is whether it
@@ -1041,10 +1041,10 @@ clear it, use the <code>update</code> command with the
 &lsquo;<samp>-d</samp>&rsquo; option, which will get the additional files
 and remove &lsquo;<tt>Entries.Static</tt>&rsquo;.
 </p>
-<a name="IDX45"></a>
-<a name="IDX46"></a>
-<a name="IDX47"></a>
-<a name="IDX48"></a>
+<a name="index-Tag-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fTag-file"></a>
+<a name="index-Sticky-tags_002fdates_002c-per_002ddirectory"></a>
+<a name="index-Per_002ddirectory-sticky-tags_002fdates"></a>
 </dd>
 <dt> &lsquo;<tt>Tag</tt>&rsquo;</dt>
 <dd><p>This file contains per-directory sticky tags or dates.
@@ -1059,8 +1059,8 @@ might not be the same as the sticky tags or dates on
 individual files.  For general information on sticky
 tags and dates, see <a href="cvs_4.html#Sticky-tags">Sticky tags</a>.
 </p>
-<a name="IDX49"></a>
-<a name="IDX50"></a>
+<a name="index-Notify-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fNotify-file"></a>
 </dd>
 <dt> &lsquo;<tt>Notify</tt>&rsquo;</dt>
 <dd><p>This file stores notifications (for example, for
@@ -1068,8 +1068,8 @@ tags and dates, see <a href="cvs_4.html#Sticky-tags">Sticky tags</a>.
 sent to the server.  Its format is not yet documented
 here.
 </p>
-<a name="IDX51"></a>
-<a name="IDX52"></a>
+<a name="index-Notify_002etmp-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fNotify_002etmp-file"></a>
 </dd>
 <dt> &lsquo;<tt>Notify.tmp</tt>&rsquo;</dt>
 <dd><p>This file is to &lsquo;<tt>Notify</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
@@ -1078,8 +1078,8 @@ first write the new contents to &lsquo;<tt>Notify.tmp</tt>&rsquo; and
 then (atomically where possible), rename it to
 &lsquo;<tt>Notify</tt>&rsquo;.
 </p>
-<a name="IDX53"></a>
-<a name="IDX54"></a>
+<a name="index-Base-directory_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBase-directory"></a>
 </dd>
 <dt> &lsquo;<tt>Base</tt>&rsquo;</dt>
 <dd><p>If watches are in use, then an <code>edit</code> command
@@ -1088,8 +1088,8 @@ directory.  This allows the <code>unedit</code> command to
 operate even if it is unable to communicate with the
 server.
 </p>
-<a name="IDX55"></a>
-<a name="IDX56"></a>
+<a name="index-Baserev-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBaserev-file"></a>
 </dd>
 <dt> &lsquo;<tt>Baserev</tt>&rsquo;</dt>
 <dd><p>The file lists the revision for each of the files in
@@ -1101,8 +1101,8 @@ the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 <p>where <var>expansion</var> should be ignored, to allow for
 future expansion.
 </p>
-<a name="IDX57"></a>
-<a name="IDX58"></a>
+<a name="index-Baserev_002etmp-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBaserev_002etmp-file"></a>
 </dd>
 <dt> &lsquo;<tt>Baserev.tmp</tt>&rsquo;</dt>
 <dd><p>This file is to &lsquo;<tt>Baserev</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
@@ -1111,8 +1111,8 @@ first write the new contents to &lsquo;<tt>Baserev.tmp</tt>&rsquo; and
 then (atomically where possible), rename it to
 &lsquo;<tt>Baserev</tt>&rsquo;.
 </p>
-<a name="IDX59"></a>
-<a name="IDX60"></a>
+<a name="index-Template-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fTemplate-file"></a>
 </dd>
 <dt> &lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
@@ -1312,7 +1312,7 @@ possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
 able to create lock files (see section <a href="cvs_10.html#Concurrency">Several developers simultaneously attempting to run CVS</a>).
 </p>
-<a name="IDX61"></a>
+<a name="index-init-_0028subcommand_0029"></a>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
@@ -1356,8 +1356,8 @@ in the repository; for the most part it is possible to
 back them up just like any other files.  However, there
 are a few issues to consider.
 </p>
-<a name="IDX62"></a>
-<a name="IDX63"></a>
+<a name="index-Locks_002c-cvs_002c-and-backups"></a>
+<a name="index-_0023cvs_002erfl_002c-and-backups"></a>
 <p>The first is that to be paranoid, one should either not
 use <small>CVS</small> during the backup, or have the backup
 program lock <small>CVS</small> while doing the backup.  To not
@@ -1622,7 +1622,7 @@ faun, put the following line into the file
 <table><tr><td>&nbsp;</td><td><pre class="example">rsh -l bach faun.example.org 'echo $PATH'
 </pre></td></tr></table>
 
-<a name="IDX64"></a>
+<a name="index-CVS_005fSERVER_002c-environment-variable"></a>
 <p>Next you have to make sure that <code>rsh</code> will be able
 to find the server.  Make sure that the path which
 <code>rsh</code> printed in the above example includes the
@@ -1637,11 +1637,11 @@ for example &lsquo;<tt>/usr/local/bin/cvs-1.6</tt>&rsquo;.
 <p>There is no need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; or start a
 <small>CVS</small> server daemon.
 </p>
-<a name="IDX65"></a>
-<a name="IDX66"></a>
-<a name="IDX67"></a>
-<a name="IDX68"></a>
-<a name="IDX69"></a>
+<a name="index-_003aserver_003a_002c-setting-up"></a>
+<a name="index-_003aext_003a_002c-setting-up"></a>
+<a name="index-Kerberos_002c-using-kerberized-rsh"></a>
+<a name="index-SSH-_0028rsh-replacement_0029"></a>
+<a name="index-rsh-replacements-_0028Kerberized_002c-SSH_002c-_0026c_0029"></a>
 <p>There are two access methods that you use in <code>CVSROOT</code>
 for rsh.  <code>:server:</code> specifies an internal rsh
 client, which is supported only by some <small>CVS</small> ports.
@@ -1741,18 +1741,18 @@ some adjustments on both the server and client sides.
 permissions on the &lsquo;<tt>$CVSROOT</tt>&rsquo; and
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See <a href="#Password-authentication-security">Security considerations with password authentication</a>, for more details.
 </p>
-<a name="IDX70"></a>
-<a name="IDX71"></a>
-<a name="IDX72"></a>
-<a name="IDX73"></a>
-<a name="IDX74"></a>
-<a name="IDX75"></a>
-<a name="IDX76"></a>
-<a name="IDX77"></a>
-<a name="IDX78"></a>
-<a name="IDX79"></a>
-<a name="IDX80"></a>
-<a name="IDX81"></a>
+<a name="index-pserver-_0028subcommand_0029"></a>
+<a name="index-Remote-repositories_002c-port-specification"></a>
+<a name="index-Repositories_002c-remote_002c-port-specification"></a>
+<a name="index-Client_002fServer-Operation_002c-port-specification"></a>
+<a name="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-port_002c-specifying-for-remote-repositories"></a>
+<a name="index-Password-server_002c-setting-up"></a>
+<a name="index-Authenticating-server_002c-setting-up"></a>
+<a name="index-inetd_002c-configuring-for-pserver"></a>
+<a name="index-xinetd_002c-configuring-for-pserver"></a>
 <p>On the server side, the file &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;
 needs to be edited so <code>inetd</code> knows to run the
 command <code>cvs pserver</code> when it receives a
@@ -1821,8 +1821,8 @@ to reread its initialization files.
 <p>If you are having trouble setting this up, see
 <a href="cvs_21.html#Connection">Trouble making a connection to a CVS server</a>.
 </p>
-<a name="IDX82"></a>
-<a name="IDX83"></a>
+<a name="index-CVS-passwd-file"></a>
+<a name="index-passwd-_0028admin-file_0029"></a>
 <p>Because the client stores and transmits passwords in
 cleartext (almost&mdash;see <a href="#Password-authentication-security">Security considerations with password authentication</a>, for details), a separate <small>CVS</small> password
 file is generally used, so people don&rsquo;t compromise
@@ -1859,7 +1859,7 @@ information on how to do the &quot;read-only&quot; part, see
 <code>bach</code> and <code>spwang</code> if they supply their
 respective plaintext passwords.
 </p>
-<a name="IDX84"></a>
+<a name="index-User-aliases"></a>
 <p>The fourth line will grant access to <code>melissa</code>, if
 she supplies the correct password, but her <small>CVS</small>
 operations will actually run on the server side under
@@ -2094,7 +2094,7 @@ from &quot;innocent&quot; compromise (i.e., inadvertent viewing
 by a system administrator or other non-malicious
 person).
 </p>
-<a name="IDX85"></a>
+<a name="index-CVS_005fPASSFILE_002c-environment-variable"></a>
 <p>You can change the default location of this file by
 setting the <code>CVS_PASSFILE</code> environment variable.
 If you use this variable, make sure you set it
@@ -2125,7 +2125,7 @@ no longer any need to specify the repository
 explicitly, because <small>CVS</small> can deduce the repository
 from the working copy&rsquo;s &lsquo;<tt>CVS</tt>&rsquo; subdirectory.
 </p>
-<a name="IDX86"></a>
+<a name="index-Logout-_0028subcommand_0029"></a>
 <p>The password for a given remote repository can be
 removed from the <code>CVS_PASSFILE</code> by using the
 <code>cvs logout</code> command.
@@ -2300,7 +2300,7 @@ the client and server; use the
 on.  You must then use the <code>-x</code> global option to
 request encryption.
 </p>
-<a name="IDX87"></a>
+<a name="index-CVS_005fCLIENT_005fPORT"></a>
 <p>You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
@@ -2308,7 +2308,7 @@ specify it in the <code>CVSROOT</code> (see section <a href="#Remote-repositorie
 or the <code>CVS_CLIENT_PORT</code> environment variable
 (see section <a href="cvs_19.html#Environment-variables">All environment variables which affect CVS</a>) on the client.
 </p>
-<a name="IDX88"></a>
+<a name="index-kinit"></a>
 <p>When you want to use <small>CVS</small>, get a ticket in the
 usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
@@ -2365,7 +2365,7 @@ repository.  For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :fork:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
 
-<a name="IDX89"></a>
+<a name="index-CVS_005fSERVER_002c-and-_003afork_003a"></a>
 <p>As with <code>:ext:</code>, the server is called &lsquo;<samp>cvs</samp>&rsquo;
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.

@@ -22,7 +22,7 @@ In copying
 @title title --a
 @subtitle formatting subtitle --a
 @subtitle subtitle 2 --a
-@author author1 --a
+@author author1 --a with accents in name T@'e@,ca
 @author author2 --a
 In titlepage
 @mymacro

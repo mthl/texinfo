@@ -199,7 +199,7 @@ This means that changes checked in from the working
 copy will add new revisions on that branch, while
 leaving the main trunk and other branches unaffected.
 </p>
-<div id="IDX120"></div>
+<div id="index-Branches_002c-sticky"></div>
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
 the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section [cvs: Revisions#Sticky-tags Sticky tags])
@@ -423,12 +423,12 @@ greatest common ancestor (GCA) of the branch and the destination revision (in
 the simple case below the GCA is the point where the branch forked) and the
 newest revision on that branch into your working copy.
 </p>
-<div id="IDX121"></div>
+<div id="index-Join"></div>
 <p>The &lsquo;<samp>-j</samp>&rsquo; stands for &ldquo;join&rdquo;.
 </p>
-<div id="IDX122"></div>
-<div id="IDX123"></div>
-<div id="IDX124"></div>
+<div id="index-Branch-merge-example"></div>
+<div id="index-Example_002c-branch-merge"></div>
+<div id="index-Merge_002c-branch-example"></div>
 <p>Consider this revision tree:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+
@@ -579,8 +579,8 @@ the trunk, and then use that tag for subsequent merges:
 (and <code>checkout</code>) command can merge the differences
 between any two revisions into your working file.
 </p>
-<div id="IDX125"></div>
-<div id="IDX126"></div>
+<div id="index-Undoing-a-change"></div>
+<div id="index-Removing-a-change"></div>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -j 1.5 -j 1.3 backend.c
 </nowiki></pre></td></tr></table>
 
@@ -594,8 +594,8 @@ You almost always use symbolic
 tags rather than revision numbers when operating on
 multiple files.
 </p>
-<div id="IDX127"></div>
-<div id="IDX128"></div>
+<div id="index-Restoring-old-version-of-removed-file"></div>
+<div id="index-Resurrecting-old-version-of-dead-file"></div>
 <p>Specifying two &lsquo;<samp>-j</samp>&rsquo; options can also undo file
 removals or additions.  For example, suppose you have
 a file

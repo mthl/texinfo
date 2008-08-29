@@ -155,6 +155,7 @@ but , ,@:
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}

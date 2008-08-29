@@ -90,8 +90,15 @@ This file records noteworthy changes.
 * print_index is called if it appears, even if the index is not defined or
   there are no index entries.
 
+* image API completly changed. The current behaviour is not stable, so
+  is not documented.
+
 * image file paths are not completed anymore in the default case. The previous
   behaviour can be restored with $COMPLETE_IMAGE_PATHS set to true.
+
+* there is a new 'style' key in $complex_format_map, to be able to 
+  differentiate complex formats inheriting fonts and code_style (like 
+  @format, @display).
 
 * BUG FIXES
   ---------

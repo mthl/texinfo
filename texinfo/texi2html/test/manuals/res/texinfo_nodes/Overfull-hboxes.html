@@ -89,7 +89,7 @@ happens, TeX prints an error message like this:
 <table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 
-<a name="IDX343"></a>
+<a name="index-hbox"></a>
 <p>(In TeX, lines are in &ldquo;horizontal boxes&rdquo;, hence the term, &ldquo;hbox&rdquo;.
 &lsquo;<samp>@hbox</samp>&rsquo; is a TeX primitive not needed in the Texinfo language.)
 </p>
@@ -109,7 +109,7 @@ can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you&rsquo;re lucky) avoiding many of the bad line breaks,
 like this:
 </p>
-<a name="IDX344"></a>
+<a name="index-_005cemergencystretch"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
@@ -121,16 +121,16 @@ output would generally be of noticeably lower quality; the default
 is &lsquo;<samp>.15\hsize</samp>&rsquo;.  <code>\hsize</code> is the TeX dimension
 containing the current line width.
 </p>
-<a name="IDX345"></a>
-<a name="IDX346"></a>
-<a name="IDX347"></a>
-<a name="IDX348"></a>
+<a name="index-Black-rectangle-in-hardcopy"></a>
+<a name="index-Rectangle_002c-black-in-hardcopy"></a>
+<a name="index-Box_002c-ugly-black-in-hardcopy"></a>
+<a name="index-Ugly-black-rectangles-in-hardcopy"></a>
 <p>For what overfull boxes you have, however, TeX will print a large,
 ugly, black rectangle beside the line that contains the overfull hbox
 unless told otherwise.  This is so you will notice the location of the
 problem if you are correcting a draft.
 </p>
-<a name="IDX349"></a>
+<a name="index-finalout"></a>
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:

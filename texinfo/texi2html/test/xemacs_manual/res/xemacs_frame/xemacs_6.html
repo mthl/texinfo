@@ -76,7 +76,7 @@ the shell window, so you can use that to run other shell commands while
 XEmacs operates its own X windows.  You can begin typing XEmacs commands
 as soon as you direct your keyboard input to the XEmacs frame.
 </p>
-<a name="IDX101"></a>
+<a name="index-initial_002dmajor_002dmode"></a>
 <p>  Before Emacs reads the first command, you have not had a chance to
 give a command to specify a file to edit.  Since Emacs must always have
 a current buffer for editing, it presents a buffer, by default, a buffer
@@ -171,8 +171,8 @@ you use determines what exactly happens.  To actually kill the Emacs
 process, use <kbd>C-x C-c</kbd> or the <b>Exit XEmacs</b> item on the <b>File</b>
 menu.
 </p>
-<a name="IDX102"></a>
-<a name="IDX103"></a>
+<a name="index-C_002dz"></a>
+<a name="index-suspend_002demacs"></a>
 <p>  To suspend Emacs, type <kbd>C-z</kbd> (<code>suspend-emacs</code>).  This takes
 you back to the shell from which you invoked Emacs.  You can resume
 Emacs with the shell command &lsquo;<samp>%xemacs</samp>&rsquo; in most common shells.
@@ -198,8 +198,8 @@ Instead, <kbd>C-z</kbd> runs the command <code>iconify-or-deiconify-frame</code>
 which temporarily closes up the selected Emacs frame.
 The way to get back to a shell window is with the window manager.
 </p>
-<a name="IDX104"></a>
-<a name="IDX105"></a>
+<a name="index-C_002dx-C_002dc"></a>
+<a name="index-save_002dbuffers_002dkill_002demacs"></a>
 <p>  To kill Emacs, type <kbd>C-x C-c</kbd> (<code>save-buffers-kill-emacs</code>).  A
 two-character key is used for this to make it harder to type.  Selecting
 the <b>Exit XEmacs</b> option of the <b>File</b> menu is an alternate way of
@@ -411,7 +411,7 @@ XEmacs was not configured &lsquo;<samp>--pdump</samp>&rsquo;.)
 <dd><p>Use <var>file</var> instead of the terminal for input and output.  This
 implies the &lsquo;<samp>-nw</samp>&rsquo; option, documented below.
 </p>
-<a name="IDX106"></a>
+<a name="index-batch-mode"></a>
 </dd>
 <dt> &lsquo;<samp>-batch</samp>&rsquo;</dt>
 <dd><p>Run Emacs in <em>batch mode</em>, which means that the text being edited is
@@ -495,7 +495,7 @@ init file comes first.  See section <a href="xemacs_30.html#Init-File">The Init 
 </dd>
 </dl>
 
-<a name="IDX107"></a>
+<a name="index-command_002dline_002dargs"></a>
 <p>  Note that the init file can get access to the command line argument
 values as the elements of a list in the variable
 <code>command-line-args</code>.  (The arguments in the second table above will
@@ -664,7 +664,7 @@ the resource manager name.
 are spread over many directories, and XEmacs determines the location of
 most of these directories at startup and organizes them into various
 paths.  (A <em>path</em>,
-<a name="IDX108"></a>
+<a name="index-path"></a>
 for the purposes of this section, is simply a list of directories which
 XEmacs searches successively in order to locate a file.)
 </p>
@@ -707,13 +707,13 @@ and search across them.  (Typically, there are just one or two
 hierarchies: the hierarchy where XEmacs was or will be installed, and
 the one where it is being built.)  Such a directory containing a
 hierarchy is called a <em>root</em>.
-<a name="IDX109"></a>
+<a name="index-root-of-a-hierarchy"></a>
 Whenever this section refers to a directory using the shorthand
 <code>&lt;root&gt;</code>, it means that XEmacs searches for it under all
 hierarchies XEmacs was able to scrounge up.  In a
 running XEmacs, the hierarchy roots are stored in the variable
 <code>emacs-roots</code>.
-<a name="IDX110"></a>
+<a name="index-emacs_002droots"></a>
 </p>
 <hr size="6">
 <a name="SEC47"></a>
@@ -743,9 +743,9 @@ Hence, they play a prominent role in the various paths XEmacs sets up.
 <p>XEmacs locates packages in any of a number of package hierarchies.
 Package hierarchies fall into three groups: <em>early</em>, <em>late</em>,
 and <em>last</em>,
-<a name="IDX111"></a>
-<a name="IDX112"></a>
-<a name="IDX113"></a>
+<a name="index-early-package-hierarchies"></a>
+<a name="index-late-package-hierarchies"></a>
+<a name="index-last-package-hierarchies"></a>
 according to the relative location at which they show
 up in the various XEmacs paths.  Early package hierarchies are at the
 very front, late ones somewhere in the middle, and last hierarchies are
@@ -771,7 +771,7 @@ hierarchy.
 </p>
 <p>It is possible to specify at configure-time the location of the various
 package hierarchies with the <code>--package-path</code> option to configure.
-<a name="IDX114"></a>
+<a name="index-package-path"></a>
 The early, late, and last components of the package path are separated
 by double instead of single colons.  If all three components are
 present, they locate the early, late, and last package hierarchies
@@ -814,17 +814,17 @@ when looking for them.
 </p>
 <dl compact="compact">
 <dt> <code>version-specific</code></dt>
-<dd><a name="IDX115"></a>
+<dd><a name="index-version_002dspecific-directories"></a>
 <p>directories are specific to the version of XEmacs they belong to and
 typically reside under &lsquo;<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;</tt>&rsquo;.
 </p></dd>
 <dt> <code>site-specific</code></dt>
-<dd><a name="IDX116"></a>
+<dd><a name="index-site_002dspecific-directories"></a>
 <p>directories are independent of the version of XEmacs they belong to and
 typically reside under &lsquo;<tt>&lt;root&gt;/lib/xemacs</tt>&rsquo;
 </p></dd>
 <dt> <code>architecture-specific</code></dt>
-<dd><a name="IDX117"></a>
+<dd><a name="index-architecture_002dspecific-directories"></a>
 <p>directories are specific both to the version of XEmacs and the
 architecture it runs on and typically reside under
 &lsquo;<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;/&lt;ARCHITECTURE&gt;</tt>&rsquo;.
@@ -839,67 +839,67 @@ aiding in debugging any problems which come up.
 </p>
 <dl compact="compact">
 <dt> <code>lisp-directory</code></dt>
-<dd><a name="IDX118"></a>
+<dd><a name="index-lisp_002ddirectory"></a>
 <p>Contains the version-specific location of the Lisp files that come with
 the core distribution of XEmacs.  XEmacs will search it recursively to a
 depth of 1 when setting up <code>load-path</code>.
 </p>
 </dd>
 <dt> <code>load-path</code></dt>
-<dd><a name="IDX119"></a>
+<dd><a name="index-load_002dpath"></a>
 <p>Is where XEmacs searches for XEmacs Lisp files with commands like
 <code>load-library</code>.
-<a name="IDX120"></a>
+<a name="index-load_002dlibrary"></a>
 It contains the package lisp directories (see further down) and the
 version-specific core Lisp directories.  If the environment variable
 <code>EMACSLOADPATH</code> is set at startup, its directories are prepended to
 <code>load-path</code>.
-<a name="IDX121"></a>
+<a name="index-EMACSLOADPATH"></a>
 </p>
 </dd>
 <dt> <code>Info-directory-list</code></dt>
-<dd><a name="IDX122"></a>
+<dd><a name="index-Info_002ddirectory_002dlist"></a>
 <p>Contains the location of info files.  (See <a href="../info/index.html#Top">(info)</a>.)  It contains
 the package info directories and the version-specific core
 documentation.  Moreover, XEmacs will add &lsquo;<tt>/usr/info</tt>&rsquo;,
 &lsquo;<tt>/usr/local/info</tt>&rsquo; as well as the directories of the environment
 variable <code>INFOPATH</code>
-<a name="IDX123"></a>
+<a name="index-INFOPATH"></a>
 to <code>Info-directory-list</code>.
 </p>
 </dd>
 <dt> <code>exec-directory</code></dt>
-<dd><a name="IDX124"></a>
+<dd><a name="index-exec_002ddirectory"></a>
 <p>Is the directory of architecture-dependent files that come with XEmacs,
 especially executable programs intended for XEmacs to invoke.
 </p>
 </dd>
 <dt> <code>exec-path</code></dt>
-<dd><a name="IDX125"></a>
+<dd><a name="index-exec_002dpath"></a>
 <p>Is the path for executables which XEmacs may want to start.  It contains
 the package executable paths as well as <code>exec-directory</code>, and the
 directories of the environment variables <code>PATH</code>
-<a name="IDX126"></a>
+<a name="index-PATH"></a>
 and <code>EMACSPATH</code>.
-<a name="IDX127"></a>
+<a name="index-EMACSPATH"></a>
 </p>
 </dd>
 <dt> <code>doc-directory</code></dt>
-<dd><a name="IDX128"></a>
+<dd><a name="index-doc_002ddirectory"></a>
 <p>Is the directory containing the architecture-specific &lsquo;<tt>DOC</tt>&rsquo; file
 that contains documentation for XEmacs&rsquo; commands.
 </p>
 </dd>
 <dt> <code>data-directory</code></dt>
-<dd><a name="IDX129"></a>
+<dd><a name="index-data_002ddirectory"></a>
 <p>Is the version-specific directory that contains core data files XEmacs uses.
 It may be initialized from the <code>EMACSDATA</code>
-<a name="IDX130"></a>
+<a name="index-EMACSDATA"></a>
 environment variable.
 </p>
 </dd>
 <dt> <code>data-directory-list</code></dt>
-<dd><a name="IDX131"></a>
+<dd><a name="index-data_002ddirectory_002dlist"></a>
 <p>Is the path where XEmacs looks for data files.  It contains package data
 directories as well as <code>data-directory</code>.
 </p>

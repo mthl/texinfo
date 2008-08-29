@@ -2670,6 +2670,10 @@ is to modify the @variable{@@IMAGE_EXTENSIONS}, which holds a list of
 filename extensions for image files. It is also possible to redefine
 the function used to determine the filename of the image:
 
+@quotation Warning
+This description is wrong. The API is still moving, so don't count on it.
+@end quotation
+
 @deftypefn {Function Reference} $filename image_files $basename $extension
 @var{$basename} is the first @code{@@image} argument, @var{$extension}
 is the corresponding @code{@@image} argument. This function reference 
@@ -3069,6 +3073,12 @@ The @acronym{HTML} class. If not defined, the command name.
 @item pre_style
 The preformatted style. If not defined the corresponding @acronym{CSS} style
 is used.
+@item style
+If the associated value is @code{code}, the format is assumed to be in 
+code style, where 
+with @samp{---}, @samp{--}, @samp{''} and  @samp{``} kept as is.
+If the key is absent the format  inherits the code style
+and the font from the enclosing context.
 @end table 
 The enclosed text will be formatted as described in
 @ref{Paragraph and preformatted region}, and the name of the complex
@@ -3725,6 +3735,17 @@ done by default.
 The menu comments are considered to be preformatted text. The style 
 associated with this preformatted text is determined by 
 @variable{$MENU_PRE_STYLE}. Default is @samp{font-family: serif}.
+The entry similar with an entry in @code{$complex_format_map} 
+(@pxref{Complex formats}) used when the menu appears in a preformatted
+enviroment is in
+@variable{$MENU_PRE_COMPLEX_FORMAT}, and, in the default case is:
+@example
+$MENU_PRE_COMPLEX_FORMAT = @{
+              'pre_style' => $MENU_PRE_STYLE, 
+              'class' => 'menu-preformatted'
+   @};
+@end example
+
 The css class associated with menu comments is @code{menu-comments}.
 
 The following function reference controls the formatting of a wole menu
@@ -4226,9 +4247,6 @@ there are only spaces remaining on the line
 @item arg
 If the associated value is @code{line} the line is considered to be the
 argument. If it is a number it is the number of args (separated by spaces).
-@item texi
-If true the arguments are considered to real texinfo, therefore	
- @code{@@value} and @code{@@macro} are expanded.
 @item keep
 If true the args and the macro are kept, otherwise they are discarded.
 The defaut is to have @code{keep} undef for all the commands.
@@ -4397,8 +4415,8 @@ is added to @file{Makefile.am} in the @code{i18n_files} variable.
 
 @command{texi2html} has accumulated a lot of incompatibilities with previous
 versions. They are documented in the @file{NEWS} file, we discuss them
-here nevertheless. most of the incompatibilities were introduced in 
-version 1.68.
+here nevertheless. Most of the incompatibilities were introduced in 
+version 1.68. API changed also a lot between 1.78 and 1.80.
 
 @itemize @bullet
 @item API changes between 1.78 and 1.80: 
@@ -4440,9 +4458,15 @@ the @code{&$menu} function reference is replaced by @code{&$menu_command}.
 @code{@@detailmenu} is ignored.
 @item the API for the formatting of menus completly changed. $simple_menu_link
   is removed, everything should be done in $menu_link.
+@item image API changed, and is unstable, so not documented.
 @item image file paths are not completed anymore in the default case. 
   The previous
   behaviour can be restored with @code{$COMPLETE_IMAGE_PATHS} set to true.
+@item in %misc_command @samp{texi} is not used anymore. The value and macros
+are expanded as they should be unconditionnally.
+@item there is a new 'style' key in $complex_format_map, to be able to 
+  differentiate complex formats inheriting fonts and code_style (like 
+  @@format, @@display).
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

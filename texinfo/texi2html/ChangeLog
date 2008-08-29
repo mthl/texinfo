@@ -1,3 +1,14 @@
+2008-08-29  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: expand macros and value in all the @-commands that
+	need to. Also treat as normal text more @-commands.
+	More places with code_style, as agreed on bug-texinfo.
+	Don't normalize spaces in images.
+	Protect text in @verb in simple_format.
+	As said on the texinfo list in menu only the node is in code_style.
+	Transliterate index entries in index labels.
+	* i18n/es: new translation from Francisco Vila.
+
 2008-08-26  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, examples/makeinfo.init: put everything needed for

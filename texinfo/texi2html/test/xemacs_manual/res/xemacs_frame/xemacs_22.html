@@ -94,8 +94,8 @@ line (<code>back-to-indentation</code>).
 </p></dd>
 </dl>
 
-<a name="IDX738"></a>
-<a name="IDX739"></a>
+<a name="index-TAB-1"></a>
+<a name="index-indentation"></a>
 <p>  Most programming languages have some indentation convention.  For Lisp
 code, lines are indented according to their nesting in parentheses.  The
 same general idea is used for C code, though details differ.
@@ -108,7 +108,7 @@ are when you type &lt;TAB&gt;, it aligns the line as a whole.  In C mode,
 &lt;TAB&gt; implements a subtle and sophisticated indentation style that
 knows about many aspects of C syntax.
 </p>
-<a name="IDX740"></a>
+<a name="index-TAB-2"></a>
 <p>  In Text mode, &lt;TAB&gt; runs the command <code>tab-to-tab-stop</code>, which
 indents to the next tab stop column.  You can set the tab stops with
 <kbd>M-x edit-tab-stops</kbd>.
@@ -147,8 +147,8 @@ indents to the next tab stop column.  You can set the tab stops with
 <p>  If you just want to insert a tab character in the buffer, you can type
 <kbd>C-q &lt;TAB&gt;</kbd>.
 </p>
-<a name="IDX741"></a>
-<a name="IDX742"></a>
+<a name="index-M_002dm"></a>
+<a name="index-back_002dto_002dindentation"></a>
 <p>  To move over the indentation on a line, type <kbd>Meta-m</kbd>
 (<code>back-to-indentation</code>).  This command, given anywhere on a line,
 positions point at the first non-blank character on the line.
@@ -157,8 +157,8 @@ positions point at the first non-blank character on the line.
 &lt;TAB&gt;</kbd>.  To make an indented line after the current line, use
 <kbd>C-e &lt;LFD&gt;</kbd>.
 </p>
-<a name="IDX743"></a>
-<a name="IDX744"></a>
+<a name="index-C_002dM_002do"></a>
+<a name="index-split_002dline"></a>
 <p>  <kbd>C-M-o</kbd> (<code>split-line</code>) moves the text from point to the end of
 the line vertically down, so that the current line becomes two lines.
 <kbd>C-M-o</kbd> first moves point forward over any spaces and tabs.  Then it
@@ -166,10 +166,10 @@ inserts after point a newline and enough indentation to reach the same
 column point is on.  Point remains before the inserted newline; in this
 regard, <kbd>C-M-o</kbd> resembles <kbd>C-o</kbd>.
 </p>
-<a name="IDX745"></a>
-<a name="IDX746"></a>
-<a name="IDX747"></a>
-<a name="IDX748"></a>
+<a name="index-M_002d_005c-1"></a>
+<a name="index-M_002d_005e-1"></a>
+<a name="index-delete_002dhorizontal_002dspace-1"></a>
+<a name="index-delete_002dindentation-1"></a>
 <p>  To join two lines cleanly, use the <kbd>Meta-^</kbd>
 (<code>delete-indentation</code>) command to delete the indentation at the
 front of the current line, and the line boundary as well.  Empty spaces
@@ -179,10 +179,10 @@ To delete just the indentation of a line, go to the beginning of the
 line and use <kbd>Meta-\</kbd> (<code>delete-horizontal-space</code>), which 
 deletes all spaces and tabs around the cursor.
 </p>
-<a name="IDX749"></a>
-<a name="IDX750"></a>
-<a name="IDX751"></a>
-<a name="IDX752"></a>
+<a name="index-C_002dM_002d_005c"></a>
+<a name="index-C_002dx-TAB"></a>
+<a name="index-indent_002dregion"></a>
+<a name="index-indent_002drigidly"></a>
 <p>  There are also commands for changing the indentation of several lines at
 once.  <kbd>Control-Meta-\</kbd> (<code>indent-region</code>) gives each line which
 begins in the region the &ldquo;usual&rdquo; indentation by invoking &lt;TAB&gt; at the
@@ -193,7 +193,7 @@ character appears in that column.  <kbd>C-x &lt;TAB&gt;</kbd>
 argument (left, for negative arguments).  The whole group of lines moves
 rigidly sideways, which is how the command gets its name.
 </p>
-<a name="IDX753"></a>
+<a name="index-indent_002drelative"></a>
 <p>  <kbd>M-x indent-relative</kbd> indents at point based on the previous line
 (actually, the last non-empty line.)  It inserts whitespace at point, moving
 point, until it is underneath an indentation point in the previous line.
@@ -232,10 +232,10 @@ mode.  See section <a href="xemacs_23.html#Text">Commands for Human Languages</a
 enough to reach the next tab stop column.  Even if you are not in Text mode,
 this function is associated with <kbd>M-i</kbd> anyway.
 </p>
-<a name="IDX754"></a>
-<a name="IDX755"></a>
-<a name="IDX756"></a>
-<a name="IDX757"></a>
+<a name="index-edit_002dtab_002dstops"></a>
+<a name="index-edit_002dtab_002dstops_002dnote_002dchanges"></a>
+<a name="index-C_002dc-C_002dc-_0028Edit-Tab-Stops_0029"></a>
+<a name="index-tab_002dstop_002dlist"></a>
 <p>  You can arbitrarily set the tab stops used by <kbd>M-i</kbd>.  They are
 stored as a list of column-numbers in increasing order in the variable
 <code>tab-stop-list</code>.
@@ -295,8 +295,8 @@ all indentation can be made from spaces only.  To request this, set
 altering the variable affects only the current buffer, but there is a
 default value which you can change as well.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
-<a name="IDX758"></a>
-<a name="IDX759"></a>
+<a name="index-tabify"></a>
+<a name="index-untabify"></a>
 <p>  There are also commands to convert tabs to spaces or vice versa, always
 preserving the columns of all non-blank text.  <kbd>M-x tabify</kbd> scans the
 region for sequences of spaces, and converts sequences of at least three

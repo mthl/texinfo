@@ -1,7 +1,9 @@
 texi test_include.texi
 texi macros.texi
+texi macro_zero.texi
 texi simple_macro.texi
 texi nested_macro_calls.texi
+texi two_macros_on_a_line.texi
 texi glossary.texi
 texi imbricated_macros.texi
 texi expansion_order.texi
@@ -18,12 +20,14 @@ texi alias.texi
 texi nested_ignore.texi
 texi include_macro.texi
 texi node-expand.texi
-# wrong
+texi node-value.texi
+texi value_in_pass0_macros.texi
+texi macros_in_pass0_macros.texi
 texi include-value.texi
-# wrong
 texi value_in_misc_valid.texi
-# wrong
 texi macro_in_misc.texi
+texi macro_in_pass_texi_commands.texi
+texi macro_commands_in_pass_texi_commands.texi
 test_include test_include.texi
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml
@@ -35,11 +39,11 @@ cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 macro-at macro-at.texi
+value_in_pass0_macros value_in_pass0_macros.texi -init makeinfo.init
+macros_in_pass0_macros macros_in_pass0_macros.texi -init makeinfo.init
 node-expand node-expand.texi -init makeinfo.init
 node-expand_xml node-expand.texi -init xml.init
-# wrong
 include-value include-value.texi
-# wrong
 value_in_misc value_in_misc_valid.texi --iftex
-# wrong
 macro_in_misc macro_in_misc.texi
+macro_commands_in_pass_texi_commands macro_commands_in_pass_texi_commands.texi

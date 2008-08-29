@@ -118,7 +118,7 @@ written as the second part of the menu entry.
 </p>
 <p>Alternatively, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
 </p>
-<a name="IDX413"></a>
+<a name="index-Info_002ddirectory_002dlist"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
@@ -134,7 +134,7 @@ file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
 <code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
 to recompose the &lsquo;<tt>dir</tt>&rsquo; file.
 </p>
-<a name="IDX414"></a>
+<a name="index-INFOPATH"></a>
 <p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
 environment variable in your shell startup file, such as &lsquo;<tt>.cshrc</tt>&rsquo;,
 &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>autoexec.bat</tt>&rsquo;.  If you use a Bourne-compatible
@@ -163,7 +163,7 @@ export INFOPATH
 </pre></td></tr></table>
 
 </li><li>
-<a name="IDX415"></a>
+<a name="index-autoexec_002ebat"></a>
 In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
@@ -177,7 +177,7 @@ merges any files named &lsquo;<tt>dir</tt>&rsquo; in any directory listed in the
 <code>INFOPATH</code> variable into a single menu presented to you in the node
 called &lsquo;<samp>(dir)Top</samp>&rsquo;.
 </p>
-<a name="IDX416"></a>
+<a name="index-colon_002c-last-in-INFOPATH"></a>
 <p>However you set <code>INFOPATH</code>, if its last character is a
 colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
 is replaced by the default (compiled-in) path.  This gives you a way to
@@ -191,7 +191,7 @@ export INFOPATH
 <p>will search &lsquo;<tt>/local/info</tt>&rsquo; first, then the standard directories.
 Leading or doubled colons are not treated specially.
 </p>
-<a name="IDX417"></a>
+<a name="index-dir-file_002c-creating-your-own"></a>
 <p>When you create your own &lsquo;<tt>dir</tt>&rsquo; file for use with
 <code>Info-directory-list</code> or <code>INFOPATH</code>, it&rsquo;s easiest to start by
 copying an existing &lsquo;<tt>dir</tt>&rsquo; file and replace all the text after the

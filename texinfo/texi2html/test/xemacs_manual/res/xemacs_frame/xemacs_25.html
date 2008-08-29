@@ -129,7 +129,7 @@ listed in the buffer named &lsquo;<samp>*compilation*</samp>&rsquo;.
 </p></dd>
 </dl>
 
-<a name="IDX1019"></a>
+<a name="index-compile"></a>
 <p>  To run <code>make</code> or another compiler, type <kbd>M-x compile</kbd>.  This
 command reads a shell command line using the minibuffer, then executes
 the specified command line in an inferior shell with output going to the
@@ -137,7 +137,7 @@ buffer named &lsquo;<samp>*compilation*</samp>&rsquo;.  By default, the current 
 default directory is used as the working directory for the execution of
 the command; therefore, the makefile comes from this directory.
 </p>
-<a name="IDX1020"></a>
+<a name="index-compile_002dcommand"></a>
 <p>  When the shell command line is read, the minibuffer appears containing a
 default command line (the command you used the last time you typed
 <kbd>M-x compile</kbd>).  If you type just &lt;RET&gt;, the same command line is used
@@ -147,14 +147,14 @@ appropriate compilation command for a file is something other than
 <code>make -k</code>, it can be useful to have the file specify a local value for
 <code>compile-command</code> (see section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>).
 </p>
-<a name="IDX1021"></a>
+<a name="index-compiling-files"></a>
 <p>  When you start a compilation, the buffer &lsquo;<samp>*compilation*</samp>&rsquo; is
 displayed in another window but not selected.  Its mode line displays
 the word &lsquo;<samp>run</samp>&rsquo; or &lsquo;<samp>exit</samp>&rsquo; in the parentheses to tell you whether
 compilation is finished.  You do not have to keep this buffer visible;
 compilation continues in any case.
 </p>
-<a name="IDX1022"></a>
+<a name="index-kill_002dcompilation"></a>
 <p>  To kill the compilation process, type <kbd>M-x kill-compilation</kbd>.  The mode
 line of the &lsquo;<samp>*compilation*</samp>&rsquo; buffer changes to say &lsquo;<samp>signal</samp>&rsquo;
 instead of &lsquo;<samp>run</samp>&rsquo;.  Starting a new compilation also kills any
@@ -162,8 +162,8 @@ running compilation, as only one can occur at any time.  Starting a new
 compilation prompts for confirmation before actually killing a
 compilation that is running.
 </p>
-<a name="IDX1023"></a>
-<a name="IDX1024"></a>
+<a name="index-C_002dx-_0060"></a>
+<a name="index-next_002derror"></a>
 <p>  To parse the compiler error messages, type <kbd>C-x `</kbd>
 (<code>next-error</code>).  The character following <kbd>C-x</kbd> is the grave
 accent, not the single quote.  The command displays the buffer
@@ -329,15 +329,15 @@ Emacs-Lisp mode (see section <a href="#Lisp-Modes">Major Modes for Lisp</a>).
 </p></dd>
 </dl>
 
-<a name="IDX1025"></a>
+<a name="index-load_002dfile"></a>
 <p>  To execute a file of Emacs Lisp, use <kbd>M-x load-file</kbd>.  This
 command reads the file name you provide in the minibuffer, then executes
 the contents of that file as Lisp code.  It is not necessary to visit
 the file first; in fact, this command reads the file as found on
 disk, not the text in an Emacs buffer.
 </p>
-<a name="IDX1026"></a>
-<a name="IDX1027"></a>
+<a name="index-load"></a>
+<a name="index-load_002dlibrary-1"></a>
 <p>  Once a file of Lisp code is installed in the Emacs Lisp library
 directories, users can load it using <kbd>M-x load-library</kbd>.  Programs can
 load it by calling <code>load-library</code>, or with <code>load</code>, a more primitive
@@ -351,13 +351,13 @@ name alone.  A &lsquo;<tt>.elc</tt>&rsquo; file would be the result of compiling
 file into byte code;  if possible, it is loaded in preference to the Lisp
 file itself because the compiled file loads and runs faster.
 </p>
-<a name="IDX1028"></a>
+<a name="index-loading-libraries"></a>
 <p>  Because the argument to <code>load-library</code> is usually not in itself
 a valid file name, file name completion is not available.  In fact, when
 using this command, you usually do not know exactly what file name
 will be used.
 </p>
-<a name="IDX1029"></a>
+<a name="index-load_002dpath-1"></a>
 <p>  The sequence of directories searched by <kbd>M-x load-library</kbd> is
 specified by the variable <code>load-path</code>, a list of strings that are
 directory names.  The elements of this list may not begin with &quot;&lsquo;<samp>~</samp>&rsquo;&quot;,
@@ -376,7 +376,7 @@ specified in the file &lsquo;<tt>paths.h</tt>&rsquo; when Emacs was built. If a 
 isn&rsquo;t specified in &lsquo;<tt>paths.h</tt>&rsquo;, a default value is obtained from the
 file system, near the directory in which the Emacs executable resides.
 </p>
-<a name="IDX1030"></a>
+<a name="index-locate_002dlibrary"></a>
 <p> Like <kbd>M-x load-library</kbd>, <kbd>M-x locate-library</kbd> searches the 
 directories in <code>load-path</code> to find the file that <kbd>M-x load-library</kbd>
 would load.  If the optional second argument <var>nosuffix</var> is
@@ -384,7 +384,7 @@ non-<code>nil</code>, the suffixes &lsquo;<tt>.elc</tt>&rsquo; or &lsquo;<tt>.el
 the specified name <var>library</var> (like calling <code>load</code> instead of
 <code>load-library</code>).
 </p>
-<a name="IDX1031"></a>
+<a name="index-autoload"></a>
 <p>   You often do not have to give any command to load a library, because the
 commands defined in the library are set up to <em>autoload</em> that library.
 Running any of those commands causes <code>load</code> to be called to load the
@@ -401,7 +401,7 @@ was only partially loaded.  Function definitions are undone only for
 autoloading; explicit calls to <code>load</code> do not undo anything if
 loading is not completed.
 </p>
-<a name="IDX1032"></a>
+<a name="index-after_002dload_002dalist"></a>
 <p>The variable <code>after-load-alist</code> takes an alist of expressions to be
 evaluated when particular files are loaded.  Each element has the form
 <code>(<var>filename</var> forms...)</code>.  When <code>load</code> is run and the filename
@@ -457,7 +457,7 @@ code and load it.
 </p></dd>
 <dt> <kbd>M-x disassemble</kbd></dt>
 <dd><p>Print disassembled code for <var>object</var> on (optional) <var>stream</var>.
-<a name="IDX1033"></a>
+<a name="index-make_002dobsolete"></a>
 </p></dd>
 <dt> <kbd>M-x make-obsolete <var>function new</var></kbd> </dt>
 <dd><p>Make the byte-compiler warn that <var>function</var> is obsolete and <var>new</var> 
@@ -465,9 +465,9 @@ should be used instead.
 </p></dd>
 </dl>
 
-<a name="IDX1034"></a>
-<a name="IDX1035"></a>
-<a name="IDX1036"></a>
+<a name="index-byte_002dcompile_002dfile"></a>
+<a name="index-byte_002dcompile_002dand_002dload_002dfile"></a>
+<a name="index-byte_002dcompile_002dbuffer"></a>
 <p> <kbd>byte-compile-file</kbd> creates a byte-code compiled file from an
 Emacs-Lisp source file.  The default argument for this function is the
 file visited in the current buffer.  The function reads the specified
@@ -478,7 +478,7 @@ file of Lisp code named <var>filename</var> into a file of byte code and
 then load it, use <code>byte-compile-and-load-file</code>. To compile and
 evaluate Lisp code in a given buffer, use <code>byte-compile-buffer</code>.
 </p>
-<a name="IDX1037"></a>
+<a name="index-byte_002drecompile_002ddirectory"></a>
 <p>  To recompile all changed Lisp files in a directory, use <kbd>M-x
 byte-recompile-directory</kbd>.  Specify just the directory name as an argument.
 Each &lsquo;<tt>.el</tt>&rsquo; file that has been byte-compiled before is byte-compiled
@@ -487,7 +487,7 @@ to this command tells it to offer to compile each &lsquo;<tt>.el</tt>&rsquo; fil
 not been compiled yet.  You must answer <kbd>y</kbd> or <kbd>n</kbd> to each
 offer.
 </p>
-<a name="IDX1038"></a>
+<a name="index-batch_002dbyte_002dcompile"></a>
 <p>  You can use the function <code>batch-byte-compile</code> to invoke Emacs
 non-interactively from the shell to do byte compilation.  When you use
 this function, the files to be compiled are specified with command-line
@@ -501,7 +501,7 @@ arguments.  Use a shell command of the form:
 <code>batch-byte-compile</code> uses all remaining command-line arguments as
 file or directory names, then kills the Emacs process.
 </p>
-<a name="IDX1039"></a>
+<a name="index-disassemble"></a>
 <p>  <kbd>M-x disassemble</kbd> explains the result of byte compilation.  Its
 argument is a function name.  It displays the byte-compiled code in a help
 window in symbolic form, one instruction per line.  If the instruction
@@ -594,8 +594,8 @@ the minibuffer (<code>eval-defun</code>).
 </p></dd>
 </dl>
 
-<a name="IDX1040"></a>
-<a name="IDX1041"></a>
+<a name="index-M_002d_003a"></a>
+<a name="index-eval_002dexpression"></a>
 <p>  <kbd>M-:</kbd> (<code>eval-expression</code>) is the most basic command
 for evaluating a Lisp expression interactively.  It reads the expression
 using the minibuffer, so you can execute any expression on a buffer
@@ -603,16 +603,16 @@ regardless of what the buffer contains.  When evaluation is complete,
 the current buffer is once again the buffer that was current when
 <kbd>M-:</kbd> was typed.
 </p>
-<a name="IDX1042"></a>
-<a name="IDX1043"></a>
+<a name="index-C_002dM_002dx"></a>
+<a name="index-eval_002ddefun"></a>
 <p>  In Emacs-Lisp mode, the key <kbd>C-M-x</kbd> is bound to the function
 <code>eval-defun</code>, which parses the defun containing point or following point
 as a Lisp expression and evaluates it.  The value is printed in the echo
 area.  This command is convenient for installing in the Lisp environment
 changes that you have just made in the text of a function definition.
 </p>
-<a name="IDX1044"></a>
-<a name="IDX1045"></a>
+<a name="index-C_002dx-C_002de"></a>
+<a name="index-eval_002dlast_002dsexp"></a>
 <p>  The command <kbd>C-x C-e</kbd> (<code>eval-last-sexp</code>) performs a similar job
 but is available in all major modes, not just Emacs-Lisp mode.  It finds
 the sexp before point, reads it as a Lisp expression, evaluates it, and
@@ -623,8 +623,8 @@ expression and then, with point still after it, type <kbd>C-x C-e</kbd>.
 print the value by inserting it into the current buffer at point, rather
 than in the echo area.  The argument value does not matter.
 </p>
-<a name="IDX1046"></a>
-<a name="IDX1047"></a>
+<a name="index-eval_002dregion"></a>
+<a name="index-eval_002dcurrent_002dbuffer"></a>
 <p>  The most general command for evaluating Lisp expressions from a buffer
 is <code>eval-region</code>.  <kbd>M-x eval-region</kbd> parses the text of the
 region as one or more Lisp expressions, evaluating them one by one.
@@ -668,9 +668,9 @@ invoke the debugger.  This can be useful for debugging an infinite loop;
 type <kbd>C-g</kbd> once the loop has had time to reach its steady state.
 <code>debug-on-quit</code> has no effect on errors.
 </p>
-<a name="IDX1048"></a>
-<a name="IDX1049"></a>
-<a name="IDX1050"></a>
+<a name="index-debug_002don_002dentry"></a>
+<a name="index-cancel_002ddebug_002don_002dentry"></a>
+<a name="index-debug"></a>
 <p>  You can make Emacs enter the debugger when a specified function
 is called or at a particular place in Lisp code.  Use <kbd>M-x
 debug-on-entry</kbd> with argument <var>fun-name</var> to have Emacs enter the
@@ -698,7 +698,7 @@ operations.  However, the debugger is a recursive editing level
 buffer and explicitly exit the debugger when you don&rsquo;t want to use it any
 more.  Exiting the debugger kills the backtrace buffer.
 </p>
-<a name="IDX1051"></a>
+<a name="index-current-stack-frame"></a>
 <p>  The contents of the backtrace buffer show you the functions that are
 executing and the arguments that were given to them.  It also allows you
 to specify a stack frame by moving point to the line describing that
@@ -801,7 +801,7 @@ expressions at the end, ending each one with &lt;LFD&gt; so that it will
 be evaluated.  The result is a complete typescript of the expressions
 you have evaluated and their values.
 </p>
-<a name="IDX1052"></a>
+<a name="index-lisp_002dinteraction_002dmode"></a>
 <p>  The rationale for this feature is that Emacs must have a buffer when it
 starts up, but that buffer is not useful for editing files since a new
 buffer is made for every file that you visit.  The Lisp interpreter
@@ -836,7 +836,7 @@ be evaluated.  You can also pass changed function definitions directly from
 the Emacs buffers in which you edit the Lisp programs to the inferior Lisp
 process.
 </p>
-<a name="IDX1053"></a>
+<a name="index-run_002dlisp"></a>
 <p>  To run an inferior Lisp process, type <kbd>M-x run-lisp</kbd>.  This runs the
 program named <code>lisp</code>, the same program you would run by typing
 <code>lisp</code> as a shell command, with both input and output going through an
@@ -847,14 +847,14 @@ to the end of the buffer and type the input, terminated by &lt;RET&gt;.  The
 &lsquo;<samp>*lisp*</samp>&rsquo; buffer is in Inferior Lisp mode, which has all the
 special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#Shell-Mode">Shell Mode</a>).
 </p>
-<a name="IDX1054"></a>
+<a name="index-lisp_002dmode"></a>
 <p>  Use Lisp mode to run the source files of programs in external Lisps.
 You can select this mode with <kbd>M-x lisp-mode</kbd>.  It is used automatically
 for files whose names end in &lsquo;<tt>.l</tt>&rsquo; or &lsquo;<tt>.lisp</tt>&rsquo;, as most Lisp
 systems usually expect.
 </p>
-<a name="IDX1055"></a>
-<a name="IDX1056"></a>
+<a name="index-C_002dM_002dx-1"></a>
+<a name="index-lisp_002dsend_002ddefun"></a>
 <p>  When you edit a function in a Lisp program you are running, the easiest
 way to send the changed definition to the inferior Lisp process is the key
 <kbd>C-M-x</kbd>.  In Lisp mode, this key runs the function <code>lisp-send-defun</code>,
@@ -941,13 +941,13 @@ local needs with safe removal of unnecessary code.
 <ul>
 <li>
 Regular Packages
-<a name="IDX1057"></a>
+<a name="index-regular-packages"></a>
 A regular package is one in which multiple files are involved and one
 may not in general safely remove any of them.
 
 </li><li>
 Single-File Packages
-<a name="IDX1058"></a>
+<a name="index-single_002dfile-packages"></a>
 A single-file package is an aggregate collection of thematically
 related but otherwise independent lisp files.  These files are bundled 
 together for download convenience and individual files may be deleted at
@@ -1053,7 +1053,7 @@ savings).
 
 <p>When you first download XEmacs 21, you will usually first grab the
 <em>core distribution</em>,
-<a name="IDX1059"></a>
+<a name="index-core-distribution"></a>
 a file called
 &lsquo;<tt>xemacs-21.x.x.tar.gz</tt>&rsquo;. (Replace the <tt>21.x.x</tt> by the current version
 number.)  The core distribution contains the sources of XEmacs and a

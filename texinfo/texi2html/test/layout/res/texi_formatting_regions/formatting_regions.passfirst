@@ -165,6 +165,7 @@ formatting_regions.texi(mymacro,46) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,46) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,46) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,46) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,46) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,46) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,46) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,46) @code{@@H@{--a@}} @H{--a}
@@ -849,6 +850,7 @@ formatting_regions.texi(mymacro,49) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,49) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,49) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,49) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,49) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,49) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,49) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,49) @code{@@H@{--a@}} @H{--a}

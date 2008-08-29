@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.226 2008-08-26 15:51:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.227 2008-08-29 15:05:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -261,6 +261,7 @@ $OUT_ENCODING
 $IN_ENCODING
 $DEFAULT_ENCODING
 $MENU_PRE_STYLE
+$MENU_PRE_COMPLEX_FORMAT
 $CENTER_IMAGE
 $EXAMPLE_INDENT_CELL
 $SMALL_EXAMPLE_INDENT_CELL
@@ -838,6 +839,8 @@ sub t2h_cross_manual_normal_text($$$$$)
              else
              { # wild guess that should work for latin1
                # FIXME to be fixed with unicode to 8bit tables
+               # FIXME also add transliteration, maybe with a 
+               # wrapper function to avoid code duplication
                   $result .= '_' . '00' . lc(sprintf("%02x",ord($1)));
              }
         }
@@ -1521,97 +1524,6 @@ foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
     $value_initial{$key} = '';            # prevent -w warnings
 }
 
-my (%cross_ref_simple_map_texi, %cross_ref_style_map_texi, 
-  %cross_ref_texi_map, %cross_transliterate_style_map_texi,
-  %cross_transliterate_texi_map);
-
-# This function is used to construct link names from node names as
-# specified for texinfo
-sub cross_manual_links()
-{
-    print STDERR "# Doing ".scalar(keys(%nodes))." cross manual links\n" 
-       if ($T2H_DEBUG);
-    my $normal_text_kept = $Texi2HTML::Config::normal_text;
-    $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
-    $::style_map_texi_ref = \%cross_ref_style_map_texi;
-    $::texi_map_ref = \%cross_ref_texi_map;
-    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
-
-    foreach my $key (keys(%nodes))
-    {
-        my $node = $nodes{$key};
-        #print STDERR "CROSS_MANUAL:$key,$node\n";
-        next if ($node->{'index_page'});
-        if (!defined($node->{'texi'}))
-        {
-            ###################### debug section 
-            foreach my $key (keys(%$node))
-            {
-                #print STDERR "$key:$node->{$key}!!!\n";
-            }
-            ###################### end debug section 
-        }
-        else 
-        {
-            $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
-            if ($Texi2HTML::Config::USE_UNICODE)
-            {
-                $node->{'cross_manual_target'} = Unicode::Normalize::NFC($node->{'cross_manual_target'});
-                if ($Texi2HTML::Config::TRANSLITERATE_NODE and  $Texi2HTML::Config::USE_UNIDECODE)
-                {
-                     $node->{'cross_manual_file'} = 
-                       unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_target'}));
-                }
-                $node->{'cross_manual_target'} = 
-                    unicode_to_protected($node->{'cross_manual_target'});
-            }
-#print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
-            unless ($node->{'external_node'})
-            {
-                if (exists($cross_reference_nodes{$node->{'cross_manual_target'}}))
-                {
-                    my $other_node_array = $cross_reference_nodes{$node->{'cross_manual_target'}};
-                    my $node_seen;
-                    foreach my $other_node (@{$other_node_array})
-                    {
-                        $node_seen = $other_node;
-                        last if ($nodes{$other_node}->{'seen'})
-                    }
-                    echo_error("Node equivalent with `$node->{'texi'}' already used `$node_seen'");
-                    push @{$other_node_array}, $node->{'texi'};
-                }
-                else 
-                {
-                    push @{$cross_reference_nodes{$node->{'cross_manual_target'}}}, $node->{'texi'};
-                }
-            }
-        }
-    }
-
-    
-    if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
-         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
-    {
-         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
-         $::texi_map_ref = \%cross_transliterate_texi_map;
-
-         foreach my $key (keys(%nodes))
-         {
-             my $node = $nodes{$key};
-             next if ($node->{'index_page'});
-             if (defined($node->{'texi'}))
-             {
-                  $node->{'cross_manual_file'} = remove_texi($node->{'texi'});
-                  $node->{'cross_manual_file'} = unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_file'})) if ($Texi2HTML::Config::USE_UNICODE);
-             }
-         }
-    }
-
-    $Texi2HTML::Config::normal_text = $normal_text_kept;
-    $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
-    $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
-    $::texi_map_ref = \%Texi2HTML::Config::texi_map;
-}
 
 sub unicode_to_protected($)
 {
@@ -1700,59 +1612,6 @@ sub unicode_to_transliterate($)
         }
     }
     return $result;
-}
-
-# This function is used to construct a link name from a node name as
-# specified for texinfo
-sub cross_manual_line($;$)
-{
-    my $text = shift;
-    my $transliterate = shift;
-#print STDERR "cross_manual_line $text\n";
-#print STDERR "remove_texi text ". remove_texi($text)."\n\n\n";
-    $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
-    $::style_map_texi_ref = \%cross_ref_style_map_texi;
-    $::texi_map_ref = \%cross_ref_texi_map;
-    my $normal_text_kept = $Texi2HTML::Config::normal_text;
-    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
-    
-    my ($cross_ref_target, $cross_ref_file);
-    if ($Texi2HTML::Config::USE_UNICODE)
-    {
-         $cross_ref_target = Unicode::Normalize::NFC(remove_texi($text));
-         if ($transliterate and $Texi2HTML::Config::USE_UNIDECODE)
-         {
-             $cross_ref_file = 
-                unicode_to_protected(unicode_to_transliterate($cross_ref_target));
-         }
-         $cross_ref_target = unicode_to_protected($cross_ref_target);
-    }
-    else
-    {
-         $cross_ref_target = remove_texi($text);
-    }
-    
-    if ($transliterate and 
-         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
-    {
-         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
-         $::texi_map_ref = \%cross_transliterate_texi_map;
-         $cross_ref_file = remove_texi($text);
-         $cross_ref_file = unicode_to_protected(unicode_to_transliterate($cross_ref_file))
-               if ($Texi2HTML::Config::USE_UNICODE);
-    }
-
-    $Texi2HTML::Config::normal_text = $normal_text_kept;
-    $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
-    $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
-    $::texi_map_ref = \%Texi2HTML::Config::texi_map;
-#print STDERR "\n\ncross_ref $cross_ref\n";
-    unless ($transliterate)
-    {
-        return $cross_ref_target;
-    }
-#    print STDERR "$text|$cross_ref_target|$cross_ref_file\n";
-    return ($cross_ref_target, $cross_ref_file);
 }
 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
@@ -2620,6 +2479,10 @@ foreach my $hash (\%Texi2HTML::Config::style_map, \%Texi2HTML::Config::style_map
     }
 }
 
+my (%cross_ref_simple_map_texi, %cross_ref_style_map_texi, 
+  %cross_ref_texi_map, %cross_transliterate_style_map_texi,
+  %cross_transliterate_texi_map);
+
 # setup hashes used for html manual cross references in texinfo
 %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
 
@@ -3193,7 +3056,7 @@ $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
 my $input_file_base = $input_file_name;
 $input_file_base =~ s/\.te?x(i|info)?$//;
 
-my $index;                         # ref on a hash for the index entries
+my $index_entries;                 # ref on a hash for the index entries
 my %indices;                       # hash of indices names containing 
                                    #[ $pages, $entries ] (page indices and 
                                    # raw index entries)
@@ -3409,7 +3272,7 @@ sub texinfo_initialization($)
     foreach my $init_mac ('everyheading', 'everyfooting', 'evenheading', 
         'evenfooting', 'oddheading', 'oddfooting', 'headings', 
         'allowcodebreaks', 'frenchspacing', 'exampleindent', 
-        'firstparagraphindent', 'paragraphindent', 'clickstyle', 'setfilename')
+        'firstparagraphindent', 'paragraphindent', 'clickstyle')
     {
         $Texi2HTML::THISDOC{$init_mac} = undef;
         delete $Texi2HTML::THISDOC{$init_mac};
@@ -3981,7 +3844,7 @@ sub split_lines($)
    my $line = shift;
    my @result = ();
    my $i = 0;
-   while ($line)
+   while ($line ne '')
    {
        $result[$i] = '';
        $line =~ s/^(.*)//;
@@ -4061,8 +3924,8 @@ sub common_misc_commands($$$$)
         }
     }
     if ($pass)
-    { # these commands are only taken into account is pass_structure 1 and 
-      # pass_text 2
+    { # these commands are only taken into account here in pass_structure 1 
+      # and pass_text 2
         if ($macro eq 'setfilename')
         {
             my $filename = $line;
@@ -4070,6 +3933,8 @@ sub common_misc_commands($$$$)
             $filename =~ s/\s*$//;
             if ($filename ne '')
             {
+                $filename = substitute_line($filename, {'code_style' => 1, 'remove_texi' => 1});
+                #$filename = substitute_line($filename, {'code_style' => 1});
                 $Texi2HTML::THISDOC{$macro} = $filename;
                 $value{"_$macro"} = substitute_texi_line($filename) if ($pass == 1);
             }
@@ -4128,7 +3993,12 @@ sub common_misc_commands($$$$)
         }
         elsif (grep {$macro eq $_} ('everyheading', 'everyfooting',
               'evenheading', 'evenfooting', 'oddheading', 'oddfooting'))
-        {
+        { # FIXME have a _texi and without texi, and without texi, 
+          # and expand rightly @this*? And use @| to separate, and give
+          # an array for user consumption? This should be done for each new
+          # chapter, section, and page. What is a page is not necessarily 
+          # well defined in html, however...
+          # @thisfile is the @include file. Shoule be in $line_nr.
             my $arg = $line;
             $arg =~ s/^\s+//;
             $Texi2HTML::THISDOC{$macro} = $arg;
@@ -4210,10 +4080,14 @@ sub misc_command_texi($$$$)
              my $filename = $line;
              $filename =~ s/^\s*//;
              $filename =~ s/\s*$//;
+             #$filename = substitute_line($filename, {'code_style' => 1});
+             $filename = substitute_line($filename, {'code_style' => 1, 'remove_texi' => 1});
              # remove extension
              $filename =~ s/\.[^\.]*$//;
              init_with_file_name ($filename) if ($filename ne '');
           }
+          # in reality, do only set, clear and clickstyle.
+          # though we should never go there for clickstyle... 
           common_misc_commands($macro, $line, 0, $line_nr);
       }
    }
@@ -4221,6 +4095,10 @@ sub misc_command_texi($$$$)
    ($text, $line, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
    return ($text, $line);
 }
+
+# FIXME place that right before document processing
+my $kept_kdb_style = $::style_map_ref->{'kbd'};
+my $kept_kdb_pre_style = $::style_map_pre_ref->{'kbd'};
 
 # handle misc commands and misc command args
 sub misc_command_structure($$$$)
@@ -4268,6 +4146,9 @@ sub misc_command_structure($$$$)
         $novalidate = 1;
         $Texi2HTML::THISDOC{$macro} = 1; 
     }
+    # FIXME substitute_texi_line is a noop. But it may be relevant 
+    # to do a real substitute_line. it is done anyway in pass_text
+    # at the beginning, but why not here? 
     elsif (grep {$_ eq $macro} ('settitle','shortitle','shorttitlepage') 
              and ($line =~ /^\s+(.*)$/))
     {
@@ -4276,8 +4157,10 @@ sub misc_command_structure($$$$)
     elsif (grep {$_ eq $macro} ('author','subtitle','title')
              and ($line =~ /^\s+(.*)$/))
     {
-        $value{"_$macro"} .= substitute_texi_line($1)."\n";
-        push @{$Texi2HTML::THISDOC{"${macro}s"}}, substitute_texi_line($1);
+        my $arg = $1;
+        $value{"_$macro"} .= substitute_texi_line($arg)."\n";
+        push @{$Texi2HTML::THISDOC{"${macro}s_texi"}}, substitute_texi_line($arg);
+        push @{$Texi2HTML::THISDOC{"${macro}s"}}, $arg;
     }
     elsif ($macro eq 'synindex' || $macro eq 'syncodeindex')
     {
@@ -4334,6 +4217,8 @@ sub misc_command_structure($$$$)
     elsif ($macro eq 'kbdinputstyle')
     {# makeinfo ignores that with --html. I reported it and it should be 
      # fixed in future makeinfo releases
+
+     # FIXME it should be dynamically defined in pass 2
         if ($line =~ /\s+([a-z]+)/)
         {
             if ($1 eq 'code')
@@ -4347,7 +4232,13 @@ sub misc_command_structure($$$$)
                 $::style_map_pre_ref->{'kbd'} = $::style_map_pre_ref->{'code'};
                 $Texi2HTML::THISDOC{$macro} = $1;
             }
-            elsif ($1 ne 'distinct')
+            elsif ($1 eq 'distinct')
+            {
+                $Texi2HTML::THISDOC{$macro} = $1;
+                $::style_map_ref->{'kbd'} = $kept_kdb_style;
+                $::style_map_pre_ref->{'kbd'} = $kept_kdb_pre_style;
+            }
+            else
             {
                 echo_error ("Unknown argument for \@$macro: $1", $line_nr);
             }
@@ -4378,6 +4269,13 @@ sub misc_command_structure($$$$)
         else
         {
             echo_error ("Bad \@$macro", $line_nr);
+        }
+    }
+    elsif ($macro eq 'pagesizes')
+    {
+        if ($line =~ /^\s+(.*)\s*$/)
+        {
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
     }
     elsif ($macro eq 'footnotestyle')
@@ -4500,7 +4398,7 @@ sub misc_command_text($$$$$$)
         if ($line =~ /\s+(.+)/)
         {
             my $arg = $1;
-            my $file = locate_include_file($arg);
+            my $file = locate_include_file(substitute_line($arg, {'code_style' => 1}));
             if (defined($file))
             {
                 if (!open(VERBINCLUDE, $file))
@@ -4612,6 +4510,176 @@ sub menu_entry_texi($$$)
         $state->{'node_ref'}->{'menu_child'} = $node_menu_ref;
     }
     $state->{'prev_menu_node'} = $node_menu_ref;
+}
+
+# This function is used to construct link names from node names as
+# specified for texinfo
+sub cross_manual_links()
+{
+    print STDERR "# Doing ".scalar(keys(%nodes))." cross manual links ".
+      scalar(@index_labels). "index entries\n" 
+       if ($T2H_DEBUG);
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
+    $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $::texi_map_ref = \%cross_ref_texi_map;
+    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+
+    foreach my $key (keys(%nodes))
+    {
+        my $node = $nodes{$key};
+        #print STDERR "CROSS_MANUAL:$key,$node\n";
+        next if ($node->{'index_page'});
+        if (!defined($node->{'texi'}))
+        {
+            ###################### debug section 
+            foreach my $key (keys(%$node))
+            {
+                #print STDERR "$key:$node->{$key}!!!\n";
+            }
+            ###################### end debug section 
+        }
+        else 
+        {
+            $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
+            if ($Texi2HTML::Config::USE_UNICODE)
+            {
+                $node->{'cross_manual_target'} = Unicode::Normalize::NFC($node->{'cross_manual_target'});
+                if ($Texi2HTML::Config::TRANSLITERATE_NODE and $Texi2HTML::Config::USE_UNIDECODE)
+                {
+                     $node->{'cross_manual_file'} = 
+                       unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_target'}));
+                }
+                $node->{'cross_manual_target'} = 
+                    unicode_to_protected($node->{'cross_manual_target'});
+            }
+#print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
+            unless ($node->{'external_node'})
+            {
+                if (exists($cross_reference_nodes{$node->{'cross_manual_target'}}))
+                {
+                    my $other_node_array = $cross_reference_nodes{$node->{'cross_manual_target'}};
+                    my $node_seen;
+                    foreach my $other_node (@{$other_node_array})
+                    { # find the first node seen for the error message
+                        $node_seen = $other_node;
+                        last if ($nodes{$other_node}->{'seen'})
+                    }
+                    echo_error("Node equivalent with `$node->{'texi'}' already used `$node_seen'");
+                    push @{$other_node_array}, $node->{'texi'};
+                }
+                else 
+                {
+                    push @{$cross_reference_nodes{$node->{'cross_manual_target'}}}, $node->{'texi'};
+                }
+            }
+        }
+    }
+
+    
+    if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
+         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
+    {
+        $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
+        $::texi_map_ref = \%cross_transliterate_texi_map;
+        # FIXME if !USE_UNICODE, normal_text pourrait faire la translit
+
+        foreach my $key (keys(%nodes))
+        {
+            my $node = $nodes{$key};
+            next if ($node->{'index_page'});
+            if (defined($node->{'texi'}))
+            {
+                 $node->{'cross_manual_file'} = remove_texi($node->{'texi'});
+                 $node->{'cross_manual_file'} = unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_file'})) if ($Texi2HTML::Config::USE_UNICODE);
+            }
+        }
+
+        foreach my $index_entry (@index_labels)
+        {
+            $index_entry->{'cross'} = remove_texi($index_entry->{'texi'});
+            $index_entry->{'cross'} = unicode_to_protected(unicode_to_transliterate($index_entry->{'cross'})) if ($Texi2HTML::Config::USE_UNICODE);
+        }
+    }
+    else
+    {
+        foreach my $index_entry (@index_labels)
+        {
+            $index_entry->{'cross'} = remove_texi($index_entry->{'texi'});
+            if ($Texi2HTML::Config::USE_UNICODE)
+            {
+                $index_entry->{'cross'} = Unicode::Normalize::NFC($index_entry->{'cross'});
+                if ($Texi2HTML::Config::TRANSLITERATE_NODE and $Texi2HTML::Config::USE_UNIDECODE) # USE_UNIDECODE is redundant
+                {
+                     $index_entry->{'cross'} = 
+                       unicode_to_protected(unicode_to_transliterate($index_entry->{'cross'}));
+                }
+                else
+                {
+                     $index_entry->{'cross'} = 
+                        unicode_to_protected($index_entry->{'cross'});
+                }
+            }
+        }
+    }
+
+    $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+    $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+    $::texi_map_ref = \%Texi2HTML::Config::texi_map;
+}
+
+# This function is used to construct a link name from a node name as
+# specified for texinfo
+sub cross_manual_line($;$)
+{
+    my $text = shift;
+    my $transliterate = shift;
+#print STDERR "cross_manual_line $text\n";
+#print STDERR "remove_texi text ". remove_texi($text)."\n\n\n";
+    $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $::texi_map_ref = \%cross_ref_texi_map;
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
+    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+    
+    my ($cross_ref_target, $cross_ref_file);
+    if ($Texi2HTML::Config::USE_UNICODE)
+    {
+         $cross_ref_target = Unicode::Normalize::NFC(remove_texi($text));
+         if ($transliterate and $Texi2HTML::Config::USE_UNIDECODE)
+         {
+             $cross_ref_file = 
+                unicode_to_protected(unicode_to_transliterate($cross_ref_target));
+         }
+         $cross_ref_target = unicode_to_protected($cross_ref_target);
+    }
+    else
+    {
+         $cross_ref_target = remove_texi($text);
+    }
+    
+    if ($transliterate and 
+         (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
+    {
+         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
+         $::texi_map_ref = \%cross_transliterate_texi_map;
+         $cross_ref_file = remove_texi($text);
+         $cross_ref_file = unicode_to_protected(unicode_to_transliterate($cross_ref_file))
+               if ($Texi2HTML::Config::USE_UNICODE);
+    }
+
+    $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+    $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+    $::texi_map_ref = \%Texi2HTML::Config::texi_map;
+#print STDERR "\n\ncross_ref $cross_ref\n";
+    unless ($transliterate)
+    {
+        return $cross_ref_target;
+    }
+#    print STDERR "$text|$cross_ref_target|$cross_ref_file\n";
+    return ($cross_ref_target, $cross_ref_file);
 }
 
 sub equivalent_nodes($)
@@ -5729,6 +5797,26 @@ sub rearrange_elements()
         }
     }
 
+    print STDERR "# find index entries id\n" 
+       if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    foreach my $index_entry (@index_labels)
+    {
+        # if not defined it means that it should be associated with 
+        # a section, it will be defined later
+        next if ($index_entry->{'label'} eq '');
+        my $index_id = "index-" . $index_entry->{'cross'};
+        my $index = 1;
+        # $index > 0 should prevent integer overflow, hopefully
+        while (exists($cross_reference_nodes{$index_id}) and $index > 0)
+        {
+            $index_id = "index-" . $index_entry->{'cross'} . "-" .$index;
+            $index++;
+        }
+        $index_entry->{'label'} = $index_id;
+        push @{$cross_reference_nodes{$index_id}}, "index-".$index_entry->{'texi'}.$index;
+    }
+
+
     if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
     { 
         foreach my $key (keys(%nodes))
@@ -6312,11 +6400,11 @@ sub enter_index_entry($$$$$$$$)
         push @index_labels, $index_entry unless $index_entry_hidden;
         return;
     }
-    while (exists $index->{$prefix}->{$key})
+    while (exists $index_entries->{$prefix}->{$key})
     {
         $key .= ' ';
     }
-    $index->{$prefix}->{$key} = $index_entry;
+    $index_entries->{$prefix}->{$key} = $index_entry;
     push @$place, $index_entry;
     # don't add the index entry to the list of index entries used for index
     # entry formatting,if the index entry appears in a region like copying 
@@ -6443,9 +6531,9 @@ sub get_index($;$)
     {
         foreach my $prefix(@{$index_names{$associated_indice}->{'prefix'}})
         {
-            foreach my $key (keys %{$index->{$prefix}})
+            foreach my $key (keys %{$index_entries->{$prefix}})
             {
-                $entries->{$key} = $index->{$prefix}->{$key};
+                $entries->{$key} = $index_entries->{$prefix}->{$key};
             }
         }
     }
@@ -6456,9 +6544,9 @@ sub get_index($;$)
         {
             foreach my $prefix (@{$index_names{$associated_indice}->{'prefix'}})
             {
-                foreach my $key (keys (%{$index->{$prefix}}))
+                foreach my $key (keys (%{$index_entries->{$prefix}}))
                 {
-                    $entries->{$key} = $index->{$prefix}->{$key};
+                    $entries->{$key} = $index_entries->{$prefix}->{$key};
                     # use @code for code style index entry
                     $entries->{$key}->{'entry'} = "\@code{$entries->{$key}->{entry}}";
                 }
@@ -7775,7 +7863,7 @@ sub get_format_command($)
 
     return ($format_name,$command,\$format->{'paragraph_number'},$term,
         $format->{'item_nr'}, $format->{'spec'},  $format->{'number'},
-        $format->{'stack_at_beginning'});
+        $format->{'stack_at_beginning'}, $format->{'command_opened'});
 }
 
 sub do_paragraph($$;$)
@@ -7791,7 +7879,7 @@ sub do_paragraph($$;$)
     }
 
     my ($format, $paragraph_command, $paragraph_number, $term, $item_nr, 
-        $enumerate_type, $number,$stack_at_beginning) 
+        $enumerate_type, $number,$stack_at_beginning, $command_opened) 
          = get_format_command ($state->{'paragraph_context'});
     delete $state->{'paragraph_context'};
 
@@ -7809,7 +7897,7 @@ sub do_paragraph($$;$)
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
     
     if (exists($::style_map_ref->{$paragraph_command}) and
-       !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}))
+       !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}) and $command_opened)
     { 
         if ($format eq 'itemize')
         {
@@ -7838,7 +7926,7 @@ sub do_preformatted($$;$)
     }
 
     my ($format, $leading_command, $preformatted_number, $term, $item_nr, 
-        $enumerate_type, $number,$stack_at_beginning) 
+        $enumerate_type, $number,$stack_at_beginning, $command_opened) 
         = get_format_command($state->{'preformatted_context'});
     delete ($state->{'preformatted_context'});
     my $leading_command_formatted;
@@ -8758,27 +8846,35 @@ sub begin_format($$$$$$)
         {
             my $type = shift @types;
             my $substitution_state = duplicate_formatting_state($state);
+            $substitution_state->{'code_style'}++;
+            push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             {
-                if ($arg =~ /^\s*\@/)
-                {
-                    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-                    #push @formatted_args, substitute_line($arg, undef, $line_nr);
-                }
-                else
-                {
-                    $substitution_state->{'code_style'}++;
-                    #push @formatted_args, substitute_line($arg, {'code_style' => 1}, $line_nr);
-                    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-                }
                 $arguments .= $formatted_args[-1];
             }
             else
             {
-                push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-                #push @formatted_args, substitute_line($arg, undef, $line_nr);
                 $formatted_arguments{$type} = $formatted_args[-1];
             }
+
+            #if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
+            #{
+            #    if ($arg =~ /^\s*\@/)
+            #    {
+            #        push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
+            #    }
+            #    else
+            #    {
+            #        $substitution_state->{'code_style'}++;
+            #        push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
+            #    }
+            #    $arguments .= $formatted_args[-1];
+            #}
+            #else
+            #{
+            #    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
+            #    $formatted_arguments{$type} = $formatted_args[-1];
+            #}
         }
         $name = $formatted_arguments{'name'};
         $category = $formatted_arguments{'category'};
@@ -8917,10 +9013,14 @@ sub begin_format($$$$$$)
         {
         # add a fake complex style in order to have a given pre style
         # FIXME check 'style' on bug-texinfo
-            push_complex_format_style('menu', {
-              'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 
-              'class' => 'menu-preformatted',
-              'style' => 'code' }, $state);
+            push_complex_format_style('menu', 
+              $Texi2HTML::Config::MENU_PRE_COMPLEX_FORMAT
+#                {
+#              'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 
+#              'class' => 'menu-preformatted',
+##              'style' => 'code'
+#                 }
+                 , $state);
             begin_paragraph_after_command($state,$stack,$macro,$line);
         }
         else
@@ -9143,11 +9243,19 @@ sub do_xref($$$$)
     $new_state->{'keep_texi'} = 0;
     $new_state->{'keep_nr'} = 0;
 
+    my $remove_texi = $new_state->{'remove_texi'};
+
     my @formatted_args;
     for ($i = 0; $i < 5; $i++)
-    { # FIXME for nodes code_style 
+    {
         $args[$i] = '' if (!defined($args[$i]));
+        my $in_file_style;
+        $in_file_style = 1 if ($i == 2 and $macro eq 'inforef' or $i == 3 and $macro ne 'inforef');
+        $new_state->{'code_style'}++ if ($in_file_style or $i == 0);
+        $new_state->{'remove_texi'} = 1 if ($in_file_style);
         $formatted_args[$i] = substitute_line($args[$i], $new_state, $line_nr);
+        $new_state->{'code_style'}-- if ($in_file_style or $i == 0);
+        $new_state->{'remove_texi'} = $remove_texi if ($in_file_style);
     }
 
     my $node_texi = $args[0];
@@ -9520,18 +9628,27 @@ sub do_footnote($$$$)
     return $foot_label;
 }
 
-sub do_image($$$$)
+sub do_image($$$$$)
 {
     # replace images
     my $command = shift;
     my $args = shift;
-    my $text = $args->[0];
+#    my $text = $args->[0];
     my $style_stack = shift;
     my $state = shift;
     my $line_nr = shift;
-    $text =~ s/\s+/ /gos; # remove useless spaces and newlines
-    my @args = split (/\s*,\s*/, $text);
-    my $base = $args[0];
+#    $text =~ s/\s+/ /gos; # remove useless spaces and newlines
+#    my @args = split (/\s*,\s*/, $text);
+    my @args;
+    foreach my $arg (@$args)
+    {
+       $arg =~ s/^\s*//;
+       $arg =~ s/\s*$//;
+       push @args, $arg;
+    }
+    #my $base = substitute_line($args[0], {'code_style' => 1});
+    my $base = substitute_line($args[0], {'code_style' => 1, 'remove_texi' => 1});
+    my $base_simple = substitute_line($args[0], {'simple_format' => 1, 'code_style' => 1});
     if ($base eq '')
     {
          echo_error ("no file argument for \@image", $line_nr);
@@ -9541,39 +9658,45 @@ sub do_image($$$$)
     $args[4] = '' if (!defined($args[4]));
     $args[3] = '' if (!defined($args[3]));
     my $image;
-    my $file_name;
-    my $image_name;
+    #my $extension = substitute_line($args[4], {'code_style' => 1});
+    my $extension = substitute_line($args[4], {'code_style' => 1, 'remove_texi' => 1});
+    my $extension_simple = substitute_line($args[4], {'simple_format' => 1, 'code_style' => 1});
+    my ($file_name, $image_name, $simple_file_name);
     my @file_locations;
-    my @file_names = &$Texi2HTML::Config::image_files($base,$args[4]);
+    my @file_names = &$Texi2HTML::Config::image_files($base,$extension,$args[0],$args[4]);
 #    $image = locate_include_file("$base.$args[4]") if ($args[4] ne '');
     foreach my $file (@file_names)
     {
-         if ($image = locate_include_file($file))
-         {
-             if (!defined($file_name))
-             {
-                 $file_name = $file;
-                 $image_name = $image;
-             }
-             push @file_locations, [$file, $image];
-         }
-         else
-         {
-             push @file_locations, [$file, undef];
-         }
+        my $simple_file = substitute_line($file->[1], {'simple_format' => 1, 'code_style' => 1});
+        if ($image = locate_include_file($file->[0]))
+        {
+            if (!defined($file_name))
+            {
+                $file_name = $file->[0];
+                $image_name = $image;
+                $simple_file_name = $simple_file;
+            }
+            push @file_locations, [$file, $image, $simple_file];
+        }
+        else
+        {
+            push @file_locations, [$file, undef, $simple_file];
+        }
     }
     $image_name = '' if (!defined($image_name));
+    $simple_file_name = '' if (!defined($simple_file_name));
     
     my $alt; 
     if ($args[3] =~ /\S/)
     {
-        $alt = simple_format(undef, $line_nr, $args[3]);
+        $alt = substitute_line($args[3], {'simple_format' => 1}, $line_nr);
     }
     return &$Texi2HTML::Config::image($path_to_working_dir . $image_name, 
         $base, 
         $state->{'preformatted'}, $file_name, $alt, $args[1], $args[2], 
-        $args[3], $args[4], $path_to_working_dir, $image_name, 
-        $state->{'paragraph_context'}, \@file_locations);
+        $args[3], $extension, $path_to_working_dir, $image_name, 
+        $state->{'paragraph_context'}, \@file_locations, $base_simple,
+        $extension_simple, $simple_file_name);
 }
 
 # usefull if we want to duplicate only the global state, nothing related with
@@ -9624,6 +9747,9 @@ sub expand_macro($$$$$)
 
     # we dont expand macros when in ignored environment.
     return if ($state->{'ignored'});
+
+    die "Bug end_line not defined" if (!defined($end_line));
+    
     my $index = 0;
     foreach my $arg (@$args)
     { # expand @macros in arguments. It is complicated because we must be
@@ -9636,10 +9762,8 @@ sub expand_macro($$$$$)
     my $macrobody = $macros->{$name}->{'body'};
     my $formal_args = $macros->{$name}->{'args'};
     my $args_index =  $macros->{$name}->{'args_index'};
-    my $i;
-    
-    die "Bug end_line not defined" if (!defined($end_line));
-    
+
+    my $i;    
     for ($i=0; $i<=$#$formal_args; $i++)
     {
         $args->[$i] = "" unless (defined($args->[$i]));
@@ -9647,7 +9771,7 @@ sub expand_macro($$$$$)
     }
     echo_error ("too much arguments for macro $name", $line_nr) if (defined($args->[$i + 1]));
     my $result = '';
-    while ($macrobody)
+    while ($macrobody ne '')
     {
         if ($macrobody =~ s/^([^\\]*)\\//o)
         {
@@ -9682,12 +9806,27 @@ sub expand_macro($$$$$)
     # Add the result of the macro expansion back to the input_spool.
     # Set the macro name if in the outer macro
     if ($state->{'arg_expansion'})
-    {
+    { # in that case we are in substitute_text for an arg
         unshift @{$state->{'spool'}}, (@result, $end_line);
     }
     else
     {
-        unshift @{$input_spool->{'spool'}}, (@result, $end_line);
+        #$result[-1].=$end_line;
+#foreach my $res (@result)
+#{
+#   print STDERR "RESULT:$res";
+#}
+#print STDERR "#########end->$end_line";
+        my $last_line = $result[-1];
+        if (chomp($last_line))
+        {
+            push @result, $end_line;
+        }
+        else
+        {
+            $result[-1] .= $end_line;
+        }
+        unshift @{$input_spool->{'spool'}}, (@result); #, $end_line);
         $input_spool->{'macro'} = $name if ($input_spool->{'macro'} eq '');
     }
     if ($T2H_DEBUG & $DEBUG_MACROS)
@@ -10051,12 +10190,14 @@ sub scan_texi($$$$;$)
                 { # balanced } ends the macro call, otherwise it is in the arg
                     $state->{'macro_depth'}--;
                     if ($state->{'macro_depth'} == 0)
-                    { 
+                    {
+#print STDERR "BEFORE: $cline";
                         print STDERR "# expanding macro $state->{'macro_name'}\n" if ($T2H_DEBUG & $DEBUG_MACROS);
                         $cline = expand_macro($state->{'macro_name'}, $state->{'macro_args'}, $cline, $line_nr, $state);
                         delete $state->{'macro_name'};
                         delete $state->{'macro_depth'};
                         delete $state->{'macro_args'};
+#print STDERR "AFTER: $cline";
                         return;
                     }
                     else
@@ -10229,15 +10370,48 @@ sub scan_texi($$$$;$)
 	    #print STDERR "MACRO $macro\n";
             # handle skipped @-commands
             $state->{'bye'} = 1 if ($macro eq 'bye' and !$state->{'ignored'} and !$state->{'arg_expansion'});
-            # @-commands with 'texi' are the @-commands that need to have
-            # the @value{} expanded
-            if (defined($Texi2HTML::Config::misc_command{$macro}) and 
-                 !$Texi2HTML::Config::misc_command{$macro}->{'texi'})
-            {# ARG_EXPANSION
-                 my $line;
-                 ($cline, $line) = misc_command_texi($cline, $macro, $state, 
+            # 'ignored' and 'arg_expansion' are handled in misc_command_texi
+            # these are the commands in which the @value and @macro
+            # and @-commands in general should not be expanded
+            if (defined($Texi2HTML::Config::misc_command{$macro}) and
+                 ($macro eq 'c' or $macro eq 'comment' or $macro eq 'set' 
+                   or $macro eq 'clear' or $macro eq 'bye'))
+            {
+                ($cline, $line) = misc_command_texi($cline, $macro, $state,
                        $line_nr);
-                 add_prev ($text, $stack, "\@$macro" . $line) unless $state->{'ignored'}; 
+                add_prev ($text, $stack, "\@$macro" . $line) unless $state->{'ignored'};
+            }
+            elsif ($macro eq 'setfilename' or $macro eq 'documentencoding'
+                      or $macro eq 'definfoenclose' or $macro eq 'include')
+            { # special commands whose arguments will have @macro and
+              # @value expanded, and that are processed in this pass
+                if ($state->{'ignored'})
+                {
+                    $cline = '';
+                }
+                elsif ($state->{'arg_expansion'})
+                {
+                    add_prev($text, $stack, "\@$macro" . $cline);
+                    return;
+                }
+                else
+                {
+                    $cline =~ s/^(\s+)//;
+                    my $space = $1;
+                    # not sure if it happpens at end of line, or with 
+                    # special char following the @-command or only at end of file
+                    $space = '' if (!defined($space));
+                    if (!$state->{'line_command'})
+                    { 
+                        #print STDERR "LINE_COMMAND Start line_command $macro, cline $cline";
+                        $state->{'line_command'} = $macro;
+                        push @$stack, { 'line_command' => $macro, 'text' => $space };
+                    }
+                    else
+                    {# FIXME warn/error? or just discard?
+                        add_prev($text, $stack, "\@$macro" . $space);
+                    }
+                }
             }
             # pertusus: it seems that value substitution are performed after
             # macro argument expansions: if we have 
@@ -10311,61 +10485,63 @@ sub scan_texi($$$$;$)
                 next if $macro_kept;
                 return if ($cline =~ /^\s*$/);
             }
-            elsif ($macro eq 'definfoenclose')
-            {
-                # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
-                # the args anyway and don't take away the whole line?
-
-                # as in the makeinfo doc 'definfoenclose' may override
-                # texinfo @-commands like @i. It is what we do here.
-                if ($state->{'arg_expansion'})
-                {
-                    add_prev($text, $stack, "\@$macro" . $cline);
-                    return;
-                }
-                return if ($state->{'ignored'});
-                if ($cline =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
-                {
-                    $info_enclose{$1} = [ $2, $3 ];
-                }
-                else
-                {
-                    echo_error("Bad \@$macro", $line_nr);
-                }
-                return if ($cline =~ /^\s*$/);
-                $cline =~ s/^\s*//;
-            }
-            elsif ($macro eq 'include')
-            {
-                if ($state->{'arg_expansion'})
-                {
-                    add_prev($text, $stack, "\@$macro" . $cline);
-                    return;
-                }
-                return if ($state->{'ignored'});
-                #if (s/^\s+([\/\w.+-]+)//o)
-                if ($cline =~ s/^(\s+)(.*)//o)
-                {
-                    my $file_name = $2;
-                    $file_name =~ s/\s*$//;
-                    my $file = locate_include_file($file_name);
-                    if (defined($file))
-                    {
-                        open_file($file, $line_nr);
-                        print STDERR "# including $file\n" if $T2H_VERBOSE;
-                    }
-                    else
-                    {
-                        echo_error ("Can't find $file_name, skipping", $line_nr);
-                    }
-                }
-                else
-                {
-                    echo_error ("Bad include line: $cline", $line_nr);
-                    return;
-                } 
-                return;
-            }
+#            elsif ($macro eq 'definfoenclose')
+#            {
+#                die "Not here definfoenclose expansion";
+#                # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
+#                # the args anyway and don't take away the whole line?
+#
+#                # as in the makeinfo doc 'definfoenclose' may override
+#                # texinfo @-commands like @i. It is what we do here.
+#                if ($state->{'arg_expansion'})
+#                {
+#                    add_prev($text, $stack, "\@$macro" . $cline);
+#                    return;
+#                }
+#                return if ($state->{'ignored'});
+#                if ($cline =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
+#                {
+#                    $info_enclose{$1} = [ $2, $3 ];
+#                }
+#                else
+#                {
+#                    echo_error("Bad \@$macro", $line_nr);
+#                }
+#                return if ($cline =~ /^\s*$/);
+#                $cline =~ s/^\s*//;
+#            }
+#            elsif ($macro eq 'include')
+#            {
+#                die "Not here include expansion";
+#                if ($state->{'arg_expansion'})
+#                {
+#                    add_prev($text, $stack, "\@$macro" . $cline);
+#                    return;
+#                }
+#                return if ($state->{'ignored'});
+#                #if (s/^\s+([\/\w.+-]+)//o)
+#                if ($cline =~ s/^(\s+)(.*)//o)
+#                {
+#                    my $file_name = $2;
+#                    $file_name =~ s/\s*$//;
+#                    my $file = locate_include_file($file_name);
+#                    if (defined($file))
+#                    {
+#                        open_file($file, $line_nr);
+#                        print STDERR "# including $file\n" if $T2H_VERBOSE;
+#                    }
+#                    else
+#                    {
+#                        echo_error ("Can't find $file_name, skipping", $line_nr);
+#                    }
+#                }
+#                else
+#                {
+#                    echo_error ("Bad include line: $cline", $line_nr);
+#                    return;
+#                } 
+#                return;
+#            }
             elsif ($macro eq 'value')
             {
                 if ($cline =~ s/^{($VARRE)}//)
@@ -10544,6 +10720,91 @@ sub scan_texi($$$$;$)
         {# ARG_EXPANSION
             #print STDERR "END_LINE $cline";
             add_prev($text, $stack, $cline) unless($state->{'ignored'});
+            if ($state->{'line_command'})
+            {
+               if (!scalar(@$stack))
+               {
+                   print STDERR "BUG: empty state for $state->{'line_command'}\n";
+                   return;
+                   delete $state->{'line_command'};
+               }
+               while (!defined($stack->[-1]->{'line_command'}))
+               {
+                  my $top = pop @$stack;
+                  # defer this to later?
+                  echo_error ("unclosed command in \@$state->{'line_command'}: $top->{'style'}");
+                  add_prev($text, $stack, "\@$top->{'style'}".'{'.$top->{'text'}.'}');
+               }
+               my $command = pop @$stack;
+               ###################### debug
+               if (!defined($command) or !defined($command->{'text'}) or 
+                 !defined($command->{'line_command'}) or ($command->{'line_command'} ne $state->{'line_command'}))
+               {
+                   print STDERR "BUG: messed $state->{'line_command'} stack\n";
+                   delete $state->{'line_command'};
+                   return;
+               }
+               ###################### end debug
+               else
+               {
+                   delete $state->{'line_command'};
+                   my $macro = $command->{'line_command'};
+                   # definfoenclose and include are not kept
+                   if ($macro eq 'definfoenclose')
+                   {
+                   # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
+                   # the args anyway and don't take away the whole line?
+
+                   # as in the makeinfo doc 'definfoenclose' may override
+                   # texinfo @-commands like @i. It is what we do here.
+                       if ($command->{'text'} =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
+                       {
+                           $info_enclose{$1} = [ $2, $3 ];
+                       }
+                       else
+                       {
+                           echo_error("Bad \@$macro", $line_nr);
+#print STDERR "arg: $command->{'text'}\n";
+                       }
+                       # ignore everything else on the line
+                       return;# if ($cline =~ /^\s*$/);
+                       #$cline =~ s/^\s*//;
+                   }
+                   elsif ($macro eq 'include')
+                   {
+                    #if (s/^\s+([\/\w.+-]+)//o)
+                       if ($command->{'text'} =~ s/^(\s+)(.*)//o)
+                       {
+                           my $file_name = $2;
+                           $file_name =~ s/\s*$//;
+                           #$file_name = substitute_line($file_name, {'code_style' => 1});
+                           $file_name = substitute_line($file_name, {'code_style' => 1, 'remove_texi' => 1});
+                           my $file = locate_include_file($file_name);
+                           if (defined($file))
+                           {
+                               open_file($file, $line_nr);
+                               print STDERR "# including $file\n" if $T2H_VERBOSE;
+                           }
+                           else
+                           {
+                              echo_error ("Can't find $file_name, skipping", $line_nr);
+                           }
+                       }
+                       else
+                       {
+                           echo_error ("Bad include line: $command->{'text'}", $line_nr);
+                       }
+                       return;
+                   }
+                   else
+                   { # these are kept (setfilename and documentencoding)
+                       ($cline, $line) = misc_command_texi($command->{'text'}, 
+                         $macro, $state, $line_nr);
+                       add_prev ($text, $stack, "\@$macro" . $line);
+                       next;
+                   }
+               }
+            }
             last;
         }
     }
@@ -11398,10 +11659,6 @@ sub scan_line($$$$;$)
                      add_prev($text, $stack, $1 . $state->{'verb'});
                      $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
                  }
-                 elsif ($state->{'remove_texi'})
-                 {
-                     add_prev($text, $stack, $1);
-                 }
                  else
                  {
                      add_prev($text, $stack, do_text($1, $state));
@@ -11879,12 +12136,16 @@ sub scan_line($$$$;$)
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph
                 close_paragraph($text, $stack, $state, $line_nr);
+		    #print STDERR "ITEM after close para: $cline";
+		    #dump_stack($text, $stack, $state);
                 # these functions return the format if in the right context
                 my $format;
                 if ($format = add_item($text, $stack, $state, $line_nr))
                 { # handle lists
                     push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format });
                     begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($cline));
+#print STDERR "BEGIN ITEM $format->{'format'}\n";
+#dump_stack($text, $stack, $state);
                 }
                 elsif ($format = add_term($text, $stack, $state, $line_nr))
                 {# handle table @item term and restart another one
@@ -13224,7 +13485,7 @@ sub substitute_line($;$$)
     my $line_nr = shift;
     $state = {} if (!defined($state));
     $state->{'no_paragraph'} = 1;
-    # this is usefull when called from &$I
+    # this is usefull when called from &$I, and also for image files 
     return simple_format($state, $line_nr, $line) if ($state->{'simple_format'});
     return substitute_text($state, $line_nr, $line);
 }
@@ -13241,7 +13502,7 @@ sub substitute_text($$@)
         initialise_state_structure($state);
     }
     elsif ($state->{'texi'})
-    {
+    { # only in arg_expansion
         initialise_state_texi($state);
     }
     else

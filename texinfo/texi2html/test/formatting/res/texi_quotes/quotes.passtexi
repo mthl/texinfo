@@ -11,7 +11,7 @@ quotes.texi(allquotes,53) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,53) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,53) 
+quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) 
 quotes.texi(allquotes,53) @example
 quotes.texi(allquotes,53) @@set txicodequoteundirected
@@ -24,7 +24,7 @@ quotes.texi(allquotes,53) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,53) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,53) 
+quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) 
 quotes.texi(allquotes,53) @example
 quotes.texi(allquotes,53) @@clear txicodequoteundirected
@@ -37,7 +37,7 @@ quotes.texi(allquotes,53) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,53) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,53) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,53) 
+quotes.texi(allquotes,53) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(,54) @end copying
 quotes.texi(,55) @titlepage
 quotes.texi(,56) Titlepage
@@ -55,7 +55,7 @@ quotes.texi(allquotes,66) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,66) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,66) 
+quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) 
 quotes.texi(allquotes,66) @example
 quotes.texi(allquotes,66) @@set txicodequoteundirected
@@ -68,7 +68,7 @@ quotes.texi(allquotes,66) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,66) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,66) 
+quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) 
 quotes.texi(allquotes,66) @example
 quotes.texi(allquotes,66) @@clear txicodequoteundirected
@@ -81,7 +81,7 @@ quotes.texi(allquotes,66) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,66) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,66) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,66) 
+quotes.texi(allquotes,66) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(,67) 
 quotes.texi(,68) @example
 quotes.texi(allquotes,69) ``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{} @*
@@ -89,7 +89,7 @@ quotes.texi(allquotes,69) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,69) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,69) 
+quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) 
 quotes.texi(allquotes,69) @example
 quotes.texi(allquotes,69) @@set txicodequoteundirected
@@ -102,7 +102,7 @@ quotes.texi(allquotes,69) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,69) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,69) 
+quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) 
 quotes.texi(allquotes,69) @example
 quotes.texi(allquotes,69) @@clear txicodequoteundirected
@@ -115,7 +115,7 @@ quotes.texi(allquotes,69) code: @code{``simple-double--three---four----'' `simpl
 quotes.texi(allquotes,69) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(allquotes,69) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
-quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*quotes.texi(allquotes,69) 
+quotes.texi(allquotes,69) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
 quotes.texi(,70) @end example
 quotes.texi(,71) 
 quotes.texi(,72) @bye

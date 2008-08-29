@@ -264,7 +264,7 @@ There are quite a few variations of this error message,
 depending on exactly where in the <small>RCS</small> file <small>CVS</small>
 finds the syntax error.
 </p>
-<div id="IDX316"></div>
+<div id="index-mkmodules"></div>
 </dd>
 <dt> <code>cvs commit: Executing 'mkmodules'</code></dt>
 <dd><p>This means that your repository is set up for a version
@@ -428,7 +428,7 @@ for setting up the <small>CVS</small> server.
 </p>
 </dd>
 <dt> <code>cvs commit: warning: editor session failed</code></dt>
-<dd><div id="IDX317"></div>
+<dd><div id="index-Exit-status_002c-of-editor"></div>
 <p>This means that the editor which <small>CVS</small> is using exits with a nonzero
 exit status.  Some versions of vi will do this even when there was not
 a problem editing the file.  If so, point the
@@ -478,7 +478,7 @@ the problem, the next steps depend largely on which
 access method you are using.
 </p>
 <dl compact="compact">
-<dd><div id="IDX318"></div>
+<dd><div id="index-_003aext_003a_002c-troubleshooting"></div>
 </dd>
 <dt> <code>:ext:</code></dt>
 <dd><p>Try running the rsh program from the command line.  For
@@ -486,7 +486,7 @@ example: &quot;rsh servername cvs -v&quot; should print <small>CVS</small>
 version information.  If this doesn&rsquo;t work, you need to
 fix it before you can worry about <small>CVS</small> problems.
 </p>
-<div id="IDX319"></div>
+<div id="index-_003aserver_003a_002c-troubleshooting"></div>
 </dd>
 <dt> <code>:server:</code></dt>
 <dd><p>You don&rsquo;t need a command line rsh program to use this
@@ -494,7 +494,7 @@ access method, but if you have an rsh program around,
 it may be useful as a debugging tool.  Follow the
 directions given for :ext:.
 </p>
-<div id="IDX320"></div>
+<div id="index-_003apserver_003a_002c-troubleshooting"></div>
 </dd>
 <dt> <code>:pserver:</code></dt>
 <dd><p>Errors along the lines of &quot;connection refused&quot; typically indicate

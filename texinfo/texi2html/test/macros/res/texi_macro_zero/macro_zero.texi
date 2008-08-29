@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename macro_zero.info
+
+@node Top
+@top top macro/value is a zero
+
+@set zero 0
+
+
+Macro
+0
+
+Value
+0
+
+@bye

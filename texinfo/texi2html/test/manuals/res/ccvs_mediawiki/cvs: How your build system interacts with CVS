@@ -44,7 +44,7 @@ periodically (in between changes, using the approach
 just described) updating your entire tree, you ensure
 that your sources are sufficiently up to date.
 </p>
-<div id="IDX201"></div>
+<div id="index-Bill-of-materials"></div>
 <p>One common need is to record which versions of which
 source files went into a particular build.  This kind
 of functionality is sometimes called <em>bill of

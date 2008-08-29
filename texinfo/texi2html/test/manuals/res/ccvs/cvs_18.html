@@ -406,22 +406,22 @@ options, which supply additional information concerning
 the module.
 </p>
 <dl compact="compact">
-<dd><a name="IDX251"></a>
+<dd><a name="index-_002dd_002c-in-modules-file"></a>
 </dd>
 <dt> <code>-d <var>name</var></code></dt>
 <dd><p>Name the working directory something other than the
 module name.
 </p>
-<a name="IDX252"></a>
-<a name="IDX253"></a>
+<a name="index-Export-program"></a>
+<a name="index-_002de_002c-in-modules-file"></a>
 </dd>
 <dt> <code>-e <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are exported.  <var>prog</var> runs with a single
 argument, the module name.
 </p>
-<a name="IDX254"></a>
-<a name="IDX255"></a>
+<a name="index-Checkout-program"></a>
+<a name="index-_002do_002c-in-modules-file"></a>
 </dd>
 <dt> <code>-o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
@@ -429,9 +429,9 @@ module are checked out.  <var>prog</var> runs with a single
 argument, the module name.  See <a href="#Module-program-options">How the modules file &ldquo;program options&rdquo; programs are run</a> for
 information on how <var>prog</var> is called.
 </p>
-<a name="IDX256"></a>
-<a name="IDX257"></a>
-<a name="IDX258"></a>
+<a name="index-Status-of-a-module"></a>
+<a name="index-Module-status"></a>
+<a name="index-_002ds_002c-in-modules-file"></a>
 </dd>
 <dt> <code>-s <var>status</var></code></dt>
 <dd><p>Assign a status to the module.  When the module file is
@@ -442,8 +442,8 @@ has no other meaning.  You can use this option for
 several things besides status: for instance, list the
 person that is responsible for this module.
 </p>
-<a name="IDX259"></a>
-<a name="IDX260"></a>
+<a name="index-Tag-program"></a>
+<a name="index-_002dt_002c-in-modules-file"></a>
 </dd>
 <dt> <code>-t <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
@@ -673,7 +673,7 @@ all have a common format.  The purpose of the files are
 described later on.  The common syntax is described
 here.
 </p>
-<a name="IDX261"></a>
+<a name="index-Regular-expression-syntax"></a>
 <p>Each line contains the following:
 </p><ul>
 <li>
@@ -735,24 +735,24 @@ repository is appended to the template, followed by the
 file names of any files involved in the commit (added,
 removed, and modified files).
 </p>
-<a name="IDX262"></a>
+<a name="index-Exit-status_002c-of-commitinfo"></a>
 <p>The first line with a regular expression matching the
 directory within the repository will be used.  If the
 command returns a non-zero exit status the commit will
 be aborted.
 </p>
-<a name="IDX263"></a>
+<a name="index-DEFAULT-in-commitinfo"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
 line is used, if it is specified.
 </p>
-<a name="IDX264"></a>
+<a name="index-ALL-in-commitinfo"></a>
 <p>All occurrences of the name &lsquo;<samp>ALL</samp>&rsquo; appearing as a
 regular expression are used in addition to the first
 matching regular expression or the name &lsquo;<samp>DEFAULT</samp>&rsquo;.
 </p>
-<a name="IDX265"></a>
-<a name="IDX266"></a>
+<a name="index-commitinfo_002c-working-directory"></a>
+<a name="index-commitinfo_002c-command-environment"></a>
 <p>The command will be run in the root of the workspace
 containing the new versions of any files the user would like
 to modify (commit), <em>or in a copy of the workspace on
@@ -815,16 +815,16 @@ line is found, the first one is used.  This can be
 useful for specifying a default verification script in a
 directory, and then overriding it in a subdirectory.
 </p>
-<a name="IDX267"></a>
+<a name="index-DEFAULT-in-verifymsg"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
 line is used, if it is specified.
 </p>
-<a name="IDX268"></a>
+<a name="index-Exit-status_002c-of-verifymsg"></a>
 <p>If the verification script exits with a non-zero exit status,
 the commit is aborted.
 </p>
-<a name="IDX269"></a>
+<a name="index-verifymsg_002c-changing-the-log-message"></a>
 <p>In the default configuration, CVS allows the
 verification script to change the log message. This is
 controlled via the RereadLogAfterVerify CVSROOT/config
@@ -984,7 +984,7 @@ line is found, the first one is used.  This can be
 useful for specifying a default edit script in a
 module, and then overriding it in a subdirectory.
 </p>
-<a name="IDX270"></a>
+<a name="index-DEFAULT-in-editinfo"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
 line is used, if it is specified.
@@ -1360,8 +1360,8 @@ that are usually artifacts of assorted utilities.
 Currently, the default list of ignored file name
 patterns is:
 
-<a name="IDX271"></a>
-<a name="IDX272"></a>
+<a name="index-Ignored-files"></a>
+<a name="index-Automatically-ignored-files"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">    RCS     SCCS    CVS     CVS.adm
     RCSLOG  cvslog.*
     tags    TAGS
@@ -1568,7 +1568,7 @@ internal variables are:
 </p>
 <dl compact="compact">
 <dt> <code>CVSROOT</code></dt>
-<dd><a name="IDX273"></a>
+<dd><a name="index-CVSROOT_002c-internal-variable"></a>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
 See section <a href="cvs_2.html#Repository">The Repository</a>, for a description of the various
 ways to specify this, but note that the internal
@@ -1577,7 +1577,7 @@ of the access method information.
 </p>
 </dd>
 <dt> <code>RCSBIN</code></dt>
-<dd><a name="IDX274"></a>
+<dd><a name="index-RCSBIN_002c-internal-variable"></a>
 <p>In <small>CVS</small> 1.9.18 and older, this specified the
 directory where <small>CVS</small> was looking for <small>RCS</small>
 programs.  Because <small>CVS</small> no longer runs <small>RCS</small>
@@ -1586,20 +1586,20 @@ error.
 </p>
 </dd>
 <dt> <code>CVSEDITOR</code></dt>
-<dd><a name="IDX275"></a>
+<dd><a name="index-CVSEDITOR_002c-internal-variable"></a>
 </dd>
 <dt> <code>EDITOR</code></dt>
-<dd><a name="IDX276"></a>
+<dd><a name="index-EDITOR_002c-internal-variable"></a>
 </dd>
 <dt> <code>VISUAL</code></dt>
-<dd><a name="IDX277"></a>
+<dd><a name="index-VISUAL_002c-internal-variable"></a>
 <p>These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section <a href="cvs_16.html#Global-options">Global options</a>, for how
 to specify this.
 </p>
 </dd>
 <dt> <code>USER</code></dt>
-<dd><a name="IDX278"></a>
+<dd><a name="index-USER_002c-internal-variable"></a>
 <p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
 server machine).
 When using pserver, this is the user specified in the repository
@@ -1612,7 +1612,7 @@ Do not confuse this with the environment variable of the same name.
 <p>If you want to pass a value to the administrative files
 which the user who is running <small>CVS</small> can specify,
 use a user variable.
-<a name="IDX279"></a>
+<a name="index-User-variables"></a>
 To expand a user variable, the
 administrative file contains
 <code>${=<var>variable</var>}</code>.  To set a user variable,
@@ -1641,11 +1641,11 @@ there is no way to quote a &lsquo;<samp>$</samp>&rsquo; character so that
 <p>Environment variables passed to administrative files are:
 </p>
 <dl compact="compact">
-<dd><a name="IDX280"></a>
+<dd><a name="index-environment-variables_002c-passed-to-administrative-files"></a>
 
 </dd>
 <dt> <code>CVS_USER</code></dt>
-<dd><a name="IDX281"></a>
+<dd><a name="index-CVS_005fUSER_002c-environment-variable"></a>
 <p>The <small>CVS</small>-specific username provided by the user, if it
 can be provided (currently just for the pserver access
 method), and to the empty string otherwise.  (<code>CVS_USER</code>
@@ -1654,12 +1654,12 @@ is used to map <small>CVS</small> usernames to system usernames.)
 </p>
 </dd>
 <dt> <code>LOGNAME</code></dt>
-<dd><a name="IDX282"></a>
+<dd><a name="index-LOGNAME_002c-environment-variable"></a>
 <p>The username of the system user.
 </p>
 </dd>
 <dt> <code>USER</code></dt>
-<dd><a name="IDX283"></a>
+<dd><a name="index-USER_002c-environment-variable"></a>
 <p>Same as <code>LOGNAME</code>.
 Do not confuse this with the internal variable of the same name.
 </p></dd>
@@ -1700,7 +1700,7 @@ Extraneous spaces or tabs are not permitted.
 <p>Currently defined keywords are:
 </p>
 <dl compact="compact">
-<dd><a name="IDX284"></a>
+<dd><a name="index-RCSBIN_002c-in-CVSROOT_002fconfig"></a>
 </dd>
 <dt> <code>RCSBIN=<var>bindir</var></code></dt>
 <dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told
@@ -1709,7 +1709,7 @@ Extraneous spaces or tabs are not permitted.
 do not run <small>RCS</small> programs; for compatibility this
 setting is accepted, but it does nothing.
 </p>
-<a name="IDX285"></a>
+<a name="index-SystemAuth_002c-in-CVSROOT_002fconfig"></a>
 </dd>
 <dt> <code>SystemAuth=<var>value</var></code></dt>
 <dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then pserver should check
@@ -1720,7 +1720,7 @@ The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
 <a href="cvs_2.html#Password-authenticated">Direct connection with password authentication</a>.
 </p>
 
-<a name="IDX286"></a>
+<a name="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></a>
 </dd>
 <dt> <code>TopLevelAdmin=<var>value</var></code></dt>
 <dd><p>Modify the &lsquo;<samp>checkout</samp>&rsquo; command to create a
@@ -1737,7 +1737,7 @@ will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
 &lsquo;<tt>CVS/Template</tt>&rsquo; file (see section <a href="cvs_2.html#Working-directory-storage">How data is stored in the working directory</a>).
 </p>
-<a name="IDX287"></a>
+<a name="index-LockDir_002c-in-CVSROOT_002fconfig"></a>
 </dd>
 <dt> <code>LockDir=<var>directory</var></code></dt>
 <dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
@@ -1764,7 +1764,7 @@ could become corrupted.  <small>CVS</small> 1.10 does not support
 LockDir but it will print a warning if run on a
 repository with LockDir enabled.
 </p>
-<a name="IDX288"></a>
+<a name="index-LogHistory_002c-in-CVSROOT_002fconfig"></a>
 </dd>
 <dt> <code>LogHistory=<var>value</var></code></dt>
 <dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section <a href="cvs_16.html#history">history&mdash;Show status of files and users</a>).
@@ -1773,8 +1773,8 @@ all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
 &lsquo;<tt>*,v</tt>&rsquo; files, use &lsquo;<samp>LogHistory=TMAR</samp>&rsquo;.)
 </p>
-<a name="IDX289"></a>
-<a name="IDX290"></a>
+<a name="index-RereadLogAfterVerify_002c-in-CVSROOT_002fconfig"></a>
+<a name="index-verifymsg_002c-changing-the-log-message-1"></a>
 </dd>
 <dt> <code>RereadLogAfterVerify=<var>value</var></code></dt>
 <dd><p>Modify the &lsquo;<samp>commit</samp>&rsquo; command such that CVS will reread the
@@ -1794,7 +1794,7 @@ CPU intensive but is not recommended for use with large repositories</strong>
 <p>See section <a href="#verifymsg">Verifying log messages</a>, for more information on how verifymsg
 may be used.
 </p>
-<a name="IDX291"></a>
+<a name="index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1"></a>
 </dd>
 <dt> <code>UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>

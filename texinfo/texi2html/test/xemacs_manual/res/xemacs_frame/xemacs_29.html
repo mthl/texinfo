@@ -237,14 +237,14 @@ days, weeks, months, and years.
 </p></dd>
 </dl>
 
-<a name="IDX1141"></a>
-<a name="IDX1142"></a>
-<a name="IDX1143"></a>
-<a name="IDX1144"></a>
-<a name="IDX1145"></a>
-<a name="IDX1146"></a>
-<a name="IDX1147"></a>
-<a name="IDX1148"></a>
+<a name="index-C_002df-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dforward_002dday"></a>
+<a name="index-C_002db-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbackward_002dday"></a>
+<a name="index-C_002dn-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dforward_002dweek"></a>
+<a name="index-C_002dp-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbackward_002dweek"></a>
 <p>  The day and week commands are natural analogues of the usual Emacs
 commands for moving by characters and by lines.  Just as <kbd>C-n</kbd>
 usually moves to the same column in the following line, in Calendar
@@ -254,14 +254,14 @@ moves to the same day in the previous week.
 <p>  The arrow keys are equivalent to <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-n</kbd> and
 <kbd>C-p</kbd>, just as they normally are in other modes.
 </p>
-<a name="IDX1149"></a>
-<a name="IDX1150"></a>
-<a name="IDX1151"></a>
-<a name="IDX1152"></a>
-<a name="IDX1153"></a>
-<a name="IDX1154"></a>
-<a name="IDX1155"></a>
-<a name="IDX1156"></a>
+<a name="index-M_002d_007d-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dforward_002dmonth"></a>
+<a name="index-M_002d_007b-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbackward_002dmonth"></a>
+<a name="index-C_002dx-_005d-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dforward_002dyear"></a>
+<a name="index-C_002dx-_005b-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dforward_002dyear-1"></a>
 <p>  The commands for motion by months and years work like those for
 weeks, but move a larger distance.  The month commands <kbd>M-}</kbd> and
 <kbd>M-{</kbd> move forward or backward by an entire month&rsquo;s time.  The
@@ -307,33 +307,33 @@ provides commands to move to the beginning or end of a week, month or
 year:
 </p> 
 <dl compact="compact">
-<dd><a name="IDX1157"></a>
-<a name="IDX1158"></a>
+<dd><a name="index-C_002da-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbeginning_002dof_002dweek"></a>
 </dd>
 <dt> <kbd>C-a</kbd></dt>
 <dd><p>Move point to start of week (<code>calendar-beginning-of-week</code>).
-<a name="IDX1159"></a>
-<a name="IDX1160"></a>
+<a name="index-C_002de-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dend_002dof_002dweek"></a>
 </p></dd>
 <dt> <kbd>C-e</kbd></dt>
 <dd><p>Move point to end of week (<code>calendar-end-of-week</code>).
-<a name="IDX1161"></a>
-<a name="IDX1162"></a>
+<a name="index-M_002da-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbeginning_002dof_002dmonth"></a>
 </p></dd>
 <dt> <kbd>M-a</kbd></dt>
 <dd><p>Move point to start of month (<code>calendar-beginning-of-month</code>).
-<a name="IDX1163"></a>
-<a name="IDX1164"></a>
+<a name="index-M_002de-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dend_002dof_002dmonth"></a>
 </p></dd>
 <dt> <kbd>M-e</kbd></dt>
 <dd><p>Move point to end of month (<code>calendar-end-of-month</code>).
-<a name="IDX1165"></a>
-<a name="IDX1166"></a>
+<a name="index-M_002d_003c-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dbeginning_002dof_002dyear"></a>
 </p></dd>
 <dt> <kbd>M-&lt;</kbd></dt>
 <dd><p>Move point to start of year (<code>calendar-beginning-of-year</code>).
-<a name="IDX1167"></a>
-<a name="IDX1168"></a>
+<a name="index-M_002d_003e-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dend_002dof_002dyear"></a>
 </p></dd>
 <dt> <kbd>M-&gt;</kbd></dt>
 <dd><p>Move point to end of year (<code>calendar-end-of-year</code>).
@@ -344,9 +344,9 @@ year:
 repeat count indicating how many weeks, months, or years to move
 backward or forward.
 </p>
-<a name="IDX1169"></a>
-<a name="IDX1170"></a>
-<a name="IDX1171"></a>
+<a name="index-calendar_002dweek_002dstart_002dday"></a>
+<a name="index-weeks_002c-which-day-they-start-on"></a>
+<a name="index-calendar_002c-first-day-of-week"></a>
 <p>  By default, weeks begin on Sunday.  To make them begin on Monday
 instead, set the variable <code>calendar-week-start-day</code> to 1.
 </p>
@@ -386,20 +386,20 @@ specified in various ways.
 </p></dd>
 </dl>
 
-<a name="IDX1172"></a>
-<a name="IDX1173"></a>
+<a name="index-g-d-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dgoto_002ddate"></a>
 <p>  <kbd>g d</kbd> (<code>calendar-goto-date</code>) prompts for a year, a month, and a day
 of the month, and then moves to that date.  Because the calendar includes all
 dates from the beginning of the current era, you must type the year in its
 entirety; that is, type &lsquo;<samp>1990</samp>&rsquo;, not &lsquo;<samp>90</samp>&rsquo;.
 </p>
-<a name="IDX1174"></a>
-<a name="IDX1175"></a>
+<a name="index-o-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dother_002dmonth"></a>
 <p>  <kbd>o</kbd> (<code>calendar-other-month</code>) prompts for a month and year,
 then centers the three-month calendar around that month.
 </p>
-<a name="IDX1176"></a>
-<a name="IDX1177"></a>
+<a name="index-_002e-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dgoto_002dtoday"></a>
 <p>  You can return to today&rsquo;s date with <kbd>.</kbd>
 (<code>calendar-goto-today</code>).
 </p>
@@ -449,10 +449,10 @@ the window.
 </p></dd>
 </dl>
 
-<a name="IDX1178"></a>
-<a name="IDX1179"></a>
-<a name="IDX1180"></a>
-<a name="IDX1181"></a>
+<a name="index-C_002dx-_003c-_0028Calendar-mode_0029"></a>
+<a name="index-scroll_002dcalendar_002dleft"></a>
+<a name="index-C_002dx-_003e-_0028Calendar-mode_0029"></a>
+<a name="index-scroll_002dcalendar_002dright"></a>
 <p>  The most basic calendar scroll commands scroll by one month at a
 time.  This means that there are two months of overlap between the
 display before the command and the display after.  <kbd>C-x &lt;</kbd> scrolls
@@ -460,10 +460,10 @@ the calendar contents one month to the left; that is, it moves the
 display forward in time.  <kbd>C-x &gt;</kbd> scrolls the contents to the
 right, which moves backwards in time.
 </p>
-<a name="IDX1182"></a>
-<a name="IDX1183"></a>
-<a name="IDX1184"></a>
-<a name="IDX1185"></a>
+<a name="index-C_002dv-_0028Calendar-mode_0029"></a>
+<a name="index-scroll_002dcalendar_002dleft_002dthree_002dmonths"></a>
+<a name="index-M_002dv-_0028Calendar-mode_0029"></a>
+<a name="index-scroll_002dcalendar_002dright_002dthree_002dmonths"></a>
 <p>  The commands <kbd>C-v</kbd> and <kbd>M-v</kbd> scroll the calendar by an entire
 &ldquo;screenful&rdquo;&mdash;three months&mdash;in analogy with the usual meaning of
 these commands.  <kbd>C-v</kbd> makes later dates visible and <kbd>M-v</kbd> makes
@@ -518,11 +518,11 @@ the starting and stopping dates).
 </p></dd>
 </dl>
 
-<a name="IDX1186"></a>
-<a name="IDX1187"></a>
-<a name="IDX1188"></a>
-<a name="IDX1189"></a>
-<a name="IDX1190"></a>
+<a name="index-C_002d_0040-_0028Calendar-mode_0029"></a>
+<a name="index-C_002dSPC-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dset_002dmark"></a>
+<a name="index-C_002dx-C_002dx-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dexchange_002dpoint_002dand_002dmark"></a>
 <p>  You set the mark in the calendar, as in any other buffer, by using <kbd>C-@</kbd>
 or <kbd>C-SPC</kbd> (<code>calendar-set-mark</code>).  You return to the marked date
 with the command <kbd>C-x C-x</kbd> (<code>calendar-exchange-point-and-mark</code>)
@@ -530,14 +530,14 @@ which puts the mark where point was and point where mark was.  The calendar
 is scrolled as necessary, if the marked date was not visible on the
 screen.  This does not change the extent of the region.
 </p>
-<a name="IDX1191"></a>
-<a name="IDX1192"></a>
+<a name="index-M_002d_003d-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dcount_002ddays_002dregion"></a>
 <p>  To determine the number of days in the region, type <kbd>M-=</kbd>
 (<code>calendar-count-days-region</code>).  The numbers of days printed is
 <em>inclusive</em>; that is, it includes the days specified by mark and
 point.
 </p>
-<a name="IDX1193"></a>
+<a name="index-mark-ring"></a>
 <p>  The main use of the mark in the calendar is to remember dates that you may
 want to go back to.  To make this feature more useful, the mark ring
 (see section <a href="xemacs_12.html#Mark-Ring">The Mark Ring</a>) operates exactly as in other buffers:  Emacs remembers
@@ -587,38 +587,38 @@ the old marks on the ring, one by one.
 </p></dd>
 </dl>
 
-<a name="IDX1194"></a>
-<a name="IDX1195"></a>
-<a name="IDX1196"></a>
+<a name="index-p-d-_0028Calendar-mode_0029"></a>
+<a name="index-day-of-year"></a>
+<a name="index-calendar_002dprint_002dday_002dof_002dyear"></a>
 <p>  If you want to know how many days have elapsed since the start of
 the year, or the number of days remaining in the year, type the <kbd>p d</kbd>
 command (<code>calendar-print-day-of-year</code>).  This displays both
 of those numbers in the echo area.
 </p>
-<a name="IDX1197"></a>
-<a name="IDX1198"></a>
+<a name="index-_003f-_0028Calendar-mode_0029"></a>
+<a name="index-describe_002dcalendar_002dmode"></a>
 <p>  To display a brief description of the calendar commands, type <kbd>?</kbd>
 (<code>describe-calendar-mode</code>).  For a fuller description, type <kbd>C-h m</kbd>.
 </p>
-<a name="IDX1199"></a>
-<a name="IDX1200"></a>
+<a name="index-SPC-_0028Calendar-mode_0029"></a>
+<a name="index-scroll_002dother_002dwindow-1"></a>
 <p>  You can use <kbd>SPC</kbd> (<code>scroll-other-window</code>) to scroll the other
 window.  This is handy when you display a list of holidays or diary entries
 in another window.
 </p>
-<a name="IDX1201"></a>
-<a name="IDX1202"></a>
+<a name="index-C_002dc-C_002dl-_0028Calendar-mode_0029"></a>
+<a name="index-redraw_002dcalendar"></a>
 <p>  If the calendar window text gets corrupted, type <kbd>C-c C-l</kbd>
 (<code>redraw-calendar</code>) to redraw it.  (This can only happen if you use
 non-Calendar-mode editing commands.)
 </p>
-<a name="IDX1203"></a>
+<a name="index-SPC-_0028Calendar-mode_0029-1"></a>
 <p>  In Calendar mode, you can use <kbd>SPC</kbd> (<code>scroll-other-window</code>)
 to scroll the other window.  This is handy when you display a list of
 holidays or diary entries in another window.
 </p>
-<a name="IDX1204"></a>
-<a name="IDX1205"></a>
+<a name="index-q-_0028Calendar-mode_0029"></a>
+<a name="index-exit_002dcalendar"></a>
 <p>  To exit from the calendar, type <kbd>q</kbd> (<code>exit-calendar</code>).  This
 buries all buffers related to the calendar, selecting other buffers.
 (If a frame contains a dedicated calendar window, exiting from the
@@ -649,7 +649,7 @@ calendar iconifies that frame.)
 prints as a calendar.  Depending on the command you use, the printed
 calendar covers the day, week, month or year that point is in.
 </p>
-<a name="IDX1206"></a>
+<a name="index-t-_0028Calendar-mode_0029"></a>
 <dl compact="compact">
 <dt> <kbd>t m</kbd></dt>
 <dd><p>Generate a one-month calendar (<code>cal-tex-cursor-month</code>).
@@ -763,8 +763,8 @@ window.
 </p></dd>
 </dl>
 
-<a name="IDX1207"></a>
-<a name="IDX1208"></a>
+<a name="index-h-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dcursor_002dholidays"></a>
 <p>  To see if any holidays fall on a given date, position point on that
 date in the calendar window and use the <kbd>h</kbd> command.  Alternatively,
 click on that date with <kbd>Button2</kbd> and then choose <kbd>Holidays</kbd>
@@ -772,10 +772,10 @@ from the menu that appears.  Either way, this displays the holidays for
 that date, in the echo area if they fit there, otherwise in a separate
 window.
 </p>
-<a name="IDX1209"></a>
-<a name="IDX1210"></a>
-<a name="IDX1211"></a>
-<a name="IDX1212"></a>
+<a name="index-x-_0028Calendar-mode_0029"></a>
+<a name="index-mark_002dcalendar_002dholidays"></a>
+<a name="index-u-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dunmark"></a>
 <p>  To view the distribution of holidays for all the dates shown in the
 calendar, use the <kbd>x</kbd> command.  This displays the dates that are
 holidays in a different face (or places a &lsquo;<samp>*</samp>&rsquo; after these dates, if 
@@ -784,14 +784,14 @@ to the currently visible months and to other months that subsequently
 become visible by scrolling.  To turn marking off and erase the current
 marks, type <kbd>u</kbd>, which also erases any diary marks (see section <a href="#Diary">The Diary</a>).
 </p>
-<a name="IDX1213"></a>
-<a name="IDX1214"></a>
+<a name="index-a-_0028Calendar-mode_0029"></a>
+<a name="index-list_002dcalendar_002dholidays"></a>
 <p>  To get even more detailed information, use the <kbd>a</kbd> command, which
 displays a separate buffer containing a list of all holidays in the
 current three-month range.  You can use &lt;SPC&gt; in the calendar window
 to scroll that list.
 </p>
-<a name="IDX1215"></a>
+<a name="index-holidays"></a>
 <p>  The command <kbd>M-x holidays</kbd> displays the list of holidays for the
 current month and the preceding and succeeding months; this works even
 if you don&rsquo;t have a calendar window.  If you want the list of holidays
@@ -802,7 +802,7 @@ prompts for the month and year.
 major Christian, Jewish, and Islamic holidays; also the solstices and
 equinoxes.
 </p>
-<a name="IDX1216"></a>
+<a name="index-list_002dholidays"></a>
 <p>   The command <kbd>M-x list-holidays</kbd> displays the list of holidays for
 a range of years.  This function asks you for the starting and stopping
 years, and allows you to choose all the holidays or one of several
@@ -857,9 +857,9 @@ times of sunrise and sunset for any date.
 </p></dd>
 </dl>
 
-<a name="IDX1217"></a>
-<a name="IDX1218"></a>
-<a name="IDX1219"></a>
+<a name="index-S-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dsunrise_002dsunset"></a>
+<a name="index-sunrise_002dsunset"></a>
 <p>  Within the calendar, to display the <em>local times</em> of sunrise and
 sunset in the echo area, move point to the date you want, and type
 <kbd>S</kbd>.  Alternatively, click <kbd>Button2</kbd> on the date, then choose
@@ -879,9 +879,9 @@ sunset for that location on that date.
 earth, you need to tell Emacs your latitude, longitude, and location
 name before using these commands.  Here is an example of what to set:
 </p>
-<a name="IDX1220"></a>
-<a name="IDX1221"></a>
-<a name="IDX1222"></a>
+<a name="index-calendar_002dlocation_002dname"></a>
+<a name="index-calendar_002dlongitude"></a>
+<a name="index-calendar_002dlatitude"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq calendar-latitude 40.1)
 (setq calendar-longitude -88.2)
 (setq calendar-location-name &quot;Urbana, IL&quot;)
@@ -895,9 +895,9 @@ Emacs usually gets time zone information from the operating system, but
 if these values are not what you want (or if the operating system does
 not supply them), you must set them yourself.  Here is an example:
 </p>
-<a name="IDX1223"></a>
-<a name="IDX1224"></a>
-<a name="IDX1225"></a>
+<a name="index-calendar_002dtime_002dzone"></a>
+<a name="index-calendar_002dstandard_002dtime_002dzone_002dname"></a>
+<a name="index-calendar_002ddaylight_002dtime_002dzone_002dname"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq calendar-time-zone -360)
 (setq calendar-standard-time-zone-name &quot;CST&quot;)
 (setq calendar-daylight-time-zone-name &quot;CDT&quot;)
@@ -955,13 +955,13 @@ today&rsquo;s date.
 </p></dd>
 </dl>
 
-<a name="IDX1226"></a>
-<a name="IDX1227"></a>
+<a name="index-M-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dphases_002dof_002dmoon"></a>
 <p>  Within the calendar, use the <kbd>M</kbd> command to display a separate
 buffer of the phases of the moon for the current three-month range.  The
 dates and times listed are accurate to within a few minutes.
 </p>
-<a name="IDX1228"></a>
+<a name="index-phases_002dof_002dmoon"></a>
 <p>  Outside the calendar, use the command <kbd>M-x phases-of-moon</kbd> to
 display the list of the phases of the moon for the current month and the
 preceding and succeeding months.  For information about a different
@@ -1046,23 +1046,23 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &ldquo;print&rdquo; since 
 
 <p>  The ISO commercial calendar is used largely in Europe.
 </p>
-<a name="IDX1229"></a>
+<a name="index-Julian-calendar"></a>
 <p>  The Julian calendar, named after Julius Caesar, was the one used in Europe
 throughout medieval times, and in many countries up until the nineteenth
 century.
 </p>
-<a name="IDX1230"></a>
-<a name="IDX1231"></a>
+<a name="index-Julian-day-numbers"></a>
+<a name="index-astronomical-day-numbers"></a>
 <p>  Astronomers use a simple counting of days elapsed since noon, Monday,
 January 1, 4713 B.C. on the Julian calendar.  The number of days elapsed
 is called the <em>Julian day number</em> or the <em>Astronomical day number</em>.
 </p>
-<a name="IDX1232"></a>
+<a name="index-Hebrew-calendar"></a>
 <p>  The Hebrew calendar is used by tradition in the Jewish religion.  The
 Emacs calendar program uses the Hebrew calendar to determine the dates
 of Jewish holidays.  Hebrew calendar dates begin and end at sunset.
 </p>
-<a name="IDX1233"></a>
+<a name="index-Islamic-calendar"></a>
 <p>  The Islamic calendar is used in many predominantly Islamic countries.
 Emacs uses it to determine the dates of Islamic holidays.  There is no
 universal agreement in the Islamic world about the calendar; Emacs uses
@@ -1072,36 +1072,36 @@ calculations.  As a consequence, the actual dates of observance can vary
 slightly from the dates computed by Emacs.  Islamic calendar dates begin
 and end at sunset.
 </p>
-<a name="IDX1234"></a>
+<a name="index-French-Revolutionary-calendar"></a>
 <p>  The French Revolutionary calendar was created by the Jacobins after the 1789
 revolution, to represent a more secular and nature-based view of the annual
 cycle, and to install a 10-day week in a rationalization measure similar to
 the metric system.  The French government officially abandoned this
 calendar at the end of 1805.
 </p>
-<a name="IDX1235"></a>
+<a name="index-Mayan-calendar"></a>
 <p>  The Maya of Central America used three separate, overlapping calendar
 systems, the <em>long count</em>, the <em>tzolkin</em>, and the <em>haab</em>.
 Emacs knows about all three of these calendars.  Experts dispute the
 exact correlation between the Mayan calendar and our calendar; Emacs uses the
 Goodman-Martinez-Thompson correlation in its calculations.
 </p>
-<a name="IDX1236"></a>
-<a name="IDX1237"></a>
+<a name="index-Coptic-calendar"></a>
+<a name="index-Ethiopic-calendar"></a>
 <p>  The Copts use a calendar based on the ancient Egyptian solar calendar.
 Their calendar consists of twelve 30-day months followed by an extra
 five-day period.  Once every fourth year they add a leap day to this
 extra period to make it six days.  The Ethiopic calendar is identical in
 structure, but has different year numbers and month names.
 </p>
-<a name="IDX1238"></a>
+<a name="index-Persian-calendar"></a>
 <p>  The Persians use a solar calendar based on a design of Omar Khayyam.
 Their calendar consists of twelve months of which the first six have 31
 days, the next five have 30 days, and the last has 29 in ordinary years
 and 30 in leap years.  Leap years occur in a complicated pattern every
 four or five years.
 </p>
-<a name="IDX1239"></a>
+<a name="index-Chinese-calendar"></a>
 <p>  The Chinese calendar is a complicated system of lunar months arranged
 into solar years.  The years go in cycles of sixty, each year containing
 either twelve months in an ordinary year or thirteen months in a leap
@@ -1137,55 +1137,55 @@ in various other calendar systems:
 <dl compact="compact">
 <dt> <kbd>Button2  Other Calendars</kbd></dt>
 <dd><p>Display the date that you click on, expressed in various other calendars.
-<a name="IDX1240"></a>
-<a name="IDX1241"></a>
+<a name="index-p-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dprint_002diso_002ddate"></a>
 </p></dd>
 <dt> <kbd>p c</kbd></dt>
 <dd><p>Display ISO commercial calendar equivalent for selected day
 (<code>calendar-print-iso-date</code>).
-<a name="IDX1242"></a>
+<a name="index-calendar_002dprint_002djulian_002ddate"></a>
 </p></dd>
 <dt> <kbd>p j</kbd></dt>
 <dd><p>Display Julian date for selected day (<code>calendar-print-julian-date</code>).
-<a name="IDX1243"></a>
+<a name="index-calendar_002dprint_002dastro_002dday_002dnumber"></a>
 </p></dd>
 <dt> <kbd>p a</kbd></dt>
 <dd><p>Display astronomical (Julian) day number for selected day
 (<code>calendar-print-astro-day-number</code>).
-<a name="IDX1244"></a>
+<a name="index-calendar_002dprint_002dhebrew_002ddate"></a>
 </p></dd>
 <dt> <kbd>p h</kbd></dt>
 <dd><p>Display Hebrew date for selected day (<code>calendar-print-hebrew-date</code>).
-<a name="IDX1245"></a>
+<a name="index-calendar_002dprint_002dislamic_002ddate"></a>
 </p></dd>
 <dt> <kbd>p i</kbd></dt>
 <dd><p>Display Islamic date for selected day (<code>calendar-print-islamic-date</code>).
-<a name="IDX1246"></a>
+<a name="index-calendar_002dprint_002dfrench_002ddate"></a>
 </p></dd>
 <dt> <kbd>p f</kbd></dt>
 <dd><p>Display French Revolutionary date for selected day
 (<code>calendar-print-french-date</code>).
-<a name="IDX1247"></a>
+<a name="index-calendar_002dprint_002dchinese_002ddate"></a>
 </p></dd>
 <dt> <kbd>p C</kbd></dt>
 <dd><p>Display Chinese date for selected day
 (<code>calendar-print-chinese-date</code>).
-<a name="IDX1248"></a>
+<a name="index-calendar_002dprint_002dcoptic_002ddate"></a>
 </p></dd>
 <dt> <kbd>p k</kbd></dt>
 <dd><p>Display Coptic date for selected day
 (<code>calendar-print-coptic-date</code>).
-<a name="IDX1249"></a>
+<a name="index-calendar_002dprint_002dethiopic_002ddate"></a>
 </p></dd>
 <dt> <kbd>p e</kbd></dt>
 <dd><p>Display Ethiopic date for selected day
 (<code>calendar-print-ethiopic-date</code>).
-<a name="IDX1250"></a>
+<a name="index-calendar_002dprint_002dpersian_002ddate"></a>
 </p></dd>
 <dt> <kbd>p p</kbd></dt>
 <dd><p>Display Persian date for selected day
 (<code>calendar-print-persian-date</code>).
-<a name="IDX1251"></a>
+<a name="index-calendar_002dprint_002dmayan_002ddate"></a>
 </p></dd>
 <dt> <kbd>p m</kbd></dt>
 <dd><p>Display Mayan date for selected day (<code>calendar-print-mayan-date</code>).
@@ -1228,17 +1228,17 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &ldquo;print&rdquo; since 
 to.  This section describes the commands for doing this using calendars
 other than Mayan; for the Mayan calendar, see the following section.
 </p>
-<a name="IDX1252"></a>
-<a name="IDX1253"></a>
-<a name="IDX1254"></a>
-<a name="IDX1255"></a>
-<a name="IDX1256"></a>
-<a name="IDX1257"></a>
-<a name="IDX1258"></a>
-<a name="IDX1259"></a>
-<a name="IDX1260"></a>
-<a name="IDX1261"></a>
-<a name="IDX1262"></a>
+<a name="index-g-char-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dgoto_002diso_002ddate"></a>
+<a name="index-calendar_002dgoto_002djulian_002ddate"></a>
+<a name="index-calendar_002dgoto_002dastro_002dday_002dnumber"></a>
+<a name="index-calendar_002dgoto_002dhebrew_002ddate"></a>
+<a name="index-calendar_002dgoto_002dislamic_002ddate"></a>
+<a name="index-calendar_002dgoto_002dfrench_002ddate"></a>
+<a name="index-calendar_002dgoto_002dchinese_002ddate"></a>
+<a name="index-calendar_002dgoto_002dpersian_002ddate"></a>
+<a name="index-calendar_002dgoto_002dcoptic_002ddate"></a>
+<a name="index-calendar_002dgoto_002dethiopic_002ddate"></a>
 <dl compact="compact">
 <dt> <kbd>g c</kbd></dt>
 <dd><p>Move to a date specified in the ISO commercial calendar
@@ -1288,8 +1288,8 @@ other calendar&rsquo;s date in the echo area.  Emacs uses strict completion
 (see section <a href="xemacs_9.html#Completion">Completion</a>) whenever it asks you to type a month name, so you
 don&rsquo;t have to worry about the spelling of Hebrew, Islamic, or French names.
 </p>
-<a name="IDX1263"></a>
-<a name="IDX1264"></a>
+<a name="index-list_002dyahrzeit_002ddates"></a>
+<a name="index-yahrzeits"></a>
 <p>  One common question concerning the Hebrew calendar is the computation
 of the anniversary of a date of death, called a &ldquo;yahrzeit.&rdquo;  The Emacs
 calendar includes a facility for such calculations.  If you are in the
@@ -1353,7 +1353,7 @@ calendar round (<code>calendar-previous-calendar-round-date</code>).
 </p></dd>
 </dl>
 
-<a name="IDX1265"></a>
+<a name="index-Mayan-long-count"></a>
 <p>  To understand these commands, you need to understand the Mayan calendars.
 The <em>long count</em> is a counting of days with these units:
 </p> 
@@ -1361,17 +1361,17 @@ The <em>long count</em> is a counting of days with these units:
 1 katun = 20 tun&nbsp;&nbsp;&nbsp;1 baktun = 20 katun
 </pre></td></tr></table>
 
-<a name="IDX1266"></a>
-<a name="IDX1267"></a>
+<a name="index-g-m-l-_0028Calendar-mode_0029"></a>
+<a name="index-calendar_002dgoto_002dmayan_002dlong_002dcount_002ddate"></a>
 <p>Thus, the long count date 12.16.11.16.6 means 12 baktun, 16 katun, 11
 tun, 16 uinal, and 6 kin.  The Emacs calendar can handle Mayan long
 count dates as early as 7.17.18.13.1, but no earlier.  When you use the
 <kbd>g m l</kbd> command, type the Mayan long count date with the baktun,
 katun, tun, uinal, and kin separated by periods.
 </p>
-<a name="IDX1268"></a>
-<a name="IDX1269"></a>
-<a name="IDX1270"></a>
+<a name="index-calendar_002dprevious_002dtzolkin_002ddate"></a>
+<a name="index-calendar_002dnext_002dtzolkin_002ddate"></a>
+<a name="index-Mayan-tzolkin-calendar"></a>
 <p>  The Mayan tzolkin calendar is a cycle of 260 days formed by a pair of
 independent cycles of 13 and 20 days.  Since this cycle repeats
 endlessly, Emacs provides commands to move backward and forward to the
@@ -1380,9 +1380,9 @@ previous tzolkin date; Emacs asks you for a tzolkin date and moves point
 to the previous occurrence of that date.  Similarly, type <kbd>g m n t</kbd>
 to go to the next occurrence of a tzolkin date.
 </p>
-<a name="IDX1271"></a>
-<a name="IDX1272"></a>
-<a name="IDX1273"></a>
+<a name="index-calendar_002dprevious_002dhaab_002ddate"></a>
+<a name="index-calendar_002dnext_002dhaab_002ddate"></a>
+<a name="index-Mayan-haab-calendar"></a>
 <p>  The Mayan haab calendar is a cycle of 365 days arranged as 18 months
 of 20 days each, followed a 5-day monthless period.  Like the tzolkin
 cycle, this cycle repeats endlessly, and there are commands to move
@@ -1392,8 +1392,8 @@ date and moves point to the previous occurrence of that date.
 Similarly, type <kbd>g m n h</kbd> to go to the next occurrence of a haab
 date.
 </p>
-<a name="IDX1274"></a>
-<a name="IDX1275"></a>
+<a name="index-calendar_002dnext_002dcalendar_002dround_002ddate"></a>
+<a name="index-Mayan-calendar-round"></a>
 <p>  The Maya also used the combination of the tzolkin date and the haab
 date.  This combination is a cycle of about 52 years called a
 <em>calendar round</em>.  If you type <kbd>g m p c</kbd>, Emacs asks you for
@@ -1525,8 +1525,8 @@ to view it.  You can also view today&rsquo;s events outside of Calendar mode.
 </p></dd>
 </dl>
 
-<a name="IDX1276"></a>
-<a name="IDX1277"></a>
+<a name="index-d-_0028Calendar-mode_0029"></a>
+<a name="index-view_002ddiary_002dentries"></a>
 <p>  Displaying the diary entries with <kbd>d</kbd> shows in a separate window
 the diary entries for the selected date in the calendar.  The mode line
 of the new window shows the date of the diary entries and any holidays
@@ -1539,10 +1539,10 @@ following day.
 <kbd>Button2</kbd> on the date, and then choose <kbd>Diary</kbd> from the menu
 that appears.
 </p>
-<a name="IDX1278"></a>
-<a name="IDX1279"></a>
-<a name="IDX1280"></a>
-<a name="IDX1281"></a>
+<a name="index-m-_0028Calendar-mode_0029"></a>
+<a name="index-mark_002ddiary_002dentries"></a>
+<a name="index-u-_0028Calendar-mode_0029-1"></a>
+<a name="index-calendar_002dunmark-1"></a>
 <p>  To get a broader view of which days are mentioned in the diary, use
 the <kbd>m</kbd> command.  This displays the dates that have diary entries
 in a different face (or places a &lsquo;<samp>+</samp>&rsquo; after these dates, if
@@ -1552,15 +1552,15 @@ become visible by scrolling.  To turn marking off and erase the current
 marks, type <kbd>u</kbd>, which also turns off holiday marks
 (see section <a href="#Holidays">Holidays</a>).
 </p>
-<a name="IDX1282"></a>
-<a name="IDX1283"></a>
+<a name="index-s-_0028Calendar-mode_0029"></a>
+<a name="index-show_002dall_002ddiary_002dentries"></a>
 <p>  To see the full diary file, rather than just some of the entries, use
 the <kbd>s</kbd> command.
 </p>
 <p>  Display of selected diary entries uses the selective display feature
 to hide entries that don&rsquo;t apply.
 </p>
-<a name="IDX1284"></a>
+<a name="index-print_002ddiary_002dentries"></a>
 <p>  The diary buffer as you see it is an illusion, so simply printing the
 buffer does not print what you see on your screen.  There is a special
 command to print hard copy of the diary buffer <em>as it appears</em>;
@@ -1568,7 +1568,7 @@ this command is <kbd>M-x print-diary-entries</kbd>.  It sends the data
 directly to the printer.  You can customize it like <code>lpr-region</code>
 (see section <a href="#Hardcopy">Hardcopy Output</a>).
 </p>
-<a name="IDX1285"></a>
+<a name="index-diary"></a>
 <p>  The command <kbd>M-x diary</kbd> displays the diary entries for the current
 date, independently of the calendar display, and optionally for the next
 few days as well; the variable <code>number-of-diary-entries</code> specifies
@@ -1579,8 +1579,8 @@ automatically displays a window with the day&rsquo;s diary entries, when you
 enter Emacs.  See section <a href="xemacs_30.html#Init-File">The Init File</a>.  The mode line of the displayed window
 shows the date and any holidays that fall on that date.
 </p>
-<a name="IDX1286"></a>
-<a name="IDX1287"></a>
+<a name="index-diary_002dmail_002dentries"></a>
+<a name="index-diary_002dmail_002ddays"></a>
 <p>  Many users like to receive notice of events in their diary as email.
 To send such mail to yourself, use the command <kbd>M-x
 diary-mail-entries</kbd>.  A prefix argument specifies how many days
@@ -1722,9 +1722,9 @@ this matches any month, day, or year, respectively.  Thus, a diary entry
 &lsquo;<samp>3/*/*</samp>&rsquo; matches any day in March of any year; so does &lsquo;<samp>march
 *</samp>&rsquo;.
 </p>
-<a name="IDX1288"></a>
-<a name="IDX1289"></a>
-<a name="IDX1290"></a>
+<a name="index-european_002dcalendar_002dstyle"></a>
+<a name="index-european_002dcalendar"></a>
+<a name="index-american_002dcalendar"></a>
 <p>  If you prefer the European style of writing dates&mdash;in which the day
 comes before the month&mdash;type <kbd>M-x european-calendar</kbd> while in the
 calendar, or set the variable <code>european-calendar-style</code> to <code>t</code>
@@ -1778,19 +1778,19 @@ entries:
 </p></dd>
 </dl>
 
-<a name="IDX1291"></a>
-<a name="IDX1292"></a>
+<a name="index-i-d-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002ddiary_002dentry"></a>
 <p>  You can make a diary entry for a specific date by selecting that date
 in the calendar window and typing the <kbd>i d</kbd> command.  This command
 displays the end of your diary file in another window and inserts the
 date; you can then type the rest of the diary entry.
 </p>
-<a name="IDX1293"></a>
-<a name="IDX1294"></a>
-<a name="IDX1295"></a>
-<a name="IDX1296"></a>
-<a name="IDX1297"></a>
-<a name="IDX1298"></a>
+<a name="index-i-w-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002dweekly_002ddiary_002dentry"></a>
+<a name="index-i-m-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002dmonthly_002ddiary_002dentry"></a>
+<a name="index-i-y-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002dyearly_002ddiary_002dentry"></a>
 <p>  If you want to make a diary entry that applies to a specific day of
 the week, select that day of the week (any occurrence will do) and type
 <kbd>i w</kbd>.  This inserts the day-of-week as a generic date; you can then
@@ -1853,15 +1853,15 @@ sexp entries:
 </p></dd>
 </dl>
 
-<a name="IDX1299"></a>
-<a name="IDX1300"></a>
+<a name="index-i-a-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002danniversary_002ddiary_002dentry"></a>
 <p>  If you want to make a diary entry that applies to the anniversary of a
 specific date, move point to that date and use the <kbd>i a</kbd> command.
 This displays the end of your diary file in another window and inserts
 the anniversary description; you can then type the rest of the diary
 entry. The entry looks like this:
 </p>
-<a name="IDX1301"></a>
+<a name="index-diary_002danniversary"></a>
 <p>  The effect of <kbd>i a</kbd> is to add a <code>diary-anniversary</code> sexp to your
 diary file.  You can also add one manually, for instance:
 </p>
@@ -1878,7 +1878,7 @@ calculate the number of elapsed years.
 dates.  Here is a block diary entry that applies to all dates from June
 24, 1990 through July 10, 1990:
 </p>
-<a name="IDX1302"></a>
+<a name="index-diary_002dblock"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-block 6 24 1990 7 10 1990) Vacation
 </pre></td></tr></table>
 
@@ -1886,21 +1886,21 @@ dates.  Here is a block diary entry that applies to all dates from June
 indicates the stopping date.  (Again, if you are using the European calendar
 style, the month and day are interchanged.)
 </p>
-<a name="IDX1303"></a>
-<a name="IDX1304"></a>
+<a name="index-i-b-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002dblock_002ddiary_002dentry"></a>
 <p>  To insert a block entry, place point and the mark on the two
 dates that begin and end the range, and type <kbd>i b</kbd>.  This command
 displays the end of your diary file in another window and inserts the
 block description; you can then type the diary entry.
 </p>
-<a name="IDX1305"></a>
-<a name="IDX1306"></a>
+<a name="index-i-c-_0028Calendar-mode_0029"></a>
+<a name="index-insert_002dcyclic_002ddiary_002dentry"></a>
 <p>   <em>Cyclic</em> diary entries repeat after a fixed interval of days.  To
 create one, select the starting date and use the <kbd>i c</kbd> command.  The
 command prompts for the length of interval, then inserts the entry,
 which looks like this:
 </p>
-<a name="IDX1307"></a>
+<a name="index-diary_002dcyclic"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-cyclic 50 3 1 1990) Renew medication
 </pre></td></tr></table>
 
@@ -1923,7 +1923,7 @@ weeks, and months.  It is comparable to a crontab entry interpreted by
 the <code>cron</code> utility.  Here is a nonmarking, floating diary entry
 that applies to the last Thursday in November:
 </p> 
-<a name="IDX1308"></a>
+<a name="index-diary_002dfloat"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">&amp;%%(diary-float 11 4 -1) American Thanksgiving
 </pre></td></tr></table>
 
@@ -2044,14 +2044,14 @@ your init file:
 <p>this displays both the calendar and diary windows whenever you start
 Emacs.  See section <a href="xemacs_30.html#Init-File">The Init File</a>.
 </p>
-<a name="IDX1309"></a>
+<a name="index-view_002dcalendar_002dholidays_002dinitially"></a>
 <p>  Similarly, if you set the variable
 <code>view-calendar-holidays-initially</code> to <code>t</code>, entering the
 calendar automatically displays a list of holidays for the current
 three-month period.  The holiday list appears in a separate
 window.
 </p> 
-<a name="IDX1310"></a>
+<a name="index-mark_002ddiary_002dentries_002din_002dcalendar"></a>
 <p>  You can set the variable <code>mark-diary-entries-in-calendar</code> to
 <code>t</code> in order to mark any dates with diary entries.  This takes
 effect whenever the calendar window contents are recomputed.  There are
@@ -2059,13 +2059,13 @@ two ways of marking these dates: by changing the face (see section <a href="xema
 if the display supports that, or by placing a plus sign (&lsquo;<samp>+</samp>&rsquo;)
 beside the date otherwise.
 </p>
-<a name="IDX1311"></a>
+<a name="index-mark_002dholidays_002din_002dcalendar"></a>
 <p>  Similarly, setting the variable <code>mark-holidays-in-calendar</code> to
 <code>t</code> marks holiday dates, either with a change of face or with an
 asterisk (&lsquo;<samp>*</samp>&rsquo;).
 </p>
-<a name="IDX1312"></a>
-<a name="IDX1313"></a>
+<a name="index-calendar_002dholiday_002dmarker"></a>
+<a name="index-diary_002dentry_002dmarker"></a>
 <p>  The variable <code>calendar-holiday-marker</code> specifies how to mark a
 date as being a holiday.  Its value may be a character to insert next to
 the date, or a face name to use for displaying the date.  Likewise, the
@@ -2075,36 +2075,36 @@ diary entries.  The calendar creates faces named <code>holiday-face</code> and
 values of these variables, when Emacs supports multiple faces on your
 terminal.
 </p>
-<a name="IDX1314"></a>
+<a name="index-calendar_002dload_002dhook"></a>
 <p>  The variable <code>calendar-load-hook</code> is a normal hook run when the
 calendar package is first loaded (before actually starting to display
 the calendar).
 </p>
-<a name="IDX1315"></a>
+<a name="index-initial_002dcalendar_002dwindow_002dhook"></a>
 <p>  Starting the calendar runs the normal hook
 <code>initial-calendar-window-hook</code>.  Recomputation of the calendar
 display does not run this hook.  But if you leave the calendar with the
 <kbd>q</kbd> command and reenter it, the hook runs again.
 </p>
-<a name="IDX1316"></a>
+<a name="index-today_002dvisible_002dcalendar_002dhook"></a>
 <p>  The variable <code>today-visible-calendar-hook</code> is a normal hook run
 after the calendar buffer has been prepared with the calendar when the
 current date is visible in the window.  One use of this hook is to
 replace today&rsquo;s date with asterisks; to do that, use the hook function
 <code>calendar-star-date</code>.
 </p>
-<a name="IDX1317"></a>
+<a name="index-calendar_002dstar_002ddate"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'today-visible-calendar-hook 'calendar-star-date)
 </pre></td></tr></table>
 
 <p>Another standard hook function marks the current date, either by
 changing its face or by adding an asterisk.  Here&rsquo;s how to use it:
 </p>
-<a name="IDX1318"></a>
+<a name="index-calendar_002dmark_002dtoday"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 </pre></td></tr></table>
 
-<a name="IDX1319"></a>
+<a name="index-calendar_002dtoday_002dmarker"></a>
 <p>The variable <code>calendar-today-marker</code> specifies how to mark today&rsquo;s
 date.  Its value should be a character to insert next to the date or a
 face name to use for displaying the date.  A face named
@@ -2112,7 +2112,7 @@ face name to use for displaying the date.  A face named
 the default for this variable when Emacs supports multiple faces on your
 terminal.
 </p>
-<a name="IDX1320"></a>
+<a name="index-today_002dinvisible_002dcalendar_002dhook"></a>
 <p>  A similar normal hook, <code>today-invisible-calendar-hook</code> is run if
 the current date is <em>not</em> visible in the window.
 </p>
@@ -2146,19 +2146,19 @@ Hebrew (Jewish) holidays (<code>hebrew-holidays</code>), Islamic (Moslem)
 holidays (<code>islamic-holidays</code>), and other holidays
 (<code>other-holidays</code>).
 </p>
-<a name="IDX1321"></a>
+<a name="index-general_002dholidays"></a>
 <p>  The general holidays are, by default, holidays common throughout the
 United States.  To eliminate these holidays, set <code>general-holidays</code>
 to <code>nil</code>.
 </p>
-<a name="IDX1322"></a>
+<a name="index-local_002dholidays"></a>
 <p>  There are no default local holidays (but sites may supply some).  You
 can set the variable <code>local-holidays</code> to any list of holidays, as
 described below.
 </p>
-<a name="IDX1323"></a>
-<a name="IDX1324"></a>
-<a name="IDX1325"></a>
+<a name="index-all_002dchristian_002dcalendar_002dholidays"></a>
+<a name="index-all_002dhebrew_002dcalendar_002dholidays"></a>
+<a name="index-all_002dislamic_002dcalendar_002dholidays"></a>
 <p>  By default, Emacs does not include all the holidays of the religions
 that it knows, only those commonly found in secular calendars.  For a
 more extensive collection of religious holidays, you can set any (or
@@ -2169,11 +2169,11 @@ eliminate the religious holidays, set any or all of the corresponding
 variables <code>christian-holidays</code>, <code>hebrew-holidays</code>, and
 <code>islamic-holidays</code> to <code>nil</code>.
 </p>
-<a name="IDX1326"></a>
+<a name="index-other_002dholidays"></a>
 <p>  You can set the variable <code>other-holidays</code> to any list of
 holidays.  This list, normally empty, is intended for individual use.
 </p>
-<a name="IDX1327"></a>
+<a name="index-holiday-forms"></a>
 <p>  Each of the lists (<code>general-holidays</code>, <code>local-holidays</code>,
 <code>christian-holidays</code>, <code>hebrew-holidays</code>,
 <code>islamic-holidays</code>, and <code>other-holidays</code>) is a list of
@@ -2434,8 +2434,8 @@ missing, Emacs fills in the gaps with the rules currently used in
 Cambridge, Massachusetts.  If the resulting rules are not what you want,
 you can tell Emacs the rules to use by setting certain variables.
 </p>
-<a name="IDX1328"></a>
-<a name="IDX1329"></a>
+<a name="index-calendar_002ddaylight_002dsavings_002dstarts"></a>
+<a name="index-calendar_002ddaylight_002dsavings_002dends"></a>
 <p>  If the default choice of rules is not appropriate for your location,
 you can tell Emacs the rules to use by setting the variables
 <code>calendar-daylight-savings-starts</code> and
@@ -2481,12 +2481,12 @@ year differs from the Gregorian year by 3760 at Nisan.
 all times in standard time, set <code>calendar-daylight-savings-starts</code>
 and <code>calendar-daylight-savings-ends</code> to <code>nil</code>.
 </p>
-<a name="IDX1330"></a>
+<a name="index-calendar_002ddaylight_002dtime_002doffset"></a>
 <p>  The variable <code>calendar-daylight-time-offset</code> specifies the
 difference between daylight savings time and standard time, measured in
 minutes.  The value for Cambridge, Massachusetts is 60.
 </p>
-<a name="IDX1331"></a>
+<a name="index-calendar_002ddaylight_002dsavings_002dends_002dtime"></a>
 <p>  The two variables <code>calendar-daylight-savings-starts-time</code> and
 <code>calendar-daylight-savings-ends-time</code> specify the number of minutes
 after midnight local time when the transition to and from daylight
@@ -2522,7 +2522,7 @@ prefer to have a faster display of the diary buffer but without the
 holiday information, set the variable <code>holidays-in-diary-buffer</code> to
 <code>nil</code>.
 </p>
-<a name="IDX1332"></a>
+<a name="index-number_002dof_002ddiary_002dentries"></a>
 <p>  The variable <code>number-of-diary-entries</code> controls the number of
 days of diary entries to be displayed at one time.  It affects the
 initial display when <code>view-diary-entries-initially</code> is <code>t</code>, as
@@ -2535,8 +2535,8 @@ appear on Sunday, the current date&rsquo;s and the next day&rsquo;s diary entrie
 appear Monday through Thursday, Friday through Monday&rsquo;s entries appear
 on Friday, while on Saturday only that day&rsquo;s entries appear.
 </p>
-<a name="IDX1333"></a>
-<a name="IDX1334"></a>
+<a name="index-print_002ddiary_002dentries_002dhook"></a>
+<a name="index-print_002ddiary_002dentries-1"></a>
 <p>  The variable <code>print-diary-entries-hook</code> is a normal hook run
 after preparation of a temporary buffer containing just the diary
 entries currently visible in the diary buffer.  (The other, irrelevant
@@ -2547,7 +2547,7 @@ different command to do the printing, just change the value of this
 hook.  Other uses might include, for example, rearranging the lines into
 order by day and time.
 </p>
-<a name="IDX1335"></a>
+<a name="index-diary_002ddate_002dforms"></a>
 <p>  You can customize the form of dates in your diary file, if neither the
 standard American nor European styles suits your needs, by setting the
 variable <code>diary-date-forms</code>.  This variable is a list of patterns
@@ -2637,18 +2637,18 @@ people don&rsquo;t use them, you must explicitly enable their use.  If you
 want the diary to recognize Hebrew-date diary entries, for example, 
 you must do this:
 </p> 
-<a name="IDX1336"></a>
-<a name="IDX1337"></a>
-<a name="IDX1338"></a>
-<a name="IDX1339"></a>
+<a name="index-nongregorian_002ddiary_002dlisting_002dhook"></a>
+<a name="index-nongregorian_002ddiary_002dmarking_002dhook"></a>
+<a name="index-list_002dhebrew_002ddiary_002dentries"></a>
+<a name="index-mark_002dhebrew_002ddiary_002dentries"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 </pre></td></tr></table>
 
 <p>If you want Islamic-date entries, do this:
 </p>
-<a name="IDX1340"></a>
-<a name="IDX1341"></a>
+<a name="index-list_002dislamic_002ddiary_002dentries"></a>
+<a name="index-mark_002dislamic_002ddiary_002dentries"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
 </pre></td></tr></table>
@@ -2711,12 +2711,12 @@ selected date (<code>insert-yearly-islamic-diary-entry</code>).
 </p></dd>
 </dl>
 
-<a name="IDX1342"></a>
-<a name="IDX1343"></a>
-<a name="IDX1344"></a>
-<a name="IDX1345"></a>
-<a name="IDX1346"></a>
-<a name="IDX1347"></a>
+<a name="index-insert_002dhebrew_002ddiary_002dentry"></a>
+<a name="index-insert_002dmonthly_002dhebrew_002ddiary_002dentry"></a>
+<a name="index-insert_002dyearly_002dhebrew_002ddiary_002dentry"></a>
+<a name="index-insert_002dislamic_002ddiary_002dentry"></a>
+<a name="index-insert_002dmonthly_002dislamic_002ddiary_002dentry"></a>
+<a name="index-insert_002dyearly_002dislamic_002ddiary_002dentry"></a>
 <p>  These commands work much like the corresponding commands for ordinary
 diary entries: they apply to the date that point is on in the calendar
 window, and what they do is insert just the date portion of a diary entry
@@ -2749,8 +2749,8 @@ hook <code>diary-display-hook</code>.  The default value of this hook
 (<code>simple-diary-display</code>) hides the irrelevant diary entries and
 then displays the buffer.  However, if you specify the hook as follows,
 </p> 
-<a name="IDX1348"></a>
-<a name="IDX1349"></a>
+<a name="index-diary-buffer"></a>
+<a name="index-fancy_002ddiary_002ddisplay"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'diary-display-hook 'fancy-diary-display)
 </pre></td></tr></table>
 
@@ -2768,18 +2768,18 @@ inclusion of the holidays slows down the display slightly; you can speed
 things up by setting the variable <code>holidays-in-diary-buffer</code> to
 <code>nil</code>.
 </p>
-<a name="IDX1350"></a>
+<a name="index-diary_002dlist_002dinclude_002dblanks"></a>
 <p>  Ordinarily, the fancy diary buffer does not show days for which there are
 no diary entries, even if that day is a holiday.  If you want such days to be
 shown in the fancy diary buffer, set the variable
 <code>diary-list-include-blanks</code> to <code>t</code>.
 </p>
-<a name="IDX1351"></a>
+<a name="index-sorting-diary-entries"></a>
 <p>  If you use the fancy diary display, you can use the normal hook
 <code>list-diary-entries-hook</code> to sort each day&rsquo;s diary entries by their
 time of day.  Add this line to your init file:
 </p>
-<a name="IDX1352"></a>
+<a name="index-sort_002ddiary_002dentries"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 </pre></td></tr></table>
 
@@ -2823,10 +2823,10 @@ can include other files, and so on; you must be careful not to have a
 cycle of inclusions, of course.  Here is how to enable the include
 facility:
 </p>
-<a name="IDX1353"></a>
-<a name="IDX1354"></a>
-<a name="IDX1355"></a>
-<a name="IDX1356"></a>
+<a name="index-list_002ddiary_002dentries_002dhook"></a>
+<a name="index-mark_002ddiary_002dentries_002dhook"></a>
+<a name="index-include_002dother_002ddiary_002dfiles"></a>
+<a name="index-mark_002dincluded_002ddiary_002dfiles"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
 </pre></td></tr></table>
@@ -2862,7 +2862,7 @@ on the date itself.  For example, an anniversary diary entry can insert
 the number of years since the anniversary date into the text of the
 diary entry.  Thus the &lsquo;<samp>%d</samp>&rsquo; in this dairy entry:
 </p>
-<a name="IDX1357"></a>
+<a name="index-diary_002danniversary-1"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 </pre></td></tr></table>
 
@@ -2885,7 +2885,7 @@ the fancy diary buffer like this:
 <p>  Similarly, cyclic diary entries can interpolate the number of repetitions
 that have occurred:
 </p>
-<a name="IDX1358"></a>
+<a name="index-diary_002dcyclic-1"></a>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 </pre></td></tr></table>
 
@@ -2925,16 +2925,16 @@ the entry applies to that date.  If the expression evaluates to
 <p>  The following sexp diary entries take advantage of the ability (in the fancy
 diary display) to concoct diary entries whose text varies based on the date:
 </p>
-<a name="IDX1359"></a>
-<a name="IDX1360"></a>
-<a name="IDX1361"></a>
-<a name="IDX1362"></a>
-<a name="IDX1363"></a>
-<a name="IDX1364"></a>
-<a name="IDX1365"></a>
-<a name="IDX1366"></a>
-<a name="IDX1367"></a>
-<a name="IDX1368"></a>
+<a name="index-diary_002dsunrise_002dsunset"></a>
+<a name="index-diary_002dphases_002dof_002dmoon"></a>
+<a name="index-diary_002dday_002dof_002dyear"></a>
+<a name="index-diary_002diso_002ddate"></a>
+<a name="index-diary_002djulian_002ddate"></a>
+<a name="index-diary_002dastro_002dday_002dnumber"></a>
+<a name="index-diary_002dhebrew_002ddate"></a>
+<a name="index-diary_002dislamic_002ddate"></a>
+<a name="index-diary_002dfrench_002ddate"></a>
+<a name="index-diary_002dmayan_002ddate"></a>
 <dl compact="compact">
 <dt> <code>%%(diary-sunrise-sunset)</code></dt>
 <dd><p>Make a diary entry for the local times of today&rsquo;s sunrise and sunset.
@@ -2983,16 +2983,16 @@ diary for any date, but does nothing particularly useful.)
 <p>  These functions can be used to construct sexp diary entries based on
 the Hebrew calendar in certain standard ways:
 </p> 
-<a name="IDX1369"></a>
-<a name="IDX1370"></a>
-<a name="IDX1371"></a>
-<a name="IDX1372"></a>
-<a name="IDX1373"></a>
-<a name="IDX1374"></a>
-<a name="IDX1375"></a>
-<a name="IDX1376"></a>
-<a name="IDX1377"></a>
-<a name="IDX1378"></a>
+<a name="index-rosh-hodesh"></a>
+<a name="index-diary_002drosh_002dhodesh"></a>
+<a name="index-parasha_002c-weekly"></a>
+<a name="index-diary_002dparasha"></a>
+<a name="index-candle-lighting-times"></a>
+<a name="index-diary_002dsabbath_002dcandles"></a>
+<a name="index-omer-count"></a>
+<a name="index-diary_002domer"></a>
+<a name="index-yahrzeits-1"></a>
+<a name="index-diary_002dyahrzeit"></a>
 <dl compact="compact">
 <dt> <code>%%(diary-rosh-hodesh)</code></dt>
 <dd><p>Make a diary entry that tells the occurrence and ritual announcement of each
@@ -3041,12 +3041,12 @@ the European style, the order of the parameters is changed to <var>day</var>,
 <p>  You can specify exactly how Emacs reminds you of an appointment, and
 how far in advance it begins doing so, by setting these variables:
 </p>
-<a name="IDX1379"></a>
-<a name="IDX1380"></a>
-<a name="IDX1381"></a>
-<a name="IDX1382"></a>
-<a name="IDX1383"></a>
-<a name="IDX1384"></a>
+<a name="index-appt_002dmessage_002dwarning_002dtime"></a>
+<a name="index-appt_002daudible"></a>
+<a name="index-appt_002dvisible"></a>
+<a name="index-appt_002ddisplay_002dmode_002dline"></a>
+<a name="index-appt_002dmsg_002dwindow"></a>
+<a name="index-appt_002ddisplay_002dduration"></a>
 <dl compact="compact">
 <dt> <code>appt-message-warning-time</code></dt>
 <dd><p>The time in minutes before an appointment that the reminder begins.  The
@@ -3113,11 +3113,11 @@ paragraphs or pages as sort records.  Most of the sort commands use each
 entire sort record as its own sort key, but some use only a portion of the
 record as the sort key.
 </p>
-<a name="IDX1385"></a>
-<a name="IDX1386"></a>
-<a name="IDX1387"></a>
-<a name="IDX1388"></a>
-<a name="IDX1389"></a>
+<a name="index-sort_002dlines"></a>
+<a name="index-sort_002dparagraphs"></a>
+<a name="index-sort_002dpages"></a>
+<a name="index-sort_002dfields"></a>
+<a name="index-sort_002dnumeric_002dfields"></a>
 <dl compact="compact">
 <dt> <kbd>M-x sort-lines</kbd></dt>
 <dd><p>Divide the region into lines and sort by comparing the entire
@@ -3194,7 +3194,7 @@ whether the file has changed on disk since it was last visited or
 <p>where the sort keys were &lsquo;<samp>If</samp>&rsquo;, &lsquo;<samp>XEmacs</samp>&rsquo;, &lsquo;<samp>buffer</samp>&rsquo;,
 &lsquo;<samp>systems</samp>&rsquo;, and &lsquo;<samp>the</samp>&rsquo;.
 </p>
-<a name="IDX1390"></a>
+<a name="index-sort_002dcolumns"></a>
 <p>  <kbd>M-x sort-columns</kbd> requires more explanation.  You specify the
 columns by putting point at one of the columns and the mark at the other
 column.  Because this means you cannot put point or the mark at the
@@ -3303,16 +3303,16 @@ selected.  A numeric argument, as in <kbd>M-1 M-!</kbd>, directs this command to
 insert any output into the current buffer.  In that case, point is left
 before the output and the mark is set after the output.
 </p>
-<a name="IDX1391"></a>
-<a name="IDX1392"></a>
+<a name="index-M_002d_007c"></a>
+<a name="index-shell_002dcommand_002don_002dregion"></a>
 <p>  <kbd>M-|</kbd> (<code>shell-command-on-region</code>) is like <kbd>M-!</kbd> but passes
 the contents of the region as input to the shell command, instead of no
 input.  If a numeric argument is used to direct  output to the current
 buffer, then the old region is deleted first and the output replaces it as
 the contents of the region.
 </p>
-<a name="IDX1393"></a>
-<a name="IDX1394"></a>
+<a name="index-shell_002dfile_002dname"></a>
+<a name="index-environment"></a>
 <p>  Both <kbd>M-!</kbd> and <kbd>M-|</kbd> use <code>shell-file-name</code> to specify the
 shell to use.  This variable is initialized based on your <code>SHELL</code>
 environment variable when you start XEmacs.  If the file name does not
@@ -3366,7 +3366,7 @@ next use of <kbd>M-x shell</kbd> creates a new buffer &lsquo;<samp>*shell*</samp
 its own subshell.  By renaming this buffer as well you can create a third
 one, and so on.  All the subshells run independently and in parallel.
 </p>
-<a name="IDX1395"></a>
+<a name="index-explicit_002dshell_002dfile_002dname"></a>
 <p>  The file name used to load the subshell is the value of the variable
 <code>explicit-shell-file-name</code>, if that is non-<code>nil</code>.  Otherwise, the
 environment variable <code>ESHELL</code> is used, or the environment variable
@@ -3380,9 +3380,9 @@ the file &lsquo;<tt>~/.emacs_<var>shellname</var></tt>&rsquo;, if that file exis
 For example, if you use <code>csh</code>, the file sent to it is
 &lsquo;<tt>~/.emacs_csh</tt>&rsquo;.
 </p>
-<a name="IDX1396"></a>
-<a name="IDX1397"></a>
-<a name="IDX1398"></a>
+<a name="index-shell_002dpushd_002dregexp"></a>
+<a name="index-shell_002dpopd_002dregexp"></a>
+<a name="index-shell_002dcd_002dregexp"></a>
 <p>  <code>cd</code>, <code>pushd</code>, and <code>popd</code> commands given to the inferior
 shell are watched by XEmacs so it can keep the &lsquo;<samp>*shell*</samp>&rsquo; buffer&rsquo;s
 default directory the same as the shell&rsquo;s working directory.  These
@@ -3399,7 +3399,7 @@ you add aliases for &lsquo;<samp>pushd</samp>&rsquo;.  Likewise, <code>shell-pop
 idea of what the current directory stack is.  <kbd>M-x
 shell-dirtrack-toggle</kbd> turns directory tracking on and off.
 </p>
-<a name="IDX1399"></a>
+<a name="index-input_002dring_002dsize"></a>
 <p>XEmacs keeps a history of the most recent commands you have typed in the
 &lsquo;<samp>*shell*</samp>&rsquo; buffer.  If you are at the beginning of a shell command
 line and type &lt;M-p&gt;, the previous shell input is inserted into the
@@ -3443,33 +3443,33 @@ editing and job control characters present in shells that are not under
 XEmacs, except that you must type <kbd>C-c</kbd> first.  Here is a list
 of the special key bindings of Shell mode:
 </p>
-<a name="IDX1400"></a>
-<a name="IDX1401"></a>
-<a name="IDX1402"></a>
-<a name="IDX1403"></a>
-<a name="IDX1404"></a>
-<a name="IDX1405"></a>
-<a name="IDX1406"></a>
-<a name="IDX1407"></a>
-<a name="IDX1408"></a>
-<a name="IDX1409"></a>
-<a name="IDX1410"></a>
-<a name="IDX1411"></a>
-<a name="IDX1412"></a>
-<a name="IDX1413"></a>
-<a name="IDX1414"></a>
-<a name="IDX1415"></a>
-<a name="IDX1416"></a>
-<a name="IDX1417"></a>
-<a name="IDX1418"></a>
-<a name="IDX1419"></a>
-<a name="IDX1420"></a>
-<a name="IDX1421"></a>
-<a name="IDX1422"></a>
-<a name="IDX1423"></a>
-<a name="IDX1424"></a>
-<a name="IDX1425"></a>
-<a name="IDX1426"></a>
+<a name="index-RET-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dd-_0028Shell-mode_0029"></a>
+<a name="index-C_002dd-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002du-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dw-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dc-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dz-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002d_005c-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002do-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dr-_0028Shell-mode_0029"></a>
+<a name="index-C_002dc-C_002dy-_0028Shell-mode_0029"></a>
+<a name="index-M_002dp-_0028Shell-mode_0029"></a>
+<a name="index-M_002dn-_0028Shell-mode_0029"></a>
+<a name="index-TAB-_0028Shell-mode_0029"></a>
+<a name="index-send_002dshell_002dinput"></a>
+<a name="index-shell_002dsend_002deof"></a>
+<a name="index-comint_002ddelchar_002dor_002dmaybe_002deof"></a>
+<a name="index-interrupt_002dshell_002dsubjob"></a>
+<a name="index-stop_002dshell_002dsubjob"></a>
+<a name="index-quit_002dshell_002dsubjob"></a>
+<a name="index-kill_002doutput_002dfrom_002dshell"></a>
+<a name="index-show_002doutput_002dfrom_002dshell"></a>
+<a name="index-copy_002dlast_002dshell_002dinput"></a>
+<a name="index-comint_002dprevious_002dinput"></a>
+<a name="index-comint_002dnext_002dinput"></a>
+<a name="index-comint_002ddynamic_002dcomplete"></a>
+<a name="index-shell_002dprompt_002dpattern"></a>
 <dl compact="compact">
 <dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>At end of buffer send line as input; otherwise, copy current line to end of
@@ -3625,14 +3625,14 @@ except for the Term escape character, normally <kbd>C-c</kbd>.
 </p>
 <p>To switch between line and char mode, use these commands:
 </p><dl compact="compact">
-<dd><a name="IDX1427"></a>
+<dd><a name="index-C_002dc-C_002dj-_0028Term-mode_0029"></a>
 <p>findex term-char-mode
 </p></dd>
 <dt> <kbd>C-c C-j</kbd></dt>
 <dd><p>Switch to line mode.  Do nothing if already in line mode.
 </p>
-<a name="IDX1428"></a>
-<a name="IDX1429"></a>
+<a name="index-C_002dc-C_002dk-_0028Term-mode_0029"></a>
+<a name="index-term_002dline_002dmode"></a>
 </dd>
 <dt> <kbd>C-c C-k</kbd></dt>
 <dd><p>Switch to char mode.  Do nothing if already in char mode.
@@ -3677,8 +3677,8 @@ For example, <kbd>C-c C-x o</kbd> invokes the global binding of
 term mode will pause at the end of each screenful.
 </p>
 <dl compact="compact">
-<dd><a name="IDX1430"></a>
-<a name="IDX1431"></a>
+<dd><a name="index-C_002dc-C_002dq-_0028Term-mode_0029"></a>
+<a name="index-term_002dpager_002dtoggle"></a>
 </dd>
 <dt> <kbd>C-c C-q</kbd></dt>
 <dd><p>Toggles the pager feature:  Disables the pager if it is enabled,
@@ -3740,8 +3740,8 @@ can&rsquo;t move into it (motion commands won&rsquo;t go outside the visible par
 and can&rsquo;t change it in any way.  However, the invisible text is not
 gone; if you save the file, it will be saved.
 </p>
-<a name="IDX1432"></a>
-<a name="IDX1433"></a>
+<a name="index-C_002dx-n-n"></a>
+<a name="index-narrow_002dto_002dregion"></a>
 <p>  The primary narrowing command is <kbd>C-x n n</kbd> (<code>narrow-to-region</code>).
 It sets the current buffer&rsquo;s restrictions so that the text in the current
 region remains visible but all text before the region or after the region
@@ -3752,8 +3752,8 @@ is invisible.  Point and mark do not change.
 this command asks for confirmation and gives you the option of enabling it;
 once you enable the command, confirmation will no longer be required.  See section <a href="xemacs_30.html#Disabling">Disabling Commands</a>.
 </p>
-<a name="IDX1434"></a>
-<a name="IDX1435"></a>
+<a name="index-C_002dx-n-w"></a>
+<a name="index-widen"></a>
 <p>   To undo narrowing, use <kbd>C-x n w</kbd> (<code>widen</code>).  This makes all
 text in the buffer accessible again.
 </p>
@@ -3802,11 +3802,11 @@ This command does not add page headings.
 </p></dd>
 </dl>
 
-<a name="IDX1436"></a>
-<a name="IDX1437"></a>
-<a name="IDX1438"></a>
-<a name="IDX1439"></a>
-<a name="IDX1440"></a>
+<a name="index-print_002dbuffer"></a>
+<a name="index-print_002dregion"></a>
+<a name="index-lpr_002dbuffer"></a>
+<a name="index-lpr_002dregion"></a>
+<a name="index-lpr_002dswitches"></a>
 <p>  All the hardcopy commands pass extra switches to the <code>lpr</code> program
 based on the value of the variable <code>lpr-switches</code>.  Its value should
 be a list of strings, each string a switch starting with &lsquo;<samp>-</samp>&rsquo;.  For
@@ -3841,16 +3841,16 @@ XEmacs command.  For example, when you type <kbd>C-r</kbd> inside a
 the current buffer.  When you exit from the recursive edit, you go back to
 the <code>query-replace</code>.
 </p>
-<a name="IDX1441"></a>
-<a name="IDX1442"></a>
-<a name="IDX1443"></a>
+<a name="index-C_002dM_002dc"></a>
+<a name="index-exit_002drecursive_002dedit"></a>
+<a name="index-exiting"></a>
 <p>  <em>Exiting</em> a recursive edit means returning to the unfinished
 command, which continues execution.  For example, exiting the recursive
 edit requested by <kbd>C-r</kbd> in <code>query-replace</code> causes query replacing
 to resume.  Exiting is done with <kbd>C-M-c</kbd> (<code>exit-recursive-edit</code>).
 </p>
-<a name="IDX1444"></a>
-<a name="IDX1445"></a>
+<a name="index-C_002d_005d"></a>
+<a name="index-abort_002drecursive_002dedit"></a>
 <p>  You can also <em>abort</em> a recursive edit.  This is like exiting, but
 also quits the unfinished command immediately.  Use the command <kbd>C-]</kbd>
 (<code>abort-recursive-edit</code>) for this.  See section <a href="xemacs_30.html#Quitting">Quitting and Aborting</a>.
@@ -3861,7 +3861,7 @@ and minor mode names.  Every window&rsquo;s mode line shows the square
 brackets, since XEmacs as a whole, rather than any particular buffer, is
 in a recursive edit.
 </p>
-<a name="IDX1446"></a>
+<a name="index-top_002dlevel"></a>
 <p>  It is possible to be in recursive edits within recursive edits.  For
 example, after typing <kbd>C-r</kbd> in a <code>query-replace</code>, you might
 type a command that entered the debugger.  In such a case, two or
@@ -3926,7 +3926,7 @@ operating.  Answer <kbd>n</kbd> to stop it.  You can also stop at any time by
 typing <kbd>C-g</kbd>.  The dissociation output remains in the &lsquo;<samp>*Dissociation*</samp>&rsquo;
 buffer for you to copy elsewhere if you wish.
 </p>
-<a name="IDX1447"></a>
+<a name="index-presidentagon"></a>
 <p>  Dissociated Press operates by jumping at random from one point in the
 buffer to another.  In order to produce plausible output rather than
 gibberish, it insists on a certain amount of overlap between the end of one
@@ -3936,7 +3936,7 @@ different point in the file, it might spot the &lsquo;ent&rsquo; in &lsquo;penta
 continue from there, producing &lsquo;presidentagon&rsquo;.  Long sample texts produce
 the best results.
 </p>
-<a name="IDX1448"></a>
+<a name="index-againformation"></a>
 <p>  A positive argument to <kbd>M-x dissociated-press</kbd> tells it to operate
 character by character, and specifies the number of overlap characters.  A
 negative argument tells it to operate word by word and specifies the number
@@ -3945,9 +3945,9 @@ be permuted, rather than characters.  No argument is equivalent to an
 argument of two.  For your againformation, the output goes only into the
 buffer &lsquo;<samp>*Dissociation*</samp>&rsquo;.  The buffer you start with is not changed.
 </p>
-<a name="IDX1449"></a>
-<a name="IDX1450"></a>
-<a name="IDX1451"></a>
+<a name="index-Markov-chain"></a>
+<a name="index-ignoriginal"></a>
+<a name="index-techniquitous"></a>
 <p>  Dissociated Press produces nearly the same results as a Markov chain
 based on a frequency table constructed from the sample text.  It is,
 however, an independent, ignoriginal invention.  Dissociated Press
@@ -3956,9 +3956,9 @@ between random choices, whereas a Markov chain would choose randomly for
 each word or character.  This makes for more plausible sounding results
 and runs faster.
 </p>
-<a name="IDX1452"></a>
-<a name="IDX1453"></a>
-<a name="IDX1454"></a>
+<a name="index-outragedy"></a>
+<a name="index-buggestion"></a>
+<a name="index-properbose"></a>
 <p>  It is a mustatement that too much use of Dissociated Press can be a
 developediment to your real work.  Sometimes to the point of outragedy.
 And keep dissociwords out of your documentation, if you want it to be well
@@ -4010,12 +4010,12 @@ can generate random sentences by using CONX.
 </p></dd>
 </dl>
 
-<a name="IDX1455"></a>
-<a name="IDX1456"></a>
-<a name="IDX1457"></a>
-<a name="IDX1458"></a>
-<a name="IDX1459"></a>
-<a name="IDX1460"></a>
+<a name="index-conx"></a>
+<a name="index-conx_002dbuffer"></a>
+<a name="index-conx_002dload"></a>
+<a name="index-conx_002dregion"></a>
+<a name="index-conx_002dinit"></a>
+<a name="index-conx_002dsave"></a>
 
 <p>Copy text from a buffer using <kbd>M-x conx-buffer</kbd> or <kbd>M-x conx-region</kbd>
 and then type <kbd>M-x conx</kbd>.  Output is continuously generated until you
@@ -4079,7 +4079,7 @@ editors.  Standard facilities can emulate these:
 </p>
 <dl compact="compact">
 <dt> Viper (a vi emulator)</dt>
-<dd><a name="IDX1461"></a>
+<dd><a name="index-Viper"></a>
 <p>In XEmacs, Viper is the preferred emulation of vi within XEmacs.
 Viper is designed to allow you to take advantage of the best
 features of XEmacs while still doing your basic editing in a
@@ -4102,8 +4102,8 @@ with the XEmacs distribution.
 
 </dd>
 <dt> EDT (DEC VMS editor)</dt>
-<dd><a name="IDX1462"></a>
-<a name="IDX1463"></a>
+<dd><a name="index-edt_002demulation_002don"></a>
+<a name="index-edt_002demulation_002doff"></a>
 <p>Turn on EDT emulation with <kbd>M-x edt-emulation-on</kbd>.  <kbd>M-x
 <br>edt-emulation-off</kbd> restores normal Emacs command bindings.
 </p>
@@ -4114,8 +4114,8 @@ buffers or major modes while in EDT emulation.
 </p>
 </dd>
 <dt> Gosling Emacs</dt>
-<dd><a name="IDX1464"></a>
-<a name="IDX1465"></a>
+<dd><a name="index-set_002dgosmacs_002dbindings"></a>
+<a name="index-set_002dgnu_002dbindings"></a>
 <p>Turn on emulation of Gosling Emacs (aka Unipress Emacs) with <kbd>M-x
 set-gosmacs-bindings</kbd>.  This redefines many keys, mostly on the
 <kbd>C-x</kbd> and <kbd>ESC</kbd> prefixes, to work as they do in Gosmacs.

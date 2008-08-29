@@ -115,7 +115,7 @@ command and end the list with an <code>@end enumerate</code> command.
 Begin an itemized list with an <code>@itemize</code> command, followed on
 the same line by a formatting command such as <code>@bullet</code>, and end
 the list with an <code>@end itemize</code> command.
-<a name="IDX135"></a>
+<a name="index-end-1"></a>
 </p>
 <p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
 command.
@@ -194,7 +194,7 @@ Two-column tables with highlighting.
 paragraphs, with a bullet or other mark inside the left margin
 at the beginning of each paragraph for which such a mark is desired.
 </p>
-<a name="IDX136"></a>
+<a name="index-_0040w_002c-for-blank-items"></a>
 <p>Begin an itemized list by writing <code>@itemize</code> at the beginning of
 a line.  Follow the command, on the same line, with a character or a
 Texinfo command that generates a mark.  Usually, you will write
@@ -210,7 +210,7 @@ character in the Info file.  If you don&rsquo;t want any mark at all, use
 <code>@itemize</code>, up to another line that says <code>@end
 itemize</code>.
 </p>
-<a name="IDX137"></a>
+<a name="index-item"></a>
 <p>Before each paragraph for which a mark in the margin is desired, write a
 line that says just <code>@item</code>.  It is ok to have text following the
 <code>@item</code>.
@@ -461,7 +461,7 @@ of each item and determines how it will be highlighted.  For example,
 with an <code>@code</code> command.  (We recommend <code>@code</code> for
 <code>@table</code>&rsquo;s of command-line options.)
 </p>
-<a name="IDX138"></a>
+<a name="index-asis"></a>
 <p>You may also choose to use the <code>@asis</code> command as an argument to
 <code>@table</code>.  <code>@asis</code> is a command that does nothing; if you
 use this command after <code>@table</code>, TeX and the Info formatting
@@ -472,7 +472,7 @@ commands output the first column entries without added highlighting
 listed here.  However, you can only use commands that normally take
 arguments in braces.)
 </p>
-<a name="IDX139"></a>
+<a name="index-item-1"></a>
 <p>Begin each table entry with an <code>@item</code> command at the beginning
 of a line.  Write the first column text on the same line as the
 <code>@item</code> command.  Write the second column text on the line
@@ -673,8 +673,8 @@ entirely on the same line as the <code>@multitable</code> command.
 </p>
 <ol>
 <li>
-<a name="IDX140"></a>
-<a name="IDX141"></a>
+<a name="index-columnfractions"></a>
+<a name="index-Line-length_002c-column-widths-as-fraction-of"></a>
 To specify column widths as fractions of the line length, write
 <code>@columnfractions</code> and the decimal numbers (presumably less than
 1) after the <code>@multitable</code> command, as in:
@@ -687,7 +687,7 @@ not.  This allows you to produce tables that do not need the full line
 length.  You can use a leading zero if you wish.
 </p>
 </li><li>
-<a name="IDX142"></a>
+<a name="index-Prototype-row_002c-column-widths-defined-by"></a>
 To specify a prototype row, write the longest entry for each column
 enclosed in braces after the <code>@multitable</code> command.  For example:
 

@@ -518,8 +518,8 @@ capitalized; others are not.
 <p>Here are several requirements for <code>@node</code> lines:
 </p>
 <ul>
-<li><a name="IDX94"></a>
-<a name="IDX95"></a>
+<li><a name="index-Unique-nodename-requirement"></a>
+<a name="index-Node-name-must-be-unique"></a>
 </li><li>
 All the node names for a single Info file must be unique.
 
@@ -537,8 +537,8 @@ A pointer name must be the name of a node.
 <p>The node to which a pointer points may come before or after the
 node containing the pointer.
 </p>
-<a name="IDX96"></a>
-<a name="IDX97"></a>
+<a name="index-_0040_002dcommands-in-nodename"></a>
+<a name="index-Node-name_002c-should-not-contain-_0040_002dcommands"></a>
 </li><li>
 @-commands used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
@@ -556,18 +556,18 @@ this:
 </pre></td></tr></table>
 
 </li><li>
-<a name="IDX98"></a>
+<a name="index-Parentheses-in-nodename"></a>
 You cannot use parentheses in node names, because a node name such as
 &lsquo;<samp>(foo)bar</samp>&rsquo; is interpreted by the Info readers as a node
 &lsquo;<samp>bar</samp>&rsquo; in an Info file &lsquo;<tt>foo</tt>&rsquo;.
 
 </li><li>
-<a name="IDX99"></a>
-<a name="IDX100"></a>
-<a name="IDX101"></a>
-<a name="IDX102"></a>
-<a name="IDX103"></a>
-<a name="IDX104"></a>
+<a name="index-Apostrophe-in-nodename"></a>
+<a name="index-Colon-in-nodename"></a>
+<a name="index-Comma-in-nodename"></a>
+<a name="index-Period-in-nodename"></a>
+<a name="index-Characters_002c-invalid-in-node-name"></a>
+<a name="index-Invalid-characters-in-node-names"></a>
 Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 
@@ -581,7 +581,7 @@ within a node name; these confuse TeX or the Info formatters.
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
 
-<a name="IDX105"></a>
+<a name="index-Case-in-node-name"></a>
 </li><li>
 Case is significant.
 </li></ul>
@@ -616,8 +616,8 @@ short summary, copying permissions, and a master menu.  See section <a href="tex
 </p>
 <ul>
 <li>
-<a name="IDX106"></a>
-<a name="IDX107"></a>
+<a name="index-Up-node-of-Top-node"></a>
+<a name="index-_0028dir_0029-as-Up-node-of-Top-node"></a>
 The Top node (which must be named &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;) should have
 as its &lsquo;Up&rsquo; node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
@@ -628,7 +628,7 @@ short for &lsquo;<samp>(dir)top</samp>&rsquo;, and specifies the Top node in the
 file, which contains the main menu for the Info system as a whole. 
 </p>
 </li><li>
-<a name="IDX108"></a>
+<a name="index-Previous-node-of-Top-node"></a>
 On the other hand, do not define the &lsquo;Previous&rsquo; node of the Top node to
 be &lsquo;<samp>(dir)</samp>&rsquo;, as it causes confusing behavior for users: if you are
 in the Top node and hits &lt;DEL&gt; to go backwards, you wind up in the
@@ -636,7 +636,7 @@ middle of the some other entry in the &lsquo;<tt>dir</tt>&rsquo; file, which has
 to do with what you were reading.
 
 </li><li>
-<a name="IDX109"></a>
+<a name="index-Next-node-of-Top-node"></a>
 The &lsquo;Next&rsquo; node of the Top node should be the first chapter in your
 document.
 

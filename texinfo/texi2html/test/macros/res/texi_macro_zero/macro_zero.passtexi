@@ -1,0 +1,15 @@
+macro_zero.texi(,2) @setfilename macro_zero.info
+macro_zero.texi(,3) 
+macro_zero.texi(,4) @node Top
+macro_zero.texi(,5) @top top macro/value is a zero
+macro_zero.texi(,6) 
+macro_zero.texi(,7) @set zero 0
+macro_zero.texi(,8) 
+macro_zero.texi(,12) 
+macro_zero.texi(,13) Macro
+macro_zero.texi(zero,14) 0
+macro_zero.texi(,15) 
+macro_zero.texi(,16) Value
+macro_zero.texi(,17) 0
+macro_zero.texi(,18) 
+macro_zero.texi(,19) @bye

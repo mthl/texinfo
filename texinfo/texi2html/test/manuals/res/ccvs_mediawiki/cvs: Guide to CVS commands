@@ -24,7 +24,7 @@ detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see section [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Structure| Structure]]::<nowiki>                   Overall structure of CVS commands
-</nowiki>&bull;[[#Exit-status| Exit status]]::<nowiki>                 Indicating CVS's success or failure
+</nowiki>&bull;[[#Exit-status| Exit status]]::<nowiki>                 Indicating CVS&rsquo;s success or failure
 </nowiki>&bull;[[#g_t_007e_002f_002ecvsrc| ~/.cvsrc]]::<nowiki>                    Default options with the ~/.csvrc file
 </nowiki>&bull;[[#Global-options| Global options]]::<nowiki>              Options you give to the left of cvs_command
 </nowiki>&bull;[[#Common-options| Common options]]::<nowiki>              Options you give to the right of cvs_command
@@ -36,7 +36,7 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki>&bull;[[#history| history]]::<nowiki>                     Show status of files and users
 </nowiki>&bull;[[#import| import]]::<nowiki>                      Import sources into CVS, using vendor branches
 </nowiki>&bull;[[#log| log]]::<nowiki>                         Show log messages for files
-</nowiki>&bull;[[#rdiff| rdiff]]::<nowiki>                       'patch' format diffs between releases
+</nowiki>&bull;[[#rdiff| rdiff]]::<nowiki>                       &rsquo;patch&rsquo; format diffs between releases
 </nowiki>&bull;[[#release| release]]::<nowiki>                     Indicate that a directory is no longer in use
 </nowiki>&bull;[[#update| update]]::<nowiki>                      Bring work tree in sync with repository
 </nowiki></pre>
@@ -249,8 +249,8 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
 [cvs: The Repository#Password-authentication-server Setting up the server for password authentication].
 </p>
-<div id="IDX202"></div>
-<div id="IDX203"></div>
+<div id="index-Authentication_002c-stream"></div>
+<div id="index-Stream-authentication"></div>
 </dd>
 <dt> <code>-a</code></dt>
 <dd><p>Authenticate all communication between the client and
@@ -261,8 +261,8 @@ Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
 </p>
-<div id="IDX204"></div>
-<div id="IDX205"></div>
+<div id="index-RCSBIN_002c-overriding"></div>
+<div id="index-Overriding-RCSBIN"></div>
 </dd>
 <dt> <code>-b <var>bindir</var></code></dt>
 <dd><p>In <small>CVS</small> 1.9.18 and older, this specified that
@@ -271,8 +271,8 @@ Current versions of <small>CVS</small> do not run <small>RCS</small>
 programs; for compatibility this option is accepted,
 but it does nothing.
 </p>
-<div id="IDX206"></div>
-<div id="IDX207"></div>
+<div id="index-TMPDIR_002c-overriding"></div>
+<div id="index-Overriding-TMPDIR"></div>
 </dd>
 <dt> <code>-T <var>tempdir</var></code></dt>
 <dd><p>Use <var>tempdir</var> as the directory where temporary files are
@@ -283,16 +283,16 @@ specified as an absolute pathname.
 specifying &lsquo;<samp>-T</samp>&rsquo; for the client has no effect on the server and
 vice versa.)
 </p>
-<div id="IDX208"></div>
-<div id="IDX209"></div>
+<div id="index-CVSROOT_002c-overriding"></div>
+<div id="index-Overriding-CVSROOT"></div>
 </dd>
 <dt> <code>-d <var>cvs_root_directory</var></code></dt>
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
 the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repository#Repository The Repository].
 </p>
-<div id="IDX210"></div>
-<div id="IDX211"></div>
+<div id="index-EDITOR_002c-overriding"></div>
+<div id="index-Overriding-EDITOR"></div>
 </dd>
 <dt> <code>-e <var>editor</var></code></dt>
 <dd><p>Use <var>editor</var> to enter revision log information.  Overrides the
@@ -324,7 +324,7 @@ a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
 <dd><p>Do not log the &lsquo;<samp>cvs_command</samp>&rsquo; in the command history (but execute it
 anyway).  See section [[#history|history&mdash;Show status of files and users]], for information on command history.
 </p>
-<div id="IDX212"></div>
+<div id="index-Read_002donly-repository-mode"></div>
 </dd>
 <dt> <code>-R</code></dt>
 <dd><p>Turns on read-only repository mode.  This allows one to check out from a
@@ -335,7 +335,7 @@ repository.
 variable is set. Using &lsquo;<samp>-R</samp>&rsquo; can also considerably
 speed up checkout&rsquo;s over NFS.
 </p>
-<div id="IDX213"></div>
+<div id="index-Read_002donly-mode"></div>
 </dd>
 <dt> <code>-n</code></dt>
 <dd><p>Do not change any files.  Attempt to execute the
@@ -359,7 +359,7 @@ generate output for serious problems.
 such as reports of recursion through subdirectories, are
 suppressed.
 </p>
-<div id="IDX214"></div>
+<div id="index-Read_002donly-files_002c-and-_002dr"></div>
 </dd>
 <dt> <code>-r</code></dt>
 <dd><p>Make new working files read-only.  Same effect
@@ -372,7 +372,7 @@ make working files writable, unless watches are on
 <dt> <code>-s <var>variable</var>=<var>value</var></code></dt>
 <dd><p>Set a user variable (see section [cvs: Reference manual for Administrative files#Variables Expansions in administrative files]).
 </p>
-<div id="IDX215"></div>
+<div id="index-Trace"></div>
 </dd>
 <dt> <code>-t</code></dt>
 <dd><p>Trace program execution; display messages showing the steps of
@@ -384,8 +384,8 @@ potential impact of an unfamiliar command.
 <dt> <code>--version</code></dt>
 <dd><p>Display version and copyright information for <small>CVS</small>.
 </p>
-<div id="IDX216"></div>
-<div id="IDX217"></div>
+<div id="index-CVSREAD_002c-overriding"></div>
+<div id="index-Overriding-CVSREAD"></div>
 </dd>
 <dt> <code>-w</code></dt>
 <dd><p>Make new working files read-write.  Overrides the
@@ -395,7 +395,7 @@ set or &lsquo;<samp>-r</samp>&rsquo; is given.
 </p>
 </dd>
 <dt> <code>-x</code></dt>
-<dd><div id="IDX218"></div>
+<dd><div id="index-Encryption"></div>
 <p>Encrypt all communication between the client and the
 server.  Only has an effect on the <small>CVS</small> client.  As
 of this writing, this is only implemented when using a
@@ -409,8 +409,8 @@ when you build <small>CVS</small>.
 </p>
 </dd>
 <dt> <code>-z <var>gzip-level</var></code></dt>
-<dd><div id="IDX219"></div>
-<div id="IDX220"></div>
+<dd><div id="index-Compression"></div>
+<div id="index-Gzip"></div>
 <p>Set the compression level.
 Valid levels are 1 (high speed, low compression) to
 9 (low speed, high compression), or 0 to disable
@@ -457,9 +457,9 @@ different behavior from one <small>CVS</small> command to the other).
 many options that conflict even with these standard options.</strong>
 </p>
 <dl compact="compact">
-<dd><div id="IDX221"></div>
-<div id="IDX222"></div>
-<div id="IDX223"></div>
+<dd><div id="index-Dates"></div>
+<div id="index-Time"></div>
+<div id="index-Specifying-dates"></div>
 </dd>
 <dt> <code>-D <var>date_spec</var></code></dt>
 <dd><p>Use the most recent revision no later than <var>date_spec</var>.
@@ -479,8 +479,8 @@ further updates in the same directory will use the same date
 slightly different way; see section [[#history-options|history options]]).
 </p>
 
-<div id="IDX224"></div>
-<div id="IDX225"></div>
+<div id="index-Timezone_002c-in-input"></div>
+<div id="index-Zone_002c-time_002c-in-input"></div>
 <p>A wide variety of date formats are supported by
 <small>CVS</small>.  The most standard ones are ISO8601 (from the
 International Standards Organization) and the Internet
@@ -531,7 +531,7 @@ flag can look like this:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </nowiki></pre></td></tr></table>
 
-<div id="IDX226"></div>
+<div id="index-Forcing-a-tag-match"></div>
 </dd>
 <dt> <code>-f</code></dt>
 <dd><p>When you specify a particular date or tag to <small>CVS</small> commands, they
@@ -588,8 +588,8 @@ recursing through subdirectories.
 <code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
 and <code>watchers</code>.
 </p>
-<div id="IDX227"></div>
-<div id="IDX228"></div>
+<div id="index-Editor_002c-avoiding-invocation-of"></div>
+<div id="index-Avoiding-editor-invocation"></div>
 </dd>
 <dt> <code>-m <var>message</var></code></dt>
 <dd><p>Use <var>message</var> as log information, instead of
@@ -632,8 +632,8 @@ and <code>watchers</code>.
 </p>
 </dd>
 <dt> <code>-r <var>tag</var></code></dt>
-<dd><div id="IDX229"></div>
-<div id="IDX230"></div>
+<dd><div id="index-HEAD_002c-special-tag"></div>
+<div id="index-BASE_002c-special-tag"></div>
 <p>Use the revision specified by the <var>tag</var> argument instead of the
 default <em>head</em> revision.  As well as arbitrary tags defined
 with the <code>tag</code> or <code>rtag</code> command, two special tags are
@@ -714,8 +714,8 @@ are likely to disappear in the future.  This command
 <em>does</em> work recursively, so extreme care should be
 used.
 </p>
-<div id="IDX231"></div>
-<div id="IDX232"></div>
+<div id="index-cvsadmin"></div>
+<div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig"></div>
 <p>On unix, if there is a group named <code>cvsadmin</code>,
 only members of that group can run <code>cvs admin</code>
 commands, except for those specified using the
@@ -781,7 +781,7 @@ to run <code>cvs admin -b</code>: to revert to the vendor&rsquo;s
 version when using vendor branches (see section [cvs: Tracking third-party sources#Reverting-local-changes Reverting to the latest vendor release]).
 There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 </p>
-<div id="IDX233"></div>
+<div id="index-Comment-leader"></div>
 </dd>
 <dt> <code>-c<var>string</var></code></dt>
 <dd><p>Sets the comment leader to <var>string</var>.  The comment
@@ -843,11 +843,11 @@ owner of an RCS file is not exempt from locking for
 checkin.  For use with <small>CVS</small>, strict locking must be
 set; see the discussion under the &lsquo;<samp>-l</samp>&rsquo; option above.
 </p>
-<div id="IDX234"></div>
-<div id="IDX235"></div>
-<div id="IDX236"></div>
-<div id="IDX237"></div>
-<div id="IDX238"></div>
+<div id="index-Changing-a-log-message"></div>
+<div id="index-Replacing-a-log-message"></div>
+<div id="index-Correcting-a-log-message"></div>
+<div id="index-Fixing-a-log-message"></div>
+<div id="index-Log-message_002c-correcting"></div>
 </dd>
 <dt> <code>-m<var>rev</var>:<var>msg</var></code></dt>
 <dd><p>Replace the log message of revision <var>rev</var> with
@@ -881,9 +881,9 @@ associates <var>name</var> with the revision numbers
 extracted from keyword strings in the corresponding
 working files.
 </p>
-<div id="IDX239"></div>
-<div id="IDX240"></div>
-<div id="IDX241"></div>
+<div id="index-Deleting-revisions"></div>
+<div id="index-Outdating-revisions"></div>
+<div id="index-Saving-space"></div>
 </dd>
 <dt> <code>-o<var>range</var></code></dt>
 <dd><p>Deletes (<em>outdates</em>) the revisions given by
@@ -2970,8 +2970,8 @@ you will have to merge the changes.
 <dt> <code>I <var>file</var></code></dt>
 <dd><p>The file is being ignored (see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).
 </p>
-<div id="IDX242"></div>
-<div id="IDX243"></div>
+<div id="index-Symbolic-link_002c-importing"></div>
+<div id="index-Link_002c-symbolic_002c-importing"></div>
 </dd>
 <dt> <code>L <var>file</var></code></dt>
 <dd><p>The file is a symbolic link; <code>cvs import</code> ignores symbolic links.
@@ -3044,8 +3044,8 @@ determines the format of the output and the options,
 which are not quite in the style of the other <small>CVS</small>
 commands.
 </p>
-<div id="IDX244"></div>
-<div id="IDX245"></div>
+<div id="index-Timezone_002c-in-output"></div>
+<div id="index-Zone_002c-time_002c-in-output"></div>
 <p>The output includes the location of the <small>RCS</small> file,
 the <em>head</em> revision (the latest revision on the
 trunk), all symbolic names (tags) and some other
@@ -3901,8 +3901,8 @@ name of that file is printed while <code>update</code> runs.
 </p>
 </dd>
 <dt> <code>C <var>file</var></code></dt>
-<dd><div id="IDX246"></div>
-<div id="IDX247"></div>
+<dd><div id="index-_002e_0023-files"></div>
+<div id="index-_005f_005f-files-_0028VMS_0029"></div>
 <p>A conflict was detected while trying to merge your
 changes to <var>file</var> with changes from the source
 repository.  <var>file</var> (the copy in your working

@@ -1066,7 +1066,6 @@ tar.texi(,1049) @section How to Create Archives
 tar.texi(UNREVISED,1050) @quotation
 tar.texi(UNREVISED,1050) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1050) @end quotation
-tar.texi(UNREVISED,1050) 
 tar.texi(,1051) 
 tar.texi(,1052) @cindex Creation of the archive
 tar.texi(,1053) @cindex Archive, creation of
@@ -1541,7 +1540,6 @@ tar.texi(,1525) @section How to Extract Members from an Archive
 tar.texi(UNREVISED,1526) @quotation
 tar.texi(UNREVISED,1526) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1526) @end quotation
-tar.texi(UNREVISED,1526) 
 tar.texi(,1527) @cindex Extraction
 tar.texi(,1528) @cindex Retrieving files from an archive
 tar.texi(,1529) @cindex Resurrecting files from an archive
@@ -1799,7 +1797,6 @@ tar.texi(GNUTAR,1776) @chapter Invoking @acronym{GNU} @command{tar}
 tar.texi(UNREVISED,1777) @quotation
 tar.texi(UNREVISED,1777) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1777) @end quotation
-tar.texi(UNREVISED,1777) 
 tar.texi(,1778) 
 tar.texi(GNUTAR,1779) This chapter is about how one invokes the @acronym{GNU} @command{tar}
 tar.texi(,1780) command, from the command synopsis (@pxref{Synopsis}).  There are
@@ -2108,7 +2105,6 @@ tar.texi(,2082) @subsection Old Option Style
 tar.texi(UNREVISED,2083) @quotation
 tar.texi(UNREVISED,2083) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,2083) @end quotation
-tar.texi(UNREVISED,2083) 
 tar.texi(,2084) 
 tar.texi(,2085) Like short options, @dfn{old options} are single letters.  However, old options
 tar.texi(,2086) must be written together as a single clumped set, without spaces separating
@@ -4033,7 +4029,6 @@ tar.texi(,3756) @subsection The Five Advanced @command{tar} Operations
 tar.texi(UNREVISED,3757) @quotation
 tar.texi(UNREVISED,3757) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3757) @end quotation
-tar.texi(UNREVISED,3757) 
 tar.texi(,3758) 
 tar.texi(,3759) In the last chapter, you learned about the first three operations to
 tar.texi(,3760) @command{tar}.  This chapter presents the remaining five operations to
@@ -4087,7 +4082,6 @@ tar.texi(,3807) @subsection How to Add Files to Existing Archives: @option{--app
 tar.texi(UNREVISED,3808) @quotation
 tar.texi(UNREVISED,3808) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3808) @end quotation
-tar.texi(UNREVISED,3808) 
 tar.texi(,3809) 
 tar.texi(,3810) @opindex append
 tar.texi(,3811) If you want to add files to an existing archive, you don't need to
@@ -4164,7 +4158,6 @@ tar.texi(,3883) @subsubsection Appending Files to an Archive
 tar.texi(UNREVISED,3884) @quotation
 tar.texi(UNREVISED,3884) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3884) @end quotation
-tar.texi(UNREVISED,3884) 
 tar.texi(,3885) @cindex Adding files to an Archive
 tar.texi(,3886) @cindex Appending files to an Archive
 tar.texi(,3887) @cindex Archives, Appending files to
@@ -4280,7 +4273,6 @@ tar.texi(,3996) @subsection Updating an Archive
 tar.texi(UNREVISED,3997) @quotation
 tar.texi(UNREVISED,3997) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3997) @end quotation
-tar.texi(UNREVISED,3997) 
 tar.texi(,3998) @cindex Updating an archive
 tar.texi(,3999) 
 tar.texi(,4000) @opindex update
@@ -4457,7 +4449,6 @@ tar.texi(,4167) @subsection Removing Archive Members Using @option{--delete}
 tar.texi(UNREVISED,4168) @quotation
 tar.texi(UNREVISED,4168) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4168) @end quotation
-tar.texi(UNREVISED,4168) 
 tar.texi(,4169) @cindex Deleting files from an archive
 tar.texi(,4170) @cindex Removing files from an archive
 tar.texi(,4171) 
@@ -4516,7 +4507,6 @@ tar.texi(,4222) @cindex Verifying the currency of an archive
 tar.texi(UNREVISED,4223) @quotation
 tar.texi(UNREVISED,4223) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4223) @end quotation
-tar.texi(UNREVISED,4223) 
 tar.texi(,4224) 
 tar.texi(,4225) @opindex compare
 tar.texi(,4226) The @option{--compare} (@option{-d}), or @option{--diff} operation compares
@@ -4674,7 +4664,6 @@ tar.texi(,4377) @section Options Used by @option{--extract}
 tar.texi(UNREVISED,4378) @quotation
 tar.texi(UNREVISED,4378) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4378) @end quotation
-tar.texi(UNREVISED,4378) 
 tar.texi(,4379) 
 tar.texi(xopindex,4380) @opindex extract@r{, additional options}
 tar.texi(,4381) The previous chapter showed how to use @option{--extract} to extract
@@ -4698,7 +4687,6 @@ tar.texi(,4398) @cindex Options when reading archives
 tar.texi(UNREVISED,4399) @quotation
 tar.texi(UNREVISED,4399) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4399) @end quotation
-tar.texi(UNREVISED,4399) 
 tar.texi(,4400) 
 tar.texi(,4401) @cindex Reading incomplete records
 tar.texi(,4402) @cindex Records, incomplete
@@ -4780,7 +4768,6 @@ tar.texi(,4475) @subsection Changing How @command{tar} Writes Files
 tar.texi(UNREVISED,4476) @quotation
 tar.texi(UNREVISED,4476) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4476) @end quotation
-tar.texi(UNREVISED,4476) 
 tar.texi(,4477) 
 tar.texi(FIXME,4478) @allow-recursion
 tar.texi(FIXME,4478) @quote-arg
@@ -5237,7 +5224,6 @@ tar.texi(,4926) @subsection Coping with Scarce Resources
 tar.texi(UNREVISED,4927) @quotation
 tar.texi(UNREVISED,4927) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4927) @end quotation
-tar.texi(UNREVISED,4927) 
 tar.texi(,4928) 
 tar.texi(,4929) @cindex Small memory
 tar.texi(,4930) @cindex Running out of space
@@ -5386,7 +5372,6 @@ tar.texi(,5072) @section Notable @command{tar} Usages
 tar.texi(UNREVISED,5073) @quotation
 tar.texi(UNREVISED,5073) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5073) @end quotation
-tar.texi(UNREVISED,5073) 
 tar.texi(,5074) 
 tar.texi(FIXME,5077) @allow-recursion
 tar.texi(FIXME,5077) @quote-arg
@@ -5461,7 +5446,6 @@ tar.texi(,5143) @chapter Performing Backups and Restoring Files
 tar.texi(UNREVISED,5144) @quotation
 tar.texi(UNREVISED,5144) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5144) @end quotation
-tar.texi(UNREVISED,5144) 
 tar.texi(,5145) 
 tar.texi(GNUTAR,5146) @acronym{GNU} @command{tar} is distributed along with the scripts
 tar.texi(,5147) which the Free Software Foundation uses for performing backups.  There
@@ -5508,7 +5492,6 @@ tar.texi(,5230) @section Using @command{tar} to Perform Full Dumps
 tar.texi(UNREVISED,5231) @quotation
 tar.texi(UNREVISED,5231) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5231) @end quotation
-tar.texi(UNREVISED,5231) 
 tar.texi(,5232) 
 tar.texi(,5233) @cindex full dumps
 tar.texi(,5234) @cindex dumps, full
@@ -6294,7 +6277,6 @@ tar.texi(,6013) @chapter Choosing Files and Names for @command{tar}
 tar.texi(UNREVISED,6014) @quotation
 tar.texi(UNREVISED,6014) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6014) @end quotation
-tar.texi(UNREVISED,6014) 
 tar.texi(,6015) 
 tar.texi(,6016) Certain options to @command{tar} enable you to specify a name for your
 tar.texi(,6017) archive.  Other options let you decide which files to include or exclude
@@ -6322,7 +6304,6 @@ tar.texi(,6038) @section Choosing and Naming Archive Files
 tar.texi(UNREVISED,6039) @quotation
 tar.texi(UNREVISED,6039) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6039) @end quotation
-tar.texi(UNREVISED,6039) 
 tar.texi(,6040) 
 tar.texi(,6041) @cindex Naming an archive
 tar.texi(,6042) @cindex Archive Name
@@ -6702,7 +6683,6 @@ tar.texi(,6413) @section Excluding Some Files
 tar.texi(UNREVISED,6414) @quotation
 tar.texi(UNREVISED,6414) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6414) @end quotation
-tar.texi(UNREVISED,6414) 
 tar.texi(,6415) 
 tar.texi(,6416) @cindex File names, excluding files by
 tar.texi(,6417) @cindex Excluding files by name and pattern
@@ -7502,7 +7482,6 @@ tar.texi(,7207) @section Operating Only on New Files
 tar.texi(UNREVISED,7208) @quotation
 tar.texi(UNREVISED,7208) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7208) @end quotation
-tar.texi(UNREVISED,7208) 
 tar.texi(,7209) 
 tar.texi(,7210) @cindex Excluding file by age
 tar.texi(,7211) @cindex Data Modification time, excluding files by
@@ -7601,7 +7580,6 @@ tar.texi(,7303) @section Descending into Directories
 tar.texi(UNREVISED,7304) @quotation
 tar.texi(UNREVISED,7304) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7304) @end quotation
-tar.texi(UNREVISED,7304) 
 tar.texi(,7305) @cindex Avoiding recursion in directories
 tar.texi(,7306) @cindex Descending directories, avoiding
 tar.texi(,7307) @cindex Directories, avoiding recursion
@@ -7687,7 +7665,6 @@ tar.texi(,7384) @cindex File system boundaries, not crossing
 tar.texi(UNREVISED,7385) @quotation
 tar.texi(UNREVISED,7385) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7385) @end quotation
-tar.texi(UNREVISED,7385) 
 tar.texi(,7386) 
 tar.texi(,7387) @command{tar} will normally automatically cross file system boundaries in
 tar.texi(,7388) order to archive files which are part of a directory tree.  You can
@@ -7726,7 +7703,6 @@ tar.texi(,7420) @subsection Changing the Working Directory
 tar.texi(UNREVISED,7421) @quotation
 tar.texi(UNREVISED,7421) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7421) @end quotation
-tar.texi(UNREVISED,7421) 
 tar.texi(,7422) 
 tar.texi(FIXME,7424) @allow-recursion
 tar.texi(FIXME,7424) @quote-arg
@@ -7841,7 +7817,6 @@ tar.texi(,7531) @subsection Absolute File Names
 tar.texi(UNREVISED,7532) @quotation
 tar.texi(UNREVISED,7532) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7532) @end quotation
-tar.texi(UNREVISED,7532) 
 tar.texi(,7533) 
 tar.texi(,7534) @table @option
 tar.texi(,7535) @opindex absolute-names
@@ -8871,7 +8846,6 @@ tar.texi(,8061) @section Handling File Attributes
 tar.texi(UNREVISED,8062) @quotation
 tar.texi(UNREVISED,8062) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8062) @end quotation
-tar.texi(UNREVISED,8062) 
 tar.texi(,8063) 
 tar.texi(,8064) When @command{tar} reads files, it updates their access times.  To
 tar.texi(,8065) avoid this, use the @option{--atime-preserve[=METHOD]} option, which can either
@@ -9333,7 +9307,6 @@ tar.texi(,8518) @cindex negative time stamps
 tar.texi(UNREVISED,8519) @quotation
 tar.texi(UNREVISED,8519) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8519) @end quotation
-tar.texi(UNREVISED,8519) 
 tar.texi(,8520) 
 tar.texi(,8521) The above sections suggest to use @samp{oldest possible} archive
 tar.texi(,8522) format if in doubt.  However, sometimes it is not possible.  If you
@@ -9722,7 +9695,6 @@ tar.texi(,8903) @section Comparison of @command{tar} and @command{cpio}
 tar.texi(UNREVISED,8904) @quotation
 tar.texi(UNREVISED,8904) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8904) @end quotation
-tar.texi(UNREVISED,8904) 
 tar.texi(,8905) 
 tar.texi(FIXME,8906) @allow-recursion
 tar.texi(FIXME,8906) @quote-arg
@@ -9839,7 +9811,6 @@ tar.texi(,9015) @chapter Tapes and Other Archive Media
 tar.texi(UNREVISED,9016) @quotation
 tar.texi(UNREVISED,9016) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9016) @end quotation
-tar.texi(UNREVISED,9016) 
 tar.texi(,9017) 
 tar.texi(,9018) A few special cases about tape handling warrant more detailed
 tar.texi(,9019) description.  These special cases are discussed below.
@@ -9886,7 +9857,6 @@ tar.texi(,9059) @section Device Selection and Switching
 tar.texi(UNREVISED,9060) @quotation
 tar.texi(UNREVISED,9060) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9060) @end quotation
-tar.texi(UNREVISED,9060) 
 tar.texi(,9061) 
 tar.texi(,9062) @table @option
 tar.texi(,9063) @item -f [@var{hostname}:]@var{file}
@@ -10107,7 +10077,6 @@ tar.texi(,9279) @section Blocking
 tar.texi(UNREVISED,9280) @quotation
 tar.texi(UNREVISED,9280) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9280) @end quotation
-tar.texi(UNREVISED,9280) 
 tar.texi(,9281) 
 tar.texi(,9282) @dfn{Block} and @dfn{record} terminology is rather confused, and it
 tar.texi(,9283) is also confusing to the expert reader.  On the other hand, readers
@@ -10238,7 +10207,6 @@ tar.texi(,9407) @cindex Options, format specifying
 tar.texi(UNREVISED,9408) @quotation
 tar.texi(UNREVISED,9408) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9408) @end quotation
-tar.texi(UNREVISED,9408) 
 tar.texi(,9409) 
 tar.texi(,9410) Format parameters specify how an archive is written on the archive
 tar.texi(,9411) media.  The best choice of format parameters will vary depending on
@@ -10265,7 +10233,6 @@ tar.texi(,9431) @cindex Blocks per record
 tar.texi(UNREVISED,9432) @quotation
 tar.texi(UNREVISED,9432) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9432) @end quotation
-tar.texi(UNREVISED,9432) 
 tar.texi(,9433) 
 tar.texi(,9434) @opindex blocking-factor
 tar.texi(,9435) The data in an archive is grouped into blocks, which are 512 bytes.
@@ -10627,7 +10594,6 @@ tar.texi(,9784) @subsection Tape Positions and Tape Marks
 tar.texi(UNREVISED,9785) @quotation
 tar.texi(UNREVISED,9785) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9785) @end quotation
-tar.texi(UNREVISED,9785) 
 tar.texi(,9786) 
 tar.texi(,9787) Just as archives can store more than one file from the file system,
 tar.texi(,9788) tapes can store more than one archive file.  To keep track of where
@@ -10671,7 +10637,6 @@ tar.texi(,9825) @subsection The @command{mt} Utility
 tar.texi(UNREVISED,9826) @quotation
 tar.texi(UNREVISED,9826) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9826) @end quotation
-tar.texi(UNREVISED,9826) 
 tar.texi(,9827) 
 tar.texi(FIXME,9829) @allow-recursion
 tar.texi(FIXME,9829) @quote-arg
@@ -11037,7 +11002,6 @@ tar.texi(,10182) @subsection Tape Files
 tar.texi(UNREVISED,10183) @quotation
 tar.texi(UNREVISED,10183) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,10183) @end quotation
-tar.texi(UNREVISED,10183) 
 tar.texi(,10184) 
 tar.texi(,10185) To give the archive a name which will be recorded in it, use the
 tar.texi(,10186) @option{--label=@var{volume-label}} (@option{-V @var{volume-label}})
@@ -11104,7 +11068,6 @@ tar.texi(,10244) @cindex Labeling multi-volume archives
 tar.texi(UNREVISED,10245) @quotation
 tar.texi(UNREVISED,10245) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,10245) @end quotation
-tar.texi(UNREVISED,10245) 
 tar.texi(,10246) 
 tar.texi(,10247) @opindex label
 tar.texi(,10248)   To avoid problems caused by misplaced paper labels on the archive
@@ -11653,7 +11616,6 @@ intern.texi(,15) @unnumberedsec Basic Tar Format
 intern.texi(UNREVISED,16) @quotation
 intern.texi(UNREVISED,16) @emph{(This message will disappear, once this node revised.)}
 intern.texi(UNREVISED,16) @end quotation
-intern.texi(UNREVISED,16) 
 intern.texi(,17) 
 intern.texi(,18) While an archive may contain many files, the archive itself is a
 intern.texi(,19) single ordinary file.  Like any other file, an archive file can be
@@ -11677,7 +11639,6 @@ intern.texi(,36) member name.  One way this situation can occur is if more than 
 intern.texi(,37) version of a file has been stored in the archive.  For information
 intern.texi(,38) about adding new versions of a file to an archive, see @ref{update}.
 intern.texi(FIXME-xref,40) @quote-arg
-intern.texi(FIXME-xref,40) 
 intern.texi(,41) 
 intern.texi(,42) In addition to entries describing archive members, an archive may
 intern.texi(,43) contain entries which @command{tar} itself uses to store information.
@@ -11997,7 +11958,6 @@ intern.texi(,111) not support numeric user or group IDs, these fields should be 
 intern.texi(,112) 
 intern.texi(,113) The @code{size} field is the size of the file in bytes; linked files
 intern.texi(FIXME-xref,115) are archived with this field specified as zero.  @quote-arg
-intern.texi(FIXME-xref,115) 
 intern.texi(,116) 
 intern.texi(,117) The @code{mtime} field is the data modification time of the file at
 intern.texi(,118) the time it was archived.  It is the ASCII representation of the octal
@@ -12156,7 +12116,6 @@ intern.texi(,270) @unnumberedsec @acronym{GNU} Extensions to the Archive Format
 intern.texi(UNREVISED,271) @quotation
 intern.texi(UNREVISED,271) @emph{(This message will disappear, once this node revised.)}
 intern.texi(UNREVISED,271) @end quotation
-intern.texi(UNREVISED,271) 
 intern.texi(,272) 
 intern.texi(,273) The @acronym{GNU} format uses additional file types to describe new types of
 intern.texi(,274) files in an archive.  These are listed below.

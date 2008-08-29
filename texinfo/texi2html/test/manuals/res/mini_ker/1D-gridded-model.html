@@ -105,8 +105,8 @@ src="mini_ker_tex4ht_tex12x.png" alt="(   pos
 ||(  dmp
   &#x03C6;N+1 = 0  " class="math-display" ></center>  
 </p>
-<a name="IDX35"></a>
-<a name="IDX36"></a>
+<a name="index-down-node"></a>
+<a name="index-up-node"></a>
 
 <p>where       mk is the mass of node       k,       rk and       dk 
 the rigidity of springs and dumping coefficients. There are       N nodes
@@ -150,33 +150,33 @@ These dimensions has to be entered in the
 &lsquo;<tt>DimEtaPhi</tt>&rsquo; sequence. The parameters for cells are
 </p><dl compact="compact">
 <dt> <code>n_node</code>
-<a name="IDX37"></a>
+<a name="index-n_005fnode"></a>
 </dt>
 <dd><p>Number of cell nodes in the 1D grid.
 </p></dd>
 <dt> <code>n_dwn</code>
-<a name="IDX38"></a>
+<a name="index-n_005fdwn"></a>
 </dt>
 <dd><p>Number of limiting cells with index -1, <i>i.e.</i> number of cells in the
 limiting down node.
 </p></dd>
 <dt> <code>n_up</code>
-<a name="IDX39"></a>
+<a name="index-n_005fup"></a>
 </dt>
 <dd><p>Number of limiting cells with index +1, <i>i.e.</i> number of cells in the
 limiting up node.
 </p></dd>
 <dt> <code>n_mult</code>
-<a name="IDX40"></a>
+<a name="index-n_005fmult"></a>
 </dt>
 <dd><p>Number of cells in each node (multiplicity).
 </p></dd>
 </dl>
 
-<a name="IDX41"></a>
-<a name="IDX42"></a>
-<a name="IDX43"></a>
-<a name="IDX44"></a>
+<a name="index-m_005fnode"></a>
+<a name="index-m_005fdwn"></a>
+<a name="index-m_005fup"></a>
+<a name="index-m_005fmult"></a>
 <p>The parameters for transfers, are similarly 
 <code>m_node</code>, <code>m_dwn</code>, <code>m_up</code>, <code>m_mult</code>.
 The layout of their declaration should be respected as 
@@ -248,15 +248,15 @@ data rmassm1/n_node*1./;
 <a name="HEAD7"></a>
 <h4 class="subsubheading"> Limiting conditions </h4>
 
-<a name="IDX45"></a>
+<a name="index-limiting-conditions"></a>
 
 <p>There are four mortran blocks for <code>node</code> and <code>up</code> and <code>down</code>, both
 for states and transfers:
 </p>
-<a name="IDX46"></a>
-<a name="IDX47"></a>
-<a name="IDX48"></a>
-<a name="IDX49"></a>
+<a name="index-set_005fdwn_005feta"></a>
+<a name="index-set_005fdwn_005fphi"></a>
+<a name="index-set_005fup_005feta"></a>
+<a name="index-set_005fup_005fphi"></a>
 
 <dl compact="compact">
 <dt> <code>set_dwn_eta</code></dt>
@@ -332,9 +332,9 @@ using <code>inode</code> as the node index.
 <a name="HEAD9"></a>
 <h4 class="subsubheading"> Grid node equations </h4>
 
-<a name="IDX50"></a>
-<a name="IDX51"></a>
-<a name="IDX52"></a>
+<a name="index-set_005fnode_005fPhi"></a>
+<a name="index-set_005fnode_005feta"></a>
+<a name="index-equations_002c-grid"></a>
 
 <p>Each node is associated with an index <code>inode</code>. It allows to refer to the 
 preceding node, with <code>inode-1</code> and the following node <code>inode+1</code>.

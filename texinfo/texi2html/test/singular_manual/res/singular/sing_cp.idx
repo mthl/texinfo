@@ -1,11 +1,11 @@
 key: !
-  origin_href: sing_35.htm#IDX108
+  origin_href: sing_35.htm#index-_0021
   entry: !
   texi_entry: !
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: !=
-  origin_href: sing_35.htm#IDX102
+  origin_href: sing_35.htm#index-_0021_003d
   entry: !=
   texi_entry: !=
   element_href: sing_35.htm#Special-characters
@@ -17,31 +17,31 @@ key: !=
   element_href: sing_79.htm#boolean-expressions
   element_text: 4.3.5 boolean expressions
 key: "
-  origin_href: sing_35.htm#IDX111
+  origin_href: sing_35.htm#index-_0022
   entry: &quot;
   texi_entry: "
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: #
-  origin_href: sing_35.htm#IDX122
+  origin_href: sing_35.htm#index-_0023
   entry: #
   texi_entry: #
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: $
-  origin_href: sing_35.htm#IDX123
+  origin_href: sing_35.htm#index-_0024
   entry: $
   texi_entry: $
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: %
-  origin_href: sing_35.htm#IDX98
+  origin_href: sing_35.htm#index-_0025
   entry: %
   texi_entry: %
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: &&
-  origin_href: sing_35.htm#IDX109
+  origin_href: sing_35.htm#index-_0026_0026
   entry: &amp;&amp;
   texi_entry: &&
   element_href: sing_35.htm#Special-characters
@@ -53,289 +53,289 @@ key: &&
   element_href: sing_80.htm#boolean-operations
   element_text: 4.3.6 boolean operations
 key: (
-  origin_href: sing_35.htm#IDX89
+  origin_href: sing_35.htm#index-_0028
   entry: (
   texi_entry: (
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: )
-  origin_href: sing_35.htm#IDX90
+  origin_href: sing_35.htm#index-_0029
   entry: )
   texi_entry: )
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: *
-  origin_href: sing_35.htm#IDX96
+  origin_href: sing_35.htm#index-_002a
   entry: *
   texi_entry: *
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: **
-  origin_href: sing_35.htm#IDX100
+  origin_href: sing_35.htm#index-_002a_002a
   entry: **
   texi_entry: **
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: +
-  origin_href: sing_35.htm#IDX94
+  origin_href: sing_35.htm#index-_002b
   entry: +
   texi_entry: +
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: -
-  origin_href: sing_35.htm#IDX95
+  origin_href: sing_35.htm#index-_002d
   entry: -
   texi_entry: -
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: -MPhost
-  origin_href: sing_19.htm#IDX78
+  origin_href: sing_19.htm#index-_002d_002dMPhost
   entry: &ndash;MPhost
   texi_entry: --MPhost
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -MPport
-  origin_href: sing_19.htm#IDX77
+  origin_href: sing_19.htm#index-_002d_002dMPport
   entry: &ndash;MPport
   texi_entry: --MPport
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -allow-net
-  origin_href: sing_19.htm#IDX51
+  origin_href: sing_19.htm#index-_002d_002dallow_002dnet
   entry: &ndash;allow-net
   texi_entry: --allow-net
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -b
-  origin_href: sing_19.htm#IDX75
+  origin_href: sing_19.htm#index-_002db
   entry: -b
   texi_entry: -b
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -batch
-  origin_href: sing_19.htm#IDX76
+  origin_href: sing_19.htm#index-_002d_002dbatch
   entry: &ndash;batch
   texi_entry: --batch
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -browser
-  origin_href: sing_19.htm#IDX55
+  origin_href: sing_19.htm#index-_002d_002dbrowser
   entry: &ndash;browser
   texi_entry: --browser
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -c
-  origin_href: sing_19.htm#IDX67
+  origin_href: sing_19.htm#index-_002dc
   entry: -c
   texi_entry: -c
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -d
-  origin_href: sing_19.htm#IDX43
+  origin_href: sing_19.htm#index-_002dd
   entry: -d
   texi_entry: -d
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -e
-  origin_href: sing_19.htm#IDX46
+  origin_href: sing_19.htm#index-_002de
   entry: -e
   texi_entry: -e
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -echo
-  origin_href: sing_19.htm#IDX47
+  origin_href: sing_19.htm#index-_002d_002decho
   entry: &ndash;echo
   texi_entry: --echo
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -emacs
-  origin_href: sing_19.htm#IDX79
+  origin_href: sing_19.htm#index-_002d_002demacs
   entry: &ndash;emacs
   texi_entry: --emacs
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -emacs-dir
-  origin_href: sing_19.htm#IDX80
+  origin_href: sing_19.htm#index-_002d_002demacs_002ddir
   entry: &ndash;emacs-dir
   texi_entry: --emacs-dir
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -emacs-load
-  origin_href: sing_19.htm#IDX81
+  origin_href: sing_19.htm#index-_002d_002demacs_002dload
   entry: &ndash;emacs-load
   texi_entry: --emacs-load
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -execute
-  origin_href: sing_19.htm#IDX68
+  origin_href: sing_19.htm#index-_002d_002dexecute
   entry: &ndash;execute
   texi_entry: --execute
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -h
-  origin_href: sing_19.htm#IDX48
+  origin_href: sing_19.htm#index-_002dh
   entry: -h
   texi_entry: -h
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -help
-  origin_href: sing_19.htm#IDX49
+  origin_href: sing_19.htm#index-_002d_002dhelp
   entry: &ndash;help
   texi_entry: --help
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -min-time
-  origin_href: sing_19.htm#IDX73
+  origin_href: sing_19.htm#index-_002d_002dmin_002dtime
   entry: &ndash;min-time
   texi_entry: --min-time
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -no-out
-  origin_href: sing_19.htm#IDX61
+  origin_href: sing_19.htm#index-_002d_002dno_002dout
   entry: &ndash;no-out
   texi_entry: --no-out
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -no-rc
-  origin_href: sing_19.htm#IDX57
+  origin_href: sing_19.htm#index-_002d_002dno_002drc
   entry: &ndash;no-rc
   texi_entry: --no-rc
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -no-stdlib
-  origin_href: sing_19.htm#IDX59
+  origin_href: sing_19.htm#index-_002d_002dno_002dstdlib
   entry: &ndash;no-stdlib
   texi_entry: --no-stdlib
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -no-tty
-  origin_href: sing_19.htm#IDX62
+  origin_href: sing_19.htm#index-_002d_002dno_002dtty
   entry: &ndash;no-tty
   texi_entry: --no-tty
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -no-warn
-  origin_href: sing_19.htm#IDX60
+  origin_href: sing_19.htm#index-_002d_002dno_002dwarn
   entry: &ndash;no-warn
   texi_entry: --no-warn
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -q
-  origin_href: sing_19.htm#IDX63
+  origin_href: sing_19.htm#index-_002dq
   entry: -q
   texi_entry: -q
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -quiet
-  origin_href: sing_19.htm#IDX64
+  origin_href: sing_19.htm#index-_002d_002dquiet
   entry: &ndash;quiet
   texi_entry: --quiet
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -r
-  origin_href: sing_19.htm#IDX71
+  origin_href: sing_19.htm#index-_002dr
   entry: -r
   texi_entry: -r
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -random
-  origin_href: sing_19.htm#IDX72
+  origin_href: sing_19.htm#index-_002d_002drandom
   entry: &ndash;random
   texi_entry: --random
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -sdb
-  origin_href: sing_19.htm#IDX44
+  origin_href: sing_19.htm#index-_002d_002dsdb
   entry: &ndash;sdb
   texi_entry: --sdb
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -singular
-  origin_href: sing_19.htm#IDX82
+  origin_href: sing_19.htm#index-_002d_002dsingular
   entry: &ndash;singular
   texi_entry: --singular
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -ticks-per-sec
-  origin_href: sing_19.htm#IDX74
+  origin_href: sing_19.htm#index-_002d_002dticks_002dper_002dsec
   entry: &ndash;ticks-per-sec
   texi_entry: --ticks-per-sec
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -u
-  origin_href: sing_19.htm#IDX69
+  origin_href: sing_19.htm#index-_002du
   entry: -u
   texi_entry: -u
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -user-option
-  origin_href: sing_19.htm#IDX70
+  origin_href: sing_19.htm#index-_002d_002duser_002doption
   entry: &ndash;user-option
   texi_entry: --user-option
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -v
-  origin_href: sing_19.htm#IDX66
+  origin_href: sing_19.htm#index-_002dv
   entry: -v
   texi_entry: -v
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: -verbose
-  origin_href: sing_19.htm#IDX65
+  origin_href: sing_19.htm#index-_002d_002dverbose
   entry: &ndash;verbose
   texi_entry: --verbose
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: ..
-  origin_href: sing_35.htm#IDX119
+  origin_href: sing_35.htm#index-_002e_002e
   entry: ..
   texi_entry: ..
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: .singularrc file
-  origin_href: sing_20.htm#IDX84
+  origin_href: sing_20.htm#index-_002esingularrc-file
   entry: .singularrc file
   texi_entry: .singularrc file
   element_href: sing_20.htm#Startup-sequence
   element_text: 3.1.7 Startup sequence
 key: .singularrc file, no loading
-  origin_href: sing_19.htm#IDX58
+  origin_href: sing_19.htm#index-_002esingularrc-file_002c-no-loading
   entry: .singularrc file, no loading
   texi_entry: .singularrc file, no loading
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: /
-  origin_href: sing_35.htm#IDX97
+  origin_href: sing_35.htm#index-_002f
   entry: /
   texi_entry: /
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: //
-  origin_href: sing_35.htm#IDX114
+  origin_href: sing_35.htm#index-_002f_002f
   entry: //
   texi_entry: //
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: // 
-  origin_href: sing_35.htm#IDX115
+  origin_href: sing_35.htm#index-_002f_002f-1
   entry: //
   texi_entry: //
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: //  
-  origin_href: sing_35.htm#IDX116
+  origin_href: sing_35.htm#index-_002f_002f-2
   entry: //
   texi_entry: //
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: ;
-  origin_href: sing_35.htm#IDX117
+  origin_href: sing_35.htm#index-_003b
   entry: ;
   texi_entry: ;
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: <
-  origin_href: sing_35.htm#IDX107
+  origin_href: sing_35.htm#index-_003c
   entry: &lt;
   texi_entry: <
   element_href: sing_35.htm#Special-characters
@@ -347,7 +347,7 @@ key: <
   element_href: sing_189.htm#filecmd
   element_text: 5.1.34 files, input from
 key: <=
-  origin_href: sing_35.htm#IDX106
+  origin_href: sing_35.htm#index-_003c_003d
   entry: &lt;=
   texi_entry: <=
   element_href: sing_35.htm#Special-characters
@@ -359,7 +359,7 @@ key: <=
   element_href: sing_79.htm#boolean-expressions
   element_text: 4.3.5 boolean expressions
 key: <>
-  origin_href: sing_35.htm#IDX103
+  origin_href: sing_35.htm#index-_003c_003e
   entry: &lt;&gt;
   texi_entry: <>
   element_href: sing_35.htm#Special-characters
@@ -371,13 +371,13 @@ key: <>
   element_href: sing_79.htm#boolean-expressions
   element_text: 4.3.5 boolean expressions
 key: =
-  origin_href: sing_35.htm#IDX88
+  origin_href: sing_35.htm#index-_003d
   entry: =
   texi_entry: =
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: ==
-  origin_href: sing_35.htm#IDX101
+  origin_href: sing_35.htm#index-_003d_003d
   entry: ==
   texi_entry: ==
   element_href: sing_35.htm#Special-characters
@@ -389,13 +389,13 @@ key: ==
   element_href: sing_79.htm#boolean-expressions
   element_text: 4.3.5 boolean expressions
 key: >
-  origin_href: sing_35.htm#IDX105
+  origin_href: sing_35.htm#index-_003e
   entry: &gt;
   texi_entry: >
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: >=
-  origin_href: sing_35.htm#IDX104
+  origin_href: sing_35.htm#index-_003e_003d
   entry: &gt;=
   texi_entry: >=
   element_href: sing_35.htm#Special-characters
@@ -407,13 +407,13 @@ key: >=
   element_href: sing_79.htm#boolean-expressions
   element_text: 4.3.5 boolean expressions
 key: ?
-  origin_href: sing_35.htm#IDX113
+  origin_href: sing_35.htm#index-_003f
   entry: ?
   texi_entry: ?
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: ? 
-  origin_href: sing_198.htm#IDX140
+  origin_href: sing_198.htm#index-_003f-1
   entry: ?
   texi_entry: ?
   element_href: sing_198.htm#help
@@ -461,7 +461,7 @@ key: Adj_div
   element_href: sing_896.htm#Adj_005fdiv
   element_text: D.9.1.1 Adj_div
 key: Algebraic Geometry codes
-  origin_href: sing_895.htm#IDX358
+  origin_href: sing_895.htm#index-Algebraic-Geometry-codes
   entry: Algebraic Geometry codes
   texi_entry: Algebraic Geometry codes
   element_href: sing_895.htm#brnoeth_005flib
@@ -485,7 +485,7 @@ key: ArnoldAction
   element_href: sing_711.htm#ArnoldAction
   element_text: D.5.7.1 ArnoldAction
 key: Bachmann, Olaf
-  origin_href: sing_1.htm#IDX4
+  origin_href: sing_1.htm#index-Bachmann_002c-Olaf
   entry: Bachmann, Olaf
   texi_entry: Bachmann, Olaf
   element_href: sing_1.htm#HEAD2
@@ -497,13 +497,13 @@ key: Background
   element_href: sing_3.htm#Background
   element_text: 2.1 Background
 key: Bernstein polynomial
-  origin_href: sing_662.htm#IDX283
+  origin_href: sing_662.htm#index-Bernstein-polynomial
   entry: Bernstein polynomial
   texi_entry: Bernstein polynomial
   element_href: sing_662.htm#bernstein
   element_text: D.5.4.4 bernstein
 key: Betti number
-  origin_href: sing_374.htm#IDX249
+  origin_href: sing_374.htm#index-Betti-number
   entry: Betti number
   texi_entry: Betti number
   element_href: sing_374.htm#HEAD45
@@ -527,85 +527,85 @@ key: Branches of an Isolated Space Curve Singularity
   element_href: sing_354.htm#Branches-of-an-Isolated-Space-Curve-Singularity
   element_text: A.23 Branches of an Isolated Space Curve Singularity
 key: Brieskorn lattice
-  origin_href: sing_658.htm#IDX264
+  origin_href: sing_658.htm#index-Brieskorn-lattice
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: Brieskorn lattice 
-  origin_href: sing_659.htm#IDX273
+  origin_href: sing_659.htm#index-Brieskorn-lattice-1
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_659.htm#gmsring
   element_text: D.5.4.1 gmsring
 key: Brieskorn lattice  
-  origin_href: sing_660.htm#IDX276
+  origin_href: sing_660.htm#index-Brieskorn-lattice-2
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_660.htm#gmsnf
   element_text: D.5.4.2 gmsnf
 key: Brieskorn lattice   
-  origin_href: sing_661.htm#IDX279
+  origin_href: sing_661.htm#index-Brieskorn-lattice-3
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_661.htm#gmscoeffs
   element_text: D.5.4.3 gmscoeffs
 key: Brieskorn lattice    
-  origin_href: sing_662.htm#IDX282
+  origin_href: sing_662.htm#index-Brieskorn-lattice-4
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_662.htm#bernstein
   element_text: D.5.4.4 bernstein
 key: Brieskorn lattice     
-  origin_href: sing_663.htm#IDX286
+  origin_href: sing_663.htm#index-Brieskorn-lattice-5
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_663.htm#monodromy
   element_text: D.5.4.5 monodromy
 key: Brieskorn lattice      
-  origin_href: sing_664.htm#IDX290
+  origin_href: sing_664.htm#index-Brieskorn-lattice-6
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: Brieskorn lattice       
-  origin_href: sing_665.htm#IDX296
+  origin_href: sing_665.htm#index-Brieskorn-lattice-7
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: Brieskorn lattice        
-  origin_href: sing_668.htm#IDX304
+  origin_href: sing_668.htm#index-Brieskorn-lattice-8
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: Brieskorn lattice         
-  origin_href: sing_669.htm#IDX310
+  origin_href: sing_669.htm#index-Brieskorn-lattice-9
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: Brieskorn lattice          
-  origin_href: sing_670.htm#IDX318
+  origin_href: sing_670.htm#index-Brieskorn-lattice-10
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_670.htm#tmatrix
   element_text: D.5.4.12 tmatrix
 key: Brieskorn lattice           
-  origin_href: sing_671.htm#IDX324
+  origin_href: sing_671.htm#index-Brieskorn-lattice-11
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_671.htm#endvfilt
   element_text: D.5.4.13 endvfilt
 key: Brieskorn lattice            
-  origin_href: sing_704.htm#IDX347
+  origin_href: sing_704.htm#index-Brieskorn-lattice-12
   entry: Brieskorn lattice
   texi_entry: Brieskorn lattice
   element_href: sing_704.htm#mondromy_005flib
   element_text: D.5.6 mondromy_lib
 key: Brill-Noether algorithm
-  origin_href: sing_895.htm#IDX359
+  origin_href: sing_895.htm#index-Brill_002dNoether-algorithm
   entry: Brill-Noether algorithm
   texi_entry: Brill-Noether algorithm
   element_href: sing_895.htm#brnoeth_005flib
@@ -629,7 +629,7 @@ key: C programming language
   element_href: sing_321.htm#Major-differences-to-the-C-programming-language
   element_text: 6.2 Major differences to the C programming language
 key: C, module ordering
-  origin_href: sing_367.htm#IDX243
+  origin_href: sing_367.htm#index-C_002c-module-ordering
   entry: C, module ordering
   texi_entry: C, module ordering
   element_href: sing_367.htm#Module-orderings
@@ -683,7 +683,7 @@ key: Commutative algebra
   element_href: sing_529.htm#Commutative-algebra
   element_text: D.4 Commutative algebra
 key: Components of Windows installation
-  origin_href: sing_913.htm#IDX370
+  origin_href: sing_913.htm#index-Components-of-Windows-installation
   entry: Components of Windows installation
   texi_entry: Components of Windows installation
   element_href: sing_913.htm#HEAD61
@@ -731,7 +731,7 @@ key: DBM links
   element_href: sing_100.htm#DBM-links
   element_text: 4.6.6 DBM links
 key: DISPLAY environment variable
-  origin_href: sing_16.htm#IDX35
+  origin_href: sing_16.htm#index-DISPLAY-environment-variable
   entry: DISPLAY environment variable
   texi_entry: DISPLAY environment variable
   element_href: sing_16.htm#The-online-help-system
@@ -785,13 +785,13 @@ key: Documentation of a library
   element_href: sing_51.htm#Documentation-of-a-library
   element_text: 3.9.2 Documentation of a library
 key: Dp, global ordering
-  origin_href: sing_365.htm#IDX226
+  origin_href: sing_365.htm#index-Dp_002c-global-ordering
   entry: Dp, global ordering
   texi_entry: Dp, global ordering
   element_href: sing_365.htm#Global-orderings
   element_text: B.2.3 Global orderings
 key: Ds, local ordering
-  origin_href: sing_366.htm#IDX236
+  origin_href: sing_366.htm#index-Ds_002c-local-ordering
   entry: Ds, local ordering
   texi_entry: Ds, local ordering
   element_href: sing_366.htm#Local-orderings
@@ -815,7 +815,7 @@ key: ERROR
   element_href: sing_179.htm#ERROR
   element_text: 5.1.24 ERROR
 key: ESingular, no prompt
-  origin_href: sing_912.htm#IDX367
+  origin_href: sing_912.htm#index-ESingular_002c-no-prompt
   entry: ESingular, no prompt
   texi_entry: ESingular, no prompt
   element_href: sing_912.htm#HEAD59
@@ -995,7 +995,7 @@ key: Free resolution
   element_href: sing_342.htm#Free-resolution
   element_text: A.11 Free resolution
 key: Fru"bis-Kru"ger, Anne
-  origin_href: sing_1.htm#IDX5
+  origin_href: sing_1.htm#index-Frubis_002dKruger_002c-Anne
   entry: Fr&uuml;bis-Kr&uuml;ger, Anne
   texi_entry: Fr@"ubis-Kr@"uger, Anne
   element_href: sing_1.htm#HEAD2
@@ -1037,85 +1037,85 @@ key: Gauss-Manin connection
   element_href: sing_376.htm#Gauss_002dManin-connection
   element_text: C.5 Gauss-Manin connection
 key: Gauss-Manin connection 
-  origin_href: sing_658.htm#IDX263
+  origin_href: sing_658.htm#index-Gauss_002dManin-connection
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: Gauss-Manin connection  
-  origin_href: sing_659.htm#IDX272
+  origin_href: sing_659.htm#index-Gauss_002dManin-connection-1
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_659.htm#gmsring
   element_text: D.5.4.1 gmsring
 key: Gauss-Manin connection   
-  origin_href: sing_660.htm#IDX275
+  origin_href: sing_660.htm#index-Gauss_002dManin-connection-2
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_660.htm#gmsnf
   element_text: D.5.4.2 gmsnf
 key: Gauss-Manin connection    
-  origin_href: sing_661.htm#IDX278
+  origin_href: sing_661.htm#index-Gauss_002dManin-connection-3
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_661.htm#gmscoeffs
   element_text: D.5.4.3 gmscoeffs
 key: Gauss-Manin connection     
-  origin_href: sing_662.htm#IDX281
+  origin_href: sing_662.htm#index-Gauss_002dManin-connection-4
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_662.htm#bernstein
   element_text: D.5.4.4 bernstein
 key: Gauss-Manin connection      
-  origin_href: sing_663.htm#IDX285
+  origin_href: sing_663.htm#index-Gauss_002dManin-connection-5
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_663.htm#monodromy
   element_text: D.5.4.5 monodromy
 key: Gauss-Manin connection       
-  origin_href: sing_664.htm#IDX289
+  origin_href: sing_664.htm#index-Gauss_002dManin-connection-6
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: Gauss-Manin connection        
-  origin_href: sing_665.htm#IDX295
+  origin_href: sing_665.htm#index-Gauss_002dManin-connection-7
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: Gauss-Manin connection         
-  origin_href: sing_668.htm#IDX303
+  origin_href: sing_668.htm#index-Gauss_002dManin-connection-8
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: Gauss-Manin connection          
-  origin_href: sing_669.htm#IDX309
+  origin_href: sing_669.htm#index-Gauss_002dManin-connection-9
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: Gauss-Manin connection           
-  origin_href: sing_670.htm#IDX317
+  origin_href: sing_670.htm#index-Gauss_002dManin-connection-10
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_670.htm#tmatrix
   element_text: D.5.4.12 tmatrix
 key: Gauss-Manin connection            
-  origin_href: sing_671.htm#IDX323
+  origin_href: sing_671.htm#index-Gauss_002dManin-connection-11
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_671.htm#endvfilt
   element_text: D.5.4.13 endvfilt
 key: Gauss-Manin connection             
-  origin_href: sing_704.htm#IDX346
+  origin_href: sing_704.htm#index-Gauss_002dManin-connection-12
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_704.htm#mondromy_005flib
   element_text: D.5.6 mondromy_lib
 key: Gauss-Manin connection              
-  origin_href: sing_751.htm#IDX349
+  origin_href: sing_751.htm#index-Gauss_002dManin-connection-13
   entry: Gauss-Manin connection
   texi_entry: Gauss-Manin connection
   element_href: sing_751.htm#spectrumnd
@@ -1145,7 +1145,7 @@ key: General syntax of a ring declaration
   element_href: sing_30.htm#General-syntax-of-a-ring-declaration
   element_text: 3.3.2 General syntax of a ring declaration
 key: German Umlaute
-  origin_href: sing_320.htm#IDX207
+  origin_href: sing_320.htm#index-German-Umlaute
   entry: German Umlaute
   texi_entry: German Umlaute
   element_href: sing_320.htm#Limitations
@@ -1163,13 +1163,13 @@ key: Global orderings
   element_href: sing_365.htm#Global-orderings
   element_text: B.2.3 Global orderings
 key: Grassmann, Hubert
-  origin_href: sing_1.htm#IDX14
+  origin_href: sing_1.htm#index-Grassmann_002c-Hubert
   entry: Grassmann, Hubert
   texi_entry: Grassmann, Hubert
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Greuel, Gert-Martin
-  origin_href: sing_1.htm#IDX1
+  origin_href: sing_1.htm#index-Greuel_002c-Gert_002dMartin
   entry: Greuel, Gert-Martin
   texi_entry: Greuel, Gert-Martin
   element_href: sing_1.htm#HEAD2
@@ -1187,13 +1187,13 @@ key: H2basis
   element_href: sing_709.htm#H2basis
   element_text: D.5.6.5 H2basis
 key: Hamburger-Noether expansion
-  origin_href: sing_682.htm#IDX328
+  origin_href: sing_682.htm#index-Hamburger_002dNoether-expansion
   entry: Hamburger-Noether expansion
   texi_entry: Hamburger-Noether expansion
   element_href: sing_682.htm#hnoether_005flib
   element_text: D.5.5 hnoether_lib
 key: Hamburger-Noether expansions
-  origin_href: sing_896.htm#IDX360
+  origin_href: sing_896.htm#index-Hamburger_002dNoether-expansions
   entry: Hamburger-Noether expansions
   texi_entry: Hamburger-Noether expansions
   element_href: sing_896.htm#Adj_005fdiv
@@ -1205,7 +1205,7 @@ key: Hcode
   element_href: sing_635.htm#Hcode
   element_text: D.5.1.4 Hcode
 key: Hilbert function
-  origin_href: sing_278.htm#IDX171
+  origin_href: sing_278.htm#index-Hilbert-function
   entry: Hilbert function
   texi_entry: Hilbert function
   element_href: sing_278.htm#stdhilb
@@ -1265,19 +1265,19 @@ key: How to use this manual
   element_href: sing_4.htm#How-to-use-this-manual
   element_text: 2.2 How to use this manual
 key: IN
-  origin_href: sing_216.htm#IDX141
+  origin_href: sing_216.htm#index-IN
   entry: IN
   texi_entry: IN
   element_href: sing_216.htm#lead
   element_text: 5.1.61 lead
 key: INFO environment variable
-  origin_href: sing_16.htm#IDX40
+  origin_href: sing_16.htm#index-INFO-environment-variable
   entry: INFO environment variable
   texi_entry: INFO environment variable
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: Ideal membership
-  origin_href: sing_372.htm#IDX248
+  origin_href: sing_372.htm#index-Ideal-membership
   entry: Ideal membership
   texi_entry: Ideal membership
   element_href: sing_372.htm#HEAD42
@@ -1301,7 +1301,7 @@ key: ImageVariety
   element_href: sing_797.htm#ImageVariety
   element_text: D.6.3.3 ImageVariety
 key: Imap, option
-  origin_href: sing_244.htm#IDX160
+  origin_href: sing_244.htm#index-Imap_002c-option
   entry: Imap, option
   texi_entry: Imap, option
   element_href: sing_244.htm#option
@@ -1373,7 +1373,7 @@ key: KSpencerKernel
   element_href: sing_749.htm#KSpencerKernel
   element_text: D.5.9.9 KSpencerKernel
 key: Keilen, Thomas
-  origin_href: sing_1.htm#IDX6
+  origin_href: sing_1.htm#index-Keilen_002c-Thomas
   entry: Keilen, Thomas
   texi_entry: Keilen, Thomas
   element_href: sing_1.htm#HEAD2
@@ -1391,7 +1391,7 @@ key: KoszulHomology
   element_href: sing_567.htm#KoszulHomology
   element_text: D.4.3.17 KoszulHomology
 key: Kru"ger, Kai
-  origin_href: sing_1.htm#IDX7
+  origin_href: sing_1.htm#index-Kruger_002c-Kai
   entry: Kr&uuml;ger, Kai
   texi_entry: Kr@"uger, Kai
   element_href: sing_1.htm#HEAD2
@@ -1409,7 +1409,7 @@ key: LIBs
   element_href: sing_389.htm#SINGULAR-libraries
   element_text: D. SINGULAR libraries
 key: Levandovskyy, Viktor
-  origin_href: sing_1.htm#IDX9
+  origin_href: sing_1.htm#index-Levandovskyy_002c-Viktor
   entry: Levandovskyy, Viktor
   texi_entry: Levandovskyy, Viktor
   element_href: sing_1.htm#HEAD2
@@ -1469,7 +1469,7 @@ key: Long coefficients
   element_href: sing_336.htm#Long-coefficients
   element_text: A.5 Long coefficients
 key: Lossen, Christoph
-  origin_href: sing_1.htm#IDX8
+  origin_href: sing_1.htm#index-Lossen_002c-Christoph
   entry: Lossen, Christoph
   texi_entry: Lossen, Christoph
   element_href: sing_1.htm#HEAD2
@@ -1493,7 +1493,7 @@ key: MP links
   element_href: sing_97.htm#MP-links
   element_text: 4.6.5 MP links
 key: MP, groebner basis computations
-  origin_href: sing_197.htm#IDX139
+  origin_href: sing_197.htm#index-MP_002c-groebner-basis-computations
   entry: MP, groebner basis computations
   texi_entry: MP, groebner basis computations
   element_href: sing_197.htm#groebner
@@ -1577,7 +1577,7 @@ key: Modules and and their annihilator
   element_href: sing_10.htm#Modules-and-their-annihilator
   element_text: 2.3.5 Modules and their annihilator
 key: Monodromy
-  origin_href: sing_704.htm#IDX344
+  origin_href: sing_704.htm#index-Monodromy
   entry: Monodromy
   texi_entry: Monodromy
   element_href: sing_704.htm#mondromy_005flib
@@ -1595,7 +1595,7 @@ key: Monomial orderings, Term orderings
   element_href: sing_31.htm#Term-orderings
   element_text: 3.3.3 Term orderings
 key: NETSCAPE environment variable
-  origin_href: sing_16.htm#IDX37
+  origin_href: sing_16.htm#index-NETSCAPE-environment-variable
   entry: NETSCAPE environment variable
   texi_entry: NETSCAPE environment variable
   element_href: sing_16.htm#The-online-help-system
@@ -1625,31 +1625,31 @@ key: Names in procedures
   element_href: sing_43.htm#Names-in-procedures
   element_text: 3.7.2 Names in procedures
 key: Neumann, Wolfgang
-  origin_href: sing_1.htm#IDX15
+  origin_href: sing_1.htm#index-Neumann_002c-Wolfgang
   entry: Neumann, Wolfgang
   texi_entry: Neumann, Wolfgang
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Newton non-degenerate
-  origin_href: sing_698.htm#IDX342
+  origin_href: sing_698.htm#index-Newton-non_002ddegenerate
   entry: Newton non-degenerate
   texi_entry: Newton non-degenerate
   element_href: sing_698.htm#is_005fNND
   element_text: D.5.5.16 is_NND
 key: Newton polygon
-  origin_href: sing_697.htm#IDX341
+  origin_href: sing_697.htm#index-Newton-polygon
   entry: Newton polygon
   texi_entry: Newton polygon
   element_href: sing_697.htm#newtonpoly
   element_text: D.5.5.15 newtonpoly
 key: Newton polygon 
-  origin_href: sing_698.htm#IDX343
+  origin_href: sing_698.htm#index-Newton-polygon-1
   entry: Newton polygon
   texi_entry: Newton polygon
   element_href: sing_698.htm#is_005fNND
   element_text: D.5.5.16 is_NND
 key: Normal form
-  origin_href: sing_372.htm#IDX247
+  origin_href: sing_372.htm#index-Normal-form
   entry: Normal form
   texi_entry: Normal form
   element_href: sing_372.htm#HEAD42
@@ -1691,13 +1691,13 @@ key: Parameters
   element_href: sing_337.htm#Parameters
   element_text: A.6 Parameters
 key: Pfister, Gerhard
-  origin_href: sing_1.htm#IDX2
+  origin_href: sing_1.htm#index-Pfister_002c-Gerhard
   entry: Pfister, Gerhard
   texi_entry: Pfister, Gerhard
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Pohl, Wilfred
-  origin_href: sing_1.htm#IDX10
+  origin_href: sing_1.htm#index-Pohl_002c-Wilfred
   entry: Pohl, Wilfred
   texi_entry: Pohl, Wilfred
   element_href: sing_1.htm#HEAD2
@@ -1787,7 +1787,7 @@ key: Product orderings
   element_href: sing_369.htm#Product-orderings
   element_text: B.2.7 Product orderings
 key: Puiseux expansion
-  origin_href: sing_682.htm#IDX329
+  origin_href: sing_682.htm#index-Puiseux-expansion
   entry: Puiseux expansion
   texi_entry: Puiseux expansion
   element_href: sing_682.htm#hnoether_005flib
@@ -1799,7 +1799,7 @@ key: Puiseux pairs
   element_href: sing_351.htm#Puiseux-pairs
   element_text: A.20 Puiseux pairs
 key: Puiseux pairs 
-  origin_href: sing_689.htm#IDX334
+  origin_href: sing_689.htm#index-Puiseux-pairs
   entry: Puiseux pairs
   texi_entry: Puiseux pairs
   element_href: sing_689.htm#invariants
@@ -1907,13 +1907,13 @@ key: Running SINGULAR under Emacs
   element_href: sing_23.htm#Running-SINGULAR-under-Emacs
   element_text: 3.2.2 Running SINGULAR under Emacs
 key: SDB breakpoint
-  origin_href: sing_62.htm#IDX136
+  origin_href: sing_62.htm#index-SDB-breakpoint
   entry: SDB breakpoint
   texi_entry: SDB breakpoint
   element_href: sing_62.htm#HEAD40
   element_text: SDB breakpoints in procedures
 key: SDB debugger
-  origin_href: sing_62.htm#IDX137
+  origin_href: sing_62.htm#index-SDB-debugger
   entry: SDB debugger
   texi_entry: SDB debugger
   element_href: sing_62.htm#HEAD40
@@ -1949,13 +1949,13 @@ key: SQFRNormMain
   element_href: sing_866.htm#SQFRNormMain
   element_text: D.7.5.14 SQFRNormMain
 key: SV-decoding algorithm
-  origin_href: sing_904.htm#IDX363
+  origin_href: sing_904.htm#index-SV_002ddecoding-algorithm
   entry: SV-decoding algorithm
   texi_entry: SV-decoding algorithm
   element_href: sing_904.htm#decodeSV
   element_text: D.9.1.9 decodeSV
 key: SV-decoding algorithm, preprocessing
-  origin_href: sing_903.htm#IDX362
+  origin_href: sing_903.htm#index-SV_002ddecoding-algorithm_002c-preprocessing
   entry: SV-decoding algorithm, preprocessing
   texi_entry: SV-decoding algorithm, preprocessing
   element_href: sing_903.htm#prepSV
@@ -1973,19 +1973,19 @@ key: Saturation
   element_href: sing_335.htm#Saturation
   element_text: A.4 Saturation
 key: Schmidt, Jens
-  origin_href: sing_1.htm#IDX16
+  origin_href: sing_1.htm#index-Schmidt_002c-Jens
   entry: Schmidt, Jens
   texi_entry: Schmidt, Jens
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Scho"nemann, Hans
-  origin_href: sing_1.htm#IDX3
+  origin_href: sing_1.htm#index-Schonemann_002c-Hans
   entry: Sch&ouml;nemann, Hans
   texi_entry: Sch@"onemann, Hans
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Schulze, Mathias
-  origin_href: sing_1.htm#IDX11
+  origin_href: sing_1.htm#index-Schulze_002c-Mathias
   entry: Schulze, Mathias
   texi_entry: Schulze, Mathias
   element_href: sing_1.htm#HEAD2
@@ -2003,7 +2003,7 @@ key: SimplifyIdeal
   element_href: sing_808.htm#SimplifyIdeal
   element_text: D.6.3.14 SimplifyIdeal
 key: Singular
-  origin_href: sing_280.htm#IDX192
+  origin_href: sing_280.htm#index-Singular
   entry: Singular
   texi_entry: Singular
   element_href: sing_280.htm#system
@@ -2045,7 +2045,7 @@ key: Singularities
   element_href: sing_630.htm#Singularities
   element_text: D.5 Singularities
 key: Source code debugger, invocation
-  origin_href: sing_19.htm#IDX45
+  origin_href: sing_19.htm#index-Source-code-debugger_002c-invocation
   entry: Source code debugger, invocation
   texi_entry: Source code debugger, invocation
   element_href: sing_19.htm#Command-line-options
@@ -2087,13 +2087,13 @@ key: Startup sequence
   element_href: sing_20.htm#Startup-sequence
   element_text: 3.1.7 Startup sequence
 key: Stobbe, Ru"diger
-  origin_href: sing_1.htm#IDX17
+  origin_href: sing_1.htm#index-Stobbe_002c-Rudiger
   entry: Stobbe, R&uuml;diger
   texi_entry: Stobbe, R@"udiger
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: SuSE, ESingular bug
-  origin_href: sing_912.htm#IDX366
+  origin_href: sing_912.htm#index-SuSE_002c-ESingular-bug
   entry: SuSE, ESingular bug
   texi_entry: SuSE, ESingular bug
   element_href: sing_912.htm#HEAD59
@@ -2189,7 +2189,7 @@ key: Tjurina
   element_href: sing_734.htm#Tjurina
   element_text: D.5.8.13 Tjurina
 key: Tjurina number
-  origin_href: sing_599.htm#IDX256
+  origin_href: sing_599.htm#index-Tjurina-number
   entry: Tjurina number
   texi_entry: Tjurina number
   element_href: sing_599.htm#deltaLoc
@@ -2225,7 +2225,7 @@ key: Tricks and pitfalls
   element_href: sing_319.htm#Tricks-and-pitfalls
   element_text: 6. Tricks and pitfalls
 key: Type casting
-  origin_href: sing_38.htm#IDX124
+  origin_href: sing_38.htm#index-Type-casting
   entry: Type casting
   texi_entry: Type casting
   element_href: sing_38.htm#HEAD28
@@ -2261,43 +2261,43 @@ key: UpperMonomials
   element_href: sing_717.htm#UpperMonomials
   element_text: D.5.7.7 UpperMonomials
 key: V-filtration
-  origin_href: sing_658.htm#IDX269
+  origin_href: sing_658.htm#index-V_002dfiltration
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: V-filtration 
-  origin_href: sing_664.htm#IDX292
+  origin_href: sing_664.htm#index-V_002dfiltration-1
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: V-filtration  
-  origin_href: sing_665.htm#IDX298
+  origin_href: sing_665.htm#index-V_002dfiltration-2
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: V-filtration   
-  origin_href: sing_668.htm#IDX306
+  origin_href: sing_668.htm#index-V_002dfiltration-3
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: V-filtration    
-  origin_href: sing_669.htm#IDX312
+  origin_href: sing_669.htm#index-V_002dfiltration-4
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: V-filtration     
-  origin_href: sing_670.htm#IDX321
+  origin_href: sing_670.htm#index-V_002dfiltration-5
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_670.htm#tmatrix
   element_text: D.5.4.12 tmatrix
 key: V-filtration      
-  origin_href: sing_671.htm#IDX326
+  origin_href: sing_671.htm#index-V_002dfiltration-6
   entry: V-filtration
   texi_entry: V-filtration
   element_href: sing_671.htm#endvfilt
@@ -2309,7 +2309,7 @@ key: Visualization
   element_href: sing_869.htm#Visualization
   element_text: D.8 Visualization
 key: WP, global ordering
-  origin_href: sing_365.htm#IDX230
+  origin_href: sing_365.htm#index-WP_002c-global-ordering
   entry: WP, global ordering
   texi_entry: WP, global ordering
   element_href: sing_365.htm#Global-orderings
@@ -2321,19 +2321,19 @@ key: Weierstrass
   element_href: sing_899.htm#Weierstrass
   element_text: D.9.1.4 Weierstrass
 key: Weierstrass semigroup
-  origin_href: sing_895.htm#IDX357
+  origin_href: sing_895.htm#index-Weierstrass-semigroup
   entry: Weierstrass semigroup
   texi_entry: Weierstrass semigroup
   element_href: sing_895.htm#brnoeth_005flib
   element_text: D.9.1 brnoeth_lib
 key: Westenberger, Eric
-  origin_href: sing_1.htm#IDX12
+  origin_href: sing_1.htm#index-Westenberger_002c-Eric
   entry: Westenberger, Eric
   texi_entry: Westenberger, Eric
   element_href: sing_1.htm#HEAD2
   element_text: Acknowledgements
 key: Wichmann, Tim
-  origin_href: sing_1.htm#IDX13
+  origin_href: sing_1.htm#index-Wichmann_002c-Tim
   entry: Wichmann, Tim
   texi_entry: Wichmann, Tim
   element_href: sing_1.htm#HEAD2
@@ -2345,25 +2345,25 @@ key: Windows installation
   element_href: sing_913.htm#Windows-installation-instructions
   element_text: E.4 Windows installation instructions
 key: Windows installation, components
-  origin_href: sing_913.htm#IDX369
+  origin_href: sing_913.htm#index-Windows-installation_002c-components
   entry: Windows installation, components
   texi_entry: Windows installation, components
   element_href: sing_913.htm#HEAD61
   element_text: Installation preliminaries
 key: Ws, local ordering
-  origin_href: sing_366.htm#IDX242
+  origin_href: sing_366.htm#index-Ws_002c-local-ordering
   entry: Ws, local ordering
   texi_entry: Ws, local ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: XINFO environment variable
-  origin_href: sing_16.htm#IDX38
+  origin_href: sing_16.htm#index-XINFO-environment-variable
   entry: XINFO environment variable
   texi_entry: XINFO environment variable
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: XTERM environment variable
-  origin_href: sing_16.htm#IDX39
+  origin_href: sing_16.htm#index-XTERM-environment-variable
   entry: XTERM environment variable
   texi_entry: XTERM environment variable
   element_href: sing_16.htm#The-online-help-system
@@ -2375,37 +2375,37 @@ key: ZeroSet
   element_href: sing_859.htm#ZeroSet
   element_text: D.7.5.7 ZeroSet
 key: [
-  origin_href: sing_35.htm#IDX92
+  origin_href: sing_35.htm#index-_005b
   entry: [
   texi_entry: [
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: \
-  origin_href: sing_35.htm#IDX118
+  origin_href: sing_35.htm#index-_005c
   entry: \
   texi_entry: \
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: ]
-  origin_href: sing_35.htm#IDX93
+  origin_href: sing_35.htm#index-_005d
   entry: ]
   texi_entry: ]
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: ^
-  origin_href: sing_35.htm#IDX99
+  origin_href: sing_35.htm#index-_005e
   entry: ^
   texi_entry: ^
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: _
-  origin_href: sing_35.htm#IDX120
+  origin_href: sing_35.htm#index-_005f
   entry: _
   texi_entry: _
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: `
-  origin_href: sing_35.htm#IDX112
+  origin_href: sing_35.htm#index-_0060
   entry: &lsquo;
   texi_entry: `
   element_href: sing_35.htm#Special-characters
@@ -2447,7 +2447,7 @@ key: adjoint
   element_href: sing_513.htm#adjoint
   element_text: D.3.2.9 adjoint
 key: adjunction divisor
-  origin_href: sing_896.htm#IDX361
+  origin_href: sing_896.htm#index-adjunction-divisor
   entry: adjunction divisor
   texi_entry: adjunction divisor
   element_href: sing_896.htm#Adj_005fdiv
@@ -2495,7 +2495,7 @@ key: algebra_lib
   element_href: sing_530.htm#algebra_005flib
   element_text: D.4.1 algebra_lib
 key: algebraic field extension
-  origin_href: sing_618.htm#IDX258
+  origin_href: sing_618.htm#index-algebraic-field-extension
   entry: algebraic field extension
   texi_entry: algebraic field extension
   element_href: sing_618.htm#splitring
@@ -2543,7 +2543,7 @@ key: all_lib
   element_href: sing_392.htm#all_005flib
   element_text: D.2.1 all_lib
 key: allowing net access
-  origin_href: sing_19.htm#IDX53
+  origin_href: sing_19.htm#index-allowing-net-access
   entry: allowing net access
   texi_entry: allowing net access
   element_href: sing_19.htm#Command-line-options
@@ -2681,31 +2681,31 @@ key: brnoeth_lib
   element_href: sing_895.htm#brnoeth_005flib
   element_text: D.9.1 brnoeth_lib
 key: browser, command line option
-  origin_href: sing_19.htm#IDX56
+  origin_href: sing_19.htm#index-browser_002c-command-line-option
   entry: browser, command line option
   texi_entry: browser, command line option
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: browser, setting the
-  origin_href: sing_280.htm#IDX202
+  origin_href: sing_280.htm#index-browser_002c-setting-the
   entry: browser, setting the
   texi_entry: browser, setting the
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: browsers
-  origin_href: sing_16.htm#IDX18
+  origin_href: sing_16.htm#index-browsers
   entry: browsers
   texi_entry: browsers
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: browsers, setting the
-  origin_href: sing_280.htm#IDX201
+  origin_href: sing_280.htm#index-browsers_002c-setting-the
   entry: browsers, setting the
   texi_entry: browsers, setting the
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: bug, ESingular
-  origin_href: sing_912.htm#IDX368
+  origin_href: sing_912.htm#index-bug_002c-ESingular
   entry: bug, ESingular
   texi_entry: bug, ESingular
   element_href: sing_912.htm#HEAD59
@@ -2717,7 +2717,7 @@ key: busadj
   element_href: sing_511.htm#busadj
   element_text: D.3.2.7 busadj
 key: c, module ordering
-  origin_href: sing_367.htm#IDX245
+  origin_href: sing_367.htm#index-c_002c-module-ordering
   entry: c, module ordering
   texi_entry: c, module ordering
   element_href: sing_367.htm#Module-orderings
@@ -2729,7 +2729,7 @@ key: case
   element_href: sing_324.htm#No-case-or-switch-statement
   element_text: 6.2.3 No case or switch statement
 key: category in a library
-  origin_href: sing_48.htm#IDX127
+  origin_href: sing_48.htm#index-category-in-a-library
   entry: category in a library
   texi_entry: category in a library
   element_href: sing_48.htm#Format-of-a-library
@@ -2771,7 +2771,7 @@ key: char_series
   element_href: sing_160.htm#char_005fseries
   element_text: 5.1.5 char_series
 key: characteristic exponents
-  origin_href: sing_689.htm#IDX332
+  origin_href: sing_689.htm#index-characteristic-exponents
   entry: characteristic exponents
   texi_entry: characteristic exponents
   element_href: sing_689.htm#invariants
@@ -2879,25 +2879,25 @@ key: comma
   element_href: sing_325.htm#Usage-of-commas
   element_text: 6.2.4 Usage of commas
 key: command-line option, setting value of
-  origin_href: sing_280.htm#IDX198
+  origin_href: sing_280.htm#index-command_002dline-option_002c-setting-value-of
   entry: command-line option, setting value of
   texi_entry: command-line option, setting value of
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: command-line option, value of
-  origin_href: sing_280.htm#IDX196
+  origin_href: sing_280.htm#index-command_002dline-option_002c-value-of
   entry: command-line option, value of
   texi_entry: command-line option, value of
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: command-line options, print all values of
-  origin_href: sing_280.htm#IDX195
+  origin_href: sing_280.htm#index-command_002dline-options_002c-print-all-values-of
   entry: command-line options, print all values of
   texi_entry: command-line options, print all values of
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: command-line options, short help
-  origin_href: sing_19.htm#IDX50
+  origin_href: sing_19.htm#index-command_002dline-options_002c-short-help
   entry: command-line options, short help
   texi_entry: command-line options, short help
   element_href: sing_19.htm#Command-line-options
@@ -2909,7 +2909,7 @@ key: completeReduction
   element_href: sing_790.htm#completeReduction
   element_text: D.6.2.5 completeReduction
 key: complex
-  origin_href: sing_28.htm#IDX87
+  origin_href: sing_28.htm#index-complex
   entry: complex
   texi_entry: complex
   element_href: sing_28.htm#Rings-and-orderings
@@ -2927,7 +2927,7 @@ key: concat
   element_href: sing_478.htm#concat
   element_text: D.3.1.2 concat
 key: conductor, degree
-  origin_href: sing_689.htm#IDX335
+  origin_href: sing_689.htm#index-conductor_002c-degree
   entry: conductor, degree
   texi_entry: conductor, degree
   element_href: sing_689.htm#invariants
@@ -2957,7 +2957,7 @@ key: contract
   element_href: sing_166.htm#contract
   element_text: 5.1.11 contract
 key: contributors
-  origin_href: sing_280.htm#IDX187
+  origin_href: sing_280.htm#index-contributors
   entry: contributors
   texi_entry: contributors
   element_href: sing_280.htm#system
@@ -2993,13 +2993,13 @@ key: cupproduct
   element_href: sing_552.htm#cupproduct
   element_text: D.4.3.2 cupproduct
 key: curve singularities
-  origin_href: sing_682.htm#IDX330
+  origin_href: sing_682.htm#index-curve-singularities
   entry: curve singularities
   texi_entry: curve singularities
   element_href: sing_682.htm#hnoether_005flib
   element_text: D.5.5 hnoether_lib
 key: curve singularities 
-  origin_href: sing_891.htm#IDX356
+  origin_href: sing_891.htm#index-curve-singularities-1
   entry: curve singularities
   texi_entry: curve singularities
   element_href: sing_891.htm#parametrizesing
@@ -3023,7 +3023,7 @@ key: dbprint
   element_href: sing_167.htm#dbprint
   element_text: 5.1.12 dbprint
 key: debugLib, option
-  origin_href: sing_244.htm#IDX162
+  origin_href: sing_244.htm#index-debugLib_002c-option
   entry: debugLib, option
   texi_entry: debugLib, option
   element_href: sing_244.htm#option
@@ -3131,19 +3131,19 @@ key: degree
   element_href: sing_170.htm#degree
   element_text: 5.1.15 degree
 key: degree 
-  origin_href: sing_329.htm#IDX214
+  origin_href: sing_329.htm#index-degree
   entry: degree
   texi_entry: degree
   element_href: sing_329.htm#Miscellaneous-oddities
   element_text: 6.3 Miscellaneous oddities
 key: degree lexicographical ordering
-  origin_href: sing_365.htm#IDX225
+  origin_href: sing_365.htm#index-degree-lexicographical-ordering
   entry: degree lexicographical ordering
   texi_entry: degree lexicographical ordering
   element_href: sing_365.htm#Global-orderings
   element_text: B.2.3 Global orderings
 key: degree reverse lexicographical ordering
-  origin_href: sing_365.htm#IDX223
+  origin_href: sing_365.htm#index-degree-reverse-lexicographical-ordering
   entry: degree reverse lexicographical ordering
   texi_entry: degree reverse lexicographical ordering
   element_href: sing_365.htm#Global-orderings
@@ -3173,19 +3173,19 @@ key: delta
   element_href: sing_696.htm#delta
   element_text: D.5.5.14 delta
 key: delta invariant
-  origin_href: sing_599.htm#IDX255
+  origin_href: sing_599.htm#index-delta-invariant
   entry: delta invariant
   texi_entry: delta invariant
   element_href: sing_599.htm#deltaLoc
   element_text: D.4.6.4 deltaLoc
 key: delta invariant 
-  origin_href: sing_696.htm#IDX340
+  origin_href: sing_696.htm#index-delta-invariant-1
   entry: delta invariant
   texi_entry: delta invariant
   element_href: sing_696.htm#delta
   element_text: D.5.5.14 delta
 key: delta invariant.
-  origin_href: sing_596.htm#IDX254
+  origin_href: sing_596.htm#index-delta-invariant_002e
   entry: delta invariant.
   texi_entry: delta invariant.
   element_href: sing_596.htm#normal
@@ -3299,7 +3299,7 @@ key: div
   element_href: sing_77.htm#int-operations
   element_text: 4.3.3 int operations
 key: div 
-  origin_href: sing_329.htm#IDX211
+  origin_href: sing_329.htm#index-div
   entry: div
   texi_entry: div
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -3317,13 +3317,13 @@ key: downloading
   element_href: sing_911.htm#Downloading-instructions
   element_text: E.2 Downloading instructions
 key: dp, global ordering
-  origin_href: sing_365.htm#IDX224
+  origin_href: sing_365.htm#index-dp_002c-global-ordering
   entry: dp, global ordering
   texi_entry: dp, global ordering
   element_href: sing_365.htm#Global-orderings
   element_text: B.2.3 Global orderings
 key: ds, local ordering
-  origin_href: sing_366.htm#IDX234
+  origin_href: sing_366.htm#index-ds_002c-local-ordering
   entry: ds, local ordering
   texi_entry: ds, local ordering
   element_href: sing_366.htm#Local-orderings
@@ -3413,7 +3413,7 @@ key: else
   element_href: sing_301.htm#if
   element_text: 5.2.7 if
 key: endomorphism filtration
-  origin_href: sing_671.htm#IDX327
+  origin_href: sing_671.htm#index-endomorphism-filtration
   entry: endomorphism filtration
   texi_entry: endomorphism filtration
   element_href: sing_671.htm#endvfilt
@@ -3425,7 +3425,7 @@ key: endvfilt
   element_href: sing_671.htm#endvfilt
   element_text: D.5.4.13 endvfilt
 key: environment variable, DISPLAY
-  origin_href: sing_16.htm#IDX36
+  origin_href: sing_16.htm#index-environment-variable_002c-DISPLAY
   entry: environment variable, DISPLAY
   texi_entry: environment variable, DISPLAY
   element_href: sing_16.htm#The-online-help-system
@@ -3467,13 +3467,13 @@ key: equising_lib
   element_href: sing_652.htm#equising_005flib
   element_text: D.5.3 equising_lib
 key: equisingular stratum
-  origin_href: sing_655.htm#IDX261
+  origin_href: sing_655.htm#index-equisingular-stratum
   entry: equisingular stratum
   texi_entry: equisingular stratum
   element_href: sing_655.htm#esStratum
   element_text: D.5.3.3 esStratum
 key: equisingularity ideal
-  origin_href: sing_654.htm#IDX260
+  origin_href: sing_654.htm#index-equisingularity-ideal
   entry: equisingularity ideal
   texi_entry: equisingularity ideal
   element_href: sing_654.htm#esIdeal
@@ -3569,7 +3569,7 @@ key: extendring
   element_href: sing_468.htm#extendring
   element_text: D.2.6.7 extendring
 key: extension of rings
-  origin_href: sing_618.htm#IDX259
+  origin_href: sing_618.htm#index-extension-of-rings
   entry: extension of rings
   texi_entry: extension of rings
   element_href: sing_618.htm#splitring
@@ -3611,7 +3611,7 @@ key: factory
   element_href: sing_1.htm#Preface
   element_text: 1. Preface
 key: fastHC, option
-  origin_href: sing_244.htm#IDX144
+  origin_href: sing_244.htm#index-fastHC_002c-option
   entry: fastHC, option
   texi_entry: fastHC, option
   element_href: sing_244.htm#option
@@ -3641,7 +3641,7 @@ key: fglm
   element_href: sing_187.htm#fglm
   element_text: 5.1.32 fglm
 key: fglm 
-  origin_href: sing_277.htm#IDX170
+  origin_href: sing_277.htm#index-fglm
   entry: fglm
   texi_entry: fglm
   element_href: sing_277.htm#stdfglm
@@ -3671,7 +3671,7 @@ key: field
   element_href: sing_121.htm#number
   element_text: 4.11 number
 key: file, .singularrc
-  origin_href: sing_20.htm#IDX83
+  origin_href: sing_20.htm#index-file_002c-_002esingularrc
   entry: file, .singularrc
   texi_entry: file, .singularrc
   element_href: sing_20.htm#Startup-sequence
@@ -3839,13 +3839,13 @@ key: gen
   element_href: sing_195.htm#gen
   element_text: 5.1.40 gen
 key: general weighted lexicographical ordering
-  origin_href: sing_366.htm#IDX240
+  origin_href: sing_366.htm#index-general-weighted-lexicographical-ordering
   entry: general weighted lexicographical ordering
   texi_entry: general weighted lexicographical ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: general weighted reverse lexicographical ordering
-  origin_href: sing_366.htm#IDX237
+  origin_href: sing_366.htm#index-general-weighted-reverse-lexicographical-ordering
   entry: general weighted reverse lexicographical ordering
   texi_entry: general weighted reverse lexicographical ordering
   element_href: sing_366.htm#Local-orderings
@@ -3893,7 +3893,7 @@ key: getdump
   element_href: sing_196.htm#getdump
   element_text: 5.1.41 getdump
 key: getenv
-  origin_href: sing_280.htm#IDX179
+  origin_href: sing_280.htm#index-getenv
   entry: getenv
   texi_entry: getenv
   element_href: sing_280.htm#system
@@ -3947,7 +3947,7 @@ key: group_reynolds
   element_href: sing_759.htm#group_005freynolds
   element_text: D.6.1.6 group_reynolds
 key: hardware platform
-  origin_href: sing_280.htm#IDX178
+  origin_href: sing_280.htm#index-hardware-platform
   entry: hardware platform
   texi_entry: hardware platform
   element_href: sing_280.htm#system
@@ -3965,73 +3965,73 @@ key: help
   element_href: sing_198.htm#help
   element_text: 5.1.43 help
 key: help browsers
-  origin_href: sing_16.htm#IDX19
+  origin_href: sing_16.htm#index-help-browsers
   entry: help browsers
   texi_entry: help browsers
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, dummy
-  origin_href: sing_16.htm#IDX32
+  origin_href: sing_16.htm#index-help-browsers_002c-dummy
   entry: help browsers, dummy
   texi_entry: help browsers, dummy
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, dummy 
-  origin_href: sing_16.htm#IDX34
+  origin_href: sing_16.htm#index-help-browsers_002c-dummy-1
   entry: help browsers, dummy
   texi_entry: help browsers, dummy
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, emacs
-  origin_href: sing_16.htm#IDX33
+  origin_href: sing_16.htm#index-help-browsers_002c-emacs
   entry: help browsers, emacs
   texi_entry: help browsers, emacs
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, html
-  origin_href: sing_16.htm#IDX20
+  origin_href: sing_16.htm#index-help-browsers_002c-html
   entry: help browsers, html
   texi_entry: help browsers, html
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, info
-  origin_href: sing_16.htm#IDX31
+  origin_href: sing_16.htm#index-help-browsers_002c-info
   entry: help browsers, info
   texi_entry: help browsers, info
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, netscape
-  origin_href: sing_16.htm#IDX25
+  origin_href: sing_16.htm#index-help-browsers_002c-netscape
   entry: help browsers, netscape
   texi_entry: help browsers, netscape
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, setting command to use
-  origin_href: sing_16.htm#IDX41
+  origin_href: sing_16.htm#index-help-browsers_002c-setting-command-to-use
   entry: help browsers, setting command to use
   texi_entry: help browsers, setting command to use
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, setting the
-  origin_href: sing_280.htm#IDX203
+  origin_href: sing_280.htm#index-help-browsers_002c-setting-the
   entry: help browsers, setting the
   texi_entry: help browsers, setting the
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: help browsers, tkinfo
-  origin_href: sing_16.htm#IDX27
+  origin_href: sing_16.htm#index-help-browsers_002c-tkinfo
   entry: help browsers, tkinfo
   texi_entry: help browsers, tkinfo
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, winhlp
-  origin_href: sing_16.htm#IDX22
+  origin_href: sing_16.htm#index-help-browsers_002c-winhlp
   entry: help browsers, winhlp
   texi_entry: help browsers, winhlp
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: help browsers, xinfo
-  origin_href: sing_16.htm#IDX29
+  origin_href: sing_16.htm#index-help-browsers_002c-xinfo
   entry: help browsers, xinfo
   texi_entry: help browsers, xinfo
   element_href: sing_16.htm#The-online-help-system
@@ -4049,7 +4049,7 @@ key: help string of a procedure
   element_href: sing_55.htm#The-help-string-of-procedures
   element_text: 3.9.5 The help string of procedures
 key: help, accessing over the net
-  origin_href: sing_19.htm#IDX54
+  origin_href: sing_19.htm#index-help_002c-accessing-over-the-net
   entry: help, accessing over the net
   texi_entry: help, accessing over the net
   element_href: sing_19.htm#Command-line-options
@@ -4163,19 +4163,19 @@ key: hres
   element_href: sing_202.htm#hres
   element_text: 5.1.47 hres
 key: html, default help
-  origin_href: sing_16.htm#IDX21
+  origin_href: sing_16.htm#index-html_002c-default-help
   entry: html, default help
   texi_entry: html, default help
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: html, default help 
-  origin_href: sing_16.htm#IDX23
+  origin_href: sing_16.htm#index-html_002c-default-help-1
   entry: html, default help
   texi_entry: html, default help
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: hypersurface singularity
-  origin_href: sing_704.htm#IDX345
+  origin_href: sing_704.htm#index-hypersurface-singularity
   entry: hypersurface singularity
   texi_entry: hypersurface singularity
   element_href: sing_704.htm#mondromy_005flib
@@ -4235,7 +4235,7 @@ key: idealSplit
   element_href: sing_830.htm#idealSplit
   element_text: D.7.1.16 idealSplit
 key: ideals
-  origin_href: sing_329.htm#IDX215
+  origin_href: sing_329.htm#index-ideals
   entry: ideals
   texi_entry: ideals
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -4295,25 +4295,25 @@ key: indepSet
   element_href: sing_205.htm#indepSet
   element_text: 5.1.50 indepSet
 key: indexed names
-  origin_href: sing_35.htm#IDX91
+  origin_href: sing_35.htm#index-indexed-names
   entry: indexed names
   texi_entry: indexed names
   element_href: sing_35.htm#Special-characters
   element_text: 3.5.2 Special characters
 key: info
-  origin_href: sing_16.htm#IDX30
+  origin_href: sing_16.htm#index-info
   entry: info
   texi_entry: info
   element_href: sing_16.htm#The-online-help-system
   element_text: 3.1.3 The online help system
 key: info 
-  origin_href: sing_16.htm#IDX42
+  origin_href: sing_16.htm#index-info-1
   entry: info
   texi_entry: info
   element_href: sing_16.htm#HEAD7
   element_text: Info help browsers
 key: info in a library
-  origin_href: sing_48.htm#IDX125
+  origin_href: sing_48.htm#index-info-in-a-library
   entry: info in a library
   texi_entry: info in a library
   element_href: sing_48.htm#Format-of-a-library
@@ -4409,13 +4409,13 @@ key: int related functions
   element_href: sing_78.htm#int-related-functions
   element_text: 4.3.4 int related functions
 key: intStrategy, option
-  origin_href: sing_244.htm#IDX145
+  origin_href: sing_244.htm#index-intStrategy_002c-option
   entry: intStrategy, option
   texi_entry: intStrategy, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: integer division
-  origin_href: sing_329.htm#IDX210
+  origin_href: sing_329.htm#index-integer-division
   entry: integer division
   texi_entry: integer division
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -4463,7 +4463,7 @@ key: intersection
   element_href: sing_693.htm#intersection
   element_text: D.5.5.11 intersection
 key: intersection multiplicity
-  origin_href: sing_693.htm#IDX338
+  origin_href: sing_693.htm#index-intersection-multiplicity
   entry: intersection multiplicity
   texi_entry: intersection multiplicity
   element_href: sing_693.htm#intersection
@@ -4607,7 +4607,7 @@ key: invunit
   element_href: sing_706.htm#invunit
   element_text: D.5.6.2 invunit
 key: irreducible power series
-  origin_href: sing_695.htm#IDX339
+  origin_href: sing_695.htm#index-irreducible-power-series
   entry: irreducible power series
   texi_entry: irreducible power series
   element_href: sing_695.htm#is_005firred
@@ -4907,7 +4907,7 @@ key: lex_solve
   element_href: sing_838.htm#lex_005fsolve
   element_text: D.7.2.7 lex_solve
 key: lexicographical ordering
-  origin_href: sing_365.htm#IDX220
+  origin_href: sing_365.htm#index-lexicographical-ordering
   entry: lexicographical ordering
   texi_entry: lexicographical ordering
   element_href: sing_365.htm#Global-orderings
@@ -4955,7 +4955,7 @@ key: library, info string
   element_href: sing_54.htm#The-help-string-of-a-library
   element_text: 3.9.4 The help string of a library
 key: library, info string 
-  origin_href: sing_56.htm#IDX132
+  origin_href: sing_56.htm#index-library_002c-info-string
   entry: library, info string
   texi_entry: library, info string
   element_href: sing_56.htm#template_005flib
@@ -4973,7 +4973,7 @@ key: library, template
   element_href: sing_56.htm#template_005flib
   element_text: 3.9.6 template_lib
 key: library, template.lib
-  origin_href: sing_56.htm#IDX130
+  origin_href: sing_56.htm#index-library_002c-template_002elib
   entry: library, template.lib
   texi_entry: library, template.lib
   element_href: sing_56.htm#template_005flib
@@ -5021,13 +5021,13 @@ key: linalg_lib
   element_href: sing_504.htm#linalg_005flib
   element_text: D.3.2 linalg_lib
 key: linear code, dual
-  origin_href: sing_906.htm#IDX364
+  origin_href: sing_906.htm#index-linear-code_002c-dual
   entry: linear code, dual
   texi_entry: linear code, dual
   element_href: sing_906.htm#dual_005fcode
   element_text: D.9.1.11 dual_code
 key: linear code, systematic
-  origin_href: sing_907.htm#IDX365
+  origin_href: sing_907.htm#index-linear-code_002c-systematic
   entry: linear code, systematic
   texi_entry: linear code, systematic
   element_href: sing_907.htm#sys_005fcode
@@ -5105,13 +5105,13 @@ key: listvar
   element_href: sing_223.htm#listvar
   element_text: 5.1.68 listvar
 key: loadLib, option
-  origin_href: sing_244.htm#IDX161
+  origin_href: sing_244.htm#index-loadLib_002c-option
   entry: loadLib, option
   texi_entry: loadLib, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: loadProc, option
-  origin_href: sing_244.htm#IDX163
+  origin_href: sing_244.htm#index-loadProc_002c-option
   entry: loadProc, option
   texi_entry: loadProc, option
   element_href: sing_244.htm#option
@@ -5123,13 +5123,13 @@ key: local names
   element_href: sing_43.htm#Names-in-procedures
   element_text: 3.7.2 Names in procedures
 key: local weighted lexicographical ordering
-  origin_href: sing_366.htm#IDX241
+  origin_href: sing_366.htm#index-local-weighted-lexicographical-ordering
   entry: local weighted lexicographical ordering
   texi_entry: local weighted lexicographical ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: local weighted reverse lexicographical ordering
-  origin_href: sing_366.htm#IDX238
+  origin_href: sing_366.htm#index-local-weighted-reverse-lexicographical-ordering
   entry: local weighted reverse lexicographical ordering
   texi_entry: local weighted reverse lexicographical ordering
   element_href: sing_366.htm#Local-orderings
@@ -5147,7 +5147,7 @@ key: locstd
   element_href: sing_729.htm#locstd
   element_text: D.5.8.8 locstd
 key: lp, global ordering
-  origin_href: sing_365.htm#IDX219
+  origin_href: sing_365.htm#index-lp_002c-global-ordering
   entry: lp, global ordering
   texi_entry: lp, global ordering
   element_href: sing_365.htm#Global-orderings
@@ -5165,7 +5165,7 @@ key: lres
   element_href: sing_224.htm#lres
   element_text: 5.1.69 lres
 key: ls, local ordering
-  origin_href: sing_366.htm#IDX232
+  origin_href: sing_366.htm#index-ls_002c-local-ordering
   entry: ls, local ordering
   texi_entry: ls, local ordering
   element_href: sing_366.htm#Local-orderings
@@ -5309,7 +5309,7 @@ key: mdouble
   element_href: sing_57.htm#mdouble
   element_text: 3.9.6.1 mdouble
 key: mem, option
-  origin_href: sing_244.htm#IDX164
+  origin_href: sing_244.htm#index-mem_002c-option
   entry: mem, option
   texi_entry: mem, option
   element_href: sing_244.htm#option
@@ -5351,7 +5351,7 @@ key: minAssGTZ
   element_href: sing_604.htm#minAssGTZ
   element_text: D.4.7.4 minAssGTZ
 key: minRes, option
-  origin_href: sing_244.htm#IDX147
+  origin_href: sing_244.htm#index-minRes_002c-option
   entry: minRes, option
   texi_entry: minRes, option
   element_href: sing_244.htm#option
@@ -5381,7 +5381,7 @@ key: mindeg1
   element_href: sing_438.htm#mindeg1
   element_text: D.2.4.11 mindeg1
 key: minimal display time, setting the
-  origin_href: sing_280.htm#IDX205
+  origin_href: sing_280.htm#index-minimal-display-time_002c-setting-the
   entry: minimal display time, setting the
   texi_entry: minimal display time, setting the
   element_href: sing_280.htm#system
@@ -5411,43 +5411,43 @@ key: minres
   element_href: sing_229.htm#minres
   element_text: 5.1.74 minres
 key: mixed Hodge structure
-  origin_href: sing_658.htm#IDX268
+  origin_href: sing_658.htm#index-mixed-Hodge-structure
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: mixed Hodge structure 
-  origin_href: sing_664.htm#IDX291
+  origin_href: sing_664.htm#index-mixed-Hodge-structure-1
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: mixed Hodge structure  
-  origin_href: sing_665.htm#IDX297
+  origin_href: sing_665.htm#index-mixed-Hodge-structure-2
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: mixed Hodge structure   
-  origin_href: sing_668.htm#IDX305
+  origin_href: sing_668.htm#index-mixed-Hodge-structure-3
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: mixed Hodge structure    
-  origin_href: sing_669.htm#IDX311
+  origin_href: sing_669.htm#index-mixed-Hodge-structure-4
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: mixed Hodge structure     
-  origin_href: sing_670.htm#IDX319
+  origin_href: sing_670.htm#index-mixed-Hodge-structure-5
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_670.htm#tmatrix
   element_text: D.5.4.12 tmatrix
 key: mixed Hodge structure      
-  origin_href: sing_671.htm#IDX325
+  origin_href: sing_671.htm#index-mixed-Hodge-structure-6
   entry: mixed Hodge structure
   texi_entry: mixed Hodge structure
   element_href: sing_671.htm#endvfilt
@@ -5507,13 +5507,13 @@ key: module operations
   element_href: sing_119.htm#module-operations
   element_text: 4.10.3 module operations
 key: module ordering C
-  origin_href: sing_367.htm#IDX244
+  origin_href: sing_367.htm#index-module-ordering-C
   entry: module ordering C
   texi_entry: module ordering C
   element_href: sing_367.htm#Module-orderings
   element_text: B.2.5 Module orderings
 key: module ordering c
-  origin_href: sing_367.htm#IDX246
+  origin_href: sing_367.htm#index-module-ordering-c
   entry: module ordering c
   texi_entry: module ordering c
   element_href: sing_367.htm#Module-orderings
@@ -5567,7 +5567,7 @@ key: monitor
   element_href: sing_231.htm#monitor
   element_text: 5.1.76 monitor
 key: monodromy
-  origin_href: sing_658.htm#IDX265
+  origin_href: sing_658.htm#index-monodromy
   entry: monodromy
   texi_entry: monodromy
   element_href: sing_658.htm#gaussman_005flib
@@ -5579,7 +5579,7 @@ key: monodromy
   element_href: sing_663.htm#monodromy
   element_text: D.5.4.5 monodromy
 key: monodromy  
-  origin_href: sing_663.htm#IDX287
+  origin_href: sing_663.htm#index-monodromy-1
   entry: monodromy
   texi_entry: monodromy
   element_href: sing_663.htm#monodromy
@@ -5603,7 +5603,7 @@ key: monomial orderings introduction
   element_href: sing_363.htm#Introduction-to-orderings
   element_text: B.2.1 Introduction to orderings
 key: monomials and precedence
-  origin_href: sing_329.htm#IDX212
+  origin_href: sing_329.htm#index-monomials-and-precedence
   entry: monomials and precedence
   texi_entry: monomials and precedence
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -5687,7 +5687,7 @@ key: mult
   element_href: sing_235.htm#mult
   element_text: 5.1.80 mult
 key: mult 
-  origin_href: sing_329.htm#IDX213
+  origin_href: sing_329.htm#index-mult
   entry: mult
   texi_entry: mult
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -5705,13 +5705,13 @@ key: multcol
   element_href: sing_495.htm#multcol
   element_text: D.3.1.19 multcol
 key: multiplicities, sequence of
-  origin_href: sing_689.htm#IDX336
+  origin_href: sing_689.htm#index-multiplicities_002c-sequence-of
   entry: multiplicities, sequence of
   texi_entry: multiplicities, sequence of
   element_href: sing_689.htm#invariants
   element_text: D.5.5.7 invariants
 key: multiplicity sequence
-  origin_href: sing_691.htm#IDX337
+  origin_href: sing_691.htm#index-multiplicity-sequence
   entry: multiplicity sequence
   texi_entry: multiplicity sequence
   element_href: sing_691.htm#multsequence
@@ -5741,7 +5741,7 @@ key: names
   element_href: sing_237.htm#names
   element_text: 5.1.82 names
 key: nblocks
-  origin_href: sing_280.htm#IDX190
+  origin_href: sing_280.htm#index-nblocks
   entry: nblocks
   texi_entry: nblocks
   element_href: sing_280.htm#system
@@ -5753,31 +5753,31 @@ key: ncols
   element_href: sing_238.htm#ncols
   element_text: 5.1.83 ncols
 key: negative degree lexicographical ordering
-  origin_href: sing_366.htm#IDX235
+  origin_href: sing_366.htm#index-negative-degree-lexicographical-ordering
   entry: negative degree lexicographical ordering
   texi_entry: negative degree lexicographical ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: negative degree reverse lexicographical ordering
-  origin_href: sing_366.htm#IDX233
+  origin_href: sing_366.htm#index-negative-degree-reverse-lexicographical-ordering
   entry: negative degree reverse lexicographical ordering
   texi_entry: negative degree reverse lexicographical ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: negative lexicographical ordering
-  origin_href: sing_366.htm#IDX231
+  origin_href: sing_366.htm#index-negative-lexicographical-ordering
   entry: negative lexicographical ordering
   texi_entry: negative lexicographical ordering
   element_href: sing_366.htm#Local-orderings
   element_text: B.2.4 Local orderings
 key: net access
-  origin_href: sing_19.htm#IDX52
+  origin_href: sing_19.htm#index-net-access
   entry: net access
   texi_entry: net access
   element_href: sing_19.htm#Command-line-options
   element_text: 3.1.6 Command line options
 key: netscape
-  origin_href: sing_16.htm#IDX24
+  origin_href: sing_16.htm#index-netscape
   entry: netscape
   texi_entry: netscape
   element_href: sing_16.htm#The-online-help-system
@@ -5819,13 +5819,13 @@ key: noetherNormal
   element_href: sing_539.htm#noetherNormal
   element_text: D.4.1.9 noetherNormal
 key: non-english special characters
-  origin_href: sing_320.htm#IDX208
+  origin_href: sing_320.htm#index-non_002denglish-special-characters
   entry: non-english special characters
   texi_entry: non-english special characters
   element_href: sing_320.htm#Limitations
   element_text: 6.1 Limitations
 key: none, option
-  origin_href: sing_244.htm#IDX142
+  origin_href: sing_244.htm#index-none_002c-option
   entry: none, option
   texi_entry: none, option
   element_href: sing_244.htm#option
@@ -5861,19 +5861,19 @@ key: normalform
   element_href: sing_644.htm#normalform
   element_text: D.5.1.13 normalform
 key: normalization
-  origin_href: sing_596.htm#IDX253
+  origin_href: sing_596.htm#index-normalization
   entry: normalization
   texi_entry: normalization
   element_href: sing_596.htm#normal
   element_text: D.4.6.1 normal
 key: normalization 
-  origin_href: sing_889.htm#IDX352
+  origin_href: sing_889.htm#index-normalization-1
   entry: normalization
   texi_entry: normalization
   element_href: sing_889.htm#parametrize
   element_text: D.8.3.1 parametrize
 key: normalization  
-  origin_href: sing_890.htm#IDX354
+  origin_href: sing_890.htm#index-normalization-2
   entry: normalization
   texi_entry: normalization
   element_href: sing_890.htm#parametrizepd
@@ -5891,19 +5891,19 @@ key: not
   element_href: sing_80.htm#boolean-operations
   element_text: 4.3.6 boolean operations
 key: notBuckets, option
-  origin_href: sing_244.htm#IDX150
+  origin_href: sing_244.htm#index-notBuckets_002c-option
   entry: notBuckets, option
   texi_entry: notBuckets, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: notRegularity, option
-  origin_href: sing_244.htm#IDX148
+  origin_href: sing_244.htm#index-notRegularity_002c-option
   entry: notRegularity, option
   texi_entry: notRegularity, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: notSugar, option
-  origin_href: sing_244.htm#IDX149
+  origin_href: sing_244.htm#index-notSugar_002c-option
   entry: notSugar, option
   texi_entry: notSugar, option
   element_href: sing_244.htm#option
@@ -6005,7 +6005,7 @@ key: nvars
   element_href: sing_242.htm#nvars
   element_text: 5.1.87 nvars
 key: oldStd, option
-  origin_href: sing_244.htm#IDX146
+  origin_href: sing_244.htm#index-oldStd_002c-option
   entry: oldStd, option
   texi_entry: oldStd, option
   element_href: sing_244.htm#option
@@ -6029,7 +6029,7 @@ key: opentex
   element_href: sing_876.htm#opentex
   element_text: D.8.2.2 opentex
 key: opposite Hodge filtration
-  origin_href: sing_670.htm#IDX320
+  origin_href: sing_670.htm#index-opposite-Hodge-filtration
   entry: opposite Hodge filtration
   texi_entry: opposite Hodge filtration
   element_href: sing_670.htm#tmatrix
@@ -6167,25 +6167,25 @@ key: parametrisation
   element_href: sing_687.htm#parametrisation
   element_text: D.5.5.5 parametrisation
 key: parametrization
-  origin_href: sing_687.htm#IDX331
+  origin_href: sing_687.htm#index-parametrization
   entry: parametrization
   texi_entry: parametrization
   element_href: sing_687.htm#parametrisation
   element_text: D.5.5.5 parametrisation
 key: parametrization 
-  origin_href: sing_889.htm#IDX351
+  origin_href: sing_889.htm#index-parametrization-1
   entry: parametrization
   texi_entry: parametrization
   element_href: sing_889.htm#parametrize
   element_text: D.8.3.1 parametrize
 key: parametrization  
-  origin_href: sing_890.htm#IDX353
+  origin_href: sing_890.htm#index-parametrization-2
   entry: parametrization
   texi_entry: parametrization
   element_href: sing_890.htm#parametrizepd
   element_text: D.8.3.2 parametrizepd
 key: parametrization   
-  origin_href: sing_891.htm#IDX355
+  origin_href: sing_891.htm#index-parametrization-3
   entry: parametrization
   texi_entry: parametrization
   element_href: sing_891.htm#parametrizesing
@@ -6257,7 +6257,7 @@ key: permute_L
   element_href: sing_908.htm#permute_005fL
   element_text: D.9.1.13 permute_L
 key: pid
-  origin_href: sing_280.htm#IDX174
+  origin_href: sing_280.htm#index-pid
   entry: pid
   texi_entry: pid
   element_href: sing_280.htm#system
@@ -6533,7 +6533,7 @@ key: primitive
   element_href: sing_616.htm#primitive
   element_text: D.4.8.1 primitive
 key: primitive element
-  origin_href: sing_616.htm#IDX257
+  origin_href: sing_616.htm#index-primitive-element
   entry: primitive element
   texi_entry: primitive element
   element_href: sing_616.htm#primitive
@@ -6575,19 +6575,19 @@ key: proc declaration
   element_href: sing_132.htm#proc-declaration
   element_text: 4.13.1 proc declaration
 key: procedure, ASCII help
-  origin_href: sing_57.htm#IDX133
+  origin_href: sing_57.htm#index-procedure_002c-ASCII-help
   entry: procedure, ASCII help
   texi_entry: procedure, ASCII help
   element_href: sing_57.htm#mdouble
   element_text: 3.9.6.1 mdouble
 key: procedure, ASCII/Texinfo help
-  origin_href: sing_59.htm#IDX135
+  origin_href: sing_59.htm#index-procedure_002c-ASCII_002fTexinfo-help
   entry: procedure, ASCII/Texinfo help
   texi_entry: procedure, ASCII/Texinfo help
   element_href: sing_59.htm#msum
   element_text: 3.9.6.3 msum
 key: procedure, texinfo help
-  origin_href: sing_58.htm#IDX134
+  origin_href: sing_58.htm#index-procedure_002c-texinfo-help
   entry: procedure, texinfo help
   texi_entry: procedure, texinfo help
   element_href: sing_58.htm#mtripple
@@ -6611,7 +6611,7 @@ key: product
   element_href: sing_406.htm#product
   element_text: D.2.2.13 product
 key: progress watch
-  origin_href: sing_244.htm#IDX153
+  origin_href: sing_244.htm#index-progress-watch
   entry: progress watch
   texi_entry: progress watch
   element_href: sing_244.htm#option
@@ -6623,19 +6623,19 @@ key: prompt
   element_href: sing_15.htm#The-SINGULAR-prompt
   element_text: 3.1.2 The SINGULAR prompt
 key: prompt, option
-  origin_href: sing_244.htm#IDX165
+  origin_href: sing_244.htm#index-prompt_002c-option
   entry: prompt, option
   texi_entry: prompt, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: prot, option
-  origin_href: sing_244.htm#IDX151
+  origin_href: sing_244.htm#index-prot_002c-option
   entry: prot, option
   texi_entry: prot, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: protocoll of computations
-  origin_href: sing_244.htm#IDX152
+  origin_href: sing_244.htm#index-protocoll-of-computations
   entry: protocoll of computations
   texi_entry: protocoll of computations
   element_href: sing_244.htm#option
@@ -6689,7 +6689,7 @@ key: qring
   element_href: sing_133.htm#qring
   element_text: 4.14 qring
 key: qring 
-  origin_href: sing_329.htm#IDX217
+  origin_href: sing_329.htm#index-qring
   entry: qring
   texi_entry: qring
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -6761,7 +6761,7 @@ key: random
   element_href: sing_259.htm#random
   element_text: 5.1.104 random
 key: random number generator, seed
-  origin_href: sing_280.htm#IDX200
+  origin_href: sing_280.htm#index-random-number-generator_002c-seed
   entry: random number generator, seed
   texi_entry: random number generator, seed
   element_href: sing_280.htm#system
@@ -6809,7 +6809,7 @@ key: read
   element_href: sing_260.htm#read
   element_text: 5.1.105 read
 key: reading, option
-  origin_href: sing_244.htm#IDX166
+  origin_href: sing_244.htm#index-reading_002c-option
   entry: reading, option
   texi_entry: reading, option
   element_href: sing_244.htm#option
@@ -6821,31 +6821,31 @@ key: readline
   element_href: sing_1.htm#Preface
   element_text: 1. Preface
 key: real
-  origin_href: sing_28.htm#IDX86
+  origin_href: sing_28.htm#index-real
   entry: real
   texi_entry: real
   element_href: sing_28.htm#Rings-and-orderings
   element_text: 3.3 Rings and orderings
 key: redSB, option
-  origin_href: sing_244.htm#IDX154
+  origin_href: sing_244.htm#index-redSB_002c-option
   entry: redSB, option
   texi_entry: redSB, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: redTail, option
-  origin_href: sing_244.htm#IDX156
+  origin_href: sing_244.htm#index-redTail_002c-option
   entry: redTail, option
   texi_entry: redTail, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: redThrough, option
-  origin_href: sing_244.htm#IDX157
+  origin_href: sing_244.htm#index-redThrough_002c-option
   entry: redThrough, option
   texi_entry: redThrough, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: redefine, option
-  origin_href: sing_244.htm#IDX167
+  origin_href: sing_244.htm#index-redefine_002c-option
   entry: redefine, option
   texi_entry: redefine, option
   element_href: sing_244.htm#option
@@ -6857,7 +6857,7 @@ key: reduce
   element_href: sing_261.htm#reduce
   element_text: 5.1.106 reduce
 key: reduced standard basis
-  origin_href: sing_244.htm#IDX155
+  origin_href: sing_244.htm#index-reduced-standard-basis
   entry: reduced standard basis
   texi_entry: reduced standard basis
   element_href: sing_244.htm#option
@@ -6905,7 +6905,7 @@ key: regularity
   element_href: sing_262.htm#regularity
   element_text: 5.1.107 regularity
 key: regularity 
-  origin_href: sing_374.htm#IDX250
+  origin_href: sing_374.htm#index-regularity
   entry: regularity
   texi_entry: regularity
   element_href: sing_374.htm#HEAD45
@@ -6977,7 +6977,7 @@ key: resolution, La Scala's method
   element_href: sing_224.htm#lres
   element_text: 5.1.69 lres
 key: resolution, computation of
-  origin_href: sing_264.htm#IDX169
+  origin_href: sing_264.htm#index-resolution_002c-computation-of
   entry: resolution, computation of
   texi_entry: resolution, computation of
   element_href: sing_264.htm#res
@@ -7007,13 +7007,13 @@ key: return type of procedures
   element_href: sing_328.htm#Return-type-of-procedures
   element_text: 6.2.7 Return type of procedures
 key: returnSB, option
-  origin_href: sing_244.htm#IDX143
+  origin_href: sing_244.htm#index-returnSB_002c-option
   entry: returnSB, option
   texi_entry: returnSB, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: reverse lexicographical ordering
-  origin_href: sing_365.htm#IDX222
+  origin_href: sing_365.htm#index-reverse-lexicographical-ordering
   entry: reverse lexicographical ordering
   texi_entry: reverse lexicographical ordering
   element_href: sing_365.htm#Global-orderings
@@ -7109,7 +7109,7 @@ key: rowred
   element_href: sing_499.htm#rowred
   element_text: D.3.1.23 rowred
 key: rp, global ordering
-  origin_href: sing_365.htm#IDX221
+  origin_href: sing_365.htm#index-rp_002c-global-ordering
   entry: rp, global ordering
   texi_entry: rp, global ordering
   element_href: sing_365.htm#Global-orderings
@@ -7187,7 +7187,7 @@ key: semiCMcod2
   element_href: sing_744.htm#semiCMcod2
   element_text: D.5.9.4 semiCMcod2
 key: semigroup of values
-  origin_href: sing_689.htm#IDX333
+  origin_href: sing_689.htm#index-semigroup-of-values
   entry: semigroup of values
   texi_entry: semigroup of values
   element_href: sing_689.htm#invariants
@@ -7205,7 +7205,7 @@ key: separator
   element_href: sing_571.htm#separator
   element_text: D.4.4.1 separator
 key: setenv
-  origin_href: sing_280.htm#IDX181
+  origin_href: sing_280.htm#index-setenv
   entry: setenv
   texi_entry: setenv
   element_href: sing_280.htm#system
@@ -7223,7 +7223,7 @@ key: setring
   element_href: sing_268.htm#setring
   element_text: 5.1.113 setring
 key: sh
-  origin_href: sing_280.htm#IDX172
+  origin_href: sing_280.htm#index-sh
   entry: sh
   texi_entry: sh
   element_href: sing_280.htm#system
@@ -7283,79 +7283,79 @@ key: sing_lib
   element_href: sing_721.htm#sing_005flib
   element_text: D.5.8 sing_lib
 key: singularities
-  origin_href: sing_658.htm#IDX262
+  origin_href: sing_658.htm#index-singularities
   entry: singularities
   texi_entry: singularities
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: singularities 
-  origin_href: sing_659.htm#IDX271
+  origin_href: sing_659.htm#index-singularities-1
   entry: singularities
   texi_entry: singularities
   element_href: sing_659.htm#gmsring
   element_text: D.5.4.1 gmsring
 key: singularities  
-  origin_href: sing_660.htm#IDX274
+  origin_href: sing_660.htm#index-singularities-2
   entry: singularities
   texi_entry: singularities
   element_href: sing_660.htm#gmsnf
   element_text: D.5.4.2 gmsnf
 key: singularities   
-  origin_href: sing_661.htm#IDX277
+  origin_href: sing_661.htm#index-singularities-3
   entry: singularities
   texi_entry: singularities
   element_href: sing_661.htm#gmscoeffs
   element_text: D.5.4.3 gmscoeffs
 key: singularities    
-  origin_href: sing_662.htm#IDX280
+  origin_href: sing_662.htm#index-singularities-4
   entry: singularities
   texi_entry: singularities
   element_href: sing_662.htm#bernstein
   element_text: D.5.4.4 bernstein
 key: singularities     
-  origin_href: sing_663.htm#IDX284
+  origin_href: sing_663.htm#index-singularities-5
   entry: singularities
   texi_entry: singularities
   element_href: sing_663.htm#monodromy
   element_text: D.5.4.5 monodromy
 key: singularities      
-  origin_href: sing_664.htm#IDX288
+  origin_href: sing_664.htm#index-singularities-6
   entry: singularities
   texi_entry: singularities
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: singularities       
-  origin_href: sing_665.htm#IDX294
+  origin_href: sing_665.htm#index-singularities-7
   entry: singularities
   texi_entry: singularities
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: singularities        
-  origin_href: sing_668.htm#IDX302
+  origin_href: sing_668.htm#index-singularities-8
   entry: singularities
   texi_entry: singularities
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: singularities         
-  origin_href: sing_669.htm#IDX308
+  origin_href: sing_669.htm#index-singularities-9
   entry: singularities
   texi_entry: singularities
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: singularities          
-  origin_href: sing_670.htm#IDX316
+  origin_href: sing_670.htm#index-singularities-10
   entry: singularities
   texi_entry: singularities
   element_href: sing_670.htm#tmatrix
   element_text: D.5.4.12 tmatrix
 key: singularities           
-  origin_href: sing_671.htm#IDX322
+  origin_href: sing_671.htm#index-singularities-11
   entry: singularities
   texi_entry: singularities
   element_href: sing_671.htm#endvfilt
   element_text: D.5.4.13 endvfilt
 key: singularities            
-  origin_href: sing_751.htm#IDX348
+  origin_href: sing_751.htm#index-singularities-12
   entry: singularities
   texi_entry: singularities
   element_href: sing_751.htm#spectrumnd
@@ -7367,7 +7367,7 @@ key: singularity
   element_href: sing_641.htm#singularity
   element_text: D.5.1.10 singularity
 key: singularrc
-  origin_href: sing_20.htm#IDX85
+  origin_href: sing_20.htm#index-singularrc
   entry: singularrc
   texi_entry: singularrc
   element_href: sing_20.htm#Startup-sequence
@@ -7379,7 +7379,7 @@ key: size
   element_href: sing_271.htm#size
   element_text: 5.1.116 size
 key: size 
-  origin_href: sing_329.htm#IDX216
+  origin_href: sing_329.htm#index-size
   entry: size
   texi_entry: size
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -7517,7 +7517,7 @@ key: spcurve_lib
   element_href: sing_740.htm#spcurve_005flib
   element_text: D.5.9 spcurve_lib
 key: special characters, non-english
-  origin_href: sing_320.htm#IDX209
+  origin_href: sing_320.htm#index-special-characters_002c-non_002denglish
   entry: special characters, non-english
   texi_entry: special characters, non-english
   element_href: sing_320.htm#Limitations
@@ -7529,25 +7529,25 @@ key: specialModulesEqual
   element_href: sing_587.htm#specialModulesEqual
   element_text: D.4.4.17 specialModulesEqual
 key: spectral pairs
-  origin_href: sing_658.htm#IDX267
+  origin_href: sing_658.htm#index-spectral-pairs
   entry: spectral pairs
   texi_entry: spectral pairs
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: spectral pairs 
-  origin_href: sing_665.htm#IDX301
+  origin_href: sing_665.htm#index-spectral-pairs-1
   entry: spectral pairs
   texi_entry: spectral pairs
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: spectral pairs  
-  origin_href: sing_669.htm#IDX315
+  origin_href: sing_669.htm#index-spectral-pairs-2
   entry: spectral pairs
   texi_entry: spectral pairs
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: spectrum
-  origin_href: sing_658.htm#IDX266
+  origin_href: sing_658.htm#index-spectrum
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_658.htm#gaussman_005flib
@@ -7559,31 +7559,31 @@ key: spectrum
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: spectrum  
-  origin_href: sing_664.htm#IDX293
+  origin_href: sing_664.htm#index-spectrum-1
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_664.htm#spectrum
   element_text: D.5.4.6 spectrum
 key: spectrum   
-  origin_href: sing_665.htm#IDX300
+  origin_href: sing_665.htm#index-spectrum-2
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: spectrum    
-  origin_href: sing_668.htm#IDX307
+  origin_href: sing_668.htm#index-spectrum-3
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_668.htm#vfilt
   element_text: D.5.4.10 vfilt
 key: spectrum     
-  origin_href: sing_669.htm#IDX314
+  origin_href: sing_669.htm#index-spectrum-4
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: spectrum      
-  origin_href: sing_751.htm#IDX350
+  origin_href: sing_751.htm#index-spectrum-5
   entry: spectrum
   texi_entry: spectrum
   element_href: sing_751.htm#spectrumnd
@@ -7721,13 +7721,13 @@ key: staircase
   element_href: sing_871.htm#staircase
   element_text: D.8.1.1 staircase
 key: standard.lib
-  origin_href: sing_390.htm#IDX251
+  origin_href: sing_390.htm#index-standard_002elib
   entry: standard.lib
   texi_entry: standard.lib
   element_href: sing_390.htm#standard_005flib
   element_text: D.1 standard_lib
 key: standard_lib
-  origin_href: sing_390.htm#IDX252
+  origin_href: sing_390.htm#index-standard_005flib
   entry: standard_lib
   texi_entry: standard_lib
   element_href: sing_390.htm#standard_005flib
@@ -7793,7 +7793,7 @@ key: string
   element_href: sing_143.htm#string
   element_text: 4.17 string
 key: string 
-  origin_href: sing_329.htm#IDX218
+  origin_href: sing_329.htm#index-string
   entry: string
   texi_entry: string
   element_href: sing_329.htm#Miscellaneous-oddities
@@ -7859,7 +7859,7 @@ key: substitute
   element_href: sing_446.htm#substitute
   element_text: D.2.4.19 substitute
 key: sugarCrit, option
-  origin_href: sing_244.htm#IDX158
+  origin_href: sing_244.htm#index-sugarCrit_002c-option
   entry: sugarCrit, option
   texi_entry: sugarCrit, option
   element_href: sing_244.htm#option
@@ -7925,91 +7925,91 @@ key: system
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, -
-  origin_href: sing_280.htm#IDX194
+  origin_href: sing_280.htm#index-system_002c-_002d_002d
   entry: system, &ndash;
   texi_entry: system, --
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, -long_option_name
-  origin_href: sing_280.htm#IDX197
+  origin_href: sing_280.htm#index-system_002c-_002d_002dlong_005foption_005fname
   entry: system, &ndash;long_option_name
   texi_entry: system, --long_option_name
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, -long_option_name=value
-  origin_href: sing_280.htm#IDX199
+  origin_href: sing_280.htm#index-system_002c-_002d_002dlong_005foption_005fname_003dvalue
   entry: system, &ndash;long_option_name=value
   texi_entry: system, --long_option_name=value
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, Singular
-  origin_href: sing_280.htm#IDX193
+  origin_href: sing_280.htm#index-system_002c-Singular
   entry: system, Singular
   texi_entry: system, Singular
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, browsers
-  origin_href: sing_280.htm#IDX206
+  origin_href: sing_280.htm#index-system_002c-browsers
   entry: system, browsers
   texi_entry: system, browsers
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, contributors
-  origin_href: sing_280.htm#IDX188
+  origin_href: sing_280.htm#index-system_002c-contributors
   entry: system, contributors
   texi_entry: system, contributors
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, gen
-  origin_href: sing_280.htm#IDX189
+  origin_href: sing_280.htm#index-system_002c-gen
   entry: system, gen
   texi_entry: system, gen
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, getenv
-  origin_href: sing_280.htm#IDX180
+  origin_href: sing_280.htm#index-system_002c-getenv
   entry: system, getenv
   texi_entry: system, getenv
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, nblocks
-  origin_href: sing_280.htm#IDX191
+  origin_href: sing_280.htm#index-system_002c-nblocks
   entry: system, nblocks
   texi_entry: system, nblocks
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, pid
-  origin_href: sing_280.htm#IDX175
+  origin_href: sing_280.htm#index-system_002c-pid
   entry: system, pid
   texi_entry: system, pid
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, setenv
-  origin_href: sing_280.htm#IDX182
+  origin_href: sing_280.htm#index-system_002c-setenv
   entry: system, setenv
   texi_entry: system, setenv
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, sh
-  origin_href: sing_280.htm#IDX173
+  origin_href: sing_280.htm#index-system_002c-sh
   entry: system, sh
   texi_entry: system, sh
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, tty
-  origin_href: sing_280.htm#IDX184
+  origin_href: sing_280.htm#index-system_002c-tty
   entry: system, tty
   texi_entry: system, tty
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, uname
-  origin_href: sing_280.htm#IDX177
+  origin_href: sing_280.htm#index-system_002c-uname
   entry: system, uname
   texi_entry: system, uname
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: system, version
-  origin_href: sing_280.htm#IDX186
+  origin_href: sing_280.htm#index-system_002c-version
   entry: system, version
   texi_entry: system, version
   element_href: sing_280.htm#system
@@ -8039,13 +8039,13 @@ key: tau_es
   element_href: sing_653.htm#tau_005fes
   element_text: D.5.3.1 tau_es
 key: template.lib
-  origin_href: sing_56.htm#IDX128
+  origin_href: sing_56.htm#index-template_002elib
   entry: template.lib
   texi_entry: template.lib
   element_href: sing_56.htm#template_005flib
   element_text: 3.9.6 template_lib
 key: template.lib 
-  origin_href: sing_56.htm#IDX131
+  origin_href: sing_56.htm#index-template_002elib-1
   entry: template.lib
   texi_entry: template.lib
   element_href: sing_56.htm#template_005flib
@@ -8057,7 +8057,7 @@ key: template_lib
   element_href: sing_56.htm#template_005flib
   element_text: 3.9.6 template_lib
 key: template_lib 
-  origin_href: sing_56.htm#IDX129
+  origin_href: sing_56.htm#index-template_005flib
   entry: template_lib
   texi_entry: template_lib
   element_href: sing_56.htm#template_005flib
@@ -8147,7 +8147,7 @@ key: texring
   element_href: sing_885.htm#texring
   element_text: D.8.2.11 texring
 key: time limit on computations
-  origin_href: sing_197.htm#IDX138
+  origin_href: sing_197.htm#index-time-limit-on-computations
   entry: time limit on computations
   texi_entry: time limit on computations
   element_href: sing_197.htm#groebner
@@ -8177,7 +8177,7 @@ key: timer
   element_href: sing_317.htm#rtimer
   element_text: 5.3.10 rtimer
 key: timer resolution, setting the
-  origin_href: sing_280.htm#IDX204
+  origin_href: sing_280.htm#index-timer-resolution_002c-setting-the
   entry: timer resolution, setting the
   texi_entry: timer resolution, setting the
   element_href: sing_280.htm#system
@@ -8189,7 +8189,7 @@ key: tjurina
   element_href: sing_735.htm#tjurina
   element_text: D.5.8.14 tjurina
 key: tkinfo
-  origin_href: sing_16.htm#IDX26
+  origin_href: sing_16.htm#index-tkinfo
   entry: tkinfo
   texi_entry: tkinfo
   element_href: sing_16.htm#The-online-help-system
@@ -8321,7 +8321,7 @@ key: triang_solve
   element_href: sing_843.htm#triang_005fsolve
   element_text: D.7.2.12 triang_solve
 key: tty
-  origin_href: sing_280.htm#IDX183
+  origin_href: sing_280.htm#index-tty
   entry: tty
   texi_entry: tty
   element_href: sing_280.htm#system
@@ -8339,7 +8339,7 @@ key: typeof
   element_href: sing_285.htm#typeof
   element_text: 5.1.130 typeof
 key: uname
-  origin_href: sing_280.htm#IDX176
+  origin_href: sing_280.htm#index-uname
   entry: uname
   texi_entry: uname
   element_href: sing_280.htm#system
@@ -8369,7 +8369,7 @@ key: uressolve
   element_href: sing_286.htm#uressolve
   element_text: 5.1.131 uressolve
 key: usage, option
-  origin_href: sing_244.htm#IDX168
+  origin_href: sing_244.htm#index-usage_002c-option
   entry: usage, option
   texi_entry: usage, option
   element_href: sing_244.htm#option
@@ -8447,13 +8447,13 @@ key: versal
   element_href: sing_647.htm#versal
   element_text: D.5.2.1 versal
 key: version
-  origin_href: sing_280.htm#IDX185
+  origin_href: sing_280.htm#index-version
   entry: version
   texi_entry: version
   element_href: sing_280.htm#system
   element_text: 5.1.125 system
 key: version in a library
-  origin_href: sing_48.htm#IDX126
+  origin_href: sing_48.htm#index-version-in-a-library
   entry: version in a library
   texi_entry: version in a library
   element_href: sing_48.htm#Format-of-a-library
@@ -8495,37 +8495,37 @@ key: weight
   element_href: sing_292.htm#weight
   element_text: 5.1.137 weight
 key: weight filtration
-  origin_href: sing_658.htm#IDX270
+  origin_href: sing_658.htm#index-weight-filtration
   entry: weight filtration
   texi_entry: weight filtration
   element_href: sing_658.htm#gaussman_005flib
   element_text: D.5.4 gaussman_lib
 key: weight filtration 
-  origin_href: sing_665.htm#IDX299
+  origin_href: sing_665.htm#index-weight-filtration-1
   entry: weight filtration
   texi_entry: weight filtration
   element_href: sing_665.htm#sppairs
   element_text: D.5.4.7 sppairs
 key: weight filtration  
-  origin_href: sing_669.htm#IDX313
+  origin_href: sing_669.htm#index-weight-filtration-2
   entry: weight filtration
   texi_entry: weight filtration
   element_href: sing_669.htm#vwfilt
   element_text: D.5.4.11 vwfilt
 key: weightM, option
-  origin_href: sing_244.htm#IDX159
+  origin_href: sing_244.htm#index-weightM_002c-option
   entry: weightM, option
   texi_entry: weightM, option
   element_href: sing_244.htm#option
   element_text: 5.1.89 option
 key: weighted lexicographical ordering
-  origin_href: sing_365.htm#IDX229
+  origin_href: sing_365.htm#index-weighted-lexicographical-ordering
   entry: weighted lexicographical ordering
   texi_entry: weighted lexicographical ordering
   element_href: sing_365.htm#Global-orderings
   element_text: B.2.3 Global orderings
 key: weighted reverse lexicographical ordering
-  origin_href: sing_365.htm#IDX227
+  origin_href: sing_365.htm#index-weighted-reverse-lexicographical-ordering
   entry: weighted reverse lexicographical ordering
   texi_entry: weighted reverse lexicographical ordering
   element_href: sing_365.htm#Global-orderings
@@ -8543,7 +8543,7 @@ key: while
   element_href: sing_305.htm#while
   element_text: 5.2.11 while
 key: wp, global ordering
-  origin_href: sing_365.htm#IDX228
+  origin_href: sing_365.htm#index-wp_002c-global-ordering
   entry: wp, global ordering
   texi_entry: wp, global ordering
   element_href: sing_365.htm#Global-orderings
@@ -8561,7 +8561,7 @@ key: writelist
   element_href: sing_425.htm#writelist
   element_text: D.2.3.9 writelist
 key: ws, local ordering
-  origin_href: sing_366.htm#IDX239
+  origin_href: sing_366.htm#index-ws_002c-local-ordering
   entry: ws, local ordering
   texi_entry: ws, local ordering
   element_href: sing_366.htm#Local-orderings
@@ -8573,7 +8573,7 @@ key: xdvi
   element_href: sing_887.htm#xdvi
   element_text: D.8.2.13 xdvi
 key: xinfo
-  origin_href: sing_16.htm#IDX28
+  origin_href: sing_16.htm#index-xinfo
   entry: xinfo
   texi_entry: xinfo
   element_href: sing_16.htm#The-online-help-system
@@ -8609,7 +8609,7 @@ key: zeroset_lib
   element_href: sing_852.htm#zeroset_005flib
   element_text: D.7.5 zeroset_lib
 key: ||
-  origin_href: sing_35.htm#IDX110
+  origin_href: sing_35.htm#index-_007c_007c
   entry: ||
   texi_entry: ||
   element_href: sing_35.htm#Special-characters
@@ -8621,7 +8621,7 @@ key: ||
   element_href: sing_80.htm#boolean-operations
   element_text: 4.3.6 boolean operations
 key: ~
-  origin_href: sing_35.htm#IDX121
+  origin_href: sing_35.htm#index-_007e
   entry: ~
   texi_entry: ~
   element_href: sing_35.htm#Special-characters

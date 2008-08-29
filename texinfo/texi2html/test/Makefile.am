@@ -10,8 +10,13 @@ htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
 
 DIST_SUBDIRS = $(base_tests) $(long_tests)
 
-copy-tests:
-	$(srcdir)/tests.sh -copy $(base_tests) $(long_tests)
+copy-tests: copy-base copy-long
+
+copy-base:
+	$(srcdir)/tests.sh -copy $(base_tests)
+
+copy-long:
+	$(srcdir)/tests.sh -copy $(long_tests)
 
 clean-tests:
 	$(srcdir)/tests.sh -clean $(base_tests) $(long_tests)

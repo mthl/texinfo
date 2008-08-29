@@ -189,7 +189,7 @@ files containing information for indices, cross references, etc.  The
 DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
 any device (see the following sections).
 </p>
-<a name="IDX320"></a>
+<a name="index-texindex"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
 command automatically generates indices; see section <a href="#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
@@ -198,8 +198,8 @@ from.  The <code>texindex</code> command sorts indices.  (The source file
 &lsquo;<tt>texindex.c</tt>&rsquo; comes as part of the standard Texinfo distribution,
 among other places.)
 </p>
-<a name="IDX321"></a>
-<a name="IDX322"></a>
+<a name="index-Names-of-index-files"></a>
+<a name="index-Index-file-names"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
 with any &lsquo;<samp>.tex</samp>&rsquo; (or similar, see <a href="../web2c/tex-invocation.html#tex-invocation">(web2c)tex invocation</a> section &lsquo;tex invocation&rsquo; in <cite>Web2c</cite>) extension removed, followed by the two letter names of indices.
@@ -208,8 +208,8 @@ For example, the raw index output files for the input file
 &lsquo;<tt>foo.tp</tt>&rsquo;, &lsquo;<tt>foo.pg</tt>&rsquo; and &lsquo;<tt>foo.ky</tt>&rsquo;.  Those are exactly the
 arguments to give to <code>texindex</code>.
 </p>
-<a name="IDX323"></a>
-<a name="IDX324"></a>
+<a name="index-Wildcards"></a>
+<a name="index-Globbing"></a>
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use &lsquo;<samp>??</samp>&rsquo; as shell wildcards and give the command in this
 form:
@@ -262,7 +262,7 @@ Run <code>tex</code> one last time.  This time the correct page numbers are
 written for the cross-references.
 </li></ol>
 
-<a name="IDX325"></a>
+<a name="index-texi2dvi"></a>
 <p>Alternatively, it&rsquo;s a one-step process: run <code>texi2dvi</code>
 (see section <a href="#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>).
 </p>
@@ -271,10 +271,10 @@ you do not, on the next run, the <code>tex</code> formatting command will use
 whatever sorted index files happen to exist from the previous use of
 <code>texindex</code>.  This is usually ok while you are debugging.
 </p>
-<a name="IDX326"></a>
-<a name="IDX327"></a>
-<a name="IDX328"></a>
-<a name="IDX329"></a>
+<a name="index-Auxiliary-files_002c-avoiding"></a>
+<a name="index-novalidate"></a>
+<a name="index-Pointer-validation_002c-suppressing"></a>
+<a name="index-Chapters_002c-formatting-one-at-a-time"></a>
 <p>Sometimes you may wish to print a document while you know it is
 incomplete, or to print just one chapter of a document.  In that case,
 the usual auxiliary files that TeX creates and warnings TeX gives
@@ -391,9 +391,9 @@ lpr -d bison.dvi
 # or perhaps dvips bison.dvi -o
 </pre></td></tr></table>
 
-<a name="IDX330"></a>
-<a name="IDX331"></a>
-<a name="IDX332"></a>
+<a name="index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
+<a name="index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
+<a name="index-lpr_002dd_002c-replacements-on-MS_002dDOS_002fMS_002dWindows"></a>
 <p><code>lpr</code> is a standard program on Unix systems, but it is usually
 absent on MS-DOS/MS-Windows.  Some network packages come with a
 program named <code>lpr</code>, but these are usually limited to sending files
@@ -586,7 +586,7 @@ edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options
 (see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section &lsquo;Examining and Setting Variables&rsquo; in <cite>The GNU Emacs Manual</cite>), or with your &lsquo;<tt>.emacs</tt>&rsquo; initialization file
 (see <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section &lsquo;Init File&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
-<a name="IDX333"></a>
+<a name="index-Customize-Emacs-package-_0028Development_002fDocs_002fTexinfo_0029"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html#Easy-Customization">(emacs)Easy Customization</a> section &lsquo;Easy Customization Interface&rsquo; in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
@@ -716,7 +716,7 @@ contents.  (And of course most manuals contain a body of text as well.)
 &lsquo;<tt>texinfo.tex</tt>&rsquo; file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
 </p>
-<a name="IDX334"></a>
+<a name="index-texinfo_002etex_002c-installing"></a>
 
 <p>Usually, the installer has put the &lsquo;<tt>texinfo.tex</tt>&rsquo; file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
@@ -725,18 +725,18 @@ file and you do not need to do anything special.  If this has not been
 done, you can put &lsquo;<tt>texinfo.tex</tt>&rsquo; in the current directory when you
 run TeX, and TeX will find it there.
 </p>
-<a name="IDX335"></a>
+<a name="index-epsf_002etex_002c-installing"></a>
 <p>Also, you should install &lsquo;<tt>epsf.tex</tt>&rsquo;, if it is not already installed
 from another distribution.  More details are at the end of the description
 of the <code>@image</code> command (see section <a href="texinfo_14.html#Images">Inserting Images</a>).
 </p>
-<a name="IDX336"></a>
+<a name="index-pdfcolor_002etex_002c-installing"></a>
 <p>Likewise for &lsquo;<tt>pdfcolor.tex</tt>&rsquo;, if it is not already installed and you
 use pdftex.
 </p>
-<a name="IDX337"></a>
-<a name="IDX338"></a>
-<a name="IDX339"></a>
+<a name="index-texinfo_002ecnf-installation"></a>
+<a name="index-Customizing-of-TeX-for-Texinfo"></a>
+<a name="index-Site_002dwide-Texinfo-configuration-file"></a>
 <p>Optionally, you may create an additional &lsquo;<tt>texinfo.cnf</tt>&rsquo;, and install
 it as well.  This file is read by TeX when the <code>@setfilename</code>
 command is executed (see section <a href="texinfo_4.html#setfilename"><code>@setfilename</code></a>).  You can put any
@@ -747,7 +747,7 @@ example, if &lsquo;<tt>texinfo.cnf</tt>&rsquo; contains the line &lsquo;<samp>@a
 that page size in effect.  If you have nothing to put in
 &lsquo;<tt>texinfo.cnf</tt>&rsquo;, you do not need to create it.
 </p>
-<a name="IDX340"></a>
+<a name="index-TEXINPUTS"></a>
 <p>If neither of the above locations for these system files suffice for
 you, you can specify the directories explicitly.  For
 &lsquo;<tt>texinfo.tex</tt>&rsquo;, you can do this by writing the complete path for the
@@ -788,8 +788,8 @@ in the current directory, indicated by the &lsquo;<samp>.</samp>&rsquo;, then in
 hypothetical user&rsquo;s &lsquo;<tt>me/mylib</tt>&rsquo; directory, and finally in a system
 directory &lsquo;<tt>/usr/lib/tex/macros</tt>&rsquo;.
 </p>
-<a name="IDX341"></a>
-<a name="IDX342"></a>
+<a name="index-Dumping-a-_002efmt-file"></a>
+<a name="index-Format-file_002c-dumping"></a>
 <p>Finally, you may wish to dump a &lsquo;<tt>.fmt</tt>&rsquo; file (see <a href="../web2c/Memory-dumps.html#Memory-dumps">(web2c)Memory dumps</a> section &lsquo;Memory dumps&rsquo; in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating &lsquo;<tt>texinfo.tex</tt>&rsquo; requires
 redumping.)  You can do this by running this command, assuming
@@ -833,7 +833,7 @@ happens, TeX prints an error message like this:
 <table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 
-<a name="IDX343"></a>
+<a name="index-hbox"></a>
 <p>(In TeX, lines are in &ldquo;horizontal boxes&rdquo;, hence the term, &ldquo;hbox&rdquo;.
 &lsquo;<samp>@hbox</samp>&rsquo; is a TeX primitive not needed in the Texinfo language.)
 </p>
@@ -853,7 +853,7 @@ can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you&rsquo;re lucky) avoiding many of the bad line breaks,
 like this:
 </p>
-<a name="IDX344"></a>
+<a name="index-_005cemergencystretch"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
@@ -865,16 +865,16 @@ output would generally be of noticeably lower quality; the default
 is &lsquo;<samp>.15\hsize</samp>&rsquo;.  <code>\hsize</code> is the TeX dimension
 containing the current line width.
 </p>
-<a name="IDX345"></a>
-<a name="IDX346"></a>
-<a name="IDX347"></a>
-<a name="IDX348"></a>
+<a name="index-Black-rectangle-in-hardcopy"></a>
+<a name="index-Rectangle_002c-black-in-hardcopy"></a>
+<a name="index-Box_002c-ugly-black-in-hardcopy"></a>
+<a name="index-Ugly-black-rectangles-in-hardcopy"></a>
 <p>For what overfull boxes you have, however, TeX will print a large,
 ugly, black rectangle beside the line that contains the overfull hbox
 unless told otherwise.  This is so you will notice the location of the
 problem if you are correcting a draft.
 </p>
-<a name="IDX349"></a>
+<a name="index-finalout"></a>
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
@@ -967,8 +967,8 @@ would write the header for this manual:
 <p>See section <a href="#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>, and <a href="#Preparing-for-TeX">Preparing for TeX</a>, for other ways to format for different paper sizes that do not
 require changing the source file.
 </p>
-<a name="IDX350"></a>
-<a name="IDX351"></a>
+<a name="index-afourlatex"></a>
+<a name="index-afourwide"></a>
 <p>You may or may not prefer the formatting that results from the command
 <code>@afourlatex</code>.  There&rsquo;s also <code>@afourwide</code> for A4 paper in
 wide format.
@@ -1004,14 +1004,14 @@ separated by a comma.  Examples:
 <p>and
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 11.5in      </pre></td></tr></table>
 
-<a name="IDX352"></a>
-<a name="IDX353"></a>
+<a name="index-B5-paper_002c-printing-on"></a>
+<a name="index-Legal-paper_002c-printing-on"></a>
 <p>This would be reasonable for printing on B5-size paper.  To emphasize,
 this command specifies the size of the <em>text area</em>, not the size of
 the paper (which is 250mm by 177mm for B5, 14in by
 8.5in for legal).
 </p>
-<a name="IDX354"></a>
+<a name="index-Margins-on-page_002c-not-controllable"></a>
 <p>To make more elaborate changes, such as changing any of the page
 margins, you must define a new command in &lsquo;<tt>texinfo.tex</tt>&rsquo; (or
 &lsquo;<tt>texinfo.cnf</tt>&rsquo;, see section <a href="#Preparing-for-TeX">Preparing for TeX</a>).
@@ -1062,9 +1062,9 @@ in different ways, you should explore the use of this command with a
 spirit of adventure.  You may have to redefine the command in
 &lsquo;<tt>texinfo.tex</tt>&rsquo;.
 </p>
-<a name="IDX355"></a>
-<a name="IDX356"></a>
-<a name="IDX357"></a>
+<a name="index-_005cmag-_0028raw-TeX-magnification_0029"></a>
+<a name="index-Magnified-printing"></a>
+<a name="index-Larger-or-smaller-pages"></a>
 <p>You can attempt to direct TeX to typeset pages larger or smaller than
 usual with the <code>\mag</code> TeX command.  Everything that is typeset
 is scaled proportionally larger or smaller.  (<code>\mag</code> stands for

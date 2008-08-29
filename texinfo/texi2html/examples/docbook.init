@@ -32,6 +32,8 @@ $style_map{'env'}->{'attribute'} = 'envar';
 $style_map{'file'}->{'attribute'} = 'filename';
 $style_map{'i'}->{'attribute'} = 'wordasword';
 $style_map{'key'}->{'attribute'} = 'keycap';
+delete $style_map{'key'}->{'begin'};
+delete $style_map{'key'}->{'end'};
 $style_map{'option'}->{'attribute'} = 'option';
 $style_map{'t'}->{'attribute'} = 'literal';
 delete $style_map{'sansserif'}->{'attribute'};
@@ -55,12 +57,13 @@ delete $style_map{'samp'}->{'attribute'};
 my $kept_footnote_function = $style_map{'footnote'}->{'function'};
 $style_map{'footnote'}->{'function'} = \&docbook_footnote;
 
+#use Data::Dumper;
 foreach my $command (keys(%style_map))
 {
     $style_map_pre{$command} = {};
-    $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
-    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
-        if (exists($style_map{$command}->{'args'}));
+#    $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
+#    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
+#        if (exists($style_map{$command}->{'args'}));
  #print STDERR "COMMAND $command";
 
     foreach my $key (keys(%{$style_map{$command}}))
@@ -68,6 +71,7 @@ foreach my $command (keys(%style_map))
         $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
     }
 }
+#    print STDERR "". Data::Dumper->Dump([\%style_map_texi]);
 
 $style_map_pre{'b'}->{'attribute'} = 'lineannotation';
 $style_map_pre{'i'}->{'attribute'} = 'lineannotation';
@@ -187,7 +191,9 @@ $things_map{'quotesinglbase'} = '&lsquor;';
 
 %pre_map = %things_map;
 
-$no_pagraph_commands{'cindex'} = 0;
+delete $inter_item_commands{'cindex'};
+
+#$no_pagraph_commands{'cindex'} = 0;
 $no_pagraph_commands{'float'} = 0;
 
 %docbook_complex_format = (
@@ -440,10 +446,12 @@ sub docbook_paragraph($$$$$$$$$$$$)
 
     foreach my $style(t2h_collect_styles($command_stack_at_begin))
     {
+#print STDERR "PARA BEGIN STYLE $style\n";
        $text = t2h_begin_style($style, $text);
     }
     foreach my $style(t2h_collect_styles($command_stack_at_end))
     {
+#print STDERR "PARA END STYLE $style\n";
        $text = t2h_end_style($style, $text);
     }
     if (defined($paragraph_number) and defined($$paragraph_number))
@@ -871,23 +879,25 @@ sub docbook_acronym_like($$$$$$)
 }
 
 
-sub docbook_image_files($$)
+sub docbook_image_files($$$$)
 {
     my $base = shift;
     my $extension = shift;
+    my $texi_base = shift;
+    my $texi_extension = shift;
     my @files = ();
     return @files if (!defined($base) or ($base eq ''));
 # FIXME should look at extension argument? makeinfo doesn't
 #    push @files,"$base.$extension" if (defined($extension) and ($extension ne ''));
     foreach my $ext (@IMAGE_EXTENSIONS)
     {
-        push @files, "$base.$ext";
+        push @files, ["$base.$ext", "$texi_base.$ext"];
     }
     return @files;
 }
 
 
-sub docbook_image($$$$$$$$$$$$$)
+sub docbook_image($$$$$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -902,6 +912,9 @@ sub docbook_image($$$$$$$$$$$$$)
     my $file_path = shift;
     my $in_paragraph = shift;
     my $file_locations = shift;
+    my $base_simple_format = shift;
+    my $extension_simple_format = shift;
+    my $file_name_simple_format = shift;
 
 #    if (!defined($file_path) or $file_path eq '' or $file_path =~ /\.txt$/)
 #    {
@@ -921,7 +934,7 @@ sub docbook_image($$$$$$$$$$$$$)
     my @extensions = @IMAGE_EXTENSIONS;
     foreach my $file_location (@$file_locations)
     {
-        my ($file_located, $path) = @$file_location;
+        my ($file_located, $path, $file_simple_format) = @$file_location;
         my $extension = shift @extensions;
         if (defined($path))
         {
@@ -931,11 +944,11 @@ sub docbook_image($$$$$$$$$$$$$)
            }
            else
            {
-              push @files, [$file_located, uc($extension)];
+              push @files, [$file_located, uc($extension), $file_simple_format];
            }
         }
     }
-    push @files, ["$base.jpg", 'JPG'] unless (@files);
+    push @files, ["$base.jpg", 'JPG', "$base_simple_format.jpg" ] unless (@files);
 
     my $begin = docbook_add_id('inlinemediaobject').'>';
     my $end = '</inlinemediaobject>';
@@ -947,7 +960,7 @@ sub docbook_image($$$$$$$$$$$$$)
     my $result = $begin;
     foreach my $file_spec (@files)
     {
-       $result .= "<imageobject><imagedata fileref=\"$file_spec->[0]\" format=\"$file_spec->[1]\"></imagedata></imageobject>";
+       $result .= "<imageobject><imagedata fileref=\"$file_spec->[2]\" format=\"$file_spec->[1]\"></imagedata></imageobject>";
     }
     if (defined($txt_path))
     {
@@ -1071,11 +1084,15 @@ sub docbook_table_item($$$$$$$$$)
     return $result;
 }
 
-sub docbook_table_line($)
+sub docbook_table_line($$$)
 {
     my $text = shift;
     my $only_inter_item_commands = shift;
     my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
+
+#print STDERR 
 
     if ($text =~ /\S/)
     {
@@ -1099,9 +1116,16 @@ sub docbook_list_item($$$$$$$$$)
     my $number = shift;
     my $prepended = shift;
     my $prepended_formatted = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
 #my $prep_t = 'UNDEF'; $prep_t = $prepended if (defined($prepended));
-#print STDERR "$prepended|$text";
+#$item_nr = 0 if (!defined($item_nr));
+#print STDERR "  $item_nr --> $prep_t|${text}!!!!!\n";
+    return $text if ($only_inter_item_commands and $before_items);
+    return '<title>' . $text. '</title>' if ($before_items);
     return '<listitem>' . $text . "</listitem>\n";
 }
 
@@ -1305,7 +1329,6 @@ sub docbook_style($$$$$$$$$)
     my $command_stack = shift;
 
     my $result = $text;
-    $style = $style_map{$command};
     if (exists($style->{'function'}))
     {
         my $function = $style->{'function'};

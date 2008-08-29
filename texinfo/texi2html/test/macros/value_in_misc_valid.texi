@@ -15,21 +15,21 @@ be-low
 Text line followed by a comment on the same line and another below @c comment @value{text}
 @c comment @value{text}
 
-@set pagesizes 200mm,150mm
+@set pagesizes_arg 200mm,150mm
 @set afourpaper_macro @afourpaper
 
 @ifnottex
-@pagesizes @value{pagesizes}
+@pagesizes @value{pagesizes_arg}
 @end ifnottex
 @value{afourpaper_macro}
 @headings on line following headings @value{text}
 @oddfooting some text ignored @value{text}
 @everyheading on line following everyheading @value{text}
 
-@set need 0.1
+@set need_arg 0.1
 
 @ifnottex
-@need @value{need}
+@need @value{need_arg}
 @end ifnottex
 
 @set raisesections_macro @raisesections

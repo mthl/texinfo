@@ -125,8 +125,8 @@ the way of keeping centralized scripts up to date, use
 the <code>cvs watch add</code> command (see section [cvs: Multiple developers#Getting-Notified Telling CVS to notify you]); this command is useful even if you are not
 using <code>cvs watch on</code>.
 </p>
-<div id="IDX133"></div>
-<div id="IDX134"></div>
+<div id="index-taginfo"></div>
+<div id="index-Exit-status_002c-of-taginfo"></div>
 <p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
 command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
@@ -175,7 +175,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 === Annotate command ===
 
 <dl>
-<dt><div id="IDX135"></div><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>
+<dt><div id="index-cvs-annotate"></div><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>
 <dd>
 <p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last

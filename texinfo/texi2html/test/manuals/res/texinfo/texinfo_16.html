@@ -165,7 +165,7 @@ This command moves point forward @var{count} words
 <p>produces
 </p>
 <blockquote><dl>
-<dt><a name="IDX260"></a><u>Command:</u> <b>forward-word</b><i> count</i></dt>
+<dt><a name="index-forward_002dword"></a><u>Command:</u> <b>forward-word</b><i> count</i></dt>
 <dd><p>This function moves point forward <var>count</var> words
 (or backward if <var>count</var> is negative). &hellip;
 </p></dd></dl>
@@ -216,7 +216,7 @@ is less than 1, @code{(point-max)} otherwise.
 <p>produces
 </p>
 <blockquote><dl>
-<dt><a name="IDX261"></a><u>Function:</u> <b>buffer-end</b><i> flag</i></dt>
+<dt><a name="index-buffer_002dend"></a><u>Function:</u> <b>buffer-end</b><i> flag</i></dt>
 <dd><p>This function returns <code>(point-min)</code> if <var>flag</var> is less than 1,
 <code>(point-max)</code> otherwise.  &hellip;
 </p></dd></dl>
@@ -228,7 +228,7 @@ definition.
 </p>
 <p>The other specialized commands work like <code>@defun</code>.
 </p>
-<a name="IDX262"></a>
+<a name="index-Macros-in-definition-commands"></a>
 <p>Note that, due to implementation difficulties, macros are not expanded
 in <code>@deffn</code> and all the other definition commands.
 </p>
@@ -271,7 +271,7 @@ into additional levels of list structure in Lisp.
 special form:
 </p>
 <blockquote><dl>
-<dt><a name="IDX263"></a><u>Special Form:</u> <b>foobar</b><i> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var>&hellip;</i></dt>
+<dt><a name="index-foobar"></a><u>Special Form:</u> <b>foobar</b><i> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var>&hellip;</i></dt>
 </dl>
 </blockquote>
 
@@ -331,8 +331,8 @@ These two search commands are similar except &hellip;
 <p>produces
 </p>
 <dl>
-<dt><a name="IDX264"></a><u>Interactive Command:</u> <b>isearch-forward</b></dt>
-<dt><a name="IDX265"></a><u>Interactive Command:</u> <b>isearch-backward</b></dt>
+<dt><a name="index-isearch_002dforward"></a><u>Interactive Command:</u> <b>isearch-forward</b></dt>
+<dt><a name="index-isearch_002dbackward"></a><u>Interactive Command:</u> <b>isearch-backward</b></dt>
 <dd><p>These two search commands are similar except &hellip;
 </p></dd></dl>
 
@@ -414,7 +414,7 @@ can be used for other programming languages.
 entities:
 </p>
 <dl compact="compact">
-<dd><a name="IDX266"></a>
+<dd><a name="index-deffn"></a>
 </dd>
 <dt> <code>@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deffn</code> command is the general definition command for
@@ -451,7 +451,7 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 @end deffn
 </pre></td></tr></table>
 
-<a name="IDX267"></a>
+<a name="index-defun"></a>
 </dd>
 <dt> <code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
@@ -481,14 +481,14 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 
 <p><code>@defun</code> creates an entry in the index of functions.
 </p>
-<a name="IDX268"></a>
+<a name="index-defmac"></a>
 </dd>
 <dt> <code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
 <code>@defmac</code> is equivalent to &lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo; and
 works like <code>@defun</code>.
 </p>
-<a name="IDX269"></a>
+<a name="index-defspec"></a>
 </dd>
 <dt> <code>@defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
@@ -524,7 +524,7 @@ see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a>
 entities:
 </p>
 <dl compact="compact">
-<dd><a name="IDX270"></a>
+<dd><a name="index-defvr"></a>
 </dd>
 <dt> <code>@defvr <var>category</var> <var>name</var></code></dt>
 <dd><p>The <code>@defvr</code> command is a general definition command for
@@ -559,7 +559,7 @@ own.
 
 <p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
 </p>
-<a name="IDX271"></a>
+<a name="index-defvar"></a>
 </dd>
 <dt> <code>@defvar <var>name</var></code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
@@ -583,10 +583,10 @@ own.
 <p><code>@defvar</code> creates an entry in the index of variables for
 <var>name</var>.
 </p>
-<a name="IDX272"></a>
+<a name="index-defopt"></a>
 </dd>
 <dt> <code>@defopt <var>name</var></code></dt>
-<dd><a name="IDX273"></a>
+<dd><a name="index-User-options_002c-marking"></a>
 <p>The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
 taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section &lsquo;Variables&rsquo; in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
@@ -621,7 +621,7 @@ functions in languages in which you must declare types of variables and
 functions, such as C and C++.
 </p>
 <dl compact="compact">
-<dd><a name="IDX274"></a>
+<dd><a name="index-deftypefn"></a>
 </dd>
 <dt> <code>@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deftypefn</code> command is the general definition command for
@@ -695,7 +695,7 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 </p>
 </dd>
 <dt> <code>@deftypefun <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
-<dd><a name="IDX275"></a>
+<dd><a name="index-deftypefun"></a>
 <p>The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
 &lsquo;<samp>@deftypefn Function &hellip;</samp>&rsquo;.
@@ -755,7 +755,7 @@ definition command <code>@deftypevr</code> corresponds to
 <code>@deftypevar</code> corresponds to <code>@deftypefun</code>.
 </p>
 <dl compact="compact">
-<dd><a name="IDX276"></a>
+<dd><a name="index-deftypevr"></a>
 </dd>
 <dt> <code>@deftypevr <var>category</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevr</code> command is the general definition command for
@@ -792,7 +792,7 @@ entity.
 <p><code>@deftypevr</code> creates an entry in the index of variables for
 <var>name</var>.
 </p>
-<a name="IDX277"></a>
+<a name="index-deftypevar"></a>
 </dd>
 <dt> <code>@deftypevar <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
@@ -857,7 +857,7 @@ programming system for a class, then you should write an <code>@code</code>
 around it.  Otherwise, it is printed in the usual text font.
 </p>
 <dl compact="compact">
-<dd><a name="IDX278"></a>
+<dd><a name="index-defcv"></a>
 </dd>
 <dt> <code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defcv</code> command is the general definition command for
@@ -882,7 +882,7 @@ name.  Thus,
 
 <p><code>@defcv</code> creates an entry in the index of variables.
 </p>
-<a name="IDX279"></a>
+<a name="index-defivar"></a>
 </dd>
 <dt> <code>@defivar <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
@@ -897,7 +897,7 @@ equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
 
 <p><code>@defivar</code> creates an entry in the index of variables.
 </p>
-<a name="IDX280"></a>
+<a name="index-deftypeivar"></a>
 </dd>
 <dt> <code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypeivar</code> command is the definition command for typed
@@ -906,7 +906,7 @@ instance variables in object-oriented programming.  It is similar to
 specify the type of the instance variable.  <code>@deftypeivar</code> creates an
 entry in the index of variables.
 </p>
-<a name="IDX281"></a>
+<a name="index-defop"></a>
 </dd>
 <dt> <code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defop</code> command is the general definition command for
@@ -952,7 +952,7 @@ operation, and its arguments, if any.
 <p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
 <code>windows</code>&rsquo;, in the index of functions.
 </p>
-<a name="IDX282"></a>
+<a name="index-deftypeop"></a>
 </dd>
 <dt> <code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deftypeop</code> command is the definition command for typed
@@ -963,7 +963,7 @@ entry in the index of functions.
 </p>
 </dd>
 <dt> <code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
-<dd><a name="IDX283"></a>
+<dd><a name="index-defmethod"></a>
 <p>The <code>@defmethod</code> command is the definition command for methods
 in object-oriented programming.  A method is a kind of function that
 implements an operation for a particular class of objects and its
@@ -996,7 +996,7 @@ the class <code>bar-class</code>.  The method takes an argument.
 
 </dd>
 <dt> <code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
-<dd><a name="IDX284"></a>
+<dd><a name="index-defmethod-1"></a>
 <p>The <code>@deftypemethod</code> command is the definition command for methods
 in object-oriented typed languages, such as C++ and Java.  It is similar
 to the <code>@defmethod</code> command with the addition of the
@@ -1030,7 +1030,7 @@ to the <code>@defmethod</code> command with the addition of the
 <p>Here is the command for data types:
 </p>
 <dl compact="compact">
-<dd><a name="IDX285"></a>
+<dd><a name="index-deftp"></a>
 </dd>
 <dt> <code>@deftp <var>category</var> <var>name</var> <var>attributes</var>&hellip;</code></dt>
 <dd><p>The <code>@deftp</code> command is the generic definition command for data
@@ -1121,7 +1121,7 @@ parameter list.
 <p>Here is a definition from <a href="../elisp/Calling-Functions.html#Calling-Functions">(elisp)Calling Functions</a> section &lsquo;Calling Functions&rsquo; in <cite>The GNU Emacs Lisp Reference Manual</cite>.
 </p>
 <blockquote><dl>
-<dt><a name="IDX286"></a><u>Function:</u> <b>apply</b><i> function &amp;rest arguments</i></dt>
+<dt><a name="index-apply"></a><u>Function:</u> <b>apply</b><i> function &amp;rest arguments</i></dt>
 <dd><p><code>apply</code> calls <var>function</var> with <var>arguments</var>, just
 like <code>funcall</code> but with one difference: the last of
 <var>arguments</var> is a list of arguments to give to

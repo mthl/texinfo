@@ -92,8 +92,8 @@ else on the line; anything on the line after the command is considered
 part of the file name, including what would otherwise be a
 comment.
 </p>
-<a name="IDX66"></a>
-<a name="IDX67"></a>
+<a name="index-Ignored-before-_0040setfilename"></a>
+<a name="index-_005cinput-source-line-ignored"></a>
 <p>The Info formatting commands ignore everything written before the
 <code>@setfilename</code> line, which is why the very first line of
 the file (the <code>\input</code> line) does not show up in the output.
@@ -104,9 +104,9 @@ file.  There are two conventions for choosing the name: you can either
 remove the extension (such as &lsquo;<samp>.texi</samp>&rsquo;) entirely from the input file
 name, or, preferably, replace it with the &lsquo;<samp>.info</samp>&rsquo; extension.
 </p>
-<a name="IDX68"></a>
-<a name="IDX69"></a>
-<a name="IDX70"></a>
+<a name="index-Length-of-file-names"></a>
+<a name="index-File-name-collision"></a>
+<a name="index-Info-file-name_002c-choosing"></a>
 <p>Although an explicit &lsquo;<samp>.info</samp>&rsquo; extension is preferable, some
 operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
@@ -126,7 +126,7 @@ files named &lsquo;<tt>texin-10</tt>&rsquo;, &lsquo;<tt>gcc.i12</tt>&rsquo;, etc
 with &lsquo;<samp>html</samp>&rsquo;, or add &lsquo;<samp>.html</samp>&rsquo; if the given name has no
 extension.
 </p>
-<a name="IDX71"></a>
+<a name="index-texinfo_002ecnf"></a>
 <p>The <code>@setfilename</code> line produces no output when you typeset a
 manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and

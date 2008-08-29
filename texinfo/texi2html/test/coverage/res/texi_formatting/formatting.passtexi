@@ -169,6 +169,7 @@ formatting.texi(mymacro,18) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,18) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,18) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,18) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,18) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,18) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,18) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,18) @code{@@H@{--a@}} @H{--a}
@@ -702,7 +703,7 @@ formatting.texi(,21) @titlepage
 formatting.texi(,22) @title title --a
 formatting.texi(,23) @subtitle formatting subtitle --a
 formatting.texi(,24) @subtitle subtitle 2 --a
-formatting.texi(,25) @author author1 --a
+formatting.texi(,25) @author author1 --a with accents in name T@'e@,ca
 formatting.texi(,26) @author author2 --a
 formatting.texi(,27) In titlepage
 formatting.texi(mymacro,28) 
@@ -861,6 +862,7 @@ formatting.texi(mymacro,28) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,28) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,28) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,28) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,28) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,28) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,28) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,28) @code{@@H@{--a@}} @H{--a}
@@ -1553,6 +1555,7 @@ formatting.texi(mymacro,38) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,38) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,38) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,38) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,38) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,38) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,38) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,38) @code{@@H@{--a@}} @H{--a}
@@ -2239,6 +2242,7 @@ formatting.texi(mymacro,42) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,42) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,42) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,42) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,42) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,42) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,42) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,42) @code{@@H@{--a@}} @H{--a}

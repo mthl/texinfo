@@ -106,91 +106,91 @@ commands.
 <dt> <code><strong>Functions:</strong></code></dt>
 <dd><dl compact="compact">
 <dt> <code>system(&quot;sh&quot;</code>, string_expression <code>)</code></dt>
-<dd><a name="IDX172"></a>
-<a name="IDX173"></a>
+<dd><a name="index-sh"></a>
+<a name="index-system_002c-sh"></a>
 <p>shell escape, returns the return code of the shell as int. The string is
 sent literally to the shell.
 </p></dd>
 <dt> <code>system(&quot;pid&quot;)</code></dt>
-<dd><a name="IDX174"></a>
-<a name="IDX175"></a>
+<dd><a name="index-pid"></a>
+<a name="index-system_002c-pid"></a>
 <p>returns the process number as int (for creating unique names).
 </p></dd>
 <dt> <code>system(&quot;uname&quot;)</code></dt>
-<dd><a name="IDX176"></a>
-<a name="IDX177"></a>
-<a name="IDX178"></a>
+<dd><a name="index-uname"></a>
+<a name="index-system_002c-uname"></a>
+<a name="index-hardware-platform"></a>
 <p>returns a string identifying the architecture for which <small>SINGULAR</small>
 was compiled.
 </p></dd>
 <dt> <code>system(&quot;getenv&quot;,</code> string_expression<code>)</code></dt>
-<dd><a name="IDX179"></a>
-<a name="IDX180"></a>
+<dd><a name="index-getenv"></a>
+<a name="index-system_002c-getenv"></a>
 <p>returns the value of the shell environment variable given as the second
 argument. The return type is string.
 </p></dd>
 <dt> <code>system(&quot;setenv&quot;,</code>string_expression, string_expression<code>)</code></dt>
-<dd><a name="IDX181"></a>
-<a name="IDX182"></a>
+<dd><a name="index-setenv"></a>
+<a name="index-system_002c-setenv"></a>
 <p>sets the shell environment variable given as the second argument to the
 value given as the third argument. Returns the third argument. Might not
 be available on all platforms.
 </p></dd>
 <dt> <code>system(&quot;tty&quot;)</code></dt>
-<dd><a name="IDX183"></a>
-<a name="IDX184"></a>
+<dd><a name="index-tty"></a>
+<a name="index-system_002c-tty"></a>
 <p>resets the terminal.
 </p></dd>
 <dt> <code>system(&quot;version&quot;)</code></dt>
-<dd><a name="IDX185"></a>
-<a name="IDX186"></a>
+<dd><a name="index-version"></a>
+<a name="index-system_002c-version"></a>
 <p>returns the version number of  <small>SINGULAR</small> as int.
 </p></dd>
 <dt> <code>system(&quot;contributors&quot;)</code></dt>
-<dd><a name="IDX187"></a>
-<a name="IDX188"></a>
+<dd><a name="index-contributors"></a>
+<a name="index-system_002c-contributors"></a>
 <p>returns names of people who contributed to the <small>SINGULAR</small> kernel as string.
 </p></dd>
 <dt> <code>system(&quot;gen&quot;)</code></dt>
-<dd><a name="IDX189"></a>
+<dd><a name="index-system_002c-gen"></a>
 <p>returns the generating element of the multiplicative
 group of (Z/p)\{0} (as int) where p is the characteristic of the
 basering.
 </p></dd>
 <dt> <code>system(&quot;nblocks&quot;)</code></dt>
 <dt> <code>system(&quot;nblocks&quot;,</code> ring_name <code>)</code></dt>
-<dd><a name="IDX190"></a>
-<a name="IDX191"></a>
+<dd><a name="index-nblocks"></a>
+<a name="index-system_002c-nblocks"></a>
 <p>returns the number of blocks of the given ring, or the number of parameters
 of the current basering, if no second argument is given. The return type
 is int.
 </p></dd>
 <dt> <code>system(&quot;Singular&quot;)</code></dt>
-<dd><a name="IDX192"></a>
-<a name="IDX193"></a>
+<dd><a name="index-Singular"></a>
+<a name="index-system_002c-Singular"></a>
 <p>returns the absolute (path) name of the running <small>SINGULAR</small> as string.
 </p></dd>
 <dt> <code>system(&quot;</code>&ndash;<code>&quot;)</code></dt>
-<dd><a name="IDX194"></a>
-<a name="IDX195"></a>
+<dd><a name="index-system_002c-_002d_002d"></a>
+<a name="index-command_002dline-options_002c-print-all-values-of"></a>
 <p>prints the values of all options.
 </p></dd>
 <dt> <code>system(&quot;</code>&ndash;long_option_name<code>&quot;)</code></dt>
-<dd><a name="IDX196"></a>
-<a name="IDX197"></a>
+<dd><a name="index-command_002dline-option_002c-value-of"></a>
+<a name="index-system_002c-_002d_002dlong_005foption_005fname"></a>
 <p>returns the value of the (command-line) option long_option_name. The
 type of the returned value is either string or int.
 See <a href="sing_19.htm#Command-line-options">Command line options</a>, for more info.
 </p></dd>
 <dt> <code>system(&quot;</code>&ndash;long_option_name<code>&quot;,</code> expression<code>)</code></dt>
-<dd><a name="IDX198"></a>
-<a name="IDX199"></a>
-<a name="IDX200"></a>
-<a name="IDX201"></a>
-<a name="IDX202"></a>
-<a name="IDX203"></a>
-<a name="IDX204"></a>
-<a name="IDX205"></a>
+<dd><a name="index-command_002dline-option_002c-setting-value-of"></a>
+<a name="index-system_002c-_002d_002dlong_005foption_005fname_003dvalue"></a>
+<a name="index-random-number-generator_002c-seed"></a>
+<a name="index-browsers_002c-setting-the"></a>
+<a name="index-browser_002c-setting-the"></a>
+<a name="index-help-browsers_002c-setting-the"></a>
+<a name="index-timer-resolution_002c-setting-the"></a>
+<a name="index-minimal-display-time_002c-setting-the"></a>
 <p>sets the value of the (command-line) option long_option_name to the
 value given by the expression. Type of the expression must be string, or
 int.  See <a href="sing_19.htm#Command-line-options">Command line options</a>, for more info. Among others,
@@ -199,7 +199,7 @@ the used help browser, the minimal display time, or the timer
 resolution.
 </p></dd>
 <dt> <code>system(&quot;browsers&quot;);</code></dt>
-<dd><a name="IDX206"></a>
+<dd><a name="index-system_002c-browsers"></a>
 <p>returns a string about available help browsers.
 See <a href="sing_16.htm#The-online-help-system">The online help system</a>.
 </p></dd>

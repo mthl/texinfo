@@ -22,8 +22,14 @@ imbricated_macros.texi(macro3,38) &&&&
 imbricated_macros.texi(,39) 
 imbricated_macros.texi(macro3,61) @verb{% @macro2 %}
 imbricated_macros.texi(macro3,61) @c @macro4
-imbricated_macros.texi(macro3,61) @pagesizes 4 @macro4
-imbricated_macros.texi(macro3,61) @headings doubleafter @macro4
+imbricated_macros.texi(macro3,61) @pagesizes 4 1
+imbricated_macros.texi(macro3,61) 2
+imbricated_macros.texi(macro3,61) 3
+imbricated_macros.texi(macro3,61) 4
+imbricated_macros.texi(macro3,61) @headings doubleafter 1
+imbricated_macros.texi(macro3,61) 2
+imbricated_macros.texi(macro3,61) 3
+imbricated_macros.texi(macro3,61) 4
 imbricated_macros.texi(macro3,61) @verbatim
 imbricated_macros.texi(macro3,61) @macro2
 imbricated_macros.texi(macro3,61) @end verbatim

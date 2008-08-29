@@ -67,21 +67,21 @@ names, Lisp expressions, and many other things, depending on the command
 reading the argument.  You can use the usual XEmacs editing commands in
 the minibuffer to edit the argument text.
 </p>
-<a name="IDX210"></a>
+<a name="index-prompt"></a>
 <p>  When the minibuffer is in use, it appears in the echo area, and the
 cursor moves there.  The beginning of the minibuffer line displays a
 <em>prompt</em> which says what kind of input you should supply and how it
 will be used.  Often this prompt is derived from the name of the command
 that the argument is for.  The prompt normally ends with a colon.
 </p>
-<a name="IDX211"></a>
+<a name="index-default-argument"></a>
 <p>  Sometimes a <em>default argument</em> appears in parentheses after the
 colon; it, too, is part of the prompt.  The default is used as the
 argument value if you enter an empty argument (e.g., by just typing &lt;RET&gt;).
 For example, commands that read buffer names always show a default, which
 is the name of the buffer that will be used if you type just &lt;RET&gt;.
 </p>
-<a name="IDX212"></a>
+<a name="index-C_002dg"></a>
 <p>  The simplest way to enter a minibuffer argument is to type the text
 you want, terminated by &lt;RET&gt; which exits the minibuffer.  You can
 cancel the command that wants the argument, and get out of the
@@ -172,15 +172,15 @@ contents:
 <table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src//etc/termcap
 </pre></td></tr></table>
 
-<a name="IDX213"></a>
-<a name="IDX214"></a>
-<a name="IDX215"></a>
+<a name="index-_002f_002f-in-file-name"></a>
+<a name="index-double-slash-in-file-name"></a>
+<a name="index-slashes-repeated-in-file-name"></a>
 <p>XEmacs gives a special meaning to a double slash (which is not normally
 a useful thing to write): it means, &ldquo;ignore everything before the
 second slash in the pair.&rdquo;  Thus, &lsquo;<samp>/u2/emacs/src/</samp>&rsquo; is ignored in
 the example above, and you get the file &lsquo;<tt>/etc/termcap</tt>&rsquo;.
 </p>
-<a name="IDX216"></a>
+<a name="index-insert_002ddefault_002ddirectory"></a>
 <p>If you set <code>insert-default-directory</code> to <code>nil</code>, the default
 directory is not inserted in the minibuffer.  This way, the minibuffer
 starts out empty.  But the name you type, if relative, is still
@@ -234,14 +234,14 @@ minibuffer window expands vertically as necessary to hold the text that
 you put in the minibuffer.  Use <kbd>M-x resize-minibuffer-mode</kbd> to
 enable or disable this minor mode (see section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>).
 </p>
-<a name="IDX217"></a>
+<a name="index-C_002dM_002dv"></a>
 <p>  If while in the minibuffer you issue a command that displays help text
 of any sort in another window, you can use the <kbd>C-M-v</kbd> command while
 in the minibuffer to scroll the help text.  This lasts until you exit
 the minibuffer.  This feature is especially useful if a completing
 minibuffer gives you a list of possible completions.  See section <a href="xemacs_19.html#Other-Window">Using Other Windows</a>.
 </p>
-<a name="IDX218"></a>
+<a name="index-minibuffer_002dconfirm_002dincomplete"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is <code>t</code>, you
 are asked for confirmation if there is no known completion for the text
 you typed. For example, if you attempted to visit a non-existent file,
@@ -259,7 +259,7 @@ the minibuffer is active but you have switched to a different window,
 recursive use of the minibuffer is allowed&mdash;if you know enough to try
 to do this, you probably will not get confused.
 </p>
-<a name="IDX219"></a>
+<a name="index-enable_002drecursive_002dminibuffers"></a>
 <p>  If you set the variable <code>enable-recursive-minibuffers</code> to a
 non-<code>nil</code>, recursive use of the minibuffer is always allowed.
 </p>
@@ -419,8 +419,8 @@ highlighted completion and exit the minibuffer.
 </p></dd>
 </dl>
 
-<a name="IDX220"></a>
-<a name="IDX221"></a>
+<a name="index-SPC"></a>
+<a name="index-minibuffer_002dcomplete_002dword"></a>
 <p>  &lt;SPC&gt; completes much like &lt;TAB&gt;, but never goes beyond the
 next hyphen or space.  If you have &lsquo;<samp>auto-f</samp>&rsquo; in the minibuffer and
 type &lt;SPC&gt;, it finds that the completion is &lsquo;<samp>auto-fill-mode</samp>&rsquo;,
@@ -434,7 +434,7 @@ completion is available runs the command
 window that displays a list of completions:
 </p>
 <dl compact="compact">
-<dd><a name="IDX222"></a>
+<dd><a name="index-mouse_002dchoose_002dcompletion"></a>
 </dd>
 <dt> <kbd>button2up</kbd></dt>
 <dd><p>Clicking mouse button 2 on a completion in the list of possible
@@ -442,7 +442,7 @@ completions chooses that completion (<code>mouse-choose-completion</code>).
 You normally use this command while point is in the minibuffer; but you
 must click in the list of completions, not in the minibuffer itself.
 </p>
-<a name="IDX223"></a>
+<a name="index-switch_002dto_002dcompletions"></a>
 </dd>
 <dt> <kbd>&lt;PRIOR&gt;</kbd></dt>
 <dt> <kbd>M-v</kbd></dt>
@@ -452,7 +452,7 @@ window showing the completion list buffer
 commands below.  (Selecting that window in the usual ways has the same
 effect, but this way is more convenient.)
 </p>
-<a name="IDX224"></a>
+<a name="index-choose_002dcompletion"></a>
 </dd>
 <dt> <kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>Typing &lt;RET&gt; <em>in the completion list buffer</em> chooses the
@@ -460,7 +460,7 @@ completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
 the list of completions.
 </p>
-<a name="IDX225"></a>
+<a name="index-next_002dlist_002dmode_002ditem"></a>
 </dd>
 <dt> <kbd>&lt;RIGHT&gt;</kbd></dt>
 <dt> <kbd>&lt;TAB&gt;</kbd></dt>
@@ -469,7 +469,7 @@ the list of completions.
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
 </p>
-<a name="IDX226"></a>
+<a name="index-previous_002dlist_002dmode_002ditem"></a>
 </dd>
 <dt> <kbd>&lt;LEFT&gt;</kbd></dt>
 <dt> <kbd>C-b</kbd></dt>
@@ -569,19 +569,19 @@ However, if <em>all</em> the possible completions end in &ldquo;ignored&rdquo;
 strings, then they are not ignored.  Ignored extensions do not apply to
 lists of completions&mdash;those always mention all possible completions.
 </p>
-<a name="IDX227"></a>
+<a name="index-completion_002dauto_002dhelp"></a>
 <p>  If a completion command finds the next character is undetermined, it
 automatically displays a list of all possible completions.  If the variable
 <code>completion-auto-help</code> is set to <code>nil</code>, this does not happen,
 and you must type <kbd>?</kbd> to display the possible completions.
 </p>
-<a name="IDX228"></a>
+<a name="index-minibuffer_002dconfirm_002dincomplete-1"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is set to <code>t</code>,
 then in contexts where <code>completing-read</code> allows answers that are
 not valid completions, an extra &lt;RET&gt; must be typed to confirm the
 response.  This is helpful for catching typos.
 </p>
-<a name="IDX229"></a>
+<a name="index-Icomplete-mode"></a>
 <p>  Icomplete mode presents a constantly-updated display that tells you
 what completions are available for the text you&rsquo;ve entered so far.  The
 command to enable or disable this minor mode is <kbd>M-x
@@ -635,10 +635,10 @@ match for <var>regexp</var> (<code>next-matching-history-element</code>).
 </p></dd>
 </dl>
 
-<a name="IDX230"></a>
-<a name="IDX231"></a>
-<a name="IDX232"></a>
-<a name="IDX233"></a>
+<a name="index-M_002dp-_0028minibuffer-history_0029"></a>
+<a name="index-M_002dn-_0028minibuffer-history_0029"></a>
+<a name="index-next_002dhistory_002delement"></a>
+<a name="index-previous_002dhistory_002delement"></a>
 <p>  The simplest way to reuse the saved arguments in the history list is
 to move through the history list one element at a time.  While in the
 minibuffer, use <kbd>M-p</kbd> or up-arrow (<code>previous-history-element</code>)
@@ -658,10 +658,10 @@ cases, the minibuffer history commands know the default value.  Then you
 can insert the default value into the minibuffer as text by using
 <kbd>M-n</kbd> to move &ldquo;into the future&rdquo; in the history.
 </p>
-<a name="IDX234"></a>
-<a name="IDX235"></a>
-<a name="IDX236"></a>
-<a name="IDX237"></a>
+<a name="index-previous_002dmatching_002dhistory_002delement"></a>
+<a name="index-next_002dmatching_002dhistory_002delement"></a>
+<a name="index-M_002dr-_0028minibuffer-history_0029"></a>
+<a name="index-M_002ds-_0028minibuffer-history_0029"></a>
 <p>  There are also commands to search forward or backward through the
 history; they search for history elements that match a regular
 expression that you specify with the minibuffer.  <kbd>M-r</kbd>
@@ -712,7 +712,7 @@ you can repeat the entire command.  In particular, every use of
 <kbd>M-x</kbd> is recorded there, since <kbd>M-x</kbd> uses the minibuffer to read
 the command name.
 </p>
-<a name="IDX238"></a>
+<a name="index-list_002dcommand_002dhistory"></a>
 <dl compact="compact">
 <dt> <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd></dt>
 <dd><p>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
@@ -731,8 +731,8 @@ recorded command (<code>next-history-element</code>).
 </p></dd>
 </dl>
 
-<a name="IDX239"></a>
-<a name="IDX240"></a>
+<a name="index-C_002dx-ESC-ESC"></a>
+<a name="index-repeat_002dcomplex_002dcommand"></a>
 <p>  <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> is used to re-execute a recent
 minibuffer-using command.  With no argument, it repeats the last such
 command.  A numeric argument specifies which command to repeat; one
@@ -751,10 +751,10 @@ already there.
 which command is displayed for repetition.  If you do not change the text,
 you can be sure the command will repeat exactly as before.
 </p>
-<a name="IDX241"></a>
-<a name="IDX242"></a>
-<a name="IDX243"></a>
-<a name="IDX244"></a>
+<a name="index-M_002dn"></a>
+<a name="index-M_002dp"></a>
+<a name="index-next_002dcomplex_002dcommand"></a>
+<a name="index-previous_002dcomplex_002dcommand"></a>
 <p>  If you are in the minibuffer for <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd> and the
 command shown to you is not the one you want to repeat, you can move
 around the list of previous commands using <kbd>M-n</kbd> and <kbd>M-p</kbd>.
@@ -768,7 +768,7 @@ the command to be repeated is lost if you use <kbd>M-n</kbd> or <kbd>M-p</kbd>.
 &lt;ESC&gt;</kbd> to run the commands <code>previous-history-element</code> and
 <code>next-history-element</code>.
 </p>
-<a name="IDX245"></a>
+<a name="index-command_002dhistory"></a>
 <p>  The list of previous commands using the minibuffer is stored as a Lisp
 list in the variable <code>command-history</code>.  Each element of the list
 is a Lisp expression which describes one command and its arguments.

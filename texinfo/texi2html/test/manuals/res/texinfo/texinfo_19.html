@@ -155,9 +155,9 @@ of letters: no digits, hyphens, underscores, or other special characters.
 list (&lsquo;<samp>@macro foo {}</samp>&rsquo;) or with no braces at all (&lsquo;<samp>@macro
 foo</samp>&rsquo;).
 </p>
-<a name="IDX303"></a>
-<a name="IDX304"></a>
-<a name="IDX305"></a>
+<a name="index-Body-of-a-macro"></a>
+<a name="index-Mutually-recursive-macros"></a>
+<a name="index-Recursion_002c-mutual"></a>
 <p>The definition or <em>body</em> of the macro can contain most Texinfo
 commands, including previously-defined macros.  Not-yet-defined macro
 invocations are not allowed; thus, it is not possible to have mutually
@@ -165,24 +165,24 @@ recursive Texinfo macros.  Also, a macro definition that defines another
 macro does not work in TeX due to limitations in the design of
 <code>@macro</code>.
 </p>
-<a name="IDX306"></a>
+<a name="index-Parameters-to-macros"></a>
 <p>In the macro body, instances of a parameter name surrounded by
 backslashes, as in &lsquo;<samp>\<var>param1</var>\</samp>&rsquo; in the example above, are
 replaced by the corresponding argument from the macro invocation.  You
 can use parameter names any number of times in the body, including zero.
 </p>
-<a name="IDX307"></a>
+<a name="index-Backslash-in-macros"></a>
 <p>To get a single &lsquo;<samp>\</samp>&rsquo; in the macro expansion, use &lsquo;<samp>\\</samp>&rsquo;.  Any
 other use of &lsquo;<samp>\</samp>&rsquo; in the body yields a warning.
 </p>
-<a name="IDX308"></a>
-<a name="IDX309"></a>
+<a name="index-Spaces-in-macros"></a>
+<a name="index-Whitespace-in-macros"></a>
 <p>The newlines after the <code>@macro</code> line and before the <code>@end
 macro</code> line are ignored, that is, not included in the macro body.  All
 other whitespace is treated according to the usual Texinfo rules.
 </p>
-<a name="IDX310"></a>
-<a name="IDX311"></a>
+<a name="index-Recursive-macro-invocations"></a>
+<a name="index-rmacro"></a>
 <p>To allow a macro to be used recursively, that is, in an argument to a
 call to itself, you must define it with &lsquo;<samp>@rmacro</samp>&rsquo;, like this:
 </p>
@@ -196,9 +196,9 @@ a\arg\b
 <p>This produces the output &lsquo;a1atextb2b&rsquo;.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
 &lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
 </p>
-<a name="IDX312"></a>
-<a name="IDX313"></a>
-<a name="IDX314"></a>
+<a name="index-unmacro"></a>
+<a name="index-Macros_002c-undefining"></a>
+<a name="index-Undefining-macros"></a>
 <p>You can undefine a macro <var>foo</var> with <code>@unmacro <var>foo</var></code>.
 It is not an error to undefine a macro that is already undefined.
 For example:
@@ -248,7 +248,7 @@ Together: \p\ &amp; \q\.
 <table><tr><td>&nbsp;</td><td><pre class="display">Together: a &amp; b.
 </pre></td></tr></table>
 
-<a name="IDX315"></a>
+<a name="index-Backslash_002c-and-macros"></a>
 <p>Thus, the arguments and parameters are separated by commas and delimited
 by braces; any whitespace after (but not before) a comma is ignored.
 The braces are required in the invocation (but not the definition), even
@@ -266,8 +266,8 @@ No arguments here.
 <table><tr><td>&nbsp;</td><td><pre class="display">No arguments here.
 </pre></td></tr></table>
 
-<a name="IDX316"></a>
-<a name="IDX317"></a>
+<a name="index-Comma_002c-in-macro-arguments"></a>
+<a name="index-Braces_002c-in-macro-arguments"></a>
 <p>To insert a comma, brace, or backslash in an argument, prepend a
 backslash, as in
 </p>
@@ -472,7 +472,7 @@ enclosure definition will override the built-in definition.
 <p>An enclosure command defined this way takes one argument in braces; this
 is intended for new markup commands (see section <a href="texinfo_10.html#Marking-Text">Marking Words and Phrases</a>).
 </p>
-<a name="IDX318"></a>
+<a name="index-phoo"></a>
 <p>For example, you can write:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose phoo,//,\\
@@ -498,7 +498,7 @@ for <code>texinfo-format-buffer</code> or <code>texinfo-format-region</code>.  T
 <code>@definfoenclose</code> command need not be within &lsquo;<samp>@ifinfo</samp>&rsquo;, but
 the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
 </p>
-<a name="IDX319"></a>
+<a name="index-headword"></a>
 <p>Here is another example: write
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose headword, , :

@@ -159,7 +159,7 @@ may wish to put the files from that project into
 files.
 </p>
 <dl compact="compact">
-<dd><div id="IDX90"></div>
+<dd><div id="index-RCS_002c-importing-files-from"></div>
 </dd>
 <dt> From RCS</dt>
 <dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
@@ -196,7 +196,7 @@ system, and then check the revisions into <small>CVS</small>.
 The &lsquo;<tt>sccs2rcs</tt>&rsquo; script mentioned below may be a
 useful example to follow.
 </p>
-<div id="IDX91"></div>
+<div id="index-SCCS_002c-importing-files-from"></div>
 </dd>
 <dt> From SCCS</dt>
 <dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
@@ -207,7 +207,7 @@ Note: you must run it on a machine which has both
 else in contrib it is unsupported (your mileage may
 vary).
 </p>
-<div id="IDX92"></div>
+<div id="index-PVCS_002c-importing-files-from"></div>
 </dd>
 <dt> From PVCS</dt>
 <dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of

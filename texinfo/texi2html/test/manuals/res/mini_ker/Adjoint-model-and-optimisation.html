@@ -148,8 +148,8 @@ src="mini_ker_tex4ht_tex15x.png" alt="                       &#x222B; T
 J = &#x03C8; [&#x03B7;(T),&#x03C6;(T),h(T)]+    l[&#x03B7;(&#x03C4;),&#x03C6; (&#x03C4; ),h(&#x03C4;)]d&#x03C4;
                         0  " class="math-display" ></center>  
 </p>
-<a name="IDX67"></a>
-<a name="IDX68"></a>
+<a name="index-final-cost"></a>
+<a name="index-integrand-cost"></a>
 
 <p>Where       &#x03C8; is the final cost function,       l is the integrand
 cost function and       h represents the control laws variations.
@@ -186,17 +186,17 @@ nor any optimisation, and they are used during simulation, in which case they wi
 act as external sources. To enable
 the use of commands, the logical flag <code>Zcommand</code> should be <code>.true.</code>.
 </p>
-<a name="IDX69"></a>
-<a name="IDX70"></a>
+<a name="index-uxcom_002edata"></a>
+<a name="index-uycom_002edata"></a>
 
 <p>The command can be given either as: 
 </p><ol>
 <li> a table of numerical
 values in the files &lsquo;<tt>uxcom.data</tt>&rsquo; and &lsquo;<tt>uycom.data</tt>&rsquo;.
 </li><li> a function
-<a name="IDX71"></a>
-<a name="IDX72"></a>
-<a name="IDX73"></a>
+<a name="index-zlaw"></a>
+<a name="index-zcmd_005flaw"></a>
+<a name="index-zcmd_005flaw_002einc"></a>
 of the problem variables. To turn that feature on the logical flag 
 <code>Zlaw</code> should be set to <code>.true.</code> in &lsquo;<tt>zinit</tt>&rsquo;. The sequence 
 &lsquo;<tt>zcmd_law</tt>&rsquo; should hold
@@ -239,7 +239,7 @@ allow adjoint model computation:
 <code>f_set</code> macros.
 </p>
 <dl>
-<dt><a name="IDX74"></a><u>Macro:</u> <b>f_set</b><i> cout_Psi = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
+<dt><a name="index-f_005fset-2"></a><u>Macro:</u> <b>f_set</b><i> cout_Psi = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
 <dd><p>This macro defines the final cost function.
 <code>f</code> is a fortran 
 expression which may be function of cell state variables, 
@@ -251,7 +251,7 @@ state control laws
 </p></dd></dl>
 
 <dl>
-<dt><a name="IDX75"></a><u>Macro:</u> <b>f_set</b><i> cout_l = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
+<dt><a name="index-f_005fset-3"></a><u>Macro:</u> <b>f_set</b><i> cout_l = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
 <dd><p>This macro defines the integrand cost function.
 <code>f</code> is a fortran 
 expression which may be function of cell state variables, 

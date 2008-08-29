@@ -206,7 +206,7 @@ my-bib-macros.texi(,214)
 my-bib-macros.texi(,231) 
 my-bib-macros.texi(,232) @c %% my-bib-macros.texi ends here
 bib-example.texi(mybibuselist,27) @set mybiblist true
-bib-example.texi(mybibuselist,27) @set mybibrefnode Referencesbib-example.texi(mybibuselist,27) 
+bib-example.texi(mybibuselist,27) @set mybibrefnode References
 bib-example.texi(,28) 
 bib-example.texi(,29) @comment %**end of header
 bib-example.texi(,30) 
@@ -215,7 +215,7 @@ bib-example.texi(,32) @top Top
 bib-example.texi(,33) 
 bib-example.texi(,34) @menu
 bib-example.texi(,35) * Introduction::
-bib-example.texi(mybibnode,36) * bib-example.texi(mybibnode,36) Referencesbib-example.texi(mybibnode,36) ::
+bib-example.texi(mybibnode,36) * bib-example.texi(mybibnode,36) References::
 bib-example.texi(,37) 
 bib-example.texi(,38) @end menu
 bib-example.texi(,39) 
@@ -224,11 +224,11 @@ bib-example.texi(,41) @chapter Introduction
 bib-example.texi(,42) 
 bib-example.texi(,43) The ability of a documentation format to make cross references to a
 bib-example.texi(mybibcite,44) bibliography, a feature of LaTeX bib-example.texi(mybibcite,44) @c %**else if
-bib-example.texi(mybibcite,44) (See item [LaTeX2e] in @ref{References, LaTeX2e}.)bib-example.texi(mybibcite,44) 
+bib-example.texi(mybibcite,44) (See item [LaTeX2e] in @ref{References, LaTeX2e}.)
 bib-example.texi(mybibcite,44) , isn't
 bib-example.texi(,45) currently supported in Texinfo.
 bib-example.texi(,46) 
-bib-example.texi(mybibnode,47) @node bib-example.texi(mybibnode,47) Referencesbib-example.texi(mybibnode,47) 
+bib-example.texi(mybibnode,47) @node bib-example.texi(mybibnode,47) References
 bib-example.texi(,48) @chapter References
 bib-example.texi(,49) 
 bib-example.texi(,50) @itemize @asis

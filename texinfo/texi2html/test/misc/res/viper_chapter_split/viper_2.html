@@ -154,12 +154,12 @@ automatically in front of the Ex command.
 </p>
 <p>See section <a href="viper_3.html#Basics">Basics</a>, for more info.
 </p>
-<a name="IDX1"></a>
-<a name="IDX2"></a>
-<a name="IDX3"></a>
-<a name="IDX4"></a>
-<a name="IDX5"></a>
-<a name="IDX6"></a>
+<a name="index-window"></a>
+<a name="index-mode-line"></a>
+<a name="index-buffer-information"></a>
+<a name="index-Minibuffer"></a>
+<a name="index-command-line"></a>
+<a name="index-buffer-_0028modified_0029"></a>
 
 <p>Emacs divides the screen into tiled <em>windows</em>.  You can see the
 contents of a buffer through the window associated with the buffer.  The
@@ -177,12 +177,12 @@ in a Minibuffer window.  The Minibuffer window is used for command input
 output.  Viper uses Minibuffer window for <kbd>/</kbd> and <kbd>:</kbd>
 commands.
 </p>
-<a name="IDX7"></a>
-<a name="IDX8"></a>
-<a name="IDX9"></a>
-<a name="IDX10"></a>
-<a name="IDX11"></a>
-<a name="IDX12"></a>
+<a name="index-mode"></a>
+<a name="index-keymap"></a>
+<a name="index-local-keymap"></a>
+<a name="index-global-keymap"></a>
+<a name="index-major-mode"></a>
+<a name="index-minor-mode"></a>
 
 <p>An Emacs buffer can have a <em>major mode</em> that customizes Emacs for
 editing text of a particular sort by changing the functionality of the keys.
@@ -203,9 +203,9 @@ any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
 more information, see <a href="../emacs/Minor-Modes.html#Minor-Modes">Minor Modes: (emacs)Minor Modes</a> section &lsquo;Minor Modes&rsquo; in <cite>The GNU Emacs Manual</cite> 
 </p>
-<a name="IDX13"></a>
-<a name="IDX14"></a>
-<a name="IDX15"></a>
+<a name="index-Viper-as-minor-mode"></a>
+<a name="index-Control-keys"></a>
+<a name="index-Meta-key"></a>
 
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
 are involved when Viper emulates Vi command mode, Vi insert mode, etc.
@@ -372,7 +372,7 @@ replacement state.
 </p></dd>
 </dl>
 
-<a name="IDX16"></a>
+<a name="index-mode-line-1"></a>
 
 <p>The modes are indicated on the <em>mode line</em> as &lt;E&gt;, &lt;I&gt;, &lt;V&gt;, and &lt;R&gt;,
 so that the multiple modes do not confuse you.  Most of your editing can be
@@ -495,7 +495,7 @@ exceptions are:
 </p>
 <dl compact="compact">
 <dt> <kbd>C-x</kbd></dt>
-<dd><a name="IDX17"></a>
+<dd><a name="index-C_002dx"></a>
 <p><kbd>C-x</kbd> is used to invoke Emacs commands, mainly those that do window
 management.  <kbd>C-x 2</kbd> will split a window, <kbd>C-x 0</kbd> will close a
 window.  <kbd>C-x 1</kbd> will close all other windows.  <kbd>C-xb</kbd> is used to
@@ -505,15 +505,15 @@ For the rest, see the GNU Emacs Manual.
 </p>
 </dd>
 <dt> <kbd>C-c</kbd></dt>
-<dd><a name="IDX18"></a>
+<dd><a name="index-C_002dc"></a>
 <p>For user levels 2 and higher, this key serves as a prefix key for the key
 sequences used by various major modes.  For users at Viper level 1, <kbd>C-c</kbd>
 simply beeps.
 </p>
 </dd>
 <dt> <kbd>C-g and C-]</kbd></dt>
-<dd><a name="IDX19"></a>
-<a name="IDX20"></a>
+<dd><a name="index-C_002dg"></a>
+<a name="index-C_002d_005d"></a>
 
 <p>These are the Emacs &lsquo;<samp>quit</samp>&rsquo; keys.
 There will be cases where you will have to
@@ -527,8 +527,8 @@ function instead.
 
 </p></dd>
 <dt> <kbd>C-\</kbd></dt>
-<dd><a name="IDX21"></a>
-<a name="IDX22"></a>
+<dd><a name="index-C_002d_005c"></a>
+<a name="index-Meta-key-1"></a>
 
 <p>Viper uses &lt;ESC&gt; as a switch between Insert and Vi states.  Emacs uses
 &lt;ESC&gt; for Meta.  The Meta key is very important in Emacs since many
@@ -553,13 +553,13 @@ about are:
 </p>
 <dl compact="compact">
 <dt> &lsquo;<samp>Undo</samp>&rsquo;</dt>
-<dd><a name="IDX23"></a>
+<dd><a name="index-u"></a>
 <p><kbd>u</kbd> will undo.  Undo can be repeated by the <kbd>.</kbd> key.  Undo itself
 can be undone.  Another <kbd>u</kbd> will change the direction.  The presence
 of repeatable undo means that <kbd>U</kbd>, undoing lines, is not very
 important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
-<a name="IDX24"></a>
-<a name="IDX25"></a>
+<a name="index-multiple-undo"></a>
+<a name="index-undo"></a>
 </p>
 
 </dd>
@@ -579,15 +579,15 @@ lets the user switch from search with regular expressions to plain vanilla
 search and vice versa.  It also lets one switch from case-sensitive search
 to case-insensitive and back.
 See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for more details.
-<a name="IDX26"></a>
-<a name="IDX27"></a>
-<a name="IDX28"></a>
-<a name="IDX29"></a>
-<a name="IDX30"></a>
+<a name="index-regular-expressions"></a>
+<a name="index-vanilla-search"></a>
+<a name="index-case_002dsensitive-search"></a>
+<a name="index-case_002dinsensitive-search"></a>
+<a name="index-C_002dc-_002f"></a>
 </p>
 </dd>
 <dt> &lsquo;<samp>Ex commands</samp>&rsquo;</dt>
-<dd><a name="IDX31"></a>
+<dd><a name="index-Ex-commands"></a>
 <p>The current working directory of a buffer is automatically inserted in the
 minibuffer if you type <kbd>:e</kbd> then space.  Absolute filenames are
 required less often in Viper.  For file names, Emacs uses a convention that
@@ -702,7 +702,7 @@ in the minibuffer: the above keys are usually bound to other histories,
 which are more appropriate in the minibuffer.)
 </p>
 
-<a name="IDX32"></a>
+<a name="index-Meta-key-2"></a>
 
 <p>You can call Meta functions from Insert state.  As in Vi state, the Meta key
 is <kbd>C-\</kbd>.  Thus <kbd>M-x</kbd> is typed as <kbd>C-\ x</kbd>.
@@ -870,8 +870,8 @@ Some Viper elements are common over all the files.
 </p>
 <dl compact="compact">
 <dt> &lsquo;<samp>Textmarkers</samp>&rsquo;</dt>
-<dd><a name="IDX33"></a>
-<a name="IDX34"></a>
+<dd><a name="index-markers"></a>
+<a name="index-textmarkers"></a>
 <p>Textmarkers remember <em>files and positions</em>.
 If you set marker &lsquo;<samp>a</samp>&rsquo; in
 file &lsquo;<tt>foo</tt>&rsquo;, start editing file &lsquo;<tt>bar</tt>&rsquo; and type <kbd>'a</kbd>, then
@@ -889,7 +889,7 @@ Note: in some rare cases, that <kbd>: &lt;RET&gt;</kbd> may do something dangero
 However, usually its effect can be undone by typing <kbd>u</kbd>.
 </p></dd>
 <dt> &lsquo;<samp>Registers</samp>&rsquo;</dt>
-<dd><a name="IDX35"></a>
+<dd><a name="index-registers"></a>
 <p>Registers are common to files.  Also, text yanked with <kbd>y</kbd> can be
 put back (<kbd>p</kbd>) into any file.  The Viper command <kbd>]&lt;a-z&gt;</kbd>, where &lt;a-z&gt; are
 the registers, can be used to look at the contents of a register, e.g.,
@@ -908,7 +908,7 @@ text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
 </p></dd>
 <dt> &lsquo;<samp>Absolute Filenames</samp>&rsquo;</dt>
-<dd><a name="IDX36"></a>
+<dd><a name="index-absolute-file-names"></a>
 <p>The current directory name for a file is automatically prepended to the
 file name in any
 <kbd>:e</kbd>, <kbd>:r</kbd>, <kbd>:w</kbd>, etc., command (in Emacs, each buffer has a

@@ -175,8 +175,8 @@ text, move to the beginning, and then type <kbd>C-x C-u</kbd>.  Most commands
 that operate on the text in the region have the word <code>region</code> in
 their names.
 </p>
-<a name="IDX284"></a>
-<a name="IDX285"></a>
+<a name="index-C_002dSPC"></a>
+<a name="index-set_002dmark_002dcommand"></a>
 <p>  The most common way to set the mark is with the <kbd>C-&lt;SPC&gt;</kbd>
 command (<code>set-mark-command</code>).  This command sets the mark where
 point is. You can then move point away, leaving the mark behind.  It is
@@ -188,8 +188,8 @@ unlucky enough to have a terminal where typing <kbd>C-&lt;SPC&gt;</kbd> does
 not produce <kbd>C-@</kbd>, you should think of this character as
 <kbd>C-&lt;SPC&gt;</kbd>.
 </p>
-<a name="IDX286"></a>
-<a name="IDX287"></a>
+<a name="index-C_002dx-C_002dx"></a>
+<a name="index-exchange_002dpoint_002dand_002dmark"></a>
 <p>  Since terminals have only one cursor, Emacs cannot show you where the
 mark is located. Most people use the mark soon after they set it, before
 they forget where it is. But you can see where the mark is with the
@@ -198,10 +198,10 @@ mark where point was and point where the mark was.  The extent of the
 region is unchanged, but the cursor and point are now at the previous
 location of the mark. 
 </p>
-<a name="IDX288"></a>
-<a name="IDX289"></a>
-<a name="IDX290"></a>
-<a name="IDX291"></a>
+<a name="index-C_002d_003c"></a>
+<a name="index-C_002d_003e"></a>
+<a name="index-mark_002dbeginning_002dof_002dbuffer"></a>
+<a name="index-mark_002dend_002dof_002dbuffer"></a>
 <p> Another way to set the mark is to push the mark to the beginning of a
 buffer while leaving point at its original location. If you supply an
 argument to <kbd>C-&lt;</kbd> (<code>mark-beginning-of-buffer</code>), the mark is pushed
@@ -310,22 +310,22 @@ the following one do not move point.
 </p></dd>
 </dl>
 
-<a name="IDX292"></a>
-<a name="IDX293"></a>
-<a name="IDX294"></a>
-<a name="IDX295"></a>
+<a name="index-M_002d_0040"></a>
+<a name="index-C_002dM_002d_0040"></a>
+<a name="index-mark_002dword"></a>
+<a name="index-mark_002dsexp"></a>
 <p><kbd>M-@</kbd> (<code>mark-word</code>) puts the mark at the end of the next word,
 while <kbd>C-M-@</kbd> (<code>mark-sexp</code>) puts it at the end of the next Lisp
 expression. These characters sometimes save you some typing.
 </p>
-<a name="IDX296"></a>
-<a name="IDX297"></a>
-<a name="IDX298"></a>
-<a name="IDX299"></a>
-<a name="IDX300"></a>
-<a name="IDX301"></a>
-<a name="IDX302"></a>
-<a name="IDX303"></a>
+<a name="index-M_002dh"></a>
+<a name="index-C_002dM_002dh"></a>
+<a name="index-C_002dx-C_002dp"></a>
+<a name="index-C_002dx-h"></a>
+<a name="index-mark_002dparagraph"></a>
+<a name="index-mark_002ddefun"></a>
+<a name="index-mark_002dpage"></a>
+<a name="index-mark_002dwhole_002dbuffer"></a>
 <p>   A number of commands are available that set both point and mark and
 thus delimit an object in the buffer.  <kbd>M-h</kbd> (<code>mark-paragraph</code>)
 moves point to the beginning of the paragraph that surrounds or follows
@@ -384,14 +384,14 @@ later.  Searches set the mark, unless they do not actually move point.
 When a command sets the mark, &lsquo;<samp>Mark Set</samp>&rsquo; is printed in the
 echo area.
 </p>
-<a name="IDX304"></a>
+<a name="index-mark_002dring_002dmax"></a>
 <p>  The variable <code>mark-ring-max</code> is the maximum number of entries to
 keep in the mark ring.  If that many entries exist and another entry is
 added, the last entry in the list is discarded.  Repeating <kbd>C-u
 C-&lt;SPC&gt;</kbd> circulates through the entries that are currently in the
 ring.
 </p>
-<a name="IDX305"></a>
+<a name="index-mark_002dring"></a>
 <p>  The variable <code>mark-ring</code> holds the mark ring itself, as a list of
 marker objects in the order most recent first.  This variable is local
 in every buffer.
@@ -421,9 +421,9 @@ in every buffer.
 to select text. (The normal mouse pointer is an I-beam, the same
 pointer that <code>xterm</code> uses.)
 </p>
-<a name="IDX306"></a>
-<a name="IDX307"></a>
-<a name="IDX308"></a>
+<a name="index-modeline_002dpointer_002dglyph"></a>
+<a name="index-nontext_002dpointer_002dglyph"></a>
+<a name="index-text_002dpointer_002dglyph"></a>
 <p>The glyph variable <code>text-pointer-glyph</code> controls the shape of
 the mouse pointer when over text.  You can also control the shape
 of the mouse pointer when over nontext using <code>nontext-pointer-glyph</code>,
@@ -432,7 +432,7 @@ and the shape of the mouse pointer when over the modeline using
 <code>set-glyph-image</code>, not <code>setq</code>, to set one of these
 variables.)
 </p>
-<a name="IDX309"></a>
+<a name="index-pointer-face"></a>
 <p>If you want to get fancy, you can set the foreground and background
 colors of the mouse pointer by setting the <code>pointer</code> face.
 </p>
@@ -498,20 +498,20 @@ could do this:
 <table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key '(shift button1) 'mouse-del-char)
 </pre></td></tr></table>
 
-<a name="IDX310"></a>
-<a name="IDX311"></a>
-<a name="IDX312"></a>
-<a name="IDX313"></a>
-<a name="IDX314"></a>
-<a name="IDX315"></a>
-<a name="IDX316"></a>
-<a name="IDX317"></a>
-<a name="IDX318"></a>
-<a name="IDX319"></a>
-<a name="IDX320"></a>
-<a name="IDX321"></a>
-<a name="IDX322"></a>
-<a name="IDX323"></a>
+<a name="index-mouse_002ddel_002dchar"></a>
+<a name="index-mouse_002ddelete_002dwindow"></a>
+<a name="index-mouse_002dkeep_002done_002dwindow"></a>
+<a name="index-mouse_002dkill_002dline"></a>
+<a name="index-mouse_002dline_002dlength"></a>
+<a name="index-mouse_002dscroll"></a>
+<a name="index-mouse_002dselect"></a>
+<a name="index-mouse_002dselect_002dand_002dsplit"></a>
+<a name="index-mouse_002dset_002dmark"></a>
+<a name="index-mouse_002dset_002dpoint"></a>
+<a name="index-mouse_002dtrack"></a>
+<a name="index-mouse_002dtrack_002dadjust"></a>
+<a name="index-mouse_002dtrack_002dand_002dcopy_002dto_002dcutbuffer"></a>
+<a name="index-mouse_002dtrack_002ddelete_002dand_002dinsert"></a>
 
 <dl compact="compact">
 <dt> <kbd>mouse-del-char</kbd></dt>
@@ -700,14 +700,14 @@ the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
 they kill instead, since they can erase more than one character this
 way.
 </p>
-<a name="IDX324"></a>
-<a name="IDX325"></a>
-<a name="IDX326"></a>
-<a name="IDX327"></a>
-<a name="IDX328"></a>
-<a name="IDX329"></a>
-<a name="IDX330"></a>
-<a name="IDX331"></a>
+<a name="index-M_002d_005c"></a>
+<a name="index-delete_002dhorizontal_002dspace"></a>
+<a name="index-M_002dSPC"></a>
+<a name="index-just_002done_002dspace"></a>
+<a name="index-C_002dx-C_002do-1"></a>
+<a name="index-delete_002dblank_002dlines-1"></a>
+<a name="index-M_002d_005e"></a>
+<a name="index-delete_002dindentation"></a>
 <p>  The other delete commands delete only formatting characters: spaces,
 tabs and newlines.  <kbd>M-\</kbd> (<code>delete-horizontal-space</code>) deletes
 all spaces and tab characters before and after point.
@@ -749,8 +749,8 @@ leaving a single space.  See section <a href="xemacs_22.html#Indentation">M-^</a
 </p></dd>
 </dl>
 
-<a name="IDX332"></a>
-<a name="IDX333"></a>
+<a name="index-C_002dk"></a>
+<a name="index-kill_002dline"></a>
 <p>  The simplest kill command is <kbd>C-k</kbd>.  If given at the beginning of
 a line, it kills all the text on the line, leaving the line blank.  If
 given on a blank line, the blank line disappears.  As a consequence, a
@@ -827,8 +827,8 @@ kill any contiguous sequence of characters by first setting the mark at
 one end of a sequence of characters, then going to the other end and
 typing <kbd>C-w</kbd>.
 </p>
-<a name="IDX334"></a>
-<a name="IDX335"></a>
+<a name="index-M_002dz"></a>
+<a name="index-zap_002dto_002dchar"></a>
 <p>  A convenient way of killing is combined with searching: <kbd>M-z</kbd>
 (<code>zap-to-char</code>) reads a character and kills from point up to (but not
 including) the next occurrence of that character in the buffer.  If there
@@ -937,8 +937,8 @@ and sets the mark after it, if the argument is with just a <kbd>C-u</kbd>.
 Any other argument, including <kbd>C-u</kbd> and digits, has different
 results, described below, under &ldquo;Yanking Earlier Kills&rdquo;.
 </p>
-<a name="IDX336"></a>
-<a name="IDX337"></a>
+<a name="index-M_002dw"></a>
+<a name="index-copy_002dregion_002das_002dkill"></a>
 <p> To copy a block of text, you can also use <kbd>M-w</kbd>
 (<code>copy-region-as-kill</code>), which copies the region into the kill ring
 without removing it from the buffer. <kbd>M-w</kbd> is similar to <kbd>C-w</kbd>
@@ -994,8 +994,8 @@ line.  The result is that the buffer contains &lsquo;<samp>This is and here is t
 third.</samp>&rsquo; and a single kill entry contains &lsquo;<samp>the first&lt;RET&gt;line of
 sample text&lt;RET&gt;</samp>&rsquo;&mdash;all the killed text, in its original order.
 </p>
-<a name="IDX338"></a>
-<a name="IDX339"></a>
+<a name="index-C_002dM_002dw"></a>
+<a name="index-append_002dnext_002dkill"></a>
 <p>  If a kill command is separated from the last kill command by other
 commands (not just numeric arguments), it starts a new entry on the kill
 ring.  To force a kill command to append, first type the command <kbd>C-M-w</kbd>
@@ -1069,7 +1069,7 @@ text.  It is equivalent to <kbd>C-y M-y</kbd>.  <kbd>C-y</kbd> with a numeric
 argument starts counting from the &ldquo;last yank&rdquo; pointer, and sets the
 &ldquo;last yank&rdquo; pointer to the entry that it yanks.
 </p>
-<a name="IDX340"></a>
+<a name="index-kill_002dring_002dmax"></a>
 <p>  The variable <code>kill-ring-max</code> controls the length of the kill
 ring; no more than that many blocks of killed text are saved.
 </p>
@@ -1339,7 +1339,7 @@ The idea behind them is that commands can only operate on a region when
 the region is in an &quot;active&quot; state.  Put simply, you can only operate on
 a region that is highlighted.
 </p>
-<a name="IDX341"></a>
+<a name="index-zmacs_002dregions"></a>
 <p>The variable <code>zmacs-regions</code> checks whether LISPM-style active
 regions should be used.  This means that commands that operate on the
 region (the area between point and the mark) only work while
@@ -1396,7 +1396,7 @@ the region is not active.  Certain commands cause the region to be in
 its active state.  The most common ones are <code>push-mark</code>
 (&lt;C-SPC&gt;) and <code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>).
 </p>
-<a name="IDX342"></a>
+<a name="index-zmacs_002dregion_002dstays"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can be non-intrusive
 on the state of the region by setting the variable <code>zmacs-region-stays</code>
 to a non-<code>nil</code> value.  If you are writing a new Emacs command that
@@ -1404,13 +1404,13 @@ is conceptually a &ldquo;motion&rdquo; command and should not interfere with the
 current highlightedness of the region, then you may set this variable.
 It is reset to <code>nil</code> after each user command is executed.
 </p>
-<a name="IDX343"></a>
+<a name="index-zmacs_002dactivate_002dregion"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can make the region between
 point and mark go into the active (highlighted) state by using the
 function <code>zmacs-activate-region</code>. Only a small number of commands
 should ever do this. 
 </p>
-<a name="IDX344"></a>
+<a name="index-zmacs_002ddeactivate_002dregion"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can deactivate the region
 between point and the mark by using <code>zmacs-deactivate-region</code>.
 Note: you should not have to call this function; the command loop calls
@@ -1560,8 +1560,8 @@ The previous contents of the region-rectangle are pushed rightward.
 <p>  The rectangle operations fall into two classes: commands deleting and
 moving rectangles, and commands for blank rectangles.
 </p>
-<a name="IDX345"></a>
-<a name="IDX346"></a>
+<a name="index-delete_002drectangle"></a>
+<a name="index-kill_002drectangle"></a>
 <p>  There are two ways to get rid of the text in a rectangle: you can discard
 the text (delete it) or save it as the &ldquo;last killed&rdquo; rectangle.  The
 commands for these two ways are <kbd>M-x delete-rectangle</kbd> and <kbd>M-x
@@ -1583,14 +1583,14 @@ rectangle&rsquo;s first line is inserted at point, the rectangle&rsquo;s second 
 is inserted at a point one line vertically down, and so on.  The number
 of lines affected is determined by the height of the saved rectangle.
 </p>
-<a name="IDX347"></a>
+<a name="index-yank_002drectangle"></a>
 <p>  To insert the last killed rectangle, type <kbd>M-x yank-rectangle</kbd>.
 This can be used to convert single-column lists into double-column
 lists; kill the second half of the list as a rectangle and then
 yank it beside the first line of the list.
 </p>
-<a name="IDX348"></a>
-<a name="IDX349"></a>
+<a name="index-open_002drectangle"></a>
+<a name="index-clear_002drectangle"></a>
 <p>  There are two commands for working with blank rectangles: <kbd>M-x
 clear-rectangle</kbd> erases existing text, and <kbd>M-x open-rectangle</kbd>
 inserts a blank rectangle.  Clearing a rectangle is equivalent to

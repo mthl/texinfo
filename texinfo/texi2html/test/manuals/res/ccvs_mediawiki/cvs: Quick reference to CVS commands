@@ -110,8 +110,8 @@ See [cvs: Guide to CVS commands#Global-options Global options].
 </p>
 </dd>
 <dt> <code>-z <var>gzip-level</var></code></dt>
-<dd><div id="IDX248"></div>
-<div id="IDX249"></div>
+<dd><div id="index-Compression-1"></div>
+<div id="index-Gzip-1"></div>
 <p>Set the compression level (client only).
 See [cvs: Guide to CVS commands#Global-options Global options].
 </p></dd>
@@ -1033,7 +1033,7 @@ stickiness).  See [cvs: Guide to CVS commands#update-options update options].
 
 </dd>
 <dt> <code>version</code></dt>
-<dd><div id="IDX250"></div>
+<dd><div id="index-version-_0028subcommand_0029"></div>
 
 <p>Display the version of <small>CVS</small> being used.  If the repository
 is remote, display both the client and server versions.

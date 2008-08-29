@@ -1,0 +1,87 @@
+value_in_pass0_macros.texi(,2) 
+value_in_pass0_macros.texi(,3) @setfilename value_in_pass0_macros.info
+value_in_pass0_macros.texi(,4) 
+value_in_pass0_macros.texi(,5) @node Top
+value_in_pass0_macros.texi(,6) @top value in index commands
+value_in_pass0_macros.texi(,7) 
+value_in_pass0_macros.texi(,8) @set cp cp
+value_in_pass0_macros.texi(,9) @set fn fn
+value_in_pass0_macros.texi(,10) @set syncodeindex_command @syncodeindex
+value_in_pass0_macros.texi(,11) 
+value_in_pass0_macros.texi(,12) @syncodeindex cp fn
+value_in_pass0_macros.texi(,13) @syncodeindex cp fn
+value_in_pass0_macros.texi(,14) 
+value_in_pass0_macros.texi(,15) @set en en
+value_in_pass0_macros.texi(,16) @set documentlanguage_command @documentlanguage
+value_in_pass0_macros.texi(,17) 
+value_in_pass0_macros.texi(,18) documentlanguage @documentlanguage  en   
+value_in_pass0_macros.texi(,19) 
+value_in_pass0_macros.texi(,20) documentlanguage on its line
+value_in_pass0_macros.texi(,21) @documentlanguage  en  
+value_in_pass0_macros.texi(,22) line following documentlanguage
+value_in_pass0_macros.texi(,23) 
+value_in_pass0_macros.texi(,24) @set truc truc
+value_in_pass0_macros.texi(,25) 
+value_in_pass0_macros.texi(,26) definedx truc
+value_in_pass0_macros.texi(,27) @defindex truc
+value_in_pass0_macros.texi(,28) after
+value_in_pass0_macros.texi(,29) 
+value_in_pass0_macros.texi(,30) @set trucindex_command @trucindex
+value_in_pass0_macros.texi(,31) 
+value_in_pass0_macros.texi(,32) @trucindex index truc
+value_in_pass0_macros.texi(,33) 
+value_in_pass0_macros.texi(,34) @set codeidx codeidx
+value_in_pass0_macros.texi(,35) 
+value_in_pass0_macros.texi(,36) @defcodeindex codeidx
+value_in_pass0_macros.texi(,37) 
+value_in_pass0_macros.texi(,38) @set defcodeindex_entry a @var{index entry} t@'e @^{@dotless{i}}
+value_in_pass0_macros.texi(,39) 
+value_in_pass0_macros.texi(,40) @codeidxindex a @var{index entry} t@'e @^{@dotless{i}}
+value_in_pass0_macros.texi(,41) 
+value_in_pass0_macros.texi(,42) @cindex cindex entry
+value_in_pass0_macros.texi(,43) 
+value_in_pass0_macros.texi(,44) @syncodeindex ky pg
+value_in_pass0_macros.texi(,45) 
+value_in_pass0_macros.texi(,46) @kindex truc kindex
+value_in_pass0_macros.texi(,47) @pindex pindex codeidx
+value_in_pass0_macros.texi(,48) 
+value_in_pass0_macros.texi(,49) @synindex truc cp
+value_in_pass0_macros.texi(,50) 
+value_in_pass0_macros.texi(,51) @defindex abc
+value_in_pass0_macros.texi(,52) @defindex defg
+value_in_pass0_macros.texi(,53) 
+value_in_pass0_macros.texi(,54) @synindex abc defg
+value_in_pass0_macros.texi(,55) @synindex defg ky
+value_in_pass0_macros.texi(,56) 
+value_in_pass0_macros.texi(,57) @defgindex defg index entry
+value_in_pass0_macros.texi(,58) 
+value_in_pass0_macros.texi(,59) @abcindex abc index entry
+value_in_pass0_macros.texi(,60) 
+value_in_pass0_macros.texi(,61) pg
+value_in_pass0_macros.texi(,62) @printindex pg
+value_in_pass0_macros.texi(,63) 
+value_in_pass0_macros.texi(,64) ky
+value_in_pass0_macros.texi(,65) @printindex ky
+value_in_pass0_macros.texi(,66) 
+value_in_pass0_macros.texi(,67) truc
+value_in_pass0_macros.texi(,68) @printindex truc
+value_in_pass0_macros.texi(,69) 
+value_in_pass0_macros.texi(,70) value truc
+value_in_pass0_macros.texi(,71) @printindex truc
+value_in_pass0_macros.texi(,72) 
+value_in_pass0_macros.texi(,73) cp
+value_in_pass0_macros.texi(,74) @printindex cp
+value_in_pass0_macros.texi(,75) 
+value_in_pass0_macros.texi(,76) value cp
+value_in_pass0_macros.texi(,77) @printindex cp
+value_in_pass0_macros.texi(,78) 
+value_in_pass0_macros.texi(,79) defg
+value_in_pass0_macros.texi(,80) @printindex defg
+value_in_pass0_macros.texi(,81) 
+value_in_pass0_macros.texi(,82) abc
+value_in_pass0_macros.texi(,83) @printindex abc
+value_in_pass0_macros.texi(,84) 
+value_in_pass0_macros.texi(,85) fn
+value_in_pass0_macros.texi(,86) @printindex fn
+value_in_pass0_macros.texi(,87) 
+value_in_pass0_macros.texi(,88) @bye

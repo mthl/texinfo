@@ -1,0 +1,21 @@
+
+$complex_format_map->{'menu_comment'} = 
+        {
+           'begin' => q{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"},
+           'end' => q{"</th></tr>"}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
+            'style' => 'code'
+        };
+
+if ($SIMPLE_MENU)
+{
+    foreach my $format ('menu', 'detailmenu')
+    {
+        $complex_format_map->{$format} = { 'begin' => q{''} , 'end' => q{''},
+        'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted',
+        'style' => 'code' 
+    
+       };
+    }
+}
+
+1;

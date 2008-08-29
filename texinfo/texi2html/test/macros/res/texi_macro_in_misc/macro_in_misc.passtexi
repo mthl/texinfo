@@ -7,46 +7,44 @@ macro_in_misc.texi(,7)  }
 macro_in_misc.texi(,8) 
 macro_in_misc.texi(,12) 
 macro_in_misc.texi(,13) @node Top
-macro_in_misc.texi(text,14) @top top macro_in_misc.texi(text,14) atextmacro_in_misc.texi(text,14) 
-macro_in_misc.texi(text,15) @subheading Comment like: macro_in_misc.texi(text,15) atextmacro_in_misc.texi(text,15) 
+macro_in_misc.texi(text,14) @top top macro_in_misc.texi(text,14) atext
+macro_in_misc.texi(text,15) @subheading Comment like: macro_in_misc.texi(text,15) atext
 macro_in_misc.texi(,16) 
 macro_in_misc.texi(,17) Text line followed by a comment on the same line and another below @c comment @text{}
 macro_in_misc.texi(,18) @c comment @text{}
 macro_in_misc.texi(,19) 
 macro_in_misc.texi(,23) 
 macro_in_misc.texi(,27) 
-macro_in_misc.texi(,28) @pagesizes @pagesizes{}
-macro_in_misc.texi(afourpaper_macro,29) @afourpapermacro_in_misc.texi(afourpaper_macro,29) 
-macro_in_misc.texi(,30) @headings on line following headings @text{}
-macro_in_misc.texi(,31) @oddfooting some text ignored @text{}
-macro_in_misc.texi(,32) @everyheading on line following everyheading @text{}
+macro_in_misc.texi(pagesizes_arg,28) @pagesizes macro_in_misc.texi(pagesizes_arg,28) 200mm,150mm
+macro_in_misc.texi(afourpaper_macro,29) @afourpaper
+macro_in_misc.texi(text,30) @headings on line following headings macro_in_misc.texi(text,30) atext
+macro_in_misc.texi(text,31) @oddfooting some text ignored macro_in_misc.texi(text,31) atext
+macro_in_misc.texi(text,32) @everyheading on line following everyheading macro_in_misc.texi(text,32) atext
 macro_in_misc.texi(,33) 
 macro_in_misc.texi(,37) 
-macro_in_misc.texi(,38) @need @need{}
+macro_in_misc.texi(need_arg,38) @need macro_in_misc.texi(need_arg,38) 0.1
 macro_in_misc.texi(,39) 
-macro_in_misc.texi(raisesections_macro,43) @raisesectionsmacro_in_misc.texi(raisesections_macro,43) 
-macro_in_misc.texi(lowersections_macro,47) @lowersectionsmacro_in_misc.texi(lowersections_macro,47) 
+macro_in_misc.texi(raisesections_macro,43) @raisesections
+macro_in_misc.texi(lowersections_macro,47) @lowersections
 macro_in_misc.texi(,48) 
 macro_in_misc.texi(,49) @c tex error: Use of \ doesn't match its definition.
 macro_in_misc.texi(,52) @@definfoenclose phoo,//,\\  macro_in_misc.texi(,52) 
 macro_in_misc.texi(,53) //bar\\
 macro_in_misc.texi(,55) 
-macro_in_misc.texi(definfoenclose_name,59) phimacro_in_misc.texi(definfoenclose_name,59) ,:,:
 macro_in_misc.texi(,60) 
 macro_in_misc.texi(,61) @c this is required
 macro_in_misc.texi(,65) 
-macro_in_misc.texi(,66) @phi{bar}
+macro_in_misc.texi(,66) :bar:
 macro_in_misc.texi(,67) 
 macro_in_misc.texi(,74) 
-macro_in_misc.texi(strong_macro,75) @strongmacro_in_misc.texi(strong_macro,75) {very strong}
+macro_in_misc.texi(strong_macro,75) @strong{very strong}
 macro_in_misc.texi(,76) 
-macro_in_misc.texi(strong_name,77) strongmacro_in_misc.texi(strong_name,77) ,(macro_in_misc.texi(strong_name,77) strongmacro_in_misc.texi(strong_name,77) :,:)
 macro_in_misc.texi(,78) 
-macro_in_misc.texi(strong_macro,79) @strongmacro_in_misc.texi(strong_macro,79) { is it really strong? }
+macro_in_misc.texi(strong_macro,79) (strong: is it really strong? :)
 macro_in_misc.texi(,80) 
 macro_in_misc.texi(,81) @kbd{something before kbdinputstyle}
 macro_in_misc.texi(,82) 
-macro_in_misc.texi(,86) @kbdinputstyle @kbdinputstyle_arg{}
+macro_in_misc.texi(kbdinputstyle_arg,86) @kbdinputstyle macro_in_misc.texi(kbdinputstyle_arg,86) code
 macro_in_misc.texi(,87) 
 macro_in_misc.texi(,88) @kbd{truc}
 macro_in_misc.texi(,89) 
@@ -55,29 +53,29 @@ macro_in_misc.texi(,91) @kbd{example}
 macro_in_misc.texi(,92) @end example
 macro_in_misc.texi(,93) 
 macro_in_misc.texi(,109) 
-macro_in_misc.texi(,110) @paragraphindent @asis_arg{}
-macro_in_misc.texi(,111) @paragraphindent @zero{}
-macro_in_misc.texi(,112) @paragraphindent @none_arg{}
-macro_in_misc.texi(,113) @paragraphindent @four{}
-macro_in_misc.texi(,114) @firstparagraphindent @none_arg{}
-macro_in_misc.texi(,115) @exampleindent @six{}
+macro_in_misc.texi(asis_arg,110) @paragraphindent macro_in_misc.texi(asis_arg,110) asis
+macro_in_misc.texi(zero,111) @paragraphindent macro_in_misc.texi(zero,111) 0
+macro_in_misc.texi(none_arg,112) @paragraphindent macro_in_misc.texi(none_arg,112) none
+macro_in_misc.texi(four,113) @paragraphindent macro_in_misc.texi(four,113) 4
+macro_in_misc.texi(none_arg,114) @firstparagraphindent macro_in_misc.texi(none_arg,114) none
+macro_in_misc.texi(six,115) @exampleindent macro_in_misc.texi(six,115) 6
 macro_in_misc.texi(,116) 
-macro_in_misc.texi(,123) @footnotestyle @end_arg{}
-macro_in_misc.texi(,124) @footnotestyle @separate_arg{}
+macro_in_misc.texi(end_arg,123) @footnotestyle macro_in_misc.texi(end_arg,123) end
+macro_in_misc.texi(separate_arg,124) @footnotestyle macro_in_misc.texi(separate_arg,124) separate 
 macro_in_misc.texi(,125) 
-macro_in_misc.texi(,129) @documentencoding @latin1{}
+macro_in_misc.texi(latin1,129) @documentencoding ISO-8859-1
 macro_in_misc.texi(,130) 
-macro_in_misc.texi(,137) @frenchspacing @on_arg{}
-macro_in_misc.texi(,138) @frenchspacing @off_arg{}
+macro_in_misc.texi(on_arg,137) @frenchspacing macro_in_misc.texi(on_arg,137) on
+macro_in_misc.texi(off_arg,138) @frenchspacing macro_in_misc.texi(off_arg,138) off
 macro_in_misc.texi(,139) 
 macro_in_misc.texi(,140) @c accepts 10 or 11
-macro_in_misc.texi(,144) @fonttextsize @ten{}
+macro_in_misc.texi(ten,144) @fonttextsize macro_in_misc.texi(ten,144) 10
 macro_in_misc.texi(,145) @c accept false or true
 macro_in_misc.texi(,146) @c makeinfo don't care about the arg and remove the remainiing of the line
-macro_in_misc.texi(,153) @allowcodebreaks @false_arg{}
+macro_in_misc.texi(false_arg,153) @allowcodebreaks macro_in_misc.texi(false_arg,153) false
 macro_in_misc.texi(,154) @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 macro_in_misc.texi(,155) 
-macro_in_misc.texi(,156) @allowcodebreaks @true_arg{}
+macro_in_misc.texi(true_arg,156) @allowcodebreaks macro_in_misc.texi(true_arg,156) true
 macro_in_misc.texi(,157) @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 macro_in_misc.texi(,158) 
 macro_in_misc.texi(,159) @subheading command removed
@@ -85,19 +83,19 @@ macro_in_misc.texi(,160)
 macro_in_misc.texi(,161) @finalout
 macro_in_misc.texi(,162) 
 macro_in_misc.texi(,172) 
-macro_in_misc.texi(page_macro,173) @@page macro_in_misc.texi(page_macro,173) @pagemacro_in_misc.texi(page_macro,173)  @@noindent macro_in_misc.texi(page_macro,173) @noindentmacro_in_misc.texi(page_macro,173)  @@refill macro_in_misc.texi(page_macro,173) @refillmacro_in_misc.texi(page_macro,173)  something
+macro_in_misc.texi(page_macro,173) @@page macro_in_misc.texi(page_macro,173) @page @@noindent macro_in_misc.texi(page_macro,173) @noindent @@refill macro_in_misc.texi(page_macro,173) @refill something
 macro_in_misc.texi(,174) 
-macro_in_misc.texi(noindent_macro,175) @noindentmacro_in_misc.texi(noindent_macro,175)      noindent at beginning of line
-macro_in_misc.texi(noindent_macro,176) @noindentmacro_in_misc.texi(noindent_macro,176)   
+macro_in_misc.texi(noindent_macro,175) @noindent     noindent at beginning of line
+macro_in_misc.texi(noindent_macro,176) @noindent  
 macro_in_misc.texi(,177) noindent on the preceding line
-macro_in_misc.texi(noindent_macro,178)   macro_in_misc.texi(noindent_macro,178) @noindentmacro_in_misc.texi(noindent_macro,178)     noindent after space at beginning of line
+macro_in_misc.texi(noindent_macro,178)   macro_in_misc.texi(noindent_macro,178) @noindent    noindent after space at beginning of line
 macro_in_misc.texi(,179) @page         page at beginning of line
 macro_in_misc.texi(,180) @page
 macro_in_misc.texi(,181) After page on it's own line.
 macro_in_misc.texi(,182) 
-macro_in_misc.texi(page_macro,183) @@page macro_in_misc.texi(page_macro,183) @pagemacro_in_misc.texi(page_macro,183)    @@noindent macro_in_misc.texi(page_macro,183) @noindentmacro_in_misc.texi(page_macro,183)     @@refill macro_in_misc.texi(page_macro,183) @refillmacro_in_misc.texi(page_macro,183) 
+macro_in_misc.texi(page_macro,183) @@page macro_in_misc.texi(page_macro,183) @page   @@noindent macro_in_misc.texi(page_macro,183) @noindent    @@refill macro_in_misc.texi(page_macro,183) @refill
 macro_in_misc.texi(,184) 
-macro_in_misc.texi(contents_macro,188) @contentsmacro_in_misc.texi(contents_macro,188) 
+macro_in_misc.texi(contents_macro,188) @contents
 macro_in_misc.texi(,189) 
 macro_in_misc.texi(,190) @subheading special
 macro_in_misc.texi(,191) 
@@ -106,23 +104,23 @@ macro_in_misc.texi(,193) @c @@vskip @vskip @@cropmarks @cropmarks
 macro_in_misc.texi(,194) Unknown ???
 macro_in_misc.texi(,195) @c @@fillbreak  @fillbreak eol
 macro_in_misc.texi(,196) 
-macro_in_misc.texi(exdent_macro,200) @exdentmacro_in_misc.texi(exdent_macro,200)  line after exdent
+macro_in_misc.texi(exdent_macro,200) @exdent line after exdent
 macro_in_misc.texi(,201) 
 macro_in_misc.texi(,202) And now sp:
 macro_in_misc.texi(,203) 
-macro_in_misc.texi(,207) @sp @two{}
+macro_in_misc.texi(two,207) @sp macro_in_misc.texi(two,207) 2
 macro_in_misc.texi(,208) 
 macro_in_misc.texi(,212) 
-macro_in_misc.texi(,213) @clickstyle @result_macro{}
+macro_in_misc.texi(result_macro,213) @clickstyle macro_in_misc.texi(result_macro,213) @result
 macro_in_misc.texi(,214) 
 macro_in_misc.texi(,215) @menu
-macro_in_misc.texi(text,216) * node macro_in_misc.texi(text,216) atextmacro_in_misc.texi(text,216) ::
+macro_in_misc.texi(text,216) * node macro_in_misc.texi(text,216) atext::
 macro_in_misc.texi(,217) * bidule::
 macro_in_misc.texi(,218) * bidule2::
 macro_in_misc.texi(,219) @end menu
 macro_in_misc.texi(,220) 
 macro_in_misc.texi(,221) 
-macro_in_misc.texi(text,222) @node node macro_in_misc.texi(text,222) atextmacro_in_misc.texi(text,222) 
+macro_in_misc.texi(text,222) @node node macro_in_misc.texi(text,222) atext
 macro_in_misc.texi(,223) @chapter chapter
 macro_in_misc.texi(,224) @menu
 macro_in_misc.texi(,225) * truc::
@@ -131,12 +129,12 @@ macro_in_misc.texi(,227)
 macro_in_misc.texi(,228) @node truc
 macro_in_misc.texi(,229) @section section
 macro_in_misc.texi(,230) 
-macro_in_misc.texi(contents_macro,231) @contentsmacro_in_misc.texi(contents_macro,231) 
+macro_in_misc.texi(contents_macro,231) @contents
 macro_in_misc.texi(,232) 
 macro_in_misc.texi(,233) @node bidule
 macro_in_misc.texi(,234) @chapter bidule
 macro_in_misc.texi(,235) 
-macro_in_misc.texi(shortcontents_macro,239) @shortcontentsmacro_in_misc.texi(shortcontents_macro,239) 
+macro_in_misc.texi(shortcontents_macro,239) @shortcontents
 macro_in_misc.texi(,240) 
 macro_in_misc.texi(,241) @node bidule2
 macro_in_misc.texi(,242) @chapter last

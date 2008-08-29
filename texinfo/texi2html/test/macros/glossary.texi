@@ -29,6 +29,7 @@
 @end macro
 @end macro
 @expandglossary {@glossarytext}
+
 @end macro
 
 @node Top

@@ -68,8 +68,8 @@ a buffer named &lsquo;<samp>*mail*</samp>&rsquo; is used to hold the text of the
 When you ask for a command&rsquo;s documentation, it appears in a buffer
 called &lsquo;<samp>*Help*</samp>&rsquo;.
 </p>
-<a name="IDX644"></a>
-<a name="IDX645"></a>
+<a name="index-selected-buffer"></a>
+<a name="index-current-buffer"></a>
 <p>  At any time, one and only one buffer is <em>selected</em>.  It is also
 called the <em>current buffer</em>.  Saying a command operates on &ldquo;the
 buffer&rdquo; really means that the command operates on the selected
@@ -141,12 +141,12 @@ the value in other buffers.  See section <a href="xemacs_30.html#Locals">Local V
 </p></dd>
 </dl>
 
-<a name="IDX646"></a>
-<a name="IDX647"></a>
-<a name="IDX648"></a>
-<a name="IDX649"></a>
-<a name="IDX650"></a>
-<a name="IDX651"></a>
+<a name="index-C_002dx-4-b"></a>
+<a name="index-C_002dx-5-b"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dwindow"></a>
+<a name="index-C_002dx-b"></a>
+<a name="index-switch_002dto_002dbuffer"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dframe-1"></a>
 <p>  To select a buffer named <var>bufname</var>, type <kbd>C-x b <var>bufname</var>
 &lt;RET&gt;</kbd>.  This is the command <code>switch-to-buffer</code> with argument
 <var>bufname</var>.  You can use completion on an abbreviation for the buffer
@@ -167,7 +167,7 @@ one, you are asked for the file name to use.
 <code>switch-to-buffer</code> except that it creates a new frame in which to
 display the selected buffer.
 </p>
-<a name="IDX652"></a>
+<a name="index-switch_002dto_002dother_002dbuffer"></a>
 <p>Use <kbd>M-x switch-to-other-buffer</kbd> to visit the previous buffer. If
 you supply a positive integer <var>n</var>, the <var>n</var>th most recent buffer
 is displayed. If you supply an argument of 0, the current buffer is
@@ -203,8 +203,8 @@ visiting a file to switch buffers.  See section <a href="xemacs_17.html#Visiting
 </p></dd>
 </dl>
 
-<a name="IDX653"></a>
-<a name="IDX654"></a>
+<a name="index-C_002dx-C_002db"></a>
+<a name="index-list_002dbuffers"></a>
 <p>  To print a list of all existing buffers, type <kbd>C-x C-b</kbd>.  Each
 line in the list shows one buffer&rsquo;s name, major mode, and visited file.
 A &lsquo;<samp>*</samp>&rsquo; at the beginning of a line indicates the buffer has been
@@ -269,10 +269,10 @@ commands which are bound to keys in the &lsquo;<samp>*Buffer List*</samp>&rsquo;
 </p></dd>
 </dl>
 
-<a name="IDX655"></a>
-<a name="IDX656"></a>
-<a name="IDX657"></a>
-<a name="IDX658"></a>
+<a name="index-read_002donly-buffer"></a>
+<a name="index-C_002dx-C_002dq"></a>
+<a name="index-toggle_002dread_002donly"></a>
+<a name="index-buffer_002dread_002donly"></a>
 <p>  A buffer can be <em>read-only</em>, which means that commands to change
 its text are not allowed.  Normally, read-only buffers are created by
 subsystems such as Dired and Rmail that have special commands to operate
@@ -284,13 +284,13 @@ works by setting the variable <code>buffer-read-only</code>, which has a local
 value in each buffer and makes a buffer read-only if its value is
 non-<code>nil</code>.
 </p>
-<a name="IDX659"></a>
+<a name="index-rename_002dbuffer"></a>
 <p>  <kbd>M-x rename-buffer</kbd> changes the name of the current buffer,
 prompting for the new name in the minibuffer.  There is no default.  If you
 specify a name that is used by a different buffer, an error is signalled and
 renaming is not done.
 </p>
-<a name="IDX660"></a>
+<a name="index-view_002dbuffer"></a>
 <p>  <kbd>M-x view-buffer</kbd> is similar to <kbd>M-x view-file</kbd> (see section <a href="xemacs_17.html#Misc-File-Ops">Miscellaneous File Operations</a>), but it examines an already existing Emacs buffer.  View mode
 provides convenient commands for scrolling through the buffer but not
 for changing it.  When you exit View mode, the resulting value of point
@@ -333,9 +333,9 @@ longer need.  There are several commands for doing this.
 </p></dd>
 </dl>
 
-<a name="IDX661"></a>
-<a name="IDX662"></a>
-<a name="IDX663"></a>
+<a name="index-kill_002dbuffer"></a>
+<a name="index-kill_002dsome_002dbuffers"></a>
+<a name="index-C_002dx-k"></a>
  
 <p>  <kbd>C-x k</kbd> (<code>kill-buffer</code>) kills one buffer, whose name you
 specify in the minibuffer.  If you type just &lt;RET&gt; in the
@@ -383,7 +383,7 @@ them.
 </p></dd>
 </dl>
 
-<a name="IDX664"></a>
+<a name="index-buffer_002dmenu"></a>
 <p>  The command <code>buffer-menu</code> writes a list of all Emacs buffers into
 the buffer &lsquo;<samp>*Buffer List*</samp>&rsquo;, and selects that buffer in Buffer Menu
 mode.  The buffer is read-only.  You can only change it using the special

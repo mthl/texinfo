@@ -251,7 +251,7 @@ on how you use <small>CVS</small> the revision numbers might change several time
 between two releases.  As an example, some of the
 source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
-<a name="IDX93"></a>
+<a name="index-RCS-revision-numbers"></a>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">ci.c            5.21
 co.c            5.9
@@ -267,12 +267,12 @@ rcsmap.c        5.2
 rcsutil.c       5.10
 </pre></td></tr></table>
 
-<a name="IDX94"></a>
-<a name="IDX95"></a>
-<a name="IDX96"></a>
-<a name="IDX97"></a>
-<a name="IDX98"></a>
-<a name="IDX99"></a>
+<a name="index-tag-_0028subcommand_0029_002c-introduction"></a>
+<a name="index-Tags_002c-symbolic-name"></a>
+<a name="index-Symbolic-name-_0028tag_0029"></a>
+<a name="index-Name_002c-symbolic-_0028tag_0029"></a>
+<a name="index-HEAD_002c-as-reserved-tag-name"></a>
+<a name="index-BASE_002c-as-reserved-tag-name"></a>
 <p>You can use the <code>tag</code> command to give a symbolic name to a
 certain revision of a file.  You can use the &lsquo;<samp>-v</samp>&rsquo; flag to the
 <code>status</code> command to see all tags that a file has, and
@@ -299,8 +299,8 @@ then you won&rsquo;t constantly be guessing whether a tag is
 even want to consider enforcing your convention in the
 taginfo file (see section <a href="cvs_8.html#user_002ddefined-logging">User-defined logging</a>).
 </p>
-<a name="IDX100"></a>
-<a name="IDX101"></a>
+<a name="index-Adding-a-tag"></a>
+<a name="index-Tags_002c-example"></a>
 <p>The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
@@ -345,8 +345,8 @@ T parser.c
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See section <a href="cvs_6.html#Recursive-behavior">Recursive behavior</a>.)
 </p>
-<a name="IDX102"></a>
-<a name="IDX103"></a>
+<a name="index-Retrieving-an-old-revision-using-tags"></a>
+<a name="index-Tags_002c-retrieving-old-revisions"></a>
 <p>The <code>checkout</code> command has a flag, &lsquo;<samp>-r</samp>&rsquo;, that lets you check out
 a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module &lsquo;<samp>tc</samp>&rsquo; at
@@ -546,12 +546,12 @@ recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
 commands with taginfo (see section <a href="cvs_8.html#user_002ddefined-logging">User-defined logging</a>).</strong>
 </p>
-<a name="IDX104"></a>
-<a name="IDX105"></a>
-<a name="IDX106"></a>
-<a name="IDX107"></a>
-<a name="IDX108"></a>
-<a name="IDX109"></a>
+<a name="index-Deleting-tags"></a>
+<a name="index-Deleting-branch-tags"></a>
+<a name="index-Removing-tags"></a>
+<a name="index-Removing-branch-tags"></a>
+<a name="index-Tags_002c-deleting"></a>
+<a name="index-Branch-tags_002c-deleting"></a>
 <p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 </p>
@@ -571,10 +571,10 @@ you need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
-<a name="IDX110"></a>
-<a name="IDX111"></a>
-<a name="IDX112"></a>
-<a name="IDX113"></a>
+<a name="index-Moving-tags"></a>
+<a name="index-Moving-branch-tags"></a>
+<a name="index-Tags_002c-moving"></a>
+<a name="index-Branch-tags_002c-moving"></a>
 <p>When we say <em>move</em> a tag, we mean to make the same
 name point to different revisions.  For example, the
 <code>stable</code> tag may currently point to revision 1.4
@@ -599,8 +599,8 @@ need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
-<a name="IDX114"></a>
-<a name="IDX115"></a>
+<a name="index-Renaming-tags"></a>
+<a name="index-Tags_002c-renaming"></a>
 <p>When we say <em>rename</em> a tag, we mean to make a
 different name point to the same revisions as the old
 tag.  For example, one may have misspelled the tag name
@@ -720,9 +720,9 @@ File: driver.c          Status: Up-to-date
 
 </pre></td></tr></table>
 
-<a name="IDX116"></a>
-<a name="IDX117"></a>
-<a name="IDX118"></a>
+<a name="index-Resetting-sticky-tags"></a>
+<a name="index-Sticky-tags_002c-resetting"></a>
+<a name="index-Deleting-sticky-tags"></a>
 <p>The sticky tags will remain on your working files until
 you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
 &lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
@@ -730,7 +730,7 @@ file from the head of the trunk, removing any sticky tags,
 dates, or options.  See <a href="cvs_16.html#update">update&mdash;Bring work tree in sync with repository</a> for more on the operation
 of <code>cvs update</code>.
 </p>
-<a name="IDX119"></a>
+<a name="index-Sticky-date"></a>
 <p>The most common use of sticky tags is to identify which
 branch one is working on, as described in
 <a href="cvs_5.html#Accessing-branches">Accessing branches</a>.  However, non-branch

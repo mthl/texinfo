@@ -91,7 +91,7 @@ files containing information for indices, cross references, etc.  The
 DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
 any device (see the following sections).
 </p>
-<a name="IDX320"></a>
+<a name="index-texindex"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
 command automatically generates indices; see section <a href="Format-with-texi2dvi.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
@@ -100,8 +100,8 @@ from.  The <code>texindex</code> command sorts indices.  (The source file
 &lsquo;<tt>texindex.c</tt>&rsquo; comes as part of the standard Texinfo distribution,
 among other places.)
 </p>
-<a name="IDX321"></a>
-<a name="IDX322"></a>
+<a name="index-Names-of-index-files"></a>
+<a name="index-Index-file-names"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
 with any &lsquo;<samp>.tex</samp>&rsquo; (or similar, see <a href="../web2c/tex-invocation.html#tex-invocation">(web2c)tex invocation</a> section &lsquo;tex invocation&rsquo; in <cite>Web2c</cite>) extension removed, followed by the two letter names of indices.
@@ -110,8 +110,8 @@ For example, the raw index output files for the input file
 &lsquo;<tt>foo.tp</tt>&rsquo;, &lsquo;<tt>foo.pg</tt>&rsquo; and &lsquo;<tt>foo.ky</tt>&rsquo;.  Those are exactly the
 arguments to give to <code>texindex</code>.
 </p>
-<a name="IDX323"></a>
-<a name="IDX324"></a>
+<a name="index-Wildcards"></a>
+<a name="index-Globbing"></a>
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use &lsquo;<samp>??</samp>&rsquo; as shell wildcards and give the command in this
 form:
@@ -164,7 +164,7 @@ Run <code>tex</code> one last time.  This time the correct page numbers are
 written for the cross-references.
 </li></ol>
 
-<a name="IDX325"></a>
+<a name="index-texi2dvi"></a>
 <p>Alternatively, it&rsquo;s a one-step process: run <code>texi2dvi</code>
 (see section <a href="Format-with-texi2dvi.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>).
 </p>
@@ -173,10 +173,10 @@ you do not, on the next run, the <code>tex</code> formatting command will use
 whatever sorted index files happen to exist from the previous use of
 <code>texindex</code>.  This is usually ok while you are debugging.
 </p>
-<a name="IDX326"></a>
-<a name="IDX327"></a>
-<a name="IDX328"></a>
-<a name="IDX329"></a>
+<a name="index-Auxiliary-files_002c-avoiding"></a>
+<a name="index-novalidate"></a>
+<a name="index-Pointer-validation_002c-suppressing"></a>
+<a name="index-Chapters_002c-formatting-one-at-a-time"></a>
 <p>Sometimes you may wish to print a document while you know it is
 incomplete, or to print just one chapter of a document.  In that case,
 the usual auxiliary files that TeX creates and warnings TeX gives

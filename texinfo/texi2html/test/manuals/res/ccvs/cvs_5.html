@@ -248,7 +248,7 @@ This means that changes checked in from the working
 copy will add new revisions on that branch, while
 leaving the main trunk and other branches unaffected.
 </p>
-<a name="IDX120"></a>
+<a name="index-Branches_002c-sticky"></a>
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
 the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section <a href="cvs_4.html#Sticky-tags">Sticky tags</a>)
@@ -472,12 +472,12 @@ greatest common ancestor (GCA) of the branch and the destination revision (in
 the simple case below the GCA is the point where the branch forked) and the
 newest revision on that branch into your working copy.
 </p>
-<a name="IDX121"></a>
+<a name="index-Join"></a>
 <p>The &lsquo;<samp>-j</samp>&rsquo; stands for &ldquo;join&rdquo;.
 </p>
-<a name="IDX122"></a>
-<a name="IDX123"></a>
-<a name="IDX124"></a>
+<a name="index-Branch-merge-example"></a>
+<a name="index-Example_002c-branch-merge"></a>
+<a name="index-Merge_002c-branch-example"></a>
 <p>Consider this revision tree:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">+-----+    +-----+    +-----+    +-----+
@@ -628,8 +628,8 @@ the trunk, and then use that tag for subsequent merges:
 (and <code>checkout</code>) command can merge the differences
 between any two revisions into your working file.
 </p>
-<a name="IDX125"></a>
-<a name="IDX126"></a>
+<a name="index-Undoing-a-change"></a>
+<a name="index-Removing-a-change"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -j 1.5 -j 1.3 backend.c
 </pre></td></tr></table>
 
@@ -643,8 +643,8 @@ You almost always use symbolic
 tags rather than revision numbers when operating on
 multiple files.
 </p>
-<a name="IDX127"></a>
-<a name="IDX128"></a>
+<a name="index-Restoring-old-version-of-removed-file"></a>
+<a name="index-Resurrecting-old-version-of-dead-file"></a>
 <p>Specifying two &lsquo;<samp>-j</samp>&rsquo; options can also undo file
 removals or additions.  For example, suppose you have
 a file

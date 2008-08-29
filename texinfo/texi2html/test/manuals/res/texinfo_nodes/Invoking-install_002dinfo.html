@@ -95,12 +95,12 @@ for all manuals on a system.  Synopsis:
 defaults, and standard input is never used.  <code>install-info</code> can
 read only one Info file and write only one &lsquo;<tt>dir</tt>&rsquo; file per invocation.
 </p>
-<a name="IDX420"></a>
+<a name="index-dir_002c-created-by-install_002dinfo"></a>
 <p>If <var>dir-file</var> (however specified) does not exist,
 <code>install-info</code> creates it if possible (with no entries).
 </p>
-<a name="IDX421"></a>
-<a name="IDX422"></a>
+<a name="index-Compressed-files_002c-reading"></a>
+<a name="index-Dir-files_002c-compressed"></a>
 <p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section &lsquo;Invoking gzip&rsquo; in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
@@ -111,7 +111,7 @@ open &lsquo;<tt><var>dir-file</var>.gz</tt>&rsquo;.
 </p>
 <dl compact="compact">
 <dt> <code>--delete</code></dt>
-<dd><a name="IDX423"></a>
+<dd><a name="index-_002d_002ddelete"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
 an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert any new entries.
@@ -119,16 +119,16 @@ an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert
 </dd>
 <dt> <code>--dir-file=<var>name</var></code></dt>
 <dt> <code>-d <var>name</var></code></dt>
-<dd><a name="IDX424"></a>
-<a name="IDX425"></a>
+<dd><a name="index-_002d_002ddir_002dfile_003dname"></a>
+<a name="index-_002dd-name"></a>
 <p>Specify file name of the Info directory file.  This is equivalent to
 using the <var>dir-file</var> argument.
 </p>
 </dd>
 <dt> <code>--entry=<var>text</var></code></dt>
 <dt> <code>-e <var>text</var></code></dt>
-<dd><a name="IDX426"></a>
-<a name="IDX427"></a>
+<dd><a name="index-_002d_002dentry_003dtext"></a>
+<a name="index-_002de-text"></a>
 <p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
 form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
@@ -138,50 +138,50 @@ information in the Info file itself.
 </dd>
 <dt> <code>--help</code></dt>
 <dt> <code>-h</code></dt>
-<dd><a name="IDX428"></a>
-<a name="IDX429"></a>
+<dd><a name="index-_002d_002dhelp-1"></a>
+<a name="index-_002dh-1"></a>
 <p>Display a usage message listing basic usage and all available options,
 then exit successfully.
 </p>
 </dd>
 <dt> <code>--info-file=<var>file</var></code></dt>
 <dt> <code>-i <var>file</var></code></dt>
-<dd><a name="IDX430"></a>
-<a name="IDX431"></a>
+<dd><a name="index-_002d_002dinfo_002dfile_003dfile"></a>
+<a name="index-_002di-file"></a>
 <p>Specify Info file to install in the directory.
 Equivalent to using the <var>info-file</var> argument.
 </p>
 </dd>
 <dt> <code>--info-dir=<var>dir</var></code></dt>
 <dt> <code>-D <var>dir</var></code></dt>
-<dd><a name="IDX432"></a>
-<a name="IDX433"></a>
+<dd><a name="index-_002d_002dinfo_002ddir_003ddir"></a>
+<a name="index-_002dD-dir"></a>
 <p>Specify the directory where &lsquo;<tt>dir</tt>&rsquo; resides.
 Equivalent to &lsquo;<samp>--dir-file=<var>dir</var>/dir</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--item=<var>text</var></code></dt>
-<dd><a name="IDX434"></a>
+<dd><a name="index-_002d_002ditem_003dtext"></a>
 <p>Same as &lsquo;<samp>--entry=<var>text</var></samp>&rsquo;.  An Info directory entry is actually
 a menu item.
 </p>
 </dd>
 <dt> <code>--quiet</code></dt>
-<dd><a name="IDX435"></a>
+<dd><a name="index-_002d_002dquiet"></a>
 <p>Suppress warnings.
 </p>
 </dd>
 <dt> <code>--remove</code></dt>
 <dt> <code>-r</code></dt>
-<dd><a name="IDX436"></a>
-<a name="IDX437"></a>
+<dd><a name="index-_002d_002dremove"></a>
+<a name="index-_002dr"></a>
 <p>Same as &lsquo;<samp>--delete</samp>&rsquo;.
 </p>
 </dd>
 <dt> <code>--section=<var>sec</var></code></dt>
 <dt> <code>-s <var>sec</var></code></dt>
-<dd><a name="IDX438"></a>
-<a name="IDX439"></a>
+<dd><a name="index-_002d_002dsection_003dsec"></a>
+<a name="index-_002ds-sec"></a>
 <p>Put this file&rsquo;s entries in section <var>sec</var> of the directory.  If you
 specify more than one section, all the entries are added in each of the
 sections.  If you don&rsquo;t specify any sections, they are determined from
@@ -190,9 +190,9 @@ information in the Info file itself.
 </dd>
 <dt> <code>--version</code></dt>
 <dt> <code>-V</code></dt>
-<dd><a name="IDX440"></a>
-<a name="IDX441"></a>
-<a name="IDX442"></a>
+<dd><a name="index-_002d_002dversion-1"></a>
+<a name="index-_002dV-1"></a>
+<a name="index-version-number_002c-finding"></a>
 <p>Display version information and exit successfully.
 </p>
 </dd>

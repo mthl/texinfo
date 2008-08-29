@@ -84,16 +84,16 @@ ul.toc {list-style: none}
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x describe-command</kbd></dt>
-<dd><a name="IDX305"></a>
-<a name="IDX306"></a>
-<a name="IDX307"></a>
+<dd><a name="index-functions_002c-describing"></a>
+<a name="index-commands_002c-describing"></a>
+<a name="index-describe_002dcommand"></a>
 <p>Read the name of an Info command in the echo area and then display a
 brief description of what that command does.
 </p>
 </dd>
 <dt> <kbd>M-x describe-key</kbd></dt>
-<dd><a name="IDX308"></a>
-<a name="IDX309"></a>
+<dd><a name="index-keys_002c-describing"></a>
+<a name="index-describe_002dkey"></a>
 <p>Read a key sequence in the echo area, and then display the name and
 documentation of the Info command that the key sequence invokes.
 </p>
@@ -104,7 +104,7 @@ description of what the variable affects.
 </p>
 </dd>
 <dt> <kbd>M-x where-is</kbd></dt>
-<dd><a name="IDX310"></a>
+<dd><a name="index-where_002dis"></a>
 <p>Read the name of an Info command in the echo area, and then display
 a key sequence which can be typed in order to invoke that command.
 </p>
@@ -113,11 +113,11 @@ a key sequence which can be typed in order to invoke that command.
 <dt> &lt;?&gt;</dt>
 <dt> &lt;F1&gt; (on DOS/Windows only)</dt>
 <dt> h, vi-like operation</dt>
-<dd><a name="IDX311"></a>
-<a name="IDX312"></a>
-<a name="IDX313"></a>
-<a name="IDX314"></a>
-<a name="IDX315"></a>
+<dd><a name="index-C_002dh"></a>
+<a name="index-_003f_002c-in-Info-windows"></a>
+<a name="index-F1"></a>
+<a name="index-h_002c-vi_002dlike-operation"></a>
+<a name="index-get_002dhelp_002dwindow"></a>
 <p>Create (or Move into) the window displaying <code>*Help*</code>, and place
 a node containing a quick reference card into it.  This window displays
 the most concise information about GNU Info available.
@@ -125,9 +125,9 @@ the most concise information about GNU Info available.
 </dd>
 <dt> &lt;h&gt; (<code>get-info-help-node</code>)</dt>
 <dt> &lt;M-h&gt;, vi-like operation</dt>
-<dd><a name="IDX316"></a>
-<a name="IDX317"></a>
-<a name="IDX318"></a>
+<dd><a name="index-h"></a>
+<a name="index-M_002dh_002c-vi_002dlike-operation"></a>
+<a name="index-get_002dinfo_002dhelp_002dnode"></a>
 <p>Try hard to visit the node <code>(info)Help</code>.  The Info file
 &lsquo;<tt>info.texi</tt>&rsquo; distributed with GNU Info contains this node.  Of
 course, the file must first be processed with <code>makeinfo</code>, and then
@@ -139,9 +139,9 @@ placed into the location of your Info directory.
 </p>
 <dl compact="compact">
 <dt> &lt;C-u&gt; (<code>universal-argument</code>)</dt>
-<dd><a name="IDX319"></a>
-<a name="IDX320"></a>
-<a name="IDX321"></a>
+<dd><a name="index-numeric-arguments"></a>
+<a name="index-C_002du"></a>
+<a name="index-universal_002dargument"></a>
 <p>Start (or multiply by 4) the current numeric argument.  &lsquo;<samp>C-u</samp>&rsquo; is
 a good way to give a small numeric argument to cursor movement or
 scrolling commands; &lsquo;<samp>C-u C-v</samp>&rsquo; scrolls the screen 4 lines, while
@@ -156,9 +156,9 @@ by digit keys sets the numeric argument to the number thus typed:
 <dt> &lt;2&gt; &hellip; &lt;9&gt;, vi-like operation</dt>
 <dt> &lt;M-0&gt;</dt>
 <dt> &lt;0&gt;, vi-like operation</dt>
-<dd><a name="IDX322"></a>
-<a name="IDX323"></a>
-<a name="IDX324"></a>
+<dd><a name="index-M_002d0-_002e_002e_002e-M_002d9"></a>
+<a name="index-0-_002e_002e_002e-9_002c-vi_002dlike-operation"></a>
+<a name="index-add_002ddigit_002dto_002dnumeric_002darg"></a>
 <p>Add the digit value of the invoking key to the current numeric
 argument.  Once Info is reading a numeric argument, you may just type
 the digits of the argument, without the Meta prefix.  For example, you
@@ -173,13 +173,13 @@ might give &lsquo;<samp>C-l</samp>&rsquo; a numeric argument of 32 by typing:
 </pre></td></tr></table>
 
 </dd>
-<dt> &lt;M&ndash;&gt; (<code>add-digit-to-numeric-arg</code></dt>
+<dt> &lt;M--&gt; (<code>add-digit-to-numeric-arg</code></dt>
 <dt> &lt;-&gt;</dt>
-<dd><a name="IDX325"></a>
-<a name="IDX326"></a>
-<a name="IDX327"></a>
-<a name="IDX328"></a>
-<a name="IDX329"></a>
+<dd><a name="index-M_002d_002d"></a>
+<a name="index-_002d"></a>
+<a name="index-negative-arguments"></a>
+<a name="index-arguments_002c-negative"></a>
+<a name="index-numeric-arguments_002c-negative"></a>
 <p>To make a negative argument, type <kbd>-</kbd>.  Typing <kbd>-</kbd> alone makes a
 negative argument with a value of -1.  If you continue to type digit or
 Meta-digit keys after <kbd>-</kbd>, the result is a negative number produced
@@ -198,11 +198,11 @@ to cancel reading input in the echo area.
 <dl compact="compact">
 <dt> &lt;C-g&gt; (<code>abort-key</code>)</dt>
 <dt> &lt;C-u&gt;, vi-like operation</dt>
-<dd><a name="IDX330"></a>
-<a name="IDX331"></a>
-<a name="IDX332"></a>
-<a name="IDX333"></a>
-<a name="IDX334"></a>
+<dd><a name="index-cancelling-typeahead"></a>
+<a name="index-cancelling-the-current-operation"></a>
+<a name="index-C_002dg_002c-in-Info-windows"></a>
+<a name="index-C_002du-cancels-typeahead_002c-vi_002dlike-operation"></a>
+<a name="index-abort_002dkey"></a>
 <p>Cancel current operation.
 </p></dd>
 </dl>
@@ -216,11 +216,11 @@ or &lsquo;<samp>ZZ</samp>&rsquo;.
 <dt> <kbd>C-x C-c</kbd></dt>
 <dt> <kbd>:q</kbd>, vi-like operation</dt>
 <dt> <kbd>ZZ</kbd>, vi-like operation</dt>
-<dd><a name="IDX335"></a>
-<a name="IDX336"></a>
-<a name="IDX337"></a>
-<a name="IDX338"></a>
-<a name="IDX339"></a>
+<dd><a name="index-quitting"></a>
+<a name="index-q"></a>
+<a name="index-C_002dx-C_002dc"></a>
+<a name="index-ZZ_002c-vi_002dlike-operation"></a>
+<a name="index-quit"></a>
 <p>Exit GNU Info.
 </p></dd>
 </dl>
@@ -231,8 +231,8 @@ the operating system is correct.
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x set-screen-height</kbd></dt>
-<dd><a name="IDX340"></a>
-<a name="IDX341"></a>
+<dd><a name="index-set_002dscreen_002dheight"></a>
+<a name="index-screen_002c-changing-the-height-of"></a>
 <p>Read a height value in the echo area and set the height of the
 displayed screen to that value.
 </p></dd>
@@ -247,9 +247,9 @@ be associated with the current node that you are viewing:
 </p>
 <dl compact="compact">
 <dt> &lt;ESC C-f&gt; (<code>show-footnotes</code>)</dt>
-<dd><a name="IDX342"></a>
-<a name="IDX343"></a>
-<a name="IDX344"></a>
+<dd><a name="index-ESC-C_002df"></a>
+<a name="index-show_002dfootnotes"></a>
+<a name="index-footnotes_002c-displaying"></a>
 <p>Show the footnotes (if any) associated with the current node in another
 window.  You can have Info automatically display the footnotes
 associated with a node when the node is selected by setting the variable

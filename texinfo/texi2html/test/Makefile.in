@@ -534,8 +534,13 @@ uninstall-am:
 	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am
 
 
-copy-tests:
-	$(srcdir)/tests.sh -copy $(base_tests) $(long_tests)
+copy-tests: copy-base copy-long
+
+copy-base:
+	$(srcdir)/tests.sh -copy $(base_tests)
+
+copy-long:
+	$(srcdir)/tests.sh -copy $(long_tests)
 
 clean-tests:
 	$(srcdir)/tests.sh -clean $(base_tests) $(long_tests)

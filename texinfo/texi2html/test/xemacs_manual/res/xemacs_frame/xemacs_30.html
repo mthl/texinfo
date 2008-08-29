@@ -139,21 +139,21 @@ off and off if it was on.  This is known as <em>toggling</em>.  A positive
 argument always turns the mode on, and an explicit zero argument or a
 negative argument always turns it off.
 </p>
-<a name="IDX1466"></a>
-<a name="IDX1467"></a>
+<a name="index-Auto-Fill-mode"></a>
+<a name="index-auto_002dfill_002dmode-1"></a>
 <p>  Auto Fill mode allows you to enter filled text without breaking lines
 explicitly.  Emacs inserts newlines as necessary to prevent lines from
 becoming too long.  See section <a href="xemacs_23.html#Filling">Filling Text</a>.
 </p>
-<a name="IDX1468"></a>
-<a name="IDX1469"></a>
+<a name="index-Overwrite-mode"></a>
+<a name="index-overwrite_002dmode"></a>
 <p>  Overwrite mode causes ordinary printing characters to replace existing
 text instead of moving it to the right.  For example, if point is in
 front of the &lsquo;<samp>B</samp>&rsquo; in &lsquo;<samp>FOOBAR</samp>&rsquo;, and you type a <kbd>G</kbd> in Overwrite
 mode, it changes to &lsquo;<samp>FOOGAR</samp>&rsquo;, instead of &lsquo;<samp>FOOGBAR</samp>&rsquo;.
 </p>
-<a name="IDX1470"></a>
-<a name="IDX1471"></a>
+<a name="index-Abbrev-mode"></a>
+<a name="index-abbrev_002dmode-2"></a>
 <p>  Abbrev mode allows you to define abbreviations that automatically expand
 as you type them.  For example, &lsquo;<samp>amd</samp>&rsquo; might expand to &lsquo;<samp>abbrev
 mode</samp>&rsquo;.  See section <a href="xemacs_26.html#Abbrevs">Abbrevs</a>, for full information.
@@ -244,15 +244,15 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <dt> <kbd>C-h v</kbd></dt>
 <dt> <kbd>M-x describe-variable</kbd></dt>
 <dd><p>Print the value and documentation of a variable.
-<a name="IDX1472"></a>
+<a name="index-set_002dvariable"></a>
 </p></dd>
 <dt> <kbd>M-x set-variable</kbd></dt>
 <dd><p>Change the value of a variable.
 </p></dd>
 </dl>
 
-<a name="IDX1473"></a>
-<a name="IDX1474"></a>
+<a name="index-C_002dh-v-1"></a>
+<a name="index-describe_002dvariable-1"></a>
 <p>  To examine the value of a single variable, use <kbd>C-h v</kbd>
 (<code>describe-variable</code>), which reads a variable name using the
 minibuffer, with completion.  It prints both the value and the
@@ -270,12 +270,12 @@ Documentation:
 Automatically becomes local when set in any fashion.
 </pre></td></tr></table>
 
-<a name="IDX1475"></a>
+<a name="index-option"></a>
 <p>The star at the beginning of the documentation indicates that this variable
 is an option.  <kbd>C-h v</kbd> is not restricted to options; it allows any
 variable name.
 </p>
-<a name="IDX1476"></a>
+<a name="index-set_002dvariable-1"></a>
 <p>  If you know which option you want to set, you can use <kbd>M-x
 set-variable</kbd> to set it.  This prompts for the variable name in the
 minibuffer (with completion), and then prompts for a Lisp expression for the
@@ -386,8 +386,8 @@ they are listed differently, without indentation and dashes, because
 documentation string; the <code>Emacs</code> group also has a &lsquo;<samp>[State]</samp>&rsquo;
 line.
 </p>
-<a name="IDX1477"></a>
-<a name="IDX1478"></a>
+<a name="index-editable-fields-_0028customization-buffer_0029"></a>
+<a name="index-active-fields-_0028customization-buffer_0029"></a>
 <p>  Most of the text in the customization buffer is read-only, but it
 typically includes some <em>editable fields</em> that you can edit.  There
 are also <em>active fields</em>; this means a field that does something
@@ -404,7 +404,7 @@ other groups do.  By examining various groups, you will eventually find
 the options and faces that belong to the feature you are interested in
 customizing.  Then you can use the customization buffer to set them.
 </p>
-<a name="IDX1479"></a>
+<a name="index-customize_002dbrowse"></a>
 <p>  You can view the structure of customization groups on a larger scale
 with <kbd>M-x customize-browse</kbd>.  This command creates a special kind of
 customization buffer which shows only the names of the groups (and
@@ -477,7 +477,7 @@ change to say that you have edited the value:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">[State]: you have edited the value as text, but not set the option.
 </pre></td></tr></table>
 
-<a name="IDX1480"></a>
+<a name="index-setting-option-value"></a>
 <p>  Editing the value does not actually set the option variable.  To do
 that, you must <em>set</em> the option.  To do this, invoke the word
 &lsquo;<samp>[State]</samp>&rsquo; and choose &lsquo;<samp>Set for Current Session</samp>&rsquo;.
@@ -491,8 +491,8 @@ that, you must <em>set</em> the option.  To do this, invoke the word
 setting the option checks for validity and will not really install an
 unacceptable value.
 </p>
-<a name="IDX1481"></a>
-<a name="IDX1482"></a>
+<a name="index-M_002dTAB-_0028customization-buffer_0029"></a>
+<a name="index-widget_002dcomplete"></a>
 <p>  While editing a value or field that is a file name, directory name,
 command name, or anything else for which completion is defined, you can
 type <kbd>M-&lt;TAB&gt;</kbd> (<code>widget-complete</code>) to do completion.
@@ -533,10 +533,10 @@ a specific named directory in the path, and including <code>nil</code> in the
 path.  (<code>nil</code> in a search path means &ldquo;try the current
 directory.&rdquo;)
 </p>
-<a name="IDX1483"></a>
-<a name="IDX1484"></a>
-<a name="IDX1485"></a>
-<a name="IDX1486"></a>
+<a name="index-TAB-_0028customization-buffer_0029"></a>
+<a name="index-S_002dTAB-_0028customization-buffer_0029"></a>
+<a name="index-widget_002dforward"></a>
+<a name="index-widget_002dbackward"></a>
 <p>  Two special commands, &lt;TAB&gt; and <kbd>S-&lt;TAB&gt;</kbd>, are useful for
 moving through the customization buffer.  &lt;TAB&gt;
 (<code>widget-forward</code>) moves forward to the next active or editable
@@ -549,7 +549,7 @@ previous active or editable field.
 to insert a newline in an editable field, use <kbd>C-o</kbd> or <kbd>C-q
 C-j</kbd>,
 </p>
-<a name="IDX1487"></a>
+<a name="index-saving-option-value"></a>
 <p>  Setting the option changes its value in the current Emacs session;
 <em>saving</em> the value changes it for future sessions as well.  This
 works by writing code into your init file so as to set the option
@@ -706,7 +706,7 @@ have customized but not saved.
 </p></dd>
 </dl>
 
-<a name="IDX1488"></a>
+<a name="index-customize_002doption"></a>
 <p>  If you want to alter a particular user option variable with the
 customization buffer, and you know its name, you can use the command
 <kbd>M-x customize-option</kbd> and specify the option name.  This sets up
@@ -714,18 +714,18 @@ the customization buffer with just one option&mdash;the one that you asked
 for.  Editing, setting and saving the value work as described above, but
 only for the specified option.
 </p>
-<a name="IDX1489"></a>
+<a name="index-customize_002dface"></a>
 <p>  Likewise, you can modify a specific face, chosen by name, using
 <kbd>M-x customize-face</kbd>.
 </p>
-<a name="IDX1490"></a>
+<a name="index-customize_002dgroup"></a>
 <p>  You can also set up the customization buffer with a specific group,
 using <kbd>M-x customize-group</kbd>.  The immediate contents of the chosen
 group, including option variables, faces, and other groups, all appear
 as well.  However, these subgroups&rsquo; own contents start out hidden.  You
 can show their contents in the usual way, by invoking &lsquo;<samp>[Show]</samp>&rsquo;.
 </p>
-<a name="IDX1491"></a>
+<a name="index-customize_002dapropos"></a>
 <p>  To control more precisely what to customize, you can use <kbd>M-x
 customize-apropos</kbd>.  You specify a regular expression as argument; then
 all options, faces and groups whose names match this regular expression
@@ -733,8 +733,8 @@ are set up in the customization buffer.  If you specify an empty regular
 expression, this includes <em>all</em> groups, options and faces in the
 customization buffer (but that takes a long time).
 </p>
-<a name="IDX1492"></a>
-<a name="IDX1493"></a>
+<a name="index-customize_002dsaved"></a>
+<a name="index-customize_002dcustomized"></a>
 <p>  If you change option values and then decide the change was a mistake,
 you can use two special commands to revisit your previous changes.  Use
 <kbd>customize-saved</kbd> to look at the options and faces that you have
@@ -771,7 +771,7 @@ faces that you have set but not saved.
 </p></dd>
 </dl>
 
-<a name="IDX1494"></a>
+<a name="index-list_002doptions"></a>
 <p>  <kbd>M-x list-options</kbd> displays a list of all Emacs option variables in
 an Emacs buffer named &lsquo;<samp>*List Options*</samp>&rsquo;.  Each option is shown with its
 documentation and its current value.  Here is what a portion of it might
@@ -790,7 +790,7 @@ Automatically becomes local when set in any fashion.
 ;;
 </pre></td></tr></table>
 
-<a name="IDX1495"></a>
+<a name="index-edit_002doptions"></a>
 <p>  <kbd>M-x edit-options</kbd> goes one step further and immediately selects the
 &lsquo;<samp>*List Options*</samp>&rsquo; buffer; this buffer uses the major mode Options mode,
 which provides commands that allow you to point at an option and change its
@@ -851,7 +851,7 @@ buffer that is current at that time.
 </p></dd>
 </dl>
 
-<a name="IDX1496"></a>
+<a name="index-local-variables"></a>
 <p>   You can make any variable <em>local</em> to a specific Emacs buffer.
 This means that the variable&rsquo;s value in that buffer is independent of
 its value in other buffers.  A few variables are always local in every
@@ -862,14 +862,14 @@ effect in all buffers that have not made the variable local.
 This is why changing major modes in one buffer has no effect on other
 buffers.
 </p>
-<a name="IDX1497"></a>
+<a name="index-make_002dlocal_002dvariable"></a>
 <p>  <kbd>M-x make-local-variable</kbd> reads the name of a variable and makes it
 local to the current buffer.  Further changes in this buffer will not
 affect others, and changes in the global value will not affect this
 buffer.
 </p>
-<a name="IDX1498"></a>
-<a name="IDX1499"></a>
+<a name="index-make_002dvariable_002dbuffer_002dlocal"></a>
+<a name="index-per_002dbuffer-variables"></a>
 <p>  <kbd>M-x make-variable-buffer-local</kbd> reads the name of a variable and
 changes the future behavior of the variable so that it automatically
 becomes local when it is set.  More precisely, once you have marked a
@@ -890,14 +890,14 @@ purposes.
 <p>Note: the variable <code>auto-fill-function</code> was formerly named
 <code>auto-fill-hook</code>.
 </p>
-<a name="IDX1500"></a>
+<a name="index-kill_002dlocal_002dvariable"></a>
 <p>  If you want a variable to cease to be local to the current buffer,
 call <kbd>M-x kill-local-variable</kbd> and provide the name of a variable to
 the prompt.  The global value of the variable
 is again in effect in this buffer.  Setting the major mode kills all
 the local variables of the buffer.
 </p>
-<a name="IDX1501"></a>
+<a name="index-setq_002ddefault"></a>
 <p>  To set the global value of a variable, regardless of whether the
 variable has a local value in the current buffer, you can use the
 Lisp function <code>setq-default</code>.  It works like <code>setq</code>.
@@ -911,7 +911,7 @@ not be visible until you switch to another buffer, as in the case of:
 <p><code>setq-default</code> is the only way to set the global value of a variable
 that has been marked with <code>make-variable-buffer-local</code>.
 </p>
-<a name="IDX1502"></a>
+<a name="index-default_002dvalue"></a>
 <p>  Programs can look at a variable&rsquo;s default value with <code>default-value</code>.
 This function takes a symbol as an argument and returns its default value.
 The argument is evaluated; usually you must quote it explicitly, as in
@@ -1023,7 +1023,7 @@ as well; for example, you can use:
 <table><tr><td>&nbsp;</td><td><pre class="example">        ;;; -*- emacs-lisp -*-
 </pre></td></tr></table>
 
-<a name="IDX1503"></a>
+<a name="index-enable_002dlocal_002dvariables"></a>
 <p>The variable <code>enable-local-variables</code> controls the use of local
 variables lists in files you visit.  The value can be <code>t</code>,
 <code>nil</code>, or something else.  A value of <code>t</code> means local variables
@@ -1198,7 +1198,7 @@ binding a key to with <code>global-set-key</code> (see section <a href="#Keymaps
 specify a name that has a prior definition other than another keyboard
 macro, Emacs prints an error message and nothing is changed.
 </p>
-<a name="IDX1504"></a>
+<a name="index-insert_002dkbd_002dmacro"></a>
 <p>  Once a macro has a command name, you can save its definition in a file.
 You can then use it in another editing session.  First visit the file
 you want to save the definition in.  Then use the command:
@@ -1294,9 +1294,9 @@ editing.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing 
 
 <p>  This section deals with the <em>keymaps</em> that define the bindings
 between keys and functions, and shows how you can customize these bindings.
-<a name="IDX1505"></a>
-<a name="IDX1506"></a>
-<a name="IDX1507"></a>
+<a name="index-command"></a>
+<a name="index-function"></a>
+<a name="index-command-name"></a>
 </p>
 <p>  A command is a Lisp function whose definition provides for interactive
 use.  Like every Lisp function, a command has a function name, which is
@@ -1342,9 +1342,9 @@ data structures called <em>keymaps</em>.  Emacs has many of these.  One, the
 are defined regardless of major mode.  It is the value of the variable
 <code>global-map</code>.
 </p>
-<a name="IDX1508"></a>
-<a name="IDX1509"></a>
-<a name="IDX1510"></a>
+<a name="index-local-keymap"></a>
+<a name="index-c_002dmode_002dmap"></a>
+<a name="index-lisp_002dmode_002dmap"></a>
 <p>  Each major mode has another keymap, its <em>local keymap</em>, which
 contains overriding definitions for the single-character keys that are
 redefined in that mode.  Each buffer records which local keymap is
@@ -1356,13 +1356,13 @@ not in use.  They are the values of the variables <code>lisp-mode-map</code>,
 local keymap is sometimes constructed only when the mode is used for the
 first time in a session, to save space.
 </p>
-<a name="IDX1511"></a>
-<a name="IDX1512"></a>
-<a name="IDX1513"></a>
-<a name="IDX1514"></a>
-<a name="IDX1515"></a>
-<a name="IDX1516"></a>
-<a name="IDX1517"></a>
+<a name="index-minibuffer-1"></a>
+<a name="index-minibuffer_002dlocal_002dmap"></a>
+<a name="index-minibuffer_002dlocal_002dns_002dmap"></a>
+<a name="index-minibuffer_002dlocal_002dcompletion_002dmap"></a>
+<a name="index-minibuffer_002dlocal_002dmust_002dmatch_002dmap"></a>
+<a name="index-repeat_002dcomplex_002dcommand_002dmap"></a>
+<a name="index-isearch_002dmode_002dmap"></a>
 <p>  There are local keymaps for the minibuffer, too; they contain various
 completion and exit commands.
 </p>
@@ -1384,9 +1384,9 @@ for cautious completion.
 are bound in the pseudo-mode entered with <kbd>C-s</kbd> and <kbd>C-r</kbd>.
 </li></ul>
 
-<a name="IDX1518"></a>
-<a name="IDX1519"></a>
-<a name="IDX1520"></a>
+<a name="index-ctl_002dx_002dmap"></a>
+<a name="index-help_002dmap"></a>
+<a name="index-esc_002dmap"></a>
 <p>  Finally, each prefix key has a keymap which defines the key sequences
 that start with it.  For example, <code>ctl-x-map</code> is the keymap used for
 characters following a <kbd>C-x</kbd>.
@@ -1533,8 +1533,8 @@ another character is read, and so on.  For example,
 <p>redefines <kbd>C-x 4 $</kbd> to run the (fictitious) command
 <code>spell-other-window</code>.
 </p>
-<a name="IDX1521"></a>
-<a name="IDX1522"></a>
+<a name="index-define_002dkey"></a>
+<a name="index-substitute_002dkey_002ddefinition"></a>
 <p>  The most general way to modify a keymap is the function
 <code>define-key</code>, used in Lisp code (such as your init file).
 <code>define-key</code> takes three arguments: the keymap, the key to modify
@@ -1568,8 +1568,8 @@ old definition to have the new definition instead.
 <p>  You can use the functions <code>global-set-key</code> and <code>define-key</code>
 to rebind keys under program control.
 </p>
-<a name="IDX1523"></a>
-<a name="IDX1524"></a>
+<a name="index-define_002dkey-1"></a>
+<a name="index-global_002dset_002dkey"></a>
 
 <dl compact="compact">
 <dt>  <kbd><code>(global-set-key <var>keys</var> <var>cmd</var>)</code></kbd></dt>
@@ -1692,7 +1692,7 @@ the same representation.  Therefore, when Emacs sees:
 The solution XEmacs adopts is to bind both of these key
 sequences.
 </p>
-<a name="IDX1525"></a>
+<a name="index-redefining-keys"></a>
 <p>After binding a command to two key sequences with a form like:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        (define-key global-map &quot;\^X\^I&quot; 'command-1)
@@ -1762,8 +1762,8 @@ is included in the message printed when the command is used:
      &quot;Text deleted this way cannot be yanked back!\n&quot;)
 </pre></td></tr></table>
 
-<a name="IDX1526"></a>
-<a name="IDX1527"></a>
+<a name="index-disable_002dcommand"></a>
+<a name="index-enable_002dcommand"></a>
 <p>  You can disable a command either by editing the init file
 directly or with the command <kbd>M-x disable-command</kbd>, which edits the
 init file for you.  See section <a href="#Init-File">The Init File</a>.
@@ -1936,7 +1936,7 @@ Lisp mode.
 </p></dd>
 </dl>
 
-<a name="IDX1528"></a>
+<a name="index-parse_002dsexp_002dignore_002dcomments"></a>
 <p>  The characters flagged as part of two-character comment delimiters can
 have other syntactic functions most of the time.  For example, &lsquo;<samp>/</samp>&rsquo; and
 &lsquo;<samp>*</samp>&rsquo; in C code, when found separately, have nothing to do with
@@ -1977,7 +1977,7 @@ to determine what number to use.  Emacs therefore provides a command that
 allows you to specify the syntactic properties of a character in a
 convenient way.
 </p>
-<a name="IDX1529"></a>
+<a name="index-modify_002dsyntax_002dentry"></a>
 <p>  <kbd>M-x modify-syntax-entry</kbd> is the command to change a character&rsquo;s
 syntax.  It can be used interactively and is also used by major
 modes to initialize their own syntax tables.  Its first argument is the
@@ -2016,8 +2016,8 @@ The remaining characters are flags.  The flag characters allowed are:
 </dl>
 </li></ol>
 
-<a name="IDX1530"></a>
-<a name="IDX1531"></a>
+<a name="index-C_002dh-s"></a>
+<a name="index-describe_002dsyntax"></a>
 <p>  Use <kbd>C-h s</kbd> (<code>describe-syntax</code>) to display a description of
 the contents of the current syntax table.  The description of each
 character includes both the string you have to pass to
@@ -2363,13 +2363,13 @@ Thus, terminal types &lsquo;<samp>aaa-48</samp>&rsquo; and &lsquo;<samp>aaa-30-r
 the library &lsquo;<tt>term/aaa</tt>&rsquo;.  The code in the library can use
 <code>(getenv &quot;TERM&quot;)</code> to find the full terminal type name.
 </p>
-<a name="IDX1532"></a>
+<a name="index-term_002dfile_002dprefix"></a>
 <p>  The library&rsquo;s name is constructed by concatenating the value of the
 variable <code>term-file-prefix</code> and the terminal type.  Your init
 file can prevent the loading of the terminal-specific library by setting
 <code>term-file-prefix</code> to <code>nil</code>.  See section <a href="#Init-File">The Init File</a>.
 </p>
-<a name="IDX1533"></a>
+<a name="index-term_002dsetup_002dhook"></a>
 <p>  The value of the variable <code>term-setup-hook</code>, if not <code>nil</code>, is
 called as a function of no arguments at the end of Emacs initialization,
 after both your init file and any terminal-specific library have been
@@ -2409,7 +2409,7 @@ machine with audio hardware. To listen to a sound of the provided type,
 call the function <code>play-sound</code> with the argument <var>sound</var>. You
 can also set the volume of the sound with the optional argument 
 <var>volume</var>.
-<a name="IDX1534"></a>
+<a name="index-ding"></a>
 </p>
 <p>Each element of <code>sound-alist</code> is a list describing a sound.
 The first element of the list is the name of the sound being defined.
@@ -2450,7 +2450,7 @@ time means a Sun SparcStation, SGI, or HP9000s700.
 <p>Also note that the pitch, duration, and volume options are available
 everywhere, but most X servers ignore the &lsquo;pitch&rsquo; option.
 </p>
-<a name="IDX1535"></a>
+<a name="index-bell_002dvolume"></a>
 <p>The variable <code>bell-volume</code> should be an integer from 0 to 100,
 with 100 being loudest, which controls how loud the sounds emacs makes
 should be.  Elements of the <code>sound-alist</code> may override this value.
@@ -2460,7 +2460,7 @@ This variable applies to the standard X bell sound as well as sound files.
 default X beep.  This allows you to define beep-types of 
 different volumes even when not running on the console.
 </p>
-<a name="IDX1536"></a>
+<a name="index-load_002dsound_002dfile"></a>
 <p>You can add things to this list by calling the function
 <code>load-sound-file</code>, which reads in an audio-file and adds its data to
 the sound-alist. You can specify the sound with the <var>sound-name</var>
@@ -2613,10 +2613,10 @@ When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
 </dl>
 
-<a name="IDX1537"></a>
-<a name="IDX1538"></a>
+<a name="index-make_002dface_002dlarger"></a>
+<a name="index-make_002dface_002dsmaller"></a>
 
-<a name="IDX1539"></a>
+<a name="index-invert_002dface"></a>
 <p>You can exchange the foreground and background color of the selected
 <var>face</var> with the function <code>invert-face</code>. If the face does not
 specify both foreground and background, then its foreground and
@@ -2625,12 +2625,12 @@ When calling this from a program, you can supply the optional argument
 <var>frame</var> to specify which frame is affected; otherwise, all frames
 are affected.
 </p>
-<a name="IDX1540"></a>
-<a name="IDX1541"></a>
-<a name="IDX1542"></a>
-<a name="IDX1543"></a>
-<a name="IDX1544"></a>
-<a name="IDX1545"></a>
+<a name="index-make_002dface_002dbold"></a>
+<a name="index-make_002dface_002dbold_002ditalic"></a>
+<a name="index-make_002dface_002ditalic"></a>
+<a name="index-make_002dface_002dunbold"></a>
+<a name="index-make_002dface_002dunitalic"></a>
+<a name="index-face_002dfrob_002dfrom_002dlocale_002dfirst"></a>
 <p>The work of <code>make-face-bold</code>, <code>make-face-bold-italic</code>,
 <code>make-face-italic</code>, <code>make-face-unbold</code>,
 <code>make-face-unitalic</code> functions is affected by
@@ -2653,14 +2653,14 @@ right in all frames.
 <p>How predefined faces might be set up for different frames in such an
 environments is described in <a href="#Face-Resources">Face Resources</a>.
 </p>
-<a name="IDX1546"></a>
+<a name="index-set_002dface_002dbackground"></a>
 <p>You can set the background color of the specified <var>face</var> with the
 function <code>set-face-background</code>.  The argument <code>color</code> should
 be a string, the name of a color.  When called from a program, if the
 optional <var>frame</var> argument is provided, the face is changed only 
 in that frame; otherwise, it is changed in all frames.
 </p>
-<a name="IDX1547"></a>
+<a name="index-set_002dface_002dbackground_002dpixmap"></a>
 <p>You can set the background pixmap of the specified <var>face</var> with the
 function <code>set-face-background-pixmap</code>.  The pixmap argument
 <var>name</var> should be a string, the name of a file of pixmap data.  The
@@ -2679,21 +2679,21 @@ resource.
 <p>If the environment variable <b>XBMLANGPATH</b> is set, then it is consulted
 before the <code>x-bitmap-file-path</code> variable.
 </p>
-<a name="IDX1548"></a>
+<a name="index-set_002dface_002dfont"></a>
 <p>You can set the font of the specified <var>face</var> with the function
 <code>set-face-font</code>.  The <var>font</var> argument should be a string, the
 name of a font.  When called from a program, if the
 optional <var>frame</var> argument is provided, the face is changed only 
 in that frame; otherwise, it is changed in all frames.
 </p>
-<a name="IDX1549"></a>
+<a name="index-set_002dface_002dforeground"></a>
 <p>You can set the foreground color of the specified <var>face</var> with the
 function <code>set-face-foreground</code>.  The argument <var>color</var> should be
 a string, the name of a color.  If the optional <var>frame</var> argument is
 provided, the face is changed only in that frame; otherwise, it is
 changed in all frames.
 </p>
-<a name="IDX1550"></a>
+<a name="index-set_002dface_002dunderline_002dp"></a>
 <p>You can set underline the specified <var>face</var> with the function
 <code>set-face-underline-p</code>. The argument <var>underline-p</var> can be used
 to make underlining an attribute of the face or not. If the optional
@@ -3379,8 +3379,8 @@ or <kbd>M-x top-level</kbd>.  Quitting is cancelling a partially typed command
 or one which is already running.  Aborting is getting out of a recursive
 editing level and cancelling the command that invoked the recursive edit.
 </p>
-<a name="IDX1551"></a>
-<a name="IDX1552"></a>
+<a name="index-quitting"></a>
+<a name="index-C_002dg-1"></a>
 <p>  Quitting with <kbd>C-g</kbd> is used for getting rid of a partially typed
 command or a numeric argument that you don&rsquo;t want.  It also stops a
 running command in the middle in a relatively safe way, so you can use
@@ -3399,11 +3399,11 @@ command if it is typed while Emacs is waiting for input.
 activate the &ldquo;emergency escape&rdquo; feature and return to the shell.
 See section <a href="#Emergency-Escape">Emergency Escape</a>.
 </p>
-<a name="IDX1553"></a>
-<a name="IDX1554"></a>
-<a name="IDX1555"></a>
-<a name="IDX1556"></a>
-<a name="IDX1557"></a>
+<a name="index-recursive-editing-level"></a>
+<a name="index-editing-level_002c-recursive"></a>
+<a name="index-aborting"></a>
+<a name="index-abort_002drecursive_002dedit-1"></a>
+<a name="index-C_002d_005d-1"></a>
 <p>  You can use <kbd>C-]</kbd> (<code>abort-recursive-edit</code>) to get out
 of a recursive editing level and cancel the command which invoked it.
 Quitting with <kbd>C-g</kbd> does not do this, and could not do this because it
@@ -3413,7 +3413,7 @@ Emacs debugger (see section <a href="xemacs_25.html#Lisp-Debug">The Emacs-Lisp D
 numeric argument, you can cancel that argument with <kbd>C-g</kbd> and remain in
 the debugger.
 </p>
-<a name="IDX1558"></a>
+<a name="index-top_002dlevel-1"></a>
 <p>  The command <kbd>M-x top-level</kbd> is equivalent to &ldquo;enough&rdquo; <kbd>C-]</kbd>
 commands to get you out of all the levels of recursive edits that you are
 in.  <kbd>C-]</kbd> only gets you out one level at a time, but <kbd>M-x top-level</kbd>
@@ -3685,7 +3685,7 @@ you.
 <p>  First, if the Emacs you are using is not responding to commands, type
 <kbd>C-g C-g</kbd> to get out of it and then start a new one.
 </p>
-<a name="IDX1559"></a>
+<a name="index-doctor"></a>
 <p>  Second, type <kbd>M-x doctor &lt;RET&gt;</kbd>.
 </p>
 <p>  The doctor will make you feel better.  Each time you say something to
@@ -3882,8 +3882,8 @@ can often matter whether there are spaces at the ends of lines, or a
 newline after the last line in the buffer (nothing ought to care whether
 the last line is terminated, but tell that to the bugs).
 </p>
-<a name="IDX1560"></a>
-<a name="IDX1561"></a>
+<a name="index-open_002ddribble_002dfile"></a>
+<a name="index-dribble-file"></a>
 <p>  The easy way to record the input to Emacs precisely is to write a
 dribble file; execute the Lisp expression:
 </p>
@@ -3894,8 +3894,8 @@ dribble file; execute the Lisp expression:
 Emacs.  From then on, all Emacs input will be written in the specified
 dribble file until the Emacs process is killed.
 </p>
-<a name="IDX1562"></a>
-<a name="IDX1563"></a>
+<a name="index-open_002dtermscript"></a>
+<a name="index-termscript-file"></a>
 <p>  For possible display bugs, it is important to report the terminal type
 (the value of environment variable <code>TERM</code>), the complete termcap entry
 for the terminal from &lsquo;<tt>/etc/termcap</tt>&rsquo; (since that file is not identical

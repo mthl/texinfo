@@ -105,13 +105,13 @@ file and would also set the fill column to 70.
 </p>
 <dl compact="compact">
 <dt> <code>-D <var>var</var></code></dt>
-<dd><a name="IDX358"></a>
+<dd><a name="index-_002dD-var"></a>
 <p>Cause the variable <var>var</var> to be defined.  This is equivalent to
 <code>@set <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#set-clear-value"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
 <dt> <code>--commands-in-node-names</code></dt>
-<dd><a name="IDX359"></a>
+<dd><a name="index-_002d_002dcommands_002din_002dnode_002dnames"></a>
 <p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
@@ -120,14 +120,14 @@ details.
 </p>
 </dd>
 <dt> <code>--docbook</code></dt>
-<dd><a name="IDX360"></a>
+<dd><a name="index-_002d_002ddocbook"></a>
 <p>Generate DocBook output rather than Info.  
 </p>
 </dd>
 <dt> <code>--error-limit=<var>limit</var></code></dt>
 <dt> <code>-e <var>limit</var></code></dt>
-<dd><a name="IDX361"></a>
-<a name="IDX362"></a>
+<dd><a name="index-_002d_002derror_002dlimit_003dlimit"></a>
+<a name="index-_002de-limit"></a>
 <p>Set the maximum number of errors that <code>makeinfo</code> will report
 before exiting (on the assumption that continuing would be useless);
 default 100.
@@ -135,8 +135,8 @@ default 100.
 </dd>
 <dt> <code>--fill-column=<var>width</var></code></dt>
 <dt> <code>-f <var>width</var></code></dt>
-<dd><a name="IDX363"></a>
-<a name="IDX364"></a>
+<dd><a name="index-_002d_002dfill_002dcolumn_003dwidth"></a>
+<a name="index-_002df-width"></a>
 <p>Specify the maximum number of columns in a line; this is the right-hand
 edge of a line.  Paragraphs that are filled will be filled to this
 width.  (Filling is the process of breaking up and connecting lines so
@@ -147,8 +147,8 @@ is 72.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </dd>
 <dt> <code>--footnote-style=<var>style</var></code></dt>
 <dt> <code>-s <var>style</var></code></dt>
-<dd><a name="IDX365"></a>
-<a name="IDX366"></a>
+<dd><a name="index-_002d_002dfootnote_002dstyle_003dstyle"></a>
+<a name="index-_002ds-style"></a>
 <p>Set the footnote style to <var>style</var>, either &lsquo;<samp>end</samp>&rsquo; for the end
 node style (the default) or &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
 The value set by this option overrides the value set in a Texinfo file
@@ -161,21 +161,21 @@ the end of the current node.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </dd>
 <dt> <code>--force</code></dt>
 <dt> <code>-F</code></dt>
-<dd><a name="IDX367"></a>
-<a name="IDX368"></a>
+<dd><a name="index-_002d_002dforce"></a>
+<a name="index-_002dF"></a>
 <p>Ordinarily, if the input file has errors, the output files are not
 created.  With this option, they are preserved.
 </p>
 </dd>
 <dt> <code>--help</code></dt>
 <dt> <code>-h</code></dt>
-<dd><a name="IDX369"></a>
-<a name="IDX370"></a>
+<dd><a name="index-_002d_002dhelp"></a>
+<a name="index-_002dh"></a>
 <p>Print a usage message listing all available options, then exit successfully.
 </p>
 </dd>
 <dt> <code>--html</code></dt>
-<dd><a name="IDX371"></a>
+<dd><a name="index-_002d_002dhtml"></a>
 <p>Generate HTML output rather than Info.  See section <a href="makeinfo-html.html#makeinfo-html">Generating HTML</a>.  By
 default, the HTML output is split into one output file per source node,
 and the split output is written into a subdirectory with the name of the
@@ -183,7 +183,7 @@ top-level info file.
 </p>
 </dd>
 <dt> <code>-I <var>dir</var></code></dt>
-<dd><a name="IDX372"></a>
+<dd><a name="index-_002dI-dir"></a>
 <p>Append <var>dir</var> to the directory search list for finding files that
 are included using the <code>@include</code> command.  By default,
 <code>makeinfo</code> searches only the current directory.  If <var>dir</var> is
@@ -203,19 +203,19 @@ that does not support <code>@macro</code>.
 </p>
 </dd>
 <dt> <code>--no-headers</code></dt>
-<dd><a name="IDX373"></a>
-<a name="IDX374"></a>
-<a name="IDX375"></a>
-<a name="IDX376"></a>
-<a name="IDX377"></a>
-<a name="IDX378"></a>
-<a name="IDX379"></a>
+<dd><a name="index-_002d_002dno_002dheaders"></a>
+<a name="index-Plain-text-output"></a>
+<a name="index-ASCII-text-output"></a>
+<a name="index-Generating-plain-text-files"></a>
+<a name="index-INSTALL-file_002c-generating"></a>
+<a name="index-Node-separators_002c-omitting"></a>
+<a name="index-Menus_002c-omitting"></a>
 <p>For Info output, do not include menus or node separator lines in the
 output.  This results in a simple plain text file that you can (for
 example) send in email without complications, or include in a
 distribution (as in an &lsquo;<tt>INSTALL</tt>&rsquo; file).
 </p>
-<a name="IDX380"></a>
+<a name="index-Navigation-links_002c-omitting"></a>
 <p>For HTML output, likewise omit menus.  And if &lsquo;<samp>--no-split</samp>&rsquo; is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
@@ -226,9 +226,9 @@ overridden by &lsquo;<samp>-o</samp>&rsquo;).
 </p>
 </dd>
 <dt> <code>--no-split</code></dt>
-<dd><a name="IDX381"></a>
-<a name="IDX382"></a>
-<a name="IDX383"></a>
+<dd><a name="index-_002d_002dno_002dsplit"></a>
+<a name="index-Splitting-of-output-files"></a>
+<a name="index-Output-file-splitting"></a>
 <p>Suppress the splitting stage of <code>makeinfo</code>.  By default, large
 output files (where the size is greater than 70k bytes) are split into
 smaller subfiles.  For Info output, each one is approximately 50k bytes.
@@ -237,9 +237,9 @@ For HTML output, each file contains one node (see section <a href="makeinfo-html
 </dd>
 <dt> <code>--no-pointer-validate</code></dt>
 <dt> <code>--no-validate</code></dt>
-<dd><a name="IDX384"></a>
-<a name="IDX385"></a>
-<a name="IDX386"></a>
+<dd><a name="index-_002d_002dno_002dpointer_002dvalidate"></a>
+<a name="index-_002d_002dno_002dvalidate"></a>
+<a name="index-Pointer-validation_002c-suppressing-1"></a>
 <p>Suppress the pointer-validation phase of <code>makeinfo</code>.  This can also
 be done with the <code>@novalidate</code> command (see section <a href="Use-TeX.html#Use-TeX">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
 checks are made to ensure that cross references can be resolved, etc.
@@ -247,7 +247,7 @@ See section <a href="Pointer-Validation.html#Pointer-Validation">Pointer Validat
 </p>
 </dd>
 <dt> <code>--no-warn</code></dt>
-<dd><a name="IDX387"></a>
+<dd><a name="index-_002d_002dno_002dwarn"></a>
 <p>Suppress warning messages (but <em>not</em> error messages).  You might
 want this if the file you are creating has examples of Texinfo cross
 references within it, and the nodes that are referenced do not actually
@@ -255,12 +255,12 @@ exist.
 </p>
 </dd>
 <dt> <code>--number-sections</code></dt>
-<dd><a name="IDX388"></a>
+<dd><a name="index-_002d_002dnumber_002dsections"></a>
 <p>Output chapter, section, and appendix numbers as in printed manuals.
 </p>
 </dd>
 <dt> <code>--no-number-footnotes</code></dt>
-<dd><a name="IDX389"></a>
+<dd><a name="index-_002d_002dno_002dnumber_002dfootnotes"></a>
 <p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
 numbers each footnote sequentially in a single node, resetting the
 current footnote number to 1 at the start of each node.
@@ -268,8 +268,8 @@ current footnote number to 1 at the start of each node.
 </dd>
 <dt> <code>--output=<var>file</var></code></dt>
 <dt> <code>-o <var>file</var></code></dt>
-<dd><a name="IDX390"></a>
-<a name="IDX391"></a>
+<dd><a name="index-_002d_002doutput_003dfile"></a>
+<a name="index-_002do-file"></a>
 <p>Specify that the output should be directed to <var>file</var> and not to the
 file name specified in the <code>@setfilename</code> command found in the
 Texinfo source (see section <a href="setfilename.html#setfilename"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output
@@ -279,7 +279,7 @@ HTML nodes are written (see section <a href="makeinfo-html.html#makeinfo-html">G
 </p>
 </dd>
 <dt> <code>-P <var>dir</var></code></dt>
-<dd><a name="IDX392"></a>
+<dd><a name="index-_002dP-dir"></a>
 <p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
 If <var>dir</var> is not given, the current directory &lsquo;<tt>.</tt>&rsquo; is prepended.
 See &lsquo;<samp>-I</samp>&rsquo; for more details.
@@ -287,8 +287,8 @@ See &lsquo;<samp>-I</samp>&rsquo; for more details.
 </dd>
 <dt> <code>--paragraph-indent=<var>indent</var></code></dt>
 <dt> <code>-p <var>indent</var></code></dt>
-<dd><a name="IDX393"></a>
-<a name="IDX394"></a>
+<dd><a name="index-_002d_002dparagraph_002dindent_003dindent"></a>
+<a name="index-_002dp-indent"></a>
 <p>Set the paragraph indentation style to <var>indent</var>.  The value set by
 this option overrides the value set in a Texinfo file by an
 <code>@paragraphindent</code> command (see section <a href="paragraphindent.html#paragraphindent">Paragraph Indenting</a>).  The value
@@ -311,8 +311,8 @@ of <var>indent</var> is interpreted as follows:
 </dd>
 <dt> <code>--reference-limit=<var>limit</var></code></dt>
 <dt> <code>-r <var>limit</var></code></dt>
-<dd><a name="IDX395"></a>
-<a name="IDX396"></a>
+<dd><a name="index-_002d_002dreference_002dlimit_003dlimit"></a>
+<a name="index-_002dr-limit"></a>
 <p>Set the value of the number of references to a node that
 <code>makeinfo</code> will make without reporting a warning.  If a node has more
 than this number of references in it, <code>makeinfo</code> will make the
@@ -325,7 +325,7 @@ references but also report a warning.  The default is 1000.
 </p>
 </dd>
 <dt> <code>--verbose</code></dt>
-<dd><a name="IDX397"></a>
+<dd><a name="index-_002d_002dverbose"></a>
 <p>Cause <code>makeinfo</code> to display messages saying what it is doing.
 Normally, <code>makeinfo</code> only outputs messages if there are errors or
 warnings.
@@ -333,13 +333,13 @@ warnings.
 </dd>
 <dt> <code>--version</code></dt>
 <dt> <code>-V</code></dt>
-<dd><a name="IDX398"></a>
-<a name="IDX399"></a>
+<dd><a name="index-_002d_002dversion"></a>
+<a name="index-_002dV"></a>
 <p>Print the version number, then exit successfully.
 </p>
 </dd>
 <dt> <code>--xml</code></dt>
-<dd><a name="IDX400"></a>
+<dd><a name="index-_002d_002dxml"></a>
 <p>Generate XML output rather than Info.  
 </p>
 </dd>

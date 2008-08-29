@@ -26,17 +26,17 @@ if the manual is unclear, that can be considered a bug
 in the manual, so these problems are often worth doing
 something about as well as problems with <small>CVS</small> itself.
 </p>
-<div id="IDX321"></div>
-<div id="IDX322"></div>
-<div id="IDX323"></div>
+<div id="index-Reporting-bugs"></div>
+<div id="index-Bugs_002c-reporting"></div>
+<div id="index-Errors_002c-reporting"></div>
 <ul>
 <li>
 If you want someone to help you and fix bugs that you
 report, there are companies which will do that for a
 fee.  One such company is:
 
-<div id="IDX324"></div>
-<div id="IDX325"></div>
+<div id="index-Ximbiot"></div>
+<div id="index-Support_002c-getting-CVS-support"></div>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Ximbiot
 319 S. River St.
 Harrisburg, PA  17104-1657
@@ -107,7 +107,7 @@ necessarily any maintainers reading bug reports sent
 anywhere except <code>bug-cvs</code>.
 </li></ul>
 
-<div id="IDX326"></div>
+<div id="index-Known-bugs-in-this-manual-or-CVS"></div>
 <p>People often ask if there is a list of known bugs or
 whether a particular bug is a known one.  The file
 <small>BUGS</small> in the <small>CVS</small> source distribution is one

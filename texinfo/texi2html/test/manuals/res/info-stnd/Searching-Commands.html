@@ -87,9 +87,9 @@ areas within an Info file which discuss a particular topic.
 <dl compact="compact">
 <dt> &lt;s&gt; (<code>search</code>)</dt>
 <dt> &lt;/&gt;</dt>
-<dd><a name="IDX162"></a>
-<a name="IDX163"></a>
-<a name="IDX164"></a>
+<dd><a name="index-s"></a>
+<a name="index-_002f"></a>
+<a name="index-search"></a>
 <p>Read a string in the echo area and search for it.  If the string
 includes upper-case characters, the Info file is searched
 case-sensitively; otherwise Info ignores the letter case.  With a
@@ -98,8 +98,8 @@ string.  Negative arguments search backwards.
 </p>
 </dd>
 <dt> &lt;?&gt; (<code>search-backward</code>, vi-like operation)</dt>
-<dd><a name="IDX165"></a>
-<a name="IDX166"></a>
+<dd><a name="index-_003f_002c-vi_002dlike-operation"></a>
+<a name="index-search_002dbackward"></a>
 <p>Read a string in the echo area and search backward through the Info file
 for that string.  If the string includes upper-case characters, the Info
 file is searched case-sensitively; otherwise Info ignores the letter
@@ -108,10 +108,10 @@ occurrence of the string.  Negative arguments search forward.
 </p>
 </dd>
 <dt> &lt;S&gt; (<code>search-case-sensitively</code></dt>
-<dd><a name="IDX167"></a>
-<a name="IDX168"></a>
-<a name="IDX169"></a>
-<a name="IDX170"></a>
+<dd><a name="index-S"></a>
+<a name="index-search_002dcase_002dsensitively"></a>
+<a name="index-search_002c-case_002dsensitive"></a>
+<a name="index-case_002dsensitive-search"></a>
 <p>Read a string in the echo area and search for it case-sensitively, even
 if the string includes only lower-case letters.  With a numeric argument
 of <var>N</var>, search for <var>N</var>th occurrence of the string.  Negative
@@ -120,10 +120,10 @@ arguments search backwards.
 </dd>
 <dt> <kbd>C-x &lt;n&gt;</kbd> (<code>search-next</code>)</dt>
 <dt> &lt;n&gt;, vi-like operation</dt>
-<dd><a name="IDX171"></a>
-<a name="IDX172"></a>
-<a name="IDX173"></a>
-<a name="IDX174"></a>
+<dd><a name="index-C_002dx-n"></a>
+<a name="index-n_002c-vi_002dlike-operation"></a>
+<a name="index-search_002dnext"></a>
+<a name="index-repeated-search"></a>
 <p>Search for the same string used in the last search command, in the same
 direction, and with the same case-sensitivity option.  With a numeric
 argument of <var>N</var>, search for <var>N</var>th next occurrence.
@@ -131,49 +131,49 @@ argument of <var>N</var>, search for <var>N</var>th next occurrence.
 </dd>
 <dt> <kbd>C-x &lt;N&gt;</kbd> (<code>search-previous</code>)</dt>
 <dt> &lt;N&gt;, vi-like operation</dt>
-<dd><a name="IDX175"></a>
-<a name="IDX176"></a>
-<a name="IDX177"></a>
+<dd><a name="index-C_002dx-N"></a>
+<a name="index-n_002c-vi_002dlike-operation-1"></a>
+<a name="index-search_002dprevious"></a>
 <p>Search for the same string used in the last search command, and with the
 same case-sensitivity option, but in the reverse direction.  With a
 numeric argument of <var>N</var>, search for <var>N</var>th previous occurrence.
 </p>
 </dd>
 <dt> &lt;C-s&gt; (<code>isearch-forward</code>)</dt>
-<dd><a name="IDX178"></a>
-<a name="IDX179"></a>
-<a name="IDX180"></a>
+<dd><a name="index-C_002ds"></a>
+<a name="index-isearch_002dforward"></a>
+<a name="index-incremental-search"></a>
 <p>Interactively search forward through the Info file for a string as you
 type it.  If the string includes upper-case characters, the search is
 case-sensitive; otherwise Info ignores the letter case.
 </p>
 </dd>
 <dt> &lt;C-r&gt; (<code>isearch-backward</code>)</dt>
-<dd><a name="IDX181"></a>
-<a name="IDX182"></a>
+<dd><a name="index-C_002dr"></a>
+<a name="index-isearch_002dbackward"></a>
 <p>Interactively search backward through the Info file for a string as
 you type it.  If the string includes upper-case characters, the search
 is case-sensitive; otherwise Info ignores the letter case.
 </p>
 </dd>
 <dt> &lt;i&gt; (<code>index-search</code>)</dt>
-<dd><a name="IDX183"></a>
-<a name="IDX184"></a>
-<a name="IDX185"></a>
-<a name="IDX186"></a>
+<dd><a name="index-i"></a>
+<a name="index-index_002dsearch"></a>
+<a name="index-index_002c-searching"></a>
+<a name="index-searching_002c-in-the-indices"></a>
 <p>Look up a string in the indices for this Info file, and select a node
 where the found index entry points to.
 </p>
 </dd>
 <dt> &lt;,&gt; (<code>next-index-match</code>)</dt>
-<dd><a name="IDX187"></a>
-<a name="IDX188"></a>
+<dd><a name="index-_002c"></a>
+<a name="index-next_002dindex_002dmatch"></a>
 <p>Move to the node containing the next matching index item from the last
 &lsquo;<samp>i</samp>&rsquo; command.
 </p>
 </dd>
 <dt> <kbd>M-x index-apropos</kbd></dt>
-<dd><a name="IDX189"></a>
+<dd><a name="index-index_002dapropos"></a>
 <p>Grovel the indices of all the known Info files on your system for a
 string, and build a menu of the possible matches.
 </p></dd>
@@ -194,8 +194,8 @@ commands is a faster way of searching for the same string.
 string is looked up while you are typing it, instead of waiting until
 the entire search string has been specified.
 </p>
-<a name="IDX190"></a>
-<a name="IDX191"></a>
+<a name="index-search_002c-and-case_002dsensitivity"></a>
+<a name="index-case_002dsensitivity_002c-and-search"></a>
 <p>Both incremental and non-incremental search by default ignore the case
 of letters when comparing the Info file text with the search string.
 However, an uppercase letter in the search string makes the search

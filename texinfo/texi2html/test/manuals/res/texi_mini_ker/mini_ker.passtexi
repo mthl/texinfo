@@ -10,7 +10,7 @@ mini_ker.texi(,17)
 mini_ker.texi(,18) @set myurl @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}
 mini_ker.texi(,19) 
 mini_ker.texi(,23) 
-mini_ker.texi(Minik,24) @settitle mini_ker.texi(Minik,24) Minikermini_ker.texi(Minik,24)  102 manual
+mini_ker.texi(Minik,24) @settitle mini_ker.texi(Minik,24) Miniker 102 manual
 mini_ker.texi(,25) 
 mini_ker.texi(,26) @syncodeindex fn vr
 mini_ker.texi(,27) 
@@ -33,8 +33,8 @@ mini_ker.texi(,46) @end quotation
 mini_ker.texi(,47) @end copying
 mini_ker.texi(,48) 
 mini_ker.texi(,49) @titlepage
-mini_ker.texi(Minik,50) @title mini_ker.texi(Minik,50) Minikermini_ker.texi(Minik,50)  manual
-mini_ker.texi(Minik,51) @subtitle for mini_ker.texi(Minik,51) Minikermini_ker.texi(Minik,51)  version 102, 28 March 2002
+mini_ker.texi(Minik,50) @title mini_ker.texi(Minik,50) Miniker manual
+mini_ker.texi(Minik,51) @subtitle for mini_ker.texi(Minik,51) Miniker version 102, 28 March 2002
 mini_ker.texi(,52) 
 mini_ker.texi(,53) @author The TEF Collaboration
 mini_ker.texi(,54) @c @author Alain Lahellec
@@ -47,13 +47,13 @@ mini_ker.texi(,60) @insertcopying
 mini_ker.texi(,61) @end titlepage
 mini_ker.texi(,62) 
 mini_ker.texi(,64) @node Top
-mini_ker.texi(Minik,65) @top mini_ker.texi(Minik,65) Minikermini_ker.texi(Minik,65)  102 manual
+mini_ker.texi(Minik,65) @top mini_ker.texi(Minik,65) Miniker 102 manual
 mini_ker.texi(,66) 
 mini_ker.texi(,67) 
 mini_ker.texi(,68) @c @insertcopying
 mini_ker.texi(,70) 
 mini_ker.texi(,72) @node Top
-mini_ker.texi(Minik,73) @top mini_ker.texi(Minik,73) Minikermini_ker.texi(Minik,73)  102 manual
+mini_ker.texi(Minik,73) @top mini_ker.texi(Minik,73) Miniker 102 manual
 mini_ker.texi(,74) 
 mini_ker.texi(,75) @strong{By: The TEF Collaboration}
 mini_ker.texi(,76) 
@@ -63,10 +63,10 @@ mini_ker.texi(,80)
 mini_ker.texi(,81) @menu
 mini_ker.texi(,82) * Introduction::
 mini_ker.texi(,83) * TEF overview::
-mini_ker.texi(Minik,84) * A model with mini_ker.texi(Minik,84) Minikermini_ker.texi(Minik,84) ::
+mini_ker.texi(Minik,84) * A model with mini_ker.texi(Minik,84) Miniker::
 mini_ker.texi(,85) * Advanced programming::
 mini_ker.texi(,86) * Dynamic system analysis::
-mini_ker.texi(Minik,87) * Advanced use of mini_ker.texi(Minik,87) Minikermini_ker.texi(Minik,87)  with make::
+mini_ker.texi(Minik,87) * Advanced use of mini_ker.texi(Minik,87) Miniker with make::
 mini_ker.texi(,88) 
 mini_ker.texi(,89) Indices
 mini_ker.texi(,90) 
@@ -91,16 +91,16 @@ mini_ker.texi(,112) @cindex transfers
 mini_ker.texi(,113) @cindex ZOOM
 mini_ker.texi(,114) @cindex mortran 
 mini_ker.texi(,115) 
-mini_ker.texi(Minik,116)    mini_ker.texi(Minik,116) Minikermini_ker.texi(Minik,116)  is a modeling tool, built especially in order to implement
+mini_ker.texi(Minik,116)    mini_ker.texi(Minik,116) Miniker is a modeling tool, built especially in order to implement
 mini_ker.texi(,117) models written following the @acronym{TEF,Transfer Evolution Formalism} 
 mini_ker.texi(,118) formalism, a mathematical framework for system analysis and
-mini_ker.texi(Minik,119) simulation. mini_ker.texi(Minik,119) Minikermini_ker.texi(Minik,119)  allows for timewise simulation, system analysis,
+mini_ker.texi(Minik,119) simulation. mini_ker.texi(Minik,119) Miniker allows for timewise simulation, system analysis,
 mini_ker.texi(,120) adjoint computation, Kalman filtering and more.
 mini_ker.texi(,121) 
-mini_ker.texi(Minik,122) Minikermini_ker.texi(Minik,122)  uses a fortran preprocessor, @command{mortran}, designed in the 
+mini_ker.texi(Minik,122) Miniker uses a fortran preprocessor, @command{mortran}, designed in the 
 mini_ker.texi(,123) 1970's, to ease model writing using dedicated specific languages.
 mini_ker.texi(,124) For example partial derivatives are
-mini_ker.texi(Minik,125) symbolicaly determined by @command{mortran} macros in mini_ker.texi(Minik,125) Minikermini_ker.texi(Minik,125) . 
+mini_ker.texi(Minik,125) symbolicaly determined by @command{mortran} macros in mini_ker.texi(Minik,125) Miniker. 
 mini_ker.texi(,126) For the selection of 
 mini_ker.texi(,127) another compile-time features, another set of preprocessor directives,
 mini_ker.texi(,128) the @dfn{cmz directives}, are used. In most cases the user does not need to
@@ -118,7 +118,7 @@ mini_ker.texi(,139)
 mini_ker.texi(,140) A comprehensive description
 mini_ker.texi(,141) of the @acronym{TEF} formalism in available on 
 mini_ker.texi(,142) @url{http://www.lmd.jussieu.fr/ZOOM/doc/tef-GB-partA5.pdf}).
-mini_ker.texi(Minik,143) The mini_ker.texi(Minik,143) Minikermini_ker.texi(Minik,143)  software is a reduced version of 
+mini_ker.texi(Minik,143) The mini_ker.texi(Minik,143) Miniker software is a reduced version of 
 mini_ker.texi(,144) @uref{http://www.lmd.jussieu.fr@//zoom,@strong{ZOOM}}, 
 mini_ker.texi(,145) that can only handle a hundreds of variables, but is much easier to use.
 mini_ker.texi(,146) 
@@ -141,14 +141,14 @@ mini_ker.texi(,162) @node Reading guide
 mini_ker.texi(,163) @unnumberedsec Reading guide
 mini_ker.texi(,164) 
 mini_ker.texi(,165) The first chapter is a brief overview of the @acronym{TEF}.
-mini_ker.texi(Minik,166) The following describes how to write, compile and run a model in mini_ker.texi(Minik,166) Minikermini_ker.texi(Minik,166)  
+mini_ker.texi(Minik,166) The following describes how to write, compile and run a model in mini_ker.texi(Minik,166) Miniker 
 mini_ker.texi(,167) in its basic and comprehensive syntax.
 mini_ker.texi(,168) @c Reading the sections of this chapter up to the section 
 mini_ker.texi(,169) @c @emph{Symbolic model description} is required to know the
 mini_ker.texi(,170) @c syntax of model description in @Minik{}.
 mini_ker.texi(,171) Reading up to the section
-mini_ker.texi(Minik,172) @emph{Controlling the run} is required to be able to use mini_ker.texi(Minik,172) Minikermini_ker.texi(Minik,172) . 
-mini_ker.texi(Minik,173) In this section it is assumed that mini_ker.texi(Minik,173) Minikermini_ker.texi(Minik,173)  is properly setup. The
+mini_ker.texi(Minik,172) @emph{Controlling the run} is required to be able to use mini_ker.texi(Minik,172) Miniker. 
+mini_ker.texi(Minik,173) In this section it is assumed that mini_ker.texi(Minik,173) Miniker is properly setup. The
 mini_ker.texi(,174) installation instructions are in the appendix at
 mini_ker.texi(,175) @ref{Installation}.
 mini_ker.texi(,176) 
@@ -166,7 +166,7 @@ mini_ker.texi(,187) The next chapter describes advanced features, first a genera
 mini_ker.texi(,188) features settings and then a description of other model description related
 mini_ker.texi(,189) features.
 mini_ker.texi(,190) 
-mini_ker.texi(Minik,191) The next chapter describes system analysis tools available with mini_ker.texi(Minik,191) Minikermini_ker.texi(Minik,191) . The
+mini_ker.texi(Minik,191) The next chapter describes system analysis tools available with mini_ker.texi(Minik,191) Miniker. The
 mini_ker.texi(,192) sections are independant and each describes how to use a specific feature. If
 mini_ker.texi(,193) you plan on using these features, you should also read 
 mini_ker.texi(,194) @ref{Selecting features, , Overview of feature setting}.
@@ -258,12 +258,12 @@ mini_ker.texi(,332) the coupling between transfers, and allows for the @math{\de
 mini_ker.texi(,333) computation. The @math{\delta \varphi} value is then substitued in 
 mini_ker.texi(,334) @math{\delta \eta} to complete the time-step solving process.
 mini_ker.texi(,335) 
-mini_ker.texi(Minik,336) @node A model with mini_ker.texi(Minik,336) Minikermini_ker.texi(Minik,336) 
-mini_ker.texi(Minik,337) @chapter mini_ker.texi(Minik,337) Minikermini_ker.texi(Minik,337)  model programming
+mini_ker.texi(Minik,336) @node A model with mini_ker.texi(Minik,336) Miniker
+mini_ker.texi(Minik,337) @chapter mini_ker.texi(Minik,337) Miniker model programming
 mini_ker.texi(,338) 
 mini_ker.texi(,339) @cindex sequences
 mini_ker.texi(,340) 
-mini_ker.texi(Minik,341) Minikermini_ker.texi(Minik,341)  works by combining the model specification code given by 
+mini_ker.texi(Minik,341) Miniker works by combining the model specification code given by 
 mini_ker.texi(,342) the user and other source files provided in the package. The code is
 mini_ker.texi(,343) assembled, preprocessed, compiled, linked and the resulting program 
 mini_ker.texi(,344) can be run to produce the model trajectory and dynamic analysis.
@@ -309,7 +309,7 @@ mini_ker.texi(,383) computations etc.
 mini_ker.texi(,384) (@pxref{End of time step, ,Executing code at the end of each time step}).
 mini_ker.texi(,385) 
 mini_ker.texi(,386) @node A model description
-mini_ker.texi(Minik,387) @section mini_ker.texi(Minik,387) Minikermini_ker.texi(Minik,387)  programming illustrated
+mini_ker.texi(Minik,387) @section mini_ker.texi(Minik,387) Miniker programming illustrated
 mini_ker.texi(,388) 
 mini_ker.texi(,389) @cindex TEF
 mini_ker.texi(,390) 
@@ -319,7 +319,7 @@ mini_ker.texi(,409) @noindent @math{d eta(t)/d t = g(eta(t),phi(t))@*
 mini_ker.texi(,410) phi(t) = f(eta(t),phi(t))}
 mini_ker.texi(,411) 
 mini_ker.texi(,414) 
-mini_ker.texi(Minik,415) To illustrate the model description in mini_ker.texi(Minik,415) Minikermini_ker.texi(Minik,415)  a simple predator-prey
+mini_ker.texi(Minik,415) To illustrate the model description in mini_ker.texi(Minik,415) Miniker a simple predator-prey
 mini_ker.texi(,416) model of Lotka-Volterra is used.
 mini_ker.texi(,417) This model can be written in the following @acronym{TEF} form:
 mini_ker.texi(,418) 
@@ -353,7 +353,7 @@ mini_ker.texi(,472) The code in sequences is written in Mortran and the second s
 mini_ker.texi(,473) generation consists in mortran macro expansion. The mortran language is 
 mini_ker.texi(,474) described
 mini_ker.texi(,475) in its own manual, here we only explain the very basics which is all you need
-mini_ker.texi(Minik,476) to know to use mini_ker.texi(Minik,476) Minikermini_ker.texi(Minik,476) . Mortran basic instructions are almost Fortran,
+mini_ker.texi(Minik,476) to know to use mini_ker.texi(Minik,476) Miniker. Mortran basic instructions are almost Fortran,
 mini_ker.texi(,477) the differences are the following:
 mini_ker.texi(,478) 
 mini_ker.texi(,479) @itemize @bullet
@@ -390,7 +390,7 @@ mini_ker.texi(,509) @vindex time
 mini_ker.texi(,510) @vindex nstep
 mini_ker.texi(,511) @vindex modzprint
 mini_ker.texi(,512) 
-mini_ker.texi(Minik,513) The model equation and parameters and some mini_ker.texi(Minik,513) Minikermini_ker.texi(Minik,513)  parameters are entered in
+mini_ker.texi(Minik,513) The model equation and parameters and some mini_ker.texi(Minik,513) Miniker parameters are entered in
 mini_ker.texi(,514) the @file{zinit} sequence. The whole layout of the model is given
 mini_ker.texi(,515) before detailing the keywords.
 mini_ker.texi(,516) 
@@ -467,7 +467,7 @@ mini_ker.texi(,586) run (@pxref{Controlling the printout and data output}).
 mini_ker.texi(,587) 
 mini_ker.texi(,588) User's defined variable and Fortran or Mortran instructions can always be
 mini_ker.texi(,589) added for intermediate calculus. To avoid conflict with the variables of the
-mini_ker.texi(Minik,590) Minikermini_ker.texi(Minik,590)  code, the rule is that a users symbol must not have characters 
+mini_ker.texi(Minik,590) Miniker code, the rule is that a users symbol must not have characters 
 mini_ker.texi(,591) @samp{o} 
 mini_ker.texi(,592) in the first two symbol characters.
 mini_ker.texi(,593) 
@@ -796,7 +796,7 @@ mini_ker.texi(,943) (@pxref{Control laws}), a @file{monitor.f} file
 mini_ker.texi(,944) (@pxref{Turning the model into a subroutine}) to take advantage of 
 mini_ker.texi(,945) features presented later in this manual.
 mini_ker.texi(,946) 
-mini_ker.texi(Minik,947) More in-depth discussion of using make to run mini_ker.texi(Minik,947) Minikermini_ker.texi(Minik,947)  is covered in 
+mini_ker.texi(Minik,947) More in-depth discussion of using make to run mini_ker.texi(Minik,947) Miniker is covered in 
 mini_ker.texi(Minik,948) @ref{Advanced use of Miniker with make}.
 mini_ker.texi(,949) For example it is also possible to create files that are to be 
 mini_ker.texi(,950) preprocessed by the cmz directive
@@ -953,7 +953,7 @@ mini_ker.texi(,1100) plot "tr.data" using 1:(@var{n}+1)
 mini_ker.texi(,1101) @end example
 mini_ker.texi(,1102) 
 mini_ker.texi(,1103) For people using @command{PAW}, the CERN graphical computer code, 
-mini_ker.texi(Minik,1104) Minikermini_ker.texi(Minik,1104)  prepares
+mini_ker.texi(Minik,1104) Miniker prepares
 mini_ker.texi(,1105) kumacs that allow to read process the @samp{.data} files in the form of 
 mini_ker.texi(,1106) @emph{n-tuples} (see the @cite{PAW manual} for more information). 
 mini_ker.texi(,1107) In that cas, the flag @code{sel paw} has to be gievn in the @file{selsequ.kumac}.
@@ -962,7 +962,7 @@ mini_ker.texi(,1109) for vector dimension of at most 10 (including the variable 
 mini_ker.texi(,1110) These kumacs are overwritten each time the model is run. Usaually, gnuplot has
 mini_ker.texi(,1111) to be preferred, but when using surfaces and histograms, PAW is better.
 mini_ker.texi(,1112) The @file{gains.f} (and @file{go.xqt}  is provided as an example in the 
-mini_ker.texi(Minik,1113) Minikermini_ker.texi(Minik,1113)  files.
+mini_ker.texi(Minik,1113) Miniker files.
 mini_ker.texi(,1114) 
 mini_ker.texi(,1115) @node Controlling the run
 mini_ker.texi(,1116) @section Controlling the run
@@ -1086,7 +1086,7 @@ mini_ker.texi(,1257) Zout = mod(istep,modzout).eq.0;
 mini_ker.texi(,1258) @end example
 mini_ker.texi(,1259) 
 mini_ker.texi(,1260) @node Advanced programming
-mini_ker.texi(Minik,1261) @chapter Advanced mini_ker.texi(Minik,1261) Minikermini_ker.texi(Minik,1261)  programming
+mini_ker.texi(Minik,1261) @chapter Advanced mini_ker.texi(Minik,1261) Miniker programming
 mini_ker.texi(,1262) 
 mini_ker.texi(,1263) @menu
 mini_ker.texi(,1264) * Selecting features::
@@ -1185,7 +1185,7 @@ mini_ker.texi(,1356) @end example
 mini_ker.texi(,1357) 
 mini_ker.texi(,1358) A file that call the principal subroutine should also be written, using
 mini_ker.texi(,1359) the prefered language of the user. The additional object files should
-mini_ker.texi(Minik,1360) then be linked with the mini_ker.texi(Minik,1360) Minikermini_ker.texi(Minik,1360)  objects. To that aim they may be added
+mini_ker.texi(Minik,1360) then be linked with the mini_ker.texi(Minik,1360) Miniker objects. To that aim they may be added
 mini_ker.texi(,1361) to the @code{miniker_user_objects} variable.
 mini_ker.texi(,1362) 
 mini_ker.texi(,1363) @node The model subroutine
@@ -1363,7 +1363,7 @@ mini_ker.texi(,1591) The model code and parameters go in the @file{zinit} sequen
 mini_ker.texi(,1592) 
 mini_ker.texi(,1593) @subsubheading Parameters
 mini_ker.texi(,1594) 
-mini_ker.texi(Minik,1595) A value for the mini_ker.texi(Minik,1595) Minikermini_ker.texi(Minik,1595)  parameters and the model parameters should be given in
+mini_ker.texi(Minik,1595) A value for the mini_ker.texi(Minik,1595) Miniker parameters and the model parameters should be given in
 mini_ker.texi(,1596) @file{zinit}, in our example we have
 mini_ker.texi(,1597) 
 mini_ker.texi(,1598) @example
@@ -1592,7 +1592,7 @@ mini_ker.texi(,1820) @node Partial Derivatives
 mini_ker.texi(,1821) @section  Partial Derivatives
 mini_ker.texi(,1822) 
 mini_ker.texi(,1823) The partial derivative rules are included in a @code{Mortran} macro series
-mini_ker.texi(Minik,1824) in @file{Derive_mac} of mini_ker.texi(Minik,1824) Minikermini_ker.texi(Minik,1824)  files. When using an anusual function,
+mini_ker.texi(Minik,1824) in @file{Derive_mac} of mini_ker.texi(Minik,1824) Miniker files. When using an anusual function,
 mini_ker.texi(,1825) one should verify that the corersponding rules are in that file.
 mini_ker.texi(,1826) It is easy to understand and add new rules in analogy with the already existing ones.
 mini_ker.texi(,1827) 
@@ -1604,7 +1604,7 @@ mini_ker.texi(,1832)  &'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
 mini_ker.texi(,1833) @end example
 mini_ker.texi(,1834) 
 mini_ker.texi(,1835) In such cases when one is adding a new rule, it is important to use the generic function names
-mini_ker.texi(Minik,1836) only (i.e. @code{sin} not @code{dsin}), because when compilating mini_ker.texi(Minik,1836) Minikermini_ker.texi(Minik,1836)  in the double precision
+mini_ker.texi(Minik,1836) only (i.e. @code{sin} not @code{dsin}), because when compilating mini_ker.texi(Minik,1836) Miniker in the double precision
 mini_ker.texi(,1837) version, or complex version, the generic names will correctly handle the different variable
 mini_ker.texi(,1838) types - which is not the case when coding with specific function names.
 mini_ker.texi(,1839) 
@@ -1617,7 +1617,7 @@ mini_ker.texi(,1845) @subsection Derivating a power function
 mini_ker.texi(,1846) 
 mini_ker.texi(,1847) Partial derivative of a function in exponent is not secure in its Fortran form
 mini_ker.texi(,1848) @code{g(x,y)**(f(y))}. It should be replaced by @code{power(g,f)} of 
-mini_ker.texi(Minik,1849) the mini_ker.texi(Minik,1849) Minikermini_ker.texi(Minik,1849)  @file{mathlib},
+mini_ker.texi(Minik,1849) the mini_ker.texi(Minik,1849) Miniker @file{mathlib},
 mini_ker.texi(,1850) or by the explicit form @code{exp(f(y)*log(g(x,y)))}.
 mini_ker.texi(,1851) 
 mini_ker.texi(,1852) Its derivative will have the following form:
@@ -1640,9 +1640,9 @@ mini_ker.texi(,1881) Taking
 mini_ker.texi(,1882) the example of phase-change, a fluid volume does not change phase at once, and a ``smooth
 mini_ker.texi(,1883) change of state'' is a correct macroscopic model.
 mini_ker.texi(,1884) 
-mini_ker.texi(Minik,1885) Minikermini_ker.texi(Minik,1885)  provides with the smooth step function 
+mini_ker.texi(Minik,1885) Miniker provides with the smooth step function 
 mini_ker.texi(,1886) @emph{Heavyside}@footnote{This naming is a joke
-mini_ker.texi(Minik,1887) for ``Inert'' Heaviside function.} in the mini_ker.texi(Minik,1887) Minikermini_ker.texi(Minik,1887)  @file{mathlib}:
+mini_ker.texi(Minik,1887) for ``Inert'' Heaviside function.} in the mini_ker.texi(Minik,1887) Miniker @file{mathlib}:
 mini_ker.texi(,1888) 
 mini_ker.texi(,1889) @example
 mini_ker.texi(,1890)         Delta = -1."K";
@@ -1979,12 +1979,12 @@ mini_ker.texi(,2237) @node Programming with cmz directives
 mini_ker.texi(,2238) @section Programming with cmz directives
 mini_ker.texi(,2239) 
 mini_ker.texi(,2240) @menu
-mini_ker.texi(Minik,2241) * Cmz directives used with mini_ker.texi(Minik,2241) Minikermini_ker.texi(Minik,2241) ::
-mini_ker.texi(Minik,2242) * Using cmz directives in mini_ker.texi(Minik,2242) Minikermini_ker.texi(Minik,2242) ::
+mini_ker.texi(Minik,2241) * Cmz directives used with mini_ker.texi(Minik,2241) Miniker::
+mini_ker.texi(Minik,2242) * Using cmz directives in mini_ker.texi(Minik,2242) Miniker::
 mini_ker.texi(,2243) @end menu
 mini_ker.texi(,2244) 
-mini_ker.texi(Minik,2245) @node Cmz directives used with mini_ker.texi(Minik,2245) Minikermini_ker.texi(Minik,2245) 
-mini_ker.texi(Minik,2246) @subsection Cmz directives used with mini_ker.texi(Minik,2246) Minikermini_ker.texi(Minik,2246) 
+mini_ker.texi(Minik,2245) @node Cmz directives used with mini_ker.texi(Minik,2245) Miniker
+mini_ker.texi(Minik,2246) @subsection Cmz directives used with mini_ker.texi(Minik,2246) Miniker
 mini_ker.texi(,2247) 
 mini_ker.texi(,2248) The main feature of cmz directive is to use code conditionnaly for a given
 mini_ker.texi(,2249) select flag. For example when the double precision is selected
@@ -2006,8 +2006,8 @@ mini_ker.texi(,2264)
 mini_ker.texi(,2265) For a complete reference on cmz directives see the appendix
 mini_ker.texi(,2266) @ref{Cmz directives reference}.
 mini_ker.texi(,2267) 
-mini_ker.texi(Minik,2268) @node Using cmz directives in mini_ker.texi(Minik,2268) Minikermini_ker.texi(Minik,2268) 
-mini_ker.texi(Minik,2269) @subsection Using cmz directives in mini_ker.texi(Minik,2269) Minikermini_ker.texi(Minik,2269) 
+mini_ker.texi(Minik,2268) @node Using cmz directives in mini_ker.texi(Minik,2268) Miniker
+mini_ker.texi(Minik,2269) @subsection Using cmz directives in mini_ker.texi(Minik,2269) Miniker
 mini_ker.texi(,2270) 
 mini_ker.texi(,2271) In cmz the KEEP and DECK have their cmz directives preprocessed as part
 mini_ker.texi(,2272) of the source files extraction. And the +KEEP and +DECK 
@@ -2047,7 +2047,7 @@ mini_ker.texi(,2305) in cmz and an include file is called a @dfn{keep}.}
 mini_ker.texi(,2306) @end float
 mini_ker.texi(,2307) 
 mini_ker.texi(,2308) @node Dynamic system analysis
-mini_ker.texi(Minik,2309) @chapter Dynamic analysis of systems in mini_ker.texi(Minik,2309) Minikermini_ker.texi(Minik,2309) 
+mini_ker.texi(Minik,2309) @chapter Dynamic analysis of systems in mini_ker.texi(Minik,2309) Miniker
 mini_ker.texi(,2310) 
 mini_ker.texi(,2311) @menu
 mini_ker.texi(,2312) * Sensitivities::
@@ -2246,14 +2246,14 @@ mini_ker.texi(,2504) the state-advance matrix with regard to the @code{[fwd]} pa
 mini_ker.texi(,2505) These additional computations have to be programmed by the user in 
 mini_ker.texi(,2506) @file{zsteer} with matrices declared and initialized in 
 mini_ker.texi(,2507) @file{zinit}. An example is given in the example @file{lorhcl}
-mini_ker.texi(Minik,2508) provided with the mini_ker.texi(Minik,2508) Minikermini_ker.texi(Minik,2508)  installation files, following a method proposed
+mini_ker.texi(Minik,2508) provided with the mini_ker.texi(Minik,2508) Miniker installation files, following a method proposed
 mini_ker.texi(,2509) by Stephane Blanco.
 mini_ker.texi(,2510) 
 mini_ker.texi(,2511) @node Adjoint model and optimisation
-mini_ker.texi(Minik,2512) @section Adjoint model and optimisation with mini_ker.texi(Minik,2512) Minikermini_ker.texi(Minik,2512) 
+mini_ker.texi(Minik,2512) @section Adjoint model and optimisation with mini_ker.texi(Minik,2512) Miniker
 mini_ker.texi(,2513) 
-mini_ker.texi(Minik,2514) In the following a possible use of mini_ker.texi(Minik,2514) Minikermini_ker.texi(Minik,2514)  for optimisation is discussed.
-mini_ker.texi(Minik,2515) More precisely the use of adjoint and control laws in mini_ker.texi(Minik,2515) Minikermini_ker.texi(Minik,2515)  are presented.
+mini_ker.texi(Minik,2514) In the following a possible use of mini_ker.texi(Minik,2514) Miniker for optimisation is discussed.
+mini_ker.texi(Minik,2515) More precisely the use of adjoint and control laws in mini_ker.texi(Minik,2515) Miniker are presented.
 mini_ker.texi(,2516) Optimisation isn't the only application of these tools, but it is the most
 mini_ker.texi(,2517) common one. In that case the adjoint may be used to determine the gradient of a
 mini_ker.texi(,2518) functional to perturbations in the control laws, and an optimisation process
@@ -2271,21 +2271,21 @@ mini_ker.texi(,2529) in@* @url{http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf} .
 mini_ker.texi(,2530) transpose the four Jacobian matrices: states and transfers are saved in array dimensionned
 mini_ker.texi(,2531) with @code{maxstep} Fortran parameter.
 mini_ker.texi(,2532) @menu
-mini_ker.texi(Minik,2533) * Overview of optimisation with mini_ker.texi(Minik,2533) Minikermini_ker.texi(Minik,2533) ::
+mini_ker.texi(Minik,2533) * Overview of optimisation with mini_ker.texi(Minik,2533) Miniker::
 mini_ker.texi(,2534) * Control laws::
 mini_ker.texi(,2535) * Cost function coding and adjoint modeling::
 mini_ker.texi(,2536) * Sensitivity of cost function to parameters::
 mini_ker.texi(,2537) @end menu
 mini_ker.texi(,2538) 
-mini_ker.texi(Minik,2539) @node Overview of optimisation with mini_ker.texi(Minik,2539) Minikermini_ker.texi(Minik,2539) 
-mini_ker.texi(Minik,2540) @subsection Overview of optimisation with mini_ker.texi(Minik,2540) Minikermini_ker.texi(Minik,2540) 
+mini_ker.texi(Minik,2539) @node Overview of optimisation with mini_ker.texi(Minik,2539) Miniker
+mini_ker.texi(Minik,2540) @subsection Overview of optimisation with mini_ker.texi(Minik,2540) Miniker
 mini_ker.texi(,2541) 
 mini_ker.texi(,2542) @cindex adjoint
 mini_ker.texi(,2543) @cindex optimisation
 mini_ker.texi(,2544) 
-mini_ker.texi(Minik,2545) In the proposed method, mini_ker.texi(Minik,2545) Minikermini_ker.texi(Minik,2545)  is run twice, one time forward and then
+mini_ker.texi(Minik,2545) In the proposed method, mini_ker.texi(Minik,2545) Miniker is run twice, one time forward and then
 mini_ker.texi(,2546) backward to determine the trajectory and the adjoint model. After that the 
-mini_ker.texi(Minik,2547) control laws are modified by a program external to mini_ker.texi(Minik,2547) Minikermini_ker.texi(Minik,2547) . The same steps
+mini_ker.texi(Minik,2547) control laws are modified by a program external to mini_ker.texi(Minik,2547) Miniker. The same steps
 mini_ker.texi(,2548) are repeated until convergence. More pecisely,
 mini_ker.texi(,2549) 
 mini_ker.texi(,2550) @table @strong
@@ -2302,7 +2302,7 @@ mini_ker.texi(,2560) simulation, but with a negative time step.
 mini_ker.texi(,2561) @item external phase
 mini_ker.texi(,2562) Now the command should be corrected. This step isn't covered here, but, for
 mini_ker.texi(,2563) example, minuit the optimisation tool from the CERN could be used. 
-mini_ker.texi(Minik,2564) In order to ease such a use of mini_ker.texi(Minik,2564) Minikermini_ker.texi(Minik,2564) , the principal program has to be 
+mini_ker.texi(Minik,2564) In order to ease such a use of mini_ker.texi(Minik,2564) Miniker, the principal program has to be 
 mini_ker.texi(,2565) compiled as a subroutine to be driven by an external program 
 mini_ker.texi(,2566) (@pxref{Calling the model code}).
 mini_ker.texi(,2567) @end table
@@ -2486,7 +2486,7 @@ mini_ker.texi(,2760)
 mini_ker.texi(,2761) The Kalman filter allows for data assimilation along the model run. In 
 mini_ker.texi(,2762) that case it is assumed that there is a real-world model with stochastic
 mini_ker.texi(,2763) perturbations on the states, and that noisy observations are available. 
-mini_ker.texi(Minik,2764) The situation implemented in mini_ker.texi(Minik,2764) Minikermini_ker.texi(Minik,2764)  corresponds to a continuous 
+mini_ker.texi(Minik,2764) The situation implemented in mini_ker.texi(Minik,2764) Miniker corresponds to a continuous 
 mini_ker.texi(,2765) stochastic perturbation on the state, and discrete noisy observations.
 mini_ker.texi(,2766) In the @acronym{TEF} this leads to:
 mini_ker.texi(,2767) 
@@ -2967,7 +2967,7 @@ mini_ker.texi(,3320) The preceding analyses are done along with a simulation. On
 mini_ker.texi(,3321) possibility of using in a more classical fashion the state advance matrix
 mini_ker.texi(,3322) @math{A_{st}}, after the end of the simulation. Code to perform the 
 mini_ker.texi(,3323) @acronym{SVD, Singular Value Decomposition} of the state matrix @math{A_{st}}
-mini_ker.texi(Minik,3324) and also of @math{A_{st} + A_{st}^\dagger} is provided with mini_ker.texi(Minik,3324) Minikermini_ker.texi(Minik,3324) .
+mini_ker.texi(Minik,3324) and also of @math{A_{st} + A_{st}^\dagger} is provided with mini_ker.texi(Minik,3324) Miniker.
 mini_ker.texi(,3325) The singular elements of these two matrices correspond to the most
 mini_ker.texi(,3326) rapid modes of instability of the perturbed system.
 mini_ker.texi(,3327) 
@@ -3010,9 +3010,9 @@ mini_ker.texi(,3370) If you want to have a separate directory for the SVD, you s
 mini_ker.texi(,3371) the sequence @file{dimetaphi.inc} (or make a link to that file) to the
 mini_ker.texi(,3372) directory. You should also copy the file @file{Makefile.sltc} from the 
 mini_ker.texi(,3373) @file{template/} directory in this directory, rename it @file{Makefile}
-mini_ker.texi(Minik,3374) and set the mini_ker.texi(Minik,3374) Minikermini_ker.texi(Minik,3374)  directory path in the 
+mini_ker.texi(Minik,3374) and set the mini_ker.texi(Minik,3374) Miniker directory path in the 
 mini_ker.texi(,3375) @code{miniker_dir} variable. For
-mini_ker.texi(Minik,3376) example, if the mini_ker.texi(Minik,3376) Minikermini_ker.texi(Minik,3376)  directory is in @file{/u/src/mini_ker}:
+mini_ker.texi(Minik,3376) example, if the mini_ker.texi(Minik,3376) Miniker directory is in @file{/u/src/mini_ker}:
 mini_ker.texi(,3377) 
 mini_ker.texi(,3378) @example
 mini_ker.texi(,3379) miniker_dir = /u/src/mini_ker
@@ -3100,7 +3100,7 @@ mini_ker.texi(,3460) If you want to have a separate directory for the GTLS analy
 mini_ker.texi(,3461) the sequence @file{dimetaphi.inc} (or make a link to that file) to the
 mini_ker.texi(,3462) directory. You should also copy the file @file{Makefile.sltcirc} from the 
 mini_ker.texi(,3463) @file{template/} directory in this directory and  rename it @file{Makefile}
-mini_ker.texi(Minik,3464) and set the mini_ker.texi(Minik,3464) Minikermini_ker.texi(Minik,3464)  directory path in the @code{miniker_dir} variable.
+mini_ker.texi(Minik,3464) and set the mini_ker.texi(Minik,3464) Miniker directory path in the @code{miniker_dir} variable.
 mini_ker.texi(,3465) 
 mini_ker.texi(,3466) @node GTLS run and output
 mini_ker.texi(,3467) @subsection Generalized tangent linear system analysis run and output
@@ -3151,8 +3151,8 @@ mini_ker.texi(,3511) @c @item @code{} @tab @file{.data} @tab  @tab
 mini_ker.texi(,3512) @end multitable
 mini_ker.texi(,3513) 
 mini_ker.texi(,3542) 
-mini_ker.texi(Minik,3543) @node  Advanced use of mini_ker.texi(Minik,3543) Minikermini_ker.texi(Minik,3543)  with make
-mini_ker.texi(Minik,3544) @chapter Advanced use of mini_ker.texi(Minik,3544) Minikermini_ker.texi(Minik,3544)  with make
+mini_ker.texi(Minik,3543) @node  Advanced use of mini_ker.texi(Minik,3543) Miniker with make
+mini_ker.texi(Minik,3544) @chapter Advanced use of mini_ker.texi(Minik,3544) Miniker with make
 mini_ker.texi(,3545) 
 mini_ker.texi(,3546) @menu
 mini_ker.texi(,3547) * Make variables::
@@ -3173,8 +3173,8 @@ mini_ker.texi(,3561) The following make variables can be set by the user:
 mini_ker.texi(,3562) 
 mini_ker.texi(,3563) @table @code
 mini_ker.texi(,3564) @item miniker_dir
-mini_ker.texi(Minik,3565) that variable should hold the mini_ker.texi(Minik,3565) Minikermini_ker.texi(Minik,3565)  sources directory. If you installed
-mini_ker.texi(Minik,3566) Minikermini_ker.texi(Minik,3566)  that variable should be set to @file{$(includedir)/mini_ker}. 
+mini_ker.texi(Minik,3565) that variable should hold the mini_ker.texi(Minik,3565) Miniker sources directory. If you installed
+mini_ker.texi(Minik,3566) Miniker that variable should be set to @file{$(includedir)/mini_ker}. 
 mini_ker.texi(,3567) If you use the sources right from the sources directory it should be set to 
 mini_ker.texi(,3568) the sources package directory.
 mini_ker.texi(,3569) @item MTNDIRS
@@ -3219,7 +3219,7 @@ mini_ker.texi(,3607) @item LDFLAGS
 mini_ker.texi(,3608) Compiler and linker related variables set by ./configure.
 mini_ker.texi(,3609) @item LIBS
 mini_ker.texi(,3610) This variable should hold the link flags and files required to build 
-mini_ker.texi(Minik,3611) Minikermini_ker.texi(Minik,3611) , set by ./configure.
+mini_ker.texi(Minik,3611) Miniker, set by ./configure.
 mini_ker.texi(,3612) @item CAR2TXT
 mini_ker.texi(,3613) @itemx MORTRAN
 mini_ker.texi(,3614) @itemx MTNFLAGS
@@ -3264,13 +3264,13 @@ mini_ker.texi(,3652) uses the variables @code{miniker_user_objects} for addition
 mini_ker.texi(,3653) and @code{LDADD} for additionnal linking flags and files, those 
 mini_ker.texi(,3654) variables are there to be changed by the user.
 mini_ker.texi(,3655) 
-mini_ker.texi(Minik,3656) The object files required by the mini_ker.texi(Minik,3656) Minikermini_ker.texi(Minik,3656)  code are in the make variable
+mini_ker.texi(Minik,3656) The object files required by the mini_ker.texi(Minik,3656) Miniker code are in the make variable
 mini_ker.texi(,3657) @code{miniker_principal_objects}, this variable is also used. 
 mini_ker.texi(,3658) The value of the variables @code{FC}
 mini_ker.texi(,3659) for the Fortran compiler, @code{FFLAGS} for the Fortran compiler
 mini_ker.texi(,3660) flags and @code{LDFLAGS} for the linker flags should be set to right
 mini_ker.texi(,3661) values; @code{LIBS} should also be right and hold the link flags and link
-mini_ker.texi(Minik,3662) files required to compile the mini_ker.texi(Minik,3662) Minikermini_ker.texi(Minik,3662)  model. These variables are 
+mini_ker.texi(Minik,3662) files required to compile the mini_ker.texi(Minik,3662) Miniker model. These variables are 
 mini_ker.texi(,3663) set by by @command{./configure} during configuration (@pxref{Configuration}) 
 mini_ker.texi(,3664) and used in the default rule: 
 mini_ker.texi(,3665) 
@@ -3300,15 +3300,15 @@ mini_ker.texi(,3688)
 mini_ker.texi(,3689) @menu
 mini_ker.texi(,3690) * Programming environments::
 mini_ker.texi(,3691) * Common requisites::
-mini_ker.texi(Minik,3692) * mini_ker.texi(Minik,3692) Minikermini_ker.texi(Minik,3692)  with cmz::
-mini_ker.texi(Minik,3693) * mini_ker.texi(Minik,3693) Minikermini_ker.texi(Minik,3693)  with make::
+mini_ker.texi(Minik,3692) * mini_ker.texi(Minik,3692) Miniker with cmz::
+mini_ker.texi(Minik,3693) * mini_ker.texi(Minik,3693) Miniker with make::
 mini_ker.texi(,3694) @end menu
 mini_ker.texi(,3695) 
 mini_ker.texi(,3696) @node Programming environments
 mini_ker.texi(,3697) @appendixsec Programming environments
 mini_ker.texi(,3698) @cindex Programming environments
 mini_ker.texi(,3699) 
-mini_ker.texi(Minik,3700) Minikermini_ker.texi(Minik,3700)  is not a traditionnal software in that it isn't a library
+mini_ker.texi(Minik,3700) Miniker is not a traditionnal software in that it isn't a library
 mini_ker.texi(,3701) or an interpreter but rather a set of source and macro file that 
 mini_ker.texi(,3702) combines with the user model code and enable
 mini_ker.texi(,3703) to build a binary program corresponding with the model. It
@@ -3348,8 +3348,8 @@ mini_ker.texi(,3736) On Mac OS X, the ATLAS implementation provided by fink or t
 mini_ker.texi(,3737) from Xcode can be used.
 mini_ker.texi(,3738) 
 mini_ker.texi(,3739) 
-mini_ker.texi(Minik,3740) @node mini_ker.texi(Minik,3740) Minikermini_ker.texi(Minik,3740)  with cmz
-mini_ker.texi(Minik,3741) @appendixsec mini_ker.texi(Minik,3741) Minikermini_ker.texi(Minik,3741)  with cmz
+mini_ker.texi(Minik,3740) @node mini_ker.texi(Minik,3740) Miniker with cmz
+mini_ker.texi(Minik,3741) @appendixsec mini_ker.texi(Minik,3741) Miniker with cmz
 mini_ker.texi(,3742) 
 mini_ker.texi(,3743) @cindex @file{mini_ker.cmz}
 mini_ker.texi(,3744) @cindex @file{selseq.kumac}
@@ -3357,14 +3357,14 @@ mini_ker.texi(,3745)
 mini_ker.texi(,3746) First of all you have to get the cmz file @file{mini_ker.cmz} and put it
 mini_ker.texi(,3747) in a directory. In that same directory you should create a directory for
 mini_ker.texi(,3748) each of your models. In the model directory you should copy the file 
-mini_ker.texi(Minik,3749) @file{selseq.kumac} available with mini_ker.texi(Minik,3749) Minikermini_ker.texi(Minik,3749) , and create your own cmz 
+mini_ker.texi(Minik,3749) @file{selseq.kumac} available with mini_ker.texi(Minik,3749) Miniker, and create your own cmz 
 mini_ker.texi(,3750) file for your model, called for example @file{mymodel.cmz}. You should also 
 mini_ker.texi(,3751) have installed the kumac macro files
 mini_ker.texi(,3752) handling mortan compilation, the associated shell scripts and the mortran
 mini_ker.texi(,3753) preprocessor.
 mini_ker.texi(,3754) 
-mini_ker.texi(Minik,3755) @node mini_ker.texi(Minik,3755) Minikermini_ker.texi(Minik,3755)  with make
-mini_ker.texi(Minik,3756) @appendixsec mini_ker.texi(Minik,3756) Minikermini_ker.texi(Minik,3756)  with make
+mini_ker.texi(Minik,3755) @node mini_ker.texi(Minik,3755) Miniker with make
+mini_ker.texi(Minik,3756) @appendixsec mini_ker.texi(Minik,3756) Miniker with make
 mini_ker.texi(,3757) 
 mini_ker.texi(,3758) @menu
 mini_ker.texi(,3759) * Additional requirements::
@@ -3373,7 +3373,7 @@ mini_ker.texi(,3761) * Installation with make::
 mini_ker.texi(,3762) @end menu
 mini_ker.texi(,3763) 
 mini_ker.texi(,3764) @node Additional requirements
-mini_ker.texi(Minik,3765) @appendixsubsec Additional requirements for mini_ker.texi(Minik,3765) Minikermini_ker.texi(Minik,3765)  with make
+mini_ker.texi(Minik,3765) @appendixsubsec Additional requirements for mini_ker.texi(Minik,3765) Miniker with make
 mini_ker.texi(,3766) 
 mini_ker.texi(,3767) @cindex @command{mortran}, with make
 mini_ker.texi(,3768) @cindex requirements, with make
@@ -3476,7 +3476,7 @@ mini_ker.texi(,3864) @node Installation with make
 mini_ker.texi(,3865) @appendixsubsec Installation with make
 mini_ker.texi(,3866) @cindex installation with make
 mini_ker.texi(,3867) 
-mini_ker.texi(Minik,3868) Minikermini_ker.texi(Minik,3868)  can be installed by running 
+mini_ker.texi(Minik,3868) Miniker can be installed by running 
 mini_ker.texi(,3869) @example
 mini_ker.texi(,3870) make install
 mini_ker.texi(,3871) @end example
@@ -3495,7 +3495,7 @@ mini_ker.texi(,3883) @file{start_miniker} should also be installed.
 mini_ker.texi(,3884) 
 mini_ker.texi(,3885) 
 mini_ker.texi(,3886)  
-mini_ker.texi(Minik,3887) The installation is not required to use comfortably mini_ker.texi(Minik,3887) Minikermini_ker.texi(Minik,3887) . Indeed
+mini_ker.texi(Minik,3887) The installation is not required to use comfortably mini_ker.texi(Minik,3887) Miniker. Indeed
 mini_ker.texi(,3888) the only thing that changes with the sources and the @file{Makefile.miniker}
 mini_ker.texi(,3889) directory location is the @code{miniker_dir} variable in a 
 mini_ker.texi(,3890) project @code{Makefile}.
@@ -3514,7 +3514,7 @@ mini_ker.texi(,3902)
 mini_ker.texi(,3903) After the description of the generic features, we turn
 mini_ker.texi(,3904) to the cmz directive of interest.
 mini_ker.texi(,3905) There are three kinds of cmz directives that are of use
-mini_ker.texi(Minik,3906) within mini_ker.texi(Minik,3906) Minikermini_ker.texi(Minik,3906) : one kind
+mini_ker.texi(Minik,3906) within mini_ker.texi(Minik,3906) Miniker: one kind
 mini_ker.texi(,3907) that introduce files, the other for conditionnal compilation and
 mini_ker.texi(,3908) the third for sequence inclusion. 
 mini_ker.texi(,3909) 

@@ -127,10 +127,10 @@ terminate the search explicitly with a &lt;RET&gt;.
 </p></dd>
 </dl>
 
-<a name="IDX407"></a>
-<a name="IDX408"></a>
-<a name="IDX409"></a>
-<a name="IDX410"></a>
+<a name="index-C_002ds"></a>
+<a name="index-C_002dr"></a>
+<a name="index-isearch_002dforward"></a>
+<a name="index-isearch_002dbackward"></a>
 <p>  <kbd>C-s</kbd> starts an incremental search.  <kbd>C-s</kbd> reads characters from
 the keyboard and positions the cursor at the first occurrence of the
 characters that you have typed.  If you type <kbd>C-s</kbd> and then <kbd>F</kbd>,
@@ -190,7 +190,7 @@ a failing backward search with <kbd>C-r</kbd> starts again from the end.  This
 is called <em>wrapping around</em>.  &lsquo;<samp>Wrapped</samp>&rsquo; appears in the search
 prompt once this has happened.
 </p>
-<a name="IDX411"></a>
+<a name="index-quitting-_0028in-search_0029"></a>
 <p>  The <kbd>C-g</kbd> &ldquo;quit&rdquo; character does special things during searches;
 just what it does depends on the status of the search.  If the search has
 found what you specified and is waiting for input, <kbd>C-g</kbd> cancels the
@@ -247,29 +247,29 @@ the normal keybinding mechanism: simply add a binding to the
 
 <p>These are the default bindings of isearch-mode:
 </p>
-<a name="IDX412"></a>
-<a name="IDX413"></a>
-<a name="IDX414"></a>
-<a name="IDX415"></a>
-<a name="IDX416"></a>
-<a name="IDX417"></a>
-<a name="IDX418"></a>
-<a name="IDX419"></a>
-<a name="IDX420"></a>
-<a name="IDX421"></a>
-<a name="IDX422"></a>
+<a name="index-isearch_002ddelete_002dchar"></a>
+<a name="index-isearch_002dexit"></a>
+<a name="index-isearch_002dquote_002dchar"></a>
+<a name="index-isearch_002drepeat_002dforward"></a>
+<a name="index-isearch_002drepeat_002dbackward"></a>
+<a name="index-isearch_002dyank_002dline"></a>
+<a name="index-isearch_002dyank_002dword"></a>
+<a name="index-isearch_002dabort"></a>
+<a name="index-isearch_002dring_002dretreat"></a>
+<a name="index-isearch_002dring_002dadvance"></a>
+<a name="index-isearch_002dcomplete"></a>
 
-<a name="IDX423"></a>
-<a name="IDX424"></a>
-<a name="IDX425"></a>
-<a name="IDX426"></a>
-<a name="IDX427"></a>
-<a name="IDX428"></a>
-<a name="IDX429"></a>
-<a name="IDX430"></a>
-<a name="IDX431"></a>
-<a name="IDX432"></a>
-<a name="IDX433"></a>
+<a name="index-DEL-_0028isearch_002dmode_0029"></a>
+<a name="index-RET-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002dq-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002ds-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002dr-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002dy-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002dw-_0028isearch_002dmode_0029"></a>
+<a name="index-C_002dg-_0028isearch_002dmode_0029"></a>
+<a name="index-M_002dp-_0028isearch_002dmode_0029"></a>
+<a name="index-M_002dn-_0028isearch_002dmode_0029"></a>
+<a name="index-M_002dTAB-_0028isearch_002dmode_0029"></a>
 
 <dl compact="compact">
 <dt> <kbd>DEL</kbd></dt>
@@ -349,12 +349,12 @@ its new value of point.
 <p>  The three dots at the end of the search string, normally used to indicate
 that searching is going on, are not displayed in slow style display.
 </p>
-<a name="IDX434"></a>
+<a name="index-search_002dslow_002dspeed"></a>
 <p>  The slow terminal style of display is used when the terminal baud rate is
 less than or equal to the value of the variable <code>search-slow-speed</code>,
 initially 1200.
 </p>
-<a name="IDX435"></a>
+<a name="index-search_002dslow_002dwindow_002dlines"></a>
 <p>  The number of lines to use in slow terminal search display is controlled
 by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 </p>
@@ -401,8 +401,8 @@ empty argument, which would otherwise be useless, it invokes non-incremental
 search.  Therefore, <kbd>C-s &lt;RET&gt;</kbd> invokes non-incremental search. 
 <kbd>C-r &lt;RET&gt;</kbd> also works this way.
 </p>
-<a name="IDX436"></a>
-<a name="IDX437"></a>
+<a name="index-search_002dforward"></a>
+<a name="index-search_002dbackward"></a>
 <p>  Forward and backward non-incremental searches are implemented by the
 commands <code>search-forward</code> and <code>search-backward</code>.  You can bind
 these commands to keys.  The reason that incremental
@@ -463,8 +463,8 @@ constructing a regular expression and searching for that.  See section <a href="
 </p>
 <p> You can do a backward word search with <kbd>C-r &lt;RET&gt; C-w</kbd>.
 </p>
-<a name="IDX438"></a>
-<a name="IDX439"></a>
+<a name="index-word_002dsearch_002dforward"></a>
+<a name="index-word_002dsearch_002dbackward"></a>
 <p>  Forward and backward word searches are implemented by the commands
 <code>word-search-forward</code> and <code>word-search-backward</code>.  You can
 bind these commands to keys.  The reason that incremental
@@ -515,10 +515,10 @@ section.
 <p> In XEmacs, you can search for the next match for a regexp either
 incrementally or not.
 </p>
-<a name="IDX440"></a>
-<a name="IDX441"></a>
-<a name="IDX442"></a>
-<a name="IDX443"></a>
+<a name="index-M_002dC_002ds"></a>
+<a name="index-M_002dC_002dr"></a>
+<a name="index-isearch_002dforward_002dregexp"></a>
+<a name="index-isearch_002dbackward_002dregexp"></a>
 <p>  Incremental search for a regexp is done by typing <kbd>M-C-s</kbd>
 (<code>isearch-forward-regexp</code>).  This command reads a search string
 incrementally just like <kbd>C-s</kbd>, but it treats the search string as a
@@ -533,8 +533,8 @@ Typing <kbd>C-s</kbd> or <kbd>C-r</kbd> immediately after starting a search
 retrieves the last incremental search regexp used:
 incremental regexp and non-regexp searches have independent defaults.
 </p>
-<a name="IDX444"></a>
-<a name="IDX445"></a>
+<a name="index-re_002dsearch_002dforward"></a>
+<a name="index-re_002dsearch_002dbackward"></a>
 <p>  Non-incremental search for a regexp is done by the functions
 <code>re-search-forward</code> and <code>re-search-backward</code>.  You can invoke
 them with <kbd>M-x</kbd> or bind them to keys.  You can also call
@@ -590,7 +590,7 @@ need to use one of the special characters.  Here is a list of them:
 </p>
 <dl compact="compact">
 <dt> <kbd>. <span class="roman">(Period)</span></kbd></dt>
-<dd><a name="IDX446"></a>
+<dd><a name="index-_002e-in-regexp"></a>
 <p>is a special character that matches any single character except a newline.
 Using concatenation, we can make regular expressions like &lsquo;<samp>a.b</samp>&rsquo;, which
 matches any three-character string that begins with &lsquo;<samp>a</samp>&rsquo; and ends with
@@ -598,7 +598,7 @@ matches any three-character string that begins with &lsquo;<samp>a</samp>&rsquo;
 </p>
 </dd>
 <dt> <kbd>*</kbd></dt>
-<dd><a name="IDX447"></a>
+<dd><a name="index-_002a-in-regexp"></a>
 <p>is not a construct by itself; it is a quantifying suffix operator that
 means to repeat the preceding regular expression as many times as
 possible.  In &lsquo;<samp>fo*</samp>&rsquo;, the &lsquo;<samp>*</samp>&rsquo; applies to the &lsquo;<samp>o</samp>&rsquo;, so
@@ -632,7 +632,7 @@ expressions run fast, check nested repetitions carefully.
 </p>
 </dd>
 <dt> <kbd>+</kbd></dt>
-<dd><a name="IDX448"></a>
+<dd><a name="index-_002b-in-regexp"></a>
 <p>is a quantifying suffix operator similar to &lsquo;<samp>*</samp>&rsquo; except that the
 preceding expression must match at least once.  It is also &quot;greedy&quot;.
 So, for example, &lsquo;<samp>ca+r</samp>&rsquo; matches the strings &lsquo;<samp>car</samp>&rsquo; and
@@ -641,7 +641,7 @@ all three strings.
 </p>
 </dd>
 <dt> <kbd>?</kbd></dt>
-<dd><a name="IDX449"></a>
+<dd><a name="index-_003f-in-regexp"></a>
 <p>is a quantifying suffix operator similar to &lsquo;<samp>*</samp>&rsquo;, except that the
 preceding expression can match either once or not at all.  For example,
 &lsquo;<samp>ca?r</samp>&rsquo; matches &lsquo;<samp>car</samp>&rsquo; or &lsquo;<samp>cr</samp>&rsquo;, but does not match anything
@@ -649,7 +649,7 @@ else.
 </p>
 </dd>
 <dt> <kbd>*?</kbd></dt>
-<dd><a name="IDX450"></a>
+<dd><a name="index-_002a_003f-in-regexp"></a>
 <p>works just like &lsquo;<samp>*</samp>&rsquo;, except that rather than matching the longest
 match, it matches the shortest match.  &lsquo;<samp>*?</samp>&rsquo; is known as a
 <em>non-greedy</em> quantifier, a regexp construct borrowed from Perl.
@@ -664,17 +664,17 @@ available in FSF Emacs.
 </p>
 </dd>
 <dt> <kbd>+?</kbd></dt>
-<dd><a name="IDX451"></a>
+<dd><a name="index-_002b_003f-in-regexp"></a>
 <p>is the non-greedy version of &lsquo;<samp>+</samp>&rsquo;.
 </p>
 </dd>
 <dt> <kbd>??</kbd></dt>
-<dd><a name="IDX452"></a>
+<dd><a name="index-_003f_003f-in-regexp"></a>
 <p>is the non-greedy version of &lsquo;<samp>?</samp>&rsquo;.
 </p>
 </dd>
 <dt> <kbd>\{n,m\}</kbd></dt>
-<dd><a name="IDX453"></a>
+<dd><a name="index-_005c_007bn_002cm_005c_007d-in-regexp"></a>
 <p>serves as an interval quantifier, analogous to &lsquo;<samp>*</samp>&rsquo; or &lsquo;<samp>+</samp>&rsquo;, but
 specifies that the expression must match at least <var>n</var> times, but no
 more than <var>m</var> times.  This syntax is supported by most Unix regexp
@@ -685,9 +685,9 @@ currently, although it does in Perl.
 </p>
 </dd>
 <dt> <kbd>[ &hellip; ]</kbd></dt>
-<dd><a name="IDX454"></a>
-<a name="IDX455"></a>
-<a name="IDX456"></a>
+<dd><a name="index-character-set-_0028in-regexp_0029"></a>
+<a name="index-_005b-in-regexp"></a>
+<a name="index-_005d-in-regexp"></a>
 <p>&lsquo;<samp>[</samp>&rsquo; begins a <em>character set</em>, which is terminated by a
 &lsquo;<samp>]</samp>&rsquo;.  In the simplest case, the characters between the two brackets
 form the set.  Thus, &lsquo;<samp>[ad]</samp>&rsquo; matches either one &lsquo;<samp>a</samp>&rsquo; or one
@@ -719,7 +719,7 @@ the set.
 </p>
 </dd>
 <dt> <kbd>[^ &hellip; ]</kbd></dt>
-<dd><a name="IDX457"></a>
+<dd><a name="index-_005e-in-regexp"></a>
 <p>&lsquo;<samp>[^</samp>&rsquo; begins a <em>complement character set</em>, which matches any
 character except the ones specified.  Thus, &lsquo;<samp>[^a-z0-9A-Z]</samp>&rsquo;
 matches all characters <em>except</em> letters and digits.
@@ -733,8 +733,8 @@ newline is mentioned as one of the characters not to match.
 </p>
 </dd>
 <dt> <kbd>^</kbd></dt>
-<dd><a name="IDX458"></a>
-<a name="IDX459"></a>
+<dd><a name="index-_005e-in-regexp-1"></a>
+<a name="index-beginning-of-line-in-regexp"></a>
 <p>is a special character that matches the empty string, but only at the
 beginning of a line in the text being matched.  Otherwise it fails to
 match anything.  Thus, &lsquo;<samp>^foo</samp>&rsquo; matches a &lsquo;<samp>foo</samp>&rsquo; that occurs at
@@ -745,7 +745,7 @@ beginning of the string or after a newline character &lsquo;<samp>\n</samp>&rsqu
 </p>
 </dd>
 <dt> <kbd>$</kbd></dt>
-<dd><a name="IDX460"></a>
+<dd><a name="index-_0024-in-regexp"></a>
 <p>is similar to &lsquo;<samp>^</samp>&rsquo; but matches only at the end of a line.  Thus,
 &lsquo;<samp>x+$</samp>&rsquo; matches a string of one &lsquo;<samp>x</samp>&rsquo; or more at the end of a line.
 </p>
@@ -754,7 +754,7 @@ of the string or before a newline character &lsquo;<samp>\n</samp>&rsquo;.
 </p>
 </dd>
 <dt> <kbd>\</kbd></dt>
-<dd><a name="IDX461"></a>
+<dd><a name="index-_005c-in-regexp"></a>
 <p>has two functions: it quotes the special characters (including
 &lsquo;<samp>\</samp>&rsquo;), and it introduces additional special constructs.
 </p>
@@ -781,8 +781,8 @@ is a table of &lsquo;<samp>\</samp>&rsquo; constructs:
 </p>
 <dl compact="compact">
 <dt> <kbd>\|</kbd></dt>
-<dd><a name="IDX462"></a>
-<a name="IDX463"></a>
+<dd><a name="index-_007c-in-regexp"></a>
+<a name="index-regexp-alternative"></a>
 <p>specifies an alternative.
 Two regular expressions <var>a</var> and <var>b</var> with &lsquo;<samp>\|</samp>&rsquo; in
 between form an expression that matches anything that either <var>a</var> or
@@ -799,9 +799,9 @@ surrounding &lsquo;<samp>\( &hellip; \)</samp>&rsquo; grouping can limit the gro
 </p>
 </dd>
 <dt> <kbd>\( &hellip; \)</kbd></dt>
-<dd><a name="IDX464"></a>
-<a name="IDX465"></a>
-<a name="IDX466"></a>
+<dd><a name="index-_0028-in-regexp"></a>
+<a name="index-_0029-in-regexp"></a>
+<a name="index-regexp-grouping"></a>
 <p>is a grouping construct that serves three purposes:
 </p>
 <ol>
@@ -848,8 +848,8 @@ the same exact text.
 </p>
 </dd>
 <dt> <kbd>\(?: &hellip; \)</kbd></dt>
-<dd><a name="IDX467"></a>
-<a name="IDX468"></a>
+<dd><a name="index-_005c_0028_003f_003a-in-regexp"></a>
+<a name="index-regexp-grouping-1"></a>
 <p>is called a <em>shy</em> grouping operator, and it is used just like
 &lsquo;<samp>\( &hellip; \)</samp>&rsquo;, except that it does not cause the matched
 substring to be recorded for future reference.
@@ -871,18 +871,18 @@ available prior to XEmacs 20.3, nor is it available in FSF Emacs.
 </p>
 </dd>
 <dt> <kbd>\w</kbd></dt>
-<dd><a name="IDX469"></a>
+<dd><a name="index-_005cw-in-regexp"></a>
 <p>matches any word-constituent character.  The editor syntax table
 determines which characters these are.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 </p>
 </dd>
 <dt> <kbd>\W</kbd></dt>
-<dd><a name="IDX470"></a>
+<dd><a name="index-_005cW-in-regexp"></a>
 <p>matches any character that is not a word constituent.
 </p>
 </dd>
 <dt> <kbd>\s<var>code</var></kbd></dt>
-<dd><a name="IDX471"></a>
+<dd><a name="index-_005cs-in-regexp"></a>
 <p>matches any character whose syntax is <var>code</var>.  Here <var>code</var> is a
 character that represents a syntax code: thus, &lsquo;<samp>w</samp>&rsquo; for word
 constituent, &lsquo;<samp>-</samp>&rsquo; for whitespace, &lsquo;<samp>(</samp>&rsquo; for open parenthesis,
@@ -891,7 +891,7 @@ stand for them.
 </p>
 </dd>
 <dt> <kbd>\S<var>code</var></kbd></dt>
-<dd><a name="IDX472"></a>
+<dd><a name="index-_005cS-in-regexp"></a>
 <p>matches any character whose syntax is not <var>code</var>.
 </p></dd>
 </dl>
@@ -902,25 +902,25 @@ context.
 </p>
 <dl compact="compact">
 <dt> <kbd>\`</kbd></dt>
-<dd><a name="IDX473"></a>
+<dd><a name="index-_005c_0060-in-regexp"></a>
 <p>matches the empty string, but only at the beginning
 of the buffer or string being matched against.
 </p>
 </dd>
 <dt> <kbd>\'</kbd></dt>
-<dd><a name="IDX474"></a>
+<dd><a name="index-_005c_0027-in-regexp"></a>
 <p>matches the empty string, but only at the end of
 the buffer or string being matched against.
 </p>
 </dd>
 <dt> <kbd>\=</kbd></dt>
-<dd><a name="IDX475"></a>
+<dd><a name="index-_005c_003d-in-regexp"></a>
 <p>matches the empty string, but only at point.
 (This construct is not defined when matching against a string.)
 </p>
 </dd>
 <dt> <kbd>\b</kbd></dt>
-<dd><a name="IDX476"></a>
+<dd><a name="index-_005cb-in-regexp"></a>
 <p>matches the empty string, but only at the beginning or
 end of a word.  Thus, &lsquo;<samp>\bfoo\b</samp>&rsquo; matches any occurrence of
 &lsquo;<samp>foo</samp>&rsquo; as a separate word.  &lsquo;<samp>\bballs?\b</samp>&rsquo; matches
@@ -928,18 +928,18 @@ end of a word.  Thus, &lsquo;<samp>\bfoo\b</samp>&rsquo; matches any occurrence 
 </p>
 </dd>
 <dt> <kbd>\B</kbd></dt>
-<dd><a name="IDX477"></a>
+<dd><a name="index-_005cB-in-regexp"></a>
 <p>matches the empty string, but <em>not</em> at the beginning or
 end of a word.
 </p>
 </dd>
 <dt> <kbd>\&lt;</kbd></dt>
-<dd><a name="IDX478"></a>
+<dd><a name="index-_005c_003c-in-regexp"></a>
 <p>matches the empty string, but only at the beginning of a word.
 </p>
 </dd>
 <dt> <kbd>\&gt;</kbd></dt>
-<dd><a name="IDX479"></a>
+<dd><a name="index-_005c_003e-in-regexp"></a>
 <p>matches the empty string, but only at the end of a word.
 </p></dd>
 </dl>
@@ -1198,8 +1198,8 @@ replacement string is not done.
 </p></dd>
 </dl>
 
-<a name="IDX480"></a>
-<a name="IDX481"></a>
+<a name="index-M_002d_0025"></a>
+<a name="index-query_002dreplace"></a>
 <p>  If you want to change only some of the occurrences of &lsquo;<samp>foo</samp>&rsquo; to
 &lsquo;<samp>bar</samp>&rsquo;, not all of them, you can use <code>query-replace</code> instead of
 <kbd>M-%</kbd>.  This command finds occurrences of &lsquo;<samp>foo</samp>&rsquo; one by one,
@@ -1207,7 +1207,7 @@ displays each occurrence, and asks you whether to replace it.  A numeric
 argument to <code>query-replace</code> tells it to consider only occurrences
 that are bounded by word-delimiter characters.
 </p>
-<a name="IDX482"></a>
+<a name="index-query_002dreplace_002dregexp"></a>
 <p>  Aside from querying, <code>query-replace</code> works just like
 <code>replace-string</code>, and <code>query-replace-regexp</code> works
 just like <code>replace-regexp</code>.
@@ -1215,16 +1215,16 @@ just like <code>replace-regexp</code>.
 <p>  The things you can type when you are shown an occurrence of <var>string</var>
 or a match for <var>regexp</var> are:
 </p>
-<a name="IDX483"></a>
-<a name="IDX484"></a>
-<a name="IDX485"></a>
-<a name="IDX486"></a>
-<a name="IDX487"></a>
-<a name="IDX488"></a>
-<a name="IDX489"></a>
-<a name="IDX490"></a>
-<a name="IDX491"></a>
-<a name="IDX492"></a>
+<a name="index-SPC-_0028query_002dreplace_0029"></a>
+<a name="index-DEL-_0028query_002dreplace_0029"></a>
+<a name="index-_002c-_0028query_002dreplace_0029"></a>
+<a name="index-ESC-_0028query_002dreplace_0029"></a>
+<a name="index-_002e-_0028query_002dreplace_0029"></a>
+<a name="index-_0021-_0028query_002dreplace_0029"></a>
+<a name="index-_005e-_0028query_002dreplace_0029"></a>
+<a name="index-C_002dr-_0028query_002dreplace_0029"></a>
+<a name="index-C_002dw-_0028query_002dreplace_0029"></a>
+<a name="index-C_002dl-_0028query_002dreplace_0029"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;SPC&gt;</kbd></dt>
@@ -1320,11 +1320,11 @@ used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#R
 <p>  Here are some other commands that find matches for a regular expression.
 They all operate from point to the end of the buffer.
 </p>
-<a name="IDX493"></a>
-<a name="IDX494"></a>
-<a name="IDX495"></a>
-<a name="IDX496"></a>
-<a name="IDX497"></a>
+<a name="index-list_002dmatching_002dlines"></a>
+<a name="index-occur"></a>
+<a name="index-count_002dmatches"></a>
+<a name="index-delete_002dnon_002dmatching_002dlines"></a>
+<a name="index-delete_002dmatching_002dlines"></a>
 <dl compact="compact">
 <dt> <kbd>M-x occur</kbd></dt>
 <dd><p>Print each line that follows point and contains a match for the
@@ -1332,7 +1332,7 @@ specified regexp.  A numeric argument specifies the number of context
 lines to print before and after each matching line; the default is
 none.
 </p>
-<a name="IDX498"></a>
+<a name="index-C_002dc-C_002dc-_0028Occur-mode_0029"></a>
 <p>The buffer &lsquo;<samp>*Occur*</samp>&rsquo; containing the output serves as a menu for
 finding occurrences in their original context.  Find an occurrence
 as listed in &lsquo;<samp>*Occur*</samp>&rsquo;, position point there, and type <kbd>C-c

@@ -67,7 +67,7 @@ saved in a register is used by moving point to that position.
 Rectangles can also be copied into and out of registers
 (see section <a href="xemacs_12.html#Rectangles">Rectangles</a>).
 </p>
-<a name="IDX350"></a>
+<a name="index-view_002dregister"></a>
 <p>  Each register has a name which is a single character.  A register can
 store a piece of text, a rectangle, a position, a window configuration,
 or a file name, but only one thing at any given time.  Whatever you
@@ -81,7 +81,7 @@ view-register</kbd>.
 </p></dd>
 </dl>
 
-<a name="IDX351"></a>
+<a name="index-view_002dregister-1"></a>
 <p>  <kbd>M-x view-register</kbd> reads a register name as an argument and then
 displays the contents of the specified register.
 </p>
@@ -136,15 +136,15 @@ and moves point to that place in it.
 </p></dd>
 </dl>
 
-<a name="IDX352"></a>
-<a name="IDX353"></a>
+<a name="index-C_002dx-r-SPC"></a>
+<a name="index-point_002dto_002dregister"></a>
 <p>  To save the current position of point in a register, choose a name
 <var>r</var> and type <kbd>C-x r &lt;SPC&gt; <var>r</var></kbd>.  The register <var>r</var>
 retains the position thus saved until you store something else in that
 register.
 </p>
-<a name="IDX354"></a>
-<a name="IDX355"></a>
+<a name="index-C_002dx-r-j"></a>
+<a name="index-jump_002dto_002dregister"></a>
 <p>  The command <kbd>C-x r j <var>r</var></kbd> moves point to the position recorded
 in register <var>r</var>.  The register is not affected; it continues to
 record the same location.  You can jump to the same position using the
@@ -194,11 +194,11 @@ alternative is to store the text in a register with <kbd>C-x r s</kbd>
 </p></dd>
 </dl>
 
-<a name="IDX356"></a>
-<a name="IDX357"></a>
-<a name="IDX358"></a>
-<a name="IDX359"></a>
-<a name="IDX360"></a>
+<a name="index-C_002dx-r-s"></a>
+<a name="index-C_002dx-r-g"></a>
+<a name="index-C_002dx-r-i"></a>
+<a name="index-copy_002dto_002dregister"></a>
+<a name="index-insert_002dregister"></a>
 <p>  <kbd>C-x r s <var>r</var></kbd> stores a copy of the text of the region into the
 register named <var>r</var>.  Given a numeric argument, <kbd>C-x r s <var>r</var></kbd>
 deletes the text from the buffer as well.
@@ -234,8 +234,8 @@ is represented as a list of strings.  See section <a href="xemacs_12.html#Rectan
 information on rectangles and how to specify rectangles in a buffer.
 </p>
 <dl compact="compact">
-<dd><a name="IDX361"></a>
-<a name="IDX362"></a>
+<dd><a name="index-copy_002drectangle_002dto_002dregister"></a>
+<a name="index-C_002dx-r-r"></a>
 </dd>
 <dt> <kbd>C-x r r <var>r</var></kbd></dt>
 <dd><p>Copy the region-rectangle into register <var>r</var>
@@ -325,13 +325,13 @@ can be useful in keyboard macros (see section <a href="xemacs_30.html#Keyboard-M
 </p>
 <dl compact="compact">
 <dt> <kbd>C-u <var>number</var> C-x r n <var>reg</var></kbd></dt>
-<dd><a name="IDX363"></a>
-<a name="IDX364"></a>
+<dd><a name="index-C_002dx-r-n"></a>
+<a name="index-number_002dto_002dregister"></a>
 <p>Store <var>number</var> into register <var>reg</var> (<code>number-to-register</code>).
 </p></dd>
 <dt> <kbd>C-u <var>number</var> C-x r + <var>reg</var></kbd></dt>
-<dd><a name="IDX365"></a>
-<a name="IDX366"></a>
+<dd><a name="index-C_002dx-r-_002b"></a>
+<a name="index-increment_002dregister"></a>
 <p>Increment the number in register <var>reg</var> by <var>number</var>
 (<code>increment-register</code>).
 </p></dd>
@@ -418,30 +418,30 @@ install that to use bookmark facility (see section <a href="xemacs_25.html#Packa
 </p>
 </dd>
 <dt> <kbd>C-x r m <var>bookmark</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX367"></a>
+<dd><a name="index-bookmark_002dset"></a>
 <p>Set the bookmark named <var>bookmark</var> at point (<code>bookmark-set</code>).
 </p>
 </dd>
 <dt> <kbd>C-x r b <var>bookmark</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX368"></a>
+<dd><a name="index-bookmark_002djump"></a>
 <p>Jump to the bookmark named <var>bookmark</var> (<code>bookmark-jump</code>).
 </p>
 </dd>
 <dt> <kbd>C-x r l</kbd></dt>
-<dd><a name="IDX369"></a>
+<dd><a name="index-list_002dbookmarks"></a>
 <p>List all bookmarks (<code>list-bookmarks</code>).
 </p>
 </dd>
 <dt> <kbd>M-x bookmark-save</kbd></dt>
-<dd><a name="IDX370"></a>
+<dd><a name="index-bookmark_002dsave"></a>
 <p>Save all the current bookmark values in the default bookmark file.
 </p></dd>
 </dl>
 
-<a name="IDX371"></a>
-<a name="IDX372"></a>
-<a name="IDX373"></a>
-<a name="IDX374"></a>
+<a name="index-C_002dx-r-m"></a>
+<a name="index-bookmark_002dset-1"></a>
+<a name="index-C_002dx-r-b"></a>
+<a name="index-bookmark_002djump-1"></a>
 <p>  The prototypical use for bookmarks is to record one current position
 in each of several files.  So the command <kbd>C-x r m</kbd>, which sets a
 bookmark, uses the visited file name as the default for the bookmark
@@ -449,7 +449,7 @@ name.  If you name each bookmark after the file it points to, then you
 can conveniently revisit any of those files with <kbd>C-x r b</kbd>, and move
 to the position of the bookmark at the same time.
 </p>
-<a name="IDX375"></a>
+<a name="index-C_002dx-r-l"></a>
 <p>  To display a list of all your bookmarks in a separate buffer, type
 <kbd>C-x r l</kbd> (<code>list-bookmarks</code>).  If you switch to that buffer,
 you can use it to edit your bookmark definitions or annotate the
@@ -463,14 +463,14 @@ bookmark values.  You can also save the bookmarks at any time with the
 default bookmark file automatically.  This saving and loading is how
 bookmarks persist from one XEmacs session to the next.
 </p>
-<a name="IDX376"></a>
+<a name="index-bookmark_002dsave_002dflag"></a>
 <p>  If you set the variable <code>bookmark-save-flag</code> to 1, then each
 command that sets a bookmark will also save your bookmarks; this way,
 you don&rsquo;t lose any bookmark values even if XEmacs crashes.  (The value,
 if a number, says how many bookmark modifications should go by between
 saving.)
 </p>
-<a name="IDX377"></a>
+<a name="index-bookmark_002dsearch_002dsize"></a>
 <p>  Bookmark position values are saved with surrounding context, so that
 <code>bookmark-jump</code> can find the proper position even if the file is
 modified slightly.  The variable <code>bookmark-search-size</code> says how
@@ -481,7 +481,7 @@ position.
 </p>
 <dl compact="compact">
 <dt> <kbd>M-x bookmark-load &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX378"></a>
+<dd><a name="index-bookmark_002dload"></a>
 <p>Load a file named <var>filename</var> that contains a list of bookmark
 values.  You can use this command, as well as <code>bookmark-write</code>, to
 work with other files of bookmark values in addition to your default
@@ -489,23 +489,23 @@ bookmark file.
 </p>
 </dd>
 <dt> <kbd>M-x bookmark-write &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX379"></a>
+<dd><a name="index-bookmark_002dwrite"></a>
 <p>Save all the current bookmark values in the file <var>filename</var>.
 </p>
 </dd>
 <dt> <kbd>M-x bookmark-delete &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX380"></a>
+<dd><a name="index-bookmark_002ddelete"></a>
 <p>Delete the bookmark named <var>bookmark</var>.
 </p>
 </dd>
 <dt> <kbd>M-x bookmark-insert-location &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX381"></a>
+<dd><a name="index-bookmark_002dinsert_002dlocation"></a>
 <p>Insert in the buffer the name of the file that bookmark <var>bookmark</var>
 points to.
 </p>
 </dd>
 <dt> <kbd>M-x bookmark-insert &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX382"></a>
+<dd><a name="index-bookmark_002dinsert"></a>
 <p>Insert in the buffer the <em>contents</em> of the file that bookmark
 <var>bookmark</var> points to.
 </p></dd>

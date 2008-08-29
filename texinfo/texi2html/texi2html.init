@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.152 2008-08-26 15:51:33 pertusus Exp $
+# $Id: texi2html.init,v 1.153 2008-08-29 15:05:43 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -398,6 +398,15 @@ $TOP_NODE_UP = '(dir)';
 # this controls the pre style for menus
 $MENU_PRE_STYLE = 'font-family: serif';
 
+# on bug-texinfo is has been said the the style is not code_style
+# for menus (except for the node name).
+# this controls the menu preformatted format
+$MENU_PRE_COMPLEX_FORMAT = {
+              'pre_style' => $MENU_PRE_STYLE, 
+              'class' => 'menu-preformatted',
+#              'style' => 'code'
+   };
+
 # This controls the ul style for toc
 $NO_BULLET_LIST_STYLE = 'list-style: none';
 $NO_BULLET_LIST_ATTRIBUTE = ' class="toc"';
@@ -778,7 +787,7 @@ sub t2h_default_init_out()
     $document_encoding = 'UNDEF' if (!defined($document_encoding));
     print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $ENCODING_NAME\n" if ($VERBOSE);
     
-    #FIXME check 'style' on bug-texinfo
+    # not in code_style, according to post on bug-texinfo
     if ($SIMPLE_MENU)
     {
         foreach my $format ('menu', 'detailmenu')
@@ -786,7 +795,9 @@ sub t2h_default_init_out()
             if (!defined($complex_format_map->{$format}))
             { 
                 $complex_format_map->{$format} = { 'begin' => q{''} , 'end' => q{''},
-                 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted', 'style' => 'code' };
+                 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted', 
+#                 'style' => 'code' 
+                };
             }
         }
         #$SEPARATE_DESCRIPTION = 1;
@@ -798,7 +809,7 @@ sub t2h_default_init_out()
         {
            'begin' => q{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"},
            'end' => q{"</th></tr>"}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
-            'style' => 'code'
+#            'style' => 'code'
         }
     }
     
@@ -1920,7 +1931,7 @@ sub T2H_DEFAULT_node_file_name($$)
 # texinfo "simple things" (@foo) to HTML ones
 #
 %simple_map = (
-           "*", "<br>",     # HTML+
+           '*', "<br>",     # HTML+
            ' ', '&nbsp;',
            "\t", '&nbsp;',
            "\n", '&nbsp;',
@@ -2029,7 +2040,7 @@ $pre_map{'enddots'} = '...';
 
 # ascii representation of @-commands
 %ascii_simple_map = (
-           "*", "\n",     # HTML+
+           '*', "\n",     # HTML+
            ' ', ' ',
            "\t", "\t",
            "\n", "\n",
@@ -2104,7 +2115,7 @@ $pre_map{'enddots'} = '...';
 # by simple text
 #
 %simple_map_texi = (
-           "*", "\n",  
+           '*', "\n",  
            " ", " ",
            "\t", " ",
            "-", "-",  # soft hyphen
@@ -2917,8 +2928,9 @@ foreach my $symbol(keys(%unicode_map))
  'insertcopying' => 1
 );
 
-# FIXME verify on bug-texinfo
-# currently it doesn't make sense since the section name normally formatted
+# on bug-texinfo verified that code_style shouldn't be used for anything
+# else than node.
+# anyway it doesn't make sense since the section name normally formatted
 # is used
 #%format_code_style = (
 #  'menu_name' => 1,
@@ -2999,7 +3011,7 @@ my %old_style_map = (
       'slanted',    {'attribute' => 'i'},
       'sansserif',  {'attribute' => 'span class="sansserif"'},
       'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
-      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
+      'key',        {'args' => ['code'], 'begin' => '&lt;', 'end' => '&gt;'},
       'math',       {'function' => \&t2h_default_math, 'args' => ['math'] },
       'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
       'r',          {'attribute' => 'span class="roman"'},
@@ -3703,10 +3715,13 @@ sub t2h_default_no_texi_image($$$$)
 {
     my $command = shift;
     my $args = shift;
-    my $text = $args->[0];
-    $text = main::normalise_space($text); 
-    my @args = split (/\s*,\s*/, $text);
-    return $args[0];
+    #my $text = $args->[0];
+    #$text = main::normalise_space($text); 
+    #my @args = split (/\s*,\s*/, $text);
+    my $file = $args->[0];
+    $file =~ s/^\s*//;
+    $file =~ s/\s*$//;
+    return main::substitute_line($file, {'remove_texi' => 1, 'code_style' => 1});
 }
 
 sub t2h_default_no_texi_acronym_like($$)
@@ -3762,7 +3777,7 @@ my %special_style = (
                'function' => \&main::do_xref },
            'inforef'      => { 'args' => ['keep','keep','keep'], 
                'function' => \&main::do_xref },
-           'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
+           'image'        => { 'args' => ['keep','keep','keep','keep','keep'], 'function' => \&main::do_image },
            'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
            'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
            'shortcaption' => { 'args' => ['keep'], 'function' => \&main::do_caption_shortcaption },
@@ -3772,7 +3787,7 @@ my %special_style = (
 );
 
 # @image is replaced by the first arg in strings
-$style_map_texi{'image'} = { 'args' => ['keep'],
+$style_map_texi{'image'} = { 'args' => ['keep','keep','keep','keep','keep'],
        'function' => \&t2h_default_no_texi_image };
 
 $style_map_texi{'acronym'} = { 'args' => ['keep','keep'],
@@ -3982,10 +3997,17 @@ foreach my $key (keys(%def_map))
 #                 only spaces remaining on the line
 #           if the value is 'linespace' space but no newline is skipped if 
 #                 there are only spaces remaining on the line
-#    'texi' if true it is some texinfo code and @value and @macros are expanded
 #    'keep' if true the args and the macro are kept, otherwise the macro 
 #          args and skipped stuffs are removed
 %misc_command = (
+        'bye' => {'skip' => 'line'}, # no arg
+        # set, clear
+        'set' => {'skip' => 'line'}, # special arg
+        'clear' => {'skip' => 'line'}, # special arg
+        # comments
+        'comment' => {'arg' => 'line'},
+        'c' => {'arg' => 'line'},
+
         # not needed for formatting
         'raisesections' => {'skip' => 'line'},  # no arg
         'lowersections' => {'skip' => 'line'}, # no arg
@@ -3997,18 +4019,11 @@ foreach my $key (keys(%def_map))
 #        'detailmenu' => {'skip' => 'whitespace'}, # no arg
 #        'end detailmenu' => {'skip' => 'whitespace'}, # no arg
         'clickstyle' => {'skip' => 'line'}, # arg should be an @-command
-        'bye' => {'skip' => 'line'}, # no arg
-        # set, clear
-        'set' => {'skip' => 'line'}, # special arg
-        'clear' => {'skip' => 'line'}, # special arg
-        # comments
-        'comment' => {'arg' => 'line'},
-        'c' => {'arg' => 'line'},
         # in preamble
         'novalidate' => {}, # no arg
         'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
                          # with direntry is significant
-        'pagesizes' => {'skip' => 'line', 'arg' => 2}, # can have 2 args 
+        'pagesizes' => {'skip' => 'line', 'arg' => 'line'}, # can have 2 args 
                                  # or one? 200mm,150mm 11.5in
         'finalout' => {}, # no arg
         'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
@@ -4036,12 +4051,18 @@ foreach my $key (keys(%def_map))
         'oddfooting' => {'arg' => 'line'},
         'smallbook' => {'skip' => 'line'}, # no arg
         'setfilename' => {'arg' => 'line'},
-        'shorttitle' => {'arg' => 'line', 'texi' => 1},
-        'shorttitlepage' => {'arg' => 'line', 'texi' => 1},
-        'settitle' => {'arg' => 'line', 'texi' => 1},
-        'author' => {'arg' => 'line', 'texi' => 1},
-        'subtitle' => {'arg' => 'line', 'texi' => 1},
-        'title' => {'arg' => 'line', 'texi' => 1},
+        #'shorttitle' => {'arg' => 'line', 'texi' => 1},
+        #'shorttitlepage' => {'arg' => 'line', 'texi' => 1},
+        #'settitle' => {'arg' => 'line', 'texi' => 1},
+        #'author' => {'arg' => 'line', 'texi' => 1},
+        #'subtitle' => {'arg' => 'line', 'texi' => 1},
+        #'title' => {'arg' => 'line', 'texi' => 1},
+        'shorttitle' => {'arg' => 'line'},
+        'shorttitlepage' => {'arg' => 'line'},
+        'settitle' => {'arg' => 'line'},
+        'author' => {'arg' => 'line'},
+        'subtitle' => {'arg' => 'line'},
+        'title' => {'arg' => 'line'},
         'syncodeindex' => {'skip' => 'linespace', 'arg' => 2}, 
                           # args are index identifiers
         'synindex' => {'skip' => 'linespace', 'arg' => 2},
@@ -4666,7 +4687,6 @@ sub t2h_default_normal_text($$$$$$)
    my $in_preformatted = shift;
    my $in_code = shift;
    my $in_simple = shift;
-#print STDERR "Bug: in_raw_text in_simple $text\n" if ($in_raw_text and $in_simple);
    my $style_stack = shift;
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
    $text = &$protect_text($text) unless($in_raw_text);
@@ -5867,16 +5887,21 @@ sub t2h_default_foot_section($)
     return $lines; 
 }
 
-sub t2h_default_image_files($$)
+sub t2h_default_image_files($$$$)
 {
     my $base = shift;
     my $extension = shift;
+    my $texi_base = shift;
+    my $texi_extension = shift;
     my @files = ();
     return @files if (!defined($base) or ($base eq ''));
-    push @files,"$base.$extension" if (defined($extension) and ($extension ne ''));
+    if (defined($extension) and ($extension ne ''))
+    {
+       push @files,["$base.$extension", "$texi_base.$texi_extension"];
+    }
     foreach my $ext (@IMAGE_EXTENSIONS)
     {
-        push @files, "$base.$ext";
+        push @files,["$base.$ext", "$texi_base.$ext"];
     }
     return @files;
 }
@@ -5895,7 +5920,7 @@ sub t2h_default_image_files($$)
 # extension
 # path to working dir
 # path to file relative from working dir
-sub t2h_default_image($$$$$$$$$$$$$)
+sub t2h_default_image($$$$$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -5910,6 +5935,9 @@ sub t2h_default_image($$$$$$$$$$$$$)
     my $file_path = shift;
     my $in_paragraph = shift;
     my $file_locations = shift;
+    my $base_simple_format = shift;
+    my $extension_simple_format = shift;
+    my $file_name_simple_format = shift;
  
     if (!defined($file_path) or $file_path eq '')
     {
@@ -5928,8 +5956,6 @@ sub t2h_default_image($$$$$$$$$$$$$)
         $file = $file_name;
     }
     $alt = &$protect_text($base) if (!defined($alt) or ($alt eq ''));
-    # dirty hack to avoid " that can be here because of a @verb 
-    $alt =~ s/"/&quot;/g;
     return "[ $alt ]" if ($preformatted);
     # it is possible that $file_name is more correct as it allows the user
     # to chose the relative path.

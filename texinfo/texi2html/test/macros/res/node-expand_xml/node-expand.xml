@@ -36,7 +36,7 @@
 </menucomment>
 </menuentry><menuentry>
 <menunode> ``node'' with---tricks</menunode>
-<menutitle> ``node'' with---tricks</menutitle>
+<menutitle> &ldquo;node&rdquo; with&mdash;tricks</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -88,7 +88,7 @@ See <xref><xrefnodename>@node `2'</xrefnodename></xref>.
 
 <para><indexterm index="cp">entry for chapter 2</indexterm>This is chapter 2.
 See <xref><xrefnodename>Node 1</xrefnodename></xref>.  See <xref><xrefnodename>Node 1</xrefnodename></xref>.
-See <xref><xrefnodename>&ldquo;node&rdquo; with&mdash;tricks</xrefnodename><xrefinfoname>Node with some tricks</xrefinfoname></xref>.
+See <xref><xrefnodename>``node'' with---tricks</xrefnodename><xrefinfoname>Node with some tricks</xrefinfoname></xref>.
 </para>
 </chapter>
 </node>

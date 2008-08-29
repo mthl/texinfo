@@ -7,6 +7,6 @@ quote-args.texi(,13)
 quote-args.texi(,14) @node Top, , (dir), (dir)
 quote-args.texi(,15) 
 quote-args.texi(,16) @noindent
-quote-args.texi(FIXME,17) @strong{FIXME: Many arguments, separated by commas, are processed here}quote-args.texi(FIXME,17) 
-quote-args.texi(cat,18) natopocotuototamquote-args.texi(cat,18) 
+quote-args.texi(FIXME,17) @strong{FIXME: Many arguments, separated by commas, are processed here}
+quote-args.texi(cat,18) natopocotuototam
 quote-args.texi(,19) @bye

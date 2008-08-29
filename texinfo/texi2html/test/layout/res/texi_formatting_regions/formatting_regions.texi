@@ -168,6 +168,7 @@ but , ,@:
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
@@ -701,7 +702,7 @@ Various deff lines
 @title title --a
 @subtitle formatting subtitle --a
 @subtitle subtitle 2 --a
-@author author1 --a
+@author author1 --a with accents in name T@'e@,ca
 @author author2 --a
 
 Titlepage
@@ -861,6 +862,7 @@ but , ,@:
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
@@ -1550,6 +1552,7 @@ but , ,@:
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
@@ -2235,6 +2238,7 @@ but , ,@:
 @code{@@url@{,--b@}} @url{,--b}
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{@}} @w{}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}

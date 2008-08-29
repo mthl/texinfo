@@ -1099,7 +1099,6 @@ all operations and option available for the current version of
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @cindex Creation of the archive
 @cindex Archive, creation of
 One of the basic operations of @command{tar} is @option{--create} (@option{-c}), which
@@ -1573,7 +1572,6 @@ all the files (including sub-directories) in that directory.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 @cindex Extraction
 @cindex Retrieving files from an archive
 @cindex Resurrecting files from an archive
@@ -1831,7 +1829,6 @@ use @w{@kbd{tar --list --verbose}} to list them correctly.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 This chapter is about how one invokes the @acronym{GNU} @command{tar}
 command, from the command synopsis (@pxref{Synopsis}).  There are
@@ -2140,7 +2137,6 @@ end up overwriting files.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 Like short options, @dfn{old options} are single letters.  However, old options
 must be written together as a single clumped set, without spaces separating
@@ -4066,7 +4062,6 @@ error correction in special circumstances.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 In the last chapter, you learned about the first three operations to
 @command{tar}.  This chapter presents the remaining five operations to
 @command{tar}: @option{--append}, @option{--update}, @option{--concatenate},
@@ -4119,7 +4114,6 @@ Compare archive members to their counterparts in the file system.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @opindex append
 If you want to add files to an existing archive, you don't need to
@@ -4196,7 +4190,6 @@ and @ref{Media}, for more information.)
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 @cindex Adding files to an Archive
 @cindex Appending files to an Archive
 @cindex Archives, Appending files to
@@ -4312,7 +4305,6 @@ $ @kbd{tar --extract -vv --occurrence --file=collection.tar blues}
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 @cindex Updating an archive
 
 @opindex update
@@ -4489,7 +4481,6 @@ information on dealing with archives improperly combined using the
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 @cindex Deleting files from an archive
 @cindex Removing files from an archive
 
@@ -4548,7 +4539,6 @@ The @option{--delete} option has been reported to work properly when
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @opindex compare
 The @option{--compare} (@option{-d}), or @option{--diff} operation compares
@@ -4707,7 +4697,6 @@ Do not exit with nonzero on unreadable files or directories.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @opindex extract@r{, additional options}
 The previous chapter showed how to use @option{--extract} to extract
 an archive into the file system.  Various options cause @command{tar} to
@@ -4730,7 +4719,6 @@ considerations arise.  You may review the information presented in
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @cindex Reading incomplete records
 @cindex Records, incomplete
@@ -4812,7 +4800,6 @@ encountered while reading an archive.  Use in conjunction with
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @allow-recursion
 @quote-arg
@@ -5270,7 +5257,6 @@ Remove files after adding them to the archive.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @cindex Small memory
 @cindex Running out of space
 
@@ -5419,7 +5405,6 @@ set, the default is @samp{~}, just as in Emacs.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @allow-recursion
 @quote-arg
 
@@ -5494,7 +5479,6 @@ and not archive them.  @xref{Choosing}.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @acronym{GNU} @command{tar} is distributed along with the scripts
 which the Free Software Foundation uses for performing backups.  There
 is no corresponding scripts available yet for doing restoration of
@@ -5540,7 +5524,6 @@ called @dfn{dumps}.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @cindex full dumps
 @cindex dumps, full
@@ -6327,7 +6310,6 @@ that determination.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 Certain options to @command{tar} enable you to specify a name for your
 archive.  Other options let you decide which files to include or exclude
 from the archive, based on when or whether files were modified, whether
@@ -6354,7 +6336,6 @@ This chapter discusses these options in detail.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @cindex Naming an archive
 @cindex Archive Name
@@ -6734,7 +6715,6 @@ $ @kbd{tar -c -v --null --files-from=long-files --file=big.tar}
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @cindex File names, excluding files by
 @cindex Excluding files by name and pattern
@@ -7535,7 +7515,6 @@ number of components is then stripped from its result.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @cindex Excluding file by age
 @cindex Data Modification time, excluding files by
 @cindex Modification time, excluding files by
@@ -7633,7 +7612,6 @@ for proper way of creating incremental backups.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 @cindex Avoiding recursion in directories
 @cindex Descending directories, avoiding
 @cindex Directories, avoiding recursion
@@ -7720,7 +7698,6 @@ other than @file{grape/concord}.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @command{tar} will normally automatically cross file system boundaries in
 order to archive files which are part of a directory tree.  You can
 change this behavior by running @command{tar} and specifying
@@ -7758,7 +7735,6 @@ mentioned by name on the standard error.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @allow-recursion
 @quote-arg
@@ -7873,7 +7849,6 @@ The interpretation of @option{--directory} is disabled by
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @table @option
 @opindex absolute-names
@@ -8904,7 +8879,6 @@ Using @option{--sparse-format} option implies @option{--sparse}.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 When @command{tar} reads files, it updates their access times.  To
 avoid this, use the @option{--atime-preserve[=METHOD]} option, which can either
 reset the access time retroactively or avoid changing it in the first
@@ -9366,7 +9340,6 @@ a @command{tar} able to read the good archives they receive.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 The above sections suggest to use @samp{oldest possible} archive
 format if in doubt.  However, sometimes it is not possible.  If you
 attempt to archive a file whose metadata cannot be represented using
@@ -9755,7 +9728,6 @@ Done
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @allow-recursion
 @quote-arg
 
@@ -9872,7 +9844,6 @@ easily test, because the resulting archive gets smaller, and
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 A few special cases about tape handling warrant more detailed
 description.  These special cases are discussed below.
 
@@ -9918,7 +9889,6 @@ not a good idea.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @table @option
 @item -f [@var{hostname}:]@var{file}
@@ -10140,7 +10110,6 @@ device busy
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 @dfn{Block} and @dfn{record} terminology is rather confused, and it
 is also confusing to the expert reader.  On the other hand, readers
 who are new to the field have a fresh mind, and they may safely skip
@@ -10271,7 +10240,6 @@ device.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 Format parameters specify how an archive is written on the archive
 media.  The best choice of format parameters will vary depending on
 the type and number of files being archived, and on the media used to
@@ -10297,7 +10265,6 @@ examples of format parameter considerations.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @opindex blocking-factor
 The data in an archive is grouped into blocks, which are 512 bytes.
@@ -10660,7 +10627,6 @@ you should do the proper things for that as well.  @xref{Blocking}.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 Just as archives can store more than one file from the file system,
 tapes can store more than one archive file.  To keep track of where
 archive files (or any other type of file stored on tape) begin and
@@ -10703,7 +10669,6 @@ rrrr*rrrrrr*rrrrr*rr*rrrrr*rrr*rrrr**----------------
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @allow-recursion
 @quote-arg
@@ -11070,7 +11035,6 @@ implementation, read @ref{Split Recovery}.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 To give the archive a name which will be recorded in it, use the
 @option{--label=@var{volume-label}} (@option{-V @var{volume-label}})
 option.  This will write a special block identifying
@@ -11136,7 +11100,6 @@ will usually see lots of spurious messages.
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 @opindex label
   To avoid problems caused by misplaced paper labels on the archive
@@ -11686,7 +11649,6 @@ Right margin of the text output. Used for wrapping.
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
 
-
 While an archive may contain many files, the archive itself is a
 single ordinary file.  Like any other file, an archive file can be
 written to a storage device such as a tape or disk, sent through a
@@ -11709,7 +11671,6 @@ member name.  One way this situation can occur is if more than one
 version of a file has been stored in the archive.  For information
 about adding new versions of a file to an archive, see @ref{update}.
 @quote-arg
-
 
 In addition to entries describing archive members, an archive may
 contain entries which @command{tar} itself uses to store information.
@@ -12030,7 +11991,6 @@ not support numeric user or group IDs, these fields should be ignored.
 The @code{size} field is the size of the file in bytes; linked files
 are archived with this field specified as zero.  @quote-arg
 
-
 The @code{mtime} field is the data modification time of the file at
 the time it was archived.  It is the ASCII representation of the octal
 value of the last time the file's contents were modified, represented
@@ -12188,7 +12148,6 @@ IEEE Std 1003.2-1992, pages 380-388 (section 4.48) and pages 936-940
 @quotation
 @emph{(This message will disappear, once this node revised.)}
 @end quotation
-
 
 The @acronym{GNU} format uses additional file types to describe new types of
 files in an archive.  These are listed below.

@@ -12,6 +12,18 @@ aaa
 </literallayout></textobject></inlinemediaobject>.
 </para>
 <para>Text in copying.
+File with @-commands and special characters:
+</para>
+<!-- cannot test a file with newline, since perl says -->
+<!-- Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375. -->
+<!-- with a noon reproducible path -->
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
+</para>
+<para>And also in alt, and with dimensions:
+</para>
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}-le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
 </para></legalnotice>
 </bookinfo>
 
@@ -26,6 +38,18 @@ aaa
 </literallayout></textobject></inlinemediaobject>.
 </para>
 <para>Text in copying.
+File with @-commands and special characters:
+</para>
+<!-- cannot test a file with newline, since perl says -->
+<!-- Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375. -->
+<!-- with a noon reproducible path -->
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
+</para>
+<para>And also in alt, and with dimensions:
+</para>
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}-le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
 </para>
 <para>In normal context
 <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
@@ -55,6 +79,19 @@ aaa
 aaa
 </literallayout></textobject></mediaobject></informalfigure>.
 
+
+File with @-commands and special characters:
+
+<!-- cannot test a file with newline, since perl says -->
+<!-- Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375. -->
+<!-- with a noon reproducible path -->
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>.
+
+And also in alt, and with dimensions:
+
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}-le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>.
 </screen>
 <para>In float.
 <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
@@ -64,6 +101,19 @@ aaa
 <informalfigure><mediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa
 </literallayout></textobject></mediaobject></informalfigure><para>.
+</para>
+<para>File with @-commands and special characters:
+</para>
+<!-- cannot test a file with newline, since perl says -->
+<!-- Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375. -->
+<!-- with a noon reproducible path -->
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
+</para>
+<para>And also in alt, and with dimensions:
+</para>
+<!-- @image{f@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}-le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i-le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}. -->
+<informalfigure><mediaobject><imageobject><imagedata fileref="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure><para>.
 </para>
 </chapter>
 </book><!-- Keep this comment at the end of the file

@@ -17,7 +17,7 @@ atext
 Text line followed by a comment on the same line and another below @c comment @text{}
 @c comment @text{}
 
-@macro pagesizes 
+@macro pagesizes_arg
 200mm,150mm
 @end macro
 
@@ -25,17 +25,17 @@ Text line followed by a comment on the same line and another below @c comment @t
 @afourpaper
 @end macro
 
-@pagesizes @pagesizes{}
+@pagesizes @pagesizes_arg{}
 @afourpaper_macro{}
 @headings on line following headings @text{}
 @oddfooting some text ignored @text{}
 @everyheading on line following everyheading @text{}
 
-@macro need 
+@macro need_arg
 0.1
 @end macro
 
-@need @need{}
+@need @need_arg{}
 
 @macro raisesections_macro 
 @raisesections

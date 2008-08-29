@@ -126,8 +126,8 @@ in the buffer is &lsquo;<samp>FOOBAR</samp>&rsquo;, with the cursor before the &
 then if you type <kbd>XX</kbd>, you get &lsquo;<samp>FOOXXBAR</samp>&rsquo;, with the cursor
 still before the &lsquo;<samp>B</samp>&rsquo;.
 </p>
-<a name="IDX132"></a>
-<a name="IDX133"></a>
+<a name="index-BS"></a>
+<a name="index-deletion"></a>
 <p>   To <em>delete</em> text you have just inserted, use &lt;BS&gt;.  &lt;BS&gt;
 deletes the character <em>before</em> the cursor (not the one that the
 cursor is on top of or under; that is the character <var>after</var> the
@@ -135,8 +135,8 @@ cursor).  The cursor and all characters after it move backwards.
 Therefore, if you type a printing character and then type &lt;BS&gt;, they
 cancel out.
 </p>
-<a name="IDX134"></a>
-<a name="IDX135"></a>
+<a name="index-RET"></a>
+<a name="index-newline"></a>
 <p>   To end a line and start typing a new one, type &lt;RET&gt;.  This
 inserts a newline character in the buffer.  If point is in the middle of
 a line, &lt;RET&gt; splits the line.  Typing &lt;DEL&gt; when the cursor is
@@ -151,9 +151,9 @@ See section <a href="xemacs_23.html#Filling">Filling Text</a>, for how to use Au
 text rather than shove it to the right, you can enable Overwrite mode,
 a minor mode.  See section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>.
 </p>
-<a name="IDX136"></a>
-<a name="IDX137"></a>
-<a name="IDX138"></a>
+<a name="index-quoting"></a>
+<a name="index-C_002dq"></a>
+<a name="index-quoted_002dinsert"></a>
 <p>  Direct insertion works for printing characters and &lt;SPC&gt;, but other
 characters act as editing commands and do not insert themselves.  If you
 need to insert a control character or a character whose code is above 200
@@ -180,9 +180,9 @@ overwriting with it.)
 <p>A numeric argument to <kbd>C-q</kbd> specifies how many copies of the quoted
 character should be inserted (see section <a href="#Arguments">Numeric Arguments</a>).
 </p>
-<a name="IDX139"></a>
-<a name="IDX140"></a>
-<a name="IDX141"></a>
+<a name="index-backward_002dor_002dforward_002ddelete_002dchar"></a>
+<a name="index-newline-1"></a>
+<a name="index-self_002dinsert"></a>
 <p>  Customization information: &lt;DEL&gt;, in most modes, runs the command
 <code>backward-or-forward-delete-char</code>; &lt;RET&gt; runs the command
 <code>newline</code>, and self-inserting printing characters run the command
@@ -219,44 +219,44 @@ the function keys (e.g. &lt;LEFT&gt; or &lt;END&gt;) and one that doesn&rsquo;t.
 The former versions may only be available on X terminals (i.e. not on
 TTY&rsquo;s), but the latter are available on all terminals.
 </p>
-<a name="IDX142"></a>
-<a name="IDX143"></a>
-<a name="IDX144"></a>
-<a name="IDX145"></a>
-<a name="IDX146"></a>
-<a name="IDX147"></a>
-<a name="IDX148"></a>
-<a name="IDX149"></a>
-<a name="IDX150"></a>
-<a name="IDX151"></a>
-<a name="IDX152"></a>
-<a name="IDX153"></a>
-<a name="IDX154"></a>
-<a name="IDX155"></a>
-<a name="IDX156"></a>
-<a name="IDX157"></a>
-<a name="IDX158"></a>
-<a name="IDX159"></a>
-<a name="IDX160"></a>
-<a name="IDX161"></a>
-<a name="IDX162"></a>
-<a name="IDX163"></a>
-<a name="IDX164"></a>
-<a name="IDX165"></a>
-<a name="IDX166"></a>
-<a name="IDX167"></a>
-<a name="IDX168"></a>
-<a name="IDX169"></a>
-<a name="IDX170"></a>
-<a name="IDX171"></a>
-<a name="IDX172"></a>
-<a name="IDX173"></a>
-<a name="IDX174"></a>
-<a name="IDX175"></a>
-<a name="IDX176"></a>
-<a name="IDX177"></a>
-<a name="IDX178"></a>
-<a name="IDX179"></a>
+<a name="index-C_002da"></a>
+<a name="index-C_002de"></a>
+<a name="index-C_002df"></a>
+<a name="index-C_002db"></a>
+<a name="index-C_002dn"></a>
+<a name="index-C_002dp"></a>
+<a name="index-C_002dl"></a>
+<a name="index-C_002dt"></a>
+<a name="index-C_002dv"></a>
+<a name="index-M_002dv"></a>
+<a name="index-M_002d_003e"></a>
+<a name="index-M_002d_003c"></a>
+<a name="index-M_002dr"></a>
+<a name="index-LEFT"></a>
+<a name="index-RIGHT"></a>
+<a name="index-UP"></a>
+<a name="index-DOWN"></a>
+<a name="index-HOME"></a>
+<a name="index-END"></a>
+<a name="index-PGUP"></a>
+<a name="index-PGDN"></a>
+<a name="index-C_002dLEFT"></a>
+<a name="index-C_002dRIGHT"></a>
+<a name="index-C_002dHOME"></a>
+<a name="index-C_002dEND"></a>
+<a name="index-beginning_002dof_002dline"></a>
+<a name="index-end_002dof_002dline"></a>
+<a name="index-forward_002dchar"></a>
+<a name="index-backward_002dchar"></a>
+<a name="index-next_002dline"></a>
+<a name="index-previous_002dline"></a>
+<a name="index-recenter"></a>
+<a name="index-transpose_002dchars"></a>
+<a name="index-beginning_002dof_002dbuffer"></a>
+<a name="index-end_002dof_002dbuffer"></a>
+<a name="index-goto_002dchar"></a>
+<a name="index-goto_002dline"></a>
+<a name="index-move_002dto_002dwindow_002dline"></a>
 <dl compact="compact">
 <dt> <kbd>C-a</kbd></dt>
 <dt> <kbd>HOME</kbd></dt>
@@ -337,7 +337,7 @@ Position 1 is the beginning of the buffer.
 (<code>goto-line</code>).  Line 1 is the beginning of the buffer.
 </p></dd>
 <dt> <kbd>M-x set-goal-column</kbd></dt>
-<dd><a name="IDX180"></a>
+<dd><a name="index-set_002dgoal_002dcolumn"></a>
 <p>Use the current column of point as the <em>semi-permanent goal column</em> for
 <kbd>C-n</kbd> and <kbd>C-p</kbd> (<code>set-goal-column</code>).  Henceforth, those
 commands always move to this column in each line moved into, or as
@@ -350,13 +350,13 @@ again try to avoid changing the horizontal position, as usual.
 </p></dd>
 </dl>
 
-<a name="IDX181"></a>
+<a name="index-track_002deol"></a>
 <p>  If you set the variable <code>track-eol</code> to a non-<code>nil</code> value,
 then <kbd>C-n</kbd> and <kbd>C-p</kbd> when at the end of the starting line move
 to the end of another line.  Normally, <code>track-eol</code> is <code>nil</code>.
 See section <a href="xemacs_30.html#Variables">Variables</a>, for how to set variables such as <code>track-eol</code>.
 </p>
-<a name="IDX182"></a>
+<a name="index-next_002dline_002dadd_002dnewlines"></a>
 <p>  Normally, <kbd>C-n</kbd> on the last line of a buffer appends a newline to
 it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, then
 <kbd>C-n</kbd> gets an error instead (like <kbd>C-p</kbd> on the first line).
@@ -403,9 +403,9 @@ this behavior by setting the variable <code>delete-key-deletes-forward</code>.
 </p></dd>
 </dl>
 
-<a name="IDX183"></a>
-<a name="IDX184"></a>
-<a name="IDX185"></a>
+<a name="index-killing-characters-and-lines"></a>
+<a name="index-deleting-characters-and-lines"></a>
+<a name="index-erasing-characters-and-lines"></a>
 <p>  You already know about the &lt;DEL&gt; key which deletes the character
 before point (that is, before the cursor).  Another key, <kbd>Control-d</kbd>
 (<kbd>C-d</kbd> for short), deletes the character after point (that is, the
@@ -545,11 +545,11 @@ blank lines.
 </p></dd>
 </dl>
 
-<a name="IDX186"></a>
-<a name="IDX187"></a>
-<a name="IDX188"></a>
-<a name="IDX189"></a>
-<a name="IDX190"></a>
+<a name="index-C_002do"></a>
+<a name="index-C_002dx-C_002do"></a>
+<a name="index-blank-lines"></a>
+<a name="index-open_002dline"></a>
+<a name="index-delete_002dblank_002dlines"></a>
 <p>  When you want to insert a new line of text before an existing line, you
 can do it by typing the new line of text, followed by &lt;RET&gt;.
 However, it may be easier to see what you are doing if you first make a
@@ -605,8 +605,8 @@ of a line too long to fit the screen.  Continuation is also called
 a line gets too long.  Continuation on the screen does not do that.  Use
 Auto Fill mode (see section <a href="xemacs_23.html#Filling">Filling Text</a>) if that&rsquo;s what you want.
 </p>
-<a name="IDX191"></a>
-<a name="IDX192"></a>
+<a name="index-truncate_002dlines"></a>
+<a name="index-truncation"></a>
 <p>  Instead of continuation, long lines can be displayed by <em>truncation</em>.
 This means that all the characters that do not fit in the width of the
 frame or window do not appear at all.  They remain in the buffer,
@@ -674,12 +674,12 @@ point, and column of point (<code>what-cursor-position</code>).
 </p></dd>
 </dl>
 
-<a name="IDX193"></a>
-<a name="IDX194"></a>
-<a name="IDX195"></a>
-<a name="IDX196"></a>
-<a name="IDX197"></a>
-<a name="IDX198"></a>
+<a name="index-what_002dpage"></a>
+<a name="index-what_002dline"></a>
+<a name="index-line-number"></a>
+<a name="index-page-number"></a>
+<a name="index-M_002d_003d"></a>
+<a name="index-count_002dlines_002dregion"></a>
 
 <p>  There are several commands for printing line numbers:
 </p>
@@ -699,8 +699,8 @@ region (see section <a href="xemacs_12.html#Mark">Selecting Text</a>).  See sect
 counts the lines in the
 </li></ul>
 
-<a name="IDX199"></a>
-<a name="IDX200"></a>
+<a name="index-C_002dx-_003d"></a>
+<a name="index-what_002dcursor_002dposition"></a>
 <p>  The command <kbd>C-x =</kbd> (<code>what-cursor-position</code>) can be used to find out
 the column that the cursor is in, and other miscellaneous information about
 point.  It prints a line in the echo area that looks like this:
@@ -774,10 +774,10 @@ characters.  With these commands, no argument is equivalent to an
 argument of one.  Negative arguments are allowed.  Often they tell a
 command to move or act  in the opposite direction.
 </p>
-<a name="IDX201"></a>
-<a name="IDX202"></a>
-<a name="IDX203"></a>
-<a name="IDX204"></a>
+<a name="index-M_002d1"></a>
+<a name="index-M_002d_002d"></a>
+<a name="index-digit_002dargument"></a>
+<a name="index-negative_002dargument"></a>
 <p>  If your keyboard has a &lt;META&gt; key (labelled with a diamond on
 Sun-type keyboards and labelled &lsquo;<samp>Alt</samp>&rsquo; on some other keyboards), the
 easiest way to specify a numeric argument is to type digits and/or a
@@ -791,8 +791,8 @@ are defined to contribute to an argument for the next command.  Digits
 and <kbd>-</kbd> modified with Control, or Control and Meta, also specify
 numeric arguments.
 </p>
-<a name="IDX205"></a>
-<a name="IDX206"></a>
+<a name="index-C_002du"></a>
+<a name="index-universal_002dargument"></a>
 <p>  Another way of specifying an argument is to use the <kbd>C-u</kbd>
 (<code>universal-argument</code>) command followed by the digits of the
 argument.  With <kbd>C-u</kbd>, you can type the argument digits without

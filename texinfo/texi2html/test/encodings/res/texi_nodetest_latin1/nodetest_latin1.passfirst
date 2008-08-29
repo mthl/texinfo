@@ -327,5 +327,12 @@ nodetest_latin1.texi(,330) 	@@*: @* and text followin @@*.
 nodetest_latin1.texi(,331) 
 nodetest_latin1.texi(,332) @node @comma{},,,rest
 nodetest_latin1.texi(,333) @section @comma{}
-nodetest_latin1.texi(,334) @contents
-nodetest_latin1.texi(,335) @bye
+nodetest_latin1.texi(,334) 
+nodetest_latin1.texi(,335) An index entry with accented letter.
+nodetest_latin1.texi(,336) @cindex index entry with accented letter: à @`a
+nodetest_latin1.texi(,337) @cindex index entry with accented letter: â @`a
+nodetest_latin1.texi(,338) 
+nodetest_latin1.texi(,339) @printindex cp
+nodetest_latin1.texi(,340) 
+nodetest_latin1.texi(,341) @contents
+nodetest_latin1.texi(,342) @bye

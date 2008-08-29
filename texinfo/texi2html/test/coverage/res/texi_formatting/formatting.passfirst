@@ -173,6 +173,7 @@ formatting.texi(mymacro,38) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,38) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,38) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,38) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,38) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,38) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,38) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,38) @code{@@H@{--a@}} @H{--a}
@@ -858,6 +859,7 @@ formatting.texi(mymacro,42) @code{@@url@{--a,@}} @url{--a,}
 formatting.texi(mymacro,42) @code{@@url@{,--b@}} @url{,--b}
 formatting.texi(mymacro,42) @code{@@var@{--a@}} @var{--a}
 formatting.texi(mymacro,42) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,42) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting.texi(mymacro,42) @code{@@w@{@}} @w{}
 formatting.texi(mymacro,42) @code{@@H@{a@}} @H{a}
 formatting.texi(mymacro,42) @code{@@H@{--a@}} @H{--a}

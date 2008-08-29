@@ -30,6 +30,10 @@ one_test=no
 if [ z"$1" != 'z' ]; then
   one_test=yes
   the_test=$1
+  if [ "z$the_test" = "ztexi" ]; then
+    the_file=$2
+    [ "z$the_file" != "z" ] && the_basename=`basename $the_file .texi`
+  fi
 fi
 
 if [ "z$srcdir_test" = 'z' ]; then
@@ -110,17 +114,27 @@ do
   basename=`basename $file .texi`
   remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]\+ \+[a-zA-Z0-9_./-]\+ *//'`
   src_file="$testdir/$srcdir_test/$file"
-  [ $one_test = 'yes' -a "z$dir" != "z$the_test" ] && continue
+  if [ $one_test = 'yes' -a "z$dir" != "z$the_test" ]; then
+    continue
+  fi
   if [ "z$dir" = 'ztexi' ]; then
+    if [ $one_test = 'yes' -a "z$the_basename" != 'z' -a "z$basename" != "z$the_basename" ]; then
+      continue
+    fi
+    one_test_done=yes
     dir="texi_${basename}"
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
     # -I $testdir/$srcdir_test/ is useful when file name is found using 
     # @setfilename
+    echo "$dir" >> $logfile
+    echo "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2" >> $logfile
     eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>$out_dir/$dir/$basename.2"
-    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$file $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
+    echo "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$basename.texi $remaining $src_file 2>>$out_dir/$dir/$basename.2" >> $logfile
+    eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$basename.texi $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
     ret=$?
   else
+    one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
     echo "$dir" >> $logfile
@@ -153,5 +167,9 @@ do
 done < "$driving_file"
 
 rm -rf $tmp_dir
+
+if [ "$one_test" = 'yes' -a "z$one_test_done" != "zyes" ]; then
+  echo "$the_test $the_file test not found"
+fi
 
 exit $return_code

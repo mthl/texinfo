@@ -52,6 +52,8 @@ h1 titlefont (@titlefont),
   is not only add a fixed key, but duplicate all the keys and add one.
   Documentation should only done once the interface is stable.
 
+* document the new $image arguments/API
+
 
 * don't double in title when the @top and @settitle are the same
 
@@ -242,8 +244,6 @@ differently.
 
 * makeinfo don't warn for empty deffn, but texi2dvi cannot process them
 
-* copy relevant makeinfo tests
-
 * with the 8bit maps, the following FIXME could be fixed.
 FIXME to be fixed with unicode to 8bit tables
 
@@ -253,12 +253,8 @@ the use of non 8 bit representation of characters.
 * makeinfo in title, for @code{something} leads to `something'. In 
 texi2html all the style commands are removed without extra formatting.
 
-1. * include-value.texi is broken. And a test of substitution of @value and
-@macro is other commands, like syncodeindex and similar is missing. Done
-in many misc commands, remains to be done in pass0 macros and for coverage.
-
 * test for @deffn with end of line protected in @footnote (to test 
-end of line protection in keep_texi).
+  end of line protection in keep_texi).
 
 * empty lines in @hyphenation are not valid for texi2dvi
 
@@ -267,18 +263,14 @@ end of line protection in keep_texi).
   like @html, at least when expanding it.
 
 * texinfo expands @-commands normally in @documentdescription, but keeps --,
-texi2html uses simple_format which removes most @commands but uses entities
+  texi2html uses simple_format which removes most @commands but uses 
+  entities
 
 * clean formatting/def_cmds.texi to remove invalid texinfo and put it
-in an ifset.
-
-* document the new $image arguments
+  in an ifset.
 
 * if a 'term' triggers no_paragraph, the ouput may be more valid. But a 
-center won't have any effect in it.
-
-* in first @ref arg, ` is transformed to the corresponding entity, while
-  it is not done in @node, and seems like makeinfo doesn't do it either.
+  center won't have any effect in it.
 
 * end of line after a @contents should certainly be kept in xml.init
 
@@ -295,3 +287,47 @@ center won't have any effect in it.
 * the hack to use <tt> in table item when in preformatted could take into
   account the fact that display and format inherit the font from other 
   nested complex formats.
+
+* macros/value_in_pass0_macros result is very different from texi2dvi and
+  makeinfo. To be verified that cp in fn is style not in @code.
+
+  Also certainly simpler and more focused tests to do for syn/syncode
+
+* decide @documentencoding @. And maybe change regexp.
+
+* only_inter_item_commands doesn't seems to work in docbook listitem
+
+* html32 is not up to date: 
+Error at line 2159, character 8:  unknown entity "euro"
+Error at line 2161, character 7:  unknown entity "le"
+Error at line 2162, character 7:  unknown entity "ge"
+
+For headings. In normal it is strong.
+Error at line 2616, character 4:  element "H1" not allowed here; check
+        which elements this element may be contained within
+Error at line 2619, character 4:  element "H1" not allowed here; check
+        which elements this element may be contained within
+Error at line 2622, character 4:  element "H2" not allowed here; check
+        which elements this element may be contained within
+Error at line 2625, character 4:  element "H3" not allowed here; check
+        which elements this element may be contained within
+Error at line 2628, character 4:  element "H4" not allowed here; check
+        which elements this element may be contained within
+
+* verify that code_style is used for code_style stylea @-commands 
+  in remove_texi.
+
+* docbook is very picky in variablelist.
+valistentry has (term+ , listitem). So one have to create empty listitem
+if needed.
+Also no paragraph in title.
+And in function only replaceable and type. And in replaceable, nothing.
+
+* fix index name transliteration in nodetest_latin1_no_unicode,
+nodetest_utf8_no_unicode.
+
+* why do index entries use 'label', and not id,target?
+
+* transliterate section names, like index entries were done
+
+* conditionalize transliteration to not using the new cross ref scheme

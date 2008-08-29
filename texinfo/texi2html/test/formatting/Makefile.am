@@ -7,7 +7,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  symbol_after_block.texi html-extrali.texi html-para.texi html-title.texi \
  images.texi index_in_item_line_table.texi index_in_item_line_vtable.texi \
  index_in_item_line_table_in_code.texi table_in_table_item.texi \
- nested_formats.texi \
+ nested_formats.texi inter_item_commands.texi \
  f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res
 

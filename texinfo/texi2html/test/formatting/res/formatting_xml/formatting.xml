@@ -156,7 +156,7 @@ but , ,
 <code>@file{--a}</code> <file>--a</file>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
-<code>@key{--a}</code> <key>&ndash;a</key>
+<code>@key{--a}</code> <key>--a</key>
 <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
@@ -179,6 +179,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -210,7 +211,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
 <code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
 </para>
 <sp lines="2"></sp>
 
@@ -290,7 +291,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para><emph> e&ndash;mph item</emph>
+<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -342,10 +343,10 @@ After clickstyle &rArr;
 </format>
 <smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
-<definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">de&ndash;ffn_name</indexterm><defcategory>cate&ndash;gory</defcategory><deffunction>de&ndash;ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
@@ -382,61 +383,61 @@ After clickstyle &rArr;
 <definitionitem><!-- comment -->
 <para>text in def item for second def item
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvr_name</indexterm><defcategory>c&ndash;ategory</defcategory><defvariable>d&ndash;efvr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efvr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypeop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypeop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevr_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efcv_name</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efcv_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efcv
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="tp">d&ndash;eftp_name</indexterm><defcategory>c&ndash;ategory</defcategory><defdatatype>d&ndash;eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftp
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efun_name</indexterm><defcategory>Function</defcategory><deffunction>d&ndash;efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d&ndash;efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmac
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d&ndash;efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efspec
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d&ndash;efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
 <definitionitem><para>d&ndash;efvar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d&ndash;efopt_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efopt
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevar_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypeivar_name of c&ndash;lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t&ndash;ype</deftype><defclassvar>d&ndash;eftypeivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;eftypeivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmethod
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypemethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypemethod
 </para></definitionitem></definition>
-<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c&mdash;hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n&mdash;ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
 <code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
@@ -444,11 +445,11 @@ After clickstyle &rArr;
 <para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
 <code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
 <code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
-<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s&ndash;ect,ion</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
 </para>
 <para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<xref><xrefnodename>s&ndash;ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
 </para>
 <para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
 <code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
@@ -494,7 +495,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </para>
 <para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
 <table><!-- comment in table -->
@@ -554,11 +555,11 @@ This is a very simple texi manual @  &lt;&gt;.
 
 
 <titlepage>
-<booktitle>title --a</booktitle>
-<booksubtitle>formatting subtitle --a</booksubtitle>
-<booksubtitle>subtitle 2 --a</booksubtitle>
-<author>author1 --a</author>
-<author>author2 --a</author>
+<booktitle>title &ndash;a</booktitle>
+<booksubtitle>formatting subtitle &ndash;a</booksubtitle>
+<booksubtitle>subtitle 2 &ndash;a</booksubtitle>
+<author>author1 &ndash;a with accents in name T&eacute;&ccedil;a</author>
+<author>author2 &ndash;a</author>
 <para>In titlepage
 </para>
 <para>&lt;
@@ -688,7 +689,7 @@ but , ,
 <code>@file{--a}</code> <file>--a</file>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
-<code>@key{--a}</code> <key>&ndash;a</key>
+<code>@key{--a}</code> <key>--a</key>
 <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
@@ -711,6 +712,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -742,7 +744,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
 <code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
 </para>
 <sp lines="2"></sp>
 
@@ -822,7 +824,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para><emph> e&ndash;mph item</emph>
+<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -874,10 +876,10 @@ After clickstyle &rArr;
 </format>
 <smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
-<definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">de&ndash;ffn_name</indexterm><defcategory>cate&ndash;gory</defcategory><deffunction>de&ndash;ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
@@ -914,61 +916,61 @@ After clickstyle &rArr;
 <definitionitem><!-- comment -->
 <para>text in def item for second def item
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvr_name</indexterm><defcategory>c&ndash;ategory</defcategory><defvariable>d&ndash;efvr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efvr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypeop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypeop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevr_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efcv_name</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efcv_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efcv
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="tp">d&ndash;eftp_name</indexterm><defcategory>c&ndash;ategory</defcategory><defdatatype>d&ndash;eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftp
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efun_name</indexterm><defcategory>Function</defcategory><deffunction>d&ndash;efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d&ndash;efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmac
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d&ndash;efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efspec
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d&ndash;efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
 <definitionitem><para>d&ndash;efvar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d&ndash;efopt_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efopt
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevar_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypeivar_name of c&ndash;lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t&ndash;ype</deftype><defclassvar>d&ndash;eftypeivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;eftypeivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmethod
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypemethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypemethod
 </para></definitionitem></definition>
-<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c&mdash;hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n&mdash;ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
 <code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
@@ -976,11 +978,11 @@ After clickstyle &rArr;
 <para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
 <code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
 <code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
-<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s&ndash;ect,ion</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
 </para>
 <para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<xref><xrefnodename>s&ndash;ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
 </para>
 <para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
 <code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
@@ -1026,7 +1028,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </para>
 <para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
 <table><!-- comment in table -->
@@ -1215,7 +1217,7 @@ but , ,
 <code>@file{--a}</code> <file>--a</file>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
-<code>@key{--a}</code> <key>&ndash;a</key>
+<code>@key{--a}</code> <key>--a</key>
 <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
@@ -1238,6 +1240,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -1269,7 +1272,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
 <code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
 </para>
 <sp lines="2"></sp>
 
@@ -1349,7 +1352,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para><emph> e&ndash;mph item</emph>
+<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -1401,10 +1404,10 @@ After clickstyle &rArr;
 </format>
 <smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
-<definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">de&ndash;ffn_name</indexterm><defcategory>cate&ndash;gory</defcategory><deffunction>de&ndash;ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
@@ -1441,61 +1444,61 @@ After clickstyle &rArr;
 <definitionitem><!-- comment -->
 <para>text in def item for second def item
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvr_name</indexterm><defcategory>c&ndash;ategory</defcategory><defvariable>d&ndash;efvr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efvr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypeop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypeop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevr_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efcv_name</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efcv_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efcv
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="tp">d&ndash;eftp_name</indexterm><defcategory>c&ndash;ategory</defcategory><defdatatype>d&ndash;eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftp
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efun_name</indexterm><defcategory>Function</defcategory><deffunction>d&ndash;efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d&ndash;efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmac
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d&ndash;efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efspec
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d&ndash;efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
 <definitionitem><para>d&ndash;efvar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d&ndash;efopt_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efopt
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevar_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypeivar_name of c&ndash;lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t&ndash;ype</deftype><defclassvar>d&ndash;eftypeivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;eftypeivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmethod
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypemethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypemethod
 </para></definitionitem></definition>
-<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c&mdash;hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n&mdash;ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
 <code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
@@ -1503,11 +1506,11 @@ After clickstyle &rArr;
 <para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
 <code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
 <code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
-<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s&ndash;ect,ion</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
 </para>
 <para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<xref><xrefnodename>s&ndash;ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
 </para>
 <para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
 <code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
@@ -1553,7 +1556,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </para>
 <para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
 <table><!-- comment in table -->
@@ -1743,7 +1746,7 @@ but , ,
 <code>@file{--a}</code> <file>--a</file>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
-<code>@key{--a}</code> <key>&ndash;a</key>
+<code>@key{--a}</code> <key>--a</key>
 <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
@@ -1766,6 +1769,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -1797,7 +1801,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
 <code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
 </para>
 <sp lines="2"></sp>
 
@@ -1877,7 +1881,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para><emph> e&ndash;mph item</emph>
+<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -1929,10 +1933,10 @@ After clickstyle &rArr;
 </format>
 <smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
-<definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">de&ndash;ffn_name</indexterm><defcategory>cate&ndash;gory</defcategory><deffunction>de&ndash;ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
@@ -1969,61 +1973,61 @@ After clickstyle &rArr;
 <definitionitem><!-- comment -->
 <para>text in def item for second def item
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvr_name</indexterm><defcategory>c&ndash;ategory</defcategory><defvariable>d&ndash;efvr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efvr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypeop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypeop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevr_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efcv_name</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efcv_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efcv
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="tp">d&ndash;eftp_name</indexterm><defcategory>c&ndash;ategory</defcategory><defdatatype>d&ndash;eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftp
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efun_name</indexterm><defcategory>Function</defcategory><deffunction>d&ndash;efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d&ndash;efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmac
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d&ndash;efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efspec
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d&ndash;efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
 <definitionitem><para>d&ndash;efvar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d&ndash;efopt_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efopt
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevar_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypeivar_name of c&ndash;lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t&ndash;ype</deftype><defclassvar>d&ndash;eftypeivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;eftypeivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmethod
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypemethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypemethod
 </para></definitionitem></definition>
-<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c&mdash;hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n&mdash;ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
 <code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
@@ -2031,11 +2035,11 @@ After clickstyle &rArr;
 <para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
 <code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
 <code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
-<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s&ndash;ect,ion</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
 </para>
 <para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<xref><xrefnodename>s&ndash;ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
 </para>
 <para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
 <code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
@@ -2081,7 +2085,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </para>
 <para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
 <table><!-- comment in table -->
@@ -2269,7 +2273,7 @@ but , ,
 <code>@file{--a}</code> <file>--a</file>
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
-<code>@key{--a}</code> <key>&ndash;a</key>
+<code>@key{--a}</code> <key>--a</key>
 <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
@@ -2292,6 +2296,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -2323,7 +2328,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
 <code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
 </para>
 <sp lines="2"></sp>
 
@@ -2403,7 +2408,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para><emph> e&ndash;mph item</emph>
+<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -2455,10 +2460,10 @@ After clickstyle &rArr;
 </format>
 <smallformat xml:space="preserve">s&ndash;mallformat
 </smallformat>
-<definition><definitionterm><indexterm index="fn">d&ndash;effn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deffunction>d&ndash;effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;effn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">de&ndash;ffn_name</indexterm><defcategory>cate&ndash;gory</defcategory><deffunction>de&ndash;ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam>    more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
 <definitionitem><para>def&ndash;fn
 </para></definitionitem></definition> 
 <definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
@@ -2495,61 +2500,61 @@ After clickstyle &rArr;
 <definitionitem><!-- comment -->
 <para>text in def item for second def item
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvr_name</indexterm><defcategory>c&ndash;ategory</defcategory><defvariable>d&ndash;efvr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efvr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefn_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefn
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypeop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypeop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevr_name</indexterm><defcategory>c&ndash;ategory</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevr_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevr
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efcv_name</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efcv_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efcv
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efop_name on c&ndash;lass</indexterm><defcategory>c&ndash;ategory</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efop
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="tp">d&ndash;eftp_name</indexterm><defcategory>c&ndash;ategory</defcategory><defdatatype>d&ndash;eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftp
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efun_name</indexterm><defcategory>Function</defcategory><deffunction>d&ndash;efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d&ndash;efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmac
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d&ndash;efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efspec
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d&ndash;efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
 <definitionitem><para>d&ndash;efvar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d&ndash;efopt_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;efopt
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t&ndash;ype</deftype><deffunction>d&ndash;eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypefun
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t&ndash;ype</deftype><defvariable>d&ndash;eftypevar_name</defvariable></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&ndash;eftypevar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c&ndash;lass</defclass><defclassvar>d&ndash;efivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;efivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="vr">d&ndash;eftypeivar_name of c&ndash;lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t&ndash;ype</deftype><defclassvar>d&ndash;eftypeivar_name</defclassvar></definitionterm>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&ndash;eftypeivar
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;efmethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><defclass>c&ndash;lass</defclass><defoperation>d&ndash;efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&ndash;efmethod
 </para></definitionitem></definition>
-<definition><definitionterm><indexterm index="fn">d&ndash;eftypemethod_name on c&ndash;lass</indexterm><defcategory>Method</defcategory><deftype>t&ndash;ype</deftype><defoperation>d&ndash;eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&ndash;eftypemethod
 </para></definitionitem></definition>
-<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c&mdash;hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n&mdash;ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
 <code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
 <code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
@@ -2557,11 +2562,11 @@ After clickstyle &rArr;
 <para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
 <code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
 <code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
-<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s&ndash;ect,ion</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
 </para>
 <para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<xref><xrefnodename>s&ndash;ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
 </para>
 <para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
 <code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
@@ -2607,7 +2612,7 @@ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual nam
 </para>
 <para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <inforef><inforefnodename>s&ndash;ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
 </para>
 
 <table><!-- comment in table -->
@@ -2818,6 +2823,7 @@ but , ,
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc></uref>
 <code>@var{--a}</code> <var>--a</var>
 <code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> --a''
@@ -2849,7 +2855,7 @@ but , ,
 <code>@image{f--ile,,,,e-d-xt}</code> <image width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></image>
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image>
 <code>@image{f-ile,aze,,a--lt}</code> <image width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></image>
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <image width="aze" height="az" name="@file{f--ile}@@@." extension="@file{file ext} e--xt@}"><alttext>alt</alttext></image>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <image width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></image>
 
 <sp lines="2"></sp>
 
@@ -3230,12 +3236,12 @@ This is a very simple texi manual @  &lt;&gt;.
 <format xml:space="preserve"><menu>
 <menuentry>
 <menunode> s--ect,ion</menunode>
-<menutitle> s--ect,ion</menutitle>
-<menucomment> s--ect,ion
+<menutitle> s&ndash;ect,ion</menutitle>
+<menucomment> s&ndash;ect,ion
 </menucomment>
 </menuentry>
 Menu comment
-``simple-double--three---four----''&linebreak;
+&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
 
 </menu>
 </format>
@@ -3266,7 +3272,7 @@ Menu comment
 <menu>
 <menuentry>
 <menunode> subsubsection ``simple-double--three---four----''</menunode>
-<menutitle> subsubsection ``simple-double--three---four----''</menutitle>
+<menutitle> subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>

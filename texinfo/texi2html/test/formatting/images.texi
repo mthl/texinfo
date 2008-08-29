@@ -2,11 +2,27 @@
 
 @setfilename images.info
 
+@macro files_char
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+@end macro
+
 @copying
 In copying.
 @image{f--ile}.
 
 Text in copying.
+@files_char{}
 @end copying
 
 @node Top
@@ -37,6 +53,8 @@ Text. @code{f---ile} with jpeg extension.
 
 @image{f--ile}.
 
+
+@files_char{}
 @end example
 
 @float
@@ -45,5 +63,7 @@ In float.
 
 @image{f--ile}.
 @end float
+
+@files_char{}
 
 @bye

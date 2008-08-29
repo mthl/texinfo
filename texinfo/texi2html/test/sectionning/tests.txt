@@ -1,4 +1,5 @@
 texi html-top.texi
+top top.texi
 sectionning sectionning.texi
 sectionning_directions sectionning.texi -init test_directions.init
 makeinfo_novalidate_split novalidate.texi -init makeinfo.init -no-node-file

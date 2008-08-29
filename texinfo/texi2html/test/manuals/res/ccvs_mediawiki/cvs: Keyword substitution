@@ -67,12 +67,12 @@ a new revision of the file.
 <p>This is a list of the keywords:
 </p>
 <dl compact="compact">
-<dd><div id="IDX182"></div>
+<dd><div id="index-Author-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Author$</code></dt>
 <dd><p>The login name of the user who checked in the revision.
 </p>
-<div id="IDX183"></div>
+<div id="index-CVSHeader-keyword"></div>
 </dd>
 <dt> <code>$<i></i>CVSHeader</code></dt>
 <dd><p>A standard header (similar to $<i></i>Header$, but with
@@ -90,12 +90,12 @@ be excluded using the <code>KeywordExpansion=eCVSHeader</code>
 in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file. 
 See [[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more details.
 </p>
-<div id="IDX184"></div>
+<div id="index-Date-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Date$</code></dt>
 <dd><p>The date and time (UTC) the revision was checked in.
 </p>
-<div id="IDX185"></div>
+<div id="index-Header-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Header$</code></dt>
 <dd><p>A standard header containing the full pathname of the
@@ -103,13 +103,13 @@ See [[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more det
 author, the state, and the locker (if locked).  Files
 will normally never be locked when you use <small>CVS</small>.
 </p>
-<div id="IDX186"></div>
+<div id="index-Id-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Id$</code></dt>
 <dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
 filename is without a path.
 </p>
-<div id="IDX187"></div>
+<div id="index-Name-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Name$</code></dt>
 <dd><p>Tag name used to check out this file.  The keyword is
@@ -117,14 +117,14 @@ expanded only if one checks out with an explicit tag
 name.  For example, when running the command <code>cvs
 co -r first</code>, the keyword expands to &lsquo;<samp>Name: first</samp>&rsquo;.
 </p>
-<div id="IDX188"></div>
+<div id="index-Locker-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Locker$</code></dt>
 <dd><p>The login name of the user who locked the revision
 (empty if not locked, which is the normal case unless
 <code>cvs admin -l</code> is in use).
 </p>
-<div id="IDX189"></div>
+<div id="index-Log-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Log$</code></dt>
 <dd><p>The log message supplied during commit, preceded by a
@@ -154,28 +154,28 @@ accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
 See section [[#Log-keyword|Problems with the $<i></i>Log$ keyword.]].
 </p>
-<div id="IDX190"></div>
+<div id="index-RCSfile-keyword"></div>
 </dd>
 <dt> <code>$<i></i>RCSfile$</code></dt>
 <dd><p>The name of the RCS file without a path.
 </p>
-<div id="IDX191"></div>
+<div id="index-Revision-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Revision$</code></dt>
 <dd><p>The revision number assigned to the revision.
 </p>
-<div id="IDX192"></div>
+<div id="index-Source-keyword"></div>
 </dd>
 <dt> <code>$<i></i>Source$</code></dt>
 <dd><p>The full pathname of the RCS file.
 </p>
-<div id="IDX193"></div>
+<div id="index-State-keyword"></div>
 </dd>
 <dt> <code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
 assigned with <code>cvs admin -s</code>&mdash;see [cvs: Guide to CVS commands#admin-options admin options].
 </p>
-<div id="IDX194"></div>
+<div id="index-Local-keyword"></div>
 </dd>
 <dt> <code>Local keyword</code></dt>
 <dd><p>The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
@@ -263,7 +263,7 @@ provide a way to pass a string through to generated
 files.
 </p>
 
-<div id="IDX195"></div>
+<div id="index-Ident-_0028shell-command_0029"></div>
 <p>The <code>ident</code> command (which is part of the <small>RCS</small>
 package) can be used to extract keywords and their
 values from a file.  This can be handy for text files,
@@ -279,7 +279,7 @@ a.out:
      $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </nowiki></pre></td></tr></table>
 
-<div id="IDX196"></div>
+<div id="index-What-_0028shell-command_0029"></div>
 <p>S<small>CCS</small> is another popular revision control system.
 It has a command, <code>what</code>, which is very similar to
 <code>ident</code> and used for the same purpose.  Many sites

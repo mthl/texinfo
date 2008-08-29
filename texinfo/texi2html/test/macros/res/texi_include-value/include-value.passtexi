@@ -12,16 +12,19 @@ include-value.texi(,12)
 include-value.texi(,13) 
 include-value.texi(,14) @node Top
 include-value.texi(,15) 
-include-value.texi(,17) testvar include: include-value.texi(,17) 
-include-value.texi(,18) testvar verbatiminclude: @verbatiminclude @value{testvar}
+incl-incl.txi(,1) testvar include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,17) 
+include-value.texi(,18) testvar verbatiminclude: @verbatiminclude incl-incl.txi
 include-value.texi(,19) 
 include-value.texi(,20) 
-include-value.texi(,22) test-var include: include-value.texi(,22) 
-include-value.texi(,23) test-var verbatiminclude: @verbatiminclude @value{test-var}i
+incl-incl.txi(,1) test-var include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,22) 
+include-value.texi(,23) test-var verbatiminclude: @verbatiminclude incl-incl.txi
 include-value.texi(,24) 
 include-value.texi(,25) 
-include-value.texi(,27) test_var include: include-value.texi(,27) 
-include-value.texi(,28) test_var verbatiminclude: @verbatiminclude i@value{test_var}i
+incl-incl.txi(,1) test_var include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,27) 
+include-value.texi(,28) test_var verbatiminclude: @verbatiminclude incl-incl.txi
 include-value.texi(,29) 
 include-value.texi(,30) 
 include-value.texi(,31) @bye

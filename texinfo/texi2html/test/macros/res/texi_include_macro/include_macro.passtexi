@@ -4,6 +4,6 @@ include_macro.texi(,4) @top test inclusion of a file defining a macro
 include_macro.texi(,5) 
 include_macro.texi(,7) 
 include_macro.texi(,8) Call macro
-include_macro.texi(themacro,9) in themacroinclude_macro.texi(themacro,9) 
+include_macro.texi(themacro,9) in themacro
 include_macro.texi(,10) 
 include_macro.texi(,11) @bye

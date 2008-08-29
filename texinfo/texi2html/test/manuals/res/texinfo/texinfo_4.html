@@ -370,8 +370,8 @@ else on the line; anything on the line after the command is considered
 part of the file name, including what would otherwise be a
 comment.
 </p>
-<a name="IDX66"></a>
-<a name="IDX67"></a>
+<a name="index-Ignored-before-_0040setfilename"></a>
+<a name="index-_005cinput-source-line-ignored"></a>
 <p>The Info formatting commands ignore everything written before the
 <code>@setfilename</code> line, which is why the very first line of
 the file (the <code>\input</code> line) does not show up in the output.
@@ -382,9 +382,9 @@ file.  There are two conventions for choosing the name: you can either
 remove the extension (such as &lsquo;<samp>.texi</samp>&rsquo;) entirely from the input file
 name, or, preferably, replace it with the &lsquo;<samp>.info</samp>&rsquo; extension.
 </p>
-<a name="IDX68"></a>
-<a name="IDX69"></a>
-<a name="IDX70"></a>
+<a name="index-Length-of-file-names"></a>
+<a name="index-File-name-collision"></a>
+<a name="index-Info-file-name_002c-choosing"></a>
 <p>Although an explicit &lsquo;<samp>.info</samp>&rsquo; extension is preferable, some
 operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
@@ -404,7 +404,7 @@ files named &lsquo;<tt>texin-10</tt>&rsquo;, &lsquo;<tt>gcc.i12</tt>&rsquo;, etc
 with &lsquo;<samp>html</samp>&rsquo;, or add &lsquo;<samp>.html</samp>&rsquo; if the given name has no
 extension.
 </p>
-<a name="IDX71"></a>
+<a name="index-texinfo_002ecnf"></a>
 <p>The <code>@setfilename</code> line produces no output when you typeset a
 manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
@@ -448,7 +448,7 @@ including what would otherwise be a comment.
 <p>The <code>@settitle</code> command should precede everything that generates
 actual output in TeX.
 </p>
-<a name="IDX72"></a>
+<a name="index-_003ctitle_003e-HTML-tag"></a>
 <p>In the HTML file produced by <code>makeinfo</code>, <var>title</var> also serves
 as the document &lsquo;<samp>&lt;title&gt;</samp>&rsquo; and the default document description in
 the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; part; see <a href="#documentdescription"><code>@documentdescription</code>: Summary text</a>, for how to change
@@ -598,7 +598,7 @@ Info, HTML, and XML output files.  It is <em>not</em> output implicitly in
 plain text or TeX; it&rsquo;s up to you to use <code>@insertcopying</code> to
 emit the copying information.  See the next section for details.
 </p>
-<a name="IDX73"></a>
+<a name="index-copyright"></a>
 <p>In output formats that support it (print and HTML), the
 <code>@copyright{}</code> command generates a &lsquo;<samp>c</samp>&rsquo; inside a circle.  In
 Info and plain text, it generates &lsquo;<samp>(C)</samp>&rsquo;.  The copyright notice
@@ -607,18 +607,18 @@ itself has the following legally defined sequence:
 <table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
 </pre></td></tr></table>
 
-<a name="IDX74"></a>
+<a name="index-Copyright-word_002c-always-in-English"></a>
 <p>The word &lsquo;Copyright&rsquo; must always be written in English, even if the
 manual is otherwise in another language.  This is due to international
 law.
 </p>
-<a name="IDX75"></a>
+<a name="index-Years_002c-in-copyright-line"></a>
 <p>The list of years should include all years in which a version was
 completed (even if it was released in a subsequent year).  Ranges are
 not allowed, each year must be written out individually, separated by
 commas.
 </p>
-<a name="IDX76"></a>
+<a name="index-Copyright-owner-for-FSF-works"></a>
 <p>The copyright owner (or owners) is whoever holds legal copyright on the
 work.  In the case of works assigned to the FSF, the owner is &lsquo;Free
 Software Foundation, Inc.&rsquo;.
@@ -711,8 +711,8 @@ obscure TeX typesetting commands that cannot be used in an Info file.
 In addition, this part of the beginning of a Texinfo file contains the
 text of the copying permissions that appears in the printed manual.
 </p>
-<a name="IDX77"></a>
-<a name="IDX78"></a>
+<a name="index-Title-page_002c-for-plain-text"></a>
+<a name="index-Copyright-page_002c-for-plain-text"></a>
 <p>You may wish to include titlepage-like information for plain text
 output.  Simply place any such leading material between
 <code>@ifplaintext</code> and <code>@end ifplaintext</code>; <code>makeinfo</code>
@@ -773,7 +773,7 @@ unnumbered pages should be put between the <code>@titlepage</code> and
 appear there with the <code>@setcontentsaftertitlepage</code> command
 (see section <a href="texinfo_5.html#Contents">Generating a Table of Contents</a>).
 </p>
-<a name="IDX79"></a>
+<a name="index-page_002c-within-_0040titlepage"></a>
 <p>By using the <code>@page</code> command you can force a page break within the
 region delineated by the <code>@titlepage</code> and <code>@end titlepage</code>
 commands and thereby create more than one unnumbered page.  This is how
@@ -804,9 +804,9 @@ you want, and Texinfo does the formatting.
 <p>You may use either method, or you may combine them; see the examples in
 the sections below.
 </p>
-<a name="IDX80"></a>
-<a name="IDX81"></a>
-<a name="IDX82"></a>
+<a name="index-shorttitlepage"></a>
+<a name="index-Bastard-title-page"></a>
+<a name="index-Title-page_002c-bastard"></a>
 <p>For extremely simple applications, and for the bastard title page in
 traditional book front matter, Texinfo also provides a command
 <code>@shorttitlepage</code> which takes the rest of the line as the title.
@@ -1002,8 +1002,8 @@ numbered.  Therefore, in Texinfo, the information on the copyright page
 should be within <code>@titlepage</code> and <code>@end titlepage</code>
 commands.
 </p>
-<a name="IDX83"></a>
-<a name="IDX84"></a>
+<a name="index-vskip-TeX-vertical-skip"></a>
+<a name="index-filll-TeX-dimension"></a>
 <p>Use the <code>@page</code> command to cause a page break.  To push the
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
@@ -1209,7 +1209,7 @@ manual (including the version number) and copying permissions, and end
 with a master menu for the whole manual.  Of course you should include
 any other general information you feel a reader would find helpful.
 </p>
-<a name="IDX85"></a>
+<a name="index-top"></a>
 <p>It is also conventional to write an <code>@top</code> sectioning command line
 containing the title of the document immediately after the <code>@node
 Top</code> line (see section <a href="texinfo_7.html#makeinfo-top-command">The <code>@top</code> Sectioning Command</a>).
@@ -1667,7 +1667,7 @@ right to use and share the software.
 <p>The copying and distribution information and the disclaimer are followed
 by an introduction or else by the first chapter of the manual.
 </p>
-<a name="IDX86"></a>
+<a name="index-Introduction_002c-as-part-of-file"></a>
 <p>Although an introduction is not a required part of a Texinfo file, it
 is very helpful.  Ideally, it should state clearly and concisely what
 the file is about and who would be interested in reading it.  In

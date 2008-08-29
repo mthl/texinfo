@@ -22,7 +22,7 @@
 </nowiki>&bull;[cvs: History browsing#History-browsing  History browsing]::<nowiki>            Viewing the history of files in various ways
 
 CVS and the Real World.
------------------------
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
 </nowiki>&bull;[cvs: Handling binary files#Binary-files  Binary files]::<nowiki>                CVS can handle binary files
 </nowiki>&bull;[cvs: Multiple developers#Multiple-developers  Multiple developers]::<nowiki>         How CVS helps a group of developers
 </nowiki>&bull;[cvs: Revision management#Revision-management  Revision management]::<nowiki>         Policy questions for revision management
@@ -32,7 +32,7 @@ CVS and the Real World.
 </nowiki>&bull;[cvs: Special Files#Special-Files  Special Files]::<nowiki>		Devices, links and other non-regular files
 
 References.
------------
+&mdash;&mdash;&mdash;&ndash;
 </nowiki>&bull;[cvs: Guide to CVS commands#CVS-commands  CVS commands]::<nowiki>                CVS commands share some things
 </nowiki>&bull;[cvs: Quick reference to CVS commands#Invoking-CVS  Invoking CVS]::<nowiki>                Quick reference to CVS commands
 </nowiki>&bull;[cvs: Reference manual for Administrative files#Administrative-files  Administrative files]::<nowiki>        Reference manual for the Administrative files

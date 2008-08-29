@@ -140,7 +140,7 @@ classify a file in a number of states.  The states, as
 reported by the <code>status</code> command, are:
 </p>
 <dl compact="compact">
-<dd><a name="IDX136"></a>
+<dd><a name="index-Up_002dto_002ddate"></a>
 </dd>
 <dt> Up-to-date</dt>
 <dd><p>The file is identical with the latest revision in the
@@ -148,24 +148,24 @@ repository for the branch in use.
 </p>
 </dd>
 <dt> Locally Modified</dt>
-<dd><a name="IDX137"></a>
+<dd><a name="index-Locally-Modified"></a>
 <p>You have edited the file, and not yet committed your changes.
 </p>
 </dd>
 <dt> Locally Added</dt>
-<dd><a name="IDX138"></a>
+<dd><a name="index-Locally-Added"></a>
 <p>You have added the file with <code>add</code>, and not yet
 committed your changes.
 </p>
 </dd>
 <dt> Locally Removed</dt>
-<dd><a name="IDX139"></a>
+<dd><a name="index-Locally-Removed"></a>
 <p>You have removed the file with <code>remove</code>, and not yet
 committed your changes.
 </p>
 </dd>
 <dt> Needs Checkout</dt>
-<dd><a name="IDX140"></a>
+<dd><a name="index-Needs-Checkout"></a>
 <p>Someone else has committed a newer revision to the
 repository.  The name is slightly misleading; you will
 ordinarily use <code>update</code> rather than
@@ -173,27 +173,27 @@ ordinarily use <code>update</code> rather than
 </p>
 </dd>
 <dt> Needs Patch</dt>
-<dd><a name="IDX141"></a>
+<dd><a name="index-Needs-Patch"></a>
 <p>Like Needs Checkout, but the <small>CVS</small> server will send
 a patch rather than the entire file.  Sending a patch or
 sending an entire file accomplishes the same thing.
 </p>
 </dd>
 <dt> Needs Merge</dt>
-<dd><a name="IDX142"></a>
+<dd><a name="index-Needs-Merge"></a>
 <p>Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
 </p>
 </dd>
 <dt> Unresolved Conflict</dt>
-<dd><a name="IDX143"></a>
+<dd><a name="index-Unresolved-Conflict"></a>
 <p>A file with the same name as this new file has been added to the repository
 from a second workspace.  This file will need to be moved out of the way
 to allow an <code>update</code> to complete.
 </p>
 </dd>
 <dt> File had conflicts on merge</dt>
-<dd><a name="IDX144"></a>
+<dd><a name="index-File-had-conflicts-on-merge"></a>
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
@@ -201,7 +201,7 @@ resolve the conflict as described in <a href="#Conflicts-example">Conflicts exam
 </p>
 </dd>
 <dt> Unknown</dt>
-<dd><a name="IDX145"></a>
+<dd><a name="index-Unknown"></a>
 <p><small>CVS</small> doesn&rsquo;t know anything about this file.  For
 example, you have created a new file and have not run
 <code>add</code>.
@@ -232,7 +232,7 @@ repository might change before you actually run
 display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
 </p>
-<a name="IDX146"></a>
+<a name="index-update_002c-to-display-file-status"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs -n -q update
 </pre></td></tr></table>
 
@@ -280,7 +280,7 @@ shortly after that revision 1.6.  If you run <code>update</code> on the file
 now, <small>CVS</small> will incorporate all changes between revision 1.4 and 1.6 into
 your file.
 </p>
-<a name="IDX147"></a>
+<a name="index-Overlap"></a>
 <p>If any of the changes between 1.4 and 1.6 were made too
 close to any of the changes you have made, an
 <em>overlap</em> occurs.  In such cases a warning is
@@ -377,7 +377,7 @@ cvs update: conflicts found in driver.c
 C driver.c
 </pre></td></tr></table>
 
-<a name="IDX148"></a>
+<a name="index-Conflicts-_0028merge-example_0029"></a>
 <p><small>CVS</small> tells you that there were some conflicts.
 Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
@@ -408,18 +408,18 @@ int main(int argc,
 }
 </pre></td></tr></table>
 
-<a name="IDX149"></a>
-<a name="IDX150"></a>
-<a name="IDX151"></a>
-<a name="IDX152"></a>
-<a name="IDX153"></a>
+<a name="index-Markers_002c-conflict"></a>
+<a name="index-Conflict-markers"></a>
+<a name="index-_003c_003c_003c_003c_003c_003c_003c"></a>
+<a name="index-_003e_003e_003e_003e_003e_003e_003e"></a>
+<a name="index-_003d_003d_003d_003d_003d_003d_003d"></a>
 
 <p>Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
 &lsquo;<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>&rsquo;, &lsquo;<samp>=======</samp>&rsquo; and &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>&rsquo;.
 </p>
-<a name="IDX154"></a>
-<a name="IDX155"></a>
+<a name="index-Resolving-a-conflict"></a>
+<a name="index-Conflict-resolution"></a>
 <p>You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
@@ -465,7 +465,7 @@ line that don&rsquo;t mark a conflict), the current
 version of <small>CVS</small> will print a warning and proceed to
 check in the file.
 </p>
-<a name="IDX156"></a>
+<a name="index-emerge"></a>
 <p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
 Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
@@ -528,9 +528,9 @@ time, one may get the following message:
 <table><tr><td>&nbsp;</td><td><pre class="example">[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
 </pre></td></tr></table>
 
-<a name="IDX157"></a>
-<a name="IDX158"></a>
-<a name="IDX159"></a>
+<a name="index-_0023cvs_002erfl_002c-removing"></a>
+<a name="index-_0023cvs_002ewfl_002c-removing"></a>
+<a name="index-_0023cvs_002elock_002c-removing"></a>
 <p><small>CVS</small> will try again every 30 seconds, and either
 continue with the operation or print the message again,
 if it still needs to wait.  If a lock seems to stick
@@ -552,8 +552,8 @@ the word <em>lock</em> in the sense used by
 repository at a time; only when someone is writing do
 the locks prevent other people from reading or writing.
 </p>
-<a name="IDX160"></a>
-<a name="IDX161"></a>
+<a name="index-Atomic-transactions_002c-lack-of"></a>
+<a name="index-Transactions_002c-atomic_002c-lack-of"></a>
 <p>One might hope for the following property:
 </p>
 <blockquote><p>If someone commits some changes in one cvs command,
@@ -654,11 +654,11 @@ but <small>CVS</small> is not able to enforce this behavior.
 <p>To enable the watch features, you first specify that
 certain files are to be watched.
 </p>
-<a name="IDX162"></a>
+<a name="index-watch-on-_0028subcommand_0029"></a>
 <dl>
-<dt><a name="IDX163"></a><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-watch-on"></a><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
-<a name="IDX164"></a>
+<a name="index-Read_002donly-files_002c-and-watches"></a>
 <p>Specify that developers should run <code>cvs edit</code>
 before editing <var>files</var>.  <small>CVS</small> will create working
 copies of <var>files</var> read-only, to remind developers
@@ -677,11 +677,11 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.ht
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
-<a name="IDX165"></a>
+<a name="index-watch-off-_0028subcommand_0029"></a>
 </dd></dl>
 
 <dl>
-<dt><a name="IDX166"></a><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-watch-off"></a><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
@@ -720,9 +720,9 @@ the file, but generally you will want to use <code>cvs
 watch on</code>, to remind developers to use the <code>cvs edit</code>
 command.
 </p>
-<a name="IDX167"></a>
+<a name="index-watch-add-_0028subcommand_0029"></a>
 <dl>
-<dt><a name="IDX168"></a><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-watch-add"></a><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -778,9 +778,9 @@ omitted, the action defaults to <code>all</code>.
 </dd></dl>
 
 
-<a name="IDX169"></a>
+<a name="index-watch-remove-_0028subcommand_0029"></a>
 <dl>
-<dt><a name="IDX170"></a><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-watch-remove"></a><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
@@ -788,7 +788,7 @@ watches for the specified actions are removed.
 </p>
 </dd></dl>
 
-<a name="IDX171"></a>
+<a name="index-notify-_0028admin-file_0029"></a>
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
@@ -808,7 +808,7 @@ single line:
 
 <p>This causes users to be notified by electronic mail.
 </p>
-<a name="IDX172"></a>
+<a name="index-users-_0028admin-file_0029"></a>
 <p>Note that if you set this up in the straightforward
 way, users receive notifications on the server machine.
 One could of course write a &lsquo;<tt>notify</tt>&rsquo; script which
@@ -860,9 +860,9 @@ call this a <em>checkout</em>, but <small>CVS</small> uses that term
 for obtaining a copy of the sources (see section <a href="cvs_1.html#Getting-the-source">Getting the source</a>), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
-<a name="IDX173"></a>
+<a name="index-edit-_0028subcommand_0029"></a>
 <dl>
-<dt><a name="IDX174"></a><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-edit"></a><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
@@ -887,11 +887,11 @@ read-only state.  But if you instead decide to abandon
 your changes, or not to make any changes, you can use
 the <code>cvs unedit</code> command.
 </p>
-<a name="IDX175"></a>
-<a name="IDX176"></a>
-<a name="IDX177"></a>
+<a name="index-unedit-_0028subcommand_0029"></a>
+<a name="index-Abandoning-work"></a>
+<a name="index-Reverting-to-repository-version"></a>
 <dl>
-<dt><a name="IDX178"></a><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-unedit"></a><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
@@ -940,7 +940,7 @@ successful <small>CVS</small> command.
 <h3 class="subsection">10.6.4 Information about who is watching and editing</h3>
 
 <dl>
-<dt><a name="IDX179"></a><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-watchers"></a><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
@@ -951,9 +951,9 @@ includes the files being watched, and the mail address of each watcher.
 </dd></dl>
 
 
-<a name="IDX180"></a>
+<a name="index-editors-_0028subcommand_0029"></a>
 <dl>
-<dt><a name="IDX181"></a><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><a name="index-cvs-editors"></a><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began

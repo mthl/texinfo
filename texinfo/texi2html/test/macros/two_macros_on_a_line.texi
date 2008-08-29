@@ -1,0 +1,34 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename two_macros_on_a_line
+
+@node Top
+@top top
+
+@macro mymacro
+in mymacro
+@end macro
+
+@macro mymacro_with_args{arg}
+in with args
+now the arg \arg\
+after
+@end macro
+
+
+@@mymacro@{@} @@mymacro@{@}
+@mymacro{} @mymacro{}
+
+@@mymacro @@mymacro@{@}
+@mymacro @mymacro{}
+
+@@mymacro@{@} @@mymacro
+@mymacro{} @mymacro
+
+with args
+@mymacro_with_args {an
+arg
+
+in macro} @mymacro{}
+
+@bye

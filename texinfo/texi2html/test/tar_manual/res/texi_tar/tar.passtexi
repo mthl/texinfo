@@ -166,7 +166,7 @@ tar.texi(,124) * Book Contents::               What this Book Contains
 tar.texi(,125) * Definitions::                 Some Definitions
 tar.texi(,126) * What tar Does::               What @command{tar} Does
 tar.texi(,127) * Naming tar Archives::         How @command{tar} Archives are Named
-tar.texi(GNUTAR,128) * Authors::                     tar.texi(GNUTAR,128) @acronym{GNU} @command{tar}tar.texi(GNUTAR,128)  Authors
+tar.texi(GNUTAR,128) * Authors::                     tar.texi(GNUTAR,128) @acronym{GNU} @command{tar} Authors
 tar.texi(,129) * Reports::                     Reporting bugs or suggestions
 tar.texi(,130) 
 tar.texi(,131) Tutorial Introduction to @command{tar}
@@ -207,7 +207,7 @@ tar.texi(,165) * extract dir::
 tar.texi(,166) * extracting untrusted archives::
 tar.texi(,167) * failing commands::
 tar.texi(,168) 
-tar.texi(GNUTAR,169) Invoking tar.texi(GNUTAR,169) @acronym{GNU} @command{tar}tar.texi(GNUTAR,169) 
+tar.texi(GNUTAR,169) Invoking tar.texi(GNUTAR,169) @acronym{GNU} @command{tar}
 tar.texi(,170) 
 tar.texi(,171) * Synopsis::
 tar.texi(,172) * using tar options::
@@ -231,7 +231,7 @@ tar.texi(,189) * Operation Summary::
 tar.texi(,190) * Option Summary::
 tar.texi(,191) * Short Option Summary::
 tar.texi(,192) 
-tar.texi(GNUTAR,193) @acronym{GNU} @command{tar}tar.texi(GNUTAR,193)  Operations
+tar.texi(GNUTAR,193) @acronym{GNU} @command{tar} Operations
 tar.texi(,194) 
 tar.texi(,195) * Basic tar::
 tar.texi(,196) * Advanced tar::
@@ -241,7 +241,7 @@ tar.texi(,199) * backup::
 tar.texi(,200) * Applications::
 tar.texi(,201) * looking ahead::
 tar.texi(,202) 
-tar.texi(GNUTAR,203) Advanced tar.texi(GNUTAR,203) @acronym{GNU} @command{tar}tar.texi(GNUTAR,203)  Operations
+tar.texi(GNUTAR,203) Advanced tar.texi(GNUTAR,203) @acronym{GNU} @command{tar} Operations
 tar.texi(,204) 
 tar.texi(,205) * Operations::
 tar.texi(,206) * append::
@@ -374,7 +374,7 @@ tar.texi(,332) * Large or Negative Values::    Large files, negative time stamps
 tar.texi(,333) * Other Tars::                  How to Extract GNU-Specific Data Using
 tar.texi(,334)                                 Other @command{tar} Implementations
 tar.texi(,335) 
-tar.texi(GNUTAR,336) @acronym{GNU} @command{tar}tar.texi(GNUTAR,336)  and @acronym{POSIX} @command{tar}
+tar.texi(GNUTAR,336) @acronym{GNU} @command{tar} and @acronym{POSIX} @command{tar}
 tar.texi(,337) 
 tar.texi(,338) * PAX keywords:: Controlling Extended Header Keywords.
 tar.texi(,339) 
@@ -447,7 +447,7 @@ tar.texi(,405)
 tar.texi(,406) @node Introduction
 tar.texi(,407) @chapter Introduction
 tar.texi(,408) 
-tar.texi(GNUTAR,409) @acronym{GNU} @command{tar}tar.texi(GNUTAR,409)  creates
+tar.texi(GNUTAR,409) @acronym{GNU} @command{tar} creates
 tar.texi(,410) and manipulates @dfn{archives} which are actually collections of
 tar.texi(,411) many other files; the program provides users with an organized and
 tar.texi(,412) systematic method for controlling a large amount of data.
@@ -459,7 +459,7 @@ tar.texi(,417) * Book Contents::               What this Book Contains
 tar.texi(,418) * Definitions::                 Some Definitions
 tar.texi(,419) * What tar Does::               What @command{tar} Does
 tar.texi(,420) * Naming tar Archives::         How @command{tar} Archives are Named
-tar.texi(GNUTAR,421) * Authors::                     tar.texi(GNUTAR,421) @acronym{GNU} @command{tar}tar.texi(GNUTAR,421)  Authors
+tar.texi(GNUTAR,421) * Authors::                     tar.texi(GNUTAR,421) @acronym{GNU} @command{tar} Authors
 tar.texi(,422) * Reports::                     Reporting bugs or suggestions
 tar.texi(,423) @end menu
 tar.texi(,424) 
@@ -467,7 +467,7 @@ tar.texi(,425) @node Book Contents
 tar.texi(,426) @section What this Book Contains
 tar.texi(,427) 
 tar.texi(,428) The first part of this chapter introduces you to various terms that will
-tar.texi(GNUTAR,429) recur throughout the book.  It also tells you who has worked on tar.texi(GNUTAR,429) @acronym{GNU} @command{tar}tar.texi(GNUTAR,429) 
+tar.texi(GNUTAR,429) recur throughout the book.  It also tells you who has worked on tar.texi(GNUTAR,429) @acronym{GNU} @command{tar}
 tar.texi(,430) and its documentation, and where you should send bug reports
 tar.texi(,431) or comments.
 tar.texi(,432) 
@@ -600,7 +600,7 @@ tar.texi(,556) used for performing full and incremental backups of disks.  A bac
 tar.texi(,557) puts a collection of files (possibly pertaining to many users and
 tar.texi(,558) projects) together on a disk or a tape.  This guards against
 tar.texi(,559) accidental destruction of the information in those files.
-tar.texi(GNUTAR,560) @acronym{GNU} @command{tar}tar.texi(GNUTAR,560)  has special features that allow it to be
+tar.texi(GNUTAR,560) @acronym{GNU} @command{tar} has special features that allow it to be
 tar.texi(,561) used to make incremental and full dumps of all the files in a
 tar.texi(,562) file system.
 tar.texi(,563) 
@@ -628,9 +628,9 @@ tar.texi(,584) this manual, we consistently refer to ``archives'' and ``archive
 tar.texi(,585) members'' to make learning to use @command{tar} easier for novice users.
 tar.texi(,586) 
 tar.texi(,587) @node Authors
-tar.texi(GNUTAR,588) @section tar.texi(GNUTAR,588) @acronym{GNU} @command{tar}tar.texi(GNUTAR,588)  Authors
+tar.texi(GNUTAR,588) @section tar.texi(GNUTAR,588) @acronym{GNU} @command{tar} Authors
 tar.texi(,589) 
-tar.texi(GNUTAR,590) @acronym{GNU} @command{tar}tar.texi(GNUTAR,590)  was originally written by John Gilmore,
+tar.texi(GNUTAR,590) @acronym{GNU} @command{tar} was originally written by John Gilmore,
 tar.texi(,591) and modified by many people.  The @acronym{GNU} enhancements were
 tar.texi(,592) written by Jay Fenlason, then Joy Kendall, and the whole package has
 tar.texi(,593) been further maintained by Thomas Bushnell, n/BSG, Fran@,{c}ois
@@ -641,7 +641,7 @@ tar.texi(,597) We wish to stress that @command{tar} is a collective work, and ow
 tar.texi(,598) all those people who reported problems, offered solutions and other
 tar.texi(,599) insights, or shared their thoughts and suggestions.  An impressive, yet
 tar.texi(,600) partial list of those contributors can be found in the @file{THANKS}
-tar.texi(GNUTAR,601) file from the tar.texi(GNUTAR,601) @acronym{GNU} @command{tar}tar.texi(GNUTAR,601)  distribution.
+tar.texi(GNUTAR,601) file from the tar.texi(GNUTAR,601) @acronym{GNU} @command{tar} distribution.
 tar.texi(,602) 
 tar.texi(FIXME,606) @allow-recursion
 tar.texi(FIXME,606) @quote-arg
@@ -651,10 +651,10 @@ tar.texi(FIXME,609) @allow-recursion
 tar.texi(FIXME,609) @quote-arg
 tar.texi(FIXME,609) 
 tar.texi(,610) 
-tar.texi(GNUTAR,611) Jay Fenlason put together a draft of a tar.texi(GNUTAR,611) @acronym{GNU} @command{tar}tar.texi(GNUTAR,611) 
+tar.texi(GNUTAR,611) Jay Fenlason put together a draft of a tar.texi(GNUTAR,611) @acronym{GNU} @command{tar}
 tar.texi(,612) manual, borrowing notes from the original man page from John Gilmore.
 tar.texi(,613) This was withdrawn in version 1.11.  Thomas Bushnell, n/BSG and Amy
-tar.texi(GNUTAR,614) Gorin worked on a tutorial and manual for tar.texi(GNUTAR,614) @acronym{GNU} @command{tar}tar.texi(GNUTAR,614) .
+tar.texi(GNUTAR,614) Gorin worked on a tutorial and manual for tar.texi(GNUTAR,614) @acronym{GNU} @command{tar}.
 tar.texi(,615) Fran@,{c}ois Pinard put version 1.11.8 of the manual together by
 tar.texi(,616) taking information from all these sources and merging them.  Melissa
 tar.texi(,617) Weisshaus finally edited and redesigned the book to create version
@@ -664,10 +664,10 @@ tar.texi(,620)
 tar.texi(,621) For version 1.12, Daniel Hagerty contributed a great deal of technical
 tar.texi(,622) consulting.  In particular, he is the primary author of @ref{Backups}.
 tar.texi(,623) 
-tar.texi(GNUTAR,624) In July, 2003 tar.texi(GNUTAR,624) @acronym{GNU} @command{tar}tar.texi(GNUTAR,624)  was put on CVS at savannah.gnu.org
+tar.texi(GNUTAR,624) In July, 2003 tar.texi(GNUTAR,624) @acronym{GNU} @command{tar} was put on CVS at savannah.gnu.org
 tar.texi(,625) (see @url{http://savannah.gnu.org/projects/tar}), and
 tar.texi(,626) active development and maintenance work has started
-tar.texi(GNUTAR,627) again.  Currently tar.texi(GNUTAR,627) @acronym{GNU} @command{tar}tar.texi(GNUTAR,627)  is being maintained by Paul Eggert, Sergey
+tar.texi(GNUTAR,627) again.  Currently tar.texi(GNUTAR,627) @acronym{GNU} @command{tar} is being maintained by Paul Eggert, Sergey
 tar.texi(,628) Poznyakoff and Jeff Bailey.
 tar.texi(,629) 
 tar.texi(,630) Support for @acronym{POSIX} archives was added by Sergey Poznyakoff.
@@ -799,7 +799,7 @@ tar.texi(FIXME,753) corresponding abbreviations.  tar.texi(FIXME,753) @allow-rec
 tar.texi(FIXME,753) @quote-arg
 tar.texi(FIXME,753) We will indicate those abbreviations appropriately to get
 tar.texi(,754) you used to seeing them.  (Note that the ``old style'' option forms
-tar.texi(GNUTAR,755) exist in tar.texi(GNUTAR,755) @acronym{GNU} @command{tar}tar.texi(GNUTAR,755)  for compatibility with Unix
+tar.texi(GNUTAR,755) exist in tar.texi(GNUTAR,755) @acronym{GNU} @command{tar} for compatibility with Unix
 tar.texi(,756) @command{tar}.  In this book we present a full discussion of this way
 tar.texi(,757) of writing options and operations (@pxref{Old Options}), and we discuss
 tar.texi(,758) the other two styles of writing options (@xref{Long Options}, and
@@ -890,7 +890,7 @@ tar.texi(,842) @node file tutorial
 tar.texi(,843) @unnumberedsubsec The @option{--file} Option
 tar.texi(,844) 
 tar.texi(,845) @table @option
-tar.texi(xopindex,846) @opindex file@r{, tutorial}tar.texi(xopindex,846) 
+tar.texi(xopindex,846) @opindex file@r{, tutorial}
 tar.texi(,847) @item --file=@var{archive-name}
 tar.texi(,848) @itemx -f @var{archive-name}
 tar.texi(,849) Specify the name of an archive file.
@@ -927,7 +927,7 @@ tar.texi(,879) @node verbose tutorial
 tar.texi(,880) @unnumberedsubsec The @option{--verbose} Option
 tar.texi(,881) 
 tar.texi(,882) @table @option
-tar.texi(xopindex,883) @opindex verbose@r{, introduced}tar.texi(xopindex,883) 
+tar.texi(xopindex,883) @opindex verbose@r{, introduced}
 tar.texi(,884) @item --verbose
 tar.texi(,885) @itemx -v
 tar.texi(,886) Show the files being worked on as @command{tar} is running.
@@ -1049,14 +1049,14 @@ tar.texi(,1001) the original file was split.
 tar.texi(,1002) 
 tar.texi(,1003) @item --Mangled file names--
 tar.texi(,1004) This archive member contains @dfn{mangled file names} declarations,
-tar.texi(GNUTAR,1005) a special member type that was used by early versions of tar.texi(GNUTAR,1005) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1005) .
+tar.texi(GNUTAR,1005) a special member type that was used by early versions of tar.texi(GNUTAR,1005) @acronym{GNU} @command{tar}.
 tar.texi(,1006) You probably will never encounter this, unless you are reading a very
 tar.texi(,1007) old archive.
 tar.texi(,1008) 
 tar.texi(,1009) @item  unknown file type @var{c}
 tar.texi(,1010) An archive member of unknown type. @var{c} is the type character from
 tar.texi(,1011) the archive header.  If you encounter such a message, it means that
-tar.texi(GNUTAR,1012) either your archive contains proprietary member types tar.texi(GNUTAR,1012) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1012)  is not
+tar.texi(GNUTAR,1012) either your archive contains proprietary member types tar.texi(GNUTAR,1012) @acronym{GNU} @command{tar} is not
 tar.texi(,1013) able to handle, or the archive is corrupted.
 tar.texi(,1014) @end table
 tar.texi(,1015) 
@@ -1097,7 +1097,6 @@ tar.texi(,1049) @section How to Create Archives
 tar.texi(UNREVISED,1050) @quotation
 tar.texi(UNREVISED,1050) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1050) @end quotation
-tar.texi(UNREVISED,1050) 
 tar.texi(,1051) 
 tar.texi(,1052) @cindex Creation of the archive
 tar.texi(,1053) @cindex Archive, creation of
@@ -1169,7 +1168,7 @@ tar.texi(,1118)
 tar.texi(,1119) @node Creating the archive
 tar.texi(,1120) @subsection Creating the Archive
 tar.texi(,1121) 
-tar.texi(xopindex,1122) @opindex create@r{, introduced}tar.texi(xopindex,1122) 
+tar.texi(xopindex,1122) @opindex create@r{, introduced}
 tar.texi(,1123) To place the files @file{blues}, @file{folk}, and @file{jazz} into an
 tar.texi(,1124) archive named @file{collection.tar}, use the following command:
 tar.texi(,1125) 
@@ -1215,7 +1214,7 @@ tar.texi(,1164) (@pxref{Definitions,members}).
 tar.texi(,1165) 
 tar.texi(,1166) When you create an archive, you @emph{must} specify which files you
 tar.texi(,1167) want placed in the archive.  If you do not specify any archive
-tar.texi(GNUTAR,1168) members, tar.texi(GNUTAR,1168) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1168)  will complain.
+tar.texi(GNUTAR,1168) members, tar.texi(GNUTAR,1168) @acronym{GNU} @command{tar} will complain.
 tar.texi(,1169) 
 tar.texi(,1170) If you now list the contents of the working directory (@command{ls}), you will
 tar.texi(,1171) find the archive file listed as well as the files you saw previously:
@@ -1240,8 +1239,8 @@ tar.texi(,1189)
 tar.texi(,1190) @node create verbose
 tar.texi(,1191) @subsection Running @option{--create} with @option{--verbose}
 tar.texi(,1192) 
-tar.texi(xopindex,1193) @opindex create@r{, using with @option{--verbose}}tar.texi(xopindex,1193) 
-tar.texi(xopindex,1194) @opindex verbose@r{, using with @option{--create}}tar.texi(xopindex,1194) 
+tar.texi(xopindex,1193) @opindex create@r{, using with @option{--verbose}}
+tar.texi(xopindex,1194) @opindex verbose@r{, using with @option{--create}}
 tar.texi(,1195) If you include the @option{--verbose} (@option{-v}) option on the command line,
 tar.texi(,1196) @command{tar} will list the files it is acting on as it is working.  In
 tar.texi(,1197) verbose mode, the @code{create} example above would appear as:
@@ -1405,13 +1404,13 @@ tar.texi(,1358) @file{foo.tar} in the current directory before putting any files
 tar.texi(,1359) it.  Then, when @command{tar} attempts to add all the files in the
 tar.texi(,1360) directory @file{.} to the archive, it notices that the file
 tar.texi(,1361) @file{./foo.tar} is the same as the archive @file{foo.tar}, and skips
-tar.texi(GNUTAR,1362) it.  (It makes no sense to put an archive into itself.)  tar.texi(GNUTAR,1362) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1362) 
+tar.texi(GNUTAR,1362) it.  (It makes no sense to put an archive into itself.)  tar.texi(GNUTAR,1362) @acronym{GNU} @command{tar}
 tar.texi(,1363) will continue in this case, and create the archive
 tar.texi(,1364) normally, except for the exclusion of that one file.  (@emph{Please
 tar.texi(,1365) note:} Other implementations of @command{tar} may not be so clever;
 tar.texi(,1366) they will enter an infinite loop when this happens, so you should not
 tar.texi(,1367) depend on this behavior unless you are certain you are running
-tar.texi(GNUTAR,1368) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1368) .  In general, it is wise to always place the archive outside
+tar.texi(GNUTAR,1368) @acronym{GNU} @command{tar}.  In general, it is wise to always place the archive outside
 tar.texi(,1369) of the directory being dumped.
 tar.texi(,1370) 
 tar.texi(,1371) @node list
@@ -1453,8 +1452,8 @@ tar.texi(,1406) Be sure to use a @option{--file=@var{archive-name}} (@option{-f
 tar.texi(,1407) @var{archive-name}}) option just as with @option{--create}
 tar.texi(,1408) (@option{-c}) to specify the name of the archive.
 tar.texi(,1409) 
-tar.texi(xopindex,1410) @opindex list@r{, using with @option{--verbose}}tar.texi(xopindex,1410) 
-tar.texi(xopindex,1411) @opindex verbose@r{, using with @option{--list}}tar.texi(xopindex,1411) 
+tar.texi(xopindex,1410) @opindex list@r{, using with @option{--verbose}}
+tar.texi(xopindex,1411) @opindex verbose@r{, using with @option{--list}}
 tar.texi(,1412) If you use the @option{--verbose} (@option{-v}) option with
 tar.texi(,1413) @option{--list}, then @command{tar} will print out a listing
 tar.texi(,1414) reminiscent of @w{@samp{ls -l}}, showing owner, file size, and so
@@ -1473,10 +1472,10 @@ tar.texi(,1426) @anchor{listing member and file names}
 tar.texi(,1427) It is important to notice that the output of @kbd{tar --list
 tar.texi(,1428) --verbose} does not necessarily match that produced by @kbd{tar
 tar.texi(,1429) --create --verbose} while creating the archive.  It is because
-tar.texi(GNUTAR,1430) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1430) , unless told explicitly not to do so, removes some directory
+tar.texi(GNUTAR,1430) @acronym{GNU} @command{tar}, unless told explicitly not to do so, removes some directory
 tar.texi(,1431) prefixes from file names before storing them in the archive
 tar.texi(,1432) (@xref{absolute}, for more information).  In other
-tar.texi(GNUTAR,1433) words, in verbose mode tar.texi(GNUTAR,1433) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1433)  shows @dfn{file names} when creating
+tar.texi(GNUTAR,1433) words, in verbose mode tar.texi(GNUTAR,1433) @acronym{GNU} @command{tar} shows @dfn{file names} when creating
 tar.texi(,1434) an archive and @dfn{member names} when listing it.  Consider this
 tar.texi(,1435) example:
 tar.texi(,1436) 
@@ -1496,7 +1495,7 @@ tar.texi(,1449) @end smallexample
 tar.texi(,1450) 
 tar.texi(,1451) @opindex show-stored-names
 tar.texi(,1452)   This default behavior can sometimes be inconvenient.  You can force
-tar.texi(GNUTAR,1453) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1453)  show member names when creating archive by supplying
+tar.texi(GNUTAR,1453) @acronym{GNU} @command{tar} show member names when creating archive by supplying
 tar.texi(,1454) @option{--show-stored-names} option.
 tar.texi(,1455) 
 tar.texi(,1456) @table @option
@@ -1505,7 +1504,7 @@ tar.texi(,1458) Print member (as opposed to @emph{file}) names when creating the
 tar.texi(,1459) @end table
 tar.texi(,1460) 
 tar.texi(,1461) @cindex File name arguments, using @option{--list} with
-tar.texi(xopindex,1462) @opindex list@r{, using with file name arguments}tar.texi(xopindex,1462) 
+tar.texi(xopindex,1462) @opindex list@r{, using with file name arguments}
 tar.texi(,1463) You can specify one or more individual member names as arguments when
 tar.texi(,1464) using @samp{list}.  In this case, @command{tar} will only list the
 tar.texi(,1465) names of members you identify.  For example, @w{@kbd{tar --list
@@ -1572,7 +1571,6 @@ tar.texi(,1525) @section How to Extract Members from an Archive
 tar.texi(UNREVISED,1526) @quotation
 tar.texi(UNREVISED,1526) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1526) @end quotation
-tar.texi(UNREVISED,1526) 
 tar.texi(,1527) @cindex Extraction
 tar.texi(,1528) @cindex Retrieving files from an archive
 tar.texi(,1529) @cindex Resurrecting files from an archive
@@ -1826,13 +1824,12 @@ tar.texi(FIXME,1773) @quote-arg
 tar.texi(FIXME,1773) 
 tar.texi(,1774) 
 tar.texi(,1775) @node tar invocation
-tar.texi(GNUTAR,1776) @chapter Invoking tar.texi(GNUTAR,1776) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1776) 
+tar.texi(GNUTAR,1776) @chapter Invoking tar.texi(GNUTAR,1776) @acronym{GNU} @command{tar}
 tar.texi(UNREVISED,1777) @quotation
 tar.texi(UNREVISED,1777) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,1777) @end quotation
-tar.texi(UNREVISED,1777) 
 tar.texi(,1778) 
-tar.texi(GNUTAR,1779) This chapter is about how one invokes the tar.texi(GNUTAR,1779) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1779) 
+tar.texi(GNUTAR,1779) This chapter is about how one invokes the tar.texi(GNUTAR,1779) @acronym{GNU} @command{tar}
 tar.texi(,1780) command, from the command synopsis (@pxref{Synopsis}).  There are
 tar.texi(,1781) numerous options, and many styles for writing them.  One mandatory
 tar.texi(,1782) option specifies the operation @command{tar} should perform
@@ -1868,7 +1865,7 @@ tar.texi(,1811)
 tar.texi(,1812) @node Synopsis
 tar.texi(,1813) @section General Synopsis of @command{tar}
 tar.texi(,1814) 
-tar.texi(GNUTAR,1815) The tar.texi(GNUTAR,1815) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1815)  program is invoked as either one of:
+tar.texi(GNUTAR,1815) The tar.texi(GNUTAR,1815) @acronym{GNU} @command{tar} program is invoked as either one of:
 tar.texi(,1816) 
 tar.texi(,1817) @smallexample
 tar.texi(,1818) @kbd{tar @var{option}@dots{} [@var{name}]@dots{}}
@@ -1938,7 +1935,7 @@ tar.texi(,1881) will act on the entire contents of the archive.
 tar.texi(,1882) 
 tar.texi(,1883) @cindex exit status
 tar.texi(,1884) @cindex return status
-tar.texi(GNUTAR,1885) Besides successful exits, tar.texi(GNUTAR,1885) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1885)  may fail for
+tar.texi(GNUTAR,1885) Besides successful exits, tar.texi(GNUTAR,1885) @acronym{GNU} @command{tar} may fail for
 tar.texi(,1886) many reasons.  Some reasons correspond to bad usage, that is, when the
 tar.texi(,1887) @command{tar} command is improperly written.  Errors may be
 tar.texi(,1888) encountered later, while encountering an error processing the archive
@@ -1950,7 +1947,7 @@ tar.texi(,1893) All abnormal exits, whether immediate or delayed, should always 
 tar.texi(,1894) clearly diagnosed on @code{stderr}, after a line stating the nature of
 tar.texi(,1895) the error.
 tar.texi(,1896) 
-tar.texi(GNUTAR,1897) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1897)  returns only a few exit statuses.  I'm really
+tar.texi(GNUTAR,1897) @acronym{GNU} @command{tar} returns only a few exit statuses.  I'm really
 tar.texi(,1898) aiming simplicity in that area, for now.  If you are not using the
 tar.texi(,1899) @option{--compare} @option{--diff}, @option{-d}) option, zero means
 tar.texi(,1900) that everything went well, besides maybe innocuous warnings.  Nonzero
@@ -1961,7 +1958,7 @@ tar.texi(,1904)
 tar.texi(,1905) @node using tar options
 tar.texi(,1906) @section Using @command{tar} Options
 tar.texi(,1907) 
-tar.texi(GNUTAR,1908) @acronym{GNU} @command{tar}tar.texi(GNUTAR,1908)  has a total of eight operating modes which
+tar.texi(GNUTAR,1908) @acronym{GNU} @command{tar} has a total of eight operating modes which
 tar.texi(,1909) allow you to perform a variety of tasks.  You are required to choose
 tar.texi(,1910) one operating mode each time you employ the @command{tar} program by
 tar.texi(,1911) specifying one, and only one operation as an argument to the
@@ -2139,7 +2136,6 @@ tar.texi(,2082) @subsection Old Option Style
 tar.texi(UNREVISED,2083) @quotation
 tar.texi(UNREVISED,2083) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,2083) @end quotation
-tar.texi(UNREVISED,2083) 
 tar.texi(,2084) 
 tar.texi(,2085) Like short options, @dfn{old options} are single letters.  However, old options
 tar.texi(,2086) must be written together as a single clumped set, without spaces separating
@@ -2206,7 +2202,7 @@ tar.texi(,2146) @end smallexample
 tar.texi(,2147) 
 tar.texi(,2148) @cindex option syntax, traditional
 tar.texi(,2149) As far as we know, all @command{tar} programs, @acronym{GNU} and
-tar.texi(GNUTAR,2150) non-@acronym{GNU}, support old options.  tar.texi(GNUTAR,2150) @acronym{GNU} @command{tar}tar.texi(GNUTAR,2150) 
+tar.texi(GNUTAR,2150) non-@acronym{GNU}, support old options.  tar.texi(GNUTAR,2150) @acronym{GNU} @command{tar}
 tar.texi(,2151) supports them not only for historical reasons, but also because many
 tar.texi(,2152) people are used to them.  For compatibility with Unix @command{tar},
 tar.texi(,2153) the first argument is always treated as containing command and option
@@ -2306,7 +2302,7 @@ tar.texi(,2245) @table @option
 tar.texi(,2246) 
 tar.texi(opsummary,2247) @set ANCHOR--append 1
 tar.texi(opsummary,2247) @anchor{--append}
-tar.texi(opsummary,2247) @opindex append@r{, summary}tar.texi(opsummary,2247) 
+tar.texi(opsummary,2247) @opindex append@r{, summary}
 tar.texi(,2248) @item --append
 tar.texi(,2249) @itemx -r
 tar.texi(,2250) 
@@ -2314,7 +2310,7 @@ tar.texi(,2251) Appends files to the end of the archive.  @xref{append}.
 tar.texi(,2252) 
 tar.texi(opsummary,2253) @set ANCHOR--catenate 1
 tar.texi(opsummary,2253) @anchor{--catenate}
-tar.texi(opsummary,2253) @opindex catenate@r{, summary}tar.texi(opsummary,2253) 
+tar.texi(opsummary,2253) @opindex catenate@r{, summary}
 tar.texi(,2254) @item --catenate
 tar.texi(,2255) @itemx -A
 tar.texi(,2256) 
@@ -2322,7 +2318,7 @@ tar.texi(,2257) Same as @option{--concatenate}.  @xref{concatenate}.
 tar.texi(,2258) 
 tar.texi(opsummary,2259) @set ANCHOR--compare 1
 tar.texi(opsummary,2259) @anchor{--compare}
-tar.texi(opsummary,2259) @opindex compare@r{, summary}tar.texi(opsummary,2259) 
+tar.texi(opsummary,2259) @opindex compare@r{, summary}
 tar.texi(,2260) @item --compare
 tar.texi(,2261) @itemx -d
 tar.texi(,2262) 
@@ -2332,7 +2328,7 @@ tar.texi(,2265) modification date and contents.  @xref{compare}.
 tar.texi(,2266) 
 tar.texi(opsummary,2267) @set ANCHOR--concatenate 1
 tar.texi(opsummary,2267) @anchor{--concatenate}
-tar.texi(opsummary,2267) @opindex concatenate@r{, summary}tar.texi(opsummary,2267) 
+tar.texi(opsummary,2267) @opindex concatenate@r{, summary}
 tar.texi(,2268) @item --concatenate
 tar.texi(,2269) @itemx -A
 tar.texi(,2270) 
@@ -2341,7 +2337,7 @@ tar.texi(,2272) @xref{concatenate}.
 tar.texi(,2273) 
 tar.texi(opsummary,2274) @set ANCHOR--create 1
 tar.texi(opsummary,2274) @anchor{--create}
-tar.texi(opsummary,2274) @opindex create@r{, summary}tar.texi(opsummary,2274) 
+tar.texi(opsummary,2274) @opindex create@r{, summary}
 tar.texi(,2275) @item --create
 tar.texi(,2276) @itemx -c
 tar.texi(,2277) 
@@ -2349,7 +2345,7 @@ tar.texi(,2278) Creates a new @command{tar} archive.  @xref{create}.
 tar.texi(,2279) 
 tar.texi(opsummary,2280) @set ANCHOR--delete 1
 tar.texi(opsummary,2280) @anchor{--delete}
-tar.texi(opsummary,2280) @opindex delete@r{, summary}tar.texi(opsummary,2280) 
+tar.texi(opsummary,2280) @opindex delete@r{, summary}
 tar.texi(,2281) @item --delete
 tar.texi(,2282) 
 tar.texi(,2283) Deletes members from the archive.  Don't try this on a archive on a
@@ -2357,7 +2353,7 @@ tar.texi(,2284) tape!  @xref{delete}.
 tar.texi(,2285) 
 tar.texi(opsummary,2286) @set ANCHOR--diff 1
 tar.texi(opsummary,2286) @anchor{--diff}
-tar.texi(opsummary,2286) @opindex diff@r{, summary}tar.texi(opsummary,2286) 
+tar.texi(opsummary,2286) @opindex diff@r{, summary}
 tar.texi(,2287) @item --diff
 tar.texi(,2288) @itemx -d
 tar.texi(,2289) 
@@ -2365,7 +2361,7 @@ tar.texi(,2290) Same @option{--compare}.  @xref{compare}.
 tar.texi(,2291) 
 tar.texi(opsummary,2292) @set ANCHOR--extract 1
 tar.texi(opsummary,2292) @anchor{--extract}
-tar.texi(opsummary,2292) @opindex extract@r{, summary}tar.texi(opsummary,2292) 
+tar.texi(opsummary,2292) @opindex extract@r{, summary}
 tar.texi(,2293) @item --extract
 tar.texi(,2294) @itemx -x
 tar.texi(,2295) 
@@ -2373,7 +2369,7 @@ tar.texi(,2296) Extracts members from the archive into the file system.  @xref{e
 tar.texi(,2297) 
 tar.texi(opsummary,2298) @set ANCHOR--get 1
 tar.texi(opsummary,2298) @anchor{--get}
-tar.texi(opsummary,2298) @opindex get@r{, summary}tar.texi(opsummary,2298) 
+tar.texi(opsummary,2298) @opindex get@r{, summary}
 tar.texi(,2299) @item --get
 tar.texi(,2300) @itemx -x
 tar.texi(,2301) 
@@ -2381,7 +2377,7 @@ tar.texi(,2302) Same as @option{--extract}.  @xref{extract}.
 tar.texi(,2303) 
 tar.texi(opsummary,2304) @set ANCHOR--list 1
 tar.texi(opsummary,2304) @anchor{--list}
-tar.texi(opsummary,2304) @opindex list@r{, summary}tar.texi(opsummary,2304) 
+tar.texi(opsummary,2304) @opindex list@r{, summary}
 tar.texi(,2305) @item --list
 tar.texi(,2306) @itemx -t
 tar.texi(,2307) 
@@ -2389,7 +2385,7 @@ tar.texi(,2308) Lists the members in an archive.  @xref{list}.
 tar.texi(,2309) 
 tar.texi(opsummary,2310) @set ANCHOR--update 1
 tar.texi(opsummary,2310) @anchor{--update}
-tar.texi(opsummary,2310) @opindex update@r{, summary}tar.texi(opsummary,2310) 
+tar.texi(opsummary,2310) @opindex update@r{, summary}
 tar.texi(,2311) @item --update
 tar.texi(,2312) @itemx -u
 tar.texi(,2313) 
@@ -2406,7 +2402,7 @@ tar.texi(,2323) @table @option
 tar.texi(,2324) 
 tar.texi(opsummary,2325) @set ANCHOR--absolute-names 1
 tar.texi(opsummary,2325) @anchor{--absolute-names}
-tar.texi(opsummary,2325) @opindex absolute-names@r{, summary}tar.texi(opsummary,2325) 
+tar.texi(opsummary,2325) @opindex absolute-names@r{, summary}
 tar.texi(,2326) @item --absolute-names
 tar.texi(,2327) @itemx -P
 tar.texi(,2328) 
@@ -2416,21 +2412,21 @@ tar.texi(,2331) @xref{absolute}.
 tar.texi(,2332) 
 tar.texi(opsummary,2333) @set ANCHOR--after-date 1
 tar.texi(opsummary,2333) @anchor{--after-date}
-tar.texi(opsummary,2333) @opindex after-date@r{, summary}tar.texi(opsummary,2333) 
+tar.texi(opsummary,2333) @opindex after-date@r{, summary}
 tar.texi(,2334) @item --after-date
 tar.texi(,2335) 
 tar.texi(,2336) (See @option{--newer}, @pxref{after})
 tar.texi(,2337) 
 tar.texi(opsummary,2338) @set ANCHOR--anchored 1
 tar.texi(opsummary,2338) @anchor{--anchored}
-tar.texi(opsummary,2338) @opindex anchored@r{, summary}tar.texi(opsummary,2338) 
+tar.texi(opsummary,2338) @opindex anchored@r{, summary}
 tar.texi(,2339) @item --anchored
 tar.texi(,2340) A pattern must match an initial subsequence of the name's components.
 tar.texi(,2341) @xref{controlling pattern-matching}.
 tar.texi(,2342) 
 tar.texi(opsummary,2343) @set ANCHOR--atime-preserve 1
 tar.texi(opsummary,2343) @anchor{--atime-preserve}
-tar.texi(opsummary,2343) @opindex atime-preserve@r{, summary}tar.texi(opsummary,2343) 
+tar.texi(opsummary,2343) @opindex atime-preserve@r{, summary}
 tar.texi(,2344) @item --atime-preserve
 tar.texi(,2345) @itemx --atime-preserve=replace
 tar.texi(,2346) @itemx --atime-preserve=system
@@ -2479,7 +2475,7 @@ tar.texi(,2388) superuser privileges and can be a pain to manage.
 tar.texi(,2389) 
 tar.texi(opsummary,2390) @set ANCHOR--backup 1
 tar.texi(opsummary,2390) @anchor{--backup}
-tar.texi(opsummary,2390) @opindex backup@r{, summary}tar.texi(opsummary,2390) 
+tar.texi(opsummary,2390) @opindex backup@r{, summary}
 tar.texi(,2391) @item --backup=@var{backup-type}
 tar.texi(,2392) 
 tar.texi(,2393) Rather than deleting files from the file system, @command{tar} will
@@ -2488,7 +2484,7 @@ tar.texi(,2395) @var{backup-type}.  @xref{backup}.
 tar.texi(,2396) 
 tar.texi(opsummary,2397) @set ANCHOR--block-number 1
 tar.texi(opsummary,2397) @anchor{--block-number}
-tar.texi(opsummary,2397) @opindex block-number@r{, summary}tar.texi(opsummary,2397) 
+tar.texi(opsummary,2397) @opindex block-number@r{, summary}
 tar.texi(,2398) @item --block-number
 tar.texi(,2399) @itemx -R
 tar.texi(,2400) 
@@ -2497,7 +2493,7 @@ tar.texi(,2402) with the block number in the archive file.  @xref{block-number}.
 tar.texi(,2403) 
 tar.texi(opsummary,2404) @set ANCHOR--blocking-factor 1
 tar.texi(opsummary,2404) @anchor{--blocking-factor}
-tar.texi(opsummary,2404) @opindex blocking-factor@r{, summary}tar.texi(opsummary,2404) 
+tar.texi(opsummary,2404) @opindex blocking-factor@r{, summary}
 tar.texi(,2405) @item --blocking-factor=@var{blocking}
 tar.texi(,2406) @itemx -b @var{blocking}
 tar.texi(,2407) 
@@ -2506,7 +2502,7 @@ tar.texi(,2409) record.  @xref{Blocking Factor}.
 tar.texi(,2410) 
 tar.texi(opsummary,2411) @set ANCHOR--bzip2 1
 tar.texi(opsummary,2411) @anchor{--bzip2}
-tar.texi(opsummary,2411) @opindex bzip2@r{, summary}tar.texi(opsummary,2411) 
+tar.texi(opsummary,2411) @opindex bzip2@r{, summary}
 tar.texi(,2412) @item --bzip2
 tar.texi(,2413) @itemx -j
 tar.texi(,2414) 
@@ -2515,7 +2511,7 @@ tar.texi(,2416) @code{bzip2}.  @xref{gzip}.
 tar.texi(,2417) 
 tar.texi(opsummary,2418) @set ANCHOR--checkpoint 1
 tar.texi(opsummary,2418) @anchor{--checkpoint}
-tar.texi(opsummary,2418) @opindex checkpoint@r{, summary}tar.texi(opsummary,2418) 
+tar.texi(opsummary,2418) @opindex checkpoint@r{, summary}
 tar.texi(,2419) @item --checkpoint[=@var{number}]
 tar.texi(,2420) 
 tar.texi(,2421) This option directs @command{tar} to print periodic checkpoint
@@ -2526,7 +2522,7 @@ tar.texi(,2425) description, see @ref{Progress information}.
 tar.texi(,2426) 
 tar.texi(opsummary,2427) @set ANCHOR--check-links 1
 tar.texi(opsummary,2427) @anchor{--check-links}
-tar.texi(opsummary,2427) @opindex check-links@r{, summary}tar.texi(opsummary,2427) 
+tar.texi(opsummary,2427) @opindex check-links@r{, summary}
 tar.texi(,2428) @item --check-links
 tar.texi(,2429) @itemx -l
 tar.texi(,2430) If this option was given, @command{tar} will check the number of links
@@ -2539,10 +2535,10 @@ tar.texi(,2436) 1.15.91. @xref{Changes}, for more information.}.
 tar.texi(,2437) 
 tar.texi(opsummary,2438) @set ANCHOR--compress 1
 tar.texi(opsummary,2438) @anchor{--compress}
-tar.texi(opsummary,2438) @opindex compress@r{, summary}tar.texi(opsummary,2438) 
+tar.texi(opsummary,2438) @opindex compress@r{, summary}
 tar.texi(opsummary,2439) @set ANCHOR--uncompress 1
 tar.texi(opsummary,2439) @anchor{--uncompress}
-tar.texi(opsummary,2439) @opindex uncompress@r{, summary}tar.texi(opsummary,2439) 
+tar.texi(opsummary,2439) @opindex uncompress@r{, summary}
 tar.texi(,2440) @item --compress
 tar.texi(,2441) @itemx --uncompress
 tar.texi(,2442) @itemx -Z
@@ -2553,14 +2549,14 @@ tar.texi(,2446) while saving space.  @xref{gzip}.
 tar.texi(,2447) 
 tar.texi(opsummary,2448) @set ANCHOR--confirmation 1
 tar.texi(opsummary,2448) @anchor{--confirmation}
-tar.texi(opsummary,2448) @opindex confirmation@r{, summary}tar.texi(opsummary,2448) 
+tar.texi(opsummary,2448) @opindex confirmation@r{, summary}
 tar.texi(,2449) @item --confirmation
 tar.texi(,2450) 
 tar.texi(,2451) (See @option{--interactive}.)  @xref{interactive}.
 tar.texi(,2452) 
 tar.texi(opsummary,2453) @set ANCHOR--delay-directory-restore 1
 tar.texi(opsummary,2453) @anchor{--delay-directory-restore}
-tar.texi(opsummary,2453) @opindex delay-directory-restore@r{, summary}tar.texi(opsummary,2453) 
+tar.texi(opsummary,2453) @opindex delay-directory-restore@r{, summary}
 tar.texi(,2454) @item --delay-directory-restore
 tar.texi(,2455) 
 tar.texi(,2456) Delay setting modification times and permissions of extracted
@@ -2568,7 +2564,7 @@ tar.texi(,2457) directories until the end of extraction. @xref{Directory Modific
 tar.texi(,2458) 
 tar.texi(opsummary,2459) @set ANCHOR--dereference 1
 tar.texi(opsummary,2459) @anchor{--dereference}
-tar.texi(opsummary,2459) @opindex dereference@r{, summary}tar.texi(opsummary,2459) 
+tar.texi(opsummary,2459) @opindex dereference@r{, summary}
 tar.texi(,2460) @item --dereference
 tar.texi(,2461) @itemx -h
 tar.texi(,2462) 
@@ -2578,7 +2574,7 @@ tar.texi(,2465) symlink.  @xref{dereference}.
 tar.texi(,2466) 
 tar.texi(opsummary,2467) @set ANCHOR--directory 1
 tar.texi(opsummary,2467) @anchor{--directory}
-tar.texi(opsummary,2467) @opindex directory@r{, summary}tar.texi(opsummary,2467) 
+tar.texi(opsummary,2467) @opindex directory@r{, summary}
 tar.texi(,2468) @item --directory=@var{dir}
 tar.texi(,2469) @itemx -C @var{dir}
 tar.texi(,2470) 
@@ -2588,7 +2584,7 @@ tar.texi(,2473) during archive creation, it is order sensitive.  @xref{directory
 tar.texi(,2474) 
 tar.texi(opsummary,2475) @set ANCHOR--exclude 1
 tar.texi(opsummary,2475) @anchor{--exclude}
-tar.texi(opsummary,2475) @opindex exclude@r{, summary}tar.texi(opsummary,2475) 
+tar.texi(opsummary,2475) @opindex exclude@r{, summary}
 tar.texi(,2476) @item --exclude=@var{pattern}
 tar.texi(,2477) 
 tar.texi(,2478) When performing operations, @command{tar} will skip files that match
@@ -2596,7 +2592,7 @@ tar.texi(,2479) @var{pattern}.  @xref{exclude}.
 tar.texi(,2480) 
 tar.texi(opsummary,2481) @set ANCHOR--exclude-from 1
 tar.texi(opsummary,2481) @anchor{--exclude-from}
-tar.texi(opsummary,2481) @opindex exclude-from@r{, summary}tar.texi(opsummary,2481) 
+tar.texi(opsummary,2481) @opindex exclude-from@r{, summary}
 tar.texi(,2482) @item --exclude-from=@var{file}
 tar.texi(,2483) @itemx -X @var{file}
 tar.texi(,2484) 
@@ -2605,7 +2601,7 @@ tar.texi(,2486) patterns in the file @var{file}.  @xref{exclude}.
 tar.texi(,2487) 
 tar.texi(opsummary,2488) @set ANCHOR--exclude-caches 1
 tar.texi(opsummary,2488) @anchor{--exclude-caches}
-tar.texi(opsummary,2488) @opindex exclude-caches@r{, summary}tar.texi(opsummary,2488) 
+tar.texi(opsummary,2488) @opindex exclude-caches@r{, summary}
 tar.texi(,2489) @item --exclude-caches
 tar.texi(,2490) 
 tar.texi(,2491) Automatically excludes all directories
@@ -2613,7 +2609,7 @@ tar.texi(,2492) containing a cache directory tag.  @xref{exclude}.
 tar.texi(,2493) 
 tar.texi(opsummary,2494) @set ANCHOR--file 1
 tar.texi(opsummary,2494) @anchor{--file}
-tar.texi(opsummary,2494) @opindex file@r{, summary}tar.texi(opsummary,2494) 
+tar.texi(opsummary,2494) @opindex file@r{, summary}
 tar.texi(,2495) @item --file=@var{archive}
 tar.texi(,2496) @itemx -f @var{archive}
 tar.texi(,2497) 
@@ -2623,7 +2619,7 @@ tar.texi(,2500) default.  @xref{file tutorial}.
 tar.texi(,2501) 
 tar.texi(opsummary,2502) @set ANCHOR--files-from 1
 tar.texi(opsummary,2502) @anchor{--files-from}
-tar.texi(opsummary,2502) @opindex files-from@r{, summary}tar.texi(opsummary,2502) 
+tar.texi(opsummary,2502) @opindex files-from@r{, summary}
 tar.texi(,2503) @item --files-from=@var{file}
 tar.texi(,2504) @itemx -T @var{file}
 tar.texi(,2505) 
@@ -2633,7 +2629,7 @@ tar.texi(,2508) command-line.  @xref{files}.
 tar.texi(,2509) 
 tar.texi(opsummary,2510) @set ANCHOR--force-local 1
 tar.texi(opsummary,2510) @anchor{--force-local}
-tar.texi(opsummary,2510) @opindex force-local@r{, summary}tar.texi(opsummary,2510) 
+tar.texi(opsummary,2510) @opindex force-local@r{, summary}
 tar.texi(,2511) @item --force-local
 tar.texi(,2512) 
 tar.texi(,2513) Forces @command{tar} to interpret the filename given to @option{--file}
@@ -2642,7 +2638,7 @@ tar.texi(,2515) @xref{local and remote archives}.
 tar.texi(,2516) 
 tar.texi(opsummary,2517) @set ANCHOR--format 1
 tar.texi(opsummary,2517) @anchor{--format}
-tar.texi(opsummary,2517) @opindex format@r{, summary}tar.texi(opsummary,2517) 
+tar.texi(opsummary,2517) @opindex format@r{, summary}
 tar.texi(,2518) @item --format=@var{format}
 tar.texi(,2519) @itemx -H @var{format}
 tar.texi(,2520) 
@@ -2674,7 +2670,7 @@ tar.texi(,2545) @xref{Formats}, for a detailed discussion of these formats.
 tar.texi(,2546) 
 tar.texi(opsummary,2547) @set ANCHOR--group 1
 tar.texi(opsummary,2547) @anchor{--group}
-tar.texi(opsummary,2547) @opindex group@r{, summary}tar.texi(opsummary,2547) 
+tar.texi(opsummary,2547) @opindex group@r{, summary}
 tar.texi(,2548) @item --group=@var{group}
 tar.texi(,2549) 
 tar.texi(,2550) Files added to the @command{tar} archive will have a group id of @var{group},
@@ -2686,13 +2682,13 @@ tar.texi(,2555) Also see the comments for the @option{--owner=@var{user}} option
 tar.texi(,2556) 
 tar.texi(opsummary,2557) @set ANCHOR--gzip 1
 tar.texi(opsummary,2557) @anchor{--gzip}
-tar.texi(opsummary,2557) @opindex gzip@r{, summary}tar.texi(opsummary,2557) 
+tar.texi(opsummary,2557) @opindex gzip@r{, summary}
 tar.texi(opsummary,2558) @set ANCHOR--gunzip 1
 tar.texi(opsummary,2558) @anchor{--gunzip}
-tar.texi(opsummary,2558) @opindex gunzip@r{, summary}tar.texi(opsummary,2558) 
+tar.texi(opsummary,2558) @opindex gunzip@r{, summary}
 tar.texi(opsummary,2559) @set ANCHOR--ungzip 1
 tar.texi(opsummary,2559) @anchor{--ungzip}
-tar.texi(opsummary,2559) @opindex ungzip@r{, summary}tar.texi(opsummary,2559) 
+tar.texi(opsummary,2559) @opindex ungzip@r{, summary}
 tar.texi(,2560) @item --gzip
 tar.texi(,2561) @itemx --gunzip
 tar.texi(,2562) @itemx --ungzip
@@ -2704,7 +2700,7 @@ tar.texi(,2567) kinds of compressed archives transparently.  @xref{gzip}.
 tar.texi(,2568) 
 tar.texi(opsummary,2569) @set ANCHOR--help 1
 tar.texi(opsummary,2569) @anchor{--help}
-tar.texi(opsummary,2569) @opindex help@r{, summary}tar.texi(opsummary,2569) 
+tar.texi(opsummary,2569) @opindex help@r{, summary}
 tar.texi(,2570) @item --help
 tar.texi(,2571) @itemx -?
 tar.texi(,2572) 
@@ -2713,20 +2709,20 @@ tar.texi(,2574) options to @command{tar} and exit. @xref{help}.
 tar.texi(,2575) 
 tar.texi(opsummary,2576) @set ANCHOR--ignore-case 1
 tar.texi(opsummary,2576) @anchor{--ignore-case}
-tar.texi(opsummary,2576) @opindex ignore-case@r{, summary}tar.texi(opsummary,2576) 
+tar.texi(opsummary,2576) @opindex ignore-case@r{, summary}
 tar.texi(,2577) @item --ignore-case
 tar.texi(,2578) Ignore case when matching member or file names with
 tar.texi(,2579) patterns. @xref{controlling pattern-matching}. 
 tar.texi(,2580) 
 tar.texi(opsummary,2581) @set ANCHOR--ignore-command-error 1
 tar.texi(opsummary,2581) @anchor{--ignore-command-error}
-tar.texi(opsummary,2581) @opindex ignore-command-error@r{, summary}tar.texi(opsummary,2581) 
+tar.texi(opsummary,2581) @opindex ignore-command-error@r{, summary}
 tar.texi(,2582) @item --ignore-command-error
 tar.texi(,2583) Ignore exit codes of subprocesses. @xref{Writing to an External Program}.
 tar.texi(,2584) 
 tar.texi(opsummary,2585) @set ANCHOR--ignore-failed-read 1
 tar.texi(opsummary,2585) @anchor{--ignore-failed-read}
-tar.texi(opsummary,2585) @opindex ignore-failed-read@r{, summary}tar.texi(opsummary,2585) 
+tar.texi(opsummary,2585) @opindex ignore-failed-read@r{, summary}
 tar.texi(,2586) @item --ignore-failed-read
 tar.texi(,2587) 
 tar.texi(,2588) Do not exit unsuccessfully merely because an unreadable file was encountered.
@@ -2734,7 +2730,7 @@ tar.texi(,2589) @xref{Reading}.
 tar.texi(,2590) 
 tar.texi(opsummary,2591) @set ANCHOR--ignore-zeros 1
 tar.texi(opsummary,2591) @anchor{--ignore-zeros}
-tar.texi(opsummary,2591) @opindex ignore-zeros@r{, summary}tar.texi(opsummary,2591) 
+tar.texi(opsummary,2591) @opindex ignore-zeros@r{, summary}
 tar.texi(,2592) @item --ignore-zeros
 tar.texi(,2593) @itemx -i
 tar.texi(,2594) 
@@ -2743,7 +2739,7 @@ tar.texi(,2596) archive, which normally signals EOF.  @xref{Reading}.
 tar.texi(,2597) 
 tar.texi(opsummary,2598) @set ANCHOR--incremental 1
 tar.texi(opsummary,2598) @anchor{--incremental}
-tar.texi(opsummary,2598) @opindex incremental@r{, summary}tar.texi(opsummary,2598) 
+tar.texi(opsummary,2598) @opindex incremental@r{, summary}
 tar.texi(,2599) @item --incremental
 tar.texi(,2600) @itemx -G
 tar.texi(,2601) 
@@ -2754,17 +2750,17 @@ tar.texi(,2605) for a detailed discussion of incremental archives.
 tar.texi(,2606) 
 tar.texi(opsummary,2607) @set ANCHOR--index-file 1
 tar.texi(opsummary,2607) @anchor{--index-file}
-tar.texi(opsummary,2607) @opindex index-file@r{, summary}tar.texi(opsummary,2607) 
+tar.texi(opsummary,2607) @opindex index-file@r{, summary}
 tar.texi(,2608) @item --index-file=@var{file}
 tar.texi(,2609) 
 tar.texi(,2610) Send verbose output to @var{file} instead of to standard output.
 tar.texi(,2611) 
 tar.texi(opsummary,2612) @set ANCHOR--info-script 1
 tar.texi(opsummary,2612) @anchor{--info-script}
-tar.texi(opsummary,2612) @opindex info-script@r{, summary}tar.texi(opsummary,2612) 
+tar.texi(opsummary,2612) @opindex info-script@r{, summary}
 tar.texi(opsummary,2613) @set ANCHOR--new-volume-script 1
 tar.texi(opsummary,2613) @anchor{--new-volume-script}
-tar.texi(opsummary,2613) @opindex new-volume-script@r{, summary}tar.texi(opsummary,2613) 
+tar.texi(opsummary,2613) @opindex new-volume-script@r{, summary}
 tar.texi(,2614) @item --info-script=@var{script-file}
 tar.texi(,2615) @itemx --new-volume-script=@var{script-file}
 tar.texi(,2616) @itemx -F @var{script-file}
@@ -2776,7 +2772,7 @@ tar.texi(,2621) discussion of @var{script-file}.
 tar.texi(,2622) 
 tar.texi(opsummary,2623) @set ANCHOR--interactive 1
 tar.texi(opsummary,2623) @anchor{--interactive}
-tar.texi(opsummary,2623) @opindex interactive@r{, summary}tar.texi(opsummary,2623) 
+tar.texi(opsummary,2623) @opindex interactive@r{, summary}
 tar.texi(,2624) @item --interactive
 tar.texi(,2625) @itemx --confirmation
 tar.texi(,2626) @itemx -w
@@ -2787,7 +2783,7 @@ tar.texi(,2630) @xref{interactive}.
 tar.texi(,2631) 
 tar.texi(opsummary,2632) @set ANCHOR--keep-newer-files 1
 tar.texi(opsummary,2632) @anchor{--keep-newer-files}
-tar.texi(opsummary,2632) @opindex keep-newer-files@r{, summary}tar.texi(opsummary,2632) 
+tar.texi(opsummary,2632) @opindex keep-newer-files@r{, summary}
 tar.texi(,2633) @item --keep-newer-files
 tar.texi(,2634) 
 tar.texi(,2635) Do not replace existing files that are newer than their archive copies
@@ -2795,7 +2791,7 @@ tar.texi(,2636) when extracting files from an archive.
 tar.texi(,2637) 
 tar.texi(opsummary,2638) @set ANCHOR--keep-old-files 1
 tar.texi(opsummary,2638) @anchor{--keep-old-files}
-tar.texi(opsummary,2638) @opindex keep-old-files@r{, summary}tar.texi(opsummary,2638) 
+tar.texi(opsummary,2638) @opindex keep-old-files@r{, summary}
 tar.texi(,2639) @item --keep-old-files
 tar.texi(,2640) @itemx -k
 tar.texi(,2641) 
@@ -2804,7 +2800,7 @@ tar.texi(,2643) @xref{Keep Old Files}.
 tar.texi(,2644) 
 tar.texi(opsummary,2645) @set ANCHOR--label 1
 tar.texi(opsummary,2645) @anchor{--label}
-tar.texi(opsummary,2645) @opindex label@r{, summary}tar.texi(opsummary,2645) 
+tar.texi(opsummary,2645) @opindex label@r{, summary}
 tar.texi(,2646) @item --label=@var{name}
 tar.texi(,2647) @itemx -V @var{name}
 tar.texi(,2648) 
@@ -2815,7 +2811,7 @@ tar.texi(,2652) the pattern specified in @var{name}.  @xref{Tape Files}.
 tar.texi(,2653) 
 tar.texi(opsummary,2654) @set ANCHOR--listed-incremental 1
 tar.texi(opsummary,2654) @anchor{--listed-incremental}
-tar.texi(opsummary,2654) @opindex listed-incremental@r{, summary}tar.texi(opsummary,2654) 
+tar.texi(opsummary,2654) @opindex listed-incremental@r{, summary}
 tar.texi(,2655) @item --listed-incremental=@var{snapshot-file}
 tar.texi(,2656) @itemx -g @var{snapshot-file}
 tar.texi(,2657) 
@@ -2827,7 +2823,7 @@ tar.texi(,2662) incremental format.  @xref{Incremental Dumps}.
 tar.texi(,2663) 
 tar.texi(opsummary,2664) @set ANCHOR--mode 1
 tar.texi(opsummary,2664) @anchor{--mode}
-tar.texi(opsummary,2664) @opindex mode@r{, summary}tar.texi(opsummary,2664) 
+tar.texi(opsummary,2664) @opindex mode@r{, summary}
 tar.texi(,2665) @item --mode=@var{permissions}
 tar.texi(,2666) 
 tar.texi(,2667) When adding files to an archive, @command{tar} will use
@@ -2838,7 +2834,7 @@ tar.texi(,2671) @command{chmod}. @xref{override}.
 tar.texi(,2672) 
 tar.texi(opsummary,2673) @set ANCHOR--mtime 1
 tar.texi(opsummary,2673) @anchor{--mtime}
-tar.texi(opsummary,2673) @opindex mtime@r{, summary}tar.texi(opsummary,2673) 
+tar.texi(opsummary,2673) @opindex mtime@r{, summary}
 tar.texi(,2674) @item --mtime=@var{date}
 tar.texi(,2675) 
 tar.texi(,2676) When adding files to an archive, @command{tar} will use @var{date} as
@@ -2850,21 +2846,21 @@ tar.texi(,2681) latter case, the modification time of that file is used. @xref{o
 tar.texi(,2682) 
 tar.texi(opsummary,2683) @set ANCHOR--multi-volume 1
 tar.texi(opsummary,2683) @anchor{--multi-volume}
-tar.texi(opsummary,2683) @opindex multi-volume@r{, summary}tar.texi(opsummary,2683) 
+tar.texi(opsummary,2683) @opindex multi-volume@r{, summary}
 tar.texi(,2684) @item --multi-volume
 tar.texi(,2685) @itemx -M
 tar.texi(,2686) 
 tar.texi(,2687) Informs @command{tar} that it should create or otherwise operate on a
 tar.texi(,2688) multi-volume @command{tar} archive.  @xref{Using Multiple Tapes}.
 tar.texi(,2689) 
-tar.texi(opsummary,2690) @opindex new-volume-script@r{, summary}tar.texi(opsummary,2690) 
+tar.texi(opsummary,2690) @opindex new-volume-script@r{, summary}
 tar.texi(,2691) @item --new-volume-script
 tar.texi(,2692) 
 tar.texi(,2693) (see --info-script)
 tar.texi(,2694) 
 tar.texi(opsummary,2695) @set ANCHOR--seek 1
 tar.texi(opsummary,2695) @anchor{--seek}
-tar.texi(opsummary,2695) @opindex seek@r{, summary}tar.texi(opsummary,2695) 
+tar.texi(opsummary,2695) @opindex seek@r{, summary}
 tar.texi(,2696) @item --seek
 tar.texi(,2697) @itemx -n
 tar.texi(,2698) 
@@ -2875,7 +2871,7 @@ tar.texi(,2702) in cases when such recognition fails.
 tar.texi(,2703) 
 tar.texi(opsummary,2704) @set ANCHOR--newer 1
 tar.texi(opsummary,2704) @anchor{--newer}
-tar.texi(opsummary,2704) @opindex newer@r{, summary}tar.texi(opsummary,2704) 
+tar.texi(opsummary,2704) @opindex newer@r{, summary}
 tar.texi(,2705) @item --newer=@var{date}
 tar.texi(,2706) @itemx --after-date=@var{date}
 tar.texi(,2707) @itemx -N
@@ -2887,7 +2883,7 @@ tar.texi(,2712) the date.  @xref{after}.
 tar.texi(,2713) 
 tar.texi(opsummary,2714) @set ANCHOR--newer-mtime 1
 tar.texi(opsummary,2714) @anchor{--newer-mtime}
-tar.texi(opsummary,2714) @opindex newer-mtime@r{, summary}tar.texi(opsummary,2714) 
+tar.texi(opsummary,2714) @opindex newer-mtime@r{, summary}
 tar.texi(,2715) @item --newer-mtime=@var{date}
 tar.texi(,2716) 
 tar.texi(,2717) Like @option{--newer}, but add only files whose
@@ -2897,14 +2893,14 @@ tar.texi(,2720) changed).  @xref{after}.
 tar.texi(,2721) 
 tar.texi(opsummary,2722) @set ANCHOR--no-anchored 1
 tar.texi(opsummary,2722) @anchor{--no-anchored}
-tar.texi(opsummary,2722) @opindex no-anchored@r{, summary}tar.texi(opsummary,2722) 
+tar.texi(opsummary,2722) @opindex no-anchored@r{, summary}
 tar.texi(,2723) @item --no-anchored
 tar.texi(,2724) An exclude pattern can match any subsequence of the name's components.
 tar.texi(,2725) @xref{controlling pattern-matching}.
 tar.texi(,2726) 
 tar.texi(opsummary,2727) @set ANCHOR--no-delay-directory-restore 1
 tar.texi(opsummary,2727) @anchor{--no-delay-directory-restore}
-tar.texi(opsummary,2727) @opindex no-delay-directory-restore@r{, summary}tar.texi(opsummary,2727) 
+tar.texi(opsummary,2727) @opindex no-delay-directory-restore@r{, summary}
 tar.texi(,2728) @item --no-delay-directory-restore
 tar.texi(,2729) 
 tar.texi(,2730) Setting modification times and permissions of extracted
@@ -2913,21 +2909,21 @@ tar.texi(,2732) extracted. This is the default. @xref{Directory Modification Tim
 tar.texi(,2733) 
 tar.texi(opsummary,2734) @set ANCHOR--no-ignore-case 1
 tar.texi(opsummary,2734) @anchor{--no-ignore-case}
-tar.texi(opsummary,2734) @opindex no-ignore-case@r{, summary}tar.texi(opsummary,2734) 
+tar.texi(opsummary,2734) @opindex no-ignore-case@r{, summary}
 tar.texi(,2735) @item --no-ignore-case
 tar.texi(,2736) Use case-sensitive matching.
 tar.texi(,2737) @xref{controlling pattern-matching}.
 tar.texi(,2738) 
 tar.texi(opsummary,2739) @set ANCHOR--no-ignore-command-error 1
 tar.texi(opsummary,2739) @anchor{--no-ignore-command-error}
-tar.texi(opsummary,2739) @opindex no-ignore-command-error@r{, summary}tar.texi(opsummary,2739) 
+tar.texi(opsummary,2739) @opindex no-ignore-command-error@r{, summary}
 tar.texi(,2740) @item --no-ignore-command-error
 tar.texi(,2741) Print warnings about subprocesses terminated with a non-zero exit
 tar.texi(,2742) code. @xref{Writing to an External Program}.
 tar.texi(,2743) 
 tar.texi(opsummary,2744) @set ANCHOR--no-overwrite-dir 1
 tar.texi(opsummary,2744) @anchor{--no-overwrite-dir}
-tar.texi(opsummary,2744) @opindex no-overwrite-dir@r{, summary}tar.texi(opsummary,2744) 
+tar.texi(opsummary,2744) @opindex no-overwrite-dir@r{, summary}
 tar.texi(,2745) @item --no-overwrite-dir
 tar.texi(,2746) 
 tar.texi(,2747) Preserve metadata of existing directories when extracting files
@@ -2935,7 +2931,7 @@ tar.texi(,2748) from an archive.  @xref{Overwrite Old Files}.
 tar.texi(,2749) 
 tar.texi(opsummary,2750) @set ANCHOR--no-quote-chars 1
 tar.texi(opsummary,2750) @anchor{--no-quote-chars}
-tar.texi(opsummary,2750) @opindex no-quote-chars@r{, summary}tar.texi(opsummary,2750) 
+tar.texi(opsummary,2750) @opindex no-quote-chars@r{, summary}
 tar.texi(,2751) @item --no-quote-chars=@var{string}
 tar.texi(,2752) Remove characters listed in @var{string} from the list of quoted
 tar.texi(,2753) characters set by the previous @option{--quote-chars} option
@@ -2943,7 +2939,7 @@ tar.texi(,2754) (@pxref{quoting styles}).
 tar.texi(,2755) 
 tar.texi(opsummary,2756) @set ANCHOR--no-recursion 1
 tar.texi(opsummary,2756) @anchor{--no-recursion}
-tar.texi(opsummary,2756) @opindex no-recursion@r{, summary}tar.texi(opsummary,2756) 
+tar.texi(opsummary,2756) @opindex no-recursion@r{, summary}
 tar.texi(,2757) @item --no-recursion
 tar.texi(,2758) 
 tar.texi(,2759) With this option, @command{tar} will not recurse into directories.
@@ -2951,7 +2947,7 @@ tar.texi(,2760) @xref{recurse}.
 tar.texi(,2761) 
 tar.texi(opsummary,2762) @set ANCHOR--no-same-owner 1
 tar.texi(opsummary,2762) @anchor{--no-same-owner}
-tar.texi(opsummary,2762) @opindex no-same-owner@r{, summary}tar.texi(opsummary,2762) 
+tar.texi(opsummary,2762) @opindex no-same-owner@r{, summary}
 tar.texi(,2763) @item --no-same-owner
 tar.texi(,2764) @itemx -o
 tar.texi(,2765) 
@@ -2961,7 +2957,7 @@ tar.texi(,2768) for ordinary users.
 tar.texi(,2769) 
 tar.texi(opsummary,2770) @set ANCHOR--no-same-permissions 1
 tar.texi(opsummary,2770) @anchor{--no-same-permissions}
-tar.texi(opsummary,2770) @opindex no-same-permissions@r{, summary}tar.texi(opsummary,2770) 
+tar.texi(opsummary,2770) @opindex no-same-permissions@r{, summary}
 tar.texi(,2771) @item --no-same-permissions
 tar.texi(,2772) 
 tar.texi(,2773) When extracting an archive, subtract the user's umask from files from
@@ -2970,28 +2966,28 @@ tar.texi(,2775) for ordinary users.
 tar.texi(,2776) 
 tar.texi(opsummary,2777) @set ANCHOR--no-unquote 1
 tar.texi(opsummary,2777) @anchor{--no-unquote}
-tar.texi(opsummary,2777) @opindex no-unquote@r{, summary}tar.texi(opsummary,2777) 
+tar.texi(opsummary,2777) @opindex no-unquote@r{, summary}
 tar.texi(,2778) @item --no-unquote
 tar.texi(,2779) Treat all input file or member names literally, do not interpret
 tar.texi(,2780) escape sequences.  @xref{input name quoting}.
 tar.texi(,2781) 
 tar.texi(opsummary,2782) @set ANCHOR--no-wildcards 1
 tar.texi(opsummary,2782) @anchor{--no-wildcards}
-tar.texi(opsummary,2782) @opindex no-wildcards@r{, summary}tar.texi(opsummary,2782) 
+tar.texi(opsummary,2782) @opindex no-wildcards@r{, summary}
 tar.texi(,2783) @item --no-wildcards
 tar.texi(,2784) Do not use wildcards.
 tar.texi(,2785) @xref{controlling pattern-matching}.
 tar.texi(,2786) 
 tar.texi(opsummary,2787) @set ANCHOR--no-wildcards-match-slash 1
 tar.texi(opsummary,2787) @anchor{--no-wildcards-match-slash}
-tar.texi(opsummary,2787) @opindex no-wildcards-match-slash@r{, summary}tar.texi(opsummary,2787) 
+tar.texi(opsummary,2787) @opindex no-wildcards-match-slash@r{, summary}
 tar.texi(,2788) @item --no-wildcards-match-slash
 tar.texi(,2789) Wildcards do not match @samp{/}.
 tar.texi(,2790) @xref{controlling pattern-matching}.
 tar.texi(,2791) 
 tar.texi(opsummary,2792) @set ANCHOR--null 1
 tar.texi(opsummary,2792) @anchor{--null}
-tar.texi(opsummary,2792) @opindex null@r{, summary}tar.texi(opsummary,2792) 
+tar.texi(opsummary,2792) @opindex null@r{, summary}
 tar.texi(,2793) @item --null
 tar.texi(,2794) 
 tar.texi(,2795) When @command{tar} is using the @option{--files-from} option, this option
@@ -3001,7 +2997,7 @@ tar.texi(,2798) @xref{nul}.
 tar.texi(,2799) 
 tar.texi(opsummary,2800) @set ANCHOR--numeric-owner 1
 tar.texi(opsummary,2800) @anchor{--numeric-owner}
-tar.texi(opsummary,2800) @opindex numeric-owner@r{, summary}tar.texi(opsummary,2800) 
+tar.texi(opsummary,2800) @opindex numeric-owner@r{, summary}
 tar.texi(,2801) @item --numeric-owner
 tar.texi(,2802) 
 tar.texi(,2803) This option will notify @command{tar} that it should use numeric user
@@ -3016,14 +3012,14 @@ tar.texi(,2811) restoring ownership of files being extracted.
 tar.texi(,2812) 
 tar.texi(,2813) When creating an archive, it is a synonym for
 tar.texi(,2814) @option{--old-archive}.  This behavior is for compatibility
-tar.texi(GNUTAR,2815) with previous versions of tar.texi(GNUTAR,2815) @acronym{GNU} @command{tar}tar.texi(GNUTAR,2815) , and will be
+tar.texi(GNUTAR,2815) with previous versions of tar.texi(GNUTAR,2815) @acronym{GNU} @command{tar}, and will be
 tar.texi(,2816) removed in the future releases.
 tar.texi(,2817) 
 tar.texi(,2818) @xref{Changes}, for more information.
 tar.texi(,2819) 
 tar.texi(opsummary,2820) @set ANCHOR--occurrence 1
 tar.texi(opsummary,2820) @anchor{--occurrence}
-tar.texi(opsummary,2820) @opindex occurrence@r{, summary}tar.texi(opsummary,2820) 
+tar.texi(opsummary,2820) @opindex occurrence@r{, summary}
 tar.texi(,2821) @item --occurrence[=@var{number}]
 tar.texi(,2822) 
 tar.texi(,2823) This option can be used in conjunction with one of the subcommands
@@ -3044,13 +3040,13 @@ tar.texi(,2837) and will terminate without scanning to the end of the archive.
 tar.texi(,2838) 
 tar.texi(opsummary,2839) @set ANCHOR--old-archive 1
 tar.texi(opsummary,2839) @anchor{--old-archive}
-tar.texi(opsummary,2839) @opindex old-archive@r{, summary}tar.texi(opsummary,2839) 
+tar.texi(opsummary,2839) @opindex old-archive@r{, summary}
 tar.texi(,2840) @item --old-archive
 tar.texi(,2841) Synonym for @option{--format=v7}.
 tar.texi(,2842) 
 tar.texi(opsummary,2843) @set ANCHOR--one-file-system 1
 tar.texi(opsummary,2843) @anchor{--one-file-system}
-tar.texi(opsummary,2843) @opindex one-file-system@r{, summary}tar.texi(opsummary,2843) 
+tar.texi(opsummary,2843) @opindex one-file-system@r{, summary}
 tar.texi(,2844) @item --one-file-system
 tar.texi(,2845) Used when creating an archive.  Prevents @command{tar} from recursing into
 tar.texi(,2846) directories that are on different file systems from the current
@@ -3060,7 +3056,7 @@ tar.texi(,2849) 1.15.91. @xref{Changes}, for more information.}.
 tar.texi(,2850) 
 tar.texi(opsummary,2851) @set ANCHOR--overwrite 1
 tar.texi(opsummary,2851) @anchor{--overwrite}
-tar.texi(opsummary,2851) @opindex overwrite@r{, summary}tar.texi(opsummary,2851) 
+tar.texi(opsummary,2851) @opindex overwrite@r{, summary}
 tar.texi(,2852) @item --overwrite
 tar.texi(,2853) 
 tar.texi(,2854) Overwrite existing files and directory metadata when extracting files
@@ -3068,7 +3064,7 @@ tar.texi(,2855) from an archive.  @xref{Overwrite Old Files}.
 tar.texi(,2856) 
 tar.texi(opsummary,2857) @set ANCHOR--overwrite-dir 1
 tar.texi(opsummary,2857) @anchor{--overwrite-dir}
-tar.texi(opsummary,2857) @opindex overwrite-dir@r{, summary}tar.texi(opsummary,2857) 
+tar.texi(opsummary,2857) @opindex overwrite-dir@r{, summary}
 tar.texi(,2858) @item --overwrite-dir
 tar.texi(,2859) 
 tar.texi(,2860) Overwrite the metadata of existing directories when extracting files
@@ -3076,7 +3072,7 @@ tar.texi(,2861) from an archive.  @xref{Overwrite Old Files}.
 tar.texi(,2862) 
 tar.texi(opsummary,2863) @set ANCHOR--owner 1
 tar.texi(opsummary,2863) @anchor{--owner}
-tar.texi(opsummary,2863) @opindex owner@r{, summary}tar.texi(opsummary,2863) 
+tar.texi(opsummary,2863) @opindex owner@r{, summary}
 tar.texi(,2864) @item --owner=@var{user}
 tar.texi(,2865) 
 tar.texi(,2866) Specifies that @command{tar} should use @var{user} as the owner of members
@@ -3089,7 +3085,7 @@ tar.texi(,2872) This option does not affect extraction from archives.
 tar.texi(,2873) 
 tar.texi(opsummary,2874) @set ANCHOR--transform 1
 tar.texi(opsummary,2874) @anchor{--transform}
-tar.texi(opsummary,2874) @opindex transform@r{, summary}tar.texi(opsummary,2874) 
+tar.texi(opsummary,2874) @opindex transform@r{, summary}
 tar.texi(,2875) @item --transform=@var{sed-expr}
 tar.texi(,2876) 
 tar.texi(,2877) Transform file or member names using @command{sed} replacement expression
@@ -3110,14 +3106,14 @@ tar.texi(,2891) (@pxref{show-transformed-names}).
 tar.texi(,2892) 
 tar.texi(opsummary,2893) @set ANCHOR--quote-chars 1
 tar.texi(opsummary,2893) @anchor{--quote-chars}
-tar.texi(opsummary,2893) @opindex quote-chars@r{, summary}tar.texi(opsummary,2893) 
+tar.texi(opsummary,2893) @opindex quote-chars@r{, summary}
 tar.texi(,2894) @item --quote-chars=@var{string}
 tar.texi(,2895) Always quote characters from @var{string}, even if the selected
 tar.texi(,2896) quoting style would not quote them (@pxref{quoting styles}).
 tar.texi(,2897) 
 tar.texi(opsummary,2898) @set ANCHOR--quoting-style 1
 tar.texi(opsummary,2898) @anchor{--quoting-style}
-tar.texi(opsummary,2898) @opindex quoting-style@r{, summary}tar.texi(opsummary,2898) 
+tar.texi(opsummary,2898) @opindex quoting-style@r{, summary}
 tar.texi(,2899) @item --quoting-style=@var{style}
 tar.texi(,2900) Set quoting style to use when printing member and file names
 tar.texi(,2901) (@pxref{quoting styles}). Valid @var{style} values are:
@@ -3128,7 +3124,7 @@ tar.texi(,2905) package.
 tar.texi(,2906) 
 tar.texi(opsummary,2907) @set ANCHOR--pax-option 1
 tar.texi(opsummary,2907) @anchor{--pax-option}
-tar.texi(opsummary,2907) @opindex pax-option@r{, summary}tar.texi(opsummary,2907) 
+tar.texi(opsummary,2907) @opindex pax-option@r{, summary}
 tar.texi(,2908) @item --pax-option=@var{keyword-list}
 tar.texi(,2909) This option is meaningful only with @acronym{POSIX.1-2001} archives
 tar.texi(,2910) (@pxref{posix}).  It modifies the way @command{tar} handles the
@@ -3138,20 +3134,20 @@ tar.texi(,2913) discussion.
 tar.texi(,2914) 
 tar.texi(opsummary,2915) @set ANCHOR--portability 1
 tar.texi(opsummary,2915) @anchor{--portability}
-tar.texi(opsummary,2915) @opindex portability@r{, summary}tar.texi(opsummary,2915) 
+tar.texi(opsummary,2915) @opindex portability@r{, summary}
 tar.texi(,2916) @item --portability
 tar.texi(,2917) @itemx --old-archive
 tar.texi(,2918) Synonym for @option{--format=v7}.
 tar.texi(,2919) 
 tar.texi(opsummary,2920) @set ANCHOR--posix 1
 tar.texi(opsummary,2920) @anchor{--posix}
-tar.texi(opsummary,2920) @opindex posix@r{, summary}tar.texi(opsummary,2920) 
+tar.texi(opsummary,2920) @opindex posix@r{, summary}
 tar.texi(,2921) @item --posix
 tar.texi(,2922) Same as @option{--format=posix}.
 tar.texi(,2923) 
 tar.texi(opsummary,2924) @set ANCHOR--preserve 1
 tar.texi(opsummary,2924) @anchor{--preserve}
-tar.texi(opsummary,2924) @opindex preserve@r{, summary}tar.texi(opsummary,2924) 
+tar.texi(opsummary,2924) @opindex preserve@r{, summary}
 tar.texi(,2925) @item --preserve
 tar.texi(,2926) 
 tar.texi(,2927) Synonymous with specifying both @option{--preserve-permissions} and
@@ -3159,17 +3155,17 @@ tar.texi(,2928) @option{--same-order}.  @xref{Setting Access Permissions}.
 tar.texi(,2929) 
 tar.texi(opsummary,2930) @set ANCHOR--preserve-order 1
 tar.texi(opsummary,2930) @anchor{--preserve-order}
-tar.texi(opsummary,2930) @opindex preserve-order@r{, summary}tar.texi(opsummary,2930) 
+tar.texi(opsummary,2930) @opindex preserve-order@r{, summary}
 tar.texi(,2931) @item --preserve-order
 tar.texi(,2932) 
 tar.texi(,2933) (See @option{--same-order}; @pxref{Reading}.)
 tar.texi(,2934) 
 tar.texi(opsummary,2935) @set ANCHOR--preserve-permissions 1
 tar.texi(opsummary,2935) @anchor{--preserve-permissions}
-tar.texi(opsummary,2935) @opindex preserve-permissions@r{, summary}tar.texi(opsummary,2935) 
+tar.texi(opsummary,2935) @opindex preserve-permissions@r{, summary}
 tar.texi(opsummary,2936) @set ANCHOR--same-permissions 1
 tar.texi(opsummary,2936) @anchor{--same-permissions}
-tar.texi(opsummary,2936) @opindex same-permissions@r{, summary}tar.texi(opsummary,2936) 
+tar.texi(opsummary,2936) @opindex same-permissions@r{, summary}
 tar.texi(,2937) @item --preserve-permissions
 tar.texi(,2938) @itemx --same-permissions
 tar.texi(,2939) @itemx -p
@@ -3182,7 +3178,7 @@ tar.texi(,2945) permissions directly from the archive.  @xref{Setting Access Per
 tar.texi(,2946) 
 tar.texi(opsummary,2947) @set ANCHOR--read-full-records 1
 tar.texi(opsummary,2947) @anchor{--read-full-records}
-tar.texi(opsummary,2947) @opindex read-full-records@r{, summary}tar.texi(opsummary,2947) 
+tar.texi(opsummary,2947) @opindex read-full-records@r{, summary}
 tar.texi(,2948) @item --read-full-records
 tar.texi(,2949) @itemx -B
 tar.texi(,2950) 
@@ -3191,7 +3187,7 @@ tar.texi(,2952) from pipes on systems with buggy implementations.  @xref{Reading
 tar.texi(,2953) 
 tar.texi(opsummary,2954) @set ANCHOR--record-size 1
 tar.texi(opsummary,2954) @anchor{--record-size}
-tar.texi(opsummary,2954) @opindex record-size@r{, summary}tar.texi(opsummary,2954) 
+tar.texi(opsummary,2954) @opindex record-size@r{, summary}
 tar.texi(,2955) @item --record-size=@var{size}
 tar.texi(,2956) 
 tar.texi(,2957) Instructs @command{tar} to use @var{size} bytes per record when accessing the
@@ -3199,7 +3195,7 @@ tar.texi(,2958) archive.  @xref{Blocking Factor}.
 tar.texi(,2959) 
 tar.texi(opsummary,2960) @set ANCHOR--recursion 1
 tar.texi(opsummary,2960) @anchor{--recursion}
-tar.texi(opsummary,2960) @opindex recursion@r{, summary}tar.texi(opsummary,2960) 
+tar.texi(opsummary,2960) @opindex recursion@r{, summary}
 tar.texi(,2961) @item --recursion
 tar.texi(,2962) 
 tar.texi(,2963) With this option, @command{tar} recurses into directories.
@@ -3207,7 +3203,7 @@ tar.texi(,2964) @xref{recurse}.
 tar.texi(,2965) 
 tar.texi(opsummary,2966) @set ANCHOR--recursive-unlink 1
 tar.texi(opsummary,2966) @anchor{--recursive-unlink}
-tar.texi(opsummary,2966) @opindex recursive-unlink@r{, summary}tar.texi(opsummary,2966) 
+tar.texi(opsummary,2966) @opindex recursive-unlink@r{, summary}
 tar.texi(,2967) @item --recursive-unlink
 tar.texi(,2968) 
 tar.texi(,2969) Remove existing
@@ -3216,7 +3212,7 @@ tar.texi(,2971) from the archive.  @xref{Recursive Unlink}.
 tar.texi(,2972) 
 tar.texi(opsummary,2973) @set ANCHOR--remove-files 1
 tar.texi(opsummary,2973) @anchor{--remove-files}
-tar.texi(opsummary,2973) @opindex remove-files@r{, summary}tar.texi(opsummary,2973) 
+tar.texi(opsummary,2973) @opindex remove-files@r{, summary}
 tar.texi(,2974) @item --remove-files
 tar.texi(,2975) 
 tar.texi(,2976) Directs @command{tar} to remove the source file from the file system after
@@ -3224,7 +3220,7 @@ tar.texi(,2977) appending it to an archive.  @xref{remove files}.
 tar.texi(,2978) 
 tar.texi(opsummary,2979) @set ANCHOR--restrict 1
 tar.texi(opsummary,2979) @anchor{--restrict}
-tar.texi(opsummary,2979) @opindex restrict@r{, summary}tar.texi(opsummary,2979) 
+tar.texi(opsummary,2979) @opindex restrict@r{, summary}
 tar.texi(,2980) @item --restrict
 tar.texi(,2981) 
 tar.texi(,2982) Disable use of some potentially harmful @command{tar} options.
@@ -3233,7 +3229,7 @@ tar.texi(,2984) (@pxref{Using Multiple Tapes}).
 tar.texi(,2985) 
 tar.texi(opsummary,2986) @set ANCHOR--rmt-command 1
 tar.texi(opsummary,2986) @anchor{--rmt-command}
-tar.texi(opsummary,2986) @opindex rmt-command@r{, summary}tar.texi(opsummary,2986) 
+tar.texi(opsummary,2986) @opindex rmt-command@r{, summary}
 tar.texi(,2987) @item --rmt-command=@var{cmd}
 tar.texi(,2988) 
 tar.texi(,2989) Notifies @command{tar} that it should use @var{cmd} instead of
@@ -3241,7 +3237,7 @@ tar.texi(,2990) the default @file{/usr/libexec/rmt} (@pxref{Remote Tape Server})
 tar.texi(,2991) 
 tar.texi(opsummary,2992) @set ANCHOR--rsh-command 1
 tar.texi(opsummary,2992) @anchor{--rsh-command}
-tar.texi(opsummary,2992) @opindex rsh-command@r{, summary}tar.texi(opsummary,2992) 
+tar.texi(opsummary,2992) @opindex rsh-command@r{, summary}
 tar.texi(,2993) @item --rsh-command=@var{cmd}
 tar.texi(,2994) 
 tar.texi(,2995) Notifies @command{tar} that is should use @var{cmd} to communicate with remote
@@ -3249,7 +3245,7 @@ tar.texi(,2996) devices.  @xref{Device}.
 tar.texi(,2997) 
 tar.texi(opsummary,2998) @set ANCHOR--same-order 1
 tar.texi(opsummary,2998) @anchor{--same-order}
-tar.texi(opsummary,2998) @opindex same-order@r{, summary}tar.texi(opsummary,2998) 
+tar.texi(opsummary,2998) @opindex same-order@r{, summary}
 tar.texi(,2999) @item --same-order
 tar.texi(,3000) @itemx --preserve-order
 tar.texi(,3001) @itemx -s
@@ -3261,7 +3257,7 @@ tar.texi(,3006) archive.  @xref{Reading}.
 tar.texi(,3007) 
 tar.texi(opsummary,3008) @set ANCHOR--same-owner 1
 tar.texi(opsummary,3008) @anchor{--same-owner}
-tar.texi(opsummary,3008) @opindex same-owner@r{, summary}tar.texi(opsummary,3008) 
+tar.texi(opsummary,3008) @opindex same-owner@r{, summary}
 tar.texi(,3009) @item --same-owner
 tar.texi(,3010) 
 tar.texi(,3011) When extracting an archive, @command{tar} will attempt to preserve the owner
@@ -3269,14 +3265,14 @@ tar.texi(,3012) specified in the @command{tar} archive with this option present.
 tar.texi(,3013) This is the default behavior for the superuser; this option has an
 tar.texi(,3014) effect only for ordinary users.  @xref{Attributes}.
 tar.texi(,3015) 
-tar.texi(opsummary,3016) @opindex same-permissions@r{, summary}tar.texi(opsummary,3016) 
+tar.texi(opsummary,3016) @opindex same-permissions@r{, summary}
 tar.texi(,3017) @item --same-permissions
 tar.texi(,3018) 
 tar.texi(,3019) (See @option{--preserve-permissions}; @pxref{Setting Access Permissions}.)
 tar.texi(,3020) 
 tar.texi(opsummary,3021) @set ANCHOR--show-defaults 1
 tar.texi(opsummary,3021) @anchor{--show-defaults}
-tar.texi(opsummary,3021) @opindex show-defaults@r{, summary}tar.texi(opsummary,3021) 
+tar.texi(opsummary,3021) @opindex show-defaults@r{, summary}
 tar.texi(,3022) @item --show-defaults
 tar.texi(,3023) 
 tar.texi(,3024) Displays the default options used by @command{tar} and exits
@@ -3291,7 +3287,7 @@ tar.texi(,3032) @end smallexample
 tar.texi(,3033) 
 tar.texi(opsummary,3034) @set ANCHOR--show-omitted-dirs 1
 tar.texi(opsummary,3034) @anchor{--show-omitted-dirs}
-tar.texi(opsummary,3034) @opindex show-omitted-dirs@r{, summary}tar.texi(opsummary,3034) 
+tar.texi(opsummary,3034) @opindex show-omitted-dirs@r{, summary}
 tar.texi(,3035) @item --show-omitted-dirs
 tar.texi(,3036) 
 tar.texi(,3037) Instructs @command{tar} to mention directories its skipping over when
@@ -3299,10 +3295,10 @@ tar.texi(,3038) operating on a @command{tar} archive.  @xref{show-omitted-dirs}.
 tar.texi(,3039) 
 tar.texi(opsummary,3040) @set ANCHOR--show-transformed-names 1
 tar.texi(opsummary,3040) @anchor{--show-transformed-names}
-tar.texi(opsummary,3040) @opindex show-transformed-names@r{, summary}tar.texi(opsummary,3040) 
+tar.texi(opsummary,3040) @opindex show-transformed-names@r{, summary}
 tar.texi(opsummary,3041) @set ANCHOR--show-stored-names 1
 tar.texi(opsummary,3041) @anchor{--show-stored-names}
-tar.texi(opsummary,3041) @opindex show-stored-names@r{, summary}tar.texi(opsummary,3041) 
+tar.texi(opsummary,3041) @opindex show-stored-names@r{, summary}
 tar.texi(,3042) @item --show-transformed-names
 tar.texi(,3043) @itemx --show-stored-names
 tar.texi(,3044) 
@@ -3314,7 +3310,7 @@ tar.texi(,3049) names.  @xref{listing member and file names}.
 tar.texi(,3050) 
 tar.texi(opsummary,3051) @set ANCHOR--sparse 1
 tar.texi(opsummary,3051) @anchor{--sparse}
-tar.texi(opsummary,3051) @opindex sparse@r{, summary}tar.texi(opsummary,3051) 
+tar.texi(opsummary,3051) @opindex sparse@r{, summary}
 tar.texi(,3052) @item --sparse
 tar.texi(,3053) @itemx -S
 tar.texi(,3054) 
@@ -3323,7 +3319,7 @@ tar.texi(,3056) sparse files efficiently.  @xref{sparse}.
 tar.texi(,3057) 
 tar.texi(opsummary,3058) @set ANCHOR--sparse-version 1
 tar.texi(opsummary,3058) @anchor{--sparse-version}
-tar.texi(opsummary,3058) @opindex sparse-version@r{, summary}tar.texi(opsummary,3058) 
+tar.texi(opsummary,3058) @opindex sparse-version@r{, summary}
 tar.texi(,3059) @item --sparse-version=@var{version}
 tar.texi(,3060) 
 tar.texi(,3061) Specified the @dfn{format version} to use when archiving sparse
@@ -3332,7 +3328,7 @@ tar.texi(,3063) of the supported sparse formats, @xref{Sparse Formats}.
 tar.texi(,3064) 
 tar.texi(opsummary,3065) @set ANCHOR--starting-file 1
 tar.texi(opsummary,3065) @anchor{--starting-file}
-tar.texi(opsummary,3065) @opindex starting-file@r{, summary}tar.texi(opsummary,3065) 
+tar.texi(opsummary,3065) @opindex starting-file@r{, summary}
 tar.texi(,3066) @item --starting-file=@var{name}
 tar.texi(,3067) @itemx -K @var{name}
 tar.texi(,3068) 
@@ -3342,7 +3338,7 @@ tar.texi(,3071) @xref{Scarce}.
 tar.texi(,3072) 
 tar.texi(opsummary,3073) @set ANCHOR--strip-components 1
 tar.texi(opsummary,3073) @anchor{--strip-components}
-tar.texi(opsummary,3073) @opindex strip-components@r{, summary}tar.texi(opsummary,3073) 
+tar.texi(opsummary,3073) @opindex strip-components@r{, summary}
 tar.texi(,3074) @item --strip-components=@var{number}
 tar.texi(,3075) Strip given @var{number} of leading components from file names before
 tar.texi(,3076) extraction.@footnote{This option was called @option{--strip-path} in
@@ -3358,7 +3354,7 @@ tar.texi(,3085) would extract this file to file @file{name}.
 tar.texi(,3086) 
 tar.texi(opsummary,3087) @set ANCHOR--suffix 1
 tar.texi(opsummary,3087) @anchor{--suffix}
-tar.texi(opsummary,3087) @opindex suffix@r{, summary}tar.texi(opsummary,3087) , summary
+tar.texi(opsummary,3087) @opindex suffix@r{, summary}, summary
 tar.texi(,3088) @item --suffix=@var{suffix}
 tar.texi(,3089) 
 tar.texi(,3090) Alters the suffix @command{tar} uses when backing up files from the default
@@ -3366,7 +3362,7 @@ tar.texi(,3091) @samp{~}.  @xref{backup}.
 tar.texi(,3092) 
 tar.texi(opsummary,3093) @set ANCHOR--tape-length 1
 tar.texi(opsummary,3093) @anchor{--tape-length}
-tar.texi(opsummary,3093) @opindex tape-length@r{, summary}tar.texi(opsummary,3093) 
+tar.texi(opsummary,3093) @opindex tape-length@r{, summary}
 tar.texi(,3094) @item --tape-length=@var{num}
 tar.texi(,3095) @itemx -L @var{num}
 tar.texi(,3096) 
@@ -3375,7 +3371,7 @@ tar.texi(,3098) @w{@var{num} x 1024} bytes long.  @xref{Using Multiple Tapes}.
 tar.texi(,3099) 
 tar.texi(opsummary,3100) @set ANCHOR--test-label 1
 tar.texi(opsummary,3100) @anchor{--test-label}
-tar.texi(opsummary,3100) @opindex test-label@r{, summary}tar.texi(opsummary,3100) 
+tar.texi(opsummary,3100) @opindex test-label@r{, summary}
 tar.texi(,3101) @item --test-label
 tar.texi(,3102) 
 tar.texi(,3103) Reads the volume label.  If an argument is specified, test whether it
@@ -3383,7 +3379,7 @@ tar.texi(,3104) matches the volume label.  @xref{--test-label option}.
 tar.texi(,3105) 
 tar.texi(opsummary,3106) @set ANCHOR--to-command 1
 tar.texi(opsummary,3106) @anchor{--to-command}
-tar.texi(opsummary,3106) @opindex to-command@r{, summary}tar.texi(opsummary,3106) 
+tar.texi(opsummary,3106) @opindex to-command@r{, summary}
 tar.texi(,3107) @item --to-command=@var{command}
 tar.texi(,3108) 
 tar.texi(,3109) During extraction @command{tar} will pipe extracted files to the
@@ -3391,7 +3387,7 @@ tar.texi(,3110) standard input of @var{command}.  @xref{Writing to an External P
 tar.texi(,3111) 
 tar.texi(opsummary,3112) @set ANCHOR--to-stdout 1
 tar.texi(opsummary,3112) @anchor{--to-stdout}
-tar.texi(opsummary,3112) @opindex to-stdout@r{, summary}tar.texi(opsummary,3112) 
+tar.texi(opsummary,3112) @opindex to-stdout@r{, summary}
 tar.texi(,3113) @item --to-stdout
 tar.texi(,3114) @itemx -O
 tar.texi(,3115) 
@@ -3400,7 +3396,7 @@ tar.texi(,3117) than to the file system.  @xref{Writing to Standard Output}.
 tar.texi(,3118) 
 tar.texi(opsummary,3119) @set ANCHOR--totals 1
 tar.texi(opsummary,3119) @anchor{--totals}
-tar.texi(opsummary,3119) @opindex totals@r{, summary}tar.texi(opsummary,3119) 
+tar.texi(opsummary,3119) @opindex totals@r{, summary}
 tar.texi(,3120) @item --totals[=@var{signo}]
 tar.texi(,3121) 
 tar.texi(,3122) Displays the total number of bytes transferred when processing an
@@ -3410,7 +3406,7 @@ tar.texi(,3125) @xref{totals}.
 tar.texi(,3126) 
 tar.texi(opsummary,3127) @set ANCHOR--touch 1
 tar.texi(opsummary,3127) @anchor{--touch}
-tar.texi(opsummary,3127) @opindex touch@r{, summary}tar.texi(opsummary,3127) 
+tar.texi(opsummary,3127) @opindex touch@r{, summary}
 tar.texi(,3128) @item --touch
 tar.texi(,3129) @itemx -m
 tar.texi(,3130) 
@@ -3418,19 +3414,19 @@ tar.texi(,3131) Sets the data modification time of extracted files to the extrac
 tar.texi(,3132) rather than the data modification time stored in the archive.
 tar.texi(,3133) @xref{Data Modification Times}.
 tar.texi(,3134) 
-tar.texi(opsummary,3135) @opindex uncompress@r{, summary}tar.texi(opsummary,3135) 
+tar.texi(opsummary,3135) @opindex uncompress@r{, summary}
 tar.texi(,3136) @item --uncompress
 tar.texi(,3137) 
 tar.texi(,3138) (See @option{--compress}. @pxref{gzip})
 tar.texi(,3139) 
-tar.texi(opsummary,3140) @opindex ungzip@r{, summary}tar.texi(opsummary,3140) 
+tar.texi(opsummary,3140) @opindex ungzip@r{, summary}
 tar.texi(,3141) @item --ungzip
 tar.texi(,3142) 
 tar.texi(,3143) (See @option{--gzip}. @pxref{gzip})
 tar.texi(,3144) 
 tar.texi(opsummary,3145) @set ANCHOR--unlink-first 1
 tar.texi(opsummary,3145) @anchor{--unlink-first}
-tar.texi(opsummary,3145) @opindex unlink-first@r{, summary}tar.texi(opsummary,3145) 
+tar.texi(opsummary,3145) @opindex unlink-first@r{, summary}
 tar.texi(,3146) @item --unlink-first
 tar.texi(,3147) @itemx -U
 tar.texi(,3148) 
@@ -3439,14 +3435,14 @@ tar.texi(,3150) system before extracting it from the archive.  @xref{Unlink Firs
 tar.texi(,3151) 
 tar.texi(opsummary,3152) @set ANCHOR--unquote 1
 tar.texi(opsummary,3152) @anchor{--unquote}
-tar.texi(opsummary,3152) @opindex unquote@r{, summary}tar.texi(opsummary,3152) 
+tar.texi(opsummary,3152) @opindex unquote@r{, summary}
 tar.texi(,3153) @item --unquote
 tar.texi(,3154) Enable unquoting input file or member names (default).  @xref{input
 tar.texi(,3155) name quoting}.
 tar.texi(,3156) 
 tar.texi(opsummary,3157) @set ANCHOR--use-compress-program 1
 tar.texi(opsummary,3157) @anchor{--use-compress-program}
-tar.texi(opsummary,3157) @opindex use-compress-program@r{, summary}tar.texi(opsummary,3157) 
+tar.texi(opsummary,3157) @opindex use-compress-program@r{, summary}
 tar.texi(,3158) @item --use-compress-program=@var{prog}
 tar.texi(,3159) 
 tar.texi(,3160) Instructs @command{tar} to access the archive through @var{prog}, which is
@@ -3454,7 +3450,7 @@ tar.texi(,3161) presumed to be a compression program of some sort.  @xref{gzip}.
 tar.texi(,3162) 
 tar.texi(opsummary,3163) @set ANCHOR--utc 1
 tar.texi(opsummary,3163) @anchor{--utc}
-tar.texi(opsummary,3163) @opindex utc@r{, summary}tar.texi(opsummary,3163) 
+tar.texi(opsummary,3163) @opindex utc@r{, summary}
 tar.texi(,3164) @item --utc
 tar.texi(,3165) 
 tar.texi(,3166) Display file modification dates in @acronym{UTC}.  This option implies
@@ -3462,7 +3458,7 @@ tar.texi(,3167) @option{--verbose}.
 tar.texi(,3168) 
 tar.texi(opsummary,3169) @set ANCHOR--verbose 1
 tar.texi(opsummary,3169) @anchor{--verbose}
-tar.texi(opsummary,3169) @opindex verbose@r{, summary}tar.texi(opsummary,3169) 
+tar.texi(opsummary,3169) @opindex verbose@r{, summary}
 tar.texi(,3170) @item --verbose
 tar.texi(,3171) @itemx -v
 tar.texi(,3172) 
@@ -3473,7 +3469,7 @@ tar.texi(,3176) @xref{verbose}.
 tar.texi(,3177) 
 tar.texi(opsummary,3178) @set ANCHOR--verify 1
 tar.texi(opsummary,3178) @anchor{--verify}
-tar.texi(opsummary,3178) @opindex verify@r{, summary}tar.texi(opsummary,3178) 
+tar.texi(opsummary,3178) @opindex verify@r{, summary}
 tar.texi(,3179) @item --verify
 tar.texi(,3180) @itemx -W
 tar.texi(,3181) 
@@ -3482,7 +3478,7 @@ tar.texi(,3183) archive.  @xref{verify}.
 tar.texi(,3184) 
 tar.texi(opsummary,3185) @set ANCHOR--version 1
 tar.texi(opsummary,3185) @anchor{--version}
-tar.texi(opsummary,3185) @opindex version@r{, summary}tar.texi(opsummary,3185) 
+tar.texi(opsummary,3185) @opindex version@r{, summary}
 tar.texi(,3186) @item --version
 tar.texi(,3187) 
 tar.texi(,3188) Print information about the program's name, version, origin and legal
@@ -3491,7 +3487,7 @@ tar.texi(,3190) @xref{help}.
 tar.texi(,3191) 
 tar.texi(opsummary,3192) @set ANCHOR--volno-file 1
 tar.texi(opsummary,3192) @anchor{--volno-file}
-tar.texi(opsummary,3192) @opindex volno-file@r{, summary}tar.texi(opsummary,3192) 
+tar.texi(opsummary,3192) @opindex volno-file@r{, summary}
 tar.texi(,3193) @item --volno-file=@var{file}
 tar.texi(,3194) 
 tar.texi(,3195) Used in conjunction with @option{--multi-volume}.  @command{tar} will
@@ -3500,14 +3496,14 @@ tar.texi(,3197) @var{file}.  @xref{volno-file}.
 tar.texi(,3198) 
 tar.texi(opsummary,3199) @set ANCHOR--wildcards 1
 tar.texi(opsummary,3199) @anchor{--wildcards}
-tar.texi(opsummary,3199) @opindex wildcards@r{, summary}tar.texi(opsummary,3199) 
+tar.texi(opsummary,3199) @opindex wildcards@r{, summary}
 tar.texi(,3200) @item --wildcards
 tar.texi(,3201) Use wildcards when matching member names with patterns.
 tar.texi(,3202) @xref{controlling pattern-matching}.
 tar.texi(,3203) 
 tar.texi(opsummary,3204) @set ANCHOR--wildcards-match-slash 1
 tar.texi(opsummary,3204) @anchor{--wildcards-match-slash}
-tar.texi(opsummary,3204) @opindex wildcards-match-slash@r{, summary}tar.texi(opsummary,3204) 
+tar.texi(opsummary,3204) @opindex wildcards-match-slash@r{, summary}
 tar.texi(,3205) @item --wildcards-match-slash
 tar.texi(,3206) Wildcards match @samp{/}.
 tar.texi(,3207) @xref{controlling pattern-matching}.
@@ -3586,7 +3582,7 @@ tar.texi(,3279) @item -o @tab When creating, @ref{--no-same-owner}, when extract
 tar.texi(,3280) @ref{--portability}. 
 tar.texi(,3281) 
 tar.texi(,3282) The later usage is deprecated.  It is retained for compatibility with
-tar.texi(GNUTAR,3283) the earlier versions of tar.texi(GNUTAR,3283) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3283) .  In the future releases
+tar.texi(GNUTAR,3283) the earlier versions of tar.texi(GNUTAR,3283) @acronym{GNU} @command{tar}.  In the future releases
 tar.texi(,3284) @option{-o} will be equivalent to @option{--no-same-owner} only.
 tar.texi(,3285) 
 tar.texi(,3286) @item -p @tab @ref{--preserve-permissions}.
@@ -3610,13 +3606,13 @@ tar.texi(,3303)
 tar.texi(,3304) @end multitable
 tar.texi(,3305) 
 tar.texi(,3306) @node help
-tar.texi(GNUTAR,3307) @section tar.texi(GNUTAR,3307) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3307)  documentation
+tar.texi(GNUTAR,3307) @section tar.texi(GNUTAR,3307) @acronym{GNU} @command{tar} documentation
 tar.texi(,3308) 
 tar.texi(,3309) @cindex Getting program version number
 tar.texi(,3310) @opindex version
 tar.texi(,3311) @cindex Version of the @command{tar} program
 tar.texi(,3312) Being careful, the first thing is really checking that you are using
-tar.texi(GNUTAR,3313) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3313) , indeed.  The @option{--version} option
+tar.texi(GNUTAR,3313) @acronym{GNU} @command{tar}, indeed.  The @option{--version} option
 tar.texi(,3314) causes @command{tar} to print information about its name, version,
 tar.texi(,3315) origin and legal status, all on standard output, and then exit
 tar.texi(,3316) successfully.  For example, @w{@samp{tar --version}} might print:
@@ -3645,10 +3641,10 @@ tar.texi(,3338) paxutils) 3.2}}}.
 tar.texi(,3339) 
 tar.texi(,3340) @cindex Obtaining help
 tar.texi(,3341) @cindex Listing all @command{tar} options
-tar.texi(xopindex,3342) @opindex help@r{, introduction}tar.texi(xopindex,3342) 
+tar.texi(xopindex,3342) @opindex help@r{, introduction}
 tar.texi(,3343) Another thing you might want to do is checking the spelling or meaning
 tar.texi(,3344) of some particular @command{tar} option, without resorting to this
-tar.texi(GNUTAR,3345) manual, for once you have carefully read it.  tar.texi(GNUTAR,3345) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3345) 
+tar.texi(GNUTAR,3345) manual, for once you have carefully read it.  tar.texi(GNUTAR,3345) @acronym{GNU} @command{tar}
 tar.texi(,3346) has a short help feature, triggerable through the
 tar.texi(,3347) @option{--help} option.  By using this option, @command{tar} will
 tar.texi(,3348) print a usage message listing all available options on standard
@@ -3688,30 +3684,30 @@ tar.texi(,3381) The short help output is quite succinct, and you might have to g
 tar.texi(,3382) back to the full documentation for precise points.  If you are reading
 tar.texi(,3383) this paragraph, you already have the @command{tar} manual in some
 tar.texi(,3384) form.  This manual is available in a variety of forms from
-tar.texi(GNUTAR,3385) @url{http://www.gnu.org/software/tar/manual}.  It may be printed out of the tar.texi(GNUTAR,3385) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3385) 
+tar.texi(GNUTAR,3385) @url{http://www.gnu.org/software/tar/manual}.  It may be printed out of the tar.texi(GNUTAR,3385) @acronym{GNU} @command{tar}
 tar.texi(,3386) distribution, provided you have @TeX{} already installed somewhere,
 tar.texi(,3387) and a laser printer around.  Just configure the distribution, execute
 tar.texi(,3388) the command @w{@samp{make dvi}}, then print @file{doc/tar.dvi} the
-tar.texi(GNUTAR,3389) usual way (contact your local guru to know how).  If tar.texi(GNUTAR,3389) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3389) 
+tar.texi(GNUTAR,3389) usual way (contact your local guru to know how).  If tar.texi(GNUTAR,3389) @acronym{GNU} @command{tar}
 tar.texi(,3390) has been conveniently installed at your place, this
 tar.texi(,3391) manual is also available in interactive, hypertextual form as an Info
 tar.texi(,3392) file.  Just call @w{@samp{info tar}} or, if you do not have the
 tar.texi(,3393) @command{info} program handy, use the Info reader provided within
 tar.texi(,3394) @acronym{GNU} Emacs, calling @samp{tar} from the main Info menu.
 tar.texi(,3395) 
-tar.texi(GNUTAR,3396) There is currently no @code{man} page for tar.texi(GNUTAR,3396) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3396) .
+tar.texi(GNUTAR,3396) There is currently no @code{man} page for tar.texi(GNUTAR,3396) @acronym{GNU} @command{tar}.
 tar.texi(,3397) If you observe such a @code{man} page on the system you are running,
-tar.texi(GNUTAR,3398) either it does not belong to tar.texi(GNUTAR,3398) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3398) , or it has not
+tar.texi(GNUTAR,3398) either it does not belong to tar.texi(GNUTAR,3398) @acronym{GNU} @command{tar}, or it has not
 tar.texi(,3399) been produced by @acronym{GNU}.  Some package maintainers convert
 tar.texi(,3400) @kbd{tar --help} output to a man page, using @command{help2man}.  In
 tar.texi(,3401) any case, please bear in mind that the authoritative source of
-tar.texi(GNUTAR,3402) information about tar.texi(GNUTAR,3402) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3402)  is this Texinfo documentation.
+tar.texi(GNUTAR,3402) information about tar.texi(GNUTAR,3402) @acronym{GNU} @command{tar} is this Texinfo documentation.
 tar.texi(,3403) 
 tar.texi(,3404) @node defaults
-tar.texi(GNUTAR,3405) @section Obtaining tar.texi(GNUTAR,3405) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3405)  default values
+tar.texi(GNUTAR,3405) @section Obtaining tar.texi(GNUTAR,3405) @acronym{GNU} @command{tar} default values
 tar.texi(,3406) 
 tar.texi(,3407) @opindex show-defaults
-tar.texi(GNUTAR,3408) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3408)  has some predefined defaults that are used when you do not
+tar.texi(GNUTAR,3408) @acronym{GNU} @command{tar} has some predefined defaults that are used when you do not
 tar.texi(,3409) explicitely specify another values.  To obtain a list of such
 tar.texi(,3410) defaults, use @option{--show-defaults} option.  This will output the
 tar.texi(,3411) values in the form of @command{tar} command line options:
@@ -3729,7 +3725,7 @@ tar.texi(,3422) Notice, that this option outputs only one line.  The example out
 tar.texi(,3423) has been split to fit page boundaries.
 tar.texi(,3424) 
 tar.texi(,3425) @noindent
-tar.texi(GNUTAR,3426) The above output shows that this version of tar.texi(GNUTAR,3426) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3426)  defaults to
+tar.texi(GNUTAR,3426) The above output shows that this version of tar.texi(GNUTAR,3426) @acronym{GNU} @command{tar} defaults to
 tar.texi(,3427) using @samp{gnu} archive format (@pxref{Formats}), it uses standard
 tar.texi(,3428) output as the archive, if no @option{--file} option has been given
 tar.texi(,3429) (@pxref{file tutorial}), the default blocking factor is 20
@@ -3890,7 +3886,7 @@ tar.texi(,3583) are triggered when reading blocks full of NULs, or when hitting 
 tar.texi(,3584) file on the archive.  As of now, if the archive if properly terminated
 tar.texi(,3585) with a NUL block, the reading of the file may stop before end of file
 tar.texi(,3586) is met, so the position of end of file will not usually show when
-tar.texi(GNUTAR,3587) @option{--block-number} (@option{-R}) is used.  Note that tar.texi(GNUTAR,3587) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3587) 
+tar.texi(GNUTAR,3587) @option{--block-number} (@option{-R}) is used.  Note that tar.texi(GNUTAR,3587) @acronym{GNU} @command{tar}
 tar.texi(,3588) drains the archive before exiting when reading the
 tar.texi(,3589) archive from a pipe.
 tar.texi(,3590) 
@@ -3942,7 +3938,7 @@ tar.texi(,3635) read from that named pipe.  This has the advantage of letting st
 tar.texi(,3636) output free to receive verbose output, all separate from errors.
 tar.texi(,3637) 
 tar.texi(,3638) @node operations
-tar.texi(GNUTAR,3639) @chapter tar.texi(GNUTAR,3639) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3639)  Operations
+tar.texi(GNUTAR,3639) @chapter tar.texi(GNUTAR,3639) @acronym{GNU} @command{tar} Operations
 tar.texi(,3640) 
 tar.texi(,3641) @menu
 tar.texi(,3642) * Basic tar::
@@ -3955,7 +3951,7 @@ tar.texi(,3648) * looking ahead::
 tar.texi(,3649) @end menu
 tar.texi(,3650) 
 tar.texi(,3651) @node Basic tar
-tar.texi(GNUTAR,3652) @section Basic tar.texi(GNUTAR,3652) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3652)  Operations
+tar.texi(GNUTAR,3652) @section Basic tar.texi(GNUTAR,3652) @acronym{GNU} @command{tar} Operations
 tar.texi(,3653) 
 tar.texi(,3654) The basic @command{tar} operations, @option{--create} (@option{-c}),
 tar.texi(,3655) @option{--list} (@option{-t}) and @option{--extract} (@option{--get},
@@ -3964,7 +3960,7 @@ tar.texi(,3657) chapter of this manual.  This section provides some complementar
 tar.texi(,3658) for these operations.
 tar.texi(,3659) 
 tar.texi(,3660) @table @option
-tar.texi(xopindex,3661) @opindex create@r{, complementary notes}tar.texi(xopindex,3661) 
+tar.texi(xopindex,3661) @opindex create@r{, complementary notes}
 tar.texi(,3662) @item --create
 tar.texi(,3663) @itemx -c
 tar.texi(,3664) 
@@ -3997,11 +3993,11 @@ tar.texi(,3690) file, which was meant to be saved, is rather destroyed.
 tar.texi(,3691) @end enumerate
 tar.texi(,3692) 
 tar.texi(,3693) So, recognizing the likelihood and the catastrophical nature of these
-tar.texi(GNUTAR,3694) errors, tar.texi(GNUTAR,3694) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3694)  now takes some distance from elegance, and
+tar.texi(GNUTAR,3694) errors, tar.texi(GNUTAR,3694) @acronym{GNU} @command{tar} now takes some distance from elegance, and
 tar.texi(,3695) cowardly refuses to create an archive when @option{--create} option is
 tar.texi(,3696) given, there are no arguments besides options, and
 tar.texi(,3697) @option{--files-from} (@option{-T}) option is @emph{not} used.  To get
-tar.texi(GNUTAR,3698) around the cautiousness of tar.texi(GNUTAR,3698) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3698)  and nevertheless create an
+tar.texi(GNUTAR,3698) around the cautiousness of tar.texi(GNUTAR,3698) @acronym{GNU} @command{tar} and nevertheless create an
 tar.texi(,3699) archive with nothing in it, one may still use, as the value for the
 tar.texi(,3700) @option{--files-from} option, a file with no names in it, as shown in
 tar.texi(,3701) the following commands:
@@ -4011,16 +4007,16 @@ tar.texi(,3704) @kbd{tar --create --file=empty-archive.tar --files-from=/dev/nul
 tar.texi(,3705) @kbd{tar cfT empty-archive.tar /dev/null}
 tar.texi(,3706) @end smallexample
 tar.texi(,3707) 
-tar.texi(xopindex,3708) @opindex extract@r{, complementary notes}tar.texi(xopindex,3708) 
+tar.texi(xopindex,3708) @opindex extract@r{, complementary notes}
 tar.texi(,3709) @item --extract
 tar.texi(,3710) @itemx --get
 tar.texi(,3711) @itemx -x
 tar.texi(,3712) 
-tar.texi(GNUTAR,3713) A socket is stored, within a tar.texi(GNUTAR,3713) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3713)  archive, as a pipe.
+tar.texi(GNUTAR,3713) A socket is stored, within a tar.texi(GNUTAR,3713) @acronym{GNU} @command{tar} archive, as a pipe.
 tar.texi(,3714) 
 tar.texi(,3715) @item @option{--list} (@option{-t})
 tar.texi(,3716) 
-tar.texi(GNUTAR,3717) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3717)  now shows dates as @samp{1996-08-30},
+tar.texi(GNUTAR,3717) @acronym{GNU} @command{tar} now shows dates as @samp{1996-08-30},
 tar.texi(,3718) while it used to show them as @samp{Aug 30 1996}. Preferably,
 tar.texi(,3719) people should get used to ISO 8601 dates.  Local American dates should
 tar.texi(,3720) be made available again with full date localization support, once
@@ -4033,9 +4029,9 @@ tar.texi(,3726)
 tar.texi(,3727) @end table
 tar.texi(,3728) 
 tar.texi(,3729) @node Advanced tar
-tar.texi(GNUTAR,3730) @section Advanced tar.texi(GNUTAR,3730) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3730)  Operations
+tar.texi(GNUTAR,3730) @section Advanced tar.texi(GNUTAR,3730) @acronym{GNU} @command{tar} Operations
 tar.texi(,3731) 
-tar.texi(GNUTAR,3732) Now that you have learned the basics of using tar.texi(GNUTAR,3732) @acronym{GNU} @command{tar}tar.texi(GNUTAR,3732) , you may want
+tar.texi(GNUTAR,3732) Now that you have learned the basics of using tar.texi(GNUTAR,3732) @acronym{GNU} @command{tar}, you may want
 tar.texi(,3733) to learn about further ways in which @command{tar} can help you.
 tar.texi(,3734) 
 tar.texi(,3735) This chapter presents five, more advanced operations which you probably
@@ -4064,7 +4060,6 @@ tar.texi(,3756) @subsection The Five Advanced @command{tar} Operations
 tar.texi(UNREVISED,3757) @quotation
 tar.texi(UNREVISED,3757) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3757) @end quotation
-tar.texi(UNREVISED,3757) 
 tar.texi(,3758) 
 tar.texi(,3759) In the last chapter, you learned about the first three operations to
 tar.texi(,3760) @command{tar}.  This chapter presents the remaining five operations to
@@ -4118,7 +4113,6 @@ tar.texi(,3807) @subsection How to Add Files to Existing Archives: @option{--app
 tar.texi(UNREVISED,3808) @quotation
 tar.texi(UNREVISED,3808) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3808) @end quotation
-tar.texi(UNREVISED,3808) 
 tar.texi(,3809) 
 tar.texi(,3810) @opindex append
 tar.texi(,3811) If you want to add files to an existing archive, you don't need to
@@ -4195,7 +4189,6 @@ tar.texi(,3883) @subsubsection Appending Files to an Archive
 tar.texi(UNREVISED,3884) @quotation
 tar.texi(UNREVISED,3884) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3884) @end quotation
-tar.texi(UNREVISED,3884) 
 tar.texi(,3885) @cindex Adding files to an Archive
 tar.texi(,3886) @cindex Appending files to an Archive
 tar.texi(,3887) @cindex Archives, Appending files to
@@ -4311,7 +4304,6 @@ tar.texi(,3996) @subsection Updating an Archive
 tar.texi(UNREVISED,3997) @quotation
 tar.texi(UNREVISED,3997) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,3997) @end quotation
-tar.texi(UNREVISED,3997) 
 tar.texi(,3998) @cindex Updating an archive
 tar.texi(,3999) 
 tar.texi(,4000) @opindex update
@@ -4381,7 +4373,7 @@ tar.texi(,4062) information about tapes.
 tar.texi(,4063) 
 tar.texi(,4064) @option{--update} (@option{-u}) is not suitable for performing backups for two
 tar.texi(,4065) reasons: it does not change directory content entries, and it
-tar.texi(GNUTAR,4066) lengthens the archive every time it is used.  The tar.texi(GNUTAR,4066) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4066) 
+tar.texi(GNUTAR,4066) lengthens the archive every time it is used.  The tar.texi(GNUTAR,4066) @acronym{GNU} @command{tar}
 tar.texi(,4067) options intended specifically for backups are more
 tar.texi(,4068) efficient.  If you need to run backups, please consult @ref{Backups}.
 tar.texi(,4069) 
@@ -4488,7 +4480,6 @@ tar.texi(,4167) @subsection Removing Archive Members Using @option{--delete}
 tar.texi(UNREVISED,4168) @quotation
 tar.texi(UNREVISED,4168) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4168) @end quotation
-tar.texi(UNREVISED,4168) 
 tar.texi(,4169) @cindex Deleting files from an archive
 tar.texi(,4170) @cindex Removing files from an archive
 tar.texi(,4171) 
@@ -4547,7 +4538,6 @@ tar.texi(,4222) @cindex Verifying the currency of an archive
 tar.texi(UNREVISED,4223) @quotation
 tar.texi(UNREVISED,4223) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4223) @end quotation
-tar.texi(UNREVISED,4223) 
 tar.texi(,4224) 
 tar.texi(,4225) @opindex compare
 tar.texi(,4226) The @option{--compare} (@option{-d}), or @option{--diff} operation compares
@@ -4584,7 +4574,7 @@ tar.texi(,4256)
 tar.texi(,4257) @node create options
 tar.texi(,4258) @section Options Used by @option{--create}
 tar.texi(,4259) 
-tar.texi(xopindex,4260) @opindex create@r{, additional options}tar.texi(xopindex,4260) 
+tar.texi(xopindex,4260) @opindex create@r{, additional options}
 tar.texi(,4261) The previous chapter described the basics of how to use
 tar.texi(,4262) @option{--create} (@option{-c}) to create an archive from a set of files.
 tar.texi(,4263) @xref{create}.  This section described advanced options to be used with
@@ -4600,7 +4590,7 @@ tar.texi(,4272) @subsection Overriding File Metadata
 tar.texi(,4273) 
 tar.texi(,4274) As described above, a @command{tar} archive keeps, for each member it contains,
 tar.texi(,4275) its @dfn{metadata}, such as modification time, mode and ownership of
-tar.texi(GNUTAR,4276) the file.  tar.texi(GNUTAR,4276) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4276)  allows to replace these data with other values
+tar.texi(GNUTAR,4276) the file.  tar.texi(GNUTAR,4276) @acronym{GNU} @command{tar} allows to replace these data with other values
 tar.texi(,4277) when adding files to the archive.  The options described in this
 tar.texi(,4278) section affect creation of archives of any type.  For POSIX archives,
 tar.texi(,4279) see also @ref{PAX keywords}, for additional ways of controlling
@@ -4645,7 +4635,7 @@ tar.texi(,4317) $ @kbd{tar -c -f archive.tar --mtime='1970-01-01' .}
 tar.texi(,4318) @end smallexample
 tar.texi(,4319) 
 tar.texi(,4320) @noindent
-tar.texi(GNUTAR,4321) When used with @option{--verbose} (@pxref{verbose tutorial}) tar.texi(GNUTAR,4321) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4321) 
+tar.texi(GNUTAR,4321) When used with @option{--verbose} (@pxref{verbose tutorial}) tar.texi(GNUTAR,4321) @acronym{GNU} @command{tar}
 tar.texi(,4322) will try to convert the specified date back to its textual
 tar.texi(,4323) representation and compare it with the one given with
 tar.texi(,4324) @option{--mtime} options.  If the two dates differ, @command{tar} will
@@ -4705,9 +4695,8 @@ tar.texi(,4377) @section Options Used by @option{--extract}
 tar.texi(UNREVISED,4378) @quotation
 tar.texi(UNREVISED,4378) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4378) @end quotation
-tar.texi(UNREVISED,4378) 
 tar.texi(,4379) 
-tar.texi(xopindex,4380) @opindex extract@r{, additional options}tar.texi(xopindex,4380) 
+tar.texi(xopindex,4380) @opindex extract@r{, additional options}
 tar.texi(,4381) The previous chapter showed how to use @option{--extract} to extract
 tar.texi(,4382) an archive into the file system.  Various options cause @command{tar} to
 tar.texi(,4383) extract more information than just file contents, such as the owner,
@@ -4729,7 +4718,6 @@ tar.texi(,4398) @cindex Options when reading archives
 tar.texi(UNREVISED,4399) @quotation
 tar.texi(UNREVISED,4399) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4399) @end quotation
-tar.texi(UNREVISED,4399) 
 tar.texi(,4400) 
 tar.texi(,4401) @cindex Reading incomplete records
 tar.texi(,4402) @cindex Records, incomplete
@@ -4794,7 +4782,7 @@ tar.texi(,4458) several archives together).
 tar.texi(,4459) 
 tar.texi(,4460) The @option{--ignore-zeros} (@option{-i}) option is turned off by default because many
 tar.texi(,4461) versions of @command{tar} write garbage after the end-of-archive entry,
-tar.texi(GNUTAR,4462) since that part of the media is never supposed to be read.  tar.texi(GNUTAR,4462) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4462) 
+tar.texi(GNUTAR,4462) since that part of the media is never supposed to be read.  tar.texi(GNUTAR,4462) @acronym{GNU} @command{tar}
 tar.texi(,4463) does not write after the end of an archive, but seeks to
 tar.texi(,4464) maintain compatiblity among archiving utilities.
 tar.texi(,4465) 
@@ -4811,7 +4799,6 @@ tar.texi(,4475) @subsection Changing How @command{tar} Writes Files
 tar.texi(UNREVISED,4476) @quotation
 tar.texi(UNREVISED,4476) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4476) @end quotation
-tar.texi(UNREVISED,4476) 
 tar.texi(,4477) 
 tar.texi(FIXME,4478) @allow-recursion
 tar.texi(FIXME,4478) @quote-arg
@@ -4835,7 +4822,7 @@ tar.texi(,4494)
 tar.texi(,4495) @node Dealing with Old Files
 tar.texi(,4496) @unnumberedsubsubsec Options Controlling the Overwriting of Existing Files
 tar.texi(,4497) 
-tar.texi(xopindex,4498) @opindex overwrite-dir@r{, introduced}tar.texi(xopindex,4498) 
+tar.texi(xopindex,4498) @opindex overwrite-dir@r{, introduced}
 tar.texi(,4499) When extracting files, if @command{tar} discovers that the extracted
 tar.texi(,4500) file already exists, it normally replaces the file by removing it before
 tar.texi(,4501) extracting it, to prevent confusion in the presence of hard or symbolic
@@ -4847,20 +4834,20 @@ tar.texi(,4506) default behavior.  To be more cautious and preserve the metadata
 tar.texi(,4507) such a directory, use the @option{--no-overwrite-dir} option.
 tar.texi(,4508) 
 tar.texi(,4509) @cindex Overwriting old files, prevention
-tar.texi(xopindex,4510) @opindex keep-old-files@r{, introduced}tar.texi(xopindex,4510) 
+tar.texi(xopindex,4510) @opindex keep-old-files@r{, introduced}
 tar.texi(,4511) To be even more cautious and prevent existing files from being replaced, use
 tar.texi(,4512) the @option{--keep-old-files} (@option{-k}) option.  It causes @command{tar} to refuse
 tar.texi(,4513) to replace or update a file that already exists, i.e., a file with the
 tar.texi(,4514) same name as an archive member prevents extraction of that archive
 tar.texi(,4515) member.  Instead, it reports an error.
 tar.texi(,4516) 
-tar.texi(xopindex,4517) @opindex overwrite@r{, introduced}tar.texi(xopindex,4517) 
+tar.texi(xopindex,4517) @opindex overwrite@r{, introduced}
 tar.texi(,4518) To be more aggressive about altering existing files, use the
 tar.texi(,4519) @option{--overwrite} option.  It causes @command{tar} to overwrite
 tar.texi(,4520) existing files and to follow existing symbolic links when extracting.
 tar.texi(,4521) 
 tar.texi(,4522) @cindex Protecting old files
-tar.texi(GNUTAR,4523) Some people argue that tar.texi(GNUTAR,4523) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4523)  should not hesitate
+tar.texi(GNUTAR,4523) Some people argue that tar.texi(GNUTAR,4523) @acronym{GNU} @command{tar} should not hesitate
 tar.texi(,4524) to overwrite files with other files when extracting.  When extracting
 tar.texi(,4525) a @command{tar} archive, they expect to see a faithful copy of the
 tar.texi(,4526) state of the file system when the archive was created.  It is debatable
@@ -4869,16 +4856,16 @@ tar.texi(,4528) has an archive in which @file{usr/local} is a link to
 tar.texi(,4529) @file{usr/local2}.  Since then, maybe the site removed the link and
 tar.texi(,4530) renamed the whole hierarchy from @file{/usr/local2} to
 tar.texi(,4531) @file{/usr/local}.  Such things happen all the time.  I guess it would
-tar.texi(GNUTAR,4532) not be welcome at all that tar.texi(GNUTAR,4532) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4532)  removes the
+tar.texi(GNUTAR,4532) not be welcome at all that tar.texi(GNUTAR,4532) @acronym{GNU} @command{tar} removes the
 tar.texi(,4533) whole hierarchy just to make room for the link to be reinstated
 tar.texi(,4534) (unless it @emph{also} simultaneously restores the full
-tar.texi(GNUTAR,4535) @file{/usr/local2}, of course!)  tar.texi(GNUTAR,4535) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4535)  is indeed
+tar.texi(GNUTAR,4535) @file{/usr/local2}, of course!)  tar.texi(GNUTAR,4535) @acronym{GNU} @command{tar} is indeed
 tar.texi(,4536) able to remove a whole hierarchy to reestablish a symbolic link, for
 tar.texi(,4537) example, but @emph{only if} @option{--recursive-unlink} is specified
 tar.texi(,4538) to allow this behavior.  In any case, single files are silently
 tar.texi(,4539) removed.
 tar.texi(,4540) 
-tar.texi(xopindex,4541) @opindex unlink-first@r{, introduced}tar.texi(xopindex,4541) 
+tar.texi(xopindex,4541) @opindex unlink-first@r{, introduced}
 tar.texi(,4542) Finally, the @option{--unlink-first} (@option{-U}) option can improve performance in
 tar.texi(,4543) some cases by causing @command{tar} to remove files unconditionally
 tar.texi(,4544) before extracting them.
@@ -5016,7 +5003,7 @@ tar.texi(,4675)
 tar.texi(,4676) @node Directory Modification Times and Permissions
 tar.texi(,4677) @unnumberedsubsubsec Directory Modification Times and Permissions
 tar.texi(,4678) 
-tar.texi(GNUTAR,4679) After sucessfully extracting a file member, tar.texi(GNUTAR,4679) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4679)  normally
+tar.texi(GNUTAR,4679) After sucessfully extracting a file member, tar.texi(GNUTAR,4679) @acronym{GNU} @command{tar} normally
 tar.texi(,4680) restores its permissions and modification times, as described in the
 tar.texi(,4681) previous sections.  This cannot be done for directories, because
 tar.texi(,4682) after extracting a directory @command{tar} will almost certainly
@@ -5024,14 +5011,14 @@ tar.texi(,4683) extract files into that directory and this will cause the direct
 tar.texi(,4684) modification time to be updated.  Moreover, restoring that directory
 tar.texi(,4685) permissions may not permit file creation within it.  Thus, restoring
 tar.texi(,4686) directory permissions and modification times must be delayed at least
-tar.texi(GNUTAR,4687) until all files have been extracted into that directory.  tar.texi(GNUTAR,4687) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4687) 
+tar.texi(GNUTAR,4687) until all files have been extracted into that directory.  tar.texi(GNUTAR,4687) @acronym{GNU} @command{tar}
 tar.texi(,4688) restores directories using the following approach.
 tar.texi(,4689) 
 tar.texi(,4690) The extracted directories are created with the mode specified in the
 tar.texi(,4691) archive, as modified by the umask of the user, which gives sufficient
 tar.texi(,4692) permissions to allow file creation.  The meta-information about the
 tar.texi(,4693) directory is recorded in the temporary list of directories.  When
-tar.texi(GNUTAR,4694) preparing to extract next archive member, tar.texi(GNUTAR,4694) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4694)  checks if the
+tar.texi(GNUTAR,4694) preparing to extract next archive member, tar.texi(GNUTAR,4694) @acronym{GNU} @command{tar} checks if the
 tar.texi(,4695) directory prefix of this file contains the remembered directory.  If
 tar.texi(,4696) it does not, the program assumes that all files have been extracted
 tar.texi(,4697) into that directory, restores its modification time and permissions
@@ -5046,10 +5033,10 @@ tar.texi(,4705) However, this is not always true.  The most important exception 
 tar.texi(,4706) incremental archives (@pxref{Incremental Dumps}).  The member order in
 tar.texi(,4707) an incremental archive is reversed: first all directory members are
 tar.texi(,4708) stored, followed by other (non-directory) members.  So, when extracting
-tar.texi(GNUTAR,4709) from incremental archives, tar.texi(GNUTAR,4709) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4709)  alters the above procedure.  It
+tar.texi(GNUTAR,4709) from incremental archives, tar.texi(GNUTAR,4709) @acronym{GNU} @command{tar} alters the above procedure.  It
 tar.texi(,4710) remebers all restored directories, and restores their meta-data
 tar.texi(,4711) only after the entire archive has been processed.  Notice, that you do
-tar.texi(GNUTAR,4712) not need to specity any special options for that, as tar.texi(GNUTAR,4712) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4712) 
+tar.texi(GNUTAR,4712) not need to specity any special options for that, as tar.texi(GNUTAR,4712) @acronym{GNU} @command{tar}
 tar.texi(,4713) automatically detects archives in incremental format.
 tar.texi(,4714) 
 tar.texi(,4715) There may be cases, when such processing is required for normal archives
@@ -5068,7 +5055,7 @@ tar.texi(,4727) @end group
 tar.texi(,4728) @end smallexample
 tar.texi(,4729) 
 tar.texi(,4730) During the normal operation, after encountering @file{bar}
-tar.texi(GNUTAR,4731) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4731)  will assume that all files from the directory @file{foo}
+tar.texi(GNUTAR,4731) @acronym{GNU} @command{tar} will assume that all files from the directory @file{foo}
 tar.texi(,4732) were already extracted and will therefore restore its timestamp and
 tar.texi(,4733) permission bits.  However, after extracting @file{foo/file2} the
 tar.texi(,4734) directory timestamp will be offset again.
@@ -5222,7 +5209,7 @@ tar.texi(,4881) GID of the file owner.
 tar.texi(,4882) @end table
 tar.texi(,4883) 
 tar.texi(,4884) In addition to these variables, @env{TAR_VERSION} contains the
-tar.texi(GNUTAR,4885) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4885)  version number.
+tar.texi(GNUTAR,4885) @acronym{GNU} @command{tar} version number.
 tar.texi(,4886) 
 tar.texi(,4887) If @var{command} exits with a non-0 status, @command{tar} will print
 tar.texi(,4888) an error message similar to the following:
@@ -5268,7 +5255,6 @@ tar.texi(,4926) @subsection Coping with Scarce Resources
 tar.texi(UNREVISED,4927) @quotation
 tar.texi(UNREVISED,4927) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,4927) @end quotation
-tar.texi(UNREVISED,4927) 
 tar.texi(,4928) 
 tar.texi(,4929) @cindex Small memory
 tar.texi(,4930) @cindex Running out of space
@@ -5330,7 +5316,7 @@ tar.texi(,4985) @section Backup options
 tar.texi(,4986) 
 tar.texi(,4987) @cindex backup options
 tar.texi(,4988) 
-tar.texi(GNUTAR,4989) @acronym{GNU} @command{tar}tar.texi(GNUTAR,4989)  offers options for making backups of files
+tar.texi(GNUTAR,4989) @acronym{GNU} @command{tar} offers options for making backups of files
 tar.texi(,4990) before writing new versions.  These options control the details of
 tar.texi(,4991) these backups.  They may apply to the archive itself before it is
 tar.texi(,4992) created or rewritten, as well as individual extracted members.  Other
@@ -5417,7 +5403,6 @@ tar.texi(,5072) @section Notable @command{tar} Usages
 tar.texi(UNREVISED,5073) @quotation
 tar.texi(UNREVISED,5073) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5073) @end quotation
-tar.texi(UNREVISED,5073) 
 tar.texi(,5074) 
 tar.texi(FIXME,5077) @allow-recursion
 tar.texi(FIXME,5077) @quote-arg
@@ -5492,9 +5477,8 @@ tar.texi(,5143) @chapter Performing Backups and Restoring Files
 tar.texi(UNREVISED,5144) @quotation
 tar.texi(UNREVISED,5144) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5144) @end quotation
-tar.texi(UNREVISED,5144) 
 tar.texi(,5145) 
-tar.texi(GNUTAR,5146) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5146)  is distributed along with the scripts
+tar.texi(GNUTAR,5146) @acronym{GNU} @command{tar} is distributed along with the scripts
 tar.texi(,5147) which the Free Software Foundation uses for performing backups.  There
 tar.texi(,5148) is no corresponding scripts available yet for doing restoration of
 tar.texi(,5149) files.  Even if there is a good chance those scripts may be satisfying
@@ -5539,7 +5523,6 @@ tar.texi(,5230) @section Using @command{tar} to Perform Full Dumps
 tar.texi(UNREVISED,5231) @quotation
 tar.texi(UNREVISED,5231) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,5231) @end quotation
-tar.texi(UNREVISED,5231) 
 tar.texi(,5232) 
 tar.texi(,5233) @cindex full dumps
 tar.texi(,5234) @cindex dumps, full
@@ -5582,11 +5565,11 @@ tar.texi(,5270)
 tar.texi(,5271) @node Incremental Dumps
 tar.texi(,5272) @section Using @command{tar} to Perform Incremental Dumps
 tar.texi(,5273) 
-tar.texi(GNUTAR,5274) @dfn{Incremental backup} is a special form of tar.texi(GNUTAR,5274) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5274)  archive that
+tar.texi(GNUTAR,5274) @dfn{Incremental backup} is a special form of tar.texi(GNUTAR,5274) @acronym{GNU} @command{tar} archive that
 tar.texi(,5275) stores additional metadata so that exact state of the file system
 tar.texi(,5276) can be restored when extracting the archive.
 tar.texi(,5277) 
-tar.texi(GNUTAR,5278) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5278)  currently offers two options for handling incremental
+tar.texi(GNUTAR,5278) @acronym{GNU} @command{tar} currently offers two options for handling incremental
 tar.texi(,5279) backups: @option{--listed-incremental=@var{snapshot-file}} (@option{-g
 tar.texi(,5280) @var{snapshot-file}}) and @option{--incremental} (@option{-G}).
 tar.texi(,5281) 
@@ -5682,8 +5665,8 @@ tar.texi(,5370)
 tar.texi(,5371) Note that incremental archives use @command{tar} extensions and may
 tar.texi(,5372) not be readable by non-@acronym{GNU} versions of the @command{tar} program.
 tar.texi(,5373) 
-tar.texi(xopindex,5374) @opindex listed-incremental@r{, using with @option{--extract}}tar.texi(xopindex,5374) 
-tar.texi(xopindex,5375) @opindex extract@r{, using with @option{--listed-incremental}}tar.texi(xopindex,5375) 
+tar.texi(xopindex,5374) @opindex listed-incremental@r{, using with @option{--extract}}
+tar.texi(xopindex,5375) @opindex extract@r{, using with @option{--listed-incremental}}
 tar.texi(,5376) To extract from the incremental dumps, use
 tar.texi(,5377) @option{--listed-incremental} together with @option{--extract}
 tar.texi(,5378) option (@pxref{extracting files}).  In this case, @command{tar} does
@@ -5697,7 +5680,7 @@ tar.texi(,5385) used as a shortcut for @option{--listed-incremental} when listin
 tar.texi(,5386) extracting incremental backups (for more information, regarding this
 tar.texi(,5387) option, @pxref{incremental-op}).
 tar.texi(,5388) 
-tar.texi(GNUTAR,5389) When extracting from the incremental backup tar.texi(GNUTAR,5389) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5389)  attempts to
+tar.texi(GNUTAR,5389) When extracting from the incremental backup tar.texi(GNUTAR,5389) @acronym{GNU} @command{tar} attempts to
 tar.texi(,5390) restore the exact state the file system had when the archive was
 tar.texi(,5391) created.  In particular, it will @emph{delete} those files in the file
 tar.texi(,5392) system that did not exist in their directories when the archive was
@@ -5789,7 +5772,7 @@ tar.texi(,5477) last daily (level one) dump.  The only information lost would be
 tar.texi(,5478) files changed or created since the last daily backup.  (Doing dumps
 tar.texi(,5479) more than once a day is usually not worth the trouble).
 tar.texi(,5480) 
-tar.texi(GNUTAR,5481) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5481)  comes with scripts you can use to do full
+tar.texi(GNUTAR,5481) @acronym{GNU} @command{tar} comes with scripts you can use to do full
 tar.texi(,5482) and level-one (actually, even level-two and so on) dumps.  Using
 tar.texi(,5483) scripts (shell programs) to perform backups and restoration is a
 tar.texi(,5484) convenient and reliable alternative to typing out file name lists
@@ -5882,7 +5865,7 @@ tar.texi(,5570) Subdirectories on other file systems will be ignored.
 tar.texi(,5571) 
 tar.texi(,5572) The host name specifies which host to run @command{tar} on, and should
 tar.texi(,5573) normally be the host that actually contains the file system.  However,
-tar.texi(GNUTAR,5574) the host machine must have tar.texi(GNUTAR,5574) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5574)  installed, and
+tar.texi(GNUTAR,5574) the host machine must have tar.texi(GNUTAR,5574) @acronym{GNU} @command{tar} installed, and
 tar.texi(,5575) must be able to access the directory containing the backup scripts and
 tar.texi(,5576) their support files using the same file name that is used on the
 tar.texi(,5577) machine where the scripts are run (i.e.  what @command{pwd} will print
@@ -5936,7 +5919,7 @@ tar.texi(,5624) @defvr {Backup variable} RSH_COMMAND
 tar.texi(,5625) 
 tar.texi(,5626) Full file name of @command{rsh} binary on remote mashines.  This will
 tar.texi(,5627) be passed via @option{--rsh-command} option to the remote invocation
-tar.texi(GNUTAR,5628) of tar.texi(GNUTAR,5628) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5628) .
+tar.texi(GNUTAR,5628) of tar.texi(GNUTAR,5628) @acronym{GNU} @command{tar}.
 tar.texi(,5629) @end defvr
 tar.texi(,5630) 
 tar.texi(,5631) @defvr {Backup variable} VOLNO_FILE
@@ -5968,7 +5951,7 @@ tar.texi(,5656) @defvr {Backup variable} DUMP_REMIND_SCRIPT
 tar.texi(,5657) 
 tar.texi(,5658) Script to be run when it's time to insert a new tape in for the next
 tar.texi(,5659) volume.  Administrators may want to tailor this script for their site.
-tar.texi(GNUTAR,5660) If this variable isn't set, tar.texi(GNUTAR,5660) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5660)  will display its built-in
+tar.texi(GNUTAR,5660) If this variable isn't set, tar.texi(GNUTAR,5660) @acronym{GNU} @command{tar} will display its built-in
 tar.texi(,5661) prompt, and will expect confirmation from the console.  For the
 tar.texi(,5662) description of the default prompt, see @ref{change volume prompt}.
 tar.texi(,5663) 
@@ -5982,7 +5965,7 @@ tar.texi(,5670) @end defvr
 tar.texi(,5671) 
 tar.texi(,5672) @defvr {Backup variable} TAR
 tar.texi(,5673) 
-tar.texi(GNUTAR,5674) Full file name of the tar.texi(GNUTAR,5674) @acronym{GNU} @command{tar}tar.texi(GNUTAR,5674)  executable.  If this is not set, backup
+tar.texi(GNUTAR,5674) Full file name of the tar.texi(GNUTAR,5674) @acronym{GNU} @command{tar} executable.  If this is not set, backup
 tar.texi(,5675) scripts will search @command{tar} in the current shell path.
 tar.texi(,5676) @end defvr
 tar.texi(,5677) 
@@ -6325,7 +6308,6 @@ tar.texi(,6013) @chapter Choosing Files and Names for @command{tar}
 tar.texi(UNREVISED,6014) @quotation
 tar.texi(UNREVISED,6014) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6014) @end quotation
-tar.texi(UNREVISED,6014) 
 tar.texi(,6015) 
 tar.texi(,6016) Certain options to @command{tar} enable you to specify a name for your
 tar.texi(,6017) archive.  Other options let you decide which files to include or exclude
@@ -6353,7 +6335,6 @@ tar.texi(,6038) @section Choosing and Naming Archive Files
 tar.texi(UNREVISED,6039) @quotation
 tar.texi(UNREVISED,6039) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6039) @end quotation
-tar.texi(UNREVISED,6039) 
 tar.texi(,6040) 
 tar.texi(,6041) @cindex Naming an archive
 tar.texi(,6042) @cindex Archive Name
@@ -6370,7 +6351,7 @@ tar.texi(,6052) option allows you to either specify or name a file to use as the
 tar.texi(,6053) instead of the default archive file location.
 tar.texi(,6054) 
 tar.texi(,6055) @table @option
-tar.texi(xopindex,6056) @opindex file@r{, short description}tar.texi(xopindex,6056) 
+tar.texi(xopindex,6056) @opindex file@r{, short description}
 tar.texi(,6057) @item --file=@var{archive-name}
 tar.texi(,6058) @itemx -f @var{archive-name}
 tar.texi(,6059) Name the archive to create or operate on.  Use in conjunction with
@@ -6458,15 +6439,15 @@ tar.texi(,6140) (along with the @samp{@@} sign), then your user name will be use
 tar.texi(,6141) (This is the normal @command{rsh} behavior.)  It is necessary for the
 tar.texi(,6142) remote machine, in addition to permitting your @command{rsh} access, to
 tar.texi(,6143) have the @file{rmt} program installed (This command is included in
-tar.texi(GNUTAR,6144) the tar.texi(GNUTAR,6144) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6144)  distribution and by default is installed under
+tar.texi(GNUTAR,6144) the tar.texi(GNUTAR,6144) @acronym{GNU} @command{tar} distribution and by default is installed under
 tar.texi(,6145) @file{@var{prefix}/libexec/rmt}, were @var{prefix} means your
 tar.texi(,6146) installation prefix).  If you need to use a file whose name includes a
 tar.texi(,6147) colon, then the remote tape drive behavior
 tar.texi(,6148) can be inhibited by using the @option{--force-local} option.
 tar.texi(,6149) 
-tar.texi(GNUTAR,6150) When the archive is being created to @file{/dev/null}, tar.texi(GNUTAR,6150) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6150) 
+tar.texi(GNUTAR,6150) When the archive is being created to @file{/dev/null}, tar.texi(GNUTAR,6150) @acronym{GNU} @command{tar}
 tar.texi(,6151) tries to minimize input and output operations.  The Amanda backup
-tar.texi(GNUTAR,6152) system, when used with tar.texi(GNUTAR,6152) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6152) , has an initial sizing pass which
+tar.texi(GNUTAR,6152) system, when used with tar.texi(GNUTAR,6152) @acronym{GNU} @command{tar}, has an initial sizing pass which
 tar.texi(,6153) uses this feature. 
 tar.texi(,6154) 
 tar.texi(,6155) @node Selecting Archive Members
@@ -6490,7 +6471,7 @@ tar.texi(,6172) @option{--add-file} option to prevent it from being treated as a
 tar.texi(,6173) option.
 tar.texi(,6174) 
 tar.texi(,6175) @anchor{input name quoting}
-tar.texi(GNUTAR,6176) By default tar.texi(GNUTAR,6176) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6176)  attempts to @dfn{unquote} each file or member
+tar.texi(GNUTAR,6176) By default tar.texi(GNUTAR,6176) @acronym{GNU} @command{tar} attempts to @dfn{unquote} each file or member
 tar.texi(,6177) name, replacing @dfn{escape sequences} according to the following
 tar.texi(,6178) table:
 tar.texi(,6179) 
@@ -6638,7 +6619,7 @@ tar.texi(,6320) @end group
 tar.texi(,6321) @end smallexample
 tar.texi(,6322) 
 tar.texi(,6323) @noindent
-tar.texi(xopindex,6324) @opindex directory@r{, using in @option{--files-from} argument}tar.texi(xopindex,6324) 
+tar.texi(xopindex,6324) @opindex directory@r{, using in @option{--files-from} argument}
 tar.texi(,6325) Notice that the option parsing algorithm used with @option{-T} is
 tar.texi(,6326) stricter than the one used by shell.  Namely, when specifying option
 tar.texi(,6327) arguments, you should observe the following rules:
@@ -6733,7 +6714,6 @@ tar.texi(,6413) @section Excluding Some Files
 tar.texi(UNREVISED,6414) @quotation
 tar.texi(UNREVISED,6414) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,6414) @end quotation
-tar.texi(UNREVISED,6414) 
 tar.texi(,6415) 
 tar.texi(,6416) @cindex File names, excluding files by
 tar.texi(,6417) @cindex Excluding files by name and pattern
@@ -6796,7 +6776,7 @@ tar.texi(,6473)
 tar.texi(,6474) @node problems with exclude
 tar.texi(,6475) @unnumberedsubsec Problems with Using the @code{exclude} Options
 tar.texi(,6476) 
-tar.texi(xopindex,6477) @opindex exclude@r{, potential problems with}tar.texi(xopindex,6477) 
+tar.texi(xopindex,6477) @opindex exclude@r{, potential problems with}
 tar.texi(,6478) Some users find @samp{exclude} options confusing.  Here are some common
 tar.texi(,6479) pitfalls:
 tar.texi(,6480) 
@@ -6819,7 +6799,7 @@ tar.texi(,6496) zero, one, or many files.
 tar.texi(,6497) 
 tar.texi(,6498) @item
 tar.texi(,6499) When you use @option{--exclude=@var{pattern}}, be sure to quote the
-tar.texi(GNUTAR,6500) @var{pattern} parameter, so tar.texi(GNUTAR,6500) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6500)  sees wildcard characters
+tar.texi(GNUTAR,6500) @var{pattern} parameter, so tar.texi(GNUTAR,6500) @acronym{GNU} @command{tar} sees wildcard characters
 tar.texi(,6501) like @samp{*}.  If you do not do this, the shell might expand the
 tar.texi(,6502) @samp{*} itself using files at hand, so @command{tar} might receive a
 tar.texi(,6503) list of files instead of one pattern, or none at all, making the
@@ -6862,7 +6842,7 @@ tar.texi(,6539) @section Wildcards Patterns and Matching
 tar.texi(,6540) 
 tar.texi(,6541) @dfn{Globbing} is the operation by which @dfn{wildcard} characters,
 tar.texi(,6542) @samp{*} or @samp{?} for example, are replaced and expanded into all
-tar.texi(GNUTAR,6543) existing files matching the given pattern.  tar.texi(GNUTAR,6543) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6543)  can use wildcard
+tar.texi(GNUTAR,6543) existing files matching the given pattern.  tar.texi(GNUTAR,6543) @acronym{GNU} @command{tar} can use wildcard
 tar.texi(,6544) patterns for matching (or globbing) archive members when extracting
 tar.texi(,6545) from or listing an archive.  Wildcard patterns are also used for
 tar.texi(,6546) verifying volume labels of @command{tar} archives.  This section has the
@@ -7092,7 +7072,7 @@ tar.texi(,6766) characters, space and backslash.  Using this quoting style, cont
 tar.texi(,6767) characters are represented as listed in column @samp{Character} in the
 tar.texi(,6768) above table, a space is printed as @samp{\ } and a backslash as @samp{\\}.
 tar.texi(,6769) 
-tar.texi(GNUTAR,6770) @acronym{GNU} @command{tar}tar.texi(GNUTAR,6770)  offers seven distinct quoting styles, which can be selected
+tar.texi(GNUTAR,6770) @acronym{GNU} @command{tar} offers seven distinct quoting styles, which can be selected
 tar.texi(,6771) using @option{--quoting-style} option:
 tar.texi(,6772) 
 tar.texi(,6773) @table @option
@@ -7333,7 +7313,7 @@ tar.texi(,7007) in the archive.  In the majority of cases this is the desired be
 tar.texi(,7008) of a file archiver.  However, there are some cases when it is not.
 tar.texi(,7009) 
 tar.texi(,7010) First of all, it is often unsafe to extract archive members with
-tar.texi(GNUTAR,7011) absolute file names or those that begin with a @file{../}.  tar.texi(GNUTAR,7011) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7011) 
+tar.texi(GNUTAR,7011) absolute file names or those that begin with a @file{../}.  tar.texi(GNUTAR,7011) @acronym{GNU} @command{tar}
 tar.texi(,7012) takes special precautions when extracting such names and provides a
 tar.texi(,7013) special option for handling them, which is described in
 tar.texi(,7014) @ref{absolute}.
@@ -7343,7 +7323,7 @@ tar.texi(,7017) directory components, or with otherwise modified names.  In othe
 tar.texi(,7018) cases it is desirable to store files under differing names in the
 tar.texi(,7019) archive.
 tar.texi(,7020) 
-tar.texi(GNUTAR,7021) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7021)  provides two options for these needs.
+tar.texi(GNUTAR,7021) @acronym{GNU} @command{tar} provides two options for these needs.
 tar.texi(,7022) 
 tar.texi(,7023) @table @option
 tar.texi(,7024) @opindex strip-components
@@ -7413,7 +7393,7 @@ tar.texi(,7087) @noindent
 tar.texi(,7088) to make sure the command will produce the intended results.
 tar.texi(,7089) 
 tar.texi(,7090) In case you need to apply more complex modifications to the file name,
-tar.texi(GNUTAR,7091) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7091)  provides a general-purpose transformation option:
+tar.texi(GNUTAR,7091) @acronym{GNU} @command{tar} provides a general-purpose transformation option:
 tar.texi(,7092) 
 tar.texi(,7093) @table @option
 tar.texi(,7094) @opindex transform
@@ -7454,7 +7434,7 @@ tar.texi(,7128) @item @var{number}
 tar.texi(,7129) Only replace the @var{number}th match of the @var{regexp}.
 tar.texi(,7130) 
 tar.texi(,7131) Note: the @var{posix} standard does not specify what should happen
-tar.texi(GNUTAR,7132) when you mix the @samp{g} and @var{number} modifiers.  tar.texi(GNUTAR,7132) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7132) 
+tar.texi(GNUTAR,7132) when you mix the @samp{g} and @var{number} modifiers.  tar.texi(GNUTAR,7132) @acronym{GNU} @command{tar}
 tar.texi(,7133) follows the GNU @command{sed} implementation in this regard, so
 tar.texi(,7134) the the interaction is defined to be: ignore matches before the
 tar.texi(,7135) @var{number}th, and then match and replace all matches from the
@@ -7508,7 +7488,7 @@ tar.texi(,7182)
 tar.texi(,7183) @end enumerate
 tar.texi(,7184) 
 tar.texi(,7185) Unlike @option{--strip-components}, @option{--transform} can be used
-tar.texi(GNUTAR,7186) in any tar.texi(GNUTAR,7186) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7186)  operation mode.  For example, the following command
+tar.texi(GNUTAR,7186) in any tar.texi(GNUTAR,7186) @acronym{GNU} @command{tar} operation mode.  For example, the following command
 tar.texi(,7187) adds files to the archive while replacing the leading @file{usr/}
 tar.texi(,7188) component with @file{var/}:
 tar.texi(,7189) 
@@ -7533,7 +7513,6 @@ tar.texi(,7207) @section Operating Only on New Files
 tar.texi(UNREVISED,7208) @quotation
 tar.texi(UNREVISED,7208) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7208) @end quotation
-tar.texi(UNREVISED,7208) 
 tar.texi(,7209) 
 tar.texi(,7210) @cindex Excluding file by age
 tar.texi(,7211) @cindex Data Modification time, excluding files by
@@ -7607,7 +7586,7 @@ tar.texi(,7278) $ @kbd{tar -cf foo.tar --newer-mtime '2 days ago'}
 tar.texi(,7279) @end smallexample
 tar.texi(,7280) 
 tar.texi(,7281) When any of these options is used with the option @option{--verbose}
-tar.texi(GNUTAR,7282) (@pxref{verbose tutorial}) tar.texi(GNUTAR,7282) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7282)  will try to convert the specified
+tar.texi(GNUTAR,7282) (@pxref{verbose tutorial}) tar.texi(GNUTAR,7282) @acronym{GNU} @command{tar} will try to convert the specified
 tar.texi(,7283) date back to its textual representation and compare that with the
 tar.texi(,7284) one given with the option.  If the two dates differ, @command{tar} will
 tar.texi(,7285) print a warning saying what date it will use.  This is to help user
@@ -7632,7 +7611,6 @@ tar.texi(,7303) @section Descending into Directories
 tar.texi(UNREVISED,7304) @quotation
 tar.texi(UNREVISED,7304) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7304) @end quotation
-tar.texi(UNREVISED,7304) 
 tar.texi(,7305) @cindex Avoiding recursion in directories
 tar.texi(,7306) @cindex Descending directories, avoiding
 tar.texi(,7307) @cindex Directories, avoiding recursion
@@ -7666,7 +7644,7 @@ tar.texi(,7332) Requires @command{tar} to recursively descend directories.
 tar.texi(,7333) This is the default.
 tar.texi(,7334) @end table
 tar.texi(,7335) 
-tar.texi(GNUTAR,7336) When you use @option{--no-recursion}, tar.texi(GNUTAR,7336) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7336)  grabs
+tar.texi(GNUTAR,7336) When you use @option{--no-recursion}, tar.texi(GNUTAR,7336) @acronym{GNU} @command{tar} grabs
 tar.texi(,7337) directory entries themselves, but does not descend on them
 tar.texi(,7338) recursively.  Many people use @command{find} for locating files they
 tar.texi(,7339) want to back up, and since @command{tar} @emph{usually} recursively
@@ -7718,7 +7696,6 @@ tar.texi(,7384) @cindex File system boundaries, not crossing
 tar.texi(UNREVISED,7385) @quotation
 tar.texi(UNREVISED,7385) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7385) @end quotation
-tar.texi(UNREVISED,7385) 
 tar.texi(,7386) 
 tar.texi(,7387) @command{tar} will normally automatically cross file system boundaries in
 tar.texi(,7388) order to archive files which are part of a directory tree.  You can
@@ -7757,7 +7734,6 @@ tar.texi(,7420) @subsection Changing the Working Directory
 tar.texi(UNREVISED,7421) @quotation
 tar.texi(UNREVISED,7421) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7421) @end quotation
-tar.texi(UNREVISED,7421) 
 tar.texi(,7422) 
 tar.texi(FIXME,7424) @allow-recursion
 tar.texi(FIXME,7424) @quote-arg
@@ -7872,7 +7848,6 @@ tar.texi(,7531) @subsection Absolute File Names
 tar.texi(UNREVISED,7532) @quotation
 tar.texi(UNREVISED,7532) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,7532) @end quotation
-tar.texi(UNREVISED,7532) 
 tar.texi(,7533) 
 tar.texi(,7534) @table @option
 tar.texi(,7535) @opindex absolute-names
@@ -7882,7 +7857,7 @@ tar.texi(,7538) Do not strip leading slashes from file names, and permit file na
 tar.texi(,7539) containing a @file{..} file name component.
 tar.texi(,7540) @end table
 tar.texi(,7541) 
-tar.texi(GNUTAR,7542) By default, tar.texi(GNUTAR,7542) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7542)  drops a leading @samp{/} on
+tar.texi(GNUTAR,7542) By default, tar.texi(GNUTAR,7542) @acronym{GNU} @command{tar} drops a leading @samp{/} on
 tar.texi(,7543) input or output, and complains about file names containing a @file{..}
 tar.texi(,7544) component.  This option turns off this behavior.
 tar.texi(,7545) 
@@ -7901,8 +7876,8 @@ tar.texi(,7557) archive, and rejects attempts to extracts such files.
 tar.texi(,7558) 
 tar.texi(,7559) Other @command{tar} programs do not do this.  As a result, if you
 tar.texi(,7560) create an archive whose member names start with a slash, they will be
-tar.texi(GNUTAR,7561) difficult for other people with a non-tar.texi(GNUTAR,7561) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7561) 
-tar.texi(GNUTAR,7562) program to use.  Therefore, tar.texi(GNUTAR,7562) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7562)  also strips
+tar.texi(GNUTAR,7561) difficult for other people with a non-tar.texi(GNUTAR,7561) @acronym{GNU} @command{tar}
+tar.texi(GNUTAR,7562) program to use.  Therefore, tar.texi(GNUTAR,7562) @acronym{GNU} @command{tar} also strips
 tar.texi(,7563) leading slashes from member names when putting members into the
 tar.texi(,7564) archive.  For example, if you ask @command{tar} to add the file
 tar.texi(,7565) @file{/bin/ls} to an archive, it will do so, but the member name will
@@ -7950,7 +7925,7 @@ tar.texi(FIXME,7602) @quote-arg
 tar.texi(FIXME,7602) 
 tar.texi(,7603) 
 tar.texi(,7604) @command{tar} prints out a message about removing the @samp{/} from
-tar.texi(GNUTAR,7605) file names.  This message appears once per tar.texi(GNUTAR,7605) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7605) 
+tar.texi(GNUTAR,7605) file names.  This message appears once per tar.texi(GNUTAR,7605) @acronym{GNU} @command{tar}
 tar.texi(,7606) invocation.  It represents something which ought to be told; ignoring
 tar.texi(,7607) what it means can cause very serious surprises, later.
 tar.texi(,7608) 
@@ -8540,7 +8515,7 @@ tar.texi(,7639) The most frequently used formats are (in alphabetical order):
 tar.texi(,7640) 
 tar.texi(,7641) @table @asis
 tar.texi(,7642) @item gnu
-tar.texi(GNUTAR,7643) Format used by tar.texi(GNUTAR,7643) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7643)  versions up to 1.13.25.  This format derived
+tar.texi(GNUTAR,7643) Format used by tar.texi(GNUTAR,7643) @acronym{GNU} @command{tar} versions up to 1.13.25.  This format derived
 tar.texi(,7644) from an early @acronym{POSIX} standard, adding some improvements such as
 tar.texi(,7645) sparse file handling and incremental archives.  Unfortunately these
 tar.texi(,7646) features were implemented in a way incompatible with other archive
@@ -8550,7 +8525,7 @@ tar.texi(,7649) Archives in @samp{gnu} format are able to hold pathnames of unli
 tar.texi(,7650) length.
 tar.texi(,7651) 
 tar.texi(,7652) @item oldgnu
-tar.texi(GNUTAR,7653) Format used by tar.texi(GNUTAR,7653) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7653)  of versions prior to 1.12.
+tar.texi(GNUTAR,7653) Format used by tar.texi(GNUTAR,7653) @acronym{GNU} @command{tar} of versions prior to 1.12.
 tar.texi(,7654) 
 tar.texi(,7655) @item v7
 tar.texi(,7656) Archive format, compatible with the V7 implementation of tar.  This
@@ -8571,7 +8546,7 @@ tar.texi(,7670)
 tar.texi(,7671) This format has traditionally been used by Automake when producing
 tar.texi(,7672) Makefiles.  This practice will change in the future, in the meantime,
 tar.texi(,7673) however this means that projects containing filenames more than 99
-tar.texi(GNUTAR,7674) characters long will not be able to use tar.texi(GNUTAR,7674) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7674)  1.15.92 and
+tar.texi(GNUTAR,7674) characters long will not be able to use tar.texi(GNUTAR,7674) @acronym{GNU} @command{tar} 1.15.92 and
 tar.texi(,7675) Automake prior to 1.9.
 tar.texi(,7676) 
 tar.texi(,7677) @item ustar
@@ -8595,7 +8570,7 @@ tar.texi(,7694) @end enumerate
 tar.texi(,7695) 
 tar.texi(,7696) @item star
 tar.texi(,7697) Format used by J@"org Schilling @command{star}
-tar.texi(GNUTAR,7698) implementation.  tar.texi(GNUTAR,7698) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7698)  is able to read @samp{star} archives but
+tar.texi(GNUTAR,7698) implementation.  tar.texi(GNUTAR,7698) @acronym{GNU} @command{tar} is able to read @samp{star} archives but
 tar.texi(,7699) currently does not produce them.
 tar.texi(,7700) 
 tar.texi(,7701) @item posix
@@ -8610,7 +8585,7 @@ tar.texi(,7709) additional information (such as long file names etc.) will in su
 tar.texi(,7710) case be extracted as plain text files along with the files it refers to.
 tar.texi(,7711) 
 tar.texi(,7712) This archive format will be the default format for future versions
-tar.texi(GNUTAR,7713) of tar.texi(GNUTAR,7713) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7713) .
+tar.texi(GNUTAR,7713) of tar.texi(GNUTAR,7713) @acronym{GNU} @command{tar}.
 tar.texi(,7714) 
 tar.texi(,7715) @end table
 tar.texi(,7716) 
@@ -8626,9 +8601,9 @@ tar.texi(,7725) @item ustar  @tab 2097151 @tab 8GB @tab 256 @tab 21
 tar.texi(,7726) @item posix  @tab Unlimited @tab Unlimited @tab Unlimited @tab Unlimited
 tar.texi(,7727) @end multitable
 tar.texi(,7728) 
-tar.texi(GNUTAR,7729) The default format for tar.texi(GNUTAR,7729) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7729)  is defined at compilation
+tar.texi(GNUTAR,7729) The default format for tar.texi(GNUTAR,7729) @acronym{GNU} @command{tar} is defined at compilation
 tar.texi(,7730) time.  You may check it by running @command{tar --help}, and examining
-tar.texi(GNUTAR,7731) the last lines of its output.  Usually, tar.texi(GNUTAR,7731) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7731)  is configured
+tar.texi(GNUTAR,7731) the last lines of its output.  Usually, tar.texi(GNUTAR,7731) @acronym{GNU} @command{tar} is configured
 tar.texi(,7732) to create archives in @samp{gnu} format, however, future version will
 tar.texi(,7733) switch to @samp{posix}.
 tar.texi(,7734) 
@@ -8652,7 +8627,7 @@ tar.texi(,7751) @subsection Creating and Reading Compressed Archives
 tar.texi(,7752) @cindex Compressed archives
 tar.texi(,7753) @cindex Storing archives in compressed format
 tar.texi(,7754) 
-tar.texi(GNUTAR,7755) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7755)  is able to create and read compressed archives.  It supports
+tar.texi(GNUTAR,7755) @acronym{GNU} @command{tar} is able to create and read compressed archives.  It supports
 tar.texi(,7756) @command{gzip} and @command{bzip2} compression programs.  For backward
 tar.texi(,7757) compatibilty, it also supports @command{compress} command, although
 tar.texi(,7758) we strongly recommend against using it, since there is a patent
@@ -8673,7 +8648,7 @@ tar.texi(,7772) $ @kbd{tar cfz archive.tar.gz .}
 tar.texi(,7773) @end smallexample
 tar.texi(,7774) 
 tar.texi(,7775) Reading compressed archive is even simpler: you don't need to specify
-tar.texi(GNUTAR,7776) any additional options as tar.texi(GNUTAR,7776) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7776)  recognizes its format
+tar.texi(GNUTAR,7776) any additional options as tar.texi(GNUTAR,7776) @acronym{GNU} @command{tar} recognizes its format
 tar.texi(,7777) automatically.  Thus, the following commands will list and extract the
 tar.texi(,7778) archive created in previous example:
 tar.texi(,7779) 
@@ -8686,7 +8661,7 @@ tar.texi(,7785) @end smallexample
 tar.texi(,7786) 
 tar.texi(,7787) The only case when you have to specify a decompression option while
 tar.texi(,7788) reading the archive is when reading from a pipe or from a tape drive
-tar.texi(GNUTAR,7789) that does not support random access.  However, in this case tar.texi(GNUTAR,7789) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7789) 
+tar.texi(GNUTAR,7789) that does not support random access.  However, in this case tar.texi(GNUTAR,7789) @acronym{GNU} @command{tar}
 tar.texi(,7790) will indicate which option you should use.  For example:
 tar.texi(,7791) 
 tar.texi(,7792) @smallexample
@@ -8696,7 +8671,7 @@ tar.texi(,7795) tar: Error is not recoverable: exiting now
 tar.texi(,7796) @end smallexample
 tar.texi(,7797) 
 tar.texi(,7798) If you see such diagnostics, just add the suggested option to the
-tar.texi(GNUTAR,7799) invocation of tar.texi(GNUTAR,7799) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7799) :
+tar.texi(GNUTAR,7799) invocation of tar.texi(GNUTAR,7799) @acronym{GNU} @command{tar}:
 tar.texi(,7800) 
 tar.texi(,7801) @smallexample
 tar.texi(,7802) $ @kbd{cat archive.tar.gz | tar tfz -}
@@ -8710,7 +8685,7 @@ tar.texi(,7809) another @command{tar} archive to a compressed archive using
 tar.texi(,7810) @option{--append} (@option{-r})).  Secondly, multi-volume archives cannot be
 tar.texi(,7811) compressed.
 tar.texi(,7812) 
-tar.texi(GNUTAR,7813) The following table summarizes compression options used by tar.texi(GNUTAR,7813) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7813) .
+tar.texi(GNUTAR,7813) The following table summarizes compression options used by tar.texi(GNUTAR,7813) @acronym{GNU} @command{tar}.
 tar.texi(,7814) 
 tar.texi(,7815) @table @option
 tar.texi(,7816) @opindex gzip
@@ -8748,7 +8723,7 @@ tar.texi(,7847) construction of the compression tables becomes unsynchronized, a
 tar.texi(,7848) is little chance that you could recover later in the archive.
 tar.texi(,7849) 
 tar.texi(,7850) There are pending suggestions for having a per-volume or per-file
-tar.texi(GNUTAR,7851) compression in tar.texi(GNUTAR,7851) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7851) .  This would allow for viewing the
+tar.texi(GNUTAR,7851) compression in tar.texi(GNUTAR,7851) @acronym{GNU} @command{tar}.  This would allow for viewing the
 tar.texi(,7852) contents without decompression, and for resynchronizing decompression at
 tar.texi(,7853) every volume or file, in case of corrupted archives.  Doing so, we might
 tar.texi(,7854) lose some compressibility.  But this would have make recovering easier.
@@ -8774,7 +8749,7 @@ tar.texi(,7873)
 tar.texi(,7874) @opindex use-compress-program
 tar.texi(,7875) @item --use-compress-program=@var{prog}
 tar.texi(,7876) Use external compression program @var{prog}.  Use this option if you
-tar.texi(GNUTAR,7877) have a compression program that tar.texi(GNUTAR,7877) @acronym{GNU} @command{tar}tar.texi(GNUTAR,7877)  does not support.  There
+tar.texi(GNUTAR,7877) have a compression program that tar.texi(GNUTAR,7877) @acronym{GNU} @command{tar} does not support.  There
 tar.texi(,7878) are two requirements to which @var{prog} should comply:
 tar.texi(,7879) 
 tar.texi(,7880) First, when called without options, it should read data from standard
@@ -8878,7 +8853,7 @@ tar.texi(FIXME,8038) @quote-arg
 tar.texi(FIXME,8038) 
 tar.texi(,8039) 
 tar.texi(,8040) @cindex sparse formats, defined
-tar.texi(GNUTAR,8041) When using @samp{POSIX} archive format, tar.texi(GNUTAR,8041) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8041)  is able to store
+tar.texi(GNUTAR,8041) When using @samp{POSIX} archive format, tar.texi(GNUTAR,8041) @acronym{GNU} @command{tar} is able to store
 tar.texi(,8042) sparse files using in three distinct ways, called @dfn{sparse
 tar.texi(,8043) formats}.  A sparse format is identified by its @dfn{number},
 tar.texi(,8044) consisting, as usual of two decimal numbers, delimited by a dot.  By
@@ -8902,7 +8877,6 @@ tar.texi(,8061) @section Handling File Attributes
 tar.texi(UNREVISED,8062) @quotation
 tar.texi(UNREVISED,8062) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8062) @end quotation
-tar.texi(UNREVISED,8062) 
 tar.texi(,8063) 
 tar.texi(,8064) When @command{tar} reads files, it updates their access times.  To
 tar.texi(,8065) avoid this, use the @option{--atime-preserve[=METHOD]} option, which can either
@@ -9008,13 +8982,13 @@ tar.texi(,8164) files in that directory, then setting ownership and permissions 
 tar.texi(,8165) wanted (there are a lot of possible schemes), and only then making a
 tar.texi(,8166) @command{tar} archive out of this directory, before cleaning
 tar.texi(,8167) everything out.  Of course, we could add a lot of options to
-tar.texi(GNUTAR,8168) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8168)  for fine tuning permissions and ownership.
-tar.texi(GNUTAR,8169) This is not the good way, I think.  tar.texi(GNUTAR,8169) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8169)  is
+tar.texi(GNUTAR,8168) @acronym{GNU} @command{tar} for fine tuning permissions and ownership.
+tar.texi(GNUTAR,8169) This is not the good way, I think.  tar.texi(GNUTAR,8169) @acronym{GNU} @command{tar} is
 tar.texi(,8170) already crowded with options and moreover, the approach just explained
 tar.texi(,8171) gives you a great deal of control already.
 tar.texi(,8172) 
-tar.texi(xopindex,8173) @opindex same-permissions@r{, short description}tar.texi(xopindex,8173) 
-tar.texi(xopindex,8174) @opindex preserve-permissions@r{, short description}tar.texi(xopindex,8174) 
+tar.texi(xopindex,8173) @opindex same-permissions@r{, short description}
+tar.texi(xopindex,8174) @opindex preserve-permissions@r{, short description}
 tar.texi(,8175) @item -p
 tar.texi(,8176) @itemx --same-permissions
 tar.texi(,8177) @itemx --preserve-permissions
@@ -9166,17 +9140,17 @@ tar.texi(,8320) To create archive in @code{ustar} format, use @option{--format=u
 tar.texi(,8321) option in conjunction with the @option{--create} (@option{-c}).
 tar.texi(,8322) 
 tar.texi(,8323) @node gnu
-tar.texi(GNUTAR,8324) @subsection @acronym{GNU} and old tar.texi(GNUTAR,8324) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8324)  format
+tar.texi(GNUTAR,8324) @subsection @acronym{GNU} and old tar.texi(GNUTAR,8324) @acronym{GNU} @command{tar} format
 tar.texi(,8325) 
 tar.texi(,8326) @cindex GNU archive format
 tar.texi(,8327) @cindex Old GNU archive format
-tar.texi(GNUTAR,8328) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8328)  was based on an early draft of the
+tar.texi(GNUTAR,8328) @acronym{GNU} @command{tar} was based on an early draft of the
 tar.texi(,8329) @acronym{POSIX} 1003.1 @code{ustar} standard.  @acronym{GNU} extensions to
 tar.texi(,8330) @command{tar}, such as the support for file names longer than 100
 tar.texi(,8331) characters, use portions of the @command{tar} header record which were
 tar.texi(,8332) specified in that @acronym{POSIX} draft as unused.  Subsequent changes in
 tar.texi(,8333) @acronym{POSIX} have allocated the same parts of the header record for
-tar.texi(GNUTAR,8334) other purposes.  As a result, tar.texi(GNUTAR,8334) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8334)  format is
+tar.texi(GNUTAR,8334) other purposes.  As a result, tar.texi(GNUTAR,8334) @acronym{GNU} @command{tar} format is
 tar.texi(,8335) incompatible with the current @acronym{POSIX} specification, and with
 tar.texi(,8336) @command{tar} programs that follow it.
 tar.texi(,8337) 
@@ -9184,15 +9158,15 @@ tar.texi(,8338) In the majority of cases, @command{tar} will be configured to cr
 tar.texi(,8339) this format by default.  This will change in the future releases, since
 tar.texi(,8340) we plan to make @samp{POSIX} format the default.
 tar.texi(,8341) 
-tar.texi(GNUTAR,8342) To force creation a tar.texi(GNUTAR,8342) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8342)  archive, use option
+tar.texi(GNUTAR,8342) To force creation a tar.texi(GNUTAR,8342) @acronym{GNU} @command{tar} archive, use option
 tar.texi(,8343) @option{--format=gnu}.
 tar.texi(,8344) 
 tar.texi(,8345) @node posix
-tar.texi(GNUTAR,8346) @subsection tar.texi(GNUTAR,8346) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8346)  and @acronym{POSIX} @command{tar}
+tar.texi(GNUTAR,8346) @subsection tar.texi(GNUTAR,8346) @acronym{GNU} @command{tar} and @acronym{POSIX} @command{tar}
 tar.texi(,8347) 
 tar.texi(,8348) @cindex POSIX archive format
 tar.texi(,8349) @cindex PAX archive format
-tar.texi(GNUTAR,8350) Starting from version 1.14 tar.texi(GNUTAR,8350) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8350)  features full support for
+tar.texi(GNUTAR,8350) Starting from version 1.14 tar.texi(GNUTAR,8350) @acronym{GNU} @command{tar} features full support for
 tar.texi(,8351) @acronym{POSIX.1-2001} archives.
 tar.texi(,8352) 
 tar.texi(,8353) A @acronym{POSIX} conformant archive will be created if @command{tar}
@@ -9324,22 +9298,22 @@ tar.texi(,8478) @node Checksumming
 tar.texi(,8479) @subsection Checksumming Problems
 tar.texi(,8480) 
 tar.texi(,8481) SunOS and HP-UX @command{tar} fail to accept archives created using
-tar.texi(GNUTAR,8482) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8482)  and containing non-ASCII file names, that
+tar.texi(GNUTAR,8482) @acronym{GNU} @command{tar} and containing non-ASCII file names, that
 tar.texi(,8483) is, file names having characters with the eight bit set, because they
-tar.texi(GNUTAR,8484) use signed checksums, while tar.texi(GNUTAR,8484) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8484)  uses unsigned
+tar.texi(GNUTAR,8484) use signed checksums, while tar.texi(GNUTAR,8484) @acronym{GNU} @command{tar} uses unsigned
 tar.texi(,8485) checksums while creating archives, as per @acronym{POSIX} standards.  On
-tar.texi(GNUTAR,8486) reading, tar.texi(GNUTAR,8486) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8486)  computes both checksums and
+tar.texi(GNUTAR,8486) reading, tar.texi(GNUTAR,8486) @acronym{GNU} @command{tar} computes both checksums and
 tar.texi(,8487) accept any.  It is somewhat worrying that a lot of people may go
 tar.texi(,8488) around doing backup of their files using faulty (or at least
 tar.texi(,8489) non-standard) software, not learning about it until it's time to
 tar.texi(,8490) restore their missing files with an incompatible file extractor, or
 tar.texi(,8491) vice versa.
 tar.texi(,8492) 
-tar.texi(GNUTAR,8493) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8493)  compute checksums both ways, and accept
+tar.texi(GNUTAR,8493) @acronym{GNU} @command{tar} compute checksums both ways, and accept
 tar.texi(,8494) any on read, so @acronym{GNU} tar can read Sun tapes even with their
-tar.texi(GNUTAR,8495) wrong checksums.  tar.texi(GNUTAR,8495) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8495)  produces the standard
+tar.texi(GNUTAR,8495) wrong checksums.  tar.texi(GNUTAR,8495) @acronym{GNU} @command{tar} produces the standard
 tar.texi(,8496) checksum, however, raising incompatibilities with Sun.  That is to
-tar.texi(GNUTAR,8497) say, tar.texi(GNUTAR,8497) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8497)  has not been modified to
+tar.texi(GNUTAR,8497) say, tar.texi(GNUTAR,8497) @acronym{GNU} @command{tar} has not been modified to
 tar.texi(,8498) @emph{produce} incorrect archives to be read by buggy @command{tar}'s.
 tar.texi(,8499) I've been told that more recent Sun @command{tar} now read standard
 tar.texi(,8500) archives, so maybe Sun did a similar patch, after all?
@@ -9364,12 +9338,11 @@ tar.texi(,8518) @cindex negative time stamps
 tar.texi(UNREVISED,8519) @quotation
 tar.texi(UNREVISED,8519) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8519) @end quotation
-tar.texi(UNREVISED,8519) 
 tar.texi(,8520) 
 tar.texi(,8521) The above sections suggest to use @samp{oldest possible} archive
 tar.texi(,8522) format if in doubt.  However, sometimes it is not possible.  If you
 tar.texi(,8523) attempt to archive a file whose metadata cannot be represented using
-tar.texi(GNUTAR,8524) required format, tar.texi(GNUTAR,8524) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8524)  will print error message and ignore such a
+tar.texi(GNUTAR,8524) required format, tar.texi(GNUTAR,8524) @acronym{GNU} @command{tar} will print error message and ignore such a
 tar.texi(,8525) file.  You will than have to switch to a format that is able to
 tar.texi(,8526) handle such values.  The format summary table (@pxref{Formats}) will
 tar.texi(,8527) help you to do so.
@@ -9381,8 +9354,8 @@ tar.texi(,8532) @acronym{POSIX} archive formats.  When considering which format 
 tar.texi(,8533) choose, bear in mind that the @acronym{GNU} format uses
 tar.texi(,8534) two's-complement base-256 notation to store values that do not fit
 tar.texi(,8535) into standard @acronym{ustar} range.  Such archives can generally be
-tar.texi(GNUTAR,8536) read only by a tar.texi(GNUTAR,8536) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8536)  implementation.  Moreover, they sometimes
-tar.texi(GNUTAR,8537) cannot be correctly restored on another hosts even by tar.texi(GNUTAR,8537) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8537) . For
+tar.texi(GNUTAR,8536) read only by a tar.texi(GNUTAR,8536) @acronym{GNU} @command{tar} implementation.  Moreover, they sometimes
+tar.texi(GNUTAR,8537) cannot be correctly restored on another hosts even by tar.texi(GNUTAR,8537) @acronym{GNU} @command{tar}. For
 tar.texi(,8538) example, using two's complement representation for negative time
 tar.texi(,8539) stamps that assumes a signed 32-bit @code{time_t} generates archives
 tar.texi(,8540) that are not portable to hosts with differing @code{time_t}
@@ -9403,7 +9376,7 @@ tar.texi(,8553) In previous sections you became acquainted with various quircks
 tar.texi(,8554) necessary to make your archives portable.  Sometimes you may need to
 tar.texi(,8555) extract archives containing GNU-specific members using some
 tar.texi(,8556) third-party @command{tar} implementation or an older version of
-tar.texi(GNUTAR,8557) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8557) .  Of course your best bet is to have tar.texi(GNUTAR,8557) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8557)  installed,
+tar.texi(GNUTAR,8557) @acronym{GNU} @command{tar}.  Of course your best bet is to have tar.texi(GNUTAR,8557) @acronym{GNU} @command{tar} installed,
 tar.texi(,8558) but if it is for some reason impossible, this section will explain
 tar.texi(,8559) how to cope without it. 
 tar.texi(,8560) 
@@ -9674,7 +9647,7 @@ tar.texi(,8824) @enumerate 1
 tar.texi(,8825) @item 
 tar.texi(,8826) Consult the documentation for your @command{tar} implementation for an
 tar.texi(,8827) option that will print @dfn{block numbers} along with the archive
-tar.texi(GNUTAR,8828) listing (analogous to tar.texi(GNUTAR,8828) @acronym{GNU} @command{tar}tar.texi(GNUTAR,8828) 's @option{-R} option).  For example,
+tar.texi(GNUTAR,8828) listing (analogous to tar.texi(GNUTAR,8828) @acronym{GNU} @command{tar}'s @option{-R} option).  For example,
 tar.texi(,8829) @command{star} has @option{-block-number}.
 tar.texi(,8830) 
 tar.texi(,8831) @item
@@ -9753,7 +9726,6 @@ tar.texi(,8903) @section Comparison of @command{tar} and @command{cpio}
 tar.texi(UNREVISED,8904) @quotation
 tar.texi(UNREVISED,8904) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,8904) @end quotation
-tar.texi(UNREVISED,8904) 
 tar.texi(,8905) 
 tar.texi(FIXME,8906) @allow-recursion
 tar.texi(FIXME,8906) @quote-arg
@@ -9857,7 +9829,7 @@ tar.texi(,9002) always uses 512 bytes per file header) and it knows how to archi
 tar.texi(,9003) special files.
 tar.texi(,9004) 
 tar.texi(,9005) You might want to look at the freely available alternatives.  The
-tar.texi(GNUTAR,9006) major ones are @command{afio}, tar.texi(GNUTAR,9006) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9006) , and
+tar.texi(GNUTAR,9006) major ones are @command{afio}, tar.texi(GNUTAR,9006) @acronym{GNU} @command{tar}, and
 tar.texi(,9007) @command{pax}, each of which have their own extensions with some
 tar.texi(,9008) backwards compatibility.
 tar.texi(,9009) 
@@ -9870,7 +9842,6 @@ tar.texi(,9015) @chapter Tapes and Other Archive Media
 tar.texi(UNREVISED,9016) @quotation
 tar.texi(UNREVISED,9016) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9016) @end quotation
-tar.texi(UNREVISED,9016) 
 tar.texi(,9017) 
 tar.texi(,9018) A few special cases about tape handling warrant more detailed
 tar.texi(,9019) description.  These special cases are discussed below.
@@ -9917,7 +9888,6 @@ tar.texi(,9059) @section Device Selection and Switching
 tar.texi(UNREVISED,9060) @quotation
 tar.texi(UNREVISED,9060) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9060) @end quotation
-tar.texi(UNREVISED,9060) 
 tar.texi(,9061) 
 tar.texi(,9062) @table @option
 tar.texi(,9063) @item -f [@var{hostname}:]@var{file}
@@ -9958,7 +9928,7 @@ tar.texi(,9097) used a default archive name (which was picked when @command{tar}
 tar.texi(,9098) compiled).  The default is normally set up to be the @dfn{first} tape
 tar.texi(,9099) drive or other transportable I/O medium on the system.
 tar.texi(,9100) 
-tar.texi(GNUTAR,9101) Starting with version 1.11.5, tar.texi(GNUTAR,9101) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9101)  uses
+tar.texi(GNUTAR,9101) Starting with version 1.11.5, tar.texi(GNUTAR,9101) @acronym{GNU} @command{tar} uses
 tar.texi(,9102) standard input and standard output as the default device, and I will
 tar.texi(,9103) not try anymore supporting automatic device detection at installation
 tar.texi(,9104) time.  This was failing really in too many cases, it was hopeless.
@@ -9981,14 +9951,14 @@ tar.texi(,9120) processes to accidental destruction of real tapes.  After having
 tar.texi(,9121) all this mess, using standard input and output as a default really
 tar.texi(,9122) sounds like the only clean choice left, and a very useful one too.
 tar.texi(,9123) 
-tar.texi(GNUTAR,9124) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9124)  reads and writes archive in records, I
+tar.texi(GNUTAR,9124) @acronym{GNU} @command{tar} reads and writes archive in records, I
 tar.texi(,9125) suspect this is the main reason why block devices are preferred over
 tar.texi(,9126) character devices.  Most probably, block devices are more efficient
 tar.texi(,9127) too.  The installer could also check for @samp{DEFTAPE} in
 tar.texi(,9128) @file{<sys/mtio.h>}.
 tar.texi(,9129) 
 tar.texi(,9130) @table @option
-tar.texi(xopindex,9131) @opindex force-local@r{, short description}tar.texi(xopindex,9131) 
+tar.texi(xopindex,9131) @opindex force-local@r{, short description}
 tar.texi(,9132) @item --force-local
 tar.texi(,9133) Archive file is local even if it contains a colon.
 tar.texi(,9134) 
@@ -10008,7 +9978,7 @@ tar.texi(,9147)
 tar.texi(,9148) @item -[0-7][lmh]
 tar.texi(,9149) Specify drive and density.
 tar.texi(,9150) 
-tar.texi(xopindex,9151) @opindex multi-volume@r{, short description}tar.texi(xopindex,9151) 
+tar.texi(xopindex,9151) @opindex multi-volume@r{, short description}
 tar.texi(,9152) @item -M
 tar.texi(,9153) @itemx --multi-volume
 tar.texi(,9154) Create/list/extract multi-volume archive.
@@ -10017,7 +9987,7 @@ tar.texi(,9156) This option causes @command{tar} to write a @dfn{multi-volume} a
 tar.texi(,9157) that may be larger than will fit on the medium used to hold it.
 tar.texi(,9158) @xref{Multi-Volume Archives}.
 tar.texi(,9159) 
-tar.texi(xopindex,9160) @opindex tape-length@r{, short description}tar.texi(xopindex,9160) 
+tar.texi(xopindex,9160) @opindex tape-length@r{, short description}
 tar.texi(,9161) @item -L @var{num}
 tar.texi(,9162) @itemx --tape-length=@var{num}
 tar.texi(,9163) Change tape after writing @var{num} x 1024 bytes.
@@ -10026,8 +9996,8 @@ tar.texi(,9165) This option might be useful when your tape drivers do not proper
 tar.texi(,9166) detect end of physical tapes.  By being slightly conservative on the
 tar.texi(,9167) maximum tape length, you might avoid the problem entirely.
 tar.texi(,9168) 
-tar.texi(xopindex,9169) @opindex info-script@r{, short description}tar.texi(xopindex,9169) 
-tar.texi(xopindex,9170) @opindex new-volume-script@r{, short description}tar.texi(xopindex,9170) 
+tar.texi(xopindex,9169) @opindex info-script@r{, short description}
+tar.texi(xopindex,9170) @opindex new-volume-script@r{, short description}
 tar.texi(,9171) @item -F @var{file}
 tar.texi(,9172) @itemx --info-script=@var{file}
 tar.texi(,9173) @itemx --new-volume-script=@var{file}
@@ -10056,25 +10026,25 @@ tar.texi(,9195) installed by default.
 tar.texi(,9196) 
 tar.texi(,9197) @cindex absolute file names
 tar.texi(,9198) Unless you use the @option{--absolute-names} (@option{-P}) option,
-tar.texi(GNUTAR,9199) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9199)  will not allow you to create an archive that contains
+tar.texi(GNUTAR,9199) @acronym{GNU} @command{tar} will not allow you to create an archive that contains
 tar.texi(,9200) absolute file names (a file name beginning with @samp{/}.) If you try,
 tar.texi(,9201) @command{tar} will automatically remove the leading @samp{/} from the
 tar.texi(,9202) file names it stores in the archive.  It will also type a warning
 tar.texi(,9203) message telling you what it is doing.
 tar.texi(,9204) 
 tar.texi(,9205) When reading an archive that was created with a different
-tar.texi(GNUTAR,9206) @command{tar} program, tar.texi(GNUTAR,9206) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9206)  automatically
+tar.texi(GNUTAR,9206) @command{tar} program, tar.texi(GNUTAR,9206) @acronym{GNU} @command{tar} automatically
 tar.texi(,9207) extracts entries in the archive which have absolute file names as if
 tar.texi(,9208) the file names were not absolute.  This is an important feature.  A
 tar.texi(,9209) visitor here once gave a @command{tar} tape to an operator to restore;
-tar.texi(GNUTAR,9210) the operator used Sun @command{tar} instead of tar.texi(GNUTAR,9210) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9210) ,
+tar.texi(GNUTAR,9210) the operator used Sun @command{tar} instead of tar.texi(GNUTAR,9210) @acronym{GNU} @command{tar},
 tar.texi(,9211) and the result was that it replaced large portions of
 tar.texi(,9212) our @file{/bin} and friends with versions from the tape; needless to
 tar.texi(,9213) say, we were unhappy about having to recover the file system from
 tar.texi(,9214) backup tapes.
 tar.texi(,9215) 
 tar.texi(,9216) For example, if the archive contained a file @file{/usr/bin/computoy},
-tar.texi(GNUTAR,9217) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9217)  would extract the file to @file{usr/bin/computoy},
+tar.texi(GNUTAR,9217) @acronym{GNU} @command{tar} would extract the file to @file{usr/bin/computoy},
 tar.texi(,9218) relative to the current directory.  If you want to extract the files in
 tar.texi(,9219) an archive to the same absolute names that they had when the archive
 tar.texi(,9220) was created, you should do a @samp{cd /} before extracting the files
@@ -10138,7 +10108,6 @@ tar.texi(,9279) @section Blocking
 tar.texi(UNREVISED,9280) @quotation
 tar.texi(UNREVISED,9280) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9280) @end quotation
-tar.texi(UNREVISED,9280) 
 tar.texi(,9281) 
 tar.texi(,9282) @dfn{Block} and @dfn{record} terminology is rather confused, and it
 tar.texi(,9283) is also confusing to the expert reader.  On the other hand, readers
@@ -10147,7 +10116,7 @@ tar.texi(,9285) the next two paragraphs, as the remainder of this manual uses th
 tar.texi(,9286) two terms in a quite consistent way.
 tar.texi(,9287) 
 tar.texi(,9288) John Gilmore, the writer of the public domain @command{tar} from which
-tar.texi(GNUTAR,9289) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9289)  was originally derived, wrote (June 1995):
+tar.texi(GNUTAR,9289) @acronym{GNU} @command{tar} was originally derived, wrote (June 1995):
 tar.texi(,9290) 
 tar.texi(,9291) @quotation
 tar.texi(,9292) The nomenclature of tape drives comes from IBM, where I believe
@@ -10180,7 +10149,7 @@ tar.texi(,9318) 512 bytes in length, and @dfn{block} always mean a @command{tar}
 tar.texi(,9319) The term @dfn{logical block} often represents the basic chunk of
 tar.texi(,9320) allocation of many disk blocks as a single entity, which the operating
 tar.texi(,9321) system treats somewhat atomically; this concept is only barely used
-tar.texi(GNUTAR,9322) in tar.texi(GNUTAR,9322) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9322) .
+tar.texi(GNUTAR,9322) in tar.texi(GNUTAR,9322) @acronym{GNU} @command{tar}.
 tar.texi(,9323) 
 tar.texi(,9324) The term @dfn{physical record} is another way to speak of a physical
 tar.texi(,9325) block, those two terms are somewhat interchangeable.  In this manual,
@@ -10196,7 +10165,7 @@ tar.texi(,9334) the logical organization of many characters into something meani
 tar.texi(,9335) to the application.  The term @dfn{unit record} describes a small set
 tar.texi(,9336) of characters which are transmitted whole to or by the application,
 tar.texi(,9337) and often refers to a line of text.  Those two last terms are unrelated
-tar.texi(GNUTAR,9338) to what we call a @dfn{record} in tar.texi(GNUTAR,9338) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9338) .
+tar.texi(GNUTAR,9338) to what we call a @dfn{record} in tar.texi(GNUTAR,9338) @acronym{GNU} @command{tar}.
 tar.texi(,9339) 
 tar.texi(,9340) When writing to tapes, @command{tar} writes the contents of the archive
 tar.texi(,9341) in chunks known as @dfn{records}.  To change the default blocking
@@ -10250,7 +10219,7 @@ tar.texi(,9388) around one megabyte.
 tar.texi(,9389) 
 tar.texi(,9390) If you use a blocking factor larger than 20, older @command{tar}
 tar.texi(,9391) programs might not be able to read the archive, so we recommend this
-tar.texi(GNUTAR,9392) as a limit to use in practice.  tar.texi(GNUTAR,9392) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9392) , however,
+tar.texi(GNUTAR,9392) as a limit to use in practice.  tar.texi(GNUTAR,9392) @acronym{GNU} @command{tar}, however,
 tar.texi(,9393) will support arbitrarily large record sizes, limited only by the
 tar.texi(,9394) amount of virtual memory or the physical characteristics of the tape
 tar.texi(,9395) device.
@@ -10269,7 +10238,6 @@ tar.texi(,9407) @cindex Options, format specifying
 tar.texi(UNREVISED,9408) @quotation
 tar.texi(UNREVISED,9408) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9408) @end quotation
-tar.texi(UNREVISED,9408) 
 tar.texi(,9409) 
 tar.texi(,9410) Format parameters specify how an archive is written on the archive
 tar.texi(,9411) media.  The best choice of format parameters will vary depending on
@@ -10296,7 +10264,6 @@ tar.texi(,9431) @cindex Blocks per record
 tar.texi(UNREVISED,9432) @quotation
 tar.texi(UNREVISED,9432) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9432) @end quotation
-tar.texi(UNREVISED,9432) 
 tar.texi(,9433) 
 tar.texi(,9434) @opindex blocking-factor
 tar.texi(,9435) The data in an archive is grouped into blocks, which are 512 bytes.
@@ -10330,7 +10297,7 @@ tar.texi(,9460)
 tar.texi(,9461) Archives with blocking factors larger than 20 cannot be read
 tar.texi(,9462) by very old versions of @command{tar}, or by some newer versions
 tar.texi(,9463) of @command{tar} running on old machines with small address spaces.
-tar.texi(GNUTAR,9464) With tar.texi(GNUTAR,9464) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9464) , the blocking factor of an archive is limited
+tar.texi(GNUTAR,9464) With tar.texi(GNUTAR,9464) @acronym{GNU} @command{tar}, the blocking factor of an archive is limited
 tar.texi(,9465) only by the maximum record size of the device containing the archive,
 tar.texi(,9466) or by the amount of available virtual memory.
 tar.texi(,9467) 
@@ -10344,10 +10311,10 @@ tar.texi(,9474) @end smallexample
 tar.texi(,9475) 
 tar.texi(,9476) @noindent
 tar.texi(,9477) In such cases, it sometimes happen that the @command{tar} bundled by
-tar.texi(GNUTAR,9478) the system is aware of block size idiosyncrasies, while tar.texi(GNUTAR,9478) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9478) 
+tar.texi(GNUTAR,9478) the system is aware of block size idiosyncrasies, while tar.texi(GNUTAR,9478) @acronym{GNU} @command{tar}
 tar.texi(,9479) requires an explicit specification for the block size,
 tar.texi(,9480) which it cannot guess.  This yields some people to consider
-tar.texi(GNUTAR,9481) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9481)  is misbehaving, because by comparison,
+tar.texi(GNUTAR,9481) @acronym{GNU} @command{tar} is misbehaving, because by comparison,
 tar.texi(,9482) @cite{the bundle @command{tar} works OK}.  Adding @w{@kbd{-b 256}},
 tar.texi(,9483) for example, might resolve the problem.
 tar.texi(,9484) 
@@ -10407,7 +10374,7 @@ tar.texi(,9537) If we choose our blocksize as a multiple of 8k bytes, then the p
 tar.texi(,9538) seems to disappear.  Id est, we are using block size of 112 right
 tar.texi(,9539) now, and we haven't had the problem since we switched@dots{}
 tar.texi(,9540) 
-tar.texi(GNUTAR,9541) With tar.texi(GNUTAR,9541) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9541)  the blocking factor is limited only
+tar.texi(GNUTAR,9541) With tar.texi(GNUTAR,9541) @acronym{GNU} @command{tar} the blocking factor is limited only
 tar.texi(,9542) by the maximum record size of the device containing the archive, or by
 tar.texi(,9543) the amount of available virtual memory.
 tar.texi(,9544) 
@@ -10465,7 +10432,7 @@ tar.texi(,9595) the first null block encountered.  This inelegantly breaks the p
 tar.texi(,9596) @command{tar} should rather drain the pipe out before exiting itself.
 tar.texi(,9597) @end itemize
 tar.texi(,9598) 
-tar.texi(xopindex,9599) @opindex ignore-zeros@r{, short description}tar.texi(xopindex,9599) 
+tar.texi(xopindex,9599) @opindex ignore-zeros@r{, short description}
 tar.texi(,9600) @item -i
 tar.texi(,9601) @itemx --ignore-zeros
 tar.texi(,9602) Ignore blocks of zeros in archive (means EOF).
@@ -10482,7 +10449,7 @@ tar.texi(,9612) Note that this option causes @command{tar} to read to the end of
 tar.texi(,9613) archive file, which may sometimes avoid problems when multiple files
 tar.texi(,9614) are stored on a single physical tape.
 tar.texi(,9615) 
-tar.texi(xopindex,9616) @opindex read-full-records@r{, short description}tar.texi(xopindex,9616) 
+tar.texi(xopindex,9616) @opindex read-full-records@r{, short description}
 tar.texi(,9617) @item -B
 tar.texi(,9618) @itemx --read-full-records
 tar.texi(,9619) Reblock as we read (for reading 4.2BSD pipes).
@@ -10658,7 +10625,6 @@ tar.texi(,9784) @subsection Tape Positions and Tape Marks
 tar.texi(UNREVISED,9785) @quotation
 tar.texi(UNREVISED,9785) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9785) @end quotation
-tar.texi(UNREVISED,9785) 
 tar.texi(,9786) 
 tar.texi(,9787) Just as archives can store more than one file from the file system,
 tar.texi(,9788) tapes can store more than one archive file.  To keep track of where
@@ -10702,7 +10668,6 @@ tar.texi(,9825) @subsection The @command{mt} Utility
 tar.texi(UNREVISED,9826) @quotation
 tar.texi(UNREVISED,9826) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,9826) @end quotation
-tar.texi(UNREVISED,9826) 
 tar.texi(,9827) 
 tar.texi(FIXME,9829) @allow-recursion
 tar.texi(FIXME,9829) @quote-arg
@@ -10785,15 +10750,15 @@ tar.texi(,9899) requirement for multi-volume archives to be stored on tapes.  In
 tar.texi(,9900) they can use whatever media type the user finds convenient, they can
 tar.texi(,9901) even be located on files.  
 tar.texi(,9902) 
-tar.texi(GNUTAR,9903) When creating a multi-volume arvhive, tar.texi(GNUTAR,9903) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9903)  continues to fill
+tar.texi(GNUTAR,9903) When creating a multi-volume arvhive, tar.texi(GNUTAR,9903) @acronym{GNU} @command{tar} continues to fill
 tar.texi(,9904) current volume until it runs out of space, then it switches to
 tar.texi(,9905) next volume (usually the operator is queried to replace the tape on
 tar.texi(,9906) this point), and continues working on the new volume.  This operation
-tar.texi(GNUTAR,9907) continues untill all requested files are dumped.  If tar.texi(GNUTAR,9907) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9907)  detects
+tar.texi(GNUTAR,9907) continues untill all requested files are dumped.  If tar.texi(GNUTAR,9907) @acronym{GNU} @command{tar} detects
 tar.texi(,9908) end of media while dumping a file, such a file is archived in split
 tar.texi(,9909) form.  Some very big files can even be split across several volumes. 
 tar.texi(,9910) 
-tar.texi(GNUTAR,9911) Each volume is itself a valid tar.texi(GNUTAR,9911) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9911)  archive, so it can be read
+tar.texi(GNUTAR,9911) Each volume is itself a valid tar.texi(GNUTAR,9911) @acronym{GNU} @command{tar} archive, so it can be read
 tar.texi(,9912) without any special options.  Consequently any file member residing
 tar.texi(,9913) entirely on one volume can be extracted or otherwise operated upon
 tar.texi(,9914) without needing the other volume.  Sure enough, to extract a split
@@ -10802,7 +10767,7 @@ tar.texi(,9916)
 tar.texi(,9917) Multi-volume archives suffer from several limitations.  In particular,
 tar.texi(,9918) they cannot be compressed.
 tar.texi(,9919) 
-tar.texi(GNUTAR,9920) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9920)  is able to create multi-volume archives of two formats
+tar.texi(GNUTAR,9920) @acronym{GNU} @command{tar} is able to create multi-volume archives of two formats
 tar.texi(,9921) (@pxref{Formats}): @samp{GNU} and @samp{POSIX}.
 tar.texi(,9922) 
 tar.texi(,9923) @menu
@@ -10866,7 +10831,7 @@ tar.texi(,9980) @end smallexample
 tar.texi(,9981) @end table
 tar.texi(,9982) 
 tar.texi(,9983) @anchor{change volume prompt}
-tar.texi(GNUTAR,9984) When tar.texi(GNUTAR,9984) @acronym{GNU} @command{tar}tar.texi(GNUTAR,9984)  comes to the end of a storage media, it asks you to
+tar.texi(GNUTAR,9984) When tar.texi(GNUTAR,9984) @acronym{GNU} @command{tar} comes to the end of a storage media, it asks you to
 tar.texi(,9985) change the volume.  The built-in prompt for POSIX locale
 tar.texi(GNUTAR,9986) is@footnote{If you run @acronym{GNU} @command{tar} under a different locale, the
 tar.texi(,9987) translation to the locale's language will be used.}: 
@@ -10944,7 +10909,7 @@ tar.texi(,10058)
 tar.texi(,10059) @table @env
 tar.texi(,10060) @vrindex TAR_VERSION, info script environment variable
 tar.texi(,10061) @item TAR_VERSION
-tar.texi(GNUTAR,10062) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10062)  version number.
+tar.texi(GNUTAR,10062) @acronym{GNU} @command{tar} version number.
 tar.texi(,10063) 
 tar.texi(,10064) @vrindex TAR_ARCHIVE, info script environment variable
 tar.texi(,10065) @item TAR_ARCHIVE
@@ -10979,7 +10944,7 @@ tar.texi(,10093) volumes of the archive.  Only when the first one in the sequenc
 tar.texi(,10094) to be used again will @command{tar} prompt for a tape change (or run
 tar.texi(,10095) the info script).  For example, suppose someone has two tape drives on
 tar.texi(,10096) a system named @file{/dev/tape0} and @file{/dev/tape1}.  For having
-tar.texi(GNUTAR,10097) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10097)  to switch to the second drive when it needs to write the
+tar.texi(GNUTAR,10097) @acronym{GNU} @command{tar} to switch to the second drive when it needs to write the
 tar.texi(,10098) second tape, and then back to the first tape, etc., just do either of:
 tar.texi(,10099) 
 tar.texi(,10100) @smallexample
@@ -11028,7 +10993,7 @@ tar.texi(,10142) @end smallexample
 tar.texi(,10143) 
 tar.texi(,10144) @noindent
 tar.texi(,10145) Notice, that the first command had to use @option{-L} option, since
-tar.texi(GNUTAR,10146) otherwise tar.texi(GNUTAR,10146) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10146)  will end up writing everything to file
+tar.texi(GNUTAR,10146) otherwise tar.texi(GNUTAR,10146) @acronym{GNU} @command{tar} will end up writing everything to file
 tar.texi(,10147) @file{archive.tar}.
 tar.texi(,10148) 
 tar.texi(,10149) You can read each individual volume of a multi-volume archive as if it
@@ -11059,7 +11024,7 @@ tar.texi(,10173) @option{--label=@var{archive-label}} again in conjunction with 
 tar.texi(,10174) @option{--append}, @option{--update} or @option{--concatenate} operation.
 tar.texi(,10175) 
 tar.texi(,10176) Notice that multi-volume support is a GNU extension and the archives
-tar.texi(GNUTAR,10177) created in this mode should be read only using tar.texi(GNUTAR,10177) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10177) .  If you
+tar.texi(GNUTAR,10177) created in this mode should be read only using tar.texi(GNUTAR,10177) @acronym{GNU} @command{tar}.  If you
 tar.texi(,10178) absolutely have to process such archives using a third-party @command{tar}
 tar.texi(,10179) implementation, read @ref{Split Recovery}.
 tar.texi(,10180) 
@@ -11068,7 +11033,6 @@ tar.texi(,10182) @subsection Tape Files
 tar.texi(UNREVISED,10183) @quotation
 tar.texi(UNREVISED,10183) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,10183) @end quotation
-tar.texi(UNREVISED,10183) 
 tar.texi(,10184) 
 tar.texi(,10185) To give the archive a name which will be recorded in it, use the
 tar.texi(,10186) @option{--label=@var{volume-label}} (@option{-V @var{volume-label}})
@@ -11103,10 +11067,10 @@ tar.texi(,10214) @node Tarcat
 tar.texi(,10215) @subsection Concatenate Volumes into a Single Archive
 tar.texi(,10216) 
 tar.texi(,10217) @pindex tarcat
-tar.texi(GNUTAR,10218)   Sometimes it is necessary to convert existing tar.texi(GNUTAR,10218) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10218)  multi-volume
+tar.texi(GNUTAR,10218)   Sometimes it is necessary to convert existing tar.texi(GNUTAR,10218) @acronym{GNU} @command{tar} multi-volume
 tar.texi(,10219) archive to a single @command{tar} archive.  Simply concatenating all
 tar.texi(,10220) volumes into one will not work, since each volume carries an additional
-tar.texi(GNUTAR,10221) information at the beginning.  tar.texi(GNUTAR,10221) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10221)  is shipped with the shell
+tar.texi(GNUTAR,10221) information at the beginning.  tar.texi(GNUTAR,10221) @acronym{GNU} @command{tar} is shipped with the shell
 tar.texi(,10222) script @command{tarcat} designed for this purpose.
 tar.texi(,10223) 
 tar.texi(,10224)   The script takes a list of files comprising a multi-volume archive
@@ -11135,7 +11099,6 @@ tar.texi(,10244) @cindex Labeling multi-volume archives
 tar.texi(UNREVISED,10245) @quotation
 tar.texi(UNREVISED,10245) @emph{(This message will disappear, once this node revised.)}
 tar.texi(UNREVISED,10245) @end quotation
-tar.texi(UNREVISED,10245) 
 tar.texi(,10246) 
 tar.texi(,10247) @opindex label
 tar.texi(,10248)   To avoid problems caused by misplaced paper labels on the archive
@@ -11259,7 +11222,7 @@ tar.texi(,10365) @end group
 tar.texi(,10366) @end smallexample
 tar.texi(,10367) 
 tar.texi(,10368)   Also note that each label has its own date and time, which corresponds
-tar.texi(GNUTAR,10369) to when tar.texi(GNUTAR,10369) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10369)  initially attempted to write it,
+tar.texi(GNUTAR,10369) to when tar.texi(GNUTAR,10369) @acronym{GNU} @command{tar} initially attempted to write it,
 tar.texi(,10370) often soon after the operator launches @command{tar} or types the
 tar.texi(,10371) carriage return telling that the next tape is ready.  Comparing date
 tar.texi(,10372) labels does give an idea of tape throughput only if the delays for
@@ -11292,8 +11255,8 @@ tar.texi(,10398) file system as the archive is being written, to verify a write
 tar.texi(,10399) operation, or can compare a previously written archive, to insure that
 tar.texi(,10400) it is up to date.
 tar.texi(,10401) 
-tar.texi(xopindex,10402) @opindex verify@r{, using with @option{--create}}tar.texi(xopindex,10402) 
-tar.texi(xopindex,10403) @opindex create@r{, using with @option{--verify}}tar.texi(xopindex,10403) 
+tar.texi(xopindex,10402) @opindex verify@r{, using with @option{--create}}
+tar.texi(xopindex,10403) @opindex create@r{, using with @option{--verify}}
 tar.texi(,10404) To check for discrepancies in an archive immediately after it is
 tar.texi(,10405) written, use the @option{--verify} (@option{-W}) option in conjunction with
 tar.texi(,10406) the @option{--create} operation.  When this option is
@@ -11361,7 +11324,7 @@ tar.texi(,10467) @node Changes
 tar.texi(,10468) @appendix Changes
 tar.texi(,10469) 
 tar.texi(,10470) This appendix lists some important user-visible changes between
-tar.texi(GNUTAR,10471) version tar.texi(GNUTAR,10471) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10471)  1.15.92 and previous versions. An up-to-date
+tar.texi(GNUTAR,10471) version tar.texi(GNUTAR,10471) @acronym{GNU} @command{tar} 1.15.92 and previous versions. An up-to-date
 tar.texi(,10472) version of this document is available at
 tar.texi(,10473) @uref{http://www.gnu.org/@/software/@/tar/manual/changes.html,the
 tar.texi(GNUTAR,10474) @acronym{GNU} @command{tar} documentation page}.
@@ -11402,14 +11365,14 @@ tar.texi(,10508) If you want to tar to mimic the behavior of versions prior to 1
 tar.texi(,10509) add this option to your @env{TAR_OPTIONS} variable.
 tar.texi(,10510) 
 tar.texi(,10511) @xref{wildcards}, for the detailed discussion of the use of globbing
-tar.texi(GNUTAR,10512) patterns by tar.texi(GNUTAR,10512) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10512) .
+tar.texi(GNUTAR,10512) patterns by tar.texi(GNUTAR,10512) @acronym{GNU} @command{tar}.
 tar.texi(,10513) 
 tar.texi(,10514) @item Use of short option @option{-o}.
 tar.texi(,10515) 
-tar.texi(GNUTAR,10516) Earlier versions of tar.texi(GNUTAR,10516) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10516)  understood @option{-o} command line
+tar.texi(GNUTAR,10516) Earlier versions of tar.texi(GNUTAR,10516) @acronym{GNU} @command{tar} understood @option{-o} command line
 tar.texi(,10517) option as a synonym for @option{--old-archive}.
 tar.texi(,10518) 
-tar.texi(GNUTAR,10519) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10519)  starting from version 1.13.90 understands this option as
+tar.texi(GNUTAR,10519) @acronym{GNU} @command{tar} starting from version 1.13.90 understands this option as
 tar.texi(,10520) a synonym for @option{--no-same-owner}.  This is compatible with
 tar.texi(,10521) UNIX98 @command{tar} implementations.
 tar.texi(,10522) 
@@ -11429,12 +11392,12 @@ tar.texi(,10535) @xref{Options, tar-v7, Changing Automake's Behavior,
 tar.texi(,10536) automake, GNU Automake}, for a description on how to use various
 tar.texi(,10537) archive formats with @command{automake}.
 tar.texi(,10538) 
-tar.texi(GNUTAR,10539) Future versions of tar.texi(GNUTAR,10539) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10539)  will understand @option{-o} only as a
+tar.texi(GNUTAR,10539) Future versions of tar.texi(GNUTAR,10539) @acronym{GNU} @command{tar} will understand @option{-o} only as a
 tar.texi(,10540) synonym for @option{--no-same-owner}.
 tar.texi(,10541) 
 tar.texi(,10542) @item Use of short option @option{-l}
 tar.texi(,10543) 
-tar.texi(GNUTAR,10544) Earlier versions of tar.texi(GNUTAR,10544) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10544)  understood @option{-l} option as a
+tar.texi(GNUTAR,10544) Earlier versions of tar.texi(GNUTAR,10544) @acronym{GNU} @command{tar} understood @option{-l} option as a
 tar.texi(,10545) synonym for @option{--one-file-system}.  Since such usage contradicted
 tar.texi(,10546) to UNIX98 specification and harmed compatibility with other
 tar.texi(,10547) implementation, it was declared deprecated in version 1.14.  However,
@@ -11684,7 +11647,6 @@ intern.texi(,15) @unnumberedsec Basic Tar Format
 intern.texi(UNREVISED,16) @quotation
 intern.texi(UNREVISED,16) @emph{(This message will disappear, once this node revised.)}
 intern.texi(UNREVISED,16) @end quotation
-intern.texi(UNREVISED,16) 
 intern.texi(,17) 
 intern.texi(,18) While an archive may contain many files, the archive itself is a
 intern.texi(,19) single ordinary file.  Like any other file, an archive file can be
@@ -11708,7 +11670,6 @@ intern.texi(,36) member name.  One way this situation can occur is if more than 
 intern.texi(,37) version of a file has been stored in the archive.  For information
 intern.texi(,38) about adding new versions of a file to an archive, see @ref{update}.
 intern.texi(FIXME-xref,40) @quote-arg
-intern.texi(FIXME-xref,40) 
 intern.texi(,41) 
 intern.texi(,42) In addition to entries describing archive members, an archive may
 intern.texi(,43) contain entries which @command{tar} itself uses to store information.
@@ -11724,7 +11685,7 @@ intern.texi(,52) of the file.  At the end of the archive file there are two 512-
 intern.texi(,53) filled with binary zeros as an end-of-file marker.  A reasonable system
 intern.texi(,54) should write such end-of-file marker at the end of an archive, but
 intern.texi(,55) must not assume that such a block exists when reading an archive.  In
-intern.texi(GNUTAR,56) particular intern.texi(GNUTAR,56) @acronym{GNU} @command{tar}intern.texi(GNUTAR,56)  always issues a warning if it does not encounter it.
+intern.texi(GNUTAR,56) particular intern.texi(GNUTAR,56) @acronym{GNU} @command{tar} always issues a warning if it does not encounter it.
 intern.texi(,57) 
 intern.texi(,58) The blocks may be @dfn{blocked} for physical I/O operations.
 intern.texi(,59) Each record of @var{n} blocks (where @var{n} is set by the
@@ -11737,7 +11698,7 @@ intern.texi(,65) an archive, a reasonable system should properly handle an archi
 intern.texi(,66) whose last record is shorter than the rest, or which contains garbage
 intern.texi(,67) records after a zero block.
 intern.texi(,68) 
-intern.texi(GNUTAR,69) The header block is defined in C as follows.  In the intern.texi(GNUTAR,69) @acronym{GNU} @command{tar}intern.texi(GNUTAR,69) 
+intern.texi(GNUTAR,69) The header block is defined in C as follows.  In the intern.texi(GNUTAR,69) @acronym{GNU} @command{tar}
 intern.texi(,70) distribution, this is part of file @file{src/tar.h}:
 intern.texi(,71) 
 intern.texi(,72) @smallexample
@@ -12028,7 +11989,6 @@ intern.texi(,111) not support numeric user or group IDs, these fields should be 
 intern.texi(,112) 
 intern.texi(,113) The @code{size} field is the size of the file in bytes; linked files
 intern.texi(FIXME-xref,115) are archived with this field specified as zero.  intern.texi(FIXME-xref,115) @quote-arg
-intern.texi(FIXME-xref,115) 
 intern.texi(,116) 
 intern.texi(,117) The @code{mtime} field is the data modification time of the file at
 intern.texi(,118) the time it was archived.  It is the ASCII representation of the octal
@@ -12187,7 +12147,6 @@ intern.texi(,270) @unnumberedsec @acronym{GNU} Extensions to the Archive Format
 intern.texi(UNREVISED,271) @quotation
 intern.texi(UNREVISED,271) @emph{(This message will disappear, once this node revised.)}
 intern.texi(UNREVISED,271) @end quotation
-intern.texi(UNREVISED,271) 
 intern.texi(,272) 
 intern.texi(,273) The @acronym{GNU} format uses additional file types to describe new types of
 intern.texi(,274) files in an archive.  These are listed below.
@@ -12250,22 +12209,22 @@ sparse.texi(,5)
 sparse.texi(,6) @cindex sparse formats
 sparse.texi(,7) @cindex sparse versions
 sparse.texi(,8) The notion of sparse file, and the ways of handling it from the point
-sparse.texi(GNUTAR,9) of view of sparse.texi(GNUTAR,9) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,9)  user have been described in detail in
-sparse.texi(GNUTAR,10) @ref{sparse}.  This chapter describes the internal format sparse.texi(GNUTAR,10) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,10) 
+sparse.texi(GNUTAR,9) of view of sparse.texi(GNUTAR,9) @acronym{GNU} @command{tar} user have been described in detail in
+sparse.texi(GNUTAR,10) @ref{sparse}.  This chapter describes the internal format sparse.texi(GNUTAR,10) @acronym{GNU} @command{tar}
 sparse.texi(,11) uses to store such files.
 sparse.texi(,12) 
-sparse.texi(GNUTAR,13) The support for sparse files in sparse.texi(GNUTAR,13) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,13)  has a long history.  The
+sparse.texi(GNUTAR,13) The support for sparse files in sparse.texi(GNUTAR,13) @acronym{GNU} @command{tar} has a long history.  The
 sparse.texi(,14) earliest version featuring this support that I was able to find was 1.09,
 sparse.texi(,15) released in November, 1990.  The format introduced back then is called
 sparse.texi(,16) @dfn{old GNU} sparse format and in spite of the fact that its design
-sparse.texi(GNUTAR,17) contained many flaws, it was the only format sparse.texi(GNUTAR,17) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,17)  supported 
+sparse.texi(GNUTAR,17) contained many flaws, it was the only format sparse.texi(GNUTAR,17) @acronym{GNU} @command{tar} supported 
 sparse.texi(,18) until version 1.14 (May, 2004), which introduced initial support for
 sparse.texi(,19) sparse archives in @acronym{PAX} archives (@pxref{posix}).  This
 sparse.texi(,20) format was not free from design flows, either and it was subsequently
 sparse.texi(,21) improved in versions 1.15.2 (November, 2005) and 1.15.92 (June,
 sparse.texi(,22) 2006). 
 sparse.texi(,23) 
-sparse.texi(GNUTAR,24) In addition to GNU sparse format, sparse.texi(GNUTAR,24) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,24)  is able to read and
+sparse.texi(GNUTAR,24) In addition to GNU sparse format, sparse.texi(GNUTAR,24) @acronym{GNU} @command{tar} is able to read and
 sparse.texi(,25) extract sparse files archived by @command{star}.
 sparse.texi(,26) 
 sparse.texi(,27) The following subsections describe each format in detail.
@@ -12393,7 +12352,7 @@ sparse.texi(,148) restore such members using non-GNU @command{tar}s.
 sparse.texi(,149) @end enumerate
 sparse.texi(,150) 
 sparse.texi(,151) @cindex sparse formats, v.0.1
-sparse.texi(GNUTAR,152) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,152)  1.15.2 introduced sparse format version @code{0.1}, which
+sparse.texi(GNUTAR,152) @acronym{GNU} @command{tar} 1.15.2 introduced sparse format version @code{0.1}, which
 sparse.texi(,153) attempted to solve these problems.  As its predecessor, this format
 sparse.texi(,154) stores sparse map in the extended POSIX header.  It retains
 sparse.texi(,155) @code{GNU.sparse.size} and @code{GNU.sparse.numblocks} variables, but
@@ -12431,7 +12390,7 @@ sparse.texi(,186) @node PAX 1
 sparse.texi(,187) @appendixsubsec PAX Format, Version 1.0
 sparse.texi(,188) 
 sparse.texi(,189) @cindex sparse formats, v.1.0
-sparse.texi(GNUTAR,190) The version @code{1.0} of sparse format was introduced with sparse.texi(GNUTAR,190) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,190) 
+sparse.texi(GNUTAR,190) The version @code{1.0} of sparse format was introduced with sparse.texi(GNUTAR,190) @acronym{GNU} @command{tar}
 sparse.texi(,191) 1.15.92.  Its main objective was to make the resulting file
 sparse.texi(,192) extractable with little effort even by non-posix aware @command{tar}
 sparse.texi(,193) implementations.  Starting from this version, the extended header
@@ -12473,9 +12432,9 @@ sparse.texi(,228) The format is designed in such a way that non-posix aware tars
 sparse.texi(,229) supporting @code{GNU.sparse.*} keywords will extract each sparse file
 sparse.texi(,230) in its condensed form with the file map prepended and will place it
 sparse.texi(,231) into a separate directory.  Then, using a simple program it would be
-sparse.texi(GNUTAR,232) possible to expand the file to its original form even without sparse.texi(GNUTAR,232) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,232) .
+sparse.texi(GNUTAR,232) possible to expand the file to its original form even without sparse.texi(GNUTAR,232) @acronym{GNU} @command{tar}.
 sparse.texi(,233) @xref{Sparse Recovery}, for the detailed information on how to extract
-sparse.texi(GNUTAR,234) sparse members without sparse.texi(GNUTAR,234) @acronym{GNU} @command{tar}sparse.texi(GNUTAR,234) .
+sparse.texi(GNUTAR,234) sparse members without sparse.texi(GNUTAR,234) @acronym{GNU} @command{tar}.
 sparse.texi(,235)  
 intern.texi(,327) 
 intern.texi(,328) @node Snapshot Files
@@ -12491,9 +12450,9 @@ snapshot.texi(,8) incremental backups (@pxref{Incremental Dumps}).  It
 snapshot.texi(,9) contains the status of the filesystem at the time of the dump and is
 snapshot.texi(,10) used to determine which files were modified since the last backup.
 snapshot.texi(,11) 
-snapshot.texi(GNUTAR,12)   snapshot.texi(GNUTAR,12) @acronym{GNU} @command{tar}snapshot.texi(GNUTAR,12)  version 1.15.92 supports two snapshot file
+snapshot.texi(GNUTAR,12)   snapshot.texi(GNUTAR,12) @acronym{GNU} @command{tar} version 1.15.92 supports two snapshot file
 snapshot.texi(,13) formats.  The first format, called @dfn{format 0}, is the one used by
-snapshot.texi(GNUTAR,14) @acronym{GNU} @command{tar}snapshot.texi(GNUTAR,14)  versions up to 1.15.1. The second format, called @dfn{format
+snapshot.texi(GNUTAR,14) @acronym{GNU} @command{tar} versions up to 1.15.1. The second format, called @dfn{format
 snapshot.texi(,15) 1} is an extended version of this format, that contains more metadata
 snapshot.texi(,16) and allows for further extensions.
 snapshot.texi(,17) 
@@ -12520,7 +12479,7 @@ snapshot.texi(,37) @samp{GNU tar-}@var{tar-version}@samp{-}@var{incr-format-vers
 snapshot.texi(,38) @end smallexample
 snapshot.texi(,39) 
 snapshot.texi(,40) @noindent
-snapshot.texi(GNUTAR,41) where @var{tar-version} is the version of snapshot.texi(GNUTAR,41) @acronym{GNU} @command{tar}snapshot.texi(GNUTAR,41)  implementation
+snapshot.texi(GNUTAR,41) where @var{tar-version} is the version of snapshot.texi(GNUTAR,41) @acronym{GNU} @command{tar} implementation
 snapshot.texi(,42) that created this snapshot, and @var{incr-format-version} is the
 snapshot.texi(,43) version number of the snapshot format (in this case @samp{1}).
 snapshot.texi(,44) 
@@ -12642,7 +12601,7 @@ dumpdir.texi(,90) @end enumerate
 dumpdir.texi(,91) 
 dumpdir.texi(,92)   This case cannot be handled by three successive renames, since
 dumpdir.texi(,93) renaming @file{a} to @file{b} will destroy existing directory.
-dumpdir.texi(GNUTAR,94) To handle such case a temporary directory is required. dumpdir.texi(GNUTAR,94) @acronym{GNU} @command{tar}dumpdir.texi(GNUTAR,94) 
+dumpdir.texi(GNUTAR,94) To handle such case a temporary directory is required. dumpdir.texi(GNUTAR,94) @acronym{GNU} @command{tar}
 dumpdir.texi(,95) will create the following dumpdir (newlines have been added for
 dumpdir.texi(,96) readability): 
 dumpdir.texi(,97) 
@@ -13567,7 +13526,7 @@ tar.texi(,10794)
 tar.texi(,10795) @node Index of Command Line Options
 tar.texi(,10796) @appendix Index of Command Line Options
 tar.texi(,10797) 
-tar.texi(GNUTAR,10798) This appendix contains an index of all tar.texi(GNUTAR,10798) @acronym{GNU} @command{tar}tar.texi(GNUTAR,10798)  long command line
+tar.texi(GNUTAR,10798) This appendix contains an index of all tar.texi(GNUTAR,10798) @acronym{GNU} @command{tar} long command line
 tar.texi(,10799) options. The options are listed without the preceeding double-dash.
 tar.texi(,10800) For a cross-reference of short command line options, @ref{Short Option Summary}.
 tar.texi(,10801) 

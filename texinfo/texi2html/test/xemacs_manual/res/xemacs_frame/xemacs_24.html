@@ -163,8 +163,8 @@ example, in C mode &lt;TAB&gt; is bound to <code>c-indent-line</code>.  &lt;LFD&
 is normally defined to do &lt;RET&gt; followed by &lt;TAB&gt;; thus it, too,
 indents in a mode-specific fashion.
 </p>
-<a name="IDX889"></a>
-<a name="IDX890"></a>
+<a name="index-DEL-1"></a>
+<a name="index-backward_002ddelete_002dchar_002duntabify"></a>
 <p>  In most programming languages, indentation is likely to vary from line to
 line.  So the major modes for those languages rebind &lt;DEL&gt; to treat a
 tab as if it were the equivalent number of spaces (using the command
@@ -178,13 +178,13 @@ blank lines, so that the paragraph commands remain useful.  Auto Fill mode,
 if enabled in a programming language major mode, indents the new lines
 which it creates.
 </p>
-<a name="IDX891"></a>
-<a name="IDX892"></a>
-<a name="IDX893"></a>
-<a name="IDX894"></a>
-<a name="IDX895"></a>
-<a name="IDX896"></a>
-<a name="IDX897"></a>
+<a name="index-mode-hook"></a>
+<a name="index-c_002dmode_002dhook"></a>
+<a name="index-lisp_002dmode_002dhook"></a>
+<a name="index-emacs_002dlisp_002dmode_002dhook"></a>
+<a name="index-lisp_002dinteraction_002dmode_002dhook"></a>
+<a name="index-scheme_002dmode_002dhook"></a>
+<a name="index-muddle_002dmode_002dhook"></a>
 <p>  Turning on a major mode calls a user-supplied function called the
 <em>mode hook</em>, which is the value of a Lisp variable.  For example,
 turning on C mode calls the value of the variable <code>c-mode-hook</code> if
@@ -222,9 +222,9 @@ are usually thought of as pertaining to expressions in programming
 languages, but can be useful with any language in which some sort of
 parentheses exist (including English).
 </p>
-<a name="IDX898"></a>
-<a name="IDX899"></a>
-<a name="IDX900"></a>
+<a name="index-list"></a>
+<a name="index-sexp"></a>
+<a name="index-expression"></a>
 <p>  The commands fall into two classes.  Some commands deal only with
 <em>lists</em> (parenthetical groupings).  They see nothing except
 parentheses, brackets, braces (depending on what must balance in the
@@ -283,10 +283,10 @@ has bothered to make Emacs understand properly.
 </p></dd>
 </dl>
 
-<a name="IDX901"></a>
-<a name="IDX902"></a>
-<a name="IDX903"></a>
-<a name="IDX904"></a>
+<a name="index-C_002dM_002df"></a>
+<a name="index-C_002dM_002db"></a>
+<a name="index-forward_002dsexp"></a>
+<a name="index-backward_002dsexp"></a>
 <p>  To move forward over an sexp, use <kbd>C-M-f</kbd> (<code>forward-sexp</code>).  If
 the first significant character after point is an opening delimiter
 (&lsquo;<samp>(</samp>&rsquo; in Lisp; &lsquo;<samp>(</samp>&rsquo;, &lsquo;<samp>[</samp>&rsquo;, or &lsquo;<samp>{</samp>&rsquo; in C), <kbd>C-M-f</kbd>
@@ -314,15 +314,15 @@ is very difficult to ignore comments when parsing backwards; therefore,
 in such languages the sexp commands treat the text of comments as if it
 were code.
 </p>
-<a name="IDX905"></a>
-<a name="IDX906"></a>
+<a name="index-C_002dM_002dk"></a>
+<a name="index-kill_002dsexp"></a>
 <p>  Killing an sexp at a time can be done with <kbd>C-M-k</kbd> (<code>kill-sexp</code>).
 <kbd>C-M-k</kbd> kills the characters that <kbd>C-M-f</kbd> would move over.
 </p>
-<a name="IDX907"></a>
-<a name="IDX908"></a>
-<a name="IDX909"></a>
-<a name="IDX910"></a>
+<a name="index-C_002dM_002dn"></a>
+<a name="index-C_002dM_002dp"></a>
+<a name="index-forward_002dlist"></a>
+<a name="index-backward_002dlist"></a>
 <p>  The <em>list commands</em>, <kbd>C-M-n</kbd> (<code>forward-list</code>) and
 <kbd>C-M-p</kbd> (<code>backward-list</code>), move over lists like the sexp
 commands but skip over any number of other kinds of sexps (symbols,
@@ -330,10 +330,10 @@ strings, etc).  In some situations, these commands are useful because
 they usually ignore comments, since the comments usually do not contain
 any lists.
 </p>
-<a name="IDX911"></a>
-<a name="IDX912"></a>
-<a name="IDX913"></a>
-<a name="IDX914"></a>
+<a name="index-C_002dM_002du"></a>
+<a name="index-C_002dM_002dd"></a>
+<a name="index-backward_002dup_002dlist"></a>
+<a name="index-down_002dlist"></a>
 <p>  <kbd>C-M-n</kbd> and <kbd>C-M-p</kbd> stay at the same level in parentheses, when
 that is possible.  To move <i>up</i> one (or <var>n</var>) levels, use <kbd>C-M-u</kbd>
 (<code>backward-up-list</code>).
@@ -347,17 +347,17 @@ up one or more levels.
 delimiter, this is nearly the same as searching for a &lsquo;<samp>(</samp>&rsquo;.  An
 argument specifies the number of levels of parentheses to go down.
 </p>
-<a name="IDX915"></a>
-<a name="IDX916"></a>
-<a name="IDX917"></a>
+<a name="index-transposition-2"></a>
+<a name="index-C_002dM_002dt-1"></a>
+<a name="index-transpose_002dsexps-1"></a>
 <p><kbd>C-M-t</kbd> (<code>transpose-sexps</code>) drags the previous sexp across
 the next one.  An argument serves as a repeat count, and a negative
 argument drags backwards (thus canceling out the effect of <kbd>C-M-t</kbd> with
 a positive argument).  An argument of zero, rather than doing nothing,
 transposes the sexps ending after point and the mark.
 </p>
-<a name="IDX918"></a>
-<a name="IDX919"></a>
+<a name="index-C_002dM_002d_0040-1"></a>
+<a name="index-mark_002dsexp-1"></a>
 <p>  To make the region be the next sexp in the buffer, use <kbd>C-M-@</kbd>
 (<code>mark-sexp</code>) which sets the mark at the same place that
 <kbd>C-M-f</kbd> would move to.  <kbd>C-M-@</kbd> takes arguments like
@@ -411,12 +411,12 @@ function definition is a defun.
 </p></dd>
 </dl>
 
-<a name="IDX920"></a>
-<a name="IDX921"></a>
-<a name="IDX922"></a>
-<a name="IDX923"></a>
-<a name="IDX924"></a>
-<a name="IDX925"></a>
+<a name="index-C_002dM_002da"></a>
+<a name="index-C_002dM_002de"></a>
+<a name="index-C_002dM_002dh-1"></a>
+<a name="index-beginning_002dof_002ddefun"></a>
+<a name="index-end_002dof_002ddefun"></a>
+<a name="index-mark_002ddefun-1"></a>
 <p>  The commands to move to the beginning and end of the current defun are
 <kbd>C-M-a</kbd> (<code>beginning-of-defun</code>) and <kbd>C-M-e</kbd> (<code>end-of-defun</code>).
 </p>
@@ -428,7 +428,7 @@ to a different place.  In C mode, <kbd>C-M-h</kbd> runs the function
 but which backs up over the argument declarations, function name, and
 returned data type so that the entire C function is inside the region.
 </p>
-<a name="IDX926"></a>
+<a name="index-compile_002ddefun"></a>
 <p>To compile and evaluate the current defun, use <kbd>M-x compile-defun</kbd>. 
 This function prints the results in the minibuffer. If you include an 
 argument, it inserts the value in the current buffer after the defun.
@@ -519,9 +519,9 @@ all of the lines inside a single parenthetical grouping.
 </p></dd>
 </dl>
 
-<a name="IDX927"></a>
-<a name="IDX928"></a>
-<a name="IDX929"></a>
+<a name="index-TAB-3"></a>
+<a name="index-c_002dindent_002dline"></a>
+<a name="index-lisp_002dindent_002dline"></a>
 <p>  The basic indentation command is &lt;TAB&gt;, which gives the current
 line the correct indentation as determined from the previous lines.  The
 function that &lt;TAB&gt; runs depends on the major mode; it is
@@ -536,8 +536,8 @@ leaves point fixed with respect to the characters around it.
 </p>
 <p>  Use <kbd>C-q &lt;TAB&gt;</kbd> to insert a tab at point.
 </p>
-<a name="IDX930"></a>
-<a name="IDX931"></a>
+<a name="index-LFD-1"></a>
+<a name="index-newline_002dand_002dindent"></a>
 <p>  When entering a large amount of new code, use &lt;LFD&gt;
 (<code>newline-and-indent</code>), which is equivalent to a &lt;RET&gt; followed
 by a &lt;TAB&gt;.  &lt;LFD&gt; creates a blank line, then gives it the
@@ -596,9 +596,9 @@ is properly indented.
 </p></dd>
 </dl>
 
-<a name="IDX932"></a>
-<a name="IDX933"></a>
-<a name="IDX934"></a>
+<a name="index-C_002dM_002dq"></a>
+<a name="index-indent_002dsexp"></a>
+<a name="index-indent_002dc_002dexp"></a>
 <p> To re-indent the contents of a single list, position point before the
 beginning of it and type <kbd>C-M-q</kbd>. This key is bound to
 <code>indent-sexp</code> in Lisp mode, <code>indent-c-exp</code> in C mode, and
@@ -607,7 +607,7 @@ the line the sexp starts on is not changed; therefore, only the relative
 indentation within the list, and not its position, is changed.  To
 correct the position as well, type a &lt;TAB&gt; before <kbd>C-M-q</kbd>.
 </p>
-<a name="IDX935"></a>
+<a name="index-C_002du-TAB"></a>
 <p>  If the relative indentation within a list is correct but the
 indentation of its beginning is not, go to the line on which the list
 begins and type <kbd>C-u &lt;TAB&gt;</kbd>.  When you give &lt;TAB&gt; a numeric
@@ -616,8 +616,8 @@ line, sideways the same amount that the current line moves.  The command
 does not move lines that start inside strings, or C
 preprocessor lines when in C mode.
 </p>
-<a name="IDX936"></a>
-<a name="IDX937"></a>
+<a name="index-C_002dM_002d_005c-1"></a>
+<a name="index-indent_002dregion-1"></a>
 <p>  Another way to specify a range to be re-indented is with point and
 mark.  The command <kbd>C-M-\</kbd> (<code>indent-region</code>) applies &lt;TAB&gt;
 to every line whose first character is between point and mark.
@@ -654,13 +654,13 @@ line as the beginning of the expression; otherwise, the second line is
 indented underneath the function name.  Each following line is indented
 under the previous line whose nesting depth is the same.
 </p>
-<a name="IDX938"></a>
+<a name="index-lisp_002dindent_002doffset"></a>
 <p>  If the variable <code>lisp-indent-offset</code> is non-<code>nil</code>, it overrides
 the usual indentation pattern for the second line of an expression, so that
 such lines are always indented <code>lisp-indent-offset</code> more columns than
 the containing list.
 </p>
-<a name="IDX939"></a>
+<a name="index-lisp_002dbody_002dindention"></a>
 <p>  Certain functions override the standard pattern.  Functions
 whose names start with <code>def</code> always indent the second line by
 <code>lisp-body-indention</code> extra columns beyond the open-parenthesis
@@ -741,12 +741,12 @@ until the end of the list.
 
 <p>  Two variables control which commands perform C indentation and when.
 </p>
-<a name="IDX940"></a>
+<a name="index-c_002dauto_002dnewline"></a>
 <p>  If <code>c-auto-newline</code> is non-<code>nil</code>, newlines are inserted both
 before and after braces that you insert and after colons and semicolons.
 Correct C indentation is done on all the lines that are made this way.
 </p>
-<a name="IDX941"></a>
+<a name="index-c_002dtab_002dalways_002dindent"></a>
 <p>  If <code>c-tab-always-indent</code> is non-<code>nil</code>, the &lt;TAB&gt; command
 in C mode does indentation only if point is at the left margin or within
 the line&rsquo;s indentation.  If there is non-whitespace to the left of point,
@@ -786,7 +786,7 @@ to the right of the start of its line.
 </p></dd>
 </dl>
 
-<a name="IDX942"></a>
+<a name="index-c_002dindent_002dlevel"></a>
 <p>  The variable <code>c-indent-level</code> controls the indentation for C
 statements with respect to the surrounding block.  In the example:
 </p>
@@ -810,7 +810,7 @@ line, not the column of the open-brace.  For example,
 in this way.  Another popular style prefers to put the open-brace on a
 separate line.
 </p>
-<a name="IDX943"></a>
+<a name="index-c_002dbrace_002dimaginary_002doffset"></a>
 <p>  In fact, the value of the variable <code>c-brace-imaginary-offset</code> is
 also added to the indentation of such a statement.  Normally this variable
 is zero.  Think of this variable as the imaginary position of the open
@@ -830,7 +830,7 @@ those braces are not placed at column zero.  Instead,
 below) are added to produce a typical offset between brace levels, and
 the statements are indented that far.
 </p>
-<a name="IDX944"></a>
+<a name="index-c_002dcontinued_002dstatement_002doffset"></a>
 <p>  <code>c-continued-statement-offset</code> controls the extra indentation for
 a line that starts within a statement (but not within parentheses or
 brackets).  These lines are usually statements inside other statements,
@@ -846,7 +846,7 @@ parameter determines the difference in indentation between the two lines in:
 popular indentation styles correspond to a value of zero for
 <code>c-continued-statement-offset</code>.
 </p>
-<a name="IDX945"></a>
+<a name="index-c_002dbrace_002doffset"></a>
 <p>  <code>c-brace-offset</code> is the extra indentation given to a line that
 starts with an open-brace.  Its standard value is zero;
 compare:
@@ -867,7 +867,7 @@ compare:
       {
 </pre></td></tr></table>
 
-<a name="IDX946"></a>
+<a name="index-c_002dargdecl_002dindent"></a>
 <p>  <code>c-argdecl-indent</code> controls the indentation of declarations of the
 arguments of a C function.  It is absolute: argument declarations receive
 exactly <code>c-argdecl-indent</code> spaces.  The standard value is 5 and
@@ -879,7 +879,7 @@ index (string, char)
      int char;
 </pre></td></tr></table>
 
-<a name="IDX947"></a>
+<a name="index-c_002dlabel_002doffset"></a>
 <p>  <code>c-label-offset</code> is the extra indentation given to a line that
 contains a label, a case statement, or a <code>default:</code> statement.  Its
 standard value is -2 and results in code like this:
@@ -942,8 +942,8 @@ mode.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 in &lsquo;<samp>[x)</samp>&rsquo;&mdash;the echo area displays a warning message.  The
 correct matches are specified in the syntax table.
 </p>
-<a name="IDX948"></a>
-<a name="IDX949"></a>
+<a name="index-blink_002dmatching_002dparen"></a>
+<a name="index-blink_002dmatching_002dparen_002ddistance"></a>
 <p>  Two variables control parenthesis matching displays.
 <code>blink-matching-paren</code> turns the feature on or off. The default is 
 <code>t</code> (match display is on); <code>nil</code> turns it off.
@@ -1030,8 +1030,8 @@ is indented like a line of code.
 <p>  Even when an existing comment is properly aligned, <kbd>M-;</kbd> is still
 useful for moving directly to the start of the comment.
 </p>
-<a name="IDX950"></a>
-<a name="IDX951"></a>
+<a name="index-C_002du-_002d-C_002dx-_003b"></a>
+<a name="index-kill_002dcomment"></a>
 <p>  <kbd>C-u - C-x ;</kbd> (<code>kill-comment</code>) kills the comment on the
 current line, if there is one.  The indentation before the start of the
 comment is killed as well.  If there does not appear to be a comment in
@@ -1105,7 +1105,7 @@ affects only the current buffer.  You can also change the default value.
 See section <a href="xemacs_30.html#Locals">Local Variables</a>.  Many major modes initialize this variable
 for the current buffer.
 </p>
-<a name="IDX952"></a>
+<a name="index-comment_002dstart_002dskip"></a>
 <p>  The comment commands recognize comments based on the regular expression
 that is the value of the variable <code>comment-start-skip</code>.  This regexp
 should not match the null string.  It may match more than the comment
@@ -1115,15 +1115,15 @@ stars and spaces after the &lsquo;<samp>/*</samp>&rsquo; itself.  (Note that &ls
 needed in Lisp syntax to include a &lsquo;<samp>\</samp>&rsquo; in the string, which is needed
 to deny the first star its special meaning in regexp syntax.  See section <a href="xemacs_15.html#Regexps">Syntax of Regular Expressions</a>.)
 </p>
-<a name="IDX953"></a>
-<a name="IDX954"></a>
+<a name="index-comment_002dstart"></a>
+<a name="index-comment_002dend"></a>
 <p>  When a comment command makes a new comment, it inserts the value of
 <code>comment-start</code> to begin it.  The value of <code>comment-end</code> is
 inserted after point and will follow the text you will insert
 into the comment.  In C mode, <code>comment-start</code> has the value
 <code>&quot;/* &quot;</code> and <code>comment-end</code> has the value <code>&quot; */&quot;</code>.
 </p>
-<a name="IDX955"></a>
+<a name="index-comment_002dmulti_002dline"></a>
 <p>  <code>comment-multi-line</code> controls how <kbd>M-&lt;LFD&gt;</kbd>
 (<code>indent-new-comment-line</code>) behaves when used inside a comment.  If
 <code>comment-multi-line</code> is <code>nil</code>, as it normally is, then
@@ -1135,7 +1135,7 @@ is done by not inserting a terminator on the old line and not inserting
 a starter on the new line.  In languages where multi-line comments are legal,
 the value you choose for this variable is a matter of taste.
 </p>
-<a name="IDX956"></a>
+<a name="index-comment_002dindent_002dhook"></a>
 <p>  The variable <code>comment-indent-hook</code> should contain a function that
 is called to compute the indentation for a newly inserted comment or for
 aligning an existing comment.  Major modes set this variable differently.
@@ -1177,10 +1177,10 @@ comment and on the code in the preceding lines.
 </p></dd>
 </dl>
 
-<a name="IDX957"></a>
-<a name="IDX958"></a>
-<a name="IDX959"></a>
-<a name="IDX960"></a>
+<a name="index-M_002d_0028"></a>
+<a name="index-M_002d_0029"></a>
+<a name="index-insert_002dparentheses"></a>
+<a name="index-move_002dover_002dclose_002dand_002dreindent"></a>
 <p>  The commands <kbd>M-(</kbd> (<code>insert-parentheses</code>) and <kbd>M-)</kbd>
 (<code>move-over-close-and-reindent</code>) are designed to facilitate a style of
 editing which keeps parentheses balanced at all times.  <kbd>M-(</kbd> inserts a
@@ -1216,8 +1216,8 @@ there is none), and indents with &lt;LFD&gt; after it.
 <p>   Completion usually happens in the minibuffer.  An exception is
 completion for Lisp symbol names, which is available in all buffers.
 </p>
-<a name="IDX961"></a>
-<a name="IDX962"></a>
+<a name="index-M_002dTAB"></a>
+<a name="index-lisp_002dcomplete_002dsymbol"></a>
 <p>  The command <kbd>M-&lt;TAB&gt;</kbd> (<code>lisp-complete-symbol</code>) takes the
 partial Lisp symbol before point to be an abbreviation, and compares it
 against all non-trivial Lisp symbols currently known to Emacs.  Any
@@ -1266,7 +1266,7 @@ the code in the neighborhood of point.  <kbd>C-h f</kbd> sets the default to the
 function called in the innermost list containing point.  <kbd>C-h v</kbd> uses
 the symbol name around or adjacent to point as its default.
 </p>
-<a name="IDX963"></a>
+<a name="index-manual_002dentry"></a>
 <p>  The <kbd>M-x manual-entry</kbd> command gives you access to documentation
 on Unix commands, system calls, and libraries.  The command reads a
 topic as an argument, and displays the Unix manual page for that topic. 
@@ -1389,10 +1389,10 @@ normally include all functions and subroutines, and may also include
 global variables, data types, and anything else convenient.  Each name
 recorded is called a <em>tag</em>.
 </p>
-<a name="IDX964"></a>
-<a name="IDX965"></a>
-<a name="IDX966"></a>
-<a name="IDX967"></a>
+<a name="index-C_002b_002b-class-browser_002c-tags"></a>
+<a name="index-tags_002c-C_002b_002b"></a>
+<a name="index-class-browser_002c-C_002b_002b"></a>
+<a name="index-Ebrowse"></a>
 <p>The Ebrowse is a separate facility tailored for C++, with tags and a
 class browser.  See <a href="../ebrowse/index.html#Top">(ebrowse)Top</a> section &lsquo;Top&rsquo; in <cite>Ebrowse User&rsquo;s Manual</cite>.
 </p>
@@ -1721,7 +1721,7 @@ expressions, &lsquo;<samp>\</samp>&rsquo; quotes the next character, and &lsquo;
 for the tab character.  Note that <code>etags</code> does not handle the other
 C escape sequences for special characters.
 </p>
-<a name="IDX968"></a>
+<a name="index-interval-operator-_0028in-regexps_0029"></a>
 <p>  The syntax of regular expressions in <code>etags</code> is the same as in
 Emacs, augmented with the <em>interval operator</em>, which works as in
 <code>grep</code> and <code>ed</code>.  The syntax of an interval operator is
@@ -1913,13 +1913,13 @@ in question, then that tags file will always be used as well (after the
 will apply to all buffers (for backwards compatibility.)  It is searched
 first.
 </p>
-<a name="IDX969"></a>
+<a name="index-tags_002dalways_002dbuild_002dcompletion_002dtable"></a>
 <p>If the value of the variable <code>tags-always-build-completion-table</code>
 is <code>t</code>, the tags file will always be added to the completion table
 without asking first, regardless of the size of the tags file.
 </p>
-<a name="IDX970"></a>
-<a name="IDX971"></a>
+<a name="index-tags_002dfile_002dname"></a>
+<a name="index-visit_002dtags_002dtable"></a>
 <p>The function <kbd>M-x visit-tags-table</kbd>, is largely made obsolete by
 the variable <code>tag-table-alist</code>, tells tags commands to use the tags
 table file <var>file</var> first.  The <var>file</var> should be the name of a
@@ -1970,8 +1970,8 @@ the definition of a specific tag.
 </p></dd>
 </dl>
 
-<a name="IDX972"></a>
-<a name="IDX973"></a>
+<a name="index-M_002d_002e"></a>
+<a name="index-find_002dtag"></a>
 <p>  <kbd>M-.</kbd> (<code>find-tag</code>) is the command to find the definition of
 a specified tag.  It searches through the tags table for that tag, as a
 string, then uses the tags table information to determine the file in
@@ -2002,12 +2002,12 @@ Multiple active tags tables and completion are supported.
 </p>
 <p>Variables of note include the following:
 </p>
-<a name="IDX974"></a>
-<a name="IDX975"></a>
-<a name="IDX976"></a>
-<a name="IDX977"></a>
-<a name="IDX978"></a>
-<a name="IDX979"></a>
+<a name="index-tag_002dtable_002dalist"></a>
+<a name="index-tags_002dfile_002dname-1"></a>
+<a name="index-tags_002dbuild_002dcompletion_002dtable"></a>
+<a name="index-buffer_002dtag_002dtable"></a>
+<a name="index-make_002dtags_002dfiles_002dinvisible"></a>
+<a name="index-tag_002dmark_002dstack_002dmax"></a>
 
 <dl compact="compact">
 <dt> <kbd>tag-table-alist</kbd></dt>
@@ -2030,8 +2030,8 @@ Multiple active tags tables and completion are supported.
 </p></dd>
 </dl>
 
-<a name="IDX980"></a>
-<a name="IDX981"></a>
+<a name="index-C_002dx-4-_002e"></a>
+<a name="index-find_002dtag_002dother_002dwindow-1"></a>
 <p>  Like most commands that can switch buffers, <code>find-tag</code> has another
 similar command that displays the new buffer in another window.  <kbd>C-x 4
 .</kbd> invokes the function <code>find-tag-other-window</code>.  (This key sequence
@@ -2083,21 +2083,21 @@ table.
 </p></dd>
 </dl>
 
-<a name="IDX982"></a>
+<a name="index-tags_002dsearch"></a>
 <p>  <kbd>M-x tags-search</kbd> reads a regexp using the minibuffer, then
 searches for matches in all the files in the selected tags table, one
 file at a time.  It displays the name of the file being searched so you
 can follow its progress.  As soon as it finds an occurrence,
 <code>tags-search</code> returns.
 </p>
-<a name="IDX983"></a>
-<a name="IDX984"></a>
+<a name="index-M_002d_002c"></a>
+<a name="index-tags_002dloop_002dcontinue"></a>
 <p>  Having found one match, you probably want to find all the rest.  To find
 one more match, type <kbd>M-,</kbd> (<code>tags-loop-continue</code>) to resume the
 <code>tags-search</code>.  This searches the rest of the current buffer, followed
 by the remaining files of the tags table.
 </p>
-<a name="IDX985"></a>
+<a name="index-tags_002dquery_002dreplace"></a>
 <p>  <kbd>M-x tags-query-replace</kbd> performs a single
 <code>query-replace-regexp</code> through all the files in the tags table.  It
 reads a regexp to search for and a string to replace with, just like
@@ -2175,7 +2175,7 @@ file in the tags table and prepare to advance sequentially by files.
 </p></dd>
 </dl>
 
-<a name="IDX986"></a>
+<a name="index-list_002dtags"></a>
 <p>  <kbd>M-x list-tags</kbd> reads the name of one of the files described by the
 selected tags table, and displays a list of all the tags defined in that
 file.  The &ldquo;file name&rdquo; argument is really just a string to compare
@@ -2185,7 +2185,7 @@ available, and you must enter the string the same way it appears in the tag
 table.  Do not include a directory as part of the file name unless the file
 name recorded in the tags table contains that directory.
 </p>
-<a name="IDX987"></a>
+<a name="index-tags_002dapropos"></a>
 <p>  <kbd>M-x tags-apropos</kbd> is like <code>apropos</code> for tags.  It reads a regexp,
 then finds all the tags in the selected tags table whose entries match that
 regexp, and displays the tag names found.
@@ -2220,7 +2220,7 @@ unlike those of other languages.
 </p>
 <p>  Built-in abbrevs optionally save typing when you insert Fortran keywords.
 </p>
-<a name="IDX988"></a>
+<a name="index-fortran_002dmode"></a>
 <p>  Use <kbd>M-x fortran-mode</kbd> to switch to this major mode.  Doing so calls
 the value of <code>fortran-mode-hook</code> as a function of no arguments if
 that variable has a non-<code>nil</code> value.
@@ -2265,16 +2265,16 @@ that variable has a non-<code>nil</code> value.
 and subroutines) and by statements.  There is also a command to put the
 region around one subprogram, which is convenient for killing it or moving it.
 </p>
-<a name="IDX989"></a>
-<a name="IDX990"></a>
-<a name="IDX991"></a>
-<a name="IDX992"></a>
-<a name="IDX993"></a>
-<a name="IDX994"></a>
-<a name="IDX995"></a>
-<a name="IDX996"></a>
-<a name="IDX997"></a>
-<a name="IDX998"></a>
+<a name="index-C_002dM_002da-_0028Fortran-mode_0029"></a>
+<a name="index-C_002dM_002de-_0028Fortran-mode_0029"></a>
+<a name="index-C_002dM_002dh-_0028Fortran-mode_0029"></a>
+<a name="index-C_002dc-C_002dp-_0028Fortran-mode_0029"></a>
+<a name="index-C_002dc-C_002dn-_0028Fortran-mode_0029"></a>
+<a name="index-beginning_002dof_002dfortran_002dsubprogram"></a>
+<a name="index-end_002dof_002dfortran_002dsubprogram"></a>
+<a name="index-mark_002dfortran_002dsubprogram"></a>
+<a name="index-fortran_002dprevious_002dstatement"></a>
+<a name="index-fortran_002dnext_002dstatement"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-M-a</kbd></dt>
@@ -2369,20 +2369,20 @@ required for standard Fortran.
 </p></dd>
 </dl>
 
-<a name="IDX999"></a>
+<a name="index-fortran_002dindent_002dline"></a>
 <p>  &lt;TAB&gt; is redefined by Fortran mode to reindent the current line for
 Fortran (<code>fortran-indent-line</code>).  Line numbers and continuation
 markers are indented to their required columns, and the body of the
 statement is independently indented, based on its nesting in the program.
 </p>
-<a name="IDX1000"></a>
-<a name="IDX1001"></a>
+<a name="index-C_002dM_002dq-_0028Fortran-mode_0029"></a>
+<a name="index-fortran_002dindent_002dsubprogram"></a>
 <p>  The key <kbd>C-M-q</kbd> is redefined as <code>fortran-indent-subprogram</code>, a
 command that reindents all the lines of the Fortran subprogram (function or
 subroutine) containing point.
 </p>
-<a name="IDX1002"></a>
-<a name="IDX1003"></a>
+<a name="index-M_002dLFD-_0028Fortran-mode_0029"></a>
+<a name="index-fortran_002dsplit_002dline"></a>
 <p>  The key <kbd>M-&lt;LFD&gt;</kbd> is redefined as <code>fortran-split-line</code>, a
 command to split a line in the appropriate fashion for Fortran.  In a
 non-comment line, the second half becomes a continuation line and is
@@ -2418,7 +2418,7 @@ If the text begins with any non whitespace character in column 5, it is
 assumed to be an unconventional continuation marker and remains in column
 5.
 </p>
-<a name="IDX1004"></a>
+<a name="index-fortran_002dline_002dnumber_002dindent"></a>
 <p>  Line numbers of four digits or less are normally indented one space.
 This amount is controlled by the variable <code>fortran-line-number-indent</code>,
 which is the maximum indentation a line number can have.  Line numbers
@@ -2426,7 +2426,7 @@ are indented to right-justify them to end in column 4 unless that would
 require more than the maximum indentation.  The default value of the
 variable is 1.
 </p>
-<a name="IDX1005"></a>
+<a name="index-fortran_002delectric_002dline_002dnumber"></a>
 <p>  Simply inserting a line number is enough to indent it according to these
 rules.  As each digit is inserted, the indentation is recomputed.  To turn
 off this feature, set the variable <code>fortran-electric-line-number</code> to
@@ -2457,7 +2457,7 @@ off this feature, set the variable <code>fortran-electric-line-number</code> to
 the task of understanding a Fortran program well enough to indent it
 properly:
 </p>
-<a name="IDX1006"></a>
+<a name="index-fortran_002dcontinuation_002dchar"></a>
 <ul>
 <li>
 Two nested &lsquo;<samp>do</samp>&rsquo; loops never share a &lsquo;<samp>continue</samp>&rsquo; statement.
@@ -2590,8 +2590,8 @@ appear in column zero.  What can be aligned is the text within the
 comment.  You can choose from three styles of alignment by setting the
 variable <code>fortran-comment-indent-style</code> to one of these values:
 </p>
-<a name="IDX1007"></a>
-<a name="IDX1008"></a>
+<a name="index-fortran_002dcomment_002dindent_002dstyle"></a>
+<a name="index-fortran_002dcomment_002dline_002dcolumn"></a>
 <dl compact="compact">
 <dt> <code>fixed</code></dt>
 <dd><p>The text is aligned at a fixed column, which is the value of
@@ -2606,13 +2606,13 @@ additional <code>fortran-comment-line-column</code> columns of indentation.
 </p></dd>
 </dl>
 
-<a name="IDX1009"></a>
+<a name="index-fortran_002dcomment_002dindent_002dchar"></a>
 <p>  You can also specify the character to be used to indent within
 full-line comments by setting the variable <code>fortran-comment-indent-char</code>
 to the character you want to use.
 </p>
-<a name="IDX1010"></a>
-<a name="IDX1011"></a>
+<a name="index-comment_002dline_002dstart"></a>
+<a name="index-comment_002dline_002dstart_002dskip"></a>
 <p>  Fortran mode introduces two variables <code>comment-line-start</code> and
 <code>comment-line-start-skip</code>, which do for full-line comments what
 <code>comment-start</code> and <code>comment-start-skip</code> do for
@@ -2623,9 +2623,9 @@ Fortran mode, so you do not need to change them.
 It can therefore be used if you use &lsquo;<samp>!</samp>&rsquo; comments, but is useless in
 Fortran mode otherwise. 
 </p>
-<a name="IDX1012"></a>
-<a name="IDX1013"></a>
-<a name="IDX1014"></a>
+<a name="index-C_002dc-_003b-_0028Fortran-mode_0029"></a>
+<a name="index-fortran_002dcomment_002dregion"></a>
+<a name="index-fortran_002dcomment_002dregion-1"></a>
 <p>  The command <kbd>C-c ;</kbd> (<code>fortran-comment-region</code>) turns all the
 lines of the region into comments by inserting the string &lsquo;<samp>C$$$</samp>&rsquo; at
 the front of each one.  With a numeric arg, the region is turned back into
@@ -2668,8 +2668,8 @@ This may help you avoid going over that limit (<code>fortran-window-create</code
 </p></dd>
 </dl>
 
-<a name="IDX1015"></a>
-<a name="IDX1016"></a>
+<a name="index-C_002dc-C_002dr-_0028Fortran-mode_0029"></a>
+<a name="index-fortran_002dcolumn_002druler"></a>
 <p>  The command <kbd>C-c C-r</kbd> (<code>fortran-column-ruler</code>) shows a column
 ruler above the current line.  The comment ruler consists of two lines
 of text that show you the locations of columns with special significance
@@ -2685,8 +2685,8 @@ actual positions in the line are standard Fortran.
 <code>fortran-comment-ruler</code>.  By changing this variable, you can change
 the display.
 </p>
-<a name="IDX1017"></a>
-<a name="IDX1018"></a>
+<a name="index-C_002dc-C_002dw-_0028Fortran-mode_0029"></a>
+<a name="index-fortran_002dwindow_002dcreate"></a>
 <p>  For even more help, use <kbd>C-c C-w</kbd> (<code>fortran-window-create</code>), a
 command which splits the current window horizontally, resulting in a window 72
 columns wide.  When you edit in this window, you can immediately see

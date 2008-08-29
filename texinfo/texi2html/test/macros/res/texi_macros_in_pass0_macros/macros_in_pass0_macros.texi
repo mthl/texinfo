@@ -1,0 +1,79 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename macros_in_pass0_macros.info
+
+@node Top
+@top macro in index commands
+
+
+@syncodeindex cp fn
+@syncodeindex cp fn
+
+
+documentlanguage @documentlanguage  en   
+
+documentlanguage on its line
+@documentlanguage  en  
+line following documentlanguage
+
+
+definedx truc
+@defindex truc
+after
+
+
+@trucindex index truc
+
+
+@defcodeindex codeidx
+
+
+@codeidxindex a @var{index entry} t@'e @^{@dotless{i}}
+
+@cindex cindex entry
+
+@syncodeindex ky pg
+
+@kindex truc kindex
+@pindex pindex codeidx
+
+@synindex truc cp
+
+@defindex abc
+@defindex defg
+
+@synindex abc defg
+@synindex defg ky
+
+@defgindex defg index entry
+
+@abcindex abc index entry
+
+pg
+@printindex pg
+
+ky
+@printindex ky
+
+truc
+@printindex truc
+
+value truc
+@printindex truc
+
+cp
+@printindex cp
+
+value cp
+@printindex cp
+
+defg
+@printindex defg
+
+abc
+@printindex abc
+
+fn
+@printindex fn
+
+@bye

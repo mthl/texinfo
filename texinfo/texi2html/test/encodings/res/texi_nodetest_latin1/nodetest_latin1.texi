@@ -328,5 +328,12 @@ Test dotaccent.
 
 @node @comma{},,,rest
 @section @comma{}
+
+An index entry with accented letter.
+@cindex index entry with accented letter: à @`a
+@cindex index entry with accented letter: â @`a
+
+@printindex cp
+
 @contents
 @bye

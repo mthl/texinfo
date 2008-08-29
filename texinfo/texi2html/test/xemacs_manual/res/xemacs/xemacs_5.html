@@ -115,19 +115,19 @@ keystrokes that can be represented in ASCII.  XEmacs can tell the
 difference between, for example, <kbd>Control-h</kbd>, <kbd>Control-Shift-h</kbd>,
 and <kbd>Backspace</kbd>.
 </p>  
-<a name="IDX18"></a>
-<a name="IDX19"></a>
-<a name="IDX20"></a>
-<a name="IDX21"></a>
-<a name="IDX22"></a>
-<a name="IDX23"></a>
-<a name="IDX24"></a>
-<a name="IDX25"></a>
-<a name="IDX26"></a>
-<a name="IDX27"></a>
-<a name="IDX28"></a>
-<a name="IDX29"></a>
-<a name="IDX30"></a>
+<a name="index-modifier-key"></a>
+<a name="index-keysym"></a>
+<a name="index-meta-key"></a>
+<a name="index-control-key"></a>
+<a name="index-hyper-key"></a>
+<a name="index-super-key"></a>
+<a name="index-shift-key"></a>
+<a name="index-button1"></a>
+<a name="index-button2"></a>
+<a name="index-button3"></a>
+<a name="index-button1up"></a>
+<a name="index-button2up"></a>
+<a name="index-button3up"></a>
 
 <p>  A keystroke is like a piano chord: you get it by simultaneously
 striking several keys.  To be more precise, a keystroke consists
@@ -169,7 +169,7 @@ for keysyms:
 </p></dd>
 </dl>
 
-<a name="IDX31"></a>
+<a name="index-keyboard_002dtranslate_002dtable"></a>
 <p>Use the variable <code>keyboard-translate-table</code> only if you are on a
 dumb tty, as it cannot handle input that cannot be represented as ASCII.
 The value of this variable is a string used as a translate table for
@@ -230,7 +230,7 @@ keysyms:
 &lt;META&gt;. 
 </p></dd>
 </dl>
-<a name="IDX32"></a>
+<a name="index-shift-modifier"></a>
 <p>  Note: As you define keystrokes, you can use the <kbd>shift</kbd> key only
 as a modifier with characters that do not have a second keysym on the
 same key, such as <kbd>backspace</kbd> and <kbd>tab</kbd>.  It is an error to
@@ -285,11 +285,11 @@ for the character &lsquo;a&rsquo;)
 </p></dd>
 </dl>
 
-<a name="IDX33"></a>
-<a name="IDX34"></a>
-<a name="IDX35"></a>
-<a name="IDX36"></a>
-<a name="IDX37"></a>
+<a name="index-C_002dc"></a>
+<a name="index-C_002dx"></a>
+<a name="index-C_002dh"></a>
+<a name="index-ESC"></a>
+<a name="index-prefix-key-sequence"></a>
 
 <p>  A <em>prefix key sequence</em> is the beginning of a series of longer
 sequences that are valid key sequences; adding any single keystroke to
@@ -371,8 +371,8 @@ strings.  For example, we have the following equivalent representations:
 </p></dd>
 </dl>
 
-<a name="IDX38"></a>
-<a name="IDX39"></a>
+<a name="index-LFD"></a>
+<a name="index-TAB"></a>
 
 <hr size="6">
 <a name="Meta-Key"></a>
@@ -413,7 +413,7 @@ Meta keys, too, in case you have formed a habit of using it.
 is possible to reconfigure some other key to be a &lt;META&gt; 
 key.  See section <a href="#Super-and-Hyper-Keys">Assignment of the &lt;SUPER&gt; and &lt;HYPER&gt; Keys</a>. 
 </p>
-<a name="IDX40"></a>
+<a name="index-meta_002dflag"></a>
 <p>  Emacs believes the terminal has a &lt;META&gt; key if the variable
 <code>meta-flag</code> is non-<code>nil</code>.  Normally this is set automatically
 according to the termcap entry for your terminal type.  However, sometimes
@@ -477,8 +477,8 @@ program.  The X keyboard model is quite complicated, and explaining
 it is beyond the scope of this manual.  However, we reprint the 
 following description from the X Protocol document for your convenience:
 </p>
-<a name="IDX41"></a>
-<a name="IDX42"></a>
+<a name="index-keysyms"></a>
+<a name="index-keycode"></a>
 
 <p> A list of keysyms is associated with each keycode. If that list
 (ignoring trailing <code>NoSymbol</code> entries) is a single keysym &lsquo;<samp>K</samp>&rsquo;,
@@ -526,7 +526,7 @@ upper-case keysym is used instead.
 following description of modifier mapping from the InterClient 
 Communications Conventions Manual:
 </p>
-<a name="IDX43"></a>
+<a name="index-modifier-mapping"></a>
 
 <p> X11 supports 8 modifier bits, of which 3 are pre-assigned to 
 <code>Shift</code>, <code>Lock</code>, and <code>Control</code>. Each modifier bit is 
@@ -687,7 +687,7 @@ after mentioning the key that runs it.  For example, we will say that
 down,&rdquo; meaning that <code>next-line</code> is a command that moves vertically
 down and <kbd>C-n</kbd> is a key that is standardly bound to it.
 </p>
-<a name="IDX44"></a>
+<a name="index-variables"></a>
 <p>  While we are on the subject of information for customization only,
 it&rsquo;s a good time to tell you about <em>variables</em>.  Often the
 description of a command will say, &ldquo;To change this, set the variable
@@ -732,13 +732,13 @@ from the keyboard as in previous versions of Emacs.
 <dt> <b>File</b></dt>
 <dd><p>Perform file and buffer-related operations, such as opening and closing
 files, saving and printing buffers, as well as exiting Emacs.
-<a name="IDX45"></a>
+<a name="index-File-menu"></a>
 </p>
 </dd>
 <dt> <b>Edit</b></dt>
 <dd><p>Perform standard editing operations, such as 
 cutting, copying, pasting, and killing selected text.
-<a name="IDX46"></a>
+<a name="index-Edit-menu"></a>
 </p>
 
 </dd>
@@ -746,36 +746,36 @@ cutting, copying, pasting, and killing selected text.
 <dd><p>Access to sub-applications implemented within XEmacs, such as the mail
 reader, the World Wide Web browser, the spell-checker, and the calendar
 program.
-<a name="IDX47"></a>
+<a name="index-Apps-menu"></a>
 </p>
 </dd>
 <dt> <b>Options</b></dt>
 <dd><p>Control various options regarding the way XEmacs works, such as controlling
 which elements of the frame are visible, selecting the fonts to be used for
 text, specifying whether searches are case-sensitive, etc.
-<a name="IDX48"></a>
+<a name="index-Options-menu"></a>
 </p>
 </dd>
 <dt> <b>Buffers</b></dt>
 <dd><p>Present a menu of buffers for selection as well as the option to display
 a buffer list.
-<a name="IDX49"></a>
+<a name="index-Buffers-menu"></a>
 </p>
 </dd>
 <dt> <b>Tools</b></dt>
 <dd><p>Perform various actions designed to automate software development and
 similar technical work, such as searching through many files, compiling
 a program, and comparing or merging two or three files.
-<a name="IDX50"></a>
+<a name="index-Tools-menu"></a>
 </p>
 </dd>
 <dt> <b>Help</b></dt>
 <dd><p>Access to Emacs Info.
-<a name="IDX51"></a>
+<a name="index-Help-menu"></a>
 </p></dd>
 </dl>
-<a name="IDX52"></a>
-<a name="IDX53"></a>
+<a name="index-Pull_002ddown-Menus"></a>
+<a name="index-menus"></a>
 
 <p>There are two ways of selecting an item from a pull-down menu:
 </p>
@@ -859,20 +859,20 @@ File...</b>, <b>Save Buffer</b>, <b>Save Buffer As...</b>, <b>Revert Buffer</b>,
 on the pull-down menu.  If you select a menu item, Emacs executes the
 equivalent command.
 </p>
-<a name="IDX54"></a>
-<a name="IDX55"></a>
-<a name="IDX56"></a>
-<a name="IDX57"></a>
-<a name="IDX58"></a>
-<a name="IDX59"></a>
-<a name="IDX60"></a>
-<a name="IDX61"></a>
-<a name="IDX62"></a>
-<a name="IDX63"></a>
-<a name="IDX64"></a>
-<a name="IDX65"></a>
-<a name="IDX66"></a>
-<a name="IDX67"></a>
+<a name="index-Open-File_002c-New-Frame_002e_002e_002e-menu-item"></a>
+<a name="index-Open-File_002e_002e_002e-menu-item"></a>
+<a name="index-Insert-File_002e_002e_002e-menu-item"></a>
+<a name="index-Save-Buffer-menu-item"></a>
+<a name="index-Save-Buffer-As-_002e_002e_002e-menu-item"></a>
+<a name="index-Revert-Buffer-menu-item"></a>
+<a name="index-Kill-Buffer-menu-item"></a>
+<a name="index-Print-Buffer-menu-item"></a>
+<a name="index-New-Frame-menu-item"></a>
+<a name="index-Delete-Frame-menu-item"></a>
+<a name="index-Split-Frame"></a>
+<a name="index-Un_002dsplit-_0028Keep-This_0029"></a>
+<a name="index-Un_002dsplit-_0028Keep-Others_0029"></a>
+<a name="index-Exit-Emacs-menu-item"></a>
 
 <dl compact="compact">
 <dt> <b>Open File, New Frame...</b></dt>
@@ -999,14 +999,14 @@ select a block of text (activate a region) with the mouse.  See section <a href=
 information.
 </p>
 
-<a name="IDX68"></a>
-<a name="IDX69"></a>
-<a name="IDX70"></a>
-<a name="IDX71"></a>
-<a name="IDX72"></a>
-<a name="IDX73"></a>
-<a name="IDX74"></a>
-<a name="IDX75"></a>
+<a name="index-Undo-menu-item"></a>
+<a name="index-Cut-menu-item"></a>
+<a name="index-Copy-menu-item"></a>
+<a name="index-Paste-menu-item"></a>
+<a name="index-Clear-menu-item"></a>
+<a name="index-Start-Macro-Recording-menu-item"></a>
+<a name="index-End-Macro-Recording-menu-item"></a>
+<a name="index-Execute-Last-Macro-menu-item"></a>
 <dl compact="compact">
 <dt> <b>Undo</b> </dt>
 <dd><p>Undoes the previous command.  <b>Undo</b> is equivalent to
@@ -1118,19 +1118,19 @@ When you select a menu item, Emacs executes the equivalent command.
 For some of the menu items, there are sub-menus which you will need 
 to select.
 </p>
-<a name="IDX76"></a>
-<a name="IDX77"></a>
-<a name="IDX78"></a>
-<a name="IDX79"></a>
-<a name="IDX80"></a>
-<a name="IDX81"></a>
-<a name="IDX82"></a>
-<a name="IDX83"></a>
-<a name="IDX84"></a>
-<a name="IDX85"></a>
-<a name="IDX86"></a>
-<a name="IDX87"></a>
-<a name="IDX88"></a>
+<a name="index-Read-Only-menu-item"></a>
+<a name="index-Case-Sensitive-Search-menu-item"></a>
+<a name="index-Overstrike-menu-item"></a>
+<a name="index-Auto-Delete-Selection-menu-item"></a>
+<a name="index-Teach-Extended-Commands-menu-item"></a>
+<a name="index-Syntax-Highlighting-menu-item"></a>
+<a name="index-Paren-Highlighting-menu-item"></a>
+<a name="index-Font-menu-item"></a>
+<a name="index-Size-menu-item"></a>
+<a name="index-Weight-menu-item"></a>
+<a name="index-Buffers-Menu-Length_002e_002e_002e-menu-item"></a>
+<a name="index-Buffers-Sub_002dMenus-menu-item"></a>
+<a name="index-Save-Options"></a>
 <dl compact="compact">
 <dt> <b>Read Only</b></dt>
 <dd><p>Selecting this item will cause the buffer to visit the file in a 
@@ -1350,8 +1350,8 @@ Add a menu item to a menu, creating the menu first if necessary.
 </dd>
 </dl>
 
-<a name="IDX89"></a>
-<a name="IDX90"></a>
+<a name="index-add_002dmenu"></a>
+<a name="index-adding-menus"></a>
 <p>Use the function <code>add-menu</code> to add a new menu or submenu.
 If a menu or submenu of the given name exists already, it is changed.
 </p>
@@ -1379,8 +1379,8 @@ A symbol naming a command, or a form to evaluate
 the new menu or submenu should be added.  If the menu is already
 present, it is not moved.
 </p>
-<a name="IDX91"></a>
-<a name="IDX92"></a>
+<a name="index-add_002dmenu_002ditem"></a>
+<a name="index-adding-menu-items"></a>
 <p>The function <code>add-menu-item</code> adds a menu item to the specified
 menu, creating the menu first if necessary.  If the named item already
 exists, the menu remains unchanged.
@@ -1420,8 +1420,8 @@ item, use the following code:
 which the new item should be added.  If the item is already present, it
 is not moved.
 </p>
-<a name="IDX93"></a>
-<a name="IDX94"></a>
+<a name="index-delete_002dmenu_002ditem"></a>
+<a name="index-deleting-menu-items"></a>
 <p>To remove a specified menu item from the menu hierarchy, use
 <code>delete-menu-item</code>.
 </p>
@@ -1431,10 +1431,10 @@ called <b>Save</b> under the top level <b>File</b> menu.  <code>(&quot;Menu&quot
 &quot;Item&quot;)</code> means the menu item called <b>Item</b> under the <b>Foo</b> submenu
 of <b>Menu</b>.
 </p>
-<a name="IDX95"></a>
-<a name="IDX96"></a>
-<a name="IDX97"></a>
-<a name="IDX98"></a>
+<a name="index-disable_002dmenu_002ditem"></a>
+<a name="index-enable_002dmenu_002ditem"></a>
+<a name="index-enabling-menu-items"></a>
+<a name="index-disabling-menu-items"></a>
 
 <p>To disable a menu item, use <code>disable-menu-item</code>.  The disabled
 menu item is grayed and can no longer be selected.  To make the
@@ -1442,8 +1442,8 @@ item selectable again, use <code>enable-menu-item</code>.
 <code>disable-menu-item</code> and <code>enable-menu-item</code> both have the
 argument <var>path</var>.
 </p>
-<a name="IDX99"></a>
-<a name="IDX100"></a>
+<a name="index-relabel_002dmenu_002ditem"></a>
+<a name="index-changing-menu-items"></a>
 <p>To change the string of the specified menu item, use
 <code>relabel-menu-item</code>. This function also takes the argument <var>path</var>.
 </p>

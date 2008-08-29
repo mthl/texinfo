@@ -164,8 +164,8 @@ currency&quot; symbol), 1-octet ISO-8859-5 (Cyrillic), or multioctet EUC-JP
 recognition, there are facilities for the user to set defaults, and
 where necessary (rarely, we hope) to set coding systems directly.
 </p>
-<a name="IDX698"></a>
-<a name="IDX699"></a>
+<a name="index-C_002dh-h"></a>
+<a name="index-view_002dhello_002dfile"></a>
 <p>  The command <kbd>C-h h</kbd> (<code>view-hello-file</code>) displays the file
 &lsquo;<tt>etc/HELLO</tt>&rsquo;, which shows how to say &ldquo;hello&rdquo; in many languages.
 This illustrates various scripts.
@@ -175,7 +175,7 @@ generally don&rsquo;t have keys for all the characters in them.  So XEmacs
 supports various <em>input methods</em>, typically one for each script or
 language, to make it convenient to type them.
 </p>
-<a name="IDX700"></a>
+<a name="index-C_002dx-RET"></a>
 <p>  The prefix key <kbd>C-x &lt;RET&gt;</kbd> is used for commands that pertain
 to world scripts, coding systems, and input methods.
 </p>
@@ -214,7 +214,7 @@ incoming mail, netnews, and any other text you read into XEmacs.  It may
 also specify the default coding system to use when you create a file.
 Each language environment also specifies a default input method.
 </p>
-<a name="IDX701"></a>
+<a name="index-set_002dlanguage_002denvironment"></a>
 <p>  The command to select a language environment is <kbd>M-x
 set-language-environment</kbd>.  It makes no difference which buffer is
 current when you use this command, because the effects apply globally to
@@ -232,8 +232,8 @@ case of this: if your locale name for character types contains the
 string &lsquo;<samp>8859-<var>n</var></samp>&rsquo;, XEmacs automatically selects the
 corresponding language environment.
 </p>
-<a name="IDX702"></a>
-<a name="IDX703"></a>
+<a name="index-C_002dh-L"></a>
+<a name="index-describe_002dlanguage_002denvironment"></a>
 <p>  To display information about the effects of a certain language
 environment <var>lang-env</var>, use the command <kbd>C-h L <var>lang-env</var>
 &lt;RET&gt;</kbd> (<code>describe-language-environment</code>).  This tells you which
@@ -325,8 +325,8 @@ See section <a href="#Select-Input-Method">Selecting an Input Method</a>.
 because stops waiting for more characters to combine, and starts
 searching for what you have already entered.
 </p>
-<a name="IDX704"></a>
-<a name="IDX705"></a>
+<a name="index-input_002dmethod_002dverbose_002dflag"></a>
+<a name="index-input_002dmethod_002dhighlight_002dflag"></a>
 <p>  The variables <code>input-method-highlight-flag</code> and
 <code>input-method-verbose-flag</code> control how input methods explain what
 is happening.  If <code>input-method-highlight-flag</code> is non-<code>nil</code>,
@@ -367,9 +367,9 @@ are in the minibuffer).
 </dd>
 <dt> <kbd>C-h I <var>method</var> &lt;RET&gt;</kbd></dt>
 <dt> <kbd>C-h C-\ <var>method</var> &lt;RET&gt;</kbd></dt>
-<dd><a name="IDX706"></a>
-<a name="IDX707"></a>
-<a name="IDX708"></a>
+<dd><a name="index-describe_002dinput_002dmethod"></a>
+<a name="index-C_002dh-I"></a>
+<a name="index-C_002dh-C_002d_005c"></a>
 <p>Describe the input method <var>method</var> (<code>describe-input-method</code>).
 By default, it describes the current input method (if any).
 </p>
@@ -379,17 +379,17 @@ By default, it describes the current input method (if any).
 </p></dd>
 </dl>
 
-<a name="IDX709"></a>
-<a name="IDX710"></a>
-<a name="IDX711"></a>
+<a name="index-select_002dinput_002dmethod"></a>
+<a name="index-current_002dinput_002dmethod"></a>
+<a name="index-C_002dx-RET-C_002d_005c"></a>
 <p>  To choose an input method for the current buffer, use <kbd>C-x
 &lt;RET&gt; C-\</kbd> (<code>select-input-method</code>).  This command reads the
 input method name with the minibuffer; the name normally starts with the
 language environment that it is meant to be used with.  The variable
 <code>current-input-method</code> records which input method is selected.
 </p>  
-<a name="IDX712"></a>
-<a name="IDX713"></a>
+<a name="index-toggle_002dinput_002dmethod"></a>
+<a name="index-C_002d_005c"></a>
 <p>  Input methods use various sequences of ASCII characters to stand for
 non-ASCII characters.  Sometimes it is useful to turn off the input
 method temporarily.  To do this, type <kbd>C-\</kbd>
@@ -400,21 +400,21 @@ method temporarily.  To do this, type <kbd>C-\</kbd>
 it prompts for you to specify one.  This has the same effect as using
 <kbd>C-x &lt;RET&gt; C-\</kbd> to specify an input method.
 </p>
-<a name="IDX714"></a>
+<a name="index-default_002dinput_002dmethod"></a>
 <p>  Selecting a language environment specifies a default input method for
 use in various buffers.  When you have a default input method, you can
 select it in the current buffer by typing <kbd>C-\</kbd>.  The variable
 <code>default-input-method</code> specifies the default input method
 (<code>nil</code> means there is none).
 </p>
-<a name="IDX715"></a>
+<a name="index-quail_002dset_002dkeyboard_002dlayout"></a>
 <p>  Some input methods for alphabetic scripts work by (in effect)
 remapping the keyboard to emulate various keyboard layouts commonly used
 for those scripts.  How to do this remapping properly depends on your
 actual keyboard layout.  To specify which layout your keyboard has, use
 the command <kbd>M-x quail-set-keyboard-layout</kbd>.
 </p>
-<a name="IDX716"></a>
+<a name="index-list_002dinput_002dmethods"></a>
 <p>  To display a list of all the supported input methods, type <kbd>M-x
 list-input-methods</kbd>.  The list gives information about each input
 method, including the string that stands for it in the mode line.
@@ -554,8 +554,8 @@ systems.
 </p></dd>
 </dl>
 
-<a name="IDX717"></a>
-<a name="IDX718"></a>
+<a name="index-C_002dx-RET-C"></a>
+<a name="index-describe_002dcoding_002dsystem"></a>
 <p>  The command <kbd>C-x RET C</kbd> (<code>describe-coding-system</code>) displays
 information about particular coding systems.  You can specify a coding
 system name as argument; alternatively, with an empty argument, it
@@ -563,7 +563,7 @@ describes the coding systems currently selected for various purposes,
 both in the current buffer and as the defaults, and the priority list
 for recognizing coding systems (see section <a href="#Recognize-Coding">Recognizing Coding Systems</a>).
 </p>
-<a name="IDX719"></a>
+<a name="index-list_002dcoding_002dsystems"></a>
 <p>  To display a list of all the supported coding systems, type <kbd>M-x
 list-coding-systems</kbd>.  The list gives information about each coding
 system, including the letter that stands for it in the mode line
@@ -671,7 +671,7 @@ French, you probably want XEmacs to prefer Latin-1 to Latin-2; if you
 use Czech, you probably want Latin-2 to be preferred.  This is one of
 the reasons to specify a language environment.
 </p>
-<a name="IDX720"></a>
+<a name="index-prefer_002dcoding_002dsystem"></a>
 <p>  However, you can alter the priority list in detail with the command
 <kbd>M-x prefer-coding-system</kbd>.  This command reads the name of a coding
 system from the minibuffer, and adds it to the front of the priority
@@ -679,7 +679,7 @@ list, so that it is preferred to all others.  If you use this command
 several times, each use adds one element to the front of the priority
 list.
 </p>
-<a name="IDX721"></a>
+<a name="index-file_002dcoding_002dsystem_002dalist"></a>
 <p>  Sometimes a file name indicates which coding system to use for the
 file.  The variable <code>file-coding-system-alist</code> specifies this
 correspondence.  There is a special function
@@ -694,7 +694,7 @@ example, to read and write all &lsquo;<samp>.txt</samp>&rsquo; using the coding 
 a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.
 </p>
-<a name="IDX722"></a>
+<a name="index-coding"></a>
 <p>  You can specify the coding system for a particular file using the
 &lsquo;<samp>-*-&hellip;-*-</samp>&rsquo; construct at the beginning of a file, or a local
 variables list at the end (see section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>).  You do this by
@@ -704,7 +704,7 @@ it uses the specified coding system for the file.  For example,
 &lsquo;<samp>-*-mode: C; coding: iso-8859-1;-*-</samp>&rsquo; specifies use of the
 iso-8859-1 coding system, as well as C mode.
 </p>
-<a name="IDX723"></a>
+<a name="index-buffer_002dfile_002dcoding_002dsystem"></a>
 <p>  Once XEmacs has chosen a coding system for a buffer, it stores that
 coding system in <code>buffer-file-coding-system</code> and uses that coding
 system, by default, for operations that write from this buffer into a
@@ -764,8 +764,8 @@ in the current buffer.
 </p></dd>
 </dl>
 
-<a name="IDX724"></a>
-<a name="IDX725"></a>
+<a name="index-C_002dx-RET-f"></a>
+<a name="index-set_002dbuffer_002dfile_002dcoding_002dsystem"></a>
 <p>  The command <kbd>C-x RET f</kbd> (<code>set-buffer-file-coding-system</code>)
 specifies the file coding system for the current buffer&mdash;in other
 words, which coding system to use when saving or rereading the visited
@@ -773,8 +773,8 @@ file.  You specify which coding system using the minibuffer.  Since this
 command applies to a file you have already visited, it affects only the
 way the file is saved.
 </p>
-<a name="IDX726"></a>
-<a name="IDX727"></a>
+<a name="index-C_002dx-RET-c"></a>
+<a name="index-universal_002dcoding_002dsystem_002dargument"></a>
 <p>  Another way to specify the coding system for a file is when you visit
 the file.  First use the command <kbd>C-x &lt;RET&gt; c</kbd>
 (<code>universal-coding-system-argument</code>); this command uses the
@@ -798,7 +798,7 @@ for when the file is saved).  Other file commands affected by a
 specified coding system include <kbd>C-x C-i</kbd> and <kbd>C-x C-v</kbd>, as well
 as the other-window variants of <kbd>C-x C-f</kbd>.
 </p>
-<a name="IDX728"></a>
+<a name="index-default_002dbuffer_002dfile_002dcoding_002dsystem"></a>
 <p>  The variable <code>default-buffer-file-coding-system</code> specifies the
 choice of coding system to use when you create a new file.  It applies
 when you find a new file, and when you create a buffer and then save it
@@ -806,8 +806,8 @@ in a file.  Selecting a language environment typically sets this
 variable to a good choice of default coding system for that language
 environment.
 </p>
-<a name="IDX729"></a>
-<a name="IDX730"></a>
+<a name="index-C_002dx-RET-t"></a>
+<a name="index-set_002dterminal_002dcoding_002dsystem"></a>
 <p>  The command <kbd>C-x &lt;RET&gt; t</kbd> (<code>set-terminal-coding-system</code>)
 specifies the coding system for terminal output.  If you specify a
 character code for terminal output, all characters output to the
@@ -819,8 +819,8 @@ terminals that support one of the ISO Latin character sets.
 </p>
 <p>  By default, output to the terminal is not translated at all.
 </p>
-<a name="IDX731"></a>
-<a name="IDX732"></a>
+<a name="index-C_002dx-RET-k"></a>
+<a name="index-set_002dkeyboard_002dcoding_002dsystem"></a>
 <p>  The command <kbd>C-x &lt;RET&gt; k</kbd> (<code>set-keyboard-coding-system</code>)
 specifies the coding system for keyboard input.  Character-code
 translation of keyboard input is useful for terminals with keys that
@@ -839,8 +839,8 @@ non-graphic characters.
 </p>
 <p>(This feature is non-functional and is temporarily disabled.)
 </p>
-<a name="IDX733"></a>
-<a name="IDX734"></a>
+<a name="index-C_002dx-RET-p"></a>
+<a name="index-set_002dbuffer_002dprocess_002dcoding_002dsystem"></a>
 <p>  The command <kbd>C-x &lt;RET&gt; p</kbd> (<code>set-buffer-process-coding-system</code>)
 specifies the coding system for input and output to a subprocess.  This
 command applies to the current buffer; normally, each subprocess has its
@@ -850,7 +850,7 @@ corresponding buffer.
 </p>
 <p>  By default, process input and output are not translated at all.
 </p>
-<a name="IDX735"></a>
+<a name="index-file_002dname_002dcoding_002dsystem"></a>
 <p>  The variable <code>file-name-coding-system</code> specifies a coding system
 to use for encoding file names.  If you set the variable to a coding
 system name (as a Lisp symbol or a string), XEmacs encodes file names

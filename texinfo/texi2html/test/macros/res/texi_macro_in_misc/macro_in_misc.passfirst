@@ -15,14 +15,14 @@ macro_in_misc.texi(,18) @c comment @text{}
 macro_in_misc.texi(,19) 
 macro_in_misc.texi(,23) 
 macro_in_misc.texi(,27) 
-macro_in_misc.texi(,28) @pagesizes @pagesizes{}
+macro_in_misc.texi(pagesizes_arg,28) @pagesizes 200mm,150mm
 macro_in_misc.texi(afourpaper_macro,29) @afourpaper
-macro_in_misc.texi(,30) @headings on line following headings @text{}
-macro_in_misc.texi(,31) @oddfooting some text ignored @text{}
-macro_in_misc.texi(,32) @everyheading on line following everyheading @text{}
+macro_in_misc.texi(text,30) @headings on line following headings atext
+macro_in_misc.texi(text,31) @oddfooting some text ignored atext
+macro_in_misc.texi(text,32) @everyheading on line following everyheading atext
 macro_in_misc.texi(,33) 
 macro_in_misc.texi(,37) 
-macro_in_misc.texi(,38) @need @need{}
+macro_in_misc.texi(need_arg,38) @need 0.1
 macro_in_misc.texi(,39) 
 macro_in_misc.texi(raisesections_macro,43) @raisesections
 macro_in_misc.texi(lowersections_macro,47) @lowersections
@@ -31,22 +31,20 @@ macro_in_misc.texi(,49) @c tex error: Use of \ doesn't match its definition.
 macro_in_misc.texi(,52) @@definfoenclose phoo,//,\\  
 macro_in_misc.texi(,53) //bar\\
 macro_in_misc.texi(,55) 
-macro_in_misc.texi(definfoenclose_name,59) phi,:,:
 macro_in_misc.texi(,60) 
 macro_in_misc.texi(,61) @c this is required
 macro_in_misc.texi(,65) 
-macro_in_misc.texi(,66) @phi{bar}
+macro_in_misc.texi(,66) :bar:
 macro_in_misc.texi(,67) 
 macro_in_misc.texi(,74) 
 macro_in_misc.texi(strong_macro,75) @strong{very strong}
 macro_in_misc.texi(,76) 
-macro_in_misc.texi(strong_name,77) strong,(strong:,:)
 macro_in_misc.texi(,78) 
-macro_in_misc.texi(strong_macro,79) @strong{ is it really strong? }
+macro_in_misc.texi(strong_macro,79) (strong: is it really strong? :)
 macro_in_misc.texi(,80) 
 macro_in_misc.texi(,81) @kbd{something before kbdinputstyle}
 macro_in_misc.texi(,82) 
-macro_in_misc.texi(,86) @kbdinputstyle @kbdinputstyle_arg{}
+macro_in_misc.texi(kbdinputstyle_arg,86) @kbdinputstyle code
 macro_in_misc.texi(,87) 
 macro_in_misc.texi(,88) @kbd{truc}
 macro_in_misc.texi(,89) 
@@ -55,29 +53,29 @@ macro_in_misc.texi(,91) @kbd{example}
 macro_in_misc.texi(,92) @end example
 macro_in_misc.texi(,93) 
 macro_in_misc.texi(,109) 
-macro_in_misc.texi(,110) @paragraphindent @asis_arg{}
-macro_in_misc.texi(,111) @paragraphindent @zero{}
-macro_in_misc.texi(,112) @paragraphindent @none_arg{}
-macro_in_misc.texi(,113) @paragraphindent @four{}
-macro_in_misc.texi(,114) @firstparagraphindent @none_arg{}
-macro_in_misc.texi(,115) @exampleindent @six{}
+macro_in_misc.texi(asis_arg,110) @paragraphindent asis
+macro_in_misc.texi(zero,111) @paragraphindent 0
+macro_in_misc.texi(none_arg,112) @paragraphindent none
+macro_in_misc.texi(four,113) @paragraphindent 4
+macro_in_misc.texi(none_arg,114) @firstparagraphindent none
+macro_in_misc.texi(six,115) @exampleindent 6
 macro_in_misc.texi(,116) 
-macro_in_misc.texi(,123) @footnotestyle @end_arg{}
-macro_in_misc.texi(,124) @footnotestyle @separate_arg{}
+macro_in_misc.texi(end_arg,123) @footnotestyle end
+macro_in_misc.texi(separate_arg,124) @footnotestyle separate 
 macro_in_misc.texi(,125) 
-macro_in_misc.texi(,129) @documentencoding @latin1{}
+macro_in_misc.texi(latin1,129) @documentencoding ISO-8859-1
 macro_in_misc.texi(,130) 
-macro_in_misc.texi(,137) @frenchspacing @on_arg{}
-macro_in_misc.texi(,138) @frenchspacing @off_arg{}
+macro_in_misc.texi(on_arg,137) @frenchspacing on
+macro_in_misc.texi(off_arg,138) @frenchspacing off
 macro_in_misc.texi(,139) 
 macro_in_misc.texi(,140) @c accepts 10 or 11
-macro_in_misc.texi(,144) @fonttextsize @ten{}
+macro_in_misc.texi(ten,144) @fonttextsize 10
 macro_in_misc.texi(,145) @c accept false or true
 macro_in_misc.texi(,146) @c makeinfo don't care about the arg and remove the remainiing of the line
-macro_in_misc.texi(,153) @allowcodebreaks @false_arg{}
+macro_in_misc.texi(false_arg,153) @allowcodebreaks false
 macro_in_misc.texi(,154) @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 macro_in_misc.texi(,155) 
-macro_in_misc.texi(,156) @allowcodebreaks @true_arg{}
+macro_in_misc.texi(true_arg,156) @allowcodebreaks true
 macro_in_misc.texi(,157) @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 macro_in_misc.texi(,158) 
 macro_in_misc.texi(,159) @subheading command removed
@@ -110,10 +108,10 @@ macro_in_misc.texi(exdent_macro,200) @exdent line after exdent
 macro_in_misc.texi(,201) 
 macro_in_misc.texi(,202) And now sp:
 macro_in_misc.texi(,203) 
-macro_in_misc.texi(,207) @sp @two{}
+macro_in_misc.texi(two,207) @sp 2
 macro_in_misc.texi(,208) 
 macro_in_misc.texi(,212) 
-macro_in_misc.texi(,213) @clickstyle @result_macro{}
+macro_in_misc.texi(result_macro,213) @clickstyle @result
 macro_in_misc.texi(,214) 
 macro_in_misc.texi(,215) @menu
 macro_in_misc.texi(text,216) * node atext::

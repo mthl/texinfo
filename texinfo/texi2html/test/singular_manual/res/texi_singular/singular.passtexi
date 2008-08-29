@@ -48373,30 +48373,30 @@ NEWS.texi(,49)
 NEWS.texi(,50) @heading Changes in @sc{Singular} libraries
 NEWS.texi(,51) The documentation of libraries was generally improved.
 NEWS.texi(,52) @table @asis
-NEWS.texi(nref,53) @item NEWS.texi(nref,53) @ref{equising_lib}NEWS.texi(nref,53) 
+NEWS.texi(nref,53) @item NEWS.texi(nref,53) @ref{equising_lib}
 NEWS.texi(,54) procedures esStratum, isEquising now also for reducible polynomials
 NEWS.texi(,55) @*new procedures: tau_es (codim of mu-const stratum in semi-universal def. base);
 NEWS.texi(,56) esIdeal ((Wahl's) equisingularity ideal)
-NEWS.texi(nref,57) @item NEWS.texi(nref,57) @ref{gaussman_lib}NEWS.texi(nref,57) 
+NEWS.texi(nref,57) @item NEWS.texi(nref,57) @ref{gaussman_lib}
 NEWS.texi(,58) added bernstein: roots of the Bernstein polynomial of t
-NEWS.texi(nref,59) @item NEWS.texi(nref,59) @ref{hnoether_lib}NEWS.texi(nref,59) 
+NEWS.texi(nref,59) @item NEWS.texi(nref,59) @ref{hnoether_lib}
 NEWS.texi(,60) HNdevelop, reddevelop, essdevelop are obsolete, replaced by hnexpansion
 NEWS.texi(,61) @*multsequence is "repaired" (since branches computed by hnexpansion
 NEWS.texi(,62) et al) are now ordered according to the needs of multsequence.
 NEWS.texi(,63) @*newtonpoly needs no longer that ordering of the basering is ls
 NEWS.texi(,64) @*new procedures: is_NND      test if f is Newton non-degenerate
-NEWS.texi(nref,65) @item NEWS.texi(nref,65) @ref{homolog_lib}NEWS.texi(nref,65) 
+NEWS.texi(nref,65) @item NEWS.texi(nref,65) @ref{homolog_lib}
 NEWS.texi(,66) new procedures: depth, fitting, flatteningStrat, isCM, isFlat, isLocallyFree,
 NEWS.texi(,67) isReg, KoszulHomology, tensorMod, Tor
-NEWS.texi(nref,68) @item NEWS.texi(nref,68) @ref{matrix_lib}NEWS.texi(nref,68) 
+NEWS.texi(nref,68) @item NEWS.texi(nref,68) @ref{matrix_lib}
 NEWS.texi(,69) in proc tensor(A,B):  check if ncols(A)==0
-NEWS.texi(nref,70) @item NEWS.texi(nref,70) @ref{normal_lib}NEWS.texi(nref,70) 
+NEWS.texi(nref,70) @item NEWS.texi(nref,70) @ref{normal_lib}
 NEWS.texi(,71) new procedure: deltaLoc(f,S);      (sum of) delta invariant(s) at conjugated
 NEWS.texi(,72) singular points
 NEWS.texi(,73) @*proc genus makes now use of is_NND of hnoether.lib
-NEWS.texi(nref,74) @item NEWS.texi(nref,74) @ref{primdec_lib}NEWS.texi(nref,74) 
+NEWS.texi(nref,74) @item NEWS.texi(nref,74) @ref{primdec_lib}
 NEWS.texi(,75) optimizations again
-NEWS.texi(nref,76) @item NEWS.texi(nref,76) @ref{solve_lib}NEWS.texi(nref,76) 
+NEWS.texi(nref,76) @item NEWS.texi(nref,76) @ref{solve_lib}
 NEWS.texi(,77) procedure laguerre_solve ignores no longer the 2nd parameter (precision of 
 NEWS.texi(,78) internal computation)
 NEWS.texi(,79) @* new procedure simplexOut:     prints solution of simplex in nice format

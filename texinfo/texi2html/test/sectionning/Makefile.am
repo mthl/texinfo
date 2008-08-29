@@ -9,6 +9,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  test_refs.texi equivalent_nodes.texi nodename_parentheses.texi \
  section_file.texi html-top.texi menu-whitespace.texi nodes_id.texi \
  node-whitespace.texi two_footnotes_in_nodes.texi section_in_unnumbered.texi \
+ top.texi \
  test_directions.init tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

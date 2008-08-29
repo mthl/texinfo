@@ -79,10 +79,10 @@ and headers of the message in the mail buffer, and type the command
 </p></dd>
 </dl>
 
-<a name="IDX1113"></a>
-<a name="IDX1114"></a>
-<a name="IDX1115"></a>
-<a name="IDX1116"></a>
+<a name="index-C_002dx-m"></a>
+<a name="index-mail"></a>
+<a name="index-C_002dx-4-m"></a>
+<a name="index-mail_002dother_002dwindow-1"></a>
 <p>  The command <kbd>C-x m</kbd> (<code>mail</code>) selects a buffer named
 &lsquo;<samp>*mail*</samp>&rsquo; and initializes it with the skeleton of an outgoing message.
 <kbd>C-x 4 m</kbd> (<code>mail-other-window</code>) selects the &lsquo;<samp>*mail*</samp>&rsquo; buffer
@@ -144,7 +144,7 @@ insert or edit any header fields using ordinary editing commands.
 <table><tr><td>&nbsp;</td><td><pre class="example">--text follows this line--
 </pre></td></tr></table>
 
-<a name="IDX1117"></a>
+<a name="index-mail_002dheader_002dseparator"></a>
 <p>is a special delimiter that separates the headers you have specified from
 the text.  Whatever follows this line is the text of the message; the
 headers precede it.  The delimiter line itself does not appear in the
@@ -253,7 +253,7 @@ example,
   me@gnu.cambridge.mass.usa.earth.spiral3281
 </pre></td></tr></table>
 
-<a name="IDX1118"></a>
+<a name="index-mail_002dabbrev_002dmailrc_002dfile"></a>
 <p>If you have a &lsquo;<tt>~/.mailrc</tt>&rsquo; file, Emacs scans it for mail aliases the
 first time you try to send mail in an Emacs session.  Emacs expands
 aliases found in the &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;, and &lsquo;<samp>BCC</samp>&rsquo; fields where
@@ -261,7 +261,7 @@ appropriate. You can set the variable <code>mail-abbrev-mailrc-file</code> to
 the name of the file with mail aliases.  If <code>nil</code>, &lsquo;<tt>~/.mailrc</tt>&rsquo;
 is used.
 </p>
-<a name="IDX1119"></a>
+<a name="index-_002emailrc-file"></a>
 <p>Your &lsquo;<tt>.mailrc</tt>&rsquo; file ensures that word-abbrevs are defined for each
 of your mail aliases when point is in a &lsquo;<samp>To</samp>&rsquo;, &lsquo;<samp>CC</samp>&rsquo;,
 &lsquo;<samp>BCC</samp>&rsquo;, or &lsquo;<samp>From</samp>&rsquo; field.  The aliases are defined in your
@@ -279,7 +279,7 @@ again be in trouble because you forgot to delete an old alias from your
 &lsquo;<tt>.mailrc</tt>&rsquo; and a new local user is given a userid which conflicts
 with one of your aliases.
 </p>
-<a name="IDX1120"></a>
+<a name="index-mail_002dabbrev_002dmode_002dregexp"></a>
 <p>Your mail alias abbrevs are in effect only when point is in an
 appropriate header field. The mail aliases will not expand in the body
 of the message, or in other header fields.  The default mode-specific
@@ -291,7 +291,7 @@ abbrevs are used in by changing the variable <code>mail-abbrev-mode-regexp</code
 <p>If auto-fill mode is on, abbrevs wrap at commas instead of at word
 boundaries, and header continuation lines will be properly indented.
 </p>
-<a name="IDX1121"></a>
+<a name="index-mail_002dinteractive_002dinsert_002dalias"></a>
 <p>You can also insert a mail alias with <code>mail-interactive-insert-alias</code>.
 This function, which is bound to <kbd>C-c C-a</kbd>, prompts you for an alias
 (with completion) and inserts its expansion at point.
@@ -330,13 +330,13 @@ though word-abbrevs normally cannot contain hyphens.
 command <code>M-x merge-mail-aliases</code>.  The <code>rebuild-mail-aliases</code>
 command is similar, but deletes existing aliases first.
 </p>
-<a name="IDX1122"></a>
+<a name="index-mail_002dalias_002dseparator_002dstring"></a>
 <p>If you want multiple addresses separated by a string other than &lsquo;<samp>,</samp>&rsquo;
 (a comma), then set the variable <code>mail-alias-separator-string</code> to
 it.  This has to be a comma bracketed by whitespace if you want any kind
  of reasonable behavior.
 </p>
-<a name="IDX1123"></a>
+<a name="index-mail_002darchive_002dfile_002dname"></a>
 <p>  If the variable <code>mail-archive-file-name</code> is non-<code>nil</code>, it
 should be a string naming a file.  Each time you start to edit a message
 to send, an &lsquo;<samp>FCC</samp>&rsquo; field is entered for that file.  Unless you
@@ -405,10 +405,10 @@ none (<code>mail-subject</code>).
 </p></dd>
 </dl>
 
-<a name="IDX1124"></a>
-<a name="IDX1125"></a>
-<a name="IDX1126"></a>
-<a name="IDX1127"></a>
+<a name="index-C_002dc-C_002ds-_0028Mail-mode_0029"></a>
+<a name="index-C_002dc-C_002dc-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dsend"></a>
+<a name="index-mail_002dsend_002dand_002dexit"></a>
 <p>  There are two ways to send a message.  <kbd>C-c C-c</kbd>
 (<code>mail-send-and-exit</code>) is the usual way to send the message.  It
 sends the message and then deletes the window (if there is another
@@ -419,12 +419,12 @@ message and marks the &lsquo;<samp>*mail*</samp>&rsquo; buffer unmodified, but l
 buffer selected so that you can modify the message (perhaps with new
 recipients) and send it again.
 </p>
-<a name="IDX1128"></a>
-<a name="IDX1129"></a>
-<a name="IDX1130"></a>
-<a name="IDX1131"></a>
-<a name="IDX1132"></a>
-<a name="IDX1133"></a>
+<a name="index-C_002dc-C_002df-C_002dt-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dto"></a>
+<a name="index-C_002dc-C_002df-C_002ds-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dsubject"></a>
+<a name="index-C_002dc-C_002df-C_002dc-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dcc"></a>
 <p>  Mail mode provides some other special commands that are useful for
 editing the headers and text of the message before you send it.  There are
 three commands defined to move point to particular header fields, all based
@@ -435,14 +435,14 @@ C-f C-c</kbd> (<code>mail-cc</code>) for the &lsquo;<samp>CC</samp>&rsquo; field
 special motion commands because they are edited most frequently. 
 </p>
 
-<a name="IDX1134"></a>
-<a name="IDX1135"></a>
+<a name="index-C_002dc-C_002dw-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dsignature"></a>
 <p>  <kbd>C-c C-w</kbd> (<code>mail-signature</code>) adds a standard piece of text at
 the end of the message to say more about who you are.  The text comes
 from the file &lsquo;<tt>.signature</tt>&rsquo; in your home directory.
 </p>
-<a name="IDX1136"></a>
-<a name="IDX1137"></a>
+<a name="index-C_002dc-C_002dy-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dyank_002doriginal"></a>
 <p>  When you use an Rmail command to send mail from the Rmail mail reader,
 you can use <kbd>C-c C-y</kbd> <code>mail-yank-original</code> inside the
 &lsquo;<samp>*mail*</samp>&rsquo; buffer to insert the
@@ -455,8 +455,8 @@ anything.  <kbd>C-c C-y</kbd> always uses the current message from the
 one in &lsquo;<samp>RMAIL</samp>&rsquo;, switching to &lsquo;<samp>*mail*</samp>&rsquo; and yanking it, then
 switching back to &lsquo;<samp>RMAIL</samp>&rsquo; to select another.
 </p>
-<a name="IDX1138"></a>
-<a name="IDX1139"></a>
+<a name="index-C_002dc-C_002dq-_0028Mail-mode_0029"></a>
+<a name="index-mail_002dfill_002dyanked_002dmessage"></a>
 <p>  After using <kbd>C-c C-y</kbd>, you can use the command <kbd>C-c C-q</kbd>
 (<code>mail-fill-yanked-message</code>) to fill the paragraphs of the yanked
 old message or messages.  One use of <kbd>C-c C-q</kbd> fills all such
@@ -465,7 +465,7 @@ paragraphs, each one separately.
 <p>  Clicking the right mouse button in a mail buffer pops up a menu of
 the above commands, for easy access.
 </p>
-<a name="IDX1140"></a>
+<a name="index-mail_002dmode_002dhook"></a>
 <p>  Turning on Mail mode (which <kbd>C-x m</kbd> does automatically) calls the
 value of <code>text-mode-hook</code>, if it is not void or <code>nil</code>, and
 then calls the value of <code>mail-mode-hook</code> if that is not void or

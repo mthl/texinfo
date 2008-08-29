@@ -14,3 +14,4 @@ index_special_region_no_region index_special_region_no_region.texi -split chapte
 index_special_region_no_insertcopying index_special_region_no_insertcopying.texi -split chapter
 makeinfo_index_nodes index_nodes.texi -init makeinfo.init -init index_test.init  -split node
 printindex_between_node_section printindex_between_node_section.texi -init index_test.init -node-files
+index_and_node_same_name index_and_node_same_name.texi

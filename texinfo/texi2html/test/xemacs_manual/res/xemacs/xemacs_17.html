@@ -67,8 +67,8 @@ commands apply directly to text in the buffer; that is, to the copy inside
 Emacs.  Your changes appear in the file itself only when you <em>save</em> the
 buffer back into the file.
 </p>
-<a name="IDX527"></a>
-<a name="IDX528"></a>
+<a name="index-files_002c-remote"></a>
+<a name="index-remote-files"></a>
 <p>  Emacs is also able to handle &ldquo;remote files&rdquo; which are stored on
 other hosts.  Not only is Emacs somewhat aware of the special issues
 involved with network file systems, but it can also use FTP and ssh (or
@@ -151,7 +151,7 @@ to your local user name).  <var>path-on-remote-host</var> may use the
 &lsquo;<samp>~</samp>&rsquo; notation to indicate <var>user</var>&rsquo;s home directory on the remote
 host.  The default file name will reflect the remote host information.
 </p>
-<a name="IDX529"></a>
+<a name="index-default_002ddirectory"></a>
 <p>  Each buffer has a default directory, normally the same as the
 directory of the file visited in that buffer.  When Emacs reads a file
 name, the default directory is used if you do not specify a directory.
@@ -171,16 +171,16 @@ would stand for the filename &lsquo;<tt>/u/rms/gnu/new/foo</tt>&rsquo;.
 becomes the default directory (see section <a href="#Visiting">Visiting Files</a>) for that buffer, just
 as a local directory would.
 </p>
-<a name="IDX530"></a>
+<a name="index-default_002ddirectory_002dalist"></a>
 <p>The variable <code>default-directory-alist</code> takes an alist of major
 modes and their opinions on <code>default-directory</code> as a Lisp
 expression to evaluate.  A resulting value of <code>nil</code> is ignored in
 favor of <code>default-directory</code>.
 </p>
-<a name="IDX531"></a>
-<a name="IDX532"></a>
-<a name="IDX533"></a>
-<a name="IDX534"></a>
+<a name="index-make_002ddirectory"></a>
+<a name="index-remove_002ddirectory"></a>
+<a name="index-creating-directories"></a>
+<a name="index-removing-directories"></a>
 <p>You can create a new directory with the function <code>make-directory</code>,
 which takes as an argument a file name string. The current directory is
 displayed in the minibuffer when the function is called; you can delete
@@ -198,7 +198,7 @@ to the directory of the file that is visited there.  If a buffer is created
 with <kbd>C-x b</kbd>, its default directory is copied from that of the
 buffer that was current at the time.
 </p>
-<a name="IDX535"></a>
+<a name="index-insert_002ddefault_002ddirectory-1"></a>
 <p>  The default directory name actually appears in the minibuffer when the
 minibuffer becomes active to read a file name.  This serves two
 purposes: it shows you what the default is, so that you can type a
@@ -266,9 +266,9 @@ change this window or frame.
 </p></dd>
 </dl>
 
-<a name="IDX536"></a>
-<a name="IDX537"></a>
-<a name="IDX538"></a>
+<a name="index-files"></a>
+<a name="index-visiting"></a>
+<a name="index-saving"></a>
 <p>  <em>Visiting</em> a file means copying its contents into an Emacs buffer
 so you can edit it.  Emacs creates a new buffer for each file you
 visit.  We say that the buffer is visiting the file that it was created
@@ -288,15 +288,15 @@ place, until you <em>save</em> the buffer.  Saving the buffer means that
 Emacs writes the current contents of the buffer into its visited file.
 See section <a href="#Saving">Saving Files</a>.
 </p>
-<a name="IDX539"></a>
+<a name="index-modified-_0028buffer_0029"></a>
 <p>  If a buffer contains changes that have not been saved, the buffer is said
 to be <em>modified</em>.  This is important because it implies that some
 changes will be lost if the buffer is not saved.  The mode line displays
 two stars near the left margin if the buffer is modified.
 </p>
-<a name="IDX540"></a>
-<a name="IDX541"></a>
-<a name="IDX542"></a>
+<a name="index-C_002dx-5-C_002df"></a>
+<a name="index-find_002dfile"></a>
+<a name="index-find_002dfile_002dother_002dframe-1"></a>
 <p>  To visit a file, use the command <kbd>C-x C-f</kbd> (<code>find-file</code>).  Follow
 the command with the name of the file you wish to visit, terminated by a
 &lt;RET&gt;.  If you are using XEmacs under X, you can also use the
@@ -318,7 +318,7 @@ However, before doing so, it checks that the file itself has not changed
 since you visited or saved it last.  If the file has changed, Emacs
 prints a warning message.  See section <a href="#Interlocking">Simultaneous Editing</a>.
 </p>
-<a name="IDX543"></a>
+<a name="index-find_002dthis_002dfile"></a>
 <p>You can switch to a specific file called out in the current buffer by
 calling the function <code>find-this-file</code>. By providing a prefix
 argument, this function calls <code>filename-at-point</code> and switches to a
@@ -328,8 +328,8 @@ buffer you are working in or to test if the file exists. You can do that
 by using the minibuffer completion after snatching the all or part of
 the filename.
 </p>
-<a name="IDX544"></a>
-<a name="IDX545"></a>
+<a name="index-find_002dfile_002duse_002dtruenames"></a>
+<a name="index-buffer_002dfile_002dname"></a>
 <p>If the variable <code>find-file-use-truenames</code>&rsquo;s value is
 non-<code>nil</code>, a buffer&rsquo;s visited filename will always be traced back
 to the real file. The filename will never be a symbolic link, and there
@@ -337,8 +337,8 @@ will never be a symbolic link anywhere in its directory path. In other
 words, the <code>buffer-file-name</code> and <code>buffer-file-truename</code> will
 be equal.
 </p>
-<a name="IDX546"></a>
-<a name="IDX547"></a>
+<a name="index-find_002dfile_002dcompare_002dtruenames"></a>
+<a name="index-buffer_002dfile_002dtruename"></a>
 <p>If the variable <code>find-file-compare-truenames</code> value is
 non-<code>nil</code>, the <code>find-file</code> command will check the
 <code>buffer-file-truename</code> of all visited files when deciding whether a
@@ -349,14 +349,14 @@ buffer will be found instead of a newly created one.  This works if any
 component of the pathname (including a non-terminal component) is a
 symbolic link as well, but doesn&rsquo;t work with hard links (nothing does).
 </p>
-<a name="IDX548"></a>
+<a name="index-creating-files"></a>
 <p>   If you want to create a file, just visit it.  Emacs prints
 &lsquo;<samp>(New File)</samp>&rsquo; in the echo area, but in other respects behaves as if you
 had visited an existing empty file.  If you make any changes and save them,
 the file is created.
 </p>
-<a name="IDX549"></a>
-<a name="IDX550"></a>
+<a name="index-C_002dx-C_002dv"></a>
+<a name="index-find_002dalternate_002dfile"></a>
 <p>  If you visit a nonexistent file unintentionally (because you typed the
 wrong file name), use the <kbd>C-x C-v</kbd> (<code>find-alternate-file</code>)
 command to visit the file you wanted.  <kbd>C-x C-v</kbd> is similar to <kbd>C-x
@@ -364,14 +364,14 @@ C-f</kbd>, but it kills the current buffer (after first offering to save it if
 it is modified).  <kbd>C-x C-v</kbd> is allowed even if the current buffer
 is not visiting a file.
 </p>
-<a name="IDX551"></a>
+<a name="index-find_002dfile_002drun_002ddired"></a>
 <p>  If the file you specify is actually a directory, Dired is called on
 that directory (see section <a href="#Dired">Dired, the Directory Editor</a>).  To inhibit this, set the variable
 <code>find-file-run-dired</code> to <code>nil</code>; then it is an error to try to
 visit a directory.
 </p>
-<a name="IDX552"></a>
-<a name="IDX553"></a>
+<a name="index-C_002dx-4-f"></a>
+<a name="index-find_002dfile_002dother_002dwindow"></a>
 <p>  <kbd>C-x 4 f</kbd> (<code>find-file-other-window</code>) is like <kbd>C-x C-f</kbd>
 except that the buffer containing the specified file is selected in another
 window.  The window that was selected before <kbd>C-x 4 f</kbd> continues to
@@ -380,12 +380,12 @@ only one window is being displayed, that window is split in two, with one
 window showing the same buffer as before, and the other one showing the
 newly requested file.  See section <a href="xemacs_19.html#Windows">Multiple Windows</a>.
 </p>
-<a name="IDX554"></a>
-<a name="IDX555"></a>
+<a name="index-C_002dx-5-C_002df-1"></a>
+<a name="index-find_002dfile_002dother_002dframe-2"></a>
 <p><kbd>C-x 5 C-f</kbd> (<code>find-file-other-frame</code>) is like <kbd>C-x C-f</kbd>
 except that it creates a new frame in which the file is displayed.
 </p>
-<a name="IDX556"></a>
+<a name="index-find_002dthis_002dfile_002dother_002dwindow"></a>
 <p> Use the function <code>find-this-file-other-window</code> to edit a file
 mentioned in the buffer you are editing or to test if that file exists.
 To do this, use the minibuffer completion after snatching the part or
@@ -394,8 +394,8 @@ all of the filename. By providing a prefix argument, the function calls
 <var>filename</var> in another window. The function creates a buffer if none
 already exists. This function is similar to <code>find-file-other-window</code>.
 </p>
-<a name="IDX557"></a>
-<a name="IDX558"></a>
+<a name="index-find_002dfile_002dhooks"></a>
+<a name="index-find_002dfile_002dnot_002dfound_002dhooks"></a>
 <p>  There are two hook variables that allow extensions to modify the
 operation of visiting files.  Visiting a file that does not exist runs the
 functions in the list <code>find-file-not-found-hooks</code>; the value of this
@@ -449,8 +449,8 @@ the one visited in the buffer (<code>write-file</code>).
 </p></dd>
 </dl>
 
-<a name="IDX559"></a>
-<a name="IDX560"></a>
+<a name="index-C_002dx-C_002ds"></a>
+<a name="index-save_002dbuffer"></a>
 <p>  To save a file and make your changes permanent, type
 <kbd>C-x C-s</kbd> (<code>save-buffer</code>).  After saving is finished, <kbd>C-x C-s</kbd>
 prints a message such as:
@@ -466,16 +466,16 @@ in the echo area saying:
 <table><tr><td>&nbsp;</td><td><pre class="example">(No changes need to be saved)
 </pre></td></tr></table>
 
-<a name="IDX561"></a>
-<a name="IDX562"></a>
+<a name="index-C_002dx-s"></a>
+<a name="index-save_002dsome_002dbuffers"></a>
 <p>  The command <kbd>C-x s</kbd> (<code>save-some-buffers</code>) can save any or all
 modified buffers.  First it asks, for each modified buffer, whether to
 save it.  The questions should be answered with <kbd>y</kbd> or <kbd>n</kbd>.
 <kbd>C-x C-c</kbd>, the key that kills Emacs, invokes
 <code>save-some-buffers</code> and therefore asks the same questions.
 </p>
-<a name="IDX563"></a>
-<a name="IDX564"></a>
+<a name="index-M_002d_007e"></a>
+<a name="index-not_002dmodified"></a>
 <p>  If you have changed a buffer and do not want the changes to be saved,
 you should take some action to prevent it.  Otherwise, you are liable to
 save it by mistake each time you use <code>save-some-buffers</code> or a
@@ -494,7 +494,7 @@ saved, by reading the text from the file again.  This is called
 changes by repeating the undo command <kbd>C-x u</kbd>; but this only works
 if you have not made more changes than the undo mechanism can remember.
 </p>
-<a name="IDX565"></a>
+<a name="index-set_002dvisited_002dfile_002dname"></a>
 <p>  <kbd>M-x set-visited-file-name</kbd> alters the name of the file that the
 current buffer is visiting.  It prompts you for the new file name in the
 minibuffer.  You can also use <code>set-visited-file-name</code> on a buffer
@@ -506,8 +506,8 @@ visited file; it just alters the records inside Emacs so that it will
 save the buffer in that file.  It also marks the buffer as &ldquo;modified&rdquo;
 so that <kbd>C-x C-s</kbd> <i>will</i> save.
 </p>
-<a name="IDX566"></a>
-<a name="IDX567"></a>
+<a name="index-C_002dx-C_002dw"></a>
+<a name="index-write_002dfile"></a>
 <p>  If you wish to mark a buffer as visiting a different file and save it
 right away, use <kbd>C-x C-w</kbd> (<code>write-file</code>).  It is precisely
 equivalent to <code>set-visited-file-name</code> followed by <kbd>C-x C-s</kbd>.
@@ -523,13 +523,13 @@ notifies you of this fact, because it probably indicates a problem caused
 by simultaneous editing and requires your immediate attention.
 See section <a href="#Interlocking">Simultaneous Editing</a>.
 </p>
-<a name="IDX568"></a>
+<a name="index-require_002dfinal_002dnewline"></a>
 <p>  If the variable <code>require-final-newline</code> is non-<code>nil</code>, Emacs
 puts a newline at the end of any file that doesn&rsquo;t already end in one,
 every time a file is saved or written.
 </p>
-<a name="IDX569"></a>
-<a name="IDX570"></a>
+<a name="index-write_002dfile_002dhooks"></a>
+<a name="index-after_002dsave_002dhook"></a>
 <p>  Use the hook variable <code>write-file-hooks</code> to implement other ways
 to write files, and specify things to be done before files are written.  The
 value of this variable should be a list of Lisp functions.  When a file
@@ -634,7 +634,7 @@ the backup file is written as &lsquo;<tt>%backup%~</tt>&rsquo; in your home dire
 Only one such file can exist, so only the most recently made backup is
 available.
 </p>
-<a name="IDX571"></a>
+<a name="index-version_002dcontrol"></a>
 <p>  The choice of single backup or numbered backups is controlled by the
 variable <code>version-control</code>.  Its possible values are:
 </p>
@@ -688,7 +688,7 @@ The values are used just after a new backup version is made;
 that newly made backup is included in the count in <code>kept-new-versions</code>.
 By default, both variables are 2.
 </p>
-<a name="IDX572"></a>
+<a name="index-delete_002dold_002dversions"></a>
 <p>  If <code>delete-old-versions</code> is non-<code>nil</code>,  excess
 middle versions are deleted without notification.  If it is <code>nil</code>, the
 default, you are asked whether the excess middle versions should
@@ -737,9 +737,9 @@ owners, it is a good idea to use local variable lists to set
 <code>backup-by-copying-when-mismatch</code> for the special cases where the 
 owner should not change (see section <a href="xemacs_30.html#File-Variables">Local Variables in Files</a>).
 </p>
-<a name="IDX573"></a>
-<a name="IDX574"></a>
-<a name="IDX575"></a>
+<a name="index-backup_002dby_002dcopying"></a>
+<a name="index-backup_002dby_002dcopying_002dwhen_002dlinked"></a>
+<a name="index-backup_002dby_002dcopying_002dwhen_002dmismatch"></a>
 <p>  Three variables control the choice of renaming or copying.
 Normally, renaming is done.  If the variable <code>backup-by-copying</code> is
 non-<code>nil</code>, copying is used.  Otherwise, if the variable
@@ -782,7 +782,7 @@ file containing another user&rsquo;s changes.  If you are the user editing the
 file, you can take corrective action at this point and prevent actual
 loss of work.
 </p>
-<a name="IDX576"></a>
+<a name="index-ask_002duser_002dabout_002dlock"></a>
 <p>  When you make the first modification in an Emacs buffer that is visiting
 a file, Emacs records that you have locked the file.  (It does this by
 writing another file in a directory reserved for this purpose.)  The lock
@@ -842,8 +842,8 @@ file.  This is not strictly necessary, but it is useful to find out
 about such a problem as early as possible, when corrective action takes
 less work.
 </p>
-<a name="IDX577"></a>
-<a name="IDX578"></a>
+<a name="index-set_002ddefault_002dfile_002dmodes"></a>
+<a name="index-file-protection"></a>
 <p>Another way to protect your file is to set the read, write, and
 executable permissions for the file. Use the function
 <code>set-default-file-modes</code> to set the UNIX <code>umask</code> value to the
@@ -992,12 +992,12 @@ unless you customize the functions <code>make-auto-save-file-name</code> and
 to be used for auto-saving a buffer is calculated at the time auto-saving is
 turned on in that buffer.
 </p>
-<a name="IDX579"></a>
+<a name="index-auto_002dsave_002dvisited_002dfile_002dname"></a>
 <p>  If you want auto-saving to be done in the visited file, set the variable
 <code>auto-save-visited-file-name</code> to be non-<code>nil</code>.  In this mode,
 there is really no difference between auto-saving and explicit saving.
 </p>
-<a name="IDX580"></a>
+<a name="index-delete_002dauto_002dsave_002dfiles"></a>
 <p>  Emacs deletes a buffer&rsquo;s auto-save file when you explicitly save the
 buffer.  To inhibit the deletion, set the variable
 <code>delete-auto-save-files</code> to <code>nil</code>.  Changing the visited file
@@ -1034,8 +1034,8 @@ auto-saving for a buffer on or off.  Like other minor mode commands,
 <kbd>M-x auto-save-mode</kbd> turns auto-saving on with a positive argument,
 off with a zero or negative argument; with no argument, it toggles.
 </p>
-<a name="IDX581"></a>
-<a name="IDX582"></a>
+<a name="index-auto_002dsave_002dinterval"></a>
+<a name="index-do_002dauto_002dsave"></a>
 <p>  Emacs performs auto-saving periodically based on counting how many
 characters you have typed since the last time auto-saving happened.  The
 variable <code>auto-save-interval</code> specifies the number of characters
@@ -1046,7 +1046,7 @@ whenever you call the function <code>do-auto-save</code>.
 includes killing the Emacs job with a shell command such as <code>kill
 -emacs</code>, or disconnecting a phone line or network connection.
 </p>
-<a name="IDX583"></a>
+<a name="index-auto_002dsave_002dtimeout"></a>
 <p>You can set the number of seconds of idle time before an auto-save is
 done. Setting the value of the variable <code>auto-save-timeout</code> to zero or 
 <code>nil</code> will  disable auto-saving due to idleness.
@@ -1202,9 +1202,9 @@ what was changed in that version.
 <p>  The file that is maintained under version control is sometimes called
 the <em>work file</em> corresponding to its master file.
 </p>
-<a name="IDX584"></a>
-<a name="IDX585"></a>
-<a name="IDX586"></a>
+<a name="index-checking-out-files"></a>
+<a name="index-checking-in-files"></a>
+<a name="index-locking-and-version-control"></a>
 <p>   To examine a file, you <em>check it out</em>.  This extracts a version
 of the source file (typically, the most recent) from the master file.
 If you want to edit the file, you must check it out <em>locked</em>.  Only
@@ -1277,13 +1277,13 @@ This undoes your last check-in.
 <p>(<kbd>C-x v</kbd> is the prefix key for version control commands; all of these
 commands except for <kbd>C-x C-q</kbd> start with <kbd>C-x v</kbd>.)
 </p>
-<a name="IDX587"></a>
+<a name="index-C_002dx-C_002dq-_0028version-control_0029"></a>
 <p>  When you want to modify a file maintained with version control, type
 <kbd>C-x C-q</kbd> (<code>vc-toggle-read-only</code>).  This <em>checks out</em> the
 file, and tells RCS or SCCS to lock the file.  This means making the
 file writable for you (but not for anyone else).
 </p>
-<a name="IDX588"></a>
+<a name="index-log-entry"></a>
 <p>  When you are finished editing the file, type <kbd>C-x C-q</kbd> again.
 When used on a file that is checked out, this command checks the file
 in.  But check-in does not start immediately; first, you must enter the
@@ -1295,13 +1295,13 @@ when actual check-in takes place.
 <p>  Once you have checked in your changes, the file is unlocked, so that
 other users can lock it and modify it.
 </p>
-<a name="IDX589"></a>
+<a name="index-vc_002dmake_002dbackup_002dfiles"></a>
 <p>  Emacs does not save backup files for source files that are maintained
 with version control.  If you want to make backup files despite version
 control, set the variable <code>vc-make-backup-files</code> to a
 non-<code>nil</code> value.
 </p>
-<a name="IDX590"></a>
+<a name="index-vc_002dkeep_002dworkfiles"></a>
 <p>  Normally the work file exists all the time, whether it is locked or
 not.  If you set <code>vc-keep-workfiles</code> to <code>nil</code>, then checking
 in a new version with <kbd>C-x C-q</kbd> deletes the work file; but any
@@ -1315,8 +1315,8 @@ formerly locked the file, to inform him of what has happened.  The mode
 line indicates that a file is locked by someone else by displaying the
 login name of that person, before the version number.
 </p>
-<a name="IDX591"></a>
-<a name="IDX592"></a>
+<a name="index-C_002dx-v-u"></a>
+<a name="index-vc_002drevert_002dbuffer"></a>
 <p>  If you want to discard your current set of changes and revert to the
 last version checked in, use <kbd>C-x v u</kbd> (<code>vc-revert-buffer</code>).
 This cancels your last check-out, leaving the file unlocked.  If you want
@@ -1327,8 +1327,8 @@ you haven&rsquo;t made any changes since the last checked-in version.
 <p>  <kbd>C-x v u</kbd> is also the command to use if you lock a file and then
 don&rsquo;t actually change it.
 </p>
-<a name="IDX593"></a>
-<a name="IDX594"></a>
+<a name="index-C_002dx-v-c"></a>
+<a name="index-vc_002dcancel_002dversion"></a>
 <p>  You can cancel a change after checking it in, with <kbd>C-x v c</kbd>
 (<code>vc-cancel-version</code>).  This command discards all record of the
 most recent checked in version, so be careful about using it.  It
@@ -1345,9 +1345,9 @@ erroneous check-in, fix the error, and repeat the check-in.
 lot of work with it.  To help you be careful, this command always
 requires confirmation with &lsquo;<samp>yes</samp>&rsquo;.
 </p>
-<a name="IDX595"></a>
-<a name="IDX596"></a>
-<a name="IDX597"></a>
+<a name="index-C_002dx-v-i"></a>
+<a name="index-vc_002dregister"></a>
+<a name="index-vc_002ddefault_002dback_002dend"></a>
 <p>  You can register the visited file for version control using
 <kbd>C-x v i</kbd> (<code>vc-register</code>).  If the variable
 <code>vc-default-back-end</code> is non-<code>nil</code>, it specifies which
@@ -1360,13 +1360,13 @@ edit it.
 different number, give <kbd>C-x v i</kbd> a prefix argument; then it reads
 the initial version number using the minibuffer.
 </p>
-<a name="IDX598"></a>
+<a name="index-vc_002dinitial_002dcomment"></a>
 <p>  If <code>vc-initial-comment</code> is non-<code>nil</code>, <kbd>C-x v i</kbd> reads
 an initial comment (much like a log entry) to describe the purpose of
 this source file.
 </p>
-<a name="IDX599"></a>
-<a name="IDX600"></a>
+<a name="index-C_002du-C_002dx-v-v"></a>
+<a name="index-vc_002dnext_002daction"></a>
 <p>  To specify the version number for a subsequent checkin, use the
 command <kbd>C-u C-x v v</kbd>.  <kbd>C-x v v</kbd> (<code>vc-next-action</code>) is the
 command that <kbd>C-x C-q</kbd> uses to do the &ldquo;real work&rdquo; when the visited
@@ -1400,7 +1400,7 @@ and <kbd>C-x v i</kbd> can save the current buffer without asking, and
 (This variable does not affect <kbd>C-x v c</kbd>; that is so drastic
 that it should always ask for confirmation.)
 </p>
-<a name="IDX601"></a>
+<a name="index-vc_002dcommand_002dmessages"></a>
 <p>  VC mode does much of its work by running the shell commands for RCS
 and SCCS.  If <code>vc-command-messages</code> is non-<code>nil</code>, VC displays
 messages to indicate which shell commands it runs, and additional
@@ -1412,7 +1412,7 @@ fast.  However, if the &lsquo;<tt>RCS</tt>&rsquo; or &lsquo;<tt>SCCS</tt>&rsquo;
 actually a symbolic link, then VC does not trust the file permissions to
 reflect this status.
 </p>
-<a name="IDX602"></a>
+<a name="index-vc_002dmistrust_002dpermissions"></a>
 <p>You can specify the criterion for whether to trust the file permissions
 by setting the variable <code>vc-mistrust-permissions</code>.  Its value may
 be <code>t</code> (always mistrust the file permissions and check the master
@@ -1425,7 +1425,7 @@ value from the function says to mistrust the file permissions.
 erroneously, set <code>vc-mistrust-permissions</code> to <code>t</code>.  Then VC
 always checks the master file to determine the file&rsquo;s status.
 </p>
-<a name="IDX603"></a>
+<a name="index-vc_002dpath"></a>
 <p>  You can specify additional directories to search for version control
 programs by setting the variable <code>vc-path</code>.  These directories
 are searched before the usual search path.  The proper result usually
@@ -1475,7 +1475,7 @@ this, use the history of previous log entries.  The commands <kbd>M-n</kbd>,
 minibuffer history commands (except that these versions are used outside
 the minibuffer).
 </p>
-<a name="IDX604"></a>
+<a name="index-vc_002dlog_002dmode_002dhook"></a>
 <p>  Each time you check in a file, the log entry buffer is put into VC Log
 mode, which involves running two hooks: <code>text-mode-hook</code> and
 <code>vc-log-mode-hook</code>.
@@ -1507,8 +1507,8 @@ automatically from the version control log entries:
 </p>
 <dl compact="compact">
 <dt> <kbd>C-x v a</kbd></dt>
-<dd><a name="IDX605"></a>
-<a name="IDX606"></a>
+<dd><a name="index-C_002dx-v-a"></a>
+<a name="index-vc_002dupdate_002dchange_002dlog"></a>
 <p>Visit the current directory&rsquo;s change log file and create new entries for
 versions checked in since the most recent entry in the change log file
 (<code>vc-update-change-log</code>).
@@ -1631,16 +1631,16 @@ of the file.
 </p></dd>
 </dl>
 
-<a name="IDX607"></a>
-<a name="IDX608"></a>
+<a name="index-vc_002dversion_002dother_002dwindow"></a>
+<a name="index-C_002dx-v-_007e"></a>
 <p>  You can examine any version of a file by first visiting it, and then
 using <kbd>C-x v ~ <var>version</var> &lt;RET&gt;</kbd>
 (<code>vc-version-other-window</code>).  This puts the text of version
 <var>version</var> in a file named &lsquo;<tt><var>filename</var>.~<var>version</var>~</tt>&rsquo;,
 then visits it in a separate window.
 </p>
-<a name="IDX609"></a>
-<a name="IDX610"></a>
+<a name="index-vc_002ddiff"></a>
+<a name="index-C_002dx-v-_003d"></a>
 <p>  To compare two versions of a file, use the command <kbd>C-x v =</kbd>
 (<code>vc-diff</code>).
 </p>
@@ -1692,8 +1692,8 @@ type <kbd>C-x v l</kbd> (<code>vc-print-log</code>).  It displays the history of
 changes to the current file, including the text of the log entries.  The
 output appears in a separate window.
 </p>
-<a name="IDX611"></a>
-<a name="IDX612"></a>
+<a name="index-C_002dx-v-d"></a>
+<a name="index-vc_002ddirectory"></a>
 <p>  When you are working on a large program, it&rsquo;s often useful to find all
 the files that are currently locked, or all the files maintained in
 version control at all.  You can use <kbd>C-x v d</kbd> (<code>vc-directory</code>)
@@ -1807,16 +1807,16 @@ system that is ready for distribution to users.
 snapshot with a given name, the other retrieves a named snapshot.
 </p>
 <dl compact="compact">
-<dd><a name="IDX613"></a>
-<a name="IDX614"></a>
+<dd><a name="index-C_002dx-v-s"></a>
+<a name="index-vc_002dcreate_002dsnapshot"></a>
 </dd>
 <dt> <code>C-x v s <var>name</var> &lt;RET&gt;</code></dt>
 <dd><p>Define the last saved versions of every registered file in or under the
 current directory as a snapshot named <var>name</var>
 (<code>vc-create-snapshot</code>).
 </p>
-<a name="IDX615"></a>
-<a name="IDX616"></a>
+<a name="index-C_002dx-v-r"></a>
+<a name="index-vc_002dretrieve_002dsnapshot"></a>
 </dd>
 <dt> <code>C-x v r <var>name</var> &lt;RET&gt;</code></dt>
 <dd><p>Check out all registered files at or below the current directory level
@@ -1917,8 +1917,8 @@ directly into working files.  Certain special strings called
 <em>version headers</em> are replaced in each successive version by the
 number of that version.
 </p>
-<a name="IDX617"></a>
-<a name="IDX618"></a>
+<a name="index-C_002dx-v-h"></a>
+<a name="index-vc_002dinsert_002dheaders"></a>
 <p>  You can use the <kbd>C-x v h</kbd> command (<code>vc-insert-headers</code>) to
 insert a suitable header string.
 </p>
@@ -1928,7 +1928,7 @@ insert a suitable header string.
 </p></dd>
 </dl>
 
-<a name="IDX619"></a>
+<a name="index-vc_002dheader_002dalist"></a>
 <p>  The default header string is &lsquo;<samp>\$Id\$</samp>&rsquo; for RCS and &lsquo;<samp>\%W\%</samp>&rsquo;
 for SCCS. (The actual strings inserted do not have the backslashes
 in them.  They were placed in the Info source file so that the
@@ -1948,7 +1948,7 @@ the strings that you put in this variable.  This is to prevent the
 string in the constant from being interpreted as a header itself if the
 Emacs Lisp file containing it is maintained with version control.
 </p>
-<a name="IDX620"></a>
+<a name="index-vc_002dcomment_002dalist"></a>
 <p>  Each header is inserted surrounded by tabs, inside comment delimiters,
 on a new line at the start of the buffer.  Normally the ordinary comment
 start and comment end strings of the current mode are used, but for
@@ -1956,7 +1956,7 @@ certain modes, there are special comment delimiters for this purpose;
 the variable <code>vc-comment-alist</code> specifies them.  Each element of
 this list has the form <code>(<var>mode</var> <var>starter</var> <var>ender</var>)</code>.
 </p>
-<a name="IDX621"></a>
+<a name="index-vc_002dstatic_002dheader_002dalist"></a>
 <p>  The variable <code>vc-static-header-alist</code> specifies further strings
 to add based on the name of the buffer.  Its value should be a list of
 elements of the form <code>(<var>regexp</var> . <var>format</var>)</code>.  Whenever
@@ -2015,8 +2015,8 @@ directory listings in brief format (file names only) and verbose format
 </p></dd>
 </dl>
 
-<a name="IDX622"></a>
-<a name="IDX623"></a>
+<a name="index-list_002ddirectory"></a>
+<a name="index-C_002dx-C_002dd"></a>
 <p>  To print a directory listing, use <kbd>C-x C-d</kbd>
 (<code>list-directory</code>).  This command prompts in the minibuffer for a
 file name which is either a  directory to be listed or pattern
@@ -2035,8 +2035,8 @@ specifying a file name pattern is:
 file names.  A numeric argument (regardless of value) tells it to print a
 verbose listing (like <code>ls -l</code>).
 </p>
-<a name="IDX624"></a>
-<a name="IDX625"></a>
+<a name="index-list_002ddirectory_002dbrief_002dswitches"></a>
+<a name="index-list_002ddirectory_002dverbose_002dswitches"></a>
 <p>  Emacs obtains the text of a directory listing by running <code>ls</code> in
 an inferior process.  Two Emacs variables control the switches passed to
 <code>ls</code>: <code>list-directory-brief-switches</code> is a string giving the
@@ -2089,14 +2089,14 @@ also use the other special commands of Compilation mode: &lt;SPC&gt; and
 &lt;DEL&gt; for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
 See section <a href="xemacs_25.html#Compilation">Running &ldquo;make&rdquo;, or Compilers Generally</a>.
 </p>
-<a name="IDX626"></a>
+<a name="index-diff_002dbackup"></a>
 <p>  The command <kbd>M-x diff-backup</kbd> compares a specified file with its most
 recent backup.  If you specify the name of a backup file,
 <code>diff-backup</code> compares it with the source file that it is a backup
 of.
 </p>
-<a name="IDX627"></a>
-<a name="IDX628"></a>
+<a name="index-compare_002dwindows"></a>
+<a name="index-comparing-files"></a>
 <p>  The command <kbd>M-x compare-windows</kbd> compares the text in the current
 window with that in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time in each
@@ -2104,7 +2104,7 @@ window, until the next characters in the two windows are different.  Then
 the command is finished.  For more information about windows in Emacs,
 <a href="xemacs_19.html#Windows">Multiple Windows</a>.
 </p>
-<a name="IDX629"></a>
+<a name="index-compare_002dignore_002dcase"></a>
 <p>  With a numeric argument, <code>compare-windows</code> ignores changes in
 whitespace.  If the variable <code>compare-ignore-case</code> is
 non-<code>nil</code>, it ignores differences in case as well.
@@ -2177,8 +2177,8 @@ available in it.  The variable <code>dired-listing-switches</code> is a string
 used as an argument to <code>ls</code> in making the directory; this string
 <i>must</i> contain &lsquo;<samp>-l</samp>&rsquo;.
 </p>
-<a name="IDX630"></a>
-<a name="IDX631"></a>
+<a name="index-dired_002dother_002dwindow"></a>
+<a name="index-C_002dx-4-d"></a>
 <p>  To display the Dired buffer in another window rather than in the selected
 window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd>C-x d</kbd>.
 </p>
@@ -2315,7 +2315,7 @@ auto-saving (that is, files whose names begin and end with &lsquo;<samp>#</samp>
 backups for files that were edited (that is, files whose names end with
 &lsquo;<samp>~</samp>&rsquo;).
 </p>
-<a name="IDX632"></a>
+<a name="index-dired_002dkept_002dversions"></a>
 <p>  <kbd>.</kbd> (Period) flags just some of the backup files for deletion: only
 numeric backups that are not among the oldest few nor the newest few
 backups of any one file.  Normally <code>dired-kept-versions</code> (not
@@ -2404,34 +2404,34 @@ directory.
 <p>  Emacs has commands for performing many other operations on files.
 All operate on one file; they do not accept wildcard file names.
 </p>
-<a name="IDX633"></a>
+<a name="index-add_002dname_002dto_002dfile"></a>
 <p>  You can use the command <kbd>M-x add-name-to-file</kbd> to add a name to an
 existing file without removing the old name.  The new name must belong
 on the file system that the file is on.
 </p>
-<a name="IDX634"></a>
+<a name="index-append_002dto_002dfile"></a>
 <p>  <kbd>M-x append-to-file</kbd> adds the text of the region to the end of the
 specified file.
 </p>
-<a name="IDX635"></a>
-<a name="IDX636"></a>
+<a name="index-copy_002dfile"></a>
+<a name="index-copying-files"></a>
 <p>  <kbd>M-x copy-file</kbd> reads the file <var>old</var> and writes a new file
 named <var>new</var> with the same contents.  Confirmation is required if a
 file named <var>new</var> already exists, because copying overwrites the old
 contents of the file <var>new</var>.
 </p>
-<a name="IDX637"></a>
-<a name="IDX638"></a>
+<a name="index-delete_002dfile"></a>
+<a name="index-deletion-_0028of-files_0029"></a>
 <p>  <kbd>M-x delete-file</kbd> deletes a specified file, like the <code>rm</code>
 command in the shell.  If you are deleting many files in one directory, it
 may be more convenient to use Dired (see section <a href="#Dired">Dired, the Directory Editor</a>).
 </p>
-<a name="IDX639"></a>
+<a name="index-insert_002dfile"></a>
 <p>  <kbd>M-x insert-file</kbd> inserts a copy of the contents of a specified
 file into the current buffer at point, leaving point unchanged before the
 contents and the mark after them.  See section <a href="xemacs_12.html#Mark">Selecting Text</a>.
 </p>
-<a name="IDX640"></a>
+<a name="index-make_002dsymbolic_002dlink"></a>
 <p>  <kbd>M-x make-symbolic-link</kbd> reads two file names <var>old</var> and
 <var>linkname</var>, and then creates a symbolic link named <var>linkname</var>
 and pointing at <var>old</var>.  Future attempts to open file
@@ -2441,7 +2441,7 @@ not in use at that time.  Confirmation is required if you create the
 link while <var>linkname</var> is in use.  Note that not all systems support
 symbolic links.
 </p>
-<a name="IDX641"></a>
+<a name="index-rename_002dfile"></a>
 <p>  <kbd>M-x rename-file</kbd> reads two file names <var>old</var> and <var>new</var> using
 the minibuffer, then renames file <var>old</var> as <var>new</var>.  If a file named
 <var>new</var> already exists, you must confirm with <kbd>yes</kbd> or renaming is not
@@ -2449,8 +2449,8 @@ done; this is because renaming causes the previous meaning of the
 name <var>new</var> to be lost.  If <var>old</var> and <var>new</var> are on different 
 file systems, the file <var>old</var> is copied and deleted.
 </p>
-<a name="IDX642"></a>
-<a name="IDX643"></a>
+<a name="index-view_002dfile"></a>
+<a name="index-viewing"></a>
 <p>  <kbd>M-x view-file</kbd> allows you to scan or read a file by sequential
 screenfuls.  It reads a file name argument using the minibuffer.  After
 reading the file into an Emacs buffer, <code>view-file</code> reads and displays

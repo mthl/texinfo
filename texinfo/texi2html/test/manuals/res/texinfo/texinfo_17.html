@@ -133,7 +133,7 @@ Substituting text for all formats, and testing if a flag is set or clear.
 <p>Texinfo has a pair of commands for each output format, to allow
 conditional inclusion of text for a particular output format.
 </p>
-<a name="IDX287"></a>
+<a name="index-ifinfo"></a>
 <p><code>@ifinfo</code> begins segments of text that should be ignored by TeX
 when it typesets the printed manual.  The segment of text appears only
 in the Info file and (for historical compatibility) the plain text
@@ -141,9 +141,9 @@ output.  The <code>@ifinfo</code> command should appear on a line by itself;
 end the Info-only text with a line containing <code>@end ifinfo</code> by
 itself.
 </p>
-<a name="IDX288"></a>
-<a name="IDX289"></a>
-<a name="IDX290"></a>
+<a name="index-iftex"></a>
+<a name="index-ifhtml"></a>
+<a name="index-ifplaintext"></a>
 <p>The <code>@iftex</code> and <code>@end iftex</code> commands are analogous to the
 <code>@ifinfo</code> and <code>@end ifinfo</code> commands; they specify text that
 will appear in the printed manual but not in the Info file.  Likewise
@@ -257,7 +257,7 @@ command.)
 <p>However, many features of plain TeX will not work, as they are
 overridden by Texinfo features.
 </p>
-<a name="IDX291"></a>
+<a name="index-tex"></a>
 <p>You can enter plain TeX completely, and use &lsquo;<samp>\</samp>&rsquo; in the TeX
 commands, by delineating a region with the <code>@tex</code> and <code>@end
 tex</code> commands.  (The <code>@tex</code> command also causes Info to ignore the
@@ -265,7 +265,7 @@ region, like the <code>@iftex</code> command.)  The sole exception is that the
 <code>@</code> character still introduces a command, so that <code>@end tex</code>
 can be recognized properly.
 </p>
-<a name="IDX292"></a>
+<a name="index-Mathematical-expressions"></a>
 <p>For example, here is a mathematical expression written in
 plain TeX:
 </p>
@@ -281,8 +281,8 @@ you are reading this in Info, you will not see the equation that appears
 in the printed manual.
 </p>
 
-<a name="IDX293"></a>
-<a name="IDX294"></a>
+<a name="index-ifhtml-1"></a>
+<a name="index-html"></a>
 <p>Analogously, you can use <code>@ifhtml &hellip; @end ifhtml</code> to delimit
 a region to be included in HTML output only, and <code>@html &hellip;
 @end html</code> for a region of raw HTML (again, except that <code>@</code> is
@@ -471,7 +471,7 @@ and <code>@end ifset</code> commands, like this:
 <p>For example, you can create one document that has two variants, such as
 a manual for a &lsquo;large&rsquo; and &lsquo;small&rsquo; model:
 </p>
-<a name="IDX295"></a>
+<a name="index-shrubbery"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">You can use this machine to dig up shrubs
 without hurting them.
 
@@ -502,7 +502,7 @@ printed and Info output, you see only the lines that say, &ldquo;You can use
 this machine to dig up shrubs without hurting them.  Remember to replant
 promptly &hellip;&rdquo;.
 </p>
-<a name="IDX296"></a>
+<a name="index-ifclear"></a>
 <p>If a flag is cleared with an <code>@clear <var>flag</var></code> command, then
 the formatting commands format text between subsequent pairs of
 <code>@ifclear</code> and <code>@end ifclear</code> commands.  But if the flag

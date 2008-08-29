@@ -16,14 +16,14 @@ Text line followed by a comment on the same line and another below @c comment @t
 
 
 
-@pagesizes @pagesizes{}
+@pagesizes 200mm,150mm
 @afourpaper
-@headings on line following headings @text{}
-@oddfooting some text ignored @text{}
-@everyheading on line following everyheading @text{}
+@headings on line following headings atext
+@oddfooting some text ignored atext
+@everyheading on line following everyheading atext
 
 
-@need @need{}
+@need 0.1
 
 @raisesections
 @lowersections
@@ -32,22 +32,20 @@ Text line followed by a comment on the same line and another below @c comment @t
 @@definfoenclose phoo,//,\\  
 //bar\\
 
-phi,:,:
 
 @c this is required
 
-@phi{bar}
+:bar:
 
 
 @strong{very strong}
 
-strong,(strong:,:)
 
-@strong{ is it really strong? }
+(strong: is it really strong? :)
 
 @kbd{something before kbdinputstyle}
 
-@kbdinputstyle @kbdinputstyle_arg{}
+@kbdinputstyle code
 
 @kbd{truc}
 
@@ -56,29 +54,29 @@ strong,(strong:,:)
 @end example
 
 
-@paragraphindent @asis_arg{}
-@paragraphindent @zero{}
-@paragraphindent @none_arg{}
-@paragraphindent @four{}
-@firstparagraphindent @none_arg{}
-@exampleindent @six{}
+@paragraphindent asis
+@paragraphindent 0
+@paragraphindent none
+@paragraphindent 4
+@firstparagraphindent none
+@exampleindent 6
 
-@footnotestyle @end_arg{}
-@footnotestyle @separate_arg{}
+@footnotestyle end
+@footnotestyle separate 
 
-@documentencoding @latin1{}
+@documentencoding ISO-8859-1
 
-@frenchspacing @on_arg{}
-@frenchspacing @off_arg{}
+@frenchspacing on
+@frenchspacing off
 
 @c accepts 10 or 11
-@fonttextsize @ten{}
+@fonttextsize 10
 @c accept false or true
 @c makeinfo don't care about the arg and remove the remainiing of the line
-@allowcodebreaks @false_arg{}
+@allowcodebreaks false
 @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
-@allowcodebreaks @true_arg{}
+@allowcodebreaks true
 @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
 @subheading command removed
@@ -111,10 +109,10 @@ Unknown ???
 
 And now sp:
 
-@sp @two{}
+@sp 2
 
 
-@clickstyle @result_macro{}
+@clickstyle @result
 
 @menu
 * node atext::

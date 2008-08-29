@@ -137,7 +137,7 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 window that is displaying the buffer, XEmacs shows a contiguous section of
 the text.  The section shown always contains point.
 </p>
-<a name="IDX383"></a>
+<a name="index-scrolling"></a>
 <p>  <em>Scrolling</em> means moving text up or down in the window so that
 different parts of the text are visible.  Scrolling forward means that text
 moves up, and new text appears at the bottom.  Scrolling backward moves
@@ -167,21 +167,21 @@ point vertically within it (<code>recenter</code>).
 </p></dd>
 </dl>
 
-<a name="IDX384"></a>
-<a name="IDX385"></a>
+<a name="index-C_002dl-1"></a>
+<a name="index-recenter-1"></a>
 <p>  The most basic scrolling command is <kbd>C-l</kbd> (<code>recenter</code>) with no
 argument.  It clears the entire frame and redisplays all windows.  In
 addition, it scrolls the selected window so that point is halfway down
 from the top of the window.
 </p>
-<a name="IDX386"></a>
-<a name="IDX387"></a>
-<a name="IDX388"></a>
-<a name="IDX389"></a>
-<a name="IDX390"></a>
-<a name="IDX391"></a>
-<a name="IDX392"></a>
-<a name="IDX393"></a>
+<a name="index-C_002dv-1"></a>
+<a name="index-M_002dv-1"></a>
+<a name="index-pgup"></a>
+<a name="index-pgdn"></a>
+<a name="index-next"></a>
+<a name="index-prior"></a>
+<a name="index-scroll_002dup"></a>
+<a name="index-scroll_002ddown"></a>
 <p>  The scrolling commands <kbd>C-v</kbd> and <kbd>M-v</kbd> let you move all the text
 in the window up or down a few lines.  <kbd>C-v</kbd> (<code>scroll-up</code>) with an
 argument shows you that many more lines at the bottom of the window, moving
@@ -190,7 +190,7 @@ negative argument shows you more lines at the top of the window.
 <kbd>Meta-v</kbd> (<code>scroll-down</code>) is like <kbd>C-v</kbd>, but moves in the
 opposite direction.
 </p>
-<a name="IDX394"></a>
+<a name="index-next_002dscreen_002dcontext_002dlines"></a>
 <p>  To read the buffer a windowful at a time, use <kbd>C-v</kbd> with no
 argument.  <kbd>C-v</kbd> takes the last two lines at the bottom of the
 window and puts them at the top, followed by nearly a whole windowful of
@@ -212,7 +212,7 @@ point on the bottom line, and <kbd>C-u - 5 C-l</kbd> puts it five lines from
 the bottom.  Just <kbd>C-u</kbd> as argument, as in <kbd>C-u C-l</kbd>, scrolls
 point to the center of the frame.
 </p>
-<a name="IDX395"></a>
+<a name="index-scroll_002dstep"></a>
 <p>  Scrolling happens automatically if point has moved out of the visible
 portion of the text when it is time to display.  Usually scrolling is
 done  to put point vertically centered within the window.  However, if
@@ -227,7 +227,7 @@ the variable <code>scroll-step</code> has a non-zero value, an attempt is made t
 scroll the buffer by that many lines; if that is enough to bring point back
 into visibility, that is what happens.
 </p>
-<a name="IDX396"></a>
+<a name="index-scroll_002dconservatively"></a>
 <p>  If you set <code>scroll-step</code> to a small value because you want to use 
 arrow keys to scroll the screen without recentering, the redisplay
 preemption will likely make XEmacs keep recentering the screen when
@@ -265,11 +265,11 @@ result of overriding the redisplay preemption.
 </p></dd>
 </dl>
 
-<a name="IDX397"></a>
-<a name="IDX398"></a>
-<a name="IDX399"></a>
-<a name="IDX400"></a>
-<a name="IDX401"></a>
+<a name="index-C_002dx-_003c"></a>
+<a name="index-C_002dx-_003e"></a>
+<a name="index-scroll_002dleft"></a>
+<a name="index-scroll_002dright"></a>
+<a name="index-horizontal-scrolling"></a>
 <p>  The text in a window can also be scrolled horizontally.  This means that
 each line of text is shifted sideways in the window, and one or more
 characters at the beginning of each line are not displayed at all.  When a
@@ -354,7 +354,7 @@ as if they were not there.
 <p>  This section contains information for customization only.  Beginning
 users should skip it.
 </p>
-<a name="IDX402"></a>
+<a name="index-no_002dredraw_002don_002dreenter"></a>
 <p>  When you reenter XEmacs after suspending, XEmacs normally clears the
 screen and redraws the entire display.  On some terminals with more than
 one page of memory, it is possible to arrange the termcap entry so that
@@ -365,12 +365,12 @@ case, you might want to set the variable <code>no-redraw-on-reenter</code> to
 non-<code>nil</code> so that XEmacs will assume, when resumed, that the screen
 page it is using still contains what XEmacs last wrote there.
 </p>
-<a name="IDX403"></a>
+<a name="index-echo_002dkeystrokes"></a>
 <p>  The variable <code>echo-keystrokes</code> controls the echoing of multi-character
 keys; its value is the number of seconds of pause required to cause echoing
 to start, or zero, meaning don&rsquo;t echo at all.  See section <a href="xemacs_4.html#Echo-Area">The Echo Area</a>.
 </p>
-<a name="IDX404"></a>
+<a name="index-ctl_002darrow"></a>
 <p>  If the variable <code>ctl-arrow</code> is <code>nil</code>, control characters in the
 buffer are displayed with octal escape sequences, all except newline and
 tab.  If its value is <code>t</code>, then control characters will be printed 
@@ -388,7 +388,7 @@ equal to that value will be assumed to be printable.
 <p>Altering the value of <code>ctl-arrow</code> makes it local to the current
 buffer; until that time, the default value is in effect.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
-<a name="IDX405"></a>
+<a name="index-tab_002dwidth"></a>
 <p>  Normally, a tab character in the buffer is displayed as whitespace which
 extends to the next display tab stop position, and display tab stops come
 at intervals equal to eight spaces.  The number of spaces per tab is
@@ -397,7 +397,7 @@ changing it, just like <code>ctl-arrow</code>.  Note that how the tab character
 in the buffer is displayed has nothing to do with the definition of
 &lt;TAB&gt; as a command.
 </p>
-<a name="IDX406"></a>
+<a name="index-selective_002ddisplay_002dellipses"></a>
 <p>  If you set the variable <code>selective-display-ellipses</code> to <code>nil</code>,
 the three dots at the end of a line that precedes invisible
 lines do not appear.  There is no visible indication of the invisible lines.

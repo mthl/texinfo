@@ -136,7 +136,7 @@ with comments in programs are turned off unless they are explicitly invoked.
 The syntax table is changed so that periods are not considered part of a
 word, while apostrophes, backspaces and underlines are.
 </p>
-<a name="IDX760"></a>
+<a name="index-indented_002dtext_002dmode"></a>
 <p>  A similar variant mode is Indented Text mode, intended for editing
 text in which most lines are indented.  This mode defines &lt;TAB&gt; to
 run <code>indent-relative</code> (see section <a href="xemacs_22.html#Indentation">Indentation</a>), and makes Auto Fill
@@ -144,7 +144,7 @@ indent the lines it creates.  As a result, a line made by Auto Filling,
 or by &lt;LFD&gt;, is normally indented just like the previous line.  Use
 <kbd>M-x indented-text-mode</kbd> to select this mode.
 </p>
-<a name="IDX761"></a>
+<a name="index-text_002dmode_002dhook"></a>
 <p>  Entering Text mode or Indented Text mode calls the value of the
 variable <code>text-mode-hook</code> with no arguments, if that value exists
 and is not <code>nil</code>.  This value is also called when modes related to
@@ -202,12 +202,12 @@ garbles the nroff commands.  Pages are separated by &lsquo;<samp>.bp</samp>&rsqu
 Comments start with backslash-doublequote.  There are also three special
 commands that are not available in Text mode:
 </p>
-<a name="IDX762"></a>
-<a name="IDX763"></a>
-<a name="IDX764"></a>
-<a name="IDX765"></a>
-<a name="IDX766"></a>
-<a name="IDX767"></a>
+<a name="index-forward_002dtext_002dline"></a>
+<a name="index-backward_002dtext_002dline"></a>
+<a name="index-count_002dtext_002dlines"></a>
+<a name="index-M_002dn-1"></a>
+<a name="index-M_002dp-1"></a>
+<a name="index-M_002d_003f"></a>
 <dl compact="compact">
 <dt> <kbd>M-n</kbd></dt>
 <dd><p>Move to the beginning of the next line that isn&rsquo;t an nroff command
@@ -222,7 +222,7 @@ nroff commands) in the region (<code>count-text-lines</code>).
 </p></dd>
 </dl>
 
-<a name="IDX768"></a>
+<a name="index-electric_002dnroff_002dmode"></a>
 <p>  The other feature of Nroff mode is Electric Nroff newline mode.  
 This is a minor mode that you can turn on or off with
 <kbd>M-x electric-nroff-mode</kbd> (see section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>).  When the mode is
@@ -233,7 +233,7 @@ example, if you are at the beginning of a line and type <kbd>.(b
 &lt;RET&gt;</kbd>, the matching command &lsquo;<samp>.)b</samp>&rsquo; will be inserted on a new
 line following point.
 </p>
-<a name="IDX769"></a>
+<a name="index-nroff_002dmode_002dhook"></a>
 <p>  Entering Nroff mode calls the value of the variable
 <code>text-mode-hook</code> with no arguments, if that value exists and is not
 <code>nil</code>; then it does the same with the variable
@@ -360,8 +360,8 @@ paragraph for unbalanced braces or dollar signs
 </p></dd>
 </dl>
 
-<a name="IDX770"></a>
-<a name="IDX771"></a>
+<a name="index-tex_002dinsert_002dquote"></a>
+<a name="index-_0022-_0028TeX-mode_0029"></a>
 <p>  In TeX, the character &lsquo;<samp>&quot;</samp>&rsquo; is not normally used; you use &lsquo;<samp>``</samp>&rsquo;
 to start a quotation and &lsquo;<samp>''</samp>&rsquo; to end one.  TeX mode defines the key
 <kbd>&quot;</kbd> to insert &lsquo;<samp>``</samp>&rsquo; after whitespace or an open brace, &lsquo;<samp>&quot;</samp>&rsquo;
@@ -380,19 +380,19 @@ math mode or leaves it; so when you insert a &lsquo;<samp>$</samp>&rsquo; that e
 mode, the previous &lsquo;<samp>$</samp>&rsquo; position is shown as if it were a match, even
 though they are actually unrelated.
 </p>
-<a name="IDX772"></a>
-<a name="IDX773"></a>
-<a name="IDX774"></a>
-<a name="IDX775"></a>
+<a name="index-tex_002dinsert_002dbraces"></a>
+<a name="index-C_002dc-_007b-_0028TeX-mode_0029"></a>
+<a name="index-up_002dlist"></a>
+<a name="index-C_002dc-_007d-_0028TeX-mode_0029"></a>
 <p>  If you prefer to keep braces balanced at all times, you can use <kbd>C-c {</kbd>
 (<code>tex-insert-braces</code>) to insert a pair of braces.  It leaves point
 between the two braces so you can insert the text that belongs inside.
 Afterward, use the command <kbd>C-c }</kbd> (<code>up-list</code>) to move forward
 past the close brace.
 </p>
-<a name="IDX776"></a>
-<a name="IDX777"></a>
-<a name="IDX778"></a>
+<a name="index-validate_002dtex_002dbuffer"></a>
+<a name="index-tex_002dterminate_002dparagraph"></a>
+<a name="index-LFD-_0028TeX-mode_0029"></a>
 <p>  There are two commands for checking the matching of braces.  &lt;LFD&gt;
 (<code>tex-terminate-paragraph</code>) checks the paragraph before point, and
 inserts two newlines to start a new paragraph.  It prints a message in the
@@ -410,8 +410,8 @@ However, parentheses and square brackets are likely to be used in text as
 matching delimiters and it is useful for the various motion commands and
 automatic match display to work with them.
 </p>
-<a name="IDX779"></a>
-<a name="IDX780"></a>
+<a name="index-tex_002dclose_002dlatex_002dblock"></a>
+<a name="index-C_002dc-C_002df-_0028LaTeX-mode_0029"></a>
 <p>  In LaTeX input, &lsquo;<samp>\begin</samp>&rsquo; and &lsquo;<samp>\end</samp>&rsquo; commands must balance.
 After you insert a &lsquo;<samp>\begin</samp>&rsquo;, use <kbd>C-c C-f</kbd>
 (<code>tex-close-latex-block</code>) to insert automatically a matching
@@ -468,22 +468,22 @@ the last line can be seen (<code>tex-recenter-output-buffer</code>).
 </p></dd>
 </dl>
 
-<a name="IDX781"></a>
-<a name="IDX782"></a>
-<a name="IDX783"></a>
-<a name="IDX784"></a>
-<a name="IDX785"></a>
-<a name="IDX786"></a>
+<a name="index-tex_002dbuffer"></a>
+<a name="index-C_002dc-C_002db-_0028TeX-mode_0029"></a>
+<a name="index-tex_002dprint"></a>
+<a name="index-C_002dc-C_002dp-_0028TeX-mode_0029"></a>
+<a name="index-tex_002dshow_002dprint_002dqueue"></a>
+<a name="index-C_002dc-C_002dq-_0028TeX-mode_0029"></a>
 <p>  You can pass the current buffer through an inferior TeX using
 <kbd>C-c C-b</kbd> (<code>tex-buffer</code>).  The formatted output appears in a file
 in &lsquo;<tt>/tmp</tt>&rsquo;; to print it, type <kbd>C-c C-p</kbd> (<code>tex-print</code>).
 Afterward use <kbd>C-c C-q</kbd> (<code>tex-show-print-queue</code>) to view the
 progress of your output towards being printed.
 </p>
-<a name="IDX787"></a>
-<a name="IDX788"></a>
-<a name="IDX789"></a>
-<a name="IDX790"></a>
+<a name="index-tex_002dkill_002djob"></a>
+<a name="index-C_002dc-C_002dk-_0028TeX-mode_0029"></a>
+<a name="index-tex_002drecenter_002doutput_002dbuffer"></a>
+<a name="index-C_002dc-C_002dl-_0028TeX-mode_0029"></a>
 <p>  The console output from TeX, including any error messages, appears in a
 buffer called &lsquo;<samp>*TeX-shell*</samp>&rsquo;.  If TeX gets an error, you can switch
 to this buffer and feed it input (this works as in Shell mode;
@@ -494,8 +494,8 @@ it so that its last line is visible by typing <kbd>C-c C-l</kbd>.
 you see that its output is no longer useful.  Using <kbd>C-c C-b</kbd> or
 <kbd>C-c C-r</kbd> also kills any TeX process still running.
 </p>
-<a name="IDX791"></a>
-<a name="IDX792"></a>
+<a name="index-tex_002dregion"></a>
+<a name="index-C_002dc-C_002dr-_0028TeX-mode_0029"></a>
 <p>  You can pass an arbitrary region through an inferior TeX by typing
 <kbd>C-c C-r</kbd> (<code>tex-region</code>).  This is tricky, however, because
 most files of TeX input contain commands at the beginning to set
@@ -505,7 +505,7 @@ to designate a part of the file as containing essential commands; it is
 included before the specified region as part of the input to TeX.
 The designated part of the file is called the <em>header</em>.
 </p>
-<a name="IDX793"></a>
+<a name="index-header-_0028TeX-mode_0029"></a>
 <p>  To indicate the bounds of the header in Plain TeX mode, insert two
 special strings in the file: &lsquo;<samp>%**start of header</samp>&rsquo; before the
 header, and &lsquo;<samp>%**end of header</samp>&rsquo; after it.  Each string must appear
@@ -519,9 +519,9 @@ with <br>&lsquo;<samp>\begin{document}</samp>&rsquo;.  These are commands that L
 you to use, so you don&rsquo;t need to do anything special to identify the
 header.
 </p>
-<a name="IDX794"></a>
-<a name="IDX795"></a>
-<a name="IDX796"></a>
+<a name="index-TeX_002dmode_002dhook"></a>
+<a name="index-LaTeX_002dmode_002dhook"></a>
+<a name="index-plain_002dTeX_002dmode_002dhook"></a>
 <p>  When you enter either kind of TeX mode, Emacs calls with no
 arguments the value of the variable <code>text-mode-hook</code>, if that value
 exists and is not <code>nil</code>.  Emacs then calls the variable
@@ -554,7 +554,7 @@ outlines.  It allows you to make parts of the text temporarily invisible
 so that you can see just the overall structure of the outline.  Type
 <kbd>M-x outline-mode</kbd> to turn on Outline mode in the current buffer.
 </p>
-<a name="IDX797"></a>
+<a name="index-outline_002dmode_002dhook"></a>
 <p>  When you enter Outline mode, Emacs calls with no arguments the value
 of the variable <code>text-mode-hook</code>, if that value exists and is not
 <code>nil</code>; then it does the same with the variable
@@ -638,7 +638,7 @@ A second first-level topic with its header line.
 collectively an <em>entry</em>.  A heading line together with all following
 deeper heading lines and their body lines is called a <em>subtree</em>.
 </p>
-<a name="IDX798"></a>
+<a name="index-outline_002dregexp"></a>
 <p> You can customize the criterion for distinguishing heading lines by
 setting the variable <code>outline-regexp</code>.  Any line whose beginning
 has a match for this regexp is considered a heading line.  Matches that
@@ -711,10 +711,10 @@ as the one point is on (<code>outline-forward-same-level</code>).
 </p></dd>
 </dl>
 
-<a name="IDX799"></a>
-<a name="IDX800"></a>
-<a name="IDX801"></a>
-<a name="IDX802"></a>
+<a name="index-outline_002dnext_002dvisible_002dheading"></a>
+<a name="index-outline_002dprevious_002dvisible_002dheading"></a>
+<a name="index-C_002dc-C_002dn-_0028Outline-mode_0029"></a>
+<a name="index-C_002dc-C_002dp-_0028Outline-mode_0029"></a>
 <p>  <kbd>C-c C-n</kbd> (<code>next-visible-heading</code>) moves down to the next
 heading line.  <kbd>C-c C-p</kbd> (<code>previous-visible-heading</code>) moves
 similarly backward.  Both accept numeric arguments as repeat counts.  The
@@ -722,12 +722,12 @@ names emphasize that invisible headings are skipped, but this is not really
 a special feature.  All editing commands that look for lines ignore the
 invisible lines automatically.
 </p>
-<a name="IDX803"></a>
-<a name="IDX804"></a>
-<a name="IDX805"></a>
-<a name="IDX806"></a>
-<a name="IDX807"></a>
-<a name="IDX808"></a>
+<a name="index-outline_002dup_002dheading"></a>
+<a name="index-outline_002dforward_002dsame_002dlevel"></a>
+<a name="index-outline_002dbackward_002dsame_002dlevel"></a>
+<a name="index-C_002dc-C_002df-_0028Outline-mode_0029"></a>
+<a name="index-C_002dc-C_002db-_0028Outline-mode_0029"></a>
+<a name="index-C_002dc-C_002du-_0028Outline-mode_0029"></a>
 <p>  More advanced motion commands understand the levels of headings.
 The commands <kbd>C-c C-f</kbd> (<code>outline-forward-same-level</code>) and
 <kbd>C-c C-b</kbd> (<code>outline-backward-same-level</code>) move from one
@@ -796,18 +796,18 @@ visible (<code>show-children</code>).
 </p></dd>
 </dl>
 
-<a name="IDX809"></a>
-<a name="IDX810"></a>
+<a name="index-hide_002dentry"></a>
+<a name="index-show_002dentry"></a>
 <p>  Two commands that are exact opposites are <kbd>M-x hide-entry</kbd> and
 <kbd>M-x show-entry</kbd>.  They are used with point on a heading line, and
 apply only to the body lines of that heading.  The subtopics and their
 bodies are not affected.
 </p>
-<a name="IDX811"></a>
-<a name="IDX812"></a>
-<a name="IDX813"></a>
-<a name="IDX814"></a>
-<a name="IDX815"></a>
+<a name="index-hide_002dsubtree"></a>
+<a name="index-show_002dsubtree"></a>
+<a name="index-C_002dc-C_002dd-_0028Outline-mode_0029"></a>
+<a name="index-C_002dc-C_002dh-_0028Outline-mode_0029"></a>
+<a name="index-subtree-_0028Outline-mode_0029"></a>
 <p>  Two more powerful opposites are <kbd>C-c C-d</kbd> (<code>hide-subtree</code>) and
 <kbd>C-c C-s</kbd> (<code>show-subtree</code>).  Both should be used when point is
 on a heading line, and both apply to all the lines of that heading&rsquo;s
@@ -816,30 +816,30 @@ all of their bodies.  In other words, the subtree contains everything
 following this heading line, up to and not including the next heading of
 the same or higher rank.
 </p>
-<a name="IDX816"></a>
-<a name="IDX817"></a>
+<a name="index-hide_002dleaves"></a>
+<a name="index-show_002dbranches"></a>
 <p>  Intermediate between a visible subtree and an invisible one is having
 all the subheadings visible but none of the body.  There are two commands
 for doing this, one that hides the bodies and one that
 makes the subheadings visible.  They are <kbd>M-x hide-leaves</kbd> and
 <kbd>M-x show-branches</kbd>.
 </p>
-<a name="IDX818"></a>
-<a name="IDX819"></a>
+<a name="index-C_002dc-C_002di-_0028Outline-mode_0029"></a>
+<a name="index-show_002dchildren"></a>
 <p>  A little weaker than <code>show-branches</code> is <kbd>C-c C-i</kbd>
 (<code>show-children</code>).  It makes just the direct subheadings
 visible&mdash;those one level down.  Deeper subheadings remain
 invisible.
 </p>
-<a name="IDX820"></a>
-<a name="IDX821"></a>
+<a name="index-hide_002dbody"></a>
+<a name="index-show_002dall"></a>
 <p>  Two commands have a blanket effect on the whole file.  <kbd>M-x
 hide-body</kbd> makes all body lines invisible, so that you see just the
 outline structure.  <kbd>M-x show-all</kbd> makes all lines visible.  You can
 think of these commands as a pair of opposites even though <kbd>M-x
 show-all</kbd> applies to more than just body lines.
 </p>
-<a name="IDX822"></a>
+<a name="index-selective_002ddisplay_002dellipses-1"></a>
 <p>You can turn off the use of ellipses at the ends of visible lines by
 setting <code>selective-display-ellipses</code> to <code>nil</code>.  The result is
 no visible indication of the presence of invisible lines.
@@ -895,10 +895,10 @@ character-based <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-d</kbd>, <kbd>C-t</kbd> a
 &lt;DEL&gt;.  <kbd>M-@</kbd> is related to <kbd>C-@</kbd>, which is an alias for
 <kbd>C-&lt;SPC&gt;</kbd>.
 </p>
-<a name="IDX823"></a>
-<a name="IDX824"></a>
-<a name="IDX825"></a>
-<a name="IDX826"></a>
+<a name="index-M_002df"></a>
+<a name="index-M_002db"></a>
+<a name="index-forward_002dword"></a>
+<a name="index-backward_002dword"></a>
 <p>  The commands <kbd>Meta-f</kbd> (<code>forward-word</code>) and <kbd>Meta-b</kbd>
 (<code>backward-word</code>) move forward and backward over words.  They are
 analogous to <kbd>Control-f</kbd> and <kbd>Control-b</kbd>, which move over single
@@ -908,8 +908,8 @@ negative argument moves backward, and <kbd>Meta-b</kbd> with a negative argument
 moves forward.  Forward motion stops after the last letter of the
 word, while backward motion stops before the first letter.
 </p>
-<a name="IDX827"></a>
-<a name="IDX828"></a>
+<a name="index-M_002dd"></a>
+<a name="index-kill_002dword"></a>
 <p>  <kbd>Meta-d</kbd> (<code>kill-word</code>) kills the word after point.  To be
 precise, it kills everything from point to the place <kbd>Meta-f</kbd> would
 move to.  Thus, if point is in the middle of a word, <kbd>Meta-d</kbd> kills
@@ -919,17 +919,17 @@ next word but not the punctuation before it, simply type <kbd>Meta-f</kbd> to ge
 to the end and kill the word backwards with <kbd>Meta-&lt;DEL&gt;</kbd>.)
 <kbd>Meta-d</kbd> takes arguments just like <kbd>Meta-f</kbd>.
 </p>
-<a name="IDX829"></a>
-<a name="IDX830"></a>
+<a name="index-backward_002dkill_002dword-1"></a>
+<a name="index-M_002dDEL-1"></a>
 <p>  <kbd>Meta-&lt;DEL&gt;</kbd> (<code>backward-kill-word</code>) kills the word before
 point.  It kills everything from point back to where <kbd>Meta-b</kbd> would
 move to.  If point is after the space in &lsquo;<samp>FOO, BAR</samp>&rsquo;, then
 &lsquo;<samp>FOO, </samp>&rsquo; is killed.   To kill just &lsquo;<samp>FOO</samp>&rsquo;, type
 <kbd>Meta-b Meta-d</kbd> instead of <kbd>Meta-&lt;DEL&gt;</kbd>.
 </p>
-<a name="IDX831"></a>
-<a name="IDX832"></a>
-<a name="IDX833"></a>
+<a name="index-transposition-1"></a>
+<a name="index-M_002dt-1"></a>
+<a name="index-transpose_002dwords-1"></a>
 <p>  <kbd>Meta-t</kbd> (<code>transpose-words</code>) exchanges the word before or
 containing point with the following word.  The delimiter characters
 between the words do not move.  For example, transposing &lsquo;<samp>FOO,
@@ -937,15 +937,15 @@ BAR</samp>&rsquo; results in &lsquo;<samp>BAR, FOO</samp>&rsquo; rather than &ls
 See section <a href="xemacs_16.html#Transpose">Transposing Text</a>, for more on transposition and on arguments to
 transposition commands.
 </p>
-<a name="IDX834"></a>
-<a name="IDX835"></a>
+<a name="index-M_002d_0040-1"></a>
+<a name="index-mark_002dword-1"></a>
 <p>  To operate on the next <var>n</var> words with an operation which applies
 between point and mark, you can either set the mark at point and then move
 over the words, or you can use the command <kbd>Meta-@</kbd> (<code>mark-word</code>)
 which does not move point but sets the mark where <kbd>Meta-f</kbd> would move
 to.  It can be given arguments just like <kbd>Meta-f</kbd>.
 </p>
-<a name="IDX836"></a>
+<a name="index-syntax-table"></a>
 <p>  The word commands&rsquo; understanding of syntax is completely controlled by
 the syntax table.  For example, any character can be declared to be a word
 delimiter.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
@@ -989,10 +989,10 @@ on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
 </p></dd>
 </dl>
 
-<a name="IDX837"></a>
-<a name="IDX838"></a>
-<a name="IDX839"></a>
-<a name="IDX840"></a>
+<a name="index-M_002da"></a>
+<a name="index-M_002de"></a>
+<a name="index-backward_002dsentence"></a>
+<a name="index-forward_002dsentence"></a>
 <p>  The commands <kbd>Meta-a</kbd> and <kbd>Meta-e</kbd> (<code>backward-sentence</code>
 and <code>forward-sentence</code>) move to the beginning and end of the
 current sentence, respectively.  They resemble <kbd>Control-a</kbd> and
@@ -1008,10 +1008,10 @@ begins or ends wherever a paragraph begins or ends.
 <p>  Neither <kbd>M-a</kbd> nor <kbd>M-e</kbd> moves past the newline or spaces beyond
 the sentence edge at which it is stopping.
 </p>
-<a name="IDX841"></a>
-<a name="IDX842"></a>
-<a name="IDX843"></a>
-<a name="IDX844"></a>
+<a name="index-M_002dk"></a>
+<a name="index-C_002dx-DEL-1"></a>
+<a name="index-kill_002dsentence"></a>
+<a name="index-backward_002dkill_002dsentence-1"></a>
 <p> <kbd>M-a</kbd> and <kbd>M-e</kbd> have a corresponding kill command, just like
 <kbd>C-a</kbd> and <kbd>C-e</kbd> have <kbd>C-k</kbd>.  The command is  <kbd>M-k</kbd>
 (<code>kill-sentence</code>) which kills from point to the end of the
@@ -1023,7 +1023,7 @@ of the sentence.  Larger arguments serve as repeat counts.
 sentence, which is useful when you change your mind in the middle of
 composing text.
 </p>
-<a name="IDX845"></a>
+<a name="index-sentence_002dend"></a>
 <p>  The variable <code>sentence-end</code> controls recognition of the end of a
 sentence.  It is a regexp that matches the last few characters of a
 sentence, together with the whitespace following the sentence.  Its
@@ -1082,8 +1082,8 @@ be useful even though there are no paragraphs per se.
 <p>  When there is a fill prefix, paragraphs are delimited by all lines
 which don&rsquo;t start with the fill prefix.  See section <a href="#Filling">Filling Text</a>.
 </p>
-<a name="IDX846"></a>
-<a name="IDX847"></a>
+<a name="index-M_002dh-1"></a>
+<a name="index-mark_002dparagraph-1"></a>
 <p>   To operate on a paragraph, you can use the command
 <kbd>Meta-h</kbd> (<code>mark-paragraph</code>) to set the region around it.  This
 command puts point at the beginning and mark at the end of the paragraph
@@ -1093,8 +1093,8 @@ mark.  If there are blank lines preceding the first line of the paragraph,
 one of the blank lines is included in the region.  Thus, for example,
 <kbd>M-h C-w</kbd> kills the paragraph around or after point.
 </p>
-<a name="IDX848"></a>
-<a name="IDX849"></a>
+<a name="index-paragraph_002dstart"></a>
+<a name="index-paragraph_002dseparate"></a>
 <p>  The precise definition of a paragraph boundary is controlled by the
 variables <code>paragraph-separate</code> and <code>paragraph-start</code>.  The value
 of <code>paragraph-start</code> is a regexp that matches any line that
@@ -1155,10 +1155,10 @@ operate on them.
 </p></dd>
 </dl>
 
-<a name="IDX850"></a>
-<a name="IDX851"></a>
-<a name="IDX852"></a>
-<a name="IDX853"></a>
+<a name="index-C_002dx-_005b"></a>
+<a name="index-C_002dx-_005d"></a>
+<a name="index-forward_002dpage"></a>
+<a name="index-backward_002dpage"></a>
 <p>  The <kbd>C-x [</kbd> (<code>backward-page</code>) command moves point to
 immediately after the previous page delimiter.  If point is already
 right after a page delimiter, the command skips that one and stops at
@@ -1166,8 +1166,8 @@ the previous one.  A numeric argument serves as a repeat count.  The
 <kbd>C-x ]</kbd> (<code>forward-page</code>) command moves forward past the next
 page delimiter.
 </p>
-<a name="IDX854"></a>
-<a name="IDX855"></a>
+<a name="index-C_002dx-C_002dp-1"></a>
+<a name="index-mark_002dpage-1"></a>
 <p>  The <kbd>C-x C-p</kbd> command (<code>mark-page</code>) puts point at the beginning
 of the current page and the mark at the end.  The page delimiter at the end
 is included (the mark follows it).  The page delimiter at the front is
@@ -1180,8 +1180,8 @@ the page will be properly delimited before and after once again.
 to, relative to the current one.  Zero means the current page.  One means
 the next page, and -1 means the previous one.
 </p>
-<a name="IDX856"></a>
-<a name="IDX857"></a>
+<a name="index-C_002dx-l"></a>
+<a name="index-count_002dlines_002dpage"></a>
 <p>  The <kbd>C-x l</kbd> command (<code>count-lines-page</code>) can help you decide
 where to break a page in two.  It prints the total number of lines in
 the current page in the echo area, then divides the lines into those
@@ -1193,7 +1193,7 @@ preceding the current line and those following it, for example
 <p>  Notice that the sum is off by one; this is correct if point is not at the
 beginning of a line.
 </p>
-<a name="IDX858"></a>
+<a name="index-page_002ddelimiter"></a>
 <p>  The variable <code>page-delimiter</code> should have as its value a regexp that
 matches the beginning of a line that separates pages.  This defines
 where pages begin.  The normal value of this variable is <code>&quot;^<tt>\</tt>f&quot;</code>,
@@ -1270,7 +1270,7 @@ you type a &lt;SPC&gt; or &lt;RET&gt;.
 </p></dd>
 </dl>
 
-<a name="IDX859"></a>
+<a name="index-auto_002dfill_002dmode"></a>
 <p>  <kbd>M-x auto-fill-mode</kbd> turns Auto Fill mode on if it was off, or off
 if it was on.  With a positive numeric argument the command always turns
 Auto Fill mode on, and with a negative argument it always turns it off.
@@ -1342,51 +1342,51 @@ permanently for yourself.  See section <a href="xemacs_30.html#Init-File">The In
 </p></dd>
 </dl>
 
-<a name="IDX860"></a>
-<a name="IDX861"></a>
+<a name="index-M_002dq"></a>
+<a name="index-fill_002dparagraph"></a>
 <p>  To refill a paragraph, use the command <kbd>Meta-q</kbd>
 (<code>fill-paragraph</code>).  It causes the paragraph containing point, or
 the one after point if point is between paragraphs, to be refilled.  All
 line breaks are removed, and new ones are inserted where necessary.
 <kbd>M-q</kbd> can be undone with <kbd>C-_</kbd>.  See section <a href="xemacs_8.html#Undo">Undoing Changes</a>.
 </p>
-<a name="IDX862"></a>
-<a name="IDX863"></a>
+<a name="index-M_002dg"></a>
+<a name="index-fill_002dregion"></a>
 <p>  To refill many paragraphs, use <kbd>M-g</kbd> (<code>fill-region</code>), which
 divides the region into paragraphs and fills each of them.
 </p>
-<a name="IDX864"></a>
+<a name="index-fill_002dregion_002das_002dparagraph"></a>
 <p>  <kbd>Meta-q</kbd> and <kbd>Meta-g</kbd> use the same criteria as <kbd>Meta-h</kbd> for
 finding paragraph boundaries (see section <a href="#Paragraphs">Paragraphs</a>).  For more control, you
 can use <kbd>M-x fill-region-as-paragraph</kbd>, which refills everything
 between point and mark.  This command recognizes only blank lines as
 paragraph separators.
 </p>
-<a name="IDX865"></a>
+<a name="index-justification"></a>
 <p>  A numeric argument to <kbd>M-g</kbd> or <kbd>M-q</kbd> causes it to
 <em>justify</em> the text as well as filling it.  Extra spaces are inserted
 to make the right margin line up exactly at the fill column.  To remove
 the extra spaces, use <kbd>M-q</kbd> or <kbd>M-g</kbd> with no argument.
 </p>
-<a name="IDX866"></a>
+<a name="index-auto_002dfill_002dinhibit_002dregexp"></a>
 <p>The variable <code>auto-fill-inhibit-regexp</code> takes as a value a regexp to
 match lines that should not be auto-filled.
 </p>
-<a name="IDX867"></a>
-<a name="IDX868"></a>
-<a name="IDX869"></a>
+<a name="index-M_002ds"></a>
+<a name="index-centering"></a>
+<a name="index-center_002dline"></a>
 <p>  The command <kbd>Meta-s</kbd> (<code>center-line</code>) centers the current line
 within the current fill column.  With an argument, it centers several lines
 individually and moves past them.
 </p>
-<a name="IDX870"></a>
+<a name="index-fill_002dcolumn"></a>
 <p>  The maximum line width for filling is in the variable
 <code>fill-column</code>.  Altering the value of <code>fill-column</code> makes it
 local to the current buffer; until then, the default value&mdash;initially
 70&mdash;is in effect. See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
-<a name="IDX871"></a>
-<a name="IDX872"></a>
+<a name="index-C_002dx-f"></a>
+<a name="index-set_002dfill_002dcolumn"></a>
 <p>  The easiest way to set <code>fill-column</code> is to use the command <kbd>C-x
 f</kbd> (<code>set-fill-column</code>).  With no argument, it sets <code>fill-column</code>
 to the current horizontal position of point.  With a numeric argument, it
@@ -1432,8 +1432,8 @@ new paragraph.
 </p></dd>
 </dl>
 
-<a name="IDX873"></a>
-<a name="IDX874"></a>
+<a name="index-C_002dx-_002e"></a>
+<a name="index-set_002dfill_002dprefix"></a>
 <p>  To specify a fill prefix, move to a line that starts with the desired
 prefix, put point at the end of the prefix, and give the command
 <kbd>C-x .</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
@@ -1451,13 +1451,13 @@ blank or indented once the prefix is removed also separate or start
 paragraphs; this is what you want if you are writing multi-paragraph
 comments with a comment delimiter on each line.
 </p>
-<a name="IDX875"></a>
+<a name="index-fill_002dprefix"></a>
 <p>  The fill prefix is stored in the variable <code>fill-prefix</code>.  Its value
 is a string, or <code>nil</code> when there is no fill prefix.  This is a
 per-buffer variable; altering the variable affects only the current buffer,
 but there is a default value which you can change as well.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
-<a name="IDX876"></a>
+<a name="index-fill_002dindividual_002dparagraphs"></a>
 <p>  Another way to use fill prefixes is through <kbd>M-x
 fill-individual-paragraphs</kbd>.  This function divides the region into groups
 of consecutive lines with the same amount and kind of indentation and fills
@@ -1505,13 +1505,13 @@ range of text to upper case or to lower case.
 </p></dd>
 </dl>
 
-<a name="IDX877"></a>
-<a name="IDX878"></a>
-<a name="IDX879"></a>
-<a name="IDX880"></a>
-<a name="IDX881"></a>
-<a name="IDX882"></a>
-<a name="IDX883"></a>
+<a name="index-M_002dl"></a>
+<a name="index-M_002du"></a>
+<a name="index-M_002dc"></a>
+<a name="index-words-1"></a>
+<a name="index-downcase_002dword-1"></a>
+<a name="index-upcase_002dword-1"></a>
+<a name="index-capitalize_002dword-1"></a>
 <p>  The word conversion commands are used most frequently.  <kbd>Meta-l</kbd>
 (<code>downcase-word</code>) converts the word after point to lower case,
 moving past it.  Thus, repeating <kbd>Meta-l</kbd> converts successive words.
@@ -1534,11 +1534,11 @@ applies only to the part of the word which follows point.  This is just
 like what <kbd>Meta-d</kbd> (<code>kill-word</code>) does.  With a negative argument,
 case conversion applies only to the part of the word before point.
 </p>
-<a name="IDX884"></a>
-<a name="IDX885"></a>
-<a name="IDX886"></a>
-<a name="IDX887"></a>
-<a name="IDX888"></a>
+<a name="index-C_002dx-C_002dl"></a>
+<a name="index-C_002dx-C_002du"></a>
+<a name="index-region"></a>
+<a name="index-downcase_002dregion"></a>
+<a name="index-upcase_002dregion"></a>
 <p>  The other case conversion commands are <kbd>C-x C-u</kbd>
 (<code>upcase-region</code>) and <kbd>C-x C-l</kbd> (<code>downcase-region</code>), which
 convert everything between point and mark to the specified case.  Point and

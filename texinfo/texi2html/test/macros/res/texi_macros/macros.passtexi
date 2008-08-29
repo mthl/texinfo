@@ -18,7 +18,7 @@ macros.texi(macro1,25) Right. macros.texi(macro1,25) result of a macro with @sam
 macros.texi(macro1,25) 
 macros.texi(macro1,25) no ?} and 
 file.texi(,1) content of included file with arg2: \arg2\
-macros.texi(macro1,25) second argmacros.texi(macro1,25) 
+macros.texi(macro1,25) second arg
 macros.texi(,26) Now define macro2
 macros.texi(,31) Call macro2
 macros.texi(macro2,34) With a doubles arg a simple @code{
@@ -37,7 +37,7 @@ macros.texi(macro3,47) /arg/
 macros.texi(macro3,47) 
 macros.texi(macro3,47) 
 macros.texi(macro3,47) /arg/
-macros.texi(macro3,47) @end examplemacros.texi(macro3,47) 
+macros.texi(macro3,47) @end example
 macros.texi(,48) 
 macros.texi(,49) @contents
 macros.texi(,50) @bye

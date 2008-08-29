@@ -108,16 +108,16 @@ change your mind while composing text on line.
 </p></dd>
 </dl>
 
-<a name="IDX499"></a>
-<a name="IDX500"></a>
+<a name="index-DEL"></a>
+<a name="index-delete_002dbackward_002dchar"></a>
 <p>  The &lt;DEL&gt; character (<code>delete-backward-char</code>) is the most
 important correction command.  When used among graphic (self-inserting)
 characters, it can be thought of as canceling the last character typed.
 </p>
-<a name="IDX501"></a>
-<a name="IDX502"></a>
-<a name="IDX503"></a>
-<a name="IDX504"></a>
+<a name="index-M_002dDEL"></a>
+<a name="index-C_002dx-DEL"></a>
+<a name="index-backward_002dkill_002dword"></a>
+<a name="index-backward_002dkill_002dsentence"></a>
 <p>  When your mistake is longer than a couple of characters, it might be more
 convenient to use <kbd>M-&lt;DEL&gt;</kbd> or <kbd>C-x &lt;DEL&gt;</kbd>.
 <kbd>M-&lt;DEL&gt;</kbd> kills back to the start of the last word, and <kbd>C-x
@@ -169,9 +169,9 @@ less thought to kill the whole word and start over.
 </p></dd>
 </dl>
 
-<a name="IDX505"></a>
-<a name="IDX506"></a>
-<a name="IDX507"></a>
+<a name="index-transposition"></a>
+<a name="index-C_002dt-1"></a>
+<a name="index-transpose_002dchars-1"></a>
 <p>  The common error of transposing two adjacent characters can be fixed
 with the <kbd>C-t</kbd> command (<code>transpose-chars</code>).  Normally,
 <kbd>C-t</kbd> transposes the two characters on either side of point.  When
@@ -185,12 +185,12 @@ character of the word before it, the word motion commands are a good way
 of getting there.  Otherwise, a reverse search (<kbd>C-r</kbd>) is often the
 best way.  See section <a href="xemacs_15.html#Search">Searching and Replacement</a>.
 </p>
-<a name="IDX508"></a>
-<a name="IDX509"></a>
-<a name="IDX510"></a>
-<a name="IDX511"></a>
-<a name="IDX512"></a>
-<a name="IDX513"></a>
+<a name="index-C_002dx-C_002dt"></a>
+<a name="index-transpose_002dlines"></a>
+<a name="index-M_002dt"></a>
+<a name="index-transpose_002dwords"></a>
+<a name="index-C_002dM_002dt"></a>
+<a name="index-transpose_002dsexps"></a>
 <p>  <kbd>Meta-t</kbd> (<code>transpose-words</code>) transposes the word before point
 with the word after point.  It moves point forward over a word, dragging
 the word preceding or containing point forward as well.  The punctuation
@@ -248,14 +248,14 @@ command with a repeat count of zero would do nothing).
 </p></dd>
 </dl>
 
-<a name="IDX514"></a>
-<a name="IDX515"></a>
-<a name="IDX516"></a>
-<a name="IDX517"></a>
-<a name="IDX518"></a>
-<a name="IDX519"></a>
-<a name="IDX520"></a>
-<a name="IDX521"></a>
+<a name="index-downcase_002dword"></a>
+<a name="index-upcase_002dword"></a>
+<a name="index-capitalize_002dword"></a>
+<a name="index-M_002d_002d-M_002dl"></a>
+<a name="index-M_002d_002d-M_002du"></a>
+<a name="index-M_002d_002d-M_002dc"></a>
+<a name="index-case-conversion"></a>
+<a name="index-words"></a>
 <p>  A  common error is to type words in the wrong case.  Because of this,
 the word case-conversion commands <kbd>M-l</kbd>, <kbd>M-u</kbd>, and <kbd>M-c</kbd> do
 not move the cursor when used with a negative argument.
@@ -298,8 +298,8 @@ case-convert it and continue typing.  See section <a href="xemacs_23.html#Case">
 </p></dd>
 </dl>
 
-<a name="IDX522"></a>
-<a name="IDX523"></a>
+<a name="index-M_002d_0024"></a>
+<a name="index-spell_002dword"></a>
 <p>  To check the spelling of the word before point, and optionally correct
 it, use the command <kbd>M-$</kbd> (<code>spell-word</code>).  This command runs an
 inferior process containing the <code>spell</code> program to see whether the
@@ -312,16 +312,16 @@ one throughout the buffer.
 means you do not want to do anything to that word.  In that case, the
 <code>query-replace</code> is not done.
 </p>
-<a name="IDX524"></a>
+<a name="index-spell_002dbuffer"></a>
 <p>  <kbd>M-x spell-buffer</kbd> checks each word in the buffer the same way that
 <code>spell-word</code> does, doing a <code>query-replace</code> for
 every incorrect word if appropriate.
 </p>
-<a name="IDX525"></a>
+<a name="index-spell_002dregion"></a>
 <p>  <kbd>M-x spell-region</kbd> is similar to <code>spell-buffer</code> but operates
 only on the region, not the entire buffer.
 </p>
-<a name="IDX526"></a>
+<a name="index-spell_002dstring"></a>
 <p>  <kbd>M-x spell-string</kbd> reads a string as an argument and checks
 whether that is a correctly spelled English word.  It prints a message
 giving the answer in the echo area.

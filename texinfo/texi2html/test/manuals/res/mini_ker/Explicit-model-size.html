@@ -166,7 +166,7 @@ the model equations for cells and transfers are entered using a mortran macro,
 and the transfer definitions <code>ff(.)</code> with <code>Phi_tef(.)</code>.
 </p>
 <dl>
-<dt><a name="IDX60"></a><u>Macro:</u> <b>f_set</b><i> Phi_tef(<var>i</var>) = f(eta(.),ff(.))</i></dt>
+<dt><a name="index-f_005fset"></a><u>Macro:</u> <b>f_set</b><i> Phi_tef(<var>i</var>) = f(eta(.),ff(.))</i></dt>
 <dd><p>This macro defines the transfer <var>i</var> static equation.
 <code>f</code> is a fortran 
 expression which may be function of cell state variables, 
@@ -180,7 +180,7 @@ expression which may be function of cell state variables,
 </pre></td></tr></table>
 
 <dl>
-<dt><a name="IDX61"></a><u>Macro:</u> <b>f_set</b><i> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</i></dt>
+<dt><a name="index-f_005fset-1"></a><u>Macro:</u> <b>f_set</b><i> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</i></dt>
 <dd><p>This macro defines the cell state component <var>i</var> time evolution model. 
 <code>g</code> is a expression which may be function of cell state variables, 
 &lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo; and transfers 

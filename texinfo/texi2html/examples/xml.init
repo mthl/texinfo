@@ -179,10 +179,10 @@ foreach my $misc_command (keys(%misc_command))
 }
 
 $format_map{'menu'} = 'menu';
-# FIXME check on bug-texinfo
-$format_code_style{'menu'} = 1;
-$format_code_style{'menu_name'} = 1;
-$format_code_style{'menu_description'} = 1;
+# checked on bug-texinfo, only node is in code_style, as with makeinfo --xml
+#$format_code_style{'menu'} = 1;
+#$format_code_style{'menu_name'} = 1;
+#$format_code_style{'menu_description'} = 1;
 $format_map{'detailmenu'} = 'detailmenu';
 $format_map{'menu_comment'} = '';
 delete $format_map{'enumerate'};
@@ -547,20 +547,21 @@ sub xml_misc_commands($$$$$)
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        chomp($arg);
-       $result_text = "<${macro}>$arg</${macro}>\n";
+       $result_text = "<${macro}>".main::substitute_line($arg)."</${macro}>\n";
     }
     if (exists($xml_misc_elements_with_arg_map{$macro}))
     {
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        chomp($arg);
-       $result_text = "<$xml_misc_elements_with_arg_map{$macro}>$arg</$xml_misc_elements_with_arg_map{$macro}>\n";
+       $result_text = "<$xml_misc_elements_with_arg_map{$macro}>".main::substitute_line($arg)."</$xml_misc_elements_with_arg_map{$macro}>\n";
     }
     if ($macro eq 'setfilename')
     {
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        $arg =~ s/\s*$//;
+       $arg = main::substitute_line($arg);
        $arg =~ s/\.[^\.]*$//;
        $result_text = "<${macro}>${arg}.xml</${macro}>\n";
     }

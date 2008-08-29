@@ -67,8 +67,8 @@ documentation-printing commands.  The characters that you can type after
 that is how you ask for help about using <kbd>C-h</kbd>.  To cancel, type
 <kbd>C-g</kbd>.  The function key &lt;F1&gt; is equivalent to <kbd>C-h</kbd>.
 </p>
-<a name="IDX250"></a>
-<a name="IDX251"></a>
+<a name="index-C_002dh-C_002dh"></a>
+<a name="index-help_002dfor_002dhelp"></a>
 <p>  <kbd>C-h C-h</kbd> (<code>help-for-help</code>) displays a list of the possible
 help options, and then asks you to type the desired option.  It prompts
 with the string:
@@ -243,8 +243,8 @@ that <var>key</var> is bound to.  For example, <kbd>C-h c C-f</kbd> prints
 the commands do, this is a good way to get a very brief description of
 what <var>key</var> does.
 </p>
-<a name="IDX252"></a>
-<a name="IDX253"></a>
+<a name="index-C_002dh-k"></a>
+<a name="index-describe_002dkey"></a>
 <p>  <kbd>C-h k <var>key</var></kbd> is similar to <kbd>C-h c</kbd> but gives more
 information.  It displays the documentation string of the function
 <var>key</var> is bound to as well as its name.  <var>key</var> is a string or
@@ -317,16 +317,16 @@ buffer as the default, that name must be defined as a Lisp function.  If
 that is all you want to know, just type <kbd>C-g</kbd> to cancel the <kbd>C-h
 f</kbd> command, then go on editing.
 </p>
-<a name="IDX254"></a>
-<a name="IDX255"></a>
+<a name="index-C_002dh-w"></a>
+<a name="index-where_002dis"></a>
 <p>  <kbd>C-h w <var>command</var> &lt;RET&gt;</kbd> (<code>where-is</code>) tells you what
 keys are bound to <var>command</var>.  It prints a list of the keys in the
 echo area. Alternatively, it informs you that a command is not bound to
 any keys, which implies that you must use <kbd>M-x</kbd> to call the
 command.
 </p>
-<a name="IDX256"></a>
-<a name="IDX257"></a>
+<a name="index-C_002dh-v"></a>
+<a name="index-describe_002dvariable"></a>
 <p>  <kbd>C-h v</kbd> (<code>describe-variable</code>) is like <kbd>C-h f</kbd> but
 describes Lisp variables instead of Lisp functions.  Its default is the
 Lisp symbol around or before point, if that is the name of a known Lisp
@@ -398,25 +398,25 @@ delete, mark, insert, yank, fill, indent, case, change, set, what, list,
 find, view, describe, default.
 </p></blockquote>
 
-<a name="IDX258"></a>
+<a name="index-apropos"></a>
 <p>  To list all Lisp symbols that contain a match for a regexp, not just
 the ones that are defined as commands, use the command <kbd>M-x apropos</kbd>
 instead of <kbd>C-h A</kbd>.  This command does not check key bindings by
 default; specify a numeric argument if you want it to check them.
 </p>
-<a name="IDX259"></a>
+<a name="index-apropos_002ddocumentation"></a>
 <p>  The <code>apropos-documentation</code> command is like <code>apropos</code> except
 that it searches documentation strings for matches for the specified
 regular expression.
 </p>
-<a name="IDX260"></a>
+<a name="index-apropos_002dvalue"></a>
 <p>  The <code>apropos-value</code> command is like <code>apropos</code> except that it
 searches symbols&rsquo; values for matches for the specified regular
 expression.  This command does not check function definitions or
 property lists by default; specify a numeric argument if you want it to
 check them.
 </p>
-<a name="IDX261"></a>
+<a name="index-apropos_002ddo_002dall"></a>
 <p>  If the variable <code>apropos-do-all</code> is non-<code>nil</code>, the commands
 above all behave as if they had been given a prefix argument.
 </p>
@@ -557,10 +557,10 @@ have an entry in the top-level Info menu.  It is also handy when you
 need to get to the documentation quickly, and you know the exact name of
 the file.
 </p>
-<a name="IDX262"></a>
-<a name="IDX263"></a>
-<a name="IDX264"></a>
-<a name="IDX265"></a>
+<a name="index-C_002dh-C_002df"></a>
+<a name="index-C_002dh-C_002dk"></a>
+<a name="index-Info_002delisp_002dref"></a>
+<a name="index-Info_002dgoto_002demacs_002dcommand_002dnode"></a>
 <p>  There are two special help commands for accessing XEmacs documentation
 through Info.  <kbd>C-h C-f <var>function</var> &lt;RET&gt;</kbd> enters Info and
 goes straight to the documentation of the XEmacs function
@@ -569,22 +569,22 @@ to the documentation of the key <var>key</var>.  These two keys run the
 commands <code>Info-elisp-ref</code> and
 <code>Info-goto-emacs-key-command-node</code>.
 </p>
-<a name="IDX266"></a>
-<a name="IDX267"></a>
+<a name="index-C_002dh-l"></a>
+<a name="index-view_002dlossage"></a>
 <p>  If something surprising happens, and you are not sure what commands you
 typed, use <kbd>C-h l</kbd> (<code>view-lossage</code>).  <kbd>C-h l</kbd> prints the last
 100 command characters you typed in.  If you see commands that you don&rsquo;t
 know, you can use <kbd>C-h c</kbd> to find out what they do.
 </p>
-<a name="IDX268"></a>
-<a name="IDX269"></a>
+<a name="index-C_002dh-m"></a>
+<a name="index-describe_002dmode"></a>
 <p>  XEmacs has several major modes.  Each mode redefines a few keys and
 makes a few other changes in how editing works.  <kbd>C-h m</kbd>
 (<code>describe-mode</code>) prints documentation on the current major mode,
 which normally describes all the commands that are changed in this mode.
 </p>
-<a name="IDX270"></a>
-<a name="IDX271"></a>
+<a name="index-C_002dh-b"></a>
+<a name="index-describe_002dbindings"></a>
 <p>  <kbd>C-h b</kbd> (<code>describe-bindings</code>) and <kbd>C-h s</kbd>
 (<code>describe-syntax</code>) present information about the current XEmacs
 mode that is not covered by <kbd>C-h m</kbd>.  <kbd>C-h b</kbd> displays a list of
@@ -598,18 +598,18 @@ this does not work&mdash;those that provide their own bindings for
 <kbd>C-h</kbd>.  One of these is &lt;ESC&gt;, because <kbd>&lt;ESC&gt; C-h</kbd> is
 actually <kbd>C-M-h</kbd>, which marks a defun.)
 </p>
-<a name="IDX272"></a>
-<a name="IDX273"></a>
-<a name="IDX274"></a>
-<a name="IDX275"></a>
-<a name="IDX276"></a>
-<a name="IDX277"></a>
-<a name="IDX278"></a>
-<a name="IDX279"></a>
-<a name="IDX280"></a>
-<a name="IDX281"></a>
-<a name="IDX282"></a>
-<a name="IDX283"></a>
+<a name="index-C_002dh-F"></a>
+<a name="index-xemacs_002dlocal_002dfaq"></a>
+<a name="index-C_002dh-n"></a>
+<a name="index-view_002demacs_002dnews"></a>
+<a name="index-C_002dh-t"></a>
+<a name="index-help_002dwith_002dtutorial"></a>
+<a name="index-C_002dh-C_002dc"></a>
+<a name="index-describe_002dcopying"></a>
+<a name="index-C_002dh-C_002dd"></a>
+<a name="index-describe_002ddistribution"></a>
+<a name="index-C_002dh-C_002dw"></a>
+<a name="index-describe_002dno_002dwarranty"></a>
 <p>  The other <kbd>C-h</kbd> options display various files of useful
 information.  <kbd>C-h C-w</kbd> (<code>describe-no-warranty</code>) displays the
 full details on the complete absence of warranty for XEmacs.  <kbd>C-h

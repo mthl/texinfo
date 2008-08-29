@@ -167,6 +167,7 @@ formatting_regions.texi(mymacro,28) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,28) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,28) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,28) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,28) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,28) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,28) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,28) @code{@@H@{--a@}} @H{--a}
@@ -700,7 +701,7 @@ formatting_regions.texi(,31) @titlepage
 formatting_regions.texi(,32) @title title --a
 formatting_regions.texi(,33) @subtitle formatting subtitle --a
 formatting_regions.texi(,34) @subtitle subtitle 2 --a
-formatting_regions.texi(,35) @author author1 --a
+formatting_regions.texi(,35) @author author1 --a with accents in name T@'e@,ca
 formatting_regions.texi(,36) @author author2 --a
 formatting_regions.texi(,37) 
 formatting_regions.texi(,38) Titlepage
@@ -860,6 +861,7 @@ formatting_regions.texi(mymacro,39) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,39) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,39) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,39) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,39) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,39) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,39) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,39) @code{@@H@{--a@}} @H{--a}
@@ -1549,6 +1551,7 @@ formatting_regions.texi(mymacro,46) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,46) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,46) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,46) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,46) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,46) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,46) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,46) @code{@@H@{--a@}} @H{--a}
@@ -2234,6 +2237,7 @@ formatting_regions.texi(mymacro,49) @code{@@url@{--a,@}} @url{--a,}
 formatting_regions.texi(mymacro,49) @code{@@url@{,--b@}} @url{,--b}
 formatting_regions.texi(mymacro,49) @code{@@var@{--a@}} @var{--a}
 formatting_regions.texi(mymacro,49) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting_regions.texi(mymacro,49) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 formatting_regions.texi(mymacro,49) @code{@@w@{@}} @w{}
 formatting_regions.texi(mymacro,49) @code{@@H@{a@}} @H{a}
 formatting_regions.texi(mymacro,49) @code{@@H@{--a@}} @H{--a}

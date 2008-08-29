@@ -85,7 +85,7 @@ ul.toc {list-style: none}
 &lsquo;<tt>texinfo.tex</tt>&rsquo; file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
 </p>
-<a name="IDX334"></a>
+<a name="index-texinfo_002etex_002c-installing"></a>
 
 <p>Usually, the installer has put the &lsquo;<tt>texinfo.tex</tt>&rsquo; file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
@@ -94,18 +94,18 @@ file and you do not need to do anything special.  If this has not been
 done, you can put &lsquo;<tt>texinfo.tex</tt>&rsquo; in the current directory when you
 run TeX, and TeX will find it there.
 </p>
-<a name="IDX335"></a>
+<a name="index-epsf_002etex_002c-installing"></a>
 <p>Also, you should install &lsquo;<tt>epsf.tex</tt>&rsquo;, if it is not already installed
 from another distribution.  More details are at the end of the description
 of the <code>@image</code> command (see section <a href="Images.html#Images">Inserting Images</a>).
 </p>
-<a name="IDX336"></a>
+<a name="index-pdfcolor_002etex_002c-installing"></a>
 <p>Likewise for &lsquo;<tt>pdfcolor.tex</tt>&rsquo;, if it is not already installed and you
 use pdftex.
 </p>
-<a name="IDX337"></a>
-<a name="IDX338"></a>
-<a name="IDX339"></a>
+<a name="index-texinfo_002ecnf-installation"></a>
+<a name="index-Customizing-of-TeX-for-Texinfo"></a>
+<a name="index-Site_002dwide-Texinfo-configuration-file"></a>
 <p>Optionally, you may create an additional &lsquo;<tt>texinfo.cnf</tt>&rsquo;, and install
 it as well.  This file is read by TeX when the <code>@setfilename</code>
 command is executed (see section <a href="setfilename.html#setfilename"><code>@setfilename</code></a>).  You can put any
@@ -116,7 +116,7 @@ example, if &lsquo;<tt>texinfo.cnf</tt>&rsquo; contains the line &lsquo;<samp>@a
 that page size in effect.  If you have nothing to put in
 &lsquo;<tt>texinfo.cnf</tt>&rsquo;, you do not need to create it.
 </p>
-<a name="IDX340"></a>
+<a name="index-TEXINPUTS"></a>
 <p>If neither of the above locations for these system files suffice for
 you, you can specify the directories explicitly.  For
 &lsquo;<tt>texinfo.tex</tt>&rsquo;, you can do this by writing the complete path for the
@@ -157,8 +157,8 @@ in the current directory, indicated by the &lsquo;<samp>.</samp>&rsquo;, then in
 hypothetical user&rsquo;s &lsquo;<tt>me/mylib</tt>&rsquo; directory, and finally in a system
 directory &lsquo;<tt>/usr/lib/tex/macros</tt>&rsquo;.
 </p>
-<a name="IDX341"></a>
-<a name="IDX342"></a>
+<a name="index-Dumping-a-_002efmt-file"></a>
+<a name="index-Format-file_002c-dumping"></a>
 <p>Finally, you may wish to dump a &lsquo;<tt>.fmt</tt>&rsquo; file (see <a href="../web2c/Memory-dumps.html#Memory-dumps">(web2c)Memory dumps</a> section &lsquo;Memory dumps&rsquo; in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating &lsquo;<tt>texinfo.tex</tt>&rsquo; requires
 redumping.)  You can do this by running this command, assuming

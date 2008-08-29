@@ -34,7 +34,7 @@ numeric revision in each file.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Revision-numbers| Revision numbers]]::<nowiki>            The meaning of a revision number
 </nowiki>&bull;[[#Versions-revisions-releases| Versions revisions releases]]::<nowiki>  Terminology used in this manual
 </nowiki>&bull;[[#Assigning-revisions| Assigning revisions]]::<nowiki>         Assigning revisions
-</nowiki>&bull;[[#Tags| Tags]]::<nowiki>                        Tags--Symbolic revisions
+</nowiki>&bull;[[#Tags| Tags]]::<nowiki>                        Tags&ndash;Symbolic revisions
 </nowiki>&bull;[[#Tagging-the-working-directory| Tagging the working directory]]::<nowiki>  The cvs tag command
 </nowiki>&bull;[[#Tagging-by-date_002ftag| Tagging by date/tag]]::<nowiki>         The cvs rtag command
 </nowiki>&bull;[[#Modifying-tags| Modifying tags]]::<nowiki>              Adding, renaming, and deleting tags
@@ -200,7 +200,7 @@ on how you use <small>CVS</small> the revision numbers might change several time
 between two releases.  As an example, some of the
 source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
-<div id="IDX93"></div>
+<div id="index-RCS-revision-numbers"></div>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ci.c            5.21
 co.c            5.9
@@ -216,12 +216,12 @@ rcsmap.c        5.2
 rcsutil.c       5.10
 </nowiki></pre></td></tr></table>
 
-<div id="IDX94"></div>
-<div id="IDX95"></div>
-<div id="IDX96"></div>
-<div id="IDX97"></div>
-<div id="IDX98"></div>
-<div id="IDX99"></div>
+<div id="index-tag-_0028subcommand_0029_002c-introduction"></div>
+<div id="index-Tags_002c-symbolic-name"></div>
+<div id="index-Symbolic-name-_0028tag_0029"></div>
+<div id="index-Name_002c-symbolic-_0028tag_0029"></div>
+<div id="index-HEAD_002c-as-reserved-tag-name"></div>
+<div id="index-BASE_002c-as-reserved-tag-name"></div>
 <p>You can use the <code>tag</code> command to give a symbolic name to a
 certain revision of a file.  You can use the &lsquo;<samp>-v</samp>&rsquo; flag to the
 <code>status</code> command to see all tags that a file has, and
@@ -248,8 +248,8 @@ then you won&rsquo;t constantly be guessing whether a tag is
 even want to consider enforcing your convention in the
 taginfo file (see section [cvs: History browsing#user_002ddefined-logging User-defined logging]).
 </p>
-<div id="IDX100"></div>
-<div id="IDX101"></div>
+<div id="index-Adding-a-tag"></div>
+<div id="index-Tags_002c-example"></div>
 <p>The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
@@ -294,8 +294,8 @@ T parser.c
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].)
 </p>
-<div id="IDX102"></div>
-<div id="IDX103"></div>
+<div id="index-Retrieving-an-old-revision-using-tags"></div>
+<div id="index-Tags_002c-retrieving-old-revisions"></div>
 <p>The <code>checkout</code> command has a flag, &lsquo;<samp>-r</samp>&rsquo;, that lets you check out
 a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module &lsquo;<samp>tc</samp>&rsquo; at
@@ -495,12 +495,12 @@ recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
 commands with taginfo (see section [cvs: History browsing#user_002ddefined-logging User-defined logging]).</strong>
 </p>
-<div id="IDX104"></div>
-<div id="IDX105"></div>
-<div id="IDX106"></div>
-<div id="IDX107"></div>
-<div id="IDX108"></div>
-<div id="IDX109"></div>
+<div id="index-Deleting-tags"></div>
+<div id="index-Deleting-branch-tags"></div>
+<div id="index-Removing-tags"></div>
+<div id="index-Removing-branch-tags"></div>
+<div id="index-Tags_002c-deleting"></div>
+<div id="index-Branch-tags_002c-deleting"></div>
 <p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 </p>
@@ -520,10 +520,10 @@ you need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
-<div id="IDX110"></div>
-<div id="IDX111"></div>
-<div id="IDX112"></div>
-<div id="IDX113"></div>
+<div id="index-Moving-tags"></div>
+<div id="index-Moving-branch-tags"></div>
+<div id="index-Tags_002c-moving"></div>
+<div id="index-Branch-tags_002c-moving"></div>
 <p>When we say <em>move</em> a tag, we mean to make the same
 name point to different revisions.  For example, the
 <code>stable</code> tag may currently point to revision 1.4
@@ -548,8 +548,8 @@ need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
 another way to accomplish what you want to accomplish.</strong>
 </p>
-<div id="IDX114"></div>
-<div id="IDX115"></div>
+<div id="index-Renaming-tags"></div>
+<div id="index-Tags_002c-renaming"></div>
 <p>When we say <em>rename</em> a tag, we mean to make a
 different name point to the same revisions as the old
 tag.  For example, one may have misspelled the tag name
@@ -669,9 +669,9 @@ File: driver.c          Status: Up-to-date
 
 </nowiki></pre></td></tr></table>
 
-<div id="IDX116"></div>
-<div id="IDX117"></div>
-<div id="IDX118"></div>
+<div id="index-Resetting-sticky-tags"></div>
+<div id="index-Sticky-tags_002c-resetting"></div>
+<div id="index-Deleting-sticky-tags"></div>
 <p>The sticky tags will remain on your working files until
 you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
 &lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
@@ -679,7 +679,7 @@ file from the head of the trunk, removing any sticky tags,
 dates, or options.  See [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository] for more on the operation
 of <code>cvs update</code>.
 </p>
-<div id="IDX119"></div>
+<div id="index-Sticky-date"></div>
 <p>The most common use of sticky tags is to identify which
 branch one is working on, as described in
 [cvs: Branching and merging#Accessing-branches Accessing branches].  However, non-branch

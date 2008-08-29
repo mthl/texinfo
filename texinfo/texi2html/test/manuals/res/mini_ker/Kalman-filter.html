@@ -260,8 +260,8 @@ information reduce the error.
 <a name="HEAD11"></a>
 <h4 class="subsubheading"> Observations and error on state matrix </h4>
 
-<a name="IDX76"></a>
-<a name="IDX77"></a>
+<a name="index-variance_002dcovariance-matrix-on-state"></a>
+<a name="index-mereta_0028_002e_002c_002e_0029"></a>
 
 <p>The matrix that relates errors on states vector components to states,
 corresponding with       W is <code>mereta(.,.)</code>. In our example it is 
@@ -284,8 +284,8 @@ f_set Obs_tef(3) = eta(3);
 <a name="HEAD12"></a>
 <h4 class="subsubheading"> Error variance-covariance matrices </h4>
 
-<a name="IDX78"></a>
-<a name="IDX79"></a>
+<a name="index-variance_002dcovariance-error"></a>
+<a name="index-covobs_0028_002e_002c_002e_0029"></a>
 
 <p>The variance-covariance matrix on observation noise is <code>covobs(.,.)</code>
 set, in our example, by:
@@ -295,7 +295,7 @@ covobs(2,1) = 0.; covobs(2,2) = 0.1; covobs(2,3) = 0.;
 covobs(3,1) = 0.; covobs(3,2) = 0.; covobs(3,3) = 0.2;
 </pre></td></tr></table>
 
-<a name="IDX80"></a>
+<a name="index-coveta_0028_002e_002c_002e_0029"></a>
 <p>The variance-covariance matrix on state noise is <code>coveta(.,.)</code>
 set, in our example, by:
 </p>
@@ -394,23 +394,23 @@ the following variables could be usefull:
 </p>
 <dl compact="compact">
 <dt> <code>etafor(.)</code>
-<a name="IDX81"></a>
+<a name="index-etafor_0028_002e_0029"></a>
 </dt>
 <dd><p>The state before the analysis.
 </p></dd>
 <dt> <code>kgain(.)</code>
-<a name="IDX82"></a>
+<a name="index-kgain_0028_002e_0029"></a>
 </dt>
 <dd><p>The Kalman gain.
 </p></dd>
 <dt> <code>innobs(.)</code>
-<a name="IDX83"></a>
+<a name="index-innobs_0028_002e_0029"></a>
 </dt>
 <dd><p>The innovation vector (observations coherent with the states minus data
 values).
 </p></dd>
 <dt> <code>covana(.,.)</code>
-<a name="IDX84"></a>
+<a name="index-covana_0028_002e_002c_002e_0029"></a>
 </dt>
 <dd><p>The variance-covariance error matrix after the analysis.
 </p></dd>
@@ -425,7 +425,7 @@ the advance of the var-covar matrix could not yet be set in the TEF form.
 </p>
 <dl compact="compact">
 <dt> <code>obspha(.,.)</code>
-<a name="IDX85"></a>
+<a name="index-obspha_0028_002e_002c_002e_0029"></a>
 </dt>
 <dd><p>derivative of observation function in state space with respect to
 cell variables.

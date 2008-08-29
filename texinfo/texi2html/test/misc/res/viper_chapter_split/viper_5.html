@@ -112,7 +112,7 @@ specifier for other commands.
 We classify motion commands into <em>point commands</em> and
 <em>line commands</em>.
 </p>
-<a name="IDX233"></a>
+<a name="index-point-commands-1"></a>
 
 <p>The point commands are:
 </p>
@@ -121,7 +121,7 @@ We classify motion commands into <em>point commands</em> and
 <kbd>F</kbd>, <kbd>t</kbd>, <kbd>T</kbd>, <kbd>%</kbd>, <kbd>;</kbd>, <kbd>,</kbd>, <kbd>^</kbd>
 </p></blockquote>
 
-<a name="IDX234"></a>
+<a name="index-line-commands-1"></a>
 
 <p>The line commands are:
 </p>
@@ -133,7 +133,7 @@ We classify motion commands into <em>point commands</em> and
 (see section <a href="#Changing-Text">Changing Text</a>), even Shell Commands (see section <a href="#Shell-Commands">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
 </p>
-<a name="IDX235"></a>
+<a name="index-r-and-R-region-specifiers-1"></a>
 
 <p>Viper adds two region descriptors, <kbd>r</kbd> and <kbd>R</kbd>.  These describe
 the Emacs regions (see section <a href="viper_3.html#Basics">Basics</a>), but they are not movement commands.
@@ -144,19 +144,19 @@ text can be confusing with Viper where the commands themselves are
 characters.  Watch out where <kbd>&lt;</kbd> shift commands and <kbd>&lt;count&gt;</kbd> are
 mentioned together!!!
 </p>
-<a name="IDX236"></a>
-<a name="IDX237"></a>
-<a name="IDX238"></a>
-<a name="IDX239"></a>
-<a name="IDX240"></a>
-<a name="IDX241"></a>
-<a name="IDX242"></a>
+<a name="index-_003cmove_003e"></a>
+<a name="index-_003ca_002dz_003e"></a>
+<a name="index-_003caddress_003e"></a>
+<a name="index-_003cmove_003e-1"></a>
+<a name="index-_003ca_002dz_003e-1"></a>
+<a name="index-_003caddress_003e-1"></a>
+<a name="index-movements"></a>
 
 <p>&lsquo;<samp>&lt;move&gt;</samp>&rsquo; refers to the above movement commands, and &lsquo;<samp>&lt;a-z&gt;</samp>&rsquo;
 refers to registers or textmarkers from &lsquo;<samp>a</samp>&rsquo; to &lsquo;<samp>z</samp>&rsquo;.  Note
 that the &lsquo;<samp>&lt;move&gt;</samp>&rsquo;  is described by full move commands, that is to
 say they will take counts, and otherwise behave like normal move commands.
-<a name="IDX243"></a>
+<a name="index-Ex-addresses"></a>
 &lsquo;<samp>&lt;address&gt;</samp>&rsquo; refers to Ex line addresses, which include
 </p>
 <dl compact="compact">
@@ -179,7 +179,7 @@ say they will take counts, and otherwise behave like normal move commands.
 <dd><p>Where x and y are one of the above
 </p></dd>
 <dt> <kbd>%</kbd></dt>
-<dd><a name="IDX244"></a>
+<dd><a name="index-_0025-_0028Ex-address_0029"></a>
 <p>For the whole file, same as (1,$).
 </p></dd>
 <dt> <kbd>/&lt;pat&gt;/</kbd></dt>
@@ -192,21 +192,21 @@ lines.
 </p></dd>
 </dl>
 
-<a name="IDX245"></a>
+<a name="index-_0025-_0028Current-file_0029"></a>
 <p>Note that &lsquo;<samp>%</samp>&rsquo; is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
 to mean current file.  If you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be
 escaped as &lsquo;<samp>\%</samp>&rsquo;. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
 command doesn&rsquo;t support the meta symbols &lsquo;<samp>%</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo;, because
 file history is a better mechanism.
-<a name="IDX246"></a>
+<a name="index-_0023-_0028Previous-file_0029"></a>
 Similarly, &lsquo;<samp>#</samp>&rsquo; expands to the previous file.  The previous file is
 the first file in <kbd>:args</kbd> listing.  This defaults to previous window
 in the VI sense if you have one window only.
 </p>
-<a name="IDX247"></a>
-<a name="IDX248"></a>
-<a name="IDX249"></a>
-<a name="IDX250"></a>
+<a name="index-_003cargs_003e"></a>
+<a name="index-_003ccmd_003e"></a>
+<a name="index-_003cargs_003e-1"></a>
+<a name="index-_003ccmd_003e-1"></a>
 <p>Others like &lsquo;<samp>&lt;args&gt; -- arguments</samp>&rsquo;, &lsquo;<samp>&lt;cmd&gt; -- command</samp>&rsquo; etc.
 should be fairly obvious.
 </p>
@@ -229,16 +229,16 @@ should be fairly obvious.
 <dd><p>Return, Enter
 </p></dd>
 </dl>
-<a name="IDX251"></a>
-<a name="IDX252"></a>
-<a name="IDX253"></a>
-<a name="IDX254"></a>
-<a name="IDX255"></a>
+<a name="index-_003ccr_003e"></a>
+<a name="index-_003cesc_003e"></a>
+<a name="index-_003clf_003e"></a>
+<a name="index-_003cht_003e"></a>
+<a name="index-_003csp_003e"></a>
 
-<a name="IDX256"></a>
-<a name="IDX257"></a>
-<a name="IDX258"></a>
-<a name="IDX259"></a>
+<a name="index-words"></a>
+<a name="index-WORDS"></a>
+<a name="index-char"></a>
+<a name="index-CHAR"></a>
 
 <p>We also use &lsquo;<samp>word</samp>&rsquo; for alphanumeric/non-alphanumeric words, and
 &lsquo;<samp>WORD</samp>&rsquo; for whitespace delimited words.  &lsquo;<samp>char</samp>&rsquo; refers to any
@@ -292,9 +292,9 @@ modes, you should execute, for example,
 
 <p>in the appropriate major mode hooks.
 </p>
-<a name="IDX260"></a>
-<a name="IDX261"></a>
-<a name="IDX262"></a>
+<a name="index-viper_002dsyntax_002dpreference-1"></a>
+<a name="index-viper_002dset_002dsyntax_002dpreference-1"></a>
+<a name="index-syntax-table-1"></a>
 
 
 
@@ -318,7 +318,7 @@ current Emacs region.  This is done by typing a digit argument before
 <em>:123,135</em>, assuming that the current region starts at line 123 and
 ends at line 135.  There is no need to type the line numbers, since Viper
 inserts them automatically in front of the Ex command.
-<a name="IDX263"></a>
+<a name="index-Ex-commands-1"></a>
 </p>
 <hr size="6">
 <a name="Text-Handling"></a>
@@ -534,9 +534,9 @@ expression search.  With the prefix argument 1, i.e.,
 toggles plain vanilla search and search using
 regular expressions.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for alternative ways to invoke
 this function.
-<a name="IDX264"></a>
-<a name="IDX265"></a>
-<a name="IDX266"></a>
+<a name="index-vanilla-search-2"></a>
+<a name="index-case_002dsensitive-search-2"></a>
+<a name="index-case_002dinsensitive-search-2"></a>
 </p></dd>
 <dt>  <kbd>%</kbd></dt>
 <dd><p>Find the next bracket/parenthesis/brace and go to its match.
@@ -550,67 +550,67 @@ don&rsquo;t want this macro, put
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-parsing-style-toggling-macro 'undefine)
 </pre></td></tr></table>
-<a name="IDX267"></a>
+<a name="index-viper_002dset_002dparsing_002dstyle_002dtoggling_002dmacro"></a>
 
 <p>in your &lsquo;<tt>~/.viper</tt>&rsquo; file.
 </p>
 </dd>
 </dl>
-<a name="IDX268"></a>
-<a name="IDX269"></a>
-<a name="IDX270"></a>
-<a name="IDX271"></a>
-<a name="IDX272"></a>
-<a name="IDX273"></a>
-<a name="IDX274"></a>
-<a name="IDX275"></a>
-<a name="IDX276"></a>
-<a name="IDX277"></a>
-<a name="IDX278"></a>
-<a name="IDX279"></a>
-<a name="IDX280"></a>
-<a name="IDX281"></a>
-<a name="IDX282"></a>
-<a name="IDX283"></a>
-<a name="IDX284"></a>
-<a name="IDX285"></a>
-<a name="IDX286"></a>
-<a name="IDX287"></a>
-<a name="IDX288"></a>
-<a name="IDX289"></a>
-<a name="IDX290"></a>
-<a name="IDX291"></a>
-<a name="IDX292"></a>
-<a name="IDX293"></a>
-<a name="IDX294"></a>
-<a name="IDX295"></a>
-<a name="IDX296"></a>
-<a name="IDX297"></a>
-<a name="IDX298"></a>
-<a name="IDX299"></a>
-<a name="IDX300"></a>
-<a name="IDX301"></a>
-<a name="IDX302"></a>
-<a name="IDX303"></a>
-<a name="IDX304"></a>
-<a name="IDX305"></a>
-<a name="IDX306"></a>
-<a name="IDX307"></a>
-<a name="IDX308"></a>
-<a name="IDX309"></a>
-<a name="IDX310"></a>
-<a name="IDX311"></a>
-<a name="IDX312"></a>
-<a name="IDX313"></a>
-<a name="IDX314"></a>
-<a name="IDX315"></a>
-<a name="IDX316"></a>
-<a name="IDX317"></a>
-<a name="IDX318"></a>
-<a name="IDX319"></a>
-<a name="IDX320"></a>
-<a name="IDX321"></a>
-<a name="IDX322"></a>
+<a name="index-_0025"></a>
+<a name="index-C_002dc-_002f-2"></a>
+<a name="index-N"></a>
+<a name="index-n"></a>
+<a name="index-_003f_003ccr_003e"></a>
+<a name="index-_002f_003ccr_003e"></a>
+<a name="index-_003f_003cstring_003e"></a>
+<a name="index-_002f_003cstring_003e"></a>
+<a name="index-_0027_0027"></a>
+<a name="index-_0060_0060"></a>
+<a name="index-_005d_003ca_002dz_003e-1"></a>
+<a name="index-_005b_003ca_002dz_003e-1"></a>
+<a name="index-_0027_003ca_002dz_003e"></a>
+<a name="index-_0060_003ca_002dz_003e"></a>
+<a name="index-m_003ca_002dz_003e"></a>
+<a name="index-_005b_005d-1"></a>
+<a name="index-_005b_005b"></a>
+<a name="index-_005d_005d"></a>
+<a name="index-_007b"></a>
+<a name="index-_007d"></a>
+<a name="index-_0028"></a>
+<a name="index-_0029"></a>
+<a name="index-M"></a>
+<a name="index-L"></a>
+<a name="index-H"></a>
+<a name="index-G"></a>
+<a name="index-E"></a>
+<a name="index-e"></a>
+<a name="index-B"></a>
+<a name="index-b"></a>
+<a name="index-W"></a>
+<a name="index-w"></a>
+<a name="index-_002c"></a>
+<a name="index-_003b"></a>
+<a name="index-T_003cchar_003e"></a>
+<a name="index-F_003cchar_003e"></a>
+<a name="index-t_003cchar_003e"></a>
+<a name="index-f_003cchar_003e"></a>
+<a name="index-_007c"></a>
+<a name="index-0"></a>
+<a name="index-_003ccr_003e-1"></a>
+<a name="index-_002b"></a>
+<a name="index-_002d"></a>
+<a name="index-_005e"></a>
+<a name="index-_0024"></a>
+<a name="index-C_002dp"></a>
+<a name="index-_003clf_003e-1"></a>
+<a name="index-_003csp_003e-1"></a>
+<a name="index-C_002dn"></a>
+<a name="index-C_002dh"></a>
+<a name="index-h"></a>
+<a name="index-j"></a>
+<a name="index-k"></a>
+<a name="index-l"></a>
+<a name="index-viper_002dparse_002dsexp_002dignore_002dcomments"></a>
 
 <hr size="6">
 <a name="Marking"></a>
@@ -638,7 +638,7 @@ See section <a href="viper_2.html#Emacs-Preliminaries">Emacs Preliminaries</a>, 
 see <a href="../emacs/Mark.html#Mark">(emacs)Mark</a> section &lsquo;Mark&rsquo; in <cite>The GNU Emacs manual</cite>, for an explanation of
 the Emacs mark ring.
 </p>
-<a name="IDX323"></a>
+<a name="index-marking"></a>
 
 <dl compact="compact">
 <dt> <kbd>m&lt;a-z&gt;</kbd></dt>
@@ -681,18 +681,18 @@ it in a way that you didn&rsquo;t like.
 <dd><p>Go to specified Viper mark and go to the first CHAR on line.
 </p></dd>
 </dl>
-<a name="IDX324"></a>
-<a name="IDX325"></a>
-<a name="IDX326"></a>
-<a name="IDX327"></a>
-<a name="IDX328"></a>
-<a name="IDX329"></a>
-<a name="IDX330"></a>
-<a name="IDX331"></a>
-<a name="IDX332"></a>
-<a name="IDX333"></a>
-<a name="IDX334"></a>
-<a name="IDX335"></a>
+<a name="index-m_003ca_002dz_003e-1"></a>
+<a name="index-m_002e"></a>
+<a name="index-m_003e"></a>
+<a name="index-m_003c"></a>
+<a name="index-m_002c"></a>
+<a name="index-m_005e"></a>
+<a name="index-_003amark"></a>
+<a name="index-_003ak"></a>
+<a name="index-_0027_0027-1"></a>
+<a name="index-_0060_0060-1"></a>
+<a name="index-_0060_003ca_002dz_003e-1"></a>
+<a name="index-_0027_003ca_002dz_003e-1"></a>
 
 <hr size="6">
 <a name="Appending-Text"></a>
@@ -720,10 +720,10 @@ Emacs manual, or try <kbd>C-ha tabs</kbd> (If you have turned Emacs help on).
 Check out the variable <code>indent-tabs-mode</code> to put in just spaces.
 Also see options for word-wrap.
 </p>
-<a name="IDX336"></a>
-<a name="IDX337"></a>
-<a name="IDX338"></a>
-<a name="IDX339"></a>
+<a name="index-inserting"></a>
+<a name="index-appending"></a>
+<a name="index-paste"></a>
+<a name="index-put"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  a</kbd></dt>
@@ -792,22 +792,22 @@ functions doing the perusing can be bound to unused keyboard keys in the
 &lsquo;<tt>~/.viper</tt>&rsquo; file.  See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p></dd>
 </dl>
-<a name="IDX340"></a>
-<a name="IDX341"></a>
-<a name="IDX342"></a>
-<a name="IDX343"></a>
-<a name="IDX344"></a>
-<a name="IDX345"></a>
-<a name="IDX346"></a>
-<a name="IDX347"></a>
-<a name="IDX348"></a>
-<a name="IDX349"></a>
-<a name="IDX350"></a>
-<a name="IDX351"></a>
-<a name="IDX352"></a>
-<a name="IDX353"></a>
-<a name="IDX354"></a>
-<a name="IDX355"></a>
+<a name="index-C_002dc-M_002dp-1"></a>
+<a name="index-C_002dc-M_002dn-1"></a>
+<a name="index-_002e"></a>
+<a name="index-_005d_003ca_002dz_003e-2"></a>
+<a name="index-_005b_003ca_002dz_003e-2"></a>
+<a name="index-P"></a>
+<a name="index-p"></a>
+<a name="index-_0022_003ca_002dz1_002d9_003ep"></a>
+<a name="index-_0022_003ca_002dz1_002d9_003eP"></a>
+<a name="index-_003e_003e"></a>
+<a name="index-_003e_003cmove_003e"></a>
+<a name="index-O"></a>
+<a name="index-o"></a>
+<a name="index-i"></a>
+<a name="index-A"></a>
+<a name="index-a"></a>
 
 <hr size="6">
 <a name="Editing-in-Insert-State"></a>
@@ -835,7 +835,7 @@ between Insert/Replace/Vi states at will.
 Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <var>viper-vi-style-in-minibuffer</var> to <code>nil</code>.
 </p>
-<a name="IDX356"></a>
+<a name="index-Insert-state"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-v</kbd></dt>
@@ -853,9 +853,9 @@ current line.
 </p>
 </dd>
 </dl>
-<a name="IDX357"></a>
-<a name="IDX358"></a>
-<a name="IDX359"></a>
+<a name="index-C_002du"></a>
+<a name="index-C_002dw"></a>
+<a name="index-C_002dv-1"></a>
 
 <hr size="6">
 <a name="Deleting-Text"></a>
@@ -891,7 +891,7 @@ newly deleted text could be put back separately from the previously deleted
 text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
 </p>
-<a name="IDX360"></a>
+<a name="index-shifting-text"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  x</kbd></dt>
@@ -917,13 +917,13 @@ shiftwidth to the left (layout!).
 <dd><p>Shift &lt;count&gt; lines one shiftwidth to the left.
 </p></dd>
 </dl>
-<a name="IDX361"></a>
-<a name="IDX362"></a>
-<a name="IDX363"></a>
-<a name="IDX364"></a>
-<a name="IDX365"></a>
-<a name="IDX366"></a>
-<a name="IDX367"></a>
+<a name="index-_003c_003c"></a>
+<a name="index-_003c_003cmove_003e"></a>
+<a name="index-D"></a>
+<a name="index-dd"></a>
+<a name="index-d_003cmove_003e"></a>
+<a name="index-X"></a>
+<a name="index-x"></a>
 
 <hr size="6">
 <a name="Changing-Text"></a>
@@ -1044,28 +1044,28 @@ destructive Vi commands.
 See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p></dd>
 </dl>
-<a name="IDX368"></a>
-<a name="IDX369"></a>
-<a name="IDX370"></a>
-<a name="IDX371"></a>
-<a name="IDX372"></a>
-<a name="IDX373"></a>
-<a name="IDX374"></a>
-<a name="IDX375"></a>
-<a name="IDX376"></a>
-<a name="IDX377"></a>
-<a name="IDX378"></a>
-<a name="IDX379"></a>
-<a name="IDX380"></a>
-<a name="IDX381"></a>
-<a name="IDX382"></a>
-<a name="IDX383"></a>
-<a name="IDX384"></a>
-<a name="IDX385"></a>
-<a name="IDX386"></a>
-<a name="IDX387"></a>
-<a name="IDX388"></a>
-<a name="IDX389"></a>
+<a name="index-C_002dc-M_002dp-2"></a>
+<a name="index-C_002dc-M_002dn-2"></a>
+<a name="index-_0023q_003cmove_003e-"></a>
+<a name="index-_0023C_003cmove_003e-1"></a>
+<a name="index-_0023c_003cmove_003e-1"></a>
+<a name="index-_0026"></a>
+<a name="index-_005c_0026"></a>
+<a name="index-_003asubstitute_002f_003cpat_003e_002f_003crepl_003e_002f_003cf_003e"></a>
+<a name="index-_003as_002f_003cpat_003e_002f_003crepl_003e_002f_003cf_003e"></a>
+<a name="index-_003acopy-_005bz_005d"></a>
+<a name="index-_003at-_005bz_005d"></a>
+<a name="index-_003amove-_005bz_005d"></a>
+<a name="index-J"></a>
+<a name="index-_007e"></a>
+<a name="index-_003d_003cmove_003e"></a>
+<a name="index-C"></a>
+<a name="index-cc"></a>
+<a name="index-c_003cmove_003e"></a>
+<a name="index-S"></a>
+<a name="index-s"></a>
+<a name="index-R"></a>
+<a name="index-r_003cchar_003e"></a>
 
 <hr size="6">
 <a name="Search-and-Replace"></a>
@@ -1121,7 +1121,7 @@ substitution).
 <dd><p>Find the next bracket and go to its match
 </p></dd>
 <dt> <kbd>:[x,y]g/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
-<dd><a name="IDX390"></a>
+<dd><a name="index-text-processing"></a>
 <p>Search globally [from line x to y] for &lt;string&gt;
 and execute the Ex &lt;cmd&gt; on each occurrence.
 </p></dd>
@@ -1163,21 +1163,21 @@ can be used in &lt;repl&gt;</em>.
 <dd><p>Execute &lt;ex-command&gt; on all lines that do not match &lt;pattern&gt;.
 </p></dd>
 </dl>
-<a name="IDX391"></a>
-<a name="IDX392"></a>
-<a name="IDX393"></a>
-<a name="IDX394"></a>
-<a name="IDX395"></a>
-<a name="IDX396"></a>
-<a name="IDX397"></a>
-<a name="IDX398"></a>
-<a name="IDX399"></a>
-<a name="IDX400"></a>
-<a name="IDX401"></a>
-<a name="IDX402"></a>
-<a name="IDX403"></a>
-<a name="IDX404"></a>
-<a name="IDX405"></a>
+<a name="index-_0026-1"></a>
+<a name="index-_003asubstitute_002f_003cpat_003e_002f_003crepl_003e_002f_003cf_003e-1"></a>
+<a name="index-Q-1"></a>
+<a name="index-_0023g_003cmove_003e-1"></a>
+<a name="index-_003av"></a>
+<a name="index-_003ag"></a>
+<a name="index-_003aglobal"></a>
+<a name="index-_003avglobal"></a>
+<a name="index-_003atag-_003cname_003e"></a>
+<a name="index-_0025-1"></a>
+<a name="index-N-1"></a>
+<a name="index-n-1"></a>
+<a name="index-g_003cmove_003e"></a>
+<a name="index-_003f_003cstring_003e-1"></a>
+<a name="index-_002f_003cstring_003e-1"></a>
 
 <hr size="6">
 <a name="Yanking"></a>
@@ -1237,20 +1237,20 @@ be automatically down-cased.
 &lt;count&gt; times before the cursor.  The register will
 </p></dd>
 </dl>
-<a name="IDX406"></a>
-<a name="IDX407"></a>
-<a name="IDX408"></a>
-<a name="IDX409"></a>
-<a name="IDX410"></a>
-<a name="IDX411"></a>
-<a name="IDX412"></a>
-<a name="IDX413"></a>
-<a name="IDX414"></a>
-<a name="IDX415"></a>
-<a name="IDX416"></a>
-<a name="IDX417"></a>
-<a name="IDX418"></a>
-<a name="IDX419"></a>
+<a name="index-P-1"></a>
+<a name="index-p-1"></a>
+<a name="index-_0022_003ca_002dz1_002d9_003ep-1"></a>
+<a name="index-_0022_003ca_002dz1_002d9_003eP-1"></a>
+<a name="index-_005d_003ca_002dz_003e-3"></a>
+<a name="index-_005b_003ca_002dz_003e-3"></a>
+<a name="index-m_003ca_002dz_003e-2"></a>
+<a name="index-Y"></a>
+<a name="index-yy"></a>
+<a name="index-_0022_003cA_002dZ_003ey_003cmove_003e"></a>
+<a name="index-_0022_003ca_002dz_003ey_003cmove_003e"></a>
+<a name="index-y_003cmove_003e"></a>
+<a name="index-yank"></a>
+<a name="index-_003ayank"></a>
 
 <hr size="6">
 <a name="Undoing"></a>
@@ -1292,12 +1292,12 @@ be automatically down-cased.
 that have a &lsquo;<samp>~</samp>&rsquo; appended to them.
 </p></dd>
 </dl>
-<a name="IDX420"></a>
-<a name="IDX421"></a>
-<a name="IDX422"></a>
-<a name="IDX423"></a>
-<a name="IDX424"></a>
-<a name="IDX425"></a>
+<a name="index-_003arec"></a>
+<a name="index-_003ae_0021"></a>
+<a name="index-_003aq_0021"></a>
+<a name="index-_002e-1"></a>
+<a name="index-U"></a>
+<a name="index-u-1"></a>
 
 <hr size="6">
 <a name="Display"></a>
@@ -1370,21 +1370,21 @@ initialization: half a page).
 (default the current line).
 </p></dd>
 </dl>
-<a name="IDX426"></a>
-<a name="IDX427"></a>
-<a name="IDX428"></a>
-<a name="IDX429"></a>
-<a name="IDX430"></a>
-<a name="IDX431"></a>
-<a name="IDX432"></a>
-<a name="IDX433"></a>
-<a name="IDX434"></a>
-<a name="IDX435"></a>
-<a name="IDX436"></a>
-<a name="IDX437"></a>
-<a name="IDX438"></a>
-<a name="IDX439"></a>
-<a name="IDX440"></a>
+<a name="index-zM"></a>
+<a name="index-zL"></a>
+<a name="index-zH"></a>
+<a name="index-z_003ccr_003e"></a>
+<a name="index-z_002e"></a>
+<a name="index-z_002d"></a>
+<a name="index-z_003ccr_003e-1"></a>
+<a name="index-C_002db"></a>
+<a name="index-C_002df"></a>
+<a name="index-C_002du-1"></a>
+<a name="index-C_002dd"></a>
+<a name="index-C_002dy"></a>
+<a name="index-C_002de"></a>
+<a name="index-C_002dl"></a>
+<a name="index-C_002dg-2"></a>
 
 
 <hr size="6">
@@ -1537,7 +1537,7 @@ The variable <var>viper-read-buffer-function</var> controls which function is
 actually used to read the buffer name. The default is <code>read-buffer</code>,
 but better alternatives are also available in Emacs (e.g.,
 <code>iswitchb-read-buffer</code>).
-<a name="IDX441"></a>
+<a name="index-viper_002dread_002dbuffer_002dfunction"></a>
 </p></dd>
 <dt> <kbd>:B</kbd></dt>
 <dd><p>Like <kbd>:b</kbd>, but the meaning of <var>ex-cycle-other-window</var> is reversed.
@@ -1550,44 +1550,44 @@ but better alternatives are also available in Emacs (e.g.,
 is typed in Minibuffer.  File completion and history are supported.
 </p></dd>
 </dl>
-<a name="IDX442"></a>
-<a name="IDX443"></a>
-<a name="IDX444"></a>
-<a name="IDX445"></a>
-<a name="IDX446"></a>
-<a name="IDX447"></a>
-<a name="IDX448"></a>
-<a name="IDX449"></a>
-<a name="IDX450"></a>
-<a name="IDX451"></a>
-<a name="IDX452"></a>
-<a name="IDX453"></a>
-<a name="IDX454"></a>
-<a name="IDX455"></a>
-<a name="IDX456"></a>
-<a name="IDX457"></a>
-<a name="IDX458"></a>
-<a name="IDX459"></a>
-<a name="IDX460"></a>
-<a name="IDX461"></a>
-<a name="IDX462"></a>
-<a name="IDX463"></a>
-<a name="IDX464"></a>
-<a name="IDX465"></a>
-<a name="IDX466"></a>
-<a name="IDX467"></a>
-<a name="IDX468"></a>
-<a name="IDX469"></a>
-<a name="IDX470"></a>
-<a name="IDX471"></a>
-<a name="IDX472"></a>
-<a name="IDX473"></a>
-<a name="IDX474"></a>
-<a name="IDX475"></a>
-<a name="IDX476"></a>
-<a name="IDX477"></a>
-<a name="IDX478"></a>
-<a name="IDX479"></a>
+<a name="index-v-1"></a>
+<a name="index-V-1"></a>
+<a name="index-_003aargs-1"></a>
+<a name="index-_003arew"></a>
+<a name="index-C_002d_005e"></a>
+<a name="index-_003ae_0021-_005b_003cfiles_003e_005d"></a>
+<a name="index-_003ae-_005b_003cfiles_003e_005d"></a>
+<a name="index-_003aedit-_005b_003cfiles_003e_005d"></a>
+<a name="index-_003aedit_0021-_005b_003cfiles_003e_005d"></a>
+<a name="index-_003aq_0021-1"></a>
+<a name="index-_003aq"></a>
+<a name="index-_003aquit"></a>
+<a name="index-_003aquit_0021"></a>
+<a name="index-_003af"></a>
+<a name="index-_003arec-1"></a>
+<a name="index-_003ar"></a>
+<a name="index-_003aread"></a>
+<a name="index-_003apre-1"></a>
+<a name="index-ZZ"></a>
+<a name="index-_003awq"></a>
+<a name="index-_003aw-_003cfile_003e"></a>
+<a name="index-_003aw_0021-_003cfile_003e"></a>
+<a name="index-_003aw-_003e_003e-_003cfile_003e"></a>
+<a name="index-_003awrite-_003cfile_003e"></a>
+<a name="index-_003awrite_0021-_003cfile_003e"></a>
+<a name="index-_003awrite-_003e_003e-_003cfile_003e"></a>
+<a name="index-_003aW"></a>
+<a name="index-_003aWW"></a>
+<a name="index-_003aWrite"></a>
+<a name="index-_003aWWrite"></a>
+<a name="index-_003aWWrite-1"></a>
+<a name="index-_003ax"></a>
+<a name="index-_003ax_0021"></a>
+<a name="index-_003asuspend"></a>
+<a name="index-_003astop"></a>
+<a name="index-_003an-_005b_003ccount_003e-_007c-_003cfile_003e_005d"></a>
+<a name="index-_003acd-_005b_003cdir_003e_005d"></a>
+<a name="index-_003apwd-1"></a>
 
 <hr size="6">
 <a name="Mapping"></a>
@@ -1673,18 +1673,18 @@ See section <a href="viper_3.html#Macros-and-Registers">Macros and Registers</a>
 <dd><p>Show contents of register.
 </p></dd>
 </dl>
-<a name="IDX480"></a>
-<a name="IDX481"></a>
-<a name="IDX482"></a>
-<a name="IDX483"></a>
-<a name="IDX484"></a>
-<a name="IDX485"></a>
-<a name="IDX486"></a>
-<a name="IDX487"></a>
-<a name="IDX488"></a>
-<a name="IDX489"></a>
-<a name="IDX490"></a>
-<a name="IDX491"></a>
+<a name="index-_005d_003ca_002dz_003e-4"></a>
+<a name="index-_005b_003ca_002dz_003e-4"></a>
+<a name="index-_0023g_003cmove_003e-2"></a>
+<a name="index-_002a-1"></a>
+<a name="index-_0040_0021_003ca_002dz_003e"></a>
+<a name="index-_0040_0023-1"></a>
+<a name="index-_0040_0040"></a>
+<a name="index-_0040_003ca_002dz_003e-1"></a>
+<a name="index-_003aunmap-_003cchar_003e"></a>
+<a name="index-_003amap-_003cchar_003e-_003cseq_003e"></a>
+<a name="index-_003aunmap_0021-_003cchar_003e"></a>
+<a name="index-_003amap_0021-_003cchar_003e-_003cseq_003e"></a>
 
 <hr size="6">
 <a name="Shell-Commands"></a>
@@ -1710,10 +1710,10 @@ See section <a href="viper_3.html#Macros-and-Registers">Macros and Registers</a>
 
 <p>The symbol &lsquo;<samp>%</samp>&rsquo; is used in Ex shell commands to mean current file.  If
 you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be escaped as &lsquo;<samp>\%</samp>&rsquo;.
-<a name="IDX492"></a>
+<a name="index-_0025-_0028Ex-address_0029-1"></a>
 However if &lsquo;<samp>%</samp>&rsquo; is the first character, it stands as the address for
 the whole file.
-<a name="IDX493"></a>
+<a name="index-_0023-_0028Previous-file_0029-1"></a>
 Similarly, &lsquo;<samp>#</samp>&rsquo; expands to the previous file.  The previous file is the
 first file in <kbd>:args</kbd> listing.  This defaults to the previous file in
 the VI sense if you have one window.
@@ -1723,7 +1723,7 @@ the VI sense if you have one window.
 &lt;file&gt;</kbd> command don&rsquo;t support these meta symbols, because file history is a
 better mechanism.
 </p>
-<a name="IDX494"></a>
+<a name="index-shell-commands"></a>
 
 <dl compact="compact">
 <dt> <kbd>:sh</kbd></dt>
@@ -1768,17 +1768,17 @@ current).
 <dd><p>Run the make command in the current directory.
 </p></dd>
 </dl>
-<a name="IDX495"></a>
-<a name="IDX496"></a>
-<a name="IDX497"></a>
-<a name="IDX498"></a>
-<a name="IDX499"></a>
-<a name="IDX500"></a>
-<a name="IDX501"></a>
-<a name="IDX502"></a>
-<a name="IDX503"></a>
-<a name="IDX504"></a>
-<a name="IDX505"></a>
+<a name="index-_003a_003caddress_003er-_003cname_003e"></a>
+<a name="index-_003a_003caddress_003er-_0021_003ccmd_003e"></a>
+<a name="index-_0021_003ccmd_003e"></a>
+<a name="index-_0021_0021_003ccmd_003e"></a>
+<a name="index-_0021_003cmove_003e_003ccmd_003e"></a>
+<a name="index-_003aw-_0021_003ccmd_003e"></a>
+<a name="index-_003ax_002cy-w-_0021_003ccmd_003e"></a>
+<a name="index-_003a_0021_0021-_003cargs_003e"></a>
+<a name="index-_003a_0021_003ccmd_003e"></a>
+<a name="index-_003ash"></a>
+<a name="index-_003amake"></a>
 
 <hr size="6">
 <a name="Options"></a>
@@ -1805,7 +1805,7 @@ current).
 <dl compact="compact">
 <dt> <kbd>autoindent</kbd></dt>
 <dt> <kbd>ai</kbd></dt>
-<dd><a name="IDX506"></a>
+<dd><a name="index-autoindent"></a>
 <p>autoindent &ndash; In append mode after a &lt;cr&gt; the
 cursor will move directly below the first
 character on the previous line.
@@ -1825,7 +1825,7 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>ignorecase</kbd></dt>
 <dt> <kbd>ic</kbd></dt>
-<dd><a name="IDX507"></a>
+<dd><a name="index-case-and-searching"></a>
 <p>ignorecase &ndash; No distinction between upper and lower cases when searching.
 </p></dd>
 <dt> <kbd>noignorecase</kbd></dt>
@@ -1834,7 +1834,7 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>magic</kbd></dt>
 <dt> <kbd>ma</kbd></dt>
-<dd><a name="IDX508"></a>
+<dd><a name="index-literal-searching"></a>
 <p>Regular expressions used in searches; nomagic means no regexps.
 </p></dd>
 <dt> <kbd>nomagic</kbd></dt>
@@ -1843,7 +1843,7 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>readonly</kbd></dt>
 <dt> <kbd>ro</kbd></dt>
-<dd><a name="IDX509"></a>
+<dd><a name="index-readonly-files"></a>
 <p>readonly &ndash; The file is not to be changed.
 If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
@@ -1853,20 +1853,20 @@ If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
 <dt> <kbd>shell=&lt;string&gt;</kbd></dt>
 <dt> <kbd>sh=&lt;string&gt;</kbd></dt>
-<dd><a name="IDX510"></a>
+<dd><a name="index-shell-1"></a>
 <p>shell &ndash; The program to be used for shell escapes
 (default &lsquo;<samp>$SHELL</samp>&rsquo; (default &lsquo;<tt>/bin/sh</tt>&rsquo;)).
 </p></dd>
 <dt> <kbd>shiftwidth=&lt;count&gt;</kbd></dt>
 <dt> <kbd>sw=&lt;count&gt;</kbd></dt>
-<dd><a name="IDX511"></a>
-<a name="IDX512"></a>
+<dd><a name="index-layout"></a>
+<a name="index-shifting-text-1"></a>
 <p>shiftwidth &ndash; Gives the shiftwidth (default 8 positions).
 </p></dd>
 <dt> <kbd>showmatch</kbd></dt>
 <dt> <kbd>sm</kbd></dt>
-<dd><a name="IDX513"></a>
-<a name="IDX514"></a>
+<dd><a name="index-paren-matching"></a>
+<a name="index-matching-parens"></a>
 <p>showmatch &ndash; Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it&rsquo;s on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there&rsquo;s no match, Vi will beep.
@@ -1877,8 +1877,8 @@ its match if it&rsquo;s on the same page; also with
 </p></dd>
 <dt> <kbd>tabstop=&lt;count&gt;</kbd></dt>
 <dt> <kbd>ts=&lt;count&gt;</kbd></dt>
-<dd><a name="IDX515"></a>
-<a name="IDX516"></a>
+<dd><a name="index-changing-tab-width"></a>
+<a name="index-tabbing"></a>
 <p>tabstop &ndash; The length of a &lt;ht&gt;; warning: this is
 only IN the editor, outside of it &lt;ht&gt;s have
 their normal length (default 8 positions).
@@ -1890,15 +1890,15 @@ This setting affects the current buffer only.
 </p></dd>
 <dt> <kbd>wrapmargin=&lt;count&gt;</kbd></dt>
 <dt> <kbd>wm=&lt;count&gt;</kbd></dt>
-<dd><a name="IDX517"></a>
-<a name="IDX518"></a>
+<dd><a name="index-auto-fill"></a>
+<a name="index-word-wrap"></a>
 <p>wrapmargin &ndash; In append mode Vi automatically
 puts a &lt;lf&gt; whenever there is a &lt;sp&gt; or &lt;ht&gt;
 within &lt;wm&gt; columns from the right margin.
 </p></dd>
 <dt> <kbd>wrapscan</kbd></dt>
 <dt> <kbd>ws</kbd></dt>
-<dd><a name="IDX519"></a>
+<dd><a name="index-searching"></a>
 <p>wrapscan &ndash; When searching, the end is
 considered &lsquo;<samp>stuck</samp>&rsquo; to the begin of the file.
 </p></dd>
@@ -1916,29 +1916,29 @@ considered &lsquo;<samp>stuck</samp>&rsquo; to the begin of the file.
 <dd><p>Set &lt;option&gt; to &lt;value&gt;.
 </p></dd>
 </dl>
-<a name="IDX520"></a>
-<a name="IDX521"></a>
-<a name="IDX522"></a>
-<a name="IDX523"></a>
-<a name="IDX524"></a>
-<a name="IDX525"></a>
-<a name="IDX526"></a>
-<a name="IDX527"></a>
-<a name="IDX528"></a>
-<a name="IDX529"></a>
-<a name="IDX530"></a>
-<a name="IDX531"></a>
-<a name="IDX532"></a>
-<a name="IDX533"></a>
-<a name="IDX534"></a>
-<a name="IDX535"></a>
-<a name="IDX536"></a>
-<a name="IDX537"></a>
-<a name="IDX538"></a>
-<a name="IDX539"></a>
-<a name="IDX540"></a>
-<a name="IDX541"></a>
-<a name="IDX542"></a>
+<a name="index-_003aset-_003coption_003e_003d_003cvalue_003e"></a>
+<a name="index-_003aset-no_003coption_003e"></a>
+<a name="index-_003aset-_003coption_003e"></a>
+<a name="index-_003aset-ws"></a>
+<a name="index-_003aset-wrapscan"></a>
+<a name="index-_003aset-wm_003d_003ccount_003e"></a>
+<a name="index-_003aset-wrapmargin_003d_003ccount_003e"></a>
+<a name="index-_003aset-ts_003d_003ccount_003e"></a>
+<a name="index-_003aset-tabstop_003d_003ccount_003e"></a>
+<a name="index-_003aset-tab_002dstop_002dlocal_003d_003ccount_003e"></a>
+<a name="index-_003aset-sm"></a>
+<a name="index-_003aset-showmatch"></a>
+<a name="index-_003aset-sw_003d_003ccount_003e"></a>
+<a name="index-_003aset-shiftwidth_003d_003ccount_003e"></a>
+<a name="index-_003aset-sh_003d_003cstring_003e"></a>
+<a name="index-_003aset-shell_003d_003cstring_003e"></a>
+<a name="index-_003aset-ro"></a>
+<a name="index-_003aset-readonly"></a>
+<a name="index-_003aset-magic"></a>
+<a name="index-_003aset-ic"></a>
+<a name="index-_003aset-ignorecase"></a>
+<a name="index-_003aset-ai"></a>
+<a name="index-_003aset-autoindent"></a>
 
 <hr size="6">
 <a name="Emacs-Related-Commands"></a>
@@ -2007,16 +2007,16 @@ Using this command, you can try may different kills until you find the one
 you need.
 </p></dd>
 </dl>
-<a name="IDX543"></a>
-<a name="IDX544"></a>
-<a name="IDX545"></a>
-<a name="IDX546"></a>
-<a name="IDX547"></a>
-<a name="IDX548"></a>
-<a name="IDX549"></a>
-<a name="IDX550"></a>
-<a name="IDX551"></a>
-<a name="IDX552"></a>
+<a name="index-M_002dy"></a>
+<a name="index-C_002dy-1"></a>
+<a name="index-C_002dxC_002df"></a>
+<a name="index-C_002dxo"></a>
+<a name="index-C_002dx2"></a>
+<a name="index-C_002dx1"></a>
+<a name="index-C_002dx0"></a>
+<a name="index-C_002dz"></a>
+<a name="index-C_002d_005c-1"></a>
+<a name="index-C_002dc_005c"></a>
 
 <hr size="6">
 <a name="Mouse_002dbound-Commands"></a>
@@ -2064,10 +2064,10 @@ already bound to something else.
 See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for more details.
 </p></dd>
 </dl>
-<a name="IDX553"></a>
-<a name="IDX554"></a>
-<a name="IDX555"></a>
-<a name="IDX556"></a>
+<a name="index-S_002dMouse_002d1-1"></a>
+<a name="index-S_002dMouse_002d2-1"></a>
+<a name="index-meta-button1up"></a>
+<a name="index-meta-button2up"></a>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

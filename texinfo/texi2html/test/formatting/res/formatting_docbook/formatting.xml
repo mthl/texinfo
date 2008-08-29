@@ -34,7 +34,7 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 <para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'
 
 </para>
-<para><indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm></para>
+<indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm>
 <para>@&quot;u &uuml; 
 @&quot;{U} &Uuml; 
 @~n &ntilde;
@@ -148,7 +148,7 @@ but , ,
 <literal>@file{--a}</literal> <filename>--a</filename>
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
-<literal>@key{--a}</literal> &lt;<keycap>&ndash;a</keycap>&gt;
+<literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
@@ -171,6 +171,7 @@ but , ,
 <literal>@url{,--b}</literal> <ulink url="">&ndash;b</ulink>
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
+<literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
 <literal>@w{}</literal> <!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
@@ -214,7 +215,7 @@ aaa
 aaa
 </literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="@file{f--ile}@@@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &rarr; A
@@ -275,16 +276,14 @@ After clickstyle &rArr;
 <itemizedlist mark="minus"><listitem><para> minu&ndash;s
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="emph"><listitem><para><emphasis> e&ndash;mph item</emphasis>
+<itemizedlist mark="emph"><listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="@emph{after emph}"><listitem><!-- comment in itemize -->
-</listitem>
+<itemizedlist mark="@emph{after emph}"><!-- comment in itemize -->
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><listitem><para><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></para></listitem>
-<listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -317,15 +316,15 @@ After clickstyle &rArr;
 </abstract>
 <screen>s&ndash;mallformat
 </screen>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--effn_name</primary></indexterm><function>d--effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de&ndash;ffn_name</primary></indexterm><function>de&ndash;ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
+<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><function>de--ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
 </replaceable><replaceable> even</replaceable><replaceable> more</replaceable><replaceable> so</replaceable></synopsis>
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -358,58 +357,58 @@ After clickstyle &rArr;
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efvr_name</primary></indexterm><varname>d&ndash;efvr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efvr_name</primary></indexterm><varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&ndash;efvr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypefn_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefn_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypefn_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefn_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypeop_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypeop_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypeop_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypeop_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypeop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;eftypevr_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--eftypevr_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efcv_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efcv_name</property></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efcv_name</primary></indexterm><classname>c--lass</classname><property>d--efcv_name</property></synopsis>
 <blockquote><para>d&ndash;efcv
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;efop_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--efop_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d&ndash;eftp_name</primary></indexterm><structname>d&ndash;eftp_name</structname><type> a--ttributes...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d--eftp_name</primary></indexterm><structname>d--eftp_name</structname><type> a--ttributes...</type></synopsis>
 <blockquote><para>d&ndash;eftp
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;efun_name</primary></indexterm><function>d&ndash;efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--efun_name</primary></indexterm><function>d--efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d&ndash;efmac_name</primary></indexterm><function>d&ndash;efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d--efmac_name</primary></indexterm><function>d--efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmac
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d&ndash;efspec_name</primary></indexterm><function>d&ndash;efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d--efspec_name</primary></indexterm><function>d--efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efspec
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;efvar_name</primary></indexterm><varname>d&ndash;efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--efvar_name</primary></indexterm><varname>d--efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
 <blockquote><para>d&ndash;efvar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d&ndash;efopt_name</primary></indexterm><varname>d&ndash;efopt_name</varname></synopsis>
+<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d--efopt_name</primary></indexterm><varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&ndash;efopt
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;eftypefun_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefun_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--eftypefun_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefun_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;eftypevar_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevar_name</varname></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--eftypevar_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;efivar_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--efivar_name</primary></indexterm><classname>c--lass</classname><property>d--efivar_name</property></synopsis>
 <blockquote><para>d&ndash;efivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;eftypeivar_name of c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><property>d&ndash;eftypeivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--eftypeivar_name of c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&ndash;eftypeivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;efmethod_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--efmethod_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmethod
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;eftypemethod_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--eftypemethod_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypemethod
 </para></blockquote></informalfigure>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section ``t&mdash;itle@'' in <citetitle>ma&mdash;nual@</citetitle>.
@@ -470,7 +469,7 @@ section ``a comma, in title'' in <citetitle>a , in manual name</citetitle>
 </para>
 <para><literal>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</literal>
-*note a , in cross ref: (a comma, in file)s&ndash;ect,ion
+*note a , in cross ref: (a comma, in file)s--ect,ion
 </para>
 
 <variablelist><!-- comment in table -->
@@ -485,7 +484,7 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
+<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -556,7 +555,7 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 <para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'
 
 </para>
-<para><indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm></para>
+<indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm>
 <para>@&quot;u &uuml; 
 @&quot;{U} &Uuml; 
 @~n &ntilde;
@@ -670,7 +669,7 @@ but , ,
 <literal>@file{--a}</literal> <filename>--a</filename>
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
-<literal>@key{--a}</literal> &lt;<keycap>&ndash;a</keycap>&gt;
+<literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
@@ -693,6 +692,7 @@ but , ,
 <literal>@url{,--b}</literal> <ulink url="">&ndash;b</ulink>
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
+<literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
 <literal>@w{}</literal> <!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
@@ -736,7 +736,7 @@ aaa
 aaa
 </literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="@file{f--ile}@@@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &rarr; A
@@ -797,16 +797,14 @@ After clickstyle &rArr;
 <itemizedlist mark="minus"><listitem><para> minu&ndash;s
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="emph"><listitem><para><emphasis> e&ndash;mph item</emphasis>
+<itemizedlist mark="emph"><listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="@emph{after emph}"><listitem><!-- comment in itemize -->
-</listitem>
+<itemizedlist mark="@emph{after emph}"><!-- comment in itemize -->
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><listitem><para><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></para></listitem>
-<listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -839,15 +837,15 @@ After clickstyle &rArr;
 </abstract>
 <screen>s&ndash;mallformat
 </screen>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--effn_name</primary></indexterm><function>d--effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de&ndash;ffn_name</primary></indexterm><function>de&ndash;ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
+<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><function>de--ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
 </replaceable><replaceable> even</replaceable><replaceable> more</replaceable><replaceable> so</replaceable></synopsis>
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -880,58 +878,58 @@ After clickstyle &rArr;
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efvr_name</primary></indexterm><varname>d&ndash;efvr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efvr_name</primary></indexterm><varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&ndash;efvr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypefn_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefn_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypefn_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefn_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypeop_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypeop_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypeop_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypeop_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypeop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;eftypevr_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--eftypevr_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efcv_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efcv_name</property></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efcv_name</primary></indexterm><classname>c--lass</classname><property>d--efcv_name</property></synopsis>
 <blockquote><para>d&ndash;efcv
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;efop_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--efop_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d&ndash;eftp_name</primary></indexterm><structname>d&ndash;eftp_name</structname><type> a--ttributes...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d--eftp_name</primary></indexterm><structname>d--eftp_name</structname><type> a--ttributes...</type></synopsis>
 <blockquote><para>d&ndash;eftp
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;efun_name</primary></indexterm><function>d&ndash;efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--efun_name</primary></indexterm><function>d--efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d&ndash;efmac_name</primary></indexterm><function>d&ndash;efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d--efmac_name</primary></indexterm><function>d--efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmac
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d&ndash;efspec_name</primary></indexterm><function>d&ndash;efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d--efspec_name</primary></indexterm><function>d--efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efspec
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;efvar_name</primary></indexterm><varname>d&ndash;efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--efvar_name</primary></indexterm><varname>d--efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
 <blockquote><para>d&ndash;efvar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d&ndash;efopt_name</primary></indexterm><varname>d&ndash;efopt_name</varname></synopsis>
+<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d--efopt_name</primary></indexterm><varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&ndash;efopt
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;eftypefun_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefun_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--eftypefun_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefun_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;eftypevar_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevar_name</varname></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--eftypevar_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;efivar_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--efivar_name</primary></indexterm><classname>c--lass</classname><property>d--efivar_name</property></synopsis>
 <blockquote><para>d&ndash;efivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;eftypeivar_name of c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><property>d&ndash;eftypeivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--eftypeivar_name of c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&ndash;eftypeivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;efmethod_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--efmethod_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmethod
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;eftypemethod_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--eftypemethod_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypemethod
 </para></blockquote></informalfigure>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section ``t&mdash;itle@'' in <citetitle>ma&mdash;nual@</citetitle>.
@@ -992,7 +990,7 @@ section ``a comma, in title'' in <citetitle>a , in manual name</citetitle>
 </para>
 <para><literal>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</literal>
-*note a , in cross ref: (a comma, in file)s&ndash;ect,ion
+*note a , in cross ref: (a comma, in file)s--ect,ion
 </para>
 
 <variablelist><!-- comment in table -->
@@ -1007,7 +1005,7 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
+<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1074,7 +1072,7 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 <para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'
 
 </para>
-<para><indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm></para>
+<indexterm role="cp"><primary>&ndash;option</primary></indexterm><indexterm role="cp"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ldquo;</primary></indexterm><indexterm role="fn"><primary>&ndash;foption</primary></indexterm>
 <para>@&quot;u &uuml; 
 @&quot;{U} &Uuml; 
 @~n &ntilde;
@@ -1188,7 +1186,7 @@ but , ,
 <literal>@file{--a}</literal> <filename>--a</filename>
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
-<literal>@key{--a}</literal> &lt;<keycap>&ndash;a</keycap>&gt;
+<literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
@@ -1211,6 +1209,7 @@ but , ,
 <literal>@url{,--b}</literal> <ulink url="">&ndash;b</ulink>
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
+<literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
 <literal>@w{}</literal> <!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
@@ -1254,7 +1253,7 @@ aaa
 aaa
 </literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="@file{f--ile}@@@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &rarr; A
@@ -1315,16 +1314,14 @@ After clickstyle &rArr;
 <itemizedlist mark="minus"><listitem><para> minu&ndash;s
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="emph"><listitem><para><emphasis> e&ndash;mph item</emphasis>
+<itemizedlist mark="emph"><listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="@emph{after emph}"><listitem><!-- comment in itemize -->
-</listitem>
+<itemizedlist mark="@emph{after emph}"><!-- comment in itemize -->
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><listitem><para><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></para></listitem>
-<listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -1357,15 +1354,15 @@ After clickstyle &rArr;
 </abstract>
 <screen>s&ndash;mallformat
 </screen>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;effn_name</primary></indexterm><function>d&ndash;effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--effn_name</primary></indexterm><function>d--effn_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;effn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de&ndash;ffn_name</primary></indexterm><function>de&ndash;ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
+<informalfigure><synopsis role="cate--gory"><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><function>de--ffn_name</function><replaceable> ar--guments</replaceable><replaceable>    more</replaceable><replaceable> args</replaceable><replaceable> 
 </replaceable><replaceable> even</replaceable><replaceable> more</replaceable><replaceable> so</replaceable></synopsis>
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<para><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></para><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -1398,58 +1395,58 @@ After clickstyle &rArr;
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efvr_name</primary></indexterm><varname>d&ndash;efvr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efvr_name</primary></indexterm><varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&ndash;efvr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypefn_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefn_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypefn_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefn_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefn
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;eftypeop_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypeop_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--eftypeop_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypeop_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypeop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;eftypevr_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevr_name</varname></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--eftypevr_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevr
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d&ndash;efcv_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efcv_name</property></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="vr"><primary>d--efcv_name</primary></indexterm><classname>c--lass</classname><property>d--efcv_name</property></synopsis>
 <blockquote><para>d&ndash;efcv
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d&ndash;efop_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="fn"><primary>d--efop_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efop_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efop
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d&ndash;eftp_name</primary></indexterm><structname>d&ndash;eftp_name</structname><type> a--ttributes...</type></synopsis>
+<informalfigure><synopsis role="c--ategory"><indexterm role="tp"><primary>d--eftp_name</primary></indexterm><structname>d--eftp_name</structname><type> a--ttributes...</type></synopsis>
 <blockquote><para>d&ndash;eftp
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;efun_name</primary></indexterm><function>d&ndash;efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--efun_name</primary></indexterm><function>d--efun_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d&ndash;efmac_name</primary></indexterm><function>d&ndash;efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Macro"><indexterm role="fn"><primary>d--efmac_name</primary></indexterm><function>d--efmac_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmac
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d&ndash;efspec_name</primary></indexterm><function>d&ndash;efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Special Form"><indexterm role="fn"><primary>d--efspec_name</primary></indexterm><function>d--efspec_name</function><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efspec
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;efvar_name</primary></indexterm><varname>d&ndash;efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--efvar_name</primary></indexterm><varname>d--efvar_name</varname><type> argvar</type><replaceable> argvar1</replaceable></synopsis>
 <blockquote><para>d&ndash;efvar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d&ndash;efopt_name</primary></indexterm><varname>d&ndash;efopt_name</varname></synopsis>
+<informalfigure><synopsis role="User Option"><indexterm role="vr"><primary>d--efopt_name</primary></indexterm><varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&ndash;efopt
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d&ndash;eftypefun_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><function>d&ndash;eftypefun_name</function><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Function"><indexterm role="fn"><primary>d--eftypefun_name</primary></indexterm><returnvalue>t--ype</returnvalue><function>d--eftypefun_name</function><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypefun
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d&ndash;eftypevar_name</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><varname>d&ndash;eftypevar_name</varname></synopsis>
+<informalfigure><synopsis role="Variable"><indexterm role="vr"><primary>d--eftypevar_name</primary></indexterm><returnvalue>t--ype</returnvalue><varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&ndash;eftypevar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;efivar_name</primary></indexterm><classname>c&ndash;lass</classname><property>d&ndash;efivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--efivar_name</primary></indexterm><classname>c--lass</classname><property>d--efivar_name</property></synopsis>
 <blockquote><para>d&ndash;efivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d&ndash;eftypeivar_name of c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><property>d&ndash;eftypeivar_name</property></synopsis>
+<informalfigure><synopsis role="Instance Variable"><indexterm role="vr"><primary>d--eftypeivar_name of c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&ndash;eftypeivar
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;efmethod_name on c&ndash;lass</primary></indexterm><classname>c&ndash;lass</classname><methodname>d&ndash;efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--efmethod_name on c--lass</primary></indexterm><classname>c--lass</classname><methodname>d--efmethod_name</methodname><replaceable> a--rguments...</replaceable></synopsis>
 <blockquote><para>d&ndash;efmethod
 </para></blockquote></informalfigure>
-<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d&ndash;eftypemethod_name on c&ndash;lass</primary></indexterm><returnvalue>t&ndash;ype</returnvalue><methodname>d&ndash;eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
+<informalfigure><synopsis role="Method"><indexterm role="fn"><primary>d--eftypemethod_name on c--lass</primary></indexterm><returnvalue>t--ype</returnvalue><methodname>d--eftypemethod_name</methodname><type> a--rguments...</type></synopsis>
 <blockquote><para>d&ndash;eftypemethod
 </para></blockquote></informalfigure>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section ``t&mdash;itle@'' in <citetitle>ma&mdash;nual@</citetitle>.
@@ -1510,7 +1507,7 @@ section ``a comma, in title'' in <citetitle>a , in manual name</citetitle>
 </para>
 <para><literal>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</literal>
-*note a , in cross ref: (a comma, in file)s&ndash;ect,ion
+*note a , in cross ref: (a comma, in file)s--ect,ion
 </para>
 
 <variablelist><!-- comment in table -->
@@ -1525,7 +1522,7 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<para><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></para><term>&minus; b</term>
+<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1691,7 +1688,7 @@ but , ,
 <literal>@abbr{@'E--. @comma{}A., @'Etude Autonome }</literal> <abbrev>&Eacute;--. ,A.</abbrev> (&Eacute;tude Autonome)
 <literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&Eacute;--. ,A.</abbrev>
 <literal>@asis{--a}</literal> --a
-<literal>@b{--a}</literal> <emphasis role="bold">--a</emphasis>
+<literal>@b{--a}</literal> <lineannotation>--a</lineannotation>
 <literal>@cite{--a}</literal> <citetitle>--a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
@@ -1704,12 +1701,12 @@ but , ,
 <literal>@emph{--a}</literal> <emphasis>--a</emphasis>
 <literal>@env{--a}</literal> <envar>--a</envar>
 <literal>@file{--a}</literal> <filename>--a</filename>
-<literal>@i{--a}</literal> <wordasword>--a</wordasword>
+<literal>@i{--a}</literal> <lineannotation>--a</lineannotation>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
-<literal>@key{--a}</literal> &lt;<keycap>--a</keycap>&gt;
+<literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> --a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> --a
+<literal>@r{--a}</literal> <lineannotation>--a</lineannotation>
 <literal>@samp{--a}</literal> &lsquo;<literal>--a</literal>&rsquo;
 <literal>@sc{--a}</literal> --a
 <literal>@strong{--a}</literal> <emphasis role="bold">--a</emphasis>
@@ -1729,6 +1726,7 @@ but , ,
 <literal>@url{,--b}</literal> <ulink url="">--b</ulink>
 <literal>@var{--a}</literal> <replaceable>--a</replaceable>
 <literal>@verb{:--a:}</literal> --a
+<literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
 <literal>@w{}</literal> <!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> --a''
@@ -1772,7 +1770,7 @@ aaa
 aaa
 </literallayout></textobject></mediaobject></informalfigure>
 <literal>@image{f-ile,aze,,a--lt}</literal> <informalfigure><mediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <informalfigure><mediaobject><imageobject><imagedata fileref="@file{f--ile}@@@..jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <informalfigure><mediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>
 
 
 <literal>@clicksequence{click @click{} A}</literal> click &rarr; A
@@ -1800,26 +1798,26 @@ After clickstyle &rArr;
 <warning>a Warning.
 </warning>
 
-<blockquote><emphasis role="bold"> something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
+<blockquote><lineannotation> something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
 </blockquote>
 
-<blockquote><emphasis role="bold"> @ at the end of line </emphasis> A @ at the end of the @quotation line.
+<blockquote><lineannotation> @ at the end of line </lineannotation> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><emphasis role="bold"> something, other thing:</emphasis> something, other thing
+<blockquote><lineannotation> something, other thing:</lineannotation> something, other thing
 </blockquote>
 
-<blockquote><emphasis role="bold"> Note, the note:</emphasis> Note, the note
+<blockquote><lineannotation> Note, the note:</lineannotation> Note, the note
 </blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><emphasis role="bold"> Empty:</emphasis> </blockquote>
+<blockquote><lineannotation> Empty:</lineannotation> </blockquote>
 
-<blockquote><emphasis role="bold"> :</emphasis> </blockquote>
+<blockquote><lineannotation> :</lineannotation> </blockquote>
 
-<blockquote><emphasis role="bold"> 
-:</emphasis> </blockquote>
+<blockquote><lineannotation> 
+:</lineannotation> </blockquote>
 
 <itemizedlist><listitem> i--temize
 </listitem>
@@ -1836,13 +1834,11 @@ After clickstyle &rArr;
 <itemizedlist mark="emph"><listitem><emphasis> e--mph item
 </emphasis></listitem>
 </itemizedlist>
-<itemizedlist mark="@emph{after emph}"><listitem><!-- comment in itemize -->
-</listitem>
+<itemizedlist mark="@emph{after emph}"><!-- comment in itemize -->
 <listitem> e--mph item
 </listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></listitem>
-<listitem> i--tem 1
+<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem> i--tem 1
 </listitem>
 <listitem> i--tem 2
 </listitem>
@@ -1883,12 +1879,12 @@ After clickstyle &rArr;
 <blockquote>def--fn
 </blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
-<synopsis role="cmde"><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><function><emphasis role="bold">id ule</emphasis></function><replaceable> truc</replaceable></synopsis>
-<synopsis role="cmde2"><indexterm role="fn"><primary><emphasis role="bold">id &lsquo;<literal>i</literal>&rsquo; ule</emphasis></primary></indexterm><function><emphasis role="bold">id &lsquo;<literal>i</literal>&rsquo; ule</emphasis></function><replaceable> truc</replaceable></synopsis>
+<synopsis role="cmde"><indexterm role="fn"><primary><lineannotation>id ule</lineannotation></primary></indexterm><function><lineannotation>id ule</lineannotation></function><replaceable> truc</replaceable></synopsis>
+<synopsis role="cmde2"><indexterm role="fn"><primary><lineannotation>id &lsquo;<literal>i</literal>&rsquo; ule</lineannotation></primary></indexterm><function><lineannotation>id &lsquo;<literal>i</literal>&rsquo; ule</lineannotation></function><replaceable> truc</replaceable></synopsis>
 <synopsis role="@b{id @samp{i} ule}"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="aaa"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
@@ -1902,7 +1898,7 @@ After clickstyle &rArr;
 <!-- comment -->
 <synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
-<synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
+<synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <lineannotation>f g</lineannotation></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>
@@ -2043,7 +2039,7 @@ ref, a comma@comma{} in file}</literal>
 </listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm><term>&minus; b</term>
+<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 
@@ -2087,7 +2083,7 @@ docbook ''
 <!-- invalid texinfo -->
 
 </screen>
-<para><indexterm role="cp"><primary>t&ndash;ruc</primary></indexterm><indexterm role="cp"><primary>T&ndash;ruc</primary></indexterm><indexterm role="cp"><primary>.</primary></indexterm><indexterm role="cp"><primary>?</primary></indexterm><indexterm role="cp"><primary>a</primary></indexterm><indexterm role="fn"><primary>t&ndash;ruc</primary></indexterm><indexterm role="fn"><primary>T&ndash;ruc</primary></indexterm><indexterm role="fn"><primary>.</primary></indexterm><indexterm role="fn"><primary>?</primary></indexterm><indexterm role="fn"><primary>a</primary></indexterm></para>
+<indexterm role="cp"><primary>t&ndash;ruc</primary></indexterm><indexterm role="cp"><primary>T&ndash;ruc</primary></indexterm><indexterm role="cp"><primary>.</primary></indexterm><indexterm role="cp"><primary>?</primary></indexterm><indexterm role="cp"><primary>a</primary></indexterm><indexterm role="fn"><primary>t&ndash;ruc</primary></indexterm><indexterm role="fn"><primary>T&ndash;ruc</primary></indexterm><indexterm role="fn"><primary>.</primary></indexterm><indexterm role="fn"><primary>?</primary></indexterm><indexterm role="fn"><primary>a</primary></indexterm>
 
 <para>cp
 </para><index></index>

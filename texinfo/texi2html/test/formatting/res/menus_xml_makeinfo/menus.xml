@@ -83,12 +83,12 @@ acronym</acronymword></acronym>
 <format xml:space="preserve"><menu>
 <menuentry>
 <menunode> s--ect,ion</menunode>
-<menutitle> s--ect,ion</menutitle>
-<menucomment> s--ect,ion
+<menutitle> s&ndash;ect,ion</menutitle>
+<menucomment> s&ndash;ect,ion
 </menucomment>
 </menuentry>
 Menu comment
-``simple-double--three---four----''&linebreak;
+&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
 
 </menu>
 </format>
@@ -103,7 +103,7 @@ Menu comment
 <menu>
 <menuentry>
 <menunode> subsection ``simple-double--three---four----''</menunode>
-<menutitle> subsection ``simple-double--three---four----''</menutitle>
+<menutitle> subsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
 <menucomment> 
 </menucomment>
 </menuentry></menu>

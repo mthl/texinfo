@@ -355,7 +355,7 @@ recursive editing applies to XEmacs in general and not to any one buffer,
 the square brackets appear in every mode line on the screen or not in
 any of them.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
 </p>
-<a name="IDX4"></a>
+<a name="index-display_002dtime"></a>
 <p>  XEmacs can optionally display the time and system load in all mode lines.
 To enable this feature, type <kbd>M-x display-time</kbd>.  The information added
 to the mode line usually appears after the file name, before the mode names
@@ -373,7 +373,7 @@ disk activity to CPU activity for all users.
 <p>The word &lsquo;<samp>Mail</samp>&rsquo; appears after the load level if there is mail for
 you that you have not read yet.
 </p>
-<a name="IDX5"></a>
+<a name="index-mode_002dline_002dinverse_002dvideo"></a>
 <p>  Customization note: the variable <code>mode-line-inverse-video</code>
 controls whether the mode line is displayed in inverse video (assuming
 the terminal supports it); <code>nil</code> means no inverse video.  The
@@ -751,27 +751,27 @@ manual for information on manipulating X windows.
 <p>When you are working under X, each X window (that is, each XEmacs frame)
 has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>).
 </p>
-<a name="IDX6"></a>
-<a name="IDX7"></a>
+<a name="index-multi_002dframe-XEmacs"></a>
+<a name="index-make_002dframe"></a>
 <p>XEmacs under X is also a multi-frame XEmacs.  You can use the <b>New
 Frame</b> menu item from the <b>File</b> menu to create a new XEmacs frame in a
 new X window from the same process.  The different frames will share the
 same buffer list, but you can look at different buffers in the different
 frames.
 </p>
-<a name="IDX8"></a>
+<a name="index-find_002dfile_002dother_002dframe"></a>
 <p>The function <code>find-file-other-frame</code> is just like <code>find-file</code>,
 but creates a new frame to display the buffer in first.  This is
 normally bound to <kbd>C-x 5 C-f</kbd>, and is what the <b>Open File, New
 Frame</b> menu item does.
 </p>
-<a name="IDX9"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dframe"></a>
 <p>The function <code>switch-to-buffer-other-frame</code> is just like
 <code>switch-to-buffer</code>, but creates a new frame to display the buffer
 in first.  This is normally bound to <kbd>C-x 5 b</kbd>.
 </p>
-<a name="IDX10"></a>
-<a name="IDX11"></a>
+<a name="index-default_002dframe_002dalist"></a>
+<a name="index-default_002dframe_002dplist"></a>
 <p>You can specify a different default frame size other than the one provided.
 Use the variable <code>default-frame-plist</code>, which is a plist of default
 values for frame creation other than the first one.  These may be set in
@@ -783,22 +783,22 @@ your init file, like this:
 <p>This variable has replaced <code>default-frame-alist</code>, which is
 considered obsolete.
 </p>
-<a name="IDX12"></a>
+<a name="index-x_002dframe_002ddefaults"></a>
 <p>For values specific to the first XEmacs frame, you must use X resources.
 The variable <code>x-frame-defaults</code> takes an alist of default frame
 creation parameters for X window frames.  These override what is
 specified in &lsquo;<tt>~/.Xdefaults</tt>&rsquo; but are overridden by the arguments to
 the particular call to <code>x-create-frame</code>.
 </p>
-<a name="IDX13"></a>
+<a name="index-create_002dframe_002dhook"></a>
 <p>When you create a new frame, the variable <code>create-frame-hook</code>
 is called with one argument, the frame just created.
 </p>
 <p>If you want to close one or more of the X windows you created using
 <b>New Frame</b>, use the <b>Delete Frame</b> menu item from the <b>File</b> menu.
 </p>
-<a name="IDX14"></a>
-<a name="IDX15"></a>
+<a name="index-frame_002dtitle_002dformat"></a>
+<a name="index-frame_002dicon_002dtitle_002dformat"></a>
 <p>If you are working with multiple frames, some special information
 applies:
 </p><ul>
@@ -807,8 +807,8 @@ Two variables, <code>frame-title-format</code> and
 <code>frame-icon-title-format</code> determine the title of the frame and
 the title of the icon that results if you shrink the frame.
 
-<a name="IDX16"></a>
-<a name="IDX17"></a>
+<a name="index-auto_002dlower_002dframe"></a>
+<a name="index-auto_002draise_002dframe"></a>
 </li><li>
 The variables <code>auto-lower-frame</code> and <code>auto-raise-frame</code>
 position a frame. If true, <code>auto-lower-frame</code> lowers a frame to

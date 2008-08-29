@@ -15,18 +15,18 @@ be-low
 Text line followed by a comment on the same line and another below @c comment @value{text}
 @c comment @value{text}
 
-@set pagesizes 200mm,150mm
+@set pagesizes_arg 200mm,150mm
 @set afourpaper_macro @afourpaper
 
-@pagesizes @value{pagesizes}
+@pagesizes 200mm,150mm
 @afourpaper
-@headings on line following headings @value{text}
-@oddfooting some text ignored @value{text}
-@everyheading on line following everyheading @value{text}
+@headings on line following headings atext
+@oddfooting some text ignored atext
+@everyheading on line following everyheading atext
 
-@set need 0.1
+@set need_arg 0.1
 
-@need @value{need}
+@need 0.1
 
 @set raisesections_macro @raisesections
 @raisesections
@@ -38,24 +38,22 @@ Text line followed by a comment on the same line and another below @c comment @v
 //bar\\
 
 @set definfoenclose_name phi
-phi,:,:
 
 
-@phi{bar}
+:bar:
 
 @set strong_macro @strong
 @set strong_name strong
 
 @strong{very strong}
 
-strong,(strong:,:)
 
-@strong{ is it really strong? }
+(strong: is it really strong? :)
 
 @kbd{something before kbdinputstyle}
 
 @set kbdinputstyle_arg code
-@kbdinputstyle @value{kbdinputstyle_arg}
+@kbdinputstyle code
 
 @kbd{truc}
 
@@ -69,37 +67,37 @@ strong,(strong:,:)
 @set four 4
 @set six 6
 
-@paragraphindent @value{asis_arg}
-@paragraphindent @value{zero}
-@paragraphindent @value{none_arg}
-@paragraphindent @value{four}
-@firstparagraphindent @value{none_arg}
-@exampleindent @value{six}
+@paragraphindent asis
+@paragraphindent 0
+@paragraphindent none
+@paragraphindent 4
+@firstparagraphindent none
+@exampleindent 6
 
 @set end_arg end
 @set separate_arg separate 
-@footnotestyle @value{end_arg}
-@footnotestyle @value{separate_arg}
+@footnotestyle end
+@footnotestyle separate 
 
 @set latin1 ISO-8859-1
-@documentencoding @value{latin1}
+@documentencoding ISO-8859-1
 
 @set on_arg on
 @set off_arg off
-@frenchspacing @value{on_arg}
-@frenchspacing @value{off_arg}
+@frenchspacing on
+@frenchspacing off
 
 @c accepts 10 or 11
 @set ten 10
-@fonttextsize @value{ten}
+@fonttextsize 10
 @c accept false or true
 @c makeinfo don't care about the arg and remove the remainiing of the line
 @set false_arg false
 @set true_arg true
-@allowcodebreaks @value{false_arg}
+@allowcodebreaks false
 @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
-@allowcodebreaks @value{true_arg}
+@allowcodebreaks true
 @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
 @subheading command removed
@@ -142,7 +140,7 @@ And now sp:
 
 @set result_macro @result
 
-@clickstyle @value{result_macro}
+@clickstyle @result
 
 @menu
 * node atext::

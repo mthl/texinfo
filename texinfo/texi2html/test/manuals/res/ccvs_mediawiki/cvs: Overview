@@ -27,7 +27,7 @@ trying to learn a particular feature or remember a
 certain command, you can probably skip everything here.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What-is-CVS_003f| What is CVS?]]::<nowiki>                What you can do with CVS
-</nowiki>&bull;[[#What-is-CVS-not_003f| What is CVS not?]]::<nowiki>            Problems CVS doesn't try to solve
+</nowiki>&bull;[[#What-is-CVS-not_003f| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
 </nowiki>&bull;[[#A-sample-session| A sample session]]::<nowiki>            A tour of basic CVS usage
 </nowiki></pre>
 <hr size="6">
@@ -80,10 +80,10 @@ by insulating the different developers from each other.  Every
 developer works in his own directory, and <small>CVS</small> merges
 the work when each developer is done.
 </p>
-<div id="IDX1"></div>
-<div id="IDX2"></div>
-<div id="IDX3"></div>
-<div id="IDX4"></div>
+<div id="index-History-of-CVS"></div>
+<div id="index-CVS_002c-history-of"></div>
+<div id="index-Credits-_0028CVS-program_0029"></div>
+<div id="index-Contributors-_0028CVS-program_0029"></div>
 <p><small>CVS</small> started out as a bunch of shell scripts written by
 Dick Grune, posted to the newsgroup
 <code>comp.sources.unix</code> in the volume 6
@@ -96,7 +96,7 @@ come from them.
 Jeff Polk later helped Brian with the design of the <small>CVS</small>
 module and vendor branch support.
 </p>
-<div id="IDX5"></div>
+<div id="index-Source_002c-getting-CVS-source"></div>
 <p>You can get <small>CVS</small> in a variety of ways, including
 free download from the internet.  For more information
 on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
@@ -105,9 +105,9 @@ on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 http://www.loria.fr/~molli/cvs-index.html
 </nowiki></pre></td></tr></table>
 
-<div id="IDX6"></div>
-<div id="IDX7"></div>
-<div id="IDX8"></div>
+<div id="index-Mailing-list"></div>
+<div id="index-List_002c-mailing-list"></div>
+<div id="index-Newsgroups"></div>
 <p>There is a mailing list, known as <code>info-cvs</code>,
 devoted to <small>CVS</small>.  To subscribe or
 unsubscribe
@@ -409,8 +409,8 @@ repository.
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
 save the temporary file, and exit the editor.
 </p>
-<div id="IDX9"></div>
-<div id="IDX10"></div>
+<div id="index-CVSEDITOR_002c-environment-variable"></div>
+<div id="index-EDITOR_002c-environment-variable"></div>
 <p>The environment variable <code>$CVSEDITOR</code> determines
 which editor is started.  If <code>$CVSEDITOR</code> is not
 set, then if the environment variable <code>$EDITOR</code> is
@@ -420,7 +420,7 @@ which will vary with your operating system, for example
 <code>vi</code> for unix or <code>notepad</code> for Windows
 NT/95.
 </p>
-<div id="IDX11"></div>
+<div id="index-VISUAL_002c-environment-variable"></div>
 <p>In addition, <small>CVS</small> checks the <code>$VISUAL</code> environment
 variable.  Opinions vary on whether this behavior is desirable and
 whether future releases of <small>CVS</small> should check <code>$VISUAL</code> or

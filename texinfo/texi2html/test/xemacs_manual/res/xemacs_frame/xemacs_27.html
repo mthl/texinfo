@@ -94,7 +94,7 @@ Picture mode.  Note that the descriptions below talk of moving &ldquo;one
 column&rdquo; and so on, but all the picture mode commands handle numeric
 arguments as their normal equivalents do.
 </p>
-<a name="IDX1090"></a>
+<a name="index-picture_002dmode_002dhook"></a>
 <p>  Turning on Picture mode calls the value of the variable
 <code>picture-mode-hook</code> as a function, with no arguments, if that value
 exists and is non-<code>nil</code>.
@@ -146,7 +146,7 @@ that point stays in exactly the same column.  <kbd>C-e</kbd> runs
 character on the line.  There was no need to change <kbd>C-a</kbd>, as the choice
 of screen model does not affect beginnings of lines.
 </p>
-<a name="IDX1091"></a>
+<a name="index-picture_002dnewline"></a>
 <p>  Insertion of text is adapted to the quarter-plane screen model through
 the use of Overwrite mode (see section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>).  Self-inserting characters
 replace existing text, column by column, rather than pushing existing text
@@ -154,9 +154,9 @@ to the right.  &lt;RET&gt; runs <code>picture-newline</code>, which just moves t
 the beginning of the following line so that new text will replace that
 line.
 </p>
-<a name="IDX1092"></a>
-<a name="IDX1093"></a>
-<a name="IDX1094"></a>
+<a name="index-picture_002dbackward_002dclear_002dcolumn"></a>
+<a name="index-picture_002dclear_002dcolumn"></a>
+<a name="index-picture_002dclear_002dline"></a>
 <p>  Text is erased instead of deleted and killed.  &lt;DEL&gt;
 (<code>picture-backward-clear-column</code>) replaces the preceding character
 with a space rather than removing it.  <kbd>C-d</kbd>
@@ -164,7 +164,7 @@ with a space rather than removing it.  <kbd>C-d</kbd>
 <kbd>C-k</kbd> (<code>picture-clear-line</code>) really kills the contents of lines,
 but never removes the newlines from a buffer.
 </p>
-<a name="IDX1095"></a>
+<a name="index-picture_002dopen_002dline"></a>
 <p>  To do actual insertion, you must use special commands.  <kbd>C-o</kbd>
 (<code>picture-open-line</code>) creates a blank line, but does so after
 the current line; it never splits a line.  <kbd>C-M-o</kbd>, <code>split-line</code>,
@@ -172,8 +172,8 @@ makes sense in Picture mode, so it remains unchanged.  &lt;LFD&gt;
 (<code>picture-duplicate-line</code>) inserts another line
 with the same contents below the current line.
 </p>
-<a name="IDX1096"></a>
-<a name="IDX1097"></a>
+<a name="index-C_002dc-C_002dd-_0028Picture-mode_0029"></a>
+<a name="index-delete_002dchar"></a>
  
 <p>  To actually delete parts of the picture, use <kbd>C-w</kbd>, or with
 <kbd>C-c C-d</kbd> (which is defined as <code>delete-char</code>, as <kbd>C-d</kbd> is
@@ -237,10 +237,10 @@ character.  This is useful for drawing lines in the buffer.
 </p></dd>
 </dl>
 
-<a name="IDX1098"></a>
-<a name="IDX1099"></a>
-<a name="IDX1100"></a>
-<a name="IDX1101"></a>
+<a name="index-C_002dc-C_002df-_0028Picture-mode_0029"></a>
+<a name="index-C_002dc-C_002db-_0028Picture-mode_0029"></a>
+<a name="index-picture_002dmotion"></a>
+<a name="index-picture_002dmotion_002dreverse"></a>
 <p>  Two motion commands move based on the current Picture insertion
 direction.  The command <kbd>C-c C-f</kbd> (<code>picture-motion</code>) moves in the
 same direction as motion after &ldquo;insertion&rdquo; currently does, while <kbd>C-c
@@ -280,14 +280,14 @@ defined by the variable <code>picture-tab-chars</code>, which contains a string
 of characters considered interesting.  Its default value is
 <code>&quot;!-~&quot;</code>.
 </p>
-<a name="IDX1102"></a>
+<a name="index-picture_002dtab"></a>
 <p>  &lt;TAB&gt; itself runs <code>picture-tab</code>, which operates based on the
 current tab stop settings; it is the Picture mode equivalent of
 <code>tab-to-tab-stop</code>.  Without arguments it just moves point, but with
 a numeric argument it clears the text that it moves over.
 </p>
-<a name="IDX1103"></a>
-<a name="IDX1104"></a>
+<a name="index-C_002dc-TAB-_0028Picture-mode_0029"></a>
+<a name="index-picture_002dset_002dtab_002dstops"></a>
 <p>  The context-based and tab-stop-based forms of tabbing are brought
 together by the command <kbd>C-c &lt;TAB&gt;</kbd> (<code>picture-set-tab-stops</code>.)
 This command sets the tab stops to the positions which <kbd>M-&lt;TAB&gt;</kbd>
@@ -340,10 +340,10 @@ insert instead.
 </p></dd>
 </dl>
 
-<a name="IDX1105"></a>
-<a name="IDX1106"></a>
-<a name="IDX1107"></a>
-<a name="IDX1108"></a>
+<a name="index-C_002dc-C_002dk-_0028Picture-mode_0029"></a>
+<a name="index-C_002dc-C_002dw-_0028Picture-mode_0029"></a>
+<a name="index-picture_002dclear_002drectangle"></a>
+<a name="index-picture_002dclear_002drectangle_002dto_002dregister"></a>
 <p>  The picture rectangle commands <kbd>C-c C-k</kbd>
 (<code>picture-clear-rectangle</code>) and <kbd>C-c C-w</kbd>
 (<code>picture-clear-rectangle-to-register</code>) differ from the standard
@@ -354,10 +354,10 @@ mode.
 <p>  However, deletion of rectangles can be useful in Picture mode, so these
 commands delete the rectangle if given a numeric argument.
 </p>
-<a name="IDX1109"></a>
-<a name="IDX1110"></a>
-<a name="IDX1111"></a>
-<a name="IDX1112"></a>
+<a name="index-C_002dc-C_002dy-_0028Picture-mode_0029"></a>
+<a name="index-C_002dc-C_002dx-_0028Picture-mode_0029"></a>
+<a name="index-picture_002dyank_002drectangle"></a>
+<a name="index-picture_002dyank_002drectangle_002dfrom_002dregister"></a>
 <p>  The Picture mode commands for yanking rectangles differ from the standard
 ones in overwriting instead of inserting.  This is the same way that
 Picture mode insertion of other text is different from other modes.
