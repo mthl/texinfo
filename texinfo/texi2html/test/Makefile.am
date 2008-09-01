@@ -8,9 +8,11 @@ long_tests = \
  misc manuals xemacs_manual texi2html_manual tar_manual singular_manual
 htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
 
-DIST_SUBDIRS = $(base_tests) $(long_tests)
+DIST_SUBDIRS = $(base_tests) $(long_tests) many_input_files
+SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
+	cd many_input_files && $(MAKE) copy-tests
 
 copy-base:
 	$(srcdir)/tests.sh -copy $(base_tests)

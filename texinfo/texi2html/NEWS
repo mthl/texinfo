@@ -100,6 +100,21 @@ This file records noteworthy changes.
   differentiate complex formats inheriting fonts and code_style (like 
   @format, @display).
 
+* $EXTENSION should be undef if one doesn't want an extension to be added.
+
+* THISDOC{'title'} and similar are now for @title since only one @title
+  should appear in the document. @settitle is tried first to set fulltitle.
+
+* Configuration variables are not modified anymore, instead the variable
+  value is put in $Texi2HTML::THISDOC{'VAR'}. This is the case for
+  DO_CONTENTS, DO_SCONTENTS, CSS_LINES, BODYTEXT, DOCUMENT_DESCRIPTION,
+  DOCUMENT_ENCODING, IN_ENCODING, ENCODING_NAME, OUT_ENCODING.
+
+  For example, if $CSS_LINES is defined, the value is put in 
+  $Texi2HTML::THISDOC{'CSS_LINES'} which is used for formatting, and if
+  $CSS_LINES is not defined, $Texi2HTML::THISDOC{'CSS_LINES'} is 
+  autodetected.
+
 * BUG FIXES
   ---------
 

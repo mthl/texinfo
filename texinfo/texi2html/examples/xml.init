@@ -7,17 +7,11 @@ $USE_SETFILENAME = 1;
 $SEPARATE_DESCRIPTION = 1;
 $USE_NODES = 1;
 @EXPAND = ('xml');
+
 $USE_ISO = 0;
+$SECTION_NAVIGATION = 0;
 
-my $setfilename_seen = 0;
-sub xml_has_setfilename()
-{
-   #print STDERR " in handler $Texi2HTML::THISDOC{'setfilename'}\n";
-   $setfilename_seen = 1 if (defined($Texi2HTML::THISDOC{'setfilename'}) 
-       and $Texi2HTML::THISDOC{'setfilename'} ne '');
-}
-
-push @Texi2HTML::Config::command_handler_process, \&xml_has_setfilename;
+push @Texi2HTML::Config::command_handler_process, \&xml_init_variables;
 
 $colon_command_punctuation_characters{'.'} = '&period;';
 $colon_command_punctuation_characters{':'} = '&colon;';
@@ -236,7 +230,8 @@ $cartouche = \&xml_cartouche;
 $print_Top = \&xml_print_Top;
 $print_Top_footer = \&xml_print_Top_footer;
 $print_page_head = \&xml_print_page_head;
-$print_navigation = \&xml_print_navigation;
+#$print_navigation = \&xml_noop;
+$print_foot_navigation = \&xml_noop;
 $toc_body = \&xml_noop;
 $about_body = \&xml_noop;
 $print_page_foot = \&xml_print_page_foot;
@@ -268,20 +263,14 @@ sub xml_print_page_head($)
 {
     my $fh = shift;
     my $setfilename = '';
-    $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.$EXTENSION</setfilename>" if (!$setfilename_seen);
+    $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.$EXTENSION</setfilename>" 
+        unless (defined($Texi2HTML::THISDOC{'setfilename'}) and $Texi2HTML::THISDOC{'setfilename'} ne '');
     print $fh <<EOT;
 <?xml version="1.0"?>
 $DOCTYPE
 <texinfo xml:lang="$Texi2HTML::THISDOC{'current_lang'}">
 $setfilename
 EOT
-}
-
-sub xml_print_navigation($$;$)
-{
-    my $fh = shift;
-    my $buttons = shift;
-    my $vertical = shift;
 }
 
 sub xml_print_page_foot($)
@@ -719,6 +708,12 @@ sub xml_list_item($$$$$$$$$)
 
 my @xml_multitable_stack = ();
 my @xml_table_stack = ();
+
+sub xml_init_variables()
+{
+   @xml_multitable_stack = ();
+   @xml_table_stack = ();
+}
 
 # row in multitable
 sub xml_row($$;$$)

@@ -46,6 +46,8 @@ h1 titlefont (@titlefont),
   $copying_comment, $titlepage better and $documentdescription
   $program_string
   $heading arguments.
+  Also element formatting documentation, especially print_foot_navigation
+  is not up to date.
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -147,9 +149,6 @@ function clean_antispam() {
   definition arguments. I don't know what it corresponds with. All
   the definition argument parsing stuff is certainly worth asking
   on the texinfo list.
-
-* makeinfo can proceed more than one file on the command line. The options
-  that are for one file (like -o ) apply to the first file only?
 
 * something like
 @math{@minus{} {\frac{1}{2}}} 
@@ -331,3 +330,30 @@ nodetest_utf8_no_unicode.
 * transliterate section names, like index entries were done
 
 * conditionalize transliteration to not using the new cross ref scheme
+
+* makeinfo has a lot of other short command line switches
+
+* -I can take paths (separated by : or ;) not only directories.
+
+* does documentlanguage cmd line apply to first or all files? 
+  ask on bug-texinfo.
+
+* now config variables are read-only after command line switches
+  expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
+  and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
+  $Texi2HTML::THISDOC{'VAR'} is then used in the code.
+
+  This means that, if a variable that was not autodetected becomes
+  autodetected, the code will have to switch to using 
+  $Texi2HTML::THISDOC{'VAR'} instead of $VAR. This is very bad since it
+  means API breaking.
+
+* makeinfo --no-header implies --no-split (and default for out file is stdout).
+
+  currently, in texi2html if split at node and no headers, there is
+  no navigation. But if split at chapter or section there is navigation
+  for the first and last element in file.
+
+* in @titlepage, @title, @authors and similar commands should be 
+  formatted when they happen and not at the beginning. See the example
+  in recent texinfo manual.

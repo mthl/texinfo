@@ -478,6 +478,9 @@ file as an argument.  For example, this manual is created with:
 $ texi2html texi2html.texi
 @end example
 
+@command{texi2html} can accept more than one manual on the command line, and
+will proceed with each of the manuals in turn.
+
 The behaviour of @command{texi2html} may be changed with command line
 options.  These command line options are always associated with corresponding
 @command{perl} variables which may appear in init files, and these 
@@ -489,6 +492,9 @@ obtained by prepending @samp{no} or @samp{no-} to the switch name. For example
 @c as it is not needed and maybe harmfull to have an index entry for these
 @c options here
 @longopt{nomenu} does the reverse of @longopt{menu}.
+
+When more than one manual is processed, the command line apply to all the 
+manuals, except for command-line switches setting the output file names.
 
 @menu
 * General options::
@@ -975,6 +981,11 @@ all the global variables which could be of use in the init files
 are in the @code{Texi2HTML} namespace. Notice that the functions 
 of the main program are still in the @code{main} namespace.
 
+Since @command{texi2html} can proceed more than one file on the
+command line, you should make sure that you initialize the variables
+that are used during a manual formatting. The handlers explained
+later can be used for that (@pxref{Bypassing normal formatting}).
+
 @menu
 * Encodings::                 Setting the encodings.
 * Redefining functions::      Function redefinition is achieved with 
@@ -988,22 +999,39 @@ of the main program are still in the @code{main} namespace.
 @section Setting the encodings
 
 There are four encodings relevant for @command{texi2html}, they are
-associated with corresponding variables:
+associated with corresponding configuration variables. If these 
+variables are defined they
+determine a corresponding value in @code{%Texi2HTML::THISDOC}
+which is otherwise autodetected:
 @enumerate 
-@item The encoding appearing in @code{@@documentencoding}. The associated 
-value overrides the @variable{$DOCUMENT_ENCODING} variable value.
-@item The texinfo files encoding, associated with the variable
-@variable{$IN_ENCODING}. This variable is overriden when 
-@code{$DOCUMENT_ENCODING} is set, if the encoding is supported by perl.
-@item The out files encoding, associated with the variable
-@variable{$OUT_ENCODING}. If not defined, the value of
-@code{$ENCODING_NAME} 
+@item The variable @variable{$DOCUMENT_ENCODING} corresponds with 
+the document encoding.
+If defined, this variable sets 
+@variable{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}.
+If not defined, the encoding appearing in @code{@@documentencoding} will
+be used to set @variable{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}.
+The @code{@@documentencoding} value appears in 
+@variable{$Texi2HTML::THISDOC@{'documentencoding'@}}.
+@item The texinfo files encoding.
+If @variable{$IN_ENCODING} is set, this sets 
+@variable{$Texi2HTML::THISDOC@{'IN_ENCODING'@}}.
+Otherwise, when @code{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}
+is set, @code{$Texi2HTML::THISDOC@{'IN_ENCODING'@}} is also set
+if the encoding is supported by perl.
+@item The out files encoding. It is associated with the variable
+@variable{$OUT_ENCODING}. If defined, 
+@variable{$Texi2HTML::THISDOC@{'OUT_ENCODING'@}} is set accordingly.
+If not defined, the value of
+@code{$Texi2HTML::THISDOC@{'ENCODING_NAME'@}} 
 or 
-@code{$IN_ENCODING}
+@code{$Texi2HTML::THISDOC@{'IN_ENCODING'@}}
 is used if one of these variables is set.
 @item The encoding advertized in out files, associated with the variable
-@variable{$ENCODING_NAME}. If unset the value of this variable is based on the
-other ENCODING variables, and if they are all undefined, the variable
+@variable{$ENCODING_NAME}. It sets 
+@variable{$Texi2HTML::THISDOC@{'ENCODING_NAME'@}} if defined.
+
+If unset the value of this variable is based on the
+other ENCODING values, and if they are all undefined, the variable
 @variable{$DEFAULT_ENCODING} is used.
 @end enumerate
 
@@ -1011,9 +1039,11 @@ The values for the encoding related variables are set in the default
 @code{init_out} function reference (@pxref{Output initialization}).
 
 In general the @code{$DOCUMENT_ENCODING} and @code{$IN_ENCODING} are
-set to the right values, and to force a given encoding for the output, the
+set to the right values. @code{$OUT_ENCODING} is also rightly set
+according to @code{$ENCODING_NAME}. 
+To force a given encoding for the output, the
 @code{$ENCODING_NAME} value may be set. The current default output encoding
-is UTF-8.
+is UTF-8. 
 
 @c --------------------------------------------------------
 @node Redefining functions
@@ -1030,7 +1060,7 @@ your function will be used.
 
 For example the function
 reference corresponding with the function called when doing an
-anchor is called @variable{$anchor}. Thus if you want to override the
+anchor is called @code{$anchor}. Thus if you want to override the
 corresponding function
 you could write:
 
@@ -1445,10 +1475,15 @@ The @variable{%Texi2HTML::THISDOC} hash holds some global informations:
 
 @table @code
 @item fulltitle
-title set by @code{@@title}. If there is no @code{@@title} other 
-possibilities are tried (@code{@@settitle}, @code{@@shorttitlepage}@dots{}).
+title set by @code{@@settitle}. If there is no @code{@@settitle} other 
+possibilities are tried (@code{@@title}, @code{@@shorttitlepage}@dots{}).
+@item fulltitle_no_texi
+fulltitle without texi formatting
+@item fulltitle_texi
+fulltitle with texi commands
 @item title
-title set by @code{@@settitle}, or @code{fulltitle}.
+@c title set by @code{@@settitle}, or @code{fulltitle}.
+title set by @code{@@title}.
 @item title_no_texi
 title without texi formatting
 @item title_texi
@@ -1643,18 +1678,18 @@ The default is to do nothing.
 
 @cindex @acronym{CSS}
 
-It is possible to modify the @command{texi2html} css lines by modifying
-the entries or adding to the @variable{%css_map} hash. Each key is a css
-selector, the corresponding value is a style string.
 
-The whole css text is in the variable @variable{$CSS_LINES}. If this 
-variable is defined the variable value is used instead of being 
-constructed using the @variable{%css_map} entries. For example if you don't
-want any css entries, set
+If the variable @variable{$CSS_LINES} is set it is used for the css
+entries.  For example if you don't want any css entries, set
 
 @example
 $CSS_LINES = '';
 @end example
+
+If this variable is @code{undef} (as in th edefault case),
+it is possible to modify the @command{texi2html} css lines by modifying
+the entries or adding to the @variable{%css_map} hash. Each key is a css
+selector, the corresponding value is a style string.
 
 Another possiblility is to modify the array corresponding with the array 
 reference @code{$Texi2HTML::THISDOC@{'css_import_lines'@}} that contains the
@@ -1669,12 +1704,14 @@ the @code{@@command_handler_process} array
 are allready expanded, by the function reference below. 
 
 
-It is also possible to change completely the way @variable{$CSS_LINES} are
+In th edefault case, the resulting css lines are in @variable{$Texi2html::THISDOC@{'CSS_LINES'@}}. 
+It is also possible to change completely the way @code{$Texi2html::THISDOC@{'CSS_LINES'@}} are
 generated by redefining the following function reference:
 
 
 @deffn {Function Reference} css_lines \@@import_lines \@@rule_lines
-This function should be used to construct the @variable{$CSS_LINES}.
+This function should be used to construct the variable 
+@code{$Texi2html::THISDOC@{'CSS_LINES'@}}.
 @var{\@@import_lines} are the @code{@@import} lines of the 
 files specified with @longopt{include-css}, 
 and @var{\@@rule_lines} are the css commands lines of these files.
@@ -1700,13 +1737,18 @@ the encoding used when writing to the resulting files.
 @xref{Encodings}.
 
 The description of the document may be specified in 
-@variable{$DOCUMENT_DESCRIPTION}. If this variable is undef, the text 
+@variable{$DOCUMENT_DESCRIPTION}. 
+If this variable is undef, the text 
 associated with @code{@@documentdescription} is used, and if there isn't 
 such test a default description is constructed using the document title and 
-the name of the first section of the file. 
+the name of the first section of the file.
+The value used during document formatting
+is @variable{$Texi2HTML::THISDOC@{'DOCUMENT_DESCRIPTION'@}}. 
 
 The @code{<body>} element attributes may be set by defining the
-variable @variable{$BODYTEXT}. If you want to define that variable
+variable @variable{$BODYTEXT}.  The resulting attributes are 
+in @variable{$Texi2HTML::THISDOC@{'BODYTEXT'@}}.
+If you want to define that variable
 dynamically, you should use the @code{init_out} function reference
 (@pxref{Output initialization}).
 
@@ -1815,7 +1857,7 @@ redefining the function reference.
 the buttons for the navigation panel. 
 @end deffn
 
-If you want even more control, you can have full control the page footer 
+If you want even more control, you can have more control over the page footer 
 formatting by redefining three function references.
 The function associated with @variable{$print_chapter_footer} is called
 if the document is split at chapters, or the function associated with
@@ -1928,10 +1970,14 @@ and short table of contents:
 @vtable @code
 @item $DO_CONTENTS
 If the variable is true a table of contents is done even if there is no
-@code{@@contents} command.
+@code{@@contents} command. 
+If it is defined and false, no table of contents 
+is done even if there is a @code{@@contents} command.
 @item $DO_SCONTENTS
 If the variable is true a short table of contents is done even if there is no
 @code{@@summarycontents} command.
+If it is defined and false, no short table of contents 
+is done even if there is a @code{@@summarycontents} command.
 @item $BEFORE_OVERVIEW
 The variable value is inserted before the short table of contents text.
 @item $AFTER_OVERVIEW
@@ -2127,7 +2173,8 @@ for the footers.
 It is possible to specify the file names with more control than with the
 command line options (@pxref{Output files}). 
 First the extension may be overrided by the variable @variable{$EXTENSION}
-value.
+value. The variable should be @code{undef} if no extension is
+to be added.
 Two function references enable 
 further customization. One is usefull in case @variable{$NODE_FILES} is true
 and it is used to customize the node file name. 
@@ -2180,7 +2227,7 @@ The result is the element or special element file name.
 
 Similarly target and id may be set. The @dfn{id} is placed where the 
 item is located, the @dfn{target} is used to construct references to
-that item. In general they are equal, but not always, for example
+that item. In general they should be equal, but not always, for example
 in the default case, the target for a section is the node id.
 The following function reference, is
 for target items (nodes, anchors, floats):
@@ -2196,7 +2243,7 @@ the id already set.
 For element associated with files (which may be nodes), the function 
 reference is:
 
-@deftypefn {Function Reference} ($target,$id) element_target_name \%element, $default_target, $default_id
+@deftypefn {Function Reference} {($target,$id)} element_target_name \%element, $default_target, $default_id
 the @var{\%element} is the same than in @code{element_file_name}, and
 @var{$default_target} and @var{$default_id} are the target and id already set.
 @end deftypefn
@@ -2208,7 +2255,7 @@ file and target may also be set. In the default case, they should
 be rightly set, so be careful when changing them. The following 
 function reference can be used:
 
-@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item, \%element, $default_target, $default_file, $default_id, context
+@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item, \%element, $default_target, $default_id, $default_file, $context
 @var{\%placed_item} is a hash reference describing the placed item,
 in the same vein than above.
 the @var{\%element} is the same than in @code{element_file_name}, 
@@ -2238,16 +2285,17 @@ for each non empty index. For each index there are 3 function
 references, one called for initialization, one called for each index entry
 and the last one called for finalization.
 
-@deffn {Function Reference} index_summary_file_begin $index_name $is_printed
+@deffn {Function Reference} index_summary_file_begin $index_name $is_printed $manual_name
 @var{$index_name} is the two letters name for the index. 
 This function
 is called for each index 
 appearing in the document, before 
 @code{index_summary_file_entry}.
 @var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
 @end deffn
 
-@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed
+@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed $manual_name
 This function is called for each entry of an index. @var{index_name} is the
 name of the index. @var{$entry_text} is the entry in plain text,
 @var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
@@ -2258,13 +2306,15 @@ the index entry. @var{entry_element_header} is the reference to the
 beginning of the element containing the index entry, in the form
 @samp{file#id}. 
 @var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
 @end deffn
 
-@deffn {Function Reference} index_summary_file_end $index_name $is_printed
+@deffn {Function Reference} index_summary_file_end $index_name $is_printed $manual_name
 @var{$index_name} is the two letters name for the index. This function
 is called for each index appearing in the document, after
 @code{index_summary_file_entry}.
 @var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
 @end deffn
 
 @c ========================================================
@@ -4467,6 +4517,18 @@ are expanded as they should be unconditionnally.
 @item there is a new 'style' key in $complex_format_map, to be able to 
   differentiate complex formats inheriting fonts and code_style (like 
   @@format, @@display).
+@item $EXTENSION should be undef if one doesn't want an extension to be added.
+@item THISDOC@{'title'@} and similar are now for @@title since only one @@title
+  should appear in the document. @@settitle is tried first to set fulltitle.
+@item Configuration variables are modified anymore, instead the variable
+  value is put in $Texi2HTML::THISDOC@{'VAR'@}. This is the case for
+  DO_CONTENTS, DO_SCONTENTS, CSS_LINES, BODYTEXT, DOCUMENT_DESCRIPTION,
+  DOCUMENT_ENCODING, IN_ENCODING, ENCODING_NAME, OUT_ENCODING.
+
+  For example, if $CSS_LINES is defined, the value is put in 
+  $Texi2HTML::THISDOC@{'CSS_LINES'@} which is used for formatting, and if
+  $CSS_LINES is not defined, $Texi2HTML::THISDOC@{'CSS_LINES'@} is 
+  autodetected.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

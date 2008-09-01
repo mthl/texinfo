@@ -18,11 +18,20 @@ sub enable_encoding_is_entity($)
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
+push @command_handler_process, \&enable_encoding_initialize_variables;
+
+my @enable_encoding_accent_stack;
+
+sub enable_encoding_initialize_variables()
+{
+  @enable_encoding_accent_stack = ();
+}
+
 sub enable_encoding_init_out()
 {
   &$enable_encoding_default_init_out();
   # like utf8.init
-  if ($ENCODING_NAME eq 'utf-8')
+  if ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8')
   {
     $normal_text       = \&t2h_utf8_normal_text unless ($ENABLE_ENCODING_USE_ENTITY);
     foreach my $key (keys(%unicode_accents), 'dotless')
@@ -42,9 +51,9 @@ sub enable_encoding_init_out()
       }
     }
   }
-  elsif (exists($makeinfo_encoding_to_map{$ENCODING_NAME}))
+  elsif (exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}))
   {
-    my $enc_map = $makeinfo_encoding_to_map{$ENCODING_NAME};
+    my $enc_map = $makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}};
     foreach my $key (keys(%unicode_accents), 'dotless')
     {
       $enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
@@ -58,7 +67,7 @@ sub enable_encoding_init_out()
     foreach my $key (%things_map)
     {
       if (exists($unicode_map{$key}) and ($unicode_map{$key} ne '') and 
-        exists($makeinfo_eight_bit_map{$enc_map}->{$unicode_map{$key}}))
+        exists($makeinfo_unicode_to_eight_bit{$enc_map}->{$unicode_map{$key}}))
       { # we let perl handle the conversion
         $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
@@ -81,7 +90,6 @@ sub enable_encoding_pre_accent($$$)
   return enable_encoding_accent ('pre', @_);
 }
 
-my @enable_encoding_accent_stack;
 sub enable_encoding_accent($$$$)
 {
   my $in = shift;
@@ -125,7 +133,7 @@ sub enable_encoding_accent($$$$)
         ;
   }
 
-  my $enc_map = $makeinfo_encoding_to_map{$ENCODING_NAME};
+  my $enc_map = $makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}};
   my $eight_bit;
   my $result;
   foreach my $partial_result (@utf8_partial_results)
@@ -141,9 +149,9 @@ sub enable_encoding_accent($$$$)
     elsif (ord($char) <= hex(0xFFFF))
     {
       $new_codepoint = uc(sprintf("%04x",ord($char)));
-      if (exists($makeinfo_eight_bit_map{$enc_map}->{$new_codepoint}))
+      if (exists($makeinfo_unicode_to_eight_bit{$enc_map}->{$new_codepoint}))
       {
-         $new_eight_bit = $makeinfo_eight_bit_map{$enc_map}->{$new_codepoint};
+         $new_eight_bit = $makeinfo_unicode_to_eight_bit{$enc_map}->{$new_codepoint};
       }
     }
     #print STDERR "" . encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), 8bit: $new_eight_bit\n";

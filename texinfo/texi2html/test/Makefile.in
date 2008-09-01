@@ -32,7 +32,6 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = test
-SUBDIRS =
 DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -152,7 +151,8 @@ long_tests = \
  misc manuals xemacs_manual texi2html_manual tar_manual singular_manual
 
 htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
-DIST_SUBDIRS = $(base_tests) $(long_tests)
+DIST_SUBDIRS = $(base_tests) $(long_tests) many_input_files
+SUBDIRS = . many_input_files
 TESTS = base_tests
 all: all-recursive
 
@@ -535,6 +535,7 @@ uninstall-am:
 
 
 copy-tests: copy-base copy-long
+	cd many_input_files && $(MAKE) copy-tests
 
 copy-base:
 	$(srcdir)/tests.sh -copy $(base_tests)

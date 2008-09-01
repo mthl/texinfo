@@ -1,7 +1,8 @@
 # -*-perl-*-
 
-main::load_init_file('', 'noheaders.init');
+#main::load_init_file('', 'noheaders.init');
 
+$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';
 $DO_CONTENT = 1;
@@ -16,11 +17,17 @@ $BIG_RULE = '';
 $DOCUMENT_DESCRIPTION = '';
 $SEPARATED_FOOTNOTES = 0;
 
+push @command_handler_process, \&chm_initialize_variables;
+
 $index_summary_file_entry = \&chm_index_summary_file_entry;
 $index_summary_file_begin = \&chm_index_summary_file_begin;
 $index_summary_file_end = \&chm_index_summary_file_end;
 
 $print_page_foot = \&chm_print_page_foot;
+# no-ops to avoid headers and footers
+$print_head_navigation = \&chm_noop;
+#$print_Top_footer = \&chm_noop;
+$print_foot_navigation = \&chm_noop;
 
 my $default_toc_body = $toc_body;
 $toc_body = \&chm_toc_body;
@@ -143,8 +150,11 @@ my %hhc_global_property = (
    'ImageType' => 'Folder',
 );
 
-# We prepare a environment for conversion of texi to unicode (maybe this 
-# could be in utf8.init ?)
+
+######################################### not used
+#
+# if needed texi to unicode, maybe this could be in utf8.init, but currently
+# no unicode
 my %chm_texi_map = %texi_map;
 my %chm_simple_map_texi = %simple_map_texi;
 my %chm_style_map_texi = ();
@@ -176,6 +186,7 @@ foreach my $key (%things_map)
 }
 
 $chm_simple_map_texi{"\n"} = ' ';
+######################################### end not used
 
 # at least kchmviewer has trouble with the corresponding textual entities
 foreach my $thing ('OE', 'oe', 'euro')
@@ -185,23 +196,29 @@ foreach my $thing ('OE', 'oe', 'euro')
      $simple_format_texi_map{$thing} = $numeric_entity_map{$thing};
 }
 
-my $hhp_lines = '';
+my $hhp_lines;
+# this cannot be in chm_init_out, because it should be before toc_body
+# call.
+sub chm_initialize_variables()
+{
+    $hhp_lines = '';
+}
 
 sub chm_init_out()
 {
     &$default_init_out();
 # Setting out file encoding to utf8 doesn't work. Seen on the web that 
 # htmlhelp 1.x isn't utf8 aware
-#   $OUT_ENCODING = 'utf8';
+#   $Texi2HTML::THISDOC{'OUT_ENCODING'} = 'utf8';
 
 # there is a special treatment for @l and @L, as there is no 
 # entity, but they could be readble anyway
-#    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+#    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
 #    {
 #         foreach my $thing ('l', 'L')
 #         {
 #              my $encoded_char = 
-#                Encode::encode($OUT_ENCODING,chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
+#                Encode::encode($Texi2HTML::THISDOC{'OUT_ENCODING'},chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
 #              if ($encoded_char ne '')
 #              {
 #                  $things_map{$thing} = $encoded_char;
@@ -213,9 +230,9 @@ sub chm_init_out()
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open (IDXFILE, ">$hhk_file") or
         die "Can't open $hhk_file for writing: $!\n";
-    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
     {
-        binmode(IDXFILE, ":encoding($OUT_ENCODING)");
+        binmode(IDXFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     
     print "# writing HTML Help index in $hhk_file...\n" if $VERBOSE;
@@ -234,9 +251,9 @@ sub chm_init_out()
     print "# writing HTML Help project in $hhp_file...\n" if $VERBOSE;
     open (HHPFILE, ">$hhp_file") or
         die "Can't open $hhp_file for writing: $!\n";
-    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
     {
-        binmode(HHPFILE, ":encoding($OUT_ENCODING)");
+        binmode(HHPFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     my $language = $chm_languages{'en'};
     if (exists ($chm_languages{$LANG}))
@@ -277,6 +294,11 @@ $PRE_BODY_CLOSE
 EOT
 }
 
+sub chm_noop($$)
+{
+    return '';
+}
+
 # Convert texi to string
 sub chm_text($)
 {
@@ -301,13 +323,14 @@ sub chm_text($)
 
 
 my @hhc_lines;
-my %chm_files;
 
 sub chm_toc_body($)
 {
     my $elements_ref = shift;
     &$default_toc_body($elements_ref);
     my $level = 0;
+    my %chm_files;
+    @hhc_lines = ();
     foreach my $element (@$elements_ref)
     {
         while ($level != $element->{'toc_level'})
@@ -387,9 +410,9 @@ sub chm_finish_out()
     my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
     open (HHCFILE, ">$hhc_file") or
         die "Can't open $hhc_file for writing: $!\n";
-    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '')
+    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
     {
-        binmode(HHCFILE, ":encoding($OUT_ENCODING)");
+        binmode(HHCFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     
     print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";

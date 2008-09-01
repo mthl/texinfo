@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.153 2008-08-29 15:05:43 pertusus Exp $
+# $Id: texi2html.init,v 1.154 2008-09-01 14:48:24 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -147,7 +147,7 @@ $SPLIT = '';
 # If the document is split at nodes then navigation panels are 
 # printed at the end if there were more than $WORDS_IN_PAGE words on page.
 #
-# If the document is split at sections this is ignored.
+# Navigation panels are always printed at the beginning of output files.
 #
 # This is most useful if you do not want to have section navigation
 # with -split chapter. There will be chapter navigation panel at the 
@@ -291,10 +291,10 @@ $L2H_CLEAN = 1;
 ##############################################################################
 
 # If true do table of contents even if there is no @content
-$DO_CONTENTS = 0;
+$DO_CONTENTS = undef;
 
 # If true do short table of contents even if there is no @shortcontent
-$DO_SCONTENTS = 0;
+$DO_SCONTENTS = undef;
 
 # if set, output the contents where the command is located
 $INLINE_CONTENTS = 0;
@@ -401,6 +401,8 @@ $MENU_PRE_STYLE = 'font-family: serif';
 # on bug-texinfo is has been said the the style is not code_style
 # for menus (except for the node name).
 # this controls the menu preformatted format
+# FIXME this is not dynamic, so change in MENU_PRE_STYLE is not taken 
+# into account.
 $MENU_PRE_COMPLEX_FORMAT = {
               'pre_style' => $MENU_PRE_STYLE, 
               'class' => 'menu-preformatted',
@@ -707,85 +709,121 @@ sub t2h_default_translate_names()
 
 }
 
+my  @t2h_default_multitable_stack;
 # We have to do this dynamically because of internationalization and because
 # in body $LANG could be used.
 sub t2h_default_init_out()
 {
+    @t2h_default_multitable_stack = ();
     &$translate_names;
     # Set the default body text, inserted between <body ... >
-    $BODYTEXT = 'lang="' . $Texi2HTML::THISDOC{'current_lang'} . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
+    if (defined($BODYTEXT))
+    {
+        $Texi2HTML::THISDOC{'BODYTEXT'} = $BODYTEXT;
+    }
+    else
+    {
+        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . $Texi2HTML::THISDOC{'current_lang'} . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+    }
     if (!defined($EXTERNAL_CROSSREF_SPLIT))
     {
         if ($SPLIT) 
         {
-            $EXTERNAL_CROSSREF_SPLIT = 1;
+            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 1;
         }
         else
         {
-            $EXTERNAL_CROSSREF_SPLIT = 0;
+            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 0;
         }
     }
-
-    $ENCODING_NAME = $ENCODING if (!defined($ENCODING_NAME) and 
-         defined($ENCODING));
-
-    if (!defined($OUT_ENCODING) and (defined($ENCODING_NAME)))
+    else
     {
-        $OUT_ENCODING = main::encoding_alias ($ENCODING_NAME);
-        $OUT_ENCODING = $ENCODING_NAME if (!defined($OUT_ENCODING));
-    }
-    if (!defined($OUT_ENCODING) and (defined($IN_ENCODING)))
-    {
-        $OUT_ENCODING = $IN_ENCODING;
-    }
-    if (!defined($OUT_ENCODING) and (defined($DOCUMENT_ENCODING)))
-    {
-        $OUT_ENCODING = main::encoding_alias ($DOCUMENT_ENCODING);
-        $OUT_ENCODING = $DOCUMENT_ENCODING if (!defined($OUT_ENCODING));
+        $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = $EXTERNAL_CROSSREF_SPLIT;
     }
 
-    if (!defined($ENCODING_NAME))
+    # these variables are used for the corresponding 
+    # $Texi2HTML::THISDOC{'*_ENCODING'} to keep code shorter
+    my ($out_encoding, $encoding_name, $document_encoding);
+
+    if (defined($DOCUMENT_ENCODING))
     {
-         if (defined($OUT_ENCODING) and defined($perl_charset_to_html{$OUT_ENCODING}))
+        $document_encoding = $DOCUMENT_ENCODING;
+    }
+    elsif (defined($Texi2HTML::THISDOC{'documentencoding'}))
+    {
+        $document_encoding = $Texi2HTML::THISDOC{'documentencoding'};
+    }
+
+    if (defined($OUT_ENCODING))
+    {
+        $out_encoding = $OUT_ENCODING;
+    }
+
+    if (defined($ENCODING_NAME))
+    {
+        $encoding_name = $ENCODING_NAME;
+    }
+
+    if (!defined($out_encoding) and (defined($encoding_name)))
+    {
+        $out_encoding = main::encoding_alias ($encoding_name);
+        $out_encoding = $encoding_name if (!defined($out_encoding));
+    }
+    if (!defined($out_encoding) and (defined($Texi2HTML::THISDOC{'IN_ENCODING'})))
+    {
+        $out_encoding = $Texi2HTML::THISDOC{'IN_ENCODING'};
+    }
+    if (!defined($out_encoding) and (defined($document_encoding)))
+    {
+        $out_encoding = main::encoding_alias ($document_encoding);
+        $out_encoding = $document_encoding if (!defined($out_encoding));
+    }
+
+    if (!defined($encoding_name))
+    {
+         if (defined($out_encoding) and defined($perl_charset_to_html{$out_encoding}))
          {
-             $ENCODING_NAME = $perl_charset_to_html{$OUT_ENCODING};
+             $encoding_name = $perl_charset_to_html{$out_encoding};
          }
-         elsif (defined($IN_ENCODING) and defined($perl_charset_to_html{$IN_ENCODING}))
+         elsif (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and defined($perl_charset_to_html{$Texi2HTML::THISDOC{'IN_ENCODING'}}))
          {
-             $ENCODING_NAME = $perl_charset_to_html{$IN_ENCODING};
+             $encoding_name = $perl_charset_to_html{$Texi2HTML::THISDOC{'IN_ENCODING'}};
          }
-         elsif (defined($DOCUMENT_ENCODING) and defined($perl_charset_to_html{$DOCUMENT_ENCODING}))
+         elsif (defined($document_encoding) and defined($perl_charset_to_html{$document_encoding}))
          {
-             $ENCODING_NAME = $perl_charset_to_html{$DOCUMENT_ENCODING};
+             $encoding_name = $perl_charset_to_html{$document_encoding};
          }
-         elsif (defined($OUT_ENCODING))
+         elsif (defined($out_encoding))
          {
-             $ENCODING_NAME = $OUT_ENCODING;
+             $encoding_name = $out_encoding;
          }
-         elsif (defined($IN_ENCODING))
+         elsif (defined($Texi2HTML::THISDOC{'IN_ENCODING'}))
          {
-             $ENCODING_NAME = $IN_ENCODING;
+             $encoding_name = $Texi2HTML::THISDOC{'IN_ENCODING'};
          }
-         elsif (defined($DOCUMENT_ENCODING))
+         elsif (defined($document_encoding))
          {
-             $ENCODING_NAME = $DOCUMENT_ENCODING;
+             $encoding_name = $document_encoding;
          }
          elsif (defined($perl_charset_to_html{$DEFAULT_ENCODING}))
          {
-             $ENCODING_NAME = $perl_charset_to_html{$DEFAULT_ENCODING};
+             $encoding_name = $perl_charset_to_html{$DEFAULT_ENCODING};
          }
          else
          {
-             $ENCODING_NAME = 'us-ascii';
+             $encoding_name = 'us-ascii';
          }
     }
-    my $out_encoding = $OUT_ENCODING;
+
+    $Texi2HTML::THISDOC{'OUT_ENCODING'} = $out_encoding;
+    $Texi2HTML::THISDOC{'ENCODING_NAME'} = $encoding_name;
+    $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $document_encoding;
+
     $out_encoding = 'UNDEF' if (!defined($out_encoding));
-    my $in_encoding = $IN_ENCODING;
+    my $in_encoding = $Texi2HTML::THISDOC{'IN_ENCODING'};
     $in_encoding = 'UNDEF' if (!defined($in_encoding));
-    my $document_encoding = $DOCUMENT_ENCODING;
     $document_encoding = 'UNDEF' if (!defined($document_encoding));
-    print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $ENCODING_NAME\n" if ($VERBOSE);
+    print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n" if ($VERBOSE);
     
     # not in code_style, according to post on bug-texinfo
     if ($SIMPLE_MENU)
@@ -812,8 +850,8 @@ sub t2h_default_init_out()
 #            'style' => 'code'
         }
     }
-    
-    return $OUT_ENCODING;
+    # obsolete
+    #return $OUT_ENCODING;
 };
 
 sub t2h_default_finish_out()
@@ -822,7 +860,8 @@ sub t2h_default_finish_out()
 
 #######################################################################
 #
-# Values guessed if not set here, set in init_out
+# Values guessed if not set here. The value used is in 
+# $Texi2HTML::THISDOC{'VARNAME'}
 #
 #######################################################################
 
@@ -831,7 +870,8 @@ $BODYTEXT = undef;
 # default used in init_out for the setting of the ENCODING_NAME variable
 $DEFAULT_ENCODING = 'utf8';
 
-# In file encoding. The @documentencoding overrides that variable.
+# In file encoding. The @documentencoding allows autodetection of 
+# that variable.
 $DOCUMENT_ENCODING = undef;
 
 # In file encoding, understandable by perl. Set according to DOCUMENT_ENCODING 
@@ -845,11 +885,13 @@ $ENCODING_NAME = undef;
 # using $ENCODING_NAME or $IN_ENCODING if they are defined
 $OUT_ENCODING = undef;
 
+# Used to set $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'}.
 # if undef set to @documentdescription. If there is no @documentdescription,
-# set in page_head
+# set in page_head.
 $DOCUMENT_DESCRIPTION = undef;
 
-# if undef set 1 if SPLIT, to 0 otherwise
+# if undef $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} set 1 if SPLIT, 
+# to 0 otherwise
 $EXTERNAL_CROSSREF_SPLIT = undef;
 
 $USER = undef;
@@ -865,7 +907,7 @@ $DATE = undef;
 #     give them another name, and assign them to the respective
 #     $<fnc> variable.
 
-# As a general interface, the hashes Texi2HTML::HREF, Texi2HTML::NAME, Texi2HTML::NODE, Texi2HTML::NO_TEXI, hold
+# As a general interface, the hashes Texi2HTML::HREF, Texi2HTML::NAME, Texi2HTML::NODE, Texi2HTML::NO_TEXI, Texi2HTML::SIMPLE_TEXT hold
 # href, html-name, node-name, name after removal of texi commands of
 # This     -- current section (resp. html page)
 # Top      -- top element
@@ -889,7 +931,7 @@ $DATE = undef;
 # FastBackward-- if leave node, up and prev, else prev node
 #
 # Furthermore, the following global variabels are set:
-# $Texi2HTML::THISDOC{title}          -- title as set by @setttile
+# $Texi2HTML::THISDOC{title}          -- title as set by @title...
 # $Texi2HTML::THISDOC{title_no_texi}  -- title without texi (without html elements)
 # $Texi2HTML::THISDOC{title_texi}     -- title with texinfo @-commands
 # $Texi2HTML::THISDOC{fulltitle}      -- full title as set by @title...
@@ -996,10 +1038,13 @@ sub T2H_DEFAULT_print_section
     if (defined $SPLIT
         and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
     {
-        &$print_foot_navigation($fh);
-        print $fh "$SMALL_RULE\n";
-        &$print_navigation($fh, \@NODE_FOOTER_BUTTONS) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
-                                    and $nw >= $WORDS_IN_PAGE));
+        my $buttons = \@NODE_FOOTER_BUTTONS;
+        &$print_foot_navigation($fh, $buttons, "$SMALL_RULE",
+          (!defined($WORDS_IN_PAGE) or (defined ($nw) and $nw >= $WORDS_IN_PAGE)),
+          $element);
+#        print $fh "$SMALL_RULE\n";
+#        &$print_navigation($fh, $buttons) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
+#                                    and $nw >= $WORDS_IN_PAGE));
     }
 }
 
@@ -1010,7 +1055,6 @@ sub T2H_DEFAULT_one_section($$)
     main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     main::print_lines($fh);
     print $fh "$SMALL_RULE\n";
-    &$print_foot_navigation($fh);
     &$print_page_foot($fh);
 }
 
@@ -1035,14 +1079,16 @@ sub T2H_DEFAULT_print_Top_footer($$$)
     my $end_page = shift;
     my $element = shift;
     my $buttons = \@MISC_BUTTONS;
-    &$print_foot_navigation($fh);
-    print $fh "$SMALL_RULE\n";
+    &$print_foot_navigation($fh, $buttons, "$SMALL_RULE", $end_page, $element);
+#    &$print_foot_navigation($fh);
+#    print $fh "$SMALL_RULE\n";
     if ($end_page)
     {
-        &$print_navigation($fh, $buttons);
+#        &$print_navigation($fh, $buttons);
         &$print_page_foot($fh);
     }
 }
+
 sub T2H_DEFAULT_print_Top($$$)
 {
     my $fh = shift;
@@ -1126,11 +1172,11 @@ sub T2H_DEFAULT_print_misc_footer
     my $fh = shift;
     my $buttons = shift;
     my $new_file = shift;
-    &$print_foot_navigation($fh, $buttons);
-    print $fh "$SMALL_RULE\n";
+    &$print_foot_navigation($fh, $buttons, "$SMALL_RULE", $new_file, undef);
+#    print $fh "$SMALL_RULE\n";
     if ($new_file)
     {
-        &$print_navigation($fh, $buttons);# if ($SPLIT ne 'node');
+#        &$print_navigation($fh, $buttons);# if ($SPLIT ne 'node');
         &$print_page_foot($fh);
     }
 }
@@ -1155,8 +1201,9 @@ sub T2H_DEFAULT_print_section_footer
     my $fh = shift;
     my $element = shift;
     my $buttons = \@SECTION_FOOTER_BUTTONS;
-    &$end_section ($fh, 1, $element);
-    &$print_navigation($fh, $buttons);
+    &$print_foot_navigation($fh, $buttons, $BIG_RULE, 1, $element);
+#    &$end_section ($fh, 1, $element);
+#    &$print_navigation($fh, $buttons);
 }
 
 ###################################################################
@@ -1187,9 +1234,9 @@ sub T2H_DEFAULT_print_chapter_footer
     my $fh = shift;
     my $element = shift;
     my $buttons = \@CHAPTER_BUTTONS;
-    &$print_foot_navigation($fh);
-    print $fh "$BIG_RULE\n";
-    &$print_navigation($fh, $buttons);
+    &$print_foot_navigation($fh, $buttons, $BIG_RULE, 1, $element);
+#    print $fh "$BIG_RULE\n";
+#    &$print_navigation($fh, $buttons);
 }
 
 sub T2H_DEFAULT_print_section_header
@@ -1211,14 +1258,14 @@ sub T2H_DEFAULT_print_section_header
 sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
+    my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and $SPLIT);
-    my $description = $DOCUMENT_DESCRIPTION;
+    my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
          ($description ne '');
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING_NAME\">" if (defined($ENCODING_NAME) and ($ENCODING_NAME ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
     my $links = '';
     if ($USE_LINKS)
     {
@@ -1250,11 +1297,11 @@ $description
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-${links}$CSS_LINES
+${links}$Texi2HTML::THISDOC{'CSS_LINES'}
 $EXTRA_HEAD
 </head>
 
-<body $BODYTEXT>
+<body $Texi2HTML::THISDOC{'BODYTEXT'}>
 $AFTER_BODY_OPEN
 EOT
 }
@@ -1288,10 +1335,18 @@ sub T2H_DEFAULT_program_string()
 sub T2H_DEFAULT_end_section($$$)
 {
     my $fh = shift;
-    my $end_foot_navigation = shift;
+    my $misc_and_section_separation = shift;
     my $element = shift;
-    &$print_foot_navigation($fh) if ($end_foot_navigation);
-    print $fh "$BIG_RULE\n";
+    #&$print_foot_navigation($fh) if ($end_foot_navigation);
+    #print $fh "$BIG_RULE\n";
+    if ($misc_and_section_separation)
+    {
+        &$print_foot_navigation($fh, undef, $BIG_RULE, 0, $element);
+    }
+    else
+    {
+        print $fh "$BIG_RULE\n";
+    }
 }
 
 sub T2H_DEFAULT_print_page_foot($)
@@ -1345,6 +1400,15 @@ EOT
 sub T2H_DEFAULT_print_foot_navigation
 {
     my $fh = shift;
+    my $buttons = shift;
+    my $rule = shift;
+    my $print_navigation_panel = shift;
+    my $element = shift;
+
+    $rule = '' if (!defined($rule));
+    $print_navigation_panel = 1 if (!defined($print_navigation_panel)
+             and defined($buttons));
+
     if ($VERTICAL_HEAD_NAVIGATION)
     {
         print $fh <<EOT;
@@ -1353,6 +1417,8 @@ sub T2H_DEFAULT_print_foot_navigation
 </table>
 EOT
     }
+    print $fh "$rule\n" if ($rule ne '');
+    &$print_navigation($fh, $buttons) if ($print_navigation_panel);
 }
 
 ######################################################################
@@ -1518,7 +1584,7 @@ sub T2H_DEFAULT_print_frame
     print $fh <<EOT;
 $FRAMESET_DOCTYPE
 <html>
-<head><title>$Texi2HTML::THISDOC{title}</title></head>
+<head><title>$Texi2HTML::THISDOC{'fulltitle'}</title></head>
 <frameset cols="140,*">
   <frame name="toc" src="$toc_file">
   <frame name="main" src="$main_file">
@@ -1610,20 +1676,27 @@ sub T2H_DEFAULT_css_lines ($$)
 {
     my $import_lines = shift;
     my $rule_lines = shift;
-    return if (defined($CSS_LINES) or (!@$rule_lines and !@$import_lines and (! keys(%css_map))));
-    $CSS_LINES = "<style type=\"text/css\">\n<!--\n";
-    $CSS_LINES .= join('',@$import_lines) . "\n" if (@$import_lines);
+#    return if (defined($CSS_LINES) or (!@$rule_lines and !@$import_lines and (! keys(%css_map))));
+    if (defined($CSS_LINES))
+    { # if predefined, use CSS_LINES.
+       $Texi2HTML::THISDOC{'CSS_LINES'} = $CSS_LINES;
+       return;
+    }
+    return if (!@$rule_lines and !@$import_lines and (! keys(%css_map)));
+    my $css_lines = "<style type=\"text/css\">\n<!--\n";
+    $css_lines .= join('',@$import_lines) . "\n" if (@$import_lines);
     foreach my $css_rule (sort(keys(%css_map)))
     {
         next unless ($css_map{$css_rule});
-        $CSS_LINES .= "$css_rule {$css_map{$css_rule}}\n";
+        $css_lines .= "$css_rule {$css_map{$css_rule}}\n";
     }
-    $CSS_LINES .= join('',@$rule_lines) . "\n" if (@$rule_lines);
-    $CSS_LINES .= "-->\n</style>\n";
+    $css_lines .= join('',@$rule_lines) . "\n" if (@$rule_lines);
+    $css_lines .= "-->\n</style>\n";
     foreach my $ref (@CSS_REFS)
     {
-        $CSS_LINES .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
+        $css_lines .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
     }
+    $Texi2HTML::THISDOC{'CSS_LINES'} = $css_lines;
 }
 
 ######################################################################
@@ -1760,6 +1833,7 @@ EOT
     return $about;
 }
 
+# return value is currently ignored
 sub T2H_DEFAULT_titlepage($$$$)
 {
     my $titlepage_lines = shift;
@@ -1768,12 +1842,14 @@ sub T2H_DEFAULT_titlepage($$$$)
     my $titlepage_simple_format = shift;
 
     my $result = '';
-    if (@{$Texi2HTML::THISDOC{'titles'}} 
+    my $title = '';
+    $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+    if ($title ne ''
         or @{$Texi2HTML::THISDOC{'subtitles'}} 
         or @{$Texi2HTML::THISDOC{'authors'}})
     {     
         $result = "<div align=\"center\">\n";
-        foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
+        if ($title ne '')
         {
             $result .= '<h1>' . $title . "</h1>\n";
         }    
@@ -1815,11 +1891,11 @@ sub T2H_DEFAULT_titlepage($$$$)
 sub T2H_DEFAULT_print_redirection_page($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'title_simple_format'}";
+    my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
     my $description = $longtitle;
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING_NAME\">" if (defined($ENCODING_NAME) and ($ENCODING_NAME ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
     my $string = &$I('The node you are looking for is at %{href}.',
        { 'href' => $href });
@@ -1839,12 +1915,12 @@ $Texi2HTML::THISDOC{'program_authors'}
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-$CSS_LINES
+$Texi2HTML::THISDOC{'CSS_LINES'}
 <meta http-equiv="Refresh" content="2; url=$Texi2HTML::HREF{'This'}">
 $EXTRA_HEAD
 </head>
 
-<body $BODYTEXT>
+<body $Texi2HTML::THISDOC{'BODYTEXT'}>
 $AFTER_BODY_OPEN
 <p>$string</p>
 </body>
@@ -2266,10 +2342,16 @@ $pre_map{'enddots'} = '...';
   "koi8-u",      'koi8', 
 );
 
+foreach my $encoding (keys(%makeinfo_encoding_to_map))
+{
+   $t2h_encoding_aliases{$encoding} = $encoding;
+   $t2h_encoding_aliases{$makeinfo_encoding_to_map{$encoding}} = $encoding;
+}
+
 # cut and pasted from eigth_bit_makeinfo_maps.pl, in turn generated with
 # ./parse_8bit_makeinfo_maps.pl
 
-%makeinfo_eight_bit_map = (
+%makeinfo_unicode_to_eight_bit = (
    'iso8859_1' => {
       '00A0' => 'A0',
       '00A1' => 'A1',
@@ -2640,6 +2722,18 @@ $pre_map{'enddots'} = '...';
    },
 );
 
+%eight_bit_to_unicode = ();
+foreach my $encoding (keys(%makeinfo_encoding_to_map))
+{
+   my $unicode_to_eight = $makeinfo_unicode_to_eight_bit{$makeinfo_encoding_to_map{$encoding}};
+#print STDERR "$encoding, $makeinfo_encoding_to_map{$encoding}, $unicode_to_eight\n";
+   foreach my $utf8_key (keys(%{$unicode_to_eight}))
+   {
+      $eight_bit_to_unicode{$encoding}->{$unicode_to_eight->{$utf8_key}} =
+         $utf8_key;
+   }
+}
+
 my %makeinfo_transliterate_map = (
   '0416' => 'ZH',
   '0447' => 'ch',
@@ -2909,6 +3003,16 @@ foreach my $symbol(keys(%unicode_map))
               'utf-8-strict'       => 'utf-8',
               'ascii'      => 'us-ascii',
 );
+
+%t2h_encoding_aliases = (
+              'latin1' => 'iso-8859-1',
+);
+
+foreach my $perl_charset (keys(%perl_charset_to_html))
+{
+   $t2h_encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
+   $t2h_encoding_aliases{$perl_charset_to_html{$perl_charset}} = $perl_charset_to_html{$perl_charset};
+}
 
 # symbols used for the commands if $USE_ISO is true.
 %iso_symbols = (
@@ -4370,8 +4474,6 @@ sub t2h_default_preserve_misc_command($$)
     return ($line, $text, $args);
 }
 
-my @t2h_default_multitable_stack = ();
-
 # this is called each time a format begins. Here it is used to keep a
 # record of the multitables to have a faithful count of the cell nr.
 sub t2h_default_begin_format_texi($$$)
@@ -5041,7 +5143,7 @@ sub t2h_default_external_href($$$)
     my $node_xhtml_id = shift;
     my $file = shift;
     $file = '' if (!defined($file));
-    my $default_target_split = $EXTERNAL_CROSSREF_SPLIT;
+    my $default_target_split = $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'};
     my $target_split;
     my $target_mono;
     my $href_split;
@@ -6114,7 +6216,7 @@ sub t2h_default_cartouche($$)
 # texi entry: 
 # element_href: 
 # element_text: 
-sub t2h_default_index_summary_file_entry ($$$$$$$$)
+sub t2h_default_index_summary_file_entry ($$$$$$$$$)
 {
     my $index_name = shift;
     my $key = shift;
@@ -6124,23 +6226,29 @@ sub t2h_default_index_summary_file_entry ($$$$$$$$)
     my $element_href = shift;
     my $element_text = shift;
     my $is_printed = shift;
+    my $manual_name = shift;
+
     print IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
       . "  texi_entry: $texi_entry\n"
       . "  element_href: $element_href\n  element_text: $element_text\n";
 }
 
-sub t2h_default_index_summary_file_begin($$)
+sub t2h_default_index_summary_file_begin($$$)
 {
     my $name = shift;
     my $is_printed = shift;
+    my $manual_name = shift;
+
     open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
        || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
 }
 
-sub t2h_default_index_summary_file_end($$)
+sub t2h_default_index_summary_file_end($$$)
 {
     my $name = shift;
     my $is_printed = shift;
+    my $manual_name = shift;
+
     close (IDXFILE);
 }
 
@@ -6276,6 +6384,7 @@ sub t2h_default_copying_comment($$$$)
     return $text;
 }
 
+# return value is currently ignored
 sub t2h_default_documentdescription($$$$)
 {
     my $decription_lines = shift;
@@ -6283,20 +6392,29 @@ sub t2h_default_documentdescription($$$$)
     my $description_no_texi = shift;
     my $description_simple_text = shift;
 
-    return $DOCUMENT_DESCRIPTION if (defined($DOCUMENT_DESCRIPTION));
+    if (defined($DOCUMENT_DESCRIPTION))
+    {
+        $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = $DOCUMENT_DESCRIPTION;
+        return $DOCUMENT_DESCRIPTION;
+    }
 
     #return '' if ($description_no_texi eq ''); 
     #my @documentdescription = split (/\n/, $description_no_texi);
-    return '' if ($description_simple_text eq ''); 
+    if ($description_simple_text eq '')
+    {
+        $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = undef;
+        return undef;
+    }
     my @documentdescription = split (/\n/, $description_simple_text);
-    $DOCUMENT_DESCRIPTION = shift @documentdescription;
-    chomp $DOCUMENT_DESCRIPTION;
+    my $document_description = shift @documentdescription;
+    chomp $document_description;
     foreach my $line (@documentdescription)
     {
         chomp $line;
-        $DOCUMENT_DESCRIPTION .= ' ' . $line;
+        $document_description .= ' ' . $line;
     }
-    return $DOCUMENT_DESCRIPTION;
+    $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = $document_description;
+    return $document_description;
 }
 
 # format a letter appearing in a summary for an index. The letter links to

@@ -10,8 +10,12 @@ $USE_SETFILENAME = 1;
 @EXPAND = ('docbook');
 @IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
 $USE_ISO = 1;
-$SHOW_MENU = 0;
 $INLINE_INSERTCOPYING = 1;
+
+$SHOW_MENU = 0;
+$SECTION_NAVIGATION = 0;
+
+push @command_handler_process, \&docbook_initialize_variables;
 
 $misc_command{'c'}->{'keep'} = 1;
 $misc_command{'comment'}->{'keep'} = 1;
@@ -94,7 +98,7 @@ foreach my $style (keys(%style_map))
    delete ($style_map{$style}->{'quote'});
 }
 
-my $docbook_in_footnote = 0;
+my $docbook_in_footnote;
 sub docbook_footnote($$$$$)
 {
     $docbook_in_footnote = 1;
@@ -222,7 +226,8 @@ delete $iso_symbols{'`'};
 $print_Top = \&docbook_print_Top;
 $print_Top_footer = \&docbook_print_Top_footer;
 $print_page_head = \&docbook_print_page_head;
-$print_navigation = \&docbook_noop;
+#$print_navigation = \&docbook_noop;
+$print_foot_navigation = \&docbook_noop;
 $toc_body = \&docbook_noop;
 $about_body = \&docbook_noop;
 $print_page_foot = \&docbook_print_page_foot;
@@ -340,7 +345,15 @@ sub docbook_node_id($)
    return &$protect_text($node);
 }
 
-my $docbook_pending_node_id = undef;
+my $docbook_pending_node_id;
+my @docbook_multitable_stack = ();
+my @docbook_table_stack = ();
+sub docbook_initialize_variables()
+{
+    $docbook_pending_node_id = undef;
+    @docbook_multitable_stack = ();
+    @docbook_table_stack = ();
+}
 
 sub docbook_add_id($)
 {
@@ -966,9 +979,9 @@ sub docbook_image($$$$$$$$$$$$$$$$)
     {
        if (open(TXT, "<$txt_path"))
        {
-          if (defined($IN_ENCODING) and $USE_UNICODE)
+          if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $USE_UNICODE)
           {
-              binmode(TXT, ":encoding($IN_ENCODING)");
+              binmode(TXT, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
           }
           $result.="<textobject><literallayout>";
           while (my $img_txt = <TXT>)
@@ -1001,8 +1014,6 @@ sub docbook_format_list_item_texi($$$$)
     return (undef, 0);
 }
 
-my @docbook_multitable_stack = ();
-my @docbook_table_stack = ();
 
 # row in multitable
 sub docbook_row($$;$$)

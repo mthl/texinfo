@@ -1,3 +1,24 @@
+2008-08-31  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: only one @title should appear in
+	a document. So now, what was title before is fulltitle.
+	Simplify fulltitle determination, now try @settitle first.
+	@shortittle doesn't exist.
+	Accept more than one file on the command line.
+	Config variables are read-only after command line switches
+	expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
+	and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
+	$Texi2HTML::THISDOC{'VAR'} is then used in the code.
+	Better handling of 8byte encodings.
+	Generate human readable index labels.
+	Fix element_target_name return result order (report from Reinhold).
+	* texi2html.init: Modify elements formatting functions such that they 
+	call print_foot_navigation instead of doing the formatting themselves,
+	and also such that they never call print_navigation directly.
+	This is more consistent with the docs.
+	* test/many_input_files: test for more than one file on the 
+	command line.
+
 2008-08-29  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: expand macros and value in all the @-commands that

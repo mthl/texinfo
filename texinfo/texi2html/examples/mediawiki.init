@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.9 2008-08-25 16:25:32 pertusus Exp $
+# $Id: mediawiki.init,v 1.10 2008-09-01 14:48:28 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -36,7 +36,7 @@ $NUMBER_SECTIONS = 0;
 $SEPARATED_FOOTNOTES = 1;
 
 # extension
-$EXTENSION = "";
+$EXTENSION = undef;
 
 # extension for nodes files when NODE_FILES is true
 $NODE_FILE_EXTENSION = "";	    
@@ -50,6 +50,14 @@ undef $SPLIT_INDEX;
 
 # Use preformatted menus.
 $SIMPLE_MENU = 1;
+
+push @command_handler_init, \&mediawiki_initialize_variables;
+
+my %doc_nr_to_file; # File name cache based on file index.
+sub mediawiki_initialize_variables()
+{
+    %doc_nr_to_file = (); # File name cache based on file index.
+}
 
 ###################################################################
 # Layout of standard header and footer
@@ -207,11 +215,12 @@ sub mediawiki_print_Top
 sub mediawiki_print_misc
 {
     my $fh = shift;
+    my $new_file = shift;
     my $buttons = \@MISC_BUTTONS;
     &$print_misc_header($fh, $buttons);
     print $fh "== $Texi2HTML::NAME{This} ==\n";
     main::print_lines($fh);
-    &$print_misc_footer($fh, $buttons);
+    &$print_misc_footer($fh, $buttons, $new_file);
 }
 
 sub mediawiki_titlepage($$$$)
@@ -467,7 +476,6 @@ sub mediawiki_print_navigation
 
 $element_file_name = \&mediawiki_element_file_name;
 
-my %doc_nr_to_file = (); # File name cache based on file index.
 sub mediawiki_element_file_name
 {
     my $element = shift;

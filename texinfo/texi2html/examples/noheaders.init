@@ -119,7 +119,6 @@ sub T2H_NOHEAD_print_misc_footer
     print $fh "$SMALL_RULE\n";
     if ($SPLIT)
     {
-        &$print_navigation($fh, $buttons);
         &$print_page_foot($fh);
     }
 

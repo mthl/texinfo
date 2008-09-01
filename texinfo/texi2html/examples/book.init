@@ -25,9 +25,11 @@ $SHOW_MENU = 0;
 
 $BIG_RULE = '<hr size="2">';
 
-sub print_sub_toc($$);
+push @command_handler_init, \&book_initialize_variables;
 
-sub print_sub_toc($$)
+sub book_print_sub_toc($$);
+
+sub book_print_sub_toc($$)
 {
     my $parent_element = shift;
     my $element = shift;
@@ -36,17 +38,17 @@ sub print_sub_toc($$)
     if (exists($element->{'child'}))
     {
 #print STDERR "SUB_TOC child $element->{'child'}->{'text'}\n"; 
-         $result .= "<li><ul${NO_BULLET_LIST_ATTRIBUTE}>\n". print_sub_toc($parent_element, $element->{'child'}) ."</ul></li>\n";
+         $result .= "<li><ul${NO_BULLET_LIST_ATTRIBUTE}>\n". book_print_sub_toc($parent_element, $element->{'child'}) ."</ul></li>\n";
     }
     if (exists($element->{'sectionnext'}))
     {
 #print STDERR "SUB_TOC next($element->{'text'}) $element->{'next'}->{'text'}\n"; 
-         $result .= print_sub_toc($parent_element, $element->{'sectionnext'});
+         $result .= book_print_sub_toc($parent_element, $element->{'sectionnext'});
     }
     return $result;
 }
 
-sub print_up_toc($$)
+sub book_print_up_toc($$)
 {
     my $fh = shift;
     my $element = shift;
@@ -71,7 +73,7 @@ sub print_up_toc($$)
     print $fh "</ul>\n";
 }
 
-$print_section = \&book_print_section;
+#$print_section = \&book_print_section;
 $print_element_header = \&book_print_element_header;
 $print_Top = \&book_print_Top;
 $print_Toc = \&book_print_Toc;
@@ -87,7 +89,7 @@ sub book_print_element_header($$$)
     if ($first_in_page and $SECTION_NAVIGATION)
     {
         #print_up_toc($fh, $Texi2HTML::THIS_ELEMENT) if ($SPLIT eq 'node');
-        print_up_toc($fh, $Texi2HTML::THIS_ELEMENT);
+        book_print_up_toc($fh, $Texi2HTML::THIS_ELEMENT);
         &$print_head_navigation($fh, $buttons);
     }
     else
@@ -97,23 +99,23 @@ sub book_print_element_header($$$)
     }
 }
 
-sub book_print_section($$$)
-{
-    my $fh = shift;
-    my $first_in_page = shift;
-    my $previous_is_top = shift;
-    my $buttons = \@SECTION_BUTTONS;
-
-    my $nw = main::print_lines($fh);
-    if (defined $SPLIT
-        and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
-    {
-        &$print_foot_navigation($fh);
-        print $fh "$SMALL_RULE\n";
-        &$print_navigation($fh, \@NODE_FOOTER_BUTTONS) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
-                                    and $nw >= $WORDS_IN_PAGE));
-    }
-}
+#sub book_print_section($$$)
+#{
+#    my $fh = shift;
+#    my $first_in_page = shift;
+#    my $previous_is_top = shift;
+#    my $buttons = \@SECTION_BUTTONS;
+#
+#    my $nw = main::print_lines($fh);
+#    if (defined $SPLIT
+#        and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
+#    {
+#        &$print_foot_navigation($fh);
+#        print $fh "$SMALL_RULE\n";
+#        &$print_navigation($fh, \@NODE_FOOTER_BUTTONS) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
+#                                    and $nw >= $WORDS_IN_PAGE));
+#    }
+#}
 
 sub book_print_Top($$)
 {
@@ -145,9 +147,16 @@ sub book_print_Toc
     &$print_misc_footer($fh, \@MISC_BUTTONS);
 }
 
-my $unumbered_nr = -1;
+my $unumbered_nr;
 my $previous_nr;
 my $previous_file_name; 
+
+sub book_initialize_variables()
+{
+   $unumbered_nr = -1;
+   $previous_nr = undef;
+   $previous_file_name = undef;   
+}
 
 sub book_element_file_name($$$)
 {
@@ -221,7 +230,7 @@ sub book_heading($)
         and ($element->{'tag_level'} !~ /heading/))
     {
         $text .= "<ul${NO_BULLET_LIST_ATTRIBUTE}>\n";
-        $text .= "" . print_sub_toc($element, $element->{'child'});
+        $text .= "" . book_print_sub_toc($element, $element->{'child'});
         $text .= "</ul>\n";
     }
     return $text;

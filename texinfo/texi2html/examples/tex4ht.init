@@ -48,14 +48,6 @@ my %commands = ();
 
 my $tex4ht_initial_dir;
 my $tex4ht_out_dir;
-my $tex4ht_math_basename;
-my $tex4ht_tex_basename;
-my $tex4ht_math_basefile;
-my $tex4ht_html_math_basefile;
-my $tex4ht_tex_basefile;
-my $tex4ht_html_tex_basefile;
-my $tex4ht_latex_math_rfile;
-my $tex4ht_latex_tex_rfile;
 my $tex4ht_latex_failed = 0;
 
 sub tex4ht_init
@@ -65,6 +57,11 @@ sub tex4ht_init
   $tex4ht_out_dir = "$Texi2HTML::THISDOC{'destination_directory'}";
   $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
   my $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
+  $tex4ht_output_counter = 0;
+  %tex4ht_results = ();
+  $tex4ht_latex_failed = 0;
+  # this initialization doesn't seems to be needed, but it is cleaner anyway
+  %commands = ();
   $commands{'math'}->{'style'} = $STYLE_MATH;
   $commands{'tex'}->{'style'} = $STYLE_TEX;
   $commands{'math'}->{'exec'} = $tex4ht_command_math;

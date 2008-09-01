@@ -45,6 +45,17 @@ $USE_LINKS = 1;
      \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
 
+push @command_handler_process, \&makeinfo_like_initialize_variables;
+
+my $makekinfo_like_footnote_absolute_number;
+my %makekinfo_like_paragraph_in_footnote_nr;
+
+sub makeinfo_like_initialize_variables()
+{
+   $makekinfo_like_footnote_absolute_number = 0;
+   %makekinfo_like_paragraph_in_footnote_nr = ();
+}
+
 my $default_init_out = $init_out;
 $init_out = \&makeinfo_like_init_out;
 
@@ -72,8 +83,6 @@ $menu_link          = \&makeinfo_like_menu_link;
 $menu_description   = \&makeinfo_like_menu_description;
 $menu_comment       = \&makeinfo_like_menu_comment;
 $menu               = \&makeinfo_like_menu;
-
-my $makekinfo_like_footnote_absolute_number = 0;
 
 sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 {
@@ -113,8 +122,6 @@ sub makeinfo_like_foot_lines($)
 #    push @$lines, "</ol>";
     return $lines;
 }
-
-my %makekinfo_like_paragraph_in_footnote_nr;
 
 sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
 {

@@ -40,7 +40,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on August 29, 2008 by texi2html @PACKAGE_VERSION@
+<!-- Created on September 1, 2008 by texi2html @PACKAGE_VERSION@
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -138,7 +138,7 @@ by the Free Software Foundation.
 <a name="SEC_Top"></a>
 
 
-<p>This manual, last updated 29 August 2008, describes version 1.79
+<p>This manual, last updated 1 September 2008, describes version 1.79
 of the <code>texi2html</code> Perl script which converts
 <a href="http://www.texinfo.org">Texinfo</a> into <a href="http://w3c.org">HTML</a>.
 </p>
@@ -576,6 +576,9 @@ file as an argument.  For example, this manual is created with:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ texi2html texi2html.texi
 </pre></td></tr></table>
 
+<p><code>texi2html</code> can accept more than one manual on the command line, and
+will proceed with each of the manuals in turn.
+</p>
 <p>The behaviour of <code>texi2html</code> may be changed with command line
 options.  These command line options are always associated with corresponding
 <code>perl</code> variables which may appear in init files, and these 
@@ -586,6 +589,9 @@ obtained by prepending &lsquo;<samp>no</samp>&rsquo; or &lsquo;<samp>no-</samp>&
 <a name="index-nomenu"></a>
 &lsquo;<samp>--nomenu</samp>&rsquo; does the reverse of <a name="index-menu"></a>
 &lsquo;<samp>--menu</samp>&rsquo;.
+</p>
+<p>When more than one manual is processed, the command line apply to all the 
+manuals, except for command-line switches setting the output file names.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#General-options">4.1 General options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1350,6 +1356,11 @@ all the global variables which could be of use in the init files
 are in the <code>Texi2HTML</code> namespace. Notice that the functions 
 of the main program are still in the <code>main</code> namespace.
 </p>
+<p>Since <code>texi2html</code> can proceed more than one file on the
+command line, you should make sure that you initialize the variables
+that are used during a manual formatting. The handlers explained
+later can be used for that (see section <a href="#Bypassing-normal-formatting">Bypassing normal formatting</a>).
+</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#Redefining-functions">5.2 Redefining functions in initialization files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Function redefinition is achieved with 
@@ -1382,37 +1393,62 @@ of the main program are still in the <code>main</code> namespace.
 <h2 class="section">5.1 Setting the encodings</h2>
 
 <p>There are four encodings relevant for <code>texi2html</code>, they are
-associated with corresponding variables:
+associated with corresponding configuration variables. If these 
+variables are defined they
+determine a corresponding value in <code>%Texi2HTML::THISDOC</code>
+which is otherwise autodetected:
 </p><ol>
-<li> The encoding appearing in <code>@documentencoding</code>. The associated 
-value overrides the <a name="index-_0024DOCUMENT_005fENCODING"></a>
-<code>$DOCUMENT_ENCODING</code> variable value.
-</li><li> The texinfo files encoding, associated with the variable
-<a name="index-_0024IN_005fENCODING"></a>
-<code>$IN_ENCODING</code>. This variable is overriden when 
-<code>$DOCUMENT_ENCODING</code> is set, if the encoding is supported by perl.
-</li><li> The out files encoding, associated with the variable
+<li> The variable <a name="index-_0024DOCUMENT_005fENCODING"></a>
+<code>$DOCUMENT_ENCODING</code> corresponds with 
+the document encoding.
+If defined, this variable sets 
+<a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code>.
+If not defined, the encoding appearing in <code>@documentencoding</code> will
+be used to set <a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d-1"></a>
+<code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code>.
+The <code>@documentencoding</code> value appears in 
+<a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027documentencoding_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'documentencoding'}</code>.
+</li><li> The texinfo files encoding.
+If <a name="index-_0024IN_005fENCODING"></a>
+<code>$IN_ENCODING</code> is set, this sets 
+<a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027IN_005fENCODING_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'IN_ENCODING'}</code>.
+Otherwise, when <code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code>
+is set, <code>$Texi2HTML::THISDOC{'IN_ENCODING'}</code> is also set
+if the encoding is supported by perl.
+</li><li> The out files encoding. It is associated with the variable
 <a name="index-_0024OUT_005fENCODING"></a>
-<code>$OUT_ENCODING</code>. If not defined, the value of
-<code>$ENCODING_NAME</code> 
+<code>$OUT_ENCODING</code>. If defined, 
+<a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027OUT_005fENCODING_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'OUT_ENCODING'}</code> is set accordingly.
+If not defined, the value of
+<code>$Texi2HTML::THISDOC{'ENCODING_NAME'}</code> 
 or 
-<code>$IN_ENCODING</code>
+<code>$Texi2HTML::THISDOC{'IN_ENCODING'}</code>
 is used if one of these variables is set.
 </li><li> The encoding advertized in out files, associated with the variable
 <a name="index-_0024ENCODING_005fNAME"></a>
-<code>$ENCODING_NAME</code>. If unset the value of this variable is based on the
-other ENCODING variables, and if they are all undefined, the variable
+<code>$ENCODING_NAME</code>. It sets 
+<a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027ENCODING_005fNAME_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'ENCODING_NAME'}</code> if defined.
+
+<p>If unset the value of this variable is based on the
+other ENCODING values, and if they are all undefined, the variable
 <a name="index-_0024DEFAULT_005fENCODING"></a>
 <code>$DEFAULT_ENCODING</code> is used.
-</li></ol>
+</p></li></ol>
 
 <p>The values for the encoding related variables are set in the default 
 <code>init_out</code> function reference (see section <a href="#Output-initialization">Preparing the output</a>).
 </p>
 <p>In general the <code>$DOCUMENT_ENCODING</code> and <code>$IN_ENCODING</code> are
-set to the right values, and to force a given encoding for the output, the
+set to the right values. <code>$OUT_ENCODING</code> is also rightly set
+according to <code>$ENCODING_NAME</code>. 
+To force a given encoding for the output, the
 <code>$ENCODING_NAME</code> value may be set. The current default output encoding
-is UTF-8.
+is UTF-8. 
 </p>
 <hr size="6">
 <a name="Redefining-functions"></a>
@@ -1446,8 +1482,7 @@ your function will be used.
 </p>
 <p>For example the function
 reference corresponding with the function called when doing an
-anchor is called <a name="index-_0024anchor"></a>
-<code>$anchor</code>. Thus if you want to override the
+anchor is called <code>$anchor</code>. Thus if you want to override the
 corresponding function
 you could write:
 </p>
@@ -2151,11 +2186,17 @@ strings, flags set by <code>@set</code> and special flags and section lines.
 </p>
 <dl compact="compact">
 <dt> <code>fulltitle</code></dt>
-<dd><p>title set by <code>@title</code>. If there is no <code>@title</code> other 
-possibilities are tried (<code>@settitle</code>, <code>@shorttitlepage</code>&hellip;).
+<dd><p>title set by <code>@settitle</code>. If there is no <code>@settitle</code> other 
+possibilities are tried (<code>@title</code>, <code>@shorttitlepage</code>&hellip;).
+</p></dd>
+<dt> <code>fulltitle_no_texi</code></dt>
+<dd><p>fulltitle without texi formatting
+</p></dd>
+<dt> <code>fulltitle_texi</code></dt>
+<dd><p>fulltitle with texi commands
 </p></dd>
 <dt> <code>title</code></dt>
-<dd><p>title set by <code>@settitle</code>, or <code>fulltitle</code>.
+<dd><p>title set by <code>@title</code>.
 </p></dd>
 <dt> <code>title_no_texi</code></dt>
 <dd><p>title without texi formatting
@@ -2472,21 +2513,20 @@ reference may be redefined:
 <h2 class="section">6.7 Customizing the <code>texi2html</code> css lines</h2>
 
 
-<p>It is possible to modify the <code>texi2html</code> css lines by modifying
-the entries or adding to the <a name="index-_0025css_005fmap"></a>
-<code>%css_map</code> hash. Each key is a css
-selector, the corresponding value is a style string.
-</p>
-<p>The whole css text is in the variable <a name="index-_0024CSS_005fLINES"></a>
-<code>$CSS_LINES</code>. If this 
-variable is defined the variable value is used instead of being 
-constructed using the <a name="index-_0025css_005fmap-1"></a>
-<code>%css_map</code> entries. For example if you don&rsquo;t
-want any css entries, set
+
+<p>If the variable <a name="index-_0024CSS_005fLINES"></a>
+<code>$CSS_LINES</code> is set it is used for the css
+entries.  For example if you don&rsquo;t want any css entries, set
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$CSS_LINES = '';
 </pre></td></tr></table>
 
+<p>If this variable is <code>undef</code> (as in th edefault case),
+it is possible to modify the <code>texi2html</code> css lines by modifying
+the entries or adding to the <a name="index-_0025css_005fmap"></a>
+<code>%css_map</code> hash. Each key is a css
+selector, the corresponding value is a style string.
+</p>
 <p>Another possiblility is to modify the array corresponding with the array 
 reference <code>$Texi2HTML::THISDOC{'css_import_lines'}</code> that contains the
 <code>@import</code> lines of <acronym>CSS</acronym> files, and similarly it is possible
@@ -2500,15 +2540,16 @@ the <code>@command_handler_process</code> array
 are allready expanded, by the function reference below. 
 </p>
 
-<p>It is also possible to change completely the way <a name="index-_0024CSS_005fLINES-1"></a>
-<code>$CSS_LINES</code> are
+<p>In th edefault case, the resulting css lines are in <a name="index-_0024Texi2html_003a_003aTHISDOC_007b_0027CSS_005fLINES_0027_007d"></a>
+<code>$Texi2html::THISDOC{'CSS_LINES'}</code>. 
+It is also possible to change completely the way <code>$Texi2html::THISDOC{'CSS_LINES'}</code> are
 generated by redefining the following function reference:
 </p>
 
 <dl>
 <dt><a name="index-css_005flines"></a><u>Function Reference:</u> <b>css_lines</b><i> \@import_lines \@rule_lines</i></dt>
-<dd><p>This function should be used to construct the <a name="index-_0024CSS_005fLINES-2"></a>
-<code>$CSS_LINES</code>.
+<dd><p>This function should be used to construct the variable 
+<code>$Texi2html::THISDOC{'CSS_LINES'}</code>.
 <var>\@import_lines</var> are the <code>@import</code> lines of the 
 files specified with <a name="index-include_002dcss"></a>
 &lsquo;<samp>--include-css</samp>&rsquo;, 
@@ -2557,14 +2598,21 @@ See section <a href="#Encodings">Setting the encodings</a>.
 </p>
 <p>The description of the document may be specified in 
 <a name="index-_0024DOCUMENT_005fDESCRIPTION"></a>
-<code>$DOCUMENT_DESCRIPTION</code>. If this variable is undef, the text 
+<code>$DOCUMENT_DESCRIPTION</code>. 
+If this variable is undef, the text 
 associated with <code>@documentdescription</code> is used, and if there isn&rsquo;t 
 such test a default description is constructed using the document title and 
-the name of the first section of the file. 
+the name of the first section of the file.
+The value used during document formatting
+is <a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fDESCRIPTION_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'}</code>. 
 </p>
 <p>The <code>&lt;body&gt;</code> element attributes may be set by defining the
 variable <a name="index-_0024BODYTEXT-1"></a>
-<code>$BODYTEXT</code>. If you want to define that variable
+<code>$BODYTEXT</code>.  The resulting attributes are 
+in <a name="index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027BODYTEXT_0027_007d"></a>
+<code>$Texi2HTML::THISDOC{'BODYTEXT'}</code>.
+If you want to define that variable
 dynamically, you should use the <code>init_out</code> function reference
 (see section <a href="#Output-initialization">Preparing the output</a>).
 </p>
@@ -2715,7 +2763,7 @@ redefining the function reference.
 the buttons for the navigation panel. 
 </p></dd></dl>
 
-<p>If you want even more control, you can have full control the page footer 
+<p>If you want even more control, you can have more control over the page footer 
 formatting by redefining three function references.
 The function associated with <a name="index-_0024print_005fchapter_005ffooter"></a>
 <code>$print_chapter_footer</code> is called
@@ -2917,13 +2965,17 @@ and short table of contents:
 <a name="index-_0024DO_005fCONTENTS"></a>
 </dt>
 <dd><p>If the variable is true a table of contents is done even if there is no
-<code>@contents</code> command.
+<code>@contents</code> command. 
+If it is defined and false, no table of contents 
+is done even if there is a <code>@contents</code> command.
 </p></dd>
 <dt> <code>$DO_SCONTENTS</code>
 <a name="index-_0024DO_005fSCONTENTS"></a>
 </dt>
 <dd><p>If the variable is true a short table of contents is done even if there is no
 <code>@summarycontents</code> command.
+If it is defined and false, no short table of contents 
+is done even if there is a <code>@summarycontents</code> command.
 </p></dd>
 <dt> <code>$BEFORE_OVERVIEW</code>
 <a name="index-_0024BEFORE_005fOVERVIEW"></a>
@@ -3270,7 +3322,8 @@ for the footers.
 command line options (see section <a href="#Output-files">Setting output file and directory names</a>). 
 First the extension may be overrided by the variable <a name="index-_0024EXTENSION"></a>
 <code>$EXTENSION</code>
-value.
+value. The variable should be <code>undef</code> if no extension is
+to be added.
 Two function references enable 
 further customization. One is usefull in case <a name="index-_0024NODE_005fFILES-1"></a>
 <code>$NODE_FILES</code> is true
@@ -3334,7 +3387,7 @@ The result is the element or special element file name.
 
 <p>Similarly target and id may be set. The <em>id</em> is placed where the 
 item is located, the <em>target</em> is used to construct references to
-that item. In general they are equal, but not always, for example
+that item. In general they should be equal, but not always, for example
 in the default case, the target for a section is the node id.
 The following function reference, is
 for target items (nodes, anchors, floats):
@@ -3352,7 +3405,7 @@ the id already set.
 reference is:
 </p>
 <dl>
-<dt><a name="index-_0024target"></a><u>Function Reference:</u> ( <b>$target</b><i>,$id) element_target_name \%element, $default_target, $default_id</i></dt>
+<dt><a name="index-element_005ftarget_005fname"></a><u>Function Reference:</u> ($target,$id) <b>element_target_name</b><i> \%element, $default_target, $default_id</i></dt>
 <dd><p>the <var>\%element</var> is the same than in <code>element_file_name</code>, and
 <var>$default_target</var> and <var>$default_id</var> are the target and id already set.
 </p></dd></dl>
@@ -3365,7 +3418,7 @@ be rightly set, so be careful when changing them. The following
 function reference can be used:
 </p>
 <dl>
-<dt><a name="index-placed_005ftarget_005ffile_005fname"></a><u>Function Reference:</u> ($target, $id, $file) <b>placed_target_file_name</b><i> \%placed_item, \%element, $default_target, $default_file, $default_id, context</i></dt>
+<dt><a name="index-placed_005ftarget_005ffile_005fname"></a><u>Function Reference:</u> ($target, $id, $file) <b>placed_target_file_name</b><i> \%placed_item, \%element, $default_target, $default_id, $default_file, $context</i></dt>
 <dd><p><var>\%placed_item</var> is a hash reference describing the placed item,
 in the same vein than above.
 the <var>\%element</var> is the same than in <code>element_file_name</code>, 
@@ -3415,17 +3468,18 @@ references, one called for initialization, one called for each index entry
 and the last one called for finalization.
 </p>
 <dl>
-<dt><a name="index-index_005fsummary_005ffile_005fbegin"></a><u>Function Reference:</u> <b>index_summary_file_begin</b><i> $index_name $is_printed</i></dt>
+<dt><a name="index-index_005fsummary_005ffile_005fbegin"></a><u>Function Reference:</u> <b>index_summary_file_begin</b><i> $index_name $is_printed $manual_name</i></dt>
 <dd><p><var>$index_name</var> is the two letters name for the index. 
 This function
 is called for each index 
 appearing in the document, before 
 <code>index_summary_file_entry</code>.
 <var>$is_printed</var> is true if there is a <code>@printindex</code> for that index.
+<var>$manual_name</var> is the manual basename.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-index_005fsummary_005ffile_005fentry"></a><u>Function Reference:</u> <b>index_summary_file_entry</b><i> $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed</i></dt>
+<dt><a name="index-index_005fsummary_005ffile_005fentry"></a><u>Function Reference:</u> <b>index_summary_file_entry</b><i> $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed $manual_name</i></dt>
 <dd><p>This function is called for each entry of an index. <var>index_name</var> is the
 name of the index. <var>$entry_text</var> is the entry in plain text,
 <var>$formatted_entry</var> is the index entry formatted, <var>$texi_entry</var> is the
@@ -3436,14 +3490,16 @@ the index entry. <var>entry_element_header</var> is the reference to the
 beginning of the element containing the index entry, in the form
 &lsquo;<samp>file#id</samp>&rsquo;. 
 <var>$is_printed</var> is true if there is a <code>@printindex</code> for that index.
+<var>$manual_name</var> is the manual basename.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-index_005fsummary_005ffile_005fend"></a><u>Function Reference:</u> <b>index_summary_file_end</b><i> $index_name $is_printed</i></dt>
+<dt><a name="index-index_005fsummary_005ffile_005fend"></a><u>Function Reference:</u> <b>index_summary_file_end</b><i> $index_name $is_printed $manual_name</i></dt>
 <dd><p><var>$index_name</var> is the two letters name for the index. This function
 is called for each index appearing in the document, after
 <code>index_summary_file_entry</code>.
 <var>$is_printed</var> is true if there is a <code>@printindex</code> for that index.
+<var>$manual_name</var> is the manual basename.
 </p></dd></dl>
 
 <hr size="6">
@@ -4053,7 +4109,7 @@ redefined. All these functions return a formatted text.
 argument.
 </p></dd></dl>
 
-<p>In the default case, it uses a function reference,  <a name="index-_0024anchor-1"></a>
+<p>In the default case, it uses a function reference,  <a name="index-_0024anchor"></a>
 <code>$anchor</code>
  that can do
 a reference target or link. It is especially relevant for <acronym>HTML</acronym>
@@ -6645,7 +6701,19 @@ are expanded as they should be unconditionnally.
 </li><li> there is a new &rsquo;style&rsquo; key in $complex_format_map, to be able to 
   differentiate complex formats inheriting fonts and code_style (like 
   @format, @display).
-</li></ul>
+</li><li> $EXTENSION should be undef if one doesn&rsquo;t want an extension to be added.
+</li><li> THISDOC{&rsquo;title&rsquo;} and similar are now for @title since only one @title
+  should appear in the document. @settitle is tried first to set fulltitle.
+</li><li> Configuration variables are modified anymore, instead the variable
+  value is put in $Texi2HTML::THISDOC{&rsquo;VAR&rsquo;}. This is the case for
+  DO_CONTENTS, DO_SCONTENTS, CSS_LINES, BODYTEXT, DOCUMENT_DESCRIPTION,
+  DOCUMENT_ENCODING, IN_ENCODING, ENCODING_NAME, OUT_ENCODING.
+
+<p>  For example, if $CSS_LINES is defined, the value is put in 
+  $Texi2HTML::THISDOC{&rsquo;CSS_LINES&rsquo;} which is used for formatting, and if
+  $CSS_LINES is not defined, $Texi2HTML::THISDOC{&rsquo;CSS_LINES&rsquo;} is 
+  autodetected.
+</p></li></ul>
 </li><li> API changes between 1.76 and 1.78: 
 <ul>
 <li> paragraph has new arguments
@@ -7077,8 +7145,7 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fBODY_005fOPEN"><code>$AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fOVERVIEW"><code>$AFTER_OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fTOC_005fLINES"><code>$AFTER_TOC_LINES</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024anchor"><code>$anchor</code></a></td><td valign="top"><a href="#Redefining-functions">5.2 Redefining functions in initialization files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024anchor-1"><code>$anchor</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024anchor"><code>$anchor</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024anchor_005flabel"><code>$anchor_label</code></a></td><td valign="top"><a href="#Anchors-images-and-spaces">7.6 Formatting of special simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AVOID_005fMENU_005fREDUNDANCY"><code>$AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024BEFORE_005fOVERVIEW"><code>$BEFORE_OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
@@ -7091,8 +7158,6 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024CLOSE_005fQUOTE_005fSYMBOL-1"><code>$CLOSE_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.5.2 An interface for commands formatting with a string</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024complex_005fformat_005fmap"><code>$complex_format_map</code></a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024CSS_005fLINES"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024CSS_005fLINES-1"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024CSS_005fLINES-2"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DATE"><code>$DATE</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024def_005falways_005fdelimiters"><code>$def_always_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024def_005fargument_005fseparator_005fdelimiters"><code>$def_argument_separator_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
@@ -7176,6 +7241,15 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fHEADER"><code>$Texi2HTML::THIS_HEADER</code></a></td><td valign="top"><a href="#HEAD4">Section lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#HEAD4">Section lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION-1"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#Global-functions">6.4.3 Function usefull in page formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027BODYTEXT_0027_007d"><code>$Texi2HTML::THISDOC{'BODYTEXT'}</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2html_003a_003aTHISDOC_007b_0027CSS_005fLINES_0027_007d"><code>$Texi2html::THISDOC{'CSS_LINES'}</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fDESCRIPTION_0027_007d"><code>$Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'}</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d-1"><code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027documentencoding_0027_007d"><code>$Texi2HTML::THISDOC{'documentencoding'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027ENCODING_005fNAME_0027_007d"><code>$Texi2HTML::THISDOC{'ENCODING_NAME'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027IN_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'IN_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027OUT_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'OUT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTITLEPAGE"><code>$Texi2HTML::TITLEPAGE</code></a></td><td valign="top"><a href="#HEAD4">Section lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTITLEPAGE-1"><code>$Texi2HTML::TITLEPAGE</code></a></td><td valign="top"><a href="#Title-page">6.11.1.5 Formatting of title page</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTOC_005fLINES"><code>$Texi2HTML::TOC_LINES</code></a></td><td valign="top"><a href="#HEAD4">Section lines</a></td></tr>
@@ -7213,7 +7287,6 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0025colon_005fcommand_005fpunctuation_005fcharacters"><code>%colon_command_punctuation_characters</code></a></td><td valign="top"><a href="#Punctuation-commands">7.4 Punctuation commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025command_005fhandler"><code>%command_handler</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025css_005fmap"><code>%css_map</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0025css_005fmap-1"><code>%css_map</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025def_005fmap"><code>%def_map</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025format_005fin_005fparagraph"><code>%format_in_paragraph</code></a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025format_005fmap"><code>%format_map</code></a></td><td valign="top"><a href="#Whole-table-list">7.13.2 Formatting of a whole table or list</a></td></tr>
@@ -7616,7 +7689,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>August 29, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>September 1, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7718,7 +7791,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>August 29, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>September 1, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
  </font>
  <br>
 

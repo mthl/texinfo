@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="texi2html">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+<OBJECT type="text/site properties">
+<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Top section">
+<param name="Local" value="formatting.html#Top">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1. chapter">
+<param name="Local" value="formatting_1.html#chapter">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1 A section">
+<param name="Local" value="formatting_2.html#s_002d_002dect_002cion">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1.1 subsection">
+<param name="Local" value="formatting_3.html#subsection">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1.1.1 subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;">
+<param name="Local" value="formatting_4.html#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">
+</OBJECT> </LI>
+</UL>
+</UL>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="2. chapter 2">
+<param name="Local" value="formatting_5.html#chapter2">
+</OBJECT> </LI>
+</UL>
+</HTML>
+</BODY>

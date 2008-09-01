@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.227 2008-08-29 15:05:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.228 2008-09-01 14:48:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -531,7 +531,9 @@ $def_argument_separator_delimiters
 # subject to change
 use vars qw(
 %makeinfo_encoding_to_map
-%makeinfo_eight_bit_map
+%makeinfo_unicode_to_eight_bit
+%eight_bit_to_unicode
+%t2h_encoding_aliases
 );
 
 # needed in this namespace for translations
@@ -551,7 +553,8 @@ $format                   = \&T2H_GPL_format;
 sub T2H_GPL_toc_body($)
 {
     my $elements_list = shift;
-    return unless ($DO_CONTENTS or $DO_SCONTENTS or $FRAMES);
+    return unless ($Texi2HTML::THISDOC{'DO_CONTENTS'} or 
+      $Texi2HTML::THISDOC{'DO_SCONTENTS'} or $FRAMES);
     my $current_level = 0;
     my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : ''; 
     foreach my $element (@$elements_list)
@@ -605,13 +608,13 @@ sub T2H_GPL_toc_body($)
         my $ind = '  ' x $current_level;
         push(@{$Texi2HTML::TOC_LINES}, "</li>\n$ind</ul>\n");
     }
-    @{$Texi2HTML::TOC_LINES} = () unless ($DO_CONTENTS);
+    @{$Texi2HTML::TOC_LINES} = () unless ($Texi2HTML::THISDOC{'DO_CONTENTS'});
     if (@{$Texi2HTML::TOC_LINES})
     {
         unshift @{$Texi2HTML::TOC_LINES}, $BEFORE_TOC_LINES;
         push @{$Texi2HTML::TOC_LINES}, $AFTER_TOC_LINES;
     }
-    @{$Texi2HTML::OVERVIEW} = () unless ($DO_SCONTENTS or $FRAMES);
+    @{$Texi2HTML::OVERVIEW} = () unless ($Texi2HTML::THISDOC{'DO_SCONTENTS'} or $FRAMES);
     if (@{$Texi2HTML::OVERVIEW})
     {
         unshift @{$Texi2HTML::OVERVIEW}, "<ul${ul_style}>\n";
@@ -817,9 +820,36 @@ sub t2h_cross_manual_normal_text($$$$$)
 
     $text = uc($text) if (in_small_caps($style_stack));
     return $text if ($USE_UNICODE);
+    return t2h_no_unicode_cross_manual_normal_text($text, 0);
+}
 
+sub t2h_cross_manual_normal_text_transliterate($$$$$)
+{
+    my $text = shift;
+    my $in_raw_text = shift;
+    my $in_preformatted = shift;
+    my $in_code =shift;
+    my $in_simple =shift;
+    my $style_stack = shift;
+
+    $text = uc($text) if (in_small_caps($style_stack));
+    return $text if ($USE_UNICODE);
+    return t2h_no_unicode_cross_manual_normal_text($text, 1);
+}
+
+sub t2h_no_unicode_cross_manual_normal_text($$)
+{
     # if there is no unicode support, we do all the transformations here
+    my $text = shift;
+    my $transliterate = shift;
     my $result = '';
+    
+    my $encoding = $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'};
+    if (defined($encoding) and exists($t2h_encoding_aliases{$encoding}))
+    {
+        $encoding = $t2h_encoding_aliases{$encoding};
+    }
+    
     while ($text ne '')
     {
         if ($text =~ s/^([A-Za-z0-9]+)//o)
@@ -841,13 +871,41 @@ sub t2h_cross_manual_normal_text($$$$$)
                # FIXME to be fixed with unicode to 8bit tables
                # FIXME also add transliteration, maybe with a 
                # wrapper function to avoid code duplication
-                  $result .= '_' . '00' . lc(sprintf("%02x",ord($1)));
+                  my $character = $1;
+                  my $charcode = uc(sprintf("%02x",ord($1)));
+                  my $done = 0;
+                  if (defined($encoding) and exists($eight_bit_to_unicode{$encoding})
+                      and exists($eight_bit_to_unicode{$encoding}->{$charcode}))
+                  {
+                      $done = 1;
+                      my $unicode_point =  $eight_bit_to_unicode{$encoding}->{$charcode};
+                      if (!$transliterate)
+                      {
+                           $result .= '_' . lc($unicode_point);
+                      }
+                      elsif (exists($transliterate_map{$unicode_point}))
+                      {
+                           $result .= $transliterate_map{$unicode_point};
+                      }
+                      elsif (exists($unicode_diacritical{$unicode_point}))
+                      {
+                           $result .= '';
+                      }
+                      else
+                      {
+                          $done = 0;
+                      }
+                  }
+
+                  if (!$done)
+                  { # wild guess that work for latin1, and thus, should fail
+                      $result .= '_' . '00' . lc($charcode);
+                  }
              }
         }
         else
         {
-             print STDERR "Bug: unknown character in cross ref (likely in infinite loop)\n";
-             sleep 1;
+             echo_error("Bug: unknown character in cross ref (likely in infinite loop)");
         }
     }
    
@@ -919,7 +977,6 @@ use vars qw(
 
 #+++############################################################################
 #                                                                              #
-# Initialization                                                               #
 # Pasted content of File $(srcdir)/MySimple.pm: Command-line processing        #
 #                                                                              #
 #---############################################################################
@@ -936,7 +993,6 @@ require "$ENV{T2H_HOME}/MySimple.pm"
 
 #+++########################################################################
 #                                                                          #
-# Initialization                                                           #
 # Pasted content of File $(srcdir)/T2h_i18n.pm: Internationalisation       #
 #                                                                          #
 #---########################################################################
@@ -953,7 +1009,7 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
 
 #########################################################################
 #
-# latex2html stuff
+# latex2html code
 #
 #---######################################################################
 
@@ -1040,6 +1096,12 @@ select(STDOUT);
 $| = 1;
 
 my $I = \&Texi2HTML::I18n::get_string;
+
+########################################################################
+#
+# Global variable initialization
+#
+########################################################################
 #
 # pre-defined indices
 #
@@ -1296,8 +1358,6 @@ foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 #---############################################################################
 
 my $T2H_USER; # user running the script
-my $documentdescription_text; # text in @documentdescription 
-my $titlepage_text; # text in titlepage
 
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
@@ -1356,6 +1416,7 @@ sub load_init_file
     {
         print STDERR "# reading initialization file from $file\n"
             if ($T2H_VERBOSE);
+        # require the file in the Texi2HTML::Config namespace
         return (Texi2HTML::Config::load($file));
     }
     else
@@ -1382,10 +1443,6 @@ sub set_date()
     $::pre_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
     $::texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
 }
-
-my $cmd_line_lang = 0; # 1 if lang was succesfully set by the command line 
-                       # in that case @documentlanguage is ignored.
-my $lang_set = 0; # 1 if lang was set
 
 #
 # called on -lang, and when a @documentlanguage appears
@@ -1421,13 +1478,12 @@ sub set_document_language ($;$$$)
         {
             print STDERR "# using '$language' as document language\n" if ($T2H_VERBOSE);
             $Texi2HTML::THISDOC{'current_lang'} = $language;
-            $lang_set = 1;
             # when processing the command line everything isn't already 
             # set, so we cannot set the date. It is done as soon as possible
-            # after arguments parsing and initializations.
+            # after arguments parsing and initializations, for a file.
             if ($from_command_line)
             {
-                $cmd_line_lang = 1;
+                $Texi2HTML::GLOBAL{'current_lang'} = $language;
             }
             else
             {
@@ -1494,14 +1550,21 @@ sub encoding_alias($)
     }
     else
     {
-         echo_warn("No alias searched for encoding");
+         #echo_warn("No alias searched for encoding");
+         if (exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
+         {
+             $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
+             echo_warn ("Document encoding is utf8, but there is no unicode support") if ($encoding eq 'utf-8');
+             return $encoding;
+         }
+         echo_warn("Encoding certainly poorly supported");
          return $encoding;
     }
 }
 
 
-my %nodes = ();             # nodes hash. The key is the texi node name
-my %cross_reference_nodes = ();  # normalized node names arrays
+my %nodes;             # nodes hash. The key is the texi node name
+my %cross_reference_nodes;  # normalized node names arrays
 
 #
 # %value hold texinfo variables, see also -D, -U, @set and @clear.
@@ -1519,7 +1582,7 @@ my %value_initial =
 # _foo: internal variables to track @foo
 #
 foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
-	 '_settitle', '_setfilename', '_shorttitle', '_titlefont')
+	 '_settitle', '_setfilename', '_titlefont')
 {
     $value_initial{$key} = '';            # prevent -w warnings
 }
@@ -2453,9 +2516,6 @@ if ($progdir && ($progdir ne './'))
 }
 
 
-$Texi2HTML::THISDOC{'debug_l2h'} = 0;
-$Texi2HTML::THISDOC{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
-
 #+++############################################################################
 #                                                                              #
 # evaluation of cmd line options
@@ -2697,8 +2757,10 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
         }
     }
 }
-if ($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::TRANSLITERATE_NODE
-     and ! $Texi2HTML::Config::USE_UNIDECODE)
+#if ($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::TRANSLITERATE_NODE
+if ($Texi2HTML::Config::TRANSLITERATE_NODE and (
+    ($Texi2HTML::Config::USE_UNICODE and ! $Texi2HTML::Config::USE_UNIDECODE)
+    or !$Texi2HTML::Config::USE_UNICODE))
 {
     foreach my $key (keys (%Texi2HTML::Config::transliterate_accent_map))
     {
@@ -2727,342 +2789,68 @@ foreach my $key (keys(%cross_ref_style_map_texi))
     }
 }
 
-# resulting files splitting
-if ($Texi2HTML::Config::SPLIT =~ /section/i)
+if ($Texi2HTML::Config::L2H)
 {
-    $Texi2HTML::Config::SPLIT = 'section';
+   push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
+   push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+   push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
+   $Texi2HTML::Config::command_handler{'math'} = 
+     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     };
+   $Texi2HTML::Config::command_handler{'tex'} = 
+     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
+       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+     };
 }
-elsif ($Texi2HTML::Config::SPLIT =~ /node/i)
+
+if (defined($Texi2HTML::Config::DO_CONTENTS))
 {
-    $Texi2HTML::Config::SPLIT = 'node';
+   $Texi2HTML::GLOBAL{'DO_CONTENTS'} = $Texi2HTML::Config::DO_CONTENTS;
 }
-elsif ($Texi2HTML::Config::SPLIT =~ /chapter/i)
+if (defined($Texi2HTML::Config::DO_SCONTENTS))
 {
-    $Texi2HTML::Config::SPLIT = 'chapter';
+   $Texi2HTML::GLOBAL{'DO_SCONTENTS'} = $Texi2HTML::Config::DO_SCONTENTS;
 }
+
+# FIXME encoding for first file or all files?
+if (defined($Texi2HTML::Config::IN_ENCODING))
+{
+   $Texi2HTML::GLOBAL{'IN_ENCODING'} = $Texi2HTML::Config::IN_ENCODING;
+}
+
+if (defined($Texi2HTML::Config::DOCUMENT_ENCODING))
+{
+   $Texi2HTML::GLOBAL{'DOCUMENT_ENCODING'} = $Texi2HTML::Config::DOCUMENT_ENCODING;
+}
+
+# Backward compatibility for deprecated $Texi2HTML::Config::ENCODING
+$Texi2HTML::Config::ENCODING_NAME = $Texi2HTML::Config::ENCODING 
+  if (!defined($Texi2HTML::Config::ENCODING_NAME) and defined($Texi2HTML::Config::ENCODING));
+
+# APA: There's got to be a better way:
+if ($Texi2HTML::Config::TEST)
+{
+    # to generate files similar to reference ones to be able to check for
+    # real changes we use these dummy values if -test is given
+    $T2H_USER = 'a tester';
+    $THISPROG = 'texi2html';
+    setlocale( LC_ALL, "C" );
+} 
 else
-{
-    $Texi2HTML::Config::SPLIT = '';
+{ 
+    # the eval prevents this from breaking on system which do not have
+    # a proper getpwuid implemented
+    eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
+    # APA: Provide Windows NT workaround until getpwuid gets
+    # implemented there.
+    $T2H_USER = $ENV{'USERNAME'} unless (defined($T2H_USER));
 }
-
-#
-# file name business
-#
+$T2H_USER = &$I('unknown') unless (defined($T2H_USER));
 
 
-my $input_file_name;     # manual name
-my $docu_dir;            # directory of the document
-my $docu_name;           # basename of the document
-my $docu_rdir;           # directory for the output
-my $docu_ext = $Texi2HTML::Config::EXTENSION;   # extension
-my $docu_toc;            # document's table of contents
-my $docu_stoc;           # document's short toc
-my $docu_foot;           # document's footnotes
-my $docu_about;          # about this document
-my $docu_top;            # document top
-my $docu_doc;            # document (or document top of split)
-my $docu_frame;          # main frame file
-my $docu_toc_frame;      # toc frame file
-my $path_to_working_dir; # relative path leading to the working 
-                         # directory from the document directory
-my $docu_doc_file; 
-my $docu_toc_file;
-my $docu_stoc_file;
-my $docu_foot_file;
-my $docu_about_file;
-my $docu_top_file;
-my $docu_frame_file;
-my $docu_toc_frame_file;
+$Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
-sub set_docu_names($)
-{
-my $docu_base_name = shift;
-if ($docu_base_name =~ /(.*\/)/)
-{
-    chop($docu_dir = $1);
-    $docu_name = $docu_base_name;
-    $docu_name =~ s/.*\///;
-}
-else
-{
-    $docu_dir = '.';
-    $docu_name = $docu_base_name;
-}
-unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
-unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
-#$docu_name =~ s/\.te?x(i|info)?$//;
-$docu_name = $Texi2HTML::Config::PREFIX if $Texi2HTML::Config::PREFIX;
-
-# Something like backward compatibility
-if ($Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SUBDIR)
-{
-    $Texi2HTML::Config::OUT = $Texi2HTML::Config::SUBDIR;
-}
-
-# subdir
-
-die "output to STDOUT and split or frames incompatible\n" 
-    if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and ($Texi2HTML::Config::OUT eq '-'));
-
-if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq ''))
-{
-    $Texi2HTML::Config::OUT = $docu_name;
-}
-
-if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
-{# This is to avoid trouble with latex2html
-    $Texi2HTML::Config::OUT = '';
-}
-
-$docu_rdir = '';
-
-if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
-{
-    $Texi2HTML::Config::OUT =~ s|/*$||;
-    $docu_rdir = "$Texi2HTML::Config::OUT/"; 
-    unless (-d $Texi2HTML::Config::OUT)
-    {
-        if ( mkdir($Texi2HTML::Config::OUT, oct(755)))
-        {
-            print STDERR "# created directory $Texi2HTML::Config::OUT\n" if ($T2H_VERBOSE);
-        }
-        else
-        {
-            die "$ERROR can't create directory $Texi2HTML::Config::OUT\n";
-        }
-    }
-    print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
-}
-elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
-{
-    if ($Texi2HTML::Config::OUT =~ m|(.*)/|)
-    {# there is a leading directories
-        $docu_rdir = "$1/";
-        unless (-d $docu_rdir)
-        {
-            if ( mkdir($docu_rdir, oct(755)))
-            {
-                 print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
-            }
-            else
-            {
-                die "$ERROR can't create directory $docu_rdir\n";
-            }
-        }
-        print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
-    }
-    else
-    {
-        print STDERR "# putting result files into current directory \n" if ($T2H_VERBOSE);
-        $docu_rdir = '';
-    }
-}
-
-# We don't use "./" as $docu_rdir when $docu_rdir is the current directory
-# because it is problematic for latex2html. To test writability with -w, 
-# however we need a real directory.
-my $result_rdir = $docu_rdir;
-$result_rdir = "." if ($docu_rdir eq '');
-unless (-w $result_rdir)
-{
-    $docu_rdir = 'current directory' if ($docu_rdir eq '');
-    die "$ERROR $docu_rdir not writable\n";
-}
-
-# relative path leading to the working directory from the document directory
-$path_to_working_dir = $docu_rdir;
-if ($docu_rdir ne '')
-{
-    my $cwd = cwd;
-    my $docu_path = $docu_rdir;
-    $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
-    my @result = ();
-    # this code simplify the paths. The cwd is absolute, while in the 
-    # document path there may be some .., a .. is removed with the 
-    # previous path element, such that something like
-    # /cwd/directory/../somewhere/
-    # leads to
-    # /cwd/somewhere/
-    # with directory/.. removed
-    foreach my $element (split /\//, File::Spec->canonpath($docu_path))
-    {
-        if ($element eq '')
-        {
-            push @result, '';
-        }
-        elsif ($element eq '..')
-        {
-            if (@result and ($result[-1] eq ''))
-            {
-                print STDERR "Too much .. in absolute file name\n";
-            }
-            elsif (@result and ($result[-1] ne '..'))
-            {
-                pop @result;
-            }
-            else
-            {
-                push @result, $element;
-            }
-        }
-        else
-        {
-            push @result, $element;
-        }
-    }
-#print STDERR "@result\n";
-    $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
-    # this should not be needed given what canonpath does
-    $path_to_working_dir =~ s:/*$::;
-#print STDERR "$path_to_working_dir\n";
-    $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
-}
-
-# extension
-if ($Texi2HTML::Config::SHORTEXTN)
-{
-    $docu_ext = "htm";
-}
-
-$Texi2HTML::THISDOC{'extension'} = $docu_ext;
-# undocummented, should never be used.
-$Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
-$Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
-$Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
-
-$docu_doc = $docu_name . ($docu_ext ? ".$docu_ext" : ""); # document's contents
-if ($Texi2HTML::Config::SPLIT)
-{
-    $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
-}
-else
-{
-    if ($Texi2HTML::Config::OUT)
-    {
-        my $out_file = $Texi2HTML::Config::OUT;
-        $out_file =~ s|.*/||;
-        $docu_doc = $out_file if ($out_file !~ /^\s*$/);
-#        $docu_doc = $Texi2HTML::Config::OUT;
-#        $docu_doc =~ s|.*/||;
-    }
-    if (defined $Texi2HTML::Config::element_file_name)
-    {
-        my $docu_doc_set = &$Texi2HTML::Config::element_file_name
-           (undef, "doc", $docu_name);
-        $docu_doc = $docu_doc_set if (defined($docu_doc_set));
-    } 
-    $docu_top = $docu_doc;
-}
-
-if ($Texi2HTML::Config::SPLIT or !$Texi2HTML::Config::MONOLITHIC)
-{
-    if (defined $Texi2HTML::Config::element_file_name)
-    {
-        $docu_toc = &$Texi2HTML::Config::element_file_name
-            (undef, "toc", $docu_name);
-        $docu_stoc = &$Texi2HTML::Config::element_file_name
-            (undef, "stoc", $docu_name);
-        $docu_foot = &$Texi2HTML::Config::element_file_name
-            (undef, "foot", $docu_name);
-        $docu_about = &$Texi2HTML::Config::element_file_name
-            (undef, "about", $docu_name);
-	# $docu_top may be overwritten later.
-    }
-    if (!defined($docu_toc))
-    {
-        my $default_toc = "${docu_name}_toc";
-        $default_toc .= ".$docu_ext" if (defined($docu_ext));
-        $docu_toc   = $Texi2HTML::Config::TOC_FILE || $default_toc;
-    }
-    if (!defined($docu_stoc))
-    {
-        $docu_stoc  = "${docu_name}_ovr";
-        $docu_stoc .= ".$docu_ext" if (defined($docu_ext));
-    }
-    if (!defined($docu_foot))
-    {
-        $docu_foot  = "${docu_name}_fot";
-        $docu_foot .= ".$docu_ext" if (defined($docu_ext));
-    }
-    if (!defined($docu_about))
-    {
-        $docu_about = "${docu_name}_abt";
-        $docu_about .= ".$docu_ext" if (defined($docu_ext));
-    }
-}
-else
-{
-    $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_doc;
-}
-
-# Note that file extension has already been added here.
-
-if ($Texi2HTML::Config::FRAMES)
-{
-    if (defined $Texi2HTML::Config::element_file_name)
-    {
-        $docu_frame = &$Texi2HTML::Config::element_file_name
-            (undef, "frame", $docu_name);
-        $docu_toc_frame = &$Texi2HTML::Config::element_file_name
-            (undef, "toc_frame", $docu_name);
-    }
-}
-
-if (!defined($docu_frame))
-{
-    $docu_frame  = "${docu_name}_frame";
-    $docu_frame .= ".$docu_ext" if (defined($docu_ext));
-}
-if (!defined($docu_toc_frame))
-{
-    $docu_toc_frame  = "${docu_name}_toc_frame";
-    $docu_toc_frame .= ".$docu_ext" if (defined($docu_ext));
-}
-
-if ($T2H_VERBOSE)
-{
-   print STDERR "# Files and directories:\n";
-   print STDERR "# rdir($docu_rdir) path_to_working_dir($path_to_working_dir)\n";
-   print STDERR "# doc($docu_doc) top($docu_top) toc($docu_toc) stoc($docu_stoc)\n";
-   print STDERR "# foot($docu_foot) about($docu_about) frame($docu_toc) toc_frame($docu_toc_frame)\n";
-}
-
-$docu_doc_file = "$docu_rdir$docu_doc"; 
-$docu_toc_file  = "$docu_rdir$docu_toc";
-$docu_stoc_file = "$docu_rdir$docu_stoc";
-$docu_foot_file = "$docu_rdir$docu_foot";
-$docu_about_file = "$docu_rdir$docu_about";
-$docu_top_file  = "$docu_rdir$docu_top";
-$docu_frame_file = "$docu_rdir$docu_frame";
-$docu_toc_frame_file = "$docu_rdir$docu_toc_frame";
-
-# For use in init files
-$Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
-$Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
-$Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
-$Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
-$Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
-# FIXME document that
-$Texi2HTML::THISDOC{'filename'}->{'toc_frame'} = $docu_toc_frame;
-$Texi2HTML::THISDOC{'filename'}->{'frame'} = $docu_frame;
-
-
-}
-
-die "Need exactly one file to translate\n$T2H_FAILURE_TEXT" unless @ARGV == 1;
-$input_file_name = shift(@ARGV);
-$Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
-
-my $input_file_base = $input_file_name;
-$input_file_base =~ s/\.te?x(i|info)?$//;
-
-my $index_entries;                 # ref on a hash for the index entries
-my %indices;                       # hash of indices names containing 
-                                   #[ $pages, $entries ] (page indices and 
-                                   # raw index entries)
-my @index_labels;                  # array corresponding with @?index commands
-                                   # constructed during pass_texi, used to
-                                   # put labels in pass_text
 #
 # can I use ISO8859 characters? (HTML+)
 #
@@ -3084,115 +2872,6 @@ if ($Texi2HTML::Config::USE_ISO)
        if (exists($Texi2HTML::Config::iso_symbols{"'"}) and ($Texi2HTML::Config::CLOSE_QUOTE_SYMBOL eq "'"));
 }
  
-set_date() if ($cmd_line_lang);
-
-
-# process a css file
-sub process_css_file ($$)
-{
-    my $fh =shift;
-    my $file = shift;
-    my $in_rules = 0;
-    my $in_comment = 0;
-    my $in_import = 0;
-    my $in_string = 0;
-    my $rules = [];
-    my $imports = [];
-    while (my $line = <$fh>)
-    {
-	    #print STDERR "Line: $line";
-        if ($in_rules)
-        {
-            push @$rules, $line;
-            next;
-        }
-        my $text = '';
-        while (1)
-        { 
-		#sleep 1;
-		#print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $line";
-             if ($in_comment)
-             {
-                 if ($line =~ s/^(.*?\*\/)//)
-                 {
-                     $text .= $1;
-                     $in_comment = 0;
-                 }
-                 else
-                 {
-                     push @$imports, $text . $line;
-                     last;
-                 }
-             }
-             elsif (!$in_string and $line =~ s/^\///)
-             { # what do '\' do here ?
-                 if ($line =~ s/^\*//)
-                 {
-                     $text .= '/*';
-                     $in_comment = 1;
-                 }
-                 else
-                 {
-                     push (@$imports, $text. "\n") if ($text ne '');
-                     push (@$rules, '/' . $line);
-                     $in_rules = 1;
-                     last;
-                 }
-             }
-             elsif (!$in_string and $in_import and $line =~ s/^([\"\'])//)
-             { # strings outside of import start rules
-                 $text .= "$1";
-                 $in_string = quotemeta("$1");
-             }
-             elsif ($in_string and $line =~ s/^(\\$in_string)//)
-             {
-                 $text .= $1;
-             }
-             elsif ($in_string and $line =~ s/^($in_string)//)
-             {
-                 $text .= $1;
-                 $in_string = 0;
-             }
-             elsif ((! $in_string and !$in_import) and ($line =~ s/^([\\]?\@import)$// or $line =~ s/^([\\]?\@import\s+)//))
-             {
-                 $text .= $1;
-                 $in_import = 1;
-             }
-             elsif (!$in_string and $in_import and $line =~ s/^\;//)
-             {
-                 $text .= ';';
-                 $in_import = 0;
-             }
-             elsif (($in_import or $in_string) and $line =~ s/^(.)//)
-             {
-                  $text .= $1;
-             }
-             elsif (!$in_import and $line =~ s/^([^\s])//)
-             { 
-                  push (@$imports, $text. "\n") if ($text ne '');
-                  push (@$rules, $1 . $line);
-                  $in_rules = 1;
-                  last;
-             }
-             elsif ($line =~ s/^(\s)//)
-             {
-                  $text .= $1;
-             }
-             elsif ($line eq '')
-             {
-                  push (@$imports, $text);
-                  last;
-             }
-        } 
-    }
-    warn "$WARN string not closed in css file $file\n" if ($in_string);
-    warn "$WARN comment not closed in css file $file\n" if ($in_comment);
-    warn "$WARN \@import not finished in css file $file\n"  if ($in_import and !$in_comment and !$in_string);
-    return ($imports, $rules);
-}
-
-
-
 # parse texinfo cnf file for external manual specifications. This was
 # discussed on texinfo list but not in makeinfo for now. 
 my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
@@ -3219,16 +2898,16 @@ foreach my $file (@texinfo_htmlxref_files)
             next;
         }
         my $href = shift @htmlxref;
-        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}) and exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'}));
+        next if (exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}) and exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'}));
         
         if (defined($href))
         {
             $href =~ s/\/*$// if ($split_or_mono eq 'split');
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
+            $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
         }
         else
         {
-            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono} = {};
+            $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono} = {};
         }
     }
     close (HTMLXREF);
@@ -3236,17 +2915,367 @@ foreach my $file (@texinfo_htmlxref_files)
 
 if ($T2H_DEBUG)
 {
-    foreach my $manual (keys(%{$Texi2HTML::THISDOC{'htmlxref'}}))
+    foreach my $manual (keys(%{$Texi2HTML::GLOBAL{'htmlxref'}}))
     {
          foreach my $split ('split', 'mono')
          {
               my $href = 'NO';
-              next unless (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}));
-              $href = $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}->{'href'} if
-                  exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split}->{'href'});
+              next unless (exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split}));
+              $href = $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split}->{'href'} if
+                  exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split}->{'href'});
               print STDERR "$manual: $split, href: $href\n";
          }
     }
+}
+
+# resulting files splitting
+if ($Texi2HTML::Config::SPLIT =~ /section/i)
+{
+    $Texi2HTML::Config::SPLIT = 'section';
+}
+elsif ($Texi2HTML::Config::SPLIT =~ /node/i)
+{
+    $Texi2HTML::Config::SPLIT = 'node';
+}
+elsif ($Texi2HTML::Config::SPLIT =~ /chapter/i)
+{
+    $Texi2HTML::Config::SPLIT = 'chapter';
+}
+else
+{
+    $Texi2HTML::Config::SPLIT = '';
+}
+
+$Texi2HTML::Config::SPLIT_INDEX = 0 unless $Texi2HTML::Config::SPLIT;
+
+# Something like backward compatibility
+if ($Texi2HTML::Config::SPLIT and defined($Texi2HTML::Config::SUBDIR)
+    and ($Texi2HTML::Config::SUBDIR ne '') and 
+   (!defined($Texi2HTML::Config::OUT) or ($Texi2HTML::Config::OUT eq '')))
+{
+    $Texi2HTML::Config::OUT = $Texi2HTML::Config::SUBDIR;
+}
+
+die "output to STDOUT and split or frames incompatible\n" 
+    if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and ($Texi2HTML::Config::OUT eq '-'));
+
+if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
+{# This is to avoid trouble with latex2html
+    $Texi2HTML::Config::OUT = '';
+}
+
+my @include_dirs_orig = @Texi2HTML::Config::INCLUDE_DIRS;
+
+# extension
+$Texi2HTML::GLOBAL{'extension'} = $Texi2HTML::Config::EXTENSION;
+if ($Texi2HTML::Config::SHORTEXTN)
+{
+   $Texi2HTML::GLOBAL{'extension'} = "htm";
+}
+
+#
+# file name business
+#
+
+my $docu_dir;            # directory of the document
+my $docu_name;           # basename of the document
+my $docu_rdir;           # directory for the output
+my $docu_toc;            # document's table of contents
+my $docu_stoc;           # document's short toc
+my $docu_foot;           # document's footnotes
+my $docu_about;          # about this document
+my $docu_top;            # document top
+my $docu_doc;            # document (or document top of split)
+my $docu_frame;          # main frame file
+my $docu_toc_frame;      # toc frame file
+my $path_to_working_dir; # relative path leading to the working 
+                         # directory from the document directory
+my $docu_doc_file; 
+my $docu_toc_file;
+my $docu_stoc_file;
+my $docu_foot_file;
+my $docu_about_file;
+my $docu_top_file;
+my $docu_frame_file;
+my $docu_toc_frame_file;
+
+sub set_docu_names($$)
+{
+   my $docu_base_name = shift;
+   my $file_nr = shift;
+   if ($docu_base_name =~ /(.*\/)/)
+   {
+      $docu_dir = $1;
+      chop($docu_dir);
+      $docu_name = $docu_base_name;
+      $docu_name =~ s/.*\///;
+   }
+   else
+   {
+      $docu_dir = '.';
+      $docu_name = $docu_base_name;
+   }
+
+   @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
+   unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
+   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
+# AAAA
+   $docu_name = $Texi2HTML::Config::PREFIX if ($Texi2HTML::Config::PREFIX
+       and ($file_nr == 0));
+
+# subdir
+   $docu_rdir = '';
+
+   if ($Texi2HTML::Config::SPLIT)
+   {
+      if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
+      {
+         $docu_rdir = $Texi2HTML::Config::OUT;
+      }
+      else
+      {
+         $docu_rdir = $docu_name;
+      }
+      if ($docu_rdir ne '')
+      {
+         $docu_rdir =~ s|/*$||;
+         $docu_rdir .= '/'; 
+      }
+   }
+   else
+   {
+      my $out_file;
+# AAAA
+   # even if the out file is not set by OUT, in case it is not the first
+   # file, the out directory is still used
+      if (defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT ne '')
+      {
+         $out_file = $Texi2HTML::Config::OUT;
+      }
+      else
+      {
+         $out_file = $docu_name;
+      }
+
+      if ($out_file =~ m|(.*)/|)
+      {# there is a leading directories
+         $docu_rdir = "$1/";
+      }
+   }
+
+   if ($docu_rdir ne '')
+   {
+      unless (-d $docu_rdir)
+      {
+         if ( mkdir($docu_rdir, oct(755)))
+         {
+            print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
+         }
+         else
+         {
+            die "$ERROR can't create directory $docu_rdir\n";
+         }
+     }
+     print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
+   }
+   else
+   {
+      print STDERR "# putting result files into current directory \n" if ($T2H_VERBOSE);
+   }
+   # We don't use "./" as $docu_rdir when $docu_rdir is the current directory
+   # because it is problematic for latex2html. To test writability with -w, 
+   # however we need a real directory.
+   my $result_rdir = $docu_rdir;
+   $result_rdir = "." if ($docu_rdir eq '');
+   unless (-w $result_rdir)
+   {
+      $docu_rdir = 'current directory' if ($docu_rdir eq '');
+      die "$ERROR $docu_rdir not writable\n";
+   }
+
+   # relative path leading to the working directory from the document directory
+   $path_to_working_dir = $docu_rdir;
+   if ($docu_rdir ne '')
+   {
+      my $cwd = cwd;
+      my $docu_path = $docu_rdir;
+      $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
+      my @result = ();
+      # this code simplify the paths. The cwd is absolute, while in the 
+      # document path there may be some .., a .. is removed with the 
+      # previous path element, such that something like
+      # /cwd/directory/../somewhere/
+      # leads to
+      # /cwd/somewhere/
+      # with directory/.. removed
+      foreach my $element (split /\//, File::Spec->canonpath($docu_path))
+      {
+         if ($element eq '')
+         {
+            push @result, '';
+         }
+         elsif ($element eq '..')
+         {
+            if (@result and ($result[-1] eq ''))
+            {
+               print STDERR "Too much .. in absolute file name\n";
+            }
+            elsif (@result and ($result[-1] ne '..'))
+            {
+               pop @result;
+            }
+            else
+            {
+               push @result, $element;
+            }
+         }
+         else
+         {
+            push @result, $element;
+         }
+      }
+      $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
+      # this should not be needed given what canonpath does
+      $path_to_working_dir =~ s:/*$::;
+      $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
+   }
+
+   my $docu_ext = $Texi2HTML::THISDOC{'extension'};
+   # out_dir is undocummented, should never be used, use destination_directory
+   $Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
+
+   $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
+   $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
+
+   $docu_doc = $docu_name . (defined($docu_ext) ? ".$docu_ext" : ""); # document's contents
+   if ($Texi2HTML::Config::SPLIT)
+   {
+# AAAA
+      if (defined($Texi2HTML::Config::TOP_FILE) and ($Texi2HTML::Config::TOP_FILE ne '') and ($file_nr == 0))
+      {
+         $docu_top = $Texi2HTML::Config::TOP_FILE;
+      }
+      else
+      { 
+         $docu_top = $docu_doc;
+      }
+   }
+   else
+   {
+# AAAA
+      if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
+      {
+         my $out_file = $Texi2HTML::Config::OUT;
+         $out_file =~ s|.*/||;
+         $docu_doc = $out_file if ($out_file !~ /^\s*$/);
+      }
+      if (defined $Texi2HTML::Config::element_file_name)
+      {
+         my $docu_doc_set = &$Texi2HTML::Config::element_file_name
+           (undef, "doc", $docu_name);
+         $docu_doc = $docu_doc_set if (defined($docu_doc_set));
+      } 
+      $docu_top = $docu_doc;
+   }
+
+   if ($Texi2HTML::Config::SPLIT or !$Texi2HTML::Config::MONOLITHIC)
+   {
+      if (defined $Texi2HTML::Config::element_file_name)
+      {
+         $docu_toc = &$Texi2HTML::Config::element_file_name
+            (undef, "toc", $docu_name);
+         $docu_stoc = &$Texi2HTML::Config::element_file_name
+            (undef, "stoc", $docu_name);
+         $docu_foot = &$Texi2HTML::Config::element_file_name
+            (undef, "foot", $docu_name);
+         $docu_about = &$Texi2HTML::Config::element_file_name
+            (undef, "about", $docu_name);
+	# $docu_top may be overwritten later.
+      }
+      if (!defined($docu_toc))
+      {
+         my $default_toc = "${docu_name}_toc";
+         $default_toc .= ".$docu_ext" if (defined($docu_ext));
+# AAAA
+      if (defined($Texi2HTML::Config::TOC_FILE) and ($Texi2HTML::Config::TOC_FILE ne '') and ($file_nr == 0))
+         {
+            $docu_toc = $Texi2HTML::Config::TOC_FILE;
+         }
+         else
+         {
+            $docu_toc = $default_toc;
+         }
+      }
+      if (!defined($docu_stoc))
+      {
+         $docu_stoc  = "${docu_name}_ovr";
+         $docu_stoc .= ".$docu_ext" if (defined($docu_ext));
+      }
+      if (!defined($docu_foot))
+      {
+         $docu_foot  = "${docu_name}_fot";
+         $docu_foot .= ".$docu_ext" if (defined($docu_ext));
+      }
+      if (!defined($docu_about))
+      {
+         $docu_about = "${docu_name}_abt";
+         $docu_about .= ".$docu_ext" if (defined($docu_ext));
+      }
+   }
+   else
+   {
+      $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_doc;
+   }
+
+   # Note that file extension has already been added here.
+   if ($Texi2HTML::Config::FRAMES)
+   {
+      if (defined $Texi2HTML::Config::element_file_name)
+      {
+         $docu_frame = &$Texi2HTML::Config::element_file_name
+            (undef, "frame", $docu_name);
+         $docu_toc_frame = &$Texi2HTML::Config::element_file_name
+           (undef, "toc_frame", $docu_name);
+      }
+   }
+
+   if (!defined($docu_frame))
+   {
+      $docu_frame = "${docu_name}_frame";
+      $docu_frame .= ".$docu_ext" if (defined($docu_ext));
+   }
+   if (!defined($docu_toc_frame))
+   {
+      $docu_toc_frame  = "${docu_name}_toc_frame";
+      $docu_toc_frame .= ".$docu_ext" if (defined($docu_ext));
+   }
+
+   if ($T2H_VERBOSE)
+   {
+      print STDERR "# Files and directories:\n";
+      print STDERR "# rdir($docu_rdir) path_to_working_dir($path_to_working_dir)\n";
+      print STDERR "# doc($docu_doc) top($docu_top) toc($docu_toc) stoc($docu_stoc)\n";
+      print STDERR "# foot($docu_foot) about($docu_about) frame($docu_toc) toc_frame($docu_toc_frame)\n";
+   }
+
+   $docu_doc_file = "$docu_rdir$docu_doc";
+   $docu_toc_file  = "$docu_rdir$docu_toc";
+   $docu_stoc_file = "$docu_rdir$docu_stoc";
+   $docu_foot_file = "$docu_rdir$docu_foot";
+   $docu_about_file = "$docu_rdir$docu_about";
+   $docu_top_file  = "$docu_rdir$docu_top";
+   $docu_frame_file = "$docu_rdir$docu_frame";
+   $docu_toc_frame_file = "$docu_rdir$docu_toc_frame";
+
+# For use in init files
+   $Texi2HTML::THISDOC{'filename'}->{'top'} = $docu_top;
+   $Texi2HTML::THISDOC{'filename'}->{'foot'} = $docu_foot;
+   $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
+   $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
+   $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
+# FIXME document that
+   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'} = $docu_toc_frame;
+   $Texi2HTML::THISDOC{'filename'}->{'frame'} = $docu_frame;
 }
 
 #
@@ -3260,11 +3289,14 @@ sub texinfo_initialization($)
     # All the initialization used the last @documentlanguage found during
     # pass_structure. Now we reset it, if it is not set on the command line
     # such that the @documentlanguage macros are used when they arrive
-    if (!$cmd_line_lang)
+
+    # FIXME ask on bug-texinfo
+# AAAA
+    if (!$Texi2HTML::GLOBAL{'current_lang'})
     {
         set_document_language($Texi2HTML::Config::LANG) if defined($Texi2HTML::Config::LANG);
         # $LANG isn't known
-        set_document_language('en') unless ($lang_set);
+        set_document_language('en') unless ($Texi2HTML::THISDOC{'current_lang'});
     }
     # reset the @set/@clear values
     %value = %value_initial;
@@ -3286,13 +3318,11 @@ sub texinfo_initialization($)
 #---###########################################################################
 
 my @fhs = ();			# hold the file handles to read
-my $input_spool;		# spooled lines to read
-my @lines = ();             # whole document
-my @lines_numbers = ();     # line number, originating file associated with 
+#my @lines = ();             # whole document
+#my @lines_numbers = ();     # line number, originating file associated with 
                             # whole document 
-my $macros;                 # macros. reference on a hash
-my %info_enclose;           # macros defined with definfoenclose
-my $texi_line_number;
+my $macros = undef;         # macros. reference on a hash
+my %info_enclose = ();      # macros defined with definfoenclose
 my @floats = ();            # floats list
 my %floats = ();            # floats by style
 
@@ -3306,20 +3336,31 @@ sub initialise_state_texi($)
     $state->{'arg_expansion'} = 0 unless(defined($state->{'arg_expansion'}));
 }
 
-my @first_lines = ();
 
-sub pass_texi()
+sub pass_texi($)
 {
+    my $input_file_name = shift;
+    #my $texi_line_number = { 'file_name' => '', 'line_nr' => 0, 'macro' => '' };
+
+    my @lines = ();             # whole document
+    my @lines_numbers = ();     # line number, originating file associated with 
+                                # whole document 
+    my @first_lines = ();
     my $first_lines = 1;        # is it the first lines
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
     initialise_state_texi($state);
+    my $texi_line_number;
+    ($texi_line_number, $state->{'input_spool'}) = 
+          open_file($input_file_name, '');
     my @stack;
     my $text;
     my $cline;
- INPUT_LINE: while (defined($cline = next_line($texi_line_number))) 
+ INPUT_LINE: while (1)
     {
+        ($cline, $state->{'input_spool'}) = next_line($texi_line_number);
+        last if (!defined($cline));
         #
         # remove the lines preceding \input or an @-command
         # 
@@ -3376,6 +3417,7 @@ sub pass_texi()
     close_stack_texi_structure(\$text, \@stack, $state, $texi_line_number);
     push @lines, split_lines($text);
     print STDERR "# end of pass texi\n" if $T2H_VERBOSE;
+    return (\@lines, \@first_lines, \@lines_numbers);
 }
 
 #+++###########################################################################
@@ -3384,6 +3426,23 @@ sub pass_texi()
 #                                                                             #
 #---###########################################################################
 
+sub initialise_state_structure($)
+{
+    my $state = shift;
+    $state->{'structure'} = 1;      # for substitute_text and close_stack: 
+                                    # 1 if pass_structure/scan_structure is 
+                                    # to be used
+    $state->{'menu'} = 0;           # number of opened menus
+    $state->{'detailmenu'} = 0;     # number of opened detailed menus      
+    $state->{'sectionning_base'} = 0;         # current base sectionning level
+    $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
+    # seems to be only debug
+    if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
+    {
+        delete ($state->{'region_lines'});
+        print STDERR "Bug: state->{'region_lines'} exists but undef.\n";
+    }
+}
 # This is a virtual element for things appearing before @node and 
 # sectionning commands
 my $element_before_anything;
@@ -3406,26 +3465,7 @@ my %region_lines;
 # copying or documentdescription
 my $no_element_associated_place;
 
-sub initialise_state_structure($)
-{
-    my $state = shift;
-    $state->{'structure'} = 1;      # for substitute_text and close_stack: 
-                                    # 1 if pass_structure/scan_structure is 
-                                    # to be used
-    $state->{'menu'} = 0;           # number of opened menus
-    $state->{'detailmenu'} = 0;     # number of opened detailed menus      
-    $state->{'sectionning_base'} = 0;         # current base sectionning level
-    $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
-    # seems to be only debug
-    if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
-    {
-        delete ($state->{'region_lines'});
-        print STDERR "Bug: state->{'region_lines'} exists but undef.\n";
-    }
-}
 
-my @doc_lines;              # whole document
-my @doc_numbers;            # whole document line numbers and file names
 my @nodes_list;             # nodes in document reading order
                             # each member is a reference on a hash
 my @sections_list;          # sections in reading order
@@ -3526,12 +3566,14 @@ sub scan_node_line($)
     }
 }
 
-#my $do_contents;            # do table of contents if true
-#my $do_scontents;           # do short table of contents if true
-my $novalidate;
-
-sub pass_structure()
+sub pass_structure($$)
 {
+    my $texi_lines = shift;
+    my $lines_numbers = shift;
+
+    my @doc_lines;              # whole document
+    my @doc_numbers;            # whole document line numbers and file names
+
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
@@ -3542,13 +3584,13 @@ sub pass_structure()
     my $text;
     my $line_nr;
 
-    while (@lines or $state->{'in_deff_line'})
+    while (@$texi_lines or $state->{'in_deff_line'})
     {
-        my $cline = shift @lines;
+        my $cline = shift @$texi_lines;
         my $chomped_line = $cline;
-        if (@lines and !chomp($chomped_line))
+        if (@$texi_lines and !chomp($chomped_line))
         {
-             $lines[0] = $cline . $lines[0];
+             $texi_lines->[0] = $cline . $texi_lines->[0];
              next;
         }
         if ($state->{'in_deff_line'})
@@ -3564,7 +3606,7 @@ sub pass_structure()
             }
             delete $state->{'in_deff_line'};
         }
-        $line_nr = shift (@lines_numbers);
+        $line_nr = shift (@$lines_numbers);
         #print STDERR "PASS_STRUCTURE: $cline";
         if (!$state->{'raw'} and !$state->{'verb'})
         {
@@ -3773,8 +3815,8 @@ sub pass_structure()
                        $copying_line_nr++;
                        push @added_numbers, { 'file_name' => '', 'macro' => 'copying', 'line_nr' => $copying_line_nr };
                     }
-                    unshift (@lines, @added_lines);
-                    unshift (@lines_numbers, @added_numbers);
+                    unshift (@$texi_lines, @added_lines);
+                    unshift (@$lines_numbers, @added_numbers);
                     next;
                 }
                 if (exists($state->{'region_lines'}))
@@ -3834,6 +3876,7 @@ sub pass_structure()
     }
     echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
+    return (\@doc_lines, \@doc_numbers);
 }
 
 # split line at end of line and put each resulting line in an array
@@ -3867,12 +3910,13 @@ sub do_documentlanguage($$$$)
     if ($line =~ /\s+(\w+)/)
     {
         my $lang = $1;
-        if (!$cmd_line_lang && $lang)
+        if (!$Texi2HTML::GLOBAL{'current_lang'} && $lang)
         {
             $return_value = set_document_language($lang, 0, $silent, $line_nr);
             # warning, this is not the language of the document but the one that
             # appear in the texinfo. It could have been different 
-            # if $cmd_line_lang was set and not taken into account in the if
+            # if $Texi2HTML::GLOBAL{'current_lang'} was set and not 
+            # taken into account in the if
             $Texi2HTML::THISDOC{$macro} = $lang;
         }
     }
@@ -4056,14 +4100,22 @@ sub misc_command_texi($$$$)
    {
       if ($macro eq 'documentencoding')
       {
-         my $encoding = '';
+         #my $encoding = '';
          if ($line =~ /(\s+)([0-9\w\-]+)/)
          {
-            $encoding = $2;
-            $Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
-            my $from_encoding = encoding_alias($encoding);
-            $Texi2HTML::Config::IN_ENCODING = $from_encoding if
-               defined($from_encoding);
+            my $encoding = $2;
+            #$Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
+            $Texi2HTML::THISDOC{'documentencoding'} = $encoding;
+            $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $Texi2HTML::THISDOC{'documentencoding'} unless (defined($Texi2HTML::Config::DOCUMENT_ENCODING));
+            my $from_encoding;
+            if (!defined($Texi2HTML::Config::IN_ENCODING))
+            {
+               $from_encoding = encoding_alias($encoding);
+               $Texi2HTML::THISDOC{'IN_ENCODING'} = $from_encoding
+                 if (defined($from_encoding));
+            }
+            #$Texi2HTML::Config::IN_ENCODING = $from_encoding if
+            #   defined($from_encoding);
             if (defined($from_encoding) and $Texi2HTML::Config::USE_UNICODE)
             {
                foreach my $file (@fhs)
@@ -4096,9 +4148,11 @@ sub misc_command_texi($$$$)
    return ($text, $line);
 }
 
-# FIXME place that right before document processing
-my $kept_kdb_style = $::style_map_ref->{'kbd'};
-my $kept_kdb_pre_style = $::style_map_pre_ref->{'kbd'};
+# initial kdb styles
+my $kept_kdb_style;
+my $kept_kdb_pre_style;
+# novalidate seen?
+my $novalidate;
 
 # handle misc commands and misc command args
 sub misc_command_structure($$$$)
@@ -4132,12 +4186,14 @@ sub misc_command_structure($$$$)
     {
         if ($macro eq 'contents')
         {
-             $Texi2HTML::Config::DO_CONTENTS = 1;
+            $Texi2HTML::THISDOC{'DO_CONTENTS'} = 1 unless (defined($Texi2HTML::Config::DO_CONTENTS));
+            $Texi2HTML::THISDOC{$macro} = 1; 
         }
         else
         {
-             $macro = 'shortcontents';
-             $Texi2HTML::Config::DO_SCONTENTS = 1;
+            $macro = 'shortcontents';
+            $Texi2HTML::THISDOC{'DO_SCONTENTS'} = 1 unless (defined($Texi2HTML::Config::DO_SCONTENTS));
+            $Texi2HTML::THISDOC{$macro} = 1; 
         }
         push @{$state->{'place'}}, $content_element{$macro};
     }
@@ -4149,16 +4205,25 @@ sub misc_command_structure($$$$)
     # FIXME substitute_texi_line is a noop. But it may be relevant 
     # to do a real substitute_line. it is done anyway in pass_text
     # at the beginning, but why not here? 
-    elsif (grep {$_ eq $macro} ('settitle','shortitle','shorttitlepage') 
+    elsif (grep {$_ eq $macro} ('settitle','shorttitlepage','title') 
              and ($line =~ /^\s+(.*)$/))
     {
-        $value{"_$macro"} = substitute_texi_line($1);
+        my $arg = $1;
+        chomp($arg);
+        $value{"_$macro"} = substitute_texi_line($arg);
+        # backward compatibility
+        if ($macro eq 'title')
+        {
+            $Texi2HTML::THISDOC{"${macro}s_texi"} = [ substitute_texi_line($arg) ];
+            $Texi2HTML::THISDOC{"${macro}s"} = [ $arg ];
+        }
     }
-    elsif (grep {$_ eq $macro} ('author','subtitle','title')
+    elsif (grep {$_ eq $macro} ('author','subtitle')
              and ($line =~ /^\s+(.*)$/))
     {
         my $arg = $1;
         $value{"_$macro"} .= substitute_texi_line($arg)."\n";
+        chomp($arg);
         push @{$Texi2HTML::THISDOC{"${macro}s_texi"}}, substitute_texi_line($arg);
         push @{$Texi2HTML::THISDOC{"${macro}s"}}, $arg;
     }
@@ -4512,6 +4577,10 @@ sub menu_entry_texi($$$)
     $state->{'prev_menu_node'} = $node_menu_ref;
 }
 
+my @index_labels;                  # array corresponding with @?index commands
+                                   # constructed during pass_structure, used to
+                                   # put labels in pass_text
+
 # This function is used to construct link names from node names as
 # specified for texinfo
 sub cross_manual_links()
@@ -4582,7 +4651,7 @@ sub cross_manual_links()
     {
         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
         $::texi_map_ref = \%cross_transliterate_texi_map;
-        # FIXME if !USE_UNICODE, normal_text pourrait faire la translit
+        $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text_transliterate if (!$Texi2HTML::Config::USE_UNICODE);
 
         foreach my $key (keys(%nodes))
         {
@@ -4732,7 +4801,7 @@ sub do_element_targets($)
    my $element = shift;
    if (defined($Texi2HTML::Config::element_target_name))
    {
-       my ($id,$target) = &$Texi2HTML::Config::element_target_name($element, $element->{'target'}, $element->{'id'});
+       my ($target,$id) = &$Texi2HTML::Config::element_target_name($element, $element->{'target'}, $element->{'id'});
        $element->{'target'} = $target if (defined($target));
        $element->{'id'} = $id if (defined($id));
    }
@@ -5799,21 +5868,24 @@ sub rearrange_elements()
 
     print STDERR "# find index entries id\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-    foreach my $index_entry (@index_labels)
+    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
     {
-        # if not defined it means that it should be associated with 
-        # a section, it will be defined later
-        next if ($index_entry->{'label'} eq '');
-        my $index_id = "index-" . $index_entry->{'cross'};
-        my $index = 1;
-        # $index > 0 should prevent integer overflow, hopefully
-        while (exists($cross_reference_nodes{$index_id}) and $index > 0)
+        foreach my $index_entry (@index_labels)
         {
-            $index_id = "index-" . $index_entry->{'cross'} . "-" .$index;
-            $index++;
+            # if not defined it means that it should be associated with 
+            # a section, it will be defined later
+            next if ($index_entry->{'label'} eq '');
+            my $index_id = "index-" . $index_entry->{'cross'};
+            my $index = 1;
+            # $index > 0 should prevent integer overflow, hopefully
+            while (exists($cross_reference_nodes{$index_id}) and $index > 0)
+            {
+                $index_id = "index-" . $index_entry->{'cross'} . "-" .$index;
+                $index++;
+            }
+            $index_entry->{'label'} = $index_id;
+            push @{$cross_reference_nodes{$index_id}}, "index-".$index_entry->{'texi'}.$index;
         }
-        $index_entry->{'label'} = $index_id;
-        push @{$cross_reference_nodes{$index_id}}, "index-".$index_entry->{'texi'}.$index;
     }
 
 
@@ -5898,7 +5970,7 @@ sub rearrange_elements()
             $element->{'doc_nr'} = $doc_nr;
             my $is_top = '';
             $element->{'file'} = "${docu_name}_$doc_nr"
-                   . ($docu_ext ? ".$docu_ext" : "");
+                   . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
             if ($element->{'top'} or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
             { # the top elements
                 $is_top = "top";
@@ -5963,9 +6035,9 @@ sub rearrange_elements()
     # if setcontentsaftertitlepage is set, the contents should be associated
     # with the titlepage. That's wat is done there.
     push @$no_element_associated_place, $content_element{'contents'} 
-      if ($Texi2HTML::Config::DO_CONTENTS and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
+      if ($Texi2HTML::THISDOC{'DO_CONTENTS'} and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
     push @$no_element_associated_place, $content_element{'shortcontents'} 
-      if ($Texi2HTML::Config::DO_SCONTENTS and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
+      if ($Texi2HTML::THISDOC{'DO_SCONTENTS'} and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
     # correct the id and file for the things placed in regions (copying...)
     foreach my $place(@$no_element_associated_place)
     {
@@ -6330,16 +6402,14 @@ sub do_names()
     print STDERR "# Names done\n" if ($T2H_DEBUG);
 }
 
-@{$Texi2HTML::TOC_LINES} = ();            # table of contents
-@{$Texi2HTML::OVERVIEW} = ();           # short table of contents
-
-
 
 #+++############################################################################
 #                                                                              #
 # Stuff related to Index generation                                            #
 #                                                                              #
 #---############################################################################
+
+my $index_entries;                 # ref on a hash for the index entries
 
 # called during pass_structure
 sub enter_index_entry($$$$$$$$)
@@ -6457,7 +6527,6 @@ sub get_index_pages($)
         push @{$entries_by_letter->{uc(substr($key,0, 1))}} , $entries->{$key};
     }
     @letters = sort by_alpha keys %$entries_by_letter;
-    $Texi2HTML::Config::SPLIT_INDEX = 0 unless $Texi2HTML::Config::SPLIT;
 
     if ($Texi2HTML::Config::SPLIT_INDEX and $Texi2HTML::Config::SPLIT_INDEX =~ /^\d+$/)
     {
@@ -6498,6 +6567,10 @@ sub get_index_pages($)
     }
     return $pages;
 }
+
+my %indices;                       # hash of indices names containing 
+                                   #[ $pages, $entries ] (page indices and 
+                                   # raw index entries)
 
 # return the page and the entries. Cache the result in %indices.
 sub get_index($;$)
@@ -6570,7 +6643,6 @@ my $global_relative_foot_num = 0;
 my @foot_lines = ();           # footnotes
 my $copying_comment = '';      # comment constructed from text between
                                # @copying and @end copying with licence
-my $to_encoding;               # out file encoding
 my %acronyms_like = ();        # acronyms or similar commands associated texts
                                # the key are the commands, the values are
                                # hash references associating shorthands to
@@ -6599,8 +6671,10 @@ sub fill_state($)
         #$state->{'element'} = $elements_list[0] unless ((!@elements_list) or (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'}));
 }
 
-sub pass_text()
+sub pass_text($$)
 {
+    my $doc_lines = shift;
+    my $doc_numbers = shift;
     my %state;
     fill_state(\%state);
     my @stack;
@@ -6634,7 +6708,7 @@ sub pass_text()
 #    $Texi2HTML::THISDOC{'settitle_texi'} = $value{'_settitle'};
     $Texi2HTML::THISDOC{'fulltitle_texi'} = '';
     $Texi2HTML::THISDOC{'title_texi'} = '';
-    foreach my $possible_fulltitle (('_title', '_settitle', '_shorttitlepage', '_titlefont'))
+    foreach my $possible_fulltitle (('_settitle', '_title', '_shorttitlepage', '_titlefont'))
     {
         if ($value{$possible_fulltitle} ne '')
         {
@@ -6642,23 +6716,24 @@ sub pass_text()
             last;
         }
     }
-    foreach my $possible_title_texi ($value{'_settitle'}, $Texi2HTML::THISDOC{'fulltitle_texi'})
-    {
-        if ($possible_title_texi ne '')
-        {
-            $Texi2HTML::THISDOC{'title_texi'} = $possible_title_texi;
-            last;
-        }
-    }
+#    foreach my $possible_title_texi ($value{'_settitle'}, $Texi2HTML::THISDOC{'fulltitle_texi'})
+#    {
+#        if ($possible_title_texi ne '')
+#        {
+#            $Texi2HTML::THISDOC{'title_texi'} = $possible_title_texi;
+#            last;
+#        }
+#    }
+
 #    $Texi2HTML::THISDOC{'fulltitle_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
 #    $Texi2HTML::THISDOC{'title_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
-    foreach my $texi_cmd (('shorttitlepage', 'settitle', 'author',
-           'titlefont', 'subtitle', 'shorttitle'))
+    foreach my $texi_cmd (('shorttitlepage', 'settitle', 'author', 'title',
+           'titlefont', 'subtitle'))
     {
         $Texi2HTML::THISDOC{$texi_cmd . '_texi'} = $value{'_' . $texi_cmd};
     }
     foreach my $doc_thing (('shorttitlepage', 'settitle', 'author',
-           'titlefont', 'subtitle', 'shorttitle', 'fulltitle', 'title'))
+           'titlefont', 'subtitle', 'title', 'fulltitle'))
     {
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
         $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi);
@@ -6680,8 +6755,9 @@ sub pass_text()
         $top_simple_format =  $element_top->{'simple_format'};
     }
     foreach my $possible_top_name ($Texi2HTML::Config::TOP_HEADING, 
-         $element_top_text, $Texi2HTML::THISDOC{'title'},
-         $Texi2HTML::THISDOC{'shorttitle'}, &$I('Top'))
+         $element_top_text, $Texi2HTML::THISDOC{'fulltitle'},
+         #$Texi2HTML::THISDOC{'shorttitle'}, 
+         &$I('Top'))
     {
          if (defined($possible_top_name) and $possible_top_name ne '')
          {
@@ -6690,8 +6766,8 @@ sub pass_text()
          }
     }
     foreach my $possible_top_no_texi ($Texi2HTML::Config::TOP_HEADING, 
-         $top_no_texi, $Texi2HTML::THISDOC{'title_no_texi'},
-         $Texi2HTML::THISDOC{'shorttitle_no_texi'}, 
+         $top_no_texi, $Texi2HTML::THISDOC{'fulltitle_no_texi'},
+         #$Texi2HTML::THISDOC{'shorttitle_no_texi'}, 
          &$I('Top',{},{'remove_texi' => 1}))
     {
          if (defined($possible_top_no_texi) and $possible_top_no_texi ne '')
@@ -6702,8 +6778,8 @@ sub pass_text()
     }
      
     foreach my $possible_top_simple_format ($top_simple_format,
-         $Texi2HTML::THISDOC{'title_simple_format'},
-         $Texi2HTML::THISDOC{'shorttitle_simple_format'},
+         $Texi2HTML::THISDOC{'fulltitle_simple_format'},
+         #$Texi2HTML::THISDOC{'shorttitle_simple_format'},
          &$I('Top',{}, {'simple_format' => 1}))
     {
          if (defined($possible_top_simple_format) and $possible_top_simple_format ne '')
@@ -6721,11 +6797,11 @@ sub pass_text()
          $Texi2HTML::THISDOC{'fulltitle_texi'} = &$I('Untitled Document',{},
            {'keep_texi' => 1});
     }
-    $Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'settitle_texi'};
-    $Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'fulltitle_texi'} 
-            if ($Texi2HTML::THISDOC{'title_texi'} eq '');
+    #$Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'settitle_texi'};
+    #$Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'fulltitle_texi'} 
+    #        if ($Texi2HTML::THISDOC{'title_texi'} eq '');
 
-    foreach my $doc_thing (('fulltitle', 'title'))
+    foreach my $doc_thing (('fulltitle')) # title
     {
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
         $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi);
@@ -6735,20 +6811,14 @@ sub pass_text()
            simple_format(undef, undef, $thing_texi);
     }
 
-    for my $key (keys %Texi2HTML::THISDOC)
-    {
-        next if (ref($Texi2HTML::THISDOC{$key}));
-print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
-        $Texi2HTML::THISDOC{$key} =~ s/\s*$//;
-    }
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
     $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
-#    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription_text;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
+    # backward compatibility, titles should go away
     $Texi2HTML::THISDOC{'titles'} = [] if (!defined($Texi2HTML::THISDOC{'titles'}));
     foreach my $element (('authors', 'subtitles', 'titles'))
     {
@@ -6786,7 +6856,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     # texinfo is never used.
     my ($region_text, $region_no_texi, $region_simple_format);
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('documentdescription');
-    $documentdescription_text = &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi, $region_simple_format);
+    &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi, $region_simple_format);
     
     # do copyright notice inserted in comment at the beginning of the files
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('copying');
@@ -6803,10 +6873,9 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('titlepage');
 
-    $titlepage_text = &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi, $region_simple_format);
+    &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi, $region_simple_format);
 
     &$Texi2HTML::Config::init_out();
-    $to_encoding = $Texi2HTML::Config::OUT_ENCODING;
 
     ############################################################################
     # print frame and frame toc file
@@ -6840,18 +6909,18 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
     my $previous_is_top = 0; # 1 if it is the element following the top element
 
     my $cline;
-    while (@doc_lines)
+    while (@$doc_lines)
     {
         unless ($index_pages)
         { # not in a index split over sections
-            $cline = shift @doc_lines;
+            $cline = shift @$doc_lines;
             my $chomped_line = $cline;
-            if (!chomp($chomped_line) and @doc_lines)
+            if (!chomp($chomped_line) and @$doc_lines)
             { # if the line has no end of line it is concatenated with the next
-                 $doc_lines[0] = $cline . $doc_lines[0];
+                 $doc_lines->[0] = $cline . $doc_lines->[0];
                  next;
             }
-            $line_nr = shift (@doc_numbers);
+            $line_nr = shift (@$doc_numbers);
             #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
         }
 #	print STDERR "PASS_TEXT: $cline";
@@ -7227,7 +7296,7 @@ print STDERR "!!$key\n" if (!defined($Texi2HTML::THISDOC{$key}));
         my $relative_file = $misc_page_infos{$misc_page}->{'relative_file'};
         print STDERR "# writing $misc_page in $file\n" if $T2H_VERBOSE;
         my $saved_FH;
-        my $open_new;
+        my $open_new = 0;
         if ($relative_file ne $docu_doc)
         {
             $saved_FH = $FH;
@@ -7369,7 +7438,7 @@ sub finish_element($$$$)
                 close_out($FH);
             }
             else
-            {
+            { # end of last unsplit section
                 &$Texi2HTML::Config::end_section($FH, 1, $element);
             }
         }
@@ -7378,7 +7447,7 @@ sub finish_element($$$$)
             &$Texi2HTML::Config::end_section($FH, 1, $element);
         }
         else
-        {
+        { # end of section followed by another one
             &$Texi2HTML::Config::end_section($FH, 0, $element);
         }
     }
@@ -7433,13 +7502,18 @@ sub locate_include_file($)
 sub open_file($$)
 {
     my $name = shift;
-    my $line_number = shift;
+#    my $line_number = shift;
+    my $macro = shift;
+
+    my $line_number;
+    my $input_spool;
+    
     local *FH;
     if (open(*FH, "<$name"))
     { 
-        if (defined($Texi2HTML::Config::IN_ENCODING) and $Texi2HTML::Config::USE_UNICODE)
+        if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE)
         {
-            binmode(*FH, ":encoding($Texi2HTML::Config::IN_ENCODING)");
+            binmode(*FH, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
         }
         my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 
@@ -7450,11 +7524,13 @@ sub open_file($$)
         $input_spool = $file->{'input_spool'};
         $line_number->{'file_name'} = $name;
         $line_number->{'line_nr'} = 1;
+        $line_number->{'macro'} = $macro;
     }
     else
     {
         warn "$ERROR Can't read file $name: $!\n";
     }
+    return ($line_number, $input_spool);
 }
 
 sub open_out($)
@@ -7463,7 +7539,7 @@ sub open_out($)
     local *FILE;
     if ($file eq '-')
     {
-        binmode(STDOUT, ":encoding($to_encoding)") if (defined($to_encoding) and $Texi2HTML::Config::USE_UNICODE);
+        binmode(STDOUT, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})") if (defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE);
         return \*STDOUT;
     }
 
@@ -7471,9 +7547,9 @@ sub open_out($)
     {
         die "$ERROR Can't open $file for writing: $!\n";
     }
-    if (defined($to_encoding) and $Texi2HTML::Config::USE_UNICODE)
+    if (defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE)
     {
-        if ($to_encoding eq 'utf8' or $to_encoding eq 'utf-8-strict')
+        if ($Texi2HTML::THISDOC{'OUT_ENCODING'} eq 'utf8' or $Texi2HTML::THISDOC{'OUT_ENCODING'} eq 'utf-8-strict')
         {
             binmode(FILE, ':utf8');
         }
@@ -7481,7 +7557,7 @@ sub open_out($)
         {
             binmode(FILE, ':bytes');
         }
-        binmode(FILE, ":encoding($to_encoding)");
+        binmode(FILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     return *FILE;
 }
@@ -7492,13 +7568,13 @@ sub close_out($;$)
     my $FH = shift;
     my $file = shift;
     $file = '' if (!defined($file));
-    #return if ($Texi2HTML::Config::OUT eq '');
     close ($FH) || die "$ERROR: Error occurred when closing $file: $!\n";
 }
 
-sub next_line($)
+sub next_line($$)
 {
     my $line_number = shift;
+    my $input_spool;
     while (@fhs)
     {
         my $file = $fhs[0];
@@ -7510,7 +7586,7 @@ sub next_line($)
              $line_number->{'line_nr'} = $file->{'line_nr'};
              my $line = shift(@{$input_spool->{'spool'}});
              print STDERR "# unspooling $line" if ($T2H_DEBUG & $DEBUG_MACROS);
-             return($line);
+             return($line, $input_spool);
         }
         else
         {
@@ -7524,13 +7600,13 @@ sub next_line($)
         my $chomped_line = $line;
         $file->{'line_nr'}++ if (defined($line) and chomp($chomped_line));
         $line_number->{'line_nr'} = $file->{'line_nr'};
-        return($line) if (defined($line));
+        return($line, $input_spool) if (defined($line));
         no strict "refs";
         close($fh);
         use strict "refs";
         shift(@fhs);
     }
-    return(undef);
+    return(undef, $input_spool);
 }
 
 # echo a warning
@@ -7561,7 +7637,7 @@ sub format_line_number($)
     return '' unless (defined($line_number));
     $macro_text = " in $line_number->{'macro'}" if ($line_number->{'macro'} ne '');
     my $file_text = '(';
-    $file_text = "(in $line_number->{'file_name'} " if ($line_number->{'file_name'} ne $input_file_name);
+    $file_text = "(in $line_number->{'file_name'} " if ($line_number->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'});
     return "${file_text}l. $line_number->{'line_nr'}" . $macro_text . ')';
 }
 
@@ -9826,8 +9902,8 @@ sub expand_macro($$$$$)
         {
             $result[-1] .= $end_line;
         }
-        unshift @{$input_spool->{'spool'}}, (@result); #, $end_line);
-        $input_spool->{'macro'} = $name if ($input_spool->{'macro'} eq '');
+        unshift @{$state->{'input_spool'}->{'spool'}}, (@result); #, $end_line);
+        $state->{'input_spool'}->{'macro'} = $name if ($state->{'input_spool'}->{'macro'} eq '');
     }
     if ($T2H_DEBUG & $DEBUG_MACROS)
     {
@@ -9841,12 +9917,13 @@ sub expand_macro($$$$$)
     }
 }
 
-sub do_index_summary_file($)
+sub do_index_summary_file($$)
 {
     my $name = shift;
+    my $docu_name = shift;
     my ($pages, $entries) = get_index($name);
-    &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name});
-    print STDERR "# writing $name index summary\n" if $T2H_VERBOSE;
+    &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name}, $docu_name);
+    print STDERR "# writing $name index summary for $docu_name\n" if $T2H_VERBOSE;
 
     foreach my $key (sort keys %$entries)
     {
@@ -9887,9 +9964,10 @@ sub do_index_summary_file($)
           substitute_line($entry->{'entry'}), $entry->{'entry'},
           href($entry_element, ''),
           $entry_element->{'text'},
-          $printed_indices{$name});
+          $printed_indices{$name},
+          $docu_name);
     }
-    &$Texi2HTML::Config::index_summary_file_end ($name, $printed_indices{$name});
+    &$Texi2HTML::Config::index_summary_file_end ($name, $printed_indices{$name}, $docu_name);
 }
 
 sub do_index_page($$$;$)
@@ -10782,7 +10860,8 @@ sub scan_texi($$$$;$)
                            my $file = locate_include_file($file_name);
                            if (defined($file))
                            {
-                               open_file($file, $line_nr);
+                               my ($line_nr_file, $input_spool_file) = open_file($file, $line_nr->{'macro'});
+                               ($line_nr, $state->{'input_spool'}) = ($line_nr_file, $input_spool_file) if (defined($line_nr_file));
                                print STDERR "# including $file\n" if $T2H_VERBOSE;
                            }
                            else
@@ -13672,26 +13751,173 @@ sub decompose($$)
     return @result;
 }
 
-#Texi2HTML::LaTeX2HTML::init() if ($Texi2HTML::Config::L2H);
-if ($Texi2HTML::Config::L2H)
+# process a css file
+sub process_css_file ($$)
 {
-   push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
-   push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
-   push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
-   $Texi2HTML::Config::command_handler{'math'} = 
-     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
-       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
-     };
-   $Texi2HTML::Config::command_handler{'tex'} = 
-     { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
-       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
-     };
+    my $fh =shift;
+    my $file = shift;
+    my $in_rules = 0;
+    my $in_comment = 0;
+    my $in_import = 0;
+    my $in_string = 0;
+    my $rules = [];
+    my $imports = [];
+    while (my $line = <$fh>)
+    {
+	    #print STDERR "Line: $line";
+        if ($in_rules)
+        {
+            push @$rules, $line;
+            next;
+        }
+        my $text = '';
+        while (1)
+        { 
+		#sleep 1;
+		#print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $line";
+             if ($in_comment)
+             {
+                 if ($line =~ s/^(.*?\*\/)//)
+                 {
+                     $text .= $1;
+                     $in_comment = 0;
+                 }
+                 else
+                 {
+                     push @$imports, $text . $line;
+                     last;
+                 }
+             }
+             elsif (!$in_string and $line =~ s/^\///)
+             { # what do '\' do here ?
+                 if ($line =~ s/^\*//)
+                 {
+                     $text .= '/*';
+                     $in_comment = 1;
+                 }
+                 else
+                 {
+                     push (@$imports, $text. "\n") if ($text ne '');
+                     push (@$rules, '/' . $line);
+                     $in_rules = 1;
+                     last;
+                 }
+             }
+             elsif (!$in_string and $in_import and $line =~ s/^([\"\'])//)
+             { # strings outside of import start rules
+                 $text .= "$1";
+                 $in_string = quotemeta("$1");
+             }
+             elsif ($in_string and $line =~ s/^(\\$in_string)//)
+             {
+                 $text .= $1;
+             }
+             elsif ($in_string and $line =~ s/^($in_string)//)
+             {
+                 $text .= $1;
+                 $in_string = 0;
+             }
+             elsif ((! $in_string and !$in_import) and ($line =~ s/^([\\]?\@import)$// or $line =~ s/^([\\]?\@import\s+)//))
+             {
+                 $text .= $1;
+                 $in_import = 1;
+             }
+             elsif (!$in_string and $in_import and $line =~ s/^\;//)
+             {
+                 $text .= ';';
+                 $in_import = 0;
+             }
+             elsif (($in_import or $in_string) and $line =~ s/^(.)//)
+             {
+                  $text .= $1;
+             }
+             elsif (!$in_import and $line =~ s/^([^\s])//)
+             { 
+                  push (@$imports, $text. "\n") if ($text ne '');
+                  push (@$rules, $1 . $line);
+                  $in_rules = 1;
+                  last;
+             }
+             elsif ($line =~ s/^(\s)//)
+             {
+                  $text .= $1;
+             }
+             elsif ($line eq '')
+             {
+                  push (@$imports, $text);
+                  last;
+             }
+        } 
+    }
+    warn "$WARN string not closed in css file $file\n" if ($in_string);
+    warn "$WARN comment not closed in css file $file\n" if ($in_comment);
+    warn "$WARN \@import not finished in css file $file\n"  if ($in_import and !$in_comment and !$in_string);
+    return ($imports, $rules);
+}
+
+sub collect_all_css_files()
+{
+   my @css_import_lines;
+   my @css_rule_lines;
+
+  # process css files
+   foreach my $file (@Texi2HTML::Config::CSS_FILES)
+   {
+      my $css_file_fh;
+      my $css_file;
+      if ($file eq '-')
+      {
+         $css_file_fh = \*STDIN;
+         $css_file = '-';
+      }
+      else
+      {
+         $css_file = locate_include_file ($file);
+         unless (defined($css_file))
+         {
+            warn "css file $file not found\n";
+            next;
+         }
+         unless (open (CSSFILE, "$css_file"))
+         {
+            warn "Cannot open ${css_file}: $!";
+            next;
+         }
+         $css_file_fh = \*CSSFILE;
+      }
+      my ($import_lines, $rules_lines);
+      ($import_lines, $rules_lines) = process_css_file ($css_file_fh, $css_file);
+      push @css_import_lines, @$import_lines;
+      push @css_rule_lines, @$rules_lines;
+   }
+
+
+   if ($T2H_DEBUG & $DEBUG_USER)
+   {
+      if (@css_import_lines)
+      {
+         print STDERR "# css import lines\n";
+         foreach my $line (@css_import_lines)
+         {
+            print STDERR "$line";
+         }
+      }
+      if (@css_rule_lines)
+      {
+         print STDERR "# css rule lines\n";
+         foreach my $line (@css_rule_lines)
+         {
+            print STDERR "$line";
+         }
+      }
+   }
+   return (\@css_import_lines, \@css_rule_lines);
 }
 
 sub init_with_file_name($)
 {
    my $base_file = shift;
-   set_docu_names($base_file);
+   set_docu_names($base_file, $Texi2HTML::THISDOC{'input_file_number'});
 
    foreach my $handler(@Texi2HTML::Config::command_handler_init)
    {
@@ -13699,131 +13925,165 @@ sub init_with_file_name($)
    }
 }
 
+
+#######################################################################
+#
+#
+#
+#######################################################################
+
+die "$0: missing file argument.\n$T2H_FAILURE_TEXT" unless (scalar(@ARGV) >= 1);
+
+my $file_number = 0;
 # main processing
-if (!$Texi2HTML::Config::USE_SETFILENAME)
+while(@ARGV)
 {
-   init_with_file_name ($input_file_base);
-}
+   my $input_file_name = shift(@ARGV);
 
-print STDERR "# reading from $input_file_name\n" if $T2H_VERBOSE;
-open_file($input_file_name, $texi_line_number);
 
-my @css_import_lines;
-my @css_rule_lines;
+   $Texi2HTML::THIS_SECTION = undef;
+   $Texi2HTML::THIS_HEADER = undef;
+   $Texi2HTML::THIS_ELEMENT = undef;
 
-# process css files
-foreach my $file (@Texi2HTML::Config::CSS_FILES)
-{
-    my $css_file_fh;
-    my $css_file;
-    if ($file eq '-')
-    {
-        $css_file_fh = \*STDIN;
-        $css_file = '-';
-    }
-    else
-    {
-         $css_file = locate_init_file ($file);
-         unless (defined($css_file))
-         {
-             warn "css file $file not found\n";
-             next;
-         }
-         unless (open (CSSFILE, "$css_file"))
-         {
-             warn "Cannot open ${css_file}: $!";
-             next;
-        }
-        $css_file_fh = \*CSSFILE;
-    }
-    my ($import_lines, $rules_lines);
-    ($import_lines, $rules_lines) = process_css_file ($css_file_fh, $css_file);
-    push @css_import_lines, @$import_lines;
-    push @css_rule_lines, @$rules_lines;
-}
+   %Texi2HTML::THISDOC = ();
 
-$Texi2HTML::THISDOC{'css_import_lines'} = \@css_import_lines;
-$Texi2HTML::THISDOC{'css_lines'} = \@css_rule_lines;
+   foreach my $global_key (keys(%Texi2HTML::GLOBAL))
+   {
+      $Texi2HTML::THISDOC{$global_key} = $Texi2HTML::GLOBAL{$global_key};
+   }
 
-if ($T2H_DEBUG & $DEBUG_USER)
-{
-    if (@css_import_lines)
-    {
-        print STDERR "# css import lines\n";
-        foreach my $line (@css_import_lines)
-        {
-            print STDERR "$line";
-        }
-    }
-    if (@css_rule_lines)
-    {
-        print STDERR "# css rule lines\n";
-        foreach my $line (@css_rule_lines)
-        {
-            print STDERR "$line";
-        }
-    }
-}
+   set_date() if ($Texi2HTML::GLOBAL{'current_lang'});
 
-%region_lines = (
+   $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
+   $Texi2HTML::THISDOC{'input_file_number'} = $file_number;
+
+   my $input_file_base = $input_file_name;
+   $input_file_base =~ s/\.te?x(i|info)?$//;
+
+   @{$Texi2HTML::TOC_LINES} = ();            # table of contents
+   @{$Texi2HTML::OVERVIEW} = ();           # short table of contents
+   # this could be done here, but perl warns that 
+   # `"Texi2HTML::TITLEPAGE" used only once' and it is reset in 
+   # &$Texi2HTML::Config::titlepage anyway
+   # $Texi2HTML::TITLEPAGE = undef;        
+   $Texi2HTML::THIS_ELEMENT = undef;
+   $Texi2HTML::THIS_SECTION = undef;
+   $Texi2HTML::THIS_HEADER = undef;
+
+   # the reference to these hashes may be used before this point (for example
+   # see makeinfo.init), so they should be kept as is and the values undef
+   # but the key should not be deleted because the ref is on the key.
+   foreach my $hash (\%Texi2HTML::HREF, \%Texi2HTML::NAME, \%Texi2HTML::NODE,
+        \%Texi2HTML::NO_TEXI, \%Texi2HTML::SIMPLE_TEXT)
+   {
+       foreach my $key (keys(%$hash))
+       {
+           $hash->{$key} = undef;
+       }
+   }
+
+   $docu_dir = undef;    # directory of the document
+   $docu_name = undef;   # basename of the document
+   $docu_rdir = undef;   # directory for the output
+   $docu_toc = undef;    # document's table of contents
+   $docu_stoc = undef;   # document's short toc
+   $docu_foot = undef;   # document's footnotes
+   $docu_about = undef;  # about this document
+   $docu_top = undef;    # document top
+   $docu_doc = undef;    # document (or document top of split)
+   $docu_frame = undef;  # main frame file
+   $docu_toc_frame = undef;       # toc frame file
+   $path_to_working_dir = undef;  # relative path leading to the working 
+                                  # directory from the document directory
+   $docu_doc_file = undef;
+   $docu_toc_file = undef;
+   $docu_stoc_file = undef;
+   $docu_foot_file = undef;
+   $docu_about_file = undef;
+   $docu_top_file = undef;
+   $docu_frame_file = undef;
+   $docu_toc_frame_file = undef;
+
+   if (!$Texi2HTML::Config::USE_SETFILENAME)
+   {
+      init_with_file_name ($input_file_base);
+   }
+
+   # FIXME when to do that?
+   ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_lines'}) 
+      = collect_all_css_files();
+
+   %region_lines = (
           'titlepage'            => [ ],
           'documentdescription'  => [ ],
           'copying'              => [ ],
-);
+   );
 
-$texi_line_number = { 'file_name' => '', 'line_nr' => 0, 'macro' => '' };
+   texinfo_initialization(0);
 
-texinfo_initialization(0);
-pass_texi();
+   print STDERR "# reading from $input_file_name\n" if $T2H_VERBOSE;
 
-if ($Texi2HTML::Config::USE_SETFILENAME and !defined($docu_name))
-{
-   init_with_file_name ($input_file_base);
-}
+   @fhs = ();			# hold the file handles to read
 
-dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
-if (defined($Texi2HTML::Config::MACRO_EXPAND))
-{
-    my @texi_lines = (@first_lines, @lines);
-    dump_texi(\@texi_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND);
-}
+   $macros = undef;         # macros. reference on a hash
+   %info_enclose = ();      # macros defined with definfoenclose
+   @floats = ();            # floats list
+   %floats = ();            # floats by style
+   %nodes = ();             # nodes hash. The key is the texi node name
+   %cross_reference_nodes = ();  # normalized node names arrays
 
-%content_element =
-(
-    'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+
+   my ($texi_lines, $first_texi_lines, $lines_numbers) 
+        = pass_texi($input_file_name);
+
+   if ($Texi2HTML::Config::USE_SETFILENAME and !defined($docu_name))
+   {
+      init_with_file_name ($input_file_base);
+   }
+
+   dump_texi($texi_lines, 'texi', $lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
+   if (defined($Texi2HTML::Config::MACRO_EXPAND))
+   {
+       my @texi_lines = (@$first_texi_lines, @$texi_lines);
+       dump_texi(\@texi_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND);
+   }
+
+   %content_element =
+   (
+     'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
          'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
          'contents' => 1, 'texi' => '_contents' },
-    'shortcontents' => { 
+     'shortcontents' => { 
         'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
         'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
         'shortcontents' => 1, 'texi' => '_shortcontents' },
-);
+   );
 
-%sec2level = %reference_sec2level;
+   %sec2level = %reference_sec2level;
 
-$element_before_anything =
-{ 
-    'before_anything' => 1,
-    'place' => [],
-    'texi' => 'VIRTUAL ELEMENT BEFORE ANYTHING',
-};
+   $element_before_anything =
+   { 
+      'before_anything' => 1,
+      'place' => [],
+      'texi' => 'VIRTUAL ELEMENT BEFORE ANYTHING',
+   };
 
 
-$footnote_element = 
-{ 
-    'id' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
-    'target' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
-    'file' => $docu_foot,
-    'footnote' => 1,
-    'element' => 1,
-    'place' => [],
-};
+   $footnote_element = 
+   { 
+      'id' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
+      'target' => $Texi2HTML::Config::misc_pages_targets{'Footnotes'},
+      'file' => $docu_foot,
+      'footnote' => 1,
+      'element' => 1,
+      'place' => [],
+   };
 
-%region_initial_state = (
+   %region_initial_state = (
           'titlepage'            => { },
           'documentdescription'  => { },
           'copying'              => { },
-);
+   );
 
 # to determine if a command has to be processed the following are interesting 
 # (and can be faked):
@@ -13833,110 +14093,147 @@ $footnote_element =
 # 'multiple_pass': the number of pass in the formatting of the region in the
 #                  main document
 # 'outside_document': set to 1 if outside of the main document formatting
-foreach my $key (keys(%region_initial_state))
-{
-   $region_initial_state{$key}->{'multiple_pass'} = -1;
-   $region_initial_state{$key}->{'region_pass'} = 0;
-   $region_initial_state{$key}->{'num_head'} = 0;
-   $region_initial_state{$key}->{'foot_num'} = 0;
-   $region_initial_state{$key}->{'relative_foot_num'} = 0;
-   $region_initial_state{$key}->{'region'} = $key;
-}
+   foreach my $key (keys(%region_initial_state))
+   {
+      $region_initial_state{$key}->{'multiple_pass'} = -1;
+      $region_initial_state{$key}->{'region_pass'} = 0;
+      $region_initial_state{$key}->{'num_head'} = 0;
+      $region_initial_state{$key}->{'foot_num'} = 0;
+      $region_initial_state{$key}->{'relative_foot_num'} = 0;
+      $region_initial_state{$key}->{'region'} = $key;
+   }
 
-texinfo_initialization(1);
+   texinfo_initialization(1);
 
-# APA: There's got to be a better way:
-if ($Texi2HTML::Config::TEST)
-{
-    # to generate files similar to reference ones to be able to check for
-    # real changes we use these dummy values if -test is given
-    $T2H_USER = 'a tester';
-    $THISPROG = 'texi2html';
-    setlocale( LC_ALL, "C" );
-} 
-else
-{ 
-    # the eval prevents this from breaking on system which do not have
-    # a proper getpwuid implemented
-    eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
-    # APA: Provide Windows NT workaround until getpwuid gets
-    # implemented there.
-    $T2H_USER = $ENV{'USERNAME'} unless (defined($T2H_USER));
-}
-$T2H_USER = &$I('unknown') unless (defined($T2H_USER));
     
-$no_element_associated_place = [];
+   $no_element_associated_place = [];
 
-$document_idx_num = 0;
-$document_sec_num = 0;
-$document_head_num = 0;
-$document_anchor_num = 0;
+   $document_idx_num = 0;
+   $document_sec_num = 0;
+   $document_head_num = 0;
+   $document_anchor_num = 0;
 
-$novalidate = $Texi2HTML::Config::NOVALIDATE; # @novalidate appeared
+   $novalidate = $Texi2HTML::Config::NOVALIDATE; # @novalidate appeared
 
-pass_structure();
-if ($T2H_DEBUG & $DEBUG_TEXI)
-{
-    dump_texi(\@doc_lines, 'first', \@doc_numbers);
-    if (defined($Texi2HTML::Config::MACRO_EXPAND and $Texi2HTML::Config::DUMP_TEXI))
-    {
-        unshift (@doc_lines, @first_lines);
-        push (@doc_lines, "\@bye\n");
-        dump_texi(\@doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
-    }
-}
-exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
+   @nodes_list = ();        # nodes in document reading order
+                            # each member is a reference on a hash
+   @sections_list = ();     # sections in reading order
+                            # each member is a reference on a hash
+   @all_elements = ();      # sectionning elements (nodes and sections)
+                            # in reading order. Each member is a reference
+                            # on a hash which also appears in %nodes,
+                            # @sections_list @nodes_list, @elements_list
+   @elements_list = ();     # all the resulting elements in document order
+   %sections = ();          # sections hash. The key is the section number
+   %headings = ();          # headings hash. The key is the heading number
+   $section_top = undef;    # @top section
+   $element_top = undef;    # Top element
+   $node_top = undef;       # Top node
+   $node_first = undef;     # First node
+   $element_index = undef;  # element with first index
+   $element_chapter_index = undef;  # chapter with first index
+   $element_first = undef;  # first element
+   $element_last = undef;   # last element
+   %special_commands = ();  # hash for the commands specially handled 
+                            # by the user
 
-foreach my $style (keys(%special_commands))
-{
-  $special_commands{$style}->{'max'} = $special_commands{$style}->{'count'};
-}
+   @index_labels = ();             # array corresponding with @?index commands
+                                   # constructed during pass_texi, used to
+                                   # put labels in pass_text
+   $index_entries = undef;
 
-rearrange_elements();
-do_names();
+   # original kdb styles used if @kbdinputstyle distinct
+   $kept_kdb_style = $::style_map_ref->{'kbd'};
+   $kept_kdb_pre_style = $::style_map_pre_ref->{'kbd'};
+
+   my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
+   if ($T2H_DEBUG & $DEBUG_TEXI)
+   {
+      dump_texi($doc_lines, 'first', $doc_numbers);
+      if (defined($Texi2HTML::Config::MACRO_EXPAND and $Texi2HTML::Config::DUMP_TEXI))
+      {
+          unshift (@$doc_lines, @$first_texi_lines);
+          push (@$doc_lines, "\@bye\n");
+          dump_texi($doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
+      }
+   }
+   next if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
+
+   foreach my $style (keys(%special_commands))
+   {
+      $special_commands{$style}->{'max'} = $special_commands{$style}->{'count'};
+   }
+
+   %files = ();   # keys are files. This is used to avoid reusing an already
+                  # used file name
+   %empty_indices = (); # value is true for an index name key if the index 
+                        # is empty
+   %printed_indices = (); # value is true for an index name not empty and
+                          # printed
+   %indices = ();                  # hash of indices names containing 
+                                   #[ $pages, $entries ] (page indices and 
+                                   # raw index entries)
+   rearrange_elements();
+   do_names();
 
 #Texi2HTML::LaTeX2HTML::latex2html();
-foreach my $handler(@Texi2HTML::Config::command_handler_process)
-{
-    &$handler;
-}
+   foreach my $handler(@Texi2HTML::Config::command_handler_process)
+   {
+       &$handler;
+   }
 
 # maybe do that later to have more elements ready?
-&$Texi2HTML::Config::toc_body(\@elements_list);
+   &$Texi2HTML::Config::toc_body(\@elements_list);
+
+   &$Texi2HTML::Config::css_lines($Texi2HTML::THISDOC{'css_import_lines'}, 
+        $Texi2HTML::THISDOC{'css_lines'});
 
 
-&$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);
+   $global_head_num = 0;       # heading index. it is global for the main doc, 
+                               # and taken from the state if in multiple_pass.
+   $global_foot_num = 0;
+   $global_relative_foot_num = 0;
+   @foot_lines = ();           # footnotes
+   $copying_comment = '';      # comment constructed from text between
+                               # @copying and @end copying with licence
+   %acronyms_like = ();        # acronyms or similar commands associated texts
+                               # the key are the commands, the values are
+                               # hash references associating shorthands to
+                               # texts.
+   @states_stack = ();
 
-
-pass_text();
-print STDERR "BUG: " . scalar(@index_labels) . " index entries pending\n" 
-   if (scalar(@index_labels));
-foreach my $special (keys(%special_commands))
-{
-    my $count = $special_commands{$special}->{'count'};
-    if (($count != 0) and $T2H_VERBOSE)
-    {
+   pass_text($doc_lines, $doc_numbers);
+   print STDERR "BUG: " . scalar(@index_labels) . " index entries pending\n" 
+      if (scalar(@index_labels));
+   foreach my $special (keys(%special_commands))
+   {
+      my $count = $special_commands{$special}->{'count'};
+      if (($count != 0) and $T2H_VERBOSE)
+      {
          echo_warn ("$count special \@$special were not processed.\n");
-    }
-}
-if ($Texi2HTML::Config::IDX_SUMMARY)
-{
-    foreach my $entry (keys(%index_names))
-    {
-         do_index_summary_file($entry) unless ($empty_indices{$entry});
-    }
-}
-do_node_files() if ($Texi2HTML::Config::NODE_FILES);
+      }
+   }
+   if ($Texi2HTML::Config::IDX_SUMMARY)
+   {
+      foreach my $entry (keys(%index_names))
+      {
+         do_index_summary_file($entry, $docu_name) unless ($empty_indices{$entry});
+      }
+   }
+   do_node_files() if ($Texi2HTML::Config::NODE_FILES);
 #l2h_FinishFromHtml() if ($Texi2HTML::Config::L2H);
 #l2h_Finish() if($Texi2HTML::Config::L2H);
 #Texi2HTML::LaTeX2HTML::finish();
-foreach my $handler(@Texi2HTML::Config::command_handler_finish)
-{
-    &$handler;
-}
-&$Texi2HTML::Config::finish_out();
-print STDERR "# that's all folks\n" if $T2H_VERBOSE;
+   foreach my $handler(@Texi2HTML::Config::command_handler_finish)
+   {
+       &$handler;
+   }
+   &$Texi2HTML::Config::finish_out();
 
+   print STDERR "# File ($file_number) $input_file_name processed\n" if $T2H_VERBOSE;
+   $file_number++;
+}
+print STDERR "# that's all folks\n" if $T2H_VERBOSE;
 exit(0);
 
 

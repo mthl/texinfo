@@ -1,0 +1,22 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=formatting.chm
+Contents file=formatting.hhc
+Default Window=Default
+Default topic=formatting.html
+Display compile progress=No
+Full-text search=Yes
+Index file=formatting.hhk
+Language=0x409 English (United States)
+Title=title -a
+
+[WINDOWS]
+Default=,"formatting.hhc","formatting.hhk","formatting.html","formatting.html",,,,,0x22520,,0x384e,,,,,,,,0
+
+[FILES]
+formatting.html
+formatting_1.html
+formatting_2.html
+formatting_3.html
+formatting_4.html
+formatting_5.html

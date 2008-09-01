@@ -26,3 +26,4 @@ navigation_node_no_header_vertical navigation.texi -init vertical_nav.init -spli
 formatting_regions formatting_regions.texi
 formatting_exotic ../coverage/formatting.texi -split section -no-header -nonumber-sections -toc-links -def-table -short-ref -footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css
 formatting_makeinfo ../coverage/formatting.texi -init makeinfo.init
+formatting_chm ../coverage/formatting.texi -init chm.init
