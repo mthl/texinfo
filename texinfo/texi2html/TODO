@@ -48,6 +48,7 @@ h1 titlefont (@titlefont),
   $heading arguments.
   Also element formatting documentation, especially print_foot_navigation
   is not up to date.
+  new arguments and return args of index_summary_letter
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -102,8 +103,6 @@ IMO a good default. In the future you may also add that as an
 option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
-
-* handling of images should be more configurable for other formats.
 
 * many FIXME in the code
 
@@ -243,9 +242,6 @@ differently.
 
 * makeinfo don't warn for empty deffn, but texi2dvi cannot process them
 
-* with the 8bit maps, the following FIXME could be fixed.
-FIXME to be fixed with unicode to 8bit tables
-
 * enable_encoding.init is certainly dependent on USE_UNICODE through
 the use of non 8 bit representation of characters.
 
@@ -313,7 +309,7 @@ Error at line 2625, character 4:  element "H3" not allowed here; check
 Error at line 2628, character 4:  element "H4" not allowed here; check
         which elements this element may be contained within
 
-* verify that code_style is used for code_style stylea @-commands 
+* verify that code_style is used for code_style style @-commands 
   in remove_texi.
 
 * docbook is very picky in variablelist.
@@ -322,14 +318,10 @@ if needed.
 Also no paragraph in title.
 And in function only replaceable and type. And in replaceable, nothing.
 
-* fix index name transliteration in nodetest_latin1_no_unicode,
-nodetest_utf8_no_unicode.
+* to solve above issue, the definition arg formatted with simple_format 
+  should alo be passed down
 
 * why do index entries use 'label', and not id,target?
-
-* transliterate section names, like index entries were done
-
-* conditionalize transliteration to not using the new cross ref scheme
 
 * makeinfo has a lot of other short command line switches
 
@@ -350,10 +342,16 @@ nodetest_utf8_no_unicode.
 
 * makeinfo --no-header implies --no-split (and default for out file is stdout).
 
-  currently, in texi2html if split at node and no headers, there is
-  no navigation. But if split at chapter or section there is navigation
-  for the first and last element in file.
-
 * in @titlepage, @title, @authors and similar commands should be 
-  formatted when they happen and not at the beginning. See the example
-  in recent texinfo manual.
+  formatted when they happen and not at the beginning.
+
+     @titlepage
+     @titlefont{Software}
+     @sp 1
+     @title for something
+     @subtitle subtitle
+     @author by Somebody and Someone
+     @author and Other people
+
+
+rerun all tests

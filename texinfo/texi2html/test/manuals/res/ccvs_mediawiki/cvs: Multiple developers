@@ -1,5 +1,5 @@
 <div id="Multiple-developers"></div>
-<div id="SEC83"></div>
+<div id="Multiple-developers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
 <td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
@@ -65,7 +65,7 @@ choosing between them.
 </nowiki></pre>
 <hr size="6">
 <div id="File-status"></div>
-<div id="SEC84"></div>
+<div id="File-status-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
@@ -195,7 +195,7 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 </p>
 <hr size="6">
 <div id="Updating-a-file"></div>
-<div id="SEC85"></div>
+<div id="Bringing-a-file-up-to-date"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
@@ -243,7 +243,7 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 </p>
 <hr size="6">
 <div id="Conflicts-example"></div>
-<div id="SEC86"></div>
+<div id="Conflicts-example-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
@@ -424,7 +424,7 @@ See the documentation for pcl-cvs.
 </p>
 <hr size="6">
 <div id="Informing-others"></div>
-<div id="SEC87"></div>
+<div id="Informing-others-about-commits"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
@@ -454,7 +454,7 @@ newsgroup.
 </p>
 <hr size="6">
 <div id="Concurrency"></div>
-<div id="SEC88"></div>
+<div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
@@ -533,7 +533,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr size="6">
 <div id="Watches"></div>
-<div id="SEC89"></div>
+<div id="Mechanisms-to-track-who-is-editing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
@@ -580,7 +580,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-a-watch"></div>
-<div id="SEC90"></div>
+<div id="Telling-CVS-to-watch-certain-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
@@ -642,7 +642,7 @@ watch on</code>.
 
 <hr size="6">
 <div id="Getting-Notified"></div>
-<div id="SEC91"></div>
+<div id="Telling-CVS-to-notify-you"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
@@ -781,7 +781,7 @@ changing.
 </p>
 <hr size="6">
 <div id="Editing-files"></div>
-<div id="SEC92"></div>
+<div id="How-to-edit-a-file-which-is-being-watched"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
@@ -868,7 +868,7 @@ successful <small>CVS</small> command.
 </p>
 <hr size="6">
 <div id="Watch-information"></div>
-<div id="SEC93"></div>
+<div id="Information-about-who-is-watching-and-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
@@ -915,7 +915,7 @@ containing the file.
 
 <hr size="6">
 <div id="Watches-Compatibility"></div>
-<div id="SEC94"></div>
+<div id="Using-watches-with-old-versions-of-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
@@ -955,7 +955,7 @@ that will restore the repository to a state which
 </p>
 <hr size="6">
 <div id="Choosing-a-model"></div>
-<div id="SEC95"></div>
+<div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>

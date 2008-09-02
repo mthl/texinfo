@@ -45,7 +45,7 @@ References.
 </nowiki></pre>
 <hr size="1">
 <div id="Overview"></div>
-<div id="SEC1"></div>
+<div id="Overview-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
@@ -78,7 +78,7 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr size="6">
 <div id="What-is-CVS_003f"></div>
-<div id="SEC2"></div>
+<div id="What-is-CVS_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
@@ -174,7 +174,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr size="6">
 <div id="What-is-CVS-not_003f"></div>
-<div id="SEC3"></div>
+<div id="What-is-CVS-not_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
@@ -340,7 +340,7 @@ only once they have been proven.
 
 <hr size="6">
 <div id="A-sample-session"></div>
-<div id="SEC4"></div>
+<div id="A-sample-session-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
@@ -379,7 +379,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="Getting-the-source"></div>
-<div id="SEC5"></div>
+<div id="Getting-the-source-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
@@ -423,7 +423,7 @@ you want to edit.  See section [[#Multiple-developers|Multiple developers]], for
 </p>
 <hr size="6">
 <div id="Committing-your-changes"></div>
-<div id="SEC6"></div>
+<div id="Committing-your-changes-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
@@ -499,7 +499,7 @@ this:
 
 <hr size="6">
 <div id="Cleaning-up"></div>
-<div id="SEC7"></div>
+<div id="Cleaning-up-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
@@ -566,7 +566,7 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr size="6">
 <div id="Viewing-differences"></div>
-<div id="SEC8"></div>
+<div id="Viewing-differences-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| &gt; ]]|</td>
@@ -611,7 +611,7 @@ Are you sure you want to release (and delete) directory `tc': y
 
 <hr size="6">
 <div id="Repository"></div>
-<div id="SEC9"></div>
+<div id="The-Repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Viewing-differences| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Specifying-a-repository| &gt; ]]|</td>
@@ -690,7 +690,7 @@ user-defined modules.
 </nowiki></pre>
 <hr size="6">
 <div id="Specifying-a-repository"></div>
-<div id="SEC10"></div>
+<div id="Telling-CVS-where-your-repository-is"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| &gt; ]]|</td>
@@ -756,7 +756,7 @@ should be two ways of referring to the same repository.
 </p>
 <hr size="6">
 <div id="Repository-storage"></div>
-<div id="SEC11"></div>
+<div id="How-data-is-stored-in-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-files| &gt; ]]|</td>
@@ -798,7 +798,7 @@ the file permissions appropriate for the repository.
 </nowiki></pre>
 <hr size="6">
 <div id="Repository-files"></div>
-<div id="SEC12"></div>
+<div id="Where-files-are-stored-within-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-permissions| &gt; ]]|</td>
@@ -910,7 +910,7 @@ rules see [[#Tags|Tags&ndash;Symbolic revisions]].
 </p>
 <hr size="6">
 <div id="File-permissions"></div>
-<div id="SEC13"></div>
+<div id="File-permissions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Windows-permissions| &gt; ]]|</td>
@@ -1018,7 +1018,7 @@ carefully if you are considering this option
 </p>
 <hr size="6">
 <div id="Windows-permissions"></div>
-<div id="SEC14"></div>
+<div id="File-Permission-issues-specific-to-Windows"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Attic| &gt; ]]|</td>
@@ -1057,7 +1057,7 @@ something out, please let us know as described in
 </p>
 <hr size="6">
 <div id="Attic"></div>
-<div id="SEC15"></div>
+<div id="The-attic"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-in-repository| &gt; ]]|</td>
@@ -1106,7 +1106,7 @@ non-<code>dead</code> state.
 </p>
 <hr size="6">
 <div id="CVS-in-repository"></div>
-<div id="SEC16"></div>
+<div id="The-CVS-directory-in-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Locks| &gt; ]]|</td>
@@ -1215,7 +1215,7 @@ there must be a single tab character there and no spaces.
 </p>
 <hr size="6">
 <div id="Locks"></div>
-<div id="SEC17"></div>
+<div id="CVS-locks-in-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVSROOT-storage| &gt; ]]|</td>
@@ -1305,7 +1305,7 @@ further discussion/rationale.
 </p>
 <hr size="6">
 <div id="CVSROOT-storage"></div>
-<div id="SEC18"></div>
+<div id="How-files-are-stored-in-the-CVSROOT-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Working-directory-storage| &gt; ]]|</td>
@@ -1371,7 +1371,7 @@ administrative files, see [[#Administrative-files|Reference manual for Administr
 </p>
 <hr size="6">
 <div id="Working-directory-storage"></div>
-<div id="SEC19"></div>
+<div id="How-data-is-stored-in-the-working-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| &gt; ]]|</td>
@@ -1678,10 +1678,10 @@ by the client; the non-client/server <small>CVS</small> consults
 
 <hr size="6">
 <div id="Intro-administrative-files"></div>
-<div id="SEC20"></div>
+<div id="The-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC21| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-administrative-files| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1730,7 +1730,7 @@ See section [[#modules|The modules file]], for a full explanation of all the
 available features.
 </p>
 <hr size="6">
-<div id="SEC21"></div>
+<div id="Editing-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-repositories| &gt; ]]|</td>
@@ -1761,9 +1761,9 @@ revisions.
 </p>
 <hr size="6">
 <div id="Multiple-repositories"></div>
-<div id="SEC22"></div>
+<div id="Multiple-repositories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC21| &lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-repository| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
@@ -1817,7 +1817,7 @@ and server1, to update everything else.
 
 <hr size="6">
 <div id="Creating-a-repository"></div>
-<div id="SEC23"></div>
+<div id="Creating-a-repository-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Backing-up| &gt; ]]|</td>
@@ -1886,7 +1886,7 @@ don&rsquo;t want that, remove the history file after running
 </p>
 <hr size="6">
 <div id="Backing-up"></div>
-<div id="SEC24"></div>
+<div id="Backing-up-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-a-repository| &gt; ]]|</td>
@@ -1956,7 +1956,7 @@ the changes into the repository.
 
 <hr size="6">
 <div id="Moving-a-repository"></div>
-<div id="SEC25"></div>
+<div id="Moving-a-repository-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| &gt; ]]|</td>
@@ -1998,7 +1998,7 @@ isn&rsquo;t worth it.
 </p>
 <hr size="6">
 <div id="Remote-repositories"></div>
-<div id="SEC26"></div>
+<div id="Remote-repositories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Server-requirements| &gt; ]]|</td>
@@ -2053,7 +2053,7 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 </nowiki></pre>
 <hr size="6">
 <div id="Server-requirements"></div>
-<div id="SEC27"></div>
+<div id="Server-requirements-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-rsh| &gt; ]]|</td>
@@ -2128,7 +2128,7 @@ trouble.
 </p>
 <hr size="6">
 <div id="Connecting-via-rsh"></div>
-<div id="SEC28"></div>
+<div id="Connecting-with-rsh"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| &gt; ]]|</td>
@@ -2225,7 +2225,7 @@ the same on both the local and remote hosts.)
 
 <hr size="6">
 <div id="Password-authenticated"></div>
-<div id="SEC29"></div>
+<div id="Direct-connection-with-password-authentication"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-server| &gt; ]]|</td>
@@ -2259,7 +2259,7 @@ some adjustments on both the server and client sides.
 </nowiki></pre>
 <hr size="6">
 <div id="Password-authentication-server"></div>
-<div id="SEC30"></div>
+<div id="Setting-up-the-server-for-password-authentication"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-client| &gt; ]]|</td>
@@ -2568,7 +2568,7 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 
 <hr size="6">
 <div id="Password-authentication-client"></div>
-<div id="SEC31"></div>
+<div id="Using-the-client-with-password-authentication"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-security| &gt; ]]|</td>
@@ -2673,7 +2673,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 </p>
 <hr size="6">
 <div id="Password-authentication-security"></div>
-<div id="SEC32"></div>
+<div id="Security-considerations-with-password-authentication"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#GSSAPI-authenticated| &gt; ]]|</td>
@@ -2731,7 +2731,7 @@ security, get Kerberos.
 </p>
 <hr size="6">
 <div id="GSSAPI-authenticated"></div>
-<div id="SEC33"></div>
+<div id="Direct-connection-with-GSSAPI"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Kerberos-authenticated| &gt; ]]|</td>
@@ -2797,7 +2797,7 @@ example,
 
 <hr size="6">
 <div id="Kerberos-authenticated"></div>
-<div id="SEC34"></div>
+<div id="Direct-connection-with-kerberos"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-fork| &gt; ]]|</td>
@@ -2863,7 +2863,7 @@ connection via rsh; this version will not do so.
 </p>
 <hr size="6">
 <div id="Connecting-via-fork"></div>
-<div id="SEC35"></div>
+<div id="Connecting-with-fork"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Read_002donly-access| &gt; ]]|</td>
@@ -2913,7 +2913,7 @@ environment variable.
 </p>
 <hr size="6">
 <div id="Read_002donly-access"></div>
-<div id="SEC36"></div>
+<div id="Read_002donly-repository-access"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Server-temporary-directory| &gt; ]]|</td>
@@ -3013,7 +3013,7 @@ read-only access.
 </p>
 <hr size="6">
 <div id="Server-temporary-directory"></div>
-<div id="SEC37"></div>
+<div id="Temporary-directories-for-the-server"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| &gt; ]]|</td>
@@ -3072,7 +3072,7 @@ number <var>pid</var>, it is safe to do so.
 </p>
 <hr size="6">
 <div id="Starting-a-new-project"></div>
-<div id="SEC38"></div>
+<div id="Starting-a-project-with-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Server-temporary-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
@@ -3107,7 +3107,7 @@ directories.  See section [[#Moving-files|Moving and renaming files]].
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-up-the-files"></div>
-<div id="SEC39"></div>
+<div id="Setting-up-the-files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
@@ -3137,7 +3137,7 @@ be done in a couple of different ways.
 </nowiki></pre>
 <hr size="6">
 <div id="From-files"></div>
-<div id="SEC40"></div>
+<div id="Creating-a-directory-tree-from-a-number-of-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
@@ -3206,7 +3206,7 @@ files are binary and which are not.  See section [[#Wrappers|The cvswrappers fil
 </p>
 <hr size="6">
 <div id="From-other-version-control-systems"></div>
-<div id="SEC41"></div>
+<div id="Creating-Files-From-Other-Version-Control-Systems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
@@ -3295,7 +3295,7 @@ vary).  See the comments in the script for details.
 
 <hr size="6">
 <div id="From-scratch"></div>
-<div id="SEC42"></div>
+<div id="Creating-a-directory-tree-from-scratch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
@@ -3338,7 +3338,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 </p>
 <hr size="6">
 <div id="Defining-the-module"></div>
-<div id="SEC43"></div>
+<div id="Defining-the-module-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| &gt; ]]|</td>
@@ -3396,7 +3396,7 @@ $ cvs release -d CVSROOT
 
 <hr size="6">
 <div id="Revisions"></div>
-<div id="SEC44"></div>
+<div id="Revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Defining-the-module| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-numbers| &gt; ]]|</td>
@@ -3440,7 +3440,7 @@ numeric revision in each file.
 </nowiki></pre>
 <hr size="6">
 <div id="Revision-numbers"></div>
-<div id="SEC45"></div>
+<div id="Revision-numbers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Versions-revisions-releases| &gt; ]]|</td>
@@ -3482,7 +3482,7 @@ are explained in detail in [[#Branches-and-revisions|Branches and revisions]].
 </p>
 <hr size="6">
 <div id="Versions-revisions-releases"></div>
-<div id="SEC46"></div>
+<div id="Versions_002c-revisions-and-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Assigning-revisions| &gt; ]]|</td>
@@ -3513,7 +3513,7 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr size="6">
 <div id="Assigning-revisions"></div>
-<div id="SEC47"></div>
+<div id="Assigning-revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tags| &gt; ]]|</td>
@@ -3571,7 +3571,7 @@ parallel, you need to use a branch (see section [[#Branching-and-merging|Branchi
 </p>
 <hr size="6">
 <div id="Tags"></div>
-<div id="SEC48"></div>
+<div id="Tags_002d_002dSymbolic-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-the-working-directory| &gt; ]]|</td>
@@ -3746,7 +3746,7 @@ like this:
 
 <hr size="6">
 <div id="Tagging-the-working-directory"></div>
-<div id="SEC49"></div>
+<div id="Specifying-what-to-tag-from-the-working-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &gt; ]]|</td>
@@ -3795,7 +3795,7 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr size="6">
 <div id="Tagging-by-date_002ftag"></div>
-<div id="SEC50"></div>
+<div id="Specifying-what-to-tag-by-date-or-revision"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Modifying-tags| &gt; ]]|</td>
@@ -3855,7 +3855,7 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr size="6">
 <div id="Modifying-tags"></div>
-<div id="SEC51"></div>
+<div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-add_002fremove| &gt; ]]|</td>
@@ -3964,7 +3964,7 @@ cvs rtag -d old-name-0-4 tc
 
 <hr size="6">
 <div id="Tagging-add_002fremove"></div>
-<div id="SEC52"></div>
+<div id="Tagging-and-adding-and-removing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Sticky-tags| &gt; ]]|</td>
@@ -4017,7 +4017,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr size="6">
 <div id="Sticky-tags"></div>
-<div id="SEC53"></div>
+<div id="Sticky-tags-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| &gt; ]]|</td>
@@ -4119,7 +4119,7 @@ discussion see [[#Merging-two-revisions|Merging differences between any two revi
 </p>
 <hr size="6">
 <div id="Branching-and-merging"></div>
-<div id="SEC54"></div>
+<div id="Branching-and-merging-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Sticky-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-motivation| &gt; ]]|</td>
@@ -4163,7 +4163,7 @@ copy the changes onto another branch.
 </nowiki></pre>
 <hr size="6">
 <div id="Branches-motivation"></div>
-<div id="SEC55"></div>
+<div id="What-branches-are-good-for"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-branch| &gt; ]]|</td>
@@ -4200,7 +4200,7 @@ the main trunk, or leave them on the branch.
 </p>
 <hr size="6">
 <div id="Creating-a-branch"></div>
-<div id="SEC56"></div>
+<div id="Creating-a-branch-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branches-motivation| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Accessing-branches| &gt; ]]|</td>
@@ -4264,7 +4264,7 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="Accessing-branches"></div>
-<div id="SEC57"></div>
+<div id="Accessing-branches-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-and-revisions| &gt; ]]|</td>
@@ -4371,7 +4371,7 @@ branch numbers are constructed.
 </p>
 <hr size="6">
 <div id="Branches-and-revisions"></div>
-<div id="SEC58"></div>
+<div id="Branches-and-revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Accessing-branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Magic-branch-numbers| &gt; ]]|</td>
@@ -4452,7 +4452,7 @@ special meaning.  See section [[#Tracking-sources|Tracking third-party sources]]
 </p>
 <hr size="6">
 <div id="Magic-branch-numbers"></div>
-<div id="SEC59"></div>
+<div id="Magic-branch-numbers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branches-and-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-a-branch| &gt; ]]|</td>
@@ -4517,7 +4517,7 @@ no way to see how the tag was assigned yesterday).
 </p>
 <hr size="6">
 <div id="Merging-a-branch"></div>
-<div id="SEC60"></div>
+<div id="Merging-an-entire-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Magic-branch-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-more-than-once| &gt; ]]|</td>
@@ -4595,7 +4595,7 @@ not produce the desired result.  See section [[#Merging-adds-and-removals|Mergin
 </p>
 <hr size="6">
 <div id="Merging-more-than-once"></div>
-<div id="SEC61"></div>
+<div id="Merging-from-a-branch-several-times"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-two-revisions| &gt; ]]|</td>
@@ -4676,7 +4676,7 @@ the trunk, and then use that tag for subsequent merges:
 
 <hr size="6">
 <div id="Merging-two-revisions"></div>
-<div id="SEC62"></div>
+<div id="Merging-differences-between-any-two-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-more-than-once| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-adds-and-removals| &gt; ]]|</td>
@@ -4736,7 +4736,7 @@ $
 
 <hr size="6">
 <div id="Merging-adds-and-removals"></div>
-<div id="SEC63"></div>
+<div id="Merging-can-add-or-remove-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-two-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-and-keywords| &gt; ]]|</td>
@@ -4786,7 +4786,7 @@ to be sure that all intended changes are propagated in the merge.
 </p>
 <hr size="6">
 <div id="Merging-and-keywords"></div>
-<div id="SEC64"></div>
+<div id="Merging-and-keywords-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-adds-and-removals| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Recursive-behavior| &gt; ]]|</td>
@@ -4902,7 +4902,7 @@ binary files.
 </p>
 <hr size="6">
 <div id="Recursive-behavior"></div>
-<div id="SEC65"></div>
+<div id="Recursive-behavior-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-and-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| &gt; ]]|</td>
@@ -4987,7 +4987,7 @@ Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recurs
 
 <hr size="6">
 <div id="Adding-and-removing"></div>
-<div id="SEC66"></div>
+<div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Recursive-behavior| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
@@ -5023,7 +5023,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr size="6">
 <div id="Adding-files"></div>
-<div id="SEC67"></div>
+<div id="Adding-files-to-a-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
@@ -5122,7 +5122,7 @@ later merge the additions to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-files"></div>
-<div id="SEC68"></div>
+<div id="Removing-files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
@@ -5253,7 +5253,7 @@ later merge the removals to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-directories"></div>
-<div id="SEC69"></div>
+<div id="Removing-directories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
@@ -5300,7 +5300,7 @@ are checking out contains any files in that directory.
 </p>
 <hr size="6">
 <div id="Moving-files"></div>
-<div id="SEC70"></div>
+<div id="Moving-and-renaming-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
@@ -5333,7 +5333,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki></pre>
 <hr size="6">
 <div id="Outside"></div>
-<div id="SEC71"></div>
+<div id="The-Normal-way-to-Rename"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
@@ -5379,7 +5379,7 @@ information see [[#Assigning-revisions|Assigning revisions]].
 </p>
 <hr size="6">
 <div id="Inside"></div>
-<div id="SEC72"></div>
+<div id="Moving-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
@@ -5435,7 +5435,7 @@ commands while you move it.
 
 <hr size="6">
 <div id="Rename-by-copying"></div>
-<div id="SEC73"></div>
+<div id="Copying-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
@@ -5501,7 +5501,7 @@ You cannot easily see the history of the file across the rename.
 
 <hr size="6">
 <div id="Moving-directories"></div>
-<div id="SEC74"></div>
+<div id="Moving-and-renaming-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| &gt; ]]|</td>
@@ -5565,7 +5565,7 @@ name of the directories.
 </p>
 <hr size="6">
 <div id="History-browsing"></div>
-<div id="SEC75"></div>
+<div id="History-browsing-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
@@ -5597,7 +5597,7 @@ through the history.
 </nowiki></pre>
 <hr size="6">
 <div id="log-messages"></div>
-<div id="SEC76"></div>
+<div id="Log-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
@@ -5624,7 +5624,7 @@ use the <code>cvs log</code> command (see section [[#log|log&mdash;Print out log
 </p>
 <hr size="6">
 <div id="history-database"></div>
-<div id="SEC77"></div>
+<div id="The-history-database"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
@@ -5655,7 +5655,7 @@ history</code> command (see section [[#history|history&mdash;Show status of file
 
 <hr size="6">
 <div id="user_002ddefined-logging"></div>
-<div id="SEC78"></div>
+<div id="User_002ddefined-logging"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
@@ -5721,7 +5721,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 
 <hr size="6">
 <div id="annotate"></div>
-<div id="SEC79"></div>
+<div id="Annotate-command"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| &gt; ]]|</td>
@@ -5773,7 +5773,7 @@ in more detail there and in [[#Common-options|Common command options]].
 
 <hr size="6">
 <div id="Binary-files"></div>
-<div id="SEC80"></div>
+<div id="Handling-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#annotate| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
@@ -5806,7 +5806,7 @@ including both text files and binary images.
 </nowiki></pre>
 <hr size="6">
 <div id="Binary-why"></div>
-<div id="SEC81"></div>
+<div id="The-issues-with-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
@@ -5875,7 +5875,7 @@ resulting from branches, restrict use of branches.
 </p>
 <hr size="6">
 <div id="Binary-howto"></div>
-<div id="SEC82"></div>
+<div id="How-to-store-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| &gt; ]]|</td>
@@ -5971,7 +5971,7 @@ considerably with the operating system.
 </p>
 <hr size="6">
 <div id="Multiple-developers"></div>
-<div id="SEC83"></div>
+<div id="Multiple-developers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-howto| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
@@ -6037,7 +6037,7 @@ choosing between them.
 </nowiki></pre>
 <hr size="6">
 <div id="File-status"></div>
-<div id="SEC84"></div>
+<div id="File-status-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
@@ -6167,7 +6167,7 @@ these options, see [[#Invoking-CVS|Quick reference to CVS commands]].
 </p>
 <hr size="6">
 <div id="Updating-a-file"></div>
-<div id="SEC85"></div>
+<div id="Bringing-a-file-up-to-date"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
@@ -6215,7 +6215,7 @@ See section [[#update|update&mdash;Bring work tree in sync with repository]], fo
 </p>
 <hr size="6">
 <div id="Conflicts-example"></div>
-<div id="SEC86"></div>
+<div id="Conflicts-example-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
@@ -6396,7 +6396,7 @@ See the documentation for pcl-cvs.
 </p>
 <hr size="6">
 <div id="Informing-others"></div>
-<div id="SEC87"></div>
+<div id="Informing-others-about-commits"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
@@ -6426,7 +6426,7 @@ newsgroup.
 </p>
 <hr size="6">
 <div id="Concurrency"></div>
-<div id="SEC88"></div>
+<div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
@@ -6505,7 +6505,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr size="6">
 <div id="Watches"></div>
-<div id="SEC89"></div>
+<div id="Mechanisms-to-track-who-is-editing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
@@ -6552,7 +6552,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-a-watch"></div>
-<div id="SEC90"></div>
+<div id="Telling-CVS-to-watch-certain-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
@@ -6614,7 +6614,7 @@ watch on</code>.
 
 <hr size="6">
 <div id="Getting-Notified"></div>
-<div id="SEC91"></div>
+<div id="Telling-CVS-to-notify-you"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
@@ -6753,7 +6753,7 @@ changing.
 </p>
 <hr size="6">
 <div id="Editing-files"></div>
-<div id="SEC92"></div>
+<div id="How-to-edit-a-file-which-is-being-watched"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
@@ -6840,7 +6840,7 @@ successful <small>CVS</small> command.
 </p>
 <hr size="6">
 <div id="Watch-information"></div>
-<div id="SEC93"></div>
+<div id="Information-about-who-is-watching-and-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
@@ -6887,7 +6887,7 @@ containing the file.
 
 <hr size="6">
 <div id="Watches-Compatibility"></div>
-<div id="SEC94"></div>
+<div id="Using-watches-with-old-versions-of-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
@@ -6927,7 +6927,7 @@ that will restore the repository to a state which
 </p>
 <hr size="6">
 <div id="Choosing-a-model"></div>
-<div id="SEC95"></div>
+<div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-management| &gt; ]]|</td>
@@ -7001,7 +7001,7 @@ checkout worlds.
 </p>
 <hr size="6">
 <div id="Revision-management"></div>
-<div id="SEC96"></div>
+<div id="Revision-management-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Choosing-a-model| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#When-to-commit| &gt; ]]|</td>
@@ -7035,7 +7035,7 @@ than one person is working in a repository.
 </nowiki></pre>
 <hr size="6">
 <div id="When-to-commit"></div>
-<div id="SEC97"></div>
+<div id="When-to-commit_003f"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| &gt; ]]|</td>
@@ -7079,7 +7079,7 @@ goal, which is to get software written.
 </p>
 <hr size="6">
 <div id="Keyword-substitution"></div>
-<div id="SEC98"></div>
+<div id="Keyword-substitution-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#When-to-commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
@@ -7124,7 +7124,7 @@ a new revision of the file.
 </nowiki></pre>
 <hr size="6">
 <div id="Keyword-list"></div>
-<div id="SEC99"></div>
+<div id="Keyword-List"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
@@ -7308,7 +7308,7 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 
 <hr size="6">
 <div id="Using-keywords"></div>
-<div id="SEC100"></div>
+<div id="Using-keywords-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
@@ -7374,7 +7374,7 @@ magic <small>SCCS</small> phrase, like this:
 
 <hr size="6">
 <div id="Avoiding-substitution"></div>
-<div id="SEC101"></div>
+<div id="Avoiding-substitution-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
@@ -7422,7 +7422,7 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 </p>
 <hr size="6">
 <div id="Substitution-modes"></div>
-<div id="SEC102"></div>
+<div id="Substitution-modes-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
@@ -7519,7 +7519,7 @@ handle an export containing binary files correctly.
 
 <hr size="6">
 <div id="Configuring-keyword-expansion"></div>
-<div id="SEC103"></div>
+<div id="Configuring-Keyord-Expansion"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
@@ -7624,7 +7624,7 @@ recognized.
 </p>
 <hr size="6">
 <div id="Log-keyword"></div>
-<div id="SEC104"></div>
+<div id="Problems-with-the-_0024Log_0024-keyword_002e"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| &gt; ]]|</td>
@@ -7671,7 +7671,7 @@ interfere with everyday source file browsing.
 </p>
 <hr size="6">
 <div id="Tracking-sources"></div>
-<div id="SEC105"></div>
+<div id="Tracking-third_002dparty-sources"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Log-keyword| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
@@ -7726,7 +7726,7 @@ revision.
 </nowiki></pre>
 <hr size="6">
 <div id="First-import"></div>
-<div id="SEC106"></div>
+<div id="Importing-for-the-first-time"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
@@ -7780,7 +7780,7 @@ example, and the only release tag assigned is
 </p>
 <hr size="6">
 <div id="Update-imports"></div>
-<div id="SEC107"></div>
+<div id="Updating-with-the-import-command"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
@@ -7838,7 +7838,7 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 </p>
 <hr size="6">
 <div id="Reverting-local-changes"></div>
-<div id="SEC108"></div>
+<div id="Reverting-to-the-latest-vendor-release"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
@@ -7874,7 +7874,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [[#admin-options|admin opt
 </p>
 <hr size="6">
 <div id="Binary-files-in-imports"></div>
-<div id="SEC109"></div>
+<div id="How-to-handle-binary-files-with-cvs-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
@@ -7898,7 +7898,7 @@ files are binary.  See section [[#Wrappers|The cvswrappers file]].
 </p>
 <hr size="6">
 <div id="Keywords-in-imports"></div>
-<div id="SEC110"></div>
+<div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
@@ -7940,7 +7940,7 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 </p>
 <hr size="6">
 <div id="Multiple-vendor-branches"></div>
-<div id="SEC111"></div>
+<div id="Multiple-vendor-branches-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Builds| &gt; ]]|</td>
@@ -8002,7 +8002,7 @@ an error in some future release.
 
 <hr size="6">
 <div id="Builds"></div>
-<div id="SEC112"></div>
+<div id="How-your-build-system-interacts-with-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-vendor-branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Special-Files| &gt; ]]|</td>
@@ -8081,7 +8081,7 @@ is Odin (see
 </p>
 <hr size="6">
 <div id="Special-Files"></div>
-<div id="SEC113"></div>
+<div id="Special-Files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Builds| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| &gt; ]]|</td>
@@ -8115,7 +8115,7 @@ permissions during repository transactions.
 
 <hr size="6">
 <div id="CVS-commands"></div>
-<div id="SEC114"></div>
+<div id="Guide-to-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Special-Files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Structure| &gt; ]]|</td>
@@ -8158,7 +8158,7 @@ reference to <small>CVS</small> commands, see section [[#Invoking-CVS|Quick refe
 </nowiki></pre>
 <hr size="6">
 <div id="Structure"></div>
-<div id="SEC115"></div>
+<div id="Overall-structure-of-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Exit-status| &gt; ]]|</td>
@@ -8221,7 +8221,7 @@ the documentation instead.
 </p>
 <hr size="6">
 <div id="Exit-status"></div>
-<div id="SEC116"></div>
+<div id="CVS_0027s-exit-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &gt; ]]|</td>
@@ -8261,7 +8261,7 @@ other <small>CVS</small> commands.
 </p>
 <hr size="6">
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<div id="SEC117"></div>
+<div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Global-options| &gt; ]]|</td>
@@ -8338,7 +8338,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr size="6">
 <div id="Global-options"></div>
-<div id="SEC118"></div>
+<div id="Global-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Common-options| &gt; ]]|</td>
@@ -8538,7 +8538,7 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr size="6">
 <div id="Common-options"></div>
-<div id="SEC119"></div>
+<div id="Common-command-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| &gt; ]]|</td>
@@ -8794,7 +8794,7 @@ and <code>update</code>.
 
 <hr size="6">
 <div id="admin"></div>
-<div id="SEC120"></div>
+<div id="admin_002d_002d_002dAdministration"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin-options| &gt; ]]|</td>
@@ -8851,7 +8851,7 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr size="6">
 <div id="admin-options"></div>
-<div id="SEC121"></div>
+<div id="admin-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| &gt; ]]|</td>
@@ -9202,7 +9202,7 @@ this option has never done anything useful.
 
 <hr size="6">
 <div id="checkout"></div>
-<div id="SEC122"></div>
+<div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-options| &gt; ]]|</td>
@@ -9295,7 +9295,7 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr size="6">
 <div id="checkout-options"></div>
-<div id="SEC123"></div>
+<div id="checkout-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-examples| &gt; ]]|</td>
@@ -9457,7 +9457,7 @@ modules file to set the module status.
 
 <hr size="6">
 <div id="checkout-examples"></div>
-<div id="SEC124"></div>
+<div id="checkout-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| &gt; ]]|</td>
@@ -9489,7 +9489,7 @@ ago:
 
 <hr size="6">
 <div id="commit"></div>
-<div id="SEC125"></div>
+<div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-options| &gt; ]]|</td>
@@ -9559,7 +9559,7 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr size="6">
 <div id="commit-options"></div>
-<div id="SEC126"></div>
+<div id="commit-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| &gt; ]]|</td>
@@ -9635,10 +9635,10 @@ invoking an editor.
 
 <hr size="6">
 <div id="commit-examples"></div>
-<div id="SEC127"></div>
+<div id="commit-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC128| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#Committing-to-a-branch| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -9656,10 +9656,10 @@ invoking an editor.
 
 
 <hr size="6">
-<div id="SEC128"></div>
+<div id="Committing-to-a-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC129| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -9700,9 +9700,9 @@ $ cvs commit
 sticky.
 </p>
 <hr size="6">
-<div id="SEC129"></div>
+<div id="Creating-the-branch-after-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC128| &lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
@@ -9761,9 +9761,9 @@ would simply do
 
 <hr size="6">
 <div id="diff"></div>
-<div id="SEC130"></div>
+<div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC129| &lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
@@ -9806,7 +9806,7 @@ under them will be compared.
 </nowiki></pre>
 <hr size="6">
 <div id="diff-options"></div>
-<div id="SEC131"></div>
+<div id="diff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-group-formats| &gt; ]]|</td>
@@ -10146,7 +10146,7 @@ context.
 </nowiki></pre>
 <hr size="6">
 <div id="Line-group-formats"></div>
-<div id="SEC132"></div>
+<div id="Line-group-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-formats| &gt; ]]|</td>
@@ -10349,7 +10349,7 @@ otherwise.
 
 <hr size="6">
 <div id="Line-formats"></div>
-<div id="SEC133"></div>
+<div id="Line-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-examples| &gt; ]]|</td>
@@ -10481,7 +10481,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr size="6">
 <div id="diff-examples"></div>
-<div id="SEC134"></div>
+<div id="diff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| &gt; ]]|</td>
@@ -10532,7 +10532,7 @@ not yet been committed will be printed.
 
 <hr size="6">
 <div id="export"></div>
-<div id="SEC135"></div>
+<div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export-options| &gt; ]]|</td>
@@ -10585,7 +10585,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="export-options"></div>
-<div id="SEC136"></div>
+<div id="export-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| &gt; ]]|</td>
@@ -10660,7 +10660,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 
 <hr size="6">
 <div id="history"></div>
-<div id="SEC137"></div>
+<div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-options| &gt; ]]|</td>
@@ -10705,7 +10705,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </nowiki></pre>
 <hr size="6">
 <div id="history-options"></div>
-<div id="SEC138"></div>
+<div id="history-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| &gt; ]]|</td>
@@ -10892,7 +10892,7 @@ time zone instead of UTC.
 
 <hr size="6">
 <div id="import"></div>
-<div id="SEC139"></div>
+<div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-options| &gt; ]]|</td>
@@ -10979,7 +10979,7 @@ directory (see section [[#Getting-the-source|Getting the source]]).
 </nowiki></pre>
 <hr size="6">
 <div id="import-options"></div>
-<div id="SEC140"></div>
+<div id="import-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-output| &gt; ]]|</td>
@@ -11046,7 +11046,7 @@ file. See section [[#Wrappers|The cvswrappers file]].
 
 <hr size="6">
 <div id="import-output"></div>
-<div id="SEC141"></div>
+<div id="import-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-examples| &gt; ]]|</td>
@@ -11102,7 +11102,7 @@ see section [[#modules|The modules file]].)
 
 <hr size="6">
 <div id="import-examples"></div>
-<div id="SEC142"></div>
+<div id="import-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| &gt; ]]|</td>
@@ -11125,7 +11125,7 @@ see section [[#modules|The modules file]].)
 </p>
 <hr size="6">
 <div id="log"></div>
-<div id="SEC143"></div>
+<div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-options| &gt; ]]|</td>
@@ -11179,7 +11179,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 </nowiki></pre>
 <hr size="6">
 <div id="log-options"></div>
-<div id="SEC144"></div>
+<div id="log-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-examples| &gt; ]]|</td>
@@ -11353,7 +11353,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="log-examples"></div>
-<div id="SEC145"></div>
+<div id="log-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| &gt; ]]|</td>
@@ -11376,7 +11376,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="rdiff"></div>
-<div id="SEC146"></div>
+<div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-options| &gt; ]]|</td>
@@ -11432,7 +11432,7 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr size="6">
 <div id="rdiff-options"></div>
-<div id="SEC147"></div>
+<div id="rdiff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-examples| &gt; ]]|</td>
@@ -11519,7 +11519,7 @@ way that <small>RCS</small> version 5 does.
 
 <hr size="6">
 <div id="rdiff-examples"></div>
-<div id="SEC148"></div>
+<div id="rdiff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| &gt; ]]|</td>
@@ -11562,7 +11562,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr size="6">
 <div id="release"></div>
-<div id="SEC149"></div>
+<div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-options| &gt; ]]|</td>
@@ -11617,7 +11617,7 @@ history log.
 </nowiki></pre>
 <hr size="6">
 <div id="release-options"></div>
-<div id="SEC150"></div>
+<div id="release-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-output| &gt; ]]|</td>
@@ -11656,7 +11656,7 @@ if it is non-empty!</strong>
 
 <hr size="6">
 <div id="release-output"></div>
-<div id="SEC151"></div>
+<div id="release-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-examples| &gt; ]]|</td>
@@ -11718,7 +11718,7 @@ sources, this file will be lost.
 
 <hr size="6">
 <div id="release-examples"></div>
-<div id="SEC152"></div>
+<div id="release-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| &gt; ]]|</td>
@@ -11750,7 +11750,7 @@ $
 
 <hr size="6">
 <div id="update"></div>
-<div id="SEC153"></div>
+<div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-options| &gt; ]]|</td>
@@ -11796,7 +11796,7 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr size="6">
 <div id="update-options"></div>
-<div id="SEC154"></div>
+<div id="update-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-output| &gt; ]]|</td>
@@ -11948,7 +11948,7 @@ date.  An optional date is specified by adding a colon
 
 <hr size="6">
 <div id="update-output"></div>
-<div id="SEC155"></div>
+<div id="update-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Invoking-CVS| &gt; ]]|</td>
@@ -12048,7 +12048,7 @@ see section [[#cvsignore|Ignoring files via cvsignore]]).
 
 <hr size="6">
 <div id="Invoking-CVS"></div>
-<div id="SEC156"></div>
+<div id="Quick-reference-to-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| &gt; ]]|</td>
@@ -13132,7 +13132,7 @@ is remote, display both the client and server versions.
 
 <hr size="6">
 <div id="Administrative-files"></div>
-<div id="SEC157"></div>
+<div id="Reference-manual-for-Administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Invoking-CVS| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
@@ -13174,7 +13174,7 @@ file, which defines the modules inside the repository.
 </nowiki></pre>
 <hr size="6">
 <div id="modules"></div>
-<div id="SEC158"></div>
+<div id="The-modules-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
@@ -13226,7 +13226,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="Alias-modules"></div>
-<div id="SEC159"></div>
+<div id="Alias-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
@@ -13284,7 +13284,7 @@ U first-dir/sdir/sfile
 
 <hr size="6">
 <div id="Regular-modules"></div>
-<div id="SEC160"></div>
+<div id="Regular-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
@@ -13355,7 +13355,7 @@ $
 
 <hr size="6">
 <div id="Ampersand-modules"></div>
-<div id="SEC161"></div>
+<div id="Ampersand-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
@@ -13421,7 +13421,7 @@ a future release of <small>CVS</small>.
 
 <hr size="6">
 <div id="Excluding-directories"></div>
-<div id="SEC162"></div>
+<div id="Excluding-directories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
@@ -13455,7 +13455,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="Module-options"></div>
-<div id="SEC163"></div>
+<div id="Module-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
@@ -13534,7 +13534,7 @@ that taginfo is a better solution (see section [[#user_002ddefined-logging|User-
 
 <hr size="6">
 <div id="Module-program-options"></div>
-<div id="SEC164"></div>
+<div id="How-the-modules-file-_0060_0060program-options_0027_0027-programs-are-run"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
@@ -13571,7 +13571,7 @@ completed.
 
 <hr size="6">
 <div id="Wrappers"></div>
-<div id="SEC165"></div>
+<div id="The-cvswrappers-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
@@ -13641,7 +13641,7 @@ directory, treating files whose name ends in
 
 <hr size="6">
 <div id="commit-files"></div>
-<div id="SEC166"></div>
+<div id="The-commit-support-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
@@ -13714,7 +13714,7 @@ imagination is the limit!
 </nowiki></pre>
 <hr size="6">
 <div id="syntax"></div>
-<div id="SEC167"></div>
+<div id="The-common-syntax"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
@@ -13766,7 +13766,7 @@ is used as a file name or command-line as appropriate.
 
 <hr size="6">
 <div id="commitinfo"></div>
-<div id="SEC168"></div>
+<div id="Commitinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
@@ -13840,7 +13840,7 @@ to the command.
 
 <hr size="6">
 <div id="verifymsg"></div>
-<div id="SEC169"></div>
+<div id="Verifying-log-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
@@ -13993,7 +13993,7 @@ fi
 
 <hr size="6">
 <div id="editinfo"></div>
-<div id="SEC170"></div>
+<div id="Editinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
@@ -14069,7 +14069,7 @@ There is no good workaround for this; use
 </nowiki></pre>
 <hr size="6">
 <div id="editinfo-example"></div>
-<div id="SEC171"></div>
+<div id="Editinfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
@@ -14135,7 +14135,7 @@ done
 
 <hr size="6">
 <div id="loginfo"></div>
-<div id="SEC172"></div>
+<div id="Loginfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
@@ -14231,7 +14231,7 @@ name of the repository will be generated.
 </nowiki></pre>
 <hr size="6">
 <div id="loginfo-example"></div>
-<div id="SEC173"></div>
+<div id="Loginfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
@@ -14276,7 +14276,7 @@ like this:
 
 <hr size="6">
 <div id="Keeping-a-checked-out-copy"></div>
-<div id="SEC174"></div>
+<div id="Keeping-a-checked-out-copy-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
@@ -14320,7 +14320,7 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
 <hr size="6">
 <div id="rcsinfo"></div>
-<div id="SEC175"></div>
+<div id="Rcsinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
@@ -14379,7 +14379,7 @@ be updated from the server.
 </p>
 <hr size="6">
 <div id="cvsignore"></div>
-<div id="SEC176"></div>
+<div id="Ignoring-files-via-cvsignore"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
@@ -14489,7 +14489,7 @@ way to specify comments.
 </p>
 <hr size="6">
 <div id="checkoutlist"></div>
-<div id="SEC177"></div>
+<div id="The-checkoutlist-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
@@ -14549,7 +14549,7 @@ more general context than the one provided by
 </p>
 <hr size="6">
 <div id="history-file"></div>
-<div id="SEC178"></div>
+<div id="The-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
@@ -14583,7 +14583,7 @@ format changes with future releases of <small>CVS</small>.
 </p>
 <hr size="6">
 <div id="Variables"></div>
-<div id="SEC179"></div>
+<div id="Expansions-in-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#config| &gt; ]]|</td>
@@ -14729,7 +14729,7 @@ Do not confuse this with the internal variable of the same name.
 
 <hr size="6">
 <div id="config"></div>
-<div id="SEC180"></div>
+<div id="The-CVSROOT_002fconfig-configuration-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Environment-variables| &gt; ]]|</td>
@@ -14885,7 +14885,7 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 
 <hr size="6">
 <div id="Environment-variables"></div>
-<div id="SEC181"></div>
+<div id="All-environment-variables-which-affect-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#config| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Compatibility| &gt; ]]|</td>
@@ -15120,7 +15120,7 @@ files.
 
 <hr size="6">
 <div id="Compatibility"></div>
-<div id="SEC182"></div>
+<div id="Compatibility-between-CVS-Versions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Environment-variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| &gt; ]]|</td>
@@ -15161,7 +15161,7 @@ advantage of new features and bugfixes, however.
 
 <hr size="6">
 <div id="Troubleshooting"></div>
-<div id="SEC183"></div>
+<div id="Troubleshooting-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Error-messages| &gt; ]]|</td>
@@ -15194,7 +15194,7 @@ mentioned there.
 
 <hr size="6">
 <div id="Error-messages"></div>
-<div id="SEC184"></div>
+<div id="Partial-list-of-error-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connection| &gt; ]]|</td>
@@ -15607,7 +15607,7 @@ exit 0
 
 <hr size="6">
 <div id="Connection"></div>
-<div id="SEC185"></div>
+<div id="Trouble-making-a-connection-to-a-CVS-server"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Other-problems| &gt; ]]|</td>
@@ -15756,7 +15756,7 @@ others allow you to set the limit for each service separately.)
 
 <hr size="6">
 <div id="Other-problems"></div>
-<div id="SEC186"></div>
+<div id="Other-common-problems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Credits| &gt; ]]|</td>
@@ -15801,7 +15801,7 @@ programs.
 
 <hr size="6">
 <div id="Credits"></div>
-<div id="SEC187"></div>
+<div id="Credits-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Other-problems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#BUGS| &gt; ]]|</td>
@@ -15860,7 +15860,7 @@ distribution.
 </p>
 <hr size="6">
 <div id="BUGS"></div>
-<div id="SEC188"></div>
+<div id="Dealing-with-bugs-in-CVS-or-this-manual"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Credits| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Index| &gt; ]]|</td>
@@ -15978,7 +15978,7 @@ comprehensive, detailed list of known bugs.
 </p>
 <hr size="6">
 <div id="Index"></div>
-<div id="SEC189"></div>
+<div id="Index-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#BUGS| &lt; ]]|</td>
 <td valign="middle" align="left">[ &gt; ]</td>
@@ -15998,48 +15998,48 @@ comprehensive, detailed list of known bugs.
 == Index ==
 
 <table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
-<td>[[#SEC189_0|<b>!</b>]]</td>
-<td>[[#SEC189_1|<b>#</b>]]</td>
-<td>[[#SEC189_2|<b>&amp;</b>]]</td>
-<td>[[#SEC189_3|<b>-</b>]]</td>
-<td>[[#SEC189_4|<b>.</b>]]</td>
-<td>[[#SEC189_5|<b>/</b>]]</td>
-<td>[[#SEC189_6|<b>:</b>]]</td>
-<td>[[#SEC189_7|<b>&lt;</b>]]</td>
-<td>[[#SEC189_8|<b>=</b>]]</td>
-<td>[[#SEC189_9|<b>&gt;</b>]]</td>
-<td>[[#SEC189_10|<b>_</b>]]</td>
-<td>[[#SEC189_11|<b>A</b>]]</td>
-<td>[[#SEC189_12|<b>B</b>]]</td>
-<td>[[#SEC189_13|<b>C</b>]]</td>
-<td>[[#SEC189_14|<b>D</b>]]</td>
-<td>[[#SEC189_15|<b>E</b>]]</td>
-<td>[[#SEC189_16|<b>F</b>]]</td>
-<td>[[#SEC189_17|<b>G</b>]]</td>
-<td>[[#SEC189_18|<b>H</b>]]</td>
-<td>[[#SEC189_19|<b>I</b>]]</td>
-<td>[[#SEC189_20|<b>J</b>]]</td>
-<td>[[#SEC189_21|<b>K</b>]]</td>
-<td>[[#SEC189_22|<b>L</b>]]</td>
-<td>[[#SEC189_23|<b>M</b>]]</td>
-<td>[[#SEC189_24|<b>N</b>]]</td>
-<td>[[#SEC189_25|<b>O</b>]]</td>
-<td>[[#SEC189_26|<b>P</b>]]</td>
-<td>[[#SEC189_27|<b>R</b>]]</td>
-<td>[[#SEC189_28|<b>S</b>]]</td>
-<td>[[#SEC189_29|<b>T</b>]]</td>
-<td>[[#SEC189_30|<b>U</b>]]</td>
-<td>[[#SEC189_31|<b>V</b>]]</td>
-<td>[[#SEC189_32|<b>W</b>]]</td>
-<td>[[#SEC189_33|<b>X</b>]]</td>
-<td>[[#SEC189_34|<b>Z</b>]]</td>
+<td>[[#Index-1_cp_symbol-1|<b>!</b>]]</td>
+<td>[[#Index-1_cp_symbol-2|<b>#</b>]]</td>
+<td>[[#Index-1_cp_symbol-3|<b>&amp;</b>]]</td>
+<td>[[#Index-1_cp_symbol-4|<b>-</b>]]</td>
+<td>[[#Index-1_cp_symbol-5|<b>.</b>]]</td>
+<td>[[#Index-1_cp_symbol-6|<b>/</b>]]</td>
+<td>[[#Index-1_cp_symbol-7|<b>:</b>]]</td>
+<td>[[#Index-1_cp_symbol-8|<b>&lt;</b>]]</td>
+<td>[[#Index-1_cp_symbol-9|<b>=</b>]]</td>
+<td>[[#Index-1_cp_symbol-10|<b>&gt;</b>]]</td>
+<td>[[#Index-1_cp_symbol-11|<b>_</b>]]</td>
+<td>[[#Index-1_cp_letter-A|<b>A</b>]]</td>
+<td>[[#Index-1_cp_letter-B|<b>B</b>]]</td>
+<td>[[#Index-1_cp_letter-C|<b>C</b>]]</td>
+<td>[[#Index-1_cp_letter-D|<b>D</b>]]</td>
+<td>[[#Index-1_cp_letter-E|<b>E</b>]]</td>
+<td>[[#Index-1_cp_letter-F|<b>F</b>]]</td>
+<td>[[#Index-1_cp_letter-G|<b>G</b>]]</td>
+<td>[[#Index-1_cp_letter-H|<b>H</b>]]</td>
+<td>[[#Index-1_cp_letter-I|<b>I</b>]]</td>
+<td>[[#Index-1_cp_letter-J|<b>J</b>]]</td>
+<td>[[#Index-1_cp_letter-K|<b>K</b>]]</td>
+<td>[[#Index-1_cp_letter-L|<b>L</b>]]</td>
+<td>[[#Index-1_cp_letter-M|<b>M</b>]]</td>
+<td>[[#Index-1_cp_letter-N|<b>N</b>]]</td>
+<td>[[#Index-1_cp_letter-O|<b>O</b>]]</td>
+<td>[[#Index-1_cp_letter-P|<b>P</b>]]</td>
+<td>[[#Index-1_cp_letter-R|<b>R</b>]]</td>
+<td>[[#Index-1_cp_letter-S|<b>S</b>]]</td>
+<td>[[#Index-1_cp_letter-T|<b>T</b>]]</td>
+<td>[[#Index-1_cp_letter-U|<b>U</b>]]</td>
+<td>[[#Index-1_cp_letter-V|<b>V</b>]]</td>
+<td>[[#Index-1_cp_letter-W|<b>W</b>]]</td>
+<td>[[#Index-1_cp_letter-X|<b>X</b>]]</td>
+<td>[[#Index-1_cp_letter-Z|<b>Z</b>]]</td>
 <table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_0"></div>!</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-1"></div>!</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Excluding-directories|!, in modules file]]</td><td valign="top">[[#Excluding-directories|Excluding directories]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_1"></div>#</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-2"></div>#</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_0023cvs_002elock_002c-removing|#cvs.lock, removing]]</td><td valign="top">[[#Concurrency|Several developers simultaneously attempting to run CVS]]</td></tr>
 <tr><td></td><td valign="top">[[#Locks|#cvs.lock, technical details]]</td><td valign="top">[[#Locks|CVS locks in the repository]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0023cvs_002erfl_002c-and-backups|#cvs.rfl, and backups]]</td><td valign="top">[[#Backing-up|Backing up a repository]]</td></tr>
@@ -16049,10 +16049,10 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-_0023cvs_002ewfl_002c-removing|#cvs.wfl, removing]]</td><td valign="top">[[#Concurrency|Several developers simultaneously attempting to run CVS]]</td></tr>
 <tr><td></td><td valign="top">[[#Locks|#cvs.wfl, technical details]]</td><td valign="top">[[#Locks|CVS locks in the repository]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_2"></div>&amp;</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-3"></div>&amp;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Ampersand-modules|&amp;, in modules file]]</td><td valign="top">[[#Ampersand-modules|Ampersand modules]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_3"></div>-</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-4"></div>-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Alias-modules|-a, in modules file]]</td><td valign="top">[[#Alias-modules|Alias modules]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002dd_002c-in-modules-file|-d, in modules file]]</td><td valign="top">[[#Module-options|Module options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002de_002c-in-modules-file|-e, in modules file]]</td><td valign="top">[[#Module-options|Module options]]</td></tr>
@@ -16067,7 +16067,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-_002dt_002c-in-modules-file|-t, in modules file]]</td><td valign="top">[[#Module-options|Module options]]</td></tr>
 <tr><td></td><td valign="top">[[#Module-program-options|-t, in modules file]]</td><td valign="top">[[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_4"></div>.</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-5"></div>.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_002e_0023-files|.# files]]</td><td valign="top">[[#update-output|update output]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002ebashrc_002c-setting-CVSROOT-in|.bashrc, setting CVSROOT in]]</td><td valign="top">[[#Specifying-a-repository|Telling CVS where your repository is]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002ecshrc_002c-setting-CVSROOT-in|.cshrc, setting CVSROOT in]]</td><td valign="top">[[#Specifying-a-repository|Telling CVS where your repository is]]</td></tr>
@@ -16075,10 +16075,10 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-_002eprofile_002c-setting-CVSROOT-in|.profile, setting CVSROOT in]]</td><td valign="top">[[#Specifying-a-repository|Telling CVS where your repository is]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002etcshrc_002c-setting-CVSROOT-in|.tcshrc, setting CVSROOT in]]</td><td valign="top">[[#Specifying-a-repository|Telling CVS where your repository is]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_5"></div>/</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-6"></div>/</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Repository|/usr/local/cvsroot, as example repository]]</td><td valign="top">[[#Repository|The Repository]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_6"></div>:</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-7"></div>:</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_003aext_003a_002c-setting-up|:ext:, setting up]]</td><td valign="top">[[#Connecting-via-rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_003aext_003a_002c-troubleshooting|:ext:, troubleshooting]]</td><td valign="top">[[#Connection|Trouble making a connection to a CVS server]]</td></tr>
 <tr><td></td><td valign="top">[[#Connecting-via-fork|:fork:, setting up]]</td><td valign="top">[[#Connecting-via-fork|Connecting with fork]]</td></tr>
@@ -16090,19 +16090,19 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-_003aserver_003a_002c-setting-up|:server:, setting up]]</td><td valign="top">[[#Connecting-via-rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_003aserver_003a_002c-troubleshooting|:server:, troubleshooting]]</td><td valign="top">[[#Connection|Trouble making a connection to a CVS server]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_7"></div>&lt;</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-8"></div>&lt;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_003c_003c_003c_003c_003c_003c_003c|&lt;&lt;&lt;&lt;&lt;&lt;&lt;]]</td><td valign="top">[[#Conflicts-example|Conflicts example]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_8"></div>=</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-9"></div>=</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_003d_003d_003d_003d_003d_003d_003d|=======]]</td><td valign="top">[[#Conflicts-example|Conflicts example]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_9"></div>&gt;</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-10"></div>&gt;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_003e_003e_003e_003e_003e_003e_003e|&gt;&gt;&gt;&gt;&gt;&gt;&gt;]]</td><td valign="top">[[#Conflicts-example|Conflicts example]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_10"></div>_</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_symbol-11"></div>_</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-_005f_005f-files-_0028VMS_0029|__ files (VMS)]]</td><td valign="top">[[#update-output|update output]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_11"></div>A</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-A"></div>A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Abandoning-work|Abandoning work]]</td><td valign="top">[[#Editing-files|How to edit a file which is being watched]]</td></tr>
 <tr><td></td><td valign="top">[[#Accessing-branches|Access a branch]]</td><td valign="top">[[#Accessing-branches|Accessing branches]]</td></tr>
 <tr><td></td><td valign="top">[[#index-add-_0028subcommand_0029|add (subcommand)]]</td><td valign="top">[[#Adding-files|Adding files to a directory]]</td></tr>
@@ -16111,7 +16111,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#admin|Admin (subcommand)]]</td><td valign="top">[[#admin|admin&mdash;Administration]]</td></tr>
 <tr><td></td><td valign="top">[[#Intro-administrative-files|Administrative files (intro)]]</td><td valign="top">[[#Intro-administrative-files|The administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#Administrative-files|Administrative files (reference)]]</td><td valign="top">[[#Administrative-files|Reference manual for Administrative files]]</td></tr>
-<tr><td></td><td valign="top">[[#SEC21|Administrative files, editing them]]</td><td valign="top">[[#SEC21|Editing administrative files]]</td></tr>
+<tr><td></td><td valign="top">[[#Editing-administrative-files|Administrative files, editing them]]</td><td valign="top">[[#Editing-administrative-files|Editing administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#Alias-modules|Alias modules]]</td><td valign="top">[[#Alias-modules|Alias modules]]</td></tr>
 <tr><td></td><td valign="top">[[#index-ALL-in-commitinfo|ALL in commitinfo]]</td><td valign="top">[[#commitinfo|Commitinfo]]</td></tr>
 <tr><td></td><td valign="top">[[#Ampersand-modules|Ampersand modules]]</td><td valign="top">[[#Ampersand-modules|Ampersand modules]]</td></tr>
@@ -16125,7 +16125,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-Automatically-ignored-files|Automatically ignored files]]</td><td valign="top">[[#cvsignore|Ignoring files via cvsignore]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Avoiding-editor-invocation|Avoiding editor invocation]]</td><td valign="top">[[#Common-options|Common command options]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_12"></div>B</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-B"></div>B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Backing-up|Backing up, repository]]</td><td valign="top">[[#Backing-up|Backing up a repository]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Base-directory_002c-in-CVS-directory|Base directory, in CVS directory]]</td><td valign="top">[[#Working-directory-storage|How data is stored in the working directory]]</td></tr>
 <tr><td></td><td valign="top">[[#index-BASE_002c-as-reserved-tag-name|BASE, as reserved tag name]]</td><td valign="top">[[#Tags|Tags&ndash;Symbolic revisions]]</td></tr>
@@ -16154,7 +16154,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-Bugs_002c-reporting|Bugs, reporting]]</td><td valign="top">[[#BUGS|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[#Builds|Builds]]</td><td valign="top">[[#Builds|How your build system interacts with CVS]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_13"></div>C</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-C"></div>C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Branching-and-merging|Changes, copying between branches]]</td><td valign="top">[[#Branching-and-merging|Branching and merging]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Changing-a-log-message|Changing a log message]]</td><td valign="top">[[#admin-options|admin options]]</td></tr>
 <tr><td></td><td valign="top">[[#Accessing-branches|Check out a branch]]</td><td valign="top">[[#Accessing-branches|Accessing branches]]</td></tr>
@@ -16261,7 +16261,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Wrappers|CVSWRAPPERS, environment variable]]</td><td valign="top">[[#Wrappers|The cvswrappers file]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVSWRAPPERS_002c-environment-variable|CVSWRAPPERS, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_14"></div>D</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-D"></div>D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Date-keyword|Date keyword]]</td><td valign="top">[[#Keyword-list|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Dates|Dates]]</td><td valign="top">[[#Common-options|Common command options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Dead-state|Dead state]]</td><td valign="top">[[#Attic|The attic]]</td></tr>
@@ -16289,10 +16289,10 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#loginfo|Distributing log messages]]</td><td valign="top">[[#loginfo|Loginfo]]</td></tr>
 <tr><td></td><td valign="top">[[#Conflicts-example|driver.c (merge example)]]</td><td valign="top">[[#Conflicts-example|Conflicts example]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_15"></div>E</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-E"></div>E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-edit-_0028subcommand_0029|edit (subcommand)]]</td><td valign="top">[[#Editing-files|How to edit a file which is being watched]]</td></tr>
 <tr><td></td><td valign="top">[[#editinfo|editinfo (admin file)]]</td><td valign="top">[[#editinfo|Editinfo]]</td></tr>
-<tr><td></td><td valign="top">[[#SEC21|Editing administrative files]]</td><td valign="top">[[#SEC21|Editing administrative files]]</td></tr>
+<tr><td></td><td valign="top">[[#Editing-administrative-files|Editing administrative files]]</td><td valign="top">[[#Editing-administrative-files|Editing administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#Defining-the-module|Editing the modules file]]</td><td valign="top">[[#Defining-the-module|Defining the module]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Editor_002c-avoiding-invocation-of|Editor, avoiding invocation of]]</td><td valign="top">[[#Common-options|Common command options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-EDITOR_002c-environment-variable|EDITOR, environment variable]]</td><td valign="top">[[#Committing-your-changes|Committing your changes]]</td></tr>
@@ -16323,7 +16323,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#export|export (subcommand)]]</td><td valign="top">[[#export|export&mdash;Export sources from CVS, similar to checkout]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Export-program|Export program]]</td><td valign="top">[[#Module-options|Module options]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_16"></div>F</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-F"></div>F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Getting-the-source|Fetching source]]</td><td valign="top">[[#Getting-the-source|Getting the source]]</td></tr>
 <tr><td></td><td valign="top">[[#index-File-had-conflicts-on-merge|File had conflicts on merge]]</td><td valign="top">[[#File-status|File status]]</td></tr>
 <tr><td></td><td valign="top">[[#Multiple-developers|File locking]]</td><td valign="top">[[#Multiple-developers|Multiple developers]]</td></tr>
@@ -16338,7 +16338,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#rcsinfo|Form for log message]]</td><td valign="top">[[#rcsinfo|Rcsinfo]]</td></tr>
 <tr><td></td><td valign="top">[[#Structure|Format of CVS commands]]</td><td valign="top">[[#Structure|Overall structure of CVS commands]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_17"></div>G</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-G"></div>G</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#A-sample-session|Getting started]]</td><td valign="top">[[#A-sample-session|A sample session]]</td></tr>
 <tr><td></td><td valign="top">[[#Getting-the-source|Getting the source]]</td><td valign="top">[[#Getting-the-source|Getting the source]]</td></tr>
 <tr><td></td><td valign="top">[[#cvsignore|Global cvsignore]]</td><td valign="top">[[#cvsignore|Ignoring files via cvsignore]]</td></tr>
@@ -16350,7 +16350,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-Gzip|Gzip]]</td><td valign="top">[[#Global-options|Global options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Gzip-1|Gzip]]</td><td valign="top">[[#Invoking-CVS|Quick reference to CVS commands]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_18"></div>H</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-H"></div>H</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Special-Files|Hard links]]</td><td valign="top">[[#Special-Files|Special Files]]</td></tr>
 <tr><td></td><td valign="top">[[#index-HEAD_002c-as-reserved-tag-name|HEAD, as reserved tag name]]</td><td valign="top">[[#Tags|Tags&ndash;Symbolic revisions]]</td></tr>
 <tr><td></td><td valign="top">[[#index-HEAD_002c-special-tag|HEAD, special tag]]</td><td valign="top">[[#Common-options|Common command options]]</td></tr>
@@ -16364,7 +16364,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-HOMEDRIVE_002c-environment-variable|HOMEDRIVE, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[#index-HOMEPATH_002c-environment-variable|HOMEPATH, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_19"></div>I</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-I"></div>I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Id-keyword|Id keyword]]</td><td valign="top">[[#Keyword-list|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Ident-_0028shell-command_0029|Ident (shell command)]]</td><td valign="top">[[#Using-keywords|Using keywords]]</td></tr>
 <tr><td></td><td valign="top">[[#Accessing-branches|Identifying a branch]]</td><td valign="top">[[#Accessing-branches|Accessing branches]]</td></tr>
@@ -16386,10 +16386,10 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Invoking-CVS|Invoking CVS]]</td><td valign="top">[[#Invoking-CVS|Quick reference to CVS commands]]</td></tr>
 <tr><td></td><td valign="top">[[#History-browsing|Isolation]]</td><td valign="top">[[#History-browsing|History browsing]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_20"></div>J</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-J"></div>J</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Join|Join]]</td><td valign="top">[[#Merging-a-branch|Merging an entire branch]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_21"></div>K</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-K"></div>K</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Keeping-a-checked-out-copy|Keeping a checked out copy]]</td><td valign="top">[[#Keeping-a-checked-out-copy|Keeping a checked out copy]]</td></tr>
 <tr><td></td><td valign="top">[[#GSSAPI-authenticated|Kerberos, using :gserver:]]</td><td valign="top">[[#GSSAPI-authenticated|Direct connection with GSSAPI]]</td></tr>
 <tr><td></td><td valign="top">[[#Kerberos-authenticated|Kerberos, using :kserver:]]</td><td valign="top">[[#Kerberos-authenticated|Direct connection with kerberos]]</td></tr>
@@ -16405,7 +16405,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Remote-repositories|kserver (client/server connection method), port specification]]</td><td valign="top">[[#Remote-repositories|Remote repositories]]</td></tr>
 <tr><td></td><td valign="top">[[#index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification|kserver (client/server connection method), port specification]]</td><td valign="top">[[#Password-authentication-server|Setting up the server for password authentication]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_22"></div>L</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-L"></div>L</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Repository|Layout of repository]]</td><td valign="top">[[#Repository|The Repository]]</td></tr>
 <tr><td></td><td valign="top">[[#Global-options|Left-hand options]]</td><td valign="top">[[#Global-options|Global options]]</td></tr>
 <tr><td></td><td valign="top">[[#Revision-numbers|Linear development]]</td><td valign="top">[[#Revision-numbers|Revision numbers]]</td></tr>
@@ -16436,7 +16436,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-LOGNAME_002c-environment-variable|LOGNAME, environment variable]]</td><td valign="top">[[#Variables|Expansions in administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Logout-_0028subcommand_0029|Logout (subcommand)]]</td><td valign="top">[[#Password-authentication-client|Using the client with password authentication]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_23"></div>M</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-M"></div>M</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Informing-others|Mail, automatic mail on commit]]</td><td valign="top">[[#Informing-others|Informing others about commits]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Mailing-list|Mailing list]]</td><td valign="top">[[#What-is-CVS_003f|What is CVS?]]</td></tr>
 <tr><td></td><td valign="top">[[#loginfo|Mailing log messages]]</td><td valign="top">[[#loginfo|Loginfo]]</td></tr>
@@ -16471,7 +16471,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Multiple-developers|Multiple developers]]</td><td valign="top">[[#Multiple-developers|Multiple developers]]</td></tr>
 <tr><td></td><td valign="top">[[#Multiple-repositories|Multiple repositories]]</td><td valign="top">[[#Multiple-repositories|Multiple repositories]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_24"></div>N</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-N"></div>N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Name-keyword|Name keyword]]</td><td valign="top">[[#Keyword-list|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Name_002c-symbolic-_0028tag_0029|Name, symbolic (tag)]]</td><td valign="top">[[#Tags|Tags&ndash;Symbolic revisions]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Needs-Checkout|Needs Checkout]]</td><td valign="top">[[#File-status|File status]]</td></tr>
@@ -16485,7 +16485,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Branches-and-revisions|Number, branch]]</td><td valign="top">[[#Branches-and-revisions|Branches and revisions]]</td></tr>
 <tr><td></td><td valign="top">[[#Revision-numbers|Number, revision-]]</td><td valign="top">[[#Revision-numbers|Revision numbers]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_25"></div>O</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-O"></div>O</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#g_t_007e_002f_002ecvsrc|Option defaults]]</td><td valign="top">[[#g_t_007e_002f_002ecvsrc|Default options and the ~/.cvsrc file]]</td></tr>
 <tr><td></td><td valign="top">[[#Global-options|Options, global]]</td><td valign="top">[[#Global-options|Global options]]</td></tr>
 <tr><td></td><td valign="top">[[#Module-options|Options, in modules file]]</td><td valign="top">[[#Module-options|Module options]]</td></tr>
@@ -16499,7 +16499,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Overview|Overview]]</td><td valign="top">[[#Overview|Overview]]</td></tr>
 <tr><td></td><td valign="top">[[#Special-Files|Ownership, saving in CVS]]</td><td valign="top">[[#Special-Files|Special Files]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_26"></div>P</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-P"></div>P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Multiple-repositories|Parallel repositories]]</td><td valign="top">[[#Multiple-repositories|Multiple repositories]]</td></tr>
 <tr><td></td><td valign="top">[[#index-passwd-_0028admin-file_0029|passwd (admin file)]]</td><td valign="top">[[#Password-authentication-server|Setting up the server for password authentication]]</td></tr>
 <tr><td></td><td valign="top">[[#Password-authentication-client|Password client, using]]</td><td valign="top">[[#Password-authentication-client|Using the client with password authentication]]</td></tr>
@@ -16519,7 +16519,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-pserver-_0028subcommand_0029|pserver (subcommand)]]</td><td valign="top">[[#Password-authentication-server|Setting up the server for password authentication]]</td></tr>
 <tr><td></td><td valign="top">[[#index-PVCS_002c-importing-files-from|PVCS, importing files from]]</td><td valign="top">[[#From-other-version-control-systems|Creating Files From Other Version Control Systems]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_27"></div>R</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-R"></div>R</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-RCS-history-files|RCS history files]]</td><td valign="top">[[#Repository-files|Where files are stored within the repository]]</td></tr>
 <tr><td></td><td valign="top">[[#index-RCS-revision-numbers|RCS revision numbers]]</td><td valign="top">[[#Tags|Tags&ndash;Symbolic revisions]]</td></tr>
 <tr><td></td><td valign="top">[[#index-RCS_002c-importing-files-from|RCS, importing files from]]</td><td valign="top">[[#From-other-version-control-systems|Creating Files From Other Version Control Systems]]</td></tr>
@@ -16597,7 +16597,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Tagging-by-date_002ftag|rtag (subcommand)]]</td><td valign="top">[[#Tagging-by-date_002ftag|Specifying what to tag by date or revision]]</td></tr>
 <tr><td></td><td valign="top">[[#Creating-a-branch|rtag (subcommand), creating a branch using]]</td><td valign="top">[[#Creating-a-branch|Creating a branch]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_28"></div>S</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-S"></div>S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Saving-space|Saving space]]</td><td valign="top">[[#admin-options|admin options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-SCCS_002c-importing-files-from|SCCS, importing files from]]</td><td valign="top">[[#From-other-version-control-systems|Creating Files From Other Version Control Systems]]</td></tr>
 <tr><td></td><td valign="top">[[#File-permissions|Security, file permissions in repository]]</td><td valign="top">[[#File-permissions|File permissions]]</td></tr>
@@ -16636,7 +16636,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#syntax|Syntax of info files]]</td><td valign="top">[[#syntax|The common syntax]]</td></tr>
 <tr><td></td><td valign="top">[[#index-SystemAuth_002c-in-CVSROOT_002fconfig|SystemAuth, in CVSROOT/config]]</td><td valign="top">[[#config|The CVSROOT/config configuration file]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_29"></div>T</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-T"></div>T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Tagging-the-working-directory|tag (subcommand)]]</td><td valign="top">[[#Tagging-the-working-directory|Specifying what to tag from the working directory]]</td></tr>
 <tr><td></td><td valign="top">[[#Creating-a-branch|tag (subcommand), creating a branch using]]</td><td valign="top">[[#Creating-a-branch|Creating a branch]]</td></tr>
 <tr><td></td><td valign="top">[[#index-tag-_0028subcommand_0029_002c-introduction|tag (subcommand), introduction]]</td><td valign="top">[[#Tags|Tags&ndash;Symbolic revisions]]</td></tr>
@@ -16673,7 +16673,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#A-sample-session|Trivial Compiler (example)]]</td><td valign="top">[[#A-sample-session|A sample session]]</td></tr>
 <tr><td></td><td valign="top">[[#Repository|Typical repository]]</td><td valign="top">[[#Repository|The Repository]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_30"></div>U</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-U"></div>U</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Umask_002c-for-repository-files|Umask, for repository files]]</td><td valign="top">[[#File-permissions|File permissions]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Undoing-a-change|Undoing a change]]</td><td valign="top">[[#Merging-two-revisions|Merging differences between any two revisions]]</td></tr>
 <tr><td></td><td valign="top">[[#index-unedit-_0028subcommand_0029|unedit (subcommand)]]</td><td valign="top">[[#Editing-files|How to edit a file which is being watched]]</td></tr>
@@ -16693,7 +16693,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1|UserAdminOptions, in CVSROOT/config]]</td><td valign="top">[[#config|The CVSROOT/config configuration file]]</td></tr>
 <tr><td></td><td valign="top">[[#index-users-_0028admin-file_0029|users (admin file)]]</td><td valign="top">[[#Getting-Notified|Telling CVS to notify you]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_31"></div>V</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-V"></div>V</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#Variables|Variables]]</td><td valign="top">[[#Variables|Expansions in administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Vendor|Vendor]]</td><td valign="top">[[#Tracking-sources|Tracking third-party sources]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Vendor-branch|Vendor branch]]</td><td valign="top">[[#Tracking-sources|Tracking third-party sources]]</td></tr>
@@ -16708,7 +16708,7 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-VISUAL_002c-environment-variable-1|VISUAL, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[#index-VISUAL_002c-internal-variable|VISUAL, internal variable]]</td><td valign="top">[[#Variables|Expansions in administrative files]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_32"></div>W</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-W"></div>W</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-watch-add-_0028subcommand_0029|watch add (subcommand)]]</td><td valign="top">[[#Getting-Notified|Telling CVS to notify you]]</td></tr>
 <tr><td></td><td valign="top">[[#index-watch-off-_0028subcommand_0029|watch off (subcommand)]]</td><td valign="top">[[#Setting-a-watch|Telling CVS to watch certain files]]</td></tr>
 <tr><td></td><td valign="top">[[#index-watch-on-_0028subcommand_0029|watch on (subcommand)]]</td><td valign="top">[[#Setting-a-watch|Telling CVS to watch certain files]]</td></tr>
@@ -16729,51 +16729,51 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#Wrappers|Wrappers]]</td><td valign="top">[[#Wrappers|The cvswrappers file]]</td></tr>
 <tr><td></td><td valign="top">[[#Read_002donly-access|writers (admin file)]]</td><td valign="top">[[#Read_002donly-access|Read-only repository access]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_33"></div>X</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-X"></div>X</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Ximbiot|Ximbiot]]</td><td valign="top">[[#BUGS|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[#index-xinetd_002c-configuring-for-pserver|xinetd, configuring for pserver]]</td><td valign="top">[[#Password-authentication-server|Setting up the server for password authentication]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><div id="SEC189_34"></div>Z</th><td></td><td></td></tr>
+<tr><th><div id="Index-1_cp_letter-Z"></div>Z</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Zone_002c-time_002c-in-input|Zone, time, in input]]</td><td valign="top">[[#Common-options|Common command options]]</td></tr>
 <tr><td></td><td valign="top">[[#index-Zone_002c-time_002c-in-output|Zone, time, in output]]</td><td valign="top">[[#log|log&mdash;Print out log information for files]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
-<td>[[#SEC189_0|<b>!</b>]]</td>
-<td>[[#SEC189_1|<b>#</b>]]</td>
-<td>[[#SEC189_2|<b>&amp;</b>]]</td>
-<td>[[#SEC189_3|<b>-</b>]]</td>
-<td>[[#SEC189_4|<b>.</b>]]</td>
-<td>[[#SEC189_5|<b>/</b>]]</td>
-<td>[[#SEC189_6|<b>:</b>]]</td>
-<td>[[#SEC189_7|<b>&lt;</b>]]</td>
-<td>[[#SEC189_8|<b>=</b>]]</td>
-<td>[[#SEC189_9|<b>&gt;</b>]]</td>
-<td>[[#SEC189_10|<b>_</b>]]</td>
-<td>[[#SEC189_11|<b>A</b>]]</td>
-<td>[[#SEC189_12|<b>B</b>]]</td>
-<td>[[#SEC189_13|<b>C</b>]]</td>
-<td>[[#SEC189_14|<b>D</b>]]</td>
-<td>[[#SEC189_15|<b>E</b>]]</td>
-<td>[[#SEC189_16|<b>F</b>]]</td>
-<td>[[#SEC189_17|<b>G</b>]]</td>
-<td>[[#SEC189_18|<b>H</b>]]</td>
-<td>[[#SEC189_19|<b>I</b>]]</td>
-<td>[[#SEC189_20|<b>J</b>]]</td>
-<td>[[#SEC189_21|<b>K</b>]]</td>
-<td>[[#SEC189_22|<b>L</b>]]</td>
-<td>[[#SEC189_23|<b>M</b>]]</td>
-<td>[[#SEC189_24|<b>N</b>]]</td>
-<td>[[#SEC189_25|<b>O</b>]]</td>
-<td>[[#SEC189_26|<b>P</b>]]</td>
-<td>[[#SEC189_27|<b>R</b>]]</td>
-<td>[[#SEC189_28|<b>S</b>]]</td>
-<td>[[#SEC189_29|<b>T</b>]]</td>
-<td>[[#SEC189_30|<b>U</b>]]</td>
-<td>[[#SEC189_31|<b>V</b>]]</td>
-<td>[[#SEC189_32|<b>W</b>]]</td>
-<td>[[#SEC189_33|<b>X</b>]]</td>
-<td>[[#SEC189_34|<b>Z</b>]]</td>
+<td>[[#Index-1_cp_symbol-1|<b>!</b>]]</td>
+<td>[[#Index-1_cp_symbol-2|<b>#</b>]]</td>
+<td>[[#Index-1_cp_symbol-3|<b>&amp;</b>]]</td>
+<td>[[#Index-1_cp_symbol-4|<b>-</b>]]</td>
+<td>[[#Index-1_cp_symbol-5|<b>.</b>]]</td>
+<td>[[#Index-1_cp_symbol-6|<b>/</b>]]</td>
+<td>[[#Index-1_cp_symbol-7|<b>:</b>]]</td>
+<td>[[#Index-1_cp_symbol-8|<b>&lt;</b>]]</td>
+<td>[[#Index-1_cp_symbol-9|<b>=</b>]]</td>
+<td>[[#Index-1_cp_symbol-10|<b>&gt;</b>]]</td>
+<td>[[#Index-1_cp_symbol-11|<b>_</b>]]</td>
+<td>[[#Index-1_cp_letter-A|<b>A</b>]]</td>
+<td>[[#Index-1_cp_letter-B|<b>B</b>]]</td>
+<td>[[#Index-1_cp_letter-C|<b>C</b>]]</td>
+<td>[[#Index-1_cp_letter-D|<b>D</b>]]</td>
+<td>[[#Index-1_cp_letter-E|<b>E</b>]]</td>
+<td>[[#Index-1_cp_letter-F|<b>F</b>]]</td>
+<td>[[#Index-1_cp_letter-G|<b>G</b>]]</td>
+<td>[[#Index-1_cp_letter-H|<b>H</b>]]</td>
+<td>[[#Index-1_cp_letter-I|<b>I</b>]]</td>
+<td>[[#Index-1_cp_letter-J|<b>J</b>]]</td>
+<td>[[#Index-1_cp_letter-K|<b>K</b>]]</td>
+<td>[[#Index-1_cp_letter-L|<b>L</b>]]</td>
+<td>[[#Index-1_cp_letter-M|<b>M</b>]]</td>
+<td>[[#Index-1_cp_letter-N|<b>N</b>]]</td>
+<td>[[#Index-1_cp_letter-O|<b>O</b>]]</td>
+<td>[[#Index-1_cp_letter-P|<b>P</b>]]</td>
+<td>[[#Index-1_cp_letter-R|<b>R</b>]]</td>
+<td>[[#Index-1_cp_letter-S|<b>S</b>]]</td>
+<td>[[#Index-1_cp_letter-T|<b>T</b>]]</td>
+<td>[[#Index-1_cp_letter-U|<b>U</b>]]</td>
+<td>[[#Index-1_cp_letter-V|<b>V</b>]]</td>
+<td>[[#Index-1_cp_letter-W|<b>W</b>]]</td>
+<td>[[#Index-1_cp_letter-X|<b>X</b>]]</td>
+<td>[[#Index-1_cp_letter-Z|<b>Z</b>]]</td>
 
 
 
@@ -16818,7 +16818,7 @@ comprehensive, detailed list of known bugs.
     <li><div id="TOC19"></div>[[#Working-directory-storage|How data is stored in the working directory]]</li>
     <li><div id="TOC20"></div>[[#Intro-administrative-files|The administrative files]]
     <ul>
-      <li><div id="TOC21"></div>[[#SEC21|Editing administrative files]]</li>
+      <li><div id="TOC21"></div>[[#Editing-administrative-files|Editing administrative files]]</li>
     </ul></li>
     <li><div id="TOC22"></div>[[#Multiple-repositories|Multiple repositories]]</li>
     <li><div id="TOC23"></div>[[#Creating-a-repository|Creating a repository]]</li>
@@ -16964,8 +16964,8 @@ comprehensive, detailed list of known bugs.
       <li><div id="TOC126"></div>[[#commit-options|commit options]]</li>
       <li><div id="TOC127"></div>[[#commit-examples|commit examples]]
       <ul>
-        <li><div id="TOC128"></div>[[#SEC128|Committing to a branch]]</li>
-        <li><div id="TOC129"></div>[[#SEC129|Creating the branch after editing]]</li>
+        <li><div id="TOC128"></div>[[#Committing-to-a-branch|Committing to a branch]]</li>
+        <li><div id="TOC129"></div>[[#Creating-the-branch-after-editing|Creating the branch after editing]]</li>
       </ul>
 </li>
     </ul></li>

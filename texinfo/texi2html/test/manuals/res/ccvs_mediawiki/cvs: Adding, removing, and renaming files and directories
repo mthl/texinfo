@@ -1,5 +1,5 @@
 <div id="Adding-and-removing"></div>
-<div id="SEC66"></div>
+<div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
@@ -35,7 +35,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr size="6">
 <div id="Adding-files"></div>
-<div id="SEC67"></div>
+<div id="Adding-files-to-a-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
@@ -134,7 +134,7 @@ later merge the additions to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-files"></div>
-<div id="SEC68"></div>
+<div id="Removing-files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
@@ -265,7 +265,7 @@ later merge the removals to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-directories"></div>
-<div id="SEC69"></div>
+<div id="Removing-directories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
@@ -312,7 +312,7 @@ are checking out contains any files in that directory.
 </p>
 <hr size="6">
 <div id="Moving-files"></div>
-<div id="SEC70"></div>
+<div id="Moving-and-renaming-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
@@ -345,7 +345,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki></pre>
 <hr size="6">
 <div id="Outside"></div>
-<div id="SEC71"></div>
+<div id="The-Normal-way-to-Rename"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
@@ -391,7 +391,7 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
 <hr size="6">
 <div id="Inside"></div>
-<div id="SEC72"></div>
+<div id="Moving-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
@@ -447,7 +447,7 @@ commands while you move it.
 
 <hr size="6">
 <div id="Rename-by-copying"></div>
-<div id="SEC73"></div>
+<div id="Copying-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
@@ -513,7 +513,7 @@ You cannot easily see the history of the file across the rename.
 
 <hr size="6">
 <div id="Moving-directories"></div>
-<div id="SEC74"></div>
+<div id="Moving-and-renaming-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>

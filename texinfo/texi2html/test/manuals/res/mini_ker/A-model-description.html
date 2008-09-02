@@ -62,7 +62,7 @@ ul.toc {list-style: none}
 </ul></li>
 </ul>
 <a name="A-model-description"></a>
-<a name="SEC10"></a>
+<a name="Miniker-programming-illustrated"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Structure-of-the-code.html#Structure-of-the-code" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#A-note-about-mortran-and-cmz-directives" title="Next section in reading order"> &gt; </a>]</td>
@@ -110,7 +110,7 @@ different group.
 
 <hr size="2">
 <a name="A-note-about-mortran-and-cmz-directives"></a>
-<a name="SEC11"></a>
+<a name="All-you-need-to-know-about-mortran-and-cmz-directives"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#A-model-description" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Model-equation-and-parameters" title="Next section in reading order"> &gt; </a>]</td>
@@ -162,7 +162,7 @@ see next.
 
 <hr size="2">
 <a name="Model-equation-and-parameters"></a>
-<a name="SEC12"></a>
+<a name="Entering-model-equation-and-parameters"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#A-note-about-mortran-and-cmz-directives" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Setting-and-running-a-model.html#Setting-and-running-a-model" title="Next section in reading order"> &gt; </a>]</td>
@@ -229,7 +229,7 @@ set_eta
 5000;format('Lotka-Volterra par:',2F4.1);
 </pre></td></tr></table>
 
-<a name="HEAD1"></a>
+<a name="Variables-and-model-parameters"></a>
 <h4 class="subsubheading"> Variables and model parameters </h4>
 
 <p>The following variables are mandatory:
@@ -279,7 +279,7 @@ of &lsquo;<tt>zinit</tt>&rsquo;. The predator-prey code variable initializations
      modzprint = 1000;  
 </pre></td></tr></table>
 
-<a name="HEAD2"></a>
+<a name="Model-equations-1"></a>
 <h4 class="subsubheading"> Model equations </h4>
 <p><a name="Model-equations"></a>
 </p>
@@ -354,7 +354,7 @@ function, it is possible to specify the equation only with
 <p>In that case, the unnamed function will take the name of the defined
 variable preceded by the &lsquo;<samp>$</samp>&rsquo; sign: <code>$ff_dump</code>.
 </p>
-<a name="HEAD3"></a>
+<a name="Starting-points"></a>
 <h4 class="subsubheading"> Starting points </h4>
 
 <a name="index-starting-point"></a>
@@ -381,7 +381,7 @@ ensure convergence in the Newton algorithm used to solve the transfer implicit
 equation. 
 </p>
 
-<a name="HEAD4"></a>
+<a name="The-cell-and-transfer-arrays"></a>
 <h4 class="subsubheading"> The cell and transfer arrays </h4>
 
 <a name="index-eta_0028_002e_0029"></a>
@@ -402,7 +402,7 @@ explained later (see <a href="Setting-and-running-a-model.html#Simulation-and-ou
 <p>The number of cells is in the integer <code>np</code> variable, and the
 number of transfer is in the integer <code>mp</code> variable.
 </p>
-<a name="HEAD5"></a>
+<a name="title-file"></a>
 <h4 class="subsubheading"> title file </h4>
 
 <p><a name="Title-file"></a>

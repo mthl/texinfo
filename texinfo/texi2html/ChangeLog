@@ -1,3 +1,13 @@
+2008-09-02  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: section names and headings cross
+	ref are now human readable and constructed using the section name.
+	Better index summary letters and index page labels that also
+	ensures that there is no clash with node labels.
+	* texi2html.init: when split at node, output navigation heading 
+	even when SECTION_NAVIGATION is true, but never output navigation
+	footings.
+
 2008-08-31  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: only one @title should appear in

@@ -1,5 +1,5 @@
 <div id="CVS-commands"></div>
-<div id="SEC114"></div>
+<div id="Guide-to-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Structure| &gt; ]]|</td>
@@ -42,7 +42,7 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki></pre>
 <hr size="6">
 <div id="Structure"></div>
-<div id="SEC115"></div>
+<div id="Overall-structure-of-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Exit-status| &gt; ]]|</td>
@@ -105,7 +105,7 @@ the documentation instead.
 </p>
 <hr size="6">
 <div id="Exit-status"></div>
-<div id="SEC116"></div>
+<div id="CVS_0027s-exit-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &gt; ]]|</td>
@@ -145,7 +145,7 @@ other <small>CVS</small> commands.
 </p>
 <hr size="6">
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<div id="SEC117"></div>
+<div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Global-options| &gt; ]]|</td>
@@ -222,7 +222,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr size="6">
 <div id="Global-options"></div>
-<div id="SEC118"></div>
+<div id="Global-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Common-options| &gt; ]]|</td>
@@ -422,7 +422,7 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr size="6">
 <div id="Common-options"></div>
-<div id="SEC119"></div>
+<div id="Common-command-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| &gt; ]]|</td>
@@ -678,7 +678,7 @@ and <code>update</code>.
 
 <hr size="6">
 <div id="admin"></div>
-<div id="SEC120"></div>
+<div id="admin_002d_002d_002dAdministration"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin-options| &gt; ]]|</td>
@@ -735,7 +735,7 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr size="6">
 <div id="admin-options"></div>
-<div id="SEC121"></div>
+<div id="admin-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| &gt; ]]|</td>
@@ -1086,7 +1086,7 @@ this option has never done anything useful.
 
 <hr size="6">
 <div id="checkout"></div>
-<div id="SEC122"></div>
+<div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-options| &gt; ]]|</td>
@@ -1179,7 +1179,7 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr size="6">
 <div id="checkout-options"></div>
-<div id="SEC123"></div>
+<div id="checkout-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-examples| &gt; ]]|</td>
@@ -1341,7 +1341,7 @@ modules file to set the module status.
 
 <hr size="6">
 <div id="checkout-examples"></div>
-<div id="SEC124"></div>
+<div id="checkout-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| &gt; ]]|</td>
@@ -1373,7 +1373,7 @@ ago:
 
 <hr size="6">
 <div id="commit"></div>
-<div id="SEC125"></div>
+<div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-options| &gt; ]]|</td>
@@ -1443,7 +1443,7 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr size="6">
 <div id="commit-options"></div>
-<div id="SEC126"></div>
+<div id="commit-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| &gt; ]]|</td>
@@ -1519,10 +1519,10 @@ invoking an editor.
 
 <hr size="6">
 <div id="commit-examples"></div>
-<div id="SEC127"></div>
+<div id="commit-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC128| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#Committing-to-a-branch| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -1540,10 +1540,10 @@ invoking an editor.
 
 
 <hr size="6">
-<div id="SEC128"></div>
+<div id="Committing-to-a-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#SEC129| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -1584,9 +1584,9 @@ $ cvs commit
 sticky.
 </p>
 <hr size="6">
-<div id="SEC129"></div>
+<div id="Creating-the-branch-after-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC128| &lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
@@ -1645,9 +1645,9 @@ would simply do
 
 <hr size="6">
 <div id="diff"></div>
-<div id="SEC130"></div>
+<div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#SEC129| &lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
@@ -1690,7 +1690,7 @@ under them will be compared.
 </nowiki></pre>
 <hr size="6">
 <div id="diff-options"></div>
-<div id="SEC131"></div>
+<div id="diff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-group-formats| &gt; ]]|</td>
@@ -2030,7 +2030,7 @@ context.
 </nowiki></pre>
 <hr size="6">
 <div id="Line-group-formats"></div>
-<div id="SEC132"></div>
+<div id="Line-group-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-formats| &gt; ]]|</td>
@@ -2233,7 +2233,7 @@ otherwise.
 
 <hr size="6">
 <div id="Line-formats"></div>
-<div id="SEC133"></div>
+<div id="Line-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-examples| &gt; ]]|</td>
@@ -2365,7 +2365,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr size="6">
 <div id="diff-examples"></div>
-<div id="SEC134"></div>
+<div id="diff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| &gt; ]]|</td>
@@ -2416,7 +2416,7 @@ not yet been committed will be printed.
 
 <hr size="6">
 <div id="export"></div>
-<div id="SEC135"></div>
+<div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export-options| &gt; ]]|</td>
@@ -2469,7 +2469,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="export-options"></div>
-<div id="SEC136"></div>
+<div id="export-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| &gt; ]]|</td>
@@ -2544,7 +2544,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 
 <hr size="6">
 <div id="history"></div>
-<div id="SEC137"></div>
+<div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-options| &gt; ]]|</td>
@@ -2589,7 +2589,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </nowiki></pre>
 <hr size="6">
 <div id="history-options"></div>
-<div id="SEC138"></div>
+<div id="history-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| &gt; ]]|</td>
@@ -2776,7 +2776,7 @@ time zone instead of UTC.
 
 <hr size="6">
 <div id="import"></div>
-<div id="SEC139"></div>
+<div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-options| &gt; ]]|</td>
@@ -2863,7 +2863,7 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki></pre>
 <hr size="6">
 <div id="import-options"></div>
-<div id="SEC140"></div>
+<div id="import-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-output| &gt; ]]|</td>
@@ -2930,7 +2930,7 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 
 <hr size="6">
 <div id="import-output"></div>
-<div id="SEC141"></div>
+<div id="import-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-examples| &gt; ]]|</td>
@@ -2986,7 +2986,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 
 <hr size="6">
 <div id="import-examples"></div>
-<div id="SEC142"></div>
+<div id="import-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| &gt; ]]|</td>
@@ -3009,7 +3009,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 </p>
 <hr size="6">
 <div id="log"></div>
-<div id="SEC143"></div>
+<div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-options| &gt; ]]|</td>
@@ -3063,7 +3063,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 </nowiki></pre>
 <hr size="6">
 <div id="log-options"></div>
-<div id="SEC144"></div>
+<div id="log-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-examples| &gt; ]]|</td>
@@ -3237,7 +3237,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="log-examples"></div>
-<div id="SEC145"></div>
+<div id="log-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| &gt; ]]|</td>
@@ -3260,7 +3260,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="rdiff"></div>
-<div id="SEC146"></div>
+<div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-options| &gt; ]]|</td>
@@ -3316,7 +3316,7 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr size="6">
 <div id="rdiff-options"></div>
-<div id="SEC147"></div>
+<div id="rdiff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-examples| &gt; ]]|</td>
@@ -3403,7 +3403,7 @@ way that <small>RCS</small> version 5 does.
 
 <hr size="6">
 <div id="rdiff-examples"></div>
-<div id="SEC148"></div>
+<div id="rdiff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| &gt; ]]|</td>
@@ -3446,7 +3446,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr size="6">
 <div id="release"></div>
-<div id="SEC149"></div>
+<div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-options| &gt; ]]|</td>
@@ -3501,7 +3501,7 @@ history log.
 </nowiki></pre>
 <hr size="6">
 <div id="release-options"></div>
-<div id="SEC150"></div>
+<div id="release-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-output| &gt; ]]|</td>
@@ -3540,7 +3540,7 @@ if it is non-empty!</strong>
 
 <hr size="6">
 <div id="release-output"></div>
-<div id="SEC151"></div>
+<div id="release-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-examples| &gt; ]]|</td>
@@ -3602,7 +3602,7 @@ sources, this file will be lost.
 
 <hr size="6">
 <div id="release-examples"></div>
-<div id="SEC152"></div>
+<div id="release-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| &gt; ]]|</td>
@@ -3634,7 +3634,7 @@ $
 
 <hr size="6">
 <div id="update"></div>
-<div id="SEC153"></div>
+<div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-options| &gt; ]]|</td>
@@ -3680,7 +3680,7 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr size="6">
 <div id="update-options"></div>
-<div id="SEC154"></div>
+<div id="update-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-output| &gt; ]]|</td>
@@ -3832,7 +3832,7 @@ date.  An optional date is specified by adding a colon
 
 <hr size="6">
 <div id="update-output"></div>
-<div id="SEC155"></div>
+<div id="update-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>

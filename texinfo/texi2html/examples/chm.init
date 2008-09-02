@@ -2,7 +2,7 @@
 
 #main::load_init_file('', 'noheaders.init');
 
-$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
+#$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';
 $DO_CONTENT = 1;
@@ -28,6 +28,7 @@ $print_page_foot = \&chm_print_page_foot;
 $print_head_navigation = \&chm_noop;
 #$print_Top_footer = \&chm_noop;
 $print_foot_navigation = \&chm_noop;
+$print_element_header = \&chm_print_element_header;
 
 my $default_toc_body = $toc_body;
 $toc_body = \&chm_toc_body;
@@ -280,6 +281,15 @@ Default=,"$Texi2HTML::THISDOC{'file_base_name'}.hhc","$Texi2HTML::THISDOC{'file_
 
 [FILES]
 EOT
+}
+
+sub chm_print_element_header
+{
+    my $fh = shift;
+    my $first_in_page = shift;
+    my $previous_is_top = shift;
+    
+    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
 }
 
 sub chm_print_page_foot($)

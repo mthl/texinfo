@@ -1,5 +1,5 @@
 <div id="Revisions"></div>
-<div id="SEC44"></div>
+<div id="Revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Starting a project with CVS#Defining-the-module  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Revision-numbers| &gt; ]]|</td>
@@ -43,7 +43,7 @@ numeric revision in each file.
 </nowiki></pre>
 <hr size="6">
 <div id="Revision-numbers"></div>
-<div id="SEC45"></div>
+<div id="Revision-numbers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Versions-revisions-releases| &gt; ]]|</td>
@@ -85,7 +85,7 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 </p>
 <hr size="6">
 <div id="Versions-revisions-releases"></div>
-<div id="SEC46"></div>
+<div id="Versions_002c-revisions-and-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Assigning-revisions| &gt; ]]|</td>
@@ -116,7 +116,7 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr size="6">
 <div id="Assigning-revisions"></div>
-<div id="SEC47"></div>
+<div id="Assigning-revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tags| &gt; ]]|</td>
@@ -174,7 +174,7 @@ parallel, you need to use a branch (see section [cvs: Branching and merging#Bran
 </p>
 <hr size="6">
 <div id="Tags"></div>
-<div id="SEC48"></div>
+<div id="Tags_002d_002dSymbolic-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-the-working-directory| &gt; ]]|</td>
@@ -349,7 +349,7 @@ like this:
 
 <hr size="6">
 <div id="Tagging-the-working-directory"></div>
-<div id="SEC49"></div>
+<div id="Specifying-what-to-tag-from-the-working-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &gt; ]]|</td>
@@ -398,7 +398,7 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr size="6">
 <div id="Tagging-by-date_002ftag"></div>
-<div id="SEC50"></div>
+<div id="Specifying-what-to-tag-by-date-or-revision"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Modifying-tags| &gt; ]]|</td>
@@ -458,7 +458,7 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr size="6">
 <div id="Modifying-tags"></div>
-<div id="SEC51"></div>
+<div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-add_002fremove| &gt; ]]|</td>
@@ -567,7 +567,7 @@ cvs rtag -d old-name-0-4 tc
 
 <hr size="6">
 <div id="Tagging-add_002fremove"></div>
-<div id="SEC52"></div>
+<div id="Tagging-and-adding-and-removing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Sticky-tags| &gt; ]]|</td>
@@ -620,7 +620,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr size="6">
 <div id="Sticky-tags"></div>
-<div id="SEC53"></div>
+<div id="Sticky-tags-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt; ]|</td>

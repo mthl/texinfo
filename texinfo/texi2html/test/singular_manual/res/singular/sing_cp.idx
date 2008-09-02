@@ -488,7 +488,7 @@ key: Bachmann, Olaf
   origin_href: sing_1.htm#index-Bachmann_002c-Olaf
   entry: Bachmann, Olaf
   texi_entry: Bachmann, Olaf
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Background
   origin_href: sing_3.htm#Background
@@ -506,7 +506,7 @@ key: Betti number
   origin_href: sing_374.htm#index-Betti-number
   entry: Betti number
   texi_entry: Betti number
-  element_href: sing_374.htm#HEAD45
+  element_href: sing_374.htm#Betti-numbers-and-regularity
   element_text: Betti numbers and regularity
 key: Bigatti-La Scala-Robbiano algorithm
   origin_href: sing_384.htm#Bigatti-and-La-Scala-and-Robbiano
@@ -686,7 +686,7 @@ key: Components of Windows installation
   origin_href: sing_913.htm#index-Components-of-Windows-installation
   entry: Components of Windows installation
   texi_entry: Components of Windows installation
-  element_href: sing_913.htm#HEAD61
+  element_href: sing_913.htm#Installation-preliminaries
   element_text: Installation preliminaries
 key: ContainedQ
   origin_href: sing_867.htm#ContainedQ
@@ -818,7 +818,7 @@ key: ESingular, no prompt
   origin_href: sing_912.htm#index-ESingular_002c-no-prompt
   entry: ESingular, no prompt
   texi_entry: ESingular, no prompt
-  element_href: sing_912.htm#HEAD59
+  element_href: sing_912.htm#Troubleshooting
   element_text: Troubleshooting
 key: Editing SINGULAR input files with Emacs
   origin_href: sing_26.htm#Editing-SINGULAR-input-files-with-Emacs
@@ -998,7 +998,7 @@ key: Fru"bis-Kru"ger, Anne
   origin_href: sing_1.htm#index-Frubis_002dKruger_002c-Anne
   entry: Fr&uuml;bis-Kr&uuml;ger, Anne
   texi_entry: Fr@"ubis-Kr@"uger, Anne
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Functions
   origin_href: sing_155.htm#Functions
@@ -1166,13 +1166,13 @@ key: Grassmann, Hubert
   origin_href: sing_1.htm#index-Grassmann_002c-Hubert
   entry: Grassmann, Hubert
   texi_entry: Grassmann, Hubert
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Greuel, Gert-Martin
   origin_href: sing_1.htm#index-Greuel_002c-Gert_002dMartin
   entry: Greuel, Gert-Martin
   texi_entry: Greuel, Gert-Martin
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Guidelines for writing a library
   origin_href: sing_49.htm#Guidelines-for-writing-a-library
@@ -1280,7 +1280,7 @@ key: Ideal membership
   origin_href: sing_372.htm#index-Ideal-membership
   entry: Ideal membership
   texi_entry: Ideal membership
-  element_href: sing_372.htm#HEAD42
+  element_href: sing_372.htm#Properties
   element_text: Properties
 key: Identifiers, syntax of
   origin_href: sing_36.htm#Names
@@ -1376,7 +1376,7 @@ key: Keilen, Thomas
   origin_href: sing_1.htm#index-Keilen_002c-Thomas
   entry: Keilen, Thomas
   texi_entry: Keilen, Thomas
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Kernel of module homomorphisms
   origin_href: sing_355.htm#Kernel-of-module-homomorphisms
@@ -1394,7 +1394,7 @@ key: Kru"ger, Kai
   origin_href: sing_1.htm#index-Kruger_002c-Kai
   entry: Kr&uuml;ger, Kai
   texi_entry: Kr@"uger, Kai
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: LIB
   origin_href: sing_220.htm#LIB
@@ -1412,7 +1412,7 @@ key: Levandovskyy, Viktor
   origin_href: sing_1.htm#index-Levandovskyy_002c-Viktor
   entry: Levandovskyy, Viktor
   texi_entry: Levandovskyy, Viktor
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Libraries
   origin_href: sing_46.htm#Libraries
@@ -1472,7 +1472,7 @@ key: Lossen, Christoph
   origin_href: sing_1.htm#index-Lossen_002c-Christoph
   entry: Lossen, Christoph
   texi_entry: Lossen, Christoph
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: M, ordering
   origin_href: sing_368.htm#Matrix-orderings
@@ -1628,7 +1628,7 @@ key: Neumann, Wolfgang
   origin_href: sing_1.htm#index-Neumann_002c-Wolfgang
   entry: Neumann, Wolfgang
   texi_entry: Neumann, Wolfgang
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Newton non-degenerate
   origin_href: sing_698.htm#index-Newton-non_002ddegenerate
@@ -1652,7 +1652,7 @@ key: Normal form
   origin_href: sing_372.htm#index-Normal-form
   entry: Normal form
   texi_entry: Normal form
-  element_href: sing_372.htm#HEAD42
+  element_href: sing_372.htm#Properties
   element_text: Properties
 key: Normalization
   origin_href: sing_353.htm#Normalization
@@ -1694,13 +1694,13 @@ key: Pfister, Gerhard
   origin_href: sing_1.htm#index-Pfister_002c-Gerhard
   entry: Pfister, Gerhard
   texi_entry: Pfister, Gerhard
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Pohl, Wilfred
   origin_href: sing_1.htm#index-Pohl_002c-Wilfred
   entry: Pohl, Wilfred
   texi_entry: Pohl, Wilfred
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Polar curves
   origin_href: sing_344.htm#Polar-curves
@@ -1910,13 +1910,13 @@ key: SDB breakpoint
   origin_href: sing_62.htm#index-SDB-breakpoint
   entry: SDB breakpoint
   texi_entry: SDB breakpoint
-  element_href: sing_62.htm#HEAD40
+  element_href: sing_62.htm#SDB-breakpoints-in-procedures
   element_text: SDB breakpoints in procedures
 key: SDB debugger
   origin_href: sing_62.htm#index-SDB-debugger
   entry: SDB debugger
   texi_entry: SDB debugger
-  element_href: sing_62.htm#HEAD40
+  element_href: sing_62.htm#SDB-breakpoints-in-procedures
   element_text: SDB breakpoints in procedures
 key: SINGULAR libraries
   origin_href: sing_389.htm#SINGULAR-libraries
@@ -1976,19 +1976,19 @@ key: Schmidt, Jens
   origin_href: sing_1.htm#index-Schmidt_002c-Jens
   entry: Schmidt, Jens
   texi_entry: Schmidt, Jens
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Scho"nemann, Hans
   origin_href: sing_1.htm#index-Schonemann_002c-Hans
   entry: Sch&ouml;nemann, Hans
   texi_entry: Sch@"onemann, Hans
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Schulze, Mathias
   origin_href: sing_1.htm#index-Schulze_002c-Mathias
   entry: Schulze, Mathias
   texi_entry: Schulze, Mathias
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: SearchPath
   origin_href: sing_47.htm#Loading-of-a-library
@@ -2090,13 +2090,13 @@ key: Stobbe, Ru"diger
   origin_href: sing_1.htm#index-Stobbe_002c-Rudiger
   entry: Stobbe, R&uuml;diger
   texi_entry: Stobbe, R@"udiger
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: SuSE, ESingular bug
   origin_href: sing_912.htm#index-SuSE_002c-ESingular-bug
   entry: SuSE, ESingular bug
   texi_entry: SuSE, ESingular bug
-  element_href: sing_912.htm#HEAD59
+  element_href: sing_912.htm#Troubleshooting
   element_text: Troubleshooting
 key: Symbolic-numerical solving
   origin_href: sing_813.htm#Symbolic_002dnumerical-solving
@@ -2228,13 +2228,13 @@ key: Type casting
   origin_href: sing_38.htm#index-Type-casting
   entry: Type casting
   texi_entry: Type casting
-  element_href: sing_38.htm#HEAD28
+  element_href: sing_38.htm#Type-casting
   element_text: Type casting
 key: Type conversion
-  origin_href: sing_38.htm#HEAD27
+  origin_href: sing_38.htm#Type-conversion
   entry: Type conversion
   texi_entry: Type conversion
-  element_href: sing_38.htm#HEAD27
+  element_href: sing_38.htm#Type-conversion
   element_text: Type conversion
 key: Typesetting of help strings
   origin_href: sing_53.htm#Typesetting-of-help-strings
@@ -2330,13 +2330,13 @@ key: Westenberger, Eric
   origin_href: sing_1.htm#index-Westenberger_002c-Eric
   entry: Westenberger, Eric
   texi_entry: Westenberger, Eric
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Wichmann, Tim
   origin_href: sing_1.htm#index-Wichmann_002c-Tim
   entry: Wichmann, Tim
   texi_entry: Wichmann, Tim
-  element_href: sing_1.htm#HEAD2
+  element_href: sing_1.htm#Acknowledgements
   element_text: Acknowledgements
 key: Windows installation
   origin_href: sing_913.htm#Windows-installation-instructions
@@ -2348,7 +2348,7 @@ key: Windows installation, components
   origin_href: sing_913.htm#index-Windows-installation_002c-components
   entry: Windows installation, components
   texi_entry: Windows installation, components
-  element_href: sing_913.htm#HEAD61
+  element_href: sing_913.htm#Installation-preliminaries
   element_text: Installation preliminaries
 key: Ws, local ordering
   origin_href: sing_366.htm#index-Ws_002c-local-ordering
@@ -2708,7 +2708,7 @@ key: bug, ESingular
   origin_href: sing_912.htm#index-bug_002c-ESingular
   entry: bug, ESingular
   texi_entry: bug, ESingular
-  element_href: sing_912.htm#HEAD59
+  element_href: sing_912.htm#Troubleshooting
   element_text: Troubleshooting
 key: busadj
   origin_href: sing_511.htm#busadj
@@ -4310,7 +4310,7 @@ key: info
   origin_href: sing_16.htm#index-info-1
   entry: info
   texi_entry: info
-  element_href: sing_16.htm#HEAD7
+  element_href: sing_16.htm#Info-help-browsers
   element_text: Info help browsers
 key: info in a library
   origin_href: sing_48.htm#index-info-in-a-library
@@ -6908,7 +6908,7 @@ key: regularity
   origin_href: sing_374.htm#index-regularity
   entry: regularity
   texi_entry: regularity
-  element_href: sing_374.htm#HEAD45
+  element_href: sing_374.htm#Betti-numbers-and-regularity
   element_text: Betti numbers and regularity
 key: relative_orbit_variety
   origin_href: sing_783.htm#relative_005forbit_005fvariety

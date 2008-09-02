@@ -1,5 +1,5 @@
 <div id="Binary-files"></div>
-<div id="SEC80"></div>
+<div id="Handling-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
@@ -32,7 +32,7 @@ including both text files and binary images.
 </nowiki></pre>
 <hr size="6">
 <div id="Binary-why"></div>
-<div id="SEC81"></div>
+<div id="The-issues-with-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
@@ -101,7 +101,7 @@ resulting from branches, restrict use of branches.
 </p>
 <hr size="6">
 <div id="Binary-howto"></div>
-<div id="SEC82"></div>
+<div id="How-to-store-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>

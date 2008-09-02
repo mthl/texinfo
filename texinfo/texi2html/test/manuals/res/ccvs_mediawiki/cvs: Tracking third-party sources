@@ -1,5 +1,5 @@
 <div id="Tracking-sources"></div>
-<div id="SEC105"></div>
+<div id="Tracking-third_002dparty-sources"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
 <td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
@@ -54,7 +54,7 @@ revision.
 </nowiki></pre>
 <hr size="6">
 <div id="First-import"></div>
-<div id="SEC106"></div>
+<div id="Importing-for-the-first-time"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
@@ -108,7 +108,7 @@ example, and the only release tag assigned is
 </p>
 <hr size="6">
 <div id="Update-imports"></div>
-<div id="SEC107"></div>
+<div id="Updating-with-the-import-command"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
@@ -166,7 +166,7 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 </p>
 <hr size="6">
 <div id="Reverting-local-changes"></div>
-<div id="SEC108"></div>
+<div id="Reverting-to-the-latest-vendor-release"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
@@ -202,7 +202,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS command
 </p>
 <hr size="6">
 <div id="Binary-files-in-imports"></div>
-<div id="SEC109"></div>
+<div id="How-to-handle-binary-files-with-cvs-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
@@ -226,7 +226,7 @@ files are binary.  See section [cvs: Reference manual for Administrative files#W
 </p>
 <hr size="6">
 <div id="Keywords-in-imports"></div>
-<div id="SEC110"></div>
+<div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
@@ -268,7 +268,7 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 </p>
 <hr size="6">
 <div id="Multiple-vendor-branches"></div>
-<div id="SEC111"></div>
+<div id="Multiple-vendor-branches-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt; ]|</td>

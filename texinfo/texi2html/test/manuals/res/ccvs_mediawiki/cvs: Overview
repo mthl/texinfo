@@ -1,5 +1,5 @@
 <div id="Overview"></div>
-<div id="SEC1"></div>
+<div id="Overview-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
@@ -32,7 +32,7 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr size="6">
 <div id="What-is-CVS_003f"></div>
-<div id="SEC2"></div>
+<div id="What-is-CVS_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
@@ -128,7 +128,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr size="6">
 <div id="What-is-CVS-not_003f"></div>
-<div id="SEC3"></div>
+<div id="What-is-CVS-not_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
@@ -294,7 +294,7 @@ only once they have been proven.
 
 <hr size="6">
 <div id="A-sample-session"></div>
-<div id="SEC4"></div>
+<div id="A-sample-session-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
@@ -333,7 +333,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="Getting-the-source"></div>
-<div id="SEC5"></div>
+<div id="Getting-the-source-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
@@ -377,7 +377,7 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 </p>
 <hr size="6">
 <div id="Committing-your-changes"></div>
-<div id="SEC6"></div>
+<div id="Committing-your-changes-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
@@ -453,7 +453,7 @@ this:
 
 <hr size="6">
 <div id="Cleaning-up"></div>
-<div id="SEC7"></div>
+<div id="Cleaning-up-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
@@ -520,7 +520,7 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr size="6">
 <div id="Viewing-differences"></div>
-<div id="SEC8"></div>
+<div id="Viewing-differences-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>

@@ -38,7 +38,7 @@
     <li><div id="TOC19"></div>[cvs: The Repository#Working-directory-storage How data is stored in the working directory]</li>
     <li><div id="TOC20"></div>[cvs: The Repository#Intro-administrative-files The administrative files]
     <ul>
-      <li><div id="TOC21"></div>[cvs: The Repository#SEC21 Editing administrative files]</li>
+      <li><div id="TOC21"></div>[cvs: The Repository#Editing-administrative-files Editing administrative files]</li>
     </ul></li>
     <li><div id="TOC22"></div>[cvs: The Repository#Multiple-repositories Multiple repositories]</li>
     <li><div id="TOC23"></div>[cvs: The Repository#Creating-a-repository Creating a repository]</li>
@@ -184,8 +184,8 @@
       <li><div id="TOC126"></div>[cvs: Guide to CVS commands#commit-options commit options]</li>
       <li><div id="TOC127"></div>[cvs: Guide to CVS commands#commit-examples commit examples]
       <ul>
-        <li><div id="TOC128"></div>[cvs: Guide to CVS commands#SEC128 Committing to a branch]</li>
-        <li><div id="TOC129"></div>[cvs: Guide to CVS commands#SEC129 Creating the branch after editing]</li>
+        <li><div id="TOC128"></div>[cvs: Guide to CVS commands#Committing-to-a-branch Committing to a branch]</li>
+        <li><div id="TOC129"></div>[cvs: Guide to CVS commands#Creating-the-branch-after-editing Creating the branch after editing]</li>
       </ul>
 </li>
     </ul></li>

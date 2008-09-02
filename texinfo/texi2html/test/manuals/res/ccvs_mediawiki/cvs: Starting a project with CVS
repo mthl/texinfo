@@ -1,5 +1,5 @@
 <div id="Starting-a-new-project"></div>
-<div id="SEC38"></div>
+<div id="Starting-a-project-with-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: The Repository#Server-temporary-directory  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
@@ -34,7 +34,7 @@ directories.  See section [cvs: Adding, removing, and renaming files and directo
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-up-the-files"></div>
-<div id="SEC39"></div>
+<div id="Setting-up-the-files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
@@ -64,7 +64,7 @@ be done in a couple of different ways.
 </nowiki></pre>
 <hr size="6">
 <div id="From-files"></div>
-<div id="SEC40"></div>
+<div id="Creating-a-directory-tree-from-a-number-of-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
@@ -133,7 +133,7 @@ files are binary and which are not.  See section [cvs: Reference manual for Admi
 </p>
 <hr size="6">
 <div id="From-other-version-control-systems"></div>
-<div id="SEC41"></div>
+<div id="Creating-Files-From-Other-Version-Control-Systems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
@@ -222,7 +222,7 @@ vary).  See the comments in the script for details.
 
 <hr size="6">
 <div id="From-scratch"></div>
-<div id="SEC42"></div>
+<div id="Creating-a-directory-tree-from-scratch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
@@ -265,7 +265,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 </p>
 <hr size="6">
 <div id="Defining-the-module"></div>
-<div id="SEC43"></div>
+<div id="Defining-the-module-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt; ]|</td>

@@ -1,5 +1,5 @@
 <div id="Administrative-files"></div>
-<div id="SEC157"></div>
+<div id="Reference-manual-for-Administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt; ]|</td>
 <td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
@@ -41,7 +41,7 @@ file, which defines the modules inside the repository.
 </nowiki></pre>
 <hr size="6">
 <div id="modules"></div>
-<div id="SEC158"></div>
+<div id="The-modules-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
@@ -93,7 +93,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="Alias-modules"></div>
-<div id="SEC159"></div>
+<div id="Alias-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
@@ -151,7 +151,7 @@ U first-dir/sdir/sfile
 
 <hr size="6">
 <div id="Regular-modules"></div>
-<div id="SEC160"></div>
+<div id="Regular-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
@@ -222,7 +222,7 @@ $
 
 <hr size="6">
 <div id="Ampersand-modules"></div>
-<div id="SEC161"></div>
+<div id="Ampersand-modules-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
@@ -288,7 +288,7 @@ a future release of <small>CVS</small>.
 
 <hr size="6">
 <div id="Excluding-directories"></div>
-<div id="SEC162"></div>
+<div id="Excluding-directories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
@@ -322,7 +322,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="Module-options"></div>
-<div id="SEC163"></div>
+<div id="Module-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
@@ -401,7 +401,7 @@ that taginfo is a better solution (see section [cvs: History browsing#user_002dd
 
 <hr size="6">
 <div id="Module-program-options"></div>
-<div id="SEC164"></div>
+<div id="How-the-modules-file-_0060_0060program-options_0027_0027-programs-are-run"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
@@ -438,7 +438,7 @@ completed.
 
 <hr size="6">
 <div id="Wrappers"></div>
-<div id="SEC165"></div>
+<div id="The-cvswrappers-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
@@ -508,7 +508,7 @@ directory, treating files whose name ends in
 
 <hr size="6">
 <div id="commit-files"></div>
-<div id="SEC166"></div>
+<div id="The-commit-support-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
@@ -581,7 +581,7 @@ imagination is the limit!
 </nowiki></pre>
 <hr size="6">
 <div id="syntax"></div>
-<div id="SEC167"></div>
+<div id="The-common-syntax"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
@@ -633,7 +633,7 @@ is used as a file name or command-line as appropriate.
 
 <hr size="6">
 <div id="commitinfo"></div>
-<div id="SEC168"></div>
+<div id="Commitinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
@@ -707,7 +707,7 @@ to the command.
 
 <hr size="6">
 <div id="verifymsg"></div>
-<div id="SEC169"></div>
+<div id="Verifying-log-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
@@ -860,7 +860,7 @@ fi
 
 <hr size="6">
 <div id="editinfo"></div>
-<div id="SEC170"></div>
+<div id="Editinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
@@ -936,7 +936,7 @@ There is no good workaround for this; use
 </nowiki></pre>
 <hr size="6">
 <div id="editinfo-example"></div>
-<div id="SEC171"></div>
+<div id="Editinfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
@@ -1002,7 +1002,7 @@ done
 
 <hr size="6">
 <div id="loginfo"></div>
-<div id="SEC172"></div>
+<div id="Loginfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
@@ -1098,7 +1098,7 @@ name of the repository will be generated.
 </nowiki></pre>
 <hr size="6">
 <div id="loginfo-example"></div>
-<div id="SEC173"></div>
+<div id="Loginfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
@@ -1143,7 +1143,7 @@ like this:
 
 <hr size="6">
 <div id="Keeping-a-checked-out-copy"></div>
-<div id="SEC174"></div>
+<div id="Keeping-a-checked-out-copy-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
@@ -1187,7 +1187,7 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
 <hr size="6">
 <div id="rcsinfo"></div>
-<div id="SEC175"></div>
+<div id="Rcsinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
@@ -1246,7 +1246,7 @@ be updated from the server.
 </p>
 <hr size="6">
 <div id="cvsignore"></div>
-<div id="SEC176"></div>
+<div id="Ignoring-files-via-cvsignore"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
@@ -1356,7 +1356,7 @@ way to specify comments.
 </p>
 <hr size="6">
 <div id="checkoutlist"></div>
-<div id="SEC177"></div>
+<div id="The-checkoutlist-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
@@ -1416,7 +1416,7 @@ more general context than the one provided by
 </p>
 <hr size="6">
 <div id="history-file"></div>
-<div id="SEC178"></div>
+<div id="The-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
@@ -1450,7 +1450,7 @@ format changes with future releases of <small>CVS</small>.
 </p>
 <hr size="6">
 <div id="Variables"></div>
-<div id="SEC179"></div>
+<div id="Expansions-in-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#config| &gt; ]]|</td>
@@ -1596,7 +1596,7 @@ Do not confuse this with the internal variable of the same name.
 
 <hr size="6">
 <div id="config"></div>
-<div id="SEC180"></div>
+<div id="The-CVSROOT_002fconfig-configuration-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.228 2008-09-01 14:48:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.229 2008-09-02 12:06:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4664,29 +4664,29 @@ sub cross_manual_links()
             }
         }
 
-        foreach my $index_entry (@index_labels)
+        foreach my $entry (@index_labels, values(%sections), values(%headings))
         {
-            $index_entry->{'cross'} = remove_texi($index_entry->{'texi'});
-            $index_entry->{'cross'} = unicode_to_protected(unicode_to_transliterate($index_entry->{'cross'})) if ($Texi2HTML::Config::USE_UNICODE);
+            $entry->{'cross'} = remove_texi($entry->{'texi'});
+            $entry->{'cross'} = unicode_to_protected(unicode_to_transliterate($entry->{'cross'})) if ($Texi2HTML::Config::USE_UNICODE);
         }
     }
     else
     {
-        foreach my $index_entry (@index_labels)
+        foreach my $entry (@index_labels, values(%sections), values(%headings))
         {
-            $index_entry->{'cross'} = remove_texi($index_entry->{'texi'});
+            $entry->{'cross'} = remove_texi($entry->{'texi'});
             if ($Texi2HTML::Config::USE_UNICODE)
             {
-                $index_entry->{'cross'} = Unicode::Normalize::NFC($index_entry->{'cross'});
+                $entry->{'cross'} = Unicode::Normalize::NFC($entry->{'cross'});
                 if ($Texi2HTML::Config::TRANSLITERATE_NODE and $Texi2HTML::Config::USE_UNIDECODE) # USE_UNIDECODE is redundant
                 {
-                     $index_entry->{'cross'} = 
-                       unicode_to_protected(unicode_to_transliterate($index_entry->{'cross'}));
+                     $entry->{'cross'} = 
+                       unicode_to_protected(unicode_to_transliterate($entry->{'cross'}));
                 }
                 else
                 {
-                     $index_entry->{'cross'} = 
-                        unicode_to_protected($index_entry->{'cross'});
+                     $entry->{'cross'} = 
+                        unicode_to_protected($entry->{'cross'});
                 }
             }
         }
@@ -5817,13 +5817,17 @@ sub rearrange_elements()
     }
 
     my $index_nr = 0;
-    # find id for indices
+    # find id for indices and set element->{'this'}
     foreach my $element (@elements_list)
     {
         $element->{'this'} = $element;
         if ($element->{'index_page'})
         {
             $element->{'id'} = "INDEX" . $index_nr;
+            if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+            {
+                $element->{'id'} = "index_split-" . $index_nr;
+            }
             $element->{'target'} = $element->{'id'};
             $index_nr++;
         }
@@ -5884,7 +5888,9 @@ sub rearrange_elements()
                 $index++;
             }
             $index_entry->{'label'} = $index_id;
-            push @{$cross_reference_nodes{$index_id}}, "index-".$index_entry->{'texi'}.$index;
+            my $texi_entry = "index-".$index_entry->{'texi'};
+            $texi_entry .= "-".$index if ($index > 1);
+            push @{$cross_reference_nodes{$index_id}}, $texi_entry;
         }
     }
 
@@ -5901,8 +5907,31 @@ sub rearrange_elements()
         }
     }
 
-    foreach my $section (@sections_list)
+    # use %sections and %headings to modify also the headings
+    foreach my $section (values(%sections), values(%headings))
+    #foreach my $section (@sections_list)
     {
+        if ($Texi2HTML::Config::NEW_CROSSREF_STYLE and ($section->{'cross'} =~ /\S/))
+        {
+            my $section_cross = $section->{'cross'};
+            if (defined($section->{'region'}))
+            { # for headings appearing in special regions like @copying...
+                $section_cross = "${target_prefix}-$section->{'region'}_$section_cross";
+            }
+            $section->{'cross_manual_target'} = $section_cross;
+
+            my $index = 1;
+            # $index > 0 should prevent integer overflow, hopefully
+            while (exists($cross_reference_nodes{$section->{'cross_manual_target'}}) and $index > 0)
+            {
+                $section->{'cross_manual_target'} = $section_cross . "-" .$index;
+                $index++;
+            }
+            my $texi_entry = $section->{'texi'};
+            $texi_entry .= "-".$index if ($index > 1);
+            push @{$cross_reference_nodes{$section->{'cross_manual_target'}}}, $texi_entry;
+            $section->{'id'} = node_to_id($section->{'cross_manual_target'});
+        }
         if ($Texi2HTML::Config::USE_NODE_TARGET and $section->{'node_ref'})
         {
             $section->{'target'} = $section->{'node_ref'}->{'target'};
@@ -8115,8 +8144,9 @@ sub begin_paragraph_after_command($$$$)
     my $command = shift;
     my $text_following = shift;
     
-    if (($state->{'preformatted'} 
-           and !$Texi2HTML::Config::format_in_paragraph{$command})
+    #if (($state->{'preformatted'} 
+    #       and !$Texi2HTML::Config::format_in_paragraph{$command})
+    if ($state->{'preformatted'} 
         or (!no_paragraph($state,$text_following)))  
     {
         begin_paragraph($stack, $state); 
@@ -9976,16 +10006,20 @@ sub do_index_page($$$;$)
     my $nr = shift;
     my $line_nr = shift;
     my $page = shift;
+
     my $index_element = $index_elements->[$nr];
-    my $summary = do_index_summary($index_element->{'element'}, $index_elements);
-    my $entries = do_index_entries($index_element->{'element'}, $index_element->{'page'}, $index_element->{'name'}, $line_nr);
+    my $index_infos = {};
+    my $summary = do_index_summary($index_element->{'element'}, $index_elements, $index_infos, $index_element->{'name'});
+    my $entries = do_index_entries($index_element->{'element'}, $index_element->{'page'}, $index_element->{'name'}, $line_nr, $index_infos);
     return $summary . $entries . $summary;
 }
 
-sub do_index_summary($$)
+sub do_index_summary($$$)
 {
     my $element = shift;
     my $index_elements = shift;
+    my $index_infos = shift;
+    my $index_name = shift;
 
     my @letters;
     my @symbols;
@@ -9998,13 +10032,19 @@ sub do_index_summary($$)
         my $index = 0;
         for my $letter (@{$index_element_item->{'page'}->{'letters'}})
         {
-            if ($letter =~ /^[A-Za-z]/)
+            my $default_id = "$index_element->{'id'}" . "_$index";
+            my ($formatted_letter, $letter_id, $is_symbol) = &$Texi2HTML::Config::summary_letter($letter, $file, $default_id, $index_element->{'id'}, $index, $index_element, $index_name);
+            $is_symbol = 1 if ($letter !~ /^[A-Za-z]/ and (!defined($is_symbol)));
+            $letter_id = $default_id if (!defined($letter_id));
+            $index_infos->{'letter_id'}->{$letter} = $letter_id;
+
+            if (! $is_symbol)
             {
-                push @letters, &$Texi2HTML::Config::summary_letter($letter, $file, "$index_element->{'id'}" . "_$index");
+                push @letters, $formatted_letter;
             }
             else
             {
-                push @symbols, &$Texi2HTML::Config::summary_letter($letter, $file, "$index_element->{'id'}" . "_$index");
+                push @symbols, $formatted_letter;
             }
             $index++;
         }
@@ -10012,12 +10052,13 @@ sub do_index_summary($$)
     return &$Texi2HTML::Config::index_summary(\@letters, \@symbols);
 }
 
-sub do_index_entries($$$$)
+sub do_index_entries($$$$$)
 {
     my $element = shift;
     my $page = shift;
     my $name = shift;
     my $line_nr = shift;
+    my $index_infos = shift;
  
     my $letters = '';
     my $index = 0;
@@ -10063,8 +10104,8 @@ sub do_index_entries($$$$)
                      substitute_line($entry->{'entry'}),
                      href($entry_element, $element->{'file'}, $line_nr),
                      $entry_element->{'text'});
-        }
-        $letters .= &$Texi2HTML::Config::index_letter ($letter, "$element->{'id'}" . "_$index", $entries);
+        } 
+        $letters .= &$Texi2HTML::Config::index_letter ($letter, $index_infos->{'letter_id'}->{$letter}, $entries);
         $index++;
     }
     return &$Texi2HTML::Config::print_index($letters, $name);
@@ -11185,6 +11226,8 @@ sub scan_structure($$$$;$)
                         my $num = $state->{'region_lines'}->{'head_num'};
                         $heading_ref->{'id'} = "${target_prefix}${region}_HEAD$num";
                         $heading_ref->{'sec_num'} = "${region}_$num";
+                        $heading_ref->{'region'} = $region;
+                        $heading_ref->{'region_head_num'} = $num;
                     }
                     else
                     {

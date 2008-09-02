@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.154 2008-09-01 14:48:24 pertusus Exp $
+# $Id: texi2html.init,v 1.155 2008-09-02 12:06:52 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1022,7 +1022,7 @@ sub T2H_DEFAULT_print_element_header
     else
     { # got to do this here, as it isn't done in print_head_navigation
         main::print_lines($fh, $Texi2HTML::THIS_HEADER);
-        &$print_navigation($fh, $buttons) if ($SECTION_NAVIGATION);
+        &$print_navigation($fh, $buttons) if ($SECTION_NAVIGATION or $SPLIT eq 'node');
     }
 }
 
@@ -1039,7 +1039,7 @@ sub T2H_DEFAULT_print_section
         and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
     {
         my $buttons = \@NODE_FOOTER_BUTTONS;
-        &$print_foot_navigation($fh, $buttons, "$SMALL_RULE",
+        &$print_foot_navigation($fh, $buttons, $SMALL_RULE,
           (!defined($WORDS_IN_PAGE) or (defined ($nw) and $nw >= $WORDS_IN_PAGE)),
           $element);
 #        print $fh "$SMALL_RULE\n";
@@ -1079,7 +1079,8 @@ sub T2H_DEFAULT_print_Top_footer($$$)
     my $end_page = shift;
     my $element = shift;
     my $buttons = \@MISC_BUTTONS;
-    &$print_foot_navigation($fh, $buttons, "$SMALL_RULE", $end_page, $element);
+    &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
+       ($end_page and ($SECTION_NAVIGATION or ($SPLIT and $SPLIT ne 'node'))), $element);
 #    &$print_foot_navigation($fh);
 #    print $fh "$SMALL_RULE\n";
     if ($end_page)
@@ -1172,7 +1173,8 @@ sub T2H_DEFAULT_print_misc_footer
     my $fh = shift;
     my $buttons = shift;
     my $new_file = shift;
-    &$print_foot_navigation($fh, $buttons, "$SMALL_RULE", $new_file, undef);
+    &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
+        ($new_file and ($SECTION_NAVIGATION or ($SPLIT and $SPLIT ne 'node'))), undef);
 #    print $fh "$SMALL_RULE\n";
     if ($new_file)
     {
@@ -6417,6 +6419,10 @@ sub t2h_default_documentdescription($$$$)
     return $document_description;
 }
 
+# not needed to initialize it for a document, since it is reset 
+# in index_summary
+my $t2h_symbol_indices = 0;
+
 # format a letter appearing in a summary for an index. The letter links to
 # the place where the index elements beginning with this letter are (called
 # a letter entry).
@@ -6425,12 +6431,34 @@ sub t2h_default_documentdescription($$$$)
 # letter
 # file where the target letter entry is 
 # identifier for the target letter entry
-sub t2h_default_summary_letter($$$)
+sub t2h_default_summary_letter($$$$$$$$)
 {
    my $letter = shift;
    my $file = shift;
-   my $identifier = shift;
-   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>', 'class="summary-letter"');
+   my $default_identifier = shift;
+   my $index_element_id = shift;
+   my $number = shift;
+   my $index_element = shift;
+   my $index_name = shift;
+
+   my $is_symbol = $letter !~ /^[A-Za-z]/;
+   my $identifier = $default_identifier;
+
+   if ($NEW_CROSSREF_STYLE)
+   {
+      if ($is_symbol)
+      {
+         $t2h_symbol_indices++;
+         $identifier = $index_element_id . "_${index_name}_symbol-$t2h_symbol_indices";
+      }
+      else
+      {
+         $identifier = $index_element_id . "_${index_name}_letter-${letter}";
+      }
+   }
+   my $result = &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>', 'class="summary-letter"');
+   return $result unless ($NEW_CROSSREF_STYLE);
+   return ($result, $identifier, $is_symbol);
 }
 
 # format an index summary. This is a list of letters linking to the letter
@@ -6443,6 +6471,10 @@ sub t2h_default_index_summary($$)
 {
     my $alpha = shift;
     my $nonalpha = shift;
+
+    # reset symbols numbering
+    $t2h_symbol_indices = 0;
+
     my $join = '';
     my $nonalpha_text = '';
     my $alpha_text = '';

@@ -62,7 +62,7 @@ ul.toc {list-style: none}
 </ul></li>
 </ul>
 <a name="g_t1D-gridded-model"></a>
-<a name="SEC26"></a>
+<a name="Describing-1D-gridded-model"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Calling-the-model-code.html#The-model-subroutine" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#g_t1D-gridded-Model-size" title="Next section in reading order"> &gt; </a>]</td>
@@ -133,7 +133,7 @@ to select <code>grid1d</code> and <code>monitor</code>, it could be
 
 <hr size="2">
 <a name="g_t1D-gridded-Model-size"></a>
-<a name="SEC27"></a>
+<a name="Setting-dimensions-for-1D-gridded-model"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#g_t1D-gridded-model" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#g_t1D-gridded-model-code" title="Next section in reading order"> &gt; </a>]</td>
@@ -212,7 +212,7 @@ and <code>m_up=2</code>:
 
 <hr size="2">
 <a name="g_t1D-gridded-model-code"></a>
-<a name="SEC28"></a>
+<a name="g_t1D-gridded-Model-coding"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#g_t1D-gridded-Model-size" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Double-precision.html#Double-precision" title="Next section in reading order"> &gt; </a>]</td>
@@ -225,7 +225,7 @@ and <code>m_up=2</code>:
 
 <p>The model code and parameters go in the &lsquo;<tt>zinit</tt>&rsquo; sequence.
 </p>
-<a name="HEAD6"></a>
+<a name="Parameters-2"></a>
 <h4 class="subsubheading"> Parameters </h4>
 
 <p>A value for the Miniker parameters and the model parameters should be given in
@@ -245,7 +245,7 @@ data rmassm1/n_node*1./;
      time=0.;
 </pre></td></tr></table>
 
-<a name="HEAD7"></a>
+<a name="Limiting-conditions"></a>
 <h4 class="subsubheading"> Limiting conditions </h4>
 
 <a name="index-limiting-conditions"></a>
@@ -310,7 +310,7 @@ set_Up_Phi
 &gt;;
 </pre></td></tr></table>
 
-<a name="HEAD8"></a>
+<a name="Starting-points-1"></a>
 <h4 class="subsubheading"> Starting points </h4>
 
 <p>The cell node state values are initialized. They are in an array 
@@ -329,7 +329,7 @@ do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
 <p>If any transfer needs to be given a first-guess value, this is also done 
 using <code>inode</code> as the node index.
 </p>
-<a name="HEAD9"></a>
+<a name="Grid-node-equations"></a>
 <h4 class="subsubheading"> Grid node equations </h4>
 
 <a name="index-set_005fnode_005fPhi"></a>

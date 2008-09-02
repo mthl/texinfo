@@ -1,5 +1,5 @@
 <div id="History-browsing"></div>
-<div id="SEC75"></div>
+<div id="History-browsing-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
 <td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
@@ -31,7 +31,7 @@ through the history.
 </nowiki></pre>
 <hr size="6">
 <div id="log-messages"></div>
-<div id="SEC76"></div>
+<div id="Log-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
@@ -58,7 +58,7 @@ use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#lo
 </p>
 <hr size="6">
 <div id="history-database"></div>
-<div id="SEC77"></div>
+<div id="The-history-database"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
@@ -89,7 +89,7 @@ history</code> command (see section [cvs: Guide to CVS commands#history history&
 
 <hr size="6">
 <div id="user_002ddefined-logging"></div>
-<div id="SEC78"></div>
+<div id="User_002ddefined-logging"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
@@ -155,7 +155,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 
 <hr size="6">
 <div id="annotate"></div>
-<div id="SEC79"></div>
+<div id="Annotate-command"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt; ]|</td>

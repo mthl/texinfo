@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Files"></a>
-<a name="SEC134"></a>
+<a name="File-Handling"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_16.html#Spelling" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#File-Names" title="Next section in reading order"> &gt; </a>]</td>
@@ -109,7 +109,7 @@ and append to files, and operate on file directories.
 
 <hr size="6">
 <a name="File-Names"></a>
-<a name="SEC135"></a>
+<a name="File-Names-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Files" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Visiting" title="Next section in reading order"> &gt; </a>]</td>
@@ -229,7 +229,7 @@ is performed only on filenames read as such using the minibuffer.
 </p>
 <hr size="6">
 <a name="Visiting"></a>
-<a name="SEC136"></a>
+<a name="Visiting-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#File-Names" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Saving" title="Next section in reading order"> &gt; </a>]</td>
@@ -408,7 +408,7 @@ runs the <code>find-file-not-found-hooks</code> first.
 </p>
 <hr size="6">
 <a name="Saving"></a>
-<a name="SEC137"></a>
+<a name="Saving-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Visiting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Backup" title="Next section in reading order"> &gt; </a>]</td>
@@ -550,7 +550,7 @@ all the functions to be called after writing out a buffer to a file.
 
 <hr size="6">
 <a name="Backup"></a>
-<a name="SEC138"></a>
+<a name="Backup-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Saving" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Backup-Names" title="Next section in reading order"> &gt; </a>]</td>
@@ -599,7 +599,7 @@ the file again, a new backup file is made by the next save.
 
 <hr size="6">
 <a name="Backup-Names"></a>
-<a name="SEC139"></a>
+<a name="Single-or-Numbered-Backups"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Backup-Deletion" title="Next section in reading order"> &gt; </a>]</td>
@@ -658,7 +658,7 @@ that there is only one backup for an Rmail file.  See section <a href="xemacs_30
 </p>
 <hr size="6">
 <a name="Backup-Deletion"></a>
-<a name="SEC140"></a>
+<a name="Automatic-Deletion-of-Backups"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Names" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Backup-Copying" title="Next section in reading order"> &gt; </a>]</td>
@@ -699,7 +699,7 @@ See section <a href="#Dired">Dired, the Directory Editor</a>.
 </p>
 <hr size="6">
 <a name="Backup-Copying"></a>
-<a name="SEC141"></a>
+<a name="Copying-vs_002e-Renaming"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Interlocking" title="Next section in reading order"> &gt; </a>]</td>
@@ -751,7 +751,7 @@ done if renaming would cause the file&rsquo;s owner or group to change.
 </p>
 <hr size="6">
 <a name="Interlocking"></a>
-<a name="SEC142"></a>
+<a name="Protection-Against-Simultaneous-Editing"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Copying" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Reverting" title="Next section in reading order"> &gt; </a>]</td>
@@ -852,7 +852,7 @@ mode for new files.
 </p>
 <hr size="6">
 <a name="Reverting"></a>
-<a name="SEC143"></a>
+<a name="Reverting-a-Buffer"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Interlocking" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Auto-Save" title="Next section in reading order"> &gt; </a>]</td>
@@ -909,7 +909,7 @@ reports an error when asked to do so.
 </p>
 <hr size="6">
 <a name="Auto-Save"></a>
-<a name="SEC144"></a>
+<a name="Auto_002dSaving_003a-Protection-Against-Disasters"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Reverting" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Auto-Save-Files" title="Next section in reading order"> &gt; </a>]</td>
@@ -952,7 +952,7 @@ typing.
 
 <hr size="6">
 <a name="Auto-Save-Files"></a>
-<a name="SEC145"></a>
+<a name="Auto_002dSave-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Auto-Save-Control" title="Next section in reading order"> &gt; </a>]</td>
@@ -1006,7 +1006,7 @@ auto-save file to correspond to the new visited name.
 </p>
 <hr size="6">
 <a name="Auto-Save-Control"></a>
-<a name="SEC146"></a>
+<a name="Controlling-Auto_002dSaving"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save-Files" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Recover" title="Next section in reading order"> &gt; </a>]</td>
@@ -1062,7 +1062,7 @@ buffer.
 </p>
 <hr size="6">
 <a name="Recover"></a>
-<a name="SEC147"></a>
+<a name="Recovering-Data-from-Auto_002dSaves"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save-Control" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Version-Control" title="Next section in reading order"> &gt; </a>]</td>
@@ -1106,7 +1106,7 @@ with <kbd>M-x auto-save-mode</kbd>.
 </p>
 <hr size="6">
 <a name="Version-Control"></a>
-<a name="SEC148"></a>
+<a name="Version-Control-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Recover" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Concepts-of-VC" title="Next section in reading order"> &gt; </a>]</td>
@@ -1172,7 +1172,7 @@ using.
 
 <hr size="6">
 <a name="Concepts-of-VC"></a>
-<a name="SEC149"></a>
+<a name="Concepts-of-Version-Control"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Version-Control" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Editing-with-VC" title="Next section in reading order"> &gt; </a>]</td>
@@ -1225,7 +1225,7 @@ files that make up a program.  See section <a href="#Snapshots">Snapshots</a>.
 </p>
 <hr size="6">
 <a name="Editing-with-VC"></a>
-<a name="SEC150"></a>
+<a name="Editing-with-Version-Control"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Concepts-of-VC" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Variables-for-Check_002din_002fout" title="Next section in reading order"> &gt; </a>]</td>
@@ -1375,7 +1375,7 @@ argument, it reads the version number with the minibuffer.
 </p>
 <hr size="6">
 <a name="Variables-for-Check_002din_002fout"></a>
-<a name="SEC151"></a>
+<a name="Variables-Affecting-Check_002din-and-Check_002dout"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Editing-with-VC" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Log-Entries" title="Next section in reading order"> &gt; </a>]</td>
@@ -1433,7 +1433,7 @@ happens automatically.
 </p>
 <hr size="6">
 <a name="Log-Entries"></a>
-<a name="SEC152"></a>
+<a name="Log-Entries-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Variables-for-Check_002din_002fout" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Change-Logs-and-VC" title="Next section in reading order"> &gt; </a>]</td>
@@ -1482,7 +1482,7 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 </p>
 <hr size="6">
 <a name="Change-Logs-and-VC"></a>
-<a name="SEC153"></a>
+<a name="Change-Logs-and-VC-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Log-Entries" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Old-Versions" title="Next section in reading order"> &gt; </a>]</td>
@@ -1596,7 +1596,7 @@ to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 </p>
 <hr size="6">
 <a name="Old-Versions"></a>
-<a name="SEC154"></a>
+<a name="Examining-And-Comparing-Old-Versions"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Change-Logs-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#VC-Status" title="Next section in reading order"> &gt; </a>]</td>
@@ -1668,7 +1668,7 @@ See section <a href="#Comparing-Files">Comparing Files</a>, for more information
 </p>
 <hr size="6">
 <a name="VC-Status"></a>
-<a name="SEC155"></a>
+<a name="VC-Status-Commands"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Old-Versions" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Renaming-and-VC" title="Next section in reading order"> &gt; </a>]</td>
@@ -1720,7 +1720,7 @@ change.
 </p>
 <hr size="6">
 <a name="Renaming-and-VC"></a>
-<a name="SEC156"></a>
+<a name="Renaming-VC-Work-Files-and-Master-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#VC-Status" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Snapshots" title="Next section in reading order"> &gt; </a>]</td>
@@ -1751,7 +1751,7 @@ someone else.
 </p>
 <hr size="6">
 <a name="Snapshots"></a>
-<a name="SEC157"></a>
+<a name="Snapshots-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Renaming-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Making-Snapshots" title="Next section in reading order"> &gt; </a>]</td>
@@ -1784,7 +1784,7 @@ system that is ready for distribution to users.
 
 <hr size="6">
 <a name="Making-Snapshots"></a>
-<a name="SEC158"></a>
+<a name="Making-and-Using-Snapshots"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Snapshot-Caveats" title="Next section in reading order"> &gt; </a>]</td>
@@ -1840,7 +1840,7 @@ or a snapshot against a named version.
 </p>
 <hr size="6">
 <a name="Snapshot-Caveats"></a>
-<a name="SEC159"></a>
+<a name="Snapshot-Caveats-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Making-Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Version-Headers" title="Next section in reading order"> &gt; </a>]</td>
@@ -1893,7 +1893,7 @@ won&rsquo;t really work as retrieved.
 </p>
 <hr size="6">
 <a name="Version-Headers"></a>
-<a name="SEC160"></a>
+<a name="Inserting-Version-Control-Headers"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Snapshot-Caveats" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#ListDir" title="Next section in reading order"> &gt; </a>]</td>
@@ -1982,7 +1982,7 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 
 <hr size="6">
 <a name="ListDir"></a>
-<a name="SEC161"></a>
+<a name="Listing-a-File-Directory"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Version-Headers" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Comparing-Files" title="Next section in reading order"> &gt; </a>]</td>
@@ -2057,7 +2057,7 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 </p>
 <hr size="6">
 <a name="Comparing-Files"></a>
-<a name="SEC162"></a>
+<a name="Comparing-Files-1"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ListDir" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Dired" title="Next section in reading order"> &gt; </a>]</td>
@@ -2111,7 +2111,7 @@ non-<code>nil</code>, it ignores differences in case as well.
 </p>
 <hr size="6">
 <a name="Dired"></a>
-<a name="SEC163"></a>
+<a name="Dired_002c-the-Directory-Editor"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Comparing-Files" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Dired-Enter" title="Next section in reading order"> &gt; </a>]</td>
@@ -2148,7 +2148,7 @@ buffer and special Dired commands to operate on the files.
 
 <hr size="6">
 <a name="Dired-Enter"></a>
-<a name="SEC164"></a>
+<a name="Entering-Dired"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Dired-Edit" title="Next section in reading order"> &gt; </a>]</td>
@@ -2184,7 +2184,7 @@ window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd
 </p>
 <hr size="6">
 <a name="Dired-Edit"></a>
-<a name="SEC165"></a>
+<a name="Editing-in-Dired"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Enter" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Dired-Deletion" title="Next section in reading order"> &gt; </a>]</td>
@@ -2235,7 +2235,7 @@ buffer are lost when this is done.
 </p>
 <hr size="6">
 <a name="Dired-Deletion"></a>
-<a name="SEC166"></a>
+<a name="Deleting-Files-With-Dired"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Edit" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Dired-Immed" title="Next section in reading order"> &gt; </a>]</td>
@@ -2330,7 +2330,7 @@ file to keep.
 </p>
 <hr size="6">
 <a name="Dired-Immed"></a>
-<a name="SEC167"></a>
+<a name="Immediate-File-Operations-in-Dired"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Misc-File-Ops" title="Next section in reading order"> &gt; </a>]</td>
@@ -2382,7 +2382,7 @@ directory.
 
 <hr size="6">
 <a name="Misc-File-Ops"></a>
-<a name="SEC168"></a>
+<a name="Miscellaneous-File-Operations"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Immed" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next section in reading order"> &gt; </a>]</td>

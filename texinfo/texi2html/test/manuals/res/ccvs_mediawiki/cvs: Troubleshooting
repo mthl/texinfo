@@ -1,5 +1,5 @@
 <div id="Troubleshooting"></div>
-<div id="SEC183"></div>
+<div id="Troubleshooting-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Error-messages| &gt; ]]|</td>
@@ -32,7 +32,7 @@ mentioned there.
 
 <hr size="6">
 <div id="Error-messages"></div>
-<div id="SEC184"></div>
+<div id="Partial-list-of-error-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connection| &gt; ]]|</td>
@@ -445,7 +445,7 @@ exit 0
 
 <hr size="6">
 <div id="Connection"></div>
-<div id="SEC185"></div>
+<div id="Trouble-making-a-connection-to-a-CVS-server"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Other-problems| &gt; ]]|</td>
@@ -594,7 +594,7 @@ others allow you to set the limit for each service separately.)
 
 <hr size="6">
 <div id="Other-problems"></div>
-<div id="SEC186"></div>
+<div id="Other-common-problems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Credits#Credits  &gt; ]|</td>
