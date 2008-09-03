@@ -60,6 +60,8 @@ An example.
 example
 @end example
 
+@anchor{Anchor in caption}
+
 A table.
 @table @emph
 @item truc 
@@ -148,6 +150,48 @@ A warning
 Text in chapter
 
 @caption{Text in chapter}
+@end float
+
+@float Text, float with a lot of features and no shortcaption
+
+Float text of a float with a lot of features.
+
+@caption{ An example of float caption@enddots{} 2
+An example 2.
+@example 
+example 2
+@end example
+
+A table 2.
+@table @emph
+@item truc 2 
+line 2
+@end table
+
+A multitable 2.
+@multitable {truc} {bidule}
+@item truc 2 @tab bidule
+@item truc 2 @tab bidule
+@end multitable
+An index entry 2
+@cindex float example in caption 2
+
+An itemize 2.
+@itemize @minus
+@item truc 2
+line
+@end itemize
+
+@anchor{Anchor in caption 2}
+
+A ref 2.
+@xref{Top,xref Text with features caption}.
+A footnote 2.
+@footnote{footnote Text with features caption 2}.
+
+@TeX{} and @emph{@b{t@'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+}
+
 @end float
 
 @float th@'eor@`eme, theoreme

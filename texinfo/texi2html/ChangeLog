@@ -1,3 +1,14 @@
+2008-09-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: add prepare_state_multiple_pass function to ease
+	formatting more than once specific texts (in index entries, prepended
+	in @itemize, @caption formatting outside of document...) as if
+	they were in special regions (@copying, @titlepage...).
+	* examples/docbook: create valid docbook in @?(v|f)table taking 
+	into account the strictness of docbook.
+	Remove title for text before first item, docbook handles right
+	anything before the real table beginning.
+
 2008-09-02  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: section names and headings cross

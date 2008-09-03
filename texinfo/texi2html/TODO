@@ -290,8 +290,6 @@ texi2html all the style commands are removed without extra formatting.
 
 * decide @documentencoding @. And maybe change regexp.
 
-* only_inter_item_commands doesn't seems to work in docbook listitem
-
 * html32 is not up to date: 
 Error at line 2159, character 8:  unknown entity "euro"
 Error at line 2161, character 7:  unknown entity "le"
@@ -312,11 +310,13 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * verify that code_style is used for code_style style @-commands 
   in remove_texi.
 
-* docbook is very picky in variablelist.
-valistentry has (term+ , listitem). So one have to create empty listitem
-if needed.
-Also no paragraph in title.
-And in function only replaceable and type. And in replaceable, nothing.
+* docbook: in function no style. 
+  replaceable is for @var or function argument. Only characters.
+
+  Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
+  for deftype*, funcdef for defffn, ooclass for object oriented.
+
+  also informalfigure in @float
 
 * to solve above issue, the definition arg formatted with simple_format 
   should alo be passed down
@@ -352,6 +352,3 @@ And in function only replaceable and type. And in replaceable, nothing.
      @subtitle subtitle
      @author by Somebody and Someone
      @author and Other people
-
-
-rerun all tests

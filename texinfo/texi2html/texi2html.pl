@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.229 2008-09-02 12:06:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.230 2008-09-03 10:38:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6445,7 +6445,7 @@ sub enter_index_entry($$$$$$$$)
 {
     my $prefix = shift;
     my $line_nr = shift;
-    my $key = shift;
+    my $entry = shift;
     my $place = shift;
     my $element = shift;
     my $use_section_id = shift;
@@ -6454,19 +6454,20 @@ sub enter_index_entry($$$$$$$$)
     unless ($index_prefix_to_name{$prefix})
     {
         echo_error ("Undefined index command: ${prefix}index", $line_nr);
-        $key = '';
+        $entry = '';
     }
     if (!exists($element->{'tag'}) and !$element->{'footnote'})
     {
-        echo_warn ("Index entry before document: \@${prefix}index $key", $line_nr); 
+        echo_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
     }
     #print STDERR "($region) $key" if $region;
-    $key =~ s/\s+$//;
-    $key =~ s/^\s*//;
-    my $entry = $key;
-    # The $key is mostly usefull for alphabetical sorting
+    $entry =~ s/\s+$//;
+    $entry =~ s/^\s*//;
+    # The $key is mostly usefull for alphabetical sorting.
+    # beware that an entry beginning with a format will lead to an empty
+    # key, but with some texi.
     # FIXME this should be done later, during formatting.
-    $key = remove_texi($key);
+    my $key = remove_texi($entry);
     my $id = '';
 
     my $index_entry_hidden = (($place eq $no_element_associated_place) or $region);
@@ -6488,9 +6489,9 @@ sub enter_index_entry($$$$$$$$)
            'prefix'   => $prefix
     };
             
-    print STDERR "# enter \@$command ${prefix}index '$key' with id $id ($index_entry)\n"
+    print STDERR "# enter \@$command ${prefix}index($key) [$entry] with id $id ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    if ($key =~ /^\s*$/)
+    if ($entry =~ /^\s*$/)
     {
         # makeinfo doesn't warn, but texi2dvi breaks.
         echo_warn("Empty index entry for \@$command",$line_nr);
@@ -8863,6 +8864,23 @@ sub push_complex_format_style($$$)
     push @{$state->{'preformatted_stack'}}, $format_style;
 }
 
+sub prepare_state_multiple_pass($$)
+{
+    my $command = shift;
+    my $state = shift;
+    my $return_state = { 
+         'multiple_pass' => 1, 
+          'region_pass' => 1, 
+          'element' => $state->{'element'},
+         };
+    if (defined($command))
+    {
+        $return_state->{'region'} = $command;
+        $return_state->{'command_stack'} = ["$command"];
+    }
+    return $return_state;
+}
+
 sub begin_format($$$$$$);
 
 sub begin_format($$$$$$)
@@ -9038,7 +9056,7 @@ sub begin_format($$$$$$)
             ($prepended, $command) = parse_format_command($line,$macro);
             $command = 'asis' if (($command eq '') and ($macro ne 'itemize'));
             my $prepended_formatted;
-            $prepended_formatted = substitute_line($prepended, {'multiple_pass' => 1}) if (defined($prepended));
+            $prepended_formatted = substitute_line($prepended, prepare_state_multiple_pass('item', $state)) if (defined($prepended));
             $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'prepended_formatted' => $prepended_formatted };
             $line = '';
         }
@@ -9062,7 +9080,7 @@ sub begin_format($$$$$$)
             {
                 foreach my $prototype (@$prototype_row)
                 { 
-                   push @prototype_lengths, 2+length(substitute_line($prototype, {'multiple_pass' => 1})); 
+                   push @prototype_lengths, 2+length(substitute_line($prototype, prepare_state_multiple_pass('columnfractions', $state))); 
                 }
             }
             $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'columnfractions' => $fractions, 'prototype_row' => $prototype_row, 'prototype_lengths' => \@prototype_lengths, 'cell' => 1 };
@@ -9593,7 +9611,7 @@ sub do_caption_shortcaption($$$$$)
     my @texi_lines = map {$_ = $_."\n"} split (/\n/, $text_texi);
     $float->{"${command}_texi"} = \@texi_lines;
     return  &$Texi2HTML::Config::caption_shortcaption_command($command, 
-       substitute_text({ 'multiple_pass' => 1, 'region' => $command, 'region_pass' => 1, 'command_stack' => ["$command"]} , undef, @texi_lines), \@texi_lines, $float);
+       substitute_text(prepare_state_multiple_pass($command, $state) , undef, @texi_lines), \@texi_lines, $float);
 }
 
 # function called when a @float is encountered. Don't do any output
@@ -11252,12 +11270,12 @@ sub scan_structure($$$$;$)
             elsif (index_command_prefix($macro) ne '')
             { # if we are already in a (v|f)table the construct is quite 
               # wrong
-              # FIXME but could be made acceptable if needed
-                if ($state->{'item'})
-                {
-                   echo_error("ignored \@$macro already in an \@$state->{'item'} entry", $line_nr);
-                   next;
-                }
+              # FIXME should it be discarded?
+              #  if ($state->{'item'})
+              #  {
+              #     echo_error("ignored \@$macro already in an \@$state->{'item'} entry", $line_nr);
+              #     next;
+              #  }
                 my $index_prefix = index_command_prefix($macro);
                 my $key = $cline;
                 $key =~ s/^\s*//;
@@ -12001,7 +12019,7 @@ sub scan_line($$$$;$)
                               # the caption has already been formatted, 
                               # and these have been handled at the right place
                               # FIXME footnotes?
-                              my $caption = substitute_text({ 'multiple_pass' => 1, 'region' => 'listoffloats', 'region_pass' => 1 }, undef, @$caption_lines);
+                              my $caption = substitute_text(prepare_state_multiple_pass($macro, $state), undef, @$caption_lines);
                               push @listoffloats_entries, &$Texi2HTML::Config::listoffloats_entry($arg, $float, $float_style, $caption, href($float, $state->{'element'}->{'file'}, $line_nr));
                          }
                          add_prev($text, $stack, &$Texi2HTML::Config::listoffloats($arg, $style, \@listoffloats_entries));
@@ -12230,7 +12248,7 @@ sub scan_line($$$$;$)
                 chomp($entry_texi);
                 $entry_texi =~ s/\s*$//;
                 # FIXME multiple_pass?
-                my $entry_text = substitute_line($entry_texi);
+                my $entry_text = substitute_line($entry_texi, prepare_state_multiple_pass($macro, $state));
                 my ($index_entry, $index_label) = do_index_entry_label($macro,$state,$line_nr);
 
                 if (defined($index_entry))
@@ -12689,7 +12707,7 @@ sub add_term($$$$)
     {
         my $index_entry;
         ($index_entry, $index_label) = do_index_entry_label($format->{'format'}, $state,$line_nr);
-        print STDERR "Bug: no index entry for $text" unless defined($index_label);
+        print STDERR "Bug: no index entry for $term->{'text'}" unless defined($index_label);
     }
     add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $formatted_command,$state->{'command_stack'}, $term_formatted, $leading_spaces, $trailing_spaces, $format->{'item_cmd'}));
     #$state->{'no_paragraph'}--;
@@ -13764,11 +13782,11 @@ sub do_index_entry_label($$$)
         echo_warn ("Waiting for index cmd \@$entry->{'command'}, got \@$command", $line_nr);
     }
     
-    print STDERR "[(index $command) $entry->{'entry'} $entry->{'label'}]\n"
+    print STDERR "(index $command) [$entry->{'entry'}] $entry->{'label'}\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    return ($entry, &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), 
+    return ($entry, &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}, prepare_state_multiple_pass("${command}_index", $state)), 
       $index_prefix_to_name{$entry->{'prefix'}},
-       $command, $entry->{'texi'}, substitute_line($entry->{'texi'}))); 
+       $command, $entry->{'texi'}, substitute_line($entry->{'texi'}, prepare_state_multiple_pass("${command}_index", $state)))); 
 }
 
 # decompose a decimal number on a given base. The algorithm looks like

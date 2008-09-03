@@ -1,0 +1,116 @@
+inter_item_commands.texi(,2) 
+inter_item_commands.texi(,3) @setfilename inter_item_commands.info
+inter_item_commands.texi(,4) 
+inter_item_commands.texi(,5) @node Top 
+inter_item_commands.texi(,6) @top Test inter item ignored commands
+inter_item_commands.texi(,7) 
+inter_item_commands.texi(,8) 
+inter_item_commands.texi(,9) @itemize @code
+inter_item_commands.texi(,10) @c comment in itemize
+inter_item_commands.texi(,11) @cindex also a cindex in itemize
+inter_item_commands.texi(,12) @item e--mph item
+inter_item_commands.texi(,13) @end itemize
+inter_item_commands.texi(,14) 
+inter_item_commands.texi(,15) @itemize @bullet
+inter_item_commands.texi(,16) @cindex index entry within itemize
+inter_item_commands.texi(,17) @item i--tem 1
+inter_item_commands.texi(,18) @item @cindex index entry right after @@item
+inter_item_commands.texi(,19) i--tem 2
+inter_item_commands.texi(,20) @end itemize
+inter_item_commands.texi(,21) 
+inter_item_commands.texi(,22) @itemize
+inter_item_commands.texi(,23) @c comment in itemize
+inter_item_commands.texi(,24) T--ext before items.
+inter_item_commands.texi(,25) @cindex also a cindex in itemize
+inter_item_commands.texi(,26) @item bullet item
+inter_item_commands.texi(,27) @end itemize
+inter_item_commands.texi(,28) 
+inter_item_commands.texi(,29) @enumerate
+inter_item_commands.texi(,30) 
+inter_item_commands.texi(,31) @comment comment before first item in enumerate
+inter_item_commands.texi(,32) @item e--numerate
+inter_item_commands.texi(,33) @end enumerate
+inter_item_commands.texi(,34) 
+inter_item_commands.texi(,35) @multitable {truc}
+inter_item_commands.texi(,36) @c comment before first item
+inter_item_commands.texi(,37) 
+inter_item_commands.texi(,38) @item truc
+inter_item_commands.texi(,39) 
+inter_item_commands.texi(,40) @cindex index entry between empty lines
+inter_item_commands.texi(,41) 
+inter_item_commands.texi(,42) @item trouc
+inter_item_commands.texi(,43) @c last comment
+inter_item_commands.texi(,44) @end multitable
+inter_item_commands.texi(,45) 
+inter_item_commands.texi(,46) @multitable @columnfractions 6 7
+inter_item_commands.texi(,47) @headitem mu--ltitable headitem @tab another tab
+inter_item_commands.texi(,48) @item mu--ltitable item @tab multitable tab
+inter_item_commands.texi(,49) @c comment in multitable
+inter_item_commands.texi(,50) @item mu--ltitable item 2 @tab multitable tab 2
+inter_item_commands.texi(,51) @cindex index entry within multitable
+inter_item_commands.texi(,52) @item lone mu--ltitable item
+inter_item_commands.texi(,53) @end multitable
+inter_item_commands.texi(,54) 
+inter_item_commands.texi(,55) @deffn fset @var{i} a g
+inter_item_commands.texi(,56) @c comment before first deffnx
+inter_item_commands.texi(,57) 
+inter_item_commands.texi(,58) @deffnx Command { log trap1} {}  
+inter_item_commands.texi(,59) @cindex between deffnx
+inter_item_commands.texi(,60) @deffnx cmde2 @b{id @samp{i} ule} truc
+inter_item_commands.texi(,61) @cindex cindex in deff item
+inter_item_commands.texi(,62) 
+inter_item_commands.texi(,63) In deff item.
+inter_item_commands.texi(,64) @end deffn
+inter_item_commands.texi(,65) 
+inter_item_commands.texi(,66) @vtable @code
+inter_item_commands.texi(,67) @c comment in table
+inter_item_commands.texi(,68) @item a
+inter_item_commands.texi(,69) l--ine
+inter_item_commands.texi(,70) @end vtable
+inter_item_commands.texi(,71) 
+inter_item_commands.texi(,72) @vtable @asis
+inter_item_commands.texi(,73) @item a
+inter_item_commands.texi(,74) @c comment between item and itemx
+inter_item_commands.texi(,75) @itemx b
+inter_item_commands.texi(,76) l--ine
+inter_item_commands.texi(,77) @end vtable
+inter_item_commands.texi(,78) 
+inter_item_commands.texi(,79) @ftable @var
+inter_item_commands.texi(,80) @item a
+inter_item_commands.texi(,81) @cindex index entry between item and itemx
+inter_item_commands.texi(,82) @c and a comment
+inter_item_commands.texi(,83) @comment and another comment
+inter_item_commands.texi(,84) @itemx b
+inter_item_commands.texi(,85) l--ine
+inter_item_commands.texi(,86) @item c
+inter_item_commands.texi(,87) 
+inter_item_commands.texi(,88) @c comment between lines
+inter_item_commands.texi(,89) 
+inter_item_commands.texi(,90) @itemx d
+inter_item_commands.texi(,91) 
+inter_item_commands.texi(,92) @c comment at end
+inter_item_commands.texi(,93) @end ftable
+inter_item_commands.texi(,94) 
+inter_item_commands.texi(,95) @table @code
+inter_item_commands.texi(,96) @cindex cindex in table 
+inter_item_commands.texi(,97) @c comment in table
+inter_item_commands.texi(,98) @item abb
+inter_item_commands.texi(,99) l--ine
+inter_item_commands.texi(,100) @end table
+inter_item_commands.texi(,101) 
+inter_item_commands.texi(,102) @table @code
+inter_item_commands.texi(,103) @cindex cindex in table 
+inter_item_commands.texi(,104) Texte before first item.
+inter_item_commands.texi(,105) @item abb
+inter_item_commands.texi(,106) @end table
+inter_item_commands.texi(,107) 
+inter_item_commands.texi(,108) cp
+inter_item_commands.texi(,109) @printindex cp
+inter_item_commands.texi(,110) 
+inter_item_commands.texi(,111) fn
+inter_item_commands.texi(,112) @printindex fn
+inter_item_commands.texi(,113) 
+inter_item_commands.texi(,114) vr
+inter_item_commands.texi(,115) @printindex vr
+inter_item_commands.texi(,116) 
+inter_item_commands.texi(,117) @bye

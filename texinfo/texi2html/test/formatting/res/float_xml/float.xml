@@ -79,6 +79,8 @@ A footnote.
 An example.
 <example xml:space="preserve">example
 </example>
+
+
 A table.
 <table><tableitem><tableterm> <emph>truc</emph> </tableterm>
 <item><para>line
@@ -202,6 +204,48 @@ A footnote.
 </para>
 <caption>Text in chapter
 </caption>
+</float>
+
+<float name="float with a lot of features and no shortcaption">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+
+<para>Float text of a float with a lot of features.
+</para>
+<caption> An example of float caption&enddots; 2
+An example 2.
+<example xml:space="preserve">example 2
+</example>
+A table 2.
+<table><tableitem><tableterm> <emph>truc 2</emph> </tableterm>
+<item><para>line 2
+</para></item></tableitem></table>
+
+A multitable 2.
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc 2 </entry><entry> bidule
+</entry></row><row><entry> truc 2 </entry><entry> bidule
+</entry></row></tbody></multitable>
+An index entry 2
+<indexterm index="cp">float example in caption 2</indexterm>
+An itemize 2.
+<itemize><itemfunction>&minus;</itemfunction><item><para> truc 2
+line
+</para></item>
+</itemize>
+
+
+
+A ref 2.
+See <xref><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features caption</xrefinfoname></xref>.
+A footnote 2.
+<footnote><para>footnote Text with features caption 2
+</para></footnote>.
+
+&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+</caption>
+
 </float>
 
 <float name="theoreme">

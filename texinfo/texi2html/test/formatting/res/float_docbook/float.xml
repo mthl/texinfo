@@ -84,6 +84,12 @@ A footnote.
 </para>
 
 
+<anchor id="float with a lot of features and no shortcaption"></anchor>
+<para>Float text of a float with a lot of features.
+</para>
+
+
+
 <anchor id="theoreme"></anchor><para>A th&eacute;or&egrave;me
 </para>
 

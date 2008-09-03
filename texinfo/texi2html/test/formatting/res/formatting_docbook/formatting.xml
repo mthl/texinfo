@@ -283,7 +283,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -324,7 +324,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -478,13 +478,13 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<!-- comment between item and itemx -->
-<term> b</term>
+<term><!-- comment between item and itemx -->
+ b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
+<term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -804,7 +804,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -845,7 +845,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -999,13 +999,13 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<!-- comment between item and itemx -->
-<term> b</term>
+<term><!-- comment between item and itemx -->
+ b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
+<term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1321,7 +1321,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem><para> i&ndash;tem 1
+<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -1362,7 +1362,7 @@ After clickstyle &rArr;
 <blockquote><para>def&ndash;fn
 </para></blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -1516,13 +1516,13 @@ ref, a comma@comma{} in file}</literal>
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<!-- comment between item and itemx -->
-<term> b</term>
+<term><!-- comment between item and itemx -->
+ b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
+<term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>&minus; b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1838,7 +1838,7 @@ After clickstyle &rArr;
 <listitem> e--mph item
 </listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><title><indexterm role="cp"><primary>index entry within itemize</primary></indexterm></title><listitem> i--tem 1
+<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem> i--tem 1
 </listitem>
 <listitem> i--tem 2
 </listitem>
@@ -1879,7 +1879,7 @@ After clickstyle &rArr;
 <blockquote>def--fn
 </blockquote></informalfigure> 
 <informalfigure><synopsis role="fset"><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><function><replaceable>i</replaceable></function><replaceable> a</replaceable><replaceable> g</replaceable></synopsis>
-<blockquote><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></blockquote><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
+<indexterm role="cp"><primary>index entry within deffn</primary></indexterm><synopsis role="cmde"><indexterm role="fn"><primary>truc</primary></indexterm><function>truc</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
@@ -2033,13 +2033,13 @@ ref, a comma@comma{} in file}</literal>
 </listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term> a</term>
-<!-- comment between item and itemx -->
-<term> b</term>
+<term><!-- comment between item and itemx -->
+ b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 
 <variablelist><varlistentry><term>&minus; a</term>
-<listitem><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></listitem><term>&minus; b</term>
+<term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>&minus; b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 

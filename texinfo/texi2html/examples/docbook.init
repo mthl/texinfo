@@ -195,7 +195,7 @@ $things_map{'quotesinglbase'} = '&lsquor;';
 
 %pre_map = %things_map;
 
-delete $inter_item_commands{'cindex'};
+#delete $inter_item_commands{'cindex'};
 
 #$no_pagraph_commands{'cindex'} = 0;
 $no_pagraph_commands{'float'} = 0;
@@ -1059,6 +1059,16 @@ sub docbook_cell($$;$$)
     return "<entry>" . $text . '</entry>';
 }
 
+# if varlistentry_state is > 0 it means that a varlistentry is opened.
+# if varlistentry_state is == 2 it means that we are in a succession
+#          of term
+# if varlistentry_state is == 1 it means that we are in the line
+# Having a listitem in a varlistentry is a must, so an empty
+# listitem is added if a varlistentry is closed and varlistentry_state == 2
+#
+# varlistentry acceps only term and listitem, so inter_item_commands
+# are put in the next term, or, if at the end of the table in a last
+# listitem
 sub docbook_table_item($$$$$$$$$)
 {
     my $text = shift;
@@ -1084,10 +1094,22 @@ sub docbook_table_item($$$$$$$$$)
     }
 
     my $result = '';
+    if (defined($docbook_table_stack[-1]->{'inter_item'}))
+    {
+        $formatted_command = $docbook_table_stack[-1]->{'inter_item'} . $formatted_command;
+        delete $docbook_table_stack[-1]->{'inter_item'};
+    }
     if ($item_cmd eq 'item')
     {
-        $result .= '</varlistentry>' if ($docbook_table_stack[-1] == 1);
-        $docbook_table_stack[-1] = 1;
+        if ($docbook_table_stack[-1]->{'varlistentry_state'} == 2)
+        {
+            $result .= "<listitem><para><!-- empty table line --></para></listitem>";
+        }
+        if ($docbook_table_stack[-1]->{'varlistentry_state'} >= 1)
+        {
+            $result .= '</varlistentry>';
+        }
+        $docbook_table_stack[-1]->{'varlistentry_state'} = 2;
         $result .= '<varlistentry>';
     }
     $result .= '<term>';
@@ -1107,8 +1129,22 @@ sub docbook_table_line($$$)
 
     if ($text =~ /\S/)
     {
-        return "<listitem>$text</listitem>" unless $only_inter_item_commands;
-        return $text;
+        if ($before_items)
+        {
+            return $text
+        }
+
+        if ($only_inter_item_commands)
+        {
+            $docbook_table_stack[-1]->{'inter_item'} = $text;
+            return '';
+        }
+        else
+        {
+            $docbook_table_stack[-1]->{'varlistentry_state'} = 1;
+            return "<listitem>$text</listitem>";
+        }
+        #return $text;
     }
     else
     {
@@ -1135,8 +1171,8 @@ sub docbook_list_item($$$$$$$$$)
 #my $prep_t = 'UNDEF'; $prep_t = $prepended if (defined($prepended));
 #$item_nr = 0 if (!defined($item_nr));
 #print STDERR "  $item_nr --> $prep_t|${text}!!!!!\n";
-    return $text if ($only_inter_item_commands and $before_items);
-    return '<title>' . $text. '</title>' if ($before_items);
+    #return $text if ($only_inter_item_commands and $before_items);
+    return  $text if ($before_items);
     return '<listitem>' . $text . "</listitem>\n";
 }
 
@@ -1230,7 +1266,16 @@ sub docbook_table_list($$$$$$$$$)
     elsif ($format_command =~ /^(v|f)?table$/)
     {
        $result = docbook_add_id('variablelist').'>';
-       $text .= '</varlistentry>' if ($docbook_table_stack[-1] == 1);
+       if (defined($docbook_table_stack[-1]->{'inter_item'}))
+       { # there is a para in case there is only a comment, to avoid
+         # an empty listitem
+           $text .= "<listitem><para>$docbook_table_stack[-1]->{'inter_item'}</para></listitem>";
+       }
+       elsif ($docbook_table_stack[-1]->{'varlistentry_state'} == 2)
+       {
+           $text .= "<listitem><para><!-- empty table line --></para></listitem>";
+       }
+       $text .= '</varlistentry>' if ($docbook_table_stack[-1]->{'varlistentry_state'} >= 1);
        pop @docbook_table_stack;
        return $result . "$text</variablelist>\n";
     }
@@ -1242,8 +1287,9 @@ sub docbook_begin_format_texi($$$)
     my $line = shift;
     my $state = shift;
 
+    $pending_inter_item_text = undef; # if ($command =~ /^(v|f)?table/);
     push (@docbook_multitable_stack, -1) if ($command eq 'multitable');
-    push (@docbook_table_stack, 0) if ($command =~ /^(v|f)?table/);
+    push (@docbook_table_stack, {'varlistentry_state' => 0}) if ($command =~ /^(v|f)?table/);
     return $line;
 }
 
