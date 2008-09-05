@@ -4,6 +4,7 @@
 foreach my $direction (('Up', 'Forward', 'Back', 'Next',
                         'Prev', 'FastForward', 'FastBack', 'This', 'NodeUp',
                         'NodePrev', 'NodeNext', 'Following' ))
+#                        'NodePrev', 'NodeNext', 'ToplevelPrev', 'ToplevelNext',  'Following' ))
 
 {
     my $direction_node = "node-".$direction;

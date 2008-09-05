@@ -43,3 +43,4 @@ node-whitespace node-whitespace.texi -init makeinfo.init
 nodes_id_docbook nodes_id.texi --init docbook.init
 two_footnotes_in_nodes two_footnotes_in_nodes.texi -init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
+more_nodes_than_sections more_nodes_than_sections.texi -init makeinfo.init
