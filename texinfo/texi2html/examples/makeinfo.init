@@ -5,6 +5,8 @@ $SHOW_MENU = 1;
 
 $USE_NODES = 1;
 
+#$ONLY_NODES = 1;
+
 $SPLIT = 'node';
 
 $NODE_FILES = 1;
@@ -39,6 +41,8 @@ $USE_ACCESSKEY = 1;
 $USE_REL_REV = 1;
 
 $USE_LINKS = 1;
+
+$INLINE_CONTENTS = 1;
 
 @SECTION_BUTTONS =
     (

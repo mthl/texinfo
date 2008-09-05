@@ -1,3 +1,12 @@
+2008-09-04  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't consider Top node is like @top when 
+	finding automatic directions for nodes.
+	And use up node for up if element is a node, instead of relying on
+	the section the node is within.
+	Use toplevelnext and toplevelprev when finding node directions for
+	sections not associated with nodes.
+
 2008-09-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: add prepare_state_multiple_pass function to ease

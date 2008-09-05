@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.155 2008-09-02 12:06:52 pertusus Exp $
+# $Id: texi2html.init,v 1.156 2008-09-05 13:42:53 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1274,7 +1274,7 @@ sub T2H_DEFAULT_print_page_head($)
         foreach my $link (@LINKS_BUTTONS)
         {
 #print STDERR "$link!!$Texi2HTML::HREF{$link}\n";
-            if (defined($Texi2HTML::HREF{$link}))
+            if (defined($Texi2HTML::HREF{$link}) and $Texi2HTML::HREF{$link} ne '')
             {
                 my $title = '';
                 $title = " title=\"$Texi2HTML::SIMPLE_TEXT{$link}\"" if (defined($Texi2HTML::SIMPLE_TEXT{$link}));

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.230 2008-09-03 10:38:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.231 2008-09-05 13:42:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -213,6 +213,7 @@ $FRAMES
 $SHOW_MENU
 $NUMBER_SECTIONS
 $USE_NODES
+$ONLY_NODES
 $USE_NODE_TARGET
 $USE_UNICODE
 $USE_UNIDECODE
@@ -1149,7 +1150,8 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
 
 my @element_directions = ('Up', 'Forward', 'Back', 'Next', 'Prev', 
 'SectionNext', 'SectionPrev', 'SectionUp', 'FastForward', 'FastBack', 
-'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following', 'NextFile', 'PrevFile');
+'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following', 'NextFile', 'PrevFile',
+'ToplevelNext', 'ToplevelPrev');
 $::simple_map_ref = \%Texi2HTML::Config::simple_map;
 $::simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
 $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
@@ -3760,10 +3762,15 @@ sub pass_structure($$)
                             $sections{$section_ref->{'sec_num'}} = $section_ref;
                         }
                         merge_element_before_anything($section_ref);
+                        if ($state->{'node_ref'})
+                        {
+                            $section_ref->{'node_ref'} = $state->{'node_ref'};
+                            push @{$state->{'node_ref'}->{'sections'}}, $section_ref;
+                        }
                         if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
                         {
                             my $node_ref = $state->{'node_ref'};
-                            $section_ref->{'node_ref'} = $node_ref;
+                            $section_ref->{'with_node'} = $node_ref;
                             $section_ref->{'titlefont'} = $node_ref->{'titlefont'};
                             $node_ref->{'with_section'} = $section_ref;
                             $node_ref->{'top'} = 1 if ($tag eq 'top');
@@ -3886,6 +3893,7 @@ sub split_lines($)
 {
    my $line = shift;
    my @result = ();
+   return @result if (!defined($line));
    my $i = 0;
    while ($line ne '')
    {
@@ -4882,7 +4890,9 @@ sub rearrange_elements()
         print STDERR "BUG: node or section_ref defined for section $section->{'texi'}\n"
             if (exists($section->{'node'}) or exists($section->{'section_ref'}));
         ########################### end debug
-        #next if ($section->{'top'});
+        # associate with first node if it is a section appearing before
+        # the first node
+        $section->{'node_ref'} = $nodes_list[0] if ($nodes_list[0] and !$section->{'node_ref'});
         print STDERR "Bug level undef for ($section) $section->{'texi'}\n" if (!defined($section->{'level'}));
         # we track the toplevel next and previous because there is no
         # strict child parent relationship between chapters and top. Indeed
@@ -4897,6 +4907,10 @@ sub rearrange_elements()
                 $section->{'toplevelprev'} = $previous_toplevel; 
             }
             $previous_toplevel = $section;
+            if (defined($section_top) and $section ne $section_top)
+            {
+                $section->{'sectionup'} = $section_top;
+            }
         }
         # undef things under that section level
         my $section_level = $section->{'level'};
@@ -5072,6 +5086,32 @@ sub rearrange_elements()
         }
     }
 
+    # nodes are attached to the section preceding them if not already 
+    # associated with a section
+    my $current_section = $sections_list[0];
+    foreach my $element (@all_elements)
+    {
+        if ($element->{'node'})
+        {
+            if ($element->{'with_section'})
+            { # the node is associated with a section
+                $element->{'section_ref'} = $element->{'with_section'};
+            }
+            elsif (defined($current_section))
+            {# node appearing after a section, but not before another section,
+             # or appearing before any section
+                $element->{'section_ref'} = $current_section;
+                push @{$current_section->{'node_childs'}}, $element;
+            }
+        }
+        else
+        {
+            $current_section = $element;
+        }
+    }
+
+    # FIXME with ONLY_NODES we could find nodes, but it is lkely not to
+    # be useful anyway
     # find section preceding and following top 
     my $section_before_top;   # section preceding the top node
     my $section_after_top;       # section following the top node
@@ -5101,155 +5141,6 @@ sub rearrange_elements()
         if ($section_before_top and ($T2H_DEBUG & $DEBUG_ELEMENTS));
     print STDERR "# section after Top: $section_after_top->{'texi'}\n" 
          if ($section_after_top and ($T2H_DEBUG & $DEBUG_ELEMENTS));
-    
-    print STDERR "# Build the elements list\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-    if (!$Texi2HTML::Config::USE_NODES)
-    {
-        #the only sectionning elements are sections
-        @elements_list = @sections_list;
-        # if there is no section we use nodes...
-        if (!@elements_list)
-        {
-            print STDERR "# no section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            @elements_list = @all_elements;
-        }
-        elsif (!$section_top and $node_top and !$node_top->{'with_section'})
-        { # special case for the top node if it isn't associated with 
-          # a section. The top node element is inserted between the 
-          # $section_before_top and the $section_after_top
-            print STDERR "# Top not associated with a section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            $node_top->{'top_as_section'} = 1;
-            $node_top->{'section_ref'} = $node_top;
-            my @old_element_lists = @elements_list;
-            @elements_list = ();
-            while (@old_element_lists)
-            {
-                my $section = shift @old_element_lists;
-                if ($section_before_top and ($section eq $section_before_top))
-                {
-                    push @elements_list, $section;
-                    push @elements_list, $node_top;
-                    last;
-                }
-                elsif ($section_after_top and ($section eq $section_after_top))
-                {
-                    push @elements_list, $node_top;
-                    push @elements_list, $section;
-                    last;
-                }
-                push @elements_list, $section;
-            }
-            push @elements_list, @old_element_lists;
-        }
-        
-        foreach my $element (@elements_list)
-        {
-            print STDERR "# new section element $element->{'texi'}\n"
-                if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        }
-    }
-    else
-    {
-        # elements are sections if possible, and node if no section associated
-        foreach my $element(@all_elements)
-        {
-            if ($element->{'node'})
-            {
-                if (!defined($element->{'with_section'}))
-                {
-                    $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
-                    print STDERR "# new node element ($element) $element->{'texi'}\n"
-                        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    push @elements_list, $element;
-                }
-            }
-            else
-            {
-                print STDERR "# new section element ($element) $element->{'texi'}\n"
-                    if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                push @elements_list, $element;
-            }
-        }
-    }
-    
-    # nodes are attached to the section preceding them if not already 
-    # associated with a section
-    # here we don't set @{$element->{'nodes'}} since it may be changed 
-    # below if split by indices. Therefore we only set 
-    # @{$element->{'all_elements'}} with all the elements associated
-    # with an element output, in the right order
-    print STDERR "# Find the section associated with each node\n"
-        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-    my $current_section = $sections_list[0];
-    $current_section = $node_top if ($node_top and $node_top->{'top_as_section'} and !$section_before_top);
-    foreach my $element (@all_elements)
-    {
-        if ($element->{'node'} and !$element->{'top_as_section'})
-        {
-            if ($element->{'with_section'})
-            { # the node is associated with a section
-                $element->{'section_ref'} = $element->{'with_section'};
-                push @{$element->{'section_ref'}->{'all_elements'}}, $element, $element->{'section_ref'};
-                # first index is section if the first index is associated with that node
-                $element_index = $element->{'section_ref'} if ($element_index and ($element_index eq $element));
-            }
-            elsif (defined($current_section))
-            {# node appearing after a section, but not before another section,
-             # or appearing before any section
-                $element->{'section_ref'} = $current_section;
-                $element->{'toc_level'} = $current_section->{'toc_level'};
-                push @{$current_section->{'node_childs'}}, $element;
-                if ($Texi2HTML::Config::USE_NODES)
-                { # the node is an element itself
-                    push @{$element->{'all_elements'}}, $element;
-                }
-                else
-                {
-                    push @{$current_section->{'all_elements'}}, $element;
-                    # first index is section if the first index is associated with that node
-                    $element_index = $current_section if ($element_index and ($element_index eq $element));
-                }
-            }
-            else
-            { # seems like there are only nodes in the documents
-                $element->{'toc_level'} = $MIN_LEVEL;
-                push @{$element->{'all_elements'}}, $element;
-            }
-        }
-        else
-        {
-            $current_section = $element;
-            if ($element->{'node'})
-            { # Top node not associated with a section
-                $element->{'toc_level'} = $MIN_LEVEL;
-                push @{$element->{'section_ref'}->{'all_elements'}}, $element;
-            }
-            elsif (!$element->{'node_ref'})
-            { # a section not preceded by a node
-                push @{$element->{'all_elements'}}, $element;
-            }
-        }
-    }
-
-    # find first, last and top elements 
-    $element_first = $elements_list[0];
-    print STDERR "# element first: $element_first->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
-    print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
-        ($T2H_DEBUG & $DEBUG_ELEMENTS));
-    # element top is the element with @top.
-    $element_top = $section_top;
-    # If the top node is associated with a section it is the top_element 
-    # otherwise element top may be the top node 
-    $element_top = $node_top if (!defined($element_top) and defined($node_top));
-    # If there is no @top section no top node the first node is the top element
-    $element_top = $element_first unless (defined($element_top));
-    $element_top->{'top'} = 1 if ($element_top->{'node'});
-    print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
-        ($T2H_DEBUG & $DEBUG_ELEMENTS));
-
-    # It is the last element before indices split, which may add new 
-    # elements
-    $element_last = $elements_list[-1];
     
     print STDERR "# Complete nodes next prev and up based on menus and sections\n"
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -5299,15 +5190,15 @@ sub rearrange_elements()
                     $node->{'nodeup'} = $node_ref;
                 }
             }
-            elsif ($node->{'automatic_directions'} and $node->{'section_ref'})
+            elsif ($node->{'automatic_directions'} and $node->{'with_section'})
             {
-                if (defined($node->{'section_ref'}->{'sectionup'}))
+                if (defined($node->{'with_section'}->{'sectionup'}))
                 {
-                    $node->{'nodeup'} = get_node($node->{'section_ref'}->{'sectionup'});
+                    $node->{'nodeup'} = get_node($node->{'with_section'}->{'sectionup'});
                 }
-                elsif ($node->{'section_ref'}->{'toplevel'} and ($node->{'section_ref'} ne $element_top))
+                elsif ($node->{'with_section'}->{'toplevel'} and defined($section_top) and ($node->{'with_section'} ne $section_top))
                 {
-                    $node->{'nodeup'} = get_node($element_top);
+                    $node->{'nodeup'} = get_node($section_top);
                 }
             }
             print STDERR "# Deducing from section node_up $node->{'nodeup'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS and defined($node->{'nodeup'}));
@@ -5340,10 +5231,10 @@ sub rearrange_elements()
                 $node->{'menu_child'}->{'nodeprev'} = $node;
             }
         }
-        elsif ($node->{'automatic_directions'} and defined($node->{'section_ref'}))
+        elsif ($node->{'automatic_directions'} and defined($node->{'with_section'}))
         {
             my $next;
-            my $section = $node->{'section_ref'};
+            my $section = $node->{'with_section'};
             if (defined($section->{'sectionnext'}))
             {
                 $next = get_node($section->{'sectionnext'})
@@ -5370,9 +5261,9 @@ sub rearrange_elements()
         # Find prev node
         if (!$node->{'nodeprev'} and $node->{'automatic_directions'})
         {
-            if (defined($node->{'section_ref'}))
+            if (defined($node->{'with_section'}))
             {
-                my $section = $node->{'section_ref'};
+                my $section = $node->{'with_section'};
                 if (defined($section->{'sectionprev'}))
                 {
                     $node->{'nodeprev'} = get_node($section->{'sectionprev'});
@@ -5401,9 +5292,9 @@ sub rearrange_elements()
         {
             $node->{'following'} = $node->{'menu_child'};
         }
-        elsif ($node->{'automatic_directions'} and defined($node->{'section_ref'}) and defined($node->{'section_ref'}->{'child'}))
+        elsif ($node->{'automatic_directions'} and defined($node->{'with_section'}) and defined($node->{'with_section'}->{'child'}))
         {
-            $node->{'following'} = get_node($node->{'section_ref'}->{'child'});
+            $node->{'following'} = get_node($node->{'with_section'}->{'child'});
         }
         elsif (defined($node->{'nodenext'}))
         {
@@ -5444,15 +5335,21 @@ sub rearrange_elements()
                 }
             }
         }
-
-        if (defined($node->{'section_ref'}))
+        # FIXME wwith_section or node_ref? with with_section, as it is now
+        # it is only done for the node associated with the section, with
+        # section_ref it will be done for all the nodes after the section but
+        # not associated with another section
+        if (defined($node->{'with_section'}))
         {
-            my $section = $node->{'section_ref'};
+            my $section = $node->{'with_section'};
             foreach my $direction ('sectionnext', 'sectionprev', 'sectionup')
             {
                 $node->{$direction} = $section->{$direction}
                   if (defined($section->{$direction}));
             }
+            # FIXME this is wrong now, since it is only done for
+            # the node->with_section. If done for node->section_ref it 
+            # could be true.
             # this is a node appearing within a section but not associated
             # with that section. We consider that it is below that section.
             $node->{'sectionup'} = $section
@@ -5483,6 +5380,250 @@ sub rearrange_elements()
         $node_nr++;
     }
     
+    # do node directions for sections
+    # FIXME: really do that?
+    foreach my $section (@sections_list)
+    {
+        # If the element is not a node, then all the node directions are copied
+        # if there is an associated node
+        if (defined($section->{'with_node'}))
+        {
+            $section->{'nodenext'} = $section->{'with_node'}->{'nodenext'};
+            $section->{'nodeprev'} = $section->{'with_node'}->{'nodeprev'};
+            $section->{'menu_next'} = $section->{'with_node'}->{'menu_next'};
+            $section->{'menu_prev'} = $section->{'with_node'}->{'menu_prev'};
+            $section->{'menu_child'} = $section->{'with_node'}->{'menu_child'};
+            $section->{'menu_up'} = $section->{'with_node'}->{'menu_up'};
+            $section->{'nodeup'} = $section->{'with_node'}->{'nodeup'};
+            $section->{'following'} = $section->{'with_node'}->{'following'};
+        }
+        else
+        { # the section has no node associated. Find the node directions using 
+          # sections
+            if (defined($section->{'toplevelnext'}))
+            {
+                 $section->{'nodenext'} = get_node($section->{'toplevelnext'});
+            }
+            elsif (defined($section->{'sectionnext'}))
+            {
+                 $section->{'nodenext'} = get_node($section->{'sectionnext'});
+            }
+            if (defined($section->{'toplevelprev'}))
+            {
+                 $section->{'nodeprev'} = get_node($section->{'toplevelprev'});
+            }
+            elsif (defined($section->{'sectionprev'}))
+            {
+                 $section->{'nodeprev'} = get_node($section->{'sectionprev'});
+            }
+            if (defined($section->{'sectionup'}))
+            {
+                 $section->{'nodeup'} = get_node($section->{'sectionup'});
+            }
+
+            if ($section->{'child'})
+            {
+                $section->{'following'} = get_node($section->{'child'});
+            }
+            elsif ($section->{'toplevelnext'})
+            {
+                $section->{'following'} = get_node($section->{'toplevelnext'});
+            }
+            elsif ($section->{'sectionnext'})
+            {
+                $section->{'following'} = get_node($section->{'sectionnext'});
+            }
+            elsif ($section->{'sectionup'})
+            {
+                my $up = $section;
+                while ($up->{'sectionup'} and !$section->{'following'})
+                {
+                    print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'sectionup'});
+                    $up = $up->{'sectionup'};
+                    if ($up->{'sectionnext'})
+                    {
+                        $section->{'following'} = get_node ($up->{'sectionnext'});
+                    }
+                }
+            }
+        }
+    }
+
+    # FIXME next 2 phases should be done in one pass.
+    # Also the special case node Top is texi2html specific, should 
+    # be configurable
+    print STDERR "# Build the elements list\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    if (!$Texi2HTML::Config::USE_NODES)
+    {
+        #the only sectionning elements are sections
+        @elements_list = @sections_list;
+        # if there is no section we use nodes... FIXME should be 
+        # configurable, like with USE_SECTIONS true everything is slumped
+        # is one section.
+        if (!@elements_list)
+        {
+            print STDERR "# no section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            @elements_list = @all_elements;
+        }
+        elsif (!$section_top and $node_top and !$node_top->{'with_section'})
+        { # special case for the top node if it isn't associated with 
+          # a section. The top node element is inserted between the 
+          # $section_before_top and the $section_after_top
+            print STDERR "# Top not associated with a section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            $node_top->{'top_as_section'} = 1;
+            $node_top->{'section_ref'} = $node_top;
+            $node_top->{'with_section'} = $node_top;
+            my @old_element_lists = @elements_list;
+            @elements_list = ();
+            while (@old_element_lists)
+            {
+                my $section = shift @old_element_lists;
+                if ($section_before_top and ($section eq $section_before_top))
+                {
+                    push @elements_list, $section;
+                    push @elements_list, $node_top;
+                    last;
+                }
+                elsif ($section_after_top and ($section eq $section_after_top))
+                {
+                    push @elements_list, $node_top;
+                    push @elements_list, $section;
+                    last;
+                }
+                push @elements_list, $section;
+            }
+            push @elements_list, @old_element_lists;
+        }
+        
+        foreach my $element (@elements_list)
+        {
+            print STDERR "# new section element $element->{'texi'}\n"
+                if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+        }
+    }
+    else
+    {
+        # elements are sections if possible, and node if no section associated
+        foreach my $element(@all_elements)
+        {
+            if ($element->{'node'})
+            {
+                if (!defined($element->{'with_section'}) or $Texi2HTML::Config::ONLY_NODES)
+                {
+                    if (!defined($element->{'toc_level'}))
+                    { # FIXME use Texi2HTML::Config::NODE_TOC_LEVEL?
+                      # also just below.
+                        $element->{'toc_level'} = $MIN_LEVEL;
+                    }
+                    else
+                    {
+                        print STDERR "BUG? node with toc_level\n";
+                    }
+                    print STDERR "# new node element ($element) $element->{'texi'}\n"
+                        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    push @elements_list, $element;
+                }
+            }
+            elsif (! $Texi2HTML::Config::ONLY_NODES)
+            {
+                print STDERR "# new section element ($element) $element->{'texi'}\n"
+                    if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                push @elements_list, $element;
+            }
+            else
+            {
+                if (defined($element->{'node_ref'}))
+                {
+                    print STDERR "# section element ($element) $element->{'texi'} with node $element->{'node_ref'}->{'texi'}\n"
+                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                }
+            }
+        }
+    }
+    
+    # nodes are attached to the section preceding them if not already 
+    # associated with a section
+    # here we don't set @{$element->{'nodes'}} since it may be changed 
+    # below if split by indices. Therefore we only set 
+    # @{$element->{'all_elements'}} with all the elements associated
+    # with an element output, in the right order
+    print STDERR "# Find the section associated with each node\n"
+        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    $current_section = $sections_list[0];
+    $current_section = $node_top if ($node_top and $node_top->{'top_as_section'} and !$section_before_top);
+    foreach my $element (@all_elements)
+    {
+        if ($element->{'node'} and !$element->{'top_as_section'})
+        {
+            if ($element->{'with_section'})
+            { # the node is associated with a section
+                push @{$element->{'section_ref'}->{'all_elements'}}, $element, $element->{'section_ref'};
+                # first index is section if the first index is associated with that node
+                $element_index = $element->{'section_ref'} if ($element_index and ($element_index eq $element));
+            }
+            elsif (defined($current_section))
+            {# node appearing after a section, but not before another section,
+             # or appearing before any section
+                $element->{'toc_level'} = $current_section->{'toc_level'};
+                if ($Texi2HTML::Config::USE_NODES)
+                { # the node is an element itself
+                    push @{$element->{'all_elements'}}, $element;
+                }
+                else
+                {
+                    push @{$current_section->{'all_elements'}}, $element;
+                    # first index is section if the first index is associated with that node
+                    $element_index = $current_section if ($element_index and ($element_index eq $element));
+                }
+            }
+            else
+            { # seems like there are only nodes in the documents
+                $element->{'toc_level'} = $MIN_LEVEL;
+                push @{$element->{'all_elements'}}, $element;
+            }
+        }
+        else
+        {
+            $current_section = $element;
+            if ($element->{'node'})
+            { # Top node not associated with a section
+                $element->{'toc_level'} = $MIN_LEVEL;
+                push @{$element->{'section_ref'}->{'all_elements'}}, $element;
+            }
+            elsif (!$element->{'with_node'})
+            { # a section not preceded by a node
+                push @{$element->{'all_elements'}}, $element;
+            }
+        }
+    }
+
+    # find texi2html specific directions and elements that are not texinfo
+    # language features.
+    #
+    # Maybe Config hooks should be used at that point (up to index 
+    # preparation)
+    #
+    # find first, last and top elements 
+    $element_first = $elements_list[0];
+    print STDERR "# element first: $element_first->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
+    print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
+        ($T2H_DEBUG & $DEBUG_ELEMENTS));
+    # element top is the element with @top.
+    $element_top = $section_top;
+    # If the top node is associated with a section it is the top_element 
+    # otherwise element top may be the top node 
+    $element_top = $node_top if ((!defined($element_top) or $Texi2HTML::Config::ONLY_NODES) and defined($node_top));
+    # If there is no @top section no top node the first node is the top element
+    $element_top = $element_first unless (defined($element_top));
+    $element_top->{'top'} = 1 if ($element_top->{'node'});
+    print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
+        ($T2H_DEBUG & $DEBUG_ELEMENTS));
+
+    # It is the last element before indices split, which may add new 
+    # elements
+    $element_last = $elements_list[-1];
+    
     print STDERR "# find forward and back\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     my $prev;
     foreach my $element (@elements_list)
@@ -5490,11 +5631,11 @@ sub rearrange_elements()
         $element->{'element'} = 1;
         print STDERR "# fwd and back for $element->{'texi'}\n" 
             if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        # complete the up for toplevel elements now that element_top is defined.
-        # at that point no node may be toplevel, only sections.
+        # FIXME: certainly wrong. Indeed this causes the section associated
+        # with the @node Top to be up for a @chapter, even if it is a 
+        # @chapter and not @top. It could even be up and, say, a @section!
         if ($element->{'toplevel'} and ($element ne $element_top))
-        {
-            $element->{'sectionup'} = $element_top;
+        { 
             $element->{'up'} = $element_top;
         }
         if ($prev)
@@ -5506,58 +5647,6 @@ sub rearrange_elements()
         else
         {
             $prev = $element;
-        }
-        # If the element is not a node, then all the node directions are copied
-        # if there is an associated node
-        if (defined($element->{'node_ref'}))
-        {
-            $element->{'nodenext'} = $element->{'node_ref'}->{'nodenext'};
-            $element->{'nodeprev'} = $element->{'node_ref'}->{'nodeprev'};
-            $element->{'menu_next'} = $element->{'node_ref'}->{'menu_next'};
-            $element->{'menu_prev'} = $element->{'node_ref'}->{'menu_prev'};
-            $element->{'menu_child'} = $element->{'node_ref'}->{'menu_child'};
-            $element->{'menu_up'} = $element->{'node_ref'}->{'menu_up'};
-            $element->{'nodeup'} = $element->{'node_ref'}->{'nodeup'};
-            $element->{'following'} = $element->{'node_ref'}->{'following'};
-        }
-        elsif (! $element->{'node'})
-        { # the section has no node associated. Find the node directions using 
-          # sections
-            if (defined($element->{'sectionnext'}))
-            {
-                 $element->{'nodenext'} = get_node($element->{'sectionnext'});
-            }
-            if (defined($element->{'sectionprev'}))
-            {
-                 $element->{'nodeprev'} = get_node($element->{'sectionprev'});
-            }
-            if (defined($element->{'sectionup'}))
-            {
-                 $element->{'nodeup'} = get_node($element->{'sectionup'});
-            }
-
-            if ($element->{'child'})
-            {
-                $element->{'following'} = get_node($element->{'child'});
-            }
-            elsif ($element->{'sectionnext'})
-            {
-                $element->{'following'} = get_node($element->{'sectionnext'});
-            }
-            elsif ($element->{'sectionup'})
-            {
-                my $up = $element;
-                while ($up->{'sectionup'} and !$element->{'following'})
-                {
-                    print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'sectionup'});
-                    $up = $up->{'sectionup'};
-                    if ($up->{'sectionnext'})
-                    {
-                        $element->{'following'} = get_node ($up->{'sectionnext'});
-                    }
-                }
-            }
         }
     }
 
@@ -5591,8 +5680,12 @@ sub rearrange_elements()
                 { # no previous element added
                     push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                     foreach my $index(@{$current_element->{'indices'}})
-                    {
+                    { # if no element was added, but there are pending 
+                      # indices, it means that those indices are not split
+                      # otherwise they would have caused an element creation.
                         push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'}, 'name' => $index->[0]->{'name'} } ] ;
+                      # we verify anyway ;-)
+                        print STDERR "BUG: multiple page index in only one element\n" if (exists($index->[1]));
                     }
                 }
                 else
@@ -5619,6 +5712,8 @@ sub rearrange_elements()
                 push @{$current_element->{'nodes'}}, $checked_element;
                 $checked_element->{'section_ref'} = $current_element;
             }
+            # to be noted that if the checked_element is the main element
+            # current_element == checked_element
             push @{$current_element->{'place'}}, @{$checked_element->{'current_place'}};
             foreach my $index (@{$checked_element->{'index_names'}})
             {
@@ -5650,7 +5745,7 @@ sub rearrange_elements()
                           # (see below and above).
                           # But it is also a node. It may have a 'with_section'
                           # and have a 'section_ref'
-                          # it may be considered 'node_ref' for a section.
+                          # it may be considered 'with_node' for a section.
                           # and the Texi2HTML::NODE is relative to this
                           # added element.
                             
@@ -5779,6 +5874,8 @@ sub rearrange_elements()
     foreach my $element (@elements_list)
     {
         my $up = get_top($element);
+        # this is a node not associated with a section
+        $up = get_top($element->{'section_ref'}) if (!defined($up) and $element->{'node'} and $element->{'section_ref'});
         next unless (defined($up));
         # take the opportunity to set the first chapter with index 
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
@@ -5932,9 +6029,9 @@ sub rearrange_elements()
             push @{$cross_reference_nodes{$section->{'cross_manual_target'}}}, $texi_entry;
             $section->{'id'} = node_to_id($section->{'cross_manual_target'});
         }
-        if ($Texi2HTML::Config::USE_NODE_TARGET and $section->{'node_ref'})
+        if ($Texi2HTML::Config::USE_NODE_TARGET and $section->{'with_node'})
         {
-            $section->{'target'} = $section->{'node_ref'}->{'target'};
+            $section->{'target'} = $section->{'with_node'}->{'target'};
         }
         else
         {
@@ -5948,9 +6045,9 @@ sub rearrange_elements()
     {
         $node_as_top = $node_top;
     }
-    elsif ($element_top->{'node_ref'})
+    elsif ($element_top->{'with_node'})
     {
-        $node_as_top = $element_top->{'node_ref'};
+        $node_as_top = $element_top->{'with_node'};
     }
     else
     {
@@ -6000,7 +6097,7 @@ sub rearrange_elements()
             my $is_top = '';
             $element->{'file'} = "${docu_name}_$doc_nr"
                    . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
-            if ($element->{'top'} or (defined($element->{'node_ref'}) and $element->{'node_ref'} eq $element_top))
+            if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top))
             { # the top elements
                 $is_top = "top";
                 $element->{'file'} = $docu_top;
@@ -6009,8 +6106,8 @@ sub rearrange_elements()
             {
                 if ($new_file)
                 {
-                    my $node = get_node($element) unless(exists($element->{'node_ref'})
-                        and $element->{'node_ref'}->{'element_added'});
+                    my $node = get_node($element) unless(exists($element->{'with_node'})
+                        and $element->{'with_node'}->{'element_added'});
                     if ($node and defined($node->{'node_file'}))
                     {
                         $element->{'file'} = $node->{'node_file'};
@@ -6177,7 +6274,7 @@ sub rearrange_elements()
             my $number = "UNNUMBERED";
             $number = $element->{'number'} if ($element->{'number'});
             print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}($element->{'file'})) $element->{'texi'}:\n";
-            print STDERR "  node_ref: $element->{'node_ref'}->{'texi'}\n" if (defined($element->{'node_ref'}));
+            print STDERR "  with_node: $element->{'with_node'}->{'texi'}\n" if (defined($element->{'with_node'}));
         }
 
         if (!$element->{'footnote'})
@@ -6350,7 +6447,7 @@ sub get_node($)
     my $element = shift;
     return undef if (!defined($element));
     return $element if ($element->{'node'});
-    return $element->{'node_ref'} if ($element->{'node_ref'});
+    return $element->{'with_node'} if ($element->{'with_node'});
     return $element;
 }
 
@@ -6719,12 +6816,6 @@ sub pass_text($$)
 
     push_state(\%state);
 
-    #if (@elements_list == 0)
-    #{
-    #    warn "$WARN empty document\n";
-    #    exit (0);
-    #}
-
     set_special_names();
     # We set titlefont only if the titlefont appeared in the top element
     if (defined($element_top->{'titlefont'}))
@@ -7086,15 +7177,16 @@ sub pass_text($$)
                         my $elem = $element->{$direction};
                         $Texi2HTML::NODE{$direction} = undef;
                         $Texi2HTML::HREF{$direction} = undef;
+                        $Texi2HTML::NAME{$direction} = undef;
                         #print STDERR "$direction ";
                         next unless (defined($elem));
                         if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'} or !$elem->{'seen'})
                         {
                             $Texi2HTML::NODE{$direction} = $elem->{'text'};
                         }
-                        elsif ($elem->{'node_ref'})
+                        elsif ($elem->{'with_node'})
                         {
-                            $Texi2HTML::NODE{$direction} = $elem->{'node_ref'}->{'text'};
+                            $Texi2HTML::NODE{$direction} = $elem->{'with_node'}->{'text'};
                         }
                         if (!$elem->{'seen'})
                         {
