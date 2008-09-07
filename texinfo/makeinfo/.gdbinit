@@ -281,3 +281,6 @@ set args -o - $ttests/dircat2.tex
 
 # seg fault on -- in arg5 to @image
 set args -o - $ttests/image--.tex
+
+# seg fault
+set args -o - $ttests/formatting.texi
