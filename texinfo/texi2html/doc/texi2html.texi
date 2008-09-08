@@ -4529,6 +4529,9 @@ are expanded as they should be unconditionnally.
   $Texi2HTML::THISDOC@{'CSS_LINES'@} which is used for formatting, and if
   $CSS_LINES is not defined, $Texi2HTML::THISDOC@{'CSS_LINES'@} is 
   autodetected.
+@item  When there is no section and $USE_NODES is not set don't split by node.
+This behaviour and the previous aren't documented, so it could change
+in the future.
 @end itemize
 @item API changes between 1.76 and 1.78: 
 @itemize @bullet

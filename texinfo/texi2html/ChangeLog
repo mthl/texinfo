@@ -1,3 +1,21 @@
+2008-09-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: when node Top is considered as a @top, don't
+	associate the following nodes to it, but rather to the next
+	section.
+	When there is no section and USE_NODES is not set don't split
+	by node.
+	Split only by node when USE_SECTIONS is not set and USE_NODES
+	is. Default for USE_SECTIONS is 1, and default for USE_NODES
+	is now undef.
+	When there is no texinfo sectionning element at all or no 
+	element for texi2html (for example no section but 
+	USE_SECTIONS == 1 and USE_NODES undef).
+	always use THIS_SECTION and THIS_HEADER such that formatting
+	functions can modify them.
+	* texi2html.pl, texi2html.init: progress towards index formatting
+	simplification and handling out of the main program.
+
 2008-09-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't consider Top node is like @top when 

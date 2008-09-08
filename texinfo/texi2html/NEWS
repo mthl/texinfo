@@ -115,6 +115,10 @@ This file records noteworthy changes.
   $CSS_LINES is not defined, $Texi2HTML::THISDOC{'CSS_LINES'} is 
   autodetected.
 
+*  When there is no section and $USE_NODES is not set don't split by node.
+   This behaviour and the previous aren't documented, so it could change
+   in the future.
+
 * BUG FIXES
   ---------
 

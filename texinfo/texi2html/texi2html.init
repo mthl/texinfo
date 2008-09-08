@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.156 2008-09-05 13:42:53 pertusus Exp $
+# $Id: texi2html.init,v 1.157 2008-09-08 16:29:46 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -124,7 +124,10 @@ $NUMBER_SECTIONS = 1;
 # -use-nodes
 # if this is set the nodes are used as sectionning elements. 
 # Otherwise the nodes are incorporated in sections.
-$USE_NODES = 0;
+#$USE_NODES = 0;
+$USE_NODES = undef;
+
+$USE_SECTIONS = 1;
 
 # -node-files
 # if this is set one file per node is generated, which can be a target for 
@@ -4359,6 +4362,7 @@ $index_entry       = \&t2h_default_index_entry;
 $index_entry_command = \&t2h_default_index_entry_command;
 $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_print_index;
+#$printindex       = \&t2h_default_printindex;
 $protect_text      = \&t2h_default_protect_text;
 $normal_text       = \&t2h_default_normal_text;
 $complex_format    = \&t2h_default_complex_format;
@@ -6317,6 +6321,56 @@ sub t2h_default_paragraph_style_command($$)
     my $format = shift;
     my $text = shift;
     return $text;
+}
+
+#format a whole index
+sub t2h_default_printindex($$$)
+{
+    my $index_name = shift;
+    my $summary_index_items = shift;
+    my $letter_entries = shift;
+
+    my @alpha = ();
+    my @non_alpha = ();
+    my %letter_id;
+    foreach my $index_item (@$summary_index_items)
+    {
+        foreach my $summary_letter (@$index_item)
+        {
+            my ($letter, $file, $default_identifier, $index_element_id, $number, $index_element) = @$summary_letter;
+            my ($result, $identifier, $is_symbol) = 
+               t2h_default_summary_letter($letter, $file, $default_identifier, $index_element_id, $number, $index_element, $index_name);
+
+            $identifier = $default_identifier if (!defined($identifier));
+            $letter_id{$letter} = $identifier;
+            $is_symbol = $letter !~ /^[A-Za-z]/ if (!defined($is_symbol));
+        
+            if ($is_symbol)
+            {
+                push @non_alpha, $result;
+            }
+            else
+            {
+                push @alpha, $result;
+            }
+        }
+    }
+    my $summary = t2h_default_index_summary(\@alpha, \@non_alpha);
+    my $letters_text = '';
+    foreach my $letter_ref (@$letter_entries)
+    {
+        my $letter = $letter_ref->{'letter'};
+        my $entries = $letter_ref->{'entries'};
+        my $entries_text = '';
+        foreach my $entry (@$entries)
+        {
+            my ($text_href, $entry, $element_href, $element_text) = @$entry;
+            $entries_text .= t2h_default_index_entry ($text_href, $entry, $element_href, $element_text);
+        }
+        $letters_text .= t2h_default_index_letter ($letter, $letter_id{$letter}, $entries_text);
+    }
+    my $index_text = t2h_default_print_index($letters_text, $index_name);
+    return $summary . $index_text . $summary;
 }
 
 # format a whole index

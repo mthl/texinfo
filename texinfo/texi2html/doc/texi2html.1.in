@@ -22,7 +22,10 @@ the chosen options (see FILES).
 .PP
 The HTML files created by
 .I texi2html
-are closer to TeX than to Info.
+are in general closer to TeX than to Info. Using init files (see
+the 
+.B \-\-init\-file
+option), other styles or output formats may be selected.
 .SH OPTIONS
 Options may be abbreviated to th shortests unique prefix. The
 following is only an incomplete list of the available options: 
@@ -60,8 +63,8 @@ Use css file \fIfile\fP.
 .B \-\-init\-file \fIfile\fP
 Load init file \fIfile\fP (see also FILES).
 .TP
-.B \-\-lang \fIlang\fP
-Use \fIlang\fP as document language (ISO 639 encoding).
+.B \-\-document\-language \fIlang\fP
+Use \fIlang\fP as document language.
 .TP
 .B \-\-macro\-expand \fIfile\fP
 output macro expanded source in \fIfile\fP.
@@ -150,8 +153,8 @@ This is \fItexi2html\fP version @PACKAGE_VERSION@, @PACKAGE_DATE@.
 .SH AUTHOR
 Texi2html was originally written by is Lionel Cons, CERN IT/DIS/OSE,
 Lionel.Cons@cern.ch.  Over time, many other people around the net
-contributed to this program.  Its current maintainer is Olaf Bachmann,
-obachman@mathematik.uni-kl.de.
+contributed to this program.  It was maintained by Olaf Bachmann,
+obachman@mathematik.uni-kl.de, and is now maintained by Derek Price.
 .SH AVAILABILITY
 The latest version of this program, as well as support in the form of mailing
 lists with archives, bug tracking, documentation, and other tools can be found

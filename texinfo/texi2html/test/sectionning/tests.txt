@@ -6,22 +6,28 @@ makeinfo_novalidate_split novalidate.texi -init makeinfo.init -no-node-file
 makeinfo_novalidate_unsplit novalidate.texi -init makeinfo.init -split no -no-node-file
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
-nodes_after_top nodes_after_top.texi
+nodes_after_top nodes_after_top.texi --use-nodes
+nodes_after_top_no_node nodes_after_top.texi
 section_nodes_before_top section_nodes_before_top.texi
 nodes_after_top_before_section nodes_after_top_before_section.texi -split chapter
 nodes_test nodes_test.texi
-no_section no_section.texi
-no_section_directions no_section.texi -init test_directions.init
+no_section_no_node no_section.texi
+no_section no_section.texi --use-nodes
+no_section_directions no_section.texi -init test_directions.init --use-nodes
+no_section_directions_no_node no_section.texi -init test_directions.init
 no_node no_node.texi
 no_node_directions no_node.texi -init test_directions.init
 no_node_chapter_split no_node.texi -split chapter
-no_section_no_top no_section_no_top.texi
+no_section_no_top no_section_no_top.texi --use-nodes
+no_section_no_top_no_node no_section_no_top.texi
 one_section one_section.texi
-one_node one_node.texi
+one_node_no_node one_node.texi
+one_node one_node.texi --use-nodes
 one_node_and_section one_node_and_section.texi
 first_section_and_nodes first_section_and_nodes.texi
 double_top double_top.texi
-rec_nodes rec_nodes.texi
+rec_nodes rec_nodes.texi --use-nodes
+rec_nodes_no_node rec_nodes.texi
 makeinfo_rec_nodes rec_nodes.texi -init makeinfo.init -no-node-files
 lower_subsub lower_subsub.texi
 raiselowersections raiselowersections.texi
@@ -34,7 +40,8 @@ test_refs test_refs.texi
 test_refs_chapter test_refs.texi -split chapter
 test_refs_nodes test_refs.texi -split node -node-files -use-nodes
 at_commands_in_refs at_commands_in_refs.texi
-equivalent_nodes equivalent_nodes.texi
+equivalent_nodes equivalent_nodes.texi --use-nodes
+equivalent_nodes_no_node equivalent_nodes.texi
 html-top_no_Top_node html-top.texi
 menu-whitespace menu-whitespace.texi -init makeinfo.init
 menu-whitespace_xml menu-whitespace.texi -init xml.init
@@ -44,3 +51,5 @@ nodes_id_docbook nodes_id.texi --init docbook.init
 two_footnotes_in_nodes two_footnotes_in_nodes.texi -init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
 more_nodes_than_sections more_nodes_than_sections.texi -init makeinfo.init
+no_element no_element.texi
+placed_things_before_element placed_things_before_element.texi

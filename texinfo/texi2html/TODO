@@ -359,3 +359,5 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   menu name is used instead of node in menu links url text.
 
 * change LINK_BUTTONS for makeinfo.init to have next, up... nodes
+
+* failure in indices test nodes_before_top_no_nodes
