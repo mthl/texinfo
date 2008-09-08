@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.39 2008-07-03 13:03:22 karl Exp $
+# $Id: Makefile.am,v 1.40 2008-09-08 13:39:17 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -29,10 +29,15 @@ TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
 	    txi-it.tex txi-nl.tex txi-nb.tex txi-pl.tex txi-pt.tex \
 	    txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
 
+refcard_files = refcard/Makefile refcard/txicmdcheck \
+                refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
+		refcard/txirefcard.tex
+
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE)
+	     $(refcard_files)
 
 if INSTALL_WARNINGS
 install-data-local:
