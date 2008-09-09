@@ -53,6 +53,7 @@ this in <small>CVS</small> vary depending on the situation.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Adding files to a directory ===
+<div id="index-Adding-files"></div>
 
 <p>To add a new file to a directory, follow these steps.
 </p>
@@ -152,6 +153,8 @@ later merge the additions to another branch if you want
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Removing files ===
+<div id="index-Removing-files"></div>
+<div id="index-Deleting-files"></div>
 
 <p>Directories change.  New files are added, and old files
 disappear.  Still, you want to be able to retrieve an
@@ -283,6 +286,8 @@ later merge the removals to another branch if you want
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Removing directories ===
+<div id="index-Removing-directories"></div>
+<div id="index-Directories_002c-removing"></div>
 
 <p>In concept removing directories is somewhat similar to
 removing files&mdash;you want the directory to not exist in
@@ -330,6 +335,9 @@ are checking out contains any files in that directory.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Moving and renaming files ===
+<div id="index-Moving-files"></div>
+<div id="index-Renaming-files"></div>
+<div id="index-Files_002c-moving"></div>
 
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
@@ -531,6 +539,9 @@ You cannot easily see the history of the file across the rename.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Moving and renaming directories ===
+<div id="index-Moving-directories"></div>
+<div id="index-Renaming-directories"></div>
+<div id="index-Directories_002c-moving"></div>
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in

@@ -102,6 +102,9 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">2.1 Keystrokes as Building Blocks of Key Sequences</h2>
+<a name="index-character-set"></a>
+<a name="index-ASCII"></a>
+<a name="index-keystroke"></a>
 
 <p>      Earlier versions of Emacs used only the ASCII character set,
 which defines 128 different character codes.  Some of these codes are
@@ -200,6 +203,9 @@ running Emacs under X, you should do the translations with the
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.1.1 Representing Keystrokes</h3>
+<a name="index-hyper-key-1"></a>
+<a name="index-super-key-1"></a>
+<a name="index-read_002dkey_002dsequence"></a>
 
 <p>  XEmacs represents keystrokes as lists. Each list consists of
 an arbitrary combination of modifiers followed by a single keysym at the
@@ -395,6 +401,8 @@ strings.  For example, we have the following equivalent representations:
 </tr></table>
 <h3 class="subsection">2.1.4 Assignment of the &lt;META&gt; Key</h3>
  
+<a name="index-META"></a>
+<a name="index-ESC-1"></a>
 <p>  Not all terminals have the complete set of modifiers.  
 Terminals that have a &lt;Meta&gt; key allow you to type Meta characters
 by just holding that key down.  To type <kbd>Meta-a</kbd>, hold down
@@ -443,6 +451,8 @@ the <code>meta-flag</code> variable is irrelevant.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.1.5 Assignment of the &lt;SUPER&gt; and &lt;HYPER&gt; Keys</h3>
+<a name="index-hyper-key-2"></a>
+<a name="index-super-key-2"></a>
 
 <p>  Most keyboards do not, by default, have &lt;SUPER&gt; or &lt;HYPER&gt;
 modifier keys.  Under X, you can simulate the &lt;SUPER&gt; or
@@ -649,6 +659,11 @@ See section <a href="xemacs_14.html#Display-Vars">Variables Controlling Display<
 </tr></table>
 <h2 class="section">2.3 Keys and Commands</h2>
 
+<a name="index-binding"></a>
+<a name="index-customization"></a>
+<a name="index-keymap"></a>
+<a name="index-function"></a>
+<a name="index-command"></a>
 <p>  This manual is full of passages that tell you what particular keys do.
 But Emacs does not assign meanings to keys directly.  Instead, Emacs
 assigns meanings to <em>functions</em>, and then gives keys their meanings
@@ -852,6 +867,7 @@ window, usually together with some documentation.
 </tr></table>
 <h3 class="subsection">2.4.1 The File Menu</h3>
 
+<a name="index-File-menu-1"></a>
 
 <p>The <b>File</b> menu bar item contains the items <b>New Frame</b>, <b>Open
 File...</b>, <b>Save Buffer</b>, <b>Save Buffer As...</b>, <b>Revert Buffer</b>,
@@ -990,6 +1006,7 @@ the list of all buffers in that Emacs process.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.2 The Edit Menu</h3>
+<a name="index-Edit-menu-1"></a>
 
 <p>The <b>Edit</b> pull-down menu contains the <b>Undo</b>, <b>Cut</b>, <b>Copy</b>,
 <b>Paste</b>, and <b>Clear</b> menu items.  When you select a menu item, Emacs
@@ -1080,6 +1097,7 @@ as the Emacs command <code>call-last-kbd-macro</code> (<kbd>C-x e</kbd>).
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.3 The Apps Menu</h3>
+<a name="index-Apps-menu-1"></a>
 
 <p>The <b>Apps</b> pull-down menu contains the <b>Read Mail (VM)...</b>, <b>Read
 Mail (MH)...</b>, <b>Send Mail...</b>, <b>Usenet News</b>, <b>Browse the Web</b>,
@@ -1108,6 +1126,7 @@ items, there are sub-menus which you will need to select.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.4 The Options Menu</h3>
+<a name="index-Options-menu-1"></a>
 
 <p>The <b>Options</b> pull-down menu contains the <b>Read Only</b>, <b>Case 
 Sensitive Search</b>, <b>Overstrike</b>, <b>Auto Delete Selection</b>, 
@@ -1242,6 +1261,7 @@ menu to your init file.  See section <a href="xemacs_30.html#Init-File">The Init
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.5 The Buffers Menu</h3>
+<a name="index-Buffers-menu-1"></a>
 <p>The <b>Buffers</b> menu provides a selection of up to ten buffers and the
 item <b>List All Buffers</b>, which provides a Buffer List. See section <a href="xemacs_18.html#List-Buffers">Listing Existing Buffers</a>, for more information.  
 </p>
@@ -1265,6 +1285,7 @@ item <b>List All Buffers</b>, which provides a Buffer List. See section <a href=
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.6 The Tools Menu</h3>
+<a name="index-Tools-menu-1"></a>
 
 <p>The <b>Tools</b> pull-down menu contains the <b>Grep...</b>, <b>Compile...</b>,
 <b>Shell Command...</b>, <b>Shell Command on Region...</b>, <b>Debug(GDB)...</b>
@@ -1293,6 +1314,7 @@ there are sub-menus which you will need to select.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">2.4.7 The Help Menu</h3>
+<a name="index-Help-menu-1"></a>
 
 <p>The Help Menu gives you access to Emacs Info and provides a menu
 equivalent for each of the choices you have when using <kbd>C-h</kbd>. 

@@ -60,6 +60,10 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Overall structure of CVS commands ===
+<div id="index-Structure"></div>
+<div id="index-CVS-command-structure"></div>
+<div id="index-Command-structure"></div>
+<div id="index-Format-of-CVS-commands"></div>
 
 <p>The overall format of all <small>CVS</small> commands is:
 </p>
@@ -123,6 +127,7 @@ the documentation instead.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === CVS&rsquo;s exit status ===
+<div id="index-Exit-status_002c-of-CVS"></div>
 
 <p><small>CVS</small> can indicate to the calling environment whether it
 succeeded or failed by setting its <em>exit status</em>.
@@ -163,6 +168,8 @@ other <small>CVS</small> commands.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Default options and the ~/.cvsrc file ===
+<div id="index-_002ecvsrc-file"></div>
+<div id="index-Option-defaults"></div>
 
 <p>There are some <code>command_options</code> that are used so
 often that you might have set up an alias or some other
@@ -240,6 +247,9 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Global options ===
+<div id="index-Options_002c-global"></div>
+<div id="index-Global-options"></div>
+<div id="index-Left_002dhand-options"></div>
 
 <p>The available &lsquo;<samp>cvs_options</samp>&rsquo; (that are given to the
 left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
@@ -440,6 +450,8 @@ Only has an effect on the <small>CVS</small> client.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Common command options ===
+<div id="index-Common-options"></div>
+<div id="index-Right_002dhand-options"></div>
 
 <p>This section describes the &lsquo;<samp>command_options</samp>&rsquo; that
 are available across several <small>CVS</small> commands.  These
@@ -696,6 +708,7 @@ and <code>update</code>.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === admin&mdash;Administration ===
+<div id="index-Admin-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -1104,6 +1117,8 @@ this option has never done anything useful.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === checkout&mdash;Check out sources for editing ===
+<div id="index-checkout-_0028subcommand_0029"></div>
+<div id="index-co-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -1391,6 +1406,7 @@ ago:
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === commit&mdash;Check files into the repository ===
+<div id="index-commit-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -1663,6 +1679,7 @@ would simply do
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === diff&mdash;Show differences between revisions ===
+<div id="index-diff-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -2434,6 +2451,7 @@ not yet been committed will be printed.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === export&mdash;Export sources from CVS, similar to checkout ===
+<div id="index-export-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -2562,6 +2580,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === history&mdash;Show status of files and users ===
+<div id="index-history-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -2794,6 +2813,7 @@ time zone instead of UTC.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === import&mdash;Import sources into CVS, using vendor branches ===
+<div id="index-import-_0028subcommand_0029"></div>
 
 
 <ul>
@@ -3027,6 +3047,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === log&mdash;Print out log information for files ===
+<div id="index-log-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -3278,6 +3299,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases ===
+<div id="index-rdiff-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -3464,6 +3486,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === release&mdash;Indicate that a Module is no longer in use ===
+<div id="index-release-_0028subcommand_0029"></div>
 
 <ul>
 <li>
@@ -3652,6 +3675,7 @@ $
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === update&mdash;Bring work tree in sync with repository ===
+<div id="index-update-_0028subcommand_0029"></div>
 
 <ul>
 <li>

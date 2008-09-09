@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">6. The Minibuffer</h1>
+<a name="index-minibuffer"></a>
 
 <p>  The <em>minibuffer</em> is the facility used by XEmacs commands to read
 arguments more complicated than a single number.  Minibuffer arguments
@@ -283,6 +284,7 @@ non-<code>nil</code>, recursive use of the minibuffer is always allowed.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.3 Completion</h2>
+<a name="index-completion"></a>
 
 <p>  For certain kinds of arguments, you can use <em>completion</em> to enter
 the argument value.  Completion means that you type part of the
@@ -348,6 +350,8 @@ and hit &lt;RET&gt;.
 </tr></table>
 <h3 class="subsection">6.3.1 Completion Example</h3>
 
+<a name="index-TAB-1"></a>
+<a name="index-minibuffer_002dcomplete"></a>
 <p>  A concrete example may help here.  If you type <kbd>M-x au &lt;TAB&gt;</kbd>,
 the &lt;TAB&gt; looks for alternatives (in this case, command names) that
 start with &lsquo;<samp>au</samp>&rsquo;.  There are several, including
@@ -558,6 +562,7 @@ the list of completions is long, you can scroll it with <kbd>C-M-v</kbd>
 </tr></table>
 <h3 class="subsection">6.3.4 Completion Options</h3>
 
+<a name="index-completion_002dignored_002dextensions"></a>
 <p>  When completion is done on file names, certain file names are usually
 ignored.  The variable <code>completion-ignored-extensions</code> contains a
 list of strings; a file whose name ends in any of those strings is
@@ -607,6 +612,8 @@ icomplete-mode</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.4 Minibuffer History</h2>
+<a name="index-minibuffer-history"></a>
+<a name="index-history-of-minibuffer-input"></a>
 
 <p>  Every argument that you enter with the minibuffer is saved on a
 <em>minibuffer history list</em> so that you can use it again later in
@@ -705,6 +712,8 @@ list that most minibuffer arguments use.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.5 Repeating Minibuffer Commands</h2>
+<a name="index-command-history"></a>
+<a name="index-history-of-commands"></a>
 
 <p>  Every command that uses the minibuffer at least once is recorded on a
 special history list, together with the values of its arguments, so that

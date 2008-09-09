@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">20. Commands for Human Languages</h1>
+<a name="index-text"></a>
 
 <p>  The term <em>text</em> has two widespread meanings in our area of the
 computer field.  One is data that is a sequence of characters.  In this
@@ -127,6 +128,11 @@ use TeX mode; for input to nroff, Nroff mode.
 </tr></table>
 <h2 class="section">20.1 Text Mode</h2>
 
+<a name="index-tab_002dto_002dtab_002dstop-1"></a>
+<a name="index-edit_002dtab_002dstops-1"></a>
+<a name="index-Text-mode"></a>
+<a name="index-TAB-5"></a>
+<a name="index-text_002dmode"></a>
 <p>  You should use Text mode&mdash;rather than Fundamental or Lisp mode&mdash;to
 edit files of text in a human language.  Invoke <kbd>M-x text-mode</kbd> to
 enter Text mode.  In Text mode, &lt;TAB&gt; runs the function
@@ -194,6 +200,8 @@ level structure more visible.
 </tr></table>
 <h3 class="subsection">20.1.1 Nroff Mode</h3>
 
+<a name="index-nroff"></a>
+<a name="index-nroff_002dmode"></a>
 <p>  Nroff mode is a mode like Text mode but modified to handle nroff
 commands present in the text.  Invoke <kbd>M-x nroff-mode</kbd> to enter this
 mode.  Nroff mode differs from Text mode in only a few ways.  All nroff
@@ -259,6 +267,14 @@ line following point.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.2 TeX Mode</h3>
+<a name="index-TeX"></a>
+<a name="index-LaTeX"></a>
+<a name="index-TeX_002dmode"></a>
+<a name="index-tex_002dmode"></a>
+<a name="index-plain_002dtex_002dmode"></a>
+<a name="index-LaTeX_002dmode"></a>
+<a name="index-plain_002dTeX_002dmode"></a>
+<a name="index-latex_002dmode"></a>
 
 <p>  TeX is a powerful text formatter written by Donald Knuth; like GNU
 Emacs, it is free.  LaTeX is a simplified input format for TeX,
@@ -548,6 +564,9 @@ exists and is not <code>nil</code>.  Emacs then calls the variable
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.3 Outline Mode</h3>
+<a name="index-outlines"></a>
+<a name="index-selective-display"></a>
+<a name="index-invisible-lines"></a>
 
 <p>  Outline mode is a major mode similar to Text mode but intended for editing
 outlines.  It allows you to make parts of the text temporarily invisible
@@ -602,6 +621,8 @@ everything back yanks the invisible lines and they remain invisible.
 </tr></table>
 <h4 class="subsubsection">20.1.3.1 Format of Outlines</h4>
 
+<a name="index-heading-lines-_0028Outline-mode_0029"></a>
+<a name="index-body-lines-_0028Outline-mode_0029"></a>
 <p>  Outline mode assumes that the lines in the buffer are of two types:
 <em>heading lines</em> and <em>body lines</em>.  A heading line represents a
 topic in the outline.  Heading lines start with one or more stars; the
@@ -864,6 +885,8 @@ no visible indication of the presence of invisible lines.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.2 Words</h2>
+<a name="index-words-1"></a>
+<a name="index-Meta"></a>
 
 <p>  Emacs has commands for moving over or operating on words.  By convention,
 the keys for them are all <kbd>Meta-</kbd> characters.
@@ -908,8 +931,8 @@ negative argument moves backward, and <kbd>Meta-b</kbd> with a negative argument
 moves forward.  Forward motion stops after the last letter of the
 word, while backward motion stops before the first letter.
 </p>
-<a name="index-M_002dd"></a>
-<a name="index-kill_002dword"></a>
+<a name="index-M_002dd-1"></a>
+<a name="index-kill_002dword-1"></a>
 <p>  <kbd>Meta-d</kbd> (<code>kill-word</code>) kills the word after point.  To be
 precise, it kills everything from point to the place <kbd>Meta-f</kbd> would
 move to.  Thus, if point is in the middle of a word, <kbd>Meta-d</kbd> kills
@@ -919,8 +942,8 @@ next word but not the punctuation before it, simply type <kbd>Meta-f</kbd> to ge
 to the end and kill the word backwards with <kbd>Meta-&lt;DEL&gt;</kbd>.)
 <kbd>Meta-d</kbd> takes arguments just like <kbd>Meta-f</kbd>.
 </p>
-<a name="index-backward_002dkill_002dword-1"></a>
-<a name="index-M_002dDEL-1"></a>
+<a name="index-backward_002dkill_002dword-2"></a>
+<a name="index-M_002dDEL-2"></a>
 <p>  <kbd>Meta-&lt;DEL&gt;</kbd> (<code>backward-kill-word</code>) kills the word before
 point.  It kills everything from point back to where <kbd>Meta-b</kbd> would
 move to.  If point is after the space in &lsquo;<samp>FOO, BAR</samp>&rsquo;, then
@@ -970,6 +993,7 @@ delimiter.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.3 Sentences</h2>
+<a name="index-sentences"></a>
 
 <p>  The Emacs commands for manipulating sentences and paragraphs are mostly
 on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
@@ -1008,10 +1032,10 @@ begins or ends wherever a paragraph begins or ends.
 <p>  Neither <kbd>M-a</kbd> nor <kbd>M-e</kbd> moves past the newline or spaces beyond
 the sentence edge at which it is stopping.
 </p>
-<a name="index-M_002dk"></a>
-<a name="index-C_002dx-DEL-1"></a>
-<a name="index-kill_002dsentence"></a>
-<a name="index-backward_002dkill_002dsentence-1"></a>
+<a name="index-M_002dk-1"></a>
+<a name="index-C_002dx-DEL-2"></a>
+<a name="index-kill_002dsentence-1"></a>
+<a name="index-backward_002dkill_002dsentence-2"></a>
 <p> <kbd>M-a</kbd> and <kbd>M-e</kbd> have a corresponding kill command, just like
 <kbd>C-a</kbd> and <kbd>C-e</kbd> have <kbd>C-k</kbd>.  The command is  <kbd>M-k</kbd>
 (<code>kill-sentence</code>) which kills from point to the end of the
@@ -1054,6 +1078,11 @@ normal value is:
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.4 Paragraphs</h2>
+<a name="index-paragraphs"></a>
+<a name="index-M_002d_007b"></a>
+<a name="index-M_002d_007d"></a>
+<a name="index-backward_002dparagraph"></a>
+<a name="index-forward_002dparagraph"></a>
 
 <p>  The Emacs commands for manipulating paragraphs are also <kbd>Meta-</kbd>
 keys.
@@ -1130,6 +1159,8 @@ pages.
 </tr></table>
 <h2 class="section">20.5 Pages</h2>
 
+<a name="index-pages"></a>
+<a name="index-formfeed"></a>
 <p>  Files are often thought of as divided into <em>pages</em> by the
 <em>formfeed</em> character (ASCII Control-L, octal code 014).  For
 example, if a file is printed on a line printer, each &ldquo;page&rdquo; of the
@@ -1219,6 +1250,7 @@ which matches a formfeed character at the beginning of a line.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.6 Filling Text</h2>
+<a name="index-filling"></a>
 
 <p>  If you use Auto Fill mode, Emacs <em>fills</em> text (breaks it up into
 lines that fit in a specified width) as you insert it.  When you alter
@@ -1255,6 +1287,7 @@ you can use explicit commands for filling.
 </tr></table>
 <h3 class="subsection">20.6.1 Auto Fill Mode</h3>
 
+<a name="index-Auto-Fill-mode"></a>
 
 <p>  <em>Auto Fill</em> mode is a minor mode in which lines are broken
 automatically when they become too wide.  Breaking happens only when
@@ -1413,6 +1446,7 @@ uses that number as the new fill column.
 </tr></table>
 <h3 class="subsection">20.6.3 The Fill Prefix</h3>
 
+<a name="index-fill-prefix"></a>
 <p>  To fill a paragraph in which each line starts with a special marker
 (which might be a few spaces, giving an indented paragraph), use the
 <em>fill prefix</em> feature.  The fill prefix is a string which is not
@@ -1483,6 +1517,7 @@ each group as a paragraph, using its indentation as a fill prefix.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.7 Case Conversion Commands</h2>
+<a name="index-case-conversion-1"></a>
 
 <p>  Emacs has commands for converting either a single word or any arbitrary
 range of text to upper case or to lower case.
@@ -1508,7 +1543,7 @@ range of text to upper case or to lower case.
 <a name="index-M_002dl"></a>
 <a name="index-M_002du"></a>
 <a name="index-M_002dc"></a>
-<a name="index-words-1"></a>
+<a name="index-words-2"></a>
 <a name="index-downcase_002dword-1"></a>
 <a name="index-upcase_002dword-1"></a>
 <a name="index-capitalize_002dword-1"></a>
@@ -1536,7 +1571,7 @@ case conversion applies only to the part of the word before point.
 </p>
 <a name="index-C_002dx-C_002dl"></a>
 <a name="index-C_002dx-C_002du"></a>
-<a name="index-region"></a>
+<a name="index-region-1"></a>
 <a name="index-downcase_002dregion"></a>
 <a name="index-upcase_002dregion"></a>
 <p>  The other case conversion commands are <kbd>C-x C-u</kbd>

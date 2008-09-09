@@ -17,6 +17,8 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == All environment variables which affect CVS ==
+<div id="index-Environment-variables"></div>
+<div id="index-Reference-manual-for-variables"></div>
 
 <p>This is a complete list of all environment variables
 that affect <small>CVS</small>.
@@ -28,7 +30,7 @@ that affect <small>CVS</small>.
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should ignore. See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
 </p>
-<div id="index-CVSWRAPPERS_002c-environment-variable"></div>
+<div id="index-CVSWRAPPERS_002c-environment-variable-1"></div>
 </dd>
 <dt> <code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that

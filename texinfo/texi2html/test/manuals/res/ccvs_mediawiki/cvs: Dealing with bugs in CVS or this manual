@@ -18,6 +18,7 @@
 </tr></table>
 == Dealing with bugs in CVS or this manual ==
 
+<div id="index-Bugs-in-this-manual-or-CVS"></div>
 <p>Neither <small>CVS</small> nor this manual is perfect, and they
 probably never will be.  If you are having trouble
 using <small>CVS</small>, or think you have found a bug, there

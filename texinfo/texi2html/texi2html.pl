@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.232 2008-09-08 16:29:46 pertusus Exp $
+# $Id: texi2html.pl,v 1.233 2008-09-09 13:32:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3684,7 +3684,6 @@ sub pass_structure($$)
                             $node_ref->{'index_names'} = [];
                             $state->{'place'} = $node_ref->{'current_place'};
                             $state->{'element'} = $node_ref;
-                            $state->{'after_element'} = 1;
                             $state->{'node_ref'} = $node_ref;
                             # makeinfo treats differently case variants of
                             # top in nodes and anchors and in refs commands and 
@@ -3737,8 +3736,6 @@ sub pass_structure($$)
                     {
                         my $name = $1;
                         my $section_ref = new_section_heading($tag, $name, $state);
-                        $state->{'after_element'} = 1;
-
                         $document_sec_num++ if($tag ne 'top');
                         
                         $section_ref->{'sec_num'} = $document_sec_num;
@@ -3804,7 +3801,6 @@ sub pass_structure($$)
                         echo_warn ("Printindex before document beginning: \@printindex $1", $line_nr);
                         next;
                     }
-                    delete $state->{'after_element'};
                     # $element_index is the first element with index
                     $element_index = $all_elements[-1] unless (defined($element_index));
                     # associate the index to the element such that the page
@@ -5875,9 +5871,6 @@ sub rearrange_elements()
     {
         foreach my $index_entry (@index_labels)
         {
-            # if not defined it means that it should be associated with 
-            # a section, it will be defined later
-            next if ($index_entry->{'label'} eq '');
             my $index_id = "index-" . $index_entry->{'cross'};
             my $index = 1;
             # $index > 0 should prevent integer overflow, hopefully
@@ -5886,7 +5879,8 @@ sub rearrange_elements()
                 $index_id = "index-" . $index_entry->{'cross'} . "-" .$index;
                 $index++;
             }
-            $index_entry->{'label'} = $index_id;
+            $index_entry->{'id'} = $index_id;
+            $index_entry->{'target'} = $index_id;
             my $texi_entry = "index-".$index_entry->{'texi'};
             $texi_entry .= "-".$index if ($index > 1);
             push @{$cross_reference_nodes{$index_id}}, $texi_entry;
@@ -6294,7 +6288,7 @@ sub rearrange_elements()
             }
             elsif ($place->{'entry'})
             {
-                print STDERR "    index($place): $place->{'entry'} ($place->{'label'}, $place->{'file'})\n";
+                print STDERR "    index($place): $place->{'entry'} ($place->{'id'}, $place->{'file'})\n";
             }
             elsif ($place->{'anchor'})
             {
@@ -6474,14 +6468,13 @@ sub do_names()
 my $index_entries;                 # ref on a hash for the index entries
 
 # called during pass_structure
-sub enter_index_entry($$$$$$$$)
+sub enter_index_entry($$$$$$$)
 {
     my $prefix = shift;
     my $line_nr = shift;
     my $entry = shift;
     my $place = shift;
     my $element = shift;
-    my $use_section_id = shift;
     my $command = shift;
     my $region = shift;
     unless ($index_prefix_to_name{$prefix})
@@ -6501,15 +6494,16 @@ sub enter_index_entry($$$$$$$$)
     # key, but with some texi.
     # FIXME this should be done later, during formatting.
     my $key = remove_texi($entry);
-    my $id = '';
+    my $id;
 
     my $index_entry_hidden = (($place eq $no_element_associated_place) or $region);
     # don't add a specific index target if after a section or the index
     # entry is in @copying or the like
-    unless ($use_section_id or $index_entry_hidden)
+    unless ($index_entry_hidden)
     {
         $id = 'IDX' . ++$document_idx_num;
     }
+    my $target = $id;
     # entry will later be in @code for code-like index entry. texi stays
     # the same.
     my $index_entry = {
@@ -6517,7 +6511,8 @@ sub enter_index_entry($$$$$$$$)
            'texi'     => $entry,
            'element'  => $element,
            'prefix'   => $prefix,
-           'label'    => $id,
+           'id'       => $id,
+           'target'   => $target,
            'command'  => $command,
            'prefix'   => $prefix
     };
@@ -6735,6 +6730,64 @@ sub fill_state($)
         #$state->{'element'} = $elements_list[0] unless ((!@elements_list) or (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'}));
 }
 
+sub do_element_directions ($)
+{
+   my $this_element = shift;
+   #print STDERR "Doing hrefs for $this_element->{'texi'} First ";
+   $Texi2HTML::HREF{'First'} = href($element_first, $this_element->{'file'});
+   #print STDERR "Last ";
+   $Texi2HTML::HREF{'Last'} = href($element_last, $this_element->{'file'});
+   #print STDERR "Index ";
+   $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $this_element->{'file'}) if (defined($element_chapter_index));
+   #print STDERR "Top ";
+   $Texi2HTML::HREF{'Top'} = href($element_top, $this_element->{'file'});
+   if ($Texi2HTML::Config::INLINE_CONTENTS)
+   {
+      $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $this_element->{'file'});
+      $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $this_element->{'file'});
+   }
+   else 
+   {
+      $Texi2HTML::HREF{'Contents'} = file_target_href($Texi2HTML::THISDOC{'toc_file'}, $this_element->{'file'}, $content_element{'contents'}->{'target'}) if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
+      $Texi2HTML::HREF{'Overview'} = file_target_href($Texi2HTML::THISDOC{'stoc_file'}, $this_element->{'file'}, $content_element{'shortcontents'}->{'target'}) if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
+   }
+   if ($Texi2HTML::THISDOC{'do_about'})
+   {
+      $Texi2HTML::HREF{'About'} = file_target_href($docu_about, $this_element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'About'});
+   }
+   $Texi2HTML::HREF{'Footnotes'} = file_target_href($docu_foot, $this_element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'Footnotes'});
+   foreach my $direction (@element_directions)
+   {
+      my $elem = $this_element->{$direction};
+      $Texi2HTML::NODE{$direction} = undef;
+      $Texi2HTML::HREF{$direction} = undef;
+      $Texi2HTML::NAME{$direction} = undef;
+      #print STDERR "$direction ";
+      next unless (defined($elem));
+      if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'} or !$elem->{'seen'})
+      {
+         $Texi2HTML::NODE{$direction} = $elem->{'text'};
+      }
+      elsif ($elem->{'with_node'})
+      {
+         $Texi2HTML::NODE{$direction} = $elem->{'with_node'}->{'text'};
+      }
+      if (!$elem->{'seen'})
+      {
+         $Texi2HTML::HREF{$direction} = do_external_href($elem->{'texi'});
+      }
+      else
+      {
+         $Texi2HTML::HREF{$direction} = href($elem, $this_element->{'file'});
+      }
+      $Texi2HTML::NAME{$direction} = $elem->{'text'};
+      $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
+      $Texi2HTML::SIMPLE_TEXT{$direction} = $elem->{'simple_format'};
+      #print STDERR "$direction ($this_element->{'texi'}): \n  NO_TEXI: $Texi2HTML::NO_TEXI{$direction}\n  NAME $Texi2HTML::NAME{$direction}\n  NODE $Texi2HTML::NODE{$direction}\n  HREF $Texi2HTML::HREF{$direction}\n\n";
+   }
+   #print STDERR "\nDone hrefs for $this_element->{'texi'}\n";
+}
+
 sub pass_text($$)
 {
     my $doc_lines = shift;
@@ -6745,8 +6798,6 @@ sub pass_text($$)
     my $text;
     my $doc_nr;
     my $in_doc = 0;
-    #FIXME use $Texi2HTML::THIS_ELEMENT to allow output functio to redefin it
-    my $element;
     my @text =();
     my $one_section = 1 if (@elements_list <= 1);
 
@@ -6888,8 +6939,7 @@ sub pass_text($$)
         }
     }
 
-    my $do_about = 0;
-    $do_about = 1 unless ($one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
+    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
@@ -6999,6 +7049,9 @@ sub pass_text($$)
         }
 #	print STDERR "PASS_TEXT: $cline";
 #	dump_stack(\$text, \@stack, \%state);
+        # make sure the current state from here is $Texi2HTML::THIS_ELEMENT
+        # in case it was set by the user.
+        $state{'element'} = $Texi2HTML::THIS_ELEMENT if (defined($Texi2HTML::THIS_ELEMENT));
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
@@ -7043,18 +7096,18 @@ sub pass_text($$)
                     # or it is an element and not the current one or the 
                     # associated section (in case of node) is not the current 
                     # one
-                    if (!$element 
-                      or ($current_element->{'element'} and ($current_element ne $element))
-                      or ($current_element->{'section_ref'} and ($current_element->{'section_ref'} ne $element)))
+                    if (!$Texi2HTML::THIS_ELEMENT 
+                      or ($current_element->{'element'} and ($current_element ne $Texi2HTML::THIS_ELEMENT))
+                      or ($current_element->{'section_ref'} and ($current_element->{'section_ref'} ne $Texi2HTML::THIS_ELEMENT)))
                     {
                          $new_element = shift @elements_list;
                     }
                     ########################### begin debug
                     my $section_element = $new_element;
-                    $section_element = $element unless ($section_element);
+                    $section_element = $Texi2HTML::THIS_ELEMENT unless ($section_element);
                     if (!$current_element->{'node'} and !$current_element->{'index_page'} and ($section_element ne $current_element))
                     {
-                         print STDERR "NODE: $element->{'texi'}\n" if ($element->{'node'});
+                         print STDERR "NODE: $Texi2HTML::THIS_ELEMENT->{'texi'}\n" if ($Texi2HTML::THIS_ELEMENT->{'node'});
                          warn "elements_list and all_elements not in sync (elements $section_element->{'texi'}, all $current_element->{'texi'}): $cline";
                     }
                     ########################### end debug
@@ -7071,14 +7124,14 @@ sub pass_text($$)
                 {
                     $index_nr = 0;
                     my $old = 'NO_OLD';
-                    $old = $element->{'texi'} if (defined($element));
+                    $old = $Texi2HTML::THIS_ELEMENT->{'texi'} if (defined($Texi2HTML::THIS_ELEMENT));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     # print the element that just finished
-                    if ($element)
+                    if ($Texi2HTML::THIS_ELEMENT)
                     {
-                        finish_element($FH, $element, $new_element, $first_section);
+                        finish_element($FH, $Texi2HTML::THIS_ELEMENT, $new_element, $first_section);
                         $first_section = 0;
-                        $previous_is_top = 0 if (!$element->{'top'});
+                        $previous_is_top = 0 if (!$Texi2HTML::THIS_ELEMENT->{'top'});
                         @{$Texi2HTML::THIS_SECTION} = ();
                         @{$Texi2HTML::THIS_HEADER} = ();
                     }
@@ -7095,68 +7148,17 @@ sub pass_text($$)
                     }
                     # begin new element
                     #my $previous_file;
-                    #$previous_file = $element->{'file'} if (defined($element));
-                    $element = $new_element;
-                    $state{'element'} = $element;
-                    $Texi2HTML::THIS_ELEMENT = $element;
-                    #print STDERR "Doing hrefs for $element->{'texi'} First ";
-                    $Texi2HTML::HREF{'First'} = href($element_first, $element->{'file'});
-                    #print STDERR "Last ";
-                    $Texi2HTML::HREF{'Last'} = href($element_last, $element->{'file'});
-                    #print STDERR "Index ";
-                    $Texi2HTML::HREF{'Index'} = href($element_chapter_index, $element->{'file'}) if (defined($element_chapter_index));
-                    #print STDERR "Top ";
-                    $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
-                    if ($Texi2HTML::Config::INLINE_CONTENTS)
+                    #$previous_file = $Texi2HTML::THIS_ELEMENT->{'file'} if (defined($Texi2HTML::THIS_ELEMENT));
+                    $Texi2HTML::THIS_ELEMENT = $new_element;
+                    $state{'element'} = $Texi2HTML::THIS_ELEMENT;
+
+                    do_element_directions($Texi2HTML::THIS_ELEMENT);
+
+                    $files{$Texi2HTML::THIS_ELEMENT->{'file'}}->{'counter'}--;
+                    #if (!defined($previous_file) or ($Texi2HTML::THIS_ELEMENT->{'file'} ne $previous_file))
+                    if (!defined($current_file) or ($Texi2HTML::THIS_ELEMENT->{'file'} ne $current_file))
                     {
-                        $Texi2HTML::HREF{'Contents'} = href($content_element{'contents'}, $element->{'file'});
-                        $Texi2HTML::HREF{'Overview'} = href($content_element{'shortcontents'}, $element->{'file'});
-                    }
-                    else 
-                    {
-                        $Texi2HTML::HREF{'Contents'} = file_target_href($Texi2HTML::THISDOC{'toc_file'}, $element->{'file'}, $content_element{'contents'}->{'target'}) if (@{$Texi2HTML::TOC_LINES} and defined($content_element{'contents'}));
-                        $Texi2HTML::HREF{'Overview'} = file_target_href($Texi2HTML::THISDOC{'stoc_file'}, $element->{'file'}, $content_element{'shortcontents'}->{'target'}) if (@{$Texi2HTML::OVERVIEW} and defined($content_element{'shortcontents'}));
-                    }
-                    if ($do_about)
-                    {
-                         $Texi2HTML::HREF{'About'} = file_target_href($docu_about, $element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'About'});
-                    }
-                    $Texi2HTML::HREF{'Footnotes'} = file_target_href($docu_foot, $element->{'file'}, $Texi2HTML::Config::misc_pages_targets{'Footnotes'});
-                    foreach my $direction (@element_directions)
-                    {
-                        my $elem = $element->{$direction};
-                        $Texi2HTML::NODE{$direction} = undef;
-                        $Texi2HTML::HREF{$direction} = undef;
-                        $Texi2HTML::NAME{$direction} = undef;
-                        #print STDERR "$direction ";
-                        next unless (defined($elem));
-                        if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'} or !$elem->{'seen'})
-                        {
-                            $Texi2HTML::NODE{$direction} = $elem->{'text'};
-                        }
-                        elsif ($elem->{'with_node'})
-                        {
-                            $Texi2HTML::NODE{$direction} = $elem->{'with_node'}->{'text'};
-                        }
-                        if (!$elem->{'seen'})
-                        {
-                            $Texi2HTML::HREF{$direction} = do_external_href($elem->{'texi'});
-                        }
-                        else
-                        {
-                            $Texi2HTML::HREF{$direction} = href($elem, $element->{'file'});
-                        }
-                        $Texi2HTML::NAME{$direction} = $elem->{'text'};
-                        $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
-                        $Texi2HTML::SIMPLE_TEXT{$direction} = $elem->{'simple_format'};
-                        #print STDERR "$direction ($element->{'texi'}): \n  NO_TEXI: $Texi2HTML::NO_TEXI{$direction}\n  NAME $Texi2HTML::NAME{$direction}\n  NODE $Texi2HTML::NODE{$direction}\n  HREF $Texi2HTML::HREF{$direction}\n\n";
-                    }
-                    #print STDERR "\nDone hrefs for $element->{'texi'}\n";
-                    $files{$element->{'file'}}->{'counter'}--;
-                    #if (!defined($previous_file) or ($element->{'file'} ne $previous_file))
-                    if (!defined($current_file) or ($element->{'file'} ne $current_file))
-                    {
-                        $current_file = $element->{'file'};
+                        $current_file = $Texi2HTML::THIS_ELEMENT->{'file'};
                         print STDERR "\n" if ($T2H_VERBOSE and !$T2H_DEBUG);
                         print STDERR "# Writing to $docu_rdir$current_file " if $T2H_VERBOSE;
                         my $do_page_head = 0;
@@ -7171,7 +7173,7 @@ sub pass_text($$)
                              $files{$current_file}->{'filehandle'} = $FH;
                              $do_page_head = 1;
                         }
-                        if ($element->{'top'})
+                        if ($Texi2HTML::THIS_ELEMENT->{'top'})
                         {
                              &$Texi2HTML::Config::print_Top_header($FH, $do_page_head);
                              $previous_is_top = 1;
@@ -7179,8 +7181,8 @@ sub pass_text($$)
                         else
                         {
                              &$Texi2HTML::Config::print_page_head($FH) if ($do_page_head);
-                             &$Texi2HTML::Config::print_chapter_header($FH, $element) if $Texi2HTML::Config::SPLIT eq 'chapter';
-                             &$Texi2HTML::Config::print_section_header($FH, $element) if $Texi2HTML::Config::SPLIT eq 'section';
+                             &$Texi2HTML::Config::print_chapter_header($FH, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'chapter';
+                             &$Texi2HTML::Config::print_section_header($FH, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'section';
                         }
                         $first_section = 1;
                     }
@@ -7211,7 +7213,7 @@ sub pass_text($$)
                 if ($index_pages)
                 {
                     &$Texi2HTML::Config::print_element_header($FH, $first_section, $previous_is_top) if (!$current_element->{'top'} and !$one_section);
-                    push @{$Texi2HTML::THIS_SECTION}, &$Texi2HTML::Config::heading($element);
+                    push @{$Texi2HTML::THIS_SECTION}, &$Texi2HTML::Config::heading($Texi2HTML::THIS_ELEMENT);
 		    #print STDERR "Do index page $index_pages_nr\n";
                     my $page = do_index_page($index_pages, $index_pages_nr, $line_nr);
                     push @{$Texi2HTML::THIS_SECTION}, $page;
@@ -7249,12 +7251,12 @@ sub pass_text($$)
                 else
                 {
                     $printed_indices{$name} = 1;
-                    print STDERR "print index $name($index_nr) in `$element->{'texi'}', element->{'indices'}: $element->{'indices'},\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
-                    print STDERR "element->{'indices'}->[index_nr]: $element->{'indices'}->[$index_nr] (@{$element->{'indices'}->[$index_nr]})\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
-                    $index_pages = $element->{'indices'}->[$index_nr] if (@{$element->{'indices'}->[$index_nr]} > 1);
+                    print STDERR "print index $name($index_nr) in `$Texi2HTML::THIS_ELEMENT->{'texi'}', element->{'indices'}: $Texi2HTML::THIS_ELEMENT->{'indices'},\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
+                    print STDERR "element->{'indices'}->[index_nr]: $Texi2HTML::THIS_ELEMENT->{'indices'}->[$index_nr] (@{$Texi2HTML::THIS_ELEMENT->{'indices'}->[$index_nr]})\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
+                    $index_pages = $Texi2HTML::THIS_ELEMENT->{'indices'}->[$index_nr] if (@{$Texi2HTML::THIS_ELEMENT->{'indices'}->[$index_nr]} > 1);
 
                     $index_pages_nr = 0;
-                    add_prev(\$text, \@stack, do_index_page($element->{'indices'}->[$index_nr], 0, $line_nr));  
+                    add_prev(\$text, \@stack, do_index_page($Texi2HTML::THIS_ELEMENT->{'indices'}->[$index_nr], 0, $line_nr));  
                     $index_pages_nr++;
                     $index_nr++;
                 }
@@ -7318,13 +7320,14 @@ sub pass_text($$)
             &$Texi2HTML::Config::foot_section (\@foot_lines);
             push @{$Texi2HTML::THIS_SECTION}, @foot_lines;
         }
-        print STDERR "# Write the section $element->{'texi'}\n" if ($T2H_VERBOSE);
-        &$Texi2HTML::Config::one_section($FH, $element);
+        print STDERR "# Write the section $Texi2HTML::THIS_ELEMENT->{'texi'}\n" if ($T2H_VERBOSE);
+        &$Texi2HTML::Config::one_section($FH, $Texi2HTML::THIS_ELEMENT);
         close_out($FH);
+        # no misc element is done
         return;
     }
 
-    finish_element ($FH, $element, undef, $first_section);
+    finish_element ($FH, $Texi2HTML::THIS_ELEMENT, undef, $first_section);
 
     ############################################################################
     # Print ToC, Overview, Footnotes
@@ -7370,6 +7373,7 @@ sub pass_text($$)
        (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS);
     $misc_page_infos{'Overview'}->{'do'} = 1 if
        (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS);
+    #FIXME: ... and $Texi2HTML::THISDOC{'do_about'}) ?
     $misc_page_infos{'About'}->{'do'} = 1 if ($about_body);
          
     foreach my $misc_page('Footnotes', 'Contents', 'Overview', 'About')
@@ -9811,12 +9815,9 @@ sub do_image($$$$$)
     # replace images
     my $command = shift;
     my $args = shift;
-#    my $text = $args->[0];
     my $style_stack = shift;
     my $state = shift;
     my $line_nr = shift;
-#    $text =~ s/\s+/ /gos; # remove useless spaces and newlines
-#    my @args = split (/\s*,\s*/, $text);
     my @args;
     foreach my $arg (@$args)
     {
@@ -9830,7 +9831,6 @@ sub do_image($$$$$)
     if ($base eq '')
     {
          echo_error ("no file argument for \@image", $line_nr);
-         #warn "$ERROR no file argument for \@image\n";
          return '';
     }
     $args[4] = '' if (!defined($args[4]));
@@ -10040,26 +10040,13 @@ sub do_index_summary_file($$)
         $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'section_ref'} and !$entry_element->{'top_as_section'});
         my $origin_href = $entry->{'file'};
    #print STDERR "$entry $entry->{'entry'}, real elem $indexed_element->{'texi'}, section $entry_element->{'texi'}, real $indexed_element->{'file'}, entry file $entry->{'file'}\n";
-        if ($entry->{'label'})
+        if ($entry->{'target'})
         { 
-             $origin_href .= '#' . $entry->{'label'};
+             $origin_href .= '#' . $entry->{'target'};
         }
         else
         {
-            # If the $indexed_element element and the $index entry are on 
-            # the same
-            # file the real element is prefered. If they aren't on the same file
-            # the entry id is choosed as it means that the real element
-            # and the index entry are separated by a printindex.
-            print STDERR "target undef in summary file ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'target'}));
-            if ($entry->{'file'} eq $indexed_element->{'file'})
-            {
-                $origin_href .= '#' . $indexed_element->{'target'};
-            }
-            else
-            {
-                $origin_href .= '#' . $entry->{'target'} ;
-            }
+            $origin_href .= '#' . $indexed_element->{'target'};
         }
         &$Texi2HTML::Config::index_summary_file_entry ($name,
           $key, $origin_href, 
@@ -10096,9 +10083,10 @@ sub do_index_page($$$;$)
             my @entries = ();
             foreach my $entry (@{$page->{'entries_by_letter'}->{$letter}})
             {
-                my ($origin_href, $formatted_entry, $entry_href, $entry_element_text) = 
+                my ($origin_href, $entry_file, $element_file, $entry_target,
+                  $entry_element_target, $formatted_entry, $entry_href, $entry_element_text) = 
                   get_index_entry_infos($entry, $index_element->{'element'}, $line_nr);
-                push @entries, [$origin_href, $formatted_entry, $entry_href, $entry_element_text];
+                push @entries, [$origin_href, $formatted_entry, $entry_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target];
                 
             }
             push @index_letters, { 'letter' => $letter, 'entries' => \@entries };
@@ -10121,7 +10109,7 @@ sub get_index_element_item_infos($$$)
         
     my $index_element = $index_element_item->{'element'};
     my $file = '';
-    $file .= $index_element->{'file'} if ($index_element->{'file'} ne $element->{'file'});
+    $file = $index_element->{'file'} if ($index_element->{'file'} ne $element->{'file'});
     my $number = 0;
     for my $letter (@{$index_element_item->{'page'}->{'letters'}})
     {
@@ -10181,31 +10169,22 @@ sub get_index_entry_infos($$$)
     # (for the Top node, 'top_as_section' is true)
     $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'section_ref'} and !$entry_element->{'top_as_section'});
     my $origin_href = '';
-    $origin_href = $entry->{'file'} if ($Texi2HTML::Config::SPLIT and $entry->{'file'} ne $element->{'file'});
+    $origin_href = $entry->{'file'} if ($entry->{'file'} ne $element->{'file'});
 #print STDERR "$entry $entry->{'entry'}, real elem $indexed_element->{'texi'}, section $entry_element->{'texi'}, real $indexed_element->{'file'}, entry file $entry->{'file'}\n";
-    if ($entry->{'label'})
+    if (defined($entry->{'target'}))
     { 
-         $origin_href .= '#' . $entry->{'label'};
+         $origin_href .= '#' . $entry->{'target'};
     }
     else
-    {
-         # If the $indexed_element element and the $index entry are 
-         # in the same file the indexed_element is prefered. If they 
-         # aren't in the same file the entry id is choosed as it means 
-         # that the indexed_element element and the index entry are 
-         # separated by a printindex.
-         print STDERR "target undef ($entry) entry: $entry->{'entry'}, label: $indexed_element->{'text'}\n"  if (!defined($entry->{'target'}));
-         if ($entry->{'file'} eq $indexed_element->{'file'})
-         {
-              $origin_href .= '#' . $indexed_element->{'target'};
-         }
-         else
-         {
-              $origin_href .= '#' . $entry->{'target'} ;
-         }
+    { # this means that the index entry is in a special region like @copying...
+         $origin_href .= '#' . $indexed_element->{'target'};
     }
    #print STDERR "SUBHREF in index entry `$entry->{'entry'}' for `$entry_element->{'texi'}'\n";
     return ($origin_href, 
+            $entry->{'file'},
+            $element->{'file'},
+            $entry->{'target'},
+            $indexed_element->{'target'},
             substitute_line($entry->{'entry'}),
             href($entry_element, $element->{'file'}, $line_nr),
             $entry_element->{'text'});
@@ -10226,9 +10205,10 @@ sub do_index_entries($$$$$)
        my $entries = '';
        foreach my $entry (@{$page->{'entries_by_letter'}->{$letter}})
        {
-           my ($origin_href, $formatted_entry, $entry_href, $entry_element_text) = 
+           my ($origin_href, $entry_file, $element_file, $entry_target,
+            $entry_element_target, $formatted_entry, $entry_href, $entry_element_text) = 
               get_index_entry_infos($entry, $element, $line_nr);
-           $entries .= &$Texi2HTML::Config::index_entry ($origin_href, $formatted_entry, $entry_href, $entry_element_text);
+           $entries .= &$Texi2HTML::Config::index_entry ($origin_href, $formatted_entry, $entry_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target);
        } 
        $letters .= &$Texi2HTML::Config::index_letter ($letter, $index_infos->{'letter_id'}->{$letter}, $entries);
        $index++;
@@ -10285,7 +10265,7 @@ sub enter_table_index_entry($$$$)
          my $element = $state->{'element'};
          $element = $state->{'node_ref'} unless ($element);
          enter_index_entry($index, $line_nr, $item->{'text'}, 
-            $state->{'place'}, $element, 0, $state->{'table_stack'}->[-1], $state->{'region'});
+            $state->{'place'}, $element, $state->{'table_stack'}->[-1], $state->{'region'});
          add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
 }
@@ -11137,7 +11117,6 @@ sub scan_structure($$$$;$)
         if (!$state->{'verb'} and $state->{'menu'} and $cline =~ /^\*/o)
         {
         # new menu entry
-            delete ($state->{'after_element'});
             my $menu_line = $cline;
             my $node;
             if ($cline =~ /^\*\s+($NODERE)::/)
@@ -11153,10 +11132,6 @@ sub scan_structure($$$$;$)
             {
                 menu_entry_texi(normalise_node($node), $state, $line_nr);
             }
-        }
-        unless (no_line($cline))
-        {
-            delete $state->{'after_element'};
         }
     }
 
@@ -11222,10 +11197,6 @@ sub scan_structure($$$$;$)
                 {
                     add_prev ($text, $stack, $style->{'text'} . "\@end $tag");
                 }
-                unless (no_line($cline))
-                {
-                    delete ($state->{'after_element'});
-                }
                 next;
             }
             else
@@ -11253,10 +11224,6 @@ sub scan_structure($$$$;$)
             }
         }
 	
-        unless (no_line($cline))
-        {
-            delete $state->{'after_element'};
-        }
         # macro_regexp
         if ($cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
@@ -11387,7 +11354,7 @@ sub scan_structure($$$$;$)
                 my $key = $cline;
                 $key =~ s/^\s*//;
                 $cline = substitute_texi_line($cline);
-                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $macro, $state->{'region'});
+                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $macro, $state->{'region'});
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }
@@ -11507,7 +11474,7 @@ sub scan_structure($$$$;$)
                 my $idx_macro = $macro;
                 $idx_macro =~ s/x$//;
                 enter_index_entry($prefix, $line_nr, $entry, $state->{'place'},
-                   $state->{'element'}, 0, $idx_macro, $state->{'region'}) if ($prefix);
+                   $state->{'element'}, $idx_macro, $state->{'region'}) if ($prefix);
                 $cline =~ s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
                 # the text is discarded but we must handle correctly bad
@@ -13351,7 +13318,6 @@ sub open_region($$)
     {
         $state->{'region_lines'}->{'format'} = $command;
         $state->{'region_lines'}->{'number'} = 1;
-        $state->{'region_lines'}->{'after_element'} = 1 if ($state->{'after_element'});
         $state->{'region_lines'}->{'kept_place'} = $state->{'place'};
         $state->{'place'} = $no_element_associated_place;
         $state->{'region'} = $command;
@@ -13365,18 +13331,14 @@ sub open_region($$)
 }
 
 # close region like @insertcopying, titlepage...
-# restore $state->{'after_element'} and delete the structure
+# restore $state and delete the structure
 sub close_region($)
 {
     my $state = shift;
-    $state->{'after_element'} = 1;
-    delete $state->{'after_element'} unless 
-          ($state->{'region_lines'}->{'after_element'});
     $state->{'place'} = $state->{'region_lines'}->{'kept_place'};
     $state->{'multiple_pass'}--;
     delete $state->{'region_lines'}->{'number'};
     delete $state->{'region_lines'}->{'format'};
-    delete $state->{'region_lines'}->{'after_element'};
     delete $state->{'region_lines'}->{'kept_place'};
     delete $state->{'region_lines'};
     delete $state->{'region'};
@@ -13889,9 +13851,9 @@ sub do_index_entry_label($$$)
         echo_warn ("Waiting for index cmd \@$entry->{'command'}, got \@$command", $line_nr);
     }
     
-    print STDERR "(index $command) [$entry->{'entry'}] $entry->{'label'}\n"
+    print STDERR "(index $command) [$entry->{'entry'}] $entry->{'id'}\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    return ($entry, &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}, prepare_state_multiple_pass("${command}_index", $state)), 
+    return ($entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}, prepare_state_multiple_pass("${command}_index", $state)), 
       $index_prefix_to_name{$entry->{'prefix'}},
        $command, $entry->{'texi'}, substitute_line($entry->{'texi'}, prepare_state_multiple_pass("${command}_index", $state)))); 
 }
@@ -14096,7 +14058,7 @@ sub init_with_file_name($)
 
 #######################################################################
 #
-#
+# Main processing, process all the files given on the command line
 #
 #######################################################################
 

@@ -17,6 +17,8 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == How your build system interacts with CVS ==
+<div id="index-Builds"></div>
+<div id="index-make"></div>
 
 <p>As mentioned in the introduction, <small>CVS</small> does not
 contain software for building your software from source

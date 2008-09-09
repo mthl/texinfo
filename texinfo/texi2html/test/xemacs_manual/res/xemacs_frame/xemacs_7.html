@@ -60,6 +60,8 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter">4. Basic Editing Commands</h1>
 
+<a name="index-C_002dh-t"></a>
+<a name="index-help_002dwith_002dtutorial"></a>
 <p>  We now give the basics of how to enter text, make corrections, and
 save the text in a file.  If this material is new to you, you might
 learn it more easily by running the Emacs learn-by-doing tutorial.  To
@@ -118,6 +120,10 @@ C-h t</kbd>.
 </tr></table>
 <h2 class="section">4.1 Inserting Text</h2>
 
+<a name="index-insertion"></a>
+<a name="index-point-1"></a>
+<a name="index-cursor-1"></a>
+<a name="index-graphic-characters"></a>
 <p>  To insert printing characters into the text you are editing, just type
 them.  This inserts the characters you type into the buffer at the
 cursor (that is, at <em>point</em>; see section <a href="xemacs_4.html#Point">Point</a>).  The cursor moves
@@ -210,6 +216,15 @@ it.  Some major modes rebind &lt;DEL&gt; to other commands.
 </tr></table>
 <h2 class="section">4.2 Changing the Location of Point</h2>
 
+<a name="index-arrow-keys"></a>
+<a name="index-LEFT"></a>
+<a name="index-RIGHT"></a>
+<a name="index-UP"></a>
+<a name="index-DOWN"></a>
+<a name="index-moving-point"></a>
+<a name="index-movement"></a>
+<a name="index-cursor-motion"></a>
+<a name="index-moving-the-cursor"></a>
 <p>  To do more than insert characters, you have to know how to move point
 (see section <a href="xemacs_4.html#Point">Point</a>).  The simplest way to do this is with arrow keys, or by
 clicking the left mouse button where you want to move to.
@@ -232,10 +247,10 @@ TTY&rsquo;s), but the latter are available on all terminals.
 <a name="index-M_002d_003e"></a>
 <a name="index-M_002d_003c"></a>
 <a name="index-M_002dr"></a>
-<a name="index-LEFT"></a>
-<a name="index-RIGHT"></a>
-<a name="index-UP"></a>
-<a name="index-DOWN"></a>
+<a name="index-LEFT-1"></a>
+<a name="index-RIGHT-1"></a>
+<a name="index-UP-1"></a>
+<a name="index-DOWN-1"></a>
 <a name="index-HOME"></a>
 <a name="index-END"></a>
 <a name="index-PGUP"></a>
@@ -441,6 +456,7 @@ line, it kills all the text up to the end of the line.  If you type
 </tr></table>
 <h2 class="section">4.4 Files</h2>
 
+<a name="index-files"></a>
 <p>  The commands described above are sufficient for creating and altering
 text in an Emacs buffer; the more advanced Emacs commands just make
 things easier.  But to keep any text permanently you must put it in a
@@ -502,6 +518,7 @@ buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 </tr></table>
 <h2 class="section">4.5 Help</h2>
 
+<a name="index-getting-help-with-keys"></a>
 <p>  If you forget what a key does, you can find out with the Help
 character, which is <kbd>C-h</kbd> (or &lt;F1&gt;, which is an alias for
 <kbd>C-h</kbd>).  Type <kbd>C-h k</kbd> followed by the key you want to know
@@ -532,6 +549,8 @@ a description of all the help facilities.  See section <a href="xemacs_11.html#H
 </tr></table>
 <h2 class="section">4.6 Blank Lines</h2>
 
+<a name="index-inserting-blank-lines"></a>
+<a name="index-deleting-blank-lines"></a>
 <p>  Here are special commands and techniques for putting in and taking out
 blank lines.
 </p>
@@ -593,6 +612,9 @@ nonblank line.
 </tr></table>
 <h2 class="section">4.7 Continuation Lines</h2>
 
+<a name="index-continuation-line"></a>
+<a name="index-wrapping"></a>
+<a name="index-line-wrapping"></a>
 <p>  If you add too many characters to one line without breaking it with
 &lt;RET&gt;, the line will grow to occupy two (or more) lines on the
 screen, with a curved arrow at the extreme right margin of all but the
@@ -763,6 +785,7 @@ The output looks like
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">4.9 Numeric Arguments</h2>
+<a name="index-numeric-arguments"></a>
 
 <p>  In mathematics and computer usage, the word <em>argument</em> means
 &ldquo;data provided to a function or operation.&rdquo;  Any Emacs command can be

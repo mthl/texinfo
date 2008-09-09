@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">14. File Handling</h1>
+<a name="index-files-1"></a>
 
 <p>  The basic unit of stored data in Unix is the <em>file</em>.  To edit a file,
 you must tell Emacs to examine the file and prepare a buffer containing a
@@ -127,6 +128,7 @@ and append to files, and operate on file directories.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.1 File Names</h2>
+<a name="index-file-names"></a>
 
 <p>  Most Emacs commands that operate on a file require you to specify the
 file name.  (Saving and reverting are exceptions; the buffer knows which
@@ -247,6 +249,7 @@ is performed only on filenames read as such using the minibuffer.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.2 Visiting Files</h2>
+<a name="index-visiting-files"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-x C-f</kbd></dt>
@@ -266,7 +269,7 @@ change this window or frame.
 </p></dd>
 </dl>
 
-<a name="index-files"></a>
+<a name="index-files-2"></a>
 <a name="index-visiting"></a>
 <a name="index-saving"></a>
 <p>  <em>Visiting</em> a file means copying its contents into an Emacs buffer
@@ -568,6 +571,8 @@ all the functions to be called after writing out a buffer to a file.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">14.3.1 Backup Files</h3>
+<a name="index-backup-file"></a>
+<a name="index-make_002dbackup_002dfiles"></a>
 
 <p>  Because Unix does not provide version numbers in file names, rewriting a
 file in Unix automatically destroys all record of what the file used to
@@ -677,6 +682,8 @@ that there is only one backup for an Rmail file.  See section <a href="xemacs_30
 </tr></table>
 <h4 class="subsubsection">14.3.1.2 Automatic Deletion of Backups</h4>
 
+<a name="index-kept_002dold_002dversions"></a>
+<a name="index-kept_002dnew_002dversions"></a>
 <p>  To prevent unlimited consumption of disk space, Emacs can delete numbered
 backup versions automatically.  Generally Emacs keeps the first few backups
 and the latest few backups, deleting any in between.  This happens every
@@ -770,6 +777,8 @@ done if renaming would cause the file&rsquo;s owner or group to change.
 </tr></table>
 <h3 class="subsection">14.3.2 Protection Against Simultaneous Editing</h3>
 
+<a name="index-file-dates"></a>
+<a name="index-simultaneous-editing"></a>
 <p>  Simultaneous editing occurs when two users visit the same file, both
 make changes, and both save their changes.  If no one was informed that
 this was happening, and you saved first, you would later find that your
@@ -870,6 +879,8 @@ mode for new files.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.4 Reverting a Buffer</h2>
+<a name="index-revert_002dbuffer"></a>
+<a name="index-drastic-changes"></a>
 
 <p>  If you have made extensive changes to a file and then change your mind
 about them, you can get rid of all changes by reading in the previous
@@ -927,6 +938,8 @@ reports an error when asked to do so.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.5 Auto-Saving: Protection Against Disasters</h2>
+<a name="index-Auto_002dSave-mode"></a>
+<a name="index-crashes"></a>
 
 <p>  Emacs saves all the visited files from time to time (based on counting
 your keystrokes) without being asked.  This is called <em>auto-saving</em>.
@@ -1025,6 +1038,8 @@ auto-save file to correspond to the new visited name.
 </tr></table>
 <h3 class="subsection">14.5.2 Controlling Auto-Saving</h3>
 
+<a name="index-auto_002dsave_002ddefault"></a>
+<a name="index-auto_002dsave_002dmode"></a>
 <p>  Each time you visit a file, auto-saving is turned on for that file&rsquo;s
 buffer if the variable <code>auto-save-default</code> is non-<code>nil</code> (but
 not in batch mode; see section <a href="xemacs_6.html#Entering-Emacs">Entering and Exiting Emacs</a>).  The default for this
@@ -1081,6 +1096,7 @@ buffer.
 </tr></table>
 <h3 class="subsection">14.5.3 Recovering Data from Auto-Saves</h3>
 
+<a name="index-recover_002dfile"></a>
 <p>  If you want to use the contents of an auto-save file to recover from a
 loss of data, use the command <kbd>M-x recover-file &lt;RET&gt; <var>file</var>
 &lt;RET&gt;</kbd>.  Emacs visits <var>file</var> and then (after your confirmation)
@@ -1124,6 +1140,7 @@ with <kbd>M-x auto-save-mode</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.6 Version Control</h2>
+<a name="index-version-control"></a>
 
 <p>  <em>Version control systems</em> are packages that can record multiple
 versions of a source file, usually storing the unchanged parts of the
@@ -1191,6 +1208,11 @@ using.
 </tr></table>
 <h3 class="subsection">14.6.1 Concepts of Version Control</h3>
 
+<a name="index-RCS"></a>
+<a name="index-SCCS"></a>
+<a name="index-master-file"></a>
+<a name="index-registered-file"></a>
+<a name="index-work-file"></a>
 <p>   When a file is under version control, we also say that it is
 <em>registered</em> in the version control system.  Each registered file
 has a corresponding <em>master file</em> which represents the file&rsquo;s
@@ -1394,6 +1416,7 @@ argument, it reads the version number with the minibuffer.
 </tr></table>
 <h3 class="subsection">14.6.3 Variables Affecting Check-in and Check-out</h3>
 
+<a name="index-vc_002dsuppress_002dconfirm"></a>
 <p>  If <code>vc-suppress-confirm</code> is non-<code>nil</code>, then <kbd>C-x C-q</kbd>
 and <kbd>C-x v i</kbd> can save the current buffer without asking, and
 <kbd>C-x v u</kbd> also operates without asking for confirmation.
@@ -1687,6 +1710,8 @@ See section <a href="#Comparing-Files">Comparing Files</a>, for more information
 </tr></table>
 <h3 class="subsection">14.6.7 VC Status Commands</h3>
 
+<a name="index-C_002dx-v-l"></a>
+<a name="index-vc_002dprint_002dlog"></a>
 <p>  To view the detailed version control status and history of a file,
 type <kbd>C-x v l</kbd> (<code>vc-print-log</code>).  It displays the history of
 changes to the current file, including the text of the log entries.  The
@@ -1739,6 +1764,7 @@ change.
 </tr></table>
 <h3 class="subsection">14.6.8 Renaming VC Work Files and Master Files</h3>
 
+<a name="index-vc_002drename_002dfile"></a>
 <p>  When you rename a registered file, you must also rename its master
 file correspondingly to get proper results.  Use <code>vc-rename-file</code>
 to rename the source file as you specify, and rename its master file
@@ -1769,6 +1795,7 @@ someone else.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">14.6.9 Snapshots</h3>
+<a name="index-snapshots-and-version-control"></a>
 
 <p>  A <em>snapshot</em> is a named set of file versions (one for each
 registered file) that you can treat as a unit.  One important kind of
@@ -1859,6 +1886,7 @@ or a snapshot against a named version.
 </tr></table>
 <h4 class="subsubsection">14.6.9.2 Snapshot Caveats</h4>
 
+<a name="index-named-configurations-_0028RCS_0029"></a>
 <p>  VC&rsquo;s snapshot facilities are modeled on RCS&rsquo;s named-configuration
 support.  They use RCS&rsquo;s native facilities for this, so under VC
 snapshots made using RCS are visible even when you bypass VC.
@@ -2001,6 +2029,8 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 </tr></table>
 <h2 class="section">14.7 Listing a File Directory</h2>
 
+<a name="index-file-directory"></a>
+<a name="index-directory-listing"></a>
 <p>  Files are organized by Unix into <em>directories</em>.  A <em>directory
 listing</em> is a list of all the files in a directory.  Emacs provides
 directory listings in brief format (file names only) and verbose format
@@ -2075,7 +2105,10 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.8 Comparing Files</h2>
+<a name="index-comparing-files"></a>
 
+<a name="index-diff"></a>
+<a name="index-diff_002dswitches"></a>
 <p>  The command <kbd>M-x diff</kbd> compares two files, displaying the
 differences in an Emacs buffer named &lsquo;<samp>*Diff*</samp>&rsquo;.  It works by running
 the <code>diff</code> program, using options taken from the variable
@@ -2096,7 +2129,7 @@ recent backup.  If you specify the name of a backup file,
 of.
 </p>
 <a name="index-compare_002dwindows"></a>
-<a name="index-comparing-files"></a>
+<a name="index-comparing-files-1"></a>
 <p>  The command <kbd>M-x compare-windows</kbd> compares the text in the current
 window with that in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time in each
@@ -2129,6 +2162,8 @@ non-<code>nil</code>, it ignores differences in case as well.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.9 Dired, the Directory Editor</h2>
+<a name="index-Dired"></a>
+<a name="index-deletion-_0028of-files_0029"></a>
 
 <p>  Dired makes it easy to delete or visit many of the files in a single
 directory at once.  It creates an Emacs buffer containing a listing of the
@@ -2167,6 +2202,9 @@ buffer and special Dired commands to operate on the files.
 </tr></table>
 <h3 class="subsection">14.9.1 Entering Dired</h3>
 
+<a name="index-dired"></a>
+<a name="index-C_002dx-d"></a>
+<a name="index-dired_002dlisting_002dswitches"></a>
 <p>  To invoke dired, type <kbd>C-x d</kbd> or <kbd>M-x dired</kbd>.  The command reads a
 directory name or wildcard file name pattern as a minibuffer argument just
 like the <code>list-directory</code> command, <kbd>C-x C-d</kbd>.  Where <code>dired</code>
@@ -2409,7 +2447,7 @@ All operate on one file; they do not accept wildcard file names.
 existing file without removing the old name.  The new name must belong
 on the file system that the file is on.
 </p>
-<a name="index-append_002dto_002dfile"></a>
+<a name="index-append_002dto_002dfile-1"></a>
 <p>  <kbd>M-x append-to-file</kbd> adds the text of the region to the end of the
 specified file.
 </p>
@@ -2421,7 +2459,7 @@ file named <var>new</var> already exists, because copying overwrites the old
 contents of the file <var>new</var>.
 </p>
 <a name="index-delete_002dfile"></a>
-<a name="index-deletion-_0028of-files_0029"></a>
+<a name="index-deletion-_0028of-files_0029-1"></a>
 <p>  <kbd>M-x delete-file</kbd> deletes a specified file, like the <code>rm</code>
 command in the shell.  If you are deleting many files in one directory, it
 may be more convenient to use Dired (see section <a href="#Dired">Dired, the Directory Editor</a>).

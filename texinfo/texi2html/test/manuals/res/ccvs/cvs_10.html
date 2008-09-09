@@ -59,6 +59,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">10. Multiple developers</h1>
+<a name="index-Multiple-developers"></a>
+<a name="index-Team-of-developers"></a>
+<a name="index-File-locking"></a>
+<a name="index-Locking-files"></a>
+<a name="index-Working-copy"></a>
+<a name="index-Reserved-checkouts"></a>
+<a name="index-Unreserved-checkouts"></a>
+<a name="index-RCS_002dstyle-locking"></a>
 
 <p>When more than one person works on a software project
 things often get complicated.  Often, two people try to
@@ -132,6 +140,8 @@ choosing between them.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.1 File status</h2>
+<a name="index-File-status"></a>
+<a name="index-Status-of-a-file"></a>
 
 <p>Based on what operations you have performed on a
 checked out file, and what operations others have
@@ -262,6 +272,10 @@ these options, see <a href="cvs_17.html#Invoking-CVS">Quick reference to CVS com
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.2 Bringing a file up to date</h2>
+<a name="index-Bringing-a-file-up-to-date"></a>
+<a name="index-Updating-a-file"></a>
+<a name="index-Merging-a-file"></a>
+<a name="index-Update_002c-introduction"></a>
 
 <p>When you want to update or merge a file, use the <code>update</code>
 command.  For files that are not up to date this is roughly equivalent
@@ -310,6 +324,9 @@ See section <a href="cvs_16.html#update">update&mdash;Bring work tree in sync wi
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.3 Conflicts example</h2>
+<a name="index-Merge_002c-an-example"></a>
+<a name="index-Example-of-merge"></a>
+<a name="index-driver_002ec-_0028merge-example_0029"></a>
 
 <p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
@@ -491,6 +508,9 @@ See the documentation for pcl-cvs.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.4 Informing others about commits</h2>
+<a name="index-Informing-others"></a>
+<a name="index-Spreading-information"></a>
+<a name="index-Mail_002c-automatic-mail-on-commit"></a>
 
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
@@ -522,6 +542,7 @@ newsgroup.
 </tr></table>
 <h2 class="section">10.5 Several developers simultaneously attempting to run CVS</h2>
 
+<a name="index-Locks_002c-cvs_002c-introduction"></a>
 <p>If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 </p>
@@ -600,6 +621,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.6 Mechanisms to track who is editing files</h2>
+<a name="index-Watches"></a>
 
 <p>For many groups, use of <small>CVS</small> in its default mode is
 perfectly satisfactory.  Users may sometimes go to
@@ -852,6 +874,7 @@ changing.
 </tr></table>
 <h3 class="subsection">10.6.3 How to edit a file which is being watched</h3>
 
+<a name="index-Checkout_002c-as-term-for-getting-ready-to-edit"></a>
 <p>Since a file which is being watched is checked out
 read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
@@ -939,6 +962,7 @@ successful <small>CVS</small> command.
 </tr></table>
 <h3 class="subsection">10.6.4 Information about who is watching and editing</h3>
 
+<a name="index-watchers-_0028subcommand_0029"></a>
 <dl>
 <dt><a name="index-cvs-watchers"></a><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
@@ -986,6 +1010,7 @@ containing the file.
 </tr></table>
 <h3 class="subsection">10.6.5 Using watches with old versions of CVS</h3>
 
+<a name="index-CVS-1_002e6_002c-and-watches"></a>
 <p>If you use the watch features on a repository, it
 creates &lsquo;<tt>CVS</tt>&rsquo; directories in the repository and
 stores the information about watches in that directory.
@@ -1025,6 +1050,7 @@ that will restore the repository to a state which
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.7 Choosing between reserved or unreserved checkouts</h2>
+<a name="index-Choosing_002c-reserved-or-unreserved-checkouts"></a>
 
 <p>Reserved and unreserved checkouts each have pros and
 cons.  Let it be said that a lot of this is a matter of

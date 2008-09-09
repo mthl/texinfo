@@ -17,6 +17,10 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Reference manual for Administrative files ==
+<div id="index-Administrative-files-_0028reference_0029"></div>
+<div id="index-Files_002c-reference-manual"></div>
+<div id="index-Reference-manual-_0028files_0029"></div>
+<div id="index-CVSROOT-_0028file_0029"></div>
 
 <p>Inside the repository, in the directory
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, there are a number of
@@ -59,6 +63,8 @@ file, which defines the modules inside the repository.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The modules file ===
+<div id="index-Modules-_0028admin-file_0029"></div>
+<div id="index-Defining-modules-_0028reference-manual_0029"></div>
 
 <p>The &lsquo;<tt>modules</tt>&rsquo; file records your definitions of
 names for collections of source code.  <small>CVS</small> will
@@ -111,6 +117,8 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Alias modules ====
+<div id="index-Alias-modules"></div>
+<div id="index-_002da_002c-in-modules-file"></div>
 
 <p>Alias modules are the simplest kind of module:
 </p>
@@ -169,6 +177,7 @@ U first-dir/sdir/sfile
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Regular modules ====
+<div id="index-Regular-modules"></div>
 
 <dl compact="compact">
 <dt> <code><var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
@@ -240,6 +249,8 @@ $
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Ampersand modules ====
+<div id="index-Ampersand-modules"></div>
+<div id="index-_0026_002c-in-modules-file"></div>
 
 <p>A module definition can refer to other modules by
 including &lsquo;<samp>&amp;<var>module</var></samp>&rsquo; in its definition.
@@ -306,6 +317,8 @@ a future release of <small>CVS</small>.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Excluding directories ====
+<div id="index-Excluding-directories_002c-in-modules-file"></div>
+<div id="index-_0021_002c-in-modules-file"></div>
 
 <p>An alias module may exclude particular directories from
 other modules by using an exclamation mark (&lsquo;<samp>!</samp>&rsquo;)
@@ -340,6 +353,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Module options ====
+<div id="index-Options_002c-in-modules-file"></div>
 
 <p>Either regular modules or ampersand modules can contain
 options, which supply additional information concerning
@@ -419,6 +433,10 @@ that taginfo is a better solution (see section [cvs: History browsing#user_002dd
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== How the modules file &ldquo;program options&rdquo; programs are run ====
+<div id="index-Modules-file-program-options"></div>
+<div id="index-_002dt_002c-in-modules-file-1"></div>
+<div id="index-_002do_002c-in-modules-file-1"></div>
+<div id="index-_002de_002c-in-modules-file-1"></div>
 
 <p>For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
@@ -456,6 +474,9 @@ completed.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The cvswrappers file ===
+<div id="index-cvswrappers-_0028admin-file_0029"></div>
+<div id="index-CVSWRAPPERS_002c-environment-variable"></div>
+<div id="index-Wrappers"></div>
 
 
 <p>Wrappers refers to a <small>CVS</small> feature which lets you
@@ -526,6 +547,7 @@ directory, treating files whose name ends in
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The commit support files ===
+<div id="index-Committing_002c-administrative-support-files"></div>
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
@@ -599,6 +621,9 @@ imagination is the limit!
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== The common syntax ====
+<div id="index-Info-files-_0028syntax_0029"></div>
+<div id="index-Syntax-of-info-files"></div>
+<div id="index-Common-syntax-of-info-files"></div>
 
 
 <p>The administrative files such as &lsquo;<tt>commitinfo</tt>&rsquo;,
@@ -651,6 +676,9 @@ is used as a file name or command-line as appropriate.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Commitinfo ====
+<div id="index-commitinfo"></div>
+<div id="index-Commits_002c-precommit-verification-of"></div>
+<div id="index-Precommit-checking"></div>
 
 <p>The &lsquo;<tt>commitinfo</tt>&rsquo; file defines programs to execute
 whenever &lsquo;<samp>cvs commit</samp>&rsquo; is about to execute.  These
@@ -725,6 +753,8 @@ to the command.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Verifying log messages ====
+<div id="index-verifymsg-_0028admin-file_0029"></div>
+<div id="index-Log-message_002c-verifying"></div>
 
 <p>Once you have entered a log message, you can evaluate
 that message to check for specific content, such as
@@ -878,6 +908,10 @@ fi
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Editinfo ====
+<div id="index-editinfo-_0028admin-file_0029"></div>
+<div id="index-Editor_002c-specifying-per-module"></div>
+<div id="index-Per_002dmodule-editor"></div>
+<div id="index-Log-messages_002c-editing"></div>
 
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
@@ -1020,6 +1054,11 @@ done
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Loginfo ====
+<div id="index-loginfo-_0028admin-file_0029"></div>
+<div id="index-Storing-log-messages"></div>
+<div id="index-Mailing-log-messages"></div>
+<div id="index-Distributing-log-messages"></div>
+<div id="index-Log-messages"></div>
 
 <p>The &lsquo;<tt>loginfo</tt>&rsquo; file is used to control where
 &lsquo;<samp>cvs commit</samp>&rsquo; log information is sent.  The first
@@ -1162,6 +1201,9 @@ like this:
 </tr></table>
 ===== Keeping a checked out copy =====
 
+<div id="index-Keeping-a-checked-out-copy"></div>
+<div id="index-Checked-out-copy_002c-keeping"></div>
+<div id="index-Web-pages_002c-maintaining-with-CVS"></div>
 
 <p>It is often useful to maintain a directory tree which
 contains files which correspond to the latest version
@@ -1205,6 +1247,10 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Rcsinfo ===
+<div id="index-rcsinfo-_0028admin-file_0029"></div>
+<div id="index-Form-for-log-message"></div>
+<div id="index-Log-message-template"></div>
+<div id="index-Template-for-log-message"></div>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file can be used to specify a form to
 edit when filling out the commit log.  The
@@ -1264,6 +1310,9 @@ be updated from the server.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Ignoring files via cvsignore ===
+<div id="index-cvsignore-_0028admin-file_0029_002c-global"></div>
+<div id="index-Global-cvsignore"></div>
+<div id="index-Ignoring-files"></div>
 
 <p>There are certain file names that frequently occur
 inside your working copy, but that you don&rsquo;t want to
@@ -1374,6 +1423,7 @@ way to specify comments.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The checkoutlist file ===
+<div id="index-checkoutlist"></div>
 
 <p>It may be helpful to use <small>CVS</small> to maintain your own
 files in the &lsquo;<tt>CVSROOT</tt>&rsquo; directory.  For example,
@@ -1434,6 +1484,8 @@ more general context than the one provided by
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The history file ===
+<div id="index-History-file"></div>
+<div id="index-Log-information_002c-saving"></div>
 
 <p>The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
 to log information for the <code>history</code> command
@@ -1468,6 +1520,8 @@ format changes with future releases of <small>CVS</small>.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Expansions in administrative files ===
+<div id="index-Internal-variables"></div>
+<div id="index-Variables"></div>
 
 <p>Sometimes in writing an administrative file, you might
 want the file to be able to know various things based
@@ -1615,6 +1669,8 @@ Do not confuse this with the internal variable of the same name.
 </tr></table>
 === The CVSROOT/config configuration file ===
 
+<div id="index-config_002c-in-CVSROOT"></div>
+<div id="index-CVSROOT_002fconfig"></div>
 
 <p>The administrative file &lsquo;<tt>config</tt>&rsquo; contains various
 miscellaneous settings which affect the behavior of

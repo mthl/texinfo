@@ -17,6 +17,9 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Keyword substitution ==
+<div id="index-Keyword-substitution"></div>
+<div id="index-Keyword-expansion"></div>
+<div id="index-Identifying-files"></div>
 
 
 <p>As long as you edit source files inside a working
@@ -62,6 +65,7 @@ a new revision of the file.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Keyword List ===
+<div id="index-Keyword-List"></div>
 
 
 <p>This is a list of the keywords:
@@ -360,6 +364,9 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Substitution modes ===
+<div id="index-Keyword-substitution_002c-changing-modes"></div>
+<div id="index-_002dk-_0028keyword-substitution_0029"></div>
+<div id="index-Kflag"></div>
 
 <p>Each file has a stored default substitution mode, and
 each working directory copy of a file also has a
@@ -457,6 +464,7 @@ handle an export containing binary files correctly.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Configuring Keyord Expansion ===
+<div id="index-Configuring-keyword-expansion"></div>
 
 <p>In a repository that includes third-party software on
 vendor branches, it is sometimes helpful to configure

@@ -318,7 +318,7 @@ current Emacs region.  This is done by typing a digit argument before
 <em>:123,135</em>, assuming that the current region starts at line 123 and
 ends at line 135.  There is no need to type the line numbers, since Viper
 inserts them automatically in front of the Ex command.
-<a name="index-Ex-commands-1"></a>
+<a name="index-Ex-commands-2"></a>
 </p>
 <hr size="6">
 <a name="Text-Handling"></a>
@@ -383,6 +383,17 @@ inserts them automatically in front of the Ex command.
 </tr></table>
 <h3 class="subsection">4.2.1 Move Commands</h3>
 
+<a name="index-movement-commands-1"></a>
+<a name="index-searching"></a>
+<a name="index-textmarkers-3"></a>
+<a name="index-markers-2"></a>
+<a name="index-column-movement"></a>
+<a name="index-paragraphs-1"></a>
+<a name="index-headings-1"></a>
+<a name="index-sections-1"></a>
+<a name="index-sentences-1"></a>
+<a name="index-matching-parens"></a>
+<a name="index-paren-matching"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  h  C-h</kbd></dt>
@@ -805,7 +816,7 @@ functions doing the perusing can be bound to unused keyboard keys in the
 <a name="index-_003e_003cmove_003e"></a>
 <a name="index-O"></a>
 <a name="index-o"></a>
-<a name="index-i"></a>
+<a name="index-i-1"></a>
 <a name="index-A"></a>
 <a name="index-a"></a>
 
@@ -835,7 +846,7 @@ between Insert/Replace/Vi states at will.
 Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <var>viper-vi-style-in-minibuffer</var> to <code>nil</code>.
 </p>
-<a name="index-Insert-state"></a>
+<a name="index-Insert-state-2"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-v</kbd></dt>
@@ -946,6 +957,10 @@ shiftwidth to the left (layout!).
 </tr></table>
 <h3 class="subsection">4.2.6 Changing Text</h3>
 
+<a name="index-joining-lines"></a>
+<a name="index-changing-case-1"></a>
+<a name="index-quoting-regions"></a>
+<a name="index-substitution"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  r&lt;char&gt;</kbd></dt>
@@ -1200,6 +1215,8 @@ can be used in &lt;repl&gt;</em>.
 </tr></table>
 <h3 class="subsection">4.2.8 Yanking</h3>
 
+<a name="index-cut-and-paste"></a>
+<a name="index-paste-1"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  y&lt;move&gt;</kbd></dt>
@@ -1273,6 +1290,8 @@ be automatically down-cased.
 </tr></table>
 <h3 class="subsection">4.2.9 Undoing</h3>
 
+<a name="index-undo-2"></a>
+<a name="index-backup-files-1"></a>
 
 <dl compact="compact">
 <dt>  <kbd>u U</kbd></dt>
@@ -1320,6 +1339,7 @@ that have a &lsquo;<samp>~</samp>&rsquo; appended to them.
 </tr></table>
 <h2 class="section">4.3 Display</h2>
 
+<a name="index-scrolling"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-g</kbd></dt>
@@ -1408,6 +1428,7 @@ initialization: half a page).
 </tr></table>
 <h2 class="section">4.4 File and Buffer Handling</h2>
 
+<a name="index-multiple-files-1"></a>
 
 <p>In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don&rsquo;t
@@ -1610,6 +1631,8 @@ is typed in Minibuffer.  File completion and history are supported.
 </tr></table>
 <h2 class="section">4.5 Mapping</h2>
 
+<a name="index-key-bindings-1"></a>
+<a name="index-key-mapping"></a>
 
 <dl compact="compact">
 <dt> <kbd>:map &lt;string&gt;</kbd></dt>
@@ -1707,6 +1730,7 @@ See section <a href="viper_3.html#Macros-and-Registers">Macros and Registers</a>
 </tr></table>
 <h2 class="section">4.6 Shell Commands</h2>
 
+<a name="index-_0025-_0028Current-file_0029-1"></a>
 
 <p>The symbol &lsquo;<samp>%</samp>&rsquo; is used in Ex shell commands to mean current file.  If
 you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be escaped as &lsquo;<samp>\%</samp>&rsquo;.
@@ -1801,6 +1825,7 @@ current).
 </tr></table>
 <h2 class="section">4.7 Options</h2>
 
+<a name="index-Vi-options"></a>
 
 <dl compact="compact">
 <dt> <kbd>autoindent</kbd></dt>
@@ -1865,8 +1890,8 @@ If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
 <dt> <kbd>showmatch</kbd></dt>
 <dt> <kbd>sm</kbd></dt>
-<dd><a name="index-paren-matching"></a>
-<a name="index-matching-parens"></a>
+<dd><a name="index-paren-matching-1"></a>
+<a name="index-matching-parens-1"></a>
 <p>showmatch &ndash; Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it&rsquo;s on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there&rsquo;s no match, Vi will beep.
@@ -1898,7 +1923,7 @@ within &lt;wm&gt; columns from the right margin.
 </p></dd>
 <dt> <kbd>wrapscan</kbd></dt>
 <dt> <kbd>ws</kbd></dt>
-<dd><a name="index-searching"></a>
+<dd><a name="index-searching-1"></a>
 <p>wrapscan &ndash; When searching, the end is
 considered &lsquo;<samp>stuck</samp>&rsquo; to the begin of the file.
 </p></dd>
@@ -2014,7 +2039,7 @@ you need.
 <a name="index-C_002dx2"></a>
 <a name="index-C_002dx1"></a>
 <a name="index-C_002dx0"></a>
-<a name="index-C_002dz"></a>
+<a name="index-C_002dz-2"></a>
 <a name="index-C_002d_005c-1"></a>
 <a name="index-C_002dc_005c"></a>
 

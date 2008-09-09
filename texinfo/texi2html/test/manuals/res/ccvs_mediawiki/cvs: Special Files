@@ -18,6 +18,12 @@
 </tr></table>
 == Special Files ==
 
+<div id="index-Special-files"></div>
+<div id="index-Device-nodes"></div>
+<div id="index-Ownership_002c-saving-in-CVS"></div>
+<div id="index-Permissions_002c-saving-in-CVS"></div>
+<div id="index-Hard-links"></div>
+<div id="index-Symbolic-links"></div>
 
 <p>In normal circumstances, <small>CVS</small> works only with regular
 files.  Every file in a project is assumed to be

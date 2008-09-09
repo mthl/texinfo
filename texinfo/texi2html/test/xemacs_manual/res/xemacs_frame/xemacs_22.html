@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">19. Indentation</h1>
+<a name="index-indentation"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;TAB&gt;</kbd></dt>
@@ -94,8 +95,8 @@ line (<code>back-to-indentation</code>).
 </p></dd>
 </dl>
 
-<a name="index-TAB-1"></a>
-<a name="index-indentation"></a>
+<a name="index-TAB-3"></a>
+<a name="index-indentation-1"></a>
 <p>  Most programming languages have some indentation convention.  For Lisp
 code, lines are indented according to their nesting in parentheses.  The
 same general idea is used for C code, though details differ.
@@ -108,7 +109,7 @@ are when you type &lt;TAB&gt;, it aligns the line as a whole.  In C mode,
 &lt;TAB&gt; implements a subtle and sophisticated indentation style that
 knows about many aspects of C syntax.
 </p>
-<a name="index-TAB-2"></a>
+<a name="index-TAB-4"></a>
 <p>  In Text mode, &lt;TAB&gt; runs the command <code>tab-to-tab-stop</code>, which
 indents to the next tab stop column.  You can set the tab stops with
 <kbd>M-x edit-tab-stops</kbd>.
@@ -227,6 +228,8 @@ mode.  See section <a href="xemacs_23.html#Text">Commands for Human Languages</a
 </tr></table>
 <h2 class="section">19.2 Tab Stops</h2>
 
+<a name="index-M_002di"></a>
+<a name="index-tab_002dto_002dtab_002dstop"></a>
 <p>  For typing in tables, you can use Text mode&rsquo;s definition of &lt;TAB&gt;,
 <code>tab-to-tab-stop</code>.  This command inserts indentation before point,
 enough to reach the next tab stop column.  Even if you are not in Text mode,
@@ -289,6 +292,7 @@ for more information on that.
 </tr></table>
 <h2 class="section">19.3 Tabs vs. Spaces</h2>
 
+<a name="index-indent_002dtabs_002dmode"></a>
 <p>  Emacs normally uses both tabs and spaces to indent lines.  If you prefer,
 all indentation can be made from spaces only.  To request this, set
 <code>indent-tabs-mode</code> to <code>nil</code>.  This is a per-buffer variable;

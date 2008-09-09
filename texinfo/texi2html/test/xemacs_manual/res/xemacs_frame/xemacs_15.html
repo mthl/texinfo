@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">12. Searching and Replacement</h1>
+<a name="index-searching"></a>
 
 <p>  Like other editors, Emacs has commands for searching for occurrences of
 a string.  The principal search command is unusual in that it is
@@ -378,6 +379,7 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.2 Non-Incremental Search</h2>
+<a name="index-non_002dincremental-search"></a>
 
 <p>  Emacs also has conventional non-incremental search commands, which require
 you type the entire search string before searching begins.
@@ -435,6 +437,7 @@ See section <a href="#Word-Search">Word Search</a>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.3 Word Search</h2>
+<a name="index-word-search"></a>
 
 <p>  Word search looks for a sequence of words without regard to how the
 words are separated.  More precisely, you type a string of many words,
@@ -491,6 +494,8 @@ is the traditional Emacs sequence of keys for word search.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.4 Regular Expression Search</h2>
+<a name="index-regular-expression"></a>
+<a name="index-regexp"></a>
 
 <p>  A <em>regular expression</em> (<em>regexp</em>, for short) is a pattern that
 denotes a (possibly infinite) set of strings.  Searching for matches
@@ -983,6 +988,7 @@ times.
 </tr></table>
 <h2 class="section">12.6 Searching and Case</h2>
 
+<a name="index-case_002dfold_002dsearch"></a>
 <p>  All searches in Emacs normally ignore the case of the text they
 are searching through; if you specify searching for &lsquo;<samp>FOO</samp>&rsquo;,
 &lsquo;<samp>Foo</samp>&rsquo; and &lsquo;<samp>foo</samp>&rsquo; are also considered a match.  Regexps, and in
@@ -1017,6 +1023,9 @@ on your screen.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.7 Replacement Commands</h2>
+<a name="index-replacement"></a>
+<a name="index-string-substitution"></a>
+<a name="index-global-substitution"></a>
 
 <p>  Global search-and-replace operations are not needed as often in Emacs as
 they are in other editors, but they are available.  In addition to the
@@ -1059,6 +1068,8 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">12.7.1 Unconditional Replacement</h3>
+<a name="index-replace_002dstring"></a>
+<a name="index-replace_002dregexp"></a>
 
 <dl compact="compact">
 <dt> <kbd>M-x replace-string &lt;RET&gt; <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>
@@ -1150,6 +1161,8 @@ in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
 </tr></table>
 <h3 class="subsection">12.7.3 Replace Commands and Case</h3>
 
+<a name="index-case_002dreplace"></a>
+<a name="index-case_002dfold_002dsearch-1"></a>
 <p>  If the arguments to a replace command are in lower case, the command
 preserves case when it makes a replacement.  Thus, the following command:
 </p>
@@ -1187,6 +1200,7 @@ replacement string is not done.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">12.7.4 Query Replace</h3>
+<a name="index-query-replace"></a>
 
 <dl compact="compact">
 <dt> <kbd>M-% <var>string</var> &lt;RET&gt; <var>newstring</var> &lt;RET&gt;</kbd></dt>

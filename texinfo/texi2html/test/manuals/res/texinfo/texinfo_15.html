@@ -78,7 +78,10 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">14. Making and Preventing Breaks</h1>
+<a name="index-Making-line-and-page-breaks"></a>
+<a name="index-Preventing-line-and-page-breaks"></a>
 
+<a name="index-Line-breaks"></a>
 <p>Usually, a Texinfo file is processed both by TeX and by one of the
 Info formatting commands.  Line, paragraph, or page breaks sometimes
 occur in the &lsquo;wrong&rsquo; place in one or other form of output.  You must
@@ -185,6 +188,9 @@ files do not have pages.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.1 <code>@*</code>: Generate Line Breaks</h2>
+<a name="index-_002a-_0028force-line-break_0029"></a>
+<a name="index-Line-breaks-1"></a>
+<a name="index-Breaks-in-a-line"></a>
 
 <p>The <code>@*</code> command forces a line break in both the printed manual and
 in Info.
@@ -244,6 +250,10 @@ break.
 </tr></table>
 <h2 class="section">14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate</h2>
 
+<a name="index-_002d-_0028discretionary-hyphen_0029"></a>
+<a name="index-hyphenation"></a>
+<a name="index-Hyphenation_002c-helping-TeX-do"></a>
+<a name="index-Fine_002dtuning_002c-and-hyphenation"></a>
 
 <p>Although TeX&rsquo;s hyphenation algorithm is generally pretty good, it
 does miss useful hyphenation points from time to time.  (Or, far more
@@ -291,6 +301,9 @@ words match exactly, so give all necessary variants.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</h2>
+<a name="index-w-_0028prevent-line-break_0029"></a>
+<a name="index-Line-breaks_002c-preventing"></a>
+<a name="index-Hyphenation_002c-preventing"></a>
 
 <p><code>@w{<var>text</var>}</code> outputs <var>text</var> and prohibits line breaks
 within <var>text</var>.
@@ -336,6 +349,10 @@ line.  For example:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</h2>
+<a name="index-sp-_0028line-spacing_0029"></a>
+<a name="index-Space_002c-inserting-vertical"></a>
+<a name="index-Blank-lines"></a>
+<a name="index-Line-spacing"></a>
 
 <p>A line beginning with and containing only <code>@sp <var>n</var></code>
 generates <var>n</var> blank lines of space in both the printed manual and
@@ -371,6 +388,8 @@ example,
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.5 <code>@page</code>: Start a New Page</h2>
+<a name="index-Page-breaks-1"></a>
+<a name="index-page"></a>
 
 <p>A line containing only <code>@page</code> starts a new page in a printed
 manual.  The command has no effect on Info files since they are not
@@ -398,6 +417,10 @@ section of a Texinfo file to start the copyright page.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.6 <code>@group</code>: Prevent Page Breaks</h2>
+<a name="index-Group-_0028hold-text-together-vertically_0029"></a>
+<a name="index-Holding-text-together-vertically"></a>
+<a name="index-Vertically-holding-text-together"></a>
+<a name="index-group"></a>
 
 <p>The <code>@group</code> command (on a line by itself) is used inside an
 <code>@example</code> or similar construct to begin an unsplittable vertical
@@ -460,6 +483,8 @@ TeX.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</h2>
+<a name="index-Need-space-at-page-bottom"></a>
+<a name="index-need"></a>
 
 <p>A line containing only <code>@need <var>n</var></code> starts
 a new page in a printed manual if fewer than <var>n</var> mils (thousandths

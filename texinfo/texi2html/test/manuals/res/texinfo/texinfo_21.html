@@ -109,6 +109,9 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.1 Creating an Info File</h2>
+<a name="index-Creating-an-Info-file"></a>
+<a name="index-Info_002c-creating-an-online-file"></a>
+<a name="index-Formatting-a-file-for-Info"></a>
 
 <p><code>makeinfo</code> is a program that converts a Texinfo file into an Info
 file, HTML file, or plain text.  <code>texinfo-format-region</code> and
@@ -240,6 +243,8 @@ type:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.3 Options for <code>makeinfo</code></h3>
+<a name="index-makeinfo-options"></a>
+<a name="index-Options-for-makeinfo"></a>
 
 <p>The <code>makeinfo</code> command takes a number of options.  Most often,
 options are used to set the value of the fill column and specify the
@@ -527,6 +532,8 @@ warnings.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.4 Pointer Validation</h3>
+<a name="index-Pointer-validation-with-makeinfo"></a>
+<a name="index-Validation-of-pointers"></a>
 
 <p>If you do not suppress pointer validation with the &lsquo;<samp>--no-validate</samp>&rsquo;
 option or the <code>@novalidate</code> command in the source file (see section <a href="texinfo_20.html#Use-TeX">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
@@ -628,6 +635,9 @@ option is given.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.5 Running <code>makeinfo</code> inside Emacs</h3>
+<a name="index-Running-makeinfo-in-Emacs"></a>
+<a name="index-makeinfo-inside-Emacs"></a>
+<a name="index-Shell_002c-running-makeinfo-in"></a>
 
 <p>You can run <code>makeinfo</code> in GNU Emacs Texinfo mode by using either the
 <code>makeinfo-region</code> or the <code>makeinfo-buffer</code> commands.  In
@@ -729,6 +739,8 @@ variable in your &lsquo;<tt>.emacs</tt>&rsquo; initialization file.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.6 The <code>texinfo-format&hellip;</code> Commands</h3>
+<a name="index-texinfo_002dformat_002dregion-1"></a>
+<a name="index-texinfo_002dformat_002dbuffer-1"></a>
 
 <p>In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the <code>texinfo-format-region</code> command.  This formats the
@@ -746,13 +758,13 @@ Texinfo file.
 <dt> <kbd>C-c C-e C-r</kbd></dt>
 <dt> <kbd><code>texinfo-format-region</code></kbd></dt>
 <dd><p>Format the current region for Info.
-<a name="index-texinfo_002dformat_002dregion-1"></a>
+<a name="index-texinfo_002dformat_002dregion-2"></a>
 </p>
 </dd>
 <dt> <kbd>C-c C-e C-b</kbd></dt>
 <dt> <kbd><code>texinfo-format-buffer</code></kbd></dt>
 <dd><p>Format the current buffer for Info.
-<a name="index-texinfo_002dformat_002dbuffer-1"></a>
+<a name="index-texinfo_002dformat_002dbuffer-2"></a>
 </p></dd>
 </dl>
 
@@ -783,6 +795,8 @@ provides better error checking (see section <a href="#makeinfo-in-Emacs">Running
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.7 Batch Formatting</h3>
+<a name="index-Batch-formatting-for-Info"></a>
+<a name="index-Info-batch-formatting"></a>
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
@@ -827,6 +841,8 @@ use that Emacs for anything else until the command finishes.)
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.8 Tag Files and Split Files</h3>
+<a name="index-Making-a-tag-table-automatically"></a>
+<a name="index-Tag-table_002c-making-automatically"></a>
 
 <p>If a Texinfo file has more than 30,000 bytes,
 <code>texinfo-format-buffer</code> automatically creates a tag table
@@ -923,6 +939,7 @@ validate the structure of the nodes, see <a href="texinfo_27.html#Using-Info_002
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.1.9 Generating HTML</h3>
+<a name="index-HTML"></a>
 
 <p>Besides generating output in the Info format, you can use the
 &lsquo;<samp>--html</samp>&rsquo; option to generate output in HTML format, for installation
@@ -992,6 +1009,9 @@ at &lsquo;<tt>../&lt;info-document&gt;/</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">20.2 Installing an Info File</h2>
+<a name="index-Installing-an-Info-file"></a>
+<a name="index-Info-file-installation"></a>
+<a name="index-dir-directory-for-Info-installation"></a>
 
 <p>Info files are usually kept in the &lsquo;<tt>info</tt>&rsquo; directory.  You can read
 Info files using the standalone Info program or the Info reader built
@@ -1095,6 +1115,11 @@ true in general, it is a special case for &lsquo;<tt>dir</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.2.2 Listing a New Info File</h3>
+<a name="index-Adding-a-new-Info-file"></a>
+<a name="index-Listing-a-new-Info-file"></a>
+<a name="index-New-Info-file_002c-listing-it-in-dir-file"></a>
+<a name="index-Info-file_002c-listing-a-new"></a>
+<a name="index-dir-file-listing"></a>
 
 <p>To add a new Info file to your system, you must write a menu entry to
 add to the menu in the &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</tt>&rsquo; directory.
@@ -1137,6 +1162,10 @@ name, not &lsquo;<samp>gdb.info</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">20.2.3 Info Files in Other Directories</h3>
+<a name="index-Installing-Info-in-another-directory"></a>
+<a name="index-Info-installed-in-another-directory"></a>
+<a name="index-Another-Info-directory"></a>
+<a name="index-dir-files-and-Info-directories"></a>
 
 <p>If an Info file is not in the &lsquo;<tt>info</tt>&rsquo; directory, there are three
 ways to specify its location:
@@ -1360,6 +1389,7 @@ as a whole in the appropriate other category.
 </tr></table>
 <h3 class="subsection">20.2.5 Invoking install-info</h3>
 
+<a name="index-install_002dinfo"></a>
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
 top-level &lsquo;<tt>dir</tt>&rsquo; file in the Info system (see the previous sections

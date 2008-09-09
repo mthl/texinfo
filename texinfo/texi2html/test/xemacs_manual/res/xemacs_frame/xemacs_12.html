@@ -59,6 +59,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">9. Selecting Text</h1>
+<a name="index-mark"></a>
+<a name="index-region"></a>
 
 <p>  Many Emacs commands operate on an arbitrary contiguous
 part of the current buffer. You can select text in two ways:
@@ -362,6 +364,9 @@ putting point at the beginning and the mark at the end.
 </tr></table>
 <h3 class="subsection">9.1.4 The Mark Ring</h3>
 
+<a name="index-C_002du-C_002dSPC"></a>
+<a name="index-mark-ring"></a>
+<a name="index-C_002du-C_002d_0040"></a>
 <p>  Aside from delimiting the region, the mark is also useful for marking
 a spot that you may want to go back to.  To make this feature more
 useful, Emacs remembers 16 previous locations of the mark in the
@@ -416,7 +421,9 @@ in every buffer.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.2 Selecting Text with the Mouse</h2>
+<a name="index-mouse-selection"></a>
 
+<a name="index-pointer-shapes"></a>
 <p>  If you are using XEmacs under X, you can use the mouse pointer
 to select text. (The normal mouse pointer is an I-beam, the same
 pointer that <code>xterm</code> uses.)
@@ -487,6 +494,7 @@ can use Emacs region commands on it.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.3 Additional Mouse Operations</h2>
+<a name="index-mouse-operations"></a>
 
 <p>XEmacs also provides the following mouse functions.  Most of these are
 not bound to mouse gestures by default, but they are provided for your
@@ -630,7 +638,14 @@ selection is immediately disowned afterwards.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.4 Deletion and Killing</h2>
+<a name="index-delete_002dchar"></a>
+<a name="index-delete_002dbackward_002dchar"></a>
 
+<a name="index-killing"></a>
+<a name="index-cutting"></a>
+<a name="index-deletion-1"></a>
+<a name="index-C_002dd"></a>
+<a name="index-DEL"></a>
 <p>  Most commands that erase text from the buffer save it. You can get
 the text back if you change your mind, or you can move or copy it to
 other parts of the buffer.  Commands which erase text and save it in the
@@ -794,6 +809,18 @@ current line.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.4.3 Other Kill Commands</h3>
+<a name="index-kill_002dregion"></a>
+<a name="index-kill_002dword"></a>
+<a name="index-backward_002dkill_002dword"></a>
+<a name="index-kill_002dsexp"></a>
+<a name="index-kill_002dsentence"></a>
+<a name="index-backward_002dkill_002dsentence"></a>
+<a name="index-M_002dd"></a>
+<a name="index-M_002dDEL"></a>
+<a name="index-C_002dM_002dk"></a>
+<a name="index-C_002dx-DEL"></a>
+<a name="index-M_002dk"></a>
+<a name="index-C_002dw"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-w</kbd></dt>
@@ -861,6 +888,11 @@ sentences, with <kbd>C-x &lt;DEL&gt;</kbd> and <kbd>M-k</kbd>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.5 Yanking</h2>
+<a name="index-moving-text"></a>
+<a name="index-copying-text"></a>
+<a name="index-kill-ring"></a>
+<a name="index-yanking"></a>
+<a name="index-pasting"></a>
 
 <p>  <em>Yanking</em> means getting back text which was killed. Some systems
 call this &ldquo;pasting&rdquo;.  The usual way to move or copy text is to kill it
@@ -913,6 +945,8 @@ and then yank it one or more times.
 </tr></table>
 <h3 class="subsection">9.5.1 The Kill Ring</h3>
 
+<a name="index-C_002dy"></a>
+<a name="index-Yank"></a>
 <p>  All killed text is recorded in the <em>kill ring</em>, a list of blocks of
 text that have been killed.  There is only one kill ring, used in all
 buffers, so you can kill text in one buffer and yank it in another buffer.
@@ -966,6 +1000,7 @@ does not actually cut anything.
 </tr></table>
 <h3 class="subsection">9.5.2 Appending Kills</h3>
 
+<a name="index-television"></a>
 <p>  Normally, each kill command pushes a new block onto the kill ring.
 However, two or more kill commands in a row combine their text into a
 single entry, so that a single <kbd>C-y</kbd> yanks it all back. This means
@@ -1026,6 +1061,8 @@ in one place.
 </tr></table>
 <h3 class="subsection">9.5.3 Yanking Earlier Kills</h3>
 
+<a name="index-M_002dy"></a>
+<a name="index-yank_002dpop"></a>
 <p>  To recover killed text that is no longer the most recent kill, you need
 the <kbd>Meta-y</kbd> (<code>yank-pop</code>) command.  You can use <kbd>M-y</kbd> only
 after a <kbd>C-y</kbd> or another <kbd>M-y</kbd>.  It takes the text previously
@@ -1144,6 +1181,7 @@ menu to manipulate the selected text.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.6.1 The Clipboard Selection</h3>
+<a name="index-clipboard-selections"></a>
 
 <p>There are other kinds of X selections besides the <b>Primary</b> selection; one
 common one is the <b>Clipboard</b> selection.  Some applications prefer to
@@ -1216,7 +1254,17 @@ menu, or by hitting the <b>Paste</b> key on your keyboard.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.6.2 Miscellaneous X Selection Commands</h3>
+<a name="index-cut-buffers"></a>
+<a name="index-primary-selections"></a>
 
+<a name="index-x_002dcopy_002dprimary_002dselection"></a>
+<a name="index-x_002ddelete_002dprimary_002dselection"></a>
+<a name="index-x_002dinsert_002dselection"></a>
+<a name="index-x_002dkill_002dprimary_002dselection"></a>
+<a name="index-x_002dmouse_002dkill"></a>
+<a name="index-x_002down_002dsecondary_002dselection"></a>
+<a name="index-x_002down_002dselection"></a>
+<a name="index-x_002dset_002dpoint_002dand_002dinsert_002dselection"></a>
 <dl compact="compact">
 <dt> <kbd>M-x x-copy-primary-selection</kbd></dt>
 <dd><p>Copy the primary selection to both the kill ring and the Clipboard.
@@ -1313,6 +1361,7 @@ the X cut buffers.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.6.4 Active Regions</h3>
+<a name="index-active-regions"></a>
 
 <p>  By default, both the text you select in an Emacs buffer using the
 click-and-drag mechanism and text you select by setting point and the
@@ -1436,6 +1485,12 @@ it when appropriate.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.7 Accumulating Text</h2>
+<a name="index-append_002dto_002dbuffer"></a>
+<a name="index-prepend_002dto_002dbuffer"></a>
+<a name="index-copy_002dto_002dbuffer"></a>
+<a name="index-append_002dto_002dfile"></a>
+<a name="index-copying-text-1"></a>
+<a name="index-accumulating-text"></a>
 
 <p>  Usually you copy or move text by killing it and yanking it, but there are
 other ways that are useful for copying one block of text in many places, or
@@ -1520,6 +1575,7 @@ while the file itself changes.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.8 Rectangles</h2>
+<a name="index-rectangles"></a>
 
 <p>  The rectangle commands affect rectangular areas of text: all
 characters between a certain pair of columns, in a certain range of lines.

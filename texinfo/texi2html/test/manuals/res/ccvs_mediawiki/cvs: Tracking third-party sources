@@ -17,6 +17,8 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Tracking third-party sources ==
+<div id="index-Third_002dparty-sources"></div>
+<div id="index-Tracking-sources"></div>
 
 <p>If you modify a program to better fit your site, you
 probably want to include your modifications when the next
@@ -72,6 +74,7 @@ revision.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Importing for the first time ===
+<div id="index-Importing-modules"></div>
 
 <p>Use the <code>import</code> command to check in the sources
 for the first time.  When you use the <code>import</code>

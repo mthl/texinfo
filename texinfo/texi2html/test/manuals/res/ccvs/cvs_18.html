@@ -59,6 +59,10 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">C. Reference manual for Administrative files</h1>
+<a name="index-Administrative-files-_0028reference_0029"></a>
+<a name="index-Files_002c-reference-manual"></a>
+<a name="index-Reference-manual-_0028files_0029"></a>
+<a name="index-CVSROOT-_0028file_0029"></a>
 
 <p>Inside the repository, in the directory
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, there are a number of
@@ -111,6 +115,8 @@ file, which defines the modules inside the repository.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.1 The modules file</h2>
+<a name="index-Modules-_0028admin-file_0029"></a>
+<a name="index-Defining-modules-_0028reference-manual_0029"></a>
 
 <p>The &lsquo;<tt>modules</tt>&rsquo; file records your definitions of
 names for collections of source code.  <small>CVS</small> will
@@ -171,6 +177,8 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.1 Alias modules</h3>
+<a name="index-Alias-modules"></a>
+<a name="index-_002da_002c-in-modules-file"></a>
 
 <p>Alias modules are the simplest kind of module:
 </p>
@@ -229,6 +237,7 @@ U first-dir/sdir/sfile
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.2 Regular modules</h3>
+<a name="index-Regular-modules"></a>
 
 <dl compact="compact">
 <dt> <code><var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
@@ -300,6 +309,8 @@ $
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.3 Ampersand modules</h3>
+<a name="index-Ampersand-modules"></a>
+<a name="index-_0026_002c-in-modules-file"></a>
 
 <p>A module definition can refer to other modules by
 including &lsquo;<samp>&amp;<var>module</var></samp>&rsquo; in its definition.
@@ -366,6 +377,8 @@ a future release of <small>CVS</small>.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.4 Excluding directories</h3>
+<a name="index-Excluding-directories_002c-in-modules-file"></a>
+<a name="index-_0021_002c-in-modules-file"></a>
 
 <p>An alias module may exclude particular directories from
 other modules by using an exclamation mark (&lsquo;<samp>!</samp>&rsquo;)
@@ -400,6 +413,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.5 Module options</h3>
+<a name="index-Options_002c-in-modules-file"></a>
 
 <p>Either regular modules or ampersand modules can contain
 options, which supply additional information concerning
@@ -479,6 +493,10 @@ that taginfo is a better solution (see section <a href="cvs_8.html#user_002ddefi
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.1.6 How the modules file &ldquo;program options&rdquo; programs are run</h3>
+<a name="index-Modules-file-program-options"></a>
+<a name="index-_002dt_002c-in-modules-file-1"></a>
+<a name="index-_002do_002c-in-modules-file-1"></a>
+<a name="index-_002de_002c-in-modules-file-1"></a>
 
 <p>For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
@@ -516,6 +534,9 @@ completed.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.2 The cvswrappers file</h2>
+<a name="index-cvswrappers-_0028admin-file_0029"></a>
+<a name="index-CVSWRAPPERS_002c-environment-variable"></a>
+<a name="index-Wrappers"></a>
 
 
 <p>Wrappers refers to a <small>CVS</small> feature which lets you
@@ -586,6 +607,7 @@ directory, treating files whose name ends in
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.3 The commit support files</h2>
+<a name="index-Committing_002c-administrative-support-files"></a>
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
@@ -665,6 +687,9 @@ imagination is the limit!
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.3.1 The common syntax</h3>
+<a name="index-Info-files-_0028syntax_0029"></a>
+<a name="index-Syntax-of-info-files"></a>
+<a name="index-Common-syntax-of-info-files"></a>
 
 
 <p>The administrative files such as &lsquo;<tt>commitinfo</tt>&rsquo;,
@@ -717,6 +742,9 @@ is used as a file name or command-line as appropriate.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.3.2 Commitinfo</h3>
+<a name="index-commitinfo"></a>
+<a name="index-Commits_002c-precommit-verification-of"></a>
+<a name="index-Precommit-checking"></a>
 
 <p>The &lsquo;<tt>commitinfo</tt>&rsquo; file defines programs to execute
 whenever &lsquo;<samp>cvs commit</samp>&rsquo; is about to execute.  These
@@ -791,6 +819,8 @@ to the command.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.3.3 Verifying log messages</h3>
+<a name="index-verifymsg-_0028admin-file_0029"></a>
+<a name="index-Log-message_002c-verifying"></a>
 
 <p>Once you have entered a log message, you can evaluate
 that message to check for specific content, such as
@@ -944,6 +974,10 @@ fi
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.3.4 Editinfo</h3>
+<a name="index-editinfo-_0028admin-file_0029"></a>
+<a name="index-Editor_002c-specifying-per-module"></a>
+<a name="index-Per_002dmodule-editor"></a>
+<a name="index-Log-messages_002c-editing"></a>
 
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
@@ -1088,6 +1122,11 @@ done
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">C.3.5 Loginfo</h3>
+<a name="index-loginfo-_0028admin-file_0029"></a>
+<a name="index-Storing-log-messages"></a>
+<a name="index-Mailing-log-messages"></a>
+<a name="index-Distributing-log-messages"></a>
+<a name="index-Log-messages"></a>
 
 <p>The &lsquo;<tt>loginfo</tt>&rsquo; file is used to control where
 &lsquo;<samp>cvs commit</samp>&rsquo; log information is sent.  The first
@@ -1233,6 +1272,9 @@ like this:
 </tr></table>
 <h4 class="appendixsubsubsec">C.3.5.2 Keeping a checked out copy</h4>
 
+<a name="index-Keeping-a-checked-out-copy"></a>
+<a name="index-Checked-out-copy_002c-keeping"></a>
+<a name="index-Web-pages_002c-maintaining-with-CVS"></a>
 
 <p>It is often useful to maintain a directory tree which
 contains files which correspond to the latest version
@@ -1276,6 +1318,10 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.4 Rcsinfo</h2>
+<a name="index-rcsinfo-_0028admin-file_0029"></a>
+<a name="index-Form-for-log-message"></a>
+<a name="index-Log-message-template"></a>
+<a name="index-Template-for-log-message"></a>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file can be used to specify a form to
 edit when filling out the commit log.  The
@@ -1335,6 +1381,9 @@ be updated from the server.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.5 Ignoring files via cvsignore</h2>
+<a name="index-cvsignore-_0028admin-file_0029_002c-global"></a>
+<a name="index-Global-cvsignore"></a>
+<a name="index-Ignoring-files"></a>
 
 <p>There are certain file names that frequently occur
 inside your working copy, but that you don&rsquo;t want to
@@ -1445,6 +1494,7 @@ way to specify comments.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.6 The checkoutlist file</h2>
+<a name="index-checkoutlist"></a>
 
 <p>It may be helpful to use <small>CVS</small> to maintain your own
 files in the &lsquo;<tt>CVSROOT</tt>&rsquo; directory.  For example,
@@ -1505,6 +1555,8 @@ more general context than the one provided by
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.7 The history file</h2>
+<a name="index-History-file"></a>
+<a name="index-Log-information_002c-saving"></a>
 
 <p>The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
 to log information for the <code>history</code> command
@@ -1539,6 +1591,8 @@ format changes with future releases of <small>CVS</small>.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">C.8 Expansions in administrative files</h2>
+<a name="index-Internal-variables"></a>
+<a name="index-Variables"></a>
 
 <p>Sometimes in writing an administrative file, you might
 want the file to be able to know various things based
@@ -1686,6 +1740,8 @@ Do not confuse this with the internal variable of the same name.
 </tr></table>
 <h2 class="appendixsec">C.9 The CVSROOT/config configuration file</h2>
 
+<a name="index-config_002c-in-CVSROOT"></a>
+<a name="index-CVSROOT_002fconfig"></a>
 
 <p>The administrative file &lsquo;<tt>config</tt>&rsquo; contains various
 miscellaneous settings which affect the behavior of

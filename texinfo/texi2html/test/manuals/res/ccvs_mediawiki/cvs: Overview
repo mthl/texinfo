@@ -17,6 +17,7 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Overview ==
+<div id="index-Overview"></div>
 
 <p>This chapter is for people who have never used
 <small>CVS</small>, and perhaps have never used version control
@@ -50,6 +51,9 @@ certain command, you can probably skip everything here.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === What is CVS? ===
+<div id="index-What-is-CVS_003f"></div>
+<div id="index-Introduction-to-CVS"></div>
+<div id="index-CVS_002c-introduction-to"></div>
 
 <p><small>CVS</small> is a version control system.  Using it, you can
 record the history of your source files.
@@ -146,6 +150,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === What is CVS not? ===
+<div id="index-What-is-CVS-not_003f"></div>
 
 <p><small>CVS</small> can do a lot of things for you, but it does
 not try to be everything for everyone.
@@ -312,6 +317,11 @@ only once they have been proven.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === A sample session ===
+<div id="index-Example-of-a-work_002dsession"></div>
+<div id="index-Getting-started"></div>
+<div id="index-Work_002dsession_002c-example-of"></div>
+<div id="index-tc_002c-Trivial-Compiler-_0028example_0029"></div>
+<div id="index-Trivial-Compiler-_0028example_0029"></div>
 
 
 <p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
@@ -351,6 +361,11 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Getting the source ====
+<div id="index-Getting-the-source"></div>
+<div id="index-Checking-out-source"></div>
+<div id="index-Fetching-source"></div>
+<div id="index-Source_002c-getting-from-CVS"></div>
+<div id="index-Checkout_002c-example"></div>
 
 <p>The first thing you must do is to get your own working copy of the
 source for &lsquo;<samp>tc</samp>&rsquo;.  For this, you use the <code>checkout</code> command:
@@ -395,6 +410,8 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Committing your changes ====
+<div id="index-Committing-changes-to-files"></div>
+<div id="index-Log-message-entry"></div>
 
 <p>When you have checked that the compiler is still compilable you decide
 to make a new version of &lsquo;<tt>backend.c</tt>&rsquo;.  This will
@@ -471,6 +488,10 @@ this:
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Cleaning up ====
+<div id="index-Cleaning-up"></div>
+<div id="index-Working-copy_002c-removing"></div>
+<div id="index-Removing-your-working-copy"></div>
+<div id="index-Releasing-your-working-copy"></div>
 
 <p>Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
@@ -538,6 +559,8 @@ when <code>release</code> asks for confirmation.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Viewing differences ====
+<div id="index-Viewing-differences"></div>
+<div id="index-Diff"></div>
 
 <p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.

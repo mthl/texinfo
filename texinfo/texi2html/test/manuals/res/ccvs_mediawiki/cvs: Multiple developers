@@ -17,6 +17,14 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Multiple developers ==
+<div id="index-Multiple-developers"></div>
+<div id="index-Team-of-developers"></div>
+<div id="index-File-locking"></div>
+<div id="index-Locking-files"></div>
+<div id="index-Working-copy"></div>
+<div id="index-Reserved-checkouts"></div>
+<div id="index-Unreserved-checkouts"></div>
+<div id="index-RCS_002dstyle-locking"></div>
 
 <p>When more than one person works on a software project
 things often get complicated.  Often, two people try to
@@ -83,6 +91,8 @@ choosing between them.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === File status ===
+<div id="index-File-status"></div>
+<div id="index-Status-of-a-file"></div>
 
 <p>Based on what operations you have performed on a
 checked out file, and what operations others have
@@ -213,6 +223,10 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Bringing a file up to date ===
+<div id="index-Bringing-a-file-up-to-date"></div>
+<div id="index-Updating-a-file"></div>
+<div id="index-Merging-a-file"></div>
+<div id="index-Update_002c-introduction"></div>
 
 <p>When you want to update or merge a file, use the <code>update</code>
 command.  For files that are not up to date this is roughly equivalent
@@ -261,6 +275,9 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Conflicts example ===
+<div id="index-Merge_002c-an-example"></div>
+<div id="index-Example-of-merge"></div>
+<div id="index-driver_002ec-_0028merge-example_0029"></div>
 
 <p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
@@ -442,6 +459,9 @@ See the documentation for pcl-cvs.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Informing others about commits ===
+<div id="index-Informing-others"></div>
+<div id="index-Spreading-information"></div>
+<div id="index-Mail_002c-automatic-mail-on-commit"></div>
 
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
@@ -473,6 +493,7 @@ newsgroup.
 </tr></table>
 === Several developers simultaneously attempting to run CVS ===
 
+<div id="index-Locks_002c-cvs_002c-introduction"></div>
 <p>If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 </p>
@@ -551,6 +572,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Mechanisms to track who is editing files ===
+<div id="index-Watches"></div>
 
 <p>For many groups, use of <small>CVS</small> in its default mode is
 perfectly satisfactory.  Users may sometimes go to
@@ -800,6 +822,7 @@ changing.
 </tr></table>
 ==== How to edit a file which is being watched ====
 
+<div id="index-Checkout_002c-as-term-for-getting-ready-to-edit"></div>
 <p>Since a file which is being watched is checked out
 read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
@@ -887,6 +910,7 @@ successful <small>CVS</small> command.
 </tr></table>
 ==== Information about who is watching and editing ====
 
+<div id="index-watchers-_0028subcommand_0029"></div>
 <dl>
 <dt><div id="index-cvs-watchers"></div><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
@@ -934,6 +958,7 @@ containing the file.
 </tr></table>
 ==== Using watches with old versions of CVS ====
 
+<div id="index-CVS-1_002e6_002c-and-watches"></div>
 <p>If you use the watch features on a repository, it
 creates &lsquo;<tt>CVS</tt>&rsquo; directories in the repository and
 stores the information about watches in that directory.
@@ -973,6 +998,7 @@ that will restore the repository to a state which
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Choosing between reserved or unreserved checkouts ===
+<div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
 
 <p>Reserved and unreserved checkouts each have pros and
 cons.  Let it be said that a lot of this is a matter of

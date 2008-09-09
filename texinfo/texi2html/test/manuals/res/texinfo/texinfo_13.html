@@ -78,6 +78,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">12. Indices</h1>
+<a name="index-Indices"></a>
 
 <p>Using Texinfo, you can generate indices without having to sort and
 collate entries manually.  In an index, the entries are listed in
@@ -125,6 +126,8 @@ canonical purpose.  If you wish, you can define your own indices.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.1 Making Index Entries</h2>
+<a name="index-Index-entries_002c-making"></a>
+<a name="index-Entries_002c-making-index"></a>
 
 <p>When you are making index entries, it is good practice to think of the
 different ways people may look for something.  Different people
@@ -218,6 +221,11 @@ more indices can be combined into one using the <code>@synindex</code> or
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.3 Defining the Entries of an Index</h2>
+<a name="index-Defining-indexing-entries"></a>
+<a name="index-Index-entries"></a>
+<a name="index-Entries-for-an-index"></a>
+<a name="index-Specifying-index-entries"></a>
+<a name="index-Creating-index-entries"></a>
 
 <p>The data to make an index come from many individual indexing commands
 scattered throughout the Texinfo source file.  Each command says to add
@@ -343,6 +351,8 @@ give that index a suitable title so the reader will understand.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.4 Combining Indices</h2>
+<a name="index-Combining-indices"></a>
+<a name="index-Indices_002c-combining-them"></a>
 
 <p>Sometimes you will want to combine two disparate indices such as functions
 and concepts, perhaps because you have few enough of one of them that
@@ -390,12 +400,13 @@ the braces of <code>@code</code>.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">12.4.1 <code>@syncodeindex</code></h3>
+<a name="index-syncodeindex"></a>
 
 <p>When you want to combine functions and concepts into one index, you
 should index the functions with <code>@findex</code> and index the concepts
 with <code>@cindex</code>, and use the <code>@syncodeindex</code> command to
 redirect the function index entries into the concept index.
-<a name="index-syncodeindex"></a>
+<a name="index-syncodeindex-1"></a>
 </p>
 <p>The <code>@syncodeindex</code> command takes two arguments; they are the name
 of the index to redirect, and the name of the index to redirect it to.
@@ -477,6 +488,7 @@ index into a concept index, all the function names are printed in the
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">12.4.2 <code>@synindex</code></h3>
+<a name="index-synindex"></a>
 
 <p>The <code>@synindex</code> command is nearly the same as the
 <code>@syncodeindex</code> command, except that it does not put the
@@ -507,6 +519,11 @@ at the end of a book or creating an index menu in an Info file.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">12.5 Defining New Indices</h2>
+<a name="index-Defining-new-indices"></a>
+<a name="index-Indices_002c-defining-new"></a>
+<a name="index-New-index-defining"></a>
+<a name="index-defindex"></a>
+<a name="index-defcodeindex"></a>
 
 <p>In addition to the predefined indices, you may use the
 <code>@defindex</code> and <code>@defcodeindex</code> commands to define new

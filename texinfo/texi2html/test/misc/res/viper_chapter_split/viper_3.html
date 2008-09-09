@@ -132,7 +132,7 @@ We classify motion commands into <em>point commands</em> and
 <kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
 </p></blockquote>
 
-<a name="index-region"></a>
+<a name="index-region-1"></a>
 <a name="index-region-specification"></a>
 <a name="index-expanding-_0028region_0029"></a>
 <a name="index-describing-regions"></a>
@@ -195,6 +195,7 @@ file.  See section <a href="viper_4.html#Customization">Customization</a>, for d
 </tr></table>
 <h2 class="section">2.2 Undo and Backups</h2>
 
+<a name="index-undo-1"></a>
 
 <p>Viper provides multiple undo.  The number of undo&rsquo;s and the size is limited
 by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
@@ -245,6 +246,8 @@ can be any letters from a through z.
 </tr></table>
 <h2 class="section">2.3 History</h2>
 
+<a name="index-history"></a>
+<a name="index-Minibuffer-2"></a>
 
 <p>History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
@@ -303,6 +306,10 @@ expressions keep a history on those items.
 </tr></table>
 <h2 class="section">2.4 Macros and Registers</h2>
 
+<a name="index-keyboard-macros"></a>
+<a name="index-macros"></a>
+<a name="index-registers-2"></a>
+<a name="index-register-execution"></a>
 
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
@@ -362,6 +369,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </tr></table>
 <h2 class="section">2.5 Completion</h2>
 
+<a name="index-completion"></a>
 
 <p>Completion is done when you type &lt;TAB&gt;.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
@@ -390,6 +398,8 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 </tr></table>
 <h2 class="section">2.6 Improved Search</h2>
 
+<a name="index-buffer-search"></a>
+<a name="index-word-search"></a>
 
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in &lsquo;<tt>.viper</tt>&rsquo; either by calling
@@ -467,6 +477,7 @@ faces are grouped together under Viper&rsquo;s
 </tr></table>
 <h2 class="section">2.7 Abbreviation Facilities</h2>
 
+<a name="index-abbrevs"></a>
 
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
@@ -508,6 +519,8 @@ Facilities like this make Vi&rsquo;s <kbd>:ab</kbd> command obsolete.
 </tr></table>
 <h2 class="section">2.8 Movement and Markers</h2>
 
+<a name="index-Ex-style-motion"></a>
+<a name="index-line-editor-motion"></a>
 
 <p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, &lt;ESC&gt; moving one character back,
@@ -706,8 +719,8 @@ The function used for spelling is determined from the variable
 <dd><a name="index-_0040_0023"></a>
 <a name="index-_0040_003ca_002dz_003e"></a>
 <a name="index-_0040_0021"></a>
-<a name="index-keyboard-macros"></a>
-<a name="index-register-execution"></a>
+<a name="index-keyboard-macros-1"></a>
+<a name="index-register-execution-1"></a>
 
 <p>Begin/end keyboard macro.  @register has a different meaning when used after
 a <kbd>@#</kbd>.  See section <a href="#Macros-and-Registers">Macros and Registers</a>, for details

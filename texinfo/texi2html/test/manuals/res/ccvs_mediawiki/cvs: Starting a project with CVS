@@ -17,6 +17,8 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Starting a project with CVS ==
+<div id="index-Starting-a-project-with-CVS"></div>
+<div id="index-Creating-a-project"></div>
 
 <p>Because renaming files and moving them between
 directories is somewhat inconvenient, the first thing
@@ -82,6 +84,7 @@ be done in a couple of different ways.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Creating a directory tree from a number of files ====
+<div id="index-Importing-files"></div>
 
 <p>When you begin using <small>CVS</small>, you will probably already have several
 projects that can be
@@ -151,6 +154,7 @@ files are binary and which are not.  See section [cvs: Reference manual for Admi
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Creating Files From Other Version Control Systems ====
+<div id="index-Importing-files_002c-from-other-version-control-systems"></div>
 
 <p>If you have a project which you are maintaining with
 another version control system, such as <small>RCS</small>, you
@@ -283,6 +287,10 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Defining the module ===
+<div id="index-Defining-a-module"></div>
+<div id="index-Editing-the-modules-file"></div>
+<div id="index-Module_002c-defining"></div>
+<div id="index-Modules-file_002c-changing"></div>
 
 <p>The next step is to define the module in the
 &lsquo;<tt>modules</tt>&rsquo; file.  This is not strictly necessary,

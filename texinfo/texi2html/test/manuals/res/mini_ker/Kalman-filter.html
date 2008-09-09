@@ -87,6 +87,9 @@ ul.toc {list-style: none}
 <li> <a href="#Data">4.3.4 Data</a> </li>
 </ul>
 
+<a name="index-Kalman-filter"></a>
+<a name="index-variance_002dcovariance-matrices_002c-general"></a>
+<a name="index-observations_002c-general"></a>
 
 <p>The Kalman filter allows for data assimilation along the model run. In 
 that case it is assumed that there is a real-world model with stochastic
@@ -160,6 +163,7 @@ src="mini_ker_tex4ht_tex19x.png" alt="(
 <li> <a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a> </li>
 </ul>
 
+<a name="index-zkalman"></a>
 
 <p>First of all the Kalman filter code should be activated. The observations
 code is also required (see <a href="Observations-and-data.html#Observations">Observations</a>).
@@ -203,6 +207,8 @@ of errors have to be given.
 </tr></table>
 <h4 class="subsubsection"> 4.3.1.1 Kalman filter vectors dimensions </h4>
 
+<a name="index-error-vector-dimension"></a>
+<a name="index-dimetaphi_002c-Kalman-filter"></a>
 
 <p>These dimensions should be set in the &lsquo;<tt>zinit</tt>&rsquo; sequence.
 The size of the estimated states is given by the parameter <code>nkp</code>. 
@@ -240,10 +246,15 @@ dimension 2.
 </tr></table>
 <h4 class="subsubsection"> 4.3.1.2 Error and observation matrices </h4>
 
+<a name="index-variance_002dcovariance-matrices"></a>
+<a name="index-observations"></a>
+<a name="index-zinit_002c-Kalman-filter"></a>
 
 <a name="Initial-variance_002dcovariance-matrix-on-the-state"></a>
 <h4 class="subsubheading"> Initial variance-covariance matrix on the state </h4>
 
+<a name="index-initial-variance_002dcovariance-on-states"></a>
+<a name="index-covfor_0028_002e_002c_002e_0029"></a>
 
 <p>The variance-covariance on the state matrix is <code>covfor(.,.)</code>. The initial
 values have to be given for this matrix, as in our example:
@@ -337,6 +348,9 @@ of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</
 </tr></table>
 <h4 class="subsubsection"> 4.3.2.1 Feeding the observations to the model </h4>
 
+<a name="index-vobs_0028_002e_0029-1"></a>
+<a name="index-zgetobs-1"></a>
+<a name="index-zsteer_002c-Kalman-filter"></a>
 
 <p>The observations must be made available to the model during the run. These
 observations are set in the <code>vobs(.)</code> array, and the assimilation 
@@ -363,6 +377,11 @@ stored in <code>vobs(.)</code>, ready for the next step processing.
 </tr></table>
 <h4 class="subsubsection"> 4.3.2.2 Kalman filter results </h4>
 
+<a name="index-results_002c-Kalman-filter"></a>
+<a name="index-Kalman-filter-results"></a>
+<a name="index-output_002c-Kalman-filter"></a>
+<a name="index-Kalman-filter-output"></a>
+<a name="index-data_002edata-1"></a>
 
 <p>The estimated states and transfers are still in the same &lsquo;<samp>.data</samp>&rsquo; files, 
 &lsquo;<tt>res.data</tt>&rsquo; and &lsquo;<tt>tr.data</tt>&rsquo; and there is the additional file with

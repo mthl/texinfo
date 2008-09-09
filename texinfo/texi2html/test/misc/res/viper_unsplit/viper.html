@@ -239,6 +239,14 @@ included in your &lsquo;<tt>~/.viper</tt>&rsquo; file and are found at the follo
 </tr></table>
 <h2 class="section">1.1 Emacs Preliminaries</h2>
 
+<a name="index-buffer"></a>
+<a name="index-point"></a>
+<a name="index-mark"></a>
+<a name="index-text"></a>
+<a name="index-looking-at"></a>
+<a name="index-end-_0028of-buffer_0029"></a>
+<a name="index-end-_0028of-line_0029"></a>
+<a name="index-region"></a>
 
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
@@ -443,6 +451,16 @@ toggles Viperization of Emacs on and off.
 </tr></table>
 <h2 class="section">1.3 States in Viper</h2>
 
+<a name="index-C_002dz"></a>
+<a name="index-ESC"></a>
+<a name="index-i"></a>
+<a name="index-Emacs-state"></a>
+<a name="index-Vi-state"></a>
+<a name="index-Insert-state"></a>
+<a name="index-Replace-state"></a>
+<a name="index-Ex-commands"></a>
+<a name="index-viper_002dgo_002daway"></a>
+<a name="index-toggle_002dviper_002dmode"></a>
 
 <p>Viper has four states, Emacs, Vi, Insert, and Replace.
 </p>
@@ -565,6 +583,8 @@ to allow Emacs keys in Insert state.
 </tr></table>
 <h3 class="subsection">1.3.1 Emacs State</h3>
 
+<a name="index-C_002dz-1"></a>
+<a name="index-Emacs-state-1"></a>
 
 
 <p>You will be in this mode only by accident (hopefully).  This is the state
@@ -613,6 +633,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 </tr></table>
 <h3 class="subsection">1.3.2 Vi State</h3>
 
+<a name="index-Vi-state-1"></a>
 
 <p>This is the Vi command mode.  When Viper is in Vi state, you will see the sign
 &lt;V&gt; in the mode line.  Most keys will work as in Vi.  The notable
@@ -712,7 +733,7 @@ See section <a href="#Viper-Specials">Viper Specials</a>, for more details.
 </p>
 </dd>
 <dt> &lsquo;<samp>Ex commands</samp>&rsquo;</dt>
-<dd><a name="index-Ex-commands"></a>
+<dd><a name="index-Ex-commands-1"></a>
 <p>The current working directory of a buffer is automatically inserted in the
 minibuffer if you type <kbd>:e</kbd> then space.  Absolute filenames are
 required less often in Viper.  For file names, Emacs uses a convention that
@@ -793,6 +814,7 @@ See section <a href="#Improvements-over-Vi">Improvements over Vi</a>, for more i
 </tr></table>
 <h3 class="subsection">1.3.3 Insert State</h3>
 
+<a name="index-Insert-state-1"></a>
 
 <p>To avoid confusing the beginner (at Viper level 1 and 2), Viper makes only the
 standard Vi keys available in Insert state.  The implication is that
@@ -870,6 +892,7 @@ the Insert state.
 </tr></table>
 <h3 class="subsection">1.3.4 Replace State</h3>
 
+<a name="index-Replace-state-1"></a>
 
 <p>This state is entered through Vi replacement commands, such as <kbd>C</kbd>,
 <kbd>cw</kbd>, etc., or by typing <kbd>R</kbd>.  In Replace state, Viper puts &lt;R&gt; in
@@ -919,6 +942,7 @@ region.
 </tr></table>
 <h2 class="section">1.4 The Minibuffer</h2>
 
+<a name="index-Minibuffer-1"></a>
 
 <p>The Minibuffer is where commands are entered in.  Editing can be done
 by commands from Insert state, namely:
@@ -988,6 +1012,8 @@ See section <a href="#Viper-Specials">Viper Specials</a>, for more details.
 </tr></table>
 <h2 class="section">1.5 Multiple Files in Viper</h2>
 
+<a name="index-multiple-files"></a>
+<a name="index-managing-multiple-files"></a>
 
 <p>Viper can edit multiple files.  This means, for example that you never need
 to suffer through <code>No write since last change</code> errors.
@@ -1193,7 +1219,7 @@ We classify motion commands into <em>point commands</em> and
 <kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
 </p></blockquote>
 
-<a name="index-region"></a>
+<a name="index-region-1"></a>
 <a name="index-region-specification"></a>
 <a name="index-expanding-_0028region_0029"></a>
 <a name="index-describing-regions"></a>
@@ -1256,6 +1282,7 @@ file.  See section <a href="#Customization">Customization</a>, for details.
 </tr></table>
 <h2 class="section">2.2 Undo and Backups</h2>
 
+<a name="index-undo-1"></a>
 
 <p>Viper provides multiple undo.  The number of undo&rsquo;s and the size is limited
 by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
@@ -1306,6 +1333,8 @@ can be any letters from a through z.
 </tr></table>
 <h2 class="section">2.3 History</h2>
 
+<a name="index-history"></a>
+<a name="index-Minibuffer-2"></a>
 
 <p>History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
@@ -1364,6 +1393,10 @@ expressions keep a history on those items.
 </tr></table>
 <h2 class="section">2.4 Macros and Registers</h2>
 
+<a name="index-keyboard-macros"></a>
+<a name="index-macros"></a>
+<a name="index-registers-2"></a>
+<a name="index-register-execution"></a>
 
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
@@ -1423,6 +1456,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </tr></table>
 <h2 class="section">2.5 Completion</h2>
 
+<a name="index-completion"></a>
 
 <p>Completion is done when you type &lt;TAB&gt;.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
@@ -1451,6 +1485,8 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 </tr></table>
 <h2 class="section">2.6 Improved Search</h2>
 
+<a name="index-buffer-search"></a>
+<a name="index-word-search"></a>
 
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in &lsquo;<tt>.viper</tt>&rsquo; either by calling
@@ -1528,6 +1564,7 @@ faces are grouped together under Viper&rsquo;s
 </tr></table>
 <h2 class="section">2.7 Abbreviation Facilities</h2>
 
+<a name="index-abbrevs"></a>
 
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
@@ -1569,6 +1606,8 @@ Facilities like this make Vi&rsquo;s <kbd>:ab</kbd> command obsolete.
 </tr></table>
 <h2 class="section">2.8 Movement and Markers</h2>
 
+<a name="index-Ex-style-motion"></a>
+<a name="index-line-editor-motion"></a>
 
 <p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, &lt;ESC&gt; moving one character back,
@@ -1767,8 +1806,8 @@ The function used for spelling is determined from the variable
 <dd><a name="index-_0040_0023"></a>
 <a name="index-_0040_003ca_002dz_003e"></a>
 <a name="index-_0040_0021"></a>
-<a name="index-keyboard-macros"></a>
-<a name="index-register-execution"></a>
+<a name="index-keyboard-macros-1"></a>
+<a name="index-register-execution-1"></a>
 
 <p>Begin/end keyboard macro.  @register has a different meaning when used after
 a <kbd>@#</kbd>.  See section <a href="#Macros-and-Registers">Macros and Registers</a>, for details
@@ -1989,6 +2028,7 @@ and &lsquo;<samp>wuarchive.wustl.edu</samp>&rsquo;
 </tr></table>
 <h1 class="chapter">3. Customization</h1>
 
+<a name="index-customization"></a>
 
 <p>Customization can be done in 2 ways.
 </p>
@@ -2057,6 +2097,9 @@ cases, examples are provided that you can use directly.
 </tr></table>
 <h2 class="section">3.1 Rudimentary Changes</h2>
 
+<a name="index-setting-variables"></a>
+<a name="index-variables-for-customization"></a>
+<a name="index-_003aset"></a>
 
 <p>An easy way to customize Viper is to change the values of constants used in
 Viper.  Here is the list of the constants used in Viper and their default
@@ -2484,6 +2527,8 @@ can include a line like this in your &lsquo;<tt>.viper</tt>&rsquo; file:
 </tr></table>
 <h2 class="section">3.2 Key Bindings</h2>
 
+<a name="index-key-bindings"></a>
+<a name="index-keymaps"></a>
 
 <p>Viper lets you define hot keys, i.e., you can associate keyboard keys
 such as F1, Help, PgDn, etc., with Emacs Lisp functions (that may already
@@ -2712,6 +2757,8 @@ bindings in Emacs.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">3.2.1 Packages that Change Keymaps</h3>
+<a name="index-C_002dc-and-Viper"></a>
+<a name="index-Viper-and-C_002dc"></a>
 
 <p>Viper is designed to coexist with all major and minor modes of Emacs.  This
 means that bindings set by those modes are generally available with Viper
@@ -3038,12 +3085,12 @@ if the user accidentally switches to another Viper state by typing &lt;ESC&gt; o
 <kbd>C-z</kbd>).
 </p></dd>
 <dt> <code>M-x viper-go-away</code></dt>
-<dd><a name="index-viper_002dgo_002daway"></a>
+<dd><a name="index-viper_002dgo_002daway-1"></a>
 <p>Make Viper disappear from the face of your running Emacs instance.  If your
 fingers start aching again, <kbd>M-x viper-mode</kbd> might save your day.
 </p></dd>
 <dt> <code>M-x toggle-viper-mode</code></dt>
-<dd><a name="index-toggle_002dviper_002dmode"></a>
+<dd><a name="index-toggle_002dviper_002dmode-1"></a>
 <p>Toggle Viperization of Emacs on and off.
 </p></dd>
 </dl>
@@ -3240,6 +3287,7 @@ used as a guiding example.
 </tr></table>
 <h2 class="section">3.4 Vi Macros</h2>
 
+<a name="index-Vi-macros"></a>
 
 <p>Viper supports much enhanced Vi-style macros and also facilitates the use
 of Emacs-style macros.  To define a temporary macro, it is generally more
@@ -3791,7 +3839,7 @@ current Emacs region.  This is done by typing a digit argument before
 <em>:123,135</em>, assuming that the current region starts at line 123 and
 ends at line 135.  There is no need to type the line numbers, since Viper
 inserts them automatically in front of the Ex command.
-<a name="index-Ex-commands-1"></a>
+<a name="index-Ex-commands-2"></a>
 </p>
 <hr size="6">
 <a name="Text-Handling"></a>
@@ -3856,6 +3904,17 @@ inserts them automatically in front of the Ex command.
 </tr></table>
 <h3 class="subsection">4.2.1 Move Commands</h3>
 
+<a name="index-movement-commands-1"></a>
+<a name="index-searching"></a>
+<a name="index-textmarkers-3"></a>
+<a name="index-markers-2"></a>
+<a name="index-column-movement"></a>
+<a name="index-paragraphs-1"></a>
+<a name="index-headings-1"></a>
+<a name="index-sections-1"></a>
+<a name="index-sentences-1"></a>
+<a name="index-matching-parens"></a>
+<a name="index-paren-matching"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  h  C-h</kbd></dt>
@@ -4278,7 +4337,7 @@ functions doing the perusing can be bound to unused keyboard keys in the
 <a name="index-_003e_003cmove_003e"></a>
 <a name="index-O"></a>
 <a name="index-o"></a>
-<a name="index-i"></a>
+<a name="index-i-1"></a>
 <a name="index-A"></a>
 <a name="index-a"></a>
 
@@ -4308,7 +4367,7 @@ between Insert/Replace/Vi states at will.
 Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <var>viper-vi-style-in-minibuffer</var> to <code>nil</code>.
 </p>
-<a name="index-Insert-state"></a>
+<a name="index-Insert-state-2"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-v</kbd></dt>
@@ -4419,6 +4478,10 @@ shiftwidth to the left (layout!).
 </tr></table>
 <h3 class="subsection">4.2.6 Changing Text</h3>
 
+<a name="index-joining-lines"></a>
+<a name="index-changing-case-1"></a>
+<a name="index-quoting-regions"></a>
+<a name="index-substitution"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  r&lt;char&gt;</kbd></dt>
@@ -4673,6 +4736,8 @@ can be used in &lt;repl&gt;</em>.
 </tr></table>
 <h3 class="subsection">4.2.8 Yanking</h3>
 
+<a name="index-cut-and-paste"></a>
+<a name="index-paste-1"></a>
 
 <dl compact="compact">
 <dt> <kbd>&lt;count&gt;  y&lt;move&gt;</kbd></dt>
@@ -4746,6 +4811,8 @@ be automatically down-cased.
 </tr></table>
 <h3 class="subsection">4.2.9 Undoing</h3>
 
+<a name="index-undo-2"></a>
+<a name="index-backup-files-1"></a>
 
 <dl compact="compact">
 <dt>  <kbd>u U</kbd></dt>
@@ -4793,6 +4860,7 @@ that have a &lsquo;<samp>~</samp>&rsquo; appended to them.
 </tr></table>
 <h2 class="section">4.3 Display</h2>
 
+<a name="index-scrolling"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-g</kbd></dt>
@@ -4881,6 +4949,7 @@ initialization: half a page).
 </tr></table>
 <h2 class="section">4.4 File and Buffer Handling</h2>
 
+<a name="index-multiple-files-1"></a>
 
 <p>In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don&rsquo;t
@@ -5083,6 +5152,8 @@ is typed in Minibuffer.  File completion and history are supported.
 </tr></table>
 <h2 class="section">4.5 Mapping</h2>
 
+<a name="index-key-bindings-1"></a>
+<a name="index-key-mapping"></a>
 
 <dl compact="compact">
 <dt> <kbd>:map &lt;string&gt;</kbd></dt>
@@ -5180,6 +5251,7 @@ See section <a href="#Macros-and-Registers">Macros and Registers</a>, for more i
 </tr></table>
 <h2 class="section">4.6 Shell Commands</h2>
 
+<a name="index-_0025-_0028Current-file_0029-1"></a>
 
 <p>The symbol &lsquo;<samp>%</samp>&rsquo; is used in Ex shell commands to mean current file.  If
 you want a &lsquo;<samp>%</samp>&rsquo; in your command, it must be escaped as &lsquo;<samp>\%</samp>&rsquo;.
@@ -5274,6 +5346,7 @@ current).
 </tr></table>
 <h2 class="section">4.7 Options</h2>
 
+<a name="index-Vi-options"></a>
 
 <dl compact="compact">
 <dt> <kbd>autoindent</kbd></dt>
@@ -5338,8 +5411,8 @@ If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
 <dt> <kbd>showmatch</kbd></dt>
 <dt> <kbd>sm</kbd></dt>
-<dd><a name="index-paren-matching"></a>
-<a name="index-matching-parens"></a>
+<dd><a name="index-paren-matching-1"></a>
+<a name="index-matching-parens-1"></a>
 <p>showmatch &ndash; Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it&rsquo;s on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there&rsquo;s no match, Vi will beep.
@@ -5371,7 +5444,7 @@ within &lt;wm&gt; columns from the right margin.
 </p></dd>
 <dt> <kbd>wrapscan</kbd></dt>
 <dt> <kbd>ws</kbd></dt>
-<dd><a name="index-searching"></a>
+<dd><a name="index-searching-1"></a>
 <p>wrapscan &ndash; When searching, the end is
 considered &lsquo;<samp>stuck</samp>&rsquo; to the begin of the file.
 </p></dd>
@@ -5487,7 +5560,7 @@ you need.
 <a name="index-C_002dx2"></a>
 <a name="index-C_002dx1"></a>
 <a name="index-C_002dx0"></a>
-<a name="index-C_002dz"></a>
+<a name="index-C_002dz-2"></a>
 <a name="index-C_002d_005c-1"></a>
 <a name="index-C_002dc_005c"></a>
 
@@ -5969,9 +6042,9 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-C_002dxo"><code><kbd>C-xo</kbd></code></a></td><td valign="top"><a href="#Emacs-Related-Commands">4.8 Emacs Related Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dy"><code><kbd>C-y</kbd></code></a></td><td valign="top"><a href="#Display">4.3 Display</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dy-1"><code><kbd>C-y</kbd></code></a></td><td valign="top"><a href="#Emacs-Related-Commands">4.8 Emacs Related Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-State"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#Emacs-State">1.3.1 Emacs State</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-C_002dz"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#Emacs-Related-Commands">4.8 Emacs Related Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dz"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dz-1"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#Emacs-State">1.3.1 Emacs State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dz-2"><code><kbd>C-z</kbd></code></a></td><td valign="top"><a href="#Emacs-Related-Commands">4.8 Emacs Related Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-c_003cmove_003e"><code><kbd>c&lt;move&gt;</kbd></code></a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cc"><code><kbd>cc</kbd></code></a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
@@ -5983,7 +6056,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><th><a name="Key-Index-1_ky_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e"><code><kbd>e</kbd></code></a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-E"><code><kbd>E</kbd></code></a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper"><code>&lt;ESC&gt;</code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ESC"><code>&lt;ESC&gt;</code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Key-Index-1_ky_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-F_003cchar_003e"><code><kbd>F&lt;char&gt;</kbd></code></a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
@@ -5998,8 +6071,8 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-h"><code><kbd>h</kbd></code></a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Key-Index-1_ky_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper"><code><kbd>i</kbd></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-i"><code><kbd>i</kbd></code></a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i"><code><kbd>i</kbd></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i-1"><code><kbd>i</kbd></code></a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Key-Index-1_ky_letter-J">J</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-J"><code><kbd>J</kbd></code></a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
@@ -6305,7 +6378,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-_003aRelatedFile-1"><code><kbd>:RelatedFile</kbd></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003arew"><code><kbd>:rew</kbd></code></a></td><td valign="top"><a href="#File-and-Buffer-Handling">4.4 File and Buffer Handling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003as_002f_003cpat_003e_002f_003crepl_003e_002f_003cf_003e"><code><kbd>:s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></code></a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Rudimentary-Changes"><code><kbd>:set</kbd></code></a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_003aset"><code><kbd>:set</kbd></code></a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003aset-_003coption_003e"><code><kbd>:set &lt;option&gt;</kbd></code></a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003aset-_003coption_003e_003d_003cvalue_003e"><code><kbd>:set &lt;option&gt;=&lt;value&gt;</kbd></code></a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003aset-ai"><code><kbd>:set ai</kbd></code></a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
@@ -6365,16 +6438,16 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-remove_002dhook"><code><code>remove-hook</code></code></a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Function-Index-1_fn_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper"><code><code>toggle-viper-mode</code></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-toggle_002dviper_002dmode"><code><code>toggle-viper-mode</code></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-toggle_002dviper_002dmode"><code><code>toggle-viper-mode</code></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-toggle_002dviper_002dmode-1"><code><code>toggle-viper-mode</code></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Function-Index-1_fn_letter-V">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dadd_002dlocal_002dkeys"><code><code>viper-add-local-keys</code></code></a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dbuffer_002dsearch_002denable"><code><code>viper-buffer-search-enable</code></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002ddescribe_002dkbd_002dmacros"><code><code>viper-describe-kbd-macros</code></code></a></td><td valign="top"><a href="#Vi-Macros">3.4 Vi Macros</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dglob_002dfunction"><code><code>viper-glob-function</code></code></a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper"><code><code>viper-go-away</code></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-viper_002dgo_002daway"><code><code>viper-go-away</code></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-viper_002dgo_002daway"><code><code>viper-go-away</code></code></a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-viper_002dgo_002daway-1"><code><code>viper-go-away</code></code></a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dharness_002dminor_002dmode"><code><code>viper-harness-minor-mode</code></code></a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dmode"><code><code>viper-mode</code></code></a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viper_002dmodify_002dmajor_002dmode"><code><code>viper-modify-major-mode</code></code></a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
@@ -6682,7 +6755,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_symbol-2">%</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025-_0028Current-file_0029">% (Current file)</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Shell-Commands">% (Current file)</a></td><td valign="top"><a href="#Shell-Commands">4.6 Shell Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025-_0028Current-file_0029-1">% (Current file)</a></td><td valign="top"><a href="#Shell-Commands">4.6 Shell Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025-_0028Ex-address_0029">% (Ex address)</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025-_0028Ex-address_0029-1">&lsquo;<samp>%</samp>&rsquo; (Ex address)</a></td><td valign="top"><a href="#Shell-Commands">4.6 Shell Commands</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
@@ -6706,7 +6779,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-_003csp_003e">&lt;sp&gt;</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-A">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Abbreviation-Facilities">abbrevs</a></td><td valign="top"><a href="#Abbreviation-Facilities">2.7 Abbreviation Facilities</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-abbrevs">abbrevs</a></td><td valign="top"><a href="#Abbreviation-Facilities">2.7 Abbreviation Facilities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-absolute-file-names">absolute file names</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-appending">appending</a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-auto-fill">auto fill</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
@@ -6715,14 +6788,14 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-B">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-backup-files">backup files</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Undoing">backup files</a></td><td valign="top"><a href="#Undoing">4.2.9 Undoing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">buffer</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-backup-files-1">backup files</a></td><td valign="top"><a href="#Undoing">4.2.9 Undoing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-buffer">buffer</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-buffer-_0028modified_0029">buffer (modified)</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-buffer-information">buffer information</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Improved-Search">buffer search</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-buffer-search">buffer search</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Packages-that-Change-Keymaps">C-c and Viper</a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dc-and-Viper">C-c and Viper</a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-case-and-searching">case and searching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-case_002dinsensitive-search">case-insensitive search</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-case_002dinsensitive-search-1">case-insensitive search</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
@@ -6731,19 +6804,19 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-case_002dsensitive-search-1">case-sensitive search</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-case_002dsensitive-search-2">case-sensitive search</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-changing-case">changing case</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Changing-Text">changing case</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-changing-case-1">changing case</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-changing-tab-width">changing tab width</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-char">char</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-CHAR">CHAR</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">column movement</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-column-movement">column movement</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Command-history">Command history</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-command-line">command line</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Command-ring">Command ring</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-compiling">compiling</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Completion">completion</a></td><td valign="top"><a href="#Completion">2.5 Completion</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-completion">completion</a></td><td valign="top"><a href="#Completion">2.5 Completion</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Control-keys">Control keys</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Customization">customization</a></td><td valign="top"><a href="#Customization">3. Customization</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Yanking">cut and paste</a></td><td valign="top"><a href="#Yanking">4.2.8 Yanking</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-customization">customization</a></td><td valign="top"><a href="#Customization">3. Customization</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cut-and-paste">cut and paste</a></td><td valign="top"><a href="#Yanking">4.2.8 Yanking</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-D">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-describing-regions">describing regions</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
@@ -6755,16 +6828,16 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ediff">ediff</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper">Emacs state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-State">Emacs state</a></td><td valign="top"><a href="#Emacs-State">1.3.1 Emacs State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Emacs-state">Emacs state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Emacs-state-1">Emacs state</a></td><td valign="top"><a href="#Emacs-State">1.3.1 Emacs State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-email">email</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">end (of buffer)</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">end (of line)</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-_0028of-buffer_0029">end (of buffer)</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-end-_0028of-line_0029">end (of line)</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Ex-addresses">Ex addresses</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper">Ex commands</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Ex-commands">Ex commands</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Ex-commands-1">Ex commands</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Movement-and-Markers">Ex style motion</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Ex-commands">Ex commands</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Ex-commands-1">Ex commands</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Ex-commands-2">Ex commands</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Ex-style-motion">Ex style motion</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expanding-_0028region_0029">expanding (region)</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-F">F</a></th><td></td><td></td></tr>
@@ -6775,15 +6848,15 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-H">H</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-headings">headings</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">headings</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#History">history</a></td><td valign="top"><a href="#History">2.3 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-headings-1">headings</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-history">history</a></td><td valign="top"><a href="#History">2.3 History</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-I">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-incremental-search">incremental search</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-initialization">initialization</a></td><td valign="top"><a href="#Customization">3. Customization</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper">Insert state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Insert-State">Insert state</a></td><td valign="top"><a href="#Insert-State">1.3.3 Insert State</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Insert-state">Insert state</a></td><td valign="top"><a href="#Editing-in-Insert-State">4.2.4 Editing in Insert State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Insert-state">Insert state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Insert-state-1">Insert state</a></td><td valign="top"><a href="#Insert-State">1.3.3 Insert State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Insert-state-2">Insert state</a></td><td valign="top"><a href="#Editing-in-Insert-State">4.2.4 Editing in Insert State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-inserting">inserting</a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Insertion-history">Insertion history</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Insertion-ring">Insertion ring</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
@@ -6792,46 +6865,46 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-ispell">ispell</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-J">J</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Changing-Text">joining lines</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-joining-lines">joining lines</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-K">K</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Key-Bindings">key bindings</a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Mapping">key bindings</a></td><td valign="top"><a href="#Mapping">4.5 Mapping</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Mapping">key mapping</a></td><td valign="top"><a href="#Mapping">4.5 Mapping</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Macros-and-Registers">keyboard macros</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-keyboard-macros">keyboard macros</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-key-bindings">key bindings</a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-key-bindings-1">key bindings</a></td><td valign="top"><a href="#Mapping">4.5 Mapping</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-key-mapping">key mapping</a></td><td valign="top"><a href="#Mapping">4.5 Mapping</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-keyboard-macros">keyboard macros</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-keyboard-macros-1">keyboard macros</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-keymap">keymap</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Key-Bindings">keymaps</a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-keymaps">keymaps</a></td><td valign="top"><a href="#Key-Bindings">3.2 Key Bindings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-L">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-last-keyboard-macro">last keyboard macro</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-layout">layout</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-line-commands">line commands</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-line-commands-1">line commands</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Movement-and-Markers">line editor motion</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-line-editor-motion">line editor motion</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-literal-searching">literal searching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-local-keymap">local keymap</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">looking at</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-looking-at">looking at</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Macros-and-Registers">macros</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-macros">macros</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mail">mail</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-major-mode">major mode</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-make">make</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Multiple-Files-in-Viper">managing multiple files</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">mark</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-managing-multiple-files">managing multiple files</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mark">mark</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-markers">markers</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-markers-1">markers</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">markers</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-markers-2">markers</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-marking">marking</a></td><td valign="top"><a href="#Marking">4.2.2 Marking</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">matching parens</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-matching-parens">matching parens</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-matching-parens">matching parens</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-matching-parens-1">matching parens</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Meta-key">Meta key</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Meta-key-1">Meta key</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Meta-key-2">Meta key</a></td><td valign="top"><a href="#Insert-State">1.3.3 Insert State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Minibuffer">Minibuffer</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#The-Minibuffer">Minibuffer</a></td><td valign="top"><a href="#The-Minibuffer">1.4 The Minibuffer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#History">Minibuffer</a></td><td valign="top"><a href="#History">2.3 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Minibuffer-1">Minibuffer</a></td><td valign="top"><a href="#The-Minibuffer">1.4 The Minibuffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Minibuffer-2">Minibuffer</a></td><td valign="top"><a href="#History">2.3 History</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-minor-mode">minor mode</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mode">mode</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mode-line">mode line</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
@@ -6841,21 +6914,21 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#index-mouse_002dinsert">mouse-insert</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mouse_002dsearch">mouse-search</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-movement-commands">movement commands</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">movement commands</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-movement-commands-1">movement commands</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-movements">movements</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Multifile-documents-and-programs">Multifile documents and programs</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Multiple-Files-in-Viper">multiple files</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#File-and-Buffer-Handling">multiple files</a></td><td valign="top"><a href="#File-and-Buffer-Handling">4.4 File and Buffer Handling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-multiple-files">multiple files</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-multiple-files-1">multiple files</a></td><td valign="top"><a href="#File-and-Buffer-Handling">4.4 File and Buffer Handling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-multiple-undo">multiple undo</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-paragraphs">paragraphs</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">paragraphs</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">paren matching</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-paren-matching">paren matching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-paragraphs-1">paragraphs</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-paren-matching">paren matching</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-paren-matching-1">paren matching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-paste">paste</a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Yanking">paste</a></td><td valign="top"><a href="#Yanking">4.2.8 Yanking</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">point</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-paste-1">paste</a></td><td valign="top"><a href="#Yanking">4.2.8 Yanking</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-point">point</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-point-commands">point commands</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-point-commands-1">point commands</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-put">put</a></td><td valign="top"><a href="#Appending-Text">4.2.3 Appending Text</a></td></tr>
@@ -6863,76 +6936,76 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><th><a name="Concept-Index-1_cp_letter-Q">Q</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-query-replace">query replace</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-query-replace-1">query replace</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Changing-Text">quoting regions</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-quoting-regions">quoting regions</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-R">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-and-R-region-specifiers">r and R region specifiers</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-and-R-region-specifiers-1">r and R region specifiers</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RCS">RCS</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-readonly-files">readonly files</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">region</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-region">region</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-region">region</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-region-1">region</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-region-specification">region specification</a></td><td valign="top"><a href="#Basics">2.1 Basics</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Macros-and-Registers">register execution</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-register-execution">register execution</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-register-execution">register execution</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-register-execution-1">register execution</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-registers">registers</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-registers-1">registers</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Macros-and-Registers">registers</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-registers-2">registers</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-regular-expressions">regular expressions</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper">Replace state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Replace-State">Replace state</a></td><td valign="top"><a href="#Replace-State">1.3.4 Replace State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Replace-state">Replace state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Replace-state-1">Replace state</a></td><td valign="top"><a href="#Replace-State">1.3.4 Replace State</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Display">scrolling</a></td><td valign="top"><a href="#Display">4.3 Display</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">searching</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-searching">searching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-scrolling">scrolling</a></td><td valign="top"><a href="#Display">4.3 Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-searching">searching</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-searching-1">searching</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sections">sections</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">sections</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sections-1">sections</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sentences">sentences</a></td><td valign="top"><a href="#Viper-Specials">3.3 Viper Specials</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">sentences</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Rudimentary-Changes">setting variables</a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sentences-1">sentences</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-setting-variables">setting variables</a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shell">shell</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shell-1">shell</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shell-commands">shell commands</a></td><td valign="top"><a href="#Shell-Commands">4.6 Shell Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shifting-text">shifting text</a></td><td valign="top"><a href="#Deleting-Text">4.2.5 Deleting Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shifting-text-1">shifting text</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Changing-Text">substitution</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-substitution">substitution</a></td><td valign="top"><a href="#Changing-Text">4.2.6 Changing Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-syntax-table">syntax table</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-syntax-table-1">syntax table</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-T">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tabbing">tabbing</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Emacs-Preliminaries">text</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-text">text</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-text-processing">text processing</a></td><td valign="top"><a href="#Search-and-Replace">4.2.7 Search and Replace</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-textmarkers">textmarkers</a></td><td valign="top"><a href="#Multiple-Files-in-Viper">1.5 Multiple Files in Viper</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-textmarkers-1">textmarkers</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-textmarkers-2">textmarkers</a></td><td valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Move-Commands">textmarkers</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-textmarkers-3">textmarkers</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-transparent-ftp">transparent ftp</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-U">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-undo">undo</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Undo-and-Backups">undo</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Undoing">undo</a></td><td valign="top"><a href="#Undoing">4.2.9 Undoing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-undo-1">undo</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-undo-2">undo</a></td><td valign="top"><a href="#Undoing">4.2.9 Undoing</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-V">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-vanilla-search">vanilla search</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-vanilla-search-1">vanilla search</a></td><td valign="top"><a href="#New-Commands">2.9 New Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-vanilla-search-2">vanilla search</a></td><td valign="top"><a href="#Move-Commands">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Rudimentary-Changes">variables for customization</a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variables-for-customization">variables for customization</a></td><td valign="top"><a href="#Rudimentary-Changes">3.1 Rudimentary Changes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-version-maintenance">version maintenance</a></td><td valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Vi-Macros">Vi macros</a></td><td valign="top"><a href="#Vi-Macros">3.4 Vi Macros</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Options">Vi options</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#States-in-Viper">Vi state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Vi-State">Vi state</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Vi-macros">Vi macros</a></td><td valign="top"><a href="#Vi-Macros">3.4 Vi Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Vi-options">Vi options</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Vi-state">Vi state</a></td><td valign="top"><a href="#States-in-Viper">1.3 States in Viper</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Vi-state-1">Vi state</a></td><td valign="top"><a href="#Vi-State">1.3.2 Vi State</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viewing-registers-and-markers">viewing registers and markers</a></td><td valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-viewing-registers-and-markers-1">viewing registers and markers</a></td><td valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Packages-that-Change-Keymaps">Viper and C-c</a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Viper-and-C_002dc">Viper and C-c</a></td><td valign="top"><a href="#Packages-that-Change-Keymaps">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Viper-as-minor-mode">Viper as minor mode</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index-1_cp_letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-window">window</a></td><td valign="top"><a href="#Emacs-Preliminaries">1.1 Emacs Preliminaries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Improved-Search">word search</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-word-search">word search</a></td><td valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-word-wrap">word wrap</a></td><td valign="top"><a href="#Options">4.7 Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-WORDS">WORDS</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-words">words</a></td><td valign="top"><a href="#Groundwork">4.1 Groundwork</a></td></tr>

@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">27. Customization</h1>
+<a name="index-customization-2"></a>
 
 <p>  This chapter talks about various topics relevant to adapting the
 behavior of Emacs in minor ways.
@@ -122,7 +123,9 @@ file to do the customization in each session.  See section <a href="#Init-File">
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.1 Minor Modes</h2>
+<a name="index-minor-modes"></a>
 
+<a name="index-mode-line-1"></a>
 <p>  Minor modes are options which you can use or not.  For example, Auto
 Fill mode is a minor mode in which &lt;SPC&gt; breaks lines between words
 as you type.  All the minor modes are independent of each other and of
@@ -139,7 +142,7 @@ off and off if it was on.  This is known as <em>toggling</em>.  A positive
 argument always turns the mode on, and an explicit zero argument or a
 negative argument always turns it off.
 </p>
-<a name="index-Auto-Fill-mode"></a>
+<a name="index-Auto-Fill-mode-2"></a>
 <a name="index-auto_002dfill_002dmode-1"></a>
 <p>  Auto Fill mode allows you to enter filled text without breaking lines
 explicitly.  Emacs inserts newlines as necessary to prevent lines from
@@ -178,6 +181,8 @@ mode</samp>&rsquo;.  See section <a href="xemacs_26.html#Abbrevs">Abbrevs</a>, f
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.2 Variables</h2>
+<a name="index-variable"></a>
+<a name="index-option"></a>
 
 <p>  A <em>variable</em> is a Lisp symbol which has a value.  Variable names
 can contain any characters, but by convention they are words separated
@@ -239,6 +244,7 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.2.1 Examining and Setting Variables</h3>
+<a name="index-setting-variables"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-h v</kbd></dt>
@@ -251,8 +257,8 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 </p></dd>
 </dl>
 
-<a name="index-C_002dh-v-1"></a>
-<a name="index-describe_002dvariable-1"></a>
+<a name="index-C_002dh-v-2"></a>
+<a name="index-describe_002dvariable-2"></a>
 <p>  To examine the value of a single variable, use <kbd>C-h v</kbd>
 (<code>describe-variable</code>), which reads a variable name using the
 minibuffer, with completion.  It prints both the value and the
@@ -270,7 +276,7 @@ Documentation:
 Automatically becomes local when set in any fashion.
 </pre></td></tr></table>
 
-<a name="index-option"></a>
+<a name="index-option-1"></a>
 <p>The star at the beginning of the documentation indicates that this variable
 is an option.  <kbd>C-h v</kbd> is not restricted to options; it allows any
 variable name.
@@ -311,6 +317,8 @@ except where explicitly stated, affects only the current Emacs session.
 </tr></table>
 <h3 class="subsection">27.2.2 Easy Customization Interface</h3>
 
+<a name="index-customize"></a>
+<a name="index-customization-buffer"></a>
 <p>  A convenient way to find the user option variables that you want to
 change, and then change them, is with <kbd>M-x customize</kbd> (or use a
 keyboard shortcut, <kbd>C-h C</kbd>.  This command
@@ -353,6 +361,7 @@ structure as of yet, but we are adding the rest.)
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">27.2.2.1 Customization Groups</h4>
+<a name="index-customization-groups"></a>
 
 <p>  For customization purposes, user options are organized into
 <em>groups</em> to help you find them.  Groups are collected into bigger
@@ -616,6 +625,10 @@ items in the buffer that could meaningfully be set, saved or reset.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">27.2.2.3 Customizing Faces</h4>
+<a name="index-customizing-faces"></a>
+<a name="index-bold-font"></a>
+<a name="index-italic-font"></a>
+<a name="index-fonts-and-faces"></a>
 
 <p>  In addition to user options, some customization groups also include
 faces.  When you show the contents of a group, both the user options and
@@ -940,6 +953,7 @@ the case of:
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.2.5 Local Variables in Files</h3>
+<a name="index-local-variables-in-files"></a>
 
 <p>  A file can contain a <em>local variables list</em>, which specifies the
 values to use for certain Emacs variables when that file is edited.
@@ -1054,6 +1068,7 @@ and ignores this variable.
 </tr></table>
 <h2 class="section">27.3 Keyboard Macros</h2>
 
+<a name="index-keyboard-macros"></a>
 <p>  A <em>keyboard macro</em> is a command defined by the user to abbreviate a
 sequence of keys.  For example, if you discover that you are about to type
 <kbd>C-n C-d</kbd> forty times, you can speed your work by defining a keyboard
@@ -1130,6 +1145,12 @@ set of commands again by invoking the macro.
 </tr></table>
 <h3 class="subsection">27.3.1 Basic Use</h3>
 
+<a name="index-C_002dx-_0028"></a>
+<a name="index-C_002dx-_0029"></a>
+<a name="index-C_002dx-e"></a>
+<a name="index-start_002dkbd_002dmacro"></a>
+<a name="index-end_002dkbd_002dmacro"></a>
+<a name="index-call_002dlast_002dkbd_002dmacro"></a>
 <p>  To start defining a keyboard macro, type <kbd>C-x (</kbd>
 (<code>start-kbd-macro</code>).  From then on, anything you type continues to be
 executed, but also becomes part of the definition of the macro.  &lsquo;<samp>Def</samp>&rsquo;
@@ -1189,6 +1210,7 @@ a consequence it re-executes the macro as previously defined.
 </tr></table>
 <h3 class="subsection">27.3.2 Naming and Saving Keyboard Macros</h3>
 
+<a name="index-name_002dlast_002dkbd_002dmacro"></a>
 <p>  To save a keyboard macro for longer than until you define the
 next one, you must give it a name using <kbd>M-x name-last-kbd-macro</kbd>.
 This reads a name as an argument using the minibuffer and defines that name
@@ -1240,6 +1262,8 @@ load the file.
 </tr></table>
 <h3 class="subsection">27.3.3 Executing Macros With Variations</h3>
 
+<a name="index-C_002dx-q"></a>
+<a name="index-kbd_002dmacro_002dquery"></a>
 <p>  You can use <kbd>C-x q</kbd> (<code>kbd-macro-query</code>), to get an effect similar
 to that of <code>query-replace</code>.  The macro asks you  each time
 whether to make a change.  When you are defining the macro, type <kbd>C-x
@@ -1294,8 +1318,8 @@ editing.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing 
 
 <p>  This section deals with the <em>keymaps</em> that define the bindings
 between keys and functions, and shows how you can customize these bindings.
-<a name="index-command"></a>
-<a name="index-function"></a>
+<a name="index-command-1"></a>
+<a name="index-function-1"></a>
 <a name="index-command-name"></a>
 </p>
 <p>  A command is a Lisp function whose definition provides for interactive
@@ -1335,7 +1359,10 @@ hyphens.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.4.1 Keymaps</h3>
+<a name="index-keymap-1"></a>
 
+<a name="index-global-keymap"></a>
+<a name="index-global_002dmap"></a>
 <p>  The bindings between characters and command functions are recorded in
 data structures called <em>keymaps</em>.  Emacs has many of these.  One, the
 <em>global</em> keymap, defines the meanings of the single-character keys that
@@ -1356,7 +1383,7 @@ not in use.  They are the values of the variables <code>lisp-mode-map</code>,
 local keymap is sometimes constructed only when the mode is used for the
 first time in a session, to save space.
 </p>
-<a name="index-minibuffer-1"></a>
+<a name="index-minibuffer-2"></a>
 <a name="index-minibuffer_002dlocal_002dmap"></a>
 <a name="index-minibuffer_002dlocal_002dns_002dmap"></a>
 <a name="index-minibuffer_002dlocal_002dcompletion_002dmap"></a>
@@ -1454,6 +1481,8 @@ keymap for <kbd>C-x</kbd> commands is used.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.4.2 Changing Key Bindings</h3>
+<a name="index-key-rebinding_002c-this-session"></a>
+<a name="index-rebinding-keys_002c-this-session"></a>
 
 <p>  You can redefine an Emacs key by changing its entry in a keymap.
 You can change the global keymap, in which case the change is effective in
@@ -1487,6 +1516,9 @@ local map, which affects all buffers using the same major mode.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">27.4.2.1 Changing Key Bindings Interactively</h4>
+<a name="index-global_002dset_002dkey"></a>
+<a name="index-local_002dset_002dkey"></a>
+<a name="index-local_002dunset_002dkey"></a>
 
 <dl compact="compact">
 <dt> <kbd>M-x global-set-key &lt;RET&gt; <var>key</var> <var>cmd</var> &lt;RET&gt;</kbd></dt>
@@ -1569,7 +1601,7 @@ old definition to have the new definition instead.
 to rebind keys under program control.
 </p>
 <a name="index-define_002dkey-1"></a>
-<a name="index-global_002dset_002dkey"></a>
+<a name="index-global_002dset_002dkey-1"></a>
 
 <dl compact="compact">
 <dt>  <kbd><code>(global-set-key <var>keys</var> <var>cmd</var>)</code></kbd></dt>
@@ -1740,6 +1772,7 @@ similar fashion:
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.4.3 Disabling Commands</h3>
+<a name="index-disabled-command"></a>
 
 <p>  Disabling a command marks it as requiring confirmation before it
 can be executed.  The purpose of disabling a command is to prevent
@@ -1803,6 +1836,7 @@ programs.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.5 The Syntax Table</h2>
+<a name="index-syntax-table-1"></a>
 
 <p>  All the Emacs commands which parse words or balance parentheses are
 controlled by the <em>syntax table</em>.  The syntax table specifies which
@@ -2044,6 +2078,10 @@ and some English to explain that string if necessary.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.6 The Init File</h2>
+<a name="index-init-file"></a>
+<a name="index-Emacs-initialization-file"></a>
+<a name="index-key-rebinding_002c-permanent"></a>
+<a name="index-rebinding-keys_002c-permanently"></a>
 
 <p>  When you start Emacs, it normally loads either &lsquo;<tt>.xemacs/init.el</tt>&rsquo;
 or the file &lsquo;<tt>.emacs</tt>&rsquo; (whichever comes first) in your home directory.
@@ -2397,6 +2435,11 @@ initializations for terminals that do not have a library.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.7 Changing the Bell Sound</h2>
+<a name="index-audible-bell_002c-changing"></a>
+<a name="index-bell_002c-changing"></a>
+<a name="index-sound_002dalist"></a>
+<a name="index-load_002ddefault_002dsounds"></a>
+<a name="index-play_002dsound"></a>
 
 <p>You can now change how the audible bell sounds using the variable
 <code>sound-alist</code>.
@@ -2748,6 +2791,8 @@ as the menubar, toolbars, and gutters.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.10 X Resources</h2>
+<a name="index-X-resources"></a>
+<a name="index-x_002dcreate_002dframe"></a>
 
 <p>Historically, XEmacs has used the X resource application class &lsquo;<samp>Emacs</samp>&rsquo;
 for its resources.  Unfortunately, GNU Emacs uses the same application
@@ -3356,6 +3401,7 @@ appropriate for the toolkit in use.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">27.11 Quitting and Aborting</h2>
+<a name="index-quitting"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-g</kbd></dt>
@@ -3379,7 +3425,7 @@ or <kbd>M-x top-level</kbd>.  Quitting is cancelling a partially typed command
 or one which is already running.  Aborting is getting out of a recursive
 editing level and cancelling the command that invoked the recursive edit.
 </p>
-<a name="index-quitting"></a>
+<a name="index-quitting-1"></a>
 <a name="index-C_002dg-1"></a>
 <p>  Quitting with <kbd>C-g</kbd> is used for getting rid of a partially typed
 command or a numeric argument that you don&rsquo;t want.  It also stops a
@@ -3399,8 +3445,8 @@ command if it is typed while Emacs is waiting for input.
 activate the &ldquo;emergency escape&rdquo; feature and return to the shell.
 See section <a href="#Emergency-Escape">Emergency Escape</a>.
 </p>
-<a name="index-recursive-editing-level"></a>
-<a name="index-editing-level_002c-recursive"></a>
+<a name="index-recursive-editing-level-1"></a>
+<a name="index-editing-level_002c-recursive-1"></a>
 <a name="index-aborting"></a>
 <a name="index-abort_002drecursive_002dedit-1"></a>
 <a name="index-C_002d_005d-1"></a>
@@ -3677,6 +3723,8 @@ or to create another window and run another program.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">27.12.6 Help for Total Frustration</h3>
+<a name="index-Eliza"></a>
+<a name="index-doctor"></a>
 
 <p>  If using Emacs (or something else) becomes terribly frustrating and none
 of the techniques described above solve the problem, Emacs can still help
@@ -3685,7 +3733,7 @@ you.
 <p>  First, if the Emacs you are using is not responding to commands, type
 <kbd>C-g C-g</kbd> to get out of it and then start a new one.
 </p>
-<a name="index-doctor"></a>
+<a name="index-doctor-1"></a>
 <p>  Second, type <kbd>M-x doctor &lt;RET&gt;</kbd>.
 </p>
 <p>  The doctor will make you feel better.  Each time you say something to
@@ -3713,6 +3761,7 @@ doctor know you are finished.
 </tr></table>
 <h2 class="section">27.13 Reporting Bugs</h2>
 
+<a name="index-bugs"></a>
 <p>  Sometimes you will encounter a bug in Emacs.  Although we cannot promise
 we can or will fix the bug, and we might not even agree that it is a bug,
 we want to hear about bugs you encounter in case we do want to fix them.
@@ -3803,6 +3852,7 @@ with the manual, one of them must be wrong, so report the bug.
 </tr></table>
 <h3 class="subsection">27.13.2 How to Report a Bug</h3>
 
+<a name="index-emacs_002dversion"></a>
 <p>  When you decide that there is a bug, it is important to report it and to
 report it in a way which is useful.  What is most useful is an exact
 description of what commands you type, starting with the shell command to

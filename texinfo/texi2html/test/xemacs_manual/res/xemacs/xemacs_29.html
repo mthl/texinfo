@@ -59,6 +59,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">26. Reading Mail</h1>
+<a name="index-mail-2"></a>
+<a name="index-message-1"></a>
 
 <p>XEmacs provides three separate mail-reading packages.  Each one comes with
 its own manual, which is included standard with the XEmacs distribution.
@@ -106,6 +108,8 @@ is not hard to obtain and install VM for that editor.)
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.1 Calendar Mode and the Diary</h2>
+<a name="index-calendar"></a>
+<a name="index-calendar-1"></a>
 
 <p>  Emacs provides the functions of a desk calendar, with a diary of
 planned or past events.  To enter the calendar, type <kbd>M-x calendar</kbd>;
@@ -167,6 +171,7 @@ information about the calendar and diary.
 </tr></table>
 <h3 class="subsection">26.1.1 Movement in the Calendar</h3>
 
+<a name="index-moving-inside-the-calendar"></a>
 <p>  Calendar mode lets you move through the calendar in logical units of
 time such as days, weeks, months, and years.  If you move outside the
 three months originally displayed, the calendar display &ldquo;scrolls&rdquo;
@@ -424,6 +429,7 @@ then centers the three-month calendar around that month.
 </tr></table>
 <h3 class="subsection">26.1.2 Scrolling the Calendar through Time</h3>
 
+<a name="index-scrolling-in-the-calendar"></a>
 <p>  The calendar display scrolls automatically through time when you move out
 of the visible portion.  You can also scroll it manually.  Imagine that the
 calendar window contains a long strip of paper with the months on it.
@@ -537,7 +543,7 @@ screen.  This does not change the extent of the region.
 <em>inclusive</em>; that is, it includes the days specified by mark and
 point.
 </p>
-<a name="index-mark-ring"></a>
+<a name="index-mark-ring-1"></a>
 <p>  The main use of the mark in the calendar is to remember dates that you may
 want to go back to.  To make this feature more useful, the mark ring
 (see section <a href="xemacs_12.html#Mark-Ring">The Mark Ring</a>) operates exactly as in other buffers:  Emacs remembers
@@ -644,6 +650,7 @@ calendar iconifies that frame.)
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.2 LaTeX Calendar</h2>
+<a name="index-calendar-and-LaTeX"></a>
 
 <p>   The Calendar LaTeX commands produce a buffer of LaTeX code that
 prints as a calendar.  Depending on the command you use, the printed
@@ -732,6 +739,7 @@ also (in weekly and monthly calendars only).
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.2.1 Holidays</h3>
+<a name="index-holidays"></a>
 
 <p>  The Emacs calendar knows about all major and many minor holidays,
 and can display them.
@@ -791,7 +799,7 @@ displays a separate buffer containing a list of all holidays in the
 current three-month range.  You can use &lt;SPC&gt; in the calendar window
 to scroll that list.
 </p>
-<a name="index-holidays"></a>
+<a name="index-holidays-1"></a>
 <p>  The command <kbd>M-x holidays</kbd> displays the list of holidays for the
 current month and the preceding and succeeding months; this works even
 if you don&rsquo;t have a calendar window.  If you want the list of holidays
@@ -837,6 +845,7 @@ definition, even though it is wrong for some prior years.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.2.2 Times of Sunrise and Sunset</h3>
+<a name="index-sunrise-and-sunset"></a>
 
 <p>  Special calendar commands can tell you, to within a minute or two, the
 times of sunrise and sunset for any date.
@@ -938,6 +947,8 @@ machine.  See section <a href="xemacs_30.html#Init-File">The Init File</a>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.2.3 Phases of the Moon</h3>
+<a name="index-phases-of-the-moon"></a>
+<a name="index-moon_002c-phases-of"></a>
 
 <p>  These calendar commands display the dates and times of the phases of
 the moon (new moon, first quarter, full moon, last quarter).  This
@@ -994,6 +1005,7 @@ Time (the Greenwich time zone) is used.  See section <a href="#Daylight-Savings"
 </tr></table>
 <h3 class="subsection">26.2.4 Conversion To and From Other Calendars</h3>
 
+<a name="index-Gregorian-calendar"></a>
 <p>  The Emacs calendar displayed is <em>always</em> the Gregorian calendar,
 sometimes called the &ldquo;new style&rdquo; calendar, which is used in most of
 the world today.  However, this calendar did not exist before the
@@ -1044,6 +1056,7 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &ldquo;print&rdquo; since 
 </tr></table>
 <h2 class="section">26.3 Supported Calendar Systems</h2>
 
+<a name="index-ISO-commercial-calendar"></a>
 <p>  The ISO commercial calendar is used largely in Europe.
 </p>
 <a name="index-Julian-calendar"></a>
@@ -1426,6 +1439,7 @@ spelling.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.5.2 The Diary</h3>
+<a name="index-diary"></a>
 
 <p>  The Emacs diary keeps track of appointments or other events on a daily
 basis, in conjunction with the calendar.  To use the diary feature, you
@@ -1568,7 +1582,7 @@ this command is <kbd>M-x print-diary-entries</kbd>.  It sends the data
 directly to the printer.  You can customize it like <code>lpr-region</code>
 (see section <a href="#Hardcopy">Hardcopy Output</a>).
 </p>
-<a name="index-diary"></a>
+<a name="index-diary-1"></a>
 <p>  The command <kbd>M-x diary</kbd> displays the diary entries for the current
 date, independently of the calendar display, and optionally for the next
 few days as well; the variable <code>number-of-diary-entries</code> specifies
@@ -1607,7 +1621,9 @@ diary-mail-entries</kbd>.  A prefix argument specifies how many days
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.5.4 The Diary File</h3>
+<a name="index-diary-file"></a>
 
+<a name="index-diary_002dfile"></a>
 <p>  Your <em>diary file</em> is a file that records events associated with
 particular dates.  The name of the diary file is specified by the
 variable <code>diary-file</code>; &lsquo;<tt>~/diary</tt>&rsquo; is the default.  The
@@ -2030,6 +2046,7 @@ diary suit your personal tastes.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.1 Customizing the Calendar</h4>
+<a name="index-view_002ddiary_002dentries_002dinitially"></a>
 
 <p>  If you set the variable <code>view-diary-entries-initially</code> to
 <code>t</code>, calling up the calendar automatically displays the diary
@@ -2137,6 +2154,10 @@ the current date is <em>not</em> visible in the window.
 </tr></table>
 <h4 class="subsubsection">26.5.8.2 Customizing the Holidays</h4>
 
+<a name="index-calendar_002dholidays"></a>
+<a name="index-christian_002dholidays"></a>
+<a name="index-hebrew_002dholidays"></a>
+<a name="index-islamic_002dholidays"></a>
 <p>  Emacs knows about holidays defined by entries on one of several lists.
 You can customize these lists of holidays to your own needs, adding or
 deleting holidays.  The lists of holidays that Emacs uses are for
@@ -2327,6 +2348,7 @@ visible in the calendar window, with descriptive strings, like this:
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.3 Date Display Format</h4>
+<a name="index-calendar_002ddate_002ddisplay_002dform"></a>
 
 <p>  You can customize the manner of displaying dates in the diary, in mode
 lines, and in messages by setting <code>calendar-date-display-form</code>.
@@ -2374,6 +2396,7 @@ list is as follows:
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.4 Time Display Format</h4>
+<a name="index-calendar_002dtime_002ddisplay_002dform"></a>
 
 <p>  The calendar and diary by default display times of day in the
 conventional American style with the hours from 1 through 12, minutes,
@@ -2419,6 +2442,7 @@ defined, and times like &lsquo;<samp>21:07</samp>&rsquo; if they are not.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.5 Daylight Savings Time</h4>
+<a name="index-daylight-savings-time"></a>
 
 <p>  Emacs understands the difference between standard time and daylight
 savings time&mdash;the times given for sunrise, sunset, solstices,
@@ -2514,6 +2538,7 @@ values are 120.
 </tr></table>
 <h4 class="subsubsection">26.5.8.6 Customizing the Diary</h4>
 
+<a name="index-holidays_002din_002ddiary_002dbuffer"></a>
 <p>  Ordinarily, the mode line of the diary buffer window indicates any
 holidays that fall on the date of the diary entries.  The process of
 checking for holidays can take several seconds, so including holiday
@@ -2743,6 +2768,8 @@ diary entry.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.8 Fancy Diary Display</h4>
+<a name="index-diary_002ddisplay_002dhook"></a>
+<a name="index-simple_002ddiary_002ddisplay"></a>
 
 <p>  Diary display works by preparing the diary buffer and then running the
 hook <code>diary-display-hook</code>.  The default value of this hook
@@ -2854,6 +2881,7 @@ ordinary diary display shows the entries directly from your diary file.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h4 class="subsubsection">26.5.8.10 Sexp Entries and the Fancy Diary Display</h4>
+<a name="index-sexp-diary-entries"></a>
 
 <p>  Sexp diary entries allow you to do more than just have complicated
 conditions under which a diary entry applies.  If you use the fancy
@@ -3095,6 +3123,7 @@ is 5 seconds.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.6 Sorting Text</h2>
+<a name="index-sorting"></a>
 
 <p>  XEmacs provides several commands for sorting text in a buffer.  All
 operate on the contents of the region (the text between point and the
@@ -3233,6 +3262,8 @@ See section <a href="xemacs_12.html#Rectangles">Rectangles</a>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.7 Running Shell Commands from XEmacs</h2>
+<a name="index-subshell"></a>
+<a name="index-shell-commands"></a>
 
 <p>  XEmacs has commands for passing single command lines to inferior shell
 processes; it can also run a shell interactively with input and output to
@@ -3294,6 +3325,8 @@ Full terminal emulation is available.
 </tr></table>
 <h3 class="subsection">26.7.1 Single Shell Commands</h3>
 
+<a name="index-M_002d_0021"></a>
+<a name="index-shell_002dcommand"></a>
 <p>  <kbd>M-!</kbd> (<code>shell-command</code>) reads a line of text using the
 minibuffer and creates an inferior shell to execute the line as a command.
 Standard input from the command comes from the null device.  If the shell
@@ -3346,6 +3379,7 @@ the shell command.
 </tr></table>
 <h3 class="subsection">26.7.2 Interactive Inferior Shell</h3>
 
+<a name="index-shell"></a>
 <p>  To run a subshell interactively with its typescript in an XEmacs
 buffer, use <kbd>M-x shell</kbd>.  This creates (or reuses) a buffer named
 &lsquo;<samp>*shell*</samp>&rsquo; and runs a subshell with input coming from and output going
@@ -3437,6 +3471,7 @@ many commands are saved in your input history.  The default is 30.
 </tr></table>
 <h3 class="subsection">26.7.3 Shell Mode</h3>
 
+<a name="index-Shell-mode"></a>
 <p>  The shell buffer uses Shell mode, which defines several special keys
 attached to the <kbd>C-c</kbd> prefix.  They are chosen to resemble the usual
 editing and job control characters present in shells that are not under
@@ -3552,6 +3587,7 @@ using &lt;M-p&gt; quickly and go past the desired command
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.7.4 Interactive Inferior Shell with Terminal Emulator</h3>
+<a name="index-term"></a>
 
 <p>  To run a subshell in a terminal emulator, putting its typescript in an XEmacs
 buffer, use <kbd>M-x term</kbd>.  This creates (or reuses) a buffer named
@@ -3617,6 +3653,8 @@ This is done automatically by bash for version 1.15 and later.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">26.7.5 Term Mode</h3>
+<a name="index-Term-mode"></a>
+<a name="index-mode_002c-Term"></a>
 
 <p>  Term uses Term mode, which has two input modes:
 In line mode, Term basically acts like Shell mode.  See section <a href="#Shell-Mode">Shell Mode</a>.
@@ -3714,6 +3752,9 @@ to the Unix &lsquo;<samp>more</samp>&rsquo; program.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.8 Narrowing</h2>
+<a name="index-widening"></a>
+<a name="index-restriction"></a>
+<a name="index-narrowing"></a>
 
 <p>  <em>Narrowing</em> means focusing in on some portion of the buffer, making
 the rest temporarily invisible and inaccessible.  Cancelling the narrowing
@@ -3780,6 +3821,7 @@ buffer you narrowed down.  See section <a href="xemacs_7.html#Position-Info">Cur
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.9 Hardcopy Output</h2>
+<a name="index-hardcopy"></a>
 
 <p>  The XEmacs commands for making hardcopy derive their names from the
 Unix commands &lsquo;<samp>print</samp>&rsquo; and &lsquo;<samp>lpr</samp>&rsquo;.
@@ -3833,6 +3875,8 @@ example, the value could be <code>(&quot;-Pfoo&quot;)</code> to print on printer
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.10 Recursive Editing Levels</h2>
+<a name="index-recursive-editing-level"></a>
+<a name="index-editing-level_002c-recursive"></a>
 
 <p>  A <em>recursive edit</em> is a situation in which you are using XEmacs
 commands to perform arbitrary editing while in the middle of another
@@ -3843,7 +3887,7 @@ the <code>query-replace</code>.
 </p>
 <a name="index-C_002dM_002dc"></a>
 <a name="index-exit_002drecursive_002dedit"></a>
-<a name="index-exiting"></a>
+<a name="index-exiting-1"></a>
 <p>  <em>Exiting</em> a recursive edit means returning to the unfinished
 command, which continues execution.  For example, exiting the recursive
 edit requested by <kbd>C-r</kbd> in <code>query-replace</code> causes query replacing
@@ -3914,6 +3958,7 @@ was invoked from.
 </tr></table>
 <h2 class="section">26.11 Dissociated Press</h2>
 
+<a name="index-dissociated_002dpress"></a>
 <p>  <kbd>M-x dissociated-press</kbd> is a command for scrambling a file of text
 either word by word or character by character.  Starting from a buffer of
 straight English, it produces extremely amusing output.  The input comes
@@ -3984,6 +4029,7 @@ userenced and properbose.  Have fun.  Your buggestions are welcome.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.12 CONX</h2>
+<a name="index-random-sentences"></a>
 
 <p>Besides producing a file of scrambled text with Dissociated Press, you 
 can generate random sentences by using CONX.
@@ -4043,6 +4089,9 @@ To clear the database, use <code>M-x conx-init</code>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.13 Other Amusements</h2>
+<a name="index-boredom"></a>
+<a name="index-hanoi"></a>
+<a name="index-yow"></a>
 
 <p>  If you are a little bit bored, you can try <kbd>M-x hanoi</kbd>.  If you are
 considerably bored, give it a numeric argument.  If you are very, very
@@ -4073,6 +4122,9 @@ bored, try an argument of 9.  Sit back and watch.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">26.14 Emulation</h2>
+<a name="index-other-editors"></a>
+<a name="index-vi"></a>
+<a name="index-EDT"></a>
 
 <p>  XEmacs can be programmed to emulate (more or less) most other
 editors.  Standard facilities can emulate these:

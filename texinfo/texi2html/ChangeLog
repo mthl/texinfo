@@ -1,3 +1,9 @@
+2008-09-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: always use a distinct label for index 
+	entries, and use id, target like for other placed items.
+	Give more informations for index entry formatting.
+
 2008-09-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: when node Top is considered as a @top, don't

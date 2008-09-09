@@ -59,6 +59,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">21. Editing Programs</h1>
+<a name="index-Lisp"></a>
+<a name="index-C"></a>
 
 <p>  Emacs has many commands designed to understand the syntax of programming
 languages such as Lisp and C.  These commands can:
@@ -146,6 +148,9 @@ on the screen.
 </tr></table>
 <h2 class="section">21.1 Major Modes for Programming Languages</h2>
 
+<a name="index-Lisp-mode"></a>
+<a name="index-C-mode"></a>
+<a name="index-Scheme-mode"></a>
 <p>  Emacs has several major modes for the programming languages Lisp, Scheme (a
 variant of Lisp), C, Fortran, and Muddle.  Ideally, a major mode should be
 implemented for each programming language you might want to edit with
@@ -163,7 +168,7 @@ example, in C mode &lt;TAB&gt; is bound to <code>c-indent-line</code>.  &lt;LFD&
 is normally defined to do &lt;RET&gt; followed by &lt;TAB&gt;; thus it, too,
 indents in a mode-specific fashion.
 </p>
-<a name="index-DEL-1"></a>
+<a name="index-DEL-3"></a>
 <a name="index-backward_002ddelete_002dchar_002duntabify"></a>
 <p>  In most programming languages, indentation is likely to vary from line to
 line.  So the major modes for those languages rebind &lt;DEL&gt; to treat a
@@ -215,6 +220,7 @@ function receives no arguments.
 </tr></table>
 <h2 class="section">21.2 Lists and Sexps</h2>
 
+<a name="index-Control_002dMeta"></a>
 <p>  By convention, Emacs keys for dealing with balanced expressions are
 usually <kbd>Control-Meta-</kbd> characters.  They tend to be analogous in
 function to their <kbd>Control-</kbd> and <kbd>Meta-</kbd> equivalents.  These commands
@@ -314,8 +320,8 @@ is very difficult to ignore comments when parsing backwards; therefore,
 in such languages the sexp commands treat the text of comments as if it
 were code.
 </p>
-<a name="index-C_002dM_002dk"></a>
-<a name="index-kill_002dsexp"></a>
+<a name="index-C_002dM_002dk-1"></a>
+<a name="index-kill_002dsexp-1"></a>
 <p>  Killing an sexp at a time can be done with <kbd>C-M-k</kbd> (<code>kill-sexp</code>).
 <kbd>C-M-k</kbd> kills the characters that <kbd>C-M-f</kbd> would move over.
 </p>
@@ -389,6 +395,7 @@ See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.3 Defuns</h2>
+<a name="index-defuns"></a>
 
 <p>  In Emacs, a parenthetical grouping at the top level in the buffer is
 called a <em>defun</em>.  The name derives from the fact that most
@@ -472,6 +479,8 @@ described above.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.4 Indentation for Programs</h2>
+<a name="index-indentation-2"></a>
+<a name="index-grinding"></a>
 
 <p>  The best way to keep a program properly indented (&ldquo;ground&rdquo;) is to
 use Emacs to re-indent it as you change the program.  Emacs has commands
@@ -519,7 +528,7 @@ all of the lines inside a single parenthetical grouping.
 </p></dd>
 </dl>
 
-<a name="index-TAB-3"></a>
+<a name="index-TAB-6"></a>
 <a name="index-c_002dindent_002dline"></a>
 <a name="index-lisp_002dindent_002dline"></a>
 <p>  The basic indentation command is &lt;TAB&gt;, which gives the current
@@ -536,7 +545,7 @@ leaves point fixed with respect to the characters around it.
 </p>
 <p>  Use <kbd>C-q &lt;TAB&gt;</kbd> to insert a tab at point.
 </p>
-<a name="index-LFD-1"></a>
+<a name="index-LFD-2"></a>
 <a name="index-newline_002dand_002dindent"></a>
 <p>  When entering a large amount of new code, use &lt;LFD&gt;
 (<code>newline-and-indent</code>), which is equivalent to a &lt;RET&gt; followed
@@ -642,6 +651,7 @@ to every line whose first character is between point and mark.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">21.4.3 Customizing Lisp Indentation</h3>
+<a name="index-customization-1"></a>
 
 <p>  The indentation pattern for a Lisp expression can depend on the function
 called by the expression.  For each Lisp function, you can choose among
@@ -924,6 +934,8 @@ source files of XEmacs.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.5 Automatic Display of Matching Parentheses</h2>
+<a name="index-matching-parentheses"></a>
+<a name="index-parentheses"></a>
 
 <p>  The Emacs parenthesis-matching feature shows you automatically how
 parentheses match in the text.  Whenever a self-inserting character that
@@ -973,6 +985,10 @@ match.  The default is 4000.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.6 Manipulating Comments</h2>
+<a name="index-comments"></a>
+<a name="index-M_002d_003b"></a>
+<a name="index-indentation-3"></a>
+<a name="index-indent_002dfor_002dcomment"></a>
 
 <p>  The comment commands insert, kill and align comments.
 </p>
@@ -1063,6 +1079,10 @@ valid command which you could bind directly to a key if you wanted to.
 </tr></table>
 <h3 class="subsection">21.6.1 Multiple Lines of Comments</h3>
 
+<a name="index-M_002dLFD"></a>
+<a name="index-blank-lines-1"></a>
+<a name="index-Auto-Fill-mode-1"></a>
+<a name="index-indent_002dnew_002dcomment_002dline"></a>
 <p>  If you are typing a comment and want to continue it on another line,
 use the command <kbd>Meta-&lt;LFD&gt;</kbd> (<code>indent-new-comment-line</code>),
 which terminates the comment you are typing, creates a new blank line
@@ -1092,6 +1112,9 @@ the rest of the line becomes part of the new comment line.
 </tr></table>
 <h3 class="subsection">21.6.2 Options Controlling Comments</h3>
 
+<a name="index-comment_002dcolumn"></a>
+<a name="index-C_002dx-_003b"></a>
+<a name="index-set_002dcomment_002dcolumn"></a>
 <p>  The comment column is stored in the variable <code>comment-column</code>.  You
 can explicitly set it to a number.  Alternatively, the command <kbd>C-x ;</kbd>
 (<code>set-comment-column</code>) sets the comment column to the column point is
@@ -1212,6 +1235,7 @@ there is none), and indents with &lt;LFD&gt; after it.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.8 Completion for Lisp Symbols</h2>
+<a name="index-completion-_0028symbol-names_0029"></a>
 
 <p>   Completion usually happens in the minibuffer.  An exception is
 completion for Lisp symbol names, which is available in all buffers.
@@ -1254,6 +1278,10 @@ completions is displayed in another window.
 </tr></table>
 <h2 class="section">21.9 Documentation Commands</h2>
 
+<a name="index-C_002dh-f-1"></a>
+<a name="index-describe_002dfunction-1"></a>
+<a name="index-C_002dh-v-1"></a>
+<a name="index-describe_002dvariable-1"></a>
 <p>  As you edit Lisp code to be run in Emacs, you can use the commands
 <kbd>C-h f</kbd> (<code>describe-function</code>) and <kbd>C-h v</kbd>
 (<code>describe-variable</code>) to print documentation of functions and
@@ -1297,6 +1325,8 @@ from section 5.
 </tr></table>
 <h2 class="section">21.10 Change Logs</h2>
 
+<a name="index-change-log"></a>
+<a name="index-add_002dchange_002dlog_002dentry"></a>
 <p>  The Emacs command <kbd>M-x add-change-log-entry</kbd> helps you keep a record
 of when and why you have changed a program.  It assumes that you have a
 file in which you write a chronological sequence of entries describing
@@ -1367,6 +1397,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.11 Tags Tables</h2>
+<a name="index-tags-table"></a>
 
 <p>  A <em>tags table</em> is a description of how a multi-file program is
 broken up into files.  It lists the names of the component files and the
@@ -1602,6 +1633,7 @@ generate a tag.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">21.11.2 Creating Tags Tables</h3>
+<a name="index-etags-program"></a>
 
 <p>  The <code>etags</code> program is used to create a tags table file.  It knows
 the syntax of several languages, as described in
@@ -1848,6 +1880,7 @@ Tag VHDL files:
 </tr></table>
 <h3 class="subsection">21.11.4 Selecting a Tags Table</h3>
 
+<a name="index-tag_002dtable_002dalist"></a>
 <p>   At any time Emacs has one <em>selected</em> tags table, and all the commands
 for working with tags tables use the selected one.  To select a tags table,
 use the variable <code>tag-table-alist</code>.
@@ -2002,7 +2035,7 @@ Multiple active tags tables and completion are supported.
 </p>
 <p>Variables of note include the following:
 </p>
-<a name="index-tag_002dtable_002dalist"></a>
+<a name="index-tag_002dtable_002dalist-1"></a>
 <a name="index-tags_002dfile_002dname-1"></a>
 <a name="index-tags_002dbuild_002dcompletion_002dtable"></a>
 <a name="index-buffer_002dtag_002dtable"></a>
@@ -2210,6 +2243,7 @@ regexp, and displays the tag names found.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">21.12 Fortran Mode</h2>
+<a name="index-Fortran-mode"></a>
 
 <p>  Fortran mode provides special motion commands for Fortran statements and
 subprograms, and indentation commands that understand Fortran conventions
@@ -2494,6 +2528,11 @@ followed.
 </tr></table>
 <h4 class="subsubsection">21.12.2.4 Variables for Fortran Indentation</h4>
 
+<a name="index-fortran_002ddo_002dindent"></a>
+<a name="index-fortran_002dif_002dindent"></a>
+<a name="index-fortran_002dcontinuation_002dindent"></a>
+<a name="index-fortran_002dcheck_002dall_002dnum_002dfor_002dmatching_002ddo"></a>
+<a name="index-fortran_002dminimum_002dstatement_002dindent"></a>
 <p>  Several additional variables control how Fortran indentation works.
 </p>
 <dl compact="compact">
@@ -2751,6 +2790,7 @@ Fortran abbrevs and what they stand for.
 </tr></table>
 <h2 class="section">21.13 Asm Mode</h2>
 
+<a name="index-Asm-mode"></a>
 <p>Asm mode is a major mode for editing files of assembler code.  It
 defines these commands:
 </p>

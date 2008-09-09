@@ -17,6 +17,9 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Quick reference to CVS commands ==
+<div id="index-Command-reference"></div>
+<div id="index-Reference_002c-commands"></div>
+<div id="index-Invoking-CVS"></div>
 
 <p>This appendix describes how to invoke <small>CVS</small>, with
 references to where each command or feature is

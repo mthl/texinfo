@@ -120,6 +120,11 @@ Appendices
 </tr></table>
 <h1 class="unnumbered">Introduction</h1>
 
+<a name="index-TEF"></a>
+<a name="index-cells"></a>
+<a name="index-transfers"></a>
+<a name="index-ZOOM"></a>
+<a name="index-mortran"></a>
 
 <p>   Miniker is a modeling tool, built especially in order to implement
 models written following the <acronym title="Transfer Evolution Formalism">TEF</acronym> (Transfer Evolution Formalism) 
@@ -500,6 +505,7 @@ computation. The <!-- MATH
 </tr></table>
 <h1 class="chapter">2. Miniker model programming</h1>
 
+<a name="index-sequences"></a>
 
 <p>Miniker works by combining the model specification code given by 
 the user and other source files provided in the package. The code is
@@ -544,6 +550,8 @@ Fortran include files).
 </tr></table>
 <h2 class="section">2.1 General structure of the code</h2>
 
+<a name="index-sequence"></a>
+<a name="index-zinit_002c-general"></a>
 
 <p>The sequences used to enter model description hold the mathematical formulae for each cell and transfer component, dedicated
 derived computations, and time-step 
@@ -583,6 +591,7 @@ computations etc.
 </tr></table>
 <h2 class="section">2.2 Miniker programming illustrated</h2>
 
+<a name="index-TEF-1"></a>
 
 <p>The general <acronym title="Transfer Evolution Formalism">TEF</acronym> system writes:
 <BR><P></P>
@@ -674,6 +683,7 @@ different group.
 </tr></table>
 <h3 class="subsection">2.2.1 All you need to know about mortran and cmz directives</h3>
 
+<a name="index-mortran-1"></a>
 
 <p>The first stage of code generation consists in cmz directives preprocessing.
 Cmz directives are used for conditional selection of features, and sequence 
@@ -734,6 +744,11 @@ see next.
 </tr></table>
 <h3 class="subsection">2.2.2 Entering model equation and parameters</h3>
 
+<a name="index-zinit"></a>
+<a name="index-dt"></a>
+<a name="index-time"></a>
+<a name="index-nstep"></a>
+<a name="index-modzprint"></a>
 
 <p>The model equation and parameters and some Miniker parameters are entered in
 the &lsquo;<tt>zinit</tt>&rsquo; sequence. The whole layout of the model is given
@@ -1067,6 +1082,9 @@ installation, see <a href="#Installation">Installation</a>.
 </tr></table>
 <h3 class="subsection">2.3.1 Setup a model and compile with cmz</h3>
 
+<a name="index-mod"></a>
+<a name="index-_0024zinit"></a>
+<a name="index-_0024dimetaphi"></a>
 
 <p>The user defined sequences are &lsquo;<samp>KEEP</samp>&rsquo; in the
 cmz world. The most common organization is to have a cmz file in a
@@ -1118,6 +1136,9 @@ directory, with name &lsquo;<tt>mymodel.exe</tt>&rsquo;.
 </tr></table>
 <h3 class="subsection">2.3.2 Setup a model and compile with make</h3>
 
+<a name="index-compilation"></a>
+<a name="index-zinit_002emti"></a>
+<a name="index-model_005ffile_005fname"></a>
 
 <p>With make, the sequences are files ending with &lsquo;<samp>.mti</samp>&rsquo; (for
 mortran include files),
@@ -1216,6 +1237,7 @@ This advanced use is more precisely covered in
 </tr></table>
 <h3 class="subsection">2.3.3 Running a simulation and using the output</h3>
 
+<a name="index-running-model"></a>
 
 <p>Once compiled the model is ready to run, it only has to be executed. On 
 standard output informations about the states, transfers, tangent linear
@@ -1337,6 +1359,9 @@ See section <a href="#Generalized-TLS">Generalized tangent linear system analysi
 </tr></table>
 <h3 class="subsection">2.3.4 Doing graphics</h3>
 
+<a name="index-graphics"></a>
+<a name="index-graphics-with-gnuplot"></a>
+<a name="index-graphics-with-PAW"></a>
 
 <p>Since the data are simply separated with spaces, and comment lines 
 begin with &lsquo;<samp>#</samp>&rsquo;, the 
@@ -1384,6 +1409,7 @@ Miniker files.
 </tr></table>
 <h2 class="section">2.4 Controlling the run</h2>
 
+<a name="index-controlling-the-run"></a>
 
 <p>It is possible to add code that will be executed at the end of each time
 step. It is also possible to specify which time step leads to a printout on
@@ -1419,6 +1445,8 @@ program, this possibility is covered in <a href="#Calling-the-model-code">Callin
 </tr></table>
 <h3 class="subsection">2.4.1 Executing code at the end of each time step</h3>
 
+<a name="index-zsteer"></a>
+<a name="index-zsteer_002einc"></a>
 
 <p>The code in the sequence &lsquo;<tt>zsteer</tt>&rsquo; is executed at the end of each time
 step. It is possible to change the time step length (variable <code>dt</code>)
@@ -1614,6 +1642,9 @@ We have yet no example of managing the time-step.
 </tr></table>
 <h3 class="subsection">2.4.2 Controlling the printout and data output</h3>
 
+<a name="index-printing"></a>
+<a name="index-zprint"></a>
+<a name="index-modzprint-1"></a>
 
 <p>The printout on standard output is performed if the variable <code>zprint</code> 
 of type <code>logical</code> is true. Therefore it is possible to control this
@@ -1699,6 +1730,10 @@ code, in &lsquo;<tt>zsteer</tt>&rsquo;, triggers output to &lsquo;<tt>.data</tt>
 </tr></table>
 <h2 class="section">3.1 Overview of additional features setting</h2>
 
+<a name="index-feature-setting"></a>
+<a name="index-select-flag"></a>
+<a name="index-logical-flags"></a>
+<a name="index-selseq_002ekumac"></a>
 
 <p>It is possible to enable some features by selecting which code should 
 be part of the principal program. Each of these optionnal features are 
@@ -2698,6 +2733,7 @@ and the observation function is noted <SPAN CLASS="MATH"><IMG
 </tr></table>
 <h3 class="subsection">3.8.1 Observations</h3>
 
+<a name="index-mobs"></a>
 
 <p>The observation functions are set in a <code>set_probe</code> block in 
 the &lsquo;<tt>zinit</tt>&rsquo; sequence.
@@ -2801,6 +2837,12 @@ the &lsquo;<tt>Makefile</tt>&rsquo; with make.
 </tr></table>
 <h3 class="subsection">3.9.1 The explicit size sequence</h3>
 
+<a name="index-dimetaphi"></a>
+<a name="index-model-size"></a>
+<a name="index-np-1"></a>
+<a name="index-mp-1"></a>
+<a name="index-maxstep"></a>
+<a name="index-dimetaphi-1"></a>
 
 <p>The dimension of the model is entered in the sequence &lsquo;<tt>dimetaphi</tt>&rsquo;,
 using the fortran <code>parameter np</code> for <code>eta(.)</code> and
@@ -2863,6 +2905,11 @@ Then, if there are two parameters, they are first declared with
 </tr></table>
 <h3 class="subsection">3.9.2 Entering the model equations, with explicit sizes</h3>
 
+<a name="index-model-equations"></a>
+<a name="index-Phi_005ftef_0028_002e_0029"></a>
+<a name="index-deta_005ftef_0028_002e_0029"></a>
+<a name="index-eta_0028_002e_0029_002c-explicit-sizes"></a>
+<a name="index-ff_0028_002e_0029_002c-explicit-sizes"></a>
 
 <p>When sizes are explicit, another possibility exists for entering
 the model equations. The use of symbolic names, as described in
@@ -3137,6 +3184,7 @@ in cmz and an include file is called a <em>keep</em>.
 </tr></table>
 <h2 class="section">4.1 Automatic sensitivity computation</h2>
 
+<a name="index-sensitivities"></a>
 
 <p>An obvious advantage of having acces to the Jacobian matrices along the
 system trajectory concerns automatic sensitivity analyses, as either:
@@ -3427,6 +3475,8 @@ with <code>maxstep</code> Fortran parameter.
 </tr></table>
 <h3 class="subsection">4.2.1 Overview of optimisation with Miniker</h3>
 
+<a name="index-adjoint"></a>
+<a name="index-optimisation"></a>
 
 <p>In the proposed method, Miniker is run twice, one time forward and then
 backward to determine the trajectory and the adjoint model. After that the 
@@ -3531,6 +3581,8 @@ GTLS<a name="DOCF6" href="#FOOT6">(6)</a>.
 </tr></table>
 <h3 class="subsection">4.2.2 Control laws</h3>
 
+<a name="index-zcommand"></a>
+<a name="index-command-law"></a>
 
 <p>Each control law is associated with one cell or transfer equation, meaning that a command
 associated with an equation does not appear in any other equation.
@@ -3594,6 +3646,9 @@ of the commands and time of the run.
 </tr></table>
 <h3 class="subsection">4.2.3 Cost function coding and adjoint modeling</h3>
 
+<a name="index-zback"></a>
+<a name="index-cout_005fPsi"></a>
+<a name="index-cout_005fl"></a>
 
 <p>First of all the flag <code>zback</code> should be set to <code>.true.</code> in order to
 allow adjoint model computation:
@@ -3690,6 +3745,7 @@ in the associated files:
 </tr></table>
 <h3 class="subsection">4.2.4 Sensitivity of cost function to parameters</h3>
 
+<a name="index-gradpj_002edata"></a>
 
 <p>The sensitivity of the cost function to all the parameters given as
 arguments of <code>Free_parameters</code> is computed. For the
@@ -3732,6 +3788,9 @@ The result is output in &lsquo;<tt>gradpj.data</tt>&rsquo;.
 </tr></table>
 <h2 class="section">4.3 Kalman filter</h2>
 
+<a name="index-Kalman-filter"></a>
+<a name="index-variance_002dcovariance-matrices_002c-general"></a>
+<a name="index-observations_002c-general"></a>
 
 <p>The Kalman filter allows for data assimilation along the model run. In 
 that case it is assumed that there is a real-world model with stochastic
@@ -3898,6 +3957,7 @@ transfers (equal to the states), but the error on the state is of dimension
 </tr></table>
 <h3 class="subsection">4.3.1 Coding the Kalman filter</h3>
 
+<a name="index-zkalman"></a>
 
 <p>First of all the Kalman filter code should be activated. The observations
 code is also required (see section <a href="#Observations">Observations</a>).
@@ -3958,6 +4018,8 @@ of errors have to be given.
 </tr></table>
 <h4 class="subsubsection">4.3.1.1 Kalman filter vectors dimensions</h4>
 
+<a name="index-error-vector-dimension"></a>
+<a name="index-dimetaphi_002c-Kalman-filter"></a>
 
 <p>These dimensions should be set in the &lsquo;<tt>zinit</tt>&rsquo; sequence.
 The size of the estimated states is given by the parameter <code>nkp</code>. 
@@ -4003,10 +4065,15 @@ dimension 2.
 </tr></table>
 <h4 class="subsubsection">4.3.1.2 Error and observation matrices</h4>
 
+<a name="index-variance_002dcovariance-matrices"></a>
+<a name="index-observations"></a>
+<a name="index-zinit_002c-Kalman-filter"></a>
 
 <a name="Initial-variance_002dcovariance-matrix-on-the-state"></a>
 <h4 class="subsubheading">Initial variance-covariance matrix on the state</h4>
 
+<a name="index-initial-variance_002dcovariance-on-states"></a>
+<a name="index-covfor_0028_002e_002c_002e_0029"></a>
 
 <p>The variance-covariance on the state matrix is <code>covfor(.,.)</code>. The initial
 values have to be given for this matrix, as in our example:
@@ -4121,6 +4188,9 @@ of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</
 </tr></table>
 <h4 class="subsubsection">4.3.2.1 Feeding the observations to the model</h4>
 
+<a name="index-vobs_0028_002e_0029-1"></a>
+<a name="index-zgetobs-1"></a>
+<a name="index-zsteer_002c-Kalman-filter"></a>
 
 <p>The observations must be made available to the model during the run. These
 observations are set in the <code>vobs(.)</code> array, and the assimilation 
@@ -4155,6 +4225,11 @@ stored in <code>vobs(.)</code>, ready for the next step processing.
 </tr></table>
 <h4 class="subsubsection">4.3.2.2 Kalman filter results</h4>
 
+<a name="index-results_002c-Kalman-filter"></a>
+<a name="index-Kalman-filter-results"></a>
+<a name="index-output_002c-Kalman-filter"></a>
+<a name="index-Kalman-filter-output"></a>
+<a name="index-data_002edata-1"></a>
 
 <p>The estimated states and transfers are still in the same &lsquo;<samp>.data</samp>&rsquo; files, 
 &lsquo;<tt>res.data</tt>&rsquo; and &lsquo;<tt>tr.data</tt>&rsquo; and there is the additional file with
@@ -4277,6 +4352,8 @@ cell variables.
 <h2 class="section">4.4 Feedback gain</h2>
 
 
+<a name="index-Borel-sweep"></a>
+<a name="index-Feedback-gain"></a>
 
 <p>The feedback dynamic gain associated with a feedback loop
 can be expressed as the inverse Borel 
@@ -4370,6 +4447,7 @@ All the relevant informations should be entered in the &lsquo;<tt>zinit</tt>&rsq
 </tr></table>
 <h3 class="subsection">4.4.1 Specifying the Borel sweep</h3>
 
+<a name="index-ZBorel"></a>
 
 <p>First of all the logical flag <code>ZBorel</code> should be raised:
 </p>
@@ -4533,6 +4611,10 @@ with:
 </tr></table>
 <h3 class="subsection">4.4.2 Borel sweep results</h3>
 
+<a name="index-Borel-sweep-results"></a>
+<a name="index-results_002c-Borel-sweep"></a>
+<a name="index-Borel-sweep-graphics"></a>
+<a name="index-graphics_002c-Borel-sweep"></a>
 
 <p>The file &lsquo;<tt>tau_Borel.data</tt>&rsquo; gives the <SPAN CLASS="MATH"><IMG
  WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
@@ -4579,6 +4661,10 @@ that builds 2D histograms for PAW, in which one uses the
 </tr></table>
 <h2 class="section">4.5 Stability analysis of fastest modes</h2>
 
+<a name="index-SVD"></a>
+<a name="index-Singular-Value-Decomposition"></a>
+<a name="index-state-matrix"></a>
+<a name="index-sltc_002eexe"></a>
 
 <p>The preceding analyses are done along with a simulation. One has also the
 possibility of using in a more classical fashion the state advance matrix
@@ -4653,6 +4739,7 @@ produce the corresponding results.
 </tr></table>
 <h3 class="subsection">4.5.1 Singular Value Decomposition with cmz</h3>
 
+<a name="index-smod"></a>
 
 <p>The cmz macro <code>smod SLTC</code> prepares a main program
 (&lsquo;<tt>circul</tt>&rsquo; of +PATCH SLTC), provided as a base for user&rsquo;s own analysis,
@@ -4679,6 +4766,7 @@ in the directory &lsquo;<tt>sltc/</tt>&rsquo;.
 </tr></table>
 <h3 class="subsection">4.5.2 Singular Value Decomposition with make</h3>
 
+<a name="index-Makefile_002esltc"></a>
 
 <p>To compile the singular value decomposition executable with <code>make</code> you 
 can do
@@ -4717,6 +4805,13 @@ example, if the Miniker directory is in &lsquo;<tt>/u/src/mini_ker</tt>&rsquo;:
 </tr></table>
 <h3 class="subsection">4.5.3 Singular Value Decomposition run and output</h3>
 
+<a name="index-SVD-run"></a>
+<a name="index-run_002c-SVD"></a>
+<a name="index-SVD-output"></a>
+<a name="index-output_002c-SVD"></a>
+<a name="index-sltc_002eexe-1"></a>
+<a name="index-title_002etex_002c-SVD"></a>
+<a name="index-aspha_002edata_002c-SVD"></a>
 
 <p>As it is, the &lsquo;<tt>sltc.exe</tt>&rsquo; executable generated by the compilation 
 determines the SVD. This program requires &lsquo;<tt>title.tex</tt>&rsquo; (see <a href="#Title-file">Title file</a>) to
@@ -4777,6 +4872,11 @@ are also generated.
 </tr></table>
 <h2 class="section">4.6 Generalized linear tangent system analysis</h2>
 
+<a name="index-Generalized-linear-tangent-system"></a>
+<a name="index-GTLS"></a>
+<a name="index-propagator"></a>
+<a name="index-Lyapunov-exponents"></a>
+<a name="index-sltcirc_002eexe"></a>
 
 <p>The state matrix <SPAN CLASS="MATH"><IMG
  WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
@@ -4828,6 +4928,7 @@ produce the corresponding results.
 </tr></table>
 <h3 class="subsection">4.6.1 Generalized tangent linear system with cmz</h3>
 
+<a name="index-smod-1"></a>
 
 <p>The cmz macro <code>smod SLTCIRC</code> prepares a main program
 (&lsquo;<tt>circule</tt>&rsquo; of +PATCH SLTCIRC), in the directory &lsquo;<tt>sltcirc/</tt>&rsquo;.
@@ -4853,6 +4954,7 @@ produce the corresponding results.
 </tr></table>
 <h3 class="subsection">4.6.2 Generalized tangent linear system with make</h3>
 
+<a name="index-Makefile_002esltcirc"></a>
 
 <p>To compile the GTLS analysis executable with <code>make</code> you 
 can do
@@ -4886,6 +4988,14 @@ and set the Miniker directory path in the <code>miniker_dir</code> variable.
 </tr></table>
 <h3 class="subsection">4.6.3 Generalized tangent linear system analysis run and output</h3>
 
+<a name="index-GTLS-run"></a>
+<a name="index-run_002c-GTLS"></a>
+<a name="index-GTLS-output"></a>
+<a name="index-output_002c-GTLS"></a>
+<a name="index-sltcirc_002eexe-1"></a>
+<a name="index-title_002etex_002c-GTLS"></a>
+<a name="index-dres_002edata_002c-GTLS"></a>
+<a name="index-aspha_002edata_002c-GTLS"></a>
 
 <p>The &lsquo;<tt>sltcirc.exe</tt>&rsquo; executable generated by the compilation 
 computes the elements of analysis of the system. This program requires 
@@ -5008,6 +5118,7 @@ result file and ntuple number, with a short explanation:
 </tr></table>
 <h2 class="section">5.1 Make variables</h2>
 
+<a name="index-Makefile_002eminiker"></a>
 
 <p>The &lsquo;<tt>Makefile.miniker</tt>&rsquo; Makefile provided in the
 distribution should be included as it defines a lot of important 
@@ -5247,152 +5358,152 @@ that rule exactly means and make your own.
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_symbol-1">$</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">&lsquo;<tt>$dimetaphi</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">&lsquo;<tt>$zinit</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024dimetaphi">&lsquo;<tt>$dimetaphi</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024zinit">&lsquo;<tt>$zinit</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-A">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">adjoint</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-adjoint">adjoint</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aspha_002edata">&lsquo;<tt>aspha.data</tt>&rsquo;</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">&lsquo;<tt>aspha.data</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">&lsquo;<tt>aspha.data</tt>&rsquo;, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-aspha_002edata_002c-GTLS">&lsquo;<tt>aspha.data</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-aspha_002edata_002c-SVD">&lsquo;<tt>aspha.data</tt>&rsquo;, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-B">B</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Feedback-gain">Borel sweep</a></td><td valign="top"><a href="#Feedback-gain">4.4 Feedback gain</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Borel-sweep-results">Borel sweep graphics</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Borel-sweep-results">Borel sweep results</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Borel-sweep">Borel sweep</a></td><td valign="top"><a href="#Feedback-gain">4.4 Feedback gain</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Borel-sweep-graphics">Borel sweep graphics</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Borel-sweep-results">Borel sweep results</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Introduction">cells</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Common-requisites">cernlib</a></td><td valign="top"><a href="#Common-requisites">A.2 Common requisites</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Control-laws">command law</a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-make">compilation</a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Configuration">configuration of source</a></td><td valign="top"><a href="#Configuration">A.4.2 Configuration</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Controlling-the-run">controlling the run</a></td><td valign="top"><a href="#Controlling-the-run">2.4 Controlling the run</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cells">cells</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cernlib">cernlib</a></td><td valign="top"><a href="#Common-requisites">A.2 Common requisites</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-command-law">command law</a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compilation">compilation</a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-configuration-of-source">configuration of source</a></td><td valign="top"><a href="#Configuration">A.4.2 Configuration</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-controlling-the-run">controlling the run</a></td><td valign="top"><a href="#Controlling-the-run">2.4 Controlling the run</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-D">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-data_002edata">&lsquo;<tt>data.data</tt>&rsquo;</a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-results">&lsquo;<tt>data.data</tt>&rsquo;</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence">dimetaphi</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence">&lsquo;<tt>dimetaphi</tt>&rsquo;</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">&lsquo;<tt>dimetaphi</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-data_002edata-1">&lsquo;<tt>data.data</tt>&rsquo;</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dimetaphi">dimetaphi</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dimetaphi-1">&lsquo;<tt>dimetaphi</tt>&rsquo;</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dimetaphi_002c-Kalman-filter">&lsquo;<tt>dimetaphi</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-down-node">down node</a></td><td valign="top"><a href="#g_t1D-gridded-model">3.3 Describing 1D gridded model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dres_002edata">&lsquo;<tt>dres.data</tt>&rsquo;</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dres_002edata-1">&lsquo;<tt>dres.data</tt>&rsquo;</a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">&lsquo;<tt>dres.data</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dres_002edata_002c-GTLS">&lsquo;<tt>dres.data</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-equations_002c-grid">equations, grid</a></td><td valign="top"><a href="#Grid-node-equations">Grid node equations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">error vector dimension</a></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-error-vector-dimension">error vector dimension</a></td><td valign="top"><a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a></td><td valign="top"><a href="#GNU-Free-Documentation-License">C.1 GNU Free Documentation License</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-features">feature setting</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Feedback-gain">Feedback gain</a></td><td valign="top"><a href="#Feedback-gain">4.4 Feedback gain</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FDL_002c-GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a></td><td valign="top"><a href="#GNU-Free-Documentation-License">C.1 GNU Free Documentation License</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-feature-setting">feature setting</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Feedback-gain">Feedback gain</a></td><td valign="top"><a href="#Feedback-gain">4.4 Feedback gain</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ffl-_0028linearity-test_0029"><code>ffl</code> (linearity test)</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-final-cost">final cost</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Generalized-TLS">Generalized linear tangent system</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Sensitivity-of-cost-function-to-parameters">&lsquo;<tt>gradpj.data</tt>&rsquo;</a></td><td valign="top"><a href="#Sensitivity-of-cost-function-to-parameters">4.2.4 Sensitivity of cost function to parameters</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Graphics">graphics</a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Graphics">graphics with <code>gnuplot</code></a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Graphics">graphics with <code>PAW</code></a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Borel-sweep-results">graphics, Borel sweep</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generalized-TLS">GTLS</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">GTLS output</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">GTLS run</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Generalized-linear-tangent-system">Generalized linear tangent system</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gradpj_002edata">&lsquo;<tt>gradpj.data</tt>&rsquo;</a></td><td valign="top"><a href="#Sensitivity-of-cost-function-to-parameters">4.2.4 Sensitivity of cost function to parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-graphics">graphics</a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-graphics-with-gnuplot">graphics with <code>gnuplot</code></a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-graphics-with-PAW">graphics with <code>PAW</code></a></td><td valign="top"><a href="#Graphics">2.3.4 Doing graphics</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-graphics_002c-Borel-sweep">graphics, Borel sweep</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GTLS">GTLS</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GTLS-output">GTLS output</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GTLS-run">GTLS run</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-H">H</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Heaviside-function">Heaviside function</a></td><td valign="top"><a href="#Rule-of-programming-non-continuous-models">3.6 Rule of programming non continuous models</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state">initial variance-covariance on states</a></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state">Initial variance-covariance matrix on the state</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Installation-with-make">installation with make</a></td><td valign="top"><a href="#Installation-with-make">A.4.3 Installation with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-initial-variance_002dcovariance-on-states">initial variance-covariance on states</a></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state">Initial variance-covariance matrix on the state</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-installation-with-make">installation with make</a></td><td valign="top"><a href="#Installation-with-make">A.4.3 Installation with make</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-integrand-cost">integrand cost</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-K">K</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter">Kalman filter</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-results">Kalman filter output</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-results">Kalman filter results</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Kalman-filter">Kalman filter</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Kalman-filter-output">Kalman filter output</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Kalman-filter-results">Kalman filter results</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-L">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Common-requisites">lapack</a></td><td valign="top"><a href="#Common-requisites">A.2 Common requisites</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lapack">lapack</a></td><td valign="top"><a href="#Common-requisites">A.2 Common requisites</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-limiting-conditions">limiting conditions</a></td><td valign="top"><a href="#Limiting-conditions">Limiting conditions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-linearity-test">linearity test</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-features">logical flags</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generalized-TLS">Lyapunov exponents</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-logical-flags">logical flags</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lyapunov-exponents">Lyapunov exponents</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Make-variables">&lsquo;<tt>Makefile.miniker</tt>&rsquo;</a></td><td valign="top"><a href="#Make-variables">5.1 Make variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-with-make">&lsquo;<tt>Makefile.sltc</tt>&rsquo;</a></td><td valign="top"><a href="#SVD-with-make">4.5.2 Singular Value Decomposition with make</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-with-make">&lsquo;<tt>Makefile.sltcirc</tt>&rsquo;</a></td><td valign="top"><a href="#GTLS-with-make">4.6.2 Generalized tangent linear system with make</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Miniker-with-cmz">&lsquo;<tt>mini_ker.cmz</tt>&rsquo;</a></td><td valign="top"><a href="#Miniker-with-cmz">A.3 Miniker with cmz</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-cmz"><code>mod</code></a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-with-explicit-size">model equations</a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence">model size</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Makefile_002eminiker">&lsquo;<tt>Makefile.miniker</tt>&rsquo;</a></td><td valign="top"><a href="#Make-variables">5.1 Make variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Makefile_002esltc">&lsquo;<tt>Makefile.sltc</tt>&rsquo;</a></td><td valign="top"><a href="#SVD-with-make">4.5.2 Singular Value Decomposition with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Makefile_002esltcirc">&lsquo;<tt>Makefile.sltcirc</tt>&rsquo;</a></td><td valign="top"><a href="#GTLS-with-make">4.6.2 Generalized tangent linear system with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mini_005fker_002ecmz">&lsquo;<tt>mini_ker.cmz</tt>&rsquo;</a></td><td valign="top"><a href="#Miniker-with-cmz">A.3 Miniker with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mod"><code>mod</code></a></td><td valign="top"><a href="#Setting-up-a-model-with-cmz">2.3.1 Setup a model and compile with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-model-equations">model equations</a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-model-size">model size</a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Model_002ehlp">&lsquo;<tt>Model.hlp</tt>&rsquo;</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Introduction">mortran</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
-<tr><td></td><td valign="top"><a href="#A-note-about-mortran-and-cmz-directives">mortran</a></td><td valign="top"><a href="#A-note-about-mortran-and-cmz-directives">2.2.1 All you need to know about mortran and cmz directives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Additional-requirements"><code>mortran</code>, with make</a></td><td valign="top"><a href="#Additional-requirements">A.4.1 Additional requirements for Miniker with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mortran">mortran</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mortran-1">mortran</a></td><td valign="top"><a href="#A-note-about-mortran-and-cmz-directives">2.2.1 All you need to know about mortran and cmz directives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mortran_002c-with-make"><code>mortran</code>, with make</a></td><td valign="top"><a href="#Additional-requirements">A.4.1 Additional requirements for Miniker with make</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-O">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-obs_002edata">&lsquo;<tt>obs.data</tt>&rsquo;</a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-observation-function">observation function</a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Error-and-observation-matrices">observations</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter">observations, general</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">optimisation</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-observations">observations</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-observations_002c-general">observations, general</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-optimisation">optimisation</a></td><td valign="top"><a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-output-file">output file</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">output, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-results">output, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-output_002c-GTLS">output, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-output_002c-Kalman-filter">output, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-output_002c-sensitivity">output, sensitivity</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">output, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-output_002c-SVD">output, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">printing</a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Programming-environments">Programming environments</a></td><td valign="top"><a href="#Programming-environments">A.1 Programming environments</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generalized-TLS">propagator</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-printing">printing</a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Programming-environments">Programming environments</a></td><td valign="top"><a href="#Programming-environments">A.1 Programming environments</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-propagator">propagator</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-R">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Additional-requirements">requirements, with make</a></td><td valign="top"><a href="#Additional-requirements">A.4.1 Additional requirements for Miniker with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-requirements_002c-with-make">requirements, with make</a></td><td valign="top"><a href="#Additional-requirements">A.4.1 Additional requirements for Miniker with make</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-res_002edata">&lsquo;<tt>res.data</tt>&rsquo;</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Borel-sweep-results">results, Borel sweep</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter-results">results, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">run, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">run, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Simulation-and-output">running model</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-results_002c-Borel-sweep">results, Borel sweep</a></td><td valign="top"><a href="#Borel-sweep-results">4.4.2 Borel sweep results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-results_002c-Kalman-filter">results, Kalman filter</a></td><td valign="top"><a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-run_002c-GTLS">run, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-run_002c-SVD">run, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-running-model">running model</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-features">select flag</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-features">&lsquo;<tt>selseq.kumac</tt>&rsquo;</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Miniker-with-cmz">&lsquo;<tt>selseq.kumac</tt>&rsquo;</a></td><td valign="top"><a href="#Miniker-with-cmz">A.3 Miniker with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-select-flag">select flag</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-selseq_002ekumac">&lsquo;<tt>selseq.kumac</tt>&rsquo;</a></td><td valign="top"><a href="#Selecting-features">3.1 Overview of additional features setting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-selseq_002ekumac-1">&lsquo;<tt>selseq.kumac</tt>&rsquo;</a></td><td valign="top"><a href="#Miniker-with-cmz">A.3 Miniker with cmz</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sens_002edata">&lsquo;<tt>sens.data</tt>&rsquo;</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Sensitivities">sensitivities</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sensitivities">sensitivities</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sensitivity_002c-output">sensitivity, output</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Structure-of-the-code">sequence</a></td><td valign="top"><a href="#Structure-of-the-code">2.1 General structure of the code</a></td></tr>
-<tr><td></td><td valign="top"><a href="#A-model-with-Miniker">sequences</a></td><td valign="top"><a href="#A-model-with-Miniker">2. Miniker model programming</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sequence">sequence</a></td><td valign="top"><a href="#Structure-of-the-code">2.1 General structure of the code</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sequences">sequences</a></td><td valign="top"><a href="#A-model-with-Miniker">2. Miniker model programming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sigma_002edata">&lsquo;<tt>sigma.data</tt>&rsquo;</a></td><td valign="top"><a href="#Sensitivities">4.1 Automatic sensitivity computation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Stability-of-fastest-modes">Singular Value Decomposition</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Stability-of-fastest-modes">&lsquo;<tt>sltc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">&lsquo;<tt>sltc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generalized-TLS">&lsquo;<tt>sltcirc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">&lsquo;<tt>sltcirc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-with-cmz"><code>smod</code></a></td><td valign="top"><a href="#SVD-with-cmz">4.5.1 Singular Value Decomposition with cmz</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-with-cmz"><code>smod</code></a></td><td valign="top"><a href="#GTLS-with-cmz">4.6.1 Generalized tangent linear system with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Singular-Value-Decomposition">Singular Value Decomposition</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sltc_002eexe">&lsquo;<tt>sltc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sltc_002eexe-1">&lsquo;<tt>sltc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sltcirc_002eexe">&lsquo;<tt>sltcirc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#Generalized-TLS">4.6 Generalized linear tangent system analysis</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sltcirc_002eexe-1">&lsquo;<tt>sltcirc.exe</tt>&rsquo;</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-smod"><code>smod</code></a></td><td valign="top"><a href="#SVD-with-cmz">4.5.1 Singular Value Decomposition with cmz</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-smod-1"><code>smod</code></a></td><td valign="top"><a href="#GTLS-with-cmz">4.6.1 Generalized tangent linear system with cmz</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-starting-point">starting point</a></td><td valign="top"><a href="#Starting-points">Starting points</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Stability-of-fastest-modes">state matrix</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Stability-of-fastest-modes">SVD</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">SVD output</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">SVD run</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state-matrix">state matrix</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SVD">SVD</a></td><td valign="top"><a href="#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SVD-output">SVD output</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SVD-run">SVD run</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Introduction">TEF</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
-<tr><td></td><td valign="top"><a href="#A-model-description">TEF</a></td><td valign="top"><a href="#A-model-description">2.2 Miniker programming illustrated</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-TEF">TEF</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-TEF-1">TEF</a></td><td valign="top"><a href="#A-model-description">2.2 Miniker programming illustrated</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-title-file">title file</a></td><td valign="top"><a href="#title-file">title file</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-title_002etex">&lsquo;<tt>title.tex</tt>&rsquo;</a></td><td valign="top"><a href="#title-file">title file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#GTLS-run-and-output">&lsquo;<tt>title.tex</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#SVD-run-and-output">&lsquo;<tt>title.tex</tt>&rsquo;, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-title_002etex_002c-GTLS">&lsquo;<tt>title.tex</tt>&rsquo;, GTLS</a></td><td valign="top"><a href="#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-title_002etex_002c-SVD">&lsquo;<tt>title.tex</tt>&rsquo;, SVD</a></td><td valign="top"><a href="#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tr_002edata">&lsquo;<tt>tr.data</tt>&rsquo;</a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Introduction">transfers</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-transfers">transfers</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-U">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-up-node">up node</a></td><td valign="top"><a href="#g_t1D-gridded-model">3.3 Describing 1D gridded model</a></td></tr>
@@ -5401,21 +5512,21 @@ that rule exactly means and make your own.
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-V">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variance_002dcovariance-error">variance-covariance error</a></td><td valign="top"><a href="#Error-variance_002dcovariance-matrices">Error variance-covariance matrices</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Error-and-observation-matrices">variance-covariance matrices</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Kalman-filter">variance-covariance matrices, general</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variance_002dcovariance-matrices">variance-covariance matrices</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variance_002dcovariance-matrices_002c-general">variance-covariance matrices, general</a></td><td valign="top"><a href="#Kalman-filter">4.3 Kalman filter</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variance_002dcovariance-matrix-on-state">variance-covariance matrix on state</a></td><td valign="top"><a href="#Observations-and-error-on-state-matrix">Observations and error on state matrix</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concepts-index-1_cp_letter-Z">Z</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-zcmd_005flaw">&lsquo;<tt>zcmd_law</tt>&rsquo;</a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-zcmd_005flaw_002einc">&lsquo;<tt>zcmd_law.inc</tt>&rsquo;</a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-equation-and-parameters">&lsquo;<tt>zinit</tt>&rsquo;</a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Structure-of-the-code">zinit, general</a></td><td valign="top"><a href="#Structure-of-the-code">2.1 General structure of the code</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Error-and-observation-matrices">&lsquo;<tt>zinit</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-make">&lsquo;<tt>zinit.mti</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Introduction">ZOOM</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
-<tr><td></td><td valign="top"><a href="#End-of-time-step">&lsquo;<tt>zsteer</tt>&rsquo;</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Feeding-the-observations">&lsquo;<tt>zsteer</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
-<tr><td></td><td valign="top"><a href="#End-of-time-step">&lsquo;<tt>zsteer.inc</tt>&rsquo;</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zinit">&lsquo;<tt>zinit</tt>&rsquo;</a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zinit_002c-general">zinit, general</a></td><td valign="top"><a href="#Structure-of-the-code">2.1 General structure of the code</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zinit_002c-Kalman-filter">&lsquo;<tt>zinit</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zinit_002emti">&lsquo;<tt>zinit.mti</tt>&rsquo;</a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ZOOM">ZOOM</a></td><td valign="top"><a href="#Introduction">Introduction</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zsteer">&lsquo;<tt>zsteer</tt>&rsquo;</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zsteer_002c-Kalman-filter">&lsquo;<tt>zsteer</tt>&rsquo;, Kalman filter</a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zsteer_002einc">&lsquo;<tt>zsteer.inc</tt>&rsquo;</a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concepts-index-1_cp_symbol-1" class="summary-letter"><b>$</b></a>
@@ -5531,27 +5642,27 @@ that rule exactly means and make your own.
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-C">C</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-couplage_0028_002e_0029"><code>couplage(.)</code></a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling"><code>cout_l</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling"><code>cout_Psi</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cout_005fl"><code>cout_l</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cout_005fPsi"><code>cout_Psi</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-covana_0028_002e_002c_002e_0029"><code>covana(.,.)</code></a></td><td valign="top"><a href="#Executing-code-after-the-analysis">4.3.3 Executing code after the analysis</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-coveta_0028_002e_002c_002e_0029"><code>coveta(.,.)</code></a></td><td valign="top"><a href="#Error-variance_002dcovariance-matrices">Error variance-covariance matrices</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state"><code>covfor(.,.)</code></a></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state">Initial variance-covariance matrix on the state</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-covfor_0028_002e_002c_002e_0029"><code>covfor(.,.)</code></a></td><td valign="top"><a href="#Initial-variance_002dcovariance-matrix-on-the-state">Initial variance-covariance matrix on the state</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-covobs_0028_002e_002c_002e_0029"><code>covobs(.,.)</code></a></td><td valign="top"><a href="#Error-variance_002dcovariance-matrices">Error variance-covariance matrices</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-D">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-D"><code>D</code></a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-d_005fpi_005faspha_0028_002e_002c_002e_0029"><code>d_pi_aspha(.,.)</code></a></td><td valign="top"><a href="#Advance-matrix-sensitivity">4.1.2 Advance matrix sensitivity</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dEta_0028_002e_0029"><code>dEta(.)</code></a></td><td valign="top"><a href="#Simulation-and-output">2.3.3 Running a simulation and using the output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-with-explicit-size"><code>deta_tef(.)</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-deta_005ftef_0028_002e_0029"><code>deta_tef(.)</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dneta"><code>dneta</code></a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dphi"><code>dphi</code></a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-equation-and-parameters"><code>dt</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-dt"><code>dt</code></a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dt"><code>dt</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dt-1"><code>dt</code></a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-eqn_003a"><code>eqn:</code></a></td><td valign="top"><a href="#Model-equations-1">Model equations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-eta_0028_002e_0029"><code>eta(.)</code></a></td><td valign="top"><a href="#The-cell-and-transfer-arrays">The cell and transfer arrays</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-with-explicit-size"><code>eta(.), explicit sizes</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-eta_0028_002e_0029_002c-explicit-sizes"><code>eta(.), explicit sizes</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-etafor_0028_002e_0029"><code>etafor(.)</code></a></td><td valign="top"><a href="#Executing-code-after-the-analysis">4.3.3 Executing code after the analysis</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-F">F</a></th><td></td><td></td></tr>
@@ -5560,7 +5671,7 @@ that rule exactly means and make your own.
 <tr><td></td><td valign="top"><a href="#index-f_005fset-2"><code>f_set</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f_005fset-3"><code>f_set</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ff_0028_002e_0029"><code>ff(.)</code></a></td><td valign="top"><a href="#The-cell-and-transfer-arrays">The cell and transfer arrays</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-with-explicit-size"><code>ff(.), explicit sizes</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ff_0028_002e_0029_002c-explicit-sizes"><code>ff(.), explicit sizes</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ffl_0028_002e_0029"><code>ffl(.)</code></a></td><td valign="top"><a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Free_005fparameter"><code>Free_parameter</code></a></td><td valign="top"><a href="#Parameters">3.7 Parameters</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fun_003a"><code>fun:</code></a></td><td valign="top"><a href="#Model-equations-1">Model equations</a></td></tr>
@@ -5585,14 +5696,14 @@ that rule exactly means and make your own.
 <tr><td></td><td valign="top"><a href="#index-m_005fmult"><code>m_mult</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-m_005fnode"><code>m_node</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-m_005fup"><code>m_up</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence"><code>maxstep</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-maxstep"><code>maxstep</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mereta_0028_002e_002c_002e_0029"><code>mereta(.,.)</code></a></td><td valign="top"><a href="#Observations-and-error-on-state-matrix">Observations and error on state matrix</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Observations"><code>mobs</code></a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-up-a-model-with-make"><code>model_file_name</code></a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-equation-and-parameters"><code>modzprint</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Controlling-the-printout-and-data-output"><code>modzprint</code></a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mobs"><code>mobs</code></a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-model_005ffile_005fname"><code>model_file_name</code></a></td><td valign="top"><a href="#Setting-up-a-model-with-make">2.3.2 Setup a model and compile with make</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-modzprint"><code>modzprint</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-modzprint-1"><code>modzprint</code></a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mp"><code>mp</code></a></td><td valign="top"><a href="#The-cell-and-transfer-arrays">The cell and transfer arrays</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence"><code>mp</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mp-1"><code>mp</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-N">N</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-n_005fdwn"><code>n_dwn</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
@@ -5600,14 +5711,14 @@ that rule exactly means and make your own.
 <tr><td></td><td valign="top"><a href="#index-n_005fnode"><code>n_node</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-n_005fup"><code>n_up</code></a></td><td valign="top"><a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-np"><code>np</code></a></td><td valign="top"><a href="#The-cell-and-transfer-arrays">The cell and transfer arrays</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Size-sequence"><code>np</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-equation-and-parameters"><code>nstep</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-np-1"><code>np</code></a></td><td valign="top"><a href="#Size-sequence">3.9.1 The explicit size sequence</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nstep"><code>nstep</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-O">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-obspha_0028_002e_002c_002e_0029"><code>obspha(.,.)</code></a></td><td valign="top"><a href="#Executing-code-after-the-analysis">4.3.3 Executing code after the analysis</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-with-explicit-size"><code>Phi_tef(.)</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Phi_005ftef_0028_002e_0029"><code>Phi_tef(.)</code></a></td><td valign="top"><a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-principal"><code>principal</code></a></td><td valign="top"><a href="#The-model-subroutine">3.2.2 Calling the model subroutine</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-S">S</a></th><td></td><td></td></tr>
@@ -5623,23 +5734,23 @@ that rule exactly means and make your own.
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-T">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tau_005fB_005fini"><code>tau_B_ini</code></a></td><td valign="top"><a href="#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tau_005fB_005fmult"><code>tau_B_mult</code></a></td><td valign="top"><a href="#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Model-equation-and-parameters"><code>time</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-time"><code>time</code></a></td><td valign="top"><a href="#Model-equation-and-parameters">2.2.2 Entering model equation and parameters</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-V">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-var_003a"><code>var:</code></a></td><td valign="top"><a href="#Model-equations-1">Model equations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-vobs_0028_002e_0029"><code>vobs(.)</code></a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Feeding-the-observations"><code>vobs(.)</code></a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-vobs_0028_002e_0029-1"><code>vobs(.)</code></a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variables_002c-macros-and-functions-index_vr_letter-Z">Z</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling"><code>zback</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Specifying-the-Borel-sweep"><code>ZBorel</code></a></td><td valign="top"><a href="#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zback"><code>zback</code></a></td><td valign="top"><a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ZBorel"><code>ZBorel</code></a></td><td valign="top"><a href="#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-zborel-for"><code>zborel for</code></a></td><td valign="top"><a href="#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Control-laws"><code>zcommand</code></a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zcommand"><code>zcommand</code></a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-zgetobs"><code>zgetobs</code></a></td><td valign="top"><a href="#Observations">3.8.1 Observations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Feeding-the-observations"><code>zgetobs</code></a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Coding-the-Kalman-filter"><code>zkalman</code></a></td><td valign="top"><a href="#Coding-the-Kalman-filter">4.3.1 Coding the Kalman filter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zgetobs-1"><code>zgetobs</code></a></td><td valign="top"><a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zkalman"><code>zkalman</code></a></td><td valign="top"><a href="#Coding-the-Kalman-filter">4.3.1 Coding the Kalman filter</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-zlaw"><code>zlaw</code></a></td><td valign="top"><a href="#Control-laws">4.2.2 Control laws</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Controlling-the-printout-and-data-output"><code>zprint</code></a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zprint"><code>zprint</code></a></td><td valign="top"><a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variables_002c-macros-and-functions-index_vr_letter-A" class="summary-letter"><b>A</b></a>
@@ -5730,6 +5841,7 @@ that rule exactly means and make your own.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec">A.1 Programming environments</h2>
+<a name="index-Programming-environments"></a>
 
 <p>Miniker is not a traditionnal software in that it isn&rsquo;t a library
 or an interpreter but rather a set of source and macro file that 
@@ -5764,6 +5876,8 @@ are needed, the CERN Program Library (cernlib) and lapack.
 </tr></table>
 <h2 class="appendixsec">A.2 Common requisites</h2>
 
+<a name="index-cernlib"></a>
+<a name="index-lapack"></a>
 
 <p>Whatever method is used a fortran 77 compiler is required. The compilers
 that have been used so far are g77, gfortran and the sun solaris compiler.
@@ -5808,6 +5922,8 @@ from Xcode can be used.
 </tr></table>
 <h2 class="appendixsec">A.3 Miniker with cmz</h2>
 
+<a name="index-mini_005fker_002ecmz"></a>
+<a name="index-selseq_002ekumac-1"></a>
 
 <p>First of all you have to get the cmz file &lsquo;<tt>mini_ker.cmz</tt>&rsquo; and put it
 in a directory. In that same directory you should create a directory for
@@ -5869,6 +5985,8 @@ preprocessor.
 </tr></table>
 <h3 class="appendixsubsec">A.4.1 Additional requirements for Miniker with make</h3>
 
+<a name="index-mortran_002c-with-make"></a>
+<a name="index-requirements_002c-with-make"></a>
 
 <p>The package has been tested with GNU <code>make</code> and solaris
 <code>make</code>. 
@@ -5906,6 +6024,7 @@ Such a mortran is available at <a href="http://www.environnement.ens.fr/perso/du
 </tr></table>
 <h3 class="appendixsubsec">A.4.2 Configuration</h3>
 
+<a name="index-configuration-of-source"></a>
 
 <p>The package is available at <a href="http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html">http://www.environnement.ens.fr/perso/dumas/mini_ker/software.html</a>. It is 
 available as a compresssed tar archive. On UNIX, with GNU <code>tar</code> it 
@@ -6004,6 +6123,7 @@ models should be build. You have to perform the configuration only once.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="appendixsubsec">A.4.3 Installation with make</h3>
+<a name="index-installation-with-make"></a>
 
 <p>Miniker can be installed by running 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">make install
@@ -6497,6 +6617,7 @@ except <code>+seq</code>.
 </tr></table>
 <h2 class="appendixsec">C.1 GNU Free Documentation License</h2>
 
+<a name="index-FDL_002c-GNU-Free-Documentation-License"></a>
 <p align="center"> Version 1.1, March 2000
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">Copyright &copy; 2000 Free Software Foundation, Inc.
@@ -6925,7 +7046,7 @@ replaced by the fortran arrays.
 </p><h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>&lsquo;<tt>dres.data</tt>&rsquo; has another time related variable as second column:
 <a name="index-dres_002edata-1"></a>
-<a name="index-dt"></a>
+<a name="index-dt-1"></a>
 <code>dt</code>, the time step that can vary in the course of a simulation.
 </p><h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>This naming is a joke

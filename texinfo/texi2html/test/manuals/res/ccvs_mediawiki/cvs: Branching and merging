@@ -17,6 +17,14 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Branching and merging ==
+<div id="index-Branching"></div>
+<div id="index-Merging"></div>
+<div id="index-Copying-changes"></div>
+<div id="index-Main-trunk-and-branches"></div>
+<div id="index-Revision-tree_002c-making-branches"></div>
+<div id="index-Branches_002c-copying-changes-between"></div>
+<div id="index-Changes_002c-copying-between-branches"></div>
+<div id="index-Modifications_002c-copying-between-branches"></div>
 
 <p><small>CVS</small> allows you to isolate changes onto a separate
 line of development, known as a <em>branch</em>.  When you
@@ -61,6 +69,9 @@ copy the changes onto another branch.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === What branches are good for ===
+<div id="index-Branches-motivation"></div>
+<div id="index-What-branches-are-good-for"></div>
+<div id="index-Motivation-for-branches"></div>
 
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
@@ -98,6 +109,10 @@ the main trunk, or leave them on the branch.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Creating a branch ===
+<div id="index-Creating-a-branch"></div>
+<div id="index-Branch_002c-creating-a"></div>
+<div id="index-tag-_0028subcommand_0029_002c-creating-a-branch-using"></div>
+<div id="index-rtag-_0028subcommand_0029_002c-creating-a-branch-using"></div>
 
 <p>You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
@@ -162,6 +177,14 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Accessing branches ===
+<div id="index-Check-out-a-branch"></div>
+<div id="index-Retrieve-a-branch"></div>
+<div id="index-Access-a-branch"></div>
+<div id="index-Identifying-a-branch"></div>
+<div id="index-Branch_002c-check-out"></div>
+<div id="index-Branch_002c-retrieving"></div>
+<div id="index-Branch_002c-accessing"></div>
+<div id="index-Branch_002c-identifying"></div>
 
 <p>You can retrieve a branch in one of two ways: by
 checking it out fresh from the repository, or by
@@ -269,6 +292,9 @@ branch numbers are constructed.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Branches and revisions ===
+<div id="index-Branch-number-1"></div>
+<div id="index-Number_002c-branch-1"></div>
+<div id="index-Revision-numbers-_0028branches_0029"></div>
 
 <p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section [cvs: Revisions#Revision-numbers Revision numbers]):
@@ -415,6 +441,8 @@ no way to see how the tag was assigned yesterday).
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Merging an entire branch ===
+<div id="index-Merging-a-branch"></div>
+<div id="index-_002dj-_0028merging-branches_0029"></div>
 
 <p>You can merge changes made on a branch into your working copy by giving
 the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag to the <code>update</code> subcommand.  With one
@@ -574,6 +602,9 @@ the trunk, and then use that tag for subsequent merges:
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Merging differences between any two revisions ===
+<div id="index-Merging-two-revisions"></div>
+<div id="index-Revisions_002c-merging-differences-between"></div>
+<div id="index-Differences_002c-merging"></div>
 
 <p>With two &lsquo;<samp>-j <var>revision</var></samp>&rsquo; flags, the <code>update</code>
 (and <code>checkout</code>) command can merge the differences
@@ -684,6 +715,10 @@ to be sure that all intended changes are propagated in the merge.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Merging and keywords ===
+<div id="index-Merging_002c-and-keyword-substitution"></div>
+<div id="index-Keyword-substitution_002c-and-merging"></div>
+<div id="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></div>
+<div id="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></div>
 
 <p>If you merge files containing keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), you will normally get numerous
 conflicts during the merge, because the keywords are

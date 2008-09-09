@@ -78,6 +78,10 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">16. Conditionally Visible Text</h1>
+<a name="index-Conditionally-visible-text"></a>
+<a name="index-Text_002c-conditionally-visible"></a>
+<a name="index-Visibility-of-conditional-text"></a>
+<a name="index-If-text-conditionally-visible"></a>
 
 <p>Sometimes it is good to use different text for different output formats.
 For example, you can use the <em>conditional commands</em> to specify
@@ -196,6 +200,10 @@ version of the manual you are reading.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">16.2 Conditional Not Commands</h2>
+<a name="index-ifnothtml"></a>
+<a name="index-ifnotinfo"></a>
+<a name="index-ifnotplaintext"></a>
+<a name="index-ifnottex"></a>
 
 <p>You can specify text to be included in any output format <em>other</em>
 than some given one with the <code>@ifnot&hellip;</code> commands:
@@ -242,6 +250,14 @@ with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">16.3 Raw Formatter Commands</h2>
+<a name="index-TeX-commands_002c-using-ordinary"></a>
+<a name="index-HTML-commands_002c-using-ordinary"></a>
+<a name="index-Raw-formatter-commands"></a>
+<a name="index-Ordinary-TeX-commands_002c-using"></a>
+<a name="index-Ordinary-HTML-commands_002c-using"></a>
+<a name="index-Commands-using-raw-TeX"></a>
+<a name="index-Commands-using-raw-HTML"></a>
+<a name="index-plain-TeX"></a>
 
 <p>Inside a region delineated by <code>@iftex</code> and <code>@end iftex</code>, you
 can embed some raw TeX commands.  Info will ignore these commands
@@ -265,7 +281,7 @@ region, like the <code>@iftex</code> command.)  The sole exception is that the
 <code>@</code> character still introduces a command, so that <code>@end tex</code>
 can be recognized properly.
 </p>
-<a name="index-Mathematical-expressions"></a>
+<a name="index-Mathematical-expressions-1"></a>
 <p>For example, here is a mathematical expression written in
 plain TeX:
 </p>
@@ -369,6 +385,7 @@ is ignored.  If <var>flag</var> is clear, text through the following
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">16.4.1 <code>@set</code> and <code>@value</code></h3>
+<a name="index-value"></a>
 
 <p>You use the <code>@set</code> command to specify a value for a flag, which is
 later expanded by the <code>@value</code> command.
@@ -454,6 +471,7 @@ It is a {No value for &quot;how-much&quot;} wet day.
 </tr></table>
 <h3 class="subsection">16.4.2 <code>@ifset</code> and <code>@ifclear</code></h3>
 
+<a name="index-ifset"></a>
 <p>When a <var>flag</var> is set, the Texinfo formatting commands format text
 between subsequent pairs of <code>@ifset <var>flag</var></code> and <code>@end
 ifset</code> commands.  When the <var>flag</var> is cleared, the Texinfo formatting

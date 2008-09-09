@@ -78,6 +78,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">13. Special Insertions</h1>
+<a name="index-Inserting-special-characters-and-symbols"></a>
+<a name="index-Special-insertions"></a>
 
 <p>Texinfo provides several commands for inserting characters that have
 special meaning in Texinfo, such as braces, and for other graphic
@@ -133,6 +135,10 @@ elements that do not correspond to simple characters you can type.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.1 Inserting @ and Braces</h2>
+<a name="index-Inserting-_0040_002c-braces"></a>
+<a name="index-Braces_002c-inserting"></a>
+<a name="index-Special-characters_002c-commands-to-insert"></a>
+<a name="index-Commands-to-insert-special-characters"></a>
 
 <p>&lsquo;<samp>@</samp>&rsquo; and curly braces are special characters in Texinfo.  To insert
 these characters so they appear in text, you must put an &lsquo;<samp>@</samp>&rsquo; in
@@ -169,6 +175,7 @@ necessary.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.1.1 Inserting &lsquo;<samp>@</samp>&rsquo; with @@</h3>
+<a name="index-_0040-_0028literal-_0040_0029"></a>
 
 <p><code>@@</code> stands for a single &lsquo;<samp>@</samp>&rsquo; in either printed or Info
 output.
@@ -196,6 +203,8 @@ output.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}</h3>
+<a name="index-_007b-_0028literal-_007b_0029"></a>
+<a name="index-_007d-_0028literal-_007d_0029"></a>
 
 <p><code>@{</code> stands for a single &lsquo;<samp>{</samp>&rsquo; in either printed or Info
 output.
@@ -228,6 +237,8 @@ command.
 </tr></table>
 <h2 class="section">13.2 Inserting Space</h2>
 
+<a name="index-Inserting-space"></a>
+<a name="index-Spacing_002c-inserting"></a>
 <p>The following sections describe commands that control spacing of various
 kinds within and after sentences.
 </p>
@@ -264,6 +275,9 @@ kinds within and after sentences.
 </tr></table>
 <h3 class="subsection">13.2.1 Not Ending a Sentence</h3>
 
+<a name="index-Not-ending-a-sentence"></a>
+<a name="index-Sentence-non_002dending-punctuation"></a>
+<a name="index-Periods_002c-inserting"></a>
 <p>Depending on whether a period or exclamation point or question mark is
 inside or at the end of a sentence, less or more space is inserted after
 a period in a typeset manual.  Since it is not always possible
@@ -320,7 +334,12 @@ Procedure&rdquo;.)
 </tr></table>
 <h3 class="subsection">13.2.2 Ending a Sentence</h3>
 
+<a name="index-Ending-a-Sentence"></a>
+<a name="index-Sentence-ending-punctuation"></a>
 
+<a name="index-_002e--_0028end-of-sentence_0029"></a>
+<a name="index-_0021-_0028end-of-sentence_0029"></a>
+<a name="index-_003f-_0028end-of-sentence_0029"></a>
 <p>Use <code>@.</code> instead of a period, <code>@!</code> instead of an
 exclamation point, and <code>@?</code> instead of a question mark at the end
 of a sentence that ends with a single capital letter.  Otherwise, TeX
@@ -367,6 +386,12 @@ work well with the Emacs sentence motion commands (see <a href="../emacs/Sentenc
 </tr></table>
 <h3 class="subsection">13.2.3 Multiple Spaces</h3>
 
+<a name="index-Multiple-spaces"></a>
+<a name="index-Whitespace_002c-inserting"></a>
+<a name="index-Space_002c-inserting-horizontal"></a>
+<a name="index-_0028space_0029"></a>
+<a name="index-_0028tab_0029"></a>
+<a name="index-_0028newline_0029"></a>
 
 <p>Ordinarily, TeX collapses multiple whitespace characters (space, tab,
 and newline) into a single space.  Info output, on the other hand,
@@ -423,6 +448,10 @@ example.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.2.4 <code>@dmn</code>{<var>dimension</var>}: Format a Dimension</h3>
+<a name="index-Thin-space-between-number_002c-dimension"></a>
+<a name="index-Dimension-formatting"></a>
+<a name="index-Format-a-dimension"></a>
+<a name="index-dmn"></a>
 
 <p>At times, you may want to write &lsquo;<samp>12pt</samp>&rsquo; or
 &lsquo;<samp>8.5in</samp>&rsquo; with little or no space between the number and the
@@ -473,6 +502,9 @@ whitespace, as shown here.  See section <a href="#Not-Ending-a-Sentence">Not End
 </tr></table>
 <h2 class="section">13.3 Inserting Accents</h2>
 
+<a name="index-Inserting-accents"></a>
+<a name="index-Accents_002c-inserting"></a>
+<a name="index-Floating-accents_002c-inserting"></a>
 
 <p>Here is a table with the commands Texinfo provides for inserting
 floating accents.  The commands with non-alphabetic names do not take
@@ -626,6 +658,13 @@ commonly used in languages other than English.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.4 Inserting Ellipsis and Bullets</h2>
+<a name="index-Dots_002c-inserting"></a>
+<a name="index-Bullets_002c-inserting"></a>
+<a name="index-Ellipsis_002c-inserting"></a>
+<a name="index-Inserting-ellipsis"></a>
+<a name="index-Inserting-dots"></a>
+<a name="index-Special-typesetting-commands"></a>
+<a name="index-Typesetting-commands-for-dots_002c-etc_002e"></a>
 
 <p>An <em>ellipsis</em> (a line of dots) is not typeset as a string of
 periods, so a special command is used for ellipsis in Texinfo.  The
@@ -663,6 +702,10 @@ the braces, the formatters would be confused.  See section <a href="texinfo_29.h
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">...</small>)</h3>
+<a name="index-dots"></a>
+<a name="index-enddots"></a>
+<a name="index-Inserting-dots-1"></a>
+<a name="index-Dots_002c-inserting-1"></a>
 
 <p>Use the <code>@dots{}</code> command to generate an ellipsis, which is
 three dots in a row, appropriately spaced, like this: &lsquo;&hellip;&rsquo;.  Do
@@ -695,6 +738,7 @@ end-of-sentence ellipsis (four dots) <small class="enddots">...</small>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.4.2 <code>@bullet</code>{} (&bull;)</h3>
+<a name="index-bullet"></a>
 
 <p>Use the <code>@bullet{}</code> command to generate a large round dot, or
 the closest possible thing to one.  In Info, an asterisk is used.
@@ -761,6 +805,7 @@ braces.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.5.1 <code>@TeX</code>{} (TeX)</h3>
+<a name="index-tex-_0028command_0029"></a>
 
 <p>Use the <code>@TeX{}</code> command to generate &lsquo;TeX&rsquo;.  In a printed
 manual, this is a special logo that is different from three ordinary
@@ -789,6 +834,7 @@ letters.  In Info, it just looks like &lsquo;<samp>TeX</samp>&rsquo;.  The
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.5.2 <code>@copyright</code>{} (&copy;)</h3>
+<a name="index-copyright-1"></a>
 
 <p>Use the <code>@copyright{}</code> command to generate &lsquo;&copy;&rsquo;.  In
 a printed manual, this is a &lsquo;<samp>c</samp>&rsquo; inside a circle, and in Info,
@@ -815,6 +861,7 @@ this is &lsquo;<samp>(C)</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.6 <code>@pounds</code>{} (&pound;): Pounds Sterling</h2>
+<a name="index-pounds"></a>
 
 <p>Use the <code>@pounds{}</code> command to generate &lsquo;&pound;&rsquo;.  In a
 printed manual, this is the symbol for the currency pounds sterling.
@@ -842,7 +889,10 @@ available.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.7 <code>@minus</code>{} (-): Inserting a Minus Sign</h2>
+<a name="index-minus"></a>
 
+<a name="index-em_002ddash"></a>
+<a name="index-hyphen"></a>
 <p>Use the <code>@minus{}</code> command to generate a minus sign.  In a
 fixed-width font, this is a single hyphen, but in a proportional font,
 the symbol is the customary length for a minus sign&mdash;a little longer
@@ -887,6 +937,9 @@ an itemized list, you do not need to type the braces
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.8 <code>@math</code>: Inserting Mathematical Expressions</h2>
+<a name="index-math"></a>
+<a name="index-Mathematical-expressions"></a>
+<a name="index-Formulas_002c-mathematical"></a>
 
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
@@ -947,6 +1000,8 @@ literal &lsquo;<samp>\</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.9 Glyphs for Examples</h2>
+<a name="index-Glyphs"></a>
+<a name="index-Examples_002c-glyphs-for"></a>
 
 <p>In Texinfo, code is often illustrated in examples that are delimited
 by <code>@example</code> and <code>@end example</code>, or by <code>@lisp</code> and
@@ -1065,6 +1120,11 @@ message.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</h3>
+<a name="index-Result-of-an-expression"></a>
+<a name="index-Indicating-evaluation"></a>
+<a name="index-Evaluation-glyph"></a>
+<a name="index-Value-of-an-expression_002c-indicating"></a>
+<a name="index-result"></a>
 
 <p>Use the <code>@result{}</code> command to indicate the result of
 evaluating an expression.
@@ -1101,6 +1161,8 @@ and as a double stemmed arrow in the printed output.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</h3>
+<a name="index-Expansion_002c-indicating-it"></a>
+<a name="index-expansion"></a>
 
 <p>When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
@@ -1156,6 +1218,8 @@ five spaces.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</h3>
+<a name="index-Printed-output_002c-indicating-it"></a>
+<a name="index-print"></a>
 
 <p>Sometimes an expression will print output during its execution.  You
 can indicate the printed output with the <code>@print{}</code> command.
@@ -1205,6 +1269,8 @@ last line.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</h3>
+<a name="index-Error-message_002c-indicating-it"></a>
+<a name="index-error"></a>
 
 <p>A piece of code may cause an error when you evaluate it.  You can
 designate the error message with the <code>@error{}</code> command.
@@ -1255,6 +1321,8 @@ when you evaluate the expression:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</h3>
+<a name="index-Equivalence_002c-indicating-it"></a>
+<a name="index-equiv"></a>
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
@@ -1298,6 +1366,8 @@ identical results to evaluating <code>(list 'keymap)</code>.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</h3>
+<a name="index-Point_002c-indicating-in-a-buffer"></a>
+<a name="index-point"></a>
 
 <p>Sometimes you need to show an example of text in an Emacs buffer.  In
 such examples, the convention is to include the entire contents of the
@@ -1365,6 +1435,8 @@ This is the changed @point{}contents of foo.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">13.10 Footnotes</h2>
+<a name="index-Footnotes"></a>
+<a name="index-footnote"></a>
 
 <p>A <em>footnote</em> is for a reference that documents or elucidates the
 primary text.<a name="DOCF8" href="texinfo_fot.html#FOOT8">(8)</a>
@@ -1559,6 +1631,9 @@ their default style.  Currently, <code>texinfo-format-buffer</code> and
 </tr></table>
 <h2 class="section">13.11 Inserting Images</h2>
 
+<a name="index-Images_002c-inserting"></a>
+<a name="index-Pictures_002c-inserting"></a>
+<a name="index-image"></a>
 
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:

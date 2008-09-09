@@ -59,6 +59,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">5. Branching and merging</h1>
+<a name="index-Branching"></a>
+<a name="index-Merging"></a>
+<a name="index-Copying-changes"></a>
+<a name="index-Main-trunk-and-branches"></a>
+<a name="index-Revision-tree_002c-making-branches"></a>
+<a name="index-Branches_002c-copying-changes-between"></a>
+<a name="index-Changes_002c-copying-between-branches"></a>
+<a name="index-Modifications_002c-copying-between-branches"></a>
 
 <p><small>CVS</small> allows you to isolate changes onto a separate
 line of development, known as a <em>branch</em>.  When you
@@ -110,6 +118,9 @@ copy the changes onto another branch.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.1 What branches are good for</h2>
+<a name="index-Branches-motivation"></a>
+<a name="index-What-branches-are-good-for"></a>
+<a name="index-Motivation-for-branches"></a>
 
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
@@ -147,6 +158,10 @@ the main trunk, or leave them on the branch.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.2 Creating a branch</h2>
+<a name="index-Creating-a-branch"></a>
+<a name="index-Branch_002c-creating-a"></a>
+<a name="index-tag-_0028subcommand_0029_002c-creating-a-branch-using"></a>
+<a name="index-rtag-_0028subcommand_0029_002c-creating-a-branch-using"></a>
 
 <p>You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
@@ -211,6 +226,14 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.3 Accessing branches</h2>
+<a name="index-Check-out-a-branch"></a>
+<a name="index-Retrieve-a-branch"></a>
+<a name="index-Access-a-branch"></a>
+<a name="index-Identifying-a-branch"></a>
+<a name="index-Branch_002c-check-out"></a>
+<a name="index-Branch_002c-retrieving"></a>
+<a name="index-Branch_002c-accessing"></a>
+<a name="index-Branch_002c-identifying"></a>
 
 <p>You can retrieve a branch in one of two ways: by
 checking it out fresh from the repository, or by
@@ -318,6 +341,9 @@ branch numbers are constructed.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.4 Branches and revisions</h2>
+<a name="index-Branch-number-1"></a>
+<a name="index-Number_002c-branch-1"></a>
+<a name="index-Revision-numbers-_0028branches_0029"></a>
 
 <p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section <a href="cvs_4.html#Revision-numbers">Revision numbers</a>):
@@ -464,6 +490,8 @@ no way to see how the tag was assigned yesterday).
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.6 Merging an entire branch</h2>
+<a name="index-Merging-a-branch"></a>
+<a name="index-_002dj-_0028merging-branches_0029"></a>
 
 <p>You can merge changes made on a branch into your working copy by giving
 the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag to the <code>update</code> subcommand.  With one
@@ -623,6 +651,9 @@ the trunk, and then use that tag for subsequent merges:
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.8 Merging differences between any two revisions</h2>
+<a name="index-Merging-two-revisions"></a>
+<a name="index-Revisions_002c-merging-differences-between"></a>
+<a name="index-Differences_002c-merging"></a>
 
 <p>With two &lsquo;<samp>-j <var>revision</var></samp>&rsquo; flags, the <code>update</code>
 (and <code>checkout</code>) command can merge the differences
@@ -733,6 +764,10 @@ to be sure that all intended changes are propagated in the merge.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.10 Merging and keywords</h2>
+<a name="index-Merging_002c-and-keyword-substitution"></a>
+<a name="index-Keyword-substitution_002c-and-merging"></a>
+<a name="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></a>
+<a name="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></a>
 
 <p>If you merge files containing keywords (see section <a href="cvs_12.html#Keyword-substitution">Keyword substitution</a>), you will normally get numerous
 conflicts during the merge, because the keywords are

@@ -61,6 +61,13 @@ numeric revision in each file.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Revision numbers ===
+<div id="index-Revision-numbers"></div>
+<div id="index-Revision-tree"></div>
+<div id="index-Linear-development"></div>
+<div id="index-Number_002c-revision_002d"></div>
+<div id="index-Decimal-revision-number"></div>
+<div id="index-Branch-number"></div>
+<div id="index-Number_002c-branch"></div>
 
 <p>Each version of a file has a unique <em>revision
 number</em>.  Revision numbers look like &lsquo;<samp>1.1</samp>&rsquo;,
@@ -103,6 +110,9 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Versions, revisions and releases ===
+<div id="index-Revisions_002c-versions-and-releases"></div>
+<div id="index-Versions_002c-revisions-and-releases"></div>
+<div id="index-Releases_002c-revisions-and-versions"></div>
 
 <p>A file can have several versions, as described above.
 Likewise, a software product can have several versions.
@@ -192,6 +202,7 @@ parallel, you need to use a branch (see section [cvs: Branching and merging#Bran
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Tags&ndash;Symbolic revisions ===
+<div id="index-Tags"></div>
 
 <p>The revision numbers live a life of their own.  They
 need not have anything at all to do with the release
@@ -368,6 +379,7 @@ like this:
 </tr></table>
 === Specifying what to tag from the working directory ===
 
+<div id="index-tag-_0028subcommand_0029"></div>
 <p>The example in the previous section demonstrates one of
 the most common ways to choose which revisions to tag.
 Namely, running the <code>cvs tag</code> command without
@@ -416,6 +428,7 @@ cvs [tag aborted]: correct the above errors first!
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Specifying what to tag by date or revision ===
+<div id="index-rtag-_0028subcommand_0029"></div>
 
 <p>The <code>cvs rtag</code> command tags the repository as of a
 certain date or time (or can be used to tag the latest
@@ -638,6 +651,8 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Sticky tags ===
+<div id="index-Sticky-tags"></div>
+<div id="index-Tags_002c-sticky"></div>
 
 
 <p>Sometimes a working copy&rsquo;s revision has extra data

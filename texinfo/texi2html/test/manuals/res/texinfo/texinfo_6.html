@@ -78,6 +78,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">5. Chapter Structuring</h1>
+<a name="index-Chapter-structuring"></a>
+<a name="index-Structuring-of-chapters"></a>
 
 <p>The <em>chapter structuring</em> commands divide a document into a hierarchy of
 chapters, sections, subsections, and subsubsections.  These commands
@@ -145,6 +147,7 @@ heading at the top of each node&mdash;but you don&rsquo;t need to.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.1 Tree Structure of Sections</h2>
+<a name="index-Tree-structuring"></a>
 
 <p>A Texinfo file is usually structured like a book with chapters,
 sections, subsections, and the like.  This structure can be visualized
@@ -320,6 +323,7 @@ HTML output, not TeX.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.4 <code>@chapter</code></h2>
+<a name="index-chapter"></a>
 
 <p><code>@chapter</code> identifies a chapter in the document.  Write the
 command at the beginning of a line and follow it on the same line by
@@ -369,6 +373,8 @@ This kind of stylistic choice is not usually offered by Texinfo.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.5 <code>@unnumbered</code> and <code>@appendix</code></h2>
+<a name="index-unnumbered"></a>
+<a name="index-appendix"></a>
 
 <p>Use the <code>@unnumbered</code> command to create a chapter that appears
 in a printed manual without chapter numbers of any kind.  Use the
@@ -405,6 +411,8 @@ were creating a chapter.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.6 <code>@majorheading</code>, <code>@chapheading</code></h2>
+<a name="index-majorheading"></a>
+<a name="index-chapheading"></a>
 
 <p>The <code>@majorheading</code> and <code>@chapheading</code> commands put
 chapter-like headings in the body of a document.
@@ -443,6 +451,7 @@ of asterisks underneath.  (See section <a href="#chapter"><code>@chapter</code><
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.7 <code>@section</code></h2>
+<a name="index-section"></a>
 
 <p>In a printed manual, an <code>@section</code> command identifies a
 numbered section within a chapter.  The section title appears in the
@@ -492,6 +501,9 @@ title.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.8 <code>@unnumberedsec</code>, <code>@appendixsec</code>, <code>@heading</code></h2>
+<a name="index-unnumberedsec"></a>
+<a name="index-appendixsec"></a>
+<a name="index-heading"></a>
 
 <p>The <code>@unnumberedsec</code>, <code>@appendixsec</code>, and <code>@heading</code>
 commands are, respectively, the unnumbered, appendix-like, and
@@ -541,6 +553,7 @@ section-style heading that will not appear in the table of contents.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.9 The <code>@subsection</code> Command</h2>
+<a name="index-subsection"></a>
 
 <p>Subsections are to sections as sections are to chapters.
 (See section <a href="#section"><code>@section</code></a>.)  In Info, subsection titles are
@@ -578,6 +591,10 @@ and are numbered three levels deep.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.10 The <code>@subsection</code>-like Commands</h2>
+<a name="index-Subsection_002dlike-commands"></a>
+<a name="index-unnumberedsubsec"></a>
+<a name="index-appendixsubsec"></a>
+<a name="index-subheading"></a>
 
 <p>The <code>@unnumberedsubsec</code>, <code>@appendixsubsec</code>, and
 <code>@subheading</code> commands are, respectively, the unnumbered,
@@ -614,6 +631,11 @@ contents.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.11 The &lsquo;subsub&rsquo; Commands</h2>
+<a name="index-Subsub-commands"></a>
+<a name="index-subsubsection"></a>
+<a name="index-unnumberedsubsubsec"></a>
+<a name="index-appendixsubsubsec"></a>
+<a name="index-subsubheading"></a>
 
 <p>The fourth and lowest level sectioning commands in Texinfo are the
 &lsquo;subsub&rsquo; commands.  They are:
@@ -680,6 +702,10 @@ For example,
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">5.12 <code>@raisesections</code> and <code>@lowersections</code></h2>
+<a name="index-raisesections"></a>
+<a name="index-lowersections"></a>
+<a name="index-Raising-and-lowering-sections"></a>
+<a name="index-Sections_002c-raising-and-lowering"></a>
 
 <p>The <code>@raisesections</code> and <code>@lowersections</code> commands raise and
 lower the hierarchical level of chapters, sections, subsections and the

@@ -233,6 +233,8 @@ rounded corners around it.  See section <a href="#cartouche">Drawing Cartouches 
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.2 <code>@quotation</code></h2>
+<a name="index-Quotations"></a>
+<a name="index-quotation"></a>
 
 <p>The text of a quotation is processed normally except that:
 </p>
@@ -293,6 +295,9 @@ a foo.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.3 <code>@example</code>: Example Text</h2>
+<a name="index-Examples_002c-formatting-them"></a>
+<a name="index-Formatting-examples"></a>
+<a name="index-example"></a>
 
 <p>The <code>@example</code> command is used to indicate an example that is
 not part of the running text, such as computer input or output.
@@ -372,6 +377,8 @@ text.  See section <a href="texinfo_10.html#code"><code>@code</code></a>.)
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.4 <code>@verbatim</code>: Literal Text</h2>
+<a name="index-verbatim"></a>
+<a name="index-Verbatim-environment"></a>
 
 <p>Use the <code>@verbatim</code> environment for printing of text that may
 contain special characters or commands that should not be interpreted,
@@ -439,6 +446,9 @@ ending <code>@end verbatim</code> will appear in the output.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.5 <code>@verbatiminclude</code> <var>file</var>: Include a File Verbatim</h2>
+<a name="index-Verbatim_002c-include-file"></a>
+<a name="index-Including-a-file-verbatim"></a>
+<a name="index-verbatiminclude"></a>
 
 <p>You can include the exact contents of a file in the document with the
 <code>@verbatiminclude</code> command:
@@ -471,6 +481,8 @@ exactly as it is, with all special characters and white space retained.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.6 <code>@lisp</code>: Marking a Lisp Example</h2>
+<a name="index-lisp"></a>
+<a name="index-Lisp-example"></a>
 
 <p>The <code>@lisp</code> command is used for Lisp code.  It is synonymous
 with the <code>@example</code> command.
@@ -509,6 +521,13 @@ itself.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.7 <code>@small&hellip;</code> Block Commands</h2>
+<a name="index-Small-examples"></a>
+<a name="index-Examples-in-smaller-fonts"></a>
+<a name="index-Lisp-examples-in-smaller-fonts"></a>
+<a name="index-smalldisplay"></a>
+<a name="index-smallexample"></a>
+<a name="index-smallformat"></a>
+<a name="index-smalllisp"></a>
 
 <p>In addition to the regular <code>@example</code> and <code>@lisp</code> commands,
 Texinfo has &ldquo;small&rdquo; example-style commands.  These are
@@ -564,6 +583,8 @@ about the <code>@smallbook</code> command.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.8 <code>@display</code> and <code>@smalldisplay</code></h2>
+<a name="index-Display-formatting"></a>
+<a name="index-display"></a>
 
 <p>The <code>@display</code> command begins a kind of example.  It is like the
 <code>@example</code> command
@@ -578,7 +599,7 @@ and an <code>@end display</code> command.  The <code>@display</code> command
 indents the text, but does not fill it.
 </pre></td></tr></table>
 
-<a name="index-smalldisplay"></a>
+<a name="index-smalldisplay-1"></a>
 <p>Texinfo also provides a command <code>@smalldisplay</code>, which is like
 <code>@display</code> but uses a smaller font in <code>@smallbook</code> format.
 See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
@@ -604,6 +625,7 @@ See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.9 <code>@format</code> and <code>@smallformat</code></h2>
+<a name="index-format"></a>
 
 <p>The <code>@format</code> command is similar to <code>@example</code> except
 that, in the printed manual, <code>@format</code> does not select the
@@ -615,7 +637,7 @@ from this example,
 the <code>@format</code> command does not fill the text.
 </pre></td></tr></table>
 
-<a name="index-smallformat"></a>
+<a name="index-smallformat-1"></a>
 <p>Texinfo also provides a command <code>@smallformat</code>, which is like
 <code>@format</code> but uses a smaller font in <code>@smallbook</code> format.
 See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
@@ -642,6 +664,8 @@ See section <a href="#small"><code>@small&hellip;</code> Block Commands</a>.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.10 <code>@exdent</code>: Undoing a Line&rsquo;s Indentation</h2>
+<a name="index-Indentation-undoing"></a>
+<a name="index-exdent"></a>
 
 <p>The <code>@exdent</code> command removes any indentation a line might have.
 The command is written at the beginning of a line and applies only to
@@ -692,6 +716,10 @@ returning the page to its normal width.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.11 <code>@flushleft</code> and <code>@flushright</code></h2>
+<a name="index-flushleft"></a>
+<a name="index-flushright"></a>
+<a name="index-ragged-right"></a>
+<a name="index-ragged-left"></a>
 
 <p>The <code>@flushleft</code> and <code>@flushright</code> commands line up the
 ends of lines on the left and right margins of a page,
@@ -754,6 +782,7 @@ left end ragged.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.12 <code>@noindent</code>: Omitting Indentation</h2>
+<a name="index-noindent"></a>
 
 <p>An example or other inclusion can break a paragraph into segments.
 Ordinarily, the formatters indent text that follows an example as a new
@@ -817,6 +846,9 @@ paragraphs (see section <a href="texinfo_29.html#Command-Syntax">@-Command Synta
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">10.13 <code>@cartouche</code>: Rounded Rectangles Around Examples</h2>
+<a name="index-cartouche"></a>
+<a name="index-Box-with-rounded-corners"></a>
+<a name="index-Rounded-rectangles_002c-around-examples"></a>
 
 <p>In a printed manual, the <code>@cartouche</code> command draws a box with
 rounded corners around its contents.  You can use this command to

@@ -282,6 +282,8 @@ line, an <code>@chapter</code> line, and then by indexing lines.
 </tr></table>
 <h2 class="section">6.3 The <code>@node</code> Command</h2>
 
+<a name="index-Node_002c-defined"></a>
+<a name="index-node"></a>
 
 <p>A <em>node</em> is a segment of text that begins at an <code>@node</code>
 command and continues until the next <code>@node</code> command.  The
@@ -362,6 +364,7 @@ see <a href="texinfo_9.html#Cross-References">Cross References</a>.)
 </tr></table>
 <h3 class="subsection">6.3.1 Choosing Node and Pointer Names</h3>
 
+<a name="index-Node-names_002c-choosing"></a>
 <p>The name of a node identifies the node.  The pointers enable
 you to reach other nodes and consist of the names of those nodes.
 </p>
@@ -408,6 +411,9 @@ in the printed output.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">6.3.2 How to Write an <code>@node</code> Line</h3>
+<a name="index-Writing-an-_0040node-line"></a>
+<a name="index-_0040node-line-writing"></a>
+<a name="index-Node-line-writing"></a>
 
 <p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
 at the beginning of a line and then the name of the node, like
@@ -515,6 +521,8 @@ capitalized; others are not.
 </tr></table>
 <h3 class="subsection">6.3.4 <code>@node</code> Line Requirements</h3>
 
+<a name="index-Node-line-requirements"></a>
+<a name="index-Restrictions-on-node-names"></a>
 <p>Here are several requirements for <code>@node</code> lines:
 </p>
 <ul>
@@ -607,6 +615,8 @@ Case is significant.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">6.3.5 The First Node</h3>
+<a name="index-Top-node-is-first"></a>
+<a name="index-First-node"></a>
 
 <p>The first node of a Texinfo file is the <em>Top</em> node, except in an
 included file (see section <a href="texinfo_25.html#Include-Files">Include Files</a>).  The Top node should contain a
@@ -675,6 +685,7 @@ define them.  This is recommended.  Thus:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">6.3.6 The <code>@top</code> Sectioning Command</h3>
+<a name="index-top-_0028_0040_002dcommand_0029"></a>
 
 <p>A special sectioning command, <code>@top</code> should be used with the
 <code>@node Top</code> line.  The <code>@top</code> sectioning command tells
@@ -724,6 +735,9 @@ create or update pointers and menus.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.4 Creating Pointers with <code>makeinfo</code></h2>
+<a name="index-Creating-pointers-with-makeinfo"></a>
+<a name="index-Pointer-creation-with-makeinfo"></a>
+<a name="index-Automatic-pointer-creation-with-makeinfo"></a>
 
 <p>The <code>makeinfo</code> program has a feature for automatically defining
 node pointers for a hierarchically organized file.
@@ -774,6 +788,10 @@ printed.  In those cases, you will need to explicitly specify the pointers.
 </tr></table>
 <h2 class="section">6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets</h2>
 
+<a name="index-anchor"></a>
+<a name="index-Anchors"></a>
+<a name="index-Cross_002dreference-targets_002c-arbitrary"></a>
+<a name="index-Targets-for-cross_002dreferences_002c-arbitrary"></a>
 
 <p>An <em>anchor</em> is a position in your document, labeled so that
 cross-references can refer to it, just as they can to nodes.  You create

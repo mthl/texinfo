@@ -103,6 +103,10 @@ in the larger process of developing and maintaining programs.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">22.1 Running &ldquo;make&rdquo;, or Compilers Generally</h2>
+<a name="index-inferior-process"></a>
+<a name="index-make"></a>
+<a name="index-compilation-errors"></a>
+<a name="index-error-log"></a>
 
 <p>  Emacs can run compilers for non-interactive languages like C and
 Fortran as inferior processes, feeding the error log into an Emacs buffer.
@@ -282,6 +286,8 @@ This mode combines the special features of Lisp mode and Shell mode
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">22.3 Libraries of Lisp Code for Emacs</h2>
+<a name="index-libraries"></a>
+<a name="index-loading-Lisp-code"></a>
 
 <p>  Lisp code for Emacs editing commands is stored in files whose names
 conventionally end in &lsquo;<tt>.el</tt>&rsquo;.  This ending tells Emacs to edit them in
@@ -434,6 +440,7 @@ it does prevent execution of the rest of the <code>forms</code>.
 </tr></table>
 <h3 class="subsection">22.3.2 Compiling Libraries</h3>
 
+<a name="index-byte-code"></a>
 <p>  Emacs Lisp code can be compiled into byte-code which loads faster,
 takes up less space when loaded, and executes faster.
 </p>
@@ -528,6 +535,8 @@ refers to a variable or constant, that is shown, too.
 </tr></table>
 <h3 class="subsection">22.3.3 Converting Mocklisp to Lisp</h3>
 
+<a name="index-mocklisp"></a>
+<a name="index-convert_002dmocklisp_002dbuffer"></a>
 <p>  XEmacs can run Mocklisp files by converting them to Emacs Lisp first.
 To convert a Mocklisp file, visit it and then type <kbd>M-x
 convert-mocklisp-buffer</kbd>.  Then save the resulting buffer of Lisp file in a
@@ -558,7 +567,9 @@ and which values signify &ldquo;true&rdquo; or &ldquo;false&rdquo;.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">22.4 Evaluating Emacs-Lisp Expressions</h2>
+<a name="index-Emacs_002dLisp-mode"></a>
 
+<a name="index-emacs_002dlisp_002dmode"></a>
 <p>  Lisp programs intended to be run in Emacs should be edited in
 Emacs-Lisp mode; this will happen automatically for file names ending in
 &lsquo;<tt>.el</tt>&rsquo;.  By contrast, Lisp mode itself should be used for editing
@@ -654,7 +665,10 @@ world in step with the source file.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">22.5 The Emacs-Lisp Debugger</h2>
+<a name="index-debugger"></a>
 
+<a name="index-debug_002don_002derror"></a>
+<a name="index-debug_002don_002dquit"></a>
 <p>  XEmacs contains a debugger for Lisp programs executing inside it.
 This debugger is normally not used; many commands frequently get Lisp
 errors when invoked in inappropriate contexts (such as <kbd>C-f</kbd> at the
@@ -889,6 +903,7 @@ See section <a href="#Lisp-Modes">Major Modes for Lisp</a>.
 
 <a name="Packages-1"></a>
 <h2 class="section">22.8 Packages</h2>
+<a name="index-packages"></a>
 
 <p>The XEmacs 21 distribution comes only with a very basic set of
 built-in modes and packages.  Most of the packages that were part of
@@ -974,6 +989,7 @@ that you follow this rule of thumb: &quot;When in doubt, don&rsquo;t delete&quot
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">22.8.2 Package Distributions</h3>
+<a name="index-package-distributions"></a>
 <p>XEmacs Lisp packages are distributed in two ways, depending on the
 intended use.  Binary Packages are for installers and end-users that can
 be installed directly into an XEmacs package directory.  Source Packages
@@ -999,6 +1015,7 @@ bytecompiled lisp and creating tarballs for distribution.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">22.8.3 Binary Packages</h3>
+<a name="index-binary-packages"></a>
 <p>Binary packages may be installed directly into an XEmacs package
 hierarchy.
 </p>
@@ -1021,6 +1038,7 @@ hierarchy.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">22.8.4 Source Packages</h3>
+<a name="index-source-packages"></a>
 <p>Source packages contain all of the Package author&rsquo;s (where appropriate
 in regular packages) source code plus all of the files necessary to
 build distribution tarballs (Unix Tar format files, gzipped for space
@@ -1046,6 +1064,8 @@ savings).
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
+<a name="index-installing-packages"></a>
+<a name="index-install"></a>
 <a name="Installing-Packages_003a"></a>
 <h2 class="heading">Installing Packages:</h2>
 <a name="Getting-Started"></a>
@@ -1081,6 +1101,7 @@ non-essential packages were made optional.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">22.8.6 Choosing the Packages You Need</h3>
+<a name="index-choosing-packages"></a>
 <p>The <a href="#Available-Packages">Normal Packages</a> can currently be found in the same ftp directory
 where you grabbed the core distribution from, and are located in the
 subdirectory &lsquo;<tt>packages</tt>&rsquo;.  Package file names follow
@@ -1158,6 +1179,7 @@ one of the methods above for installing the package you want.
 be used by XEmacs after a restart.
 </p>
 <a name="Sumo"></a>
+<a name="index-sumo-package-install"></a>
 <a name="Installing-the-Sumo-Packages_003a"></a>
 <h2 class="heading">Installing the Sumo Packages:</h2>
 <p>Those with little time, cheap connections and plenty of disk space can
@@ -1182,6 +1204,7 @@ packages, it is recommended that you use the automatic package tools
 afterwards to pick up any recent updates.
 </p>
 <a name="Manually"></a>
+<a name="index-manual-package-install"></a>
 <a name="Manual-Package-Installation_003a"></a>
 <h2 class="heading">Manual Package Installation:</h2>
 <p>Fetch the packages from the FTP site, CD-ROM whatever. The filenames
@@ -1217,6 +1240,8 @@ Or if you have GNU tar, the last step can be:
 </pre></td></tr></table>
 
 <a name="Automatically"></a>
+<a name="index-automatic-package-install"></a>
+<a name="index-package-tools"></a>
 <a name="Automatic-Package-Installation_003a"></a>
 <h2 class="heading">Automatic Package Installation:</h2>
 <p>XEmacs comes with some tools to make the periodic updating and
@@ -1357,6 +1382,8 @@ will search for the latest version and install it and any packages that
 it depends upon.
 </p>
 <a name="Which-Packages"></a>
+<a name="index-which-packages"></a>
+<a name="index-choosing-packages-1"></a>
 <a name="Which-Packages-to-Install_003a"></a>
 <h2 class="heading">Which Packages to Install:</h2>
 <p>This is difficult to say. When in doubt install a package. If you
@@ -1378,6 +1405,8 @@ install need.
 packages.
 </p>
 <a name="Removing-Packages"></a>
+<a name="index-removing-packages"></a>
+<a name="index-deleting-packages"></a>
 <a name="Removing-Packages_003a"></a>
 <h2 class="heading">Removing Packages:</h2>
 <p>Because the exact files and their locations contained in a package may
@@ -1411,6 +1440,8 @@ this for you.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
+<a name="index-building-packages"></a>
+<a name="index-package-building"></a>
 <a name="Building-Packages_003a"></a>
 <h2 class="heading">Building Packages:</h2>
 <p>Currently, source packages are only available via anonymous CVS.  See
@@ -1521,6 +1552,7 @@ primarily of use by XEmacs maintainers producing files for distribution.
 </dl>
 
 <a name="Local_002erules-File"></a>
+<a name="index-local_002erules"></a>
 <a name="The-Local_002erules-File_003a"></a>
 <h2 class="heading">The Local.rules File:</h2>
 <p>This file is used when building and installing packages from source.  In
@@ -1598,6 +1630,7 @@ to.  Note:  &rsquo;make bindist&rsquo; does not use this variable.
 
 
 <a name="Creating-Packages"></a>
+<a name="index-creating-packages"></a>
 <a name="Creating-Packages_003a"></a>
 <h2 class="heading">Creating Packages:</h2>
 <p>Creating a package from an existing Lisp library is not very difficult.
@@ -1737,6 +1770,8 @@ or a future revision of this manual for details.
 <td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
+<a name="index-available-packages"></a>
+<a name="index-packages-1"></a>
 <a name="Available-Packages_003a"></a>
 <h2 class="heading">Available Packages:</h2>
 <p>This section lists the Lisp packages that are currently available from

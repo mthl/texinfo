@@ -111,6 +111,8 @@ with <code>maxstep</code> Fortran parameter.
 </tr></table>
 <h3 class="subsection"> 4.2.1 Overview of optimisation with Miniker </h3>
 
+<a name="index-adjoint"></a>
+<a name="index-optimisation"></a>
 
 <p>In the proposed method, Miniker is run twice, one time forward and then
 backward to determine the trajectory and the adjoint model. After that the 
@@ -172,6 +174,8 @@ GTLS<a name="DOCF6" href="mini_ker_fot.html#FOOT6">(6)</a>.
 </tr></table>
 <h3 class="subsection"> 4.2.2 Control laws </h3>
 
+<a name="index-zcommand"></a>
+<a name="index-command-law"></a>
 
 <p>Each control law is associated with one cell or transfer equation, meaning that a command
 associated with an equation does not appear in any other equation.
@@ -227,6 +231,9 @@ of the commands and time of the run.
 </tr></table>
 <h3 class="subsection"> 4.2.3 Cost function coding and adjoint modeling </h3>
 
+<a name="index-zback"></a>
+<a name="index-cout_005fPsi"></a>
+<a name="index-cout_005fl"></a>
 
 <p>First of all the flag <code>zback</code> should be set to <code>.true.</code> in order to
 allow adjoint model computation:
@@ -312,6 +319,7 @@ in the associated files:
 </tr></table>
 <h3 class="subsection"> 4.2.4 Sensitivity of cost function to parameters </h3>
 
+<a name="index-gradpj_002edata"></a>
 
 <p>The sensitivity of the cost function to all the parameters given as
 arguments of <code>Free_parameters</code> is computed. For the

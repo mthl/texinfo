@@ -60,6 +60,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter">15. Using Multiple Buffers</h1>
 
+<a name="index-buffers"></a>
 <p>  Text you are editing in Emacs resides in an object called a
 <em>buffer</em>.  Each time you visit a file, Emacs creates a buffer to
 hold the file&rsquo;s text.  Each time you invoke Dired, Emacs creates a buffer
@@ -127,6 +128,8 @@ the value in other buffers.  See section <a href="xemacs_30.html#Locals">Local V
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">15.1 Creating and Selecting Buffers</h2>
+<a name="index-changing-buffers"></a>
+<a name="index-switching-buffers"></a>
 
 <dl compact="compact">
 <dt> <kbd>C-x b <var>buffer</var> &lt;RET&gt;</kbd></dt>
@@ -370,6 +373,7 @@ for confirmation just like <code>kill-buffer</code>.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">15.5 Operating on Several Buffers</h2>
+<a name="index-buffer-menu"></a>
 
 <p>  The <em>buffer-menu</em> facility is like a &ldquo;Dired for buffers&rdquo;; it allows
 you to request operations on various Emacs buffers by editing a

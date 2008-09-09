@@ -17,6 +17,9 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == History browsing ==
+<div id="index-History-browsing"></div>
+<div id="index-Traceability"></div>
+<div id="index-Isolation"></div>
 
 
 <p>Once you have used <small>CVS</small> to store a version control
@@ -173,6 +176,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Annotate command ===
+<div id="index-annotate-_0028subcommand_0029"></div>
 
 <dl>
 <dt><div id="index-cvs-annotate"></div><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>

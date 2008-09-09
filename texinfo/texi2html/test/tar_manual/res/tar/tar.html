@@ -641,6 +641,8 @@ indicate this.)
 </tr></table>
 <h2 class="section">1.2 Some Definitions</h2>
 
+<a name="index-archive"></a>
+<a name="index-tar-archive"></a>
 <p>The <code>tar</code> program is used to create and manipulate <code>tar</code>
 archives.  An <em>archive</em> is a single file which contains the contents
 of many files, while still identifying the names of the files, their
@@ -697,6 +699,7 @@ All of these operations can be performed using <code>tar</code>.
 </tr></table>
 <h2 class="section">1.3 What <code>tar</code> Does</h2>
 
+<a name="index-tar"></a>
 <p>The <code>tar</code> program provides the ability to create <code>tar</code>
 archives, as well as various other kinds of manipulation.  For example,
 you can use <code>tar</code> on previously created archives to extract files,
@@ -877,6 +880,8 @@ Poznyakoff and Jeff Bailey.
 </tr></table>
 <h2 class="section">1.6 Reporting bugs or suggestions</h2>
 
+<a name="index-bug-reports"></a>
+<a name="index-reporting-bugs"></a>
 <p>If you find problems or have suggestions about this program or manual,
 please report them to &lsquo;<tt>bug-tar@gnu.org</tt>&rsquo;.
 </p>
@@ -1591,6 +1596,7 @@ you need to use a different option, such as &lsquo;<samp>--append</samp>&rsquo; 
 </tr></table>
 <h3 class="subsection">2.6.2 Creating the Archive</h3>
 
+<a name="index-create_002c-introduced"></a>
 <p>To place the files &lsquo;<tt>blues</tt>&rsquo;, &lsquo;<tt>folk</tt>&rsquo;, and &lsquo;<tt>jazz</tt>&rsquo; into an
 archive named &lsquo;<tt>collection.tar</tt>&rsquo;, use the following command:
 </p>
@@ -1674,6 +1680,8 @@ Use &lsquo;<samp>--append</samp>&rsquo; (&lsquo;<samp>-r</samp>&rsquo;) instead.
 </tr></table>
 <h3 class="subsection">2.6.3 Running &lsquo;<samp>--create</samp>&rsquo; with &lsquo;<samp>--verbose</samp>&rsquo;</h3>
 
+<a name="index-create_002c-using-with-_002d_002dverbose"></a>
+<a name="index-verbose_002c-using-with-_002d_002dcreate"></a>
 <p>If you include the &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) option on the command line,
 <code>tar</code> will list the files it is acting on as it is working.  In
 verbose mode, the <code>create</code> example above would appear as:
@@ -1800,6 +1808,8 @@ does what, and therefore where different names have to be placed.
 </tr></table>
 <h3 class="subsection">2.6.5 Archiving Directories</h3>
 
+<a name="index-Archiving-Directories"></a>
+<a name="index-Directories_002c-Archiving"></a>
 <p>You can archive a directory by specifying its directory name as a
 file name argument to <code>tar</code>.  The files in the directory will be
 archived relative to the working directory, and the directory will be
@@ -1885,6 +1895,7 @@ of the directory being dumped.
 </tr></table>
 <h2 class="section">2.7 How to List Archives</h2>
 
+<a name="index-list"></a>
 <p>Frequently, you will find yourself wanting to determine exactly what a
 particular archive contains.  You can use the &lsquo;<samp>--list</samp>&rsquo;
 (&lsquo;<samp>-t</samp>&rsquo;) operation to get the member names as they currently
@@ -4442,6 +4453,9 @@ the earlier versions of <acronym>GNU</acronym> <code>tar</code>.  In the future 
 </tr></table>
 <h2 class="section">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</h2>
 
+<a name="index-Getting-program-version-number"></a>
+<a name="index-version"></a>
+<a name="index-Version-of-the-tar-program"></a>
 <p>Being careful, the first thing is really checking that you are using
 <acronym>GNU</acronym> <code>tar</code>, indeed.  The &lsquo;<samp>--version</samp>&rsquo; option
 causes <code>tar</code> to print information about its name, version,
@@ -4545,6 +4559,7 @@ information about <acronym>GNU</acronym> <code>tar</code> is this Texinfo docume
 </tr></table>
 <h2 class="section">3.6 Obtaining <acronym>GNU</acronym> <code>tar</code> default values</h2>
 
+<a name="index-show_002ddefaults"></a>
 <p><acronym>GNU</acronym> <code>tar</code> has some predefined defaults that are used when you do not
 explicitely specify another values.  To obtain a list of such
 defaults, use &lsquo;<samp>--show-defaults</samp>&rsquo; option.  This will output the
@@ -4758,6 +4773,7 @@ front of the tape).  See section <a href="#backup">Backup options</a>.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">3.8 Asking for Confirmation During Operations</h2>
+<a name="index-Interactive-operation"></a>
 
 <p>Typically, <code>tar</code> carries out a command without stopping for
 further instructions.  In some situations however, you may want to
@@ -5416,6 +5432,10 @@ efficient.  If you need to run backups, please consult <a href="#Backups">Perfor
 </tr></table>
 <h3 class="subsection">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</h3>
 
+<a name="index-Adding-archives-to-an-archive"></a>
+<a name="index-Concatenating-Archives"></a>
+<a name="index-concatenate"></a>
+<a name="index-catenate"></a>
 <p>Sometimes it may be convenient to add a second archive onto the end of
 an archive rather than adding individual files to the archive.  To add
 one or more archives to the end of another archive, you should use the
@@ -5593,6 +5613,7 @@ $
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">4.2.6 Comparing Archive Members with the File System</h3>
+<a name="index-Verifying-the-currency-of-an-archive"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -5648,6 +5669,7 @@ the archive media.  For this later goal, See section <a href="#verify">Verifying
 </tr></table>
 <h2 class="section">4.3 Options Used by &lsquo;<samp>--create</samp>&rsquo;</h2>
 
+<a name="index-create_002c-additional-options"></a>
 <p>The previous chapter described the basics of how to use
 &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;) to create an archive from a set of files.
 See section <a href="#create">How to Create Archives</a>.  This section described advanced options to be used with
@@ -5857,6 +5879,7 @@ considerations arise.  You may review the information presented in
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">4.4.1 Options to Help Read Archives</h3>
+<a name="index-Options-when-reading-archives"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -5951,6 +5974,9 @@ one which has a blocking factor less than the one specified.
 </tr></table>
 <h4 class="unnumberedsubsubsec">Ignoring Blocks of Zeros</h4>
 
+<a name="index-End_002dof_002darchive-blocks_002c-ignoring"></a>
+<a name="index-Ignoring-end_002dof_002darchive-blocks"></a>
+<a name="index-ignore_002dzeros"></a>
 <p>Normally, <code>tar</code> stops reading when it encounters a block of zeros
 between file entries (which usually indicates the end of the archive).
 &lsquo;<samp>--ignore-zeros</samp>&rsquo; (&lsquo;<samp>-i</samp>&rsquo;) allows <code>tar</code> to
@@ -6048,6 +6074,7 @@ encountered while reading an archive.  Use in conjunction with
 </tr></table>
 <h4 class="unnumberedsubsubsec">Options Controlling the Overwriting of Existing Files</h4>
 
+<a name="index-overwrite_002ddir_002c-introduced"></a>
 <p>When extracting files, if <code>tar</code> discovers that the extracted
 file already exists, it normally replaces the file by removing it before
 extracting it, to prevent confusion in the presence of hard or symbolic
@@ -6302,6 +6329,8 @@ of the contents of a full directory hierarchy.
 </tr></table>
 <h4 class="unnumberedsubsubsec">Setting Data Modification Times</h4>
 
+<a name="index-Data-modification-times-of-extracted-files"></a>
+<a name="index-Modification-times-of-extracted-files"></a>
 <p>Normally, <code>tar</code> sets the data modification times of extracted
 files to the corresponding times recorded for the files in the archive, but
 limits the permissions of extracted files by the current <code>umask</code>
@@ -6343,6 +6372,8 @@ Use in conjunction with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get
 </tr></table>
 <h4 class="unnumberedsubsubsec">Setting Access Permissions</h4>
 
+<a name="index-Permissions-of-extracted-files"></a>
+<a name="index-Modes-of-extracted-files"></a>
 <p>To set the modes (access permissions) of extracted files to those
 recorded for those files in the archive, use &lsquo;<samp>--same-permissions</samp>&rsquo;
 in conjunction with the &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;,
@@ -6479,6 +6510,8 @@ temporarily disable it.
 </tr></table>
 <h4 class="unnumberedsubsubsec">Writing to Standard Output</h4>
 
+<a name="index-Writing-extracted-files-to-standard-output"></a>
+<a name="index-Standard-output_002c-writing-extracted-files-to"></a>
 <p>To write the extracted files to the standard output, instead of
 creating the files on the file system, use &lsquo;<samp>--to-stdout</samp>&rsquo; (&lsquo;<samp>-O</samp>&rsquo;) in
 conjunction with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;).  This option is useful if you are
@@ -6847,6 +6880,7 @@ created by running &lsquo;<samp>tar -t</samp>&rsquo; on the archive and editing 
 </tr></table>
 <h2 class="section">4.5 Backup options</h2>
 
+<a name="index-backup-options"></a>
 
 <p><acronym>GNU</acronym> <code>tar</code> offers options for making backups of files
 before writing new versions.  These options control the details of
@@ -8267,6 +8301,8 @@ uses this feature.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.2 Selecting Archive Members</h2>
+<a name="index-Specifying-files-to-act-on"></a>
+<a name="index-Specifying-archive-members"></a>
 
 <p><em>File Name arguments</em> specify which files in the file system
 <code>tar</code> operates on, when creating or adding to an archive, or which
@@ -8379,6 +8415,9 @@ of files and archive members.
 </tr></table>
 <h2 class="section">6.3 Reading Names from a File</h2>
 
+<a name="index-Reading-file-names-from-a-file"></a>
+<a name="index-Lists-of-file-names"></a>
+<a name="index-File-Name-arguments_002c-alternatives"></a>
 <p>Instead of giving the names of files or archive members on the command
 line, you can put the names into a file, and then use the
 &lsquo;<samp>--files-from=<var>file-of-names</var></samp>&rsquo; (&lsquo;<samp>-T
@@ -8508,6 +8547,8 @@ being recognized as an option.  For example: <code>--add-file=--my-file</code>.
 </tr></table>
 <h3 class="subsection">6.3.1 <code>NUL</code> Terminated File Names</h3>
 
+<a name="index-File-names_002c-terminated-by-NUL"></a>
+<a name="index-NUL-terminated-file-names"></a>
 <p>The &lsquo;<samp>--null</samp>&rsquo; option causes
 &lsquo;<samp>--files-from=<var>file-of-names</var></samp>&rsquo; (&lsquo;<samp>-T <var>file-of-names</var></samp>&rsquo;)
 to read file names terminated by a <code>NUL</code> instead of a newline, so
@@ -8656,6 +8697,7 @@ more easily excluded from backups.
 </tr></table>
 <h3 class="unnumberedsubsec">Problems with Using the <code>exclude</code> Options</h3>
 
+<a name="index-exclude_002c-potential-problems-with"></a>
 <p>Some users find &lsquo;<samp>exclude</samp>&rsquo; options confusing.  Here are some common
 pitfalls:
 </p>
@@ -9660,6 +9702,7 @@ other than &lsquo;<tt>grape/concord</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">6.10 Crossing File System Boundaries</h2>
+<a name="index-File-system-boundaries_002c-not-crossing"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -9961,6 +10004,8 @@ $ <kbd>tar -c -f archive.tar -C  / home</kbd>
 </tr></table>
 <h1 class="chapter">7. Date input formats</h1>
 
+<a name="index-date-input-formats"></a>
+<a name="index-get_005fdate"></a>
 
 <p>First, a quote:
 </p>
@@ -10037,7 +10082,9 @@ arguments to the various programs.  The C interface (via the
 </tr></table>
 <h2 class="section">7.1 General date syntax</h2>
 
+<a name="index-general-date-syntax"></a>
 
+<a name="index-items-in-date-strings"></a>
 <p>A <em>date</em> is a string, possibly empty, containing many items
 separated by whitespace.  The whitespace may be omitted when no
 ambiguity arises.  The empty string means the beginning of today (i.e.,
@@ -10141,6 +10188,7 @@ corresponds to a valid leap second.
 </tr></table>
 <h2 class="section">7.2 Calendar date items</h2>
 
+<a name="index-calendar-date-item"></a>
 
 <p>A <em>calendar date item</em> specifies a day of the year.  It is
 specified differently, depending on whether the month is specified
@@ -10225,6 +10273,7 @@ of the following:
 </tr></table>
 <h2 class="section">7.3 Time of day items</h2>
 
+<a name="index-time-of-day-item"></a>
 
 <p>A <em>time of day item</em> in date strings specifies the time on a given
 day.  Here are some examples, all of which represent the same time:
@@ -10300,6 +10349,7 @@ but not both.
 </tr></table>
 <h2 class="section">7.4 Time zone items</h2>
 
+<a name="index-time-zone-item-1"></a>
 
 <p>A <em>time zone item</em> specifies an international time zone, indicated
 by a small set of letters, e.g., &lsquo;<samp>UTC</samp>&rsquo; or &lsquo;<samp>Z</samp>&rsquo;
@@ -10346,6 +10396,7 @@ time stamps are interpreted using the rules of the default time zone
 </tr></table>
 <h2 class="section">7.5 Day of week items</h2>
 
+<a name="index-day-of-week-item"></a>
 
 <p>The explicit mention of a day of the week will forward the date
 (only if necessary) to reach that day of the week in the future.
@@ -10390,6 +10441,8 @@ the day that <var>day</var> by itself would represent.
 </tr></table>
 <h2 class="section">7.6 Relative items in date strings</h2>
 
+<a name="index-relative-items-in-date-strings"></a>
+<a name="index-displacement-of-dates"></a>
 
 <p><em>Relative items</em> adjust a date (or the current date if none) forward
 or backward.  The effects of relative items accumulate.  Here are some
@@ -10487,6 +10540,7 @@ universal time by setting the <code>TZ</code> environment variable to
 </tr></table>
 <h2 class="section">7.7 Pure numbers in date strings</h2>
 
+<a name="index-pure-numbers-in-date-strings"></a>
 
 <p>The precise interpretation of a pure decimal number depends
 on the context in the date string.
@@ -10579,6 +10633,7 @@ For example, on most hosts &lsquo;<samp>@915148799</samp>&rsquo; represents 1998
 </tr></table>
 <h2 class="section">7.9 Specifying time zone rules</h2>
 
+<a name="index-TZ"></a>
 <p>Normally, dates are interpreted using the rules of the current time
 zone, which in turn are specified by the <code>TZ</code> environment
 variable, or by a system default if <code>TZ</code> is not set.  To specify a
@@ -10644,7 +10699,14 @@ regimes.  See <a href="libc.html#TZ-Variable">(libc)TZ Variable</a> section &lsq
 </tr></table>
 <h2 class="section">7.10 Authors of <code>get_date</code></h2>
 
+<a name="index-authors-of-get_005fdate"></a>
 
+<a name="index-Bellovin_002c-Steven-M_002e"></a>
+<a name="index-Salz_002c-Rich"></a>
+<a name="index-Berets_002c-Jim"></a>
+<a name="index-MacKenzie_002c-David"></a>
+<a name="index-Meyering_002c-Jim"></a>
+<a name="index-Eggert_002c-Paul"></a>
 <p><code>get_date</code> was originally implemented by Steven M. Bellovin
 (<a href="mailto:smb@research.att.com">smb@research.att.com</a>) while at the University of North Carolina
 at Chapel Hill.  The code was later tweaked by a couple of people on
@@ -10680,6 +10742,7 @@ and then edited by K. Berry (<a href="mailto:kb@cs.umb.edu">kb@cs.umb.edu</a>).
 </tr></table>
 <h1 class="chapter">8. Controlling the Archive Format</h1>
 
+<a name="index-Tar-archive-formats"></a>
 <p>Due to historical reasons, there are several formats of tar archives.
 All of them are based on the same principles, but have some subtle
 differences that often make them incompatible with each other.
@@ -10846,6 +10909,8 @@ switch to &lsquo;<samp>posix</samp>&rsquo;.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.1.1 Creating and Reading Compressed Archives</h3>
+<a name="index-Compressed-archives"></a>
+<a name="index-Storing-archives-in-compressed-format"></a>
 
 <p><acronym>GNU</acronym> <code>tar</code> is able to create and read compressed archives.  It supports
 <code>gzip</code> and <code>bzip2</code> compression programs.  For backward
@@ -11027,6 +11092,7 @@ archive signed with your private key:
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.1.2 Archiving Sparse Files</h3>
+<a name="index-Sparse-Files"></a>
 
 <p>Files in the file system occasionally have <em>holes</em>.  A <em>hole</em>
 in a file is a section of the file&rsquo;s contents which was never written.
@@ -11380,7 +11446,10 @@ than System V&rsquo;s.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.3.2 Symbolic Links</h3>
+<a name="index-File-names_002c-using-symbolic-links"></a>
+<a name="index-Symbolic-link-as-file-name"></a>
 
+<a name="index-dereference"></a>
 <p>Normally, when <code>tar</code> archives a symbolic link, it writes a
 block to the archive naming the target of the link.  In that way, the
 <code>tar</code> archive is a faithful record of the file system contents.
@@ -11426,6 +11495,10 @@ it contains unresolved symbolic links.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.3.3 Old V7 Archives</h3>
+<a name="index-Format_002c-old-style"></a>
+<a name="index-Old-style-format"></a>
+<a name="index-Old-style-archives"></a>
+<a name="index-v7-archive-format"></a>
 
 <p>Certain old versions of <code>tar</code> cannot handle additional
 information recorded by newer <code>tar</code> programs.  To create an
@@ -11470,6 +11543,7 @@ free from many of &lsquo;<samp>v7</samp>&rsquo;&rsquo;s drawbacks.
 </tr></table>
 <h3 class="subsection">8.3.4 Ustar Archive Format</h3>
 
+<a name="index-ustar-archive-format"></a>
 <p>Archive format defined by <acronym>POSIX</acronym>.1-1988 specification is called
 <code>ustar</code>.  Although it is more flexible than the V7 format, it
 still has many restrictions (See section <a href="#Formats">ustar</a>, for the detailed
@@ -11501,6 +11575,8 @@ option in conjunction with the &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp
 </tr></table>
 <h3 class="subsection">8.3.5 <acronym>GNU</acronym> and old <acronym>GNU</acronym> <code>tar</code> format</h3>
 
+<a name="index-GNU-archive-format"></a>
+<a name="index-Old-GNU-archive-format"></a>
 <p><acronym>GNU</acronym> <code>tar</code> was based on an early draft of the
 <acronym>POSIX</acronym> 1003.1 <code>ustar</code> standard.  <acronym>GNU</acronym> extensions to
 <code>tar</code>, such as the support for file names longer than 100
@@ -11539,6 +11615,8 @@ we plan to make &lsquo;<samp>POSIX</samp>&rsquo; format the default.
 </tr></table>
 <h3 class="subsection">8.3.6 <acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></h3>
 
+<a name="index-POSIX-archive-format"></a>
+<a name="index-PAX-archive-format"></a>
 <p>Starting from version 1.14 <acronym>GNU</acronym> <code>tar</code> features full support for
 <acronym>POSIX.1-2001</acronym> archives.
 </p>
@@ -11770,6 +11848,9 @@ a <code>tar</code> able to read the good archives they receive.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.3.8 Large or Negative Values</h3>
+<a name="index-large-values"></a>
+<a name="index-future-time-stamps"></a>
+<a name="index-negative-time-stamps"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -11867,6 +11948,7 @@ describe the required procedures in detail.
 </tr></table>
 <h4 class="subsubsection">8.3.9.1 Extracting Members Split Between Volumes</h4>
 
+<a name="index-Mutli_002dvolume-archives_002c-extracting-using-non_002dGNU-tars"></a>
 <p>If a member is split between several volumes of an old GNU format archive
 most third party <code>tar</code> implementation will fail to extract
 it.  To extract it, use <code>tarcat</code> program (see section <a href="#Tarcat">Concatenate Volumes into a Single Archive</a>).
@@ -11981,6 +12063,7 @@ members.  Read further to learn more about them.
 </tr></table>
 <h4 class="subsubsection">8.3.9.2 Extracting Sparse Members</h4>
 
+<a name="index-sparse-files_002c-extracting-with-non_002dGNU-tars"></a>
 <p>Any <code>tar</code> implementation will be able to extract sparse members from a
 PAX archive.  However, the extracted files will be <em>condensed</em>,
 i.e. any zero blocks will be removed from them.  When we restore such
@@ -12534,6 +12617,8 @@ description of this option.
 </tr></table>
 <h2 class="section">9.2 The Remote Tape Server</h2>
 
+<a name="index-remote-tape-drive"></a>
+<a name="index-rmt"></a>
 <p>In order to access the tape drive on a remote machine, <code>tar</code>
 uses the remote tape server written at the University of California at
 Berkeley.  The remote tape server must be installed as
@@ -12805,6 +12890,10 @@ device.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.4.1 Format Variations</h3>
+<a name="index-Format-Parameters"></a>
+<a name="index-Format-Options"></a>
+<a name="index-Options_002c-archive-format-specifying"></a>
+<a name="index-Options_002c-format-specifying"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -12842,6 +12931,12 @@ examples of format parameter considerations.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.4.2 The Blocking Factor of an Archive</h3>
+<a name="index-Blocking-Factor"></a>
+<a name="index-Record-Size"></a>
+<a name="index-Number-of-blocks-per-record"></a>
+<a name="index-Number-of-bytes-per-record"></a>
+<a name="index-Bytes-per-record"></a>
+<a name="index-Blocks-per-record"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -13128,6 +13223,7 @@ the error rates observed at rewriting time.
 
 
 
+<a name="index-ntape-device"></a>
 <p>Most tape devices have two entries in the &lsquo;<tt>/dev</tt>&rsquo; directory, or
 entries that come in pairs, which differ only in the minor number for
 this device.  Let&rsquo;s take for example &lsquo;<tt>/dev/tape</tt>&rsquo;, which often
@@ -13444,7 +13540,9 @@ they cannot be compressed.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">9.6.1 Archives Longer than One Tape or Disk</h3>
+<a name="index-Multi_002dvolume-archives"></a>
 
+<a name="index-multi_002dvolume"></a>
 <p>To create an archive that is larger than will fit on a single unit of
 the media, use the &lsquo;<samp>--multi-volume</samp>&rsquo; (&lsquo;<samp>-M</samp>&rsquo;) option in conjunction with
 the &lsquo;<samp>--create</samp>&rsquo; option (see section <a href="#create">How to Create Archives</a>).  A <em>multi-volume</em>
@@ -13764,6 +13862,7 @@ of tapes into a sequence of tape files, see <a href="#mt">The <code>mt</code> Ut
 </tr></table>
 <h3 class="subsection">9.6.3 Concatenate Volumes into a Single Archive</h3>
 
+<a name="index-tarcat"></a>
 <p>  Sometimes it is necessary to convert existing <acronym>GNU</acronym> <code>tar</code> multi-volume
 archive to a single <code>tar</code> archive.  Simply concatenating all
 volumes into one will not work, since each volume carries an additional
@@ -13807,6 +13906,9 @@ will usually see lots of spurious messages.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.7 Including a Label in the Archive</h2>
+<a name="index-Labeling-an-archive"></a>
+<a name="index-Labels-on-the-archive-media"></a>
+<a name="index-Labeling-multi_002dvolume-archives"></a>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
 
@@ -13940,6 +14042,8 @@ is usually not the case.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">9.8 Verifying Data as It is Stored</h2>
+<a name="index-Verifying-a-write-operation"></a>
+<a name="index-Double_002dchecking-a-write-operation"></a>
 
 <dl compact="compact">
 <dt> &lsquo;<samp>-W</samp>&rsquo;</dt>
@@ -15005,6 +15109,8 @@ checksum error.
 </tr></table>
 <h2 class="unnumberedsec">Storing Sparse Files</h2>
 
+<a name="index-sparse-formats"></a>
+<a name="index-sparse-versions"></a>
 <p>The notion of sparse file, and the ways of handling it from the point
 of view of <acronym>GNU</acronym> <code>tar</code> user have been described in detail in
 <a href="#sparse">Archiving Sparse Files</a>.  This chapter describes the internal format <acronym>GNU</acronym> <code>tar</code>
@@ -15054,6 +15160,8 @@ extract sparse files archived by <code>star</code>.
 </tr></table>
 <h3 class="appendixsubsec">C.0.1 Old GNU Format</h3>
 
+<a name="index-sparse-formats_002c-Old-GNU"></a>
+<a name="index-Old-GNU-sparse-format"></a>
 <p>The format introduced some time around 1990 (v. 1.09).  It was
 designed on top of standard <code>ustar</code> headers in such an
 unfortunate way that some of its fields overwrote fields required by
@@ -15139,6 +15247,7 @@ extension sparse header follows, or <code>0</code> otherwise.
 </tr></table>
 <h3 class="appendixsubsec">C.0.2 PAX Format, Versions 0.0 and 0.1</h3>
 
+<a name="index-sparse-formats_002c-v_002e0_002e0"></a>
 <p>There are two formats available in this branch.  The version <code>0.0</code>
 is the initial version of sparse format used by <code>tar</code>
 versions 1.14&ndash;1.15.1.  The sparse file map is kept in extended
@@ -15254,6 +15363,7 @@ header variable, this possibly can confuse some tars.
 </tr></table>
 <h3 class="appendixsubsec">C.0.3 PAX Format, Version 1.0</h3>
 
+<a name="index-sparse-formats_002c-v_002e1_002e0"></a>
 <p>The version <code>1.0</code> of sparse format was introduced with <acronym>GNU</acronym> <code>tar</code>
 1.15.92.  Its main objective was to make the resulting file
 extractable with little effort even by non-posix aware <code>tar</code>
@@ -15543,6 +15653,7 @@ block containing the dumpdir.
 </tr></table>
 <h1 class="appendix">D. Genfile</h1>
 
+<a name="index-genfile"></a>
 <p>    This appendix describes <code>genfile</code>, an auxiliary program
 used in the GNU tar testsuite. If you are not interested in developing
 GNU tar, skip this appendix.
@@ -15601,6 +15712,9 @@ specified checkpoints are reached.
 </tr></table>
 <h2 class="appendixsec">D.1 Generate Mode</h2>
 
+<a name="index-Generate-Mode_002c-genfile"></a>
+<a name="index-genfile_002c-generate-mode"></a>
+<a name="index-genfile_002c-create-file"></a>
 <p>    In this mode <code>genfile</code> creates a data file for the test
 suite. The size of the file is given with the &lsquo;<samp>--length</samp>&rsquo;
 (&lsquo;<samp>-l</samp>&rsquo;) option. By default the file contents is written to the
@@ -15866,6 +15980,7 @@ directory:
 </tr></table>
 <h2 class="appendixsec">D.3 Exec Mode</h2>
 
+<a name="index-Exec-Mode_002c-genfile"></a>
 <p>    This mode is designed for testing the behavior of <code>paxutils</code>
 commands when some of the files change during archiving. It is an
 experimental mode.
@@ -15954,6 +16069,7 @@ error.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">E. Free Software Needs Free Documentation</h1>
+<a name="index-free-documentation"></a>
 
 <p>The biggest deficiency in the free software community today is not in
 the software&mdash;it is the lack of good free documentation that we can
@@ -16091,6 +16207,7 @@ published by other publishers, at
 </tr></table>
 <h2 class="appendixsec">F.1 GNU Free Documentation License</h2>
 
+<a name="index-FDL_002c-GNU-Free-Documentation-License"></a>
 <p align="center"> Version 1.2, November 2002
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="display">Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
@@ -16644,7 +16761,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-bzip2_002c-summary"><code>bzip2<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-of-Command-Line-Options-1_op_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#concatenate"><code>catenate</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-catenate"><code>catenate</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-catenate_002c-summary"><code>catenate<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-check_002dlinks_002c-summary"><code>check-links<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-checkpoint"><code>checkpoint</code></a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
@@ -16653,14 +16770,14 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-compare_002c-summary"><code>compare<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-compress"><code>compress</code></a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-compress_002c-summary"><code>compress<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#concatenate"><code>concatenate</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-concatenate"><code>concatenate</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-concatenate_002c-summary"><code>concatenate<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-confirmation_002c-summary"><code>confirmation<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#create-options"><code>create<span class="roman">, additional options</span></code></a></td><td valign="top"><a href="#create-options">4.3 Options Used by &lsquo;<samp>--create</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-create_002c-additional-options"><code>create<span class="roman">, additional options</span></code></a></td><td valign="top"><a href="#create-options">4.3 Options Used by &lsquo;<samp>--create</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-create_002c-complementary-notes"><code>create<span class="roman">, complementary notes</span></code></a></td><td valign="top"><a href="#Basic-tar">4.1 Basic <acronym>GNU</acronym> <code>tar</code> Operations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Creating-the-archive"><code>create<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#Creating-the-archive">2.6.2 Creating the Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-create_002c-introduced"><code>create<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#Creating-the-archive">2.6.2 Creating the Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-create_002c-summary"><code>create<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#create-verbose"><code>create<span class="roman">, using with &lsquo;<samp>--verbose</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#create-verbose">2.6.3 Running &lsquo;<samp>--create</samp>&rsquo; with &lsquo;<samp>--verbose</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-create_002c-using-with-_002d_002dverbose"><code>create<span class="roman">, using with &lsquo;<samp>--verbose</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#create-verbose">2.6.3 Running &lsquo;<samp>--create</samp>&rsquo; with &lsquo;<samp>--verbose</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-create_002c-using-with-_002d_002dverify"><code>create<span class="roman">, using with &lsquo;<samp>--verify</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-of-Command-Line-Options-1_op_letter-D">D</a></th><td></td><td></td></tr>
@@ -16668,7 +16785,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-delay_002ddirectory_002drestore_002c-summary"><code>delay-directory-restore<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-delete"><code>delete</code></a></td><td valign="top"><a href="#delete">4.2.5 Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-delete_002c-summary"><code>delete<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#dereference"><code>dereference</code></a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dereference"><code>dereference</code></a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-dereference_002c-summary"><code>dereference<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-diff_002c-summary"><code>diff<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-directory"><code>directory</code></a></td><td valign="top"><a href="#directory">6.10.1 Changing the Working Directory</a></td></tr>
@@ -16677,7 +16794,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-of-Command-Line-Options-1_op_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exclude"><code>exclude</code></a></td><td valign="top"><a href="#exclude">6.4 Excluding Some Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#problems-with-exclude"><code>exclude<span class="roman">, potential problems with</span></code></a></td><td valign="top"><a href="#problems-with-exclude">Problems with Using the <code>exclude</code> Options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exclude_002c-potential-problems-with"><code>exclude<span class="roman">, potential problems with</span></code></a></td><td valign="top"><a href="#problems-with-exclude">Problems with Using the <code>exclude</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exclude_002c-summary"><code>exclude<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exclude_002dcaches"><code>exclude-caches</code></a></td><td valign="top"><a href="#exclude">6.4 Excluding Some Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exclude_002dcaches_002c-summary"><code>exclude-caches<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
@@ -16719,7 +16836,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-ignore_002dcommand_002derror_002c-summary"><code>ignore-command-error<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ignore_002dfailed_002dread"><code>ignore-failed-read</code></a></td><td valign="top"><a href="#Ignore-Failed-Read">4.3.2 Ignore Fail Read</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ignore_002dfailed_002dread_002c-summary"><code>ignore-failed-read<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Ignore-Zeros"><code>ignore-zeros</code></a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ignore_002dzeros"><code>ignore-zeros</code></a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ignore_002dzeros_002c-short-description"><code>ignore-zeros<span class="roman">, short description</span></code></a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ignore_002dzeros_002c-summary"><code>ignore-zeros<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-incremental_002c-summary"><code>incremental<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
@@ -16741,7 +16858,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><th><a name="Index-of-Command-Line-Options-1_op_letter-L">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-label"><code>label</code></a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-label_002c-summary"><code>label<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#list"><code>list</code></a></td><td valign="top"><a href="#list">2.7 How to List Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-list"><code>list</code></a></td><td valign="top"><a href="#list">2.7 How to List Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-list_002c-summary"><code>list<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Operation-Summary">3.4.1 Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-list_002c-using-with-_002d_002dincremental"><code>list<span class="roman">, using with &lsquo;<samp>--incremental</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-list_002c-using-with-_002d_002dlisted_002dincremental"><code>list<span class="roman">, using with &lsquo;<samp>--listed-incremental</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
@@ -16757,7 +16874,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-mode_002c-summary"><code>mode<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mtime"><code>mtime</code></a></td><td valign="top"><a href="#override">4.3.1 Overriding File Metadata</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mtime_002c-summary"><code>mtime<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Multi_002dVolume-Archives"><code>multi-volume</code></a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-multi_002dvolume"><code>multi-volume</code></a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-multi_002dvolume_002c-short-description"><code>multi-volume<span class="roman">, short description</span></code></a></td><td valign="top"><a href="#Device">9.1 Device Selection and Switching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-multi_002dvolume_002c-summary"><code>multi-volume<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
@@ -16805,7 +16922,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-overwrite_002c-introduced"><code>overwrite<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#Dealing-with-Old-Files">Options Controlling the Overwriting of Existing Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-overwrite_002c-summary"><code>overwrite<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-overwrite_002ddir"><code>overwrite-dir</code></a></td><td valign="top"><a href="#Overwrite-Old-Files">Overwrite Old Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Dealing-with-Old-Files"><code>overwrite-dir<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#Dealing-with-Old-Files">Options Controlling the Overwriting of Existing Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-overwrite_002ddir_002c-introduced"><code>overwrite-dir<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#Dealing-with-Old-Files">Options Controlling the Overwriting of Existing Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-overwrite_002ddir_002c-summary"><code>overwrite-dir<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-owner"><code>owner</code></a></td><td valign="top"><a href="#override">4.3.1 Overriding File Metadata</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-owner_002c-summary"><code>owner<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
@@ -16855,7 +16972,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-same_002dpermissions_002c-summary"><code>same-permissions<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-same_002dpermissions_002c-summary-1"><code>same-permissions<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-seek_002c-summary"><code>seek<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#defaults"><code>show-defaults</code></a></td><td valign="top"><a href="#defaults">3.6 Obtaining <acronym>GNU</acronym> <code>tar</code> default values</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-show_002ddefaults"><code>show-defaults</code></a></td><td valign="top"><a href="#defaults">3.6 Obtaining <acronym>GNU</acronym> <code>tar</code> default values</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-show_002ddefaults_002c-summary"><code>show-defaults<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-show_002domitted_002ddirs"><code>show-omitted-dirs</code></a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-show_002domitted_002ddirs_002c-summary"><code>show-omitted-dirs<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
@@ -16915,12 +17032,12 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-verbose"><code>verbose</code></a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verbose_002c-introduced"><code>verbose<span class="roman">, introduced</span></code></a></td><td valign="top"><a href="#verbose-tutorial">The &lsquo;<samp>--verbose</samp>&rsquo; Option</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verbose_002c-summary"><code>verbose<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#create-verbose"><code>verbose<span class="roman">, using with &lsquo;<samp>--create</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#create-verbose">2.6.3 Running &lsquo;<samp>--create</samp>&rsquo; with &lsquo;<samp>--verbose</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-verbose_002c-using-with-_002d_002dcreate"><code>verbose<span class="roman">, using with &lsquo;<samp>--create</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#create-verbose">2.6.3 Running &lsquo;<samp>--create</samp>&rsquo; with &lsquo;<samp>--verbose</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verbose_002c-using-with-_002d_002dlist"><code>verbose<span class="roman">, using with &lsquo;<samp>--list</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#list">2.7 How to List Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verify_002c-short-description"><code>verify, short description</code></a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verify_002c-summary"><code>verify<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verify_002c-using-with-_002d_002dcreate"><code>verify<span class="roman">, using with &lsquo;<samp>--create</samp>&rsquo;</span></code></a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
-<tr><td></td><td valign="top"><a href="#help"><code>version</code></a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-version"><code>version</code></a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-version_002c-summary"><code>version<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-volno_002dfile"><code>volno-file</code></a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-volno_002dfile_002c-summary"><code>volno-file<span class="roman">, summary</span></code></a></td><td valign="top"><a href="#Option-Summary">3.4.2 <code>tar</code> Options</a></td></tr>
@@ -17050,55 +17167,55 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><th><a name="Index-1_cp_letter-A">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-abbreviations-for-months">abbreviations for months</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-absolute-file-names">absolute file names</a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
-<tr><td></td><td valign="top"><a href="#concatenate">Adding archives to an archive</a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Adding-archives-to-an-archive">Adding archives to an archive</a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Adding-files-to-an-Archive">Adding files to an Archive</a></td><td valign="top"><a href="#appending-files">4.2.2.1 Appending Files to an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ADMINISTRATOR"><code>ADMINISTRATOR</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Age_002c-excluding-files-by">Age, excluding files by</a></td><td valign="top"><a href="#after">6.8 Operating Only on New Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ago-in-date-strings"><code>ago <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-am-in-date-strings"><code>am <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Appending-files-to-an-Archive">Appending files to an Archive</a></td><td valign="top"><a href="#appending-files">4.2.2.1 Appending Files to an Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Definitions">archive</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-archive">archive</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Archive-creation">Archive creation</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-archive-member">archive member</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Archive-Name">Archive Name</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Archive_002c-creation-of">Archive, creation of</a></td><td valign="top"><a href="#create">2.6 How to Create Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Archives_002c-Appending-files-to">Archives, Appending files to</a></td><td valign="top"><a href="#appending-files">4.2.2.1 Appending Files to an Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#create-dir">Archiving Directories</a></td><td valign="top"><a href="#create-dir">2.6.5 Archiving Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Archiving-Directories">Archiving Directories</a></td><td valign="top"><a href="#create-dir">2.6.5 Archiving Directories</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-archiving-files">archiving files</a></td><td valign="top"><a href="#Top"><acronym>GNU</acronym> tar: an archiver tool</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ARGP_005fHELP_005fFMT_002c-environment-variable"><code>ARGP_HELP_FMT, environment variable</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">authors of <code>get_date</code></a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-authors-of-get_005fdate">authors of <code>get_date</code></a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Avoiding-recursion-in-directories">Avoiding recursion in directories</a></td><td valign="top"><a href="#recurse">6.9 Descending into Directories</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-B">B</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#backup">backup options</a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-backup-options">backup options</a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-backup-suffix">backup suffix</a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-BACKUP_005fDIRS"><code>BACKUP_DIRS</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-BACKUP_005fFILES"><code>BACKUP_FILES</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-BACKUP_005fHOUR"><code>BACKUP_HOUR</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-backups">backups</a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-beginning-of-time_002c-for-POSIX">beginning of time, for <acronym>POSIX</acronym></a></td><td valign="top"><a href="#Seconds-since-the-Epoch">7.8 Seconds since the Epoch</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">Bellovin, Steven M.</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">Berets, Jim</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Bellovin_002c-Steven-M_002e">Bellovin, Steven M.</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Berets_002c-Jim">Berets, Jim</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Berry_002c-K_002e">Berry, K.</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Block-number-where-error-occurred">Block number where error occurred</a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-BLOCKING"><code>BLOCKING</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Blocking Factor</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Blocking-Factor">Blocking Factor</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-blocking-factor">blocking factor</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Blocks per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Reports">bug reports</a></td><td valign="top"><a href="#Reports">1.6 Reporting bugs or suggestions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Bytes per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Blocks-per-record">Blocks per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bug-reports">bug reports</a></td><td valign="top"><a href="#Reports">1.6 Reporting bugs or suggestions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Bytes-per-record">Bytes per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Calendar-date-items">calendar date item</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-calendar-date-item">calendar date item</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-case_002c-ignored-in-dates">case, ignored in dates</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cat-vs-concatenate"><code>cat</code> vs <code>concatenate</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Changing-directory-mid_002dstream">Changing directory mid-stream</a></td><td valign="top"><a href="#directory">6.10.1 Changing the Working Directory</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Character-class_002c-excluding-characters-from">Character class, excluding characters from</a></td><td valign="top"><a href="#wildcards">6.5 Wildcards Patterns and Matching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Choosing-an-archive-file">Choosing an archive file</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-comments_002c-in-dates">comments, in dates</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
-<tr><td></td><td valign="top"><a href="#gzip">Compressed archives</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Compressed-archives">Compressed archives</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-concatenate-vs-cat"><code>concatenate</code> vs <code>cat</code></a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
-<tr><td></td><td valign="top"><a href="#concatenate">Concatenating Archives</a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Concatenating-Archives">Concatenating Archives</a></td><td valign="top"><a href="#concatenate">4.2.4 Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-corrupted-archives">corrupted archives</a></td><td valign="top"><a href="#Full-Dumps">5.1 Using <code>tar</code> to Perform Full Dumps</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-corrupted-archives-1">corrupted archives</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Creation-of-the-archive">Creation of the archive</a></td><td valign="top"><a href="#create">2.6 How to Create Archives</a></td></tr>
@@ -17106,22 +17223,22 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><th><a name="Index-1_cp_letter-D">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DAT-blocking">DAT blocking</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Data-Modification-time_002c-excluding-files-by">Data Modification time, excluding files by</a></td><td valign="top"><a href="#after">6.8 Operating Only on New Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Data-Modification-Times">Data modification times of extracted files</a></td><td valign="top"><a href="#Data-Modification-Times">Setting Data Modification Times</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Data-modification-times-of-extracted-files">Data modification times of extracted files</a></td><td valign="top"><a href="#Data-Modification-Times">Setting Data Modification Times</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-date-format_002c-ISO-8601">date format, <small>ISO</small> 8601</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Date-input-formats">date input formats</a></td><td valign="top"><a href="#Date-input-formats">7. Date input formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-date-input-formats">date input formats</a></td><td valign="top"><a href="#Date-input-formats">7. Date input formats</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-day-in-date-strings"><code>day <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-day-in-date-strings-1"><code>day <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Day-of-week-items">day of week item</a></td><td valign="top"><a href="#Day-of-week-items">7.5 Day of week items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-day-of-week-item">day of week item</a></td><td valign="top"><a href="#Day-of-week-items">7.5 Day of week items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Deleting-files-from-an-archive">Deleting files from an archive</a></td><td valign="top"><a href="#delete">4.2.5 Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Deleting-from-tape-archives">Deleting from tape archives</a></td><td valign="top"><a href="#delete">4.2.5 Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Descending-directories_002c-avoiding">Descending directories, avoiding</a></td><td valign="top"><a href="#recurse">6.9 Descending into Directories</a></td></tr>
-<tr><td></td><td valign="top"><a href="#create-dir">Directories, Archiving</a></td><td valign="top"><a href="#create-dir">2.6.5 Archiving Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Directories_002c-Archiving">Directories, Archiving</a></td><td valign="top"><a href="#create-dir">2.6.5 Archiving Directories</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Directories_002c-avoiding-recursion">Directories, avoiding recursion</a></td><td valign="top"><a href="#recurse">6.9 Descending into Directories</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Directory_002c-changing-mid_002dstream">Directory, changing mid-stream</a></td><td valign="top"><a href="#directory">6.10.1 Changing the Working Directory</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DIRLIST"><code>DIRLIST</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Relative-items-in-date-strings">displacement of dates</a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-displacement-of-dates">displacement of dates</a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-doc_002dopt_002dcol"><code>doc-opt-col</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#verify">Double-checking a write operation</a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Double_002dchecking-a-write-operation">Double-checking a write operation</a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DUMP_005fBEGIN"><code>DUMP_BEGIN</code></a></td><td valign="top"><a href="#User-Hooks">5.4.3 User Hooks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DUMP_005fEND"><code>DUMP_END</code></a></td><td valign="top"><a href="#User-Hooks">5.4.3 User Hooks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-DUMP_005fREMIND_005fSCRIPT"><code>DUMP_REMIND_SCRIPT</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
@@ -17130,8 +17247,8 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-dup_002dargs_002dnote"><code>dup-args-note</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">Eggert, Paul</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Ignore-Zeros">End-of-archive blocks, ignoring</a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Eggert_002c-Paul">Eggert, Paul</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-End_002dof_002darchive-blocks_002c-ignoring">End-of-archive blocks, ignoring</a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-End_002dof_002darchive-info-script">End-of-archive info script</a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-entry">entry</a></td><td valign="top"><a href="#Naming-tar-Archives">1.4 How <code>tar</code> Archives are Named</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-epoch_002c-for-POSIX">epoch, for <acronym>POSIX</acronym></a></td><td valign="top"><a href="#Seconds-since-the-Epoch">7.8 Seconds since the Epoch</a></td></tr>
@@ -17144,44 +17261,44 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-Excluding-file-by-age">Excluding file by age</a></td><td valign="top"><a href="#after">6.8 Operating Only on New Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Excluding-files-by-file-system">Excluding files by file system</a></td><td valign="top"><a href="#exclude">6.4 Excluding Some Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Excluding-files-by-name-and-pattern">Excluding files by name and pattern</a></td><td valign="top"><a href="#exclude">6.4 Excluding Some Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Exec-Mode">Exec Mode, <code>genfile</code></a></td><td valign="top"><a href="#Exec-Mode">D.3 Exec Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Exec-Mode_002c-genfile">Exec Mode, <code>genfile</code></a></td><td valign="top"><a href="#Exec-Mode">D.3 Exec Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-existing-backup-method">existing <span class="roman">backup method</span></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-exit-status">exit status</a></td><td valign="top"><a href="#Synopsis">3.1 General Synopsis of <code>tar</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Extraction">Extraction</a></td><td valign="top"><a href="#extract">2.8 How to Extract Members from an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-extraction">extraction</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a></td><td valign="top"><a href="#GNU-Free-Documentation-License">F.1 GNU Free Documentation License</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FDL_002c-GNU-Free-Documentation-License">FDL, GNU Free Documentation License</a></td><td valign="top"><a href="#GNU-Free-Documentation-License">F.1 GNU Free Documentation License</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-file-archival">file archival</a></td><td valign="top"><a href="#Top"><acronym>GNU</acronym> tar: an archiver tool</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-File-lists-separated-by-NUL-characters">File lists separated by NUL characters</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-file-name">file name</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#files">File Name arguments, alternatives</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File-Name-arguments_002c-alternatives">File Name arguments, alternatives</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-File-name-arguments_002c-using-_002d_002dlist-with">File name arguments, using &lsquo;<samp>--list</samp>&rsquo; with</a></td><td valign="top"><a href="#list">2.7 How to List Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-File-names_002c-excluding-files-by">File names, excluding files by</a></td><td valign="top"><a href="#exclude">6.4 Excluding Some Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#nul">File names, terminated by <code>NUL</code></a></td><td valign="top"><a href="#nul">6.3.1 <code>NUL</code> Terminated File Names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#dereference">File names, using symbolic links</a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
-<tr><td></td><td valign="top"><a href="#one">File system boundaries, not crossing</a></td><td valign="top"><a href="#one">6.10 Crossing File System Boundaries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File-names_002c-terminated-by-NUL">File names, terminated by <code>NUL</code></a></td><td valign="top"><a href="#nul">6.3.1 <code>NUL</code> Terminated File Names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File-names_002c-using-symbolic-links">File names, using symbolic links</a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File-system-boundaries_002c-not-crossing">File system boundaries, not crossing</a></td><td valign="top"><a href="#one">6.10 Crossing File System Boundaries</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-FILELIST"><code>FILELIST</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-first-in-date-strings"><code>first <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Format-Variations">Format Options</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Format-Variations">Format Parameters</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#old">Format, old style</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Format-Options">Format Options</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Format-Parameters">Format Parameters</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Format_002c-old-style">Format, old style</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fortnight-in-date-strings"><code>fortnight <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Free-Software-Needs-Free-Documentation">free documentation</a></td><td valign="top"><a href="#Free-Software-Needs-Free-Documentation">E. Free Software Needs Free Documentation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-free-documentation">free documentation</a></td><td valign="top"><a href="#Free-Software-Needs-Free-Documentation">E. Free Software Needs Free Documentation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-full-dumps">full dumps</a></td><td valign="top"><a href="#Full-Dumps">5.1 Using <code>tar</code> to Perform Full Dumps</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Large-or-Negative-Values">future time stamps</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-future-time-stamps">future time stamps</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#General-date-syntax">general date syntax</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generate-Mode">Generate Mode, <code>genfile</code></a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Genfile">genfile</a></td><td valign="top"><a href="#Genfile">D. Genfile</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generate-Mode"><code>genfile</code>, create file</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-general-date-syntax">general date syntax</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Generate-Mode_002c-genfile">Generate Mode, <code>genfile</code></a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-genfile">genfile</a></td><td valign="top"><a href="#Genfile">D. Genfile</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-genfile_002c-create-file"><code>genfile</code>, create file</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-genfile_002c-creating-sparse-files"><code>genfile</code>, creating sparse files</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Generate-Mode"><code>genfile</code>, generate mode</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-genfile_002c-generate-mode"><code>genfile</code>, generate mode</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-genfile_002c-reading-a-list-of-file-names"><code>genfile</code>, reading a list of file names</a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Date-input-formats"><code>get_date</code></a></td><td valign="top"><a href="#Date-input-formats">7. Date input formats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#help">Getting program version number</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#gnu">GNU archive format</a></td><td valign="top"><a href="#gnu">8.3.5 <acronym>GNU</acronym> and old <acronym>GNU</acronym> <code>tar</code> format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-get_005fdate"><code>get_date</code></a></td><td valign="top"><a href="#Date-input-formats">7. Date input formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Getting-program-version-number">Getting program version number</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GNU-archive-format">GNU archive format</a></td><td valign="top"><a href="#gnu">8.3.5 <acronym>GNU</acronym> and old <acronym>GNU</acronym> <code>tar</code> format</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNU_002esparse_002emajor_002c-extended-header-variable"><code>GNU.sparse.major, extended header variable</code></a></td><td valign="top"><a href="#PAX-1">C.0.3 PAX Format, Version 1.0</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNU_002esparse_002emap_002c-extended-header-variable"><code>GNU.sparse.map, extended header variable</code></a></td><td valign="top"><a href="#PAX-0">C.0.2 PAX Format, Versions 0.0 and 0.1</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNU_002esparse_002eminor_002c-extended-header-variable"><code>GNU.sparse.minor, extended header variable</code></a></td><td valign="top"><a href="#PAX-1">C.0.3 PAX Format, Version 1.0</a></td></tr>
@@ -17201,42 +17318,42 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-hour-in-date-strings"><code>hour <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Ignore-Zeros">Ignoring end-of-archive blocks</a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Ignoring-end_002dof_002darchive-blocks">Ignoring end-of-archive blocks</a></td><td valign="top"><a href="#Ignore-Zeros">Ignoring Blocks of Zeros</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Info-script">Info script</a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
-<tr><td></td><td valign="top"><a href="#interactive">Interactive operation</a></td><td valign="top"><a href="#interactive">3.8 Asking for Confirmation During Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Interactive-operation">Interactive operation</a></td><td valign="top"><a href="#interactive">3.8 Asking for Confirmation During Operations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ISO-8601-date-format"><small>ISO</small> 8601 date format</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#General-date-syntax">items in date strings</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-items-in-date-strings">items in date strings</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-L">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#label">Labeling an archive</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#label">Labeling multi-volume archives</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#label">Labels on the archive media</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Labeling-an-archive">Labeling an archive</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Labeling-multi_002dvolume-archives">Labeling multi-volume archives</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Labels-on-the-archive-media">Labels on the archive media</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-language_002c-in-dates">language, in dates</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-language_002c-in-dates-1">language, in dates</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Large-lists-of-file-names-on-small-machines">Large lists of file names on small machines</a></td><td valign="top"><a href="#Same-Order">Same Order</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Large-or-Negative-Values">large values</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-large-values">large values</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-last-day"><code>last <var>day</var></code></a></td><td valign="top"><a href="#Day-of-week-items">7.5 Day of week items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-last-in-date-strings"><code>last <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Listing-all-tar-options">Listing all <code>tar</code> options</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-listing-member-and-file-names">listing member and file names</a></td><td valign="top"><a href="#list">2.7 How to List Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Listing-volume-label">Listing volume label</a></td><td valign="top"><a href="#label">9.7 Including a Label in the Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#files">Lists of file names</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lists-of-file-names">Lists of file names</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Local-and-remote-archives">Local and remote archives</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-long_002dopt_002dcol"><code>long-opt-col</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">MacKenzie, David</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-MacKenzie_002c-David">MacKenzie, David</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-member">member</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-member-name">member name</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Members_002c-replacing-with-other-members">Members, replacing with other members</a></td><td valign="top"><a href="#append">4.2.2 How to Add Files to Existing Archives: &lsquo;<samp>--append</samp>&rsquo;</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">Meyering, Jim</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Meyering_002c-Jim">Meyering, Jim</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Middle-of-the-archive_002c-starting-in-the">Middle of the archive, starting in the</a></td><td valign="top"><a href="#Starting-File">Starting File</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-midnight-in-date-strings"><code>midnight <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-minute-in-date-strings"><code>minute <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-minutes_002c-time-zone-correction-by">minutes, time zone correction by</a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-Access-Permissions">Modes of extracted files</a></td><td valign="top"><a href="#Setting-Access-Permissions">Setting Access Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Modes-of-extracted-files">Modes of extracted files</a></td><td valign="top"><a href="#Setting-Access-Permissions">Setting Access Permissions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Modification-time_002c-excluding-files-by">Modification time, excluding files by</a></td><td valign="top"><a href="#after">6.8 Operating Only on New Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Data-Modification-Times">Modification times of extracted files</a></td><td valign="top"><a href="#Data-Modification-Times">Setting Data Modification Times</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Modification-times-of-extracted-files">Modification times of extracted files</a></td><td valign="top"><a href="#Data-Modification-Times">Setting Data Modification Times</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-month-in-date-strings"><code>month <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-month-names-in-date-strings">month names in date strings</a></td><td valign="top"><a href="#Calendar-date-items">7.2 Calendar date items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-months_002c-written_002dout">months, written-out</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
@@ -17245,100 +17362,100 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-MT_005fOFFLINE"><code>MT_OFFLINE</code></a></td><td valign="top"><a href="#Magnetic-Tape-Control">5.4.2 Magnetic Tape Control</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-MT_005fREWIND"><code>MT_REWIND</code></a></td><td valign="top"><a href="#Magnetic-Tape-Control">5.4.2 Magnetic Tape Control</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-MT_005fSTATUS"><code>MT_STATUS</code></a></td><td valign="top"><a href="#Magnetic-Tape-Control">5.4.2 Magnetic Tape Control</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Multi_002dVolume-Archives">Multi-volume archives</a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Multi_002dvolume-archives">Multi-volume archives</a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Mutli_002dvolume-archives-in-PAX-format_002c-extracting-using-non_002dGNU-tars">Mutli-volume archives in PAX format, extracting using non-GNU tars</a></td><td valign="top"><a href="#Split-Recovery">8.3.9.1 Extracting Members Split Between Volumes</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Split-Recovery">Mutli-volume archives, extracting using non-GNU tars</a></td><td valign="top"><a href="#Split-Recovery">8.3.9.1 Extracting Members Split Between Volumes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Mutli_002dvolume-archives_002c-extracting-using-non_002dGNU-tars">Mutli-volume archives, extracting using non-GNU tars</a></td><td valign="top"><a href="#Split-Recovery">8.3.9.1 Extracting Members Split Between Volumes</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-N">N</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Naming-an-archive">Naming an archive</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Large-or-Negative-Values">negative time stamps</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-negative-time-stamps">negative time stamps</a></td><td valign="top"><a href="#Large-or-Negative-Values">8.3.8 Large or Negative Values</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-next-day"><code>next <var>day</var></code></a></td><td valign="top"><a href="#Day-of-week-items">7.5 Day of week items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-next-in-date-strings"><code>next <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-noon-in-date-strings"><code>noon <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-now-in-date-strings"><code>now <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Many"><code>ntape <span class="roman">device</span></code></a></td><td valign="top"><a href="#Many">9.5 Many Archives on One Tape</a></td></tr>
-<tr><td></td><td valign="top"><a href="#nul"><code>NUL</code> terminated file names</a></td><td valign="top"><a href="#nul">6.3.1 <code>NUL</code> Terminated File Names</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Number of blocks per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Number of bytes per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ntape-device"><code>ntape <span class="roman">device</span></code></a></td><td valign="top"><a href="#Many">9.5 Many Archives on One Tape</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NUL-terminated-file-names"><code>NUL</code> terminated file names</a></td><td valign="top"><a href="#nul">6.3.1 <code>NUL</code> Terminated File Names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Number-of-blocks-per-record">Number of blocks per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Number-of-bytes-per-record">Number of bytes per record</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-numbered-backup-method">numbered <span class="roman">backup method</span></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-numbers_002c-written_002dout">numbers, written-out</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-O">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Obtaining-help">Obtaining help</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Obtaining-total-status-information">Obtaining total status information</a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
-<tr><td></td><td valign="top"><a href="#gnu">Old GNU archive format</a></td><td valign="top"><a href="#gnu">8.3.5 <acronym>GNU</acronym> and old <acronym>GNU</acronym> <code>tar</code> format</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Old-GNU-Format">Old GNU sparse format</a></td><td valign="top"><a href="#Old-GNU-Format">C.0.1 Old GNU Format</a></td></tr>
-<tr><td></td><td valign="top"><a href="#old">Old style archives</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#old">Old style format</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Old-GNU-archive-format">Old GNU archive format</a></td><td valign="top"><a href="#gnu">8.3.5 <acronym>GNU</acronym> and old <acronym>GNU</acronym> <code>tar</code> format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Old-GNU-sparse-format">Old GNU sparse format</a></td><td valign="top"><a href="#Old-GNU-Format">C.0.1 Old GNU Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Old-style-archives">Old style archives</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Old-style-format">Old style format</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-opt_002ddoc_002dcol"><code>opt-doc-col</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-option-syntax_002c-traditional">option syntax, traditional</a></td><td valign="top"><a href="#Old-Options">3.3.3 Old Option Style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Reading">Options when reading archives</a></td><td valign="top"><a href="#Reading">4.4.1 Options to Help Read Archives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Format-Variations">Options, archive format specifying</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Format-Variations">Options, format specifying</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Options-when-reading-archives">Options when reading archives</a></td><td valign="top"><a href="#Reading">4.4.1 Options to Help Read Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Options_002c-archive-format-specifying">Options, archive format specifying</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Options_002c-format-specifying">Options, format specifying</a></td><td valign="top"><a href="#Format-Variations">9.4.1 Format Variations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ordinal-numbers">ordinal numbers</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Overwriting-old-files_002c-prevention">Overwriting old files, prevention</a></td><td valign="top"><a href="#Dealing-with-Old-Files">Options Controlling the Overwriting of Existing Files</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pattern_002c-genfile">pattern, <code>genfile</code></a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#posix">PAX archive format</a></td><td valign="top"><a href="#posix">8.3.6 <acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Setting-Access-Permissions">Permissions of extracted files</a></td><td valign="top"><a href="#Setting-Access-Permissions">Setting Access Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PAX-archive-format">PAX archive format</a></td><td valign="top"><a href="#posix">8.3.6 <acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Permissions-of-extracted-files">Permissions of extracted files</a></td><td valign="top"><a href="#Setting-Access-Permissions">Setting Access Permissions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Pinard_002c-F_002e">Pinard, F.</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pm-in-date-strings"><code>pm <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
-<tr><td></td><td valign="top"><a href="#posix">POSIX archive format</a></td><td valign="top"><a href="#posix">8.3.6 <acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-POSIX-archive-format">POSIX archive format</a></td><td valign="top"><a href="#posix">8.3.6 <acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Progress-information">Progress information</a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Protecting-old-files">Protecting old files</a></td><td valign="top"><a href="#Dealing-with-Old-Files">Options Controlling the Overwriting of Existing Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Pure-numbers-in-date-strings">pure numbers in date strings</a></td><td valign="top"><a href="#Pure-numbers-in-date-strings">7.7 Pure numbers in date strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pure-numbers-in-date-strings">pure numbers in date strings</a></td><td valign="top"><a href="#Pure-numbers-in-date-strings">7.7 Pure numbers in date strings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-R">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#files">Reading file names from a file</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Reading-file-names-from-a-file">Reading file names from a file</a></td><td valign="top"><a href="#files">6.3 Reading Names from a File</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Reading-incomplete-records">Reading incomplete records</a></td><td valign="top"><a href="#Reading">4.4.1 Options to Help Read Archives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Blocking-Factor">Record Size</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Record-Size">Record Size</a></td><td valign="top"><a href="#Blocking-Factor">9.4.2 The Blocking Factor of an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Records_002c-incomplete">Records, incomplete</a></td><td valign="top"><a href="#Reading">4.4.1 Options to Help Read Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Recursion-in-directories_002c-avoiding">Recursion in directories, avoiding</a></td><td valign="top"><a href="#recurse">6.9 Descending into Directories</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Relative-items-in-date-strings">relative items in date strings</a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-relative-items-in-date-strings">relative items in date strings</a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Remote-devices">Remote devices</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Remote-Tape-Server">remote tape drive</a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-remote-tape-drive">remote tape drive</a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Removing-files-from-an-archive">Removing files from an archive</a></td><td valign="top"><a href="#delete">4.2.5 Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Replacing-members-with-other-members">Replacing members with other members</a></td><td valign="top"><a href="#append">4.2.2 How to Add Files to Existing Archives: &lsquo;<samp>--append</samp>&rsquo;</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Reports">reporting bugs</a></td><td valign="top"><a href="#Reports">1.6 Reporting bugs or suggestions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reporting-bugs">reporting bugs</a></td><td valign="top"><a href="#Reports">1.6 Reporting bugs or suggestions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RESTORE_005fBEGIN"><code>RESTORE_BEGIN</code></a></td><td valign="top"><a href="#User-Hooks">5.4.3 User Hooks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RESTORE_005fEND"><code>RESTORE_END</code></a></td><td valign="top"><a href="#User-Hooks">5.4.3 User Hooks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Resurrecting-files-from-an-archive">Resurrecting files from an archive</a></td><td valign="top"><a href="#extract">2.8 How to Extract Members from an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Retrieving-files-from-an-archive">Retrieving files from an archive</a></td><td valign="top"><a href="#extract">2.8 How to Extract Members from an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-return-status">return status</a></td><td valign="top"><a href="#Synopsis">3.1 General Synopsis of <code>tar</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-rmargin"><code>rmargin</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Remote-Tape-Server"><code>rmt</code></a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-rmt"><code>rmt</code></a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RSH"><code>RSH</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RSH_005fCOMMAND"><code>RSH_COMMAND</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Running-out-of-space">Running out of space</a></td><td valign="top"><a href="#Scarce">4.4.3 Coping with Scarce Resources</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Authors-of-get_005fdate">Salz, Rich</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Salz_002c-Rich">Salz, Rich</a></td><td valign="top"><a href="#Authors-of-get_005fdate">7.10 Authors of <code>get_date</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-short_002dopt_002dcol"><code>short-opt-col</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-simple-backup-method">simple <span class="roman">backup method</span></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SIMPLE_005fBACKUP_005fSUFFIX"><code>SIMPLE_BACKUP_SUFFIX</code></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SLEEP_005fMESSAGE"><code>SLEEP_MESSAGE</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SLEEP_005fTIME"><code>SLEEP_TIME</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Small-memory">Small memory</a></td><td valign="top"><a href="#Scarce">4.4.3 Coping with Scarce Resources</a></td></tr>
-<tr><td></td><td valign="top"><a href="#sparse">Sparse Files</a></td><td valign="top"><a href="#sparse">8.1.2 Archiving Sparse Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Sparse-Files">Sparse Files</a></td><td valign="top"><a href="#sparse">8.1.2 Archiving Sparse Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-files-v_002e0_002e0_002c-extracting-with-non_002dGNU-tars">sparse files v.0.0, extracting with non-GNU tars</a></td><td valign="top"><a href="#Sparse-Recovery">8.3.9.2 Extracting Sparse Members</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-files-v_002e0_002e1_002c-extracting-with-non_002dGNU-tars">sparse files v.0.1, extracting with non-GNU tars</a></td><td valign="top"><a href="#Sparse-Recovery">8.3.9.2 Extracting Sparse Members</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-files-v_002e1_002e0_002c-extracting-with-non_002dGNU-tars">sparse files v.1.0, extracting with non-GNU tars</a></td><td valign="top"><a href="#Sparse-Recovery">8.3.9.2 Extracting Sparse Members</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Sparse-files_002c-creating-using-genfile">Sparse files, creating using <code>genfile</code></a></td><td valign="top"><a href="#Generate-Mode">D.1 Generate Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Sparse-Recovery">sparse files, extracting with non-GNU tars</a></td><td valign="top"><a href="#Sparse-Recovery">8.3.9.2 Extracting Sparse Members</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Sparse-Formats">sparse formats</a></td><td valign="top"><a href="#Sparse-Formats">Storing Sparse Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-files_002c-extracting-with-non_002dGNU-tars">sparse files, extracting with non-GNU tars</a></td><td valign="top"><a href="#Sparse-Recovery">8.3.9.2 Extracting Sparse Members</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-formats">sparse formats</a></td><td valign="top"><a href="#Sparse-Formats">Storing Sparse Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-formats_002c-defined">sparse formats, defined</a></td><td valign="top"><a href="#sparse">8.1.2 Archiving Sparse Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Old-GNU-Format">sparse formats, Old GNU</a></td><td valign="top"><a href="#Old-GNU-Format">C.0.1 Old GNU Format</a></td></tr>
-<tr><td></td><td valign="top"><a href="#PAX-0">sparse formats, v.0.0</a></td><td valign="top"><a href="#PAX-0">C.0.2 PAX Format, Versions 0.0 and 0.1</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-formats_002c-Old-GNU">sparse formats, Old GNU</a></td><td valign="top"><a href="#Old-GNU-Format">C.0.1 Old GNU Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-formats_002c-v_002e0_002e0">sparse formats, v.0.0</a></td><td valign="top"><a href="#PAX-0">C.0.2 PAX Format, Versions 0.0 and 0.1</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sparse-formats_002c-v_002e0_002e1">sparse formats, v.0.1</a></td><td valign="top"><a href="#PAX-0">C.0.2 PAX Format, Versions 0.0 and 0.1</a></td></tr>
-<tr><td></td><td valign="top"><a href="#PAX-1">sparse formats, v.1.0</a></td><td valign="top"><a href="#PAX-1">C.0.3 PAX Format, Version 1.0</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Sparse-Formats">sparse versions</a></td><td valign="top"><a href="#Sparse-Formats">Storing Sparse Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-Archive-Members">Specifying archive members</a></td><td valign="top"><a href="#Selecting-Archive-Members">6.2 Selecting Archive Members</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Selecting-Archive-Members">Specifying files to act on</a></td><td valign="top"><a href="#Selecting-Archive-Members">6.2 Selecting Archive Members</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-formats_002c-v_002e1_002e0">sparse formats, v.1.0</a></td><td valign="top"><a href="#PAX-1">C.0.3 PAX Format, Version 1.0</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sparse-versions">sparse versions</a></td><td valign="top"><a href="#Sparse-Formats">Storing Sparse Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Specifying-archive-members">Specifying archive members</a></td><td valign="top"><a href="#Selecting-Archive-Members">6.2 Selecting Archive Members</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Specifying-files-to-act-on">Specifying files to act on</a></td><td valign="top"><a href="#Selecting-Archive-Members">6.2 Selecting Archive Members</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Standard-input-and-output">Standard input and output</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Writing-to-Standard-Output">Standard output, writing extracted files to</a></td><td valign="top"><a href="#Writing-to-Standard-Output">Writing to Standard Output</a></td></tr>
-<tr><td></td><td valign="top"><a href="#gzip">Storing archives in compressed format</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#dereference">Symbolic link as file name</a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Standard-output_002c-writing-extracted-files-to">Standard output, writing extracted files to</a></td><td valign="top"><a href="#Writing-to-Standard-Output">Writing to Standard Output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Storing-archives-in-compressed-format">Storing archives in compressed format</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Symbolic-link-as-file-name">Symbolic link as file name</a></td><td valign="top"><a href="#dereference">8.3.2 Symbolic Links</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-T">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-TAPE"><code>TAPE</code></a></td><td valign="top"><a href="#file-tutorial">The &lsquo;<samp>--file</samp>&rsquo; Option</a></td></tr>
@@ -17347,10 +17464,10 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-tape-positioning">tape positioning</a></td><td valign="top"><a href="#Many">9.5 Many Archives on One Tape</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-TAPE_005fFILE"><code>TAPE_FILE</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Tapes_002c-using-_002d_002ddelete-and">Tapes, using &lsquo;<samp>--delete</samp>&rsquo; and</a></td><td valign="top"><a href="#delete">4.2.5 Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a></td></tr>
-<tr><td></td><td valign="top"><a href="#What-tar-Does">tar</a></td><td valign="top"><a href="#What-tar-Does">1.3 What <code>tar</code> Does</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tar">tar</a></td><td valign="top"><a href="#What-tar-Does">1.3 What <code>tar</code> Does</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-TAR"><code>TAR</code></a></td><td valign="top"><a href="#General_002dPurpose-Variables">5.4.1 General-Purpose Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Definitions">tar archive</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Formats">Tar archive formats</a></td><td valign="top"><a href="#Formats">8. Controlling the Archive Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tar-archive">tar archive</a></td><td valign="top"><a href="#Definitions">1.2 Some Definitions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Tar-archive-formats">Tar archive formats</a></td><td valign="top"><a href="#Formats">8. Controlling the Archive Format</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tar-entry">tar entry</a></td><td valign="top"><a href="#Naming-tar-Archives">1.4 How <code>tar</code> Archives are Named</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tar-file">tar file</a></td><td valign="top"><a href="#Naming-tar-Archives">1.4 How <code>tar</code> Archives are Named</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tar-to-a-remote-device">tar to a remote device</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
@@ -17373,15 +17490,15 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-TAR_005fUNAME_002c-to_002dcommand-environment"><code>TAR_UNAME, to-command environment</code></a></td><td valign="top"><a href="#Writing-to-an-External-Program">Writing to an External Program</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-TAR_005fVERSION_002c-info-script-environment-variable"><code>TAR_VERSION, info script environment variable</code></a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-TAR_005fVOLUME_002c-info-script-environment-variable"><code>TAR_VOLUME, info script environment variable</code></a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Tarcat"><code>tarcat</code></a></td><td valign="top"><a href="#Tarcat">9.6.3 Concatenate Volumes into a Single Archive</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tarcat"><code>tarcat</code></a></td><td valign="top"><a href="#Tarcat">9.6.3 Concatenate Volumes into a Single Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-this-in-date-strings"><code>this <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Time-of-day-items">time of day item</a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-time-of-day-item">time of day item</a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-time-zone-correction">time zone correction</a></td><td valign="top"><a href="#Time-of-day-items">7.3 Time of day items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-time-zone-item">time zone item</a></td><td valign="top"><a href="#General-date-syntax">7.1 General date syntax</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Time-zone-items">time zone item</a></td><td valign="top"><a href="#Time-zone-items">7.4 Time zone items</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-time-zone-item-1">time zone item</a></td><td valign="top"><a href="#Time-zone-items">7.4 Time zone items</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-today-in-date-strings"><code>today <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-tomorrow-in-date-strings"><code>tomorrow <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Specifying-time-zone-rules"><code>TZ</code></a></td><td valign="top"><a href="#Specifying-time-zone-rules">7.9 Specifying time zone rules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-TZ"><code>TZ</code></a></td><td valign="top"><a href="#Specifying-time-zone-rules">7.9 Specifying time zone rules</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-U">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Ultrix-3_002e1-and-write-failure">Ultrix 3.1 and write failure</a></td><td valign="top"><a href="#Remote-Tape-Server">9.2 The Remote Tape Server</a></td></tr>
@@ -17389,15 +17506,15 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-Updating-an-archive">Updating an archive</a></td><td valign="top"><a href="#update">4.2.3 Updating an Archive</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-usage_002dindent"><code>usage-indent</code></a></td><td valign="top"><a href="#Configuring-Help-Summary">B. Configuring Help Summary</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Using-encrypted-archives">Using encrypted archives</a></td><td valign="top"><a href="#gzip">8.1.1 Creating and Reading Compressed Archives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#ustar">ustar archive format</a></td><td valign="top"><a href="#ustar">8.3.4 Ustar Archive Format</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ustar-archive-format">ustar archive format</a></td><td valign="top"><a href="#ustar">8.3.4 Ustar Archive Format</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-uuencode"><code>uuencode</code></a></td><td valign="top"><a href="#Applications">4.6 Notable <code>tar</code> Usages</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-V">V</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#old">v7 archive format</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-v7-archive-format">v7 archive format</a></td><td valign="top"><a href="#old">8.3.3 Old V7 Archives</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Verbose-operation">Verbose operation</a></td><td valign="top"><a href="#verbose">3.7 Checking <code>tar</code> progress</a></td></tr>
-<tr><td></td><td valign="top"><a href="#verify">Verifying a write operation</a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
-<tr><td></td><td valign="top"><a href="#compare">Verifying the currency of an archive</a></td><td valign="top"><a href="#compare">4.2.6 Comparing Archive Members with the File System</a></td></tr>
-<tr><td></td><td valign="top"><a href="#help">Version of the <code>tar</code> program</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Verifying-a-write-operation">Verifying a write operation</a></td><td valign="top"><a href="#verify">9.8 Verifying Data as It is Stored</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Verifying-the-currency-of-an-archive">Verifying the currency of an archive</a></td><td valign="top"><a href="#compare">4.2.6 Comparing Archive Members with the File System</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Version-of-the-tar-program">Version of the <code>tar</code> program</a></td><td valign="top"><a href="#help">3.5 <acronym>GNU</acronym> <code>tar</code> documentation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-version_002dcontrol-Emacs-variable"><code>version-control <span class="roman">Emacs variable</span></code></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-VERSION_005fCONTROL"><code>VERSION_CONTROL</code></a></td><td valign="top"><a href="#backup">4.5 Backup options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-volno-file">volno file</a></td><td valign="top"><a href="#Multi_002dVolume-Archives">9.6.1 Archives Longer than One Tape or Disk</a></td></tr>
@@ -17409,7 +17526,7 @@ For a cross-reference of short command line options, <a href="#Short-Option-Summ
 <tr><td></td><td valign="top"><a href="#index-week-in-date-strings"><code>week <span class="roman">in date strings</span></code></a></td><td valign="top"><a href="#Relative-items-in-date-strings">7.6 Relative items in date strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Where-is-the-archive_003f">Where is the archive?</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Working-directory_002c-specifying">Working directory, specifying</a></td><td valign="top"><a href="#directory">6.10.1 Changing the Working Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Writing-to-Standard-Output">Writing extracted files to standard output</a></td><td valign="top"><a href="#Writing-to-Standard-Output">Writing to Standard Output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Writing-extracted-files-to-standard-output">Writing extracted files to standard output</a></td><td valign="top"><a href="#Writing-to-Standard-Output">Writing to Standard Output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Writing-new-archives">Writing new archives</a></td><td valign="top"><a href="#file">6.1 Choosing and Naming Archive Files</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Index-1_cp_letter-X">X</a></th><td></td><td></td></tr>

@@ -17,6 +17,7 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Revision management ==
+<div id="index-Revision-management"></div>
 
 
 <p>If you have read this far, you probably have a pretty
@@ -51,6 +52,9 @@ than one person is working in a repository.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === When to commit? ===
+<div id="index-When-to-commit"></div>
+<div id="index-Committing_002c-when-to"></div>
+<div id="index-Policy"></div>
 
 <p>Your group should decide which policy to use regarding
 commits.  Several policies are possible, and as your

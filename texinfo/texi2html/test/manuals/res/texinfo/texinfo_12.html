@@ -78,6 +78,9 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">11. Lists and Tables</h1>
+<a name="index-Making-lists-and-tables"></a>
+<a name="index-Lists-and-tables_002c-making"></a>
+<a name="index-Tables-and-lists_002c-making"></a>
 
 <p>Texinfo has several ways of making lists and tables.  Lists can be
 bulleted or numbered; two-column tables can highlight the items in
@@ -189,6 +192,8 @@ Two-column tables with highlighting.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">11.1 <code>@itemize</code>: Making an Itemized List</h2>
+<a name="index-Itemization"></a>
+<a name="index-itemize"></a>
 
 <p>The <code>@itemize</code> command produces sequences of indented
 paragraphs, with a bullet or other mark inside the left margin
@@ -306,6 +311,8 @@ Second outer item.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">11.2 <code>@enumerate</code>: Making a Numbered or Lettered List</h2>
+<a name="index-Enumeration"></a>
+<a name="index-enumerate"></a>
 
 <p><code>@enumerate</code> is like <code>@itemize</code> (see section <a href="#itemize"><code>@itemize</code></a>), except that the labels on the items are
 successive integers or letters instead of bullets.
@@ -428,6 +435,8 @@ a letter, beginning with that lower case letter.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">11.3 Making a Two-column Table</h2>
+<a name="index-Tables_002c-making-two_002dcolumn"></a>
+<a name="index-table"></a>
 
 <p><code>@table</code> is similar to <code>@itemize</code> (see section <a href="#itemize"><code>@itemize</code></a>), but allows you to specify a name or heading line for
 each item.  The <code>@table</code> command is used to produce two-column
@@ -535,6 +544,10 @@ text, use the <code>@itemx</code> command.  (See section <a href="#itemx"><code>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">11.3.1 <code>@ftable</code> and <code>@vtable</code></h3>
+<a name="index-Tables-with-indexes"></a>
+<a name="index-Indexing-table-entries-automatically"></a>
+<a name="index-ftable"></a>
+<a name="index-vtable"></a>
 
 <p>The <code>@ftable</code> and <code>@vtable</code> commands are the same as the
 <code>@table</code> command except that <code>@ftable</code> automatically enters
@@ -575,6 +588,8 @@ itself.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">11.3.2 <code>@itemx</code></h3>
+<a name="index-Two-named-items-for-_0040table"></a>
+<a name="index-itemx"></a>
 
 <p>Use the <code>@itemx</code> command inside a table when you have two or more
 first column entries for the same item, each of which should appear on a
@@ -629,6 +644,8 @@ a two-column table.)
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">11.4 Multi-column Tables</h2>
+<a name="index-Tables_002c-making-multi_002dcolumn"></a>
+<a name="index-multitable"></a>
 
 <p><code>@multitable</code> allows you to construct tables with any number of
 columns, with each column having any width you like.
@@ -665,6 +682,9 @@ multitable</code> completes the table.  Details in the sections below.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">11.4.1 Multitable Column Widths</h3>
+<a name="index-Multitable-column-widths"></a>
+<a name="index-Column-widths_002c-defining-for-multitables"></a>
+<a name="index-Widths_002c-defining-multitable-column"></a>
 
 <p>You can define the column widths for a multitable in two ways: as
 fractions of the line length; or with a prototype row.  Mixing the two
@@ -726,7 +746,11 @@ particularly likely to be useful.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">11.4.2 Multitable Rows</h3>
+<a name="index-Multitable-rows"></a>
+<a name="index-Rows_002c-of-a-multitable"></a>
 
+<a name="index-item-2"></a>
+<a name="index-tab"></a>
 <p>After the <code>@multitable</code> command defining the column widths (see
 the previous section), you begin each row in the body of a multitable
 with <code>@item</code>, and separate the column entries with <code>@tab</code>.

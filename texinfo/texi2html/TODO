@@ -8,7 +8,7 @@ This file contains a list of things yet to be done (see also in doc/TODO):
   etc).
   - xhtml with in line style
   - Singular manual style
-  - How complicated could it be to get a creation of XML, what about SGML ?
+  - How complicated could it be to get a creation of SGML ?
   - to LaTeX
   - to RTF
   - to open document
@@ -42,6 +42,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'current_lang'}
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
+  $Texi2HTML::THISDOC{'do_about'}
 
   $copying_comment, $titlepage better and $documentdescription
   $program_string
@@ -321,9 +322,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * to solve above issue, the definition arg formatted with simple_format 
   should alo be passed down
 
-* why do index entries use 'label', and not id,target?
-
-* makeinfo has a lot of other short command line switches
+* makeinfo has a lot of other short command line switches, but implement
+  only those that are documented, in --hel or info makeinfo.
 
 * -I can take paths (separated by : or ;) not only directories.
 

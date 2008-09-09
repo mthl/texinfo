@@ -78,6 +78,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">19. Formatting and Printing Hardcopy</h1>
+<a name="index-Format-and-print-hardcopy"></a>
+<a name="index-Printing-hardcopy"></a>
+<a name="index-Hardcopy_002c-printing-it"></a>
+<a name="index-Making-a-printed-manual"></a>
+<a name="index-Sorting-indices"></a>
+<a name="index-Indices_002c-sorting"></a>
+<a name="index-TeX-index-sorting"></a>
+<a name="index-texindex"></a>
 
 <p>There are three major shell commands for making a printed manual from a
 Texinfo file: one for converting the Texinfo file into a file that will be
@@ -177,6 +185,9 @@ process them differently to make an Info file (see section <a href="texinfo_21.h
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.2 Format with <code>tex</code> and <code>texindex</code></h2>
+<a name="index-Shell-formatting-with-tex-and-texindex"></a>
+<a name="index-Formatting-with-tex-and-texindex"></a>
+<a name="index-DVI-file"></a>
 
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
@@ -189,7 +200,7 @@ files containing information for indices, cross references, etc.  The
 DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
 any device (see the following sections).
 </p>
-<a name="index-texindex"></a>
+<a name="index-texindex-1"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
 command automatically generates indices; see section <a href="#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
@@ -315,6 +326,7 @@ your file would look approximately like this:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.3 Format with <code>texi2dvi</code></h2>
+<a name="index-texi2dvi-_0028shell-script_0029"></a>
 
 <p>The <code>texi2dvi</code> command automatically runs both <code>tex</code> and
 <code>texindex</code> as many times as necessary to produce a DVI file with
@@ -367,6 +379,7 @@ see section <a href="#Preparing-for-TeX">Preparing for TeX</a>).
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.4 Shell Print Using <code>lpr -d</code></h2>
+<a name="index-lpr-_0028DVI-print-command_0029"></a>
 
 <p>The precise command to print a DVI file depends on your system
 installation.  Two common ones are &lsquo;<samp>dvips foo.dvi -o</samp>&rsquo; and &lsquo;<samp>lpr
@@ -444,6 +457,11 @@ directly, just send it to the appropriate port, usually &lsquo;<samp>PRN</samp>&
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.5 From an Emacs Shell</h2>
+<a name="index-Print_002c-format-from-Emacs-shell"></a>
+<a name="index-Format_002c-print-from-Emacs-shell"></a>
+<a name="index-Shell_002c-format_002c-print-from"></a>
+<a name="index-Emacs-shell_002c-format_002c-print-from"></a>
+<a name="index-GNU-Emacs-shell_002c-format_002c-print-from"></a>
 
 <p>You can give formatting and printing commands from a shell within GNU
 Emacs.  To create a shell within Emacs, type <kbd>M-x shell</kbd>.  In this
@@ -485,6 +503,9 @@ and printing in Texinfo mode.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.6 Formatting and Printing in Texinfo Mode</h2>
+<a name="index-Region-printing-in-Texinfo-mode"></a>
+<a name="index-Format-and-print-in-Texinfo-mode"></a>
+<a name="index-Print-and-format-in-Texinfo-mode"></a>
 
 <p>Texinfo mode provides several predefined key commands for TeX
 formatting and printing.  These include commands for sorting indices,
@@ -614,6 +635,9 @@ the <kbd>M-x customize</kbd> command.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.7 Using the Local Variables List</h2>
+<a name="index-Local-variables"></a>
+<a name="index-Compile-command-for-formatting"></a>
+<a name="index-Format-with-the-compile-command"></a>
 
 <p>Yet another way to apply the TeX formatting command to a Texinfo file
 is to put that command in a <em>local variables list</em> at the end of the
@@ -653,6 +677,9 @@ this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.8 TeX Formatting Requirements Summary</h2>
+<a name="index-Requirements-for-formatting"></a>
+<a name="index-Minimal-requirements-for-formatting"></a>
+<a name="index-Formatting-requirements"></a>
 
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
@@ -710,6 +737,13 @@ contents.  (And of course most manuals contain a body of text as well.)
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.9 Preparing for TeX</h2>
+<a name="index-Preparing-for-TeX"></a>
+<a name="index-TeX-input-initialization"></a>
+<a name="index-TEXINPUTS-environment-variable"></a>
+<a name="index-TEXINPUTS"></a>
+<a name="index-_002eprofile-initialization-file"></a>
+<a name="index-_002ecshrc-initialization-file"></a>
+<a name="index-Initialization-file-for-TeX-input"></a>
 
 <p>TeX needs to know where to find the &lsquo;<tt>texinfo.tex</tt>&rsquo; file that the
 &lsquo;<samp>\input texinfo</samp>&rsquo; command on the first line reads.  The
@@ -747,7 +781,7 @@ example, if &lsquo;<tt>texinfo.cnf</tt>&rsquo; contains the line &lsquo;<samp>@a
 that page size in effect.  If you have nothing to put in
 &lsquo;<tt>texinfo.cnf</tt>&rsquo;, you do not need to create it.
 </p>
-<a name="index-TEXINPUTS"></a>
+<a name="index-TEXINPUTS-1"></a>
 <p>If neither of the above locations for these system files suffice for
 you, you can specify the directories explicitly.  For
 &lsquo;<tt>texinfo.tex</tt>&rsquo;, you can do this by writing the complete path for the
@@ -823,6 +857,9 @@ subdirectory &lsquo;<tt>web2c</tt>&rsquo; of your TeX installation.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.10 Overfull &ldquo;hboxes&rdquo;</h2>
+<a name="index-Overfull-hboxes"></a>
+<a name="index-hboxes_002c-overfull"></a>
+<a name="index-Final-output"></a>
 
 <p>TeX is sometimes unable to typeset a line without extending it into
 the right margin.  This can occur when TeX comes upon what it
@@ -903,6 +940,11 @@ before the <code>@titlepage</code> command:
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.11 Printing &ldquo;Small&rdquo; Books</h2>
+<a name="index-smallbook"></a>
+<a name="index-Small-book-size"></a>
+<a name="index-Book_002c-printing-small"></a>
+<a name="index-Page-sizes-for-books"></a>
+<a name="index-Size-of-printed-book"></a>
 
 <p>By default, TeX typesets pages for printing in an 8.5 by 11 inch
 format.  However, you can direct TeX to typeset a document in a 7 by
@@ -949,6 +991,11 @@ require changing the source file.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.12 Printing on A4 Paper</h2>
+<a name="index-A4-paper_002c-printing-on"></a>
+<a name="index-A5-paper_002c-printing-on"></a>
+<a name="index-Paper-size_002c-A4"></a>
+<a name="index-European-A4-paper"></a>
+<a name="index-afourpaper"></a>
 
 <p>You can tell TeX to format a document for printing on European size
 A4 paper (or A5) with the <code>@afourpaper</code> (or <code>@afivepaper</code>)
@@ -993,6 +1040,13 @@ wide format.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</h2>
+<a name="index-pagesizes"></a>
+<a name="index-Custom-page-sizes"></a>
+<a name="index-Page-sizes_002c-customized"></a>
+<a name="index-Text-width-and-height"></a>
+<a name="index-Width-of-text-area"></a>
+<a name="index-Height-of-text-area"></a>
+<a name="index-Depth-of-text-area"></a>
 
 <p>You can explicitly specify the height and (optionally) width of the main
 text area on the page with the <code>@pagesizes</code> command.  Write this
@@ -1042,6 +1096,9 @@ require changing the source file.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.14 Cropmarks and Magnification</h2>
+<a name="index-cropmarks"></a>
+<a name="index-Cropmarks-for-printing"></a>
+<a name="index-Printing-cropmarks"></a>
 <p>You can (attempt to) direct TeX to print cropmarks at the corners of
 pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</code>
 command on a line by itself between <code>@iftex</code> and <code>@end
@@ -1113,7 +1170,9 @@ magnifications.  Be prepared to experiment.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">19.15 PDF Output</h2>
+<a name="index-PDF-output"></a>
 
+<a name="index-pdftex"></a>
 <p>You can generate a PDF output file from Texinfo source by using the
 <code>pdftex</code> program to process your file instead of plain
 <code>tex</code>.  Just run &lsquo;<samp>pdftex foo.texi</samp>&rsquo; instead of &lsquo;<samp>tex

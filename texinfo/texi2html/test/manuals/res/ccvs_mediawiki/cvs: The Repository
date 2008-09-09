@@ -17,6 +17,12 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == The Repository ==
+<div id="index-Repository-_0028intro_0029"></div>
+<div id="index-Repository_002c-example"></div>
+<div id="index-Layout-of-repository"></div>
+<div id="index-Typical-repository"></div>
+<div id="index-_002fusr_002flocal_002fcvsroot_002c-as-example-repository"></div>
+<div id="index-cvsroot"></div>
 
 <p>The <small>CVS</small> <em>repository</em> stores a complete copy of
 all the files and directories which are under version
@@ -162,6 +168,7 @@ should be two ways of referring to the same repository.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === How data is stored in the repository ===
+<div id="index-Repository_002c-how-data-is-stored"></div>
 
 <p>For most purposes it isn&rsquo;t important <em>how</em>
 <small>CVS</small> stores information in the repository.  In
@@ -316,6 +323,11 @@ rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== File permissions ====
+<div id="index-Security_002c-file-permissions-in-repository"></div>
+<div id="index-File-permissions_002c-general"></div>
+<div id="index-Permissions_002c-general"></div>
+<div id="index-Group"></div>
+<div id="index-Read_002donly-files_002c-in-repository"></div>
 <p>All &lsquo;<samp>,v</samp>&rsquo; files are created read-only, and you
 should not change the permission of those files.  The
 directories inside the repository should be writable by
@@ -424,6 +436,9 @@ carefully if you are considering this option
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== File Permission issues specific to Windows ====
+<div id="index-Windows_002c-and-permissions"></div>
+<div id="index-File-permissions_002c-Windows_002dspecific"></div>
+<div id="index-Permissions_002c-Windows_002dspecific"></div>
 
 <p>Some file permission issues are specific to Windows
 operating systems (Windows 95, Windows NT, and
@@ -463,6 +478,7 @@ something out, please let us know as described in
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== The attic ====
+<div id="index-Attic"></div>
 
 <p>You will notice that sometimes <small>CVS</small> stores an
 <small>RCS</small> file in the <code>Attic</code>.  For example, if the
@@ -512,6 +528,7 @@ non-<code>dead</code> state.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== The CVS directory in the repository ====
+<div id="index-CVS-directory_002c-in-repository"></div>
 
 <p>The &lsquo;<tt>CVS</tt>&rsquo; directory in each repository directory
 contains information such as file attributes (in a file
@@ -622,6 +639,10 @@ there must be a single tab character there and no spaces.
 </tr></table>
 ==== CVS locks in the repository ====
 
+<div id="index-_0023cvs_002erfl_002c-technical-details"></div>
+<div id="index-_0023cvs_002ewfl_002c-technical-details"></div>
+<div id="index-_0023cvs_002elock_002c-technical-details"></div>
+<div id="index-Locks_002c-cvs_002c-technical-details"></div>
 <p>For an introduction to <small>CVS</small> locks focusing on
 user-visible behavior, see [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS].  The
 following section is aimed at people who are writing
@@ -711,6 +732,7 @@ further discussion/rationale.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== How files are stored in the CVSROOT directory ====
+<div id="index-CVSROOT_002c-storage-of-files"></div>
 
 <p>The &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directory contains the
 various administrative files.  In some ways this
@@ -779,6 +801,7 @@ administrative files, see [cvs: Reference manual for Administrative files#Admini
 === How data is stored in the working directory ===
 
 
+<div id="index-CVS-directory_002c-in-working-directory"></div>
 <p>While we are discussing <small>CVS</small> internals which may
 become visible from time to time, we might as well talk
 about what <small>CVS</small> puts in the &lsquo;<tt>CVS</tt>&rsquo; directories
@@ -1084,6 +1107,10 @@ by the client; the non-client/server <small>CVS</small> consults
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === The administrative files ===
+<div id="index-Administrative-files-_0028intro_0029"></div>
+<div id="index-Modules-file"></div>
+<div id="index-CVSROOT_002c-module-name"></div>
+<div id="index-Defining-modules-_0028intro_0029"></div>
 
 
 <p>The directory &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains some <em>administrative
@@ -1136,6 +1163,8 @@ available features.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ==== Editing administrative files ====
+<div id="index-Editing-administrative-files"></div>
+<div id="index-Administrative-files_002c-editing-them"></div>
 
 <p>You edit the administrative files in the same way that you would edit
 any other module.  Use &lsquo;<samp>cvs checkout CVSROOT</samp>&rsquo; to get a working
@@ -1167,6 +1196,12 @@ revisions.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Multiple repositories ===
+<div id="index-Multiple-repositories"></div>
+<div id="index-Repositories_002c-multiple"></div>
+<div id="index-Many-repositories"></div>
+<div id="index-Parallel-repositories"></div>
+<div id="index-Disjoint-repositories"></div>
+<div id="index-CVSROOT_002c-multiple-repositories"></div>
 
 <p>In some situations it is a good idea to have more than
 one repository, for instance if you have two
@@ -1224,6 +1259,9 @@ and server1, to update everything else.
 </tr></table>
 === Creating a repository ===
 
+<div id="index-Repository_002c-setting-up"></div>
+<div id="index-Creating-a-repository"></div>
+<div id="index-Setting-up-a-repository"></div>
 
 <p>To set up a <small>CVS</small> repository, first choose the
 machine and disk on which you want to store the
@@ -1292,6 +1330,8 @@ don&rsquo;t want that, remove the history file after running
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Backing up a repository ===
+<div id="index-Repository_002c-backing-up"></div>
+<div id="index-Backing-up_002c-repository"></div>
 
 <p>There is nothing particularly magical about the files
 in the repository; for the most part it is possible to
@@ -1362,6 +1402,9 @@ the changes into the repository.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Moving a repository ===
+<div id="index-Repository_002c-moving"></div>
+<div id="index-Moving-a-repository"></div>
+<div id="index-Copying-a-repository"></div>
 
 <p>Just as backing up the files in the repository is
 pretty much like backing up any other files, if you
@@ -1404,6 +1447,17 @@ isn&rsquo;t worth it.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Remote repositories ===
+<div id="index-Repositories_002c-remote"></div>
+<div id="index-Remote-repositories"></div>
+<div id="index-Client_002fServer-Operation"></div>
+<div id="index-Server_002c-CVS"></div>
+<div id="index-Remote-repositories_002c-port-specification"></div>
+<div id="index-Repositories_002c-remote_002c-port-specification"></div>
+<div id="index-Client_002fServer-Operation_002c-port-specification"></div>
+<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-port_002c-specifying-for-remote-repositories"></div>
 
 <p>        Your working copy of the sources can be on a
 different machine than the repository.  Using <small>CVS</small>
@@ -1535,6 +1589,7 @@ trouble.
 </tr></table>
 ==== Connecting with rsh ====
 
+<div id="index-rsh"></div>
 <p><small>CVS</small> uses the &lsquo;<samp>rsh</samp>&rsquo; protocol to perform these
 operations, so the remote user host needs to have a
 &lsquo;<tt>.rhosts</tt>&rsquo; file which grants access to the local
@@ -1671,13 +1726,13 @@ permissions on the &lsquo;<tt>$CVSROOT</tt>&rsquo; and
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See [[#Password-authentication-security|Security considerations with password authentication]], for more details.
 </p>
 <div id="index-pserver-_0028subcommand_0029"></div>
-<div id="index-Remote-repositories_002c-port-specification"></div>
-<div id="index-Repositories_002c-remote_002c-port-specification"></div>
-<div id="index-Client_002fServer-Operation_002c-port-specification"></div>
-<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
-<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
-<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
-<div id="index-port_002c-specifying-for-remote-repositories"></div>
+<div id="index-Remote-repositories_002c-port-specification-1"></div>
+<div id="index-Repositories_002c-remote_002c-port-specification-1"></div>
+<div id="index-Client_002fServer-Operation_002c-port-specification-1"></div>
+<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-port_002c-specifying-for-remote-repositories-1"></div>
 <div id="index-Password-server_002c-setting-up"></div>
 <div id="index-Authenticating-server_002c-setting-up"></div>
 <div id="index-inetd_002c-configuring-for-pserver"></div>
@@ -1974,6 +2029,10 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 ===== Using the client with password authentication =====
+<div id="index-Login-_0028subcommand_0029"></div>
+<div id="index-Password-client_002c-using"></div>
+<div id="index-Authenticated-client_002c-using"></div>
+<div id="index-_003apserver_003a_002c-setting-up"></div>
 <p>To run a <small>CVS</small> command on a remote repository via
 the password-authenticating server, one specifies the
 <code>pserver</code> protocol, optional username, repository host, an
@@ -2080,6 +2139,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 </tr></table>
 ===== Security considerations with password authentication =====
 
+<div id="index-Security_002c-of-pserver"></div>
 <p>The passwords are stored on the client side in a
 trivial encoding of the cleartext, and transmitted in
 the same encoding.  The encoding is done only to
@@ -2138,6 +2198,10 @@ security, get Kerberos.
 </tr></table>
 ==== Direct connection with GSSAPI ====
 
+<div id="index-GSSAPI"></div>
+<div id="index-Security_002c-GSSAPI"></div>
+<div id="index-_003agserver_003a_002c-setting-up"></div>
+<div id="index-Kerberos_002c-using-_003agserver_003a"></div>
 <p>GSSAPI is a generic interface to network security
 systems such as Kerberos 5.
 If you have a working GSSAPI library, you can have
@@ -2204,6 +2268,9 @@ example,
 </tr></table>
 ==== Direct connection with kerberos ====
 
+<div id="index-Kerberos_002c-using-_003akserver_003a"></div>
+<div id="index-Security_002c-kerberos"></div>
+<div id="index-_003akserver_003a_002c-setting-up"></div>
 <p>The easiest way to use kerberos is to use the kerberos
 <code>rsh</code>, as described in [[#Connecting-via-rsh|Connecting with rsh]].
 The main disadvantage of using rsh is that all the data
@@ -2270,6 +2337,8 @@ connection via rsh; this version will not do so.
 </tr></table>
 ==== Connecting with fork ====
 
+<div id="index-fork_002c-access-method"></div>
+<div id="index-_003afork_003a_002c-setting-up"></div>
 <p>This access method allows you to connect to a
 repository on your local disk via the remote protocol.
 In other words it does pretty much the same thing as
@@ -2319,6 +2388,9 @@ environment variable.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Read-only repository access ===
+<div id="index-Read_002donly-repository-access"></div>
+<div id="index-readers-_0028admin-file_0029"></div>
+<div id="index-writers-_0028admin-file_0029"></div>
 
 <p>        It is possible to grant read-only repository
 access to people using the password-authenticated
@@ -2419,6 +2491,8 @@ read-only access.
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 === Temporary directories for the server ===
+<div id="index-Temporary-directories_002c-and-server"></div>
+<div id="index-Server_002c-temporary-directories"></div>
 
 <p>While running, the <small>CVS</small> server creates temporary
 directories.  They are named

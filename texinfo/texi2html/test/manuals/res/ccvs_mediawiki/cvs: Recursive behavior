@@ -17,6 +17,10 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 == Recursive behavior ==
+<div id="index-Recursive-_0028directory-descending_0029"></div>
+<div id="index-Directory_002c-descending"></div>
+<div id="index-Descending-directories"></div>
+<div id="index-Subdirectories"></div>
 
 <p>Almost all of the subcommands of <small>CVS</small> work
 recursively when you specify a directory as an

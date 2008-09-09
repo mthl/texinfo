@@ -77,6 +77,7 @@ ul.toc {list-style: none}
 <li> <a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a> </li>
 </ul>
 
+<a name="index-controlling-the-run"></a>
 
 <p>It is possible to add code that will be executed at the end of each time
 step. It is also possible to specify which time step leads to a printout on
@@ -98,6 +99,8 @@ program, this possibility is covered in <a href="Calling-the-model-code.html#Cal
 </tr></table>
 <h3 class="subsection"> 2.4.1 Executing code at the end of each time step </h3>
 
+<a name="index-zsteer"></a>
+<a name="index-zsteer_002einc"></a>
 
 <p>The code in the sequence &lsquo;<tt>zsteer</tt>&rsquo; is executed at the end of each time
 step. It is possible to change the time step length (variable <code>dt</code>)
@@ -218,6 +221,9 @@ We have yet no example of managing the time-step.
 </tr></table>
 <h3 class="subsection"> 2.4.2 Controlling the printout and data output </h3>
 
+<a name="index-printing"></a>
+<a name="index-zprint"></a>
+<a name="index-modzprint-1"></a>
 
 <p>The printout on standard output is performed if the variable <code>zprint</code> 
 of type <code>logical</code> is true. Therefore it is possible to control this

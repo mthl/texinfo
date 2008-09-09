@@ -213,6 +213,7 @@ split documents at various levels, and use
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">2. Installation of <code>texi2html</code></h1>
+<a name="index-Installation"></a>
 <p>description of the installation process.
 What do you need?
 How?
@@ -237,6 +238,8 @@ How?
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">3. Customizing files</h1>
+<a name="index-Installation-1"></a>
+<a name="index-frames"></a>
 <p>Result based on using &lsquo;<samp>-frames</samp>&rsquo;
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
@@ -676,6 +679,7 @@ needed steps.
 <h3 class="subsection">6.1.1 Body Text</h3>
 
 
+<a name="index-T2H_005fBODYTEXT"></a>
 
 <table><tr><td>&nbsp;</td><td><pre class="example">$T2H_BODYTEXT =
     . 'LANG=&quot;' . $T2H_LANG . '&quot; BGCOLOR=&quot;#FFFFFF&quot; '
@@ -727,7 +731,10 @@ change the entry <var>T2H_BODYTEXT</var>.
 </tr></table>
 <h3 class="subsection">6.1.3 After Body Text</h3>
 
+<a name="index-T2H_005fAFTER_005fBODY_005fOPEN"></a>
+<a name="index-T2H_005fPRE_005fBODY_005fCLOSE"></a>
 
+<a name="index-T2H_005fEXTRA_005fHEAD"></a>
 
 <table><tr><td>&nbsp;</td><td><pre class="example"># text inserted after &lt;BODY ...&gt;
 $T2H_AFTER_BODY_OPEN = '';
@@ -815,6 +822,12 @@ $T2H_AFTER_BODY_OPEN
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">7. Initialization file</h1>
+<a name="index-configure"></a>
+<a name="index-texi2html_002einit"></a>
+<a name="index-texi2htmlrc_002c-global-initialization"></a>
+<a name="index-_002etexi2htmlrc_002c-user-initialization"></a>
+<a name="index-sysconfdir"></a>
+<a name="index-init_005ffile"></a>
 <p>&lsquo;<tt>texi2html.init</tt>&rsquo;
 </p>
 
@@ -933,6 +946,7 @@ the means described above.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">7.4 Loadable initialization file</h2>
+<a name="index-init_005ffile-1"></a>
 <p>&lsquo;<samp>-init_file</samp>&rsquo;
 </p>
 
@@ -1000,6 +1014,8 @@ your needs.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.1 Number sections.</h3>
+<a name="index-T2H_005fNUMBER_005fSECTIONS"></a>
+<a name="index-T2H_005fNODE_005fNAME_005fIN_005fMENU"></a>
 <p>if set, and <var>$T2H_NUMBER_SECTIONS</var> is set, then use node
 names in menu entries, instead of section names
 </p>
@@ -1025,6 +1041,8 @@ names in menu entries, instead of section names
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.2 Avoid menu redundancy</h3>
+<a name="index-menu_002c-redundancy"></a>
+<a name="index-T2H_005fAVOID_005fMENU_005fREDUNDANCY"></a>
 <p>If set, and menu entry equals menu description, then do not print
 menu description.  Likewise, if node name equals entry name, do
 not print entry name.
@@ -1050,6 +1068,8 @@ not print entry name.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.3 Center Image</h3>
+<a name="index-images_002c-center"></a>
+<a name="index-T2H_005fCENTER_005fIMAGE"></a>
 <p>if set, center @image by default
 otherwise, do not center by default
 <var>$T2H_CENTER_IMAGE</var> = 1;
@@ -1074,6 +1094,8 @@ otherwise, do not center by default
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.4 Example Indent Cell</h3>
+<a name="index-example_002c-indentation"></a>
+<a name="index-T2H_005fEXAMPLE_005fINDENT_005fCELL"></a>
 <p>used as indentation for block enclosing command
 <code>@example</code>, etc If not empty, must be enclosed in
 <code>&lt;td&gt;&lt;/td&gt;</code>
@@ -1099,6 +1121,8 @@ otherwise, do not center by default
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.5 Small Example Indent</h3>
+<a name="index-example_002c-small-indent"></a>
+<a name="index-T2H_005fSMALL_005fEXAMPLE_005fINDENT_005fCELL"></a>
 <p>same as above, only for <code>@small</code>
 $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
 </p>
@@ -1122,6 +1146,8 @@ $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.6 Small Font Size</h3>
+<a name="index-Font-Size_002c-small"></a>
+<a name="index-T2H_005fSMALL_005fFONT_005fSIZE"></a>
 <p># font size for @small
 $T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
 </p>
@@ -1145,6 +1171,7 @@ $T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.7 Top Heading</h3>
+<a name="index-T2H_005fTOP_005fHEADING"></a>
 <p>if non-empty, and no <code>@..heading</code> appeared in Top
 node, then use this as header for top node/section,
 otherwise use value of  <code>@settitle</code> or
@@ -1171,6 +1198,8 @@ $T2H_TOP_HEADING = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.8 Index Chapter</h3>
+<a name="index-Chapter_002c-Index"></a>
+<a name="index-T2H_005fINDEX_005fCHAPTER"></a>
 <p>if set, use this chapter for <strong>Index</strong> button, else
 use first chapter whose name matches <strong>index</strong> (case insensitive)
 $T2H_INDEX_CHAPTER = &quot;&quot;;
@@ -1195,6 +1224,8 @@ $T2H_INDEX_CHAPTER = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.9 Split Index</h3>
+<a name="index-Index_002c-split"></a>
+<a name="index-T2H_005fSPLIT_005fINDEX"></a>
 <p>if set and <var>$T2H_SPLIT</var> is set, then split index pages
 at the next letter after they have more than that many
 entries
@@ -1221,6 +1252,8 @@ entries
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.5.10 HREF Dir Instead File.</h3>
+<a name="index-HREF-Dir-instead-file"></a>
+<a name="index-T2H_005fHREF_005fDIR_005fINSTEAD_005fFILE"></a>
 <p>if set (e.g., to &lsquo;<tt>index.html</tt>&rsquo;) replace <strong>HREF</strong>&rsquo;s
 to this file  (i.e., to &lsquo;<tt>index.html</tt>&rsquo;) by &lsquo;<tt>./</tt>&rsquo;
 </p>
@@ -1306,6 +1339,16 @@ to this file  (i.e., to &lsquo;<tt>index.html</tt>&rsquo;) by &lsquo;<tt>./</tt>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.1 Debugging</h2>
+<a name="index-Debugging"></a>
+<a name="index-DEBUG_005fTOC"></a>
+<a name="index-DEBUG_005fINDEX"></a>
+<a name="index-DEBUG_005fBIB"></a>
+<a name="index-DEBUG_005fGLOSS"></a>
+<a name="index-DEBUG_005fDEF"></a>
+<a name="index-DEBUG_005fHTML"></a>
+<a name="index-DEBUG_005fUSER"></a>
+<a name="index-DEBUG_005fL2H"></a>
+<a name="index-debug"></a>
 
 <p>&lsquo;<samp>-debug</samp>&rsquo;
 </p>
@@ -1341,6 +1384,9 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.2 DocType</h2>
+<a name="index-HTML_002c-Doc-Type"></a>
+<a name="index-doctype"></a>
+<a name="index-T2H_005fDOCTYPE"></a>
 <p>&lsquo;<samp>-doctype</samp>&rsquo;
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
@@ -1366,6 +1412,9 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.3 Check</h2>
+<a name="index-Texinfo_002c-checking"></a>
+<a name="index-check"></a>
+<a name="index-T2H_005fCHECK"></a>
 <p>&lsquo;<samp>-check</samp>&rsquo;
 if set, only check files and give the list of all things
 that look like untranslated Texinfo commands
@@ -1390,6 +1439,8 @@ that look like untranslated Texinfo commands
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.4 Expand</h2>
+<a name="index-expand"></a>
+<a name="index-T2H_005fEXPAND"></a>
 <p>&lsquo;<samp>-expand</samp>&rsquo;
 if set to <strong>tex</strong> (or, <strong>info</strong>) expand
 <code>@iftex</code> and <code>@tex</code> (or, <code>@ifinfo</code>)
@@ -1417,6 +1468,10 @@ nor <code>@ifinfo</code> sections
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.5 Glossary</h2>
+<a name="index-HTML_002c-Glossary"></a>
+<a name="index-Texinfo_002c-Glossary"></a>
+<a name="index-glossary"></a>
+<a name="index-T2H_005fUSE_005fGLOSSARY"></a>
 <p>&lsquo;<samp>-glossary</samp>&rsquo;
 if set, uses section named <strong>Footnotes</strong> for glossary
 </p>
@@ -1440,6 +1495,10 @@ if set, uses section named <strong>Footnotes</strong> for glossary
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.6 Invisible</h2>
+<a name="index-Mark_002c-invisible"></a>
+<a name="index-invisible_002c-Mark"></a>
+<a name="index-invisible"></a>
+<a name="index-T2H_005fINVISIBLE_005fMARK"></a>
 <p>&lsquo;<samp>-invisible</samp>&rsquo;
 <var>$T2H_INVISIBLE_MARK</var> is the text used to create
 invisible destination anchors for index links (you can for
@@ -1474,6 +1533,10 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.7 Iso</h2>
+<a name="index-ISO8859"></a>
+<a name="index-Copyright"></a>
+<a name="index-iso"></a>
+<a name="index-T2H_005fUSE_005fISO"></a>
 <p>&lsquo;<samp>-iso</samp>&rsquo;
 </p>
 <p>if set, ISO8859 characters are used for special symbols
@@ -1501,6 +1564,9 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.8 Include Directory</h2>
+<a name="index-Include-directories"></a>
+<a name="index-I"></a>
+<a name="index-T2H_005fINCLUDE_005fDIRS"></a>
 <p>&lsquo;<samp>-I</samp>&rsquo;
 </p>
 <p>list directories where <code>@include</code> files are searched for
@@ -1529,6 +1595,10 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.9 Top File</h2>
+<a name="index-Top-Level-file"></a>
+<a name="index-HTML_002c-index_002ehtml"></a>
+<a name="index-top_005ffile"></a>
+<a name="index-T2H_005fTOP_005fFILE"></a>
 <p>&lsquo;<samp>-top_file</samp>&rsquo;
 uses file of this name for top-level file
 extension is manipulated appropriately, if necessary.
@@ -1557,6 +1627,9 @@ Typically, you would set this to &lsquo;<tt>index.html</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.10 Table Of content File</h2>
+<a name="index-Table-of-content-file"></a>
+<a name="index-toc_005ffile"></a>
+<a name="index-T2H_005fTOC_005fFILE"></a>
 <p>&lsquo;<samp>-toc_file</samp>&rsquo;
 uses file of this name for table of contents.  File extension
 is manipulated appropriately, if necessary. If empty,
@@ -1584,6 +1657,10 @@ is manipulated appropriately, if necessary. If empty,
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.11 Frames</h2>
+<a name="index-HTML_002c-frames"></a>
+<a name="index-HTML-4_002e0_002c-frames"></a>
+<a name="index-frames-1"></a>
+<a name="index-T2H_005fFRAMES"></a>
 <p>&lsquo;<samp>-frames</samp>&rsquo;
 if set, output two additional files which use HTML 4.0
 <b>frames</b>.
@@ -1610,6 +1687,11 @@ if set, output two additional files which use HTML 4.0
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.12 Menus</h2>
+<a name="index-HTML_002c-menu"></a>
+<a name="index-Texinfo_002c-menu"></a>
+<a name="index-menu"></a>
+<a name="index-nomenu"></a>
+<a name="index-T2H_005fSHOW_005fMENU"></a>
 <p>&lsquo;<samp>-menu</samp>&rsquo; or &lsquo;<samp>-nomenu</samp>&rsquo; if set, show the Texinfo
 menus
 </p>
@@ -1635,6 +1717,10 @@ menus
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.13 Number sections</h2>
+<a name="index-Section-numbering"></a>
+<a name="index-number"></a>
+<a name="index-nonumber"></a>
+<a name="index-T2H_005fNUMBER_005fSECTIONS-1"></a>
 <p>&lsquo;<samp>-number</samp>&rsquo; &lsquo;<samp>-nonumber</samp>&rsquo;
 if set, number sections and show section names and numbers
 in references and menus
@@ -1660,6 +1746,10 @@ in references and menus
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.14 Split</h2>
+<a name="index-HTML_002c-split"></a>
+<a name="index-File_002c-split"></a>
+<a name="index-split"></a>
+<a name="index-T2H_005fSPLIT"></a>
 <p>&lsquo;<samp>-split section|chapter|none</samp>&rsquo;
 if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
 <acronym>HTML</acronym> file per (sub)section (resp. chapter) and
@@ -1690,6 +1780,10 @@ $T2H_SPLIT = undef;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.15 Section navigation</h2>
+<a name="index-HTML_002c-Navigation"></a>
+<a name="index-section_005fnavigation"></a>
+<a name="index-no_002dsection_005fnavigation"></a>
+<a name="index-T2H_005fSECTION_005fNAVIGATION"></a>
 <p>&lsquo;<samp>-section_navigation</samp>&rsquo;|
 &lsquo;<samp>-no-section_navigation</samp>&rsquo;
 </p>
@@ -1721,6 +1815,8 @@ if you do not want to have section navigation on
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.16 Subdirectory</h2>
+<a name="index-Subdirectory"></a>
+<a name="index-T2H_005fSUBDIR"></a>
 <p>&lsquo;<samp>-subdir</samp>&rsquo;
 If set, then put result files in the specified directory.
 If not set, then result files are put into the current directory.
@@ -1747,6 +1843,12 @@ If not set, then result files are put into the current directory.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.17 Short extension</h2>
+<a name="index-HTML_002c-_002ehtm-extension"></a>
+<a name="index-HTML_002c-_002ehtml-extension"></a>
+<a name="index-extension_002c-_002ehtml"></a>
+<a name="index-extension_002c-_002ehtm"></a>
+<a name="index-T2H_005fSHORTEXTN"></a>
+<a name="index-short_005fextn"></a>
 <p>&lsquo;<samp>-short_extn</samp>&rsquo;
 If this is set, then all <acronym>HTML</acronym> files will have extension
 &lsquo;<tt>.htm</tt>&rsquo; instead of &lsquo;<tt>.html</tt>&rsquo;. This is helpful when
@@ -1773,6 +1875,9 @@ shipping the document to DOS-based systems.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.18 Prefix</h2>
+<a name="index-Prefix"></a>
+<a name="index-T2H_005fPREFIX"></a>
+<a name="index-prefix"></a>
 <p>&lsquo;<samp>-prefix</samp>&rsquo;
 Set the output file prefix, prepended to all &lsquo;<tt>.html</tt>&rsquo;,
 &lsquo;<tt>.gif</tt>&rsquo; and &lsquo;<tt>.pl</tt>&rsquo; files.
@@ -1800,6 +1905,11 @@ By default, this is the basename of the document
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.19 Output filename</h2>
+<a name="index-Output-filename"></a>
+<a name="index-Filename_002c-output"></a>
+<a name="index-T2H_005fOUT"></a>
+<a name="index-o"></a>
+<a name="index-out_005ffile"></a>
 
 <p>&lsquo;<samp>-o filename</samp>&rsquo;|&lsquo;<samp>-out_file</samp>&rsquo;
 If set, generate monolithic document output <acronym>HTML</acronym>
@@ -1825,6 +1935,10 @@ into &lsquo;<tt>filename</tt>&rsquo;.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.20 Short Cross References</h2>
+<a name="index-References_002c-short"></a>
+<a name="index-sections-without-numbers"></a>
+<a name="index-T2H_005fSHORT_005fREF"></a>
+<a name="index-short_005fref"></a>
 <p>&lsquo;<samp>-short_ref</samp>&rsquo;
 if set cross-references are given without section numbers
 </p>
@@ -1848,6 +1962,11 @@ if set cross-references are given without section numbers
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.21 Index Summary</h2>
+<a name="index-Index_002c-Summary"></a>
+<a name="index-Summary-Index"></a>
+<a name="index-HTML_002c-Index"></a>
+<a name="index-T2H_005fIDX_005fSUMMARY"></a>
+<a name="index-idx_005fsum"></a>
 <p>&lsquo;<samp>-idx_sum</samp>&rsquo;
 If value is set, then for each <code>@prinindex $what</code>
 &lsquo;<tt>$docu_name_$what.idx</tt>&rsquo; is created which contains lines of the
@@ -1874,6 +1993,11 @@ matters).
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.22 Verbose output</h2>
+<a name="index-Output_002c-verbose"></a>
+<a name="index-Verbose-output"></a>
+<a name="index-Debugging_002c-verbose-output"></a>
+<a name="index-T2H_005fVERBOSE"></a>
+<a name="index-verbose"></a>
 <p>&lsquo;<samp>-verbose</samp>&rsquo;
 if set, chatter about what we are doing.
 </p>
@@ -1897,6 +2021,11 @@ if set, chatter about what we are doing.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.23 Language Support</h2>
+<a name="index-Language-Support"></a>
+<a name="index-Support-different-languages"></a>
+<a name="index-_0024T2H_005fLANG"></a>
+<a name="index-_0024T2H_005fWORDS"></a>
+<a name="index-lang"></a>
 <p>&lsquo;<samp>-lang</samp>&rsquo;
 For page titles, use
 <code>$T2H_WORDS-&gt;{$T2H_LANG}-&gt;{...}</code> as title. To add
@@ -1929,6 +2058,12 @@ the language.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></h2>
+<a name="index-LaTeX2HTML"></a>
+<a name="index-Conversion-of-_0040math-and-_0040tex"></a>
+<a name="index-_0040tex"></a>
+<a name="index-_0040math"></a>
+<a name="index-T2H_005fL2H"></a>
+<a name="index-l2h"></a>
 <p>&lsquo;<samp>-l2h</samp>&rsquo;
 if set, uses <code>latex2html</code> for generation of math
 content.
@@ -1960,6 +2095,10 @@ content.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.24.1 Where to find <code>latex2html</code></h3>
+<a name="index-location_002c-LaTeX2HTML"></a>
+<a name="index-LaTeX2HTML_002c-location"></a>
+<a name="index-T2H_005fL2H_005fL2H"></a>
+<a name="index-l2h_005fl2h"></a>
 <p>&lsquo;<samp>-l2h_l2h</samp>&rsquo;
 name/location of <code>latex2html</code> program.
 </p>
@@ -1983,6 +2122,9 @@ name/location of <code>latex2html</code> program.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.24.2 Skip calling LaTeX2HTML</h3>
+<a name="index-LaTeX2HTML_002c-skip-calling"></a>
+<a name="index-T2H_005fL2H_005fSKIP"></a>
+<a name="index-l2h_005fskip"></a>
 <p>&lsquo;<samp>-l2h_skip</samp>&rsquo;
 If set, skips actual call to <code>latex2html</code>: tries to
 reuse previously generated content, instead.
@@ -2007,6 +2149,10 @@ reuse previously generated content, instead.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">8.24.3 Temporary files for LaTeX2HTML</h3>
+<a name="index-Temporary_002c-LaTeX2HTML"></a>
+<a name="index-LaTeX2HTML_002c-Temporary-files"></a>
+<a name="index-T2H_005fL2H_005fTMP"></a>
+<a name="index-l2h_005ftmp"></a>
 <p>&lsquo;<samp>-l2h_tmp</samp>&rsquo;
 If set, l2h uses this directory for temporary files.  The
 path leading to this directory may not contain a dot (i.e.,
@@ -2166,66 +2312,66 @@ What does it do? Which parameters it needs etc.
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionCheck"><code>check</code></a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-check"><code>check</code></a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-D">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>debug</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDocType"><code>doctype</code></a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-debug"><code>debug</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-doctype"><code>doctype</code></a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionExpand"><code>expand</code></a></td><td valign="top"><a href="#OptionExpand">8.4 Expand</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-expand"><code>expand</code></a></td><td valign="top"><a href="#OptionExpand">8.4 Expand</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Customizing"><code>frames</code></a></td><td valign="top"><a href="#Customizing">3. Customizing files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionFrames"><code>frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-frames"><code>frames</code></a></td><td valign="top"><a href="#Customizing">3. Customizing files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-frames-1"><code>frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionGlossary"><code>glossary</code></a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-glossary"><code>glossary</code></a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInclude"><code>I</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIndexSummary"><code>idx_sum</code></a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile"><code>init_file</code></a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFileLoad"><code>init_file</code></a></td><td valign="top"><a href="#InitFileLoad">7.4 Loadable initialization file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInvisible"><code>invisible</code></a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIso"><code>iso</code></a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-I"><code>I</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-idx_005fsum"><code>idx_sum</code></a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-init_005ffile"><code>init_file</code></a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-init_005ffile-1"><code>init_file</code></a></td><td valign="top"><a href="#InitFileLoad">7.4 Loadable initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-invisible"><code>invisible</code></a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-iso"><code>iso</code></a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-L">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H"><code>l2h</code></a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HL2H"><code>l2h_l2h</code></a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HSkip"><code>l2h_skip</code></a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2Htmp"><code>l2h_tmp</code></a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionLanguage"><code>lang</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-l2h"><code>l2h</code></a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-l2h_005fl2h"><code>l2h_l2h</code></a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-l2h_005fskip"><code>l2h_skip</code></a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-l2h_005ftmp"><code>l2h_tmp</code></a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lang"><code>lang</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionMenu"><code>menu</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-menu"><code>menu</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-N">N</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSectionNavigation"><code>no-section_navigation</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionMenu"><code>nomenu</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionNumber"><code>nonumber</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionNumber"><code>number</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-no_002dsection_005fnavigation"><code>no-section_navigation</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nomenu"><code>nomenu</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nonumber"><code>nonumber</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-number"><code>number</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-O">O</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionOutput"><code>o</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionOutput"><code>out_file</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o"><code>o</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-out_005ffile"><code>out_file</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionPrefix"><code>prefix</code></a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-prefix"><code>prefix</code></a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSectionNavigation"><code>section_navigation</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt"><code>short_extn</code></a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortRef"><code>short_ref</code></a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSplit"><code>split</code></a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile"><code>sysconfdir</code></a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-section_005fnavigation"><code>section_navigation</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-short_005fextn"><code>short_extn</code></a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-short_005fref"><code>short_ref</code></a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-split"><code>split</code></a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sysconfdir"><code>sysconfdir</code></a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTocFile"><code>toc_file</code></a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTopFile"><code>top_file</code></a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-toc_005ffile"><code>toc_file</code></a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-top_005ffile"><code>top_file</code></a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Command-Line-Option-Index_op_letter-V">V</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionVerbose"><code>verbose</code></a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-verbose"><code>verbose</code></a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Command-Line-Option-Index_op_letter-C" class="summary-letter"><b>C</b></a>
@@ -2293,67 +2439,67 @@ What does it do? Which parameters it needs etc.
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_symbol-1">$</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionLanguage"><code>$T2H_LANG</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionLanguage"><code>$T2H_WORDS</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024T2H_005fLANG"><code>$T2H_LANG</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024T2H_005fWORDS"><code>$T2H_WORDS</code></a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-D">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_BIB</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_DEF</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_GLOSS</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_HTML</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_INDEX</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_L2H</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_TOC</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug"><code>DEBUG_USER</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fBIB"><code>DEBUG_BIB</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fDEF"><code>DEBUG_DEF</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fGLOSS"><code>DEBUG_GLOSS</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fHTML"><code>DEBUG_HTML</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fINDEX"><code>DEBUG_INDEX</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fL2H"><code>DEBUG_L2H</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fTOC"><code>DEBUG_TOC</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DEBUG_005fUSER"><code>DEBUG_USER</code></a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-H">H</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionFrames"><code>HTML 4.0, frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionFrames"><code>HTML, frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML-4_002e0_002c-frames"><code>HTML 4.0, frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-frames"><code>HTML, frames</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInclude"><code>Include directories</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Include-directories"><code>Include directories</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#CustHTMLAfterBody"><code>T2H_AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOmenu"><code>T2H_AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#IFOmenu">7.5.2 Avoid menu redundancy</a></td></tr>
-<tr><td></td><td valign="top"><a href="#CustHTMLBodyText"><code>T2H_BODYTEXT</code></a></td><td valign="top"><a href="#CustHTMLBodyText">6.1.1 Body Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOCenterImage"><code>T2H_CENTER_IMAGE</code></a></td><td valign="top"><a href="#IFOCenterImage">7.5.3 Center Image</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionCheck"><code>T2H_CHECK</code></a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDocType"><code>T2H_DOCTYPE</code></a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOExampleIndentCell"><code>T2H_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#IFOExampleIndentCell">7.5.4 Example Indent Cell</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionExpand"><code>T2H_EXPAND</code></a></td><td valign="top"><a href="#OptionExpand">8.4 Expand</a></td></tr>
-<tr><td></td><td valign="top"><a href="#CustHTMLAfterBody"><code>T2H_EXTRA_HEAD</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionFrames"><code>T2H_FRAMES</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOhrefDirInsteadFile"><code>T2H_HREF_DIR_INSTEAD_FILE</code></a></td><td valign="top"><a href="#IFOhrefDirInsteadFile">7.5.10 HREF Dir Instead File.</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIndexSummary"><code>T2H_IDX_SUMMARY</code></a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInclude"><code>T2H_INCLUDE_DIRS</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOIndexChapter"><code>T2H_INDEX_CHAPTER</code></a></td><td valign="top"><a href="#IFOIndexChapter">7.5.8 Index Chapter</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInvisible"><code>T2H_INVISIBLE_MARK</code></a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H"><code>T2H_L2H</code></a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HL2H"><code>T2H_L2H_L2H</code></a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HSkip"><code>T2H_L2H_SKIP</code></a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2Htmp"><code>T2H_L2H_TMP</code></a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOnumber"><code>T2H_NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#IFOnumber">7.5.1 Number sections.</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOnumber"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#IFOnumber">7.5.1 Number sections.</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionNumber"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionOutput"><code>T2H_OUT</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
-<tr><td></td><td valign="top"><a href="#CustHTMLAfterBody"><code>T2H_PRE_BODY_CLOSE</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionPrefix"><code>T2H_PREFIX</code></a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSectionNavigation"><code>T2H_SECTION_NAVIGATION</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortRef"><code>T2H_SHORT_REF</code></a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt"><code>T2H_SHORTEXTN</code></a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionMenu"><code>T2H_SHOW_MENU</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSampleIndentCell"><code>T2H_SMALL_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#IFOSampleIndentCell">7.5.5 Small Example Indent</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSmallFontSize"><code>T2H_SMALL_FONT_SIZE</code></a></td><td valign="top"><a href="#IFOSmallFontSize">7.5.6 Small Font Size</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSplit"><code>T2H_SPLIT</code></a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSplitIndex"><code>T2H_SPLIT_INDEX</code></a></td><td valign="top"><a href="#IFOSplitIndex">7.5.9 Split Index</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSubDir"><code>T2H_SUBDIR</code></a></td><td valign="top"><a href="#OptionSubDir">8.16 Subdirectory</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTocFile"><code>T2H_TOC_FILE</code></a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTopFile"><code>T2H_TOP_FILE</code></a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOTopHeading"><code>T2H_TOP_HEADING</code></a></td><td valign="top"><a href="#IFOTopHeading">7.5.7 Top Heading</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionGlossary"><code>T2H_USE_GLOSSARY</code></a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIso"><code>T2H_USE_ISO</code></a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionVerbose"><code>T2H_VERBOSE</code></a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fAFTER_005fBODY_005fOPEN"><code>T2H_AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fAVOID_005fMENU_005fREDUNDANCY"><code>T2H_AVOID_MENU_REDUNDANCY</code></a></td><td valign="top"><a href="#IFOmenu">7.5.2 Avoid menu redundancy</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fBODYTEXT"><code>T2H_BODYTEXT</code></a></td><td valign="top"><a href="#CustHTMLBodyText">6.1.1 Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fCENTER_005fIMAGE"><code>T2H_CENTER_IMAGE</code></a></td><td valign="top"><a href="#IFOCenterImage">7.5.3 Center Image</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fCHECK"><code>T2H_CHECK</code></a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fDOCTYPE"><code>T2H_DOCTYPE</code></a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fEXAMPLE_005fINDENT_005fCELL"><code>T2H_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#IFOExampleIndentCell">7.5.4 Example Indent Cell</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fEXPAND"><code>T2H_EXPAND</code></a></td><td valign="top"><a href="#OptionExpand">8.4 Expand</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fEXTRA_005fHEAD"><code>T2H_EXTRA_HEAD</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fFRAMES"><code>T2H_FRAMES</code></a></td><td valign="top"><a href="#OptionFrames">8.11 Frames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fHREF_005fDIR_005fINSTEAD_005fFILE"><code>T2H_HREF_DIR_INSTEAD_FILE</code></a></td><td valign="top"><a href="#IFOhrefDirInsteadFile">7.5.10 HREF Dir Instead File.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fIDX_005fSUMMARY"><code>T2H_IDX_SUMMARY</code></a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fINCLUDE_005fDIRS"><code>T2H_INCLUDE_DIRS</code></a></td><td valign="top"><a href="#OptionInclude">8.8 Include Directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fINDEX_005fCHAPTER"><code>T2H_INDEX_CHAPTER</code></a></td><td valign="top"><a href="#IFOIndexChapter">7.5.8 Index Chapter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fINVISIBLE_005fMARK"><code>T2H_INVISIBLE_MARK</code></a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fL2H"><code>T2H_L2H</code></a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fL2H_005fL2H"><code>T2H_L2H_L2H</code></a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fL2H_005fSKIP"><code>T2H_L2H_SKIP</code></a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fL2H_005fTMP"><code>T2H_L2H_TMP</code></a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fNODE_005fNAME_005fIN_005fMENU"><code>T2H_NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#IFOnumber">7.5.1 Number sections.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fNUMBER_005fSECTIONS"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#IFOnumber">7.5.1 Number sections.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fNUMBER_005fSECTIONS-1"><code>T2H_NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fOUT"><code>T2H_OUT</code></a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fPRE_005fBODY_005fCLOSE"><code>T2H_PRE_BODY_CLOSE</code></a></td><td valign="top"><a href="#CustHTMLAfterBody">6.1.3 After Body Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fPREFIX"><code>T2H_PREFIX</code></a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSECTION_005fNAVIGATION"><code>T2H_SECTION_NAVIGATION</code></a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSHORT_005fREF"><code>T2H_SHORT_REF</code></a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSHORTEXTN"><code>T2H_SHORTEXTN</code></a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSHOW_005fMENU"><code>T2H_SHOW_MENU</code></a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSMALL_005fEXAMPLE_005fINDENT_005fCELL"><code>T2H_SMALL_EXAMPLE_INDENT_CELL</code></a></td><td valign="top"><a href="#IFOSampleIndentCell">7.5.5 Small Example Indent</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSMALL_005fFONT_005fSIZE"><code>T2H_SMALL_FONT_SIZE</code></a></td><td valign="top"><a href="#IFOSmallFontSize">7.5.6 Small Font Size</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSPLIT"><code>T2H_SPLIT</code></a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSPLIT_005fINDEX"><code>T2H_SPLIT_INDEX</code></a></td><td valign="top"><a href="#IFOSplitIndex">7.5.9 Split Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fSUBDIR"><code>T2H_SUBDIR</code></a></td><td valign="top"><a href="#OptionSubDir">8.16 Subdirectory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fTOC_005fFILE"><code>T2H_TOC_FILE</code></a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fTOP_005fFILE"><code>T2H_TOP_FILE</code></a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fTOP_005fHEADING"><code>T2H_TOP_HEADING</code></a></td><td valign="top"><a href="#IFOTopHeading">7.5.7 Top Heading</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fUSE_005fGLOSSARY"><code>T2H_USE_GLOSSARY</code></a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fUSE_005fISO"><code>T2H_USE_ISO</code></a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-T2H_005fVERBOSE"><code>T2H_VERBOSE</code></a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index_vr_symbol-1" class="summary-letter"><b>$</b></a>
@@ -2426,95 +2572,95 @@ What does it do? Which parameters it needs etc.
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_symbol-1">.</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile">.texi2htmlrc, user initialization</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002etexi2htmlrc_002c-user-initialization">.texi2htmlrc, user initialization</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_symbol-2">@</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H">@math</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H">@tex</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040math">@math</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0040tex">@tex</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOIndexChapter">Chapter, Index</a></td><td valign="top"><a href="#IFOIndexChapter">7.5.8 Index Chapter</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile">configure</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H">Conversion of @math and @tex</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIso">Copyright</a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Chapter_002c-Index">Chapter, Index</a></td><td valign="top"><a href="#IFOIndexChapter">7.5.8 Index Chapter</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-configure">configure</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Conversion-of-_0040math-and-_0040tex">Conversion of @math and @tex</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Copyright">Copyright</a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-D">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDebug">Debugging</a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionVerbose">Debugging, verbose output</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Debugging">Debugging</a></td><td valign="top"><a href="#OptionDebug">8.1 Debugging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Debugging_002c-verbose-output">Debugging, verbose output</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOExampleIndentCell">example, indentation</a></td><td valign="top"><a href="#IFOExampleIndentCell">7.5.4 Example Indent Cell</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSampleIndentCell">example, small indent</a></td><td valign="top"><a href="#IFOSampleIndentCell">7.5.5 Small Example Indent</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt">extension, .htm</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt">extension, .html</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-example_002c-indentation">example, indentation</a></td><td valign="top"><a href="#IFOExampleIndentCell">7.5.4 Example Indent Cell</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-example_002c-small-indent">example, small indent</a></td><td valign="top"><a href="#IFOSampleIndentCell">7.5.5 Small Example Indent</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-extension_002c-_002ehtm">extension, .htm</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-extension_002c-_002ehtml">extension, .html</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSplit">File, split</a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionOutput">Filename, output</a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSmallFontSize">Font Size, small</a></td><td valign="top"><a href="#IFOSmallFontSize">7.5.6 Small Font Size</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-split">File, split</a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Filename_002c-output">Filename, output</a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Font-Size_002c-small">Font Size, small</a></td><td valign="top"><a href="#IFOSmallFontSize">7.5.6 Small Font Size</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-H">H</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOhrefDirInsteadFile">HREF Dir instead file</a></td><td valign="top"><a href="#IFOhrefDirInsteadFile">7.5.10 HREF Dir Instead File.</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt">HTML, .htm extension</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortExt">HTML, .html extension</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionDocType">HTML, Doc Type</a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionGlossary">HTML, Glossary</a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIndexSummary">HTML, Index</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTopFile">HTML, index.html</a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionMenu">HTML, menu</a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSectionNavigation">HTML, Navigation</a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSplit">HTML, split</a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HREF-Dir-instead-file">HREF Dir instead file</a></td><td valign="top"><a href="#IFOhrefDirInsteadFile">7.5.10 HREF Dir Instead File.</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-_002ehtm-extension">HTML, .htm extension</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-_002ehtml-extension">HTML, .html extension</a></td><td valign="top"><a href="#OptionShortExt">8.17 Short extension</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-Doc-Type">HTML, Doc Type</a></td><td valign="top"><a href="#OptionDocType">8.2 DocType</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-Glossary">HTML, Glossary</a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-Index">HTML, Index</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-index_002ehtml">HTML, index.html</a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-menu">HTML, menu</a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-Navigation">HTML, Navigation</a></td><td valign="top"><a href="#OptionSectionNavigation">8.15 Section navigation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-HTML_002c-split">HTML, split</a></td><td valign="top"><a href="#OptionSplit">8.14 Split</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOCenterImage">images, center</a></td><td valign="top"><a href="#IFOCenterImage">7.5.3 Center Image</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOSplitIndex">Index, split</a></td><td valign="top"><a href="#IFOSplitIndex">7.5.9 Split Index</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIndexSummary">Index, Summary</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Installation">Installation</a></td><td valign="top"><a href="#Installation">2. Installation of <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Customizing">Installation</a></td><td valign="top"><a href="#Customizing">3. Customizing files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInvisible">invisible, Mark</a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIso">ISO8859</a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-images_002c-center">images, center</a></td><td valign="top"><a href="#IFOCenterImage">7.5.3 Center Image</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Index_002c-split">Index, split</a></td><td valign="top"><a href="#IFOSplitIndex">7.5.9 Split Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Index_002c-Summary">Index, Summary</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Installation">Installation</a></td><td valign="top"><a href="#Installation">2. Installation of <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Installation-1">Installation</a></td><td valign="top"><a href="#Customizing">3. Customizing files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-invisible_002c-Mark">invisible, Mark</a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ISO8859">ISO8859</a></td><td valign="top"><a href="#OptionIso">8.7 Iso</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-L">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionLanguage">Language Support</a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2H">LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HL2H">LaTeX2HTML, location</a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HSkip">LaTeX2HTML, skip calling</a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2Htmp">LaTeX2HTML, Temporary files</a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2HL2H">location, LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Language-Support">Language Support</a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-LaTeX2HTML">LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2H">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-LaTeX2HTML_002c-location">LaTeX2HTML, location</a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-LaTeX2HTML_002c-skip-calling">LaTeX2HTML, skip calling</a></td><td valign="top"><a href="#OptionL2HSkip">8.24.2 Skip calling LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-LaTeX2HTML_002c-Temporary-files">LaTeX2HTML, Temporary files</a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-location_002c-LaTeX2HTML">location, LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2HL2H">8.24.1 Where to find <code>latex2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionInvisible">Mark, invisible</a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IFOmenu">menu, redundancy</a></td><td valign="top"><a href="#IFOmenu">7.5.2 Avoid menu redundancy</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Mark_002c-invisible">Mark, invisible</a></td><td valign="top"><a href="#OptionInvisible">8.6 Invisible</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-menu_002c-redundancy">menu, redundancy</a></td><td valign="top"><a href="#IFOmenu">7.5.2 Avoid menu redundancy</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-O">O</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionOutput">Output filename</a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionVerbose">Output, verbose</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Output-filename">Output filename</a></td><td valign="top"><a href="#OptionOutput">8.19 Output filename</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Output_002c-verbose">Output, verbose</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionPrefix">Prefix</a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Prefix">Prefix</a></td><td valign="top"><a href="#OptionPrefix">8.18 Prefix</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-R">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortRef">References, short</a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-References_002c-short">References, short</a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionNumber">Section numbering</a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionShortRef">sections without numbers</a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionSubDir">Subdirectory</a></td><td valign="top"><a href="#OptionSubDir">8.16 Subdirectory</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionIndexSummary">Summary Index</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionLanguage">Support different languages</a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Section-numbering">Section numbering</a></td><td valign="top"><a href="#OptionNumber">8.13 Number sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sections-without-numbers">sections without numbers</a></td><td valign="top"><a href="#OptionShortRef">8.20 Short Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Subdirectory">Subdirectory</a></td><td valign="top"><a href="#OptionSubDir">8.16 Subdirectory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Summary-Index">Summary Index</a></td><td valign="top"><a href="#OptionIndexSummary">8.21 Index Summary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Support-different-languages">Support different languages</a></td><td valign="top"><a href="#OptionLanguage">8.23 Language Support</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTocFile">Table of content file</a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionL2Htmp">Temporary, LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile">texi2html.init</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#InitFile">texi2htmlrc, global initialization</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionCheck">Texinfo, checking</a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionGlossary">Texinfo, Glossary</a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionMenu">Texinfo, menu</a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionTopFile">Top Level file</a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Table-of-content-file">Table of content file</a></td><td valign="top"><a href="#OptionTocFile">8.10 Table Of content File</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Temporary_002c-LaTeX2HTML">Temporary, LaTeX2HTML</a></td><td valign="top"><a href="#OptionL2Htmp">8.24.3 Temporary files for LaTeX2HTML</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-texi2html_002einit">texi2html.init</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-texi2htmlrc_002c-global-initialization">texi2htmlrc, global initialization</a></td><td valign="top"><a href="#InitFile">7. Initialization file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Texinfo_002c-checking">Texinfo, checking</a></td><td valign="top"><a href="#OptionCheck">8.3 Check</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Texinfo_002c-Glossary">Texinfo, Glossary</a></td><td valign="top"><a href="#OptionGlossary">8.5 Glossary</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Texinfo_002c-menu">Texinfo, menu</a></td><td valign="top"><a href="#OptionMenu">8.12 Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Top-Level-file">Top Level file</a></td><td valign="top"><a href="#OptionTopFile">8.9 Top File</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="Concept-Index_cp_letter-V">V</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#OptionVerbose">Verbose output</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Verbose-output">Verbose output</a></td><td valign="top"><a href="#OptionVerbose">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concept-Index_cp_symbol-1" class="summary-letter"><b>.</b></a>

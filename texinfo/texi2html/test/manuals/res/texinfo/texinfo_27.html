@@ -78,6 +78,13 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">F. Formatting Mistakes</h1>
+<a name="index-Structure_002c-catching-mistakes-in"></a>
+<a name="index-Nodes_002c-catching-mistakes"></a>
+<a name="index-Catching-mistakes"></a>
+<a name="index-Correcting-mistakes"></a>
+<a name="index-Mistakes_002c-catching"></a>
+<a name="index-Problems_002c-catching"></a>
+<a name="index-Debugging-the-Texinfo-structure"></a>
 
 <p>Besides mistakes in the content of your documentation, there are two
 kinds of mistake you can make with Texinfo: you can make mistakes with
@@ -148,6 +155,8 @@ may want to use the tools described in this appendix.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">F.1 Catching Errors with Info Formatting</h2>
+<a name="index-Catching-errors-with-Info-formatting"></a>
+<a name="index-Debugging-with-Info-formatting"></a>
 
 <p>After you have written part of a Texinfo file, you can use the
 <code>texinfo-format-region</code> or the <code>makeinfo-region</code> command to
@@ -255,6 +264,8 @@ from the &lsquo;Catching Mistakes&rsquo; node by typing <kbd>l</kbd>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">F.2 Catching Errors with TeX Formatting</h2>
+<a name="index-Catching-errors-with-TeX-formatting"></a>
+<a name="index-Debugging-with-TeX-formatting"></a>
 
 <p>You can also catch mistakes when you format a file with TeX.
 </p>
@@ -389,6 +400,8 @@ directly with TeX, not with Texinfo.)
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">F.3 Using <code>texinfo-show-structure</code></h2>
+<a name="index-Showing-the-structure-of-a-file"></a>
+<a name="index-texinfo_002dshow_002dstructure-1"></a>
 
 <p>It is not always easy to keep track of the nodes, chapters, sections, and
 subsections of a Texinfo file.  This is especially true if you are revising
@@ -472,6 +485,8 @@ or left out a section, you can correct the mistake.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">F.4 Using <code>occur</code></h2>
+<a name="index-Occurrences_002c-listing-with-_0040occur"></a>
+<a name="index-occur"></a>
 
 <p>Sometimes the <code>texinfo-show-structure</code> command produces too much
 information.  Perhaps you want to remind yourself of the overall structure
@@ -524,6 +539,12 @@ for more information.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">F.5 Finding Badly Referenced Nodes</h2>
+<a name="index-Info_002dvalidate"></a>
+<a name="index-Nodes_002c-checking-for-badly-referenced"></a>
+<a name="index-Checking-for-badly-referenced-nodes"></a>
+<a name="index-Looking-for-badly-referenced-nodes"></a>
+<a name="index-Finding-badly-referenced-nodes"></a>
+<a name="index-Badly-referenced-nodes"></a>
 
 <p>You can use the <code>Info-validate</code> command to check whether any of
 the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, &lsquo;Up&rsquo; or other node pointers fail to point to a
@@ -569,6 +590,9 @@ if you write an Info file from scratch.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">F.5.1 Running <code>Info-validate</code></h3>
+<a name="index-Running-Info_002dvalidate"></a>
+<a name="index-Info-validating-a-large-file"></a>
+<a name="index-Validating-a-large-file"></a>
 
 <p>To use <code>Info-validate</code>, visit the Info file you wish to check and
 type:
@@ -635,6 +659,8 @@ tag table for the unsplit file.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">F.5.2 Creating an Unsplit File</h3>
+<a name="index-Creating-an-unsplit-file"></a>
+<a name="index-Unsplit-file-creation"></a>
 
 <p>You can run <code>Info-validate</code> only on a single Info file that has a
 tag table.  The command will not work on the indirect subfiles that
@@ -732,6 +758,8 @@ table and split the file manually.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">F.5.4 Splitting a File Manually</h3>
+<a name="index-Splitting-an-Info-file-manually"></a>
+<a name="index-Info-file_002c-splitting-manually"></a>
 
 <p>You should split a large file or else let the
 <code>texinfo-format-buffer</code> or <code>makeinfo-buffer</code> command do it
