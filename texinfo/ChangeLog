@@ -1,3 +1,11 @@
+2008-09-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/window.c (line_map_init): Take an additional argument,
+	node.
+	(window_compute_line_map): Recompute the line map if the node
+	has changed.
+	* info/window.h (struct line_map_struct): New member `node'.
+
 2008-08-29  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi: use @kbd for key sequences and @key only for
