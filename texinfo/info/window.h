@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.11 2008-06-28 08:10:02 gray Exp $
+   $Id: window.h,v 1.12 2008-09-13 10:02:01 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -40,6 +40,7 @@
    point values into columns on screen and vice versa. */
 typedef struct line_map_struct
 {
+  NODE *node;      /* Node to which this line pertains */
   size_t nline;    /* Line number for which the map is computed. */
   size_t size;     /* Number of elements map can accomodate */
   size_t used;     /* Number of used map slots */
