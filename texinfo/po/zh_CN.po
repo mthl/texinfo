@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"POT-Creation-Date: 2008-09-18 20:38+0200\n"
 "PO-Revision-Date: 2008-08-17 12:56中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
-"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists.sourceforge.net>\n"
+"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
+"sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -231,7 +232,8 @@ msgid "Index entry: "
 msgstr "索引条目："
 
 #: info/indices.c:324
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
 msgstr "从最后一个“\\[index-search]”命令转移到下一个匹配的索引项目"
 
 #: info/indices.c:334
@@ -297,12 +299,14 @@ msgstr "尝试 --更多的求助信息。\n"
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 
@@ -325,7 +329,8 @@ msgstr ""
 #: info/info.c:606
 msgid ""
 "Options:\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit."
@@ -552,7 +557,9 @@ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "\\%-10[move-to-next-xref]  跳转到下一个超文本连接。\n"
 
 #: info/infodoc.c:59
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
 msgstr "\\%-10[select-reference-this-line]  跟随光标下的超文本连接。\n"
 
 #: info/infodoc.c:60
@@ -769,7 +776,8 @@ msgstr "  %-10s  选取节点菜单中的最后一个项目。\n"
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
 "  %-10s  在本 Info 文件的索引条目中搜索指定的字符串，\n"
 "              并选择第一个找到的条目所引用的节点。\n"
@@ -1030,7 +1038,8 @@ msgstr "读入 infokey 文件“%s”时出错 - 读入中断"
 
 #: info/infomap.c:990
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr "非法的 infokey 文件“%s” (错误的 magic 编号) -- 运行 infokey 以便更新"
 
 #: info/infomap.c:999
@@ -1040,12 +1049,14 @@ msgstr "您的 infokey 文件“%s” 过时了 -- 运行 infokey 以便更新"
 
 #: info/infomap.c:1015
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr "非法的 infokey 文件“%s” (错误的节长度) -- 运行 infokey 以便更新"
 
 #: info/infomap.c:1036
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr "非法的 infokey 文件“%s” (错误的节编码) -- 运行 infokey 以便更新"
 
 #: info/infomap.c:1171
@@ -1144,8 +1155,12 @@ msgstr "正则表达式错误: %s"
 
 #: info/session.c:164
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "欢迎使用 Info %s 版。输入 \\[get-help-window] 以获得帮助，\\[menu-item] 将得到菜单。"
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"欢迎使用 Info %s 版。输入 \\[get-help-window] 以获得帮助，\\[menu-item] 将得"
+"到菜单。"
 
 #: info/session.c:625
 msgid "Move down to the next line"
@@ -1200,7 +1215,8 @@ msgid "Scroll forward in this window staying within node"
 msgstr "在本窗口中向前滚动(不穿越节点)"
 
 #: info/session.c:1532
-msgid "Scroll forward in this window staying within node and set default window size"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
 msgstr "在本窗口中向前滚动(不穿越节点)并设置默认窗口大小"
 
 #: info/session.c:1540
@@ -1216,7 +1232,9 @@ msgid "Scroll backward in this window staying within node"
 msgstr "在本窗口中向后滚动(不穿越节点)"
 
 #: info/session.c:1565
-msgid "Scroll backward in this window staying within node and set default window size"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
 msgstr "在本窗口中向后滚动(不穿越节点)并设置为默认窗口大小"
 
 #: info/session.c:1573
@@ -1688,7 +1706,8 @@ msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "在“开”时，Info 接受并显示 ISO 拉丁字符"
 
 #: info/variables.c:81
-msgid "What to do when a scrolling command is issued at the end of the last node"
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
 msgstr "控制在最后一个节点的末尾出现滚动请求时将发生什么"
 
 #: info/variables.c:88
@@ -1792,13 +1811,15 @@ msgstr ""
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with whitespace.\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself.\n"
 "                      When removing, TEXT specifies the entry to remove.\n"
 "                      TEXT is only removed as a last resort, if the\n"
-"                      entry as determined from the Info file is not present,\n"
+"                      entry as determined from the Info file is not "
+"present,\n"
 "                      and the basename of the Info file isn't found either."
 msgstr ""
 " --entry=TEXT        插入 TEXT 作为一个 Info 目录条目。\n"
@@ -1848,7 +1869,8 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are determined\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
 "                       from information in the Info file itself.\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
@@ -2065,7 +2087,9 @@ msgid "`}' expected, but saw `%c'"
 msgstr "应为“}”，但看到了“%c”"
 
 #: makeinfo/cmds.c:1308
-msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
 msgstr "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
 
 #: makeinfo/cmds.c:1504
@@ -2083,11 +2107,11 @@ msgstr "@sp 需要正数参数，而不是“%s”"
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4317
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4319
 msgid "none"
 msgstr "none"
 
@@ -2294,7 +2318,8 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
 #: makeinfo/insertion.c:1979
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "您的 @top 节点可能应该包含在 @ifnottex 而不是 @ifinfo 中？"
 
 #: makeinfo/insertion.c:1991
@@ -2424,7 +2449,7 @@ msgstr "过多的错误！放弃。\n"
 msgid "%s:%d: warning: "
 msgstr "%s：%d：警告："
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
 #, c-format
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
@@ -2492,11 +2517,15 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and menus\n"
-"                                from Info output (thus producing plain text)\n"
-"                                or from HTML (thus producing shorter output);\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
 "                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML output,\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
 "                                generate only one output file.\n"
 "      --number-sections       output chapter and sectioning numbers.\n"
 "  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
@@ -2520,12 +2549,16 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, in\n"
-"                                which they are defined (this is the default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
@@ -2565,8 +2598,10 @@ msgstr ""
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
-"                                If VAL is 0, ignorable whitespace is dropped.\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+"d).\n"
+"                                If VAL is 0, ignorable whitespace is "
+"dropped.\n"
 msgstr ""
 "XML 和 Docbook 选项:\n"
 "      --output-indent=VAL     用 VAL 个空格缩进 XML 元素(默认 %d)。\n"
@@ -2640,9 +2675,11 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
@@ -2703,119 +2740,122 @@ msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#: makeinfo/makeinfo.c:1041 makeinfo/makeinfo.c:4166
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "使用了不合适的多行命令 %c%s"
 
-#: makeinfo/makeinfo.c:1038
+#: makeinfo/makeinfo.c:1044
 #, c-format
 msgid "Expected `%s'"
 msgstr "应为“%s”"
 
-#: makeinfo/makeinfo.c:1515
+#: makeinfo/makeinfo.c:1521
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: makeinfo/makeinfo.c:1561
+#: makeinfo/makeinfo.c:1567
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1647
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr "%s: 跳过展开至标准输出的宏，由于 Info 的输出要使用标准输出。\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1677
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
-#: makeinfo/makeinfo.c:1738
+#: makeinfo/makeinfo.c:1744
 #, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1793
+#: makeinfo/makeinfo.c:1799
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1812
+#: makeinfo/makeinfo.c:1818
 #, c-format
-msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
+msgid ""
+"%s: Removing internal links output file `%s' due to errors; use --force to "
+"preserve.\n"
 msgstr "%s：由于错误删除内部连接输出文件“%s”；用 --force 保留。\n"
 
-#: makeinfo/makeinfo.c:2107
+#: makeinfo/makeinfo.c:2113
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: makeinfo/makeinfo.c:2129
+#: makeinfo/makeinfo.c:2135
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2394
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要花括号"
 
-#: makeinfo/makeinfo.c:2401
+#: makeinfo/makeinfo.c:2407
 msgid "Unmatched }"
 msgstr "不匹配的 }"
 
-#: makeinfo/makeinfo.c:2449
+#: makeinfo/makeinfo.c:2455
 msgid "NO_NAME!"
 msgstr "无名字！"
 
-#: makeinfo/makeinfo.c:2470
+#: makeinfo/makeinfo.c:2476
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: makeinfo/makeinfo.c:3476
+#: makeinfo/makeinfo.c:3482
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: makeinfo/makeinfo.c:3482
+#: makeinfo/makeinfo.c:3488
 #, c-format
 msgid "No such file `%s'"
 msgstr "没有那样的文件“%s”"
 
-#: makeinfo/makeinfo.c:3618
+#: makeinfo/makeinfo.c:3624
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image 文件“%s”(对文本)不可读：%s"
 
-#: makeinfo/makeinfo.c:3627
+#: makeinfo/makeinfo.c:3633
 msgid "@image missing filename argument"
 msgstr "@image 遗漏文件名参数"
 
-#: makeinfo/makeinfo.c:3845
+#: makeinfo/makeinfo.c:3851
 #, c-format
 msgid "undefined flag: %s"
 msgstr "未定义的标识: %s"
 
-#: makeinfo/makeinfo.c:3846
+#: makeinfo/makeinfo.c:3852
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{没有“%s”的值}"
 
-#: makeinfo/makeinfo.c:3898
+#: makeinfo/makeinfo.c:3904
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: makeinfo/makeinfo.c:4004
+#: makeinfo/makeinfo.c:4010
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: makeinfo/makeinfo.c:4253
+#: makeinfo/makeinfo.c:4258
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "“%.40s...”扩展起来太长；未扩展"
@@ -2991,7 +3031,8 @@ msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
 #: makeinfo/xml.c:2014
-msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+msgid ""
+"@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr "作为 @multitable 的最后一个项目，@headitem 生成无效的 Docbook 文档"
 
 #: makeinfo/xml.c:2150
@@ -3103,7 +3144,8 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "Read documentation in Info format.\n"
 #~ "\n"
 #~ "Options:\n"
-#~ "      --apropos=STRING         look up STRING in all indices of all manuals.\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
 #~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 #~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 #~ "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -3118,7 +3160,8 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "      --vi-keys                use vi-like and less-like key bindings.\n"
 #~ "      --version                display version information and exit.\n"
 #~ "\n"
-#~ "The first non-option argument, if present, is the menu entry to start from;\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
 #~ "it is searched for in all `dir' files along INFOPATH.\n"
 #~ "If it is not present, info merges all `dir' files and shows the result.\n"
 #~ "Any remaining arguments are treated as the names of menu\n"
@@ -3128,7 +3171,8 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "  info                       show top-level dir menu\n"
 #~ "  info emacs                 start at emacs node from top-level dir\n"
 #~ "  info emacs buffers         start at buffers node within emacs manual\n"
-#~ "  info --show-options emacs  start at node with emacs' command line options\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
 #~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
 #~ msgstr ""
 #~ "用法：%s [选项]... [菜单项...]\n"
@@ -3163,13 +3207,20 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "  info --show-options emacs  从 emacs 的命令行选项节点开始\n"
 #~ "  info -f ./foo.info         显示文件 ./foo.info，而不是搜索目录\n"
 
-#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
+#~ msgid ""
+#~ "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+#~ "node.\n"
 #~ msgstr "\\%-10[move-to-prev-xref]  跳转到本节点中的上一个超文本连接。\n"
 
-#~ msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
-#~ msgstr "\\%-10[dir-node]  移动到“directory”节点。等价于“\\[goto-node] (DIR)”。\n"
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr ""
+#~ "\\%-10[dir-node]  移动到“directory”节点。等价于“\\[goto-node] (DIR)”。\n"
 
-#~ msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
 #~ msgstr "\\%-10[top-node]  移动到顶层节点。等价于“\\[goto-node] Top”。\n"
 
 #~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
@@ -3183,24 +3234,32 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 
 #~ msgid ""
 #~ "\\%-10[search-backward]  Search backward for a specified string\n"
-#~ "              and select the node in which the previous occurrence is found.\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
 #~ msgstr ""
 #~ "\\%-10[search-backward]  向后搜索指定的字符串\n"
 #~ "              并选择所找到的上一个实例所在的节点。\n"
 
-#~ msgid "              Picking a menu item causes another node to be selected.\n"
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
 #~ msgstr "              选取一个菜单项目将选中另一个节点。\n"
 
-#~ msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
 #~ msgstr "  %-10s  在本 Info 文件中的索引条目中搜索指定的字符串，\n"
 
-#~ msgid "              file, and select the node referenced by the first entry found.\n"
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
 #~ msgstr "              并选择第一个找到的条目所引用的节点。\n"
 
-#~ msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
 #~ msgstr "              您还可以同时给出文件名，形式为 (文件名)节点名。\n"
 
-#~ msgid "              and select the node in which the next occurrence is found.\n"
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
 #~ msgstr "              并选择找到的下一个实例所在的节点。\n"
 
 #~ msgid "  %-10s  Search backward for a specified string\n"
@@ -3333,9 +3392,12 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "                     This is equivalent to using the DIR-FILE argument.\n"
 #~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 #~ "                     TEXT should have the form of an Info menu item line\n"
-#~ "                     plus zero or more extra lines starting with whitespace.\n"
-#~ "                     If you specify more than one entry, they are all added.\n"
-#~ "                     If you don't specify any entries, they are determined\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
 #~ "                     from information in the Info file itself.\n"
 #~ " --help            display this help and exit.\n"
 #~ " --info-file=FILE  specify Info file to install in the directory.\n"
@@ -3345,10 +3407,13 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ "                     An Info directory entry is actually a menu item.\n"
 #~ " --quiet           suppress warnings.\n"
 #~ " --remove          same as --delete.\n"
-#~ " --section=SEC     put this file's entries in section SEC of the directory.\n"
-#~ "                     If you specify more than one section, all the entries\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
 #~ "                     are added in each of the sections.\n"
-#~ "                     If you don't specify any sections, they are determined\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
 #~ "                     from information in the Info file itself.\n"
 #~ " --version         display version information and exit.\n"
 #~ msgstr ""

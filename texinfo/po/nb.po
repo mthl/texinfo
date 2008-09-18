@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"POT-Creation-Date: 2008-09-18 20:38+0200\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -2105,11 +2105,11 @@ msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Ugyldig argument til %c%s"
 
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4317
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4319
 msgid "none"
 msgstr "none"
 
@@ -2447,7 +2447,7 @@ msgstr "For mange feil!  Ga opp.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: advarsel: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
 #, c-format
 msgid "Misplaced %c"
 msgstr "Feilplassert %c"
@@ -2759,39 +2759,39 @@ msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filargument.\n"
 
-#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#: makeinfo/makeinfo.c:1041 makeinfo/makeinfo.c:4166
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Flerlinjekommandoen %c%s brukes ikke riktig"
 
-#: makeinfo/makeinfo.c:1038
+#: makeinfo/makeinfo.c:1044
 #, c-format
 msgid "Expected `%s'"
 msgstr "Forventet «%s»"
 
-#: makeinfo/makeinfo.c:1515
+#: makeinfo/makeinfo.c:1521
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan ikke opprette katalogen «%s»: %s"
 
-#: makeinfo/makeinfo.c:1561
+#: makeinfo/makeinfo.c:1567
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Ingen «%s» funnet i «%s»"
 
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1647
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Hopper over makroekspansjon til stdout siden Info-output også sendes "
 "dit.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1677
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Lager %s-filen «%s» fra «%s».\n"
 
-#: makeinfo/makeinfo.c:1738
+#: makeinfo/makeinfo.c:1744
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2799,13 +2799,13 @@ msgstr ""
 "%s: Fjerner makroutskriftsfilen «%s» på grunn av feil; bruk --force for å "
 "bevare.\n"
 
-#: makeinfo/makeinfo.c:1793
+#: makeinfo/makeinfo.c:1799
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å bevare.\n"
 
-#: makeinfo/makeinfo.c:1812
+#: makeinfo/makeinfo.c:1818
 #, fuzzy, c-format
 msgid ""
 "%s: Removing internal links output file `%s' due to errors; use --force to "
@@ -2813,74 +2813,74 @@ msgid ""
 msgstr ""
 "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å bevare.\n"
 
-#: makeinfo/makeinfo.c:2107
+#: makeinfo/makeinfo.c:2113
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Ukjent kommando «%s»"
 
-#: makeinfo/makeinfo.c:2129
+#: makeinfo/makeinfo.c:2135
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2394
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s forventet krøllparanteser"
 
-#: makeinfo/makeinfo.c:2401
+#: makeinfo/makeinfo.c:2407
 msgid "Unmatched }"
 msgstr "Umatchet }"
 
-#: makeinfo/makeinfo.c:2449
+#: makeinfo/makeinfo.c:2455
 msgid "NO_NAME!"
 msgstr "INTET_NAVN!"
 
-#: makeinfo/makeinfo.c:2470
+#: makeinfo/makeinfo.c:2476
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s mangler avsluttende krøllparentes"
 
-#: makeinfo/makeinfo.c:3476
+#: makeinfo/makeinfo.c:3482
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3482
+#: makeinfo/makeinfo.c:3488
 #, c-format
 msgid "No such file `%s'"
 msgstr "«%s» er ingen fil"
 
-#: makeinfo/makeinfo.c:3618
+#: makeinfo/makeinfo.c:3624
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-fil «%s» (for tekstformat) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3627
+#: makeinfo/makeinfo.c:3633
 msgid "@image missing filename argument"
 msgstr "@image mangler filnavn"
 
-#: makeinfo/makeinfo.c:3845
+#: makeinfo/makeinfo.c:3851
 #, c-format
 msgid "undefined flag: %s"
 msgstr "udefinert flagg: %s"
 
-#: makeinfo/makeinfo.c:3846
+#: makeinfo/makeinfo.c:3852
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Ingen verdi for «%s»}"
 
-#: makeinfo/makeinfo.c:3898
+#: makeinfo/makeinfo.c:3904
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s krever et navn"
 
-#: makeinfo/makeinfo.c:4004
+#: makeinfo/makeinfo.c:4010
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Traff slutt-på-filen før matchende @end %s"
 
-#: makeinfo/makeinfo.c:4253
+#: makeinfo/makeinfo.c:4258
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for lang for ekspansjon; ikke ekspandert"

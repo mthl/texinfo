@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"POT-Creation-Date: 2008-09-18 20:38+0200\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -2107,11 +2107,11 @@ msgstr "@sp necesitã un argument numeric pozitiv, nu `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Argument nepotrivit pentru %c%s"
 
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4317
 msgid "asis"
 msgstr "aºacume"
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4319
 msgid "none"
 msgstr "nimic"
 
@@ -2450,7 +2450,7 @@ msgstr "Prea multe erori!  Am renunþat.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: avertisment: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
 #, c-format
 msgid "Misplaced %c"
 msgstr "%c nelalocul lui"
@@ -2766,38 +2766,38 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#: makeinfo/makeinfo.c:1041 makeinfo/makeinfo.c:4166
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Comandã pe multiple linii %c%s folositã incorect"
 
-#: makeinfo/makeinfo.c:1038
+#: makeinfo/makeinfo.c:1044
 #, c-format
 msgid "Expected `%s'"
 msgstr "Am aºteptat `%s'"
 
-#: makeinfo/makeinfo.c:1515
+#: makeinfo/makeinfo.c:1521
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Nu pot crea directorul `%s': %s"
 
-#: makeinfo/makeinfo.c:1561
+#: makeinfo/makeinfo.c:1567
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Nici un `%s' nu a fost gãsit în `%s'"
 
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1647
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Omite expasiunea macro la ieºire întrucât ieºirea Info merge acolo.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1677
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Creez fiºierul %s `%s' din `%s'.\n"
 
-#: makeinfo/makeinfo.c:1738
+#: makeinfo/makeinfo.c:1744
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2805,14 +2805,14 @@ msgstr ""
 "%s: ªterg fiºierul de ieºire macro `%s' din cauza erorilor; folosiþi --force "
 "pentru a-l pãstra.\n"
 
-#: makeinfo/makeinfo.c:1793
+#: makeinfo/makeinfo.c:1799
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-l "
 "pãstra.\n"
 
-#: makeinfo/makeinfo.c:1812
+#: makeinfo/makeinfo.c:1818
 #, fuzzy, c-format
 msgid ""
 "%s: Removing internal links output file `%s' due to errors; use --force to "
@@ -2821,74 +2821,74 @@ msgstr ""
 "%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-l "
 "pãstra.\n"
 
-#: makeinfo/makeinfo.c:2107
+#: makeinfo/makeinfo.c:2113
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Comandã necunoscutã `%s'"
 
-#: makeinfo/makeinfo.c:2129
+#: makeinfo/makeinfo.c:2135
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2394
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s am aºteptat paranteze"
 
-#: makeinfo/makeinfo.c:2401
+#: makeinfo/makeinfo.c:2407
 msgid "Unmatched }"
 msgstr "} fãrã pereche"
 
-#: makeinfo/makeinfo.c:2449
+#: makeinfo/makeinfo.c:2455
 msgid "NO_NAME!"
 msgstr "NICI_UN_NUME!"
 
-#: makeinfo/makeinfo.c:2470
+#: makeinfo/makeinfo.c:2476
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s lipseºte paranteza de închidere"
 
-#: makeinfo/makeinfo.c:3476
+#: makeinfo/makeinfo.c:3482
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "Fiºierul @image `%s' (pentru HTML) nu poate fi citit: %s"
 
-#: makeinfo/makeinfo.c:3482
+#: makeinfo/makeinfo.c:3488
 #, c-format
 msgid "No such file `%s'"
 msgstr "Nici un fiºier `%s'"
 
-#: makeinfo/makeinfo.c:3618
+#: makeinfo/makeinfo.c:3624
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "Fiºierul @image `%s' (pentru text) nu poate fi citit: %s"
 
-#: makeinfo/makeinfo.c:3627
+#: makeinfo/makeinfo.c:3633
 msgid "@image missing filename argument"
 msgstr "@image lipseºte fiºierul argument."
 
-#: makeinfo/makeinfo.c:3845
+#: makeinfo/makeinfo.c:3851
 #, c-format
 msgid "undefined flag: %s"
 msgstr "marcaj nedefinit: %s"
 
-#: makeinfo/makeinfo.c:3846
+#: makeinfo/makeinfo.c:3852
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Nici o valoare pentru `%s'}"
 
-#: makeinfo/makeinfo.c:3898
+#: makeinfo/makeinfo.c:3904
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s necesitã un nume"
 
-#: makeinfo/makeinfo.c:4004
+#: makeinfo/makeinfo.c:4010
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Am ajuns la eof înainte de a potrivi @end %s"
 
-#: makeinfo/makeinfo.c:4253
+#: makeinfo/makeinfo.c:4258
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' este prea lung pentru expansiune; nu a fost expandat"

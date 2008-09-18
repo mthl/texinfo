@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"POT-Creation-Date: 2008-09-18 20:38+0200\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -2206,11 +2206,11 @@ msgstr "@SP a Bikurikije umubare OYA"
 msgid "Bad argument to %c%s"
 msgstr "Kuri"
 
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4317
 msgid "asis"
 msgstr ""
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4319
 msgid "none"
 msgstr "ntacyo"
 
@@ -2562,7 +2562,7 @@ msgstr "Amakosa Hejuru"
 msgid "%s:%d: warning: "
 msgstr "%s:%d:Iburira"
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
 #, c-format
 msgid "Misplaced %c"
 msgstr ""
@@ -2813,125 +2813,125 @@ msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
 msgid "%s: missing file argument.\n"
 msgstr "%s:Ibuze IDOSIYE"
 
-#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#: makeinfo/makeinfo.c:1041 makeinfo/makeinfo.c:4166
 #, fuzzy, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Komandi:"
 
-#: makeinfo/makeinfo.c:1038
+#: makeinfo/makeinfo.c:1044
 #, fuzzy, c-format
 msgid "Expected `%s'"
 msgstr "Ikitezwe:"
 
-#: makeinfo/makeinfo.c:1515
+#: makeinfo/makeinfo.c:1521
 #, fuzzy, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kurema bushyinguro"
 
-#: makeinfo/makeinfo.c:1561
+#: makeinfo/makeinfo.c:1567
 #, fuzzy, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Byabonetse in"
 
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1647
 #, fuzzy, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr "%s:Makoro Kuri Nka Ibisohoka ni"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1677
 #, fuzzy, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "IDOSIYE Bivuye"
 
-#: makeinfo/makeinfo.c:1738
+#: makeinfo/makeinfo.c:1744
 #, fuzzy, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s:Makoro Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
 
-#: makeinfo/makeinfo.c:1793
+#: makeinfo/makeinfo.c:1799
 #, fuzzy, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
 
-#: makeinfo/makeinfo.c:1812
+#: makeinfo/makeinfo.c:1818
 #, fuzzy, c-format
 msgid ""
 "%s: Removing internal links output file `%s' due to errors; use --force to "
 "preserve.\n"
 msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
 
-#: makeinfo/makeinfo.c:2107
+#: makeinfo/makeinfo.c:2113
 #, fuzzy, c-format
 msgid "Unknown command `%s'"
 msgstr "Komandi:"
 
-#: makeinfo/makeinfo.c:2129
+#: makeinfo/makeinfo.c:2135
 #, fuzzy, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2394
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%sIkitezwe: Ingirwadusodeko"
 
-#: makeinfo/makeinfo.c:2401
+#: makeinfo/makeinfo.c:2407
 msgid "Unmatched }"
 msgstr ""
 
 # 4203
-#: makeinfo/makeinfo.c:2449
+#: makeinfo/makeinfo.c:2455
 #, fuzzy
 msgid "NO_NAME!"
 msgstr "nta zina"
 
-#: makeinfo/makeinfo.c:2470
+#: makeinfo/makeinfo.c:2476
 #, fuzzy, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%sIbuze Gufunga"
 
-#: makeinfo/makeinfo.c:3476
+#: makeinfo/makeinfo.c:3482
 #, fuzzy, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@Ishusho IDOSIYE kugirango OYA"
 
-#: makeinfo/makeinfo.c:3482
+#: makeinfo/makeinfo.c:3488
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "IDOSIYE"
 
-#: makeinfo/makeinfo.c:3618
+#: makeinfo/makeinfo.c:3624
 #, fuzzy, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@Ishusho IDOSIYE kugirango Umwandiko"
 
-#: makeinfo/makeinfo.c:3627
+#: makeinfo/makeinfo.c:3633
 #, fuzzy
 msgid "@image missing filename argument"
 msgstr "@Ishusho Ibuze Izina ry'idosiye:"
 
-#: makeinfo/makeinfo.c:3845
+#: makeinfo/makeinfo.c:3851
 #, fuzzy, c-format
 msgid "undefined flag: %s"
 msgstr "kidasobanuye Ibendera"
 
-#: makeinfo/makeinfo.c:3846
+#: makeinfo/makeinfo.c:3852
 #, fuzzy, c-format
 msgid "{No value for `%s'}"
 msgstr "{Agaciro kugirango"
 
-#: makeinfo/makeinfo.c:3898
+#: makeinfo/makeinfo.c:3904
 #, fuzzy, c-format
 msgid "%c%s requires a name"
 msgstr "%c%sa Izina:"
 
-#: makeinfo/makeinfo.c:4004
+#: makeinfo/makeinfo.c:4010
 #, fuzzy, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Mbere Impera"
 
-#: makeinfo/makeinfo.c:4253
+#: makeinfo/makeinfo.c:4258
 #, fuzzy, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""

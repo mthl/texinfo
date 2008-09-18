@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"POT-Creation-Date: 2008-09-18 20:38+0200\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -2183,11 +2183,11 @@ msgid "Bad argument to %c%s"
 msgstr "Rossz argumentum ide: %c%s"
 
 # elég / ahogy van ? LM
-#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4317
 msgid "asis"
 msgstr ""
 
-#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4319
 msgid "none"
 msgstr "nincs"
 
@@ -2534,7 +2534,7 @@ msgstr "Túl sok hiba! Feladom.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: figyelem: "
 
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
 #, c-format
 msgid "Misplaced %c"
 msgstr "Rossz helyen levő %c"
@@ -2757,39 +2757,39 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s: hiányzó fájl argumentum.\n"
 
-#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#: makeinfo/makeinfo.c:1041 makeinfo/makeinfo.c:4166
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "A többsoros %c%s parancs helytelenül van használva"
 
-#: makeinfo/makeinfo.c:1038
+#: makeinfo/makeinfo.c:1044
 #, c-format
 msgid "Expected `%s'"
 msgstr "„%s“-t várok"
 
-#: makeinfo/makeinfo.c:1515
+#: makeinfo/makeinfo.c:1521
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
 
-#: makeinfo/makeinfo.c:1561
+#: makeinfo/makeinfo.c:1567
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Nem található „%s“ ebben: „%s“"
 
-#: makeinfo/makeinfo.c:1641
+#: makeinfo/makeinfo.c:1647
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: A makrókiterjesztést átirányítom a stdout-ra, mivel az Info kimete oda "
 "megy.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1677
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "%s fájl („%s“) készítése „%s“-ból.\n"
 
-#: makeinfo/makeinfo.c:1738
+#: makeinfo/makeinfo.c:1744
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2797,14 +2797,14 @@ msgstr ""
 "%s: A fellépett hibák miatt eltávolítom a(z) „%s“ makró kimeneti állományt; "
 "a megtartásához használja  --force opciót.\n"
 
-#: makeinfo/makeinfo.c:1793
+#: makeinfo/makeinfo.c:1799
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: A fellépett hibák miatt eltávolítom a(z) „%s“ kimeneti állományt; a "
 "megtartásához használja  --force opciót.\n"
 
-#: makeinfo/makeinfo.c:1812
+#: makeinfo/makeinfo.c:1818
 #, fuzzy, c-format
 msgid ""
 "%s: Removing internal links output file `%s' due to errors; use --force to "
@@ -2813,77 +2813,77 @@ msgstr ""
 "%s: A fellépett hibák miatt eltávolítom a(z) „%s“ kimeneti állományt; a "
 "megtartásához használja  --force opciót.\n"
 
-#: makeinfo/makeinfo.c:2107
+#: makeinfo/makeinfo.c:2113
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Ismeretlen parancs: „%s“"
 
-#: makeinfo/makeinfo.c:2129
+#: makeinfo/makeinfo.c:2135
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2394
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s kapcsos zárójelpárt vár"
 
-#: makeinfo/makeinfo.c:2401
+#: makeinfo/makeinfo.c:2407
 msgid "Unmatched }"
 msgstr "Pár nélküli }"
 
-#: makeinfo/makeinfo.c:2449
+#: makeinfo/makeinfo.c:2455
 msgid "NO_NAME!"
 msgstr "NINCS_NÉV!"
 
-#: makeinfo/makeinfo.c:2470
+#: makeinfo/makeinfo.c:2476
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s hiányzó kapcsos bezárójel"
 
-#: makeinfo/makeinfo.c:3476
+#: makeinfo/makeinfo.c:3482
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image a(z) „%s“ fájl (HTML) nem olvasható: %s"
 
-#: makeinfo/makeinfo.c:3482
+#: makeinfo/makeinfo.c:3488
 #, c-format
 msgid "No such file `%s'"
 msgstr "Nincs ilyen fájl: „%s“"
 
-#: makeinfo/makeinfo.c:3618
+#: makeinfo/makeinfo.c:3624
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image a(z) „%s“ fájl (szöveges) nem olvasható: %s"
 
-#: makeinfo/makeinfo.c:3627
+#: makeinfo/makeinfo.c:3633
 msgid "@image missing filename argument"
 msgstr "@image hiányzó fájlnév argumentum"
 
 # flag ? LM
-#: makeinfo/makeinfo.c:3845
+#: makeinfo/makeinfo.c:3851
 #, c-format
 msgid "undefined flag: %s"
 msgstr "ismeretlen flag: %s"
 
 # checkit
-#: makeinfo/makeinfo.c:3846
+#: makeinfo/makeinfo.c:3852
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{„%s“-hoz nincs érték}"
 
-#: makeinfo/makeinfo.c:3898
+#: makeinfo/makeinfo.c:3904
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s egy nevet igényel"
 
 # AATNEZNI ? LM
-#: makeinfo/makeinfo.c:4004
+#: makeinfo/makeinfo.c:4010
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Korábban találtam fájl vége jelet, mint @end-t %s "
 
-#: makeinfo/makeinfo.c:4253
+#: makeinfo/makeinfo.c:4258
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""

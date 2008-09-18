@@ -1,3 +1,7 @@
+2008-09-18  Karl Berry  <karl@tug.org>
+
+	* Version 4.13.
+
 2008-09-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/window.c (line_map_init): Take an additional argument,
