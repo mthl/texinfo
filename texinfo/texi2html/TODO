@@ -43,6 +43,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
   $Texi2HTML::THISDOC{'do_about'}
+  $Texi2HTML::THISDOC{'split_level'}
 
   $copying_comment, $titlepage better and $documentdescription
   $program_string
@@ -361,3 +362,10 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * change LINK_BUTTONS for makeinfo.init to have next, up... nodes
 
 * failure in indices test nodes_before_top_no_nodes
+
+* ignore spaces after @ command, before {, like texi2dvi does.
+
+* failures with split index between node and section in indices/ and
+  many_iput_files.
+
+* change prototype and document $printindex

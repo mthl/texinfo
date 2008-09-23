@@ -3855,6 +3855,20 @@ formatted using the function above.
 @node Index list
 @subsection Customizing the formatting of index lists
 
+There is an elaborate default index formatting in texi2html, with
+index summary by letter linking to index entries grouped by letters too,
+with the possibility of index pages split accross files. This system may be 
+completly bypassed by redefining the function reference that is called when
+@code{@@printindex} is encountered:
+
+@deftypefn {Function Reference} $index_text printindex $index_name
+@var{$index_name} is the index name appearing on the 
+@code{@@printindex} line. The index formatted should be returned
+by this function reference.
+@end deftypefn
+
+If the default index formatting is used, there are still possibilities
+to customize part of the formatting.
 The index entries are sorted alphabetically. A whole index list is 
 considered to be composed of letter entries. A letter entry is composed
 by all the index entries beginning with that letter. A letter may

@@ -164,7 +164,7 @@ sub book_element_file_name($$$)
     my $type = shift;
     my $prefix = shift;
 
-    return undef if ($NODE_FILES);
+    return undef if ($NODE_FILES or !$SPLIT);
     return undef if (!defined($element));
    
     if (defined($previous_nr) and ($element->{'doc_nr'} == $previous_nr))

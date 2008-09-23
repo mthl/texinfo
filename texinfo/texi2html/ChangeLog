@@ -1,3 +1,12 @@
+2008-09-23  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl,texi2html.init: do added index pages in 
+	texi2html.init. Add an element for an index page only it begins 
+	a new file. Avoid changing directions as best as possible, while 
+	still linking to the added index element (with Following, Back and 
+	Prev). Never consider printindex as elements, but instead put them
+	in places.
+
 2008-09-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: always use a distinct label for index 

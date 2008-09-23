@@ -16540,18 +16540,6 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-CVS_002fRoot-file|CVS/Root file]]</td><td valign="top">[[#Specifying-a-repository|Telling CVS where your repository is]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVS_002fTag-file|CVS/Tag file]]</td><td valign="top">[[#Working-directory-storage|How data is stored in the working directory]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVS_002fTemplate-file|CVS/Template file]]</td><td valign="top">[[#Working-directory-storage|How data is stored in the working directory]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fCLIENT_005fLOG_002c-environment-variable|CVS_CLIENT_LOG, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fCLIENT_005fPORT|CVS_CLIENT_PORT]]</td><td valign="top">[[#Kerberos-authenticated|Direct connection with kerberos]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fIGNORE_005fREMOTE_005fROOT_002c-environment-variable|CVS_IGNORE_REMOTE_ROOT, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fLOCAL_005fBRANCH_005fNUM_002c-environment-variable|CVS_LOCAL_BRANCH_NUM, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fPASSFILE_002c-environment-variable|CVS_PASSFILE, environment variable]]</td><td valign="top">[[#Password-authentication-client|Using the client with password authentication]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fPID_002c-environment-variable|CVS_PID, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fRCMD_005fPORT_002c-environment-variable|CVS_RCMD_PORT, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fRSH_002c-environment-variable|CVS_RSH, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_002c-and-_003afork_003a|CVS_SERVER, and :fork:]]</td><td valign="top">[[#Connecting-via-fork|Connecting with fork]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_002c-environment-variable|CVS_SERVER, environment variable]]</td><td valign="top">[[#Connecting-via-rsh|Connecting with rsh]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_005fSLEEP_002c-environment-variable|CVS_SERVER_SLEEP, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
-<tr><td></td><td valign="top">[[#index-CVS_005fUSER_002c-environment-variable|CVS_USER, environment variable]]</td><td valign="top">[[#Variables|Expansions in administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[#index-cvsadmin|cvsadmin]]</td><td valign="top">[[#admin|admin&mdash;Administration]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVSEDITOR_002c-environment-variable|CVSEDITOR, environment variable]]</td><td valign="top">[[#Committing-your-changes|Committing your changes]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVSEDITOR_002c-environment-variable-1|CVSEDITOR, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
@@ -16576,6 +16564,18 @@ comprehensive, detailed list of known bugs.
 <tr><td></td><td valign="top">[[#index-cvswrappers-_0028admin-file_0029|cvswrappers (admin file)]]</td><td valign="top">[[#Wrappers|The cvswrappers file]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVSWRAPPERS_002c-environment-variable|CVSWRAPPERS, environment variable]]</td><td valign="top">[[#Wrappers|The cvswrappers file]]</td></tr>
 <tr><td></td><td valign="top">[[#index-CVSWRAPPERS_002c-environment-variable-1|CVSWRAPPERS, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fCLIENT_005fLOG_002c-environment-variable|CVS_CLIENT_LOG, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fCLIENT_005fPORT|CVS_CLIENT_PORT]]</td><td valign="top">[[#Kerberos-authenticated|Direct connection with kerberos]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fIGNORE_005fREMOTE_005fROOT_002c-environment-variable|CVS_IGNORE_REMOTE_ROOT, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fLOCAL_005fBRANCH_005fNUM_002c-environment-variable|CVS_LOCAL_BRANCH_NUM, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fPASSFILE_002c-environment-variable|CVS_PASSFILE, environment variable]]</td><td valign="top">[[#Password-authentication-client|Using the client with password authentication]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fPID_002c-environment-variable|CVS_PID, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fRCMD_005fPORT_002c-environment-variable|CVS_RCMD_PORT, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fRSH_002c-environment-variable|CVS_RSH, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_002c-and-_003afork_003a|CVS_SERVER, and :fork:]]</td><td valign="top">[[#Connecting-via-fork|Connecting with fork]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_002c-environment-variable|CVS_SERVER, environment variable]]</td><td valign="top">[[#Connecting-via-rsh|Connecting with rsh]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fSERVER_005fSLEEP_002c-environment-variable|CVS_SERVER_SLEEP, environment variable]]</td><td valign="top">[[#Environment-variables|All environment variables which affect CVS]]</td></tr>
+<tr><td></td><td valign="top">[[#index-CVS_005fUSER_002c-environment-variable|CVS_USER, environment variable]]</td><td valign="top">[[#Variables|Expansions in administrative files]]</td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><div id="Index-1_cp_letter-D"></div>D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-Date-keyword|Date keyword]]</td><td valign="top">[[#Keyword-list|Keyword List]]</td></tr>

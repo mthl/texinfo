@@ -259,7 +259,7 @@ $begin_format_texi = \&docbook_begin_format_texi;
 $def_line = \&docbook_def_line;
 $def = \&docbook_def;
 $def_item = \&docbook_def_item;
-$print_index = \&docbook_print_index;
+$printindex = \&docbook_printindex;
 $index_summary = \&docbook_index_summary;
 $external_ref = \&docbook_external_ref;
 $internal_ref = \&docbook_internal_ref;
@@ -1308,9 +1308,8 @@ sub docbook_index_summary($$)
     return '';
 }
 
-sub docbook_print_index($$)
+sub docbook_printindex($$)
 {
-    my $text = shift;
     my $name = shift;
     return docbook_add_id('index')."></index>\n";
 }

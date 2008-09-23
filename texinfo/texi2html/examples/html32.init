@@ -242,11 +242,16 @@ sub t2h_html32_cartouche($)
 
 
 # no style
-sub t2h_html32_summary_letter($$$)
+sub t2h_html32_summary_letter($$$$$$$)
 {
    my $letter = shift;
    my $file = shift;
    my $identifier = shift;
+   my $index_element_id = shift;
+   my $number = shift;
+   my $index_element = shift;
+   my $index_name = shift;
+
    return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>');
 }
 

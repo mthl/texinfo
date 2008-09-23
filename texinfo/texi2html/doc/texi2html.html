@@ -40,7 +40,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on September 8, 2008 by texi2html 1.79
+<!-- Created on September 23, 2008 by texi2html 1.79
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -137,6 +137,7 @@ by the Free Software Foundation.
 <a name="Top"></a>
 <a name="Texi2HTML"></a>
 
+<a name="index-bug-report"></a>
 
 <p>This manual, last updated 1 September 2008, describes version 1.79
 of the <code>texi2html</code> Perl script which converts
@@ -200,6 +201,8 @@ version of the manual which contains the bug, as given above.
 </tr></table>
 <h1 class="chapter">1. Overview</h1>
 
+<a name="index-Texinfo"></a>
+<a name="index-examples-of-manuals"></a>
 
 <p><a href="http://www.texinfo.org">Texinfo</a> is the official
 documentation format of the <a href="http://www.gnu.org">GNU</a>
@@ -260,6 +263,7 @@ producing, have a look at the following sites:
 </tr></table>
 <h2 class="section">1.1 Why <code>texi2html</code> and not <code>makeinfo</code>?</h2>
 
+<a name="index-makeinfo"></a>
 
 <p>You would like to produce <acronym>HTML</acronym> files from your existing Texinfo
 files?  There are two programs you can use to do this.  The first is
@@ -321,6 +325,9 @@ provided with the distribution.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">2. Obtaining <code>texi2html</code></h1>
+<a name="index-downloading-texi2html-source"></a>
+<a name="index-texi2html-source_002c-downloading"></a>
+<a name="index-source-code-for-texi2html_002c-downloading"></a>
 
 <p>The latest version of the source code for <code>texi2html</code> should be
 available from
@@ -349,6 +356,8 @@ available from
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter">3. Installation of <code>texi2html</code></h1>
+<a name="index-Installation"></a>
+<a name="index-configure"></a>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Requirements">3.1 Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1088,6 +1097,7 @@ The default is to have separated footnotes.
 </tr></table>
 <h2 class="section">4.7 Customizing the <acronym>HTML</acronym> and text style</h2>
 
+<a name="index-CSS"></a>
 
 <p>Miscalleneous style changes may be achieved with command line options. 
 </p>
@@ -1258,6 +1268,8 @@ init files (see section <a href="#Using-init-files">Use initialization files for
 </tr></table>
 <h2 class="section">4.9 Use initialization files for fine tuning</h2>
 
+<a name="index-internationalization"></a>
+<a name="index-Config"></a>
 
 <p>Initialization variables are read first from
 &lsquo;<tt>/usr/local/share/texi2html/Config</tt>&rsquo; (the exact location being
@@ -2512,6 +2524,7 @@ reference may be redefined:
 </tr></table>
 <h2 class="section">6.7 Customizing the <code>texi2html</code> css lines</h2>
 
+<a name="index-CSS-1"></a>
 
 
 <p>If the variable <a name="index-_0024CSS_005fLINES"></a>
@@ -4285,6 +4298,7 @@ Empty lines are left as is by default except right after a definition
 </tr></table>
 <h2 class="section">7.8 Customizing strings written by <code>texi2html</code></h2>
 
+<a name="index-i18n"></a>
 
 <p><code>texi2html</code> writes some strings in the generated document at
 various places, at the page footers, on the help page, for special 
@@ -4361,6 +4375,7 @@ to retranslate some strings based on the new language.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section">7.9 References</h2>
+<a name="index-reference"></a>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -4389,6 +4404,7 @@ to retranslate some strings based on the new language.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection">7.9.1 Reference to external manual</h3>
+<a name="index-external-manual"></a>
 
 <p>The references are produced with two function references, one for the
 hypertextual reference construction, the other for the full reference to 
@@ -4492,6 +4508,9 @@ reference.
 </tr></table>
 <h2 class="section">7.10 Commands used for centering and flushing of text</h2>
 
+<a name="index-centering"></a>
+<a name="index-flushing-text"></a>
+<a name="index-text-alignement"></a>
 
 <p>When a command controlling the alignement of text is used (<code>@center</code>,
 <code>@flushleft</code> and <code>@flushright</code>), the main program takes
@@ -4561,12 +4580,14 @@ The default is to return the text unmodified.
 </tr></table>
 <h3 class="subsection">7.11.1 Paragraph and preformatted region formatting</h3>
 
+<a name="index-paragraph"></a>
+<a name="index-preformatted-region"></a>
 
 <p>The formatting of a paragraph region or a preformatted region, is controlled
 by function references:
 </p>
 <dl>
-<dt><a name="index-paragraph"></a><u>Function Reference:</u> $paragraph_text <b>paragraph</b><i> $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin</i></dt>
+<dt><a name="index-paragraph-1"></a><u>Function Reference:</u> $paragraph_text <b>paragraph</b><i> $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin</i></dt>
 <dd><p>This function formats a paragraph. <var>$text</var> is the text of the paragraph,
 <var>$alignement</var> is the empty string when no alignement command has
 been seen, otherwise it is the current alignement command name.
@@ -4657,6 +4678,7 @@ the item in the list, <var>$enumerate_style</var> is the argument of the enumera
 </tr></table>
 <h3 class="subsection">7.11.2 Avoiding paragraphs in formats</h3>
 
+<a name="index-Avoid-paragraph-opening"></a>
 
 <p>It is possible to avoid that a format closes the previous paragraph or
 preformatted region and reopens one, by putting the format command in a 
@@ -4699,6 +4721,7 @@ associated with a true value.
 </tr></table>
 <h2 class="section">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</h2>
 
+<a name="index-complex-format"></a>
 
 <p>Here we see how a whole complex format is formatted. For the formatting
 of the text, see <a href="#Paragraph-and-preformatted-region">Formatting (or not) a paragraph and a preformatted region</a>.
@@ -6320,6 +6343,8 @@ text. <var>$simple_text</var> is the text formatted in string context.
 
 
 
+<a name="index-skipped-command"></a>
+<a name="index-unknown-command"></a>
 
 <p>Many commands without braces are available in texinfo, sometimes with
 a specific syntax. For example we have <code>@sp</code>, <code>@noindent</code>,
@@ -6483,6 +6508,10 @@ strings.
 </tr></table>
 <h2 class="appendixsec">A.1 Translating strings</h2>
 
+<a name="index-Translation"></a>
+<a name="index-i18n-1"></a>
+<a name="index-_0024LANGUAGES-1"></a>
+<a name="index-_0024T2H_005fOBSOLETE_005fSTRINGS"></a>
 
 
 <table class="menu" border="0" cellspacing="0">
@@ -6591,6 +6620,8 @@ take precedence (see section <a href="#Using-init-files">Use initialization file
 </tr></table>
 <h2 class="appendixsec">A.2 Adding new strings written to document</h2>
 
+<a name="index-internationalized-strings"></a>
+<a name="index-manage_005fi18n_002epl"></a>
 
 <p>If you need to write strings, for example the new string <var>a string</var> 
 to the resulting document, call <code>&amp;$I('a string')</code>. Use simple quotes.
@@ -6958,68 +6989,68 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">D. Command Line Option Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Command-Line-Option-Index_op_letter-C" class="summary-letter"><b>C</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Command-Line-Option-Index__letter-C" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-D" class="summary-letter"><b>D</b></a>
+<a href="#Command-Line-Option-Index__letter-D" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-E" class="summary-letter"><b>E</b></a>
+<a href="#Command-Line-Option-Index__letter-E" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-F" class="summary-letter"><b>F</b></a>
+<a href="#Command-Line-Option-Index__letter-F" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-H" class="summary-letter"><b>H</b></a>
+<a href="#Command-Line-Option-Index__letter-H" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-I" class="summary-letter"><b>I</b></a>
+<a href="#Command-Line-Option-Index__letter-I" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-L" class="summary-letter"><b>L</b></a>
+<a href="#Command-Line-Option-Index__letter-L" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-M" class="summary-letter"><b>M</b></a>
+<a href="#Command-Line-Option-Index__letter-M" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-N" class="summary-letter"><b>N</b></a>
+<a href="#Command-Line-Option-Index__letter-N" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-O" class="summary-letter"><b>O</b></a>
+<a href="#Command-Line-Option-Index__letter-O" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-P" class="summary-letter"><b>P</b></a>
+<a href="#Command-Line-Option-Index__letter-P" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-S" class="summary-letter"><b>S</b></a>
+<a href="#Command-Line-Option-Index__letter-S" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-T" class="summary-letter"><b>T</b></a>
+<a href="#Command-Line-Option-Index__letter-T" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-U" class="summary-letter"><b>U</b></a>
+<a href="#Command-Line-Option-Index__letter-U" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-V" class="summary-letter"><b>V</b></a>
+<a href="#Command-Line-Option-Index__letter-V" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-W" class="summary-letter"><b>W</b></a>
+<a href="#Command-Line-Option-Index__letter-W" class="summary-letter"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
-<table border="0" class="index-op">
+<table border="0" class="index-">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-C">C</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-css_002dinclude_003dfile">css-include=<var>file</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-css_002dref_003dURL">css-ref=<var>URL</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-D">D</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-D">D</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-def_002dtable">def-table</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-doctype_003dDTD">doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-document_002dlanguage">document-language</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-document_002dlanguage-1">document-language</a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Dvar">D<var>var</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-E">E</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-enable_002dtranslations">enable-translations</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-error_002dlimit_003dnum">error-limit=<var>num</var></a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-footnote_002dstyle">footnote-style</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-frames">frames</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-frameset_002ddoctype">frameset-doctype</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-frameset_002ddoctype_003dDTD">frameset-doctype=<var>DTD</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-H">H</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-H">H</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-help">help</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-html_002dxref_002dprefix_003dpath">html-xref-prefix=<var>path</var></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-I">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Idir">I<var>dir</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-if_003cregion_003e">if&lt;region&gt;</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-include_002dcss">include-css</a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
@@ -7027,17 +7058,17 @@ text
 <tr><td></td><td valign="top"><a href="#index-init_002dfile-1">init-file</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-iso">iso</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-L">L</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-L">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-l2h">l2h</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-l2h_002dfile">l2h-file</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-l2h_002dl2h_003dprogram">l2h-l2h=<var>program</var></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-l2h_002dtmp">l2h-tmp</a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-lang_003dlang">lang=<var>lang</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-M">M</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-M">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-menu">menu</a></td><td valign="top"><a href="#Invoking-texi2html">4. Invoking <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-N">N</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-N">N</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-no_002dheaders">no-headers</a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-no_002dif_003cregion_003e">no-if&lt;region&gt;</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node_002dfiles">node-files</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
@@ -7045,74 +7076,74 @@ text
 <tr><td></td><td valign="top"><a href="#index-nomenu-1">nomenu</a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-number_002dsections">number-sections</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-O">O</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-O">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-output">output</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-output-1">output</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-P">P</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Pdir">P<var>dir</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pkgdatadir_003ddir">pkgdatadir=<var>dir</var></a></td><td valign="top"><a href="#Installing">3.3 Installing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pkgdatadir_003ddir-1">pkgdatadir=dir</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-prefix">prefix</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-S">S</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-S">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-short_002dext">short-ext</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-short_002dref">short-ref</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-split">split</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sysconfdir_003ddir">sysconfdir=dir</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-T">T</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-toc_002dfile">toc-file</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-toc_002dlinks">toc-links</a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-top_002dfile">top-file</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-transliterate_002dfile_002dnames">transliterate-file-names</a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-U">U</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-U">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-use_002dnodes">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-use_002dnodes-1">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-use_002dnodes-2">use-nodes</a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Uvar">U<var>var</var></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-V">V</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-V">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-verbose">verbose</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-version">version</a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Command-Line-Option-Index_op_letter-W">W</a></th><td></td><td></td></tr>
+<tr><th><a name="Command-Line-Option-Index__letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-with_002dunicode">with-unicode</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-with_002dunidecode">with-unidecode</a></td><td valign="top"><a href="#Advanced-build-features">3.4 Advanced build features</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Command-Line-Option-Index_op_letter-C" class="summary-letter"><b>C</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Command-Line-Option-Index__letter-C" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-D" class="summary-letter"><b>D</b></a>
+<a href="#Command-Line-Option-Index__letter-D" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-E" class="summary-letter"><b>E</b></a>
+<a href="#Command-Line-Option-Index__letter-E" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-F" class="summary-letter"><b>F</b></a>
+<a href="#Command-Line-Option-Index__letter-F" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-H" class="summary-letter"><b>H</b></a>
+<a href="#Command-Line-Option-Index__letter-H" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-I" class="summary-letter"><b>I</b></a>
+<a href="#Command-Line-Option-Index__letter-I" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-L" class="summary-letter"><b>L</b></a>
+<a href="#Command-Line-Option-Index__letter-L" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-M" class="summary-letter"><b>M</b></a>
+<a href="#Command-Line-Option-Index__letter-M" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-N" class="summary-letter"><b>N</b></a>
+<a href="#Command-Line-Option-Index__letter-N" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-O" class="summary-letter"><b>O</b></a>
+<a href="#Command-Line-Option-Index__letter-O" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-P" class="summary-letter"><b>P</b></a>
+<a href="#Command-Line-Option-Index__letter-P" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-S" class="summary-letter"><b>S</b></a>
+<a href="#Command-Line-Option-Index__letter-S" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-T" class="summary-letter"><b>T</b></a>
+<a href="#Command-Line-Option-Index__letter-T" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-U" class="summary-letter"><b>U</b></a>
+<a href="#Command-Line-Option-Index__letter-U" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-V" class="summary-letter"><b>V</b></a>
+<a href="#Command-Line-Option-Index__letter-V" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#Command-Line-Option-Index_op_letter-W" class="summary-letter"><b>W</b></a>
+<a href="#Command-Line-Option-Index__letter-W" class="summary-letter"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -7135,16 +7166,16 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">E. Variable Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index_vr_symbol-1" class="summary-letter"><b>$</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index__symbol-1" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#Variable-Index_vr_symbol-2" class="summary-letter"><b>%</b></a>
+<a href="#Variable-Index__symbol-2" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#Variable-Index_vr_symbol-3" class="summary-letter"><b>@</b></a>
+<a href="#Variable-Index__symbol-3" class="summary-letter"><b>@</b></a>
 </td></tr></table>
-<table border="0" class="index-vr">
+<table border="0" class="index-">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Variable-Index_vr_symbol-1">$</a></th><td></td><td></td></tr>
+<tr><th><a name="Variable-Index__symbol-1">$</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fBODY_005fOPEN"><code>$AFTER_BODY_OPEN</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fOVERVIEW"><code>$AFTER_OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024AFTER_005fTOC_005fLINES"><code>$AFTER_TOC_LINES</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
@@ -7162,18 +7193,18 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024complex_005fformat_005fmap"><code>$complex_format_map</code></a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024CSS_005fLINES"><code>$CSS_LINES</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DATE"><code>$DATE</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024DEFAULT_005fENCODING"><code>$DEFAULT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024DEFAULT_005fRULE"><code>$DEFAULT_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024definition_005fcategory"><code>$definition_category</code></a></td><td valign="top"><a href="#Definition-formatting">7.14.2 Customization of the definition formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024def_005falways_005fdelimiters"><code>$def_always_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024def_005fargument_005fseparator_005fdelimiters"><code>$def_argument_separator_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024def_005fin_005ftype_005fdelimiters"><code>$def_in_type_delimiters</code></a></td><td valign="top"><a href="#Definition-line">7.14.1 Customizing the interpretation of a definition line</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DEF_005fTABLE"><code>$DEF_TABLE</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024DEFAULT_005fENCODING"><code>$DEFAULT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024DEFAULT_005fRULE"><code>$DEFAULT_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024definition_005fcategory"><code>$definition_category</code></a></td><td valign="top"><a href="#Definition-formatting">7.14.2 Customization of the definition formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024DO_005fCONTENTS"><code>$DO_CONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024DO_005fSCONTENTS"><code>$DO_SCONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DOCTYPE"><code>$DOCTYPE</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DOCUMENT_005fDESCRIPTION"><code>$DOCUMENT_DESCRIPTION</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024DOCUMENT_005fENCODING"><code>$DOCUMENT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024DO_005fCONTENTS"><code>$DO_CONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024DO_005fSCONTENTS"><code>$DO_SCONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024ENCODING_005fNAME"><code>$ENCODING_NAME</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024ENCODING_005fNAME-1"><code>$ENCODING_NAME</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024ERROR_005fLIMIT"><code>$ERROR_LIMIT</code></a></td><td valign="top"><a href="#General-options">4.1 General options</a></td></tr>
@@ -7184,34 +7215,34 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024FRAMESET_005fDOCTYPE"><code>$FRAMESET_DOCTYPE</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024ICONS"><code>$ICONS</code></a></td><td valign="top"><a href="#General-purpose-variables">6.3.1 Controlling the navigation panel panel at a high level</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024IDX_005fSUMMARY"><code>$IDX_SUMMARY</code></a></td><td valign="top"><a href="#External-index-files">6.13 Generation of external files for index entries</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024IN_005fENCODING"><code>$IN_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024INDEX_005fCHAPTER"><code>$INDEX_CHAPTER</code></a></td><td valign="top"><a href="#Element-labels-1">Element labels</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024INLINE_005fCONTENTS"><code>$INLINE_CONTENTS</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024IN_005fENCODING"><code>$IN_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024L2H_005fL2H"><code>$L2H_L2H</code></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024L2H_005fTMP"><code>$L2H_TMP</code></a></td><td valign="top"><a href="#Expanding-TeX-regions">4.8 Expanding <code>@tex</code> and <code>@math</code> regions using LaTeX2HTML</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024LANG"><code>$LANG</code></a></td><td valign="top"><a href="#Texinfo-related-options">4.5 Command line options related to Texinfo language features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024LANG-1"><code>$LANG</code></a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024LANG-2"><code>$LANG</code></a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024LANGUAGES"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Translating-strings"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024LANGUAGES-1"><code>$LANGUAGES</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024MENU_005fPRE_005fCOMPLEX_005fFORMAT"><code>$MENU_PRE_COMPLEX_FORMAT</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024MENU_005fPRE_005fSTYLE"><code>$MENU_PRE_STYLE</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024MENU_005fSYMBOL"><code>$MENU_SYMBOL</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024MIDDLE_005fRULE"><code>$MIDDLE_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024misc_005felement_005flabel"><code>$misc_element_label</code></a></td><td valign="top"><a href="#Special-pages-content">6.11.1 Customizing the content of the special pages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024NO_005fBULLET_005fLIST_005fATTRIBUTE"><code>$NO_BULLET_LIST_ATTRIBUTE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024NO_005fBULLET_005fLIST_005fSTYLE"><code>$NO_BULLET_LIST_STYLE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024NODE_005fFILES"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024NODE_005fFILES-1"><code>$NODE_FILES</code></a></td><td valign="top"><a href="#File-names">File names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024NODE_005fNAME_005fIN_005fMENU"><code>$NODE_NAME_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024NO_005fBULLET_005fLIST_005fATTRIBUTE"><code>$NO_BULLET_LIST_ATTRIBUTE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024NO_005fBULLET_005fLIST_005fSTYLE"><code>$NO_BULLET_LIST_STYLE</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024NUMBER_005fSECTIONS"><code>$NUMBER_SECTIONS</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024OPEN_005fQUOTE_005fSYMBOL"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#Hash-reference-interface">7.5.1 An interface for commands formatting with a hash reference</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024OPEN_005fQUOTE_005fSYMBOL-1"><code>$OPEN_QUOTE_SYMBOL</code></a></td><td valign="top"><a href="#String-interface">7.5.2 An interface for commands formatting with a string</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024OUT"><code>$OUT</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024OUT_005fENCODING"><code>$OUT_ENCODING</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024OUT_005fENCODING-1"><code>$OUT_ENCODING</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024PRE_005fBODY_005fCLOSE"><code>$PRE_BODY_CLOSE</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024PREFIX"><code>$PREFIX</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024PRE_005fBODY_005fCLOSE"><code>$PRE_BODY_CLOSE</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024print_005fchapter_005ffooter"><code>$print_chapter_footer</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024print_005fchapter_005fheader"><code>$print_chapter_header</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024print_005ffoot_005fnavigation"><code>$print_foot_navigation</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
@@ -7228,31 +7259,31 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024print_005fTop_005fheader"><code>$print_Top_header</code></a></td><td valign="top"><a href="#Special-pages-layout">6.11.2 Customizing the layout of the special pages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SECTION_005fNAVIGATION"><code>$SECTION_NAVIGATION</code></a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SECTION_005fNAVIGATION-1"><code>$SECTION_NAVIGATION</code></a></td><td valign="top"><a href="#General-purpose-variables">6.3.1 Controlling the navigation panel panel at a high level</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024SEPARATE_005fDESCRIPTION"><code>$SEPARATE_DESCRIPTION</code></a></td><td valign="top"><a href="#Menu-components-formatting">7.17.2 The formatting of the different menu components</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SEPARATED_005fFOOTNOTES"><code>$SEPARATED_FOOTNOTES</code></a></td><td valign="top"><a href="#Page-layout-options">4.6 Page layout related command line options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024SHORT_005fREF"><code>$SHORT_REF</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024SEPARATE_005fDESCRIPTION"><code>$SEPARATE_DESCRIPTION</code></a></td><td valign="top"><a href="#Menu-components-formatting">7.17.2 The formatting of the different menu components</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SHORTEXTN"><code>$SHORTEXTN</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024SHORT_005fREF"><code>$SHORT_REF</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SHOW_005fMENU"><code>$SHOW_MENU</code></a></td><td valign="top"><a href="#Expansion">4.4 Specifying which regions get expanded</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SIMPLE_005fMENU"><code>$SIMPLE_MENU</code></a></td><td valign="top"><a href="#Menus">7.17 Menu formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SMALL_005fRULE"><code>$SMALL_RULE</code></a></td><td valign="top"><a href="#The-page-layout">6.2 Page layout and navigation panel overview</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SPLIT"><code>$SPLIT</code></a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024SPLIT_005fINDEX"><code>$SPLIT_INDEX</code></a></td><td valign="top"><a href="#Index-list">7.18.2 Customizing the formatting of index lists</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Translating-strings"><code>$T2H_OBSOLETE_STRINGS</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024T2H_005fOBSOLETE_005fSTRINGS"><code>$T2H_OBSOLETE_STRINGS</code></a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aNODE_007bNext_007d"><code>$Texi2HTML::NODE{Next}</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aOVERVIEW"><code>$Texi2HTML::OVERVIEW</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aOVERVIEW-1"><code>$Texi2HTML::OVERVIEW</code></a></td><td valign="top"><a href="#Contents-and-Overview-text">6.11.1.2 Table of contents and Short table of contents</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fHEADER"><code>$Texi2HTML::THIS_HEADER</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION-1"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#Global-functions">6.4.3 Function usefull in page formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027BODYTEXT_0027_007d"><code>$Texi2HTML::THISDOC{'BODYTEXT'}</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2html_003a_003aTHISDOC_007b_0027CSS_005fLINES_0027_007d"><code>$Texi2html::THISDOC{'CSS_LINES'}</code></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027documentencoding_0027_007d"><code>$Texi2HTML::THISDOC{'documentencoding'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fDESCRIPTION_0027_007d"><code>$Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'}</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027DOCUMENT_005fENCODING_0027_007d-1"><code>$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027documentencoding_0027_007d"><code>$Texi2HTML::THISDOC{'documentencoding'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027ENCODING_005fNAME_0027_007d"><code>$Texi2HTML::THISDOC{'ENCODING_NAME'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027IN_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'IN_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHISDOC_007b_0027OUT_005fENCODING_0027_007d"><code>$Texi2HTML::THISDOC{'OUT_ENCODING'}</code></a></td><td valign="top"><a href="#Encodings">5.1 Setting the encodings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fHEADER"><code>$Texi2HTML::THIS_HEADER</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTHIS_005fSECTION-1"><code>$Texi2HTML::THIS_SECTION</code></a></td><td valign="top"><a href="#Global-functions">6.4.3 Function usefull in page formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTITLEPAGE"><code>$Texi2HTML::TITLEPAGE</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTITLEPAGE-1"><code>$Texi2HTML::TITLEPAGE</code></a></td><td valign="top"><a href="#Title-page">6.11.1.5 Formatting of title page</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024Texi2HTML_003a_003aTOC_005fLINES"><code>$Texi2HTML::TOC_LINES</code></a></td><td valign="top"><a href="#Section-lines">Section lines</a></td></tr>
@@ -7263,21 +7294,21 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0024TOP_005fHEADING"><code>$TOP_HEADING</code></a></td><td valign="top"><a href="#Element-labels-1">Element labels</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024TRANSLITERATE_005fNODE"><code>$TRANSLITERATE_NODE</code></a></td><td valign="top"><a href="#Output-files">4.3 Setting output file and directory names</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024UNNUMBERED_005fSYMBOL_005fIN_005fMENU"><code>$UNNUMBERED_SYMBOL_IN_MENU</code></a></td><td valign="top"><a href="#Table-menu-formatting">7.17.4 The formatting of the menu in a table</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024USER"><code>$USER</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fACCESSKEY"><code>$USE_ACCESSKEY</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fACCESSKEY-1"><code>$USE_ACCESSKEY</code></a></td><td valign="top"><a href="#Menus">7.17 Menu formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fISO"><code>$USE_ISO</code></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fLINKS"><code>$USE_LINKS</code></a></td><td valign="top"><a href="#Customizing-header">6.8 Customizing the page header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024USE_005fNODE_005fTARGET"><code>$USE_NODE_TARGET</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fNODES"><code>$USE_NODES</code></a></td><td valign="top"><a href="#Splitting-output">4.2 Specifying where to split the generated document</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0024USE_005fNODE_005fTARGET"><code>$USE_NODE_TARGET</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fREL_005fREV"><code>$USE_REL_REV</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024USE_005fSETFILENAME"><code>$USE_SETFILENAME</code></a></td><td valign="top"><a href="#SEC_Foot"></a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0024USER"><code>$USER</code></a></td><td valign="top"><a href="#Customizing-footer">6.10 Customizing the page footer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024VERTICAL_005fHEAD_005fNAVIGATION"><code>$VERTICAL_HEAD_NAVIGATION</code></a></td><td valign="top"><a href="#General-purpose-variables">6.3.1 Controlling the navigation panel panel at a high level</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024WORDS_005fIN_005fPAGE"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024WORDS_005fIN_005fPAGE-1"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0024WORDS_005fIN_005fPAGE-2"><code>$WORDS_IN_PAGE</code></a></td><td valign="top"><a href="#Global-functions">6.4.3 Function usefull in page formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Variable-Index_vr_symbol-2">%</a></th><td></td><td></td></tr>
+<tr><th><a name="Variable-Index__symbol-2">%</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025accent_005fmap"><code>%accent_map</code></a></td><td valign="top"><a href="#Style-and-accent-commands">7.5 Customizing accent, style and other simple commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025ACTIVE_005fICONS"><code>%ACTIVE_ICONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025BUTTONS_005fACCESSKEY"><code>%BUTTONS_ACCESSKEY</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
@@ -7321,13 +7352,13 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0025style_005fmap_005ftexi-1"><code>%style_map_texi</code></a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aHREF"><code>%Texi2HTML::HREF</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aNAME"><code>%Texi2HTML::NAME</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aNO_005fTEXI"><code>%Texi2HTML::NO_TEXI</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aNODE"><code>%Texi2HTML::NODE</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aNO_005fTEXI"><code>%Texi2HTML::NO_TEXI</code></a></td><td valign="top"><a href="#Elements-hashes">6.4.1 Accessing elements informations</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025Texi2HTML_003a_003aTHISDOC"><code>%Texi2HTML::THISDOC</code></a></td><td valign="top"><a href="#Global-strings">Global strings</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025texi_005fmap"><code>%texi_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0025things_005fmap"><code>%things_map</code></a></td><td valign="top"><a href="#Commands-without-argument">7.3 Customizing the formatting of commands without argument</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Variable-Index_vr_symbol-3">@</a></th><td></td><td></td></tr>
+<tr><th><a name="Variable-Index__symbol-3">@</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040CHAPTER_005fBUTTONS"><code>@CHAPTER_BUTTONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040command_005fhandler_005ffinish"><code>@command_handler_finish</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0040command_005fhandler_005finit"><code>@command_handler_init</code></a></td><td valign="top"><a href="#Bypassing-normal-formatting">7.22 Bypassing normal formatting</a></td></tr>
@@ -7346,11 +7377,11 @@ text
 <tr><td></td><td valign="top"><a href="#index-_0040SECTION_005fFOOTER_005fBUTTONS"><code>@SECTION_FOOTER_BUTTONS</code></a></td><td valign="top"><a href="#Button-specifications">6.3.2 Specifying the buttons formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index_vr_symbol-1" class="summary-letter"><b>$</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index__symbol-1" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#Variable-Index_vr_symbol-2" class="summary-letter"><b>%</b></a>
+<a href="#Variable-Index__symbol-2" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#Variable-Index_vr_symbol-3" class="summary-letter"><b>@</b></a>
+<a href="#Variable-Index__symbol-3" class="summary-letter"><b>@</b></a>
 </td></tr></table>
 <hr size="6">
 <a name="Indexcp"></a>
@@ -7372,117 +7403,117 @@ text
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="appendix">F. Concept Index</h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concept-Index_cp_letter-A" class="summary-letter"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concept-Index__letter-A" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-B" class="summary-letter"><b>B</b></a>
+<a href="#Concept-Index__letter-B" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-C" class="summary-letter"><b>C</b></a>
+<a href="#Concept-Index__letter-C" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-D" class="summary-letter"><b>D</b></a>
+<a href="#Concept-Index__letter-D" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-E" class="summary-letter"><b>E</b></a>
+<a href="#Concept-Index__letter-E" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-F" class="summary-letter"><b>F</b></a>
+<a href="#Concept-Index__letter-F" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-I" class="summary-letter"><b>I</b></a>
+<a href="#Concept-Index__letter-I" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-M" class="summary-letter"><b>M</b></a>
+<a href="#Concept-Index__letter-M" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-P" class="summary-letter"><b>P</b></a>
+<a href="#Concept-Index__letter-P" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-R" class="summary-letter"><b>R</b></a>
+<a href="#Concept-Index__letter-R" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-S" class="summary-letter"><b>S</b></a>
+<a href="#Concept-Index__letter-S" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-T" class="summary-letter"><b>T</b></a>
+<a href="#Concept-Index__letter-T" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-U" class="summary-letter"><b>U</b></a>
+<a href="#Concept-Index__letter-U" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table border="0" class="index-cp">
+<table border="0" class="index-">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-A">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Avoiding-paragraphs">Avoid paragraph opening</a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
+<tr><th><a name="Concept-Index__letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Avoid-paragraph-opening">Avoid paragraph opening</a></td><td valign="top"><a href="#Avoiding-paragraphs">7.11.2 Avoiding paragraphs in formats</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-B">B</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Top">bug report</a></td><td valign="top"><a href="#Top">Texi2HTML</a></td></tr>
+<tr><th><a name="Concept-Index__letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bug-report">bug report</a></td><td valign="top"><a href="#Top">Texi2HTML</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">centering</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Complex-formats">complex format</a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Using-init-files">&lsquo;<tt>Config</tt>&rsquo;</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Installation">configure</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Style-options"><acronym>CSS</acronym></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
-<tr><td></td><td valign="top"><a href="#css"><acronym>CSS</acronym></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
+<tr><th><a name="Concept-Index__letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-centering">centering</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-complex-format">complex format</a></td><td valign="top"><a href="#Complex-formats">7.12 Formatting of complex formats (<code>@example</code>, <code>@display</code>&hellip;)</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Config">&lsquo;<tt>Config</tt>&rsquo;</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-configure">configure</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-CSS"><acronym>CSS</acronym></a></td><td valign="top"><a href="#Style-options">4.7 Customizing the <acronym>HTML</acronym> and text style</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-CSS-1"><acronym>CSS</acronym></a></td><td valign="top"><a href="#css">6.7 Customizing the <code>texi2html</code> css lines</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-D">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Obtaining-texi2html">downloading <code>texi2html</code> source</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
+<tr><th><a name="Concept-Index__letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-downloading-texi2html-source">downloading <code>texi2html</code> source</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Overview">examples of manuals</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Reference-to-external-manual">external manual</a></td><td valign="top"><a href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></td></tr>
+<tr><th><a name="Concept-Index__letter-E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-examples-of-manuals">examples of manuals</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-external-manual">external manual</a></td><td valign="top"><a href="#Reference-to-external-manual">7.9.1 Reference to external manual</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">flushing text</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
+<tr><th><a name="Concept-Index__letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-flushing-text">flushing text</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Strings">i18n</a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Translating-strings">i18n</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Installation">Installation</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Using-init-files">internationalization</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Adding-new-strings">internationalized strings</a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
+<tr><th><a name="Concept-Index__letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i18n">i18n</a></td><td valign="top"><a href="#Strings">7.8 Customizing strings written by <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i18n-1">i18n</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Installation">Installation</a></td><td valign="top"><a href="#Installation">3. Installation of <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-internationalization">internationalization</a></td><td valign="top"><a href="#Using-init-files">4.9 Use initialization files for fine tuning</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-internationalized-strings">internationalized strings</a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#whytexi2html">makeinfo</a></td><td valign="top"><a href="#whytexi2html">1.1 Why <code>texi2html</code> and not <code>makeinfo</code>?</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Adding-new-strings"><code>manage_i18n.pl</code></a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
+<tr><th><a name="Concept-Index__letter-M">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-makeinfo">makeinfo</a></td><td valign="top"><a href="#whytexi2html">1.1 Why <code>texi2html</code> and not <code>makeinfo</code>?</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-manage_005fi18n_002epl"><code>manage_i18n.pl</code></a></td><td valign="top"><a href="#Adding-new-strings">A.2 Adding new strings written to document</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">paragraph</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">preformatted region</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
+<tr><th><a name="Concept-Index__letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-paragraph">paragraph</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-preformatted-region">preformatted region</a></td><td valign="top"><a href="#Paragraph-and-preformatted-formatting">7.11.1 Paragraph and preformatted region formatting</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-R">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#References">reference</a></td><td valign="top"><a href="#References">7.9 References</a></td></tr>
+<tr><th><a name="Concept-Index__letter-R">R</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reference">reference</a></td><td valign="top"><a href="#References">7.9 References</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">skipped command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Obtaining-texi2html">source code for <code>texi2html</code>, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
+<tr><th><a name="Concept-Index__letter-S">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-skipped-command">skipped command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-source-code-for-texi2html_002c-downloading">source code for <code>texi2html</code>, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Obtaining-texi2html"><code>texi2html</code> source, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
-<tr><td></td><td valign="top"><a href="#Overview">Texinfo</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Alignement-commands">text alignement</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
-<tr><td></td><td valign="top"><a href="#Translating-strings">Translation</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
+<tr><th><a name="Concept-Index__letter-T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-texi2html-source_002c-downloading"><code>texi2html</code> source, downloading</a></td><td valign="top"><a href="#Obtaining-texi2html">2. Obtaining <code>texi2html</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Texinfo">Texinfo</a></td><td valign="top"><a href="#Overview">1. Overview</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-text-alignement">text alignement</a></td><td valign="top"><a href="#Alignement-commands">7.10 Commands used for centering and flushing of text</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Translation">Translation</a></td><td valign="top"><a href="#Translating-strings">A.1 Translating strings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="Concept-Index_cp_letter-U">U</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#Other-and-unknown-commands">unknown command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
+<tr><th><a name="Concept-Index__letter-U">U</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-unknown-command">unknown command</a></td><td valign="top"><a href="#Other-and-unknown-commands">7.24 Customizing other commands, and unknown commands</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concept-Index_cp_letter-A" class="summary-letter"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Concept-Index__letter-A" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-B" class="summary-letter"><b>B</b></a>
+<a href="#Concept-Index__letter-B" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-C" class="summary-letter"><b>C</b></a>
+<a href="#Concept-Index__letter-C" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-D" class="summary-letter"><b>D</b></a>
+<a href="#Concept-Index__letter-D" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-E" class="summary-letter"><b>E</b></a>
+<a href="#Concept-Index__letter-E" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-F" class="summary-letter"><b>F</b></a>
+<a href="#Concept-Index__letter-F" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-I" class="summary-letter"><b>I</b></a>
+<a href="#Concept-Index__letter-I" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-M" class="summary-letter"><b>M</b></a>
+<a href="#Concept-Index__letter-M" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-P" class="summary-letter"><b>P</b></a>
+<a href="#Concept-Index__letter-P" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-R" class="summary-letter"><b>R</b></a>
+<a href="#Concept-Index__letter-R" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-S" class="summary-letter"><b>S</b></a>
+<a href="#Concept-Index__letter-S" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-T" class="summary-letter"><b>T</b></a>
+<a href="#Concept-Index__letter-T" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#Concept-Index_cp_letter-U" class="summary-letter"><b>U</b></a>
+<a href="#Concept-Index__letter-U" class="summary-letter"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -7692,7 +7723,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>September 8, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>September 23, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7794,7 +7825,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>September 8, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>September 23, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

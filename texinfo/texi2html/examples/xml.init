@@ -213,7 +213,7 @@ $begin_format_texi = \&xml_begin_format_texi;
 $def_line = \&xml_def_line;
 $def = \&xml_def;
 $def_item = \&xml_def_item;
-$print_index = \&xml_print_index;
+$printindex = \&xml_printindex;
 $index_summary = \&xml_index_summary;
 $external_ref = \&xml_external_ref;
 $internal_ref = \&xml_internal_ref;
@@ -943,9 +943,8 @@ sub xml_index_summary($$)
     return '';
 }
 
-sub xml_print_index($$)
+sub xml_printindex($)
 {
-    my $text = shift;
     my $name = shift;
     return "<printindex>$name</printindex>\n";
 }
