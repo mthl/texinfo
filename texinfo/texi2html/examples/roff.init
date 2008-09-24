@@ -909,7 +909,7 @@ sub t2h_roff_preformatted($$$$$$$$$$)
 #
 # relevant configuration variable:
 # $NUMBER_SECTIONS
-sub t2h_roff_heading($)
+sub t2h_roff_heading($$$$$;$$)
 {
     my $element = shift;
     my $command = shift;
@@ -918,8 +918,6 @@ sub t2h_roff_heading($)
     my $in_preformatted = shift;
     my $one_section = shift;
     my $element_heading = shift;
-
-    return '' if (defined($command) and $command eq 'node' and !$element_heading);
 
     my $name = $element->{'text'};
     if (!$element->{'node'})

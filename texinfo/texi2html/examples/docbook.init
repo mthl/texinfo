@@ -367,7 +367,7 @@ sub docbook_add_id($)
     return $result;
 }
 
-sub docbook_heading($;$$$$)
+sub docbook_heading($$$$$)
 {
     my $element = shift;
     my $command = shift;
@@ -388,11 +388,6 @@ sub docbook_heading($;$$$$)
     }
 
     my $node_element = $element;
-#    if ($element->{'node'})
-#    {
-#        $node_element = $element;
-#    }
-#    elsif (defined($element->{'node_ref'}))
     if (defined($element->{'node_ref'}))
     {
         $node_element = $element->{'node_ref'};
@@ -856,7 +851,6 @@ sub docbook_one_section($$)
 {
     my $fh = shift;
     my $element = shift;
-    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     main::print_lines($fh);
     print $fh "". docbook_footing($element);
     &$print_foot_navigation($fh);

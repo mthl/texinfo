@@ -1,5 +1,4 @@
 <div id="Binary-files"></div>
-<div id="Handling-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Handling-binary-files"></div>
 == Handling binary files ==
 <div id="index-Binary-files"></div>
 
@@ -33,7 +33,6 @@ including both text files and binary images.
 </nowiki></pre>
 <hr size="6">
 <div id="Binary-why"></div>
-<div id="The-issues-with-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
@@ -50,6 +49,7 @@ including both text files and binary images.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="The-issues-with-binary-files"></div>
 === The issues with binary files ===
 
 <p>While the need to manage binary files may seem obvious
@@ -102,7 +102,6 @@ resulting from branches, restrict use of branches.
 </p>
 <hr size="6">
 <div id="Binary-howto"></div>
-<div id="How-to-store-binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
@@ -119,6 +118,7 @@ resulting from branches, restrict use of branches.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="How-to-store-binary-files"></div>
 === How to store binary files ===
 
 <p>There are two issues with using <small>CVS</small> to store

@@ -3,6 +3,7 @@ index_table_chapter index_table.texi -split chapter -init index_test.init
 split_chapter_index split_chapter_index.texi -split chapter -init index_test.init
 # fail because of a a printindex between node and section
 #index_split index_split.texi -split chapter -init index_test.init -debug 255 -v
+#index_split index_split.texi -split chapter -init index_test.init
 #makeinfo_index_split index_split.texi -init makeinfo.init -init index_test.init
 index_no_node index_no_node.texi -split chapter -init index_test.init
 makeinfo_nodes_before_top nodes_before_top.texi -init makeinfo.init -init index_test.init -split node -no-node-files

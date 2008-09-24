@@ -1,5 +1,4 @@
 <div id="Keyword-substitution"></div>
-<div id="Keyword-substitution-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Revision management#When-to-commit  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Keyword-substitution-1"></div>
 == Keyword substitution ==
 <div id="index-Keyword-substitution"></div>
 <div id="index-Keyword-expansion"></div>
@@ -47,7 +47,6 @@ a new revision of the file.
 </nowiki></pre>
 <hr size="6">
 <div id="Keyword-list"></div>
-<div id="Keyword-List"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
@@ -64,6 +63,7 @@ a new revision of the file.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Keyword-List"></div>
 === Keyword List ===
 <div id="index-Keyword-List"></div>
 
@@ -232,7 +232,6 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 
 <hr size="6">
 <div id="Using-keywords"></div>
-<div id="Using-keywords-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
@@ -249,6 +248,7 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Using-keywords-1"></div>
 === Using keywords ===
 
 <p>To include a keyword string you simply include the
@@ -298,7 +298,6 @@ magic <small>SCCS</small> phrase, like this:
 
 <hr size="6">
 <div id="Avoiding-substitution"></div>
-<div id="Avoiding-substitution-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
@@ -315,6 +314,7 @@ magic <small>SCCS</small> phrase, like this:
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Avoiding-substitution-1"></div>
 === Avoiding substitution ===
 
 <p>Keyword substitution has its disadvantages.  Sometimes
@@ -346,7 +346,6 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 </p>
 <hr size="6">
 <div id="Substitution-modes"></div>
-<div id="Substitution-modes-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
@@ -363,6 +362,7 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Substitution-modes-1"></div>
 === Substitution modes ===
 <div id="index-Keyword-substitution_002c-changing-modes"></div>
 <div id="index-_002dk-_0028keyword-substitution_0029"></div>
@@ -446,7 +446,6 @@ handle an export containing binary files correctly.
 
 <hr size="6">
 <div id="Configuring-keyword-expansion"></div>
-<div id="Configuring-Keyord-Expansion"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
@@ -463,6 +462,7 @@ handle an export containing binary files correctly.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Configuring-Keyord-Expansion"></div>
 === Configuring Keyord Expansion ===
 <div id="index-Configuring-keyword-expansion"></div>
 
@@ -552,7 +552,6 @@ recognized.
 </p>
 <hr size="6">
 <div id="Log-keyword"></div>
-<div id="Problems-with-the-_0024Log_0024-keyword_002e"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt; ]|</td>
@@ -569,6 +568,7 @@ recognized.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Problems-with-the-_0024Log_0024-keyword_002e"></div>
 === Problems with the $<i></i>Log$ keyword. ===
 
 <p>The <code>$<i></i>Log$</code> keyword is somewhat

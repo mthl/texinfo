@@ -1,5 +1,4 @@
 <div id="Invoking-CVS"></div>
-<div id="Quick-reference-to-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Guide to CVS commands#update-output  &lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &gt; ]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Quick-reference-to-CVS-commands"></div>
 == Quick reference to CVS commands ==
 <div id="index-Command-reference"></div>
 <div id="index-Reference_002c-commands"></div>

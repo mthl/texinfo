@@ -48,10 +48,11 @@ sub book_print_sub_toc($$)
     return $result;
 }
 
-sub book_print_up_toc($$)
+sub book_print_up_toc($)
 {
-    my $fh = shift;
     my $element = shift;
+
+    my $result = '';
     my $current_element = $element;
     my @elements;
     while (defined($current_element->{'sectionup'}) and ($current_element->{'sectionup'} ne $current_element))
@@ -61,16 +62,16 @@ sub book_print_up_toc($$)
     }
     #print $fh "<ul>" . &$anchor('', $Texi2HTML::HREF{Contents}, '[' . $Texi2HTML::NAME{Contents} . ']') . " <br>\n";
     my $elem = shift @elements;
-    print $fh "<ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
+    $result .= "<ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
     foreach my $elem (@elements)
     {
-        print $fh "<li><ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
+        $result .= "<li><ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
     }
     foreach my $elem (@elements)
     {
-        print $fh "</ul></li>\n";
+        $result .= "</ul></li>\n";
     }
-    print $fh "</ul>\n";
+    $result .= "</ul>\n";
 }
 
 #$print_section = \&book_print_section;
@@ -79,43 +80,25 @@ $print_Top = \&book_print_Top;
 $print_Toc = \&book_print_Toc;
 $element_file_name = \&book_element_file_name;
 
-sub book_print_element_header($$$)
+sub book_print_element_header($$)
 {
-    my $fh = shift;
     my $first_in_page = shift;
     my $previous_is_top = shift;
     my $buttons = \@SECTION_BUTTONS;
+    my $result;
 
     if ($first_in_page and $SECTION_NAVIGATION)
     {
         #print_up_toc($fh, $Texi2HTML::THIS_ELEMENT) if ($SPLIT eq 'node');
-        book_print_up_toc($fh, $Texi2HTML::THIS_ELEMENT);
-        &$print_head_navigation($fh, $buttons);
+        $result = book_print_up_toc($Texi2HTML::THIS_ELEMENT);
+        $result .= &$print_head_navigation(undef, $buttons);
     }
     else
     { # got to do this here, as it isn't done in print_head_navigation
-        main::print_lines($fh, $Texi2HTML::THIS_HEADER);
-        &$print_navigation($fh, $buttons) if ($SECTION_NAVIGATION);
+        $result = &$print_navigation($buttons) if ($SECTION_NAVIGATION);
     }
+    return $result;
 }
-
-#sub book_print_section($$$)
-#{
-#    my $fh = shift;
-#    my $first_in_page = shift;
-#    my $previous_is_top = shift;
-#    my $buttons = \@SECTION_BUTTONS;
-#
-#    my $nw = main::print_lines($fh);
-#    if (defined $SPLIT
-#        and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
-#    {
-#        &$print_foot_navigation($fh);
-#        print $fh "$SMALL_RULE\n";
-#        &$print_navigation($fh, \@NODE_FOOTER_BUTTONS) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
-#                                    and $nw >= $WORDS_IN_PAGE));
-#    }
-#}
 
 sub book_print_Top($$)
 {
@@ -123,7 +106,8 @@ sub book_print_Top($$)
     my $has_top_heading = shift;
 
     my $buttons = \@MISC_BUTTONS;
-    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
+    # head navigation is printed with heading, and is in THIS_SECTION
+#    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
     my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
     &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
     print $fh $Texi2HTML::TITLEPAGE;
@@ -192,7 +176,7 @@ sub book_element_file_name($$$)
 
 $heading = \&book_heading;
 
-sub book_heading($)
+sub book_heading($$$$$$;$$)
 {
     my $element = shift;
     my $command = shift;
@@ -201,8 +185,6 @@ sub book_heading($)
     my $in_preformatted = shift;
     my $one_section = shift;
     my $element_heading = shift;
-
-    return '' if (defined($command) and $command eq 'node' and !$element_heading);
 
     my $level = 3;
 

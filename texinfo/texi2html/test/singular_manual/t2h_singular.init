@@ -83,7 +83,7 @@ sub T2H_SING_print_Top_footer
     #if ($SPLIT)
     if ($end_page)
     {
-        &$print_navigation($fh, $buttons);
+        print $fh "".&$print_navigation($buttons);
         &$print_page_foot($fh);
     }
 }
@@ -106,12 +106,14 @@ EOT
 
 sub singular_banner
 {
-  my $fh = shift;
-  print $fh <<EOT
+  my $result = '';
+  $result .= <<EOT;
   <a href="index.htm"><img
     src="${T2H_SING_base_images}singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 EOT
+#  print $fh $result if (defined($fh));
+  return $result;
 }
 
 # always use bottom navigation

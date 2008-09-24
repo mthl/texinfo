@@ -1,5 +1,4 @@
 <div id="Revision-management"></div>
-<div id="Revision-management-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Multiple developers#Choosing-a-model  &lt; ]|</td>
 <td valign="middle" align="left">|[[#When-to-commit| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Revision-management-1"></div>
 == Revision management ==
 <div id="index-Revision-management"></div>
 
@@ -34,7 +34,6 @@ than one person is working in a repository.
 </nowiki></pre>
 <hr size="6">
 <div id="When-to-commit"></div>
-<div id="When-to-commit_003f"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt; ]|</td>
@@ -51,6 +50,7 @@ than one person is working in a repository.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="When-to-commit_003f"></div>
 === When to commit? ===
 <div id="index-When-to-commit"></div>
 <div id="index-Committing_002c-when-to"></div>

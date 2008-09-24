@@ -1,5 +1,4 @@
 <div id="Revisions"></div>
-<div id="Revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Starting a project with CVS#Defining-the-module  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Revision-numbers| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Revisions-1"></div>
 == Revisions ==
 
 <p>For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
@@ -43,7 +43,6 @@ numeric revision in each file.
 </nowiki></pre>
 <hr size="6">
 <div id="Revision-numbers"></div>
-<div id="Revision-numbers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Versions-revisions-releases| &gt; ]]|</td>
@@ -60,6 +59,7 @@ numeric revision in each file.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Revision-numbers-1"></div>
 === Revision numbers ===
 <div id="index-Revision-numbers"></div>
 <div id="index-Revision-tree"></div>
@@ -92,7 +92,6 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 </p>
 <hr size="6">
 <div id="Versions-revisions-releases"></div>
-<div id="Versions_002c-revisions-and-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Assigning-revisions| &gt; ]]|</td>
@@ -109,6 +108,7 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Versions_002c-revisions-and-releases"></div>
 === Versions, revisions and releases ===
 <div id="index-Revisions_002c-versions-and-releases"></div>
 <div id="index-Versions_002c-revisions-and-releases"></div>
@@ -126,7 +126,6 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr size="6">
 <div id="Assigning-revisions"></div>
-<div id="Assigning-revisions-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tags| &gt; ]]|</td>
@@ -143,6 +142,7 @@ called <em>releases</em>.  To avoid confusion, the word
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Assigning-revisions-1"></div>
 === Assigning revisions ===
 
 <p>By default, <small>CVS</small> will assign numeric revisions by
@@ -184,7 +184,6 @@ parallel, you need to use a branch (see section [cvs: Branching and merging#Bran
 </p>
 <hr size="6">
 <div id="Tags"></div>
-<div id="Tags_002d_002dSymbolic-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-the-working-directory| &gt; ]]|</td>
@@ -201,6 +200,7 @@ parallel, you need to use a branch (see section [cvs: Branching and merging#Bran
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Tags_002d_002dSymbolic-revisions"></div>
 === Tags&ndash;Symbolic revisions ===
 <div id="index-Tags"></div>
 
@@ -360,7 +360,6 @@ like this:
 
 <hr size="6">
 <div id="Tagging-the-working-directory"></div>
-<div id="Specifying-what-to-tag-from-the-working-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &gt; ]]|</td>
@@ -377,6 +376,7 @@ like this:
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Specifying-what-to-tag-from-the-working-directory"></div>
 === Specifying what to tag from the working directory ===
 
 <div id="index-tag-_0028subcommand_0029"></div>
@@ -410,7 +410,6 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr size="6">
 <div id="Tagging-by-date_002ftag"></div>
-<div id="Specifying-what-to-tag-by-date-or-revision"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Modifying-tags| &gt; ]]|</td>
@@ -427,6 +426,7 @@ cvs [tag aborted]: correct the above errors first!
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Specifying-what-to-tag-by-date-or-revision"></div>
 === Specifying what to tag by date or revision ===
 <div id="index-rtag-_0028subcommand_0029"></div>
 
@@ -471,7 +471,6 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr size="6">
 <div id="Modifying-tags"></div>
-<div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-add_002fremove| &gt; ]]|</td>
@@ -488,6 +487,7 @@ rtag</code>.  The exceptions might be cases like:
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 === Deleting, moving, and renaming tags ===
 
 
@@ -580,7 +580,6 @@ cvs rtag -d old-name-0-4 tc
 
 <hr size="6">
 <div id="Tagging-add_002fremove"></div>
-<div id="Tagging-and-adding-and-removing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Sticky-tags| &gt; ]]|</td>
@@ -597,6 +596,7 @@ cvs rtag -d old-name-0-4 tc
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Tagging-and-adding-and-removing-files"></div>
 === Tagging and adding and removing files ===
 
 <p>The subject of exactly how tagging interacts with
@@ -633,7 +633,6 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr size="6">
 <div id="Sticky-tags"></div>
-<div id="Sticky-tags-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt; ]|</td>
@@ -650,6 +649,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Sticky-tags-1"></div>
 === Sticky tags ===
 <div id="index-Sticky-tags"></div>
 <div id="index-Tags_002c-sticky"></div>

@@ -1,5 +1,4 @@
 <div id="CVS-commands"></div>
-<div id="Guide-to-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Structure| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Guide-to-CVS-commands"></div>
 == Guide to CVS commands ==
 
 <p>This appendix describes the overall structure of
@@ -42,7 +42,6 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki></pre>
 <hr size="6">
 <div id="Structure"></div>
-<div id="Overall-structure-of-CVS-commands"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Exit-status| &gt; ]]|</td>
@@ -59,6 +58,7 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Overall-structure-of-CVS-commands"></div>
 === Overall structure of CVS commands ===
 <div id="index-Structure"></div>
 <div id="index-CVS-command-structure"></div>
@@ -109,7 +109,6 @@ the documentation instead.
 </p>
 <hr size="6">
 <div id="Exit-status"></div>
-<div id="CVS_0027s-exit-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &gt; ]]|</td>
@@ -126,6 +125,7 @@ the documentation instead.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="CVS_0027s-exit-status"></div>
 === CVS&rsquo;s exit status ===
 <div id="index-Exit-status_002c-of-CVS"></div>
 
@@ -150,7 +150,6 @@ other <small>CVS</small> commands.
 </p>
 <hr size="6">
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Global-options| &gt; ]]|</td>
@@ -167,6 +166,7 @@ other <small>CVS</small> commands.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 === Default options and the ~/.cvsrc file ===
 <div id="index-_002ecvsrc-file"></div>
 <div id="index-Option-defaults"></div>
@@ -229,7 +229,6 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr size="6">
 <div id="Global-options"></div>
-<div id="Global-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Common-options| &gt; ]]|</td>
@@ -246,6 +245,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Global-options-1"></div>
 === Global options ===
 <div id="index-Options_002c-global"></div>
 <div id="index-Global-options"></div>
@@ -432,7 +432,6 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr size="6">
 <div id="Common-options"></div>
-<div id="Common-command-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| &gt; ]]|</td>
@@ -449,6 +448,7 @@ Only has an effect on the <small>CVS</small> client.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Common-command-options"></div>
 === Common command options ===
 <div id="index-Common-options"></div>
 <div id="index-Right_002dhand-options"></div>
@@ -690,7 +690,6 @@ and <code>update</code>.
 
 <hr size="6">
 <div id="admin"></div>
-<div id="admin_002d_002d_002dAdministration"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin-options| &gt; ]]|</td>
@@ -707,6 +706,7 @@ and <code>update</code>.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="admin_002d_002d_002dAdministration"></div>
 === admin&mdash;Administration ===
 <div id="index-Admin-_0028subcommand_0029"></div>
 
@@ -748,7 +748,6 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr size="6">
 <div id="admin-options"></div>
-<div id="admin-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| &gt; ]]|</td>
@@ -765,6 +764,7 @@ can run <code>cvs admin</code>.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="admin-options-1"></div>
 ==== admin options ====
 
 <p>Some of these options have questionable usefulness for
@@ -1099,7 +1099,6 @@ this option has never done anything useful.
 
 <hr size="6">
 <div id="checkout"></div>
-<div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-options| &gt; ]]|</td>
@@ -1116,6 +1115,7 @@ this option has never done anything useful.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 === checkout&mdash;Check out sources for editing ===
 <div id="index-checkout-_0028subcommand_0029"></div>
 <div id="index-co-_0028subcommand_0029"></div>
@@ -1194,7 +1194,6 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr size="6">
 <div id="checkout-options"></div>
-<div id="checkout-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-examples| &gt; ]]|</td>
@@ -1211,6 +1210,7 @@ see [[#update-output|update output]].
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="checkout-options-1"></div>
 ==== checkout options ====
 
 <p>These standard options are supported by <code>checkout</code>
@@ -1356,7 +1356,6 @@ modules file to set the module status.
 
 <hr size="6">
 <div id="checkout-examples"></div>
-<div id="checkout-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| &gt; ]]|</td>
@@ -1373,6 +1372,7 @@ modules file to set the module status.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="checkout-examples-1"></div>
 ==== checkout examples ====
 
 <p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo;:
@@ -1388,7 +1388,6 @@ ago:
 
 <hr size="6">
 <div id="commit"></div>
-<div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-options| &gt; ]]|</td>
@@ -1405,6 +1404,7 @@ ago:
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 === commit&mdash;Check files into the repository ===
 <div id="index-commit-_0028subcommand_0029"></div>
 
@@ -1459,7 +1459,6 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr size="6">
 <div id="commit-options"></div>
-<div id="commit-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| &gt; ]]|</td>
@@ -1476,6 +1475,7 @@ that the argument file contains the log message.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="commit-options-1"></div>
 ==== commit options ====
 
 <p>These standard options are supported by <code>commit</code>
@@ -1535,7 +1535,6 @@ invoking an editor.
 
 <hr size="6">
 <div id="commit-examples"></div>
-<div id="commit-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-to-a-branch| &gt; ]]|</td>
@@ -1552,6 +1551,7 @@ invoking an editor.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="commit-examples-1"></div>
 ==== commit examples ====
 
 
@@ -1661,7 +1661,6 @@ would simply do
 
 <hr size="6">
 <div id="diff"></div>
-<div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| &gt; ]]|</td>
@@ -1678,6 +1677,7 @@ would simply do
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 === diff&mdash;Show differences between revisions ===
 <div id="index-diff-_0028subcommand_0029"></div>
 
@@ -1707,7 +1707,6 @@ under them will be compared.
 </nowiki></pre>
 <hr size="6">
 <div id="diff-options"></div>
-<div id="diff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-group-formats| &gt; ]]|</td>
@@ -1724,6 +1723,7 @@ under them will be compared.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="diff-options-1"></div>
 ==== diff options ====
 
 <p>These standard options are supported by <code>diff</code>
@@ -2047,7 +2047,6 @@ context.
 </nowiki></pre>
 <hr size="6">
 <div id="Line-group-formats"></div>
-<div id="Line-group-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-formats| &gt; ]]|</td>
@@ -2064,6 +2063,7 @@ context.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Line-group-formats-1"></div>
 ===== Line group formats =====
 
 <p>Line group formats let you specify formats suitable for many
@@ -2250,7 +2250,6 @@ otherwise.
 
 <hr size="6">
 <div id="Line-formats"></div>
-<div id="Line-formats-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-examples| &gt; ]]|</td>
@@ -2267,6 +2266,7 @@ otherwise.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Line-formats-1"></div>
 ===== Line formats =====
 
 <p>Line formats control how each line taken from an input file is
@@ -2382,7 +2382,6 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr size="6">
 <div id="diff-examples"></div>
-<div id="diff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| &gt; ]]|</td>
@@ -2399,6 +2398,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="diff-examples-1"></div>
 ==== diff examples ====
 
 <p>The following line produces a Unidiff (&lsquo;<samp>-u</samp>&rsquo; flag)
@@ -2433,7 +2433,6 @@ not yet been committed will be printed.
 
 <hr size="6">
 <div id="export"></div>
-<div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export-options| &gt; ]]|</td>
@@ -2450,6 +2449,7 @@ not yet been committed will be printed.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 === export&mdash;Export sources from CVS, similar to checkout ===
 <div id="index-export-_0028subcommand_0029"></div>
 
@@ -2487,7 +2487,6 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="export-options"></div>
-<div id="export-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| &gt; ]]|</td>
@@ -2504,6 +2503,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="export-options-1"></div>
 ==== export options ====
 
 <p>These standard options are supported by <code>export</code>
@@ -2562,7 +2562,6 @@ See section [[#checkout-options|checkout options]], for complete details on how
 
 <hr size="6">
 <div id="history"></div>
-<div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-options| &gt; ]]|</td>
@@ -2579,6 +2578,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 === history&mdash;Show status of files and users ===
 <div id="index-history-_0028subcommand_0029"></div>
 
@@ -2608,7 +2608,6 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </nowiki></pre>
 <hr size="6">
 <div id="history-options"></div>
-<div id="history-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| &gt; ]]|</td>
@@ -2625,6 +2624,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="history-options-1"></div>
 ==== history options ====
 
 <p>Several options (shown above as &lsquo;<samp>-report</samp>&rsquo;)  control  what
@@ -2795,7 +2795,6 @@ time zone instead of UTC.
 
 <hr size="6">
 <div id="import"></div>
-<div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-options| &gt; ]]|</td>
@@ -2812,6 +2811,7 @@ time zone instead of UTC.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 === import&mdash;Import sources into CVS, using vendor branches ===
 <div id="index-import-_0028subcommand_0029"></div>
 
@@ -2883,7 +2883,6 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki></pre>
 <hr size="6">
 <div id="import-options"></div>
-<div id="import-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-output| &gt; ]]|</td>
@@ -2900,6 +2899,7 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="import-options-1"></div>
 ==== import options ====
 
 <p>This standard option is supported by <code>import</code>
@@ -2950,7 +2950,6 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 
 <hr size="6">
 <div id="import-output"></div>
-<div id="import-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-examples| &gt; ]]|</td>
@@ -2967,6 +2966,7 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="import-output-1"></div>
 ==== import output ====
 
 <p><code>import</code> keeps you informed of its progress by printing a line
@@ -3006,7 +3006,6 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 
 <hr size="6">
 <div id="import-examples"></div>
-<div id="import-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| &gt; ]]|</td>
@@ -3023,13 +3022,13 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="import-examples-1"></div>
 ==== import examples ====
 
 <p>See [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], and [cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files].
 </p>
 <hr size="6">
 <div id="log"></div>
-<div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-options| &gt; ]]|</td>
@@ -3046,6 +3045,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 === log&mdash;Print out log information for files ===
 <div id="index-log-_0028subcommand_0029"></div>
 
@@ -3084,7 +3084,6 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 </nowiki></pre>
 <hr size="6">
 <div id="log-options"></div>
-<div id="log-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-examples| &gt; ]]|</td>
@@ -3101,6 +3100,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="log-options-1"></div>
 ==== log options ====
 
 <p>By default, <code>log</code> prints all information that is
@@ -3258,7 +3258,6 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr size="6">
 <div id="log-examples"></div>
-<div id="log-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| &gt; ]]|</td>
@@ -3275,13 +3274,13 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="log-examples-1"></div>
 ==== log examples ====
 
 <p>Contributed examples are gratefully accepted.
 </p>
 <hr size="6">
 <div id="rdiff"></div>
-<div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-options| &gt; ]]|</td>
@@ -3298,6 +3297,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 === rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases ===
 <div id="index-rdiff-_0028subcommand_0029"></div>
 
@@ -3338,7 +3338,6 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr size="6">
 <div id="rdiff-options"></div>
-<div id="rdiff-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-examples| &gt; ]]|</td>
@@ -3355,6 +3354,7 @@ the files that are located in other directories.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="rdiff-options-1"></div>
 ==== rdiff options ====
 
 <p>These standard options are supported by <code>rdiff</code>
@@ -3425,7 +3425,6 @@ way that <small>RCS</small> version 5 does.
 
 <hr size="6">
 <div id="rdiff-examples"></div>
-<div id="rdiff-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| &gt; ]]|</td>
@@ -3442,6 +3441,7 @@ way that <small>RCS</small> version 5 does.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="rdiff-examples-1"></div>
 ==== rdiff examples ====
 
 <p>Suppose you receive mail from <tt>foo@example.net</tt> asking for an
@@ -3468,7 +3468,6 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr size="6">
 <div id="release"></div>
-<div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-options| &gt; ]]|</td>
@@ -3485,6 +3484,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 === release&mdash;Indicate that a Module is no longer in use ===
 <div id="index-release-_0028subcommand_0029"></div>
 
@@ -3524,7 +3524,6 @@ history log.
 </nowiki></pre>
 <hr size="6">
 <div id="release-options"></div>
-<div id="release-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-output| &gt; ]]|</td>
@@ -3541,6 +3540,7 @@ history log.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="release-options-1"></div>
 ==== release options ====
 
 <p>The <code>release</code> command supports one command option:
@@ -3563,7 +3563,6 @@ if it is non-empty!</strong>
 
 <hr size="6">
 <div id="release-output"></div>
-<div id="release-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-examples| &gt; ]]|</td>
@@ -3580,6 +3579,7 @@ if it is non-empty!</strong>
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="release-output-1"></div>
 ==== release output ====
 
 <p>Before <code>release</code> releases your sources it will
@@ -3625,7 +3625,6 @@ sources, this file will be lost.
 
 <hr size="6">
 <div id="release-examples"></div>
-<div id="release-examples-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| &gt; ]]|</td>
@@ -3642,6 +3641,7 @@ sources, this file will be lost.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="release-examples-1"></div>
 ==== release examples ====
 
 <p>Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
@@ -3657,7 +3657,6 @@ $
 
 <hr size="6">
 <div id="update"></div>
-<div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-options| &gt; ]]|</td>
@@ -3674,6 +3673,7 @@ $
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 === update&mdash;Bring work tree in sync with repository ===
 <div id="index-update-_0028subcommand_0029"></div>
 
@@ -3704,7 +3704,6 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr size="6">
 <div id="update-options"></div>
-<div id="update-options-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-output| &gt; ]]|</td>
@@ -3721,6 +3720,7 @@ into any destination revisions specified with <code>-r</code>,
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="update-options-1"></div>
 ==== update options ====
 
 <p>These standard options are available with <code>update</code>
@@ -3856,7 +3856,6 @@ date.  An optional date is specified by adding a colon
 
 <hr size="6">
 <div id="update-output"></div>
-<div id="update-output-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>
@@ -3873,6 +3872,7 @@ date.  An optional date is specified by adding a colon
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="update-output-1"></div>
 ==== update output ====
 
 <p><code>update</code> and <code>checkout</code> keep you informed of

@@ -1,3 +1,16 @@
+2008-09-24  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: remove THIS_HEADER. Instead 
+	everything goes to THIS_SECTION. New function reference, 
+	element_heading, to format a node or a section heading, including
+	navigation and label. Accordingly, print_Top and one_section don't
+	print the element header anymore.
+	print_element_header and print_navigation now return their result.
+	new argument for print_misc and print_misc_header, the misc page
+	name.
+	labels and headings appear where the command is, instead of always 
+	appearing at the beginning of the elements.
+
 2008-09-23  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl,texi2html.init: do added index pages in 

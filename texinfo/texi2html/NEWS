@@ -79,15 +79,18 @@ This file records noteworthy changes.
 
 * internal_ref and external_ref don't change inforef to xref anymore.
 
-* top element heading may now be done in heading. It means that nothing 
-  should be returned if the heading is done in another function 
-  (like print_Top).
+* change in the heading API. THIS_HEADER is not used anymore.
+  New function reference, element_heading  to format a node or a section 
+  heading, including navigation and label. Accordingly, print_Top and 
+  one_section don't print the element header anymore. Also it is
+  reported if the element is a new element, is the main element and
+  more arguments, and top element heading is always done in heading.
 
-* change in the heading API. Now the heading function reference is always 
-  called, and it is reported whether the heading is an element heading or 
-  not.
+* print_element_header and print_navigation now return their result.
+	
+* new argument for print_misc and print_misc_header, the misc page name.
 
-* print_index is called if it appears, even if the index is not defined or
+* printindex is called if it appears, even if the index is not defined or
   there are no index entries.
 
 * image API completly changed. The current behaviour is not stable, so

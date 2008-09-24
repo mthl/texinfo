@@ -1,5 +1,4 @@
 <div id="Multiple-developers"></div>
-<div id="Multiple-developers-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
 <td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Multiple-developers-1"></div>
 == Multiple developers ==
 <div id="index-Multiple-developers"></div>
 <div id="index-Team-of-developers"></div>
@@ -73,7 +73,6 @@ choosing between them.
 </nowiki></pre>
 <hr size="6">
 <div id="File-status"></div>
-<div id="File-status-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
@@ -90,6 +89,7 @@ choosing between them.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="File-status-1"></div>
 === File status ===
 <div id="index-File-status"></div>
 <div id="index-Status-of-a-file"></div>
@@ -205,7 +205,6 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 </p>
 <hr size="6">
 <div id="Updating-a-file"></div>
-<div id="Bringing-a-file-up-to-date"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
@@ -222,6 +221,7 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Bringing-a-file-up-to-date"></div>
 === Bringing a file up to date ===
 <div id="index-Bringing-a-file-up-to-date"></div>
 <div id="index-Updating-a-file"></div>
@@ -257,7 +257,6 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 </p>
 <hr size="6">
 <div id="Conflicts-example"></div>
-<div id="Conflicts-example-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
@@ -274,6 +273,7 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Conflicts-example-1"></div>
 === Conflicts example ===
 <div id="index-Merge_002c-an-example"></div>
 <div id="index-Example-of-merge"></div>
@@ -441,7 +441,6 @@ See the documentation for pcl-cvs.
 </p>
 <hr size="6">
 <div id="Informing-others"></div>
-<div id="Informing-others-about-commits"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
@@ -458,6 +457,7 @@ See the documentation for pcl-cvs.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Informing-others-about-commits"></div>
 === Informing others about commits ===
 <div id="index-Informing-others"></div>
 <div id="index-Spreading-information"></div>
@@ -474,7 +474,6 @@ newsgroup.
 </p>
 <hr size="6">
 <div id="Concurrency"></div>
-<div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
@@ -491,6 +490,7 @@ newsgroup.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 === Several developers simultaneously attempting to run CVS ===
 
 <div id="index-Locks_002c-cvs_002c-introduction"></div>
@@ -554,7 +554,6 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr size="6">
 <div id="Watches"></div>
-<div id="Mechanisms-to-track-who-is-editing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
@@ -571,6 +570,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Mechanisms-to-track-who-is-editing-files"></div>
 === Mechanisms to track who is editing files ===
 <div id="index-Watches"></div>
 
@@ -602,7 +602,6 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr size="6">
 <div id="Setting-a-watch"></div>
-<div id="Telling-CVS-to-watch-certain-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
@@ -619,6 +618,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Telling-CVS-to-watch-certain-files"></div>
 ==== Telling CVS to watch certain files ====
 
 <p>To enable the watch features, you first specify that
@@ -664,7 +664,6 @@ watch on</code>.
 
 <hr size="6">
 <div id="Getting-Notified"></div>
-<div id="Telling-CVS-to-notify-you"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
@@ -681,6 +680,7 @@ watch on</code>.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Telling-CVS-to-notify-you"></div>
 ==== Telling CVS to notify you ====
 
 <p>You can tell <small>CVS</small> that you want to receive
@@ -803,7 +803,6 @@ changing.
 </p>
 <hr size="6">
 <div id="Editing-files"></div>
-<div id="How-to-edit-a-file-which-is-being-watched"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
@@ -820,6 +819,7 @@ changing.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="How-to-edit-a-file-which-is-being-watched"></div>
 ==== How to edit a file which is being watched ====
 
 <div id="index-Checkout_002c-as-term-for-getting-ready-to-edit"></div>
@@ -891,7 +891,6 @@ successful <small>CVS</small> command.
 </p>
 <hr size="6">
 <div id="Watch-information"></div>
-<div id="Information-about-who-is-watching-and-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
@@ -908,6 +907,7 @@ successful <small>CVS</small> command.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Information-about-who-is-watching-and-editing"></div>
 ==== Information about who is watching and editing ====
 
 <div id="index-watchers-_0028subcommand_0029"></div>
@@ -939,7 +939,6 @@ containing the file.
 
 <hr size="6">
 <div id="Watches-Compatibility"></div>
-<div id="Using-watches-with-old-versions-of-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
@@ -956,6 +955,7 @@ containing the file.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Using-watches-with-old-versions-of-CVS"></div>
 ==== Using watches with old versions of CVS ====
 
 <div id="index-CVS-1_002e6_002c-and-watches"></div>
@@ -980,7 +980,6 @@ that will restore the repository to a state which
 </p>
 <hr size="6">
 <div id="Choosing-a-model"></div>
-<div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
@@ -997,6 +996,7 @@ that will restore the repository to a state which
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 === Choosing between reserved or unreserved checkouts ===
 <div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
 

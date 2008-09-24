@@ -1357,9 +1357,8 @@ The signification of the array element value is the following:
 
 @table @emph
 @item reference on a function
-The function is called with first argument a filehandle reference on the
-current file and second argument a boolean true if the navigation 
-panel should be vertical.
+The function is called with argument a boolean true if the navigation 
+panel should be vertical. Should return the formatted button text.
 @item reference on a scalar
 The scalar value is printed. For some possibly
 usefull scalars, @ref{Elements hashes}.
@@ -1416,12 +1415,12 @@ control exactly the formatting of navigation panels by redefining a function
 reference. The function controlling the display of navigation panel is 
 associated with the following function reference:
 
-@deffn {Function Reference} print_navigation $filehandle \@@buttons $vertical
-@var{$filehandle} is the opened filehandle the function should write to.
+@deftypefn {Function Reference} $navigation_text print_navigation \@@buttons $vertical
 @var{\@@buttons} is an array reference which should hold the specification of 
 the buttons for that navigation panel. @var{$vertical} is true if the 
 navigation panel should be vertical.
-@end deffn
+Returns the formatted navigation panel in @var{$navigation_text}.
+@end deftypefn
 
 @c --------------------------------------------------------
 @node Program variables
@@ -1590,8 +1589,6 @@ The following array references or arrays holds formatted lines:
 @vtable @code
 @item $Texi2HTML::THIS_SECTION
 Lines of the current element.
-@item $Texi2HTML::THIS_HEADER
-Lines of the current element appearing before the element label (anchors).
 @item $Texi2HTML::OVERVIEW
 Lines of short table of contents. @xref{Special pages}.
 @item $Texi2HTML::TOC_LINES
@@ -1800,13 +1797,12 @@ This function is called if the document is split at sections, after
 The functions associated with the following function references are used for 
 the formatting of sections:
 
-@deffn {Function Reference} print_element_header $filehandle $first_in_page $previous_is_top
-@var{$filehandle} is the opened filehandle the function should write to.
+@deftypefn {Function Reference} $element_header print_element_header $first_in_page $previous_is_top
 @var{$first_in_page} is true if this section is the first section in the page.
 @var{$previous_is_top} is true if this section is the section following the 
 Top section.
-This function should print the current section headers.
-@end deffn
+This function should return @var{$element_header}, the current section header.
+@end deftypefn
 
 @deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top
 @var{$filehandle} is the opened filehandle the function should write to.
@@ -3537,6 +3533,20 @@ appearing on the line, and @var{$unformatted_line} is the line,
 unformatted.
 @end deftypefn
 
+Additionally, for @code{@@node} and sectionning @@-commands the formatting
+of the label, navigation panel and heading is controlled by:
+@deftypefn {Function Reference} $element_heagin_text element_heading \%element_reference $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading $first_in_page $is_top $previous_is_top $unformatted_line $element_id $new_element
+@var{\%element_reference} is the same as above. @var{$command} is the heading @@-command.
+@var{$command_texi_arg} is the argument of the @@-command, unformatted. @var{$formatted_arg}
+is is the argument of the @@-command, formatted. @var{$in_preformatted} is true
+if in preformatted environment. @var{$one_section} is true if there is only one 
+section. @var{$first_in_page} is true if this is the first heading  in a page.
+@var{$is_top} is true if the heading is considered as a top element heading.
+@var{$previous_is_top} is true if the previous helement was a top element.
+@var{$unformatted_line} holds the whole line, unformatted. @var{$element_id}
+is the id of the heading. @var{$new_element} is true if the heading is the first
+of an element block.
+@end deftypefn
 
 @c --------------------------------------------------------
 @node Special regions
@@ -4496,19 +4506,20 @@ argument is true if there really was an explicit name.
   the text_formatted argument is.
 @item definition index entries are now formatted with $definition_index_entry,
   not with $definition_category anymore.
-@item $print_index is called if it appears, even if the index is not defined or
-  there are no index entries.
-@item  top element heading may now be done in heading. It means that nothing 
-  should be returned if the heading is done in another function 
-  (like print_Top).
+@item $printindex is called if an index appears, even if the index is not 
+defined or there are no index entries.
+@item change in the heading API. THIS_HEADER is not used anymore.
+  New function reference, element_heading  to format a node or a section 
+  heading, including navigation and label. Accordingly, print_Top and 
+  one_section don't print the element header anymore. Also it is
+  reported if the element is a new element, is the main element and
+  more arguments, and top element heading is always done in heading.
+@item  print_element_header and print_navigation now return their result.	
 @item the @code{copying} key of %Texi2HTML::THISDOC is now called
 @code{copying_comment}.
 @item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
 @item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
 @item the $unknown function reference has a new argument, the pass number.
-@item change in the $heading API. Now the heading function reference is always 
-  called, and it is reported whether the heading is an element heading or 
-  not.
 @item @option{--sec-nav} is replaced by @option{--headers}.
 @item @option{--Verbose} is replaced by @option{--verbose}.
 @item @option{--lang} is replaced by @option{--document-language}.

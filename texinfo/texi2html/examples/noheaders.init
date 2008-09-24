@@ -3,37 +3,29 @@
 #$SPLIT = 'none';
 
 $print_section            = \&T2H_NOHEAD_print_section;
-$print_element_header            = \&T2H_NOHEAD_print_element_header;
+#$print_element_header            = \&T2H_NOHEAD_print_element_header;
+$print_element_header            = \&T2H_NOHEAD_noop;
 $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 #$print_Top_header         = \&T2H_NOHEAD_print_Top_header;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
 $print_Top                = \&T2H_NOHEAD_print_Top;
-$print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
+#$print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
 $print_misc_footer	      = \&T2H_NOHEAD_print_misc_footer;
-$print_misc		      = \&T2H_NOHEAD_print_misc;
-$print_head_navigation    = \&T2H_NOHEAD_print_head_navigation;
+#$print_misc		      = \&T2H_NOHEAD_print_misc;
+#$print_head_navigation    = \&T2H_NOHEAD_print_head_navigation;
+$print_head_navigation    = \&T2H_NOHEAD_noop;
 $about_body		      = \&T2H_NOHEAD_about_body;
 #$toc_body                 = \&T2H_NOHEAD_toc_body;
+
+sub T2H_NOHEAD_noop
+{
+  return '';
+}
 
 ########################################################################
 # Layout for html for every sections
 #
-sub T2H_NOHEAD_print_element_header
-{
-    my $fh = shift;
-    my $first_in_page = shift;
-    my $previous_is_top = shift;
-
-    if ($first_in_page)
-    {
-        &$print_head_navigation($fh);
-    }
-    else
-    { # got to do this here, as it isn't done in print_head_navigation
-        main::print_lines($fh, $Texi2HTML::THIS_HEADER);
-    }
-}
 
 sub T2H_NOHEAD_print_section
 {
@@ -71,13 +63,14 @@ sub T2H_NOHEAD_print_Top
     my $fh = shift;
     my $has_top_heading = shift;
 
-    &$print_head_navigation($fh,[]);
+    # FIXME take what is in texi2html.init, or maybe this is not needed
+    # anymore
     if (@$Texi2HTML::THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
         #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
-        print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
-            unless ($has_top_heading);
+#        print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
+#            unless ($has_top_heading);
         main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
@@ -111,7 +104,6 @@ sub T2H_NOHEAD_print_misc_header
 {
     my $fh = shift;
     &$print_page_head($fh) if $SPLIT;
-    &$print_head_navigation($fh);
 }
 sub T2H_NOHEAD_print_misc_footer
 {
@@ -140,12 +132,6 @@ sub T2H_NOHEAD_end_section($)
 
 ###################################################################
 # Layout of navigation panel
-
-sub T2H_NOHEAD_print_head_navigation
-{
-    my $fh = shift;
-    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
-}
 
 sub T2H_NOHEAD_about_body
 {

@@ -1,5 +1,4 @@
 <div id="Compatibility"></div>
-<div id="Compatibility-between-CVS-Versions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt; ]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Compatibility-between-CVS-Versions"></div>
 == Compatibility between CVS Versions ==
 
 <div id="index-CVS_002c-versions-of"></div>

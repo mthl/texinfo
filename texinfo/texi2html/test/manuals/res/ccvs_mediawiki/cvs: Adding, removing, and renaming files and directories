@@ -1,5 +1,4 @@
 <div id="Adding-and-removing"></div>
-<div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
 <td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 == Adding, removing, and renaming files and directories ==
 
 <p>In the course of a project, one will often add new
@@ -35,7 +35,6 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr size="6">
 <div id="Adding-files"></div>
-<div id="Adding-files-to-a-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
@@ -52,6 +51,7 @@ this in <small>CVS</small> vary depending on the situation.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Adding-files-to-a-directory"></div>
 === Adding files to a directory ===
 <div id="index-Adding-files"></div>
 
@@ -135,7 +135,6 @@ later merge the additions to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-files"></div>
-<div id="Removing-files-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
@@ -152,6 +151,7 @@ later merge the additions to another branch if you want
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Removing-files-1"></div>
 === Removing files ===
 <div id="index-Removing-files"></div>
 <div id="index-Deleting-files"></div>
@@ -268,7 +268,6 @@ later merge the removals to another branch if you want
 </p>
 <hr size="6">
 <div id="Removing-directories"></div>
-<div id="Removing-directories-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
@@ -285,6 +284,7 @@ later merge the removals to another branch if you want
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Removing-directories-1"></div>
 === Removing directories ===
 <div id="index-Removing-directories"></div>
 <div id="index-Directories_002c-removing"></div>
@@ -317,7 +317,6 @@ are checking out contains any files in that directory.
 </p>
 <hr size="6">
 <div id="Moving-files"></div>
-<div id="Moving-and-renaming-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
@@ -334,6 +333,7 @@ are checking out contains any files in that directory.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Moving-and-renaming-files"></div>
 === Moving and renaming files ===
 <div id="index-Moving-files"></div>
 <div id="index-Renaming-files"></div>
@@ -353,7 +353,6 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki></pre>
 <hr size="6">
 <div id="Outside"></div>
-<div id="The-Normal-way-to-Rename"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
@@ -370,6 +369,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="The-Normal-way-to-Rename"></div>
 ==== The Normal way to Rename ====
 
 
@@ -399,7 +399,6 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
 <hr size="6">
 <div id="Inside"></div>
-<div id="Moving-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
@@ -416,6 +415,7 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Moving-the-history-file"></div>
 ==== Moving the history file ====
 
 <p>This method is more dangerous, since it involves moving
@@ -455,7 +455,6 @@ commands while you move it.
 
 <hr size="6">
 <div id="Rename-by-copying"></div>
-<div id="Copying-the-history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
@@ -472,6 +471,7 @@ commands while you move it.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Copying-the-history-file"></div>
 ==== Copying the history file ====
 
 <p>This way also involves direct modifications to the
@@ -521,7 +521,6 @@ You cannot easily see the history of the file across the rename.
 
 <hr size="6">
 <div id="Moving-directories"></div>
-<div id="Moving-and-renaming-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>
@@ -538,6 +537,7 @@ You cannot easily see the history of the file across the rename.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Moving-and-renaming-directories"></div>
 === Moving and renaming directories ===
 <div id="index-Moving-directories"></div>
 <div id="index-Renaming-directories"></div>

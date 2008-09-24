@@ -1,5 +1,4 @@
 <div id="Builds"></div>
-<div id="How-your-build-system-interacts-with-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Multiple-vendor-branches  &lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt; ]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="How-your-build-system-interacts-with-CVS"></div>
 == How your build system interacts with CVS ==
 <div id="index-Builds"></div>
 <div id="index-make"></div>

@@ -188,6 +188,7 @@ foreach my $table ('table', 'ftable', 'vtable')
 
 $menu_description = \&xml_menu_description;
 $menu_link = \&xml_menu_link;
+$element_heading = \&xml_heading;
 $heading = \&xml_heading;
 $heading_texi = \&xml_heading_texi;
 $paragraph = \&xml_paragraph;
@@ -302,14 +303,13 @@ sub xml_one_section($$)
 {
     my $fh = shift;
     my $element = shift;
-    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     main::print_lines($fh);
     print $fh "". xml_footing($element);
     &$print_foot_navigation($fh);
     &$print_page_foot($fh);
 }
 
-sub xml_heading($;$$$$)
+sub xml_heading($$$$$)
 {
     my $element = shift;
     my $command = shift;

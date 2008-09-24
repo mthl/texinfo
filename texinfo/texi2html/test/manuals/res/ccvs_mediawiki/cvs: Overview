@@ -1,5 +1,4 @@
 <div id="Overview"></div>
-<div id="Overview-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
@@ -16,6 +15,7 @@
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Overview-1"></div>
 == Overview ==
 <div id="index-Overview"></div>
 
@@ -33,7 +33,6 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr size="6">
 <div id="What-is-CVS_003f"></div>
-<div id="What-is-CVS_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
@@ -50,6 +49,7 @@ certain command, you can probably skip everything here.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="What-is-CVS_003f-1"></div>
 === What is CVS? ===
 <div id="index-What-is-CVS_003f"></div>
 <div id="index-Introduction-to-CVS"></div>
@@ -132,7 +132,6 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr size="6">
 <div id="What-is-CVS-not_003f"></div>
-<div id="What-is-CVS-not_003f-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
@@ -149,6 +148,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="What-is-CVS-not_003f-1"></div>
 === What is CVS not? ===
 <div id="index-What-is-CVS-not_003f"></div>
 
@@ -299,7 +299,6 @@ only once they have been proven.
 
 <hr size="6">
 <div id="A-sample-session"></div>
-<div id="A-sample-session-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
@@ -316,6 +315,7 @@ only once they have been proven.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="A-sample-session-1"></div>
 === A sample session ===
 <div id="index-Example-of-a-work_002dsession"></div>
 <div id="index-Getting-started"></div>
@@ -343,7 +343,6 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr size="6">
 <div id="Getting-the-source"></div>
-<div id="Getting-the-source-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
@@ -360,6 +359,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Getting-the-source-1"></div>
 ==== Getting the source ====
 <div id="index-Getting-the-source"></div>
 <div id="index-Checking-out-source"></div>
@@ -392,7 +392,6 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 </p>
 <hr size="6">
 <div id="Committing-your-changes"></div>
-<div id="Committing-your-changes-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
@@ -409,6 +408,7 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Committing-your-changes-1"></div>
 ==== Committing your changes ====
 <div id="index-Committing-changes-to-files"></div>
 <div id="index-Log-message-entry"></div>
@@ -470,7 +470,6 @@ this:
 
 <hr size="6">
 <div id="Cleaning-up"></div>
-<div id="Cleaning-up-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
@@ -487,6 +486,7 @@ this:
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Cleaning-up-1"></div>
 ==== Cleaning up ====
 <div id="index-Cleaning-up"></div>
 <div id="index-Working-copy_002c-removing"></div>
@@ -541,7 +541,6 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr size="6">
 <div id="Viewing-differences"></div>
-<div id="Viewing-differences-1"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
@@ -558,6 +557,7 @@ when <code>release</code> asks for confirmation.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
+<div id="Viewing-differences-1"></div>
 ==== Viewing differences ====
 <div id="index-Viewing-differences"></div>
 <div id="index-Diff"></div>

@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.10 2008-09-01 14:48:28 pertusus Exp $
+# $Id: mediawiki.init,v 1.11 2008-09-24 23:39:19 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -183,16 +183,16 @@ sub mediawiki_print_Top
     # my $buttons = [...];
     # as it is, 'Top', 'Contents', 'Index', 'About' are printed
     my $buttons = \@MISC_BUTTONS;
-    &$print_head_navigation($fh, $buttons);
+#    &$print_head_navigation($fh, $buttons);
     my $nw;
     if ($Texi2HTML::THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
         #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
         #print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
-        chomp $Texi2HTML::NAME{Top};
-        print $fh "== $Texi2HTML::NAME{Top} ==\n"
-            unless ($has_top_heading);
+#        chomp $Texi2HTML::NAME{Top};
+#        print $fh "== $Texi2HTML::NAME{Top} ==\n"
+#            unless ($has_top_heading);
         $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
@@ -216,8 +216,10 @@ sub mediawiki_print_misc
 {
     my $fh = shift;
     my $new_file = shift;
+    my $misc_page = shift;
+
     my $buttons = \@MISC_BUTTONS;
-    &$print_misc_header($fh, $buttons);
+    &$print_misc_header($fh, $buttons, $new_file, $misc_page);
     print $fh "== $Texi2HTML::NAME{This} ==\n";
     main::print_lines($fh);
     &$print_misc_footer($fh, $buttons, $new_file);
@@ -339,7 +341,7 @@ sub mediawiki_foot_section($)
 
 $heading           = \&mediawiki_heading;
 
-sub mediawiki_heading($)
+sub mediawiki_heading($$$$$;$$)
 {
     my $element = shift;
     my $command = shift;
@@ -349,7 +351,7 @@ sub mediawiki_heading($)
     my $one_section = shift;
     my $element_heading = shift;
 
-    return '' if (defined($command) and $command eq 'node' and !$element_heading);
+    #return '' if (defined($command) and $command eq 'node' and !$element_heading);
     my $level = 3;
     if (!$element->{'node'})
     {
@@ -360,6 +362,13 @@ sub mediawiki_heading($)
     if (!$element->{'node'} and (!$NUMBER_SECTIONS))
     {
         $text = $element->{'name'};
+    }
+    if ($element->{'top'})
+    {
+        return '' if ($element->{'titlefont'});
+        $level = 1;
+        $text = $Texi2HTML::NAME{'Top'};
+        chomp $text;
     }
     return '' if ($text !~ /\S/);
     my $class = $element->{'tag_level'};
@@ -376,26 +385,25 @@ sub mediawiki_heading($)
 $print_navigation	      = \&mediawiki_print_navigation;
 sub mediawiki_print_navigation
 {
-    my $fh = shift;
     my $buttons = shift;
     my $vertical = shift;
     my $spacing = 1;
-    print $fh '<table cellpadding="', $spacing, '" cellspacing="', $spacing,
-      "\" border=\"0\">\n";
 
-    print $fh "<tr>" unless $vertical;
+    my $result = '<table cellpadding="1" cellspacing="1" border="0">'."\n";
+
+    $result .= "<tr>" unless $vertical;
     for my $button (@$buttons)
     {
-        print $fh qq{<tr valign="top" align="left">\n} if $vertical;
-        print $fh qq{<td valign="middle" align="left">};
+        $result .= qq{<tr valign="top" align="left">\n} if $vertical;
+        $result .= qq{<td valign="middle" align="left">};
 
         if (ref($button) eq 'CODE')
         {
-            &$button($fh, $vertical);
+            $result .= &$button($vertical);
         }
         elsif (ref($button) eq 'SCALAR')
         {
-            print $fh "$$button" if defined($$button);
+            $result .= "$$button" if defined($$button);
         }
         elsif (ref($button) eq 'ARRAY')
         {
@@ -406,7 +414,7 @@ sub mediawiki_print_navigation
             {             # use given text
                 if ($Texi2HTML::HREF{$button_href})
                 {
-                  print $fh "" .
+                  $result .= "" .
                         &$anchor('',
                                     $Texi2HTML::HREF{$button_href},
                                     $$text
@@ -415,13 +423,13 @@ sub mediawiki_print_navigation
                 }
                 else
                 {
-                  print $fh $$text;
+                  $result .= $$text;
                 }
             }
         }
         elsif ($button eq ' ')
         {                       # handle space button
-            print $fh
+            $result .=
                 $ICONS && $ACTIVE_ICONS{' '} ?
                     &$button_icon_img($button, $ACTIVE_ICONS{' '}) :
                         $NAVIGATION_TEXT{' '};
@@ -433,7 +441,7 @@ sub mediawiki_print_navigation
                 'title="' . ucfirst($BUTTONS_GOTO{$button}) . '"' : '';
             if ($ICONS && $ACTIVE_ICONS{$button})
             {                   # use icon
-                print $fh '' .
+                $result .= '' .
                     &$anchor('',
                         $Texi2HTML::HREF{$button},
                         &$button_icon_img($button,
@@ -445,7 +453,7 @@ sub mediawiki_print_navigation
             }
             else
             {                   # use text
-                print $fh '|' .
+                $result .= '|' .
                         &$anchor('',
                                     $Texi2HTML::HREF{$button},
                                     $NAVIGATION_TEXT{$button},
@@ -456,7 +464,7 @@ sub mediawiki_print_navigation
         }
         else
         {                       # button is passive
-            print $fh
+            $result .=
                 $ICONS && $PASSIVE_ICONS{$button} ?
                     &$button_icon_img($button,
                                           $PASSIVE_ICONS{$button},
@@ -465,11 +473,12 @@ sub mediawiki_print_navigation
 
                                               "[" . $NAVIGATION_TEXT{$button} . "]";
         }
-        print $fh "</td>\n";
-        print $fh "</tr>\n" if $vertical;
+        $result .= "</td>\n";
+        $result .= "</tr>\n" if $vertical;
     }
-    print $fh "</tr>" unless $vertical;
-    print $fh "</table>\n";
+    $result .= "</tr>" unless $vertical;
+    $result .= "</table>\n";
+    return $result;
 }
 
 
