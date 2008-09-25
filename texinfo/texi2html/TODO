@@ -363,9 +363,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * failure in indices test nodes_before_top_no_nodes
 
-* ignore spaces after @ command, before {, like texi2dvi does.
+* ignore spaces after @ command, before {, like texi2dvi does?
 
 * failures with split index between node and section in indices/ and
   many_iput_files.
-
-* change prototype and document $printindex

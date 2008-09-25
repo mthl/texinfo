@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.235 2008-09-24 23:39:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.236 2008-09-25 11:02:20 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5517,6 +5517,19 @@ sub rearrange_elements()
                     $element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
                 }
             }
+            else # $only_section and !$section_ref. This should only
+                 # happen when there are no sections
+                 # in that case it is possible that the node_top is an
+                 # element, so it is associated with this one. Maybe it
+                 # may happen that the node_top is not an element, not sure 
+                 # what would be the consequence ni that case.
+            {
+                if ($node_top)
+                {
+                    add_t2h_dependent_element ($element, $node_top);
+                }
+                #print STDERR "node $element->{'texi'} not associated with an element\n";
+            }
             # FIXME use Texi2HTML::Config::NODE_TOC_LEVEL?
             $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
         }
@@ -5617,6 +5630,7 @@ sub rearrange_elements()
         }
     }
 
+    # do human readable id
     print STDERR "# find float id\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $float (@floats)
@@ -5723,6 +5737,7 @@ sub rearrange_elements()
         }
     }
 
+    # Set file names
     # Find node file names and file names for nodes considered as elements
     my $node_as_top;
     if ($node_top)
@@ -5808,43 +5823,27 @@ sub rearrange_elements()
             do_element_targets($element, $use_node_file);
             print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
-            if ($element->{'nodes'})
-            {
-                foreach my $node (@{$element->{'nodes'}})
-                {
-                    $node->{'doc_nr'} = $element->{'doc_nr'};
-                    $node->{'file'} = $element->{'file'};
-                }
-            }
         }
     }
     else
     { # not split
         add_file($docu_doc);
-        # FIXME sections or elements?
         foreach my $element(@elements_list)
         {
             $element->{'file'} = $docu_doc;
             $element->{'doc_nr'} = 0;
             do_element_targets($element);
         }
-        foreach my $node(@nodes_list)
-        {
-            $node->{'file'} = $docu_doc;
-            $node->{'doc_nr'} = 0;
-            #FIXME do_element_targets?
-            #do_element_targets($node);
-        }
     }
     # 'pathological' cases. No texinfo sectionning element at all or no 
     # texi2html sectionning elements
-    #FIXME already done for nodes?
     if (!@elements_list)
     {
         if (@all_elements)
         {
             foreach my $element (@all_elements)
             {
+                #print STDERR "Processing $element->{'texi'}\n";
                 $element->{'file'} = $docu_doc;
                 $element->{'doc_nr'} = 0;
                 push @{$element->{'place'}}, @{$element->{'current_place'}};
@@ -6041,18 +6040,6 @@ sub rearrange_elements()
             foreach my $menu_up (keys%{$element->{'menu_up_hash'}})
             {
                 print STDERR "   $menu_up ($element->{'menu_up_hash'}->{$menu_up})\n";
-            }
-        }
-        if (defined($element->{'nodes'}))
-        {
-            print STDERR "  nodes: $element->{'nodes'} (@{$element->{'nodes'}})\n";
-            foreach my $node (@{$element->{'nodes'}})
-            {
-                my $beginning = "   ";
-                $beginning = "  *" if ($node->{'with_section'});
-                my $file = $node->{'file'};
-                $file = "file undef" if (! defined($node->{'file'}));
-                print STDERR "${beginning}$node->{'texi'} $file\n";
             }
         }
         print STDERR "  places: $element->{'place'}\n";
