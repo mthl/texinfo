@@ -2,6 +2,8 @@
 
 	* texi2html.pl: associate nodes that are not already associated 
 	with the top node in case only sections are used.
+	* texi2html.init: associate elements in split indices to the 
+	split indice added element.
 
 2008-09-24  Patrice Dumas  <dumas@centre-cired.fr>
 

@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.236 2008-09-25 11:02:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.237 2008-09-25 11:48:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6780,9 +6780,7 @@ sub pass_text($$)
                 ########################## end debug section
 
                 # The element begins a new section if there is no previous
-                # or it is an element and not the current one or the 
-                # associated section (in case of node) is not the current 
-                # one
+                # or the reference element is not the same
                 if (!$Texi2HTML::THIS_ELEMENT or (defined($current_element->{'element_ref'}) and $current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT))
                 {
                     $new_element = shift @elements_list;
@@ -6845,7 +6843,7 @@ sub pass_text($$)
                 
                 my $cmd_line = $cline;
                 $cmd_line =~ s/\@$tag\s*//;
-                my $heading_formatted = &$Texi2HTML::Config::element_heading($current_element, $tag, $cmd_line, substitute_line($cmd_line), undef, $one_section, ($Texi2HTML::THIS_ELEMENT and $current_element eq $Texi2HTML::THIS_ELEMENT), $first_section, $current_element->{'top'}, $previous_is_top, $cline, $current_element->{'id'}, $new_element);
+                my $heading_formatted = &$Texi2HTML::Config::element_heading($current_element, $tag, $cmd_line, substitute_line($cmd_line), undef, $one_section, $current_element->{'this'}, $first_section, $current_element->{'top'}, $previous_is_top, $cline, $current_element->{'id'}, $new_element);
                 push @{$Texi2HTML::THIS_SECTION}, $heading_formatted if (defined($heading_formatted) and ($heading_formatted ne ''));
                 next;
             }

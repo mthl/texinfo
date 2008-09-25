@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.160 2008-09-24 23:39:17 pertusus Exp $
+# $Id: texi2html.init,v 1.161 2008-09-25 11:48:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4429,6 +4429,7 @@ sub t2h_default_associate_index_element($$$$)
     {
        push @{$current_element->{'place'}}, $place;
        $place->{'file'} = $current_element->{'file'} if ($current_element ne $element);
+       $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
        next;
     }
     my $printindex = $place;
@@ -4513,7 +4514,7 @@ sub t2h_default_associate_index_element($$$$)
           my $id = "index_split-$t2h_default_index_page_nr";
           $t2h_default_index_page_nr++;
 
-          my $new_element = { 'file' => $relative_file, 'id' => $id, 'target' => $id, 'text' => $name, 'texi' => $texi, 'seen' => 1, 'simple_format' => $simple, 'element_ref' => $element->{'element_ref'} };
+          my $new_element = { 'file' => $relative_file, 'id' => $id, 'target' => $id, 'text' => $name, 'texi' => $texi, 'seen' => 1, 'simple_format' => $simple };
 
           $split_group->{'element'} = $new_element;
           $current_element = $new_element;

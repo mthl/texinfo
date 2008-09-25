@@ -366,4 +366,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * ignore spaces after @ command, before {, like texi2dvi does?
 
 * failures with split index between node and section in indices/ and
-  many_iput_files.
+  many_input_files. (should be fixed in many_input_files). remains
+  makeinfo_index_split which has wrong output and 
+  makeinfo_nodes_before_top_and_sections that fails.
