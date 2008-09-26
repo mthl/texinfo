@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.29 2007-07-01 21:20:33 karl Exp $
+   $Id: sectioning.c,v 1.30 2008-09-26 11:56:28 gray Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -119,7 +119,7 @@ get_sectioning_number (int level, int num)
   if ((num == ENUM_SECT_APP)
       && (i == 0)
       && (enum_marker == APPENDIX_MAGIC))
-    sprintf (p, _("Appendix %c"), numbers[i] + 64);
+    sprintf (p, getdocumenttext ("Appendix %c"), numbers[i] + 64);
   else
     sprintf (p, "%d", numbers[i]);
 
