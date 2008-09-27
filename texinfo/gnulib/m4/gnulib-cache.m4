@@ -15,7 +15,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --aux-dir=build-aux --no-libtool --macro-prefix=gl --no-vc-files argz getopt gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memcpy memmem memmove mkstemp strdup strerror xalloc xsetenv
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-libtool --macro-prefix=gl --no-vc-files argz getopt gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memcpy memmem memmove mkstemp strdup strerror xalloc xsetenv
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])

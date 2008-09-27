@@ -24,6 +24,8 @@
 
 #ifndef _GL_SYS_STAT_H
 
+#pragma GCC system_header
+
 /* The include_next requires a split double-inclusion guard.  */
 #include_next <sys/stat.h>
 

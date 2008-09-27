@@ -49,6 +49,7 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_ARGZ
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_HEADER_ERRNO_H
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
@@ -64,8 +65,6 @@ AC_DEFUN([gl_INIT],
   gl_LOCALCHARSET
   LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(top_builddir)/$gl_source_base\""
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
-  gl_FUNC_MALLOC_POSIX
-  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MBCHAR
   gl_MBITER
@@ -259,6 +258,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/argz.c
   lib/argz.in.h
   lib/config.charset
+  lib/errno.in.h
   lib/error.c
   lib/error.h
   lib/exitfail.c
@@ -272,7 +272,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/intprops.h
   lib/localcharset.c
   lib/localcharset.h
-  lib/malloc.c
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
@@ -334,6 +333,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/codeset.m4
   m4/eealloc.m4
   m4/environ.m4
+  m4/errno_h.m4
   m4/error.m4
   m4/exitfail.m4
   m4/extensions.m4
@@ -360,7 +360,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/localcharset.m4
   m4/lock.m4
   m4/longlong.m4
-  m4/malloc.m4
   m4/malloca.m4
   m4/mbchar.m4
   m4/mbiter.m4
@@ -399,6 +398,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/sys_stat_h.m4
   m4/sys_time_h.m4
   m4/tempname.m4
+  m4/threadlib.m4
   m4/uintmax_t.m4
   m4/unistd_h.m4
   m4/visibility.m4
