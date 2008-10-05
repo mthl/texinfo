@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.12 2008-06-11 09:55:42 gray Exp $
+   $Id: info-utils.c,v 1.13 2008-10-05 14:56:12 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -74,14 +74,34 @@ info_parse_node (char *string, int newlines_okay)
   /* Check for (FILENAME)NODENAME. */
   if (*string == '(')
     {
+      int bcnt;
+      int bfirst;
+      
       i = 0;
       /* Advance past the opening paren. */
       string++;
 
-      /* Find the closing paren. */
-      while (string[i] && string[i] != ')')
-        i++;
+      /* Find the closing paren. Handle nested parens correctly. */
+      for (bcnt = 0, bfirst = -1; string[i]; i++)
+	{
+	  if (string[i] == ')')
+	    {
+	      if (bcnt == 0)
+		{
+		  bfirst = -1;
+		  break;
+		}
+	      else if (!bfirst)
+		bfirst = i;
+	      bcnt--;
+	    } 
+	  else if (string[i] == '(')
+	    bcnt++;
+	}
 
+      if (bfirst >= 0)
+	i = bfirst;
+      
       /* Remember parsed filename. */
       saven_filename (string, i);
 

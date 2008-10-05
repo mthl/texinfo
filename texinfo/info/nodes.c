@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.11 2008-06-11 09:55:42 gray Exp $
+   $Id: nodes.c,v 1.12 2008-10-05 14:56:12 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008 Free Software Foundation, Inc.
@@ -106,14 +106,18 @@ info_get_node (char *filename, char *nodename)
   file_buffer = info_find_file (filename);
   if (!file_buffer)
     {
-      if (filesys_error_number)
-        info_recent_file_error =
-          filesys_error_string (filename, filesys_error_number);
-      return NULL;
+      node = make_manpage_node (filename);
+      if (!node)
+	{
+	  if (filesys_error_number)
+	    info_recent_file_error =
+	      filesys_error_string (filename, filesys_error_number);
+	  return NULL;
+	}
     }
-
-  /* Look for the node.  */
-  node = info_get_node_of_file_buffer (nodename, file_buffer);
+  else
+    /* Look for the node.  */
+    node = info_get_node_of_file_buffer (nodename, file_buffer);
 
   /* If the node not found was "Top", try again with different case,
      unless this was a man page.  */
