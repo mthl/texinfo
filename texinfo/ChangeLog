@@ -1,5 +1,11 @@
 2008-10-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/display.c (display_update_one_window): Remove superfluous
+	call to	fflush.
+	* info/session.c (set_window_pagetop): Disable scrolling if the
+	amount to scroll is one line.  This prevents status line
+	blinking. 
+
 	* info/info-utils.c (info_parse_node): Correctly handle nested
 	parentheses.
 	* info/nodes.c (info_get_node): If no file buffer is found, try to

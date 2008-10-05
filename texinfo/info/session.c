@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.43 2008-06-11 17:38:33 gray Exp $
+   $Id: session.c,v 1.44 2008-10-05 16:06:19 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -538,14 +538,18 @@ set_window_pagetop (WINDOW *window, int desired_top)
      direction.  Do this only if there would be a savings in redisplay
      time.  This is true if the amount to scroll is less than the height
      of the window, and if the number of lines scrolled would be greater
-     than 10 % of the window's height. */
+     than 10 % of the window's height.
+
+     To prevent status line blinking when keeping up or down key,
+     scrolling is disabled if the amount to scroll is 1. */
   if (old_pagetop < desired_top)
     {
       int start, end, amount;
 
       amount = desired_top - old_pagetop;
 
-      if ((amount >= window->height) ||
+      if (amount == 1 ||
+	  (amount >= window->height) ||
           (((window->height - amount) * 10) < window->height))
         return;
 
@@ -560,7 +564,8 @@ set_window_pagetop (WINDOW *window, int desired_top)
 
       amount = old_pagetop - desired_top;
 
-      if ((amount >= window->height) ||
+      if (amount == 1 ||
+	  (amount >= window->height) ||
           (((window->height - amount) * 10) < window->height))
         return;
 
