@@ -1,3 +1,9 @@
+2008-10-09  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/session.c (internal_next_line): New function.  A safer
+	version of info_next_line, which ensures that the references work
+	correctly on malformed info documents (such as gawk.info v. 3.1.5). 
+
 2008-10-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/display.c (display_update_one_window): Remove superfluous

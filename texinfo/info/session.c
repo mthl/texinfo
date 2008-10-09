@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.44 2008-10-05 16:06:19 gray Exp $
+   $Id: session.c,v 1.45 2008-10-09 12:20:28 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008 Free Software Foundation, Inc.
@@ -662,6 +662,22 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
       }
 }
 
+/* "Safe" version of info_next_line, for use when moving to a
+   reference within the window.  It assumes that point is 0 and
+   is safe in the sense that it won't allow to change nodes if
+   COUNT is greater than the number of lines in the current node.
+
+   This is necessary to avoid incorrect placement on malformed
+   info documents (such as gawk.info v. 3.1.5) when
+   cursor_movement_scrolls_p is set to 1. */
+
+static void
+internal_next_line (WINDOW *window, int count, unsigned char key)
+{
+  if (count >= 0 && count < window->line_count)
+    info_next_line (window, count, key);
+}
+  
 /* Move WINDOW's point up to the previous line if possible. */
 DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
 {
@@ -2290,7 +2306,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
     {
       info_select_reference (window, menu[i]);
       if (menu[i]->line_number > 0)
-        info_next_line (window, menu[i]->line_number - 1, key);
+        internal_next_line (window, menu[i]->line_number - 1, key);
     }
   else
     info_error (_("There aren't %d items in this menu."),
@@ -2610,7 +2626,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
             if (entry->line_number > 0)
               /* next_line starts at line 1?  Anyway, the -1 makes it
                  move to the right line.  */
-              info_next_line (window, entry->line_number - 1, key);
+              internal_next_line (window, entry->line_number - 1, key);
         }
 
       free (line);
