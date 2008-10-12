@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.179 2008-09-18 18:45:56 karl Exp $
+$Id: NEWS,v 1.180 2008-10-12 22:18:38 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -22,6 +22,12 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* texinfo.tex:
+  . support some per-language hyphenation, when the underlying TeX
+    engine does (for instance, etex/pdfetex from TeX Live 2008).  Words
+    with accented letters are still not handled properly.
+
+
 4.13 (18 September 2008)
 
 * A reference card for Texinfo is now available, in doc/refcard.  For
@@ -36,9 +42,9 @@ one of the relevant sections:
 * info:
   . support for multibyte encodings such as UTF-8.
   . new option --show-malformed-multibytes, to display malformed multibyte
-  sequences.
-  . new environment variable INFO_MAN_COMMAND sets the name of man binary
-  (use it if you a need to override PATH settings).
+    sequences.
+  . new environment variable INFO_MAN_COMMAND sets the name of man executable
+    (use it if you a need to override PATH settings).
   
 * install-info:
   . bug fix: support names with embedded periods (e.g., config.status) again.

@@ -1,3 +1,10 @@
+2008-10-12  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\txisetlanguage): new helper macro for the
+	txi-??.tex files.
+	* doc/txi-??.tex: add call to all files to set hyphenation
+	patterns (if they are available) and hyphenmin values.	
+
 2008-10-09  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/session.c (internal_next_line): New function.  A safer

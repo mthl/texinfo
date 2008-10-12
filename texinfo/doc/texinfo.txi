@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.225 2008-09-07 22:47:46 karl Exp $
+@c $Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13667,10 +13667,14 @@ ideographic (among other) scripts.  Help in improving Texinfo's
 language support is welcome.
 
 @cindex Hyphenation patterns, language-dependent
-It would also be desirable for this command to also change @TeX{}'s
-ideas of the current hyphenation patterns (via the @TeX{} primitive
-@code{\language}), but this is unfortunately not currently
-implemented.
+@code{@@documentlanguage} also changes @TeX{}'s current hyphenation
+patterns, if the @TeX{} program being run has the necessary support
+included.  This will generally not be the case for @command{tex}
+itself, but will often be the case for recent distributions of
+extended @TeX{} programs @command{etex} (DVI output) and
+@command{pdftex} (PDF output), such as @TeX{} Live 2008.
+@command{texi2dvi} will use the extended @TeX{}s if they are
+available (@pxref{Format with texi2dvi}).
 
 In September 2006, the W3C Internationalization Activity released a
 new recommendation for specifying languages:
@@ -19122,7 +19126,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.225 2008-09-07 22:47:46 karl Exp $
+$Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19198,7 +19202,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.225 2008-09-07 22:47:46 karl Exp $
+@comment $Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
