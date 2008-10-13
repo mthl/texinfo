@@ -1,5 +1,8 @@
 2008-10-12  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\dosynindex): \ifx\csname...\endcsname
+	has to compare to \relax, not \undefined.
+
 	* doc/texinfo.tex (\txisetlanguage): new helper macro for the
 	txi-??.tex files.
 	* doc/txi-??.tex: add call to all files to set hyphenation
