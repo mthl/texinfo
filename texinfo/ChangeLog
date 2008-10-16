@@ -1,3 +1,9 @@
+2008-10-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\doverbatiminclude): special-case \@,
+	so @@ can be used in the filename.
+	help-texinfo request from David Bateman, 13 Oct 2008 15:58:07.
+
 2008-10-12  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\dosynindex): \ifx\csname...\endcsname
