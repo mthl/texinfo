@@ -1,3 +1,10 @@
+2008-10-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\documentlanguage): read the txi-LL.tex file
+	with \globaldefs=1 in effect.
+	* doc/txi-LL.tex: set nonfrenchspacing (English and Portuguese) or
+	frenchspacing (everything else).
+
 2008-10-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\doverbatiminclude): special-case \@,
