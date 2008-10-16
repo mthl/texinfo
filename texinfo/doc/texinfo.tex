@@ -6172,7 +6172,7 @@ end
 %
 \def\verbatiminclude{\parseargusing\filenamecatcodes\doverbatiminclude}
 %
-\def\doverbatiminclude#1{\loggingall
+\def\doverbatiminclude#1{%
   {%
     \makevalueexpandable
     \def\@{@}% we want to use \indexnofonts, but then verbatim ends prematurely
