@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
+@c $Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7814,6 +7814,10 @@ following sections:
 Indicate text that is quoted. The text is filled, indented (from both
 margins), and printed in a roman font by default.
 
+@item @@smallquotation
+Same as @code{@@quotation}, except that in @TeX{} this command typesets
+text in a smaller font size.
+
 @item @@example
 Illustrate code, commands, and the like. The text is printed
 in a fixed-width font, and indented but not filled.
@@ -7827,7 +7831,7 @@ significant, and tabs are expanded.
 
 @item @@smallexample
 Same as @code{@@example}, except that in @TeX{} this command typesets
-text in a smaller font.
+text in a smaller font size.
 
 @item @@lisp
 Like @code{@@example}, but specifically for illustrating Lisp code. The
@@ -7918,7 +7922,7 @@ This is
 a foo.
 @end quotation
 
-If the @code{@@quotation} argument is exactly one of these words:
+If the @code{@@quotation} argument is exactly one of these English words:
 
 @example
 Caution  Important  Note  Tip  Warning
@@ -7929,6 +7933,10 @@ Caution  Important  Note  Tip  Warning
 @noindent then the Docbook output uses corresponding special tags
 (@code{<note>}, etc.) instead of the default @code{<blockquote>}.
 HTML output always uses @code{<blockquote>}.
+
+@findex smallquotation
+Texinfo also provides a command @code{@@smallquotation}, which is just
+like @code{@@quotation} but uses a smaller font size.  @xref{small}.
 
 
 @node example
@@ -8133,31 +8141,32 @@ itself.
 @section @code{@@small@dots{}} Block Commands
 @cindex Small examples
 @cindex Examples in smaller fonts
+@cindex Quotations in smaller fonts
 @cindex Lisp examples in smaller fonts
-@findex smalldisplay
+@findex smallquotation
 @findex smallexample
 @findex smallformat
 @findex smalllisp
 
-In addition to the regular @code{@@example} and @code{@@lisp} commands,
+In addition to the regular @code{@@example} and similar commands,
 Texinfo has ``small'' example-style commands.  These are
-@code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat}, and
-@code{@@smalllisp}.
+@code{@@smallquotation}, @code{@@smalldisplay}, @code{@@smallexample},
+@code{@@smallformat}, and @code{@@smalllisp}.
 
-In Info, the @code{@@small@dots{}} commands are equivalent to their
-non-small companion commands.
+In Info output, the @code{@@small@dots{}} commands are equivalent to
+their non-small companion commands.
 
 In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
 a smaller font than the non-small example commands.  Consequently,
 many examples containing long lines fit on a page without needing to
-be shortened.
+be shortened.  A smaller font size is also requested in HTML output.
 
 Mark the end of an @code{@@small@dots{}} block with a corresponding
 @code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with
 @code{@@end smallexample}.
 
-Here is an example of the font used by the @code{@@small@dots{}}
-commands (in Info, the output will be the same as usual):
+Here is an example of the font used by the @code{@@smallexample}
+command (in Info, the output will be the same as usual):
 
 @smallexample
 @dots{} to make sure that you have the freedom to
@@ -8168,17 +8177,19 @@ change the software or use pieces of it in new free
 programs; and that you know you can do these things.
 @end smallexample
 
-The @code{@@small@dots{}} commands make it easier to prepare manuals
-without forcing you to edit examples by hand to fit them onto narrower
-pages.
+The @code{@@small@dots{}} commands use the same font style as their
+normal counterparts: @code{@@smallexample} and @code{@@smalllisp} use
+a fixed-width font, and everything else uses the regular font.
+They also have the same behavior in other respects---whether filling
+is done and whether margins are narrowed.
 
-As a general rule, a printed document looks much better if you use
-only one of (for instance) @code{@@example} or @code{@@smallexample}
+As a general rule, a printed document looks better if you use only one
+of (for instance) @code{@@example} or @code{@@smallexample}
 consistently within a chapter.
 
 
 @node display
-@section @code{@@display} and @code{@@smalldisplay}
+@section @code{@@display}: Examples Using the Text Font
 @cindex Display formatting
 @findex display
 
@@ -8198,8 +8209,7 @@ indents the text, but does not fill it.
 
 @findex smalldisplay
 Texinfo also provides a command @code{@@smalldisplay}, which is like
-@code{@@display} but uses a smaller font in @code{@@smallbook} format.
-@xref{small}.
+@code{@@display} but uses a smaller font size.  @xref{small}.
 
 The @code{@@table} command (@pxref{table}) does not work inside
 @code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
@@ -8208,7 +8218,7 @@ make sense to use them together.  If you want to indent a table, try
 
 
 @node format
-@section @code{@@format} and @code{@@smallformat}
+@section @code{@@format}: Examples Using the Full Line Width
 @findex format
 
 The @code{@@format} command is similar to @code{@@example} except
@@ -8224,9 +8234,7 @@ the @code{@@format} command does not fill the text.
 
 @findex smallformat
 Texinfo also provides a command @code{@@smallformat}, which is like
-@code{@@format} but uses a smaller font in @code{@@smallbook} format.
-@xref{small}.
-
+@code{@@format} but uses a smaller font size.  @xref{small}.
 
 
 @node exdent
@@ -18273,22 +18281,27 @@ rather than the regular 8.5 by 11 inch format.  @xref{smallbook, ,
 Printing Small Books}.  Also, see @ref{small}.
 
 @item @@smalldisplay
-Begin a kind of example.  Like @code{@@smallexample} (narrow margins, no
-filling), but do not select the fixed-width font.  Pair with @code{@@end
-smalldisplay}.  @xref{small}.
+Begin a kind of example.  Like @code{@@display}, but use a smaller
+font size where possible.  Pair with @code{@@end smalldisplay}.
+@xref{small}.
 
 @item @@smallexample
-Begin an example.  Do not fill, select fixed-width font, narrow the
-margins.  Where possible, print text in a smaller font than with
-@code{@@example}.  Pair with @code{@@end smallexample}.  @xref{small}.
+Begin an example.  Like @code{@@example}, but use a smaller font size
+where possible.  Pair with @code{@@end smallexample}.  @xref{small}.
 
 @item @@smallformat
-Begin a kind of example.  Like @code{@@smalldisplay}, but do not narrow
-the margins.  Pair with @code{@@end smallformat}.  @xref{small}.
+Begin a kind of example.  Like @code{@@format}, but use a smaller font
+size where possible.  Pair with @code{@@end smallformat}.
+@xref{small}.
 
 @item @@smalllisp
 Begin an example of Lisp code.  Same as @code{@@smallexample}.  Pair
 with @code{@@end smalllisp}.  @xref{small}.
+
+@item @@smallquotation
+Begin a kind of example.  Like @code{@@quotation}, but use a smaller
+font size where possible.  Pair with @code{@@end smallquotation}.
+@xref{small}.
 
 @item @@sp @var{n}
 Skip @var{n} blank lines.  @xref{sp, , @code{@@sp}}.@refill
@@ -19126,7 +19139,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
+$Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19202,7 +19215,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.226 2008-10-12 22:18:38 karl Exp $
+@comment $Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
