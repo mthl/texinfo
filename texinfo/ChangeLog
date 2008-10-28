@@ -1,3 +1,21 @@
+2008-10-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\codequoteleft): disable `! and `? ligatures
+	for Spanish punctuation.
+	(` '): make quote characters always active, \let to \lq
+	and \rq by default.
+
+2008-10-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\quotationstart): new macro.
+	(\quotation): call it.
+	(\smallquotation): new env.
+	(\Esmallquotation): new macro.
+	Patch from Werner Lemberg, 21 Oct 2008 16:05:27.
+
+	* doc/texinfo.txi (quotation, small, summary): update documentation,
+	* doc/refcard/txirefcard.tex: update.
+
 2008-10-20  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\includezzz, \doverbatiminclude):  Better fix
@@ -9,7 +27,8 @@
 	* doc/texinfo.tex (\documentlanguage): read the txi-LL.tex file
 	with \globaldefs=1 in effect.
 	* doc/txi-LL.tex: set nonfrenchspacing (English and Portuguese) or
-	frenchspacing (everything else).
+	frenchspacing (everything else), based on Babel's settings.
+	Suggestion from Werner Lemberg, 15 Oct 2008 22:07:38.
 
 2008-10-15  Karl Berry  <karl@gnu.org>
 
