@@ -1,4 +1,4 @@
-$Id: TODO,v 1.46 2008-09-19 00:47:39 karl Exp $
+$Id: TODO,v 1.47 2008-10-29 22:19:28 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -174,6 +174,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - read source file (specified by new option) for @documentlanguage
     and/or @documentencoding, and change the sorting appropriately.
   From: Wojciech Polak, 26 Apr 2003 11:30:59 +0200.
+
+* texi2html:
+  - @smallquotation
 
 * Distribution:
   - generate txi-??.tex from .po's to make translators' jobs easier.

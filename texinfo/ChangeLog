@@ -2,8 +2,6 @@
 
 	* doc/texinfo.tex (\codequoteleft): disable `! and `? ligatures
 	for Spanish punctuation.
-	(` '): make quote characters always active, \let to \lq
-	and \rq by default.
 
 2008-10-25  Karl Berry  <karl@gnu.org>
 
