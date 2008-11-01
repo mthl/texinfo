@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.237 2008-09-25 11:48:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.238 2008-11-01 00:01:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -592,8 +592,11 @@ sub T2H_GPL_toc_body($)
         {
             push(@{$Texi2HTML::TOC_LINES}, "</li>\n");
         }
-#        my $file = '';
-#        $file = $element->{'file'} if ($SPLIT or !$MONOLITHIC);
+        # if there is more than one toc, in different files, the toc in
+        # the file different from $Texi2HTML::THISDOC{'toc_file'} may have
+        # wrong links, that is links that point to the same file and are
+        # therefore empty, although the section isn't in the current file,
+        # since it is in $Texi2HTML::THISDOC{'toc_file'}.
         my $dest_for_toc = $element->{'file'};
         my $dest_for_stoc = $element->{'file'};
         $dest_for_toc = '' if ($dest_for_toc eq $Texi2HTML::THISDOC{'toc_file'});
@@ -4793,7 +4796,7 @@ sub do_place_target_file($$$)
    my $element = shift;
    my $context = shift;
 
-   $place->{'file'} = $element->{'file'};
+   $place->{'file'} = $element->{'file'} unless defined($place->{'file'});
    $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
 #   $place->{'doc_nr'} = $element->{'doc_nr'} unless defined($place->{'doc_nr'});
    if (defined($Texi2HTML::Config::placed_target_file_name))
@@ -4829,9 +4832,17 @@ sub do_element_targets($;$)
    $element->{'file'} = $file_index_split if (defined($file_index_split));
    if (defined($Texi2HTML::Config::element_file_name))
    {
+      my $previous_file_name = $element->{'file'};
       my $filename = 
           &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
-      $element->{'file'} = $filename if (defined($filename));
+      if (defined($filename))
+      {
+         foreach my $place (@{$element->{'place'}})
+         {
+            $place->{'file'} = $filename if (defined($place->{'file'}) and ($place->{'file'} eq $previous_file_name));
+         }
+         $element->{'file'} = $filename;
+      }
    }
    print STDERR "file !defined for element $element->{'texi'}\n" if (!defined($element->{'file'}));
    if (defined($Texi2HTML::Config::element_target_name))
@@ -5528,7 +5539,10 @@ sub rearrange_elements()
                 {
                     add_t2h_dependent_element ($element, $node_top);
                 }
-                #print STDERR "node $element->{'texi'} not associated with an element\n";
+                else
+                {
+                    #print STDERR "node $element->{'texi'} not associated with an element\n";
+                }
             }
             # FIXME use Texi2HTML::Config::NODE_TOC_LEVEL?
             $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
@@ -5553,24 +5567,43 @@ sub rearrange_elements()
     # preparation)
     #
     # find first, last and top elements 
-    $element_first = $elements_list[0];
-    print STDERR "# element first: $element_first->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
+    if (@elements_list)
+    {
+        $element_first = $elements_list[0];
+        print STDERR "# element first: $element_first->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
+        # It is the last element before indices split, which may add new 
+        # elements
+        $element_last = $elements_list[-1];
+    }
+    else
+    {
+        print STDERR "# \@elements_list is empty\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS); 
+    }
     print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
+    if (defined($section_top))
+    {
     # element top is the element with @top.
-    $element_top = $section_top;
+        $element_top = $section_top;
+    }
+    elsif (defined($node_top))
+    {
     # If the top node is associated with a section it is the top_element 
     # otherwise element top may be the top node 
-    $element_top = $node_top if (!defined($element_top) and defined($node_top));
+        $element_top = $node_top;
+    }
+    elsif (defined($element_first))
+    {
     # If there is no @top section no top node the first node is the top element
-    $element_top = $element_first unless (defined($element_top));
-    $element_top->{'top'} = 1 if ($element_top->{'node'});
-    print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
-        ($T2H_DEBUG & $DEBUG_ELEMENTS));
+         $element_top = $element_first;
+    }
 
-    # It is the last element before indices split, which may add new 
-    # elements
-    $element_last = $elements_list[-1];
+    if (defined($element_top))
+    {
+        $element_top->{'top'} = 1 if ($element_top->{'node'});
+        print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
+           ($T2H_DEBUG & $DEBUG_ELEMENTS));
+    }
     
     print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -5796,7 +5829,7 @@ sub rearrange_elements()
             my $is_top = '';
             $element->{'file'} = "${docu_name}_$doc_nr"
                    . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
-            my $use_node_file;
+            my $use_node_file = 0;
             if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top))
             { # the top elements
                 $is_top = "top";
@@ -5821,7 +5854,7 @@ sub rearrange_elements()
                 }
             }
             do_element_targets($element, $use_node_file);
-            print STDERR "# add_file $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            print STDERR "# add_file($use_node_file) $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
         }
     }
@@ -5843,7 +5876,7 @@ sub rearrange_elements()
         {
             foreach my $element (@all_elements)
             {
-                #print STDERR "Processing $element->{'texi'}\n";
+                #print STDERR "# no \@elements_list. Processing $element->{'texi'}\n";
                 $element->{'file'} = $docu_doc;
                 $element->{'doc_nr'} = 0;
                 push @{$element->{'place'}}, @{$element->{'current_place'}};
@@ -6045,7 +6078,7 @@ sub rearrange_elements()
         print STDERR "  places: $element->{'place'}\n";
         foreach my $place(@{$element->{'place'}})
         {
-            if (!$place->{'entry'} and !$place->{'float'} and !$place->{'texi'} and !$place->{'contents'} and !$place->{'shortcontents'})
+            if (!$place->{'entry'} and !$place->{'float'} and !$place->{'texi'} and !$place->{'contents'} and !$place->{'shortcontents'} and (!defined($place->{'command'} or $place->{'command'} ne 'printindex')))
             {
                  print STDERR "BUG: unknown placed stuff ========\n";
                  foreach my $key (keys(%$place))
@@ -6066,11 +6099,11 @@ sub rearrange_elements()
             {
                 if (defined($place->{'texi'}))
                 {
-                    print STDERR "    float($place): $place->{'texi'}\n";
+                    print STDERR "    float($place): $place->{'texi'} ($place->{'id'}, $place->{'file'})\n";
                 }
                 else
                 {
-                    print STDERR "    float($place): NO LABEL\n";
+                    print STDERR "    float($place): NO LABEL ($place->{'id'}, $place->{'file'})\n";
                 }
             }
             elsif ($place->{'contents'})
@@ -6081,22 +6114,13 @@ sub rearrange_elements()
             {
                 print STDERR "    shortcontents\n";
             }
+            elsif (defined($place->{'command'}) and $place->{'command'} eq 'printindex')
+            {
+                print STDERR "    printindex $place->{'name'}\n";
+            }
             else
             {
-                print STDERR "    heading: $place->{'texi'}\n";
-            }
-        }
-        if ($element->{'indices'})
-        {
-            print STDERR "  indices: $element->{'indices'}\n";
-            foreach my $index(@{$element->{'indices'}})
-            {
-                print STDERR "    $index: ";
-                foreach my $page (@$index)
-                {
-                    print STDERR "'$page->{'element'}->{'texi'}'($page->{'name'}): $page->{'page'} ";
-                }
-                print STDERR "\n";
+                print STDERR "    heading: $place->{'texi'} ($place->{'id'}, $place->{'file'})\n";
             }
         }
     }
@@ -6781,17 +6805,17 @@ sub pass_text($$)
 
                 # The element begins a new section if there is no previous
                 # or the reference element is not the same
-                if (!$Texi2HTML::THIS_ELEMENT or (defined($current_element->{'element_ref'}) and $current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT))
+                #if (!$Texi2HTML::THIS_ELEMENT or (defined($current_element->{'element_ref'}) and $current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT))
+                if (defined($current_element->{'element_ref'}) and (!$Texi2HTML::THIS_ELEMENT or ($current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT)))
                 {
-                    $new_element = shift @elements_list;
-                }
+                    $new_element = $current_element->{'element_ref'};
 
-                if ($new_element)
-                {
+                    ########################### debug
                     my $old = 'NO_OLD';
                     $old = $Texi2HTML::THIS_ELEMENT->{'texi'} if (defined($Texi2HTML::THIS_ELEMENT));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     # print the element that just finished
+                    ########################### end debug
                     if ($Texi2HTML::THIS_ELEMENT)
                     {
                         finish_element($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT, $new_element, $first_section);
@@ -9652,12 +9676,7 @@ sub do_index_summary_file($$)
         my $entry = $entries->{$key};
         my $indexed_element = $entry->{'element'};
         my $entry_element = $indexed_element;
-        # notice that we use the section associated with a node even when 
-        # there is no with_section, i.e. when there is another node preceding
-        # the sectionning command.
-        # However when it is the Top node, we use the node instead.
-        # (for the Top node, 'top_as_section' is true)
-        $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'section_ref'} and !$entry_element->{'top_as_section'});
+        $entry_element = $entry_element->{'element_ref'} if (defined($entry_element->{'element_ref'}));
         my $origin_href = $entry->{'file'};
    #print STDERR "$entry $entry->{'entry'}, real elem $indexed_element->{'texi'}, section $entry_element->{'texi'}, real $indexed_element->{'file'}, entry file $entry->{'file'}\n";
         if ($entry->{'target'})
@@ -9686,12 +9705,9 @@ sub get_index_entry_infos($$;$)
     my $line_nr = shift;
     my $indexed_element = $entry->{'element'};
     my $entry_element = $indexed_element;
-    # notice that we use the section associated with a node even when 
-    # there is no with_section, i.e. when there is another node preceding
-    # the sectionning command.
-    # However when it is the Top node, we use the node instead.
-    # (for the Top node, 'top_as_section' is true)
-    $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'section_ref'} and !$entry_element->{'top_as_section'});
+    # we always use the associated element_ref, instead of the original
+    # element
+    $entry_element = $entry_element->{'element_ref'} if (defined($entry_element->{'element_ref'}));
     my $origin_href = '';
     print STDERR "BUG: entry->{'file'} not defined for `$entry->{'entry'}'\n"
        if (!defined($entry->{'file'}));
@@ -11146,8 +11162,6 @@ sub top_stack_is_menu($)
 {
    my $stack = shift;
    my $top_stack = top_stack($stack, 1);
-#print STDERR "XXXXXXXXXXXXXXXXXXXxxa $top_stack->{'format'}\n";
-#dump_stack($text, $stack, $state);
    return 0 if (!$format_type{$top_stack->{'format'}} or $format_type{$top_stack->{'format'}} ne 'menu');
    return 1;
 }

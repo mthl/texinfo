@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.161 2008-09-25 11:48:09 pertusus Exp $
+# $Id: texi2html.init,v 1.162 2008-11-01 00:01:24 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4329,6 +4329,7 @@ my %t2h_default_index_letters_hash;
 my %t2h_default_index_letters_array;
 my %t2h_default_seen_files;
 my $t2h_default_element_split_printindices;
+my %t2h_default_split_files;
 
 # FIXME call it where indices are split in main program
 sub t2h_default_init_split_indices ()
@@ -4339,6 +4340,7 @@ sub t2h_default_init_split_indices ()
     %t2h_default_index_letters_hash = ();
     %t2h_default_index_letters_array = ();
     %t2h_default_seen_files = ();
+    %t2h_default_split_files = ();
     $t2h_default_element_split_printindices = undef;
     $t2h_default_index_page_nr = 0;
     $t2h_default_file_number = 0;
@@ -4390,7 +4392,6 @@ sub t2h_default_associate_index_element($$$$)
   my $use_node_file = shift;
 
   my ($file, $default_element_file);
-  $file = 'no file';
 
   if ($SPLIT)
   {
@@ -4404,7 +4405,7 @@ sub t2h_default_associate_index_element($$$$)
     {
       if ($is_top eq 'top')
       {
-        $file = $default_element_file
+        $file = $default_element_file;
       }
       else
       {
@@ -4416,6 +4417,8 @@ sub t2h_default_associate_index_element($$$$)
       $t2h_default_seen_files{$default_element_file} = $file;
     }
   }
+  my $modify_file = ($SPLIT and (!$use_node_file or $t2h_default_split_files{$default_element_file}));
+  $element->{'file'} = $file if ($modify_file);
 
   my $current_element = $element;
   #print STDERR "Doing printindices for $element $element->{'texi'}, file $file (@{$element->{'place'}})\n";
@@ -4427,8 +4430,9 @@ sub t2h_default_associate_index_element($$$$)
   {
     unless ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
+#print STDERR "HHHHHHHHH ($element->{'texi'}) place: $place->{'texi'}, current: $current_element->{'texi'}, $current_element->{'file'}\n";
        push @{$current_element->{'place'}}, $place;
-       $place->{'file'} = $current_element->{'file'} if ($current_element ne $element);
+       $place->{'file'} = $current_element->{'file'};
        $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
        next;
     }
@@ -4449,6 +4453,7 @@ sub t2h_default_associate_index_element($$$$)
     # INDEX_SPLIT
     elsif (!$element->{'top'} and $SPLIT and (($SPLIT eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})))
     {
+      $t2h_default_split_files{$default_element_file} = 1;
       foreach my $letters_split (@letters_split)
       {
         push @letter_groups, {'letters' => [@$letters_split]};
@@ -4465,7 +4470,9 @@ sub t2h_default_associate_index_element($$$$)
     $letter_groups[0]->{'element'} = $current_element;
     # may only happen if SPLIT
     if (scalar(@letter_groups) > 1)
-    {
+    { # this weird construct is there because the element use as a key is 
+      # converted to a string by perl, losing its meaning as a reference, 
+      # the reference must be recorded explicitly
       $t2h_default_element_split_printindices->{$element}->{'element'} = $element;
       push @{$t2h_default_element_split_printindices->{$element}->{'printindices'}}, $printindex;
       #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
@@ -4521,7 +4528,7 @@ sub t2h_default_associate_index_element($$$$)
           #print STDERR "Added $new_element->{'file'} for $new_element->{'texi'} ($first_letter:$last_letter)\n";
         }
         else
-        {
+        { # this is the first index split, it is still associated with the element
           #print STDERR "No file added for ($first_letter:$last_letter)\n";
         }
       }
@@ -4534,7 +4541,8 @@ sub t2h_default_associate_index_element($$$$)
     $printindex->{'split_groups'} = \@letter_groups;
     #print STDERR "$index_name processed for $element, $element->{'texi'} (@{$printindex->{'split_groups'}})\n";
   }
-  return $file if ($SPLIT and !$use_node_file);
+
+  return $file if ($modify_file);
   return undef;
 }
 
@@ -4582,10 +4590,14 @@ sub t2h_default_index_rearrange_directions()
   }
 }
 
+# not needed to initialize it for a document, since it is reset 
+# in index_summary
+my $t2h_symbol_indices = 0;
+
 # this replaces do_index_page
 # args should be:
 # index_name
-sub t2h_default_printindex($$)
+sub t2h_default_printindex($)
 {
   my $index_name = shift;
 
@@ -4642,6 +4654,10 @@ sub t2h_default_printindex($$)
       }
     }
     my $summary = &$index_summary(\@alpha, \@non_alpha);
+
+    # reset symbols numbering
+    $t2h_symbol_indices = 0;
+
     my $letters_text = '';
     foreach my $letter_entry (@{$split_group->{'letters'}})
     {
@@ -6831,10 +6847,6 @@ sub t2h_default_documentdescription($$$$)
     return $document_description;
 }
 
-# not needed to initialize it for a document, since it is reset 
-# in index_summary
-my $t2h_symbol_indices = 0;
-
 # format a letter appearing in a summary for an index. The letter links to
 # the place where the index elements beginning with this letter are (called
 # a letter entry).
@@ -6883,9 +6895,6 @@ sub t2h_default_index_summary($$)
 {
     my $alpha = shift;
     my $nonalpha = shift;
-
-    # reset symbols numbering
-    $t2h_symbol_indices = 0;
 
     my $join = '';
     my $nonalpha_text = '';

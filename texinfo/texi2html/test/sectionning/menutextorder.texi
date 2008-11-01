@@ -1,0 +1,16 @@
+\input texinfo
+@setfilename menutextorder.texi
+
+@menu
+* foo::
+* bar::
+@end menu
+
+@node bar
+@chapter bar
+
+@node foo
+@chapter foo
+
+@bye
+

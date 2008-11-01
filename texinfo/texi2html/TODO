@@ -361,11 +361,20 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * change LINK_BUTTONS for makeinfo.init to have next, up... nodes
 
-* failure in indices test nodes_before_top_no_nodes
-
 * ignore spaces after @ command, before {, like texi2dvi does?
 
-* failures with split index between node and section in indices/ and
-  many_input_files. (should be fixed in many_input_files). remains
-  makeinfo_index_split which has wrong output and 
-  makeinfo_nodes_before_top_and_sections that fails.
+* failures with split index between node and section in indices/
+  makeinfo_index_split first.html is missing
+  makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
+                              should be in first.html?).
+
+* no <p> in @multitables. Cf docbook.init.
+
+* error message when xref is followed by something else than . is missing.
+
+* no line numbers when in footnotes.
+
+* sectionning/menutextorder there is trouble with menu not in node + 
+  should warn for menu order
+
+

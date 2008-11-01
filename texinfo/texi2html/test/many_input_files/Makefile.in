@@ -129,13 +129,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = $(TESTS) indices_res index_split_res tex_l2h_res tex_t4ht_res
-
-# split_index currently broken
-#TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
-TESTS = tex_l2h.sh tex_t4ht.sh
-
-#test_dirs = indices index_split tex_l2h tex_t4ht
-test_dirs = tex_l2h tex_t4ht
+TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+#TESTS = tex_l2h.sh tex_t4ht.sh
+test_dirs = indices index_split tex_l2h tex_t4ht
 DISTCLEANFILES = l2h_tmp_dir.init *.log *.out
 all: all-am
 
@@ -375,6 +371,7 @@ uninstall-am:
 	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
 	pdf-am ps ps-am uninstall uninstall-am
 
+#test_dirs = tex_l2h tex_t4ht
 
 copy-tests:
 	for dir in $(test_dirs); do \

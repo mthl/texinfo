@@ -1,11 +1,10 @@
 EXTRA_DIST = $(TESTS) indices_res index_split_res tex_l2h_res tex_t4ht_res
 
-# split_index currently broken
-#TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
-TESTS = tex_l2h.sh tex_t4ht.sh
+TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+#TESTS = tex_l2h.sh tex_t4ht.sh
 
-#test_dirs = indices index_split tex_l2h tex_t4ht
-test_dirs = tex_l2h tex_t4ht
+test_dirs = indices index_split tex_l2h tex_t4ht
+#test_dirs = tex_l2h tex_t4ht
 
 copy-tests:
 	for dir in $(test_dirs); do \
