@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.162 2008-11-01 00:01:24 pertusus Exp $
+# $Id: texi2html.init,v 1.163 2008-11-01 13:51:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6155,6 +6155,11 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
     {
        $text = t2h_end_style($style, $text);
     }
+
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    return $text if ($top_stack eq 'multitable');
+
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;

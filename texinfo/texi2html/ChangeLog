@@ -1,5 +1,9 @@
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.init: don't do paragraphs in multitables.
+
+2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: associate node with the right file,
 	even if after section and split index. 
 	Handle better empty @elements_list.

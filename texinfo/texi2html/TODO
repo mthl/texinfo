@@ -368,8 +368,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
                               should be in first.html?).
 
-* no <p> in @multitables. Cf docbook.init.
-
 * error message when xref is followed by something else than . is missing.
 
 * no line numbers when in footnotes.
@@ -377,4 +375,4 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * sectionning/menutextorder there is trouble with menu not in node + 
   should warn for menu order
 
-
+* ignore space after @item and also at end of lines in @multitable.
