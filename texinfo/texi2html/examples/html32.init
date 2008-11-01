@@ -99,6 +99,8 @@ $float             = \&t2h_html32_float;
 $acronym_like      = \&t2h_html32_acronym_like;
 $row               = \&t2h_html32_row;
 $cell              = \&t2h_html32_cell;
+$quotation         = \&t2h_html32_quotation;
+
 
 
 
@@ -362,3 +364,13 @@ sub t2h_html32_cell($$)
     }
     return "<td>" . $text . '</td>';
 }
+
+sub t2h_html32_quotation($$$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $argument_text = shift;
+    my $argument_text_texi = shift;
+    return "<blockquote>" . $text . "</blockquote>\n";
+}
+

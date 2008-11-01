@@ -61,6 +61,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
 pre.menu-comment {font-family: serif}
@@ -5378,13 +5379,15 @@ function reference:
 <dd><p><var>$text</var> is the text appearing within the cartouche.
 </p></dd></dl>
 
-<p>The formatting of <code>@quotation</code> is controlled by two function references.
+<p>The formatting of <code>@quotation</code> and <code>@smallquotation</code> 
+is controlled by two function references.
 The first one is usefull in case the <code>@quotation</code> has an argument, as
 it allows to prepend a string to the quotation text:
 </p>
 <dl>
-<dt><a name="index-quotation_005fprepend_005ftext"></a><u>Function Reference:</u> $prepended_string <b>quotation_prepend_text</b><i> $text</i></dt>
-<dd><p><var>$text</var> is the argument of the quotation with @-commands not 
+<dt><a name="index-quotation_005fprepend_005ftext"></a><u>Function Reference:</u> $prepended_string <b>quotation_prepend_text</b><i> $command $text</i></dt>
+<dd><p><var>$command</var> is the @-command.
+<var>$text</var> is the argument of the quotation with @-commands not 
 interpreted. This function
 can return a string which will be prepended to the quotation text.
 </p></dd></dl>
@@ -5393,8 +5396,9 @@ can return a string which will be prepended to the quotation text.
 <p>The whole quotation is formatted by:
 </p>
 <dl>
-<dt><a name="index-quotation"></a><u>Function Reference:</u> $quotation <b>quotation</b><i> $quotation_text $argument_text $argument_text_texi</i></dt>
-<dd><p><var>$quotation_text</var> is the quotation text, formatted, with the text 
+<dt><a name="index-quotation"></a><u>Function Reference:</u> $quotation <b>quotation</b><i> $command $quotation_text $argument_text $argument_text_texi</i></dt>
+<dd><p><var>$command</var> is the @-command.
+<var>$quotation_text</var> is the quotation text, formatted, with the text 
 prepended by the function above. <var>$argument_text</var> is the argument 
 of the <code>@quotation</code>, formatted. <var>$argument_text_texi</var> is the argument
 of the <code>@quotation</code>, simply formatted.
@@ -6722,6 +6726,7 @@ argument is true if there really was an explicit name.
   not with $definition_category anymore.
 </li><li> $printindex is called if an index appears, even if the index is not 
 defined or there are no index entries.
+</li><li>  new argument (@-command name) for $quotation and $quotation_prepend_text.
 </li><li> change in the heading API. THIS_HEADER is not used anymore.
   New function reference, element_heading  to format a node or a section 
   heading, including navigation and label. Accordingly, print_Top and 

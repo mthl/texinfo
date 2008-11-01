@@ -1333,8 +1333,9 @@ sub docbook_format($$)
 
 my @docbook_special_quotation = ('note', 'caution', 'important', 'tip', 'warning');
 
-sub docbook_quotation_prepend_text($)
+sub docbook_quotation_prepend_text($$)
 {
+    my $command = shift;
     my $argument_text = shift;
 
     return undef if (!defined($argument_text) or $argument_text =~ /^$/);
@@ -1349,8 +1350,9 @@ sub docbook_quotation_prepend_text($)
 }
 
 
-sub docbook_quotation($$$)
+sub docbook_quotation($$$$)
 {
+    my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
@@ -1358,12 +1360,12 @@ sub docbook_quotation($$$)
     $argument_text_texi = '' if (!defined($argument_text_texi));
     $argument_text_texi =~ s/^\s*//;
     $argument_text_texi =~ s/\s*$//;
-    my $command = 'blockquote';
+    my $docbook_command = 'blockquote';
     if (grep {lc($argument_text_texi) eq $_} @docbook_special_quotation)
     {
-       $command = lc($argument_text_texi);
+       $docbook_command = lc($argument_text_texi);
     }
-    return  docbook_add_id($command).'>' . $text . "</$command>\n";
+    return  docbook_add_id($docbook_command).'>' . $text . "</$docbook_command>\n";
 }
 
 sub docbook_style($$$$$$$$$)

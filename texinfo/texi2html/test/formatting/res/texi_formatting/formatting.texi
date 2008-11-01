@@ -266,6 +266,18 @@ Note, the note
 @quotation @*
 @end quotation
 
+@smallquotation 
+A small quot---ation
+@end smallquotation
+
+@smallquotation Note
+A small Note
+@end smallquotation
+
+@smallquotation something, other thing
+something, other thing
+@end smallquotation
+
 @itemize
 @item i--temize
 @end itemize
@@ -852,6 +864,18 @@ Note, the note
 
 @quotation @*
 @end quotation
+
+@smallquotation 
+A small quot---ation
+@end smallquotation
+
+@smallquotation Note
+A small Note
+@end smallquotation
+
+@smallquotation something, other thing
+something, other thing
+@end smallquotation
 
 @itemize
 @item i--temize
@@ -1440,6 +1464,18 @@ Note, the note
 @quotation @*
 @end quotation
 
+@smallquotation 
+A small quot---ation
+@end smallquotation
+
+@smallquotation Note
+A small Note
+@end smallquotation
+
+@smallquotation something, other thing
+something, other thing
+@end smallquotation
+
 @itemize
 @item i--temize
 @end itemize
@@ -2020,6 +2056,18 @@ Note, the note
 
 @quotation @*
 @end quotation
+
+@smallquotation 
+A small quot---ation
+@end smallquotation
+
+@smallquotation Note
+A small Note
+@end smallquotation
+
+@smallquotation something, other thing
+something, other thing
+@end smallquotation
 
 @itemize
 @item i--temize

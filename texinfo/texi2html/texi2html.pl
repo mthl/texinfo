@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.238 2008-11-01 00:01:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.239 2008-11-01 18:26:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1306,6 +1306,7 @@ $format_type{'cartouche'} = 'cartouche';
 $format_type{'float'} = 'float';
 
 $format_type{'quotation'} = 'quotation';
+$format_type{'smallquotation'} = 'quotation';
 
 $format_type{'group'} = 'group';
 
@@ -8432,11 +8433,11 @@ sub end_format($$$$$)
             add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}, $format_ref->{'formatted_command'}, $format_ref->{'item_nr'}, $format_ref->{'spec'}, $format_ref->{'prepended'}, $format_ref->{'prepended_formatted'}, $format_ref->{'columnfractions'}, $format_ref->{'prototype_row'}, $format_ref->{'prototype_lengths'}, $format_ref->{'max_columns'}));
         }
     } 
-    elsif ($format eq 'quotation')
+    elsif ($format_type{$format} eq 'quotation')
     {
         my $quotation_args = pop @{$state->{'quotation_stack'}};
         #add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'style_texi'}, $quotation_args->{'style_id'}));
-        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format, $format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
     }
     elsif ($Texi2HTML::Config::paragraph_style{$format})
     {
@@ -8807,14 +8808,14 @@ sub begin_format($$$$$$)
            if ($macro ne 'multitable');
         return '' unless ($macro eq 'enumerate');
     }
-    elsif ($macro eq 'float' or $macro eq 'quotation')
+    elsif ($macro eq 'float' or $format_type{$macro} eq 'quotation')
     {
         push @$stack, {'format' => $macro, 'text' => '' };
         if ($macro eq 'float')
         {
              open_cmd_line($stack, $state, ['keep','keep'], \&do_float_line);
         }
-        elsif ($macro eq 'quotation')
+        elsif ($format_type{$macro} eq 'quotation')
         {
              open_cmd_line($stack, $state, ['keep'], \&do_quotation_line);
         }
@@ -9373,7 +9374,7 @@ sub do_quotation_line($$$$$)
     }
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
     push @{$state->{'quotation_stack'}}, $quotation_args;
-    $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($text_texi);
+    $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($command, $text_texi);
     return '';
 }
 
@@ -11759,8 +11760,8 @@ sub scan_line($$$$;$)
                  # handle specially some macros
                  if ((index_command_prefix($macro) ne '') or 
                       ($macro eq 'itemize') or 
-                      ($format_type{$macro} and $format_type{$macro} eq 'table')
-                      or ($macro eq 'multitable') or ($macro eq 'quotation'))
+                      ($format_type{$macro} and ($format_type{$macro} eq 'table' or $format_type{$macro} eq 'quotation'))
+                      or ($macro eq 'multitable'))
                  {
                       return;
                  }
@@ -11953,7 +11954,7 @@ sub scan_line($$$$;$)
                 # that have cmd_line opened and need to see the end of line
                 next if (($macro eq 'center') or 
                    (defined($Texi2HTML::Config::def_map{$macro}))
-                   or ($macro eq 'float') or ($macro eq 'quotation'));
+                   or ($macro eq 'float') or ($format_type{$macro} eq 'quotation'));
                 return if ($cline =~ /^\s*$/);
                 next;
             }

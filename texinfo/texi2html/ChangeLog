@@ -1,6 +1,8 @@
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: don't do paragraphs in multitables.
+	* texi2html.pl, texi2html.init: handle @smallquotation, change 
+	quotation_prepend_text and quotation function reference APIs.
 
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 

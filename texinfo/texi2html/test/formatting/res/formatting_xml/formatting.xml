@@ -275,6 +275,18 @@ After clickstyle &rArr;
 <quotation>
 <para><b> &linebreak;:</b> </para></quotation>
 
+<smallquotation>
+<para>A small quot&mdash;ation
+</para></smallquotation>
+
+<smallquotation>
+<para><b> Note:</b> A small Note
+</para></smallquotation>
+
+<smallquotation>
+<para><b> something, other thing:</b> something, other thing
+</para></smallquotation>
+
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
 </itemize>
@@ -808,6 +820,18 @@ After clickstyle &rArr;
 <quotation>
 <para><b> &linebreak;:</b> </para></quotation>
 
+<smallquotation>
+<para>A small quot&mdash;ation
+</para></smallquotation>
+
+<smallquotation>
+<para><b> Note:</b> A small Note
+</para></smallquotation>
+
+<smallquotation>
+<para><b> something, other thing:</b> something, other thing
+</para></smallquotation>
+
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
 </itemize>
@@ -1335,6 +1359,18 @@ After clickstyle &rArr;
 
 <quotation>
 <para><b> &linebreak;:</b> </para></quotation>
+
+<smallquotation>
+<para>A small quot&mdash;ation
+</para></smallquotation>
+
+<smallquotation>
+<para><b> Note:</b> A small Note
+</para></smallquotation>
+
+<smallquotation>
+<para><b> something, other thing:</b> something, other thing
+</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -1865,6 +1901,18 @@ After clickstyle &rArr;
 <quotation>
 <para><b> &linebreak;:</b> </para></quotation>
 
+<smallquotation>
+<para>A small quot&mdash;ation
+</para></smallquotation>
+
+<smallquotation>
+<para><b> Note:</b> A small Note
+</para></smallquotation>
+
+<smallquotation>
+<para><b> something, other thing:</b> something, other thing
+</para></smallquotation>
+
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
 </itemize>
@@ -2392,6 +2440,18 @@ After clickstyle &rArr;
 <quotation>
 <para><b> &linebreak;:</b> </para></quotation>
 
+<smallquotation>
+<para>A small quot&mdash;ation
+</para></smallquotation>
+
+<smallquotation>
+<para><b> Note:</b> A small Note
+</para></smallquotation>
+
+<smallquotation>
+<para><b> something, other thing:</b> something, other thing
+</para></smallquotation>
+
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
 </itemize>
@@ -2918,6 +2978,18 @@ A quot---ation
 
 <quotation>
 <b> &linebreak;:</b> </quotation>
+
+<smallquotation>
+A small quot---ation
+</smallquotation>
+
+<smallquotation>
+<b> Note:</b> A small Note
+</smallquotation>
+
+<smallquotation>
+<b> something, other thing:</b> something, other thing
+</smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item> i--temize
 </item>

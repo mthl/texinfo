@@ -1,0 +1,1337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- This is the Emacs template package documentation, version 3.1c
+Copyright C 2008 Christoph Wedler, Vincent Belaïche.
+
+Permission is granted to ...
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Emacs template package documentation, version 3.1c</title>
+
+<meta name="description" content="Emacs template package documentation, version 3.1c">
+<meta name="keywords" content="Emacs template package documentation, version 3.1c">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Top-node_002e"></a>
+<h1 class="settitle">Top node.</h1>
+
+<p>This is the manual of Emacs template package
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Overview">1. Overview</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Installation">2. Installation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> how to install the template package.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Basics">3. Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to make and use templates.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Advanced">4. Templates for advanced users</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Indexes">5. Indexes for commands, keyword, and variable</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#News">6. News for Package Template</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Acknowledgements">&bull; Acknowledgements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="1">
+<a name="Overview"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Related" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Overview-1"></a>
+<h1 class="chapter">1. Overview</h1>
+
+<p>When you create a new file with Emacs, package Template supplies an initial
+buffer content via a template: a file with normal text and expansion forms.
+There is a menu to easily create such templates.  You can also use new commands
+to decorate comments and update the buffer contents.
+</p>
+
+<p>The main difference between Template and <a href="#Related">other similar packages</a> is that you can define very flexible templates without having
+to learn Lisp or changing your Emacs init file.  This package does not
+help Lisp programmers to define complex macros.
+</p>
+<ul>
+<li>
+The template mechanism is hooked into the normal find/open file command.  There
+are also new commands for creating a new file using a template and inserting &amp;amp;
+expanding a template.
+</li><li>
+You do not have to enter the file name of the template file.  This package uses
+a sophisticated search to find the most appropritate template (supporting
+project- and subproject specific template files).  You can change the
+suggestion, of course.
+</li><li>
+A template file can be easily created.  Most of the file usually contains
+simple text; only <em>expansion forms</em> which look like
+&lsquo;<samp>(&gt;&gt;&gt;<var>Key</var>&lt;&lt;&lt;)</samp>&rsquo; will get replaced.
+</li><li>
+There are various useful predefined expansions: set point (the cursor
+position), mark and registers to the current position; insert various parts of
+the filename, the user/system name, the current date/time in various formats,
+and some text to be entered by the user.
+</li><li>
+Template-specific expansions can be defined at the end of the template file.
+There are commands to create these definitions; only complex expansions would
+require some knowledge of Lisp.
+</li></ul>
+
+<p>There is a menu to support the creation of template files.  Additionally, this
+package provides the following features:
+</p>
+<ul>
+<li>
+When saving a buffer, some parts of the buffer contents (header and time
+stamps) are automatically updated if necessary.
+</li><li>
+There are commands to decorate comments with dashes and alike.  Works for
+languages with any comment style, even languages having mixed comments like C++
+and Java.
+</li></ul>
+
+
+<hr size="6">
+<a name="Related"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Overview" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Overview" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Packages-Related-to-Template"></a>
+<h2 class="section">1.1 Packages Related to Template</h2>
+
+
+<p>There are template packages of two different categories, which are determined
+by one question:
+</p>
+<p><em>What do you want to do with templates?</em> Do you want to use templates
+when creating new files, or do you want to insert some stuff during editing
+(but you are not satisfied with the standard macro mechanism)?
+</p>
+<p>Well, templates could be seen as both new-file templates and macro-like
+template, but the main application of templates determines the answers for the
+following questions:
+</p>      
+<ul>
+<li>
+<em>How do you define a template?</em> You can define it by one file per
+template or by customizing some Emacs variables.  The first solution (which is
+used by package Template) avoids Emacs hacking but might not be optimal if you
+just want to define complex macros or if you want to use templates to program a
+new Emacs major-mode.
+</li><li>
+<em>How is an appropriate template selected?</em> If you want to use complex
+macro during editing, the answer is clear: the user have to provide the name of
+the template.  For new files, the appropriate template should be automatically
+selected.  But of course, you don&rsquo;t want to loose any flexibility and you don&rsquo;t
+want to customize your Emacs for every project you start.
+</li><li>
+<em>How do you do &quot;clever&quot; things in the template?</em> The aims are to have
+many predefined expansions (e.g., the current date) and to define some
+non-trivial things without learning Lisp.  Any functionality here is the
+overlapping point of both template categories.
+</li></ul>
+
+
+
+<p>Here is a little list of related files, collected around 1998, some discarded
+later (no <abbr>URL</abbr>s, no active updating, but you can send me a mail):
+</p>
+<ul>
+<li>
+Package <cite>autoinsert.el</cite> uses templates when creating new files.
+These templates are defined via files or by customizing Emacs.  For each new
+template you want to introduce, you must customize your Emacs, the selection is
+restricted to one template per major-mode or regexp match.  No predefined
+expansions; clever things are provided by usual Lisp expressions or the
+macro-like templates of package <cite>skeleton</cite>.
+</li><li>
+Package <cite>skeleton.el</cite> is a Lisp language extension for
+writing statement skeletons, i.e., you get macro-like Lisp commands.
+</li><li>
+Package <cite>tempo.el</cite> helps you defining and using named macro-like
+templates.  Its predefined macros are similar to some predefined expansions of
+package Template.  A specific template is used by
+&lt;code class=&quot;lisp&quot;&gt;html-helper-mode&lt;/code&gt; when creating a new html file.
+(This is turned off with the default installation of package Template.)
+</li><li>
+Package <cite>hm&ndash;html-menus</cite> provides a command to insert templates
+editing.  These templates are defined via files.  There are no predefined
+expansions (except setting point), non-trivial expansions are defined via Lisp.
+</li></ul>
+
+
+
+
+<hr size="6">
+<a name="Installation"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Related" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation-Instructions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Installation-1"></a>
+<h1 class="chapter">2. Installation</h1>
+
+<hr size="6">
+<a name="Installation-Instructions"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Installation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Installation" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installation" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">2.1 Installation Instructions</h2>
+
+<ol>
+<li>
+Copy file &lsquo;<tt>template/lisp/template.el</tt>&rsquo; into your
+load-path and byte-compile it.
+</li><li>
+Insert the following code into your Emacs init file
+(&lsquo;<tt>~/.emacs</tt>&rsquo;):
+
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(require 'template)
+(template-initialize)
+</pre></td></tr></table>
+
+</li><li>
+If you want to customize package Template, use <kbd>M-x
+customize-group &lt;RET&gt; template
+&lt;RET&gt;</kbd> or the customize entry in menu
+<kbd>Options</kbd>.
+</li><li>
+You might want to copy the template files from directory
+&lsquo;<tt>template/templates/</tt>&rsquo; to
+&lsquo;<tt>~/.templates/</tt>&rsquo; and change them according to your
+preferences.
+</li></ol>
+
+
+<p>Installation instructions with further explanations can be found in file
+&lsquo;<tt>template/INSTALL</tt>&rsquo; of the distribution.
+</p>
+ 
+
+<hr size="6">
+<a name="Basics"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Installation-Instructions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#menus" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Installation" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Basics-1"></a>
+<h1 class="chapter">3. Basics</h1>
+
+<p>Emacs, template, file template, comment decoration, auto-updating, time stamp, details
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#menus">3.1 Menus and Key-Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#using">3.2 Using a Template</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#finding">3.3 Finding a Template</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#creating">3.4 Creating a Template</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#decorating">3.5 Decorating a Comment</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#updating">3.6 Updating a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="menus"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#using" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Menus-and-Key_002dBindings"></a>
+<h2 class="section">3.1 Menus and Key-Bindings</h2>
+<p>For Emacs-21.1+ and XEmacs, this package defines the following menu entries and
+key-bindings: 
+</p>
+<ul>
+<li>
+In menu <kbd>File</kbd> , there is a new menu item <kbd>New File
+Using Template...</kbd>  .  The corresponding command is also bound to the
+key sequence <kbd>C-x t</kbd>.
+</li><li>
+At the end of menu <kbd>Cmds</kbd> (in XEmacs if it exists) or menu
+ <kbd>Edit</kbd> , there is a new submenu <kbd>Template Creation</kbd>.
+</li><li>
+Enter <kbd>C-x C-=</kbd> (command <code>template-single-comment</code>) to
+insert dashes and alike into the current line and end the comment.
+</li><li>
+Enter <kbd>C-x C-;</kbd> (command <code>template-single-comment</code>) to
+insert dashes and alike around the current comment block.
+</li><li>
+At the end of menu <kbd>Edit</kbd> , there is a new submenu
+<kbd>Comment</kbd>.  It also contains the two commands just mentioned.
+</li></ul>
+
+<hr size="6">
+<a name="using"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#menus" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#finding" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Using-a-Template"></a>
+<h2 class="section">3.2 Using a Template</h2>
+<p>Package Template offers various ways how to use template files:
+</p>
+<p>In Emacs, the usual way to create a new file is by typing <kbd>C-x C-f</kbd>,
+using the menu or the toolbar (running command <code>find-file</code> or
+<code>ffap</code>) and entering a non-existent file name.  In this case,
+you will be asked whether to use a template for the new file.  You can
+turn off this feature.
+</p>
+<ul>
+<li>
+Here a first undefined xref @xref{EExpansion}.
+There is a new command <code>template-new-file</code> <a name="DOCF1" href="#FOOT1">(1)</a> to create a new file using a template.  Here, you have
+the chance to edit the name of the template file.  This command also
+supports file name refinement which is useful to create a file in a
+series of files like &lsquo;<tt>exercise2.tex</tt>&rsquo; etc.
+</li><li>
+There is also a command (<kbd>M-x template-expand-template</kbd>)
+to insert a template file into the current buffer and expand its expansion
+forms.
+</li></ul>
+
+
+<p>For more <code>template-new-file</code> and <code>template-auto-insert</code>,
+ See section <a href="#Expansion">Customization of keyword expansion rules</a>.
+</p>
+
+<hr size="6">
+<a name="finding"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#using" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#creating" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Finding-a-Template"></a>
+<h2 class="section">3.3 Finding a Template</h2>
+<p>The algorithm for finding the most appropriate template can be best explained
+with a little example:
+</p>
+<ul>
+<li>
+You have a project &lsquo;<tt>~/proj/</tt>&rsquo; with subprojects &lsquo;<tt>foo/</tt>&rsquo; and
+&lsquo;<tt>bar/</tt>&rsquo; containing &lsquo;<tt>.java</tt>&rsquo; files.
+</li><li>
+You want to define a general template for the &lsquo;<tt>.java</tt>&rsquo; in your
+project files, although &lsquo;<tt>.java</tt>&rsquo; files in subproject &lsquo;<tt>foo/</tt>&rsquo;
+should use their own template.  You also want to define a special
+template for all files &lsquo;<tt>proj.java</tt>&rsquo; in the project.
+</li><li>
+Since you do not want to clutter the project directory with template
+files, you first create a directory &lsquo;<tt>~/proj/Templates/</tt>&rsquo;.  In this
+directory, you create new files &lsquo;<tt>TEMPLATE.java.tpl</tt>&rsquo; and
+&lsquo;<tt>proj.java.tpl</tt>&rsquo;.  In directory &lsquo;<tt>~/proj/foo/</tt>&rsquo;, you create a new
+file &lsquo;<tt>TEMPLATE.java.tpl</tt>&rsquo;.
+</li></ul>
+
+<p>The creation of the template files in the right directory is already enough for
+packages Template to find the most appropriate template for a new file:
+</p>
+<ul>
+<li>
+If you create a new file &lsquo;<tt>~/proj/foo/abc.java</tt>&rsquo;, this package tries
+to find a template based on the file extension of the new file.  The
+generic base file name for a template is &lsquo;<tt>TEMPLATE</tt>&rsquo; and the
+additional extension is &lsquo;<tt>.tpl</tt>&rsquo;, a file &lsquo;<tt>TEMPLATE.java.tpl</tt>&rsquo;
+exists in &lsquo;<tt>~/proj/foo/</tt>&rsquo;, so that file is used as the template.
+</li><li>
+If you create a new file &lsquo;<tt>~/proj/bar/abc.java</tt>&rsquo;, this package again
+tries to find &lsquo;<tt>TEMPLATE.java.tpl</tt>&rsquo;.  Since this file doesn&rsquo;t exist
+in &lsquo;<tt>~/proj/bar/</tt>&rsquo;, it first inspects the subdirectory
+&lsquo;<tt>Templates/</tt>&rsquo; which doesn&rsquo;t exist.  The search continues with the
+parent directory &lsquo;<tt>~/proj/</tt>&rsquo; and then its subdirectory
+&lsquo;<tt>Templates/</tt>&rsquo;.  Thus &lsquo;<tt>~/proj/Templates/TEMPLATE.java.tpl</tt>&rsquo; will
+be used.
+</li><li>
+If you create a new file &lsquo;<tt>~/proj/foo/proj.java</tt>&rsquo;, this package finds
+a template file with the same base name: it uses
+&lsquo;<tt>~/proj/Templates/proj.java.tpl</tt>&rsquo;.  You might argue that
+&lsquo;<tt>~/proj/foo/TEMPLATE.java.tpl</tt>&rsquo; resides in a more specific
+directory, but having the same base name is considered to be more
+important (remember that some file like Makefiles do not have file
+extensions).
+</li><li>
+If you create a new file &lsquo;<tt>~/other_proj/foo/proj.java</tt>&rsquo;, i.e., a
+project where you have defined no template files, this package uses one
+of the default templates, in this case
+&lsquo;<tt>~/.templates/TEMPLATE.java.tpl</tt>&rsquo;.
+</li></ul>
+
+<p>For more on derivation See section <a href="#Derivation">Customization of how templates are derived</a>.
+</p>
+
+<hr size="6">
+<a name="creating"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#finding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#decorating" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Creating-a-Template"></a>
+<h2 class="section">3.4 Creating a Template</h2>
+
+<p>There are various predefined expansions which are probably enough for
+most templates.  A corresponding expansion forms can be easily inserted
+by selecting the appropriate entry in the new submenu  <kbd>Template
+Creation</kbd>
+:
+</p>
+<ul>
+<li>
+Remember positions: use &lsquo;<samp>(&gt;&gt;&gt;POINT&lt;&lt;&lt;)</samp>&rsquo; to set point (the cursor
+position), &lsquo;<samp>(&gt;&gt;&gt;MARK&lt;&lt;&lt;)</samp>&rsquo; to set mark (e.g., the opposite position
+when a region is highlighted), and &lsquo;<samp>(&gt;&gt;&gt;1&lt;&lt;&lt;)</samp>&rsquo; to &lsquo;<samp>(&gt;&gt;&gt;0&lt;&lt;&lt;)</samp>&rsquo;
+to registers to the current position.  Remember that <kbd>C-x r j
+<var>Key</var></kbd> jumps to the position stored in register <var>Key</var>.
+</li><li>
+
+Insert parts of the file name, e.g., when creating the new file
+&lsquo;<tt>~/proj/foo/abc1.java</tt>&rsquo;: &lsquo;<samp>(&gt;&gt;&gt;DIR&lt;&lt;&lt;)</samp>&rsquo; is replaced by
+&lsquo;<tt>/home/user/proj/foo/</tt>&rsquo;, &lsquo;<samp>(&gt;&gt;&gt;FILE&lt;&lt;&lt;)</samp>&rsquo; by &lsquo;<tt>abc1.java</tt>&rsquo;,
+&lsquo;<samp>(&gt;&gt;&gt;FILE_SANS&lt;&lt;&lt;)</samp>&rsquo; by &lsquo;<tt>abc1</tt>&rsquo; , &lsquo;<samp>(&gt;&gt;&gt;FILE_UPCASE&lt;&lt;&lt;)</samp>&rsquo; by
+&lsquo;<tt>ABC1</tt>&rsquo; , &lsquo;<samp>(&gt;&gt;&gt;FILE_RAW&lt;&lt;&lt;)</samp>&rsquo; by &lsquo;<tt>abc</tt>&rsquo;,
+&lsquo;<samp>(&gt;&gt;&gt;FILE_NUM&lt;&lt;&lt;)</samp>&rsquo; by &lsquo;<tt>1</tt>&rsquo; , and &lsquo;<samp>(&gt;&gt;&gt;FILE_EXT&lt;&lt;&lt;)</samp>&rsquo; by
+&lsquo;<tt>java</tt>&rsquo;.
+</li><li>
+Insert the current date/time in two customizable and three fixed
+formats: use &lsquo;<samp>(&gt;&gt;&gt;DATE&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>20 Feb 2002</samp>&rsquo;,
+&lsquo;<samp>(&gt;&gt;&gt;TIME&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>20:01:13</samp>&rsquo; , &lsquo;<samp>(&gt;&gt;&gt;YEAR&lt;&lt;&lt;)</samp>&rsquo; for
+&lsquo;<samp>2002</samp>&rsquo; , &lsquo;<samp>(&gt;&gt;&gt;ISO_DATE&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>2002-02-20</samp>&rsquo; , and
+&lsquo;<samp>(&gt;&gt;&gt;VC_DATE&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>2002/02/20 19:01:13</samp>&rsquo;
+</li><li>
+Insert the user/system name in various formats: use
+&lsquo;<samp>(&gt;&gt;&gt;AUTHOR&lt;&lt;&lt;)</samp>&rsquo; for <a href="mailto:Christoph Wedler &lt;wedler@fmi.uni-passau.de&gt;">Christoph Wedler &lt;wedler@fmi.uni-passau.de&gt;</a>, &lsquo;<samp>(&gt;&gt;&gt;USER_NAME&lt;&lt;&lt;)</samp>&rsquo; for
+&lsquo;<samp>Christoph Wedler</samp>&rsquo; , &lsquo;<samp>(&gt;&gt;&gt;LOGIN_NAME&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>wedler</samp>&rsquo; ,
+and &lsquo;<samp>(&gt;&gt;&gt;HOST_ADDR&lt;&lt;&lt;)</samp>&rsquo; for &lsquo;<samp>fmi.uni-passau.de</samp>&rsquo; .
+</li><li>
+Ask the user for some initial comment.  If this expansion is used, the buffer
+for the new file will be marked as modified.  For each undefined expansion, the
+user is also asked.
+</li><li>
+Disabling the search for expansion forms:
+&lsquo;<samp>(&gt;&gt;&gt;ZERO_FORM&lt;&lt;&lt;)</samp>&rsquo; can be inserted into a string which
+will be otherwise regarded as an expansion form, the region between
+&lsquo;<samp>(&gt;&gt;&gt;LITERAL&lt;&lt;&lt;)</samp>&rsquo; and the first
+&lsquo;<samp>(&gt;&gt;&gt;/LITERAL&lt;&lt;&lt;)</samp>&rsquo; after it will be skipped.
+</li></ul>
+    
+<p>You can define your own expansions in your Emacs init file and at the end of a
+template file.  A corresponding definition can be easily inserted by selecting
+the appropriate entry in the new submenu  <kbd>Template
+Creation</kbd>:
+</p>    
+<ul>
+<li>
+<kbd>Define User Input</kbd>
+.  Ask the user to insert some text
+using some specific prompt.  Optionally, ask for a text with completion, or for
+a sequence of user input (exit with empty input).
+</li><li>
+<kbd>Define Text Register</kbd> 
+.  Define a text for
+register <var>Reg</var> which can be inserted with <kbd>C-x r i <var>Reg</var></kbd>.
+Optionally, provide a comment for it which will be temporarily shown at
+point.
+</li><li>
+<kbd>Define Message</kbd>
+.  Define a message which will be
+temporarily shown at point or before/after the expansion in a special buffer.
+There is also a computed message in the echo area.
+</li><li>
+
+Execute some Lisp coding defined at the end of the template.  By default, you
+have to confirm it first, since it is insecure to execute unchecked coding.
+(You do not have menu support to define this kind of expansion.)
+</li></ul>
+
+<dl>
+<dt><a name="index-template_002ddefault_002dexpansion_002dalist"></a><u>User Option:</u> <b>template-default-expansion-alist</b></dt>
+</dl>
+<dl>
+<dt><a name="index-template_002ddefinition_002dstart"></a><u>User Option:</u> <b>template-definition-start</b></dt>
+</dl>
+
+    
+
+<hr size="6">
+<a name="decorating"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#creating" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#updating" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Decorating-a-Comment"></a>
+<h2 class="section">3.5 Decorating a Comment</h2>
+
+<p>There are commands to decorate comments with dashes and alike (&lsquo;<samp>-</samp>&rsquo;,
+&lsquo;<samp>=</samp>&rsquo; and &lsquo;<samp>#</samp>&rsquo; by default).  Both commands are included in the
+new submenu <kbd>Comments</kbd> 
+and bound to keys:
+</p>
+<ul>
+<li>
+Use command <code>template-single-comment</code> to jump to the
+end of the current line and insert the dashes and the final
+comment end-string up-to the fill position.  This command works with any
+comment style, including for languages having mixed comments like C++ and Java.
+It also works in major modes without a defined comment syntax.
+</li><li>
+Use command <code>template-block-comment</code> to surround the
+current comment block (i.e., contiguous comment lines) with extra lines
+containing dashes and alike and to put the correct number of newlines around
+the block.  This command only works with comments which are terminated with the
+end of the line (like Java&rsquo;s <code>//</code> comment).
+</li></ul>
+
+<p>The comment decoration style is highly customizable and can be controlled by
+</p>
+<ul>
+<li>
+The prefix argument given to the two commands.
+</li><li>
+The existing comment decoration style when present.
+</li><li>
+Determined by the indentation or the repetition of a single-character comment
+start (like Emacs-Lisp&rsquo;s <code>;</code>).
+</li></ul>
+
+<p>For more on comments See section <a href="#Comments">Customization of comments</a>.
+</p>
+
+<hr size="6">
+<a name="updating"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#decorating" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Updating-a-Buffer"></a>
+<h2 class="section">3.6 Updating a Buffer</h2>
+<p>A buffer is automatically updated according to some rules when saving
+the file.  This updating can be invoked explicitly by selecting the menu
+entry <kbd>Update Buffer</kbd> in the new submenu <kbd>Comments</kbd> .
+</p>
+<ul>
+<li>
+Update the file name in the first three lines of the buffer if the file name is
+indicated by <code>@(#) <var>FileName</var></code> or
+<code>;;; <var>FileName</var> --</code> where
+<code>;;;</code> stands for any comment start (with optional
+repetition of a single-character comment start).
+</li><li>
+Update the date if it is the last text inside the
+<code>address</code> element of a HTML buffer.
+</li><li>
+Automatic updating is optional, as is user confirmation for it.  Automatic
+updating can be disabled for buffers whose file name matches a regular
+expression.
+</li><li>
+If nothing will be changed by the updating, there will be no user confirmation
+and the buffer will not be marked as modified.
+</li></ul>
+
+<dl>
+<dt><a name="index-template_002dupdate_002dbuffer"></a><u>User Option:</u> <b>template-update-buffer</b></dt>
+</dl>
+<dl>
+<dt><a name="index-template_002dauto_002dupdate"></a><u>User Option:</u> <b>template-auto-update</b></dt>
+</dl>
+<dl>
+<dt><a name="index-template_002dupdate_002dbuffer_002dalist"></a><u>User Option:</u> <b>template-update-buffer-alist</b></dt>
+</dl>
+<dl>
+<dt><a name="index-template_002dheader_002dregexp_002dalist"></a><u>User Option:</u> <b>template-header-regexp-alist</b></dt>
+</dl>
+
+<hr size="6">
+<a name="Advanced"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#updating" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Basics" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Templates-for-advanced-users"></a>
+<h1 class="chapter">4. Templates for advanced users</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Customization">4.1 Templates customization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="Customization"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Advanced" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Expansion" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Templates-customization"></a>
+<h2 class="section">4.1 Templates customization</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Expansion">4.1.1 Customization of keyword expansion rules</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Derivation">4.1.2 Customization of how templates are derived</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Comments">4.1.3 Customization of comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="Expansion"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Customization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Derivation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Customization-of-keyword-expansion-rules"></a>
+<h3 class="subsection">4.1.1 Customization of keyword expansion rules</h3>
+
+<dl>
+<dt><a name="index-template_002dnew_002dfile"></a><u>Interactive Command:</u> <b>template-new-file</b><i> file template with-undo</i></dt>
+<dd><p>Open a new file <var>file</var> by using a <var>template</var>.
+Using a template for creating a new file consists of, steps 1 to 3 are
+only executed when called interactively:
+</p><ol>
+<li>
+Prompt for the name of the new file.
+</li><li>
+Template derivation: suggest a reasonable template file to the user see
+<code>template-derivation-alist</code>.
+</li><li>
+File name refinement: e.g., if the given file name is &lsquo;<tt>exercise</tt>&rsquo;
+and there are two files &lsquo;<tt>exercise1.tex</tt>&rsquo; and &lsquo;<tt>exercise2.tex</tt>&rsquo; in
+the same directory and if we have a template &lsquo;<tt>exercise.tex.tpl</tt>&rsquo;,
+the file name is refined to &lsquo;<tt>exercise3.tex</tt>&rsquo;.  This is turned off
+when <kbd>C-x t</kbd> is called with a prefix argument.
+</li><li>
+Template insertion: insert the template file into the empty buffer.
+</li><li>
+Read per-template expansion definition section starting at
+<code>template-definition-start</code> and delete it.
+</li><li>
+Display: before message in <code>template-message-buffer</code>.
+</li><li>
+Execute pre-expansion commands defined in the definition section.
+</li><li>
+Set local variables defined in the definition section.
+</li><li>
+Expansion: expand the expansion forms (text matched by
+<code>template-expansion-regexp</code>) They are defined in the definition
+section, in <code>template-expansion-alist</code>, or provided by default,
+see <code>template-expansion-regexp</code> and
+<code>template-register-regexp</code>.
+</li><li>
+Execute post-expansion commands defined in the definition section.
+</li><li>
+Run <code>normal-mode</code> and functions in <code>find-file-hooks</code>.
+</li><li>
+Update header according to <code>template-update-header</code> with
+argument <code>if-exists</code>.
+</li><li>
+Display: after message in <code>template-message-buffer</code>.
+</li><li>
+Report: display a temporary message at point defined in the definition
+section and an automatically generated message in the minibuffer area,
+see <code>template-message-timeout</code>.
+</li></ol>
+<p>If optional <var>with-undo</var> is non-nil, store corresponding changes in
+<code>buffer-undo-list</code>.  If <var>file</var> is nil, the buffer for <var>file</var> has
+already been created and the accessible part will be replaced by the
+expanded template.  If <var>template</var> is nil (empty input when called
+interactively), do not use a template.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-template_002dauto_002dinsert"></a><u>User Option:</u> <b>template-auto-insert</b></dt>
+</dl>
+
+<hr size="6">
+<a name="Derivation"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Expansion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Comments" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Customization-of-how-templates-are-derived"></a>
+<h3 class="subsection">4.1.2 Customization of how templates are derived</h3>
+
+<dl>
+<dt><a name="index-template_002dderivation_002dalist"></a><u>User Option:</u> <b>template-derivation-alist</b></dt>
+</dl>
+
+<hr size="6">
+<a name="Comments"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Derivation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Customization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Customization-of-comments"></a>
+<h3 class="subsection">4.1.3 Customization of comments</h3>
+
+<dl>
+<dt><a name="index-template_002dsingle_002dcomment"></a><u>User Option:</u> <b>template-single-comment</b></dt>
+</dl>
+
+<dl>
+<dt><a name="index-template_002dblock_002dcomment"></a><u>Interactive command:</u> <b>template-block-comment</b><i> arg</i></dt>
+<dd><p>It is bound to <kbd>C-x C-;</kbd>, and <kbd>&lt;menu-bar&gt; &lt;edit&gt; &lt;Comment&gt; &lt;Decorate Comment Block&gt;</kbd>.
+</p>
+<p>Decorate the current block of comment-only lines with dashes and alike.
+That is, surround the the contiguous comment-only lines around point
+with extra lines containing dashes and alike and to put the correct
+number of newlines around the block.
+</p>
+<p>Barf if the comment syntax at point has a non-empty <code>comment-end</code> or if
+point is not in a comment-only line.
+</p>
+<p>A block comment consists of all neighboring lines which start with
+spaces and <code>comment-start</code>.  If <code>comment-start</code> is a string of length 1,
+the number of repetitions of <code>comment-start</code> must be the same or larger
+than in the line where the command is invoked from, too.
+</p>
+<p>Prefix argument <var>arg</var> and <code>template-comment-specification</code> determines the
+comment style to use.  The length of the separator line is determined by
+<code>template-max-column</code>.
+</p>
+<p>This command can also be used with point in an empty line after a block
+comment.  A second invocation of this command directly after a
+successful invocation deletes the remaining empty lines from the current
+line on.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-template_002dcomment_002dspecification_002dalist"></a><u>User Option:</u> <b>template-comment-specification-alist</b></dt>
+<dd><p>List of specifications for comment functions.  Each specification at
+<var>level</var>, starting at 1, is a list <code>(<var>separator</var>
+<var>before-block</var> <var>after-block</var> <var>DELETE-LINES</var>)</code>
+</p>
+<p><var>separator</var> is the string which is inserted repeatedly by commands
+<kbd>C-x C-=</kbd> and <kbd>C-x C-;</kbd> up to <code>template-max-column</code>.
+</p>
+<p>After that, <kbd>C-x C-;</kbd> deletes <var>DELETE-LINES</var> after the comment block
+and inserts string <var>after-block</var> at the end of the block and
+<var>before-block</var> at the front of the block.
+</p>
+<p>The specification <var>level</var> to use is determined by:
+</p><ol>
+<li>
+If the prefix argument is non-nil and its numeric value is &gt; 0, this
+value is the <var>level</var>.
+</li><li>
+If the prefix argument is nil, and there is an old comment style, use
+old comment style.
+</li><li>
+If <code>template-comment-specification-special</code> is a function or the
+current major mode has a property with this name and its value is a
+function, this function returns the specification.
+</li><li>
+If <code>comment-end</code> is empty and <code>comment-start</code> is a string of
+length 1: <var>level</var> is number of repetitions of <code>comment-start</code>
+at the beginning of the line.  Otherwise, if the correctly indented line
+starts at the beginning of the line, <var>level</var>=3, else <var>level</var>=2.
+</li></ol>
+</dd></dl>
+
+
+<hr size="6">
+<a name="Indexes"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Comments" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Keyword-Index" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Indexes-for-commands_002c-keyword_002c-and-variable"></a>
+<h1 class="chapter">5. Indexes for commands, keyword, and variable</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Keyword-Index">5.1 Keyword Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Command-Index">5.2 Keyword Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Command Index.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Variable-Index">5.3 Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Customizable Variable Index.
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Keyword-Index"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Indexes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Command-Index" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Keyword-Index-1"></a>
+<h2 class="section">5.1 Keyword Index</h2>
+
+<hr size="6">
+<a name="Command-Index"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Keyword-Index" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variable-Index" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Keyword-Index-2"></a>
+<h2 class="section">5.2 Keyword Index</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Keyword-Index-2_fn_letter-T" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+<table border="0" class="index-fn">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="Keyword-Index-2_fn_letter-T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dblock_002dcomment"><code>template-block-comment</code></a></td><td valign="top"><a href="#Comments">4.1.3 Customization of comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dnew_002dfile"><code>template-new-file</code></a></td><td valign="top"><a href="#Expansion">4.1.1 Customization of keyword expansion rules</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Keyword-Index-2_fn_letter-T" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr size="6">
+<a name="Variable-Index"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Command-Index" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Variable-Index-1"></a>
+<h2 class="section">5.3 Variable Index</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index-1_vr_letter-T" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+<table border="0" class="index-vr">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="Variable-Index-1_vr_letter-T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dauto_002dinsert"><code>template-auto-insert</code></a></td><td valign="top"><a href="#Expansion">4.1.1 Customization of keyword expansion rules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dauto_002dupdate"><code>template-auto-update</code></a></td><td valign="top"><a href="#updating">3.6 Updating a Buffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dcomment_002dspecification_002dalist"><code>template-comment-specification-alist</code></a></td><td valign="top"><a href="#Comments">4.1.3 Customization of comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002ddefault_002dexpansion_002dalist"><code>template-default-expansion-alist</code></a></td><td valign="top"><a href="#creating">3.4 Creating a Template</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002ddefinition_002dstart"><code>template-definition-start</code></a></td><td valign="top"><a href="#creating">3.4 Creating a Template</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dderivation_002dalist"><code>template-derivation-alist</code></a></td><td valign="top"><a href="#Derivation">4.1.2 Customization of how templates are derived</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dheader_002dregexp_002dalist"><code>template-header-regexp-alist</code></a></td><td valign="top"><a href="#updating">3.6 Updating a Buffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dsingle_002dcomment"><code>template-single-comment</code></a></td><td valign="top"><a href="#Comments">4.1.3 Customization of comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dupdate_002dbuffer"><code>template-update-buffer</code></a></td><td valign="top"><a href="#updating">3.6 Updating a Buffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-template_002dupdate_002dbuffer_002dalist"><code>template-update-buffer-alist</code></a></td><td valign="top"><a href="#updating">3.6 Updating a Buffer</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#Variable-Index-1_vr_letter-T" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr size="6">
+<a name="News"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Variable-Index" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Changes-with-Release-3_002e1c" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="News-for-Package-Template"></a>
+<h1 class="chapter">6. News for Package Template</h1>
+
+<dl compact="compact">
+<dt> Latest Version:</dt>
+<dd><p><strong>3.1c</strong> (21 Aug 2003).
+</p></dd>
+<dt> Requirements:</dt>
+<dd><p><cite>Emacs-20.2</cite>, <cite>XEmacs-20.2</cite>, or higher.  
+</p>
+<p>No menu support for Emacs before Version 21.1.
+</p></dd>
+<dt> Licence: </dt>
+<dd><p><cite>GNU General Public License</cite>.
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="Changes-with-Release-3_002e1c"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#News" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Changes-with-Release-3_002e1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#News" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">6.1 Changes with Release 3.1c</h2>
+
+<ul>
+<li>
+Bug fix: on XEmacs, initialization would fail without menus &quot;File&quot; and &quot;Edit&quot; in menubar.
+</li><li>
+Allow messages to be displayed in a separate buffer &quot;*Template Messages*&quot;
+instead at point.
+</li><li>
+Correct and improve header updating.
+</li><li>
+Extend use of <code>M-x template-single-comment</code>.
+</li><li>
+Minor bug fixes.  Miscellaneous.
+</li></ul>
+
+    
+<hr size="6">
+<a name="Changes-with-Release-3_002e1"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Changes-with-Release-3_002e1c" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#News" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#News" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">6.2 Changes with Release 3.1</h2>
+
+<ul>
+<li>
+Moved to SourceForge.net.  Less technical description on web page.
+</li><li>
+Remove examples from distribution, they were more confusing than helpful.
+</li><li>
+Bug fix: would sometimes indent the current line when using the menubar.
+</li><li>
+Menus work with Emacs-21, too.  Rename some menu entries.
+</li><li>
+Don&rsquo;t search further for remote templates.  Nuke this home/base directory
+stuff, stop search at root.
+</li><li>
+Don&rsquo;t rely on command <code>ffap</code> to always add an entry to
+<code>command-history</code> if the filename is read from terminal.  Special
+setup for <code>ffap</code> and <code>html-helper</code>.
+</li><li>
+Make date/time formats work as names suggest.
+</li><li>
+Command to insert &amp; expand a template file.
+</li><li>
+Allow user to define a choice in the definition section to be answered
+via <code>y-or-n-p</code>.
+</li><li>
+Various miscellaneous improvements.  Minor bug fixes.
+</li></ul>
+    
+<a name="Acknowledgements"></a>
+
+<p>Christoph Wedler <a href="http://sourceforge.net/users/wedler/">http://sourceforge.net/users/wedler/</a>, 21 Aug 2003
+</p>
+
+<hr size="6">
+<a name="SEC_Foot"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1>Footnotes</h1>
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>for the
+menu entry and its key-binding type <kbd>C-h f template-new-file</kbd>,
+@xref{EExpansion}
+</p><hr size="1">
+<a name="SEC_About"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#Indexes" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1>About This Document</h1>
+<p>
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+</p>
+<p>
+  The buttons in the navigation panels have the following meaning:
+</p>
+<table border="1">
+  <tr>
+    <th> Button </th>
+    <th> Name </th>
+    <th> Go to </th>
+    <th> From 1.2.3 go to</th>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>Previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>Next section in reading order</td>
+    <td>1.2.4</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt;&lt; ] </td>
+    <td align="center">FastBack</td>
+    <td>Beginning of this chapter or previous chapter</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td align="center"> [ Up ] </td>
+    <td align="center">Up</td>
+    <td>Up section</td>
+    <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt;&gt; ] </td>
+    <td align="center">FastForward</td>
+    <td>Next chapter</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td align="center"> [Top] </td>
+    <td align="center">Top</td>
+    <td>Cover (top) of document</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Contents] </td>
+    <td align="center">Contents</td>
+    <td>Table of contents</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [Index] </td>
+    <td align="center">Index</td>
+    <td>Index</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [ ? ] </td>
+    <td align="center">About</td>
+    <td>About (help)</td>
+    <td> &nbsp; </td>
+  </tr>
+</table>
+
+<p>
+  where the <strong> Example </strong> assumes that the current position is at <strong> Subsubsection One-Two-Three </strong> of a document of the following structure:
+</p>
+
+<ul>
+  <li> 1. Section One
+    <ul>
+      <li>1.1 Subsection One-One
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.2 Subsection One-Two
+        <ul>
+          <li>1.2.1 Subsubsection One-Two-One</li>
+          <li>1.2.2 Subsubsection One-Two-Two</li>
+          <li>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
+            <strong>&lt;== Current Position </strong></li>
+          <li>1.2.4 Subsubsection One-Two-Four</li>
+        </ul>
+      </li>
+      <li>1.3 Subsection One-Three
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.4 Subsection One-Four</li>
+    </ul>
+  </li>
+</ul>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -269,6 +269,18 @@ formatting.texi(mymacro,38)
 formatting.texi(mymacro,38) @quotation @*
 formatting.texi(mymacro,38) @end quotation
 formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @smallquotation 
+formatting.texi(mymacro,38) A small quot---ation
+formatting.texi(mymacro,38) @end smallquotation
+formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @smallquotation Note
+formatting.texi(mymacro,38) A small Note
+formatting.texi(mymacro,38) @end smallquotation
+formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @smallquotation something, other thing
+formatting.texi(mymacro,38) something, other thing
+formatting.texi(mymacro,38) @end smallquotation
+formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @itemize
 formatting.texi(mymacro,38) @item i--temize
 formatting.texi(mymacro,38) @end itemize
@@ -954,6 +966,18 @@ formatting.texi(mymacro,42) @end quotation
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @quotation @*
 formatting.texi(mymacro,42) @end quotation
+formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @smallquotation 
+formatting.texi(mymacro,42) A small quot---ation
+formatting.texi(mymacro,42) @end smallquotation
+formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @smallquotation Note
+formatting.texi(mymacro,42) A small Note
+formatting.texi(mymacro,42) @end smallquotation
+formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @smallquotation something, other thing
+formatting.texi(mymacro,42) something, other thing
+formatting.texi(mymacro,42) @end smallquotation
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @itemize
 formatting.texi(mymacro,42) @item i--temize

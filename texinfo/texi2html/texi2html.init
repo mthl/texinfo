@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.163 2008-11-01 13:51:01 pertusus Exp $
+# $Id: texi2html.init,v 1.164 2008-11-01 18:26:17 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4291,6 +4291,7 @@ my %misc_command_old = (
          'pre.menu-comment'       => "$MENU_PRE_STYLE",
          'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
          'a.summary-letter'       => 'text-decoration: none',
+         'blockquote.smallquotation' => 'font-size: smaller',
 #         'pre.display'            => 'font-family: inherit',
 #         'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
          'pre.display'            => 'font-family: serif',
@@ -6717,8 +6718,9 @@ sub t2h_default_acronym_like($$$$$$)
     }
 }
 
-sub t2h_default_quotation_prepend_text($)
+sub t2h_default_quotation_prepend_text($$)
 {
+    my $command = shift;
     my $text = shift;
     return undef if (!defined($text) or $text =~ /^$/);
 # FIXME if there is a @ protecting the end of line the result is
@@ -6728,12 +6730,15 @@ sub t2h_default_quotation_prepend_text($)
     return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
 }
 
-sub t2h_default_quotation($$$)
+sub t2h_default_quotation($$$$)
 {
+    my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
-    return '<blockquote>' . $text . "</blockquote>\n";
+    my $class_text = '';
+    $class_text = " class=\"$command\"" if ($command ne 'quotation');
+    return "<blockquote$class_text>" . $text . "</blockquote>\n";
 }
 
 # format the text within a paragraph style format,

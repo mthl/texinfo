@@ -7,7 +7,7 @@ This file records noteworthy changes.
 
 * handle @alias, @quote*, @guillem*, @textdegree, @allowcodebreaks,
   @fonttextsize, @hyphenation, @click, @clickstyle, @click, @arrow, 
-  @clicksequence, @geq, @leq, @*headingmarks, @*footingmarks.
+  @clicksequence, @geq, @leq, @*headingmarks, @*footingmarks, @smallquotation.
   Handle @columnfractions and row prototypes in @multitable better.
 
 * @documentlanguage is used to set the language each time it is seen (except
@@ -96,6 +96,8 @@ This file records noteworthy changes.
 * image API completly changed. The current behaviour is not stable, so
   is not documented.
 
+* new argument (@@-command name) for quotation and quotation_prepend_text.
+
 * image file paths are not completed anymore in the default case. The previous
   behaviour can be restored with $COMPLETE_IMAGE_PATHS set to true.
 
@@ -118,9 +120,9 @@ This file records noteworthy changes.
   $CSS_LINES is not defined, $Texi2HTML::THISDOC{'CSS_LINES'} is 
   autodetected.
 
-*  When there is no section and $USE_NODES is not set don't split by node.
-   This behaviour and the previous aren't documented, so it could change
-   in the future.
+* When there is no section and $USE_NODES is not set don't split by node.
+  This behaviour and the previous aren't documented, so it could change
+  in the future.
 
 * BUG FIXES
   ---------

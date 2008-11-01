@@ -379,6 +379,7 @@ sub T2H_ROFF_format($$$)
 
 %format_map = (
        'quotation'   =>  [ ".(q\n", ".)q\n" ],
+       'smallquotation'   =>  [ ".(q\n", ".)q\n" ],
        # lists
        'itemize'     =>  [ ".(l L F\n.ba +5\n", ".ba -5\n.)l\n" ],
        'enumerate'   =>  [ ".(l L F\n.ba +5\n", ".ba -5\n.)l\n" ],
@@ -820,7 +821,7 @@ sub t2h_roff_paragraph($$$$$$$$$$)
     $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
           exists($special_list_commands{$format}->{$paragraph_command}));
     #return $text if (defined($format) and $format eq 'multitable');
-    return $text if (defined($format) and (($format eq 'multitable') or ($format eq 'quotation')));
+    return $text if (defined($format) and (($format eq 'multitable') or ($format eq 'quotation') or ($format eq 'smallquotation')));
     my $open = ".pp\n";
     if (defined($format) and (($format eq 'itemize') or ($format eq 'enumerate')) and
          defined($paragraph_number) and defined($$paragraph_number) and ($$paragraph_number == 1))

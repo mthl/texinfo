@@ -3569,11 +3569,13 @@ function reference:
 @var{$text} is the text appearing within the cartouche.
 @end deftypefn
 
-The formatting of @code{@@quotation} is controlled by two function references.
+The formatting of @code{@@quotation} and @code{@@smallquotation} 
+is controlled by two function references.
 The first one is usefull in case the @code{@@quotation} has an argument, as
 it allows to prepend a string to the quotation text:
 
-@deftypefn {Function Reference} $prepended_string quotation_prepend_text $text
+@deftypefn {Function Reference} $prepended_string quotation_prepend_text $command $text
+@var{$command} is the @@-command.
 @var{$text} is the argument of the quotation with @@-commands not 
 interpreted. This function
 can return a string which will be prepended to the quotation text.
@@ -3590,7 +3592,8 @@ can return a string which will be prepended to the quotation text.
 
 The whole quotation is formatted by:
 
-@deftypefn {Function Reference} $quotation quotation $quotation_text $argument_text $argument_text_texi
+@deftypefn {Function Reference} $quotation quotation $command $quotation_text $argument_text $argument_text_texi
+@var{$command} is the @@-command.
 @var{$quotation_text} is the quotation text, formatted, with the text 
 prepended by the function above. @var{$argument_text} is the argument 
 of the @code{@@quotation}, formatted. @var{$argument_text_texi} is the argument
@@ -4508,6 +4511,7 @@ argument is true if there really was an explicit name.
   not with $definition_category anymore.
 @item $printindex is called if an index appears, even if the index is not 
 defined or there are no index entries.
+@item  new argument (@@-command name) for $quotation and $quotation_prepend_text.
 @item change in the heading API. THIS_HEADER is not used anymore.
   New function reference, element_heading  to format a node or a section 
   heading, including navigation and label. Accordingly, print_Top and 
