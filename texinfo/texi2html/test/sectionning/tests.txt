@@ -54,3 +54,4 @@ more_nodes_than_sections more_nodes_than_sections.texi -init makeinfo.init
 no_element no_element.texi
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
+semi_auto semi_auto.texi

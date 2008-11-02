@@ -1,0 +1,25 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename semi_auto.info
+
+@node Top
+@top Top
+
+@menu
+* Chap1::
+* Section non auto::
+@end menu
+
+@node Chap1
+@chapter Chapter 1
+
+@menu
+* Sec in chapter::
+@end menu
+
+@node Sec in chapter
+@section Sec in chapter
+
+@node Section non auto,, Chap1, Top
+@section Section
+
+@bye

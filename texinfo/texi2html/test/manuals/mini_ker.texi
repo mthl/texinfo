@@ -88,8 +88,8 @@ Documentation License.''
 
 Indices
 
-* Variables macros and functions index::
 * Concepts index::
+* Variables macros and functions index::
 
 Appendices
 
@@ -2054,6 +2054,9 @@ in the file @file{obs.data}.
 @c @vindex obephid(.,.)
 @c @vindex obspha(.,.)
 
+@node Data
+@subsection Data
+
 @vindex zgetobs
 @vindex vobs(.)
 @cindex @file{data.data}
@@ -3115,10 +3118,6 @@ the advance of the var-covar matrix could not yet be set in the TEF form.
 derivative of observation function in state space with respect to
 cell variables.
 @end vtable
-
-
-@node Data
-@subsection Data
 
 
 @node Feedback gain

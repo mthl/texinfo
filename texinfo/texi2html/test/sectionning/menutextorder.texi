@@ -9,8 +9,33 @@
 @node bar
 @chapter bar
 
+@menu
+* onesub2::
+@end menu
+
+@node onesub1
+@section One sub 1
+
+@node onesub2
+@section One sub 2
+
+
 @node foo
 @chapter foo
 
-@bye
+@menu
+* sub1::
+* sub3::
+* sub2::
+@end menu
 
+@node sub1
+@section Sub1
+
+@node sub2
+@section Sub2
+
+@node sub3
+@section Sub3
+
+@bye

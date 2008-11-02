@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.239 2008-11-01 18:26:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.240 2008-11-02 00:49:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3299,7 +3299,6 @@ sub texinfo_initialization($)
     # such that the @documentlanguage macros are used when they arrive
 
     # FIXME ask on bug-texinfo
-# AAAA
     if (!$Texi2HTML::GLOBAL{'current_lang'})
     {
         set_document_language($Texi2HTML::Config::LANG) if defined($Texi2HTML::Config::LANG);
@@ -3629,7 +3628,6 @@ sub pass_structure($$)
             #
             if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex' or ($tag eq 'insertcopying' and $Texi2HTML::Config::INLINE_INSERTCOPYING))
             {
-                #$cline = substitute_texi_line($cline);
                 my @added_lines = ($cline);
                 my @added_numbers = ($line_nr);
                 if ($tag eq 'node' or defined($sec2level{$tag}))
@@ -3993,7 +3991,7 @@ sub common_misc_commands($$$$)
                 $filename = substitute_line($filename, {'code_style' => 1, 'remove_texi' => 1});
                 #$filename = substitute_line($filename, {'code_style' => 1});
                 $Texi2HTML::THISDOC{$macro} = $filename;
-                $value{"_$macro"} = substitute_texi_line($filename) if ($pass == 1);
+                $value{"_$macro"} = $filename if ($pass == 1);
             }
         }
         elsif ($macro eq 'paragraphindent')
@@ -4215,19 +4213,16 @@ sub misc_command_structure($$$$)
         $novalidate = 1;
         $Texi2HTML::THISDOC{$macro} = 1; 
     }
-    # FIXME substitute_texi_line is a noop. But it may be relevant 
-    # to do a real substitute_line. it is done anyway in pass_text
-    # at the beginning, but why not here? 
     elsif (grep {$_ eq $macro} ('settitle','shorttitlepage','title') 
              and ($line =~ /^\s+(.*)$/))
     {
         my $arg = $1;
         chomp($arg);
-        $value{"_$macro"} = substitute_texi_line($arg);
+        $value{"_$macro"} = $arg;
         # backward compatibility
         if ($macro eq 'title')
         {
-            $Texi2HTML::THISDOC{"${macro}s_texi"} = [ substitute_texi_line($arg) ];
+            $Texi2HTML::THISDOC{"${macro}s_texi"} = [ $arg ];
             $Texi2HTML::THISDOC{"${macro}s"} = [ $arg ];
         }
     }
@@ -4235,9 +4230,9 @@ sub misc_command_structure($$$$)
              and ($line =~ /^\s+(.*)$/))
     {
         my $arg = $1;
-        $value{"_$macro"} .= substitute_texi_line($arg)."\n";
+        $value{"_$macro"} .= $arg."\n";
         chomp($arg);
-        push @{$Texi2HTML::THISDOC{"${macro}s_texi"}}, substitute_texi_line($arg);
+        push @{$Texi2HTML::THISDOC{"${macro}s_texi"}}, $arg;
         push @{$Texi2HTML::THISDOC{"${macro}s"}}, $arg;
     }
     elsif ($macro eq 'synindex' || $macro eq 'syncodeindex')
@@ -5274,7 +5269,13 @@ sub rearrange_elements()
             my $section = $node->{'with_section'};
             if (defined($section->{'sectionnext'}))
             {
-                $next = get_node($section->{'sectionnext'})
+                $next = get_node($section->{'sectionnext'});
+                if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
+                {
+                    echo_warn ("No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning") if (!defined($node->{'menu_next'}));
+                    echo_warn ("Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ") 
+                       if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
+                }
             }
             elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES) 
             { # makeinfo don't do that
@@ -10872,7 +10873,6 @@ sub scan_structure($$$$;$)
                 my $index_prefix = index_command_prefix($macro);
                 my $key = $cline;
                 $key =~ s/^\s*//;
-                $cline = substitute_texi_line($cline);
                 enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $macro, $state->{'region'});
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
@@ -13297,36 +13297,6 @@ sub substitute_text($$@)
     #print STDERR "SUBST_TEXT end\n";
     pop_state();
     return $result . $text;
-}
-
-sub substitute_texi_line($)
-{
-    my $text = shift;
-    return $text;
-}
-
-# this function does the second pass formatting. It is not obvious that 
-# it is usefull as in that pass the collected things 
-sub substitute_texi_line_old($)
-{
-    my $text = shift;  
-    return $text if $text =~ /^\s*$/;
-    #print STDERR "substitute_texi_line $text\n";
-    my @text = substitute_text({'structure' => 1}, undef, $text);
-    my @result = ();
-    while (@text)
-    {
-        push @result,  split (/\n/, shift (@text));
-    }
-    return '' unless (@result);
-    my $result = shift @result;
-    return $result . "\n" unless (@result);
-    foreach my $line (@result)
-    {
-        chomp $line;
-        $result .= ' ' . $line;
-    }
-    return $result . "\n";
 }
 
 sub print_lines($;$)

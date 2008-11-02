@@ -3,6 +3,10 @@
 	* texi2html.init: don't do paragraphs in multitables.
 	* texi2html.pl, texi2html.init: handle @smallquotation, change 
 	quotation_prepend_text and quotation function reference APIs.
+	* texi2html.init: put a table line in <tt> if and only if there is
+	a code-like environment enclosing the construct.
+	* texi2html.pl: warn if the menu order doesn't follow the sectionning
+	order.
 
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 
