@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.13 2008-01-31 18:33:27 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.14 2008-11-03 00:54:06 karl Exp $
    Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -36,10 +36,11 @@
 <!ENTITY % titlepage_cmds "author | booktitle | booksubtitle">
 
 <!-- block -->
-<!ENTITY % block "menu | para | quotation | example | smallexample | lisp
-                  | smalllisp | cartouche | copying
-                  | format | smallformat | display
-                  | smalldisplay | itemize | enumerate | sp | center | group
+<!ENTITY % block "menu | para | quotation | smallquotation
+                  | example | smallexample | lisp | smalllisp
+                  | cartouche | copying
+                  | format | smallformat | display | smalldisplay
+                  | itemize | enumerate | sp | center | group
                   | table | multitable | definition | float | image">
 
 <!-- API definitions -->

@@ -1,3 +1,7 @@
+2008-11-02  Karl Berry  <karl@gnu.org>
+
+	* util/texinfo.dtd (block): add smallquotation.
+
 2008-10-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\codequoteleft): disable `! and `? ligatures
