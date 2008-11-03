@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.240 2008-11-02 00:49:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.241 2008-11-03 23:24:13 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -604,7 +604,7 @@ sub T2H_GPL_toc_body($)
         my $text = $element->{'text'};
         #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
         my $toc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_toc#$element->{'target'}",$text);
-        my $stoc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_stoc#$element->{'target'}",$text);
+        my $stoc_entry = "<li>" . &$anchor ($element->{'stocid'}, "$dest_for_stoc#$element->{'target'}",$text);
         push (@{$Texi2HTML::TOC_LINES}, $ind . $toc_entry);
         push(@{$Texi2HTML::OVERVIEW}, $stoc_entry. "</li>\n") if ($level == 1);
     }
@@ -5772,6 +5772,40 @@ sub rearrange_elements()
         }
     }
 
+    # construct human readable tocid
+    foreach my $section (values(%sections))
+    {
+        if ($Texi2HTML::Config::NEW_CROSSREF_STYLE and ($section->{'cross'} =~ /\S/))
+        {
+            foreach my $toc_id (['tocid','toc'], ['stocid', 'stoc'])
+            {
+                my $id_string = $toc_id->[0];
+                my $prefix_string = $toc_id->[1];
+                my $cross_string = '-' . $section->{'cross_manual_target'};
+                $section->{$id_string} = $prefix_string . $cross_string;
+                my $index = 1;
+                # $index > 0 should prevent integer overflow, hopefully
+                while (exists($cross_reference_nodes{$section->{$id_string}}) and $index > 0)
+                {
+                    $section->{$id_string} = $prefix_string . "-" .$index .$cross_string;
+                    $index++;
+                }
+                my $texi_entry = $prefix_string.'-'.$section->{'texi'};
+                $texi_entry = $prefix_string .'-'.$index.'-'.$section->{'texi'}  if ($index > 1);
+                push @{$cross_reference_nodes{$section->{$id_string}}}, $texi_entry;
+            }
+        }
+    }
+    if (!$Texi2HTML::Config::NEW_CROSSREF_STYLE)
+    {
+        my $tocnr = 1;
+        foreach my $element (@elements_list)
+        {
+            $element->{'tocid'} = 'TOC' . $tocnr;
+            $tocnr++;
+        }
+    }
+
     # Set file names
     # Find node file names and file names for nodes considered as elements
     my $node_as_top;
@@ -6221,17 +6255,6 @@ sub do_names()
     foreach my $number (keys(%headings))
     {
         do_section_names($number, $headings{$number});
-    }
-    my $tocnr = 1;
-    foreach my $element (@elements_list)
-    {
-        if (!$element->{'top'})
-        { # for link back to table of contents
-          # FIXME do it for top too?
-            $element->{'tocid'} = 'TOC' . $tocnr;
-            $tocnr++;
-        }
-        next if (defined($element->{'text'}));
     }
     print STDERR "# Names done\n" if ($T2H_DEBUG);
 }
