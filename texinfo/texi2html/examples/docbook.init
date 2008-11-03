@@ -1125,7 +1125,7 @@ sub docbook_table_line($$$)
     {
         if ($before_items)
         {
-            return $text
+            return $text;
         }
 
         if ($only_inter_item_commands)

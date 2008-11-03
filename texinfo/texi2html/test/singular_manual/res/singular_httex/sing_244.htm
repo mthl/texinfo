@@ -320,112 +320,53 @@ non-zero value assigned, the command <code>option()</code> prints the option.
 
 <br><p>The output reported on <code>option(prot)</code> has the following meaning:
 </p><table>
-<tr><td width="1%"> </td><td width="14%"> <code>facstd</code>
-</td><td width="11%"> <code>F</code> </td><td width="65%"> found a new factor
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%"> all other characters: like the output of <code>std</code> and <code>reduce</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>fglm</code>
-</td><td width="11%"> <code>.</code> </td><td width="65%"> basis monomial found
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>+</code> </td><td width="65%"> edge monomial found
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>-</code> </td><td width="65%"> border monomial found
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>groebner</code> </td><td width="11%"> </td><td width="65%"> all characters: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>lres</code>
-</td><td width="11%"> <code>.</code> </td><td width="65%"> minimal syzygy found
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>n</code> </td><td width="65%"> slanted degree, i.e., row of Betti matrix
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>(mn)</code> </td><td width="65%"> calculate in module n
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>g</code> </td><td width="65%"> pair found giving reductum and syzygy
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>mres</code>
-</td><td width="11%"> <code>[d]</code>
-</td><td width="65%"> computations of the d-th syzygy module
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%"> all other characters: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>minres</code>
-</td><td width="11%"> <code>[d]</code>
-</td><td width="65%"> minimizing of the d-th syzygy module
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>mstd</code> </td><td width="11%"> </td><td width="65%"> all characters: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>reduce</code>
-</td><td width="11%"> <code>r</code> </td><td width="65%"> reduced a leading term
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>t</code> </td><td width="65%"> reduced a non-leading term
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>res</code>
-</td><td width="11%"> <code>[d]</code>
-</td><td width="65%"> computations of the d-th syzygy module
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%"> all other characters: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>sres</code>
-</td><td width="11%"> <code>.</code> </td><td width="65%"> syzygy found
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>(n)</code> </td><td width="65%"> n elements remaining
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>[n]</code> </td><td width="65%"> finished module n
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>std</code>
-</td><td width="11%"> <code>[m:n]</code>
-</td><td width="65%"> internal ring change to poly representation with exponent bound
-m and n words in exponent vector
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>s</code> </td><td width="65%"> found a new element of the standard basis
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>-</code> </td><td width="65%"> reduced a pair/S-polynomial to 0
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>.</code> </td><td width="65%"> postponed a reduction of a pair/S-polynomial
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>h</code> </td><td width="65%"> used Hilbert series criterion
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>H(d)</code> </td><td width="65%"> found a &rsquo;highest corner&rsquo; of degree d, no need to consider higher degrees
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>(n)</code> </td><td width="65%"> n critical pairs are still to be reduced
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>(S:n)</code> </td><td width="65%"> doing complete reduction of n elements
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> <code>d</code> </td><td width="65%"> the degree of the leading terms is currently d
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>stdfglm</code> </td><td width="11%"> </td><td width="65%"> all characters in first part: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%"> all characters in second part: like the output of <code>fglm</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>stdhilb</code> </td><td width="11%"> </td><td width="65%"> all characters: like the output of <code>std</code>
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> </td><td width="11%"> </td><td width="65%">
-</td></tr>
-<tr><td width="1%"> </td><td width="14%"> <code>syz</code> </td><td width="11%"> </td><td width="65%"> all characters: like the output of <code>std</code>
-</td></tr>
+<tr><td width="1%"></td><td width="14%"><code>facstd</code></td><td width="11%"><code>F</code></td><td width="65%">found a new factor</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code> and <code>reduce</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>fglm</code></td><td width="11%"><code>.</code></td><td width="65%">basis monomial found</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>+</code></td><td width="65%">edge monomial found</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>-</code></td><td width="65%">border monomial found</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>groebner</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>lres</code></td><td width="11%"><code>.</code></td><td width="65%">minimal syzygy found</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>n</code></td><td width="65%">slanted degree, i.e., row of Betti matrix</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(mn)</code></td><td width="65%">calculate in module n</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>g</code></td><td width="65%">pair found giving reductum and syzygy</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>mres</code></td><td width="11%"><code>[d]</code></td><td width="65%">computations of the d-th syzygy module</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>minres</code></td><td width="11%"><code>[d]</code></td><td width="65%">minimizing of the d-th syzygy module</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>mstd</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>reduce</code></td><td width="11%"><code>r</code></td><td width="65%">reduced a leading term</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>t</code></td><td width="65%">reduced a non-leading term</td></tr>
+<tr><td width="1%"></td><td width="14%"><code>res</code></td><td width="11%"><code>[d]</code></td><td width="65%">computations of the d-th syzygy module</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>sres</code></td><td width="11%"><code>.</code></td><td width="65%">syzygy found</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(n)</code></td><td width="65%">n elements remaining</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>[n]</code></td><td width="65%">finished module n</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>std</code></td><td width="11%"><code>[m:n]</code></td><td width="65%">internal ring change to poly representation with exponent bound
+m and n words in exponent vector</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>s</code></td><td width="65%">found a new element of the standard basis</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>-</code></td><td width="65%">reduced a pair/S-polynomial to 0</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>.</code></td><td width="65%">postponed a reduction of a pair/S-polynomial</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>h</code></td><td width="65%">used Hilbert series criterion</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>H(d)</code></td><td width="65%">found a &rsquo;highest corner&rsquo; of degree d, no need to consider higher degrees</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(n)</code></td><td width="65%">n critical pairs are still to be reduced</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(S:n)</code></td><td width="65%">doing complete reduction of n elements</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>d</code></td><td width="65%">the degree of the leading terms is currently d</td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>stdfglm</code></td><td width="11%"></td><td width="65%">all characters in first part: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all characters in second part: like the output of <code>fglm</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>stdhilb</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
+<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
+<tr><td width="1%"></td><td width="14%"><code>syz</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
 </table>
 
 

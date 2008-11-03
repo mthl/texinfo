@@ -1681,26 +1681,16 @@ The precise meaning of these error codes is in <a href="#tab_003aerror_005fcodes
 
 <div class="float"><a name="tab_003aerror_005fcodes"></a>
 <table>
-<thead><tr><th> Source of error or warning </th><th> <code>info</code> </th><th> <code>idxerror</code>
-</th></tr></thead>
-<tr><td> state matrix inversion in ker </td><td> inversion </td><td> 1
-</td></tr>
-<tr><td> time advance system resolution in ker  </td><td> system </td><td> 2
-</td></tr>
-<tr><td> transfer propagator,       (I - D) inversion </td><td> inversion </td><td> 3
-</td></tr>
-<tr><td> kalman analysis state matrix advance in phase space,       (I - D) inversion </td><td> inversion </td><td> 21
-</td></tr>
-<tr><td> kalman analysis variance covariance matrix non positive </td><td> Choleski </td><td> 22
-</td></tr>
-<tr><td> kalman analysis error matrix inversion </td><td> inversion </td><td> 23
-</td></tr>
-<tr><td> kalman error matrix advance </td><td> system </td><td> 24
-</td></tr>
-<tr><td> transfers determination linearity problem for transfers </td><td>  </td><td> -1
-</td></tr>
-<tr><td> transerts determination Newton D_loop does not converge </td><td>  </td><td> -2
-</td></tr>
+<thead><tr><th>Source of error or warning</th><th><code>info</code></th><th><code>idxerror</code></th></tr></thead>
+<tr><td>state matrix inversion in ker</td><td>inversion</td><td>1</td></tr>
+<tr><td>time advance system resolution in ker</td><td>system</td><td>2</td></tr>
+<tr><td>transfer propagator,       (I - D) inversion</td><td>inversion</td><td>3</td></tr>
+<tr><td>kalman analysis state matrix advance in phase space,       (I - D) inversion</td><td>inversion</td><td>21</td></tr>
+<tr><td>kalman analysis variance covariance matrix non positive</td><td>Choleski</td><td>22</td></tr>
+<tr><td>kalman analysis error matrix inversion</td><td>inversion</td><td>23</td></tr>
+<tr><td>kalman error matrix advance</td><td>system</td><td>24</td></tr>
+<tr><td>transfers determination linearity problem for transfers</td><td></td><td>-1</td></tr>
+<tr><td>transerts determination Newton D_loop does not converge</td><td></td><td>-2</td></tr>
 </table>
 
 </div><p><strong>table 3.1: Meaning of error codes returned by principal.
@@ -2798,18 +2788,12 @@ by &lsquo;<samp>:</samp>&rsquo;.
 </p>
 <div class="float"><a name="tab_003acmfile_005fsuffix"></a>
 <table>
-<thead><tr><th> language  </th><th> file type </th><th> cmfile suffix </th><th> suffix </th><th> language
-</th></tr></thead>
-<tr><td> fortran </td><td> main/deck </td><td> .cmf </td><td> .f </td><td> ftn
-</td></tr>
-<tr><td> fortran preprocessed </td><td> main/deck </td><td> .cmF </td><td> .F </td><td> f77
-</td></tr>
-<tr><td> fortran preprocessed </td><td> include/keep </td><td> .cminc </td><td> .inc </td><td> f77
-</td></tr>
-<tr><td> mortran </td><td> main/deck </td><td> .cmmtn </td><td> .mtn </td><td> mtn
-</td></tr>
-<tr><td> mortran </td><td> include/keep </td><td> .cmmti </td><td> .mti </td><td> mtn
-</td></tr>
+<thead><tr><th>language</th><th>file type</th><th>cmfile suffix</th><th>suffix</th><th>language</th></tr></thead>
+<tr><td>fortran</td><td>main/deck</td><td>.cmf</td><td>.f</td><td>ftn</td></tr>
+<tr><td>fortran preprocessed</td><td>main/deck</td><td>.cmF</td><td>.F</td><td>f77</td></tr>
+<tr><td>fortran preprocessed</td><td>include/keep</td><td>.cminc</td><td>.inc</td><td>f77</td></tr>
+<tr><td>mortran</td><td>main/deck</td><td>.cmmtn</td><td>.mtn</td><td>mtn</td></tr>
+<tr><td>mortran</td><td>include/keep</td><td>.cmmti</td><td>.mti</td><td>mtn</td></tr>
 </table>
 
 </div><p><strong>table 3.2: Association between file language, file type, file suffixes and 
@@ -3346,20 +3330,13 @@ in the associated files:
 </p>
 
 <table>
-<thead><tr><th> var </th><th> file </th><th> explanation
-</th></tr></thead>
-<tr><td> <code>v_adj(.)</code> </td><td> &lsquo;<tt>vadj.data</tt>&rsquo; </td><td> adjoint to <code>eta(.)</code>
-</td></tr>
-<tr><td> <code>w_adj(.)</code> </td><td> &lsquo;<tt>wadj.data</tt>&rsquo; </td><td> adjoint to <code>ff(.)</code>
-</td></tr>
-<tr><td> <code>wadj(mp+.)</code> </td><td> &lsquo;<tt>gradmuj.data</tt>&rsquo; </td><td> adjoint to <code>ff(mp+.)</code>
-</td></tr>
-<tr><td> <code>graduej(.)</code> </td><td> &lsquo;<tt>gradxj.data</tt>&rsquo; </td><td> adjoint to <code>ux_com(.)</code>
-</td></tr>
-<tr><td> <code>gradufj(.)</code> </td><td> &lsquo;<tt>gradyj.data</tt>&rsquo; </td><td> adjoint to <code>uy_com(.)</code>
-</td></tr>
-<tr><td> <code>hamilton</code> </td><td> &lsquo;<tt>hamilton.data</tt>&rsquo; </td><td> time increment, hamiltonian, cost function increment
-</td></tr>
+<thead><tr><th>var</th><th>file</th><th>explanation</th></tr></thead>
+<tr><td><code>v_adj(.)</code></td><td>&lsquo;<tt>vadj.data</tt>&rsquo;</td><td>adjoint to <code>eta(.)</code></td></tr>
+<tr><td><code>w_adj(.)</code></td><td>&lsquo;<tt>wadj.data</tt>&rsquo;</td><td>adjoint to <code>ff(.)</code></td></tr>
+<tr><td><code>wadj(mp+.)</code></td><td>&lsquo;<tt>gradmuj.data</tt>&rsquo;</td><td>adjoint to <code>ff(mp+.)</code></td></tr>
+<tr><td><code>graduej(.)</code></td><td>&lsquo;<tt>gradxj.data</tt>&rsquo;</td><td>adjoint to <code>ux_com(.)</code></td></tr>
+<tr><td><code>gradufj(.)</code></td><td>&lsquo;<tt>gradyj.data</tt>&rsquo;</td><td>adjoint to <code>uy_com(.)</code></td></tr>
+<tr><td><code>hamilton</code></td><td>&lsquo;<tt>hamilton.data</tt>&rsquo;</td><td>time increment, hamiltonian, cost function increment</td></tr>
 </table>
 
 <hr size="6">
@@ -4436,22 +4413,14 @@ the program may be run:
 result file and ntuple number, with a short explanation:
 </p>
 <table>
-<thead><tr><th> var </th><th> file </th><th> ntuple </th><th> explanation
-</th></tr></thead>
-<tr><td> <code>p(.,.)</code> </td><td> &lsquo;<tt>phit.data</tt>&rsquo; </td><td> 55 </td><td> propagator from 0 to       t,       &#x03A6;(t,0)
-</td></tr>
-<tr><td> <code>up(.,.)</code> </td><td> &lsquo;<tt>uphit.data</tt>&rsquo; </td><td> 50 </td><td> Left singular vectors       U in the SVD of       &#x03A6;
-</td></tr>
-<tr><td> <code>wp(.)</code> </td><td> &lsquo;<tt>wphit.data</tt>&rsquo; </td><td> 51 </td><td> singulat values       w in the SVD of       &#x03A6;
-</td></tr>
-<tr><td> <code>vp(.,.)</code> </td><td> &lsquo;<tt>vphit.data</tt>&rsquo; </td><td> 52 </td><td> Right Singular Vectors       V in the SVD of       &#x03A6;
-</td></tr>
-<tr><td> <code>wr(.)</code> </td><td> &lsquo;<tt>wr.data</tt>&rsquo; </td><td> 53  </td><td> real part of eigen values of       &#x03A6;(t,0)
-</td></tr>
-<tr><td> <code>wi(.)</code> </td><td> &lsquo;<tt>wi.data</tt>&rsquo; </td><td> 54  </td><td> imaginary part of eigen values of       &#x03A6;(t,0)
-</td></tr>
-<tr><td> <code>lwp(.)</code> </td><td> &lsquo;<tt>lwphit.data</tt>&rsquo; </td><td> 67  </td><td> Lyapunov exponents
-</td></tr>
+<thead><tr><th>var</th><th>file</th><th>ntuple</th><th>explanation</th></tr></thead>
+<tr><td><code>p(.,.)</code></td><td>&lsquo;<tt>phit.data</tt>&rsquo;</td><td>55</td><td>propagator from 0 to       t,       &#x03A6;(t,0)</td></tr>
+<tr><td><code>up(.,.)</code></td><td>&lsquo;<tt>uphit.data</tt>&rsquo;</td><td>50</td><td>Left singular vectors       U in the SVD of       &#x03A6;</td></tr>
+<tr><td><code>wp(.)</code></td><td>&lsquo;<tt>wphit.data</tt>&rsquo;</td><td>51</td><td>singulat values       w in the SVD of       &#x03A6;</td></tr>
+<tr><td><code>vp(.,.)</code></td><td>&lsquo;<tt>vphit.data</tt>&rsquo;</td><td>52</td><td>Right Singular Vectors       V in the SVD of       &#x03A6;</td></tr>
+<tr><td><code>wr(.)</code></td><td>&lsquo;<tt>wr.data</tt>&rsquo;</td><td>53</td><td>real part of eigen values of       &#x03A6;(t,0)</td></tr>
+<tr><td><code>wi(.)</code></td><td>&lsquo;<tt>wi.data</tt>&rsquo;</td><td>54</td><td>imaginary part of eigen values of       &#x03A6;(t,0)</td></tr>
+<tr><td><code>lwp(.)</code></td><td>&lsquo;<tt>lwphit.data</tt>&rsquo;</td><td>67</td><td>Lyapunov exponents</td></tr>
 </table>
 
 

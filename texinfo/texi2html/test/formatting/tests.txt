@@ -14,6 +14,7 @@ texi punctuation.texi
 texi def_end_of_line.texi
 texi center.texi
 texi tables.texi
+texi multitables.texi
 texi formats_in_menu.texi
 texi heading.texi
 texi quotes.texi
@@ -52,6 +53,7 @@ punctuation punctuation.texi
 def_end_of_line def_end_of_line.texi
 center center.texi
 tables tables.texi
+multitables multitables.texi
 formats_in_menu formats_in_menu.texi
 heading heading.texi
 quotes quotes.texi

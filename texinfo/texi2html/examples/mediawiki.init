@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.11 2008-09-24 23:39:19 pertusus Exp $
+# $Id: mediawiki.init,v 1.12 2008-11-03 12:33:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -552,6 +552,8 @@ sub mediawiki_preformatted($$$$$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
 
     return '' if ($text eq '');
     $leading_command_formatted = '' if (!defined($leading_command_formatted) or 
@@ -560,6 +562,15 @@ sub mediawiki_preformatted($$$$$$$$$$)
     {
         $$preformatted_number++;
     }
+
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    if ($top_stack eq 'multitable')
+    {
+       $text =~ s/^\s*//;
+       $text =~ s/\s*$//;
+    }
+
     return "<pre class=\"$class\"><nowiki>$text</nowiki></pre>";
 }
 

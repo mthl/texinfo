@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.165 2008-11-02 00:49:14 pertusus Exp $
+# $Id: texi2html.init,v 1.166 2008-11-03 12:33:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5945,6 +5945,14 @@ sub t2h_default_cell($$$$$$$$)
         my $fraction = sprintf('%d', 100*$columnfractions->[$cell_nr]);
         $fractions = " width=\"$fraction%\"";
     }
+   
+    # in constructs like 
+    # @strong{
+    # @multitable ....
+    # }
+    # the space won't be removed since the <strong> is put before the space.
+    $text =~ s/^\s*//;
+    $text =~ s/\s*$//;
 
     if ($row_macro eq 'headitem')
     {
@@ -6140,6 +6148,7 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
     $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
           exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
+
     foreach my $style(t2h_collect_styles($command_stack_at_begin))
     {
        $text = t2h_begin_style($style, $text);
@@ -6149,16 +6158,26 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
        $text = t2h_end_style($style, $text);
     }
 
-    my $top_stack = '';
-    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
-    return $text if ($top_stack eq 'multitable');
-
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;
          return $text  if (($format eq 'itemize' or $format eq 'enumerate') and
             ($$paragraph_number == 1));
     }
+
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    if ($top_stack eq 'multitable')
+# FIXME
+# paragraph_number is not by cell, so it is not possible to know if it
+# is the first paragraph in cell. Also currently there is no hook for a
+# cell beginning which means that it is not possible to reset the cell 
+# paragraph count at a cell beginning
+# and (!defined($paragraph_number) or !defined($$paragraph_number) or $$paragraph_number == 1))
+    {
+       return $text;
+    }
+
     my $open = '<p>';
     if ($align)
     {
@@ -6200,6 +6219,14 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
     {
         $$preformatted_number++;
     }
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    if ($top_stack eq 'multitable')
+    {
+       $text =~ s/^\s*//;
+       $text =~ s/\s*$//;
+    }
+
     foreach my $style(t2h_collect_styles($command_stack_at_begin))
     {
        $text = t2h_begin_style($style, $text, \%style_map_pre);

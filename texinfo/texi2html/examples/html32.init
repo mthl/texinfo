@@ -358,6 +358,10 @@ sub t2h_html32_cell($$)
     my $row_macro = shift;
     my $columnfractions = shift;
     my $prototype_row = shift;
+
+    $text =~ s/^\s*//;
+    $text =~ s/\s*$//;
+
     if ($row_macro eq 'headitem')
     {
         return "<th>" . $text . '</th>';

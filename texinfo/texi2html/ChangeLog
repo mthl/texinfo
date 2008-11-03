@@ -1,3 +1,8 @@
+2008-11-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: remove leading spaces and trailing spaces in 
+	multitable cells.
+
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: don't do paragraphs in multitables.

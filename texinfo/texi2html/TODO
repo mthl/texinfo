@@ -367,6 +367,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * no line numbers when in footnotes.
 
-* ignore space after @item and also at end of lines in @multitable.
+* ignore spaces at end of @item line for @(|v|f)table. Also maybe 
+  after @item, but to be careful with things prepended or commands used
+  in for the whole line.
 
 * add --command command line that gives inserted lines.

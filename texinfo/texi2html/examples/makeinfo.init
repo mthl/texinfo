@@ -166,6 +166,7 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
     {
         $open .= " align=\"$paragraph_style{$align}\"";
     }
+
     my $footnote_text = '';
     if (defined($command_stack_at_begin->[0]) and $command_stack_at_begin->[0] eq 'footnote')
     {
@@ -188,7 +189,23 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
            $footnote_text = "<small>[${foot_label}]</small> ";
         }
     }
-    return $open.'>'.$footnote_text.$text.'</p>';
+
+    $text = $footnote_text.$text;
+
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    if ($top_stack eq 'multitable')
+# FIXME
+# paragraph_number is not by cell, so it is not possible to know if it
+# is the first paragraph in cell. Also currently there is no hook for a
+# cell beginning which means that it is not possible to reset the cell 
+# paragraph count at a cell beginning
+# and (!defined($paragraph_number) or !defined($$paragraph_number) or $$paragraph_number == 1))
+    {
+       return $text;
+    }
+
+    return $open.'>'.$text.'</p>';
 }
 
 

@@ -40,7 +40,7 @@ conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
  -->
-<!-- Created on November 2, 2008 by texi2html @PACKAGE_VERSION@
+<!-- Created on November 3, 2008 by texi2html 1.79
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -56,7 +56,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta name="keywords" content="Texi2HTML &ndash; Texinfo to HTML v1.79">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html @PACKAGE_VERSION@">
+<meta name="Generator" content="texi2html 1.79">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -82,32 +82,19 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table>
-<tr><td width="12%"> Portions of <code>texi2html</code>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 1999, 2000 Lionel Cons<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 1999, 2000 Karl Berry<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 1999, 2000 Olaf Bachmann<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 2001, 2002, 2003, 2004, 2005, 2006 Derek Price<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; many others.<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%">
-</td></tr>
-<tr><td width="12%"> </td><td width="88%">
-</td></tr>
-<tr><td width="12%"> Portions of this manual
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 1999, 2000 Karl Heinz Marbaise (manual)<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 2003, 2007 Derek Price (manual)<br>
-</td></tr>
-<tr><td width="12%"> </td><td width="88%"> Copyright &copy; 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)<br>
-</td></tr>
+<tr><td width="12%">Portions of <code>texi2html</code></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 1999, 2000 Lionel Cons<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 1999, 2000 Karl Berry<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 1999, 2000 Olaf Bachmann<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 2001, 2002, 2003, 2004, 2005, 2006 Derek Price<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; many others.<br></td></tr>
+<tr><td width="12%"></td><td width="88%"></td></tr>
+<tr><td width="12%"></td><td width="88%"></td></tr>
+<tr><td width="12%">Portions of this manual</td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 1999, 2000 Karl Heinz Marbaise (manual)<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 2003, 2007 Derek Price (manual)<br></td></tr>
+<tr><td width="12%"></td><td width="88%">Copyright &copy; 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)<br></td></tr>
 </table>
 
 <p>Permission is granted to make and distribute verbatim
@@ -743,17 +730,9 @@ divided into sectioning elements when <a name="index-use_002dnodes-1"></a>
 &lsquo;<samp>--use-nodes</samp>&rsquo; is used and not:
 </p>
 <table>
-<tr><td width="20%"> Texinfo code
-</td><td width="10%">
-</td><td width="20%">
-default case
-</td><td width="10%">
-</td><td width="20%">
-with <a name="index-use_002dnodes-2"></a>
-&lsquo;<samp>--use-nodes</samp>&rsquo;
-</td></tr>
-<tr><td width="20%">
-<br>
+<tr><td width="20%">Texinfo code</td><td width="10%"></td><td width="20%">default case</td><td width="10%"></td><td width="20%">with <a name="index-use_002dnodes-2"></a>
+&lsquo;<samp>--use-nodes</samp>&rsquo;</td></tr>
+<tr><td width="20%"><br>
 <br>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
 @chapter node 1
@@ -766,10 +745,7 @@ node2 text
 node3 text
 @chapter node 3
 chapter text
-</pre></td></tr></table>
-</td><td width="10%">
-</td><td width="20%">
-first element:
+</pre></td></tr></table></td><td width="10%"></td><td width="20%">first element:
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
 @chapter node 1
@@ -785,11 +761,7 @@ second element:
 node3 text
 @chapter node 3
 chapter text
-</pre></td></tr></table>
-
-</td><td width="10%">
-</td><td width="20%">
-first element:
+</pre></td></tr></table></td><td width="10%"></td><td width="20%">first element:
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@node node1
 @chapter node 1
@@ -808,9 +780,7 @@ third element:
 node3 text
 @chapter node 3
 chapter text
-</pre></td></tr></table>
-
-</td></tr>
+</pre></td></tr></table></td></tr>
 </table>
 
 <hr size="6">
@@ -3698,18 +3668,15 @@ command names, the associated value is the text replacing the command.
 </p>
 <p>The hashes are:
 </p><table>
-<tr><td> command type </td><td> normal text </td><td> preformatted text </td><td> string
-</td></tr>
-<tr><td> one nonlettered character </td><td> <a name="index-_0025simple_005fmap"></a>
-<code>%simple_map</code> </td><td> <a name="index-_0025simple_005fmap_005fpre"></a>
-<code>%simple_map_pre</code> </td><td> <a name="index-_0025simple_005fmap_005ftexi"></a>
-<code>%simple_map_texi</code>
-</td></tr>
-<tr><td> nothing in braces </td><td> <a name="index-_0025things_005fmap"></a>
-<code>%things_map</code> </td><td> <a name="index-_0025pre_005fmap"></a>
-<code>%pre_map</code> </td><td> <a name="index-_0025texi_005fmap"></a>
-<code>%texi_map</code>
-</td></tr>
+<tr><td>command type</td><td>normal text</td><td>preformatted text</td><td>string</td></tr>
+<tr><td>one nonlettered character</td><td><a name="index-_0025simple_005fmap"></a>
+<code>%simple_map</code></td><td><a name="index-_0025simple_005fmap_005fpre"></a>
+<code>%simple_map_pre</code></td><td><a name="index-_0025simple_005fmap_005ftexi"></a>
+<code>%simple_map_texi</code></td></tr>
+<tr><td>nothing in braces</td><td><a name="index-_0025things_005fmap"></a>
+<code>%things_map</code></td><td><a name="index-_0025pre_005fmap"></a>
+<code>%pre_map</code></td><td><a name="index-_0025texi_005fmap"></a>
+<code>%texi_map</code></td></tr>
 </table>
 
 <p>To change the <acronym>HTML</acronym> resulting from these constructs, just change the
@@ -7751,7 +7718,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Patrice Dumas</em> on <em>November 2, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>November 3, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -7853,7 +7820,7 @@ variable set in an init file,  <a name="index-_0024USE_005fSETFILENAME"></a>
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Patrice Dumas</em> on <em>November 2, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html @PACKAGE_VERSION@</em></a>.
+  This document was generated by <em>Patrice Dumas</em> on <em>November 3, 2008</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.79</em></a>.
  </font>
  <br>
 

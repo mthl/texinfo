@@ -100,83 +100,33 @@ conversions are:
 </p>
 
 <table>
-<tr><td width="5%">
-&nbsp;  1. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>ideal</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  2. </td><td width="18%"> <code>poly</code>  </td><td width="81%"> &rarr; <code>ideal</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  3. </td><td width="18%"> <code>intvec</code>  </td><td width="81%"> &rarr; <code>intmat</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  4. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>intvec</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  5. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>intmat</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  6. </td><td width="18%"> <code>string</code>  </td><td width="81%"> &rarr; <code>link</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  7. </td><td width="18%"> <code>resolution</code> </td><td width="81%"> &rarr; <code>list</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  8. </td><td width="18%"> <code>ideal</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  9. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 10. </td><td width="18%"> <code>intmat</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 11. </td><td width="18%"> <code>intvec</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 12. </td><td width="18%"> <code>module</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 13. </td><td width="18%"> <code>number</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 14. </td><td width="18%"> <code>poly</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 15. </td><td width="18%"> <code>vector</code>  </td><td width="81%"> &rarr; <code>matrix</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 16. </td><td width="18%"> <code>ideal</code>  </td><td width="81%"> &rarr; <code>module</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 17. </td><td width="18%"> <code>matrix</code>  </td><td width="81%"> &rarr; <code>module</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 18. </td><td width="18%"> <code>vector</code>  </td><td width="81%"> &rarr; <code>module</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 19. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>number</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 20. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>poly</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 21. </td><td width="18%"> <code>number</code>  </td><td width="81%"> &rarr; <code>poly</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 22. </td><td width="18%"> <code>string</code>  </td><td width="81%"> &rarr; <code>proc</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 23. </td><td width="18%"> <code>list</code>  </td><td width="81%"> &rarr; <code>resolution</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp; 24. </td><td width="18%"> <code>int</code>  </td><td width="81%"> &rarr; <code>vector</code>
-  (i &rarr; i*<code>gen(1)</code>)
-</td></tr>
-<tr><td width="5%">
-&nbsp; 25. </td><td width="18%"> <code>poly</code>  </td><td width="81%"> &rarr; <code>vector</code>
-  (p &rarr; p*<code>gen(1)</code>)
-</td></tr>
+<tr><td width="5%">&nbsp;  1.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>ideal</code></td></tr>
+<tr><td width="5%">&nbsp;  2.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>ideal</code></td></tr>
+<tr><td width="5%">&nbsp;  3.</td><td width="18%"><code>intvec</code></td><td width="81%">&rarr; <code>intmat</code></td></tr>
+<tr><td width="5%">&nbsp;  4.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>intvec</code></td></tr>
+<tr><td width="5%">&nbsp;  5.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>intmat</code></td></tr>
+<tr><td width="5%">&nbsp;  6.</td><td width="18%"><code>string</code></td><td width="81%">&rarr; <code>link</code></td></tr>
+<tr><td width="5%">&nbsp;  7.</td><td width="18%"><code>resolution</code></td><td width="81%">&rarr; <code>list</code></td></tr>
+<tr><td width="5%">&nbsp;  8.</td><td width="18%"><code>ideal</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp;  9.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 10.</td><td width="18%"><code>intmat</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 11.</td><td width="18%"><code>intvec</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 12.</td><td width="18%"><code>module</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 13.</td><td width="18%"><code>number</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 14.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 15.</td><td width="18%"><code>vector</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
+<tr><td width="5%">&nbsp; 16.</td><td width="18%"><code>ideal</code></td><td width="81%">&rarr; <code>module</code></td></tr>
+<tr><td width="5%">&nbsp; 17.</td><td width="18%"><code>matrix</code></td><td width="81%">&rarr; <code>module</code></td></tr>
+<tr><td width="5%">&nbsp; 18.</td><td width="18%"><code>vector</code></td><td width="81%">&rarr; <code>module</code></td></tr>
+<tr><td width="5%">&nbsp; 19.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>number</code></td></tr>
+<tr><td width="5%">&nbsp; 20.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>poly</code></td></tr>
+<tr><td width="5%">&nbsp; 21.</td><td width="18%"><code>number</code></td><td width="81%">&rarr; <code>poly</code></td></tr>
+<tr><td width="5%">&nbsp; 22.</td><td width="18%"><code>string</code></td><td width="81%">&rarr; <code>proc</code></td></tr>
+<tr><td width="5%">&nbsp; 23.</td><td width="18%"><code>list</code></td><td width="81%">&rarr; <code>resolution</code></td></tr>
+<tr><td width="5%">&nbsp; 24.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>vector</code>
+  (i &rarr; i*<code>gen(1)</code>)</td></tr>
+<tr><td width="5%">&nbsp; 25.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>vector</code>
+  (p &rarr; p*<code>gen(1)</code>)</td></tr>
 </table>
 
 <a name="Type-casting"></a>
@@ -189,29 +139,14 @@ expression:
 <p>Possible type casts are:
 </p>
 <table>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%"> to </td><td width="83%"> from
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>ideal</code> </td><td width="83%">  expression lists of <code>int</code>, <code>number</code>, <code>poly</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>ideal</code> </td><td width="83%">  <code>int</code>, <code>matrix</code>, <code>module</code>, <code>number</code>, <code>poly</code>, <code>vector</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>int</code> </td><td width="83%">    <code>number</code>, <code>poly</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>intvec</code> </td><td width="83%"> expression lists of <code>int</code>, <code>intmat</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>intmat</code> </td><td width="83%"> <code>intvec</code> (see <a href="sing_84.htm#intmat-type-cast">intmat type cast</a>)
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>list</code> </td><td width="83%">   expression lists of any type
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>matrix</code> </td><td width="83%"> <code>module</code>, <code>ideal</code>,
+<tr><td width="5%">&nbsp;</td><td width="15%">to</td><td width="83%">from</td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>ideal</code></td><td width="83%">expression lists of <code>int</code>, <code>number</code>, <code>poly</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>ideal</code></td><td width="83%"><code>int</code>, <code>matrix</code>, <code>module</code>, <code>number</code>, <code>poly</code>, <code>vector</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>int</code></td><td width="83%"><code>number</code>, <code>poly</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>intvec</code></td><td width="83%">expression lists of <code>int</code>, <code>intmat</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>intmat</code></td><td width="83%"><code>intvec</code> (see <a href="sing_84.htm#intmat-type-cast">intmat type cast</a>)</td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>list</code></td><td width="83%">expression lists of any type</td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>matrix</code></td><td width="83%"><code>module</code>, <code>ideal</code>,
 <code>vector</code>, <code>matrix</code>.
 <br> There are two forms to convert something to a matrix: if <code>matrix(</code>
 expression <code>)</code> is used then the size of the matrix is determined
@@ -222,24 +157,13 @@ used - the result is a
 class="cmmi-10">m </span><span 
 class="cmsy-10">&#x00D7; </span><span 
 class="cmmi-10">n </span> 
-matrix (see <a href="sing_113.htm#matrix-type-cast">matrix type cast</a>)
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>module</code> </td><td width="83%"> expression lists of <code>int</code>, <code>number</code>,
-<code>poly</code>, <code>vector</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>module</code> </td><td width="83%"> <code>ideal</code>, <code>matrix</code>, <code>vector</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;   </td><td width="15%">  <code>number</code> </td><td width="83%"> <code>poly</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  </td><td width="15%">  <code>poly</code> </td><td width="83%">   <code>int</code>, <code>number</code>
-</td></tr>
-<tr><td width="5%">
-&nbsp;  </td><td width="15%">  <code>string</code> </td><td width="83%">   any type (see <a href="sing_146.htm#string-type-cast">string type cast</a>)
-</td></tr>
+matrix (see <a href="sing_113.htm#matrix-type-cast">matrix type cast</a>)</td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>module</code></td><td width="83%">expression lists of <code>int</code>, <code>number</code>,
+<code>poly</code>, <code>vector</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>module</code></td><td width="83%"><code>ideal</code>, <code>matrix</code>, <code>vector</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>number</code></td><td width="83%"><code>poly</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>poly</code></td><td width="83%"><code>int</code>, <code>number</code></td></tr>
+<tr><td width="5%">&nbsp;</td><td width="15%"><code>string</code></td><td width="83%">any type (see <a href="sing_146.htm#string-type-cast">string type cast</a>)</td></tr>
 </table>
 
 <p><strong>Example:</strong>
