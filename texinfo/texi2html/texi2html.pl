@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.241 2008-11-03 23:24:13 pertusus Exp $
+# $Id: texi2html.pl,v 1.242 2008-11-04 00:37:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -307,6 +307,7 @@ $USE_NUMERIC_ENTITY
 $USE_SETFILENAME
 $SEPARATE_DESCRIPTION
 $IGNORE_BEFORE_SETFILENAME
+$OVERVIEW_LINK_TO_TOC
 $COMPLETE_IMAGE_PATHS
 $DATE
 %ACTIVE_ICONS
@@ -599,12 +600,18 @@ sub T2H_GPL_toc_body($)
         # since it is in $Texi2HTML::THISDOC{'toc_file'}.
         my $dest_for_toc = $element->{'file'};
         my $dest_for_stoc = $element->{'file'};
+        my $dest_target_for_stoc = $element->{'target'};
+        if ($Texi2HTML::Config::OVERVIEW_LINK_TO_TOC)
+        {
+            $dest_for_stoc = $Texi2HTML::THISDOC{'toc_file'};
+            $dest_target_for_stoc = $element->{'tocid'};
+        }
         $dest_for_toc = '' if ($dest_for_toc eq $Texi2HTML::THISDOC{'toc_file'});
         $dest_for_stoc = '' if ($dest_for_stoc eq $Texi2HTML::THISDOC{'stoc_file'});
         my $text = $element->{'text'};
         #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
         my $toc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_toc#$element->{'target'}",$text);
-        my $stoc_entry = "<li>" . &$anchor ($element->{'stocid'}, "$dest_for_stoc#$element->{'target'}",$text);
+        my $stoc_entry = "<li>" . &$anchor ($element->{'stocid'}, "$dest_for_stoc#$dest_target_for_stoc",$text);
         push (@{$Texi2HTML::TOC_LINES}, $ind . $toc_entry);
         push(@{$Texi2HTML::OVERVIEW}, $stoc_entry. "</li>\n") if ($level == 1);
     }

@@ -4,6 +4,8 @@
 	multitable cells.
 	* texi2html.pl: do human-readable id for toc, and different id
 	for stoc.
+	* texi2html.pl, texi2html.init, examples/makeinfo.init: with 
+	OVERVIEW_LINK_TO_TOC set, overview links to toc as in makeinfo.
 
 2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
 

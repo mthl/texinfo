@@ -44,6 +44,8 @@ $USE_LINKS = 1;
 
 $INLINE_CONTENTS = 1;
 
+$OVERVIEW_LINK_TO_TOC = 1;
+
 @SECTION_BUTTONS =
     (
      \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'

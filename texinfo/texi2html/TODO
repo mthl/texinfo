@@ -38,6 +38,7 @@ h1 titlefont (@titlefont),
 * Document 
   Texi2HTML::THIS_ELEMENT
   $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT, $INLINE_INSERTCOPYING
+  $OVERVIEW_LINK_TO_TOC
   $Texi2HTML::THISDOC{'htmlxref'}
   $Texi2HTML::THISDOC{'current_lang'}
   $Texi2HTML::THISDOC{macro name}
@@ -350,8 +351,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
      @author and Other people
 
 * makeinfo.init not uptodate with makeinfo --html. Index entries link back
-  now. Also Short table of contents link to table of contents entries.
-  And also look at floats?
+  now. And also look at floats?
   menu name is used instead of node in menu links url text.
 
 * change LINK_BUTTONS for makeinfo.init to have next, up... nodes
@@ -370,5 +370,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * ignore spaces at end of @item line for @(|v|f)table. Also maybe 
   after @item, but to be careful with things prepended or commands used
   in for the whole line.
+
+* second paragraph in cell should be taken into account.
 
 * add --command command line that gives inserted lines.

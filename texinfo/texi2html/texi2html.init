@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.166 2008-11-03 12:33:15 pertusus Exp $
+# $Id: texi2html.init,v 1.167 2008-11-04 00:37:07 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -317,6 +317,9 @@ $USE_SETFILENAME = 0;
 
 # if true, begin outputting at @setfilename, if this command is present.
 $IGNORE_BEFORE_SETFILENAME = 1;
+
+# if true the link in Overview link to the corresponding Toc entry.
+$OVERVIEW_LINK_TO_TOC = 0;
 
 # if set always separate description and menu link, even in 
 # preformatted environment
