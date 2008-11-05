@@ -1,3 +1,8 @@
+2008-11-04  Arkadiusz Miskiewicz  <arekm@maven.pl>  (tiny change)
+
+	* makeinfo/sectioning.c (current_chapter_number): leave room for null.
+	bug-texinfo mail of 3 Nov 2008 23:09:46.
+
 2008-11-02  Karl Berry  <karl@gnu.org>
 
 	* util/texinfo.dtd (block): add smallquotation.
