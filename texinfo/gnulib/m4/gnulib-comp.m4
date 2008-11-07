@@ -65,6 +65,8 @@ AC_DEFUN([gl_INIT],
   gl_LOCALCHARSET
   LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(top_builddir)/$gl_source_base\""
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
+  gl_FUNC_LSTAT
+  gl_SYS_STAT_MODULE_INDICATOR([lstat])
   gl_MALLOCA
   gl_MBCHAR
   gl_MBITER
@@ -80,8 +82,6 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mbsstr])
   gl_MBSWIDTH
   gl_MBITER
-  gl_FUNC_MEMCHR
-  gl_FUNC_MEMCMP
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMEM
   gl_FUNC_MEMMEM_SIMPLE
@@ -272,6 +272,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/intprops.h
   lib/localcharset.c
   lib/localcharset.h
+  lib/lstat.c
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
@@ -286,8 +287,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbswidth.c
   lib/mbswidth.h
   lib/mbuiter.h
-  lib/memchr.c
-  lib/memcmp.c
   lib/memcpy.c
   lib/memmem.c
   lib/memmove.c
@@ -360,6 +359,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/localcharset.m4
   m4/lock.m4
   m4/longlong.m4
+  m4/lstat.m4
   m4/malloca.m4
   m4/mbchar.m4
   m4/mbiter.m4
@@ -371,8 +371,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbsstr.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
-  m4/memchr.m4
-  m4/memcmp.m4
   m4/memcpy.m4
   m4/memmem.m4
   m4/memmove.m4
