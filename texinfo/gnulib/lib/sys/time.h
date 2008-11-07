@@ -19,7 +19,9 @@
 
 /* Written by Paul Eggert.  */
 
+#if __GNUC__ >= 3
 #pragma GCC system_header
+#endif
 
 #if defined _GL_SYS_TIME_H
 
