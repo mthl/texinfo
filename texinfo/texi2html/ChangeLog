@@ -1,3 +1,13 @@
+2008-11-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: move index splitting code back to
+	texi2html.pl, but still in the Config namespace, to mark clearly
+	that this code is GPL. summary_letter is also put in texi2html.pl
+	since it share a variable at file scope.
+	* examples/*: add copyright notices to most init files, except 
+	xml.init and book.init that should remain as an example users can 
+	copy from.
+
 2008-11-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: remove leading spaces and trailing spaces in 

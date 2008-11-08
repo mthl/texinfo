@@ -1,6 +1,27 @@
 # -*-perl-*-
 
-#main::load_init_file('', 'noheaders.init');
+#+##############################################################################
+#
+# chm.init: convert to chm intermediate formats hhp, hhc, hhk and html files
+#
+#    Copyright (C) 2004-2008  Patrice Dumas <dumas@centre-cired.fr>
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+#    02110-1301  USA
+#
+#-##############################################################################
 
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
@@ -212,22 +233,6 @@ sub chm_init_out()
 # htmlhelp 1.x isn't utf8 aware
 #   $Texi2HTML::THISDOC{'OUT_ENCODING'} = 'utf8';
 
-# there is a special treatment for @l and @L, as there is no 
-# entity, but they could be readble anyway
-#    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
-#    {
-#         foreach my $thing ('l', 'L')
-#         {
-#              my $encoded_char = 
-#                Encode::encode($Texi2HTML::THISDOC{'OUT_ENCODING'},chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
-#              if ($encoded_char ne '')
-#              {
-#                  $things_map{$thing} = $encoded_char;
-#                  $pre_map{$thing} = $encoded_char;
-#                  $simple_format_texi_map{$thing} = $encoded_char;
-#              }
-#         }
-#    } 
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open (IDXFILE, ">$hhk_file") or
         die "Can't open $hhk_file for writing: $!\n";
@@ -305,21 +310,6 @@ sub chm_text($)
 {
     my $text = shift;
     return main::simple_format(undef,undef,$text);
-
-# the following doesn't work as html 1.x doesn't accept utf8
-    $::simple_map_texi_ref = \%chm_simple_map_texi;
-    $::style_map_texi_ref = \%chm_style_map_texi;
-    $::texi_map_ref = \%chm_texi_map;
-    my $normal_text_kept = $normal_text;
-    $Texi2HTML::Config::normal_text = \&t2h_utf8_normal_text;
-    
-    $text = main::remove_texi($text);
-
-    $normal_text = $normal_text_kept;
-    $::simple_map_texi_ref = \%simple_map_texi;
-    $::style_map_texi_ref = \%style_map_texi;
-    $::texi_map_ref = \%texi_map;
-    return &$protect_text($text);
 }
 
 
