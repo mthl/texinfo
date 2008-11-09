@@ -1,3 +1,18 @@
+2008-11-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\rmisbold): new macro.
+	(\titlefont, \title, \chapheadingzzz, \chapmacro, \chapoddpage,
+	\centerchfopen, \sectionheading): callit.
+	
+	(\author): just call \secfonts instead of faking authorrm,etc.
+	(\authorrm, \authortt, \authorfont): remove.
+	
+	(\ogonek): find [AaEe] precomposed glyphs.
+	(\commondummiesnofonts): add \ogonek.
+	(\utfeightchardefs, \lattwochardefs): switch to using \ogonek.
+	Also support {left,right}-pointing double angle quotation(s)
+	with guillemets; missed those earlier.
+
 2008-11-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\ogonek, \Aogonek, \aogonek, \Eogonek, \eogonek):
