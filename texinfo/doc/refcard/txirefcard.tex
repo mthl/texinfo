@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.2 2008-10-25 16:02:37 karl Exp $
+% $Id: txirefcard.tex,v 1.3 2008-11-10 19:36:44 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -307,7 +307,7 @@ Floor, Boston, MA 02110-1301 USA.
   &\code{#3}\hfil\quad\cr}
 
 % Define the LaTeX logo
-\def\LaTeX{L\kern-.26em \raise.7ex\hbox{\fiverm A}\kern-.15em \TeX}%
+\def\LaTeX{L\kern-.35em \raise.65ex\hbox{\fiverm A}\kern-.15em \TeX}%
 
 % Define some special glyphs, taken from Texinfo.tex
 % The @error{} command.
@@ -353,8 +353,29 @@ Floor, Boston, MA 02110-1301 USA.
    }$%
 }
 
-\font\eurosym = feybr10 at 8pt
-\def\euro{{\eurosym e}}
+\font\eurofont = feybr10 at 8pt
+\def\euro{{\eurofont e}}
+
+\font\ecfont = ecrm0800
+\def\guillemetleft{{\ecfont \char"13}}
+\def\guillemotleft{\guillemetleft}
+\def\guillemetright{{\ecfont \char"14}}
+\def\guillemotright{\guillemetright}
+\def\guilsinglleft{{\ecfont \char"0E}}
+\def\guilsinglright{{\ecfont \char"0F}}
+\def\quotedblbase{{\ecfont \char"12}}
+\def\quotesinglbase{{\ecfont \char"0D}}
+\def\ogonek#1{{%
+    \ecfont \setbox0=\hbox{#1}%
+    \ifdim\ht0=1ex\accent"0C #1%
+    \else\ooalign{\unhbox0\crcr\hidewidth\char"0C \hidewidth}%
+    \fi
+}}
+% normal quotes
+\def\quoteleft{`}
+\def\quoteright{'}
+\def\quotedblleft{``}
+\def\quotedblright{''}
 
 %**end of header
 
@@ -613,9 +634,9 @@ margins and normal text font.  Pair with \code{@end format}.}
 \subsection{Characters special to Texinfo}
 
 \txicmd{@@}{}{Insert an at sign, `@'.}
-\txicmd{@\lbracechar}{}{Insert a left brace, `$\{$'.}
-\txicmd{@\rbracechar}{}{Insert a right brace, `$\}$'.}
-\txicmd{@comma}{\ttbraced{}}{Insert a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
+\txicmd{@\lbracechar}{}{Produce a left brace, `$\{$'.}
+\txicmd{@\rbracechar}{}{Produce a right brace, `$\}$'.}
+\txicmd{@comma}{\ttbraced{}}{Produce a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
 \txicmd{@\var{whitespace}}{}{An \code{@} followed by a space, tab, or newline produces a normal, stretchable, interword space.}
 
 \subsection{Spacing refinements}
@@ -640,6 +661,7 @@ exception of \code{@tieaccent}.
 \txicmd{@\tildechar}{c}{Generate a tilde accent, \~o.}
 \txicmd{@dotaccent}{c}{Generate a dot (over) accent, \.o.}
 \txicmd{@H}{c}{Generate a long Hungarian umlaut accent, \H o.}
+\txicmd{@ogonek}{c}{Generate an ogonek diacritic, \ogonek{a}.}
 \txicmd{@ringaccent}{c}{Generate a ring accent, \accent23o.}
 \txicmd{@tieaccent}{\ttbraced{cc}}{Generate a tie-after accent, \t{oo}; argument must be given in braces.}
 \txicmd{@u}{c}{Generate a breve accent, \u{o}.}
@@ -660,17 +682,18 @@ exception of \code{@tieaccent}.
 
 \subsection{Other text characters and logos}
 
-\txicmd{@dots}{\ttbraced{}}{Generate an ellipsis, `\dots'.}
-\txicmd{@enddots}{\ttbraced{}}{Generate an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
-\txicmd{@bullet}{\ttbraced{}}{Generate a large round dot, $\bullet$ (\samp{*} in Info).}
-\txicmd{@euro}{\ttbraced{}}{Generate the Euro currency sign, \euro.}
-\txicmd{@pounds}{\ttbraced{}}{Generate the pounds sterling currency sign, {\it\$}.}
-\txicmd{@minus}{\ttbraced{}}{Generate a minus sign, `$-$'.}
-\txicmd{@copyright}{\ttbraced{}}{Generate the copyright symbol, \copyright.}
-\txicmd{@registeredsymbol}{\ttbraced{}}{Generate the registered symbol, \registeredsymbol.}
-\txicmd{@TeX}{\ttbraced{}}{Generate the \TeX\ logo.}
-\txicmd{@LaTeX}{\ttbraced{}}{Generate the \LaTeX\ logo.}
-\txicmd{@today}{\ttbraced{}}{Insert the current date, in `1 Jan 2000' style.}
+\txicmd{@dots}{\ttbraced{}}{Produce an ellipsis, `\dots'.}
+\txicmd{@enddots}{\ttbraced{}}{Produce an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
+\txicmd{@bullet}{\ttbraced{}}{Produce a large round dot, $\bullet$ (\samp{*} in Info).}
+\txicmd{@euro}{\ttbraced{}}{Produce the Euro currency sign, \euro.}
+\txicmd{@pounds}{\ttbraced{}}{Produce the pounds sterling currency sign, {\it\$}.}
+\txicmd{@minus}{\ttbraced{}}{Produce a minus sign, `$-$'.}
+\txicmd{@copyright}{\ttbraced{}}{Produce the copyright symbol, \copyright.}
+\txicmd{@registeredsymbol}{\ttbraced{}}{Produce the registered symbol, \registeredsymbol.}
+\txicmd{@TeX}{\ttbraced{}}{Produce the \TeX\ logo.}
+\txicmd{@LaTeX}{\ttbraced{}}{Produce the \LaTeX\ logo.}
+\txicmd{@today}{\ttbraced{}}{Produce the current date, in `1 Jan 2000' style.}
+\txicmd{@guillemetleft\ttbraced{} @guillemetright\ttbraced{} @guillemotleft\ttbraced{} @guillemotright @guilsinglleft\ttbraced{} @guilsinglright\ttbraced{} @quotedblbase\ttbraced{} @quotedblleft @quotedblright\ttbraced{} @quoteleft\ttbraced{} @quoteright\ttbraced{} @quotesinglbase\ttbraced{}}{}{Produce various quotation marks: \guillemetleft\ \guillemetright\ \guillemotleft\ \guillemotright\ \guilsinglleft\ \guilsinglright\ \quotedblbase\ \quotedblleft\ \quotedblright\ \quoteleft\ \quoteright\ \quotesinglbase.}
 
 \subsection{Glyphs for code examples}
 
@@ -720,8 +743,7 @@ exception of \code{@tieaccent}.
 The \code{...x} variant of each command is analogous to \code{@itemx},
 leaving no extra space above.  All definition commands must be written
 entirely on one line.  Multiword arguments must be enclosed in braces.
-Descriptive text is on the following lines, ended by \samp{@end
-\var{defcmdname}}.
+Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
 \subsection{Function-like definitions, untyped}
 
@@ -779,7 +801,7 @@ Descriptive text is on the following lines, ended by \samp{@end
 \txicmd{@ifplaintext}{}{Begin text to appear only in plain text output. Pair with \code{@end ifplaintext}.}
 \txicmd{@iftex}{}{Begin text to appear only in the \TeX\ output. Pair with \code{@end iftex}.}
 \txicmd{@ifxml}{}{Begin text that will appear only in the XML output. Pair with \tt @end ifxml.}
-\txicmd{@ifnotdocbook, @ifnothtml, @ifnotplaintext, @ifnottex, @ifnotxml}{}{Begin text to be ignored in one output format but not the others: \code{@ifnothtml} text is omitted from HTML output, etc.  Pair with the corresponding \code{@end ifnot\var{format}}.}
+\txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotxml}{}{Begin text to be ignored in one output format but not the others: \code{@ifnothtml} text is omitted from HTML output, etc.  Pair with the corresponding \code{@end ifnot\var{format}}.}
 \txicmd{@ifnotinfo}{}{Like the other \code{@ifnot\dots} commands, but omit from plain text output as well as Info. Pair with \code{@end ifnotinfo}.}
 
 \subsection{Raw formatter text}

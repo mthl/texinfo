@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck,v 1.1 2008-09-07 22:47:47 karl Exp $
+# $Id: txicmdcheck,v 1.2 2008-11-10 19:36:44 karl Exp $
 # Copyright 2008 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -66,8 +66,9 @@ sub read_refcard
     s/}{.*//;               # then the descriptions
     s/^\\txicmdx{// && ($xcmd = 1);  # used for the @def...x
     s/^\\txicmd{//;         # finally the markup cmd itself
+    s/\\ttbraced{}//g;      # quote cmd list
     
-    my (@cmds) = split (/, */, $_);  # a couple of times we combine cmds
+    my (@cmds) = split (/,? +/, $_);  # occasionally we combine cmds
     
     # we typeset these specially in TeX.
     if ("@cmds" eq "@#1footing") {
@@ -118,7 +119,7 @@ sub read_refman
     last if /^\@end table/; # ignore again after the summary
     next unless s/^\@itemx? *\@//;  # only want item[x]s in the table
     chomp;
-    s/\@\{.*//;  # remove braced arguments
+    s/\@\{.+//;  # remove braced arguments (but not @{)
     s/ .*//;     # remove arguments following a space
     s/\@\@/@/g;  # @@ -> @
     next if $_ =~ /^\@(br|ctrl)$/;  # @ignore-d in text

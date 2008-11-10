@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
+@c $Id: texinfo.txi,v 1.228 2008-11-10 19:36:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3504,7 +3504,7 @@ Turn off printing of page headings.
 Turn on page headings appropriate for single-sided printing.
 
 @item @@headings double
-Turn on page headings appropriate for double-sided printing.  
+Turn on page headings appropriate for double-sided printing.
 
 @item @@headings singleafter
 @itemx @@headings doubleafter
@@ -7445,7 +7445,7 @@ In @TeX{}, the acronym is printed in slightly smaller font.  In the
 Info output, the argument is printed as-is.  In either format, if the
 second argument is present, it is printed in parentheses after the
 acronym.  In HTML, Docbook, and XML, the @code{<acronym>} tag is
-used.  
+used.
 
 For instance (since GNU is a recursive acronym, we use
 @code{@@acronym} recursively):
@@ -9198,7 +9198,7 @@ labeled and numbered float.
 In Texinfo, all floats are numbered the same way: with the chapter
 number (or appendix letter), a period, and the float number, which
 simply counts 1, 2, 3, @dots{}, and is reset at each chapter.  Each
-float type is counted independently.  
+float type is counted independently.
 
 Floats within an @code{@@unnumbered} are numbered, or outside of any
 chapter, are simply numbered consecutively from 1.
@@ -10016,7 +10016,7 @@ the predefined indices.  For example:
 
 The @code{@@defcodeindex} is like the @code{@@defindex} command,
 except that, in the printed output, it prints entries in an
-@code{@@code} font by default instead of a roman font.  
+@code{@@code} font by default instead of a roman font.
 
 You should define new indices before the end-of-header line of a
 Texinfo file, and (of course) before any @code{@@synindex} or
@@ -10518,6 +10518,8 @@ source file.
 @cindex Dot accent
 @findex H @r{(Hungarian umlaut accent)}
 @cindex Hungarian umlaut accent
+@findex ogonek
+@cindex Ogonek diacritic
 @findex ringaccent
 @cindex Ring accent
 @findex tieaccent
@@ -10543,6 +10545,7 @@ source file.
 @item @t{@@~o}              @tab @~o            @tab tilde accent
 @item @t{@@dotaccent@{o@}}  @tab @dotaccent{o}  @tab overdot accent
 @item @t{@@H@{o@}}          @tab @H{o}          @tab long Hungarian umlaut
+@item @t{@@ogonek@{a@}}     @tab @ogonek{a}     @tab ogonek
 @item @t{@@ringaccent@{o@}} @tab @ringaccent{o} @tab ring accent
 @item @t{@@tieaccent@{oo@}} @tab @tieaccent{oo} @tab tie-after accent
 @item @t{@@u@{o@}}          @tab @u{o}          @tab breve accent
@@ -10731,6 +10734,7 @@ Both distributions include installation instructions.
 @item @t{@@guilsinglright@{@}}       @tab @guilsinglright{} @tab Single right-pointing angle quotation mark (U+203A)
 @end multitable
 
+@cindex Auk, bird species
 For the double angle quotation marks, Adobe and @LaTeX{} glyph names
 are also supported:  @code{@@guillemotleft} and
 @code{@@guillemotright}.  These names are actually incorrect; a
@@ -10975,7 +10979,7 @@ an itemized list, you do not need to type the braces
 Use the @code{@@geq@{@}} and @code{@@geq@{@}} commands to generate
 greater-than-or-equal and less-than-equal-signs, `@geq{}' and
 `@leq{}'.  In plain text and Info output, these are the ASCII
-sequences @samp{>=} and @samp{<=}.  The 
+sequences @samp{>=} and @samp{<=}.  The
 
 
 @node math
@@ -13788,7 +13792,7 @@ used to display the page, if supported by the system.
 In split HTML output, if @option{--transliterate-file-names} is
 given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
 files are formed by transliteration of the corresponding node names,
-using the specified encoding. 
+using the specified encoding.
 
 In XML and Docbook output, the given document encoding is written in
 the output file as usual with those formats.
@@ -15615,12 +15619,12 @@ MS-DOS/MS-Windows).
 For the specified format, process @samp{@@if@var{format}} and
 @samp{@@@var{format}} commands even if not generating the given output
 format.  For instance, if @option{--iftex} is specified, then
-@samp{@@iftex} and @samp{@@tex} blocks will be read.  
+@samp{@@iftex} and @samp{@@tex} blocks will be read.
 
-@item --internal-links=@var{file} 
+@item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
 In HTML mode, output a tab separated file containing three columns:
-the internal link to an indexed item or item in the table of contents, 
+the internal link to an indexed item or item in the table of contents,
 the name of the index (or "toc") in which it occurs, and the term
 which was indexed or entered.
 
@@ -16480,7 +16484,7 @@ traditional @command{man} system.
 
 @code{install-info} inserts menu entries from an Info file into the
 top-level @file{dir} file in the Info system (see the previous sections
-for an explanation of how the @file{dir} file works).  @code{install-info} 
+for an explanation of how the @file{dir} file works).  @code{install-info}
 also removes menu entries from the @file{dir} file.  It's most often
 run as part of software installation, or when constructing a @file{dir} file
 for all manuals on a system.  Synopsis:
@@ -16507,7 +16511,7 @@ Gzip}), @code{install-info} automatically uncompresses it
 for reading.  And if @var{dir-file} is compressed, @code{install-info}
 also automatically leaves it compressed after writing any changes.
 If @var{dir-file} itself does not exist, @code{install-info} tries to
-open @file{@var{dir-file}.gz}, @file{@var{dir-file}.bz2}, and 
+open @file{@var{dir-file}.gz}, @file{@var{dir-file}.bz2}, and
 @file{@var{dir-file}.lzma}, in that order.
 
 Options:
@@ -16518,8 +16522,8 @@ Specifies that the entry or entries will only be put into a single section.
 
 @item --align=@var{column}
 @opindex --align=@var{column}
-Specifies the column that the second and subsequent lines of menu entry's 
-description will be formatted to begin at.  The default for this option is 
+Specifies the column that the second and subsequent lines of menu entry's
+description will be formatted to begin at.  The default for this option is
 @samp{35}.  It is used in conjunction with the @samp{--max-width} option.
 @var{column} starts counting at 1.
 
@@ -16528,10 +16532,10 @@ Instead of alphabetizing new sections, place them at the end of the DIR file.
 
 @item --calign=@var{column}
 @opindex --calign=@var{column}
-Specifies the column that the first line of menu entry's description will 
-be formatted to begin at.  The default for this option is @samp{33}.  It is 
+Specifies the column that the first line of menu entry's description will
+be formatted to begin at.  The default for this option is @samp{33}.  It is
 used in conjunction with the @samp{--max-width} option.
-When the name of the menu entry exceeds this column, entry's description 
+When the name of the menu entry exceeds this column, entry's description
 will start on the following line.
 @var{column} starts counting at 1.
 
@@ -16595,7 +16599,7 @@ a menu item.
 
 @item --keep-old
 @opindex --keep-old
-Do not replace pre-existing menu entries.  When @samp{--remove} is specified, 
+Do not replace pre-existing menu entries.  When @samp{--remove} is specified,
 this option means that empty sections are not removed.
 
 @item --max-width=@var{column}
@@ -16655,8 +16659,8 @@ a section, the menu entries are put into the Miscellaneous section.
 @opindex --section @var{regex} @var{sec}
 Same as @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
 
-@code{install-info} tries to detect when this alternate syntax is used, 
-but does not always guess correctly.  Here is the heuristic that 
+@code{install-info} tries to detect when this alternate syntax is used,
+but does not always guess correctly.  Here is the heuristic that
 @code{install-info} uses:
 @enumerate
 @item
@@ -16669,8 +16673,8 @@ opened, the original syntax is presumed.
 Otherwise the alternate syntax is used.
 @end enumerate
 
-When heuristic fails because your section title starts with a hyphen, or it 
-happens to be a filename that can be opened, the syntax should be changed 
+When heuristic fails because your section title starts with a hyphen, or it
+happens to be a filename that can be opened, the syntax should be changed
 to @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
 
 
@@ -16678,7 +16682,7 @@ to @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
 @opindex  --regex=@var{regex}
 Put this file's entries into any section that matches @var{regex}.  If
 more than one section matches, all of the entries are added in each of the
-sections.  Specify @var{regex} using basic regular expression syntax, more 
+sections.  Specify @var{regex} using basic regular expression syntax, more
 or less as used with @command{grep}, for example.
 
 @item --test
@@ -16767,7 +16771,7 @@ file.
 When splitting, the HTML output files are written into a subdirectory,
 with the name chosen as follows:
 @enumerate
-@item 
+@item
 @command{makeinfo} first tries the subdirectory with the base name
 from @code{@@setfilename} (that is, any extension is removed).  For
 example, HTML output for @code{@@setfilename gcc.info} would be
@@ -16804,7 +16808,7 @@ influencing the display of HTML documents: see
 @uref{http://www.w3.org/Style/CSS/}.
 
 By default, @command{makeinfo} includes a few simple CSS commands to
-better implement the appearance of some of the environments.  Here 
+better implement the appearance of some of the environments.  Here
 are two of them, as an example:
 
 @example
@@ -16830,7 +16834,7 @@ allows using external style sheets.
 The option @option{--css-include=@var{file}} includes the contents
 @var{file} in the HTML output, as you might expect.  However, the
 details are somewhat tricky, as described in the following, to provide
-maximum flexibility. 
+maximum flexibility.
 
 @cindex @@import specifications, in CSS files
 The CSS file may begin with so-called @samp{@@import} directives,
@@ -17087,7 +17091,7 @@ Notice in particular:
 @end itemize
 
 On case-folding computer systems, nodes differing only by case will be
-mapped to the same file.  
+mapped to the same file.
 
 In particular, as mentioned above, Top always maps to the file
 @file{index.html}.  Thus, on a case-folding system, Top and a node
@@ -17318,9 +17322,9 @@ with <keyword> being "mono" or "split". Thus
 texinfo split http://www.gnu.org/software/texinfo/manual/texinfo/html_node/
 texinfo mono http://www.gnu.org/software/texinfo/manual/texinfo/texinfo.html
 
-If the keyword is 'split', that is the target is split, the urlprefix gives 
+If the keyword is 'split', that is the target is split, the urlprefix gives
 the directory and host name.
-If the keyword is 'mono', that is the target is mono, the urlprefix gives 
+If the keyword is 'mono', that is the target is mono, the urlprefix gives
 directory, host and file name.
 
 '#' followed by a space begins comments. '#' followed by another character
@@ -17504,7 +17508,7 @@ Generate a large round dot, @bullet{} (@samp{*} in Info).  Often used
 with @code{@@table}.  @xref{bullet, , @code{@@bullet}}.
 
 @item @@bye
-Stop formatting a file.  The formatters do not see anything in the 
+Stop formatting a file.  The formatters do not see anything in the
 input file following @code{@@bye}.  @xref{Ending a File}.
 
 @item @@c @var{comment}
@@ -17912,6 +17916,18 @@ Generate a greater-than-or-equal sign, `@geq{}'.  @xref{geq leq}.
 Disallow page breaks within following text.  Pair with @code{@@end
 group}.  Ignored in Info.  @xref{group, , @code{@@group}}.
 
+@item @@guillemetleft@{@}
+@itemx @@guillemetright@{@}
+@item @@guillemotleft@{@}
+@itemx @@guillemotright@{@}
+@itemx @@guilsinglleft@{@}
+@itemx @@guilsinglright@{@}
+Double and single angle quotation marks: @guillemetleft{}
+@guillemetright{} @guilsinglleft{} @guilsinglright{}.
+@code{@@guillemotleft} and @code{@@guillemotright} are synonyms for
+@code{@@guillemetleft} and @code{@@guillemetright}.  @xref{Inserting
+Quotation Marks}.
+
 @item @@H@{@var{c}@}
 Generate the long Hungarian umlaut accent over @var{c}, as in @H{o}.
 
@@ -18130,6 +18146,10 @@ How to Make Your Own Headings}.@refill
 Generate the uppercase and lowercase OE ligatures, respectively:
 @OE{}, @oe{}.  @xref{Inserting Accents}.
 
+@item @@ogonek@{@var{c}@}
+Generate an ogonek diacritic under the next character, as in
+@ogonek{a}.  @xref{Inserting Accents}.
+
 @item @@option@{@var{option-name}@}
 Indicate a command-line option, such as @option{-l} or @option{--help}.
 @xref{option,, @code{@@option}}.
@@ -18179,6 +18199,16 @@ Generate an upside-down question mark.  @xref{Inserting Accents}.
 Narrow the margins to indicate text that is quoted from another work.
 Takes optional argument of prefix text.  Pair with @code{@@end
 quotation}.  @xref{quotation, , @code{@@quotation}}.
+
+@item @@quotedblleft@{@}
+@itemx @@quotedblright@{@}
+@itemx @@quoteleft@{@}
+@itemx @@quoteright@{@}
+@itemx @@quotedblbase@{@}
+@itemx @@quotesinglbase@{@}
+Produce various quotation marks: @quotedblleft{} @quotedblright{}
+@quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}.
+@xref{Inserting Quotation Marks}.
 
 @item @@r@{@var{text}@}
 Set @var{text} in the regular @r{roman} font.  No effect in Info.
@@ -19139,7 +19169,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
+$Id: texinfo.txi,v 1.228 2008-11-10 19:36:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19215,7 +19245,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.227 2008-10-25 16:02:37 karl Exp $
+@comment $Id: texinfo.txi,v 1.228 2008-11-10 19:36:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

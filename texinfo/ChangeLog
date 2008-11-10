@@ -1,3 +1,11 @@
+2008-11-10  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (command_table): add ogonek with a trivial
+	definition just so we can run the manual.
+	* doc/texinfo.txi (@-Command Summary): add ogonek and quote cmds.
+	(Inserting Accents): add ogonek.
+	* doc/refcard/txirefcard.tex: add ogonek and quote cmds.
+
 2008-11-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\rmisbold): new macro.

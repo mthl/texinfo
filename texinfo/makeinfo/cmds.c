@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.83 2008-04-09 17:07:31 karl Exp $
+   $Id: cmds.c,v 1.84 2008-11-10 19:36:43 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -286,6 +286,7 @@ COMMAND command_table[] = {
   { "oddheading", cm_ignore_line, NO_BRACE_ARGS },
   { "oddheadingmarks", cm_ignore_line, NO_BRACE_ARGS },
   { "oe", cm_special_char, BRACE_ARGS },
+  { "ogonek", cm_accent, MAYBE_BRACE_ARGS },
   { "option", cm_code, BRACE_ARGS },
   { "ordf", cm_special_char, BRACE_ARGS },
   { "ordm", cm_special_char, BRACE_ARGS },
