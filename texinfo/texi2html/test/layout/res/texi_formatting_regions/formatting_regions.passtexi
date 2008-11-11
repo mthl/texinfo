@@ -187,6 +187,8 @@ formatting_regions.texi(mymacro,28) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,28) @code{@@v@{--a@}} @v{--a}
 formatting_regions.texi(mymacro,28) @code{@@,@{c@}} @,{c}
 formatting_regions.texi(mymacro,28) @code{@@,@{--c@}} @,{--c}
+formatting_regions.texi(mymacro,28) @code{@@ogonek@{a@}} @ogonek{a}
+formatting_regions.texi(mymacro,28) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting_regions.texi(mymacro,28) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting_regions.texi(mymacro,28) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting_regions.texi(mymacro,28) 
@@ -893,6 +895,8 @@ formatting_regions.texi(mymacro,39) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,39) @code{@@v@{--a@}} @v{--a}
 formatting_regions.texi(mymacro,39) @code{@@,@{c@}} @,{c}
 formatting_regions.texi(mymacro,39) @code{@@,@{--c@}} @,{--c}
+formatting_regions.texi(mymacro,39) @code{@@ogonek@{a@}} @ogonek{a}
+formatting_regions.texi(mymacro,39) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting_regions.texi(mymacro,39) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting_regions.texi(mymacro,39) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting_regions.texi(mymacro,39) 
@@ -1595,6 +1599,8 @@ formatting_regions.texi(mymacro,46) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,46) @code{@@v@{--a@}} @v{--a}
 formatting_regions.texi(mymacro,46) @code{@@,@{c@}} @,{c}
 formatting_regions.texi(mymacro,46) @code{@@,@{--c@}} @,{--c}
+formatting_regions.texi(mymacro,46) @code{@@ogonek@{a@}} @ogonek{a}
+formatting_regions.texi(mymacro,46) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting_regions.texi(mymacro,46) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting_regions.texi(mymacro,46) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting_regions.texi(mymacro,46) 
@@ -2293,6 +2299,8 @@ formatting_regions.texi(mymacro,49) @code{@@v@{a@}} @v{a}
 formatting_regions.texi(mymacro,49) @code{@@v@{--a@}} @v{--a}
 formatting_regions.texi(mymacro,49) @code{@@,@{c@}} @,{c}
 formatting_regions.texi(mymacro,49) @code{@@,@{--c@}} @,{--c}
+formatting_regions.texi(mymacro,49) @code{@@ogonek@{a@}} @ogonek{a}
+formatting_regions.texi(mymacro,49) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting_regions.texi(mymacro,49) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting_regions.texi(mymacro,49) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting_regions.texi(mymacro,49) 

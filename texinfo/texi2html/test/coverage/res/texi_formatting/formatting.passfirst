@@ -193,6 +193,8 @@ formatting.texi(mymacro,38) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,38) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,38) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,38) @code{@@,@{--c@}} @,{--c}
+formatting.texi(mymacro,38) @code{@@ogonek@{a@}} @ogonek{a}
+formatting.texi(mymacro,38) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,38) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,38) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,38) 
@@ -891,6 +893,8 @@ formatting.texi(mymacro,42) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,42) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,42) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,42) @code{@@,@{--c@}} @,{--c}
+formatting.texi(mymacro,42) @code{@@ogonek@{a@}} @ogonek{a}
+formatting.texi(mymacro,42) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,42) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,42) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,42) 

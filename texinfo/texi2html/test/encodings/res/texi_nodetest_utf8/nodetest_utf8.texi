@@ -21,28 +21,28 @@ Another Heading
 @node Umlaut,,Top,Top
 @chapter Umlaut
 @menu
-* ‰::    ‰.
-* Î::    Î.
-* Ô::    Ô.
-* ˆ::    ˆ.
-* ¸::    ¸.
-* ˇ::    ˇ.
-* ƒ::    ƒ.
-* À::    À.
-* œ::    œ.
-* ÷::    ÷.
-* ‹::    ‹.
+* √§::    √§.
+* √´::    √´.
+* √Ø::    √Ø.
+* √∂::    √∂.
+* √º::    √º.
+* √ø::    √ø.
+* √Ñ::    √Ñ.
+* √ã::    √ã.
+* √è::    √è.
+* √ñ::    √ñ.
+* √ú::    √ú.
 * @ss{}::    @ss{}.
 * no section::  Node without sectioning command.
 @end menu
 @c
-@node ‰,,,Umlaut
-@section ‰
-ref to Á @ref{Á}.
-@node Î,,,Umlaut
-@section Î
-@node Ô,,,Umlaut 
-@section Ô
+@node √§,,,Umlaut
+@section √§
+ref to √ß @ref{√ß}.
+@node √´,,,Umlaut
+@section √´
+@node √Ø,,,Umlaut 
+@section √Ø
 
 before footnote @xref{footanchor}.
 
@@ -50,32 +50,32 @@ before footnote @xref{footanchor}.
 
 after footnote @xref{footanchor}.
 
-@node ˆ,,,Umlaut
-@section ˆ
+@node √∂,,,Umlaut
+@section √∂
 Ref to an anchor at the end of the doc 
-(@pxref{È-o, , there is an o-È could there be an @^{@dotless{i}}}).
-@node ¸,,,Umlaut
-@section ¸
+(@pxref{√©-o, , there is an o-√© could there be an @^{@dotless{i}}}).
+@node √º,,,Umlaut
+@section √º
 Another ref to an anchor (@pxref{x-spot, ,}).
-@node ˇ,,,Umlaut
-@section ˇ
-This is a ref to a node (@pxref{‡, ,‡}).
+@node √ø,,,Umlaut
+@section √ø
+This is a ref to a node (@pxref{√†, ,√†}).
 
-@node ƒ,,,Umlaut
-@section ƒ
+@node √Ñ,,,Umlaut
+@section √Ñ
 
 Now a ref to a node without sectionning command, 
 no text (@pxref{no section, , }).
 With text (@pxref{no section, ,but a text }).
 
-@node À,,,Umlaut
-@section À
-@node œ,,,Umlaut
-@section œ
-@node ÷,,,Umlaut
-@section ÷
-@node ‹,,,Umlaut
-@section ‹
+@node √ã,,,Umlaut
+@section √ã
+@node √è,,,Umlaut
+@section √è
+@node √ñ,,,Umlaut
+@section √ñ
+@node √ú,,,Umlaut
+@section √ú
 @node @ss{},,,Umlaut
 @section @ss{}
 @node no section,,,Umlaut
@@ -85,7 +85,7 @@ This is a node without sectioning command.
 @chapter acute accent
 @menu
 * @'a::    @'a.
-* È::    È.
+* √©::    √©.
 * @'i::    @'i.
 * @'o::    @'o.
 * @'u::    @'u.
@@ -101,8 +101,8 @@ This is a node without sectioning command.
 @node @'a,,,acute accent
 @section @'a
 With brace @'{a}. Testing ' " ` ^.
-@node È,,,acute accent
-@section È
+@node √©,,,acute accent
+@section √©
 @node @'i,,,acute accent
 @section @'i
 @node @'o,,,acute accent
@@ -123,21 +123,21 @@ With brace @'{a}. Testing ' " ` ^.
 @section @'U
 @node @'Y,,,acute accent
 @section @'Y
-This is a ref to ¸ (@pxref{¸, ,¸}).
-Another one, with node only (@pxref{¸, ,}).
+This is a ref to √º (@pxref{√º, ,√º}).
+Another one, with node only (@pxref{√º, ,}).
 
 
 @c
 @node grave accent,,Top,Top
 @chapter grave accent
 @menu
-* ‡::    ‡.
-* Ë::    Ë.
+* √†::    √†.
+* √®::    √®.
 * @`i::    @`i.
 * with brace @`{i}::    @`{i}.
 * with dotless @`{@dotless{i}}::   @`{@dotless{i}}.
 * @`o::    @`o.
-* ˘::    ˘.
+* √π::    √π.
 * @`A::    @`A.
 * @`E::    @`E.
 * @`I::    @`I.
@@ -145,10 +145,10 @@ Another one, with node only (@pxref{¸, ,}).
 * @`U::    @`U.
 @end menu
 @c
-@node ‡,,,grave accent
-@section ‡
-@node Ë,,,grave accent
-@section Ë
+@node √†,,,grave accent
+@section √†
+@node √®,,,grave accent
+@section √®
 @node @`i,,,grave accent
 @section @`i
 @node with brace @`{i},,,grave accent
@@ -157,8 +157,8 @@ Another one, with node only (@pxref{¸, ,}).
 @section @`{@dotless{i}}
 @node @`o,,,grave accent
 @section @`o
-@node ˘,,,grave accent
-@section ˘
+@node √π,,,grave accent
+@section √π
 @node @`A,,,grave accent
 @section @`A
 @node @`E,,,grave accent
@@ -173,38 +173,38 @@ Another one, with node only (@pxref{¸, ,}).
 @node circumflex accent,,Top,Top
 @chapter circumflex accent
 @menu
-* ‚::    ‚.
-* Í::    Í.
-* Ó::    Ó.
-* Ù::    Ù.
-* ˚::    ˚.
-* ¬::    ¬.
-*  ::     .
-* Œ::    Œ.
-* ‘::    ‘.
-* €::    €.
+* √¢::    √¢.
+* √™::    √™.
+* √Æ::    √Æ.
+* √¥::    √¥.
+* √ª::    √ª.
+* √Ç::    √Ç.
+* √ä::    √ä.
+* √é::    √é.
+* √î::    √î.
+* √õ::    √õ.
 @end menu
 @c
-@node ‚,,,circumflex accent
-@section ‚
-@node Í,,,circumflex accent
-@section Í
-@node Ó,,,circumflex accent
-@section Ó
-@node Ù,,,circumflex accent
-@section Ù
-@node ˚,,,circumflex accent
-@section ˚
-@node ¬,,,circumflex accent
-@section ¬
-@node  ,,,circumflex accent
-@section  
-@node Œ,,,circumflex accent
-@section Œ
-@node ‘,,,circumflex accent
-@section ‘
-@node €,,,circumflex accent
-@section €
+@node √¢,,,circumflex accent
+@section √¢
+@node √™,,,circumflex accent
+@section √™
+@node √Æ,,,circumflex accent
+@section √Æ
+@node √¥,,,circumflex accent
+@section √¥
+@node √ª,,,circumflex accent
+@section √ª
+@node √Ç,,,circumflex accent
+@section √Ç
+@node √ä,,,circumflex accent
+@section √ä
+@node √é,,,circumflex accent
+@section √é
+@node √î,,,circumflex accent
+@section √î
+@node √õ,,,circumflex accent
+@section √õ
 @c
 @node tilde accent,,Top,Top
 @chapter tilde accent
@@ -227,17 +227,17 @@ Another one, with node only (@pxref{¸, ,}).
 @node @~O,,,tilde accent
 @section @~O
 This marks the @anchor{x-spot}spot.
-A second one with accented char @anchor{È-o}.
+A second one with accented char @anchor{√©-o}.
 @c
 @node cedilla accent,,Top,Top
 @chapter cedilla accent
 @menu
-* Á::    Á.
+* √ß::    √ß.
 * @,{C}::    @,{C}.
 @end menu
 @c
-@node Á,,,cedilla accent
-@section Á
+@node √ß,,,cedilla accent
+@section √ß
 @node @,{C},,,cedilla accent
 @section @,{C}
 @c
@@ -330,8 +330,8 @@ Test dotaccent.
 @section @comma{}
 
 An index entry with accented letter.
-@cindex index entry with accented letter: ‡ @`a
-@cindex index entry with accented letter: ‚ @`a
+@cindex index entry with accented letter: √† @`a
+@cindex index entry with accented letter: √¢ @`a
 
 @printindex cp
 

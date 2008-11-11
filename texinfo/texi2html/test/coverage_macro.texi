@@ -175,6 +175,8 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
+@code{@@ogonek@{a@}} @ogonek{a}
+@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 

@@ -7,6 +7,8 @@ texi umlaut.texi
 texi accentenc.texi
 texi accent.texi
 texi weird_accents.texi
+texi ogolat2.texi
+texi ogoutf.texi
 nodetest nodetest.texi
 nodetest_chapter nodetest.texi -split chapter
 nodetest_use_nodes_no_unicode nodetest.texi -init no_unicode.init -node-files -use-nodes -split node
@@ -31,3 +33,5 @@ accentenc_encoding accentenc.texi -init enable_encoding.init
 accent accent.texi
 weird_accents weird_accents.texi
 weird_accents_encoding weird_accents.texi -init enable_encoding.init
+ogolat2 ogolat2.texi
+ogoutf ogoutf.texi

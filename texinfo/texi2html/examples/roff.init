@@ -365,17 +365,9 @@ sub roff_accent($$)
     return "\\(v${text}" if (($accent eq 'v') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
 #FIXME maybe we should protect the symbols such that they look like strings and
 # not ponctuation marks ? Like it is done in texi2roff ? 
-# otherwise we should use
-#    return ascii_accents($text, $accent);
-    return $text . $accent if (defined($accent_map{$accent}));
-    return $text . "''" if ($accent eq 'H');
     return $text . '\\&.' if ($accent eq 'dotaccent');
-    return $text . '*' if ($accent eq 'ringaccent');
-    return $text . '[' if ($accent eq 'tieaccent');
-    return $text . '(' if ($accent eq 'u');
-    return $text . '_' if ($accent eq 'ubaraccent');
     return '\\&.' . $text  if ($accent eq 'udotaccent');
-    return $text . '<' if ($accent eq 'v');
+    return ascii_accents($text, $accent);
 }
 
 sub roff_sc($$)

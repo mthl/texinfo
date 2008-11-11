@@ -20,28 +20,28 @@ nodetest_utf8.texi(,20) @c
 nodetest_utf8.texi(,21) @node Umlaut,,Top,Top
 nodetest_utf8.texi(,22) @chapter Umlaut
 nodetest_utf8.texi(,23) @menu
-nodetest_utf8.texi(,24) * ‰::    ‰.
-nodetest_utf8.texi(,25) * Î::    Î.
-nodetest_utf8.texi(,26) * Ô::    Ô.
-nodetest_utf8.texi(,27) * ˆ::    ˆ.
-nodetest_utf8.texi(,28) * ¸::    ¸.
-nodetest_utf8.texi(,29) * ˇ::    ˇ.
-nodetest_utf8.texi(,30) * ƒ::    ƒ.
-nodetest_utf8.texi(,31) * À::    À.
-nodetest_utf8.texi(,32) * œ::    œ.
-nodetest_utf8.texi(,33) * ÷::    ÷.
-nodetest_utf8.texi(,34) * ‹::    ‹.
+nodetest_utf8.texi(,24) * √§::    √§.
+nodetest_utf8.texi(,25) * √´::    √´.
+nodetest_utf8.texi(,26) * √Ø::    √Ø.
+nodetest_utf8.texi(,27) * √∂::    √∂.
+nodetest_utf8.texi(,28) * √º::    √º.
+nodetest_utf8.texi(,29) * √ø::    √ø.
+nodetest_utf8.texi(,30) * √Ñ::    √Ñ.
+nodetest_utf8.texi(,31) * √ã::    √ã.
+nodetest_utf8.texi(,32) * √è::    √è.
+nodetest_utf8.texi(,33) * √ñ::    √ñ.
+nodetest_utf8.texi(,34) * √ú::    √ú.
 nodetest_utf8.texi(,35) * @ss{}::    @ss{}.
 nodetest_utf8.texi(,36) * no section::  Node without sectioning command.
 nodetest_utf8.texi(,37) @end menu
 nodetest_utf8.texi(,38) @c
-nodetest_utf8.texi(,39) @node ‰,,,Umlaut
-nodetest_utf8.texi(,40) @section ‰
-nodetest_utf8.texi(,41) ref to Á @ref{Á}.
-nodetest_utf8.texi(,42) @node Î,,,Umlaut
-nodetest_utf8.texi(,43) @section Î
-nodetest_utf8.texi(,44) @node Ô,,,Umlaut 
-nodetest_utf8.texi(,45) @section Ô
+nodetest_utf8.texi(,39) @node √§,,,Umlaut
+nodetest_utf8.texi(,40) @section √§
+nodetest_utf8.texi(,41) ref to √ß @ref{√ß}.
+nodetest_utf8.texi(,42) @node √´,,,Umlaut
+nodetest_utf8.texi(,43) @section √´
+nodetest_utf8.texi(,44) @node √Ø,,,Umlaut 
+nodetest_utf8.texi(,45) @section √Ø
 nodetest_utf8.texi(,46) 
 nodetest_utf8.texi(,47) before footnote @xref{footanchor}.
 nodetest_utf8.texi(,48) 
@@ -49,32 +49,32 @@ nodetest_utf8.texi(,49) @footnote{@anchor{footanchor}}
 nodetest_utf8.texi(,50) 
 nodetest_utf8.texi(,51) after footnote @xref{footanchor}.
 nodetest_utf8.texi(,52) 
-nodetest_utf8.texi(,53) @node ˆ,,,Umlaut
-nodetest_utf8.texi(,54) @section ˆ
+nodetest_utf8.texi(,53) @node √∂,,,Umlaut
+nodetest_utf8.texi(,54) @section √∂
 nodetest_utf8.texi(,55) Ref to an anchor at the end of the doc 
-nodetest_utf8.texi(,56) (@pxref{È-o, , there is an o-È could there be an @^{@dotless{i}}}).
-nodetest_utf8.texi(,57) @node ¸,,,Umlaut
-nodetest_utf8.texi(,58) @section ¸
+nodetest_utf8.texi(,56) (@pxref{√©-o, , there is an o-√© could there be an @^{@dotless{i}}}).
+nodetest_utf8.texi(,57) @node √º,,,Umlaut
+nodetest_utf8.texi(,58) @section √º
 nodetest_utf8.texi(,59) Another ref to an anchor (@pxref{x-spot, ,}).
-nodetest_utf8.texi(,60) @node ˇ,,,Umlaut
-nodetest_utf8.texi(,61) @section ˇ
-nodetest_utf8.texi(,62) This is a ref to a node (@pxref{‡, ,‡}).
+nodetest_utf8.texi(,60) @node √ø,,,Umlaut
+nodetest_utf8.texi(,61) @section √ø
+nodetest_utf8.texi(,62) This is a ref to a node (@pxref{√†, ,√†}).
 nodetest_utf8.texi(,63) 
-nodetest_utf8.texi(,64) @node ƒ,,,Umlaut
-nodetest_utf8.texi(,65) @section ƒ
+nodetest_utf8.texi(,64) @node √Ñ,,,Umlaut
+nodetest_utf8.texi(,65) @section √Ñ
 nodetest_utf8.texi(,66) 
 nodetest_utf8.texi(,67) Now a ref to a node without sectionning command, 
 nodetest_utf8.texi(,68) no text (@pxref{no section, , }).
 nodetest_utf8.texi(,69) With text (@pxref{no section, ,but a text }).
 nodetest_utf8.texi(,70) 
-nodetest_utf8.texi(,71) @node À,,,Umlaut
-nodetest_utf8.texi(,72) @section À
-nodetest_utf8.texi(,73) @node œ,,,Umlaut
-nodetest_utf8.texi(,74) @section œ
-nodetest_utf8.texi(,75) @node ÷,,,Umlaut
-nodetest_utf8.texi(,76) @section ÷
-nodetest_utf8.texi(,77) @node ‹,,,Umlaut
-nodetest_utf8.texi(,78) @section ‹
+nodetest_utf8.texi(,71) @node √ã,,,Umlaut
+nodetest_utf8.texi(,72) @section √ã
+nodetest_utf8.texi(,73) @node √è,,,Umlaut
+nodetest_utf8.texi(,74) @section √è
+nodetest_utf8.texi(,75) @node √ñ,,,Umlaut
+nodetest_utf8.texi(,76) @section √ñ
+nodetest_utf8.texi(,77) @node √ú,,,Umlaut
+nodetest_utf8.texi(,78) @section √ú
 nodetest_utf8.texi(,79) @node @ss{},,,Umlaut
 nodetest_utf8.texi(,80) @section @ss{}
 nodetest_utf8.texi(,81) @node no section,,,Umlaut
@@ -84,7 +84,7 @@ nodetest_utf8.texi(,84) @node acute accent,,Top,Top
 nodetest_utf8.texi(,85) @chapter acute accent
 nodetest_utf8.texi(,86) @menu
 nodetest_utf8.texi(,87) * @'a::    @'a.
-nodetest_utf8.texi(,88) * È::    È.
+nodetest_utf8.texi(,88) * √©::    √©.
 nodetest_utf8.texi(,89) * @'i::    @'i.
 nodetest_utf8.texi(,90) * @'o::    @'o.
 nodetest_utf8.texi(,91) * @'u::    @'u.
@@ -100,8 +100,8 @@ nodetest_utf8.texi(,100) @c
 nodetest_utf8.texi(,101) @node @'a,,,acute accent
 nodetest_utf8.texi(,102) @section @'a
 nodetest_utf8.texi(,103) With brace @'{a}. Testing ' " ` ^.
-nodetest_utf8.texi(,104) @node È,,,acute accent
-nodetest_utf8.texi(,105) @section È
+nodetest_utf8.texi(,104) @node √©,,,acute accent
+nodetest_utf8.texi(,105) @section √©
 nodetest_utf8.texi(,106) @node @'i,,,acute accent
 nodetest_utf8.texi(,107) @section @'i
 nodetest_utf8.texi(,108) @node @'o,,,acute accent
@@ -122,21 +122,21 @@ nodetest_utf8.texi(,122) @node @'U,,,acute accent
 nodetest_utf8.texi(,123) @section @'U
 nodetest_utf8.texi(,124) @node @'Y,,,acute accent
 nodetest_utf8.texi(,125) @section @'Y
-nodetest_utf8.texi(,126) This is a ref to ¸ (@pxref{¸, ,¸}).
-nodetest_utf8.texi(,127) Another one, with node only (@pxref{¸, ,}).
+nodetest_utf8.texi(,126) This is a ref to √º (@pxref{√º, ,√º}).
+nodetest_utf8.texi(,127) Another one, with node only (@pxref{√º, ,}).
 nodetest_utf8.texi(,128) 
 nodetest_utf8.texi(,132) 
 nodetest_utf8.texi(,133) @c
 nodetest_utf8.texi(,134) @node grave accent,,Top,Top
 nodetest_utf8.texi(,135) @chapter grave accent
 nodetest_utf8.texi(,136) @menu
-nodetest_utf8.texi(,137) * ‡::    ‡.
-nodetest_utf8.texi(,138) * Ë::    Ë.
+nodetest_utf8.texi(,137) * √†::    √†.
+nodetest_utf8.texi(,138) * √®::    √®.
 nodetest_utf8.texi(,139) * @`i::    @`i.
 nodetest_utf8.texi(,140) * with brace @`{i}::    @`{i}.
 nodetest_utf8.texi(,141) * with dotless @`{@dotless{i}}::   @`{@dotless{i}}.
 nodetest_utf8.texi(,142) * @`o::    @`o.
-nodetest_utf8.texi(,143) * ˘::    ˘.
+nodetest_utf8.texi(,143) * √π::    √π.
 nodetest_utf8.texi(,144) * @`A::    @`A.
 nodetest_utf8.texi(,145) * @`E::    @`E.
 nodetest_utf8.texi(,146) * @`I::    @`I.
@@ -144,10 +144,10 @@ nodetest_utf8.texi(,147) * @`O::    @`O.
 nodetest_utf8.texi(,148) * @`U::    @`U.
 nodetest_utf8.texi(,149) @end menu
 nodetest_utf8.texi(,150) @c
-nodetest_utf8.texi(,151) @node ‡,,,grave accent
-nodetest_utf8.texi(,152) @section ‡
-nodetest_utf8.texi(,153) @node Ë,,,grave accent
-nodetest_utf8.texi(,154) @section Ë
+nodetest_utf8.texi(,151) @node √†,,,grave accent
+nodetest_utf8.texi(,152) @section √†
+nodetest_utf8.texi(,153) @node √®,,,grave accent
+nodetest_utf8.texi(,154) @section √®
 nodetest_utf8.texi(,155) @node @`i,,,grave accent
 nodetest_utf8.texi(,156) @section @`i
 nodetest_utf8.texi(,157) @node with brace @`{i},,,grave accent
@@ -156,8 +156,8 @@ nodetest_utf8.texi(,159) @node with dotless @`{@dotless{i}},,,grave accent
 nodetest_utf8.texi(,160) @section @`{@dotless{i}}
 nodetest_utf8.texi(,161) @node @`o,,,grave accent
 nodetest_utf8.texi(,162) @section @`o
-nodetest_utf8.texi(,163) @node ˘,,,grave accent
-nodetest_utf8.texi(,164) @section ˘
+nodetest_utf8.texi(,163) @node √π,,,grave accent
+nodetest_utf8.texi(,164) @section √π
 nodetest_utf8.texi(,165) @node @`A,,,grave accent
 nodetest_utf8.texi(,166) @section @`A
 nodetest_utf8.texi(,167) @node @`E,,,grave accent
@@ -172,38 +172,38 @@ nodetest_utf8.texi(,175) @c
 nodetest_utf8.texi(,176) @node circumflex accent,,Top,Top
 nodetest_utf8.texi(,177) @chapter circumflex accent
 nodetest_utf8.texi(,178) @menu
-nodetest_utf8.texi(,179) * ‚::    ‚.
-nodetest_utf8.texi(,180) * Í::    Í.
-nodetest_utf8.texi(,181) * Ó::    Ó.
-nodetest_utf8.texi(,182) * Ù::    Ù.
-nodetest_utf8.texi(,183) * ˚::    ˚.
-nodetest_utf8.texi(,184) * ¬::    ¬.
-nodetest_utf8.texi(,185) *  ::     .
-nodetest_utf8.texi(,186) * Œ::    Œ.
-nodetest_utf8.texi(,187) * ‘::    ‘.
-nodetest_utf8.texi(,188) * €::    €.
+nodetest_utf8.texi(,179) * √¢::    √¢.
+nodetest_utf8.texi(,180) * √™::    √™.
+nodetest_utf8.texi(,181) * √Æ::    √Æ.
+nodetest_utf8.texi(,182) * √¥::    √¥.
+nodetest_utf8.texi(,183) * √ª::    √ª.
+nodetest_utf8.texi(,184) * √Ç::    √Ç.
+nodetest_utf8.texi(,185) * √ä::    √ä.
+nodetest_utf8.texi(,186) * √é::    √é.
+nodetest_utf8.texi(,187) * √î::    √î.
+nodetest_utf8.texi(,188) * √õ::    √õ.
 nodetest_utf8.texi(,189) @end menu
 nodetest_utf8.texi(,190) @c
-nodetest_utf8.texi(,191) @node ‚,,,circumflex accent
-nodetest_utf8.texi(,192) @section ‚
-nodetest_utf8.texi(,193) @node Í,,,circumflex accent
-nodetest_utf8.texi(,194) @section Í
-nodetest_utf8.texi(,195) @node Ó,,,circumflex accent
-nodetest_utf8.texi(,196) @section Ó
-nodetest_utf8.texi(,197) @node Ù,,,circumflex accent
-nodetest_utf8.texi(,198) @section Ù
-nodetest_utf8.texi(,199) @node ˚,,,circumflex accent
-nodetest_utf8.texi(,200) @section ˚
-nodetest_utf8.texi(,201) @node ¬,,,circumflex accent
-nodetest_utf8.texi(,202) @section ¬
-nodetest_utf8.texi(,203) @node  ,,,circumflex accent
-nodetest_utf8.texi(,204) @section  
-nodetest_utf8.texi(,205) @node Œ,,,circumflex accent
-nodetest_utf8.texi(,206) @section Œ
-nodetest_utf8.texi(,207) @node ‘,,,circumflex accent
-nodetest_utf8.texi(,208) @section ‘
-nodetest_utf8.texi(,209) @node €,,,circumflex accent
-nodetest_utf8.texi(,210) @section €
+nodetest_utf8.texi(,191) @node √¢,,,circumflex accent
+nodetest_utf8.texi(,192) @section √¢
+nodetest_utf8.texi(,193) @node √™,,,circumflex accent
+nodetest_utf8.texi(,194) @section √™
+nodetest_utf8.texi(,195) @node √Æ,,,circumflex accent
+nodetest_utf8.texi(,196) @section √Æ
+nodetest_utf8.texi(,197) @node √¥,,,circumflex accent
+nodetest_utf8.texi(,198) @section √¥
+nodetest_utf8.texi(,199) @node √ª,,,circumflex accent
+nodetest_utf8.texi(,200) @section √ª
+nodetest_utf8.texi(,201) @node √Ç,,,circumflex accent
+nodetest_utf8.texi(,202) @section √Ç
+nodetest_utf8.texi(,203) @node √ä,,,circumflex accent
+nodetest_utf8.texi(,204) @section √ä
+nodetest_utf8.texi(,205) @node √é,,,circumflex accent
+nodetest_utf8.texi(,206) @section √é
+nodetest_utf8.texi(,207) @node √î,,,circumflex accent
+nodetest_utf8.texi(,208) @section √î
+nodetest_utf8.texi(,209) @node √õ,,,circumflex accent
+nodetest_utf8.texi(,210) @section √õ
 nodetest_utf8.texi(,211) @c
 nodetest_utf8.texi(,212) @node tilde accent,,Top,Top
 nodetest_utf8.texi(,213) @chapter tilde accent
@@ -226,17 +226,17 @@ nodetest_utf8.texi(,229) @section @~A
 nodetest_utf8.texi(,230) @node @~O,,,tilde accent
 nodetest_utf8.texi(,231) @section @~O
 nodetest_utf8.texi(,232) This marks the @anchor{x-spot}spot.
-nodetest_utf8.texi(,233) A second one with accented char @anchor{È-o}.
+nodetest_utf8.texi(,233) A second one with accented char @anchor{√©-o}.
 nodetest_utf8.texi(,234) @c
 nodetest_utf8.texi(,235) @node cedilla accent,,Top,Top
 nodetest_utf8.texi(,236) @chapter cedilla accent
 nodetest_utf8.texi(,237) @menu
-nodetest_utf8.texi(,238) * Á::    Á.
+nodetest_utf8.texi(,238) * √ß::    √ß.
 nodetest_utf8.texi(,239) * @,{C}::    @,{C}.
 nodetest_utf8.texi(,240) @end menu
 nodetest_utf8.texi(,241) @c
-nodetest_utf8.texi(,242) @node Á,,,cedilla accent
-nodetest_utf8.texi(,243) @section Á
+nodetest_utf8.texi(,242) @node √ß,,,cedilla accent
+nodetest_utf8.texi(,243) @section √ß
 nodetest_utf8.texi(,244) @node @,{C},,,cedilla accent
 nodetest_utf8.texi(,245) @section @,{C}
 nodetest_utf8.texi(,246) @c
@@ -329,8 +329,8 @@ nodetest_utf8.texi(,332) @node @comma{},,,rest
 nodetest_utf8.texi(,333) @section @comma{}
 nodetest_utf8.texi(,334) 
 nodetest_utf8.texi(,335) An index entry with accented letter.
-nodetest_utf8.texi(,336) @cindex index entry with accented letter: ‡ @`a
-nodetest_utf8.texi(,337) @cindex index entry with accented letter: ‚ @`a
+nodetest_utf8.texi(,336) @cindex index entry with accented letter: √† @`a
+nodetest_utf8.texi(,337) @cindex index entry with accented letter: √¢ @`a
 nodetest_utf8.texi(,338) 
 nodetest_utf8.texi(,339) @printindex cp
 nodetest_utf8.texi(,340) 

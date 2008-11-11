@@ -94,6 +94,7 @@ $style_map{'url'}->{'function'} = \&xml_uref;
 $style_map{'t'}->{'attribute'} = 'tt';
 # FIXME
 delete $special_accents{'ringaccent'};
+$special_accents{'ogonek'} = 'aeiuAEIU';
 
 %style_map_pre = %style_map;
 

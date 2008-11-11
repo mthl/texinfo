@@ -199,6 +199,8 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -744,6 +746,8 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -1284,6 +1288,8 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -1825,6 +1831,8 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -2364,6 +2372,8 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -2903,6 +2913,8 @@ but , ,
 <code>@v{--a}</code> --a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> --c,
+<code>@ogonek{a}</code> &aogon;
+<code>@ogonek{--a}</code> --a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2

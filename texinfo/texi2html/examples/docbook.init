@@ -115,6 +115,7 @@ $no_pagraph_commands{'anchor'} = 0;
 
 # FIXME
 delete $special_accents{'ringaccent'};
+$special_accents{'ogonek'} = 'aeiuAEIU';
 
 foreach my $style (keys(%style_map))
 {

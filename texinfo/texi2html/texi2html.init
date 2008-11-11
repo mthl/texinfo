@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.168 2008-11-08 20:02:49 pertusus Exp $
+# $Id: texi2html.init,v 1.169 2008-11-11 00:52:24 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -715,38 +715,9 @@ sub t2h_default_translate_names()
 
 }
 
-my  @t2h_default_multitable_stack;
-# We have to do this dynamically because of internationalization and because
-# in body $LANG could be used.
-sub t2h_default_init_out()
+# is used in main program for dumping texi too.
+sub t2h_default_set_out_encoding()
 {
-    @t2h_default_multitable_stack = ();
-    &$translate_names;
-    # Set the default body text, inserted between <body ... >
-    if (defined($BODYTEXT))
-    {
-        $Texi2HTML::THISDOC{'BODYTEXT'} = $BODYTEXT;
-    }
-    else
-    {
-        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . $Texi2HTML::THISDOC{'current_lang'} . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
-    }
-    if (!defined($EXTERNAL_CROSSREF_SPLIT))
-    {
-        if ($SPLIT) 
-        {
-            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 1;
-        }
-        else
-        {
-            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 0;
-        }
-    }
-    else
-    {
-        $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = $EXTERNAL_CROSSREF_SPLIT;
-    }
-
     # these variables are used for the corresponding 
     # $Texi2HTML::THISDOC{'*_ENCODING'} to keep code shorter
     my ($out_encoding, $encoding_name, $document_encoding);
@@ -830,6 +801,41 @@ sub t2h_default_init_out()
     $in_encoding = 'UNDEF' if (!defined($in_encoding));
     $document_encoding = 'UNDEF' if (!defined($document_encoding));
     print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n" if ($VERBOSE);
+}
+
+my  @t2h_default_multitable_stack;
+# We have to do this dynamically because of internationalization and because
+# in body $LANG could be used.
+sub t2h_default_init_out()
+{
+    @t2h_default_multitable_stack = ();
+    &$translate_names;
+    # Set the default body text, inserted between <body ... >
+    if (defined($BODYTEXT))
+    {
+        $Texi2HTML::THISDOC{'BODYTEXT'} = $BODYTEXT;
+    }
+    else
+    {
+        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . $Texi2HTML::THISDOC{'current_lang'} . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+    }
+    if (!defined($EXTERNAL_CROSSREF_SPLIT))
+    {
+        if ($SPLIT) 
+        {
+            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 1;
+        }
+        else
+        {
+            $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 0;
+        }
+    }
+    else
+    {
+        $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = $EXTERNAL_CROSSREF_SPLIT;
+    }
+
+    t2h_default_set_out_encoding();
     
     # not in code_style, according to post on bug-texinfo
     if ($SIMPLE_MENU)
@@ -2009,6 +2015,7 @@ sub T2H_DEFAULT_node_file_name($$)
           'ubaraccent', '',
           'udotaccent', '',
           'v', '',
+          'ogonek', 'ogon',
          );
 
 #
@@ -3178,7 +3185,8 @@ foreach my $style (keys(%style_map))
        'udotaccent' => '0323', 
        'ubaraccent' => '0332', 
        'u'          => '0306',
-       'tieaccent'  => '0361'
+       'tieaccent'  => '0361',
+       'ogonek'     => '0328'
 );
 
 %unicode_accents = (
@@ -3504,6 +3512,18 @@ foreach my $style (keys(%style_map))
         'U' => '0170',
         'u' => '0171',
     },
+    'ogonek' => {
+        'A' => '0104',
+        'a' => '0105',
+        'E' => '0118',
+        'e' => '0119',
+        'I' => '012E',
+        'i' => '012F',
+        'U' => '0172',
+        'u' => '0173',
+        'O' => '01EA',
+        'o' => '01EB',
+    },
 );
 
 %transliterate_accent_map = ();
@@ -3525,6 +3545,9 @@ foreach my $command (keys(%unicode_accents))
       '`'          => 'aeiouAEIOU',
       '~'          => 'nNaoAO',
       '"'          => 'aeiouyAEIOU',
+# according to http://www2.lib.virginia.edu/small/vhp/download/ISO.txt
+# however this doesn't seems to work in firefox
+#      'ogonek'     => 'aeiuAEIU',
 );
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
@@ -3585,6 +3608,7 @@ sub ascii_accents($$)
     return $text . '_' if ($accent eq 'ubaraccent');
     return '.' . $text  if ($accent eq 'udotaccent');
     return $text . '<' if ($accent eq 'v');
+    return $text . ';' if ($accent eq 'ogonek');
     return $text . $accent if (defined($accent_map{$accent}));
 }
 

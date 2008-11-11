@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.243 2008-11-08 20:02:49 pertusus Exp $
+# $Id: texi2html.pl,v 1.244 2008-11-11 00:52:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7736,7 +7736,7 @@ sub open_out($)
 {
     my $file = shift;
     local *FILE;
-#print STDERR "open_out $file\n";
+#print STDERR "open_out $file $Texi2HTML::THISDOC{'OUT_ENCODING'}\n";
     if ($file eq '-')
     {
         binmode(STDOUT, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})") if (defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE);
@@ -7768,6 +7768,7 @@ sub close_out($;$)
     my $FH = shift;
     my $file = shift;
     $file = '' if (!defined($file));
+    return if ($file eq '-');
 #print STDERR "close_out $file\n";
     close ($FH) || die "$ERROR: Error occurred when closing $file: $!\n";
 }
@@ -7850,10 +7851,7 @@ sub dump_texi($$;$$)
     my $numbers = shift;
     my $file = shift;
     $file = "$docu_rdir$docu_name" . ".pass$pass" if (!defined($file));
-    unless (open(DMPTEXI, ">$file"))
-    {
-         warn "Can't open $file for writing: $!\n";
-    }
+    my $FH = open_out($file);
     print STDERR "# Dump texi\n" if ($T2H_VERBOSE);
     my $index = 0;
     foreach my $line (@$lines)
@@ -7872,10 +7870,10 @@ sub dump_texi($$;$$)
            $line_number = '' if (!defined($line_number));
            $number_information = "${basefile}($macro_name,$line_number) ";
         }
-        print DMPTEXI "${number_information}$line";
+        print $FH "${number_information}$line";
         $index++ if (chomp($chomped_line));
     }
-    close DMPTEXI;
+    close_out ($FH, $file);
 }
 
 
@@ -14120,6 +14118,7 @@ while(@ARGV)
       init_with_file_name ($input_file_base);
    }
 
+   Texi2HTML::Config::t2h_default_set_out_encoding();
    dump_texi($texi_lines, 'texi', $lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
    if (defined($Texi2HTML::Config::MACRO_EXPAND))
    {

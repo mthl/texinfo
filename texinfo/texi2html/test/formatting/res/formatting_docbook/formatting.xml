@@ -191,6 +191,8 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
+<literal>@ogonek{a}</literal> &aogon;
+<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -721,6 +723,8 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
+<literal>@ogonek{a}</literal> &aogon;
+<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -1247,6 +1251,8 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
+<literal>@ogonek{a}</literal> &aogon;
+<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -1773,6 +1779,8 @@ but , ,
 <literal>@v{--a}</literal> --a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> --c,
+<literal>@ogonek{a}</literal> &aogon;
+<literal>@ogonek{--a}</literal> --a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2

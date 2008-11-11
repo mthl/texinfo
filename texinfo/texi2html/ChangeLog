@@ -1,3 +1,8 @@
+2008-11-10  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: add support for @ogonek.
+	* texi2html.init, texi2html.pl: encode correctly texi dumped.
+
 2008-11-08  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: move index splitting code back to
