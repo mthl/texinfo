@@ -1,0 +1,3088 @@
+# Pesan bahasa indonesia untuk texinfo
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+# Arif E. Nugroho <arif_endro@yahoo.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.12.94\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2008-08-16 01:20+0200\n"
+"PO-Revision-Date: 2008-11-11 17:30+0700\n"
+"Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
+"Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gnulib/lib/error.c:125
+msgid "Unknown system error"
+msgstr "Sistem error tidak diketahui"
+
+#: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: opsi `%s' adalah ambigu\n"
+
+#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: opsi `--%s' tidak mengijinkan sebuah argumen\n"
+
+#: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: opsi `%c%s' tidak mengijinkan sebuah argumen\n"
+
+#: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
+#: gnulib/lib/getopt.c:990
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: opsi `%s' membutuhkan sebuah argumen\n"
+
+#: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: opsi tidak dikenal `--%s'\n"
+
+#: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: opsi tidak dikenal `%c%s'\n"
+
+#: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: opsi tidak legal -- %c\n"
+
+#: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: opsi tidak valid -- %c\n"
+
+#: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
+#: gnulib/lib/getopt.c:1061
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: opsi membutuhkan sebuah argumen -- %c\n"
+
+#: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: opsi `-W %s' adalah ambigu\n"
+
+#: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: opsi `-W %s' tidak mengijinkan sebuah argumen\n"
+
+#: gnulib/lib/xalloc-die.c:34 gnulib/lib/xsetenv.c:37
+#, c-format
+msgid "memory exhausted"
+msgstr "kehabisan memori"
+
+#: info/echo-area.c:283 info/session.c:966
+msgid "Move forward a character"
+msgstr "Pindah kedepan satu karakter"
+
+#: info/echo-area.c:295 info/session.c:993
+msgid "Move backward a character"
+msgstr "Pinda kebelakang satu karakter"
+
+#: info/echo-area.c:307
+msgid "Move to the start of this line"
+msgstr "Pindah ke awal dari baris ini"
+
+#: info/echo-area.c:312
+msgid "Move to the end of this line"
+msgstr "Pindah ke akhir dari baris ini"
+
+#: info/echo-area.c:320 info/session.c:1025
+msgid "Move forward a word"
+msgstr "Pindah kedepan satu kata"
+
+#: info/echo-area.c:360 info/session.c:1049
+msgid "Move backward a word"
+msgstr "Pindah kebelakang satu kata"
+
+#: info/echo-area.c:400
+msgid "Delete the character under the cursor"
+msgstr "Hapus karakter dibawah kursor"
+
+#: info/echo-area.c:430
+msgid "Delete the character behind the cursor"
+msgstr "Hapus karakter dibelakang kursor"
+
+#: info/echo-area.c:451
+msgid "Cancel or quit operation"
+msgstr "Batal atau keluar operasi"
+
+#: info/echo-area.c:466
+msgid "Accept (or force completion of) this line"
+msgstr "Terima (atau paksa penyelesaian dari) baris ini"
+
+#: info/echo-area.c:471
+msgid "Insert next character verbatim"
+msgstr "Masukan karakter selanjutnya satu demi satu"
+
+#: info/echo-area.c:479
+msgid "Insert this character"
+msgstr "Masukan karakter ini"
+
+#: info/echo-area.c:498
+msgid "Insert a TAB character"
+msgstr "Masukan sebuah karakter TAB"
+
+#: info/echo-area.c:505
+msgid "Transpose characters at point"
+msgstr "Transpose karakter di titik"
+
+#: info/echo-area.c:556
+msgid "Yank back the contents of the last kill"
+msgstr "Kembalikan isi dari terminasi terakhir"
+
+#: info/echo-area.c:563
+msgid "Kill ring is empty"
+msgstr "Rantai terminasi kosong"
+
+#: info/echo-area.c:576
+msgid "Yank back a previous kill"
+msgstr "Kembalikan ke terminasi sebelumnya"
+
+#: info/echo-area.c:609
+msgid "Kill to the end of the line"
+msgstr "Hapus ke akhir dari baris"
+
+#: info/echo-area.c:622
+msgid "Kill to the beginning of the line"
+msgstr "Hapus ke awal dari baris"
+
+#: info/echo-area.c:634
+msgid "Kill the word following the cursor"
+msgstr "Hapus kata di kursor yang mengikuti"
+
+#: info/echo-area.c:654
+msgid "Kill the word preceding the cursor"
+msgstr "Hapus kata yang mengawali kursor"
+
+#: info/echo-area.c:870 info/echo-area.c:926
+msgid "No completions"
+msgstr "Tidak ada komplesi"
+
+#: info/echo-area.c:872
+msgid "Not complete"
+msgstr "Tidak lengkap"
+
+#: info/echo-area.c:913
+msgid "List possible completions"
+msgstr "Daftar kemungkinan komplesi"
+
+#: info/echo-area.c:930
+msgid "Sole completion"
+msgstr "Sole komplesi"
+
+#: info/echo-area.c:939
+msgid "One completion:\n"
+msgstr "Satu komplesi:\n"
+
+#: info/echo-area.c:940
+#, c-format
+msgid "%d completions:\n"
+msgstr "%d komplesi:\n"
+
+#: info/echo-area.c:1087
+msgid "Insert completion"
+msgstr "Masukan komplesi"
+
+#: info/echo-area.c:1222
+msgid "Building completions..."
+msgstr "Buat komplesi..."
+
+#: info/echo-area.c:1342
+msgid "Scroll the completions window"
+msgstr "Scroll jendela komplesi"
+
+#: info/footnotes.c:212
+msgid "Footnotes could not be displayed"
+msgstr "Catatan kaki tidak dapat ditampilkan"
+
+#: info/footnotes.c:238
+msgid "Show the footnotes associated with this node in another window"
+msgstr "Tampilkan catatan kaki yang berasosiasi dengan titik ini di jendela lain"
+
+#: info/footnotes.h:26
+msgid "---------- Footnotes ----------"
+msgstr "---------- Catatan kaki ----------"
+
+#: info/indices.c:171
+msgid "Look up a string in the index for this file"
+msgstr "Mencari sebuah string dalam indeks untuk berkas ini"
+
+#: info/indices.c:198
+msgid "Finding index entries..."
+msgstr "Mencari masukan indeks..."
+
+#: info/indices.c:206
+msgid "No indices found."
+msgstr "Tidak ada indices ditemukan."
+
+#: info/indices.c:216
+msgid "Index entry: "
+msgstr "Masukan indeks: "
+
+#: info/indices.c:324
+msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgstr "Pergi ke indeks yang cocok selanjutnya item dari perintah terakhir `\\[index-search]'"
+
+#: info/indices.c:334
+msgid "No previous index search string."
+msgstr "Tidak ada indeks pencarian string sebelumnya."
+
+#: info/indices.c:341
+msgid "No index entries."
+msgstr "Tidak ada masukan indeks."
+
+#: info/indices.c:374
+#, c-format
+msgid "No %sindex entries containing `%s'."
+msgstr "Tidak ada %s masukan indeks yang berisi `%s'."
+
+#: info/indices.c:375
+msgid "more "
+msgstr "lebih "
+
+#: info/indices.c:385
+msgid "CAN'T SEE THIS"
+msgstr "TIDAK DAPAT MELIHAT INI"
+
+#: info/indices.c:421
+#, c-format
+msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+msgstr "Ditemukan `%s' dalam %s. (`\\[next-index-match]' mencoba untuk mencari next.)"
+
+#: info/indices.c:549
+#, c-format
+msgid "Scanning indices of `%s'..."
+msgstr "Menscan indices dari `%s'..."
+
+#: info/indices.c:604
+#, c-format
+msgid "No available info files have `%s' in their indices."
+msgstr "Info berkas tidak tersedia memiliki `%s' dalam indicesnya."
+
+#: info/indices.c:630
+msgid "Grovel all known info file's indices for a string and build a menu"
+msgstr "Grovel semua informasi berkas yang diketahui indices untuk sebuah string dan buat sebuah menu"
+
+#: info/indices.c:634
+msgid "Index apropos: "
+msgstr "Indeks apropos: "
+
+#: info/indices.c:662
+#, c-format
+msgid ""
+"\n"
+"* Menu: Nodes whose indices contain `%s':\n"
+msgstr ""
+"\n"
+"* Menu: Titik yang indices berisi `%s':\n"
+
+#: info/info.c:275 info/infokey.c:899
+#, c-format
+msgid "Try --help for more information.\n"
+msgstr "Coba --help untuk informasi lebih lanjut.\n"
+
+#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2101
+#: makeinfo/makeinfo.c:802 util/texindex.c:295
+#, c-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+"Hak Cipta (C) %s Free Software Foundation, Inc.\n"
+"Lisensi GPLv3+: GNU GPL versi 3 atau lebih lanjut <http://gnu.org/licenses/gpl.html>\n"
+"Ini adalah aplikasi bebas: anda bebas untuk mengubah dan meredistribusikannya.\n"
+"TIDAK ADA GARANSI, sampai batas yang masih diijinkan oleh hukum yang berlaku.\n"
+
+#: info/info.c:506
+#, c-format
+msgid "no index entries found for `%s'\n"
+msgstr "tidak ada masukan indeks ditemukan untuk `%s'\n"
+
+#: info/info.c:600
+#, c-format
+msgid ""
+"Usage: %s [OPTION]... [MENU-ITEM...]\n"
+"\n"
+"Read documentation in Info format.\n"
+msgstr ""
+"Penggunaan: %s [OPSI]... [DAFTAR-MENU...]\n"
+"\n"
+"Baca dokumentasi dalam format Info.\n"
+
+#: info/info.c:606
+msgid ""
+"Options:\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"  -d, --directory=DIR          add DIR to INFOPATH.\n"
+"      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+"  -f, --file=FILENAME          specify Info file to visit."
+msgstr ""
+"Opsi:\n"
+"  -k, --apropos=STRING         cari STRING dalam semua indices dari semua manuals.\n"
+"  -d, --directory=DIR          tambahkan DIR ke JALUR INFO.\n"
+"      --dribble=NAMA BERKAS    ingat tombol yang ditekan pengguna dalam NAMA BERKAS.\n"
+"  -f, --file=NAMA BERKAS        spesifikasikan berkas Info untuk dikunjungi."
+
+#: info/info.c:613
+msgid ""
+"  -h, --help                   display this help and exit.\n"
+"      --index-search=STRING    go to node pointed by index entry STRING.\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+"  -o, --output=FILENAME        output selected nodes to FILENAME."
+msgstr ""
+"  -h, --help                   tampikan bantuan ini dan keluar.\n"
+"      --index-search=STRING    pergi ke titik yang ditunjuk oleh masukan indeks STRING.\n"
+"  -n, --node=NAMA TITIK        spesifikasikan titik dalam berkas yang dikunjungi pertama.\n"
+"  -o, --output=NAMA BERKAS     keluarkan titik yang dipilih ke NAMA BERKAS."
+
+#: info/info.c:619
+msgid ""
+"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+"      --no-raw-escapes         output escapes as literal text.\n"
+"      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+"  -R, --raw-escapes            keluarkan \"raw\" ANSI escapes (baku).\n"
+"      --no-raw-escapes         keluarkan escapes sebagai teks literal.\n"
+"      --restore=NAMA BERKAS    baca inisial tombol yang ditekan dari NAMA BERKAS.\n"
+"  -O, --show-options, --usage  pergi ke titik opsi baris-perintah."
+
+#: info/info.c:626
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr "  -b, --speech-friendly        jadi ramah untuk berbicara synthesizer."
+
+#: info/info.c:630
+msgid ""
+"      --subnodes               recursively output menu items.\n"
+"      --vi-keys                use vi-like and less-like key bindings.\n"
+"      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file."
+msgstr ""
+"      --subnodes               secara rekursif keluarkan daftar menu.\n"
+"      --vi-keys                gunakan vi-like dan less-like binding kunci.\n"
+"      --version                tampilkan informasi versi dan keluar.\n"
+"  -w, --where, --location      tampilkan lokasi pisik dari berkas Info."
+
+#: info/info.c:636
+msgid ""
+"\n"
+"The first non-option argument, if present, is the menu entry to start from;\n"
+"it is searched for in all `dir' files along INFOPATH.\n"
+"If it is not present, info merges all `dir' files and shows the result.\n"
+"Any remaining arguments are treated as the names of menu\n"
+"items relative to the initial node visited."
+msgstr ""
+"\n"
+"Argumen pertama bukan-opsi, jika ada, adalah masukan menu untuk memulai dari;\n"
+"ini dicari untuk seluruh all `dir' berkas along INFOPATH.\n"
+"Jika ini tidak ada, info menggabungkan seluruh berkas `dir' dan menampilkan hasilnya.\n"
+"Argumen sisa yang ada akan diperlakukan sebagai nama dari daftar menu\n"
+"relatif ke titik inisial yang dikunjungi."
+
+#: info/info.c:643
+msgid ""
+"\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+"\n"
+"Untuk sebuah ringkasan dari binding kunci, ketik h didalam Info."
+
+#: info/info.c:646
+msgid ""
+"\n"
+"Examples:\n"
+"  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
+"  info emacs                 start at emacs node from top-level dir\n"
+"  info emacs buffers         start at buffers node within emacs manual\n"
+"  info --show-options emacs  start at node with emacs' command line options\n"
+"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
+msgstr ""
+"\n"
+"Contoh:\n"
+"  info                       tampilkan tingkat paling atas dari menu dir\n"
+"  info info                  tampilkan manual umum untuk pembaca Info\n"
+"  info info-stnd             tampilkan manual spesifik untuk aplikasi Info ini\n"
+"  info emacs                 jalankan titik emacs dari dir paling atas\n"
+"  info emacs buffers         jalankan di titik buffer didalam emacs manual\n"
+"  info --show-options emacs  jalankan di titik dengan emacs opsi baris perintah\n"
+"  info --subnodes -o out.txt emacs dump seluruh manual ke out.txt\n"
+"  info -f ./foo.info         tampilkan berkas ./foo.info, bukan mencari dir"
+
+#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: util/texindex.c:259
+msgid ""
+"\n"
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Email laporan bug ke bug-texinfo@gnu.org,\n"
+"pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+
+#: info/info.c:691
+#, c-format
+msgid "Cannot find node `%s'."
+msgstr "Tidak dapat menemukan titik `%s'."
+
+#: info/info.c:692
+#, c-format
+msgid "Cannot find node `(%s)%s'."
+msgstr "Tidak dapat menemukan titik `(%s)%s'."
+
+#: info/info.c:693
+msgid "Cannot find a window!"
+msgstr "Tidak dapat menemukan sebuah jendela!"
+
+#: info/info.c:694
+msgid "Point doesn't appear within this window's node!"
+msgstr "Titik tidak kelihatan didalam titik jendela ini!"
+
+#: info/info.c:695
+msgid "Cannot delete the last window."
+msgstr "Tidak dapat menghapus jendela terakhir."
+
+#: info/info.c:696
+msgid "No menu in this node."
+msgstr "Tidak ada menu di titik ini."
+
+#: info/info.c:697
+msgid "No footnotes in this node."
+msgstr "Tidak ada catatan kaki di titik ini."
+
+#: info/info.c:698
+msgid "No cross references in this node."
+msgstr "Tidak ada referensi silang di titik ini."
+
+#: info/info.c:699
+#, c-format
+msgid "No `%s' pointer for this node."
+msgstr "Tidak ada `%s' penunjuk untuk titik ini."
+
+#: info/info.c:700
+#, c-format
+msgid "Unknown Info command `%c'; try `?' for help."
+msgstr "Perintah Info `%c' tidak diketahui; coba `?' untuk bantuan."
+
+#: info/info.c:701
+#, c-format
+msgid "Terminal type `%s' is not smart enough to run Info."
+msgstr "Tipe terminal `%s' tidak cukup pintar untuk menjalankan Info."
+
+#: info/info.c:702
+msgid "You are already at the last page of this node."
+msgstr "Anda telah berada di akhir halaman dari titik ini."
+
+#: info/info.c:703
+msgid "You are already at the first page of this node."
+msgstr "Anda telah berada di halaman pertama dari titik ini."
+
+#: info/info.c:704
+msgid "Only one window."
+msgstr "Hanya satu jendela."
+
+#: info/info.c:705
+msgid "Resulting window would be too small."
+msgstr "Menghasilkan jendela yang akan terlalu kecil."
+
+#: info/info.c:706
+msgid "Not enough room for a help window, please delete a window."
+msgstr "Tidak cukup ruang untuk sebuah jendela bantuan, mohon hapus sebuah jendela."
+
+#: info/infodoc.c:45
+msgid "Basic Info command keys\n"
+msgstr "Kunci perintah Informasi Dasar\n"
+
+#: info/infodoc.c:47
+msgid "\\%-10[quit-help]  Close this help window.\n"
+msgstr "\\%-10[quit-help]  Tutup jendela bantuan ini.\n"
+
+#: info/infodoc.c:48
+msgid "\\%-10[quit]  Quit Info altogether.\n"
+msgstr "\\%-10[quit]  Keluar Info sekaligus.\n"
+
+#: info/infodoc.c:49
+msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+msgstr "\\%-10[get-info-help-node]  Panggil tutorial Info.\n"
+
+#: info/infodoc.c:51
+msgid "\\%-10[prev-line]  Move up one line.\n"
+msgstr "\\%-10[prev-line]  Pindah keatas satu baris.\n"
+
+#: info/infodoc.c:52
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line]  Pindah kebawah satu baris.\n"
+
+#: info/infodoc.c:53
+msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+msgstr "\\%-10[scroll-backward]  Scroll kebelakang satu layar penuh.\n"
+
+#: info/infodoc.c:54
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward]  Scroll kedepan satu layar penuh.\n"
+
+#: info/infodoc.c:55
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+msgstr "\\%-10[beginning-of-node]  Pergi ke awal dari titik ini.\n"
+
+#: info/infodoc.c:56
+msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+msgstr "\\%-10[end-of-node]  Pergi ke akhir dari titik ini.\n"
+
+#: info/infodoc.c:58
+msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+msgstr "\\%-10[move-to-next-xref]  Lewati ke link hyperteks selanjutnya.\n"
+
+#: info/infodoc.c:59
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  Ikuti link hypertext dibawah kursor.\n"
+
+#: info/infodoc.c:60
+msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+msgstr "\\%-10[history-node]  Pergi kebelakan ke titik terakhir terlihat di jendela ini.\n"
+
+#: info/infodoc.c:62
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr "\\%-10[global-prev-node]  Pergi ke titik sebelumnya dalam dokumen.\n"
+
+#: info/infodoc.c:63
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr "\\%-10[global-next-node]  Pergi ke titik selanjutnya dalam dokumen.\n"
+
+#: info/infodoc.c:64
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+msgstr "\\%-10[prev-node]  Pergi ke titik sebelumnya di tingkat ini.\n"
+
+#: info/infodoc.c:65
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr "\\%-10[next-node]  Pergi ke titik selanjutnya di tingkat ini.\n"
+
+#: info/infodoc.c:66
+msgid "\\%-10[up-node]  Go up one level.\n"
+msgstr "\\%-10[up-node]  Pergi ke atas satu tingkat.\n"
+
+#: info/infodoc.c:67
+msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+msgstr "\\%-10[top-node]  Pergi ke titik paling atas dari dokumen ini.\n"
+
+#: info/infodoc.c:68
+msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+msgstr "\\%-10[dir-node]  Pergi ke titik `directory' utama.\n"
+
+#: info/infodoc.c:70
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+msgstr "1...9       Pilih pertama...kesembilan item dalam titik menu ini.\n"
+
+#: info/infodoc.c:71
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+msgstr "\\%-10[last-menu-item]  Pilih item terakhir dalam titik menu ini.\n"
+
+#: info/infodoc.c:72
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+msgstr "\\%-10[menu-item]  Pilih sebuah menu item dispesifikasikan oleh nama.\n"
+
+#: info/infodoc.c:73
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+msgstr "\\%-10[xref-item]  Mengikuti sebuah referensi silang dispesifikan oleh nama.\n"
+
+#: info/infodoc.c:74
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+msgstr "\\%-10[goto-node]  Pergi ke titik dispesifikasikan oleh nama.\n"
+
+#: info/infodoc.c:76
+msgid "\\%-10[search]  Search forward for a specified string.\n"
+msgstr "\\%-10[search]  Cari kedepan untuk string yang dispesifikasikan.\n"
+
+#: info/infodoc.c:77
+msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+msgstr "\\%-10[search-previous]  Cari untuk kejadian sebelumnya.\n"
+
+#: info/infodoc.c:78
+msgid "\\%-10[search-next]  Search for next occurrence.\n"
+msgstr "\\%-10[search-next]  Cari untuk pertemuan selanjutnya.\n"
+
+#: info/infodoc.c:79
+msgid ""
+"\\%-10[index-search]  Search for a specified string in the index, and\n"
+"              select the node referenced by the first entry found.\n"
+msgstr ""
+"\\%-10[index-search]  Cari untuk sebuah string dispesifikasikan dalam indeks, dan\n"
+"              pilih sebuah titik direferensikan oleh masukan pertama yang ditemukan.\n"
+
+#: info/infodoc.c:81
+msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+msgstr "\\%-10[abort-key]  Batalkan operasi sekarang.\n"
+
+#: info/infodoc.c:89
+msgid ""
+"Basic Commands in Info Windows\n"
+"******************************\n"
+msgstr ""
+"Perintah Dasar dalam Jendela Info\n"
+"*********************************\n"
+
+#: info/infodoc.c:92
+#, c-format
+msgid "  %-10s  Quit this help.\n"
+msgstr "  %-10s  Keluar dari bantuan ini.\n"
+
+#: info/infodoc.c:93
+#, c-format
+msgid "  %-10s  Quit Info altogether.\n"
+msgstr "  %-10s  Keluar dari Info sekaligus.\n"
+
+#: info/infodoc.c:94
+#, c-format
+msgid "  %-10s  Invoke the Info tutorial.\n"
+msgstr "  %-10s  Menjalankan tutorial Info.\n"
+
+#: info/infodoc.c:98
+#, c-format
+msgid "  %-10s  Move to the `next' node of this node.\n"
+msgstr "  %-10s  Pindah ke titik `next' dari titik ini.\n"
+
+#: info/infodoc.c:99
+#, c-format
+msgid "  %-10s  Move to the `previous' node of this node.\n"
+msgstr "  %-10s  Pindah ke titik `previous' dari titik ini.\n"
+
+#: info/infodoc.c:100
+#, c-format
+msgid "  %-10s  Move `up' from this node.\n"
+msgstr "  %-10s  Pindah `up' dari titik ini.\n"
+
+#: info/infodoc.c:101
+#, c-format
+msgid ""
+"  %-10s  Pick menu item specified by name.\n"
+"              Picking a menu item causes another node to be selected.\n"
+msgstr ""
+"  %-10s  Pilih menu item dispesifikasikan oleh nama.\n"
+"              Memilih sebuah item menu menyebabkan titik lain untuk dipilih.\n"
+
+#: info/infodoc.c:103
+#, c-format
+msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+msgstr "  %-10s  Ikuti sebuah referensi silang. Baca nama dari referensi.\n"
+
+#: info/infodoc.c:104
+#, c-format
+msgid "  %-10s  Move to the last node seen in this window.\n"
+msgstr "  %-10s  Pindah ke titik terakhir yang terlihat di jendela ini.\n"
+
+#: info/infodoc.c:105
+#, c-format
+msgid "  %-10s  Skip to next hypertext link within this node.\n"
+msgstr "  %-10s  Lewati ke link hypertext selanjutnya dalam titik ini.\n"
+
+#: info/infodoc.c:106
+#, c-format
+msgid "  %-10s  Follow the hypertext link under cursor.\n"
+msgstr "  %-10s  Ikuti link hypertext dibawah kursor.\n"
+
+#: info/infodoc.c:107
+#, c-format
+msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+msgstr "  %-10s  Pindah ke titik `directory'. Sama dengan `g (DIR)'.\n"
+
+#: info/infodoc.c:108
+#, c-format
+msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+msgstr "  %-10s  Pindah ke titik Top. Sama dengan `g Top'.\n"
+
+#: info/infodoc.c:110
+msgid ""
+"Moving within a node:\n"
+"---------------------\n"
+msgstr ""
+"Pindah dalam sebuah titik:\n"
+"--------------------------\n"
+
+#: info/infodoc.c:112
+#, c-format
+msgid "  %-10s  Scroll forward a page.\n"
+msgstr "  %-10s  Scroll kedepan satu halaman.\n"
+
+#: info/infodoc.c:113
+#, c-format
+msgid "  %-10s  Scroll backward a page.\n"
+msgstr "  %-10s  Scroll kebelakang satu halaman.\n"
+
+#: info/infodoc.c:114
+#, c-format
+msgid "  %-10s  Go to the beginning of this node.\n"
+msgstr "  %-10s  Pergi ke awal dari titik ini.\n"
+
+#: info/infodoc.c:115
+#, c-format
+msgid "  %-10s  Go to the end of this node.\n"
+msgstr "  %-10s  Pergi ke akhir dari titik ini.\n"
+
+#: info/infodoc.c:116
+#, c-format
+msgid "  %-10s  Scroll forward 1 line.\n"
+msgstr "  %-10s  Scroll kedepan 1 baris.\n"
+
+#: info/infodoc.c:117
+#, c-format
+msgid "  %-10s  Scroll backward 1 line.\n"
+msgstr "  %-10s  Scroll kebelakang 1 baris.\n"
+
+#: info/infodoc.c:119
+msgid ""
+"Other commands:\n"
+"---------------\n"
+msgstr ""
+"Perintah lain:\n"
+"--------------\n"
+
+#: info/infodoc.c:121
+#, c-format
+msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+msgstr "  %-10s  Pilih pertama...ke sembilan item dalam titik menu.\n"
+
+#: info/infodoc.c:122
+#, c-format
+msgid "  %-10s  Pick last item in node's menu.\n"
+msgstr "  %-10s  Pilih item terakhir dalam titik menu.\n"
+
+#: info/infodoc.c:125
+#, c-format
+msgid ""
+"  %-10s  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry found.\n"
+msgstr ""
+"  %-10s  Cari untuk sebuah string dispesifikasikan dalam masukan indeks dari\n"
+"              berkas Info ini, dan pilih titik yang direferensikan oleh masukan pertama yang ditemukan.\n"
+
+#: info/infodoc.c:127
+#, c-format
+msgid ""
+"  %-10s  Move to node specified by name.\n"
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgstr ""
+"  %-10s  Pindah ke titik yang dispesifikasikan oleh nama.\n"
+"              Anda boleh memasukan sebuah nama berkas juga, sama dalam (NAMA BERKAS) NAMA TITIK.\n"
+
+#: info/infodoc.c:129
+#, c-format
+msgid ""
+"  %-10s  Search forward for a specified string,\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"  %-10s  Cari kedepan untuk string yang dispesifikasikan,\n"
+"              dan pilih titik dimana kejadian selanjutnya ditemukan.\n"
+
+#: info/infodoc.c:131
+#, c-format
+msgid ""
+"  %-10s  Search backward for a specified string,\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"  %-10s  Cari kebelakang untuk string yang dispesifikasikan,\n"
+"              dan pilih titik dimana kejadian selanjutnya ditemukan.\n"
+
+#: info/infodoc.c:312
+msgid "The current search path is:\n"
+msgstr "Jalur pencarian saat ini adalah:\n"
+
+#: info/infodoc.c:316
+msgid ""
+"Commands available in Info windows:\n"
+"\n"
+msgstr ""
+"Perintah yang tersedia dalam jendela Info:\n"
+"\n"
+
+#: info/infodoc.c:320
+msgid ""
+"Commands available in the echo area:\n"
+"\n"
+msgstr ""
+"Perintah yang tersedia di daerah echo:\n"
+"\n"
+
+#: info/infodoc.c:343
+#, c-format
+msgid ""
+"The following commands can only be invoked via %s:\n"
+"\n"
+msgstr ""
+"Perintah berikut hanya dapat dipanggil melalui %s:\n"
+"\n"
+
+#: info/infodoc.c:347
+msgid ""
+"The following commands cannot be invoked at all:\n"
+"\n"
+msgstr ""
+"Perintah berikut tidak dapat dipanggil sama sekali:\n"
+"\n"
+
+#: info/infodoc.c:477
+msgid "Display help message"
+msgstr "Tampilkan pesan bantuan"
+
+#: info/infodoc.c:495
+msgid "Visit Info node `(info)Help'"
+msgstr "Kunjungi titik Info `(info)Help'"
+
+#: info/infodoc.c:633
+msgid "Print documentation for KEY"
+msgstr "Tampilkan dokumentasi untuk KUNCI"
+
+#: info/infodoc.c:645
+#, c-format
+msgid "Describe key: %s"
+msgstr "Jelaskan kunci: %s"
+
+#: info/infodoc.c:656
+#, c-format
+msgid "ESC %s is undefined."
+msgstr "ESC %s tidak terdefinisi."
+
+#: info/infodoc.c:672 info/infodoc.c:701
+#, c-format
+msgid "%s is undefined."
+msgstr "%s tidak terdefinisi."
+
+#: info/infodoc.c:722
+#, c-format
+msgid "%s is defined to %s."
+msgstr "%s didefinisikan ke %s."
+
+#: info/infodoc.c:1146
+msgid "Show what to type to execute a given command"
+msgstr "Tunjukkan apa yang harus diketikan untuk menjalankan perintah yang diberikan"
+
+#: info/infodoc.c:1150
+msgid "Where is command: "
+msgstr "Dimana perintahnya: "
+
+#: info/infodoc.c:1172
+#, c-format
+msgid "`%s' is not on any keys"
+msgstr "`%s' tidak di kunci apapun"
+
+#: info/infodoc.c:1179
+#, c-format
+msgid "%s can only be invoked via %s."
+msgstr "%s hanya dapat dipanggil melalui %s."
+
+#: info/infodoc.c:1183
+#, c-format
+msgid "%s can be invoked via %s."
+msgstr "%s dapat dipanggil melalui %s."
+
+#: info/infodoc.c:1188
+#, c-format
+msgid "There is no function named `%s'"
+msgstr "Tidak ada fungsi yang bernama `%s'"
+
+#: info/infodoc.c:96
+msgid ""
+"Selecting other nodes:\n"
+"----------------------\n"
+msgstr ""
+"Memilih titik lain:\n"
+"-------------------\n"
+
+#: info/infokey.c:170
+msgid "incorrect number of arguments"
+msgstr "jumlah dari argumen tidak benar"
+
+#: info/infokey.c:201
+#, c-format
+msgid "cannot open input file `%s'"
+msgstr "tidak dapat membuka berkas masukan `%s'"
+
+#: info/infokey.c:215
+#, c-format
+msgid "cannot create output file `%s'"
+msgstr "tidak dapat membuat berkas keluaran `%s'"
+
+#: info/infokey.c:226
+#, c-format
+msgid "error writing to `%s'"
+msgstr "error menulis ke `%s'"
+
+#: info/infokey.c:232
+#, c-format
+msgid "error closing output file `%s'"
+msgstr "error menutup berkas keluaran `%s'"
+
+#: info/infokey.c:450
+msgid "key sequence too long"
+msgstr "urutan kunci terlalu panjang"
+
+#: info/infokey.c:529
+msgid "missing key sequence"
+msgstr "hilang urutan kunci"
+
+#: info/infokey.c:610
+msgid "NUL character (\\000) not permitted"
+msgstr "karakter NULL (\\000) tidak diijinkan"
+
+#: info/infokey.c:641
+#, c-format
+msgid "NUL character (^%c) not permitted"
+msgstr "karakter NULL (^%c) tidak diijinkan"
+
+#: info/infokey.c:665
+msgid "missing action name"
+msgstr "hilang nama aksi"
+
+#: info/infokey.c:681 info/infokey.c:756
+msgid "section too long"
+msgstr "daerah terlalu panjang"
+
+#: info/infokey.c:688
+#, c-format
+msgid "unknown action `%s'"
+msgstr "aksi `%s' tidak dikenal"
+
+#: info/infokey.c:698
+msgid "action name too long"
+msgstr "nama aksi terlalu panjang"
+
+#: info/infokey.c:712
+#, c-format
+msgid "extra characters following action `%s'"
+msgstr "karakter ekstra mengikuti aksi `%s'"
+
+#: info/infokey.c:723
+msgid "missing variable name"
+msgstr "hilang nama variabel"
+
+#: info/infokey.c:733
+msgid "missing `=' immediately after variable name"
+msgstr "hilang `=' langsung setelah nama variabel"
+
+#: info/infokey.c:741
+msgid "variable name too long"
+msgstr "nama variabel terlalu panjang"
+
+#: info/infokey.c:765
+msgid "value too long"
+msgstr "nilai terlalu panjang"
+
+#: info/infokey.c:890
+#, c-format
+msgid "\"%s\", line %u: "
+msgstr "\"%s\", naris %u: "
+
+#: info/infokey.c:906
+#, c-format
+msgid ""
+"Usage: %s [OPTION]... [INPUT-FILE]\n"
+"\n"
+"Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+"$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n"
+"\n"
+"Options:\n"
+"  --output FILE        output to FILE instead of $HOME/.info\n"
+"  --help               display this help and exit.\n"
+"  --version            display version information and exit.\n"
+msgstr ""
+"Penggunaan: %s [OPSI]... [BERKAS-MASUKAN]\n"
+"\n"
+"Kompile infokey berkas sumber ke berkas infokey. Baca BERKAS-MASUKAN (baku\n"
+"$HOME/.infokey) dan tulis berkas kunci yang dikompile ke (baku) $HOME/.info.\n"
+"\n"
+"Opsi:\n"
+"  --output BERKAS      keluarkan ke BERKAS daripada dari $HOME/.info\n"
+"  --help               tampilkan bantuan ini dan keluar.\n"
+"  --version            tampilkan informasi versi dan keluar.\n"
+
+#: info/infomap.c:955
+#, c-format
+msgid "Ignoring invalid infokey file `%s' - too small"
+msgstr "Mengabaikan berkas infokey `%s' tidak valid - terlalu kecil"
+
+#: info/infomap.c:958
+#, c-format
+msgid "Ignoring invalid infokey file `%s' - too big"
+msgstr "Mengabaikan berkas infokey `%s' tidak valid - terlalu besar"
+
+#: info/infomap.c:971
+#, c-format
+msgid "Error reading infokey file `%s' - short read"
+msgstr "Error membaca berkas infokey `%s' - baca pendek"
+
+#: info/infomap.c:990
+#, c-format
+msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr "Berkas infokey `%s' tidak valid (nomor magik buruk) -- jalankan infokey untuk mengupdatenya"
+
+#: info/infomap.c:999
+#, c-format
+msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+msgstr "Berkas infokey `%s' anda sudah kadaluarsa -- jalankan infokey untuk mengupdatenya"
+
+#: info/infomap.c:1015
+#, c-format
+msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr "Berkas infokey `%s' tidak valid (panjang daerah buruk) -- jalankan infokey untuk mengupdatenya"
+
+#: info/infomap.c:1036
+#, c-format
+msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr "Berkas infokey `%s' (kode daerah buruk) tidak valid -- jalankan infokey untuk mengupdatenya"
+
+#: info/infomap.c:1171
+msgid "Bad data in infokey file -- some key bindings ignored"
+msgstr "Data buruk dalam berkas infokey -- beberapa kunci binding diabaikan"
+
+#: info/infomap.c:1221
+msgid "Bad data in infokey file -- some var settings ignored"
+msgstr "Data buruk dalam berkas infokey -- beberapa konfigurasi var diabaikan"
+
+#: info/m-x.c:68
+msgid "Read the name of an Info command and describe it"
+msgstr "Baca nama dari sebuah perintah Info dan jelaskan itu"
+
+#: info/m-x.c:72
+msgid "Describe command: "
+msgstr "Jelaskan perintah: "
+
+#: info/m-x.c:95
+msgid "Read a command name in the echo area and execute it"
+msgstr "Baca sebuah nama perintah dalam daerah echo dan jalankan itu"
+
+#: info/m-x.c:139
+msgid "Cannot execute an `echo-area' command here."
+msgstr "Tidak dapat menjalankan sebuah perintah `echo-area'  disini."
+
+#: info/m-x.c:153
+#, c-format
+msgid "Undefined command: %s"
+msgstr "Perintah: %s tidak terdefinisi"
+
+#: info/m-x.c:159
+msgid "Set the height of the displayed window"
+msgstr "Set tinggi dari jendela yang ditampilkan"
+
+#: info/m-x.c:172
+#, c-format
+msgid "Set screen height to (%d): "
+msgstr "Set tinggi layar ke (%d): "
+
+#: info/makedoc.c:166 info/makedoc.c:174
+#, c-format
+msgid ""
+"   Source files groveled to make this file include:\n"
+"\n"
+msgstr ""
+"   Berkas sumber groveled untuk membuat berkas ini dimasukan:\n"
+"\n"
+
+#: info/makedoc.c:556
+#, c-format
+msgid "Couldn't manipulate the file %s.\n"
+msgstr "Tidak dapat memanipulasi berkas %s.\n"
+
+#: info/nodemenu.c:30
+msgid ""
+"\n"
+"* Menu:\n"
+"  (File)Node                        Lines   Size   Containing File\n"
+"  ----------                        -----   ----   ---------------"
+msgstr ""
+"\n"
+"* Menu:\n"
+"  (File)Titik                       Baris   Ukuran Berisi Berkas\n"
+"  -----------                       -----   ------ -------------"
+
+#: info/nodemenu.c:201
+msgid ""
+"Here is the menu of nodes you have recently visited.\n"
+"Select one from this menu, or use `\\[history-node]' in another window.\n"
+msgstr ""
+"Disini adalah menu dari titik yang telah anda kunjungi baru baru ini.\n"
+"Pilih salah satu dari menu ini, atau gunakan `\\[history-node]' dalam jendela lain.\n"
+
+#: info/nodemenu.c:223
+msgid "Make a window containing a menu of all of the currently visited nodes"
+msgstr "Buat sebuah jendela berisi sebuah menu dari seluruh dari titik yang baru baru ini dikunjungi"
+
+#: info/nodemenu.c:303
+msgid "Select a node which has been previously visited in a visible window"
+msgstr "Pilih sebuah titik yang telah dikunjungi sebelumnya dalam jendela terlihat"
+
+#: info/nodemenu.c:316
+msgid "Select visited node: "
+msgstr "Pilih titik yang dikunjungi: "
+
+#: info/nodemenu.c:336 info/session.c:2578
+#, c-format
+msgid "The reference disappeared! (%s)."
+msgstr "Referensi menghilang! (%s)."
+
+#: info/search.c:166
+#, c-format
+msgid "regexp error: %s"
+msgstr "regexp error: %s"
+
+#: info/session.c:164
+#, c-format
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgstr "Selamat datang ke Info versi %s. Ketik \\[get-help-window] untuk bantuan, \\[menu-item] untuk item menu."
+
+#: info/session.c:625
+msgid "Move down to the next line"
+msgstr "Pindah kebawah ke baris selanjutnya"
+
+#: info/session.c:661
+msgid "Move up to the previous line"
+msgstr "Pindah keatas ke baris sebelumnya"
+
+#: info/session.c:931
+msgid "Move to the end of the line"
+msgstr "Pindah ke akhir dari baris"
+
+#: info/session.c:942
+msgid "Move to the start of the line"
+msgstr "Pindah ke awal dari baris"
+
+#: info/session.c:1142
+msgid "Next"
+msgstr "Selanjutnya"
+
+#: info/session.c:1158 info/session.c:1283
+msgid "No more nodes within this document."
+msgstr "Tidak ada titik lagi didalam dokumen ini."
+
+#: info/session.c:1309
+msgid "No `Prev' for this node."
+msgstr "Tidak ada `Prev' untuk titik ini."
+
+#: info/session.c:1329
+msgid "No `Prev' or `Up' for this node within this document."
+msgstr "Tidak ada `Prev' atau `Up' untuk titik ini didalam dokumen ini."
+
+#: info/session.c:1391
+msgid "Move forwards or down through node structure"
+msgstr "Pindah kedepan atau kebawah melalui struktur titik"
+
+#: info/session.c:1407
+msgid "Move backwards or up through node structure"
+msgstr "Pindah kebelakang atau keatas melalui struktur node"
+
+#: info/session.c:1508
+msgid "Scroll forward in this window"
+msgstr "Scroll kedepan di jendela ini"
+
+#: info/session.c:1516
+msgid "Scroll forward in this window and set default window size"
+msgstr "Scroll kedepan dalam jendela ini dan set ukuran baku jendela"
+
+#: info/session.c:1524
+msgid "Scroll forward in this window staying within node"
+msgstr "Scroll kedepan dalam jendela ini tetap dalam titik"
+
+#: info/session.c:1532
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "Scroll kedepan dalam jendela ini tetap dalam titik dan set ukuran baku jendela"
+
+#: info/session.c:1540
+msgid "Scroll backward in this window"
+msgstr "Scroll kebelakang dalam jendela ini"
+
+#: info/session.c:1548
+msgid "Scroll backward in this window and set default window size"
+msgstr "Scroll kebelakang dalam jendela ini dan set ukuran baku jendela"
+
+#: info/session.c:1557
+msgid "Scroll backward in this window staying within node"
+msgstr "Scroll kebelakang dalam jendela ini tetap dalam titik"
+
+#: info/session.c:1565
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "Scroll kebelakan dalam jendela ini tetap dalam titik dan set ukuran baku jendela"
+
+#: info/session.c:1573
+msgid "Move to the start of this node"
+msgstr "Pindah ke awal dari titik ini"
+
+#: info/session.c:1580
+msgid "Move to the end of this node"
+msgstr "Pindah ke akhir dari titik ini"
+
+#: info/session.c:1587
+msgid "Scroll down by lines"
+msgstr "Scroll ke bawah dengan baris"
+
+#: info/session.c:1604
+msgid "Scroll up by lines"
+msgstr "Scroll ke atas dengan baris"
+
+#: info/session.c:1622
+msgid "Scroll down by half screen size"
+msgstr "Scroll kebawah dengan setengah ukuran layar"
+
+#: info/session.c:1648
+msgid "Scroll up by half screen size"
+msgstr "Scroll keatas dengan setengah ukuran layar"
+
+#: info/session.c:1677
+msgid "Select the next window"
+msgstr "Pilih jendela selanjutnya"
+
+#: info/session.c:1716
+msgid "Select the previous window"
+msgstr "Pilih jendela sebelumnya"
+
+#: info/session.c:1767
+msgid "Split the current window"
+msgstr "Pisahkan jendela sekarang"
+
+#: info/session.c:1848
+msgid "Delete the current window"
+msgstr "Hapus jendela sekarang"
+
+#: info/session.c:1856
+msgid "Cannot delete a permanent window"
+msgstr "Tidak dapat menghapus sebuah jendela permanen"
+
+#: info/session.c:1888
+msgid "Delete all other windows"
+msgstr "Hapus seluruh jendela lain"
+
+#: info/session.c:1934
+msgid "Scroll the other window"
+msgstr "Scroll ke jendela lain"
+
+#: info/session.c:1955
+msgid "Scroll the other window backward"
+msgstr "Scroll ke jendela lain terbalik"
+
+#: info/session.c:1961
+msgid "Grow (or shrink) this window"
+msgstr "Naikan (atau turunkan) jendela ini"
+
+#: info/session.c:1972
+msgid "Divide the available screen space among the visible windows"
+msgstr "Bagi ruang layar yang tersedia diantara jendela yang terlihat"
+
+#: info/session.c:1979
+msgid "Toggle the state of line wrapping in the current window"
+msgstr "Toggle keadaan dari baris wrapping dalam jendela sekarang"
+
+#: info/session.c:1986
+msgid "Toggle the usage of regular expressions in searches"
+msgstr "Toggle penggunaan dari ekspresi regular dalam pencarian"
+
+#: info/session.c:1990
+msgid "Using regular expressions for searches."
+msgstr "Menggunakan ekspresi regular untuk pencarian."
+
+#: info/session.c:1991
+msgid "Using literal strings for searches."
+msgstr "Menggunakan string literal untuk pencarian."
+
+#: info/session.c:2162
+msgid "Select the Next node"
+msgstr "Pilih titik Sebelumnya"
+
+#: info/session.c:2170
+msgid "Select the Prev node"
+msgstr "Pilih titik Selanjutnya"
+
+#: info/session.c:2178
+msgid "Select the Up node"
+msgstr "Pilih titik Atas"
+
+#: info/session.c:2185
+msgid "Select the last node in this file"
+msgstr "Pilih titik terakhir dalam berkas ini"
+
+#: info/session.c:2212 info/session.c:2245
+msgid "This window has no additional nodes"
+msgstr "Jendela ini tidak memiliki titik tambahan"
+
+#: info/session.c:2218
+msgid "Select the first node in this file"
+msgstr "Pilih titik pertama dalam berkas ini"
+
+#: info/session.c:2252
+msgid "Select the last item in this node's menu"
+msgstr "Pilih item terakhir dalam menu titik ini"
+
+#: info/session.c:2258
+msgid "Select this menu item"
+msgstr "Pilih menu item ini"
+
+#: info/session.c:2291
+#, c-format
+msgid "There aren't %d items in this menu."
+msgstr "Disana tidak ada %d item dalam menu ini."
+
+#: info/session.c:2485 info/session.c:2486
+#, c-format
+msgid "Menu item (%s): "
+msgstr "Menu item (%s): "
+
+#: info/session.c:2489
+msgid "Menu item: "
+msgstr "Menu item: "
+
+#: info/session.c:2496 info/session.c:2497
+#, c-format
+msgid "Follow xref (%s): "
+msgstr "Mengikuti xref (%s): "
+
+#: info/session.c:2500
+msgid "Follow xref: "
+msgstr "Mengikuti xref: "
+
+#: info/session.c:2629
+msgid "Read a menu item and select its node"
+msgstr "Baca sebuah item menu dan pilih titiknya"
+
+#: info/session.c:2637
+msgid "Read a footnote or cross reference and select its node"
+msgstr "Baca sebuah catatan kaki atau referensi silang dan pilih titiknya"
+
+#: info/session.c:2643
+msgid "Move to the start of this node's menu"
+msgstr "Pindah ke awal dari titik menu ini"
+
+#: info/session.c:2667
+msgid "Visit as many menu items at once as possible"
+msgstr "Kunjungi banyak menu item sekaligus jika memungkinkan"
+
+#: info/session.c:2695
+msgid "Read a node name and select it"
+msgstr "Baca sebuah nama titik dan pilih itu"
+
+#: info/session.c:2750 info/session.c:2755
+msgid "Goto node: "
+msgstr "Pergi ke titik: "
+
+#: info/session.c:2819
+#, c-format
+msgid "No menu in node `%s'."
+msgstr "Tidak ada menu dalam titik `%s'."
+
+#: info/session.c:2865
+#, c-format
+msgid "No menu item `%s' in node `%s'."
+msgstr "Tidak ada menu item `%s' dalam titik `%s'."
+
+#: info/session.c:2895
+#, c-format
+msgid "Unable to find node referenced by `%s' in `%s'."
+msgstr "Tidak dapat menemukan titik direferensikan oleh `%s' dalam `%s'."
+
+#: info/session.c:2945
+msgid "Read a list of menus starting from dir and follow them"
+msgstr "Baca sebuah daftar dari menu berawal dari dir dan ikuti tersebut"
+
+#: info/session.c:2947
+msgid "Follow menus: "
+msgstr "Ikuti menus: "
+
+#: info/session.c:3140
+msgid "Find the node describing program invocation"
+msgstr "Cari titik yang menjelaskan pemanggilan aplikasi"
+
+#: info/session.c:3142
+#, c-format
+msgid "Find Invocation node of [%s]: "
+msgstr "Cari titik pemanggilan dari [%s]: "
+
+#: info/session.c:3180
+msgid "Read a manpage reference and select it"
+msgstr "Baca sebuah referensi halaman manual dan pilih itu"
+
+#: info/session.c:3184
+msgid "Get Manpage: "
+msgstr "Dapatkan Halaman manual: "
+
+#: info/session.c:3214
+msgid "Select the node `Top' in this file"
+msgstr "Pilih titik `Top' dalam berkas ini"
+
+#: info/session.c:3220
+msgid "Select the node `(dir)'"
+msgstr "Pilih titik `(dir)'"
+
+#: info/session.c:3237 info/session.c:3239
+#, c-format
+msgid "Kill node (%s): "
+msgstr "Bunuh titik (%s): "
+
+#: info/session.c:3291
+#, c-format
+msgid "Cannot kill node `%s'"
+msgstr "Tidak dapat membunuh titik `%s'"
+
+#: info/session.c:3301
+msgid "Cannot kill the last node"
+msgstr "Tidak dapat membunuh titik terakhir"
+
+#: info/session.c:3387
+msgid "Select the most recently selected node"
+msgstr "Pilih titik yang dipilih paling baru"
+
+#: info/session.c:3393
+msgid "Kill this node"
+msgstr "Bunuh titik ini"
+
+#: info/session.c:3401
+msgid "Read the name of a file and select it"
+msgstr "Baca nama dari sebuah berkas dan pilih itu"
+
+#: info/session.c:3405
+msgid "Find file: "
+msgstr "Cari berkas: "
+
+#: info/session.c:3422
+#, c-format
+msgid "Cannot find `%s'."
+msgstr "Tidak dapat menemukan `%s'."
+
+#: info/session.c:3465 info/session.c:3583
+#, c-format
+msgid "Could not create output file `%s'."
+msgstr "Tidak dapat membuat berkas keluaran `%s'."
+
+#: info/session.c:3479 info/session.c:3601 info/session.c:3661
+msgid "Done."
+msgstr "Selesai."
+
+#: info/session.c:3534
+#, c-format
+msgid "Writing node %s..."
+msgstr "Menulis titik %s..."
+
+#: info/session.c:3610
+msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+msgstr "Pipe isi dari titik ini melalui INFO_PRINT_COMMAND"
+
+#: info/session.c:3645
+#, c-format
+msgid "Cannot open pipe to `%s'."
+msgstr "Tidak dapat membuka pipe ke `%s'."
+
+#: info/session.c:3651
+#, c-format
+msgid "Printing node %s..."
+msgstr "Mencetak titik %s..."
+
+#: info/session.c:3900
+msgid "Search continued from the end of the document."
+msgstr "Pencarian dilanjutkan dari akhir dari dokumen."
+
+#: info/session.c:3905
+msgid "Search continued from the beginning of the document."
+msgstr "Pencarian dilanjutkan dari awal dari dokumen."
+
+#: info/session.c:3922
+#, c-format
+msgid "Searching subfile %s ..."
+msgstr "Pencarian subfile %s ..."
+
+#: info/session.c:3979
+msgid "Read a string and search for it case-sensitively"
+msgstr "Baca sebuah string dan cari itu dengan tidak membedakan besar huruf"
+
+#: info/session.c:3986
+msgid "Read a string and search for it"
+msgstr "Baca sebuah string dan cari itu"
+
+#: info/session.c:3994
+msgid "Read a string and search backward for it"
+msgstr "Baca sebuah string dan cari kebelakang untuk itu"
+
+#: info/session.c:4030 info/session.c:4036
+#, c-format
+msgid "%s%s%s [%s]: "
+msgstr "%s%s%s [%s]: "
+
+#: info/session.c:4031 info/session.c:4037
+msgid "Regexp search"
+msgstr "Pencarian regexp"
+
+#: info/session.c:4032 info/session.c:4038
+msgid " case-sensitively"
+msgstr " tidak membedakan besar huruf"
+
+#: info/session.c:4033 info/session.c:4039
+msgid " backward"
+msgstr " kebelakang"
+
+#: info/session.c:4037
+msgid "Search"
+msgstr "Pencarian"
+
+#: info/session.c:4079
+msgid "Search failed."
+msgstr "Pencarian gagal."
+
+#: info/session.c:4097
+msgid "Repeat last search in the same direction"
+msgstr "Ulangi pencarian terakhir dalam arah yang sama"
+
+#: info/session.c:4100 info/session.c:4110
+msgid "No previous search string"
+msgstr "Tidak ada string pencarian sebelumnya"
+
+#: info/session.c:4107
+msgid "Repeat last search in the reverse direction"
+msgstr "Ulangi pencarian terakhir dalam arah terbalik"
+
+#: info/session.c:4126 info/session.c:4132
+msgid "Search interactively for a string as you type it"
+msgstr "Pencarian secara interaktif untuk sebuah string seperti anda mengetikkannya"
+
+#: info/session.c:4212
+msgid "Regexp I-search backward: "
+msgstr "Regexp I-search kebelakang: "
+
+#: info/session.c:4213
+msgid "I-search backward: "
+msgstr "I-search kebelakang: "
+
+#: info/session.c:4215
+msgid "Regexp I-search: "
+msgstr "Regexp I-search: "
+
+#: info/session.c:4216
+msgid "I-search: "
+msgstr "I-search: "
+
+#: info/session.c:4241 info/session.c:4243
+msgid "Failing "
+msgstr "Menggagalkan "
+
+#: info/session.c:4734
+msgid "Move to the previous cross reference"
+msgstr "Pindah ke referensi silang sebelumnya"
+
+#: info/session.c:4752
+msgid "Move to the next cross reference"
+msgstr "Pindah ke referensi silang selanjutnya"
+
+#: info/session.c:4774
+msgid "Select reference or menu item appearing on this line"
+msgstr "Pilih referensi atau menu item muncul dalam baris ini"
+
+#: info/session.c:4797
+msgid "Cancel current operation"
+msgstr "Batalkan operasi sekarang"
+
+#: info/session.c:4804
+msgid "Quit"
+msgstr "Berhenti"
+
+#: info/session.c:4813
+msgid "Move the cursor to a specific line of the window"
+msgstr "Pindah kursor ke baris spesifik dari jendela"
+
+#: info/session.c:4845
+msgid "Redraw the display"
+msgstr "Gambar kembali tampilan"
+
+#: info/session.c:4882
+msgid "Quit using Info"
+msgstr "Berhenti menggunakan Info"
+
+#: info/session.c:4895
+msgid "Run command bound to this key's lowercase variant"
+msgstr "Jalankan perintah terikat variasi kunci huruf kecil ini"
+
+#: info/session.c:4906
+#, c-format
+msgid "Unknown command (%s)."
+msgstr "Perintah (%s) tidak diketahui."
+
+#: info/session.c:4909
+#, c-format
+msgid "\"%s\" is invalid"
+msgstr "\"%s\" tidak valid"
+
+#: info/session.c:4910
+#, c-format
+msgid "`%s' is invalid"
+msgstr "`%s' tidak valid"
+
+#: info/session.c:5125
+msgid "Add this digit to the current numeric argument"
+msgstr "Tambahkan digit ini ke argumen numerik sekarang"
+
+#: info/session.c:5134
+msgid "Start (or multiply by 4) the current numeric argument"
+msgstr "Awal (atau kelipatan dari 4) argumen numerik sekarang"
+
+#: info/session.c:5149
+msgid "Internally used by \\[universal-argument]"
+msgstr "Secara internal digunakan oleh \\[argumen-universal]"
+
+#: info/tilde.c:336
+#, c-format
+msgid "readline: Out of virtual memory!\n"
+msgstr "readline: Kehabisan memori virtual!\n"
+
+#: info/variables.c:37
+msgid "When \"On\", footnotes appear and disappear automatically"
+msgstr "Ketika \"On\", catatan kaki muncul dan menghilang secara otomatis"
+
+#: info/variables.c:41
+msgid "When \"On\", creating or deleting a window resizes other windows"
+msgstr "Ketika \"On\", pembuatan atau penghapusan sebuah jendela mengubah ukuran jendela lain"
+
+#: info/variables.c:45
+msgid "When \"On\", flash the screen instead of ringing the bell"
+msgstr "Ketika \"On\", flash layar daripada deringkan bell"
+
+#: info/variables.c:49
+msgid "When \"On\", errors cause the bell to ring"
+msgstr "Ketika \"On\",  error menyebabkan bell untuk mendering"
+
+#: info/variables.c:53
+msgid "When \"On\", Info garbage collects files which had to be uncompressed"
+msgstr "Ketikan \"On\", Info mengkoleksi berkas sampah yang telah diunkompress"
+
+#: info/variables.c:56
+msgid "When \"On\", the portion of the matched search string is highlighted"
+msgstr "Ketika \"On\", bagian dari string pencarian yang tidak cocok dihighlighted"
+
+#: info/variables.c:60
+msgid "Controls what happens when scrolling is requested at the end of a node"
+msgstr "Kontrol apa yang akan terjadi ketika scrolling diminta diakhir dari sebuah titik"
+
+#: info/variables.c:65
+msgid "Same as scroll-behaviour"
+msgstr "Sama seperti scroll-behaviour"
+
+#: info/variables.c:69
+msgid "The number lines to scroll when the cursor moves out of the window"
+msgstr "Jumlah baris untuk scroll ketika kursor keluar dari jendela"
+
+#: info/variables.c:73
+msgid "Controls whether scroll-behavior affects cursor movement commands"
+msgstr "Kontrol ketika perilaku scroll mempengaruhi perintah perpindahan kursor"
+
+#: info/variables.c:77
+msgid "When \"On\", Info accepts and displays ISO Latin characters"
+msgstr "Ketika \"On\", Info menerima dan menampilkan karakter ISO Latin"
+
+#: info/variables.c:81
+msgid "What to do when a scrolling command is issued at the end of the last node"
+msgstr "Apa yang akan dilakukan ketika sebuah perintah scrolling diberikan diakhir dari titik terakhir"
+
+#: info/variables.c:88
+msgid "Explain the use of a variable"
+msgstr "Jelaskan penggunaan dari sebuah variabel"
+
+#: info/variables.c:94
+msgid "Describe variable: "
+msgstr "Jelaskan variabel: "
+
+#: info/variables.c:113
+msgid "Set the value of an Info variable"
+msgstr "Set nilai dari sebuah variabel Info"
+
+#: info/variables.c:119
+msgid "Set variable: "
+msgstr "Set variabel: "
+
+#: info/variables.c:137
+#, c-format
+msgid "Set %s to value (%d): "
+msgstr "Set %s ke nilai (%d): "
+
+#: info/variables.c:178
+#, c-format
+msgid "Set %s to value (%s): "
+msgstr "Set %s ke nilai (%s): "
+
+#: info/window.c:1026
+msgid "--*** Tags out of Date ***"
+msgstr "--*** Tags sudah kadaluarsa ***"
+
+#: info/window.c:1037
+msgid "-----Info: (), lines ----, "
+msgstr "-----Info: (), baris ---, "
+
+#: info/window.c:1044
+#, c-format
+msgid "-%s---Info: %s, %d lines --%s--"
+msgstr "-%s---Info: %s, %d baris --%s--"
+
+#: info/window.c:1048
+#, c-format
+msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+msgstr "--%s%s-Info: (%s)%s, %d baris --%s--"
+
+#: info/window.c:1055
+#, c-format
+msgid " Subfile: %s"
+msgstr " Subfile: %s"
+
+#: install-info/install-info.c:221
+#, c-format
+msgid "%s: warning: "
+msgstr "%s: peringatan: "
+
+#: install-info/install-info.c:270
+#, c-format
+msgid " for %s"
+msgstr " untuk %s"
+
+#: install-info/install-info.c:500
+#, c-format
+msgid "\tTry `%s --help' for a complete list of options.\n"
+msgstr "\tCoba `%s --help' untuk sebuah daftar lengkap dari opsi.\n"
+
+#: install-info/install-info.c:508
+#, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr "Penggunaan: %s [OPSI]... [BERKAS-INFO [BERKAS-DIR]]\n"
+
+#: install-info/install-info.c:510
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+msgstr "Tambah atau hapus masukan dalam BERKAS-INFO dari direktori Info BERKAS-DIR."
+
+#: install-info/install-info.c:513
+msgid ""
+"Options:\n"
+" --debug             report what is being done.\n"
+" --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                      don't insert any new entries.\n"
+" --description=TEXT  the description of the entry is TEXT; used with\n"
+"                      the --name option to become synonymous with the\n"
+"                      --entry option.\n"
+" --dir-file=NAME     specify file name of Info directory file;\n"
+"                      equivalent to using the DIR-FILE argument.\n"
+" --dry-run           same as --test."
+msgstr ""
+"Opsi:\n"
+" --debug             laporkan apa yang sedang dikerjakan.\n"
+" --delete            hapus masukan yang sudah ada untuk BERKAS-INFO dari BERKAS-DIR;\n"
+"                     jangan masukan masukan baru apapun.\n"
+" --description=TEKS  deskripsi dari masukan adalah TEKS; gunakan dengan\n"
+"                     opsi --name untuk menjadi sinonim dengan \n"
+"                     opsi --entry.\n"
+" --dir-file=NAMA     spesifikasikan nama berkas dari direktori berkas Info;\n"
+"                     sama dengan menggunakan argumen BERKAS-DIR.\n"
+" --dry-run           sama seperti --test."
+
+#: install-info/install-info.c:525
+msgid ""
+" --entry=TEXT        insert TEXT as an Info directory entry.\n"
+"                      TEXT is written as an Info menu item line followed\n"
+"                       by zero or more extra lines starting with whitespace.\n"
+"                      If you specify more than one entry, all are added.\n"
+"                      If you don't specify any entries, they are determined\n"
+"                       from information in the Info file itself.\n"
+"                      When removing, TEXT specifies the entry to remove.\n"
+"                      TEXT is only removed as a last resort, if the\n"
+"                      entry as determined from the Info file is not present,\n"
+"                      and the basename of the Info file isn't found either."
+msgstr ""
+" --entry=TEXT        masukan TEKS sebagai sebuah masukan direktori Info.\n"
+"                     TEKS ditulis sebagai sebuah item menu Info baris\n"
+"                     diikuti dengan nol atau lebih baris dimulai dengan spasi.\n"
+"                     Jika anda menspesifikasikan lebih dari satu masukan, semua akan ditambahkan.\n"
+"                     Jika anda tidka menspesifikasikan masukan apapun, mereka ditentukan\n"
+"                     dari informasi dalam berkas Info itu sendiri.\n"
+"                     Ketika menghapus, TEKS menspesifikasikan masukan untuk menghapus.\n"
+"                     TEKS hanya dihapus sebagai resort terakhir, jika\n"
+"                     masukan ditentukan dari berkas Info tidak ada,\n"
+"                     dan nama dasar dari berkas Info tidak ditemukan juga."
+
+#: install-info/install-info.c:537
+msgid ""
+" --help              display this help and exit.\n"
+" --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+" --info-file=FILE    specify Info file to install in the directory;\n"
+"                      equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT         same as --entry=TEXT.\n"
+" --keep-old          do not replace entries, or remove empty sections.\n"
+" --menuentry=TEXT    same as --name=TEXT.\n"
+" --name=TEXT         the name of the entry is TEXT; used with --description\n"
+"                      to become synonymous with the --entry option.\n"
+" --no-indent         do not format new entries in the DIR file.\n"
+" --quiet             suppress warnings."
+msgstr ""
+" --help              tampilkan pesan bantuan ini dan keluar.\n"
+" --info-dir=DIR      sama seperti --dir-file=DIR/dir.\n"
+" --info-file=BERKAS  spesifikasikan berkas Info untuk dipasang dalam direktori;\n"
+"                     sama dengan menggunakan argumen BERKAS-INFO.\n"
+" --item=TEKS         sama seperti --entry=TEKS.\n"
+" --keep-old          jangan ganti masukan, atau hapus daerah kosong.\n"
+" --menuentry=TEKS    sama seperti --name=TEKS.\n"
+" --name=TEKS         nama dari masukan adalah TEKS; gunakan dengan --description\n"
+"                     untuk menjadi sinonim dengan opsi --entry.\n"
+" --no-indent         jangan format masukan baru dalam berkas DIR.\n"
+" --quiet             tekan peringatan."
+
+#: install-info/install-info.c:550
+msgid ""
+" --regex=R           put this file's entries in all sections that match the\n"
+"                      regular expression R (ignoring case).\n"
+" --remove            same as --delete.\n"
+" --remove-exactly    only remove if the info file name matches exactly;\n"
+"                      suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC       put entries in section SEC of the directory.\n"
+"                      If you specify more than one section, all the entries\n"
+"                       are added in each of the sections.\n"
+"                      If you don't specify any sections, they are determined\n"
+"                       from information in the Info file itself.\n"
+" --section R SEC     equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+" --regex=R           letakan masukan berkas ini dalam seluruh bagian yang cocok\n"
+"                     dengan ekspresi regular R (mengabaikan besar huruf).\n"
+" --remove            sama seperti --delete.\n"
+" --remove-exactly    hanya hapus jika nama berkas info cocok secara tepat;\n"
+"                     akhiran seperti .info dan .gz diabaikan.\n"
+" --section=SEC       tempatkan masukan dalam daerah SEC dari direktori.\n"
+"                     Jika anda menspesifikasikan lebih dari satu daerah, semua masukan\n"
+"                     ditambahkan dalam setiap bagian.\n"
+"                     Jika anda tidak menspesifikasikan bagian apapun, mereka ditentukan\n"
+"                     dari informasi dalam berkas Info itu sendiri.\n"
+" --section R SEC     sam dengan --regex=R --section=SEC --add-once."
+
+#: install-info/install-info.c:563
+msgid ""
+" --silent            suppress warnings.\n"
+" --test              suppress updating of DIR-FILE.\n"
+" --version           display version information and exit."
+msgstr ""
+" --silent            tekan peringatan.\n"
+" --test              tekang pengupdatan dari BERKAS-DIR.\n"
+" --version           tampilkan informasi versi dan keluar."
+
+#: install-info/install-info.c:570
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"Email laporan bug ke bug-texinfo@gnu.org,\n"
+"pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
+"Texinfo halaman rumah: http://www.gnu.org/software/texinfo/"
+
+#: install-info/install-info.c:597
+#, c-format
+msgid ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"%s\n"
+msgstr ""
+"Ini adalah berkas .../info/dir, yang berisi\n"
+"titik paling atas dari struktur Info, dipanggil (dir)Top.\n"
+"Pertama kali anda memanggil Info anda berawal dari melihat titik ini.\n"
+"^_\n"
+"%s\tIni adalah tingkat paling atas dari pohon INFO\n"
+"\n"
+" Ini (titik Direktori) memberikan sebuah menu dari topik utama.\n"
+" Ketik \"q\" keluar, \"?\" daftar seluruh perintah Info, \"d\" kembali disini,\n"
+" \"h\" memberikan bantuan untuk pemula,\n"
+" \"mEmacs<Return>\" mengunjungi manual Emacs, etc.\n"
+"\n"
+" Dalam Emacs, anda dapat menklik mouse tombol 2 dalam sebuah item menu atau referensi silang\n"
+" untuk memilihnya.\n"
+"\n"
+"%s\n"
+
+#: install-info/install-info.c:622
+#, c-format
+msgid "%s: could not read (%s) and could not create (%s)\n"
+msgstr "%s: tidak dapat membaca (%s) dan tidak dapat membuat (%s)\n"
+
+#: install-info/install-info.c:715
+#, c-format
+msgid "%s: empty file"
+msgstr "%s: berkas kosong"
+
+#: install-info/install-info.c:1046 install-info/install-info.c:1086
+msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+msgstr "START-INFO-DIR-ENTRY tanpat pasangan END-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1081
+msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+msgstr "END-INFO-DIR-ENTRY tanpa pasangan START-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1946 install-info/install-info.c:1956
+#, c-format
+msgid "%s: already have dir file: %s\n"
+msgstr "%s: telah memiliki berkas dir: %s\n"
+
+#: install-info/install-info.c:2036
+#, c-format
+msgid "%s: Specify the Info file only once.\n"
+msgstr "%s: Spesifikasikan berkas Info hanya sekali.\n"
+
+#: install-info/install-info.c:2069
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr "Ekstra ekspresi regular dispesifikasikan, mengabaikan `%s'"
+
+#: install-info/install-info.c:2081
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr "Error dalam ekspresi regular `%s': %s"
+
+#: install-info/install-info.c:2139
+#, c-format
+msgid "excess command line argument `%s'"
+msgstr "kelebihan argumen baris perintah `%s'"
+
+#: install-info/install-info.c:2143
+msgid "No input file specified; try --help for more information."
+msgstr "Tidak ada berkas masukan dispesifikasikan; coba --help untuk informasi lebih lanjut."
+
+#: install-info/install-info.c:2146
+msgid "No dir file specified; try --help for more information."
+msgstr "Tidak ada berkas direktori dispesifikasikan; coba --help untuk informasi lebih lanjut."
+
+#: install-info/install-info.c:2288
+#, c-format
+msgid "no info dir entry in `%s'"
+msgstr "tidak ada masukan direktori info dalam `%s'"
+
+#: install-info/install-info.c:2536
+#, c-format
+msgid "no entries found for `%s'; nothing deleted"
+msgstr "tidak ada masukan ditemukan untuk `%s'; tidak ada yang dihapus"
+
+#: lib/xexit.c:54
+msgid "ferror on stdout\n"
+msgstr "ferror dalam stdout\n"
+
+#: lib/xexit.c:59
+msgid "fflush error on stdout\n"
+msgstr "fflush error dalam stdout\n"
+
+#: makeinfo/cmds.c:582 makeinfo/cmds.c:604
+#, c-format
+msgid "arguments to @%s ignored"
+msgstr "argumen ke @%s diabaikan"
+
+#: makeinfo/cmds.c:779
+msgid "January"
+msgstr "Januari"
+
+#: makeinfo/cmds.c:779
+msgid "February"
+msgstr "Februari"
+
+#: makeinfo/cmds.c:779
+msgid "March"
+msgstr "Maret"
+
+#: makeinfo/cmds.c:779
+msgid "April"
+msgstr "April"
+
+#: makeinfo/cmds.c:779
+msgid "May"
+msgstr "Mei"
+
+#: makeinfo/cmds.c:780
+msgid "June"
+msgstr "Juni"
+
+#: makeinfo/cmds.c:780
+msgid "July"
+msgstr "Juli"
+
+#: makeinfo/cmds.c:780
+msgid "August"
+msgstr "Agustus"
+
+#: makeinfo/cmds.c:780
+msgid "September"
+msgstr "September"
+
+#: makeinfo/cmds.c:780
+msgid "October"
+msgstr "Oktober"
+
+#: makeinfo/cmds.c:781
+msgid "November"
+msgstr "November"
+
+#: makeinfo/cmds.c:781
+msgid "December"
+msgstr "Desember"
+
+#: makeinfo/cmds.c:1131
+#, c-format
+msgid "unlikely character %c in @var"
+msgstr "tidak seperti karakter %c dalam @var"
+
+#: makeinfo/cmds.c:1174
+msgid "@sc argument all uppercase, thus no effect"
+msgstr "@sc argumen semuanya huruf besar, jadi tidak ada efek"
+
+#: makeinfo/cmds.c:1229
+#, c-format
+msgid "`{' expected, but saw `%c'"
+msgstr "`{' diduga, tetapi terlihat `%c'"
+
+#: makeinfo/cmds.c:1269
+msgid "end of file inside verb block"
+msgstr "akhir dari berkas didalam blok verb"
+
+#: makeinfo/cmds.c:1277
+#, c-format
+msgid "`}' expected, but saw `%c'"
+msgstr "`}' diduga, tetapi terlihat `%c'"
+
+#: makeinfo/cmds.c:1308
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Note...} menghasilkan sebuah referensi silang spurious dalam Info; reword ke untuk menghindari"
+
+#: makeinfo/cmds.c:1504
+#, c-format
+msgid "%c%s is obsolete"
+msgstr "%c%s sudah ditinggalkan"
+
+#: makeinfo/cmds.c:1612
+#, c-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr "@sp membutuhkan sebuah argumen numerik positif, bukan `%s'"
+
+#: makeinfo/cmds.c:2023 makeinfo/footnote.c:81
+#, c-format
+msgid "Bad argument to %c%s"
+msgstr "Argumen ke %c%s buruk"
+
+#: makeinfo/cmds.c:2033 makeinfo/makeinfo.c:4312
+msgid "asis"
+msgstr "asis"
+
+#: makeinfo/cmds.c:2035 makeinfo/cmds.c:2065 makeinfo/makeinfo.c:4314
+msgid "none"
+msgstr "kosong"
+
+#: makeinfo/cmds.c:2049
+#, c-format
+msgid "Bad argument to @%s"
+msgstr "Argumen ke @%s buruk"
+
+#: makeinfo/cmds.c:2063
+msgid "insert"
+msgstr "masukan"
+
+#: makeinfo/cmds.c:2079
+#, c-format
+msgid "Bad argument to @%s: %s"
+msgstr "Argumen ke @%s: %s buruk"
+
+#: makeinfo/cmds.c:2162
+#, c-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr "Diduga @%s on atau off, bukan `%s'"
+
+#: makeinfo/cmds.c:2182
+#, c-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr "Hanya @%s 10 atau 11 yang didukung, bukan `%s'"
+
+#: makeinfo/defun.c:83
+msgid "Missing `}' in @def arg"
+msgstr "Hilang `}' dalam @def arg"
+
+#: makeinfo/defun.c:711
+#, c-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr "Harus berada dalam lingkungan `@%s' untuk menggunakan `@%s'"
+
+#: makeinfo/files.c:434
+#, c-format
+msgid "%s: getwd: %s, %s\n"
+msgstr "%s: getwd: %s, %s\n"
+
+#: makeinfo/files.c:637
+#, c-format
+msgid "`%s' omitted before output filename"
+msgstr "`%s' diabaikan sebelum nama berkas keluaran"
+
+#: makeinfo/files.c:645
+#, c-format
+msgid "`%s' omitted since writing to stdout"
+msgstr "`%s' diabaikan karena menulis ke stdout"
+
+#: makeinfo/files.c:693
+msgid "Output buffer not empty."
+msgstr "Buffer keluaran tidak kosong."
+
+#: makeinfo/float.c:181
+#, c-format
+msgid "Requested float type `%s' not previously used"
+msgstr "Tipe float `%s' yang diminta belum digunakan sebelumnya"
+
+#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
+#: makeinfo/index.c:965
+msgid "See "
+msgstr "Lihat "
+
+#: makeinfo/footnote.c:149
+#, c-format
+msgid "`%c%s' needs an argument `{...}', not just `%s'"
+msgstr "`%c%s' membutuhkan sebuah argumen `{...}', tidak hanya `%s'"
+
+#: makeinfo/footnote.c:164
+#, c-format
+msgid "No closing brace for footnote `%s'"
+msgstr "Tidak ada kurung penutup untuk catatan kaki `%s'"
+
+#: makeinfo/footnote.c:197
+msgid "Footnote defined without parent node"
+msgstr "Catatan kaki didefinisikan tanpa titik orang tua"
+
+#: makeinfo/footnote.c:209
+msgid "Footnotes inside footnotes are not allowed"
+msgstr "Catatan kaki didalam catatan kaki tidak diijinkan"
+
+#: makeinfo/footnote.c:301 makeinfo/index.c:187
+msgid "Footnotes"
+msgstr "Catatan kaki"
+
+#: makeinfo/html.c:91
+#, c-format
+msgid "%s: could not open --css-file: %s"
+msgstr "%s: tidak dapat membuka --css-file: %s"
+
+#: makeinfo/html.c:180
+#, c-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d: --css-file berakhir dalam komentar"
+
+#: makeinfo/html.c:426
+msgid "[unexpected] no html tag to pop"
+msgstr "[unexpected] tidak ada tag html untuk pop"
+
+#: makeinfo/html.c:800
+#, c-format
+msgid "[unexpected] invalid node name: `%s'"
+msgstr "[unexpected] nama titik tidak valid: `%s'"
+
+#: makeinfo/index.c:167
+#, c-format
+msgid "Unknown index `%s'"
+msgstr "Indeks `%s' tidak diketahui"
+
+#: makeinfo/index.c:232
+#, c-format
+msgid "Info cannot handle `:' in index entry `%s'"
+msgstr "Info tidak dapat menangani `:' dalam masukan indeks `%s'"
+
+#: makeinfo/index.c:410
+#, c-format
+msgid "Index `%s' already exists"
+msgstr "Indeks `%s' telah ada"
+
+#: makeinfo/index.c:453
+#, c-format
+msgid "Unknown index `%s' and/or `%s' in @synindex"
+msgstr "Indeks `%s' tidak diketahui dan/atau `%s' dalam @synindeks"
+
+#: makeinfo/index.c:676
+msgid "(line )"
+msgstr "(baris )"
+
+#: makeinfo/index.c:684
+#, c-format
+msgid "(line %*d)"
+msgstr "(baris %*d)"
+
+#: makeinfo/index.c:765
+#, c-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Indeks `%s' tidak diketahui dalam @printindex"
+
+#: makeinfo/index.c:834
+#, c-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Masukan untuk indeks `%s' diluar dari titik apapun"
+
+#: makeinfo/index.c:837 makeinfo/index.c:873
+msgid "(outside of any node)"
+msgstr "(diluar dari titik apapun)"
+
+#: makeinfo/insertion.c:161
+msgid "@item not allowed in argument to @itemize"
+msgstr "@item tidak diijinkan dalam argume ke @itemize"
+
+#: makeinfo/insertion.c:242
+msgid "Broken-Type in insertion_type_pname"
+msgstr "Broken-Type dalam insertion_type_pname"
+
+#: makeinfo/insertion.c:338
+msgid "Enumeration stack overflow"
+msgstr "Enumerasi stack overflow"
+
+#: makeinfo/insertion.c:370
+#, c-format
+msgid "lettering overflow, restarting at %c"
+msgstr "lettering overflow, memulai di %c"
+
+#: makeinfo/insertion.c:639
+#, c-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s membutuhkan sebuah argumen: peformat untuk %c item"
+
+#: makeinfo/insertion.c:727
+#, c-format
+msgid "%cfloat environments cannot be nested"
+msgstr "%cfloat lingkungan tidak dapat nested"
+
+#: makeinfo/insertion.c:981
+#, c-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' diduga `%s', tetapi terlihat `%s'"
+
+#: makeinfo/insertion.c:1349
+#, c-format
+msgid "No matching `%cend %s'"
+msgstr "Tidak cocok `%cend %s'"
+
+#: makeinfo/insertion.c:1618
+#, c-format
+msgid "%s requires letter or digit"
+msgstr "%s membutuhkan huruf atau angka"
+
+#: makeinfo/insertion.c:1718
+msgid "end of file inside verbatim block"
+msgstr "akhir dari berkas didalam blok satu per satu"
+
+#: makeinfo/insertion.c:1942
+#, c-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr "@%s tidak berarti diluar lingkungan `@float'"
+
+#: makeinfo/insertion.c:1978
+msgid "@menu seen before first @node, creating `Top' node"
+msgstr "@menu terlihat sebelum @node pertama, membuat titik `Top'"
+
+#: makeinfo/insertion.c:1979
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "mungkin titik @top anda seharusnya wrapped dalam @ifnottex daripada @ifinfo?"
+
+#: makeinfo/insertion.c:1991
+msgid "@detailmenu seen before first node, creating `Top' node"
+msgstr "@detailmenu terlihat sebelum titik pertama, membuat titik `Top'"
+
+#: makeinfo/insertion.c:2047
+#, c-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%s tidak berarti diluar lingkunga `@titlepage' dan `@quotation'"
+
+#: makeinfo/insertion.c:2061
+#, c-format
+msgid "@%s not meaningful outside `@titlepage' environment"
+msgstr "@%s tidak berarti diluar lingkungan `@titlepage'"
+
+#: makeinfo/insertion.c:2092
+#, c-format
+msgid "Unmatched `%c%s'"
+msgstr "Tidak cocok `%c%s'"
+
+#: makeinfo/insertion.c:2097
+#, c-format
+msgid "`%c%s' needs something after it"
+msgstr "`%c%s' membutuhkan sesuatu setelah itu"
+
+#: makeinfo/insertion.c:2103
+#, c-format
+msgid "Bad argument `%s' to `@%s', using `%s'"
+msgstr "Argumen `%s' ke `@%s' buruk, menggunakan `%s'"
+
+#: makeinfo/insertion.c:2200
+#, c-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s tidak berarti didalam blok `@%s'"
+
+#: makeinfo/insertion.c:2209
+#, c-format
+msgid "@itemx not meaningful inside `%s' block"
+msgstr "@itemx tidak berarti didalam blok `%s'"
+
+#: makeinfo/insertion.c:2383
+#, c-format
+msgid "%c%s found outside of an insertion block"
+msgstr "%c%s ditemukan diluar dari sebuah blok pemasukan"
+
+#: makeinfo/lang.c:1218
+#, c-format
+msgid "no default territory known for language `%s'"
+msgstr "tidak ada teritori default diketahui untuk bahasa `%s'"
+
+#: makeinfo/lang.c:1281
+#, c-format
+msgid "%s is not a valid ISO 639 language code"
+msgstr "%s bukan sebuah kode bahasa ISO 639 yang valid"
+
+#: makeinfo/lang.c:1399
+#, c-format
+msgid "unrecognized encoding name `%s'"
+msgstr "nama pengkodean `%s' tidak diketahui"
+
+#: makeinfo/lang.c:1407
+#, c-format
+msgid "sorry, encoding `%s' not supported"
+msgstr "maaf, pengkodean `%s' tidak didukung"
+
+#: makeinfo/lang.c:1492
+#, c-format
+msgid "invalid encoded character `%s'"
+msgstr "karakter terkode tidak valid `%s'"
+
+#: makeinfo/lang.c:1800
+#, c-format
+msgid "%c%s expects `i' or `j' as argument, not `%c'"
+msgstr "%c%s diduga `i' atau `j' sebagai sebuah argumen, bukan `%c'"
+
+#: makeinfo/lang.c:1804
+#, c-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr "%c%s menduga sebuah karakter tunggal `i' atau `j' sebagai argumen"
+
+#: makeinfo/macro.c:128
+#, c-format
+msgid "macro `%s' previously defined"
+msgstr "makro `%s' telah didefinisikan sebelumnya"
+
+#: makeinfo/macro.c:132
+#, c-format
+msgid "here is the previous definition of `%s'"
+msgstr "disini adalah definisi sebelumnya dari `%s'"
+
+#: makeinfo/macro.c:359
+#, c-format
+msgid "\\ in macro expansion followed by `%s' instead of parameter name"
+msgstr "\\ dalam ekspansi makro diikuti oleh `%s' daripada nama parameter"
+
+#: makeinfo/macro.c:401
+#, c-format
+msgid "Macro `%s' called on line %d with too many args"
+msgstr "Makro `%s' dipanggil di baris %d dengan terlalu banyak args"
+
+#: makeinfo/macro.c:580
+#, c-format
+msgid "%cend macro not found"
+msgstr "%cend makro tidak ditemukan"
+
+#: makeinfo/macro.c:591
+msgid "@allow-recursion is deprecated; please use @rmacro instead"
+msgstr "@allow-recursion sudah ditinggalkan; lebih baik mohon gunakan @rmacro"
+
+#: makeinfo/macro.c:606
+msgid "@quote-arg is deprecated; arguments are quoted by default"
+msgstr "@quote-arg sudah ditinggalkan; argumen telah diquote secara baku"
+
+#: makeinfo/macro.c:649
+#, c-format
+msgid "mismatched @end %s with @%s"
+msgstr "tidak cocok @end %s dengan @%s"
+
+#: makeinfo/makeinfo.c:188
+#, c-format
+msgid "Too many errors!  Gave up.\n"
+msgstr "Terlalu banyak errors! Menyerah.\n"
+
+#: makeinfo/makeinfo.c:306
+#, c-format
+msgid "%s:%d: warning: "
+msgstr "%s:%d: peringatan: "
+
+#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2334
+#, c-format
+msgid "Misplaced %c"
+msgstr "Salah tempat %c"
+
+#: makeinfo/makeinfo.c:344
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Coba `%s --help' untuk informasi lebih lanjut.\n"
+
+#: makeinfo/makeinfo.c:347
+#, c-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Penggunaan: %s [OPSI]... BERKAS-TEXINFO...\n"
+
+#: makeinfo/makeinfo.c:350
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Terjemahkan sumber dokumentasi texinfo ke berbagai format lain, secara baku\n"
+"Berkas info yang sesuai untuk pembacaan online dengan Emacs atau standalone GNU Info.\n"
+
+#: makeinfo/makeinfo.c:354
+#, c-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+"Opsi umum:\n"
+"      --error-limit=NUM       berhenti setelah NUM errors (baku %d).\n"
+"      --document-language=STR locale yang digunakan dalam menerjemahkan kata\n"
+"                              kunci untuk dokumen keluaran (baku C).\n"
+"      --force                 jaga keluaran walaupun terjadi errors.\n"
+"      --help                  tampilkan bantuan ini dan keluar.\n"
+"      --no-validate           tekan validasi titik referensi silang.\n"
+"      --no-warn               tekan peringatan (tetapi tidak untuk error).\n"
+"  -v, --verbose               jelaskan apa yang sedang dilakukan.\n"
+"      --version               tampilkan informasi versi dan keluar.\n"
+
+#: makeinfo/makeinfo.c:369
+#, no-wrap
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+"Pemilihan format keluaran (baku adalah untuk menghasilkan Info):\n"
+"      --docbook               keluarkan Docbook XML daripada Info.\n"
+"      --html                  keluarkan HTML daripada Info.\n"
+"      --xml                   keluarkan Texinfo XML daripada Info.\n"
+"      --plaintext             keluarkan plain teks daripada Info.\n"
+
+#: makeinfo/makeinfo.c:377
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+"Opsi umum keluaran:\n"
+"  -E, --macro-expand=BERKAS   keluarkan macro-expanded sumber ke BERKAS,\n"
+"                                mengabaikan @setfilename apapun.\n"
+"      --no-headers            tekan pemisah titik, Titik: baris, dan menus\n"
+"                                dari keluaran Info (sehingga menghasilkan plain teks)\n"
+"                              atau dari HTML (sehingga menghasilkan keluaran lebih pendek);\n"
+"                              juga, tulis ke standar keluaran secara baku.\n"
+"      --no-split              tekan pemisahan dari keluaran Info atau HTML,\n"
+"                              hanya hasilkan sebuah berkas keluaran.\n"
+"      --number-sections       keluarkan chapter dan jumlah daerah.\n"
+"  -o, --output=BERKAS         keluarkan ke BERKAS (atau direktori jika split HTML).\n"
+
+#: makeinfo/makeinfo.c:391
+#, c-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Opsi untuk Info dan plain teks:\n"
+"      --disable-encoding      jangan keluarkan accented dan karakter spesial\n"
+"                              dalam keluaran Info berdasar dari @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (baku).\n"
+"      --fill-column=NUM       break baris Info di karakter NUM (baku %d).\n"
+"      --footnote-style=GAYA   keluarkan catatan kaki dalam Info menurut GAYA:\n"
+"                              `separate' untuk menempatkan nya menurut titiknya;\n"
+"                              `end' untuk menempatkannya di akhir dari titik, dalam\n"
+"                               definisinya (ini adalah baku).\n"
+"      --paragraph-indent=VAL   indent Info paragraph denga VAL spaces (baku %d).\n"
+"                               Jika VAL adalah `none', jangan indent; jika VAL adalah\n"
+"                               `asis', jaga indentasi yang sudah ada.\n"
+"      --split-size=NUM         pisah berkas Info di ukuran NUM (baku %d).\n"
+
+#: makeinfo/makeinfo.c:409
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+"Opsi untuk HTML:\n"
+"      --css-include=BERKAS    masukan BERKAS dalam HTML <style> keluaran;\n"
+"                              baca stdin jika BERKAS adalah -.\n"
+"      --css-ref=URL           hasilkan referensi ke sebuah berkas CSS.\n"
+"      --internal-links=BERKAS hasilkan daftar dari links internal dalam BERKAS.\n"
+"      --transliterate-file-names\n"
+"                              hasilkan nama berkas dalam transliterasi ASCII.\n"
+
+#: makeinfo/makeinfo.c:419
+#, c-format
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
+"                                If VAL is 0, ignorable whitespace is dropped.\n"
+msgstr ""
+"Opsi untuk XML dan Docbook:\n"
+"      --output-indent=VAL     indent elemen XML dengan spasi VAL (baku %d).\n"
+"                                Jika VAL adalah 0, abaikan spasi jika didrop.\n"
+
+#: makeinfo/makeinfo.c:426
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Opsi berkas masukan:\n"
+"      --commands-in-node-names  ijinkan @ perintah dalam nama titik.\n"
+"  -D VAR                        definisikan variabel VAR, sama dengan @set.\n"
+"  -I DIR                        tambahkan DIR ke jalur pencarian @include.\n"
+"  -P DIR                        prepend DIR ke jalur pencarian @include.\n"
+"  -U VAR                        tidak definisikan variabel VAR, sama dengan @clear.\n"
+
+#: makeinfo/makeinfo.c:435
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Pemrosesan kondisional dalam masukan:\n"
+"  --ifdocbook       proses @ifdocbook dan @docbook walaupun\n"
+"                    tidak menghasilkan Docbook.\n"
+"  --ifhtml          proses @ifhtml dan @html walaupun tidak menghasilkan HTML.\n"
+"  --ifinfo          proses @ifinfo walaupun tidak menghasilkan Info.\n"
+"  --ifplaintext     proses @ifplaintext walaupun tidak menghasilkan plain teks.\n"
+"  --iftex           proses @iftex dan @tex; mengimplikasikan --no-split.\n"
+"  --ifxml           proses @ifxml dan @xml.\n"
+"  --no-ifdocbook    jangan proses @ifdocbook dan @docbook teks.\n"
+"  --no-ifhtml       jangan proses @ifhtml dan @html teks.\n"
+"  --no-ifinfo       jangan proses @ifinfo teks.\n"
+"  --no-ifplainteks  jangan proses @ifplaintext teks.\n"
+"  --no-iftex        jangan proses @iftex dan @tex teks.\n"
+"  --no-ifxml        jangan proses @ifxml dan @xml teks.\n"
+"\n"
+"  Juga, untuk opsi --no-ifFORMAT, jangan proses @ifnotFORMAT teks.\n"
+
+#: makeinfo/makeinfo.c:454
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Baku untuk kondisional @if... tergantung dari format keluaran:\n"
+"  jika menghasilkan HTML, --ifhtml adalah on dan yang lain adalah off;\n"
+"  jika menghasilkan Info, --ifinfo adalah on dan yang lain adalah off;\n"
+"  jika menghasilkan plain text, --ifplaintext adalah on dan yang lain adalah off;\n"
+"  jika menghasilkan XML, --ifxml adalah on dan yang lain adalah off.\n"
+
+#: makeinfo/makeinfo.c:462
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Contoh:\n"
+"  makeinfo foo.texi                      tulis Info ke foo @setfilename\n"
+"  makeinfo --html foo.texi               tulis HTML ke @setfilename\n"
+"  makeinfo --xml foo.texi                tulis Texinfo XML ke @setfilename\n"
+"  makeinfo --docbook foo.texi            tulis DocBook XML ke @setfilename\n"
+"  makeinfo --no-headers foo.texi         tulis plain teks ke standar keluaran\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  tulis html tanpa baris titik, menu\n"
+"  makeinfo --numer-sections foo.texi     tulis Info dengan daerah bernomor\n"
+"  makeinfo --no-split foo.texi            tulis satu berkas Info walaupun besar\n"
+
+#: makeinfo/makeinfo.c:622
+#, c-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Mengabaikan nilai TEXINFO_OUTPUT_FORMAT tidak dikenal `%s'.\n"
+
+#: makeinfo/makeinfo.c:670 makeinfo/makeinfo.c:696 makeinfo/makeinfo.c:720
+#: makeinfo/makeinfo.c:780
+#, c-format
+msgid "%s: %s arg must be numeric, not `%s'.\n"
+msgstr "%s: %s arg harus berupa numerik, bukan `%s'.\n"
+
+#: makeinfo/makeinfo.c:683
+#, c-format
+msgid "%s: could not open macro expansion output `%s'"
+msgstr "%s: tidak dapat membuka ekspansi makro keluaran `%s'"
+
+#: makeinfo/makeinfo.c:688
+#, c-format
+msgid "%s: ignoring second macro expansion output `%s'.\n"
+msgstr "%s: mengabaikan keluaran ekspansi makro kedua `%s'.\n"
+
+#: makeinfo/makeinfo.c:733
+#, c-format
+msgid "%s: could not open internal links output `%s'"
+msgstr "%s: tidak dapat membuka keluaran link internal `%s'"
+
+#: makeinfo/makeinfo.c:738
+#, c-format
+msgid "%s: ignoring second internal links output `%s'.\n"
+msgstr "%s: mengabaikan keluaran link internal kedua `%s'.\n"
+
+#: makeinfo/makeinfo.c:751
+#, c-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
+
+#: makeinfo/makeinfo.c:769
+#, c-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
+
+#: makeinfo/makeinfo.c:844
+#, c-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: hilang argumen berkas.\n"
+
+#: makeinfo/makeinfo.c:1035 makeinfo/makeinfo.c:4161
+#, c-format
+msgid "Multiline command %c%s used improperly"
+msgstr "Perintah multi baris %c%s digunaka secara tidak benar"
+
+#: makeinfo/makeinfo.c:1038
+#, c-format
+msgid "Expected `%s'"
+msgstr "Diduga `%s'"
+
+#: makeinfo/makeinfo.c:1515
+#, c-format
+msgid "Can't create directory `%s': %s"
+msgstr "Tidak dapat membuat direktori `%s': %s"
+
+#: makeinfo/makeinfo.c:1561
+#, c-format
+msgid "No `%s' found in `%s'"
+msgstr "Tidak ada `%s' ditemukan dalam `%s'"
+
+#: makeinfo/makeinfo.c:1641
+#, c-format
+msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+msgstr "%s: Melewatkan ekspansi makro ke stdout sebaga keluaran Info akan pergi kesana.\n"
+
+#: makeinfo/makeinfo.c:1671
+#, c-format
+msgid "Making %s file `%s' from `%s'.\n"
+msgstr "Membuat %s berkas `%s' dari `%s'.\n"
+
+#: makeinfo/makeinfo.c:1738
+#, c-format
+msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: Menghapus makro berkas keluaran `%s' karena error; gunakan --force untuk menjaga.\n"
+
+#: makeinfo/makeinfo.c:1793
+#, c-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: Menghapus berkas keluaran `%s' karena adanya errors; gunakan --force untuk menjaga.\n"
+
+#: makeinfo/makeinfo.c:1812
+#, c-format
+msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: Menghapus internal links berkas keluaran `%s' karena errors; gunakan --force untuk menjaga.\n"
+
+#: makeinfo/makeinfo.c:2107
+#, c-format
+msgid "Unknown command `%s'"
+msgstr "Perintah `%s' tidak diketahui"
+
+#: makeinfo/makeinfo.c:2129
+#, c-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Gunakan kurung untuk memberi sebuah perintah sebagai sebuah argumen ke @%s"
+
+#: makeinfo/makeinfo.c:2388
+#, c-format
+msgid "%c%s expected braces"
+msgstr "%c%s diduga kurung"
+
+#: makeinfo/makeinfo.c:2401
+msgid "Unmatched }"
+msgstr "Tidak cocok }"
+
+#: makeinfo/makeinfo.c:2449
+msgid "NO_NAME!"
+msgstr "NO_NAME!"
+
+#: makeinfo/makeinfo.c:2470
+#, c-format
+msgid "%c%s missing close brace"
+msgstr "%c%s hilang kurung penutup"
+
+#: makeinfo/makeinfo.c:3476
+#, c-format
+msgid "@image file `%s' (for HTML) not readable: %s"
+msgstr "@image berkas `%s' (untuk HTML) tidak dapat dibaca: %s"
+
+#: makeinfo/makeinfo.c:3482
+#, c-format
+msgid "No such file `%s'"
+msgstr "Tidak ada berkas seperti itu `%s'"
+
+#: makeinfo/makeinfo.c:3618
+#, c-format
+msgid "@image file `%s' (for text) unreadable: %s"
+msgstr "@image berkas `%s' (untuk teks) tidak dapat dibaca: %s"
+
+#: makeinfo/makeinfo.c:3627
+msgid "@image missing filename argument"
+msgstr "@image hilang argumen nama berkas"
+
+#: makeinfo/makeinfo.c:3845
+#, c-format
+msgid "undefined flag: %s"
+msgstr "opsi tidak terdefinisi: %s"
+
+#: makeinfo/makeinfo.c:3846
+#, c-format
+msgid "{No value for `%s'}"
+msgstr "{Tidak ada nilai untuk `%s'}"
+
+#: makeinfo/makeinfo.c:3898
+#, c-format
+msgid "%c%s requires a name"
+msgstr "%c%s membutuhkan sebuah nama"
+
+#: makeinfo/makeinfo.c:4004
+#, c-format
+msgid "Reached eof before matching @end %s"
+msgstr "Mencapai eof sebelum cocok @end %s"
+
+#: makeinfo/makeinfo.c:4253
+#, c-format
+msgid "`%.40s...' is too long for expansion; not expanded"
+msgstr "`%.40s...' terlalu panjang untuk ekspansi; tidak diekspan"
+
+#: makeinfo/multi.c:116
+msgid "Missing } in @multitable template"
+msgstr "Hilang } dalam @multitable template"
+
+#: makeinfo/multi.c:260
+#, c-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr "mengabaikan stray teks `%s' setelah @multitable"
+
+#: makeinfo/multi.c:400
+#, c-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Terlalu banyak kolom dalam multitable item (maksimal %d)"
+
+#: makeinfo/multi.c:563
+#, c-format
+msgid "[unexpected] cannot select column #%d in multitable"
+msgstr "[tidak terduga] tidak dapat memiliki kolom @%d dalam multitable"
+
+#: makeinfo/multi.c:592
+msgid "ignoring @tab outside of multitable"
+msgstr "mengabaikan @tab diluar dari multitabel"
+
+#: makeinfo/multi.c:640
+#, c-format
+msgid "** Multicolumn output from last row:\n"
+msgstr "** Keluaran multi kolom dari baris terakhir:\n"
+
+#: makeinfo/multi.c:643
+#, c-format
+msgid "* column #%d: output = %s\n"
+msgstr "* kolom #%d: keluaran = %s\n"
+
+#: makeinfo/node.c:279
+#, c-format
+msgid "Node `%s' previously defined at line %d"
+msgstr "Titik `%s' telah didefinisikan sebelumnya di baris %d"
+
+#: makeinfo/node.c:647
+#, c-format
+msgid "Formatting node %s...\n"
+msgstr "Memformat titik %s...\n"
+
+#: makeinfo/node.c:714
+#, c-format
+msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+msgstr "Titik `%s'  membutuhkan sebuah perintah pembagian (e.g., %c%s)"
+
+#: makeinfo/node.c:878
+#, c-format
+msgid "No node name specified for `%c%s' command"
+msgstr "Tidak nama titik dispesifikasikan untuk perintah `%c%s'"
+
+#: makeinfo/node.c:919 makeinfo/node.c:1163
+#, c-format
+msgid "Anchor `%s' and node `%s' map to the same file name"
+msgstr "Anchor `%s' dan titik `%s' peta di nama beraks yang sama"
+
+#: makeinfo/node.c:922
+msgid "This @anchor command ignored; references to it will not work"
+msgstr "Perintah @anchor ini diabaikan; referensi ke itu tidak akan bekerja"
+
+#: makeinfo/node.c:924 makeinfo/node.c:1166
+msgid "Rename this anchor or use the `--no-split' option"
+msgstr "Ubah nama anchor ini atau gunakan opsi `--no-split'"
+
+#: makeinfo/node.c:954
+#, c-format
+msgid "Unexpected string at end of split-HTML file `%s'"
+msgstr "Tidak terduga string di akhir dari berkas split-HTML `%s'"
+
+#: makeinfo/node.c:1160
+#, c-format
+msgid "Anchors `%s' and `%s' map to the same file name"
+msgstr "Anchor `%s' dan `%s' memetakan ke nama berkas yang sama"
+
+#: makeinfo/node.c:1165
+msgid "@anchor command ignored; references to it will not work"
+msgstr "perintah @anchor diabaikan; referensi ke itu tidak akan bekerja"
+
+#: makeinfo/node.c:1362
+#, c-format
+msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+msgstr "%s referensi ke titik yang tidak ada `%s' (mungkin pembagian tidak benar?)"
+
+#: makeinfo/node.c:1462
+#, c-format
+msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+msgstr "Field selanjutnya dari titik `%s' tidak menunjuk ke (mungkin pembagian tidak benar?)"
+
+#: makeinfo/node.c:1465
+#, c-format
+msgid "This node (%s) has the bad Prev"
+msgstr "Titik ini (%s) memiliki Prev buruk"
+
+#: makeinfo/node.c:1520
+#, c-format
+msgid "Prev field of node `%s' not pointed to"
+msgstr "Field prev dari titik `%s' tidak menunjuk ke"
+
+#: makeinfo/node.c:1524
+#, c-format
+msgid "This node (%s) has the bad Next"
+msgstr "Titik ini (%s) memiliki Next buruk"
+
+#: makeinfo/node.c:1536
+#, c-format
+msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+msgstr "`%s' tidak memiliki field Up (mungkin pembagian tidak benar?)"
+
+#: makeinfo/node.c:1605
+#, c-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "Titik `%s' kurang item menu untuk `%s' dariapda target Up nya"
+
+#: makeinfo/node.c:1637
+#, c-format
+msgid "unreferenced node `%s'"
+msgstr "titik `%s' tidak tereferensi"
+
+#: makeinfo/node.c:1727
+#, c-format
+msgid "Removing %s\n"
+msgstr "Menghapus %s\n"
+
+#: makeinfo/node.c:1731
+#, c-format
+msgid "Can't remove file `%s': %s"
+msgstr "Tidak dapat menghapus berkas `%s': %s"
+
+#: makeinfo/sectioning.c:122
+#, c-format
+msgid "Appendix %c"
+msgstr "Appendix %c"
+
+#: makeinfo/sectioning.c:467
+#, c-format
+msgid "Internal error (search_sectioning) `%s'!"
+msgstr "Internal error (search_sectioning) `%s'!"
+
+#: makeinfo/sectioning.c:563
+#, c-format
+msgid "Internal error (search_sectioning) \"%s\"!"
+msgstr "Internal error (search_sectioning) \"%s\"!"
+
+#: makeinfo/sectioning.c:624
+#, c-format
+msgid "%c%s is obsolete; use %c%s instead"
+msgstr "%c%s sudah ditinggalkan; lebih baik gunakan %c%s"
+
+#: makeinfo/sectioning.c:640
+#, c-format
+msgid "Node with %ctop as a section already exists"
+msgstr "Titik dengan %ctop sebagai sebuah section telah ada"
+
+#: makeinfo/sectioning.c:648
+#, c-format
+msgid "Here is the %ctop node"
+msgstr "Disini adalah titik puncak %c"
+
+#: makeinfo/sectioning.c:664
+#, c-format
+msgid "%ctop used before %cnode, defaulting to %s"
+msgstr "%c puncak digunakan sebelum %c titik, membakukan ke %s"
+
+#: makeinfo/xml.c:1669
+#, c-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image berkas `%s' tidak dapat dibaca: %s"
+
+#: makeinfo/xml.c:2014
+msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+msgstr "@headitem  sebagai item terakhir dari @multitable menghasilkan dokumen Docbook tidak valid"
+
+#: makeinfo/xml.c:2150
+msgid "of"
+msgstr "of"
+
+#: makeinfo/xml.c:2155
+msgid "on"
+msgstr "on"
+
+#: makeinfo/xref.c:127
+msgid "First argument to cross-reference may not be empty"
+msgstr "Argumen pertama ke referensi silang tidak boleh kosong"
+
+#: makeinfo/xref.c:252
+#, c-format
+msgid "Empty file name for HTML cross reference in `%s'"
+msgstr "Nama berkas kosong utuk referensi silang HTML dalam `%s'"
+
+#: makeinfo/xref.c:387
+msgid "End of file reached while looking for `.' or `,'"
+msgstr "Akhir dari berkas tercapai ketika melihat untuk `.' atau `,'"
+
+#: makeinfo/xref.c:390
+#, c-format
+msgid "`.' or `,' must follow @%s, not `%c'"
+msgstr "`.' atau `,' harus mengikuti @%s, bukan `%c'"
+
+#: makeinfo/xref.c:392
+msgid "for cross-references in parentheses, use @pxref"
+msgstr "untuk referensi silang dalam tanda kurung, gunakan @pxref"
+
+#: makeinfo/xref.c:435
+msgid "First argument to @inforef may not be empty"
+msgstr "Argumen pertama ke @inforef tidak boleh kosong"
+
+#: util/texindex.c:223
+msgid "display this help and exit"
+msgstr "tampilkan bantuan ini dan keluar"
+
+#: util/texindex.c:225
+msgid "send output to FILE"
+msgstr "kirim keluaran ke BERKAS"
+
+#: util/texindex.c:227
+msgid "display version information and exit"
+msgstr "tampilkan informasi versi dan keluar"
+
+#: util/texindex.c:237
+#, c-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Penggunaan: %s [OPSI]... BERKAS...\n"
+
+#: util/texindex.c:238
+#, c-format
+msgid "Generate a sorted index for each TeX output FILE.\n"
+msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
+
+#: util/texindex.c:241
+#, c-format
+msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+msgstr "Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah dokumen `foo.texi'.\n"
+
+#: util/texindex.c:243
+#, c-format
+msgid ""
+"\n"
+"Options:\n"
+msgstr ""
+"\n"
+"Opsi:\n"
+
+#: util/texindex.c:743
+#, c-format
+msgid "failure reopening %s"
+msgstr "gagal membuka kembali %s"
+
+#: util/texindex.c:758 util/texindex.c:786
+#, c-format
+msgid "%s: not a texinfo index file"
+msgstr "%s: bukan sebuah berkas indeks texinfo"
+
+#: util/texindex.c:993
+#, c-format
+msgid "No page number in %s"
+msgstr "Tidak ada nomor halaman dalam %s"
+
+#: util/texindex.c:1066
+#, c-format
+msgid "entry %s follows an entry with a secondary name"
+msgstr "masukan %s mengikuti sebuah masukan dengan nama cadangan"
