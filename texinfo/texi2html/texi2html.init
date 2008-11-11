@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.169 2008-11-11 00:52:24 pertusus Exp $
+# $Id: texi2html.init,v 1.170 2008-11-11 13:29:11 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -390,13 +390,13 @@ $CLOSE_QUOTE_SYMBOL = "'";
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
 
 # extension for nodes files when NODE_FILES is true
-$NODE_FILE_EXTENSION = "html";	    
+$NODE_FILE_EXTENSION = 'html';	    
 
 # extension
-$EXTENSION = "html";
+$EXTENSION = 'html';
 
 # file name used for Top node when NODE_FILES is true
-$TOP_NODE_FILE = "index";
+$TOP_NODE_FILE = 'index';
 
 # node name used for Top node when automatic node directions are used
 $TOP_NODE_UP = '(dir)';
@@ -2129,24 +2129,6 @@ $pre_map{'dots'} = '...';
 $pre_map{'enddots'} = '...';
 #$pre_map{'br'} = "\n";
 
-# ascii representation of @-commands
-%ascii_simple_map = (
-           '*', "\n",     # HTML+
-           ' ', ' ',
-           "\t", "\t",
-           "\n", "\n",
-           '-', '',  # hyphenation hint
-           '|', '',  # used in formatting commands @evenfooting and friends
-           '/', '',
-           ':', '',
-           '!', '!',
-           '?', '?',
-           '.', '.',
-           '@', '@',
-           '}', '}',
-           '{', '{',
-);
-
 %ascii_things_map = (
                'TeX'          => 'TeX',
                'LaTeX'          => 'LaTeX',
@@ -2154,7 +2136,7 @@ $pre_map{'enddots'} = '...';
                'copyright' => '(C)',
                'registeredsymbol'   => '(R)',
                'dots'         => '...',
-               'enddots'      => '....',
+               'enddots'      => '...',
                'equiv'        => '==',
 # FIXME i18n
                'error'        => 'error-->',
@@ -2201,27 +2183,30 @@ $pre_map{'enddots'} = '...';
                'guilsinglright'          => '>',
 );
 
+# ascii representation of @-commands
+%ascii_simple_map = (
+           '*', "\n",
+           ' ', ' ',
+           "\t", ' ',
+           "\n", ' ',
+           '-', '',  # hyphenation hint
+           '|', '',  # used in formatting commands @evenfooting and friends
+           '/', '',
+           ':', '',
+           '!', '!',
+           '?', '?',
+           '.', '.',
+           '@', '@',
+           '}', '}',
+           '{', '{',
+);
+
 #
 # This map is used when texi elements are removed and replaced 
 # by simple text
 #
-%simple_map_texi = (
-           '*', "\n",  
-           " ", " ",
-           "\t", " ",
-           "-", "-",  # soft hyphen
-           "\n", "\n",
-           "|", "",
-        # spacing commands
-           ":", "",
-           "!", "!",
-           "?", "?",
-           ".", ".",
-           "-", "",
-           '@', '@',
-           '}', '}',
-           '{', '{',
-          );
+%simple_map_texi = %ascii_simple_map;
+
 
 # text replacing macros when texi commands are removed and plain text is 
 # produced 

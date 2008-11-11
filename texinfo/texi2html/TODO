@@ -374,3 +374,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * second paragraph in cell should be taken into account.
 
 * add --command command line that gives inserted lines.
+
+* @ogonek has 2 test files, and is in coverage. Maybe add it to encoding/*
+  where other accents are used too. Or maybe tests should be more focused?

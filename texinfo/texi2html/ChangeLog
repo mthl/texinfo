@@ -1,3 +1,8 @@
+2008-11-11  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: set %simple_map_texi = %ascii_simple_map. 
+	@ followed by a newline or a tab should be replaced by a space.
+
 2008-11-10  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: add support for @ogonek.
