@@ -1,3 +1,10 @@
+2008-11-14  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: duplicate stack to keep right paragraph nesting
+	from top to bottom.
+	* formatting/double_style_paragraph.texi: test for double style
+	commands enclosing 2 paragraphs.
+
 2008-11-11  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: set %simple_map_texi = %ascii_simple_map. 

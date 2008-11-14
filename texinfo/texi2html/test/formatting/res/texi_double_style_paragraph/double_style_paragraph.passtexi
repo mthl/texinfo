@@ -1,0 +1,14 @@
+double_style_paragraph.texi(,2) 
+double_style_paragraph.texi(,3) @setfilename double_style_paragraph.info
+double_style_paragraph.texi(,4) 
+double_style_paragraph.texi(,5) @node Top
+double_style_paragraph.texi(,6) @top 2 style commands enclosing 2 paragraphs
+double_style_paragraph.texi(,7) 
+double_style_paragraph.texi(,8) @emph{@strong{
+double_style_paragraph.texi(,9) First para.
+double_style_paragraph.texi(,10) 
+double_style_paragraph.texi(,11) Second para.
+double_style_paragraph.texi(,12) }
+double_style_paragraph.texi(,13) }
+double_style_paragraph.texi(,14) 
+double_style_paragraph.texi(,15) @bye

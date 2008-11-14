@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.244 2008-11-11 00:52:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.245 2008-11-14 22:34:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -13476,7 +13476,7 @@ sub close_paragraph($$$;$$)
         # @-commands: by default they are considered as style commands
         if (!exists($style_type{$style}) or $style_type{$style} eq 'style')
         {
-            push @$new_stack, { 'style' => $style, 'text' => '', 'no_open' => 1, 'arg_nr' => 0 };
+            unshift @$new_stack, { 'style' => $style, 'text' => '', 'no_open' => 1, 'arg_nr' => 0 };
         }
         elsif (($style_type{$style} eq 'simple_style') or ($style_type{$style} eq 'accent'))
         {

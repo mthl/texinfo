@@ -31,6 +31,7 @@ texi index_in_item_line_table_in_code.texi
 texi table_in_table_item.texi
 texi nested_formats.texi
 texi inter_item_commands.texi
+texi double_style_paragraph.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -82,3 +83,4 @@ nested_formats nested_formats.texi
 inter_item_commands inter_item_commands.texi
 inter_item_commands_xml inter_item_commands.texi -init xml.init
 inter_item_commands_docbook inter_item_commands.texi -init docbook.init
+double_style_paragraph double_style_paragraph.texi
