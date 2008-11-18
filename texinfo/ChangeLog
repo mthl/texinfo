@@ -1,3 +1,27 @@
+2008-11-17  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex: Made left and right quote characters always
+	active, for arg parsing; suggestion from Reinhold Kainhofer, 25
+	Oct 2008 08:50:05.  Made @verb consistent with @verbatim by
+	honoring @set txicodequoteundirected.  Disabled the ?` and !`
+	ligatures in @samp and @kbd.
+	(\defmarkupstylesetup): New infrastructure for markup style setup.
+	Currently it's only used to set up quote chars.
+
+	* doc/texinfo.txi (Inserting Quote Characters):  Documented @verb
+	as being affected by @set txicodequoteundirected.
+
+2008-11-11  Karl Berry  <karl@gnu.org>
+
+	* NEWS, po/LINGUAS: new translation id
+	* po/id.po: .
+
+2008-11-10  Karl Berry  <karl@gnu.org>
+
+	* ChangeLog, NEWS, doc/texinfo.txi, doc/version.texi,
+	* makeinfo/cmds.c:
+	document @ogonek, finish documenting quote cmds
+
 2008-11-10  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (command_table): add ogonek with a trivial
