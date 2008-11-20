@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.245 2008-11-14 22:34:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.246 2008-11-20 12:02:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -10093,6 +10093,9 @@ sub expand_macro($$$$$)
         last;
     }
     my @result = split(/^/m, $result);
+    # for a completly empty macro, $result = '', and the split leads
+    # to an empty array, so add back an empty string
+    @result = ('') if (!scalar(@result));
     # Add the result of the macro expansion back to the input_spool.
     # Set the macro name if in the outer macro
     if ($state->{'arg_expansion'})

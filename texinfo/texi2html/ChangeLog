@@ -1,3 +1,8 @@
+2008-11-20  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: replace an empty macro by an empty string instead
+	of breaking. report from Werner LEMBERG.
+
 2008-11-14  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: duplicate stack to keep right paragraph nesting

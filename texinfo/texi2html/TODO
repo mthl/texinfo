@@ -377,3 +377,15 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * @ogonek has 2 test files, and is in coverage. Maybe add it to encoding/*
   where other accents are used too. Or maybe tests should be more focused?
+
+* empty macro in macros/empty_macro.texi is replaced by a new line, even 
+  without arg, ie the form
+@foo
+  Should the new line be stripped?
+
+* for makeinfo, the following are not the same, looks like -I is not taken
+  into account with a leading ./:
+@include ./d2t_singular/surf_lib_noEx.tex
+@include d2t_singular/surf_lib_noEx.tex
+  for texi2html they are the same.
+

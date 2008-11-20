@@ -308,27 +308,27 @@ LIB "all.lib";
 @node general_lib, inout_lib, all_lib, General purpose
 @subsection general_lib
 @c include of docu for general.lib
-@include ./d2t_singular/general_lib.tex
+@include d2t_singular/general_lib.tex
 @c ----------------------------------------------------------
 @node inout_lib, poly_lib, general_lib, General purpose
 @subsection inout_lib
 @c include of docu for inout.lib
-@include ./d2t_singular/inout_lib.tex
+@include d2t_singular/inout_lib.tex
 @c ----------------------------------------------------------
 @node poly_lib, random_lib, inout_lib, General purpose
 @subsection poly_lib
 @c include of docu for poly.lib
-@include ./d2t_singular/poly_lib.tex
+@include d2t_singular/poly_lib.tex
 @c ----------------------------------------------------------
 @node random_lib, ring_lib, poly_lib, General purpose
 @subsection random_lib
 @c include of docu for random.lib
-@include ./d2t_singular/random_lib.tex
+@include d2t_singular/random_lib.tex
 @c ----------------------------------------------------------
 @node ring_lib, , random_lib, General purpose
 @subsection ring_lib
 @c include of docu for ring.lib
-@include ./d2t_singular/ring_lib.tex
+@include d2t_singular/ring_lib.tex
 @c ----------------------------------------------------------------------------
 @node Linear algebra, Commutative algebra, General purpose, SINGULAR libraries
 @section Linear algebra
@@ -343,12 +343,12 @@ LIB "all.lib";
 @node matrix_lib, linalg_lib,  Linear algebra, Linear algebra
 @subsection matrix_lib
 @c include of docu for matrix.lib
-@include ./d2t_singular/matrix_lib.tex
+@include d2t_singular/matrix_lib.tex
 @c ---------------------------------------------------------
 @node linalg_lib, , matrix_lib, Linear algebra
 @subsection linalg_lib
 @c include of docu for linalg.lib
-@include ./d2t_singular/linalg_lib_noEx.tex
+@include d2t_singular/linalg_lib_noEx.tex
 @c ----------------------------------------------------------------------------
 @node Commutative algebra, Singularities, Linear algebra, SINGULAR libraries
 @section Commutative algebra
@@ -372,57 +372,57 @@ LIB "all.lib";
 @node algebra_lib, elim_lib, Commutative algebra, Commutative algebra
 @subsection algebra_lib
 @c include of docu for algebra.lib
-@include ./d2t_singular/algebra_lib.tex
+@include d2t_singular/algebra_lib.tex
 @c ----------------------------------------------------------
 @node elim_lib, homolog_lib, algebra_lib, Commutative algebra
 @subsection elim_lib
 @c include of docu for elim.lib
-@include ./d2t_singular/elim_lib.tex
+@include d2t_singular/elim_lib.tex
 @c ----------------------------------------------------------
 @node homolog_lib, mprimdec_lib, elim_lib, Commutative algebra
 @subsection homolog_lib
 @c include of docu for homolog.lib
-@include ./d2t_singular/homolog_lib.tex
+@include d2t_singular/homolog_lib.tex
 @c ----------------------------------------------------------
 @node mprimdec_lib, mregular_lib, homolog_lib, Commutative algebra
 @subsection mprimdec_lib
 @c include of docu for mprimdec.lib
-@include ./d2t_singular/mprimdec_lib.tex
+@include d2t_singular/mprimdec_lib.tex
 @c ----------------------------------------------------------
 @node mregular_lib, normal_lib, mprimdec_lib, Commutative algebra
 @subsection mregular_lib
 @c include of docu for mregular.lib
-@include ./d2t_singular/mregular_lib.tex
+@include d2t_singular/mregular_lib.tex
 @c ---------------------------------------------------------
 @node normal_lib, primdec_lib, mregular_lib, Commutative algebra
 @subsection normal_lib
 @c include of docu for normal.lib
-@include ./d2t_singular/normal_lib.tex
+@include d2t_singular/normal_lib.tex
 @c ----------------------------------------------------------
 @node primdec_lib, primitiv_lib, normal_lib, Commutative algebra
 @subsection primdec_lib
 @c include of docu for primdec.lib
-@include ./d2t_singular/primdec_lib.tex
+@include d2t_singular/primdec_lib.tex
 @c ---------------------------------------------------------
 @node primitiv_lib, reesclos_lib, primdec_lib, Commutative algebra
 @subsection primitiv_lib
 @c include of docu for primitiv.lib
-@include ./d2t_singular/primitiv_lib.tex
+@include d2t_singular/primitiv_lib.tex
 @c ---------------------------------------------------------
 @node reesclos_lib, intprog_lib, primitiv_lib, Commutative algebra
 @subsection reesclos_lib
 @c include of docu for reesclos.lib
-@include ./d2t_singular/reesclos_lib.tex
+@include d2t_singular/reesclos_lib.tex
 @c ---------------------------------------------------------
 @node intprog_lib, toric_lib, reesclos_lib, Commutative algebra
 @subsection intprog_lib
 @c include of docu for intprog.lib
-@include ./d2t_singular/intprog_lib.tex
+@include d2t_singular/intprog_lib.tex
 @c ---------------------------------------------------------
 @node toric_lib, ,intprog_lib, Commutative algebra
 @subsection toric_lib
 @c include of docu for toric.lib
-@include ./d2t_singular/toric_lib.tex
+@include d2t_singular/toric_lib.tex
 @c ----------------------------------------------------------------------------
 @node Singularities, Invariant theory, Commutative algebra, SINGULAR libraries
 @section Singularities
@@ -451,52 +451,52 @@ LIB "all.lib";
 @node classify_lib, deform_lib, Singularities, Singularities
 @subsection classify_lib
 @c include of docu for classify.lib
-@include ./d2t_singular/classify_lib.tex
+@include d2t_singular/classify_lib.tex
 @c ----------------------------------------------------------
 @node deform_lib, equising_lib, classify_lib, Singularities
 @subsection deform_lib
 @c include of docu for deform.lib
-@include ./d2t_singular/deform_lib.tex
+@include d2t_singular/deform_lib.tex
 @c ----------------------------------------------------------
 @node equising_lib, gaussman_lib, deform_lib, Singularities
 @subsection equising_lib
 @c include of docu for equising.lib
-@include ./d2t_singular/equising_lib.tex
+@include d2t_singular/equising_lib.tex
 @c ----------------------------------------------------------
 @node gaussman_lib, hnoether_lib, equising_lib, Singularities
 @subsection gaussman_lib
 @c include of docu for gaussman.lib
-@include ./d2t_singular/gaussman_lib.tex
+@include d2t_singular/gaussman_lib.tex
 @c ---------------------------------------------------------
 @node hnoether_lib, mondromy_lib, gaussman_lib, Singularities
 @subsection hnoether_lib
 @c include of docu for hnoether.lib
-@include ./d2t_singular/hnoether_lib.tex
+@include d2t_singular/hnoether_lib.tex
 @c ---------------------------------------------------------
 @node mondromy_lib, qhmoduli_lib, hnoether_lib, Singularities
 @subsection mondromy_lib
 @c include of docu for mondromy.lib
-@include ./d2t_singular/mondromy_lib.tex
+@include d2t_singular/mondromy_lib.tex
 @c ---------------------------------------------------------
 @node qhmoduli_lib, sing_lib, mondromy_lib, Singularities
 @subsection qhmoduli_lib
 @c include of docu for qhmoduli.lib
-@include ./d2t_singular/qhmoduli_lib.tex
+@include d2t_singular/qhmoduli_lib.tex
 @c ----------------------------------------------------------
 @node sing_lib, spcurve_lib, qhmoduli_lib, Singularities
 @subsection sing_lib
 @c include of docu for sing.lib
-@include ./d2t_singular/sing_lib.tex
+@include d2t_singular/sing_lib.tex
 @c ---------------------------------------------------------
 @node spcurve_lib, spectrum_lib, sing_lib, Singularities
 @subsection spcurve_lib
 @c include of docu for spcurve.lib
-@include ./d2t_singular/spcurve_lib.tex
+@include d2t_singular/spcurve_lib.tex
 @c ---------------------------------------------------------
 @node spectrum_lib, , spcurve_lib, Singularities
 @subsection spectrum_lib
 @c include of docu for spectrum.lib
-@include ./d2t_singular/spectrum_lib.tex
+@include d2t_singular/spectrum_lib.tex
 @c ----------------------------------------------------------------------------
 @node Invariant theory, Symbolic-numerical solving, Singularities, SINGULAR libraries
 @section Invariant theory
@@ -513,22 +513,22 @@ LIB "all.lib";
 @node finvar_lib, ainvar_lib, Invariant theory, Invariant theory
 @subsection finvar_lib
 @c include of docu for finvar.lib
-@include ./d2t_singular/finvar_lib.tex
+@include d2t_singular/finvar_lib.tex
 @c ----------------------------------------------------------
 @node ainvar_lib, rinvar_lib, finvar_lib, Invariant theory
 @subsection ainvar_lib
 @c include of docu for ainvar.lib
-@include ./d2t_singular/ainvar_lib.tex
+@include d2t_singular/ainvar_lib.tex
 @c ----------------------------------------------------------
 @node rinvar_lib, stratify_lib, ainvar_lib, Invariant theory
 @subsection rinvar_lib
 @c include of docu for rinvar.lib
-@include ./d2t_singular/rinvar_lib.tex
+@include d2t_singular/rinvar_lib.tex
 @c ----------------------------------------------------------
 @node stratify_lib, ,rinvar_lib, Invariant theory
 @subsection stratify_lib
 @c include of docu for stratify.lib
-@include ./d2t_singular/stratify_lib.tex
+@include d2t_singular/stratify_lib.tex
 @c ----------------------------------------------------------------------------
 @node Symbolic-numerical solving, Visualization, Invariant theory, SINGULAR libraries
 @section Symbolic-numerical solving
@@ -546,27 +546,27 @@ LIB "all.lib";
 @node presolve_lib, solve_lib, Symbolic-numerical solving, Symbolic-numerical solving
 @subsection presolve_lib
 @c include of docu for presolve.lib
-@include ./d2t_singular/presolve_lib.tex
+@include d2t_singular/presolve_lib.tex
 @c ---------------------------------------------------------
 @node solve_lib, triang_lib, presolve_lib, Symbolic-numerical solving
 @subsection solve_lib
 @c include of docu for solve.lib
-@include ./d2t_singular/solve_lib.tex
+@include d2t_singular/solve_lib.tex
 @c ---------------------------------------------------------
 @node triang_lib, ntsolve_lib,  solve_lib, Symbolic-numerical solving
 @subsection triang_lib
 @c include of docu for triang.lib
-@include ./d2t_singular/triang_lib_noEx.tex
+@include d2t_singular/triang_lib_noEx.tex
 @c ---------------------------------------------------------
 @node ntsolve_lib, zeroset_lib, triang_lib, Symbolic-numerical solving
 @subsection ntsolve_lib
 @c include of docu for ntsolve.lib
-@include ./d2t_singular/ntsolve_lib.tex
+@include d2t_singular/ntsolve_lib.tex
 @c ---------------------------------------------------------
 @node zeroset_lib, , ntsolve_lib, Symbolic-numerical solving
 @subsection zeroset_lib
 @c include of docu for zeroset.lib
-@include ./d2t_singular/zeroset_lib.tex
+@include d2t_singular/zeroset_lib.tex
 
 @c ----------------------------------------------------------------------------
 @node Visualization, Coding theory, Symbolic-numerical solving, SINGULAR libraries
@@ -584,22 +584,22 @@ LIB "all.lib";
 @node graphics_lib, latex_lib, Visualization, Visualization
 @subsection graphics_lib
 @c include of docu for graphics.lib
-@include ./d2t_singular/graphics_lib_noEx.tex
+@include d2t_singular/graphics_lib_noEx.tex
 @c ---------------------------------------------------------
 @node latex_lib, paramet_lib, graphics_lib, Visualization
 @subsection latex_lib
 @c include of docu for latex.lib
-@include ./d2t_singular/latex_lib.tex
+@include d2t_singular/latex_lib.tex
 @c ---------------------------------------------------------
 @node paramet_lib, surf_lib, latex_lib, Visualization
 @subsection paramet_lib
 @c include of docu for paramet.lib
-@include ./d2t_singular/paramet_lib.tex
+@include d2t_singular/paramet_lib.tex
 @c ---------------------------------------------------------
 @node surf_lib,, paramet_lib, Visualization
 @subsection surf_lib
 @c include of docu for surf.lib
-@include ./d2t_singular/surf_lib_noEx.tex
+@include d2t_singular/surf_lib_noEx.tex
 
 @c ----------------------------------------------------------------------------
 @node Coding theory, , Visualization, SINGULAR libraries
@@ -614,7 +614,7 @@ LIB "all.lib";
 @node brnoeth_lib, , , Coding theory
 @subsection brnoeth_lib
 @c include of docu for brnoeth.lib
-@include ./d2t_singular/brnoeth_lib.tex
+@include d2t_singular/brnoeth_lib.tex
 @c ----------------------------------------------------------
 @node Release Notes, Index, SINGULAR libraries, Top
 @chapter Release Notes

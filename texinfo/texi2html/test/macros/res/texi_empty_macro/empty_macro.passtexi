@@ -1,0 +1,10 @@
+empty_macro.texi(,2) @setfilename empty_macro.info
+empty_macro.texi(,3) 
+empty_macro.texi(,4) @top test empty macro
+empty_macro.texi(,5) 
+empty_macro.texi(,8) 
+empty_macro.texi(foo,9) 
+empty_macro.texi(,10) 
+empty_macro.texi(foo,11) 
+empty_macro.texi(,12) 
+empty_macro.texi(,13) @bye

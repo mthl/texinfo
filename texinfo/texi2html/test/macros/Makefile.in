@@ -137,7 +137,7 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  value_in_misc_valid.texi macro-at.texi node-expand.texi \
  value_in_pass0_macros.texi macros_in_pass0_macros.texi macro_zero.texi \
  macro_in_pass_texi_commands.texi two_macros_on_a_line.texi \
- macro_commands_in_pass_texi_commands.texi node-value.texi \
+ macro_commands_in_pass_texi_commands.texi node-value.texi empty_macro.texi \
  inc_@f--ile.texi \
  file.texi inc_file.texi macro_included.texi my-bib-macros.texi \
  incl-incl.txi \

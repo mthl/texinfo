@@ -1,0 +1,11 @@
+\input texinfo 
+@setfilename empty_macro.info
+
+@top test empty macro
+
+
+
+
+
+
+@bye
