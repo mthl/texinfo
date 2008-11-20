@@ -1,6 +1,7 @@
 \input texinfo 
 @setfilename empty_macro.info
 
+@node Top
 @top test empty macro
 
 

@@ -381,7 +381,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * empty macro in macros/empty_macro.texi is replaced by a new line, even 
   without arg, ie the form
 @foo
-  Should the new line be stripped?
+  Should the new line be stripped? makeinfo does the same, so things are 
+  likely to be right as is.
 
 * for makeinfo, the following are not the same, looks like -I is not taken
   into account with a leading ./:
@@ -389,3 +390,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 @include d2t_singular/surf_lib_noEx.tex
   for texi2html they are the same.
 
+* makeinfo keeps @macro definitions in -E output. Maybe it should be done, 
+  too, for expansion in places that are only expanded by texi2dvi, namely
+  in @*headings, it could be better to delay @macro expansion to allow for
+  different expansions at different places in the document, something that 
+  cannot be done with texi2html -E.
