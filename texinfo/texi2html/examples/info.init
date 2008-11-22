@@ -45,10 +45,13 @@ $INLINE_CONTENTS = 1;
 %things_map = %ascii_things_map;
 %pre_map = %things_map;
 
-my @bold_commands = ('strong', 'b', 'email');
-my @italic_commands = ('cite', 'dfn', 'emph', 'i', 'var', 'slanted');
-my @fixed_command = ('code', 'command', 'ctrl', 'env', 'file', 'kbd', 'key',
-   'math', 'option', 'samp', 't', 'verb');
+# sc and var upcase.
+my @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
+  'option', 'samp');
+# slanted? 
+my @asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r', 
+  'slanted', 'var', 'titlefont', 'verb');
+my @chevron_commands = ('key', 'indicateurl');
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
@@ -59,28 +62,35 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys
 foreach my $command (keys(%style_map))
 {
     delete $style_map{$command}->{'attribute'} if (exists($style_map{$command}->{'attribute'}));
-    if (grep {$_ eq $command} @bold_commands)
+    delete $style_map{$command}->{'quote'} if (exists($style_map{$command}->{'quote'}));
+    if (grep {$_ eq $command} @simple_quoted_commands)
     {
         delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
-        $style_map{$command}->{'begin'} = '*';
-        $style_map{$command}->{'end'} = '*';
+        $style_map{$command}->{'begin'} = '`';
+        $style_map{$command}->{'end'} = "'";
         next;
     }
-    elsif (grep {$_ eq $command} @italic_commands)
+    elsif (grep {$_ eq $command} @asis_commands)
     {
         delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
-        $style_map{$command}->{'begin'} = '_';
-        $style_map{$command}->{'end'} = '_';
-        next;
+        delete $style_map{$command}->{'begin'} if  (exists($style_map{$command}->{'begin'}));
+        delete $style_map{$command}->{'end'} if  (exists($style_map{$command}->{'end'}));
     }
-    elsif (grep {$_ eq $command} @fixed_commands)
+    if (grep {$_ eq $command} @chevron_commands)
     {
         delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
-        $style_map{$command}->{'begin'} = '??';
-        $style_map{$command}->{'end'} = '??';
+        $style_map{$command}->{'begin'} = '<';
+        $style_map{$command}->{'end'} = '>';
         next;
     }
 }
+
+$style_map{'strong'}->{'begin'} = '*';
+$style_map{'strong'}->{'end'} = '*';
+$style_map{'dfn'}->{'begin'} = '"';
+$style_map{'dfn'}->{'end'} = '"';
+$style_map{'emph'}->{'begin'} = '_';
+$style_map{'emph'}->{'end'} = '_';
 
 foreach my $command (keys(%style_map))
 {
@@ -91,6 +101,43 @@ foreach my $command (keys(%style_map))
         $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
         $style_map_texi{$command}->{$key} = $style_map{$command}->{$key};
     }
+}
+
+$style_map{'uref'}->{'function'} = \&info_default_uref;
+$style_map{'url'}->{'function'} = \&info_default_uref;
+
+sub info_default_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    #$url =~ s/\s*$//;
+    #$url =~ s/^\s*//;
+    $url = main::normalise_space($url);
+    $replacement = '' if (!defined($replacement));
+    $replacement = main::normalise_space($replacement);
+    return $replacement if ($replacement ne '');
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    return "`$url'" if ($text eq '');
+    return "$text ($url)";
+}
+
+$style_map{'email'}->{'function'} = \&info_default_email;
+sub info_default_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    $mail = "<$mail>";
+    return $mail unless ($text ne '');
+    return "$text $mail";
 }
 
 
@@ -371,6 +418,27 @@ sub info_default_empty_line($$)
     #return '' if ($state->{'deff_line'});
     return '';
 }
+
+sub info_default_acronym_like($$$$$$)
+{
+    my $command = shift;
+    my $acronym_texi = shift;
+    my $acronym_text = shift;
+    my $with_explanation = shift;
+    my $explanation_lines = shift;
+    my $explanation_text = shift;
+    my $explanation_simply_formatted = shift;
+
+   if ($with_explanation)
+   {
+       return "$acronym_text ($explanation_text)";
+   }
+   else
+   {
+       return "$acronym_text";
+   }
+}
+
 
 sub info_default_print_page_foot($)
 {
