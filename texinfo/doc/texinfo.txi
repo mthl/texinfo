@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.229 2008-11-18 05:54:48 olegkat Exp $
+@c $Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1310,6 +1310,14 @@ a line, and only the text that follows after the @code{@@comment} or
 @code{@@settitle} and @code{@@setfilename}, work on a whole line.  You
 cannot use @code{@@comment} or @code{@@c} in a line beginning with such
 a command.
+
+@findex DEL @r{(comment)}
+In cases of nested command invocations, complicated macro definitions,
+etc., @code{@@c} and @code{@@comment} may provoke an error when
+processing with @TeX{}.  Therefore, you can also use the @kbd{DEL}
+character (ASCII 127 decimal, 0x7f hex, 0177 octal) as a true @TeX{}
+comment character (catcode 14, in @TeX{} internals).  Everything on
+the line after the @kbd{DEL} will be ignored.
 
 @cindex Ignored text
 @cindex Unprocessed text
@@ -17513,8 +17521,8 @@ input file following @code{@@bye}.  @xref{Ending a File}.
 
 @item @@c @var{comment}
 Begin a comment in Texinfo.  The rest of the line does not appear in
-any output.  A synonym for
-@code{@@comment}.  @xref{Comments}.
+any output.  A synonym for @code{@@comment}.  @kbd{DEL} also
+starts a comment.  @xref{Comments}.
 
 @item @@caption
 Define the full caption for a @code{@@float}.  @xref{caption shortcaption}.
@@ -19169,7 +19177,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.229 2008-11-18 05:54:48 olegkat Exp $
+$Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19245,7 +19253,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.229 2008-11-18 05:54:48 olegkat Exp $
+@comment $Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

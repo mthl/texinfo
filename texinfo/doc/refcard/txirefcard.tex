@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.3 2008-11-10 19:36:44 karl Exp $
+% $Id: txirefcard.tex,v 1.4 2008-11-24 01:14:34 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -424,7 +424,7 @@ which they conventionally appear.
 \txicmd{@dircategory}{category name}{Specify an Info directory section for this file's entries.  Can be repeated.  We try to follow the categories in the Free Software Directory.}
 \txicmd{@direntry}{}{Begin the Info directory menu entries for this file. Pair with \tt @end direntry.}
 
-\subsection{HTML document description}
+\subsection{\acro{HTML} document description}
 
 \txicmd{@documentdescription}{}{Set the document description text for \acro{HTML}; default is just the title of the document. Pair with \code{@end documentdescription}.}
 
@@ -790,7 +790,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \section{Conditionally (in)visible text}
 
 \txicmd{@comment}{comment}{Begin a comment in Texinfo. The rest of the line is not visible in any output.}
-\txicmd{@c}{comment}{Synonym for \code{@comment}.}
+\txicmd{@c}{comment}{Synonym for \code{@comment}.  \code{DEL} also starts a comment.}
 \txicmd{@ignore}{}{Begin text that will not appear in any output. Pair with \code{@end ignore}.}
 
 \subsection{Output formats}

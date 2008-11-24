@@ -1,3 +1,8 @@
+2008-11-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (^^?): make a DEL a true TeX comment character,
+	since it is unused in any encoding.  wl, 22 Nov 2008 07:31:43.
+
 2008-11-17  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex: Made left and right quote characters always
