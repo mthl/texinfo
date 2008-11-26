@@ -1,3 +1,11 @@
+2008-11-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\safewhatsit) [\ifhmode]: \unskip, to avoid
+	possible spurious blank line.  Report from Dave Luttinen,
+	24 Nov 2008 01:20:21.
+	(\pdfmkdest) [! \ifpdf]: also \unskip in hmode, to try to
+	avoid output-format-dependent line breaking.
+
 2008-11-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (^^?): make a DEL a true TeX comment character,
