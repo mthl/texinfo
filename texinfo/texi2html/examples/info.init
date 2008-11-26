@@ -238,8 +238,20 @@ sub info_default_style($$$$$$$$$)
    my $state = shift;
    my $command_stack = shift;
 
+   if (defined($style->{'function'}))
+   {
+      $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr);
+   }
+   if (defined($style->{'begin'}) and !$no_open)
+   {
+      $text = $style->{'begin'} . $text;
+   }
+   if (defined($style->{'end'}) and !$no_close)
+   {
+      $text = $text . $style->{'end'};
+   }
    info_default_close_command($command_stack, $command, $no_close, $no_open, $line_nr);
-   return &$default_style_reference(@orig_args);
+   return $text;
 }
 
 my $info_default_offset_in_file;

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.170 2008-11-11 13:29:11 pertusus Exp $
+# $Id: texi2html.init,v 1.171 2008-11-26 19:09:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4413,6 +4413,7 @@ $anchor_label               = \&t2h_default_anchor_label;
 $preserve_misc_command      = \&t2h_default_preserve_misc_command;
 $format_list_item_texi      = \&t2h_default_format_list_item_texi;
 $begin_format_texi          = \&t2h_default_begin_format_texi;
+$tab_item_texi              = \&t2h_default_tab_item_texi;
 $insertcopying              = \&t2h_default_insertcopying;
 $colon_command              = \&t2h_default_colon_command;
 
@@ -4503,7 +4504,9 @@ sub t2h_default_begin_format_texi($$$)
     my $line = shift;
     my $state = shift;
 
-    push (@t2h_default_multitable_stack, -1) if ($command eq 'multitable');
+    # first array element is the number of cell in a row
+    # second is the number of paragraphs in a cell
+    push (@t2h_default_multitable_stack, [-1,-1]) if ($command eq 'multitable');
 
     return $line;
 }
@@ -5524,7 +5527,7 @@ sub t2h_default_row($$$$$$$$)
     $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
     # this is used to keep the cell number
-    $t2h_default_multitable_stack[-1] = -1;
+    $t2h_default_multitable_stack[-1]->[0] = -1;
 
     if ($text =~ /\S/)
     {
@@ -5551,8 +5554,8 @@ sub t2h_default_cell($$$$$$$$)
 
     $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
-    $t2h_default_multitable_stack[-1]++;
-    my $cell_nr = $t2h_default_multitable_stack[-1];
+    $t2h_default_multitable_stack[-1]->[0]++;
+    my $cell_nr = $t2h_default_multitable_stack[-1]->[0];
     my $fractions = '';
 
     if (defined($columnfractions) and (ref($columnfractions) eq 'ARRAY')
@@ -5784,14 +5787,12 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
     my $top_stack = '';
     $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
     if ($top_stack eq 'multitable')
-# FIXME
-# paragraph_number is not by cell, so it is not possible to know if it
-# is the first paragraph in cell. Also currently there is no hook for a
-# cell beginning which means that it is not possible to reset the cell 
-# paragraph count at a cell beginning
-# and (!defined($paragraph_number) or !defined($$paragraph_number) or $$paragraph_number == 1))
     {
-       return $text;
+       $t2h_default_multitable_stack[-1]->[1]++;
+       if ($t2h_default_multitable_stack[-1]->[1] == 0)
+       {
+           return $text;
+       }
     }
 
     my $open = '<p>';
@@ -6574,6 +6575,22 @@ sub t2h_default_colon_command($)
    my $punctuation_character = shift;
    return $colon_command_punctuation_characters{$punctuation_character} if defined($colon_command_punctuation_characters{$punctuation_character});
    return $punctuation_character;
+}
+
+sub t2h_default_tab_item_texi($$$$$$)
+{
+   my $comand = shift;
+   my $commands_stack = shift;
+   my $state = shift;
+   my $stack = shift;
+   my $line = shift;
+   my $line_nr = shift;
+
+   if (defined($commands_stack) and @$commands_stack and $commands_stack->[-1] eq 'multitable' and @t2h_default_multitable_stack)
+   {
+      $t2h_default_multitable_stack[-1]->[1] = -1;
+   }
+   return undef;
 }
 
 1;

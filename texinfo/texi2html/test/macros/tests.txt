@@ -29,6 +29,7 @@ texi macro_in_misc.texi
 texi macro_in_pass_texi_commands.texi
 texi macro_commands_in_pass_texi_commands.texi
 texi empty_macro.texi
+texi cond.texi --ifhtml --ifinfo --no-iftex
 test_include test_include.texi
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml

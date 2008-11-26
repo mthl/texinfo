@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.5 2006-04-17 23:11:09 pertusus Exp $
+# $Id: MySimple.pm,v 1.6 2008-11-26 19:09:01 pertusus Exp $
 
 # use strict;
 # no strict 'refs';
@@ -211,7 +211,8 @@ sub helpOptions
 	}
 
 	print <<EOT;
-Note: 'Options' may be abbreviated. 'Type' specifications mean:
+Note: 'Options' may be abbreviated. -- prefix may be replaced by a single -.
+'Type' specifications mean:
  <none>| !    no argument: variable is set to 1 on -foo (or, to 0 on -nofoo)
     =s | :s   mandatory (or, optional)  string argument
     =i | :i   mandatory (or, optional)  integer argument

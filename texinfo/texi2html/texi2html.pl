@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.246 2008-11-20 12:02:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.247 2008-11-26 19:09:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -468,6 +468,9 @@ $heading_texi
 $index_element_heading_texi
 $format_list_item_texi
 $begin_format_texi
+$begin_style_texi
+$begin_paragraph_texi
+$tab_item_texi
 $colon_command
 
 $PRE_ABOUT
@@ -8633,28 +8636,29 @@ sub begin_paragraph($$)
     my $stack = shift;
     my $state = shift;
 
-    my $command = 1;
+    my $command = { };
     my $top_format = top_format($stack);
     if (defined($top_format))
     {
         $command = $top_format;
     }
-    else
-    {
-        $command = { };
-    }
     $command->{'stack_at_beginning'} = [ @{$state->{'command_stack'}} ];
+    my $paragraph_or_preformatted = 'paragraph';
     if ($state->{'preformatted'})
     {
-        push @$stack, {'format' => 'preformatted', 'text' => '' };
+        $paragraph_or_preformatted = 'preformatted';
         $state->{'preformatted_context'} = $command;
-        push @$stack, @{$state->{'paragraph_macros'}} if $state->{'paragraph_macros'};
-        delete $state->{'paragraph_macros'};
-        return;
     }
-    $state->{'paragraph_context'} = $command;
-    $state->{'paragraph_nr'}++;
-    push @$stack, {'format' => 'paragraph', 'text' => '' };
+    else
+    {
+       $state->{'paragraph_context'} = $command;
+       $state->{'paragraph_nr'}++;
+    }
+    push @$stack, {'format' => $paragraph_or_preformatted, 'text' => '' };
+    # FIXME give line, and modify line?
+    &$Texi2HTML::Config::begin_paragraph_texi($paragraph_or_preformatted,
+      $state->{'paragraph_macros'}, $command, $state, $stack)
+        if (defined($Texi2HTML::Config::begin_paragraph_texi));
     # if there are macros which weren't closed when the previous 
     # paragraph was closed we reopen them here
     push @$stack, @{$state->{'paragraph_macros'}} if $state->{'paragraph_macros'};
@@ -12124,6 +12128,9 @@ sub scan_line($$$$;$)
                      push (@{$state->{'command_stack'}}, $macro);
                      #print STDERR "# Stacked $macro (@{$state->{'command_stack'}})\n" if ($T2H_DEBUG); 
                 }
+                # FIXME give line, and modify line?
+                &$Texi2HTML::Config::begin_style_texi($macro, $state, $stack)
+                  if (defined($Texi2HTML::Config::begin_style_texi));
                 next;
             }
 
@@ -12336,6 +12343,12 @@ sub scan_line($$$$;$)
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph
                 close_paragraph($text, $stack, $state, $line_nr);
+
+                if (defined($Texi2HTML::Config::tab_item_texi))
+                {
+                   my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                   $cline = $resline if (defined($resline));
+                }
 		    #print STDERR "ITEM after close para: $cline";
 		    #dump_stack($text, $stack, $state);
                 # these functions return the format if in the right context
@@ -12390,11 +12403,18 @@ sub scan_line($$$$;$)
                 }
                 next;
             }
+
             if ($macro eq 'tab')
             {
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph?
                 close_paragraph($text, $stack, $state, $line_nr);
+
+                if (defined($Texi2HTML::Config::tab_item_texi))
+                {
+                   my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                   $cline = $resline if (defined($resline));
+                }
                 my $format = add_cell ($text, $stack, $state);
                 if (!$format)
                 {

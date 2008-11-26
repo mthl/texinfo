@@ -1,3 +1,12 @@
+2008-11-26  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add hooks for user functions at 
+	@-command beginning for commands taking arguments, at paragraph
+	beginning and when @item or @tab appears.
+	Use it to determine the number of paragraph in cell.
+	* MySimple.pm: add a sentence about -- being the same as -.
+	Report from Werner LEMBERG.
+
 2008-11-20  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: replace an empty macro by an empty string instead
