@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2008-11-25.16}
+\def\texinfoversion{2008-11-27.11}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2441,22 +2441,35 @@ end
 \catcode`@=\other
 \def\endofsentencespacefactor{3000}% default
 
+% @t, explicit typewriter.
 \def\t#1{%
   {\tt \rawbackslash \plainfrenchspacing #1}%
   \null
 }
+
+% @samp.
 \def\samp#1{{\setupmarkupstyle{samp}\lq\tclose{#1}\rq\null}}
-\setfont\keyrm\rmshape{8}{1000}{OT1}
-\font\keysy=cmsy9
-\def\key#1{{\keyrm\textfont2=\keysy \leavevmode\hbox{%
-  \raise0.4pt\hbox{\angleleft}\kern-.08em\vtop{%
-    \vbox{\hrule\kern-0.4pt
-     \hbox{\raise0.4pt\hbox{\vphantom{\angleleft}}#1}}%
-    \kern-0.4pt\hrule}%
-  \kern-.06em\raise0.4pt\hbox{\angleright}}}}
-\def\key #1{{\setupmarkupstyle{key}\nohyphenation \uppercase{#1}}\null}
-% The old definition, with no lozenge:
-%\def\key #1{{\ttsl \nohyphenation \uppercase{#1}}\null}
+
+% definition of @key that produces a lozenge.  Doesn't adjust to text size.
+%\setfont\keyrm\rmshape{8}{1000}{OT1}
+%\font\keysy=cmsy9
+%\def\key#1{{\keyrm\textfont2=\keysy \leavevmode\hbox{%
+%  \raise0.4pt\hbox{\angleleft}\kern-.08em\vtop{%
+%    \vbox{\hrule\kern-0.4pt
+%     \hbox{\raise0.4pt\hbox{\vphantom{\angleleft}}#1}}%
+%    \kern-0.4pt\hrule}%
+%  \kern-.06em\raise0.4pt\hbox{\angleright}}}}
+
+% definition of @key with no lozenge.  If the current font is already
+% monospace, don't change it; that way, we respect @kbdinputstyle.  But
+% if it isn't monospace, then use \tt.
+%
+\def\key#1{{\setupmarkupstyle{key}
+  \nohyphenation
+  \ifmonospace\else\tt\fi
+  #1}\null}
+
+% ctrl is no longer a Texinfo command.
 \def\ctrl #1{{\tt \rawbackslash \hat}#1}
 
 % @file, @option are the same as @samp.

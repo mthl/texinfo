@@ -1,3 +1,14 @@
+2008-11-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\key): do not uppercase the argument; this
+	was evidently inserted by mistake in an Automake update (1.222).
+	The Emacs manual uses @key with mixed-case arguments, as it should.
+	Also, use \tt if the current font is not already monospace.
+	
+	Also, comment out the definition of \key which produces a lozenge
+	around the key name.  This hasn't been active for a long time,
+	and doesn't adjust to the text size.
+
 2008-11-26  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* util/texi2dvi (move_to_dest): Quote file names consistently.
