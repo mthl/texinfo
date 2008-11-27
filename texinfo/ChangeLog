@@ -1,5 +1,9 @@
 2008-11-27  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex: move markup infrastructure to new markup
+	page; create new glyphs page for glyphs; etc.  No intended
+	functional changes.
+
 	* doc/texinfo.tex (\key): do not uppercase the argument; this
 	was evidently inserted by mistake in an Automake update (1.222).
 	The Emacs manual uses @key with mixed-case arguments, as it should.
