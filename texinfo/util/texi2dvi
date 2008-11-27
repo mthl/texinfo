@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.135 2008-09-18 18:46:01 karl Exp $
+# $Id: texi2dvi,v 1.136 2008-11-27 00:26:29 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.135 $'
+rcs_revision='$Revision: 1.136 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -646,7 +646,7 @@ move_to_dest ()
         destdir=$dest
         destfile=$dest/$file
       else
-        destdir="`dirname $dest`"
+        destdir=`dirname "$dest"`
         destfile=$dest
       fi
       # We want to compare the source location and the output location,
@@ -656,12 +656,12 @@ move_to_dest ()
       # directory names, canonicalized with pwd.  We can't use cmp -s
       # since the output file might not actually change from run to run;
       # e.g., TeX DVI output is timestamped to only the nearest minute.
-      destdir=`cd $destdir && pwd`
-      destbase=`basename $destfile`
+      destdir=`cd "$destdir" && pwd`
+      destbase=`basename "$destfile"`
       #
-      sourcedir=`dirname $file`
-      sourcedir=`cd $sourcedir && pwd`
-      sourcebase=`basename $file`
+      sourcedir=`dirname "$file"`
+      sourcedir=`cd "$sourcedir" && pwd`
+      sourcebase=`basename "$file"`
       #
       if test "$sourcedir/$sourcebase" != "$destdir/$destbase"; then
         verbose "Moving $file to $destfile"

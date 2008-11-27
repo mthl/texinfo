@@ -1,3 +1,7 @@
+2008-11-26  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* util/texi2dvi (move_to_dest): Quote file names consistently.
+
 2008-11-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\safewhatsit) [\ifhmode]: \unskip, to avoid
