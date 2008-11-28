@@ -399,3 +399,16 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * add as a filter when things come from STDIN, and there is no file in 
   argument. If there is no setfilename, file name is stdin.info.
+
+* @FORMAT like @tex, @html... should be kept with -E and certainly handled 
+  in formatting function.
+
+* texi2html doesn't understand `-o /dev/null'.  It aborts with
+      *** /dev/ not writable
+  report from Werner LEMBERG.
+
+* texi2html's option -E suppresses creation of the default output
+     file.  Since texi2html shall replace makeinfo completely, it
+     should rather produce the output file instead for compatibility.
+  report from Werner LEMBERG.
+

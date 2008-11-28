@@ -60,7 +60,7 @@ use File::Spec;
 #--##########################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.247 2008-11-26 19:09:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.248 2008-11-28 09:27:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7840,7 +7840,7 @@ sub format_line_number($)
     my $macro_text = '';
     #$line_number = undef;
     return '' unless (defined($line_number));
-    $macro_text = " in $line_number->{'macro'}" if ($line_number->{'macro'} ne '');
+    $macro_text = " in \@$line_number->{'macro'}" if ($line_number->{'macro'} ne '');
     my $file_text = '(';
     $file_text = "(in $line_number->{'file_name'} " if ($line_number->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'});
     return "${file_text}l. $line_number->{'line_nr'}" . $macro_text . ')';

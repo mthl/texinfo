@@ -1,3 +1,8 @@
+2008-11-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: in format_line_number, use @ in front of a macro
+	name, suggestion from Werner LEMBERG.
+
 2008-11-26  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: add hooks for user functions at 
