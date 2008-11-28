@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.93 2008-09-18 18:45:56 karl Exp $
+# $Id: configure.ac,v 1.94 2008-11-28 01:34:36 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -21,11 +21,6 @@ AC_PREREQ(2.59)
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
-
-# When the Texinfo source is imported into other repositories
-# (NetBSD and TeX Live), timestamps are generally not preserved.  This
-# causes lots of annoyance, so --enable-maintainer-mode.  Sorry.
-AM_MAINTAINER_MODE
 
 # Checks for programs.
 AC_PROG_CC

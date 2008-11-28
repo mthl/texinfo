@@ -1,5 +1,14 @@
 2008-11-27  Karl Berry  <karl@gnu.org>
 
+	* configure.ac (AM_MAINTAINER_MODE): I am removing Texinfo
+	from TeX Live, since it's almost always available outside TL
+	anyway.  Therefore no more need for maintainer mode.
+	* README.dev: remove --enable-maintainer-mode from example.
+	* util/Makefile.am [MAINTAINER_MODE]: comment out the 
+        tests, instead of using the Automake conditional, since
+        we don't want maintainer mode any more.  We'll be able to revert
+        this in Automake 1.11.
+
 	* doc/texinfo.tex: move markup infrastructure to new markup
 	page; create new glyphs page for glyphs; etc.  No intended
 	functional changes.

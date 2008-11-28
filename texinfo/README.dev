@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.15 2008-03-25 13:51:20 karl Exp $
+$Id: README.dev,v 1.16 2008-11-28 01:34:36 karl Exp $
 This README.dev file describes the development environment.
 
   Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008
@@ -21,7 +21,7 @@ All of these programs are available from ftp://ftp.gnu.org/gnu.
 After getting the CVS sources, and installing the tools above, you can run
  ./autogen.sh
 and then
- ./configure CFLAGS='-g -Wdeclaration-after-statement' --enable-maintainer-mode
+ ./configure CFLAGS='-g -Wdeclaration-after-statement'
 and then
  make
 
