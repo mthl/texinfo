@@ -1,4 +1,4 @@
-$Id: TODO,v 1.47 2008-10-29 22:19:28 karl Exp $
+$Id: TODO,v 1.48 2008-12-03 18:57:26 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -47,8 +47,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     There is mail about this in the bug-texinfo archives:
       http://mail.gnu.org/archive/html/bug-texinfo/2003-09/msg00086.html
   - Support compressed image files.
-  - Support reference card creation, perhaps by only paying attention to
-    sectioning and @def... commands.
+  - Support reference card creation.
   - Allow @end (and other?) commands to be indented in the source.
 
 * Language:
@@ -87,7 +86,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     the way to a speller.  An option would be to NOT strip comments out.
     makeinfo --no-headers comes close.
   - If node name contains an @ command, complain explicitly.
-  - Use @documentlanguage instead of LANG for many translations.
   - HTML: split output by chapter to improve context, per Akim.
     Even different splits for different chapters.
     Generate dummy files for all nodes for the sake of cross-references?
@@ -100,7 +98,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - XML: cannot be loaded directly in a browser; why not?
   - Docbook: &euro; and other entities do not work; does anything work?
   - Support the MediaWiki output format.
-  - Rewrite completely to simplify generation of different formats.
+  - Support the epub output format, http://en.wikipedia.org/wiki/OEBPS.
+    Suggested by Sean Young, 30 Nov 2008 20:13:11.
 
 * TeX:
   - Use @ as the escape character, and Texinfo syntax generally, in the
