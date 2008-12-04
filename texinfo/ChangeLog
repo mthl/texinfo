@@ -1,3 +1,9 @@
+2008-12-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\safewhatsit): undo change of 2008-11-25;
+	clearly \unskip is wrong, because then normal interword glue
+	before an @ref, for example, is removed.  Report from wl.
+
 2008-11-27  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AM_MAINTAINER_MODE): I am removing Texinfo
