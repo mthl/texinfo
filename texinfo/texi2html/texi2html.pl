@@ -38,6 +38,8 @@ use strict;
 use POSIX qw(setlocale LC_ALL LC_CTYPE);
 # used to obtain the name of the current working directory
 use Cwd;
+# Used to find the parent directory of this script.
+use File::Basename;
 # used to find a relative path back to the current working directory
 use File::Spec;
 
@@ -52,15 +54,27 @@ use File::Spec;
 #++##########################################################################
 #
 # NOTE FOR DEBUGGING THIS SCRIPT:
-# You can run 'perl texi2html.pl' directly, provided you have
-# the environment variable T2H_HOME set to the directory containing
-# the texi2html.init, T2h_i18n.pm, translations.pl, l2h.init, 
-# T2h_l2h.pm files
+# You can run 'perl texi2html.pl' directly, provided you have the script
+# in the same directory with, or the environment variable T2H_HOME set to
+# the directory containing, the texi2html.init, T2h_i18n.pm, translations.pl,
+# l2h.init, & T2h_l2h.pm files
 #
 #--##########################################################################
+my $T2H_HOME = defined $ENV{T2H_HOME} ? $ENV{T2H_HOME} : dirname $0;
+if ($0 =~ /\.pl$/)
+{
+    # Issue a warning in debugging mode if $T2H_HOME is set but isn't
+    # accessible.
+    if (!-e $T2H_HOME)
+    { warn "T2H_HOME ($T2H_HOME) does not exist."; }
+    elsif (!-d $T2H_HOME)
+    { warn "T2H_HOME ($T2H_HOME) is not a directory."; }
+    elsif (!-x $T2H_HOME)
+    { warn "T2H_HOME ($T2H_HOME) is not accessible."; }
+}
 
 # CVS version:
-# $Id: texi2html.pl,v 1.248 2008-11-28 09:27:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.249 2008-12-11 19:25:54 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1186,26 +1200,26 @@ sub t2h_GPL_default_printindex($)
 }
 # leave this within comments, and keep the require statement
 # This way, you can directly run texi2html.pl, if 
-# $ENV{T2H_HOME}/texi2html.init exists.
+# $T2H_HOME/texi2html.init exists.
 
 # @INIT@
 
-require "$ENV{T2H_HOME}/texi2html.init" 
+require "$T2H_HOME/texi2html.init" 
     if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/texi2html.init" && -r "$ENV{T2H_HOME}/texi2html.init");
+        -e "$T2H_HOME/texi2html.init" && -r "$T2H_HOME/texi2html.init");
 
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
 
 # leave this within comments, and keep the require statement
 # This way, you can directly run texi2html.pl, 
-# if $ENV{T2H_HOME}/translations.pl exists.
+# if $T2H_HOME/translations.pl exists.
 #
 # @T2H_TRANSLATIONS_FILE@
 
-require "$ENV{T2H_HOME}/$translation_file"
+require "$T2H_HOME/$translation_file"
     if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
+        -e "$T2H_HOME/$translation_file" && -r "$T2H_HOME/$translation_file");
 
 #
 # Some functions used to override normal formatting functions in specific 
@@ -1436,14 +1450,14 @@ use vars qw(
 #---############################################################################
 
 # leave this within comments, and keep the require statement
-# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/texi2html.init
+# This way, you can directly run texi2html.pl, if $T2H_HOME/MySimple.pm
 # exists.
 
 # @MYSIMPLE@
 
-require "$ENV{T2H_HOME}/MySimple.pm"
+require "$T2H_HOME/MySimple.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/MySimple.pm" && -r "$ENV{T2H_HOME}/MySimple.pm");
+        -e "$T2H_HOME/MySimple.pm" && -r "$T2H_HOME/MySimple.pm");
 
 #+++########################################################################
 #                                                                          #
@@ -1452,13 +1466,13 @@ require "$ENV{T2H_HOME}/MySimple.pm"
 #---########################################################################
 
 # leave this within comments, and keep the require statement
-# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/T2h_i18n.pm
+# This way, you can directly run texi2html.pl, if $T2H_HOME/T2h_i18n.pm
 # exists.
 
 # @T2H_I18N@
-require "$ENV{T2H_HOME}/T2h_i18n.pm"
+require "$T2H_HOME/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
+        -e "$T2H_HOME/T2h_i18n.pm" && -r "$T2H_HOME/T2h_i18n.pm");
 
 
 #########################################################################
@@ -1474,10 +1488,9 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
 
 # @T2H_L2H@
 
-
-require "$ENV{T2H_HOME}/T2h_l2h.pm"
+require "$T2H_HOME/T2h_l2h.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/T2h_l2h.pm" && -r "$ENV{T2H_HOME}/T2h_l2h.pm");
+        -e "$T2H_HOME/T2h_l2h.pm" && -r "$T2H_HOME/T2h_l2h.pm");
 
 }
 

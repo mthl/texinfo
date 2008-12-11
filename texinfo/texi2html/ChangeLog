@@ -1,3 +1,9 @@
+2008-12-11  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.pl: Set $T2H_HOME based on the path to the script when
+	it is not found set in the environment.
+	* test/run_test.sh: Use mktemp more portably.
+
 2008-11-28  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: in format_line_number, use @ in front of a macro
