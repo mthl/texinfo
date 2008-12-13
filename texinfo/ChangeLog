@@ -1,3 +1,18 @@
+2008-12-13  Werner Lemberg  <wl@gnu.org> and
+	    Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (uncomment_iftex): ignore repeated @c texi2dvi's,
+	thus supporting
+	  @iftex
+	  @tex
+	  ...
+	  @end tex
+	  @end iftex
+       with `texi2dvi -E'.  bug-texinfo mail of 22 Nov 2008 17:01:49.
+       Also use @c _texi2dvi instead of @c texi2dvi to reduce conflicts.
+       * doc/texinfo.txi (Format with texi2dvi): mention that the 
+       source document cannot have a line starting with @c _texi2dvi.
+
 2008-12-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\safewhatsit): undo change of 2008-11-25;

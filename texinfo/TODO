@@ -1,4 +1,4 @@
-$Id: TODO,v 1.48 2008-12-03 18:57:26 karl Exp $
+$Id: TODO,v 1.49 2008-12-13 14:36:51 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -65,7 +65,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Support automatic line numbering of examples.
   - Better macro syntax, including a separate @inlinemacro (or
     something) to distinguish macros that swallow their final newline
-    and those that don't.
+    and those that don't.  Perhaps preprocessing with m4 is better?
   - Better def... command syntax.
   - Allow : in node names for info files, for names like
     `class::method'.  Likewise index entries.  A quoting mechanism such

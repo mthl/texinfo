@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
+@c $Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14629,9 +14629,16 @@ encoding is supported by @command{makeinfo}.
 Both @option{--recode} and @option{--recode-from=@var{enc}} use
 @command{recode} utility to perform the conversion. If
 @command{recode} fails to process the file, @command{texi2dvi} prints
-a warning and continues using unmodified input file.
+a warning and continues, using the unmodified input file.
 
-For a list of other options, run @samp{texi2dvi --help}.
+The option @option{-E} (equivalently, @option{-e} and
+@option{--expand}) does Texinfo macro expansion using
+@command{makeinfo} instead of the @TeX{} implementation.  Each
+implementation has its own limitations and advantages.  If this option
+is used, the string @code{@@c@tie{}_texi2dvi} must not appear at the
+beginning of a line in the source file.
+
+For the list of all options, run @samp{texi2dvi --help}.
 
 
 @node Print with lpr
@@ -19177,7 +19184,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
+$Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19253,7 +19260,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.230 2008-11-24 01:14:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
