@@ -1,8 +1,13 @@
+2008-12-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\sectionheading): force vertical mode before
+	the first whatsit.  Report from wl.
+
 2008-12-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\pdfsetcolor): also set the PDF color for
 	stroking, used for thin-enough rules, e.g., normal _'s.
-	Bug report from wl.
+	Report from wl.
 
 2008-12-13  Werner Lemberg  <wl@gnu.org> and
 	    Karl Berry  <karl@gnu.org>
