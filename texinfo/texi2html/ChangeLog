@@ -1,3 +1,8 @@
+2008-12-16  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* test/*: handle more gracefully missing latex2html or tex4ht.
+	Try to avoid spurious differences in latex2html output.
+
 2008-12-11  Derek Price  <derek@ximbiot.com>
 
 	* texi2html.pl: Set $T2H_HOME based on the path to the script when

@@ -26,6 +26,16 @@ if [ z"$1" = 'z-copy' ]; then
   shift
 fi
 
+no_latex2html=yes
+if which latex2html > /dev/null 2>&1; then
+  no_latex2html=no
+fi
+
+no_tex4ht=yes
+if which httexi > /dev/null 2>&1; then
+  no_tex4ht=no
+fi
+
 one_test=no
 if [ z"$1" != 'z' ]; then
   one_test=yes
@@ -81,6 +91,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
            mkdir "$res_dir/$dir/"
         fi
         cp -r "$out_dir/$dir/"* "$res_dir/$dir/"
+        rm -f "$res_dir/$dir/"*.png "$res_dir/$dir/"*_l2h.css
       else
         echo "No dir $out_dir/$dir" 1>&2
       fi
@@ -134,6 +145,21 @@ do
     eval "perl -w -x $testdir/$srcdir_test/../../texi2html.pl -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=$out_dir/$dir/$basename.texi $remaining $src_file 2>>$out_dir/$dir/$basename.2" 
     ret=$?
   else
+    use_latex2html=no
+    use_tex4ht=no
+    if echo "$remaining" | grep -qs -- '-l2h'; then
+      if [ "$no_latex2html" = 'yes' ]; then
+        echo "S: (no latex2html) $dir"
+        continue
+      fi
+      use_latex2html=yes
+    elif echo "$remaining" | grep -qs -- '-init tex4ht.init'; then
+      if [ "$no_tex4ht" = 'yes' ]; then
+        echo "S: (no tex4ht) $dir"
+        continue
+      fi
+      use_tex4ht=yes
+    fi
     one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
@@ -149,7 +175,14 @@ do
   fi
   if [ $ret = 0 ]; then
     if [ -d "$results_dir/$dir" ]; then
-      diff -u --exclude=CVS --exclude='*.png' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
+      sed -i -e 's/^texexpand.*/texexpand /' "$out_dir/$dir/$basename.2"
+      sed -i '/is no longer supported at.*line/d' "$out_dir/$dir/$basename.2"
+      if [ "$use_latex2html" = 'yes' ]; then
+        sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
+         's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html" "$out_dir/$dir/"*"_l2h_labels.pl"
+        rm -f "$out_dir/$dir/"*".aux"
+      fi
+      diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"

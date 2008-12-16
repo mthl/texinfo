@@ -7,12 +7,18 @@ stdout_file=$basename.out
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
+if which httexi > /dev/null 2>&1; then
+  :
+else
+  exit 77
+fi
+
 [ -d $diffs_dir ] || mkdir $diffs_dir
 
 echo "$basename" > $logfile
 : > $stdout_file
 
-if tmp_dir=`mktemp --tmpdir -d l2h_t2h_XXXXXXXX`; then
+if tmp_dir=`mktemp -t -d l2h_t2h_XXXXXXXX`; then
   echo "\$L2H_TMP = '$tmp_dir';" > l2h_tmp_dir.init
   echo "1;" >> l2h_tmp_dir.init
 else
@@ -32,7 +38,7 @@ if [ $ret != 0 ]; then
 else
   rm -f $basename/*_tex4ht_*.log \
       $basename/*_tex4ht_*.idv $basename/*_tex4ht_*.dvi \
-      $basename/*_tex4ht_tex.html
+      $basename/*_tex4ht_tex.html $basename/*.png
 
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then

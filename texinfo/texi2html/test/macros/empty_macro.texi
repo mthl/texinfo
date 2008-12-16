@@ -1,0 +1,14 @@
+\input texinfo 
+@setfilename empty_macro.info
+
+@node Top
+@top test empty macro
+
+@macro foo
+@end macro
+
+@foo
+
+@foo{}
+
+@bye

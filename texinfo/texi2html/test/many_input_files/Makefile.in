@@ -382,6 +382,7 @@ copy-tests:
 				mkdir "$${dir}_res/" ; \
 			fi ;\
 			cp -p "$$dir/"*.* "$${dir}_res/"; \
+			rm -f "$${dir}_res/"*.png "$${dir}_res/"*_l2h.css; \
 		else \
 			echo "No dir $$dir/"; \
 		fi; \

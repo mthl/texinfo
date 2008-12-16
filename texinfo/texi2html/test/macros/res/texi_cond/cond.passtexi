@@ -1,0 +1,21 @@
+cond.texi(,2) @setfilename cond.info
+cond.texi(,3) 
+cond.texi(,4) @node Top
+cond.texi(,5) 
+cond.texi(,6) @html
+cond.texi(,7) This is html text.
+cond.texi(,8) @end html
+cond.texi(,9) 
+cond.texi(,11) This is ifhtml text.
+cond.texi(,13) 
+cond.texi(,17) 
+cond.texi(,18) 
+cond.texi(,20) This is ifinfo text.
+cond.texi(,22) 
+cond.texi(,26) 
+cond.texi(,27) 
+cond.texi(,31) 
+cond.texi(,35) 
+cond.texi(,37) This is ifnottex text.
+cond.texi(,39) 
+cond.texi(,40) @bye

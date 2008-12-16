@@ -7,12 +7,18 @@ stdout_file=$basename.out
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
+if which latex2html > /dev/null 2>&1; then
+  :
+else
+  exit 77
+fi
+
 [ -d $diffs_dir ] || mkdir $diffs_dir
 
 echo "$basename" > $logfile
 : > $stdout_file
 
-if tmp_dir=`mktemp --tmpdir -d l2h_t2h_XXXXXXXX`; then
+if tmp_dir=`mktemp -t -d l2h_t2h_XXXXXXXX`; then
   echo "\$L2H_TMP = '$tmp_dir';" > l2h_tmp_dir.init
   echo "1;" >> l2h_tmp_dir.init
 else
@@ -30,7 +36,11 @@ if [ $ret != 0 ]; then
   echo "F: $basename/$basename.2"
   return_code=1
 else
-  rm -f $basename/*_l2h_images.log
+  rm -f $basename/*_l2h_images.log $basename/*.aux $basename/*_l2h.css $basename/*.png
+  sed -i -e 's/^texexpand.*/texexpand /' "$basename/$basename.2"
+  sed -i '/is no longer supported at.*line/d' "$basename/$basename.2"
+  sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
+   's/with LaTeX2HTML.*/with LaTeX2HTML/' "$basename/"*"_l2h.html" "$basename/"*"_l2h_labels.pl"
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then
       diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"

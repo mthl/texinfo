@@ -401,7 +401,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   argument. If there is no setfilename, file name is stdin.info.
 
 * @FORMAT like @tex, @html... should be kept with -E and certainly handled 
-  in formatting function.
+  in formatting function. Cf test/macros/out/texi_cond for a wrong output.
 
 * texi2html doesn't understand `-o /dev/null'.  It aborts with
       *** /dev/ not writable
