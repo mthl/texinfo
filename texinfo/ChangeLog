@@ -1,3 +1,9 @@
+2008-12-16  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.tex (\nonfillstart): emulate the normal @indent in
+	the non-fill environments (@example, @display, @format,
+	@flushleft, @flushright, @verbatim).  Report from wl.
+
 2008-12-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sectionheading): force vertical mode before
