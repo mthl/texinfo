@@ -40,6 +40,10 @@
 #  include <time.h>
 # endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 # if ! 1
 struct timeval
 {
@@ -53,5 +57,9 @@ struct timeval
 #  define gettimeofday rpl_gettimeofday
 int gettimeofday (struct timeval *restrict, void *restrict);
 # endif
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _GL_SYS_TIME_H */

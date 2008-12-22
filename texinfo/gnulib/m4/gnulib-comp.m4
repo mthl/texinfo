@@ -70,10 +70,14 @@ AC_DEFUN([gl_INIT],
   gl_MALLOCA
   gl_MBCHAR
   gl_MBITER
+  gl_FUNC_MBRTOWC
+  gl_WCHAR_MODULE_INDICATOR([mbrtowc])
   gl_FUNC_MBSCASECMP
   gl_STRING_MODULE_INDICATOR([mbscasecmp])
   gl_FUNC_MBSCHR
   gl_STRING_MODULE_INDICATOR([mbschr])
+  gl_FUNC_MBSINIT
+  gl_WCHAR_MODULE_INDICATOR([mbsinit])
   gl_FUNC_MBSLEN
   gl_STRING_MODULE_INDICATOR([mbslen])
   gl_FUNC_MBSNCASECMP
@@ -279,8 +283,10 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbchar.c
   lib/mbchar.h
   lib/mbiter.h
+  lib/mbrtowc.c
   lib/mbscasecmp.c
   lib/mbschr.c
+  lib/mbsinit.c
   lib/mbslen.c
   lib/mbsncasecmp.c
   lib/mbsstr.c
@@ -319,6 +325,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniwidth/cjk.h
   lib/uniwidth/width.c
   lib/unsetenv.c
+  lib/verify.h
   lib/wchar.in.h
   lib/wctype.in.h
   lib/wcwidth.c
@@ -357,6 +364,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/localcharset.m4
+  m4/locale-fr.m4
+  m4/locale-ja.m4
+  m4/locale-zh.m4
   m4/lock.m4
   m4/longlong.m4
   m4/lstat.m4
@@ -366,6 +376,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbrtowc.m4
   m4/mbscasecmp.m4
   m4/mbschr.m4
+  m4/mbsinit.m4
   m4/mbslen.m4
   m4/mbsncasecmp.m4
   m4/mbsstr.m4

@@ -333,6 +333,15 @@ libgnu_a_SOURCES += mbiter.h
 
 ## end   gnulib module mbiter
 
+## begin gnulib module mbrtowc
+
+
+EXTRA_DIST += mbrtowc.c
+
+EXTRA_libgnu_a_SOURCES += mbrtowc.c
+
+## end   gnulib module mbrtowc
+
 ## begin gnulib module mbscasecmp
 
 libgnu_a_SOURCES += mbscasecmp.c
@@ -344,6 +353,15 @@ libgnu_a_SOURCES += mbscasecmp.c
 libgnu_a_SOURCES += mbschr.c
 
 ## end   gnulib module mbschr
+
+## begin gnulib module mbsinit
+
+
+EXTRA_DIST += mbsinit.c
+
+EXTRA_libgnu_a_SOURCES += mbsinit.c
+
+## end   gnulib module mbsinit
 
 ## begin gnulib module mbslen
 
@@ -847,6 +865,12 @@ EXTRA_libgnu_a_SOURCES += unsetenv.c
 
 ## end   gnulib module unsetenv
 
+## begin gnulib module verify
+
+libgnu_a_SOURCES += verify.h
+
+## end   gnulib module verify
+
 ## begin gnulib module wchar
 
 BUILT_SOURCES += $(WCHAR_H)
@@ -859,10 +883,39 @@ wchar.h: wchar.in.h
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
 	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
 	      -e 's|@''NEXT_WCHAR_H''@|$(NEXT_WCHAR_H)|g' \
-	      -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
+	      -e 's|@''HAVE_WCHAR_H''@|$(HAVE_WCHAR_H)|g' \
+	      -e 's|@''GNULIB_BTOWC''@|$(GNULIB_BTOWC)|g' \
+	      -e 's|@''GNULIB_WCTOB''@|$(GNULIB_WCTOB)|g' \
+	      -e 's|@''GNULIB_MBSINIT''@|$(GNULIB_MBSINIT)|g' \
+	      -e 's|@''GNULIB_MBRTOWC''@|$(GNULIB_MBRTOWC)|g' \
+	      -e 's|@''GNULIB_MBRLEN''@|$(GNULIB_MBRLEN)|g' \
+	      -e 's|@''GNULIB_MBSRTOWCS''@|$(GNULIB_MBSRTOWCS)|g' \
+	      -e 's|@''GNULIB_MBSNRTOWCS''@|$(GNULIB_MBSNRTOWCS)|g' \
+	      -e 's|@''GNULIB_WCRTOMB''@|$(GNULIB_WCRTOMB)|g' \
+	      -e 's|@''GNULIB_WCSRTOMBS''@|$(GNULIB_WCSRTOMBS)|g' \
+	      -e 's|@''GNULIB_WCSNRTOMBS''@|$(GNULIB_WCSNRTOMBS)|g' \
 	      -e 's|@''GNULIB_WCWIDTH''@|$(GNULIB_WCWIDTH)|g' \
-	      -e 's/@''HAVE_WINT_T''@/$(HAVE_WINT_T)/g' \
+	      -e 's|@''HAVE_WINT_T''@|$(HAVE_WINT_T)|g' \
+	      -e 's|@''HAVE_BTOWC''@|$(HAVE_BTOWC)|g' \
+	      -e 's|@''HAVE_MBSINIT''@|$(HAVE_MBSINIT)|g' \
+	      -e 's|@''HAVE_MBRTOWC''@|$(HAVE_MBRTOWC)|g' \
+	      -e 's|@''HAVE_MBRLEN''@|$(HAVE_MBRLEN)|g' \
+	      -e 's|@''HAVE_MBSRTOWCS''@|$(HAVE_MBSRTOWCS)|g' \
+	      -e 's|@''HAVE_MBSNRTOWCS''@|$(HAVE_MBSNRTOWCS)|g' \
+	      -e 's|@''HAVE_WCRTOMB''@|$(HAVE_WCRTOMB)|g' \
+	      -e 's|@''HAVE_WCSRTOMBS''@|$(HAVE_WCSRTOMBS)|g' \
+	      -e 's|@''HAVE_WCSNRTOMBS''@|$(HAVE_WCSNRTOMBS)|g' \
+	      -e 's|@''HAVE_DECL_WCTOB''@|$(HAVE_DECL_WCTOB)|g' \
 	      -e 's|@''HAVE_DECL_WCWIDTH''@|$(HAVE_DECL_WCWIDTH)|g' \
+	      -e 's|@''REPLACE_MBSTATE_T''@|$(REPLACE_MBSTATE_T)|g' \
+	      -e 's|@''REPLACE_BTOWC''@|$(REPLACE_BTOWC)|g' \
+	      -e 's|@''REPLACE_WCTOB''@|$(REPLACE_WCTOB)|g' \
+	      -e 's|@''REPLACE_MBSINIT''@|$(REPLACE_MBSINIT)|g' \
+	      -e 's|@''REPLACE_MBRTOWC''@|$(REPLACE_MBRTOWC)|g' \
+	      -e 's|@''REPLACE_MBSRTOWCS''@|$(REPLACE_MBSRTOWCS)|g' \
+	      -e 's|@''REPLACE_MBSNRTOWCS''@|$(REPLACE_MBSNRTOWCS)|g' \
+	      -e 's|@''REPLACE_WCRTOMB''@|$(REPLACE_WCRTOMB)|g' \
+	      -e 's|@''REPLACE_WCSRTOMBS''@|$(REPLACE_WCSRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	    < $(srcdir)/wchar.in.h; \
