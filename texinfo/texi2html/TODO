@@ -320,6 +320,11 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * to solve above issue, the definition arg formatted with simple_format 
   should alo be passed down
 
+* in docbook, when there is only one section <article> should be better
+  than book. Maybe the best way to do that would be passing the 
+  information that there is only one section to the functions formatting
+  the page header and page footer.
+
 * makeinfo has a lot of other short command line switches, but implement
   only those that are documented, in --help or info makeinfo.
 

@@ -154,6 +154,10 @@ $empty_line               = \&info_default_empty_line;
 $print_page_foot   = \&info_default_print_page_foot;
 $print_section     = \&info_default_print_section;
 $one_section       = \&info_default_one_section;
+$begin_format_texi     = \&info_default_begin_format_texi;
+$begin_style_texi      = \&info_default_begin_style_texi;
+$begin_paragraph_texi  = \&info_default_begin_paragraph_texi;
+
 
 sub info_default_count_bytes()
 {
@@ -170,6 +174,21 @@ sub info_default_copying_comment($$$$)
 }
 my @all_stacks;
 my $info_default_top_stack = {};
+my $current_command = $info_default_top_stack;
+
+sub info_default_open_command($$$$$)
+{
+   my $command_stack = shift;
+   my $command = shift;
+   my $no_close = shift;
+   my $no_open = shift;
+   my $line_nr = shift;
+
+   my $new_command = {'command' => $command, 'parent' => $current_command};
+   push @{$current_command->{'content'}}, $new_command;
+   $current_command = $new_command;
+   print STDERR "Opened $command ". Data::Dumper->Dump([$info_default_top_stack]);
+}
 
 sub info_default_close_command($$$$$)
 {
@@ -180,49 +199,43 @@ sub info_default_close_command($$$$$)
    my $line_nr = shift;
    $no_open = 0 if (!defined($no_open));
    $no_close = 0 if (!defined($no_close));
-   my $current_command = $info_default_top_stack;
-   main::echo_warn("$command, (@$command_stack) (n_c:$no_close, n_o:$no_open)", $line_nr);
-   print STDERR "" . Data::Dumper->Dump([$current_command]);
-   foreach my $command_name (@$command_stack)
-   {
-      if (!defined($current_command->{'command'}))
-      {
-         print STDERR "Adding $command_name as $current_command\n";
-         $current_command->{'command'} = $command_name;
-         $current_command->{'content'} =  [ {} ];
-         $current_command = $current_command->{'content'}->[0];
-      }
-      else
-      {
-         if ($current_command->{'command'} ne $command_name)
-         {
-            print STDERR "current_command->{'command'} $current_command->{'command'} ne command_name $command_name\n";
-         }
-         print STDERR "current_command->{'content'} not defined\n" if (!defined( $current_command->{'content'}));
-         print STDERR "current_command->{'content'}->[-1] not defined\n" if (!defined( $current_command->{'content'}->[-1]));
-         my $last_command = $current_command->{'content'}->[-1];
-         if ($last_command->{'closed'})
-         {
-            push @{$current_command->{'content'}}, {};
-         }
-         $current_command = $current_command->{'content'}->[-1];
-      }
-   }
+   #print STDERR "" . Data::Dumper->Dump([$current_command]);
+   print STDERR "Closing $command ". Data::Dumper->Dump([$info_default_top_stack]);
    return if $no_close;
-   
+   $current_command = $current_command->{'parent'};
+
    if (!defined($current_command->{'command'}))
-   {
-      print STDERR "To close, Adding $command as $current_command\n";
-      $current_command->{'command'} = $command;
-   }
-   print STDERR "Closing $command ($current_command)\n";
-   $current_command->{'closed'} = 1;
-   if (!@$command_stack)
    {
       push @all_stacks, $info_default_top_stack;
       $info_default_top_stack = {};
       print STDERR "Storing the stack\n";
    }
+}
+
+sub info_default_begin_format_texi($$$)
+{
+   my $command = shift;
+   my $line = shit;
+   my $state = shift;
+   info_default_open_command(undef,$command, undef, undef, undef);
+}
+
+sub info_default_begin_style_texi($$$)
+{
+   my $command = shift;
+   my $state = shift;
+   my $stack = shift;
+   info_default_open_command(undef,$command, undef, undef, undef);
+}
+
+sub info_default_begin_paragraph_texi($$$)
+{
+   my $command = shift;
+   my $paragraph_macros = shift;
+   my $paragraph_command = shift;
+   my $state = shift;
+   my $stack = shift;
+   info_default_open_command(undef,$command, undef, undef, undef);
 }
 
 sub info_default_style($$$$$$$$$)
@@ -338,7 +351,9 @@ sub info_default_paragraph($$$$$$$$$$$$)
           $line_char_counter += 1;
        }
     }
-    return $para . "\n\n";
+    $para .=  "\n\n";
+    info_default_close_command(undef, 'paragraph', undef, undef, undef);
+    return $para;
 }
 
 my %default_info_level_to_symbol = (

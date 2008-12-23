@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.249 2008-12-11 19:25:54 dprice Exp $
+# $Id: texi2html.pl,v 1.250 2008-12-23 10:55:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2124,6 +2124,16 @@ sub unicode_to_transliterate($)
              elsif (ord($char) <= hex(0xFFFF) and exists($Texi2HTML::Config::unicode_diacritical{uc(sprintf("%04x",ord($char)))}))
              {
                  $result .= '';
+             }
+             # in this case, we want to avoid calling unidecode, as we are sure
+             # that there is no useful transliteration of the unicode character
+             # instead we want to keep it as is.
+             # This is the case, for example, for @exclamdown, is corresponds
+             # with x00a1, but unidecode transliterates it to a !, we want
+             # to avoid that and keep x00a1.
+             elsif (ord($char) <= hex(0xFFFF) and exists($Texi2HTML::Config::no_transliterate_map{uc(sprintf("%04x",ord($char)))}))
+             {
+                 $result .= $char;
              }
              else
              {

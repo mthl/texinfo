@@ -1,3 +1,10 @@
+2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
+	* texi2html.pl: don't use unidecode on unicode characters that
+	are known not to have a good transliteration. This corresponds with
+	characters with an @-command that don't have a transliteration, like
+	@exclamdown...
+	* test/*: avoid more spurious differences in latex2html output.
+
 2008-12-22  Derek Price  <derek@ximbiot.com>
 
 	* doc/.cvsignore: Ignore this...

@@ -180,6 +180,11 @@ do
       if [ "$use_latex2html" = 'yes' ]; then
         sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
          's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html" "$out_dir/$dir/"*"_l2h_labels.pl"
+        for file in "$out_dir/$dir/${dir}_l2h_images.pl" "$out_dir/$dir/${dir}_l2h_labels.pl"; do
+          if [ -f "$file" ]; then
+            sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
+          fi
+         done
         rm -f "$out_dir/$dir/"*".aux"
       fi
       diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
