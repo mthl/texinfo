@@ -1,3 +1,9 @@
+2008-12-22  Derek Price  <derek@ximbiot.com>
+
+	* doc/.cvsignore: Ignore this...
+	* doc/texi2html.html: ...removed file, since it is generated during
+	build.
+
 2008-12-16  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* test/*: handle more gracefully missing latex2html or tex4ht.
