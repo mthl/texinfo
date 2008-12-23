@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.250 2008-12-23 10:55:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.251 2008-12-23 14:02:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1335,10 +1335,7 @@ sub t2h_no_unicode_cross_manual_normal_text($$)
                  $result .= '_' . lc($ascii_character_map{$1});
              }
              else
-             { # wild guess that should work for latin1
-               # FIXME to be fixed with unicode to 8bit tables
-               # FIXME also add transliteration, maybe with a 
-               # wrapper function to avoid code duplication
+             { 
                   my $character = $1;
                   my $charcode = uc(sprintf("%02x",ord($1)));
                   my $done = 0;
@@ -3212,27 +3209,30 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
         if ($Texi2HTML::Config::USE_UNICODE)
         {
             $cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
-            if (($Texi2HTML::Config::TRANSLITERATE_NODE and !$Texi2HTML::Config::USE_UNIDECODE)
-                and (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}})))
-            {
+             # cross_transliterate_texi_map is only used if USE_UNICODE or 
+             # USE_UNIDECODE is unset and TRANSLITERATE_NODE is set
+             if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
+             {
                 $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
-                 
-            }
+             }
+             else
+             {
+                 $cross_transliterate_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+             }
         }
         else
         {
             $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
-            if ($Texi2HTML::Config::TRANSLITERATE_NODE)
-            {
-                if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
-                {
-                    $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
-                }
-                else
-                {
-                     $cross_transliterate_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
-                }
-            }
+             # cross_transliterate_texi_map is only used if USE_UNICODE or 
+             # USE_UNIDECODE is unset and TRANSLITERATE_NODE is set
+             if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
+             {
+                 $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
+             }
+             else
+             {
+                  $cross_transliterate_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
+             }
         }
     }
 }
@@ -3260,11 +3260,9 @@ foreach my $key (keys(%cross_ref_style_map_texi))
         {
              $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_nounicode_cross_manual_accent;
         }
-        if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
-           !($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::USE_UNIDECODE))
-        {
-             $cross_transliterate_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_transliterate_cross_manual_accent;
-        }
+        # this is only used if TRANSLITERATE_NODE is set and USE_UNICODE
+        # or USE_UNIDECODE is not set
+        $cross_transliterate_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_transliterate_cross_manual_accent;
     }
 }
 
@@ -5225,6 +5223,7 @@ sub cross_manual_line($;$)
     {
          $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
          $::texi_map_ref = \%cross_transliterate_texi_map;
+         $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text_transliterate if (!$Texi2HTML::Config::USE_UNICODE);
          $cross_ref_file = remove_texi($text);
          $cross_ref_file = unicode_to_protected(unicode_to_transliterate($cross_ref_file))
                if ($Texi2HTML::Config::USE_UNICODE);

@@ -16,12 +16,24 @@ nodetest_use_nodes_no_unidecode nodetest.texi -init no_unidecode.init -node-file
 nodetest_use_nodes nodetest.texi -node-files -use-nodes -split node
 nodetest_no_unicode nodetest.texi -init no_unicode.init
 nodetest_utf8 nodetest_utf8.texi
+# the following is not perfect, since there is no map for  @,{@'C}
+# it isn't rightly transformed in _1e14 but in _0112_0300
 nodetest_utf8_no_unicode nodetest_utf8.texi -init no_unicode.init
 nodetest_utf8_use_nodes nodetest_utf8.texi -node-files -use-nodes -split node
 nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi -init no_unidecode.init -node-files -use-nodes -split node
 nodetest_to_utf8_latin1 nodetest_latin1.texi -init utf8.init
 nodetest_latin1 nodetest_latin1.texi
 nodetest_latin1_no_unicode nodetest_latin1.texi -init no_unicode.init
+nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi -init no_unicode.init -node-files -split node
+nodetest_latin1_use_nodes nodetest_latin1.texi -node-files -split node
+at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi -init no_unicode.init
+at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi -init no_unidecode.init
+at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi -node-files -split node
+at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi -init no_unidecode.init -node-files -split node
+at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi -init no_unicode.init -node-files -split node
+at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi -node-files -split node
+at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi -init no_unidecode.init -node-files -split node
+at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi -init no_unicode.init -node-files -split node
 multi_lang multi_lang.texi
 unknown_language unknown_language.texi
 umlaut umlaut.texi

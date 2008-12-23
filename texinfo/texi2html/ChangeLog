@@ -1,4 +1,11 @@
 2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: correct transliteration when USE_UNICODE or 
+	USE_UNIDECODE are not set.
+	* test/encoding/*: tests for transliteration with all possibilities.
+
+2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: don't use unidecode on unicode characters that
 	are known not to have a good transliteration. This corresponds with
 	characters with an @-command that don't have a transliteration, like
