@@ -314,7 +314,9 @@ sub get_string($;$$)
     my $string = shift;
     my $arguments = shift;
     my $state = shift;
-    if (!defined($state) and defined($Texi2HTML::THISDOC{'state'}))
+    # if duplicate is passed, it means that we are in the text and so should
+    # use the main state
+    if (defined($state) and $state->{'duplicate'} and defined($Texi2HTML::THISDOC{'state'}))
     {
         $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
     }

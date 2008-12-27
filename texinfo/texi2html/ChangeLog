@@ -1,3 +1,10 @@
+2008-12-24  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: add new hooks for user functions, for simple 
+	@-commands, and at the beginning of special regions.
+	* T2h_i18n.pm, texi2html.pl, texi2html.init, examples/*: 
+	use main state in translation string only when needed.
+
 2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: correct transliteration when USE_UNICODE or 

@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.251 2008-12-23 14:02:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.252 2008-12-27 20:53:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -486,6 +486,9 @@ $begin_style_texi
 $begin_paragraph_texi
 $tab_item_texi
 $colon_command
+$simple_command
+$thing_command
+$begin_special_region
 
 $PRE_ABOUT
 $AFTER_ABOUT
@@ -547,6 +550,7 @@ $def_argument_separator_delimiters
 @command_handler_process
 @command_handler_finish
 %command_handler
+%special_style
 );
 
 # subject to change
@@ -1710,8 +1714,8 @@ sub set_no_line_macro($$)
 {
    my $macro = shift;
    my $value = shift;
-   $Texi2HTML::Config::no_pagraph_commands{$macro} = $value 
-      unless defined($Texi2HTML::Config::no_pagraph_commands{$macro});
+   $Texi2HTML::Config::no_paragraph_commands{$macro} = $value 
+      unless defined($Texi2HTML::Config::no_paragraph_commands{$macro});
 }
 
 # those macros aren't considered as beginning a paragraph
@@ -7236,14 +7240,14 @@ sub pass_text($$)
     #
 
     #my $FH;
-    my $index_pages;
-    my $index_pages_nr;
     my $line_nr;
     my $current_file;
     my $first_section = 0; # 1 if it is the first section of a page
     my $previous_is_top = 0; # 1 if it is the element following the top element
 
     my $cline;
+    # this is true for the state that goes through the document
+    $state{'inside_document'} = 1;
     while (@$doc_lines)
     {
         $cline = shift @$doc_lines;
@@ -7257,13 +7261,14 @@ sub pass_text($$)
         #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
 	#print STDERR "PASS_TEXT: $cline";
 	#dump_stack(\$text, \@stack, \%state);
+
         # make sure the current state from here is $Texi2HTML::THIS_ELEMENT
         # in case it was set by the user.
         $state{'element'} = $Texi2HTML::THIS_ELEMENT if (defined($Texi2HTML::THIS_ELEMENT));
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
-            $tag = $1 if ($cline =~ /^\@(\w+)/ and !$index_pages);
+            $tag = $1 if ($cline =~ /^\@(\w+)/);
             if ($tag eq 'setfilename' and $Texi2HTML::Config::IGNORE_BEFORE_SETFILENAME)
             {
                 @{$Texi2HTML::THIS_SECTION} = ();
@@ -8145,7 +8150,7 @@ sub do_anchor_label($$$$)
     {
         print STDERR "Bug: unknown anchor `$anchor'\n";
     }
-    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor);
+    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor, $nodes{$anchor});
 }
 
 sub get_format_command($)
@@ -8317,9 +8322,9 @@ sub no_line($)
 {
     my $line = shift;
     my $next_tag = next_tag($line);
-    return 1 if (($line =~ /^\s*$/) or $Texi2HTML::Config::no_pagraph_commands{$next_tag} or 
-       ($Texi2HTML::Config::no_pagraph_commands{'cindex'} and (index_command_prefix($next_tag) ne '')) or 
-       (($line =~ /^\@end\s+(\w+)/) and  $Texi2HTML::Config::no_pagraph_commands{"end $1"}));
+    return 1 if (($line =~ /^\s*$/) or $Texi2HTML::Config::no_paragraph_commands{$next_tag} or 
+       ($Texi2HTML::Config::no_paragraph_commands{'cindex'} and (index_command_prefix($next_tag) ne '')) or 
+       (($line =~ /^\@end\s+(\w+)/) and  $Texi2HTML::Config::no_paragraph_commands{"end $1"}));
     return 0;
 }
 
@@ -8505,6 +8510,8 @@ sub do_special_region_lines($;$)
     {
         $new_state->{$key} = $region_initial_state{$region}->{$key};
     }
+    &$Texi2HTML::Config::begin_special_region($region,$new_state,$region_lines{$region})
+      if (defined($Texi2HTML::Config::begin_special_region));
     my $text = substitute_text($new_state, undef, @{$region_lines{$region}});
 
     $region_initial_state{$region}->{'region_pass'}++;
@@ -8515,6 +8522,9 @@ sub do_special_region_lines($;$)
     {
         $remove_texi_state->{$key} = $region_initial_state{$region}->{$key};
     }
+    &$Texi2HTML::Config::begin_special_region($region,$remove_texi_state,$region_lines{$region})
+      if (defined($Texi2HTML::Config::begin_special_region));
+    print STDERR "# remove texi\n" if ($T2H_DEBUG);
     my $removed_texi = substitute_text($remove_texi_state, undef, @{$region_lines{$region}});
     $region_initial_state{$region}->{'region_pass'}++;
 
@@ -8523,6 +8533,10 @@ sub do_special_region_lines($;$)
     {
         $simple_format_state->{$key} = $region_initial_state{$region}->{$key};
     }
+    
+    &$Texi2HTML::Config::begin_special_region($region,$simple_format_state,$region_lines{$region})
+      if (defined($Texi2HTML::Config::begin_special_region));
+    print STDERR "# simple format\n" if ($T2H_DEBUG);
     my $simple_format = simple_format($simple_format_state, undef, @{$region_lines{$region}});
     $region_initial_state{$region}->{'region_pass'}++;
 
@@ -9362,7 +9376,7 @@ sub do_text($;$)
     {
         $preformatted_style = $state->{'preformatted_stack'}->[-1]->{'style'};
     }
-    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}));
+    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}, $state));
 }
 
 sub end_simple_format($$$)
@@ -10026,6 +10040,7 @@ sub duplicate_state($)
          'region' => $state->{'region'},
          'sec_num' => $state->{'sec_num'},
          'outside_document' => $state->{'outside_document'},
+         'inside_document' => $state->{'inside_document'}
     };
     return $new_state;
 }
@@ -12145,14 +12160,17 @@ sub scan_line($$$$;$)
                 push (@$stack, { 'style' => $macro, 'text' => '', 'arg_nr' => 0 });
                 $state->{'no_paragraph'}++ if ($no_paragraph_macro{$macro});
                 open_arg($macro, 0, $state);
+                my $real_style_command = 0;
                 if (defined($style_type{$macro}) and (($style_type{$macro} eq 'style') or ($style_type{$macro} eq 'accent')))
                 {
                      push (@{$state->{'command_stack'}}, $macro);
+                     $real_style_command = 1;
                      #print STDERR "# Stacked $macro (@{$state->{'command_stack'}})\n" if ($T2H_DEBUG); 
                 }
                 # FIXME give line, and modify line?
-                &$Texi2HTML::Config::begin_style_texi($macro, $state, $stack)
-                  if (defined($Texi2HTML::Config::begin_style_texi));
+                &$Texi2HTML::Config::begin_style_texi($macro, $state, $stack, $real_style_command)
+                  if (defined($Texi2HTML::Config::begin_style_texi) 
+                      and !($state->{'keep_texi'} or $state->{'remove_texi'}));
                 next;
             }
 
@@ -12248,7 +12266,7 @@ sub scan_line($$$$;$)
             if ($simple_macro)
             {# if the macro didn't triggered a paragraph start it might now
                 begin_paragraph($stack, $state) if 
-                   ($Texi2HTML::Config::no_pagraph_commands{$macro} and !no_paragraph($state,$cline));
+                   ($Texi2HTML::Config::no_paragraph_commands{$macro} and !no_paragraph($state,$cline));
                 next;
             }
             # the following macros are modified or ignored if we are 
@@ -12538,7 +12556,7 @@ sub scan_line($$$$;$)
                     $state->{'no_paragraph'}--;
                     return;
                 }
-                elsif ($Texi2HTML::Config::no_pagraph_commands{$command} 
+                elsif ($Texi2HTML::Config::no_paragraph_commands{$command} 
                   and !$state->{'keep_texi'} and !no_paragraph($state,$cline))
                 {
                    begin_paragraph($stack, $state);
@@ -13022,13 +13040,9 @@ sub do_simple($$$;$$$$)
 #print STDERR "DO_SIMPLE remove_texi $macro\n";
             return  $::simple_map_texi_ref->{$macro};
         }
-        elsif ($state->{'preformatted'})
-        {
-            return $::simple_map_pre_ref->{$macro};
-        }
         else
         {
-            return $::simple_map_ref->{$macro};
+            return &$Texi2HTML::Config::simple_command($macro, $state->{'preformatted'}, $line_nr, $state);
         }
     }
     if (defined($::things_map_ref->{$macro}))
@@ -13036,22 +13050,17 @@ sub do_simple($$$;$$$$)
         my $result;
         if ($state->{'keep_texi'})
         {
-            $result = "\@$macro" . '{}';
+            return  "\@$macro" . '{}'.$text;
         }
         elsif ($state->{'remove_texi'})
         {
-            $result =  $::texi_map_ref->{$macro};
+            return  $::texi_map_ref->{$macro}.$text;
 #print STDERR "DO_SIMPLE remove_texi texi_map $macro\n";
         }
-        elsif ($state->{'preformatted'})
+        else
         {
-            $result = $::pre_map_ref->{$macro};
+            return &$Texi2HTML::Config::thing_command($macro, $text, $state->{'preformatted'}, $line_nr, $state);
         }
-        else 
-        {
-            $result = $::things_map_ref->{$macro};
-        }
-        return $result . $text;
     }
     elsif (defined($::style_map_ref->{$macro}))
     {

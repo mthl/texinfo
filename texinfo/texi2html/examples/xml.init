@@ -157,7 +157,7 @@ sub xml_math($$)
 }
 
 
-$no_pagraph_commands{'cindex'} = 0;
+$no_paragraph_commands{'cindex'} = 0;
 
 #my @xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude');
 
@@ -958,11 +958,11 @@ sub xml_any_ref($$)
     my $result = '';
     if ($type eq 'pxref')
     {
-        $result = &$I('see ');
+        $result = &$I('see ',{'duplicate'=>1});
     }
     elsif ($type eq 'xref' or $type eq 'inforef')
     {
-        $result = &$I('See ');
+        $result = &$I('See ',{'duplicate'=>1});
     }
     if ($type eq 'inforef')
     {

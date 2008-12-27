@@ -111,7 +111,8 @@ $colon_command_punctuation_characters{'!'} = '&excl;';
 
 delete $stop_paragraph_command{'titlefont'};
 
-$no_pagraph_commands{'anchor'} = 0;
+# FIXME
+#$no_paragraph_commands{'anchor'} = 0;
 
 # FIXME
 delete $special_accents{'ringaccent'};
@@ -221,8 +222,8 @@ $things_map{'quotesinglbase'} = '&lsquor;';
 
 #delete $inter_item_commands{'cindex'};
 
-#$no_pagraph_commands{'cindex'} = 0;
-$no_pagraph_commands{'float'} = 0;
+#$no_paragraph_commands{'cindex'} = 0;
+$no_paragraph_commands{'float'} = 0;
 
 %docbook_complex_format = (
    'example' => 'screen',
@@ -734,15 +735,15 @@ sub docbook_any_ref($$$)
             $section_name = $args->[0] if ($section_name eq '');
             if ($type eq 'ref')
             {
-                return &$I('section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+                return &$I('section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
             elsif ($type eq 'xref')
             {
-                return &$I('See section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+                return &$I('See section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
             elsif ($type eq 'pxref')
             {
-                return &$I('see section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] });
+                return &$I('see section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
         }
         my $link = docbook_node_id($unformatted_args->[0]);
@@ -771,11 +772,11 @@ sub docbook_any_ref($$$)
             }
             elsif ($type eq 'pxref')
             {
-                return &$I('see %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+                return &$I('see %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
             }
             elsif ($type eq 'xref')
             {
-                return &$I('See %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+                return &$I('See %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
             }
         }
     }

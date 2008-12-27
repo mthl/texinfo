@@ -352,7 +352,7 @@ sub t2h_html32_acronym_like($$$$$$)
     
     if ($with_explanation)
     {
-        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text})
+        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text},{'duplicate'=>1})
     }
     else
     {
