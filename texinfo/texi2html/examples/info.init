@@ -213,11 +213,103 @@ sub info_default_iterator_next($$$)
    }
 }
 
-sub info_default_process_content($)
+my $info_default_max_column = 72;
+
+sub info_default_process_text($$$$)
 {
+   my $text = shift;
+   my $line_char_counter = shift;
+   my $pending_spaces = shift;
+   my $pending_word = shift;
+   my $line_passed = 0;
+   my $result = '';
+   
+   while ($text ne '')
+   {
+      if ($text =~ s/^(\s+)//)
+      {
+          my $new_spaces = $1;
+          if (defined($pending_word))
+          {
+             $result .= $pending_spaces . $pending_word;
+             $line_char_counter += length($pending_spaces)+length($pending_word);
+             $pending_spaces = $new_spaces;
+             $pending_word = undef;
+         }
+         else
+         {
+             $pending_spaces .= $new_spaces;
+         }
+         if (length($pending_spaces) +  $line_char_counter > $info_default_max_column)
+         {
+             $pending_spaces = substr($pending_spaces, $info_default_max_column - $line_char_counter +1);
+             $result .= "\n";
+             $line_passed++;
+             $line_char_counter = 0;
+         }
+      }
+      elsif ($text =~ s/^([^\s]+)//)
+      {
+         my $word = $1;
+         $pending_word = '' if (!defined($pending_word));
+         $pending_word .= $word;
+         if (length($pending_spaces)+length($pending_word) + $line_char_counter > $info_default_max_column)
+         {
+             $pending_spaces = '';
+             $result .= "\n";
+             $line_passed++;
+             $line_char_counter = 0;
+         }
+      }
+   }
+   return ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $result)
+}
+
+sub info_default_skip_spaces($$$)
+{
+    my $current = shift;
+    my $index = shift;
+    my $close = shift;
+
+    while(1)
+    {
+       my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
+        return ($current, $index, $close) if (!defined($close_next) or $close_next);
+        my $content = $current_next->{'content'}->[$index_next];
+        if (defined($content->{'begin'}))
+        {
+            $content->{'begin'} =~ s/^\s*//;
+            return ($current, $index, $close) if ($content->{'begin'} ne '');
+        } 
+        if (defined($content->{'content'}))
+        { # non empty commands stop space skipping, even if they contain 
+          # only spaces, like @asis{ }
+            return ($current, $index, $close);
+        }
+        if (defined($content->{'text'}))
+        {
+            $content->{'text'} =~ s/^\s*//;
+            return ($current, $index, $close) if ($content->{'text'} ne '');
+        }
+        ($current, $index, $close) = ($current_next, $index_next, $close_next);
+    }
+}
+
+my $info_default_end_sentence_character = quotemeta('.');
+
+sub info_default_process_content($$)
+{
+# FIXME currently always in a paragraph
    my $current_command = shift;
+   my $base_offset = shift;
    my $length = 0;
-   my $add;
+   my $result = '';
+
+   my $line_char_counter;
+   my $new_text;
+   my $pending_spaces = '';
+   my $pending_word;
+   my $line_passed;
 
    my ($current, $index, $close) = ($current_command, 0, 0);
 
@@ -226,40 +318,82 @@ sub info_default_process_content($)
    {
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
+      my $text_added = '';
+      my $new_text = '';
 
       if ($close)
       {
-          if ($content->{'end'})
+          if (defined($content->{'end'}))
           {
-              $add= length($content->{'end'});
-              $info_default_offset_in_file += $add;
-              $length += $add;
+              $text_added = $content->{'end'};
+          }
+          if (defined($content->{'command'}) and $content->{'command'} eq 'paragraph')
+          {
+              $line_char_counter = undef;
+              $new_text = $content->{'end'};
+              goto new_text;
           }
       }
       else
       {
-          if ($content->{'command'} and $content->{'command'} eq 'anchor')
-          {
-              $content->{'anchor_reference'}->{'info_offset'} = $info_default_offset_in_file;
-              push @info_default_pending_tags, $content->{'anchor_reference'};
+          if ($content->{'command'})
+          { 
+              if ($content->{'command'} eq 'anchor')
+              {
+                  $content->{'anchor_reference'}->{'info_offset'} = $length + $base_offset;
+                  push @info_default_pending_tags, $content->{'anchor_reference'};
+              }
+              elsif ($content->{'command'} eq '*')
+              {
+                 if (defined($pending_word))
+                 {
+                    $new_text .= $pending_spaces . $pending_word;
+                    $pending_word = undef;
+                 }
+                 $pending_spaces = '';
+                 $line_char_counter = 0;
+                 $new_text .=  $content->{'text'};
+                 ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                 # FIXME new line
+                 goto new_text;
+              }
+              elsif ($content->{'command'} eq 'paragraph')
+              {
+                  ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                  $line_char_counter = 0;
+              }
           }
 
-          if ($content->{'begin'})
+          if (defined($content->{'begin'}))
           {
-              $add = length($content->{'begin'});
-              $info_default_offset_in_file += $add;
-              $length += $add;
+              $text_added .= $content->{'begin'};
           }
+
           if ($content->{'length'})
           {
-              $add = $content->{'length'};
-              $info_default_offset_in_file += $add;
-              $length += $add;
+              if (defined($line_char_counter))
+              {
+                  if (chomp($content->{'text'}))
+                  {
+                      $content->{'text'} =~ s/(\s*)$/ /;
+                      if ($content->{'text'} =~ /$info_default_end_sentence_character $/)
+                      {
+                          $content->{'text'} .= ' ';
+                      }
+                  }
+              }
+              $text_added .= $content->{'text'} unless (!defined($line_char_counter) and $content->{'text'} =~ /^\s*$/);
           }
       }
+      ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $new_text) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word);
+    new_text:
+      $result .= $new_text;
+      $length += length($new_text);
+
+    iterate:
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
    }
-   return $length;
+   return ($length, $result);
 }
 
 sub info_default_open_command($$$$$)
@@ -316,7 +450,8 @@ sub info_default_close_command($$$$$$$$)
       print STDERR "Storing the stack\n";
       push @info_default_all_stacks, $info_default_top_stack;
       print STDERR "" . Data::Dumper->Dump([$info_default_top_stack]);
-      info_default_process_content($info_default_top_stack);
+      my ($characters_count, $result) = info_default_process_content($info_default_top_stack, $info_default_offset_in_file);
+      $info_default_offset_in_file += $characters_count;
 # debugging
 #      print STDERR "Current location $info_default_offset_in_file\n";
 
@@ -338,7 +473,9 @@ sub info_default_close_command($$$$$$$$)
 #         print STDERR "-->$current_command($current_index)$close_txt=$command|$content_command|$length\n";
 #      }
       info_default_reset_stack();
+      return $result;
    }
+   return '';
 }
 
 sub info_default_store_text($$;$)
@@ -348,180 +485,13 @@ sub info_default_store_text($$;$)
    my $command = shift;
 #   $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $len = length($text);
-   return if ((!$state->{'inside_document'} and !$state->{'outside_document'})
-       or ($len == 0));
+   return 0 if ((!$state->{'inside_document'} and !$state->{'outside_document'}));
+   return 1 if ($len == 0);
    print STDERR "Storing text($len) $text\n";
    my $text_stored = {'text' => $text, 'length' => $len};
    $text_stored->{'command'} = $command if (defined($command));
    push @{$info_default_current_command->{'content'}}, $text_stored;
-}
-
-sub info_default_find_position($;$$)
-{
-   my $offset = shift;
-   my $start_command = shift;
-   my $start_index = shift;
-   $start_command = $info_default_current_command 
-       if (!defined($start_command));
-   $start_index = 0 if (!defined($start_index));
-   my ($current, $index, $close) = ($start_command, $start_index, 0);
-   my $position = 0;
-
-   while(1)
-   {
-      last if (!defined($current));
-      my $content = $current->{'content'}->[$index];
-      my $last_position = $position;
-      if ($close)
-      {
-          if ($content->{'end'})
-          {
-              $position += length($content->{'end'});
-          }
-      }
-      else
-      {
-          if ($content->{'begin'})
-          {
-              $position += length($content->{'begin'});
-          }
-          if ($content->{'length'})
-          {
-              $position += $content->{'length'};
-          }
-      }
-      return ($current, $index, $close, $last_position) if ($position > $offset);
-      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
-   }
-   return (undef,undef,undef,undef);
-}
-
-sub info_default_remove_middle($$$)
-{
-   my $string = shift;
-   my $preserved_count = shift;
-   my $to_remove = shift;
-
-   if ($preserved_count > length($string))
-   {
-      $preserved_count -= length($string);
-      return ($string, $preserved_count, $to_remove);
-   }
-
-   my $begin = substr($string, 0, $preserved_count);
-   my $last_part = substr($string, $preserved_count);
-   $preserved_count = 0;
-   my $end = '';
-   if ($to_remove > length($last_part))
-   {
-       $to_remove -= length($last_part)
-   }
-   else
-   {
-       $end = substr($last_part, $to_remove);
-       $to_remove = 0;
-   }
-   return ($begin.$end, $preserved_count, $to_remove);
-}
-
-sub info_default_middle_insert($$$)
-{
-   my $string = shift;
-   my $preserved_count = shift;
-   my $inserted_string = shift;
-
-   if ($preserved_count > length($string))
-   {
-       return ($string,$preserved_count);
-   }
-   return (substr($string,0,$preserved_count) .$inserted_string.
-             substr($string, $preserved_count, 0));
-}
-
-sub info_default_add_string($$;$$)
-{
-   my $offset = shift;
-   my $string = shift;
-   my $start_command = shift;
-   my $start_index = shift;
-   $start_command = $info_default_current_command 
-       if (!defined($start_command));
-   $start_index = 0 if (!defined($start_index));
-   my ($current, $index, $close, $last_position) = 
-       info_default_find_position($offset, $start_command, $start_index);
-   return undef if (!defined($last_position));
-   my $preserved_count = $offset - $last_position;
-   my $content = $current->{'content'}->[$index];
-   my $text = '';
-   $text = $content->{'text'} if defined($content->{'text'});
-print STDERR "Add `$string' at $offset close: $close, preserved_count: $preserved_count, text `$text'\n";
-   if ($close)
-   {
-       ($content->{'end'}, $preserved_count) = 
-         info_default_middle_insert($content->{'end'}, $preserved_count, $string);
-   }
-   else
-   {
-      if (defined($content->{'begin'}))
-      { 
-          ($content->{'begin'}, $preserved_count) = 
-             info_default_middle_insert($content->{'begin'}, $preserved_count, $string)
-      }
-      if ($preserved_count and defined($content->{'text'}))
-      {
-          ($content->{'text'}, $preserved_count) = 
-             info_default_middle_insert($content->{'text'}, $preserved_count, $string);
-          if (defined($content->{'length'}))
-          {
-              $content->{'length'} = length($content->{'text'});
-          }
-      }
-   }
-   return $preserved_count;
-}
-
-sub info_default_remove_length($$;$$)
-{
-   my $offset = shift;
-   my $to_remove = shift;
-   my $start_command = shift;
-   my $start_index = shift;
-   return 0 if ($to_remove == 0);
-   $start_command = $info_default_current_command 
-       if (!defined($start_command));
-   $start_index = 0 if (!defined($start_index));
-   my ($current, $index, $close, $last_position) = 
-       info_default_find_position($offset, $start_command, $start_index);
-   return undef if (!defined($last_position));
-   my $preserved_count = $offset - $last_position;
-   while ($to_remove > 0)
-   {
-      my $content = $current->{'content'}->[$index];
-      if ($close)
-      {
-          ($content->{'end'}, $preserved_count, $to_remove) = 
-            info_default_remove_middle($content->{'end'}, $preserved_count, $to_remove)
-      }
-      else
-      {
-          if (defined($content->{'begin'}))
-          { 
-              ($content->{'begin'}, $preserved_count, $to_remove) = 
-                info_default_remove_middle($content->{'begin'}, $preserved_count, $to_remove)
-          }
-          if (defined($content->{'text'}))
-          { 
-              ($content->{'text'}, $preserved_count, $to_remove) = 
-                info_default_remove_middle($content->{'text'}, $preserved_count, $to_remove);
-              if (defined($content->{'length'}))
-              {
-                   $content->{'length'} = length($content->{'text'});
-              }
-          }
-      }
-      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
-   }
-   return $to_remove;
+   return 1;
 }
 
 sub info_default_begin_format_texi($$$)
@@ -567,7 +537,7 @@ sub info_default_simple_command($$$$)
     my $state = shift;
 
     my $result = $simple_map{$command};
-    info_default_store_text($state,$result,$command);
+    return '' if info_default_store_text($state,$result,$command);
     return $result;
 }
 
@@ -581,7 +551,7 @@ sub info_default_thing_command($$$$$)
     my $state = shift;
 
     my $result = $things_map{$command};
-    info_default_close_command(undef, $command, undef, undef, $line_nr, $result, $text, '');
+    return info_default_close_command(undef, $command, undef, undef, $line_nr, $result, $text, '');
     return $result . $text;
 }
 
@@ -613,7 +583,10 @@ sub info_default_style($$$$$$$$$)
    {
       $end = $style->{'end'};
    }
-   info_default_close_command($command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end) unless($state->{'remove_texi'} or $special_style{$command});
+   unless($state->{'remove_texi'} or $special_style{$command})
+   {
+      return info_default_close_command($command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end);
+   }
    return $begin.$text.$end;
 }
 
@@ -632,9 +605,7 @@ sub info_default_print_page_head($)
 }
 
 my $info_default_paragraph_in_element_nr;
-my $info_default_end_sentence_character = quotemeta('.');
 my $info_default_para_indent_length = 3;
-my $info_default_max_column = 72;
 
 sub info_default_paragraph($$$$$$$$$$$$)
 {
@@ -652,78 +623,14 @@ sub info_default_paragraph($$$$$$$$$$$$)
     my $command_stack_at_begin = shift;
 
     my $begin_para = '';
-    # FIXME here may remove characters in front of the paragraph
-    if ($text =~ s/^(\s*)//)
-    {
-        info_default_remove_length(0,length($1));
-    }
     if ($info_default_paragraph_in_element_nr)
     {
         # add length(para) before
         $begin_para = ' ' x $info_default_para_indent_length;
     }
-    my $para = '';
     $info_default_paragraph_in_element_nr++;
 
-    my @lines = split (/^/, $text);
-    my $line_char_counter = length($begin_para);
-    my $prev_space = '';
-    while (@lines)
-    {
-       my $line = shift (@lines);
-       #$line .= "\n";
-       my $end_space = ' ';
-       if ($line =~ s/(\s*)$//)
-       {
-           print STDERR "Remove `$1' at ".(length($para) +length($line)).", ".(length($para))."\n";
-           info_default_remove_length(length($para) +length($line), length($1));
-       }
-      print STDERR "BEFORE `$line' (".length($para).") " . Data::Dumper->Dump([$info_default_top_stack]);
-       info_default_add_string(length($para) +length($line), $end_space);
-      print STDERR "AFTER add at ".(length($para) +length($line))." `$end_space'  " . Data::Dumper->Dump([$info_default_top_stack]);
-       $line .= $end_space;
-       
-       my ($word, $space);
-#print STDERR "BEF $line\n";
-       while ($line =~ s/^(\s*[^\s]+)(\s*)//)
-       {
-          $word = $1;
-          $space = $2;
-#print STDERR "IN($line_char_counter,".length($word)."|$word) $line\n";
-          if ($line_char_counter + length($prev_space) + length($word) > $info_default_max_column)
-          {
-             # FIXME remove some spaces here
-             if (length($prev_space) > $info_default_max_column - $line_char_counter +1)
-             {
-                 info_default_remove_length(length($para), $info_default_max_column - length($para));
-                 $word = substr($prev_space, $info_default_max_column - $line_char_counter +1) . $word;
-             }
-             info_default_add_string(length($para), "\n");
-             $para .= "\n";
-             $line_char_counter = 0;
-          }
-          else
-          {
-              $para .= $prev_space;
-              $line_char_counter += length($prev_space);
-          }
-#print STDERR "$line|$prev_space|$word+$space|$line_char_counter|$para\n";
-          $para .= $word;
-          $line_char_counter += length($word);
-          $prev_space = $space;
-       }
-#print STDERR "LAST $word\n";
-       if ($word =~ /$info_default_end_sentence_character$/ and (scalar(@lines)))
-       {
-          # FIXME add one space here
-          $para .= ' ';
-          info_default_add_string(length($para), ' ');
-          $line_char_counter += 1;
-       }
-    }
-    $para = $begin_para.$para. "\n\n";
-    info_default_close_command(undef, 'paragraph', undef, undef, undef, $begin_para, $para, "\n\n");
-    return $para;
+    return info_default_close_command(undef, 'paragraph', undef, undef, undef, $begin_para, undef, "\n\n");
 }
 
 my %default_info_level_to_symbol = (
@@ -805,15 +712,6 @@ sub info_default_normal_text($$$$$$;$)
 
 #Data::Dumper->Dump([$state]);
 
-   # ignore text outside or paragraphs
-   if (($state->{'inside_document'} or $state->{'outside_document'}) and (!$in_raw_text) and (!$in_simple) and ($info_default_current_command eq $info_default_top_stack))
-   {
-       if ($text !~ /^\s*$/)
-       {
-           print STDERR "WARNING: ignoring non space text: $text\n";
-       }
-       return '';
-   }
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
 #   $text = &$protect_text($text) unless($in_raw_text);
    if (! $in_code and !$in_preformatted)
@@ -832,7 +730,10 @@ sub info_default_normal_text($$$$$$;$)
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
    }
    # We ignore the text outside paragraphs
-   info_default_store_text($state,$text) unless ($in_raw_text);
+   unless ($in_raw_text)
+   {
+      return '' if (info_default_store_text($state,$text));
+   }
    return $text;
 }
 
@@ -857,6 +758,7 @@ sub info_default_anchor_label($$$)
     print STDERR "Storing anchor $anchor_reference->{'text'}\n";
     my $anchor_stored = {'command' => 'anchor', 'anchor_reference' => $anchor_reference};
     push @{$info_default_current_command->{'content'}}, $anchor_stored;
+    #FIXME handle an anchor aoutside of anything?
     return '';
 }
 
