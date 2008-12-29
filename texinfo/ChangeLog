@@ -1,3 +1,9 @@
+2008-12-29  Karl Berry  <karl@gnu.org>
+
+	* info/window.c (process_node_text): use size_t for mb variables
+	mbi_cur_ptr and mb_len.
+	Report from Mutsaers Peter, 29 Dec 2008 17:24:53.
+
 2008-12-16  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\nonfillstart): emulate the normal @indent in
