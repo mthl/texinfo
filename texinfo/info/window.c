@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.18 2008-12-29 22:26:44 karl Exp $
+   $Id: window.c,v 1.19 2008-12-29 23:02:16 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -1580,7 +1580,7 @@ process_node_text (WINDOW *win, char *start,
     {
       const char *carried_over_ptr;
       size_t carried_over_len, carried_over_count;
-      size_t char *cur_ptr = mbi_cur_ptr (iter);
+      const char *cur_ptr = mbi_cur_ptr (iter);
       size_t cur_len = mb_len (mbi_cur (iter));
       int replen;
       int delim = 0;
@@ -1754,7 +1754,7 @@ clean_manpage (char *manpage)
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      int cur_len = mb_len (mbi_cur (iter));
+      size_t cur_len = mb_len (mbi_cur (iter));
 
       if (cur_len == 1)
 	{
@@ -1852,7 +1852,7 @@ window_scan_line (WINDOW *win, int line, int phys,
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      int cur_len = mb_len (mbi_cur (iter));
+      size_t cur_len = mb_len (mbi_cur (iter));
       int replen;
 
       if (cur_ptr >= endp)
