@@ -95,6 +95,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mempcpy])
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
+  gl_MULTIARCH
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
   AM_STDBOOL_H
@@ -387,6 +388,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/memmove.m4
   m4/mempcpy.m4
   m4/mkstemp.m4
+  m4/multiarch.m4
   m4/nls.m4
   m4/onceonly.m4
   m4/po.m4
