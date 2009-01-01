@@ -84,3 +84,4 @@ inter_item_commands inter_item_commands.texi
 inter_item_commands_xml inter_item_commands.texi -init xml.init
 inter_item_commands_docbook inter_item_commands.texi -init docbook.init
 double_style_paragraph double_style_paragraph.texi
+#formatting_info ../coverage/formatting.texi -init info.init

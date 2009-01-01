@@ -189,8 +189,6 @@ formatting.texi(mymacro,18) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,18) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,18) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,18) @code{@@,@{--c@}} @,{--c}
-formatting.texi(mymacro,18) @code{@@ogonek@{a@}} @ogonek{a}
-formatting.texi(mymacro,18) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,18) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,18) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,18) 
@@ -267,17 +265,6 @@ formatting.texi(mymacro,18)
 formatting.texi(mymacro,18) @quotation @*
 formatting.texi(mymacro,18) @end quotation
 formatting.texi(mymacro,18) 
-formatting.texi(mymacro,18) @smallquotation 
-formatting.texi(mymacro,18) A small quot---ation
-formatting.texi(mymacro,18) @end smallquotation
-formatting.texi(mymacro,18) 
-formatting.texi(mymacro,18) @smallquotation Note
-formatting.texi(mymacro,18) A small Note
-formatting.texi(mymacro,18) @end smallquotation
-formatting.texi(mymacro,18) 
-formatting.texi(mymacro,18) @smallquotation something, other thing
-formatting.texi(mymacro,18) something, other thing
-formatting.texi(mymacro,18) @end smallquotation
 formatting.texi(mymacro,18) 
 formatting.texi(mymacro,18) @itemize
 formatting.texi(mymacro,18) @item i--temize
@@ -790,8 +777,6 @@ formatting.texi(mymacro,28) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,28) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,28) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,28) @code{@@,@{--c@}} @,{--c}
-formatting.texi(mymacro,28) @code{@@ogonek@{a@}} @ogonek{a}
-formatting.texi(mymacro,28) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,28) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,28) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,28) 
@@ -868,17 +853,6 @@ formatting.texi(mymacro,28)
 formatting.texi(mymacro,28) @quotation @*
 formatting.texi(mymacro,28) @end quotation
 formatting.texi(mymacro,28) 
-formatting.texi(mymacro,28) @smallquotation 
-formatting.texi(mymacro,28) A small quot---ation
-formatting.texi(mymacro,28) @end smallquotation
-formatting.texi(mymacro,28) 
-formatting.texi(mymacro,28) @smallquotation Note
-formatting.texi(mymacro,28) A small Note
-formatting.texi(mymacro,28) @end smallquotation
-formatting.texi(mymacro,28) 
-formatting.texi(mymacro,28) @smallquotation something, other thing
-formatting.texi(mymacro,28) something, other thing
-formatting.texi(mymacro,28) @end smallquotation
 formatting.texi(mymacro,28) 
 formatting.texi(mymacro,28) @itemize
 formatting.texi(mymacro,28) @item i--temize
@@ -1391,8 +1365,6 @@ formatting.texi(mymacro,38) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,38) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,38) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,38) @code{@@,@{--c@}} @,{--c}
-formatting.texi(mymacro,38) @code{@@ogonek@{a@}} @ogonek{a}
-formatting.texi(mymacro,38) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,38) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,38) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,38) 
@@ -1469,17 +1441,6 @@ formatting.texi(mymacro,38)
 formatting.texi(mymacro,38) @quotation @*
 formatting.texi(mymacro,38) @end quotation
 formatting.texi(mymacro,38) 
-formatting.texi(mymacro,38) @smallquotation 
-formatting.texi(mymacro,38) A small quot---ation
-formatting.texi(mymacro,38) @end smallquotation
-formatting.texi(mymacro,38) 
-formatting.texi(mymacro,38) @smallquotation Note
-formatting.texi(mymacro,38) A small Note
-formatting.texi(mymacro,38) @end smallquotation
-formatting.texi(mymacro,38) 
-formatting.texi(mymacro,38) @smallquotation something, other thing
-formatting.texi(mymacro,38) something, other thing
-formatting.texi(mymacro,38) @end smallquotation
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @itemize
 formatting.texi(mymacro,38) @item i--temize
@@ -1986,8 +1947,6 @@ formatting.texi(mymacro,42) @code{@@v@{a@}} @v{a}
 formatting.texi(mymacro,42) @code{@@v@{--a@}} @v{--a}
 formatting.texi(mymacro,42) @code{@@,@{c@}} @,{c}
 formatting.texi(mymacro,42) @code{@@,@{--c@}} @,{--c}
-formatting.texi(mymacro,42) @code{@@ogonek@{a@}} @ogonek{a}
-formatting.texi(mymacro,42) @code{@@ogonek@{--a@}} @ogonek{--a}
 formatting.texi(mymacro,42) @code{@@footnote@{in footnote@}} @footnote{in footnote}
 formatting.texi(mymacro,42) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 formatting.texi(mymacro,42) 
@@ -2064,17 +2023,6 @@ formatting.texi(mymacro,42)
 formatting.texi(mymacro,42) @quotation @*
 formatting.texi(mymacro,42) @end quotation
 formatting.texi(mymacro,42) 
-formatting.texi(mymacro,42) @smallquotation 
-formatting.texi(mymacro,42) A small quot---ation
-formatting.texi(mymacro,42) @end smallquotation
-formatting.texi(mymacro,42) 
-formatting.texi(mymacro,42) @smallquotation Note
-formatting.texi(mymacro,42) A small Note
-formatting.texi(mymacro,42) @end smallquotation
-formatting.texi(mymacro,42) 
-formatting.texi(mymacro,42) @smallquotation something, other thing
-formatting.texi(mymacro,42) something, other thing
-formatting.texi(mymacro,42) @end smallquotation
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @itemize
 formatting.texi(mymacro,42) @item i--temize

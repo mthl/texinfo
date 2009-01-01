@@ -199,8 +199,6 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -226,68 +224,57 @@ After clickstyle &rArr;
 </para></quotation>
 
 <quotation>
-<para><b> Note:</b> A Note
+<para><b>Note:</b> A Note
 </para></quotation>
 
 <quotation>
-<para><b> note:</b> A note
+<para><b>note:</b> A note
 </para></quotation>
 
 <quotation>
-<para><b> Caution:</b> Caution
+<para><b>Caution:</b> Caution
 </para></quotation>
 
 <quotation>
-<para><b> Important:</b> Important
+<para><b>Important:</b> Important
 </para></quotation>
 
 <quotation>
-<para><b> Tip:</b> a Tip
+<para><b>Tip:</b> a Tip
 </para></quotation>
 
 <quotation>
-<para><b> Warning:</b> a Warning.
+<para><b>Warning:</b> a Warning.
 </para></quotation>
 
 <quotation>
-<para><b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </para></quotation>
 
 <quotation>
-<para><b> @ at the end of line </b> A @ at the end of the @quotation line.
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
 </para></quotation>
 
 <quotation>
-<para><b> something, other thing:</b> something, other thing
+<para><b>something, other thing:</b> something, other thing
 </para></quotation>
 
 <quotation>
-<para><b> Note, the note:</b> Note, the note
+<para><b>Note, the note:</b> Note, the note
 </para></quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<para><b> Empty:</b> </para></quotation>
+<para><b>Empty:</b> </para></quotation>
 
 <quotation>
-<para><b> :</b> </para></quotation>
+<para><b>:</b> </para></quotation>
 
 <quotation>
-<para><b> &linebreak;:</b> </para></quotation>
+<para><b>&linebreak;:</b> </para></quotation>
 
-<smallquotation>
-<para>A small quot&mdash;ation
-</para></smallquotation>
-
-<smallquotation>
-<para><b> Note:</b> A small Note
-</para></smallquotation>
-
-<smallquotation>
-<para><b> something, other thing:</b> something, other thing
-</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -746,8 +733,6 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -773,68 +758,57 @@ After clickstyle &rArr;
 </para></quotation>
 
 <quotation>
-<para><b> Note:</b> A Note
+<para><b>Note:</b> A Note
 </para></quotation>
 
 <quotation>
-<para><b> note:</b> A note
+<para><b>note:</b> A note
 </para></quotation>
 
 <quotation>
-<para><b> Caution:</b> Caution
+<para><b>Caution:</b> Caution
 </para></quotation>
 
 <quotation>
-<para><b> Important:</b> Important
+<para><b>Important:</b> Important
 </para></quotation>
 
 <quotation>
-<para><b> Tip:</b> a Tip
+<para><b>Tip:</b> a Tip
 </para></quotation>
 
 <quotation>
-<para><b> Warning:</b> a Warning.
+<para><b>Warning:</b> a Warning.
 </para></quotation>
 
 <quotation>
-<para><b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </para></quotation>
 
 <quotation>
-<para><b> @ at the end of line </b> A @ at the end of the @quotation line.
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
 </para></quotation>
 
 <quotation>
-<para><b> something, other thing:</b> something, other thing
+<para><b>something, other thing:</b> something, other thing
 </para></quotation>
 
 <quotation>
-<para><b> Note, the note:</b> Note, the note
+<para><b>Note, the note:</b> Note, the note
 </para></quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<para><b> Empty:</b> </para></quotation>
+<para><b>Empty:</b> </para></quotation>
 
 <quotation>
-<para><b> :</b> </para></quotation>
+<para><b>:</b> </para></quotation>
 
 <quotation>
-<para><b> &linebreak;:</b> </para></quotation>
+<para><b>&linebreak;:</b> </para></quotation>
 
-<smallquotation>
-<para>A small quot&mdash;ation
-</para></smallquotation>
-
-<smallquotation>
-<para><b> Note:</b> A small Note
-</para></smallquotation>
-
-<smallquotation>
-<para><b> something, other thing:</b> something, other thing
-</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -1288,8 +1262,6 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -1315,68 +1287,57 @@ After clickstyle &rArr;
 </para></quotation>
 
 <quotation>
-<para><b> Note:</b> A Note
+<para><b>Note:</b> A Note
 </para></quotation>
 
 <quotation>
-<para><b> note:</b> A note
+<para><b>note:</b> A note
 </para></quotation>
 
 <quotation>
-<para><b> Caution:</b> Caution
+<para><b>Caution:</b> Caution
 </para></quotation>
 
 <quotation>
-<para><b> Important:</b> Important
+<para><b>Important:</b> Important
 </para></quotation>
 
 <quotation>
-<para><b> Tip:</b> a Tip
+<para><b>Tip:</b> a Tip
 </para></quotation>
 
 <quotation>
-<para><b> Warning:</b> a Warning.
+<para><b>Warning:</b> a Warning.
 </para></quotation>
 
 <quotation>
-<para><b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </para></quotation>
 
 <quotation>
-<para><b> @ at the end of line </b> A @ at the end of the @quotation line.
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
 </para></quotation>
 
 <quotation>
-<para><b> something, other thing:</b> something, other thing
+<para><b>something, other thing:</b> something, other thing
 </para></quotation>
 
 <quotation>
-<para><b> Note, the note:</b> Note, the note
+<para><b>Note, the note:</b> Note, the note
 </para></quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<para><b> Empty:</b> </para></quotation>
+<para><b>Empty:</b> </para></quotation>
 
 <quotation>
-<para><b> :</b> </para></quotation>
+<para><b>:</b> </para></quotation>
 
 <quotation>
-<para><b> &linebreak;:</b> </para></quotation>
+<para><b>&linebreak;:</b> </para></quotation>
 
-<smallquotation>
-<para>A small quot&mdash;ation
-</para></smallquotation>
-
-<smallquotation>
-<para><b> Note:</b> A small Note
-</para></smallquotation>
-
-<smallquotation>
-<para><b> something, other thing:</b> something, other thing
-</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -1831,8 +1792,6 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -1858,68 +1817,57 @@ After clickstyle &rArr;
 </para></quotation>
 
 <quotation>
-<para><b> Note:</b> A Note
+<para><b>Note:</b> A Note
 </para></quotation>
 
 <quotation>
-<para><b> note:</b> A note
+<para><b>note:</b> A note
 </para></quotation>
 
 <quotation>
-<para><b> Caution:</b> Caution
+<para><b>Caution:</b> Caution
 </para></quotation>
 
 <quotation>
-<para><b> Important:</b> Important
+<para><b>Important:</b> Important
 </para></quotation>
 
 <quotation>
-<para><b> Tip:</b> a Tip
+<para><b>Tip:</b> a Tip
 </para></quotation>
 
 <quotation>
-<para><b> Warning:</b> a Warning.
+<para><b>Warning:</b> a Warning.
 </para></quotation>
 
 <quotation>
-<para><b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </para></quotation>
 
 <quotation>
-<para><b> @ at the end of line </b> A @ at the end of the @quotation line.
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
 </para></quotation>
 
 <quotation>
-<para><b> something, other thing:</b> something, other thing
+<para><b>something, other thing:</b> something, other thing
 </para></quotation>
 
 <quotation>
-<para><b> Note, the note:</b> Note, the note
+<para><b>Note, the note:</b> Note, the note
 </para></quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<para><b> Empty:</b> </para></quotation>
+<para><b>Empty:</b> </para></quotation>
 
 <quotation>
-<para><b> :</b> </para></quotation>
+<para><b>:</b> </para></quotation>
 
 <quotation>
-<para><b> &linebreak;:</b> </para></quotation>
+<para><b>&linebreak;:</b> </para></quotation>
 
-<smallquotation>
-<para>A small quot&mdash;ation
-</para></smallquotation>
-
-<smallquotation>
-<para><b> Note:</b> A small Note
-</para></smallquotation>
-
-<smallquotation>
-<para><b> something, other thing:</b> something, other thing
-</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -2372,8 +2320,6 @@ but , ,
 <code>@v{--a}</code> &ndash;a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> &ndash;c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> &ndash;a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -2399,68 +2345,57 @@ After clickstyle &rArr;
 </para></quotation>
 
 <quotation>
-<para><b> Note:</b> A Note
+<para><b>Note:</b> A Note
 </para></quotation>
 
 <quotation>
-<para><b> note:</b> A note
+<para><b>note:</b> A note
 </para></quotation>
 
 <quotation>
-<para><b> Caution:</b> Caution
+<para><b>Caution:</b> Caution
 </para></quotation>
 
 <quotation>
-<para><b> Important:</b> Important
+<para><b>Important:</b> Important
 </para></quotation>
 
 <quotation>
-<para><b> Tip:</b> a Tip
+<para><b>Tip:</b> a Tip
 </para></quotation>
 
 <quotation>
-<para><b> Warning:</b> a Warning.
+<para><b>Warning:</b> a Warning.
 </para></quotation>
 
 <quotation>
-<para><b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </para></quotation>
 
 <quotation>
-<para><b> @ at the end of line </b> A @ at the end of the @quotation line.
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
 </para></quotation>
 
 <quotation>
-<para><b> something, other thing:</b> something, other thing
+<para><b>something, other thing:</b> something, other thing
 </para></quotation>
 
 <quotation>
-<para><b> Note, the note:</b> Note, the note
+<para><b>Note, the note:</b> Note, the note
 </para></quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<para><b> Empty:</b> </para></quotation>
+<para><b>Empty:</b> </para></quotation>
 
 <quotation>
-<para><b> :</b> </para></quotation>
+<para><b>:</b> </para></quotation>
 
 <quotation>
-<para><b> &linebreak;:</b> </para></quotation>
+<para><b>&linebreak;:</b> </para></quotation>
 
-<smallquotation>
-<para>A small quot&mdash;ation
-</para></smallquotation>
-
-<smallquotation>
-<para><b> Note:</b> A small Note
-</para></smallquotation>
-
-<smallquotation>
-<para><b> something, other thing:</b> something, other thing
-</para></smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
 </para></item>
@@ -2913,8 +2848,6 @@ but , ,
 <code>@v{--a}</code> --a&lt;
 <code>@,{c}</code> &ccedil;
 <code>@,{--c}</code> --c,
-<code>@ogonek{a}</code> &aogon;
-<code>@ogonek{--a}</code> --a;
 <code>@footnote{in footnote}</code> <footnote><para>in footnote
 </para></footnote>
 <code>@footnote{in footnote2}</code> <footnote><para>in footnote2
@@ -2940,68 +2873,57 @@ A quot---ation
 </quotation>
 
 <quotation>
-<b> Note:</b> A Note
+<b>Note:</b> A Note
 </quotation>
 
 <quotation>
-<b> note:</b> A note
+<b>note:</b> A note
 </quotation>
 
 <quotation>
-<b> Caution:</b> Caution
+<b>Caution:</b> Caution
 </quotation>
 
 <quotation>
-<b> Important:</b> Important
+<b>Important:</b> Important
 </quotation>
 
 <quotation>
-<b> Tip:</b> a Tip
+<b>Tip:</b> a Tip
 </quotation>
 
 <quotation>
-<b> Warning:</b> a Warning.
+<b>Warning:</b> a Warning.
 </quotation>
 
 <quotation>
-<b> something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+<b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
 </quotation>
 
 <quotation>
-<b> @ at the end of line </b> A @ at the end of the @quotation line.
+<b>@ at the end of line </b> A @ at the end of the @quotation line.
 </quotation>
 
 <quotation>
-<b> something, other thing:</b> something, other thing
+<b>something, other thing:</b> something, other thing
 </quotation>
 
 <quotation>
-<b> Note, the note:</b> Note, the note
+<b>Note, the note:</b> Note, the note
 </quotation>
 
 <quotation>
 </quotation>
 
 <quotation>
-<b> Empty:</b> </quotation>
+<b>Empty:</b> </quotation>
 
 <quotation>
-<b> :</b> </quotation>
+<b>:</b> </quotation>
 
 <quotation>
-<b> &linebreak;:</b> </quotation>
+<b>&linebreak;:</b> </quotation>
 
-<smallquotation>
-A small quot---ation
-</smallquotation>
-
-<smallquotation>
-<b> Note:</b> A small Note
-</smallquotation>
-
-<smallquotation>
-<b> something, other thing:</b> something, other thing
-</smallquotation>
 
 <itemize><itemfunction>&bullet;</itemfunction><item> i--temize
 </item>
@@ -3383,7 +3305,9 @@ Menu comment
 <printindex>cp</printindex>
 <printindex>fn</printindex>
 
-<contents></contents><shortcontents></shortcontents></unnumbered>
+<contents></contents>
+<shortcontents></shortcontents>
+</unnumbered>
 </node>
 </texinfo>
 <!-- Keep this comment at the end of the file

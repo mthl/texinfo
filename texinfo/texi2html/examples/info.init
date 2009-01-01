@@ -39,6 +39,8 @@ $NODE_NAME_IN_MENU = 1;
 $SPLIT_INDEX = 0;
 $SEPARATED_FOOTNOTES = 0;
 $INLINE_CONTENTS = 1;
+$SIMPLE_MENU = 1;
+$MENU_SYMBOL = '*';
 
 $no_paragraph_commands{'anchor'} = 1;
 
@@ -48,6 +50,10 @@ $no_paragraph_commands{'anchor'} = 1;
 
 %things_map = %ascii_things_map;
 %pre_map = %things_map;
+
+$misc_command{'exdent'}->{'keep'} = 1;
+$misc_command{'noindent'}->{'keep'} = 1;
+$misc_command{'indent'}->{'keep'} = 1;
 
 # sc and var upcase.
 my @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
@@ -59,7 +65,7 @@ my @chevron_commands = ('key', 'indicateurl');
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
-     $style_map{$accent_command} = { 'function' => \&t2h_ascii_accent };
+     $style_map{$accent_command} = { 'function' => \&t2h_default_ascii_accent };
 }
 
 foreach my $command (keys(%style_map))
@@ -146,15 +152,20 @@ sub info_default_email($$)
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
+$toc_body = \&info_default_noop;
+$about_body = \&info_default_noop;
 $copying_comment   = \&info_default_copying_comment;
 $element_heading   = \&info_default_element_heading;
 $heading           = \&info_default_heading;
 $normal_text       = \&info_default_normal_text;
 $paragraph         = \&info_default_paragraph;
+$preformatted      = \&info_default_preformatted;
 $empty_line               = \&info_default_empty_line;
 # maybe should not be called from the main program?
 $print_page_foot       = \&info_default_print_page_foot;
+$print_Top_footer      = \&info_default_print_Top_footer;
 $print_section         = \&info_default_print_section;
+$end_section           = \&info_default_end_section;
 $one_section           = \&info_default_one_section;
 $begin_format_texi     = \&info_default_begin_format_texi;
 $begin_style_texi      = \&info_default_begin_style_texi;
@@ -163,7 +174,15 @@ $simple_command        = \&info_default_simple_command;
 $thing_command         = \&info_default_thing_command;
 $begin_special_region  = \&info_default_begin_special_region;
 $anchor_label          = \&info_default_anchor_label;
+$menu_link             = \&info_default_menu_link;
+$complex_format        = \&info_default_complex_format;
+$quotation             = \&info_default_quotation;
+$unknown               = \&info_default_misc_commands;
 
+sub info_default_noop
+{
+    return '';
+}
 
 sub info_default_copying_comment($$$$)
 {
@@ -216,14 +235,21 @@ sub info_default_iterator_next($$$)
 
 my $info_default_max_column = 72;
 
-sub info_default_process_text($$$$)
+# Beware that there is a pending word if the text doesn't end with
+# a space
+sub info_default_process_text($$$$;$)
 {
    my $text = shift;
    my $line_char_counter = shift;
    my $pending_spaces = shift;
    my $pending_word = shift;
+   my $indent_text = shift;
+   $indent_text = '' if (!defined($indent_text));
    my $line_passed = 0;
    my $result = '';
+my $line_char_counter_text = 'undef';
+$line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
+print STDERR "process_text(indent `$indent_text') line_char_counter $line_char_counter_text `$text'\n";
    
    while ($text ne '')
    {
@@ -232,6 +258,10 @@ sub info_default_process_text($$$$)
           my $new_spaces = $1;
           if (defined($pending_word))
           {
+             if ($line_char_counter == 0)
+             {
+                 $pending_spaces = $indent_text . $pending_spaces;
+             }
              $result .= $pending_spaces . $pending_word;
              $line_char_counter += length($pending_spaces)+length($pending_word);
              $pending_spaces = $new_spaces;
@@ -296,12 +326,18 @@ sub info_default_skip_spaces($$$)
     }
 }
 
-sub info_default_store_pending($$$)
+sub info_default_store_pending($$$;$)
 {
    my $line_char_counter = shift;
    my $pending_spaces = shift;
    my $pending_word = shift;
+   my $indent_text = shift;
+   $indent_text = '' if (!defined($indent_text));
    
+   if (defined($line_char_counter) and $line_char_counter == 0)
+   {
+      $pending_spaces = $indent_text . $pending_spaces;
+   }
    my $result = $pending_spaces;
    $pending_spaces = '';
    if (defined($pending_word))
@@ -314,30 +350,52 @@ sub info_default_store_pending($$$)
 }
 
 my $info_default_end_sentence_character = quotemeta('.');
+my $info_default_indent_length = 5;
+my $info_default_para_indent_length = 3;
+
+my %info_default_indented_commands = ( 'quotation' => 1 );
+foreach my $complex_command (keys (%{$complex_format_map}))
+{
+    $info_default_indented_commands{$complex_command} = 1;
+}
 
 sub info_default_process_content($$)
 {
-# FIXME currently always in a paragraph
    my $current_command = shift;
    my $base_offset = shift;
    my $length = 0;
    my $result = '';
 
    my $line_char_counter;
-   my $new_text;
    my $pending_spaces = '';
    my $pending_word;
-   my $line_passed;
+   my $preformatted = 0;
+   my $indent_level = 0;
+   my $exdent_line = 0;
+   my $line_beginning = 0;
+   my $indent_para;
+   my $noindent_para;
 
    my ($current, $index, $close) = ($current_command, 0, 0);
 
-   print STDERR "info_default_process_content: $current_command\n";
+   #print STDERR "info_default_process_content: $current_command\n";
    while(1)
    {
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-      my $new_text = '';
+      my $line_passed = 0;
+
+my $line_char_counter_text = 'undef';
+$line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
+my $text_length = '';
+$text_length = $content->{'length'} if defined($content->{'length'});
+my $text_command = '';
+$text_command = $content->{'command'} if defined($content->{'command'});
+      print STDERR "($text_command|$text_length|$close) preformatted $preformatted, line_beginning $line_beginning, indent_level $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text\n";
+my $pending_word_text = 'undef';
+$pending_word_text = "`$pending_word'" if (defined($pending_word));
+print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
 
       if ($close)
       {
@@ -346,12 +404,36 @@ sub info_default_process_content($$)
               $text_added = $content->{'end'};
           }
           # if ending a paragraph, go straight to the text addition 
-          # without processing of the end of lines
-          if (defined($content->{'command'}) and $content->{'command'} eq 'paragraph')
+          # without processing of the end of lines. Same if ending a 
+          # quotation or an @example
+          if (defined($content->{'command'}))
           {
-              $line_char_counter = undef;
-              $new_text = $content->{'end'};
-              goto new_text;
+              if ($info_default_indented_commands{$content->{'command'}})
+              {
+                  $indent_level--;
+                  # don't do that for quotations, quotations already have
+                  # end of paragraph end of lines.
+                  if ($indent_level == 0 and $complex_format_map->{$content->{'command'}})
+                  {
+                     $text_added .= "\n";
+                  }
+                  #$line_beginning = 1;
+                  goto new_text;
+              }
+              if ($content->{'command'} eq 'paragraph')
+              {
+                  $pending_spaces = '';
+                  $line_char_counter = undef;
+                  $indent_para = undef;
+                  $noindent_para = undef;
+                  $text_added = $content->{'end'};
+                  goto new_text;
+              }
+              elsif ($content->{'command'} eq 'preformatted')
+              {
+                  $preformatted--;
+                  $line_beginning = 0;
+              }
           }
       }
       else
@@ -361,8 +443,8 @@ sub info_default_process_content($$)
               if ($content->{'command'} eq 'anchor')
               {
                   my $pending;
-                  ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word);
-                  if (defined($line_char_counter) or $pending !~ /^\s*$/)
+                  ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length));
+                  if (defined($line_char_counter) or ($preformatted) or $pending !~ /^\s*$/)
                   {
                       $length += length($pending);
                       $result .= $pending;
@@ -370,16 +452,16 @@ sub info_default_process_content($$)
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $base_offset;
                   push @info_default_pending_tags, $content->{'anchor_reference'};
               }
-              elsif ($content->{'command'} eq '*')
+              elsif ($content->{'command'} eq '*' and !$preformatted)
               {
                  if (defined($pending_word))
                  {
-                    $new_text .= $pending_spaces . $pending_word;
+                    $text_added .= $pending_spaces . $pending_word;
                     $pending_word = undef;
                  }
                  $pending_spaces = '';
                  $line_char_counter = 0;
-                 $new_text .=  $content->{'text'};
+                 $text_added .=  $content->{'text'};
                  ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
                  # FIXME new line
                  goto new_text;
@@ -388,6 +470,30 @@ sub info_default_process_content($$)
               {
                   ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
                   $line_char_counter = 0;
+                  $content->{'begin'} = ' ' x $info_default_para_indent_length if 
+                    (!($content->{'top_stack'} eq 'quotation') and ($indent_para or (!$noindent_para and  $content->{'paragraph_in_element_nr'})));
+              }
+              elsif ($content->{'command'} eq 'preformatted')
+              {
+                  $preformatted++;
+                  $line_beginning = 1;
+                  $exdent_line = 0;
+              }
+              elsif ($content->{'command'} eq 'exdent' and $preformatted)
+              {
+                  $exdent_line = 1;
+              }
+              elsif ($content->{'command'} eq 'indent')
+              {
+                  $indent_para = 1;
+              }
+              elsif ($content->{'command'} eq 'noindent')
+              {
+                  $noindent_para = 1;
+              }
+              if ($info_default_indented_commands{$content->{'command'}})
+              {
+                  $indent_level++;
               }
           }
 
@@ -408,14 +514,37 @@ sub info_default_process_content($$)
                           $content->{'text'} .= ' ';
                       }
                   }
-              }
-              $text_added .= $content->{'text'} unless (!defined($line_char_counter) and $content->{'text'} =~ /^\s*$/);
+              } # ignore spaces outside of paragraphs and preformatted
+              $text_added .= $content->{'text'} unless (!defined($line_char_counter) and !$preformatted and $content->{'text'} =~ /^\s*$/);
           }
       }
-      ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $new_text) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word);
+      if (!$preformatted)
+      {
+          ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length)) if ($text_added ne '');
+      }
+      else
+      {
+print STDERR "text_added `$text_added' line_beginning $line_beginning\n";
+          if ($text_added ne '' and $line_beginning)
+          {
+              my $used_indent_level = $indent_level;
+              $used_indent_level-- if ($indent_level and $exdent_line);
+              $exdent_line = 0;
+print STDERR "                     indent_level $indent_level\n";
+              $text_added =  ' ' x ($used_indent_level * $info_default_indent_length) 
+                             .$text_added;
+              $line_beginning = 0;
+          }
+      }
     new_text:
-      $result .= $new_text;
-      $length += length($new_text);
+print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
+      $result .= $text_added;
+      $length += length($text_added);
+      if ($preformatted)
+      {
+          my $chomped_text = $text_added;
+          $line_beginning = 1 if (chomp($chomped_text));
+      }
 
     iterate:
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
@@ -443,7 +572,7 @@ sub info_default_open_command($$$$$)
 #     Data::Dumper->Dump([$info_default_top_stack]);
 }
 
-sub info_default_close_command($$$$$$$$)
+sub info_default_close_command($$$$$$$$;$)
 {
    my $command_stack = shift;
    my $command = shift;
@@ -453,6 +582,7 @@ sub info_default_close_command($$$$$$$$)
    my $begin = shift;
    my $text = shift;
    my $end = shift;
+   my $additional_entries = shift;
 
    $no_open = 0 if (!defined($no_open));
    $no_close = 0 if (!defined($no_close));
@@ -469,6 +599,13 @@ sub info_default_close_command($$$$$$$$)
    $info_default_current_command->{'begin'} = $begin;
    $info_default_current_command->{'text'} = $text;
    $info_default_current_command->{'end'} = $end;
+   if (defined($additional_entries))
+   {
+       foreach my $key (keys(%$additional_entries))
+       {
+           $info_default_current_command->{$key} = $additional_entries->{$key};
+       }
+   }
 
    $info_default_current_command = $info_default_current_command->{'parent'};
 
@@ -512,8 +649,8 @@ sub info_default_store_text($$;$)
    my $command = shift;
 #   $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $len = length($text);
-   return 0 if ((!$state->{'inside_document'} and !$state->{'outside_document'}));
-   return 1 if ($len == 0);
+   return 0 if ((!$state->{'inside_document'} and !$state->{'outside_document'}) or ($state->{'duplicated'} and $state->{'inside_document'}));
+   return 1 if ($len == 0 and !defined($command));
    print STDERR "Storing text($len) $text\n";
    my $text_stored = {'text' => $text, 'length' => $len};
    $text_stored->{'command'} = $command if (defined($command));
@@ -527,6 +664,7 @@ sub info_default_begin_format_texi($$$)
    my $line = shift;
    my $state = shift;
    info_default_open_command($state,$command, undef, undef, undef);
+   return $line;
 }
 
 sub info_default_begin_style_texi($$$$)
@@ -544,7 +682,7 @@ sub info_default_begin_paragraph_texi($$$)
    my $command = shift;
    my $paragraph_macros = shift;
    my $paragraph_command = shift;
-   print STDERR "paragraph_command $paragraph_command\n";
+   print STDERR "begin_paragraph $command\n";
    my $state = shift;
    my $stack = shift;
    info_default_open_command($state,$command, undef, undef, undef);
@@ -579,7 +717,7 @@ sub info_default_thing_command($$$$$)
 
     my $result = $things_map{$command};
     return info_default_close_command(undef, $command, undef, undef, $line_nr, $result, $text, '');
-    return $result . $text;
+#    return $result . $text;
 }
 
 
@@ -610,7 +748,7 @@ sub info_default_style($$$$$$$$$)
    {
       $end = $style->{'end'};
    }
-   unless($state->{'remove_texi'} or $special_style{$command})
+   unless($state->{'remove_texi'} or $special_style{$command} or ($command eq 'cmd_line'))
    {
       return info_default_close_command($command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end);
    }
@@ -621,9 +759,16 @@ sub info_default_print_page_head($)
 {
     my $fh = shift;
     my $setfilename = $Texi2HTML::THISDOC{'setfilename'} if (defined($Texi2HTML::THISDOC{'setfilename'}));
-    $setfilename = $Texi2HTML::THISDOC{file_base_name}.$EXTENSION if (!defined($setfilename));
+    $setfilename = $Texi2HTML::THISDOC{'file_base_name'}.$EXTENSION if (!defined($setfilename));
     #my $result = "This is $setfilename, produced by $Texi2HTML::THISDOC{program} from $Texi2HTML::THISDOC{'input_file_name'}.\n\n";
-    my $result = "This is $setfilename, produced by makeinfo version 4.13 from $Texi2HTML::THISDOC{'input_file_name'}.\n\n";
+    # this is wrong, $Texi2HTML::THISDOC{'input_file_name'} should be used 
+    # directly, but then tests are not reproducible in out of source builds
+    my $basename = $Texi2HTML::THISDOC{'input_file_name'};
+    $basename =~ s/^.*\///;
+    my $result = "This is $setfilename, produced by makeinfo version 4.13 from $basename. ";
+    my $dummy;
+    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef);
+    $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     $info_default_offset_in_file = length($result);
     @info_default_pending_tags = ();
@@ -632,7 +777,6 @@ sub info_default_print_page_head($)
 }
 
 my $info_default_paragraph_in_element_nr;
-my $info_default_para_indent_length = 3;
 
 sub info_default_paragraph($$$$$$$$$$$$)
 {
@@ -649,16 +793,38 @@ sub info_default_paragraph($$$$$$$$$$$$)
     my $command_stack_at_end = shift;
     my $command_stack_at_begin = shift;
 
-    my $begin_para = '';
-    if ($info_default_paragraph_in_element_nr)
-    {
-        # add length(para) before
-        $begin_para = ' ' x $info_default_para_indent_length;
-    }
-    $info_default_paragraph_in_element_nr++;
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
 
-    return info_default_close_command(undef, 'paragraph', undef, undef, undef, $begin_para, undef, "\n\n");
+    $info_default_paragraph_in_element_nr++;
+    return info_default_close_command(undef, 'paragraph', undef, undef, undef, '', undef, "\n\n", {'paragraph_in_element_nr' => ($info_default_paragraph_in_element_nr -1), 'top_stack' => $top_stack});
 }
+
+sub info_default_preformatted($$$$$$$$$$$$)
+{
+    my $text = shift;
+    my $pre_style = shift;
+    my $class = shift;
+    my $leading_command = shift;
+    my $leading_command_formatted = shift;
+    my $preformatted_number = shift;
+    my $format = shift;
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+    my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
+
+#    if (defined($preformatted_number) and defined($$preformatted_number))
+#    {
+#        $$preformatted_number++;
+#    }
+    # a paragraph after a preformatted is indented. So looks like 
+    # preformatted count as paragraphs.
+    $info_default_paragraph_in_element_nr++;
+    return info_default_close_command(undef, 'preformatted', undef, undef, undef, undef, undef, undef);
+} 
+
 
 my %default_info_level_to_symbol = (
   0 => '*',
@@ -739,6 +905,7 @@ sub info_default_normal_text($$$$$$;$)
 
 #Data::Dumper->Dump([$state]);
 
+#print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
 #   $text = &$protect_text($text) unless($in_raw_text);
    if (! $in_code and !$in_preformatted)
@@ -746,6 +913,8 @@ sub info_default_normal_text($$$$$$;$)
        $text =~ s/---/\x{1F}/g;
        $text =~ s/--/-/g;
        $text =~ s/\x{1F}/--/g;
+       $text =~ s/``/"/g;
+       $text =~ s/\'\'/"/g;
    }
    else
    {
@@ -756,7 +925,7 @@ sub info_default_normal_text($$$$$$;$)
 #       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
    }
-   # We ignore the text outside paragraphs
+   # We never store in the stack text in raw text (remove_texi).
    unless ($in_raw_text)
    {
       return '' if (info_default_store_text($state,$text));
@@ -764,12 +933,14 @@ sub info_default_normal_text($$$$$$;$)
    return $text;
 }
 
+# this is not called in preformatted
 sub info_default_empty_line($$)
 {
     my $text = shift;
     my $state = shift;
     #ignore the line if it just follows a deff
     #return '' if ($state->{'deff_line'});
+    info_default_store_text($state,$text);
     return '';
 }
 
@@ -826,6 +997,17 @@ sub info_default_print_page_foot($)
    print $fh "\x{1F}\nEnd Tag Table\n";
 }
 
+sub info_default_print_Top_footer($$$)
+{
+    my $fh = shift;
+    my $end_page = shift;
+    my $element = shift;
+    if ($end_page)
+    {
+        &$print_page_foot($fh);
+    }
+}
+
 sub info_default_print_section
 {
     my $fh = shift;
@@ -833,6 +1015,13 @@ sub info_default_print_section
     my $previous_is_top = shift;
     my $element = shift;
     my $nw = main::print_lines($fh);
+}
+
+sub info_default_end_section($$$)
+{
+    my $fh = shift;
+    my $end_foot_navigation = shift;
+    my $element = shift;
 }
 
 sub info_default_one_section($$)
@@ -854,6 +1043,56 @@ sub info_default_begin_special_region($$$)
         info_default_reset_stack();
     }
     
+}
+
+sub info_default_menu_link($$$$$$$$)
+{
+    my $entry = shift;
+    my $state = shift;
+    my $href = shift;
+    my $node = shift;
+    my $title = shift;
+    my $ending = shift;
+    my $has_title = shift;
+    my $command_stack = shift;
+    my $preformatted = shift;
+
+    $title .= ':' if ($title ne '');
+    $entry = "$MENU_SYMBOL$title$node";
+    return $entry.$ending;
+}
+
+sub info_default_complex_format($$)
+{
+    my $name = shift;
+    my $text = shift;
+    return info_default_close_command(undef, $name, undef, undef, undef, undef, undef, undef);
+}
+
+sub info_default_quotation($$$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $argument_text = shift;
+    my $argument_text_texi = shift;
+
+    return info_default_close_command(undef, $command, undef, undef, undef, undef, undef, undef);
+}
+
+sub info_default_misc_commands($$$$$)
+{
+    my $command = shift;
+    my $line = shift;
+    my $pass = shift;
+    my $stack = shift;
+    my $state = shift;
+
+    return ($line, 0, undef, undef) unless ($pass == 2);
+    return ($line, 0, undef, undef) unless ($command eq 'exdent' or $command eq 'noindent' or $command eq 'indent');
+    my ($result_line, $text, $args) = &$preserve_misc_command ($line, $command);
+    info_default_store_text($state,'',$command);
+#print STDERR "ZZZZZZZZZZZZZZz `$result_line' `$text'\n";
+    return ($result_line, 1, '', undef);
 }
 
 1;

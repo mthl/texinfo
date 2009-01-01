@@ -191,8 +191,6 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
-<literal>@ogonek{a}</literal> &aogon;
-<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -266,14 +264,6 @@ After clickstyle &rArr;
 <blockquote><para><emphasis role="bold"> 
 :</emphasis> </para></blockquote>
 
-<blockquote><para>A small quot&mdash;ation
-</para></blockquote>
-
-<note><para>A small Note
-</para></note>
-
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
-</para></blockquote>
 
 <itemizedlist><listitem><para> i&ndash;temize
 </para></listitem>
@@ -723,8 +713,6 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
-<literal>@ogonek{a}</literal> &aogon;
-<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -798,14 +786,6 @@ After clickstyle &rArr;
 <blockquote><para><emphasis role="bold"> 
 :</emphasis> </para></blockquote>
 
-<blockquote><para>A small quot&mdash;ation
-</para></blockquote>
-
-<note><para>A small Note
-</para></note>
-
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
-</para></blockquote>
 
 <itemizedlist><listitem><para> i&ndash;temize
 </para></listitem>
@@ -1251,8 +1231,6 @@ but , ,
 <literal>@v{--a}</literal> &ndash;a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> &ndash;c,
-<literal>@ogonek{a}</literal> &aogon;
-<literal>@ogonek{--a}</literal> &ndash;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -1326,14 +1304,6 @@ After clickstyle &rArr;
 <blockquote><para><emphasis role="bold"> 
 :</emphasis> </para></blockquote>
 
-<blockquote><para>A small quot&mdash;ation
-</para></blockquote>
-
-<note><para>A small Note
-</para></note>
-
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
-</para></blockquote>
 
 <itemizedlist><listitem><para> i&ndash;temize
 </para></listitem>
@@ -1779,8 +1749,6 @@ but , ,
 <literal>@v{--a}</literal> --a&lt;
 <literal>@,{c}</literal> &ccedil;
 <literal>@,{--c}</literal> --c,
-<literal>@ogonek{a}</literal> &aogon;
-<literal>@ogonek{--a}</literal> --a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote
 </para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2
@@ -1854,14 +1822,6 @@ After clickstyle &rArr;
 <blockquote><lineannotation> 
 :</lineannotation> </blockquote>
 
-<blockquote>A small quot---ation
-</blockquote>
-
-<note>A small Note
-</note>
-
-<blockquote><lineannotation> something, other thing:</lineannotation> something, other thing
-</blockquote>
 
 <itemizedlist><listitem> i--temize
 </listitem>

@@ -175,8 +175,10 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
+@ifset texi2html
 @code{@@ogonek@{a@}} @ogonek{a}
 @code{@@ogonek@{--a@}} @ogonek{--a}
+@end ifset
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -253,6 +255,7 @@ Note, the note
 @quotation @*
 @end quotation
 
+@ifset texi2html
 @smallquotation 
 A small quot---ation
 @end smallquotation
@@ -264,6 +267,7 @@ A small Note
 @smallquotation something, other thing
 something, other thing
 @end smallquotation
+@end ifset
 
 @itemize
 @item i--temize

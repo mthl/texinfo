@@ -190,8 +190,6 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@code{@@ogonek@{a@}} @ogonek{a}
-@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -268,17 +266,6 @@ Note, the note
 @quotation @*
 @end quotation
 
-@smallquotation 
-A small quot---ation
-@end smallquotation
-
-@smallquotation Note
-A small Note
-@end smallquotation
-
-@smallquotation something, other thing
-something, other thing
-@end smallquotation
 
 @itemize
 @item i--temize
@@ -791,8 +778,6 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@code{@@ogonek@{a@}} @ogonek{a}
-@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -869,17 +854,6 @@ Note, the note
 @quotation @*
 @end quotation
 
-@smallquotation 
-A small quot---ation
-@end smallquotation
-
-@smallquotation Note
-A small Note
-@end smallquotation
-
-@smallquotation something, other thing
-something, other thing
-@end smallquotation
 
 @itemize
 @item i--temize
@@ -1392,8 +1366,6 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@code{@@ogonek@{a@}} @ogonek{a}
-@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -1470,17 +1442,6 @@ Note, the note
 @quotation @*
 @end quotation
 
-@smallquotation 
-A small quot---ation
-@end smallquotation
-
-@smallquotation Note
-A small Note
-@end smallquotation
-
-@smallquotation something, other thing
-something, other thing
-@end smallquotation
 
 @itemize
 @item i--temize
@@ -1987,8 +1948,6 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@code{@@ogonek@{a@}} @ogonek{a}
-@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -2065,17 +2024,6 @@ Note, the note
 @quotation @*
 @end quotation
 
-@smallquotation 
-A small quot---ation
-@end smallquotation
-
-@smallquotation Note
-A small Note
-@end smallquotation
-
-@smallquotation something, other thing
-something, other thing
-@end smallquotation
 
 @itemize
 @item i--temize

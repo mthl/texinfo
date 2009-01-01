@@ -539,6 +539,7 @@ copy-tests: copy-base copy-long
 
 copy-base:
 	$(srcdir)/tests.sh -copy $(base_tests)
+	cp $(srcdir)/formatting/res/texi_formatting/formatting.texi $(srcdir)/formatting/formatting_for_makeinfo.texi
 
 copy-long:
 	$(srcdir)/tests.sh -copy $(long_tests)

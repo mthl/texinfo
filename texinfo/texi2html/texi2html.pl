@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.252 2008-12-27 20:53:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.253 2009-01-01 22:35:11 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4990,7 +4990,8 @@ sub misc_command_text($$$$$$)
     }
 
     ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
-    return ($skipped) if ($keep);
+#print STDERR "ZZZZZZZZZZZ r $remaining ZZ a @$args ZZZZ s `$skipped'\n" if ($keep);
+    return ($skipped.$remaining) if ($keep);
     return $remaining if ($remaining ne '');
     return undef;
 }
@@ -9103,9 +9104,6 @@ sub begin_format($$$$$$)
     my $line_nr = shift;
     #print STDERR "BEGIN FORMAT $macro".format_line_number($line_nr)."\n";
 
-    $line = &$Texi2HTML::Config::begin_format_texi($macro, $line, $state)
-        unless($fake_format{$macro});
-
 
     if ($format_type{$macro} eq 'menu')
     {
@@ -9130,6 +9128,10 @@ sub begin_format($$$$$$)
     {
         close_paragraph($text, $stack, $state, $line_nr);
     }
+
+    $line = &$Texi2HTML::Config::begin_format_texi($macro, $line, $state)
+        unless($fake_format{$macro});
+
     push (@{$state->{'command_stack'}}, $macro) unless ($fake_format{$macro});
     if ($region_lines{$macro})
     {
@@ -9859,6 +9861,7 @@ sub do_float_line($$$$$)
          #print STDERR "float: (no label) $state->{'float'}\n";
     }
     $state->{'float'}->{'style'} = substitute_line($state->{'float'}->{'style_texi'}, undef, $line_nr);
+#    $state->{'cmd_line'} = 0;
     return '';
 }
 
@@ -9882,6 +9885,7 @@ sub do_quotation_line($$$$$)
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
     push @{$state->{'quotation_stack'}}, $quotation_args;
     $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($command, $text_texi);
+#    $state->{'cmd_line'} = 0;
     return '';
 }
 
@@ -10040,7 +10044,8 @@ sub duplicate_state($)
          'region' => $state->{'region'},
          'sec_num' => $state->{'sec_num'},
          'outside_document' => $state->{'outside_document'},
-         'inside_document' => $state->{'inside_document'}
+         'inside_document' => $state->{'inside_document'},
+         'duplicated' => 1
     };
     return $new_state;
 }
@@ -11788,7 +11793,7 @@ sub scan_line($$$$;$)
           # it is also possible to be in preformatted within a menu_description
             if ($cline =~ /^\s*$/)
             {
-                add_prev($text, $stack, $cline);
+                add_prev($text, $stack, do_text($cline,$state));
                 return;
             }
         }
@@ -12756,7 +12761,7 @@ sub close_arg($$$)
 
 # add a special style on the top of the stack. This is used for commands
 # that extend until the end of the line. Also add an entry in the @-command
-# hashes for this fakes stlye.
+# hashes for this fakes style.
 sub open_cmd_line($$$$)
 {
     my $stack = shift;
@@ -12770,6 +12775,7 @@ sub open_cmd_line($$$$)
          $hash->{'cmd_line'}->{'function'} = $function;
     }
     $state->{'no_paragraph'}++;
+#    $state->{'cmd_line'} = 1;
     open_arg ('cmd_line', 0, $state);
 }
 
@@ -13161,6 +13167,11 @@ sub do_unknown($$$$$$$)
     {
          add_prev ($text, $stack, $result_text) if (defined($result_text));
          echo_warn($message, $line_nr) if (defined($message));
+         # if $state->{'preformatted'}, assume that the preformatted is 
+         # already opened. Otherwise we may end up opening one each time
+         # there is an unknown command.
+         begin_paragraph_after_command($state, $stack, $macro, $result_line)
+              if (!$state->{'preformatted'});
          return $result_line;
     }
     elsif ($pass == 2)

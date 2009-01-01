@@ -1,3 +1,12 @@
+2009-01-01  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: remove space in front of @quotation argument.
+	* texi2html.pl: add a key in duplicated state.
+	Return the remaining line after a kept misc command.
+	Go through normal_text for empty lines in preformatted.
+	Open paragraph after unkown command.
+	Call begin_format_texi after closing stuff.
+
 2008-12-24  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: add new hooks for user functions, for simple 
