@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.84 2008-11-10 19:36:43 karl Exp $
+   $Id: cmds.c,v 1.85 2009-01-01 07:24:58 olegkat Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -308,6 +308,9 @@ COMMAND command_table[] = {
   { "quoteright", cm_quoteright, BRACE_ARGS },
   { "quotesinglbase", cm_quotesinglbase, BRACE_ARGS },
   { "r", cm_r, BRACE_ARGS },
+  { "raggedcenter", cm_raggedcenter, NO_BRACE_ARGS },
+  { "raggedleft", cm_raggedleft, NO_BRACE_ARGS },
+  { "raggedright", cm_raggedright, NO_BRACE_ARGS },
   { "raisesections", cm_raisesections, NO_BRACE_ARGS },
   { "ref", cm_ref, BRACE_ARGS },
   { "refill", cm_no_op, NO_BRACE_ARGS },

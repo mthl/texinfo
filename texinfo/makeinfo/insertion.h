@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.15 2008-01-31 18:33:27 karl Exp $
+   $Id: insertion.h,v 1.16 2009-01-01 07:24:57 olegkat Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003, 2007, 2008
    Free Software Foundation, Inc.
@@ -30,7 +30,8 @@ enum insertion_type
   example, floatenv, flushleft, flushright, format, ftable, group,
   ifclear, ifdocbook, ifhtml, ifinfo, ifnotdocbook, ifnothtml, ifnotinfo,
   ifnotplaintext, ifnottex, ifnotxml, ifplaintext, ifset, iftex, ifxml,
-  itemize, lisp, menu, multitable, quotation, rawdocbook, rawhtml, rawtex,
+  itemize, lisp, menu, multitable, quotation, raggedcenter, raggedleft,
+  raggedright, rawdocbook, rawhtml, rawtex,
   rawxml, smalldisplay, smallexample, smallformat, smalllisp, verbatim,
   table, tex, vtable, titlepage, bad_type
 };

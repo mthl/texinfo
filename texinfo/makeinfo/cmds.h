@@ -1,5 +1,5 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.15 2008-04-09 17:07:31 karl Exp $
+   $Id: cmds.h,v 1.16 2009-01-01 07:24:58 olegkat Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -157,6 +157,9 @@ extern void cm_cartouche (void),
   cm_copying (void),
   cm_flushleft (void),
   cm_flushright (void),
+  cm_raggedcenter (void),
+  cm_raggedleft (void),
+  cm_raggedright (void),
   cm_verbatim (void),
   cm_end (void);
 

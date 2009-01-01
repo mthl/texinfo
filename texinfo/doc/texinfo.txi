@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
+@c $Id: texinfo.txi,v 1.232 2009-01-01 07:24:58 olegkat Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -375,6 +375,7 @@ Quotations and Examples
 * format::                      Writing an example without narrowed margins.
 * exdent::                      Undo indentation on a line.
 * flushleft & flushright::      Pushing text flush left or flush right.
+* raggedright raggedleft & raggedcenter:: Avoiding justification.
 * noindent::                    Preventing paragraph indentation.
 * indent::                      Forcing paragraph indentation.
 * cartouche::                   Drawing rounded rectangles around examples.
@@ -7805,6 +7806,7 @@ line, and with only one space between the @code{@@end} and the
 * format::                      Writing an example without narrowed margins.
 * exdent::                      Undo indentation on a line.
 * flushleft & flushright::      Pushing text flush left or flush right.
+* raggedright raggedleft & raggedcenter:: Avoiding justification.
 * noindent::                    Preventing paragraph indentation.
 * indent::                      Forcing paragraph indentation.
 * cartouche::                   Drawing rounded rectangles around examples.
@@ -7867,7 +7869,12 @@ The @code{@@exdent} command is used within the above constructs to
 undo the indentation of a line.
 
 The @code{@@flushleft} and @code{@@flushright} commands are used to line
-up the left or right margins of unfilled text.@refill
+up the left or right margins of unfilled text.
+
+The @code{@@raggedright} and @code{@@raggedleft} commands fill the
+text as usual, but only justify it on one of the margins.  There is
+also @code{@@raggedcenter}, which centers each filled line.  These
+commands have no effect in Info output.
 
 The @code{@@noindent} command may be used after one of the above
 constructs to prevent the following text from being indented as a new
@@ -8346,6 +8353,54 @@ flushright.  The @code{@@flushright} command
 right justifies every line but leaves the
 left end ragged.
 @end flushright
+
+
+@node raggedright raggedleft & raggedcenter
+@section @code{@@raggedright}, @code{@@raggedleft} and @code{@@raggedcenter}
+@findex raggedright
+@findex raggedleft
+@findex raggedcenter
+@cindex Ragged right
+@cindex Ragged left
+@cindex Ragged center
+
+The @code{@@raggedright} and @code{@@raggedleft} commands fill the
+text as usual, but only line up ends of lines on the left or the right
+margins of a page.  The @code{@@raggedcenter} command centers each
+filled line.  The commands are written on lines of their own, without
+braces.  The @code{@@raggedright}, @code{@@raggedleft} and
+@code{@@raggedcenter} commands are ended by @code{@@end raggedright},
+@code{@@end raggedleft} and @code{@@end raggedcenter} commands,
+respectively, on lines of their own.  These commands have no effect in
+Info output.
+
+The @code{@@raggedright} command can be useful with paragraphs
+containing lists of commands with long names, when it is known in
+advance that justifying the text on both margins will make the
+paragraph look bad.
+
+For example,
+
+@example
+@group
+@@raggedright
+Commands for double and single angle quotation marks:
+@@code@{@@@@guillemetleft@@@{@@@}@}, @@code@{@@@@guillemetright@@@{@@@}@},
+@@code@{@@@@guillemotleft@@@{@@@}@}, @@code@{@@@@guillemotright@@@{@@@}@},
+@@code@{@@@@guilsinglleft@@@{@@@}@}, @@code@{@@@@guilsinglright@@@{@@@}@}.
+@@end raggedright
+@end group
+@end example
+
+@noindent
+produces
+
+@raggedright
+Commands for double and single angle quotation marks:
+@code{@@guillemetleft@{@}}, @code{@@guillemetright@{@}},
+@code{@@guillemotleft@{@}}, @code{@@guillemotright@{@}},
+@code{@@guilsinglleft@{@}}, @code{@@guilsinglright@{@}}.
+@end raggedright
 
 
 @node noindent
@@ -17899,7 +17954,7 @@ Environment to define floating material.  Pair with @code{@@end float}.
 @itemx @@flushright
 Do not fill text; left (right) justify every line while leaving the
 right (left) end ragged.  Leave font as is.  Pair with @code{@@end
-flushleft} (@code{@@end flushright}).  @code{@@flushright} analogous.
+flushleft} (@code{@@end flushright}).
 @xref{flushleft & flushright, , @code{@@flushleft} and
 @code{@@flushright}}.
 
@@ -18228,6 +18283,20 @@ Produce various quotation marks: @quotedblleft{} @quotedblright{}
 @item @@r@{@var{text}@}
 Set @var{text} in the regular @r{roman} font.  No effect in Info.
 @xref{Fonts}.
+
+@item @@raggedcenter
+Fill text; center each filled line.  Leave font as is.  Pair with
+@code{@@end raggedcenter}.  No effect in Info.
+@xref{raggedright raggedleft & raggedcenter, ,
+@code{@@raggedright}@comma{} @code{@@raggedleft} and @code{@@raggedcenter}}.
+
+@item @@raggedleft
+@itemx @@raggedright
+Fill text; right (left) justify every line while leaving the
+left (right) end ragged.  Leave font as is.  Pair with @code{@@end
+raggedleft} (@code{@@end raggedright}).  No effect in Info.
+@xref{raggedright raggedleft & raggedcenter, ,
+@code{@@raggedright}@comma{} @code{@@raggedleft} and @code{@@raggedcenter}}.
 
 @item @@raisesections
 Change subsequent sections to chapters, subsections to sections, and so
@@ -19184,7 +19253,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
+$Id: texinfo.txi,v 1.232 2009-01-01 07:24:58 olegkat Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19260,7 +19329,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.231 2008-12-13 14:36:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.232 2009-01-01 07:24:58 olegkat Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
