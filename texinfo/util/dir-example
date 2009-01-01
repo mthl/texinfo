@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.77 2008-03-25 15:09:14 karl Exp $
+$Id: dir-example,v 1.78 2009-01-01 19:25:02 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -73,6 +73,7 @@ Email
 * Mailutils: (mailutils).       Utilities & library for mailboxes, protocols.
 
 Network applications
+* Inetutils: (inetutils).       GNU networking utilities.
 * Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * Wget: (wget).                 Non-interactive network downloader.
 
@@ -376,7 +377,6 @@ Individual utilities
 * mp: (web2c)mp invocation.                     Creating technical diagrams.
 * mpto: (web2c)MPto invocation.                 MetaPost label extraction.
 * mv: (coreutils)mv invocation.                 Rename files.
-* networking(inet) utilities: (inetutils).      GNU networking utilities.
 * newer: (web2c)Newer invocation.               Compare modification times.
 * nice: (coreutils)nice invocation.             Modify niceness.
 * nl: (coreutils)nl invocation.                 Number lines and write files.
@@ -447,14 +447,18 @@ Individual utilities
 * tar: (tar)tar invocation.                     Invoking GNU `tar'.
 * tcal: (gcal)Invoking tcal.                    Run Gcal with tomorrow's date.
 * tee: (coreutils)tee invocation.               Redirect to multiple files.
+* telnet: (inetutils)telnet invocation.         User interface to TELNET.
+* telnetd: (inetutils)telnetd invocation.       Telnet server.
 * test: (coreutils)test invocation.             File/string tests.
 * testsuite: (autoconf)testsuite Invocation.    Running an Autotest test suite.
 * tex: (web2c)tex invocation.                   Typesetting.
 * tftopl: (web2c)TFtoPL invocation.             TFM -> property list.
 * tftp: (inetutils)tftp invocation.             Trivial FTP.
+* tftpd: (inetutils)tftpd invocation.           TFTP server.
 * touch: (coreutils)touch invocation.           Change file timestamps.
 * tput: (tput)Invoking tput.                    Termcap in shell scripts.
 * tr: (coreutils)tr invocation.                 Translate characters.
+* traceroute: (inetutils)traceroute invocation.    Trace the route to a host.
 * true: (coreutils)true invocation.             Do nothing, successfully.
 * tsort: (coreutils)tsort invocation.           Topological sort.
 * tty: (coreutils)tty invocation.               Print terminal name.
@@ -468,6 +472,7 @@ Individual utilities
 * unshar: (sharutils)unshar invocation.         Explode a shell archive.
 * updatedb: (find)Invoking updatedb.            Building the locate database.
 * users: (coreutils)users invocation.           Print current user names.
+* uucpd: (inetutils)uucpd invocation.           Unix to Unix Copy.
 * uudecode: (sharutils)uudecode invocation.     Restore file from 7-bits.
 * uuencode: (sharutils)uuencode invocation.     Force binary file to 7-bits.
 * vdir: (coreutils)vdir invocation.             List directories verbosely.
@@ -481,6 +486,7 @@ Individual utilities
 * weave: (web2c)Weave invocation.               WEB to TeX.
 * who: (coreutils)who invocation.               Print who is logged in.
 * whoami: (coreutils)whoami invocation.         Print effective user ID.
+* whois: (inetutils)whois invocation.           Whois user interface.
 * windmc: (binutils)windmc.	Generator for Windows message resources.
 * windres: (binutils)windres.	Manipulate Windows resources.
 * xargs: (find)Invoking xargs.                  Operating on many files.
