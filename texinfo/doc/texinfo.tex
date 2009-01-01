@@ -3,11 +3,11 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2008-12-31.17}
+\def\texinfoversion{2009-01-01.14}
 %
-% Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
+% Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
-% 2007, 2008 Free Software Foundation, Inc.
+% 2007, 2008, 2009 Free Software Foundation, Inc.
 %
 % This texinfo.tex file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -1578,6 +1578,9 @@ output) for that.)}
       \def\@{@}%
       \let\/=\empty
       \makevalueexpandable
+      % \indexnofonts -- is that what we want?
+      \def\var##1{##1}%
+      %
       \leavevmode\setcolor{\urlcolor}%
       \startlink attr{/Border [0 0 0]}%
         user{/Subtype /Link /A << /S /URI /URI (#1) >>}%

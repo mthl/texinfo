@@ -1,5 +1,8 @@
 2009-01-01  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\pdfurl): make \var be a dummy, so
+	@email{foo-@var{pkg}} works.
+
 	* util/gendocs.sh: accept --email option, replace %%EMAIL%% in
 		templates.
 	* util/gendocs_template,
