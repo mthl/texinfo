@@ -1,5 +1,11 @@
 2009-01-01  Derek Price  <derek@ximbiot.com>
 
+	* configure.ac: Update version # for post 1.80 development.
+	* NEWS: Add section for 1.82 release information.
+	* test/encodings/Makefile.am (EXTRA_DIST),
+	test/formatting/Makefile.am (EXTRA_DIST): Remove references to
+	unversioned files.
+
 	* configure.ac: Update version # for 1.80 release.
 	* NEWS: Add date for 1.80 release.
 
