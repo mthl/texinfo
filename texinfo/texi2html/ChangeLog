@@ -1,3 +1,8 @@
+2009-01-01  Derek Price  <derek@ximbiot.com>
+
+	* configure.ac: Update version # for 1.80 release.
+	* NEWS: Add date for 1.80 release.
+
 2009-01-01  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: remove space in front of @quotation argument.
