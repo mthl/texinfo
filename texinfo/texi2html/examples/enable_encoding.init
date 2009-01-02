@@ -26,6 +26,9 @@
 # for debugging printouts
 #use Encode;
 
+use strict;
+use vars '$ENABLE_ENCODING_USE_ENTITY';
+
 if (!$ENABLE_ENCODING_USE_ENTITY)
 {
   $USE_ISO = 0;
@@ -43,12 +46,14 @@ sub enable_encoding_is_entity($)
 
 push @command_handler_process, \&enable_encoding_initialize_variables;
 
-my @enable_encoding_accent_stack;
+my @enable_encoding_accents_stack;
 
 sub enable_encoding_initialize_variables()
 {
-  @enable_encoding_accent_stack = ();
+  @enable_encoding_accents_stack = ();
 }
+
+my %enable_encoding_default_accent;
 
 sub enable_encoding_init_out()
 {
