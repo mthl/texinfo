@@ -185,7 +185,7 @@ do
             sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
           fi
          done
-        rm -f "$out_dir/$dir/"*".aux"
+        rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_l2h_images.out"
       fi
       diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
