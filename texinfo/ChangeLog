@@ -1,3 +1,9 @@
+2000-01-02  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.txi:  Removed documentation of @raggedleft and
+	@raggedcenter.
+	* doc/refcard/txirefcard.tex:  Updated.
+
 2009-01-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\pdfurl): make \var be a dummy, so
