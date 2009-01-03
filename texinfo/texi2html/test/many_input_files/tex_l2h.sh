@@ -41,6 +41,8 @@ else
   sed -i '/is no longer supported at.*line/d' "$basename/$basename.2"
   sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
    's/with LaTeX2HTML.*/with LaTeX2HTML/' "$basename/"*"_l2h.html" "$basename/"*"_l2h_labels.pl"
+  sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$basename/"*"_l2h_images.pl"  "$basename/"*"_l2h_labels.pl"
+  rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out"
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then
       diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
