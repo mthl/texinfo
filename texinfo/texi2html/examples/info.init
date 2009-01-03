@@ -63,9 +63,12 @@ my @asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r',
   'slanted', 'var', 'titlefont', 'verb');
 my @chevron_commands = ('key', 'indicateurl');
 
+my %info_default_accent_commands = ();
+
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
-     $style_map{$accent_command} = { 'function' => \&t2h_default_ascii_accent };
+     $info_default_accent_commands{$accent_command} = 1;
+     $style_map{$accent_command} = { 'function' => \&info_default_accent };
 }
 
 foreach my $command (keys(%style_map))
@@ -178,6 +181,28 @@ $menu_link             = \&info_default_menu_link;
 $complex_format        = \&info_default_complex_format;
 $quotation             = \&info_default_quotation;
 $unknown               = \&info_default_misc_commands;
+
+sub info_default_accent($$$)
+{
+    my @args = @_;
+    my $command = shift;
+    my $args = shift;
+    my $text = $args->[0];
+    my $style_stack = shift;
+    my $state = shift;
+
+    print STDERR "GGGGGGGGGGGGG (@$style_stack) $command $text\n";
+    if (scalar(@$style_stack) and $info_default_accent_commands{$style_stack->[-1]})
+    {
+    print STDERR "1GGGGGGGGGGGG";
+        return &t2h_default_ascii_accent(@args);
+    }
+    my $result = &t2h_default_ascii_accent(@args);
+    print STDERR "2GGGGGGGGGGGG $result";
+    return '' if info_default_store_text($state,$result,'accents_commands');
+    print STDERR "3GGGGGGGGGGGG $result";
+    return $result;
+}
 
 sub info_default_noop
 {
@@ -673,7 +698,8 @@ sub info_default_begin_style_texi($$$$)
    my $state = shift;
    my $stack = shift;
    my $real_style_command = shift;
-   info_default_open_command($state,$command, undef, undef, undef);
+   info_default_open_command($state,$command, undef, undef, undef)
+     unless ($info_default_accent_commands{$command});
 #      if ($real_style_command);
 }
 
@@ -748,7 +774,7 @@ sub info_default_style($$$$$$$$$)
    {
       $end = $style->{'end'};
    }
-   unless($state->{'remove_texi'} or $special_style{$command} or ($command eq 'cmd_line'))
+   unless($state->{'remove_texi'} or $special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command})
    {
       return info_default_close_command($command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end);
    }

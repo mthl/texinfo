@@ -174,19 +174,20 @@ do
       $out_dir/$dir/*_tex4ht_tex.html
   fi
   if [ $ret = 0 ]; then
+    sed -i -e 's/^texexpand.*/texexpand /' "$out_dir/$dir/$basename.2"
+    sed -i '/is no longer supported at.*line/d' "$out_dir/$dir/$basename.2"
+    if [ "$use_latex2html" = 'yes' ]; then
+      sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
+       's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html"
+      # "*"_images.pl" files are not guaranteed to be present
+      for file in "$out_dir/$dir/"*"_images.pl" "$out_dir/$dir/"*"_labels.pl"; do
+       if [ -f "$file" ]; then
+        sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
+       fi
+      done
+      rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"
+    fi
     if [ -d "$results_dir/$dir" ]; then
-      sed -i -e 's/^texexpand.*/texexpand /' "$out_dir/$dir/$basename.2"
-      sed -i '/is no longer supported at.*line/d' "$out_dir/$dir/$basename.2"
-      if [ "$use_latex2html" = 'yes' ]; then
-        sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
-         's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html" "$out_dir/$dir/"*"_l2h_labels.pl"
-        for file in "$out_dir/$dir/${dir}_l2h_images.pl" "$out_dir/$dir/${dir}_l2h_labels.pl"; do
-          if [ -f "$file" ]; then
-            sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
-          fi
-         done
-        rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_l2h_images.out"
-      fi
       diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
