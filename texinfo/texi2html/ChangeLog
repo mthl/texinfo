@@ -1,3 +1,9 @@
+2009-01-04  Derek Price  <derek@ximbiot.com>
+
+	* test/run_test.sh, test/many_input_files/tex_l2h.sh,
+	test/many_input_files/tex_t4ht.sh: Pass a default temporary directory
+	to `mktemp'.
+
 2009-01-01  Derek Price  <derek@ximbiot.com>
 
 	* configure.ac: Update version # for post 1.80 development.

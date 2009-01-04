@@ -18,7 +18,7 @@ fi
 echo "$basename" > $logfile
 : > $stdout_file
 
-if tmp_dir=`mktemp -t -d l2h_t2h_XXXXXXXX`; then
+if tmp_dir=`mktemp -p /tmp -d l2h_t2h_XXXXXXXX`; then
   echo "\$L2H_TMP = '$tmp_dir';" > l2h_tmp_dir.init
   echo "1;" >> l2h_tmp_dir.init
 else
