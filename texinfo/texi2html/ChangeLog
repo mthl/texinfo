@@ -1,5 +1,7 @@
 2009-01-04  Derek Price  <derek@ximbiot.com>
 
+	* NEWS: Note more robust tests.
+
 	* test/run_test.sh, test/many_input_files/tex_l2h.sh,
 	test/many_input_files/tex_t4ht.sh: Pass a default temporary directory
 	to `mktemp'.

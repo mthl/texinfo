@@ -2,6 +2,12 @@ This file records noteworthy changes.
 
 1.82 ()
 
+* BUG FIXES
+  ---------
+
+* Tests are now more cross-platform and more tolerant of missing optional
+  dependencies.
+
 1.80 (2009-01-01)
 
 * NEW FEATURES
