@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.254 2009-01-05 01:00:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.255 2009-01-05 11:44:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -9462,7 +9462,6 @@ sub do_menu_link($$$)
     # normalise_node is used in fact to determine if name is empty. 
     # It is not passed down to the function reference.
     my $name = normalise_node($menu_entry->{'name'});
-    my $substitution_state = duplicate_formatting_state($state);
 
     my $node_substitution_state = duplicate_formatting_state($state);
     my $name_substitution_state = duplicate_formatting_state($state);
@@ -9538,7 +9537,7 @@ sub do_menu_link($$$)
     # save the element used for the href for the description
     $menu_entry->{'menu_reference_element'} = $element;
 
-    return &$Texi2HTML::Config::menu_link($entry, $substitution_state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name, $state->{'command_stack'}, $state->{'preformatted'});
+    return &$Texi2HTML::Config::menu_link($entry, $state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name, $state->{'command_stack'}, $state->{'preformatted'});
 }
 
 sub do_menu_description($$)
@@ -11744,6 +11743,7 @@ sub scan_line($$$$;$)
                 if ($Texi2HTML::Config::SIMPLE_MENU)
                 {
                     add_prev ($text, $stack, do_menu_link($state, $line_nr, $menu_entry));
+                    #dump_stack($text, $stack, $state);
                 }
                 else
                 {
@@ -13685,7 +13685,8 @@ sub dump_stack($$$)
             $pre_style = $preformatted_style->{'pre_style'} if (exists $preformatted_style->{'pre_style'});
             my $class = '';
             $class = $preformatted_style->{'class'} if (exists $preformatted_style->{'class'});
-            my $style = $preformatted_style->{'style'} if (exists $preformatted_style->{'style'});
+            my $style = '';
+            $style = $preformatted_style->{'style'} if (exists $preformatted_style->{'style'});
             print STDERR "($pre_style, $class,$style)";
         }
         print STDERR "\n";

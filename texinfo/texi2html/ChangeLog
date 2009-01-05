@@ -1,4 +1,9 @@
-2009-01-01  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't duplicate the state for menu entry 
+	formatting, use the main state.
+
+2009-01-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: add a hook at for the end of special regions 
 	processing.

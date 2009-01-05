@@ -468,11 +468,13 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   $indent_level--;
                   # don't do that for quotations, quotations already have
                   # end of paragraph end of lines.
+                  $text_added = $content->{'end'} if defined($content->{'end'});
                   if ($indent_level > 0 and $complex_format_map->{$content->{'command'}})
                   {
                      $text_added .= "\n";
                   }
                   #$line_beginning = 1;
+                  $info_state->{'waiting_for_line'} = 1 if ($indent_level == 0);
                   goto new_text;
               }
               if ($content->{'command'} eq 'paragraph')
@@ -500,6 +502,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length));
+                  # here spaces out of any environment are ignored.
                   if (defined($line_char_counter) or ($preformatted) or $pending !~ /^\s*$/)
                   {
                       $length += length($pending);
