@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.253 2009-01-01 22:35:11 pertusus Exp $
+# $Id: texi2html.pl,v 1.254 2009-01-05 01:00:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -489,6 +489,7 @@ $colon_command
 $simple_command
 $thing_command
 $begin_special_region
+$end_special_region
 
 $PRE_ABOUT
 $AFTER_ABOUT
@@ -8514,6 +8515,8 @@ sub do_special_region_lines($;$)
     &$Texi2HTML::Config::begin_special_region($region,$new_state,$region_lines{$region})
       if (defined($Texi2HTML::Config::begin_special_region));
     my $text = substitute_text($new_state, undef, @{$region_lines{$region}});
+    $text = &$Texi2HTML::Config::end_special_region($region,$new_state,$text)
+      if (defined($Texi2HTML::Config::end_special_region));
 
     $region_initial_state{$region}->{'region_pass'}++;
 
@@ -8527,6 +8530,8 @@ sub do_special_region_lines($;$)
       if (defined($Texi2HTML::Config::begin_special_region));
     print STDERR "# remove texi\n" if ($T2H_DEBUG);
     my $removed_texi = substitute_text($remove_texi_state, undef, @{$region_lines{$region}});
+    $removed_texi = &$Texi2HTML::Config::end_special_region($region,$remove_texi_state, $removed_texi)
+      if (defined($Texi2HTML::Config::end_special_region));
     $region_initial_state{$region}->{'region_pass'}++;
 
     my $simple_format_state = duplicate_formatting_state($state);
@@ -8539,6 +8544,8 @@ sub do_special_region_lines($;$)
       if (defined($Texi2HTML::Config::begin_special_region));
     print STDERR "# simple format\n" if ($T2H_DEBUG);
     my $simple_format = simple_format($simple_format_state, undef, @{$region_lines{$region}});
+    $simple_format = &$Texi2HTML::Config::end_special_region($region,$simple_format_state, $simple_format)
+      if (defined($Texi2HTML::Config::end_special_region));
     $region_initial_state{$region}->{'region_pass'}++;
 
     return ($text, $removed_texi, $simple_format);

@@ -1,3 +1,8 @@
+2009-01-01  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: add a hook at for the end of special regions 
+	processing.
+
 2009-01-04  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Note more robust tests.
