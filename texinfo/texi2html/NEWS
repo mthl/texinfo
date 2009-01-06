@@ -1,12 +1,24 @@
 This file records noteworthy changes.
 
-1.82 ()
+1.82 (2009-01-05)
+
+* NEW FEATURES
+  ------------
+
+* Add new hooks for user functions, for simple @-commands, and at the start and
+  end of special regions.
 
 * BUG FIXES
   ---------
 
 * Tests are now more cross-platform and more tolerant of missing optional
   dependencies.
+
+* Don't use unidecode on unicode characters that are known not to have a good
+  transliteration.  This corresponds with characters with an @-command that
+  don't have a transliteration, like @exclamdown...
+
+* Misc minor bug fixes.
 
 1.80 (2009-01-01)
 

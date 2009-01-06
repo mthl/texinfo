@@ -1,3 +1,12 @@
+2009-01-05  Derek Price  <derek@ximbiot.com>
+
+	* NEWS: Transform a few of Patrice's ChangeLog entries into what are
+	hopefully accurate NEWS entries for the 1.82 release.
+	* configure.ac: Update version # for 1.82 release.
+	* INSTALL, config.guess, config.sub, install-sh, missing,
+	mkinstalldirs, mdate-sh, doc/mdate-sh, doc/texinfo.tex: Updated from
+	versions in Automake 1.10.
+
 2009-01-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't duplicate the state for menu entry 
