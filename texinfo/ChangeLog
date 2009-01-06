@@ -1,4 +1,9 @@
-2000-01-02  Oleg Katsitadze  <olegkat@gmail.com>
+2009-01-05  Oleg Katsitadze  <olegkat@gmail.com>
+
+	* doc/texinfo.txi (\key): Removed spurious space.  Patch from
+	Werner Lemberg, 05 Jan 2009 11:20:08.
+
+2009-01-02  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.txi:  Removed documentation of @raggedleft and
 	@raggedcenter.
