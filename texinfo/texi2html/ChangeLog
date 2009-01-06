@@ -1,5 +1,8 @@
 2009-01-05  Derek Price  <derek@ximbiot.com>
 
+	* configure.ac: Update version # for post 1.82 development.
+	* NEWS: Add section for 1.84 release information.
+
 	* NEWS: Transform a few of Patrice's ChangeLog entries into what are
 	hopefully accurate NEWS entries for the 1.82 release.
 	* configure.ac: Update version # for 1.82 release.
