@@ -1,3 +1,9 @@
+2009-01-07  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: correct exclamdown/questiondown in ascii.
+	* test/run_test.sh: tests of info output ignore stderr since
+	it is full for debug output right now.
+
 2009-01-05  Derek Price  <derek@ximbiot.com>
 
 	* configure.ac: Update version # for post 1.82 development.

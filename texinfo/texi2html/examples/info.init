@@ -43,6 +43,7 @@ $SIMPLE_MENU = 1;
 $MENU_SYMBOL = '*';
 $USE_MENU_DIRECTIONS = 0;
 $USE_ISO = 0;
+@IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
 
 $no_paragraph_commands{'anchor'} = 1;
 
@@ -184,6 +185,11 @@ $menu_command          = \&info_default_menu_command;
 $complex_format        = \&info_default_complex_format;
 $quotation             = \&info_default_quotation;
 $unknown               = \&info_default_misc_commands;
+$external_ref          = \&info_default_external_ref;
+$internal_ref          = \&info_default_internal_ref;
+$image                 = \&info_default_image;
+$image_files           = \&info_default_image_files;
+
 
 sub info_default_accent($$$)
 {
@@ -223,6 +229,7 @@ sub info_default_copying_comment($$$$)
 my %info_default_state_map = ();
 my $info_default_state;
 my $info_default_offset_in_file;
+my $info_default_line_count;
 my @info_default_pending_tags;
 
 sub info_default_reset_state($)
@@ -401,13 +408,22 @@ sub info_default_output($)
    {
       print STDERR "Storing the stack\n";
       print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]);
-      my $characters_count;
+      my ($characters_count, $lines_count);
       my $in_main_document;
       $in_main_document = 1 if ($info_state->{'state'}->{'inside_document'} and !$info_state->{'state'}->{'duplicated'});
-      $info_state->{'offset_in_file'} = $info_default_offset_in_file if ($in_main_document);
-      ($characters_count, $result) = info_default_process_content($info_state->{'top'}, $info_state);
+      if ($in_main_document)
+      {
+          $info_state->{'offset_in_file'} = $info_default_offset_in_file;
+          $info_state->{'line_count'} = $info_default_line_count;
+      }
+      ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
       $info_state->{'offset_in_file'} += $characters_count;
-      $info_default_offset_in_file = $info_state->{'offset_in_file'} if ($in_main_document);
+       $info_state->{'line_count'} += $lines_count;
+      if ($in_main_document)
+      {
+          $info_default_offset_in_file = $info_state->{'offset_in_file'};
+          $info_default_line_count = $info_state->{'line_count'};
+      }
       info_default_reset_state($info_state);
    }
    return $result;
@@ -422,6 +438,8 @@ sub info_default_process_content($$)
    my $result = '';
 
    my $line_char_counter;
+   my $all_line_passed = 0;
+
    my $pending_spaces = '';
    my $pending_word;
    my $preformatted = 0;
@@ -498,16 +516,20 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       {
           if ($content->{'command'})
           { 
-              if ($content->{'command'} eq 'anchor')
+              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image')
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length));
                   # here spaces out of any environment are ignored.
                   if (defined($line_char_counter) or ($preformatted) or $pending !~ /^\s*$/)
-                  {
+                  { # this has to be done before the anchor related code
+                    # to have the right count.
                       $length += length($pending);
                       $result .= $pending;
                   }
+              }
+              if ($content->{'command'} eq 'anchor')
+              {
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'};
                   push @info_default_pending_tags, $content->{'anchor_reference'};
               }
@@ -518,18 +540,18 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                     $text_added .= $pending_spaces . $pending_word;
                     $pending_word = undef;
                  }
+                 # spaces preceding @* are skipped
                  $pending_spaces = '';
-                 $line_char_counter = 0;
                  $text_added .=  $content->{'text'};
+                 # just like following spaces
                  ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
-                 # FIXME new line
                  goto new_text;
               }
               elsif ($content->{'command'} eq 'paragraph')
               {
-                  ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
-                  $line_char_counter = 0;
-                  $content->{'begin'} = ' ' x $info_default_para_indent_length if 
+                 ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                 $line_char_counter = 0;
+                 $content->{'begin'} = ' ' x $info_default_para_indent_length if 
                     (!($content->{'top_stack'} eq 'quotation') and ($indent_para or (!$noindent_para and  $content->{'paragraph_in_element_nr'})));
               }
               elsif ($content->{'command'} eq 'preformatted')
@@ -549,6 +571,13 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               elsif ($content->{'command'} eq 'noindent')
               {
                   $noindent_para = 1;
+              }
+              elsif ($content->{'command'} eq 'image')
+              {
+                  $text_added .=  $content->{'text'};
+                  # set $line_beginning
+                  # also indent if needed (though better check with Karl
+                  goto new_text;
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
@@ -575,6 +604,11 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   }
                   $text_added .= $content->{'text'};
               } # ignore spaces outside of paragraphs and preformatted
+              elsif ($preformatted)
+              {
+                  $text_added .= $content->{'text'};
+                  $info_state->{'waiting_for_line'} = 0;
+              }
               else
               {
                   my $chomped_text = $content->{'text'};
@@ -619,16 +653,27 @@ print STDERR "                     indent_level $indent_level\n";
 print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       $result .= $text_added;
       $length += length($text_added);
-      if ($preformatted)
-      {
-          my $chomped_text = $text_added;
-          $line_beginning = 1 if (chomp($chomped_text));
-      }
 
+      my @lines = split /^/, $text_added;
+      $line_passed += scalar(@lines);
+      $line_passed-- if ($line_passed);
+      my $chomped_text = $text_added;
+      if (chomp($chomped_text))
+      {
+         $line_passed++;
+         $line_char_counter = 0 if (defined($line_char_counter));
+         $line_beginning = 1 if ($preformatted);
+      }
+      elsif (defined($line_char_counter) and $line_passed)
+      {# in that case we added more than one line, the $line_char_counter
+       # is reset to the last line length.
+         $line_char_counter = length($lines[-1]);
+      }
+      $all_line_passed += $line_passed;
     iterate:
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
    }
-   return ($length, $result);
+   return ($length, $result, $all_line_passed);
 }
 
 my $state_nr = 0;
@@ -694,45 +739,47 @@ sub info_default_close_command($$$$$$$$$;$)
    $no_open = 0 if (!defined($no_open));
    $no_close = 0 if (!defined($no_close));
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
+   my $info_state = info_default_get_state($state);
    #print STDERR "" . Data::Dumper->Dump([$current_command]);
    print STDERR "Closing $command ".
      "\n";
-   if (!defined($info_default_state->{'current'}))
+   if (!defined($info_state->{'current'}))
    {
       print STDERR "info_default_state->{'current'} not defined\n";
    }
-   elsif (!defined($info_default_state->{'current'}->{'command'}))
+   elsif (!defined($info_state->{'current'}->{'command'}))
    {
       print STDERR "info_default_state->{'current'}->{'command'} not defined\n";
    }
-   elsif ($command ne $info_default_state->{'current'}->{'command'})
+   elsif ($command ne $info_state->{'current'}->{'command'})
    {
      print STDERR "Was waiting for $info_default_state->{'current'}->{'command'}\n";
    }
 #     Data::Dumper->Dump([$info_default_state->{'top'}]);
    #return if $no_close;
-   $info_default_state->{'current'}->{'no_close'} = 1 if ($no_close);
-   $info_default_state->{'current'}->{'begin'} = $begin;
-   $info_default_state->{'current'}->{'text'} = $text;
-   $info_default_state->{'current'}->{'end'} = $end;
+   $info_state->{'current'}->{'no_close'} = 1 if ($no_close);
+   $info_state->{'current'}->{'begin'} = $begin;
+   $info_state->{'current'}->{'text'} = $text;
+   $info_state->{'current'}->{'end'} = $end;
    if (defined($additional_entries))
    {
        foreach my $key (keys(%$additional_entries))
        {
-           $info_default_state->{'current'}->{$key} = $additional_entries->{$key};
+           $info_state->{'current'}->{$key} = $additional_entries->{$key};
        }
    }
 
-   $info_default_state->{'current'} = $info_default_state->{'current'}->{'parent'};
+   $info_state->{'current'} = $info_state->{'current'}->{'parent'};
 
-   return info_default_output($info_default_state);
+   return info_default_output($info_state);
 }
 
-sub info_default_store_text($$;$)
+sub info_default_store_text($$;$$)
 {
    my $state = shift;
    my $text = shift;
    my $command = shift;
+   my $additional_entries = shift;
 #   $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
 
    my $info_state = info_default_get_state($state);
@@ -749,6 +796,13 @@ sub info_default_store_text($$;$)
    print STDERR "Storing text($len) $text\n";
    my $text_stored = {'text' => $text, 'length' => $len};
    $text_stored->{'command'} = $command if (defined($command));
+   if (defined($additional_entries))
+   {
+       foreach my $key (keys(%$additional_entries))
+       {
+           $text_stored->{$key} = $additional_entries->{$key};
+       }
+   }
    push @{$info_state->{'current'}->{'content'}}, $text_stored;
    return  info_default_output($info_state);
 #   return 1;
@@ -846,10 +900,16 @@ sub info_default_style($$$$$$$$$)
    {
       $end = $style->{'end'};
    }
-   unless($state->{'remove_texi'} or $special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command})
+   unless($special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command})
    {
       return info_default_close_command($state, $command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end);
    }
+   # this is for *ref, images and footnotes
+   if ($special_style{$command} and $command ne 'anchor')
+   {
+       return info_default_store_text ($state,  $begin.$text.$end, $command);
+   }
+   
    return $begin.$text.$end;
 }
 
@@ -869,6 +929,8 @@ sub info_default_print_page_head($)
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     $info_default_offset_in_file = length($result);
+    # FIXME
+    #$info_default_line_count = ?
     @info_default_pending_tags = ();
     print $fh $result;
 }
@@ -961,6 +1023,7 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
     {
        $before = "\n";
        $info_default_offset_in_file += length($before);
+       $info_default_line_count++;
        $info_state->{'waiting_for_line'} = 0;
     }
     $element->{'info_offset'} = $info_default_offset_in_file;
@@ -979,6 +1042,7 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
        $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $Texi2HTML::THIS_ELEMENT->{'NodeUp'}->{'text'}});
     }
     $result .= "\n\n";
+    $info_default_line_count += 2;
     $info_default_offset_in_file += length($result);
     return $before.$result;
 }
@@ -1007,9 +1071,11 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     {
        $heading = "\n" .$heading;
        $info_state->{'waiting_for_line'} = 0;
+       $info_default_line_count++;
     }
     # FIXME use state
     $info_default_offset_in_file += length($heading);
+    $info_default_line_count += 2;
     return $heading;
 }
 
@@ -1044,6 +1110,12 @@ sub info_default_normal_text($$$$$$;$)
 #           in_cmd($style_stack, 'example') or in_cmd($style_stack, 'verbatim'));
 #       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
+   }
+   # accented characters are not handled as text, but when the last 
+   # accent command on the stack is closed.
+   if ($style_stack and @$style_stack and $info_default_accent_commands{$style_stack->[-1]})
+   {
+      return $text;
    }
    return info_default_store_text($state,$text);
    # We never store in the stack text in raw text (remove_texi).
@@ -1252,5 +1324,176 @@ sub info_default_misc_commands($$$$$)
 #print STDERR "ZZZZZZZZZZZZZZz `$result_line' `$text'\n";
     return ($result_line, 1, '', undef);
 }
+
+sub info_default_external_ref($$$$$$$$)
+{
+    my $type = shift;
+    my $section = shift;
+    my $book = shift;
+    my $file_node = shift;
+    my $href = shift;
+    my $cross_ref = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
+
+    return info_default_inforef($formatted_args) if ($type eq 'inforef');
+    return info_default_normal_reference($type, $formatted_args);
+}
+
+sub info_default_internal_ref($$$$$$$)
+{
+    my $type = shift;
+    my $href = shift;
+    my $short_name = shift;
+    my $name = shift;
+    my $is_section = shift;
+    my $args_texi = shift;
+    my $formatted_args = shift;
+
+    return info_default_inforef($formatted_args) if ($type eq 'inforef');
+    return info_default_normal_reference($type, $formatted_args);
+}
+
+sub info_default_normal_reference($$)
+{
+    my $command = shift;
+    my $formatted_args = shift;
+    for (my $i = 0; $i < scalar(@$formatted_args); $i++)
+    {
+       $formatted_args->[$i] = undef if (defined($formatted_args->[$i]) and 
+          $formatted_args->[$i] =~ /^\s*$/);
+    }
+    my $node = $formatted_args->[0];
+    my $name = $formatted_args->[1];
+    $name =  $formatted_args->[2] if (!defined($name));
+    my $file = $formatted_args->[3];
+    $file = '' if (!defined($file) and defined($formatted_args->[4]));
+    $name = $node if (!defined($name) and defined($file));
+    my $result = '*note ';
+    $result = '*Note ' if ($command eq 'xref');
+    if (defined($name))
+    {
+       $result .= "${name}: ";
+       $result .= "($file)" if (defined($file));
+       $result .= "$node";
+       $result .= '.' if ($command eq 'pxref');
+    }
+    else
+    {
+       $result .= "${node}::";
+    }
+    return $result;
+}
+
+sub info_default_inforef($)
+{
+    my $formatted_args = shift;
+    return info_default_normal_reference('ref', [$formatted_args->[0], $formatted_args->[1], undef, $formatted_args->[2], 'dumb manual name']);
+}
+
+sub info_default_image_files($$$$)
+{
+    my $base = shift;
+    my $extension = shift;
+    my $texi_base = shift;
+    my $texi_extension = shift;
+    my @files = ();
+    return @files if (!defined($base) or ($base eq ''));
+
+    if (defined($extension) and ($extension ne ''))
+    {
+        push @files, ["${base}$extension", "${texi_base}$extension"];
+        push @files, ["$base.$extension", "$texi_base.$extension"];
+    }
+    foreach my $ext (@IMAGE_EXTENSIONS)
+    {
+        push @files, ["$base.$ext", "$texi_base.$ext"];
+    }
+    return @files;
+}
+
+sub info_default_image($$$$$$$$$$$$$$$$)
+{
+    my $file = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    my $file_name = shift;
+    my $alt = shift;
+    my $width = shift;
+    my $height = shift;
+    my $raw_alt = shift;
+    my $extension = shift;
+    my $working_dir = shift;
+    my $file_path = shift;
+    my $in_paragraph = shift;
+    my $file_locations = shift;
+    my $base_simple_format = shift;
+    my $extension_simple_format = shift;
+    my $file_name_simple_format = shift;
+
+    my $txt_path;
+    my $found_file;
+
+    my @extensions = @IMAGE_EXTENSIONS;
+    if (defined($extension) and ($extension ne ''))
+    {
+        unshift @extensions, ".$extension";
+        unshift @extensions, "$extension";
+    }
+    foreach my $file_location (@$file_locations)
+    {
+        my ($file_located, $path, $file_simple_format) = @$file_location;
+        my $extension = shift @extensions;
+        if (defined($path))
+        {
+           if ($extension eq 'txt' and !defined($txt_path))
+           {
+              $txt_path = $path;
+           }
+           elsif (!defined($found_file))
+           {
+              $found_file = [$file_located, $extension, $file_simple_format];
+           }
+        }
+    }
+
+    my $text;
+    if (defined($txt_path))
+    {
+       if (open(TXT, "<$txt_path"))
+       {
+          if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $USE_UNICODE)
+          {
+              binmode(TXT, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
+          }
+          $text='[';
+          while (my $img_txt = <TXT>)
+          {
+              $text .= $img_txt;
+          }
+          $text .= ']';
+          close(TXT);
+       }
+       else
+       {
+          main::echo_warn ("\@image file `$txt_path' unreadable: $!");
+       }
+    }
+    else
+    {
+        main::echo_warn ("Cannot find \@image file `$base.txt'");
+    }
+    if (defined($found_file))
+    {
+        my $result = "\x{00}\x{08}[image src=\"$found_file->[2]\"";
+        $result .= " alt=\"$alt\"" if (defined($alt));
+        $result .= " text=\"$text\"" if (defined($text));
+        $result .= "\x{00}\x{08}]";
+        return $result;
+    }
+    return $text if (defined($text));
+    return '';
+}
+
 
 1;

@@ -55,3 +55,4 @@ no_element no_element.texi
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
 semi_auto semi_auto.texi
+at_commands_in_refs_info at_commands_in_refs.texi -init info.init

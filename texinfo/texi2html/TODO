@@ -271,8 +271,6 @@ texi2html all the style commands are removed without extra formatting.
 * if a 'term' triggers no_paragraph, the ouput may be more valid. But a 
   center won't have any effect in it.
 
-* end of line after a @contents should certainly be kept in xml.init
-
 * texi2dvi doesn't accept @table in @format
 
 * warnings and errors are somewhat random at present. Also it would be nice

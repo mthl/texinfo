@@ -75,6 +75,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
 # there are better ways
     dir=`echo $line | awk '{print $1}'`
     file=`echo $line | awk '{print $2}'`
+    remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]\+ \+[a-zA-Z0-9_./-]\+ *//'`
     [ "z$dir" = 'z' -o "$zfile" = 'z' ] && continue
     basename=`basename $file .texi`
     if [ "z$dir" = 'ztexi' ]; then
@@ -83,6 +84,10 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
     if [ "z$clean" = 'zyes' ]; then
       [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     else
+      do_info=no
+      if echo "$remaining" | grep -qs -- '-init info.init'; then
+         do_info=yes
+      fi
       if [ -d "$out_dir/$dir" ]; then
         if [ -d "$res_dir/$dir" ]; then
           # ugly hack to avoid CVS
@@ -92,6 +97,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         fi
         cp -r "$out_dir/$dir/"* "$res_dir/$dir/"
         rm -f "$res_dir/$dir/"*.png "$res_dir/$dir/"*_l2h.css
+        [ z"$do_info" = z'yes' ] && rm "$res_dir/$dir/$basename.2"
       else
         echo "No dir $out_dir/$dir" 1>&2
       fi
@@ -159,6 +165,8 @@ do
         continue
       fi
       use_tex4ht=yes
+    elif echo "$remaining" | grep -qs -- '-init info.init'; then
+      do_info=yes
     fi
     one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
@@ -188,7 +196,9 @@ do
       rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"
     fi
     if [ -d "$results_dir/$dir" ]; then
-      diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
+      exclude_info=
+      [ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
+      diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' $exclude_info -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"
