@@ -180,6 +180,7 @@ $thing_command         = \&info_default_thing_command;
 $begin_special_region  = \&info_default_begin_special_region;
 $end_special_region    = \&info_default_end_special_region;
 $anchor_label          = \&info_default_anchor_label;
+$element_label         = \&info_default_noop;
 $menu_link             = \&info_default_menu_link;
 $menu_command          = \&info_default_menu_command;
 $complex_format        = \&info_default_complex_format;
@@ -189,6 +190,13 @@ $external_ref          = \&info_default_external_ref;
 $internal_ref          = \&info_default_internal_ref;
 $image                 = \&info_default_image;
 $image_files           = \&info_default_image_files;
+$index_summary      = \&info_default_index_summary;
+$summary_letter     = \&info_default_summary_letter;
+$index_entry        = \&info_default_index_entry;
+$index_letter       = \&info_default_index_letter;
+$print_index        = \&info_default_print_index;
+$index_entry_label  = \&info_default_index_entry_label;
+
 
 
 sub info_default_accent($$$)
@@ -418,7 +426,7 @@ sub info_default_output($)
       }
       ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
       $info_state->{'offset_in_file'} += $characters_count;
-       $info_state->{'line_count'} += $lines_count;
+      $info_state->{'line_count'} += $lines_count;
       if ($in_main_document)
       {
           $info_default_offset_in_file = $info_state->{'offset_in_file'};
@@ -428,6 +436,9 @@ sub info_default_output($)
    }
    return $result;
 }
+
+my %info_default_index_line_string_length;
+my %info_default_index_entries;
 
 sub info_default_process_content($$)
 {
@@ -516,7 +527,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       {
           if ($content->{'command'})
           { 
-              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image')
+              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command')
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length));
@@ -532,6 +543,15 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               {
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'};
                   push @info_default_pending_tags, $content->{'anchor_reference'};
+              }
+              elsif ($content->{'command'} eq 'index_label')
+              {
+                  my $index_line_nr = $all_line_passed +$line_passed + $info_state->{'line_count'};
+                  my $index_name = $content->{'index_name'};
+                  $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
+                      if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < length($index_line_nr));
+#print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}    $index_name $index_line_nr $info_default_index_line_string_length{$index_name}\n";
+                  $info_default_index_entries{$content->{'index_entry_reference'}} = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr, 'index_name' => $index_name };
               }
               elsif ($content->{'command'} eq '*' and !$preformatted)
               {
@@ -1042,8 +1062,9 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
        $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $Texi2HTML::THIS_ELEMENT->{'NodeUp'}->{'text'}});
     }
     $result .= "\n\n";
-    $info_default_line_count += 2;
+    $info_default_line_count = 2;
     $info_default_offset_in_file += length($result);
+    
     return $before.$result;
 }
 
@@ -1065,6 +1086,7 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
     $text =~ s/^(\w+)\. /$1 /;
+    $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $heading = $text . "\n" . 
        ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n\n";
     if ($info_state->{'waiting_for_line'})
@@ -1492,6 +1514,107 @@ sub info_default_image($$$$$$$$$$$$$$$$)
         return $result;
     }
     return $text if (defined($text));
+    return '';
+}
+
+sub info_default_print_index($$)
+{
+    my $text = shift;
+    my $name = shift;
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state ($state);
+    my $before = '';
+    if ($info_state->{'waiting_for_line'})
+    {
+       $before = "\n";
+       $info_default_offset_in_file += length($before);
+       $info_default_line_count++;
+       $info_state->{'waiting_for_line'} = 0;
+    }
+    return $before if (!defined($text));
+    my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n" .$text."\n";
+    $info_default_offset_in_file += length($result);
+    # FIXME count lines
+    return $before.$result;
+}
+
+sub info_default_index_letter($$$)
+{
+     my $letter = shift;
+     my $id = shift;
+     my $text = shift;
+     return $text;
+}
+
+sub info_default_index_entry_label($$$$$$$$)
+{
+    my $identifier = shift;
+    my $preformatted = shift;
+    my $entry = shift;
+    my $index_name = shift;
+    my $index_command = shift;
+    my $texi_entry = shift;
+    my $formatted_entry = shift;
+    my $index_entry_ref = shift;
+
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state($state);
+    #return if (!$state->{'inside_document'} and !$state->{'outside_document'});
+    print STDERR "Storing index entry $formatted_entry\n";
+    my $index_entry_stored = {'command' => 'index_label', 'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'index_name' => $index_name};
+    push @{$info_state->{'current'}->{'content'}}, $index_entry_stored;
+    return info_default_output($info_state);
+}
+
+my $info_default_index_length_to_node = 36;
+sub info_default_index_entry($$$$$$$$)
+{
+    my $text_href = shift;
+    my $entry = shift;
+    my $element_href = shift;
+    my $element_text = shift;
+    my $entry_file = shift;
+    my $current_element_file = shift;
+    my $entry_target = shift;
+    my $entry_element_target = shift;
+    my $index_entry_ref = shift;
+
+    $entry = main::substitute_line($index_entry_ref->{'texi'});
+
+    my $result = "* $entry: ";
+    if (length($result) < $info_default_index_length_to_node)
+    {
+       $result .= ' ' x($info_default_index_length_to_node - length($result));
+    }
+    $result .= $element_text;
+    my $info_index_entry_ref = $info_default_index_entries{$index_entry_ref};
+    my $line_nr = $info_index_entry_ref->{'line_nr'};
+    my $max_len = $info_default_index_line_string_length{$info_index_entry_ref->{'index_name'}};
+    my $line_nr_spaces = sprintf("% ${max_len}d", $line_nr);
+    my $line_part = "(line ${line_nr_spaces})";
+    if (length($result)+length($line_part) >  $info_default_max_column)
+    {
+        $result .= "\n" . ' ' x ($info_default_max_column - length($line_part)) ;
+    }
+    else
+    {
+        $result .= ' ' x ($info_default_max_column - length($line_part) - length($result));
+    }
+    $result .= "$line_part\n";
+
+    return $result;
+}
+
+sub info_default_index_summary($$)
+{
+    my $alpha = shift;
+    my $nonalpha = shift;
+
+    return '';
+}
+
+sub info_default_summary_letter
+{
     return '';
 }
 

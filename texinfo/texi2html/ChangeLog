@@ -1,3 +1,10 @@
+2009-01-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: centerchap is unnumbered.
+	Pass the index entry reference to index entry formatting functions.
+	* examples/docbook.init: add the node as id only for the sectionning
+	element associated with that node.
+
 2009-01-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: correct exclamdown/questiondown in ascii.

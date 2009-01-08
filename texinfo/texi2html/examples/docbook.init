@@ -412,19 +412,24 @@ sub docbook_heading($$$$$)
         return docbook_add_id('bridgehead')." renderas=\"$docbook_sections{$command}\">$text</bridgehead>\n";
     }
 
-    my $node_element = $element;
-    if (defined($element->{'node_ref'}))
-    {
-        $node_element = $element->{'node_ref'};
-    }
+#    my $node_element = $element;
+#    if (defined($element->{'node_ref'}))
+#    {
+#        $node_element = $element->{'node_ref'};
+#    }
 
     my $result = '';
 
 # FIXME verify xreflabel 
     if (!$element->{'node'})
     {
-        my $id = $node_element->{'text_nonumber'};
-        $id =~ s/ /-/g;
+        my $id_text = '';
+        if ($element->{'with_node'})
+        {
+            my $id = $element->{'with_node'}->{'text_nonumber'};
+            $id =~ s/ /-/g;
+            $id_text = " id=\"$id\"";
+        }
         my $title = $element->{'text_nonumber'};
         my $label = '';
         my $xreflabel = '';
@@ -439,7 +444,7 @@ sub docbook_heading($$$$$)
             my $xreftitle = $title;
             $xreflabel = " xreflabel=\"$xreftitle\"";
         }
-        $result .= '<' . docbook_element_tag($element) . " label=\"${label}\"${xreflabel} id=\"$id\">\n<title>$title</title>\n";
+        $result .= '<' . docbook_element_tag($element) . " label=\"${label}\"${xreflabel}${id_text}>\n<title>$title</title>\n";
     }
     return $result;
 }

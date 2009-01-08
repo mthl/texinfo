@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.174 2009-01-07 00:36:41 pertusus Exp $
+# $Id: texi2html.init,v 1.175 2009-01-08 00:21:33 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5961,7 +5961,7 @@ sub t2h_default_heading($$$$$;$$)
     }
     my $text = $element->{'text'};
     my $class = $element->{'tag_level'};
-    $class = 'unnumbered' if ($class eq 'top');
+    $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
     if ($element->{'top'})
@@ -6203,7 +6203,7 @@ sub t2h_default_address($$)
 # target identifier
 # boolean true if in preformatted format
 # FIXME document the remaining 
-sub t2h_default_index_entry_label($$$$$)
+sub t2h_default_index_entry_label($$$$$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
@@ -6212,6 +6212,7 @@ sub t2h_default_index_entry_label($$$$$)
     my $index_command = shift;
     my $texi_entry = shift;
     my $formatted_entry = shift;
+    my $index_entry_ref = shift;
 
     return '' if (!defined($identifier) or ($identifier !~ /\S/));
     my $label = &$anchor($identifier);
@@ -6219,13 +6220,14 @@ sub t2h_default_index_entry_label($$$$$)
     return $label;
 }
 
-sub t2h_default_index_entry_command($$$$$)
+sub t2h_default_index_entry_command($$$$$$)
 {
    my $command = shift;
    my $index_name = shift;
    my $label = shift;
    my $entry_texi = shift;
    my $entry_formatted = shift;
+   my $index_entry_ref = shift;
 
    return $label;
 }
@@ -6474,7 +6476,7 @@ sub t2h_default_index_letter($$$)
 # href to the main text, linking to the section or node where the index 
 #      entry appears
 # section or node heading
-sub t2h_default_index_entry($$$$$$$$)
+sub t2h_default_index_entry($$$$$$$$$)
 {
     my $text_href = shift;
     my $entry = shift;
@@ -6484,6 +6486,7 @@ sub t2h_default_index_entry($$$$$$$$)
     my $current_element_file = shift;
     my $entry_target = shift;
     my $entry_element_target = shift;
+    my $index_entry_ref = shift;
     
     return '<tr><td></td><td valign="top">' . &$anchor('', $text_href, $entry)
     . '</td><td valign="top">' .  &$anchor('', $element_href, $element_text)

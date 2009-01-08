@@ -416,3 +416,5 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
      should rather produce the output file instead for compatibility.
   report from Werner LEMBERG.
 
+* @chapter following a @appendix still uses a number for numbering, and
+  is not affected by the @appendix number

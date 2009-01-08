@@ -2134,7 +2134,7 @@ docbook ''
 </sect2>
 </sect1>
 </chapter>
-<chapter label="2" id="chapter2">
+<chapter label="" xreflabel="chapter 2" id="chapter2">
 <title>chapter 2</title>
 
 <index></index>

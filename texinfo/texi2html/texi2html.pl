@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.255 2009-01-05 11:44:48 pertusus Exp $
+# $Id: texi2html.pl,v 1.256 2009-01-08 00:21:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1157,7 +1157,7 @@ sub t2h_GPL_default_printindex($)
         my ($text_href, $entry_file, $element_file, $entry_target,
           $entry_element_target, $formatted_entry, $element_href, $entry_element_text)
           =  main::get_index_entry_infos($index_entry_ref, $split_group->{'element'});
-        $entries_text .= &$index_entry ($text_href, $formatted_entry, $element_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target);
+        $entries_text .= &$index_entry ($text_href, $formatted_entry, $element_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target, $index_entry_ref);
       }
       $letters_text .= &$index_letter ($letter, $letter_id{$letter}, $entries_text)
     }
@@ -5458,7 +5458,7 @@ sub rearrange_elements()
         $section_level++ if ($section->{'tag'} eq 'top');
         for (my $level = $section_level + 1; $level < $MAX_LEVEL + 1 ; $level++)
         {
-            $previous_numbers[$level] = undef unless ($section->{'tag'} =~ /unnumbered/);
+            $previous_numbers[$level] = undef unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap');
             $previous_sections[$level] = undef;
         }
         my $number_set;
@@ -5471,7 +5471,7 @@ sub rearrange_elements()
         }
         if (!defined($previous_numbers[$section->{'level'}]) and !$number_set)
         {
-            if ($section->{'tag'} =~ /unnumbered/)
+            if ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap')
             {
                  $previous_numbers[$section->{'level'}] = undef;
             }
@@ -5480,14 +5480,14 @@ sub rearrange_elements()
                 $previous_numbers[$section->{'level'}] = 1;
             }
         }
-        elsif ($section->{'tag'} !~ /unnumbered/ and !$number_set)
+        elsif ($section->{'tag'} !~ /unnumbered/ and $section->{'tag'} ne 'centerchap' and !$number_set)
         {
             $previous_numbers[$section->{'level'}]++;
         }
         # construct the section number
         $section->{'number'} = '';
 
-        unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'top')
+        unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap' or $section->{'tag'} eq 'top')
         { 
             my $level = $section->{'level'};
             while ($level > $toplevel)
@@ -12374,7 +12374,7 @@ sub scan_line($$$$;$)
                 {
                    echo_warn ("(bug?) Index out of sync `$index_entry->{'texi'}' ne `$entry_texi'", $line_nr) if ($index_entry->{'texi'} ne $entry_texi);
                 }
-                add_prev($text, $stack, &$Texi2HTML::Config::index_entry_command($macro, $index_name, $index_label, $entry_texi, $entry_text));
+                add_prev($text, $stack, &$Texi2HTML::Config::index_entry_command($macro, $index_name, $index_label, $entry_texi, $entry_text, $index_entry));
                 # it eats the end of line and therefore don't start
                 # table entries nor close @center. These should be stopped
                 # on the next line, though.
@@ -13881,7 +13881,7 @@ sub do_index_entry_label($$$)
         if ($T2H_DEBUG & $DEBUG_INDEX);
     return ($entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}, prepare_state_multiple_pass("${command}_index", $state)), 
       $index_prefix_to_name{$entry->{'prefix'}},
-       $command, $entry->{'texi'}, substitute_line($entry->{'texi'}, prepare_state_multiple_pass("${command}_index", $state)))); 
+       $command, $entry->{'texi'}, substitute_line($entry->{'texi'}, prepare_state_multiple_pass("${command}_index", $state)), $entry)); 
 }
 
 # decompose a decimal number on a given base. The algorithm looks like
