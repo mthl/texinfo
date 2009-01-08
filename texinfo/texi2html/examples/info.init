@@ -233,6 +233,21 @@ sub info_default_copying_comment($$$$)
     return $copying_text;
 }
 
+sub info_default_count_lines($)
+{
+      my $text = shift;
+      my @lines = split /^/, $text;
+      my $line_passed = scalar(@lines);
+      $line_passed-- if ($line_passed);
+      my $end_of_line = 0;
+      if (chomp($text))
+      {
+         $line_passed++;
+         $end_of_line = 1;
+      }
+      return ($line_passed, $end_of_line,$lines[-1]);
+}
+
 # FIXME initialize
 my %info_default_state_map = ();
 my $info_default_state;
@@ -468,7 +483,6 @@ sub info_default_process_content($$)
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-      my $line_passed = 0;
 
 my $line_char_counter_text = 'undef';
 $line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
@@ -476,7 +490,9 @@ my $text_length = '';
 $text_length = $content->{'length'} if defined($content->{'length'});
 my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
-      print STDERR "($text_command|$text_length|$close) preformatted $preformatted, line_beginning $line_beginning, indent_level $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text\n";
+my $in_node_count = 0;
+$in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
+      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, line_beginning $line_beginning, indent_level $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text\n";
 my $pending_word_text = 'undef';
 $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
@@ -546,11 +562,11 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               }
               elsif ($content->{'command'} eq 'index_label')
               {
-                  my $index_line_nr = $all_line_passed +$line_passed + $info_state->{'line_count'};
+                  my $index_line_nr = $all_line_passed + $info_state->{'line_count'};
                   my $index_name = $content->{'index_name'};
                   $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
                       if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < length($index_line_nr));
-#print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}    $index_name $index_line_nr $info_default_index_line_string_length{$index_name}\n";
+print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name: $index_name line: $index_line_nr max: $info_default_index_line_string_length{$index_name}\n";
                   $info_default_index_entries{$content->{'index_entry_reference'}} = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr, 'index_name' => $index_name };
               }
               elsif ($content->{'command'} eq '*' and !$preformatted)
@@ -653,7 +669,10 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       }
       if (!$preformatted)
       {
-          ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length)) if ($text_added ne '');
+          # the line_passed returned here are not used, since they are computed
+          # below.
+          my $dummy_line_passed;
+          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, ' ' x ($indent_level * $info_default_indent_length)) if ($text_added ne '');
       }
       else
       {
@@ -673,21 +692,17 @@ print STDERR "                     indent_level $indent_level\n";
 print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       $result .= $text_added;
       $length += length($text_added);
+      my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($text_added);
 
-      my @lines = split /^/, $text_added;
-      $line_passed += scalar(@lines);
-      $line_passed-- if ($line_passed);
-      my $chomped_text = $text_added;
-      if (chomp($chomped_text))
+      if ($end_of_line)
       {
-         $line_passed++;
          $line_char_counter = 0 if (defined($line_char_counter));
          $line_beginning = 1 if ($preformatted);
       }
       elsif (defined($line_char_counter) and $line_passed)
       {# in that case we added more than one line, the $line_char_counter
        # is reset to the last line length.
-         $line_char_counter = length($lines[-1]);
+         $line_char_counter = length($last_line);
       }
       $all_line_passed += $line_passed;
     iterate:
@@ -1062,7 +1077,7 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
        $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $Texi2HTML::THIS_ELEMENT->{'NodeUp'}->{'text'}});
     }
     $result .= "\n\n";
-    $info_default_line_count = 2;
+    $info_default_line_count = 3;
     $info_default_offset_in_file += length($result);
     
     return $before.$result;
@@ -1095,9 +1110,10 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
        $info_state->{'waiting_for_line'} = 0;
        $info_default_line_count++;
     }
-    # FIXME use state
+    # FIXME use state for headings appearing somewhere strange. + maybe
+    # waiting_for_line should also be used for headings
     $info_default_offset_in_file += length($heading);
-    $info_default_line_count += 2;
+    $info_default_line_count += 3;
     return $heading;
 }
 
@@ -1534,7 +1550,9 @@ sub info_default_print_index($$)
     return $before if (!defined($text));
     my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n" .$text."\n";
     $info_default_offset_in_file += length($result);
-    # FIXME count lines
+    # FIXME set waiting_for_line?
+    my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($result);
+    $info_default_line_count += $line_passed;
     return $before.$result;
 }
 
@@ -1566,7 +1584,7 @@ sub info_default_index_entry_label($$$$$$$$)
     return info_default_output($info_state);
 }
 
-my $info_default_index_length_to_node = 36;
+my $info_default_index_length_to_node = 41;
 sub info_default_index_entry($$$$$$$$)
 {
     my $text_href = shift;
@@ -1586,12 +1604,13 @@ sub info_default_index_entry($$$$$$$$)
     {
        $result .= ' ' x($info_default_index_length_to_node - length($result));
     }
-    $result .= $element_text;
+    $result .= $element_text . '.';
     my $info_index_entry_ref = $info_default_index_entries{$index_entry_ref};
     my $line_nr = $info_index_entry_ref->{'line_nr'};
     my $max_len = $info_default_index_line_string_length{$info_index_entry_ref->{'index_name'}};
-    my $line_nr_spaces = sprintf("% ${max_len}d", $line_nr);
+    my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
+print STDERR "GGGGGGGGGG name: $info_index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
     if (length($result)+length($line_part) >  $info_default_max_column)
     {
         $result .= "\n" . ' ' x ($info_default_max_column - length($line_part)) ;

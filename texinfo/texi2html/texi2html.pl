@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.256 2009-01-08 00:21:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.257 2009-01-08 12:42:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6682,7 +6682,6 @@ sub get_node($)
     return undef if (!defined($element));
     return $element if ($element->{'node'});
     return $element->{'with_node'} if ($element->{'with_node'});
-    return $element;
 }
 
 sub do_section_names($$)

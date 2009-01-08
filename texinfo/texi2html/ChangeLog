@@ -2,6 +2,7 @@
 
 	* texi2html.pl, texi2html.init: centerchap is unnumbered.
 	Pass the index entry reference to index entry formatting functions.
+	Fix get_node to only return node elements.
 	* examples/docbook.init: add the node as id only for the sectionning
 	element associated with that node.
 
