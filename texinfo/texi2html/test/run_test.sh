@@ -198,7 +198,7 @@ do
     if [ -d "$results_dir/$dir" ]; then
       exclude_info=
       [ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
-      diff -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' $exclude_info -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
+      diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' $exclude_info -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"

@@ -263,6 +263,7 @@ A second one with accented char @anchor{@'e-o}.
 @node @,c no brace,,,cedilla accent
 @section @,c no brace
 @c
+@anchor{@,{c}}
 @node rest,,Top,Top
 @chapter rest
 @menu

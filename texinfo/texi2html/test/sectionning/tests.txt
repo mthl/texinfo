@@ -56,3 +56,6 @@ placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
 semi_auto semi_auto.texi
 at_commands_in_refs_info at_commands_in_refs.texi -init info.init
+two_footnotes_in_nodes_info two_footnotes_in_nodes.texi -init info.init
+two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi -init info.init --footnote-style=separate
+

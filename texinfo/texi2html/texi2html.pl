@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.257 2009-01-08 12:42:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.258 2009-01-09 16:55:19 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5683,7 +5683,7 @@ sub rearrange_elements()
         # or from sectionning commands if automatic sectionning
         if (!$node->{'nodeup'})
         {
-            if (defined($node_top) and ($node eq $node_top))
+            if (defined($node_top) and ($node eq $node_top) and $node->{'automatic_directions'})
             { # Top node has a special up, which is (dir) by default
                 my $top_nodeup = $Texi2HTML::Config::TOP_NODE_UP;
                 if (exists($nodes{$top_nodeup}))

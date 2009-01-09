@@ -256,7 +256,6 @@ my %info_default_state_map = ();
 my $info_default_state;
 my $info_default_offset_in_file;
 my $info_default_line_count;
-my @info_default_pending_tags;
 
 sub info_default_reset_state($)
 {
@@ -561,7 +560,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               if ($content->{'command'} eq 'anchor')
               {
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'};
-                  push @info_default_pending_tags, $content->{'anchor_reference'};
+                  push @{$info_state->{'pending_tags'}}, $content->{'anchor_reference'};
               }
               elsif ($content->{'command'} eq 'index_label')
               {
@@ -967,9 +966,6 @@ sub info_default_print_page_head($)
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     $info_default_offset_in_file = length($result);
-    # FIXME
-    #$info_default_line_count = ?
-    @info_default_pending_tags = ();
     print $fh $result;
 }
 
@@ -1092,7 +1088,7 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
 #       $info_state->{'waiting_for_line'} = 0;
 #    }
     $element->{'info_offset'} = $info_default_offset_in_file;
-    push @info_default_pending_tags, $element;
+    push @{$info_state->{'pending_tags'}}, $element;
 
     my $result = info_default_node_line($element);
 
@@ -1125,7 +1121,12 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     $text =~ s/^(\w+)\. /$1 /;
     $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $heading = $text . "\n" . 
-       ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n\n";
+       ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n";
+    if (length($text))
+    {
+       $heading .= "\n";
+       $info_default_line_count++;
+    }
     if ($info_state->{'waiting_for_line'})
     {
        $heading = "\n" .$heading;
@@ -1135,7 +1136,7 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     # FIXME use state for headings appearing somewhere strange. + maybe
     # waiting_for_line should also be used for headings
     $info_default_offset_in_file += length($heading);
-    $info_default_line_count += 3;
+    $info_default_line_count += 2;
     return $heading;
 }
 
@@ -1237,10 +1238,12 @@ sub info_default_acronym_like($$$$$$)
 sub info_default_print_page_foot($)
 {
    my $fh = shift;
+   my $state = $Texi2HTML::THISDOC{'state'};
+   my $info_state = info_default_get_state ($state);
    # makeinfo seems to add systematically an additional \n, done just below
    print $fh "\n\x{1F}\nTag Table:\n";
    # 
-   foreach my $element (@info_default_pending_tags)
+   foreach my $element (@{$info_state->{'pending_tags'}})
    {
       my $prefix;
       $prefix = 'Node' if ($element->{'node'});
@@ -1277,6 +1280,7 @@ sub info_default_print_section
        $info_default_offset_in_file += length($end);
        $info_default_line_count++;
        $info_state->{'waiting_for_line'} = 0;
+       print $fh "$end";
     }
     if (@info_default_pending_footnotes)
     {
@@ -1291,7 +1295,7 @@ sub info_default_print_section
                        'info_offset' => $info_default_offset_in_file,
                        'node' => 1
                  };
-            push @info_default_pending_tags, $footnote_element;
+            push @{$info_state->{'pending_tags'}}, $footnote_element;
             $footnote_text = info_default_node_line($footnote_element); 
             $info_default_offset_in_file += length($footnote_text);
         }
@@ -1302,19 +1306,33 @@ sub info_default_print_section
         }
         while (@info_default_pending_footnotes)
         {
-    #push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name];
+    #push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name, $footnote_info_state];
             my $footnote = shift @info_default_pending_footnotes;
             my $foot_nr = $footnote->[2];
             my $node_name = $footnote->[3];
             my $lines = $footnote->[0];
-            push @info_default_pending_tags, {'anchor' => 1, 'text' => "${node_name}-Footnote-${foot_nr}", 'info_offset' => $info_default_offset_in_file };
+            push @{$info_state->{'pending_tags'}}, {'anchor' => 1, 'text' => "${node_name}-Footnote-${foot_nr}", 'info_offset' => $info_default_offset_in_file };
+            my $footnote_info_state = $footnote->[4];
             my $footnote_result = shift @{$lines};
+            my $initial_length = length($footnote_result);
             $footnote_result =~ s/^\s*//;
             $footnote_result = "   ($foot_nr) " . $footnote_result;
+            foreach my $footnote_pending_tags(@{$footnote_info_state->{'pending_tags'}})
+            {
+               $footnote_pending_tags->{'info_offset'} += $info_default_offset_in_file + length($footnote_result) - $initial_length;
+               push @{$info_state->{'pending_tags'}}, $footnote_pending_tags;
+            }
+            my $line;
             while (@$lines)
             {
-               my $line = shift @$lines;
+               $line = shift @$lines;
                $footnote_result .= $line;
+            }
+            my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($footnote_result);
+            if ($line_passed == 0)
+            {# certainly out of paragraph commands
+               $footnote_result =~ s/\s*$//;
+               $footnote_result .= "\n";
             }
             $footnote_result .= "\n";
             $info_default_offset_in_file += length($footnote_result);
@@ -1322,7 +1340,6 @@ sub info_default_print_section
         }
         print $fh "$footnote_text";
     }
-    #print $fh "AGAGA $info_default_current_node->{'text'} $info_state->{'nr'} \n";
 }
 
 sub info_default_end_section($$$)
@@ -1725,6 +1742,9 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     my $footnote_file = shift;
     my $lines = shift;
     my $state = shift;
+ 
+    my $footnote_state = $Texi2HTML::THISDOC{'state'};
+    my $footnote_info_state = info_default_get_state ($footnote_state);
 
     $info_default_footnote_index++;
     my $footnote_text = "($info_default_footnote_index)";
@@ -1735,7 +1755,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     {
         $footnote_text .=  ' (' . info_default_normal_reference('pxref', ["${node_name}-Footnote-${info_default_footnote_index}"]) . ')';
     }
-    push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name];
+    push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name, $footnote_info_state];
     return ($lines,  $footnote_text);
 }
 
