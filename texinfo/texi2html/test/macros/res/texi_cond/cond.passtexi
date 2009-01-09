@@ -14,6 +14,9 @@ cond.texi(,20) This is ifinfo text.
 cond.texi(,22) 
 cond.texi(,26) 
 cond.texi(,27) 
+cond.texi(,28) @tex
+cond.texi(,29) This is tex text.
+cond.texi(,30) @end tex
 cond.texi(,31) 
 cond.texi(,35) 
 cond.texi(,37) This is ifnottex text.

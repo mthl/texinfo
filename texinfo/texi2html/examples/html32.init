@@ -218,19 +218,22 @@ sub t2h_html32_raw($$)
 {
     my $style = shift;
     my $text = shift;
-    if ($style eq 'verbatim' or $style eq 'tex')
+    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    if ($style eq 'verbatim' or ($style eq 'tex' and $expanded))
     {
         return "<pre>" . &$protect_text($text) . '</pre>';
     }
-    elsif ($style eq 'html')
+    elsif ($style eq 'html' and $expanded)
     {
+        chomp ($text);
         return $text;
     }
-    else
+    elsif ($expanded)
     {
         warn "$WARN (bug) unknown style $style\n";
         return &$protect_text($text);
     }
+    return '';
 }
 
 # a whole menu

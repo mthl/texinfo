@@ -179,6 +179,9 @@ mini_ker.texi(,228)
 mini_ker.texi(,229) @enumerate
 mini_ker.texi(,230) @item Cells which are elementary models and correspond to evolution equations
 mini_ker.texi(,231) such as:
+mini_ker.texi(,241) @tex
+mini_ker.texi(,242) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+mini_ker.texi(,243) @end tex
 mini_ker.texi(,245) 
 mini_ker.texi(,246) @noindent @math{d eta(t)/d t = g(eta(t),phi(t))}
 mini_ker.texi(,247) 
@@ -195,6 +198,11 @@ mini_ker.texi(,259) variables in meteorology.
 mini_ker.texi(,260) 
 mini_ker.texi(,261) 
 mini_ker.texi(,262) @item Transfers which are determined by constraint equations such as:
+mini_ker.texi(,272) @tex
+mini_ker.texi(,273) $$
+mini_ker.texi(,274) \varphi(t) = f(\eta(t),\varphi(t))
+mini_ker.texi(,275) $$
+mini_ker.texi(,276) @end tex
 mini_ker.texi(,278) 
 mini_ker.texi(,279) @noindent @math{phi(t) = f(eta(t),phi(t))}
 mini_ker.texi(,280) 
@@ -222,6 +230,12 @@ mini_ker.texi(,303) @c variations of transfers and cells variables:
 mini_ker.texi(,304) 
 mini_ker.texi(,305) 
 mini_ker.texi(,319) 
+mini_ker.texi(,321) @tex
+mini_ker.texi(,322) $$\pmatrix{A & B\cr
+mini_ker.texi(,323) -C^+ & I-D\cr} \pmatrix{\delta \eta\cr
+mini_ker.texi(,324) \delta \varphi\cr} = \pmatrix{\Gamma\cr
+mini_ker.texi(,325) \Omega\cr}$$
+mini_ker.texi(,326) @end tex
 mini_ker.texi(,328) 
 mini_ker.texi(,329) The blocks appearing in the Jacobian matrix are constructed with partial derivative
 mini_ker.texi(,330) of @math{f} and @math{g}, and with @math{\delta t}. From this system the
@@ -286,6 +300,11 @@ mini_ker.texi(,388)
 mini_ker.texi(,389) @cindex TEF
 mini_ker.texi(,390) 
 mini_ker.texi(,391) The general @acronym{TEF} system writes:
+mini_ker.texi(,402) @tex
+mini_ker.texi(,403) $$\eqalign{\partial_t \eta (t) &= g(\eta(t),\varphi(t))\cr
+mini_ker.texi(,404) \varphi(t) &= f(\eta(t),\varphi(t))\cr
+mini_ker.texi(,405) }$$
+mini_ker.texi(,406) @end tex
 mini_ker.texi(,408) 
 mini_ker.texi(,409) @noindent @math{d eta(t)/d t = g(eta(t),phi(t))@*
 mini_ker.texi(,410) phi(t) = f(eta(t),phi(t))}
@@ -295,6 +314,13 @@ mini_ker.texi(Minik,415) To illustrate the model description in Miniker a simple
 mini_ker.texi(,416) model of Lotka-Volterra is used.
 mini_ker.texi(,417) This model can be written in the following @acronym{TEF} form:
 mini_ker.texi(,418) 
+mini_ker.texi(,436) @tex
+mini_ker.texi(,437) $$\left\{\eqalign{\partial_t \eta _{prey} &=  a \eta _{prey} - a \varphi _{meet} \cr
+mini_ker.texi(,438) \partial_t \eta _{pred} &=  -c \eta _{pred} + c \varphi _{meet}\cr}\right.$$
+mini_ker.texi(,439) @end tex
+mini_ker.texi(,440) @tex
+mini_ker.texi(,441) $$\varphi _{meet} = \eta _{prey}\eta _{pred}$$
+mini_ker.texi(,442) @end tex
 mini_ker.texi(,444) @noindent @math{d eta_prey(t)/d t = a * eta_prey - a * phi_meet@*
 mini_ker.texi(,445) d eta_pred(t)/d t = -c * eta_pred +c * phi_meet}
 mini_ker.texi(,446) 
@@ -1007,15 +1033,31 @@ mini_ker.texi(,1182) @item H
 mini_ker.texi(,1183) The Jacobian matrix corresponding with:
 mini_ker.texi(,1184) @c \varphi(t) &= f(\eta(t),\varphi(t))\cr
 mini_ker.texi(,1185) @c \frac{\partial g(\eta(t),\varphi(t))}{\partial \eta(t)}
+mini_ker.texi(,1186) @tex
+mini_ker.texi(,1187) $$\partial_{\eta} g(\eta(t),\varphi(t));
+mini_ker.texi(,1188) $$
+mini_ker.texi(,1189) @end tex
 mini_ker.texi(,1191) g_1(eta,phi);
 mini_ker.texi(,1193) @item Bb
 mini_ker.texi(,1194) The Jacobian matrix corresponding with:
+mini_ker.texi(,1195) @tex
+mini_ker.texi(,1196) $$\partial_{\varphi} g(\eta(t),\varphi(t));
+mini_ker.texi(,1197) $$
+mini_ker.texi(,1198) @end tex
 mini_ker.texi(,1200) g_2(eta,phi);
 mini_ker.texi(,1202) @item Bt
 mini_ker.texi(,1203) The Jacobian matrix corresponding with:
+mini_ker.texi(,1204) @tex
+mini_ker.texi(,1205) $$\partial_{\eta} f(\eta(t),\varphi(t));
+mini_ker.texi(,1206) $$
+mini_ker.texi(,1207) @end tex
 mini_ker.texi(,1209) f_1(eta,phi);
 mini_ker.texi(,1211) @item D
 mini_ker.texi(,1212) The Jacobian matrix corresponding with:
+mini_ker.texi(,1213) @tex
+mini_ker.texi(,1214) $$\partial_{\varphi} f(\eta(t),\varphi(t));
+mini_ker.texi(,1215) $$
+mini_ker.texi(,1216) @end tex
 mini_ker.texi(,1218) f_2(eta,phi);
 mini_ker.texi(,1220) 
 mini_ker.texi(,1221) @item aspha
@@ -1222,6 +1264,18 @@ mini_ker.texi(,1421) are partitionned in three groups for cell and transfer comp
 mini_ker.texi(,1422) a chain of masselottes linked by springs and dumps is bounded to a wall on the left,
 mini_ker.texi(,1423) and open at right. The @acronym{TEF} formulation of the problem is written in the phase space (position-shift, velocity)
 mini_ker.texi(,1424) for node @math{k}, with bounding conditions:
+mini_ker.texi(,1457) @tex
+mini_ker.texi(,1458) $$\left\{\eqalign{\partial_t \eta _{k} ^{pos}  &=  \eta _{k} ^{vel} \cr
+mini_ker.texi(,1459) \partial_t \eta _{k} ^{vel}  &= ( \varphi_k ^{spr} -\varphi _{k+1} ^{spr} + \varphi _{k} ^{dmp}-\varphi _{k+1} ^{dmp})\,/m_k  \cr}\right.$$
+mini_ker.texi(,1460) $$\left\{\eqalign{
+mini_ker.texi(,1461) \varphi_k ^{spr} &= -k_k (\eta _{k} ^{pos}- \eta _{k-1} ^{pos})\cr
+mini_ker.texi(,1462) \varphi_k ^{spr} &= -d_k (\eta _{k} ^{vel}- \eta _{k-1} ^{vel})
+mini_ker.texi(,1463) \cr}\right.$$
+mini_ker.texi(,1464) $$\left\{\eqalign{\eta ^{pos}_{0} &= 0\cr
+mini_ker.texi(,1465) \eta ^{vel}_{0} &= 0\cr
+mini_ker.texi(,1466) \varphi  ^{spr}_{N+1} &= 0\cr
+mini_ker.texi(,1467) \varphi ^{dmp}_{N+1} &= 0\cr}\right.$$
+mini_ker.texi(,1468) @end tex
 mini_ker.texi(,1470) 
 mini_ker.texi(,1471) States:@*
 mini_ker.texi(,1472) @noindent @math{d position(t,k)/d t = velocity(t,k)@* 
@@ -1595,6 +1649,10 @@ mini_ker.texi(,1851)
 mini_ker.texi(,1852) Its derivative will have the following form:
 mini_ker.texi(,1853) 
 mini_ker.texi(,1854) 
+mini_ker.texi(,1863) @tex
+mini_ker.texi(,1864) $$\eqalign{\partial_x f^g &= g f^{g-1}\partial_x f +  f^g \log f\partial_x g\cr
+mini_ker.texi(,1865)  &= f^{g-1}(g\partial_x f + f\partial_x g)\cr}$$
+mini_ker.texi(,1866) @end tex
 mini_ker.texi(,1868) 
 mini_ker.texi(,1869) and is in the macros list already defined in: @file{DERIVE_MAC}.
 mini_ker.texi(,1870) 
@@ -1712,6 +1770,11 @@ mini_ker.texi(,1991) @c FIXME is seems untrue?
 mini_ker.texi(,1992) @c in this section ($\mu$ elsewhere,
 mini_ker.texi(,1993) and the observation function is noted @math{h}:
 mini_ker.texi(,1994) 
+mini_ker.texi(,1995) @tex
+mini_ker.texi(,1996) $$
+mini_ker.texi(,1997) \omega = h ( \eta , \varphi) 
+mini_ker.texi(,1998) $$
+mini_ker.texi(,1999) @end tex
 mini_ker.texi(,2001) 
 mini_ker.texi(,2002) @noindent @math{omega(t) = h(eta(t), phi(t))}
 mini_ker.texi(,2003) 
@@ -2284,6 +2347,11 @@ mini_ker.texi(,2570) @end table
 mini_ker.texi(,2571) 
 mini_ker.texi(,2572) The functionnal @math{J} to be optimised is defined as
 mini_ker.texi(,2573) 
+mini_ker.texi(,2582) @tex
+mini_ker.texi(,2583) $$
+mini_ker.texi(,2584) J = \psi[\eta(T),\varphi(T) ,h(T)] + \int_0 ^T {l[\eta(\tau),\varphi(\tau),h(\tau)]}\, d\tau
+mini_ker.texi(,2585) $$
+mini_ker.texi(,2586) @end tex
 mini_ker.texi(,2588) @noindent @math{J = psi(eta(T),phi(T),h(T)) + int_0^T l(eta(tau),phi(tau),h(tau)) d tau}
 mini_ker.texi(,2591) 
 mini_ker.texi(,2592) @cindex final cost
@@ -2465,6 +2533,13 @@ mini_ker.texi(Minik,2767) The situation implemented in Miniker corresponds to a 
 mini_ker.texi(,2768) stochastic perturbation on the state, and discrete noisy observations.
 mini_ker.texi(,2769) In the @acronym{TEF} this leads to:
 mini_ker.texi(,2770) 
+mini_ker.texi(,2781) @tex
+mini_ker.texi(,2782) $$\eqalign{
+mini_ker.texi(,2783) \partial_t \eta (t) &=  g(\eta(t),\varphi(t)) + W(t) \mu\cr
+mini_ker.texi(,2784) \varphi(t) &= f(\eta(t),\varphi(t))\cr
+mini_ker.texi(,2785) \omega(t) &= h ( \eta(t) , \varphi(t)) + \nu\cr
+mini_ker.texi(,2786) }$$
+mini_ker.texi(,2787) @end tex
 mini_ker.texi(,2789) 
 mini_ker.texi(,2790) @noindent @math{d eta(t)/d t = g(eta(t),phi(t)) + W(t) mu@*
 mini_ker.texi(,2791) phi(i) = f(eta(t),phi(t))@*
@@ -2487,6 +2562,23 @@ mini_ker.texi(,2809) on state and observation of state. The model has 3 states a
 mini_ker.texi(,2810) transfers (equal to the states), but the error on the state is of dimension 
 mini_ker.texi(,2811) 2. The 3 states are observed. The corresponding equations read:
 mini_ker.texi(,2812) 
+mini_ker.texi(,2845) @tex
+mini_ker.texi(,2846) $$\left\{\eqalign{
+mini_ker.texi(,2847) \partial_t \eta_1 &= a_{11} \eta_1 + a_{12} \varphi_2 + a_{13} \varphi_3 + W_{11} \mu_1 + W_{12} \mu_2\cr
+mini_ker.texi(,2848) \partial_t \eta_2 &= a_{21} \varphi_1 + a_{22} \eta_2 + a_{23} \varphi_3 + W_{21} \mu_1 + W_{22} \mu_2\cr
+mini_ker.texi(,2849) \partial_t \eta_3 &= a_{31} \varphi_1 + a_{32} \varphi_2 + a_{33} \eta_3 + W_{31} \mu_1 + W_{32} \mu_2
+mini_ker.texi(,2850) }\right.$$
+mini_ker.texi(,2851) $$\left\{\eqalign{
+mini_ker.texi(,2852) \varphi _1 &= \eta _1\cr
+mini_ker.texi(,2853) \varphi _2 &= \eta _2\cr
+mini_ker.texi(,2854) \varphi _3 &= \eta _3
+mini_ker.texi(,2855) }\right.$$
+mini_ker.texi(,2856) $$\left\{\eqalign{
+mini_ker.texi(,2857) \omega _1 &= \varphi _1 + \nu_1\cr
+mini_ker.texi(,2858) \omega _2 &= \eta _2 + \nu_2 \cr
+mini_ker.texi(,2859) \omega _3 &= \eta _3 + \nu_3
+mini_ker.texi(,2860) }\right.$$
+mini_ker.texi(,2861) @end tex
 mini_ker.texi(,2862) 
 mini_ker.texi(,2864) 
 mini_ker.texi(,2865) Cells:@*
@@ -2944,6 +3036,11 @@ mini_ker.texi(,3325) rapid modes of instability of the perturbed system.
 mini_ker.texi(,3326) 
 mini_ker.texi(,3327) The Singular value decomposition of a matrix is noted
 mini_ker.texi(,3328) 
+mini_ker.texi(,3329) @tex
+mini_ker.texi(,3330) $$
+mini_ker.texi(,3331)  U w V^\dagger
+mini_ker.texi(,3332) $$
+mini_ker.texi(,3333) @end tex
 mini_ker.texi(,3335) 
 mini_ker.texi(,3336) @noindent @math{U w V^t}
 mini_ker.texi(,3337) 

@@ -18,6 +18,15 @@ imbrications.texi(,18) @chapter first node chapter
 imbrications.texi(,19) 
 imbrications.texi(,20) @cindex elem
 imbrications.texi(,21) 
+imbrications.texi(,22) @tex
+imbrications.texi(,23) 
+imbrications.texi(,24) $$ 
+imbrications.texi(,25) \chi^2 = \sum_{i=1}^N
+imbrications.texi(,26) \left(y_i - (a + b x_i)
+imbrications.texi(,27) \over \sigma_i\right)^2 
+imbrications.texi(,28) $$
+imbrications.texi(,29) 
+imbrications.texi(,30) @end tex
 imbrications.texi(,31) 
 imbrications.texi(,32) @node Second node
 imbrications.texi(,33) @chapter second
@@ -113,6 +122,15 @@ imbrications.texi(,122)
 imbrications.texi(,123) 
 imbrications.texi(,124) two line breaks
 imbrications.texi(,125) Tex doesn't like math in @@example
+imbrications.texi(,127) @tex
+imbrications.texi(,128) 
+imbrications.texi(,129) $$ 
+imbrications.texi(,130) \chi^2 = \sum_{i=1}^N
+imbrications.texi(,131) \left(y_i - (a + b x_i)
+imbrications.texi(,132) \over \sigma_i\right)^2 
+imbrications.texi(,133) $$
+imbrications.texi(,134) 
+imbrications.texi(,135) @end tex
 imbrications.texi(,137) @cindex index in example
 imbrications.texi(,138) 
 imbrications.texi(,139) Now a content within example

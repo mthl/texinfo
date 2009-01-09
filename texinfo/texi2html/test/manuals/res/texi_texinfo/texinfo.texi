@@ -4106,6 +4106,9 @@ do not.@refill
 
 Here are the four groups of chapter structuring commands:
 
+@tex
+{\globaldefs = 1 \smallfonts}
+@end tex
 
 @multitable @columnfractions .19 .30 .29 .22
 @item                        @tab                              @tab                       @tab No new page
@@ -4117,6 +4120,9 @@ Here are the four groups of chapter structuring commands:
 @item @code{@@subsection}    @tab @code{@@unnumberedsubsec}    @tab @code{@@appendixsubsec} @tab @code{@@subheading}
 @item @code{@@subsubsection} @tab @code{@@unnumberedsubsubsec} @tab @code{@@appendixsubsubsec} @tab @code{@@subsubheading}
 @end multitable
+@tex
+{\globaldefs = 1 \textfonts}
+@end tex
 
 
 @node makeinfo top
@@ -7836,6 +7842,10 @@ produces
 @example
 This is an example
 @end example
+@tex
+% Remove extra vskip; this is a kludge to counter the effect of display
+\vskip-3.5\baselineskip
+@end tex
 
 @noindent
 This line is not indented.  As you can see, the
@@ -10525,6 +10535,9 @@ special form:@refill
 @quotation
 @defspec foobar (@var{var} [@var{from} @var{to} [@var{inc}]]) @var{body}@dots{}
 @end defspec
+@tex
+\vskip \parskip
+@end tex
 @end quotation
 
 @noindent
@@ -11554,6 +11567,11 @@ The output of this example will appear only in a printed manual.  If
 you are reading this in Info, you will not see the equation that appears
 in the printed manual.
 
+@tex
+$$ \chi^2 = \sum_{i=1}^N
+          \left(y_i - (a + b x_i)
+          \over \sigma_i\right)^2 $$
+@end tex
 
 @findex ifhtml
 @findex html

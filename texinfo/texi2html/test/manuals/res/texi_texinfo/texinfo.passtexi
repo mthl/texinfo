@@ -4105,6 +4105,9 @@ texinfo.texi(,4126) @end itemize
 texinfo.texi(,4127) 
 texinfo.texi(,4128) Here are the four groups of chapter structuring commands:
 texinfo.texi(,4129) 
+texinfo.texi(,4130) @tex
+texinfo.texi(,4131) {\globaldefs = 1 \smallfonts}
+texinfo.texi(,4132) @end tex
 texinfo.texi(,4133) 
 texinfo.texi(,4134) @multitable @columnfractions .19 .30 .29 .22
 texinfo.texi(,4135) @item                        @tab                              @tab                       @tab No new page
@@ -4116,6 +4119,9 @@ texinfo.texi(,4140) @item @code{@@section}       @tab @code{@@unnumberedsec}    
 texinfo.texi(,4141) @item @code{@@subsection}    @tab @code{@@unnumberedsubsec}    @tab @code{@@appendixsubsec} @tab @code{@@subheading}
 texinfo.texi(,4142) @item @code{@@subsubsection} @tab @code{@@unnumberedsubsubsec} @tab @code{@@appendixsubsubsec} @tab @code{@@subsubheading}
 texinfo.texi(,4143) @end multitable
+texinfo.texi(,4144) @tex
+texinfo.texi(,4145) {\globaldefs = 1 \textfonts}
+texinfo.texi(,4146) @end tex
 texinfo.texi(,4147) 
 texinfo.texi(,4148) 
 texinfo.texi(,4149) @node makeinfo top
@@ -7835,6 +7841,10 @@ texinfo.texi(,7976) @display
 texinfo.texi(,7977) @example
 texinfo.texi(,7978) This is an example
 texinfo.texi(,7979) @end example
+texinfo.texi(,7980) @tex
+texinfo.texi(,7981) % Remove extra vskip; this is a kludge to counter the effect of display
+texinfo.texi(,7982) \vskip-3.5\baselineskip
+texinfo.texi(,7983) @end tex
 texinfo.texi(,7984) 
 texinfo.texi(,7985) @noindent
 texinfo.texi(,7986) This line is not indented.  As you can see, the
@@ -10524,6 +10534,9 @@ texinfo.texi(,10872)
 texinfo.texi(,10873) @quotation
 texinfo.texi(,10874) @defspec foobar (@var{var} [@var{from} @var{to} [@var{inc}]]) @var{body}@dots{}
 texinfo.texi(,10875) @end defspec
+texinfo.texi(,10876) @tex
+texinfo.texi(,10877) \vskip \parskip
+texinfo.texi(,10878) @end tex
 texinfo.texi(,10879) @end quotation
 texinfo.texi(,10880) 
 texinfo.texi(,10881) @noindent
@@ -11553,6 +11566,11 @@ texinfo.texi(,11969) The output of this example will appear only in a printed ma
 texinfo.texi(,11970) you are reading this in Info, you will not see the equation that appears
 texinfo.texi(,11971) in the printed manual.
 texinfo.texi(,11976) 
+texinfo.texi(,11977) @tex
+texinfo.texi(,11978) $$ \chi^2 = \sum_{i=1}^N
+texinfo.texi(,11979)           \left(y_i - (a + b x_i)
+texinfo.texi(,11980)           \over \sigma_i\right)^2 $$
+texinfo.texi(,11981) @end tex
 texinfo.texi(,11982) 
 texinfo.texi(,11983) @findex ifhtml
 texinfo.texi(,11984) @findex html

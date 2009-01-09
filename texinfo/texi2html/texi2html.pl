@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.258 2009-01-09 16:55:19 pertusus Exp $
+# $Id: texi2html.pl,v 1.259 2009-01-09 21:20:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3120,12 +3120,27 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     }
 }
 
+# don't set set_no_line_macro for raw EXPAND formats 
 foreach my $key (keys(%Texi2HTML::Config::texi_formats_map))
 {
     unless ($Texi2HTML::Config::texi_formats_map{$key} eq 'raw')
     {
         set_no_line_macro($key, 1);
         set_no_line_macro("end $key", 1);
+    }
+}
+
+# the remaining (not EXPAND) raw formats are set as 'raw' such that 
+# they are propagated to formatting functions, but
+# they don't start paragraphs or preformatted.
+foreach my $raw (@raw_regions)
+{
+    if (!defined($Texi2HTML::Config::texi_formats_map{$raw}))
+    {
+        $Texi2HTML::Config::texi_formats_map{$raw} = 'raw'; 
+        $Texi2HTML::Config::format_in_paragraph{$raw} = 1;
+        set_no_line_macro($raw, 1);
+        set_no_line_macro("end $raw", 1);
     }
 }
 
@@ -10500,20 +10515,15 @@ sub scan_texi($$$$;$)
             if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
             {
                 $cline =~ s/^(.*?)(\@end\s$tag)//;
-            # we add it even if 'ignored', it'll be discarded when there is
-            # the @end
+            # we add it even if 'ignored', it'll be discarded just below
+            # with the @end
                 add_prev ($text, $stack, $1);
                 my $end = $2;
                 my $style = pop @$stack;
-                if ($style->{'text'} !~ /^\s*$/ or $state->{'arg_expansion'})
-                # FIXME if 'arg_expansion' and also 'ignored' is true, 
-                # theoretically we should keep
-                # what is in the raw format however
-                # it will be removed later anyway 
-                {# ARG_EXPANSION
-                    add_prev ($text, $stack, $style->{'text'} . $end) unless ($state->{'ignored'});
-                    delete $state->{'raw'};
-                }
+                # if 'arg_expansion' and 'ignored' are both true text 
+                # is ignored.
+                add_prev ($text, $stack, $style->{'text'} . $end) unless ($state->{'ignored'});
+                delete $state->{'raw'};
                 next;
             }
             else
@@ -10749,63 +10759,6 @@ sub scan_texi($$$$;$)
                 next if $macro_kept;
                 return if ($cline =~ /^\s*$/);
             }
-#            elsif ($macro eq 'definfoenclose')
-#            {
-#                die "Not here definfoenclose expansion";
-#                # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
-#                # the args anyway and don't take away the whole line?
-#
-#                # as in the makeinfo doc 'definfoenclose' may override
-#                # texinfo @-commands like @i. It is what we do here.
-#                if ($state->{'arg_expansion'})
-#                {
-#                    add_prev($text, $stack, "\@$macro" . $cline);
-#                    return;
-#                }
-#                return if ($state->{'ignored'});
-#                if ($cline =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
-#                {
-#                    $info_enclose{$1} = [ $2, $3 ];
-#                }
-#                else
-#                {
-#                    echo_error("Bad \@$macro", $line_nr);
-#                }
-#                return if ($cline =~ /^\s*$/);
-#                $cline =~ s/^\s*//;
-#            }
-#            elsif ($macro eq 'include')
-#            {
-#                die "Not here include expansion";
-#                if ($state->{'arg_expansion'})
-#                {
-#                    add_prev($text, $stack, "\@$macro" . $cline);
-#                    return;
-#                }
-#                return if ($state->{'ignored'});
-#                #if (s/^\s+([\/\w.+-]+)//o)
-#                if ($cline =~ s/^(\s+)(.*)//o)
-#                {
-#                    my $file_name = $2;
-#                    $file_name =~ s/\s*$//;
-#                    my $file = locate_include_file($file_name);
-#                    if (defined($file))
-#                    {
-#                        open_file($file, $line_nr);
-#                        print STDERR "# including $file\n" if $T2H_VERBOSE;
-#                    }
-#                    else
-#                    {
-#                        echo_error ("Can't find $file_name, skipping", $line_nr);
-#                    }
-#                }
-#                else
-#                {
-#                    echo_error ("Bad include line: $cline", $line_nr);
-#                    return;
-#                } 
-#                return;
-#            }
             elsif ($macro eq 'value')
             {
                 if ($cline =~ s/^{($VARRE)}//)
@@ -11890,6 +11843,7 @@ sub scan_line($$$$;$)
                     return if ($cline =~ /^\s*$/);
                 }
                 delete $state->{'raw'};
+                return if (($cline =~ /^\s*$/) and $state->{'remove_texi'});
                 next;
             }
             else

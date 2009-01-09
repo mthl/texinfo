@@ -19,6 +19,15 @@
 
 @cindex elem
 
+@tex
+
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+
+@end tex
 
 @node Second node
 @chapter second
@@ -114,6 +123,15 @@ after html in example
 
 two line breaks
 Tex doesn't like math in @@example
+@tex
+
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+
+@end tex
 @cindex index in example
 
 Now a content within example

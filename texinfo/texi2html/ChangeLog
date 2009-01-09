@@ -2,6 +2,8 @@
 
 	* texi2html.pl: (dir) is added as up node only if automatic
 	directions are used.
+	* texi2html.pl, texi2html.init, examples/*: Handle the raw 
+	formats during output formatting, not in the first pass.
 
 2009-01-08  Patrice Dumas  <dumas@centre-cired.fr>
 

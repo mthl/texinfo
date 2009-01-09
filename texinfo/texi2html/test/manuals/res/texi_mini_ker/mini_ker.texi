@@ -208,6 +208,9 @@ to two kinds objects:
 @enumerate
 @item Cells which are elementary models and correspond to evolution equations
 such as:
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @noindent @math{d eta(t)/d t = g(eta(t),phi(t))}
 
@@ -224,6 +227,11 @@ variables in meteorology.
 
 
 @item Transfers which are determined by constraint equations such as:
+@tex
+$$
+\varphi(t) = f(\eta(t),\varphi(t))
+$$
+@end tex
 
 @noindent @math{phi(t) = f(eta(t),phi(t))}
 
@@ -251,6 +259,12 @@ form of the algebraic system is closed to the classical Crank-Nicolson scheme:
 
 
 
+@tex
+$$\pmatrix{A & B\cr
+-C^+ & I-D\cr} \pmatrix{\delta \eta\cr
+\delta \varphi\cr} = \pmatrix{\Gamma\cr
+\Omega\cr}$$
+@end tex
 
 The blocks appearing in the Jacobian matrix are constructed with partial derivative
 of @math{f} and @math{g}, and with @math{\delta t}. From this system the
@@ -315,6 +329,11 @@ computations etc.
 @cindex TEF
 
 The general @acronym{TEF} system writes:
+@tex
+$$\eqalign{\partial_t \eta (t) &= g(\eta(t),\varphi(t))\cr
+\varphi(t) &= f(\eta(t),\varphi(t))\cr
+}$$
+@end tex
 
 @noindent @math{d eta(t)/d t = g(eta(t),phi(t))@*
 phi(t) = f(eta(t),phi(t))}
@@ -324,6 +343,13 @@ To illustrate the model description in Miniker a simple predator-prey
 model of Lotka-Volterra is used.
 This model can be written in the following @acronym{TEF} form:
 
+@tex
+$$\left\{\eqalign{\partial_t \eta _{prey} &=  a \eta _{prey} - a \varphi _{meet} \cr
+\partial_t \eta _{pred} &=  -c \eta _{pred} + c \varphi _{meet}\cr}\right.$$
+@end tex
+@tex
+$$\varphi _{meet} = \eta _{prey}\eta _{pred}$$
+@end tex
 @noindent @math{d eta_prey(t)/d t = a * eta_prey - a * phi_meet@*
 d eta_pred(t)/d t = -c * eta_pred +c * phi_meet}
 
@@ -1036,15 +1062,31 @@ The @acronym{TEF} coupling matrix between transfers;
 The Jacobian matrix corresponding with:
 @c \varphi(t) &= f(\eta(t),\varphi(t))\cr
 @c \frac{\partial g(\eta(t),\varphi(t))}{\partial \eta(t)}
+@tex
+$$\partial_{\eta} g(\eta(t),\varphi(t));
+$$
+@end tex
 g_1(eta,phi);
 @item Bb
 The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\varphi} g(\eta(t),\varphi(t));
+$$
+@end tex
 g_2(eta,phi);
 @item Bt
 The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\eta} f(\eta(t),\varphi(t));
+$$
+@end tex
 f_1(eta,phi);
 @item D
 The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\varphi} f(\eta(t),\varphi(t));
+$$
+@end tex
 f_2(eta,phi);
 
 @item aspha
@@ -1251,6 +1293,18 @@ are partitionned in three groups for cell and transfer components. In the follow
 a chain of masselottes linked by springs and dumps is bounded to a wall on the left,
 and open at right. The @acronym{TEF} formulation of the problem is written in the phase space (position-shift, velocity)
 for node @math{k}, with bounding conditions:
+@tex
+$$\left\{\eqalign{\partial_t \eta _{k} ^{pos}  &=  \eta _{k} ^{vel} \cr
+\partial_t \eta _{k} ^{vel}  &= ( \varphi_k ^{spr} -\varphi _{k+1} ^{spr} + \varphi _{k} ^{dmp}-\varphi _{k+1} ^{dmp})\,/m_k  \cr}\right.$$
+$$\left\{\eqalign{
+\varphi_k ^{spr} &= -k_k (\eta _{k} ^{pos}- \eta _{k-1} ^{pos})\cr
+\varphi_k ^{spr} &= -d_k (\eta _{k} ^{vel}- \eta _{k-1} ^{vel})
+\cr}\right.$$
+$$\left\{\eqalign{\eta ^{pos}_{0} &= 0\cr
+\eta ^{vel}_{0} &= 0\cr
+\varphi  ^{spr}_{N+1} &= 0\cr
+\varphi ^{dmp}_{N+1} &= 0\cr}\right.$$
+@end tex
 
 States:@*
 @noindent @math{d position(t,k)/d t = velocity(t,k)@* 
@@ -1624,6 +1678,10 @@ or by the explicit form @code{exp(f(y)*log(g(x,y)))}.
 Its derivative will have the following form:
 
 
+@tex
+$$\eqalign{\partial_x f^g &= g f^{g-1}\partial_x f +  f^g \log f\partial_x g\cr
+ &= f^{g-1}(g\partial_x f + f\partial_x g)\cr}$$
+@end tex
 
 and is in the macros list already defined in: @file{DERIVE_MAC}.
 
@@ -1741,6 +1799,11 @@ The (model) observation vector is noted @math{\omega}
 @c in this section ($\mu$ elsewhere,
 and the observation function is noted @math{h}:
 
+@tex
+$$
+\omega = h ( \eta , \varphi) 
+$$
+@end tex
 
 @noindent @math{omega(t) = h(eta(t), phi(t))}
 
@@ -2313,6 +2376,11 @@ compiled as a subroutine to be driven by an external program
 
 The functionnal @math{J} to be optimised is defined as
 
+@tex
+$$
+J = \psi[\eta(T),\varphi(T) ,h(T)] + \int_0 ^T {l[\eta(\tau),\varphi(\tau),h(\tau)]}\, d\tau
+$$
+@end tex
 @noindent @math{J = psi(eta(T),phi(T),h(T)) + int_0^T l(eta(tau),phi(tau),h(tau)) d tau}
 
 @cindex final cost
@@ -2494,6 +2562,13 @@ The situation implemented in Miniker corresponds to a continuous
 stochastic perturbation on the state, and discrete noisy observations.
 In the @acronym{TEF} this leads to:
 
+@tex
+$$\eqalign{
+\partial_t \eta (t) &=  g(\eta(t),\varphi(t)) + W(t) \mu\cr
+\varphi(t) &= f(\eta(t),\varphi(t))\cr
+\omega(t) &= h ( \eta(t) , \varphi(t)) + \nu\cr
+}$$
+@end tex
 
 @noindent @math{d eta(t)/d t = g(eta(t),phi(t)) + W(t) mu@*
 phi(i) = f(eta(t),phi(t))@*
@@ -2516,6 +2591,23 @@ on state and observation of state. The model has 3 states and 3 corresponding
 transfers (equal to the states), but the error on the state is of dimension 
 2. The 3 states are observed. The corresponding equations read:
 
+@tex
+$$\left\{\eqalign{
+\partial_t \eta_1 &= a_{11} \eta_1 + a_{12} \varphi_2 + a_{13} \varphi_3 + W_{11} \mu_1 + W_{12} \mu_2\cr
+\partial_t \eta_2 &= a_{21} \varphi_1 + a_{22} \eta_2 + a_{23} \varphi_3 + W_{21} \mu_1 + W_{22} \mu_2\cr
+\partial_t \eta_3 &= a_{31} \varphi_1 + a_{32} \varphi_2 + a_{33} \eta_3 + W_{31} \mu_1 + W_{32} \mu_2
+}\right.$$
+$$\left\{\eqalign{
+\varphi _1 &= \eta _1\cr
+\varphi _2 &= \eta _2\cr
+\varphi _3 &= \eta _3
+}\right.$$
+$$\left\{\eqalign{
+\omega _1 &= \varphi _1 + \nu_1\cr
+\omega _2 &= \eta _2 + \nu_2 \cr
+\omega _3 &= \eta _3 + \nu_3
+}\right.$$
+@end tex
 
 
 Cells:@*
@@ -2973,6 +3065,11 @@ rapid modes of instability of the perturbed system.
 
 The Singular value decomposition of a matrix is noted
 
+@tex
+$$
+ U w V^\dagger
+$$
+@end tex
 
 @noindent @math{U w V^t}
 

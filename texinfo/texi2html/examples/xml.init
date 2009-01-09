@@ -1157,7 +1157,8 @@ sub xml_raw($$)
     {
         return '<verbatim xml:space="preserve">' . &$protect_text($text) . '</verbatim>';
     }
-    elsif ($style eq 'xml')
+    return '' unless (grep {$style eq $_} @EXPAND);
+    if ($style eq 'xml')
     {
         chomp ($text);
         return $text;

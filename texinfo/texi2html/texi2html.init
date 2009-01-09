@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.175 2009-01-08 00:21:33 pertusus Exp $
+# $Id: texi2html.init,v 1.176 2009-01-09 21:20:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3975,10 +3975,10 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
      'ifxml' => 0,
      'ifhtml' => 0, 
      'ifdocbook' => 0, 
-     'html' => 0, 
-     'tex' => 0, 
-     'xml' => 0,
-     'docbook' => 0,
+#     'html' => 0, 
+#     'tex' => 0, 
+#     'xml' => 0,
+#     'docbook' => 0,
      'titlepage' => 1, 
      'documentdescription' => 1, 
      'copying' => 1, 
@@ -6015,19 +6015,24 @@ sub t2h_default_raw($$)
 {
     my $style = shift;
     my $text = shift;
-    if ($style eq 'verbatim' or $style eq 'tex')
+    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    if ($style eq 'verbatim' or ($style eq 'tex' and $expanded))
     {
         return "<pre class=\"$style\">" . &$protect_text($text) . '</pre>';
     }
-    elsif ($style eq 'html')
+    elsif ($style eq 'html' and $expanded)
     {
         chomp ($text);
         return $text;
     }
+    elsif ($expanded)
+    {
+        main::echo_warn ("Raw $style not handled especially, but expanded");
+        return &$protect_text($text);
+    }
     else
     {
-        main::echo_warn ("Raw style $style not handled");
-        return &$protect_text($text);
+        return '';
     }
 }
 
@@ -6036,7 +6041,11 @@ sub t2h_default_raw_no_texi($$)
 {
     my $style = shift;
     my $text = shift;
-    return $text;
+    if ($style eq 'verbatim' or grep {$style eq $_} @EXPAND)
+    {
+       return $text;
+    }
+    return '';
 }
 
 # This function formats a footnote reference and the footnote text associated

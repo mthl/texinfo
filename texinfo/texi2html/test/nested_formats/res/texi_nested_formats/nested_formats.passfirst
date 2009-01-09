@@ -70,11 +70,17 @@ nested_formats.texi(mymacro,233) @verbatim
 nested_formats.texi(mymacro,233) in verbatim
 nested_formats.texi(mymacro,233) @end verbatim
 nested_formats.texi(mymacro,233) 
+nested_formats.texi(mymacro,233) @xml
+nested_formats.texi(mymacro,233) <para> xml para </xml>
+nested_formats.texi(mymacro,233) @end xml
 nested_formats.texi(mymacro,233) 
 nested_formats.texi(mymacro,233) @html
 nested_formats.texi(mymacro,233) html
 nested_formats.texi(mymacro,233) @end html
 nested_formats.texi(mymacro,233) 
+nested_formats.texi(mymacro,233) @tex
+nested_formats.texi(mymacro,233) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,233) @end tex
 nested_formats.texi(mymacro,233) 
 nested_formats.texi(mymacro,233) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,233) @item i--tem 1
@@ -225,11 +231,17 @@ nested_formats.texi(mymacro,237) @verbatim
 nested_formats.texi(mymacro,237) in verbatim
 nested_formats.texi(mymacro,237) @end verbatim
 nested_formats.texi(mymacro,237) 
+nested_formats.texi(mymacro,237) @xml
+nested_formats.texi(mymacro,237) <para> xml para </xml>
+nested_formats.texi(mymacro,237) @end xml
 nested_formats.texi(mymacro,237) 
 nested_formats.texi(mymacro,237) @html
 nested_formats.texi(mymacro,237) html
 nested_formats.texi(mymacro,237) @end html
 nested_formats.texi(mymacro,237) 
+nested_formats.texi(mymacro,237) @tex
+nested_formats.texi(mymacro,237) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,237) @end tex
 nested_formats.texi(mymacro,237) 
 nested_formats.texi(mymacro,237) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,237) @item i--tem 1
@@ -381,11 +393,17 @@ nested_formats.texi(mymacro,242) @verbatim
 nested_formats.texi(mymacro,242) in verbatim
 nested_formats.texi(mymacro,242) @end verbatim
 nested_formats.texi(mymacro,242) 
+nested_formats.texi(mymacro,242) @xml
+nested_formats.texi(mymacro,242) <para> xml para </xml>
+nested_formats.texi(mymacro,242) @end xml
 nested_formats.texi(mymacro,242) 
 nested_formats.texi(mymacro,242) @html
 nested_formats.texi(mymacro,242) html
 nested_formats.texi(mymacro,242) @end html
 nested_formats.texi(mymacro,242) 
+nested_formats.texi(mymacro,242) @tex
+nested_formats.texi(mymacro,242) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,242) @end tex
 nested_formats.texi(mymacro,242) 
 nested_formats.texi(mymacro,242) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,242) @item i--tem 1
@@ -535,11 +553,17 @@ nested_formats.texi(mymacro,245) @verbatim
 nested_formats.texi(mymacro,245) in verbatim
 nested_formats.texi(mymacro,245) @end verbatim
 nested_formats.texi(mymacro,245) 
+nested_formats.texi(mymacro,245) @xml
+nested_formats.texi(mymacro,245) <para> xml para </xml>
+nested_formats.texi(mymacro,245) @end xml
 nested_formats.texi(mymacro,245) 
 nested_formats.texi(mymacro,245) @html
 nested_formats.texi(mymacro,245) html
 nested_formats.texi(mymacro,245) @end html
 nested_formats.texi(mymacro,245) 
+nested_formats.texi(mymacro,245) @tex
+nested_formats.texi(mymacro,245) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,245) @end tex
 nested_formats.texi(mymacro,245) 
 nested_formats.texi(mymacro,245) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,245) @item i--tem 1
@@ -690,11 +714,17 @@ nested_formats.texi(mymacro,249) @verbatim
 nested_formats.texi(mymacro,249) in verbatim
 nested_formats.texi(mymacro,249) @end verbatim
 nested_formats.texi(mymacro,249) 
+nested_formats.texi(mymacro,249) @xml
+nested_formats.texi(mymacro,249) <para> xml para </xml>
+nested_formats.texi(mymacro,249) @end xml
 nested_formats.texi(mymacro,249) 
 nested_formats.texi(mymacro,249) @html
 nested_formats.texi(mymacro,249) html
 nested_formats.texi(mymacro,249) @end html
 nested_formats.texi(mymacro,249) 
+nested_formats.texi(mymacro,249) @tex
+nested_formats.texi(mymacro,249) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,249) @end tex
 nested_formats.texi(mymacro,249) 
 nested_formats.texi(mymacro,249) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,249) @item i--tem 1
@@ -847,11 +877,17 @@ nested_formats.texi(mymacro,255) @verbatim
 nested_formats.texi(mymacro,255) in verbatim
 nested_formats.texi(mymacro,255) @end verbatim
 nested_formats.texi(mymacro,255) 
+nested_formats.texi(mymacro,255) @xml
+nested_formats.texi(mymacro,255) <para> xml para </xml>
+nested_formats.texi(mymacro,255) @end xml
 nested_formats.texi(mymacro,255) 
 nested_formats.texi(mymacro,255) @html
 nested_formats.texi(mymacro,255) html
 nested_formats.texi(mymacro,255) @end html
 nested_formats.texi(mymacro,255) 
+nested_formats.texi(mymacro,255) @tex
+nested_formats.texi(mymacro,255) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,255) @end tex
 nested_formats.texi(mymacro,255) 
 nested_formats.texi(mymacro,255) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,255) @item i--tem 1
@@ -1001,11 +1037,17 @@ nested_formats.texi(mymacro,258) @verbatim
 nested_formats.texi(mymacro,258) in verbatim
 nested_formats.texi(mymacro,258) @end verbatim
 nested_formats.texi(mymacro,258) 
+nested_formats.texi(mymacro,258) @xml
+nested_formats.texi(mymacro,258) <para> xml para </xml>
+nested_formats.texi(mymacro,258) @end xml
 nested_formats.texi(mymacro,258) 
 nested_formats.texi(mymacro,258) @html
 nested_formats.texi(mymacro,258) html
 nested_formats.texi(mymacro,258) @end html
 nested_formats.texi(mymacro,258) 
+nested_formats.texi(mymacro,258) @tex
+nested_formats.texi(mymacro,258) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,258) @end tex
 nested_formats.texi(mymacro,258) 
 nested_formats.texi(mymacro,258) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,258) @item i--tem 1
@@ -1156,11 +1198,17 @@ nested_formats.texi(mymacro,262) @verbatim
 nested_formats.texi(mymacro,262) in verbatim
 nested_formats.texi(mymacro,262) @end verbatim
 nested_formats.texi(mymacro,262) 
+nested_formats.texi(mymacro,262) @xml
+nested_formats.texi(mymacro,262) <para> xml para </xml>
+nested_formats.texi(mymacro,262) @end xml
 nested_formats.texi(mymacro,262) 
 nested_formats.texi(mymacro,262) @html
 nested_formats.texi(mymacro,262) html
 nested_formats.texi(mymacro,262) @end html
 nested_formats.texi(mymacro,262) 
+nested_formats.texi(mymacro,262) @tex
+nested_formats.texi(mymacro,262) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,262) @end tex
 nested_formats.texi(mymacro,262) 
 nested_formats.texi(mymacro,262) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,262) @item i--tem 1
@@ -1315,11 +1363,17 @@ nested_formats.texi(mymacro,270) @verbatim
 nested_formats.texi(mymacro,270) in verbatim
 nested_formats.texi(mymacro,270) @end verbatim
 nested_formats.texi(mymacro,270) 
+nested_formats.texi(mymacro,270) @xml
+nested_formats.texi(mymacro,270) <para> xml para </xml>
+nested_formats.texi(mymacro,270) @end xml
 nested_formats.texi(mymacro,270) 
 nested_formats.texi(mymacro,270) @html
 nested_formats.texi(mymacro,270) html
 nested_formats.texi(mymacro,270) @end html
 nested_formats.texi(mymacro,270) 
+nested_formats.texi(mymacro,270) @tex
+nested_formats.texi(mymacro,270) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,270) @end tex
 nested_formats.texi(mymacro,270) 
 nested_formats.texi(mymacro,270) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,270) @item i--tem 1
@@ -1469,11 +1523,17 @@ nested_formats.texi(mymacro,273) @verbatim
 nested_formats.texi(mymacro,273) in verbatim
 nested_formats.texi(mymacro,273) @end verbatim
 nested_formats.texi(mymacro,273) 
+nested_formats.texi(mymacro,273) @xml
+nested_formats.texi(mymacro,273) <para> xml para </xml>
+nested_formats.texi(mymacro,273) @end xml
 nested_formats.texi(mymacro,273) 
 nested_formats.texi(mymacro,273) @html
 nested_formats.texi(mymacro,273) html
 nested_formats.texi(mymacro,273) @end html
 nested_formats.texi(mymacro,273) 
+nested_formats.texi(mymacro,273) @tex
+nested_formats.texi(mymacro,273) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,273) @end tex
 nested_formats.texi(mymacro,273) 
 nested_formats.texi(mymacro,273) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,273) @item i--tem 1
@@ -1624,11 +1684,17 @@ nested_formats.texi(mymacro,277) @verbatim
 nested_formats.texi(mymacro,277) in verbatim
 nested_formats.texi(mymacro,277) @end verbatim
 nested_formats.texi(mymacro,277) 
+nested_formats.texi(mymacro,277) @xml
+nested_formats.texi(mymacro,277) <para> xml para </xml>
+nested_formats.texi(mymacro,277) @end xml
 nested_formats.texi(mymacro,277) 
 nested_formats.texi(mymacro,277) @html
 nested_formats.texi(mymacro,277) html
 nested_formats.texi(mymacro,277) @end html
 nested_formats.texi(mymacro,277) 
+nested_formats.texi(mymacro,277) @tex
+nested_formats.texi(mymacro,277) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,277) @end tex
 nested_formats.texi(mymacro,277) 
 nested_formats.texi(mymacro,277) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,277) @item i--tem 1
@@ -1781,11 +1847,17 @@ nested_formats.texi(mymacro,283) @verbatim
 nested_formats.texi(mymacro,283) in verbatim
 nested_formats.texi(mymacro,283) @end verbatim
 nested_formats.texi(mymacro,283) 
+nested_formats.texi(mymacro,283) @xml
+nested_formats.texi(mymacro,283) <para> xml para </xml>
+nested_formats.texi(mymacro,283) @end xml
 nested_formats.texi(mymacro,283) 
 nested_formats.texi(mymacro,283) @html
 nested_formats.texi(mymacro,283) html
 nested_formats.texi(mymacro,283) @end html
 nested_formats.texi(mymacro,283) 
+nested_formats.texi(mymacro,283) @tex
+nested_formats.texi(mymacro,283) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,283) @end tex
 nested_formats.texi(mymacro,283) 
 nested_formats.texi(mymacro,283) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,283) @item i--tem 1
@@ -1936,11 +2008,17 @@ nested_formats.texi(mymacro,287) @verbatim
 nested_formats.texi(mymacro,287) in verbatim
 nested_formats.texi(mymacro,287) @end verbatim
 nested_formats.texi(mymacro,287) 
+nested_formats.texi(mymacro,287) @xml
+nested_formats.texi(mymacro,287) <para> xml para </xml>
+nested_formats.texi(mymacro,287) @end xml
 nested_formats.texi(mymacro,287) 
 nested_formats.texi(mymacro,287) @html
 nested_formats.texi(mymacro,287) html
 nested_formats.texi(mymacro,287) @end html
 nested_formats.texi(mymacro,287) 
+nested_formats.texi(mymacro,287) @tex
+nested_formats.texi(mymacro,287) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,287) @end tex
 nested_formats.texi(mymacro,287) 
 nested_formats.texi(mymacro,287) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,287) @item i--tem 1
@@ -2092,11 +2170,17 @@ nested_formats.texi(mymacro,292) @verbatim
 nested_formats.texi(mymacro,292) in verbatim
 nested_formats.texi(mymacro,292) @end verbatim
 nested_formats.texi(mymacro,292) 
+nested_formats.texi(mymacro,292) @xml
+nested_formats.texi(mymacro,292) <para> xml para </xml>
+nested_formats.texi(mymacro,292) @end xml
 nested_formats.texi(mymacro,292) 
 nested_formats.texi(mymacro,292) @html
 nested_formats.texi(mymacro,292) html
 nested_formats.texi(mymacro,292) @end html
 nested_formats.texi(mymacro,292) 
+nested_formats.texi(mymacro,292) @tex
+nested_formats.texi(mymacro,292) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,292) @end tex
 nested_formats.texi(mymacro,292) 
 nested_formats.texi(mymacro,292) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,292) @item i--tem 1
@@ -2254,11 +2338,17 @@ nested_formats.texi(mymacro,303) @verbatim
 nested_formats.texi(mymacro,303) in verbatim
 nested_formats.texi(mymacro,303) @end verbatim
 nested_formats.texi(mymacro,303) 
+nested_formats.texi(mymacro,303) @xml
+nested_formats.texi(mymacro,303) <para> xml para </xml>
+nested_formats.texi(mymacro,303) @end xml
 nested_formats.texi(mymacro,303) 
 nested_formats.texi(mymacro,303) @html
 nested_formats.texi(mymacro,303) html
 nested_formats.texi(mymacro,303) @end html
 nested_formats.texi(mymacro,303) 
+nested_formats.texi(mymacro,303) @tex
+nested_formats.texi(mymacro,303) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,303) @end tex
 nested_formats.texi(mymacro,303) 
 nested_formats.texi(mymacro,303) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,303) @item i--tem 1
@@ -2409,11 +2499,17 @@ nested_formats.texi(mymacro,307) @verbatim
 nested_formats.texi(mymacro,307) in verbatim
 nested_formats.texi(mymacro,307) @end verbatim
 nested_formats.texi(mymacro,307) 
+nested_formats.texi(mymacro,307) @xml
+nested_formats.texi(mymacro,307) <para> xml para </xml>
+nested_formats.texi(mymacro,307) @end xml
 nested_formats.texi(mymacro,307) 
 nested_formats.texi(mymacro,307) @html
 nested_formats.texi(mymacro,307) html
 nested_formats.texi(mymacro,307) @end html
 nested_formats.texi(mymacro,307) 
+nested_formats.texi(mymacro,307) @tex
+nested_formats.texi(mymacro,307) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,307) @end tex
 nested_formats.texi(mymacro,307) 
 nested_formats.texi(mymacro,307) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,307) @item i--tem 1
@@ -2566,11 +2662,17 @@ nested_formats.texi(mymacro,313) @verbatim
 nested_formats.texi(mymacro,313) in verbatim
 nested_formats.texi(mymacro,313) @end verbatim
 nested_formats.texi(mymacro,313) 
+nested_formats.texi(mymacro,313) @xml
+nested_formats.texi(mymacro,313) <para> xml para </xml>
+nested_formats.texi(mymacro,313) @end xml
 nested_formats.texi(mymacro,313) 
 nested_formats.texi(mymacro,313) @html
 nested_formats.texi(mymacro,313) html
 nested_formats.texi(mymacro,313) @end html
 nested_formats.texi(mymacro,313) 
+nested_formats.texi(mymacro,313) @tex
+nested_formats.texi(mymacro,313) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,313) @end tex
 nested_formats.texi(mymacro,313) 
 nested_formats.texi(mymacro,313) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,313) @item i--tem 1
@@ -2723,11 +2825,17 @@ nested_formats.texi(mymacro,319) @verbatim
 nested_formats.texi(mymacro,319) in verbatim
 nested_formats.texi(mymacro,319) @end verbatim
 nested_formats.texi(mymacro,319) 
+nested_formats.texi(mymacro,319) @xml
+nested_formats.texi(mymacro,319) <para> xml para </xml>
+nested_formats.texi(mymacro,319) @end xml
 nested_formats.texi(mymacro,319) 
 nested_formats.texi(mymacro,319) @html
 nested_formats.texi(mymacro,319) html
 nested_formats.texi(mymacro,319) @end html
 nested_formats.texi(mymacro,319) 
+nested_formats.texi(mymacro,319) @tex
+nested_formats.texi(mymacro,319) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,319) @end tex
 nested_formats.texi(mymacro,319) 
 nested_formats.texi(mymacro,319) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,319) @item i--tem 1
@@ -2877,11 +2985,17 @@ nested_formats.texi(mymacro,322) @verbatim
 nested_formats.texi(mymacro,322) in verbatim
 nested_formats.texi(mymacro,322) @end verbatim
 nested_formats.texi(mymacro,322) 
+nested_formats.texi(mymacro,322) @xml
+nested_formats.texi(mymacro,322) <para> xml para </xml>
+nested_formats.texi(mymacro,322) @end xml
 nested_formats.texi(mymacro,322) 
 nested_formats.texi(mymacro,322) @html
 nested_formats.texi(mymacro,322) html
 nested_formats.texi(mymacro,322) @end html
 nested_formats.texi(mymacro,322) 
+nested_formats.texi(mymacro,322) @tex
+nested_formats.texi(mymacro,322) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,322) @end tex
 nested_formats.texi(mymacro,322) 
 nested_formats.texi(mymacro,322) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,322) @item i--tem 1
@@ -3032,11 +3146,17 @@ nested_formats.texi(mymacro,326) @verbatim
 nested_formats.texi(mymacro,326) in verbatim
 nested_formats.texi(mymacro,326) @end verbatim
 nested_formats.texi(mymacro,326) 
+nested_formats.texi(mymacro,326) @xml
+nested_formats.texi(mymacro,326) <para> xml para </xml>
+nested_formats.texi(mymacro,326) @end xml
 nested_formats.texi(mymacro,326) 
 nested_formats.texi(mymacro,326) @html
 nested_formats.texi(mymacro,326) html
 nested_formats.texi(mymacro,326) @end html
 nested_formats.texi(mymacro,326) 
+nested_formats.texi(mymacro,326) @tex
+nested_formats.texi(mymacro,326) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,326) @end tex
 nested_formats.texi(mymacro,326) 
 nested_formats.texi(mymacro,326) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,326) @item i--tem 1
@@ -3189,11 +3309,17 @@ nested_formats.texi(mymacro,332) @verbatim
 nested_formats.texi(mymacro,332) in verbatim
 nested_formats.texi(mymacro,332) @end verbatim
 nested_formats.texi(mymacro,332) 
+nested_formats.texi(mymacro,332) @xml
+nested_formats.texi(mymacro,332) <para> xml para </xml>
+nested_formats.texi(mymacro,332) @end xml
 nested_formats.texi(mymacro,332) 
 nested_formats.texi(mymacro,332) @html
 nested_formats.texi(mymacro,332) html
 nested_formats.texi(mymacro,332) @end html
 nested_formats.texi(mymacro,332) 
+nested_formats.texi(mymacro,332) @tex
+nested_formats.texi(mymacro,332) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,332) @end tex
 nested_formats.texi(mymacro,332) 
 nested_formats.texi(mymacro,332) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,332) @item i--tem 1
@@ -3343,11 +3469,17 @@ nested_formats.texi(mymacro,335) @verbatim
 nested_formats.texi(mymacro,335) in verbatim
 nested_formats.texi(mymacro,335) @end verbatim
 nested_formats.texi(mymacro,335) 
+nested_formats.texi(mymacro,335) @xml
+nested_formats.texi(mymacro,335) <para> xml para </xml>
+nested_formats.texi(mymacro,335) @end xml
 nested_formats.texi(mymacro,335) 
 nested_formats.texi(mymacro,335) @html
 nested_formats.texi(mymacro,335) html
 nested_formats.texi(mymacro,335) @end html
 nested_formats.texi(mymacro,335) 
+nested_formats.texi(mymacro,335) @tex
+nested_formats.texi(mymacro,335) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,335) @end tex
 nested_formats.texi(mymacro,335) 
 nested_formats.texi(mymacro,335) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,335) @item i--tem 1
@@ -3497,11 +3629,17 @@ nested_formats.texi(mymacro,338) @verbatim
 nested_formats.texi(mymacro,338) in verbatim
 nested_formats.texi(mymacro,338) @end verbatim
 nested_formats.texi(mymacro,338) 
+nested_formats.texi(mymacro,338) @xml
+nested_formats.texi(mymacro,338) <para> xml para </xml>
+nested_formats.texi(mymacro,338) @end xml
 nested_formats.texi(mymacro,338) 
 nested_formats.texi(mymacro,338) @html
 nested_formats.texi(mymacro,338) html
 nested_formats.texi(mymacro,338) @end html
 nested_formats.texi(mymacro,338) 
+nested_formats.texi(mymacro,338) @tex
+nested_formats.texi(mymacro,338) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,338) @end tex
 nested_formats.texi(mymacro,338) 
 nested_formats.texi(mymacro,338) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,338) @item i--tem 1
@@ -3654,11 +3792,17 @@ nested_formats.texi(mymacro,344) @verbatim
 nested_formats.texi(mymacro,344) in verbatim
 nested_formats.texi(mymacro,344) @end verbatim
 nested_formats.texi(mymacro,344) 
+nested_formats.texi(mymacro,344) @xml
+nested_formats.texi(mymacro,344) <para> xml para </xml>
+nested_formats.texi(mymacro,344) @end xml
 nested_formats.texi(mymacro,344) 
 nested_formats.texi(mymacro,344) @html
 nested_formats.texi(mymacro,344) html
 nested_formats.texi(mymacro,344) @end html
 nested_formats.texi(mymacro,344) 
+nested_formats.texi(mymacro,344) @tex
+nested_formats.texi(mymacro,344) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,344) @end tex
 nested_formats.texi(mymacro,344) 
 nested_formats.texi(mymacro,344) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,344) @item i--tem 1
@@ -3809,11 +3953,17 @@ nested_formats.texi(mymacro,348) @verbatim
 nested_formats.texi(mymacro,348) in verbatim
 nested_formats.texi(mymacro,348) @end verbatim
 nested_formats.texi(mymacro,348) 
+nested_formats.texi(mymacro,348) @xml
+nested_formats.texi(mymacro,348) <para> xml para </xml>
+nested_formats.texi(mymacro,348) @end xml
 nested_formats.texi(mymacro,348) 
 nested_formats.texi(mymacro,348) @html
 nested_formats.texi(mymacro,348) html
 nested_formats.texi(mymacro,348) @end html
 nested_formats.texi(mymacro,348) 
+nested_formats.texi(mymacro,348) @tex
+nested_formats.texi(mymacro,348) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,348) @end tex
 nested_formats.texi(mymacro,348) 
 nested_formats.texi(mymacro,348) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,348) @item i--tem 1
@@ -3965,11 +4115,17 @@ nested_formats.texi(mymacro,353) @verbatim
 nested_formats.texi(mymacro,353) in verbatim
 nested_formats.texi(mymacro,353) @end verbatim
 nested_formats.texi(mymacro,353) 
+nested_formats.texi(mymacro,353) @xml
+nested_formats.texi(mymacro,353) <para> xml para </xml>
+nested_formats.texi(mymacro,353) @end xml
 nested_formats.texi(mymacro,353) 
 nested_formats.texi(mymacro,353) @html
 nested_formats.texi(mymacro,353) html
 nested_formats.texi(mymacro,353) @end html
 nested_formats.texi(mymacro,353) 
+nested_formats.texi(mymacro,353) @tex
+nested_formats.texi(mymacro,353) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,353) @end tex
 nested_formats.texi(mymacro,353) 
 nested_formats.texi(mymacro,353) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,353) @item i--tem 1
@@ -4119,11 +4275,17 @@ nested_formats.texi(mymacro,356) @verbatim
 nested_formats.texi(mymacro,356) in verbatim
 nested_formats.texi(mymacro,356) @end verbatim
 nested_formats.texi(mymacro,356) 
+nested_formats.texi(mymacro,356) @xml
+nested_formats.texi(mymacro,356) <para> xml para </xml>
+nested_formats.texi(mymacro,356) @end xml
 nested_formats.texi(mymacro,356) 
 nested_formats.texi(mymacro,356) @html
 nested_formats.texi(mymacro,356) html
 nested_formats.texi(mymacro,356) @end html
 nested_formats.texi(mymacro,356) 
+nested_formats.texi(mymacro,356) @tex
+nested_formats.texi(mymacro,356) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+nested_formats.texi(mymacro,356) @end tex
 nested_formats.texi(mymacro,356) 
 nested_formats.texi(mymacro,356) @itemize @bullet{} a--n itemize line
 nested_formats.texi(mymacro,356) @item i--tem 1

@@ -570,12 +570,21 @@ formatting.texi(mymacro,18) @verbatim
 formatting.texi(mymacro,18) in verbatim ''
 formatting.texi(mymacro,18) @end verbatim
 formatting.texi(mymacro,18) 
+formatting.texi(mymacro,18) @xml
+formatting.texi(mymacro,18) <para> xml para </para> ''
+formatting.texi(mymacro,18) @end xml
 formatting.texi(mymacro,18) 
 formatting.texi(mymacro,18) @html
 formatting.texi(mymacro,18) html ''
 formatting.texi(mymacro,18) @end html
 formatting.texi(mymacro,18) 
+formatting.texi(mymacro,18) @tex
+formatting.texi(mymacro,18) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
+formatting.texi(mymacro,18) @end tex
 formatting.texi(mymacro,18) 
+formatting.texi(mymacro,18) @docbook
+formatting.texi(mymacro,18) docbook ''
+formatting.texi(mymacro,18) @end docbook
 formatting.texi(mymacro,18) 
 formatting.texi(mymacro,18) @majorheading majorheading
 formatting.texi(mymacro,18) 
@@ -1158,12 +1167,21 @@ formatting.texi(mymacro,28) @verbatim
 formatting.texi(mymacro,28) in verbatim ''
 formatting.texi(mymacro,28) @end verbatim
 formatting.texi(mymacro,28) 
+formatting.texi(mymacro,28) @xml
+formatting.texi(mymacro,28) <para> xml para </para> ''
+formatting.texi(mymacro,28) @end xml
 formatting.texi(mymacro,28) 
 formatting.texi(mymacro,28) @html
 formatting.texi(mymacro,28) html ''
 formatting.texi(mymacro,28) @end html
 formatting.texi(mymacro,28) 
+formatting.texi(mymacro,28) @tex
+formatting.texi(mymacro,28) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
+formatting.texi(mymacro,28) @end tex
 formatting.texi(mymacro,28) 
+formatting.texi(mymacro,28) @docbook
+formatting.texi(mymacro,28) docbook ''
+formatting.texi(mymacro,28) @end docbook
 formatting.texi(mymacro,28) 
 formatting.texi(mymacro,28) @majorheading majorheading
 formatting.texi(mymacro,28) 
@@ -1746,12 +1764,21 @@ formatting.texi(mymacro,38) @verbatim
 formatting.texi(mymacro,38) in verbatim ''
 formatting.texi(mymacro,38) @end verbatim
 formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @xml
+formatting.texi(mymacro,38) <para> xml para </para> ''
+formatting.texi(mymacro,38) @end xml
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @html
 formatting.texi(mymacro,38) html ''
 formatting.texi(mymacro,38) @end html
 formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @tex
+formatting.texi(mymacro,38) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
+formatting.texi(mymacro,38) @end tex
 formatting.texi(mymacro,38) 
+formatting.texi(mymacro,38) @docbook
+formatting.texi(mymacro,38) docbook ''
+formatting.texi(mymacro,38) @end docbook
 formatting.texi(mymacro,38) 
 formatting.texi(mymacro,38) @majorheading majorheading
 formatting.texi(mymacro,38) 
@@ -2328,12 +2355,21 @@ formatting.texi(mymacro,42) @verbatim
 formatting.texi(mymacro,42) in verbatim ''
 formatting.texi(mymacro,42) @end verbatim
 formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @xml
+formatting.texi(mymacro,42) <para> xml para </para> ''
+formatting.texi(mymacro,42) @end xml
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @html
 formatting.texi(mymacro,42) html ''
 formatting.texi(mymacro,42) @end html
 formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @tex
+formatting.texi(mymacro,42) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
+formatting.texi(mymacro,42) @end tex
 formatting.texi(mymacro,42) 
+formatting.texi(mymacro,42) @docbook
+formatting.texi(mymacro,42) docbook ''
+formatting.texi(mymacro,42) @end docbook
 formatting.texi(mymacro,42) 
 formatting.texi(mymacro,42) @majorheading majorheading
 formatting.texi(mymacro,42) 

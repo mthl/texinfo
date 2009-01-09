@@ -1448,7 +1448,8 @@ sub docbook_raw($$)
     {
         return docbook_add_id('screen').'>' . &$protect_text($text) . '</screen>';
     }
-    elsif ($style eq 'docbook')
+    return '' unless (grep {$style eq $_} @EXPAND);
+    if ($style eq 'docbook')
     {
         chomp ($text);
         return $text;

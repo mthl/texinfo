@@ -38,9 +38,11 @@ cond cond.texi
 cond_xml cond.texi --init xml.init
 cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
 cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+cond_info cond.texi --init info.init
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 macro-at macro-at.texi
+macro-at_info macro-at.texi --init info.init
 value_in_pass0_macros value_in_pass0_macros.texi -init makeinfo.init
 macros_in_pass0_macros macros_in_pass0_macros.texi -init makeinfo.init
 node-expand node-expand.texi -init makeinfo.init

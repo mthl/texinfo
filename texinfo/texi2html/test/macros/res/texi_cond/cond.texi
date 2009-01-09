@@ -15,6 +15,9 @@ This is ifinfo text.
 
 
 
+@tex
+This is tex text.
+@end tex
 
 
 This is ifnottex text.

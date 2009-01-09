@@ -41,15 +41,28 @@ block_EOL.texi(,41)
 block_EOL.texi(,42) @heading tex
 block_EOL.texi(,43) 
 block_EOL.texi(,44) Block commands on a line
+block_EOL.texi(,45) @tex
+block_EOL.texi(,46) in block
+block_EOL.texi(,47) @end tex
 block_EOL.texi(,48) end commands on a line.
 block_EOL.texi(,49) 
-block_EOL.texi(,53) Before the opening command end commands on a line.
+block_EOL.texi(,50) Before the opening command @tex
+block_EOL.texi(,51) in block
+block_EOL.texi(,52) @end tex
+block_EOL.texi(,53) end commands on a line.
 block_EOL.texi(,54) 
-block_EOL.texi(,57) Before the opening command  after the closing command.
+block_EOL.texi(,55) Before the opening command @tex
+block_EOL.texi(,56) in block
+block_EOL.texi(,57) @end tex after the closing command.
 block_EOL.texi(,58) 
-block_EOL.texi(,62) Before the opening command . A symbol on a line.
+block_EOL.texi(,59) Before the opening command @tex
+block_EOL.texi(,60) in block
+block_EOL.texi(,61) @end tex
+block_EOL.texi(,62) . A symbol on a line.
 block_EOL.texi(,63) 
-block_EOL.texi(,66) Before the opening command . A symbol after the closing command.
+block_EOL.texi(,64) Before the opening command @tex
+block_EOL.texi(,65) in block
+block_EOL.texi(,66) @end tex. A symbol after the closing command.
 block_EOL.texi(,67) 
 block_EOL.texi(,68) 
 block_EOL.texi(,69) @heading verbatim

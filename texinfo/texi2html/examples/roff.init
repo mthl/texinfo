@@ -997,16 +997,18 @@ sub t2h_roff_raw($$)
 {
     my $style = shift;
     my $text = shift;
-    if ($style eq 'verbatim' or $style eq 'tex' or $style eq 'html')
+    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    if ($style eq 'verbatim' or ($expanded and ($style eq 'tex' or $style eq 'html')))
     {
         chomp ($text);
         return ".(l M\n\\fR\\&\\f(CW" . &$protect_text($text) . "\\fR\n.)l\n" ;
     }
-    else
+    elsif ($expanded)
     {
         warn "$WARN (bug) unknown style $style\n";
         return &$protect_text($text);
     }
+    return '';
 }
 
 # This function formats a footnote reference and the footnote text associated

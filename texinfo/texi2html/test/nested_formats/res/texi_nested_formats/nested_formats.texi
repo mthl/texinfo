@@ -71,11 +71,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -226,11 +232,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -382,11 +394,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -536,11 +554,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -691,11 +715,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -848,11 +878,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1002,11 +1038,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1157,11 +1199,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1316,11 +1364,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1470,11 +1524,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1625,11 +1685,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1782,11 +1848,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -1937,11 +2009,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2093,11 +2171,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2255,11 +2339,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2410,11 +2500,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2567,11 +2663,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2724,11 +2826,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -2878,11 +2986,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3033,11 +3147,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3190,11 +3310,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3344,11 +3470,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3498,11 +3630,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3655,11 +3793,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3810,11 +3954,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -3966,11 +4116,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
@@ -4120,11 +4276,17 @@ A quot---ation
 in verbatim
 @end verbatim
 
+@xml
+<para> xml para </xml>
+@end xml
 
 @html
 html
 @end html
 
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
 
 @itemize @bullet{} a--n itemize line
 @item i--tem 1
