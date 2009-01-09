@@ -99,7 +99,7 @@ sub makeinfo_like_init_out()
 @MISC_BUTTONS = @SECTION_BUTTONS;
 
 $foot_line_and_ref  = \&makeinfo_like_foot_line_and_ref;
-$foot_lines         = \&makeinfo_like_foot_lines;
+$foot_section       = \&makeinfo_like_foot_lines;
 $paragraph          = \&makeinfo_like_paragraph;
 $index_summary      = \&makeinfo_like_index_summary;
 $summary_letter     = \&makeinfo_like_summary_letter;
@@ -146,9 +146,10 @@ sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 sub makeinfo_like_foot_lines($)
 {
     my $lines = shift;
-    unshift @$lines, "<hr>\n<h4>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h4>\n";
+    unshift @$lines, "<div class=\"footnote\">\n<hr>\n<h4>". &$I('Footnotes') ."</h4>\n";
 #<ol type=\"1\">\n";
 #    push @$lines, "</ol>";
+    push (@$lines, "</div>\n");
     return $lines;
 }
 

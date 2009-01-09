@@ -159,6 +159,7 @@ $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
 $toc_body = \&info_default_noop;
 $about_body = \&info_default_noop;
+$print_Footnotes = \&info_default_noop;
 $copying_comment   = \&info_default_copying_comment;
 $element_heading   = \&info_default_element_heading;
 $heading           = \&info_default_heading;
@@ -169,6 +170,7 @@ $empty_line               = \&info_default_empty_line;
 # maybe should not be called from the main program?
 $print_page_foot       = \&info_default_print_page_foot;
 $print_Top_footer      = \&info_default_print_Top_footer;
+$print_Top             = \&info_default_print_section;
 $print_section         = \&info_default_print_section;
 $end_section           = \&info_default_end_section;
 $one_section           = \&info_default_one_section;
@@ -196,7 +198,8 @@ $index_entry        = \&info_default_index_entry;
 $index_letter       = \&info_default_index_letter;
 $print_index        = \&info_default_print_index;
 $index_entry_label  = \&info_default_index_entry_label;
-
+$foot_section       = \&info_default_foot_lines;
+$foot_line_and_ref  = \&info_default_foot_line_and_ref;
 
 
 sub info_default_accent($$$)
@@ -970,8 +973,6 @@ sub info_default_print_page_head($)
     print $fh $result;
 }
 
-my $info_default_paragraph_in_element_nr;
-
 sub info_default_paragraph($$$$$$$$$$$$)
 {
     my $text = shift;
@@ -990,8 +991,10 @@ sub info_default_paragraph($$$$$$$$$$$$)
     my $top_stack = '';
     $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
 
-    $info_default_paragraph_in_element_nr++;
-    return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, "\n", {'paragraph_in_element_nr' => ($info_default_paragraph_in_element_nr -1), 'top_stack' => $top_stack});
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state ($state);
+    $info_state->{'paragraph_in_element_nr'}++;
+    return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, "\n", {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
 }
 
 sub info_default_preformatted($$$$$$$$$$$$)
@@ -1015,7 +1018,9 @@ sub info_default_preformatted($$$$$$$$$$$$)
 #    }
     # a paragraph after a preformatted is indented. So looks like 
     # preformatted count as paragraphs.
-    $info_default_paragraph_in_element_nr++;
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state ($state);
+    $info_state->{'paragraph_in_element_nr'}++;
     return info_default_close_command(undef, undef, 'preformatted', undef, undef, undef, undef, undef, undef);
 } 
 
@@ -1028,6 +1033,28 @@ my %default_info_level_to_symbol = (
   4 => '.'
 );
 
+sub info_default_node_line($)
+{
+    my $element = shift;
+    my $result = "\x{1F}\nFile: $element->{'file'},  Node: $element->{'text'}";
+    if (defined($element->{'NodeNext'}))
+    {
+       $result .= ','.&$I('  Next: %{node_next}', {'node_next' => $element->{'NodeNext'}->{'text'}});
+    }
+    if (defined($element->{'NodePrev'}))
+    {
+       $result .= ','.&$I('  Prev: %{node_prev}', {'node_prev' => $element->{'NodePrev'}->{'text'}});
+    }
+    if (defined($element->{'NodeUp'}))
+    {
+       $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $element->{'NodeUp'}->{'text'}});
+    }
+    $result .= "\n\n";
+    return $result;
+}
+
+my $info_default_footnote_index;
+my $info_default_current_node;
 sub info_default_element_heading($$$$$$$$$$$$)
 {
     my $element = shift;
@@ -1046,6 +1073,9 @@ sub info_default_element_heading($$$$$$$$$$$$)
 
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
+
+    # FIXME use $element or $Texi2HTML::THIS_ELEMENT? Main program should 
+    # ensure they are the same. 
     if ($new_element and ($element ne $new_element or !$element->{'node'}))
     {
         die "There is a new element, but element $element->{'texi'} is not a node or not the new element\n";
@@ -1054,31 +1084,23 @@ sub info_default_element_heading($$$$$$$$$$$$)
 
 print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
     my $before = '';
-    if ($info_state->{'waiting_for_line'})
-    {
-       $before = "\n";
-       $info_default_offset_in_file += length($before);
-       $info_default_line_count++;
-       $info_state->{'waiting_for_line'} = 0;
-    }
+#    if ($info_state->{'waiting_for_line'})
+#    {
+#       $before = "\n";
+#       $info_default_offset_in_file += length($before);
+#       $info_default_line_count++;
+#       $info_state->{'waiting_for_line'} = 0;
+#    }
     $element->{'info_offset'} = $info_default_offset_in_file;
     push @info_default_pending_tags, $element;
-    my $result = "\x{1F}\nFile: $Texi2HTML::THIS_ELEMENT->{'file'},  Node: $element->{'text'}";
-    if (defined($Texi2HTML::THIS_ELEMENT->{'NodeNext'}))
-    {
-       $result .= ','.&$I('  Next: %{node_next}', {'node_next' => $Texi2HTML::THIS_ELEMENT->{'NodeNext'}->{'text'}});
-    }
-    if (defined($Texi2HTML::THIS_ELEMENT->{'NodePrev'}))
-    {
-       $result .= ','.&$I('  Prev: %{node_prev}', {'node_prev' => $Texi2HTML::THIS_ELEMENT->{'NodePrev'}->{'text'}});
-    }
-    if (defined($Texi2HTML::THIS_ELEMENT->{'NodeUp'}))
-    {
-       $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $Texi2HTML::THIS_ELEMENT->{'NodeUp'}->{'text'}});
-    }
-    $result .= "\n\n";
+
+    my $result = info_default_node_line($element);
+
     $info_default_line_count = 3;
     $info_default_offset_in_file += length($result);
+    $info_default_footnote_index = 0;
+    #$info_default_current_node = $Texi2HTML::THIS_ELEMENT;
+    $info_default_current_node = $element;
     
     return $before.$result;
 }
@@ -1097,7 +1119,7 @@ sub info_default_heading($$$$$;$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
 print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
-    $info_default_paragraph_in_element_nr = 0;
+    $info_state->{'paragraph_in_element_nr'} = 0;
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
     $text =~ s/^(\w+)\. /$1 /;
@@ -1239,6 +1261,7 @@ sub info_default_print_Top_footer($$$)
     }
 }
 
+my @info_default_pending_footnotes;
 sub info_default_print_section
 {
     my $fh = shift;
@@ -1246,6 +1269,60 @@ sub info_default_print_section
     my $previous_is_top = shift;
     my $element = shift;
     my $nw = main::print_lines($fh);
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state ($state);
+    if ($info_state->{'waiting_for_line'})
+    {
+       my $end = "\n";
+       $info_default_offset_in_file += length($end);
+       $info_default_line_count++;
+       $info_state->{'waiting_for_line'} = 0;
+    }
+    if (@info_default_pending_footnotes)
+    {
+        my $footnote_text;
+        if ($SEPARATED_FOOTNOTES)
+        {
+            my $node_ref = $info_default_current_node;
+            $node_ref = {'text' => 'no node', 'file' => ''} if (!defined($node_ref));
+            my $footnote_element = { 'NodeUp' => $node_ref, 
+                       'text' => $node_ref->{'text'} . "-Footnotes", 
+                       'file' => $node_ref->{'file'},
+                       'info_offset' => $info_default_offset_in_file,
+                       'node' => 1
+                 };
+            push @info_default_pending_tags, $footnote_element;
+            $footnote_text = info_default_node_line($footnote_element); 
+            $info_default_offset_in_file += length($footnote_text);
+        }
+        else
+        {
+            $footnote_text = "   ---------- Footnotes ----------\n\n";
+            $info_default_offset_in_file += length($footnote_text);
+        }
+        while (@info_default_pending_footnotes)
+        {
+    #push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name];
+            my $footnote = shift @info_default_pending_footnotes;
+            my $foot_nr = $footnote->[2];
+            my $node_name = $footnote->[3];
+            my $lines = $footnote->[0];
+            push @info_default_pending_tags, {'anchor' => 1, 'text' => "${node_name}-Footnote-${foot_nr}", 'info_offset' => $info_default_offset_in_file };
+            my $footnote_result = shift @{$lines};
+            $footnote_result =~ s/^\s*//;
+            $footnote_result = "   ($foot_nr) " . $footnote_result;
+            while (@$lines)
+            {
+               my $line = shift @$lines;
+               $footnote_result .= $line;
+            }
+            $footnote_result .= "\n";
+            $info_default_offset_in_file += length($footnote_result);
+            $footnote_text .= $footnote_result;
+        }
+        print $fh "$footnote_text";
+    }
+    #print $fh "AGAGA $info_default_current_node->{'text'} $info_state->{'nr'} \n";
 }
 
 sub info_default_end_section($$$)
@@ -1268,9 +1345,10 @@ sub info_default_begin_special_region($$$)
     my $region = shift;
     my $state = shift;
     my $lines = shift;
+    my $info_state = info_default_get_state ($state);
     if ($state->{'outside_document'})
     {
-        $info_default_paragraph_in_element_nr = 0;
+        $info_state->{'paragraph_in_element_nr'} = 0;
     }
 }
 
@@ -1635,6 +1713,38 @@ sub info_default_index_summary($$)
 sub info_default_summary_letter
 {
     return '';
+}
+
+sub info_default_foot_line_and_ref($$$$$$$$)
+{
+    my $foot_num = shift;
+    my $relative_num = shift;
+    my $footid = shift;
+    my $docid = shift;
+    my $from_file = shift;
+    my $footnote_file = shift;
+    my $lines = shift;
+    my $state = shift;
+
+    $info_default_footnote_index++;
+    my $footnote_text = "($info_default_footnote_index)";
+    my $node_name;
+    $node_name = '';
+    $node_name = $info_default_current_node->{'text'} if defined($info_default_current_node);
+    if ($SEPARATED_FOOTNOTES)
+    {
+        $footnote_text .=  ' (' . info_default_normal_reference('pxref', ["${node_name}-Footnote-${info_default_footnote_index}"]) . ')';
+    }
+    push @info_default_pending_footnotes, [$lines, $footnote_text, ${info_default_footnote_index}, $node_name];
+    return ($lines,  $footnote_text);
+}
+
+sub info_default_foot_lines($)
+{
+    my $lines = shift;
+    #my $state = $Texi2HTML::THISDOC{'state'};
+    #my $info_state = info_default_get_state ($state);
+    @$lines = ();
 }
 
 
