@@ -128,7 +128,7 @@ html
 $$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
 @end tex
 
-@itemize @bullet{} a--n itemize line
+@itemize @bullet{}
 @item i--tem 1
 @item i--tem 2
 @end itemize
@@ -178,7 +178,7 @@ f--lushright
 
 @value{format_command_begin}
 in macro, a format_command containing some other commands.
-@itemize @bullet{} a--n itemize line
+@itemize @bullet{}
 @item i--tem 1
 @item i--tem 2
 @end itemize
@@ -238,7 +238,7 @@ Call macro in format_command
 @end @value{format_command}
 
 Call macro in itemize at the beginning of an item
-@itemize @bullet{} a--n itemize line
+@itemize a--n itemize line
 @item @mymacro
 @item item 1
 Call macro in itemize

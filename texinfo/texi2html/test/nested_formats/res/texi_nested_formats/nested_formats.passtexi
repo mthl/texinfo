@@ -82,7 +82,7 @@ nested_formats.texi(mymacro,233) @tex
 nested_formats.texi(mymacro,233) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,233) @end tex
 nested_formats.texi(mymacro,233) 
-nested_formats.texi(mymacro,233) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,233) @itemize @bullet{}
 nested_formats.texi(mymacro,233) @item i--tem 1
 nested_formats.texi(mymacro,233) @item i--tem 2
 nested_formats.texi(mymacro,233) @end itemize
@@ -132,7 +132,7 @@ nested_formats.texi(mymacro,233) @center ce--ntered line
 nested_formats.texi(mymacro,233) 
 nested_formats.texi(mymacro,233) @group
 nested_formats.texi(mymacro,233) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,233) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,233) @itemize @bullet{}
 nested_formats.texi(mymacro,233) @item i--tem 1
 nested_formats.texi(mymacro,233) @item i--tem 2
 nested_formats.texi(mymacro,233) @end itemize
@@ -243,7 +243,7 @@ nested_formats.texi(mymacro,237) @tex
 nested_formats.texi(mymacro,237) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,237) @end tex
 nested_formats.texi(mymacro,237) 
-nested_formats.texi(mymacro,237) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,237) @itemize @bullet{}
 nested_formats.texi(mymacro,237) @item i--tem 1
 nested_formats.texi(mymacro,237) @item i--tem 2
 nested_formats.texi(mymacro,237) @end itemize
@@ -293,7 +293,7 @@ nested_formats.texi(mymacro,237) @center ce--ntered line
 nested_formats.texi(mymacro,237) 
 nested_formats.texi(mymacro,237) @group
 nested_formats.texi(mymacro,237) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,237) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,237) @itemize @bullet{}
 nested_formats.texi(mymacro,237) @item i--tem 1
 nested_formats.texi(mymacro,237) @item i--tem 2
 nested_formats.texi(mymacro,237) @end itemize
@@ -345,7 +345,7 @@ nested_formats.texi(mymacro,237)
 nested_formats.texi(,238) @end group
 nested_formats.texi(,239) 
 nested_formats.texi(,240) Call macro in itemize at the beginning of an item
-nested_formats.texi(,241) @itemize @bullet{} a--n itemize line
+nested_formats.texi(,241) @itemize a--n itemize line
 nested_formats.texi(mymacro,242) @item nested_formats.texi(mymacro,242) in macro
 nested_formats.texi(mymacro,242) 
 nested_formats.texi(mymacro,242) @group
@@ -405,7 +405,7 @@ nested_formats.texi(mymacro,242) @tex
 nested_formats.texi(mymacro,242) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,242) @end tex
 nested_formats.texi(mymacro,242) 
-nested_formats.texi(mymacro,242) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,242) @itemize @bullet{}
 nested_formats.texi(mymacro,242) @item i--tem 1
 nested_formats.texi(mymacro,242) @item i--tem 2
 nested_formats.texi(mymacro,242) @end itemize
@@ -455,7 +455,7 @@ nested_formats.texi(mymacro,242) @center ce--ntered line
 nested_formats.texi(mymacro,242) 
 nested_formats.texi(mymacro,242) @group
 nested_formats.texi(mymacro,242) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,242) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,242) @itemize @bullet{}
 nested_formats.texi(mymacro,242) @item i--tem 1
 nested_formats.texi(mymacro,242) @item i--tem 2
 nested_formats.texi(mymacro,242) @end itemize
@@ -565,7 +565,7 @@ nested_formats.texi(mymacro,245) @tex
 nested_formats.texi(mymacro,245) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,245) @end tex
 nested_formats.texi(mymacro,245) 
-nested_formats.texi(mymacro,245) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,245) @itemize @bullet{}
 nested_formats.texi(mymacro,245) @item i--tem 1
 nested_formats.texi(mymacro,245) @item i--tem 2
 nested_formats.texi(mymacro,245) @end itemize
@@ -615,7 +615,7 @@ nested_formats.texi(mymacro,245) @center ce--ntered line
 nested_formats.texi(mymacro,245) 
 nested_formats.texi(mymacro,245) @group
 nested_formats.texi(mymacro,245) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,245) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,245) @itemize @bullet{}
 nested_formats.texi(mymacro,245) @item i--tem 1
 nested_formats.texi(mymacro,245) @item i--tem 2
 nested_formats.texi(mymacro,245) @end itemize
@@ -726,7 +726,7 @@ nested_formats.texi(mymacro,249) @tex
 nested_formats.texi(mymacro,249) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,249) @end tex
 nested_formats.texi(mymacro,249) 
-nested_formats.texi(mymacro,249) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,249) @itemize @bullet{}
 nested_formats.texi(mymacro,249) @item i--tem 1
 nested_formats.texi(mymacro,249) @item i--tem 2
 nested_formats.texi(mymacro,249) @end itemize
@@ -776,7 +776,7 @@ nested_formats.texi(mymacro,249) @center ce--ntered line
 nested_formats.texi(mymacro,249) 
 nested_formats.texi(mymacro,249) @group
 nested_formats.texi(mymacro,249) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,249) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,249) @itemize @bullet{}
 nested_formats.texi(mymacro,249) @item i--tem 1
 nested_formats.texi(mymacro,249) @item i--tem 2
 nested_formats.texi(mymacro,249) @end itemize
@@ -889,7 +889,7 @@ nested_formats.texi(mymacro,255) @tex
 nested_formats.texi(mymacro,255) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,255) @end tex
 nested_formats.texi(mymacro,255) 
-nested_formats.texi(mymacro,255) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,255) @itemize @bullet{}
 nested_formats.texi(mymacro,255) @item i--tem 1
 nested_formats.texi(mymacro,255) @item i--tem 2
 nested_formats.texi(mymacro,255) @end itemize
@@ -939,7 +939,7 @@ nested_formats.texi(mymacro,255) @center ce--ntered line
 nested_formats.texi(mymacro,255) 
 nested_formats.texi(mymacro,255) @group
 nested_formats.texi(mymacro,255) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,255) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,255) @itemize @bullet{}
 nested_formats.texi(mymacro,255) @item i--tem 1
 nested_formats.texi(mymacro,255) @item i--tem 2
 nested_formats.texi(mymacro,255) @end itemize
@@ -1049,7 +1049,7 @@ nested_formats.texi(mymacro,258) @tex
 nested_formats.texi(mymacro,258) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,258) @end tex
 nested_formats.texi(mymacro,258) 
-nested_formats.texi(mymacro,258) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,258) @itemize @bullet{}
 nested_formats.texi(mymacro,258) @item i--tem 1
 nested_formats.texi(mymacro,258) @item i--tem 2
 nested_formats.texi(mymacro,258) @end itemize
@@ -1099,7 +1099,7 @@ nested_formats.texi(mymacro,258) @center ce--ntered line
 nested_formats.texi(mymacro,258) 
 nested_formats.texi(mymacro,258) @group
 nested_formats.texi(mymacro,258) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,258) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,258) @itemize @bullet{}
 nested_formats.texi(mymacro,258) @item i--tem 1
 nested_formats.texi(mymacro,258) @item i--tem 2
 nested_formats.texi(mymacro,258) @end itemize
@@ -1210,7 +1210,7 @@ nested_formats.texi(mymacro,262) @tex
 nested_formats.texi(mymacro,262) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,262) @end tex
 nested_formats.texi(mymacro,262) 
-nested_formats.texi(mymacro,262) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,262) @itemize @bullet{}
 nested_formats.texi(mymacro,262) @item i--tem 1
 nested_formats.texi(mymacro,262) @item i--tem 2
 nested_formats.texi(mymacro,262) @end itemize
@@ -1260,7 +1260,7 @@ nested_formats.texi(mymacro,262) @center ce--ntered line
 nested_formats.texi(mymacro,262) 
 nested_formats.texi(mymacro,262) @group
 nested_formats.texi(mymacro,262) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,262) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,262) @itemize @bullet{}
 nested_formats.texi(mymacro,262) @item i--tem 1
 nested_formats.texi(mymacro,262) @item i--tem 2
 nested_formats.texi(mymacro,262) @end itemize
@@ -1375,7 +1375,7 @@ nested_formats.texi(mymacro,270) @tex
 nested_formats.texi(mymacro,270) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,270) @end tex
 nested_formats.texi(mymacro,270) 
-nested_formats.texi(mymacro,270) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,270) @itemize @bullet{}
 nested_formats.texi(mymacro,270) @item i--tem 1
 nested_formats.texi(mymacro,270) @item i--tem 2
 nested_formats.texi(mymacro,270) @end itemize
@@ -1425,7 +1425,7 @@ nested_formats.texi(mymacro,270) @center ce--ntered line
 nested_formats.texi(mymacro,270) 
 nested_formats.texi(mymacro,270) @group
 nested_formats.texi(mymacro,270) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,270) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,270) @itemize @bullet{}
 nested_formats.texi(mymacro,270) @item i--tem 1
 nested_formats.texi(mymacro,270) @item i--tem 2
 nested_formats.texi(mymacro,270) @end itemize
@@ -1535,7 +1535,7 @@ nested_formats.texi(mymacro,273) @tex
 nested_formats.texi(mymacro,273) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,273) @end tex
 nested_formats.texi(mymacro,273) 
-nested_formats.texi(mymacro,273) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,273) @itemize @bullet{}
 nested_formats.texi(mymacro,273) @item i--tem 1
 nested_formats.texi(mymacro,273) @item i--tem 2
 nested_formats.texi(mymacro,273) @end itemize
@@ -1585,7 +1585,7 @@ nested_formats.texi(mymacro,273) @center ce--ntered line
 nested_formats.texi(mymacro,273) 
 nested_formats.texi(mymacro,273) @group
 nested_formats.texi(mymacro,273) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,273) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,273) @itemize @bullet{}
 nested_formats.texi(mymacro,273) @item i--tem 1
 nested_formats.texi(mymacro,273) @item i--tem 2
 nested_formats.texi(mymacro,273) @end itemize
@@ -1696,7 +1696,7 @@ nested_formats.texi(mymacro,277) @tex
 nested_formats.texi(mymacro,277) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,277) @end tex
 nested_formats.texi(mymacro,277) 
-nested_formats.texi(mymacro,277) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,277) @itemize @bullet{}
 nested_formats.texi(mymacro,277) @item i--tem 1
 nested_formats.texi(mymacro,277) @item i--tem 2
 nested_formats.texi(mymacro,277) @end itemize
@@ -1746,7 +1746,7 @@ nested_formats.texi(mymacro,277) @center ce--ntered line
 nested_formats.texi(mymacro,277) 
 nested_formats.texi(mymacro,277) @group
 nested_formats.texi(mymacro,277) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,277) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,277) @itemize @bullet{}
 nested_formats.texi(mymacro,277) @item i--tem 1
 nested_formats.texi(mymacro,277) @item i--tem 2
 nested_formats.texi(mymacro,277) @end itemize
@@ -1859,7 +1859,7 @@ nested_formats.texi(mymacro,283) @tex
 nested_formats.texi(mymacro,283) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,283) @end tex
 nested_formats.texi(mymacro,283) 
-nested_formats.texi(mymacro,283) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,283) @itemize @bullet{}
 nested_formats.texi(mymacro,283) @item i--tem 1
 nested_formats.texi(mymacro,283) @item i--tem 2
 nested_formats.texi(mymacro,283) @end itemize
@@ -1909,7 +1909,7 @@ nested_formats.texi(mymacro,283) @center ce--ntered line
 nested_formats.texi(mymacro,283) 
 nested_formats.texi(mymacro,283) @group
 nested_formats.texi(mymacro,283) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,283) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,283) @itemize @bullet{}
 nested_formats.texi(mymacro,283) @item i--tem 1
 nested_formats.texi(mymacro,283) @item i--tem 2
 nested_formats.texi(mymacro,283) @end itemize
@@ -2020,7 +2020,7 @@ nested_formats.texi(mymacro,287) @tex
 nested_formats.texi(mymacro,287) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,287) @end tex
 nested_formats.texi(mymacro,287) 
-nested_formats.texi(mymacro,287) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,287) @itemize @bullet{}
 nested_formats.texi(mymacro,287) @item i--tem 1
 nested_formats.texi(mymacro,287) @item i--tem 2
 nested_formats.texi(mymacro,287) @end itemize
@@ -2070,7 +2070,7 @@ nested_formats.texi(mymacro,287) @center ce--ntered line
 nested_formats.texi(mymacro,287) 
 nested_formats.texi(mymacro,287) @group
 nested_formats.texi(mymacro,287) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,287) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,287) @itemize @bullet{}
 nested_formats.texi(mymacro,287) @item i--tem 1
 nested_formats.texi(mymacro,287) @item i--tem 2
 nested_formats.texi(mymacro,287) @end itemize
@@ -2182,7 +2182,7 @@ nested_formats.texi(mymacro,292) @tex
 nested_formats.texi(mymacro,292) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,292) @end tex
 nested_formats.texi(mymacro,292) 
-nested_formats.texi(mymacro,292) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,292) @itemize @bullet{}
 nested_formats.texi(mymacro,292) @item i--tem 1
 nested_formats.texi(mymacro,292) @item i--tem 2
 nested_formats.texi(mymacro,292) @end itemize
@@ -2232,7 +2232,7 @@ nested_formats.texi(mymacro,292) @center ce--ntered line
 nested_formats.texi(mymacro,292) 
 nested_formats.texi(mymacro,292) @group
 nested_formats.texi(mymacro,292) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,292) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,292) @itemize @bullet{}
 nested_formats.texi(mymacro,292) @item i--tem 1
 nested_formats.texi(mymacro,292) @item i--tem 2
 nested_formats.texi(mymacro,292) @end itemize
@@ -2350,7 +2350,7 @@ nested_formats.texi(mymacro,303) @tex
 nested_formats.texi(mymacro,303) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,303) @end tex
 nested_formats.texi(mymacro,303) 
-nested_formats.texi(mymacro,303) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,303) @itemize @bullet{}
 nested_formats.texi(mymacro,303) @item i--tem 1
 nested_formats.texi(mymacro,303) @item i--tem 2
 nested_formats.texi(mymacro,303) @end itemize
@@ -2400,7 +2400,7 @@ nested_formats.texi(mymacro,303) @center ce--ntered line
 nested_formats.texi(mymacro,303) 
 nested_formats.texi(mymacro,303) @group
 nested_formats.texi(mymacro,303) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,303) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,303) @itemize @bullet{}
 nested_formats.texi(mymacro,303) @item i--tem 1
 nested_formats.texi(mymacro,303) @item i--tem 2
 nested_formats.texi(mymacro,303) @end itemize
@@ -2511,7 +2511,7 @@ nested_formats.texi(mymacro,307) @tex
 nested_formats.texi(mymacro,307) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,307) @end tex
 nested_formats.texi(mymacro,307) 
-nested_formats.texi(mymacro,307) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,307) @itemize @bullet{}
 nested_formats.texi(mymacro,307) @item i--tem 1
 nested_formats.texi(mymacro,307) @item i--tem 2
 nested_formats.texi(mymacro,307) @end itemize
@@ -2561,7 +2561,7 @@ nested_formats.texi(mymacro,307) @center ce--ntered line
 nested_formats.texi(mymacro,307) 
 nested_formats.texi(mymacro,307) @group
 nested_formats.texi(mymacro,307) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,307) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,307) @itemize @bullet{}
 nested_formats.texi(mymacro,307) @item i--tem 1
 nested_formats.texi(mymacro,307) @item i--tem 2
 nested_formats.texi(mymacro,307) @end itemize
@@ -2674,7 +2674,7 @@ nested_formats.texi(mymacro,313) @tex
 nested_formats.texi(mymacro,313) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,313) @end tex
 nested_formats.texi(mymacro,313) 
-nested_formats.texi(mymacro,313) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,313) @itemize @bullet{}
 nested_formats.texi(mymacro,313) @item i--tem 1
 nested_formats.texi(mymacro,313) @item i--tem 2
 nested_formats.texi(mymacro,313) @end itemize
@@ -2724,7 +2724,7 @@ nested_formats.texi(mymacro,313) @center ce--ntered line
 nested_formats.texi(mymacro,313) 
 nested_formats.texi(mymacro,313) @group
 nested_formats.texi(mymacro,313) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,313) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,313) @itemize @bullet{}
 nested_formats.texi(mymacro,313) @item i--tem 1
 nested_formats.texi(mymacro,313) @item i--tem 2
 nested_formats.texi(mymacro,313) @end itemize
@@ -2837,7 +2837,7 @@ nested_formats.texi(mymacro,319) @tex
 nested_formats.texi(mymacro,319) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,319) @end tex
 nested_formats.texi(mymacro,319) 
-nested_formats.texi(mymacro,319) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,319) @itemize @bullet{}
 nested_formats.texi(mymacro,319) @item i--tem 1
 nested_formats.texi(mymacro,319) @item i--tem 2
 nested_formats.texi(mymacro,319) @end itemize
@@ -2887,7 +2887,7 @@ nested_formats.texi(mymacro,319) @center ce--ntered line
 nested_formats.texi(mymacro,319) 
 nested_formats.texi(mymacro,319) @group
 nested_formats.texi(mymacro,319) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,319) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,319) @itemize @bullet{}
 nested_formats.texi(mymacro,319) @item i--tem 1
 nested_formats.texi(mymacro,319) @item i--tem 2
 nested_formats.texi(mymacro,319) @end itemize
@@ -2997,7 +2997,7 @@ nested_formats.texi(mymacro,322) @tex
 nested_formats.texi(mymacro,322) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,322) @end tex
 nested_formats.texi(mymacro,322) 
-nested_formats.texi(mymacro,322) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,322) @itemize @bullet{}
 nested_formats.texi(mymacro,322) @item i--tem 1
 nested_formats.texi(mymacro,322) @item i--tem 2
 nested_formats.texi(mymacro,322) @end itemize
@@ -3047,7 +3047,7 @@ nested_formats.texi(mymacro,322) @center ce--ntered line
 nested_formats.texi(mymacro,322) 
 nested_formats.texi(mymacro,322) @group
 nested_formats.texi(mymacro,322) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,322) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,322) @itemize @bullet{}
 nested_formats.texi(mymacro,322) @item i--tem 1
 nested_formats.texi(mymacro,322) @item i--tem 2
 nested_formats.texi(mymacro,322) @end itemize
@@ -3158,7 +3158,7 @@ nested_formats.texi(mymacro,326) @tex
 nested_formats.texi(mymacro,326) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,326) @end tex
 nested_formats.texi(mymacro,326) 
-nested_formats.texi(mymacro,326) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,326) @itemize @bullet{}
 nested_formats.texi(mymacro,326) @item i--tem 1
 nested_formats.texi(mymacro,326) @item i--tem 2
 nested_formats.texi(mymacro,326) @end itemize
@@ -3208,7 +3208,7 @@ nested_formats.texi(mymacro,326) @center ce--ntered line
 nested_formats.texi(mymacro,326) 
 nested_formats.texi(mymacro,326) @group
 nested_formats.texi(mymacro,326) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,326) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,326) @itemize @bullet{}
 nested_formats.texi(mymacro,326) @item i--tem 1
 nested_formats.texi(mymacro,326) @item i--tem 2
 nested_formats.texi(mymacro,326) @end itemize
@@ -3321,7 +3321,7 @@ nested_formats.texi(mymacro,332) @tex
 nested_formats.texi(mymacro,332) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,332) @end tex
 nested_formats.texi(mymacro,332) 
-nested_formats.texi(mymacro,332) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,332) @itemize @bullet{}
 nested_formats.texi(mymacro,332) @item i--tem 1
 nested_formats.texi(mymacro,332) @item i--tem 2
 nested_formats.texi(mymacro,332) @end itemize
@@ -3371,7 +3371,7 @@ nested_formats.texi(mymacro,332) @center ce--ntered line
 nested_formats.texi(mymacro,332) 
 nested_formats.texi(mymacro,332) @group
 nested_formats.texi(mymacro,332) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,332) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,332) @itemize @bullet{}
 nested_formats.texi(mymacro,332) @item i--tem 1
 nested_formats.texi(mymacro,332) @item i--tem 2
 nested_formats.texi(mymacro,332) @end itemize
@@ -3481,7 +3481,7 @@ nested_formats.texi(mymacro,335) @tex
 nested_formats.texi(mymacro,335) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,335) @end tex
 nested_formats.texi(mymacro,335) 
-nested_formats.texi(mymacro,335) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,335) @itemize @bullet{}
 nested_formats.texi(mymacro,335) @item i--tem 1
 nested_formats.texi(mymacro,335) @item i--tem 2
 nested_formats.texi(mymacro,335) @end itemize
@@ -3531,7 +3531,7 @@ nested_formats.texi(mymacro,335) @center ce--ntered line
 nested_formats.texi(mymacro,335) 
 nested_formats.texi(mymacro,335) @group
 nested_formats.texi(mymacro,335) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,335) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,335) @itemize @bullet{}
 nested_formats.texi(mymacro,335) @item i--tem 1
 nested_formats.texi(mymacro,335) @item i--tem 2
 nested_formats.texi(mymacro,335) @end itemize
@@ -3641,7 +3641,7 @@ nested_formats.texi(mymacro,338) @tex
 nested_formats.texi(mymacro,338) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,338) @end tex
 nested_formats.texi(mymacro,338) 
-nested_formats.texi(mymacro,338) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,338) @itemize @bullet{}
 nested_formats.texi(mymacro,338) @item i--tem 1
 nested_formats.texi(mymacro,338) @item i--tem 2
 nested_formats.texi(mymacro,338) @end itemize
@@ -3691,7 +3691,7 @@ nested_formats.texi(mymacro,338) @center ce--ntered line
 nested_formats.texi(mymacro,338) 
 nested_formats.texi(mymacro,338) @group
 nested_formats.texi(mymacro,338) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,338) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,338) @itemize @bullet{}
 nested_formats.texi(mymacro,338) @item i--tem 1
 nested_formats.texi(mymacro,338) @item i--tem 2
 nested_formats.texi(mymacro,338) @end itemize
@@ -3804,7 +3804,7 @@ nested_formats.texi(mymacro,344) @tex
 nested_formats.texi(mymacro,344) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,344) @end tex
 nested_formats.texi(mymacro,344) 
-nested_formats.texi(mymacro,344) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,344) @itemize @bullet{}
 nested_formats.texi(mymacro,344) @item i--tem 1
 nested_formats.texi(mymacro,344) @item i--tem 2
 nested_formats.texi(mymacro,344) @end itemize
@@ -3854,7 +3854,7 @@ nested_formats.texi(mymacro,344) @center ce--ntered line
 nested_formats.texi(mymacro,344) 
 nested_formats.texi(mymacro,344) @group
 nested_formats.texi(mymacro,344) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,344) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,344) @itemize @bullet{}
 nested_formats.texi(mymacro,344) @item i--tem 1
 nested_formats.texi(mymacro,344) @item i--tem 2
 nested_formats.texi(mymacro,344) @end itemize
@@ -3965,7 +3965,7 @@ nested_formats.texi(mymacro,348) @tex
 nested_formats.texi(mymacro,348) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,348) @end tex
 nested_formats.texi(mymacro,348) 
-nested_formats.texi(mymacro,348) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,348) @itemize @bullet{}
 nested_formats.texi(mymacro,348) @item i--tem 1
 nested_formats.texi(mymacro,348) @item i--tem 2
 nested_formats.texi(mymacro,348) @end itemize
@@ -4015,7 +4015,7 @@ nested_formats.texi(mymacro,348) @center ce--ntered line
 nested_formats.texi(mymacro,348) 
 nested_formats.texi(mymacro,348) @group
 nested_formats.texi(mymacro,348) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,348) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,348) @itemize @bullet{}
 nested_formats.texi(mymacro,348) @item i--tem 1
 nested_formats.texi(mymacro,348) @item i--tem 2
 nested_formats.texi(mymacro,348) @end itemize
@@ -4127,7 +4127,7 @@ nested_formats.texi(mymacro,353) @tex
 nested_formats.texi(mymacro,353) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,353) @end tex
 nested_formats.texi(mymacro,353) 
-nested_formats.texi(mymacro,353) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,353) @itemize @bullet{}
 nested_formats.texi(mymacro,353) @item i--tem 1
 nested_formats.texi(mymacro,353) @item i--tem 2
 nested_formats.texi(mymacro,353) @end itemize
@@ -4177,7 +4177,7 @@ nested_formats.texi(mymacro,353) @center ce--ntered line
 nested_formats.texi(mymacro,353) 
 nested_formats.texi(mymacro,353) @group
 nested_formats.texi(mymacro,353) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,353) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,353) @itemize @bullet{}
 nested_formats.texi(mymacro,353) @item i--tem 1
 nested_formats.texi(mymacro,353) @item i--tem 2
 nested_formats.texi(mymacro,353) @end itemize
@@ -4287,7 +4287,7 @@ nested_formats.texi(mymacro,356) @tex
 nested_formats.texi(mymacro,356) $$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
 nested_formats.texi(mymacro,356) @end tex
 nested_formats.texi(mymacro,356) 
-nested_formats.texi(mymacro,356) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,356) @itemize @bullet{}
 nested_formats.texi(mymacro,356) @item i--tem 1
 nested_formats.texi(mymacro,356) @item i--tem 2
 nested_formats.texi(mymacro,356) @end itemize
@@ -4337,7 +4337,7 @@ nested_formats.texi(mymacro,356) @center ce--ntered line
 nested_formats.texi(mymacro,356) 
 nested_formats.texi(mymacro,356) @group
 nested_formats.texi(mymacro,356) in macro, a format_command containing some other commands.
-nested_formats.texi(mymacro,356) @itemize @bullet{} a--n itemize line
+nested_formats.texi(mymacro,356) @itemize @bullet{}
 nested_formats.texi(mymacro,356) @item i--tem 1
 nested_formats.texi(mymacro,356) @item i--tem 2
 nested_formats.texi(mymacro,356) @end itemize

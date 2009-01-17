@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.176 2009-01-09 21:20:01 pertusus Exp $
+# $Id: texi2html.init,v 1.177 2009-01-17 14:30:42 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5630,12 +5630,18 @@ sub t2h_default_format_list_item_texi($$$$)
 
     my $result_line;
     my $open_command = 0;
-
+    if (defined($command) and $command ne '' and $format ne 'itemize')
+    {
+        #@*table
+        $open_command = 1;
+    }
     if (defined($prepended) and $prepended ne '')
     {
+         $prepended =~ s/^\s*//;
+         $prepended =~ s/\s*$//;
+         $line =~ s/^\s*//;
          $result_line = $prepended . ' ' . $line;
     }
-    $open_command = 1 if (defined($command));
     return ($result_line, $open_command);
 }
 
@@ -6634,10 +6640,10 @@ sub t2h_default_colon_command($)
 
 sub t2h_default_tab_item_texi($$$$$$)
 {
-   my $comand = shift;
+   my $command = shift;
    my $commands_stack = shift;
-   my $state = shift;
    my $stack = shift;
+   my $state = shift;
    my $line = shift;
    my $line_nr = shift;
 

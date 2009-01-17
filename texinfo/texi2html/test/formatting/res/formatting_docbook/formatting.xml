@@ -284,7 +284,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
+<itemizedlist mark="@bullet{} a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -806,7 +806,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
+<itemizedlist mark="@bullet{} a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -1324,7 +1324,7 @@ After clickstyle &rArr;
 <listitem><para> e&ndash;mph item
 </para></listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
+<itemizedlist mark="@bullet{} a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem><para> i&ndash;tem 1
 </para></listitem>
 <listitem><para> i&ndash;tem 2
 </para></listitem>
@@ -1835,14 +1835,14 @@ After clickstyle &rArr;
 <itemizedlist mark="minus"><listitem> minu--s
 </listitem>
 </itemizedlist>
-<itemizedlist mark="emph"><listitem><emphasis> e--mph item
-</emphasis></listitem>
+<itemizedlist mark="emph"><listitem> e--mph item
+</listitem>
 </itemizedlist>
 <itemizedlist mark="@emph{after emph}"><!-- comment in itemize -->
 <listitem> e--mph item
 </listitem>
 </itemizedlist>
-<itemizedlist mark="bullet a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem> i--tem 1
+<itemizedlist mark="@bullet{} a--n itemize line"><indexterm role="cp"><primary>index entry within itemize</primary></indexterm><listitem> i--tem 1
 </listitem>
 <listitem> i--tem 2
 </listitem>

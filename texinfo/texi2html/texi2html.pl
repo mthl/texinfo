@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.259 2009-01-09 21:20:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.260 2009-01-17 14:30:42 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -485,6 +485,7 @@ $begin_format_texi
 $begin_style_texi
 $begin_paragraph_texi
 $tab_item_texi
+$footnote_texi
 $colon_command
 $simple_command
 $thing_command
@@ -5746,7 +5747,7 @@ sub rearrange_elements()
 
         # Find next node if not already found
         if ($node->{'nodenext'}) {}
-        elsif ($node->{'texi'} eq 'Top')
+        elsif ($node->{'texi'} eq 'Top' and $node->{'automatic_directions'})
         { # special case as said in the texinfo manual
             if ($node->{'menu_child'})
             {
@@ -8218,19 +8219,9 @@ sub do_paragraph($$;$)
     my $align = '';
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
     
-    if (exists($::style_map_ref->{$paragraph_command}) and
-       !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}) and $command_opened)
-    { 
-        if ($format eq 'itemize')
-        {
-            chomp ($text);
-            $text = do_simple($paragraph_command, $text, $state, [$text]);
-            $text = $text . "\n";
-        }
-    }
-    elsif (exists($::things_map_ref->{$paragraph_command}))
+    if ($paragraph_command and !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}))
     {
-        $paragraph_command_formatted = do_simple($paragraph_command, '', $state);
+        $paragraph_command_formatted = substitute_line("\@$paragraph_command\{\}", duplicate_formatting_state($state));
     }
     return &$Texi2HTML::Config::paragraph($text, $align, $indent_style, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $item_nr, $enumerate_type, $number,$state->{'command_stack'},$stack_at_beginning);
 }
@@ -8257,14 +8248,9 @@ sub do_preformatted($$;$)
     $pre_style = $state->{'preformatted_stack'}->[-1]->{'pre_style'} if ($state->{'preformatted_stack'}->[-1]->{'pre_style'});
     $class = $state->{'preformatted_stack'}->[-1]->{'class'};
     print STDERR "BUG: !state->{'preformatted_stack'}->[-1]->{'class'}\n" unless ($class);
-    if (exists($::style_map_ref->{$leading_command}) and
-       !exists($Texi2HTML::Config::special_list_commands{$format}->{$leading_command}) and ($style_type{$leading_command} eq 'style'))
+    if (defined($leading_command) and $leading_command ne '' and !exists($Texi2HTML::Config::special_list_commands{$format}->{$leading_command}))
     {
-        $text = do_simple($leading_command, $text, $state,[$text]) if ($format eq 'itemize');
-    }
-    elsif (exists($::things_map_ref->{$leading_command}))
-    {
-        $leading_command_formatted = do_simple($leading_command, '', $state);
+        $leading_command_formatted = substitute_line("\@$leading_command\{\}", duplicate_formatting_state($state));
     }
     return &$Texi2HTML::Config::preformatted($text, $pre_style, $class, $leading_command, $leading_command_formatted, $preformatted_number, $format, $item_nr, $enumerate_type, $number,$state->{'command_stack'},$stack_at_beginning);
 }
@@ -8728,17 +8714,13 @@ sub parse_format_command($$)
     my $line = shift;
     my $tag = shift;
     my $command = '';
+
+    my $orig_line = $line;
     # macro_regexp
-    if ($line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z][\w-]*)(\{\})?\s/)
+    if ($line =~ s/^\s*\@([A-Za-z][\w-]*)(\{\})?\s*$//)
     {
-        my $macro = $1;
-        $macro = $alias{$macro} if (exists($alias{$macro}));
-        if ($::things_map_ref->{$macro} or defined($::style_map_ref->{$macro}))
-        {
-        # macro_regexp
-            $line =~ s/^\s*\@([A-Za-z][\w-]*)(\{\})?\s*//;
-            $command = $1;
-        }
+         $command = $1;
+         $command = $alias{$command} if (exists($alias{$command}));
     }
     return ('', $command) if ($line =~ /^\s*$/);
     chomp $line;
@@ -8953,7 +8935,7 @@ sub end_format($$$$$)
              $format_mismatch = 1;
              echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format  ", $line_nr);
         }
-        if ($Texi2HTML::Config::format_map{$format})
+        if (exists ($Texi2HTML::Config::format_map{$format}))
         { # table or list has a simple format
             add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}, $state));
         }
@@ -9919,6 +9901,8 @@ sub do_footnote($$$$)
     my $line_nr = shift;
 
     $text .= "\n";
+    $text = &$Texi2HTML::Config::footnote_texi($text, $doc_state, $style_stack)
+        if (defined($Texi2HTML::Config::footnote_texi));
 
 #print STDERR "FOOTNOTE($global_foot_num, $doc_state->{'outside_document'} or $doc_state->{'multiple_pass'}) $text";
     my $foot_state = duplicate_state($doc_state);
@@ -12956,9 +12940,9 @@ sub add_item($$$$)
     if (!$format->{'first'} or ($item->{'text'} =~ /\S/o))
     {
         my $formatted_command;
-        if (defined($format->{'command'}) and exists($::things_map_ref->{$format->{'command'}}))
+        if (defined($format->{'command'}) and $format->{'command'} ne '')# and exists($::things_map_ref->{$format->{'command'}}))
         {
-            $formatted_command = do_simple($format->{'command'}, '', $state);
+            $formatted_command = substitute_line("\@$format->{'command'}\{\}", duplicate_formatting_state($state));#do_simple($format->{'command'}, '', $state);
             $format->{'formatted_command'} = $formatted_command;
         }
 	#chomp($item->{'text'});

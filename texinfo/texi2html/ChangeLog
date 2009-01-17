@@ -1,3 +1,9 @@
+2009-01-17  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: consider the @itemize argument
+	either as an @-command or a leading text, not both, and remove
+	spaces in @itemize arguments better.
+
 2009-01-09  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: (dir) is added as up node only if automatic

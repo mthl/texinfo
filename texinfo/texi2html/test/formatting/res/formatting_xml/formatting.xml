@@ -292,7 +292,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -826,7 +826,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -1355,7 +1355,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -1885,7 +1885,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -2413,7 +2413,7 @@ After clickstyle &rArr;
 </para></item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><para> e&ndash;mph item
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
 </para></item>
 </itemize>
 
@@ -2941,8 +2941,8 @@ A quot---ation
 </item>
 </itemize>
 
-<itemize><itemfunction>&bullet;</itemfunction><item><emph> e--mph item
-</emph></item>
+<itemize><itemfunction><emph></emph></itemfunction><item> e--mph item
+</item>
 </itemize>
 
 <itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->

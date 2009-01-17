@@ -11,7 +11,7 @@
 <title>Test inter item ignored commands</title>
 
 
-<itemize><itemfunction>&bullet;</itemfunction><item><!-- comment in itemize -->
+<itemize><itemfunction><code></code></itemfunction><item><!-- comment in itemize -->
 <para><indexterm index="cp">also a cindex in itemize</indexterm></para></item>
 <item><para> e&ndash;mph item
 </para></item>

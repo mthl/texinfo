@@ -47,7 +47,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'split_level'}
 
   $copying_comment, $titlepage better and $documentdescription
-  $program_string
+  $program_string, $footnote_texi
   $heading arguments $begin_paragraph_texi $tab_item_texi $begin_style_texi
   $begin_special_region $end_special_region $simple_command $thing_command
   Also element formatting documentation, especially print_foot_navigation
