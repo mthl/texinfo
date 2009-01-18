@@ -105,16 +105,9 @@ and ignore things after a numerical arg
 <p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @exampleindent 6 @footnotestyle @footnotestyle </p>
 <p>Special arg for documentencoding. makeinfo complains, not tex
 </p>
-<p>@documentencoding  encoding name
-
-@frenchspacing 
-@frenchspacing 
-@fonttextsize 
-@everyheadingmarks on line following everyheadingmarks
-
-<code>false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>
+<p>@documentencoding @frenchspacing @frenchspacing @fonttextsize 
+@everyheadingmarks <code>false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>
 </p>
-
 <p><code>true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code>
 </p>
 
@@ -123,8 +116,8 @@ and ignore things after a numerical arg
 
 <p>And now finalout:
 Text line followed by finalout on the same line and another below 
-
-Text line after the finalout followed by a fianlout 
+</p>
+<p>Text line after the finalout followed by a fianlout 
 Text line after the text line followed by the finalout.
 </p>
 <p>Test text after finalout
@@ -137,8 +130,8 @@ Line after finalout
 noindent on the preceding line
   noindent after space at beginning of line
          page at beginning of line
-
-After page on it&rsquo;s own line.
+</p>
+<p>After page on it&rsquo;s own line.
 </p>
 <p>@page    @noindent @refill  @novalidate  something
 </p>

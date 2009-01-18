@@ -47,6 +47,7 @@ value_in_pass0_macros value_in_pass0_macros.texi -init makeinfo.init
 macros_in_pass0_macros macros_in_pass0_macros.texi -init makeinfo.init
 node-expand node-expand.texi -init makeinfo.init
 node-expand_xml node-expand.texi -init xml.init
+node-expand_info node-expand.texi -init info.init
 include-value include-value.texi
 value_in_misc value_in_misc_valid.texi --iftex
 macro_in_misc macro_in_misc.texi

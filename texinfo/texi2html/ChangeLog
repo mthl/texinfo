@@ -1,5 +1,13 @@
 2009-01-17  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl, texi2html.init: ignore more text and remove more
+	end of lines after @-commands.
+	Ignore @-commands prior from detecting empty lines, to allow
+	for stopping paragraphs when there are only @-commands to be 
+	ignored that don't swallow end of lines.
+
+2009-01-17  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: consider the @itemize argument
 	either as an @-command or a leading text, not both, and remove
 	spaces in @itemize arguments better.

@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.260 2009-01-17 14:30:42 pertusus Exp $
+# $Id: texi2html.pl,v 1.261 2009-01-18 00:59:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5007,10 +5007,8 @@ sub misc_command_text($$$$$$)
     }
 
     ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
-#print STDERR "ZZZZZZZZZZZ r $remaining ZZ a @$args ZZZZ s `$skipped'\n" if ($keep);
     return ($skipped.$remaining) if ($keep);
-    return $remaining if ($remaining ne '');
-    return undef;
+    return $remaining;
 }
 
 # merge the things appearing before the first @node or sectionning command
@@ -7431,7 +7429,7 @@ sub pass_text($$)
 	#print STDERR "after scan_line: $cline";
 	#dump_stack(\$text, \@stack, \%state);
         next if (@stack);
-        if ($text ne '' )
+        if ($text ne '')
         { 
             push @{$Texi2HTML::THIS_SECTION}, $text;
             $text = '';
@@ -11730,6 +11728,27 @@ sub scan_line($$$$;$)
                 }
             }
         }
+
+        # The commands to ignore are ignored now in case after ignoring them
+        # there is an empty line, to be able to stop the paragraph
+        my $leading_spaces = '';
+        while (1)
+        {
+            my $next_tag = next_tag($cline);
+            if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
+            {
+                $cline =~ s/^(\s*)\@$next_tag//;
+                $leading_spaces .= $1;
+                $cline = misc_command_text($cline, $next_tag, $stack, $state, $text, $line_nr);
+            }
+            else
+            {
+                last;
+            }
+        }
+        add_prev ($text, $stack, $leading_spaces);
+        return '' if (!defined($cline) or $cline eq '');
+
         my $top_stack = top_stack($stack);
         if (($top_stack->{'format'} and $top_stack->{'format'} eq 'menu_description') or $state->{'raw'} or $state->{'preformatted'}  or $state->{'no_paragraph'} or $state->{'keep_texi'} or $state->{'remove_texi'})
         { # empty lines are left unmodified in these contexts.

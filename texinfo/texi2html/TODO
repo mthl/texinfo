@@ -415,3 +415,5 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * @chapter following a @appendix still uses a number for numbering, and
   is not affected by the @appendix number
+
+* @syncodeindex and @finalout should swallow end of line

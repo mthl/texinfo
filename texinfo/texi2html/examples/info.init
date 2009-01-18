@@ -390,7 +390,10 @@ print STDERR "process_text(indent `$indent_text', in_para $in_para) line_char_co
          my $word = $1;
          $pending_word = '' if (!defined($pending_word));
          $pending_word .= $word;
-         if (length($pending_spaces)+length($pending_word) + $line_char_counter > $info_default_max_column)
+         # The $line_char_counter != 0 is here to cope with the case of a 
+         # word longer than $line_char_counter followed by more letters:
+         # a line would be passed each time some text is appended.
+         if ((length($pending_spaces)+length($pending_word) + $line_char_counter > $info_default_max_column) and $line_char_counter != 0)
          {
              $pending_spaces = '';
              $result .= "\n";
@@ -495,8 +498,6 @@ sub info_default_process_content($$)
    my $preformatted = 0;
    my $indent_level = 0;
    my $exdent_line = 0;
-   my $indent_para;
-   my $noindent_para;
    my $item_pending;
    my $in_exdent = 0;
    my $in_para = 0;
@@ -558,9 +559,9 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               {
                   $pending_spaces = '';
                   $in_para = 0;
-                  $indent_para = undef;
-                  $noindent_para = undef;
-                  $text_added = $content->{'end'};
+                  $info_state->{'indent_para'} = undef;
+                  $info_state->{'noindent_para'} = undef;
+                  $text_added = "\n" unless ($line_char_counter == 0);
                   $info_state->{'waiting_for_line'} = 1;
                   # FIXME needed?
                   goto new_text;
@@ -619,7 +620,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               {
                  ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
                  $content->{'begin'} = ' ' x $info_default_para_indent_length if 
-                    ($line_char_counter == 0 and  !($indent_level) and ($indent_para or (!$noindent_para and  $content->{'paragraph_in_element_nr'})));
+                    ($line_char_counter == 0 and  !($indent_level) and ($info_state->{'indent_para'} or (!$info_state->{'noindent_para'} and  $content->{'paragraph_in_element_nr'})));
                  $in_para = 1;
               }
               elsif ($content->{'command'} eq 'preformatted')
@@ -633,11 +634,11 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               }
               elsif ($content->{'command'} eq 'indent')
               {
-                  $indent_para = 1;
+                  $info_state->{'indent_para'} = 1;
               }
               elsif ($content->{'command'} eq 'noindent')
               {
-                  $noindent_para = 1;
+                  $info_state->{'noindent_para'} = 1;
               }
               elsif ($content->{'command'} eq 'image')
               {
@@ -1071,7 +1072,7 @@ sub info_default_paragraph($$$$$$$$$$$$)
     {
         
     }
-    return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, "\n", {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
+    return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, undef, {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
 }
 
 sub info_default_preformatted($$$$$$$$$$$$)
@@ -1797,8 +1798,8 @@ sub info_default_index_entry($$$$$$$$)
     my $max_len = $info_default_index_line_string_length{$info_index_entry_ref->{'index_name'}};
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
-print STDERR "GGGGGGGGGG name: $info_index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
-    if (length($result)+length($line_part) >  $info_default_max_column)
+#print STDERR "GGGGGGGGGG name: $info_index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
+    if (length($result)+length($line_part) +1 >  $info_default_max_column)
     {
         $result .= "\n" . ' ' x ($info_default_max_column - length($line_part)) ;
     }
