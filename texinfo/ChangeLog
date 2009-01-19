@@ -1,5 +1,12 @@
 2009-01-18  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\doitemize): try typesetting the item mark,
+	in case the user erroneously said @itemize @samp, to give an error
+	earlier.  Report from Bruce Korb, help-texinfo 02 Nov 2008 10:38:30.
+	* doc/texinfo.txi (itemize): document that @w{} (with the braces)
+	must be used to get an empty item mark.  (Clearly no one had
+	actually done this.)
+
 	* doc/texinfo.txi (Indexing Commands): document that index
 	commands should precede the indexed material.
 
