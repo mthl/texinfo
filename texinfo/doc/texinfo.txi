@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.233 2009-01-03 04:38:30 olegkat Exp $
+@c $Id: texinfo.txi,v 1.234 2009-01-19 00:42:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -38,7 +38,7 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
-1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009
 Free Software Foundation, Inc.
 
 @quotation
@@ -11877,9 +11877,10 @@ The @code{@@br} command is seldom used.
 @findex page
 
 A line containing only @code{@@page} starts a new page in a printed
-manual.  The command has no effect on Info files since they are not
-paginated.  An @code{@@page} command is often used in the @code{@@titlepage}
-section of a Texinfo file to start the copyright page.
+manual.  In other formats, without the concept of pages, it starts a
+new paragraph.  An @code{@@page} command is often used in the
+@code{@@titlepage} section of a Texinfo file to start the copyright
+page.
 
 
 @node group
@@ -19236,7 +19237,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.233 2009-01-03 04:38:30 olegkat Exp $
+$Id: texinfo.txi,v 1.234 2009-01-19 00:42:29 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19312,7 +19313,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.233 2009-01-03 04:38:30 olegkat Exp $
+@comment $Id: texinfo.txi,v 1.234 2009-01-19 00:42:29 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

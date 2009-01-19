@@ -1,3 +1,8 @@
+2009-01-18  Karl Berry  <karl@gnu.org>
+
+	* texinfo.txi (page): Document that this causes a paragraph
+	break in non-TeX.
+
 2009-01-05  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.txi (\key): Removed spurious space.  Patch from
