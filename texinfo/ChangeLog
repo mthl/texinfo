@@ -1,5 +1,8 @@
 2009-01-18  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Indexing Commands): document that index
+	commands should precede the indexed material.
+
 	* doc/txirefcard.tex: update copyright date.
 
 	* doc/texinfo.txi (@raggedright): minor tweaks.

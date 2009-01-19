@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
+@c $Id: texinfo.txi,v 1.237 2009-01-19 01:03:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9874,11 +9874,31 @@ to capitalize the first word of each entry.  But do not capitalize a
 case-sensitive name such as a C or Lisp function name or a shell
 command; that would be a spelling error.
 
-Whichever case convention you use, please use it consistently!
+Whichever case convention you use, use it consistently.
 
 Entries in indices other than the concept index are symbol names in
 programming languages, or program names; these names are usually
 case-sensitive, so use upper and lower case as required for them.
+
+Index entries should precede the visible material that is being
+indexed.  For instance:
+
+@example
+@cindex hello
+Hello, there!
+@end example
+
+@noindent Among other reasons, that way following indexing links (in
+whatever context) ends up before the material, where readers want to
+be, instead of after.
+
+@c if an index command follows the material, there can be a spurious
+@c space in the output, which can end up as a whole extra blank line
+@c in TeX.  This is the glue between the last character in the
+@c paragraph and the whatsit from the index.  The solution is to
+@c comment out the space, as in:
+@c     He said, "Hello, there!".@c
+@c     @cindex hello
 
 @cindex Index font types
 By default, entries for a concept index are printed in a small roman
@@ -19237,7 +19257,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
+$Id: texinfo.txi,v 1.237 2009-01-19 01:03:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19313,7 +19333,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
+@comment $Id: texinfo.txi,v 1.237 2009-01-19 01:03:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
