@@ -1,5 +1,9 @@
 2009-01-18  Karl Berry  <karl@gnu.org>
 
+        * doc/texinfo.tex (\headitemfont): new macro, synonym for @b.
+	* doc/texinfo.txi (Multitable Rows): document @headitemfont.
+	Suggestion from wl, 21 Oct 2008 09:02:51.
+
 	* doc/texinfo.tex (\doitemize): try typesetting the item mark,
 	in case the user erroneously said @itemize @samp, to give an error
 	earlier.  Report from Bruce Korb, help-texinfo 02 Nov 2008 10:38:30.
