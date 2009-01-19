@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.235 2009-01-19 00:44:17 karl Exp $
+@c $Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7852,7 +7852,7 @@ Is to @code{@@lisp} as @code{@@smallexample} is to @code{@@example}.
 
 @item @@display
 Display illustrative text.  The text is indented but not filled, and
-no font is selected (so, by default, the font is roman).@refill
+no font is selected (so, by default, the font is roman).
 
 @item @@smalldisplay
 Is to @code{@@display} as @code{@@smallexample} is to @code{@@example}.
@@ -7871,9 +7871,8 @@ undo the indentation of a line.
 The @code{@@flushleft} and @code{@@flushright} commands are used to line
 up the left or right margins of unfilled text.
 
-The @code{@@raggedright} command fills the text as usual, but only
-aligns it on the left margin.  This command has no effect in Info
-output.
+The @code{@@raggedright} command fills text as usual, but only
+justifies it on the left, leaving the right margin ragged.
 
 The @code{@@noindent} command may be used after one of the above
 constructs to prevent the following text from being indented as a new
@@ -8359,11 +8358,12 @@ left end ragged.
 @findex raggedright
 @cindex Ragged right
 
-The @code{@@raggedright} command fills the text as usual, but only
-lines up ends of lines on the left margin of a page.  The command is
+The @code{@@raggedright} fills text as usual, but the text is only
+justified on the left; the right margin is ragged.  The command is
 written on a line of its own, without braces.  The
 @code{@@raggedright} command is ended by @code{@@end raggedright} on a
-line of its own.  This command has no effect in Info output.
+line of its own.  This command has no effect in Info or HTML output,
+where text is always set ragged right.
 
 The @code{@@raggedright} command can be useful with paragraphs
 containing lists of commands with long names, when it is known in
@@ -19237,7 +19237,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.235 2009-01-19 00:44:17 karl Exp $
+$Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19313,7 +19313,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.235 2009-01-19 00:44:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.236 2009-01-19 00:51:47 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
