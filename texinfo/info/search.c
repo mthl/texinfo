@@ -1,7 +1,7 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.9 2008-06-11 09:55:42 gray Exp $
+   $Id: search.c,v 1.10 2009-01-23 09:37:40 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -70,16 +70,16 @@ copy_binding (SEARCH_BINDING *binding)
 
 /* Search forwards or backwards for the text delimited by BINDING.
    The search is forwards if BINDING->start is greater than BINDING->end. */
-long
-search (char *string, SEARCH_BINDING *binding)
+enum search_result
+search (char *string, SEARCH_BINDING *binding, long *poff)
 {
-  long result;
+  enum search_result result;
 
   /* If the search is backwards, then search backwards, otherwise forwards. */
   if (binding->start > binding->end)
-    result = search_backward (string, binding);
+    result = search_backward (string, binding, poff);
   else
-    result = search_forward (string, binding);
+    result = search_forward (string, binding, poff);
 
   return result;
 }
@@ -88,13 +88,13 @@ search (char *string, SEARCH_BINDING *binding)
    delimited by BINDING. The search is forwards if BINDING->start is greater
    than BINDING->end.
 
-   If PRET is specified, it receives a copy of BINDING at the end of a
+   If PEND is specified, it receives a copy of BINDING at the end of a
    succeded search.  Its START and END fields contain bounds of the found
    string instance. 
 */
-long
+enum search_result
 regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
-	       SEARCH_BINDING *pret)
+	       long *poff, SEARCH_BINDING *pend)
 {
   static char *previous_regexp = NULL;
   static char *previous_content = NULL;
@@ -164,7 +164,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
           char *buf = xmalloc (size);
           regerror (result, &preg, buf, size);
           info_error (_("regexp error: %s"), buf, NULL);
-          return -1;
+          return search_failure;
         }
 
       previous_regexp = xstrdup(regexp);
@@ -225,14 +225,15 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
         {
           if (matches[i].rm_so <= pos)
 	    {
-	      if (pret)
+	      if (pend)
 		{
-		  pret->buffer = binding->buffer;
-		  pret->flags = binding->flags;
-		  pret->start = matches[i].rm_so;
-		  pret->end = matches[i].rm_eo;
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
 		}
-	      return matches[i].rm_so;
+	      *poff = matches[i].rm_so;
+	      return search_success;
 	    }
         }
     }
@@ -244,28 +245,29 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
         {
           if (matches[i].rm_so >= pos)
             {
-	      if (pret)
+	      if (pend)
 		{
-		  pret->buffer = binding->buffer;
-		  pret->flags = binding->flags;
-		  pret->start = matches[i].rm_so;
-		  pret->end = matches[i].rm_eo;
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
 		}
               if (binding->flags & S_SkipDest)
-                return matches[i].rm_eo;
+                *poff = matches[i].rm_eo;
               else
-                return matches[i].rm_so;
+                *poff = matches[i].rm_so;
+	      return search_success;
             }
         }
     }
 
   /* not found */
-  return -1;
+  return search_not_found;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */
-long
-search_forward (char *string, SEARCH_BINDING *binding)
+enum search_result
+search_forward (char *string, SEARCH_BINDING *binding, long *poff)
 {
   register int c, i, len;
   register char *buff, *end;
@@ -310,7 +312,8 @@ search_forward (char *string, SEARCH_BINDING *binding)
             free (alternate);
           if (binding->flags & S_SkipDest)
             buff += len;
-          return buff - binding->buffer;
+          *poff = buff - binding->buffer;
+	  return search_success;
         }
 
       buff++;
@@ -319,12 +322,12 @@ search_forward (char *string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return -1;
+  return search_not_found;
 }
 
 /* Search for STRING backwards through the text delimited in BINDING. */
-long
-search_backward (char *input_string, SEARCH_BINDING *binding)
+enum search_result
+search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
 {
   register int c, i, len;
   register char *buff, *end;
@@ -379,7 +382,8 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
 
           if (binding->flags & S_SkipDest)
             buff -= len;
-          return 1 + buff - binding->buffer;
+          *poff = 1 + buff - binding->buffer;
+	  return search_success;
         }
 
       buff--;
@@ -389,7 +393,7 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return -1;
+  return search_not_found;
 }
 
 /* Find STRING in LINE, returning the offset of the end of the string.
@@ -400,7 +404,8 @@ string_in_line (char *string, char *line)
 {
   register int end;
   SEARCH_BINDING binding;
-
+  long offset;
+  
   /* Find the end of the line. */
   for (end = 0; line[end] && line[end] != '\n'; end++);
 
@@ -410,7 +415,9 @@ string_in_line (char *string, char *line)
   binding.end = end;
   binding.flags = S_FoldCase | S_SkipDest;
 
-  return search_forward (string, &binding);
+  if (search_forward (string, &binding, &offset) == search_success)
+    return offset;
+  return -1;
 }
 
 /* Return non-zero if STRING is the first text to appear at BINDING. */
@@ -419,7 +426,8 @@ looking_at (char *string, SEARCH_BINDING *binding)
 {
   long search_end;
 
-  search_end = search (string, binding);
+  if (search (string, binding, &search_end) != search_success)
+    return 0;
 
   /* If the string was not found, SEARCH_END is -1.  If the string was found,
      but not right away, SEARCH_END is != binding->start.  Otherwise, the

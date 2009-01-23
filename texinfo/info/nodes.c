@@ -1,8 +1,8 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.12 2008-10-05 14:56:12 gray Exp $
+   $Id: nodes.c,v 1.13 2009-01-23 09:37:40 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
-   2008 Free Software Foundation, Inc.
+   2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -409,11 +409,10 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
     binding.end = 0;
   binding.flags = S_FoldCase;
 
-  position = search_backward (TAGS_TABLE_END_LABEL, &binding);
-
-  /* If there is a tag table, find the start of it, and grovel over it
-     extracting tag information. */
-  if (position != -1)
+  if (search_backward (TAGS_TABLE_END_LABEL, &binding, &position)
+      == search_success)
+    /* If there is a tag table, find the start of it, and grovel over it
+       extracting tag information. */
     while (1)
       {
         long tags_table_begin, tags_table_end;
@@ -436,9 +435,8 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
         binding.end = 0;
 
         /* Locate the start of the tags table. */
-        position = search_backward (TAGS_TABLE_BEG_LABEL, &binding);
-
-        if (position == -1)
+        if (search_backward (TAGS_TABLE_BEG_LABEL, &binding, &position)
+	    != search_success)
           break;
 
         binding.end = position;
@@ -476,9 +474,8 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
             indirect.buffer = binding.buffer;
             indirect.flags = S_FoldCase;
 
-            position = search_backward (INDIRECT_TAGS_TABLE_LABEL, &indirect);
-
-            if (position == -1)
+            if (search_backward (INDIRECT_TAGS_TABLE_LABEL, &indirect,
+				 &position) != search_success)
               {
                 /* This file is malformed.  Give up. */
                 return;
@@ -622,7 +619,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 
   /* The tag table consists of lines containing node names and positions.
      Do each line until we find one that doesn't contain a node name. */
-  while ((position = search_forward ("\n", tmp_search)) != -1)
+  while (search_forward ("\n", tmp_search, &position) == search_success)
     {
       TAG *entry;
       char *nodedef;

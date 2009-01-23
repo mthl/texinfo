@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.13 2008-10-05 14:56:12 gray Exp $
+   $Id: info-utils.c,v 1.14 2009-01-23 09:37:40 gray Exp $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008
+   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -201,9 +201,8 @@ info_menu_of_node (NODE *node)
   tmp_search.flags = S_FoldCase;
 
   /* Find the start of the menu. */
-  position = search_forward (INFO_MENU_LABEL, &tmp_search);
-
-  if (position == -1)
+  if (search_forward (INFO_MENU_LABEL, &tmp_search, &position)
+      != search_success)
     return NULL;
 
   /* We have the start of the menu now.  Glean menu items from the rest
@@ -272,7 +271,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
 
   searching_for_menu_items = (mbscasecmp (label, INFO_MENU_ENTRY_LABEL) == 0);
 
-  while ((position = search_forward (label, &tmp_search)) != -1)
+  while (search_forward (label, &tmp_search, &position) == search_success)
     {
       int offset, start;
       char *refdef;

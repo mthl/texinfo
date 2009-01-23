@@ -1,3 +1,22 @@
+2009-01-23  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix behavior of info on invalid regular expressions.
+	
+	* info/search.h (search_result): New enum.
+	(search, regexp_search):
+	(search_forward, search_backward): Return enum search_result.
+	* info/search.c (search, regexp_search):
+	(search_forward, search_backward): Return enum search_result.
+	All callers updated.
+	* info/session.c (info_search_in_node_internal): Return enum
+	search_result. All callers updated.
+	(info_search_internal): Stop immediately if the search returns
+	search_failure. This happens if the user specified an invalid
+	regular expression.
+	
+	* info/dir.c, info/info-utils.c, info/man.c, info/nodes.c: Update
+	uses of search functions.
+
 2009-01-18  Karl Berry  <karl@gnu.org>
 
         * doc/texinfo.tex (\headitemfont): new macro, synonym for @b.

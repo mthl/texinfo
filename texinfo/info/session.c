@@ -1,8 +1,8 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.45 2008-10-09 12:20:28 gray Exp $
+   $Id: session.c,v 1.46 2009-01-23 09:37:40 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008 Free Software Foundation, Inc.
+   2004, 2007, 2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2671,16 +2671,14 @@ DECLARE_INFO_COMMAND (info_find_menu, _("Move to the start of this node's menu")
   binding.end = window->node->nodelen;
   binding.flags = S_FoldCase | S_SkipDest;
 
-  position = search (INFO_MENU_LABEL, &binding);
-
-  if (position == -1)
-    info_error (msg_no_menu_node, NULL, NULL);
-  else
+  if (search (INFO_MENU_LABEL, &binding, &position) == search_success)
     {
       window->point = position;
       window_adjust_pagetop (window);
       window->flags |= W_UpdateWindow;
     }
+  else
+    info_error (msg_no_menu_node, NULL, NULL);
 }
 
 /* Visit as many menu items as is possible, each in a separate window. */
@@ -3729,26 +3727,25 @@ file_buffer_of_window (WINDOW *window)
   return NULL;
 }
 
-/* Search for STRING in NODE starting at START.  Return -1 if the string
-   was not found, or the location of the string if it was.  If WINDOW is
-   passed as non-null, set the window's node to be NODE, its point to be
-   the found string, and readjust the window's pagetop.  The DIR argument
-   says which direction to search in.  If it is positive, search
-   forward, else backwards.
+/* Search for STRING in NODE starting at START.  If the string was found,
+   return its location in POFF.  If WINDOW is passed as non-null, set the
+   window's node to be NODE, its point to be the found string, and readjust
+   the window's pagetop.  The DIR argument says which direction to search
+   in.  If it is positive, search forward, else backwards.
 
    The last argument, RESBND, makes sense only when USE_REGEX is set.
    If the regexp search succeeds, RESBND is filled with the final state
    of the search binding.  In particular, its START and END fields contain
    bounds of the found string instance.
 */
-static long
+static enum search_result
 info_search_in_node_internal (char *string, NODE *node, long int start,
 			      WINDOW *window, int dir, int case_sensitive,
-			      SEARCH_BINDING *resbnd)
+			      long *poff, SEARCH_BINDING *resbnd)
 {
   SEARCH_BINDING binding;
-  long offset;
-
+  enum search_result result;
+  
   binding.buffer = node->contents;
   binding.start = start;
   binding.end = node->nodelen;
@@ -3769,27 +3766,30 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
   if (isearch_is_active)
     binding.flags |= S_SkipDest;
 
-  offset = (use_regex ? 
-            regexp_search (string, &binding, node->nodelen, resbnd):
-            search (string, &binding));
-
-  if (offset != -1 && window)
+  result = (use_regex ? 
+	    regexp_search (string, &binding, node->nodelen, poff, resbnd):
+	    search (string, &binding, poff));
+  if (result == search_success && window)
     {
       set_remembered_pagetop_and_point (window);
       if (window->node != node)
         window_set_node_of_window (window, node);
-      window->point = offset;
+      window->point = *poff;
       window_adjust_pagetop (window);
     }
-  return offset;
+  return result;
 }
 
 long
 info_search_in_node (char *string, NODE *node, long int start,
 		     WINDOW *window, int dir, int case_sensitive)
 {
-  return info_search_in_node_internal (string, node, start,
-				       window, dir, case_sensitive, NULL);
+  long offset;
+  if (info_search_in_node_internal (string, node, start,
+				    window, dir, case_sensitive,
+				    &offset, NULL) == search_success)
+    return offset;
+  return -1;
 }
 
 /* Search NODE, looking for the largest possible match of STRING.  Start the
@@ -3845,7 +3845,8 @@ info_search_internal (char *string, WINDOW *window,
   FILE_BUFFER *file_buffer;
   char *initial_nodename;
   long ret, start;
-
+  enum search_result result;
+  
   file_buffer = file_buffer_of_window (window);
   initial_nodename = window->node->nodename;
 
@@ -3859,16 +3860,23 @@ info_search_internal (char *string, WINDOW *window,
        ``finding'' a string that is already under the cursor, anyway.  */
     start = window->point + dir;
   
-  ret = info_search_in_node_internal
-        (string, window->node, start, window, dir,
-         case_sensitive, resbnd);
-  
-  if (ret != -1)
+  result = info_search_in_node_internal
+             (string, window->node, start, window, dir,
+	      case_sensitive, &ret, resbnd);
+
+  switch (result)
     {
+    case search_success:
       /* We won! */
       if (!echo_area_is_active && !isearch_is_active)
         window_clear_echo_area ();
       return 0;
+
+    case search_not_found:
+      break;
+      
+    case search_failure:
+      return -1;
     }
   
   start = 0;
@@ -3966,12 +3974,12 @@ info_search_internal (char *string, WINDOW *window,
           if (dir < 0)
             start = tag->nodelen;
 
-          ret =
+          result =
             info_search_in_node_internal (string, node, start, window, dir,
-					  case_sensitive, resbnd);
+					  case_sensitive, &ret, resbnd);
 
           /* Did we find the string in this node? */
-          if (ret != -1)
+          if (result == search_success)
             {
               /* Yes!  We win. */
               remember_window_and_node (window, node);
@@ -3989,7 +3997,8 @@ info_search_internal (char *string, WINDOW *window,
              our starting point. */
           free (node);
 
-          if (strcmp (initial_nodename, tag->nodename) == 0)
+          if (result == search_failure
+	      || strcmp (initial_nodename, tag->nodename) == 0)
             return -1;
         }
     }
