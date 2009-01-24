@@ -463,6 +463,7 @@ sub info_default_store_pending($$$;$)
 my $info_default_end_sentence_character = quotemeta('.');
 my $info_default_indent_length = 5;
 my $info_default_para_indent_length = 3;
+my $info_default_first_para_indent = 'none';
 
 sub info_default_output($)
 {
@@ -510,7 +511,8 @@ sub info_default_process_content($$)
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-
+my  $waiting_for_line_text = 'undef';
+$waiting_for_line_text = $info_state->{'waiting_for_line'} if (defined($info_state->{'waiting_for_line'}));
 my $line_char_counter_text = 'undef';
 $line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
 my $text_length = '';
@@ -519,7 +521,7 @@ my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
 my $in_node_count = 0;
 $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
-      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, indent_level $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text\n";
+      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, indent_lvl $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text waiting_for_line $waiting_for_line_text\n";
 my $pending_word_text = 'undef';
 $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
@@ -560,7 +562,6 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   $pending_spaces = '';
                   $in_para = 0;
                   $info_state->{'indent_para'} = undef;
-                  $info_state->{'noindent_para'} = undef;
                   $text_added = "\n" unless ($line_char_counter == 0);
                   $info_state->{'waiting_for_line'} = 1;
                   # FIXME needed?
@@ -568,6 +569,8 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               }
               elsif ($content->{'command'} eq 'preformatted')
               {
+               # if preformatted doesn't end with a newline, it is added here
+                  $text_added = "\n" unless ($line_char_counter == 0);
                   $preformatted--;
               }
           }
@@ -618,9 +621,17 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               }
               elsif ($content->{'command'} eq 'paragraph')
               {
-                 ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
-                 $content->{'begin'} = ' ' x $info_default_para_indent_length if 
-                    ($line_char_counter == 0 and  !($indent_level) and ($info_state->{'indent_para'} or (!$info_state->{'noindent_para'} and  $content->{'paragraph_in_element_nr'})));
+                 my $paragraphindent = $Texi2HTML::THISDOC{'paragraphindent'};
+                 $paragraphindent = $Texi2HTML::Config::PARAGRAPHINDENT if (!defined($paragraphindent));
+                 $paragraphindent = 0 if ($paragraphindent eq 'none');
+                 if ($paragraphindent ne 'asis')
+                 {
+                    ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                 }
+                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
+                 {
+                    $content->{'begin'} = ' ' x $paragraphindent;
+                 }
                  $in_para = 1;
               }
               elsif ($content->{'command'} eq 'preformatted')
@@ -638,7 +649,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               }
               elsif ($content->{'command'} eq 'noindent')
               {
-                  $info_state->{'noindent_para'} = 1;
+                  $info_state->{'indent_para'} = 0;
               }
               elsif ($content->{'command'} eq 'image')
               {
@@ -688,6 +699,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
                       {
                            $text_added ="\n";
                            $info_state->{'waiting_for_line'} = 0;
+                  #         $text_added .= "\n" if ($line_char_counter != 0);
                       }
                   }
                   else
@@ -708,8 +720,10 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
       }
       else
       {
+          my $chomped_text = $text_added;
+          chomp($chomped_text);
 print STDERR "text_added `$text_added' line_char_counter $line_char_counter\n";
-          if ($text_added ne '' and $line_char_counter == 0)
+          if ($text_added ne '' and $chomped_text ne '' and $line_char_counter == 0)
           {
 print STDERR "                     indent_length $indent_length\n";
               $text_added =  ' ' x $indent_length.$text_added;
@@ -717,6 +731,8 @@ print STDERR "                     indent_length $indent_length\n";
           $line_char_counter += length($text_added);
       }
     new_text:
+      # from here, the next cmmand is available
+      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
 print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       if ($text_added ne '')
       {
@@ -736,14 +752,15 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
          $line_char_counter = 0;
          $in_exdent = 0;
       }
-      elsif ($line_passed)
-      {# in that case we added more than one line, the $line_char_counter
-       # is reset to the last line length.
-         $line_char_counter = length($last_line);
+      else
+      {
+         if ($line_passed)
+         {# in that case we added more than one line, the $line_char_counter
+          # is reset to the last line length.
+            $line_char_counter = length($last_line);
+         }
       }
       $all_line_passed += $line_passed;
-    iterate:
-      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
    }
    return ($length, $result, $all_line_passed);
 }
@@ -1318,6 +1335,7 @@ sub info_default_print_page_foot($)
    my $fh = shift;
    my $state = $Texi2HTML::THISDOC{'state'};
    my $info_state = info_default_get_state ($state);
+   return unless (defined ($info_state->{'pending_tags'}));
    # makeinfo seems to add systematically an additional \n, done just below
    print $fh "\n\x{1F}\nTag Table:\n";
    # 
