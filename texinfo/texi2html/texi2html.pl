@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.261 2009-01-18 00:59:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.262 2009-01-24 00:35:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -263,6 +263,7 @@ $IGNORE_PREAMBLE_TEXT
 @CSS_REFS
 $INLINE_CONTENTS
 $INLINE_INSERTCOPYING
+$PARAGRAPHINDENT
 );
 
 # customization variables
