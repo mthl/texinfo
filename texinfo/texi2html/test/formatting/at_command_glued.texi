@@ -1,0 +1,41 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename at_command_glued.info
+
+@node Top
+@top @@-commmands with some text preceding and following them
+
+at@@.
+TeX@TeX{}TeX.
+code@code{in code}code.
+acronym@acronym{ABC, aaa bb cc}acronym.
+acronym2@acronym{ABC}acronym.
+email@email{somebody, mali}email.
+ref@ref{Top}ref.
+Foornote@footnote{in footnote}after footnote.
+accent@^{@dotless{i}}accent.
+and star@*star.
+noindent@noindent after noindent
+sp@sp 4
+anchor@anchor{anchor}anchor
+index@cindex index
+
+in example
+@example
+at@@.
+TeX@TeX{}TeX.
+code@code{in code}code.
+acronym@acronym{ABC, aaa bb cc}acronym.
+acronym2@acronym{ABC}acronym.
+email@email{somebody, mali}email.
+ref@ref{Top}ref.
+Foornote@footnote{in footnote}after footnote.
+accent@^{@dotless{i}}accent.
+and star@*star.
+noindent@noindent after noindent
+sp@sp 4
+anchor@anchor{anchor ex}anchor
+index@cindex index ex
+@end example
+
+bye@bye

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.179 2009-01-24 00:35:08 pertusus Exp $
+# $Id: texi2html.init,v 1.180 2009-02-03 12:32:38 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3031,7 +3031,8 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
 
 %stop_paragraph_command = (
  'titlefont' => 1,
- 'insertcopying' => 1
+ 'insertcopying' => 1,
+ 'sp' => 1
 );
 
 # on bug-texinfo verified that code_style shouldn't be used for anything
@@ -4202,7 +4203,7 @@ foreach my $key (keys(%def_map))
         'oddheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
         'evenfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
         'oddfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-        'sp' => {'skip' => 'whitespace', 'arg' => 1}, # no arg 
+        'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
                                     # at the end of line or a numerical arg
         # formatting
         'page' => {}, # no arg (pagebreak)

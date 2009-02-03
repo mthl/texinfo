@@ -48,3 +48,4 @@ weird_accents_encoding weird_accents.texi -init enable_encoding.init
 ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
 nodetest_info nodetest.texi -init info.init
+japanese japanese.texi

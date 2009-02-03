@@ -321,6 +321,7 @@ sub get_string($;$$)
         $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
     }
 
+    my $translated_string;
     my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;
     if (! exists($T2H_LANGUAGES->{'en'}))
     {
@@ -343,34 +344,38 @@ sub get_string($;$$)
         if (defined ($T2H_LANGUAGES->{$language}->{$string}) and
            ($T2H_LANGUAGES->{$language}->{$string} ne ''))
         {
-            $string = $T2H_LANGUAGES->{$language}->{$string};
+            $translated_string = $T2H_LANGUAGES->{$language}->{$string};
         }
         elsif (defined ($T2H_LANGUAGES->{'en'}->{$string}) and
             ($T2H_LANGUAGES->{'en'}->{$string} ne ''))
         {
-            $string = $T2H_LANGUAGES->{'en'}->{$string};
+            $translated_string = $T2H_LANGUAGES->{'en'}->{$string};
+        }
+        else
+        {
+            $translated_string = $string;
         }
     }
-    return main::substitute_line($string, $state) unless (defined($arguments) or !keys(%$arguments));
+    return main::substitute_line($translated_string, $state) unless (defined($arguments) or !keys(%$arguments));
     # if there are arguments, we must protect the %{arg} constructs before
     # doing substitute_line. So there is a first pass here to change %{arg} 
     # to %@{arg@}
     my $result = '';
     if (!$state->{'keep_texi'})
     {
-        while ($string)
+        while ($translated_string)
         {
-            if ($string =~ s/^([^%]*)%//)
+            if ($translated_string =~ s/^([^%]*)%//)
             {
                 $result .= $1 if (defined($1));
                 $result .= '%';
-                if ($string =~ s/^%//)
+                if ($translated_string =~ s/^%//)
                 {
                      $result .= '%';
                 }
-                elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
+                elsif ($translated_string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
                 {
-                     $string =~ s/^\{(\w+)\}//;
+                     $translated_string =~ s/^\{(\w+)\}//;
                      $result .= "\@\{$1\@\}";
                 }
                 else
@@ -381,28 +386,28 @@ sub get_string($;$$)
             }
             else 
             {   
-                $result .= $string;
+                $result .= $translated_string;
                 last;
             }
         }
         # the arguments are not already there. But the @-commands in the 
         # strings are substituted.
-        $string = main::substitute_line($result, $state);
+        $translated_string = main::substitute_line($result, $state);
     }
     # now we substitute the arguments 
     $result = '';
-    while ($string)
+    while ($translated_string)
     {
-        if ($string =~ s/^([^%]*)%//)
+        if ($translated_string =~ s/^([^%]*)%//)
         {
             $result .= $1 if (defined($1));
-            if ($string =~ s/^%//)
+            if ($translated_string =~ s/^%//)
             {
                  $result .= '%';
             }
-            elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
+            elsif ($translated_string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
             {
-                 $string =~ s/^\{(\w+)\}//;
+                 $translated_string =~ s/^\{(\w+)\}//;
                  $result .= $arguments->{$1};
             }
             else
@@ -413,7 +418,7 @@ sub get_string($;$$)
         }
         else 
         {   
-            $result .= $string;
+            $result .= $translated_string;
             last;
         }
     }

@@ -232,6 +232,8 @@ $list_item          = \&info_default_list_item;
 $format_list_item_texi = \&info_default_format_list_item_texi;
 $format             = \&info_default_format;
 $tab_item_texi      = \&info_default_tab_item_texi;
+$acronym_like       = \&info_default_acronym_like;
+$sp                 = \&info_default_sp;
 
 
 sub info_default_accent($$$)
@@ -268,10 +270,13 @@ sub info_default_copying_comment($$$$)
     return $copying_text;
 }
 
-sub info_default_count_lines($)
+sub info_default_count_lines($$)
 {
       my $text = shift;
+      my $info_state = shift;
       my @lines = split /^/, $text;
+      # don't accept empty text.
+      @lines = ('') if (!@lines);
       my $line_passed = scalar(@lines);
       $line_passed-- if ($line_passed);
       my $end_of_line = 0;
@@ -280,7 +285,11 @@ sub info_default_count_lines($)
          $line_passed++;
          $end_of_line = 1;
       }
-      return ($line_passed, $end_of_line,$lines[-1]);
+      if (($#lines > 1) and !$end_of_line and ($lines[-1] !~ /\S/) and ($lines[-2] !~ /\S/))
+      {
+         $info_state->{'blank_line'} = 1;
+      }
+      return ($line_passed, $end_of_line, $lines[-1]);
 }
 
 # FIXME initialize
@@ -344,6 +353,7 @@ print STDERR "process_text(indent `$indent_text', in_para $in_para) line_char_co
    if (!$in_para)
    {
        my $chomped_text = $text;
+       chomp($chomped_text);
        if ($line_char_counter == 0 and $chomped_text ne '')
        {
            $text = $indent_text.$text;
@@ -445,10 +455,6 @@ sub info_default_store_pending($$$;$)
    my $indent_text = '';
    $indent_text = ' ' x $indent_length if (defined($indent_length));
 
-   if ($line_char_counter == 0)
-   {
-      $pending_spaces = $indent_text . $pending_spaces;
-   }
    my $result = $pending_spaces;
    $pending_spaces = '';
    if (defined($pending_word))
@@ -456,6 +462,14 @@ sub info_default_store_pending($$$;$)
       $result .= $pending_word;
       $pending_word = undef;
    }
+
+   my $chomped_result = $result;
+   chomp ($chomped_result);
+   if ($line_char_counter == 0 and $chomped_result ne '')
+   {
+      $result = $indent_text . $result;
+   }
+
    $line_char_counter += length($result);
    return ($line_char_counter, $pending_spaces, $pending_word, $result);
 }
@@ -498,7 +512,6 @@ sub info_default_process_content($$)
    my $pending_word;
    my $preformatted = 0;
    my $indent_level = 0;
-   my $exdent_line = 0;
    my $item_pending;
    my $in_exdent = 0;
    my $in_para = 0;
@@ -511,8 +524,6 @@ sub info_default_process_content($$)
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-my  $waiting_for_line_text = 'undef';
-$waiting_for_line_text = $info_state->{'waiting_for_line'} if (defined($info_state->{'waiting_for_line'}));
 my $line_char_counter_text = 'undef';
 $line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
 my $text_length = '';
@@ -521,7 +532,7 @@ my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
 my $in_node_count = 0;
 $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
-      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, indent_lvl $indent_level exdent_line $exdent_line line_char_counter $line_char_counter_text waiting_for_line $waiting_for_line_text\n";
+      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, indent_lvl $indent_level in_exdent $in_exdent line_char_counter $line_char_counter_text only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'}\n";
 my $pending_word_text = 'undef';
 $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
@@ -547,23 +558,23 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               if ($info_default_indented_commands{$content->{'command'}})
               {
                   $indent_level--;
-                  # don't do that for quotations, quotations already have
-                  # end of paragraph end of lines.
                   $text_added = $content->{'end'} if defined($content->{'end'});
-                  if ($indent_level > 0 and $complex_format_map->{$content->{'command'}})
+                  if ($indent_level > 0 and !$info_state->{'blank_line'})
                   {
                      $text_added .= "\n";
                   }
-                  $info_state->{'waiting_for_line'} = 1 if ($indent_level == 0);
                   goto new_text;
               }
               if ($content->{'command'} eq 'paragraph')
               {
+                  my $pending;
+                  ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
+                  $text_added = $pending if (defined($pending));
+                  $text_added =~ s/\s*$//;
                   $pending_spaces = '';
                   $in_para = 0;
                   $info_state->{'indent_para'} = undef;
-                  $text_added = "\n" unless ($line_char_counter == 0);
-                  $info_state->{'waiting_for_line'} = 1;
+                  $text_added .= "\n" unless (($line_char_counter + length($text_added)) == 0);
                   # FIXME needed?
                   goto new_text;
               }
@@ -579,21 +590,22 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       {
           if ($content->{'command'})
           { 
-              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command')
+              my $pending_added_length = 0;
+              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp')
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
                   # here spaces out of any environment are ignored.
-                  if ($in_para or $preformatted or $pending !~ /^\s*$/)
+                  if ($in_para or $preformatted or $pending =~ /\S/)
                   { # this has to be done before the anchor related code
                     # to have the right count.
-                      $length += length($pending);
-                      $result .= $pending;
+                      $pending_added_length += length($pending);
+                      $text_added .= $pending;
                   }
               }
               if ($content->{'command'} eq 'anchor')
               {
-                  $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'};
+                  $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_length;
                   push @{$info_state->{'pending_tags'}}, $content->{'anchor_reference'};
               }
               elsif ($content->{'command'} eq 'index_label')
@@ -637,11 +649,23 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               elsif ($content->{'command'} eq 'preformatted')
               {
                   $preformatted++;
-                  $in_exdent = 0;
               }
               elsif ($content->{'command'} eq 'exdent')
               {
-                  $in_exdent = 1;
+                  # if an end of line is added, in_exdent is set to 2 and
+                  # set to one when processing the end of line that was just
+                  # added, and set to 0 at the end of the line.
+                  # if there is no end of line added, it is only set to 1.
+                  if ($line_char_counter != 0)
+                  {
+                     $text_added .= "\n";
+                     $in_exdent = 2;
+                  } 
+                  else
+                  {
+                     $in_exdent = 1;
+                  }
+                 goto new_text;
               }
               elsif ($content->{'command'} eq 'indent')
               {
@@ -651,9 +675,9 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               {
                   $info_state->{'indent_para'} = 0;
               }
-              elsif ($content->{'command'} eq 'image')
+              elsif ($content->{'command'} eq 'image' or $content->{'command'} eq 'sp')
               {
-                  $text_added .=  $content->{'text'};
+                  $text_added .= $content->{'text'};
                   goto new_text;
               }
               elsif ($content->{'command'} eq 'item' and exists $format_map{$content->{'format'}})
@@ -662,7 +686,10 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
-                  $info_state->{'waiting_for_line'} = 0 if ($indent_level == 0);
+                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
+                  {
+                     $text_added .= "\n";
+                  }
                   $indent_level++;
               }
           }
@@ -693,19 +720,16 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               else
               {
                   my $chomped_text = $content->{'text'};
-                  if ($chomped_text =~ /^\s*$/ and chomp($chomped_text))
+                  if ($chomped_text !~ /\S/ and chomp($chomped_text))
                   {
-                      if ($info_state->{'waiting_for_line'})
+                      if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'})
                       {
-                           $text_added ="\n";
-                           $info_state->{'waiting_for_line'} = 0;
-                  #         $text_added .= "\n" if ($line_char_counter != 0);
+                           $text_added .= "\n";
                       }
                   }
                   else
                   { # exdent, item not in paragraph nor in preformatted
                        $text_added .= $content->{'text'};
-                       $info_state->{'waiting_for_line'} = 0;
                   }
               }
 # unless (!defined($line_char_counter) and !$preformatted and $content->{'text'} =~ /^\s*$/);
@@ -721,9 +745,13 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
       else
       {
           my $chomped_text = $text_added;
+          #if (chomp($chomped_text))
+          #{
+          #    $in_exdent = 0;
+          #}
           chomp($chomped_text);
 print STDERR "text_added `$text_added' line_char_counter $line_char_counter\n";
-          if ($text_added ne '' and $chomped_text ne '' and $line_char_counter == 0)
+          if ($chomped_text ne '' and $line_char_counter == 0)
           {
 print STDERR "                     indent_length $indent_length\n";
               $text_added =  ' ' x $indent_length.$text_added;
@@ -737,20 +765,18 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       if ($text_added ne '')
       {
          $item_pending = undef;
-         if ($exdent_line)
-         {
-             $exdent_line = 0;
-             $in_exdent = 1;
-         }
       }
       $result .= $text_added;
       $length += length($text_added);
-      my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($text_added);
-
+      $info_state->{'blank_line'} = 0 if ($text_added =~ /\S/);
+      my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($text_added, $info_state);
+      # only_space is checked in all the conditionals
       if ($end_of_line)
       {
          $line_char_counter = 0;
-         $in_exdent = 0;
+         $in_exdent-- if ($in_exdent);
+         $info_state->{'blank_line'} = 1 if ($info_state->{'only_spaces'} and ($last_line !~ /\S/));
+         $info_state->{'only_spaces'} = 1;
       }
       else
       {
@@ -758,6 +784,19 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
          {# in that case we added more than one line, the $line_char_counter
           # is reset to the last line length.
             $line_char_counter = length($last_line);
+            $in_exdent = 0;
+            if ($last_line !~ /\S/)
+            {
+               $info_state->{'only_spaces'} = 1;
+            }
+            else
+            {
+               $info_state->{'only_spaces'} = 0;
+            }
+         }
+         else
+         {
+            $info_state->{'only_spaces'} = 0 if ($last_line =~ /\S/);
          }
       }
       $all_line_passed += $line_passed;
@@ -775,6 +814,11 @@ print STDERR "NEW state\n";
       my ($current_command, $top_stack);
       $info_default_state_map{$state} = {};
       info_default_reset_state($info_default_state_map{$state});
+      # since the page head always leave a blank line, and the state may be
+      # used for text right after the page head, we set it to 1 here. 
+      # it may be wrong in other contexts, to be seen.
+      $info_default_state_map{$state}->{'blank_line'} = 1;
+      $info_default_state_map{$state}->{'only_spaces'} = 1;
       $info_default_state_map{$state}->{'nr'} = $state_nr;
       $info_default_state_map{$state}->{'state'} = $state;
       $state_nr++;
@@ -1061,6 +1105,7 @@ sub info_default_print_page_head($)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
     $info_state->{'offset_in_file'} = length($result);
+    $info_state->{'blank_line'} = 1 if ($Texi2HTML::THISDOC{'copying_comment'} eq '');
     print $fh $result;
 }
 
@@ -1148,6 +1193,7 @@ sub info_default_node_line($$)
     $result .= "\n\n";
     $info_state->{'line_count'} = 3;
     $info_state->{'offset_in_file'} += length($result);
+    $info_state->{'blank_line'} = 1;
     return $result;
 }
 
@@ -1215,19 +1261,17 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $heading = $text . "\n" . 
        ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n";
+    if (!$info_state->{'blank_line'})
+    {
+       $heading = "\n" .$heading;
+       $info_state->{'line_count'}++;
+    }
     if (length($text))
     {
        $heading .= "\n";
        $info_state->{'line_count'}++;
+       $info_state->{'blank_line'} = 1;
     }
-    if ($info_state->{'waiting_for_line'})
-    {
-       $heading = "\n" .$heading;
-       $info_state->{'waiting_for_line'} = 0;
-       $info_state->{'line_count'}++;
-    }
-    # FIXME use state for headings appearing somewhere strange. + maybe
-    # waiting_for_line should also be used for headings
     $info_state->{'offset_in_file'} += length($heading);
     $info_state->{'line_count'} += 2;
     return $heading;
@@ -1381,12 +1425,11 @@ sub info_default_print_section
     my $nw = main::print_lines($fh);
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
-    if ($info_state->{'waiting_for_line'})
+    if (!$info_state->{'blank_line'})
     {
        my $end = "\n";
        $info_state->{'offset_in_file'} += length($end);
        $info_state->{'line_count'}++;
-       $info_state->{'waiting_for_line'} = 0;
        print $fh "$end";
     }
     if (@info_default_pending_footnotes)
@@ -1435,7 +1478,7 @@ sub info_default_print_section
                $line = shift @$lines;
                $footnote_result .= $line;
             }
-            my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($footnote_result);
+            my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($footnote_result, $info_state);
             if ($line_passed == 0)
             {# certainly out of paragraph commands
                $footnote_result =~ s/\s*$//;
@@ -1485,11 +1528,10 @@ sub info_default_end_special_region($$$)
     my $text = shift;
     my $info_state = info_default_get_state ($state);
     my $end = '';
-    if ($info_state->{'waiting_for_line'})
+    if (!$info_state->{'blank_line'})
     {
        $end = "\n";
        $info_state->{'offset_in_file'} += length($end);
-       $info_state->{'waiting_for_line'} = 0;
     }
     return $text.$end;
 }
@@ -1741,18 +1783,19 @@ sub info_default_print_index($$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
     my $before = '';
-    if ($info_state->{'waiting_for_line'})
+    if (!$info_state->{'blank_line'})
     {
        $before = "\n";
        $info_state->{'offset_in_file'} += length($before);
        $info_state->{'line_count'}++;
-       $info_state->{'waiting_for_line'} = 0;
+       $info_state->{'blank_line'} = 1;
     }
     return $before if (!defined($text));
     my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n" .$text."\n";
     $info_state->{'offset_in_file'} += length($result);
-    # FIXME set waiting_for_line?
-    my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($result);
+
+    my ($line_passed, $end_of_line, $last_line) = info_default_count_lines($result, $info_state);
+    $info_state->{'blank_line'} = 1 if ($last_line !~ /\S/ and $end_of_line);
     $info_state->{'line_count'} += $line_passed;
     return $before.$result;
 }
@@ -1956,5 +1999,15 @@ print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $li
    info_default_store_text ($state, '', $command, {'format' => $format});
    return undef;
 }
+
+sub info_default_sp($$)
+{
+   my $number = shift;
+   my $preformatted = shift;
+   my $result = "\n" x $number;
+   my $state = $Texi2HTML::THISDOC{'state'};
+   return info_default_store_text($state,$result,'sp');
+}
+
 
 1;

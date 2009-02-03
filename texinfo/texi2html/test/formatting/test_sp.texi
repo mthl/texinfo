@@ -1,0 +1,33 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename test_sp.info
+
+@node Top
+@top Test @@sp
+
+Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+
+sp after para
+@sp 1
+
+@example
+Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+@end example
+
+@bye

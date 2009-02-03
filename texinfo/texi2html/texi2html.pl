@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.262 2009-01-24 00:35:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.263 2009-02-03 12:32:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7802,7 +7802,9 @@ sub open_out($)
 	else
         {
             binmode(FILE, ':bytes');
+            #binmode(FILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
         }
+        # FIXME is it useful when in utf8?
         binmode(FILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     return *FILE;
@@ -11736,6 +11738,7 @@ sub scan_line($$$$;$)
         while (1)
         {
             my $next_tag = next_tag($cline);
+            close_paragraph($text, $stack, $state, $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_tag} and !$state->{'keep_texi'});
             if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
             {
                 $cline =~ s/^(\s*)\@$next_tag//;
