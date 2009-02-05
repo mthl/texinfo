@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.263 2009-02-03 12:32:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.264 2009-02-05 11:18:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -12384,7 +12384,7 @@ sub scan_line($$$$;$)
                 }
                 if ($format)
                 {
-                    my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $cline, $format->{'prepended'}, $format->{'command'});
+                    my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $cline, $format->{'prepended'}, $format->{'command'}, $format->{'number'});
                     $cline = $line if (defined($line));
                     if ($open_command)
                     { 

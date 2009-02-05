@@ -3191,13 +3191,14 @@ then @code{@@bullet} will not be applied to @code{an item}.
 More control of the text before formatting of the line or the item is 
 achieved with the following function reference:
 
-@deftypefn {Function Reference} ($result_line, $open_command) format_list_item_texi $format $line $prepended $command
+@deftypefn {Function Reference} ($result_line, $open_command) format_list_item_texi $format $line $prepended $command $number
 The @var{$format} is the list or table @@-command, 
 @var{$line} is the item line, @var{$command} is the @dfn{format command},
 @var{$prepended} is set to the text folllowing the @dfn{format command}
 on the format argumlent line.
 The @var{$result_line} replaces the item argument, and if @var{$open_command}
 is true, the @dfn{format command} is opened for the line.
+The @var{$number} is the number of the item, as set in @code{@@enumerate}.
 @end deftypefn
 
 @table @emph
