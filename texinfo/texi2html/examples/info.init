@@ -107,22 +107,19 @@ $style_map{'dfn'}->{'end'} = '"';
 $style_map{'emph'}->{'begin'} = '_';
 $style_map{'emph'}->{'end'} = '_';
 
-foreach my $command (keys(%style_map))
-{
-    $style_map_pre{$command} = {};
-    $style_map_texi{$command} = {};
-    foreach my $key (keys(%{$style_map{$command}}))
-    {
-        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
-        $style_map_texi{$command}->{$key} = $style_map{$command}->{$key};
-    }
-}
 
 my %info_default_leaf_command = ();
-foreach my $command ('uref', 'url', 'email')
+foreach my $command ('uref', 'url', 'email', 'click')
 {
    $info_default_leaf_command{$command} = 1;
-   $style_map{$command}->{'orig_args'} = [ @{$style_map{$command}->{'args'}} ];
+   if (defined ($style_map{$command}->{'args'}))
+   {
+      $style_map{$command}->{'orig_args'} = [ @{$style_map{$command}->{'args'}} ];
+   }
+   else
+   {
+      $style_map{$command}->{'orig_args'} = [ 'normal' ];
+   }
    $style_map{$command}->{'args'} = [];
    foreach my $arg (@{$style_map{$command}->{'orig_args'}})
    {
@@ -165,6 +162,17 @@ sub info_default_email($$)
     $mail = "<$mail>";
     return $mail unless ($text ne '');
     return "$text $mail";
+}
+
+foreach my $command (keys(%style_map))
+{
+    $style_map_pre{$command} = {};
+    $style_map_texi{$command} = {};
+    foreach my $key (keys(%{$style_map{$command}}))
+    {
+        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
+        $style_map_texi{$command}->{$key} = $style_map{$command}->{$key};
+    }
 }
 
 $special_list_commands{'itemize'} = {};
@@ -343,20 +351,19 @@ sub info_default_process_text($$$$$$)
    my $indent_length = shift;
    my $in_para = shift;
 
-   my $indent_text = '';
-   $indent_text = ' ' x $indent_length if (defined($indent_length));
+   $indent_length = 0 if (!defined($indent_length));
    
    my $line_passed = 0;
    my $result = '';
 
-print STDERR "process_text(indent `$indent_text', in_para $in_para) line_char_counter $line_char_counter `$text'\n";
+print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pending_spaces') line_char_counter $line_char_counter `$text'\n";
    if (!$in_para)
-   {
+   { # should never be in preformatted, but in string processing
        my $chomped_text = $text;
        chomp($chomped_text);
-       if ($line_char_counter == 0 and $chomped_text ne '')
+       if ($indent_length > $line_char_counter and $chomped_text ne '')
        {
-           $text = $indent_text.$text;
+           $text = ' ' x ($indent_length - $line_char_counter) . $text;
        }
        $line_char_counter += length($text);
        if (chomp($chomped_text))
@@ -374,9 +381,9 @@ print STDERR "process_text(indent `$indent_text', in_para $in_para) line_char_co
           my $new_spaces = $1;
           if (defined($pending_word))
           {
-             if ($line_char_counter == 0)
+             if ($indent_length > $line_char_counter + length($pending_spaces))
              {
-                 $pending_spaces = $indent_text . $pending_spaces;
+                 $pending_spaces .= ' ' x ($indent_length - $line_char_counter) . $pending_spaces;
              }
              $result .= $pending_spaces . $pending_word;
              $line_char_counter += length($pending_spaces)+length($pending_word);
@@ -452,9 +459,13 @@ sub info_default_store_pending($$$;$)
    my $pending_word = shift;
    my $indent_length = shift;
 
+   $indent_length = 0 if (!defined($indent_length));
    my $indent_text = '';
-   $indent_text = ' ' x $indent_length if (defined($indent_length));
+   $indent_text = ' ' x $indent_length;
 
+   my $pending_word_text = 'undef';
+   $pending_word_text = $pending_word if (defined($pending_word));
+   print STDERR "store_pending(spaces `$pending_spaces', indent($indent_length) `$indent_text' word `$pending_word_text'\n";
    my $result = $pending_spaces;
    $pending_spaces = '';
    if (defined($pending_word))
@@ -497,6 +508,9 @@ sub info_default_output($)
 my %info_default_index_line_string_length;
 my %info_default_index_entries;
 
+my %info_default_indent_format_length = ('enumerate' => 2,
+    'itemize' => 3);
+
 sub info_default_process_content($$)
 {
    my $current_command = shift;
@@ -524,15 +538,13 @@ sub info_default_process_content($$)
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-my $line_char_counter_text = 'undef';
-$line_char_counter_text = "$line_char_counter" if (defined($line_char_counter));
 my $text_length = '';
 $text_length = $content->{'length'} if defined($content->{'length'});
 my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
 my $in_node_count = 0;
 $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
-      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count) preformatted $preformatted, indent_lvl $indent_level in_exdent $in_exdent line_char_counter $line_char_counter_text only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'}\n";
+      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'}\n";
 my $pending_word_text = 'undef';
 $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
@@ -540,15 +552,20 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       my $indent_length = $indent_level * $info_default_indent_length;
       $indent_length = ($indent_level -1) * $info_default_indent_length
             if ($indent_level and $in_exdent);
-      $indent_length = ($info_default_indent_length -2
-                        +($indent_level -1)* $info_default_indent_length)
-            if ($item_pending);
+      my $item_indent_length = 0;
+      if ($item_pending)
+      {
+        $indent_length = ($info_default_indent_format_length{$item_pending}
+                   +($indent_level -1)* $info_default_indent_length);
+        #$text_added = ' ' x (($info_default_indent_format_length{$item_pending}
+        #    +($indent_level -1)* $info_default_indent_length));
+      }
       
       if ($close)
       {
           if (defined($content->{'end'}))
           {
-              $text_added = $content->{'end'};
+              $text_added .= $content->{'end'};
           }
           # if ending a paragraph, go straight to the text addition 
           # without processing of the end of lines. Same if ending a 
@@ -563,6 +580,8 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   {
                      $text_added .= "\n";
                   }
+                  # this nullify a potential noindent in a random format
+                  $info_state->{'indent_para'} = undef;
                   goto new_text;
               }
               if ($content->{'command'} eq 'paragraph')
@@ -583,6 +602,10 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                # if preformatted doesn't end with a newline, it is added here
                   $text_added = "\n" unless ($line_char_counter == 0);
                   $preformatted--;
+              }
+              elsif ($content->{'command'} eq 'menu')
+              {
+                  $text_added = "\n" unless ($info_state->{'blank_line'});
               }
           }
       }
@@ -682,7 +705,11 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               }
               elsif ($content->{'command'} eq 'item' and exists $format_map{$content->{'format'}})
               {
-                  $item_pending = 1;
+                  $item_pending = $content->{'format'};
+              }
+              elsif ($content->{'command'} eq 'menu')
+              {
+                  $text_added = "\n" unless ($info_state->{'blank_line'});
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
@@ -751,10 +778,10 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
           #}
           chomp($chomped_text);
 print STDERR "text_added `$text_added' line_char_counter $line_char_counter\n";
-          if ($chomped_text ne '' and $line_char_counter == 0)
+          if ($chomped_text ne '' and $line_char_counter < $indent_length)
           {
 print STDERR "                     indent_length $indent_length\n";
-              $text_added =  ' ' x $indent_length.$text_added;
+              $text_added =  ' ' x ($indent_length - $line_char_counter).$text_added;
           }
           $line_char_counter += length($text_added);
       }
@@ -764,7 +791,14 @@ print STDERR "                     indent_length $indent_length\n";
 print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       if ($text_added ne '')
       {
-         $item_pending = undef;
+         if ($item_pending)
+         {
+             if (!$info_state->{'blank_line'})
+             {
+                $text_added = "\n" . $text_added;
+             }
+             $item_pending = undef;
+         }
       }
       $result .= $text_added;
       $length += length($text_added);
@@ -1258,6 +1292,8 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
     $text =~ s/^(\w+)\. /$1 /;
+    # when @top is empty, use settitle
+    $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
     $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $heading = $text . "\n" . 
        ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n";
@@ -1266,12 +1302,14 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
        $heading = "\n" .$heading;
        $info_state->{'line_count'}++;
     }
+
     if (length($text))
     {
        $heading .= "\n";
        $info_state->{'line_count'}++;
        $info_state->{'blank_line'} = 1;
     }
+   
     $info_state->{'offset_in_file'} += length($heading);
     $info_state->{'line_count'} += 2;
     return $heading;
@@ -1413,7 +1451,6 @@ sub info_default_footnote_texi($$$)
     $info_default_footnote_index++;
     return "($info_default_footnote_index) $text";
 }
-   
 
 my @info_default_pending_footnotes;
 sub info_default_print_section
@@ -1930,9 +1967,12 @@ sub info_default_format_list_item_texi($$$$)
     my $line = shift;
     my $prepended = shift;
     my $command = shift;
+    my $number = shift;
 
     my $result_line;
+    $command = 'bullet' if ((!defined($command) or $command eq '') and (!defined($prepended) or $prepended eq '') and $format eq 'itemize');
     $prepended = "\@$command\{\}" if (defined($command) and $command ne '');
+    $prepended = "$number." if (defined($number) and $number ne '');
  
     if (defined($prepended) and $prepended ne '')
     {

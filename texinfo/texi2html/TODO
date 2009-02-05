@@ -417,3 +417,11 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   is not affected by the @appendix number
 
 * @syncodeindex and @finalout should swallow end of line
+
+* @page stops paragraphs
+
+* @kbdinputstyle should be taken into account in html output, which
+  means distinguish between preformatted, code_style and normal text 
+  when formatting @kbd. Should this distinction hold for every command?
+  Also it should be dynamical, ie in pass 2 too (FIXME in the code).
+

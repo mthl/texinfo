@@ -8,4 +8,4 @@ formatting formatting.texi
 pass0_macros pass0_macros.texi
 float float.texi
 imbrications imbrications.texi
-comments_info comments.texi -init info.init
+comments_info comments.texi -init info.init -U texi2html

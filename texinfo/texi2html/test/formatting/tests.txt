@@ -34,6 +34,7 @@ texi inter_item_commands.texi
 texi double_style_paragraph.texi
 texi at_command_glued.texi
 texi test_sp.texi
+texi kbdinputstyle.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -88,6 +89,8 @@ inter_item_commands_docbook inter_item_commands.texi -init docbook.init
 double_style_paragraph double_style_paragraph.texi
 at_command_glued at_command_glued.texi
 test_sp test_sp.texi
+kbdinputstyle kbdinputstyle.texi
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init
+kbdinputstyle_info kbdinputstyle.texi -init info.init
 #formatting_info ../coverage/formatting.texi -init info.init
