@@ -74,7 +74,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.264 2009-02-05 11:18:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.265 2009-02-09 09:22:49 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -12378,7 +12378,7 @@ sub scan_line($$$$;$)
                     #$state->{'no_paragraph'}++;
                 }
                 elsif ($format = add_line($text, $stack, $state, $line_nr)) 
-                {# close table text and erstart a term
+                {# close table text and restart a term
                     push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format });
                     #$state->{'no_paragraph'}++;
                 }

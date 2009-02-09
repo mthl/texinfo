@@ -93,4 +93,5 @@ kbdinputstyle kbdinputstyle.texi
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init
 kbdinputstyle_info kbdinputstyle.texi -init info.init
+simple_images_info simple_images.texi -init info.init
 #formatting_info ../coverage/formatting.texi -init info.init

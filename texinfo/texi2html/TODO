@@ -425,3 +425,4 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   when formatting @kbd. Should this distinction hold for every command?
   Also it should be dynamical, ie in pass 2 too (FIXME in the code).
 
+* @image in info, remove last end of line in file.txt
