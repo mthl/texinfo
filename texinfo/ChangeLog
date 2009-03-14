@@ -1,3 +1,9 @@
+2009-03-14  Karl Berry  <karl@gnu.org>
+
+	* info/filesys.c (compress_suffixes): add .xz/unxz.
+
+	* info/filesys.h (DEFAULT_INFOPATH): include PATH by default.
+
 2009-03-14  Peter Breitenlohner  <peb@mppmu.mpg.de>
 
 	* info/filesys.c (build_infopath_from_path): new fn.

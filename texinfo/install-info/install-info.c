@@ -1,8 +1,8 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.13 2008-05-18 16:54:02 karl Exp $
+   $Id: install-info.c,v 1.14 2009-03-14 17:57:42 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007, 2008 Free Software Foundation, Inc.
+   Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+   2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -400,6 +400,11 @@ strip_info_suffix (char *fname)
       len -= 3;
       ret[len] = 0;
     }
+  else if (len > 3 && FILENAME_CMP (ret + len - 3, ".xz") == 0)
+    {
+      len -= 3;
+      ret[len] = 0;
+    }
   else if (len > 4 && FILENAME_CMP (ret + len - 4, ".bz2") == 0)
     {
       len -= 4;
@@ -659,6 +664,12 @@ open_possibly_compressed_file (char *filename,
     {
       *opened_filename = concat (filename, ".gz", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+  if (!f)
+    {
+      *opened_filename = concat (filename, ".xz", "");
+      f = fopen (*opened_filename, FOPEN_RBIN);
+    }
   if (!f)
     {
       free (*opened_filename);
@@ -671,7 +682,6 @@ open_possibly_compressed_file (char *filename,
      *opened_filename = concat (filename, ".lzma", "");
      f = fopen (*opened_filename, FOPEN_RBIN);
     }
-
 #ifdef __MSDOS__
       if (!f)
         {
@@ -702,7 +712,6 @@ open_possibly_compressed_file (char *filename,
           else
             pfatal_with_name (filename);
         }
-    }
 
   /* Read first few bytes of file rather than relying on the filename.
      If the file is shorter than this it can't be usable anyway.  */
@@ -727,18 +736,29 @@ open_possibly_compressed_file (char *filename,
 #else
     *compression_program = "gzip";
 #endif
+
+  else if (data[0] == '\xFD' && data[1] == '7' && data[2] == 'z'
+           && data[3] == 'X' && data[4] == 'Z' && data[5] == 0)
+#ifndef STRIP_DOT_EXE
+    *compression_program = "xz.exe";
+#else
+    *compression_program = "xz";
+#endif
+
   else if (data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
 #ifndef STRIP_DOT_EXE
     *compression_program = "bzip2.exe";
 #else
     *compression_program = "bzip2";
 #endif
+
   else if (data[0] == 'B' && data[1] == 'Z' && data[2] == '0')
 #ifndef STRIP_DOT_EXE
     *compression_program = "bzip.exe";
 #else
     *compression_program = "bzip";
 #endif
+
     /* We (try to) match against old lzma format (which lacks proper
        header, two first matches), as well as the new format (last match).  */
   else if ((data[9] == 0x00 && data[10] == 0x00 && data[11] == 0x00
@@ -753,6 +773,7 @@ open_possibly_compressed_file (char *filename,
 #else
     *compression_program = "lzma";
 #endif
+
   else
     *compression_program = NULL;
 
