@@ -1,9 +1,10 @@
-$Id: NEWS,v 1.186 2009-01-19 01:56:13 karl Exp $
+$Id: NEWS,v 1.187 2009-03-14 17:31:30 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software
+  Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -27,6 +28,10 @@ one of the relevant sections:
   . new command @headitemfont for the sake of template rows.
   . new diacritic command @ogonek.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
+
+* info:
+  . INFOPATH is determined by PATH by default, or if an element "PATH"
+    is specified.
 
 * texinfo.tex:
   . support some per-language hyphenation, when the underlying TeX

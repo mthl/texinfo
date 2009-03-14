@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.24 2008-08-29 17:27:18 karl Exp $
+@comment $Id: info-stnd.texi,v 1.25 2009-03-14 17:31:30 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -151,10 +151,11 @@ You can invoke the apropos command from inside Info; see
 @itemx -d @var{directory-path}
 Prepend @var{directory-path} to the list of directory paths searched
 when Info needs to find a file.  You may issue @code{--directory}
-multiple times; once for each directory which contains Info files.  The
-list of directories searched by Info is constructed from the value of
-the environment variable @code{INFOPATH}; @code{--directory} causes the
-named @var{directory-path} to be prepended to that list.  The value of
+multiple times; once for each directory which contains Info files,
+or with a list of such directories separated by a colon (or semicolon
+on MS-DOS/MS-Windows).  In the absence of @code{--directory} options
+the list of directories searched by Info is constructed from the
+value of the environment variable @code{INFOPATH}.  The value of
 @code{INFOPATH} is a list of directories usually separated by a colon;
 on MS-DOS/MS-Windows systems, the semicolon is used.  If you do not
 define @code{INFOPATH}, Info uses a default path defined when Info was
@@ -162,6 +163,12 @@ built as the initial list of directories.  If the value of
 @code{INFOPATH} ends with a colon (or semicolon on MS-DOS/MS-Windows),
 the initial list of directories is constructed by appending the
 build-time default to the value of @code{INFOPATH}.
+
+If the list of directories contains the element @code{PATH}, that
+element is replaced by a list of directories derived from the value of
+the environment variable @code{PATH}.  Each path element of the form
+@var{dir/base} is replaced by @var{dir}@code{/share/info} or
+@var{dir}@code{/info}, provided that directory exists.
 
 @cindex keystrokes, recording
 @cindex remembering user keystrokes

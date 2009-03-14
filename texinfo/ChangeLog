@@ -1,3 +1,10 @@
+2009-03-14  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* info/filesys.c (build_infopath_from_path): new fn.
+	(info_add_path): if INFOPATH includes the word "PATH",
+	call the new fn.
+	* doc/info-stnd.texi (Invoking Info) <directory-path>: document it.
+
 2009-02-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Not Ending a Sentence): also mention ).
