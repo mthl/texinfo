@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.137 2008-12-13 14:36:52 karl Exp $
+# $Id: texi2dvi,v 1.138 2009-03-15 19:00:24 karl Exp $
 #
-# Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
+# 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Original author: Noah Friedman.
+# Originally written by Noah Friedman.
 #
 # Please send bug reports, etc. to bug-texinfo@gnu.org.
 # If possible, please send a copy of the output of the script called with
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.137 $'
+rcs_revision='$Revision: 1.138 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -45,6 +45,7 @@ build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
 # Instead, assign them an empty value.
 action=compile
 batch=false     # true for batch mode
+catcode_special=true
 debug=false
 escape="\\"
 expand=         # t for expansion via makeinfo
@@ -345,18 +346,18 @@ Valid MODEs are:
 	       Every compilation therefore requires the full cycle.
 
 Using the \`tidy' mode brings several advantages:
-  -   the current directory is not cluttered with plethora of temporary files.
-  -   clutter can be even reduced using --build-dir=dir: all the *.t2d
-      directories are stored there.
-  -   clutter can be reduced to zero using, e.g., --build-dir=/tmp/\$USER.t2d
-      or --build-dir=\$HOME/.t2d.
-  -   the output file is updated after every succesful TeX run, for
-      sake of concurrent visualization of the output.  In a \`local' build
-      the viewer stops during the whole TeX run.
-  -   if the compilation fails, the previous state of the output file
-      is preserved.
-  -   PDF and DVI compilation are kept in separate subdirectories
-      preventing any possibility of auxiliary file incompatibility.
+  - the current directory is not cluttered with plethora of temporary files.
+  - clutter can be even further reduced using --build-dir=dir: all the *.t2d
+    directories are stored there.
+  - clutter can be reduced to zero using, e.g., --build-dir=/tmp/\$USER.t2d
+    or --build-dir=\$HOME/.t2d.
+  - the output file is updated after every succesful TeX run, for
+    sake of concurrent visualization of the output.  In a \`local' build
+    the viewer stops during the whole TeX run.
+  - if the compilation fails, the previous state of the output file
+    is preserved.
+  - PDF and DVI compilation are kept in separate subdirectories
+    preventing any possibility of auxiliary file incompatibility.
 
 On the other hand, because \`tidy' compilation takes place in another
 directory, occasionally TeX won't be able to find some files (e.g., when
@@ -368,9 +369,10 @@ TEX (or PDFTEX), TEXINDEX, and THUMBPDF environment variables are used
 to run those commands, if they are set.  Any CMD strings are added
 after @setfilename for Texinfo input, in the first line for LaTeX input.
 
-Email bug reports to <bug-texinfo@gnu.org>,
-general questions and discussion to <help-texinfo@gnu.org>.
-Texinfo home page: http://www.gnu.org/software/texinfo/
+Report bugs to bug-texinfo@gnu.org,
+general questions and discussion to help-texinfo@gnu.org.
+GNU Texinfo home page: <http://www.gnu.org/software/texinfo/>
+General help using GNU software: <http://www.gnu.org/gethelp/>
 EOF
   exit 0
 }
@@ -927,12 +929,27 @@ run_tex ()
     # \batchmode does not show terminal output at all, so we don't
     # want that.  And even in batch mode, TeX insists on having input
     # from the user.  Close its stdin to make it impossible.
-    cmd="$cmd </dev/null '${escape}nonstopmode' '${escape}input'"
+    cmd="$cmd </dev/null '${escape}nonstopmode'"
   fi
 
-  # we'd like to handle arbitrary input file names, such as a~b.tex.
-  # This isn't a general way to do it :), though it does work, kind of.
-  # cmd="$cmd '${escape}catcode126=12 \input '"
+  # we'd like to handle arbitrary input file names, especially
+  # foo~bar/a~b.tex, since Debian likes ~ characters.
+  if $catcode_special; then
+    # $normaltilde is just to reduce line length in this source file.
+    # The idea is to define \normaltilde as a catcode other ~ character,
+    # then make the active ~ be equivalent to that, instead of the plain
+    # TeX tie.  Then when the active ~ appears in the filename, it will
+    # be expanded to itself, as far as \input will see.  (This is the
+    # same thing that texinfo.tex does in general, BTW.)
+    normaltilde="${escape}catcode126=12 ${escape}def${escape}normaltilde{~}"
+    cmd="$cmd '$normaltilde${escape}catcode126=13 ${escape}let~\normaltilde '"
+  fi
+  # Other special (non-active) characters could be supported by
+  # resetting their catcodes to other on the command line and changing
+  # texinfo.tex to initialize everything to plain catcodes.  Maybe someday.
+  
+  # append the \input command.
+  cmd="$cmd '${escape}input'"
 
   # TeX's \input does not (easily or reliably) support whitespace
   # characters or other special characters in file names.  Our intensive
@@ -947,7 +964,7 @@ run_tex ()
   # harm in making the link.
   #
   case $tidy:`func_dirname "$in_input"` in
-    true:*["$space$tab$newline\"#\$%\\^_{}"]*)
+    true:*["$space$tab$newline\"#\$%\\^_{}~"]*)
       _run_tex_file_name=`basename "$in_input"`
       if test ! -f "$_run_tex_file_name"; then
 	# It might not be a file, clear it.
@@ -1214,9 +1231,9 @@ run_makeinfo ()
     else
       makeinfo=${MAKEINFO:-makeinfo}
     fi
-    # As long as we had to run TeX, offer the user this convenience:
+    # If TeX is preloaded, offer the user this convenience:
     if test "$txiformat" = Texinfo; then
-	escape=@
+      escape=@
     fi
   fi
 
@@ -1509,9 +1526,10 @@ while test x"$1" != x"$arg_sep"; do
       ;;
   esac
 
-  # This recognizes --quark as --quiet.  So what.
+  # This recognizes --quark as --quiet.  Oh well.
   case "$1" in
     -@ ) escape=@;;
+    -~ ) catcode_special=false;;
     # Silently and without documentation accept -b and --b[atch] as synonyms.
     -b | --batch) batch=true;;
 	 --build)      shift; build_mode=$1;;

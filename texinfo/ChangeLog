@@ -1,3 +1,10 @@
+2009-03-15  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_tex): allow ~ in top-level filename.
+	in tidy mode, also make the clean dirname link if a ~ is present.
+	Continuing report from Norbert Preining, 13 Mar 2009 14:18:11,
+	Debian bug#487974.
+
 2009-03-14  Karl Berry  <karl@gnu.org>
 
 	* info/filesys.c (compress_suffixes): add .xz/unxz.
