@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.40 2008-09-08 13:39:17 karl Exp $
+# $Id: Makefile.am,v 1.41 2009-03-20 17:36:56 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -26,8 +26,8 @@ MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-	    txi-it.tex txi-nl.tex txi-nb.tex txi-pl.tex txi-pt.tex \
-	    txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
+	    txi-is.tex txi-it.tex txi-nl.tex txi-nb.tex txi-pl.tex \
+	    txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \

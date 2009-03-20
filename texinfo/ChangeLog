@@ -1,3 +1,7 @@
+2009-03-20  Arni Magnusson  <arnima@hafro.is>
+
+	* doc/txi-is.tex: Icelandic translation for texinfo.tex.
+
 2009-03-16  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi, doc/info.texi: update to GFDLv1.3+.
