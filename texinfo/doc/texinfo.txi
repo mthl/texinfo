@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.240 2009-02-07 19:45:36 karl Exp $
+@c $Id: texinfo.txi,v 1.241 2009-03-20 18:33:52 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10657,6 +10657,12 @@ commonly used in languages other than English.
 @cindex @ae{}
 @findex AE
 @cindex @AE{}
+@cindex Icelandic
+@cindex Eth
+@findex dh
+@cindex @dh{}
+@findex DH
+@cindex @DH{}
 @findex dotless
 @cindex @dotless{i} (dotless i)
 @cindex @dotless{j} (dotless j)
@@ -10686,18 +10692,25 @@ commonly used in languages other than English.
 @cindex Es-zet
 @cindex Sharp S
 @cindex German S
+@cindex Thorn
+@findex th
+@cindex @th{}
+@findex TH
+@cindex @TH{}
 @multitable {@t{@@questiondown@{@}}} {oe OE} {es-zet or sharp S}
-@item @t{@@exclamdown@{@}}   @tab @exclamdown{}   @tab upside-down !
-@item @t{@@questiondown@{@}} @tab @questiondown{} @tab upside-down ?
-@item @t{@@aa@{@} @@AA@{@}}  @tab @aa{} @AA{}     @tab a,A with circle
-@item @t{@@ae@{@} @@AE@{@}}  @tab @ae{} @AE{}     @tab ae,AE ligatures
-@item @t{@@dotless@{i@}}     @tab @dotless{i}     @tab dotless i
-@item @t{@@dotless@{j@}}     @tab @dotless{j}     @tab dotless j
-@item @t{@@l@{@} @@L@{@}}    @tab @l{} @L{}       @tab suppressed-L,l
-@item @t{@@o@{@} @@O@{@}}    @tab @o{} @O{}       @tab O,o with slash
-@item @t{@@oe@{@} @@OE@{@}}  @tab @oe{} @OE{}     @tab oe,OE ligatures
-@item @t{@@ordf@{@} @@ordm@{@}}  @tab @ordf{} @ordm{}     @tab Spanish ordinals
-@item @t{@@ss@{@}}           @tab @ss{}           @tab es-zet or sharp S
+@item @t{@@exclamdown@{@}}      @tab @exclamdown{}   @tab upside-down !
+@item @t{@@questiondown@{@}}    @tab @questiondown{} @tab upside-down ?
+@item @t{@@aa@{@} @@AA@{@}}     @tab @aa{} @AA{}     @tab a,A with circle
+@item @t{@@ae@{@} @@AE@{@}}     @tab @ae{} @AE{}     @tab ae,AE ligatures
+@item @t{@@dh@{@} @@DH@{@}}     @tab @dh{} @DH{}     @tab Icelandic eth
+@item @t{@@dotless@{i@}}        @tab @dotless{i}     @tab dotless i
+@item @t{@@dotless@{j@}}        @tab @dotless{j}     @tab dotless j
+@item @t{@@l@{@} @@L@{@}}       @tab @l{} @L{}       @tab suppressed-L,l
+@item @t{@@o@{@} @@O@{@}}       @tab @o{} @O{}       @tab O,o with slash
+@item @t{@@oe@{@} @@OE@{@}}     @tab @oe{} @OE{}     @tab oe,OE ligatures
+@item @t{@@ordf@{@} @@ordm@{@}} @tab @ordf{} @ordm{} @tab Spanish ordinals
+@item @t{@@ss@{@}}              @tab @ss{}           @tab es-zet or sharp S
+@item @t{@@th@{@} @@TH@{@}}     @tab @th{} @TH{}     @tab Icelandic thorn
 @end multitable
 
 
@@ -17848,6 +17861,11 @@ Mark the (optional) detailed node listing in a master menu.
 Indicate the introductory or defining use of a term.  @xref{dfn, ,
 @code{@@dfn}}.
 
+@item @@DH@{@}
+@itemx @@dh@{@}
+Generate the uppercase and lowercase Icelandic letter eth, respectively:
+@DH{}, @dh{}.  @xref{Inserting Accents}.
+
 @item @@dircategory @var{dirpart}
 Specify a part of the Info directory menu where this file's entry should
 go.  @xref{Installing Dir Entries}.
@@ -18250,6 +18268,11 @@ Generate an ogonek diacritic under the next character, as in
 Indicate a command-line option, such as @option{-l} or @option{--help}.
 @xref{option,, @code{@@option}}.
 
+@item @@ordf@{@}
+@itemx @@ordm@{@}
+Generate the feminine and masculine Spanish ordinals, respectively:
+@ordf{}, @ordm{}.  @xref{Inserting Accents}.
+
 @item @@page
 Start a new page in a printed manual.  No effect in Info.
 @xref{page, , @code{@@page}}.@refill
@@ -18526,6 +18549,11 @@ Title'), the current chapter name only, the current chapter number
 only, the filename, the current page number, and the title of the
 document, respectively.  @xref{Custom Headings, , How to Make Your Own
 Headings}.
+
+@item @@TH@{@}
+@itemx @@th@{@}
+Generate the uppercase and lowercase Icelandic letter thorn, respectively:
+@TH{}, @th{}.  @xref{Inserting Accents}.
 
 @item @@tie@{@}
 Generate a normal interword space at which a line break is not allowed.
@@ -19271,7 +19299,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.240 2009-02-07 19:45:36 karl Exp $
+$Id: texinfo.txi,v 1.241 2009-03-20 18:33:52 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19347,7 +19375,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.240 2009-02-07 19:45:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.241 2009-03-20 18:33:52 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

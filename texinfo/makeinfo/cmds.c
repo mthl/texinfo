@@ -1,8 +1,8 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.85 2009-01-01 07:24:58 olegkat Exp $
+   $Id: cmds.c,v 1.86 2009-03-20 18:33:51 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
-   2007, 2008 Free Software Foundation, Inc.
+   2007, 2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -81,12 +81,14 @@ COMMAND command_table[] = {
   { "~", cm_accent_tilde, MAYBE_BRACE_ARGS },
   { "AA", cm_special_char, BRACE_ARGS },
   { "AE", cm_special_char, BRACE_ARGS },
+  { "DH", cm_no_op, BRACE_ARGS },
   { "H", cm_accent, MAYBE_BRACE_ARGS },
   { "L", cm_special_char, BRACE_ARGS },
   { "LaTeX", cm_LaTeX, BRACE_ARGS },
   { "O", cm_special_char, BRACE_ARGS },
   { "OE", cm_special_char, BRACE_ARGS },
   { "TeX", cm_TeX, BRACE_ARGS },
+  { "TH", cm_no_op, BRACE_ARGS },
   { "aa", cm_special_char, BRACE_ARGS },
   { "abbr", cm_abbr, BRACE_ARGS },
   { "acronym", cm_acronym, BRACE_ARGS },
@@ -175,6 +177,7 @@ COMMAND command_table[] = {
   { "defvrx", cm_defun, NO_BRACE_ARGS },
   { "detailmenu", cm_detailmenu, NO_BRACE_ARGS },
   { "dfn", cm_dfn, BRACE_ARGS },
+  { "dh", cm_no_op, BRACE_ARGS },
   { "dircategory", cm_dircategory, NO_BRACE_ARGS },
   { "direntry", cm_direntry, NO_BRACE_ARGS },
   { "display", cm_display, NO_BRACE_ARGS },
@@ -354,6 +357,7 @@ COMMAND command_table[] = {
   { "table", cm_table, NO_BRACE_ARGS },
   { "tex", cm_tex, NO_BRACE_ARGS },
   { "textdegree", cm_special_char, BRACE_ARGS },
+  { "th", cm_no_op, BRACE_ARGS },
   { "tie", cm_tie, BRACE_ARGS },
   { "tieaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "tindex", cm_tindex, NO_BRACE_ARGS },

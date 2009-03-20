@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.7 2009-01-19 00:51:48 karl Exp $
+% $Id: txirefcard.tex,v 1.8 2009-03-20 18:33:53 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -343,20 +343,24 @@ Floor, Boston, MA 02110-1301 USA.
 \def\expansion{\leavevmode\raise.1ex\hbox to 1em{\hfil$\mapsto$\hfil}}
 \def\print{\leavevmode\lower.1ex\hbox to 1em{\hfil$\dashv$\hfil}}
 
-% @registeredsymbol - R in a circle.  The font for the R should really
-% be smaller yet, but lllsize is the best we can do for now.
-% Adapted from the plain.tex definition of \copyright.
-%
+% @registeredsymbol - R in a circle.
 \def\registeredsymbol{%
  $^{{\ooalign{\hfil\raise.07ex\hbox{\fiverm R}%
               \hfil\crcr\Orb}}%
    }$%
 }
 
+\def\ordf{\leavevmode\raise1ex\hbox{\fiverm \underbar{a}}}
+\def\ordm{\leavevmode\raise1ex\hbox{\fiverm \underbar{o}}}
+
 \font\eurofont = feybr10 at 8pt
 \def\euro{{\eurofont e}}
 
 \font\ecfont = ecrm0800
+\def\DH{{\ecfont \char"D0}} % Eth
+\def\dh{{\ecfont \char"F0}} % eth
+\def\TH{{\ecfont \char"DE}} % Thorn
+\def\th{{\ecfont \char"FE}} % thorn
 \def\guillemetleft{{\ecfont \char"13}}
 \def\guillemotleft{\guillemetleft}
 \def\guillemetright{{\ecfont \char"14}}
@@ -674,10 +678,13 @@ exception of \code{@tieaccent}.
 
 \txicmd{@AA\txicmdarg{\ttbraced{}}, @aa}{\ttbraced{}}{Generate uppercase \AA\  and lowercase \aa.}
 \txicmd{@AE\txicmdarg{\ttbraced{}}, @ae}{\ttbraced{}}{Generate uppercase \AE\ and lowercase \ae.}
+\txicmd{@DH\txicmdarg{\ttbraced{}}, @dh}{\ttbraced{}}{Generate uppercase \DH\ and lowercase \dh.}
 \txicmd{@L\txicmdarg{\ttbraced{}}, @l}{\ttbraced{}}{Generate uppercase \L\  and lowercase \l.}
 \txicmd{@O\txicmdarg{\ttbraced{}}, @o}{\ttbraced{}}{Generate uppercase \O\  and lowercase \o.}
 \txicmd{@OE\txicmdarg{\ttbraced{}}, @oe}{\ttbraced{}}{Generate uppercase \OE\  and lowercase \oe.}
+\txicmd{@TH\txicmdarg{\ttbraced{}}, @th}{\ttbraced{}}{Generate uppercase \TH\ and lowercase \th.}
 \txicmd{@exclamdown}{\ttbraced{}}{Generate an upside-down exclamation point, \raise.4ex\hbox{<}.}
+\txicmd{@ordf\txicmdarg{\ttbraced{}}, @ordm}{\ttbraced{}}{Generate \ordf\ and lowercase \ordm.}
 \txicmd{@questiondown}{\ttbraced{}}{Generate an upside-down question mark, \raise.4ex\hbox{?`}.}
 \txicmd{@ss}{\ttbraced{}}{Generate the German sharp-S (es-zet) letter, \ss.}
 

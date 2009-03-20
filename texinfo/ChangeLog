@@ -1,3 +1,11 @@
+2009-03-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\DH, \dh, \TH, \TH): new macros for Icelandic
+	letters eth and thorn.
+	(\latonechardefs, \lattwochardefs, \utfeightchardefs): use them.
+	* doc/texinfo.txi (Inserting Accents),
+	* doc/refcard/txirefcard.tex: document them.
+
 2009-03-20  Arni Magnusson  <arnima@hafro.is>
 
 	* doc/txi-is.tex: Icelandic translation for texinfo.tex.
