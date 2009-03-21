@@ -27,6 +27,7 @@ DISTCLEANFILES =
 MAINTAINERCLEANFILES =
 
 AM_CPPFLAGS =
+AM_CFLAGS =
 
 noinst_LIBRARIES += libgnu.a
 
@@ -260,13 +261,27 @@ all-local: charset.alias ref-add.sed ref-del.sed
 charset_alias = $(DESTDIR)$(libdir)/charset.alias
 charset_tmp = $(DESTDIR)$(libdir)/charset.tmp
 install-exec-local: all-local
-	test $(GLIBC21) != no || $(mkinstalldirs) $(DESTDIR)$(libdir)
+	if test $(GLIBC21) = no; then \
+	  case '$(host_os)' in \
+	    darwin[56]*) \
+	      need_charset_alias=true ;; \
+	    darwin* | cygwin* | mingw* | pw32* | cegcc*) \
+	      need_charset_alias=false ;; \
+	    *) \
+	      need_charset_alias=true ;; \
+	  esac ; \
+	else \
+	  need_charset_alias=false ; \
+	fi ; \
+	if $$need_charset_alias; then \
+	  $(mkinstalldirs) $(DESTDIR)$(libdir) ; \
+	fi ; \
 	if test -f $(charset_alias); then \
 	  sed -f ref-add.sed $(charset_alias) > $(charset_tmp) ; \
 	  $(INSTALL_DATA) $(charset_tmp) $(charset_alias) ; \
 	  rm -f $(charset_tmp) ; \
 	else \
-	  if test $(GLIBC21) = no; then \
+	  if $$need_charset_alias; then \
 	    sed -f ref-add.sed charset.alias > $(charset_tmp) ; \
 	    $(INSTALL_DATA) $(charset_tmp) $(charset_alias) ; \
 	    rm -f $(charset_tmp) ; \
@@ -521,6 +536,7 @@ stdlib.h: stdlib.in.h
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
 	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
 	      -e 's|@''NEXT_STDLIB_H''@|$(NEXT_STDLIB_H)|g' \
+	      -e 's|@''HAVE_RANDOM_H''@|$(HAVE_RANDOM_H)|g' \
 	      -e 's|@''GNULIB_MALLOC_POSIX''@|$(GNULIB_MALLOC_POSIX)|g' \
 	      -e 's|@''GNULIB_REALLOC_POSIX''@|$(GNULIB_REALLOC_POSIX)|g' \
 	      -e 's|@''GNULIB_CALLOC_POSIX''@|$(GNULIB_CALLOC_POSIX)|g' \
@@ -796,6 +812,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''GNULIB_GETPAGESIZE''@|$(GNULIB_GETPAGESIZE)|g' \
 	      -e 's|@''GNULIB_GETUSERSHELL''@|$(GNULIB_GETUSERSHELL)|g' \
 	      -e 's|@''GNULIB_LCHOWN''@|$(GNULIB_LCHOWN)|g' \
+	      -e 's|@''GNULIB_LINK''@|$(GNULIB_LINK)|g' \
 	      -e 's|@''GNULIB_LSEEK''@|$(GNULIB_LSEEK)|g' \
 	      -e 's|@''GNULIB_READLINK''@|$(GNULIB_READLINK)|g' \
 	      -e 's|@''GNULIB_SLEEP''@|$(GNULIB_SLEEP)|g' \
@@ -810,6 +827,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''HAVE_GETHOSTNAME''@|$(HAVE_GETHOSTNAME)|g' \
 	      -e 's|@''HAVE_GETPAGESIZE''@|$(HAVE_GETPAGESIZE)|g' \
 	      -e 's|@''HAVE_GETUSERSHELL''@|$(HAVE_GETUSERSHELL)|g' \
+	      -e 's|@''HAVE_LINK''@|$(HAVE_LINK)|g' \
 	      -e 's|@''HAVE_READLINK''@|$(HAVE_READLINK)|g' \
 	      -e 's|@''HAVE_SLEEP''@|$(HAVE_SLEEP)|g' \
 	      -e 's|@''HAVE_DECL_ENVIRON''@|$(HAVE_DECL_ENVIRON)|g' \

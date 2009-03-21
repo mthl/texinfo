@@ -26,7 +26,6 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
   AC_REQUIRE([AM_PROG_CC_C_O])
-  AC_REQUIRE([AC_GNU_SOURCE])
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
 ])
 
@@ -49,7 +48,7 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_ARGZ
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
-  gl_HEADER_ERRNO_H
+  AC_REQUIRE([gl_HEADER_ERRNO_H])
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
@@ -72,17 +71,12 @@ AC_DEFUN([gl_INIT],
   gl_MBITER
   gl_FUNC_MBRTOWC
   gl_WCHAR_MODULE_INDICATOR([mbrtowc])
-  gl_FUNC_MBSCASECMP
   gl_STRING_MODULE_INDICATOR([mbscasecmp])
-  gl_FUNC_MBSCHR
   gl_STRING_MODULE_INDICATOR([mbschr])
   gl_FUNC_MBSINIT
   gl_WCHAR_MODULE_INDICATOR([mbsinit])
-  gl_FUNC_MBSLEN
   gl_STRING_MODULE_INDICATOR([mbslen])
-  gl_FUNC_MBSNCASECMP
   gl_STRING_MODULE_INDICATOR([mbsncasecmp])
-  gl_FUNC_MBSSTR
   gl_STRING_MODULE_INDICATOR([mbsstr])
   gl_MBSWIDTH
   gl_MBITER
@@ -95,7 +89,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mempcpy])
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
-  gl_MULTIARCH
+  AC_REQUIRE([gl_MULTIARCH])
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
   AM_STDBOOL_H
@@ -335,6 +329,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xmalloc.c
   lib/xsetenv.c
   lib/xsetenv.h
+  m4/00gnulib.m4
   m4/alloca.m4
   m4/argz.m4
   m4/codeset.m4
@@ -375,12 +370,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbchar.m4
   m4/mbiter.m4
   m4/mbrtowc.m4
-  m4/mbscasecmp.m4
-  m4/mbschr.m4
   m4/mbsinit.m4
-  m4/mbslen.m4
-  m4/mbsncasecmp.m4
-  m4/mbsstr.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
   m4/memcpy.m4

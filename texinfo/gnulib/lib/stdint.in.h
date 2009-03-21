@@ -1,4 +1,4 @@
-/* Copyright (C) 2001-2002, 2004-2008 Free Software Foundation, Inc.
+/* Copyright (C) 2001-2002, 2004-2009 Free Software Foundation, Inc.
    Written by Paul Eggert, Bruno Haible, Sam Steingold, Peter Burwood.
    This file is part of gnulib.
 
@@ -435,7 +435,7 @@ typedef int _verify_intmax_size[2 * (sizeof (intmax_t) == sizeof (uintmax_t)) - 
 #undef PTRDIFF_MIN
 #undef PTRDIFF_MAX
 #if @APPLE_UNIVERSAL_BUILD@
-# if _LP64
+# ifdef _LP64
 #  define PTRDIFF_MIN  _STDINT_MIN (1, 64, 0l)
 #  define PTRDIFF_MAX  _STDINT_MAX (1, 64, 0l)
 # else
@@ -463,7 +463,7 @@ typedef int _verify_intmax_size[2 * (sizeof (intmax_t) == sizeof (uintmax_t)) - 
 /* size_t limit */
 #undef SIZE_MAX
 #if @APPLE_UNIVERSAL_BUILD@
-# if _LP64
+# ifdef _LP64
 #  define SIZE_MAX  _STDINT_MAX (0, 64, 0ul)
 # else
 #  define SIZE_MAX  _STDINT_MAX (0, 32, 0ul)
@@ -478,7 +478,9 @@ typedef int _verify_intmax_size[2 * (sizeof (intmax_t) == sizeof (uintmax_t)) - 
    includes <wchar.h> -> <stdio.h> -> <getopt.h> -> <stdlib.h>, and the latter includes
    <stdint.h> and assumes its types are already defined.  */
 #if ! (defined WCHAR_MIN && defined WCHAR_MAX)
+# define _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
 # include <wchar.h>
+# undef _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
 #endif
 #undef WCHAR_MIN
 #undef WCHAR_MAX
