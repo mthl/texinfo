@@ -1,3 +1,8 @@
+2009-03-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\commondummies, \indexnofonts): handle
+	\DH \dh \TH \th.
+
 2009-03-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\DH, \dh, \TH, \TH): new macros for Icelandic
