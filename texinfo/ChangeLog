@@ -1,3 +1,11 @@
+2009-03-22  Oleg Katsitadze <olegkat@gmail.com>
+
+	* doc/texinfo.tex (\chapterzzz, \appendixzzz, \chapmacro):
+	(\sectionheading):  Be careful not to expand \putwordChapter,
+	\putwordSection and \putwordAppendix unnecessarily, because some
+	of the translations contain complex macros to typeset non-latin
+	glyphs.  Report from Arni Magnusson, 18 Mar 2009 22:58:25.
+
 2009-03-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\commondummies, \indexnofonts): handle
