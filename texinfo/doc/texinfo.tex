@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2009-03-22.16}
+\def\texinfoversion{2009-03-22.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -8007,12 +8007,11 @@ end
     \closein 1
   \endgroup % end raw TeX
 \endgroup}
-}% end of special _ catcode
 %
 % If they passed de_DE, and txi-de_DE.tex doesn't exist,
 % try txi-de.tex.
 %
-\def\documentlanguagetrywithoutunderscore#1_#2\finish{%
+\gdef\documentlanguagetrywithoutunderscore#1_#2\finish{%
   \openin 1 txi-#1.tex
   \ifeof 1
     \errhelp = \nolanghelp
@@ -8023,6 +8022,7 @@ end
   \fi
   \closein 1
 }
+}% end of special _ catcode
 %
 \newhelp\nolanghelp{The given language definition file cannot be found or
 is empty.  Maybe you need to install it?  Putting it in the current

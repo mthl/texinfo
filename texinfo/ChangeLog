@@ -1,5 +1,10 @@
 2009-03-22  Oleg Katsitadze <olegkat@gmail.com>
 
+	* doc/texinfo.tex (\documentlanguagetrywithoutunderscore):
+	Defined it with the same catcode of _ as in \documentlanguage.
+
+2009-03-22  Oleg Katsitadze <olegkat@gmail.com>
+
 	* doc/texinfo.tex (\chapterzzz, \appendixzzz, \chapmacro):
 	(\sectionheading):  Be careful not to expand \putwordChapter,
 	\putwordSection and \putwordAppendix unnecessarily, because some
