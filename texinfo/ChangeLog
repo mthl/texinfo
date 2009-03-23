@@ -1,3 +1,7 @@
+2009-03-22  Karl Berry  <karl@gnu.org>
+
+	* doc/txi-is.tex: call \txisetlanguage to support hyphenation.
+
 2009-03-22  Oleg Katsitadze <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\documentlanguagetrywithoutunderscore):
