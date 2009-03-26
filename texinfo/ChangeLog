@@ -1,3 +1,7 @@
+2009-03-25  Arni Magnusson  <arnima@hafro.is>
+
+	* doc/txi-is.tex: use \'{\dotless{i}} and bls.{}.
+
 2009-03-22  Karl Berry  <karl@gnu.org>
 
 	* doc/txi-is.tex: call \txisetlanguage to support hyphenation.
