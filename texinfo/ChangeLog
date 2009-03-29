@@ -1,4 +1,9 @@
-2009-03-27  Christopher Faylor  <me+cygwin@cgf.cx>  (tiny change)
+2009-03-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (GNU Sample Texts): no literal copyright symbol;
+	plus other typos and updates reported by Arni Magnusson.
+
+2009-03-28  Christopher Faylor  <me+cygwin@cgf.cx>  (tiny change)
 
 	* system.h: Avoid erroneously redefining PIPE_USE_FORK when compiling
 	for Cygwin.
