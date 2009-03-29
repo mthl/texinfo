@@ -1,8 +1,8 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.10 2008-07-26 17:13:26 karl Exp $
+   $Id: system.h,v 1.11 2009-03-29 00:34:19 karl Exp $
 
-   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-   2006, 2007, 2008 Free Software Foundation, Inc.
+   Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+   2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,10 +26,10 @@
 
 #ifdef MIKTEX
 #include <gnu-miktex.h>
-#define S_ISDIR(x) ((x)&_S_IFDIR) 
+#define S_ISDIR(x) ((x)&_S_IFDIR)
 #else
 /* MiKTeX defines substring() in a separate DLL, where it has its
-   own __declspec declaration.  We don't want to try to duplicate 
+   own __declspec declaration.  We don't want to try to duplicate
    this Microsoft-ism here.  */
 extern char *substring (const char *, const char *);
 #endif
@@ -187,6 +187,7 @@ extern int strcoll ();
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
 #  define STRIP_DOT_EXE	1
+#  define PIPE_USE_FORK	0
 # endif /* O_BINARY && !__CYGWIN__ */
   /* Back to any O_BINARY system.  */
 # define FILENAME_CMP	mbscasecmp
@@ -196,7 +197,6 @@ extern int strcoll ();
 # define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')
 # define IS_SLASH(c)	((c) == '/' || (c) == '\\')
 # define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || HAVE_DRIVE(n))
-# define PIPE_USE_FORK	0
 # define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
 
 #else  /* not O_BINARY, i.e., Unix */

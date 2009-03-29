@@ -1,3 +1,8 @@
+2009-03-27  Christopher Faylor  <me+cygwin@cgf.cx>  (tiny change)
+
+	* system.h: Avoid erroneously redefining PIPE_USE_FORK when compiling
+	for Cygwin.
+
 2009-03-25  Arni Magnusson  <arnima@hafro.is>
 
 	* doc/txi-is.tex: use \'{\dotless{i}} and bls.{}.
@@ -71,7 +76,7 @@
 2009-01-23  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Fix behavior of info on invalid regular expressions.
-	
+
 	* info/search.h (search_result): New enum.
 	(search, regexp_search):
 	(search_forward, search_backward): Return enum search_result.
@@ -83,7 +88,7 @@
 	(info_search_internal): Stop immediately if the search returns
 	search_failure. This happens if the user specified an invalid
 	regular expression.
-	
+
 	* info/dir.c, info/info-utils.c, info/man.c, info/nodes.c: Update
 	uses of search functions.
 
@@ -181,7 +186,7 @@
 	  @end iftex
        with `texi2dvi -E'.  bug-texinfo mail of 22 Nov 2008 17:01:49.
        Also use @c _texi2dvi instead of @c texi2dvi to reduce conflicts.
-       * doc/texinfo.txi (Format with texi2dvi): mention that the 
+       * doc/texinfo.txi (Format with texi2dvi): mention that the
        source document cannot have a line starting with @c _texi2dvi.
 
 2008-12-03  Karl Berry  <karl@gnu.org>
@@ -196,7 +201,7 @@
 	from TeX Live, since it's almost always available outside TL
 	anyway.  Therefore no more need for maintainer mode.
 	* README.dev: remove --enable-maintainer-mode from example.
-	* util/Makefile.am [MAINTAINER_MODE]: comment out the 
+	* util/Makefile.am [MAINTAINER_MODE]: comment out the
         tests, instead of using the Automake conditional, since
         we don't want maintainer mode any more.  We'll be able to revert
         this in Automake 1.11.
@@ -209,7 +214,7 @@
 	was evidently inserted by mistake in an Automake update (1.222).
 	The Emacs manual uses @key with mixed-case arguments, as it should.
 	Also, use \tt if the current font is not already monospace.
-	
+
 	Also, comment out the definition of \key which produces a lozenge
 	around the key name.  This hasn't been active for a long time,
 	and doesn't adjust to the text size.
@@ -268,10 +273,10 @@
 	* doc/texinfo.tex (\rmisbold): new macro.
 	(\titlefont, \title, \chapheadingzzz, \chapmacro, \chapoddpage,
 	\centerchfopen, \sectionheading): callit.
-	
+
 	(\author): just call \secfonts instead of faking authorrm,etc.
 	(\authorrm, \authortt, \authorfont): remove.
-	
+
 	(\ogonek): find [AaEe] precomposed glyphs.
 	(\commondummiesnofonts): add \ogonek.
 	(\utfeightchardefs, \lattwochardefs): switch to using \ogonek.
@@ -337,13 +342,13 @@
 	* doc/texinfo.tex (\txisetlanguage): new helper macro for the
 	txi-??.tex files.
 	* doc/txi-??.tex: add call to all files to set hyphenation
-	patterns (if they are available) and hyphenmin values.	
+	patterns (if they are available) and hyphenmin values.
 
 2008-10-09  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/session.c (internal_next_line): New function.  A safer
 	version of info_next_line, which ensures that the references work
-	correctly on malformed info documents (such as gawk.info v. 3.1.5). 
+	correctly on malformed info documents (such as gawk.info v. 3.1.5).
 
 2008-10-05  Sergey Poznyakoff  <gray@gnu.org.ua>
 
@@ -351,7 +356,7 @@
 	call to	fflush.
 	* info/session.c (set_window_pagetop): Disable scrolling if the
 	amount to scroll is one line.  This prevents status line
-	blinking. 
+	blinking.
 
 	* info/info-utils.c (info_parse_node): Correctly handle nested
 	parentheses.
@@ -428,7 +433,7 @@
 2008-07-27  Karl Berry  <karl@tug.org>
 
 	* pretest 4.12.93.
-	
+
 	* gnulib: import memmem.
 
 2008-07-07  Karl Berry  <karl@gnu.org>
