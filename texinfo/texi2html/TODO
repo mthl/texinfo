@@ -426,3 +426,22 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   Also it should be dynamical, ie in pass 2 too (FIXME in the code).
 
 * @image in info, remove last end of line in file.txt
+
+* formatting/table_in_table_item.texi could have better error messages, 
+  not sure the @asis related messages are right.
+
+* have a special debug more where text processing is traced. It means
+  that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 
+  other like substitute_text) and shown, now that there is a nice 
+  context information.
+
+* when closing @-commands with braces in first passes, the braces are not
+  output in order to correct the document. However, end of formats are output
+  in the first pass (and therefore these formats cannot be wrong in 
+  other passes, and nothing is done to close them). Also it is not clear where
+  error messages should appear. Indeed in the first pass the line count
+  are less precise since commands are closed at the end of file, not when 
+  finding a @ode or @section. If error messages are done in pass_text, 
+  they won't be output when only macros are expanded, but maybe it is better
+  like that? (and in makeinfo compatibility mode, a normal processing
+  will be done with -E).

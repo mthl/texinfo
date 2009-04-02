@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,36 +90,36 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>normal.lib</code> (see <a href="sing_595.htm#normal_005flib">normal_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>deltaLoc(f,J); f poly, J ideal
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>f is reduced bivariate polynomial; basering has exactly two variables;
 J is irreducible prime component of the singular locus of f (e.g., one
 entry of the output of <code>minAssGTZ(I);</code>, I = &lt;f,jacob(f)&gt;).
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list L:
 </p>
 <dl compact="compact">
-<dt> <code>L[1]</code>; int:</dt>
+<dt><code>L[1]</code>; int:</dt>
 <dd><p>         the sum of (local) delta invariants of f at the (conjugated) singular
          points given by J.
 </p></dd>
-<dt> <code>L[2]</code>; int:</dt>
+<dt><code>L[2]</code>; int:</dt>
 <dd><p>         the sum of (local) Tjurina numbers of f at the (conjugated) singular
          points given by J.
 </p></dd>
-<dt> <code>L[3]</code>; int:</dt>
+<dt><code>L[3]</code>; int:</dt>
 <dd><p>         the sum of (local) number of branches of f at the (conjugated) 
          singular points given by J.
 </p></dd>
 </dl>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>procedure makes use of <code>execute</code>; increasing printlevel displays
 more comments (default: printlevel=0).
 </p>

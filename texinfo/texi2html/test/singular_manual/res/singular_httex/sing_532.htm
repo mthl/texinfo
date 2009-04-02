@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,17 +90,17 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>algebra.lib</code> (see <a href="sing_530.htm#algebra_005flib">algebra_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>module_containment(p,P,M[,k]); p poly, P ideal, M ideal, k int
 <br> P = P[1],...,P[n] generators of a subalgebra of the basering,
 <br> M = M[1],...,M[m] generators of a module over the subalgebra K[P]
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>ncols(P) = nvars(basering), the P[i] are algebraically independent
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="format">         - k=0 (or if k is not given), an integer:
            1    : if p is contained in the module &lt;M[1],...,M[m]&gt; over K[P]
            0    : if p is not contained in &lt;M[1],...,M[m]&gt;
@@ -115,13 +115,13 @@ ul.toc {list-style: none}
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>the polynomial h(y(1),...,y(m),z(1),...,z(n)) if k=0, resp.
 a comment how to access the relation check if k=1, provided
 printlevel &gt;= voice+1 (default).
 </p>
 </dd>
-<dt> <strong>Theory:</strong></dt>
+<dt><strong>Theory:</strong></dt>
 <dd><p>The ideal of algebraic relations of all the generators p1,...,pn,
 s1,...,st given by P and S is computed introducing new variables y(j),
 z(i) and the product order: x^a*y^b*z^c &gt; x^d*y^e*z^f if x^a &gt; x^d

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -86,13 +86,13 @@ ul.toc {list-style: none}
 <h3 class="subsection">4.17.3 string type cast</h3>
 <a name="index-string-type-cast"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>string (</code> expression [, expression_2, ... expression_n]<code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>string
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>Converts each expression to a string, where expression can be of any
 type. The concatenated string of all concersions is returned.
 </p>
@@ -103,12 +103,12 @@ separated by a comma. No newlines are inserted.
 <br>For map, the ideal defining the mapping is converted.
 </p>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>When applied to a list, elements of type intvec, intmat, ideal, module,
 matrix, and list become indistinguishable.
 </p>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  string(&quot;1+1=&quot;, 2);
 &rarr; 1+1=2
   string(intvec(1,2,3,4));

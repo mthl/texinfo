@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
 
@@ -812,13 +812,13 @@ set_eta
 <p>The following variables are mandatory:
 </p>
 <dl compact="compact">
-<dt> <code>dt</code></dt>
+<dt><code>dt</code></dt>
 <dd><p>The time step.
 </p></dd>
-<dt> <code>time</code></dt>
+<dt><code>time</code></dt>
 <dd><p>Model time initialisation.
 </p></dd>
-<dt> <code>nstep</code></dt>
+<dt><code>nstep</code></dt>
 <dd><p>Number of iterations along the trajectory.
 </p></dd>
 </dl>
@@ -1509,17 +1509,17 @@ independent of the Fortran precision.
 
 <p>Many other variables are available, including
 </p><dl compact="compact">
-<dt> <code>istep</code>
+<dt><code>istep</code>
 <a name="index-istep"></a>
 </dt>
 <dd><p>The step number;
 </p></dd>
-<dt> <code>couplage(.)</code>
+<dt><code>couplage(.)</code>
 <a name="index-couplage_0028_002e_0029"></a>
 </dt>
 <dd><p>The <acronym title="Transfer Evolution Formalism">TEF</acronym> coupling matrix between transfers;
 </p></dd>
-<dt> <code>H</code>
+<dt><code>H</code>
 <a name="index-H"></a>
 </dt>
 <dd><p>The Jacobian matrix corresponding with:
@@ -1540,7 +1540,7 @@ independent of the Fortran precision.
 <BR CLEAR="ALL">
 <P></P>
 </p></dd>
-<dt> <code>Bb</code>
+<dt><code>Bb</code>
 <a name="index-Bb"></a>
 </dt>
 <dd><p>The Jacobian matrix corresponding with:
@@ -1561,7 +1561,7 @@ independent of the Fortran precision.
 <BR CLEAR="ALL">
 <P></P>
 </p></dd>
-<dt> <code>Bt</code>
+<dt><code>Bt</code>
 <a name="index-Bt"></a>
 </dt>
 <dd><p>The Jacobian matrix corresponding with:
@@ -1582,7 +1582,7 @@ independent of the Fortran precision.
 <BR CLEAR="ALL">
 <P></P>
 </p></dd>
-<dt> <code>D</code>
+<dt><code>D</code>
 <a name="index-D"></a>
 </dt>
 <dd><p>The Jacobian matrix corresponding with:
@@ -1604,15 +1604,15 @@ independent of the Fortran precision.
 <P></P>
 </p>
 </dd>
-<dt> <code>aspha</code>
+<dt><code>aspha</code>
 <a name="index-aspha"></a>
 </dt>
 <dd><p>The state advance matrix;
 </p></dd>
-<dt> <code>dneta</code>
+<dt><code>dneta</code>
 <a name="index-dneta"></a>
 </dt>
-<dt> <code>dphi</code>
+<dt><code>dphi</code>
 <a name="index-dphi"></a>
 </dt>
 <dd><p>the variable increments;
@@ -2090,24 +2090,24 @@ per node, and the number of limiting transfers and states are required.
 These dimensions has to be entered in the
 &lsquo;<tt>DimEtaPhi</tt>&rsquo; sequence. The parameters for cells are
 </p><dl compact="compact">
-<dt> <code>n_node</code>
+<dt><code>n_node</code>
 <a name="index-n_005fnode"></a>
 </dt>
 <dd><p>Number of cell nodes in the 1D grid.
 </p></dd>
-<dt> <code>n_dwn</code>
+<dt><code>n_dwn</code>
 <a name="index-n_005fdwn"></a>
 </dt>
 <dd><p>Number of limiting cells with index -1, <i>i.e.</i> number of cells in the
 limiting down node.
 </p></dd>
-<dt> <code>n_up</code>
+<dt><code>n_up</code>
 <a name="index-n_005fup"></a>
 </dt>
 <dd><p>Number of limiting cells with index +1, <i>i.e.</i> number of cells in the
 limiting up node.
 </p></dd>
-<dt> <code>n_mult</code>
+<dt><code>n_mult</code>
 <a name="index-n_005fmult"></a>
 </dt>
 <dd><p>Number of cells in each node (multiplicity).
@@ -2208,16 +2208,16 @@ for states and transfers:
 <a name="index-set_005fup_005fphi"></a>
 
 <dl compact="compact">
-<dt> <code>set_dwn_eta</code></dt>
+<dt><code>set_dwn_eta</code></dt>
 <dd><p>down node cells
 </p></dd>
-<dt> <code>set_up_eta</code></dt>
+<dt><code>set_up_eta</code></dt>
 <dd><p>up node cells
 </p></dd>
-<dt> <code>set_dwn_phi</code></dt>
+<dt><code>set_dwn_phi</code></dt>
 <dd><p>down node transfers
 </p></dd>
-<dt> <code>set_up_phi</code></dt>
+<dt><code>set_up_phi</code></dt>
 <dd><p>up node transfers
 </p></dd>
 </dl>
@@ -3490,7 +3490,7 @@ control laws are modified by a program external to Miniker. The same steps
 are repeated until convergence. More pecisely,
 </p>
 <dl compact="compact">
-<dt> <strong>forward</strong></dt>
+<dt><strong>forward</strong></dt>
 <dd><p>The command law <SPAN CLASS="MATH"><IMG
  WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_49.png"
@@ -3502,7 +3502,7 @@ of the functional to be optimised, <SPAN CLASS="MATH"><IMG
  ALT="$J$"></SPAN>, prescribed with specific 
 <code>f_set</code> macros. The states, transfers and control laws are stored.  
 </p></dd>
-<dt> <strong>backward</strong></dt>
+<dt><strong>backward</strong></dt>
 <dd><p>The adjoint variable is computed from the last time <SPAN CLASS="MATH"><IMG
  WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_51.png"
@@ -3511,7 +3511,7 @@ time increment is re-read as it could have changed during the forward
 simulation. The system is solved by using the same technics as in the forward 
 simulation, but with a negative time step.
 </p></dd>
-<dt> <strong>external phase</strong></dt>
+<dt><strong>external phase</strong></dt>
 <dd><p>Now the command should be corrected. This step isn&rsquo;t covered here, but, for
 example, minuit the optimisation tool from the CERN could be used. 
 In order to ease such a use of Miniker, the principal program has to be 
@@ -4267,23 +4267,23 @@ them in that case. The sequence included after the analysis is called
 the following variables could be usefull:
 </p>
 <dl compact="compact">
-<dt> <code>etafor(.)</code>
+<dt><code>etafor(.)</code>
 <a name="index-etafor_0028_002e_0029"></a>
 </dt>
 <dd><p>The state before the analysis.
 </p></dd>
-<dt> <code>kgain(.)</code>
+<dt><code>kgain(.)</code>
 <a name="index-kgain_0028_002e_0029"></a>
 </dt>
 <dd><p>The Kalman gain.
 </p></dd>
-<dt> <code>innobs(.)</code>
+<dt><code>innobs(.)</code>
 <a name="index-innobs_0028_002e_0029"></a>
 </dt>
 <dd><p>The innovation vector (observations coherent with the states minus data
 values).
 </p></dd>
-<dt> <code>covana(.,.)</code>
+<dt><code>covana(.,.)</code>
 <a name="index-covana_0028_002e_002c_002e_0029"></a>
 </dt>
 <dd><p>The variance-covariance error matrix after the analysis.
@@ -4298,7 +4298,7 @@ states. In other words, the Kalman filter does not follow the TEF formalism, bec
 the advance of the var-covar matrix could not yet be set in the TEF form.
 </p>
 <dl compact="compact">
-<dt> <code>obspha(.,.)</code>
+<dt><code>obspha(.,.)</code>
 <a name="index-obspha_0028_002e_002c_002e_0029"></a>
 </dt>
 <dd><p>derivative of observation function in state space with respect to
@@ -4443,17 +4443,17 @@ specified with three variables, one for the first step, one for the last step
 and one for the number of steps between two Borel sweeps:
 </p>
 <dl compact="compact">
-<dt> <code>istep_B_deb</code>
+<dt><code>istep_B_deb</code>
 <a name="index-istep_005fB_005fdeb"></a>
 </dt>
 <dd><p>First time step for the Borel sweep.
 </p></dd>
-<dt>  <code>istep_B_fin</code>
+<dt><code>istep_B_fin</code>
 <a name="index-istep_005fB_005ffin"></a>
 </dt>
 <dd><p>Last time step for the Borel sweep.
 </p></dd>
-<dt> <code>istep_B_inc</code>
+<dt><code>istep_B_inc</code>
 <a name="index-istep_005fB_005finc"></a>
 </dt>
 <dd><p>Number of time steps between Borel sweeps.
@@ -4476,7 +4476,7 @@ set. As this is a multiplicative variable the initial value, a multiplicative
 factor and the number of values are to be given.
 </p>
 <dl compact="compact">
-<dt> <code>tau_B_ini</code>
+<dt><code>tau_B_ini</code>
 <a name="index-tau_005fB_005fini"></a>
 </dt>
 <dd><p>Initial value for <SPAN CLASS="MATH"><IMG
@@ -4484,7 +4484,7 @@ factor and the number of values are to be given.
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>.
 </p></dd>
-<dt> <code>tau_B_mult</code>
+<dt><code>tau_B_mult</code>
 <a name="index-tau_005fB_005fmult"></a>
 </dt>
 <dd><p>Multiplicative factor for sweep in <SPAN CLASS="MATH"><IMG
@@ -4492,7 +4492,7 @@ factor and the number of values are to be given.
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>.
 </p></dd>
-<dt> <code>itau_max</code>
+<dt><code>itau_max</code>
 <a name="index-itau_005fmax"></a>
 </dt>
 <dd><p>Number of <SPAN CLASS="MATH"><IMG
@@ -5096,40 +5096,40 @@ variables and rules.
 <p>The following make variables can be set by the user:
 </p>
 <dl compact="compact">
-<dt> <code>miniker_dir</code></dt>
+<dt><code>miniker_dir</code></dt>
 <dd><p>that variable should hold the Miniker sources directory. If you installed
 Miniker that variable should be set to &lsquo;<tt>$(includedir)/mini_ker</tt>&rsquo;. 
 If you use the sources right from the sources directory it should be set to 
 the sources package directory.
 </p></dd>
-<dt> <code>MTNDIRS</code></dt>
+<dt><code>MTNDIRS</code></dt>
 <dd><p>This variable can hold a &lsquo;<samp>:</samp>&rsquo; delimited list of directories that will
 be searched for mortran include files.
 </p></dd>
-<dt> <code>CMFDIRS</code></dt>
+<dt><code>CMFDIRS</code></dt>
 <dd><p>This variable can hold a &lsquo;<samp>:</samp>&rsquo; delimited list of directories that will
 be searched for cmz directive include files.
 </p></dd>
-<dt> <code>SEL</code></dt>
+<dt><code>SEL</code></dt>
 <dd><p>This variable holds a &lsquo;<samp>,</samp>&rsquo; delimited list of select flags, for example
 <code>monitor</code>, <code>grid1d</code>, <code>debug</code>.
 </p></dd>
-<dt> <code>LDADD</code></dt>
+<dt><code>LDADD</code></dt>
 <dd><p>This variable can be used to add libraries flags and files. It is used in 
 the default linking command/rule.
 </p></dd>
-<dt> <code>miniker_user_objects</code></dt>
+<dt><code>miniker_user_objects</code></dt>
 <dd><p>This variable should hold a space separated list of additional object files
 to be linked with the model and helper object files.
 </p></dd>
-<dt> <code>CAR2TXTFLAGS</code></dt>
+<dt><code>CAR2TXTFLAGS</code></dt>
 <dd><p>cmz directives preprocessor flag.
 </p></dd>
-<dt> <code>kalman</code></dt>
+<dt><code>kalman</code></dt>
 <dd><p>This variable should be set to 1 if you want to use the kalman filter
 (see section <a href="#Kalman-filter">Kalman filter</a>).
 </p></dd>
-<dt> <code>double</code></dt>
+<dt><code>double</code></dt>
 <dd><p>This variable should be set to 1 if you want to have a double precision
 code (see section <a href="#Double-precision">Double precision</a>).
 </p></dd>
@@ -5139,28 +5139,28 @@ code (see section <a href="#Double-precision">Double precision</a>).
 (some are set by ./configure see <a href="#Configuration">Configuration</a>):
 </p>
 <dl compact="compact">
-<dt> <code>miniker_principal_objects</code></dt>
+<dt><code>miniker_principal_objects</code></dt>
 <dd><p>The list of object files needed for the model build, together with some 
 helper object files often used but not strictly required for the linking.
 </p></dd>
-<dt> <code>DEPDIR</code></dt>
+<dt><code>DEPDIR</code></dt>
 <dd><p>The name of a hidden directory containing the dependencies computed
 for the main mortran files.
 </p></dd>
-<dt> <code>F77</code></dt>
-<dt> <code>FC</code></dt>
-<dt> <code>FFLAGS</code></dt>
-<dt> <code>LDFLAGS</code></dt>
+<dt><code>F77</code></dt>
+<dt><code>FC</code></dt>
+<dt><code>FFLAGS</code></dt>
+<dt><code>LDFLAGS</code></dt>
 <dd><p>Compiler and linker related variables set by ./configure.
 </p></dd>
-<dt> <code>LIBS</code></dt>
+<dt><code>LIBS</code></dt>
 <dd><p>This variable should hold the link flags and files required to build 
 Miniker, set by ./configure.
 </p></dd>
-<dt> <code>CAR2TXT</code></dt>
-<dt> <code>MORTRAN</code></dt>
-<dt> <code>MTNFLAGS</code></dt>
-<dt> <code>MTNDEPEND</code></dt>
+<dt><code>CAR2TXT</code></dt>
+<dt><code>MORTRAN</code></dt>
+<dt><code>MTNFLAGS</code></dt>
+<dt><code>MTNDEPEND</code></dt>
 <dd><p>Preprocessor and preprocessor flags, set by ./configure.
 </p></dd>
 </dl>
@@ -5188,14 +5188,14 @@ Miniker, set by ./configure.
 
 <p>The following rules are defined in the &lsquo;<tt>Makefile.miniker</tt>&rsquo; file.
 </p><dl compact="compact">
-<dt> <code>miniker-clean</code></dt>
+<dt><code>miniker-clean</code></dt>
 <dd><p>remove the fortran files generated from the mortran files. Remove 
 the object files.
 </p></dd>
-<dt> <code>miniker-mtn-clean</code></dt>
+<dt><code>miniker-mtn-clean</code></dt>
 <dd><p>remove the mortran files generated from the files with cmz directives.
 </p></dd>
-<dt> <code></code></dt>
+<dt><code></code></dt>
 <dd><p>Various rules to preprocess files with cmz directives and mortran files and
 to compile fortran files.
 </p></dd>
@@ -6017,19 +6017,19 @@ switches and also specify environment variables (see also
 <code>./configure --help</code>):
 </p>
 <dl compact="compact">
-<dt> <code>--disable-cernlib</code></dt>
+<dt><code>--disable-cernlib</code></dt>
 <dd><p>Use the internal cernlib source files, even if a cernlib is detected.
 </p></dd>
-<dt> <code>--with-static-cernlib</code></dt>
+<dt><code>--with-static-cernlib</code></dt>
 <dd><p>This command line switch forces a static linking with the cernlib (or a dynamic linking 
 if set to no).
 </p></dd>
-<dt> <code>--with-cernlib</code></dt>
+<dt><code>--with-cernlib</code></dt>
 <dd><p>This command line switch can be used to specify the cernlib location
 (if not detected or you want to use a specific cernlib).
 </p></dd>
-<dt> <code>--with-blas</code></dt>
-<dt> <code>--with-lapack</code></dt>
+<dt><code>--with-blas</code></dt>
+<dt><code>--with-lapack</code></dt>
 <dd><p>With this command switch, you can specify the location of the blas and lapack
 libraries.
 </p>
@@ -6042,26 +6042,26 @@ the Apple frameworks:
 </pre></td></tr></table>
 
 </dd>
-<dt> <code>F77</code></dt>
-<dt> <code>FC</code></dt>
-<dt> <code>FFLAGS</code></dt>
-<dt> <code>LDFLAGS</code> </dt>
+<dt><code>F77</code></dt>
+<dt><code>FC</code></dt>
+<dt><code>FFLAGS</code></dt>
+<dt><code>LDFLAGS</code></dt>
 <dd><p>Classical compiler, compiler flags and linker flags.
 </p></dd>
-<dt> <code>MORTRAN</code></dt>
+<dt><code>MORTRAN</code></dt>
 <dd><p>This environment variable holds the mortran preprocessor command
 (default is <code>mortran</code>).
 </p></dd>
-<dt> <code>MTNFLAGS</code></dt>
+<dt><code>MTNFLAGS</code></dt>
 <dd><p>This environment variable holds command line arguments for the mortran
 preprocessor. It is empty in the default case.
 </p></dd>
-<dt> <code>MTN</code></dt>
+<dt><code>MTN</code></dt>
 <dd><p>This environment variable may be used to specify the mortran executable
 name and/or path, it should be used by the <code>mortran</code> commmand.
 (default is empty, which leads to a mortran executable called <code>mtn</code>).
 </p></dd>
-<dt> <code>MTNDEPEND</code></dt>
+<dt><code>MTNDEPEND</code></dt>
 <dd><p>This environment variable may be used to specify the mortran dependencies
 checker executable. It should be used by the <code>mortran</code> commmand.
 (default is empty, which leads to a mortran dependencies checker 
@@ -6280,13 +6280,13 @@ The optionnal following arguments may be
 of 2 type (and may be mixed, separated by &lsquo;<samp>,</samp>&rsquo;):
 </p>
 <dl compact="compact">
-<dt> conditional</dt>
+<dt>conditional</dt>
 <dd><p>A conditionnal is introduced by <code>IF=</code> followed by a conditionnal 
 expression described in 
 <a href="#Conditional-expressions">Conditional expressions</a>. The 
 file is preprocessed if the conditionnal expression is true.
 </p></dd>
-<dt> language specification</dt>
+<dt>language specification</dt>
 <dd><p>A language specification is introduced by a <code>T=</code>. The most
 common languages are &lsquo;<samp>mtn</samp>&rsquo; for the mortran, &lsquo;<samp>ftn</samp>&rsquo; for
 fortran not preprocessed, &lsquo;<samp>f77</samp>&rsquo; for preprocessed fortran,
@@ -6461,13 +6461,13 @@ files are <code>Keep</code> in cmz. The following optional arguments may be
 mixed:
 </p>
 <dl compact="compact">
-<dt> conditional</dt>
+<dt>conditional</dt>
 <dd><p>A conditionnal is introduced by <code>IF=</code> followed by a conditionnal 
 expression described in 
 <a href="#Conditional-expressions">Conditional expressions</a>. The 
 directive is ignored if the conditionnal expression is false.
 </p></dd>
-<dt> T=noinclude</dt>
+<dt>T=noinclude</dt>
 <dd><p>When this argument is present the text of the sequence will 
 always be included in the file where the <code>+seq</code> appears.
 </p></dd>

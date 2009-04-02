@@ -165,7 +165,7 @@ files.
 <dl compact="compact">
 <dd><div id="index-RCS_002c-importing-files-from"></div>
 </dd>
-<dt> From RCS</dt>
+<dt>From RCS</dt>
 <dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
 files&mdash;usually a file named &lsquo;<tt>foo.c</tt>&rsquo; will have its
 <small>RCS</small> file in &lsquo;<tt>RCS/foo.c,v</tt>&rsquo; (but it could be
@@ -187,7 +187,7 @@ into <small>CVS</small>; if it is, <small>CVS</small> will have trouble
 letting you operate on it.
 </p>
 </dd>
-<dt> From another version control system</dt>
+<dt>From another version control system</dt>
 <dd><p>Many version control systems have the ability to export
 <small>RCS</small> files in the standard format.  If yours does,
 export the <small>RCS</small> files and then follow the above
@@ -202,7 +202,7 @@ useful example to follow.
 </p>
 <div id="index-SCCS_002c-importing-files-from"></div>
 </dd>
-<dt> From SCCS</dt>
+<dt>From SCCS</dt>
 <dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
 the <small>CVS</small> source distribution called &lsquo;<tt>sccs2rcs</tt>&rsquo;
 which converts <small>SCCS</small> files to <small>RCS</small> files.
@@ -213,7 +213,7 @@ vary).
 </p>
 <div id="index-PVCS_002c-importing-files-from"></div>
 </dd>
-<dt> From PVCS</dt>
+<dt>From PVCS</dt>
 <dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
 the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo;
 which converts <small>PVCS</small> archives to <small>RCS</small> files.

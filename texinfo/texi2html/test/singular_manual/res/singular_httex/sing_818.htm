@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>elimpartanyr(i [,p,e] ); i=ideal, p=polynomial, e=integer<br>
 p: product of vars to be eliminated,<br>
 e =0: substitute from linear part of i (same as elimlinearpart)<br>
@@ -98,7 +98,7 @@ e!=0: eliminate also by direct substitution<br>
 (default: p=product of all vars, e=1)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list of 6 objects:
   </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: (interreduced) ideal obtained by substituting from i those vars
        appearing in p, which occur in the linear part of i (or which can
@@ -116,7 +116,7 @@ maps [3] to 0, hence induces an isomorphism
   </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>the proc uses <code>execute</code> to create a ring with ordering dp and vars
 placed correctly and then applies <code>elimpart</code>.
 </p>

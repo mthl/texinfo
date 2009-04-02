@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,15 +90,15 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>primefactors(n [,p]); n = int or number, p = integer
 </p>
 </dd>
-<dt> <strong>Compute:</strong></dt>
+<dt><strong>Compute:</strong></dt>
 <dd><p>primefactors &lt;= min(p,32003) of n (default p = 32003)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list, say l,
 <br>l[1] : primefactors &lt;= min(p,32003) of n
 <br>l[2] : l[2][i] = multiplicity of l[1][i]
@@ -106,13 +106,13 @@ ul.toc {list-style: none}
 type(l[3])=typeof(n)
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>If n is a long integer (of type number) then the procedure
 finds primefactors &lt;= min(p,32003) but n may be larger as
 2147483647 (max. integer representation)
 </p>
 </dd>
-<dt> <strong>Warning:</strong></dt>
+<dt><strong>Warning:</strong></dt>
 <dd><p>the procedure works for small integers only, just by testing all
 primes (not to be considerd as serious prime factorization!)
 </p>

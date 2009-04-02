@@ -356,7 +356,7 @@ sub get_string($;$$)
             $translated_string = $string;
         }
     }
-    return main::substitute_line($translated_string, $state) unless (defined($arguments) or !keys(%$arguments));
+    return main::substitute_line($translated_string, "translation",  $state) unless (defined($arguments) or !keys(%$arguments));
     # if there are arguments, we must protect the %{arg} constructs before
     # doing substitute_line. So there is a first pass here to change %{arg} 
     # to %@{arg@}
@@ -392,7 +392,7 @@ sub get_string($;$$)
         }
         # the arguments are not already there. But the @-commands in the 
         # strings are substituted.
-        $translated_string = main::substitute_line($result, $state);
+        $translated_string = main::substitute_line($result, "translation", $state);
     }
     # now we substitute the arguments 
     $result = '';

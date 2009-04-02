@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,7 +88,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>tolessvars(id [,s1,s2] ); id poly/ideal/vector/module/matrix,
 s1,s2=strings<br>
 s1: name of new ring,<br>
@@ -98,7 +98,7 @@ s2=&quot;dp&quot; or &quot;ds&quot; depending whether the first block of the old
 ordering is a p- resp. an s-ordering)
 </p>
 </dd>
-<dt> <strong>Create:</strong></dt>
+<dt><strong>Create:</strong></dt>
 <dd><p>nothing, if id contains all vars of the basering.<br>
 Else, create a ring with same char as the basering, but possibly less
 variables (only those variables which actually occur in id) and map
@@ -106,16 +106,16 @@ id to the new ring, which will be the basering after the proc has
 finished.
 </p>
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>If printlevel &gt;=0, display ideal of vars, which have been omitted from
 the old ring
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>the original ideal id (see NOTE)
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>You must not type, say, &rsquo;ideal id=tolessvars(id);&rsquo; since the ring
 to which &rsquo;id&rsquo; would belong will only be defined by the r.h.s.. But you
 may type &rsquo;def id=tolessvars(id);&rsquo; or &rsquo;list id=tolessvars(id);&rsquo;

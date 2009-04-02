@@ -23,6 +23,10 @@ texi def_cmd_dble.texi
 texi style_not_closed_in_table_line.texi
 texi style_not_closed_in_cartouche.texi
 texi multitable_too_much_col.texi
+texi bad_style_nesting.texi
+texi tab_in_index.texi
+texi bad_tab_nesting.texi
+#texi invalid_command_in_table.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -48,3 +52,7 @@ def_cmd_dble def_cmd_dble.texi
 style_not_closed_in_table_line style_not_closed_in_table_line.texi
 style_not_closed_in_cartouche style_not_closed_in_cartouche.texi
 multitable_too_much_col multitable_too_much_col.texi
+bad_style_nesting bad_style_nesting.texi
+tab_in_index tab_in_index.texi
+bad_tab_nesting bad_tab_nesting.texi
+#invalid_command_in_table invalid_command_in_table.texi

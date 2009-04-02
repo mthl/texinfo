@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,34 +88,34 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.1 attrib</h3>
 <a name="index-attrib"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>displays the attribute list of the object called name.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I);
 &rarr; attr:isSB, type int
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name <code>,</code> string_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>any
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>returns the value of the attribute string_expression of the
 variable name. If the attribute is not defined for this variable,
 <code>attrib</code> returns the empty string.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I,&quot;isSB&quot;);
@@ -126,17 +126,17 @@ variable name. If the attribute is not defined for this variable,
 &rarr; 0
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name<code>,</code> string_expression<code>,</code> expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>sets the attribute string_expression of the variable name
 to the value expression.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=maxideal(2); // the attribute &quot;isSB&quot; is not set
   vdim(I);
@@ -147,47 +147,47 @@ to the value expression.
 &rarr; 4
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Remark:</strong></code></dt>
+<dt><code><strong>Remark:</strong></code></dt>
 <dd><p>An attribute may be described by any string_expression. Some of these are
 used by the kernel of <small>SINGULAR</small> and referred to as reserved attributes.
 Non-reserved attributes may be used, however, in procedures and can
 considerably speed up computations.
-<br>
-</p></dd>
-<dt> <code><strong>Reserved attributes:</strong></code></dt>
+</p><br>
+</dd>
+<dt><code><strong>Reserved attributes:</strong></code></dt>
 <dd><p>(not all are in use at the moment)
 </p><dl compact="compact">
-<dt> <code>isSB</code></dt>
+<dt><code>isSB</code></dt>
 <dd><p>the standard basis property is set by all commands computing a standard
 basis like
 <code>groebner</code>, <code>std</code>, <code>stdhilb</code> etc.; used by <code>lift</code>, <code>dim</code>,
 <code>degree</code>, <code>mult</code>, <code>hilb</code>, <code>vdim</code>, <code>kbase</code>
 </p></dd>
-<dt> <code>isHomog</code></dt>
+<dt><code>isHomog</code></dt>
 <dd><p>the weight vector for homogeneous or quasihomogeneous ideals/modules
 </p></dd>
-<dt> <code>isCI</code></dt>
+<dt><code>isCI</code></dt>
 <dd><p>complete intersection property
 </p></dd>
-<dt> <code>isCM</code></dt>
+<dt><code>isCM</code></dt>
 <dd><p>Cohen-Macaulay property
 </p></dd>
-<dt> <code>rank</code></dt>
+<dt><code>rank</code></dt>
 <dd><p>set the rank of a module (see <a href="sing_241.htm#nrows">nrows</a>)
 </p></dd>
-<dt> <code>withSB</code></dt>
+<dt><code>withSB</code></dt>
 <dd><p>value of type ideal, resp. module, is std
 </p></dd>
-<dt> <code>withHilb</code></dt>
+<dt><code>withHilb</code></dt>
 <dd><p>value of type intvec is hilb(_,1) (see <a href="sing_200.htm#hilb">hilb</a>)
 </p></dd>
-<dt> <code>withRes</code></dt>
+<dt><code>withRes</code></dt>
 <dd><p>value of type list is a free resolution
 </p></dd>
-<dt> <code>withDim</code></dt>
+<dt><code>withDim</code></dt>
 <dd><p>value of type int is the dimension (see <a href="sing_174.htm#dim">dim</a>)
 </p></dd>
-<dt> <code>withMult</code></dt>
+<dt><code>withMult</code></dt>
 <dd><p>value of type int is the multiplicity (see <a href="sing_235.htm#mult">mult</a>)
 </p></dd>
 </dl>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -87,14 +87,14 @@ ul.toc {list-style: none}
 <a name="index-facstd"></a>
 
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>facstd (</code> ideal_expression <code>)</code>
 <br><code>facstd (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>list of ideals
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>returns a list of ideals computed by the factorizing Groebner basis algorithm.
 <br>The intersection of these ideals has the same zero-set as the input,
 i.e., the radical of the intersection coincides with the radical of the input
@@ -107,12 +107,12 @@ non-zero constraints. Hence, the intersection of the output ideals
 has a zero-set which is the (closure of the) complement of the zero-set
 of the second argument in the zero-set of the first argument.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>Not implemented for baserings over real ground fields, galois fields and
 over algebraic extensions over the rational numbers (that is, only
 implemented for ground fields for which <a href="sing_185.htm#factorize">factorize</a> is implemented).
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   ideal I=xyz,x2z;
   facstd(I);

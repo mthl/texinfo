@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,11 +90,11 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>algebra.lib</code> (see <a href="sing_530.htm#algebra_005flib">algebra_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>is_injective(phi,pr[,c,s]); phi map, pr preimage ring, c int, s string
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="format">         - 1 (type int) if phi is injective, 0 if not (if s is not given).
          - If s is given, return a list l of size 2, l[1] int, l[2] ring:
            l[1] is 1 if phi is injective, 0 if not
@@ -104,7 +104,7 @@ ul.toc {list-style: none}
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>Three different algorithms are used depending on c = 1,2,3.
 If c is not given or c=0, a heuristically best method is chosen.
 The basering may be a quotient ring. However, if the preimage ring is
@@ -114,7 +114,7 @@ To access to the ring l[2] and see ker you must give the ring a name,
 e.g. def S=l[2]; setring S; ker;
 </p>
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>The above comment is displayed if printlevel &gt;= 0 (default).
 </p>
 </dd>

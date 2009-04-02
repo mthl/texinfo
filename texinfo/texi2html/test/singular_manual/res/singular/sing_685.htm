@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,50 +88,50 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>develop(f [,n]); f poly, n int
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>f is a bivariate polynomial (in the first 2 ring variables) and
 irreducible as power series (for reducible f use <code>hnexpansion</code>).
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list <code>L</code> with:
 </p>
 <dl compact="compact">
-<dt> <code>L[1]</code>; matrix:</dt>
+<dt><code>L[1]</code>; matrix:</dt>
 <dd><p>         Each row contains the coefficients of the corresponding line of the
          Hamburger-Noether expansion (HNE). The end of the line is marked in
          the matrix by the first ring variable (usually x).
 </p></dd>
-<dt> <code>L[2]</code>; intvec:</dt>
+<dt><code>L[2]</code>; intvec:</dt>
 <dd><p>         indicating the length of lines of the HNE
 </p></dd>
-<dt> <code>L[3]</code>; int:</dt>
+<dt><code>L[3]</code>; int:</dt>
 <dd><p>         0  if the 1st ring variable was transversal (with respect to f), <br>
          1  if the variables were changed at the beginning of the
             computation, <br>
         -1  if an error has occurred.
 </p></dd>
-<dt> <code>L[4]</code>; poly:</dt>
+<dt><code>L[4]</code>; poly:</dt>
 <dd><p>         the transformed polynomial of f to make it possible to extend the
          Hamburger-Noether development a posteriori without having to do
          all the previous calculation once again (0 if not needed)
 </p></dd>
-<dt> <code>L[5]</code>; int:</dt>
+<dt><code>L[5]</code>; int:</dt>
 <dd><p>         1  if the curve has exactly one branch (i.e., is irreducible), <br>
          0  else (i.e., the curve has more than one HNE, or f is not valid).
 </p></dd>
 </dl>
 
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>The (non zero) elements of the HNE (if not called by another proc).
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>The optional parameter <code>n</code> affects only the computation of
 the LAST line of the HNE. If it is given, the HN-matrix <code>L[1]</code>
 will have at least <code>n</code> columns. <br>

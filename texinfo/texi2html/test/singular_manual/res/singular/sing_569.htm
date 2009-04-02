@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,7 +88,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>homolog.lib</code> (see <a href="sing_550.htm#homolog_005flib">homolog_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Compute:</strong></dt>
+<dt><strong>Compute:</strong></dt>
 <dd><p>a presentation of Tor_k(M&rsquo;,N&rsquo;), for k=v[1],v[2],... , where
 M&rsquo;=coker(M) and N&rsquo;=coker(N): let
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">       0 &lt;-- M' &lt;-- G0 &lt;-M-- G1                
@@ -116,7 +116,7 @@ then we have exact sequences
 <p>Hence, Tor presents Tor_k(M&rsquo;,N&rsquo;).
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>- if v is of type int: module Tor, a presentation of Tor_k(M&rsquo;,N&rsquo;);<br>
 - if v is of type intvec: a list of Tor_k(M&rsquo;,N&rsquo;) (k=v[1],v[2],...);<br>
 - in case of a third argument of any type: list l with
@@ -127,13 +127,13 @@ then we have exact sequences
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>printlevel &gt;=0: (affine) dimension of Tor_k for each k (default).
 <br> printlevel &gt;=1: matrices Ak, Ak+1 and kbase of Tor_k in Tensor(G0,Fk)
 (if finite dimensional).
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>In order to compute Tor_k(M,N) use the command Tor(k,syz(M),syz(N));
 or: list P=mres(M,2); list Q=mres(N,2); Tor(k,P[2],Q[2]);
 </p>

@@ -504,9 +504,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -1038,9 +1038,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -1567,9 +1567,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -2097,9 +2097,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -2625,9 +2625,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
@@ -3153,9 +3153,9 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 <item>l--ine
 </item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item>l--ine
 </item></tableitem></table>
 
@@ -3170,8 +3170,8 @@ f--lushleft
 
 f--lushright
 
-<center> ce--ntered line
-</center>
+ ce--ntered line
+
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 
 @setfilename simplest.info

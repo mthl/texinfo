@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,11 +88,11 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>parametrisation(INPUT [,x]); INPUT list or poly, x int (optional)
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>INPUT is either a bivariate polynomial f defining a plane curve
 singularity, or it is the output of <code>hnexpansion(f[,&quot;ess&quot;])</code>,
 or of <code>develop(f)</code>, or of <code>extdevelop(develop(f),n)</code>,
@@ -100,7 +100,7 @@ or the list @{hne} in the ring created by <code>hnexpansion(f)</code>
 respectively one entry thereof.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list L containing a parametrization L[i] for each branch f[i] of f
 in the following format: <br>
 - if only the list INPUT is given, L[i] is an ideal of two polynomials
@@ -114,7 +114,7 @@ coefficients of the monomials in L[i][1] are exact (entry -1 means that
 the corresponding parametrization is exact).
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>If the basering has only 2 variables, the first variable is chosen
 as indefinite. Otherwise, the 3rd variable is chosen. <br>
 In case the Hamburger-Noether expansion of the curve f is needed

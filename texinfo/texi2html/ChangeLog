@@ -1,3 +1,26 @@
+2009-04-02  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/: modify directly the 
+	texinfo for table items. \&table_item API changed correspondingly.
+	remove spaces in @(v|t)table @item better.
+	Give information about the context for substitute_line, and other 
+	contexts when paragraphs should not appear, and also give context
+	of close_paragraph to be able to deliver an error message stating
+	that something triggering paragraph closing happened while it
+	shouldn't have..
+	Change the System Identifier to be conformant with what w3c now
+	wants (report from Andreas Lochmann).
+	* texi2html.pl: Split close_stack_texi_structure in 
+	close_stack_texi and close_stack_structure, and close directly 
+	in these functions instead of constructing a string to resume 
+	processing.
+	Use a hash instead of an array for index entries, and give 
+	something to the formatting function even if the index
+	entry is not in a normal place in the document.
+	Handle better index entries on @item @*table lines and other 
+	invalid constructs, especially bad constructs involving @center.
+	* doc/texi2html.texi: fix invalid constructs.
+
 2009-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: @sp stops paragraph and ignores up 
@@ -36,7 +59,7 @@
 
 	* texi2html.init: correct exclamdown/questiondown in ascii.
 	* test/run_test.sh: tests of info output ignore stderr since
-	it is full for debug output right now.
+	it is full of debugging output right now.
 
 2009-01-05  Derek Price  <derek@ximbiot.com>
 

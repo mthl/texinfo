@@ -5,10 +5,10 @@ index_in_item_line_table.texi(,5) @node Top
 index_in_item_line_table.texi(,6) @top test index entries in @@item @@table 
 index_in_item_line_table.texi(,7) 
 index_in_item_line_table.texi(,8) @table @asis
-index_in_item_line_table.texi(,9) @item @cindex index
+index_in_item_line_table.texi(,9) @item  index
 index_in_item_line_table.texi(,10) @option{opt}
 index_in_item_line_table.texi(,11) More text
-index_in_item_line_table.texi(,12) @item @cindex 2 index
+index_in_item_line_table.texi(,12) @item  2 index
 index_in_item_line_table.texi(,13) @option{nopt}
 index_in_item_line_table.texi(,14) Even more
 index_in_item_line_table.texi(,15) @end table

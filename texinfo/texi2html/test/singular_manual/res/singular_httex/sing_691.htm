@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,30 +90,30 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>multsequence(INPUT); INPUT list or poly
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>INPUT is the output of <code>develop(f)</code>, or of <code>extdevelop(develop(f),n)</code>,
 or one entry in the list <code>hne</code> of the ring created by <code>hnexpansion(f)</code>.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>intvec corresponding to the multiplicity sequence of (a branch)
 of the curve (the same as <code>invariants(INPUT)[6]</code>).
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>INPUT is a bivariate polynomial, or the output of <code>hnexpansion(f)</code>,
 or the list <code>hne</code> in the ring created by <code>hnexpansion(f)</code>.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list of two integer matrices:
 </p>
 <dl compact="compact">
-<dt>  <code>multsequence(INPUT)[1][i,*]</code></dt>
+<dt><code>multsequence(INPUT)[1][i,*]</code></dt>
 <dd><p>   contains the multiplicities of the branches at their infinitely near point
    of 0 in its (i-1) order neighbourhood (i.e., i=1: multiplicity of the
    branches themselves, i=2: multiplicity of their 1st quadratic transformed,
@@ -121,13 +121,13 @@ or the list <code>hne</code> in the ring created by <code>hnexpansion(f)</code>.
    Hence, <code>multsequence(INPUT)[1][*,j]</code> is the multiplicity sequence
    of branch j.
 </p></dd>
-<dt>  <code>multsequence(INPUT)[2][i,*]</code>:</dt>
+<dt><code>multsequence(INPUT)[2][i,*]</code>:</dt>
 <dd><p>   contains the information which of these infinitely near points coincide.
 </p></dd>
 </dl>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>The order of elements of the list <code>hne</code> obtained from <code>hnexpansion(f[,&quot;ess&quot;)</code>
 must not be changed (because then the coincident infinitely near points
 couldn&rsquo;t be grouped together, cf. meaning of 2nd intmat in example).

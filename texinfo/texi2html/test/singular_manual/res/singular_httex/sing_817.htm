@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>elimpart(i [,n,e] ); i=ideal, n,e=integers
 <br>n : only the first n vars are considered for substitution,<br>
 e =0: substitute from linear part of i (same as elimlinearpart)<br>
@@ -98,7 +98,7 @@ e!=0: eliminate also by direct substitution<br>
 (default: n = nvars(basering), e = 1)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list of 5 objects:
   </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: ideal obtained by substituting from the first n variables those
        from i, which appear in the linear part of i (or, if e!=0, which
@@ -115,7 +115,7 @@ maps [3] to 0, hence induces an isomorphism
   </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>If the basering has ordering (c,dp), this is faster for big ideals,
 since it avoids internal ring change and mapping.
 </p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
 a documentation system that can produce both online information and a
@@ -271,13 +271,13 @@ file and would also set the fill column to 70.
 <p>The options are:
 </p>
 <dl compact="compact">
-<dt> <code>-D <var>var</var></code></dt>
+<dt><code>-D <var>var</var></code></dt>
 <dd><a name="index-_002dD-var"></a>
 <p>Cause the variable <var>var</var> to be defined.  This is equivalent to
 <code>@set <var>var</var></code> in the Texinfo file (see section <a href="texinfo_17.html#set-clear-value"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
-<dt> <code>--commands-in-node-names</code></dt>
+<dt><code>--commands-in-node-names</code></dt>
 <dd><a name="index-_002d_002dcommands_002din_002dnode_002dnames"></a>
 <p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
@@ -286,13 +286,13 @@ can probably never be implemented in TeX.  It also makes
 details.
 </p>
 </dd>
-<dt> <code>--docbook</code></dt>
+<dt><code>--docbook</code></dt>
 <dd><a name="index-_002d_002ddocbook"></a>
 <p>Generate DocBook output rather than Info.  
 </p>
 </dd>
-<dt> <code>--error-limit=<var>limit</var></code></dt>
-<dt> <code>-e <var>limit</var></code></dt>
+<dt><code>--error-limit=<var>limit</var></code></dt>
+<dt><code>-e <var>limit</var></code></dt>
 <dd><a name="index-_002d_002derror_002dlimit_003dlimit"></a>
 <a name="index-_002de-limit"></a>
 <p>Set the maximum number of errors that <code>makeinfo</code> will report
@@ -300,8 +300,8 @@ before exiting (on the assumption that continuing would be useless);
 default 100.
 </p>
 </dd>
-<dt> <code>--fill-column=<var>width</var></code></dt>
-<dt> <code>-f <var>width</var></code></dt>
+<dt><code>--fill-column=<var>width</var></code></dt>
+<dt><code>-f <var>width</var></code></dt>
 <dd><a name="index-_002d_002dfill_002dcolumn_003dwidth"></a>
 <a name="index-_002df-width"></a>
 <p>Specify the maximum number of columns in a line; this is the right-hand
@@ -312,8 +312,8 @@ as the fill column.  Lines are broken between words.) The default value
 is 72.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </p>
 </dd>
-<dt> <code>--footnote-style=<var>style</var></code></dt>
-<dt> <code>-s <var>style</var></code></dt>
+<dt><code>--footnote-style=<var>style</var></code></dt>
+<dt><code>-s <var>style</var></code></dt>
 <dd><a name="index-_002d_002dfootnote_002dstyle_003dstyle"></a>
 <a name="index-_002ds-style"></a>
 <p>Set the footnote style to <var>style</var>, either &lsquo;<samp>end</samp>&rsquo; for the end
@@ -326,22 +326,22 @@ style is &lsquo;<samp>end</samp>&rsquo;, <code>makeinfo</code> places the footno
 the end of the current node.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
 </p>
 </dd>
-<dt> <code>--force</code></dt>
-<dt> <code>-F</code></dt>
+<dt><code>--force</code></dt>
+<dt><code>-F</code></dt>
 <dd><a name="index-_002d_002dforce"></a>
 <a name="index-_002dF"></a>
 <p>Ordinarily, if the input file has errors, the output files are not
 created.  With this option, they are preserved.
 </p>
 </dd>
-<dt> <code>--help</code></dt>
-<dt> <code>-h</code></dt>
+<dt><code>--help</code></dt>
+<dt><code>-h</code></dt>
 <dd><a name="index-_002d_002dhelp"></a>
 <a name="index-_002dh"></a>
 <p>Print a usage message listing all available options, then exit successfully.
 </p>
 </dd>
-<dt> <code>--html</code></dt>
+<dt><code>--html</code></dt>
 <dd><a name="index-_002d_002dhtml"></a>
 <p>Generate HTML output rather than Info.  See section <a href="#makeinfo-html">Generating HTML</a>.  By
 default, the HTML output is split into one output file per source node,
@@ -349,7 +349,7 @@ and the split output is written into a subdirectory with the name of the
 top-level info file.
 </p>
 </dd>
-<dt> <code>-I <var>dir</var></code></dt>
+<dt><code>-I <var>dir</var></code></dt>
 <dd><a name="index-_002dI-dir"></a>
 <p>Append <var>dir</var> to the directory search list for finding files that
 are included using the <code>@include</code> command.  By default,
@@ -360,8 +360,8 @@ usual path separator character (&lsquo;<samp>:</samp>&rsquo; on Unix, &lsquo;<sa
 MS-DOS/MS-Windows).
 </p>
 </dd>
-<dt> <code>--macro-expand=<var>file</var></code></dt>
-<dt> <code>-E <var>file</var></code></dt>
+<dt><code>--macro-expand=<var>file</var></code></dt>
+<dt><code>-E <var>file</var></code></dt>
 <dd><p>Output the Texinfo source with all the macros expanded to the named
 file.  Normally, the results of macro expansion are used internally by
 <code>makeinfo</code> and then discarded.  This option is used by
@@ -369,7 +369,7 @@ file.  Normally, the results of macro expansion are used internally by
 that does not support <code>@macro</code>.
 </p>
 </dd>
-<dt> <code>--no-headers</code></dt>
+<dt><code>--no-headers</code></dt>
 <dd><a name="index-_002d_002dno_002dheaders"></a>
 <a name="index-Plain-text-output"></a>
 <a name="index-ASCII-text-output"></a>
@@ -392,7 +392,7 @@ See section <a href="#makeinfo-html">Generating HTML</a>.
 overridden by &lsquo;<samp>-o</samp>&rsquo;).
 </p>
 </dd>
-<dt> <code>--no-split</code></dt>
+<dt><code>--no-split</code></dt>
 <dd><a name="index-_002d_002dno_002dsplit"></a>
 <a name="index-Splitting-of-output-files"></a>
 <a name="index-Output-file-splitting"></a>
@@ -402,8 +402,8 @@ smaller subfiles.  For Info output, each one is approximately 50k bytes.
 For HTML output, each file contains one node (see section <a href="#makeinfo-html">Generating HTML</a>).
 </p>
 </dd>
-<dt> <code>--no-pointer-validate</code></dt>
-<dt> <code>--no-validate</code></dt>
+<dt><code>--no-pointer-validate</code></dt>
+<dt><code>--no-validate</code></dt>
 <dd><a name="index-_002d_002dno_002dpointer_002dvalidate"></a>
 <a name="index-_002d_002dno_002dvalidate"></a>
 <a name="index-Pointer-validation_002c-suppressing-1"></a>
@@ -413,7 +413,7 @@ checks are made to ensure that cross references can be resolved, etc.
 See section <a href="#Pointer-Validation">Pointer Validation</a>.
 </p>
 </dd>
-<dt> <code>--no-warn</code></dt>
+<dt><code>--no-warn</code></dt>
 <dd><a name="index-_002d_002dno_002dwarn"></a>
 <p>Suppress warning messages (but <em>not</em> error messages).  You might
 want this if the file you are creating has examples of Texinfo cross
@@ -421,20 +421,20 @@ references within it, and the nodes that are referenced do not actually
 exist.
 </p>
 </dd>
-<dt> <code>--number-sections</code></dt>
+<dt><code>--number-sections</code></dt>
 <dd><a name="index-_002d_002dnumber_002dsections"></a>
 <p>Output chapter, section, and appendix numbers as in printed manuals.
 </p>
 </dd>
-<dt> <code>--no-number-footnotes</code></dt>
+<dt><code>--no-number-footnotes</code></dt>
 <dd><a name="index-_002d_002dno_002dnumber_002dfootnotes"></a>
 <p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
 numbers each footnote sequentially in a single node, resetting the
 current footnote number to 1 at the start of each node.
 </p>
 </dd>
-<dt> <code>--output=<var>file</var></code></dt>
-<dt> <code>-o <var>file</var></code></dt>
+<dt><code>--output=<var>file</var></code></dt>
+<dt><code>-o <var>file</var></code></dt>
 <dd><a name="index-_002d_002doutput_003dfile"></a>
 <a name="index-_002do-file"></a>
 <p>Specify that the output should be directed to <var>file</var> and not to the
@@ -445,15 +445,15 @@ HTML output, <var>file</var> is the name for the directory into which all
 HTML nodes are written (see section <a href="#makeinfo-html">Generating HTML</a>).
 </p>
 </dd>
-<dt> <code>-P <var>dir</var></code></dt>
+<dt><code>-P <var>dir</var></code></dt>
 <dd><a name="index-_002dP-dir"></a>
 <p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
 If <var>dir</var> is not given, the current directory &lsquo;<tt>.</tt>&rsquo; is prepended.
 See &lsquo;<samp>-I</samp>&rsquo; for more details.
 </p>
 </dd>
-<dt> <code>--paragraph-indent=<var>indent</var></code></dt>
-<dt> <code>-p <var>indent</var></code></dt>
+<dt><code>--paragraph-indent=<var>indent</var></code></dt>
+<dt><code>-p <var>indent</var></code></dt>
 <dd><a name="index-_002d_002dparagraph_002dindent_003dindent"></a>
 <a name="index-_002dp-indent"></a>
 <p>Set the paragraph indentation style to <var>indent</var>.  The value set by
@@ -462,22 +462,22 @@ this option overrides the value set in a Texinfo file by an
 of <var>indent</var> is interpreted as follows:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>asis</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>asis</samp>&rsquo;</dt>
 <dd><p>Preserve any existing indentation at the starts of paragraphs.
 </p>
 </dd>
-<dt> &lsquo;<samp>0</samp>&rsquo; or &lsquo;<samp>none</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>0</samp>&rsquo; or &lsquo;<samp>none</samp>&rsquo;</dt>
 <dd><p>Delete any existing indentation.
 </p>
 </dd>
-<dt> <var>num</var></dt>
+<dt><var>num</var></dt>
 <dd><p>Indent each paragraph by <var>num</var> spaces.
 </p></dd>
 </dl>
 
 </dd>
-<dt> <code>--reference-limit=<var>limit</var></code></dt>
-<dt> <code>-r <var>limit</var></code></dt>
+<dt><code>--reference-limit=<var>limit</var></code></dt>
+<dt><code>-r <var>limit</var></code></dt>
 <dd><a name="index-_002d_002dreference_002dlimit_003dlimit"></a>
 <a name="index-_002dr-limit"></a>
 <p>Set the value of the number of references to a node that
@@ -486,26 +486,26 @@ than this number of references in it, <code>makeinfo</code> will make the
 references but also report a warning.  The default is 1000.
 </p>
 </dd>
-<dt> <code>-U <var>var</var></code></dt>
+<dt><code>-U <var>var</var></code></dt>
 <dd><p>Cause <var>var</var> to be undefined.  This is equivalent to
 <code>@clear <var>var</var></code> in the Texinfo file (see section <a href="texinfo_17.html#set-clear-value"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
-<dt> <code>--verbose</code></dt>
+<dt><code>--verbose</code></dt>
 <dd><a name="index-_002d_002dverbose"></a>
 <p>Cause <code>makeinfo</code> to display messages saying what it is doing.
 Normally, <code>makeinfo</code> only outputs messages if there are errors or
 warnings.
 </p>
 </dd>
-<dt> <code>--version</code></dt>
-<dt> <code>-V</code></dt>
+<dt><code>--version</code></dt>
+<dt><code>-V</code></dt>
 <dd><a name="index-_002d_002dversion"></a>
 <a name="index-_002dV"></a>
 <p>Print the version number, then exit successfully.
 </p>
 </dd>
-<dt> <code>--xml</code></dt>
+<dt><code>--xml</code></dt>
 <dd><a name="index-_002d_002dxml"></a>
 <p>Generate XML output rather than Info.  
 </p>
@@ -646,14 +646,14 @@ Texinfo mode, the commands are bound to <kbd>C-c C-m C-r</kbd> and <kbd>C-c
 C-m C-b</kbd> by default.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-c C-m C-r</kbd></dt>
-<dt> <kbd>M-x makeinfo-region</kbd></dt>
+<dt><kbd>C-c C-m C-r</kbd></dt>
+<dt><kbd>M-x makeinfo-region</kbd></dt>
 <dd><p>Format the current region for Info.
 <a name="index-makeinfo_002dregion"></a>
 </p>
 </dd>
-<dt> <kbd>C-c C-m C-b</kbd></dt>
-<dt> <kbd>M-x makeinfo-buffer</kbd></dt>
+<dt><kbd>C-c C-m C-b</kbd></dt>
+<dt><kbd>M-x makeinfo-buffer</kbd></dt>
 <dd><p>Format the current buffer for Info.
 <a name="index-makeinfo_002dbuffer"></a>
 </p></dd>
@@ -684,15 +684,15 @@ command is running or make the shell buffer display its most recent
 output.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-c C-m C-k</kbd></dt>
-<dt> <kbd>M-x makeinfo-kill-job</kbd></dt>
+<dt><kbd>C-c C-m C-k</kbd></dt>
+<dt><kbd>M-x makeinfo-kill-job</kbd></dt>
 <dd><a name="index-makeinfo_002dkill_002djob"></a>
 <p>Kill the current running <code>makeinfo</code> job
 (from <code>makeinfo-region</code> or <code>makeinfo-buffer</code>).
 </p>
 </dd>
-<dt> <kbd>C-c C-m C-l</kbd></dt>
-<dt> <kbd>M-x makeinfo-recenter-output-buffer</kbd></dt>
+<dt><kbd>C-c C-m C-l</kbd></dt>
+<dt><kbd>M-x makeinfo-recenter-output-buffer</kbd></dt>
 <dd><a name="index-makeinfo_002drecenter_002doutput_002dbuffer"></a>
 <p>Redisplay the <code>makeinfo</code> shell buffer to display its most recent
 output.
@@ -756,14 +756,14 @@ save the Info file under the name specified by the
 Texinfo file.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-c C-e C-r</kbd></dt>
-<dt> <kbd><code>texinfo-format-region</code></kbd></dt>
+<dt><kbd>C-c C-e C-r</kbd></dt>
+<dt><kbd><code>texinfo-format-region</code></kbd></dt>
 <dd><p>Format the current region for Info.
 <a name="index-texinfo_002dformat_002dregion-2"></a>
 </p>
 </dd>
-<dt> <kbd>C-c C-e C-b</kbd></dt>
-<dt> <kbd><code>texinfo-format-buffer</code></kbd></dt>
+<dt><kbd>C-c C-e C-b</kbd></dt>
+<dt><kbd><code>texinfo-format-buffer</code></kbd></dt>
 <dd><p>Format the current buffer for Info.
 <a name="index-texinfo_002dformat_002dbuffer-2"></a>
 </p></dd>
@@ -1421,23 +1421,23 @@ open &lsquo;<tt><var>dir-file</var>.gz</tt>&rsquo;.
 <p>Options:
 </p>
 <dl compact="compact">
-<dt> <code>--delete</code></dt>
+<dt><code>--delete</code></dt>
 <dd><a name="index-_002d_002ddelete"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
 an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert any new entries.
 </p>
 </dd>
-<dt> <code>--dir-file=<var>name</var></code></dt>
-<dt> <code>-d <var>name</var></code></dt>
+<dt><code>--dir-file=<var>name</var></code></dt>
+<dt><code>-d <var>name</var></code></dt>
 <dd><a name="index-_002d_002ddir_002dfile_003dname"></a>
 <a name="index-_002dd-name"></a>
 <p>Specify file name of the Info directory file.  This is equivalent to
 using the <var>dir-file</var> argument.
 </p>
 </dd>
-<dt> <code>--entry=<var>text</var></code></dt>
-<dt> <code>-e <var>text</var></code></dt>
+<dt><code>--entry=<var>text</var></code></dt>
+<dt><code>-e <var>text</var></code></dt>
 <dd><a name="index-_002d_002dentry_003dtext"></a>
 <a name="index-_002de-text"></a>
 <p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
@@ -1447,50 +1447,50 @@ added.  If you don&rsquo;t specify any entries, they are determined from
 information in the Info file itself.
 </p>
 </dd>
-<dt> <code>--help</code></dt>
-<dt> <code>-h</code></dt>
+<dt><code>--help</code></dt>
+<dt><code>-h</code></dt>
 <dd><a name="index-_002d_002dhelp-1"></a>
 <a name="index-_002dh-1"></a>
 <p>Display a usage message listing basic usage and all available options,
 then exit successfully.
 </p>
 </dd>
-<dt> <code>--info-file=<var>file</var></code></dt>
-<dt> <code>-i <var>file</var></code></dt>
+<dt><code>--info-file=<var>file</var></code></dt>
+<dt><code>-i <var>file</var></code></dt>
 <dd><a name="index-_002d_002dinfo_002dfile_003dfile"></a>
 <a name="index-_002di-file"></a>
 <p>Specify Info file to install in the directory.
 Equivalent to using the <var>info-file</var> argument.
 </p>
 </dd>
-<dt> <code>--info-dir=<var>dir</var></code></dt>
-<dt> <code>-D <var>dir</var></code></dt>
+<dt><code>--info-dir=<var>dir</var></code></dt>
+<dt><code>-D <var>dir</var></code></dt>
 <dd><a name="index-_002d_002dinfo_002ddir_003ddir"></a>
 <a name="index-_002dD-dir"></a>
 <p>Specify the directory where &lsquo;<tt>dir</tt>&rsquo; resides.
 Equivalent to &lsquo;<samp>--dir-file=<var>dir</var>/dir</samp>&rsquo;.
 </p>
 </dd>
-<dt> <code>--item=<var>text</var></code></dt>
+<dt><code>--item=<var>text</var></code></dt>
 <dd><a name="index-_002d_002ditem_003dtext"></a>
 <p>Same as &lsquo;<samp>--entry=<var>text</var></samp>&rsquo;.  An Info directory entry is actually
 a menu item.
 </p>
 </dd>
-<dt> <code>--quiet</code></dt>
+<dt><code>--quiet</code></dt>
 <dd><a name="index-_002d_002dquiet"></a>
 <p>Suppress warnings.
 </p>
 </dd>
-<dt> <code>--remove</code></dt>
-<dt> <code>-r</code></dt>
+<dt><code>--remove</code></dt>
+<dt><code>-r</code></dt>
 <dd><a name="index-_002d_002dremove"></a>
 <a name="index-_002dr"></a>
 <p>Same as &lsquo;<samp>--delete</samp>&rsquo;.
 </p>
 </dd>
-<dt> <code>--section=<var>sec</var></code></dt>
-<dt> <code>-s <var>sec</var></code></dt>
+<dt><code>--section=<var>sec</var></code></dt>
+<dt><code>-s <var>sec</var></code></dt>
 <dd><a name="index-_002d_002dsection_003dsec"></a>
 <a name="index-_002ds-sec"></a>
 <p>Put this file&rsquo;s entries in section <var>sec</var> of the directory.  If you
@@ -1499,8 +1499,8 @@ sections.  If you don&rsquo;t specify any sections, they are determined from
 information in the Info file itself.
 </p>
 </dd>
-<dt> <code>--version</code></dt>
-<dt> <code>-V</code></dt>
+<dt><code>--version</code></dt>
+<dt><code>-V</code></dt>
 <dd><a name="index-_002d_002dversion-1"></a>
 <a name="index-_002dV-1"></a>
 <a name="index-version-number_002c-finding"></a>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,16 +88,16 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_785.htm#ainvar_005flib">ainvar_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>invariantRing(m,p,q,b[,r,pa]); m matrix, p,q poly, b,r int, pa string
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>p,q variables with m(p)=q and q invariant under m
 <br>i.e. if p=x(i) and q=x(j) then m[j,1]=0 and m[i,1]=x(j)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>ideal, containing generators of the ring of invariants of the
 additive group (K,+) given by the vector field
 </p><table><tr><td>&nbsp;</td><td><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
@@ -113,12 +113,12 @@ algorithm might not stop).
 (default r=0).
 </p>
 </dd>
-<dt> <strong>Display:</strong></dt>
+<dt><strong>Display:</strong></dt>
 <dd><p>if pa is given (any string as 5th or 6th argument), the computation
 pauses whenever new invariants are found and displays them
 </p>
 </dd>
-<dt> <strong>Theory:</strong></dt>
+<dt><strong>Theory:</strong></dt>
 <dd><p>The algorithm to compute the ring of invariants works in char 0
 or big enough characteristic. (K,+) acts as the exponential of the
 vector field defined by the matrix m. For background see G.-M. Greuel,

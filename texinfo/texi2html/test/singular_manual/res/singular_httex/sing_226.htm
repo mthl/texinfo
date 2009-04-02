@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -89,13 +89,13 @@ ul.toc {list-style: none}
 <a name="index-memory"></a>
 <a name="index-memory-managment"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>memory (</code> int_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>int
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>returns statistics concerning the memory management:
 </p><ul>
 <li> <code>memory(0)</code> is the number of active (used) bytes,
@@ -105,12 +105,12 @@ operating system,
 operating system during the current <small>SINGULAR</small> session.
 </li></ul>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>To monitor the memory usage during ongoing computations the option
 <code>mem</code> should be set (using the command <code>option(mem);</code>, see
 also <a href="sing_244.htm#option">option</a>).
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x(1..500)),dp;
   poly p=(x(1)+x(500))^50;
   proc ReportMemoryUsage()

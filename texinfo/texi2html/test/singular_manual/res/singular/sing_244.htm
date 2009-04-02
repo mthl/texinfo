@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -86,107 +86,107 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.89 option</h3>
 <a name="index-option"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>option ()</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>string
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>lists all defined options.
 <br>
 </p></dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>option (</code> option_name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>sets an option.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>To disable an option, use the prefix <code>no</code>.
 <br>
 </p></dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>option ( get )</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>intvec
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>dumps the state of all options to an intvec.
 <br>
 </p></dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>option ( set,</code> intvec_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>restores the state of all options from an intvec (produced by
 <code>option(get)</code>).
-<br>
-</p></dd>
-<dt> <code><strong>Values:</strong></code></dt>
+</p><br>
+</dd>
+<dt><code><strong>Values:</strong></code></dt>
 <dd><p>The following options are used to manipulate the behavior of
 computations and act like boolean switches. Use the prefix <code>no</code> to
 disable an option. Notice that some options are ring dependent and reset
 to their default values on a change of the current basering.
 </p><dl compact="compact">
-<dt> <code>none</code></dt>
+<dt><code>none</code></dt>
 <dd><a name="index-none_002c-option"></a>
 <p>turns off all options (including the <code>prompt</code> option).
 </p></dd>
-<dt> <code>returnSB</code></dt>
+<dt><code>returnSB</code></dt>
 <dd><a name="index-returnSB_002c-option"></a>
 <p>the functions <code>syz</code>, <code>intersect</code>, <code>quotient</code>,
 <code>modulo</code> return a standard base instead of a generating set if
 <code>returnSB</code> is set. This option should not be used for <code>lift</code>.
 </p></dd>
-<dt> <code>fastHC</code></dt>
+<dt><code>fastHC</code></dt>
 <dd><a name="index-fastHC_002c-option"></a>
 <p>tries to the find the highest corner of the staircase (HC) as fast as
 possible during a standard basis computation (only used for local
 orderings).
 </p></dd>
-<dt> <code>intStrategy</code></dt>
+<dt><code>intStrategy</code></dt>
 <dd><a name="index-intStrategy_002c-option"></a>
 <p>avoids division of coefficients during standard basis
 computations. This option is ring dependent. By default, it is set for
 rings with characteristic 0 and not set for all other rings.
 </p></dd>
-<dt> <code>oldStd</code></dt>
+<dt><code>oldStd</code></dt>
 <dd><a name="index-oldStd_002c-option"></a>
 <p>uses a more lazy approach in std computations,
 which was used in Singular version before 2-0
 (and which may lead to faster or slower computations, depending on the example)
 </p></dd>
-<dt> <code>minRes</code></dt>
+<dt><code>minRes</code></dt>
 <dd><a name="index-minRes_002c-option"></a>
 <p>special (additional) minimizing during computations (<code>res</code>, <code>mres</code>),
 <br>assumes homogeneous case and degree-compatible ordering.
 </p></dd>
-<dt> <code>notRegularity</code></dt>
+<dt><code>notRegularity</code></dt>
 <dd><a name="index-notRegularity_002c-option"></a>
 <p>disables the regularity bound for <code>res</code> and <code>mres</code> (see
 <a href="sing_262.htm#regularity">regularity</a>).
 </p></dd>
-<dt> <code>notSugar</code></dt>
+<dt><code>notSugar</code></dt>
 <dd><a name="index-notSugar_002c-option"></a>
 <p>disables the sugar strategy during standard basis computation.
 <a name="option_0028prot_0029"></a>
 </p></dd>
-<dt> <code>notBuckets</code></dt>
+<dt><code>notBuckets</code></dt>
 <dd><a name="index-notBuckets_002c-option"></a>
 <p>disables the bucket representation of polynomials during standard basis
 computations. This option usually decreases the memory usage but
 increases the computation time. It should only be set for
 memory-critical standard basis computations.
 </p></dd>
-<dt> <code>prot</code></dt>
+<dt><code>prot</code></dt>
 <dd><a name="index-prot_002c-option"></a>
 <a name="index-protocoll-of-computations"></a>
 <a name="index-progress-watch"></a>
@@ -207,29 +207,29 @@ progress during the following computations:
 <code>syz</code>.
 See below for more details.
 </p></dd>
-<dt> <code>redSB</code></dt>
+<dt><code>redSB</code></dt>
 <dd><a name="index-redSB_002c-option"></a>
 <a name="index-reduced-standard-basis"></a>
 <p>computes a reduced standard basis in any standard basis computation.
 </p></dd>
-<dt> <code>redTail</code></dt>
+<dt><code>redTail</code></dt>
 <dd><a name="index-redTail_002c-option"></a>
 <p>reduction of the tails of polynomials during standard basis
 computations. This option is ring dependent. By default, it is set for
 rings with global degree orderings and not set for all other rings.
 </p></dd>
-<dt> <code>redThrough</code></dt>
+<dt><code>redThrough</code></dt>
 <dd><a name="index-redThrough_002c-option"></a>
 <p>for inhomogeneous input, polynomial reductions during standard basis
 computations are never postponed, but always finished through. This option
 is ring   dependent. By default, it is set for rings with global degree
 orderings and not set for all other rings.
 </p></dd>
-<dt> <code>sugarCrit</code></dt>
+<dt><code>sugarCrit</code></dt>
 <dd><a name="index-sugarCrit_002c-option"></a>
 <p>uses criteria similar to the homogeneous case to keep more useless pairs.
 </p></dd>
-<dt> <code>weightM</code></dt>
+<dt><code>weightM</code></dt>
 <dd><a name="index-weightM_002c-option"></a>
 <p>automatically computes suitable weights for the weighted ecart and the
 weighted sugar method.
@@ -242,55 +242,55 @@ direct assignment of a value. Reset the option by assigning the value 0;
 the command <code>option(none)</code> will not reset them! If there is a
 non-zero value assigned, the command <code>option()</code> prints the option.
 </p><dl compact="compact">
-<dt> <code>multBound</code></dt>
+<dt><code>multBound</code></dt>
 <dd><p>a multiplicity bound is set (see <a href="sing_311.htm#multBound">multBound</a>).
 </p></dd>
-<dt> <code>degBound</code></dt>
+<dt><code>degBound</code></dt>
 <dd><p>a degree bound is set (see <a href="sing_308.htm#degBound">degBound</a>).
 </p></dd>
 </dl>
 <br>
 <p>The last set of options controls the output of <small>SINGULAR</small>:
 </p><dl compact="compact">
-<dt> <code>Imap</code></dt>
+<dt><code>Imap</code></dt>
 <dd><a name="index-Imap_002c-option"></a>
 <p>shows the mapping of variables with the fetch and imap commands.
 </p></dd>
-<dt> <code>loadLib</code></dt>
+<dt><code>loadLib</code></dt>
 <dd><a name="index-loadLib_002c-option"></a>
 <p>shows loading of libraries (set by default).
 </p></dd>
-<dt> <code>debugLib</code></dt>
+<dt><code>debugLib</code></dt>
 <dd><a name="index-debugLib_002c-option"></a>
 <p>warns about syntax errors during loading of libraries.
 </p></dd>
-<dt> <code>loadProc</code></dt>
+<dt><code>loadProc</code></dt>
 <dd><a name="index-loadProc_002c-option"></a>
 <p>shows loading of procedures from libraries.
 </p></dd>
-<dt> <code>mem</code></dt>
+<dt><code>mem</code></dt>
 <dd><a name="index-mem_002c-option"></a>
 <p>shows memory usage in square brackets (see <a href="sing_226.htm#memory">memory</a>).
 </p></dd>
-<dt> <code>prompt</code></dt>
+<dt><code>prompt</code></dt>
 <dd><a name="index-prompt_002c-option"></a>
 <p>shows prompt (<code>&gt;</code>, resp. <code>.</code>) if ready for input (default).
 </p></dd>
-<dt> <code>reading</code></dt>
+<dt><code>reading</code></dt>
 <dd><a name="index-reading_002c-option"></a>
 <p>shows the number of characters read from a file.
 </p></dd>
-<dt> <code>redefine</code></dt>
+<dt><code>redefine</code></dt>
 <dd><a name="index-redefine_002c-option"></a>
 <p>warns about variable redefinitions (set by default).
 </p></dd>
-<dt> <code>usage</code></dt>
+<dt><code>usage</code></dt>
 <dd><a name="index-usage_002c-option"></a>
 <p>shows correct usage in error messages (set by default).
 </p></dd>
 </dl>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(prot);
   option();
 &rarr; //options: prot redefine usage prompt

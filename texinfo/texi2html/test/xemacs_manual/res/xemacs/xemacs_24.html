@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -261,31 +261,31 @@ sexp in C mode.
 has bothered to make Emacs understand properly.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-M-f</kbd></dt>
+<dt><kbd>C-M-f</kbd></dt>
 <dd><p>Move forward over an sexp (<code>forward-sexp</code>).
 </p></dd>
-<dt> <kbd>C-M-b</kbd></dt>
+<dt><kbd>C-M-b</kbd></dt>
 <dd><p>Move backward over an sexp (<code>backward-sexp</code>).
 </p></dd>
-<dt> <kbd>C-M-k</kbd></dt>
+<dt><kbd>C-M-k</kbd></dt>
 <dd><p>Kill sexp forward (<code>kill-sexp</code>).
 </p></dd>
-<dt> <kbd>C-M-u</kbd></dt>
+<dt><kbd>C-M-u</kbd></dt>
 <dd><p>Move up and backward in list structure (<code>backward-up-list</code>).
 </p></dd>
-<dt> <kbd>C-M-d</kbd></dt>
+<dt><kbd>C-M-d</kbd></dt>
 <dd><p>Move down and forward in list structure (<code>down-list</code>).
 </p></dd>
-<dt> <kbd>C-M-n</kbd></dt>
+<dt><kbd>C-M-n</kbd></dt>
 <dd><p>Move forward over a list (<code>forward-list</code>).
 </p></dd>
-<dt> <kbd>C-M-p</kbd></dt>
+<dt><kbd>C-M-p</kbd></dt>
 <dd><p>Move backward over a list (<code>backward-list</code>).
 </p></dd>
-<dt> <kbd>C-M-t</kbd></dt>
+<dt><kbd>C-M-t</kbd></dt>
 <dd><p>Transpose expressions (<code>transpose-sexps</code>).
 </p></dd>
-<dt> <kbd>C-M-@</kbd></dt>
+<dt><kbd>C-M-@</kbd></dt>
 <dd><p>Put mark after following expression (<code>mark-sexp</code>).
 </p></dd>
 </dl>
@@ -407,14 +407,14 @@ the programming language.  For example, in C, the body of a
 function definition is a defun.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-M-a</kbd></dt>
+<dt><kbd>C-M-a</kbd></dt>
 <dd><p>Move to beginning of current or preceding defun
 (<code>beginning-of-defun</code>).
 </p></dd>
-<dt> <kbd>C-M-e</kbd></dt>
+<dt><kbd>C-M-e</kbd></dt>
 <dd><p>Move to end of current or following defun (<code>end-of-defun</code>).
 </p></dd>
-<dt> <kbd>C-M-h</kbd></dt>
+<dt><kbd>C-M-h</kbd></dt>
 <dd><p>Put region around whole current or following defun (<code>mark-defun</code>).
 </p></dd>
 </dl>
@@ -521,10 +521,10 @@ all of the lines inside a single parenthetical grouping.
 <h3 class="subsection">21.4.1 Basic Program Indentation Commands</h3>
 
 <dl compact="compact">
-<dt> <kbd>&lt;TAB&gt;</kbd></dt>
+<dt><kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Adjust indentation of current line.
 </p></dd>
-<dt> <kbd>&lt;LFD&gt;</kbd></dt>
+<dt><kbd>&lt;LFD&gt;</kbd></dt>
 <dd><p>Equivalent to &lt;RET&gt; followed by &lt;TAB&gt; (<code>newline-and-indent</code>).
 </p></dd>
 </dl>
@@ -594,14 +594,14 @@ structure.
 </p>
 
 <dl compact="compact">
-<dt> <kbd>C-M-q</kbd></dt>
+<dt><kbd>C-M-q</kbd></dt>
 <dd><p>Re-indent all the lines within one list (<code>indent-sexp</code>).
 </p></dd>
-<dt> <kbd>C-u &lt;TAB&gt;</kbd></dt>
+<dt><kbd>C-u &lt;TAB&gt;</kbd></dt>
 <dd><p>Shift an entire list rigidly sideways so that its first line
 is properly indented.
 </p></dd>
-<dt> <kbd>C-M-\</kbd></dt>
+<dt><kbd>C-M-\</kbd></dt>
 <dd><p>Re-indent all lines in the region (<code>indent-region</code>).
 </p></dd>
 </dl>
@@ -684,14 +684,14 @@ function name.  (Note: <code>lisp-indent-function</code> was formerly called
 property:
 </p>
 <dl compact="compact">
-<dt> <code>nil</code></dt>
+<dt><code>nil</code></dt>
 <dd><p>This is the same as no property; the standard indentation pattern is used.
 </p></dd>
-<dt> <code>defun</code></dt>
+<dt><code>defun</code></dt>
 <dd><p>The pattern used for function names that start with <code>def</code> is used for
 this function also.
 </p></dd>
-<dt> a number, <var>number</var></dt>
+<dt>a number, <var>number</var></dt>
 <dd><p>The first <var>number</var> arguments of the function are
 <em>distinguished</em> arguments; the rest are considered the <em>body</em>
 of the expression.  A line in the expression is indented according to
@@ -703,17 +703,17 @@ or second argument, it is indented <i>twice</i> that many extra columns.
 If the argument is distinguished and not the first or second argument,
 the standard pattern is followed for that line.
 </p></dd>
-<dt> a symbol, <var>symbol</var></dt>
+<dt>a symbol, <var>symbol</var></dt>
 <dd><p><var>symbol</var> should be a function name; that function is called to
 calculate the indentation of a line within this expression.  The
 function receives two arguments:
 </p><dl compact="compact">
-<dt> <var>state</var></dt>
+<dt><var>state</var></dt>
 <dd><p>The value returned by <code>parse-partial-sexp</code> (a Lisp primitive for
 indentation and nesting computation) when it parses up to the
 beginning of this line.
 </p></dd>
-<dt> <var>pos</var></dt>
+<dt><var>pos</var></dt>
 <dd><p>The position at which the line being indented begins.
 </p></dd>
 </dl>
@@ -773,26 +773,26 @@ are in common use.
 mode will use.
 </p>
 <dl compact="compact">
-<dt> <code>c-indent-level</code></dt>
+<dt><code>c-indent-level</code></dt>
 <dd><p>Indentation of C statements within surrounding block.  The surrounding
 block&rsquo;s indentation is the indentation of the line on which the
 open-brace appears.
 </p></dd>
-<dt> <code>c-continued-statement-offset</code></dt>
+<dt><code>c-continued-statement-offset</code></dt>
 <dd><p>Extra indentation given to a substatement, such as the then-clause of
 an <code>if</code> or body of a <code>while</code>.
 </p></dd>
-<dt> <code>c-brace-offset</code></dt>
+<dt><code>c-brace-offset</code></dt>
 <dd><p>Extra indentation for lines that start with an open brace.
 </p></dd>
-<dt> <code>c-brace-imaginary-offset</code></dt>
+<dt><code>c-brace-imaginary-offset</code></dt>
 <dd><p>An open brace following other text is treated as if it were this far
 to the right of the start of its line.
 </p></dd>
-<dt> <code>c-argdecl-indent</code></dt>
+<dt><code>c-argdecl-indent</code></dt>
 <dd><p>Indentation level of declarations of C function arguments.
 </p></dd>
-<dt> <code>c-label-offset</code></dt>
+<dt><code>c-label-offset</code></dt>
 <dd><p>Extra indentation for a line that is a label, case, or default.
 </p></dd>
 </dl>
@@ -994,16 +994,16 @@ match.  The default is 4000.
 <p>  The comment commands insert, kill and align comments.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-;</kbd></dt>
+<dt><kbd>M-;</kbd></dt>
 <dd><p>Insert or align comment (<code>indent-for-comment</code>).
 </p></dd>
-<dt> <kbd>C-x ;</kbd></dt>
+<dt><kbd>C-x ;</kbd></dt>
 <dd><p>Set comment column (<code>set-comment-column</code>).
 </p></dd>
-<dt> <kbd>C-u - C-x ;</kbd></dt>
+<dt><kbd>C-u - C-x ;</kbd></dt>
 <dd><p>Kill comment on current line (<code>kill-comment</code>).
 </p></dd>
-<dt> <kbd>M-&lt;LFD&gt;</kbd></dt>
+<dt><kbd>M-&lt;LFD&gt;</kbd></dt>
 <dd><p>Like &lt;RET&gt; followed by inserting and aligning a comment
 (<code>indent-new-comment-line</code>).
 </p></dd>
@@ -1192,10 +1192,10 @@ comment and on the code in the preceding lines.
 <h2 class="section">21.7 Editing Without Unbalanced Parentheses</h2>
 
 <dl compact="compact">
-<dt> <kbd>M-(</kbd></dt>
+<dt><kbd>M-(</kbd></dt>
 <dd><p>Put parentheses around next sexp(s) (<code>insert-parentheses</code>).
 </p></dd>
-<dt> <kbd>M-)</kbd></dt>
+<dt><kbd>M-)</kbd></dt>
 <dd><p>Move past next close parenthesis and re-indent
 (<code>move-over-close-and-reindent</code>).
 </p></dd>
@@ -1541,22 +1541,22 @@ facilitate the choice to the user, a tag value is appended with a
 qualifier:
 </p>
 <dl compact="compact">
-<dt> function</dt>
+<dt>function</dt>
 <dd><p> <kbd>/f</kbd>
 </p></dd>
-<dt> procedure</dt>
+<dt>procedure</dt>
 <dd><p> <kbd>/p</kbd>
 </p></dd>
-<dt> package spec</dt>
+<dt>package spec</dt>
 <dd><p> <kbd>/s</kbd>
 </p></dd>
-<dt> package body</dt>
+<dt>package body</dt>
 <dd><p> <kbd>/b</kbd>
 </p></dd>
-<dt> type</dt>
+<dt>type</dt>
 <dd><p> <kbd>/t</kbd>
 </p></dd>
-<dt> task</dt>
+<dt>task</dt>
 <dd><p> <kbd>/k</kbd>
 </p></dd>
 </dl>
@@ -1992,13 +1992,13 @@ variable <code>tag-table-alist</code>.
 the definition of a specific tag.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-. <var>tag &amp;optional other-window</var></kbd></dt>
+<dt><kbd>M-. <var>tag &amp;optional other-window</var></kbd></dt>
 <dd><p>Find first definition of <var>tag</var> (<code>find-tag</code>).
 </p></dd>
-<dt> <kbd>C-u M-.</kbd></dt>
+<dt><kbd>C-u M-.</kbd></dt>
 <dd><p>Find next alternate definition of last tag specified.
 </p></dd>
-<dt> <kbd>C-x 4 . <var>tag</var></kbd></dt>
+<dt><kbd>C-x 4 . <var>tag</var></kbd></dt>
 <dd><p>Find first definition of <var>tag</var>, but display it in another window
 (<code>find-tag-other-window</code>).
 </p></dd>
@@ -2044,22 +2044,22 @@ Multiple active tags tables and completion are supported.
 <a name="index-tag_002dmark_002dstack_002dmax"></a>
 
 <dl compact="compact">
-<dt> <kbd>tag-table-alist</kbd></dt>
+<dt><kbd>tag-table-alist</kbd></dt>
 <dd><p>Controls which tables apply to which buffers.
 </p></dd>
-<dt> <kbd>tags-file-name</kbd></dt>
+<dt><kbd>tags-file-name</kbd></dt>
 <dd><p>Stores a default tags table.
 </p></dd>
-<dt> <kbd>tags-build-completion-table</kbd></dt>
+<dt><kbd>tags-build-completion-table</kbd></dt>
 <dd><p>Controls completion behavior.
 </p></dd>
-<dt> <kbd>buffer-tag-table</kbd></dt>
+<dt><kbd>buffer-tag-table</kbd></dt>
 <dd><p>Specifies a buffer-local table.
 </p></dd>
-<dt> <kbd>make-tags-files-invisible</kbd></dt>
+<dt><kbd>make-tags-files-invisible</kbd></dt>
 <dd><p>Sets whether tags tables should be very hidden.
 </p></dd>
-<dt> <kbd>tag-mark-stack-max</kbd></dt>
+<dt><kbd>tag-mark-stack-max</kbd></dt>
 <dd><p>Specifies how many tags-based hops to remember.
 </p></dd>
 </dl>
@@ -2104,14 +2104,14 @@ only to specify a sequence of files to search.  A related command is
 <kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#Compilation">Running &ldquo;make&rdquo;, or Compilers Generally</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x tags-search &lt;RET&gt; <var>regexp</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x tags-search &lt;RET&gt; <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Search for <var>regexp</var> through the files in the selected tags
 table.
 </p></dd>
-<dt> <kbd>M-x tags-query-replace &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>replacement</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x tags-query-replace &lt;RET&gt; <var>regexp</var> &lt;RET&gt; <var>replacement</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Perform a <code>query-replace-regexp</code> on each file in the selected tags table.
 </p></dd>
-<dt> <kbd>M-,</kbd></dt>
+<dt><kbd>M-,</kbd></dt>
 <dd><p>Restart one of the commands above, from the current location of point
 (<code>tags-loop-continue</code>).
 </p></dd>
@@ -2170,11 +2170,11 @@ See section <a href="xemacs_25.html#Compilation">Running &ldquo;make&rdquo;, or 
 you the desired result, you can use <kbd>M-x next-file</kbd>.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-u M-x next-file</kbd></dt>
+<dt><kbd>C-u M-x next-file</kbd></dt>
 <dd><p>With a numeric argument, regardless of its value, visit the first
 file in the tags table and prepare to advance sequentially by files.
 </p></dd>
-<dt> <kbd>M-x next-file</kbd></dt>
+<dt><kbd>M-x next-file</kbd></dt>
 <dd><p>Visit the next file in the selected tags table.
 </p></dd>
 </dl>
@@ -2201,10 +2201,10 @@ file in the tags table and prepare to advance sequentially by files.
 <h3 class="subsection">21.11.7 Tags Table Inquiries</h3>
 
 <dl compact="compact">
-<dt> <kbd>M-x list-tags</kbd></dt>
+<dt><kbd>M-x list-tags</kbd></dt>
 <dd><p>Display a list of the tags defined in a specific program file.
 </p></dd>
-<dt> <kbd>M-x tags-apropos</kbd></dt>
+<dt><kbd>M-x tags-apropos</kbd></dt>
 <dd><p>Display a list of all tags matching a specified regexp.
 </p></dd>
 </dl>
@@ -2312,22 +2312,22 @@ region around one subprogram, which is convenient for killing it or moving it.
 <a name="index-fortran_002dnext_002dstatement"></a>
 
 <dl compact="compact">
-<dt> <kbd>C-M-a</kbd></dt>
+<dt><kbd>C-M-a</kbd></dt>
 <dd><p>Move to beginning of subprogram<br>
 (<code>beginning-of-fortran-subprogram</code>).
 </p></dd>
-<dt> <kbd>C-M-e</kbd></dt>
+<dt><kbd>C-M-e</kbd></dt>
 <dd><p>Move to end of subprogram (<code>end-of-fortran-subprogram</code>).
 </p></dd>
-<dt> <kbd>C-M-h</kbd></dt>
+<dt><kbd>C-M-h</kbd></dt>
 <dd><p>Put point at beginning of subprogram and mark at end
 (<code>mark-fortran-subprogram</code>).
 </p></dd>
-<dt> <kbd>C-c C-n</kbd></dt>
+<dt><kbd>C-c C-n</kbd></dt>
 <dd><p>Move to beginning of current or next statement
 (<code>fortran-next-<br>statement</code>).
 </p></dd>
-<dt> <kbd>C-c C-p</kbd></dt>
+<dt><kbd>C-c C-p</kbd></dt>
 <dd><p>Move to beginning of current or previous statement
 (<code>fortran-<br>previous-statement</code>).
 </p></dd>
@@ -2392,13 +2392,13 @@ required for standard Fortran.
 <h4 class="subsubsection">21.12.2.1 Fortran Indentation Commands</h4>
 
 <dl compact="compact">
-<dt> <kbd>&lt;TAB&gt;</kbd></dt>
+<dt><kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p>Indent the current line (<code>fortran-indent-line</code>).
 </p></dd>
-<dt> <kbd>M-&lt;LFD&gt;</kbd></dt>
+<dt><kbd>M-&lt;LFD&gt;</kbd></dt>
 <dd><p>Break the current line and set up a continuation line.
 </p></dd>
-<dt> <kbd>C-M-q</kbd></dt>
+<dt><kbd>C-M-q</kbd></dt>
 <dd><p>Indent all the lines of the subprogram point is in
 (<code>fortran-indent-subprogram</code>).
 </p></dd>
@@ -2537,19 +2537,19 @@ followed.
 <p>  Several additional variables control how Fortran indentation works.
 </p>
 <dl compact="compact">
-<dt> <code>fortran-do-indent</code></dt>
+<dt><code>fortran-do-indent</code></dt>
 <dd><p>Extra indentation within each level of &lsquo;<samp>do</samp>&rsquo; statement (the default is 3).
 </p>
 </dd>
-<dt> <code>fortran-if-indent</code></dt>
+<dt><code>fortran-if-indent</code></dt>
 <dd><p>Extra indentation within each level of &lsquo;<samp>if</samp>&rsquo; statement (the default is 3).
 </p>
 </dd>
-<dt> <code>fortran-continuation-indent</code></dt>
+<dt><code>fortran-continuation-indent</code></dt>
 <dd><p>Extra indentation for bodies of continuation lines (the default is 5).
 </p>
 </dd>
-<dt> <code>fortran-check-all-num-for-matching-do</code></dt>
+<dt><code>fortran-check-all-num-for-matching-do</code></dt>
 <dd><p>If this is <code>nil</code>, indentation assumes that each &lsquo;<samp>do</samp>&rsquo;
 statement ends on a &lsquo;<samp>continue</samp>&rsquo; statement.  Therefore, when
 computing indentation for a statement other than &lsquo;<samp>continue</samp>&rsquo;, it
@@ -2558,7 +2558,7 @@ If this is non-<code>nil</code>, indenting any numbered statement must check
 for a &lsquo;<samp>do</samp>&rsquo; that ends there.  The default is <code>nil</code>.
 </p>
 </dd>
-<dt> <code>fortran-minimum-statement-indent</code></dt>
+<dt><code>fortran-minimum-statement-indent</code></dt>
 <dd><p>Minimum indentation for Fortran statements.  For standard Fortran,
 this is 6.  Statement bodies are always indented at least this much.
 </p></dd>
@@ -2597,15 +2597,15 @@ unless you have specified to do so in advance by setting the variable
 <code>comment-start</code> to &lsquo;<samp>&quot;!&quot;</samp>&rsquo; (see section <a href="xemacs_30.html#Variables">Variables</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>M-;</kbd></dt>
+<dt><kbd>M-;</kbd></dt>
 <dd><p>Align comment or insert new comment (<code>fortran-comment-indent</code>).
 </p>
 </dd>
-<dt> <kbd>C-x ;</kbd></dt>
+<dt><kbd>C-x ;</kbd></dt>
 <dd><p>Applies to nonstandard &lsquo;<samp>!</samp>&rsquo; comments only.
 </p>
 </dd>
-<dt> <kbd>C-c ;</kbd></dt>
+<dt><kbd>C-c ;</kbd></dt>
 <dd><p>Turn all lines of the region into comments, or (with arg)
 turn them back into real code (<code>fortran-comment-region</code>).
 </p></dd>
@@ -2633,15 +2633,15 @@ variable <code>fortran-comment-indent-style</code> to one of these values:
 <a name="index-fortran_002dcomment_002dindent_002dstyle"></a>
 <a name="index-fortran_002dcomment_002dline_002dcolumn"></a>
 <dl compact="compact">
-<dt> <code>fixed</code></dt>
+<dt><code>fixed</code></dt>
 <dd><p>The text is aligned at a fixed column, which is the value of
 <code>fortran-comment-line-column</code>.  This is the default.
 </p></dd>
-<dt> <code>relative</code></dt>
+<dt><code>relative</code></dt>
 <dd><p>The text is aligned as if it were a line of code, but with an
 additional <code>fortran-comment-line-column</code> columns of indentation.
 </p></dd>
-<dt> <code>nil</code></dt>
+<dt><code>nil</code></dt>
 <dd><p>Text in full-line columns is not moved automatically.
 </p></dd>
 </dl>
@@ -2698,11 +2698,11 @@ which one is referred to.
 <h3 class="subsection">21.12.4 Columns</h3>
 
 <dl compact="compact">
-<dt> <kbd>C-c C-r</kbd></dt>
+<dt><kbd>C-c C-r</kbd></dt>
 <dd><p>Displays a &ldquo;column ruler&rdquo; momentarily above the current line
 (<code>fortran-column-ruler</code>).
 </p></dd>
-<dt> <kbd>C-c C-w</kbd></dt>
+<dt><kbd>C-c C-w</kbd></dt>
 <dd><p>Splits the current window horizontally so that it is 72 columns wide.
 This may help you avoid going over that limit (<code>fortran-window-create</code>).
 </p></dd>
@@ -2796,17 +2796,17 @@ Fortran abbrevs and what they stand for.
 defines these commands:
 </p>
 <dl compact="compact">
-<dt> <kbd>&lt;TAB&gt;</kbd></dt>
+<dt><kbd>&lt;TAB&gt;</kbd></dt>
 <dd><p><code>tab-to-tab-stop</code>.
 </p></dd>
-<dt> <kbd>&lt;LFD&gt;</kbd></dt>
+<dt><kbd>&lt;LFD&gt;</kbd></dt>
 <dd><p>Insert a newline and then indent using <code>tab-to-tab-stop</code>.
 </p></dd>
-<dt> <kbd>:</kbd></dt>
+<dt><kbd>:</kbd></dt>
 <dd><p>Insert a colon and then remove the indentation from before the label
 preceding colon.  Then do <code>tab-to-tab-stop</code>.
 </p></dd>
-<dt> <kbd>;</kbd></dt>
+<dt><kbd>;</kbd></dt>
 <dd><p>Insert or align a comment.
 </p></dd>
 </dl>

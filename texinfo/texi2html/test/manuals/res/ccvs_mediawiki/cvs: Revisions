@@ -441,17 +441,17 @@ tag.  See [cvs: Guide to CVS commands#Common-options Common command options], fo
 description of them.
 </p>
 <dl compact="compact">
-<dt> <code>-D <var>date</var></code></dt>
+<dt><code>-D <var>date</var></code></dt>
 <dd><p>Tag the most recent revision no later than <var>date</var>.
 </p>
 </dd>
-<dt> <code>-f</code></dt>
+<dt><code>-f</code></dt>
 <dd><p>Only useful with the &lsquo;<samp>-D <var>date</var></samp>&rsquo; or &lsquo;<samp>-r <var>tag</var></samp>&rsquo;
 flags.  If no matching revision is found, use the most
 recent revision (instead of ignoring the file).
 </p>
 </dd>
-<dt> <code>-r <var>tag</var></code></dt>
+<dt><code>-r <var>tag</var></code></dt>
 <dd><p>Only tag those files that contain existing tag <var>tag</var>.
 </p></dd>
 </dl>

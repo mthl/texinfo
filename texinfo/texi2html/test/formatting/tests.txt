@@ -90,6 +90,7 @@ double_style_paragraph double_style_paragraph.texi
 at_command_glued at_command_glued.texi
 test_sp test_sp.texi
 kbdinputstyle kbdinputstyle.texi
+simple_table simple_table.texi
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init
 kbdinputstyle_info kbdinputstyle.texi -init info.init

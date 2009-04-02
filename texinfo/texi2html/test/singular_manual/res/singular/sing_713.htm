@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,21 +88,21 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>qhmoduli.lib</code> (see <a href="sing_710.htm#qhmoduli_005flib">qhmoduli_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>QuotientEquations(G,action,emb [, opt]); ideal G,action,emb;int opt
 </p>
 </dd>
-<dt> <strong>Purpose:</strong></dt>
+<dt><strong>Purpose:</strong></dt>
 <dd><p>compute the quotient of the variety given by the parameterization
 &rsquo;emb&rsquo; by the linear action &rsquo;action&rsquo; of the algebraic group G.
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>&rsquo;action&rsquo; is linear, G must be finite if the Reynolds operator is
 needed (i.e., NullCone(G,action) returns some non-invariant polys)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>polynomial ring over a simple extension of the ground field of the
 basering, containing the ideals &rsquo;id&rsquo; and &rsquo;embedid&rsquo;.
 <br>- &rsquo;id&rsquo; contains the equations of the quotient, if opt = 1;
@@ -112,7 +112,7 @@ of the quotient (Spec(R) is the quotient)
 <br>if opt = 0, 2, it is the ideal defining the equivariant embedding
 </p>
 </dd>
-<dt> <strong>Options:</strong></dt>
+<dt><strong>Options:</strong></dt>
 <dd><p>1 compute equations of the quotient,
 <br>2 use a primary decomposition when computing the Reynolds operator <br>
 To combine options, add their value, default: opt =3.

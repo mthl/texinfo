@@ -57,7 +57,7 @@
 <para>An index entry
 <indexterm index="cp">float example</indexterm></para>
 <para>A table.
-</para><table><tableitem><tableterm> <emph>truc</emph> </tableterm>
+</para><table><tableitem><tableterm><emph>truc</emph></tableterm>
 <item><para>line
 </para></item></tableitem></table>
 
@@ -82,7 +82,7 @@ An example.
 
 
 A table.
-<table><tableitem><tableterm> <emph>truc</emph> </tableterm>
+<table><tableitem><tableterm><emph>truc</emph></tableterm>
 <item><para>line
 </para></item></tableitem></table>
 
@@ -217,7 +217,7 @@ An example 2.
 <example xml:space="preserve">example 2
 </example>
 A table 2.
-<table><tableitem><tableterm> <emph>truc 2</emph> </tableterm>
+<table><tableitem><tableterm><emph>truc 2</emph></tableterm>
 <item><para>line 2
 </para></item></tableitem></table>
 

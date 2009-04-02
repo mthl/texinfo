@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,19 +88,19 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>hnexpansion(f); or hnexpansion(f,&quot;ess&quot;); f poly
 </p>
 </dd>
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>hnexpansion(f); f poly
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>f is a bivariate polynomial (in the first 2 ring variables)
 </p>
 </dd>
-<dt> <strong>Create:</strong></dt>
+<dt><strong>Create:</strong></dt>
 <dd><p>ring with variables <code>x,y</code> and ordering <code>ls</code> over a
 field extension of the current basering&rsquo;s ground field, 
 since the Hamburger-Noether development usually does not exist
@@ -111,21 +111,21 @@ created (corresponding to the output of <code>develop(f[i])</code>,
 f[i] a branch of f, but the last entry being omitted).
 </p>
 <dl compact="compact">
-<dt> <code>hne[i][1]</code>; matrix:</dt>
+<dt><code>hne[i][1]</code>; matrix:</dt>
 <dd><p>         Each row contains the coefficients of the corresponding line of the
          Hamburger-Noether expansion (HNE) for f[i]. The end of the line is
          marked in the matrix by the first ring variable (usually x).
 </p></dd>
-<dt> <code>hne[i][2]</code>; intvec:</dt>
+<dt><code>hne[i][2]</code>; intvec:</dt>
 <dd><p>         indicating the length of lines of the HNE
 </p></dd>
-<dt> <code>hne[i][3]</code>; int:</dt>
+<dt><code>hne[i][3]</code>; int:</dt>
 <dd><p>         0  if the 1st ring variable was transversal (with respect to f[i]), <br>
          1  if the variables were changed at the beginning of the
             computation, <br>
         -1  if an error has occurred.
 </p></dd>
-<dt> <code>hne[i][4]</code>; poly:</dt>
+<dt><code>hne[i][4]</code>; poly:</dt>
 <dd><p>         the transformed polynomial of f[i] to make it possible to extend the
          Hamburger-Noether development a posteriori without having to do
          all the previous calculation once again (0 if not needed)
@@ -133,11 +133,11 @@ f[i] a branch of f, but the last entry being omitted).
 </dl>
 
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list, say <code>hn</code>, containing the created ring
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>to use the ring type: <code>def HNEring=hn[i]; setring HNEring;</code>.
 <br>
 If f is known to be irreducible as a power series, <code>develop(f)</code>
@@ -145,15 +145,15 @@ could be chosen instead to avoid the change of basering. <br>
 Increasing <code>printlevel</code> leads to more and more comments.
 </p>
 </dd>
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>hnexpansion(f,&quot;ess&quot;); f poly
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>f is a bivariate polynomial (in the first 2 ring variables)
 </p>
 </dd>
-<dt> <strong>Create:</strong></dt>
+<dt><strong>Create:</strong></dt>
 <dd><p>ring with variables <code>x,y</code> and ordering <code>ls</code> over a
 field extension of the current basering&rsquo;s ground field, 
 since the Hamburger-Noether development usually does not exist
@@ -166,11 +166,11 @@ created (corresponding to the output of <code>develop(f[i])</code>, f[i] an
 <code>hnexpansion</code> above for more details.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list, say <code>hn</code>, containing the created ring
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>to use the ring type: <code>def hnering=hn[i]; setring hnering;</code>.
 <br>
 Alternatively you may use the procedure sethnering and type:

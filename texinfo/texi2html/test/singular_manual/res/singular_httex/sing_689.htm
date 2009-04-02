@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,17 +90,17 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>invariants(INPUT); INPUT list or poly
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>INPUT is the output of <code>develop(f)</code>, or of
 <code>extdevelop(develop(f),n)</code>, or one entry in the list <code>hne</code>
 of the HNEring created by <code>hnexpansion</code>.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list, if INPUT contains a valid HNE:
 </p><table><tr><td>&nbsp;</td><td><pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
     invariants(INPUT)[2]:  intvec    (generators of the semigroup)
@@ -112,12 +112,12 @@ of the HNEring created by <code>hnexpansion</code>.
 <p>an empty list, if INPUT contains no valid HNE.
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>INPUT is bivariate polynomial f or the output of <code>hnexpansion(f[,&quot;ess&quot;])</code>,
 or the list <code>hne</code> in the HNEring created by <code>hnexpansion</code>.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list INV, such that INV[i] is the output of <code>invariants(develop(f[i]))</code>
 as above, where f[i] is the ith branch of the curve f, and the last
 entry contains further invariants of f in the format:
@@ -133,7 +133,7 @@ entry contains further invariants of f in the format:
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>In case the Hamburger-Noether expansion of the curve f is needed
 for other purposes as well it is better to calculate this first
 with the aid of <code>hnexpansion</code> and use it as input instead of

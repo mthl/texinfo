@@ -28,6 +28,10 @@ line
 @end table 
 @end example} and text after the footnote.
 
+center in a @@code:
+
+@code{@center Centered code line}
+
 @table
 @item @center centered text in item
 table line @center centered text in table line

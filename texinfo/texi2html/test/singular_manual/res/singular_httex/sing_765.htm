@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>finvar.lib</code> (see <a href="sing_753.htm#finvar_005flib">finvar_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>invariant_basis_reynolds(REY,d[,flags]);
 <br>REY: a &lt;matrix&gt; representing the Reynolds operator, d: an &lt;int&gt;
 indicating of which degree (&gt;0) the homogeneous basis should be, flags:
@@ -103,16 +103,16 @@ polynomials are mapped to invariants during one call of
 evaluate_reynolds
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>REY is the first return value of group_reynolds() or reynolds_molien()
 and flags[1] given by partial_molien
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>the basis (type &lt;ideal&gt;) of the space of invariants of degree d
 </p>
 </dd>
-<dt> <strong>Theory:</strong></dt>
+<dt><strong>Theory:</strong></dt>
 <dd><p>Monomials of degree d are mapped to invariants with the Reynolds
 operator. A linearly independent set is generated with the help of
 minbase.

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
 
@@ -121,19 +121,19 @@ control laws are modified by a program external to Miniker. The same steps
 are repeated until convergence. More pecisely,
 </p>
 <dl compact="compact">
-<dt> <strong>forward</strong></dt>
+<dt><strong>forward</strong></dt>
 <dd><p>The command law       h(t) is given (by an explicit law or taken from a file).
 The trajectory is computed in a classical way, with the additionnal computation
 of the functional to be optimised,       J, prescribed with specific 
 <code>f_set</code> macros. The states, transfers and control laws are stored.  
 </p></dd>
-<dt> <strong>backward</strong></dt>
+<dt><strong>backward</strong></dt>
 <dd><p>The adjoint variable is computed from the last time       T backward. The
 time increment is re-read as it could have changed during the forward 
 simulation. The system is solved by using the same technics as in the forward 
 simulation, but with a negative time step.
 </p></dd>
-<dt> <strong>external phase</strong></dt>
+<dt><strong>external phase</strong></dt>
 <dd><p>Now the command should be corrected. This step isn&rsquo;t covered here, but, for
 example, minuit the optimisation tool from the CERN could be used. 
 In order to ease such a use of Miniker, the principal program has to be 

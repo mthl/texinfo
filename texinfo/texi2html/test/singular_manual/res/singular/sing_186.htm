@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -87,14 +87,14 @@ ul.toc {list-style: none}
 <a name="index-fetch"></a>
 
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>fetch (</code> ring_name<code>,</code> name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>number, poly, vector, ideal, module, matrix or list
 (the same type as the second argument)
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>maps objects between rings.
 <code>fetch</code> is the identity map between rings and qrings,
 the i-th variable of the source ring is mapped to the i-th
@@ -105,11 +105,11 @@ different ground fields).
 variable names or orderings, or to map objects from a ring to a quotient
 ring of that ring or vice versa.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>Compared with <code>imap</code>, <code>fetch</code> uses the position of the ring
 variables, not their names.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal i=maxideal(2);
   ideal j=std(i);

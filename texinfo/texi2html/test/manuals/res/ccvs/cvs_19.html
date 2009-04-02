@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -69,20 +69,20 @@ that affect <small>CVS</small>.
 <dl compact="compact">
 <dd><a name="index-CVSIGNORE_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVSIGNORE</code></dt>
+<dt><code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should ignore. See section <a href="cvs_18.html#cvsignore">Ignoring files via cvsignore</a>.
 </p>
 <a name="index-CVSWRAPPERS_002c-environment-variable-1"></a>
 </dd>
-<dt> <code>$CVSWRAPPERS</code></dt>
+<dt><code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should treat as wrappers. See section <a href="cvs_18.html#Wrappers">The cvswrappers file</a>.
 </p>
 <a name="index-CVSREAD_002c-environment-variable"></a>
 <a name="index-Read_002donly-files_002c-and-CVSREAD"></a>
 </dd>
-<dt> <code>$CVSREAD</code></dt>
+<dt><code>$CVSREAD</code></dt>
 <dd><p>If this is set, <code>checkout</code> and <code>update</code> will
 try hard to make the files in your working directory
 read-only.  When this is not set, the default behavior
@@ -90,7 +90,7 @@ is to permit modification of your working files.
 </p>
 <a name="index-CVSREADONLYFS_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVSREADONLYFS</code></dt>
+<dt><code>$CVSREADONLYFS</code></dt>
 <dd><p>Turns on read-only repository mode. This allows one to
 check out from a read-only repository, such as within
 an anoncvs server, or from a CDROM repository.
@@ -100,12 +100,12 @@ option is used. This can also allow the use of
 read-only NFS repositories.
 </p>
 </dd>
-<dt> <code>$CVSUMASK</code></dt>
+<dt><code>$CVSUMASK</code></dt>
 <dd><p>Controls permissions of files in the repository.  See
 <a href="cvs_2.html#File-permissions">File permissions</a>.
 </p>
 </dd>
-<dt> <code>$CVSROOT</code></dt>
+<dt><code>$CVSROOT</code></dt>
 <dd><p>Should contain the full pathname to the root of the <small>CVS</small>
 source repository (where the <small>RCS</small> files are
 kept).  This information must be available to <small>CVS</small> for
@@ -119,13 +119,13 @@ worry about this when initially checking out a working
 directory.
 </p>
 </dd>
-<dt> <code>$CVSEDITOR</code></dt>
+<dt><code>$CVSEDITOR</code></dt>
 <dd><a name="index-CVSEDITOR_002c-environment-variable-1"></a>
 </dd>
-<dt> <code>$EDITOR</code></dt>
+<dt><code>$EDITOR</code></dt>
 <dd><a name="index-EDITOR_002c-environment-variable-1"></a>
 </dd>
-<dt> <code>$VISUAL</code></dt>
+<dt><code>$VISUAL</code></dt>
 <dd><a name="index-VISUAL_002c-environment-variable-1"></a>
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
@@ -136,20 +136,20 @@ log editor.
 </p>
 <a name="index-PATH_002c-environment-variable"></a>
 </dd>
-<dt> <code>$PATH</code></dt>
+<dt><code>$PATH</code></dt>
 <dd><p>If <code>$RCSBIN</code> is not set, and no path is compiled
 into <small>CVS</small>, it will use <code>$PATH</code> to try to find all
 programs it uses.
 </p>
 <a name="index-HOME_002c-environment-variable"></a>
 </dd>
-<dt> <code>$HOME</code></dt>
+<dt><code>$HOME</code></dt>
 <dd><a name="index-HOMEPATH_002c-environment-variable"></a>
 </dd>
-<dt> <code>$HOMEPATH</code></dt>
+<dt><code>$HOMEPATH</code></dt>
 <dd><a name="index-HOMEDRIVE_002c-environment-variable"></a>
 </dd>
-<dt> <code>$HOMEDRIVE</code></dt>
+<dt><code>$HOMEDRIVE</code></dt>
 <dd><p>Used to locate the directory where the &lsquo;<tt>.cvsrc</tt>&rsquo;
 file, and other such files, are searched.  On Unix, <small>CVS</small>
 just checks for <code>HOME</code>.  On Windows NT, the system will
@@ -159,13 +159,13 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 </p>
 <a name="index-CVS_005fRSH_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_RSH</code></dt>
+<dt><code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
 see section <a href="cvs_2.html#Connecting-via-rsh">Connecting with rsh</a>.
 </p>
 </dd>
-<dt> <code>$CVS_SERVER</code></dt>
+<dt><code>$CVS_SERVER</code></dt>
 <dd><p>Used in client-server mode when accessing a remote
 repository using <small>RSH</small>.  It specifies the name of
 the program to start on the server side (and any
@@ -176,13 +176,13 @@ the default value for <code>:fork:</code> is the name used to run the client.
 see section <a href="cvs_2.html#Connecting-via-rsh">Connecting with rsh</a>
 </p>
 </dd>
-<dt> <code>$CVS_PASSFILE</code></dt>
+<dt><code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
 see section <a href="cvs_2.html#Password-authentication-client">Using the client with password authentication</a>
 </p>
 </dd>
-<dt> <code>$CVS_CLIENT_PORT</code></dt>
+<dt><code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
@@ -190,14 +190,14 @@ see section <a href="cvs_2.html#Remote-repositories">Remote repositories</a>
 </p>
 <a name="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_RCMD_PORT</code></dt>
+<dt><code>$CVS_RCMD_PORT</code></dt>
 <dd><p>Used in client-server mode.  If set, specifies the port
 number to be used when accessing the <small>RCMD</small> demon on
 the server side. (Currently not used for Unix clients).
 </p>
 <a name="index-CVS_005fCLIENT_005fLOG_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_CLIENT_LOG</code></dt>
+<dt><code>$CVS_CLIENT_LOG</code></dt>
 <dd><p>Used for debugging only in client-server
 mode.  If set, everything sent to the server is logged
 into &lsquo;<tt><code>$CVS_CLIENT_LOG</code>.in</tt>&rsquo; and everything
@@ -206,7 +206,7 @@ sent from the server is logged into
 </p>
 <a name="index-CVS_005fSERVER_005fSLEEP_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_SERVER_SLEEP</code></dt>
+<dt><code>$CVS_SERVER_SLEEP</code></dt>
 <dd><p>Used only for debugging the server side in
 client-server mode.  If set, delays the start of the
 server child process the specified amount of
@@ -214,7 +214,7 @@ seconds so that you can attach to it with a debugger.
 </p>
 <a name="index-CVS_005fIGNORE_005fREMOTE_005fROOT_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_IGNORE_REMOTE_ROOT</code></dt>
+<dt><code>$CVS_IGNORE_REMOTE_ROOT</code></dt>
 <dd><p>For <small>CVS</small> 1.10 and older, setting this variable
 prevents <small>CVS</small> from overwriting the &lsquo;<tt>CVS/Root</tt>&rsquo;
 file when the &lsquo;<samp>-d</samp>&rsquo; global option is specified.
@@ -224,7 +224,7 @@ effect.
 </p>
 <a name="index-CVS_005fLOCAL_005fBRANCH_005fNUM_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_LOCAL_BRANCH_NUM</code></dt>
+<dt><code>$CVS_LOCAL_BRANCH_NUM</code></dt>
 <dd><p>Setting this variable allows some control over the
 branch number that is assigned. This is specifically to
 support the local commit feature of CVSup. If one sets
@@ -235,19 +235,19 @@ that there will be no conflicts with version numbers.
 </p>
 <a name="index-COMSPEC_002c-environment-variable"></a>
 </dd>
-<dt> <code>$COMSPEC</code></dt>
+<dt><code>$COMSPEC</code></dt>
 <dd><p>Used under OS/2 only.  It specifies the name of the
 command interpreter and defaults to <small>CMD.EXE</small>.
 </p>
 <a name="index-TMPDIR_002c-environment-variable"></a>
 </dd>
-<dt> <code>$TMPDIR</code></dt>
+<dt><code>$TMPDIR</code></dt>
 <dd><a name="index-TMP_002c-environment-variable"></a>
 </dd>
-<dt> <code>$TMP</code></dt>
+<dt><code>$TMP</code></dt>
 <dd><a name="index-TEMP_002c-environment-variable"></a>
 </dd>
-<dt> <code>$TEMP</code></dt>
+<dt><code>$TEMP</code></dt>
 <dd><a name="index-Temporary-files_002c-location-of"></a>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
@@ -268,7 +268,7 @@ if your server and client are both running <small>CVS</small>
 </p>
 <a name="index-CVS_005fPID_002c-environment-variable"></a>
 </dd>
-<dt> <code>$CVS_PID</code></dt>
+<dt><code>$CVS_PID</code></dt>
 <dd><p>This is the process identification (aka pid) number of
 the <small>CVS</small> process. It is often useful in the
 programs and/or scripts specified by the

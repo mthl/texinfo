@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,11 +88,11 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>ring.lib</code> (see <a href="sing_461.htm#ring_005flib">ring_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>fetchall(R[,s]); R=ring/qring, s=string
 </p>
 </dd>
-<dt> <strong>Create:</strong></dt>
+<dt><strong>Create:</strong></dt>
 <dd><p>fetch all objects of ring R (of type poly/ideal/vector/module/number/
 matrix) into the basering.
 <br>If no 3rd argument is present, the names are the same as in R. If,
@@ -100,18 +100,18 @@ say, f is a poly in R and the 3rd argument is the string &quot;R&quot;, then f
 is mapped to f_R etc.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>no return value
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>As fetch, this procedure maps the 1st, 2nd, ... variable of R to the
 1st, 2nd, ... variable of the basering.
 <br>The 3rd argument is useful in order to avoid conflicts of names, the
 empty string is allowed
 </p>
 </dd>
-<dt> <strong>Caution:</strong></dt>
+<dt><strong>Caution:</strong></dt>
 <dd><p>fetchall does not work inside a procedure.
 <br>It does not work if R contains a map.
 </p>

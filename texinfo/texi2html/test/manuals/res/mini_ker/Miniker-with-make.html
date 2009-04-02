@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
 
@@ -148,19 +148,19 @@ switches and also specify environment variables (see also
 <code>./configure --help</code>):
 </p>
 <dl compact="compact">
-<dt> <code>--disable-cernlib</code></dt>
+<dt><code>--disable-cernlib</code></dt>
 <dd><p>Use the internal cernlib source files, even if a cernlib is detected.
 </p></dd>
-<dt> <code>--with-static-cernlib</code></dt>
+<dt><code>--with-static-cernlib</code></dt>
 <dd><p>This command line switch forces a static linking with the cernlib (or a dynamic linking 
 if set to no).
 </p></dd>
-<dt> <code>--with-cernlib</code></dt>
+<dt><code>--with-cernlib</code></dt>
 <dd><p>This command line switch can be used to specify the cernlib location
 (if not detected or you want to use a specific cernlib).
 </p></dd>
-<dt> <code>--with-blas</code></dt>
-<dt> <code>--with-lapack</code></dt>
+<dt><code>--with-blas</code></dt>
+<dt><code>--with-lapack</code></dt>
 <dd><p>With this command switch, you can specify the location of the blas and lapack
 libraries.
 </p>
@@ -173,26 +173,26 @@ the Apple frameworks:
 </pre></td></tr></table>
 
 </dd>
-<dt> <code>F77</code></dt>
-<dt> <code>FC</code></dt>
-<dt> <code>FFLAGS</code></dt>
-<dt> <code>LDFLAGS</code> </dt>
+<dt><code>F77</code></dt>
+<dt><code>FC</code></dt>
+<dt><code>FFLAGS</code></dt>
+<dt><code>LDFLAGS</code></dt>
 <dd><p>Classical compiler, compiler flags and linker flags.
 </p></dd>
-<dt> <code>MORTRAN</code></dt>
+<dt><code>MORTRAN</code></dt>
 <dd><p>This environment variable holds the mortran preprocessor command
 (default is <code>mortran</code>).
 </p></dd>
-<dt> <code>MTNFLAGS</code></dt>
+<dt><code>MTNFLAGS</code></dt>
 <dd><p>This environment variable holds command line arguments for the mortran
 preprocessor. It is empty in the default case.
 </p></dd>
-<dt> <code>MTN</code></dt>
+<dt><code>MTN</code></dt>
 <dd><p>This environment variable may be used to specify the mortran executable
 name and/or path, it should be used by the <code>mortran</code> commmand.
 (default is empty, which leads to a mortran executable called <code>mtn</code>).
 </p></dd>
-<dt> <code>MTNDEPEND</code></dt>
+<dt><code>MTNDEPEND</code></dt>
 <dd><p>This environment variable may be used to specify the mortran dependencies
 checker executable. It should be used by the <code>mortran</code> commmand.
 (default is empty, which leads to a mortran dependencies checker 

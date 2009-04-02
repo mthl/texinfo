@@ -170,8 +170,8 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
     my $state = shift;
 #print STDERR "format: $format\n" if (defined($format));
 #print STDERR "paragraph @$command_stack_at_end; @$command_stack_at_begin\n";
-    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
-          exists($special_list_commands{$format}->{$paragraph_command}));
+    #$paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
+    #      exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
     foreach my $style(t2h_collect_styles($command_stack_at_begin))
     {

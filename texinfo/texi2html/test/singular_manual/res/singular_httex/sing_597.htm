@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,24 +90,24 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>normal.lib</code> (see <a href="sing_595.htm#normal_005flib">normal_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>HomJJ (Li); Li = list: ideal SBid, ideal id, ideal J, poly p
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>R = P/id, P = basering, a polynomial ring, id an ideal of P,
 <br> SBid = standard basis of id,
 <br> J = ideal of P containing the polynomial p,
 <br> p = nonzero divisor of R
 </p>
 </dd>
-<dt> <strong>Compute:</strong></dt>
+<dt><strong>Compute:</strong></dt>
 <dd><p>Endomorphism ring End_R(J)=Hom_R(J,J) with its ring structure as
 affine ring, together with the canonical map R &ndash;&gt; Hom_R(J,J),
 where R is the quotient ring of P modulo the standard basis SBid.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list l of two objects
 </p><table><tr><td>&nbsp;</td><td><pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
                such that l[1]/endid = Hom_R(J,J) and
@@ -117,7 +117,7 @@ where R is the quotient ring of P modulo the standard basis SBid.
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>printlevel &gt;=1: display comments (default: printlevel=0)
 </p>
 </dd>

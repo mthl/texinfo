@@ -478,9 +478,9 @@ ref, a comma@comma{} in file}</literal>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> a</term>
+<variablelist><varlistentry><term>a</term>
 <term><!-- comment between item and itemx -->
- b</term>
+b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1000,9 +1000,9 @@ ref, a comma@comma{} in file}</literal>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> a</term>
+<variablelist><varlistentry><term>a</term>
 <term><!-- comment between item and itemx -->
- b</term>
+b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -1518,9 +1518,9 @@ ref, a comma@comma{} in file}</literal>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> a</term>
+<variablelist><varlistentry><term>a</term>
 <term><!-- comment between item and itemx -->
- b</term>
+b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
@@ -2036,9 +2036,9 @@ ref, a comma@comma{} in file}</literal>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> a</term>
+<variablelist><varlistentry><term>a</term>
 <term><!-- comment between item and itemx -->
- b</term>
+b</term>
 <listitem>l--ine
 </listitem></varlistentry></variablelist>
 

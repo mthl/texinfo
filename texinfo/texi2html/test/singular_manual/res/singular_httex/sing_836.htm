@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,22 +90,22 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>solve.lib</code> (see <a href="sing_831.htm#solve_005flib">solve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>interpolate(p,v,d); p,v=ideals of numbers, d=integer
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>Ground field K is the field of rational numbers, p and v are lists
 of elements of the ground field K with p[j] != -1,0,1, size(p) = n
 (= number of vars) and size(v)=N=(d+1)^n.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>poly f, the unique polynomial f of degree n*d with prescribed values
 v[i] at the points p(i)=(p[1]^(i-1),..,p[n]^(i-1)), i=1,..,N.
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>mainly useful when n=1, i.e. f is satisfying f(p^(i-1)) = v[i],
 i=1..d+1.
 </p>

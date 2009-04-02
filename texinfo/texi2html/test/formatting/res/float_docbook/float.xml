@@ -19,7 +19,7 @@
 <para>An index entry
 <indexterm role="cp"><primary>float example</primary></indexterm></para>
 <para>A table.
-</para><variablelist><varlistentry><term> <emphasis>truc</emphasis> </term>
+</para><variablelist><varlistentry><term><emphasis>truc</emphasis></term>
 <listitem><para>line
 </para></listitem></varlistentry></variablelist>
 

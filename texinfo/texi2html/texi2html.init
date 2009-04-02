@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.180 2009-02-03 12:32:38 pertusus Exp $
+# $Id: texi2html.init,v 1.181 2009-04-02 09:13:47 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -39,12 +39,12 @@ $DEBUG = 0;
 # Definition: The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">';
+$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">';
 
 # -frameset-doctype
 # When frames are used, this SystemLiteral identifies the DTD used for
 # the file containing the frame description.
-$FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html401/frameset.dtd">';
+$FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">';
 
 # -test
 # If this value is true, some variables which should be dynamically generated 
@@ -3845,7 +3845,7 @@ sub t2h_default_no_texi_image($$$$)
     my $file = $args->[0];
     $file =~ s/^\s*//;
     $file =~ s/\s*$//;
-    return main::substitute_line($file, {'remove_texi' => 1, 'code_style' => 1});
+    return main::substitute_line($file, "\@$command", {'remove_texi' => 1, 'code_style' => 1});
 }
 
 sub t2h_default_no_texi_acronym_like($$)
@@ -4726,6 +4726,7 @@ sub t2h_default_listoffloats_float_style($$)
     my $float = shift;
     
     my $style = $float->{'style_texi'};
+    #print STDERR "listoffloat/float style mismatch $style_texi $style\n" if ($style_texi ne $style);
     if (defined($float->{'nr'}))
     {
          my $nr = $float->{'nr'};
@@ -5509,33 +5510,36 @@ sub teletyped_in_stack($)
 }
 
 # text after @item in table, vtable and ftable
-sub t2h_default_table_item($$$$$$$$$)
+sub t2h_default_table_item($$$$$$$)
 {
     my $text = shift;
     my $index_label = shift;
     my $format = shift;
     my $command = shift;
-    my $formatted_command = shift;
+#    my $formatted_command = shift;
     my $style_stack = shift;
-    my $text_formatted = shift;
-    my $text_formatted_leading_spaces = shift;
-    my $text_formatted_trailing_spaces = shift;
+#    my $text_formatted = shift;
+#    my $text_formatted_leading_spaces = shift;
+#    my $text_formatted_trailing_spaces = shift;
     my $item_cmd = shift;
+    my $formatted_index_entry = shift;
 
     #print STDERR "-> $format (@$style_stack)\n";
-    if (defined($text_formatted) and !exists $special_list_commands{$format}->{$command})
-    {
-        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
-    }
-    $formatted_command = '' if (!defined($formatted_command) or 
-          exists($special_list_commands{$format}->{$command}));
+#    if (defined($text_formatted) and !exists $special_list_commands{$format}->{$command})
+#    {
+#        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+#    }
+#    $formatted_command = '' if (!defined($formatted_command) or 
+#          exists($special_list_commands{$format}->{$command}));
     if (teletyped_in_stack($style_stack))
     {
-       $text .= '</tt>';
-       $formatted_command = '<tt>' . $formatted_command;
+#       $text .= '</tt>';
+#       $formatted_command = '<tt>' . $formatted_command;
+        $text = '<tt>' . $text . '</tt>';
     }
     $text .= "\n" . $index_label  if (defined($index_label));
-    return '<dt>' . $formatted_command . $text . '</dt>' . "\n";
+#    return '<dt>' . $formatted_command . $text . '</dt>' . "\n";
+    return '<dt>' . $text . '</dt>' . "\n";
 }
 
 # format text on the line following the @item line (in table, vtable and ftable)
@@ -5625,19 +5629,34 @@ sub t2h_default_cell($$$$$$$$)
     return "<td${fractions}>" . $text . '</td>';
 }
 
-sub t2h_default_format_list_item_texi($$$$)
+sub t2h_default_format_list_item_texi($$$$$)
 {
     my $format = shift;
     my $line = shift;
     my $prepended = shift;
     my $command = shift;
+    my $number = shift;
 
     my $result_line;
     my $open_command = 0;
-    if (defined($command) and $command ne '' and $format ne 'itemize')
+    if (defined($command) and $command ne '' and !exists $special_list_commands{$format}->{$command} and $format ne 'itemize')
     {
         #@*table
         $open_command = 1;
+        $line =~ s/^\s*//;
+        $line =~ s/\s*$//;
+        if (exists ($style_map{$command}))
+        {
+           $result_line = "\@$command\{$line\}\n";
+        }
+        elsif (exists ($things_map{$command}))
+        {
+           $result_line = "\@$command\{\} $line\n";
+        }
+        else
+        {
+           $result_line = "\@$command $line\n";
+        }
     }
     if (defined($prepended) and $prepended ne '')
     {
@@ -5750,10 +5769,9 @@ sub t2h_get_attribute($;$)
     my $map_ref = shift;
     $map_ref = \%style_map if (!defined($map_ref));
     return '' unless (defined($map_ref->{$command}));
-    if ((ref($map_ref->{$command}) eq 'HASH') 
-       and exists($map_ref->{$command}->{'attribute'}))
+    if (ref($map_ref->{$command}) eq 'HASH') 
     {
-        return $map_ref->{$command}->{'attribute'};
+        return $map_ref->{$command}->{'attribute'} if (exists($map_ref->{$command}->{'attribute'}));
     }
     elsif ($map_ref->{$command} !~ /^&/)
     {
@@ -5815,8 +5833,8 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
     my $command_stack_at_begin = shift;
 #print STDERR "format: $format\n" if (defined($format));
 #print STDERR "paragraph @$command_stack_at_end; @$command_stack_at_begin\n";
-    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
-          exists($special_list_commands{$format}->{$paragraph_command}));
+#    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
+#          exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
 
     foreach my $style(t2h_collect_styles($command_stack_at_begin))

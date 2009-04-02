@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,14 +88,14 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.78 mres</h3>
 <a name="index-mres"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>mres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
 <br><code>mres (</code> module_expression<code>,</code> int_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>resolution
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>computes a minimal free resolution of an ideal or module M with the
 standard basis method. More precisely, let A=<code>matrix</code>(M), then <code>mres</code>
 computes a free resolution of
@@ -140,11 +140,11 @@ class="cmmi-10">p</span>,
  but <code>L[p+1]</code>, the first syzygy module of <code>L[p]</code>,
 is 0 (if the basering is not a qring).
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>Accessing single elements of a resolution may require that some partial
 computations have to be finished and may therefore take some time.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
   ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
           t2z2+tz2w+xz2w,t2w2+txw2+xyw2;

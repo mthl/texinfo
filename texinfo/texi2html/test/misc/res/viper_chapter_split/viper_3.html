@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -259,15 +259,15 @@ or pieces of text that need to be inserted frequently.
 At the <kbd>:</kbd> or <kbd>/</kbd> prompts in the Minibuffer, you can do the following:
 </p>
 <dl compact="compact">
-<dt> <kbd>M-p and M-n</kbd></dt>
+<dt><kbd>M-p and M-n</kbd></dt>
 <dd><p>To move to previous and next history items.  This causes the history
 items to appear on the command line, where you can edit them, or
 simply type Return to execute.
 </p></dd>
-<dt> <kbd>M-r and M-s</kbd></dt>
+<dt><kbd>M-r and M-s</kbd></dt>
 <dd><p>To search backward and forward through the history.
 </p></dd>
-<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dt><kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>Type &lt;RET&gt; to accept a default (which is displayed in the prompt).
 </p></dd>
 </dl>
@@ -614,7 +614,7 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <p>These commands have no Vi analogs.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x, C-c</kbd></dt>
+<dt><kbd>C-x, C-c</kbd></dt>
 <dd><a name="index-C_002dx-1"></a>
 <a name="index-C_002dc-1"></a>
 <p>These two keys invoke many important Emacs functions.  For example, if you
@@ -625,12 +625,12 @@ configure &lt;ESC&gt; as Meta by setting <code>viper-no-multiple-ESC</code> to n
 in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="viper_4.html#Customization">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
-<dt> <kbd>\</kbd></dt>
+<dt><kbd>\</kbd></dt>
 <dd><a name="index-_005c"></a>
 <p>Escape to Emacs to execute a single Emacs command.  For instance,
 <kbd>\ &lt;ESC&gt;</kbd> will act like a Meta key.
 </p></dd>
-<dt> <kbd>Q</kbd></dt>
+<dt><kbd>Q</kbd></dt>
 <dd><a name="index-Q"></a>
 <a name="index-query-replace-1"></a>
 <p><kbd>Q</kbd> is for query replace.  By default,
@@ -639,9 +639,9 @@ each string to be replaced is treated as a regular expression.  You can use
 turn this off.  (For normal searches, <kbd>:se nomagic</kbd> will work.  Note
 that <kbd>:se nomagic</kbd> turns Regexps off completely, unlike Vi).
 </p></dd>
-<dt> <kbd>v</kbd></dt>
-<dt> <kbd>V</kbd></dt>
-<dt> <kbd>C-v</kbd></dt>
+<dt><kbd>v</kbd></dt>
+<dt><kbd>V</kbd></dt>
+<dt><kbd>C-v</kbd></dt>
 <dd><a name="index-v"></a>
 <a name="index-V"></a>
 <a name="index-C_002dv"></a>
@@ -651,7 +651,7 @@ similar, but will use a window different from the current window.
 <kbd>C-v</kbd> is like <kbd>V</kbd>, except that a new frame (X window) will be used
 instead of a new Emacs window.
 </p></dd>
-<dt> <kbd>#</kbd></dt>
+<dt><kbd>#</kbd></dt>
 <dd><a name="index-_0023"></a>
 <p>If followed by a certain character <var>ch</var>, it becomes an operator whose
 argument is the region determined by the motion command that follows
@@ -660,63 +660,63 @@ Currently, <var>ch</var> can be one of <kbd>c</kbd>, <kbd>C</kbd>, <kbd>g</kbd>,
 <kbd>s</kbd>.  For instance, <kbd>#qr</kbd> will prompt you for a string and then
 prepend this string to each line in the buffer.
 </p></dd>
-<dt> <kbd># c</kbd></dt>
+<dt><kbd># c</kbd></dt>
 <dd><a name="index-_0023c_003cmove_003e"></a>
 <a name="index-changing-case"></a>
 <p>Change upper-case characters in the region to lower-case
 (<code>downcase-region</code>).
 Emacs command <kbd>M-l</kbd> does the same for words.
 </p></dd>
-<dt> <kbd># C</kbd></dt>
+<dt><kbd># C</kbd></dt>
 <dd><a name="index-_0023C_003cmove_003e"></a>
 <p>Change lower-case characters in the region to upper-case.  For instance,
 <kbd># C 3 w</kbd> will capitalize 3 words from the current point
 (<code>upcase-region</code>).
 Emacs command <kbd>M-u</kbd> does the same for words.
 </p></dd>
-<dt> <kbd># g</kbd></dt>
+<dt><kbd># g</kbd></dt>
 <dd><a name="index-_0023g_003cmove_003e"></a>
 <p>Execute last keyboard macro for each line in the region
 (<code>viper-global-execute</code>).
 </p></dd>
-<dt> <kbd># q</kbd></dt>
+<dt><kbd># q</kbd></dt>
 <dd><a name="index-_0023q_003cmove_003e"></a>
 <p>Insert specified string at the beginning of each line in the region
 (<code>viper-quote-region</code>).  The default string is composed of the comment
 character(s) appropriate for the current major mode.
 </p></dd>
-<dt> <kbd># s</kbd></dt>
+<dt><kbd># s</kbd></dt>
 <dd><a name="index-_0023s_003cmove_003e"></a>
 <p>Check spelling of words in the region (<code>spell-region</code>).
 The function used for spelling is determined from the variable
 <code>viper-spell-function</code>.
 <a name="index-viper_002dspell_002dfunction"></a>
 </p></dd>
-<dt> <kbd>*</kbd></dt>
+<dt><kbd>*</kbd></dt>
 <dd><a name="index-_002a"></a>
 <p>Call last keyboard macro.
 </p></dd>
-<dt> <kbd>m .</kbd></dt>
+<dt><kbd>m .</kbd></dt>
 <dd><p>Set mark at point and push old mark off the ring
 </p></dd>
-<dt> <kbd>m&lt;</kbd></dt>
-<dt> <kbd>m&gt;</kbd></dt>
+<dt><kbd>m&lt;</kbd></dt>
+<dt><kbd>m&gt;</kbd></dt>
 <dd><p>Set mark at beginning and end of buffer, respectively.
 </p></dd>
-<dt> <kbd>m,</kbd></dt>
+<dt><kbd>m,</kbd></dt>
 <dd><p>Jump to mark and pop mark off the ring.  See <a href="../emacs/Mark.html#Mark">(emacs)Mark</a> section &lsquo;Mark&rsquo; in <cite>The GNU Emacs Manual</cite>, for more info.
 </p></dd>
-<dt> <kbd>] register</kbd></dt>
+<dt><kbd>] register</kbd></dt>
 <dd><a name="index-_005d_003ca_002dz_003e"></a>
 <p>View contents of register
 </p></dd>
-<dt> <kbd>[ textmarker</kbd></dt>
+<dt><kbd>[ textmarker</kbd></dt>
 <dd><a name="index-_005b_003ca_002dz_003e"></a>
 <p>View filename and position of textmarker
 </p></dd>
-<dt> <kbd>@#</kbd></dt>
-<dt> <kbd>@register</kbd></dt>
-<dt> <kbd>@!</kbd></dt>
+<dt><kbd>@#</kbd></dt>
+<dt><kbd>@register</kbd></dt>
+<dt><kbd>@!</kbd></dt>
 <dd><a name="index-_0040_0023"></a>
 <a name="index-_0040_003ca_002dz_003e"></a>
 <a name="index-_0040_0021"></a>
@@ -726,28 +726,28 @@ The function used for spelling is determined from the variable
 <p>Begin/end keyboard macro.  @register has a different meaning when used after
 a <kbd>@#</kbd>.  See section <a href="#Macros-and-Registers">Macros and Registers</a>, for details
 </p></dd>
-<dt> <kbd>[]</kbd></dt>
+<dt><kbd>[]</kbd></dt>
 <dd><a name="index-_005b_005d"></a>
 <p>Go to end of heading.
 </p></dd>
-<dt> <kbd>g &lt;<em>movement command</em>&gt;</kbd></dt>
+<dt><kbd>g &lt;<em>movement command</em>&gt;</kbd></dt>
 <dd><p>Search buffer for text delimited by movement command.  The canonical
 example is <kbd>gw</kbd> to search for the word under the cursor.
 See section <a href="#Improved-Search">Improved Search</a>, for details.
 </p></dd>
-<dt> <kbd>C-g and C-]</kbd></dt>
+<dt><kbd>C-g and C-]</kbd></dt>
 <dd><a name="index-C_002dg-1"></a>
 <a name="index-C_002d_005d-1"></a>
 <p>Quit and Abort Recursive edit.  These may be necessary on occasion.
 See section <a href="viper_2.html#Vi-State">Vi State</a>, for a reason.
 </p></dd>
-<dt> <kbd>C-c C-g</kbd></dt>
+<dt><kbd>C-c C-g</kbd></dt>
 <dd><a name="index-C_002dc-C_002dg"></a>
 <p>Hitting <kbd>C-c</kbd> followed by <kbd>C-g</kbd> will display the information on the
 current buffer.  This is the same as hitting <kbd>C-g</kbd> in Vi, but, as
 explained above, <kbd>C-g</kbd> is needed for other purposes in Emacs.
 </p></dd>
-<dt> <kbd>C-c /</kbd></dt>
+<dt><kbd>C-c /</kbd></dt>
 <dd><a name="index-C_002dc-_002f-1"></a>
 <p>Without a prefix argument, this command toggles
 case-sensitive/case-insensitive search modes and plain vanilla/regular
@@ -761,14 +761,14 @@ this function.
 <a name="index-case_002dinsensitive-search-1"></a>
 </p>
 </dd>
-<dt> <kbd>M-p and M-n</kbd></dt>
+<dt><kbd>M-p and M-n</kbd></dt>
 <dd><a name="index-M_002dp"></a>
 <a name="index-M_002dn"></a>
 <p>In the Minibuffer, these commands navigate through the minibuffer
 histories, such as the history of search strings, Ex commands, etc.
 </p>
 </dd>
-<dt> <kbd>C-c M-p and C-c M-n</kbd></dt>
+<dt><kbd>C-c M-p and C-c M-n</kbd></dt>
 <dd><a name="index-C_002dc-M_002dp"></a>
 <a name="index-C_002dc-M_002dn"></a>
 <a name="index-Insertion-history"></a>
@@ -793,7 +793,7 @@ appropriate function to a function key on the keyboard and use that key.
 See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for details.
 </p>
 </dd>
-<dt> <kbd>Ex commands</kbd></dt>
+<dt><kbd>Ex commands</kbd></dt>
 <dd><a name="index-_003aargs"></a>
 <a name="index-_003an"></a>
 <a name="index-_003apwd"></a>
@@ -845,26 +845,26 @@ Manual.
 <p>The features first.  For details, look up the Emacs Manual.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Make</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Make</samp>&rsquo;</dt>
 <dd><a name="index-make"></a>
 <a name="index-compiling"></a>
 
 <p>Makes and Compiles can be done from the editor.  Error messages will be
 parsed and you can move to the error lines.
 </p></dd>
-<dt> &lsquo;<samp>Shell</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Shell</samp>&rsquo;</dt>
 <dd><a name="index-shell"></a>
 <a name="index-interactive-shell"></a>
 <p>You can talk to Shells from inside the editor.  Your entire shell session
 can be treated as a file.
 </p></dd>
-<dt> &lsquo;<samp>Mail</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Mail</samp>&rsquo;</dt>
 <dd><a name="index-email"></a>
 <a name="index-mail"></a>
 <p>Mail can be read from and sent within the editor.  Several sophisticated
 packages exist.
 </p></dd>
-<dt> &lsquo;<samp>Language Sensitive Editing</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Language Sensitive Editing</samp>&rsquo;</dt>
 <dd><p>Editing modes are written for most computer languages in existence.  By
 controlling indentation, they catch punctuation errors.
 </p></dd>
@@ -874,41 +874,41 @@ controlling indentation, they catch punctuation errors.
 packages that come with standard distribution of Emacs.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Transparent FTP</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Transparent FTP</samp>&rsquo;</dt>
 <dd><a name="index-transparent-ftp"></a>
 <a name="index-ange_002dftp_002eel"></a>
 <p><code>ange-ftp.el</code> can ftp from the editor to files on other machines
 transparent to the user.
 </p></dd>
-<dt> &lsquo;<samp>RCS Interfaces</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>RCS Interfaces</samp>&rsquo;</dt>
 <dd><a name="index-version-maintenance"></a>
 <a name="index-RCS"></a>
 <a name="index-vc_002eel"></a>
 <p><code>vc.el</code> for doing RCS commands from inside the editor
 </p></dd>
-<dt> &lsquo;<samp>Directory Editor</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Directory Editor</samp>&rsquo;</dt>
 <dd><a name="index-dired"></a>
 <a name="index-dired_002eel"></a>
 <p><code>dired.el</code> for editing contents of directories and for navigating in
 the file system.
 </p></dd>
-<dt> &lsquo;<samp>Syntactic Highlighting</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Syntactic Highlighting</samp>&rsquo;</dt>
 <dd><a name="index-font_002dlock"></a>
 <a name="index-font_002dlock_002eel"></a>
 <p><code>font-lock.el</code> for automatic highlighting various parts of a buffer
 using different fonts and colors.
 </p></dd>
-<dt> &lsquo;<samp>Saving Emacs Configuration</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Saving Emacs Configuration</samp>&rsquo;</dt>
 <dd><a name="index-desktop"></a>
 <a name="index-desktop_002eel"></a>
 <p><code>desktop.el</code> for saving/restoring configuration on Emacs exit/startup.
 </p></dd>
-<dt> &lsquo;<samp>Spell Checker</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Spell Checker</samp>&rsquo;</dt>
 <dd><a name="index-ispell"></a>
 <a name="index-ispell_002eel"></a>
 <p><code>ispell.el</code> for spell checking the buffer, words, regions, etc.
 </p></dd>
-<dt> &lsquo;<samp>File and Buffer Comparison</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>File and Buffer Comparison</samp>&rsquo;</dt>
 <dd><a name="index-ediff"></a>
 <a name="index-ediff_002eel"></a>
 <p><code>ediff.el</code> for finding differences between files and for applying

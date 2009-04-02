@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -154,9 +154,9 @@ Viper will be waiting for you to type a value for the tabstop variable.
 To get the full list of Vi variables, type <kbd>:se &lt;SPC&gt; &lt;TAB&gt;</kbd>.
 </p>
 <dl compact="compact">
-<dt> <code>viper-auto-indent nil</code></dt>
-<dt> <code>:se ai (:se autoindent)</code></dt>
-<dt> <code>:se ai-g (:se autoindent-global)</code></dt>
+<dt><code>viper-auto-indent nil</code></dt>
+<dt><code>:se ai (:se autoindent)</code></dt>
+<dt><code>:se ai-g (:se autoindent-global)</code></dt>
 <dd><p>If <code>t</code>, enable auto indentation.
 by &lt;RET&gt;, <kbd>o</kbd> or <kbd>O</kbd> command.
 </p>
@@ -169,7 +169,7 @@ appropriate major modes.
 <p><kbd>:se ai</kbd> changes the value of <code>viper-auto-indent</code> in the current
 buffer only; <kbd>:se ai-g</kbd> does the same globally.
 </p></dd>
-<dt> <code>viper-electric-mode t</code></dt>
+<dt><code>viper-electric-mode t</code></dt>
 <dd><p>If not <code>nil</code>, auto-indentation becomes electric, which means that
 &lt;RET&gt;, <kbd>O</kbd>, and <kbd>o</kbd> indent cursor according to the current
 major mode.  In the future, this variable may control additional electric
@@ -179,29 +179,29 @@ features.
 in the current buffer only.  Use <code>setq-default</code> to change the value in
 all buffers.
 </p></dd>
-<dt> <code>viper-case-fold-search nil</code></dt>
-<dt> <code>:se ic (:se ignorecase)</code></dt>
+<dt><code>viper-case-fold-search nil</code></dt>
+<dt><code>:se ic (:se ignorecase)</code></dt>
 <dd><p>If not <code>nil</code>, search ignores cases.
 This can also be toggled by quickly hitting <kbd>/</kbd> twice.
 </p></dd>
-<dt> <code>viper-re-search nil</code></dt>
-<dt> <code>:se magic</code></dt>
+<dt><code>viper-re-search nil</code></dt>
+<dt><code>:se magic</code></dt>
 <dd><p>If not <code>nil</code>, search will use regular expressions; if <code>nil</code> then
 use vanilla search.
 This behavior can also be toggled by quickly hitting <kbd>/</kbd> trice.
 </p></dd>
-<dt> <code>buffer-read-only</code></dt>
-<dt> <code>:se ro (:se readonly)</code></dt>
+<dt><code>buffer-read-only</code></dt>
+<dt><code>:se ro (:se readonly)</code></dt>
 <dd><p>Set current buffer to read only.  To change globally put
 <code>(setq-default buffer-read-only t)</code> in your &lsquo;<tt>.emacs</tt>&rsquo; file.
 </p></dd>
-<dt> <code>blink-matching-paren t</code></dt>
-<dt> <code>:se sm (:se showmatch)</code></dt>
+<dt><code>blink-matching-paren t</code></dt>
+<dt><code>:se sm (:se showmatch)</code></dt>
 <dd><p>Show matching parens by blinking cursor.
 </p></dd>
-<dt> <code>tab-width t (default setting via <code>setq-default</code>)</code></dt>
-<dt> <code>:se ts=value (:se tabstop=value)</code></dt>
-<dt> <code>:se ts-g=value (:se tabstop-global=value)</code></dt>
+<dt><code>tab-width t (default setting via <code>setq-default</code>)</code></dt>
+<dt><code>:se ts=value (:se tabstop=value)</code></dt>
+<dt><code>:se ts-g=value (:se tabstop-global=value)</code></dt>
 <dd><p><code>tab-width</code> is a local variable that controls the width of the tab stops.
 To change the value globally, use <code>setq-default</code>; for local settings,
 use <code>setq</code>.
@@ -225,42 +225,42 @@ command <code>viper-insert-tab</code>, which is bound to <kbd>S-tab</kbd> (shift
 to bind <code>viper-insert-tab</code> to some other convenient key.
 </p>
 </dd>
-<dt> <code>viper-shift-width 8</code></dt>
-<dt> <code>:se sw=value  (:se shiftwidth=value)</code></dt>
+<dt><code>viper-shift-width 8</code></dt>
+<dt><code>:se sw=value  (:se shiftwidth=value)</code></dt>
 <dd><p>The number of columns shifted by <kbd>&gt;</kbd> and <kbd>&lt;</kbd> commands.
 </p></dd>
-<dt> <code>viper-search-wrap-around t</code></dt>
-<dt> <code>:se ws (:se wrapscan)</code></dt>
+<dt><code>viper-search-wrap-around t</code></dt>
+<dt><code>:se ws (:se wrapscan)</code></dt>
 <dd><p>If not <code>nil</code>, search wraps around the end/beginning of buffer.
 </p></dd>
-<dt> <code>viper-search-scroll-threshold 2</code></dt>
+<dt><code>viper-search-scroll-threshold 2</code></dt>
 <dd><p>If search lands within this many lines of the window top or bottom, the
 window will be scrolled up or down by about 1/7-th of its size, to reveal
 the context.  If the value is negative&mdash;don&rsquo;t scroll.
 </p></dd>
-<dt> <code>viper-tags-file-name &quot;TAGS&quot;</code></dt>
+<dt><code>viper-tags-file-name &quot;TAGS&quot;</code></dt>
 <dd><p>The name of the file used as the tag table.
 </p></dd>
-<dt> <code>viper-re-query-replace nil</code></dt>
+<dt><code>viper-re-query-replace nil</code></dt>
 <dd><p>If not <code>nil</code>, use reg-exp replace in query replace.
 </p></dd>
-<dt> <code>viper-want-ctl-h-help nil</code></dt>
+<dt><code>viper-want-ctl-h-help nil</code></dt>
 <dd><p>If not <code>nil</code>, <kbd>C-h</kbd> is bound to <code>help-command</code>;
 otherwise, <kbd>C-h</kbd> is bound as usual in Vi.
 </p></dd>
-<dt> <code>viper-vi-style-in-minibuffer t</code></dt>
+<dt><code>viper-vi-style-in-minibuffer t</code></dt>
 <dd><p>If not <code>nil</code>, Viper provides a high degree of compatibility with Vi
 insert mode when you type text in the Minibuffer; if <code>nil</code>, typing in
 the Minibuffer feels like plain Emacs.
 </p></dd>
-<dt> <code>viper-no-multiple-ESC t</code></dt>
+<dt><code>viper-no-multiple-ESC t</code></dt>
 <dd><p>If you set this to <code>nil</code>, you can use &lt;ESC&gt; as Meta in Vi state.
 Normally, this is not necessary, since graphical displays have separate
 Meta keys (usually on each side of the space bar).  On a dumb terminal, Viper
 sets this variable to <code>twice</code>, which is almost like <code>nil</code>, except
 that double &lt;ESC&gt; beeps.  This, too, lets &lt;ESC&gt; to be used as a Meta.
 </p></dd>
-<dt> <code>viper-ESC-keyseq-timeout 200 on tty, 0 on windowing display</code></dt>
+<dt><code>viper-ESC-keyseq-timeout 200 on tty, 0 on windowing display</code></dt>
 <dd><p>Escape key sequences separated by this much delay (in milliseconds) are
 interpreted as command, ignoring the special meaning of &lt;ESC&gt; in
 VI.  The default is suitable for most terminals.  However, if your terminal
@@ -270,7 +270,7 @@ arrow keys are interpreted as separately typed characters (and thus the
 arrow keys won&rsquo;t work).  Making this value too large will slow you down, so
 exercise restraint.
 </p></dd>
-<dt> <code>viper-fast-keyseq-timeout 200</code></dt>
+<dt><code>viper-fast-keyseq-timeout 200</code></dt>
 <dd><p>Key sequences separated by this many milliseconds are treated as Vi-style
 keyboard macros.  If the key sequence is defined as such a macro, it will be
 executed.  Otherwise, it is processed as an ordinary sequence of typed keys.
@@ -278,7 +278,7 @@ executed.  Otherwise, it is processed as an ordinary sequence of typed keys.
 <p>Setting this variable too high may slow down your typing.  Setting it too
 low may make it hard to type macros quickly enough.
 </p></dd>
-<dt> <code>viper-translate-all-ESC-keysequences t on tty, nil on windowing display</code></dt>
+<dt><code>viper-translate-all-ESC-keysequences t on tty, nil on windowing display</code></dt>
 <dd><p>Normally, Viper lets Emacs translate only those ESC key sequences that are
 defined in the low-level key-translation-map or function-key-map, such as those
 emitted by the arrow and function keys. Other sequences, e.g., <kbd>\\e/</kbd>, are
@@ -292,21 +292,21 @@ If your dumb terminal is not so dumb and understands the meta key, then you
 probably will be better off setting this variable to nil. Try and see which
 way suits you best.
 </p></dd>
-<dt> <code>viper-ex-style-motion t</code></dt>
+<dt><code>viper-ex-style-motion t</code></dt>
 <dd><p>Set this to <code>nil</code>, if you want <kbd>l,h</kbd> to cross
 lines, etc.  See section <a href="viper_3.html#Movement-and-Markers">Movement and Markers</a>, for more info.
 </p></dd>
-<dt> <code>viper-ex-style-editing t</code></dt>
+<dt><code>viper-ex-style-editing t</code></dt>
 <dd><p>Set this to <code>nil</code>, if you want
 <kbd>C-h</kbd> and &lt;DEL&gt; to not stop
 at the beginning of a line in Insert state, &lt;X&gt; and &lt;x&gt; to delete
 characters across lines in Vi command state, etc.
 </p></dd>
-<dt> <code>viper-ESC-moves-cursor-back t</code></dt>
+<dt><code>viper-ESC-moves-cursor-back t</code></dt>
 <dd><p>It t, cursor moves back 1 character when switching from insert state to vi
 state.  If nil, the cursor stays where it was before the switch.
 </p></dd>
-<dt> <code>viper-always t</code></dt>
+<dt><code>viper-always t</code></dt>
 <dd><p><code>t</code> means: leave it to Viper to decide when a buffer must be brought
 up in Vi state,
 Insert state, or Emacs state.  This heuristics works well in virtually all
@@ -316,16 +316,16 @@ hooks using <code>viper-load-hook</code>).
 </p>
 <p>This option must be set in the file &lsquo;<tt>~/.viper</tt>&rsquo;.
 </p></dd>
-<dt> <code>viper-custom-file-name &quot;~/.viper&quot;</code></dt>
+<dt><code>viper-custom-file-name &quot;~/.viper&quot;</code></dt>
 <dd><p>File used for Viper-specific customization.
 Change this setting, if you want.  Must be set in &lsquo;<tt>.emacs</tt>&rsquo; (not &lsquo;<tt>.viper</tt>&rsquo;!)
 before Viper is loaded.  Note that you
 have to set it as a string inside double quotes.
 </p></dd>
-<dt> <code>viper-spell-function 'ispell-region</code></dt>
+<dt><code>viper-spell-function 'ispell-region</code></dt>
 <dd><p>Function used by the command <kbd>#c&lt;move&gt;</kbd> to spell.
 </p></dd>
-<dt> <code>viper-glob-function</code></dt>
+<dt><code>viper-glob-function</code></dt>
 <dd><p>The value of this variable is the function symbol used to expand wildcard
 symbols. This is platform-dependent. The default tries to set this variable
 to work with most shells, MS Windows, OS/2, etc. However, if it
@@ -339,15 +339,15 @@ commands, because file completion is a better mechanism.
 <a name="index-viper_002dglob_002dfunction"></a>
 </p>
 </dd>
-<dt> <code>ex-cycle-other-window t</code></dt>
+<dt><code>ex-cycle-other-window t</code></dt>
 <dd><p>If not <code>nil</code>, <kbd>:n</kbd> and <kbd>:b</kbd> will cycle through files in another
 window, if one exists.
 </p></dd>
-<dt> <code>ex-cycle-through-non-files nil</code></dt>
+<dt><code>ex-cycle-through-non-files nil</code></dt>
 <dd><p><kbd>:n</kbd> does not normally cycle through buffers.  Set this to get
 buffers also.
 </p></dd>
-<dt> <code>viper-want-emacs-keys-in-insert</code></dt>
+<dt><code>viper-want-emacs-keys-in-insert</code></dt>
 <dd><p>This is set to <code>nil</code> for user levels 1 and 2 and to <code>t</code> for user
 levels 3 and 4.  Users who specify level 5 are allowed to set this variable
 as they please (the default for this level is <code>t</code>).  If set to
@@ -355,7 +355,7 @@ as they please (the default for this level is <code>t</code>).  If set to
 really not recommended, as this precludes you from using language-specific
 features provided by the major modes.
 </p></dd>
-<dt> <code>viper-want-emacs-keys-in-vi</code></dt>
+<dt><code>viper-want-emacs-keys-in-vi</code></dt>
 <dd><p>This is set to <code>nil</code> for user
 level 1 and to <code>t</code> for user levels 2&ndash;4.
 At level 5, users are allowed to set this variable as they please (the
@@ -365,12 +365,12 @@ in Vi command state.  Setting this to <code>nil</code> is really a bad idea,
 unless you are a novice, as this precludes the use
 of language-specific features provided by the major modes.
 </p></dd>
-<dt> <code>viper-keep-point-on-repeat t</code></dt>
+<dt><code>viper-keep-point-on-repeat t</code></dt>
 <dd><p>If not <code>nil</code>, point is not moved when the user repeats the previous
 command by typing &lsquo;.&rsquo;  This is very useful for doing repeated changes with
 the <kbd>.</kbd> key.
 </p></dd>
-<dt> <code>viper-repeat-from-history-key 'f12</code></dt>
+<dt><code>viper-repeat-from-history-key 'f12</code></dt>
 <dd><p>Prefix key used to invoke the macros <kbd>f12 1</kbd> and <kbd>f12 2</kbd> that repeat
 the second-last and the third-last destructive command.
 Both these macros are bound (as Viper macros) to
@@ -380,19 +380,19 @@ previous commands to invoke.  Viper binds <kbd>f12 1</kbd> and <kbd>f12 2</kbd> 
 but the user can bind more in &lsquo;<tt>~/.viper</tt>&rsquo;.  See section <a href="#Vi-Macros">Vi Macros</a>, for how to do
 this.
 </p></dd>
-<dt> <code>viper-keep-point-on-undo nil</code></dt>
+<dt><code>viper-keep-point-on-undo nil</code></dt>
 <dd><p>If not <code>nil</code>, Viper tries to not move point when undoing commands.
 Instead, it will briefly move the cursor to the place where change has
 taken place.  However, if the undone piece of text is not seen in window,
 then point will be moved to the place where the change took place.
 Set it to <code>t</code> and see if you like it better.
 </p></dd>
-<dt> <code>viper-delete-backwards-in-replace nil</code></dt>
+<dt><code>viper-delete-backwards-in-replace nil</code></dt>
 <dd><p>If not <code>nil</code>, &lt;DEL&gt; key will delete characters while moving the cursor
 backwards.  If <code>nil</code>, the cursor will move backwards without deleting
 anything.
 </p></dd>
-<dt> <code>viper-replace-overlay-face 'viper-replace-overlay-face</code></dt>
+<dt><code>viper-replace-overlay-face 'viper-replace-overlay-face</code></dt>
 <dd><p>On a graphical display, Viper highlights replacement regions instead of
 putting a &lsquo;<samp>$</samp>&rsquo; at the end.  This variable controls the so called
 <em>face</em> used to highlight the region.
@@ -414,39 +414,39 @@ usually most effective:
 hit the <kbd>C-j</kbd> key.
 </p>
 </dd>
-<dt> <code>viper-replace-overlay-cursor-color  &quot;Red&quot;</code></dt>
+<dt><code>viper-replace-overlay-cursor-color  &quot;Red&quot;</code></dt>
 <dd><a name="index-viper_002dreplace_002doverlay_002dcursor_002dcolor"></a>
 <p>Cursor color when it is inside the replacement region.
 This has effect only on color displays and only when Emacs runs as an X
 application.
 </p></dd>
-<dt> <code>viper-insert-state-cursor-color nil</code></dt>
+<dt><code>viper-insert-state-cursor-color nil</code></dt>
 <dd><a name="index-viper_002dinsert_002dstate_002dcursor_002dcolor"></a>
 <p>If set to a valid color, this will be the cursor color when Viper is in
 insert state.
 </p></dd>
-<dt> <code>viper-replace-region-end-delimiter &quot;$&quot;</code></dt>
+<dt><code>viper-replace-region-end-delimiter &quot;$&quot;</code></dt>
 <dd><p>A string used to mark the end of replacement regions.  It is used only on
 TTYs or if <code>viper-use-replace-region-delimiters</code> is non-nil.
 </p></dd>
-<dt> <code>viper-replace-region-start-delimiter  &quot;&quot;</code></dt>
+<dt><code>viper-replace-region-start-delimiter  &quot;&quot;</code></dt>
 <dd><p>A string used to mark the beginning of replacement regions.  It is used
 only on TTYs or if <code>viper-use-replace-region-delimiters</code> is non-nil.
 </p></dd>
-<dt> <code>viper-use-replace-region-delimiters</code></dt>
+<dt><code>viper-use-replace-region-delimiters</code></dt>
 <dd><p>If non-nil, Viper will always use <code>viper-replace-region-end-delimiter</code> and
 <code>viper-replace-region-start-delimiter</code> to delimit replacement regions,
 even on color displays (where this is unnecessary).  By default, this
 variable is non-nil only on TTYs or monochrome displays.
 </p></dd>
-<dt> <code>viper-allow-multiline-replace-regions t</code></dt>
+<dt><code>viper-allow-multiline-replace-regions t</code></dt>
 <dd><p>If non-nil, multi-line text replacement regions, such as those produced by
 commands <kbd>c55w</kbd>, <kbd>3C</kbd>, etc., will stay around until the user exits
 the replacement mode.  In this variable is set to <code>nil</code>, Viper will
 emulate the standard Vi behavior, which supports only intra-line
 replacement regions (and multi-line replacement regions are deleted).
 </p></dd>
-<dt> <code>viper-toggle-key &quot;\C-z&quot;</code></dt>
+<dt><code>viper-toggle-key &quot;\C-z&quot;</code></dt>
 <dd><p>Specifies the key used to switch from Emacs to Vi and back.
 Must be set in &lsquo;<tt>.viper</tt>&rsquo;.  This variable can&rsquo;t be
 changed interactively after Viper is loaded.
@@ -455,39 +455,39 @@ changed interactively after Viper is loaded.
 will set Viper up so that the very next command will be executed as if it
 were typed in Vi state.
 </p></dd>
-<dt> <code>viper-ESC-key &quot;\e&quot;</code></dt>
+<dt><code>viper-ESC-key &quot;\e&quot;</code></dt>
 <dd><p>Specifies the key used to escape from Insert/Replace states to Vi.
 Must be set in &lsquo;<tt>.viper</tt>&rsquo;.  This variable cannot be
 changed interactively after Viper is loaded.
 </p></dd>
-<dt> <code>viper-buffer-search-char nil</code></dt>
+<dt><code>viper-buffer-search-char nil</code></dt>
 <dd><p>Key used for buffer search.  See section <a href="#Viper-Specials">Viper Specials</a>, for details.
 </p></dd>
-<dt> <code>viper-surrounding-word-function 'viper-surrounding-word</code></dt>
+<dt><code>viper-surrounding-word-function 'viper-surrounding-word</code></dt>
 <dd><p>The value of this variable is a function name that is used to determine
 what constitutes a word clicked upon by the mouse.  This is used by mouse
 search and insert.
 </p></dd>
-<dt> <code>viper-search-face 'viper-search-face</code></dt>
+<dt><code>viper-search-face 'viper-search-face</code></dt>
 <dd><p>Variable that controls how search patterns are highlighted when they are
 found.
 </p></dd>
-<dt> <code>viper-vi-state-hook nil</code></dt>
+<dt><code>viper-vi-state-hook nil</code></dt>
 <dd><p>List of parameterless functions to be run just after entering the Vi
 command state.
 </p></dd>
-<dt> <code>viper-insert-state-hook nil</code></dt>
+<dt><code>viper-insert-state-hook nil</code></dt>
 <dd><p>Same for Insert state.  This hook is also run after entering Replace state.
 </p></dd>
-<dt> <code>viper-replace-state-hook  nil</code></dt>
+<dt><code>viper-replace-state-hook  nil</code></dt>
 <dd><p>List of (parameterless) functions called just after entering Replace state
 (and after all <code>viper-insert-state-hook</code>).
 </p></dd>
-<dt> <code>viper-emacs-state-hook nil</code></dt>
+<dt><code>viper-emacs-state-hook nil</code></dt>
 <dd><p>List of (parameterless) functions called just after switching from Vi state
 to Emacs state.
 </p></dd>
-<dt> <code>viper-load-hook nil</code></dt>
+<dt><code>viper-load-hook nil</code></dt>
 <dd><p>List of (parameterless) functions called just after loading Viper.  This is
 the last chance to do customization before Viper is up and running.
 </p></dd>
@@ -930,8 +930,8 @@ features.  Some of these features are explained in detail elsewhere in this
 document.  Other features are explained here.
 </p>
 <dl compact="compact">
-<dt> <code>(viper-buffer-search-enable)</code></dt>
-<dt> <code>viper-buffer-search-char nil</code></dt>
+<dt><code>(viper-buffer-search-enable)</code></dt>
+<dt><code>viper-buffer-search-char nil</code></dt>
 <dd><p>Enable buffer search.  Explicit call to <code>viper-buffer-search-enable</code>
 sets <code>viper-buffer-search-char</code> to <kbd>g</kbd>.  Alternatively, the user can
 set <code>viper-buffer-search-char</code> in &lsquo;<tt>.viper</tt>&rsquo; to a key sequence
@@ -940,7 +940,7 @@ to be used for buffer search.  There is no need to call
 <a name="index-viper_002dbuffer_002dsearch_002denable"></a>
 <a name="index-viper_002dbuffer_002dsearch_002dchar-1"></a>
 </p></dd>
-<dt> <code>viper-toggle-search-style</code></dt>
+<dt><code>viper-toggle-search-style</code></dt>
 <dd><p>This function, bound to <kbd>C-c /</kbd>, lets one toggle case-sensitive and
 case-insensitive search, and also switch between plain vanilla search and
 search via regular expressions.  Without the prefix argument, the user is
@@ -966,7 +966,7 @@ this in &lsquo;<tt>~/.viper</tt>&rsquo;:
 <a name="index-viper_002dset_002dsearchstyle_002dtoggling_002dmacros"></a>
 
 </dd>
-<dt> <code>Vi-isms in Emacs state</code></dt>
+<dt><code>Vi-isms in Emacs state</code></dt>
 <dd><p>Some people find it useful to use the Vi-style search key, &lsquo;/&rsquo;, to invoke
 search in modes which Viper leaves in emacs-state.  These modes are:
 <code>dired-mode</code>, <code>mh-folder-mode</code>, <code>gnus-group-mode</code>,
@@ -994,8 +994,8 @@ prefix argument, or by placing
 See section <a href="#Vi-Macros">Vi Macros</a>, for more information on Vi macros.
 </p>
 </dd>
-<dt> <code>viper-heading-start</code></dt>
-<dt> <code>viper-heading-end</code></dt>
+<dt><code>viper-heading-start</code></dt>
+<dt><code>viper-heading-end</code></dt>
 <dd><a name="index-headings"></a>
 <a name="index-sections"></a>
 <a name="index-paragraphs"></a>
@@ -1003,11 +1003,11 @@ See section <a href="#Vi-Macros">Vi Macros</a>, for more information on Vi macro
 <p>Regular Expressions for <kbd>[[</kbd> and <kbd>]]</kbd>.  Note that Emacs defines
 Regexps for paragraphs and sentences.  See <a href="../emacs/Paragraphs.html#Paragraphs">(emacs)Paragraphs</a> section &lsquo;Paragraphs and Sentences&rsquo; in <cite>The GNU Emacs Manual</cite>, for details.
 </p></dd>
-<dt> <code>M-x viper-set-expert-level</code></dt>
+<dt><code>M-x viper-set-expert-level</code></dt>
 <dd><a name="index-viper_002dset_002dexpert_002dlevel"></a>
 <p>Change your user level interactively.
 </p></dd>
-<dt> <code>viper-smart-suffix-list  '(&quot;&quot; &quot;tex&quot; &quot;c&quot; &quot;cc&quot; &quot;el&quot; &quot;p&quot;)</code></dt>
+<dt><code>viper-smart-suffix-list  '(&quot;&quot; &quot;tex&quot; &quot;c&quot; &quot;cc&quot; &quot;el&quot; &quot;p&quot;)</code></dt>
 <dd><a name="index-viper_002dsmart_002dsuffix_002dlist"></a>
 <p>Viper supports Emacs-style file completion when it prompts the user for a
 file name.  However, in many cases, the same directory may contain files
@@ -1027,7 +1027,7 @@ the intended file name, hitting return will accept it.
 <p>To turn this feature off, set the above variable to <code>nil</code>.
 </p>
 </dd>
-<dt> <code>viper-insertion-ring-size  14</code></dt>
+<dt><code>viper-insertion-ring-size  14</code></dt>
 <dd><a name="index-viper_002dinsertion_002dring_002dsize"></a>
 <a name="index-Insertion-ring-1"></a>
 <p>Viper remembers what was previously inserted in Insert and Replace states.
@@ -1060,7 +1060,7 @@ this will interfere with the Minibuffer histories and, possibly, other
 major modes.
 </p>
 </dd>
-<dt> <code>viper-command-ring-size  14</code></dt>
+<dt><code>viper-command-ring-size  14</code></dt>
 <dd><a name="index-viper_002dcommand_002dring_002dsize"></a>
 <a name="index-Destructive-command-ring"></a>
 <a name="index-Destructive-command-history"></a>
@@ -1090,9 +1090,9 @@ this will interfere with the Minibuffer histories and, possibly, other
 major modes.
 </p>
 </dd>
-<dt> <code>viper-minibuffer-vi-face  'viper-minibuffer-vi-face</code></dt>
-<dt> <code>viper-minibuffer-insert-face  'viper-minibuffer-insert-face</code></dt>
-<dt> <code>viper-minibuffer-emacs-face  'viper-minibuffer-emacs-face</code></dt>
+<dt><code>viper-minibuffer-vi-face  'viper-minibuffer-vi-face</code></dt>
+<dt><code>viper-minibuffer-insert-face  'viper-minibuffer-insert-face</code></dt>
+<dt><code>viper-minibuffer-emacs-face  'viper-minibuffer-emacs-face</code></dt>
 <dd><p>These faces control the appearance of the minibuffer text in the
 corresponding Viper states.  You can change the appearance of these faces
 through Emacs&rsquo; customization widget, which is accessible through the
@@ -1117,12 +1117,12 @@ indication of the current Viper state in the minibuffer.  (This is important
 if the user accidentally switches to another Viper state by typing &lt;ESC&gt; or
 <kbd>C-z</kbd>).
 </p></dd>
-<dt> <code>M-x viper-go-away</code></dt>
+<dt><code>M-x viper-go-away</code></dt>
 <dd><a name="index-viper_002dgo_002daway-1"></a>
 <p>Make Viper disappear from the face of your running Emacs instance.  If your
 fingers start aching again, <kbd>M-x viper-mode</kbd> might save your day.
 </p></dd>
-<dt> <code>M-x toggle-viper-mode</code></dt>
+<dt><code>M-x toggle-viper-mode</code></dt>
 <dd><a name="index-toggle_002dviper_002dmode-1"></a>
 <p>Toggle Viperization of Emacs on and off.
 </p></dd>
@@ -1171,7 +1171,7 @@ is available).  Clicking the mouse when Emacs is invoked in an Xterm window
 <dd><a name="index-mouse"></a>
 <a name="index-mouse_002dsearch"></a>
 </dd>
-<dt> <code>viper-mouse-search-key  (meta shift 1)</code></dt>
+<dt><code>viper-mouse-search-key  (meta shift 1)</code></dt>
 <dd><a name="index-viper_002dmouse_002dinsert_002dkey"></a>
 <p>This variable controls the <em>mouse-search</em> feature of Viper.  The
 default value
@@ -1224,7 +1224,7 @@ occurred with all leading and trailing spaces and tabs removed.
 </p>
 <a name="index-mouse_002dinsert"></a>
 </dd>
-<dt> <code>viper-mouse-insert-key (meta shift 2)</code></dt>
+<dt><code>viper-mouse-insert-key (meta shift 2)</code></dt>
 <dd><a name="index-viper_002dmouse_002dinsert_002dkey-1"></a>
 <p>This variable controls the <em>mouse-insert</em> feature of Viper.
 The above default value states that
@@ -1251,7 +1251,7 @@ to <code>~/.viper</code>, after setting <code>viper-mouse-insert-key</code>:
 menubar.
 </p>
 </dd>
-<dt> <code>viper-multiclick-timeout</code></dt>
+<dt><code>viper-multiclick-timeout</code></dt>
 <dd><p>This variable controls the rate at which double-clicking must occur for the
 purpose of mouse search and mouse insert.  By default, this is set to
 <code>double-click-time</code> in Emacs and to

@@ -1,3 +1,5 @@
+use strict;
+
 $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">';
 $USE_MENU_DIRECTIONS = 0;
@@ -161,7 +163,7 @@ $no_paragraph_commands{'cindex'} = 0;
 
 #my @xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude');
 
-@xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude', 'clickstyle', 
+my @xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude', 'clickstyle', 
   'defcodeindex',
   'syncodeindex', 'paragraphindent', 'shorttitlepage', 'refill', 'noindent');
 
@@ -321,6 +323,7 @@ sub xml_heading($$$$$)
 #print STDERR "'$command' $line";
     if (defined($command) and $command =~ /heading/)
     {
+        my $text = '';
         if (defined($line))
         {
             $text = $line;
@@ -537,21 +540,21 @@ sub xml_misc_commands($$$$$)
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        chomp($arg);
-       $result_text = "<${macro}>".main::substitute_line($arg)."</${macro}>\n";
+       $result_text = "<${macro}>".main::substitute_line($arg, "\@$macro")."</${macro}>\n";
     }
     if (exists($xml_misc_elements_with_arg_map{$macro}))
     {
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        chomp($arg);
-       $result_text = "<$xml_misc_elements_with_arg_map{$macro}>".main::substitute_line($arg)."</$xml_misc_elements_with_arg_map{$macro}>\n";
+       $result_text = "<$xml_misc_elements_with_arg_map{$macro}>".main::substitute_line($arg, "\@$macro")."</$xml_misc_elements_with_arg_map{$macro}>\n";
     }
     if ($macro eq 'setfilename')
     {
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        $arg =~ s/\s*$//;
-       $arg = main::substitute_line($arg);
+       $arg = main::substitute_line($arg, "\@$macro");
        $arg =~ s/\.[^\.]*$//;
        $result_text = "<${macro}>${arg}.xml</${macro}>\n";
     }
@@ -578,17 +581,19 @@ sub xml_index_entry_command($$$$$)
    return xml_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted);
 }
 
-sub xml_index_entry_label($$$$$)
+sub xml_index_entry_label($$$$$$$$)
 {   
     my $identifier = shift;
     my $preformatted = shift;
-    my $entry = shift;
+    my $formatted_entry = shift;
     my $index_name = shift;
     my $index_command = shift;
     my $texi_entry = shift;
-    my $formatted_entry = shift;
+    my $formatted_entry_reference = shift;
+    my $entry = shift;
+    
 
-    return "<indexterm index=\"${index_name}\">${formatted_entry}</indexterm>";
+    return "<indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>";
 }
 
 sub xml_listoffloats($$$)
@@ -690,7 +695,28 @@ sub xml_format_list_item_texi($$$$)
     my $prepended = shift;
     my $command = shift;
 
-    return (undef, 0);
+    my $result_line = undef;
+
+    if (defined($command) and $command ne '' and !exists $special_list_commands{$format}->{$command} and $format ne 'itemize')
+    {
+        #@*table
+        $line =~ s/^\s*//;
+        $line =~ s/\s*$//;
+        if (exists ($style_map{$command}))
+        {
+           $result_line = "\@$command\{$line\}\n";
+        }
+        elsif (exists ($things_map{$command}))
+        {           
+           $result_line = "\@$command\{\} $line\n";
+        }           
+        else        
+        {           
+           $result_line = "\@$command $line\n";
+        }
+    }
+
+    return ($result_line, 0);
 }
 
 sub xml_list_item($$$$$$$$$)
@@ -779,7 +805,7 @@ sub xml_table_list($$$$$$$$$)
     my $prototype_lengths = shift;
     my $number = shift;
     
-    $result = "<$format_command>";
+    my $result = "<$format_command>";
     if ($format_command eq 'itemize')
     {
         my $itemfunction;
@@ -1009,29 +1035,31 @@ sub xml_internal_ref($$$$$)
     return xml_any_ref ($type, $formatted_args);
 }
 
-sub xml_table_item($$$$$$$$$)
+sub xml_table_item($$$$$$$)
 {
     my $text = shift;
     my $index_label = shift;
     my $format = shift;
     my $command = shift;
-    my $formatted_command = shift;
+#    my $formatted_command = shift;
     my $style_stack = shift;
-    my $text_formatted = shift;
-    my $text_formatted_leading_spaces = shift;
-    my $text_formatted_trailing_spaces = shift;
+#    my $text_formatted = shift;
+#    my $text_formatted_leading_spaces = shift;
+#    my $text_formatted_trailing_spaces = shift;
     my $item_cmd = shift;
+    my $formatted_index_entry = shift;
 
-    $formatted_command = '' if (!defined($formatted_command));
 
-    if (defined($text_formatted))
-    {
-        $text_item = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
-    }
-    else
-    {
-        $text_item = $text;
-    }
+#    $formatted_command = '' if (!defined($formatted_command));
+#
+#    if (defined($text_formatted))
+#    {
+#        $text_item = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+#    }
+#    else
+#    {
+#        $text_item = $text;
+#    }
 
     my $result = '';
     if ($item_cmd eq 'item')
@@ -1042,14 +1070,17 @@ sub xml_table_item($$$$$$$$$)
     }
     $result .= '<tableterm>';
     #print STDERR "$text | $format | $command | $formatted_command | $text_formatted | $item_cmd \n";
+    my $indexterm = '';
+#print STDERR "FFFFFFFFFFFFFFFFf   `$index_label' `$text'\n";
     if ($format =~ /^(v|f)/)
     {
-        my $index_prefix = $1;
-        $indexterm = $text;
-        $indexterm =~ s/^\s*//;
-        $result .= "<indexterm index=\"$main::index_prefix_to_name{$index_prefix}\">$indexterm</indexterm>";
+#        my $index_prefix = $1;
+#        $indexterm = $text;
+#        $indexterm =~ s/^\s*//;
+#        $result .= "<indexterm index=\"$main::index_prefix_to_name{$index_prefix}\">$formatted_index_entry</indexterm>";
+        $result .= "$index_label";
     }
-    $result .= $formatted_command . $text_item ."</tableterm>\n";
+    $result .= $text ."</tableterm>\n";
     return $result;
 }
 
@@ -1097,7 +1128,6 @@ sub xml_caption_shortcaption_command($$$)
    {
       return "<$command>$text</$command>";
    }
-   $result .= "</$command>";
    return '';
 }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,103 +88,103 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.125 system</h3>
 <a name="index-system"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>system (</code> string_expression <code>)</code>
 <br><code>system (</code> string_expression<code>,</code> expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>depends on the desired function, may be none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>interface to internal data and the operating system. The
 string_expression determines the command to execute. Some commands
 require an additional argument (second form) where the type of the
 argument depends on the command. See below for a list of all possible
 commands.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>Not all functions work on every platform.
 </p></dd>
-<dt> <code><strong>Functions:</strong></code></dt>
+<dt><code><strong>Functions:</strong></code></dt>
 <dd><dl compact="compact">
-<dt> <code>system(&quot;sh&quot;</code>, string_expression <code>)</code></dt>
+<dt><code>system(&quot;sh&quot;</code>, string_expression <code>)</code></dt>
 <dd><a name="index-sh"></a>
 <a name="index-system_002c-sh"></a>
 <p>shell escape, returns the return code of the shell as int. The string is
 sent literally to the shell.
 </p></dd>
-<dt> <code>system(&quot;pid&quot;)</code></dt>
+<dt><code>system(&quot;pid&quot;)</code></dt>
 <dd><a name="index-pid"></a>
 <a name="index-system_002c-pid"></a>
 <p>returns the process number as int (for creating unique names).
 </p></dd>
-<dt> <code>system(&quot;uname&quot;)</code></dt>
+<dt><code>system(&quot;uname&quot;)</code></dt>
 <dd><a name="index-uname"></a>
 <a name="index-system_002c-uname"></a>
 <a name="index-hardware-platform"></a>
 <p>returns a string identifying the architecture for which <small>SINGULAR</small>
 was compiled.
 </p></dd>
-<dt> <code>system(&quot;getenv&quot;,</code> string_expression<code>)</code></dt>
+<dt><code>system(&quot;getenv&quot;,</code> string_expression<code>)</code></dt>
 <dd><a name="index-getenv"></a>
 <a name="index-system_002c-getenv"></a>
 <p>returns the value of the shell environment variable given as the second
 argument. The return type is string.
 </p></dd>
-<dt> <code>system(&quot;setenv&quot;,</code>string_expression, string_expression<code>)</code></dt>
+<dt><code>system(&quot;setenv&quot;,</code>string_expression, string_expression<code>)</code></dt>
 <dd><a name="index-setenv"></a>
 <a name="index-system_002c-setenv"></a>
 <p>sets the shell environment variable given as the second argument to the
 value given as the third argument. Returns the third argument. Might not
 be available on all platforms.
 </p></dd>
-<dt> <code>system(&quot;tty&quot;)</code></dt>
+<dt><code>system(&quot;tty&quot;)</code></dt>
 <dd><a name="index-tty"></a>
 <a name="index-system_002c-tty"></a>
 <p>resets the terminal.
 </p></dd>
-<dt> <code>system(&quot;version&quot;)</code></dt>
+<dt><code>system(&quot;version&quot;)</code></dt>
 <dd><a name="index-version"></a>
 <a name="index-system_002c-version"></a>
 <p>returns the version number of  <small>SINGULAR</small> as int.
 </p></dd>
-<dt> <code>system(&quot;contributors&quot;)</code></dt>
+<dt><code>system(&quot;contributors&quot;)</code></dt>
 <dd><a name="index-contributors"></a>
 <a name="index-system_002c-contributors"></a>
 <p>returns names of people who contributed to the <small>SINGULAR</small> kernel as string.
 </p></dd>
-<dt> <code>system(&quot;gen&quot;)</code></dt>
+<dt><code>system(&quot;gen&quot;)</code></dt>
 <dd><a name="index-system_002c-gen"></a>
 <p>returns the generating element of the multiplicative
 group of (Z/p)\{0} (as int) where p is the characteristic of the
 basering.
 </p></dd>
-<dt> <code>system(&quot;nblocks&quot;)</code></dt>
-<dt> <code>system(&quot;nblocks&quot;,</code> ring_name <code>)</code></dt>
+<dt><code>system(&quot;nblocks&quot;)</code></dt>
+<dt><code>system(&quot;nblocks&quot;,</code> ring_name <code>)</code></dt>
 <dd><a name="index-nblocks"></a>
 <a name="index-system_002c-nblocks"></a>
 <p>returns the number of blocks of the given ring, or the number of parameters
 of the current basering, if no second argument is given. The return type
 is int.
 </p></dd>
-<dt> <code>system(&quot;Singular&quot;)</code></dt>
+<dt><code>system(&quot;Singular&quot;)</code></dt>
 <dd><a name="index-Singular"></a>
 <a name="index-system_002c-Singular"></a>
 <p>returns the absolute (path) name of the running <small>SINGULAR</small> as string.
 </p></dd>
-<dt> <code>system(&quot;</code>&ndash;<code>&quot;)</code></dt>
+<dt><code>system(&quot;</code>&ndash;<code>&quot;)</code></dt>
 <dd><a name="index-system_002c-_002d_002d"></a>
 <a name="index-command_002dline-options_002c-print-all-values-of"></a>
 <p>prints the values of all options.
 </p></dd>
-<dt> <code>system(&quot;</code>&ndash;long_option_name<code>&quot;)</code></dt>
+<dt><code>system(&quot;</code>&ndash;long_option_name<code>&quot;)</code></dt>
 <dd><a name="index-command_002dline-option_002c-value-of"></a>
 <a name="index-system_002c-_002d_002dlong_005foption_005fname"></a>
 <p>returns the value of the (command-line) option long_option_name. The
 type of the returned value is either string or int.
 See <a href="sing_19.htm#Command-line-options">Command line options</a>, for more info.
 </p></dd>
-<dt> <code>system(&quot;</code>&ndash;long_option_name<code>&quot;,</code> expression<code>)</code></dt>
+<dt><code>system(&quot;</code>&ndash;long_option_name<code>&quot;,</code> expression<code>)</code></dt>
 <dd><a name="index-command_002dline-option_002c-setting-value-of"></a>
 <a name="index-system_002c-_002d_002dlong_005foption_005fname_003dvalue"></a>
 <a name="index-random-number-generator_002c-seed"></a>
@@ -200,14 +200,14 @@ this can be used for setting the seed of the random number generator,
 the used help browser, the minimal display time, or the timer
 resolution.
 </p></dd>
-<dt> <code>system(&quot;browsers&quot;);</code></dt>
+<dt><code>system(&quot;browsers&quot;);</code></dt>
 <dd><a name="index-system_002c-browsers"></a>
 <p>returns a string about available help browsers.
 See <a href="sing_16.htm#The-online-help-system">The online help system</a>.
 </p></dd>
 </dl>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// a listing of the current directory:
 system(&quot;sh&quot;,&quot;ls&quot;);
 // execute a shell, return to SINGULAR with exit:

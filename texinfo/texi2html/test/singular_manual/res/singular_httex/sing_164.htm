@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -89,19 +89,19 @@ ul.toc {list-style: none}
 <a name="index-coef"></a>
 
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>coef (</code> poly_expression<code>,</code> product_of_ringvars <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>matrix
 </p></dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>coef (</code> vector_expression<code>,</code> product_of_ringvars<code>,</code> matrix_name<code>,</code> matrix_name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>determines the monomials in f divisible by one of the ring variables of m
 (where f is the first argument and m the second argument) and the coefficients
 of these monomials as polynomials in the remaining variables.
@@ -117,13 +117,13 @@ monomials, the first matrix (i.e., the 3rd argument) the corresponding
 coefficients of the monomials in the vector.
 </p>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>coef considers only monomials which really occur in f (i.e., which are not 0),
 while coeffs (see <a href="sing_165.htm#coeffs">coeffs</a>) returns the coefficient 0 at the
 appropriate place if a monomial is not present.
 </p>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
   poly f=x5+5x4y+10x2y3+y5;
   matrix m=coef(f,y);

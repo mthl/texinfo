@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>sortandmap(id,s1,s2[,n1,p1,n2,p2...,o1,m1,o2,m2...]);<br>
 id=poly/ideal/vector/module,<br>
 s1,s2 = strings (names for new ring and mapped id),<br>
@@ -102,7 +102,7 @@ m1,m2,...= integers<br>
 <br>the last pi (containing the remaining vars) may be omitted
 </p>
 </dd>
-<dt> <strong>Create:</strong></dt>
+<dt><strong>Create:</strong></dt>
 <dd><p>a new ring and map id into it, the new ring has same char as basering
 but with new ordering and vars sorted in the following manner:
   </p><table><tr><td>&nbsp;</td><td><pre class="format">  - each block of vars occurring in pi is sorted w.r.t. its complexity in id,
@@ -118,11 +118,11 @@ but with new ordering and vars sorted in the following manner:
 <br>&quot;lp&quot;,&quot;dp&quot;,&quot;Dp&quot;,&quot;ls&quot;,&quot;ds&quot;,&quot;Ds&quot;.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>nothing
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>We define a variable x to be more complex than y (with respect to id)
 if val(x) &gt; val(y) lexicographically, where val(x) denotes the
 valuation vector of x:<br>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,7 +88,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>solve.lib</code> (see <a href="sing_831.htm#solve_005flib">solve_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>laguerre_solve(f [, m, l, n, s] ); f = polynomial,<br>
 m, l, n, s = integers (control parameters of the method)
 </p><table><tr><td>&nbsp;</td><td><pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
@@ -107,13 +107,13 @@ m, l, n, s = integers (control parameters of the method)
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>f is a univariate polynomial;<br>
 basering has characteristic 0 and is either complex or without
 parameters.
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list of (complex) roots of the polynomial f, depending on n. The
 result is of type
 </p><table><tr><td>&nbsp;</td><td><pre class="format"> string: if the basering is not complex,
@@ -121,7 +121,7 @@ result is of type
 </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>If printlevel &gt;0: displays comments ( default = 0 ).
 <br>If s != 0 and if the procedure stops with ERROR, try a higher
 internal precision m.

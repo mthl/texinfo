@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
 a documentation system that can produce both online information and a
@@ -429,7 +429,7 @@ entities:
 <dl compact="compact">
 <dd><a name="index-deffn"></a>
 </dd>
-<dt> <code>@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deffn</code> command is the general definition command for
 functions, interactive commands, and similar entities that may take
 arguments.  You must choose a term to describe the category of entity
@@ -466,7 +466,7 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 
 <a name="index-defun"></a>
 </dd>
-<dt> <code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to &lsquo;<samp>@deffn Function
 &hellip;</samp>&rsquo;.
@@ -496,14 +496,14 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </p>
 <a name="index-defmac"></a>
 </dd>
-<dt> <code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
 <code>@defmac</code> is equivalent to &lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo; and
 works like <code>@defun</code>.
 </p>
 <a name="index-defspec"></a>
 </dd>
-<dt> <code>@defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section &lsquo;Special Forms&rsquo; in <cite>GNU Emacs Lisp Reference Manual</cite>.)
@@ -539,7 +539,7 @@ entities:
 <dl compact="compact">
 <dd><a name="index-defvr"></a>
 </dd>
-<dt> <code>@defvr <var>category</var> <var>name</var></code></dt>
+<dt><code>@defvr <var>category</var> <var>name</var></code></dt>
 <dd><p>The <code>@defvr</code> command is a general definition command for
 something like a variable&mdash;an entity that records a value.  You must
 choose a term to describe the category of entity being defined; for
@@ -574,7 +574,7 @@ own.
 </p>
 <a name="index-defvar"></a>
 </dd>
-<dt> <code>@defvar <var>name</var></code></dt>
+<dt><code>@defvar <var>name</var></code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
 <code>@defvar</code> is equivalent to &lsquo;<samp>@defvr Variable
 &hellip;</samp>&rsquo;.
@@ -598,7 +598,7 @@ own.
 </p>
 <a name="index-defopt"></a>
 </dd>
-<dt> <code>@defopt <var>name</var></code></dt>
+<dt><code>@defopt <var>name</var></code></dt>
 <dd><a name="index-User-options_002c-marking"></a>
 <p>The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
@@ -636,7 +636,7 @@ functions, such as C and C++.
 <dl compact="compact">
 <dd><a name="index-deftypefn"></a>
 </dd>
-<dt> <code>@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deftypefn</code> command is the general definition command for
 functions and similar entities that may take arguments and that are
 typed.  The <code>@deftypefn</code> command is written at the beginning of
@@ -707,7 +707,7 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 <var>name</var>.
 </p>
 </dd>
-<dt> <code>@deftypefun <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@deftypefun <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><a name="index-deftypefun"></a>
 <p>The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
@@ -770,7 +770,7 @@ definition command <code>@deftypevr</code> corresponds to
 <dl compact="compact">
 <dd><a name="index-deftypevr"></a>
 </dd>
-<dt> <code>@deftypevr <var>category</var> <var>data-type</var> <var>name</var></code></dt>
+<dt><code>@deftypevr <var>category</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevr</code> command is the general definition command for
 something like a variable in a typed language&mdash;an entity that records
 a value.  You must choose a term to describe the category of the
@@ -807,7 +807,7 @@ entity.
 </p>
 <a name="index-deftypevar"></a>
 </dd>
-<dt> <code>@deftypevar <var>data-type</var> <var>name</var></code></dt>
+<dt><code>@deftypevar <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
 to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.
@@ -872,7 +872,7 @@ around it.  Otherwise, it is printed in the usual text font.
 <dl compact="compact">
 <dd><a name="index-defcv"></a>
 </dd>
-<dt> <code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
+<dt><code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defcv</code> command is the general definition command for
 variables associated with classes in object-oriented programming.  The
 <code>@defcv</code> command is followed by three arguments: the category of
@@ -897,7 +897,7 @@ name.  Thus,
 </p>
 <a name="index-defivar"></a>
 </dd>
-<dt> <code>@defivar <var>class</var> <var>name</var></code></dt>
+<dt><code>@defivar <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
 equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
@@ -912,7 +912,7 @@ equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
 </p>
 <a name="index-deftypeivar"></a>
 </dd>
-<dt> <code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
+<dt><code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypeivar</code> command is the definition command for typed
 instance variables in object-oriented programming.  It is similar to
 <code>@defivar</code> with the addition of the <var>data-type</var> parameter to
@@ -921,7 +921,7 @@ entry in the index of variables.
 </p>
 <a name="index-defop"></a>
 </dd>
-<dt> <code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defop</code> command is the general definition command for
 entities that may resemble methods in object-oriented programming.
 These entities take arguments, as functions do, but are associated with
@@ -967,7 +967,7 @@ operation, and its arguments, if any.
 </p>
 <a name="index-deftypeop"></a>
 </dd>
-<dt> <code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deftypeop</code> command is the definition command for typed
 operations in object-oriented programming.  It is similar to
 <code>@defop</code> with the addition of the <var>data-type</var> parameter to
@@ -975,7 +975,7 @@ specify the return type of the method.  <code>@deftypeop</code> creates an
 entry in the index of functions.
 </p>
 </dd>
-<dt> <code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><a name="index-defmethod"></a>
 <p>The <code>@defmethod</code> command is the definition command for methods
 in object-oriented programming.  A method is a kind of function that
@@ -1008,7 +1008,7 @@ the class <code>bar-class</code>.  The method takes an argument.
 </p>
 
 </dd>
-<dt> <code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt><code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><a name="index-defmethod-1"></a>
 <p>The <code>@deftypemethod</code> command is the definition command for methods
 in object-oriented typed languages, such as C++ and Java.  It is similar
@@ -1045,7 +1045,7 @@ to the <code>@defmethod</code> command with the addition of the
 <dl compact="compact">
 <dd><a name="index-deftp"></a>
 </dd>
-<dt> <code>@deftp <var>category</var> <var>name</var> <var>attributes</var>&hellip;</code></dt>
+<dt><code>@deftp <var>category</var> <var>name</var> <var>attributes</var>&hellip;</code></dt>
 <dd><p>The <code>@deftp</code> command is the generic definition command for data
 types.  The command is written at the beginning of a line and is
 followed on the same line by the category, by the name of the type

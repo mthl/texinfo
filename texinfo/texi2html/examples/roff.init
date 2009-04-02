@@ -729,18 +729,20 @@ sub t2h_roff_table_item($$$$$)
     my $index_label = shift;
     my $format = shift;
     my $command = shift;
-    my $formatted_command = shift;
-    my $style_stack = shift; 
-    my $text_formatted = shift;
-    my $text_formatted_leading_spaces = shift;
-    my $text_formatted_trailing_spaces = shift;
+#    my $formatted_command = shift;
+    my $style_stack = shift;
+#    my $text_formatted = shift;
+#    my $text_formatted_leading_spaces = shift;
+#    my $text_formatted_trailing_spaces = shift;
+    my $item_cmd = shift;
 
-    if (defined($text_formatted))
-    {   
-        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
-    }
-    $formatted_command = '' if (!defined($formatted_command) or 
-          exists($special_list_commands{$format}->{$command}));
+
+#    if (defined($text_formatted))
+#    {   
+#        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+#    }
+#    $formatted_command = '' if (!defined($formatted_command) or 
+#          exists($special_list_commands{$format}->{$command}));
     $text = '.ip ' . $formatted_command . protect_spaces($text) . "\n";
     $text .= $index_label  if (defined($index_label));
     return $text;
@@ -832,8 +834,8 @@ sub t2h_roff_paragraph($$$$$$$$$$)
          $$paragraph_number++;
          $paragraph_command_formatted = undef if ($$paragraph_number > 1);
     }
-    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
-          exists($special_list_commands{$format}->{$paragraph_command}));
+#    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
+#          exists($special_list_commands{$format}->{$paragraph_command}));
     #return $text if (defined($format) and $format eq 'multitable');
     return $text if (defined($format) and (($format eq 'multitable') or ($format eq 'quotation') or ($format eq 'smallquotation')));
     my $open = ".pp\n";
@@ -866,7 +868,8 @@ sub t2h_roff_paragraph($$$$$$$$$$)
          $open .= "$number.";
     }
     chomp ($text);
-    return $open. $paragraph_command_formatted . $text . "\n" . $close;
+    #return $open. $paragraph_command_formatted . $text . "\n" . $close;
+    return $open. $text . "\n" . $close;
 }
 
 # a preformatted region

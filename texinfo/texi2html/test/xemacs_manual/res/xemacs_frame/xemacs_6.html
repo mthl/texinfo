@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -156,13 +156,13 @@ again later, but you will get a fresh Emacs; there is no way to resume
 the same editing session after it has been killed.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-z</kbd></dt>
+<dt><kbd>C-z</kbd></dt>
 <dd><p>Suspend Emacs or iconify a frame
 (<code>suspend-emacs-or-iconify-frame</code>).  If used under the X window
 system, shrink the X window containing the Emacs frame to an icon (see
 below).
 </p></dd>
-<dt> <kbd>C-x C-c</kbd></dt>
+<dt><kbd>C-x C-c</kbd></dt>
 <dd><p>Kill Emacs (<code>save-buffers-kill-emacs</code>).
 </p></dd>
 </dl>
@@ -330,44 +330,44 @@ second table) must be at the front of the list if they are used.
 <p>  Here are the arguments allowed:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp><var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp><var>file</var></samp>&rsquo;</dt>
 <dd><p>Visit <var>file</var> using <code>find-file</code>.  See section <a href="xemacs_17.html#Visiting">Visiting Files</a>.
 </p>
 </dd>
-<dt> &lsquo;<samp>+<var>linenum</var> <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>+<var>linenum</var> <var>file</var></samp>&rsquo;</dt>
 <dd><p>Visit <var>file</var> using <code>find-file</code>, then go to line number
 <var>linenum</var> in it.
 </p>
 </dd>
-<dt> &lsquo;<samp>-load <var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-l <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-load <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-l <var>file</var></samp>&rsquo;</dt>
 <dd><p>Load a file <var>file</var> of Lisp code with the function <code>load</code>.
 See section <a href="xemacs_25.html#Lisp-Libraries">Libraries of Lisp Code for Emacs</a>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-funcall <var>function</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-f <var>function</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-funcall <var>function</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f <var>function</var></samp>&rsquo;</dt>
 <dd><p>Call Lisp function <var>function</var> with no arguments.
 </p>
 </dd>
-<dt> &lsquo;<samp>-eval <var>function</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-eval <var>function</var></samp>&rsquo;</dt>
 <dd><p>Interpret the next argument as a Lisp expression, and evaluate it.
 You must be very careful of the shell quoting here.
 </p>
 </dd>
-<dt> &lsquo;<samp>-insert <var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-i <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-insert <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-i <var>file</var></samp>&rsquo;</dt>
 <dd><p>Insert the contents of <var>file</var> into the current buffer.  This is like
 what <kbd>M-x insert-buffer</kbd> does; See section <a href="xemacs_17.html#Misc-File-Ops">Miscellaneous File Operations</a>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-kill</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kill</samp>&rsquo;</dt>
 <dd><p>Exit from Emacs without asking for confirmation.  Always the last
 argument processed, no matter where it appears in the command line.
 </p>
 </dd>
-<dt> &lsquo;<samp>-version</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-V</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-version</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-V</samp>&rsquo;</dt>
 <dd><p>Prints version information.  This implies &lsquo;<samp>-batch</samp>&rsquo;.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">% xemacs -version
@@ -375,7 +375,7 @@ XEmacs 19.13 of Mon Aug 21 1995 on willow (usg-unix-v) [formerly Lucid Emacs]
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>-help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-help</samp>&rsquo;</dt>
 <dd><p>Prints a summary of command-line options and then exits.
 </p></dd>
 </dl>
@@ -404,27 +404,27 @@ command line.  If more than one of them appears, they must appear in the
 order in which they appear in this table.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--show-dump-id</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-sd</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-dump-id</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-sd</samp>&rsquo;</dt>
 <dd><p>Print the ID for the new portable dumper&rsquo;s dump file on the terminal and
 exit.  (Prints an error message and exits if XEmacs was not configured
 &lsquo;<samp>--pdump</samp>&rsquo;.)
 </p>
 </dd>
-<dt> &lsquo;<samp>--no-dump-file</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-nd</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-dump-file</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-nd</samp>&rsquo;</dt>
 <dd><p>Don&rsquo;t load the dump file.  Roughly equivalent to old temacs.  (Ignored if
 XEmacs was not configured &lsquo;<samp>--pdump</samp>&rsquo;.)
 </p>
 </dd>
-<dt> &lsquo;<samp>--terminal <var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-t <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--terminal <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-t <var>file</var></samp>&rsquo;</dt>
 <dd><p>Use <var>file</var> instead of the terminal for input and output.  This
 implies the &lsquo;<samp>-nw</samp>&rsquo; option, documented below.
 </p>
 <a name="index-batch-mode"></a>
 </dd>
-<dt> &lsquo;<samp>-batch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-batch</samp>&rsquo;</dt>
 <dd><p>Run Emacs in <em>batch mode</em>, which means that the text being edited is
 not displayed and the standard Unix interrupt characters such as
 <kbd>C-z</kbd> and <kbd>C-c</kbd> continue to have their normal effect.  Emacs in
@@ -442,62 +442,62 @@ processed.  In addition, auto-saving is not done except in buffers for
 which it has been explicitly requested.
 </p>
 </dd>
-<dt> &lsquo;<samp>--no-windows</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-nw</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-windows</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-nw</samp>&rsquo;</dt>
 <dd><p>Start up XEmacs in TTY mode (using the TTY XEmacs was started from),
 rather than trying to connect to an X display.  Note that this happens
 automatically if the &lsquo;<samp>DISPLAY</samp>&rsquo; environment variable is not set.
 </p>
 </dd>
-<dt> &lsquo;<samp>-debug-init</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-debug-init</samp>&rsquo;</dt>
 <dd><p>Enter the debugger if an error in the init file occurs.
 </p>
 </dd>
-<dt> &lsquo;<samp>-debug-paths</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-debug-paths</samp>&rsquo;</dt>
 <dd><p>Displays information on how XEmacs constructs the various paths into its
 hierarchy on startup.  (See also see section <a href="#Startup-Paths">How XEmacs finds Directories and Files</a>.)
 </p>
 </dd>
-<dt> &lsquo;<samp>-unmapped</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-unmapped</samp>&rsquo;</dt>
 <dd><p>Do not map the initial frame.  This is useful if you want to start up
 XEmacs as a server (e.g. for gnuserv screens or external client widgets).
 </p>
 </dd>
-<dt> &lsquo;<samp>-no-init-file</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-q</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-no-init-file</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-q</samp>&rsquo;</dt>
 <dd><p>Do not load your Emacs init file.  See section <a href="xemacs_30.html#Init-File">The Init File</a>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-no-site-file</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-no-site-file</samp>&rsquo;</dt>
 <dd><p>Do not load the site-specific init file &lsquo;<tt>lisp/site-start.el</tt>&rsquo;.
 </p>
 </dd>
-<dt> &lsquo;<samp>-no-autoloads</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-no-autoloads</samp>&rsquo;</dt>
 <dd><p>Do not load global symbol files (&lsquo;<tt>auto-autoloads</tt>&rsquo;) at startup.
 This implies &lsquo;<samp>-vanilla</samp>&rsquo;. 
 </p>
 </dd>
-<dt> &lsquo;<samp>-no-early-packages</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-no-early-packages</samp>&rsquo;</dt>
 <dd><p>Do not process early packages.  (For more information on startup issues
 concerning the package system, See section <a href="#Startup-Paths">How XEmacs finds Directories and Files</a>.)
 </p>
 </dd>
-<dt> &lsquo;<samp>-vanilla</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-vanilla</samp>&rsquo;</dt>
 <dd><p>This is equivalent to &lsquo;<samp>-q -no-site-file -no-early-packages</samp>&rsquo;.
 </p>
 </dd>
-<dt> &lsquo;<samp>-user-init-file <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-user-init-file <var>file</var></samp>&rsquo;</dt>
 <dd><p>Load <var>file</var> as your Emacs init file instead of
 &lsquo;<tt>~/.xemacs/init.el</tt>&rsquo;/&lsquo;<tt>~/.emacs</tt>&rsquo;.
 </p>
 </dd>
-<dt> &lsquo;<samp>-user-init-directory <var>directory</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-user-init-directory <var>directory</var></samp>&rsquo;</dt>
 <dd><p>Use <var>directory</var> as the location of your early package hierarchies
 and the various user-specific initialization files.
 </p>
 </dd>
-<dt> &lsquo;<samp>-user <var>user</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-u <var>user</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-user <var>user</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-u <var>user</var></samp>&rsquo;</dt>
 <dd><p>Equivalent to &lsquo;<samp>-user-init-file ~<var>user</var>/.xemacs/init.el
 -user-init-directory ~<var>user</var>/.xemacs</samp>&rsquo;, or &lsquo;<samp>-user-init-file
 ~<var>user</var>/.emacs -user-init-directory ~<var>user</var>/.xemacs</samp>&rsquo;, whichever
@@ -562,31 +562,31 @@ with.
 available to control color, border, and window title and icon name:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-title <var>title</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-wn <var>title</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-T <var>title</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-title <var>title</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-wn <var>title</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-T <var>title</var></samp>&rsquo;</dt>
 <dd><p>Use <var>title</var> as the window title. This sets the
 <code>frame-title-format</code> variable, which controls the title of the X
 window corresponding to the selected frame.  This is the same format as
 <code>mode-line-format</code>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-iconname <var>title</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-in <var>title</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-iconname <var>title</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-in <var>title</var></samp>&rsquo;</dt>
 <dd><p>Use <var>title</var> as the icon name. This sets the
 <code>frame-icon-title-format</code> variable, which controls the title of
 the icon corresponding to the selected frame.
 </p>
 </dd>
-<dt> &lsquo;<samp>-mc <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-mc <var>color</var></samp>&rsquo;</dt>
 <dd><p>Use <var>color</var> as the mouse color.
 </p>
 </dd>
-<dt> &lsquo;<samp>-cr <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-cr <var>color</var></samp>&rsquo;</dt>
 <dd><p>Use <var>color</var> as the text-cursor foreground color.
 </p>
 </dd>
-<dt> &lsquo;<samp>-private</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-private</samp>&rsquo;</dt>
 <dd><p>Install a private colormap for XEmacs.
 </p></dd>
 </dl>
@@ -595,58 +595,58 @@ the icon corresponding to the selected frame.
 command line arguments. 
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-background <var>color</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-bg <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-background <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-bg <var>color</var></samp>&rsquo;</dt>
 <dd><p>Use <var>color</var> as the background color.
 </p>
 </dd>
-<dt> &lsquo;<samp>-bordercolor <var>color</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-bd <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-bordercolor <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-bd <var>color</var></samp>&rsquo;</dt>
 <dd><p>Use <var>color</var> as the border color.
 </p>
 </dd>
-<dt> &lsquo;<samp>-borderwidth <var>width</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-bw <var>width</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-borderwidth <var>width</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-bw <var>width</var></samp>&rsquo;</dt>
 <dd><p>Use <var>width</var> as the border width.
 </p>
 </dd>
-<dt> &lsquo;<samp>-display <var>display</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-d <var>display</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-display <var>display</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-d <var>display</var></samp>&rsquo;</dt>
 <dd><p>When running under the X window system, create the window containing the
 Emacs frame on the display named <var>display</var>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-foreground <var>color</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-fg <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-foreground <var>color</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-fg <var>color</var></samp>&rsquo;</dt>
 <dd><p>Use <var>color</var> as the foreground color.
 </p>
 </dd>
-<dt> &lsquo;<samp>-font <var>name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-fn <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-font <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-fn <var>name</var></samp>&rsquo;</dt>
 <dd><p>Use <var>name</var> as the default font.
 </p>
 </dd>
-<dt> &lsquo;<samp>-geometry <var>spec</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-geom <var>spec</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-g <var>spec</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-geometry <var>spec</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-geom <var>spec</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-g <var>spec</var></samp>&rsquo;</dt>
 <dd><p>Use the geometry (window size and/or position) specified by <var>spec</var>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-iconic</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-iconic</samp>&rsquo;</dt>
 <dd><p>Start up iconified.
 </p>
 </dd>
-<dt> &lsquo;<samp>-rv</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-rv</samp>&rsquo;</dt>
 <dd><p>Bring up Emacs in reverse video.
 </p>
 </dd>
-<dt> &lsquo;<samp>-name <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-name <var>name</var></samp>&rsquo;</dt>
 <dd><p>Use the resource manager resources specified by <var>name</var>.
 The default is to use the name of the program (<code>argv[0]</code>) as
 the resource manager name.
 </p>
 </dd>
-<dt> &lsquo;<samp>-xrm</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-xrm</samp>&rsquo;</dt>
 <dd><p>Read something into the resource database for this invocation of Emacs only.
 </p>
 </dd>
@@ -832,17 +832,17 @@ paths specific to <em>version</em>, <em>site</em>, and <em>architecture</em>
 when looking for them.
 </p>
 <dl compact="compact">
-<dt> <code>version-specific</code></dt>
+<dt><code>version-specific</code></dt>
 <dd><a name="index-version_002dspecific-directories"></a>
 <p>directories are specific to the version of XEmacs they belong to and
 typically reside under &lsquo;<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;</tt>&rsquo;.
 </p></dd>
-<dt> <code>site-specific</code></dt>
+<dt><code>site-specific</code></dt>
 <dd><a name="index-site_002dspecific-directories"></a>
 <p>directories are independent of the version of XEmacs they belong to and
 typically reside under &lsquo;<tt>&lt;root&gt;/lib/xemacs</tt>&rsquo;
 </p></dd>
-<dt> <code>architecture-specific</code></dt>
+<dt><code>architecture-specific</code></dt>
 <dd><a name="index-architecture_002dspecific-directories"></a>
 <p>directories are specific both to the version of XEmacs and the
 architecture it runs on and typically reside under
@@ -857,14 +857,14 @@ under &lsquo;<tt>&lt;root&gt;</tt>&rsquo;, because that is where they are in the
 aiding in debugging any problems which come up.
 </p>
 <dl compact="compact">
-<dt> <code>lisp-directory</code></dt>
+<dt><code>lisp-directory</code></dt>
 <dd><a name="index-lisp_002ddirectory"></a>
 <p>Contains the version-specific location of the Lisp files that come with
 the core distribution of XEmacs.  XEmacs will search it recursively to a
 depth of 1 when setting up <code>load-path</code>.
 </p>
 </dd>
-<dt> <code>load-path</code></dt>
+<dt><code>load-path</code></dt>
 <dd><a name="index-load_002dpath"></a>
 <p>Is where XEmacs searches for XEmacs Lisp files with commands like
 <code>load-library</code>.
@@ -876,7 +876,7 @@ version-specific core Lisp directories.  If the environment variable
 <a name="index-EMACSLOADPATH"></a>
 </p>
 </dd>
-<dt> <code>Info-directory-list</code></dt>
+<dt><code>Info-directory-list</code></dt>
 <dd><a name="index-Info_002ddirectory_002dlist"></a>
 <p>Contains the location of info files.  (See <a href="../info/index.html#Top">(info)</a>.)  It contains
 the package info directories and the version-specific core
@@ -887,13 +887,13 @@ variable <code>INFOPATH</code>
 to <code>Info-directory-list</code>.
 </p>
 </dd>
-<dt> <code>exec-directory</code></dt>
+<dt><code>exec-directory</code></dt>
 <dd><a name="index-exec_002ddirectory"></a>
 <p>Is the directory of architecture-dependent files that come with XEmacs,
 especially executable programs intended for XEmacs to invoke.
 </p>
 </dd>
-<dt> <code>exec-path</code></dt>
+<dt><code>exec-path</code></dt>
 <dd><a name="index-exec_002dpath"></a>
 <p>Is the path for executables which XEmacs may want to start.  It contains
 the package executable paths as well as <code>exec-directory</code>, and the
@@ -903,13 +903,13 @@ and <code>EMACSPATH</code>.
 <a name="index-EMACSPATH"></a>
 </p>
 </dd>
-<dt> <code>doc-directory</code></dt>
+<dt><code>doc-directory</code></dt>
 <dd><a name="index-doc_002ddirectory"></a>
 <p>Is the directory containing the architecture-specific &lsquo;<tt>DOC</tt>&rsquo; file
 that contains documentation for XEmacs&rsquo; commands.
 </p>
 </dd>
-<dt> <code>data-directory</code></dt>
+<dt><code>data-directory</code></dt>
 <dd><a name="index-data_002ddirectory"></a>
 <p>Is the version-specific directory that contains core data files XEmacs uses.
 It may be initialized from the <code>EMACSDATA</code>
@@ -917,7 +917,7 @@ It may be initialized from the <code>EMACSDATA</code>
 environment variable.
 </p>
 </dd>
-<dt> <code>data-directory-list</code></dt>
+<dt><code>data-directory-list</code></dt>
 <dd><a name="index-data_002ddirectory_002dlist"></a>
 <p>Is the path where XEmacs looks for data files.  It contains package data
 directories as well as <code>data-directory</code>.

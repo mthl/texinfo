@@ -2,6 +2,18 @@ This file records noteworthy changes.
 
 1.84 ()
 
+* BUG FIXES
+  ---------
+
+* Handling of @itemize and @table arguments are more in line with makeinfo.
+
+* COMPATIBILITY
+  -------------
+
+* $format_list_item_texi should now modify directly the @item argument
+  and apply the @-command given as @table argument. Correspondingly, 
+  some arguments of $table_item have been removed.
+
 1.82 (2009-01-05)
 
 * NEW FEATURES
@@ -67,7 +79,7 @@ This file records noteworthy changes.
   input variable true if in simple text.
 
 * change in the menu_entry and simple_menu_entry function reference API,
-  the name is always assed, and a new argument tells if there was an
+  the name is always passed, and a new argument tells if there was an
   explicit name.
 
 * change in unknown function reference API, now there is a pass argument

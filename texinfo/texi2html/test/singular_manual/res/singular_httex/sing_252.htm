@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,16 +88,16 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.97 print</h3>
 <a name="index-print"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>print (</code> expression <code>)</code>
 <br><code>print (</code> expression<code>, &quot;betti&quot; )</code>
 <br><code>print (</code> expression<code>,</code> format_string <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none (for the first two calling sequences), resp.
 <br>string (for the last calling sequence)
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>The first form prints the expression to the terminal and has no return
 value. Use the format string <code>%p</code> to print into a string (see
 below).
@@ -109,7 +109,7 @@ string determines which format to use to generate the string.
 </p>
 <p>The following format strings are supported:
 </p><dl compact="compact">
-<dt> <code>&quot;betti&quot;</code></dt>
+<dt><code>&quot;betti&quot;</code></dt>
 <dd><p>The Betti numbers are printed in a matrix-like format where the entry
  <span 
 class="cmmi-10">d </span>in row <span 
@@ -134,36 +134,36 @@ class="cmmi-10">R</span><sup><span
 class="cmmi-7">n</span></sup> and <span 
 class="cmmi-10">M</span>, resp.).  
 </p></dd>
-<dt> <code>&quot;%s&quot;</code></dt>
+<dt><code>&quot;%s&quot;</code></dt>
 <dd><p>returns <code>string(</code> expression <code>)</code>
 </p></dd>
-<dt> <code>&quot;%2s&quot;</code></dt>
+<dt><code>&quot;%2s&quot;</code></dt>
 <dd><p>similar to <code>&quot;%s&quot;</code>, except that newlines are inserted after every
 comma and at the end
 </p></dd>
-<dt> <code>&quot;%l&quot;</code></dt>
+<dt><code>&quot;%l&quot;</code></dt>
 <dd><p>similar to <code>&quot;%s&quot;</code>, except that each object is embraced by its type
 such that it can be directly used for &quot;cutting and pasting&quot;
 </p></dd>
-<dt> <code>&quot;%2l&quot;</code></dt>
+<dt><code>&quot;%2l&quot;</code></dt>
 <dd><p>similar to <code>&quot;%l&quot;</code>, except that newlines are inserted after every
 comma and at the end
 </p></dd>
-<dt> <code>&quot;%;&quot;</code></dt>
+<dt><code>&quot;%;&quot;</code></dt>
 <dd><p>returns the string equivalent to typing <code>expression;</code>
 </p></dd>
-<dt> <code>&quot;%t&quot;</code></dt>
+<dt><code>&quot;%t&quot;</code></dt>
 <dd><p>returns the string equivalent to typing <code>type expression;</code>
 </p></dd>
-<dt> <code>&quot;%p&quot;</code></dt>
+<dt><code>&quot;%p&quot;</code></dt>
 <dd><p>returns the string equivalent to typing <code>print(expression);</code>
 </p></dd>
-<dt> <code>&quot;%b&quot;</code></dt>
+<dt><code>&quot;%b&quot;</code></dt>
 <dd><p>returns the string equivalent to typing <code>print(expression, &quot;betti&quot;);</code>
 </p></dd>
 </dl>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   module m=[1,y],[0,x+z];
   m;

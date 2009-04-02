@@ -90,18 +90,21 @@ by the Free Software Foundation.
 @c  Define some macros which affect markup and add to the
 @c  index simultaneously.
 @macro longopt {arg}
-@opindex \arg\
 @option{--\arg\}
+@opindex \arg\
+
 @end macro
 
 @macro shortopt {arg}
-@opindex \arg\
 @option{-\arg\}
+@opindex \arg\
+
 @end macro
 
 @macro variable {arg}
-@vindex \arg\
 @code{\arg\}
+@vindex \arg\
+
 @end macro
 @c --------------------------------------------------------
 
@@ -822,11 +825,11 @@ frames are used (corresponding variables are @variable{$DOCTYPE} and
 
 The default for the document doctype is:
 @example
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 @end example
 And for the frameset doctype:
 @example
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html401/frameset.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 @end example
 
 @item @longopt{iso}
@@ -3195,10 +3198,11 @@ achieved with the following function reference:
 The @var{$format} is the list or table @@-command, 
 @var{$line} is the item line, @var{$command} is the @dfn{format command},
 @var{$prepended} is set to the text folllowing the @dfn{format command}
-on the format argumlent line.
-The @var{$result_line} replaces the item argument, and if @var{$open_command}
-is true, the @dfn{format command} is opened for the line.
+on the format argument line.
 The @var{$number} is the number of the item, as set in @code{@@enumerate}.
+The @var{$result_line} replaces the item argument.
+@var{$open_command} is an obsolete return code that can be set to 
+anything.
 @end deftypefn
 
 @table @emph
@@ -3228,23 +3232,26 @@ one for the first line located on the @code{@@item} line corresponding
 with the first column, the other for the text appearing on the
 following lines, corresponding with the second column text.
 
-@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $formatted_command $command_stack $text_formatted $text_formatted_leading_spaces $text_formatted_trailing_spaces $item_command
+@c @deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $formatted_command $command_stack $text_formatted $text_formatted_leading_spaces $text_formatted_trailing_spaces $item_command
+@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $command_stack $item_command $formatted_index_entry
 This function is used to format the text on the @code{@@item} line.
-@var{$text_item} is the text line. In case there is an index entry 
+@var{$item_text} is the text line. In case there is an index entry 
 associated with the @code{@@item} (as with @code{@@ftable} and 
 @code{@@vtable}), @var{$index_label_text} is the text inserted at 
 the place where an index entry appears. @xref{Index entry place}.
 @var{$format} is the type of format,
 @samp{table}, @samp{ftable} or @samp{vtable}. @var{$command} is the formatting command
-given in argument to the table format command, @var{$formatted_command} is 
-this command formatted if it is a leading command, like @code{@@minus}.
+given in argument to the table format command.
+@c , @var{$formatted_command} is 
+@c this command formatted if it is a leading command, like @code{@@minus}.
 @var{$command_stack} is an array with all the @@-commands opened, latest
 on top.
-@var{$text_formatted} is the text formatted by the formatting command if
-the command is a command with braces like @code{@@code}.
-@var{$text_formatted_leading_spaces} and @var{$text_formatted_trailing_spaces}
-are the spaces removed before closing the format.
+@c @var{$text_formatted} is the text formatted by the formatting command if
+@c the command is a command with braces like @code{@@code}.
+@c @var{$text_formatted_leading_spaces} and @var{$text_formatted_trailing_spaces}
+@c are the spaces removed before closing the format.
 @var{$item_command} is the item command, @samp{@@item} or @samp{@@itemx}.
+@var{$formatted_index_entry} is the index entry formatted.
 @end deftypefn
 
 @deftypefn {Function Reference} $table_line table_line $text
@@ -4497,6 +4504,12 @@ here nevertheless. Most of the incompatibilities were introduced in
 version 1.68. API changed also a lot between 1.78 and 1.80.
 
 @itemize @bullet
+@item API changes between 1.82 and 1.84:
+@itemize @bullet
+@item $format_list_item_texi should now modify directly the @@item argument
+  and apply the @@-command given as @@table argument. Correspondingly, 
+  some arguments of $table_item have been removed.
+@end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet
 @item what was done in the beginning of the $print_section 

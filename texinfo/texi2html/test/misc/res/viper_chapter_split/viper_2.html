@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -341,7 +341,7 @@ toggles Viperization of Emacs on and off.
 <p>Viper has four states, Emacs, Vi, Insert, and Replace.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Emacs state</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Emacs state</samp>&rsquo;</dt>
 <dd><p>This is the state plain vanilla Emacs is normally in.  After you have loaded
 Viper, <kbd>C-z</kbd> will normally take you to Vi command state.  Another
 <kbd>C-z</kbd> will take you back to Emacs state.  This toggle key can be
@@ -356,7 +356,7 @@ confuse the novice user.  In this case, <kbd>C-z</kbd> will either iconify Emacs
 Emacs runs on a dumb terminal or in an Xterm window).
 </p>
 </dd>
-<dt> &lsquo;<samp>Vi state</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Vi state</samp>&rsquo;</dt>
 <dd><p>This is the Vi command mode.  Any of the Vi commands, such as <kbd>i, o, a</kbd>,
 &hellip;, will take you to Insert state.  All Vi commands may
 be used in this mode.  Most Ex commands can also be used.
@@ -375,13 +375,13 @@ ends at line 135.  There is no need to type the line numbers, since Viper
 inserts them automatically in front of the Ex command.
 </p>
 </dd>
-<dt> &lsquo;<samp>Insert state</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Insert state</samp>&rsquo;</dt>
 <dd><p>Insert state is the Vi insertion mode.  &lt;ESC&gt; will take you back to
 Vi state.  Insert state editing can be done, including auto-indentation.  By
 default, Viper disables Emacs key bindings in Insert state.
 </p>
 </dd>
-<dt> &lsquo;<samp>Replace state</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Replace state</samp>&rsquo;</dt>
 <dd><p>Commands like <kbd>cw</kbd> invoke the Replace state.  When you cross the
 boundary of a replacement region (usually designated via a &lsquo;<samp>$</samp>&rsquo; sign),
 it will automatically change to Insert state.  You do not have to worry
@@ -516,7 +516,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 exceptions are:
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x</kbd></dt>
+<dt><kbd>C-x</kbd></dt>
 <dd><a name="index-C_002dx"></a>
 <p><kbd>C-x</kbd> is used to invoke Emacs commands, mainly those that do window
 management.  <kbd>C-x 2</kbd> will split a window, <kbd>C-x 0</kbd> will close a
@@ -526,14 +526,14 @@ These are about the only necessary keystrokes.
 For the rest, see the GNU Emacs Manual.
 </p>
 </dd>
-<dt> <kbd>C-c</kbd></dt>
+<dt><kbd>C-c</kbd></dt>
 <dd><a name="index-C_002dc"></a>
 <p>For user levels 2 and higher, this key serves as a prefix key for the key
 sequences used by various major modes.  For users at Viper level 1, <kbd>C-c</kbd>
 simply beeps.
 </p>
 </dd>
-<dt> <kbd>C-g and C-]</kbd></dt>
+<dt><kbd>C-g and C-]</kbd></dt>
 <dd><a name="index-C_002dg"></a>
 <a name="index-C_002d_005d"></a>
 
@@ -548,7 +548,7 @@ At user level 1, <kbd>C-g</kbd> is bound to <code>viper-info-on-file</code>
 function instead.
 </p>
 </dd>
-<dt> <kbd>C-\</kbd></dt>
+<dt><kbd>C-\</kbd></dt>
 <dd><a name="index-C_002d_005c"></a>
 <a name="index-Meta-key-1"></a>
 
@@ -574,7 +574,7 @@ Or you can use the MULE menu in the menubar.
 about are:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Undo</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Undo</samp>&rsquo;</dt>
 <dd><a name="index-u"></a>
 <p><kbd>u</kbd> will undo.  Undo can be repeated by the <kbd>.</kbd> key.  Undo itself
 can be undone.  Another <kbd>u</kbd> will change the direction.  The presence
@@ -585,11 +585,11 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 </p>
 
 </dd>
-<dt> &lsquo;<samp>Counts</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Counts</samp>&rsquo;</dt>
 <dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, &hellip;, etc., take counts.
 </p>
 </dd>
-<dt> &lsquo;<samp>Regexps</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Regexps</samp>&rsquo;</dt>
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes &lsquo;<samp>\u</samp>&rsquo;, &lsquo;<samp>\L</samp>&rsquo;,
@@ -608,7 +608,7 @@ See section <a href="viper_4.html#Viper-Specials">Viper Specials</a>, for more d
 <a name="index-C_002dc-_002f"></a>
 </p>
 </dd>
-<dt> &lsquo;<samp>Ex commands</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Ex commands</samp>&rsquo;</dt>
 <dd><a name="index-Ex-commands-1"></a>
 <p>The current working directory of a buffer is automatically inserted in the
 minibuffer if you type <kbd>:e</kbd> then space.  Absolute filenames are
@@ -824,26 +824,26 @@ region.
 by commands from Insert state, namely:
 </p>
 <dl compact="compact">
-<dt> <kbd>C-h</kbd></dt>
+<dt><kbd>C-h</kbd></dt>
 <dd><p>Backspace
 </p></dd>
-<dt> <kbd>C-w</kbd></dt>
+<dt><kbd>C-w</kbd></dt>
 <dd><p>Delete Word
 </p></dd>
-<dt> <kbd>C-u</kbd></dt>
+<dt><kbd>C-u</kbd></dt>
 <dd><p>Erase line
 </p></dd>
-<dt> <kbd>C-v</kbd></dt>
+<dt><kbd>C-v</kbd></dt>
 <dd><p>Quote the following character
 </p></dd>
-<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dt><kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>Execute command
 </p></dd>
-<dt> <kbd>C-g and C-]</kbd></dt>
+<dt><kbd>C-g and C-]</kbd></dt>
 <dd><p>Emacs quit and abort keys.  These may be necessary.  See section <a href="#Vi-State">Vi State</a>, for an
 explanation.
 </p></dd>
-<dt> <kbd>M-p and M-n</kbd></dt>
+<dt><kbd>M-p and M-n</kbd></dt>
 <dd><p>These keys are bound to functions that peruse minibuffer history.  The
 precise history to be perused depends on the context.  It may be the history
 of search strings, Ex commands, file names, etc.
@@ -896,7 +896,7 @@ to suffer through <code>No write since last change</code> errors.
 Some Viper elements are common over all the files.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Textmarkers</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Textmarkers</samp>&rsquo;</dt>
 <dd><a name="index-markers"></a>
 <a name="index-textmarkers"></a>
 <p>Textmarkers remember <em>files and positions</em>.
@@ -906,7 +906,7 @@ file &lsquo;<tt>foo</tt>&rsquo;, start editing file &lsquo;<tt>bar</tt>&rsquo; a
 textmarker using the Viper command <kbd>[&lt;a-z&gt;</kbd> where &lt;a-z&gt; are the
 textmarkers, e.g., <kbd>[a</kbd> to view marker &lsquo;<samp>a</samp>&rsquo; .
 </p></dd>
-<dt> &lsquo;<samp>Repeated Commands</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Repeated Commands</samp>&rsquo;</dt>
 <dd><p>Command repetitions are common over files.  Typing <kbd>!!</kbd> will repeat the
 last <kbd>!</kbd> command whichever file it was issued from.
 Typing <kbd>.</kbd> will repeat the last command from any file, and
@@ -915,7 +915,7 @@ searches will repeat the last search.  Ex commands can be repeated by typing
 Note: in some rare cases, that <kbd>: &lt;RET&gt;</kbd> may do something dangerous.
 However, usually its effect can be undone by typing <kbd>u</kbd>.
 </p></dd>
-<dt> &lsquo;<samp>Registers</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Registers</samp>&rsquo;</dt>
 <dd><a name="index-registers"></a>
 <p>Registers are common to files.  Also, text yanked with <kbd>y</kbd> can be
 put back (<kbd>p</kbd>) into any file.  The Viper command <kbd>]&lt;a-z&gt;</kbd>, where &lt;a-z&gt; are
@@ -934,7 +934,7 @@ newly deleted text could be put back separately from the previously deleted
 text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
 </p></dd>
-<dt> &lsquo;<samp>Absolute Filenames</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Absolute Filenames</samp>&rsquo;</dt>
 <dd><a name="index-absolute-file-names"></a>
 <p>The current directory name for a file is automatically prepended to the
 file name in any

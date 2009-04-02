@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>normal.lib</code> (see <a href="sing_595.htm#normal_005flib">normal_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>normal(i [,choose]); i a radical ideal, choose empty, 1 or &quot;wd&quot;
 if choose=1 the normalization of the associated primes is computed
 (which is sometimes more efficient);
@@ -99,12 +99,12 @@ simultaneously; this may take much more time in the reducible case,
 since the factorizing standard basis algorithm cannot be used.
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>The ideal must be radical, for non-radical ideals the output may
 be wrong (i=radical(i); makes i radical)
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>a list of rings, say nor and in case of <code>choose=&quot;wd&quot;</code> an
 integer at the end of the list.
 Each ring <code>nor[i]</code> contains two ideals with given names
@@ -115,7 +115,7 @@ normalization of basering/id;<br>
 <code>nor[i]/norid</code> (for each i).
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>to use the i-th ring type: <code>def R=nor[i]; setring R;</code>.
 <br> Increasing printlevel displays more comments (default: printlevel=0).
 <br> Not implemented for local or mixed orderings.

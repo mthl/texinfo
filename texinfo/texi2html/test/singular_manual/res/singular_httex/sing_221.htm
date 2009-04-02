@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,16 +88,16 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.66 lift</h3>
 <a name="index-lift"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>lift (</code> ideal_expression<code>,</code> subideal_expression <code>)</code>
 <br><code>lift (</code> module_expression<code>,</code> submodule_expression <code>)</code>
 <br><code>lift (</code> ideal_expression<code>,</code> subideal_expression<code>,</code> matrix_name <code>)</code>
 <br><code>lift (</code> module_expression<code>,</code> submodule_expression<code>,</code> matrix_name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>matrix
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>computes the transformation matrix which expresses the generators of a
 submodule in terms of the generators of a module.  Uses different
 algorithms for modules which are, resp. are not, represented by a
@@ -112,10 +112,10 @@ where <code>U</code> is a diagonal matrix of units.
 <br><code>U</code> is always the unity matrix if the basering is a polynomial ring
 (not power series ring). <code>U</code> is stored in the optional third argument.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>Gives a warning if <code>sm</code> is not a submodule.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(dp,C);
   ideal m=3x2+yz,7y6+2x2y+5xz;
   poly f=y7+x3+xyz+z2;

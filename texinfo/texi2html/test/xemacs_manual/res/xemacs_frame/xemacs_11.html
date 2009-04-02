@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -132,90 +132,90 @@ scroll conveniently with &lt;SPC&gt; and &lt;DEL&gt; or &lt;BS&gt;.
 <p>  Here is a summary of the defined help commands.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-h a <var>regexp</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h a <var>regexp</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display a list of functions and variables whose names match <var>regexp</var>
 (<code>hyper-apropos</code>).
 </p></dd>
-<dt> <kbd>C-h A <var>regexp</var></kbd></dt>
+<dt><kbd>C-h A <var>regexp</var></kbd></dt>
 <dd><p>Show all commands whose names contain matches for <var>regexp</var>
 (<code>command-apropos</code>).
 </p></dd>
-<dt> <kbd>C-h b</kbd></dt>
+<dt><kbd>C-h b</kbd></dt>
 <dd><p>Display a table of all key bindings currently in effect, with local
 bindings of the current major mode first, followed by all global
 bindings (<code>describe-bindings</code>).
 </p></dd>
-<dt> <kbd>C-h c <var>key</var></kbd></dt>
+<dt><kbd>C-h c <var>key</var></kbd></dt>
 <dd><p>Print the name of the command that <var>key</var> runs
 (<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for &lsquo;character&rsquo;.  For more
 extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
 </p></dd>
-<dt> <kbd>C-h d <var>function</var> &lt;RET&gt;</kbd></dt>
-<dt> <kbd>C-h f <var>function</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h d <var>function</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h f <var>function</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display documentation on the Lisp function named <var>function</var>
 (<code>describe-function</code>).  Since commands are Lisp functions,
 a command name may be used.
 </p></dd>
-<dt> <kbd>C-h i</kbd></dt>
+<dt><kbd>C-h i</kbd></dt>
 <dd><p>Run Info, the program for browsing documentation files (<code>info</code>).
 The complete XEmacs manual is available online in Info.
 </p></dd>
-<dt> <kbd>C-h k <var>key</var></kbd></dt>
+<dt><kbd>C-h k <var>key</var></kbd></dt>
 <dd><p>Display the name and documentation of the command that <var>key</var> runs
 (<code>describe-key</code>).
 </p></dd>
-<dt> <kbd>C-h l</kbd></dt>
+<dt><kbd>C-h l</kbd></dt>
 <dd><p>Display a description of the last 100 characters you typed
 (<code>view-lossage</code>).
 </p></dd>
-<dt> <kbd>C-h m</kbd></dt>
+<dt><kbd>C-h m</kbd></dt>
 <dd><p>Display documentation of the current major mode (<code>describe-mode</code>).
 </p></dd>
-<dt> <kbd>C-h n</kbd></dt>
-<dt> <kbd>C-h C-n</kbd></dt>
+<dt><kbd>C-h n</kbd></dt>
+<dt><kbd>C-h C-n</kbd></dt>
 <dd><p>Display documentation of XEmacs changes, most recent first
 (<code>view-emacs-news</code>).
 </p></dd>
-<dt> <kbd>C-h p</kbd></dt>
+<dt><kbd>C-h p</kbd></dt>
 <dd><p>Find packages by topic keyword (<code>finder-by-keyword</code>).
 </p></dd>
-<dt> <kbd>C-h C-p</kbd></dt>
+<dt><kbd>C-h C-p</kbd></dt>
 <dd><p>Display a table of all mouse bindings currently in effect now, with
 local bindings of the current major mode first, followed by all global
 bindings (<code>describe-pointer</code>).
 </p></dd>
-<dt> <kbd>C-h s</kbd></dt>
+<dt><kbd>C-h s</kbd></dt>
 <dd><p>Display current contents of the syntax table, plus an explanation of
 what they mean (<code>describe-syntax</code>).  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 </p></dd>
-<dt> <kbd>C-h t</kbd></dt>
+<dt><kbd>C-h t</kbd></dt>
 <dd><p>Enter the XEmacs interactive tutorial (<code>help-with-tutorial</code>).
 </p></dd>
-<dt> <kbd>C-h v <var>var</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h v <var>var</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Display the documentation of the Lisp variable <var>var</var>
 (<code>describe-variable</code>).
 </p></dd>
-<dt> <kbd>C-h w <var>command</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h w <var>command</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Print which keys run the command named <var>command</var> (<code>where-is</code>).
 </p></dd>
-<dt> <kbd>C-h B &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h B &lt;RET&gt;</kbd></dt>
 <dd><p>Display info on how to deal with Beta versions of XEmacs
 (<code>describe-beta</code>).
 </p></dd>
-<dt> <kbd>C-h C <var>group</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h C <var>group</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Select customization buffer for <var>group</var> (<code>customize</code>).
 </p></dd>
-<dt> <kbd>C-h F &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h F &lt;RET&gt;</kbd></dt>
 <dd><p>View the local copy of the XEmacs FAQ (<code>xemacs-local-faq</code>).
 </p></dd>
-<dt> <kbd>C-h C-i <var>file</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h C-i <var>file</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Read Info file <var>file</var> with Info browser (<code>Info-query</code>).
 </p></dd>
-<dt> <kbd>C-h C-c <var>command</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h C-c <var>command</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Look up an Emacs command <var>command</var> in the Emacs manual in the Info
 system (<code>Info-goto-emacs-command-node</code>).
 </p></dd>
-<dt> <kbd>C-h C-f <var>function</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-h C-f <var>function</var> &lt;RET&gt;</kbd></dt>
 <dd><p>Look up an Emacs Lisp function <var>function</var> in the Elisp manual in the
 Info system (<code>Info-elisp-ref</code>).
 </p></dd>
@@ -370,12 +370,12 @@ variable.  See section <a href="xemacs_30.html#Variables">Variables</a>.
 <a name="index-apropos"></a>
 
 <dl compact="compact">
-<dt> <kbd>C-h A</kbd></dt>
+<dt><kbd>C-h A</kbd></dt>
 <dd><p>Show only symbols that are names of commands
 (<code>command-apropos</code>).
 </p>
 </dd>
-<dt> <kbd>M-x apropos <var>regexp</var></kbd></dt>
+<dt><kbd>M-x apropos <var>regexp</var></kbd></dt>
 <dd><p>Show all symbols whose names contain matches for <var>regexp</var>.
 </p></dd>
 </dl>
@@ -528,11 +528,11 @@ wp            word processing
 <p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#Misc-File-Ops">Miscellaneous File Operations</a>), plus a few special commands of their own.
 </p>
 <dl compact="compact">
-<dt> <kbd>&lt;SPC&gt;</kbd></dt>
+<dt><kbd>&lt;SPC&gt;</kbd></dt>
 <dd><p>Scroll forward.
 </p></dd>
-<dt> <kbd>&lt;DEL&gt;</kbd></dt>
-<dt> <kbd>&lt;BS&gt;</kbd></dt>
+<dt><kbd>&lt;DEL&gt;</kbd></dt>
+<dt><kbd>&lt;BS&gt;</kbd></dt>
 <dd><p>Scroll backward.
 </p></dd>
 </dl>

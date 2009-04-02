@@ -50,37 +50,37 @@
 <para>In deff item.
 </para></blockquote></informalfigure>
 <variablelist><!-- comment in table -->
-<varlistentry><term> <literal>a</literal></term>
+<varlistentry><term><literal>a</literal></term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> a</term>
+<variablelist><varlistentry><term>a</term>
 <term><!-- comment between item and itemx -->
- b</term>
+b</term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
-<variablelist><varlistentry><term> <replaceable>a</replaceable></term>
+<variablelist><varlistentry><term><replaceable>a</replaceable></term>
 <term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm><!-- and a comment -->
 <!-- and another comment -->
- <replaceable>b</replaceable></term>
+<replaceable>b</replaceable></term>
 <listitem><para>l&ndash;ine
-</para></listitem></varlistentry><varlistentry><term> <replaceable>c</replaceable></term>
+</para></listitem></varlistentry><varlistentry><term><replaceable>c</replaceable></term>
 <term>
 <!-- comment between lines -->
 
- <replaceable>d</replaceable></term>
+<replaceable>d</replaceable></term>
 <listitem><para>
 <!-- comment at end -->
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><indexterm role="cp"><primary>cindex in table</primary></indexterm><!-- comment in table -->
-<varlistentry><term> <literal>abb</literal></term>
+<varlistentry><term><literal>abb</literal></term>
 <listitem><para>l&ndash;ine
 </para></listitem></varlistentry></variablelist>
 
 <variablelist><indexterm role="cp"><primary>cindex in table</primary></indexterm><para>Texte before first item.
-</para><varlistentry><term> <literal>abb</literal></term>
+</para><varlistentry><term><literal>abb</literal></term>
 <listitem><para><!-- empty table line --></para></listitem></varlistentry></variablelist>
 
 <para>cp

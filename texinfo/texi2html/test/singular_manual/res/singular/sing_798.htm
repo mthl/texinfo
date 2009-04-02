@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -88,30 +88,30 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_794.htm#rinvar_005flib">rinvar_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>ImageGroup(G, action); ideal G, action;
 </p>
 </dd>
-<dt> <strong>Purpose:</strong></dt>
+<dt><strong>Purpose:</strong></dt>
 <dd><p>compute the ideal of the image of G in GL(m,K) induced by the linear
 action &rsquo;action&rsquo;, where G is an algebraic group and &rsquo;action&rsquo; defines
 an action of G on K^m (size(action) = m).
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>ring, a polynomial ring over the same ground field as the basering,
 containing the ideals &rsquo;groupid&rsquo; and &rsquo;actionid&rsquo;.
 <br>- &rsquo;groupid&rsquo; is the ideal of the image of G (order &lt;= order of G)
 - &rsquo;actionid&rsquo; defines the linear action of &rsquo;groupid&rsquo; on K^m.
 </p>
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>&rsquo;action&rsquo; and &rsquo;actionid&rsquo; have the same orbits
 <br>all variables which give only rise to 0&rsquo;s in the m x m matrices of G
 have been omitted.
 </p>
 </dd>
-<dt> <strong>Assume:</strong></dt>
+<dt><strong>Assume:</strong></dt>
 <dd><p>basering K[s(1..r),t(1..m)] has r + m variables, G is the ideal of an
 algebraic group and F is an action of G on K^m. G contains only the
 variables s(1)...s(r). The action &rsquo;action&rsquo; is given by polynomials

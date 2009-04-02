@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -112,22 +112,22 @@ text following the colon is taken to be the content of the item.
 </li><li>
 If the description-string of an item matches
 <dl compact="compact">
-<dt> <code>EXAMPLE</code></dt>
+<dt><code>EXAMPLE</code></dt>
 <dd><p>then this item and its content is ignored.
 </p></dd>
-<dt> <code>SEE ALSO</code></dt>
+<dt><code>SEE ALSO</code></dt>
 <dd><p>then the
 content of the item is assumed to be comma-separated words which are
 valid references to other texinfo nodes of the manual. (e.g., all
 procedure and command names are also texinfo nodes).
 </p></dd>
-<dt>  <code>KEYWORDS</code> (or, <code>KEYPHRASES</code>)</dt>
+<dt><code>KEYWORDS</code> (or, <code>KEYPHRASES</code>)</dt>
 <dd><p>then the content of the item is assumed to be a
 semicolon-separated list of phrases which are taken as keys for the
 index of the manual (N.B. the name of a procedure/library is
 automatically added to the index keys).
 </p></dd>
-<dt> <code>PROCEDURES</code></dt>
+<dt><code>PROCEDURES</code></dt>
 <dd><p>then the
 content of the item is assumed to be a summary description of the
 procedures contained in the library. Separate texinfo nodes (subsections
@@ -135,7 +135,7 @@ in printed documents) are
 <strong>only</strong> created out of the help strings of such procedures which
 appear in the summary description of a library.
 </p></dd>
-<dt> <code>LIBRARY</code></dt>
+<dt><code>LIBRARY</code></dt>
 <dd><p>then the content of the item is assumed to be a one-line description of
 a library. If this one-line description consist of only uppercase
 characters, then it is typeset in all lowercase characters in the
@@ -147,10 +147,10 @@ manual (otherwise it is left as is).
 For the content of an item, the following texinfo markup elements
 are recognized (and, their content not further manipulated):
 <dl compact="compact">
-<dt> <code>@*</code></dt>
+<dt><code>@*</code></dt>
 <dd><p>to enforce a line-break.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><p><code>old line @* new line</code>
 <br> &rarr;
 <br> old line <br> new line
@@ -158,7 +158,7 @@ are recognized (and, their content not further manipulated):
 </dl>
 
 </dd>
-<dt> <code>@ref{...}</code></dt>
+<dt><code>@ref{...}</code></dt>
 <dd><p>References to other parts of the <small>SINGULAR</small> manual can be set using
 one of the following <code>@ref{node}</code> constructs. Notice that
 <code>node</code> must be the name of a section of the <small>SINGULAR</small>
@@ -166,17 +166,17 @@ manual. In particular, it may be a name of a function, library or library
 procedure.
 </p>
 <dl compact="compact">
-<dt> <code>@xref{node}</code></dt>
+<dt><code>@xref{node}</code></dt>
 <dd><p>for a reference to the node <code>node</code> at the beginning of a sentence.
 </p></dd>
-<dt> <code>@ref{node}</code></dt>
+<dt><code>@ref{node}</code></dt>
 <dd><p>for a reference to the node <code>node</code> at the end of a sentence.
 </p></dd>
-<dt> <code>@pxref{node}</code></dt>
+<dt><code>@pxref{node}</code></dt>
 <dd><p>for a reference to the node <code>node</code> within parenthesis.
 </p>
 </dd>
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><p><code>@xref{Tropical Storms}, for more info.</code>
 <br>&rarr;*Note Hurricanes::, for more info.
 <br>&rarr;See Section 3.1 [Hurricanes], page 24, for more info.
@@ -194,12 +194,12 @@ page 24)
 </dl>
 
 </dd>
-<dt> <code>@math{..}</code></dt>
+<dt><code>@math{..}</code></dt>
 <dd><p>for typesetting of small (i.e., which do not go over
 multiple lines) mathematical expressions  in LaTeX math-mode
 syntax.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><p><code>@math{\alpha}</code>
 <br>&rarr;
 <br>
@@ -209,7 +209,7 @@ syntax.
  ALT="$\alpha$"></SPAN>
 </p>
 </dd>
-<dt> Note:</dt>
+<dt>Note:</dt>
 <dd><p>Mathematical expressions inside <code>@math{..}</code> may
 not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 <code>{,},@</code>.
@@ -217,16 +217,16 @@ not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 </dl>
 
 </dd>
-<dt> <code>@code{..}</code></dt>
+<dt><code>@code{..}</code></dt>
 <dd><p>for typesetting of small (i.e., which do not go over
 multiple lines) strings in typewriter font.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><p><code>@code{typewriter font}</code>
 <br>&rarr;
 <br><code>typewriter font</code>
 </p></dd>
-<dt> Note:</dt>
+<dt>Note:</dt>
 <dd><p>The string inside <code>@code{..}</code> may
 not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 <code>{,},@</code>.
@@ -234,14 +234,14 @@ not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 </dl>
 
 </dd>
-<dt> <code>@example</code></dt>
+<dt><code>@example</code></dt>
 <dd><p> <code>...</code>
 </p></dd>
-<dt> <code>@end example</code></dt>
+<dt><code>@end example</code></dt>
 <dd><p>for pre-formatted text which is indented and typeset in typewriter
 font.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="example">before example
 @example
 in              example
@@ -258,21 +258,21 @@ escape of special characters like {,},@
 </pre></td></tr></table>
 <p>after example
 </p></dd>
-<dt> Note:</dt>
+<dt>Note:</dt>
 <dd><p>The characters {,},@ have to be escaped by an @ sign inside an
 @example environment.
 </p></dd>
 </dl>
 
 </dd>
-<dt> <code>@format</code></dt>
+<dt><code>@format</code></dt>
 <dd><p> <code>...</code>
 </p></dd>
-<dt> <code>@end format</code></dt>
+<dt><code>@end format</code></dt>
 <dd><p>for pre-formatted text which is not indented and typeset in normal
 font.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="example">before format
 @format
 in              format
@@ -289,7 +289,7 @@ escape of special characters like {,},@
 </pre></td></tr></table>
 <p>after format
 </p></dd>
-<dt> Note:</dt>
+<dt>Note:</dt>
 <dd><p>The characters {,},@ have to be escaped by an @ sign inside an
 @example environment.
 </p></dd>
@@ -297,13 +297,13 @@ escape of special characters like {,},@
 
 
 </dd>
-<dt> <code>@texinfo</code></dt>
+<dt><code>@texinfo</code></dt>
 <dd><p> <code>...</code>
 </p></dd>
-<dt> <code>@end texinfo</code></dt>
+<dt><code>@end texinfo</code></dt>
 <dd><p>for text which is written in pure texinfo.
 </p><dl compact="compact">
-<dt> Example:</dt>
+<dt>Example:</dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="example">@texinfo
 Among others, within a texinfo environment
 one can use the tex environment to typeset

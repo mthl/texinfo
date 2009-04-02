@@ -1,0 +1,13 @@
+bad_tab_nesting.texi(,2) 
+bad_tab_nesting.texi(,3) @setfilename bad_tab_nesting.info
+bad_tab_nesting.texi(,4) 
+bad_tab_nesting.texi(,5) @node Top
+bad_tab_nesting.texi(,6) @top Test for bad @@tab  nesting with style @@-command
+bad_tab_nesting.texi(,7) 
+bad_tab_nesting.texi(,8) 
+bad_tab_nesting.texi(,9) @multitable {truc} {bidule}
+bad_tab_nesting.texi(,10) @item truc
+bad_tab_nesting.texi(,11) @code{@tab bidule}
+bad_tab_nesting.texi(,12) @end multitable
+bad_tab_nesting.texi(,13) 
+bad_tab_nesting.texi(,14) @bye

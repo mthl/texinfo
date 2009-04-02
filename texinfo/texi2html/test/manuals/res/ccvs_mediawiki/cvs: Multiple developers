@@ -103,29 +103,29 @@ reported by the <code>status</code> command, are:
 <dl compact="compact">
 <dd><div id="index-Up_002dto_002ddate"></div>
 </dd>
-<dt> Up-to-date</dt>
+<dt>Up-to-date</dt>
 <dd><p>The file is identical with the latest revision in the
 repository for the branch in use.
 </p>
 </dd>
-<dt> Locally Modified</dt>
+<dt>Locally Modified</dt>
 <dd><div id="index-Locally-Modified"></div>
 <p>You have edited the file, and not yet committed your changes.
 </p>
 </dd>
-<dt> Locally Added</dt>
+<dt>Locally Added</dt>
 <dd><div id="index-Locally-Added"></div>
 <p>You have added the file with <code>add</code>, and not yet
 committed your changes.
 </p>
 </dd>
-<dt> Locally Removed</dt>
+<dt>Locally Removed</dt>
 <dd><div id="index-Locally-Removed"></div>
 <p>You have removed the file with <code>remove</code>, and not yet
 committed your changes.
 </p>
 </dd>
-<dt> Needs Checkout</dt>
+<dt>Needs Checkout</dt>
 <dd><div id="index-Needs-Checkout"></div>
 <p>Someone else has committed a newer revision to the
 repository.  The name is slightly misleading; you will
@@ -133,27 +133,27 @@ ordinarily use <code>update</code> rather than
 <code>checkout</code> to get that newer revision.
 </p>
 </dd>
-<dt> Needs Patch</dt>
+<dt>Needs Patch</dt>
 <dd><div id="index-Needs-Patch"></div>
 <p>Like Needs Checkout, but the <small>CVS</small> server will send
 a patch rather than the entire file.  Sending a patch or
 sending an entire file accomplishes the same thing.
 </p>
 </dd>
-<dt> Needs Merge</dt>
+<dt>Needs Merge</dt>
 <dd><div id="index-Needs-Merge"></div>
 <p>Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
 </p>
 </dd>
-<dt> Unresolved Conflict</dt>
+<dt>Unresolved Conflict</dt>
 <dd><div id="index-Unresolved-Conflict"></div>
 <p>A file with the same name as this new file has been added to the repository
 from a second workspace.  This file will need to be moved out of the way
 to allow an <code>update</code> to complete.
 </p>
 </dd>
-<dt> File had conflicts on merge</dt>
+<dt>File had conflicts on merge</dt>
 <dd><div id="index-File-had-conflicts-on-merge"></div>
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
@@ -161,7 +161,7 @@ already done so, you need to
 resolve the conflict as described in [[#Conflicts-example|Conflicts example]].
 </p>
 </dd>
-<dt> Unknown</dt>
+<dt>Unknown</dt>
 <dd><div id="index-Unknown"></div>
 <p><small>CVS</small> doesn&rsquo;t know anything about this file.  For
 example, you have created a new file and have not run
@@ -701,16 +701,16 @@ work done on <var>files</var>.
 the user about.  <var>action</var> is one of the following:
 </p>
 <dl compact="compact">
-<dt> <code>edit</code></dt>
+<dt><code>edit</code></dt>
 <dd><p>Another user has applied the <code>cvs edit</code> command (described
 below) to a watched file.
 </p>
 </dd>
-<dt> <code>commit</code></dt>
+<dt><code>commit</code></dt>
 <dd><p>Another user has committed changes to one of the named <var>files</var>.
 </p>
 </dd>
-<dt> <code>unedit</code></dt>
+<dt><code>unedit</code></dt>
 <dd><p>Another user has abandoned editing a file (other than by committing changes).
 They can do this in several ways, by:
 </p>
@@ -728,11 +728,11 @@ deleting the file and allowing <code>cvs update</code> to recreate it
 </li></ul>
 
 </dd>
-<dt> <code>all</code></dt>
+<dt><code>all</code></dt>
 <dd><p>All of the above.
 </p>
 </dd>
-<dt> <code>none</code></dt>
+<dt><code>none</code></dt>
 <dd><p>None of the above.  (This is useful with <code>cvs edit</code>,
 described below.)
 </p>

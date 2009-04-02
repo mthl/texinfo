@@ -156,7 +156,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 not try to be everything for everyone.
 </p>
 <dl compact="compact">
-<dt> <small>CVS</small> is not a build system.</dt>
+<dt><small>CVS</small> is not a build system.</dt>
 <dd>
 <p>Though the structure of your repository and modules
 file interact with your build system
@@ -198,7 +198,7 @@ some automated tool for generating the dependencies which
 in conjunction with <small>CVS</small>.
 </p>
 </dd>
-<dt> <small>CVS</small> is not a substitute for management.</dt>
+<dt><small>CVS</small> is not a substitute for management.</dt>
 <dd>
 <p>Your managers and project leaders are expected to talk
 to you frequently enough to make certain you are aware
@@ -210,7 +210,7 @@ your tune.  But you are the piper and the composer.  No
 instrument plays itself or writes its own music.
 </p>
 </dd>
-<dt> <small>CVS</small> is not a substitute for developer communication.</dt>
+<dt><small>CVS</small> is not a substitute for developer communication.</dt>
 <dd>
 <p>When faced with conflicts within a single file, most
 developers manage to resolve them without too much
@@ -239,7 +239,7 @@ peers.
 </p>
 
 </dd>
-<dt> <small>CVS</small> does not have change control</dt>
+<dt><small>CVS</small> does not have change control</dt>
 <dd>
 <p>Change control refers to a number of things.  First of
 all it can mean <em>bug-tracking</em>, that is being able
@@ -272,7 +272,7 @@ depends on mechanisms outside <small>CVS</small> to make sure
 nothing falls through the cracks.
 </p>
 </dd>
-<dt> <small>CVS</small> is not an automated testing program</dt>
+<dt><small>CVS</small> is not an automated testing program</dt>
 <dd>
 <p>It should be possible to enforce mandatory use of a
 testsuite using the <code>commitinfo</code> file.  I haven&rsquo;t
@@ -280,7 +280,7 @@ heard a lot about projects trying to do that or whether
 there are subtle gotchas, however.
 </p>
 </dd>
-<dt> <small>CVS</small> does not have a builtin process model</dt>
+<dt><small>CVS</small> does not have a builtin process model</dt>
 <dd>
 <p>Some systems provide ways to ensure that changes or
 releases go through various steps, with various

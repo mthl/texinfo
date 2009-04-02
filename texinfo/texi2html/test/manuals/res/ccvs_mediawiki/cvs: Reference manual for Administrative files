@@ -123,7 +123,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 <p>Alias modules are the simplest kind of module:
 </p>
 <dl compact="compact">
-<dt> <code><var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
+<dt><code><var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
 <dd><p>This represents the simplest way of defining a module
 <var>mname</var>.  The &lsquo;<samp>-a</samp>&rsquo; flags the definition as a
 simple alias: <small>CVS</small> will treat any use of <var>mname</var> (as
@@ -180,7 +180,7 @@ U first-dir/sdir/sfile
 <div id="index-Regular-modules"></div>
 
 <dl compact="compact">
-<dt> <code><var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
+<dt><code><var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
 <dd><p>In the simplest case, this form of module definition
 reduces to &lsquo;<samp><var>mname</var> <var>dir</var></samp>&rsquo;.  This defines
 all the files in directory <var>dir</var> as module mname.
@@ -362,14 +362,14 @@ the module.
 <dl compact="compact">
 <dd><div id="index-_002dd_002c-in-modules-file"></div>
 </dd>
-<dt> <code>-d <var>name</var></code></dt>
+<dt><code>-d <var>name</var></code></dt>
 <dd><p>Name the working directory something other than the
 module name.
 </p>
 <div id="index-Export-program"></div>
 <div id="index-_002de_002c-in-modules-file"></div>
 </dd>
-<dt> <code>-e <var>prog</var></code></dt>
+<dt><code>-e <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are exported.  <var>prog</var> runs with a single
 argument, the module name.
@@ -377,7 +377,7 @@ argument, the module name.
 <div id="index-Checkout-program"></div>
 <div id="index-_002do_002c-in-modules-file"></div>
 </dd>
-<dt> <code>-o <var>prog</var></code></dt>
+<dt><code>-o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
 argument, the module name.  See [[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]] for
@@ -387,7 +387,7 @@ information on how <var>prog</var> is called.
 <div id="index-Module-status"></div>
 <div id="index-_002ds_002c-in-modules-file"></div>
 </dd>
-<dt> <code>-s <var>status</var></code></dt>
+<dt><code>-s <var>status</var></code></dt>
 <dd><p>Assign a status to the module.  When the module file is
 printed with &lsquo;<samp>cvs checkout -s</samp>&rsquo; the modules are
 sorted according to primarily module status, and
@@ -399,7 +399,7 @@ person that is responsible for this module.
 <div id="index-Tag-program"></div>
 <div id="index-_002dt_002c-in-modules-file"></div>
 </dd>
-<dt> <code>-t <var>prog</var></code></dt>
+<dt><code>-t <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are tagged with <code>rtag</code>.  <var>prog</var> runs
 with two arguments: the module name and the symbolic
@@ -562,13 +562,13 @@ file names and the purpose of the corresponding
 programs.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<tt>commitinfo</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>commitinfo</tt>&rsquo;</dt>
 <dd><p>The program is responsible for checking that the commit
 is allowed.  If it exits with a non-zero exit status
 the commit will be aborted.
 </p>
 </dd>
-<dt> &lsquo;<tt>verifymsg</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>verifymsg</tt>&rsquo;</dt>
 <dd><p>The specified program is used to evaluate the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
@@ -576,7 +576,7 @@ fields.  This is most useful in combination with the
 template (see section [[#rcsinfo|Rcsinfo]]).
 </p>
 </dd>
-<dt> &lsquo;<tt>editinfo</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>editinfo</tt>&rsquo;</dt>
 <dd><p>The specified program is used to edit the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
@@ -584,7 +584,7 @@ fields.  This is most useful in combination with the
 template (see section [[#rcsinfo|Rcsinfo]]).  (obsolete)
 </p>
 </dd>
-<dt> &lsquo;<tt>loginfo</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>loginfo</tt>&rsquo;</dt>
 <dd><p>The specified program is called when the commit is
 complete.  It receives the log message and some
 additional information and can store the log message in
@@ -1089,13 +1089,13 @@ characters surrounded by &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&
 separators.  The format characters are:
 </p>
 <dl compact="compact">
-<dt> <tt>s</tt></dt>
+<dt><tt>s</tt></dt>
 <dd><p>file name
 </p></dd>
-<dt> <tt>V</tt></dt>
+<dt><tt>V</tt></dt>
 <dd><p>old version number (pre-checkin)
 </p></dd>
-<dt> <tt>v</tt></dt>
+<dt><tt>v</tt></dt>
 <dd><p>new version number (post-checkin)
 </p></dd>
 </dl>
@@ -1550,7 +1550,7 @@ non-alphanumeric character other than &lsquo;<samp>_</samp>&rsquo;, the
 internal variables are:
 </p>
 <dl compact="compact">
-<dt> <code>CVSROOT</code></dt>
+<dt><code>CVSROOT</code></dt>
 <dd><div id="index-CVSROOT_002c-internal-variable"></div>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
 See section [cvs: The Repository#Repository The Repository], for a description of the various
@@ -1559,7 +1559,7 @@ variable contains just the directory and not any
 of the access method information.
 </p>
 </dd>
-<dt> <code>RCSBIN</code></dt>
+<dt><code>RCSBIN</code></dt>
 <dd><div id="index-RCSBIN_002c-internal-variable"></div>
 <p>In <small>CVS</small> 1.9.18 and older, this specified the
 directory where <small>CVS</small> was looking for <small>RCS</small>
@@ -1568,20 +1568,20 @@ programs, specifying this internal variable is now an
 error.
 </p>
 </dd>
-<dt> <code>CVSEDITOR</code></dt>
+<dt><code>CVSEDITOR</code></dt>
 <dd><div id="index-CVSEDITOR_002c-internal-variable"></div>
 </dd>
-<dt> <code>EDITOR</code></dt>
+<dt><code>EDITOR</code></dt>
 <dd><div id="index-EDITOR_002c-internal-variable"></div>
 </dd>
-<dt> <code>VISUAL</code></dt>
+<dt><code>VISUAL</code></dt>
 <dd><div id="index-VISUAL_002c-internal-variable"></div>
 <p>These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section [cvs: Guide to CVS commands#Global-options Global options], for how
 to specify this.
 </p>
 </dd>
-<dt> <code>USER</code></dt>
+<dt><code>USER</code></dt>
 <dd><div id="index-USER_002c-internal-variable"></div>
 <p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
 server machine).
@@ -1627,7 +1627,7 @@ there is no way to quote a &lsquo;<samp>$</samp>&rsquo; character so that
 <dd><div id="index-environment-variables_002c-passed-to-administrative-files"></div>
 
 </dd>
-<dt> <code>CVS_USER</code></dt>
+<dt><code>CVS_USER</code></dt>
 <dd><div id="index-CVS_005fUSER_002c-environment-variable"></div>
 <p>The <small>CVS</small>-specific username provided by the user, if it
 can be provided (currently just for the pserver access
@@ -1636,12 +1636,12 @@ and <code>USER</code> may differ when &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rs
 is used to map <small>CVS</small> usernames to system usernames.)
 </p>
 </dd>
-<dt> <code>LOGNAME</code></dt>
+<dt><code>LOGNAME</code></dt>
 <dd><div id="index-LOGNAME_002c-environment-variable"></div>
 <p>The username of the system user.
 </p>
 </dd>
-<dt> <code>USER</code></dt>
+<dt><code>USER</code></dt>
 <dd><div id="index-USER_002c-environment-variable"></div>
 <p>Same as <code>LOGNAME</code>.
 Do not confuse this with the internal variable of the same name.
@@ -1687,7 +1687,7 @@ Extraneous spaces or tabs are not permitted.
 <dl compact="compact">
 <dd><div id="index-RCSBIN_002c-in-CVSROOT_002fconfig"></div>
 </dd>
-<dt> <code>RCSBIN=<var>bindir</var></code></dt>
+<dt><code>RCSBIN=<var>bindir</var></code></dt>
 <dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told
 <small>CVS</small> to look for <small>RCS</small> programs in the
 <var>bindir</var> directory.  Current versions of <small>CVS</small>
@@ -1696,7 +1696,7 @@ setting is accepted, but it does nothing.
 </p>
 <div id="index-SystemAuth_002c-in-CVSROOT_002fconfig"></div>
 </dd>
-<dt> <code>SystemAuth=<var>value</var></code></dt>
+<dt><code>SystemAuth=<var>value</var></code></dt>
 <dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then pserver should check
 for users in the system&rsquo;s user database if not found in
 &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
@@ -1707,7 +1707,7 @@ The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
 
 <div id="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></div>
 </dd>
-<dt> <code>TopLevelAdmin=<var>value</var></code></dt>
+<dt><code>TopLevelAdmin=<var>value</var></code></dt>
 <dd><p>Modify the &lsquo;<samp>checkout</samp>&rsquo; command to create a
 &lsquo;<samp>CVS</samp>&rsquo; directory at the top level of the new
 working directory, in addition to &lsquo;<samp>CVS</samp>&rsquo;
@@ -1724,7 +1724,7 @@ each command.  It also provides a place for the
 </p>
 <div id="index-LockDir_002c-in-CVSROOT_002fconfig"></div>
 </dd>
-<dt> <code>LockDir=<var>directory</var></code></dt>
+<dt><code>LockDir=<var>directory</var></code></dt>
 <dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
 directly in the repository.  This is useful if you want
 to let users read from the repository while giving them
@@ -1751,7 +1751,7 @@ repository with LockDir enabled.
 </p>
 <div id="index-LogHistory_002c-in-CVSROOT_002fconfig"></div>
 </dd>
-<dt> <code>LogHistory=<var>value</var></code></dt>
+<dt><code>LogHistory=<var>value</var></code></dt>
 <dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).
 Default of &lsquo;<samp>TOEFWUCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
 all transactions.  Any subset of the default is
@@ -1761,7 +1761,7 @@ legal.  (For example, to only log transactions that modify the
 <div id="index-RereadLogAfterVerify_002c-in-CVSROOT_002fconfig"></div>
 <div id="index-verifymsg_002c-changing-the-log-message-1"></div>
 </dd>
-<dt> <code>RereadLogAfterVerify=<var>value</var></code></dt>
+<dt><code>RereadLogAfterVerify=<var>value</var></code></dt>
 <dd><p>Modify the &lsquo;<samp>commit</samp>&rsquo; command such that CVS will reread the
 log message after running the program specified by &lsquo;<tt>verifymsg</tt>&rsquo;.
 <var>value</var> may be one of &lsquo;<samp>yes</samp>&rsquo; or &lsquo;<samp>always</samp>&rsquo;, indicating that
@@ -1781,7 +1781,7 @@ may be used.
 </p>
 <div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1"></div>
 </dd>
-<dt> <code>UserAdminOptions=<var>value</var></code></dt>
+<dt><code>UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
 command (see section [cvs: Guide to CVS commands#admin admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
 The <var>value</var> string is a list of single character options

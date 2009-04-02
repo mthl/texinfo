@@ -7,10 +7,10 @@ index_in_item_line_table_in_code.texi(,7)
 index_in_item_line_table_in_code.texi(,8) @code{
 index_in_item_line_table_in_code.texi(,9) 
 index_in_item_line_table_in_code.texi(,10) @table @asis
-index_in_item_line_table_in_code.texi(,11) @item @cindex index
+index_in_item_line_table_in_code.texi(,11) @item  index
 index_in_item_line_table_in_code.texi(,12) @option{opt}
 index_in_item_line_table_in_code.texi(,13) More text
-index_in_item_line_table_in_code.texi(,14) @item @cindex 2 index
+index_in_item_line_table_in_code.texi(,14) @item  2 index
 index_in_item_line_table_in_code.texi(,15) @option{nopt}
 index_in_item_line_table_in_code.texi(,16) Even more
 index_in_item_line_table_in_code.texi(,17) @end table

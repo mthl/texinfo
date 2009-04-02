@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -86,16 +86,16 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.1.113 setring</h3>
 <a name="index-setring"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>setring</code> ring_name
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>none
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>changes the basering to another (already defined) ring.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=0,(x,y),lp;
   // the basering is r1
   ring r2=32003,(a(1..8)),ds;
@@ -110,7 +110,7 @@ ul.toc {list-style: none}
 &rarr; // LIB                  [0]  string standard.lib
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Use in procedures:</strong></code></dt>
+<dt><code><strong>Use in procedures:</strong></code></dt>
 <dd><p>All changes of the basering by a definition of a new ring or a
 <code>setring</code> command in a procedure are local to this procedure.  Use
 <code>keepring</code> to move a ring, which is local to a procedure, up by one

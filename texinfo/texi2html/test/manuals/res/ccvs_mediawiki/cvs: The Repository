@@ -576,12 +576,12 @@ special meaning by <small>CVS</small>; other <var>attrname</var>s are for user-d
 <p>Builtin attributes:
 </p>
 <dl compact="compact">
-<dt> <code>_watched</code></dt>
+<dt><code>_watched</code></dt>
 <dd><p>Present means the file is watched and should be checked out
 read-only.
 </p>
 </dd>
-<dt> <code>_watchers</code></dt>
+<dt><code>_watchers</code></dt>
 <dd><p>Users with watches for this file.  Value is
 <var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> }
 where <var>watcher</var> is a username, and <var>type</var>
@@ -589,7 +589,7 @@ is zero or more of edit,unedit,commit separated by
 &lsquo;<samp>+</samp>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
 </p>
 </dd>
-<dt> <code>_editors</code></dt>
+<dt><code>_editors</code></dt>
 <dd><p>Users editing this file.  Value is
 <var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> }
 where <var>editor</var> is a username, and <var>val</var> is
@@ -832,14 +832,14 @@ managed by <small>CVS</small> probably will not be portable between
 such systems either.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<tt>Root</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Root</tt>&rsquo;</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
 described in [[#Specifying-a-repository|Telling CVS where your repository is]].
 </p>
 <div id="index-Repository-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRepository-file"></div>
 </dd>
-<dt> &lsquo;<tt>Repository</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Repository</tt>&rsquo;</dt>
 <dd><p>This file contains the directory within the repository
 which the current directory corresponds with.  It can
 be either an absolute pathname or a relative pathname;
@@ -877,7 +877,7 @@ should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;.
 <div id="index-Entries-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fEntries-file"></div>
 </dd>
-<dt> &lsquo;<tt>Entries</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Entries</tt>&rsquo;</dt>
 <dd><p>This file lists the files and directories in the
 working directory.
 The first character of each line indicates what sort of
@@ -957,7 +957,7 @@ for future expansion.  Programs which modify
 <div id="index-Entries_002eLog-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fEntries_002eLog-file"></div>
 </dd>
-<dt> &lsquo;<tt>Entries.Log</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Entries.Log</tt>&rsquo;</dt>
 <dd><p>This file does not record any information beyond that
 in &lsquo;<tt>Entries</tt>&rsquo;, but it does provide a way to update
 the information without having to rewrite the entire
@@ -989,7 +989,7 @@ safely ignore &lsquo;<tt>Entries.Log</tt>&rsquo; if they so choose.
 <div id="index-Entries_002eBackup-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fEntries_002eBackup-file"></div>
 </dd>
-<dt> &lsquo;<tt>Entries.Backup</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Entries.Backup</tt>&rsquo;</dt>
 <dd><p>This is a temporary file.  Recommended usage is to
 write a new entries file to &lsquo;<tt>Entries.Backup</tt>&rsquo;, and
 then to rename it (atomically, where possible) to &lsquo;<tt>Entries</tt>&rsquo;.
@@ -997,7 +997,7 @@ then to rename it (atomically, where possible) to &lsquo;<tt>Entries</tt>&rsquo;
 <div id="index-Entries_002eStatic-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fEntries_002eStatic-file"></div>
 </dd>
-<dt> &lsquo;<tt>Entries.Static</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Entries.Static</tt>&rsquo;</dt>
 <dd><p>The only relevant thing about this file is whether it
 exists or not.  If it exists, then it means that only
 part of a directory was gotten and <small>CVS</small> will
@@ -1011,7 +1011,7 @@ and remove &lsquo;<tt>Entries.Static</tt>&rsquo;.
 <div id="index-Sticky-tags_002fdates_002c-per_002ddirectory"></div>
 <div id="index-Per_002ddirectory-sticky-tags_002fdates"></div>
 </dd>
-<dt> &lsquo;<tt>Tag</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Tag</tt>&rsquo;</dt>
 <dd><p>This file contains per-directory sticky tags or dates.
 The first character is &lsquo;<samp>T</samp>&rsquo; for a branch tag,
 &lsquo;<samp>N</samp>&rsquo; for a non-branch tag, or &lsquo;<samp>D</samp>&rsquo; for a date,
@@ -1027,7 +1027,7 @@ tags and dates, see [cvs: Revisions#Sticky-tags Sticky tags].
 <div id="index-Notify-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fNotify-file"></div>
 </dd>
-<dt> &lsquo;<tt>Notify</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Notify</tt>&rsquo;</dt>
 <dd><p>This file stores notifications (for example, for
 <code>edit</code> or <code>unedit</code>) which have not yet been
 sent to the server.  Its format is not yet documented
@@ -1036,7 +1036,7 @@ here.
 <div id="index-Notify_002etmp-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fNotify_002etmp-file"></div>
 </dd>
-<dt> &lsquo;<tt>Notify.tmp</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Notify.tmp</tt>&rsquo;</dt>
 <dd><p>This file is to &lsquo;<tt>Notify</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
 is to &lsquo;<tt>Entries</tt>&rsquo;.  That is, to write &lsquo;<tt>Notify</tt>&rsquo;,
 first write the new contents to &lsquo;<tt>Notify.tmp</tt>&rsquo; and
@@ -1046,7 +1046,7 @@ then (atomically where possible), rename it to
 <div id="index-Base-directory_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fBase-directory"></div>
 </dd>
-<dt> &lsquo;<tt>Base</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Base</tt>&rsquo;</dt>
 <dd><p>If watches are in use, then an <code>edit</code> command
 stores the original copy of the file in the &lsquo;<tt>Base</tt>&rsquo;
 directory.  This allows the <code>unedit</code> command to
@@ -1056,7 +1056,7 @@ server.
 <div id="index-Baserev-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fBaserev-file"></div>
 </dd>
-<dt> &lsquo;<tt>Baserev</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Baserev</tt>&rsquo;</dt>
 <dd><p>The file lists the revision for each of the files in
 the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 </p>
@@ -1069,7 +1069,7 @@ future expansion.
 <div id="index-Baserev_002etmp-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fBaserev_002etmp-file"></div>
 </dd>
-<dt> &lsquo;<tt>Baserev.tmp</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Baserev.tmp</tt>&rsquo;</dt>
 <dd><p>This file is to &lsquo;<tt>Baserev</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
 is to &lsquo;<tt>Entries</tt>&rsquo;.  That is, to write &lsquo;<tt>Baserev</tt>&rsquo;,
 first write the new contents to &lsquo;<tt>Baserev.tmp</tt>&rsquo; and
@@ -1079,7 +1079,7 @@ then (atomically where possible), rename it to
 <div id="index-Template-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fTemplate-file"></div>
 </dd>
-<dt> &lsquo;<tt>Template</tt>&rsquo;</dt>
+<dt>&lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file (see section [cvs: Reference manual for Administrative files#rcsinfo Rcsinfo]).  It is only used
 by the client; the non-client/server <small>CVS</small> consults

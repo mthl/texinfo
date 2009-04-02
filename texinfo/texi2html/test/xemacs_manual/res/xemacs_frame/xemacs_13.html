@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -78,7 +78,7 @@ register.  To see what a register <var>r</var> contains, use <kbd>M-x
 view-register</kbd>.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x view-register &lt;RET&gt; <var>r</var></kbd></dt>
+<dt><kbd>M-x view-register &lt;RET&gt; <var>r</var></kbd></dt>
 <dd><p>Display a description of what register <var>r</var> contains.
 </p></dd>
 </dl>
@@ -130,10 +130,10 @@ back there later.  Moving to a saved position switches to that buffer
 and moves point to that place in it.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r &lt;SPC&gt; <var>r</var></kbd></dt>
+<dt><kbd>C-x r &lt;SPC&gt; <var>r</var></kbd></dt>
 <dd><p>Save position of point in register <var>r</var> (<code>point-to-register</code>).
 </p></dd>
-<dt> <kbd>C-x r j <var>r</var></kbd></dt>
+<dt><kbd>C-x r j <var>r</var></kbd></dt>
 <dd><p>Jump to the position saved in register <var>r</var> (<code>jump-to-register</code>).
 </p></dd>
 </dl>
@@ -187,11 +187,11 @@ alternative is to store the text in a register with <kbd>C-x r s</kbd>
 (<code>insert-register</code>).
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r s <var>r</var></kbd></dt>
+<dt><kbd>C-x r s <var>r</var></kbd></dt>
 <dd><p>Copy region into register <var>r</var> (<code>copy-to-register</code>).
 </p></dd>
-<dt> <kbd>C-x r g <var>r</var></kbd></dt>
-<dt> <kbd>C-x r i <var>r</var></kbd></dt>
+<dt><kbd>C-x r g <var>r</var></kbd></dt>
+<dt><kbd>C-x r i <var>r</var></kbd></dt>
 <dd><p>Insert text contents of register <var>r</var> (<code>insert-register</code>).
 </p></dd>
 </dl>
@@ -240,13 +240,13 @@ information on rectangles and how to specify rectangles in a buffer.
 <dd><a name="index-copy_002drectangle_002dto_002dregister"></a>
 <a name="index-C_002dx-r-r"></a>
 </dd>
-<dt> <kbd>C-x r r <var>r</var></kbd></dt>
+<dt><kbd>C-x r r <var>r</var></kbd></dt>
 <dd><p>Copy the region-rectangle into register <var>r</var>
 (<code>copy-rectangle-to-register</code>).  With a numeric argument, delete it
 as well.
 </p></dd>
-<dt> <kbd>C-x r g <var>r</var></kbd></dt>
-<dt> <kbd>C-x r i <var>r</var></kbd></dt>
+<dt><kbd>C-x r g <var>r</var></kbd></dt>
+<dt><kbd>C-x r i <var>r</var></kbd></dt>
 <dd><p>Insert the rectangle stored in register <var>r</var> (if it contains a
 rectangle) (<code>insert-register</code>).
 </p></dd>
@@ -288,11 +288,11 @@ register, or even the configuration of all windows in all frames, and
 restore the configuration later.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r w <var>r</var></kbd></dt>
+<dt><kbd>C-x r w <var>r</var></kbd></dt>
 <dd><p>Save the state of the selected frame&rsquo;s windows in register <var>r</var>
 (<code>window-configuration-to-register</code>).
 </p></dd>
-<dt> <kbd>M-x frame-configuration-to-register &lt;RET&gt; <var>r</var></kbd></dt>
+<dt><kbd>M-x frame-configuration-to-register &lt;RET&gt; <var>r</var></kbd></dt>
 <dd><p>Save the state of all frames, including all their windows, in register
 <var>r</var> (<code>frame-configuration-to-register</code>).
 </p></dd>
@@ -330,18 +330,18 @@ the number in the buffer in decimal, and to increment it.  These commands
 can be useful in keyboard macros (see section <a href="xemacs_30.html#Keyboard-Macros">Keyboard Macros</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>C-u <var>number</var> C-x r n <var>reg</var></kbd></dt>
+<dt><kbd>C-u <var>number</var> C-x r n <var>reg</var></kbd></dt>
 <dd><a name="index-C_002dx-r-n"></a>
 <a name="index-number_002dto_002dregister"></a>
 <p>Store <var>number</var> into register <var>reg</var> (<code>number-to-register</code>).
 </p></dd>
-<dt> <kbd>C-u <var>number</var> C-x r + <var>reg</var></kbd></dt>
+<dt><kbd>C-u <var>number</var> C-x r + <var>reg</var></kbd></dt>
 <dd><a name="index-C_002dx-r-_002b"></a>
 <a name="index-increment_002dregister"></a>
 <p>Increment the number in register <var>reg</var> by <var>number</var>
 (<code>increment-register</code>).
 </p></dd>
-<dt> <kbd>C-x r g <var>reg</var></kbd></dt>
+<dt><kbd>C-x r g <var>reg</var></kbd></dt>
 <dd><p>Insert the number from register <var>reg</var> into the buffer.
 </p></dd>
 </dl>
@@ -420,26 +420,26 @@ various files.
 install that to use bookmark facility (see section <a href="xemacs_25.html#Packages">Packages</a>).
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x r m &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-x r m &lt;RET&gt;</kbd></dt>
 <dd><p>Set the bookmark for the visited file, at point.
 </p>
 </dd>
-<dt> <kbd>C-x r m <var>bookmark</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-x r m <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002dset"></a>
 <p>Set the bookmark named <var>bookmark</var> at point (<code>bookmark-set</code>).
 </p>
 </dd>
-<dt> <kbd>C-x r b <var>bookmark</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>C-x r b <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002djump"></a>
 <p>Jump to the bookmark named <var>bookmark</var> (<code>bookmark-jump</code>).
 </p>
 </dd>
-<dt> <kbd>C-x r l</kbd></dt>
+<dt><kbd>C-x r l</kbd></dt>
 <dd><a name="index-list_002dbookmarks"></a>
 <p>List all bookmarks (<code>list-bookmarks</code>).
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-save</kbd></dt>
+<dt><kbd>M-x bookmark-save</kbd></dt>
 <dd><a name="index-bookmark_002dsave"></a>
 <p>Save all the current bookmark values in the default bookmark file.
 </p></dd>
@@ -487,7 +487,7 @@ position.
 <p>  Here are some additional commands for working with bookmarks:
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x bookmark-load &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x bookmark-load &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002dload"></a>
 <p>Load a file named <var>filename</var> that contains a list of bookmark
 values.  You can use this command, as well as <code>bookmark-write</code>, to
@@ -495,23 +495,23 @@ work with other files of bookmark values in addition to your default
 bookmark file.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-write &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x bookmark-write &lt;RET&gt; <var>filename</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002dwrite"></a>
 <p>Save all the current bookmark values in the file <var>filename</var>.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-delete &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x bookmark-delete &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002ddelete"></a>
 <p>Delete the bookmark named <var>bookmark</var>.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-insert-location &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x bookmark-insert-location &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002dinsert_002dlocation"></a>
 <p>Insert in the buffer the name of the file that bookmark <var>bookmark</var>
 points to.
 </p>
 </dd>
-<dt> <kbd>M-x bookmark-insert &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
+<dt><kbd>M-x bookmark-insert &lt;RET&gt; <var>bookmark</var> &lt;RET&gt;</kbd></dt>
 <dd><a name="index-bookmark_002dinsert"></a>
 <p>Insert in the buffer the <em>contents</em> of the file that bookmark
 <var>bookmark</var> points to.

@@ -66,37 +66,37 @@
 <para>In deff item.
 </para></definitionitem></definition>
 <table><!-- comment in table -->
-<tableitem><tableterm><indexterm index="vr">a</indexterm> <code>a</code></tableterm>
+<tableitem><tableterm><indexterm index="vr">a</indexterm><code>a</code></tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="vr">a</indexterm> a</tableterm>
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
 <!-- comment between item and itemx -->
-<tableterm><indexterm index="vr">b</indexterm> b</tableterm>
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
-<table><tableitem><tableterm><indexterm index="fn">a</indexterm> <var>a</var></tableterm>
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm><var>a</var></tableterm>
 <para><indexterm index="cp">index entry between item and itemx</indexterm><!-- and a comment -->
 <!-- and another comment -->
-</para><tableterm><indexterm index="fn">b</indexterm> <var>b</var></tableterm>
+</para><tableterm><indexterm index="fn">b</indexterm><var>b</var></tableterm>
 <item><para>l&ndash;ine
-</para></item></tableitem><tableitem><tableterm><indexterm index="fn">c</indexterm> <var>c</var></tableterm>
+</para></item></tableitem><tableitem><tableterm><indexterm index="fn">c</indexterm><var>c</var></tableterm>
 
 <!-- comment between lines -->
 
-<tableterm><indexterm index="fn">d</indexterm> <var>d</var></tableterm>
+<tableterm><indexterm index="fn">d</indexterm><var>d</var></tableterm>
 
 <!-- comment at end -->
 </tableitem></table>
 
 <table><para><indexterm index="cp">cindex in table</indexterm><!-- comment in table -->
-</para><tableitem><tableterm> <code>abb</code></tableterm>
+</para><tableitem><tableterm><code>abb</code></tableterm>
 <item><para>l&ndash;ine
 </para></item></tableitem></table>
 
 <table><item><para><indexterm index="cp">cindex in table</indexterm>Texte before first item.
-</para></item><tableitem><tableterm> <code>abb</code></tableterm>
+</para></item><tableitem><tableterm><code>abb</code></tableterm>
 </tableitem></table>
 
 <para>cp

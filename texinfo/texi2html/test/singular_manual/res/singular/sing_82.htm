@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -87,14 +87,14 @@ ul.toc {list-style: none}
 <a name="index-intmat-declarations"></a>
 
 <dl compact="compact">
-<dt> <strong>Syntax:</strong></dt>
+<dt><strong>Syntax:</strong></dt>
 <dd><p><code>intmat</code> name <code>=</code> intmat_expression <code>;</code>
 <br><code>intmat</code> name <code>[</code> rows <code>] [</code> cols <code>] =</code> intmat_expression <code>;</code>
 <br><code>intmat</code> name <code>[</code> rows <code>] [</code> cols <code>] =</code> list_of_int_and_intvec_and_intmat_expressions <code>;</code>
 <br>rows and cols must be positive int expressions.
 </p>
 </dd>
-<dt> <strong>Purpose:</strong></dt>
+<dt><strong>Purpose:</strong></dt>
 <dd><p>defines an intmat variable.
 <br> Given a list of integers, the matrix is filled up with the first row
 from the left to the right, then the second row and so on.
@@ -103,11 +103,11 @@ the matrix is filled up with zeros; if it contains more
 elements, only the first rows*cols elements are used.
 </p>
 </dd>
-<dt> <strong>Default:</strong></dt>
+<dt><strong>Default:</strong></dt>
 <dd><p>0 (1 x 1 matrix)
 </p>
 </dd>
-<dt> <strong>Example:</strong></dt>
+<dt><strong>Example:</strong></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat im[3][5]=1,3,5,7,8,9,10,11,12,13;
   im;
 &rarr; 1,3,5,7,8,

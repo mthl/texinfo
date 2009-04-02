@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
 This manual is for GNU tar (version
@@ -720,7 +720,7 @@ of them: storage, backup, and transportation.
 
 
 <dl compact="compact">
-<dt> Storage</dt>
+<dt>Storage</dt>
 <dd><p>Often, <code>tar</code> archives are used to store related files for
 convenient file transfer over a network.  For example, the
 <acronym>GNU</acronym> Project distributes its software bundled into
@@ -743,7 +743,7 @@ space; the idea here is that <code>tar</code> can be used to move archives in
 all dimensions, even time!)
 </p>
 </dd>
-<dt> Backup</dt>
+<dt>Backup</dt>
 <dd><p>Because the archive created by <code>tar</code> is capable of preserving
 file information and directory structure, <code>tar</code> is commonly
 used for performing full and incremental backups of disks.  A backup
@@ -755,7 +755,7 @@ used to make incremental and full dumps of all the files in a
 file system.
 </p>
 </dd>
-<dt> Transportation</dt>
+<dt>Transportation</dt>
 <dd><p>You can create an archive on one system, transfer it to another system,
 and extract the contents there.  This allows you to transport a group of
 files from one system to another.
@@ -1152,16 +1152,16 @@ this chapter will cover how to use these operations in detail.  We will
 present the rest of the operations in the next chapter.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--create</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--create</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-c</samp>&rsquo;</dt>
 <dd><p>Create a new <code>tar</code> archive.
 </p></dd>
-<dt> &lsquo;<samp>--list</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-t</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--list</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
 <dd><p>List the contents of an archive.
 </p></dd>
-<dt> &lsquo;<samp>--extract</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-x</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--extract</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-x</samp>&rsquo;</dt>
 <dd><p>Extract one or more members from an archive.
 </p></dd>
 </dl>
@@ -1227,8 +1227,8 @@ useful in making things more clear and helping you avoid errors.)
 <dl compact="compact">
 <dd><a name="index-file_002c-tutorial"></a>
 </dd>
-<dt> &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;</dt>
 <dd><p>Specify the name of an archive file.
 </p></dd>
 </dl>
@@ -1282,8 +1282,8 @@ For more information on using the &lsquo;<samp>--file=<var>archive-name</var></s
 <dl compact="compact">
 <dd><a name="index-verbose_002c-introduced"></a>
 </dd>
-<dt> &lsquo;<samp>--verbose</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-v</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verbose</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-v</samp>&rsquo;</dt>
 <dd><p>Show the files being worked on as <code>tar</code> is running.
 </p></dd>
 </dl>
@@ -1370,45 +1370,45 @@ and on how to use them, see <a href="#quoting-styles">Quoting Member Names</a>.
 additional information, described in the following table:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-&gt; <var>link-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-&gt; <var>link-name</var></samp>&rsquo;</dt>
 <dd><p>The file or archive member is a <em>symbolic link</em> and
 <var>link-name</var> is the name of file it links to.
 </p>
 </dd>
-<dt> &lsquo;<samp>link to <var>link-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>link to <var>link-name</var></samp>&rsquo;</dt>
 <dd><p>The file or archive member is a <em>hard link</em> and <var>link-name</var> is
 the name of file it links to.
 </p>
 </dd>
-<dt> &lsquo;<samp>--Long Link--</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--Long Link--</samp>&rsquo;</dt>
 <dd><p>The archive member is an old GNU format long link.  You will normally
 not encounter this.
 </p>
 </dd>
-<dt> &lsquo;<samp>--Long Name--</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--Long Name--</samp>&rsquo;</dt>
 <dd><p>The archive member is an old GNU format long name.  You will normally
 not encounter this.
 </p>
 </dd>
-<dt> &lsquo;<samp>--Volume Header--</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--Volume Header--</samp>&rsquo;</dt>
 <dd><p>The archive member is a GNU <em>volume header</em> (see section <a href="#Tape-Files">Tape Files</a>).
 </p>
 </dd>
-<dt> &lsquo;<samp>--Continued at byte <var>n</var>--</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--Continued at byte <var>n</var>--</samp>&rsquo;</dt>
 <dd><p>Encountered only at the beginning of a multy-volume archive
 (see section <a href="#Using-Multiple-Tapes">Using Multiple Tapes</a>).  This archive member is a continuation
 from the previous volume. The number <var>n</var> gives the offset where
 the original file was split.  
 </p>
 </dd>
-<dt> &lsquo;<samp>--Mangled file names--</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--Mangled file names--</samp>&rsquo;</dt>
 <dd><p>This archive member contains <em>mangled file names</em> declarations,
 a special member type that was used by early versions of <acronym>GNU</acronym> <code>tar</code>.
 You probably will never encounter this, unless you are reading a very
 old archive.
 </p>
 </dd>
-<dt>  &lsquo;<samp>unknown file type <var>c</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>unknown file type <var>c</var></samp>&rsquo;</dt>
 <dd><p>An archive member of unknown type. <var>c</var> is the type character from
 the archive header.  If you encounter such a message, it means that
 either your archive contains proprietary member types <acronym>GNU</acronym> <code>tar</code> is not
@@ -1455,7 +1455,7 @@ hrw-r--r-- gray/staff      0 2006-06-09 12:06 music link to blues
 <dl compact="compact">
 <dd><a name="index-help"></a>
 </dd>
-<dt> &lsquo;<samp>--help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
 <dd>
 <p>The &lsquo;<samp>--help</samp>&rsquo; option to <code>tar</code> prints out a very brief list of
 all operations and option available for the current version of
@@ -1969,7 +1969,7 @@ etc/mail/aliases
 &lsquo;<samp>--show-stored-names</samp>&rsquo; option.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--show-stored-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-stored-names</samp>&rsquo;</dt>
 <dd><p>Print member (as opposed to <em>file</em>) names when creating the archive.
 </p></dd>
 </dl>
@@ -3062,24 +3062,24 @@ a reference for deciphering <code>tar</code> commands in scripts.
 <p><a name="g_t_002d_002dappend"></a>
 <a name="index-append_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--append</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-r</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--append</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-r</samp>&rsquo;</dt>
 <dd>
 <p>Appends files to the end of the archive.  See section <a href="#append">How to Add Files to Existing Archives: &lsquo;<samp>--append</samp>&rsquo;</a>.
 </p>
 <p><a name="g_t_002d_002dcatenate"></a>
 <a name="index-catenate_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--catenate</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-A</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--catenate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-A</samp>&rsquo;</dt>
 <dd>
 <p>Same as &lsquo;<samp>--concatenate</samp>&rsquo;.  See section <a href="#concatenate">Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a>.
 </p>
 <p><a name="g_t_002d_002dcompare"></a>
 <a name="index-compare_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--compare</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-d</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compare</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
 <dd>
 <p>Compares archive members with their counterparts in the file
 system, and reports differences in file size, mode, owner,
@@ -3088,8 +3088,8 @@ modification date and contents.  See section <a href="#compare">Comparing Archiv
 <p><a name="g_t_002d_002dconcatenate"></a>
 <a name="index-concatenate_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--concatenate</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-A</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--concatenate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-A</samp>&rsquo;</dt>
 <dd>
 <p>Appends other <code>tar</code> archives to the end of the archive.
 See section <a href="#concatenate">Combining Archives with &lsquo;<samp>--concatenate</samp>&rsquo;</a>.
@@ -3097,15 +3097,15 @@ See section <a href="#concatenate">Combining Archives with &lsquo;<samp>--concat
 <p><a name="g_t_002d_002dcreate"></a>
 <a name="index-create_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--create</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--create</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-c</samp>&rsquo;</dt>
 <dd>
 <p>Creates a new <code>tar</code> archive.  See section <a href="#create">How to Create Archives</a>.
 </p>
 <p><a name="g_t_002d_002ddelete"></a>
 <a name="index-delete_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--delete</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--delete</samp>&rsquo;</dt>
 <dd>
 <p>Deletes members from the archive.  Don&rsquo;t try this on a archive on a
 tape!  See section <a href="#delete">Removing Archive Members Using &lsquo;<samp>--delete</samp>&rsquo;</a>.
@@ -3113,40 +3113,40 @@ tape!  See section <a href="#delete">Removing Archive Members Using &lsquo;<samp
 <p><a name="g_t_002d_002ddiff"></a>
 <a name="index-diff_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--diff</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-d</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--diff</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
 <dd>
 <p>Same &lsquo;<samp>--compare</samp>&rsquo;.  See section <a href="#compare">Comparing Archive Members with the File System</a>.
 </p>
 <p><a name="g_t_002d_002dextract"></a>
 <a name="index-extract_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--extract</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-x</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--extract</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-x</samp>&rsquo;</dt>
 <dd>
 <p>Extracts members from the archive into the file system.  See section <a href="#extract">How to Extract Members from an Archive</a>.
 </p>
 <p><a name="g_t_002d_002dget"></a>
 <a name="index-get_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--get</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-x</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--get</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-x</samp>&rsquo;</dt>
 <dd>
 <p>Same as &lsquo;<samp>--extract</samp>&rsquo;.  See section <a href="#extract">How to Extract Members from an Archive</a>.
 </p>
 <p><a name="g_t_002d_002dlist"></a>
 <a name="index-list_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--list</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-t</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--list</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
 <dd>
 <p>Lists the members in an archive.  See section <a href="#list">How to List Archives</a>.
 </p>
 <p><a name="g_t_002d_002dupdate"></a>
 <a name="index-update_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--update</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-u</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--update</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-u</samp>&rsquo;</dt>
 <dd>
 <p>Adds files to the end of the archive, but only if they are newer than
 their counterparts already in the archive, or if they do not already
@@ -3181,8 +3181,8 @@ exist in the archive. See section <a href="#update">Updating an Archive</a>.
 <p><a name="g_t_002d_002dabsolute_002dnames"></a>
 <a name="index-absolute_002dnames_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-P</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-P</samp>&rsquo;</dt>
 <dd>
 <p>Normally when creating an archive, <code>tar</code> strips an initial
 &lsquo;<samp>/</samp>&rsquo; from member names.  This option disables that behavior.
@@ -3191,23 +3191,23 @@ See section <a href="#absolute">Absolute File Names</a>.
 <p><a name="g_t_002d_002dafter_002ddate"></a>
 <a name="index-after_002ddate_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--after-date</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--after-date</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--newer</samp>&rsquo;, see section <a href="#after">Operating Only on New Files</a>)
 </p>
 <p><a name="g_t_002d_002danchored"></a>
 <a name="index-anchored_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--anchored</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--anchored</samp>&rsquo;</dt>
 <dd><p>A pattern must match an initial subsequence of the name&rsquo;s components.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002datime_002dpreserve"></a>
 <a name="index-atime_002dpreserve_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--atime-preserve</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--atime-preserve=replace</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--atime-preserve=system</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve=replace</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve=system</samp>&rsquo;</dt>
 <dd>
 <p>Attempt to preserve the access time of files when reading them.  This
 option currently is effective only on files that you own, unless you
@@ -3254,7 +3254,7 @@ superuser privileges and can be a pain to manage.
 <p><a name="g_t_002d_002dbackup"></a>
 <a name="index-backup_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--backup=<var>backup-type</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--backup=<var>backup-type</var></samp>&rsquo;</dt>
 <dd>
 <p>Rather than deleting files from the file system, <code>tar</code> will
 back them up using simple or numbered backups, depending upon
@@ -3263,8 +3263,8 @@ back them up using simple or numbered backups, depending upon
 <p><a name="g_t_002d_002dblock_002dnumber"></a>
 <a name="index-block_002dnumber_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--block-number</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-R</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--block-number</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-R</samp>&rsquo;</dt>
 <dd>
 <p>With this option present, <code>tar</code> prints error messages for read errors
 with the block number in the archive file.  See <a href="#block_002dnumber">block-number</a>.
@@ -3272,8 +3272,8 @@ with the block number in the archive file.  See <a href="#block_002dnumber">bloc
 <p><a name="g_t_002d_002dblocking_002dfactor"></a>
 <a name="index-blocking_002dfactor_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--blocking-factor=<var>blocking</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-b <var>blocking</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--blocking-factor=<var>blocking</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-b <var>blocking</var></samp>&rsquo;</dt>
 <dd>
 <p>Sets the blocking factor <code>tar</code> uses to <var>blocking</var> x 512 bytes per
 record.  See section <a href="#Blocking-Factor">The Blocking Factor of an Archive</a>.
@@ -3281,8 +3281,8 @@ record.  See section <a href="#Blocking-Factor">The Blocking Factor of an Archiv
 <p><a name="g_t_002d_002dbzip2"></a>
 <a name="index-bzip2_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--bzip2</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-j</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--bzip2</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-j</samp>&rsquo;</dt>
 <dd>
 <p>This option tells <code>tar</code> to read or write archives through
 <code>bzip2</code>.  See section <a href="#gzip">Creating and Reading Compressed Archives</a>.
@@ -3290,7 +3290,7 @@ record.  See section <a href="#Blocking-Factor">The Blocking Factor of an Archiv
 <p><a name="g_t_002d_002dcheckpoint"></a>
 <a name="index-checkpoint_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--checkpoint[=<var>number</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--checkpoint[=<var>number</var>]</samp>&rsquo;</dt>
 <dd>
 <p>This option directs <code>tar</code> to print periodic checkpoint
 messages as it reads through the archive.  It is intended for when you
@@ -3301,8 +3301,8 @@ description, see <a href="#Progress-information">Progress information</a>.
 <p><a name="g_t_002d_002dcheck_002dlinks"></a>
 <a name="index-check_002dlinks_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--check-links</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-l</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--check-links</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-l</samp>&rsquo;</dt>
 <dd><p>If this option was given, <code>tar</code> will check the number of links
 dumped for each processed file.  If this number does not match the
 total number of hard links for the file, a warning message will be
@@ -3313,9 +3313,9 @@ output <a name="DOCF5" href="#FOOT5">(5)</a>.
 <a name="g_t_002d_002duncompress"></a>
 <a name="index-uncompress_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--compress</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--uncompress</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-Z</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compress</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--uncompress</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-Z</samp>&rsquo;</dt>
 <dd>
 <p><code>tar</code> will use the <code>compress</code> program when reading or
 writing the archive.  This allows you to directly act on archives
@@ -3324,14 +3324,14 @@ while saving space.  See section <a href="#gzip">Creating and Reading Compressed
 <p><a name="g_t_002d_002dconfirmation"></a>
 <a name="index-confirmation_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--confirmation</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--confirmation</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--interactive</samp>&rsquo;.)  See section <a href="#interactive">Asking for Confirmation During Operations</a>.
 </p>
 <p><a name="g_t_002d_002ddelay_002ddirectory_002drestore"></a>
 <a name="index-delay_002ddirectory_002drestore_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--delay-directory-restore</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--delay-directory-restore</samp>&rsquo;</dt>
 <dd>
 <p>Delay setting modification times and permissions of extracted
 directories until the end of extraction. See section <a href="#Directory-Modification-Times-and-Permissions">Directory Modification Times and Permissions</a>.
@@ -3339,8 +3339,8 @@ directories until the end of extraction. See section <a href="#Directory-Modific
 <p><a name="g_t_002d_002ddereference"></a>
 <a name="index-dereference_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--dereference</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-h</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--dereference</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-h</samp>&rsquo;</dt>
 <dd>
 <p>When creating a <code>tar</code> archive, <code>tar</code> will archive the
 file that a symbolic link points to, rather than archiving the
@@ -3349,8 +3349,8 @@ symlink.  See section <a href="#dereference">Symbolic Links</a>.
 <p><a name="g_t_002d_002ddirectory"></a>
 <a name="index-directory_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--directory=<var>dir</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-C <var>dir</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--directory=<var>dir</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-C <var>dir</var></samp>&rsquo;</dt>
 <dd>
 <p>When this option is specified, <code>tar</code> will change its current directory
 to <var>dir</var> before performing any operations.  When this option is used
@@ -3359,7 +3359,7 @@ during archive creation, it is order sensitive.  See section <a href="#directory
 <p><a name="g_t_002d_002dexclude"></a>
 <a name="index-exclude_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--exclude=<var>pattern</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude=<var>pattern</var></samp>&rsquo;</dt>
 <dd>
 <p>When performing operations, <code>tar</code> will skip files that match
 <var>pattern</var>.  See section <a href="#exclude">Excluding Some Files</a>.
@@ -3367,8 +3367,8 @@ during archive creation, it is order sensitive.  See section <a href="#directory
 <p><a name="g_t_002d_002dexclude_002dfrom"></a>
 <a name="index-exclude_002dfrom_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--exclude-from=<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-X <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude-from=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-X <var>file</var></samp>&rsquo;</dt>
 <dd>
 <p>Similar to &lsquo;<samp>--exclude</samp>&rsquo;, except <code>tar</code> will use the list of
 patterns in the file <var>file</var>.  See section <a href="#exclude">Excluding Some Files</a>.
@@ -3376,7 +3376,7 @@ patterns in the file <var>file</var>.  See section <a href="#exclude">Excluding 
 <p><a name="g_t_002d_002dexclude_002dcaches"></a>
 <a name="index-exclude_002dcaches_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--exclude-caches</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude-caches</samp>&rsquo;</dt>
 <dd>
 <p>Automatically excludes all directories
 containing a cache directory tag.  See section <a href="#exclude">Excluding Some Files</a>.
@@ -3384,8 +3384,8 @@ containing a cache directory tag.  See section <a href="#exclude">Excluding Some
 <p><a name="g_t_002d_002dfile"></a>
 <a name="index-file_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--file=<var>archive</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-f <var>archive</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--file=<var>archive</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f <var>archive</var></samp>&rsquo;</dt>
 <dd>
 <p><code>tar</code> will use the file <var>archive</var> as the <code>tar</code> archive it
 performs operations on, rather than <code>tar</code>&rsquo;s compilation dependent
@@ -3394,8 +3394,8 @@ default.  See section <a href="#file-tutorial">The &lsquo;<samp>--file</samp>&rs
 <p><a name="g_t_002d_002dfiles_002dfrom"></a>
 <a name="index-files_002dfrom_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--files-from=<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-T <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--files-from=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-T <var>file</var></samp>&rsquo;</dt>
 <dd>
 <p><code>tar</code> will use the contents of <var>file</var> as a list of archive members
 or files to operate on, in addition to those specified on the
@@ -3404,7 +3404,7 @@ command-line.  See section <a href="#files">Reading Names from a File</a>.
 <p><a name="g_t_002d_002dforce_002dlocal"></a>
 <a name="index-force_002dlocal_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--force-local</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--force-local</samp>&rsquo;</dt>
 <dd>
 <p>Forces <code>tar</code> to interpret the filename given to &lsquo;<samp>--file</samp>&rsquo;
 as a local file, even if it looks like a remote tape drive name.
@@ -3413,33 +3413,33 @@ See <a href="#local-and-remote-archives">local and remote archives</a>.
 <p><a name="g_t_002d_002dformat"></a>
 <a name="index-format_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--format=<var>format</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-H <var>format</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--format=<var>format</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-H <var>format</var></samp>&rsquo;</dt>
 <dd>
 <p>Selects output archive format.  <var>Format</var> may be one of the
 following:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>v7</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>v7</samp>&rsquo;</dt>
 <dd><p>Creates an archive that is compatible with Unix V7 <code>tar</code>.
 </p>
 </dd>
-<dt> &lsquo;<samp>oldgnu</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>oldgnu</samp>&rsquo;</dt>
 <dd><p>Creates an archive that is compatible with GNU <code>tar</code> version
 1.12 or earlier.
 </p>
 </dd>
-<dt> &lsquo;<samp>gnu</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gnu</samp>&rsquo;</dt>
 <dd><p>Creates archive in GNU tar 1.13 format.  Basically it is the same as
 &lsquo;<samp>oldgnu</samp>&rsquo; with the only difference in the way it handles long
 numeric fields.
 </p>
 </dd>
-<dt> &lsquo;<samp>ustar</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>ustar</samp>&rsquo;</dt>
 <dd><p>Creates a <acronym>POSIX.1-1988</acronym> compatible archive.
 </p>
 </dd>
-<dt> &lsquo;<samp>posix</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>posix</samp>&rsquo;</dt>
 <dd><p>Creates a <acronym>POSIX.1-2001 archive</acronym>.
 </p>
 </dd>
@@ -3450,7 +3450,7 @@ numeric fields.
 <p><a name="g_t_002d_002dgroup"></a>
 <a name="index-group_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--group=<var>group</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--group=<var>group</var></samp>&rsquo;</dt>
 <dd>
 <p>Files added to the <code>tar</code> archive will have a group id of <var>group</var>,
 rather than the group from the source file.  <var>group</var> is first decoded
@@ -3466,10 +3466,10 @@ a decimal numeric group ID.  See section <a href="#override">Overriding File Met
 <a name="g_t_002d_002dungzip"></a>
 <a name="index-ungzip_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--gzip</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--gunzip</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--ungzip</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-z</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--gzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--gunzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ungzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-z</samp>&rsquo;</dt>
 <dd>
 <p>This option tells <code>tar</code> to read or write archives through
 <code>gzip</code>, allowing <code>tar</code> to directly operate on several
@@ -3478,8 +3478,8 @@ kinds of compressed archives transparently.  See section <a href="#gzip">Creatin
 <p><a name="g_t_002d_002dhelp"></a>
 <a name="index-help_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--help</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-?</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-?</samp>&rsquo;</dt>
 <dd>
 <p><code>tar</code> will print out a short message summarizing the operations and
 options to <code>tar</code> and exit. See section <a href="#help"><acronym>GNU</acronym> <code>tar</code> documentation</a>.
@@ -3487,20 +3487,20 @@ options to <code>tar</code> and exit. See section <a href="#help"><acronym>GNU</
 <p><a name="g_t_002d_002dignore_002dcase"></a>
 <a name="index-ignore_002dcase_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
 <dd><p>Ignore case when matching member or file names with
 patterns. See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>. 
 </p>
 <p><a name="g_t_002d_002dignore_002dcommand_002derror"></a>
 <a name="index-ignore_002dcommand_002derror_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--ignore-command-error</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-command-error</samp>&rsquo;</dt>
 <dd><p>Ignore exit codes of subprocesses. See section <a href="#Writing-to-an-External-Program">Writing to an External Program</a>.
 </p>
 <p><a name="g_t_002d_002dignore_002dfailed_002dread"></a>
 <a name="index-ignore_002dfailed_002dread_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--ignore-failed-read</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-failed-read</samp>&rsquo;</dt>
 <dd>
 <p>Do not exit unsuccessfully merely because an unreadable file was encountered.
 See section <a href="#Reading">Options to Help Read Archives</a>.
@@ -3508,8 +3508,8 @@ See section <a href="#Reading">Options to Help Read Archives</a>.
 <p><a name="g_t_002d_002dignore_002dzeros"></a>
 <a name="index-ignore_002dzeros_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-i</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-i</samp>&rsquo;</dt>
 <dd>
 <p>With this option, <code>tar</code> will ignore zeroed blocks in the
 archive, which normally signals EOF.  See section <a href="#Reading">Options to Help Read Archives</a>.
@@ -3517,8 +3517,8 @@ archive, which normally signals EOF.  See section <a href="#Reading">Options to 
 <p><a name="g_t_002d_002dincremental"></a>
 <a name="index-incremental_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--incremental</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-G</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--incremental</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-G</samp>&rsquo;</dt>
 <dd>
 <p>Used to inform <code>tar</code> that it is working with an old
 <acronym>GNU</acronym>-format incremental backup archive.  It is intended
@@ -3528,7 +3528,7 @@ for a detailed discussion of incremental archives.
 <p><a name="g_t_002d_002dindex_002dfile"></a>
 <a name="index-index_002dfile_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--index-file=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--index-file=<var>file</var></samp>&rsquo;</dt>
 <dd>
 <p>Send verbose output to <var>file</var> instead of to standard output.
 </p>
@@ -3537,9 +3537,9 @@ for a detailed discussion of incremental archives.
 <a name="g_t_002d_002dnew_002dvolume_002dscript"></a>
 <a name="index-new_002dvolume_002dscript_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--info-script=<var>script-file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--new-volume-script=<var>script-file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-F <var>script-file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--info-script=<var>script-file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--new-volume-script=<var>script-file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-F <var>script-file</var></samp>&rsquo;</dt>
 <dd>
 <p>When <code>tar</code> is performing multi-tape backups, <var>script-file</var> is run
 at the end of each tape.  If <var>script-file</var> exits with nonzero status,
@@ -3549,9 +3549,9 @@ discussion of <var>script-file</var>.
 <p><a name="g_t_002d_002dinteractive"></a>
 <a name="index-interactive_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--interactive</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--confirmation</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-w</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--interactive</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--confirmation</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-w</samp>&rsquo;</dt>
 <dd>
 <p>Specifies that <code>tar</code> should ask the user for confirmation before
 performing potentially destructive options, such as overwriting files.
@@ -3560,7 +3560,7 @@ See section <a href="#interactive">Asking for Confirmation During Operations</a>
 <p><a name="g_t_002d_002dkeep_002dnewer_002dfiles"></a>
 <a name="index-keep_002dnewer_002dfiles_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--keep-newer-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--keep-newer-files</samp>&rsquo;</dt>
 <dd>
 <p>Do not replace existing files that are newer than their archive copies
 when extracting files from an archive.
@@ -3568,8 +3568,8 @@ when extracting files from an archive.
 <p><a name="g_t_002d_002dkeep_002dold_002dfiles"></a>
 <a name="index-keep_002dold_002dfiles_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--keep-old-files</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-k</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--keep-old-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-k</samp>&rsquo;</dt>
 <dd>
 <p>Do not overwrite existing files when extracting files from an archive.
 See section <a href="#Keep-Old-Files">Keep Old Files</a>.
@@ -3577,8 +3577,8 @@ See section <a href="#Keep-Old-Files">Keep Old Files</a>.
 <p><a name="g_t_002d_002dlabel"></a>
 <a name="index-label_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--label=<var>name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-V <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--label=<var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-V <var>name</var></samp>&rsquo;</dt>
 <dd>
 <p>When creating an archive, instructs <code>tar</code> to write <var>name</var>
 as a name record in the archive.  When extracting or listing archives,
@@ -3588,8 +3588,8 @@ the pattern specified in <var>name</var>.  See section <a href="#Tape-Files">Tap
 <p><a name="g_t_002d_002dlisted_002dincremental"></a>
 <a name="index-listed_002dincremental_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--listed-incremental=<var>snapshot-file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-g <var>snapshot-file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--listed-incremental=<var>snapshot-file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-g <var>snapshot-file</var></samp>&rsquo;</dt>
 <dd>
 <p>During a &lsquo;<samp>--create</samp>&rsquo; operation, specifies that the archive that
 <code>tar</code> creates is a new <acronym>GNU</acronym>-format incremental
@@ -3600,7 +3600,7 @@ incremental format.  See section <a href="#Incremental-Dumps">Using <code>tar</c
 <p><a name="g_t_002d_002dmode"></a>
 <a name="index-mode_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--mode=<var>permissions</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--mode=<var>permissions</var></samp>&rsquo;</dt>
 <dd>
 <p>When adding files to an archive, <code>tar</code> will use
 <var>permissions</var> for the archive members, rather than the permissions
@@ -3611,7 +3611,7 @@ number or as symbolic permissions, like with
 <p><a name="g_t_002d_002dmtime"></a>
 <a name="index-mtime_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--mtime=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--mtime=<var>date</var></samp>&rsquo;</dt>
 <dd>
 <p>When adding files to an archive, <code>tar</code> will use <var>date</var> as
 the modification time of members when creating archives, instead of
@@ -3623,23 +3623,23 @@ latter case, the modification time of that file is used. See section <a href="#o
 <p><a name="g_t_002d_002dmulti_002dvolume"></a>
 <a name="index-multi_002dvolume_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-M</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-M</samp>&rsquo;</dt>
 <dd>
 <p>Informs <code>tar</code> that it should create or otherwise operate on a
 multi-volume <code>tar</code> archive.  See section <a href="#Using-Multiple-Tapes">Using Multiple Tapes</a>.
 </p>
 <a name="index-new_002dvolume_002dscript_002c-summary-1"></a>
 </dd>
-<dt> &lsquo;<samp>--new-volume-script</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--new-volume-script</samp>&rsquo;</dt>
 <dd>
 <p>(see &ndash;info-script)
 </p>
 <p><a name="g_t_002d_002dseek"></a>
 <a name="index-seek_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--seek</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-n</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--seek</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-n</samp>&rsquo;</dt>
 <dd>
 <p>Assume that the archive media supports seeks to arbitrary
 locations.  Usually <code>tar</code> determines automatically whether
@@ -3649,9 +3649,9 @@ in cases when such recognition fails.
 <p><a name="g_t_002d_002dnewer"></a>
 <a name="index-newer_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--newer=<var>date</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--after-date=<var>date</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-N</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--newer=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--after-date=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-N</samp>&rsquo;</dt>
 <dd>
 <p>When creating an archive, <code>tar</code> will only add files that have changed
 since <var>date</var>.  If <var>date</var> begins with &lsquo;<samp>/</samp>&rsquo; or &lsquo;<samp>.</samp>&rsquo;, it
@@ -3661,7 +3661,7 @@ the date.  See section <a href="#after">Operating Only on New Files</a>.
 <p><a name="g_t_002d_002dnewer_002dmtime"></a>
 <a name="index-newer_002dmtime_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--newer-mtime=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--newer-mtime=<var>date</var></samp>&rsquo;</dt>
 <dd>
 <p>Like &lsquo;<samp>--newer</samp>&rsquo;, but add only files whose
 contents have changed (as opposed to just &lsquo;<samp>--newer</samp>&rsquo;, which will
@@ -3671,14 +3671,14 @@ changed).  See section <a href="#after">Operating Only on New Files</a>.
 <p><a name="g_t_002d_002dno_002danchored"></a>
 <a name="index-no_002danchored_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
 <dd><p>An exclude pattern can match any subsequence of the name&rsquo;s components.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dno_002ddelay_002ddirectory_002drestore"></a>
 <a name="index-no_002ddelay_002ddirectory_002drestore_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-delay-directory-restore</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-delay-directory-restore</samp>&rsquo;</dt>
 <dd>
 <p>Setting modification times and permissions of extracted
 directories when all files from this directory has been
@@ -3687,21 +3687,21 @@ extracted. This is the default. See section <a href="#Directory-Modification-Tim
 <p><a name="g_t_002d_002dno_002dignore_002dcase"></a>
 <a name="index-no_002dignore_002dcase_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-ignore-case</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-ignore-case</samp>&rsquo;</dt>
 <dd><p>Use case-sensitive matching.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dno_002dignore_002dcommand_002derror"></a>
 <a name="index-no_002dignore_002dcommand_002derror_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-ignore-command-error</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-ignore-command-error</samp>&rsquo;</dt>
 <dd><p>Print warnings about subprocesses terminated with a non-zero exit
 code. See section <a href="#Writing-to-an-External-Program">Writing to an External Program</a>.
 </p>
 <p><a name="g_t_002d_002dno_002doverwrite_002ddir"></a>
 <a name="index-no_002doverwrite_002ddir_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-overwrite-dir</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-overwrite-dir</samp>&rsquo;</dt>
 <dd>
 <p>Preserve metadata of existing directories when extracting files
 from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files</a>.
@@ -3709,7 +3709,7 @@ from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files
 <p><a name="g_t_002d_002dno_002dquote_002dchars"></a>
 <a name="index-no_002dquote_002dchars_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-quote-chars=<var>string</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-quote-chars=<var>string</var></samp>&rsquo;</dt>
 <dd><p>Remove characters listed in <var>string</var> from the list of quoted
 characters set by the previous &lsquo;<samp>--quote-chars</samp>&rsquo; option
 (see section <a href="#quoting-styles">Quoting Member Names</a>).
@@ -3717,7 +3717,7 @@ characters set by the previous &lsquo;<samp>--quote-chars</samp>&rsquo; option
 <p><a name="g_t_002d_002dno_002drecursion"></a>
 <a name="index-no_002drecursion_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-recursion</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-recursion</samp>&rsquo;</dt>
 <dd>
 <p>With this option, <code>tar</code> will not recurse into directories.
 See section <a href="#recurse">Descending into Directories</a>.
@@ -3725,8 +3725,8 @@ See section <a href="#recurse">Descending into Directories</a>.
 <p><a name="g_t_002d_002dno_002dsame_002downer"></a>
 <a name="index-no_002dsame_002downer_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-same-owner</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-o</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-same-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-o</samp>&rsquo;</dt>
 <dd>
 <p>When extracting an archive, do not attempt to preserve the owner
 specified in the <code>tar</code> archive.  This the default behavior
@@ -3735,7 +3735,7 @@ for ordinary users.
 <p><a name="g_t_002d_002dno_002dsame_002dpermissions"></a>
 <a name="index-no_002dsame_002dpermissions_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-same-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-same-permissions</samp>&rsquo;</dt>
 <dd>
 <p>When extracting an archive, subtract the user&rsquo;s umask from files from
 the permissions specified in the archive.  This is the default behavior
@@ -3744,28 +3744,28 @@ for ordinary users.
 <p><a name="g_t_002d_002dno_002dunquote"></a>
 <a name="index-no_002dunquote_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-unquote</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-unquote</samp>&rsquo;</dt>
 <dd><p>Treat all input file or member names literally, do not interpret
 escape sequences.  See <a href="#input-name-quoting">input name quoting</a>.
 </p>
 <p><a name="g_t_002d_002dno_002dwildcards"></a>
 <a name="index-no_002dwildcards_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-wildcards</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-wildcards</samp>&rsquo;</dt>
 <dd><p>Do not use wildcards.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dno_002dwildcards_002dmatch_002dslash"></a>
 <a name="index-no_002dwildcards_002dmatch_002dslash_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--no-wildcards-match-slash</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-wildcards-match-slash</samp>&rsquo;</dt>
 <dd><p>Wildcards do not match &lsquo;<samp>/</samp>&rsquo;.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dnull"></a>
 <a name="index-null_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--null</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--null</samp>&rsquo;</dt>
 <dd>
 <p>When <code>tar</code> is using the &lsquo;<samp>--files-from</samp>&rsquo; option, this option
 instructs <code>tar</code> to expect filenames terminated with &lsquo;<samp>NUL</samp>&rsquo;, so
@@ -3775,14 +3775,14 @@ See section <a href="#nul"><code>NUL</code> Terminated File Names</a>.
 <p><a name="g_t_002d_002dnumeric_002downer"></a>
 <a name="index-numeric_002downer_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--numeric-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--numeric-owner</samp>&rsquo;</dt>
 <dd>
 <p>This option will notify <code>tar</code> that it should use numeric user
 and group IDs when creating a <code>tar</code> file, rather than names.
 See section <a href="#Attributes">Handling File Attributes</a>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-o</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-o</samp>&rsquo;</dt>
 <dd><p>The function of this option depends on the action <code>tar</code> is
 performing.  When extracting files, &lsquo;<samp>-o</samp>&rsquo; is a synonym for
 &lsquo;<samp>--no-same-owner</samp>&rsquo;, i.e.  it prevents <code>tar</code> from
@@ -3798,7 +3798,7 @@ removed in the future releases.
 <p><a name="g_t_002d_002doccurrence"></a>
 <a name="index-occurrence_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--occurrence[=<var>number</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--occurrence[=<var>number</var>]</samp>&rsquo;</dt>
 <dd>
 <p>This option can be used in conjunction with one of the subcommands
 &lsquo;<samp>--delete</samp>&rsquo;, &lsquo;<samp>--diff</samp>&rsquo;, &lsquo;<samp>--extract</samp>&rsquo; or
@@ -3817,13 +3817,13 @@ and will terminate without scanning to the end of the archive.
 <p><a name="g_t_002d_002dold_002darchive"></a>
 <a name="index-old_002darchive_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--old-archive</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--old-archive</samp>&rsquo;</dt>
 <dd><p>Synonym for &lsquo;<samp>--format=v7</samp>&rsquo;.
 </p>
 <p><a name="g_t_002d_002done_002dfile_002dsystem"></a>
 <a name="index-one_002dfile_002dsystem_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--one-file-system</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--one-file-system</samp>&rsquo;</dt>
 <dd><p>Used when creating an archive.  Prevents <code>tar</code> from recursing into
 directories that are on different file systems from the current
 directory <a name="DOCF6" href="#FOOT6">(6)</a>.
@@ -3831,7 +3831,7 @@ directory <a name="DOCF6" href="#FOOT6">(6)</a>.
 <p><a name="g_t_002d_002doverwrite"></a>
 <a name="index-overwrite_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--overwrite</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--overwrite</samp>&rsquo;</dt>
 <dd>
 <p>Overwrite existing files and directory metadata when extracting files
 from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files</a>.
@@ -3839,7 +3839,7 @@ from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files
 <p><a name="g_t_002d_002doverwrite_002ddir"></a>
 <a name="index-overwrite_002ddir_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--overwrite-dir</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--overwrite-dir</samp>&rsquo;</dt>
 <dd>
 <p>Overwrite the metadata of existing directories when extracting files
 from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files</a>.
@@ -3847,7 +3847,7 @@ from an archive.  See section <a href="#Overwrite-Old-Files">Overwrite Old Files
 <p><a name="g_t_002d_002downer"></a>
 <a name="index-owner_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--owner=<var>user</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--owner=<var>user</var></samp>&rsquo;</dt>
 <dd>
 <p>Specifies that <code>tar</code> should use <var>user</var> as the owner of members
 when creating archives, instead of the user associated with the source
@@ -3860,7 +3860,7 @@ See section <a href="#override">Overriding File Metadata</a>.
 <p><a name="g_t_002d_002dtransform"></a>
 <a name="index-transform_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--transform=<var>sed-expr</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--transform=<var>sed-expr</var></samp>&rsquo;</dt>
 <dd>
 <p>Transform file or member names using <code>sed</code> replacement expression
 <var>sed-expr</var>.  For example,
@@ -3879,14 +3879,14 @@ discussion, See section <a href="#transform">Modifying File and Member Names</a>
 <p><a name="g_t_002d_002dquote_002dchars"></a>
 <a name="index-quote_002dchars_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--quote-chars=<var>string</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--quote-chars=<var>string</var></samp>&rsquo;</dt>
 <dd><p>Always quote characters from <var>string</var>, even if the selected
 quoting style would not quote them (see section <a href="#quoting-styles">Quoting Member Names</a>).
 </p>
 <p><a name="g_t_002d_002dquoting_002dstyle"></a>
 <a name="index-quoting_002dstyle_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--quoting-style=<var>style</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--quoting-style=<var>style</var></samp>&rsquo;</dt>
 <dd><p>Set quoting style to use when printing member and file names
 (see section <a href="#quoting-styles">Quoting Member Names</a>). Valid <var>style</var> values are:
 <code>literal</code>, <code>shell</code>, <code>shell-always</code>, <code>c</code>,
@@ -3897,7 +3897,7 @@ package.
 <p><a name="g_t_002d_002dpax_002doption"></a>
 <a name="index-pax_002doption_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--pax-option=<var>keyword-list</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--pax-option=<var>keyword-list</var></samp>&rsquo;</dt>
 <dd><p>This option is meaningful only with <acronym>POSIX.1-2001</acronym> archives
 (see section <a href="#posix"><acronym>GNU</acronym> <code>tar</code> and <acronym>POSIX</acronym> <code>tar</code></a>).  It modifies the way <code>tar</code> handles the
 extended header keywords.  <var>Keyword-list</var> is a comma-separated
@@ -3907,20 +3907,20 @@ discussion.
 <p><a name="g_t_002d_002dportability"></a>
 <a name="index-portability_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--portability</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--old-archive</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--portability</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--old-archive</samp>&rsquo;</dt>
 <dd><p>Synonym for &lsquo;<samp>--format=v7</samp>&rsquo;.
 </p>
 <p><a name="g_t_002d_002dposix"></a>
 <a name="index-posix_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--posix</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--posix</samp>&rsquo;</dt>
 <dd><p>Same as &lsquo;<samp>--format=posix</samp>&rsquo;.
 </p>
 <p><a name="g_t_002d_002dpreserve"></a>
 <a name="index-preserve_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--preserve</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve</samp>&rsquo;</dt>
 <dd>
 <p>Synonymous with specifying both &lsquo;<samp>--preserve-permissions</samp>&rsquo; and
 &lsquo;<samp>--same-order</samp>&rsquo;.  See section <a href="#Setting-Access-Permissions">Setting Access Permissions</a>.
@@ -3928,7 +3928,7 @@ discussion.
 <p><a name="g_t_002d_002dpreserve_002dorder"></a>
 <a name="index-preserve_002dorder_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--same-order</samp>&rsquo;; see section <a href="#Reading">Options to Help Read Archives</a>.)
 </p>
@@ -3937,9 +3937,9 @@ discussion.
 <a name="g_t_002d_002dsame_002dpermissions"></a>
 <a name="index-same_002dpermissions_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-p</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
 <dd>
 <p>When <code>tar</code> is extracting an archive, it normally subtracts the
 users&rsquo; umask from the permissions specified in the archive and uses
@@ -3950,8 +3950,8 @@ permissions directly from the archive.  See section <a href="#Setting-Access-Per
 <p><a name="g_t_002d_002dread_002dfull_002drecords"></a>
 <a name="index-read_002dfull_002drecords_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-B</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-B</samp>&rsquo;</dt>
 <dd>
 <p>Specifies that <code>tar</code> should reblock its input, for reading
 from pipes on systems with buggy implementations.  See section <a href="#Reading">Options to Help Read Archives</a>.
@@ -3959,7 +3959,7 @@ from pipes on systems with buggy implementations.  See section <a href="#Reading
 <p><a name="g_t_002d_002drecord_002dsize"></a>
 <a name="index-record_002dsize_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--record-size=<var>size</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--record-size=<var>size</var></samp>&rsquo;</dt>
 <dd>
 <p>Instructs <code>tar</code> to use <var>size</var> bytes per record when accessing the
 archive.  See section <a href="#Blocking-Factor">The Blocking Factor of an Archive</a>.
@@ -3967,7 +3967,7 @@ archive.  See section <a href="#Blocking-Factor">The Blocking Factor of an Archi
 <p><a name="g_t_002d_002drecursion"></a>
 <a name="index-recursion_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--recursion</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--recursion</samp>&rsquo;</dt>
 <dd>
 <p>With this option, <code>tar</code> recurses into directories.
 See section <a href="#recurse">Descending into Directories</a>.
@@ -3975,7 +3975,7 @@ See section <a href="#recurse">Descending into Directories</a>.
 <p><a name="g_t_002d_002drecursive_002dunlink"></a>
 <a name="index-recursive_002dunlink_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--recursive-unlink</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--recursive-unlink</samp>&rsquo;</dt>
 <dd>
 <p>Remove existing
 directory hierarchies before extracting directories of the same name
@@ -3984,7 +3984,7 @@ from the archive.  See section <a href="#Recursive-Unlink">Recursive Unlink</a>.
 <p><a name="g_t_002d_002dremove_002dfiles"></a>
 <a name="index-remove_002dfiles_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--remove-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--remove-files</samp>&rsquo;</dt>
 <dd>
 <p>Directs <code>tar</code> to remove the source file from the file system after
 appending it to an archive.  See section <a href="#remove-files">Removing Files</a>.
@@ -3992,7 +3992,7 @@ appending it to an archive.  See section <a href="#remove-files">Removing Files<
 <p><a name="g_t_002d_002drestrict"></a>
 <a name="index-restrict_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--restrict</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--restrict</samp>&rsquo;</dt>
 <dd>
 <p>Disable use of some potentially harmful <code>tar</code> options.
 Currently this option disables shell invocaton from multi-volume menu
@@ -4001,7 +4001,7 @@ Currently this option disables shell invocaton from multi-volume menu
 <p><a name="g_t_002d_002drmt_002dcommand"></a>
 <a name="index-rmt_002dcommand_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--rmt-command=<var>cmd</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--rmt-command=<var>cmd</var></samp>&rsquo;</dt>
 <dd>
 <p>Notifies <code>tar</code> that it should use <var>cmd</var> instead of
 the default &lsquo;<tt>/usr/libexec/rmt</tt>&rsquo; (see section <a href="#Remote-Tape-Server">The Remote Tape Server</a>).
@@ -4009,7 +4009,7 @@ the default &lsquo;<tt>/usr/libexec/rmt</tt>&rsquo; (see section <a href="#Remot
 <p><a name="g_t_002d_002drsh_002dcommand"></a>
 <a name="index-rsh_002dcommand_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--rsh-command=<var>cmd</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--rsh-command=<var>cmd</var></samp>&rsquo;</dt>
 <dd>
 <p>Notifies <code>tar</code> that is should use <var>cmd</var> to communicate with remote
 devices.  See section <a href="#Device">Device Selection and Switching</a>.
@@ -4017,9 +4017,9 @@ devices.  See section <a href="#Device">Device Selection and Switching</a>.
 <p><a name="g_t_002d_002dsame_002dorder"></a>
 <a name="index-same_002dorder_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--same-order</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-s</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-order</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-s</samp>&rsquo;</dt>
 <dd>
 <p>This option is an optimization for <code>tar</code> when running on machines with
 small amounts of memory.  It informs <code>tar</code> that the list of file
@@ -4029,7 +4029,7 @@ archive.  See section <a href="#Reading">Options to Help Read Archives</a>.
 <p><a name="g_t_002d_002dsame_002downer"></a>
 <a name="index-same_002downer_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--same-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-owner</samp>&rsquo;</dt>
 <dd>
 <p>When extracting an archive, <code>tar</code> will attempt to preserve the owner
 specified in the <code>tar</code> archive with this option present.
@@ -4038,14 +4038,14 @@ effect only for ordinary users.  See section <a href="#Attributes">Handling File
 </p>
 <a name="index-same_002dpermissions_002c-summary-1"></a>
 </dd>
-<dt> &lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--preserve-permissions</samp>&rsquo;; see section <a href="#Setting-Access-Permissions">Setting Access Permissions</a>.)
 </p>
 <p><a name="g_t_002d_002dshow_002ddefaults"></a>
 <a name="index-show_002ddefaults_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--show-defaults</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-defaults</samp>&rsquo;</dt>
 <dd>
 <p>Displays the default options used by <code>tar</code> and exits
 successfully.  This option is intended for use in shell scripts.
@@ -4059,7 +4059,7 @@ Here is an example of what you can see using this option:
 <p><a name="g_t_002d_002dshow_002domitted_002ddirs"></a>
 <a name="index-show_002domitted_002ddirs_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--show-omitted-dirs</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-omitted-dirs</samp>&rsquo;</dt>
 <dd>
 <p>Instructs <code>tar</code> to mention directories its skipping over when
 operating on a <code>tar</code> archive.  See <a href="#show_002domitted_002ddirs">show-omitted-dirs</a>.
@@ -4069,8 +4069,8 @@ operating on a <code>tar</code> archive.  See <a href="#show_002domitted_002ddir
 <a name="g_t_002d_002dshow_002dstored_002dnames"></a>
 <a name="index-show_002dstored_002dnames_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--show-transformed-names</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--show-stored-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-transformed-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-stored-names</samp>&rsquo;</dt>
 <dd>
 <p>Display file or member names after applying any transformations
 (see section <a href="#transform">Modifying File and Member Names</a>).  In particular, when used in conjunction with one of
@@ -4081,8 +4081,8 @@ names.  See <a href="#listing-member-and-file-names">listing member and file nam
 <p><a name="g_t_002d_002dsparse"></a>
 <a name="index-sparse_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--sparse</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-S</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--sparse</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-S</samp>&rsquo;</dt>
 <dd>
 <p>Invokes a <acronym>GNU</acronym> extension when adding files to an archive that handles
 sparse files efficiently.  See section <a href="#sparse">Archiving Sparse Files</a>.
@@ -4090,7 +4090,7 @@ sparse files efficiently.  See section <a href="#sparse">Archiving Sparse Files<
 <p><a name="g_t_002d_002dsparse_002dversion"></a>
 <a name="index-sparse_002dversion_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--sparse-version=<var>version</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--sparse-version=<var>version</var></samp>&rsquo;</dt>
 <dd>
 <p>Specified the <em>format version</em> to use when archiving sparse
 files.  Implies &lsquo;<samp>--sparse</samp>&rsquo;.  See section <a href="#sparse">Archiving Sparse Files</a>. For the description
@@ -4099,8 +4099,8 @@ of the supported sparse formats, See section <a href="#Sparse-Formats">Storing S
 <p><a name="g_t_002d_002dstarting_002dfile"></a>
 <a name="index-starting_002dfile_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--starting-file=<var>name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-K <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--starting-file=<var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-K <var>name</var></samp>&rsquo;</dt>
 <dd>
 <p>This option affects extraction only; <code>tar</code> will skip extracting
 files in the archive until it finds one that matches <var>name</var>.
@@ -4109,7 +4109,7 @@ See section <a href="#Scarce">Coping with Scarce Resources</a>.
 <p><a name="g_t_002d_002dstrip_002dcomponents"></a>
 <a name="index-strip_002dcomponents_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--strip-components=<var>number</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--strip-components=<var>number</var></samp>&rsquo;</dt>
 <dd><p>Strip given <var>number</var> of leading components from file names before
 extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;<tt>archive.tar</tt>&rsquo; contained
 &lsquo;<tt>/some/file/name</tt>&rsquo;, then running
@@ -4122,7 +4122,7 @@ extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;
 <p><a name="g_t_002d_002dsuffix"></a>
 <a name="index-suffix_002c-summary_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--suffix=<var>suffix</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--suffix=<var>suffix</var></samp>&rsquo;</dt>
 <dd>
 <p>Alters the suffix <code>tar</code> uses when backing up files from the default
 &lsquo;<samp>~</samp>&rsquo;.  See section <a href="#backup">Backup options</a>.
@@ -4130,8 +4130,8 @@ extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;
 <p><a name="g_t_002d_002dtape_002dlength"></a>
 <a name="index-tape_002dlength_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--tape-length=<var>num</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-L <var>num</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--tape-length=<var>num</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-L <var>num</var></samp>&rsquo;</dt>
 <dd>
 <p>Specifies the length of tapes that <code>tar</code> is writing as being
 <var>num</var> x 1024 bytes long.  See section <a href="#Using-Multiple-Tapes">Using Multiple Tapes</a>.
@@ -4139,7 +4139,7 @@ extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;
 <p><a name="g_t_002d_002dtest_002dlabel"></a>
 <a name="index-test_002dlabel_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--test-label</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--test-label</samp>&rsquo;</dt>
 <dd>
 <p>Reads the volume label.  If an argument is specified, test whether it
 matches the volume label.  See <a href="#g_t_002d_002dtest_002dlabel-option">--test-label option</a>.
@@ -4147,7 +4147,7 @@ matches the volume label.  See <a href="#g_t_002d_002dtest_002dlabel-option">--t
 <p><a name="g_t_002d_002dto_002dcommand"></a>
 <a name="index-to_002dcommand_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--to-command=<var>command</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--to-command=<var>command</var></samp>&rsquo;</dt>
 <dd>
 <p>During extraction <code>tar</code> will pipe extracted files to the
 standard input of <var>command</var>.  See section <a href="#Writing-to-an-External-Program">Writing to an External Program</a>.
@@ -4155,8 +4155,8 @@ standard input of <var>command</var>.  See section <a href="#Writing-to-an-Exter
 <p><a name="g_t_002d_002dto_002dstdout"></a>
 <a name="index-to_002dstdout_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--to-stdout</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-O</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--to-stdout</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-O</samp>&rsquo;</dt>
 <dd>
 <p>During extraction, <code>tar</code> will extract files to stdout rather
 than to the file system.  See section <a href="#Writing-to-Standard-Output">Writing to Standard Output</a>.
@@ -4164,7 +4164,7 @@ than to the file system.  See section <a href="#Writing-to-Standard-Output">Writ
 <p><a name="g_t_002d_002dtotals"></a>
 <a name="index-totals_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--totals[=<var>signo</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--totals[=<var>signo</var>]</samp>&rsquo;</dt>
 <dd>
 <p>Displays the total number of bytes transferred when processing an
 archive.  If an argument is given, these data are displayed on
@@ -4174,8 +4174,8 @@ See <a href="#totals">totals</a>.
 <p><a name="g_t_002d_002dtouch"></a>
 <a name="index-touch_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--touch</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--touch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-m</samp>&rsquo;</dt>
 <dd>
 <p>Sets the data modification time of extracted files to the extraction time,
 rather than the data modification time stored in the archive.
@@ -4183,21 +4183,21 @@ See section <a href="#Data-Modification-Times">Setting Data Modification Times</
 </p>
 <a name="index-uncompress_002c-summary-1"></a>
 </dd>
-<dt> &lsquo;<samp>--uncompress</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--uncompress</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--compress</samp>&rsquo;. see section <a href="#gzip">Creating and Reading Compressed Archives</a>)
 </p>
 <a name="index-ungzip_002c-summary-1"></a>
 </dd>
-<dt> &lsquo;<samp>--ungzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ungzip</samp>&rsquo;</dt>
 <dd>
 <p>(See &lsquo;<samp>--gzip</samp>&rsquo;. see section <a href="#gzip">Creating and Reading Compressed Archives</a>)
 </p>
 <p><a name="g_t_002d_002dunlink_002dfirst"></a>
 <a name="index-unlink_002dfirst_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--unlink-first</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-U</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unlink-first</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-U</samp>&rsquo;</dt>
 <dd>
 <p>Directs <code>tar</code> to remove the corresponding file from the file
 system before extracting it from the archive.  See section <a href="#Unlink-First">Unlink First</a>.
@@ -4205,13 +4205,13 @@ system before extracting it from the archive.  See section <a href="#Unlink-Firs
 <p><a name="g_t_002d_002dunquote"></a>
 <a name="index-unquote_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--unquote</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unquote</samp>&rsquo;</dt>
 <dd><p>Enable unquoting input file or member names (default).  See <a href="#input-name-quoting">input name quoting</a>.
 </p>
 <p><a name="g_t_002d_002duse_002dcompress_002dprogram"></a>
 <a name="index-use_002dcompress_002dprogram_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--use-compress-program=<var>prog</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--use-compress-program=<var>prog</var></samp>&rsquo;</dt>
 <dd>
 <p>Instructs <code>tar</code> to access the archive through <var>prog</var>, which is
 presumed to be a compression program of some sort.  See section <a href="#gzip">Creating and Reading Compressed Archives</a>.
@@ -4219,7 +4219,7 @@ presumed to be a compression program of some sort.  See section <a href="#gzip">
 <p><a name="g_t_002d_002dutc"></a>
 <a name="index-utc_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--utc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--utc</samp>&rsquo;</dt>
 <dd>
 <p>Display file modification dates in <acronym>UTC</acronym>.  This option implies
 &lsquo;<samp>--verbose</samp>&rsquo;.
@@ -4227,8 +4227,8 @@ presumed to be a compression program of some sort.  See section <a href="#gzip">
 <p><a name="g_t_002d_002dverbose"></a>
 <a name="index-verbose_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--verbose</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-v</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verbose</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-v</samp>&rsquo;</dt>
 <dd>
 <p>Specifies that <code>tar</code> should be more verbose about the operations its
 performing.  This option can be specified multiple times for some
@@ -4238,8 +4238,8 @@ See section <a href="#verbose">Checking <code>tar</code> progress</a>.
 <p><a name="g_t_002d_002dverify"></a>
 <a name="index-verify_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--verify</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-W</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verify</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-W</samp>&rsquo;</dt>
 <dd>
 <p>Verifies that the archive was correctly written when creating an
 archive.  See section <a href="#verify">Verifying Data as It is Stored</a>.
@@ -4247,7 +4247,7 @@ archive.  See section <a href="#verify">Verifying Data as It is Stored</a>.
 <p><a name="g_t_002d_002dversion"></a>
 <a name="index-version_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--version</samp>&rsquo;</dt>
 <dd>
 <p>Print information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
@@ -4256,7 +4256,7 @@ See section <a href="#help"><acronym>GNU</acronym> <code>tar</code> documentatio
 <p><a name="g_t_002d_002dvolno_002dfile"></a>
 <a name="index-volno_002dfile_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--volno-file=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--volno-file=<var>file</var></samp>&rsquo;</dt>
 <dd>
 <p>Used in conjunction with &lsquo;<samp>--multi-volume</samp>&rsquo;.  <code>tar</code> will
 keep track of which volume of a multi-volume archive its working in
@@ -4265,14 +4265,14 @@ keep track of which volume of a multi-volume archive its working in
 <p><a name="g_t_002d_002dwildcards"></a>
 <a name="index-wildcards_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--wildcards</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--wildcards</samp>&rsquo;</dt>
 <dd><p>Use wildcards when matching member names with patterns.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p>
 <p><a name="g_t_002d_002dwildcards_002dmatch_002dslash"></a>
 <a name="index-wildcards_002dmatch_002dslash_002c-summary"></a>
 </p></dd>
-<dt> &lsquo;<samp>--wildcards-match-slash</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--wildcards-match-slash</samp>&rsquo;</dt>
 <dd><p>Wildcards match &lsquo;<samp>/</samp>&rsquo;.
 See section <a href="#controlling-pattern_002dmatching">Controlling Pattern-Matching</a>.
 </p></dd>
@@ -4602,7 +4602,7 @@ interpreted as a symbolic name of a signal, upon delivery of which the
 statistics is to be printed:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--totals=<var>signo</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--totals=<var>signo</var></samp>&rsquo;</dt>
 <dd><p>Print statistics upon delivery of signal <var>signo</var>.  Valid arguments
 are: <code>SIGHUP</code>, <code>SIGQUIT</code>, <code>SIGINT</code>, <code>SIGUSR1</code> and
 <code>SIGUSR2</code>.  Shortened names without &lsquo;<samp>SIG</samp>&rsquo; prefix are also
@@ -4798,8 +4798,8 @@ for these operations.
 <dl compact="compact">
 <dd><a name="index-create_002c-complementary-notes"></a>
 </dd>
-<dt> &lsquo;<samp>--create</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--create</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-c</samp>&rsquo;</dt>
 <dd>
 <p>Creating an empty archive would have some kind of elegance.  One can
 initialize an empty archive and later use &lsquo;<samp>--append</samp>&rsquo;
@@ -4843,14 +4843,14 @@ the following commands:
 
 <a name="index-extract_002c-complementary-notes"></a>
 </dd>
-<dt> &lsquo;<samp>--extract</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--get</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-x</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--extract</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--get</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-x</samp>&rsquo;</dt>
 <dd>
 <p>A socket is stored, within a <acronym>GNU</acronym> <code>tar</code> archive, as a pipe.
 </p>
 </dd>
-<dt> &lsquo;<samp>&lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;)</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>&lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;)</samp>&rsquo;</dt>
 <dd>
 <p><acronym>GNU</acronym> <code>tar</code> now shows dates as &lsquo;<samp>1996-08-30</samp>&rsquo;,
 while it used to show them as &lsquo;<samp>Aug 30 1996</samp>&rsquo;. Preferably,
@@ -4967,26 +4967,26 @@ where the last chapter left them.)
 <p>The five operations that we will cover in this chapter are:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--append</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-r</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--append</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-r</samp>&rsquo;</dt>
 <dd><p>Add new entries to an archive that already exists.
 </p></dd>
-<dt> &lsquo;<samp>--update</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-r</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--update</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-r</samp>&rsquo;</dt>
 <dd><p>Add more recent copies of archive members to the end of an archive, if
 they exist.
 </p></dd>
-<dt> &lsquo;<samp>--concatenate</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--catenate</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-A</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--concatenate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--catenate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-A</samp>&rsquo;</dt>
 <dd><p>Add one or more pre-existing archives to the end of another archive.
 </p></dd>
-<dt> &lsquo;<samp>--delete</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--delete</samp>&rsquo;</dt>
 <dd><p>Delete items from an archive (does not work on tapes).
 </p></dd>
-<dt> &lsquo;<samp>--compare</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--diff</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-d</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compare</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--diff</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
 <dd><p>Compare archive members to their counterparts in the file system.
 </p></dd>
 </dl>
@@ -5633,7 +5633,7 @@ metadata, stored in the archive.
 <dl compact="compact">
 <dd><a name="index-mode"></a>
 </dd>
-<dt> &lsquo;<samp>--mode=<var>permissions</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--mode=<var>permissions</var></samp>&rsquo;</dt>
 <dd>
 <p>When adding files to an archive, <code>tar</code> will use
 <var>permissions</var> for the archive members, rather than the permissions
@@ -5650,7 +5650,7 @@ or on any other file already marked as executable:
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>--mtime=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--mtime=<var>date</var></samp>&rsquo;</dt>
 <dd><a name="index-mtime"></a>
 
 <p>When adding files to an archive, <code>tar</code> will use <var>date</var> as
@@ -5683,7 +5683,7 @@ tar: Option --mtime: Treating date `yesterday' as 2006-06-20
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>--owner=<var>user</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--owner=<var>user</var></samp>&rsquo;</dt>
 <dd><a name="index-owner"></a>
 
 <p>Specifies that <code>tar</code> should use <var>user</var> as the owner of members
@@ -5703,7 +5703,7 @@ $ <kbd>tar -c -f archive.tar --owner=root .</kbd>
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>--group=<var>group</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--group=<var>group</var></samp>&rsquo;</dt>
 <dd><a name="index-group"></a>
 
 <p>Files added to the <code>tar</code> archive will have a group id of <var>group</var>,
@@ -5734,7 +5734,7 @@ can be either an existing group symbolic name, or a decimal numeric group ID.
 <h3 class="subsection">4.3.2 Ignore Fail Read</h3>
 
 <dl compact="compact">
-<dt> &lsquo;<samp>--ignore-failed-read</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-failed-read</samp>&rsquo;</dt>
 <dd><a name="index-ignore_002dfailed_002dread"></a>
 <p>Do not exit with nonzero on unreadable files or directories.
 </p></dd>
@@ -5865,8 +5865,8 @@ of an archive.  See section <a href="#Blocking-Factor">The Blocking Factor of an
 <dl compact="compact">
 <dd><a name="index-read_002dfull_002drecords-1"></a>
 </dd>
-<dt> &lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-B</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-B</samp>&rsquo;</dt>
 <dd><p>Use in conjunction with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;,
 &lsquo;<samp>-x</samp>&rsquo;) to read an archive which contains incomplete records, or
 one which has a blocking factor less than the one specified.
@@ -5911,8 +5911,8 @@ does not write after the end of an archive, but seeks to
 maintain compatiblity among archiving utilities.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-i</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-i</samp>&rsquo;</dt>
 <dd><p>To ignore blocks of zeros (i.e., end-of-archive entries) which may be
 encountered while reading an archive.  Use in conjunction with
 &lsquo;<samp>--extract</samp>&rsquo; or &lsquo;<samp>--list</samp>&rsquo;.
@@ -6066,7 +6066,7 @@ before extracting them.
 <dl compact="compact">
 <dd><a name="index-overwrite"></a>
 </dd>
-<dt> &lsquo;<samp>--overwrite</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--overwrite</samp>&rsquo;</dt>
 <dd><p>Overwrite existing files and directory metadata when extracting files
 from an archive.
 </p>
@@ -6089,7 +6089,7 @@ are currently being executed.
 </p>
 <a name="index-overwrite_002ddir"></a>
 </dd>
-<dt> &lsquo;<samp>--overwrite-dir</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--overwrite-dir</samp>&rsquo;</dt>
 <dd><p>Overwrite the metadata of directories when extracting files from an
 archive, but remove other files before extracting.
 </p></dd>
@@ -6119,8 +6119,8 @@ archive, but remove other files before extracting.
 <dl compact="compact">
 <dd><a name="index-keep_002dold_002dfiles"></a>
 </dd>
-<dt> &lsquo;<samp>--keep-old-files</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-k</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--keep-old-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-k</samp>&rsquo;</dt>
 <dd><p>Do not replace existing files from archive.  The
 &lsquo;<samp>--keep-old-files</samp>&rsquo; (&lsquo;<samp>-k</samp>&rsquo;) option prevents <code>tar</code>
 from replacing existing files with files with the same name from the
@@ -6154,7 +6154,7 @@ files in the file system during extraction.
 <dl compact="compact">
 <dd><a name="index-keep_002dnewer_002dfiles"></a>
 </dd>
-<dt> &lsquo;<samp>--keep-newer-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--keep-newer-files</samp>&rsquo;</dt>
 <dd><p>Do not replace existing files that are newer than their archive
 copies.  This option is meaningless with &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;).
 </p></dd>
@@ -6184,8 +6184,8 @@ copies.  This option is meaningless with &lsquo;<samp>--list</samp>&rsquo; (&lsq
 <dl compact="compact">
 <dd><a name="index-unlink_002dfirst"></a>
 </dd>
-<dt> &lsquo;<samp>--unlink-first</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-U</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unlink-first</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-U</samp>&rsquo;</dt>
 <dd><p>Remove files before extracting over them.
 This can make <code>tar</code> run a bit faster if you know in advance
 that the extracted files all need to be removed.  Normally this option
@@ -6217,7 +6217,7 @@ slows <code>tar</code> down slightly, so it is disabled by default.
 <dl compact="compact">
 <dd><a name="index-recursive_002dunlink"></a>
 </dd>
-<dt> &lsquo;<samp>--recursive-unlink</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--recursive-unlink</samp>&rsquo;</dt>
 <dd><p>When this option is specified, try removing files and directory hierarchies
 before extracting over them.  <em>This is a dangerous option!</em>
 </p></dd>
@@ -6263,8 +6263,8 @@ conjunction with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>
 <dl compact="compact">
 <dd><a name="index-touch"></a>
 </dd>
-<dt> &lsquo;<samp>--touch</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--touch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-m</samp>&rsquo;</dt>
 <dd><p>Sets the data modification time of extracted archive members to the time
 they were extracted, not the time recorded for them in the archive.
 Use in conjunction with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;).
@@ -6303,9 +6303,9 @@ in conjunction with the &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get
 <dd><a name="index-preserve_002dpermissions"></a>
 <a name="index-same_002dpermissions"></a>
 </dd>
-<dt> &lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-p</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
 <dd><p>Set modes of extracted archive members to those recorded in the
 archive, instead of current umask settings.  Use in conjunction with
 &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;).
@@ -6393,7 +6393,7 @@ directory timestamp will be offset again.
 <dl compact="compact">
 <dd><a name="index-delay_002ddirectory_002drestore"></a>
 </dd>
-<dt> &lsquo;<samp>--delay-directory-restore</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--delay-directory-restore</samp>&rsquo;</dt>
 <dd><p>Delays restoring of the modification times and permissions of extracted
 directories until the end of extraction.  This way, correct
 meta-information is restored even if the archive has unusual member
@@ -6401,7 +6401,7 @@ ordering.
 </p>
 <a name="index-no_002ddelay_002ddirectory_002drestore"></a>
 </dd>
-<dt> &lsquo;<samp>--no-delay-directory-restore</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-delay-directory-restore</samp>&rsquo;</dt>
 <dd><p>Cancel the effect of the previous &lsquo;<samp>--delay-directory-restore</samp>&rsquo;.
 Use this option if you have used &lsquo;<samp>--delay-directory-restore</samp>&rsquo; in
 <code>TAR_OPTIONS</code> variable (see <a href="#TAR_005fOPTIONS">TAR_OPTIONS</a>) and wish to
@@ -6443,8 +6443,8 @@ found in the archive.
 <dl compact="compact">
 <dd><a name="index-to_002dstdout"></a>
 </dd>
-<dt> &lsquo;<samp>--to-stdout</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-O</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--to-stdout</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-O</samp>&rsquo;</dt>
 <dd><p>Writes files to the standard output.  Use only in conjunction with
 &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;).  When this option is
 used, instead of creating the files specified, <code>tar</code> writes
@@ -6497,7 +6497,7 @@ file to the standard input of an external program:
 <dl compact="compact">
 <dd><a name="index-to_002dcommand"></a>
 </dd>
-<dt> &lsquo;<samp>--to-command=<var>command</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--to-command=<var>command</var></samp>&rsquo;</dt>
 <dd><p>Extract files and pipe their contents to the standard input of
 <var>command</var>. When this option is used, instead of creating the
 files specified, <code>tar</code> invokes <var>command</var> and pipes the
@@ -6515,7 +6515,7 @@ from the following environment variables:
 <dl compact="compact">
 <dd><a name="index-TAR_005fFILETYPE_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_FILETYPE</var></dt>
+<dt><var>TAR_FILETYPE</var></dt>
 <dd><p>Type of the file. It is a single letter with the following meaning:
 </p>
 <table>
@@ -6531,32 +6531,32 @@ from the following environment variables:
 </p>
 <a name="index-TAR_005fMODE_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_MODE</var></dt>
+<dt><var>TAR_MODE</var></dt>
 <dd><p>File mode, an octal number.
 </p>
 <a name="index-TAR_005fFILENAME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_FILENAME</var></dt>
+<dt><var>TAR_FILENAME</var></dt>
 <dd><p>The name of the file.
 </p>
 <a name="index-TAR_005fREALNAME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_REALNAME</var></dt>
+<dt><var>TAR_REALNAME</var></dt>
 <dd><p>Name of the file as stored in the archive.
 </p>
 <a name="index-TAR_005fUNAME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_UNAME</var></dt>
+<dt><var>TAR_UNAME</var></dt>
 <dd><p>Name of the file owner.
 </p>
 <a name="index-TAR_005fGNAME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_GNAME</var></dt>
+<dt><var>TAR_GNAME</var></dt>
 <dd><p>Name of the file owner group.
 </p>
 <a name="index-TAR_005fATIME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_ATIME</var></dt>
+<dt><var>TAR_ATIME</var></dt>
 <dd><p>Time of last access. It is a decimal number, representing seconds
 since the epoch.  If the archive provides times with nanosecond
 precision, the nanoseconds are appended to the timestamp after a
@@ -6564,27 +6564,27 @@ decimal point.
 </p>
 <a name="index-TAR_005fMTIME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_MTIME</var></dt>
+<dt><var>TAR_MTIME</var></dt>
 <dd><p>Time of last modification.
 </p>
 <a name="index-TAR_005fCTIME_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_CTIME</var></dt>
+<dt><var>TAR_CTIME</var></dt>
 <dd><p>Time of last status change.
 </p>
 <a name="index-TAR_005fSIZE_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_SIZE</var></dt>
+<dt><var>TAR_SIZE</var></dt>
 <dd><p>Size of the file.
 </p>
 <a name="index-TAR_005fUID_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_UID</var></dt>
+<dt><var>TAR_UID</var></dt>
 <dd><p>UID of the file owner.
 </p>
 <a name="index-TAR_005fGID_002c-to_002dcommand-environment"></a>
 </dd>
-<dt> <var>TAR_GID</var></dt>
+<dt><var>TAR_GID</var></dt>
 <dd><p>GID of the file owner.
 </p></dd>
 </dl>
@@ -6605,14 +6605,14 @@ an error message similar to the following:
 <dl compact="compact">
 <dd><a name="index-ignore_002dcommand_002derror"></a>
 </dd>
-<dt> &lsquo;<samp>--ignore-command-error</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-command-error</samp>&rsquo;</dt>
 <dd><p>Ignore exit codes of subprocesses.  Notice that if the program
 exits on signal or otherwise terminates abnormally, the error message
 will be printed even if this option is used.
 </p>
 <a name="index-no_002dignore_002dcommand_002derror"></a>
 </dd>
-<dt> &lsquo;<samp>--no-ignore-command-error</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-ignore-command-error</samp>&rsquo;</dt>
 <dd><p>Cancel the effect of any previous &lsquo;<samp>--ignore-command-error</samp>&rsquo;
 option. This option is useful if you have set
 &lsquo;<samp>--ignore-command-error</samp>&rsquo; in <code>TAR_OPTIONS</code>
@@ -6648,7 +6648,7 @@ option. This option is useful if you have set
 <dl compact="compact">
 <dd><a name="index-remove_002dfiles"></a>
 </dd>
-<dt> &lsquo;<samp>--remove-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--remove-files</samp>&rsquo;</dt>
 <dd><p>Remove files after adding them to the archive.
 </p></dd>
 </dl>
@@ -6710,8 +6710,8 @@ option. This option is useful if you have set
 <dl compact="compact">
 <dd><a name="index-starting_002dfile"></a>
 </dd>
-<dt> &lsquo;<samp>--starting-file=<var>name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-K <var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--starting-file=<var>name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-K <var>name</var></samp>&rsquo;</dt>
 <dd><p>Starts an operation in the middle of an archive.  Use in conjunction
 with &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;) or &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;).
 </p></dd>
@@ -6754,9 +6754,9 @@ See section <a href="#Incremental-Dumps">Using <code>tar</code> to Perform Incre
 <a name="index-same_002dorder"></a>
 <a name="index-preserve_002dorder"></a>
 </dd>
-<dt> &lsquo;<samp>--same-order</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-s</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-order</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-order</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-s</samp>&rsquo;</dt>
 <dd><p>To process large lists of file names on machines with small amounts of
 memory.  Use in conjunction with &lsquo;<samp>--compare</samp>&rsquo; (&lsquo;<samp>--diff</samp>&rsquo;,
 &lsquo;<samp>-d</samp>&rsquo;), &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) or &lsquo;<samp>--extract</samp>&rsquo;
@@ -6831,7 +6831,7 @@ partial extraction of a file, both the backup and the partially extracted
 file are kept.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--backup[=<var>method</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--backup[=<var>method</var>]</samp>&rsquo;</dt>
 <dd><a name="index-backup"></a>
 <a name="index-VERSION_005fCONTROL"></a>
 <a name="index-backups"></a>
@@ -6849,21 +6849,21 @@ the same values for <var>method</var> are accepted as in Emacs.  This option
 also allows more descriptive names.  The valid <var>method</var>s are:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>t</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>numbered</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>t</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>numbered</samp>&rsquo;</dt>
 <dd><a name="index-numbered-backup-method"></a>
 <p>Always make numbered backups.
 </p>
 </dd>
-<dt> &lsquo;<samp>nil</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>existing</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nil</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>existing</samp>&rsquo;</dt>
 <dd><a name="index-existing-backup-method"></a>
 <p>Make numbered backups of files that already have them, simple backups
 of the others.
 </p>
 </dd>
-<dt> &lsquo;<samp>never</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>simple</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>never</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>simple</samp>&rsquo;</dt>
 <dd><a name="index-simple-backup-method"></a>
 <p>Always make simple backups.
 </p>
@@ -6871,7 +6871,7 @@ of the others.
 </dl>
 
 </dd>
-<dt> &lsquo;<samp>--suffix=<var>suffix</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--suffix=<var>suffix</var></samp>&rsquo;</dt>
 <dd><a name="index-suffix"></a>
 <a name="index-backup-suffix"></a>
 <a name="index-SIMPLE_005fBACKUP_005fSUFFIX"></a>
@@ -7148,8 +7148,8 @@ modified files.  The name of the snapshot file is given as an argument
 to the option:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--listed-incremental=<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-g <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--listed-incremental=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-g <var>file</var></samp>&rsquo;</dt>
 <dd><p>  Handle incremental backups with snapshot data in <var>file</var>.
 </p></dd>
 </dl>
@@ -7694,19 +7694,19 @@ taking four arguments:
 <dd><p>Its arguments are:
 </p>
 <dl compact="compact">
-<dt> <var>level</var></dt>
+<dt><var>level</var></dt>
 <dd><p>Current backup or restore level.
 </p>
 </dd>
-<dt> <var>host</var></dt>
+<dt><var>host</var></dt>
 <dd><p>Name or IP address of the host machine being dumped or restored.
 </p>
 </dd>
-<dt> <var>fs</var></dt>
+<dt><var>fs</var></dt>
 <dd><p>Full path name to the file system being dumped or restored.
 </p>
 </dd>
-<dt> <var>fsname</var></dt>
+<dt><var>fsname</var></dt>
 <dd><p>File system name with directory separators replaced with colons.  This
 is useful, e.g., for creating unique files.
 </p></dd>
@@ -7833,17 +7833,17 @@ a full dump, specify <code>--level=0</code> (this is the default, so
 run.  <var>Time</var> may take three forms:
 </p>
 <dl compact="compact">
-<dt> <var>hh</var>:<var>mm</var></dt>
+<dt><var>hh</var>:<var>mm</var></dt>
 <dd>
 <p>The dump must be run at <var>hh</var> hours <var>mm</var> minutes.
 </p>
 </dd>
-<dt> <var>hh</var></dt>
+<dt><var>hh</var></dt>
 <dd>
 <p>The dump must be run at <var>hh</var> hours
 </p>
 </dd>
-<dt> now</dt>
+<dt>now</dt>
 <dd>
 <p>The dump must be run immediately.
 </p></dd>
@@ -7880,35 +7880,35 @@ standard output.
 script:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-l <var>level</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--level=<var>level</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-l <var>level</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--level=<var>level</var></samp>&rsquo;</dt>
 <dd><p>Do backup level <var>level</var> (default 0).
 </p>
 </dd>
-<dt> &lsquo;<samp>-f</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--force</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--force</samp>&rsquo;</dt>
 <dd><p>Force backup even if today&rsquo;s log file already exists.
 </p>
 </dd>
-<dt> &lsquo;<samp>-v[<var>level</var>]</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--verbose[=<var>level</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-v[<var>level</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verbose[=<var>level</var>]</samp>&rsquo;</dt>
 <dd><p>Set verbosity level.  The higher the level is, the more debugging
 information will be output during execution.  Devault <var>level</var>
 is 100, which means the highest debugging level.
 </p>
 </dd>
-<dt> &lsquo;<samp>-t <var>start-time</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--time=<var>start-time</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-t <var>start-time</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--time=<var>start-time</var></samp>&rsquo;</dt>
 <dd><p>Wait till <var>time</var>, then do backup.
 </p>
 </dd>
-<dt> &lsquo;<samp>-h</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-h</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
 <dd><p>Display short help message and exit.
 </p>
 </dd>
-<dt> &lsquo;<samp>-V</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-V</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--version</samp>&rsquo;</dt>
 <dd><p>Display information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
 </p></dd>
@@ -7971,30 +7971,30 @@ use &lsquo;<samp>--level</samp>&rsquo; option, as shown in the example below:
 <p>The full list of options accepted by <code>restore</code> follows:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-a</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--all</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-a</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--all</samp>&rsquo;</dt>
 <dd><p>Restore all file systems and files specified in &lsquo;<tt>backup-specs</tt>&rsquo;
 </p>
 </dd>
-<dt> &lsquo;<samp>-l <var>level</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--level=<var>level</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-l <var>level</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--level=<var>level</var></samp>&rsquo;</dt>
 <dd><p>Start restoring from the given backup level, instead of the default 0.
 </p>
 </dd>
-<dt> &lsquo;<samp>-v[<var>level</var>]</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--verbose[=<var>level</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-v[<var>level</var>]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verbose[=<var>level</var>]</samp>&rsquo;</dt>
 <dd><p>Set verbosity level.  The higher the level is, the more debugging
 information will be output during execution.  Devault <var>level</var>
 is 100, which means the highest debugging level.
 </p>
 </dd>
-<dt> &lsquo;<samp>-h</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-h</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
 <dd><p>Display short help message and exit.
 </p>
 </dd>
-<dt> &lsquo;<samp>-V</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--version</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-V</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--version</samp>&rsquo;</dt>
 <dd><p>Display information about the program&rsquo;s name, version, origin and legal
 status, all on standard output, and then exit successfully.
 </p></dd>
@@ -8102,8 +8102,8 @@ instead of the default archive file location.
 <dl compact="compact">
 <dd><a name="index-file_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;</dt>
 <dd><p>Name the archive to create or operate on.  Use in conjunction with
 any operation.
 </p></dd>
@@ -8259,12 +8259,12 @@ option:
 <dl compact="compact">
 <dd><a name="index-unquote"></a>
 </dd>
-<dt> &lsquo;<samp>--unquote</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unquote</samp>&rsquo;</dt>
 <dd><p>Enable unquoting input file or member names (default).
 </p>
 <a name="index-no_002dunquote"></a>
 </dd>
-<dt> &lsquo;<samp>--no-unquote</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-unquote</samp>&rsquo;</dt>
 <dd><p>Disable unquoting input file or member names.
 </p></dd>
 </dl>
@@ -8334,8 +8334,8 @@ the list of files to archive with the <code>find</code> utility.
 <dl compact="compact">
 <dd><a name="index-files_002dfrom"></a>
 </dd>
-<dt> &lsquo;<samp>--files-from=<var>file-name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-T <var>file-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--files-from=<var>file-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-T <var>file-name</var></samp>&rsquo;</dt>
 <dd><p>Get names to extract or create from file <var>file-name</var>.
 </p></dd>
 </dl>
@@ -8462,7 +8462,7 @@ files whose names contain newlines can be archived using
 <dl compact="compact">
 <dd><a name="index-null"></a>
 </dd>
-<dt> &lsquo;<samp>--null</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--null</samp>&rsquo;</dt>
 <dd><p>Only consider <code>NUL</code> terminated file names, instead of files that
 terminate in a newline.
 </p></dd>
@@ -8524,7 +8524,7 @@ use the &lsquo;<samp>--exclude</samp>&rsquo; or &lsquo;<samp>--exclude-from</sam
 <dl compact="compact">
 <dd><a name="index-exclude"></a>
 </dd>
-<dt> &lsquo;<samp>--exclude=<var>pattern</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude=<var>pattern</var></samp>&rsquo;</dt>
 <dd><p>Causes <code>tar</code> to ignore files that match the <var>pattern</var>.
 </p></dd>
 </dl>
@@ -8542,8 +8542,8 @@ command &lsquo;<samp>tar -cf src.tar --exclude='*.o' src</samp>&rsquo;.
 <dl compact="compact">
 <dd><a name="index-exclude_002dfrom"></a>
 </dd>
-<dt> &lsquo;<samp>--exclude-from=<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-X <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude-from=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-X <var>file</var></samp>&rsquo;</dt>
 <dd><p>Causes <code>tar</code> to ignore files that match the patterns listed in
 <var>file</var>.
 </p></dd>
@@ -8560,7 +8560,7 @@ added to the archive.
 <dl compact="compact">
 <dd><a name="index-exclude_002dcaches"></a>
 </dd>
-<dt> &lsquo;<samp>--exclude-caches</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exclude-caches</samp>&rsquo;</dt>
 <dd><p>Causes <code>tar</code> to ignore directories containing a cache directory tag.
 </p></dd>
 </dl>
@@ -8797,12 +8797,12 @@ a.txt
 <dl compact="compact">
 <dd><a name="index-wildcards"></a>
 </dd>
-<dt> &lsquo;<samp>--wildcards</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--wildcards</samp>&rsquo;</dt>
 <dd><p>Treat all member names as wildcards. 
 </p>
 <a name="index-no_002dwildcards"></a>
 </dd>
-<dt> &lsquo;<samp>--no-wildcards</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-wildcards</samp>&rsquo;</dt>
 <dd><p>Treat all member names as literal strings.
 </p></dd>
 </dl>
@@ -8851,8 +8851,8 @@ below.  These options accumulate.  For example:
 <dd><a name="index-anchored"></a>
 <a name="index-no_002danchored"></a>
 </dd>
-<dt> &lsquo;<samp>--anchored</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--anchored</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-anchored</samp>&rsquo;</dt>
 <dd><p>If anchored, a pattern must match an initial subsequence
 of the name&rsquo;s components.  Otherwise, the pattern can match any
 subsequence.  Default is &lsquo;<samp>--no-anchored</samp>&rsquo; for exclusion members
@@ -8861,16 +8861,16 @@ and &lsquo;<samp>--anchored</samp>&rsquo; inclusion members.
 <a name="index-ignore_002dcase"></a>
 <a name="index-no_002dignore_002dcase"></a>
 </dd>
-<dt> &lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--no-ignore-case</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-ignore-case</samp>&rsquo;</dt>
 <dd><p>When ignoring case, upper-case patterns match lower-case names and vice versa.
 When not ignoring case (the default), matching is case-sensitive.
 </p>
 <a name="index-wildcards_002dmatch_002dslash"></a>
 <a name="index-no_002dwildcards_002dmatch_002dslash"></a>
 </dd>
-<dt> &lsquo;<samp>--wildcards-match-slash</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--no-wildcards-match-slash</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--wildcards-match-slash</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-wildcards-match-slash</samp>&rsquo;</dt>
 <dd><p>When wildcards match slash (the default for exclusion members), a
 wildcard like &lsquo;<samp>*</samp>&rsquo; in the pattern can match a &lsquo;<samp>/</samp>&rsquo; in the
 name.  Otherwise, &lsquo;<samp>/</samp>&rsquo; is matched only by &lsquo;<samp>/</samp>&rsquo;.
@@ -8948,7 +8948,7 @@ above table, a space is printed as &lsquo;<samp>\ </samp>&rsquo; and a backslash
 using &lsquo;<samp>--quoting-style</samp>&rsquo; option:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--quoting-style=<var>style</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--quoting-style=<var>style</var></samp>&rsquo;</dt>
 <dd><a name="index-quoting_002dstyle"></a>
 
 <p>Sets quoting style.  Valid values for <var>style</var> argument are:
@@ -8990,7 +8990,7 @@ a\\backslash
 <p>Quoting styles:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>literal</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>literal</samp>&rsquo;</dt>
 <dd><p>No quoting, display each character as is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=literal</kbd>
@@ -9005,7 +9005,7 @@ newline
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>shell</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>shell</samp>&rsquo;</dt>
 <dd><p>Display characters the same way Bourne shell does:
 control characters, except &lsquo;<samp>\t</samp>&rsquo; and &lsquo;<samp>\n</samp>&rsquo;, are printed using
 backslash escapes, &lsquo;<samp>\t</samp>&rsquo; and &lsquo;<samp>\n</samp>&rsquo; are printed as is, and a
@@ -9025,7 +9025,7 @@ newline'
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>shell-always</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>shell-always</samp>&rsquo;</dt>
 <dd><p>Same as &lsquo;<samp>shell</samp>&rsquo;, but the names are always enclosed in single
 quotes:
 </p>
@@ -9041,7 +9041,7 @@ newline'
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>c</samp>&rsquo;</dt>
 <dd><p>Use the notation of the C programming language.  All names are
 enclosed in double quotes.  Control characters are quoted using
 backslash notations, double quotes are represented as &lsquo;<samp>\&quot;</samp>&rsquo;,
@@ -9059,7 +9059,7 @@ spaces are not quoted:
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>escape</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>escape</samp>&rsquo;</dt>
 <dd><p>Control characters are printed using backslash notation, a space is
 printed as &lsquo;<samp>\ </samp>&rsquo; and a backslash as &lsquo;<samp>\\</samp>&rsquo;.  This is the
 default quoting style, unless it was changed when configured the
@@ -9076,7 +9076,7 @@ package.
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>locale</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>locale</samp>&rsquo;</dt>
 <dd><p>Control characters, single quote and backslash are printed using
 backslash notation.  All names are quoted using left and right
 quotation marks, appropriate to the current locale.  If it does not
@@ -9097,7 +9097,7 @@ name are escaped with &lsquo;<samp>\</samp>&rsquo;, for example:
 </pre></td></tr></table>
 
 </dd>
-<dt> &lsquo;<samp>clocale</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>clocale</samp>&rsquo;</dt>
 <dd><p>Same as &lsquo;<samp>locale</samp>&rsquo;, but &lsquo;<samp>&quot;</samp>&rsquo; is used for both left and right
 quotation marks, if not provided by the currently selected locale:
 </p>
@@ -9117,7 +9117,7 @@ quotation marks, if not provided by the currently selected locale:
 implied by the current quoting style:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--quote-chars=<var>string</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--quote-chars=<var>string</var></samp>&rsquo;</dt>
 <dd><p>Always quote characters from <var>string</var>, even if the selected
 quoting style would not quote them.
 </p></dd>
@@ -9140,7 +9140,7 @@ escape listing above):
 option:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--no-quote-chars=<var>string</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-quote-chars=<var>string</var></samp>&rsquo;</dt>
 <dd><p>Remove characters listed in <var>string</var> from the list of quoted
 characters set by the previous &lsquo;<samp>--quote-chars</samp>&rsquo; option.
 </p></dd>
@@ -9198,7 +9198,7 @@ archive.
 <dl compact="compact">
 <dd><a name="index-strip_002dcomponents"></a>
 </dd>
-<dt> &lsquo;<samp>--strip-components=<var>number</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--strip-components=<var>number</var></samp>&rsquo;</dt>
 <dd><p>Strip given <var>number</var> of leading components from file names before
 extraction.
 </p></dd>
@@ -9226,7 +9226,7 @@ altering this behavior:
 </p><dl compact="compact">
 <dd><a name="index-show_002dtransformed_002dnames"></a>
 </dd>
-<dt> &lsquo;<samp>--show-transformed-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--show-transformed-names</samp>&rsquo;</dt>
 <dd><p>Display file or member names with all requested transformations
 applied.
 </p></dd>
@@ -9263,7 +9263,7 @@ will have the desired effect.  Thus, before running
 <dl compact="compact">
 <dd><a name="index-transform"></a>
 </dd>
-<dt> &lsquo;<samp>--transform=<var>expression</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--transform=<var>expression</var></samp>&rsquo;</dt>
 <dd><p>Modify file names using supplied <var>expression</var>.
 </p></dd>
 </dl>
@@ -9282,20 +9282,20 @@ replacement for each file name part that matches <var>regexp</var>.  Both
 <p>Supported <var>flags</var> are:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>g</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>g</samp>&rsquo;</dt>
 <dd><p>Apply the replacement to <em>all</em> matches to the <var>regexp</var>, not
 just the first.
 </p>
 </dd>
-<dt> &lsquo;<samp>i</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>i</samp>&rsquo;</dt>
 <dd><p>Use case-insensitive matching
 </p>
 </dd>
-<dt> &lsquo;<samp>x</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>x</samp>&rsquo;</dt>
 <dd><p><var>regexp</var> is an <em>extended regular expression</em> (see <a href="sed.html#Extended-regexps">Extended regular expressions: (sed)Extended regexps</a> section &lsquo;Extended regular expressions&rsquo; in <cite>GNU sed</cite>).
 </p>
 </dd>
-<dt> &lsquo;<samp><var>number</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp><var>number</var></samp>&rsquo;</dt>
 <dd><p>Only replace the <var>number</var>th match of the <var>regexp</var>.
 </p>
 <p>Note: the <var>posix</var> standard does not specify what should happen
@@ -9415,9 +9415,9 @@ compare when deciding whether or not to archive the files.
 <dd><a name="index-after_002ddate"></a>
 <a name="index-newer"></a>
 </dd>
-<dt> &lsquo;<samp>--after-date=<var>date</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--newer=<var>date</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-N <var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--after-date=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--newer=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-N <var>date</var></samp>&rsquo;</dt>
 <dd><p>Only store files newer than <var>date</var>.
 </p>
 <p>Acts on files only if their data modification or status change times are
@@ -9428,7 +9428,7 @@ name; the data modification time of that file is used as the date.
 </p>
 <a name="index-newer_002dmtime"></a>
 </dd>
-<dt> &lsquo;<samp>--newer-mtime=<var>date</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--newer-mtime=<var>date</var></samp>&rsquo;</dt>
 <dd><p>Acts like &lsquo;<samp>--after-date</samp>&rsquo;, but only looks at data modification times.
 </p></dd>
 </dl>
@@ -9524,12 +9524,12 @@ archive; see <a href="#files">Reading Names from a File</a>, for more informatio
 <code>tar</code>, or look.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--no-recursion</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-recursion</samp>&rsquo;</dt>
 <dd><p>Prevents <code>tar</code> from recursively descending directories.
 </p>
 <a name="index-recursion"></a>
 </dd>
-<dt> &lsquo;<samp>--recursion</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--recursion</samp>&rsquo;</dt>
 <dd><p>Requires <code>tar</code> to recursively descend directories.
 This is the default.
 </p></dd>
@@ -9610,7 +9610,7 @@ or through &lsquo;<samp>--files-from</samp>&rsquo;, regardless of where they res
 <dl compact="compact">
 <dd><a name="index-one_002dfile_002dsystem"></a>
 </dd>
-<dt> &lsquo;<samp>--one-file-system</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--one-file-system</samp>&rsquo;</dt>
 <dd><p>Prevents <code>tar</code> from crossing file system boundaries when
 archiving.  Use in conjunction with any write operation.
 </p></dd>
@@ -9673,8 +9673,8 @@ after that point in the list.
 <dl compact="compact">
 <dd><a name="index-directory"></a>
 </dd>
-<dt> &lsquo;<samp>--directory=<var>directory</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-C <var>directory</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--directory=<var>directory</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-C <var>directory</var></samp>&rsquo;</dt>
 <dd><p>Changes the working directory in the middle of a command line.
 </p></dd>
 </dl>
@@ -9782,8 +9782,8 @@ list, i.e., always use &lsquo;<samp>-C</samp>&rsquo;, not &lsquo;<samp>--directo
 <dl compact="compact">
 <dd><a name="index-absolute_002dnames"></a>
 </dd>
-<dt> &lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-P</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-P</samp>&rsquo;</dt>
 <dd><p>Do not strip leading slashes from file names, and permit file names
 containing a &lsquo;<tt>..</tt>&rsquo; file name component.
 </p></dd>
@@ -9841,7 +9841,7 @@ may be more convenient than switching to root.
 
 
 <dl compact="compact">
-<dt> &lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
 <dd><p>Preserves full file names (including superior directory names) when
 archiving files.  Preserves leading slash when extracting files.
 </p>
@@ -10644,7 +10644,7 @@ differences that often make them incompatible with each other.
 The most frequently used formats are (in alphabetical order):
 </p>
 <dl compact="compact">
-<dt> gnu</dt>
+<dt>gnu</dt>
 <dd><p>Format used by <acronym>GNU</acronym> <code>tar</code> versions up to 1.13.25.  This format derived
 from an early <acronym>POSIX</acronym> standard, adding some improvements such as
 sparse file handling and incremental archives.  Unfortunately these
@@ -10655,11 +10655,11 @@ formats.
 length.
 </p>
 </dd>
-<dt> oldgnu</dt>
+<dt>oldgnu</dt>
 <dd><p>Format used by <acronym>GNU</acronym> <code>tar</code> of versions prior to 1.12.
 </p>
 </dd>
-<dt> v7</dt>
+<dt>v7</dt>
 <dd><p>Archive format, compatible with the V7 implementation of tar.  This
 format imposes a number of limitations.  The most important of them
 are:
@@ -10682,7 +10682,7 @@ characters long will not be able to use <acronym>GNU</acronym> <code>tar</code> 
 Automake prior to 1.9.
 </p>
 </dd>
-<dt> ustar</dt>
+<dt>ustar</dt>
 <dd><p>Archive format defined by <acronym>POSIX.1-1988</acronym> specification.  It stores
 symbolic ownership information.  It is also able to store
 special files.  However, it imposes several restrictions as well:
@@ -10702,13 +10702,13 @@ is 8GB
 </li></ol>
 
 </dd>
-<dt> star</dt>
+<dt>star</dt>
 <dd><p>Format used by J&ouml;rg Schilling <code>star</code>
 implementation.  <acronym>GNU</acronym> <code>tar</code> is able to read &lsquo;<samp>star</samp>&rsquo; archives but
 currently does not produce them.
 </p>
 </dd>
-<dt> posix</dt>
+<dt>posix</dt>
 <dd><p>Archive format defined by <acronym>POSIX.1-2001</acronym> specification.  This is the
 most flexible and feature-rich format.  It does not impose any
 restrictions on file sizes or filename lengths.  This format is quite
@@ -10859,9 +10859,9 @@ compressed.
 <dd><a name="index-gzip"></a>
 <a name="index-ungzip"></a>
 </dd>
-<dt> &lsquo;<samp>-z</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--gzip</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--ungzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-z</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--gzip</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ungzip</samp>&rsquo;</dt>
 <dd><p>Filter the archive through <code>gzip</code>.
 </p>
 <p>You can use &lsquo;<samp>--gzip</samp>&rsquo; and &lsquo;<samp>--gunzip</samp>&rsquo; on physical devices
@@ -10897,16 +10897,16 @@ So, there are pros and cons.  We&rsquo;ll see!
 </p>
 <a name="index-bzip2"></a>
 </dd>
-<dt> &lsquo;<samp>-j</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--bzip2</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-j</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--bzip2</samp>&rsquo;</dt>
 <dd><p>Filter the archive through <code>bzip2</code>.  Otherwise like &lsquo;<samp>--gzip</samp>&rsquo;.
 </p>
 <a name="index-compress"></a>
 <a name="index-uncompress"></a>
 </dd>
-<dt> &lsquo;<samp>-Z</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--compress</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--uncompress</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-Z</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--compress</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--uncompress</samp>&rsquo;</dt>
 <dd><p>Filter the archive through <code>compress</code>.  Otherwise like &lsquo;<samp>--gzip</samp>&rsquo;.
 </p>
 <p>The <acronym>GNU</acronym> Project recommends you not use
@@ -10916,7 +10916,7 @@ uses.  You could be sued for patent infringement merely by running
 </p>
 <a name="index-use_002dcompress_002dprogram"></a>
 </dd>
-<dt> &lsquo;<samp>--use-compress-program=<var>prog</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--use-compress-program=<var>prog</var></samp>&rsquo;</dt>
 <dd><p>Use external compression program <var>prog</var>.  Use this option if you
 have a compression program that <acronym>GNU</acronym> <code>tar</code> does not support.  There
 are two requirements to which <var>prog</var> should comply:
@@ -11001,8 +11001,8 @@ won&rsquo;t take more space than the original.
 <dl compact="compact">
 <dd><a name="index-sparse"></a>
 </dd>
-<dt> &lsquo;<samp>-S</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--sparse</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-S</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--sparse</samp>&rsquo;</dt>
 <dd><p>This option istructs <code>tar</code> to test each file for sparseness
 before attempting to archive it.  If the file is found to be sparse it
 is treated specially, thus allowing to decrease the amount of space
@@ -11046,7 +11046,7 @@ use an earlier format, you can select it using
 <dl compact="compact">
 <dd><a name="index-sparse_002dversion"></a>
 </dd>
-<dt> &lsquo;<samp>--sparse-version=<var>version</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--sparse-version=<var>version</var></samp>&rsquo;</dt>
 <dd>
 <p>Select the format to store sparse files in.  Valid <var>version</var> values
 are: &lsquo;<samp>0.0</samp>&rsquo;, &lsquo;<samp>0.1</samp>&rsquo; and &lsquo;<samp>1.0</samp>&rsquo;.  See section <a href="#Sparse-Formats">Storing Sparse Files</a>,
@@ -11089,9 +11089,9 @@ place.
 <dl compact="compact">
 <dd><a name="index-atime_002dpreserve"></a>
 </dd>
-<dt> &lsquo;<samp>--atime-preserve</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--atime-preserve=replace</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--atime-preserve=system</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve=replace</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--atime-preserve=system</samp>&rsquo;</dt>
 <dd><p>Preserve the access times of files that are read.  This works only for
 files that you own, unless you have superuser privileges.
 </p>
@@ -11114,8 +11114,8 @@ complains right away.
 </p>
 <a name="index-touch-1"></a>
 </dd>
-<dt> &lsquo;<samp>-m</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--touch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--touch</samp>&rsquo;</dt>
 <dd><p>Do not extract data modification time.
 </p>
 <p>When this option is used, <code>tar</code> leaves the data modification times
@@ -11126,7 +11126,7 @@ instead of setting it to the times recorded in the archive.
 </p>
 <a name="index-same_002downer"></a>
 </dd>
-<dt> &lsquo;<samp>--same-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-owner</samp>&rsquo;</dt>
 <dd><p>Create extracted files with the same ownership they have in the
 archive.
 </p>
@@ -11147,15 +11147,15 @@ the archive instead.
 </p>
 <a name="index-no_002dsame_002downer"></a>
 </dd>
-<dt> &lsquo;<samp>--no-same-owner</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-o</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--no-same-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-o</samp>&rsquo;</dt>
 <dd><p>Do not attempt to restore ownership when extracting.  This is the
 default behavior for ordinary users, so this option has an effect
 only for the superuser.
 </p>
 <a name="index-numeric_002downer"></a>
 </dd>
-<dt> &lsquo;<samp>--numeric-owner</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--numeric-owner</samp>&rsquo;</dt>
 <dd><p>The &lsquo;<samp>--numeric-owner</samp>&rsquo; option allows (ANSI) archives to be written
 without user/group name information or such information to be ignored
 when extracting.  It effectively disables the generation and/or use
@@ -11196,9 +11196,9 @@ gives you a great deal of control already.
 <a name="index-same_002dpermissions_002c-short-description"></a>
 <a name="index-preserve_002dpermissions_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-p</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--same-permissions</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve-permissions</samp>&rsquo;</dt>
 <dd><p>Extract all protection information.
 </p>
 <p>This option causes <code>tar</code> to set the modes (access permissions) of
@@ -11212,7 +11212,7 @@ on extracted files.  This option is by default enabled when
 </p>
 <a name="index-preserve"></a>
 </dd>
-<dt> &lsquo;<samp>--preserve</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--preserve</samp>&rsquo;</dt>
 <dd><p>Same as both &lsquo;<samp>--same-permissions</samp>&rsquo; and &lsquo;<samp>--same-order</samp>&rsquo;.
 </p>
 <p>The &lsquo;<samp>--preserve</samp>&rsquo; option has no equivalent short option name.
@@ -11540,7 +11540,7 @@ archive.
 <dl compact="compact">
 <dd><a name="index-pax_002doption"></a>
 </dd>
-<dt> &lsquo;<samp>--pax-option=<var>keyword-list</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--pax-option=<var>keyword-list</var></samp>&rsquo;</dt>
 <dd><p>Handle keywords in <acronym>PAX</acronym> extended headers.  This option is
 equivalent to &lsquo;<samp>-o</samp>&rsquo; option of the <code>pax</code> utility.
 </p></dd>
@@ -11551,7 +11551,7 @@ list of keyword options, each keyword option taking one of
 the following forms:
 </p>
 <dl compact="compact">
-<dt> <code>delete=<var>pattern</var></code></dt>
+<dt><code>delete=<var>pattern</var></code></dt>
 <dd><p>When used with one of archive-creation commands,
 this option instructs <code>tar</code> to omit from extended header records
 that it produces any keywords matching the string <var>pattern</var>.
@@ -11568,7 +11568,7 @@ matching notation described in <acronym>POSIX 1003.2</acronym>, 3.13
 <p>would suppress security-related information.
 </p>
 </dd>
-<dt> <code>exthdr.name=<var>string</var></code></dt>
+<dt><code>exthdr.name=<var>string</var></code></dt>
 <dd>
 <p>This keyword allows user control over the name that is written into the
 ustar header blocks for the extended headers.  The name is obtained
@@ -11594,7 +11594,7 @@ will use the following default value:
 </pre></td></tr></table>
 
 </dd>
-<dt> <code>globexthdr.name=<var>string</var></code></dt>
+<dt><code>globexthdr.name=<var>string</var></code></dt>
 <dd><p>This keyword allows user control over the name that is written into
 the ustar header blocks for global extended header records.  The name
 is obtained from the contents of <var>string</var>, after making
@@ -11622,7 +11622,7 @@ environment variable.  If <var>TMPDIR</var> is not set, <code>tar</code>
 uses &lsquo;<samp>/tmp</samp>&rsquo;.
 </p>
 </dd>
-<dt> <code><var>keyword</var>=<var>value</var></code></dt>
+<dt><code><var>keyword</var>=<var>value</var></code></dt>
 <dd><p>When used with one of archive-creation commands, these keyword/value pairs
 will be included at the beginning of the archive in a global extended
 header record.  When used with one of archive-reading commands,
@@ -11631,7 +11631,7 @@ pairs at the beginning of the archive in a global extended header
 record.
 </p>
 </dd>
-<dt> <code><var>keyword</var>:=<var>value</var></code></dt>
+<dt><code><var>keyword</var>:=<var>value</var></code></dt>
 <dd><p>When used with one of archive-creation commands, these keyword/value pairs
 will be included as records at the beginning of an extended header for
 each file.  This is effectively equivalent to <var>keyword</var>=<var>value</var>
@@ -12347,8 +12347,8 @@ not a good idea.
 </p></blockquote>
 
 <dl compact="compact">
-<dt> &lsquo;<samp>-f [<var>hostname</var>:]<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--file=[<var>hostname</var>:]<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-f [<var>hostname</var>:]<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--file=[<var>hostname</var>:]<var>file</var></samp>&rsquo;</dt>
 <dd><p>Use archive file or device <var>file</var> on <var>hostname</var>.
 </p></dd>
 </dl>
@@ -12416,12 +12416,12 @@ too.  The installer could also check for &lsquo;<samp>DEFTAPE</samp>&rsquo; in
 <dl compact="compact">
 <dd><a name="index-force_002dlocal_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>--force-local</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--force-local</samp>&rsquo;</dt>
 <dd><p>Archive file is local even if it contains a colon.
 </p>
 <a name="index-rsh_002dcommand"></a>
 </dd>
-<dt> &lsquo;<samp>--rsh-command=<var>command</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--rsh-command=<var>command</var></samp>&rsquo;</dt>
 <dd><p>Use remote <var>command</var> instead of <code>rsh</code>.  This option exists
 so that people who use something other than the standard <code>rsh</code>
 (e.g., a Kerberized <code>rsh</code>) can access a remote device.
@@ -12434,13 +12434,13 @@ The installer may have overridden this by defining the environment
 variable <code>RSH</code> <em>at installation time</em>.
 </p>
 </dd>
-<dt> &lsquo;<samp>-[0-7][lmh]</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-[0-7][lmh]</samp>&rsquo;</dt>
 <dd><p>Specify drive and density.
 </p>
 <a name="index-multi_002dvolume_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-M</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-M</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
 <dd><p>Create/list/extract multi-volume archive.
 </p>
 <p>This option causes <code>tar</code> to write a <em>multi-volume</em> archive&mdash;one
@@ -12449,8 +12449,8 @@ See section <a href="#Multi_002dVolume-Archives">Archives Longer than One Tape o
 </p>
 <a name="index-tape_002dlength_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-L <var>num</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--tape-length=<var>num</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-L <var>num</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--tape-length=<var>num</var></samp>&rsquo;</dt>
 <dd><p>Change tape after writing <var>num</var> x 1024 bytes.
 </p>
 <p>This option might be useful when your tape drivers do not properly
@@ -12460,9 +12460,9 @@ maximum tape length, you might avoid the problem entirely.
 <a name="index-info_002dscript_002c-short-description"></a>
 <a name="index-new_002dvolume_002dscript_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-F <var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--info-script=<var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--new-volume-script=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-F <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--info-script=<var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--new-volume-script=<var>file</var></samp>&rsquo;</dt>
 <dd><p>Execute &lsquo;<tt>file</tt>&rsquo; at end of each tape.  This implies
 &lsquo;<samp>--multi-volume</samp>&rsquo; (&lsquo;<samp>-M</samp>&rsquo;).  See <a href="#info_002dscript">info-script</a>, for a detailed
 description of this option.
@@ -12879,8 +12879,8 @@ See section <a href="#list">How to List Archives</a>, for more information on th
 operation.  See section <a href="#Reading">Options to Help Read Archives</a>, for a more detailed explanation of that option.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--blocking-factor=<var>number</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-b <var>number</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--blocking-factor=<var>number</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-b <var>number</var></samp>&rsquo;</dt>
 <dd><p>Specifies the blocking factor of an archive.  Can be used with any
 operation, but is usually not necessary with &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;).
 </p></dd>
@@ -12889,8 +12889,8 @@ operation, but is usually not necessary with &lsquo;<samp>--list</samp>&rsquo; (
 <p>Device blocking
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-b <var>blocks</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--blocking-factor=<var>blocks</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-b <var>blocks</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--blocking-factor=<var>blocks</var></samp>&rsquo;</dt>
 <dd><p>Set record size to <em><var>blocks</var> * 512</em> bytes.
 </p>
 <p>This option is used to specify a <em>blocking factor</em> for the archive.
@@ -12980,8 +12980,8 @@ the first null block encountered.  This inelegantly breaks the pipe.
 
 <a name="index-ignore_002dzeros_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-i</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-i</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ignore-zeros</samp>&rsquo;</dt>
 <dd><p>Ignore blocks of zeros in archive (means EOF).
 </p>
 <p>The &lsquo;<samp>--ignore-zeros</samp>&rsquo; (&lsquo;<samp>-i</samp>&rsquo;) option causes <code>tar</code> to ignore blocks
@@ -12998,8 +12998,8 @@ are stored on a single physical tape.
 </p>
 <a name="index-read_002dfull_002drecords_002c-short-description"></a>
 </dd>
-<dt> &lsquo;<samp>-B</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-B</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--read-full-records</samp>&rsquo;</dt>
 <dd><p>Reblock as we read (for reading 4.2BSD pipes).
 </p>
 <p>If &lsquo;<samp>--read-full-records</samp>&rsquo; is used, <code>tar</code>
@@ -13289,29 +13289,29 @@ and <var>operation</var> is one of the following:
 
 
 <dl compact="compact">
-<dt> &lsquo;<samp>eof</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>weof</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>eof</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>weof</samp>&rsquo;</dt>
 <dd><p>Writes <var>number</var> tape marks at the current position on the tape.
 </p>
 </dd>
-<dt> &lsquo;<samp>fsf</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>fsf</samp>&rsquo;</dt>
 <dd><p>Moves tape position forward <var>number</var> files.
 </p>
 </dd>
-<dt> &lsquo;<samp>bsf</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bsf</samp>&rsquo;</dt>
 <dd><p>Moves tape position back <var>number</var> files.
 </p>
 </dd>
-<dt> &lsquo;<samp>rewind</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>rewind</samp>&rsquo;</dt>
 <dd><p>Rewinds the tape.  (Ignores <var>number</var>).
 </p>
 </dd>
-<dt> &lsquo;<samp>offline</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>rewoff1</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>offline</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>rewoff1</samp>&rsquo;</dt>
 <dd><p>Rewinds the tape and takes the tape device off-line.  (Ignores <var>number</var>).
 </p>
 </dd>
-<dt> &lsquo;<samp>status</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>status</samp>&rsquo;</dt>
 <dd><p>Prints status information about the tape unit.
 </p>
 </dd>
@@ -13431,8 +13431,8 @@ should change tapes when you see the prompt; if the archive is on a
 floppy disk, you should change disks; etc.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-M</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--multi-volume</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-M</samp>&rsquo;</dt>
 <dd><p>Creates a multi-volume archive, when used in conjunction with
 &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;).  To perform any other operation on a multi-volume
 archive, specify &lsquo;<samp>--multi-volume</samp>&rsquo; in conjunction with that
@@ -13454,8 +13454,8 @@ tape:
 </p><dl compact="compact">
 <dd><a name="index-tape_002dlength"></a>
 </dd>
-<dt> &lsquo;<samp>--tape-length=<var>size</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-L <var>size</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--tape-length=<var>size</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-L <var>size</var></samp>&rsquo;</dt>
 <dd><p>Set maximum length of a volume.  The <var>size</var> argument should then
 be the usable size of the tape in units of 1024 bytes.  This option
 selects &lsquo;<samp>--multi-volume</samp>&rsquo; automatically.  For example:
@@ -13480,21 +13480,21 @@ is<a name="DOCF20" href="#FOOT20">(20)</a>:
 responses:
 </p>
 <dl compact="compact">
-<dt> <kbd>?</kbd></dt>
+<dt><kbd>?</kbd></dt>
 <dd><p>Request <code>tar</code> to explain possible responses
 </p></dd>
-<dt> <kbd>q</kbd></dt>
+<dt><kbd>q</kbd></dt>
 <dd><p>Request <code>tar</code> to exit immediately.
 </p></dd>
-<dt> <kbd>n <var>file-name</var></kbd></dt>
+<dt><kbd>n <var>file-name</var></kbd></dt>
 <dd><p>Request <code>tar</code> to write the next volume on the file <var>file-name</var>.
 </p></dd>
-<dt> <kbd>!</kbd></dt>
+<dt><kbd>!</kbd></dt>
 <dd><p>Request <code>tar</code> to run a subshell.  This option can be disabled
 by giving &lsquo;<samp>--restrict</samp>&rsquo; command line option to
 <code>tar</code><a name="DOCF21" href="#FOOT21">(21)</a>.
 </p></dd>
-<dt> <kbd>y</kbd></dt>
+<dt><kbd>y</kbd></dt>
 <dd><p>Request <code>tar</code> to begin writing the next volume.
 </p></dd>
 </dl>
@@ -13528,9 +13528,9 @@ volume, and instruct <code>tar</code> to use it instead of its normal
 prompting procedure: 
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--info-script=<var>script-name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--new-volume-script=<var>script-name</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-F <var>script-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--info-script=<var>script-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--new-volume-script=<var>script-name</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-F <var>script-name</var></samp>&rsquo;</dt>
 <dd><p>Specify the full name of the volume script to use.  The script can be
 used to eject cassettes, or to broadcast messages such as
 &lsquo;<samp>Someone please come change my tape</samp>&rsquo; when performing unattended
@@ -13546,28 +13546,28 @@ environment variables:
 <dl compact="compact">
 <dd><a name="index-TAR_005fVERSION_002c-info-script-environment-variable"></a>
 </dd>
-<dt> <code>TAR_VERSION</code></dt>
+<dt><code>TAR_VERSION</code></dt>
 <dd><p><acronym>GNU</acronym> <code>tar</code> version number.
 </p>
 <a name="index-TAR_005fARCHIVE_002c-info-script-environment-variable"></a>
 </dd>
-<dt> <code>TAR_ARCHIVE</code></dt>
+<dt><code>TAR_ARCHIVE</code></dt>
 <dd><p>The name of the archive <code>tar</code> is processing.
 </p>
 <a name="index-TAR_005fVOLUME_002c-info-script-environment-variable"></a>
 </dd>
-<dt> <code>TAR_VOLUME</code></dt>
+<dt><code>TAR_VOLUME</code></dt>
 <dd><p>Ordinal number of the volume <code>tar</code> is about to start.
 </p>
 <a name="index-TAR_005fSUBCOMMAND_002c-info-script-environment-variable"></a>
 </dd>
-<dt> <code>TAR_SUBCOMMAND</code></dt>
+<dt><code>TAR_SUBCOMMAND</code></dt>
 <dd><p>Short option describing the operation <code>tar</code> is executing
 See section <a href="#Operations">The Five Advanced <code>tar</code> Operations</a>, for a complete list of subcommand options.
 </p>
 <a name="index-TAR_005fFORMAT_002c-info-script-environment-variable"></a>
 </dd>
-<dt> <code>TAR_FORMAT</code></dt>
+<dt><code>TAR_FORMAT</code></dt>
 <dd><p>Format of the archive being processed. See section <a href="#Formats">Controlling the Archive Format</a>, for a complete
 list of archive format names.
 </p></dd>
@@ -13794,8 +13794,8 @@ option in conjunction with the &lsquo;<samp>--create</samp>&rsquo; operation to 
 a label entry in the archive as it is being created.
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--label=<var>archive-label</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>-V <var>archive-label</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--label=<var>archive-label</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-V <var>archive-label</var></samp>&rsquo;</dt>
 <dd><p>Includes an <em>archive-label</em> at the beginning of the archive when
 the archive is being created, when used in conjunction with the
 &lsquo;<samp>--create</samp>&rsquo; operation.  Checks to make sure the archive label
@@ -13919,8 +13919,8 @@ is usually not the case.
 <a name="index-Double_002dchecking-a-write-operation"></a>
 
 <dl compact="compact">
-<dt> &lsquo;<samp>-W</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--verify</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-W</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--verify</samp>&rsquo;</dt>
 <dd><a name="index-verify_002c-short-description"></a>
 <p>Attempt to verify the archive after writing.
 </p></dd>
@@ -14050,7 +14050,7 @@ version of this document is available at
 <a href="http://www.gnu.org/software/tar/manual/changes.html">the <acronym>GNU</acronym> <code>tar</code> documentation page</a>.
 </p>
 <dl compact="compact">
-<dt> Use of globbing patterns when listing and extracting.</dt>
+<dt>Use of globbing patterns when listing and extracting.</dt>
 <dd>
 <p>Previous versions of GNU tar assumed shell-style globbing when
 extracting from or listing an archive.  For example:
@@ -14086,7 +14086,7 @@ add this option to your <code>TAR_OPTIONS</code> variable.
 patterns by <acronym>GNU</acronym> <code>tar</code>.
 </p>
 </dd>
-<dt> Use of short option &lsquo;<samp>-o</samp>&rsquo;.</dt>
+<dt>Use of short option &lsquo;<samp>-o</samp>&rsquo;.</dt>
 <dd>
 <p>Earlier versions of <acronym>GNU</acronym> <code>tar</code> understood &lsquo;<samp>-o</samp>&rsquo; command line
 option as a synonym for &lsquo;<samp>--old-archive</samp>&rsquo;.
@@ -14114,7 +14114,7 @@ archive formats with <code>automake</code>.
 synonym for &lsquo;<samp>--no-same-owner</samp>&rsquo;.
 </p>
 </dd>
-<dt> Use of short option &lsquo;<samp>-l</samp>&rsquo;</dt>
+<dt>Use of short option &lsquo;<samp>-l</samp>&rsquo;</dt>
 <dd>
 <p>Earlier versions of <acronym>GNU</acronym> <code>tar</code> understood &lsquo;<samp>-l</samp>&rsquo; option as a
 synonym for &lsquo;<samp>--one-file-system</samp>&rsquo;.  Since such usage contradicted
@@ -14125,12 +14125,12 @@ versions 1.15 and 1.15.90.  The present use of &lsquo;<samp>-l</samp>&rsquo; as 
 variant of &lsquo;<samp>--check-links</samp>&rsquo; was introduced in version 1.15.91.
 </p>
 </dd>
-<dt> Use of options &lsquo;<samp>--portability</samp>&rsquo; and &lsquo;<samp>--old-archive</samp>&rsquo;</dt>
+<dt>Use of options &lsquo;<samp>--portability</samp>&rsquo; and &lsquo;<samp>--old-archive</samp>&rsquo;</dt>
 <dd>
 <p>These options are deprecated.  Please use &lsquo;<samp>--format=v7</samp>&rsquo; instead.
 </p>
 </dd>
-<dt> Use of option &lsquo;<samp>--posix</samp>&rsquo;</dt>
+<dt>Use of option &lsquo;<samp>--posix</samp>&rsquo;</dt>
 <dd>
 <p>This option is deprecated.  Please use &lsquo;<samp>--format=posix</samp>&rsquo; instead.
 </p></dd>
@@ -14184,7 +14184,7 @@ output feature on or off. Depending on the type of the corresponding
 variable, there are two kinds of assignments:
 </p>
 <dl compact="compact">
-<dt> Offset assignment</dt>
+<dt>Offset assignment</dt>
 <dd>
 <p>The assignment to an offset variable has the following syntax:
 </p>
@@ -14195,7 +14195,7 @@ variable, there are two kinds of assignments:
 numeric value to be assigned to the variable.
 </p>
 </dd>
-<dt> Boolean assignment</dt>
+<dt>Boolean assignment</dt>
 <dd>
 <p>To assign <code>true</code> value to a variable, simply put this variable name. To
 assign <code>false</code> value, prefix the variable name with &lsquo;<samp>no-</samp>&rsquo;. For
@@ -14806,8 +14806,8 @@ that the header had.  There can be an indeterminate number of such
 <code>extended_header</code>s to describe a sparse file.
 </p>
 <dl compact="compact">
-<dt> <code>REGTYPE</code></dt>
-<dt> <code>AREGTYPE</code></dt>
+<dt><code>REGTYPE</code></dt>
+<dt><code>AREGTYPE</code></dt>
 <dd><p>These flags represent a regular file.  In order to be compatible
 with older versions of <code>tar</code>, a <code>typeflag</code> value of
 <code>AREGTYPE</code> should be silently recognized as a regular file.
@@ -14816,20 +14816,20 @@ backward compatibility, <code>tar</code> treats a regular file whose name
 ends with a slash as a directory.
 </p>
 </dd>
-<dt> <code>LNKTYPE</code></dt>
+<dt><code>LNKTYPE</code></dt>
 <dd><p>This flag represents a file linked to another file, of any type,
 previously archived.  Such files are identified in Unix by each
 file having the same device and inode number.  The linked-to name is
 specified in the <code>linkname</code> field with a trailing null.
 </p>
 </dd>
-<dt> <code>SYMTYPE</code></dt>
+<dt><code>SYMTYPE</code></dt>
 <dd><p>This represents a symbolic link to another file.  The linked-to name
 is specified in the <code>linkname</code> field with a trailing null.
 </p>
 </dd>
-<dt> <code>CHRTYPE</code></dt>
-<dt> <code>BLKTYPE</code></dt>
+<dt><code>CHRTYPE</code></dt>
+<dt><code>BLKTYPE</code></dt>
 <dd><p>These represent character special files and block special files
 respectively.  In this case the <code>devmajor</code> and <code>devminor</code>
 fields will contain the major and minor device numbers respectively.
@@ -14837,7 +14837,7 @@ Operating systems may map the device specifications to their own
 local specification, or may ignore the entry.
 </p>
 </dd>
-<dt> <code>DIRTYPE</code></dt>
+<dt><code>DIRTYPE</code></dt>
 <dd><p>This flag specifies a directory or sub-directory.  The directory
 name in the <code>name</code> field should end with a slash.  On systems where
 disk allocation is performed on a directory basis, the <code>size</code> field
@@ -14848,12 +14848,12 @@ which do not support limiting in this manner should ignore the
 <code>size</code> field.
 </p>
 </dd>
-<dt> <code>FIFOTYPE</code></dt>
+<dt><code>FIFOTYPE</code></dt>
 <dd><p>This specifies a FIFO special file.  Note that the archiving of a
 FIFO file archives the existence of this file and not its contents.
 </p>
 </dd>
-<dt> <code>CONTTYPE</code></dt>
+<dt><code>CONTTYPE</code></dt>
 <dd><p>This specifies a contiguous file, which is the same as a normal
 file except that, in operating systems which support it, all its
 space is allocated contiguously on the disk.  Operating systems
@@ -14861,7 +14861,7 @@ which do not allow contiguous allocation should silently treat this
 type as a normal file.
 </p>
 </dd>
-<dt> <code>A</code> &hellip; <code>Z</code></dt>
+<dt><code>A</code> &hellip; <code>Z</code></dt>
 <dd><p>These are reserved for custom implementations.  Some of these are
 used in the <acronym>GNU</acronym> modified format, as described below.
 </p>
@@ -14910,8 +14910,8 @@ IEEE Std 1003.2-1992, pages 380-388 (section 4.48) and pages 936-940
 files in an archive.  These are listed below.
 </p>
 <dl compact="compact">
-<dt> <code>GNUTYPE_DUMPDIR</code></dt>
-<dt> <code>'D'</code></dt>
+<dt><code>GNUTYPE_DUMPDIR</code></dt>
+<dt><code>'D'</code></dt>
 <dd><p>This represents a directory and a list of files created by the
 &lsquo;<samp>--incremental</samp>&rsquo; (&lsquo;<samp>-G</samp>&rsquo;) option.  The <code>size</code> field gives the total
 size of the associated list of files.  Each file name is preceded by
@@ -14921,8 +14921,8 @@ name is terminated by a null.  There is an additional null after the
 last file name.
 </p>
 </dd>
-<dt> <code>GNUTYPE_MULTIVOL</code></dt>
-<dt> <code>'M'</code></dt>
+<dt><code>GNUTYPE_MULTIVOL</code></dt>
+<dt><code>'M'</code></dt>
 <dd><p>This represents a file continued from another volume of a multi-volume
 archive created with the &lsquo;<samp>--multi-volume</samp>&rsquo; (&lsquo;<samp>-M</samp>&rsquo;) option.  The original
 type of the file is not given here.  The <code>size</code> field gives the
@@ -14933,16 +14933,16 @@ the file begins.  Thus <code>size</code> plus <code>offset</code> should equal
 the original size of the file.
 </p>
 </dd>
-<dt> <code>GNUTYPE_SPARSE</code></dt>
-<dt> <code>'S'</code></dt>
+<dt><code>GNUTYPE_SPARSE</code></dt>
+<dt><code>'S'</code></dt>
 <dd><p>This flag indicates that we are dealing with a sparse file.  Note
 that archiving a sparse file requires special operations to find
 holes in the file, which mark the positions of these holes, along
 with the number of bytes of data to be found after the hole.
 </p>
 </dd>
-<dt> <code>GNUTYPE_VOLHDR</code></dt>
-<dt> <code>'V'</code></dt>
+<dt><code>GNUTYPE_VOLHDR</code></dt>
+<dt><code>'V'</code></dt>
 <dd><p>This file type is used to mark the volume header that was given with
 the &lsquo;<samp>--label=<var>archive-label</var></samp>&rsquo; (&lsquo;<samp>-V <var>archive-label</var></samp>&rsquo;) option when the archive was created.  The <code>name</code>
 field contains the <code>name</code> given after the &lsquo;<samp>--label=<var>archive-label</var></samp>&rsquo; (&lsquo;<samp>-V <var>archive-label</var></samp>&rsquo;) option.
@@ -15112,21 +15112,21 @@ versions 1.14&ndash;1.15.1.  The sparse file map is kept in extended
 <dl compact="compact">
 <dd><a name="index-GNU_002esparse_002esize_002c-extended-header-variable"></a>
 </dd>
-<dt> <code>GNU.sparse.size</code></dt>
+<dt><code>GNU.sparse.size</code></dt>
 <dd><p>Real size of the stored file
 </p>
 </dd>
-<dt> <code>GNU.sparse.numblocks</code></dt>
+<dt><code>GNU.sparse.numblocks</code></dt>
 <dd><a name="index-GNU_002esparse_002enumblocks_002c-extended-header-variable"></a>
 <p>Number of blocks in the sparse map
 </p>
 </dd>
-<dt> <code>GNU.sparse.offset</code></dt>
+<dt><code>GNU.sparse.offset</code></dt>
 <dd><a name="index-GNU_002esparse_002eoffset_002c-extended-header-variable"></a>
 <p>Offset of the data block
 </p>
 </dd>
-<dt> <code>GNU.sparse.numbytes</code></dt>
+<dt><code>GNU.sparse.numbytes</code></dt>
 <dd><a name="index-GNU_002esparse_002enumbytes_002c-extended-header-variable"></a>
 <p>Size of the data block
 </p></dd>
@@ -15173,7 +15173,7 @@ instead of <code>GNU.sparse.offset</code>/<code>GNU.sparse.numbytes</code> pairs
 it uses a single variable:
 </p>
 <dl compact="compact">
-<dt> <code>GNU.sparse.map</code></dt>
+<dt><code>GNU.sparse.map</code></dt>
 <dd><a name="index-GNU_002esparse_002emap_002c-extended-header-variable"></a>
 <p>Map of non-null data chunks.  It is a string consisting of
 comma-separated values &quot;<var>offset</var>,<var>size</var>[,<var>offset-1</var>,<var>size-1</var>...]&quot; 
@@ -15228,12 +15228,12 @@ preceding a sparse member always contains the following variables that
 identify the format being used:
 </p>
 <dl compact="compact">
-<dt> <code>GNU.sparse.major</code></dt>
+<dt><code>GNU.sparse.major</code></dt>
 <dd><a name="index-GNU_002esparse_002emajor_002c-extended-header-variable"></a>
 <p>Major version
 </p>
 </dd>
-<dt> <code>GNU.sparse.minor</code></dt>
+<dt><code>GNU.sparse.minor</code></dt>
 <dd><a name="index-GNU_002esparse_002eminor_002c-extended-header-variable"></a>
 <p>Minor version
 </p></dd>
@@ -15383,30 +15383,30 @@ them.
 <p>  The following table describes control codes and their meanings:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>Y</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>Y</samp>&rsquo;</dt>
 <dd><p><var>filename</var> is contained in the archive.
 </p>
 </dd>
-<dt> &lsquo;<samp>N</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>N</samp>&rsquo;</dt>
 <dd><p><var>filename</var> was present in the directory at the time the archive
 was made, yet it was not dumped to the archive, because it had not
 changed since the last backup.
 </p>
 </dd>
-<dt> &lsquo;<samp>D</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>D</samp>&rsquo;</dt>
 <dd><p><var>filename</var> is a directory.
 </p>
 </dd>
-<dt> &lsquo;<samp>R</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>R</samp>&rsquo;</dt>
 <dd><p>This code requests renaming of the <var>filename</var> to the name
 specified with the following &lsquo;<samp>T</samp>&rsquo; command.
 </p>
 </dd>
-<dt> &lsquo;<samp>T</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>T</samp>&rsquo;</dt>
 <dd><p>Specify target file name for &lsquo;<samp>R</samp>&rsquo; command (see below).
 </p>
 </dd>
-<dt> &lsquo;<samp>X</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>X</samp>&rsquo;</dt>
 <dd><p>Specify <em>temporary directory</em> name for a rename operation (see below).
 </p></dd>
 </dl>
@@ -15522,16 +15522,16 @@ implemented as the testsuite grew more sophisticated, and now
 <p>    There are three basic operation modes:
 </p>
 <dl compact="compact">
-<dt> File Generation</dt>
+<dt>File Generation</dt>
 <dd><p>    This is the default mode. In this mode, <code>genfile</code>
 generates data files.
 </p>
 </dd>
-<dt> File Status</dt>
+<dt>File Status</dt>
 <dd><p>    In this mode <code>genfile</code> displays status of specified files.
 </p>
 </dd>
-<dt> Synchronous Execution.</dt>
+<dt>Synchronous Execution.</dt>
 <dd><p>    In this mode <code>genfile</code> executes the given program with
 &lsquo;<samp>--checkpoint</samp>&rsquo; option and executes a set of actions when
 specified checkpoints are reached.
@@ -15614,11 +15614,11 @@ option. This option takes a mandatory argument, specifying pattern
 name to use. Currently two patterns are implemented:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--pattern=default</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--pattern=default</samp>&rsquo;</dt>
 <dd><p>    The default pattern as described above.
 </p>
 </dd>
-<dt> &lsquo;<samp>--pattern=zero</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--pattern=zero</samp>&rsquo;</dt>
 <dd><p>    Fills the file with zeroes.
 </p></dd>
 </dl>
@@ -15647,16 +15647,16 @@ pattern to fill the fragment with. File offset can be suffixed with
 the following quantifiers:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>k</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>K</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>k</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>K</samp>&rsquo;</dt>
 <dd><p>The number is expressed in kilobytes.
 </p></dd>
-<dt> &lsquo;<samp>m</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>M</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>M</samp>&rsquo;</dt>
 <dd><p>The number is expressed in megabytes.
 </p></dd>
-<dt> &lsquo;<samp>g</samp>&rsquo;</dt>
-<dt> &lsquo;<samp>G</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>g</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>G</samp>&rsquo;</dt>
 <dd><p>The number is expressed in gigabytes.
 </p></dd>
 </dl>
@@ -15723,74 +15723,74 @@ following identifiers
 <p>:
 </p>
 <dl compact="compact">
-<dt> name</dt>
+<dt>name</dt>
 <dd><p>    The file name.
 </p>    
 </dd>
-<dt> dev</dt>
-<dt> st_dev</dt>
+<dt>dev</dt>
+<dt>st_dev</dt>
 <dd><p>    Device number in decimal.
 </p>    
 </dd>
-<dt> ino</dt>
-<dt> st_ino</dt>
+<dt>ino</dt>
+<dt>st_ino</dt>
 <dd><p>    Inode number.
 </p>    
 </dd>
-<dt> mode[.<var>number</var>]</dt>
-<dt> st_mode[.<var>number</var>]</dt>
+<dt>mode[.<var>number</var>]</dt>
+<dt>st_mode[.<var>number</var>]</dt>
 <dd><p>    File mode in octal.  Optional <var>number</var> specifies octal mask to
 be applied to the mode before outputting.  For example, <code>--stat
 mode.777</code> will preserve lower nine bits of it.  Notice, that you can
 use any punctuation caracter in place of &lsquo;<samp>.</samp>&rsquo;.
 </p>    
 </dd>
-<dt> nlink</dt>
-<dt> st_nlink</dt>
+<dt>nlink</dt>
+<dt>st_nlink</dt>
 <dd><p>    Number of hard links.
 </p>    
 </dd>
-<dt> uid</dt>
-<dt> st_uid</dt>
+<dt>uid</dt>
+<dt>st_uid</dt>
 <dd><p>    User ID of owner.
 </p>    
 </dd>
-<dt> gid</dt>
-<dt> st_gid</dt>
+<dt>gid</dt>
+<dt>st_gid</dt>
 <dd><p>    Group ID of owner.
 </p>    
 </dd>
-<dt> size</dt>
-<dt> st_size</dt>
+<dt>size</dt>
+<dt>st_size</dt>
 <dd><p>    File size in decimal.
 </p>    
 </dd>
-<dt> blksize</dt>
-<dt> st_blksize</dt>
+<dt>blksize</dt>
+<dt>st_blksize</dt>
 <dd><p>    The size in bytes of each file block.
 </p>    
 </dd>
-<dt> blocks</dt>
-<dt> st_blocks</dt>
+<dt>blocks</dt>
+<dt>st_blocks</dt>
 <dd><p>    Number of blocks allocated.
 </p>     
 </dd>
-<dt> atime</dt>
-<dt> st_atime</dt>
+<dt>atime</dt>
+<dt>st_atime</dt>
 <dd><p>    Time of last access.
 </p>    
 </dd>
-<dt> mtime</dt>
-<dt> st_mtime</dt>
+<dt>mtime</dt>
+<dt>st_mtime</dt>
 <dd><p>    Time of last modification
 </p>
 </dd>
-<dt> ctime</dt>
-<dt> st_ctime</dt>
+<dt>ctime</dt>
+<dt>st_ctime</dt>
 <dd><p>    Time of last status change
 </p>
 </dd>
-<dt> sparse</dt>
+<dt>sparse</dt>
 <dd><p>    A boolean value indicating whether the file is &lsquo;<samp>sparse</samp>&rsquo;.     
 </p></dd>
 </dl>
@@ -15864,18 +15864,18 @@ checkpoint in decimal.
 checkpoint. Available actions are
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>--cut <var>file</var></samp>&rsquo;</dt>
-<dt> &lsquo;<samp>--truncate <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--cut <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--truncate <var>file</var></samp>&rsquo;</dt>
 <dd><p>    Truncate <var>file</var> to the size specified by previous
 &lsquo;<samp>--length</samp>&rsquo; option (or 0, if it is not given).
 </p>    
 </dd>
-<dt> &lsquo;<samp>--append <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--append <var>file</var></samp>&rsquo;</dt>
 <dd><p>    Append data to <var>file</var>. The size of data and its pattern are
 given by previous &lsquo;<samp>--length</samp>&rsquo; and &lsquo;<samp>pattern</samp>&rsquo; options.
 </p>
 </dd>
-<dt> &lsquo;<samp>--touch <var>file</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--touch <var>file</var></samp>&rsquo;</dt>
 <dd><p>    Update the access and modification times of <var>file</var>. These
 timestamps are changed to the current time, unless &lsquo;<samp>--date</samp>&rsquo;
 option was given, in which case they are changed to the specified
@@ -15883,7 +15883,7 @@ time. Argument to &lsquo;<samp>--date</samp>&rsquo; option is a date specificati
 an almost arbitrary format (see section <a href="#Date-input-formats">Date input formats</a>).
 </p>
 </dd>
-<dt> &lsquo;<samp>--exec <var>command</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--exec <var>command</var></samp>&rsquo;</dt>
 <dd><p>    Execute given shell command.
 </p>    
 </dd>

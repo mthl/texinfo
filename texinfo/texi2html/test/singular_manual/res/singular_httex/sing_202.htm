@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -89,13 +89,13 @@ ul.toc {list-style: none}
 <a name="index-hres"></a>
 <a name="index-resolution_002c-hilbert_002ddriven"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>hres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>resolution
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>computes a free resolution of an ideal using the Hilbert-driven
 algorithm.
 </p>
@@ -125,12 +125,12 @@ class="cmmi-10">M</span><sub><span
 class="cmmi-7">i</span></sub>  
 in the above notation.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>The ideal_expression has to be homogeneous.
 <br> Accessing single elements of a resolution may require that some partial
 computations have to be finished and may therefore take some time.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=xz,yz,x3-y3;
   def L=hres(I,0);

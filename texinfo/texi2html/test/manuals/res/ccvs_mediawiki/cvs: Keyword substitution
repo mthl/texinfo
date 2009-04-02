@@ -73,12 +73,12 @@ a new revision of the file.
 <dl compact="compact">
 <dd><div id="index-Author-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Author$</code></dt>
+<dt><code>$<i></i>Author$</code></dt>
 <dd><p>The login name of the user who checked in the revision.
 </p>
 <div id="index-CVSHeader-keyword"></div>
 </dd>
-<dt> <code>$<i></i>CVSHeader</code></dt>
+<dt><code>$<i></i>CVSHeader</code></dt>
 <dd><p>A standard header (similar to $<i></i>Header$, but with
 the CVS root stripped off). It contains the relative
 pathname of the <small>RCS</small> file to the CVS root, the
@@ -96,12 +96,12 @@ See [[#Configuring-keyword-expansion|Configuring Keyord Expansion]] for more det
 </p>
 <div id="index-Date-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Date$</code></dt>
+<dt><code>$<i></i>Date$</code></dt>
 <dd><p>The date and time (UTC) the revision was checked in.
 </p>
 <div id="index-Header-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Header$</code></dt>
+<dt><code>$<i></i>Header$</code></dt>
 <dd><p>A standard header containing the full pathname of the
 <small>RCS</small> file, the revision number, the date (UTC), the
 author, the state, and the locker (if locked).  Files
@@ -109,13 +109,13 @@ will normally never be locked when you use <small>CVS</small>.
 </p>
 <div id="index-Id-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Id$</code></dt>
+<dt><code>$<i></i>Id$</code></dt>
 <dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
 filename is without a path.
 </p>
 <div id="index-Name-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Name$</code></dt>
+<dt><code>$<i></i>Name$</code></dt>
 <dd><p>Tag name used to check out this file.  The keyword is
 expanded only if one checks out with an explicit tag
 name.  For example, when running the command <code>cvs
@@ -123,14 +123,14 @@ co -r first</code>, the keyword expands to &lsquo;<samp>Name: first</samp>&rsquo
 </p>
 <div id="index-Locker-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Locker$</code></dt>
+<dt><code>$<i></i>Locker$</code></dt>
 <dd><p>The login name of the user who locked the revision
 (empty if not locked, which is the normal case unless
 <code>cvs admin -l</code> is in use).
 </p>
 <div id="index-Log-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Log$</code></dt>
+<dt><code>$<i></i>Log$</code></dt>
 <dd><p>The log message supplied during commit, preceded by a
 header containing the <small>RCS</small> filename, the revision
 number, the author, and the date (UTC).  Existing log
@@ -160,28 +160,28 @@ See section [[#Log-keyword|Problems with the $<i></i>Log$ keyword.]].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>
-<dt> <code>$<i></i>RCSfile$</code></dt>
+<dt><code>$<i></i>RCSfile$</code></dt>
 <dd><p>The name of the RCS file without a path.
 </p>
 <div id="index-Revision-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Revision$</code></dt>
+<dt><code>$<i></i>Revision$</code></dt>
 <dd><p>The revision number assigned to the revision.
 </p>
 <div id="index-Source-keyword"></div>
 </dd>
-<dt> <code>$<i></i>Source$</code></dt>
+<dt><code>$<i></i>Source$</code></dt>
 <dd><p>The full pathname of the RCS file.
 </p>
 <div id="index-State-keyword"></div>
 </dd>
-<dt> <code>$<i></i>State$</code></dt>
+<dt><code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
 assigned with <code>cvs admin -s</code>&mdash;see [cvs: Guide to CVS commands#admin-options admin options].
 </p>
 <div id="index-Local-keyword"></div>
 </dd>
-<dt> <code>Local keyword</code></dt>
+<dt><code>Local keyword</code></dt>
 <dd><p>The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
 may be used to specify a local keyword which is to be
 used as an alias for one of the other keywords. For
@@ -380,20 +380,20 @@ see [cvs: Handling binary files#Binary-files Handling binary files], and [cvs: B
 <p>The modes available are:
 </p>
 <dl compact="compact">
-<dt> &lsquo;<samp>-kkv</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kkv</samp>&rsquo;</dt>
 <dd><p>Generate keyword strings using the default form, e.g.
 <code>$<i></i>Revision: 5.7 $</code> for the <code>Revision</code>
 keyword.
 </p>
 </dd>
-<dt> &lsquo;<samp>-kkvl</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kkvl</samp>&rsquo;</dt>
 <dd><p>Like &lsquo;<samp>-kkv</samp>&rsquo;, except that a locker&rsquo;s name is always
 inserted if the given revision is currently locked.
 The locker&rsquo;s name is only relevant if <code>cvs admin
 -l</code> is in use.
 </p>
 </dd>
-<dt> &lsquo;<samp>-kk</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kk</samp>&rsquo;</dt>
 <dd><p>Generate only keyword names in keyword strings; omit
 their values.  For example, for the <code>Revision</code>
 keyword, generate the string <code>$<i></i>Revision$</code>
@@ -403,7 +403,7 @@ substitution when comparing different revisions of a
 file (see section [cvs: Branching and merging#Merging-and-keywords Merging and keywords]).
 </p>
 </dd>
-<dt> &lsquo;<samp>-ko</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-ko</samp>&rsquo;</dt>
 <dd><p>Generate the old keyword string, present in the working
 file just before it was checked in.  For example, for
 the <code>Revision</code> keyword, generate the string
@@ -412,7 +412,7 @@ the <code>Revision</code> keyword, generate the string
 string appeared when the file was checked in.
 </p>
 </dd>
-<dt> &lsquo;<samp>-kb</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kb</samp>&rsquo;</dt>
 <dd><p>Like &lsquo;<samp>-ko</samp>&rsquo;, but also inhibit conversion of line
 endings between the canonical form in which they are
 stored in the repository (linefeed only), and the form
@@ -426,7 +426,7 @@ only to terminate lines, this is very similar to
 specified on the command line.
 </p>
 </dd>
-<dt> &lsquo;<samp>-kv</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-kv</samp>&rsquo;</dt>
 <dd><p>Generate only keyword values for keyword strings.  For
 example, for the <code>Revision</code> keyword, generate the string
 <code>5.7</code> instead of <code>$<i></i>Revision: 5.7 $</code>.

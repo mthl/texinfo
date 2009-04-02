@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -113,49 +113,49 @@ LIB/help.cnf, also the addition of new help browsers is possible.
 <h2 class="heading">Extensions of the ring concept</h2>
 
 <dl compact="compact">
-<dt> new coefficient domains: arbitrary long real and complex numbers</dt>
-<dt> no restriction on number of parameters</dt>
-<dt> degree bound on exponent values (maximum is now 2^31, standard 2^15)</dt>
-<dt> non-positives weights get a better handling (converts wp/Wp to ws/Ws)</dt>
-<dt> handle blocks of mixed orders correctly</dt>
-<dt> maximal prime characteristic is now 2147483629 instead of 32003</dt>
+<dt>new coefficient domains: arbitrary long real and complex numbers</dt>
+<dt>no restriction on number of parameters</dt>
+<dt>degree bound on exponent values (maximum is now 2^31, standard 2^15)</dt>
+<dt>non-positives weights get a better handling (converts wp/Wp to ws/Ws)</dt>
+<dt>handle blocks of mixed orders correctly</dt>
+<dt>maximal prime characteristic is now 2147483629 instead of 32003</dt>
 </dl>
 
 <a name="Changes-in-SINGULAR-libraries"></a>
 <h2 class="heading">Changes in <small>SINGULAR</small> libraries</h2>
 <p>The documentation of libraries was generally improved.
 </p><dl compact="compact">
-<dt> <a href="sing_652.htm#equising_005flib">equising_lib</a></dt>
+<dt><a href="sing_652.htm#equising_005flib">equising_lib</a></dt>
 <dd><p>procedures esStratum, isEquising now also for reducible polynomials
 <br>new procedures: tau_es (codim of mu-const stratum in semi-universal def. base);
 esIdeal ((Wahl&rsquo;s) equisingularity ideal)
 </p></dd>
-<dt> <a href="sing_658.htm#gaussman_005flib">gaussman_lib</a></dt>
+<dt><a href="sing_658.htm#gaussman_005flib">gaussman_lib</a></dt>
 <dd><p>added bernstein: roots of the Bernstein polynomial of t
 </p></dd>
-<dt> <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a></dt>
+<dt><a href="sing_682.htm#hnoether_005flib">hnoether_lib</a></dt>
 <dd><p>HNdevelop, reddevelop, essdevelop are obsolete, replaced by hnexpansion
 <br>multsequence is &quot;repaired&quot; (since branches computed by hnexpansion
 et al) are now ordered according to the needs of multsequence.
 <br>newtonpoly needs no longer that ordering of the basering is ls
 <br>new procedures: is_NND      test if f is Newton non-degenerate
 </p></dd>
-<dt> <a href="sing_550.htm#homolog_005flib">homolog_lib</a></dt>
+<dt><a href="sing_550.htm#homolog_005flib">homolog_lib</a></dt>
 <dd><p>new procedures: depth, fitting, flatteningStrat, isCM, isFlat, isLocallyFree,
 isReg, KoszulHomology, tensorMod, Tor
 </p></dd>
-<dt> <a href="sing_476.htm#matrix_005flib">matrix_lib</a></dt>
+<dt><a href="sing_476.htm#matrix_005flib">matrix_lib</a></dt>
 <dd><p>in proc tensor(A,B):  check if ncols(A)==0
 </p></dd>
-<dt> <a href="sing_595.htm#normal_005flib">normal_lib</a></dt>
+<dt><a href="sing_595.htm#normal_005flib">normal_lib</a></dt>
 <dd><p>new procedure: deltaLoc(f,S);      (sum of) delta invariant(s) at conjugated
 singular points
 <br>proc genus makes now use of is_NND of hnoether.lib
 </p></dd>
-<dt> <a href="sing_600.htm#primdec_005flib">primdec_lib</a></dt>
+<dt><a href="sing_600.htm#primdec_005flib">primdec_lib</a></dt>
 <dd><p>optimizations again
 </p></dd>
-<dt> <a href="sing_831.htm#solve_005flib">solve_lib</a></dt>
+<dt><a href="sing_831.htm#solve_005flib">solve_lib</a></dt>
 <dd><p>procedure laguerre_solve ignores no longer the 2nd parameter (precision of 
 internal computation)
 <br> new procedure simplexOut:     prints solution of simplex in nice format
@@ -165,16 +165,16 @@ internal computation)
 <a name="Internal-Changes"></a>
 <h2 class="heading">Internal Changes</h2>
 <dl compact="compact">
-<dt> normal form computation uses</dt>
+<dt>normal form computation uses</dt>
 <dd><p>Bucket representation of polynomials.
 </p></dd>
-<dt> factorization</dt>
+<dt>factorization</dt>
 <dd><p>revisited, missing cases implemented
 </p></dd>
-<dt> NTL</dt>
+<dt>NTL</dt>
 <dd><p>NTL is used for univariate factorization
 </p></dd>
-<dt> source code</dt>
+<dt>source code</dt>
 <dd><p>adapted for use with gcc 3.1/3.2, gmp 4.x
 </p></dd>
 </dl>

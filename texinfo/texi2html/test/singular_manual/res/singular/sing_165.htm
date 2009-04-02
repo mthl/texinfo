@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -87,7 +87,7 @@ ul.toc {list-style: none}
 <a name="index-coeffs"></a>
 
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>coeffs (</code> poly_expression <code>,</code> ring_variable <code>)</code>
 <br><code>coeffs (</code> ideal_expression<code>,</code> ring_variable <code>)</code>
 <br><code>coeffs (</code> vector_expression<code>,</code> ring_variable <code>)</code>
@@ -97,10 +97,10 @@ ul.toc {list-style: none}
 <br><code>coeffs (</code> vector_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
 <br><code>coeffs (</code> module_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>matrix
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>develops each polynomial of the first argument, say J,
 as a univariate polynomial in the given ring_variable,
 say z, and returns the coefficients as a k x d
@@ -115,7 +115,7 @@ component and the resulting matrices are appended.<br>
 The third argument is used to return the matrix T of coefficients
 such that <TT>matrix</TT>(J) = T*M.
 </p></dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p><code>coeffs</code> returns the coefficient 0 at the appropriate place if a monomial
 is not present, while <code>coef</code> considers only monomials which really occur
 in the given expression. <br>
@@ -161,7 +161,7 @@ z^{d-1} \cdot m_{id,j}.\end{displaymath}">
 <P></P>
 </p>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
   poly f=(x+y)^3;
   matrix M=coeffs(f,y);
@@ -179,16 +179,16 @@ z^{d-1} \cdot m_{id,j}.\end{displaymath}">
 &rarr; 0,  z10
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>coeffs (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
 <br><code>coeffs (</code> module_expression<code>,</code> module_expression <code>)</code>
 <br><code>coeffs (</code> ideal_expression<code>,</code> ideal_expression<code>,</code> product_of_ringvars <code>)</code>
 <br><code>coeffs (</code> module_expression<code>,</code> module_expression<code>,</code> product_of_ringvars <code>)</code>
 </p></dd>
-<dt> <code><strong>Type:</strong></code></dt>
+<dt><code><strong>Type:</strong></code></dt>
 <dd><p>matrix
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>let the first argument be M,
 the second argument  be K (a set of monomials, resp. vectors with monomial
 entries, in the variables appearing in P),
@@ -205,7 +205,7 @@ such that the entries of A do not contain any variable from P.
 M, then K*A=M&rsquo; where M&rsquo; is the part of M that can be expressed.
 </p>
 </dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal M=x2z+y3,xy;
   print(coeffs(M,ideal(x2,xy,y2),xy));

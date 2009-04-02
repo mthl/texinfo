@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -86,18 +86,18 @@ ul.toc {list-style: none}
 <h3 class="subsection">5.2.2 breakpoint</h3>
 <a name="index-breakpoint"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>breakpoint(</code> proc_name <code>);</code>
 <br><code>breakpoint(</code> proc_name<code>,</code> line_no <code>);</code>
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>sets a breakpoint at the beginning of the specified procedure or
 at the given line.
 <strong>Note:</strong> Line number 1 is the first line of a library (for
 procedures from libraries), resp. the line with the <code>{</code>.
 <br>A line number of -1 removes all breakpoint from that procedure.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">breakpoint(groebner);
 &rarr; breakpoint 1, at line 163 in groebner
 breakpoint(groebner, 176);

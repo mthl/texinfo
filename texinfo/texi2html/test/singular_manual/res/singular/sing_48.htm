@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -105,21 +105,21 @@ specifying the type of error and the line where it was detected.
 <p>The category-, info- and version-string are defined as follows:
 <a name="index-info-in-a-library"></a>
 </p><dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>info</code> = string_constant <code>;</code>
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>defines the general help for the library. This text is displayed on
 <code>help libname_lib;</code>.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">info=&quot;
       This could be the general help of a library.
      Quotes must be escaped with a \ such as \&quot;
 &quot;;
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>In the info-string the characters \ and &quot; must be preceded by a \ (escaped).
 It is recommended that the info string is placed on the top of a
 library file and contains general information about the library as well
@@ -134,19 +134,19 @@ recommend that you follow certain rules as explained in
 
 <a name="index-version-in-a-library"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>version</code> = string_constant <code>;</code>
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>defines the version number for the library. It is displayed when the
 library is loaded.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">version=&quot;$I<i></i>d: sample.lib,v 1.2 1998/05/07 singular Exp $&quot;;
 version=&quot;some version string&quot;;
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>It is common practice to simply define the version string to be
 <code>&quot;$I</code><code>d:$&quot;</code> and let a version control system expand it.
 </p></dd>
@@ -154,17 +154,17 @@ version=&quot;some version string&quot;;
 
 <a name="index-category-in-a-library"></a>
 <dl compact="compact">
-<dt> <code><strong>Syntax:</strong></code></dt>
+<dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>category</code> = string_constant <code>;</code>
 </p></dd>
-<dt> <code><strong>Purpose:</strong></code></dt>
+<dt><code><strong>Purpose:</strong></code></dt>
 <dd><p>defines the category for the library.
 </p></dd>
-<dt> <code><strong>Example:</strong></code></dt>
+<dt><code><strong>Example:</strong></code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">category=&quot;Utilities&quot;;
 </pre></td></tr></table>
 </dd>
-<dt> <code><strong>Note:</strong></code></dt>
+<dt><code><strong>Note:</strong></code></dt>
 <dd><p>reserved for sorting the libraries into categories.
 </p></dd>
 </dl>

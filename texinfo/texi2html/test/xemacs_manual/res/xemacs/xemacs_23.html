@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -218,14 +218,14 @@ commands that are not available in Text mode:
 <a name="index-M_002dp-1"></a>
 <a name="index-M_002d_003f"></a>
 <dl compact="compact">
-<dt> <kbd>M-n</kbd></dt>
+<dt><kbd>M-n</kbd></dt>
 <dd><p>Move to the beginning of the next line that isn&rsquo;t an nroff command
 (<code>forward-text-line</code>).  An argument is a repeat count.
 </p></dd>
-<dt> <kbd>M-p</kbd></dt>
+<dt><kbd>M-p</kbd></dt>
 <dd><p>Like <kbd>M-n</kbd> but move up (<code>backward-text-line</code>).
 </p></dd>
-<dt> <kbd>M-?</kbd></dt>
+<dt><kbd>M-?</kbd></dt>
 <dd><p>Prints in the echo area the number of text lines (lines that are not
 nroff commands) in the region (<code>count-text-lines</code>).
 </p></dd>
@@ -354,25 +354,25 @@ in cpio format, blocked 5120 bytes, ASCII headers.
 text of the file.
 </p>
 <dl compact="compact">
-<dt> <kbd>&quot;</kbd></dt>
+<dt><kbd>&quot;</kbd></dt>
 <dd><p>Insert, according to context, either &lsquo;<samp>``</samp>&rsquo; or &lsquo;<samp>&quot;</samp>&rsquo; or
 &lsquo;<samp>''</samp>&rsquo; (<code>TeX-insert-quote</code>).
 </p></dd>
-<dt> <kbd>&lt;LFD&gt;</kbd></dt>
+<dt><kbd>&lt;LFD&gt;</kbd></dt>
 <dd><p>Insert a paragraph break (two newlines) and check the previous
 paragraph for unbalanced braces or dollar signs
 (<code>tex-terminate-<br>paragraph</code>).
 </p></dd>
-<dt> <kbd>M-x validate-tex-buffer</kbd></dt>
+<dt><kbd>M-x validate-tex-buffer</kbd></dt>
 <dd><p>Check each paragraph in the buffer for unbalanced braces or dollar signs.
 </p></dd>
-<dt> <kbd>C-c {</kbd></dt>
+<dt><kbd>C-c {</kbd></dt>
 <dd><p>Insert &lsquo;<samp>{}</samp>&rsquo; and position point between them (<code>tex-insert-braces</code>).
 </p></dd>
-<dt> <kbd>C-c }</kbd></dt>
+<dt><kbd>C-c }</kbd></dt>
 <dd><p>Move forward past the next unmatched close brace (<code>up-list</code>).
 </p></dd>
-<dt> <kbd>C-c C-e</kbd></dt>
+<dt><kbd>C-c C-e</kbd></dt>
 <dd><p>Close a block for LaTeX (<code>tex-close-latex-block</code>).
 </p></dd>
 </dl>
@@ -462,25 +462,25 @@ this way on just one chapter is a good way to see what your changes
 look like without taking the time to format the entire file.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-c C-r</kbd></dt>
+<dt><kbd>C-c C-r</kbd></dt>
 <dd><p>Invoke TeX on the current region, plus the buffer&rsquo;s header
 (<code>tex-region</code>).
 </p></dd>
-<dt> <kbd>C-c C-b</kbd></dt>
+<dt><kbd>C-c C-b</kbd></dt>
 <dd><p>Invoke TeX on the entire current buffer (<code>tex-buffer</code>).
 </p></dd>
-<dt> <kbd>C-c C-l</kbd></dt>
+<dt><kbd>C-c C-l</kbd></dt>
 <dd><p>Recenter the window showing output from the inferior TeX so that
 the last line can be seen (<code>tex-recenter-output-buffer</code>).
 </p></dd>
-<dt> <kbd>C-c C-k</kbd></dt>
+<dt><kbd>C-c C-k</kbd></dt>
 <dd><p>Kill the inferior TeX (<code>tex-kill-job</code>).
 </p></dd>
-<dt> <kbd>C-c C-p</kbd></dt>
+<dt><kbd>C-c C-p</kbd></dt>
 <dd><p>Print the output from the last <kbd>C-c C-r</kbd> or <kbd>C-c C-b</kbd> command
 (<code>tex-print</code>).
 </p></dd>
-<dt> <kbd>C-c C-q</kbd></dt>
+<dt><kbd>C-c C-q</kbd></dt>
 <dd><p>Show the printer queue (<code>tex-show-print-queue</code>).
 </p></dd>
 </dl>
@@ -711,23 +711,23 @@ line inside Emacs.
 heading lines.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-c C-n</kbd></dt>
+<dt><kbd>C-c C-n</kbd></dt>
 <dd><p>Move point to the next visible heading line
 (<code>outline-next-visible-heading</code>).
 </p></dd>
-<dt> <kbd>C-c C-p</kbd></dt>
+<dt><kbd>C-c C-p</kbd></dt>
 <dd><p>Move point to the previous visible heading line <br>
 (<code>outline-previous-visible-heading</code>).
 </p></dd>
-<dt> <kbd>C-c C-f</kbd></dt>
+<dt><kbd>C-c C-f</kbd></dt>
 <dd><p>Move point to the next visible heading line at the same level
 as the one point is on (<code>outline-forward-same-level</code>).
 </p></dd>
-<dt> <kbd>C-c C-b</kbd></dt>
+<dt><kbd>C-c C-b</kbd></dt>
 <dd><p>Move point to the previous visible heading line at the same level
 (<code>outline-backward-same-level</code>).
 </p></dd>
-<dt> <kbd>C-c C-u</kbd></dt>
+<dt><kbd>C-c C-u</kbd></dt>
 <dd><p>Move point up to a lower-level (more inclusive) visible heading line
 (<code>outline-up-heading</code>).
 </p></dd>
@@ -785,35 +785,35 @@ you can undo right past them.  Making lines visible or invisible is simply
 not recorded by the undo mechanism.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x hide-body</kbd></dt>
+<dt><kbd>M-x hide-body</kbd></dt>
 <dd><p>Make all body lines in the buffer invisible.
 </p></dd>
-<dt> <kbd>M-x show-all</kbd></dt>
+<dt><kbd>M-x show-all</kbd></dt>
 <dd><p>Make all lines in the buffer visible.
 </p></dd>
-<dt> <kbd>C-c C-d</kbd></dt>
+<dt><kbd>C-c C-d</kbd></dt>
 <dd><p>Make everything under this heading invisible, not including this
 heading itself (<code>hide-subtree</code>).
 </p></dd>
-<dt> <kbd>C-c C-s</kbd></dt>
+<dt><kbd>C-c C-s</kbd></dt>
 <dd><p>Make everything under this heading visible, including body,
 subheadings, and their bodies (<code>show-subtree</code>).
 </p></dd>
-<dt> <kbd>M-x hide-leaves</kbd></dt>
+<dt><kbd>M-x hide-leaves</kbd></dt>
 <dd><p>Make the body of this heading line, and of all its subheadings,
 invisible.
 </p></dd>
-<dt> <kbd>M-x show-branches</kbd></dt>
+<dt><kbd>M-x show-branches</kbd></dt>
 <dd><p>Make all subheadings of this heading line, at all levels, visible.
 </p></dd>
-<dt> <kbd>C-c C-i</kbd></dt>
+<dt><kbd>C-c C-i</kbd></dt>
 <dd><p>Make immediate subheadings (one level down) of this heading line
 visible (<code>show-children</code>).
 </p></dd>
-<dt> <kbd>M-x hide-entry</kbd></dt>
+<dt><kbd>M-x hide-entry</kbd></dt>
 <dd><p>Make this heading line&rsquo;s body invisible.
 </p></dd>
-<dt> <kbd>M-x show-entry</kbd></dt>
+<dt><kbd>M-x show-entry</kbd></dt>
 <dd><p>Make this heading line&rsquo;s body visible.
 </p></dd>
 </dl>
@@ -893,22 +893,22 @@ no visible indication of the presence of invisible lines.
 the keys for them are all <kbd>Meta-</kbd> characters.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-f</kbd></dt>
+<dt><kbd>M-f</kbd></dt>
 <dd><p>Move forward over a word (<code>forward-word</code>).
 </p></dd>
-<dt> <kbd>M-b</kbd></dt>
+<dt><kbd>M-b</kbd></dt>
 <dd><p>Move backward over a word (<code>backward-word</code>).
 </p></dd>
-<dt> <kbd>M-d</kbd></dt>
+<dt><kbd>M-d</kbd></dt>
 <dd><p>Kill up to the end of a word (<code>kill-word</code>).
 </p></dd>
-<dt> <kbd>M-&lt;DEL&gt;</kbd></dt>
+<dt><kbd>M-&lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to the beginning of a word (<code>backward-kill-word</code>).
 </p></dd>
-<dt> <kbd>M-@</kbd></dt>
+<dt><kbd>M-@</kbd></dt>
 <dd><p>Mark the end of the next word (<code>mark-word</code>).
 </p></dd>
-<dt> <kbd>M-t</kbd></dt>
+<dt><kbd>M-t</kbd></dt>
 <dd><p>Transpose two words;  drag a word forward
 or backward across other words (<code>transpose-words</code>).
 </p></dd>
@@ -1000,16 +1000,16 @@ delimiter.  See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-a</kbd></dt>
+<dt><kbd>M-a</kbd></dt>
 <dd><p>Move back to the beginning of the sentence (<code>backward-sentence</code>).
 </p></dd>
-<dt> <kbd>M-e</kbd></dt>
+<dt><kbd>M-e</kbd></dt>
 <dd><p>Move forward to the end of the sentence (<code>forward-sentence</code>).
 </p></dd>
-<dt> <kbd>M-k</kbd></dt>
+<dt><kbd>M-k</kbd></dt>
 <dd><p>Kill forward to the end of the sentence (<code>kill-sentence</code>).
 </p></dd>
-<dt> <kbd>C-x &lt;DEL&gt;</kbd></dt>
+<dt><kbd>C-x &lt;DEL&gt;</kbd></dt>
 <dd><p>Kill back to the beginning of the sentence <br>(<code>backward-kill-sentence</code>).
 </p></dd>
 </dl>
@@ -1089,13 +1089,13 @@ normal value is:
 keys.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-{</kbd></dt>
+<dt><kbd>M-{</kbd></dt>
 <dd><p>Move back to previous paragraph beginning <br>(<code>backward-paragraph</code>).
 </p></dd>
-<dt> <kbd>M-}</kbd></dt>
+<dt><kbd>M-}</kbd></dt>
 <dd><p>Move forward to next paragraph end (<code>forward-paragraph</code>).
 </p></dd>
-<dt> <kbd>M-h</kbd></dt>
+<dt><kbd>M-h</kbd></dt>
 <dd><p>Put point and mark around this or next paragraph (<code>mark-paragraph</code>).
 </p></dd>
 </dl>
@@ -1173,16 +1173,16 @@ divisions of the file, commands are provided to move over them and
 operate on them.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x [</kbd></dt>
+<dt><kbd>C-x [</kbd></dt>
 <dd><p>Move point to previous page boundary (<code>backward-page</code>).
 </p></dd>
-<dt> <kbd>C-x ]</kbd></dt>
+<dt><kbd>C-x ]</kbd></dt>
 <dd><p>Move point to next page boundary (<code>forward-page</code>).
 </p></dd>
-<dt> <kbd>C-x C-p</kbd></dt>
+<dt><kbd>C-x C-p</kbd></dt>
 <dd><p>Put point and mark around this page (or another page) (<code>mark-page</code>).
 </p></dd>
-<dt> <kbd>C-x l</kbd></dt>
+<dt><kbd>C-x l</kbd></dt>
 <dd><p>Count the lines in this page (<code>count-lines-page</code>).
 </p></dd>
 </dl>
@@ -1295,11 +1295,11 @@ automatically when they become too wide.  Breaking happens only when
 you type a &lt;SPC&gt; or &lt;RET&gt;.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-x auto-fill-mode</kbd></dt>
+<dt><kbd>M-x auto-fill-mode</kbd></dt>
 <dd><p>Enable or disable Auto Fill mode.
 </p></dd>
-<dt> <kbd>&lt;SPC&gt;</kbd></dt>
-<dt> <kbd>&lt;RET&gt;</kbd></dt>
+<dt><kbd>&lt;SPC&gt;</kbd></dt>
+<dt><kbd>&lt;RET&gt;</kbd></dt>
 <dd><p>In Auto Fill mode, break lines when appropriate.
 </p></dd>
 </dl>
@@ -1359,19 +1359,19 @@ permanently for yourself.  See section <a href="xemacs_30.html#Init-File">The In
 <h3 class="subsection">20.6.2 Explicit Fill Commands</h3>
 
 <dl compact="compact">
-<dt> <kbd>M-q</kbd></dt>
+<dt><kbd>M-q</kbd></dt>
 <dd><p>Fill current paragraph (<code>fill-paragraph</code>).
 </p></dd>
-<dt> <kbd>M-g</kbd></dt>
+<dt><kbd>M-g</kbd></dt>
 <dd><p>Fill each paragraph in the region (<code>fill-region</code>).
 </p></dd>
-<dt> <kbd>C-x f</kbd></dt>
+<dt><kbd>C-x f</kbd></dt>
 <dd><p>Set the fill column (<code>set-fill-column</code>).
 </p></dd>
-<dt> <kbd>M-x fill-region-as-paragraph</kbd></dt>
+<dt><kbd>M-x fill-region-as-paragraph</kbd></dt>
 <dd><p>Fill the region, considering it as one paragraph.
 </p></dd>
-<dt> <kbd>M-s</kbd></dt>
+<dt><kbd>M-s</kbd></dt>
 <dd><p>Center a line.
 </p></dd>
 </dl>
@@ -1455,13 +1455,13 @@ included in filling.  Emacs expects every line to start with a fill
 prefix.
 </p>
 <dl compact="compact">
-<dt> <kbd>C-x .</kbd></dt>
+<dt><kbd>C-x .</kbd></dt>
 <dd><p>Set the fill prefix (<code>set-fill-prefix</code>).
 </p></dd>
-<dt> <kbd>M-q</kbd></dt>
+<dt><kbd>M-q</kbd></dt>
 <dd><p>Fill a paragraph using current fill prefix (<code>fill-paragraph</code>).
 </p></dd>
-<dt> <kbd>M-x fill-individual-paragraphs</kbd></dt>
+<dt><kbd>M-x fill-individual-paragraphs</kbd></dt>
 <dd><p>Fill the region, considering each change of indentation as starting a
 new paragraph.
 </p></dd>
@@ -1524,19 +1524,19 @@ each group as a paragraph, using its indentation as a fill prefix.
 range of text to upper case or to lower case.
 </p>
 <dl compact="compact">
-<dt> <kbd>M-l</kbd></dt>
+<dt><kbd>M-l</kbd></dt>
 <dd><p>Convert following word to lower case (<code>downcase-word</code>).
 </p></dd>
-<dt> <kbd>M-u</kbd></dt>
+<dt><kbd>M-u</kbd></dt>
 <dd><p>Convert following word to upper case (<code>upcase-word</code>).
 </p></dd>
-<dt> <kbd>M-c</kbd></dt>
+<dt><kbd>M-c</kbd></dt>
 <dd><p>Capitalize the following word (<code>capitalize-word</code>).
 </p></dd>
-<dt> <kbd>C-x C-l</kbd></dt>
+<dt><kbd>C-x C-l</kbd></dt>
 <dd><p>Convert region to lower case (<code>downcase-region</code>).
 </p></dd>
-<dt> <kbd>C-x C-u</kbd></dt>
+<dt><kbd>C-x C-u</kbd></dt>
 <dd><p>Convert region to upper case (<code>upcase-region</code>).
 </p></dd>
 </dl>

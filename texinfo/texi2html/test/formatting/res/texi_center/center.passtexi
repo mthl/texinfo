@@ -27,51 +27,55 @@ center.texi(,27) line
 center.texi(,28) @end table 
 center.texi(,29) @end example} and text after the footnote.
 center.texi(,30) 
-center.texi(,31) @table
-center.texi(,32) @item @center centered text in item
-center.texi(,33) table line @center centered text in table line
-center.texi(,34) @center centered line with item @item second item on center line
-center.texi(,35) @end table
-center.texi(,36) 
-center.texi(,37) @center unclosed command on center line @code{in code
-center.texi(,38) Still in code}
-center.texi(,39) 
-center.texi(,40) @center unclosed command on center line with paragraph @code{in code
-center.texi(,41) 
-center.texi(,42) Still in code after paragraph}
+center.texi(,31) center in a @@code:
+center.texi(,32) 
+center.texi(,33) @code{@center Centered code line}
+center.texi(,34) 
+center.texi(,35) @table
+center.texi(,36) @item @center centered text in item
+center.texi(,37) table line @center centered text in table line
+center.texi(,38) @center centered line with item @item second item on center line
+center.texi(,39) @end table
+center.texi(,40) 
+center.texi(,41) @center unclosed command on center line @code{in code
+center.texi(,42) Still in code}
 center.texi(,43) 
-center.texi(,44) @center unclosed command on center line with other center @code{in code
-center.texi(,45) @center still in code on center line}. After code.
-center.texi(,46) 
-center.texi(,47) @center unclosed command on center line with other center and paragraph @code{in code
-center.texi(,48) 
+center.texi(,44) @center unclosed command on center line with paragraph @code{in code
+center.texi(,45) 
+center.texi(,46) Still in code after paragraph}
+center.texi(,47) 
+center.texi(,48) @center unclosed command on center line with other center @code{in code
 center.texi(,49) @center still in code on center line}. After code.
 center.texi(,50) 
-center.texi(,51) @samp{begin samp @center center and end samp} after end of samp
+center.texi(,51) @center unclosed command on center line with other center and paragraph @code{in code
 center.texi(,52) 
-center.texi(,53) Empty double center:
-center.texi(,54) @center @center
-center.texi(,55) 
-center.texi(,56) @center after first center @center after second center
-center.texi(,57) 
-center.texi(,58) @center @samp{something @center end of samp}
+center.texi(,53) @center still in code on center line}. After code.
+center.texi(,54) 
+center.texi(,55) @samp{begin samp @center center and end samp} after end of samp
+center.texi(,56) 
+center.texi(,57) Empty double center:
+center.texi(,58) @center @center
 center.texi(,59) 
-center.texi(,60) @center after first center @samp{@center after second center
+center.texi(,60) @center after first center @center after second center
 center.texi(,61) 
-center.texi(,62) End of samp}
+center.texi(,62) @center @samp{something @center end of samp}
 center.texi(,63) 
-center.texi(,64) @unnumbered Heading
+center.texi(,64) @center after first center @samp{@center after second center
 center.texi(,65) 
-center.texi(,66) @multitable {AAA}  {BBB}
-center.texi(,67) @item truc @tab bidule
-center.texi(,68) @center @item ctruc @tab cbidule
-center.texi(,69) @center @item cstruc
-center.texi(,70) @end multitable
-center.texi(,71) 
-center.texi(,72) @center before the table @table
-center.texi(,73) @item item in center
-center.texi(,74) Line in center
-center.texi(,75) @item second item
-center.texi(,76) @end table
-center.texi(,77) 
-center.texi(,78) @bye
+center.texi(,66) End of samp}
+center.texi(,67) 
+center.texi(,68) @unnumbered Heading
+center.texi(,69) 
+center.texi(,70) @multitable {AAA}  {BBB}
+center.texi(,71) @item truc @tab bidule
+center.texi(,72) @center @item ctruc @tab cbidule
+center.texi(,73) @center @item cstruc
+center.texi(,74) @end multitable
+center.texi(,75) 
+center.texi(,76) @center before the table @table
+center.texi(,77) @item item in center
+center.texi(,78) Line in center
+center.texi(,79) @item second item
+center.texi(,80) @end table
+center.texi(,81) 
+center.texi(,82) @bye

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created on a sunny day by texi2html
 texi2html was written by: 
@@ -90,11 +90,11 @@ ul.toc {list-style: none}
 <p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_895.htm#brnoeth_005flib">brnoeth_lib</a>).
 </p>
 <dl compact="compact">
-<dt> <strong>Usage:</strong></dt>
+<dt><strong>Usage:</strong></dt>
 <dd><p>prepSV( G, D, F, EC ); G,D,F intvecs and EC a list
 </p>
 </dd>
-<dt> <strong>Return:</strong></dt>
+<dt><strong>Return:</strong></dt>
 <dd><p>list E of size n+3, where n=size(D). All its entries but E[n+3]
 are matrices:
    </p><table><tr><td>&nbsp;</td><td><pre class="format">   E[1]:  parity check matrix for the current AG code
@@ -111,7 +111,7 @@ class="cmmi-10">delta </span>
    </pre></td></tr></table>
 
 </dd>
-<dt> <strong>Note:</strong></dt>
+<dt><strong>Note:</strong></dt>
 <dd><p>Computes the preprocessing for the basic (Skorobogatov-Vladut)
 decoding algorithm.<br>
 The procedure must be called within the ring EC[1][4], where EC is
@@ -134,7 +134,7 @@ keep it during the decoding, you must previously permute D (using
 P=L[3], L being the output of <code>sys_code</code>.
 </p>
 </dd>
-<dt> <strong>Warnings:</strong></dt>
+<dt><strong>Warnings:</strong></dt>
 <dd><p>F must be a divisor with support disjoint from the support of D and
 with degree 
  <span 
