@@ -43,6 +43,11 @@ use File::Basename;
 # used to find a relative path back to the current working directory
 use File::Spec;
 
+#use encoding::warnings;
+# for translations
+#use encoding 'utf8';
+#use utf8;
+
 #
 # According to
 # larry.jones@sdrc.com (Larry Jones)
@@ -74,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.266 2009-04-02 09:13:47 pertusus Exp $
+# $Id: texi2html.pl,v 1.267 2009-04-02 13:42:26 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3230,8 +3235,18 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
     {
         if ($Texi2HTML::Config::USE_UNICODE)
         {
-            $cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
-             # cross_transliterate_texi_map is only used if USE_UNICODE or 
+             my $char_nr = hex($Texi2HTML::Config::unicode_map{$key});
+             #$cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+             #$cross_ref_texi_map{$key} = pack("U0U*",hex($Texi2HTML::Config::unicode_map{$key}));
+             if ($char_nr > 126 and $char_nr < 255)
+             {
+                 $cross_ref_texi_map{$key} = Encode::decode("iso-8859-1", chr($char_nr));
+             }
+             else
+             {
+                 $cross_ref_texi_map{$key} = chr($char_nr);
+             }
+             # cross_transliterate_texi_map is only used if 
              # USE_UNIDECODE is unset and TRANSLITERATE_NODE is set
              if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
              {
@@ -3239,14 +3254,13 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
              }
              else
              {
-                 $cross_transliterate_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+                 $cross_transliterate_texi_map{$key} = $cross_ref_texi_map{$key};
              }
         }
         else
         {
             $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
-             # cross_transliterate_texi_map is only used if USE_UNICODE or 
-             # USE_UNIDECODE is unset and TRANSLITERATE_NODE is set
+             # cross_transliterate_texi_map is used if TRANSLITERATE_NODE is set
              if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
              {
                  $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
