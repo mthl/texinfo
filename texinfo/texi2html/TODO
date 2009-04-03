@@ -46,6 +46,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'do_about'}
   $Texi2HTML::THISDOC{'split_level'}
 
+  $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription
   $program_string, $footnote_texi
   $heading arguments $begin_paragraph_texi $tab_item_texi $begin_style_texi
@@ -426,9 +427,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   Also it should be dynamical, ie in pass 2 too (FIXME in the code).
 
 * @image in info, remove last end of line in file.txt
-
-* formatting/table_in_table_item.texi could have better error messages, 
-  not sure the @asis related messages are right.
 
 * have a special debug more where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 

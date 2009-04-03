@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.267 2009-04-02 13:42:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.268 2009-04-03 14:10:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -442,6 +442,7 @@ $heading
 $element_heading
 $paragraph
 $preformatted
+$empty_preformatted
 $foot_line_and_ref
 $foot_section
 $address
@@ -13001,8 +13002,8 @@ sub add_term($$$$)
         ($index_entry, $formatted_index_entry, $index_label) = do_index_entry_label($format->{'format'}, $state,$line_nr, $format->{'texi_line'});
         print STDERR "Bug: no index entry for $term->{'text'}\n" unless defined($index_label);
     }
-#    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $formatted_command, $state->{'command_stack'}, $term_formatted, $leading_spaces, $trailing_spaces, $format->{'item_cmd'}));
-    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $state->{'command_stack'}, $format->{'item_cmd'}, $formatted_index_entry));
+    my $item_result = &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $state->{'command_stack'}, $format->{'item_cmd'}, $formatted_index_entry);
+    add_prev($text, $stack, $item_result);
     #$state->{'no_paragraph'}--;
     return $format;
 }
@@ -13774,6 +13775,10 @@ sub abort_empty_preformatted($$)
        and ($stack->[-1]->{'format'} eq 'preformatted')
        and ($stack->[-1]->{'text'} !~ /\S/))
     {
+        if (defined($Texi2HTML::Config::empty_preformatted))
+        {
+           return if (&$Texi2HTML::Config::empty_preformatted($stack->[-1]->{'text'}));
+        }
         pop @$stack;
     }
 }

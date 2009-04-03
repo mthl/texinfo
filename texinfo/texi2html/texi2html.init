@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.181 2009-04-02 09:13:47 pertusus Exp $
+# $Id: texi2html.init,v 1.182 2009-04-03 14:10:37 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5524,7 +5524,6 @@ sub t2h_default_table_item($$$$$$$)
     my $item_cmd = shift;
     my $formatted_index_entry = shift;
 
-    #print STDERR "-> $format (@$style_stack)\n";
 #    if (defined($text_formatted) and !exists $special_list_commands{$format}->{$command})
 #    {
 #        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
@@ -5658,7 +5657,7 @@ sub t2h_default_format_list_item_texi($$$$$)
            $result_line = "\@$command $line\n";
         }
     }
-    if (defined($prepended) and $prepended ne '')
+    elsif (defined($prepended) and $prepended ne '')
     {
          $prepended =~ s/^\s*//;
          $prepended =~ s/\s*$//;
