@@ -201,6 +201,7 @@ $heading           = \&info_default_heading;
 $normal_text       = \&info_default_normal_text;
 $paragraph         = \&info_default_paragraph;
 $preformatted      = \&info_default_preformatted;
+$empty_preformatted      = \&info_default_preformatted;
 $empty_line               = \&info_default_empty_line;
 # maybe should not be called from the main program?
 $print_page_foot       = \&info_default_print_page_foot;
@@ -582,6 +583,9 @@ $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
 
       my $indent_length = $indent_level * $info_default_indent_length;
+      # indent_length is also set here for table @item so in that case
+      # $info_default_indent_format_length{$item_pending} is not taken 
+      # into account, luckily it is 0.
       $indent_length = ($indent_level -1) * $info_default_indent_length
             if ($indent_level and $in_exdent);
       my $item_indent_length = 0;
@@ -745,11 +749,17 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               {
                   $item_pending = $content->{'format'};
                   #if (!$info_state->{'blank_line'} and $content->{'command'} eq 'item')
-                  if (!$info_state->{'blank_line'})
+                  # check is for indent_level = 1 as in table indent_level
+                  # is alreay 1 in top_level table
+                  if (!$info_state->{'blank_line'} and ($item_pending !~ /table$/ or ($content->{'command'} ne 'itemx' and ($indent_level != 1))))
                   {
                       $text_added = "\n" . $text_added;
                       $item_line_added = 1;
                   }
+                  # one less indentation level and no line break
+                  # adding item_line_added allows the in_exdent to still be
+                  # active after the additional blank line
+                  $in_exdent = 1+$item_line_added if ($item_pending =~ /table$/);
               }
               elsif ($content->{'command'} eq 'menu')
               {
@@ -828,7 +838,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
           #    $in_exdent = 0;
           #}
           chomp($chomped_text);
-print STDERR "text_added `$text_added' line_char_counter $line_char_counter\n";
+print STDERR "NOT IN PARA text_added `$text_added' line_char_counter $line_char_counter\n";
           if ($chomped_text ne '' and $line_char_counter < $indent_length)
           {
 print STDERR "                     indent_length $indent_length\n";
@@ -850,20 +860,19 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
              #{
              #   $text_added = "\n" . $text_added;
              #}
-             $item_pending = undef;
              ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
-             
+             $item_pending = undef;
          }
       }
       # from here, the next cmmand is available
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
 
       $info_state->{'blank_line'} = 0 if ($text_added =~ /\S/);
-print STDERR "GGGGGGGGGGGGGGGG $indent_length, $indentation_done\n";
+print STDERR "GGGGGGGGGGGGGGGG indent_length, indentation_done: $indent_length, $indentation_done\n";
       my ($line_passed, $end_of_line, $last_line, $text_indented) = info_default_count_lines($text_added, $info_state, $indent_length, ($indentation_done
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'center' 
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
-      # only_space is checked in all the conditionals
+      # only_space is set in all the conditionals
       if ($end_of_line)
       {
          $line_char_counter = 0;
@@ -962,7 +971,7 @@ sub info_default_get_state($)
    my $state = shift;
    if (!exists $info_default_state_map{$state})
    {
-print STDERR "NEW state\n";
+print STDERR "NEW state $state_nr\n";
       my ($current_command, $top_stack);
       $info_default_state_map{$state} = {};
       info_default_reset_state($info_default_state_map{$state});
@@ -997,16 +1006,16 @@ sub info_default_open_command($$$$$)
 
    my $index = 0;
    
-   $info_default_state = info_default_get_state($state);
+   my $info_state = info_default_get_state($state);
    # index in the parent content list
-   $index = scalar(@{$info_default_state->{'current'}->{'content'}}) 
-       if (defined($info_default_state->{'current'}->{'content'}));
-   my $new_command = {'command' => $command, 'parent' => $info_default_state->{'current'}, 'index_in_parent' => $index };
-   push @{$info_default_state->{'current'}->{'content'}}, $new_command;
-   $info_default_state->{'current'} = $new_command;
+   $index = scalar(@{$info_state->{'current'}->{'content'}}) 
+       if (defined($info_state->{'current'}->{'content'}));
+   my $new_command = {'command' => $command, 'parent' => $info_state->{'current'}, 'index_in_parent' => $index };
+   push @{$info_state->{'current'}->{'content'}}, $new_command;
+   $info_state->{'current'} = $new_command;
    print STDERR "Opened $command ". 
      "\n";
-#     Data::Dumper->Dump([$info_default_state->{'top'}]);
+#     Data::Dumper->Dump([$info_state->{'top'}]);
 }
 
 sub info_default_close_command($$$$$$$$$;$)
@@ -1031,17 +1040,17 @@ sub info_default_close_command($$$$$$$$$;$)
      "\n";
    if (!defined($info_state->{'current'}))
    {
-      print STDERR "info_default_state->{'current'} not defined\n";
+      print STDERR "info_state->{'current'} not defined\n";
    }
    elsif (!defined($info_state->{'current'}->{'command'}))
    {
-      print STDERR "info_default_state->{'current'}->{'command'} not defined\n";
+      print STDERR "info_state->{'current'}->{'command'} not defined\n";
    }
    elsif ($command ne $info_state->{'current'}->{'command'})
    {
-     print STDERR "Was waiting for $info_default_state->{'current'}->{'command'}\n";
+     print STDERR "Was waiting for $info_state->{'current'}->{'command'}\n";
    }
-#     Data::Dumper->Dump([$info_default_state->{'top'}]);
+#     Data::Dumper->Dump([$info_state->{'top'}]);
    #return if $no_close;
    $info_state->{'current'}->{'no_close'} = 1 if ($no_close);
    $info_state->{'current'}->{'begin'} = $begin;
@@ -1055,17 +1064,17 @@ sub info_default_close_command($$$$$$$$$;$)
        }
    }
 
-   if ($info_default_leaf_command{$command})
-   {
-      my $saved_offset_in_file = $info_state->{'offset_in_file'};
-      my $saved_line_count = $info_state->{'line_count'};
-      my $result = return info_default_output($info_state);
-      $info_state->{'offset_in_file'} = $saved_offset_in_file;
-      $info_state->{'line_count'} = $saved_line_count;
-      $info_state->{'current'}->{'text'} = $result;
-      $info_state->{'current'}->{'length'} = length($result);
-      return '';
-   }
+#   if ($info_default_leaf_command{$command})
+#   {
+#      my $saved_offset_in_file = $info_state->{'offset_in_file'};
+#      my $saved_line_count = $info_state->{'line_count'};
+#      my $result = info_default_output($info_state);
+#      $info_state->{'offset_in_file'} = $saved_offset_in_file;
+#      $info_state->{'line_count'} = $saved_line_count;
+#      $info_state->{'current'}->{'text'} = $result;
+#      $info_state->{'current'}->{'length'} = length($result);
+#      return '';
+#   }
    $info_state->{'current'} = $info_state->{'current'}->{'parent'};
 
    return info_default_output($info_state)
@@ -1136,15 +1145,16 @@ sub info_default_begin_paragraph_texi($$$)
    my $command = shift;
    my $paragraph_macros = shift;
    my $paragraph_command = shift;
-   print STDERR "begin_paragraph $command\n";
+   #print STDERR "begin_paragraph $command\n";
    my $state = shift;
    my $stack = shift;
+   #my $info_state = info_default_get_state($state);
    info_default_open_command($state,$command, undef, undef, undef);
    foreach my $style_command (@$paragraph_macros)
    {
      print STDERR "para stack: $style_command->{'style'}\n";
      info_default_open_command($state,$style_command->{'style'}, undef, undef, undef);
-     $info_default_state->{'current'}->{'no_open'} = 1;
+     #$info_state->{'current'}->{'no_open'} = 1;
    }
 }
 
@@ -1192,6 +1202,8 @@ sub info_default_style($$$$$$$$$)
    my $begin = '';
    my $end = '';
 
+   # the formatting is done right here, without information on the current
+   # state, and theresult is entered as text below.
    if ($info_default_leaf_command{$command})
    {
       my $style_index = 0;
@@ -1288,6 +1300,18 @@ sub info_default_paragraph($$$$$$$$$$$$)
         
     }
     return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, undef, {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
+}
+
+# currently not used, but could be used if info_default_preformatted
+# return something that is not 'false', for example spaces, though we
+# want the preformatted to be ignored. Though it is not sure that if there
+# are spaces we want to ignore the preformatted.
+sub info_default_empty_preformatted($)
+{
+    my $text = shift;
+    my $result = info_default_preformatted($text, undef, undef, undef, undef,
+            undef, undef, undef, undef);
+    return 0;
 }
 
 sub info_default_preformatted($$$$$$$$$$$$)
@@ -2101,6 +2125,8 @@ sub info_default_foot_lines($)
     @$lines = ();
 }
 
+# remark: table_item is the html one, but it gets added to the table text
+# on the stack, and is ignored there (in info_default_format).
 sub info_default_format_list_item_texi($$$$)
 {
     my $format = shift;
@@ -2115,18 +2141,32 @@ sub info_default_format_list_item_texi($$$$)
     $prepended = "\@$command\{\}" if (defined($command) and $command ne '');
     $prepended = "$number." if (defined($number) and $number ne '');
  
-    if (defined($prepended) and $prepended ne '')
+    if (defined($command) and $command ne '' and $format ne 'itemize')
+    {
+        #@*table
+        #info_default_begin_style_texi($command, $Texi2HTML::THISDOC{'state'}, undef, undef);
+        #$open_command = 1;
+        $line =~ s/^\s*//;
+        $line =~ s/\s*$//;
+        if (exists ($style_map{$command}))
+        {
+           $result_line = "\@$command\{$line\}\n";
+        }
+        elsif (exists ($things_map{$command}))
+        {
+           $result_line = "\@$command\{\} $line\n";
+        }
+        else
+        {
+           $result_line = "\@$command $line\n";
+        }
+    }
+    elsif (defined($prepended) and $prepended ne '')
     {
          $prepended =~ s/^\s*//;
          $prepended =~ s/\s*$//;
          $line =~ s/^\s*//;
          $result_line = $prepended . ' ' . $line;
-    }
-    if (defined($command) and $command ne '' and $format ne 'itemize')
-    {
-        #@*table
-        info_default_begin_style_texi($command, $Texi2HTML::THISDOC{'state'}, undef, undef);
-        $open_command = 1;
     }
 
     return ($result_line, $open_command);
@@ -2160,11 +2200,12 @@ sub info_default_format($$$)
     my $tag = shift;
     my $element = shift;
     my $text = shift;
-    #return '' if (!defined($element) or ($text !~ /\S/));
-    #return $text if ($element eq '');
+
+    # currently no command has something else than '' as $element.
+    # notice that any text is discarded
     $element = undef if ($element eq '');
     my $element_end = $element;
-    if ($element =~ /^(\w+)(\s+)(.+)/)
+    if (defined($element) and $element =~ /^(\w+)(\s+)(.+)/)
     {
         $element = $1;
         $element_end = $2;
