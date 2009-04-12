@@ -244,6 +244,9 @@ $tab_item_texi      = \&info_default_tab_item_texi;
 $acronym_like       = \&info_default_acronym_like;
 $sp                 = \&info_default_sp;
 $paragraph_style_command = \&info_default_paragraph_style_command;
+$cell               = \&info_default_cell;
+$row                = \&info_default_row;
+$table_list         = \&info_default_table_list;
 
 
 sub info_default_accent($$$)
@@ -286,8 +289,13 @@ sub info_default_count_lines($$;$$)
       my $info_state = shift;
       my $indent_length = shift;
       my $indentation_done = shift;
-      $indent_length = 0 if (!defined($indentation_done) or $indentation_done);
-
+      my $no_indentation = 0;
+ 
+      if (!defined($indentation_done) or $indentation_done)
+      {
+          $no_indentation = 1;
+          $indent_length = 0;
+      }
       my @lines = split /^/, $text;
       # don't accept empty text.
       @lines = ('') if (!@lines);
@@ -302,7 +310,7 @@ sub info_default_count_lines($$;$$)
       my $last_line = $lines[-1];
 
       my $indented_text = shift (@lines);
-print STDERR "QQQQQQQQQQQQQQ($indent_length) `$indented_text'\n";
+print STDERR "COUNT info_default_count_lines(i_done $no_indentation, i_l $indent_length) i_t `$indented_text'\n";
       foreach my $line (@lines)
       {
 print STDERR "ZZZZZZZZZZZZZzz `$line'\n";
@@ -339,6 +347,7 @@ sub info_default_iterator_next($$$)
    my $current_command = shift;
    my $command_index = shift;
    my $command_close = shift;
+print STDERR "NNNNNNNNNNNNNN iterator_next current $current_command idx $command_index close $command_close\n";
    
    my $sub_command = $current_command->{'content'}->[$command_index];
    
@@ -365,7 +374,7 @@ my $info_default_max_column = 72;
 
 # Beware that there is a pending word if the text doesn't end with
 # a space
-sub info_default_process_text($$$$$$)
+sub info_default_process_text($$$$$$$)
 {
    my $text = shift;
    my $line_char_counter = shift;
@@ -373,6 +382,7 @@ sub info_default_process_text($$$$$$)
    my $pending_word = shift;
    my $indent_length = shift;
    my $in_para = shift;
+   my $max_column = shift;
 
    $indent_length = 0 if (!defined($indent_length));
    
@@ -399,6 +409,10 @@ print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pen
    
    while ($text ne '')
    {
+my $pending_word_text = 'UNDEF';
+$pending_word_text = $pending_word  if (defined($pending_word));
+
+#print STDERR "l_c_c $line_char_counter  pending_word $pending_word_text, pending_spaces `$pending_spaces', result `$result'\n";
       if ($text =~ s/^(\s+)//)
       {
           my $new_spaces = $1;
@@ -417,9 +431,16 @@ print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pen
          {
              $pending_spaces .= $new_spaces;
          }
-         if (length($pending_spaces) +  $line_char_counter > $info_default_max_column)
+         if (length($pending_spaces) +  $line_char_counter > $max_column)
          {
-             $pending_spaces = substr($pending_spaces, $info_default_max_column - $line_char_counter +1);
+             if ($line_char_counter > $max_column)
+             {
+                 $pending_spaces = '';
+             }
+             else
+             {
+                 $pending_spaces = substr($pending_spaces, $max_column - $line_char_counter +1);
+             }
              $result .= "\n";
              $line_passed++;
              $line_char_counter = 0;
@@ -433,7 +454,7 @@ print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pen
          # The $line_char_counter != 0 is here to cope with the case of a 
          # word longer than $line_char_counter followed by more letters:
          # a line would be passed each time some text is appended.
-         if ((length($pending_spaces)+length($pending_word) + $line_char_counter > $info_default_max_column) and $line_char_counter != 0)
+         if ((length($pending_spaces)+length($pending_word) + $line_char_counter > $max_column) and $line_char_counter != 0)
          {
              $pending_spaces = '';
              $result .= "\n";
@@ -451,25 +472,38 @@ sub info_default_skip_spaces($$$)
     my $index = shift;
     my $close = shift;
 
+    print STDERR "SKIP_SPACES\n";
     while(1)
     {
        my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
-        return ($current, $index, $close) if (!defined($close_next) or $close_next);
+        #return ($current, $index, $close) if (!defined($close_next) or $close_next);
+        return ($current, $index, $close) if ($close_next);
         my $content = $current_next->{'content'}->[$index_next];
         if (defined($content->{'begin'}))
         {
             $content->{'begin'} =~ s/^\s*//;
+print STDERR "SKIP_SPACES begin\n";
             return ($current, $index, $close) if ($content->{'begin'} ne '');
         } 
-        if (defined($content->{'content'}))
+        if (defined($content->{'content'}) or defined($content->{'format'})
+           or (defined($content->{'command'}) and ($content->{'command'} eq 'index_label' or $content->{'command'} eq 'anchor')))
         { # non empty commands stop space skipping, even if they contain 
           # only spaces, like @asis{ }
+          # also for item(x) that have format defined
+print STDERR "SKIP_SPACES command?\n";
             return ($current, $index, $close);
         }
         if (defined($content->{'text'}))
         {
+print STDERR "SKIP_SPACES text\n";
             $content->{'text'} =~ s/^\s*//;
             return ($current, $index, $close) if ($content->{'text'} ne '');
+        }
+        if (defined($content->{'end'}))
+        {
+print STDERR "SKIP_SPACES end\n";
+            $content->{'end'} =~ s/^\s*//;
+            return ($current, $index, $close) if ($content->{'end'} ne '');
         }
         ($current, $index, $close) = ($current_next, $index_next, $close_next);
     }
@@ -556,6 +590,9 @@ sub info_default_process_content($$)
    my $item_pending;
    my $in_exdent = 0;
    my $in_para = 0;
+   my $table_item_line = 0;
+   my $in_table_item = 0;
+   my $max_column = $info_default_max_column;
 
    # for formats that needs to process a full line (center and flushright) 
    # to know the line length before outputing
@@ -571,13 +608,15 @@ sub info_default_process_content($$)
       my $text_added = '';
       my $item_line_added = 0;
       my $indentation_done = 0;
+my $text_item_pending = '';
+$text_item_pending = $item_pending if (defined($item_pending));
 my $text_length = '';
-$text_length = $content->{'length'} if defined($content->{'length'});
+$text_length = "[$content->{'length'}]$content->{'text'}" if defined($content->{'length'});
 my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
 my $in_node_count = 0;
 $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
-      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'}\n";
+      print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending\n";
 my $pending_word_text = 'undef';
 $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
@@ -587,7 +626,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       # $info_default_indent_format_length{$item_pending} is not taken 
       # into account, luckily it is 0.
       $indent_length = ($indent_level -1) * $info_default_indent_length
-            if ($indent_level and $in_exdent);
+            if ($indent_level and ($in_exdent or $table_item_line));
       my $item_indent_length = 0;
       if ($item_pending)
       {
@@ -648,6 +687,150 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   my $popped = pop @{$info_state->{'align_stack'}};
                   print STDERR "BUG: align_stack, popped $popped->{'command'} ne command $content->{'command'}\n" if ($popped->{'command'} ne $content->{'command'});
               }
+              elsif ($content->{'command'} eq 'multitable')
+              {
+                  my $multitable = pop @{$info_state->{'multitable_stack'}};
+                  $max_column = $multitable->{'max_column_kept'};
+                  $result = $multitable->{'result_kept'};
+                  $line_char_counter = $multitable->{'line_char_counter_kept'};
+                  $all_line_passed = $multitable->{'all_line_passed_kept'};
+                  $length = $multitable->{'length_kept'};
+                  #$info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'} + $info_state->{'offset_in_file'};
+                  $info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'};
+                  #$info_state->{'line_count'} = $multitable->{'line_count_kept'} + $info_state->{'line_count'};
+                  $info_state->{'line_count'} = $multitable->{'line_count_kept'};
+print STDERR "MULTITABLE close, lines: $multitable->{'line_count_kept'} + $all_line_passed\n";
+                  foreach my $anchor_and_index (@{$multitable->{'anchors'}}, @{$multitable->{'index_entries'}})
+                  {
+                      $anchor_and_index->{'line_nr'} += $multitable->{'line_count_kept'} + $all_line_passed;
+                  }
+                  if (! scalar(@{$info_state->{'multitable_stack'}}))
+                  {
+print STDERR "MULTITABLE close, lengths: $multitable->{'offset_in_file_kept'} + $length\n";
+                      foreach my $anchor (@{$multitable->{'anchors'}})
+                      {
+                          $anchor->{'info_offset'} += $multitable->{'offset_in_file_kept'} + $length;
+                      }
+                  }
+                  else 
+                  {
+                      push @{$info_state->{'multitable_stack'}->[-1]->{'anchors'}}, @{$multitable->{'anchors'}};
+                      push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, @{$multitable->{'index_entries'}};
+                  }
+                  $text_added = $multitable->{'result'};
+              }
+              elsif ($content->{'command'} eq 'multitable_cell')
+              {
+                  my $cell = $info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1];
+                  $cell->{'result'} = $result;
+                  $cell->{'length'} = $length;
+                  $cell->{'line_passed'} = $all_line_passed;
+              }
+              elsif ($content->{'command'} eq 'multitable_row')
+              {
+                  my $multitable = $info_state->{'multitable_stack'}->[-1];
+                  my $row_length = 0;
+                  my $row = '';
+                  my $max_lines = 0;
+                  my $cell_beginning = 0;
+                  my @anchor_lines_array;
+                  my $cell_idx = 0;
+                  my @anchors;
+                  my @indices;
+                  foreach my $cell (@{$multitable->{'cells'}})
+                  {
+                      $cell->{'beginning'} = $cell_beginning; 
+                      $cell_beginning += $cell->{'cell_width'}+1;
+                      @{$cell->{'lines'}} = split /^/, $cell->{'result'};
+                      $max_lines = scalar(@{$cell->{'lines'}}) if (scalar(@{$cell->{'lines'}}) > $max_lines);
+                      foreach my $anchor (@{$cell->{'anchors'}})
+                      {
+                          push @{$anchor_lines_array[$anchor->{'line_nr'}]}, $anchor;
+                          $anchor->{'cell_idx'} = $cell_idx;
+                          push @anchors, $anchor;
+                      }
+                      push @indices, @{$cell->{'index_entries'}};
+                      $cell_idx++;
+                  }
+                  my $previous_last_cell = scalar(@{$multitable->{'cells'}});
+                  print STDERR "ROW cell_beginning $cell_beginning, max_lines $max_lines, previous_last_cell $previous_last_cell\n";
+                  for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++)
+                  {
+                      my $length = 0;
+                      my $line = '';
+                      # determine the last cell in the line, to fill spaces in 
+                      # cells preceding that cell on the line
+                      my $last_cell = 0;
+                      for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++)
+                      {
+                          $last_cell = $cell_idx+1 if (defined($multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx]));
+                      }
+                      print STDERR "  L(last_cell $last_cell): $line_idx\n";
+                      for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++)
+                      {
+                          my $cell_text = $multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx];
+                          print STDERR "   C($cell_idx) ";
+                          if (defined($cell_text))
+                          {
+                              chomp($cell_text);
+                              print STDERR "$cell_text";
+                              $line .= $cell_text;
+                              $length += length($cell_text);
+                          }
+                          if ($cell_idx+1 < $last_cell)
+                          {
+                              if ($length < $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
+                              {
+                                  my $spaces = ' ' x ($multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
+                                  $length += length($spaces);
+                                  $line .= $spaces;
+                                  print STDERR "   Csp($length) `$spaces'";
+                              }
+                          }
+                      }
+                      if (defined($anchor_lines_array[$line_idx]))
+                      {
+                          foreach my $anchor (@{$anchor_lines_array[$line_idx]})
+                          {
+                              my $anchor_position = $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
+                              if ($anchor_position > $length)
+                              {
+                                  my $spaces = ' ' x ($anchor_position - $length);
+                                  $line .= $spaces;
+                                  $length += length($spaces);
+                              }
+                              $anchor->{'info_offset'} = $anchor_position + $row_length + $multitable->{'length'};
+print STDERR "ROW anchor close: anchor[$anchor->{'cell_idx'}]($multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'}+$anchor->{'line_char_counter'}) $anchor_position $anchor->{'info_offset'}\n";
+                              $anchor->{'line_char_counter'} = $anchor_position;
+                          }
+                      }
+                      $line .= "\n";
+                      $row_length += length($line);
+                      print STDERR "  ($length,".length($line).") $line";
+                      $row .= $line;
+                      $previous_last_cell = $last_cell;
+                  }
+                  foreach my $anchor_and_index (@anchors, @indices)
+                  {
+                      $anchor_and_index->{'line_nr'} += $multitable->{'line_count'};
+print STDERR "ROW close: new line count: $anchor_and_index->{'line_nr'} + \n";
+                  }
+                  if ($content->{'item_command'} eq 'headitem')
+                  {
+                      # at this point cell_beginning is at the beginning of
+                      # the cell following the end of the table -> full width
+                      my $line = '-' x $cell_beginning . "\n";
+                      $row .= $line;
+                      $row_length += length($line);
+                  }
+                  print STDERR "ROW_LENGTH $row_length\n";
+                  $multitable->{'result'} .= $row;
+                  $multitable->{'length'} += $row_length;
+                  $multitable->{'line_count'} += $max_lines;
+                  $multitable->{'cells'} = [];
+                  push @{$multitable->{'anchors'}}, @anchors;
+                  push @{$multitable->{'index_entries'}}, @indices;
+              }
           }
       }
       else
@@ -663,13 +846,23 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   if ($in_para or $preformatted or $pending =~ /\S/)
                   { # this has to be done before the anchor related code
                     # to have the right count.
+                    # FIXME this is wrong if an end of line was passed.
+                    # in that case line_char_counter has been increased and 
+                    # $pending ends with an end of line
                       $pending_added_length += length($pending);
                       $text_added .= $pending;
                   }
               }
               if ($content->{'command'} eq 'anchor')
               {
+print STDERR "anchor: offset_in_file $info_state->{'offset_in_file'}, line_count $info_state->{'line_count'}, line_char_counter $line_char_counter pending_added_length $pending_added_length\n";
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_length;
+                  $content->{'anchor_reference'}->{'line_nr'} = $all_line_passed + $info_state->{'line_count'};
+                  $content->{'anchor_reference'}->{'line_char_counter'} = $line_char_counter + $pending_added_length;
+                  if (@{$info_state->{'multitable_stack'}})
+                  {
+                      push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'anchors'}}, $content->{'anchor_reference'};
+                  }
                   push @{$info_state->{'pending_tags'}}, $content->{'anchor_reference'};
                   push @{$info_state->{'align_stack'}->[-1]->{'anchors'}}, $content->{'anchor_reference'} if ($info_state->{'align_stack'}->[-1]->{'command'} eq 'center' or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright');
               }
@@ -680,7 +873,13 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
                       if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < length($index_line_nr));
 print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name: $index_name line: $index_line_nr max: $info_default_index_line_string_length{$index_name}\n";
-                  $info_default_index_entries{$content->{'index_entry_reference'}} = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr, 'index_name' => $index_name };
+                  my $index_ref = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr, 'index_name' => $index_name };
+print STDERR "INDEX($index_name) line $index_line_nr\n";
+                  $info_default_index_entries{$content->{'index_entry_reference'}} = $index_ref;
+                  if (@{$info_state->{'multitable_stack'}})
+                  {
+                      push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'index_entries'}}, $index_ref;
+                  }
               }
               elsif ($content->{'command'} eq '*' and !$preformatted)
               {
@@ -705,7 +904,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
                  {
                     ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
                  }
-                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
+                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
                  {
                     $content->{'begin'} = ' ' x $paragraphindent;
                  }
@@ -749,17 +948,34 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               {
                   $item_pending = $content->{'format'};
                   #if (!$info_state->{'blank_line'} and $content->{'command'} eq 'item')
-                  # check is for indent_level = 1 as in table indent_level
-                  # is alreay 1 in top_level table
-                  if (!$info_state->{'blank_line'} and ($item_pending !~ /table$/ or ($content->{'command'} ne 'itemx' and ($indent_level != 1))))
+                  my $first_table_item = 0;
+                  if ($item_pending =~ /table$/)
+                  {
+                      $table_item_line = 1;
+                      $in_table_item = 0;
+                      if ($content->{'command'} eq 'item')
+                      {
+                          if (!defined($content->{'parent'}->{'item_nr'}))
+                          {
+                              $content->{'parent'}->{'item_nr'} = 1;
+                              $first_table_item = 1;
+                          }
+                          else
+                          {
+                              $content->{'parent'}->{'item_nr'}++;
+                          }
+                      }
+print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $indent_level $content->{'parent'}->{'command'}\n";
+                  }
+                  if (!$info_state->{'blank_line'} and ($content->{'command'} ne 'itemx') and (!$first_table_item or $indent_level != 1))
                   {
                       $text_added = "\n" . $text_added;
                       $item_line_added = 1;
                   }
                   # one less indentation level and no line break
-                  # adding item_line_added allows the in_exdent to still be
-                  # active after the additional blank line
-                  $in_exdent = 1+$item_line_added if ($item_pending =~ /table$/);
+                  # adding item_line_added allows the table_item_line to 
+                  # still be active after the additional blank line
+                  $table_item_line = 1+$item_line_added if ($item_pending =~ /table$/);
               }
               elsif ($content->{'command'} eq 'menu')
               {
@@ -768,6 +984,41 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               elsif ($paragraph_style{$content->{'command'}})
               {
                   push @{$info_state->{'align_stack'}}, {'command' => $content->{'command'}};
+              }
+              elsif ($content->{'command'} eq 'multitable')
+              {
+                  my $multitable = {
+                     'offset_in_file_kept' => $info_state->{'offset_in_file'},
+                     'line_count_kept'     => $info_state->{'line_count'},
+                     'columns_size'        => [ @{$content->{'columns_size'}} ],
+                     'result'              => '',
+                     'length'              => 0,
+                     'line_count'          => 0,
+                     'result_kept'         => $result,
+                     'length_kept'         => $length,
+                     'all_line_passed_kept' => $all_line_passed,
+                     'line_char_counter_kept' => $line_char_counter,
+                  };
+                  push @{$info_state->{'multitable_stack'}}, $multitable;
+                  $info_state->{'offset_in_file'} = 0;
+                  $info_state->{'line_count'} = 0;
+              }
+              elsif ($content->{'command'} eq 'multitable_row')
+              {
+                  $info_state->{'multitable_stack'}->[-1]->{'cell_index'} = -1;
+              }
+              elsif ($content->{'command'} eq 'multitable_cell')
+              {
+                  my $multitable = $info_state->{'multitable_stack'}->[-1];
+                  $multitable->{'cell_index'}++;
+                  my $cell_width = $content->{'parent'}->{'parent'}->{'columns_size'}->[$multitable->{'cell_index'}];
+                  #$max_column = $cell_width-1;
+                  $max_column = $cell_width -2;
+                  push @{$multitable->{'cells'}}, {'cell_width' => $cell_width, 'index_entries' => [], 'anchors' => []};
+                  $result = '';
+                  $length = 0;
+                  $all_line_passed = 0;
+                  $line_char_counter = 0;
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
@@ -788,6 +1039,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
           {
               if ($in_para and !$in_exdent)
               {
+print STDERR "IN_PARA text\n";
                   if (chomp($content->{'text'}))
                   {
                       $content->{'text'} =~ s/(\s*)$/ /;
@@ -800,6 +1052,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
               } # ignore spaces outside of paragraphs and preformatted
               elsif ($preformatted or $info_state->{'align_stack'}->[-1]->{'command'} ne 'normal')
               {
+print STDERR "IN_PREFORMATTED or ALIGN text\n";
                   $text_added .= $content->{'text'};
               }
               else
@@ -807,17 +1060,34 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
                   my $chomped_text = $content->{'text'};
                   if ($chomped_text !~ /\S/ and chomp($chomped_text) and !$item_pending)
                   {
-                      if (!$info_state->{'blank_line'})
+                      if ($in_table_item and $info_state->{'only_spaces'})
                       {
-                           $text_added .= "\n";
+                          # in a blank_line
+print STDERR "IN_ITEM ignored: `$content->{'text'}'\n";
+                      }
+                      elsif (!$info_state->{'blank_line'} or !$info_state->{'only_spaces'})
+                      {
+print STDERR "IN_ADDING_BLANK_LINE because no line before or text before\n";
+                          $text_added .= "\n";
+                      }
+                      else
+                      {
+print STDERR "IN_NOT_ADDING_BLANK_LINE\n";
                       }
                   }
                   else
                   { # exdent, item not in paragraph nor in preformatted
+print STDERR "NOWHERE and not end of line (or item_pending) `$content->{'text'}'\n";
                        $text_added .= $content->{'text'};
                   }
               }
 # unless (!defined($line_char_counter) and !$preformatted and $content->{'text'} =~ /^\s*$/);
+          }
+          # text or command that won't be closed, so the end has to be added 
+          # here.
+          if (defined($content->{'end'}) and !defined($content->{'content'}))
+          {
+              $text_added .= $content->{'end'};
           }
       }
       if (!$preformatted and !$in_exdent and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal' and $in_para)
@@ -827,7 +1097,7 @@ print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name
           # below.
           $indentation_done = 1;
           my $dummy_line_passed;
-          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $in_para) if ($text_added ne '');
+          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $in_para, $max_column) if ($text_added ne '');
       }
       elsif ($info_state->{'align_stack'}->[-1]->{'command'} ne 'center' and $info_state->{'align_stack'}->[-1]->{'command'} ne 'flushright')
       {
@@ -867,8 +1137,11 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       # from here, the next cmmand is available
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
 
-      $info_state->{'blank_line'} = 0 if ($text_added =~ /\S/);
-print STDERR "GGGGGGGGGGGGGGGG indent_length, indentation_done: $indent_length, $indentation_done\n";
+      if ($text_added =~ /\S/)
+      {
+         $in_table_item = 0 if ($in_table_item);
+         $info_state->{'blank_line'} = 0;
+      }
       my ($line_passed, $end_of_line, $last_line, $text_indented) = info_default_count_lines($text_added, $info_state, $indent_length, ($indentation_done
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'center' 
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
@@ -877,6 +1150,11 @@ print STDERR "GGGGGGGGGGGGGGGG indent_length, indentation_done: $indent_length, 
       {
          $line_char_counter = 0;
          $in_exdent-- if ($in_exdent);
+         if ($table_item_line)
+         {
+            $table_item_line--;
+            $in_table_item = 1;
+         }
          $info_state->{'blank_line'} = 1 if ($info_state->{'only_spaces'} and ($last_line !~ /\S/));
          $info_state->{'only_spaces'} = 1;
       }
@@ -926,17 +1204,17 @@ print STDERR "GGGGGGGGGGGGGGGG indent_length, indentation_done: $indent_length, 
                 }
                 else
                 {
-                    if (length($line) > $info_default_max_column)
+                    if (length($line) > $max_column)
                     {
                         $length_prepended = 0;
                     }
                     elsif ($info_state->{'align_stack'}->[-1]->{'command'} eq 'center')
                     {
-                         $length_prepended = (($info_default_max_column -1 - length($line)) /2);
+                         $length_prepended = (($max_column -1 - length($line)) /2);
                     }
                     else
                     {
-                         $length_prepended = ($info_default_max_column -1 - length($line));
+                         $length_prepended = ($max_column -1 - length($line));
                     }
                     $text_indented .= ' ' x$length_prepended . $line ."\n";
                 }
@@ -958,8 +1236,6 @@ print STDERR "GGGGGGGGGGGGGGGG indent_length, indentation_done: $indent_length, 
       
       $result .= $text_indented;
       $length += length($text_indented);
-#      $result .= $text_added;
-#      $length += length($text_added);
       $all_line_passed += $line_passed;
    }
    return ($length, $result, $all_line_passed);
@@ -982,6 +1258,7 @@ print STDERR "NEW state $state_nr\n";
       $info_default_state_map{$state}->{'only_spaces'} = 1;
       $info_default_state_map{$state}->{'nr'} = $state_nr;
       $info_default_state_map{$state}->{'state'} = $state;
+      $info_default_state_map{$state}->{'multitable_stack'} = [];
       @{$info_default_state_map{$state}->{'align_stack'}} = ({'command'=>'normal'});
       $state_nr++;
    }
@@ -1064,17 +1341,6 @@ sub info_default_close_command($$$$$$$$$;$)
        }
    }
 
-#   if ($info_default_leaf_command{$command})
-#   {
-#      my $saved_offset_in_file = $info_state->{'offset_in_file'};
-#      my $saved_line_count = $info_state->{'line_count'};
-#      my $result = info_default_output($info_state);
-#      $info_state->{'offset_in_file'} = $saved_offset_in_file;
-#      $info_state->{'line_count'} = $saved_line_count;
-#      $info_state->{'current'}->{'text'} = $result;
-#      $info_state->{'current'}->{'length'} = length($result);
-#      return '';
-#   }
    $info_state->{'current'} = $info_state->{'current'}->{'parent'};
 
    return info_default_output($info_state)
@@ -1107,6 +1373,7 @@ sub info_default_store_text($$;$$)
    print STDERR "Storing text${command_text}($len) $text\n";
    my $text_stored = {'text' => $text, 'length' => $len};
    $text_stored->{'command'} = $command if (defined($command));
+   $text_stored->{'parent'} = $info_state->{'current'};
    if (defined($additional_entries))
    {
        foreach my $key (keys(%$additional_entries))
@@ -1264,7 +1531,7 @@ sub info_default_print_page_head($)
     $basename =~ s/^.*\///;
     my $result = "This is $setfilename, produced by makeinfo version 4.13 from $basename. ";
     my $dummy;
-    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1);
+    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, $info_default_max_column);
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     my $state = $Texi2HTML::THISDOC{'state'};
@@ -2225,7 +2492,18 @@ sub info_default_tab_item_texi($$$$$$)
    my $format;
    $format = $commands_stack->[-1] if (defined($commands_stack) and @$commands_stack and $commands_stack->[-1]);
 print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $line_nr\n";
-   info_default_store_text ($state, '', $command, {'format' => $format});
+   if ($format eq 'multitable')
+   {
+       if ($command ne 'tab')
+       {
+           info_default_open_command($state, 'multitable_row', undef, undef, undef);
+       }
+       info_default_open_command($state, 'multitable_cell', undef, undef, undef);
+   }
+   else
+   {
+       info_default_store_text ($state, '', $command, {'format' => $format});
+   }
    return undef;
 }
 
@@ -2243,6 +2521,74 @@ sub info_default_paragraph_style_command($$)
     my $format = shift;
     my $text = shift;
     return info_default_close_command(undef, undef, $format, undef, undef, undef, undef, undef, undef);
+}
+
+sub info_default_row($$$$$$$$)
+{
+    my $text = shift;
+    my $macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    return info_default_close_command(undef, undef, 'multitable_row', undef, undef, undef, undef, undef, undef, {'item_command' => $macro});
+}
+
+sub info_default_cell($$$$$$$$)
+{
+    my $text = shift;
+    my $row_macro = shift;
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    return info_default_close_command(undef, undef, 'multitable_cell', undef, undef, undef, undef, undef, undef);
+}
+
+sub info_default_table_list($$$$$$$$$)
+{
+    my $format_command = shift;
+    my $text = shift;
+    my $command = shift;
+    my $formatted_command = shift;
+# enumerate
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+# itemize
+    my $prepended = shift;
+    my $prepended_formatted = shift;
+# multitable
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+
+    return info_default_close_command(undef, undef, $command, undef, undef, undef, undef, undef, undef) if ($format_command ne 'multitable');
+
+    my $columnsize = [];
+    if (defined($prototype_lengths) and @$prototype_lengths)
+    {
+       $columnsize = [ @$prototype_lengths ];
+    }
+    elsif (defined($columnfractions) and @$columnfractions)
+    {
+       foreach my $fraction (@$columnfractions)
+       {
+          push @$columnsize, int($fraction * $info_default_max_column +0.5);
+       }
+    }
+    else 
+    {
+       print STDERR "Empty multitable?\n";
+    }
+
+    return info_default_close_command(undef, undef, $format_command, undef, undef, undef, undef, undef, undef, {'columns_size' => $columnsize});
 }
 
 1;
