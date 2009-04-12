@@ -443,3 +443,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   they won't be output when only macros are expanded, but maybe it is better
   like that? (and in makeinfo compatibility mode, a normal processing
   will be done with -E).
+
+* there is also undocumented features @hsep and @vsep to insert
+  horizontal and vertical rules.
+
+* @anchor{} should always ignore following whitespace (including newlines)

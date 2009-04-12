@@ -33,10 +33,12 @@ def--fn
 @deffnx{} {}
 @deffnx {truc} followed by a comment
 @c comment
+@ifset texi2html
 @deffnx truc machin bidule chose and }
 @deffnx truc machin bidule chose and } after
 @deffnx truc machin bidule chose and {
 @deffnx truc machin bidule chose and { and after
+@end ifset
 Various deff lines
 @deffnx {truc} after a deff item
 @c comment
@@ -123,6 +125,7 @@ d--efmethod
 d--eftypemethod
 @end deftypemethod
 
+@ifset texi2html
 @deffn category name args { @
   more args
 deffn with @{
@@ -132,6 +135,7 @@ deffn with @{
   more args
 deffn with @}
 @end deffn 
+@end ifset
 
 @end macro
 

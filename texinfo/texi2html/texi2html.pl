@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.268 2009-04-03 14:10:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.269 2009-04-12 23:05:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -12535,34 +12535,42 @@ sub scan_line($$$$;$)
                 # FIXME let the user be able not to close the paragraph
                 close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
 
-                if (defined($Texi2HTML::Config::tab_item_texi))
-                {
-                   my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
-                   $cline = $resline if (defined($resline));
-                }
 		    #print STDERR "ITEM after close para: $cline";
 		    #dump_stack($text, $stack, $state);
                 # these functions return the format if in the right context
+                my $in_list_enumerate;
                 my $format;
                 if ($format = add_item($text, $stack, $state, $line_nr))
                 { # handle lists
-                    push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format });
-                    begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($cline));
-#print STDERR "BEGIN ITEM $format->{'format'}\n";
-#dump_stack($text, $stack, $state);
+                    $in_list_enumerate = 1;
                 }
                 elsif ($format = add_term($text, $stack, $state, $line_nr))
-                {# handle table @item term and restart another one
-                    push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format });
+                {
                     #$state->{'no_paragraph'}++;
                 }
                 elsif ($format = add_line($text, $stack, $state, $line_nr)) 
-                {# close table text and restart a term
-                    push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format });
+                {
                     #$state->{'no_paragraph'}++;
                 }
                 if ($format)
                 {
+                    if (defined($Texi2HTML::Config::tab_item_texi))
+                    {
+                        my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                        $cline = $resline if (defined($resline));
+                    }
+                    if ($in_list_enumerate)
+                    {
+#print STDERR "BEGIN ITEM $format->{'format'}\n";
+#dump_stack($text, $stack, $state);
+                        push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format });
+                        begin_paragraph($stack, $state) if ($state->{'preformatted'} or !no_line($cline));
+                    }
+                    else
+                    {# handle table @item term and restart another one
+                     # or after table text restart a term
+                        push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format });
+                    }
                     $format->{'texi_line'} = $cline;
                     my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $cline, $format->{'prepended'}, $format->{'command'}, $format->{'number'});
                     $cline = $line if (defined($line));
@@ -12576,6 +12584,11 @@ sub scan_line($$$$;$)
                     next;
                 }
                 $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
+                if (defined($Texi2HTML::Config::tab_item_texi))
+                {
+                    my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                    $cline = $resline if (defined($resline));
+                }
                 if (!$format)
                 {
                     echo_warn ("\@$macro outside of table or list", $line_nr);
@@ -12601,16 +12614,14 @@ sub scan_line($$$$;$)
             {
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph?
-                # something like @vindex @code{something @tab in tab}
-                # leads to a @code closed by the paragraph while no paragraph
                 close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
 
+                my $format = add_cell ($text, $stack, $state);
                 if (defined($Texi2HTML::Config::tab_item_texi))
                 {
                    my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
                    $cline = $resline if (defined($resline));
                 }
-                my $format = add_cell ($text, $stack, $state);
                 if (!$format)
                 {
                     echo_warn ("\@$macro outside of multitable", $line_nr);

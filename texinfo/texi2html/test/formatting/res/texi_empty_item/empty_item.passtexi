@@ -1,0 +1,31 @@
+empty_item.texi(,2) 
+empty_item.texi(,3) @setfilename empty_item.info
+empty_item.texi(,4) 
+empty_item.texi(,5) @node Top
+empty_item.texi(,6) @top Element
+empty_item.texi(,7) 
+empty_item.texi(,8) @table @asis
+empty_item.texi(,9) 
+empty_item.texi(,10) Table asis
+empty_item.texi(,11) 
+empty_item.texi(,12) @item first item
+empty_item.texi(,13) @itemx
+empty_item.texi(,14) @itemx after an empty itemx, before an empty item
+empty_item.texi(,15) @item 
+empty_item.texi(,16) @item in item before end table
+empty_item.texi(,17) @end table
+empty_item.texi(,18) 
+empty_item.texi(,19) @c since spaces are removed after @item(x) the end of lines are removed
+empty_item.texi(,20) @c after empty @item(x) leading to a weird output.
+empty_item.texi(,21) @vtable @emph
+empty_item.texi(,22) 
+empty_item.texi(,23) VTable emph
+empty_item.texi(,24) 
+empty_item.texi(,25) @item first item
+empty_item.texi(,26) @itemx
+empty_item.texi(,27) @itemx after an empty itemx, before an empty item
+empty_item.texi(,28) @item 
+empty_item.texi(,29) @item in item before end table
+empty_item.texi(,30) @end vtable
+empty_item.texi(,31) 
+empty_item.texi(,32) @bye
