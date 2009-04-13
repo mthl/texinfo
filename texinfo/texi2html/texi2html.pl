@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.269 2009-04-12 23:05:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.270 2009-04-13 23:06:16 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -8925,7 +8925,7 @@ sub end_format($$$$$)
              $format_mismatch = 1;
              echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
         }
-        add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}, $format_ref->{'orig_format'}));
     }
     elsif ($format_type{$format} eq 'cartouche')
     {
@@ -9211,14 +9211,15 @@ sub begin_format($$$$$$)
         }
         else
         {
-             # a new @def.             
+             # a new @def.
+             my $orig_command = $macro;
              $macro =~ s/x$//o;
              # we remove what is on the stack and put it back,
              # to make sure that it is the form without x.
              pop @{$state->{'command_stack'}};
              push @{$state->{'command_stack'}}, $macro;
              #print STDERR "DEF begin $macro\n";
-             $top_format = { 'format' => $macro, 'text' => '' };
+             $top_format = { 'format' => $macro, 'text' => '', 'orig_format' =>$orig_command};
              push @$stack, $top_format;
         }
         #print STDERR "BEGIN_DEFF $macro\n";

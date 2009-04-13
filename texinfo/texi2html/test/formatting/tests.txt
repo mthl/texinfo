@@ -40,6 +40,7 @@ texi empty_item.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
+#def_cmds_info def_cmds.texi -init info.init
 menus menus.texi
 menus_simple menus.texi -init simple_menu.init
 quotation quotation.texi

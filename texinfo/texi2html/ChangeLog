@@ -1,3 +1,8 @@
+2009-04-14   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: give the command name in \&def
+	argument.
+
 2009-04-05   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: call tab_item_texi after closing formats.

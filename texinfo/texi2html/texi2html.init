@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.182 2009-04-03 14:10:37 pertusus Exp $
+# $Id: texi2html.init,v 1.183 2009-04-13 23:06:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5018,9 +5018,10 @@ sub t2h_default_definition_index_entry($$$$)
 # text of the whole @def, line and associated text.
 #
 # $DEF_TABLE should be used.
-sub t2h_default_def($)
+sub t2h_default_def($$)
 {
     my $text = shift;
+    my $command = shift;
     if ($text =~ /\S/)
     {
         if (! $DEF_TABLE)

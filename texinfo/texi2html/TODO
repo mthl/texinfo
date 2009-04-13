@@ -54,6 +54,7 @@ h1 titlefont (@titlefont),
   Also element formatting documentation, especially print_foot_navigation
   is not up to date.
   new arguments and return args of index_summary_letter
+  new argument of def
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
