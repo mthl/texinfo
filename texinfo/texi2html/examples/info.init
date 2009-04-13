@@ -184,7 +184,7 @@ foreach my $format (@info_default_normal_formats, 'group')
 }
 
 my %info_default_indented_commands;
-foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation')
+foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', keys(%def_map))
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -247,6 +247,9 @@ $paragraph_style_command = \&info_default_paragraph_style_command;
 $cell               = \&info_default_cell;
 $row                = \&info_default_row;
 $table_list         = \&info_default_table_list;
+$def_item           = \&info_default_def_item;
+$def                = \&info_default_def;
+$def_line           = \&info_default_def_line;
 
 
 sub info_default_accent($$$)
@@ -1273,13 +1276,11 @@ print STDERR "RETURN state $state $info_default_state_map{$state} $text_inside $
    return $info_default_state_map{$state};
 }
 
-sub info_default_open_command($$$$$)
+sub info_default_open_command($$;$)
 {
    my $state = shift;
    my $command = shift;
-   my $no_close = shift;
-   my $no_open = shift;
-   my $line_nr = shift;
+   my $additional_entries = shift;
 
    my $index = 0;
    
@@ -1288,6 +1289,14 @@ sub info_default_open_command($$$$$)
    $index = scalar(@{$info_state->{'current'}->{'content'}}) 
        if (defined($info_state->{'current'}->{'content'}));
    my $new_command = {'command' => $command, 'parent' => $info_state->{'current'}, 'index_in_parent' => $index };
+   if (defined($additional_entries))
+   {
+       foreach my $key (keys(%$additional_entries))
+       {
+           $new_command->{$key} = $additional_entries->{$key};
+       }
+   }
+
    push @{$info_state->{'current'}->{'content'}}, $new_command;
    $info_state->{'current'} = $new_command;
    print STDERR "Opened $command ". 
@@ -1295,21 +1304,15 @@ sub info_default_open_command($$$$$)
 #     Data::Dumper->Dump([$info_state->{'top'}]);
 }
 
-sub info_default_close_command($$$$$$$$$;$)
+sub info_default_close_command($$;$$$$)
 {
    my $state = shift;
-   my $command_stack = shift;
    my $command = shift;
-   my $no_close = shift;
-   my $no_open = shift;
-   my $line_nr = shift;
    my $begin = shift;
    my $text = shift;
    my $end = shift;
    my $additional_entries = shift;
 
-   $no_open = 0 if (!defined($no_open));
-   $no_close = 0 if (!defined($no_close));
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
    #print STDERR "" . Data::Dumper->Dump([$current_command]);
@@ -1329,7 +1332,6 @@ sub info_default_close_command($$$$$$$$$;$)
    }
 #     Data::Dumper->Dump([$info_state->{'top'}]);
    #return if $no_close;
-   $info_state->{'current'}->{'no_close'} = 1 if ($no_close);
    $info_state->{'current'}->{'begin'} = $begin;
    $info_state->{'current'}->{'text'} = $text;
    $info_state->{'current'}->{'end'} = $end;
@@ -1392,7 +1394,7 @@ sub info_default_begin_format_texi($$$)
    my $command = shift;
    my $line = shift;
    my $state = shift;
-   info_default_open_command($state,$command, undef, undef, undef);
+   info_default_open_command($state,$command);
    return $line;
 }
 
@@ -1402,7 +1404,7 @@ sub info_default_begin_style_texi($$$$)
    my $state = shift;
    my $stack = shift;
    my $real_style_command = shift;
-   info_default_open_command($state,$command, undef, undef, undef)
+   info_default_open_command($state,$command)
      unless ($info_default_accent_commands{$command} or exists $things_map{$command});
 #      if ($real_style_command);
 }
@@ -1416,11 +1418,11 @@ sub info_default_begin_paragraph_texi($$$)
    my $state = shift;
    my $stack = shift;
    #my $info_state = info_default_get_state($state);
-   info_default_open_command($state,$command, undef, undef, undef);
+   info_default_open_command($state,$command);
    foreach my $style_command (@$paragraph_macros)
    {
      print STDERR "para stack: $style_command->{'style'}\n";
-     info_default_open_command($state,$style_command->{'style'}, undef, undef, undef);
+     info_default_open_command($state,$style_command->{'style'});
      #$info_state->{'current'}->{'no_open'} = 1;
    }
 }
@@ -1448,7 +1450,7 @@ sub info_default_thing_command($$$$$)
     my $state = shift;
 
     my $result = $things_map{$command};
-    #return info_default_close_command($state, undef, $command, undef, undef, $line_nr, $result, $text, '');
+    #return info_default_close_command($state, $command, $result, $text, '');
     return info_default_store_text($state, $result, $command);
 #    return $result . $text;
 }
@@ -1508,7 +1510,7 @@ sub info_default_style($$$$$$$$$)
    }
    unless($special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
    {
-      return info_default_close_command($state, $command_stack, $command, $no_close, $no_open, $line_nr, $begin, $text, $end);
+      return info_default_close_command($state, $command, $begin, $text, $end);
    }
    # this is for *ref, images and footnotes
    if (($special_style{$command} or $info_default_leaf_command{$command}) and $command ne 'anchor')
@@ -1566,7 +1568,7 @@ sub info_default_paragraph($$$$$$$$$$$$)
     {
         
     }
-    return info_default_close_command(undef, undef, 'paragraph', undef, undef, undef, '', undef, undef, {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
+    return info_default_close_command(undef, 'paragraph', '', undef, undef, {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
 }
 
 # currently not used, but could be used if info_default_preformatted
@@ -1605,7 +1607,7 @@ sub info_default_preformatted($$$$$$$$$$$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
     $info_state->{'paragraph_in_element_nr'}++;
-    return info_default_close_command(undef, undef, 'preformatted', undef, undef, undef, undef, undef, undef);
+    return info_default_close_command(undef, 'preformatted');
 } 
 
 
@@ -2012,7 +2014,7 @@ sub info_default_menu_link($$$$$$$$)
 #    my $text = shift;
 #    my $in_preformatted = shift;
 #print STDERR "MENU $format\n";
-#    return info_default_close_command(undef, $format, undef, undef, undef, "* Menu:\n", undef, "\n");
+#    return info_default_close_command(undef, $format, "* Menu:\n", undef, "\n");
 #}   
 
 sub info_default_complex_format($$)
@@ -2025,7 +2027,7 @@ sub info_default_complex_format($$)
         $begin = "* Menu:\n\n";
         $end = "\n";
     }
-    return info_default_close_command(undef, undef, $name, undef, undef, undef, $begin, undef, $end);
+    return info_default_close_command(undef, $name, $begin, undef, $end);
 }
 
 sub info_default_quotation($$$$)
@@ -2035,7 +2037,7 @@ sub info_default_quotation($$$$)
     my $argument_text = shift;
     my $argument_text_texi = shift;
 
-    return info_default_close_command(undef, undef, $command, undef, undef, undef, undef, undef, undef);
+    return info_default_close_command(undef, $command);
 }
 
 sub info_default_misc_commands($$$$$)
@@ -2477,7 +2479,7 @@ sub info_default_format($$$)
         $element = $1;
         $element_end = $2;
     }
-    return info_default_close_command(undef, undef, $tag, undef, undef, undef, $element, undef, $element_end);
+    return info_default_close_command(undef, $tag, $element, undef, $element_end);
 }
 
 sub info_default_tab_item_texi($$$$$$)
@@ -2496,9 +2498,9 @@ print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $li
    {
        if ($command ne 'tab')
        {
-           info_default_open_command($state, 'multitable_row', undef, undef, undef);
+           info_default_open_command($state, 'multitable_row');
        }
-       info_default_open_command($state, 'multitable_cell', undef, undef, undef);
+       info_default_open_command($state, 'multitable_cell');
    }
    else
    {
@@ -2520,7 +2522,7 @@ sub info_default_paragraph_style_command($$)
 {
     my $format = shift;
     my $text = shift;
-    return info_default_close_command(undef, undef, $format, undef, undef, undef, undef, undef, undef);
+    return info_default_close_command(undef, $format);
 }
 
 sub info_default_row($$$$$$$$)
@@ -2534,7 +2536,7 @@ sub info_default_row($$$$$$$$)
     my $only_inter_item_commands = shift;
     my $before_items = shift;
 
-    return info_default_close_command(undef, undef, 'multitable_row', undef, undef, undef, undef, undef, undef, {'item_command' => $macro});
+    return info_default_close_command(undef, 'multitable_row', undef, undef, undef, {'item_command' => $macro});
 }
 
 sub info_default_cell($$$$$$$$)
@@ -2548,7 +2550,7 @@ sub info_default_cell($$$$$$$$)
     my $only_inter_item_commands = shift;
     my $before_items = shift;
 
-    return info_default_close_command(undef, undef, 'multitable_cell', undef, undef, undef, undef, undef, undef);
+    return info_default_close_command(undef, 'multitable_cell');
 }
 
 sub info_default_table_list($$$$$$$$$)
@@ -2569,7 +2571,7 @@ sub info_default_table_list($$$$$$$$$)
     my $prototype_lengths = shift;
     my $column_number = shift;
 
-    return info_default_close_command(undef, undef, $command, undef, undef, undef, undef, undef, undef) if ($format_command ne 'multitable');
+    return info_default_close_command(undef, $command) if ($format_command ne 'multitable');
 
     my $columnsize = [];
     if (defined($prototype_lengths) and @$prototype_lengths)
@@ -2588,7 +2590,61 @@ sub info_default_table_list($$$$$$$$$)
        print STDERR "Empty multitable?\n";
     }
 
-    return info_default_close_command(undef, undef, $format_command, undef, undef, undef, undef, undef, undef, {'columns_size' => $columnsize});
+    return info_default_close_command(undef, $format_command, undef, undef, undef, {'columns_size' => $columnsize});
 }
+
+sub info_default_def_item($$)
+{
+    my $text = shift;
+    my $only_inter_item_commands = shift;
+
+    return $text;
+}
+
+sub info_default_def_line($$$$$$$$$$$$$$$$)
+{
+   my $category_prepared = shift;
+   my $name = shift;
+   my $type = shift;
+   my $arguments = shift;
+   my $index_label = shift;
+   my $arguments_array = shift;
+   my $arguments_type_array = shift;
+   my $unformatted_arguments_array = shift;
+   my $command = shift;
+   my $class_name = shift;
+   my $category = shift;
+   my $class = shift;
+   my $style = shift;
+   my $original_command = shift;
+
+   $name = '' if (!defined($name) or ($name =~ /^\s*$/));
+   $type = '' if (!defined($type) or $type =~ /^\s*$/);
+   $arguments = '' if (!defined($arguments) or $arguments =~ /^\s*$/);
+
+   my $type_name = '';
+   $type_name .= $name if ($name ne '');
+
+   my $result = " -- $category_prepared: $type_name $arguments";
+   $result =~ s/\s*$//;
+   $result .= "\n";
+   my $state = $Texi2HTML::THISDOC{'state'};
+   if ($command =~ /x$/)
+   {
+      return info_default_store_text($state,$result,$command);
+   }
+   else
+   {
+      info_default_open_command($state, $command, {'begin'=>$result});
+   }
+}
+
+sub info_default_def($$)
+{
+    my $text = shift;
+    my $command = shift;
+    info_default_close_command(undef, $command);
+}
+
 
 1;
