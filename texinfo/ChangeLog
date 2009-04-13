@@ -1,5 +1,9 @@
 2009-04-12  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi (compile): do not create a wrong :: sequence
+	in the middle of the path due to an empty txincludes (no -I's).
+	Report from Bruno Haible, 8 Apr 2009 01:24:09.
+
 	* util/texi2pdf,
 	* util/pdftexi2dvi: handle --version to hardwire the program name.
 	* util/texi2dvi (usage): mention PDF output.

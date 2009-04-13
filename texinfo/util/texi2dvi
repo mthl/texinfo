@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.139 2009-04-13 00:29:37 karl Exp $
+# $Id: texi2dvi,v 1.140 2009-04-13 00:39:48 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.139 $'
+rcs_revision='$Revision: 1.140 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -1430,9 +1430,14 @@ compile ()
   # `.' goes first to ensure that any old .aux, .cps,
   # etc. files in ${directory} don't get used in preference to fresher
   # files in `.'.  Include orig_pwd in case we are in clean build mode, where
-  # we've cd'd to a temp directory.
+  # we have cd'd to a temp directory.
+  common="$orig_pwd$path_sep$in_dir$path_sep"
+  #
+  # If we have any includes, put those at the end.
+  # Keep a final path_sep to get the default (system) TeX directories included.
   txincludes=`list_infix includes $path_sep`
-  common="$orig_pwd$path_sep$in_dir$path_sep$txincludes$path_sep"
+  test -n "$txincludes" && common="$common$txincludes$path_sep"
+  #
   for var in $tex_envvars; do
     eval val="\$common\$${var}_orig"
     # Convert relative paths to absolute paths, so we can run in another
