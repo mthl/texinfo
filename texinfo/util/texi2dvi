@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.138 2009-03-15 19:00:24 karl Exp $
+# $Id: texi2dvi,v 1.139 2009-04-13 00:29:37 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -32,8 +32,8 @@ unset RUNNING_KSH
 # No failure shall remain unpunished.
 set -e
 
-# This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.138 $'
+# This string is expanded automatically when this file is checked out.
+rcs_revision='$Revision: 1.139 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -281,6 +281,8 @@ usage ()
   # where % denotes the eol character.
   cat <<EOF
 Usage: $program [OPTION]... FILE...
+       texi2pdf [OPTION]... FILE...
+       pdftexi2dvi [OPTION]... FILE...
 
 Run each Texinfo or (La)TeX FILE through TeX in turn until all
 cross-references are resolved, building all indices.  The directory
@@ -293,8 +295,8 @@ the FILE may also be composed of the following simple TeX commands.
   \`\\input{FILE}'     the actual file to compile
   \`\\nonstopmode'     same as --batch
 
-Makeinfo is used to perform Texinfo macro expansion before running TeX
-when needed.
+When invoked as \`texi2pdf' or \`pdftexi2dvi', or given the option --pdf
+or --dvipdf, generate PDF output.  Otherwise, generate DVI.
 
 General options:
   -b, --batch         no interaction
@@ -364,9 +366,9 @@ directory, occasionally TeX won't be able to find some files (e.g., when
 using \\graphicspath): in that case use -I to specify the additional
 directories to consider.
 
-The values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX, MAKEINFO,
-TEX (or PDFTEX), TEXINDEX, and THUMBPDF environment variables are used
-to run those commands, if they are set.  Any CMD strings are added
+The values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX, MAKEINFO, TEX
+(or PDFTEX or DVIPDF), TEXINDEX, and THUMBPDF environment variables are
+used to run those commands, if they are set.  Any CMD strings are added
 after @setfilename for Texinfo input, in the first line for LaTeX input.
 
 Report bugs to bug-texinfo@gnu.org,
