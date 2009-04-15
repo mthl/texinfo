@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.148 2009-04-15 14:57:59 akim Exp $
+# $Id: texi2dvi,v 1.149 2009-04-15 14:59:00 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.148 $'
+rcs_revision='$Revision: 1.149 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -48,7 +48,7 @@ batch=false     # true for batch mode
 catcode_special=true
 debug=false
 escape="\\"
-expand=         # t for expansion via makeinfo
+expand=false    # true for expansion via makeinfo
 includes=
 line_error=true # Pass --file-line-error to TeX.
 oname=          # --output
@@ -1219,7 +1219,7 @@ run_makeinfo ()
 
   # Unless required by the user, makeinfo expansion is wanted only
   # if texinfo.tex is too old.
-  if test "$expand" = t; then
+  if $expand; then
     makeinfo=${MAKEINFO:-makeinfo}
   else
     # Check if texinfo.tex performs macro expansion by looking for
@@ -1559,7 +1559,7 @@ while test x"$1" != x"$arg_sep"; do
 	 --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
-    -e | -E | --expand) expand=t;;
+    -e | -E | --expand) expand=true;;
     -h | --help) usage;;
     -I)   shift; list_concat_dirs includes "$1";;
     -l | --lang | --language) shift; set_language=$1;;

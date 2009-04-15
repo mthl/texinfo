@@ -1,5 +1,10 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: make $expand a regular Boolean variable.
+	* bin/texi2dvi ($expand): Use true/false instead of t/''.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: fix comments.
 	* bin/texi2dvi: here.
 
