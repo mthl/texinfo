@@ -1,5 +1,10 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: fix error invocations.
+	* bin/texi2dvi: error already reports $0, don't do it again.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: simplify the handling of --no-line-error.
 	* bin/texi2dvi (no_line_error): Remove, rather use
 	line_error=false.
