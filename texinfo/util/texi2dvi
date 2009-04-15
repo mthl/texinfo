@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.150 2009-04-15 15:15:33 akim Exp $
+# $Id: texi2dvi,v 1.151 2009-04-15 15:26:15 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.150 $'
+rcs_revision='$Revision: 1.151 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -1087,18 +1087,19 @@ run_bibtex ()
 
 # run_index ()
 # ------------
-# Run texindex (or makeindex) on current index files.  If they already
-# exist, and after running TeX a first time the index files don't
-# change, then there's no reason to run TeX again.  But we won't know
-# that if the index files are out of date or nonexistent.
+# Run texindex (or makeindex or texindy) on current index files.  If
+# they already exist, and after running TeX a first time the index
+# files don't change, then there's no reason to run TeX again.  But we
+# won't know that if the index files are out of date or nonexistent.
 run_index ()
 {
   local index_files=`generated_files_get $in_noext index_file_p`
   test -n "$index_files" ||
     return 0
 
-  local makeindex=${MAKEINDEX:-makeindex}
-  local texindex=${TEXINDEX:-texindex}
+  : ${MAKEINDEX:=makeindex}
+  : ${TEXINDEX:=texindex}
+  : ${TEXINDY:=texindy}
 
   local index_file
   local index_noext
@@ -1110,16 +1111,20 @@ run_index ()
         run tex \
             '\def\filename{{'"$index_noext"'}{idx}{4dx}{ind}}
              \input idxmake.4ht'
-        run $makeindex -o $index_noext.ind $index_noext.4dx
+        run $MAKEINDEX -o $index_noext.ind $index_noext.4dx
       done
       ;;
 
     latex:*)
-      run $makeindex $index_files
+      if $TEXINDY --version >&6 2>&1; then
+        run $TEXINDY $index_files
+      else
+        run $MAKEINDEX $index_files
+      fi
       ;;
 
     texinfo:*)
-      run $texindex $index_files
+      run $TEXINDEX $index_files
       ;;
   esac
 }
