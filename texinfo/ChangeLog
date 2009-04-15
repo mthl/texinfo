@@ -1,5 +1,13 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: simplify the handling of --no-line-error.
+	* bin/texi2dvi (no_line_error): Remove, rather use
+	line_error=false.
+	(run_tex): Adjust.
+	By the way, don't call tex --help if !$line_error.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: be robust to a failing latex --help.
 	* bin/texi2dvi (run_tex): here.
 
