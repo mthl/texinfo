@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.149 2009-04-15 14:59:00 akim Exp $
+# $Id: texi2dvi,v 1.150 2009-04-15 15:15:33 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.149 $'
+rcs_revision='$Revision: 1.150 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -57,6 +57,7 @@ quiet=false     # by default let the tools' message be displayed
 recode=false
 set_language=
 src_specials=
+latex2html=hevea  # or set to tex4ht
 textra=         # Extra TeX commands to insert in the input file.
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
@@ -157,6 +158,15 @@ func_dirname ()
 {
   dirname "$1" 2>/dev/null \
   || { echo "$1" | sed 's!/[^/]*$!!;s!^$!.!'; }
+}
+
+
+# noexit FILE
+# -----------
+# Return FILE with one extension remove.  foo.bar.baz -> foo.bar.
+noext ()
+{
+  echo "$1" | sed -e 's/\.[^/.][^/.]*$//'
 }
 
 
@@ -623,16 +633,29 @@ absolute_filenames ()
 # output_base_name FILE
 # ---------------------
 # The name of FILE, possibly renamed to satisfy --output.
+# FILE is local, there is no directory part.
 output_base_name ()
 {
   case $oname in
     '') echo "$1";;
      *) local out_noext
-	out_noext=`echo "$oname" | sed 's/\.[^.]*$//'`
+	out_noext=`noext "$oname"`
 	local file_ext
 	file_ext=`echo "$1" | sed 's/^.*\.//'`
 	echo "$out_noext.$file_ext"
       ;;
+  esac
+}
+
+
+# destdir
+# -------
+# Return the name of the directory where the output is expected.
+destdir ()
+{
+  case $oname in
+    '')  echo "$orig_pwd";;
+    *)   dirname "$oname";;
   esac
 }
 
@@ -731,12 +754,23 @@ bibaux_file_p ()
 # index_file_p FILE
 # -----------------
 # Return with success if FILE is an index file.
-# When index.sty is used, there is a space before the brace.
 index_file_p ()
 {
   test -f "$1" || return 1
-  case `sed '1q' "$1"` in
-    "\\entry{"*|"\\indexentry{"*|"\\indexentry {"*) return 0;;
+  case $in_lang:$latex2html:`out_lang_tex`:`sed '1q' "$1"` in
+    # When working with TeX4HT, *.idx are created by LaTeX.  They must
+    # be processed to produce *.4ix, *.4dx files.  The *.4dx file is
+    # passed to makeindex to produce the *.ind file.  This sequence is
+    # handled by run_index, so we are only interested in the *.idx
+    # files, which have each "\indexentry" preceded by a
+    # "\beforeentry".
+    latex:tex4ht:html:"\\beforeentry {"*) return 0;;
+
+    # When index.sty is used, there is a space before the brace.
+    latex:*:*:"\\indexentry{"*|latex:*:*:"\\indexentry {"*) return 0;;
+
+    texinfo:*:*:"\\entry{"*) return 0;;
+
     *) return 1;;
   esac
 }
@@ -887,10 +921,12 @@ xref_files_changed ()
 # Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
-  case $in_lang:`out_lang_tex` in
-    latex:dvi)   tex=${LATEX:-latex};;
-    latex:pdf)   tex=${PDFLATEX:-pdflatex};;
-    texinfo:dvi)
+  case $in_lang:$latex2html:`out_lang_tex` in
+    latex:*:dvi|latex:tex4ht:html)
+        tex=${LATEX:-latex};;
+    latex:*:pdf)
+        tex=${PDFLATEX:-pdflatex};;
+    texinfo:*:dvi)
 	# MetaPost also uses the TEX environment variable.  If the user
 	# has set TEX=latex for that reason, don't bomb out.
 	case $TEX in
@@ -938,7 +974,7 @@ run_tex ()
   test -n "$translate_file" && cmd="$cmd --translate-file=$translate_file"
 
   # Tell TeX to make source specials (for backtracking from output to
-  # source, given a sufficiently smart editor), if specifed.
+  # source, given a sufficiently smart editor), if specified.
   test -n "$src_specials" && cmd="$cmd $src_specials"
 
   # Tell TeX to be batch if requested.
@@ -1057,14 +1093,58 @@ run_bibtex ()
 # that if the index files are out of date or nonexistent.
 run_index ()
 {
-  case $in_lang in
-    latex)   texindex=${MAKEINDEX:-makeindex};;
-    texinfo) texindex=${TEXINDEX:-texindex};;
+  local index_files=`generated_files_get $in_noext index_file_p`
+  test -n "$index_files" ||
+    return 0
+
+  local makeindex=${MAKEINDEX:-makeindex}
+  local texindex=${TEXINDEX:-texindex}
+
+  local index_file
+  local index_noext
+  case $in_lang:$latex2html:`out_lang_tex` in
+    latex:tex4ht:html)
+      for index_file in $index_files
+      do
+        index_noext=`noext "$index_file"`
+        run tex \
+            '\def\filename{{'"$index_noext"'}{idx}{4dx}{ind}}
+             \input idxmake.4ht'
+        run $makeindex -o $index_noext.ind $index_noext.4dx
+      done
+      ;;
+
+    latex:*)
+      run $makeindex $index_files
+      ;;
+
+    texinfo:*)
+      run $texindex $index_files
+      ;;
   esac
-  index_files=`generated_files_get $in_noext index_file_p`
-  if test -n "$texindex" && test -n "$index_files"; then
-    run $texindex $index_files
-  fi
+}
+
+
+# run_tex4ht ()
+# -------------
+# Run the last two phases of TeX4HT: tex4ht extracts the HTML from the
+# instrumented DVI file, and t4ht converts the figures and installs
+# the files when given -d.
+#
+# Because knowing exactly which files are created is complex (in
+# addition the names are not simple to compute), which makes it
+# difficult to install the output files in a second step, it is much
+# simpler to install directly the output files.
+run_tex4ht ()
+{
+  case $in_lang:$latex2html:`out_lang_tex` in
+    latex:*:dvi|latex:tex4ht:html)
+      : ${TEX4HT=tex4ht} ${T4HT=t4ht}
+      run "$TEX4HT" "-f/$in_noext"
+      # Do not remove the / after the destdir.
+      run "$T4HT" "-d`destdir`/" "-f/$in_noext"
+      ;;
+  esac
 }
 
 
@@ -1146,14 +1226,17 @@ run_tex_suite ()
   # and TeX one last time.
   run_thumbpdf
 
+  # If we are using tex4ht, call it.
+  run_tex4ht
+
   # Install the result if we didn't already (i.e., if the output is
   # dvipdf or ps).
-  case $out_lang in
-    dvipdf)
+  case $latex2html:$out_lang in
+    *:dvipdf)
       run_dvipdf "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
-    ps)
+    *:ps)
       : {DVIPS=dvips}
       $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
@@ -1287,23 +1370,36 @@ run_makeinfo ()
 # Used most commonly for @finalout, @smallbook, etc.
 insert_commands ()
 {
-  local textra_cmd
-  case $in_lang in
-    latex)   textra_cmd=1i;;
-    texinfo) textra_cmd='/^@setfilename/a';;
-    *)       error 1 "internal error, unknown language: $in_lang";;
-  esac
-
   if test -n "$textra"; then
     # _xtr.  The file with the user's extra commands.
     work_xtr=$workdir/xtr
     in_xtr=$work_xtr/$in_base
     ensure_dir "$work_xtr"
     verbose "Inserting extra commands: $textra"
+    local textra_cmd
+    case $in_lang in
+      latex)   textra_cmd=1i;;
+      texinfo) textra_cmd='/^@setfilename/a';;
+      *)       error 1 "internal error, unknown language: $in_lang";;
+    esac
     sed "$textra_cmd\\
 $textra" "$in_input" >"$in_xtr"
     in_input=$in_xtr
   fi
+
+  case $in_lang:$latex2html:`out_lang_tex` in
+    latex:tex4ht:html)
+      # _tex4ht.  The file with the added \usepackage{tex4ht}.
+      work_tex4ht=$workdir/tex4ht
+      in_tex4ht=$work_tex4ht/$in_base
+      ensure_dir "$work_tex4ht"
+      verbose "Inserting \\usepackage{tex4ht}"
+      perl -pe 's<\\documentclass(?:\[.*\])?{.*}>
+                 <$&\\usepackage[xhtml]{tex4ht}>' \
+        "$in_input" >"$in_tex4ht"
+      in_input=$in_tex4ht
+      ;;
+  esac
 }
 
 # run_recode ()
@@ -1423,10 +1519,10 @@ run_hevea ()
 # Run the TeX (or HeVeA).
 run_core_conversion ()
 {
-  case $in_lang:`out_lang_tex` in
-    *:dvi|*:pdf)
+  case $in_lang:$latex2html:`out_lang_tex` in
+    *:dvi|*:pdf|latex:tex4ht:html)
 	run_tex;;
-    latex:html|latex:text|latex:info)
+    latex:*:html|latex:*:text|latex:*:info)
 	run_hevea $out_lang;;
     *)
 	error 1 "invalid input/output combination: $in_lang/$out_lang";;
@@ -1580,6 +1676,7 @@ while test x"$1" != x"$arg_sep"; do
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
     --src-specials) src_specials=--src-specials;;
+    --tex4ht) latex2html=tex4ht;;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
     --translate-file ) shift; translate_file="$1";;
@@ -1749,7 +1846,7 @@ input_file_name_decode ()
   # Strip directory part but leave extension.
   in_base=`basename "$command_line_filename"`
   # Strip extension.
-  in_noext=`echo "$in_base" | sed 's/\.[^.]*$//'`
+  in_noext=`noext "$in_base"`
 
   # The normalized file name to compile.  Must always point to the
   # file to actually compile (in case of recoding, macro-expansion etc.).
@@ -1765,7 +1862,7 @@ input_file_name_decode ()
   out_dir=`func_dirname "$out_name"`
   out_dir_abs=`absolute "$out_dir"`
   out_base=`basename "$out_name"`
-  out_noext=`echo "$out_base" | sed 's/\.[^.]*$//'`
+  out_noext=`noext "$out_base"`
 }
 
 
