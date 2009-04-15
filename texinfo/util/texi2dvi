@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.141 2009-04-15 13:32:55 akim Exp $
+# $Id: texi2dvi,v 1.142 2009-04-15 13:43:21 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.141 $'
+rcs_revision='$Revision: 1.142 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -315,19 +315,24 @@ General options:
 
 TeX tuning:
   -@                         use @input instead of \input for preloaded Texinfo
-      --dvi                  output a DVI file [default]
-      --dvipdf               output a PDF file via DVI (using dvipdf)
   -e, -E, --expand           force macro expansion using makeinfo
   -I DIR                     search DIR for Texinfo files
   -l, --language=LANG        specify LANG for FILE, either latex or texinfo
       --no-line-error        do not pass --file-line-error to TeX
-  -p, --pdf                  use pdftex or pdflatex for processing
   -r, --recode               call recode before TeX to translate input
       --recode-from=ENC      recode from ENC to the @documentencoding
       --src-specials         pass --src-specials to TeX
   -t, --command=CMD          insert CMD in copy of input file
    or --texinfo=CMD          multiple values accumulate
       --translate-file=FILE  use given charset translation file for TeX
+
+Output format:
+      --dvi     output a DVI file [default]
+      --dvipdf  output a PDF file via DVI (using dvipdf)
+      --info    output an Info file.  Use HeVeA for LaTeX files
+  -p, --pdf     use pdftex or pdflatex for processing
+      --ps      output a PDF file via DVI (using dvips)
+      --text    output a plain text file.  Use HeVeA for LaTeX files
 
 Build modes:
   --build=MODE         specify the treatment of auxiliary files [$build_mode]
@@ -370,10 +375,10 @@ directory, occasionally TeX won't be able to find some files (e.g., when
 using \\graphicspath): in that case use -I to specify the additional
 directories to consider.
 
-The values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX, MAKEINFO, TEX
-(or PDFTEX or DVIPDF), TEXINDEX, and THUMBPDF environment variables are
-used to run those commands, if they are set.  Any CMD strings are added
-after @setfilename for Texinfo input, in the first line for LaTeX input.
+The values of the BIBTEX, DVIPDF, DVIPS, LATEX, MAKEINDEX, MAKEINFO,
+PDFLATEX, PDFTEX, TEX, TEXINDEX, and THUMBPDF environment variables are used
+to run those commands, if they are set.  Any CMD strings are added after
+@setfilename for Texinfo input, in the first line for LaTeX input.
 
 Report bugs to bug-texinfo@gnu.org,
 general questions and discussion to help-texinfo@gnu.org.
@@ -519,6 +524,18 @@ list_dir_to_abs ()
 ## ------------------------------ ##
 ## Language auxiliary functions.  ##
 ## ------------------------------ ##
+
+
+# out_lang_set LANG
+# -----------------
+out_lang_set ()
+{
+  case $1 in
+    dvi|dvipdf|html|info|pdf|ps|text) out_lang=$1;;
+    *) error 1 "invalid output format: $1";;
+  esac
+}
+
 
 # out_lang_tex
 # ------------
@@ -953,7 +970,7 @@ run_tex ()
   # Other special (non-active) characters could be supported by
   # resetting their catcodes to other on the command line and changing
   # texinfo.tex to initialize everything to plain catcodes.  Maybe someday.
-  
+
   # append the \input command.
   cmd="$cmd '${escape}input'"
 
@@ -1143,7 +1160,8 @@ run_tex_suite ()
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
     ps)
-      dvips -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
+      : {DVIPS=dvips}
+      $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
   esac
@@ -1547,13 +1565,9 @@ while test x"$1" != x"$arg_sep"; do
 	 --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
-	 --dvi)   out_lang=dvi;;
-	 --dvipdf)   out_lang=dvipdf;;
     -e | -E | --expand) expand=t;;
     -h | --help) usage;;
-	 --html) out_lang=html;;
     -I)   shift; list_concat_dirs includes "$1";;
-    --info) out_lang=info;;
     -l | --lang | --language) shift; set_language=$1;;
     --mostly-clean) action=mostly-clean;;
     --no-line-error) no_line_error=true;;
@@ -1561,15 +1575,19 @@ while test x"$1" != x"$arg_sep"; do
       shift
       # Make it absolute, just in case we also have --clean, or whatever.
       oname=`absolute "$1"`;;
-    -p | --pdf) out_lang=pdf;;
-	 --ps)  out_lang=ps;;
+
+    # Output formats.
+    -O|--output-format) shift; out_lang_set "$1";;
+       --dvi|--dvipdf|--html|--info|--pdf|--ps|--text)
+       out_lang_set `echo "x$1" | sed 's/^x--//'`;;
+
+    -p) out_lang_set pdf;;
     -q | -s | --quiet | --silent) quiet=true; batch=true;;
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
     --src-specials) src_specials=--src-specials;;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
-    --text) out_lang=text;;
     --translate-file ) shift; translate_file="$1";;
     --tidy) build_mode=tidy;;
     -v | --vers*) version;;

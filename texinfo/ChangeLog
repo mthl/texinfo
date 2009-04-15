@@ -1,5 +1,14 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	* bin/texi2dvi (out_lang_set): New.
+	Use it.
+	(usage): Document --html, --info, --text, --ps, DVIPS and DVIPDF.
+	(run_tex_suite): Honor DVIPS.
+	(main): Support -O/--output-format.
+	Undocumented for now.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	* bin/texi2dvi (ensure_dir): Die only if we could not create the
 	directory at all.
 
