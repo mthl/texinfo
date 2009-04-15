@@ -1,3 +1,8 @@
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
+	* bin/texi2dvi (ensure_dir): Die only if we could not create the
+	directory at all.
+
 2009-04-12  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (compile): do not create a wrong :: sequence

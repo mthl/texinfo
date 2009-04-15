@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.140 2009-04-13 00:39:48 karl Exp $
+# $Id: texi2dvi,v 1.141 2009-04-15 13:32:55 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.140 $'
+rcs_revision='$Revision: 1.141 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -195,8 +195,12 @@ ensure_dir ()
 {
   for dir
   do
+    # Beware that in parallel builds we may have several concurrent
+    # attempts to create the directory.  So fail only if "mkdir"
+    # failed *and* the directory still does not exist.
     test -d "$dir" \
       || mkdir "$dir" \
+      || test -d "$dir" \
       || error 1 "cannot create directory: $dir"
   done
 }
