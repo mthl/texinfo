@@ -1,5 +1,10 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: be robust to a failing latex --help.
+	* bin/texi2dvi (run_tex): here.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	* bin/texi2dvi (out_lang_set): New.
 	Use it.
 	(usage): Document --html, --info, --text, --ps, DVIPS and DVIPDF.
