@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.147 2009-04-15 14:55:50 akim Exp $
+# $Id: texi2dvi,v 1.148 2009-04-15 14:57:59 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.147 $'
+rcs_revision='$Revision: 1.148 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -698,7 +698,7 @@ move_to_dest ()
 
 # aux_file_p FILE
 # ---------------
-# Return with success with FILE is an aux file.
+# Return with success if FILE is an aux file.
 aux_file_p ()
 {
   test -f "$1" || return 1
@@ -710,7 +710,7 @@ aux_file_p ()
 
 # bibaux_file_p FILE
 # ------------------
-# Return with success with FILE is an aux file containing citation
+# Return with success if FILE is an aux file containing citation
 # requests.
 bibaux_file_p ()
 {
@@ -730,7 +730,7 @@ bibaux_file_p ()
 
 # index_file_p FILE
 # -----------------
-# Return with success with FILE is an index file.
+# Return with success if FILE is an index file.
 # When index.sty is used, there is a space before the brace.
 index_file_p ()
 {

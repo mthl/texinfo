@@ -1,5 +1,10 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: fix comments.
+	* bin/texi2dvi: here.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: simplify move_to_dest.
 	* bin/texi2dvi (move_to_dest): Exit immediately if there is
 	nothing to do.
