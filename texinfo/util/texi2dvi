@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.145 2009-04-15 14:41:50 akim Exp $
+# $Id: texi2dvi,v 1.146 2009-04-15 14:50:14 akim Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.145 $'
+rcs_revision='$Revision: 1.146 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -328,6 +328,7 @@ TeX tuning:
 Output format:
       --dvi     output a DVI file [default]
       --dvipdf  output a PDF file via DVI (using dvipdf)
+      --html    output an HTML file.  Use HeVeA for LaTeX files
       --info    output an Info file.  Use HeVeA for LaTeX files
   -p, --pdf     use pdftex or pdflatex for processing
       --ps      output a PDF file via DVI (using dvips)
@@ -1792,11 +1793,13 @@ do
   case $build_dir in
       '' | . ) t2ddir=$out_noext.t2d ;;
       *) # Avoid collisions between multiple occurrences of the same
-	 # file.  The sed expression is fragile if the cwd has
-	 # active characters.
+         # file, so depend on the output path.  Remove leading `./',
+         # at least to avoid creating a file starting with `.!', i.e.,
+         # an invisible file. The sed expression is fragile if the cwd
+         # has active characters.  Transform / into ! so that we don't
+         # need `mkdir -p'.  It might be something to reconsider.
 	 t2ddir=$build_dir/`echo "$out_dir_abs/$out_noext.t2d" |
-	     sed "s,^$orig_pwd/,," |
-	     sed 's,/,!,g'`
+	     sed "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
   esac
   # Remove it at exit if clean mode.
   trap "cleanup" 0 1 2 15

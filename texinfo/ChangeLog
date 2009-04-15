@@ -1,5 +1,10 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
+	texi2dvi: complete --help.
+	* bin/texi2dvi (usage): Document --html.
+
+2009-04-15  Akim Demaille  <akim@epita.fr>
+
 	texi2dvi: fix error invocations.
 	* bin/texi2dvi: error already reports $0, don't do it again.
 
