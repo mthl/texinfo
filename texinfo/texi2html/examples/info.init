@@ -184,7 +184,7 @@ foreach my $format (@info_default_normal_formats, 'group')
 }
 
 my %info_default_indented_commands;
-foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', keys(%def_map))
+foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'deff_item')
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -479,8 +479,7 @@ sub info_default_skip_spaces($$$)
     while(1)
     {
        my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
-        #return ($current, $index, $close) if (!defined($close_next) or $close_next);
-        return ($current, $index, $close) if ($close_next);
+        return ($current, $index, $close) if ($close_next or (!defined($current_next)));
         my $content = $current_next->{'content'}->[$index_next];
         if (defined($content->{'begin'}))
         {
@@ -1741,6 +1740,7 @@ sub info_default_normal_text($$$$$$;$)
 
 #print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
+   $text = uc($text) if (in_cmd($style_stack, 'var'));
 #   $text = &$protect_text($text) unless($in_raw_text);
    if (! $in_code and !$in_preformatted)
    {
@@ -2598,7 +2598,7 @@ sub info_default_def_item($$)
     my $text = shift;
     my $only_inter_item_commands = shift;
 
-    return $text;
+    return info_default_close_command(undef, 'deff_item');
 }
 
 sub info_default_def_line($$$$$$$$$$$$$$$$)
@@ -2625,25 +2625,26 @@ sub info_default_def_line($$$$$$$$$$$$$$$$)
    my $type_name = '';
    $type_name .= $name if ($name ne '');
 
-   my $result = " -- $category_prepared: $type_name $arguments";
+   my $result = " -- $category_prepared: ${type_name}$arguments";
    $result =~ s/\s*$//;
    $result .= "\n";
    my $state = $Texi2HTML::THISDOC{'state'};
-   if ($command =~ /x$/)
-   {
-      return info_default_store_text($state,$result,$command);
-   }
-   else
-   {
-      info_default_open_command($state, $command, {'begin'=>$result});
-   }
+#   if ($command =~ /x$/)
+#   {
+    info_default_store_text($state,$result,$command);
+#   }
+#   else
+#   {
+#      return info_default_open_command($state, $command, {'begin'=>$result});
+#   }
+    return info_default_open_command($state, 'deff_item');
 }
 
 sub info_default_def($$)
 {
     my $text = shift;
     my $command = shift;
-    info_default_close_command(undef, $command);
+    return info_default_close_command(undef, $command);
 }
 
 
