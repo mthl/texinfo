@@ -1,3 +1,7 @@
+2009-04-16   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: normalize the inter-spaces in definition arguments.
+
 2009-04-14   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: give the command name in \&def

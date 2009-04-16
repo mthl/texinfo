@@ -1,0 +1,43 @@
+test_sp.texi(,2) 
+test_sp.texi(,3) @setfilename test_sp.info
+test_sp.texi(,4) 
+test_sp.texi(,5) @node Top
+test_sp.texi(,6) @top Test @@sp
+test_sp.texi(,7) 
+test_sp.texi(,8) Para
+test_sp.texi(,9) @sp 1
+test_sp.texi(,10) other para
+test_sp.texi(,11) Now lone @@sp:
+test_sp.texi(,12) 
+test_sp.texi(,13) @sp 1
+test_sp.texi(,14) 
+test_sp.texi(,15) @sp 2
+test_sp.texi(,16) Para after sp
+test_sp.texi(,17) 
+test_sp.texi(,18) A
+test_sp.texi(,19) @sp 2
+test_sp.texi(,20) B
+test_sp.texi(,21) 
+test_sp.texi(,22) sp after para
+test_sp.texi(,23) @sp 1
+test_sp.texi(,24) 
+test_sp.texi(,25) @example
+test_sp.texi(,26) Para
+test_sp.texi(,27) @sp 1
+test_sp.texi(,28) other para
+test_sp.texi(,29) Now lone @@sp:
+test_sp.texi(,30) 
+test_sp.texi(,31) @sp 1
+test_sp.texi(,32) 
+test_sp.texi(,33) @sp 2
+test_sp.texi(,34) Para after sp
+test_sp.texi(,35) 
+test_sp.texi(,36) A
+test_sp.texi(,37) @sp 2
+test_sp.texi(,38) B
+test_sp.texi(,39) 
+test_sp.texi(,40) sp after para
+test_sp.texi(,41) @sp 1
+test_sp.texi(,42) @end example
+test_sp.texi(,43) 
+test_sp.texi(,44) @bye

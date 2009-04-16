@@ -1,0 +1,53 @@
+kbdinputstyle.texi(,2) 
+kbdinputstyle.texi(,3) @setfilename kbdinputstyle.info
+kbdinputstyle.texi(,4) 
+kbdinputstyle.texi(,5) @node Top
+kbdinputstyle.texi(,6) @top Test kbdinputstyle
+kbdinputstyle.texi(,7) 
+kbdinputstyle.texi(,20) 
+kbdinputstyle.texi(,21) @@kbdinputstyle code
+kbdinputstyle.texi(,22) 
+kbdinputstyle.texi(,23) @kbdinputstyle code
+kbdinputstyle.texi(,24) 
+kbdinputstyle.texi(codekbdmacro,25) @code{in code out of example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,25) @kbd{kbd out of example}.
+kbdinputstyle.texi(codekbdmacro,25) @code{kbd @kbd{in code}}.
+kbdinputstyle.texi(codekbdmacro,25) 
+kbdinputstyle.texi(codekbdmacro,25) in example
+kbdinputstyle.texi(codekbdmacro,25) @example
+kbdinputstyle.texi(codekbdmacro,25) @code{in code in example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,25) @kbd{kbd in example}.
+kbdinputstyle.texi(codekbdmacro,25) @code{kbd @kbd{in code} in example}.
+kbdinputstyle.texi(codekbdmacro,25) @end example
+kbdinputstyle.texi(,26) 
+kbdinputstyle.texi(,27) @@kbdinputstyle example
+kbdinputstyle.texi(,28) 
+kbdinputstyle.texi(,29) @kbdinputstyle example
+kbdinputstyle.texi(,30) 
+kbdinputstyle.texi(codekbdmacro,31) @code{in code out of example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,31) @kbd{kbd out of example}.
+kbdinputstyle.texi(codekbdmacro,31) @code{kbd @kbd{in code}}.
+kbdinputstyle.texi(codekbdmacro,31) 
+kbdinputstyle.texi(codekbdmacro,31) in example
+kbdinputstyle.texi(codekbdmacro,31) @example
+kbdinputstyle.texi(codekbdmacro,31) @code{in code in example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,31) @kbd{kbd in example}.
+kbdinputstyle.texi(codekbdmacro,31) @code{kbd @kbd{in code} in example}.
+kbdinputstyle.texi(codekbdmacro,31) @end example
+kbdinputstyle.texi(,32) 
+kbdinputstyle.texi(,33) @@kbdinputstyle distinct
+kbdinputstyle.texi(,34) 
+kbdinputstyle.texi(,35) @kbdinputstyle distinct
+kbdinputstyle.texi(,36) 
+kbdinputstyle.texi(codekbdmacro,37) @code{in code out of example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,37) @kbd{kbd out of example}.
+kbdinputstyle.texi(codekbdmacro,37) @code{kbd @kbd{in code}}.
+kbdinputstyle.texi(codekbdmacro,37) 
+kbdinputstyle.texi(codekbdmacro,37) in example
+kbdinputstyle.texi(codekbdmacro,37) @example
+kbdinputstyle.texi(codekbdmacro,37) @code{in code in example @code{in nested code}}.
+kbdinputstyle.texi(codekbdmacro,37) @kbd{kbd in example}.
+kbdinputstyle.texi(codekbdmacro,37) @code{kbd @kbd{in code} in example}.
+kbdinputstyle.texi(codekbdmacro,37) @end example
+kbdinputstyle.texi(,38) 
+kbdinputstyle.texi(,39) @bye

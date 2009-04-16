@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.270 2009-04-13 23:06:16 pertusus Exp $
+# $Id: texi2html.pl,v 1.271 2009-04-16 08:37:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -8713,10 +8713,11 @@ sub parse_def($$$;$)
            push @arg_types, 'paramtype';
            $after_type = 1;
         }
-        
+        $spaces = ' ' if ($spaces);
         #$item =~ s/^\{(.*)\}$/$1/ if ($item =~ /^\{/);
         $line .= $spaces . $item;
         push @arguments, $spaces .$item;
+        #push @arguments, $item;
     }
 #print STDERR "PARSE_DEF (style $style, category $category, name $name, type $type, class $class, line $line)\n";
     return ($format, $style, $category, $name, $type, $class, $line, \@arguments, \@arg_types);
@@ -9235,6 +9236,7 @@ sub begin_format($$$$$$)
         my %formatted_arguments = ();
         my @types = @$args_type_array;
         my $arg_nr = 0;
+        my $previous_type;
         foreach my $arg (@$args_array)
         {
             $arg_nr++;
@@ -9244,6 +9246,7 @@ sub begin_format($$$$$$)
             push @formatted_args, substitute_line($arg, "\@$macro (arg $arg_nr)", $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             {
+                #$arguments .=  ' ' if ((!defined($previous_type) or $previous_type ne 'delimiter') and $arguments ne '');
                 $arguments .= $formatted_args[-1];
             }
             else
@@ -9251,6 +9254,7 @@ sub begin_format($$$$$$)
                 $formatted_arguments{$type} = $formatted_args[-1];
             }
 
+            $previous_type = $type;
             #if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             #{
             #    if ($arg =~ /^\s*\@/)
