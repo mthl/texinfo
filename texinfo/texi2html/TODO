@@ -55,6 +55,7 @@ h1 titlefont (@titlefont),
   is not up to date.
   new arguments and return args of index_summary_letter
   new argument of def
+  new argument of def_item
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that

@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.271 2009-04-16 08:37:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.272 2009-04-16 21:57:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -8910,7 +8910,7 @@ sub end_format($$$$$)
     {
         close_stack($text, $stack, $state, $line_nr, 'deff_item')
            unless ($format_ref->{'format'} eq 'deff_item');
-        add_prev($text, $stack, &$Texi2HTML::Config::def_item($format_ref->{'text'}, $format_ref->{'only_inter_commands'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::def_item($format_ref->{'text'}, $format_ref->{'only_inter_commands'}, $format_ref->{'orig_command'}));
         $format_ref = pop @$stack; # pop deff
         ######################################### debug
         if (!defined($format_ref->{'format'}) or !defined($Texi2HTML::Config::def_map{$format_ref->{'format'}}))
@@ -9195,6 +9195,7 @@ sub begin_format($$$$$$)
     if (defined($Texi2HTML::Config::def_map{$macro}))
     {
         my $top_format = top_format($stack);
+        my $orig_command = $macro;
         if (defined($top_format) and ("$top_format->{'format'}x" eq $macro))
         {
           # this is a matching @DEFx command.
@@ -9203,17 +9204,13 @@ sub begin_format($$$$$$)
              pop @{$state->{'command_stack'}};
              $macro =~ s/x$//o;
              my $deff_item = pop @$stack;
-             if ($deff_item->{'text'} !~ /s^\*$/)
-             {
-                  add_prev($text, $stack, 
-                      &$Texi2HTML::Config::def_item($deff_item->{'text'}, $deff_item->{'only_inter_commands'}));
-             }
+             add_prev($text, $stack, 
+                &$Texi2HTML::Config::def_item($deff_item->{'text'}, $deff_item->{'only_inter_commands'}, $deff_item->{'orig_command'}));
              #print STDERR "DEFx $macro\n";
         }
         else
         {
              # a new @def.
-             my $orig_command = $macro;
              $macro =~ s/x$//o;
              # we remove what is on the stack and put it back,
              # to make sure that it is the form without x.
@@ -9285,9 +9282,9 @@ sub begin_format($$$$$$)
         my $class_category = &$Texi2HTML::Config::definition_category($category, $class, $style, $command);
         my $class_name = &$Texi2HTML::Config::definition_index_entry($name, $class, $style, $command);
         my ($index_entry, $formatted_index_entry, $index_label) = do_index_entry_label($macro, $state, $line_nr, $class_name_texi, $line);
-        add_prev($text, $stack, &$Texi2HTML::Config::def_line($class_category, $name, $type, $arguments, $index_label, \@formatted_args, $args_type_array, $args_array, $command, $class_name, $category, $class, $style, $macro));
+        add_prev($text, $stack, &$Texi2HTML::Config::def_line($class_category, $name, $type, $arguments, $index_label, \@formatted_args, $args_type_array, $args_array, $command, $class_name, $category, $class, $style, $orig_command));
         $line = '';
-        push @$stack, { 'format' => 'deff_item', 'text' => '', 'only_inter_commands' => 1, 'format_ref' => $top_format};
+        push @$stack, { 'format' => 'deff_item', 'text' => '', 'only_inter_commands' => 1, 'format_ref' => $top_format, 'orig_command' => $orig_command};
         begin_paragraph_after_command($state, $stack, $macro, $line);
     }
     elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
