@@ -184,7 +184,7 @@ foreach my $format (@info_default_normal_formats, 'group')
 }
 
 my %info_default_indented_commands;
-foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'deff_item')
+foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -1028,7 +1028,8 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $inden
                   {
                      $text_added .= "\n";
                   }
-                  $indent_level++;
+                  # there is no close if !$content->{'content'}
+                  $indent_level++ if ($content->{'content'});
               }
           }
 
@@ -1393,7 +1394,7 @@ sub info_default_begin_format_texi($$$)
    my $command = shift;
    my $line = shift;
    my $state = shift;
-   info_default_open_command($state,$command);
+   info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/);
    return $line;
 }
 
@@ -2313,6 +2314,7 @@ sub info_default_index_entry($$$$$$$$)
     my $entry_element_target = shift;
     my $index_entry_ref = shift;
 
+    return '' if ($index_entry_ref->{'hidden'});
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
 
     my $result = "* $entry: ";
@@ -2593,12 +2595,16 @@ sub info_default_table_list($$$$$$$$$)
     return info_default_close_command(undef, $format_command, undef, undef, undef, {'columns_size' => $columnsize});
 }
 
-sub info_default_def_item($$)
+sub info_default_def_item($$$)
 {
     my $text = shift;
     my $only_inter_item_commands = shift;
+    my $command = shift;
 
-    return info_default_close_command(undef, 'deff_item');
+    my $format = 'deff_item';
+    $format = 'deff_itemx' if ($command =~ /x$/);
+ print STDERR "LLLLLLLLLLLLLL $format $command\n";
+    return info_default_close_command(undef, $format);
 }
 
 sub info_default_def_line($$$$$$$$$$$$$$$$)
@@ -2631,13 +2637,16 @@ sub info_default_def_line($$$$$$$$$$$$$$$$)
    my $state = $Texi2HTML::THISDOC{'state'};
 #   if ($command =~ /x$/)
 #   {
-    info_default_store_text($state,$result,$command);
+    info_default_store_text($state,$result,"${command}_line");
 #   }
 #   else
 #   {
 #      return info_default_open_command($state, $command, {'begin'=>$result});
 #   }
-    return info_default_open_command($state, 'deff_item');
+    my $format = 'deff_item';
+    $format = 'deff_itemx' if ($original_command =~ /x$/);
+    print STDERR "JJJJJJJJJJJJJ $command GGG $original_command $format\n";
+    return info_default_open_command($state, $format);
 }
 
 sub info_default_def($$)
