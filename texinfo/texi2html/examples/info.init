@@ -377,7 +377,7 @@ my $info_default_max_column = 72;
 
 # Beware that there is a pending word if the text doesn't end with
 # a space
-sub info_default_process_text($$$$$$$)
+sub info_default_process_text($$$$$$$;$)
 {
    my $text = shift;
    my $line_char_counter = shift;
@@ -386,6 +386,10 @@ sub info_default_process_text($$$$$$$)
    my $indent_length = shift;
    my $in_para = shift;
    my $max_column = shift;
+# indentation for the lines except for the first one
+   my $indent_length_next = shift;
+
+   $indent_length_next = $indent_length if (!defined($indent_length_next));
 
    $indent_length = 0 if (!defined($indent_length));
    
@@ -419,20 +423,40 @@ $pending_word_text = $pending_word  if (defined($pending_word));
       if ($text =~ s/^(\s+)//)
       {
           my $new_spaces = $1;
+          # in general there are no end of lines in the lines cut. However, it
+          # may happen with @* in @def* lines
+          my @lines = split /^/, $new_spaces;
+          my $eol_spaces;
+          if (@lines > 1)
+          {
+              $new_spaces = pop @lines;
+              $eol_spaces = join (@lines,"\n");
+print STDERR "EOL_SPACES[$line_char_counter](+$pending_spaces) `$eol_spaces'\n";
+          }
           if (defined($pending_word))
           {
              if ($indent_length > $line_char_counter + length($pending_spaces))
              {
-                 $pending_spaces .= ' ' x ($indent_length - $line_char_counter) . $pending_spaces;
+                 $pending_spaces = ' ' x ($indent_length - $line_char_counter) . $pending_spaces;
              }
              $result .= $pending_spaces . $pending_word;
              $line_char_counter += length($pending_spaces)+length($pending_word);
              $pending_spaces = $new_spaces;
              $pending_word = undef;
          }
-         else
+         elsif (!$eol_spaces)
          {
              $pending_spaces .= $new_spaces;
+         }
+         if ($eol_spaces)
+         {
+             #$result .= $pending_spaces . $eol_spaces;
+             $result .= $eol_spaces;
+             $line_passed += scalar(@lines);
+             $indent_length = $indent_length_next;
+             $line_char_counter = 0;
+             #$pending_spaces = $new_spaces;
+             $pending_spaces = '';
          }
          if (length($pending_spaces) +  $line_char_counter > $max_column)
          {
@@ -446,6 +470,7 @@ $pending_word_text = $pending_word  if (defined($pending_word));
              }
              $result .= "\n";
              $line_passed++;
+             $indent_length = $indent_length_next;
              $line_char_counter = 0;
          }
       }
@@ -462,6 +487,7 @@ $pending_word_text = $pending_word  if (defined($pending_word));
              $pending_spaces = '';
              $result .= "\n";
              $line_passed++;
+             $indent_length = $indent_length_next;
              $line_char_counter = 0;
          }
       }
@@ -653,7 +679,8 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               {
                   $indent_level--;
                   $text_added = $content->{'end'} if defined($content->{'end'});
-                  if ($indent_level > 0 and !$info_state->{'blank_line'})
+                  #if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} ne 'deff_itemx')
+                  if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/)
                   {
                      $text_added .= "\n";
                   }
@@ -914,7 +941,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               }
               elsif ($content->{'command'} eq 'preformatted')
               {
-                  $preformatted++;
+                  $preformatted++ if ($content->{'content'});
               }
               elsif ($content->{'command'} eq 'exdent')
               {
@@ -944,6 +971,19 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               elsif ($content->{'command'} eq 'image' or $content->{'command'} eq 'sp')
               {
                   $text_added .= $content->{'text'};
+                  goto new_text;
+              }
+              elsif ($content->{'definition_line'})
+              {
+                  
+                  my $dummy_line_passed;
+print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$pending_word,$indent_length,$in_para,$max_column): $content->{'text'}";
+                  ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($content->{'text'}, $line_char_counter, $pending_spaces, $pending_word, $indent_length, 1, $max_column, $indent_length+2*$info_default_indent_length);
+                  $text_added .= $pending_spaces;
+                  $pending_spaces = '';
+                  print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$pending_word) -> $text_added";
+                  $indentation_done = 1;
+                  
                   goto new_text;
               }
               elsif (($content->{'command'} eq 'item' or $content->{'command'} eq 'itemx') and exists $format_map{$content->{'format'}})
@@ -1024,7 +1064,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $inden
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
-                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
+                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0)  and $content->{'command'} !~ /^deff_item/)
                   {
                      $text_added .= "\n";
                   }
@@ -1063,7 +1103,9 @@ print STDERR "IN_PREFORMATTED or ALIGN text\n";
                   my $chomped_text = $content->{'text'};
                   if ($chomped_text !~ /\S/ and chomp($chomped_text) and !$item_pending)
                   {
-                      if ($in_table_item and $info_state->{'only_spaces'})
+                      my $directly_in_deff_item = 0;
+                      $directly_in_deff_item = 1 if (defined($content->{'parent'}) and defined($content->{'parent'}->{'command'}) and $content->{'parent'}->{'command'} =~ /^deff_item/);
+                      if (($in_table_item or $directly_in_deff_item) and $info_state->{'only_spaces'})
                       {
                           # in a blank_line
 print STDERR "IN_ITEM ignored: `$content->{'text'}'\n";
@@ -2629,6 +2671,7 @@ sub info_default_def_line($$$$$$$$$$$$$$$$)
    $arguments = '' if (!defined($arguments) or $arguments =~ /^\s*$/);
 
    my $type_name = '';
+   $type_name .= "$type " if ($type ne '');
    $type_name .= $name if ($name ne '');
 
    my $result = " -- $category_prepared: ${type_name}$arguments";
@@ -2637,7 +2680,7 @@ sub info_default_def_line($$$$$$$$$$$$$$$$)
    my $state = $Texi2HTML::THISDOC{'state'};
 #   if ($command =~ /x$/)
 #   {
-    info_default_store_text($state,$result,"${command}_line");
+    info_default_store_text($state,$result,"${command}_line",{'definition_line' => 1});
 #   }
 #   else
 #   {
