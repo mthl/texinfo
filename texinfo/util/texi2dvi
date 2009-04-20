@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.151 2009-04-15 15:26:15 akim Exp $
+# $Id: texi2dvi,v 1.152 2009-04-20 21:35:45 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.151 $'
+rcs_revision='$Revision: 1.152 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -933,7 +933,7 @@ run_tex ()
 	  *latex) tex=tex;; # don't bother trying to find etex
 	       *) tex=$TEX
 	esac;;
-    texinfo:pdf) tex=$PDFTEX;;
+    texinfo:*:pdf) tex=$PDFTEX;;
 
     *) error 1 "$out_lang not supported for $in_lang";;
   esac

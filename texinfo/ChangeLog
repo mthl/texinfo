@@ -1,12 +1,16 @@
+2009-04-20  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (run_tex): pdf output for texinfo is supported.
+
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: use texindy if available.
-	* bin/texi2dvi (run_index): Use texindy if available.
+	* util/texi2dvi (run_index): Use texindy if available.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: initial support for tex4ht.
-	* bin/texi2dvi ($latex2html, --tex4ht, run_tex4ht, destdir): New.
+	* util/texi2dvi ($latex2html, --tex4ht, run_tex4ht, destdir): New.
 	(run_tex): Accept an HTML output.
 	(run_tex_suite): Call run_tex4ht.
 	Install the output if needed.
@@ -18,17 +22,17 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: make $expand a regular Boolean variable.
-	* bin/texi2dvi ($expand): Use true/false instead of t/''.
+	* util/texi2dvi ($expand): Use true/false instead of t/''.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: fix comments.
-	* bin/texi2dvi: here.
+	* util/texi2dvi: here.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: simplify move_to_dest.
-	* bin/texi2dvi (move_to_dest): Exit immediately if there is
+	* util/texi2dvi (move_to_dest): Exit immediately if there is
 	nothing to do.
 	This allows to simplify the body of the loop, as we no longer have
 	to check whether something has to be done.
@@ -38,23 +42,23 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: avoid creating invisible temporary files.
-	* bin/texi2dvi ($t2ddir): Strip leading `./'.
+	* util/texi2dvi ($t2ddir): Strip leading `./'.
 	Call sed once.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: complete --help.
-	* bin/texi2dvi (usage): Document --html.
+	* util/texi2dvi (usage): Document --html.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: fix error invocations.
-	* bin/texi2dvi: error already reports $0, don't do it again.
+	* util/texi2dvi: error already reports $0, don't do it again.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: simplify the handling of --no-line-error.
-	* bin/texi2dvi (no_line_error): Remove, rather use
+	* util/texi2dvi (no_line_error): Remove, rather use
 	line_error=false.
 	(run_tex): Adjust.
 	By the way, don't call tex --help if !$line_error.
@@ -62,11 +66,11 @@
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
 	texi2dvi: be robust to a failing latex --help.
-	* bin/texi2dvi (run_tex): here.
+	* util/texi2dvi (run_tex): here.
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
-	* bin/texi2dvi (out_lang_set): New.
+	* util/texi2dvi (out_lang_set): New.
 	Use it.
 	(usage): Document --html, --info, --text, --ps, DVIPS and DVIPDF.
 	(run_tex_suite): Honor DVIPS.
@@ -75,7 +79,7 @@
 
 2009-04-15  Akim Demaille  <akim@epita.fr>
 
-	* bin/texi2dvi (ensure_dir): Die only if we could not create the
+	* util/texi2dvi (ensure_dir): Die only if we could not create the
 	directory at all.
 
 2009-04-12  Karl Berry  <karl@gnu.org>
@@ -1098,7 +1102,7 @@
 2008-02-28  Akim Demaille  <akim@epita.fr>
 
 	Let texi2dvi keep the trailing //.
-	* bin/texi2dvi ($space, $tab): New.
+	* util/texi2dvi ($space, $tab): New.
 	($IFS): Use them to be robust to zealous white space cleanups.
 	(absolute): Preserve the trailing slashes.
 	(tex_envvars): Add MPINPUTS, MFINPUTS, and TFMFONTS.
