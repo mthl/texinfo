@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.273 2009-04-23 10:13:08 pertusus Exp $
+# $Id: texi2html.pl,v 1.274 2009-04-23 21:19:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -556,6 +556,8 @@ $def_always_delimiters
 $def_in_type_delimiters
 $def_argument_separator_delimiters
 %colon_command_punctuation_characters
+$punctuation_characters
+$after_punctuation_characters
 @command_handler_init
 @command_handler_process
 @command_handler_finish
