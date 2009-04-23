@@ -44,6 +44,7 @@ $MENU_SYMBOL = '*';
 $USE_MENU_DIRECTIONS = 0;
 $USE_ISO = 0;
 @IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
+$CAPTION_STYLE = 'asis';
 
 $no_paragraph_commands{'anchor'} = 1;
 
@@ -189,6 +190,12 @@ foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats
     $info_default_indented_commands{$command} = 1;
 }
 
+my %info_default_format;
+foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'menu', 'flushright', 'flushleft', 'center')
+{
+    $info_default_format{$command} = 1;
+}
+
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
@@ -250,6 +257,10 @@ $table_list         = \&info_default_table_list;
 $def_item           = \&info_default_def_item;
 $def                = \&info_default_def;
 $def_line           = \&info_default_def_line;
+$float              = \&info_default_float;
+$listoffloats_entry = \&info_default_listoffloats_entry;
+$listoffloats       = \&info_default_listoffloats;
+$colon_command      = \&info_default_colon_command;
 
 
 sub info_default_accent($$$)
@@ -430,7 +441,7 @@ $pending_word_text = $pending_word  if (defined($pending_word));
           if (@lines > 1)
           {
               $new_spaces = pop @lines;
-              $eol_spaces = join (@lines,"\n");
+              $eol_spaces = join ("", @lines);
 print STDERR "EOL_SPACES[$line_char_counter](+$pending_spaces) `$eol_spaces'\n";
           }
           if (defined($pending_word))
@@ -639,7 +650,7 @@ sub info_default_process_content($$)
 my $text_item_pending = '';
 $text_item_pending = $item_pending if (defined($item_pending));
 my $text_length = '';
-$text_length = "[$content->{'length'}]$content->{'text'}" if defined($content->{'length'});
+$text_length = "$content->{'text'}" if defined($content->{'text'});
 my $text_command = '';
 $text_command = $content->{'command'} if defined($content->{'command'});
 my $in_node_count = 0;
@@ -710,6 +721,10 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               elsif ($content->{'command'} eq 'menu')
               {
                   $text_added = "\n" unless ($info_state->{'blank_line'});
+              }
+              elsif ($content->{'command'} eq 'float')
+              {
+                  $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
               }
               elsif ($paragraph_style{$content->{'command'}})
               {
@@ -865,7 +880,7 @@ print STDERR "ROW close: new line count: $anchor_and_index->{'line_nr'} + \n";
       else
       {
           if ($content->{'command'})
-          { 
+          {
               my $pending_added_length = 0;
               if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp')
               {
@@ -882,7 +897,7 @@ print STDERR "ROW close: new line count: $anchor_and_index->{'line_nr'} + \n";
                       $text_added .= $pending;
                   }
               }
-              if ($content->{'command'} eq 'anchor')
+              if ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
               {
 print STDERR "anchor: offset_in_file $info_state->{'offset_in_file'}, line_count $info_state->{'line_count'}, line_char_counter $line_char_counter pending_added_length $pending_added_length\n";
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_length;
@@ -990,26 +1005,28 @@ print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$pending_word,$
               {
                   $item_pending = $content->{'format'};
                   #if (!$info_state->{'blank_line'} and $content->{'command'} eq 'item')
-                  my $first_table_item = 0;
+                  my $first_item = 0;
+                  
+                  if ($content->{'command'} eq 'item')
+                  {
+                      if (!defined($content->{'parent'}->{'item_nr'}))
+                      {
+                          $content->{'parent'}->{'item_nr'} = 1;
+                          $first_item = 1;
+                      }
+                      else
+                      {
+                          $content->{'parent'}->{'item_nr'}++;
+                      }
+                  }
+
                   if ($item_pending =~ /table$/)
                   {
                       $table_item_line = 1;
                       $in_table_item = 0;
-                      if ($content->{'command'} eq 'item')
-                      {
-                          if (!defined($content->{'parent'}->{'item_nr'}))
-                          {
-                              $content->{'parent'}->{'item_nr'} = 1;
-                              $first_table_item = 1;
-                          }
-                          else
-                          {
-                              $content->{'parent'}->{'item_nr'}++;
-                          }
-                      }
-print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $indent_level $content->{'parent'}->{'command'}\n";
+print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_level $content->{'parent'}->{'command'}\n";
                   }
-                  if (!$info_state->{'blank_line'} and ($content->{'command'} ne 'itemx') and (!$first_table_item or $indent_level != 1))
+                  if (!$info_state->{'blank_line'} and ($content->{'command'} ne 'itemx') and (!$first_item or $indent_level != 1))
                   {
                       $text_added = "\n" . $text_added;
                       $item_line_added = 1;
@@ -1019,7 +1036,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $inden
                   # still be active after the additional blank line
                   $table_item_line = 1+$item_line_added if ($item_pending =~ /table$/);
               }
-              elsif ($content->{'command'} eq 'menu')
+              elsif ($content->{'command'} eq 'menu' or $content->{'command'} eq 'listoffloats')
               {
                   $text_added = "\n" unless ($info_state->{'blank_line'});
               }
@@ -1078,7 +1095,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_table_item or $inden
               $text_added .= $content->{'begin'};
           }
 
-          if ($content->{'length'})
+          elsif (defined($content->{'text'}))
           {
               if ($in_para and !$in_exdent)
               {
@@ -1307,14 +1324,7 @@ print STDERR "NEW state $state_nr\n";
       @{$info_default_state_map{$state}->{'align_stack'}} = ({'command'=>'normal'});
       $state_nr++;
    }
-my $text_inside = 0;
-$text_inside = $state->{'inside_document'} if (defined($state->{'inside_document'}));
-my $text_outside = 0;
-$text_outside = $state->{'outside_document'} if (defined($state->{'outside_document'}));
-my $text_duplicate = 0;
-$text_duplicate = 0;
-$text_duplicate =  $state->{'duplicated'} if (defined($state->{'duplicated'}));
-print STDERR "RETURN state $state $info_default_state_map{$state} $text_inside $text_outside $text_duplicate $info_default_state_map{$state}->{'nr'}\n";
+print STDERR "RETURN state $state $info_default_state_map{$state} $info_default_state_map{$state}->{'nr'}\n";
    return $info_default_state_map{$state};
 }
 
@@ -1346,14 +1356,13 @@ sub info_default_open_command($$;$)
 #     Data::Dumper->Dump([$info_state->{'top'}]);
 }
 
-sub info_default_close_command($$;$$$$)
+sub info_default_close_command($$;$$$)
 {
    my $state = shift;
    my $command = shift;
    my $begin = shift;
-   my $text = shift;
    my $end = shift;
-   my $additional_entries = shift;
+   my $command_entries = shift;
 
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
@@ -1374,15 +1383,12 @@ sub info_default_close_command($$;$$$$)
    }
 #     Data::Dumper->Dump([$info_state->{'top'}]);
    #return if $no_close;
-   $info_state->{'current'}->{'begin'} = $begin;
-   $info_state->{'current'}->{'text'} = $text;
-   $info_state->{'current'}->{'end'} = $end;
-   if (defined($additional_entries))
+   $command_entries->{'begin'} = $begin;
+   $command_entries->{'end'} = $end;
+   foreach my $key (keys(%$command_entries))
    {
-       foreach my $key (keys(%$additional_entries))
-       {
-           $info_state->{'current'}->{$key} = $additional_entries->{$key};
-       }
+      $info_state->{'current'}->{$key} = $command_entries->{$key} 
+           if (defined($command_entries->{$key}));
    }
 
    $info_state->{'current'} = $info_state->{'current'}->{'parent'};
@@ -1398,34 +1404,21 @@ sub info_default_store_text($$;$$)
    my $state = shift;
    my $text = shift;
    my $command = shift;
-   my $additional_entries = shift;
-#   $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
+   my $text_entries = shift;
 
+   $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
-   my $len = length($text);
-   # When state is 'outside_document' it means that we are outputting some
-   # text as part of special regions but not inside the document.
-   # when state is duplicated, it may mean that we risk storing some
-   # output that is not directly outputted to the document, for example
-   # node names.
-   # however in some cases the state is duplicated, but we want to store
-   # the text. In that case the command is used.
-#   return 0 if (!(defined($command) and $command eq 'menu_entry') and ((!$state->{'inside_document'} and !$state->{'outside_document'}) or ($state->{'duplicated'} and $state->{'inside_document'})));
-   return '' if ($len == 0 and !defined($command));
+   return '' if ((!defined($text) or $text eq '') and !defined($command));
+
    my $command_text = '';
    $command_text = "\[$command\]" if (defined($command));
-   print STDERR "Storing text${command_text}($len) $text\n";
-   my $text_stored = {'text' => $text, 'length' => $len};
-   $text_stored->{'command'} = $command if (defined($command));
-   $text_stored->{'parent'} = $info_state->{'current'};
-   if (defined($additional_entries))
-   {
-       foreach my $key (keys(%$additional_entries))
-       {
-           $text_stored->{$key} = $additional_entries->{$key};
-       }
-   }
-   push @{$info_state->{'current'}->{'content'}}, $text_stored;
+   $command_text .= $text if (defined($text));
+   print STDERR "Storing text${command_text} $text\n";
+
+   $text_entries->{'text'} = $text if (defined($text));
+   $text_entries->{'command'} = $command if (defined($command));
+   $text_entries->{'parent'} = $info_state->{'current'};
+   push @{$info_state->{'current'}->{'content'}}, $text_entries;
    return info_default_output($info_state)
      if (!defined($info_state->{'current'}->{'command'}));
    return '';
@@ -1436,6 +1429,15 @@ sub info_default_begin_format_texi($$$)
    my $command = shift;
    my $line = shift;
    my $state = shift;
+
+   my $info_state = info_default_get_state ($state);
+   my ($parent_format, $in_format);
+   ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
+   $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+
+   $parent_format->{'paragraph_in_element_nr'} = 0 if (!defined($parent_format->{'paragraph_in_element_nr'}));
+   $parent_format->{'paragraph_in_element_nr'}++;
+
    info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/);
    return $line;
 }
@@ -1513,8 +1515,10 @@ sub info_default_style($$$$$$$$$)
    my $begin = '';
    my $end = '';
 
+   # note that the $text is always discarded for closed commands
+
    # the formatting is done right here, without information on the current
-   # state, and theresult is entered as text below.
+   # state, and the result is entered as text below.
    if ($info_default_leaf_command{$command})
    {
       my $style_index = 0;
@@ -1552,14 +1556,17 @@ sub info_default_style($$$$$$$$$)
    }
    unless($special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
    {
-      return info_default_close_command($state, $command, $begin, $text, $end);
+      return info_default_close_command($state, $command, $begin, $end);
    }
-   # this is for *ref, images and footnotes
+   # this is for *ref, images and footnotes text registering and putting
+   # in the tree.
+   # anchor is already in the tree, from anchor_label.
    if (($special_style{$command} or $info_default_leaf_command{$command}) and $command ne 'anchor')
    {
        return info_default_store_text ($state, $begin.$text.$end, $command);
    }
-   
+   # we go here for cmd_line, and also for accents, hyphenation and anchor
+   # (though the result for anchor is always an empty string).
    return $begin.$text.$end;
 }
 
@@ -1585,6 +1592,24 @@ sub info_default_print_page_head($)
     print $fh $result;
 }
 
+sub info_default_parent_format($)
+{
+    my $parent_format = shift;
+    my $in_format = 0;
+    while (1)
+    {
+print STDERR "GGGGGGGGGGG $parent_format->{'command'}\n";
+        if (defined($parent_format->{'command'}) and $info_default_format{$parent_format->{'command'}})
+        {
+            $in_format = 1;
+            last;
+        }
+        last if (!defined($parent_format->{'parent'}));
+        $parent_format = $parent_format->{'parent'};
+    }
+    return ($parent_format, $in_format);
+}
+
 sub info_default_paragraph($$$$$$$$$$$$)
 {
     my $text = shift;
@@ -1605,12 +1630,16 @@ sub info_default_paragraph($$$$$$$$$$$$)
 
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
-    $info_state->{'paragraph_in_element_nr'}++;
-    if (defined($command_stack_at_begin->[0]) and $command_stack_at_begin->[0] eq 'footnote' and $info_state->{'paragraph_in_element_nr'} <= 1)
-    {
-        
-    }
-    return info_default_close_command(undef, 'paragraph', '', undef, undef, {'paragraph_in_element_nr' => ($info_state->{'paragraph_in_element_nr'} -1), 'top_stack' => $top_stack});
+    my ($parent_format, $in_format);
+    ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'}->{'parent'});
+    $parent_format->{'paragraph_in_format_nr'} = 0 if (!defined($parent_format->{'paragraph_in_format_nr'}));
+    $parent_format->{'paragraph_in_format_nr'}++;
+
+    $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+    my $additional_args = {'top_stack' => $top_stack, 'parent_format' => $parent_format};
+    $additional_args->{'paragraph_in_element_nr'} = ($info_state->{'paragraph_in_element_nr'} - 1) if (!$in_format);
+    
+    return info_default_close_command(undef, 'paragraph', undef, undef, $additional_args);
 }
 
 # currently not used, but could be used if info_default_preformatted
@@ -1640,15 +1669,6 @@ sub info_default_preformatted($$$$$$$$$$$$)
     my $command_stack_at_end = shift;
     my $command_stack_at_begin = shift;
 
-#    if (defined($preformatted_number) and defined($$preformatted_number))
-#    {
-#        $$preformatted_number++;
-#    }
-    # a paragraph after a preformatted is indented. So looks like 
-    # preformatted count as paragraphs.
-    my $state = $Texi2HTML::THISDOC{'state'};
-    my $info_state = info_default_get_state ($state);
-    $info_state->{'paragraph_in_element_nr'}++;
     return info_default_close_command(undef, 'preformatted');
 } 
 
@@ -1834,16 +1854,8 @@ sub info_default_anchor_label($$$)
     my $id = shift;
     my $anchor_text = shift;
     my $anchor_reference = shift;
-    # give it as an argument?
-    my $state = $Texi2HTML::THISDOC{'state'};
-    my $info_state = info_default_get_state($state);
-    #return if (!$state->{'inside_document'} and !$state->{'outside_document'});
     print STDERR "Storing anchor $anchor_reference->{'text'}\n";
-    my $anchor_stored = {'command' => 'anchor', 'anchor_reference' => $anchor_reference};
-    push @{$info_state->{'current'}->{'content'}}, $anchor_stored;
-   return info_default_output($info_state)
-     if (!defined($info_state->{'current'}->{'command'}));
-   return '';
+   return info_default_store_text(undef,undef,'anchor',{'anchor_reference' => $anchor_reference});
 }
 
 sub info_default_acronym_like($$$$$$)
@@ -1880,7 +1892,7 @@ sub info_default_print_page_foot($)
    {
       my $prefix;
       $prefix = 'Node' if ($element->{'node'});
-      $prefix = 'Ref' if ($element->{'anchor'});
+      $prefix = 'Ref' if ($element->{'anchor'} or $element->{'float'});
       print $fh "$prefix: $element->{'text'}\x{7F}$element->{'info_offset'}\n";
    }
    print $fh "\x{1F}\nEnd Tag Table\n";
@@ -2007,6 +2019,7 @@ sub info_default_begin_special_region($$$)
     my $state = shift;
     my $lines = shift;
     my $info_state = info_default_get_state ($state);
+    # reset paragraph_in_element_nr if out ofdocument formatting
     if ($state->{'outside_document'})
     {
         $info_state->{'paragraph_in_element_nr'} = 0;
@@ -2043,11 +2056,7 @@ sub info_default_menu_link($$$$$$$$)
     $title = '' unless ($has_title);
     $title .= ':' if ($title ne '');
     my $result = "$MENU_SYMBOL$title$node$ending";
-#print STDERR "$result return 0 if ((!$state->{'inside_document'} and !$state->{'outside_document'}) or ($state->{'duplicated'} and $state->{'inside_document'}))\n";
     return info_default_store_text($state,$result,'menu_entry');
-#    return '' if info_default_store_text($state,$result,'menu_entry');
-#    #print STDERR "GGGGGGGGGG ${ending} GGGGGGG $result\n";
-#    return $result;
 }
 
 # not used, menu is a normal preformatted command
@@ -2070,7 +2079,7 @@ sub info_default_complex_format($$)
         $begin = "* Menu:\n\n";
         $end = "\n";
     }
-    return info_default_close_command(undef, $name, $begin, undef, $end);
+    return info_default_close_command(undef, $name, $begin, $end);
 }
 
 sub info_default_quotation($$$$)
@@ -2113,7 +2122,7 @@ sub info_default_external_ref($$$$$$$$)
     return info_default_normal_reference($type, $formatted_args);
 }
 
-sub info_default_internal_ref($$$$$$$)
+sub info_default_internal_ref($$$$$$$$)
 {
     my $type = shift;
     my $href = shift;
@@ -2122,7 +2131,9 @@ sub info_default_internal_ref($$$$$$$)
     my $is_section = shift;
     my $args_texi = shift;
     my $formatted_args = shift;
+    my $element = shift;
 
+    $formatted_args->[1] = $name if ($element->{'float'} and (!defined($formatted_args->[1]) or $formatted_args->[1] eq ''));
     return info_default_inforef($formatted_args) if ($type eq 'inforef');
     return info_default_normal_reference($type, $formatted_args);
 }
@@ -2334,7 +2345,6 @@ sub info_default_index_entry_label($$$$$$$$)
 
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state($state);
-    #return if (!$state->{'inside_document'} and !$state->{'outside_document'});
     print STDERR "Storing index entry $formatted_entry\n";
     my $index_entry_stored = {'command' => 'index_label', 'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'index_name' => $index_name};
     push @{$info_state->{'current'}->{'content'}}, $index_entry_stored;
@@ -2523,7 +2533,7 @@ sub info_default_format($$$)
         $element = $1;
         $element_end = $2;
     }
-    return info_default_close_command(undef, $tag, $element, undef, $element_end);
+    return info_default_close_command(undef, $tag, $element, $element_end);
 }
 
 sub info_default_tab_item_texi($$$$$$)
@@ -2558,8 +2568,7 @@ sub info_default_sp($$)
    my $number = shift;
    my $preformatted = shift;
    my $result = "\n" x $number;
-   my $state = $Texi2HTML::THISDOC{'state'};
-   return info_default_store_text($state,$result,'sp');
+   return info_default_store_text(undef,$result,'sp');
 }
 
 sub info_default_paragraph_style_command($$)
@@ -2580,7 +2589,7 @@ sub info_default_row($$$$$$$$)
     my $only_inter_item_commands = shift;
     my $before_items = shift;
 
-    return info_default_close_command(undef, 'multitable_row', undef, undef, undef, {'item_command' => $macro});
+    return info_default_close_command(undef, 'multitable_row', undef, undef, {'item_command' => $macro});
 }
 
 sub info_default_cell($$$$$$$$)
@@ -2634,7 +2643,7 @@ sub info_default_table_list($$$$$$$$$)
        print STDERR "Empty multitable?\n";
     }
 
-    return info_default_close_command(undef, $format_command, undef, undef, undef, {'columns_size' => $columnsize});
+    return info_default_close_command(undef, $format_command, undef, undef, {'columns_size' => $columnsize});
 }
 
 sub info_default_def_item($$$)
@@ -2680,7 +2689,7 @@ sub info_default_def_line($$$$$$$$$$$$$$$$)
    my $state = $Texi2HTML::THISDOC{'state'};
 #   if ($command =~ /x$/)
 #   {
-    info_default_store_text($state,$result,"${command}_line",{'definition_line' => 1});
+    info_default_store_text(undef,$result,"${command}_line",{'definition_line' => 1});
 #   }
 #   else
 #   {
@@ -2697,6 +2706,110 @@ sub info_default_def($$)
     my $text = shift;
     my $command = shift;
     return info_default_close_command(undef, $command);
+}
+
+sub info_default_float($$$$$)
+{
+    my $text = shift;
+    my $float = shift;
+    my $caption = shift;
+    my $shortcaption = shift;
+
+    my $additional_arguments;
+    if (exists($float->{'id'}))
+    {
+        $additional_arguments->{'anchor_reference'} = $float;
+    }
+    my $caption_text = '';
+
+    if (defined($float->{'caption_texi'}))
+    {
+        $caption_text = $caption;
+    }
+    elsif (defined($float->{'shortcaption_texi'}))
+    {
+        $caption_text = $shortcaption;
+    }
+    elsif (defined($caption))
+    {
+        $caption_text = $caption;
+    }
+
+    #return $caption_text;
+    return info_default_close_command(undef, 'float', undef, $caption_text, $additional_arguments);
+}
+
+my $info_default_listoffloat_caption_entry_length = 41;
+my $info_default_listoffloat_append = '...:    ';
+sub  info_default_listoffloats_entry($$$$)
+{
+    my $style_texi = shift;
+    my $float = shift;
+    my $float_style = shift;
+    my $caption = shift;
+    my $href = shift;
+
+    my @lines = split /^/, $caption;
+    $caption = $lines[0];
+    chomp ($caption);
+
+    my $result = '';
+    $caption .= ':' if ($caption ne '');
+    my $caption_entry = "* $float_style: $caption";
+    my $length = 0;
+    while ($caption_entry =~ s/^(\S+\s*)//)
+    {
+print STDERR "CAPTION_ENTRY($length) $caption_entry\n";
+       my $new_word = $1;
+       if (length($new_word) + $length > ($info_default_listoffloat_caption_entry_length - 3) or (length($new_word) + $length + length($info_default_listoffloat_append) >  $info_default_listoffloat_caption_entry_length and $caption_entry ne ''))
+       {
+           $result .= $info_default_listoffloat_append;
+           last;
+       }
+       else
+       {
+           $result .= $new_word;
+           $length += length($new_word);
+       }
+    }
+print STDERR "RESULT `$result'\n";
+    $result .= ' ' x ($info_default_listoffloat_caption_entry_length - length($result));
+print STDERR "RESULT `$result'\n";
+    
+    return "${result}$float->{'text'}.\n";
+}
+
+sub info_default_listoffloats($$$)
+{
+   my $style_texi = shift;
+   my $style = shift;
+   my $float_entries = shift;
+
+   my $state = $Texi2HTML::THISDOC{'state'};
+   my $info_state = info_default_get_state ($state);
+   my $result = "* Menu:\n\n";
+   foreach my $float_entry (@$float_entries)
+   {
+       $result .= $float_entry;
+   }
+   my ($parent_format, $in_format);
+   ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
+#print STDERR "JJJJJJJJJJj listoffloats not in top\n" if ($in_format);
+   $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+   return info_default_store_text($state,$result,'listoffloats');
+}
+
+sub info_default_colon_command($)
+{
+   my $punctuation_character = shift;
+   if (defined($colon_command_punctuation_characters{$punctuation_character}))
+   {
+      return info_default_store_text(undef,$colon_command_punctuation_characters{$punctuation_character}, ':');
+   }
+   else
+   {
+      return info_default_store_text(undef,$punctuation_character);;
+   }
 }
 
 
