@@ -684,197 +684,189 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
           # if ending a paragraph, go straight to the text addition 
           # without processing of the end of lines. Same if ending a 
           # quotation or an @example
-          if (defined($content->{'command'}))
+          if ($info_default_indented_commands{$content->{'command'}})
           {
-              if ($info_default_indented_commands{$content->{'command'}})
+              $indent_level--;
+              if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/)
               {
-                  $indent_level--;
-                  $text_added = $content->{'end'} if defined($content->{'end'});
-                  #if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} ne 'deff_itemx')
-                  if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/)
+                 $text_added .= "\n";
+              }
+              # this nullify a potential noindent in a random format
+              $info_state->{'indent_para'} = undef;
+          }
+          if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
+          {
+              my $pending;
+              ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
+              $text_added = $pending if (defined($pending));
+              $text_added =~ s/\s*$//;
+              $pending_spaces = '';
+              $in_para = 0;
+              $info_state->{'indent_para'} = undef;
+              $text_added .= "\n" unless (($line_char_counter + length($text_added)) == 0);
+          }
+          elsif ($content->{'command'} eq 'preformatted')
+          {
+           # if preformatted doesn't end with a newline, it is added here
+              $text_added = "\n" unless ($line_char_counter == 0);
+              $preformatted--;
+          }
+          elsif ($content->{'command'} eq 'menu')
+          {
+              $text_added = "\n" unless ($info_state->{'blank_line'});
+          }
+          elsif ($content->{'command'} eq 'float')
+          {
+              $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
+          }
+          elsif ($paragraph_style{$content->{'command'}})
+          {
+              my $popped = pop @{$info_state->{'align_stack'}};
+              print STDERR "BUG: align_stack, popped $popped->{'command'} ne command $content->{'command'}\n" if ($popped->{'command'} ne $content->{'command'});
+          }
+          elsif ($content->{'command'} eq 'multitable')
+          {
+              my $multitable = pop @{$info_state->{'multitable_stack'}};
+              $max_column = $multitable->{'max_column_kept'};
+              $result = $multitable->{'result_kept'};
+              $line_char_counter = $multitable->{'line_char_counter_kept'};
+              $all_line_passed = $multitable->{'all_line_passed_kept'};
+              $length = $multitable->{'length_kept'};
+              #$info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'} + $info_state->{'offset_in_file'};
+              $info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'};
+              #$info_state->{'line_count'} = $multitable->{'line_count_kept'} + $info_state->{'line_count'};
+              $info_state->{'line_count'} = $multitable->{'line_count_kept'};
+              print STDERR "MULTITABLE close, lines: $multitable->{'line_count_kept'} + $all_line_passed\n";
+              foreach my $anchor_and_index (@{$multitable->{'anchors'}}, @{$multitable->{'index_entries'}})
+              {
+                  $anchor_and_index->{'line_nr'} += $multitable->{'line_count_kept'} + $all_line_passed;
+              }
+              if (! scalar(@{$info_state->{'multitable_stack'}}))
+              {
+                  print STDERR "MULTITABLE close, lengths: $multitable->{'offset_in_file_kept'} + $length\n";
+                  foreach my $anchor (@{$multitable->{'anchors'}})
                   {
-                     $text_added .= "\n";
+                      $anchor->{'info_offset'} += $multitable->{'offset_in_file_kept'} + $length;
                   }
-                  # this nullify a potential noindent in a random format
-                  $info_state->{'indent_para'} = undef;
-                  goto new_text;
               }
-              if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
+              else 
               {
-                  my $pending;
-                  ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
-                  $text_added = $pending if (defined($pending));
-                  $text_added =~ s/\s*$//;
-                  $pending_spaces = '';
-                  $in_para = 0;
-                  $info_state->{'indent_para'} = undef;
-                  $text_added .= "\n" unless (($line_char_counter + length($text_added)) == 0);
-                  # FIXME needed?
-                  goto new_text;
+                  push @{$info_state->{'multitable_stack'}->[-1]->{'anchors'}}, @{$multitable->{'anchors'}};
+                  push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, @{$multitable->{'index_entries'}};
               }
-              elsif ($content->{'command'} eq 'preformatted')
+              $text_added = $multitable->{'result'};
+          }
+          elsif ($content->{'command'} eq 'multitable_cell')
+          {
+              my $cell = $info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1];
+              $cell->{'result'} = $result;
+              $cell->{'length'} = $length;
+              $cell->{'line_passed'} = $all_line_passed;
+          }
+          elsif ($content->{'command'} eq 'multitable_row')
+          {
+              my $multitable = $info_state->{'multitable_stack'}->[-1];
+              my $row_length = 0;
+              my $row = '';
+              my $max_lines = 0;
+              my $cell_beginning = 0;
+              my @anchor_lines_array;
+              my $cell_idx = 0;
+              my @anchors;
+              my @indices;
+              foreach my $cell (@{$multitable->{'cells'}})
               {
-               # if preformatted doesn't end with a newline, it is added here
-                  $text_added = "\n" unless ($line_char_counter == 0);
-                  $preformatted--;
-              }
-              elsif ($content->{'command'} eq 'menu')
-              {
-                  $text_added = "\n" unless ($info_state->{'blank_line'});
-              }
-              elsif ($content->{'command'} eq 'float')
-              {
-                  $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
-              }
-              elsif ($paragraph_style{$content->{'command'}})
-              {
-                  my $popped = pop @{$info_state->{'align_stack'}};
-                  print STDERR "BUG: align_stack, popped $popped->{'command'} ne command $content->{'command'}\n" if ($popped->{'command'} ne $content->{'command'});
-              }
-              elsif ($content->{'command'} eq 'multitable')
-              {
-                  my $multitable = pop @{$info_state->{'multitable_stack'}};
-                  $max_column = $multitable->{'max_column_kept'};
-                  $result = $multitable->{'result_kept'};
-                  $line_char_counter = $multitable->{'line_char_counter_kept'};
-                  $all_line_passed = $multitable->{'all_line_passed_kept'};
-                  $length = $multitable->{'length_kept'};
-                  #$info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'} + $info_state->{'offset_in_file'};
-                  $info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'};
-                  #$info_state->{'line_count'} = $multitable->{'line_count_kept'} + $info_state->{'line_count'};
-                  $info_state->{'line_count'} = $multitable->{'line_count_kept'};
-print STDERR "MULTITABLE close, lines: $multitable->{'line_count_kept'} + $all_line_passed\n";
-                  foreach my $anchor_and_index (@{$multitable->{'anchors'}}, @{$multitable->{'index_entries'}})
+                  $cell->{'beginning'} = $cell_beginning; 
+                  $cell_beginning += $cell->{'cell_width'}+1;
+                  @{$cell->{'lines'}} = split /^/, $cell->{'result'};
+                  $max_lines = scalar(@{$cell->{'lines'}}) if (scalar(@{$cell->{'lines'}}) > $max_lines);
+                  foreach my $anchor (@{$cell->{'anchors'}})
                   {
-                      $anchor_and_index->{'line_nr'} += $multitable->{'line_count_kept'} + $all_line_passed;
+                      push @{$anchor_lines_array[$anchor->{'line_nr'}]}, $anchor;
+                      $anchor->{'cell_idx'} = $cell_idx;
+                      push @anchors, $anchor;
                   }
-                  if (! scalar(@{$info_state->{'multitable_stack'}}))
+                  push @indices, @{$cell->{'index_entries'}};
+                  $cell_idx++;
+              }
+              my $previous_last_cell = scalar(@{$multitable->{'cells'}});
+              print STDERR "ROW cell_beginning $cell_beginning, max_lines $max_lines, previous_last_cell $previous_last_cell\n";
+              for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++)
+              {
+                  my $length = 0;
+                  my $line = '';
+                  # determine the last cell in the line, to fill spaces in 
+                  # cells preceding that cell on the line
+                  my $last_cell = 0;
+                  for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++)
                   {
-print STDERR "MULTITABLE close, lengths: $multitable->{'offset_in_file_kept'} + $length\n";
-                      foreach my $anchor (@{$multitable->{'anchors'}})
+                      $last_cell = $cell_idx+1 if (defined($multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx]));
+                  }
+                  print STDERR "  L(last_cell $last_cell): $line_idx\n";
+                  for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++)
+                  {
+                      my $cell_text = $multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx];
+                      print STDERR "   C($cell_idx) ";
+                      if (defined($cell_text))
                       {
-                          $anchor->{'info_offset'} += $multitable->{'offset_in_file_kept'} + $length;
+                          chomp($cell_text);
+                          print STDERR "$cell_text";
+                          $line .= $cell_text;
+                          $length += length($cell_text);
                       }
-                  }
-                  else 
-                  {
-                      push @{$info_state->{'multitable_stack'}->[-1]->{'anchors'}}, @{$multitable->{'anchors'}};
-                      push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, @{$multitable->{'index_entries'}};
-                  }
-                  $text_added = $multitable->{'result'};
-              }
-              elsif ($content->{'command'} eq 'multitable_cell')
-              {
-                  my $cell = $info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1];
-                  $cell->{'result'} = $result;
-                  $cell->{'length'} = $length;
-                  $cell->{'line_passed'} = $all_line_passed;
-              }
-              elsif ($content->{'command'} eq 'multitable_row')
-              {
-                  my $multitable = $info_state->{'multitable_stack'}->[-1];
-                  my $row_length = 0;
-                  my $row = '';
-                  my $max_lines = 0;
-                  my $cell_beginning = 0;
-                  my @anchor_lines_array;
-                  my $cell_idx = 0;
-                  my @anchors;
-                  my @indices;
-                  foreach my $cell (@{$multitable->{'cells'}})
-                  {
-                      $cell->{'beginning'} = $cell_beginning; 
-                      $cell_beginning += $cell->{'cell_width'}+1;
-                      @{$cell->{'lines'}} = split /^/, $cell->{'result'};
-                      $max_lines = scalar(@{$cell->{'lines'}}) if (scalar(@{$cell->{'lines'}}) > $max_lines);
-                      foreach my $anchor (@{$cell->{'anchors'}})
+                      if ($cell_idx+1 < $last_cell)
                       {
-                          push @{$anchor_lines_array[$anchor->{'line_nr'}]}, $anchor;
-                          $anchor->{'cell_idx'} = $cell_idx;
-                          push @anchors, $anchor;
-                      }
-                      push @indices, @{$cell->{'index_entries'}};
-                      $cell_idx++;
-                  }
-                  my $previous_last_cell = scalar(@{$multitable->{'cells'}});
-                  print STDERR "ROW cell_beginning $cell_beginning, max_lines $max_lines, previous_last_cell $previous_last_cell\n";
-                  for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++)
-                  {
-                      my $length = 0;
-                      my $line = '';
-                      # determine the last cell in the line, to fill spaces in 
-                      # cells preceding that cell on the line
-                      my $last_cell = 0;
-                      for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++)
-                      {
-                          $last_cell = $cell_idx+1 if (defined($multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx]));
-                      }
-                      print STDERR "  L(last_cell $last_cell): $line_idx\n";
-                      for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++)
-                      {
-                          my $cell_text = $multitable->{'cells'}->[$cell_idx]->{'lines'}->[$line_idx];
-                          print STDERR "   C($cell_idx) ";
-                          if (defined($cell_text))
+                          if ($length < $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
                           {
-                              chomp($cell_text);
-                              print STDERR "$cell_text";
-                              $line .= $cell_text;
-                              $length += length($cell_text);
-                          }
-                          if ($cell_idx+1 < $last_cell)
-                          {
-                              if ($length < $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
-                              {
-                                  my $spaces = ' ' x ($multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
-                                  $length += length($spaces);
-                                  $line .= $spaces;
-                                  print STDERR "   Csp($length) `$spaces'";
-                              }
+                              my $spaces = ' ' x ($multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
+                              $length += length($spaces);
+                              $line .= $spaces;
+                              print STDERR "   Csp($length) `$spaces'";
                           }
                       }
-                      if (defined($anchor_lines_array[$line_idx]))
+                  }
+                  if (defined($anchor_lines_array[$line_idx]))
+                  {
+                      foreach my $anchor (@{$anchor_lines_array[$line_idx]})
                       {
-                          foreach my $anchor (@{$anchor_lines_array[$line_idx]})
+                          my $anchor_position = $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
+                          if ($anchor_position > $length)
                           {
-                              my $anchor_position = $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
-                              if ($anchor_position > $length)
-                              {
-                                  my $spaces = ' ' x ($anchor_position - $length);
-                                  $line .= $spaces;
-                                  $length += length($spaces);
-                              }
-                              $anchor->{'info_offset'} = $anchor_position + $row_length + $multitable->{'length'};
-print STDERR "ROW anchor close: anchor[$anchor->{'cell_idx'}]($multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'}+$anchor->{'line_char_counter'}) $anchor_position $anchor->{'info_offset'}\n";
-                              $anchor->{'line_char_counter'} = $anchor_position;
+                              my $spaces = ' ' x ($anchor_position - $length);
+                              $line .= $spaces;
+                              $length += length($spaces);
                           }
+                          $anchor->{'info_offset'} = $anchor_position + $row_length + $multitable->{'length'};
+                          print STDERR "ROW anchor close: anchor[$anchor->{'cell_idx'}]($multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'}+$anchor->{'line_char_counter'}) $anchor_position $anchor->{'info_offset'}\n";
+                          $anchor->{'line_char_counter'} = $anchor_position;
                       }
-                      $line .= "\n";
-                      $row_length += length($line);
-                      print STDERR "  ($length,".length($line).") $line";
-                      $row .= $line;
-                      $previous_last_cell = $last_cell;
                   }
-                  foreach my $anchor_and_index (@anchors, @indices)
-                  {
-                      $anchor_and_index->{'line_nr'} += $multitable->{'line_count'};
-print STDERR "ROW close: new line count: $anchor_and_index->{'line_nr'} + \n";
-                  }
-                  if ($content->{'item_command'} eq 'headitem')
-                  {
-                      # at this point cell_beginning is at the beginning of
-                      # the cell following the end of the table -> full width
-                      my $line = '-' x $cell_beginning . "\n";
-                      $row .= $line;
-                      $row_length += length($line);
-                  }
-                  print STDERR "ROW_LENGTH $row_length\n";
-                  $multitable->{'result'} .= $row;
-                  $multitable->{'length'} += $row_length;
-                  $multitable->{'line_count'} += $max_lines;
-                  $multitable->{'cells'} = [];
-                  push @{$multitable->{'anchors'}}, @anchors;
-                  push @{$multitable->{'index_entries'}}, @indices;
+                  $line .= "\n";
+                  $row_length += length($line);
+                  print STDERR "  ($length,".length($line).") $line";
+                  $row .= $line;
+                  $previous_last_cell = $last_cell;
               }
+              foreach my $anchor_and_index (@anchors, @indices)
+              {
+                  $anchor_and_index->{'line_nr'} += $multitable->{'line_count'};
+                  print STDERR "ROW close: new line count: $anchor_and_index->{'line_nr'} + \n";
+              }
+              if ($content->{'item_command'} eq 'headitem')
+              {
+                  # at this point cell_beginning is at the beginning of
+                  # the cell following the end of the table -> full width
+                  my $line = '-' x $cell_beginning . "\n";
+                  $row .= $line;
+                  $row_length += length($line);
+              }
+              print STDERR "ROW_LENGTH $row_length\n";
+              $multitable->{'result'} .= $row;
+              $multitable->{'length'} += $row_length;
+              $multitable->{'line_count'} += $max_lines;
+              $multitable->{'cells'} = [];
+              push @{$multitable->{'anchors'}}, @anchors;
+              push @{$multitable->{'index_entries'}}, @indices;
           }
       }
       else
@@ -1094,7 +1086,6 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
           {
               $text_added .= $content->{'begin'};
           }
-
           elsif (defined($content->{'text'}))
           {
               if ($in_para and !$in_exdent)
@@ -1188,10 +1179,6 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       {
          if ($item_pending and !$item_line_added)
          {
-             #if (!$info_state->{'blank_line'})
-             #{
-             #   $text_added = "\n" . $text_added;
-             #}
              ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
              $item_pending = undef;
          }
