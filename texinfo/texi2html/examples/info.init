@@ -386,6 +386,47 @@ print STDERR "NNNNNNNNNNNNNN iterator_next current $current_command idx $command
 
 my $info_default_max_column = 72;
 
+sub info_default_next($$$)
+{
+    my $current = shift;
+    my $index = shift;
+    my $close = shift;
+
+    my $text;
+    my $command;
+
+    my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
+    return ($current_next, $index_next, $close_next, $text, $command) if (!defined($current_next));
+
+    my $content = $current_next->{'content'}->[$index_next];
+    $command = $content->{'command'} if (defined($content->{'command'}));
+    if ($close_next)
+    {
+        return ($current_next, $index_next, $close_next, $content->{'end'}, $command);
+    }
+    if (defined($content->{'text'}))
+    {
+        return ($current_next, $index_next, $close_next, $content->{'text'}, $command);
+    }
+    if (defined($content->{'begin'}))
+    {
+        $text = $content->{'begin'};
+    }
+    if (defined($content->{'end'}) and !defined($content->{'content'}))
+    {
+        if (!defined($text))
+        {
+            $text = $content->{'end'};
+        }
+        else
+        {
+            $text .= $content->{'end'};
+        }
+    }
+    return ($current_next, $index_next, $close_next, $text, $command);
+}
+
+
 # Beware that there is a pending word if the text doesn't end with
 # a space
 sub info_default_process_text($$$$$$$;$)
@@ -581,7 +622,8 @@ sub info_default_store_pending($$$;$)
    return ($line_char_counter, $pending_spaces, $pending_word, $result);
 }
 
-my $info_default_end_sentence_character = quotemeta('.');
+my $info_default_end_sentence_character = quotemeta($punctuation_characters);
+my $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
 my $info_default_indent_length = 5;
 my $info_default_para_indent_length = 3;
 my $info_default_first_para_indent = 'none';
@@ -671,8 +713,6 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       {
         $indent_length = ($info_default_indent_format_length{$item_pending}
                    +($indent_level -1)* $info_default_indent_length);
-        #$text_added = ' ' x (($info_default_indent_format_length{$item_pending}
-        #    +($indent_level -1)* $info_default_indent_length));
       }
       
       if ($close)
@@ -696,9 +736,12 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
           }
           if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
           {
+              # if there is no space at the end of a paragraph, there may be 
+              # pending text, for example, if there is an ending line like
+              #         Some text@c a comment
               my $pending;
               ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
-              $text_added = $pending if (defined($pending));
+              $text_added .= $pending if (defined($pending));
               $text_added =~ s/\s*$//;
               $pending_spaces = '';
               $in_para = 0;
@@ -708,13 +751,15 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
           elsif ($content->{'command'} eq 'preformatted')
           {
            # if preformatted doesn't end with a newline, it is added here
-              $text_added = "\n" unless ($line_char_counter == 0);
+              $text_added .= "\n" unless ($line_char_counter == 0);
               $preformatted--;
           }
-          elsif ($content->{'command'} eq 'menu')
-          {
-              $text_added = "\n" unless ($info_state->{'blank_line'});
-          }
+#         FIXME this could be better than the end of menu line that is always
+#               prepended to menu
+#          elsif ($content->{'command'} eq 'menu')
+#          {
+#              $text_added .= "\n" unless ($info_state->{'blank_line'});
+#          }
           elsif ($content->{'command'} eq 'float')
           {
               $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
@@ -754,7 +799,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
                   push @{$info_state->{'multitable_stack'}->[-1]->{'anchors'}}, @{$multitable->{'anchors'}};
                   push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, @{$multitable->{'index_entries'}};
               }
-              $text_added = $multitable->{'result'};
+              $text_added .= $multitable->{'result'};
           }
           elsif ($content->{'command'} eq 'multitable_cell')
           {
@@ -942,7 +987,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
                  }
                  if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
                  {
-                    $content->{'begin'} = ' ' x $paragraphindent;
+                    $text_added .= ' ' x $paragraphindent;
                  }
                  $in_para = 1;
               }
@@ -965,7 +1010,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
                   {
                      $in_exdent = 1;
                   }
-                 goto new_text;
+                 #goto new_text;
               }
               elsif ($content->{'command'} eq 'indent')
               {
@@ -1030,7 +1075,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
               }
               elsif ($content->{'command'} eq 'menu' or $content->{'command'} eq 'listoffloats')
               {
-                  $text_added = "\n" unless ($info_state->{'blank_line'});
+                  $text_added .= "\n" unless ($info_state->{'blank_line'});
               }
               elsif ($paragraph_style{$content->{'command'}})
               {
@@ -1082,24 +1127,55 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
               }
           }
 
-          if (defined($content->{'begin'}))
-          {
-              $text_added .= $content->{'begin'};
-          }
-          elsif (defined($content->{'text'}))
+          if (defined($content->{'text'}))
           {
               if ($in_para and !$in_exdent)
               {
 print STDERR "IN_PARA text\n";
-                  if (chomp($content->{'text'}))
+                  my $new_text = $content->{'text'};
+                  if ((!defined($content->{'command'}) or $content->{'command'} ne ':') and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
                   {
-                      $content->{'text'} =~ s/(\s*)$/ /;
-                      if ($content->{'text'} =~ /$info_default_end_sentence_character $/)
+                      # the info_default_after_punctuation_characters should
+                      # always be in the same text element. 
+                      my $spaces_length = length($3);
+                      if (chomp($new_text))
                       {
-                          $content->{'text'} .= ' ';
+                          $new_text =~ s/(\s*)$/  /;
                       }
+                      else
+                      {
+                          # spaces may be in following commands
+                          my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+                          while (1)
+                          {
+                              last if (!defined($current_next) or (defined($command_next) and $command_next eq '*'));
+                              if ($text_next =~ /\S/)
+                              {
+                                  last;
+                              }
+                              else
+                              {
+                                  if (chomp($text_next))
+                                  {
+                                      ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                                      $new_text =~ s/(\s*)$/  /;
+                                      last;
+                                  }
+                              }
+                              ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
+                          }
+                      }
+                      print STDERR "KKKKKKKKKKKK `$1' `$2' `$3'";
                   }
-                  $text_added .= $content->{'text'};
+                  elsif (chomp($new_text))
+                  {
+                      $new_text =~ s/(\s*)$/ /;
+                    #  if ($new_text =~ /[$info_default_end_sentence_character] $/)
+                    #  {
+                    #      $new_text .= ' ';
+                    #  }
+                  }
+                  $text_added .= $new_text;
               } # ignore spaces outside of paragraphs and preformatted
               elsif ($preformatted or $info_state->{'align_stack'}->[-1]->{'command'} ne 'normal')
               {
@@ -1136,11 +1212,18 @@ print STDERR "NOWHERE and not end of line (or item_pending) `$content->{'text'}'
               }
 # unless (!defined($line_char_counter) and !$preformatted and $content->{'text'} =~ /^\s*$/);
           }
-          # text or command that won't be closed, so the end has to be added 
-          # here.
-          if (defined($content->{'end'}) and !defined($content->{'content'}))
+          else
           {
-              $text_added .= $content->{'end'};
+              if (defined($content->{'begin'}))
+              {
+                  $text_added .= $content->{'begin'};
+              }
+              # command that won't be closed, so the end has to be added 
+              # here. It should mostly happen for empty style @-commands.
+              if (defined($content->{'end'}) and !defined($content->{'content'}))
+              {
+                  $text_added .= $content->{'end'};
+              }
           }
       }
       if (!$preformatted and !$in_exdent and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal' and $in_para)
@@ -1383,7 +1466,6 @@ sub info_default_close_command($$;$$$)
    return info_default_output($info_state)
      if (!defined($info_state->{'current'}->{'command'}));
    return '';
-   
 }
 
 sub info_default_store_text($$;$$)
@@ -1466,11 +1548,27 @@ sub info_default_simple_command($$$$)
     my $state = shift;
 
     my $result = $simple_map{$command};
-    return info_default_store_text($state,$result,$command);
+    # discards '-' '|' '/' and ':'. If ':' is associated with a punctuation
+    # character it is added to the tree in info_default_colon_command
+    return info_default_store_text($state,$result,$command) if ($result ne '');
+    return '';
     #return '' if info_default_store_text($state,$result,$command);
     #return $result;
 }
 
+sub info_default_colon_command($)
+{
+   my $punctuation_character = shift;
+   if (defined($colon_command_punctuation_characters{$punctuation_character})
+         and $punctuation_character =~ /^[$punctuation_characters]$/)
+   {
+      return info_default_store_text(undef,$colon_command_punctuation_characters{$punctuation_character}, ':');
+   }
+   else
+   {
+      return info_default_store_text(undef,$punctuation_character);;
+   }
+}
 
 sub info_default_thing_command($$$$$)
 {
@@ -2785,19 +2883,5 @@ sub info_default_listoffloats($$$)
    $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
    return info_default_store_text($state,$result,'listoffloats');
 }
-
-sub info_default_colon_command($)
-{
-   my $punctuation_character = shift;
-   if (defined($colon_command_punctuation_characters{$punctuation_character}))
-   {
-      return info_default_store_text(undef,$colon_command_punctuation_characters{$punctuation_character}, ':');
-   }
-   else
-   {
-      return info_default_store_text(undef,$punctuation_character);;
-   }
-}
-
 
 1;
