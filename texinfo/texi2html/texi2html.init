@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.184 2009-04-16 21:57:30 pertusus Exp $
+# $Id: texi2html.init,v 1.185 2009-04-23 10:13:08 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -387,6 +387,8 @@ $SIMPLE_MENU = 0;
 
 $OPEN_QUOTE_SYMBOL = "\`";
 $CLOSE_QUOTE_SYMBOL = "'";
+
+$CAPTION_STYLE = 'strong';
 
 # if true put a $MENU_SYMBOL before unnumbered in menus
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
@@ -4640,36 +4642,37 @@ sub t2h_default_caption_shortcaption($)
     if (defined($float->{'caption_texi'}))
     {
         @$caption_lines = @{$float->{'caption_texi'}};
+        $caption_lines->[0] =~ s/^\s*//;
         if (defined($style))
         {
-            $caption_lines->[0] = '@strong{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
+            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
         }
         else
         {
-            $caption_lines->[0] = '@strong{' .  $caption_lines->[0];
+            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' .  $caption_lines->[0];
         }
         push @$caption_lines, "}\n";
     }
     elsif (defined($style))
     {
-        $caption_lines->[0] = '@strong{' . $style . '}' . "\n";
+        $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . $style . '}' . "\n";
     }
     if (defined($float->{'shortcaption_texi'}))
     {
          @$shortcaption_lines = @{$float->{'shortcaption_texi'}};
          if (defined($style))
          {
-              $shortcaption_lines->[0] = '@strong{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
+              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
          }
          else
          {
-              $shortcaption_lines->[0] = '@strong{' .  $shortcaption_lines->[0];
+              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' .  $shortcaption_lines->[0];
          }
          push @$shortcaption_lines, "}\n";
     }
     elsif (defined($style))
     {
-         $shortcaption_lines->[0] = '@strong{' . $style . '}' . "\n";
+         $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . $style . '}' . "\n";
     }
     return ($caption_lines, $shortcaption_lines);
 }
@@ -5452,7 +5455,7 @@ sub t2h_default_external_ref($$$$$$$$)
 # boolean true if the reference is a reference to a section
 # 
 # $SHORT_REF should be used.
-sub t2h_default_internal_ref($$$$$$$)
+sub t2h_default_internal_ref($$$$$$$$)
 {
     my $type = shift;
     my $href = shift;
@@ -5461,6 +5464,7 @@ sub t2h_default_internal_ref($$$$$$$)
     my $is_section = shift;
     my $args_texi = shift;
     my $formatted_args = shift;
+    my $element = shift;
 
     if (! $SHORT_REF)
     {
@@ -6312,7 +6316,6 @@ sub t2h_default_def_line($$$$$$$$$$$$$$$$)
    }
    else
    {
-       
        return "<tr><td align=\"left\">" . $type_name . 
        "</td><td align=\"right\">" . $category_prepared . $index_label . "</td></tr>\n";
    }

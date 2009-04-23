@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.272 2009-04-16 21:57:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.273 2009-04-23 10:13:08 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -225,6 +225,7 @@ $DUMP_TEXI
 $MACRO_EXPAND
 $USE_GLOSSARY 
 $INVISIBLE_MARK 
+$CAPTION_STYLE
 $USE_ISO 
 $TOP_FILE 
 $TOC_FILE
@@ -9779,6 +9780,11 @@ sub do_xref($$$$)
             my $href = href($element, $file, $line_nr);
             my $section_or_cross_ref = $section;
             $section_or_cross_ref = $cross_ref if ($section eq '');
+            if ($element->{'float'} and $section_or_cross_ref eq '')
+            {
+                my $style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($element->{'style_texi'}, $element), "\@listoffloats \@float type");
+                $section_or_cross_ref = $style if (defined($style));
+            }
             my $name = $section_or_cross_ref;
             my $short_name = $section_or_cross_ref;
             if ($section_or_cross_ref eq '')
@@ -9789,7 +9795,7 @@ sub do_xref($$$$)
                 $name = $element->{'text_nonumber'};
                 $short_name = $node_name;
             }
-            $result = &$Texi2HTML::Config::internal_ref ($macro, $href, $short_name, $name, $element->{'section'}, \@args, \@formatted_args);
+            $result = &$Texi2HTML::Config::internal_ref ($macro, $href, $short_name, $name, $element->{'section'}, \@args, \@formatted_args, $element);
         }
         else
         {

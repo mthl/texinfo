@@ -1,3 +1,8 @@
+2009-04-23   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: use the float name and number as 
+	cross-reference name.
+
 2009-04-16   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: really pass the original @-command for @def*.
