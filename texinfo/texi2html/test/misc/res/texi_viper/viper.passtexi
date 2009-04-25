@@ -5,6 +5,11 @@ viper.texi(,6) @comment @setfilename viper.info
 viper.texi(,7) @setfilename viper
 viper.texi(,8) 
 viper.texi(,9) @dircategory Editors
+viper.texi(,10) @direntry
+viper.texi(,11) * VIPER: (viper).       The newest Emacs VI-emulation mode.
+viper.texi(,12)                           (also, A VI Plan for Emacs Rescue
+viper.texi(,13)                            or the VI PERil.)
+viper.texi(,14) @end direntry
 viper.texi(,15) 
 viper.texi(,19) 
 viper.texi(,20) @titlepage

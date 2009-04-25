@@ -14,6 +14,11 @@ This file records noteworthy changes.
   and apply the @-command given as @table argument. Correspondingly, 
   some arguments of $table_item have been removed.
 
+* Formatting of titlepage chaned, and @title, @subtitle and @author
+  are now handled by $line_command.
+
+* verbatiminclude is now a $raw command argument distinct from verbatim.
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

@@ -16,6 +16,9 @@
 @syncodeindex fn vr
 
 @dircategory Miscellaneous
+@direntry
+* Miniker: (mini_ker).            The mini_ker modeling tool.
+@end direntry
 
 
 @copying

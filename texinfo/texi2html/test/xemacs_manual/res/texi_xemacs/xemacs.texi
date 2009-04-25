@@ -4,6 +4,9 @@
 
 
 @dircategory XEmacs Editor
+@direntry
+* XEmacs: (xemacs).		XEmacs Editor.
+@end direntry
 
 This file documents the XEmacs editor.
 

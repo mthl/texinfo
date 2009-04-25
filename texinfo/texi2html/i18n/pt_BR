@@ -68,7 +68,6 @@ $LANGUAGES->{'pt_BR'} = {
                           'November' => 'Novembro',
                           'October' => 'Outubro',
                           'Overview' => 'Vis@~ao geral',
-                          'Overview:' => 'Vis@~ao geral:',
                           'Prev' => 'Pr@\'evio',
                           'PrevFile' => '',
                           'Previous file' => '',
@@ -125,6 +124,7 @@ $LANGUAGES->{'pt_BR'} = {
                         };
 
 $T2H_OBSOLETE_STRINGS->{'pt_BR'} = {
+                                     'Overview:' => 'Vis@~ao geral:',
                                      'See' => 'Veja',
                                      'about (help)' => 'sobre (ajuda)',
                                      'beginning of this chapter or previous chapter' => 'come@,{c}o desse cap@\'itulo ou cap@\'itulo anterior',

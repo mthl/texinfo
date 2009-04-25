@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.12 2008-11-03 12:33:16 pertusus Exp $
+# $Id: mediawiki.init,v 1.13 2009-04-25 14:54:43 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -232,27 +232,39 @@ sub mediawiki_titlepage($$$$)
     my $titlepage_no_texi = shift;
     my $titlepage_simple_text = shift;
 
-    my $result = '';
-    if (@{$Texi2HTML::THISDOC{'titles'}} 
-        or @{$Texi2HTML::THISDOC{'subtitles'}} 
-        or @{$Texi2HTML::THISDOC{'authors'}})
-    {     
-        foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
-        {
-            $result .= '== ' . $title . " ==\n";
-        }    
-        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
-        {
-            $result .= '=== ' . $subtitle . " ===\n";
-        }
-        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
-        {
-            $result .= '<strong> ' . $author . " </strong><br>\n";
-        }
-        $result .= "$DEFAULT_RULE\n" if $DEFAULT_RULE;
+#    my $result = '';
+#    if (@{$Texi2HTML::THISDOC{'titles'}} 
+#        or @{$Texi2HTML::THISDOC{'subtitles'}} 
+#        or @{$Texi2HTML::THISDOC{'authors'}})
+#    {     
+#        foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
+#        {
+#            $result .= '== ' . $title . " ==\n";
+#        }    
+#        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
+#        {
+#            $result .= '=== ' . $subtitle . " ===\n";
+#        }
+#        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
+#        {
+#            $result .= '<strong> ' . $author . " </strong><br>\n";
+#        }
+#        $result .= "$DEFAULT_RULE\n" if $DEFAULT_RULE;
+#    }
+
+    $Texi2HTML::TITLEPAGE = $titlepage_text;
+        $Texi2HTML::TITLEPAGE = $titlepage_text;
+    if ($titlepage_text eq '')
+    {
+       my $title = '';
+       $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+       if ($title ne '')
+       {
+           $Texi2HTML::TITLEPAGE = "== $title ==\n";
+       }
     }
 
-    $Texi2HTML::TITLEPAGE = $result . $titlepage_text;
+    return $Texi2HTML::TITLEPAGE;
 }
 
 sub mediawiki_titlefont($$$)
@@ -599,6 +611,31 @@ sub mediawiki_index_summary($$)
 	   . "<tr><th valign=\"top\">" . &$I('Jump to') .":</th>\n"
     	   . join ("", map {"<td>$_</td>\n"} @$nonalpha, @$alpha),
 	   . "</tr></table>\n";
+}
+
+$line_command = \&mediawiki_line_command;
+
+sub mediawiki_line_command($$$$)
+{
+    my $command = shift;
+    my $arg_text = shift;
+    my $arg_texi = shift;
+    my $state = shift;
+
+    return '' if ($arg_text eq '');
+    if ($command eq 'title')
+    {
+        $arg_text = '== ' .$arg_text. " ==\n";
+    }
+    elsif ($command eq 'subtitle')
+    {
+        $arg_text = '=== ' .$arg_text. " ===\n";
+    }
+    elsif ($command eq 'author')
+    {
+        $arg_text = '<strong> ' .$arg_text. " </strong><br>\n";
+    }
+    return $arg_text;
 }
 
 

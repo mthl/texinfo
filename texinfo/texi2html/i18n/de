@@ -68,7 +68,6 @@ $LANGUAGES->{'de'} = {
                        'November' => 'November',
                        'October' => 'Oktober',
                        'Overview' => '@"Ubersicht',
-                       'Overview:' => '@"Ubersicht:',
                        'Prev' => '',
                        'PrevFile' => '',
                        'Previous file' => '',
@@ -125,6 +124,7 @@ $LANGUAGES->{'de'} = {
                      };
 
 $T2H_OBSOLETE_STRINGS->{'de'} = {
+                                  'Overview:' => '@"Ubersicht:',
                                   'See' => 'Siehe',
                                   'section' => 'Abschnitt',
                                   'see' => 'siehe'

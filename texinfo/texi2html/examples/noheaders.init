@@ -31,7 +31,7 @@ $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 #$print_Top_header         = \&T2H_NOHEAD_print_Top_header;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
-$print_Top                = \&T2H_NOHEAD_print_Top;
+#$print_Top                = \&T2H_NOHEAD_print_Top;
 #$print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
 $print_misc_footer	      = \&T2H_NOHEAD_print_misc_footer;
 #$print_misc		      = \&T2H_NOHEAD_print_misc;
@@ -79,42 +79,6 @@ sub T2H_NOHEAD_print_Top_footer($$)
 {
     my $fh = shift;
     print $fh "$SMALL_RULE\n";
-}
-sub T2H_NOHEAD_print_Top
-{
-    my $fh = shift;
-    my $has_top_heading = shift;
-
-    # FIXME take what is in texi2html.init, or maybe this is not needed
-    # anymore
-    if (@$Texi2HTML::THIS_SECTION)
-    {
-        # if top-level node has content, then print it with extra header
-        #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
-#        print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
-#            unless ($has_top_heading);
-        main::print_lines($fh, $Texi2HTML::THIS_SECTION);
-    }
-    else
-    {
-        # top-level node is fully enclosed in @ifnothtml
-        # print fulltitle, subtitle, author, Overview
-        # redo the titlepage with the actual state
-        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
-        print $fh $Texi2HTML::TITLEPAGE;
-        if (@{$Texi2HTML::OVERVIEW})
-        {
-             print $fh '<h2> ' . &$I('Overview:') . "</h2>\n" . "<blockquote>\n";
-             my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
-             print $fh "</blockquote>\n";
-        }
-        elsif (@{$Texi2HTML::TOC_LINES})
-        {
-             print $fh '<h1> ' . &$I('Table of contents') . "</h1>\n";
-             my $nw = main::print_lines($fh, $Texi2HTML::TOC_LINES);
-        }
-    }
 }
 
 ###################################################################

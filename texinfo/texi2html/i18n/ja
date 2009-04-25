@@ -68,7 +68,6 @@ $LANGUAGES->{'ja'} = {
                        'November' => '11月',
                        'October' => '10月',
                        'Overview' => '概要',
-                       'Overview:' => '概要:',
                        'Prev' => '前',
                        'PrevFile' => '',
                        'Previous file' => '',
@@ -125,6 +124,7 @@ $LANGUAGES->{'ja'} = {
                      };
 
 $T2H_OBSOLETE_STRINGS->{'ja'} = {
+                                  'Overview:' => '概要:',
                                   'about (help)' => '使用法 (ヘルプ)',
                                   'beginning of this chapter or previous chapter' => 'この章または前の章の冒頭',
                                   'cover (top) of document' => '文書の表紙 (トップ)',

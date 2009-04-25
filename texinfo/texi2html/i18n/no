@@ -68,7 +68,6 @@ $LANGUAGES->{'no'} = {
                        'November' => 'november',
                        'October' => 'oktober',
                        'Overview' => '',
-                       'Overview:' => '',
                        'Prev' => '',
                        'PrevFile' => '',
                        'Previous file' => '',

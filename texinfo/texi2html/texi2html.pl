@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.274 2009-04-23 21:19:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.275 2009-04-25 14:54:42 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -212,6 +212,7 @@ $VERBOSE
 $SUBDIR
 $IDX_SUMMARY
 $SPLIT
+$SPLIT_SIZE
 $SHORT_REF
 @EXPAND
 $EXPAND
@@ -469,6 +470,7 @@ $index_summary_file_entry
 $index_summary_file_end
 $index_summary_file_begin
 $style
+$line_command
 $format
 $normal_text
 $empty_line
@@ -522,6 +524,7 @@ $complex_format_map
 %simple_format_simple_map_texi
 %simple_format_style_map_texi
 %simple_format_texi_map
+%line_command_map
 %command_type
 %paragraph_style
 %stop_paragraph_command
@@ -1784,9 +1787,11 @@ $format_type{'smallquotation'} = 'quotation';
 
 $format_type{'group'} = 'group';
 
-$format_type{'titlepage'} = 'region';
-$format_type{'copying'} = 'region';
-$format_type{'documentdescription'} = 'region';
+my @special_regions = ('titlepage', 'copying', 'documentdescription');
+foreach my $region (@special_regions)
+{
+   $format_type{$region} = 'region';
+}
 
 foreach my $key (keys(%format_type))
 {
@@ -1822,7 +1827,11 @@ foreach my $key (keys(%fake_format))
 }
 
 # raw formats which are expanded especially
-my @raw_regions = ('html', 'verbatim', 'tex', 'xml', 'docbook');
+my @raw_regions = ('html', 'tex', 'xml', 'docbook');
+foreach my $format (keys(%Texi2HTML::Config::texi_formats_map))
+{
+    push @raw_regions, $format if ($Texi2HTML::Config::texi_formats_map{$format} eq 'raw');
+}
 
 # The css formats are associated with complex format commands, and associated
 # with the 'pre_style' key
@@ -2623,6 +2632,13 @@ $T2H_OPTIONS -> {'error-limit'} =
  type => '=i',
  linkage => \$Texi2HTML::Config::ERROR_LIMIT,
  verbose => 'quit after NUM errors (default 1000).',
+};
+
+$T2H_OPTIONS -> {'split-size'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::SPLIT_SIZE,
+ verbose => 'split Info files at size s (default 300000).',
 };
 
 $T2H_OPTIONS -> {'monolithic'} =
@@ -4722,6 +4738,12 @@ sub misc_command_structure($$$$)
         $novalidate = 1;
         $Texi2HTML::THISDOC{$macro} = 1; 
     }
+    elsif ($macro eq 'dircategory' and ($line =~ /^\s+(.*)\s*$/))
+    {
+        my $arg = $1;
+        $Texi2HTML::THISDOC{"${macro}_texi"} = $arg;
+        $Texi2HTML::THISDOC{$macro} = substitute_line($arg, "\@$macro");
+    }
     elsif (grep {$_ eq $macro} ('settitle','shorttitlepage','title') 
              and ($line =~ /^\s+(.*)$/))
     {
@@ -4997,11 +5019,11 @@ sub misc_command_text($$$$$$)
                     
                     if ($state->{'remove_texi'})
                     {
-                        add_prev ($text, $stack, &$Texi2HTML::Config::raw_no_texi('verbatim', $verb_text));
+                        add_prev ($text, $stack, &$Texi2HTML::Config::raw_no_texi('verbatiminclude', $verb_text));
                     }
                     else
                     { 
-                        add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatim', $verb_text));
+                        add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatiminclude', $verb_text));
                     }
                     close VERBINCLUDE;
                 }
@@ -11916,27 +11938,43 @@ sub scan_line($$$$;$)
             }
         }
 
+        unless ($state->{'raw'} or $state->{'verb'} or $state->{'keep_texi'})
+        {
+        # first the line commands are taken into account
+            my $next_command = next_tag($cline);
+            if (defined($next_command) and defined($Texi2HTML::Config::line_command_map{$next_command}))
+            {
+                close_paragraph($text, $stack, $state, "\@$next_command", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_command});
+                my $arg_texi = $cline;
+                $arg_texi =~ s/^\s*\@$next_command\s*//;
+                $arg_texi =~ s/\s*$//;
+                my $arg_line = substitute_line($arg_texi, "\@$next_command", duplicate_formatting_state($state));
+                add_prev ($text, $stack, &$Texi2HTML::Config::line_command($next_command, $arg_line, $arg_texi, $state));
+                return '';
+            }
+
         # The commands to ignore are ignored now in case after ignoring them
         # there is an empty line, to be able to stop the paragraph
-        my $leading_spaces = '';
-        while (1)
-        {
-            my $next_tag = next_tag($cline);
-            close_paragraph($text, $stack, $state, "\@$next_tag", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_tag} and !$state->{'keep_texi'});
-            if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
+            my $leading_spaces = '';
+            
+            while (1)
             {
-                $cline =~ s/^(\s*)\@$next_tag//;
-                $leading_spaces .= $1;
-                $cline = misc_command_text($cline, $next_tag, $stack, $state, $text, $line_nr);
+                my $next_tag = next_tag($cline);
+                close_paragraph($text, $stack, $state, "\@$next_tag", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_tag});
+                if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
+                {
+                    $cline =~ s/^(\s*)\@$next_tag//;
+                    $leading_spaces .= $1;
+                    $cline = misc_command_text($cline, $next_tag, $stack, $state, $text, $line_nr);
+                }
+                else
+                {
+                    last;
+                }
             }
-            else
-            {
-                last;
-            }
+            add_prev ($text, $stack, $leading_spaces);
+            return '' if (!defined($cline) or $cline eq '');
         }
-        add_prev ($text, $stack, $leading_spaces);
-        return '' if (!defined($cline) or $cline eq '');
-
         my $top_stack = top_stack($stack);
         if (($top_stack->{'format'} and $top_stack->{'format'} eq 'menu_description') or $state->{'raw'} or $state->{'preformatted'}  or $state->{'no_paragraph'} or $state->{'keep_texi'} or $state->{'remove_texi'})
         { # empty lines are left unmodified in these contexts.
@@ -14463,11 +14501,11 @@ while(@ARGV)
    ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_lines'}) 
       = collect_all_css_files();
 
-   %region_lines = (
-          'titlepage'            => [ ],
-          'documentdescription'  => [ ],
-          'copying'              => [ ],
-   );
+   %region_lines = ();
+   foreach my $region (@special_regions)
+   {
+      $region_lines{$region} = [];
+   }
 
    texinfo_initialization(0);
 
@@ -14529,11 +14567,11 @@ while(@ARGV)
       'place' => [],
    };
 
-   %region_initial_state = (
-          'titlepage'            => { },
-          'documentdescription'  => { },
-          'copying'              => { },
-   );
+   %region_initial_state = ();
+   foreach my $region (@special_regions)
+   {
+      $region_initial_state{$region} = { };
+   }
 
 # to determine if a command has to be processed the following are interesting 
 # (and can be faked):

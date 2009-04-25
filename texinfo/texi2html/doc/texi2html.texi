@@ -1597,8 +1597,7 @@ Lines of short table of contents. @xref{Special pages}.
 @item $Texi2HTML::TOC_LINES
 Lines of table of contents. @xref{Special pages}.
 @item $Texi2HTML::TITLEPAGE
-The title page formatted with special title commands (@code{@@author},
-@code{@@title}) expanded. @xref{Title page}.
+The title page formatted. @xref{Title page}.
 @end vtable
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -2114,15 +2113,15 @@ This function should return the about text.
 
 The title page is first formatted using the text appearing in 
 the @code{@@titlepage} section, and put in @variable{$Texi2HTML::TITLEPAGE}.
-The information appearing in @code{@@title}, @code{@@subtitle} or 
-@code{@@author} is then added using the following
+More formatting can be done using the following
 function reference:
 
 @deffn {Function Reference} titlepage 
 This function should complete @code{$Texi2HTML::TITLEPAGE}.
 @end deffn
 
-In the default case, in this function the table of contents and short
+In the default case, in this function the title is output if 
+there is no titlepage, the table of contents and short
 table of contents are also added if they are to be output and 
 @code{@@setcontentsaftertitlepage}
 or @code{@@setshortcontentsaftertitlepage} appear in the document
@@ -2342,6 +2341,8 @@ be redefined.
 * Style and accent commands::    
 * Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image}, @code{@@sp}, @code{@@acronym}, @code{@@abbr}
 * Text::                         Some characters are processed specially
+* Line commands::                Formatting of @@-commands taking a line as 
+                                 argument
 * Strings::                      @command{texi2html} write some strings in the output
                                  different for each languages
 @c * Skipped commands::           
@@ -2823,6 +2824,27 @@ about the state of the parsing.
 Empty lines are left as is by default except right after a definition 
 @@-command.
 @end deftypefn
+
+@c --------------------------------------------------------
+@node Line commands
+@section Customizing of line command output
+
+@@-commands that appear on a line and take the line as argument may
+be formatted especially, if they are in the @variable{%line_command_map}.
+In that case the following function reference is used to format the
+@@-command:
+
+@deftypefn {Function Reference} $resulting_text line_command $command $arg_text $arg_texi $state
+@var{$command} is the @@-command. @var{$arg_text} is the @@-command formatted 
+argument, @var{$arg_texi} is the @@-command argument without any formatting.
+@var{$state} is a structure that holds informations
+about the state of the parsing.
+The resulting text is @var{$resulting_text}. 
+@end deftypefn
+
+In the default case, @@-commands appearing in @code{@@titlepage}, 
+@code{@@title}, @code{@@subtitle}, @code{@@author} are formatted
+by this function.
 
 @c --------------------------------------------------------
 @node Strings
@@ -3560,11 +3582,14 @@ of an element block.
 @node Special regions
 @section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche}, @code{@@quotation})
 
-Regions corresponding with raw text, like @code{@@verbatim}, @code{@@html}
-or @code{@@tex} are formatted according to the following function reference:
+Regions corresponding with raw text, like @code{@@verbatim}, @code{@@html}, 
+@code{@@tex} or the content of the file given in @code{@@verbatiminclude} 
+argument are formatted according to the following function reference:
 
 @deftypefn {Function Reference} $raw_region raw $command $text
 @var{$command} is the command name, @var{$text} is the raw text.
+In the default case, if @var{$command} is @code{verbatiminclude} 
+the text is the content of the @code{@@verbatiminclude} file argument.
 @end deftypefn
 
 If La@TeX{}2HTML is used, @code{@@tex} regions are handled differently,
@@ -4509,6 +4534,9 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @item $format_list_item_texi should now modify directly the @@item argument
   and apply the @@-command given as @@table argument. Correspondingly, 
   some arguments of $table_item have been removed.
+@item Formatting of titlepage chaned, and @@title, @@subtitle and @@author
+  are now handled by $line_command
+@item verbatiminclude is now a $raw command argument distinct from verbatim.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

@@ -79,8 +79,14 @@ tar.texi(,29) @syncodeindex vr cp
 tar.texi(,30) 
 tar.texi(,53) 
 tar.texi(,54) @dircategory Archiving
+tar.texi(,55) @direntry
+tar.texi(,56) * Tar: (tar).                   Making tape (or disk) archives.
+tar.texi(,57) @end direntry
 tar.texi(,58) 
 tar.texi(,59) @dircategory Individual utilities
+tar.texi(,60) @direntry
+tar.texi(,61) * tar: (tar)tar invocation.                     Invoking @GNUTAR{}.
+tar.texi(,62) @end direntry
 tar.texi(,63) 
 tar.texi(,64) @shorttitlepage @acronym{GNU} @command{tar}
 tar.texi(,65) 

@@ -15,6 +15,9 @@ mini_ker.texi(,25)
 mini_ker.texi(,26) @syncodeindex fn vr
 mini_ker.texi(,27) 
 mini_ker.texi(,28) @dircategory Miscellaneous
+mini_ker.texi(,29) @direntry
+mini_ker.texi(,30) * Miniker: (mini_ker).            The mini_ker modeling tool.
+mini_ker.texi(,31) @end direntry
 mini_ker.texi(,32) 
 mini_ker.texi(,33) 
 mini_ker.texi(,48) 

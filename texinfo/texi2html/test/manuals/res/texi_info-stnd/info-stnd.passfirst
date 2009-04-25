@@ -13,6 +13,10 @@ info-stnd.texi(,10) @comment %**end of header
 info-stnd.texi(,11) 
 info-stnd.texi(,34) 
 info-stnd.texi(,35) @dircategory Texinfo documentation system
+info-stnd.texi(,36) @direntry
+info-stnd.texi(,37) * info standalone: (info-stnd).            Read Info documents without Emacs.
+info-stnd.texi(,38) * infokey: (info-stnd)Invoking infokey.    Compile Info customizations.
+info-stnd.texi(,39) @end direntry
 info-stnd.texi(,40) 
 info-stnd.texi(,49) 
 info-stnd.texi(,50) @contents

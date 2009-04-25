@@ -37,6 +37,13 @@ texinfo.texi(,34) @comment %**end of header
 texinfo.texi(,35) 
 texinfo.texi(,57) 
 texinfo.texi(,58) @dircategory Texinfo documentation system
+texinfo.texi(,59) @direntry
+texinfo.texi(,60) * Texinfo: (texinfo).           The GNU documentation format.
+texinfo.texi(,61) * install-info: (texinfo)Invoking install-info. Update info/dir entries.
+texinfo.texi(,62) * texi2dvi: (texinfo)Format with texi2dvi.      Print Texinfo documents.
+texinfo.texi(,63) * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
+texinfo.texi(,64) * makeinfo: (texinfo)Invoking makeinfo.         Translate Texinfo source.
+texinfo.texi(,65) @end direntry
 texinfo.texi(,66) 
 texinfo.texi(,67) @c Before release, run C-u C-c C-u C-a (texinfo-all-menus-update with a
 texinfo.texi(,68) @c prefix arg).  This updates the node pointers, which texinfmt.el needs.

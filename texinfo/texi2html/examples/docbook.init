@@ -1470,7 +1470,7 @@ sub docbook_raw($$)
     my $style = shift;
     my $text = shift;
 
-    if ($style eq 'verbatim')
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude')
     {
         return docbook_add_id('screen').'>' . &$protect_text($text) . '</screen>';
     }

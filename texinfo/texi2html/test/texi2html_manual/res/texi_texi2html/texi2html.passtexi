@@ -69,6 +69,9 @@ texi2html.texi(,78) @c I think the conversion script should be found
 texi2html.texi(,79) @c where the documentation system lives.
 texi2html.texi(,80) @c What do you think?
 texi2html.texi(,81) @dircategory Texinfo documentation system
+texi2html.texi(,82) @direntry
+texi2html.texi(,83) * Texi2html: (texi2html).  Texinfo to HTML Converter.
+texi2html.texi(,84) @end direntry
 texi2html.texi(,85) @c --------------------------------------------------------
 texi2html.texi(,119) @c --------------------------------------------------------
 texi2html.texi(,120) @titlepage

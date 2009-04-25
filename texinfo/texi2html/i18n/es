@@ -68,7 +68,6 @@ $LANGUAGES->{'es'} = {
                        'November' => 'noviembre',
                        'October' => 'octubre',
                        'Overview' => 'Panor@\'amica',
-                       'Overview:' => 'Panor@\'amica:',
                        'Prev' => 'Ant',
                        'PrevFile' => 'ArchivoAnt',
                        'Previous file' => 'Archivo anterior',
@@ -125,6 +124,7 @@ $LANGUAGES->{'es'} = {
                      };
 
 $T2H_OBSOLETE_STRINGS->{'es'} = {
+                                  'Overview:' => 'Panor@\'amica:',
                                   'See' => 'V@\'ease',
                                   'section' => 'secci@\'on',
                                   'see' => 'v@\'ease'

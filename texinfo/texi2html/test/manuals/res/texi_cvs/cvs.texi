@@ -54,7 +54,13 @@
 
 
 @dircategory GNU Packages
+@direntry
+* CVS: (cvs).                   Concurrent Versions System
+@end direntry
 @dircategory Individual utilities
+@direntry
+* cvs: (cvs)CVS commands.       Concurrent Versions System
+@end direntry
 
 @comment The titlepage section does not appear in the Info file.
 @titlepage

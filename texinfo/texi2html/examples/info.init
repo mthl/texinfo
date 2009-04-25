@@ -28,6 +28,8 @@ use Data::Dumper;
 
 use strict;
 
+$Data::Dumper::Maxdepth = 5;
+
 $USE_NODES = 1;
 $USE_SECTIONS = 0;
 @EXPAND = ('info');
@@ -58,6 +60,10 @@ $no_paragraph_commands{'anchor'} = 1;
 $misc_command{'exdent'}->{'keep'} = 1;
 $misc_command{'noindent'}->{'keep'} = 1;
 $misc_command{'indent'}->{'keep'} = 1;
+
+%line_command_map = ( 
+   'dircategory' => ''
+);
 
 # sc and var upcase.
 my @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
@@ -261,6 +267,8 @@ $float              = \&info_default_float;
 $listoffloats_entry = \&info_default_listoffloats_entry;
 $listoffloats       = \&info_default_listoffloats;
 $colon_command      = \&info_default_colon_command;
+$raw                = \&info_default_raw;
+$line_command       = \&info_default_line_command;
 
 
 sub info_default_accent($$$)
@@ -348,6 +356,8 @@ print STDERR "ZZZZZZZZZZZZZzz `$line'\n";
 # FIXME initialize
 my %info_default_state_map = ();
 my $info_default_state;
+my $info_default_out_file_nr = 0;
+my $info_default_dir_specification = '';
 
 sub info_default_reset_state($)
 {
@@ -978,6 +988,9 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               }
               elsif ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
               {
+                 # empty paragraph
+                 goto new_text if (!$content->{'content'});
+
                  my $paragraphindent = $Texi2HTML::THISDOC{'paragraphindent'};
                  $paragraphindent = $Texi2HTML::Config::PARAGRAPHINDENT if (!defined($paragraphindent));
                  $paragraphindent = 0 if ($paragraphindent eq 'none');
@@ -1670,11 +1683,15 @@ sub info_default_print_page_head($)
     ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, $info_default_max_column);
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
+    if ($info_default_dir_specification)
+    {
+        $result .= "$info_default_dir_specification\n";
+    }
+    print $fh $result;
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
     $info_state->{'offset_in_file'} = length($result);
     $info_state->{'blank_line'} = 1 if ($Texi2HTML::THISDOC{'copying_comment'} eq '');
-    print $fh $result;
 }
 
 sub info_default_parent_format($)
@@ -2088,6 +2105,14 @@ sub info_default_end_section($$$)
     my $fh = shift;
     my $end_foot_navigation = shift;
     my $element = shift;
+    my $state = $Texi2HTML::THISDOC{'state'};
+    my $info_state = info_default_get_state ($state);
+
+    if ($info_state->{'offset_in_file'} > (1+$info_default_out_file_nr) * $SPLIT_SIZE)
+    {
+       $info_default_out_file_nr++;
+       print STDERR "X-$info_default_out_file_nr: $info_state->{'offset_in_file'}\n";
+    }
 }
 
 sub info_default_one_section($$)
@@ -2882,6 +2907,35 @@ sub info_default_listoffloats($$$)
 #print STDERR "JJJJJJJJJJj listoffloats not in top\n" if ($in_format);
    $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
    return info_default_store_text($state,$result,'listoffloats');
+}
+
+sub info_default_raw($$)
+{
+    my $style = shift;
+    my $text = shift;
+    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude' or $expanded)
+    {
+        return info_default_store_text(undef,$text, $style);
+    }
+    if ($style eq 'direntry')
+    {
+        $info_default_dir_specification .= "START-INFO-DIR-ENTRY\n" 
+           .$text. "END-INFO-DIR-ENTRY\n";
+    }
+    return '';
+}
+
+sub info_default_line_command($$$$)
+{
+    my $command = shift;
+    my $arg_text = shift;
+    my $arg_texi = shift;
+    my $state = shift;
+
+    return '' if ($arg_text eq '');
+    $info_default_dir_specification .= "INFO-DIR-SECTION $arg_text\n";
+    return '';
 }
 
 1;

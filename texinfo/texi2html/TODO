@@ -268,11 +268,9 @@ texi2html all the style commands are removed without extra formatting.
   texi2html uses simple_format which removes most @commands but uses 
   entities
 
-* clean formatting/def_cmds.texi to remove invalid texinfo and put it
-  in an ifset.
-
-* if a 'term' triggers no_paragraph, the ouput may be more valid. But a 
-  center won't have any effect in it.
+* Certainly an obsolete issue, now @center cannot be in @item: 
+  if a 'term' triggers no_paragraph, the ouput 
+  may be more valid. But a center won't have any effect in it.
 
 * texi2dvi doesn't accept @table in @format
 
@@ -347,17 +345,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * makeinfo --no-header implies --no-split (and default for out file is stdout).
 
-* in @titlepage, @title, @authors and similar commands should be 
-  formatted when they happen and not at the beginning.
-
-     @titlepage
-     @titlefont{Software}
-     @sp 1
-     @title for something
-     @subtitle subtitle
-     @author by Somebody and Someone
-     @author and Other people
-
 * makeinfo.init not uptodate with makeinfo --html. Index entries link back
   now. And also look at floats?
   menu name is used instead of node in menu links url text.
@@ -375,9 +362,9 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * no line numbers when in footnotes.
 
-* ignore spaces at end of @item line for @(|v|f)table. Also maybe 
-  after @item, but to be careful with things prepended or commands used
-  in for the whole line.
+* Certainly partly done: ignore spaces at end of @item line for @(|v|f)table. 
+  Also maybe after @item, but to be careful with things prepended or 
+  commands used in for the whole line.
 
 * add --command command line that gives inserted lines.
 
@@ -430,7 +417,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * @image in info, remove last end of line in file.txt
 
-* have a special debug more where text processing is traced. It means
+* have a special debug mode where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 
   other like substitute_text) and shown, now that there is a nice 
   context information.
@@ -450,3 +437,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   horizontal and vertical rules.
 
 * @anchor{} should always ignore following whitespace (including newlines)
+
+* in info, @. @! and @? should always be followed by at least 2 spaces
+  even in text, not only on end of lines.

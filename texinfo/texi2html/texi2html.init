@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.186 2009-04-23 21:19:43 pertusus Exp $
+# $Id: texi2html.init,v 1.187 2009-04-25 14:54:41 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -294,6 +294,9 @@ $PARAGRAPHINDENT = 3;
 # The following can only be set in the init file
 #
 ##############################################################################
+
+# --split-size
+$SPLIT_SIZE = 300000;
 
 # If true do table of contents even if there is no @content
 $DO_CONTENTS = undef;
@@ -1108,24 +1111,17 @@ sub T2H_DEFAULT_print_Top($$$)
     my $has_top_heading = shift;
     my $element = shift;
 
-    # for redefining navigation buttons use:
-    # my $buttons = [...];
-    # as it is, 'Top', 'Contents', 'Index', 'About' are printed
-    my $buttons = \@MISC_BUTTONS;
-
-    my $nw;
     # a dirty hack. A section is considered to be empty if there are 2
     # lines or less in it. Indeed, this catches the sectionning command like
     # @top and the @node.
     if (scalar(@$Texi2HTML::THIS_SECTION) > 2)
     {
         # if top-level node has content
-        $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
+        main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
     {
         # top-level node is fully enclosed in @ifnothtml
-        # print fulltitle, subtitle, author, Overview or table of contents
         # redo the titlepage with the actual state
         my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_format) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
 
@@ -1136,13 +1132,13 @@ sub T2H_DEFAULT_print_Top($$$)
         if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'})
         {
              print $fh '<h2> ' . $Texi2HTML::NAME{'Overview'} . "</h2>\n" . "<blockquote\n";
-             my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
+             main::print_lines($fh, $Texi2HTML::OVERVIEW);
              print $fh "</blockquote>\n";
         }
         elsif (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::THISDOC{'setcontentsaftertitlepage'})
         {
              print $fh '<h1> ' . $Texi2HTML::NAME{'Contents'}  . "</h1>\n";
-             my $nw = main::print_lines($fh, $Texi2HTML::TOC_LINES);
+             main::print_lines($fh, $Texi2HTML::TOC_LINES);
         }
     }
 }
@@ -1859,33 +1855,44 @@ sub T2H_DEFAULT_titlepage($$$$)
     my $titlepage_no_texi = shift;
     my $titlepage_simple_format = shift;
 
-    my $result = '';
-    my $title = '';
-    $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
-    if ($title ne ''
-        or @{$Texi2HTML::THISDOC{'subtitles'}} 
-        or @{$Texi2HTML::THISDOC{'authors'}})
-    {     
-        $result = "<div align=\"center\">\n";
-        if ($title ne '')
-        {
-            $result .= '<h1>' . $title . "</h1>\n";
-        }    
-        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
-        {
-            $result .= '<h2>' . $subtitle . "</h2>\n";
-        }
-        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
-        {
-            $result .= '<strong> ' . $author . " </strong><br>\n";
-        }
-        $result .= "</div>\n$DEFAULT_RULE\n";
+#    my $result = '';
+#    my $title = '';
+#    $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+#    if ($title ne ''
+#        or @{$Texi2HTML::THISDOC{'subtitles'}} 
+#        or @{$Texi2HTML::THISDOC{'authors'}})
+#    {     
+#        $result = "<div align=\"center\">\n";
+#        if ($title ne '')
+#        {
+#            $result .= '<h1>' . $title . "</h1>\n";
+#        }    
+#        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
+#        {
+#            $result .= '<h2>' . $subtitle . "</h2>\n";
+#        }
+#        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
+#        {
+#            $result .= '<strong> ' . $author . " </strong><br>\n";
+#        }
+#        $result .= "</div>\n$DEFAULT_RULE\n";
+#    }
+
+#    $Texi2HTML::TITLEPAGE = $titlepage_text;
+
+#    $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
+ 
+    $Texi2HTML::TITLEPAGE = $titlepage_text;
+    if ($titlepage_text eq '')
+    {
+       my $title = '';
+       $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+       if ($title ne '')
+       {
+           $Texi2HTML::TITLEPAGE = '<h1 align="center">'."$title</h1>\n$DEFAULT_RULE\n";
+       }
     }
 
-    $Texi2HTML::TITLEPAGE = $titlepage_text;
-
-    $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
-    
     if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
     {
         foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
@@ -3037,7 +3044,8 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
 %stop_paragraph_command = (
  'titlefont' => 1,
  'insertcopying' => 1,
- 'sp' => 1
+ 'sp' => 1,
+ 'verbatiminclude' => 1
 );
 
 # on bug-texinfo verified that code_style shouldn't be used for anything
@@ -3162,6 +3170,12 @@ foreach my $style (keys(%style_map))
        $command_type{$style} = 'style';
    }
 }
+
+%line_command_map = (
+       'title'    => 'h1',
+       'subtitle' => 'h3 align="right"',
+       'author'   => 'strong',
+);
 
 %unicode_diacritical = (
        'H'          => '030B', 
@@ -3996,7 +4010,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
      'ifnotinfo' => 1,
      'ifnotxml' => 1,
      'ifnotdocbook' => 1, 
-     'direntry' => 0,
+     'direntry' => 'raw',
      'verbatim' => 'raw', 
      'ifclear' => 'value', 
      'ifset' => 'value' ,
@@ -4427,6 +4441,7 @@ $insertcopying              = \&t2h_default_insertcopying;
 $colon_command              = \&t2h_default_colon_command;
 $simple_command             = \&t2h_default_simple_command;
 $thing_command              = \&t2h_default_thing_command;
+$line_command               = \&t2h_default_line_command;
 
 # return the line after preserving things according to misc_command map.
 # You should not change it. It is here, nevertheless, to be used
@@ -6052,8 +6067,9 @@ sub t2h_default_raw($$)
     my $style = shift;
     my $text = shift;
     my $expanded = 1 if (grep {$style eq $_} @EXPAND);
-    if ($style eq 'verbatim' or ($style eq 'tex' and $expanded))
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude' or ($style eq 'tex' and $expanded))
     {
+        $style = 'verbatim' if ($style eq 'verbatiminclude');
         return "<pre class=\"$style\">" . &$protect_text($text) . '</pre>';
     }
     elsif ($style eq 'html' and $expanded)
@@ -6077,7 +6093,7 @@ sub t2h_default_raw_no_texi($$)
 {
     my $style = shift;
     my $text = shift;
-    if ($style eq 'verbatim' or grep {$style eq $_} @EXPAND)
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude' or grep {$style eq $_} @EXPAND)
     {
        return $text;
     }
@@ -6681,6 +6697,31 @@ sub t2h_default_tab_item_texi($$$$$$)
       $t2h_default_multitable_stack[-1]->[1] = -1;
    }
    return undef;
+}
+
+sub t2h_default_line_command($$$$)
+{
+    my $command = shift;
+    my $arg_text = shift;
+    my $arg_texi = shift;
+    my $state = shift;
+
+    return '' if ($arg_text eq '');
+    my $style = $line_command_map{$command};
+    if ($style)
+    {
+        my $attribute_text = '';
+        if ($style =~ /^(\w+)(\s+.*)/)
+        {
+            $style = $1;
+            $attribute_text = $2;
+        }
+        $arg_text = "<${style}$attribute_text>$arg_text</$style>";
+    }
+    $arg_text .= "<br>" if ($command eq 'author');
+    $arg_text .= "\n";
+    $arg_text .= "$DEFAULT_RULE\n" if ($command eq 'title');
+    return $arg_text;
 }
 
 1;

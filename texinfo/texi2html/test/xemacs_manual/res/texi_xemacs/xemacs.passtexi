@@ -3,6 +3,9 @@ xemacs.texi(,3) @comment  node-name,  next,  previous,  up
 xemacs.texi(,4) 
 xemacs.texi(,5) 
 xemacs.texi(,7) @dircategory XEmacs Editor
+xemacs.texi(,8) @direntry
+xemacs.texi(,9) * XEmacs: (xemacs).		XEmacs Editor.
+xemacs.texi(,10) @end direntry
 xemacs.texi(,11) 
 xemacs.texi(,12) This file documents the XEmacs editor.
 xemacs.texi(,13) 

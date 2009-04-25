@@ -36,6 +36,10 @@ Software Foundation raise funds for GNU development.''
 @end copying
 
 @dircategory Texinfo documentation system
+@direntry
+* info standalone: (info-stnd).            Read Info documents without Emacs.
+* infokey: (info-stnd)Invoking infokey.    Compile Info customizations.
+@end direntry
 
 @titlepage
 @title GNU Info

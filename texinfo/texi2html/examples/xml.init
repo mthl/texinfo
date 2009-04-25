@@ -51,6 +51,8 @@ $things_map{'LaTeX'} = '&latex;';
 $stop_paragraph_command{'caption'} = 1;
 $stop_paragraph_command{'shortcaption'} = 1;
 
+%line_command_map = ();
+
 $format_map{'copying'} = '';
 $format_map{'titlepage'} = 'titlepage';
 $format_map{'documentdescription'} = 'documentdescription';
@@ -1183,7 +1185,7 @@ sub xml_raw($$)
     my $style = shift;
     my $text = shift;
 
-    if ($style eq 'verbatim')
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude')
     {
         return '<verbatim xml:space="preserve">' . &$protect_text($text) . '</verbatim>';
     }

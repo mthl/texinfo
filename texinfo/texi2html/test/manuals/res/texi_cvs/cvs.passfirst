@@ -53,7 +53,13 @@ cvs.texi(,84) @c such that keywords are not expanded in the generated html.
 cvs.texi(,90) 
 cvs.texi(,96) 
 cvs.texi(,97) @dircategory GNU Packages
+cvs.texi(,98) @direntry
+cvs.texi(,99) * CVS: (cvs).                   Concurrent Versions System
+cvs.texi(,100) @end direntry
 cvs.texi(,101) @dircategory Individual utilities
+cvs.texi(,102) @direntry
+cvs.texi(,103) * cvs: (cvs)CVS commands.       Concurrent Versions System
+cvs.texi(,104) @end direntry
 cvs.texi(,105) 
 cvs.texi(,106) @comment The titlepage section does not appear in the Info file.
 cvs.texi(,127) 

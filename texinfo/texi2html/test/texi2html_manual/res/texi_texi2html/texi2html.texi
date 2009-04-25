@@ -70,6 +70,9 @@
 @c where the documentation system lives.
 @c What do you think?
 @dircategory Texinfo documentation system
+@direntry
+* Texi2html: (texi2html).  Texinfo to HTML Converter.
+@end direntry
 @c --------------------------------------------------------
 @c --------------------------------------------------------
 @titlepage

@@ -1,3 +1,15 @@
+2009-04-25   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle @direntry and @dircategory 
+	better.
+	Add a function reference $line_command and a hash %line_command_map
+	for processing line @-commands and use it for @title, @subtitle and 
+	@author, with a corresponding change in the titlepage formatting 
+	also allowing to have something more in line with what texi2dvi 
+	produces.
+	verbatiminclude is now a $raw command argument distinct from 
+	verbatim.
+
 2009-04-23   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: use the float name and number as 

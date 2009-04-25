@@ -7,6 +7,11 @@
 @setfilename viper
 
 @dircategory Editors
+@direntry
+* VIPER: (viper).       The newest Emacs VI-emulation mode.
+                          (also, A VI Plan for Emacs Rescue
+                           or the VI PERil.)
+@end direntry
 
 
 @titlepage
