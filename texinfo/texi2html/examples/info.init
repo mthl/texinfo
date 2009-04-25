@@ -269,6 +269,7 @@ $listoffloats       = \&info_default_listoffloats;
 $colon_command      = \&info_default_colon_command;
 $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
+$element_file_name  = \&info_default_element_file_name;
 
 
 sub info_default_accent($$$)
@@ -356,8 +357,10 @@ print STDERR "ZZZZZZZZZZZZZzz `$line'\n";
 # FIXME initialize
 my %info_default_state_map = ();
 my $info_default_state;
-my $info_default_out_file_nr = 0;
+my $info_default_out_file_nr = 1;
 my $info_default_dir_specification = '';
+my @info_default_pending_indirect = ();
+my @info_default_pending_footnotes = ();
 
 sub info_default_reset_state($)
 {
@@ -1668,17 +1671,16 @@ sub info_default_style($$$$$$$$$)
    return $begin.$text.$end;
 }
 
-sub info_default_print_page_head($)
+sub info_default_header ()
 {
-    my $fh = shift;
-    my $setfilename = $Texi2HTML::THISDOC{'setfilename'} if (defined($Texi2HTML::THISDOC{'setfilename'}));
-    $setfilename = $Texi2HTML::THISDOC{'file_base_name'}.$EXTENSION if (!defined($setfilename));
+    return $Texi2HTML::THISDOC{'info_header'} if (defined($Texi2HTML::THISDOC{'info_header'}));
     #my $result = "This is $setfilename, produced by $Texi2HTML::THISDOC{program} from $Texi2HTML::THISDOC{'input_file_name'}.\n\n";
-    # this is wrong, $Texi2HTML::THISDOC{'input_file_name'} should be used 
+    # the following is wrong, $Texi2HTML::THISDOC{'input_file_name'} 
+    # should be used 
     # directly, but then tests are not reproducible in out of source builds
     my $basename = $Texi2HTML::THISDOC{'input_file_name'};
-    $basename =~ s/^.*\///;
-    my $result = "This is $setfilename, produced by makeinfo version 4.13 from $basename. ";
+    $basename =~ s/^.*\/// if ($TEST);
+    my $result = "This is $Texi2HTML::THISDOC{'filename'}->{'top'}, produced by makeinfo version 4.13 from $basename. ";
     my $dummy;
     ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, $info_default_max_column);
     $result .= "\n\n";
@@ -1687,10 +1689,19 @@ sub info_default_print_page_head($)
     {
         $result .= "$info_default_dir_specification\n";
     }
-    print $fh $result;
+    $Texi2HTML::THISDOC{'info_header'} = $result;
+    return $result;
+}
+
+sub info_default_print_page_head($)
+{
+    my $fh = shift;
+    my $header = info_default_header();
+    print $fh "".$header;
+
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
-    $info_state->{'offset_in_file'} = length($result);
+    $info_state->{'offset_in_file'} += length($header);
     $info_state->{'blank_line'} = 1 if ($Texi2HTML::THISDOC{'copying_comment'} eq '');
 }
 
@@ -1787,7 +1798,7 @@ sub info_default_node_line($$)
 {
     my $element = shift;
     my $info_state = shift;
-    my $result = "\x{1F}\nFile: $element->{'file'},  Node: $element->{'text'}";
+    my $result = "\x{1F}\nFile: $Texi2HTML::THISDOC{'filename'}->{'top'},  Node: $element->{'text'}";
     if (defined($element->{'NodeNext'}))
     {
        $result .= ','.&$I('  Next: %{node_next}', {'node_next' => $element->{'NodeNext'}->{'text'}});
@@ -1986,10 +1997,35 @@ sub info_default_print_page_foot($)
    my $fh = shift;
    my $state = $Texi2HTML::THISDOC{'state'};
    my $info_state = info_default_get_state ($state);
+   my $indirect = 0;
    return unless (defined ($info_state->{'pending_tags'}));
+   $indirect = 1 if ($info_default_out_file_nr > 1);
+   if ($indirect)
+   {
+       close ($Texi2HTML::THISDOC{'FH'});
+       unless (rename ("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}", "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}-1"))
+       {
+           main::echo_warn("Rename $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n");
+       }
+       unless (open (INDIRECT, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}"))
+       {
+           main::echo_warn("Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n");
+       }
+       print INDIRECT "".info_default_header();
+       print INDIRECT "\x{1F}\nIndirect:";
+       foreach my $indirect (@info_default_pending_indirect)
+       {
+           print INDIRECT "\n$indirect->{'file'}: $indirect->{'offset'}";
+       }
+       $fh = \*INDIRECT;
+   }
    # makeinfo seems to add systematically an additional \n, done just below
    print $fh "\n\x{1F}\nTag Table:\n";
-   # 
+   
+   if ($indirect)
+   {
+       print $fh "(Indirect)\n";
+   }
    foreach my $element (@{$info_state->{'pending_tags'}})
    {
       my $prefix;
@@ -2021,7 +2057,6 @@ sub info_default_footnote_texi($$$)
     return "($info_default_footnote_index) $text";
 }
 
-my @info_default_pending_footnotes;
 sub info_default_print_section
 {
     my $fh = shift;
@@ -2108,10 +2143,18 @@ sub info_default_end_section($$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
 
-    if ($info_state->{'offset_in_file'} > (1+$info_default_out_file_nr) * $SPLIT_SIZE)
+    if ($info_state->{'offset_in_file'} > ($info_default_out_file_nr) * $SPLIT_SIZE)
     {
+       if ($info_default_out_file_nr == 1)
+       {
+          push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'pending_tags'}->[0]->{'info_offset'} };
+       }
        $info_default_out_file_nr++;
+       close($Texi2HTML::THISDOC{'FH'});
+       main::open_out_file("$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr");
        print STDERR "X-$info_default_out_file_nr: $info_state->{'offset_in_file'}\n";
+       &$print_page_head($Texi2HTML::THISDOC{'FH'});
+       push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'offset_in_file'}};
     }
 }
 
@@ -2936,6 +2979,22 @@ sub info_default_line_command($$$$)
     return '' if ($arg_text eq '');
     $info_default_dir_specification .= "INFO-DIR-SECTION $arg_text\n";
     return '';
+}
+
+# info is special, since it doesn't use the basename but directly the 
+# setfilename output, contrary to all the other formats
+sub info_default_element_file_name($$$)
+{
+    my $element = shift;
+    my $type = shift;
+    my $prefix = shift;
+
+    if ($type eq 'doc' and defined($Texi2HTML::THISDOC{'setfilename'}))
+    {
+       $Texi2HTML::THISDOC{'extension'} = '';
+       return $Texi2HTML::THISDOC{'setfilename'};
+    }
+    return undef;
 }
 
 1;
