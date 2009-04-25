@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.275 2009-04-25 14:54:42 pertusus Exp $
+# $Id: texi2html.pl,v 1.276 2009-04-25 23:05:00 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4670,6 +4670,7 @@ sub misc_command_texi($$$$)
              $filename =~ s/\s*$//;
              #$filename = substitute_line($filename, {'code_style' => 1});
              $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
+             $Texi2HTML::THISDOC{$macro} = $filename;
              # remove extension
              $filename =~ s/\.[^\.]*$//;
              init_with_file_name ($filename) if ($filename ne '');
@@ -7630,7 +7631,9 @@ sub pass_text($$)
     unless ($Texi2HTML::Config::SPLIT)
     {
         &$Texi2HTML::Config::print_page_foot($Texi2HTML::THISDOC{'FH'});
-        close_out ($Texi2HTML::THISDOC{'FH'});
+        # this leaves the possibility for external code to close the file
+        # without erroring out
+        #close_out ($Texi2HTML::THISDOC{'FH'});
     }
     pop_state();
 }
@@ -7864,7 +7867,7 @@ sub open_out($)
     return *FILE;
 }
 
-# FIXME not used when split 
+# FIXME not used for main out files only for special files
 sub close_out($;$)
 {
     my $FH = shift;
