@@ -84,29 +84,30 @@ menus.texi(,89) * subsubsection::
 menus.texi(,90) Menu comment
 menus.texi(,91) 
 menus.texi(,92) * a description:(manual) other manual node.   Chapter 2
-menus.texi(,94) @end example
-menus.texi(,95) @end menu
-menus.texi(,96) 
-menus.texi(,97) @anchor{anchor}
-menus.texi(,98) 
-menus.texi(,100) @node subsubsection
-menus.texi(,101) @subsubsection subsubsection
-menus.texi(,103) 
-menus.texi(,104) @node chapter2
-menus.texi(,105) @chapter chapter 2
-menus.texi(,106) 
-menus.texi(,107) @example
-menus.texi(,108) @menu
-menus.texi(,109) * section in chapter 2:: in description @cartouche
-menus.texi(,110) in cartouche
-menus.texi(,111) @end cartouche
-menus.texi(,112) @end menu
-menus.texi(,113) @end example
-menus.texi(,114) 
-menus.texi(,115) @node section in chapter 2
-menus.texi(,116) @section section in chapter 2
-menus.texi(,117) 
-menus.texi(,118) @contents
-menus.texi(,119) @shortcontents
-menus.texi(,120) 
-menus.texi(,121) @bye
+menus.texi(,93) * Other file: (foo).            Test
+menus.texi(,95) @end example
+menus.texi(,96) @end menu
+menus.texi(,97) 
+menus.texi(,98) @anchor{anchor}
+menus.texi(,99) 
+menus.texi(,101) @node subsubsection
+menus.texi(,102) @subsubsection subsubsection
+menus.texi(,104) 
+menus.texi(,105) @node chapter2
+menus.texi(,106) @chapter chapter 2
+menus.texi(,107) 
+menus.texi(,108) @example
+menus.texi(,109) @menu
+menus.texi(,110) * section in chapter 2:: in description @cartouche
+menus.texi(,111) in cartouche
+menus.texi(,112) @end cartouche
+menus.texi(,113) @end menu
+menus.texi(,114) @end example
+menus.texi(,115) 
+menus.texi(,116) @node section in chapter 2
+menus.texi(,117) @section section in chapter 2
+menus.texi(,118) 
+menus.texi(,119) @contents
+menus.texi(,120) @shortcontents
+menus.texi(,121) 
+menus.texi(,122) @bye

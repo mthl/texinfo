@@ -90,6 +90,7 @@ Menu comment
 Menu comment
 
 * a description:(manual) other manual node.   Chapter 2
+* Other file: (foo).            Test
 @end ifset
 @end example
 @end menu

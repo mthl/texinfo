@@ -154,6 +154,11 @@ Menu comment
 <menutitle> a description</menutitle>
 <menucomment>   Chapter 2
 </menucomment>
+</menuentry><menuentry>
+<menunode> (foo)</menunode>
+<menutitle> Other file</menutitle>
+<menucomment>            Test
+</menucomment>
 </menuentry></example></menu>
 
 <para><anchor name="anchor"></anchor>
