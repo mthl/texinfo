@@ -131,7 +131,7 @@ File: comments.info,  Node: node,  Next: bidule,  Prev: Top,  Up: Top
 * truc::
 
 
-File: comments.info,  Node: truc,  Next: bidule,  Prev: node,  Up: node
+File: comments.info,  Node: truc,  Up: node
 
 1.1 section
 ===========
@@ -163,7 +163,7 @@ Tag Table:
 Node: Top78
 Node: node2880
 Node: truc2993
-Node: bidule3263
-Node: bidule23449
+Node: bidule3235
+Node: bidule23421
 
 End Tag Table
