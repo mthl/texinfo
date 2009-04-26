@@ -1685,6 +1685,7 @@ sub info_default_header ()
     # directly, but then tests are not reproducible in out of source builds
     my $basename = $Texi2HTML::THISDOC{'input_file_name'};
     $basename =~ s/^.*\/// if ($TEST);
+    $basename = $STDIN_DOCU_NAME if ($basename eq '-');
     my $result = "This is $Texi2HTML::THISDOC{'filename'}->{'top'}, produced by makeinfo version 4.13 from $basename. ";
     my $dummy;
     ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, $info_default_max_column);
@@ -1803,7 +1804,9 @@ sub info_default_node_line($$)
 {
     my $element = shift;
     my $info_state = shift;
-    my $result = "\x{1F}\nFile: $Texi2HTML::THISDOC{'filename'}->{'top'},  Node: $element->{'text'}";
+    my $outfile = $Texi2HTML::THISDOC{'filename'}->{'top'};
+    $outfile = $STDOUT_DOCU_NAME if ($outfile eq '-');
+    my $result = "\x{1F}\nFile: $outfile,  Node: $element->{'text'}";
     if (defined($element->{'NodeNext'}))
     {
        $result .= ','.&$I('  Next: %{node_next}', {'node_next' => $element->{'NodeNext'}->{'text'}});
@@ -2995,11 +2998,17 @@ sub info_default_element_file_name($$$)
     my $type = shift;
     my $prefix = shift;
 
-    if ($type eq 'doc' and defined($Texi2HTML::THISDOC{'setfilename'}) and not defined($OUT))
+    my $outname;
+    $outname = $OUT if (defined($OUT) and $Texi2HTML::THISDOC{'input_file_number'} == 0);
+    if ($type eq 'doc') 
     {
-       $Texi2HTML::THISDOC{'extension'} = '';
-       return $Texi2HTML::THISDOC{'setfilename'};
+       if (defined($Texi2HTML::THISDOC{'setfilename'}) and !defined($outname))
+       {
+          $Texi2HTML::THISDOC{'extension'} = '';
+          return $Texi2HTML::THISDOC{'setfilename'};
+       }
     }
+
     return undef;
 }
 

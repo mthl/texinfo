@@ -75,8 +75,8 @@ text
 @end table
 }
 
-* test @printindex in diverse contexts
-  and handle right things like
+* test @printindex in diverse contexts and handle right, or complain about
+  things like
 @code{
 @printindex cp
 }
@@ -86,11 +86,9 @@ text
 writer to add a line. There is a Config hash now for @style_map commands.
 formats automatically stop paragraphs.
 
-* honor stop_paragraph_command for misc_commands?
-
 * @macro definition in @ifset is parsed but ignored. So in the following, the
-@end ifset appearing in the macro is ignored, and the macro isn't defined.
-Don't know if it's right.
+@end ifset appearing in the macro is ignored if 'a' is not set, and the 
+macro isn't defined.
 
 @ifset a
 @macro bidule
@@ -142,18 +140,19 @@ function clean_antispam() {
   menu_comment in makeinfo --xml treated as normal text.
   the documentation, however uses the same words than in texi2html.
 
-* Tests/formatting/code_not_closed.texi should trigger 2 errors, none
+* tests/invalid/code_not_closed.texi should trigger 2 errors, none
   are triggered currently.
 
-* a FIXME in Tests/formatting/detailmenus.texi with a warning missing 
+* a FIXME in test/formatting/detailmenus.texi with a warning missing 
   for a menu entry for a spurious entry with no corresponding node entry.
   more precisely the node is not among the direct subsections.
 
-* roff is certainly not uptodate. At least the @quote* and @guillem*
+* roff is not uptodate. At least the @quote* and @guillem* and many 
+  others.
 
 * the code of xml.c in makeinfo shows specific treatement of & in 
-  definition arguments. I don't know what it corresponds with. All
-  the definition argument parsing stuff is certainly worth asking
+  definition arguments. I don't know what it corresponds with. The
+  formal definition argument parsing stuff is certainly worth asking
   on the texinfo list.
 
 * something like
@@ -164,34 +163,6 @@ function clean_antispam() {
   is error free.
 
 * formatting/nodename_parentheses.texi gives wrong output.
-
-* in @example, makeinfo --xml 
-
-@ followed by a space
-&space;@ followed by a tab
-&space;@ followed 
-
-texi2html
-@ followed by a space
-&space;
-@ followed by a tab
-&space;
-@ followed 
-
-* in xml 
-@itemize
-@item i--temize
-@end itemize
-
-makeinfo:
-<itemize><itemfunction>&bullet;</itemfunction><item>
-i--temize
-</item>
-        </itemize>
-texi2html:
-<itemize><itemfunction>&bullet;</itemfunction><item> i--temize
-</item>
-</itemize>
 
 * in xml
 @itemize @bullet{} a--n itemize line
@@ -213,21 +184,6 @@ texi2html:
 <item> i--tem 2
 </item>
 </itemize>
-
-* in xml
-@enumerate
-@item e--numerate
-@end enumerate
-
-makeinfo:
-<enumerate first="1"><item>
-e--numerate
-</item>
-        </enumerate>
-texi2html:
-<enumerate first="1"><item> e--numerate
-</item>
-</enumerate>
 
 * add @detailmenu in coverage, and @group
 
@@ -289,11 +245,7 @@ texi2html all the style commands are removed without extra formatting.
 
 * decide @documentencoding @. And maybe change regexp.
 
-* html32 is not up to date: 
-Error at line 2159, character 8:  unknown entity "euro"
-Error at line 2161, character 7:  unknown entity "le"
-Error at line 2162, character 7:  unknown entity "ge"
-
+* html32 
 For headings. In normal it is strong.
 Error at line 2616, character 4:  element "H1" not allowed here; check
         which elements this element may be contained within
@@ -390,9 +342,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   cannot be done with texi2html -E.
 
 * add 0x7F as a comment character (ignore to eol).
-
-* add as a filter when things come from STDIN, and there is no file in 
-  argument. If there is no setfilename, file name is stdin.info.
 
 * texi2html doesn't understand `-o /dev/null'.  It aborts with
       *** /dev/ not writable

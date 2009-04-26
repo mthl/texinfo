@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.188 2009-04-26 15:21:07 pertusus Exp $
+# $Id: texi2html.init,v 1.189 2009-04-26 17:35:47 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -405,6 +405,12 @@ $EXTENSION = 'html';
 
 # file name used for Top node when NODE_FILES is true
 $TOP_NODE_FILE = 'index';
+
+# file used as document basename, when input file is -
+$STDIN_DOCU_NAME = 'stdin';
+
+# file used as document output basename, when output file is -
+$STDOUT_DOCU_NAME = 'stdout';
 
 # node name used for Top node when automatic node directions are used
 $TOP_NODE_UP = '(dir)';

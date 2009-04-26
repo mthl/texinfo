@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.277 2009-04-26 15:21:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.278 2009-04-26 17:35:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -318,6 +318,8 @@ $NO_BULLET_LIST_ATTRIBUTE
 $TOP_NODE_FILE
 $TOP_NODE_UP
 $NODE_FILE_EXTENSION
+$STDIN_DOCU_NAME
+$STDOUT_DOCU_NAME
 $BEFORE_OVERVIEW
 $AFTER_OVERVIEW
 $BEFORE_TOC_LINES
@@ -3557,8 +3559,14 @@ sub set_docu_names($$)
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 # AAAA
-   $docu_name = $Texi2HTML::Config::PREFIX if ($Texi2HTML::Config::PREFIX
-       and ($file_nr == 0));
+   if ($Texi2HTML::Config::PREFIX and ($file_nr == 0))
+   {
+      $docu_name = $Texi2HTML::Config::PREFIX;
+   }
+   elsif ($docu_name eq '-')
+   {
+      $docu_name = $Texi2HTML::Config::STDIN_DOCU_NAME;
+   }
 
 # subdir
    $docu_rdir = '';
@@ -14435,13 +14443,16 @@ sub init_with_file_name($)
 #
 #######################################################################
 
-die "$0: missing file argument.\n$T2H_FAILURE_TEXT" unless (scalar(@ARGV) >= 1);
+my @input_files = @ARGV;
+# use STDIN if not a tty, like makeinfo does
+@input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
+die "$0: missing file argument.\n$T2H_FAILURE_TEXT" unless (scalar(@input_files) >= 1);
 
 my $file_number = 0;
 # main processing
-while(@ARGV)
+while(@input_files)
 {
-   my $input_file_name = shift(@ARGV);
+   my $input_file_name = shift(@input_files);
 
    %Texi2HTML::THISDOC = ();
    $Texi2HTML::THIS_ELEMENT = undef;
