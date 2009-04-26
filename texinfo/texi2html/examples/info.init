@@ -28,7 +28,7 @@ use Data::Dumper;
 
 use strict;
 
-$Data::Dumper::Maxdepth = 5;
+$Data::Dumper::Maxdepth = 12;
 
 $USE_NODES = 1;
 $USE_SECTIONS = 0;
@@ -44,6 +44,7 @@ $INLINE_CONTENTS = 1;
 $SIMPLE_MENU = 1;
 $MENU_SYMBOL = '*';
 $USE_MENU_DIRECTIONS = 0;
+$USE_UP_FOR_ADJACENT_NODES = 0;
 $USE_ISO = 0;
 @IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
 $CAPTION_STYLE = 'asis';
@@ -570,33 +571,33 @@ sub info_default_skip_spaces($$$)
     while(1)
     {
        my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
-        return ($current, $index, $close) if ($close_next or (!defined($current_next)));
+        return if ($close_next or (!defined($current_next)));
         my $content = $current_next->{'content'}->[$index_next];
         if (defined($content->{'begin'}))
         {
             $content->{'begin'} =~ s/^\s*//;
 print STDERR "SKIP_SPACES begin\n";
-            return ($current, $index, $close) if ($content->{'begin'} ne '');
+            return if ($content->{'begin'} ne '');
         } 
         if (defined($content->{'content'}) or defined($content->{'format'})
-           or (defined($content->{'command'}) and ($content->{'command'} eq 'index_label' or $content->{'command'} eq 'anchor')))
+            or $content->{'definition_line'})
         { # non empty commands stop space skipping, even if they contain 
           # only spaces, like @asis{ }
           # also for item(x) that have format defined
 print STDERR "SKIP_SPACES command?\n";
-            return ($current, $index, $close);
+            return;
         }
         if (defined($content->{'text'}))
         {
 print STDERR "SKIP_SPACES text\n";
             $content->{'text'} =~ s/^\s*//;
-            return ($current, $index, $close) if ($content->{'text'} ne '');
+            return if ($content->{'text'} ne '');
         }
         if (defined($content->{'end'}))
         {
 print STDERR "SKIP_SPACES end\n";
             $content->{'end'} =~ s/^\s*//;
-            return ($current, $index, $close) if ($content->{'end'} ne '');
+            return if ($content->{'end'} ne '');
         }
         ($current, $index, $close) = ($current_next, $index_next, $close_next);
     }
@@ -986,7 +987,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
                  $pending_spaces = '';
                  $text_added .=  $content->{'text'};
                  # just like following spaces
-                 ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                 info_default_skip_spaces($current, $index, $close);
                  goto new_text;
               }
               elsif ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
@@ -999,7 +1000,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
                  $paragraphindent = 0 if ($paragraphindent eq 'none');
                  if ($paragraphindent ne 'asis')
                  {
-                    ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                    info_default_skip_spaces($current, $index, $close);
                  }
                  if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
                  {
@@ -1045,11 +1046,13 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               {
                   
                   my $dummy_line_passed;
-print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$pending_word,$indent_length,$in_para,$max_column): $content->{'text'}";
+print STDERR "BUG: defined pending_word before DEFINITION_LINE\n" if defined($pending_word);
+print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$indent_length,$in_para,$max_column): $content->{'text'}";
                   ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($content->{'text'}, $line_char_counter, $pending_spaces, $pending_word, $indent_length, 1, $max_column, $indent_length+2*$info_default_indent_length);
                   $text_added .= $pending_spaces;
                   $pending_spaces = '';
-                  print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$pending_word) -> $text_added";
+                  print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces) -> $text_added";
+print STDERR "BUG: defined pending_word after DEFINITION_LINE\n" if defined($pending_word);
                   $indentation_done = 1;
                   
                   goto new_text;
@@ -1134,7 +1137,11 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
-                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0)  and $content->{'command'} !~ /^deff_item/)
+                  if ($content->{'command'} =~ /^deff_item/)
+                  {
+                     info_default_skip_spaces($current, $index, $close);
+                  }
+                  elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
                   {
                      $text_added .= "\n";
                   }
@@ -1173,7 +1180,7 @@ print STDERR "IN_PARA text\n";
                               {
                                   if (chomp($text_next))
                                   {
-                                      ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+                                      info_default_skip_spaces($current, $index, $close);
                                       $new_text =~ s/(\s*)$/  /;
                                       last;
                                   }
@@ -1203,9 +1210,7 @@ print STDERR "IN_PREFORMATTED or ALIGN text\n";
                   my $chomped_text = $content->{'text'};
                   if ($chomped_text !~ /\S/ and chomp($chomped_text) and !$item_pending)
                   {
-                      my $directly_in_deff_item = 0;
-                      $directly_in_deff_item = 1 if (defined($content->{'parent'}) and defined($content->{'parent'}->{'command'}) and $content->{'parent'}->{'command'} =~ /^deff_item/);
-                      if (($in_table_item or $directly_in_deff_item) and $info_state->{'only_spaces'})
+                      if ($in_table_item and $info_state->{'only_spaces'})
                       {
                           # in a blank_line
 print STDERR "IN_ITEM ignored: `$content->{'text'}'\n";
@@ -1278,7 +1283,7 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       {
          if ($item_pending and !$item_line_added)
          {
-             ($current, $index, $close) = info_default_skip_spaces($current, $index, $close);
+             info_default_skip_spaces($current, $index, $close);
              $item_pending = undef;
          }
       }
@@ -1498,7 +1503,7 @@ sub info_default_store_text($$;$$)
    my $command_text = '';
    $command_text = "\[$command\]" if (defined($command));
    $command_text .= $text if (defined($text));
-   print STDERR "Storing text${command_text} $text\n";
+   print STDERR "Storing text ${command_text}\n";
 
    $text_entries->{'text'} = $text if (defined($text));
    $text_entries->{'command'} = $command if (defined($command));
