@@ -389,3 +389,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * in info, @. @! and @? should always be followed by at least 2 spaces
   even in text, not only on end of lines.
+
+* add tests for -o - and input coming from stdin, including check of 
+  out file names.

@@ -201,8 +201,10 @@ my %info_default_format;
 foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'menu', 'flushright', 'flushleft', 'center')
 {
     $info_default_format{$command} = 1;
-}
+} 
 
+$info_default_indented_commands{'format'} = 0;
+$info_default_indented_commands{'smallformat'} = 0;
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
@@ -579,11 +581,11 @@ sub info_default_skip_spaces($$$)
 print STDERR "SKIP_SPACES begin\n";
             return if ($content->{'begin'} ne '');
         } 
-        if (defined($content->{'content'}) or defined($content->{'format'})
+        if (defined($content->{'content'}) or defined($content->{'format_name'})
             or $content->{'definition_line'})
         { # non empty commands stop space skipping, even if they contain 
           # only spaces, like @asis{ }
-          # also for item(x) that have format defined
+          # also for item(x) that have format_name defined
 print STDERR "SKIP_SPACES command?\n";
             return;
         }
@@ -741,12 +743,19 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
           if ($info_default_indented_commands{$content->{'command'}})
           {
               $indent_level--;
-              if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/)
+              if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$preformatted)
               {
                  $text_added .= "\n";
               }
               # this nullify a potential noindent in a random format
               $info_state->{'indent_para'} = undef;
+          }
+          elsif ($complex_format_map->{$content->{'command'}})
+          {
+              if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level > 0) and !$preformatted)
+              {
+                 $text_added .= "\n";
+              }
           }
           if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
           {
@@ -1057,9 +1066,9 @@ print STDERR "BUG: defined pending_word after DEFINITION_LINE\n" if defined($pen
                   
                   goto new_text;
               }
-              elsif (($content->{'command'} eq 'item' or $content->{'command'} eq 'itemx') and exists $format_map{$content->{'format'}})
+              elsif (($content->{'command'} eq 'item' or $content->{'command'} eq 'itemx') and exists $format_map{$content->{'format_name'}})
               {
-                  $item_pending = $content->{'format'};
+                  $item_pending = $content->{'format_name'};
                   #if (!$info_state->{'blank_line'} and $content->{'command'} eq 'item')
                   my $first_item = 0;
                   
@@ -1141,12 +1150,19 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
                   {
                      info_default_skip_spaces($current, $index, $close);
                   }
-                  elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
+                  elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
                   {
                      $text_added .= "\n";
                   }
                   # there is no close if !$content->{'content'}
                   $indent_level++ if ($content->{'content'});
+              }
+              elsif ($complex_format_map->{$content->{'command'}})
+              {
+                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
+                  {
+                     $text_added .= "\n";
+                  }
               }
           }
 
@@ -2720,7 +2736,7 @@ print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $li
    }
    else
    {
-       info_default_store_text ($state, '', $command, {'format' => $format});
+       info_default_store_text ($state, '', $command, {'format_name' => $format});
    }
    return undef;
 }
