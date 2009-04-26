@@ -82,17 +82,23 @@ approved by the Free Software Foundation.
 @c @splitrcskeyword{} is used to avoid keyword expansion.  It is replaced by
 @c @asis when generating info and dvi, and by <i></i> in the generated html,
 @c such that keywords are not expanded in the generated html. 
-@ifnothtml
+@iftex
 @macro splitrcskeyword {arg}
 @asis{}\arg\
 @end macro
-@end ifnothtml
+@end iftex
 
 @ifhtml
 @macro splitrcskeyword {arg}
 @i{}\arg\
 @end macro
 @end ifhtml
+
+@ifinfo
+@macro splitrcskeyword {arg}
+ \arg\
+@end macro
+@end ifinfo
 
 @dircategory GNU Packages
 @direntry

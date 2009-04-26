@@ -523,27 +523,27 @@ command or feature is described in detail.  For other references run the
 
    Keyword expansion modes (*note Substitution modes::):
 
-     -kkv  $Id: cvs.info-2,v 1.1 2009-04-26 18:37:22 pertusus Exp $
-     -kkvl $Id: cvs.info-2,v 1.1 2009-04-26 18:37:22 pertusus Exp $
-     -kk   $Id: cvs.info-2,v 1.1 2009-04-26 18:37:22 pertusus Exp $
+     -kkv  $ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
+     -kkvl $ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+     -kk   $ Id$
      -kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
      -ko   no expansion
      -kb   no expansion, file is binary
 
    Keywords (*note Keyword list::):
 
-     $Author: pertusus $
-     $Date: 2009-04-26 18:37:22 $
-     $CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-     $Header: /u/karl/gnu/src/texinfo/@archive/cvs/texinfo/texinfo/texi2html/test/manuals/res/ccvs_info/Attic/cvs.info-2,v 1.1 2009-04-26 18:37:22 pertusus Exp $
-     $Id: cvs.info-2,v 1.1 2009-04-26 18:37:22 pertusus Exp $
-     $Locker:  $
-     $Name: not supported by cvs2svn $
-     $RCSfile: cvs.info-2,v $
-     $Revision: 1.1 $
-     $Source: /u/karl/gnu/src/texinfo/@archive/cvs/texinfo/texinfo/texi2html/test/manuals/res/ccvs_info/Attic/cvs.info-2,v $
-     $State: Exp $
-     $Log: not supported by cvs2svn $
+     $ Author: joe $
+     $ Date: 1993/12/09 03:21:13 $
+     $ CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+     $ Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+     $ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+     $ Locker: harry $
+     $ Name: snapshot_1_14 $
+     $ RCSfile: file1,v $
+     $ Revision: 1.1 $
+     $ Source: /home/files/file1,v $
+     $ State: Exp $
+     $ Log: file1,v $
      Revision 1.1  1993/12/09 03:30:17  joe
      Initial revision
 
@@ -3531,19 +3531,19 @@ Index
 * Linear development:                    Revision numbers.    (line   6)
 * Link, symbolic, importing:             import output.       (line  23)
 * List, mailing list:                    What is CVS?.        (line  45)
-* Local keyword:                         Keyword list.        (line  83)
+* Local keyword:                         Keyword list.        (line  84)
 * Locally Added:                         File status.         (line  19)
 * Locally Modified:                      File status.         (line  16)
 * Locally Removed:                       File status.         (line  23)
 * LockDir, in CVSROOT/config:            config.              (line  41)
-* Locker keyword:                        Keyword list.        (line  43)
+* Locker keyword:                        Keyword list.        (line  44)
 * Locking files:                         Multiple developers. (line   6)
 * Locks, cvs, and backups:               Backing up.          (line  10)
 * Locks, cvs, introduction:              Concurrency.         (line   6)
 * Locks, cvs, technical details:         Locks.               (line   6)
 * log (subcommand):                      log.                 (line   6)
 * Log information, saving:               history file.        (line   6)
-* Log keyword:                           Keyword list.        (line  47)
+* Log keyword:                           Keyword list.        (line  48)
 * Log message entry:                     Committing your changes.
                                                               (line   6)
 * Log message template:                  rcsinfo.             (line   6)
@@ -3600,7 +3600,7 @@ Index
 * Multiple developers:                   Multiple developers. (line   6)
 * Multiple repositories:                 Multiple repositories.
                                                               (line   6)
-* Name keyword:                          Keyword list.        (line  37)
+* Name keyword:                          Keyword list.        (line  38)
 * Name, symbolic (tag):                  Tags.                (line  25)
 * Needs Checkout:                        File status.         (line  27)
 * Needs Merge:                           File status.         (line  37)
@@ -3665,7 +3665,7 @@ Index
 * RCSBIN, in CVSROOT/config:             config.              (line  15)
 * RCSBIN, internal variable:             Variables.           (line  32)
 * RCSBIN, overriding:                    Global options.      (line  21)
-* RCSfile keyword:                       Keyword list.        (line  70)
+* RCSfile keyword:                       Keyword list.        (line  71)
 * rcsinfo (admin file):                  rcsinfo.             (line   6)
 * rdiff (subcommand):                    rdiff.               (line   6)
 * Read-only files, and -r:               Global options.      (line  91)
@@ -3735,7 +3735,7 @@ Index
 * Retrieve a branch:                     Accessing branches.  (line   6)
 * Retrieving an old revision using tags: Tags.                (line  85)
 * Reverting to repository version:       Editing files.       (line  33)
-* Revision keyword:                      Keyword list.        (line  73)
+* Revision keyword:                      Keyword list.        (line  74)
 * Revision management:                   Revision management. (line   6)
 * Revision numbers:                      Revision numbers.    (line   6)
 * Revision numbers (branches):           Branches and revisions.
@@ -3773,7 +3773,7 @@ Index
 * Setting up a repository:               Creating a repository.
                                                               (line   6)
 * Setuid:                                File permissions.    (line  58)
-* Source keyword:                        Keyword list.        (line  76)
+* Source keyword:                        Keyword list.        (line  77)
 * Source, getting CVS source:            What is CVS?.        (line  38)
 * Source, getting from CVS:              Getting the source.  (line   6)
 * Special files:                         Special Files.       (line   6)
@@ -3782,7 +3782,7 @@ Index
 * SSH (rsh replacement):                 Connecting via rsh.  (line  32)
 * Starting a project with CVS:           Starting a new project.
                                                               (line   6)
-* State keyword:                         Keyword list.        (line  79)
+* State keyword:                         Keyword list.        (line  80)
 * Status of a file:                      File status.         (line   6)
 * Status of a module:                    Module options.      (line  22)
 * Sticky date:                           Sticky tags.         (line  36)
