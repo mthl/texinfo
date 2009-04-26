@@ -76,7 +76,8 @@ $things_map{'guillemotright'} = '&gt;&gt;';
 $things_map{'guilsinglleft'} = '&lt;';
 $things_map{'guilsinglright'} = '&gt;';
 
-foreach my $style ('oe', 'OE', 'quotedblleft', 'quotedblright', 
+foreach my $style ('oe', 'OE', 'euro', 'geq', 'leq', 
+   'quotedblleft', 'quotedblright', 
    'quoteleft', 'quoteright',
    'quotedblbase', 'quotesinglbase', 'guillemetleft', 'guillemetright',
    'guillemotleft', 'guillemotright', 'guilsinglleft', 'guilsinglright')
