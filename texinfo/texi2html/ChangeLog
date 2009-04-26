@@ -10,6 +10,8 @@
 	verbatiminclude is now a $raw command argument distinct from 
 	verbatim.
 	Don't close out file, to let user code close it without erroring.
+	Fix output to STDOUT for info, and splitting of info output when 
+	output to STDOUT, or not split.
 
 2009-04-23   Patrice Dumas  <dumas@centre-cired.fr>
 

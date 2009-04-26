@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.187 2009-04-25 14:54:41 pertusus Exp $
+# $Id: texi2html.init,v 1.188 2009-04-26 15:21:07 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -186,6 +186,10 @@ $PREFIX = '';
 # If this is set a monolithic document is outputted into $filename.
 $OUT = '';
 
+# --split-size
+# if undef, the info output is not split
+$SPLIT_SIZE = 300000;
+
 # -no-validate
 # suppress node cross-reference validation
 $NOVALIDATE = 0;
@@ -294,9 +298,6 @@ $PARAGRAPHINDENT = 3;
 # The following can only be set in the init file
 #
 ##############################################################################
-
-# --split-size
-$SPLIT_SIZE = 300000;
 
 # If true do table of contents even if there is no @content
 $DO_CONTENTS = undef;

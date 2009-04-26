@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.276 2009-04-25 23:05:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.277 2009-04-26 15:21:12 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2417,7 +2417,7 @@ $T2H_OPTIONS -> {'split'} =
 $T2H_OPTIONS -> {'no-split'} =
 {
  type => '!',
- linkage => sub {$Texi2HTML::Config::SPLIT = '';},
+ linkage => sub {$Texi2HTML::Config::SPLIT = ''; $Texi2HTML::Config::SPLIT_SIZE = undef;},
  verbose => 'no splitting of document',
  noHelp => 1,
 };
@@ -3345,6 +3345,10 @@ if (defined($Texi2HTML::Config::DO_SCONTENTS))
 {
    $Texi2HTML::GLOBAL{'DO_SCONTENTS'} = $Texi2HTML::Config::DO_SCONTENTS;
 }
+if (defined($Texi2HTML::Config::SPLIT_SIZE))
+{
+   $Texi2HTML::GLOBAL{'SPLIT_SIZE'} = $Texi2HTML::Config::SPLIT_SIZE;
+}
 
 # FIXME encoding for first file or all files?
 if (defined($Texi2HTML::Config::IN_ENCODING))
@@ -3580,7 +3584,8 @@ sub set_docu_names($$)
       my $out_file;
 # AAAA
    # even if the out file is not set by OUT, in case it is not the first
-   # file, the out directory is still used
+   # file, the out directory is still used. This is only used to determine
+   # the directory, the out file itself is set below
       if (defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT ne '')
       {
          $out_file = $Texi2HTML::Config::OUT;
@@ -3699,6 +3704,7 @@ sub set_docu_names($$)
       if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
       {
          my $out_file = $Texi2HTML::Config::OUT;
+         $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef if ($out_file eq '-');
          $out_file =~ s|.*/||;
          $docu_doc = $out_file if ($out_file !~ /^\s*$/);
       }
@@ -12331,7 +12337,7 @@ sub scan_line($$$$;$)
                 else
                 {
                     echo_error ("Bad \@$macro line: $cline", $line_nr);
-                } 
+                }
                 return undef;
             }
             # This is a @macroname{...} construct. We add it on top of stack

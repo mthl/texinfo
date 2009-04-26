@@ -2148,7 +2148,8 @@ sub info_default_end_section($$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
 
-    if ($info_state->{'offset_in_file'} > ($info_default_out_file_nr) * $SPLIT_SIZE)
+    if (defined($Texi2HTML::THISDOC{'SPLIT_SIZE'}) and 
+   $info_state->{'offset_in_file'} > ($info_default_out_file_nr) * $Texi2HTML::THISDOC{'SPLIT_SIZE'})
     {
        if ($info_default_out_file_nr == 1)
        {
@@ -2994,7 +2995,7 @@ sub info_default_element_file_name($$$)
     my $type = shift;
     my $prefix = shift;
 
-    if ($type eq 'doc' and defined($Texi2HTML::THISDOC{'setfilename'}))
+    if ($type eq 'doc' and defined($Texi2HTML::THISDOC{'setfilename'}) and not defined($OUT))
     {
        $Texi2HTML::THISDOC{'extension'} = '';
        return $Texi2HTML::THISDOC{'setfilename'};
