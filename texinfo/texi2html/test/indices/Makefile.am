@@ -3,7 +3,8 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
  nodes_before_top.texi index_special_region_no_insertcopying.texi \
  index_special_region.texi index_special_region_no_region.texi \
  index_nodes.texi printindex_between_node_section.texi \
- index_and_node_same_name.texi \
+ index_and_node_same_name.texi recursive_synindex.texi \
+ syncode_index_print_both.texi \
  index_test.init tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

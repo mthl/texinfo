@@ -3,7 +3,7 @@ texi texinfo.texi -ifinfo
 texi cvs.texi
 texi mini_ker.texi
 info-stnd info-stnd.texi -split chapter -node-files 
-texinfo texinfo.texi -split chapter -ifinfo 
+texinfo texinfo.texi -split chapter -ifinfo -idx-sum
 texinfo_nodes texinfo.texi -split node -node-files -ifinfo
 ccvs cvs.texi -split chapter -init cvs.init
 ccvs_mediawiki cvs.texi -init mediawiki.init -split chapter

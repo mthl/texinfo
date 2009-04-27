@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.279 2009-04-27 01:56:39 pertusus Exp $
+# $Id: texi2html.pl,v 1.280 2009-04-27 17:14:05 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1595,17 +1595,17 @@ my $I = \&Texi2HTML::I18n::get_string;
 
 %index_names =
 (
- 'cp' => { 'prefix' => ['cp','c']},
- 'fn' => { 'prefix' => ['fn', 'f'], code => 1},
- 'vr' => { 'prefix' => ['vr', 'v'], code => 1},
- 'ky' => { 'prefix' => ['ky', 'k'], code => 1},
- 'pg' => { 'prefix' => ['pg', 'p'], code => 1},
- 'tp' => { 'prefix' => ['tp', 't'], code => 1}
+ 'cp' => { 'prefixes' => {'cp' => 0,'c' => 0}},
+ 'fn' => { 'prefixes' => {'fn' => 1, 'f' => 1}},
+ 'vr' => { 'prefixes' => {'vr' => 1, 'v' => 1}},
+ 'ky' => { 'prefixes' => {'ky' => 1, 'k' => 1}},
+ 'pg' => { 'prefixes' => {'pg' => 1, 'p' => 1}},
+ 'tp' => { 'prefixes' => {'tp' => 1, 't' => 1}}
 );
 
 foreach my $name(keys(%index_names))
 {
-    foreach my $prefix (@{$index_names{$name}->{'prefix'}})
+    foreach my $prefix (keys %{$index_names{$name}->{'prefixes'}})
     {
         $forbidden_index_name{$prefix} = 1;
         $index_prefix_to_name{$prefix} = $name;
@@ -4350,6 +4350,10 @@ sub pass_structure($$)
                     my $index_name = $1;
                     # $element_index is the first element with index
                     $element_index = $all_elements[-1] unless (defined($element_index));
+                    if (!exists($index_names{$index_name}))
+                    {
+                        echo_warn ("Bad index name: $index_name", $line_nr);
+                    }
                     # associate the index to the element
                     my $printindex = { 'element' => $all_elements[-1], 'name' => $index_name, 'command' => 'printindex' };
                     push @{$state->{'place'}}, $printindex;
@@ -4360,12 +4364,6 @@ sub pass_structure($$)
                 {
                     @added_lines = @{$region_lines{'copying'}};
                     @added_numbers = @{$region_line_nrs{'copying'}};
-                    #my $copying_line_nr = 0;
-                    #foreach my $line_added (@added_lines)
-                    #{
-                    #   $copying_line_nr++;
-                    #   push @added_numbers, { 'file_name' => '', 'macro' => 'copying', 'line_nr' => $copying_line_nr };
-                    #}
                     unshift (@$texi_lines, @added_lines);
                     unshift (@$lines_numbers, @added_numbers);
                     next;
@@ -4806,13 +4804,21 @@ sub misc_command_structure($$$$)
                 unless $index_names{$index_to};
             if ($index_names{$index_from} and $index_names{$index_to})
             {
-                if ($macro eq 'syncodeindex')
+                my $in_code = 0;
+                $in_code = 1 if ($macro eq 'syncodeindex');
+                my $current_to = $index_to;
+                while ($current_to ne $index_from and $Texi2HTML::THISDOC{'merged_index'}->{$current_to})
                 {
-                    $index_names{$index_to}->{'associated_indices_code'}->{$index_from} = 1;
+                    $current_to = $Texi2HTML::THISDOC{'merged_index'}->{$current_to};
                 }
-                else
+                if ($current_to ne $index_from)
                 {
-                    $index_names{$index_to}->{'associated_indices'}->{$index_from} = 1;
+                    foreach my $prefix (keys(%{$index_names{$index_from}->{'prefixes'}}))
+                    {
+                        $index_names{$current_to}->{'prefixes'}->{$prefix} = $in_code;
+                        $index_prefix_to_name{$prefix} = $current_to;
+                    }
+                    $Texi2HTML::THISDOC{'merged_index'}->{$index_from} = $current_to;
                 }
                 push @{$Texi2HTML::THISDOC{$macro}}, [$index_from,$index_to]; 
             }
@@ -4833,10 +4839,11 @@ sub misc_command_structure($$$$)
             }
             else
             {
-                @{$index_names{$name}->{'prefix'}} = ($name);
-                $index_names{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
+                my $in_code = 0;
+                $in_code = 1 if ($macro eq 'defcodeindex');
+                $index_names{$name}->{'prefixes'}->{$name} = $in_code;
                 $index_prefix_to_name{$name} = $name;
-                push @{$Texi2HTML::THISDOC{$macro}}, $name; 
+                push @{$Texi2HTML::THISDOC{$macro}}, $name;
             }
         }
         else
@@ -5143,13 +5150,14 @@ sub menu_entry_texi($$$)
     $state->{'prev_menu_node'} = $node_menu_ref;
 }
 
+my %indices;                       # hash of indices names containing 
+                                   # raw index entries by index names
 sub prepare_indices()
 {
+  # over all the indices that had at least one printindex
   foreach my $index_name (keys(%{$Texi2HTML::THISDOC{'indices'}}))
   {
-    #my ($pages, $entries) = get_index($index_name, undef, 1);
-    #my $entries = get_index($index_name, undef, 1);
-    my $entries = get_index($index_name);
+    my $entries = $indices{$index_name};
     foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$index_name}})
     {
       $printindex->{'entries'} = $entries;
@@ -6824,8 +6832,6 @@ sub do_names()
 #                                                                              #
 #---############################################################################
 
-my $index_entries;                 # ref on a hash for the index entries
-
 # called during pass_structure
 sub enter_index_entry($$$$$$$)
 {
@@ -6899,16 +6905,20 @@ sub enter_index_entry($$$$$$$)
     }
     else
     {
-        while (exists $index_entries->{$prefix}->{$key})
+        my $index_name = $index_prefix_to_name{$prefix};
+        while(exists $indices{$index_name}->{$key})
         {
             $key .= ' ';
         }
-        $index_entries->{$prefix}->{$key} = $index_entry;
+        $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
+           if ($index_names{$index_name}->{'prefixes'}->{$prefix});
+        $indices{$index_name}->{$key} = $index_entry;
+
         push @$place, $index_entry;
     }
     #print STDERR "enter_index_entry: region $region, index_entry $index_entry, \@$command, texi `$entry'\n";
     # don't add the index entry to the list of index entries used for index
-    # entry formatting,if the index entry appears in a region like copying 
+    # entry formatting, if the index entry appears in a region like copying 
     push @index_labels, $index_entry unless ($index_entry_hidden);
     push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
 }
@@ -6936,72 +6946,6 @@ sub by_alpha
     {
         return lc($a) cmp lc($b);
     }
-}
-
-my %indices;                       # hash of indices names containing 
-                                   #[ $pages, $entries ] (page indices and 
-                                   # raw index entries)
-
-# return the page and the entries. Cache the result in %indices.
-sub get_index($;$$)
-{
-    my $index_name = shift;
-    my $line_nr = shift;
-    my $no_warn = shift;
-
-    #return (@{$indices{$index_name}}) if ($indices{$index_name});
-    return ($indices{$index_name}) if ($indices{$index_name});
-
-    unless (exists($index_names{$index_name}))
-    {
-        warn "$ERROR Bad index name: $index_name\n";
-        return;
-    }
-    # add the index name itself to the index names searched for index
-    # prefixes. Only those found associated by synindex or syncodeindex are 
-    # already there (unless this code has already been called).
-    if ($index_names{$index_name}->{'code'})
-    {
-        $index_names{$index_name}->{'associated_indices_code'}->{$index_name} = 1;
-    }
-    else
-    {
-        $index_names{$index_name}->{'associated_indices'}->{$index_name} = 1;
-    }
-
-    # find all the index names associated with the prefixes and then 
-    # all the entries associated with each prefix
-    my $entries = {};
-    foreach my $associated_indice(keys %{$index_names{$index_name}->{'associated_indices'}})
-    {
-        foreach my $prefix(@{$index_names{$associated_indice}->{'prefix'}})
-        {
-            foreach my $key (keys %{$index_entries->{$prefix}})
-            {
-                $entries->{$key} = $index_entries->{$prefix}->{$key};
-            }
-        }
-    }
-
-    foreach my $associated_indice (keys %{$index_names{$index_name}->{'associated_indices_code'}})
-    {
-        unless (exists ($index_names{$index_name}->{'associated_indices'}->{$associated_indice}))
-        {
-            foreach my $prefix (@{$index_names{$associated_indice}->{'prefix'}})
-            {
-                foreach my $key (keys (%{$index_entries->{$prefix}}))
-                {
-                    $entries->{$key} = $index_entries->{$prefix}->{$key};
-                    # use @code for code style index entry
-                    $entries->{$key}->{'entry'} = "\@code{$entries->{$key}->{entry}}";
-                }
-            }
-        }
-    }
-
-    return unless %$entries;
-    $indices{$index_name} = $entries;
-    return $entries;
 }
 
 # these variables are global, so great care should be taken with
@@ -10324,7 +10268,7 @@ sub do_index_summary_file($$)
 {
     my $name = shift;
     my $docu_name = shift;
-    my $entries = get_index($name);
+    my $entries = $indices{$name};
     &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name}, $docu_name);
     print STDERR "# writing $name index summary for $docu_name\n" if $T2H_VERBOSE;
 
@@ -14685,7 +14629,8 @@ while(@input_files)
    @index_labels = ();             # array corresponding with @?index commands
                                    # constructed during pass_texi, used to
                                    # put labels in pass_text
-   $index_entries = undef;
+   %indices = ();                  # hash of indices names containing 
+                                   # raw index entries
 
    # original kdb styles used if @kbdinputstyle distinct
    $kept_kdb_style = $::style_map_ref->{'kbd'};
@@ -14715,9 +14660,6 @@ while(@input_files)
                         # is empty
    %printed_indices = (); # value is true for an index name not empty and
                           # printed
-   %indices = ();                  # hash of indices names containing 
-                                   #[ $pages, $entries ] (page indices and 
-                                   # raw index entries)
    prepare_indices();
    rearrange_elements();
    do_names();

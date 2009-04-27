@@ -1,3 +1,9 @@
+2009-04-27   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: simplify index handling and fix syn*index to do 
+	the same than in the documentation and in makeinfo/texi2dvi.
+	fix index_summary_file.
+
 2009-04-25   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle @direntry and @dircategory 

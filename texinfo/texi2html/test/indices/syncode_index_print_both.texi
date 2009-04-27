@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename syncode_index_print_both
+
+@syncodeindex fn vr
+
+@node Top
+@top syncodeindex and print both indices
+@vindex var
+@findex fun
+
+
+Print fn
+
+@printindex fn
+
+Print vr
+
+@printindex vr
+
+@bye

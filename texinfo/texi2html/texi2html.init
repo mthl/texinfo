@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.190 2009-04-27 01:56:39 pertusus Exp $
+# $Id: texi2html.init,v 1.191 2009-04-27 17:14:04 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6408,6 +6408,7 @@ sub t2h_default_index_summary_file_entry ($$$$$$$$$)
     my $is_printed = shift;
     my $manual_name = shift;
 
+    $element_text = 'UNDEF' if (!defined($element_text));
     print IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
       . "  texi_entry: $texi_entry\n"
       . "  element_href: $element_href\n  element_text: $element_text\n";

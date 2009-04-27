@@ -227,11 +227,6 @@ texi2html all the style commands are removed without extra formatting.
   smalldisplay will use the class of the above format, and lose the 
   small font property.
 
-* macros/value_in_pass0_macros result is very different from texi2dvi and
-  makeinfo. To be verified that cp in fn is style not in @code.
-
-  Also certainly simpler and more focused tests to do for syn/syncode
-
 * decide @documentencoding @. And maybe change regexp.
 
 * html32 

@@ -4086,10 +4086,10 @@ above. This function reference returns a style to be formatted in the
 main program.
 @end deftypefn
 
-@deftypefn {Function Reference} (\@caption_texi_returned, $caption_or_shortcaption) listoffloats_caption \%float
+@deftypefn {Function Reference} (\@@caption_texi_returned, $caption_or_shortcaption) listoffloats_caption \%float
 @var{\%float} is the structure described 
 above. This function reference returns a caption to be formatted in the
-main program, @var{\@caption_texi_returned}, and a string, 
+main program, @var{\@@caption_texi_returned}, and a string, 
 @var{$caption_or_shortcaption} that is either @samp{caption} or 
 @samp{shortcaption} that can be used by the main program if this information
 is needed. 

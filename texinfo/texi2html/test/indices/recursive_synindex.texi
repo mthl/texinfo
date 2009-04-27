@@ -1,0 +1,46 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename recursive_synindex.info
+
+@node Top
+@top recursive_synindex
+
+@defindex aaa
+@defindex bbb
+@defindex ccc
+@defindex ddd
+@defindex eee
+
+@synindex aaa bbb
+@synindex bbb aaa
+
+@synindex ccc aaa
+@synindex ddd bbb
+
+@eeeindex e before synindex
+
+@synindex eee ddd
+
+@cccindex c index
+@bbbindex b entry
+@aaaindex a entry
+@dddindex d index
+@eeeindex e index
+
+bbb
+@printindex bbb
+
+aaa
+@printindex aaa
+
+ccc
+@printindex ccc
+
+ddd
+@printindex ddd
+
+eee
+@printindex eee
+
+
+@bye
