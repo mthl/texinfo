@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.278 2009-04-26 17:35:48 pertusus Exp $
+# $Id: texi2html.pl,v 1.279 2009-04-27 01:56:39 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2026,15 +2026,16 @@ sub set_footnote_style($$)
 
 # find the encoding alias.
 # with encoding support (USE_UNICODE), may return undef if no alias was found
-sub encoding_alias($)
+sub encoding_alias($;$)
 {
     my $encoding = shift;
+    my $line_nr = shift;
     return $encoding if (!defined($encoding) or $encoding eq '');
     if ($Texi2HTML::Config::USE_UNICODE)
     {
          if (! Encode::resolve_alias($encoding))
          {
-              echo_warn("Encoding name unknown: $encoding");
+              echo_warn("Encoding name unknown: $encoding", $line_nr);
               return undef;
          }
          print STDERR "# Using encoding " . Encode::resolve_alias($encoding) . "\n"
@@ -2047,7 +2048,7 @@ sub encoding_alias($)
          if (exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
          {
              $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
-             echo_warn ("Document encoding is utf8, but there is no unicode support") if ($encoding eq 'utf-8');
+             warn "$WARN Document encoding is utf8, but there is no unicode support\n" if ($encoding eq 'utf-8');
              return $encoding;
          }
          echo_warn("Encoding certainly poorly supported");
@@ -4006,6 +4007,7 @@ my %sec2level;
 # initial state for the special regions.
 my %region_initial_state;
 my %region_lines;
+my %region_line_nrs;
 
 # This is a place for index entries, anchors and so on appearing in 
 # copying or documentdescription
@@ -4222,6 +4224,7 @@ sub pass_structure($$)
                             $node_ref->{'automatic_directions'} = $auto_directions;
                             $node_ref->{'place'} = [];
                             $node_ref->{'current_place'} = [];
+                            $node_ref->{'line_nr'} = $line_nr;
                             merge_element_before_anything($node_ref);
                             $node_ref->{'index_names'} = [];
                             $state->{'place'} = $node_ref->{'current_place'};
@@ -4287,6 +4290,7 @@ sub pass_structure($$)
                         $section_ref->{'current_place'} = [];
                         $section_ref->{'place'} = [];
                         $section_ref->{'section'} = 1;
+                        $section_ref->{'line_nr'} = $line_nr;
 
                         if ($tag eq 'top')
                         {
@@ -4355,13 +4359,13 @@ sub pass_structure($$)
                 elsif ($cline =~ /^\@insertcopying\s*/)
                 {
                     @added_lines = @{$region_lines{'copying'}};
-                    @added_numbers = ();
-                    my $copying_line_nr = 0;
-                    foreach my $line_added (@added_lines)
-                    {
-                       $copying_line_nr++;
-                       push @added_numbers, { 'file_name' => '', 'macro' => 'copying', 'line_nr' => $copying_line_nr };
-                    }
+                    @added_numbers = @{$region_line_nrs{'copying'}};
+                    #my $copying_line_nr = 0;
+                    #foreach my $line_added (@added_lines)
+                    #{
+                    #   $copying_line_nr++;
+                    #   push @added_numbers, { 'file_name' => '', 'macro' => 'copying', 'line_nr' => $copying_line_nr };
+                    #}
                     unshift (@$texi_lines, @added_lines);
                     unshift (@$lines_numbers, @added_numbers);
                     next;
@@ -4370,7 +4374,8 @@ sub pass_structure($$)
                 {
                     push @{$region_lines{$state->{'region_lines'}->{'format'}}}, @added_lines;
                     if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
-                    {
+                    { # the region is kept in the document in addition with
+                      # being put in the appropriate region_lines entry.
                         push @doc_lines, @added_lines;
                         push @doc_numbers, @added_numbers;
                     }
@@ -4383,9 +4388,16 @@ sub pass_structure($$)
                 next;
             }
         }
-        if (scan_structure ($cline, \$text, \@stack, $state, $line_nr) and (!exists($state->{'region_lines'}) or $Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}}))
+        if (scan_structure ($cline, \$text, \@stack, $state, $line_nr))
         {
-            push (@doc_numbers, $line_nr);
+            if (!exists($state->{'region_lines'}) or $Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
+            {
+                 push (@doc_numbers, $line_nr);
+            }
+            if (exists($state->{'region_lines'}))
+            {
+                 push @{$region_line_nrs{$state->{'region_lines'}->{'format'}}}, $line_nr unless ($state->{'region_lines'}->{'first_line'});
+            }
         }
         next if (scalar(@stack) or $state->{'in_deff_line'});
         $cline = $text;
@@ -4421,7 +4433,8 @@ sub pass_structure($$)
             }
         }
     }
-    echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
+    #echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
+    echo_warn ("$state->{'region_lines'}->{'number'} \@$state->{'region_lines'}->{'format'} not closed", $line_nr) if (exists($state->{'region_lines'}));
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
     # To remove once they are handled
     #print STDERR "No node nor section, texi2html won't be able to place things rightly\n" if ($element_before_anything->{'place'} and @{$element_before_anything->{'place'}});
@@ -4660,7 +4673,7 @@ sub misc_command_texi($$$$)
             my $from_encoding;
             if (!defined($Texi2HTML::Config::IN_ENCODING))
             {
-               $from_encoding = encoding_alias($encoding);
+               $from_encoding = encoding_alias($encoding, $line_nr);
                $Texi2HTML::THISDOC{'IN_ENCODING'} = $from_encoding
                  if (defined($from_encoding));
             }
@@ -5038,7 +5051,7 @@ sub misc_command_text($$$$$$)
                     }
                     else
                     { 
-                        add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatiminclude', $verb_text));
+                        add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatiminclude', $verb_text, $line_nr));
                     }
                     close VERBINCLUDE;
                 }
@@ -5201,7 +5214,7 @@ sub cross_manual_links()
                         $node_seen = $other_node;
                         last if ($nodes{$other_node}->{'seen'})
                     }
-                    echo_error("Node equivalent with `$node->{'texi'}' already used `$node_seen'");
+                    warn "$ERROR Node equivalent with `$node->{'texi'}' already used `$node_seen'\n";
                     push @{$other_node_array}, $node->{'texi'};
                 }
                 else 
@@ -5676,7 +5689,7 @@ sub rearrange_elements()
         { 
             if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
             {
-                echo_warn ("$direction `$node->{$direction}' for `$node->{'texi'}' not found");
+                echo_warn ("$direction `$node->{$direction}' for `$node->{'texi'}' not found", $node->{'line_nr'});
                 my @equivalent_nodes = equivalent_nodes($node->{$direction});
                 my $node_seen;
                 foreach my $equivalent_node (@equivalent_nodes)
@@ -5689,7 +5702,7 @@ sub rearrange_elements()
                 }
                 if (defined($node_seen))
                 {
-                    echo_warn (" ---> but equivalent node `$node_seen' found");
+                    warn "$WARN ---> but equivalent node `$node_seen' found\n";
                     $node->{$node_directions{$direction}} = $nodes{$node_seen};
                 }
             }
@@ -5818,8 +5831,8 @@ sub rearrange_elements()
                 $next = get_node($section->{'sectionnext'});
                 if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
                 {
-                    echo_warn ("No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning") if (!defined($node->{'menu_next'}));
-                    echo_warn ("Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ") 
+                    warn "$WARN No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning\n" if (!defined($node->{'menu_next'}));
+                    warn "$WARN Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ\n" 
                        if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
                 }
             }
@@ -6760,7 +6773,7 @@ sub do_section_names($$)
     my $section = shift;
     #$section->{'name'} = substitute_line($section->{'texi'});
     my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
-    $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}");
+    $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}", undef, $section->{'line_nr'});
     $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'}");
     # backward compatibility
     $section->{'name'} = $section->{'text_nonumber'};
@@ -6783,7 +6796,7 @@ sub do_names()
     {
         my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
            $nodes{$node}->{'texi'}, undef);
-        $nodes{$node}->{'text'} = substitute_line ($texi, "\@node", {'code_style' => 1});
+        $nodes{$node}->{'text'} = substitute_line ($texi, "\@node", {'code_style' => 1}, $nodes{$node}->{'line_nr'});
         $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
         # backward compatibility -> maybe used to have the name without code_style ?
         $nodes{$node}->{'name'} = substitute_line($texi, "\@node");
@@ -6872,7 +6885,8 @@ sub enter_index_entry($$$$$$$)
            'target'   => $target,
            'command'  => $command,
            'hidden'   => $index_entry_hidden,
-           'region'   => $region
+           'region'   => $region,
+           'line_nr'  => $line_nr
     };
             
     print STDERR "# enter \@$command ${prefix}index($key) [$entry] with id $id ($index_entry)\n"
@@ -6940,7 +6954,7 @@ sub get_index($;$$)
 
     unless (exists($index_names{$index_name}))
     {
-        echo_error ("Bad index name: $index_name", $line_nr) unless ($no_warn);
+        warn "$ERROR Bad index name: $index_name\n";
         return;
     }
     # add the index name itself to the index names searched for index
@@ -7495,7 +7509,12 @@ sub pass_text($$)
                 next unless (exists($Texi2HTML::Config::misc_command{$tag}) and $Texi2HTML::Config::misc_command{$tag}->{'keep'});
             }
         }
+        push @{$state{'keep_line_nr'}}, $line_nr if ($state{'keep_texi'});
+
         scan_line($cline, \$text, \@stack, \%state, $line_nr);
+
+        # this means that a command that keep text was opened
+        push @{$state{'keep_line_nr'}}, $line_nr if ($state{'keep_texi'} and (!defined($state{'keep_line_nr'}) or !(@{$state{'keep_line_nr'}})));
 	#print STDERR "after scan_line: $cline";
 	#dump_stack(\$text, \@stack, \%state);
         next if (@stack);
@@ -7936,6 +7955,8 @@ sub echo_warn($;$)
     my $text = shift;
     chomp ($text);
     my $line_number = shift;
+#    warn "$WARN $text " . format_line_number($line_number) . "\n";
+    return if (!defined($line_number));
     warn "$WARN $text " . format_line_number($line_number) . "\n";
 }
 
@@ -7945,7 +7966,10 @@ sub echo_error($;$)
     my $text = shift;
     chomp ($text);
     my $line_number = shift;
-    warn "$ERROR $text " . format_line_number($line_number) . "\n";
+    if (defined($line_number))
+    {
+       warn "$ERROR $text " . format_line_number($line_number) . "\n";
+    }
     $error_nrs ++;
     die "Max error number exceeded\n" if ($error_nrs >= $Texi2HTML::Config::ERROR_LIMIT);
 }
@@ -8558,10 +8582,11 @@ sub reset_index_entries($)
 # are duplicated and global stuff is changed.
 # -> identify what is global
 # -> use local state
-sub do_special_region_lines($;$)
+sub do_special_region_lines($;$$)
 {
     my $region = shift;
     my $state = shift;
+    my $line_nr = shift;
 
     # this case covers something like
     # @copying
@@ -8569,7 +8594,7 @@ sub do_special_region_lines($;$)
     # @end copying
     if (defined($state) and exists($state->{'region'}) and ($region eq $state->{'region'}))
     {
-         echo_error("Recursively expanding region $region in $state->{'region'}");
+         echo_error("Recursively expanding region $region in $state->{'region'}", $line_nr);
          return ('','', '');
          
     }
@@ -8600,7 +8625,7 @@ sub do_special_region_lines($;$)
     }
     &$Texi2HTML::Config::begin_special_region($region,$new_state,$region_lines{$region})
       if (defined($Texi2HTML::Config::begin_special_region));
-    my $text = substitute_text($new_state, undef, @{$region_lines{$region}});
+    my $text = substitute_text($new_state, [ @{$region_line_nrs{$region}} ], @{$region_lines{$region}});
     $text = &$Texi2HTML::Config::end_special_region($region,$new_state,$text)
       if (defined($Texi2HTML::Config::end_special_region));
 
@@ -8639,10 +8664,11 @@ sub do_special_region_lines($;$)
     return ($text, $removed_texi, $simple_format);
 }
 
-sub do_insertcopying($)
+sub do_insertcopying($$)
 {
     my $state = shift;
-    my ($text, $comment, $simple_formatted) = do_special_region_lines('copying', $state);
+    my $line_nr = shift;
+    my ($text, $comment, $simple_formatted) = do_special_region_lines('copying', $state, $line_nr);
     return &$Texi2HTML::Config::insertcopying($text, $comment, $simple_formatted);
 }
 
@@ -8986,9 +9012,10 @@ sub end_format($$$$$)
         my $caption_state = duplicate_formatting_state($state);
         push @{$caption_state->{'command_stack'}}, 'caption';
         $caption_text = substitute_text($caption_state, undef, @$caption_lines) if (defined($caption_lines));
+
         my $shortcaption_state = duplicate_formatting_state($state);
         push @{$shortcaption_state->{'command_stack'}}, 'shortcaption';
-        $shortcaption_text = substitute_text($shortcaption_state,undef, @$shortcaption_lines) if (defined($shortcaption_lines));
+        $shortcaption_text = substitute_text($shortcaption_state, undef, @$shortcaption_lines) if (defined($shortcaption_lines));
         add_prev($text, $stack, &$Texi2HTML::Config::float($format_ref->{'text'}, $state->{'float'}, $caption_text, $shortcaption_text));
         delete $state->{'float'};
     }
@@ -9611,7 +9638,7 @@ sub do_menu_link($$$)
             }
             if (defined($node_seen))
             {
-                echo_warn (" ---> but equivalent node `$node_seen' found");
+                warn " ---> but equivalent node `$node_seen' found\n";
                 $element = $nodes{$node_seen};
             }
         }
@@ -9907,7 +9934,7 @@ sub do_acronym_like($$$$$)
               $text .= $line
          }
          $text =~ s/ $//;
-         $explanation_simple_format = simple_format($state, undef, $text);
+         $explanation_simple_format = simple_format($state, [ $line_nr ], $text);
          $explanation_text = substitute_line($text, "\@$command explanation", duplicate_formatting_state($state), $line_nr);
     }
     return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, "\@$command", duplicate_formatting_state($state), $line_nr), 
@@ -9932,8 +9959,9 @@ sub do_caption_shortcaption($$$$$)
     my $float = $state->{'float'};
     my @texi_lines = map {$_ = $_."\n"} split (/\n/, $text_texi);
     $float->{"${command}_texi"} = \@texi_lines;
+    $float->{"${command}_keep_line_nr"} = [ @{$state->{'keep_line_nr'}} ];
     return  &$Texi2HTML::Config::caption_shortcaption_command($command, 
-       substitute_text(prepare_state_multiple_pass($command, $state) , undef, @texi_lines), \@texi_lines, $float);
+       substitute_text(prepare_state_multiple_pass($command, $state), $state->{'keep_line_nr'}, @texi_lines), \@texi_lines, $float);
 }
 
 # function called when a @float is encountered. Don't do any output
@@ -9999,7 +10027,7 @@ sub do_quotation_line($$$$$)
     return '';
 }
 
-sub do_footnote($$$$)
+sub do_footnote($$$$$$)
 {
     my $command = shift;
     my $args = shift;
@@ -10060,7 +10088,7 @@ sub do_footnote($$$$)
     $foot_state->{'footnote_document_state'} = $doc_state;
     
     # FIXME use split_lines ? It seems to work like it is now ?
-    my @lines = substitute_text($foot_state, undef, map {$_ = $_."\n"} split (/\n/, $text));
+    my @lines = substitute_text($foot_state, $doc_state->{'keep_line_nr'}, map {$_ = $_."\n"} split (/\n/, $text));
     my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
          $$relative_foot_num, $footid, $docid, $from_file, $foot_state->{'element'}->{'file'}, \@lines, $doc_state);
     if ($doc_state->{'outside_document'} or ($doc_state->{'region'} and $doc_state->{'multiple_pass'} > 0))
@@ -10142,7 +10170,7 @@ sub do_image($$$$$)
         $state->{'preformatted'}, $file_name, $alt, $args[1], $args[2], 
         $args[3], $extension, $path_to_working_dir, $image_name, 
         $state->{'paragraph_context'}, \@file_locations, $base_simple,
-        $extension_simple, $simple_file_name);
+        $extension_simple, $simple_file_name, $line_nr);
 }
 
 # usefull if we want to duplicate only the global state, nothing related with
@@ -10375,7 +10403,7 @@ sub remove_texi(@)
 sub simple_format($$@)
 {
     my $state = shift;
-    my $line_nr = shift;
+    my $line_nrs = shift;
     if (!defined($state))
     {
         $state = {};
@@ -10389,7 +10417,7 @@ sub simple_format($$@)
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_format_simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::simple_format_style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::simple_format_texi_map;
-    my $text = substitute_text($state, $line_nr, @_);
+    my $text = substitute_text($state, $line_nrs, @_);
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::texi_map;
@@ -12078,7 +12106,7 @@ sub scan_line($$$$;$)
                     }
                     else
                     { 
-                        add_prev($text, $stack, &$Texi2HTML::Config::raw($style->{'style'}, $style->{'text'}));
+                        add_prev($text, $stack, &$Texi2HTML::Config::raw($style->{'style'}, $style->{'text'}, $line_nr));
                     }
                 }
                 if (!$state->{'keep_texi'} and !$state->{'remove_texi'})
@@ -12325,7 +12353,7 @@ sub scan_line($$$$;$)
                          foreach my $float (@{$floats{$style_id}->{'floats'}})
                          {
                               my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float), "\@listoffloats \@float type");
-                              my $caption_lines = &$Texi2HTML::Config::listoffloats_caption($float);
+                              my ($caption_lines, $caption_or_shortcaption) = &$Texi2HTML::Config::listoffloats_caption($float);
                               # we set 'multiple_pass', 'region' and 
                               # 'region_pass'such that index entries
                               # and anchors are not handled one more time;
@@ -12587,7 +12615,7 @@ sub scan_line($$$$;$)
             if ($macro eq 'insertcopying')
             {
                 #close_paragraph($text, $stack, $state, $line_nr);
-                add_prev($text, $stack, do_insertcopying($state));
+                add_prev($text, $stack, do_insertcopying($state, $line_nr));
                 # reopen a preformatted format if it was interrupted by the macro
                 begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 return;
@@ -13338,6 +13366,7 @@ sub do_simple($$$;$$$$)
             if (defined($style))
             {                           # known style
                 $result = &$Texi2HTML::Config::style($style, $macro, $text, $args, $no_close, $no_open, $line_nr, $state, $state->{'command_stack'});
+                @{$state->{'keep_line_nr'}} = ();
             }
             if (!$no_close)
             { 
@@ -14010,17 +14039,18 @@ sub substitute_line($$;$$)
     print STDERR "BUG: substitute line with main state\n" if (($state->{'inside_document'} or $state->{'outside_document'}) and !$state->{'duplicated'});
     push @{$state->{'no_paragraph_stack'}}, $context_string;
     # this is usefull when called from &$I, and also for image files 
-    return simple_format($state, $line_nr, $line) if ($state->{'simple_format'});
-    return substitute_text($state, $line_nr, $line);
+    return simple_format($state, [ $line_nr ], $line) if ($state->{'simple_format'});
+    return substitute_text($state, [ $line_nr ], $line);
 }
 
 sub substitute_text($$@)
 {
     my $state = shift;
-    my $line_nr = shift;
+    my $line_nrs = shift;
     my @stack = ();
     my $text = '';
     my $result = '';
+    my $line_nr;
     if ($state->{'structure'})
     {
         initialise_state_structure($state);
@@ -14041,6 +14071,10 @@ sub substitute_text($$@)
     while (@_ or @{$state->{'spool'}} or $state->{'in_deff_line'})
     {
         my $line;
+        if ($line_nrs)
+        {
+             $line_nr = shift @{$line_nrs};
+        }
         if (@{$state->{'spool'}})
         {
              $line = shift @{$state->{'spool'}};
@@ -14049,6 +14083,7 @@ sub substitute_text($$@)
         {
             $line = shift @_;
         }
+        # print STDERR "SUBSTITUTE_TEXT ".format_line_number($line_nr) ."$line" if ($line_nr);
         if ($state->{'in_deff_line'})
         {
             if (defined($line))
@@ -14232,7 +14267,7 @@ sub do_index_entry_label($$$$;$)
         if ($T2H_DEBUG & $DEBUG_INDEX);
     # =========== end debug
     #return (undef,'','') if ($state->{'region'});
-    my $formatted_entry = substitute_line($entry->{'entry'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));
+    my $formatted_entry = substitute_line($entry->{'entry'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state),$entry->{'line_nr'});
     my $formatted_entry_reference = substitute_line($entry->{'texi'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));
     return ($entry, $formatted_entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, $formatted_entry, 
       $index_prefix_to_name{$entry->{'prefix'}},
@@ -14522,9 +14557,11 @@ while(@input_files)
       = collect_all_css_files();
 
    %region_lines = ();
+   %region_line_nrs = ();
    foreach my $region (@special_regions)
    {
       $region_lines{$region} = [];
+      $region_line_nrs{$region} = [];
    }
 
    texinfo_initialization(0);

@@ -649,7 +649,7 @@ sub info_default_output($)
    my $info_state = shift;
    my $result = '';
    print STDERR "Storing the stack\n";
-   print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]);
+#   print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]);
    my ($characters_count, $lines_count);
    ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
    $info_state->{'offset_in_file'} += $characters_count;
@@ -2029,11 +2029,11 @@ sub info_default_print_page_foot($)
        close ($Texi2HTML::THISDOC{'FH'});
        unless (rename ("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}", "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}-1"))
        {
-           main::echo_warn("Rename $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n");
+           warn "Rename $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n";
        }
        unless (open (INDIRECT, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}"))
        {
-           main::echo_warn("Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n");
+           warn "Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!\n";
        }
        print INDIRECT "".info_default_header();
        print INDIRECT "\x{1F}\nIndirect:";
@@ -2374,7 +2374,7 @@ sub info_default_image_files($$$$)
     return @files;
 }
 
-sub info_default_image($$$$$$$$$$$$$$$$)
+sub info_default_image($$$$$$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -2392,6 +2392,7 @@ sub info_default_image($$$$$$$$$$$$$$$$)
     my $base_simple_format = shift;
     my $extension_simple_format = shift;
     my $file_name_simple_format = shift;
+    my $line_nr = shift;
 
     my $txt_path;
     my $found_file;
@@ -2446,12 +2447,12 @@ sub info_default_image($$$$$$$$$$$$$$$$)
        }
        else
        {
-          main::echo_warn ("\@image file `$txt_path' unreadable: $!");
+          main::echo_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
        }
     }
     else
     {
-        main::echo_warn ("Cannot find \@image file `$base.txt'");
+        main::echo_warn ("Cannot find \@image file `$base.txt'", $line_nr);
     }
     if (defined($found_file) and (!defined($extension) or $file_found_index <= 1))
     {

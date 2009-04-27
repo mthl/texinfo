@@ -14,6 +14,11 @@
 	output to STDOUT, or not split.
 	Use stdin as input if there is no file in argument and stdin
 	is not a tty and fix stdin and stdout names used.
+	Output an error message only if there is an associated line. 
+	Use plain warn for messages that are not associated with a specific
+	location.
+	Pass line numbers to substitute_text for special regions and 
+	special commands like refs and footnotes.
 
 2009-04-23   Patrice Dumas  <dumas@centre-cired.fr>
 

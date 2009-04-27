@@ -81,11 +81,6 @@ text
 @printindex cp
 }
 
-* maybe some @-commands appearing on lines should stop paragraphs, namely
-@page or @indent. That's not sure. More likely this should be up to the 
-writer to add a line. There is a Config hash now for @style_map commands.
-formats automatically stop paragraphs.
-
 * @macro definition in @ifset is parsed but ignored. So in the following, the
 @end ifset appearing in the macro is ignored if 'a' is not set, and the 
 macro isn't defined.
@@ -112,12 +107,6 @@ all the CHM related parameters one can change).
 
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?
-
-* maybe be quiet during special region expansion outside of document. It
-  is not very clear that it is wrong, though. multiple_pass could be passed
-  down to echo_warn/echo_error and no warning would be produced with
-  multiple_pass > 1. Alternatively, line numbers could be passed down 
-  like what is done with inline_insertcopying
 
 * antispam @email
 <script type="text/javascript">
@@ -311,8 +300,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
                               should be in first.html?).
 
 * error message when xref is followed by something else than . is missing.
-
-* no line numbers when in footnotes.
 
 * Certainly partly done: ignore spaces at end of @item line for @(|v|f)table. 
   Also maybe after @item, but to be careful with things prepended or 

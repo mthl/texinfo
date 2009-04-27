@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.189 2009-04-26 17:35:47 pertusus Exp $
+# $Id: texi2html.init,v 1.190 2009-04-27 01:56:39 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4775,13 +4775,13 @@ sub t2h_default_listoffloats_caption($)
     my $float = shift;
     if (defined($float->{'shortcaption_texi'}))
     {
-         return [ @{$float->{'shortcaption_texi'}} ];
+         return ([ @{$float->{'shortcaption_texi'}} ], 'shortcaption');
     }
     elsif (defined($float->{'caption_texi'}))
     {
-         return [ @{$float->{'caption_texi'}} ];
+         return ([ @{$float->{'caption_texi'}} ], 'caption');
     }
-    return [ ];
+    return ([ ], undef);
 }
 
 sub t2h_default_listoffloats_entry($$$$)
@@ -6069,10 +6069,11 @@ sub t2h_default_heading_no_texi($$$)
 
 # formatting of raw regions
 # if L2H is true another mechanism is used for tex
-sub t2h_default_raw($$)
+sub t2h_default_raw($$;$)
 {
     my $style = shift;
     my $text = shift;
+    my $line_nr = shift;
     my $expanded = 1 if (grep {$style eq $_} @EXPAND);
     if ($style eq 'verbatim' or $style eq 'verbatiminclude' or ($style eq 'tex' and $expanded))
     {
@@ -6086,7 +6087,7 @@ sub t2h_default_raw($$)
     }
     elsif ($expanded)
     {
-        main::echo_warn ("Raw $style not handled especially, but expanded");
+        main::echo_warn ("Raw $style not handled especially, but expanded", $line_nr);
         return &$protect_text($text);
     }
     else
@@ -6199,7 +6200,7 @@ sub t2h_default_image_files($$$$)
 # extension
 # path to working dir
 # path to file relative from working dir
-sub t2h_default_image($$$$$$$$$$$$$$$$)
+sub t2h_default_image($$$$$$$$$$$$$$$$$)
 {
     my $file = shift;
     my $base = shift;
@@ -6217,6 +6218,7 @@ sub t2h_default_image($$$$$$$$$$$$$$$$)
     my $base_simple_format = shift;
     my $extension_simple_format = shift;
     my $file_name_simple_format = shift;
+    my $line_nr = shift;
  
     if (!defined($file_path) or $file_path eq '')
     {
@@ -6228,7 +6230,7 @@ sub t2h_default_image($$$$$$$$$$$$$$$$)
         {
             $file = "$base.jpg";
         }
-        main::echo_warn ("no image file for $base, (using $file)");
+        main::echo_warn ("no image file for $base, (using $file)", $line_nr);
     }
     elsif (! $COMPLETE_IMAGE_PATHS)
     {

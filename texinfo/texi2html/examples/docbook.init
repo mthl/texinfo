@@ -938,7 +938,7 @@ sub docbook_image_files($$$$)
 }
 
 
-sub docbook_image($$$$$$$$$$$$$$$$)
+sub docbook_image($$$$$$$$$$$$$$$$;$)
 {
     my $file = shift;
     my $base = shift;
@@ -956,6 +956,7 @@ sub docbook_image($$$$$$$$$$$$$$$$)
     my $base_simple_format = shift;
     my $extension_simple_format = shift;
     my $file_name_simple_format = shift;
+    my $line_nr = shift;
 
 #    if (!defined($file_path) or $file_path eq '' or $file_path =~ /\.txt$/)
 #    {
@@ -1021,12 +1022,12 @@ sub docbook_image($$$$$$$$$$$$$$$$)
        } 
        else
        {
-          main::echo_warn ("\@image file `$txt_path' unreadable: $!");
+          main::echo_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
        }
     }
     else
     {
-        main::echo_warn ("Cannot find \@image file `$base.txt'");
+        main::echo_warn ("Cannot find \@image file `$base.txt'", $line_nr);
     }
 
     return "$result$end";
@@ -1465,10 +1466,11 @@ sub docbook_style($$$$$$$$$)
     return $result;
 }
 
-sub docbook_raw($$)
+sub docbook_raw($$$)
 {
     my $style = shift;
     my $text = shift;
+    my $line_nr = shift;
 
     if ($style eq 'verbatim' or $style eq 'verbatiminclude')
     {
@@ -1482,7 +1484,7 @@ sub docbook_raw($$)
     }
     else
     {
-        main::echo_warn ("Raw style $style not handled");
+        main::echo_warn ("Raw style $style not handled", $line_nr);
         return &$protect_text($text);
     }
 }

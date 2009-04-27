@@ -26,22 +26,22 @@ images.texi(,29) @top top
 images.texi(,30) 
 images.texi(,31) 
 images.texi(,32) Insertcopying
-(copying,1) In copying.
-(copying,2) @image{f--ile}.
-(copying,3) 
-(copying,4) Text in copying.
-(copying,5) File with @@-commands and special characters:
-(copying,6) 
-(copying,7) @c cannot test a file with newline, since perl says
-(copying,8) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-(copying,9) @c with a noon reproducible path
-(copying,10) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-(copying,11) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-(copying,12) 
-(copying,13) And also in alt, and with dimensions:
-(copying,14) 
-(copying,15) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-(copying,16) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,21) In copying.
+images.texi(,22) @image{f--ile}.
+images.texi(,23) 
+images.texi(,24) Text in copying.
+images.texi(files_char,25) File with @@-commands and special characters:
+images.texi(files_char,25) 
+images.texi(files_char,25) @c cannot test a file with newline, since perl says
+images.texi(files_char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,25) @c with a noon reproducible path
+images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) 
+images.texi(files_char,25) And also in alt, and with dimensions:
+images.texi(files_char,25) 
+images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 images.texi(,34) 
 images.texi(,35) In normal context
 images.texi(,36) @image{f--ile}.
