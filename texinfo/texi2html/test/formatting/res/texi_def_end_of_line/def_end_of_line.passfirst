@@ -7,4 +7,4 @@ def_end_of_line.texi(,10) @deffn category deffn_name arguments    more {args   w
 def_end_of_line.texi(,11) deffn
 def_end_of_line.texi(,12) @end deffn
 def_end_of_line.texi(,13) 
-no file(,) @deffn category2 deffn_name2 arguments2 
+def_end_of_line.texi(,14) @deffn category2 deffn_name2 arguments2 

@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.280 2009-04-27 17:14:05 pertusus Exp $
+# $Id: texi2html.pl,v 1.281 2009-04-27 21:22:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4141,6 +4141,11 @@ sub pass_structure($$)
              $texi_lines->[0] = $cline . $texi_lines->[0];
              next;
         }
+        # !defined($cline) may happen if $state->{'in_deff_line'} is true 
+        # but there is no more line, in case the last end of line is
+        # protected
+        $line_nr = shift (@$lines_numbers) unless (!defined($cline));
+
         if ($state->{'in_deff_line'})
         { # line stored in $state->{'in_deff_line'} was protected by @
           # and can be concatenated with the next line
@@ -4150,11 +4155,12 @@ sub pass_structure($$)
             }
             else
             {# end of line protected at the very end of the file
+             # in that case there is also no line_nr anymore.
                 $cline = $state->{'in_deff_line'};
             }
             delete $state->{'in_deff_line'};
         }
-        $line_nr = shift (@$lines_numbers);
+
         #print STDERR "PASS_STRUCTURE: $cline";
         if (!$state->{'raw'} and !$state->{'verb'})
         {
@@ -4419,19 +4425,17 @@ sub pass_structure($$)
         close_stack_structure(\$text, \@stack, $state, $line_nr);
         if ($text)
         {
+            if (!exists($state->{'region_lines'}) or $Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
+            {
+                push @doc_lines, split_lines($text);
+            }
             if (exists($state->{'region_lines'}))
             {
                 push @{$region_lines{$state->{'region_lines'}->{'format'}}}, 
                    split_lines($text);
-                push @doc_lines, split_lines($text) if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}});
-            }
-            else
-            {
-                push @doc_lines, split_lines($text);
             }
         }
     }
-    #echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
     echo_warn ("$state->{'region_lines'}->{'number'} \@$state->{'region_lines'}->{'format'} not closed", $line_nr) if (exists($state->{'region_lines'}));
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
     # To remove once they are handled
@@ -7297,10 +7301,14 @@ sub pass_text($$)
         my $chomped_line = $cline;
         if (!chomp($chomped_line) and @$doc_lines)
         { # if the line has no end of line it is concatenated with the next
+          # this shouldn't happen anymore. And will certainly mess up
+          # line counting. Let it be a bug.
+          print STDERR "BUG: no end of line line passed in doc_line".format_line_number($line_nr)."\n";
              $doc_lines->[0] = $cline . $doc_lines->[0];
              next;
         }
         $line_nr = shift (@$doc_numbers);
+        print STDERR "BUG: line_nr not defined in pass_text. cline: $cline" if (!defined($cline));
         #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
 	#print STDERR "PASS_TEXT: $cline";
 	#dump_stack(\$text, \@stack, \%state);
@@ -9256,7 +9264,6 @@ sub begin_format($$$$$$)
             push @formatted_args, substitute_line($arg, "\@$macro (arg $arg_nr)", $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             {
-                #$arguments .=  ' ' if ((!defined($previous_type) or $previous_type ne 'delimiter') and $arguments ne '');
                 $arguments .= $formatted_args[-1];
             }
             else
@@ -9265,24 +9272,6 @@ sub begin_format($$$$$$)
             }
 
             $previous_type = $type;
-            #if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
-            #{
-            #    if ($arg =~ /^\s*\@/)
-            #    {
-            #        push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-            #    }
-            #    else
-            #    {
-            #        $substitution_state->{'code_style'}++;
-            #        push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-            #    }
-            #    $arguments .= $formatted_args[-1];
-            #}
-            #else
-            #{
-            #    push @formatted_args, substitute_line($arg, $substitution_state, $line_nr);
-            #    $formatted_arguments{$type} = $formatted_args[-1];
-            #}
         }
         $name = $formatted_arguments{'name'};
         $category = $formatted_arguments{'category'};
