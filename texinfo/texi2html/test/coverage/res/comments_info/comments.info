@@ -80,14 +80,17 @@ the text line followed by the finalout.
 
     Test text after finalout  a word after finalout Line after finalout
 
-    @page  @noindent @refill  something
+    @page
+    @noindent @refill  something
 
 noindent at beginning of line noindent on the preceding line   noindent
-after space at beginning of line          page at beginning of line
+after space at beginning of line
+    page at beginning of line
 
     After page on it's own line.
 
-    @page    @noindent @refill  @novalidate  something
+    @page
+    @noindent @refill  @novalidate  something
 
     @contents  something
 
@@ -161,9 +164,9 @@ File: comments.info,  Node: bidule2,  Prev: bidule,  Up: Top
 
 Tag Table:
 Node: Top78
-Node: node2880
-Node: truc2993
-Node: bidule3235
-Node: bidule23421
+Node: node2879
+Node: truc2992
+Node: bidule3234
+Node: bidule23420
 
 End Tag Table

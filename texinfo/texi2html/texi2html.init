@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.191 2009-04-27 17:14:04 pertusus Exp $
+# $Id: texi2html.init,v 1.192 2009-04-27 18:45:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1862,33 +1862,6 @@ sub T2H_DEFAULT_titlepage($$$$)
     my $titlepage_no_texi = shift;
     my $titlepage_simple_format = shift;
 
-#    my $result = '';
-#    my $title = '';
-#    $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
-#    if ($title ne ''
-#        or @{$Texi2HTML::THISDOC{'subtitles'}} 
-#        or @{$Texi2HTML::THISDOC{'authors'}})
-#    {     
-#        $result = "<div align=\"center\">\n";
-#        if ($title ne '')
-#        {
-#            $result .= '<h1>' . $title . "</h1>\n";
-#        }    
-#        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
-#        {
-#            $result .= '<h2>' . $subtitle . "</h2>\n";
-#        }
-#        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
-#        {
-#            $result .= '<strong> ' . $author . " </strong><br>\n";
-#        }
-#        $result .= "</div>\n$DEFAULT_RULE\n";
-#    }
-
-#    $Texi2HTML::TITLEPAGE = $titlepage_text;
-
-#    $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
- 
     $Texi2HTML::TITLEPAGE = $titlepage_text;
     if ($titlepage_text eq '')
     {
@@ -3052,7 +3025,8 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
  'titlefont' => 1,
  'insertcopying' => 1,
  'sp' => 1,
- 'verbatiminclude' => 1
+ 'verbatiminclude' => 1,
+ 'page' => 1
 );
 
 # on bug-texinfo verified that code_style shouldn't be used for anything
@@ -3631,14 +3605,6 @@ sub default_sc($$)
     return '<small>' . uc($_[0]) . '</small>';
 }
 
-# now unused, upcasing is done in normal_text
-sub t2h_default_sc($$$)
-{ 
-    shift;
-    my $args = shift;
-    return '<small>' . uc($args->[0]) . '</small>';
-}
-
 sub default_ctrl($$)
 {
    return "^$_[0]";
@@ -3656,14 +3622,6 @@ sub t2h_default_ctrl($$$)
 sub default_sc_pre($$)
 {
     return uc($_[0]);
-}
-
-# now unused, upcasing is done in normal_text
-sub t2h_default_sc_pre($$$)
-{
-    shift;
-    my $args = shift;
-    return uc($args->[0]);
 }
 
 sub default_titlefont($$)
@@ -3906,12 +3864,10 @@ foreach my $command (keys(%style_map))
     }
 }
 
-#$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_pre{'sc'} = {};
 $style_map_pre{'titlefont'} = {};
 $style_map_pre{'click'}->{'function'} = \&t2h_default_click_pre;
 
-#$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_texi{'sc'} = {};
 $style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
 $style_map_texi{'click'}->{'function'} = \&t2h_default_click_texi;

@@ -3,6 +3,7 @@
 	* texi2html.pl: simplify index handling and fix syn*index to do 
 	the same than in the documentation and in makeinfo/texi2dvi.
 	fix index_summary_file.
+	* texi2html.init: @page stops paragraphs.
 
 2009-04-25   Patrice Dumas  <dumas@centre-cired.fr>
 
