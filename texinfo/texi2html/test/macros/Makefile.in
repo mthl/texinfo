@@ -138,9 +138,10 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  value_in_pass0_macros.texi macros_in_pass0_macros.texi macro_zero.texi \
  macro_in_pass_texi_commands.texi two_macros_on_a_line.texi \
  macro_commands_in_pass_texi_commands.texi node-value.texi empty_macro.texi \
+ test_include_with_setfilename no_arg_macro.texi \
  inc_@f--ile.texi \
  file.texi inc_file.texi macro_included.texi my-bib-macros.texi \
- incl-incl.txi \
+ incl-incl.txi included_file_with_setfilename.texi \
  tests.txt res
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

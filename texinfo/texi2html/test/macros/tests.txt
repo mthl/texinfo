@@ -1,4 +1,5 @@
 texi test_include.texi
+texi test_include_with_setfilename.texi
 texi macros.texi
 texi macro_zero.texi
 texi simple_macro.texi
@@ -28,6 +29,7 @@ texi value_in_misc_valid.texi
 texi macro_in_misc.texi
 texi macro_in_pass_texi_commands.texi
 texi macro_commands_in_pass_texi_commands.texi
+texi no_arg_macro.texi
 texi empty_macro.texi
 texi cond.texi --ifhtml --ifinfo --no-iftex
 test_include test_include.texi
@@ -52,3 +54,5 @@ include-value include-value.texi
 value_in_misc value_in_misc_valid.texi --iftex
 macro_in_misc macro_in_misc.texi
 macro_commands_in_pass_texi_commands macro_commands_in_pass_texi_commands.texi
+test_include_with_setfilename_info test_include_with_setfilename.texi -init info.init
+no_arg_macro_info no_arg_macro.texi -init info.init

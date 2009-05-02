@@ -1,8 +1,16 @@
+2009-05-01   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: ignore @setfilename in included file, consistently
+	with the texinfo manual.
+	Allow @cartouche to be handled like a simple_format.
+	* texi2html.pl, texi2html.init: @direntry is handled like a 
+	menu, not a raw environment.
+
 2009-04-27   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: simplify index handling and fix syn*index to do 
 	the same than in the documentation and in makeinfo/texi2dvi.
-	fix index_summary_file.
+	Fix index_summary_file.
 	Fix line count with a def* protected end of line at the end of
 	the file.
 	* texi2html.init: @page stops paragraphs.
@@ -64,7 +72,7 @@
 	contexts when paragraphs should not appear, and also give context
 	of close_paragraph to be able to deliver an error message stating
 	that something triggering paragraph closing happened while it
-	shouldn't have..
+	shouldn't have.
 	Change the System Identifier to be conformant with what w3c now
 	wants (report from Andreas Lochmann).
 	* texi2html.pl: Split close_stack_texi_structure in 

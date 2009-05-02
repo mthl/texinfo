@@ -372,3 +372,11 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * add tests for -o - and input coming from stdin, including check of 
   out file names.
+
+
+* /dev/null ad NUL on dos is acceptable as -o
+ it is possible to use
+    $devnull = File::Spec->devnull();
+ but maybe not on djgpp osname osvers
+
+* warning if @direcategory/@direntry after first node or element.

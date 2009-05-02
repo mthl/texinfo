@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.192 2009-04-27 18:45:45 pertusus Exp $
+# $Id: texi2html.init,v 1.193 2009-05-02 11:31:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -854,7 +854,7 @@ sub t2h_default_init_out()
     # not in code_style, according to post on bug-texinfo
     if ($SIMPLE_MENU)
     {
-        foreach my $format ('menu', 'detailmenu')
+        foreach my $format ('menu', 'detailmenu', 'direntry')
         {
             if (!defined($complex_format_map->{$format}))
             { 
@@ -2220,7 +2220,7 @@ $pre_map{'enddots'} = '...';
                'point', '-!-',
                'print', '-|',
                'result', '=>',
-               'today'        => '',
+               'today' => '',
                'aa', 'aa',
                'AA', 'AA',
                'ae', 'ae',
@@ -2232,11 +2232,11 @@ $pre_map{'enddots'} = '...';
                'ss', 'ss',
                'l', 'l',
                'L', 'L',
-               'exclamdown', '! upside-down',
+               'exclamdown', '!',
                #'exclamdown', '&iexcl;',
-               'questiondown', '? upside-down',
+               'questiondown', '?',
                #'questiondown', '&iquest;',
-               'pounds', 'pound sterling',
+               'pounds', 'pounds',
                #'pounds', '&pound;'
                'ordf'         => 'a',
                'ordm'         => 'o',
@@ -3973,7 +3973,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
      'ifnotinfo' => 1,
      'ifnotxml' => 1,
      'ifnotdocbook' => 1, 
-     'direntry' => 'raw',
+     'direntry' => 'normal',
      'verbatim' => 'raw', 
      'ifclear' => 'value', 
      'ifset' => 'value' ,
@@ -5049,6 +5049,7 @@ sub t2h_default_menu_command($$$)
     }
     if ($text =~ /\S/)
     {
+        return '' if  ($format eq 'direntry');
         return $text if ($format eq 'detailmenu');
         return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">${begin_row}\n" 
         . $text . "${end_row}</table>\n";
@@ -5107,7 +5108,7 @@ sub t2h_default_menu_link($$$$$$$$)
     my $preformatted = shift;
 
     my $in_commands = 0;
-    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu');
+    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu' and $command_stack->[-1] ne 'direntry');
 
     $title = '' unless ($has_title);
 #print STDERR  "MENU_LINK($in_commands)($state->{'preformatted'})\n";
@@ -5151,7 +5152,7 @@ sub t2h_default_menu_description($$$$)
     my $preformatted = shift;
 
     my $in_commands = 0;
-    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu');
+    $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu' and $command_stack->[-1] ne 'direntry');
     return $text if ($preformatted or $in_commands);
     # FIXME: the following is better-looking.
     #return $text."<br>" if ($in_commands and !$state->{'preformatted'});

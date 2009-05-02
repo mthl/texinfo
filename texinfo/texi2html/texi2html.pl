@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.281 2009-04-27 21:22:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.282 2009-05-02 11:31:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1779,6 +1779,7 @@ $format_type{'enumerate'} = 'list';
 
 $format_type{'menu'} = 'menu';
 $format_type{'detailmenu'} = 'menu';
+$format_type{'direntry'} = 'menu';
 
 $format_type{'cartouche'} = 'cartouche';
 
@@ -3134,7 +3135,7 @@ push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Co
 
 # correct %Texi2HTML::Config::texi_formats_map based on command line and init
 # variables
-$Texi2HTML::Config::texi_formats_map{'menu'} = 1 if ($Texi2HTML::Config::SHOW_MENU);
+$Texi2HTML::Config::texi_formats_map{'menu'} = 'normal' if ($Texi2HTML::Config::SHOW_MENU);
 
 foreach my $expanded (@Texi2HTML::Config::EXPAND)
 {
@@ -3146,7 +3147,7 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     }
     else
     {
-         $Texi2HTML::Config::texi_formats_map{$expanded} = 1; 
+         $Texi2HTML::Config::texi_formats_map{$expanded} = 'normal'; 
     }
 }
 
@@ -3160,7 +3161,7 @@ foreach my $key (keys(%Texi2HTML::Config::texi_formats_map))
     }
 }
 
-# the remaining (not EXPAND) raw formats are set as 'raw' such that 
+# the remaining (not in @EXPAND) raw formats are set as 'raw' such that 
 # they are propagated to formatting functions, but
 # they don't start paragraphs or preformatted.
 foreach my $raw (@raw_regions)
@@ -3981,6 +3982,7 @@ sub initialise_state_structure($)
                                     # to be used
     $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
+    $state->{'direntry'} = 0;     # number of opened direntry  
     $state->{'sectionning_base'} = 0;         # current base sectionning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
     # seems to be only debug
@@ -5121,6 +5123,7 @@ sub menu_entry_texi($$$)
     my $node = shift;
     my $state = shift;
     my $line_nr = shift;
+    return if ($state->{'direntry'});
     my $node_menu_ref = {};
     if (exists($nodes{$node}))
     {
@@ -6976,6 +6979,7 @@ sub fill_state($)
     $state->{'keep_texi'} = 0 unless exists($state->{'keep_texi'});
     $state->{'keep_nr'} = 0 unless exists($state->{'keep_nr'});
     $state->{'detailmenu'} = 0 unless exists($state->{'detailmenu'});     # number of opened detailed menus      
+    $state->{'direntry'} = 0 unless exists($state->{'direntry'});     # number of opened detailed menus      
     $state->{'sec_num'} = 0 unless exists($state->{'sec_num'});
     $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'}); 
     $state->{'preformatted_stack'} = [ '' ] unless exists($state->{'preformatted_stack'}); 
@@ -7618,7 +7622,7 @@ sub pass_text($$)
         &$Texi2HTML::Config::print_page_foot($Texi2HTML::THISDOC{'FH'});
         # this leaves the possibility for external code to close the file
         # without erroring out
-        #close_out ($Texi2HTML::THISDOC{'FH'});
+        close_out ($Texi2HTML::THISDOC{'FH'}) if (fileno($Texi2HTML::THISDOC{'FH'}));
     }
     pop_state();
 }
@@ -8405,6 +8409,7 @@ sub begin_paragraph_after_command($$$$)
 }
 
 # handle raw formatting, ignored regions...
+# called from scan_texi, so only in first pass.
 sub do_text_macro($$$$$)
 {
     my $type = shift;
@@ -8868,7 +8873,7 @@ sub end_format($$$$$)
         $state->{$format}--;
         if ($state->{$format} < 0)
         { # FIXME currently happens, see invalid/not_closed_in_menu.texi
-             echo_error("Too many menu closed", $line_nr);
+             echo_error("Too many $format closed", $line_nr);
              #print STDERR "Bug, $format counter negative: $state->{$format}\n";
              #dump_stack($text, $stack, $state);
              #exit 1;
@@ -8947,10 +8952,6 @@ sub end_format($$$$$)
              echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
         }
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}, $format_ref->{'orig_format'}));
-    }
-    elsif ($format_type{$format} eq 'cartouche')
-    {
-        add_prev($text, $stack, &$Texi2HTML::Config::cartouche($format_ref->{'text'},$state->{'command_stack'}));
     }
     elsif ($format eq 'float')
     {
@@ -9045,6 +9046,10 @@ sub end_format($$$$$)
             add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}, $state));
         }
     }
+    elsif ($format_type{$format} eq 'cartouche')
+    {
+        add_prev($text, $stack, &$Texi2HTML::Config::cartouche($format_ref->{'text'},$state->{'command_stack'}));
+    }
     elsif ($format_type{$format} eq 'menu')
     {
     # it should be short-circuited if $Texi2HTML::Config::SIMPLE_MENU
@@ -9062,9 +9067,12 @@ sub end_format($$$$$)
            {
                add_prev($text, $stack, &$Texi2HTML::Config::menu($format_ref->{'text'}));
            }
-           else # detailmenu
+           elsif ($format eq 'detailmenu') # detailmenu
            {
                add_prev($text, $stack, $format_ref->{'text'});
+           }
+           else # direntry
+           {
            }
         }
         else
@@ -9412,15 +9420,8 @@ sub begin_format($$$$$$)
         if ($state->{'preformatted'})
         {
         # add a fake complex style in order to have a given pre style
-        # FIXME check 'style' on bug-texinfo
             push_complex_format_style('menu', 
-              $Texi2HTML::Config::MENU_PRE_COMPLEX_FORMAT
-#                {
-#              'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 
-#              'class' => 'menu-preformatted',
-##              'style' => 'code'
-#                 }
-                 , $state);
+              $Texi2HTML::Config::MENU_PRE_COMPLEX_FORMAT, $state);
             begin_paragraph_after_command($state,$stack,$macro,$line);
         }
         else
@@ -9515,7 +9516,7 @@ sub do_menu_link($$$)
     my $state = shift;
     my $line_nr = shift;
     my $menu_entry = shift;
-#    my $menu_entry = $state->{'menu_entry'};
+
     my $file = $state->{'element'}->{'file'};
     my $node_name = normalise_node($menu_entry->{'node'});
     # normalise_node is used in fact to determine if name is empty. 
@@ -9543,10 +9544,19 @@ sub do_menu_link($$$)
 
     my $entry = '';
     my $href;
-    my $element = $nodes{$node_name};
+
+    my $element;
+    if ($state->{'direntry'})
+    {
+        $href = do_external_href($node_name);
+    }
+    else
+    {
+        $element = $nodes{$node_name};
+    }
 
     # menu points to an unknown node
-    if (!$element->{'seen'})
+    if (defined($element) and !$element->{'seen'})
     {
         if ($menu_entry->{'node'} =~ /^\s*\(.*\)/o or $novalidate)
         {
@@ -9578,7 +9588,7 @@ sub do_menu_link($$$)
     }
 
     # the original node or an equivalent node was seen
-    if ($element->{'seen'})
+    if (defined($element) and $element->{'seen'})
     {
         if ($element->{'reference_element'})
         {
@@ -9607,8 +9617,15 @@ sub do_menu_description($$)
     my $menu_entry = $descr->{'menu_entry'};
 
     my $element = $menu_entry->{'menu_reference_element'};
+    
+    ############# debug
+    # this is not a bug if element is not defined in direntry
+    print STDERR "Bug: !defined(element) in do_menu_description\n" if (!defined($element) and ($state->{'menu'} or $state->{'detailmenu'}));
+    ############# end debug
+    my $element_text = '';
+    $element_text = $element->{'text_nonumber'} if (defined($element));
 
-    return &$Texi2HTML::Config::menu_description($text, duplicate_formatting_state($state),$element->{'text_nonumber'}, $state->{'command_stack'}, $state->{'preformatted'});
+    return &$Texi2HTML::Config::menu_description($text, duplicate_formatting_state($state),$element_text, $state->{'command_stack'}, $state->{'preformatted'});
 }
 
 sub do_xref($$$$)
@@ -10768,7 +10785,7 @@ sub scan_texi($$$$;$)
             {
                 pop @{$state->{'text_macro_stack'}};
                 # we keep menu and titlepage for the following pass
-                if ((($end_tag eq 'menu') and $Texi2HTML::Config::texi_formats_map{'menu'}) or ($region_lines{$end_tag}) or $state->{'arg_expansion'})
+                if (($Texi2HTML::Config::texi_formats_map{$end_tag} eq 'normal') or ($region_lines{$end_tag}) or $state->{'arg_expansion'})
                 {
                      add_prev($text, $stack, "\@end${space}$end_tag");
                 }
@@ -10783,7 +10800,7 @@ sub scan_texi($$$$;$)
             {
                 echo_error ("\@end $end_tag without corresponding element", $line_nr);
             }
-            else
+            else # a format that is not handled during the first pass
             {# ARG_EXPANSION
                 add_prev($text, $stack, "\@end${space}$end_tag");
             }
@@ -10816,7 +10833,7 @@ sub scan_texi($$$$;$)
                       or $macro eq 'definfoenclose' or $macro eq 'include')
             { # special commands whose arguments will have @macro and
               # @value expanded, and that are processed in this pass
-                if ($state->{'ignored'})
+                if ($state->{'ignored'} or ($line_nr->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'} and $macro eq 'setfilename'))
                 {
                     $cline = '';
                 }
@@ -10907,7 +10924,7 @@ sub scan_texi($$$$;$)
                 # we must keep it for later, unless we are in an 'ignored'.
                 # if in 'arg_expansion' we keep everything.
                 my $macro_kept;
-                if ((($state->{'raw'} or (($macro eq 'menu') and $Texi2HTML::Config::texi_formats_map{'menu'}) or (exists($region_lines{$macro}))) and !$state->{'ignored'}) or $state->{'arg_expansion'})
+                if ((($state->{'raw'} or ($Texi2HTML::Config::texi_formats_map{$macro} eq 'normal') or (exists($region_lines{$macro}))) and !$state->{'ignored'}) or $state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, $tag);
                     $macro_kept = 1;
@@ -11085,7 +11102,7 @@ sub scan_texi($$$$;$)
                {
                   my $top = pop @$stack;
                   # defer this to later?
-                  echo_error ("unclosed command in \@$state->{'line_command'}: $top->{'style'}");
+                  #echo_error ("unclosed command in \@$state->{'line_command'}: $top->{'style'}");
                   add_prev($text, $stack, "\@$top->{'style'}".'{'.$top->{'text'}.'}');
                }
                my $command = pop @$stack;
@@ -11238,7 +11255,6 @@ sub end_format_structure($$$$$$)
     my $line_nr = shift;
     my $remaining_on_line = shift;
 
-    $state->{'detailmenu'}-- if ($end_tag eq 'detailmenu' and $state->{'detailmenu'});
     if (defined($state->{'text_macro_stack'})
        and @{$state->{'text_macro_stack'}}
        and ($end_tag eq $state->{'text_macro_stack'}->[-1]))
@@ -11257,8 +11273,9 @@ sub end_format_structure($$$$$$)
              }
              #dump_stack($text, $stack, $state);
         }
-        if ($end_tag eq 'menu' or $Texi2HTML::Config::region_formats_kept{$end_tag})
+        if (($Texi2HTML::Config::texi_formats_map{$end_tag} eq 'normal') or $Texi2HTML::Config::region_formats_kept{$end_tag})
         {
+             $state->{$end_tag}-- if ($Texi2HTML::Config::texi_formats_map{$end_tag} eq 'normal');
              add_prev($text, $stack, "\@end $end_tag");
         }
         else
@@ -11267,12 +11284,16 @@ sub end_format_structure($$$$$$)
              #dump_stack($text, $stack, $state);
              return 1 if ($remaining_on_line =~ /^\s*$/);
         }
-        $state->{'menu'}-- if ($end_tag eq 'menu');
     }
     elsif ($Texi2HTML::Config::texi_formats_map{$end_tag})
     {
         echo_error ("\@end $end_tag without corresponding element", $line_nr);
         #dump_stack($text, $stack, $state);
+    }
+    elsif ($end_tag eq 'detailmenu' or $end_tag eq 'direntry')
+    {
+        $state->{$end_tag}-- if $state->{$end_tag};
+        add_prev($text, $stack, "\@end $end_tag");
     }
     else
     {
@@ -11441,12 +11462,6 @@ sub scan_structure($$$$;$)
                  add_prev ($text, $stack, "\@$macro".$line); 
                  next;
             }
-            elsif ($macro eq 'detailmenu')
-            {
-                add_prev ($text, $stack, "\@$macro" .  $cline);
-                $state->{'detailmenu'}++;
-                last;
-            }
             elsif ($sec2level{$macro})
             {
                 if ($cline =~ /^\s*(.*)$/)
@@ -11509,10 +11524,13 @@ sub scan_structure($$$$;$)
                     $state->{'raw'} = $macro;
                     #print STDERR "RAW\n";
                 }
-                elsif ($macro eq 'menu')
+                elsif ($Texi2HTML::Config::texi_formats_map{$macro} eq 'normal')
                 {
-                    $state->{'menu'}++;
-                    delete ($state->{'prev_menu_node'});
+                    if ($macro eq 'menu')
+                    {
+                       delete ($state->{'prev_menu_node'});
+                    }
+                    $state->{$macro}++;
                     push @{$state->{'text_macro_stack'}}, $macro;
                     #print STDERR "MENU (text_macro_stack: @{$state->{'text_macro_stack'}})\n";
                 }
@@ -11534,7 +11552,7 @@ sub scan_structure($$$$;$)
                 }
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later
-                if (($state->{'raw'} and (!defined($Texi2HTML::Config::command_handler{$macro}))) or ($macro eq 'menu'))
+                if (($state->{'raw'} and (!defined($Texi2HTML::Config::command_handler{$macro}))) or ($Texi2HTML::Config::texi_formats_map{$macro} eq 'normal'))
                 {
                     add_prev($text, $stack, "\@$macro");
                     $macro_kept = 1;
@@ -11546,6 +11564,12 @@ sub scan_structure($$$$;$)
                 next if $macro_kept;
                 #dump_stack ($text, $stack, $state);
                 return if ($cline =~ /^\s*$/);
+            }
+            elsif ($macro eq 'detailmenu' or $macro eq 'direntry')
+            {
+                add_prev ($text, $stack, "\@$macro" .  $cline);
+                $state->{$macro}++;
+                last;
             }
             elsif ($macro eq 'float')
             { 
@@ -11838,7 +11862,7 @@ sub scan_line($$$$;$)
     # in pass_structure
     unless ($state->{'end_of_line_protected'}) # and $in_some_format)
     { 
-        if (!$state->{'raw'} and !$state->{'verb'} and $state->{'menu'})
+        if (!$state->{'raw'} and !$state->{'verb'} and ($state->{'menu'} or $state->{'direntry'}))
         { # new menu entry
             my ($node, $name, $ending);
             if ($cline =~ s/^\*(\s+$NODERE)(::)//o)

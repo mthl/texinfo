@@ -1,4 +1,4 @@
-key: ! upside-down
+key: !
   origin_href: texinfo_14.html#index-_00a1
   entry: &iexcl;
   texi_entry: @exclamdown{}
@@ -358,7 +358,7 @@ key: <title> HTML tag
   texi_entry: <title> HTML tag
   element_href: texinfo_4.html#settitle
   element_text: 3.2.4 <code>@settitle</code>: Set the document title
-key: ? upside-down
+key: ?
   origin_href: texinfo_14.html#index-_00bf
   entry: &iquest;
   texi_entry: @questiondown{}

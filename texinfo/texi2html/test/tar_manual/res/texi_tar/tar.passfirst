@@ -85,7 +85,7 @@ tar.texi(,57) @end direntry
 tar.texi(,58) 
 tar.texi(,59) @dircategory Individual utilities
 tar.texi(,60) @direntry
-tar.texi(,61) * tar: (tar)tar invocation.                     Invoking @GNUTAR{}.
+tar.texi(GNUTAR,61) * tar: (tar)tar invocation.                     Invoking @acronym{GNU} @command{tar}.
 tar.texi(,62) @end direntry
 tar.texi(,63) 
 tar.texi(,64) @shorttitlepage @acronym{GNU} @command{tar}

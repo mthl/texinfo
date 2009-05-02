@@ -2,10 +2,17 @@ This file records noteworthy changes.
 
 1.84 ()
 
+* NEW FEATURES
+  ------------
+
+* new info backend, ready for world domination!
+
 * BUG FIXES
   ---------
 
 * Handling of @itemize and @table arguments are more in line with makeinfo.
+
+* ignore @setfilename in @include'd files, as told in the texinfo manual.
 
 * COMPATIBILITY
   -------------
@@ -14,10 +21,12 @@ This file records noteworthy changes.
   and apply the @-command given as @table argument. Correspondingly, 
   some arguments of $table_item have been removed.
 
-* Formatting of titlepage chaned, and @title, @subtitle and @author
+* Formatting of titlepage changed, and @title, @subtitle and @author
   are now handled by $line_command.
 
-* verbatiminclude is now a $raw command argument distinct from verbatim.
+* @verbatiminclude is now a $raw command argument distinct from @verbatim.
+
+* @direntry is formatted like a menu and passed down to $menu_command.
 
 1.82 (2009-01-05)
 

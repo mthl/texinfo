@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename test_include_with_setfilename.info
+
+@node Top
+
+Include a file that has a @@setfilename.
+@include included_file_with_setfilename.texi 
+
+After inclusion.
+
+@bye

@@ -35,3 +35,11 @@ no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -init inline
 double_contents_book double_contents.texi -init book.init
 double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftertitlepage.texi -init book.init
 double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi -init book.init -split chapter
+
+contents_at_begin_info contents_at_begin.texi -init info.init
+contents_at_end_info contents_at_end.texi  -init info.init
+contents_in_middle_chapter_info contents_in_middle_chapter.texi -init info.init
+contents_in_middle_section_info contents_in_middle_section.texi -init info.init
+double_contents_info double_contents.texi -init info.init
+double_contents_setcontentsaftertitlepage_info double_contents_setcontentsaftertitlepage.texi -init info.init
+

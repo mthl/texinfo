@@ -1,11 +1,8 @@
-
-########## WORK IN PROGRESS ##################
-
 #+##############################################################################
 #
 # info.init: convert to info
 #
-#    Copyright (C) 2008  Patrice Dumas <dumas@centre-cired.fr>
+#    Copyright (C) 2008, 2009  Patrice Dumas <dumas@centre-cired.fr>
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -32,7 +29,7 @@ $Data::Dumper::Maxdepth = 12;
 
 $USE_NODES = 1;
 $USE_SECTIONS = 0;
-@EXPAND = ('info');
+@EXPAND = ('info', 'direntry');
 $EXTENSION = 'info';
 $SHOW_MENU = 1;
 $USE_SETFILENAME = 1;
@@ -41,6 +38,7 @@ $NODE_NAME_IN_MENU = 1;
 $SPLIT_INDEX = 0;
 $SEPARATED_FOOTNOTES = 0;
 $INLINE_CONTENTS = 1;
+$INLINE_INSERTCOPYING = 1;
 $SIMPLE_MENU = 1;
 $MENU_SYMBOL = '*';
 $USE_MENU_DIRECTIONS = 0;
@@ -186,7 +184,7 @@ foreach my $command (keys(%style_map))
 $special_list_commands{'itemize'} = {};
 my @info_default_normal_formats = ('table', 'vtable', 'ftable', 'enumerate',
    'itemize');
-foreach my $format (@info_default_normal_formats, 'group')
+foreach my $format (@info_default_normal_formats, 'group', 'cartouche')
 {
     $format_map{$format} = '';
 }
@@ -309,12 +307,13 @@ sub info_default_copying_comment($$$$)
     return $copying_text;
 }
 
-sub info_default_count_lines($$;$$)
+sub info_default_count_lines($;$$)
 {
       my $text = shift;
-      my $info_state = shift;
       my $indent_length = shift;
       my $indentation_done = shift;
+
+      my $blank_line;
       my $no_indentation = 0;
  
       if (!defined($indentation_done) or $indentation_done)
@@ -331,7 +330,7 @@ sub info_default_count_lines($$;$$)
       my $end_of_line = 0;
       if (($#lines > 1) and !$end_of_line and ($lines[-1] !~ /\S/) and ($lines[-2] !~ /\S/))
       {
-         $info_state->{'blank_line'} = 1;
+         $blank_line = 1;
       }
       my $last_line = $lines[-1];
 
@@ -354,7 +353,7 @@ print STDERR "ZZZZZZZZZZZZZzz `$line'\n";
          $line_passed++;
          $end_of_line = 1;
       }
-      return ($line_passed, $end_of_line, $last_line, $indented_text);
+      return ($line_passed, $end_of_line, $last_line, $indented_text, $blank_line);
 }
 
 # FIXME initialize
@@ -649,7 +648,7 @@ sub info_default_output($)
    my $info_state = shift;
    my $result = '';
    print STDERR "Storing the stack\n";
-#   print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]);
+   #print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]);
    my ($characters_count, $lines_count);
    ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
    $info_state->{'offset_in_file'} += $characters_count;
@@ -690,6 +689,8 @@ sub info_default_process_content($$)
    my $table_item_line = 0;
    my $in_table_item = 0;
    my $max_column = $info_default_max_column;
+   my $direntry = 0;
+   my $preformatted_format = 0;
 
    # for formats that needs to process a full line (center and flushright) 
    # to know the line length before outputing
@@ -737,9 +738,6 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
           {
               $text_added .= $content->{'end'};
           }
-          # if ending a paragraph, go straight to the text addition 
-          # without processing of the end of lines. Same if ending a 
-          # quotation or an @example
           if ($info_default_indented_commands{$content->{'command'}})
           {
               $indent_level--;
@@ -750,12 +748,16 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               # this nullify a potential noindent in a random format
               $info_state->{'indent_para'} = undef;
           }
-          elsif ($complex_format_map->{$content->{'command'}})
+          elsif ($complex_format_map->{$content->{'command'}} or $content->{'command'} eq 'cartouche')
           {
               if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level > 0) and !$preformatted)
               {
                  $text_added .= "\n";
               }
+          }
+          if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
+          {
+              $preformatted_format--;
           }
           if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
           {
@@ -830,6 +832,14 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               $cell->{'result'} = $result;
               $cell->{'length'} = $length;
               $cell->{'line_passed'} = $all_line_passed;
+          }
+          elsif ($content->{'command'} eq 'direntry')
+          {
+              $direntry--;
+              # this has to be done here, otherwise, at the end, $direntry 
+              # would be 0
+              $info_default_dir_specification .= $text_added;
+              $text_added = '';
           }
           elsif ($content->{'command'} eq 'multitable_row')
           {
@@ -1003,7 +1013,6 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               {
                  # empty paragraph
                  goto new_text if (!$content->{'content'});
-
                  my $paragraphindent = $Texi2HTML::THISDOC{'paragraphindent'};
                  $paragraphindent = $Texi2HTML::Config::PARAGRAPHINDENT if (!defined($paragraphindent));
                  $paragraphindent = 0 if ($paragraphindent eq 'none');
@@ -1105,9 +1114,31 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
               {
                   $text_added .= "\n" unless ($info_state->{'blank_line'});
               }
+              elsif ($content->{'command'} eq 'direntry')
+              {
+                  if ($content->{'content'})
+                  {
+                      $direntry++; 
+                  }
+              }
               elsif ($paragraph_style{$content->{'command'}})
               {
                   push @{$info_state->{'align_stack'}}, {'command' => $content->{'command'}};
+              }
+              elsif ($content->{'command'} eq 'verbatim' or $content->{'command'} eq 'verbatiminclude')
+              {
+                  # $preformatteed cannot be used here since preformatted 
+                  # is closed before a verbatim
+                  if (!$preformatted_format and $indent_level != 0)
+                  {
+                      if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'})
+                      {
+                           $text_added .= "\n";
+                      }
+                      my $verb_text = $content->{'text'};
+                      my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($verb_text);
+                      $content->{'text'} .= "\n" unless ($blank_line or ($last_line =~ /^\s*$/));
+                  }
               }
               elsif ($content->{'command'} eq 'multitable')
               {
@@ -1138,11 +1169,19 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
                   my $cell_width = $content->{'parent'}->{'parent'}->{'columns_size'}->[$multitable->{'cell_index'}];
                   #$max_column = $cell_width-1;
                   $max_column = $cell_width -2;
-                  push @{$multitable->{'cells'}}, {'cell_width' => $cell_width, 'index_entries' => [], 'anchors' => []};
+                  my $cell = {'cell_width' => $cell_width, 'index_entries' => [], 'anchors' => []};
+                  push @{$multitable->{'cells'}}, $cell;
                   $result = '';
                   $length = 0;
                   $all_line_passed = 0;
                   $line_char_counter = 0;
+                  if (!$content->{'content'})
+                  {# empty cell
+                      $cell->{'result'} = $result;
+                      $cell->{'length'} = $length;
+                      $cell->{'line_passed'} = $all_line_passed;
+                  }
+                  #info_default_skip_spaces($current, $index, $close);
               }
               if ($info_default_indented_commands{$content->{'command'}})
               {
@@ -1157,12 +1196,16 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
                   # there is no close if !$content->{'content'}
                   $indent_level++ if ($content->{'content'});
               }
-              elsif ($complex_format_map->{$content->{'command'}})
+              elsif ($complex_format_map->{$content->{'command'}} or $content->{'command'} eq 'cartouche')
               {
                   if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
                   {
                      $text_added .= "\n";
                   }
+              }
+              if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
+              {
+                  $preformatted_format++;
               }
           }
 
@@ -1311,9 +1354,10 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
          $in_table_item = 0 if ($in_table_item);
          $info_state->{'blank_line'} = 0;
       }
-      my ($line_passed, $end_of_line, $last_line, $text_indented) = info_default_count_lines($text_added, $info_state, $indent_length, ($indentation_done
+      my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($text_added, $indent_length, ($indentation_done
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'center' 
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
+      $info_state->{'blank_line'} = 1 if ($blank_line);
       # only_space is set in all the conditionals
       if ($end_of_line)
       {
@@ -1403,9 +1447,16 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
           }
       }
       
-      $result .= $text_indented;
-      $length += length($text_indented);
-      $all_line_passed += $line_passed;
+      if ($direntry)
+      {
+         $info_default_dir_specification .= $text_indented;
+      }
+      else
+      {
+         $result .= $text_indented;
+         $length += length($text_indented);
+         $all_line_passed += $line_passed;
+      }
    }
    return ($length, $result, $all_line_passed);
 }
@@ -1460,7 +1511,6 @@ sub info_default_open_command($$;$)
    $info_state->{'current'} = $new_command;
    print STDERR "Opened $command ". 
      "\n";
-#     Data::Dumper->Dump([$info_state->{'top'}]);
 }
 
 sub info_default_close_command($$;$$$)
@@ -1473,7 +1523,6 @@ sub info_default_close_command($$;$$$)
 
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
-   #print STDERR "" . Data::Dumper->Dump([$current_command]);
    print STDERR "Closing $command ".
      "\n";
    if (!defined($info_state->{'current'}))
@@ -1488,7 +1537,6 @@ sub info_default_close_command($$;$$$)
    {
      print STDERR "Was waiting for $info_state->{'current'}->{'command'}\n";
    }
-#     Data::Dumper->Dump([$info_state->{'top'}]);
    #return if $no_close;
    $command_entries->{'begin'} = $begin;
    $command_entries->{'end'} = $end;
@@ -1936,8 +1984,6 @@ sub info_default_normal_text($$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-#Data::Dumper->Dump([$state]);
-
 #print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
    $text = uc($text) if (in_cmd($style_stack, 'var'));
@@ -2069,6 +2115,7 @@ sub info_default_print_Top_footer($$$)
     {
         &$print_page_foot($fh);
     }
+    info_default_end_section($fh, $end_page, $element);
 }
 
 sub info_default_footnote_texi($$$)
@@ -2143,7 +2190,8 @@ sub info_default_print_section
                $line = shift @$lines;
                $footnote_result .= $line;
             }
-            my ($line_passed, $end_of_line, $last_line, $text_indented) = info_default_count_lines($footnote_result, $info_state);
+            my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($footnote_result);
+            $info_state->{'blank_line'} = 1 if ($blank_line);
             if ($line_passed == 0)
             {# certainly out of paragraph commands
                $footnote_result =~ s/\s*$//;
@@ -2176,10 +2224,13 @@ sub info_default_end_section($$$)
        }
        $info_default_out_file_nr++;
        close($Texi2HTML::THISDOC{'FH'});
-       main::open_out_file("$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr");
-       print STDERR "X-$info_default_out_file_nr: $info_state->{'offset_in_file'}\n";
-       &$print_page_head($Texi2HTML::THISDOC{'FH'});
-       push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'offset_in_file'}};
+       if (!$end_foot_navigation)
+       {
+           main::open_out_file("$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr");
+           print STDERR "X-$info_default_out_file_nr: $info_state->{'offset_in_file'}\n";
+           &$print_page_head($Texi2HTML::THISDOC{'FH'});
+           push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'offset_in_file'}};
+       }
     }
 }
 
@@ -2256,6 +2307,11 @@ sub info_default_complex_format($$)
     {
         $begin = "* Menu:\n\n";
         $end = "\n";
+    }
+    elsif ($name eq 'direntry')
+    {
+        $begin = "START-INFO-DIR-ENTRY\n"; 
+        $end = "END-INFO-DIR-ENTRY\n";
     }
     return info_default_close_command(undef, $name, $begin, $end);
 }
@@ -2497,8 +2553,8 @@ sub info_default_print_index($$)
     my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n" .$text."\n";
     $info_state->{'offset_in_file'} += length($result);
 
-    my ($line_passed, $end_of_line, $last_line, $text_indented) = info_default_count_lines($result, $info_state);
-    $info_state->{'blank_line'} = 1 if ($last_line !~ /\S/ and $end_of_line);
+    my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($result);
+    $info_state->{'blank_line'} = 1 if (($last_line !~ /\S/ and $end_of_line) or ($blank_line));
     $info_state->{'line_count'} += $line_passed;
     return $before.$result;
 }
@@ -2739,7 +2795,8 @@ print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $li
    {
        info_default_store_text ($state, '', $command, {'format_name' => $format});
    }
-   return undef;
+   $line =~ s/^\s*//;
+   return $line;
 }
 
 sub info_default_sp($$)
@@ -2987,11 +3044,11 @@ sub info_default_raw($$)
     {
         return info_default_store_text(undef,$text, $style);
     }
-    if ($style eq 'direntry')
-    {
-        $info_default_dir_specification .= "START-INFO-DIR-ENTRY\n" 
-           .$text. "END-INFO-DIR-ENTRY\n";
-    }
+#    if ($style eq 'direntry')
+#    {
+#        $info_default_dir_specification .= "START-INFO-DIR-ENTRY\n" 
+#           .$text. "END-INFO-DIR-ENTRY\n";
+#    }
     return '';
 }
 

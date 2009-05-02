@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.13 2009-04-25 14:54:43 pertusus Exp $
+# $Id: mediawiki.init,v 1.14 2009-05-02 11:31:02 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -50,6 +50,8 @@ undef $SPLIT_INDEX;
 
 # Use preformatted menus.
 $SIMPLE_MENU = 1;
+
+$texi_formats_map{'direntry'} = 0;
 
 push @command_handler_init, \&mediawiki_initialize_variables;
 

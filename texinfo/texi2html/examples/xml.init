@@ -8,7 +8,7 @@ $USE_NUMERIC_ENTITY = 0;
 $USE_SETFILENAME = 1;
 $SEPARATE_DESCRIPTION = 1;
 $USE_NODES = 1;
-@EXPAND = ('xml');
+@EXPAND = ('xml', 'direntry');
 
 $USE_ISO = 0;
 $SECTION_NAVIGATION = 0;
@@ -183,6 +183,7 @@ $format_map{'menu'} = 'menu';
 #$format_code_style{'menu_name'} = 1;
 #$format_code_style{'menu_description'} = 1;
 $format_map{'detailmenu'} = 'detailmenu';
+$format_map{'direntry'} = 'direntry';
 $format_map{'menu_comment'} = '';
 delete $format_map{'enumerate'};
 foreach my $table ('table', 'ftable', 'vtable')
