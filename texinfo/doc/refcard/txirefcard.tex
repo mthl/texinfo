@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.8 2009-03-20 18:33:53 karl Exp $
+% $Id: txirefcard.tex,v 1.9 2009-05-06 22:53:26 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -40,11 +40,11 @@
 % Author:
 %  Robert D. Solimeno (adapted from Emacs reference card by Stephen Gildea)
 %  Internet: solimeno (at) gmail (dot) com
-% 
+%
 % The author thanks Karl Berry for the opportunity to contribute to this
 % project and for his assistance and great patience as I learned how to
 % use TeX.
-% 
+%
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in texinfo.txi, written primarily by Bob Chassell.
 
@@ -114,7 +114,7 @@ Floor, Boston, MA 02110-1301 USA.
   \font\subsubheadingfont=cmbx8 \scaledmag0
   \font\smallfont=cmr8
   \font\smallsy=cmsy8
-  \font\eightrm=cmr8 
+  \font\eightrm=cmr8
   \font\eightbf=cmbx8
   \font\eightit=cmti8
   \font\eighttt=cmtt8
@@ -401,7 +401,7 @@ begin with lines like this:
 \code{@setfilename {\sl info-file-name}}\hfil\break
 \code{@settitle {\sl name-of-manual}}}
 
-\dots the contents of the Texinfo document follow, 
+\dots the contents of the Texinfo document follow,
 ending with:\hfil\break
 \code{@bye}
 
@@ -690,12 +690,12 @@ exception of \code{@tieaccent}.
 
 \subsection{Other text characters and logos}
 
+\txicmd{@bullet}{\ttbraced{}}{Produce a large round dot, $\bullet$ (\samp{*} in Info).}
 \txicmd{@dots}{\ttbraced{}}{Produce an ellipsis, `\dots'.}
 \txicmd{@enddots}{\ttbraced{}}{Produce an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
-\txicmd{@bullet}{\ttbraced{}}{Produce a large round dot, $\bullet$ (\samp{*} in Info).}
 \txicmd{@euro}{\ttbraced{}}{Produce the Euro currency sign, \euro.}
 \txicmd{@pounds}{\ttbraced{}}{Produce the pounds sterling currency sign, {\it\$}.}
-\txicmd{@minus}{\ttbraced{}}{Produce a minus sign, `$-$'.}
+\txicmd{@textdegree}{\ttbraced{}}{Produce the degree symbol, $^\circ$.}
 \txicmd{@copyright}{\ttbraced{}}{Produce the copyright symbol, \copyright.}
 \txicmd{@registeredsymbol}{\ttbraced{}}{Produce the registered symbol, \registeredsymbol.}
 \txicmd{@TeX}{\ttbraced{}}{Produce the \TeX\ logo.}
@@ -722,10 +722,10 @@ exception of \code{@tieaccent}.
 \subsection{Math}
 
 \txicmd{@math}{\ttbraced{math}}{Format the given math (inline); \bschar{} becomes an escape character, and all \TeX\ math is available.}
+\txicmd{@minus}{\ttbraced{}}{Produce a minus sign, `$-$'.}
 \txicmd{@\bschar}{}{Inside \code{@math}, generate a backslash, $\backslash$.}
 \txicmd{@geq}{\ttbraced{}}{Generate a greater-than-or-equal sign, $\geq$.}
 \txicmd{@leq}{\ttbraced{}}{Generate a less-than-or-equal sign, $\leq$.}
-
 
 \section{Making and preventing breaks}
 

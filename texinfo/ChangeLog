@@ -1,3 +1,8 @@
+2009-05-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@@-Command Summary): forgot @textdegree{}.
+	* doc/trefcard/txirefcard.tex: likewise.
+
 2009-04-20  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (run_tex): pdf output for texinfo is supported.
