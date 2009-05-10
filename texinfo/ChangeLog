@@ -1,7 +1,15 @@
+2009-05-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (firstparagraphindent): mistaken
+	mention of @paragraphindent.  Report from Dilyan Palauzov,
+	10 May 2009 21:41:32.
+	(@@-Command Summary): forgot @firstparagraphindent{}.
+	* doc/refcard/txirefcard.tex: likewise.
+
 2009-05-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (@@-Command Summary): forgot @textdegree{}.
-	* doc/trefcard/txirefcard.tex: likewise.
+	* doc/refcard/txirefcard.tex: likewise.
 
 2009-04-20  Akim Demaille  <akim@epita.fr>
 

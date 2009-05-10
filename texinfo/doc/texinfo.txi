@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.243 2009-05-06 22:53:25 karl Exp $
+@c $Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3974,7 +3974,7 @@ indentation set by a @code{@@paragraphindent} command
 For HTML and XML output, the @code{@@firstparagraphindent} setting is
 ignored.
 
-It is best to write the @code{@@paragraphindent} command before the
+It is best to write the @code{@@firstparagraphindent} command before the
 end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
@@ -17989,6 +17989,11 @@ over-wide lines.  @xref{Overfull hboxes}.@refill
 Add @var{entry} to the index of functions.  @xref{Index Entries, ,
 Defining the Entries of an Index}.@refill
 
+@item @@firstparagraphindent @var{word}
+Control indentation of the first paragraph after section headers
+according to @var{word}, one of `none' or `insert'.
+@xref{firstparagraphindent, @code{@@firstparagraphindent}}.
+
 @item @@float
 Environment to define floating material.  Pair with @code{@@end float}.
 @xref{Floats}.
@@ -19302,7 +19307,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.243 2009-05-06 22:53:25 karl Exp $
+$Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19381,7 +19386,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.243 2009-05-06 22:53:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -21365,7 +21370,7 @@ Format a mathematical expression.
 Generate a minus sign.
 
 @item @@paragraphindent @var{asis-or-number}
-Specify paragraph indentation.
+Specify amount of paragraph indentation.
 
 @item @@raisesections
 Raise hierarchical level of sectioning commands.
