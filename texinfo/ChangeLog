@@ -1,3 +1,8 @@
+2009-05-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\textdegree): output index sort string as `o',
+	since that's how we output it in Info.  Suggested by Patrice.
+
 2009-05-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (firstparagraphindent): mistaken
