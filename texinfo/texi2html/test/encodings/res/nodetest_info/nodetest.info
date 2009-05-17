@@ -4,8 +4,6 @@ nodetest.texi.
 
 File: nodetest.info,  Node: Top,  Next: Umlaut,  Prev: (dir)
 
-
-
 * Menu:
 
 * Umlaut::               Umlaut.
@@ -698,96 +696,96 @@ File: nodetest.info,  Node: ,,  Up: rest
 
 Tag Table:
 Node: Top78
-Node: Umlaut450
-Node: a"807
-Node: e"892
-Node: i"954
-Node: with brace i"1016
-Node: with dotless i"1111
-Ref: with dotless i"-Footnote-11332
-Ref: footanchor1339
-Node: o"1340
-Node: u"1496
-Node: y"1602
-Node: A"1706
-Node: E"1892
-Node: I"1956
-Node: O"2020
-Node: U"2084
-Node: ss2148
-Node: no section2212
-Node: acute accent2311
-Node: a'2586
-Node: e'2687
-Node: i'2755
-Node: o'2823
-Node: u'2891
-Node: y'2959
-Node: A'3027
-Node: E'3095
-Node: I'3163
-Node: O'3231
-Node: U'3301
-Node: Y'3371
-Node: grave accent3522
-Node: a`3820
-Node: e`3888
-Node: i`3956
-Node: with brace i`4024
-Node: with dotless i`4103
-Node: o`4184
-Node: u`4252
-Node: A`4320
-Node: E`4388
-Node: I`4456
-Node: O`4526
-Node: U`4596
-Node: circumflex accent4666
-Node: a^4979
-Node: e^5052
-Node: i^5125
-Node: with brace i^5198
-Node: with dotless i^5295
-Node: o^5404
-Node: u^5477
-Node: A^5550
-Node: E^5623
-Node: I^5696
-Node: O^5771
-Node: U^5846
-Node: tilde accent5921
-Node: a~6098
-Node: n~6166
-Node: o~6234
-Node: A~6302
-Node: O~6370
-Ref: x-spot6453
-Ref: e'-o6492
-Node: cedilla accent6495
-Node: c,6665
-Node: C,6735
-Node: c, no brace6805
-Node: rest6902
-Node: aa7314
-Node: ae7374
-Node: oe7434
-Node: AA7494
-Node: AE7554
-Node: OE7614
-Node: /l7674
-Node: /o7734
-Node: /L7794
-Node: /O7854
-Node: a''7916
-Node: a(7981
-Node: a<8043
-Node: .a8105
-Node: a.8185
-Node: a*8264
-Node: a[8326
-Node: a_8388
-Node: i8450
-Node: j8509
-Node: ,8710
+Node: Umlaut448
+Node: a"805
+Node: e"890
+Node: i"952
+Node: with brace i"1014
+Node: with dotless i"1109
+Ref: with dotless i"-Footnote-11330
+Ref: footanchor1337
+Node: o"1338
+Node: u"1494
+Node: y"1600
+Node: A"1704
+Node: E"1890
+Node: I"1954
+Node: O"2018
+Node: U"2082
+Node: ss2146
+Node: no section2210
+Node: acute accent2309
+Node: a'2584
+Node: e'2685
+Node: i'2753
+Node: o'2821
+Node: u'2889
+Node: y'2957
+Node: A'3025
+Node: E'3093
+Node: I'3161
+Node: O'3229
+Node: U'3299
+Node: Y'3369
+Node: grave accent3520
+Node: a`3818
+Node: e`3886
+Node: i`3954
+Node: with brace i`4022
+Node: with dotless i`4101
+Node: o`4182
+Node: u`4250
+Node: A`4318
+Node: E`4386
+Node: I`4454
+Node: O`4524
+Node: U`4594
+Node: circumflex accent4664
+Node: a^4977
+Node: e^5050
+Node: i^5123
+Node: with brace i^5196
+Node: with dotless i^5293
+Node: o^5402
+Node: u^5475
+Node: A^5548
+Node: E^5621
+Node: I^5694
+Node: O^5769
+Node: U^5844
+Node: tilde accent5919
+Node: a~6096
+Node: n~6164
+Node: o~6232
+Node: A~6300
+Node: O~6368
+Ref: x-spot6451
+Ref: e'-o6490
+Node: cedilla accent6493
+Node: c,6663
+Node: C,6733
+Node: c, no brace6803
+Node: rest6900
+Node: aa7312
+Node: ae7372
+Node: oe7432
+Node: AA7492
+Node: AE7552
+Node: OE7612
+Node: /l7672
+Node: /o7732
+Node: /L7792
+Node: /O7852
+Node: a''7914
+Node: a(7979
+Node: a<8041
+Node: .a8103
+Node: a.8183
+Node: a*8262
+Node: a[8324
+Node: a_8386
+Node: i8448
+Node: j8507
+Node: ,8708
 
 End Tag Table

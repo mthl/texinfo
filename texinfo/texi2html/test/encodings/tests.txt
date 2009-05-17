@@ -9,6 +9,7 @@ texi accent.texi
 texi weird_accents.texi
 texi ogolat2.texi
 texi ogoutf.texi
+texi documentlanguage_set.texi
 nodetest nodetest.texi
 nodetest_chapter nodetest.texi -split chapter
 nodetest_use_nodes_no_unicode nodetest.texi -init no_unicode.init -node-files -use-nodes -split node
@@ -49,3 +50,13 @@ ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
 nodetest_info nodetest.texi -init info.init
 japanese japanese.texi
+documentlanguage_set documentlanguage_set.texi
+documentlanguage_set_option documentlanguage_set.texi -document-language fr
+documentlanguage_set_unknown documentlanguage_set.texi -document-language unknown
+# iconv < encoding_index-utf8.texi -t latin1 |sed 's/utf8/latin1/' > encoding_index-latin1.texi
+encoding_index encoding_index.texi
+encoding_index_toutf8 encoding_index.texi -init utf8
+encoding_index-utf8 encoding_index-utf8.texi
+encoding_index-utf8_toutf8 encoding_index-utf8.texi -init utf8
+encoding_index-latin1 encoding_index-latin1.texi
+encoding_index-latin1_toutf8 encoding_index-latin1.texi -init utf8

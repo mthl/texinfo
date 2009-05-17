@@ -23,10 +23,12 @@
 #
 #-##############################################################################
 
+use strict;
+
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';
-$DO_CONTENT = 1;
+$DO_CONTENTS = 1;
 $SPLIT_INDEX = undef;
 $IDX_SUMMARY = 1;
 
@@ -36,7 +38,7 @@ $MIDDLE_RULE = '';
 $BIG_RULE = '';
 
 $DOCUMENT_DESCRIPTION = '';
-$SEPARATED_FOOTNOTES = 0;
+$FOOTNOTESTYLE = 'end';
 
 push @command_handler_process, \&chm_initialize_variables;
 
@@ -262,9 +264,11 @@ sub chm_init_out()
         binmode(HHPFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
     my $language = $chm_languages{'en'};
-    if (exists ($chm_languages{$LANG}))
+    my $documentlanguage = get_conf('documentlanguage');
+    $documentlanguage =~ s/_.*//;
+    if (exists ($chm_languages{$documentlanguage}))
     {
-        $language = $chm_languages{$LANG};
+        $language = $chm_languages{$documentlanguage};
     }
     my $title = main::remove_texi($Texi2HTML::THISDOC{'title_texi'});
     my $top_file = $Texi2HTML::THISDOC{'filename'}->{'top'};

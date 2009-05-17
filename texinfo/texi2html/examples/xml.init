@@ -272,10 +272,11 @@ sub xml_print_page_head($)
     my $setfilename = '';
     $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.$EXTENSION</setfilename>" 
         unless (defined($Texi2HTML::THISDOC{'setfilename'}) and $Texi2HTML::THISDOC{'setfilename'} ne '');
+    my $language = get_conf('documentlanguage');
     print $fh <<EOT;
 <?xml version="1.0"?>
 $DOCTYPE
-<texinfo xml:lang="$Texi2HTML::THISDOC{'current_lang'}">
+<texinfo xml:lang="$language">
 $setfilename
 EOT
 }

@@ -1,0 +1,96 @@
+This is nested_table.info, produced by makeinfo version 4.13 from
+nested_table.texi.
+
+
+File: nested_table.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+Quotation
+
+     first item
+     second itemx
+          Text.
+
+     second item
+          Text 2
+
+     before empty itemx
+
+     after an empty itemx, before an empty item
+
+
+     in item before end table
+
+     Something.
+
+     _in item_
+          Text without blank line
+
+     _second item_
+          Text without blank line 2
+
+     After table.
+
+   Example
+
+     first item
+     second itemx
+
+          Text.
+
+     second item
+
+          Text 2
+
+     before empty itemx
+
+     after an empty itemx, before an empty item
+
+
+     in item before end table
+
+
+     Something.
+
+     _in item_
+          Text without blank line
+
+     _second item_
+          Text without blank line 2
+
+     After table.
+
+   Double quotation
+
+          first item
+          second itemx
+               Text.
+
+          second item
+               Text 2
+
+          before empty itemx
+
+          after an empty itemx, before an empty item
+
+
+          in item before end table
+
+          Something.
+
+          _in item_
+               Text without blank line
+
+          _second item_
+               Text without blank line 2
+
+          After table.
+
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table

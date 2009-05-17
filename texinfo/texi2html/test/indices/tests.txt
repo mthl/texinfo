@@ -20,3 +20,6 @@ printindex_between_node_section printindex_between_node_section.texi -init index
 index_and_node_same_name index_and_node_same_name.texi
 syncode_index_print_both syncode_index_print_both.texi
 recursive_synindex recursive_synindex.texi
+index_entry_in_footnote index_entry_in_footnote.texi
+index_entry_in_footnote_info index_entry_in_footnote.texi -init info.init
+index_entry_in_footnote_separated_info index_entry_in_footnote.texi -init info.init --footnote-style=separate

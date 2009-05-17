@@ -15,29 +15,34 @@ heading.texi(,15) @node Top
 heading.texi(,16) @top Test headings
 heading.texi(,17) 
 heading.texi(,18) @heading in top @@ @emph{heading}
-heading.texi(,19) 
-heading.texi(,20) @chapter A chapter
-heading.texi(,21) 
-heading.texi(,22) @footnote{
-heading.texi(,23) @heading heading in footnote @@ @emph{heading}
-heading.texi(,24) @cindex heading in footnote
-heading.texi(,25) @heading second heading in footnote @@ @emph{heading}
-heading.texi(,26) }
-heading.texi(,27) 
-heading.texi(,28) First insertcopying:
-heading.texi(,29) @insertcopying
-heading.texi(,30) 
-heading.texi(,31) Second insertcopying:
-heading.texi(,32) @insertcopying
-heading.texi(,33) 
-heading.texi(,34) @chapter index
+heading.texi(,19) @cindex index entry after heading in top
+heading.texi(,20) 
+heading.texi(,21) Before heading
+heading.texi(,22) @heading Heading within text
+heading.texi(,23) After heading
+heading.texi(,24) 
+heading.texi(,25) @chapter A chapter
+heading.texi(,26) 
+heading.texi(,27) @footnote{
+heading.texi(,28) @heading heading in footnote @@ @emph{heading}
+heading.texi(,29) @cindex heading in footnote
+heading.texi(,30) @heading second heading in footnote @@ @emph{heading}
+heading.texi(,31) }
+heading.texi(,32) 
+heading.texi(,33) First insertcopying:
+heading.texi(,34) @insertcopying
 heading.texi(,35) 
-heading.texi(,36) @printindex cp
-heading.texi(,37) 
-heading.texi(,38) @quotation
-heading.texi(,39) 
-heading.texi(,40) @heading in quotation @@ @emph{heading}
-heading.texi(,41) 
-heading.texi(,42) @end quotation
-heading.texi(,43) 
-heading.texi(,44) @bye
+heading.texi(,36) Second insertcopying:
+heading.texi(,37) @insertcopying
+heading.texi(,38) 
+heading.texi(,39) @chapter index
+heading.texi(,40) 
+heading.texi(,41) @printindex cp
+heading.texi(,42) 
+heading.texi(,43) @quotation
+heading.texi(,44) 
+heading.texi(,45) @heading in quotation @@ @emph{heading}
+heading.texi(,46) 
+heading.texi(,47) @end quotation
+heading.texi(,48) 
+heading.texi(,49) @bye

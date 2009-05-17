@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.14 2009-05-02 11:31:02 pertusus Exp $
+# $Id: mediawiki.init,v 1.15 2009-05-17 15:35:16 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -33,7 +33,7 @@ $NUMBER_SECTIONS = 0;
 # -separated-footnotes
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
-$SEPARATED_FOOTNOTES = 1;
+$FOOTNOTESTYLE = 'separate';
 
 # extension
 $EXTENSION = undef;

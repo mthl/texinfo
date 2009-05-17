@@ -310,10 +310,11 @@ $insertcopying = \&docbook_insertcopying;
 sub docbook_print_page_head($)
 {
     my $fh = shift;
+    my $language = get_conf('documentlanguage');
     print $fh <<EOT;
 <?xml version="1.0"?>
 $DOCTYPE
-<book id="$Texi2HTML::THISDOC{file_base_name}.$EXTENSION" lang="$Texi2HTML::THISDOC{'current_lang'}">
+<book id="$Texi2HTML::THISDOC{file_base_name}.$EXTENSION" lang="$language">
 EOT
 }
 

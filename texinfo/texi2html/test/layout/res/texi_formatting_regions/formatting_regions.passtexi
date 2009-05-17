@@ -99,6 +99,10 @@ formatting_regions.texi(mymacro,28) @@O @O{}
 formatting_regions.texi(mymacro,28) @@ss @ss{}
 formatting_regions.texi(mymacro,28) @@l @l{}
 formatting_regions.texi(mymacro,28) @@L @L{}
+formatting_regions.texi(mymacro,28) @@DH @DH{}
+formatting_regions.texi(mymacro,28) @@TH @TH{}
+formatting_regions.texi(mymacro,28) @@dh @dh{}
+formatting_regions.texi(mymacro,28) @@th @th{}
 formatting_regions.texi(mymacro,28) @@exclamdown @exclamdown{}
 formatting_regions.texi(mymacro,28) @@questiondown @questiondown{}
 formatting_regions.texi(mymacro,28) @@pounds @pounds{}
@@ -816,6 +820,10 @@ formatting_regions.texi(mymacro,39) @@O @O{}
 formatting_regions.texi(mymacro,39) @@ss @ss{}
 formatting_regions.texi(mymacro,39) @@l @l{}
 formatting_regions.texi(mymacro,39) @@L @L{}
+formatting_regions.texi(mymacro,39) @@DH @DH{}
+formatting_regions.texi(mymacro,39) @@TH @TH{}
+formatting_regions.texi(mymacro,39) @@dh @dh{}
+formatting_regions.texi(mymacro,39) @@th @th{}
 formatting_regions.texi(mymacro,39) @@exclamdown @exclamdown{}
 formatting_regions.texi(mymacro,39) @@questiondown @questiondown{}
 formatting_regions.texi(mymacro,39) @@pounds @pounds{}
@@ -1529,6 +1537,10 @@ formatting_regions.texi(mymacro,46) @@O @O{}
 formatting_regions.texi(mymacro,46) @@ss @ss{}
 formatting_regions.texi(mymacro,46) @@l @l{}
 formatting_regions.texi(mymacro,46) @@L @L{}
+formatting_regions.texi(mymacro,46) @@DH @DH{}
+formatting_regions.texi(mymacro,46) @@TH @TH{}
+formatting_regions.texi(mymacro,46) @@dh @dh{}
+formatting_regions.texi(mymacro,46) @@th @th{}
 formatting_regions.texi(mymacro,46) @@exclamdown @exclamdown{}
 formatting_regions.texi(mymacro,46) @@questiondown @questiondown{}
 formatting_regions.texi(mymacro,46) @@pounds @pounds{}
@@ -2238,6 +2250,10 @@ formatting_regions.texi(mymacro,49) @@O @O{}
 formatting_regions.texi(mymacro,49) @@ss @ss{}
 formatting_regions.texi(mymacro,49) @@l @l{}
 formatting_regions.texi(mymacro,49) @@L @L{}
+formatting_regions.texi(mymacro,49) @@DH @DH{}
+formatting_regions.texi(mymacro,49) @@TH @TH{}
+formatting_regions.texi(mymacro,49) @@dh @dh{}
+formatting_regions.texi(mymacro,49) @@th @th{}
 formatting_regions.texi(mymacro,49) @@exclamdown @exclamdown{}
 formatting_regions.texi(mymacro,49) @@questiondown @questiondown{}
 formatting_regions.texi(mymacro,49) @@pounds @pounds{}

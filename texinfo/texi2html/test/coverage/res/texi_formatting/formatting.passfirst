@@ -105,6 +105,10 @@ formatting.texi(mymacro,38) @@O @O{}
 formatting.texi(mymacro,38) @@ss @ss{}
 formatting.texi(mymacro,38) @@l @l{}
 formatting.texi(mymacro,38) @@L @L{}
+formatting.texi(mymacro,38) @@DH @DH{}
+formatting.texi(mymacro,38) @@TH @TH{}
+formatting.texi(mymacro,38) @@dh @dh{}
+formatting.texi(mymacro,38) @@th @th{}
 formatting.texi(mymacro,38) @@exclamdown @exclamdown{}
 formatting.texi(mymacro,38) @@questiondown @questiondown{}
 formatting.texi(mymacro,38) @@pounds @pounds{}
@@ -814,6 +818,10 @@ formatting.texi(mymacro,42) @@O @O{}
 formatting.texi(mymacro,42) @@ss @ss{}
 formatting.texi(mymacro,42) @@l @l{}
 formatting.texi(mymacro,42) @@L @L{}
+formatting.texi(mymacro,42) @@DH @DH{}
+formatting.texi(mymacro,42) @@TH @TH{}
+formatting.texi(mymacro,42) @@dh @dh{}
+formatting.texi(mymacro,42) @@th @th{}
 formatting.texi(mymacro,42) @@exclamdown @exclamdown{}
 formatting.texi(mymacro,42) @@questiondown @questiondown{}
 formatting.texi(mymacro,42) @@pounds @pounds{}

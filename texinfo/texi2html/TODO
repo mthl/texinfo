@@ -325,10 +325,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * add 0x7F as a comment character (ignore to eol).
 
-* texi2html doesn't understand `-o /dev/null'.  It aborts with
-      *** /dev/ not writable
-  report from Werner LEMBERG.
-
 * texi2html's option -E suppresses creation of the default output
      file.  Since texi2html shall replace makeinfo completely, it
      should rather produce the output file instead for compatibility.
@@ -357,7 +353,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   other passes, and nothing is done to close them). Also it is not clear where
   error messages should appear. Indeed in the first pass the line count
   are less precise since commands are closed at the end of file, not when 
-  finding a @ode or @section. If error messages are done in pass_text, 
+  finding a @node or @section. If error messages are done in pass_text, 
   they won't be output when only macros are expanded, but maybe it is better
   like that? (and in makeinfo compatibility mode, a normal processing
   will be done with -E).
@@ -373,10 +369,32 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * add tests for -o - and input coming from stdin, including check of 
   out file names.
 
+* texi2html doesn't understand `-o /dev/null'.  It aborts with
+      *** /dev/ not writable
+  report from Werner LEMBERG.
 
-* /dev/null ad NUL on dos is acceptable as -o
+ /dev/null on unix and NUL on dos is acceptable as -o
  it is possible to use
     $devnull = File::Spec->devnull();
- but maybe not on djgpp osname osvers
+ but maybe not on djgpp
+ $Config{osname} $Config{osvers}
+ dos djgpp
 
 * warning if @direcategory/@direntry after first node or element.
+
+* warning if macro without argument is called without a {}.
+
+* when determining the different letters and later sorting them, there 
+  should not be transliteration, but instead perl sorting and i18n stuff
+  should be used. Cf testcases in encoding/encoding_index*.
+
+* info with documentencoding
+Local Variables:
+coding: iso-8859-1
+End:
+
+* makeinfo: index entry out of document leads to a message 
+  (outside of any node).
+  instead of node name and line numbers in printindex. 
+  multiple index entries have <1>... appended.
+

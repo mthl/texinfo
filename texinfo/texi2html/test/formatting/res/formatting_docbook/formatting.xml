@@ -103,6 +103,10 @@ but , ,
 @ss &szlig;
 @l /l
 @L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -625,6 +629,10 @@ but , ,
 @ss &szlig;
 @l /l
 @L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -1143,6 +1151,10 @@ but , ,
 @ss &szlig;
 @l /l
 @L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -1661,6 +1673,10 @@ but , ,
 @ss &szlig;
 @l /l
 @L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;

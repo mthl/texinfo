@@ -1,0 +1,20 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename anchor_in_footnote.info
+
+@node Top
+@top Top
+
+In top node@footnote{in footnote
+@anchor{Anchor in footnote}.
+}
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chap
+
+@ref{Anchor in footnote}.
+
+@bye

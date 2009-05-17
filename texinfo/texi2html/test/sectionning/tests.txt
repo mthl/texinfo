@@ -34,7 +34,7 @@ raiselowersections raiselowersections.texi
 top_without_node top_without_node.texi
 before_node_and_section before_node_and_section.texi
 section_before_chapter section_before_chapter.texi
-node_footnote_end node_footnote.texi --footnote-style=end
+node_footnote_end node_footnote.texi --no-separated-footnotes
 node_footnote_use_node node_footnote.texi -use-node -node-files --footnote-style=end -split node
 test_refs test_refs.texi
 test_refs_chapter test_refs.texi -split chapter
@@ -55,7 +55,11 @@ no_element no_element.texi
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
 semi_auto semi_auto.texi
+anchor_in_footnote anchor_in_footnote.texi
 at_commands_in_refs_info at_commands_in_refs.texi -init info.init
 two_footnotes_in_nodes_info two_footnotes_in_nodes.texi -init info.init
-two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi -init info.init --footnote-style=separate
-
+two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi -init info.init --separated-footnotes
+node_footnote_info node_footnote.texi -init info.init
+node_footnote_separated_info node_footnote.texi -init info.init --footnote-style=separate
+anchor_in_footnote_info anchor_in_footnote.texi -init info.init
+anchor_in_footnote_separated_info anchor_in_footnote.texi -init info.init --footnote-style=separate

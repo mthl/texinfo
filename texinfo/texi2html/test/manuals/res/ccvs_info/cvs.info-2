@@ -1299,7 +1299,7 @@ character on the line.
    There are three basic types of modules: alias modules, regular
 modules, and ampersand modules.  The difference between them is the way
 that they map files in the repository to files in the working directory.
- In all of the following examples, the top-level repository contains a
+In all of the following examples, the top-level repository contains a
 directory called `first-dir', which contains two files, `file1' and
 `file2', and a directory `sdir'.  `first-dir/sdir' contains a file
 `sfile'.
@@ -1569,8 +1569,7 @@ programs.
 
 `commitinfo'
      The program is responsible for checking that the commit is allowed.
-      If it exits with a non-zero exit status the commit will be
-     aborted.
+     If it exits with a non-zero exit status the commit will be aborted.
 
 `verifymsg'
      The specified program is used to evaluate the log message, and
@@ -1829,7 +1828,7 @@ aborted.
 
    Note: when CVS is accessing a remote repository, or when the `-m' or
 `-F' options to `cvs commit' are used, `editinfo' will not be consulted.
- There is no good workaround for this; use `verifymsg' instead.
+There is no good workaround for this; use `verifymsg' instead.
 
 * Menu:
 
@@ -2029,7 +2028,7 @@ FILE' that log message will override the template.
 at the time a directory is first checked out will specify a template.
 This template will be updated on all `cvs update' commands. It will also
 be added to new directories added with a `cvs add new-directry' command.
- In versions of CVS prior to version 1.12, the `CVS/Template' file was
+In versions of CVS prior to version 1.12, the `CVS/Template' file was
 not updated. If the CVS server is at version 1.12 or higher an older
 client may be used and the `CVS/Template' will be updated from the
 server.
@@ -2555,7 +2554,7 @@ using at any particular moment).
 
 `FILE:LINE: Assertion 'TEXT' failed'
      The exact format of this message may vary depending on your system.
-      It indicates a bug in CVS, which can be handled as described in
+     It indicates a bug in CVS, which can be handled as described in
      *note BUGS::.
 
 `cvs COMMAND: authorization failed: server HOST rejected access'
@@ -2789,7 +2788,7 @@ using at any particular moment).
      properly.  For example, if `inetd.conf' points to a nonexistent cvs
      executable.  To debug it further, find the log file which inetd
      writes (`/var/log/messages' or whatever inetd uses on your system).
-      For details, see *note Connection::, and *note Password
+     For details, see *note Connection::, and *note Password
      authentication server::.
 
 `cvs commit: Up-to-date check failed for `FILE''
@@ -3014,7 +3013,7 @@ Annexe H Dealing with bugs in CVS or this manual
 ************************************************
 
 Neither CVS nor this manual is perfect, and they probably never will be.
- If you are having trouble using CVS, or think you have found a bug,
+If you are having trouble using CVS, or think you have found a bug,
 there are a number of things you can do about it.  Note that if the
 manual is unclear, that can be considered a bug in the manual, so these
 problems are often worth doing something about as well as problems with

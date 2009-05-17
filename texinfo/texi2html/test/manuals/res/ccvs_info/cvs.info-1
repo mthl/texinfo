@@ -18,7 +18,7 @@ CVS--Concurrent Versions System v4.2
 This info manual describes how to use and administer CVS version 4.2.
 
 Copyright (C) 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-            2001, 2002, 2003 Free Software Foundation, Inc.
+2001, 2002, 2003 Free Software Foundation, Inc.
 
 Portions
           Copyright (C) 1999, 2000, 2001, 2002, 2003 Derek R. Price,
@@ -822,8 +822,8 @@ attributes).
 
 means that the file `file1' should be checked out read-only.
 Furthermore, joe is watching for edits and mary is watching for commits.
- The file `file2' should be checked out read-only; sue started editing
-it on 8 Jan 1975 in the directory `/home/sue/cvs' on the machine
+The file `file2' should be checked out read-only; sue started editing it
+on 8 Jan 1975 in the directory `/home/sue/cvs' on the machine
 `workstn1'.  Future files which are added should be checked out
 read-only.  To represent this example here, we have shown a space after
 `D', `Ffile1', and `Ffile2', but in fact there must be a single tab
@@ -934,7 +934,7 @@ While we are discussing CVS internals which may become visible from time
 to time, we might as well talk about what CVS puts in the `CVS'
 directories in the working directories.  As with the repository, CVS
 handles this information and one can usually access it via CVS commands.
- But in some cases it may be useful to look at it, and other programs,
+But in some cases it may be useful to look at it, and other programs,
 such as the `jCVS' graphical user interface or the `VC' package for
 emacs, may need to look at it.  Such programs should follow the
 recommendations in this section if they hope to be able to work with
@@ -986,9 +986,9 @@ by CVS probably will not be portable between such systems either.
 
 `Entries'
      This file lists the files and directories in the working directory.
-      The first character of each line indicates what sort of line it
-     is.  If the character is unrecognized, programs reading the file
-     should silently skip that line, to allow for future expansion.
+     The first character of each line indicates what sort of line it is.
+     If the character is unrecognized, programs reading the file should
+     silently skip that line, to allow for future expansion.
 
      If the first character is `/', then the format is:
 
@@ -1453,9 +1453,8 @@ File: cvs.info,  Node: Password authenticated,  Next: GSSAPI authenticated,  Pre
 ----------------------------------------------------
 
 The CVS client can also connect to the server using a password protocol.
- This is particularly useful if using `rsh' is not feasible (for
-example, the server is behind a firewall), and Kerberos also is not
-available.
+This is particularly useful if using `rsh' is not feasible (for example,
+the server is behind a firewall), and Kerberos also is not available.
 
    To use this method, it is necessary to make some adjustments on both
 the server and client sides.
@@ -2319,7 +2318,7 @@ File: cvs.info,  Node: Tags,  Next: Tagging the working directory,  Prev: Assign
 
 The revision numbers live a life of their own.  They need not have
 anything at all to do with the release numbers of your software product.
- Depending on how you use CVS the revision numbers might change several
+Depending on how you use CVS the revision numbers might change several
 times between two releases.  As an example, some of the source files
 that make up RCS 5.6 have the following revision numbers:
 
@@ -2498,7 +2497,7 @@ date, using the same `-r', `-D', and `-f' options.  However, this
 feature is probably not what you want.  The reason is that `cvs tag'
 chooses which files to tag based on the files that exist in the working
 directory, rather than the files which existed as of the given tag/date.
- Therefore, you are generally better off using `cvs rtag'.  The
+Therefore, you are generally better off using `cvs rtag'.  The
 exceptions might be cases like:
 
      cvs tag -r 1.4 stable backend.c
@@ -3063,9 +3062,9 @@ between the various files.  You almost always use symbolic tags rather
 than revision numbers when operating on multiple files.
 
    Specifying two `-j' options can also undo file removals or additions.
- For example, suppose you have a file named `file1' which existed as
+For example, suppose you have a file named `file1' which existed as
 revision 1.1, and you then removed it (thus adding a dead revision 1.2).
- Now suppose you want to add it again, with the same contents it had
+Now suppose you want to add it again, with the same contents it had
 previously.  Here is how to do it:
 
      $ cvs update -j 1.2 -j 1.1 file1
@@ -3447,11 +3446,11 @@ directories, but you also want to be able to retrieve old releases in
 which the directory existed.
 
    The way that you remove a directory is to remove all the files in it.
- You don't remove the directory itself; there is no way to do that.
+You don't remove the directory itself; there is no way to do that.
 Instead you specify the `-P' option to `cvs update' or `cvs checkout',
 which will cause CVS to remove empty directories from working
 directories.  (Note that `cvs export' always removes empty directories.)
- Probably the best way to do this is to always specify `-P'; if you want
+Probably the best way to do this is to always specify `-P'; if you want
 an empty directory then put a dummy file (for example `.keepme') in it
 to prevent `-P' from removing it.
 
@@ -3727,8 +3726,8 @@ The most common use for CVS is to store text files.  With text files,
 CVS can merge revisions, display the differences between revisions in a
 human-visible fashion, and other such operations.  However, if you are
 willing to give up a few of these abilities, CVS can store binary files.
- For example, one might store a web site in CVS including both text
-files and binary images.
+For example, one might store a web site in CVS including both text files
+and binary images.
 
 * Menu:
 
@@ -4237,7 +4236,7 @@ to be watched.
 
  -- Command: cvs watch on [`-lR'] [FILES]...
      Specify that developers should run `cvs edit' before editing FILES.
-      CVS will create working copies of FILES read-only, to remind
+     CVS will create working copies of FILES read-only, to remind
      developers to run the `cvs edit' command before working on them.
 
      If FILES includes the name of a directory, CVS arranges to watch
@@ -4913,7 +4912,7 @@ File: cvs.info,  Node: Tracking sources,  Next: Builds,  Prev: Keyword substitut
 
 If you modify a program to better fit your site, you probably want to
 include your modifications when the next release of the program arrives.
- CVS can help you with this task.
+CVS can help you with this task.
 
    In the terminology used in CVS, the supplier of the program is called
 a "vendor".  The unmodified distribution from the vendor is checked in
@@ -5460,7 +5459,7 @@ options that conflict even with these standard options.*
 
      `-D' is available with the `annotate', `checkout', `diff',
      `export', `history', `rdiff', `rtag', `tag', and `update' commands.
-      (The `history' command uses this option in a slightly different
+     (The `history' command uses this option in a slightly different
      way; *note history options::).
 
      A wide variety of date formats are supported by CVS.  The most
@@ -6938,8 +6937,8 @@ is generated:
 
 `-x TYPE'
      Extract a particular set of record types TYPE from the CVS history.
-      The types are indicated by single letters, which you may specify
-     in combination.
+     The types are indicated by single letters, which you may specify in
+     combination.
 
      Certain commands have a single record type:
 

@@ -4815,7 +4815,7 @@ key: texi2roff, unsupported software
   entry: <code>texi2roff<span class="roman">, unsupported software</span></code>
   texi_entry: @code{texi2roff@r{, unsupported software}}
   element_href: texinfo_fot.html#SEC_Foot
-  element_text: UNDEF
+  element_text: Footnotes
 key: texindex
   origin_href: texinfo_20.html#index-texindex
   entry: <code>texindex</code>

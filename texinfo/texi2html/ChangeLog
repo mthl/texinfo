@@ -1,3 +1,13 @@
+2009-05-16   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl,texi2html.init: handle @DH{}, @dh{}, @TH{}, @th{}. 
+	use set_conf and get_conf to get and set configuration.
+
+2009-05-02   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: record the real element the index entry is in, 
+	not only the last heading.
+
 2009-05-01   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: ignore @setfilename in included file, consistently

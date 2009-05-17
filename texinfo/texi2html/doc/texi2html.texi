@@ -767,9 +767,9 @@ sections.
 Miscalleneous Texinfo related things may be specified via command line options. 
 
 @table @asis
-@item @longopt{lang=@var{lang}}
+@item @longopt{document-language=@var{lang}}
 Sets the document language similar to the Texinfo directive,
-@code{@@documentlanguage @var{lang}} (variable @variable{$LANG}).
+@code{@@documentlanguage @var{lang}} (variable @variable{$DOCUMENTLANGUAGE}).
 The default is @samp{en}, that is, use the english language strings.
 @item @shortopt{D@var{var}}
 Sets @var{var}.  Equivalent to, @code{@@set @var{var} 1}, in Texinfo.
@@ -803,8 +803,7 @@ is to output all the navigation panels), and to specify
 whether footnotes should appear at the foot of the same page which contains
 the reference to the note with @longopt{footnote-style} set to
 @samp{end} or on a separate page with @option{--footnote-style} 
-set to @samp{separate} (variable @variable{$SEPARATED_FOOTNOTES} set to 0 
-or 1).
+set to @samp{separate} (variable @variable{$FOOTNOTESTYLE}).
 The default is to have separated footnotes.
 
 @c --------------------------------------------------------
@@ -928,10 +927,9 @@ directory, in the @file{/usr/local/etc/texi2html/} directory and lastly
 in the @file{/usr/local/share/texi2html/} directory.
 
 A file is also included based on the language selected,
-by @variable{$LANG}, @longopt{document-language} or 
+by @variable{$DOCUMENTLANGUAGE}, @longopt{document-language} or 
 @code{@@documentlanguage}.
-If no language was selected @samp{en} is considered to be
-the language. All the files with name the language name in 
+All the files with name the language name in 
 @file{/usr/local/share/texi2html/i18n/}, 
 @file{/usr/local/etc/texi2html/i18n/},
 @file{$HOME/.texi2html/i18n/} and then @file{./i18n/} are included.
@@ -1472,7 +1470,32 @@ that section.
 Three kinds of global informations are available, miscalleneous global
 strings, flags set by @code{@@set} and special flags and section lines.
 
+@subsubheading Strings that can be set by some @@-commands
+
+Some information may be set up by @@-commands, by
+a variable in the init file, and sometime on the command-line. 
+This is the case, for example, for
+@code{@@footnotestyle}, @samp{--footnote-style} and @code{$FOOTNOTESTYLE}.
+The value associated with these should be read by calling the @code{get_conf}
+function, in the @code{Texi2HTML::Config} namespace, for example:
+
+@example
+if (get_conf('footnotestyle') eq 'separate') @{ .... @}
+@end example
+
+When it exists, the associated
+variable that sets the default value have the same name, in upper case.
+Currently the following values are available through 
+@code{get_conf}:
+ kbdinputstyle, paragraphindent, setchapternewpage, headings,
+ footnotestyle,
+  exampleindent, firstparagraphindent, everyheading, everyfooting,
+  evenheading, evenfooting, oddheading, oddfooting, setcontentsaftertitlepage,
+ setshortcontentsaftertitlepage, frenchspacing, fillcolumn, documentlanguage,
+ novalidate.
+
 @subsubheading Global strings
+
 The @variable{%Texi2HTML::THISDOC} hash holds some global informations:
 
 @table @code
@@ -1562,15 +1585,6 @@ reference on an array containing the @code{@@import} lines of
 reference on an array containing the normal lines of 
 @acronym{CSS} files.
 @end table
-
-It also holds the arg of the following commands, associated with the command 
-name: kbdinputstyle, paragraphindent, setchapternewpage, headings,
-footnotestyle,
- exampleindent, firstparagraphindent, everyheading, everyfooting,
- evenheading, evenfooting, oddheading, oddfooting, setcontentsaftertitlepage,
-setshortcontentsaftertitlepage, frenchspacing.
-If the command doesn't have any arg, it will be true is it was set.
-
 
 @subsubheading Flags
 Flags defined by @code{@@set} may be accessed through the 
@@ -2856,7 +2870,7 @@ by this function.
 various places, at the page footers, on the help page, for special 
 section headings, buttons alt text and so on. These strings are
 customizable. The string chosen depends on the language of the
-document (set by @longopt{document-language}, @variable{$LANG} or 
+document (set by @longopt{document-language}, @variable{$DOCUMENTLANGUAGE} or 
 @code{@@documentlanguage}). This is the basis for internationalization
 as it allows for strings translations.
 
@@ -4535,11 +4549,16 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @itemize @bullet
 @item API changes between 1.82 and 1.84:
 @itemize @bullet
+@item Information that can be set by @@-commands should now be accessed
+  through get_conf.
 @item $format_list_item_texi should now modify directly the @@item argument
   and apply the @@-command given as @@table argument. Correspondingly, 
   some arguments of $table_item have been removed.
 @item Formatting of titlepage changed, and @@title, @@subtitle and @@author
   are now handled by $line_command
+@item $SEPARATED_FOOTNOTES has been replaced by $FOOTNOTESTYLE, that takes the 
+  same argument than @@footnotestyle.
+@item replace $LANG by $DOCUMENTLANGUAGE.
 @item @@verbatiminclude is now a $raw command argument distinct from @@verbatim.
 @item @@direntry is formatted like a menu and passed down to $menu_command.
 @end itemize

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.193 2009-05-02 11:31:01 pertusus Exp $
+# $Id: texi2html.init,v 1.194 2009-05-17 15:35:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -160,7 +160,10 @@ $SECTION_NAVIGATION = 1;
 # -separated-footnotes
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
-$SEPARATED_FOOTNOTES = 1;
+$FOOTNOTESTYLE = 'separate';
+
+# -fill-column
+$FILLCOLUMN = 72;
 
 # -toc-links
 # if this is set, links from headings to toc entries are created.
@@ -216,8 +219,8 @@ $VERBOSE = '';
 
 # -lang
 # use &$I('my string') if you want to have translations of 'my string'
-# and provide the translations in $LANGUAGES->{$LANG} with 'my string'
-# as key.
+# and provide the translations in $LANGUAGES->{$DOCUMENTLANGUAGE} with 
+# 'my string' as key.
 # To add a new language use ISO 639 language codes (see e.g. perl module 
 # Locale-Codes-1.02 for  definitions). Supply translations in the 
 # $LANGUAGES hash and put it in a file with $LANG as name in an i18n 
@@ -225,7 +228,7 @@ $VERBOSE = '';
 # This is used for the initial language, it is overriden during 
 # document processing if there is a @documentlanguage.
 # It is ignored if the language is passed on the command line.
-$LANG = 'en';
+$DOCUMENTLANGUAGE = 'en';
 
 # -ignore-preamble-text
 # If this is set the text before @node and sectionning commands is ignored.
@@ -292,6 +295,7 @@ $L2H_FILE = 'l2h.init';
 $L2H_CLEAN = 1;
 
 $PARAGRAPHINDENT = 3;
+$FIRSTPARAGRAPHINDENT = 'none';
 
 ##############################################################################
 #
@@ -819,7 +823,7 @@ sub t2h_default_set_out_encoding()
 
 my  @t2h_default_multitable_stack;
 # We have to do this dynamically because of internationalization and because
-# in body $LANG could be used.
+# in body $DOCUMENTLANGUAGE could be used.
 sub t2h_default_init_out()
 {
     @t2h_default_multitable_stack = ();
@@ -831,7 +835,7 @@ sub t2h_default_init_out()
     }
     else
     {
-        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . $Texi2HTML::THISDOC{'current_lang'} . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
     }
     if (!defined($EXTERNAL_CROSSREF_SPLIT))
     {
@@ -2090,6 +2094,10 @@ $after_punctuation_characters = '"\')]';
                'o'            =>  '&oslash;',
                'O'            =>  '&Oslash;',
                'ss'           => '&szlig;',
+               'DH'           => '&ETH;',
+               'dh'           => '&eth;',
+               'TH'           => '&THORN;',
+               'th'           => '&thorn',
                'l'            => '&#322;',
                'L'            => '&#321;',
                'exclamdown'   => '&iexcl;',
@@ -2152,6 +2160,11 @@ $pre_map{'enddots'} = '...';
                'ss'           => 'ss',
                'l'            => '/l',
                'L'            => '/L',
+               'DH'           => 'D',
+               'dh'           => 'd',
+               'TH'           => 'TH', # http://www.evertype.com/standards/wynnyogh/thorn.html
+
+               'th'           => 'th',
                'exclamdown'   => '!',
                'questiondown' => '?',
                'pounds'       => '#',
@@ -2232,6 +2245,10 @@ $pre_map{'enddots'} = '...';
                'ss', 'ss',
                'l', 'l',
                'L', 'L',
+               'DH', 'D',
+               'dh', 'd',
+               'TH', 'TH',
+               'th', 'th',
                'exclamdown', '!',
                #'exclamdown', '&iexcl;',
                'questiondown', '?',
@@ -2300,6 +2317,10 @@ $pre_map{'enddots'} = '...';
                'o'            => '00F8',
                'O'            => '00D8',
                'ss'           => '00DF',
+               'DH'           => '00D0',
+               'dh'           => '00F0',
+               'TH'           => '00DE',
+               'th'           => '00FE',
                'l'            => '0142',
                'L'            => '0141',
                'exclamdown'   => '00A1',
@@ -2931,7 +2952,10 @@ my %makeinfo_transliterate_map = (
                '00DF' => 'ss',
                '0141' => 'L',
                '0142' => 'l',
-               '00D0'  => 'DH',
+               '00D0' => 'D',
+               '00F0' => 'd',
+               '00DE' => 'TH',
+               '00FE' => 'th',
                '0415'  => 'E',
                '0435'  => 'e',
                '0426'  => 'C',

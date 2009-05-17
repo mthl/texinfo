@@ -79,7 +79,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.282 2009-05-02 11:31:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.283 2009-05-17 15:35:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -249,10 +249,11 @@ $EXTENSION
 $OUT 
 $NOVALIDATE
 $DEF_TABLE 
-$LANG 
+$DOCUMENTLANGUAGE 
 $DO_CONTENTS
 $DO_SCONTENTS
-$SEPARATED_FOOTNOTES
+$FOOTNOTESTYLE
+$FILLCOLUMN
 $TOC_LINKS
 $L2H 
 $L2H_L2H 
@@ -271,6 +272,7 @@ $IGNORE_PREAMBLE_TEXT
 $INLINE_CONTENTS
 $INLINE_INSERTCOPYING
 $PARAGRAPHINDENT
+$FIRSTPARAGRAPHINDENT
 );
 
 # customization variables
@@ -577,6 +579,56 @@ use vars qw(
 %eight_bit_to_unicode
 %t2h_encoding_aliases
 );
+
+sub set_conf($$;$)
+{
+    my $name = shift;
+    my $value = shift;
+    my $from_command_line = shift;
+
+    if ($from_command_line)
+    {
+       if (defined($value))
+       {
+          $Texi2HTML::GLOBAL{$name} = $value;
+       }
+       else
+       {
+          delete $Texi2HTML::GLOBAL{$name};
+       }
+       return 1;
+    }
+    return 0 if (defined($Texi2HTML::GLOBAL{$name}));
+    if (defined($value))
+    {
+       $Texi2HTML::THISDOC{$name} = $value;
+    }
+    else
+    {
+       delete $Texi2HTML::THISDOC{$name};
+    }
+    return 1;
+}
+
+my %config_map = (
+   'paragraphindent' => \$PARAGRAPHINDENT,
+   'firstparagraphindent' => \$FIRSTPARAGRAPHINDENT,
+   'footnotestyle' => \$FOOTNOTESTYLE,
+   'fillcolumn' => \$FILLCOLUMN,
+   'documentlanguage' => \$DOCUMENTLANGUAGE,
+   'novalidate' => \$NOVALIDATE,
+);
+
+sub get_conf($)
+{
+    my $name = shift;
+    return $Texi2HTML::GLOBAL{$name} if (defined($Texi2HTML::GLOBAL{$name}));
+    return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
+    return ${$config_map{$name}} if (defined($config_map{$name}));
+    # there is no default value for many @-commmands, like kbdinputstyle,
+    # headings....
+    #print STDERR "Unknown conf string: $name\n";
+}
 
 # needed in this namespace for translations
 $I = \&Texi2HTML::I18n::get_string;
@@ -891,7 +943,9 @@ sub t2h_default_associate_index_element($$$$)
   {
     unless ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
-#print STDERR "HHHHHHHHH ($element->{'texi'}) place: $place->{'texi'}, current: $current_element->{'texi'}, $current_element->{'file'}\n";
+#       my $place_element_ref = 'UNDEF';
+#       $place_element_ref = $place->{'element_ref'} if ($place->{'element_ref'});
+#print STDERR "HHHHHHHHH ($element->{'texi'}) place: $place->{'texi'}, place_element_ref $place_element_ref, current: $current_element->{'texi'}, $current_element->{'file'}\n";
        push @{$current_element->{'place'}}, $place;
        $place->{'file'} = $current_element->{'file'};
        $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
@@ -1168,8 +1222,6 @@ sub t2h_GPL_default_printindex($)
       #foreach my $entry (@{$letter_entries{$letter}->{'entries'}})
       foreach my $index_entry_ref (@{$letter_entry->{'entries'}})
       {
-        #my $entry_infos = main::get_index_entry_infos($index_entry, $split_group->{'element'});
-        #my ($text_href, $entry, $element_href, $element_text, $entry_file, $element_file, $entry_target, $entry_element_target) = @$entry_infos;
         my ($text_href, $entry_file, $element_file, $entry_target,
           $entry_element_target, $formatted_entry, $element_href, $entry_element_text)
           =  main::get_index_entry_infos($index_entry_ref, $split_group->{'element'});
@@ -1726,6 +1778,11 @@ $reference_sec2level{'majorheading'} = 1;
 $reference_sec2level{'chapheading'} = 1;
 $reference_sec2level{'centerchap'} = 1;
 
+foreach my $section_command(keys(%reference_sec2level))
+{
+   $Texi2HTML::Config::stop_paragraph_command{$section_command} = 1;
+}
+
 
 sub set_no_line_macro($$)
 {
@@ -1920,12 +1977,13 @@ sub load_init_file
     }
 }
 
-sub set_date()
+sub set_date($)
 {
+    my $language = shift;
     if (!$Texi2HTML::Config::TEST)
     {
-        print STDERR "# Setting date in $Texi2HTML::THISDOC{'current_lang'}\n" if ($T2H_DEBUG);
-        $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($Texi2HTML::THISDOC{'current_lang'});  # like "20 September 1993";
+        print STDERR "# Setting date in $language\n" if ($T2H_DEBUG);
+        $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($language);  # like "20 September 1993";
     }
     else
     {
@@ -1940,12 +1998,9 @@ sub set_date()
 
 #
 # called on -lang, and when a @documentlanguage appears
-sub set_document_language ($;$$$)
+sub set_document_language ($)
 {
     my $lang = shift;
-    my $from_command_line = shift;
-    my $silent = shift;
-    my $line_nr = shift;
 
     my @langs = ($lang);
 
@@ -1971,23 +2026,14 @@ sub set_document_language ($;$$$)
         if (Texi2HTML::I18n::set_language($language))
         {
             print STDERR "# using '$language' as document language\n" if ($T2H_VERBOSE);
-            $Texi2HTML::THISDOC{'current_lang'} = $language;
-            # when processing the command line everything isn't already 
-            # set, so we cannot set the date. It is done as soon as possible
-            # after arguments parsing and initializations, for a file.
-            if ($from_command_line)
-            {
-                $Texi2HTML::GLOBAL{'current_lang'} = $language;
-            }
-            else
-            {
-                set_date();
-            }
+            # since it may be different from get_conf('documentlanguage'),
+            # we record it.
+            $Texi2HTML::THISDOC{'current_language'} = $language;
+            set_date($language);
             return 1;
         }
     }
     
-    echo_error ("Language specs for '$lang' do not exists. Reverting to '$Texi2HTML::THISDOC{'current_lang'}'", $line_nr) unless ($silent);
     return 0;
 }
 
@@ -2008,19 +2054,23 @@ sub set_expansion($$)
 }
 
 # manage footnote style
-sub set_footnote_style($$)
+sub set_footnote_style($$;$)
 {
-    if ($_[1] eq 'separate')
+    my $value = shift;
+    my $from_command_line = shift;
+    my $line_nr = shift;
+    my $command = 'footnotestyle';
+    if ($value eq 'end' or $value eq 'separate')
     {
-         $Texi2HTML::Config::SEPARATED_FOOTNOTES = 1;
+         Texi2HTML::Config::set_conf($command, $value, $from_command_line);
     }
-    elsif ($_[1] eq 'end')
+    elsif ($from_command_line)
     {
-         $Texi2HTML::Config::SEPARATED_FOOTNOTES = 0;
+         warn ("$0: --footnote-style arg must be `separate' or `end', not `$value'.\n");
     }
     else
     {
-         echo_error ('Bad argument for --footnote-style');
+         echo_error ("\@$command arg must be `separate' or `end', not `$value'.", $line_nr);
     }
 }
 
@@ -2180,6 +2230,29 @@ sub unicode_to_transliterate($)
         }
     }
     return $result;
+}
+
+# used both for command line and @-command argument checking
+sub set_paragraphindent($$;$$)
+{
+   my $value = shift;
+   my $from_command_line = shift;
+   my $line_nr = shift;
+   my $pass = shift;
+   my $command = 'paragraphindent';
+
+   if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis')
+   {
+       Texi2HTML::Config::set_conf($command, $value, $from_command_line);
+   }
+   elsif ($from_command_line)
+   {
+       warn "$0:  --paragraph-indent arg must be numeric/`none'/`asis', not `$value'\n";
+   }
+   elsif ($pass == 1)
+   {
+       echo_error ("\@$command arg must be numeric/`none'/`asis', not `$value'", $line_nr);
+   }
 }
 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
@@ -2400,7 +2473,7 @@ $T2H_OPTIONS -> {'node-files'} =
 $T2H_OPTIONS -> {'footnote-style'} =
 {
  type => '=s',
- linkage => sub {set_footnote_style ($_[0], $_[1]);},
+ linkage => sub {set_footnote_style ($_[1], 1);},
  verbose => 'output footnotes separate|end',
 };
 
@@ -2473,7 +2546,7 @@ $T2H_OPTIONS -> {'output'} =
 $T2H_OPTIONS -> {'no-validate'} = 
 {
  type => '!',
- linkage => \$Texi2HTML::Config::NOVALIDATE,
+ linkage => sub {Texi2HTML::Config::set_conf('novalidate',$_[1],1)},
  verbose => 'suppress node cross-reference validation',
 };
 
@@ -2519,7 +2592,7 @@ $T2H_OPTIONS -> {'verbose'} =
 $T2H_OPTIONS -> {'document-language'} =
 {
  type => '=s',
- linkage => sub {set_document_language($_[1], 1)},
+ linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1], 1)},
  verbose => 'use $s as document language',
 };
 
@@ -2645,6 +2718,22 @@ $T2H_OPTIONS -> {'split-size'} =
  verbose => 'split Info files at size s (default 300000).',
 };
 
+$T2H_OPTIONS -> {'paragraph-indent'} =
+{
+ type => '=s',
+ linkage => sub {set_paragraph_indent($_[1], 1);},
+ 'verbose' => "indent Info paragraphs by VAL spaces (default 3).
+                              If VAL is `none', do not indent; if VAL is
+                                `asis', preserve existing indentation.",
+};
+
+$T2H_OPTIONS -> {'fill-column'} =
+{
+ type => '=i',
+ linkage => sub {Texi2HTML::Config::set_conf('fillcolumn',$_[1], 1);},
+ 'verbose' => "break Info lines at NUM characters (default 72).",
+};
+
 $T2H_OPTIONS -> {'monolithic'} =
 {
  type => '!',
@@ -2668,7 +2757,7 @@ $T2H_OBSOLETE_OPTIONS -> {'out-file'} =
 $T2H_OBSOLETE_OPTIONS -> {'lang'} =
 {
  type => '=s',
- linkage => sub {set_document_language($_[1], 1)},
+ linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1], 1)},
  verbose => 'obsolete, use "--document-language" instead',
  noHelp => 2
 };
@@ -2685,7 +2774,7 @@ $T2H_OBSOLETE_OPTIONS -> {'number'} =
 $T2H_OBSOLETE_OPTIONS -> {'separated-footnotes'} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::SEPARATED_FOOTNOTES,
+ linkage => sub {my $style = 'separate'; $style = 'end' if !$_[1]; set_footnote_style ($style, 1);},
  verbose => 'obsolete, use "--footnote-style" instead',
  noHelp => 2
 };
@@ -3835,27 +3924,25 @@ sub texinfo_initialization($)
 {
     my $pass = shift;
 
-    # All the initialization used the last @documentlanguage found during
-    # pass_structure. Now we reset it, if it is not set on the command line
-    # such that the @documentlanguage macros are used when they arrive
-
-    # FIXME ask on bug-texinfo
-    if (!$Texi2HTML::GLOBAL{'current_lang'})
+    # set the translations now. This means at the beginning of each phase.
+    my $lang = Texi2HTML::Config::get_conf('documentlanguage');
+    if (!set_document_language($lang))
     {
-        set_document_language($Texi2HTML::Config::LANG) if defined($Texi2HTML::Config::LANG);
-        # $LANG isn't known
-        set_document_language('en') unless ($Texi2HTML::THISDOC{'current_lang'});
+       warn "Translations for '$lang' not found. Using 'en'.\n" if ($pass == 2);
+       set_document_language('en');
     }
+    # All the initialization used the informations still there at the 
+    # end of the previous pass.
+    # Now we reset everything, such that things are used when they happen
     # reset the @set/@clear values
     %value = %value_initial;
-#    set_special_names();
     foreach my $init_mac ('everyheading', 'everyfooting', 'evenheading', 
         'evenfooting', 'oddheading', 'oddfooting', 'headings', 
         'allowcodebreaks', 'frenchspacing', 'exampleindent', 
-        'firstparagraphindent', 'paragraphindent', 'clickstyle')
+        'firstparagraphindent', 'paragraphindent', 'clickstyle', 
+        'novalidate', 'documentlanguage')
     {
-        $Texi2HTML::THISDOC{$init_mac} = undef;
-        delete $Texi2HTML::THISDOC{$init_mac};
+        Texi2HTML::Config::set_conf($init_mac, undef);
     }
 }
 
@@ -4128,7 +4215,8 @@ sub pass_structure($$)
                                 # holds the informations about the context
                                 # to pass it down to the functions
     initialise_state_structure($state);
-    $state->{'element'} = $element_before_anything;
+    $state->{'heading_element'} = $element_before_anything;
+    $state->{'current_element'} = $element_before_anything;
     $state->{'place'} = $element_before_anything->{'place'};
     my @stack;
     my $text;
@@ -4236,7 +4324,8 @@ sub pass_structure($$)
                             merge_element_before_anything($node_ref);
                             $node_ref->{'index_names'} = [];
                             $state->{'place'} = $node_ref->{'current_place'};
-                            $state->{'element'} = $node_ref;
+                            $state->{'heading_element'} = $node_ref;
+                            $state->{'current_element'} = $node_ref;
                             $state->{'node_ref'} = $node_ref;
                             # makeinfo treats differently case variants of
                             # top in nodes and anchors and in refs commands and 
@@ -4333,7 +4422,8 @@ sub pass_structure($$)
                         }
                         push @sections_list, $section_ref;
                         push @all_elements, $section_ref;
-                        $state->{'element'} = $section_ref;
+                        $state->{'heading_element'} = $section_ref;
+                        $state->{'current_element'} = $section_ref;
                         $state->{'place'} = $section_ref->{'current_place'};
                         ################# debug 
                         my $node_ref = "NO NODE";
@@ -4477,14 +4567,15 @@ sub do_documentlanguage($$$$)
     if ($line =~ /\s+(\w+)/)
     {
         my $lang = $1;
-        if (!$Texi2HTML::GLOBAL{'current_lang'} && $lang)
+        my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
+        if ($lang and Texi2HTML::Config::set_conf('documentlanguage', $lang))
         {
-            $return_value = set_document_language($lang, 0, $silent, $line_nr);
-            # warning, this is not the language of the document but the one that
-            # appear in the texinfo. It could have been different 
-            # if $Texi2HTML::GLOBAL{'current_lang'} was set and not 
-            # taken into account in the if
-            $Texi2HTML::THISDOC{$macro} = $lang;
+            $return_value = set_document_language($lang);
+            if (!$return_value)
+            {
+                Texi2HTML::Config::set_conf('documentlanguage', $prev_lang);
+                echo_error ("Translations for '$lang' not found. Reverting to '$prev_lang'.", $line_nr) unless ($silent);
+            }
         }
     }
     return $return_value;
@@ -4534,6 +4625,10 @@ sub common_misc_commands($$$$)
             echo_error ("\@$macro should only accept a macro as argument", $line_nr) if ($pass == 1);
         }
     }
+    elsif ($macro eq 'novalidate')
+    {
+        Texi2HTML::Config::set_conf($macro, 1);
+    }
     if ($pass)
     { # these commands are only taken into account here in pass_structure 1 
       # and pass_text 2
@@ -4552,24 +4647,20 @@ sub common_misc_commands($$$$)
         }
         elsif ($macro eq 'paragraphindent')
         {
-            if ($line =~ /\s+([0-9]+)/)
+            if ($line =~ /\s+([\w\-]+)[^\w\-]/)
             {
-                $Texi2HTML::THISDOC{$macro} = $1;
-            }
-            elsif (($line =~ /\s+(none)[^\w\-]/) or ($line =~ /\s+(asis)[^\w\-]/))
-            {
-                $Texi2HTML::THISDOC{$macro} = $1;
+               set_paragraphindent ($1, 0, $line_nr, $pass);
             }
             else
             {
-                echo_error ("Bad \@$macro", $line_nr) if ($pass == 1);
+               set_paragraphindent ($line, 0, $line_nr, $pass);
             }
         }
         elsif ($macro eq 'firstparagraphindent')
         {
             if (($line =~ /\s+(none)[^\w\-]/) or ($line =~ /\s+(insert)[^\w\-]/))
             {
-                $Texi2HTML::THISDOC{$macro} = $1;
+                Texi2HTML::Config::set_conf($macro,$1);
             }
             else
             {
@@ -4719,8 +4810,6 @@ sub misc_command_texi($$$$)
 # initial kdb styles
 my $kept_kdb_style;
 my $kept_kdb_pre_style;
-# novalidate seen?
-my $novalidate;
 
 # handle misc commands and misc command args
 sub misc_command_structure($$$$)
@@ -4764,11 +4853,6 @@ sub misc_command_structure($$$$)
             $Texi2HTML::THISDOC{$macro} = 1; 
         }
         push @{$state->{'place'}}, $content_element{$macro};
-    }
-    elsif ($macro eq 'novalidate')
-    {
-        $novalidate = 1;
-        $Texi2HTML::THISDOC{$macro} = 1; 
     }
     elsif ($macro eq 'dircategory' and ($line =~ /^\s+(.*)\s*$/))
     {
@@ -4925,13 +5009,13 @@ sub misc_command_structure($$$$)
     }
     elsif ($macro eq 'footnotestyle')
     {
-        if (($line =~ /^\s+(end)[^\w\-]/) or ($line =~ /^\s+(separate)[^\w\-]/))
+        if ($line =~ /^\s+([a-z]+)[^\w\-]/)
         {
-            $Texi2HTML::THISDOC{$macro} = $1;
+            set_footnote_style ($1, 0, $line_nr);
         }
         else
         {
-            echo_error ("Bad \@$macro", $line_nr);
+            set_footnote_style ($line, 0, $line_nr);
         }
     }
     elsif ($macro eq 'setchapternewpage')
@@ -5666,7 +5750,7 @@ sub rearrange_elements()
                 {
                      $node->{$node_directions{$direction}} = $nodes{$node->{$direction}};
                 }
-                elsif (($node->{$direction} =~ /^\(.*\)/) or $novalidate)
+                elsif (($node->{$direction} =~ /^\(.*\)/) or Texi2HTML::Config::get_conf('novalidate'))
                 { # ref to an external node
                     if (exists($nodes{$node->{$direction}}))
                     {
@@ -6109,7 +6193,7 @@ sub rearrange_elements()
                  # in that case it is possible that the node_top is an
                  # element, so it is associated with this one. Maybe it
                  # may happen that the node_top is not an element, not sure 
-                 # what would be the consequence ni that case.
+                 # what would be the consequence in that case.
             {
                 if ($node_top)
                 {
@@ -6840,21 +6924,26 @@ sub do_names()
 #---############################################################################
 
 # called during pass_structure
-sub enter_index_entry($$$$$$$)
+sub enter_index_entry($$$$$)
 {
     my $prefix = shift;
     my $line_nr = shift;
     my $entry = shift;
-    my $place = shift;
-    my $element = shift;
     my $command = shift;
-    my $region = shift;
+    my $state = shift;
+
+    my $heading_element = $state->{'heading_element'};
+    my $current_element = $state->{'current_element'};
+    my $place = $state->{'place'};
+    my $region = $state->{'region'};
+
     unless ($index_prefix_to_name{$prefix})
     {
         echo_error ("Undefined index command: ${prefix}index", $line_nr);
         $entry = '';
     }
-    if (!exists($element->{'tag'}) and !$element->{'footnote'})
+    #if (!exists($current_element->{'tag'}) and !$current_element->{'footnote'})
+    if ($current_element eq $element_before_anything)
     {
         echo_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
     }
@@ -6892,7 +6981,8 @@ sub enter_index_entry($$$$$$$)
            'entry'    => $entry,
            'key'      => $key,
            'texi'     => $entry,
-           'element'  => $element,
+           'element'  => $heading_element,
+           'real_element'  => $current_element,
            'prefix'   => $prefix,
            'id'       => $id,
            'target'   => $target,
@@ -7087,6 +7177,7 @@ sub pass_text($$)
     push_state(\%state);
 
     set_special_names();
+    $footnote_element->{'text'} = $Texi2HTML::NAME{'Footnotes'};
     # We set titlefont only if the titlefont appeared in the top element
     if (defined($element_top->{'titlefont'}))
     {
@@ -7533,7 +7624,7 @@ sub pass_text($$)
     }
     my $about_body;
     $about_body = &$Texi2HTML::Config::about_body();
-    # @foot_lines is emptied in finish_element if SEPARATED_FOOTNOTES
+    # @foot_lines is emptied in finish_element if footnotestyle separate
     my %misc_page_infos = (
        'Footnotes' => { 'file' => $docu_foot_file, 
           'relative_file' => $docu_foot, 
@@ -7638,7 +7729,7 @@ sub finish_element($$$$)
 
     # handle foot notes
     if ($Texi2HTML::Config::SPLIT and scalar(@foot_lines) 
-        and !$Texi2HTML::Config::SEPARATED_FOOTNOTES
+        and (Texi2HTML::Config::get_conf('footnotestyle') eq 'end')
         and  (! $new_element or
         ($element and ($new_element->{'file'} ne $element->{'file'})))
        )
@@ -7755,7 +7846,7 @@ sub do_node_files()
         $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
         if (!$redirection_file)
         {
-             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless ($novalidate or !$node->{'seen'});
+             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless (Texi2HTML::Config::get_conf('novalidate') or !$node->{'seen'});
              next;
         }
         next if ($redirection_file eq $node->{'node_file'});
@@ -9558,7 +9649,7 @@ sub do_menu_link($$$)
     # menu points to an unknown node
     if (defined($element) and !$element->{'seen'})
     {
-        if ($menu_entry->{'node'} =~ /^\s*\(.*\)/o or $novalidate)
+        if ($menu_entry->{'node'} =~ /^\s*\(.*\)/o or Texi2HTML::Config::get_conf('novalidate'))
         {
             # menu entry points to another info manual or invalid nodes
             # and novalidate is set
@@ -9817,7 +9908,7 @@ sub do_xref($$$$)
         }
         else
         {
-           if (($node_texi eq '') or !$novalidate)
+           if (($node_texi eq '') or (! Texi2HTML::Config::get_conf('novalidate')))
            {
                echo_error ("Undefined node `$node_texi' in \@$macro", $line_nr);
                my $text = '';
@@ -10024,7 +10115,7 @@ sub do_footnote($$$$$$)
         $from_file = $doc_state->{'element'}->{'file'};
     }
     
-    if ($Texi2HTML::Config::SEPARATED_FOOTNOTES)
+    if (Texi2HTML::Config::get_conf('footnotestyle') eq 'separate')
     {
         $foot_state->{'element'} = $footnote_element;
     }
@@ -10310,35 +10401,47 @@ sub get_index_entry_infos($$;$)
     my $entry = shift;
     my $element = shift;
     my $line_nr = shift;
-    my $indexed_element = $entry->{'element'};
-    my $entry_element = $indexed_element;
+    my $index_heading_element = $entry->{'element'};
+    my $entry_heading_element = $index_heading_element;
+    my $real_index_element = $entry->{'real_element'};
     # we always use the associated element_ref, instead of the original
     # element
-    $entry_element = $entry_element->{'element_ref'} if (defined($entry_element->{'element_ref'}));
+    $entry_heading_element = $entry_heading_element->{'element_ref'} 
+        if (defined($entry_heading_element->{'element_ref'}));
+    if ($entry->{'real_element'} eq $element_before_anything)
+    {
+       $real_index_element = $element_top;
+    }
+    else
+    {
+       $real_index_element = $entry->{'real_element'}->{'element_ref'};
+    }
+    print STDERR "BUG: element_ref not defined, real_element $entry->{'real_element'} $entry->{'real_element'}->{'texi'}\n" if (!defined($real_index_element));
+
     my $origin_href = '';
     print STDERR "BUG: entry->{'file'} not defined for `$entry->{'entry'}'\n"
        if (!defined($entry->{'file'}));
     print STDERR "BUG: element->{'file'} not defined for `$entry->{'entry'}', `$element->{'texi'}'\n"
        if (!defined($element->{'file'}));
     $origin_href = $entry->{'file'} if ($entry->{'file'} ne $element->{'file'});
-#print STDERR "$entry $entry->{'entry'}, real elem $indexed_element->{'texi'}, section $entry_element->{'texi'}, real $indexed_element->{'file'}, entry file $entry->{'file'}\n";
+#print STDERR "$entry $entry->{'entry'}, real heading elem $index_heading_element->{'texi'}, section $entry_element->{'texi'}, real $index_heading_element->{'file'}, entry file $entry->{'file'}\n";
     if (defined($entry->{'target'}))
     { 
          $origin_href .= '#' . $entry->{'target'};
     }
     else
     { # this means that the index entry is in a special region like @copying...
-         $origin_href .= '#' . $indexed_element->{'target'};
+         $origin_href .= '#' . $index_heading_element->{'target'};
     }
    #print STDERR "SUBHREF in index entry `$entry->{'entry'}' for `$entry_element->{'texi'}'\n";
     return ($origin_href, 
             $entry->{'file'},
             $element->{'file'},
             $entry->{'target'},
-            $indexed_element->{'target'},
+            $index_heading_element->{'target'},
             substitute_line($entry->{'entry'}, "\@$entry->{'command'} index infos"),
-            href($entry_element, $element->{'file'}, $line_nr),
-            $entry_element->{'text'});
+            href($entry_heading_element, $element->{'file'}, $line_nr),
+            $entry_heading_element->{'text'});
 }
 
 # remove texi commands, replacing with what seems adequate. see simple_map_texi
@@ -10403,15 +10506,12 @@ sub enter_table_index_entry($$$$)
     {
          my $macro = $state->{'item'};
          delete $state->{'item'};
-         #close_stack_structure($text, $stack, $state, $line_nr, 1);
          my $item = pop @$stack;
          if ($state->{'table_stack'}->[-1] =~ /^(v|f)table$/)
          {
              my $index = $1;
-             my $element = $state->{'element'};
-             $element = $state->{'node_ref'} unless ($element);
-             enter_index_entry($index, $line_nr, $item->{'text'}, 
-                $state->{'place'}, $element, $state->{'table_stack'}->[-1], $state->{'region'});
+             enter_index_entry($index, $line_nr, 
+               $item->{'text'}, $state->{'table_stack'}->[-1], $state);
          }
          add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
@@ -11206,9 +11306,9 @@ sub close_structure_command($$$$)
     }
     elsif ($cmd_ref->{'style'} eq 'footnote')
     {
-        if ($Texi2HTML::Config::SEPARATED_FOOTNOTES)
+        if (Texi2HTML::Config::get_conf('footnotestyle') eq 'separate')
         {
-            $state->{'element'} = $state->{'footnote_element'};
+            $state->{'heading_element'} = $state->{'footnote_heading_element'};
             $state->{'place'} = $state->{'footnote_place'};
         }
     }
@@ -11220,7 +11320,7 @@ sub close_structure_command($$$$)
     }
     if (($cmd_ref->{'style'} eq 'titlefont') and ($cmd_ref->{'text'} =~ /\S/))
     {
-        $state->{'element'}->{'titlefont'} = $cmd_ref->{'text'} unless ((exists($state->{'region'}) and ($state->{'region'} eq 'titlepage')) or defined($state->{'element'}->{'titlefont'})) ;
+        $state->{'heading_element'}->{'titlefont'} = $cmd_ref->{'text'} unless ((exists($state->{'region'}) and ($state->{'region'} eq 'titlepage')) or defined($state->{'heading_element'}->{'titlefont'})) ;
     }
     if (defined($Texi2HTML::Config::command_handler{$cmd_ref->{'style'}}))
     {
@@ -11492,7 +11592,7 @@ sub scan_structure($$$$;$)
                     $heading_ref->{'tag_level'} = $macro;
                     $heading_ref->{'number'} = '';
 
-                    $state->{'element'} = $heading_ref;
+                    $state->{'heading_element'} = $heading_ref;
                     push @{$state->{'place'}}, $heading_ref;
                     $headings{$heading_ref->{'sec_num'}} = $heading_ref;
                 }
@@ -11511,7 +11611,7 @@ sub scan_structure($$$$;$)
                 my $index_prefix = index_command_prefix($macro);
                 my $key = $cline;
                 $key =~ s/^\s*//;
-                enter_index_entry($index_prefix, $line_nr, $key, $state->{'place'}, $state->{'element'}, $macro, $state->{'region'});
+                enter_index_entry($index_prefix, $line_nr, $key, $macro, $state);
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }
@@ -11607,7 +11707,8 @@ sub scan_structure($$$$;$)
                         $float->{'target'} = $label_texi;
 #print STDERR "FLOAT: $float $float->{'texi'}, place $state->{'place'}\n";
                         push @{$state->{'place'}}, $float;
-                        $float->{'element'} = $state->{'element'};
+                        # FIXME use real element?
+                        $float->{'element'} = $state->{'heading_element'};
                         $state->{'float'} = $float;
                         $float->{'style_texi'} = $style_texi;
                         push @floats, $float;
@@ -11639,8 +11740,8 @@ sub scan_structure($$$$;$)
                 # associated with index entry
                 my $idx_macro = $macro;
                 $idx_macro =~ s/x$//;
-                enter_index_entry($prefix, $line_nr, $entry, $state->{'place'},
-                   $state->{'element'}, $idx_macro, $state->{'region'}) if ($prefix);
+                enter_index_entry($prefix, $line_nr, $entry, $idx_macro, $state) 
+                      if ($prefix);
                 $cline =~ s/(.*)//;
                 add_prev($text, $stack, "\@$macro" . $1);
                 # the text is discarded but we must handle correctly bad
@@ -11681,11 +11782,11 @@ sub scan_structure($$$$;$)
                         $state->{'verb'} = $1;
                     }
                 }
-                elsif ($macro eq 'footnote' and $Texi2HTML::Config::SEPARATED_FOOTNOTES)
+                elsif ($macro eq 'footnote' and (Texi2HTML::Config::get_conf('footnotestyle') eq 'separate'))
                 {
-                    $state->{'footnote_element'} = $state->{'element'};
+                    $state->{'footnote_heading_element'} = $state->{'heading_element'};
                     $state->{'footnote_place'} = $state->{'place'};
-                    $state->{'element'} = $footnote_element;
+                    $state->{'heading_element'} = $footnote_element;
                     $state->{'place'} = $footnote_element->{'place'};
                 }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
@@ -14454,7 +14555,7 @@ while(@input_files)
       $Texi2HTML::THISDOC{$global_key} = $Texi2HTML::GLOBAL{$global_key};
    }
 
-   set_date() if ($Texi2HTML::GLOBAL{'current_lang'});
+   #set_date() if ($Texi2HTML::GLOBAL{'documentlanguage'});
 
    $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
    $Texi2HTML::THISDOC{'input_file_number'} = $file_number;
@@ -14614,8 +14715,6 @@ while(@input_files)
    $document_sec_num = 0;
    $document_head_num = 0;
    $document_anchor_num = 0;
-
-   $novalidate = $Texi2HTML::Config::NOVALIDATE; # @novalidate appeared
 
    @nodes_list = ();        # nodes in document reading order
                             # each member is a reference on a hash

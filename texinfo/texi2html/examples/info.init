@@ -36,7 +36,7 @@ $USE_SETFILENAME = 1;
 $IGNORE_BEFORE_SETFILENAME = 1;
 $NODE_NAME_IN_MENU = 1;
 $SPLIT_INDEX = 0;
-$SEPARATED_FOOTNOTES = 0;
+$FOOTNOTESTYLE = 'end';
 $INLINE_CONTENTS = 1;
 $INLINE_INSERTCOPYING = 1;
 $SIMPLE_MENU = 1;
@@ -363,6 +363,35 @@ my $info_default_out_file_nr = 1;
 my $info_default_dir_specification = '';
 my @info_default_pending_indirect = ();
 my @info_default_pending_footnotes = ();
+my $info_default_state_nr = 0;
+
+sub info_default_get_state($)
+{
+   my $state = shift;
+   if (!exists $info_default_state_map{$state})
+   {
+print STDERR "NEW state $info_default_state_nr\n";
+      my ($current_command, $top_stack);
+      $info_default_state_map{$state} = {};
+      info_default_reset_state($info_default_state_map{$state});
+      # since the page head always leave a blank line, and the state may be
+      # used for text right after the page head, we set it to 1 here. 
+      # it may be wrong in other contexts, to be seen.
+      $info_default_state_map{$state}->{'blank_line'} = 1;
+      $info_default_state_map{$state}->{'only_spaces'} = 1;
+      # this is the first line, so set to 1. This is reset later in 
+      # most cases, when a node is seen, but may still be useful in 
+      # @footnote, for example
+      $info_default_state_map{$state}->{'line_count'} = 1;
+      $info_default_state_map{$state}->{'nr'} = $info_default_state_nr;
+      $info_default_state_map{$state}->{'state'} = $state;
+      $info_default_state_map{$state}->{'multitable_stack'} = [];
+      @{$info_default_state_map{$state}->{'align_stack'}} = ({'command'=>'normal'});
+      $info_default_state_nr++;
+   }
+print STDERR "RETURN state $state $info_default_state_map{$state} $info_default_state_map{$state}->{'nr'}\n";
+   return $info_default_state_map{$state};
+}
 
 sub info_default_reset_state($)
 {
@@ -398,8 +427,6 @@ print STDERR "NNNNNNNNNNNNNN iterator_next current $current_command idx $command
       return (undef, undef, undef);
    }
 }
-
-my $info_default_max_column = 72;
 
 sub info_default_next($$$)
 {
@@ -527,14 +554,7 @@ print STDERR "EOL_SPACES[$line_char_counter](+$pending_spaces) `$eol_spaces'\n";
          }
          if (length($pending_spaces) +  $line_char_counter > $max_column)
          {
-             if ($line_char_counter > $max_column)
-             {
-                 $pending_spaces = '';
-             }
-             else
-             {
-                 $pending_spaces = substr($pending_spaces, $max_column - $line_char_counter +1);
-             }
+             $pending_spaces = '';
              $result .= "\n";
              $line_passed++;
              $indent_length = $indent_length_next;
@@ -640,8 +660,6 @@ sub info_default_store_pending($$$;$)
 my $info_default_end_sentence_character = quotemeta($punctuation_characters);
 my $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
 my $info_default_indent_length = 5;
-my $info_default_para_indent_length = 3;
-my $info_default_first_para_indent = 'none';
 
 sub info_default_output($)
 {
@@ -688,7 +706,7 @@ sub info_default_process_content($$)
    my $in_para = 0;
    my $table_item_line = 0;
    my $in_table_item = 0;
-   my $max_column = $info_default_max_column;
+   my $max_column = get_conf('fillcolumn');
    my $direntry = 0;
    my $preformatted_format = 0;
 
@@ -720,6 +738,7 @@ $pending_word_text = "`$pending_word'" if (defined($pending_word));
 print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
 
       my $indent_length = $indent_level * $info_default_indent_length;
+      my $indent_length_next_line;
       # indent_length is also set here for table @item so in that case
       # $info_default_indent_format_length{$item_pending} is not taken 
       # into account, luckily it is 0.
@@ -728,6 +747,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
       my $item_indent_length = 0;
       if ($item_pending)
       {
+        $indent_length_next_line = $indent_length;
         $indent_length = ($info_default_indent_format_length{$item_pending}
                    +($indent_level -1)* $info_default_indent_length);
       }
@@ -779,12 +799,10 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               $text_added .= "\n" unless ($line_char_counter == 0);
               $preformatted--;
           }
-#         FIXME this could be better than the end of menu line that is always
-#               prepended to menu
-#          elsif ($content->{'command'} eq 'menu')
-#          {
-#              $text_added .= "\n" unless ($info_state->{'blank_line'});
-#          }
+          elsif ($content->{'command'} eq 'menu')
+          {
+              $text_added .= "\n" unless ($info_state->{'blank_line'});
+          }
           elsif ($content->{'command'} eq 'float')
           {
               $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
@@ -802,9 +820,7 @@ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
               $line_char_counter = $multitable->{'line_char_counter_kept'};
               $all_line_passed = $multitable->{'all_line_passed_kept'};
               $length = $multitable->{'length_kept'};
-              #$info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'} + $info_state->{'offset_in_file'};
               $info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'};
-              #$info_state->{'line_count'} = $multitable->{'line_count_kept'} + $info_state->{'line_count'};
               $info_state->{'line_count'} = $multitable->{'line_count_kept'};
               print STDERR "MULTITABLE close, lines: $multitable->{'line_count_kept'} + $all_line_passed\n";
               foreach my $anchor_and_index (@{$multitable->{'anchors'}}, @{$multitable->{'index_entries'}})
@@ -994,6 +1010,7 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
                   {
                       push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'index_entries'}}, $index_ref;
                   }
+                  push @{$info_state->{'pending_index_entries'}}, $index_ref;
               }
               elsif ($content->{'command'} eq '*' and !$preformatted)
               {
@@ -1013,14 +1030,13 @@ print STDERR "INDEX($index_name) line $index_line_nr\n";
               {
                  # empty paragraph
                  goto new_text if (!$content->{'content'});
-                 my $paragraphindent = $Texi2HTML::THISDOC{'paragraphindent'};
-                 $paragraphindent = $Texi2HTML::Config::PARAGRAPHINDENT if (!defined($paragraphindent));
+                 my $paragraphindent = get_conf('paragraphindent');
                  $paragraphindent = 0 if ($paragraphindent eq 'none');
                  if ($paragraphindent ne 'asis')
                  {
                     info_default_skip_spaces($current, $index, $close);
                  }
-                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (defined($Texi2HTML::THISDOC{'firstparagraphindent'}) and $Texi2HTML::THISDOC{'firstparagraphindent'} eq 'insert')))))
+                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
                  {
                     $text_added .= ' ' x $paragraphindent;
                  }
@@ -1110,7 +1126,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
                   # still be active after the additional blank line
                   $table_item_line = 1+$item_line_added if ($item_pending =~ /table$/);
               }
-              elsif ($content->{'command'} eq 'menu' or $content->{'command'} eq 'listoffloats')
+              elsif ($content->{'command'} eq 'menu' or $content->{'command'} eq 'listoffloats' or $content->{'heading_command'})
               {
                   $text_added .= "\n" unless ($info_state->{'blank_line'});
               }
@@ -1153,6 +1169,7 @@ print STDERR "DDDDDDDDDDDDDDDD $content->{'command'} $first_item or $indent_leve
                      'length_kept'         => $length,
                      'all_line_passed_kept' => $all_line_passed,
                      'line_char_counter_kept' => $line_char_counter,
+                     'max_column_kept'     => $max_column,
                   };
                   push @{$info_state->{'multitable_stack'}}, $multitable;
                   $info_state->{'offset_in_file'} = 0;
@@ -1219,7 +1236,6 @@ print STDERR "IN_PARA text\n";
                   {
                       # the info_default_after_punctuation_characters should
                       # always be in the same text element. 
-                      my $spaces_length = length($3);
                       if (chomp($new_text))
                       {
                           $new_text =~ s/(\s*)$/  /;
@@ -1313,7 +1329,7 @@ print STDERR "NOWHERE and not end of line (or item_pending) `$content->{'text'}'
           # below.
           $indentation_done = 1;
           my $dummy_line_passed;
-          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $in_para, $max_column) if ($text_added ne '');
+          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $in_para, $max_column, $indent_length_next_line) if ($text_added ne '');
       }
       elsif ($info_state->{'align_stack'}->[-1]->{'command'} ne 'center' and $info_state->{'align_stack'}->[-1]->{'command'} ne 'flushright')
       {
@@ -1459,31 +1475,6 @@ print STDERR "ADDING `$text_added'\n" if ($text_added ne '');
       }
    }
    return ($length, $result, $all_line_passed);
-}
-
-my $state_nr = 0;
-sub info_default_get_state($)
-{
-   my $state = shift;
-   if (!exists $info_default_state_map{$state})
-   {
-print STDERR "NEW state $state_nr\n";
-      my ($current_command, $top_stack);
-      $info_default_state_map{$state} = {};
-      info_default_reset_state($info_default_state_map{$state});
-      # since the page head always leave a blank line, and the state may be
-      # used for text right after the page head, we set it to 1 here. 
-      # it may be wrong in other contexts, to be seen.
-      $info_default_state_map{$state}->{'blank_line'} = 1;
-      $info_default_state_map{$state}->{'only_spaces'} = 1;
-      $info_default_state_map{$state}->{'nr'} = $state_nr;
-      $info_default_state_map{$state}->{'state'} = $state;
-      $info_default_state_map{$state}->{'multitable_stack'} = [];
-      @{$info_default_state_map{$state}->{'align_stack'}} = ({'command'=>'normal'});
-      $state_nr++;
-   }
-print STDERR "RETURN state $state $info_default_state_map{$state} $info_default_state_map{$state}->{'nr'}\n";
-   return $info_default_state_map{$state};
 }
 
 sub info_default_open_command($$;$)
@@ -1752,7 +1743,7 @@ sub info_default_header ()
     $basename = $STDIN_DOCU_NAME if ($basename eq '-');
     my $result = "This is $Texi2HTML::THISDOC{'filename'}->{'top'}, produced by makeinfo version 4.13 from $basename. ";
     my $dummy;
-    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, $info_default_max_column);
+    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, get_conf('fillcolumn'));
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     if ($info_default_dir_specification)
@@ -1781,7 +1772,6 @@ sub info_default_parent_format($)
     my $in_format = 0;
     while (1)
     {
-print STDERR "GGGGGGGGGGG $parent_format->{'command'}\n";
         if (defined($parent_format->{'command'}) and $info_default_format{$parent_format->{'command'}})
         {
             $in_format = 1;
@@ -1919,7 +1909,7 @@ sub info_default_element_heading($$$$$$$$$$$$)
     }
     return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading) unless ($new_element);
 
-print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
+print STDERR "HHHHHHHHHHHHHHH node($element->{'texi'}) $info_state->{'nr'}\n";
     my $before = '';
     $element->{'info_offset'} = $info_state->{'offset_in_file'};
     push @{$info_state->{'pending_tags'}}, $element;
@@ -1927,7 +1917,6 @@ print STDERR "HHHHHHHHHHHHHHH node $info_state->{'nr'}\n";
     my $result = info_default_node_line($element, $info_state);
 
     $info_default_footnote_index = 0;
-    #$info_default_current_node = $Texi2HTML::THIS_ELEMENT;
     $info_default_current_node = $element;
     
     return $before.$result;
@@ -1946,7 +1935,7 @@ sub info_default_heading($$$$$;$$)
     die "Heading called for a node\n" if ($element->{'node'});
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
-print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
+print STDERR "HHHHHHHHHHHHHHH section($element->{'texi'}) $info_state->{'nr'}\n";
     $info_state->{'paragraph_in_element_nr'} = 0;
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
@@ -1954,24 +1943,12 @@ print STDERR "HHHHHHHHHHHHHHH section $info_state->{'nr'}\n";
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
     $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
-    my $heading = $text . "\n" . 
+    my $result = $text . "\n" . 
        ($default_info_level_to_symbol{$element->{'level'}} x length($text)) . "\n";
-    if (!$info_state->{'blank_line'})
-    {
-       $heading = "\n" .$heading;
-       $info_state->{'line_count'}++;
-    }
 
-    if (length($text))
-    {
-       $heading .= "\n";
-       $info_state->{'line_count'}++;
-       $info_state->{'blank_line'} = 1;
-    }
-   
-    $info_state->{'offset_in_file'} += length($heading);
-    $info_state->{'line_count'} += 2;
-    return $heading;
+   $result .= "\n";
+
+    return info_default_store_text($state, $result, $command, {'heading_command' => 1});
 }
 
 sub info_default_normal_text($$$$$$;$)
@@ -2147,11 +2124,12 @@ sub info_default_print_section
     if (@info_default_pending_footnotes)
     {
         my $footnote_text;
-        if ($SEPARATED_FOOTNOTES)
+        my $footnote_element;
+        if (get_conf('footnotestyle') eq 'separate')
         {
             my $node_ref = $info_default_current_node;
             $node_ref = {'text' => 'no node', 'file' => ''} if (!defined($node_ref));
-            my $footnote_element = { 'NodeUp' => $node_ref, 
+            $footnote_element = { 'NodeUp' => $node_ref, 
                        'text' => $node_ref->{'text'} . "-Footnotes", 
                        'file' => $node_ref->{'file'},
                        'info_offset' => $info_state->{'offset_in_file'},
@@ -2164,6 +2142,8 @@ sub info_default_print_section
         {
             $footnote_text = "   ---------- Footnotes ----------\n\n";
             $info_state->{'offset_in_file'} += length($footnote_text);
+            $info_state->{'line_count'} += 2;
+print STDERR "MMMMMMMMMMMMMMMMMM $info_state->{'line_count'}\n";
         }
         while (@info_default_pending_footnotes)
         {
@@ -2176,13 +2156,20 @@ sub info_default_print_section
             my $footnote_info_state = $footnote->{'footnote_info_state'};
             my $footnote_result = shift @{$lines};
             my $initial_length = length($footnote_result);
+            
             $footnote_result =~ s/^\s*//;
             #$footnote_result = "   ($foot_nr) " . $footnote_result;
-            $footnote_result = "   " . $footnote_result;
+            $footnote_result = ' ' x get_conf('paragraphindent') . $footnote_result;
             foreach my $footnote_pending_tags(@{$footnote_info_state->{'pending_tags'}})
             {
                $footnote_pending_tags->{'info_offset'} += $info_state->{'offset_in_file'} + length($footnote_result) - $initial_length;
                push @{$info_state->{'pending_tags'}}, $footnote_pending_tags;
+            }
+            foreach my $footnote_pending_index_entry(@{$footnote_info_state->{'pending_index_entries'}})
+            {
+print STDERR "TTTTTTTTTTT($footnote_pending_index_entry->{'index_entry_reference'}->{'entry'}) $footnote_pending_index_entry->{'line_nr'} $info_state->{'line_count'}\n";
+               $footnote_pending_index_entry->{'line_nr'} += $info_state->{'line_count'};
+               $footnote_pending_index_entry->{'index_entry_reference'}->{'real_element'} = $footnote_element if (get_conf('footnotestyle') eq 'separate');
             }
             my $line;
             while (@$lines)
@@ -2191,16 +2178,20 @@ sub info_default_print_section
                $footnote_result .= $line;
             }
             my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($footnote_result);
-            $info_state->{'blank_line'} = 1 if ($blank_line);
             if ($line_passed == 0)
             {# certainly out of paragraph commands
                $footnote_result =~ s/\s*$//;
                $footnote_result .= "\n";
                $line_passed = 1;
             }
-            $footnote_result .= "\n";
+            unless (($last_line !~ /\S/ and $end_of_line) or ($blank_line)) 
+            {
+               $footnote_result .= "\n";
+               $line_passed += 1;
+            }
+            
             $info_state->{'offset_in_file'} += length($footnote_result);
-            $info_state->{'line_count'} += $line_passed +1;
+            $info_state->{'line_count'} += $line_passed;
             $footnote_text .= $footnote_result;
         }
         print $fh "$footnote_text";
@@ -2306,7 +2297,6 @@ sub info_default_complex_format($$)
     if ($name eq 'menu')
     {
         $begin = "* Menu:\n\n";
-        $end = "\n";
     }
     elsif ($name eq 'direntry')
     {
@@ -2609,23 +2599,25 @@ sub info_default_index_entry($$$$$$$$)
     {
        $result .= ' ' x($info_default_index_length_to_node - length($result));
     }
-    $result .= $element_text . '.';
+    my $element = $index_entry_ref->{'real_element'};
+    $element = $element->{'element_ref'} if ($element->{'element_ref'});
+    $result .= $element->{'text'} . '.';
     my $info_index_entry_ref = $info_default_index_entries{$index_entry_ref};
     my $line_nr = $info_index_entry_ref->{'line_nr'};
     # this happens for index entries appearing after @printindex. In that case
     # it is consideered that they are at the beginning of the node.
-    $line_nr = 4 if (!defined($line_nr));
+    $line_nr = 4 if (!defined($line_nr) or $line_nr < 4);
     my $max_len = $info_default_index_line_string_length{$info_index_entry_ref->{'index_name'}};
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
 #print STDERR "GGGGGGGGGG name: $info_index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
-    if (length($result)+length($line_part) +1 >  $info_default_max_column)
+    if (length($result)+length($line_part) +1 >  get_conf('fillcolumn'))
     {
-        $result .= "\n" . ' ' x ($info_default_max_column - length($line_part)) ;
+        $result .= "\n" . ' ' x (get_conf('fillcolumn') - length($line_part)) ;
     }
     else
     {
-        $result .= ' ' x ($info_default_max_column - length($line_part) - length($result));
+        $result .= ' ' x (get_conf('fillcolumn') - length($line_part) - length($result));
     }
     $result .= "$line_part\n";
 
@@ -2663,7 +2655,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     my $node_name;
     $node_name = '';
     $node_name = $info_default_current_node->{'text'} if defined($info_default_current_node);
-    if ($SEPARATED_FOOTNOTES)
+    if (get_conf('footnotestyle') eq 'separate')
     {
         $footnote_text .=  ' (' . info_default_normal_reference('pxref', ["${node_name}-Footnote-${info_default_footnote_index}"]) . ')';
     }
@@ -2871,7 +2863,7 @@ sub info_default_table_list($$$$$$$$$)
     {
        foreach my $fraction (@$columnfractions)
        {
-          push @$columnsize, int($fraction * $info_default_max_column +0.5);
+          push @$columnsize, int($fraction * get_conf('fillcolumn') +0.5);
        }
     }
     else 
@@ -3073,7 +3065,7 @@ sub info_default_element_file_name($$$)
     my $prefix = shift;
 
     my $outname;
-    $outname = $OUT if (defined($OUT) and $Texi2HTML::THISDOC{'input_file_number'} == 0);
+    $outname = $OUT if (defined($OUT) and $OUT ne '' and $OUT !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
     if ($type eq 'doc') 
     {
        if (defined($Texi2HTML::THISDOC{'setfilename'}) and !defined($outname))

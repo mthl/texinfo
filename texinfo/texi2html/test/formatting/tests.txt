@@ -38,6 +38,7 @@ texi kbdinputstyle.texi
 texi simple_table.texi
 texi empty_item.texi
 texi direntry_dircategory.texi
+texi nested_table.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -97,6 +98,7 @@ kbdinputstyle kbdinputstyle.texi
 simple_table simple_table.texi
 empty_item empty_item.texi
 direntry_dircategory direntry_dircategory.texi
+nested_table nested_table.texi 
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init
 kbdinputstyle_info kbdinputstyle.texi -init info.init
@@ -107,3 +109,5 @@ direntry_dircategory_info direntry_dircategory.texi -init info.init
 direntry_dircategory_info_split direntry_dircategory.texi -init info.init -split-size 1
 direntry_dircategory_xml direntry_dircategory.texi -init xml.init
 heading_info heading.texi -init info.init
+nested_table_info nested_table.texi -init info.init
+simple_table_info simple_table.texi -init info.init

@@ -7,6 +7,8 @@ This file records noteworthy changes.
 
 * new info backend, ready for world domination!
 
+* Handle @DH{}, @dh{}, @TH{}, @th{}. 
+
 * BUG FIXES
   ---------
 
@@ -16,6 +18,9 @@ This file records noteworthy changes.
 
 * COMPATIBILITY
   -------------
+
+* Information that can be set by @-commands should now be accessed
+  through get_conf.
 
 * $format_list_item_texi should now modify directly the @item argument
   and apply the @-command given as @table argument. Correspondingly, 
@@ -27,6 +32,11 @@ This file records noteworthy changes.
 * @verbatiminclude is now a $raw command argument distinct from @verbatim.
 
 * @direntry is formatted like a menu and passed down to $menu_command.
+
+* $SEPARATED_FOOTNOTES has been replaced by $FOOTNOTESTYLE, that takes the 
+  same argument than @footnotestyle.
+
+* replace $LANG by $DOCUMENTLANGUAGE.
 
 1.82 (2009-01-05)
 
