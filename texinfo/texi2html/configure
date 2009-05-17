@@ -2696,7 +2696,7 @@ ac_config_files="$ac_config_files check_texinfo.pl"
 ac_config_files="$ac_config_files manage_i18n.pl"
 
 
-ac_config_files="$ac_config_files Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile"
+ac_config_files="$ac_config_files Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile test/path_separator"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3343,6 +3343,7 @@ do
     "test/layout/Makefile") CONFIG_FILES="$CONFIG_FILES test/layout/Makefile" ;;
     "test/many_input_files/Makefile") CONFIG_FILES="$CONFIG_FILES test/many_input_files/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
+    "test/path_separator") CONFIG_FILES="$CONFIG_FILES test/path_separator" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 $as_echo "$as_me: error: invalid argument: $ac_config_target" >&2;}

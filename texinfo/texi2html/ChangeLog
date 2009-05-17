@@ -1,3 +1,8 @@
+2009-05-17   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: a path separator may be used for -I and similar
+	options like makeinfo does.
+
 2009-05-16   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl,texi2html.init: handle @DH{}, @dh{}, @TH{}, @th{}. 

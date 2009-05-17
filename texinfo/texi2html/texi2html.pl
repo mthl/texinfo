@@ -42,6 +42,12 @@ use Cwd;
 use File::Basename;
 # used to find a relative path back to the current working directory
 use File::Spec;
+# to determine the path separator and null file
+use Config;
+
+my $path_separator = $Config{'path_sep'};
+$path_separator = ':' if (!defined($path_separator));
+my $quoted_path_separator = quotemeta($path_separator);
 
 #use encoding::warnings;
 # for translations
@@ -79,7 +85,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.283 2009-05-17 15:35:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.284 2009-05-17 20:10:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3594,8 +3600,12 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
     $Texi2HTML::Config::OUT = '';
 }
 
+@Texi2HTML::Config::INCLUDE_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::INCLUDE_DIRS));
+@Texi2HTML::Config::PREPEND_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::PREPEND_DIRS));
+
 my @include_dirs_orig = @Texi2HTML::Config::INCLUDE_DIRS;
 
+@Texi2HTML::Config::CONF_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::CONF_DIRS));
 # extension
 $Texi2HTML::GLOBAL{'extension'} = $Texi2HTML::Config::EXTENSION;
 if ($Texi2HTML::Config::SHORTEXTN)

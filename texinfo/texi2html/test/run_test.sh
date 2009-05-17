@@ -6,6 +6,7 @@
 
 export LANG=C
 
+
 res_dir=res
 out_dir=out
 diffs_dir=diffs
@@ -106,6 +107,8 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   exit 0
 fi
 
+. ../path_separator || exit 1
+
 [ -d "$diffs_dir" ] || mkdir "$diffs_dir"
 [ -d "$out_dir" ] || mkdir "$out_dir"
 
@@ -129,7 +132,7 @@ do
   file=`echo $line | awk '{print $2}'`
   [ "z$dir" = 'z' -o "$zfile" = 'z' ] && continue
   basename=`basename $file .texi`
-  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]\+ \+[a-zA-Z0-9_./-]\+ *//'`
+  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]\+ \+[a-zA-Z0-9_./-]\+ *//' | sed 's,@PATH_SEPARATOR@,'"${PATH_SEPARATOR}$testdir/$srcdir_test/"',g'`
   src_file="$testdir/$srcdir_test/$file"
   if [ $one_test = 'yes' -a "z$dir" != "z$the_test" ]; then
     continue

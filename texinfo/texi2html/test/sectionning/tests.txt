@@ -63,3 +63,4 @@ node_footnote_info node_footnote.texi -init info.init
 node_footnote_separated_info node_footnote.texi -init info.init --footnote-style=separate
 anchor_in_footnote_info anchor_in_footnote.texi -init info.init
 anchor_in_footnote_separated_info anchor_in_footnote.texi -init info.init --footnote-style=separate
+test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros

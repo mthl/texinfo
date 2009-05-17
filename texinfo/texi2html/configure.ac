@@ -129,6 +129,7 @@ AC_CONFIG_FILES([\
                  test/singular_manual/Makefile \
                  test/layout/Makefile \
                  test/many_input_files/Makefile \
-                 doc/Makefile 
+                 doc/Makefile \
+                 test/path_separator
                  ])
 AC_OUTPUT
