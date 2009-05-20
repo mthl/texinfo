@@ -27,6 +27,7 @@
 #use Encode;
 
 use strict;
+# if true, use the original command if the result is an entity
 use vars '$ENABLE_ENCODING_USE_ENTITY';
 
 if (!$ENABLE_ENCODING_USE_ENTITY)
@@ -128,12 +129,14 @@ sub enable_encoding_accent($$$$)
   my $style_stack = shift;
   my $text = $args->[0];
 
+#print STDERR "enable_encoding_accent called($in) $accent (@$style_stack)\n";
+
   if (scalar(@enable_encoding_accents_stack)) 
   {
     # in that case, we already have a result ready that corresponds with the
     # formatting of a part of the stack mapped to 
     # enable_encoding_accents_stack, so it is emptied and the innermost
-    # $text is returned as is such that the unmodified already formatted 
+    # $text is returned as is, such that the unmodified already formatted 
     # innermost formatted accented text is returned.
 
     #print STDERR " doing nothing, still in stack (@enable_encoding_accents_stack), accent: $accent";
@@ -187,6 +190,7 @@ sub enable_encoding_accent($$$$)
     my $char = $partial_result->{'result'};
     my $new_eight_bit = '';
     my $new_codepoint;
+   
     if (ord($char) <= 128)
     {
       $new_eight_bit =  uc(sprintf("%02x",ord($char)));
@@ -200,8 +204,25 @@ sub enable_encoding_accent($$$$)
          $new_eight_bit = $makeinfo_unicode_to_eight_bit{$enc_map}->{$new_codepoint};
       }
     }
-    #print STDERR "" . encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), 8bit: $new_eight_bit\n";
+    #my $eight_bit_txt = 'undef';
+    #$eight_bit_txt = $eight_bit if (defined($eight_bit));
+    #print STDERR "" . Encode::encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
+    # no corresponding eight bit character found
     last if ($new_eight_bit eq '');
+
+    # in that case, the new eight bit character is the same than the one 
+    # found with one less character (and it isnt a @dotless{i}). It may
+    # mean 2 things
+    # -> there are 2 characters in accent. This could happen, for example
+    #    if an accent that cannot be rendered is found and it leads to 
+    #    appending or prepending a character. For example this happens for
+    #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
+    #    ñ,
+    #    In nthat case, the additional utf8 accent is prepended, which 
+    #    means that it is composed with the , and leaves ñ untouched. 
+    # -> ord(char) leads to the same for the more inner character.
+    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
+    #    the same than ord(a̲).
     last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit) 
        and !($partial_result->{'accents_stack'}[0] eq 'dotless' and $char eq 'i')));
     $result = $partial_result;
@@ -210,12 +231,16 @@ sub enable_encoding_accent($$$$)
   if (defined($result) and scalar(@{$result->{'accents_stack'}}))
   {
      # we got a result, return it and put in enable_encoding_accents_stack
-     # the stack of accent commands that were processed.
+     # the stack of accent commands that were processed. They wont be used
+     # further, but only unshifted.
 
-  #print STDERR "Result: ".encode('utf8', $result->{'result'}) ." '$eight_bit' (@{$result->{'accents_stack'}})\n" if defined($result);
+  #print STDERR "Result: ".Encode::encode('utf8', $result->{'result'}) ." '$eight_bit' (@{$result->{'accents_stack'}})\n" if defined($result);
      @enable_encoding_accents_stack = @{$result->{'accents_stack'}};
      # remove the first, it is the accent being processed
      shift @enable_encoding_accents_stack;
+     # it should be noted that we return the 'utf8' accent (which is really
+     # a codepoint, and not the eight bit representation, we leave the 
+     # conversion to perl, which should handle it fine
      return $result->{'result'};
   }
   

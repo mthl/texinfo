@@ -1,3 +1,11 @@
+2009-05-20   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: Suffixes (in @INPUT_FILE_SUFFIXES) 
+	are concatenated with input file names to try to find a suitable 
+	file (like makeinfo).
+	* texi2html.pl, texi2html.init, examples/info.init: handle 
+	--enable-encoding.
+
 2009-05-17   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: a path separator may be used for -I and similar

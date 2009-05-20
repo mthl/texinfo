@@ -42,7 +42,9 @@ formatting_fr ../coverage/formatting.texi -document-language fr
 formatting_fr_icons ../coverage/formatting.texi -document-language fr -init icons.init
 formatting_converted_to_utf8 ../coverage/formatting.texi -init utf8.init
 accentenc accentenc.texi
-accentenc_encoding accentenc.texi -init enable_encoding.init
+#accentenc_encoding accentenc.texi -init enable_encoding.init
+accentenc_encoding accentenc.texi --enable-encoding -init enable_encoding_no_use_entity.init
+accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi
 weird_accents_encoding weird_accents.texi -init enable_encoding.init
@@ -60,3 +62,4 @@ encoding_index-utf8 encoding_index-utf8.texi
 encoding_index-utf8_toutf8 encoding_index-utf8.texi -init utf8
 encoding_index-latin1 encoding_index-latin1.texi
 encoding_index-latin1_toutf8 encoding_index-latin1.texi -init utf8
+accentenc_info accentenc.texi -init info.init

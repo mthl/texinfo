@@ -12,6 +12,8 @@
 
 @={@ubaraccent{a}}
 
+@^{@udotaccent{@`r}}
+
 @={@code{@'{@`{r}}}}
 
 @bye

@@ -85,7 +85,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.284 2009-05-17 20:10:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.285 2009-05-20 23:22:21 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -279,6 +279,7 @@ $INLINE_CONTENTS
 $INLINE_INSERTCOPYING
 $PARAGRAPHINDENT
 $FIRSTPARAGRAPHINDENT
+$ENABLE_ENCODING
 );
 
 # customization variables
@@ -357,6 +358,8 @@ $DATE
 @NODE_FOOTER_BUTTONS
 @LINKS_BUTTONS
 @IMAGE_EXTENSIONS
+@INPUT_FILE_SUFFIXES
+$ENABLE_ENCODING_USE_ENTITY
 );
 
 # customization variables which may be guessed in the script
@@ -1332,7 +1335,7 @@ sub t2h_utf8_accent($$$)
     return ascii_accents($text, $accent);
 }
 
-sub t2h_utf8_normal_text($$$$$)
+sub t2h_utf8_normal_text($$$$$$;$)
 {
     my $text = shift;
     my $in_raw_text = shift;
@@ -1340,6 +1343,7 @@ sub t2h_utf8_normal_text($$$$$)
     my $in_code = shift;
     my $in_simple = shift;
     my $style_stack = shift;
+    my $state = shift;
 
     $text = &$protect_text($text) unless($in_raw_text);
     $text = uc($text) if (in_small_caps($style_stack));
@@ -2740,6 +2744,21 @@ $T2H_OPTIONS -> {'fill-column'} =
  'verbose' => "break Info lines at NUM characters (default 72).",
 };
 
+$T2H_OPTIONS -> {'enable-encoding'} =
+{
+ type => '',
+ linkage => \$Texi2HTML::Config::ENABLE_ENCODING,
+ verbose => 'override --disable-encoding (default in Info).',
+};
+
+$T2H_OPTIONS -> {'disable-encoding'} =
+{
+ type => '',
+ linkage => sub {$Texi2HTML::Config::ENABLE_ENCODING = 0},
+ verbose => 'do not output accented and special characters
+                                in Info output based on @documentencoding.',
+};
+
 $T2H_OPTIONS -> {'monolithic'} =
 {
  type => '!',
@@ -2747,6 +2766,8 @@ $T2H_OPTIONS -> {'monolithic'} =
  verbose => 'output only one file including ToC, About...',
  noHelp => 1
 };
+
+
 ##
 ## obsolete cmd line options
 ##
@@ -3434,6 +3455,11 @@ if ($Texi2HTML::Config::L2H)
      { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 
        'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
      };
+}
+
+if ($Texi2HTML::Config::ENABLE_ENCODING)
+{
+   Texi2HTML::Config::t2h_enable_encoding_load();
 }
 
 if (defined($Texi2HTML::Config::DO_CONTENTS))
@@ -14555,7 +14581,7 @@ my $file_number = 0;
 # main processing
 while(@input_files)
 {
-   my $input_file_name = shift(@input_files);
+   my $input_file_arg = shift(@input_files);
 
    %Texi2HTML::THISDOC = ();
    $Texi2HTML::THIS_ELEMENT = undef;
@@ -14565,7 +14591,13 @@ while(@input_files)
       $Texi2HTML::THISDOC{$global_key} = $Texi2HTML::GLOBAL{$global_key};
    }
 
-   #set_date() if ($Texi2HTML::GLOBAL{'documentlanguage'});
+   my $input_file_name;
+   # try to concatenate with different suffixes. The last suffix is ''
+   # such that the plain file name is checked.
+   foreach my $suffix (@Texi2HTML::Config::INPUT_FILE_SUFFIXES)
+   {
+      $input_file_name = $input_file_arg.$suffix if (-e $input_file_arg.$suffix);
+   }
 
    $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
    $Texi2HTML::THISDOC{'input_file_number'} = $file_number;

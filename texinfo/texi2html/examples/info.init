@@ -27,6 +27,7 @@ use strict;
 
 $Data::Dumper::Maxdepth = 12;
 
+
 $USE_NODES = 1;
 $USE_SECTIONS = 0;
 @EXPAND = ('info', 'direntry');
@@ -44,8 +45,12 @@ $MENU_SYMBOL = '*';
 $USE_MENU_DIRECTIONS = 0;
 $USE_UP_FOR_ADJACENT_NODES = 0;
 $USE_ISO = 0;
+$ENABLE_ENCODING_USE_ENTITY = 0;
+$ENABLE_ENCODING = 1;
 @IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
 $CAPTION_STYLE = 'asis';
+$DEFAULT_ENCODING = 'ascii';
+
 
 $no_paragraph_commands{'anchor'} = 1;
 
@@ -135,40 +140,7 @@ foreach my $command ('uref', 'url', 'email', 'click')
 
 $style_map{'uref'}->{'function'} = \&info_default_uref;
 $style_map{'url'}->{'function'} = \&info_default_uref;
-
-sub info_default_uref($$)
-{
-    shift;
-    my $args = shift;
-    my $url = shift @$args;
-    my $text = shift @$args;
-    my $replacement = shift @$args;
-    #$url =~ s/\s*$//;
-    #$url =~ s/^\s*//;
-    $url = main::normalise_space($url);
-    $replacement = '' if (!defined($replacement));
-    $replacement = main::normalise_space($replacement);
-    return $replacement if ($replacement ne '');
-    $text = '' if (!defined($text));
-    $text = main::normalise_space($text);
-    return "`$url'" if ($text eq '');
-    return "$text ($url)";
-}
-
 $style_map{'email'}->{'function'} = \&info_default_email;
-sub info_default_email($$)
-{
-    my $command = shift;
-    my $args = shift;
-    my $mail = shift @$args;
-    my $text = shift @$args;
-    $mail = main::normalise_space($mail);
-    $text = '' if (!defined($text));
-    $text = main::normalise_space($text);
-    $mail = "<$mail>";
-    return $mail unless ($text ne '');
-    return "$text $mail";
-}
 
 foreach my $command (keys(%style_map))
 {
@@ -203,6 +175,34 @@ foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float
 
 $info_default_indented_commands{'format'} = 0;
 $info_default_indented_commands{'smallformat'} = 0;
+
+my $info_default_end_sentence_character = quotemeta($punctuation_characters);
+my $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
+my $info_default_indent_length = 5;
+
+my %info_default_indent_format_length = ('enumerate' => 2,
+    'itemize' => 3,
+    'table' => 0,
+    'vtable' => 0,
+    'ftable' => 0,
+ );
+
+my %default_info_level_to_symbol = (
+  0 => '*',
+  1 => '*',
+  2 => '=',
+  3 => '-',
+  4 => '.'
+);
+
+my $info_default_index_length_to_node = 41;
+
+my $info_default_listoffloat_caption_entry_length = 41;
+my $info_default_listoffloat_append = '...:    ';
+
+push @command_handler_init, \&info_default_init_accent_enable_encoding;
+
+my %info_default_enable_encoding_accents;
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
@@ -272,6 +272,70 @@ $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
 $element_file_name  = \&info_default_element_file_name;
 
+# FIXME initialize
+my %info_default_state_map = ();
+my $info_default_out_file_nr = 1;
+my $info_default_dir_specification = '';
+my @info_default_pending_indirect = ();
+my @info_default_pending_footnotes = ();
+my $info_default_state_nr = 0;
+
+my %info_default_index_line_string_length = ();
+my %info_default_index_entries = ();
+my $info_default_footnote_index = 0;
+my $info_default_current_node = undef;
+
+# this is put in command_handler_init such that it sets things right
+# in case $ENABLE_ENCODING is set and haslead to modification of the 
+# accent functions
+sub info_default_init_accent_enable_encoding()
+{
+   return unless ($ENABLE_ENCODING);
+   foreach my $key (keys(%unicode_accents), 'dotless')
+   {
+     $info_default_enable_encoding_accents{$key} = 1;
+     $t2h_enable_encoding_default_accent{'normal'}->{$key} = \&t2h_default_ascii_accent;
+     $t2h_enable_encoding_default_accent{'texi'}->{$key} = \&t2h_default_ascii_accent;
+     $t2h_enable_encoding_default_accent{'pre'}->{$key} = \&t2h_default_ascii_accent;
+     $style_map{$key}->{'function'} = \&info_default_accent;
+     $style_map_texi{$key}->{'function'} = \&info_default_accent;
+     $style_map_pre{$key}->{'function'} = \&info_default_accent;
+   }
+}
+
+sub info_default_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    #$url =~ s/\s*$//;
+    #$url =~ s/^\s*//;
+    $url = main::normalise_space($url);
+    $replacement = '' if (!defined($replacement));
+    $replacement = main::normalise_space($replacement);
+    return $replacement if ($replacement ne '');
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    return "`$url'" if ($text eq '');
+    return "$text ($url)";
+}
+
+sub info_default_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    $mail = "<$mail>";
+    return $mail unless ($text ne '');
+    return "$text $mail";
+}
+
 
 sub info_default_accent($$$)
 {
@@ -282,11 +346,19 @@ sub info_default_accent($$$)
     my $style_stack = shift;
     my $state = shift;
 
+    my $result;
+    if ($ENABLE_ENCODING and $info_default_enable_encoding_accents{$command})
+    {
+        $result = &t2h_enable_encoding_normal_accent(@args);
+    }
+    else
+    {
+        $result = &t2h_default_ascii_accent(@args);
+    }
     if (scalar(@$style_stack) and $info_default_accent_commands{$style_stack->[-1]})
     {
-        return &t2h_default_ascii_accent(@args);
+        return $result;
     }
-    my $result = &t2h_default_ascii_accent(@args);
     return info_default_store_text($state,$result,'accents_commands');
 #    return '' if info_default_store_text($state,$result,'accents_commands');
 #    return $result;
@@ -355,15 +427,6 @@ print STDERR "ZZZZZZZZZZZZZzz `$line'\n";
       }
       return ($line_passed, $end_of_line, $last_line, $indented_text, $blank_line);
 }
-
-# FIXME initialize
-my %info_default_state_map = ();
-my $info_default_state;
-my $info_default_out_file_nr = 1;
-my $info_default_dir_specification = '';
-my @info_default_pending_indirect = ();
-my @info_default_pending_footnotes = ();
-my $info_default_state_nr = 0;
 
 sub info_default_get_state($)
 {
@@ -510,7 +573,7 @@ print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pen
    
    while ($text ne '')
    {
-my $pending_word_text = 'UNDEF';
+ my $pending_word_text = 'UNDEF';
 $pending_word_text = $pending_word  if (defined($pending_word));
 
 #print STDERR "l_c_c $line_char_counter  pending_word $pending_word_text, pending_spaces `$pending_spaces', result `$result'\n";
@@ -657,10 +720,6 @@ sub info_default_store_pending($$$;$)
    return ($line_char_counter, $pending_spaces, $pending_word, $result);
 }
 
-my $info_default_end_sentence_character = quotemeta($punctuation_characters);
-my $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
-my $info_default_indent_length = 5;
-
 sub info_default_output($)
 {
    my $info_state = shift;
@@ -676,15 +735,6 @@ sub info_default_output($)
    return $result;
 }
 
-my %info_default_index_line_string_length;
-my %info_default_index_entries;
-
-my %info_default_indent_format_length = ('enumerate' => 2,
-    'itemize' => 3,
-    'table' => 0,
-    'vtable' => 0,
-    'ftable' => 0,
- );
 
 sub info_default_process_content($$)
 {
@@ -724,18 +774,18 @@ sub info_default_process_content($$)
       my $text_added = '';
       my $item_line_added = 0;
       my $indentation_done = 0;
-my $text_item_pending = '';
-$text_item_pending = $item_pending if (defined($item_pending));
-my $text_length = '';
-$text_length = "$content->{'text'}" if defined($content->{'text'});
-my $text_command = '';
-$text_command = $content->{'command'} if defined($content->{'command'});
-my $in_node_count = 0;
-$in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
+ my $text_item_pending = '';
+ $text_item_pending = $item_pending if (defined($item_pending));
+ my $text_length = '';
+ $text_length = "$content->{'text'}" if defined($content->{'text'});
+ my $text_command = '';
+ $text_command = $content->{'command'} if defined($content->{'command'});
+ my $in_node_count = 0;
+ $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
       print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending\n";
-my $pending_word_text = 'undef';
-$pending_word_text = "`$pending_word'" if (defined($pending_word));
-print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
+ my $pending_word_text = 'undef';
+ $pending_word_text = "`$pending_word'" if (defined($pending_word));
+ print STDERR "         spaces: `$pending_spaces' word: $pending_word_text\n";
 
       my $indent_length = $indent_level * $info_default_indent_length;
       my $indent_length_next_line;
@@ -1846,14 +1896,6 @@ sub info_default_preformatted($$$$$$$$$$$$)
 } 
 
 
-my %default_info_level_to_symbol = (
-  0 => '*',
-  1 => '*',
-  2 => '=',
-  3 => '-',
-  4 => '.'
-);
-
 sub info_default_node_line($$)
 {
     my $element = shift;
@@ -1880,8 +1922,6 @@ sub info_default_node_line($$)
     return $result;
 }
 
-my $info_default_footnote_index;
-my $info_default_current_node;
 sub info_default_element_heading($$$$$$$$$$$$)
 {
     my $element = shift;
@@ -1953,6 +1993,7 @@ print STDERR "HHHHHHHHHHHHHHH section($element->{'texi'}) $info_state->{'nr'}\n"
 
 sub info_default_normal_text($$$$$$;$)
 {
+   my @initial_args = @_;
    my $text = shift;
    my $in_raw_text = shift; # remove_texi
    my $in_preformatted = shift;
@@ -1961,26 +2002,36 @@ sub info_default_normal_text($$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-#print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
-   $text = uc($text) if (in_cmd($style_stack, 'sc'));
-   $text = uc($text) if (in_cmd($style_stack, 'var'));
-#   $text = &$protect_text($text) unless($in_raw_text);
-   if (! $in_code and !$in_preformatted)
+   # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
+   # not when parsing commands in first or second pass, and removeing texi
+   # like what is done for @setfilename.
+   if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8'))
    {
-       $text =~ s/---/\x{1F}/g;
-       $text =~ s/--/-/g;
-       $text =~ s/\x{1F}/--/g;
-       $text =~ s/``/"/g;
-       $text =~ s/\'\'/"/g;
+      $text = &t2h_utf8_normal_text(@initial_args);
    }
    else
    {
+#print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
+      $text = uc($text) if (in_cmd($style_stack, 'sc'));
+      $text = uc($text) if (in_cmd($style_stack, 'var'));
+#   $text = &$protect_text($text) unless($in_raw_text);
+      if (! $in_code and !$in_preformatted)
+      {
+         $text =~ s/---/\x{1F}/g;
+         $text =~ s/--/-/g;
+         $text =~ s/\x{1F}/--/g;
+         $text =~ s/``/"/g;
+         $text =~ s/\'\'/"/g;
+      }
+      else
+      {
        # to be like texinfo
 #       my $special_code = 0;
 #       $special_code = 1 if (in_cmd($style_stack, 'code') or 
 #           in_cmd($style_stack, 'example') or in_cmd($style_stack, 'verbatim'));
 #       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
+      }
    }
    # accented characters are not handled as text, but when the last 
    # accent command on the stack is closed.
@@ -2081,6 +2132,15 @@ sub info_default_print_page_foot($)
       print $fh "$prefix: $element->{'text'}\x{7F}$element->{'info_offset'}\n";
    }
    print $fh "\x{1F}\nEnd Tag Table\n";
+   if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
+   {
+      my $coding = $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'};
+      if ($coding =~ /^iso-/i)
+      {
+          $coding = lc($coding);
+      }
+      print $fh "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
+   }
 }
 
 sub info_default_print_Top_footer($$$)
@@ -2578,7 +2638,6 @@ sub info_default_index_entry_label($$$$$$$$)
    return '';
 }
 
-my $info_default_index_length_to_node = 41;
 sub info_default_index_entry($$$$$$$$)
 {
     my $text_href = shift;
@@ -2967,8 +3026,6 @@ sub info_default_float($$$$$)
     return info_default_close_command(undef, 'float', undef, $caption_text, $additional_arguments);
 }
 
-my $info_default_listoffloat_caption_entry_length = 41;
-my $info_default_listoffloat_append = '...:    ';
 sub  info_default_listoffloats_entry($$$$)
 {
     my $style_texi = shift;

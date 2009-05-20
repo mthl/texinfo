@@ -264,8 +264,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * makeinfo has a lot of other short command line switches, but implement
   only those that are documented, in --help or info makeinfo.
 
-* -I can take paths (separated by : or ;) not only directories.
-
 * does documentlanguage cmd line apply to first or all files? 
   ask on bug-texinfo.
 
@@ -388,13 +386,14 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   should not be transliteration, but instead perl sorting and i18n stuff
   should be used. Cf testcases in encoding/encoding_index*.
 
-* info with documentencoding
-Local Variables:
-coding: iso-8859-1
-End:
-
 * makeinfo: index entry out of document leads to a message 
   (outside of any node).
   instead of node name and line numbers in printindex. 
   multiple index entries have <1>... appended.
+
+*   `makeinfo' also reads the environment variable
+`TEXINFO_OUTPUT_FORMAT' to determine the output format, if not
+overridden by a command line option.  The possible values are:
+
+     docbook  html  info  plaintext  xml
 

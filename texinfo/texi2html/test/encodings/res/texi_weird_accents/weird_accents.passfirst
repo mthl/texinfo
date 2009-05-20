@@ -11,6 +11,8 @@ weird_accents.texi(,11) @={@,{@~{n}}}
 weird_accents.texi(,12) 
 weird_accents.texi(,13) @={@ubaraccent{a}}
 weird_accents.texi(,14) 
-weird_accents.texi(,15) @={@code{@'{@`{r}}}}
+weird_accents.texi(,15) @^{@udotaccent{@`r}}
 weird_accents.texi(,16) 
-weird_accents.texi(,17) @bye
+weird_accents.texi(,17) @={@code{@'{@`{r}}}}
+weird_accents.texi(,18) 
+weird_accents.texi(,19) @bye
