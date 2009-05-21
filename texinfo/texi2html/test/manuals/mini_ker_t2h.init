@@ -1,4 +1,4 @@
-$DO_SCONTENTS = 1;
+$SHORTCONTENTS = 1;
 
 $print_Top		      = \&mini_ker_print_Top;
 

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.195 2009-05-20 23:22:20 pertusus Exp $
+# $Id: texi2html.init,v 1.196 2009-05-21 20:15:55 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -308,10 +308,10 @@ $ENABLE_ENCODING = 0;
 @INPUT_FILE_SUFFIXES = ('.txi','.texinfo','.texi','.txinfo','');
 
 # If true do table of contents even if there is no @content
-$DO_CONTENTS = undef;
+$CONTENTS = undef;
 
 # If true do short table of contents even if there is no @shortcontent
-$DO_SCONTENTS = undef;
+$SHORTCONTENTS = undef;
 
 # if set, output the contents where the command is located
 $INLINE_CONTENTS = 0;
@@ -601,6 +601,19 @@ $ICONS = 0;
    'About' => 'SEC_About'
 );
 
+# determine the null devices
+my $default_null_device = File::Spec->devnull();
+%null_device_file = (
+ $default_null_device => 1
+);
+# special case, djgpp recognizes both null devices
+if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp')
+{
+  $null_device_file{'/dev/null'} = 1;
+  $null_device_file{'NUL'} = 1;
+}
+
+
 $init_out    = \&t2h_default_init_out;
 $finish_out    = \&t2h_default_finish_out;
 
@@ -846,7 +859,7 @@ sub t2h_default_init_out()
     }
     if (!defined($EXTERNAL_CROSSREF_SPLIT))
     {
-        if ($SPLIT) 
+        if (get_conf('SPLIT')) 
         {
             $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = 1;
         }
@@ -1137,7 +1150,7 @@ sub T2H_DEFAULT_print_element_header
     }
     else
     { # got to do this here, as it isn't done in print_head_navigation
-        return &$print_navigation($buttons) if ($SECTION_NAVIGATION or $SPLIT eq 'node');
+        return &$print_navigation($buttons) if ($SECTION_NAVIGATION or get_conf('SPLIT') eq 'node');
     }
 }
 
@@ -1150,8 +1163,7 @@ sub T2H_DEFAULT_print_section
     my $buttons = \@SECTION_BUTTONS;
 
     my $nw = main::print_lines($fh);
-    if (defined $SPLIT
-        and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
+    if ((get_conf('SPLIT') eq 'node') && $SECTION_NAVIGATION)
     {
         my $buttons = \@NODE_FOOTER_BUTTONS;
         &$print_foot_navigation($fh, $buttons, $SMALL_RULE,
@@ -1194,7 +1206,7 @@ sub T2H_DEFAULT_print_Top_footer($$$)
     my $element = shift;
     my $buttons = \@MISC_BUTTONS;
     &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
-       ($end_page and ($SECTION_NAVIGATION or ($SPLIT and $SPLIT ne 'node'))), $element);
+       ($end_page and ($SECTION_NAVIGATION or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), $element);
 #    &$print_foot_navigation($fh);
 #    print $fh "$SMALL_RULE\n";
     if ($end_page)
@@ -1263,7 +1275,7 @@ sub T2H_DEFAULT_print_About
 {
     # if there is no section navigation and it is not split, the 
     # navigation information is useless
-    return &$print_misc(@_) if ($SPLIT or $SECTION_NAVIGATION);
+    return &$print_misc(@_) if (get_conf('SPLIT') or $SECTION_NAVIGATION);
 }
 
 sub T2H_DEFAULT_print_misc_header
@@ -1283,11 +1295,10 @@ sub T2H_DEFAULT_print_misc_footer
     my $buttons = shift;
     my $new_file = shift;
     &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
-        ($new_file and ($SECTION_NAVIGATION or ($SPLIT and $SPLIT ne 'node'))), undef);
+        ($new_file and ($SECTION_NAVIGATION or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), undef);
 #    print $fh "$SMALL_RULE\n";
     if ($new_file)
     {
-#        &$print_navigation($fh, $buttons);# if ($SPLIT ne 'node');
         &$print_page_foot($fh);
     }
 }
@@ -1371,7 +1382,7 @@ sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
-    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and $SPLIT);
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and get_conf('SPLIT'));
     my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
@@ -1503,8 +1514,7 @@ EOT
 <td align="left">
 EOT
     }
-    elsif (defined $SPLIT
-           and ($SPLIT eq 'node'))
+    elsif (get_conf('SPLIT') eq 'node')
     {
         $result .= "$SMALL_RULE\n";
     }
@@ -1748,8 +1758,8 @@ EOT
 # $AFTER_OVERVIEW
 # $BEFORE_TOC_LINES
 # $AFTER_TOC_LINES
-# $DO_CONTENTS
-# $DO_SCONTENTS
+# $CONTENTS
+# $SHORTCONTENTS
 
 sub T2H_DEFAULT_toc_body($)
 {
@@ -3737,6 +3747,9 @@ sub t2h_enable_encoding_accent($$$$)
 
 #print STDERR "enable_encoding_accent called($in) $accent (@$style_stack)\n";
 
+  # this should happen rarely, like during @setfilename parsing.
+  return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!defined($Texi2HTML::THISDOC{'ENCODING_NAME'}));
+
   return t2h_utf8_accent($accent,[$text],$style_stack) if ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8');
   return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}));
   if (scalar(@t2h_enable_encoding_accents_stack)) 
@@ -5495,7 +5508,7 @@ sub t2h_default_external_href($$$)
              }
              elsif ($target_split and $target_mono)
              { # depends on the splitting of the manual
-                  $target_split = $SPLIT;
+                  $target_split = get_conf('SPLIT');
              }
              elsif ($target_mono)
              { # only mono specified
@@ -5512,7 +5525,7 @@ sub t2h_default_external_href($$$)
                   {
                        $file = "$EXTERNAL_DIR/$file";
                   }
-                  elsif ($SPLIT)
+                  elsif (get_conf('SPLIT'))
                   {
                        $file = "../$file";
                   }
@@ -5530,7 +5543,7 @@ sub t2h_default_external_href($$$)
                        {
                             $file = "$EXTERNAL_DIR/$file";
                        }
-                       elsif ($SPLIT)
+                       elsif (get_conf('SPLIT'))
                        {
                            $file = "../$file";
                        }
@@ -6214,7 +6227,7 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
        }
        else
        {
-           $result .= &$print_head_navigation(undef, \@MISC_BUTTONS) if ($SPLIT or $SECTION_NAVIGATION);
+           $result .= &$print_head_navigation(undef, \@MISC_BUTTONS) if (get_conf('SPLIT') or $SECTION_NAVIGATION);
        }
     }
 

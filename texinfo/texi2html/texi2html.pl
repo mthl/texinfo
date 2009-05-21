@@ -45,10 +45,6 @@ use File::Spec;
 # to determine the path separator and null file
 use Config;
 
-my $path_separator = $Config{'path_sep'};
-$path_separator = ':' if (!defined($path_separator));
-my $quoted_path_separator = quotemeta($path_separator);
-
 #use encoding::warnings;
 # for translations
 #use encoding 'utf8';
@@ -61,6 +57,11 @@ my $quoted_path_separator = quotemeta($path_separator);
 #
 # Perl pragma to control optional warnings
 # use warnings;
+
+# determine the path separators
+my $path_separator = $Config{'path_sep'};
+$path_separator = ':' if (!defined($path_separator));
+my $quoted_path_separator = quotemeta($path_separator);
 
 #++##########################################################################
 #
@@ -85,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.285 2009-05-20 23:22:21 pertusus Exp $
+# $Id: texi2html.pl,v 1.286 2009-05-21 20:15:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -196,6 +197,7 @@ my $MIN_LEVEL = 1;
 {
 package Texi2HTML::Config;
 
+use Config;
 
 sub load($) 
 {
@@ -256,8 +258,8 @@ $OUT
 $NOVALIDATE
 $DEF_TABLE 
 $DOCUMENTLANGUAGE 
-$DO_CONTENTS
-$DO_SCONTENTS
+$CONTENTS
+$SHORTCONTENTS
 $FOOTNOTESTYLE
 $FILLCOLUMN
 $TOC_LINKS
@@ -579,6 +581,7 @@ $after_punctuation_characters
 @command_handler_finish
 %command_handler
 %special_style
+%null_device_file
 );
 
 # subject to change
@@ -626,12 +629,16 @@ my %config_map = (
    'fillcolumn' => \$FILLCOLUMN,
    'documentlanguage' => \$DOCUMENTLANGUAGE,
    'novalidate' => \$NOVALIDATE,
+   'SPLIT' => \$SPLIT,
+   'SPLIT_SIZE' => \$SPLIT_SIZE,
+   'contents' => \$CONTENTS,
+   'shortcontents' => \$SHORTCONTENTS,
 );
 
 sub get_conf($)
 {
     my $name = shift;
-    return $Texi2HTML::GLOBAL{$name} if (defined($Texi2HTML::GLOBAL{$name}));
+#    return $Texi2HTML::GLOBAL{$name} if (defined($Texi2HTML::GLOBAL{$name}));
     return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
     return ${$config_map{$name}} if (defined($config_map{$name}));
     # there is no default value for many @-commmands, like kbdinputstyle,
@@ -658,8 +665,8 @@ $summary_letter           = \&t2h_default_summary_letter;
 sub T2H_GPL_toc_body($)
 {
     my $elements_list = shift;
-    return unless ($Texi2HTML::THISDOC{'DO_CONTENTS'} or 
-      $Texi2HTML::THISDOC{'DO_SCONTENTS'} or $FRAMES);
+    return unless (Texi2HTML::Config::get_conf('contents') or 
+      Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
     my $current_level = 0;
     my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : ''; 
     foreach my $element (@$elements_list)
@@ -722,13 +729,13 @@ sub T2H_GPL_toc_body($)
         my $ind = '  ' x $current_level;
         push(@{$Texi2HTML::TOC_LINES}, "</li>\n$ind</ul>\n");
     }
-    @{$Texi2HTML::TOC_LINES} = () unless ($Texi2HTML::THISDOC{'DO_CONTENTS'});
+    @{$Texi2HTML::TOC_LINES} = () unless (Texi2HTML::Config::get_conf('contents'));
     if (@{$Texi2HTML::TOC_LINES})
     {
         unshift @{$Texi2HTML::TOC_LINES}, $BEFORE_TOC_LINES;
         push @{$Texi2HTML::TOC_LINES}, $AFTER_TOC_LINES;
     }
-    @{$Texi2HTML::OVERVIEW} = () unless ($Texi2HTML::THISDOC{'DO_SCONTENTS'} or $FRAMES);
+    @{$Texi2HTML::OVERVIEW} = () unless (Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
     if (@{$Texi2HTML::OVERVIEW})
     {
         unshift @{$Texi2HTML::OVERVIEW}, "<ul${ul_style}>\n";
@@ -895,7 +902,7 @@ sub t2h_default_init_split_indices ()
         #if ($SPLIT and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
         # FIXME this is not right, above is right
         # Don't split if document is not split
-        if ($SPLIT and $SPLIT_INDEX and $entries_count > $SPLIT_INDEX)
+        if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count > $SPLIT_INDEX)
         {
           push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ];
           @letters = ();
@@ -915,7 +922,7 @@ sub t2h_default_associate_index_element($$$$)
 
   my ($file, $default_element_file);
 
-  if ($SPLIT)
+  if (get_conf('SPLIT'))
   {
     # respect the default splitting
     $default_element_file = $element->{'file'};
@@ -939,7 +946,7 @@ sub t2h_default_associate_index_element($$$$)
       $t2h_default_seen_files{$default_element_file} = $file;
     }
   }
-  my $modify_file = ($SPLIT and (!$use_node_file or $t2h_default_split_files{$default_element_file}));
+  my $modify_file = (get_conf('SPLIT') and (!$use_node_file or $t2h_default_split_files{$default_element_file}));
   $element->{'file'} = $file if ($modify_file);
 
   my $current_element = $element;
@@ -975,7 +982,7 @@ sub t2h_default_associate_index_element($$$$)
     }
     # the element is at the level of splitting, then we split according to
     # INDEX_SPLIT
-    elsif (!$element->{'top'} and $SPLIT and (($SPLIT eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})))
+    elsif (!$element->{'top'} and get_conf('SPLIT') and ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})))
     {
       $t2h_default_split_files{$default_element_file} = 1;
       foreach my $letters_split (@letters_split)
@@ -1271,8 +1278,8 @@ sub t2h_GPL_default_printindex($)
     main::do_element_directions($Texi2HTML::THIS_ELEMENT);
     main::open_out_file($current_page->{'element'}->{'file'});
     &$print_page_head($Texi2HTML::THISDOC{'FH'});
-    &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'chapter';
-    &$print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'section';
+    &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
+    &$print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
 
     @{$Texi2HTML::THIS_SECTION} =  &$element_label($Texi2HTML::THIS_ELEMENT->{'id'}, $Texi2HTML::THIS_ELEMENT, undef, undef);
     push @{$Texi2HTML::THIS_SECTION}, &$print_element_header(1, 0);
@@ -3462,19 +3469,6 @@ if ($Texi2HTML::Config::ENABLE_ENCODING)
    Texi2HTML::Config::t2h_enable_encoding_load();
 }
 
-if (defined($Texi2HTML::Config::DO_CONTENTS))
-{
-   $Texi2HTML::GLOBAL{'DO_CONTENTS'} = $Texi2HTML::Config::DO_CONTENTS;
-}
-if (defined($Texi2HTML::Config::DO_SCONTENTS))
-{
-   $Texi2HTML::GLOBAL{'DO_SCONTENTS'} = $Texi2HTML::Config::DO_SCONTENTS;
-}
-if (defined($Texi2HTML::Config::SPLIT_SIZE))
-{
-   $Texi2HTML::GLOBAL{'SPLIT_SIZE'} = $Texi2HTML::Config::SPLIT_SIZE;
-}
-
 # FIXME encoding for first file or all files?
 if (defined($Texi2HTML::Config::IN_ENCODING))
 {
@@ -3626,6 +3620,18 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
     $Texi2HTML::Config::OUT = '';
 }
 
+# FIXME
+# if the global configuration variable is set, this overrides what 
+# could be set in the manual. This may be wrong for 'contents' and 
+# 'shortcontents' since it is inconsistent with how @-commands in
+# documents override variables in config files. It is only relevant
+# if the variables are set to 0, however, since the @-command is a 
+# no-op if already set to 1.
+foreach my $global_conf_vars('contents','shortcontents','SPLIT', 'SPLIT_SIZE')
+{
+    Texi2HTML::Config::set_conf($global_conf_vars,Texi2HTML::Config::get_conf($global_conf_vars),1);
+}
+
 @Texi2HTML::Config::INCLUDE_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::INCLUDE_DIRS));
 @Texi2HTML::Config::PREPEND_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::PREPEND_DIRS));
 
@@ -3697,122 +3703,132 @@ sub set_docu_names($$)
 
 # subdir
    $docu_rdir = '';
-
-   if ($Texi2HTML::Config::SPLIT)
-   {
-      if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
-      {
-         $docu_rdir = $Texi2HTML::Config::OUT;
-      }
-      else
-      {
-         $docu_rdir = $docu_name;
-      }
-      if ($docu_rdir ne '')
-      {
-         $docu_rdir =~ s|/*$||;
-         $docu_rdir .= '/'; 
-      }
+   my $null_output;
+   if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0) and $Texi2HTML::Config::null_device_file{$Texi2HTML::Config::OUT})
+   { # this overrides the GLOBAL setting for this file. set_conf
+      $Texi2HTML::THISDOC{'SPLIT'} = '';
+      $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef;
+      $null_output = 1;
+      $path_to_working_dir = $docu_rdir;
    }
-   else
+   if (!$null_output)
    {
-      my $out_file;
-# AAAA
-   # even if the out file is not set by OUT, in case it is not the first
-   # file, the out directory is still used. This is only used to determine
-   # the directory, the out file itself is set below
-      if (defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT ne '')
+      if (Texi2HTML::Config::get_conf('SPLIT'))
       {
-         $out_file = $Texi2HTML::Config::OUT;
-      }
-      else
-      {
-         $out_file = $docu_name;
-      }
-
-      if ($out_file =~ m|(.*)/|)
-      {# there is a leading directories
-         $docu_rdir = "$1/";
-      }
-   }
-
-   if ($docu_rdir ne '')
-   {
-      unless (-d $docu_rdir)
-      {
-         if ( mkdir($docu_rdir, oct(755)))
+         if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
          {
-            print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
+            $docu_rdir = $Texi2HTML::Config::OUT;
          }
          else
          {
-            die "$ERROR can't create directory $docu_rdir\n";
+            $docu_rdir = $docu_name;
          }
-     }
-     print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
-   }
-   else
-   {
-      print STDERR "# putting result files into current directory \n" if ($T2H_VERBOSE);
-   }
-   # We don't use "./" as $docu_rdir when $docu_rdir is the current directory
-   # because it is problematic for latex2html. To test writability with -w, 
-   # however we need a real directory.
-   my $result_rdir = $docu_rdir;
-   $result_rdir = "." if ($docu_rdir eq '');
-   unless (-w $result_rdir)
-   {
-      $docu_rdir = 'current directory' if ($docu_rdir eq '');
-      die "$ERROR $docu_rdir not writable\n";
-   }
-
-   # relative path leading to the working directory from the document directory
-   $path_to_working_dir = $docu_rdir;
-   if ($docu_rdir ne '')
-   {
-      my $cwd = cwd;
-      my $docu_path = $docu_rdir;
-      $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
-      my @result = ();
-      # this code simplify the paths. The cwd is absolute, while in the 
-      # document path there may be some .., a .. is removed with the 
-      # previous path element, such that something like
-      # /cwd/directory/../somewhere/
-      # leads to
-      # /cwd/somewhere/
-      # with directory/.. removed
-      foreach my $element (split /\//, File::Spec->canonpath($docu_path))
+         if ($docu_rdir ne '')
+         {
+            $docu_rdir =~ s|/*$||;
+            $docu_rdir .= '/'; 
+         }
+      }
+      else
       {
-         if ($element eq '')
+         my $out_file;
+# AAAA
+      # even if the out file is not set by OUT, in case it is not the first
+      # file, the out directory is still used. This is only used to determine
+      # the directory, the out file itself is set below
+         if (defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT ne '')
          {
-            push @result, '';
+            $out_file = $Texi2HTML::Config::OUT;
          }
-         elsif ($element eq '..')
+         else
          {
-            if (@result and ($result[-1] eq ''))
+            $out_file = $docu_name;
+         }
+
+         if ($out_file =~ m|(.*)/|)
+         {# there is a leading directories
+            $docu_rdir = "$1/";
+         }
+      }
+   
+      if ($docu_rdir ne '')
+      {
+         unless (-d $docu_rdir)
+         {
+            if ( mkdir($docu_rdir, oct(755)))
             {
-               print STDERR "Too much .. in absolute file name\n";
+               print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
             }
-            elsif (@result and ($result[-1] ne '..'))
+            else
             {
-               pop @result;
+               die "$ERROR can't create directory $docu_rdir\n";
+            }
+        }
+        print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
+      }
+      else
+      {
+         print STDERR "# putting result files into current directory \n" if ($T2H_VERBOSE);
+      }
+      # We don't use "./" as $docu_rdir when $docu_rdir is the current directory
+      # because it is problematic for latex2html. To test writability with -w, 
+      # however we need a real directory.
+      my $result_rdir = $docu_rdir;
+      $result_rdir = "." if ($docu_rdir eq '');
+      unless (-w $result_rdir)
+      {
+         $docu_rdir = 'current directory' if ($docu_rdir eq '');
+         die "$ERROR $docu_rdir not writable\n";
+      }
+   
+      # relative path leading to the working directory from the document directory
+      $path_to_working_dir = $docu_rdir;
+      if ($docu_rdir ne '')
+      {
+         my $cwd = cwd;
+         my $docu_path = $docu_rdir;
+         $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
+         my @result = ();
+         # this code simplify the paths. The cwd is absolute, while in the 
+         # document path there may be some .., a .. is removed with the 
+         # previous path element, such that something like
+         # /cwd/directory/../somewhere/
+         # leads to
+         # /cwd/somewhere/
+         # with directory/.. removed
+         foreach my $element (split /\//, File::Spec->canonpath($docu_path))
+         {
+            if ($element eq '')
+            {
+               push @result, '';
+            }
+            elsif ($element eq '..')
+            {
+               if (@result and ($result[-1] eq ''))
+               {
+                  print STDERR "Too much .. in absolute file name\n";
+               }
+               elsif (@result and ($result[-1] ne '..'))
+               {
+                  pop @result;
+               }
+               else
+               {
+                  push @result, $element;
+               }
             }
             else
             {
                push @result, $element;
             }
          }
-         else
-         {
-            push @result, $element;
-         }
+         $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
+         # this should not be needed given what canonpath does
+         $path_to_working_dir =~ s:/*$::;
+         $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
       }
-      $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
-      # this should not be needed given what canonpath does
-      $path_to_working_dir =~ s:/*$::;
-      $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
    }
-
+   
    my $docu_ext = $Texi2HTML::THISDOC{'extension'};
    # out_dir is undocummented, should never be used, use destination_directory
    $Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
@@ -3821,7 +3837,7 @@ sub set_docu_names($$)
    $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
 
    $docu_doc = $docu_name . (defined($docu_ext) ? ".$docu_ext" : ""); # document's contents
-   if ($Texi2HTML::Config::SPLIT)
+   if (Texi2HTML::Config::get_conf('SPLIT'))
    {
 # AAAA
       if (defined($Texi2HTML::Config::TOP_FILE) and ($Texi2HTML::Config::TOP_FILE ne '') and ($file_nr == 0))
@@ -3839,8 +3855,12 @@ sub set_docu_names($$)
       if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0))
       {
          my $out_file = $Texi2HTML::Config::OUT;
-         $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef if ($out_file eq '-');
-         $out_file =~ s|.*/||;
+         if ($out_file eq '-')
+         {
+            $Texi2HTML::THISDOC{'SPLIT'} = '';
+            $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef;
+         }
+         $out_file =~ s|.*/|| unless ($null_output);
          $docu_doc = $out_file if ($out_file !~ /^\s*$/);
       }
       if (defined $Texi2HTML::Config::element_file_name)
@@ -3852,7 +3872,7 @@ sub set_docu_names($$)
       $docu_top = $docu_doc;
    }
 
-   if ($Texi2HTML::Config::SPLIT or !$Texi2HTML::Config::MONOLITHIC)
+   if (Texi2HTML::Config::get_conf('SPLIT') or !$Texi2HTML::Config::MONOLITHIC)
    {
       if (defined $Texi2HTML::Config::element_file_name)
       {
@@ -4877,17 +4897,11 @@ sub misc_command_structure($$$$)
     }
     elsif (($macro eq 'contents') or ($macro eq 'summarycontents') or ($macro eq 'shortcontents'))
     {
-        if ($macro eq 'contents')
-        {
-            $Texi2HTML::THISDOC{'DO_CONTENTS'} = 1 unless (defined($Texi2HTML::Config::DO_CONTENTS));
-            $Texi2HTML::THISDOC{$macro} = 1; 
-        }
-        else
+        if ($macro ne 'contents')
         {
             $macro = 'shortcontents';
-            $Texi2HTML::THISDOC{'DO_SCONTENTS'} = 1 unless (defined($Texi2HTML::Config::DO_SCONTENTS));
-            $Texi2HTML::THISDOC{$macro} = 1; 
         }
+        Texi2HTML::Config::set_conf($macro, 1);
         push @{$state->{'place'}}, $content_element{$macro};
     }
     elsif ($macro eq 'dircategory' and ($line =~ /^\s+(.*)\s*$/))
@@ -6531,21 +6545,21 @@ sub rearrange_elements()
     # find document nr and document file for sections and nodes. 
     # Split according to Texi2HTML::Config::SPLIT.
     # find file and id for placed elements (anchors, index entries, headings)
-    if ($Texi2HTML::Config::SPLIT)
+    if (Texi2HTML::Config::get_conf('SPLIT'))
     {
         $Texi2HTML::THISDOC{'split_level'} = $toplevel;
         my $doc_nr = -1;
-        if ($Texi2HTML::Config::SPLIT eq 'section')
+        if (Texi2HTML::Config::get_conf('SPLIT') eq 'section')
         {
             $Texi2HTML::THISDOC{'split_level'} = 2 if ($toplevel <= 2);
         }
         my $previous_file;
         foreach my $element (@elements_list)
         { 
-            print STDERR "# Splitting ($Texi2HTML::Config::SPLIT:$Texi2HTML::THISDOC{'split_level'}) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            print STDERR "# Splitting (".Texi2HTML::Config::get_conf('SPLIT').":$Texi2HTML::THISDOC{'split_level'}) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             my $new_file = 0;
             if (
-               ($Texi2HTML::Config::SPLIT eq 'node') or
+               (Texi2HTML::Config::get_conf('SPLIT') eq 'node') or
                (
                  defined($element->{'level'}) and ($element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})
                )
@@ -6628,9 +6642,9 @@ sub rearrange_elements()
     # if setcontentsaftertitlepage is set, the contents should be associated
     # with the titlepage. That's wat is done there.
     push @$no_element_associated_place, $content_element{'contents'} 
-      if ($Texi2HTML::THISDOC{'DO_CONTENTS'} and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
+      if (Texi2HTML::Config::get_conf('contents') and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
     push @$no_element_associated_place, $content_element{'shortcontents'} 
-      if ($Texi2HTML::THISDOC{'DO_SCONTENTS'} and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
+      if (Texi2HTML::Config::get_conf('shortcontents') and $Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'});
     # correct the id and file for the things placed in regions (copying...)
     foreach my $place(@$no_element_associated_place)
     {
@@ -7349,7 +7363,7 @@ sub pass_text($$)
         }
     }
 
-    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not $Texi2HTML::Config::SPLIT and not $Texi2HTML::Config::SECTION_NAVIGATION));
+    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not Texi2HTML::Config::get_conf('SPLIT') and not $Texi2HTML::Config::SECTION_NAVIGATION));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
@@ -7538,8 +7552,8 @@ sub pass_text($$)
                         else
                         {
                              &$Texi2HTML::Config::print_page_head($Texi2HTML::THISDOC{'FH'}) if ($do_page_head);
-                             &$Texi2HTML::Config::print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'chapter';
-                             &$Texi2HTML::Config::print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if $Texi2HTML::Config::SPLIT eq 'section';
+                             &$Texi2HTML::Config::print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
+                             &$Texi2HTML::Config::print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
                         }
                         $first_section = 1;
                     }
@@ -7744,7 +7758,7 @@ sub pass_text($$)
         }
     }
         
-    unless ($Texi2HTML::Config::SPLIT)
+    unless (Texi2HTML::Config::get_conf('SPLIT'))
     {
         &$Texi2HTML::Config::print_page_foot($Texi2HTML::THISDOC{'FH'});
         # this leaves the possibility for external code to close the file
@@ -7764,7 +7778,7 @@ sub finish_element($$$$)
 #print STDERR "FINISH_ELEMENT($FH)($element->{'texi'})[$element->{'file'}] counter $files{$element->{'file'}}->{'counter'}\n";
 
     # handle foot notes
-    if ($Texi2HTML::Config::SPLIT and scalar(@foot_lines) 
+    if (Texi2HTML::Config::get_conf('SPLIT') and scalar(@foot_lines) 
         and (Texi2HTML::Config::get_conf('footnotestyle') eq 'end')
         and  (! $new_element or
         ($element and ($new_element->{'file'} ne $element->{'file'})))
@@ -7800,7 +7814,7 @@ sub finish_element($$$$)
         $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
         &$Texi2HTML::Config::print_Top($FH, $element->{'titlefont'}, $element);
         my $end_page = 0;
-        if ($Texi2HTML::Config::SPLIT)
+        if (Texi2HTML::Config::get_conf('SPLIT'))
         {
             if (!$files{$element->{'file'}}->{'counter'})
             {
@@ -7827,8 +7841,8 @@ sub finish_element($$$$)
                  if ($T2H_DEBUG & $DEBUG_ELEMENTS);
              if (!$files{$element->{'file'}}->{'counter'})
              {
-                 &$Texi2HTML::Config::print_chapter_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'chapter');
-                 &$Texi2HTML::Config::print_section_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'section');
+                 &$Texi2HTML::Config::print_chapter_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'chapter');
+                 &$Texi2HTML::Config::print_section_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'section');
                  print STDERR "# Close file after $element->{'texi'}\n" 
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                  &$Texi2HTML::Config::print_page_foot($FH);
@@ -7844,10 +7858,10 @@ sub finish_element($$$$)
         {
             print STDERR "# End of last section\n"
                  if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            if ($Texi2HTML::Config::SPLIT)
+            if (Texi2HTML::Config::get_conf('SPLIT'))
             { # end of last splitted section
-                &$Texi2HTML::Config::print_chapter_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'chapter');
-                &$Texi2HTML::Config::print_section_footer($FH, $element) if ($Texi2HTML::Config::SPLIT eq 'section');
+                &$Texi2HTML::Config::print_chapter_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'chapter');
+                &$Texi2HTML::Config::print_section_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'section');
                 &$Texi2HTML::Config::print_page_foot($FH);
                 close_out($FH);
             }
@@ -7879,7 +7893,7 @@ sub do_node_files()
         my $node = $nodes{$key};
         next unless ($node->{'node_file'});
         my $redirection_file = $docu_doc;
-        $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
+        $redirection_file = $node->{'file'} if (Texi2HTML::Config::get_conf('SPLIT'));
         if (!$redirection_file)
         {
              print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless (Texi2HTML::Config::get_conf('novalidate') or !$node->{'seen'});
@@ -9919,7 +9933,7 @@ sub do_xref($$$$)
                 # if Texi2HTML::Config::SPLIT the file is '' which ensures 
                 # a href with the file name. if ! Texi2HTML::Config::SPLIT 
                 # the 2 file will be the same thus there won't be the file name
-                $file = $element->{'file'} unless ($Texi2HTML::Config::SPLIT);
+                $file = $element->{'file'} unless (Texi2HTML::Config::get_conf('SPLIT'));
             }
 	    #print STDERR "SUBHREF in ref to node `$node_texi'";
             my $href = href($element, $file, $line_nr);
@@ -14239,7 +14253,7 @@ sub print_lines($;$)
     for my $line (@$lines)
     {
         print $fh $line;
-	if (defined($Texi2HTML::Config::WORDS_IN_PAGE) and ($Texi2HTML::Config::SPLIT eq 'node'))
+	if (defined($Texi2HTML::Config::WORDS_IN_PAGE) and (Texi2HTML::Config::get_conf('SPLIT') eq 'node'))
         {
             @cnt = split(/\W*\s+\W*/, $line);
             $cnt += scalar(@cnt);

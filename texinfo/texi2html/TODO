@@ -378,6 +378,9 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
  $Config{osname} $Config{osvers}
  dos djgpp
 
+  Also for -E and (unimplemented) links file, and also be careful with 
+  idx file.
+
 * warning if @direcategory/@direntry after first node or element.
 
 * warning if macro without argument is called without a {}.

@@ -1,7 +1,11 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# enable_encoding.init: handle --enable-encoding
+# enable_encoding.init: mimics --enable-encoding
+# This is now directly handled in the main program. It is, however different
+# from the main program implementation snce this init file is much more
+# intrusive (for example it wouldn't work with info, but it would work 
+# better for a simple output format when entities are not used)
 #
 #    Copyright (C) 2008  Patrice Dumas <dumas@centre-cired.fr>
 #

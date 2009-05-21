@@ -1,3 +1,10 @@
+2009-05-21   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/*, T2h_l2h.pm:
+	replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by 
+	$SHORTCONTENTS.
+	Handle -o /dev/null (or NUL) like makeinfo.
+
 2009-05-20   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: Suffixes (in @INPUT_FILE_SUFFIXES) 

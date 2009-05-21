@@ -132,6 +132,7 @@ sub init()
 
    $html_output_count = 0;   # html text outputed in html result file
    $status = 0;
+   return if ($Texi2HTML::Config::null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}});
 
     $docu_name = $Texi2HTML::THISDOC{'file_base_name'};
     $docu_rdir = $Texi2HTML::THISDOC{'destination_directory'};
@@ -172,6 +173,7 @@ sub to_latex($$$)
     my $command = shift;
     my $text = shift;
     my $counter = shift;
+    return unless ($status);
     if ($command eq 'tex')
     {
         $text .= ' ';
@@ -434,6 +436,7 @@ sub do_tex($$$$)
     my $style = shift;
     my $counter = shift;
     my $state = shift;
+    return unless ($status);
     my $count = $global_count{"${style}_$counter"}; 
     ################################## begin debug section (incorrect counts)
     if (!defined($count))

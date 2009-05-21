@@ -76,6 +76,12 @@ sub tex4ht_init
 {
   # set file names
   $tex4ht_initial_dir = Cwd::abs_path;
+  if ($null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}})
+  {
+    # when output is a null device we skip entirely the tex4ht stuff.
+    $tex4ht_latex_failed = 1;
+    return;
+  }
   $tex4ht_out_dir = "$Texi2HTML::THISDOC{'destination_directory'}";
   $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
   my $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
@@ -200,9 +206,10 @@ sub tex4ht_finish_latex
 {
 #print STDERR "$style $tex4ht_latex_failed $tex4ht_counter\n";
   my $command = shift;
+  return if ($tex4ht_latex_failed);
+
   my $style = $commands{$command}->{'style'};
   my $fh = $commands{$command}->{'handle'};
-  return if ($tex4ht_latex_failed);
   # finish the tex file
   if ($style eq 'latex')
   {

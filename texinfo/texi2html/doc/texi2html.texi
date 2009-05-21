@@ -1471,6 +1471,7 @@ Three kinds of global informations are available, miscalleneous global
 strings, flags set by @code{@@set} and special flags and section lines.
 
 @subsubheading Strings that can be set by some @@-commands
+@findex get_conf
 
 Some information may be set up by @@-commands, by
 a variable in the init file, and sometime on the command-line. 
@@ -1584,6 +1585,10 @@ reference on an array containing the @code{@@import} lines of
 @item css_lines
 reference on an array containing the normal lines of 
 @acronym{CSS} files.
+@item SPLIT
+How the manual is split.
+@item SPLIT_SIZE
+The split size, only relevant for info output.
 @end table
 
 @subsubheading Flags
@@ -4559,6 +4564,7 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @item $SEPARATED_FOOTNOTES has been replaced by $FOOTNOTESTYLE, that takes the 
   same argument than @@footnotestyle.
 @item replace $LANG by $DOCUMENTLANGUAGE.
+@item replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by $SHORTCONTENTS.
 @item @@verbatiminclude is now a $raw command argument distinct from @@verbatim.
 @item @@direntry is formatted like a menu and passed down to $menu_command.
 @end itemize

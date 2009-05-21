@@ -9,6 +9,8 @@ This file records noteworthy changes.
 
 * Handle @DH{}, @dh{}, @TH{}, @th{}. 
 
+* Handle -o /dev/null (or NUL) like makeinfo.
+
 * BUG FIXES
   ---------
 
@@ -20,7 +22,8 @@ This file records noteworthy changes.
   -------------
 
 * Information that can be set by @-commands should now be accessed
-  through get_conf.
+  through get_conf, and also some information about the document (the
+  information that can change for each manual being processed).
 
 * $format_list_item_texi should now modify directly the @item argument
   and apply the @-command given as @table argument. Correspondingly, 
@@ -37,6 +40,8 @@ This file records noteworthy changes.
   same argument than @footnotestyle.
 
 * replace $LANG by $DOCUMENTLANGUAGE.
+
+* replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by $SHORTCONTENTS.
 
 1.82 (2009-01-05)
 

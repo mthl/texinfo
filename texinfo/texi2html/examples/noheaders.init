@@ -22,8 +22,6 @@
 #
 #-##############################################################################
 
-#$SPLIT = 'none';
-
 $print_section            = \&T2H_NOHEAD_print_section;
 #$print_element_header            = \&T2H_NOHEAD_print_element_header;
 $print_element_header            = \&T2H_NOHEAD_noop;
@@ -89,13 +87,13 @@ sub T2H_NOHEAD_print_Top_footer($$)
 sub T2H_NOHEAD_print_misc_header
 {
     my $fh = shift;
-    &$print_page_head($fh) if $SPLIT;
+    &$print_page_head($fh) if (get_conf('SPLIT'));
 }
 sub T2H_NOHEAD_print_misc_footer
 {
     my $fh = shift;
     print $fh "$SMALL_RULE\n";
-    if ($SPLIT)
+    if (get_conf('SPLIT'))
     {
         &$print_page_foot($fh);
     }

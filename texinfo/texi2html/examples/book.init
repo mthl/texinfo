@@ -1,6 +1,6 @@
 # This is based on the scriptbasic style
 
-$DO_CONTENTS = 1;
+$CONTENTS = 1;
 
 $INLINE_CONTENTS = 1;
 
@@ -89,7 +89,6 @@ sub book_print_element_header($$)
 
     if ($first_in_page and $SECTION_NAVIGATION)
     {
-        #print_up_toc($fh, $Texi2HTML::THIS_ELEMENT) if ($SPLIT eq 'node');
         $result = book_print_up_toc($Texi2HTML::THIS_ELEMENT);
         $result .= &$print_head_navigation(undef, $buttons);
     }
@@ -107,7 +106,6 @@ sub book_print_Top($$)
 
     my $buttons = \@MISC_BUTTONS;
     # head navigation is printed with heading, and is in THIS_SECTION
-#    &$print_head_navigation($fh, $buttons) if ($SPLIT or $SECTION_NAVIGATION);
     my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
     &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
     print $fh $Texi2HTML::TITLEPAGE;
@@ -124,7 +122,7 @@ sub book_print_Top($$)
 sub book_print_Toc
 {
     my $fh = shift;
-    &$print_page_head($fh) if $SPLIT;
+    &$print_page_head($fh) if (get_conf('SPLIT'));
     #print $fh $Texi2HTML::TITLEPAGE;
     print $fh '<h2> ' . $Texi2HTML::NAME{'Contents'} . "</h2>\n" ;
     main::print_lines($fh);
@@ -148,7 +146,7 @@ sub book_element_file_name($$$)
     my $type = shift;
     my $prefix = shift;
 
-    return undef if ($NODE_FILES or !$SPLIT);
+    return undef if ($NODE_FILES or !get_conf('SPLIT'));
     return undef if (!defined($element));
    
     if (defined($previous_nr) and ($element->{'doc_nr'} == $previous_nr))
@@ -207,7 +205,6 @@ sub book_heading($$$$$$;$$)
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
     $text = "<h$level class=\"$class\"> $text </h$level>\n";
-    #if (defined($SPLIT)  and ($SPLIT eq 'node') 
     if (exists($element->{'child'}) 
         and ($element->{'tag_level'} !~ /heading/))
     {

@@ -28,7 +28,7 @@ use strict;
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';
-$DO_CONTENTS = 1;
+$CONTENTS = 1;
 $SPLIT_INDEX = undef;
 $IDX_SUMMARY = 1;
 
@@ -234,7 +234,7 @@ sub chm_init_out()
 # Setting out file encoding to utf8 doesn't work. Seen on the web that 
 # htmlhelp 1.x isn't utf8 aware
 #   $Texi2HTML::THISDOC{'OUT_ENCODING'} = 'utf8';
-
+    return if ($null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}});
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open (IDXFILE, ">$hhk_file") or
         die "Can't open $hhk_file for writing: $!\n";
@@ -400,6 +400,7 @@ sub chm_index_summary_file_end($$)
 
 sub chm_finish_out()
 {
+    return if ($null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}});
     print IDXFILE "</BODY>\n</HTML>\n";
     close (IDXFILE);
     my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
