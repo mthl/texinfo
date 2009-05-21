@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.286 2009-05-21 20:15:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.287 2009-05-21 20:49:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -282,6 +282,7 @@ $INLINE_INSERTCOPYING
 $PARAGRAPHINDENT
 $FIRSTPARAGRAPHINDENT
 $ENABLE_ENCODING
+$INTERNAL_LINKS
 );
 
 # customization variables
@@ -2765,6 +2766,14 @@ $T2H_OPTIONS -> {'disable-encoding'} =
  verbose => 'do not output accented and special characters
                                 in Info output based on @documentencoding.',
 };
+
+$T2H_OPTIONS -> {'internal-links'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::INTERNAL_LINKS,
+ verbose => 'produce list of internal links in FILE.'
+};
+
 
 $T2H_OPTIONS -> {'monolithic'} =
 {

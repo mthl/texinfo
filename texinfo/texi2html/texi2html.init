@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.196 2009-05-21 20:15:55 pertusus Exp $
+# $Id: texi2html.init,v 1.197 2009-05-21 20:49:04 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -192,6 +192,9 @@ $OUT = '';
 # --split-size
 # if undef, the info output is not split
 $SPLIT_SIZE = 300000;
+
+# --internal-links
+$INTERNAL_LINKS = undef;
 
 # -no-validate
 # suppress node cross-reference validation
