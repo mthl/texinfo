@@ -7,6 +7,8 @@ This file records noteworthy changes.
 
 * new info backend, ready for world domination!
 
+* main program handles --xml, --docbook, --info and html.
+
 * Handle @DH{}, @dh{}, @TH{}, @th{}. 
 
 * Handle -o /dev/null (or NUL) like makeinfo.

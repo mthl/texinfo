@@ -1,3 +1,12 @@
+2009-05-22   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/html.init, 
+	formats/info.init, addformats.sh, Makefile.am: put html specific 
+	formating in formats/html.init, and setup dynamically the output 
+	format, based on the command name and the option like --xml.
+	* examples/docbook.init,examples/info.init,examples/xml.init:
+	moved to formats/.
+
 2009-05-21   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, examples/*, T2h_l2h.pm:

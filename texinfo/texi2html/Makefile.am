@@ -18,9 +18,16 @@ texi2html_additional_scripts = \
 	examples/l2h.init \
 	T2h_l2h.pm
 
+texi2html_formats = \
+	formats/html.init \
+	formats/info.init \
+	formats/docbook.init \
+	formats/xml.init
+
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
-noinst_SCRIPTS = manage_i18n.pl buildt2h.sh parse_8bit_makeinfo_maps.pl
+noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
+ parse_8bit_makeinfo_maps.pl
 
 EXTRA_DIST = \
 	MySimple.pod \
@@ -31,7 +38,8 @@ EXTRA_DIST = \
 	texi2html.spec \
 	texi2html.spec.in \
 	texi2html.pl \
-	$(texi2html_additional_scripts)
+	$(texi2html_additional_scripts) \
+	$(texi2html_formats)
 
 dist_pkgdata_DATA = examples/l2h.init \
 	examples/makeinfo.init \
@@ -44,14 +52,11 @@ dist_pkgdata_DATA = examples/l2h.init \
 	examples/enable_encoding.init \
 	examples/chm.init \
 	examples/roff.init \
-	examples/xml.init \
-	examples/info.init \
 	examples/mediawiki.init \
-	examples/docbook.init \
 	examples/tex4ht.init \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
-	examples/glossary.texi 
+	examples/glossary.texi
 
 i18n_files = i18n/de \
 	i18n/es \
@@ -144,8 +149,11 @@ dist_images_DATA = images/a_begin.png \
 #	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" \
 #	    -e "/@T2H_L2H@/r $(srcdir)/T2h_l2h.pm" $< >$@
 #	chmod a+x $@
-texi2html: $(texi2html_sources)
-	$(SHELL) $(srcdir)/buildt2h.sh $@ $^ 
+texi2html.interm: $(texi2html_sources)
+	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
+
+texi2html: texi2html.interm $(texi2html_formats)
+	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
 texi2html.spec: texi2html.spec.in configure
@@ -171,4 +179,4 @@ translations.pl: $(dist_i18n_DATA)
 html-local: texi2html
 
 clean-local:
-	-rm -f texi2html
+	-rm -f texi2html texi2html.interm

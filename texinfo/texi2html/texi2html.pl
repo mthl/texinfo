@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.287 2009-05-21 20:49:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.288 2009-05-22 18:50:28 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -194,6 +194,28 @@ my $MIN_LEVEL = 1;
 #                                                                             #
 #---###########################################################################
 
+my $my_command_name = $0;
+$my_command_name =~ s/.*\///;
+$my_command_name =~ s/\.pl$//;
+
+my $default_output_format;
+
+my %command_format = (
+ 'texi2html' => 'html',
+ 'makeinfo' => 'info',
+);
+
+if ($command_format{$my_command_name})
+{
+   #$DEFAULT_OUTPUT_FORMAT = $command_format{$my_command_name};
+   $default_output_format = $command_format{$my_command_name};
+}
+
+sub default_output_format()
+{
+   return $default_output_format;
+}
+
 {
 package Texi2HTML::Config;
 
@@ -202,6 +224,16 @@ use Config;
 sub load($) 
 {
     my $file = shift;
+    # FIXME temporary ugly hack. Otherwise the info related functions are
+    # redefined
+    foreach my $format('info', 'html', 'docbook', 'plaintext', 'xml')
+    {
+      if ($file =~ /\/$format\.init$/)
+      {
+         t2h_default_load_format($format);
+         return 1;
+      }
+    }
     eval { require($file) ;};
     if ($@ ne '')
     {
@@ -283,6 +315,7 @@ $PARAGRAPHINDENT
 $FIRSTPARAGRAPHINDENT
 $ENABLE_ENCODING
 $INTERNAL_LINKS
+$DEFAULT_OUTPUT_FORMAT
 );
 
 # customization variables
@@ -592,6 +625,8 @@ use vars qw(
 %eight_bit_to_unicode
 %t2h_encoding_aliases
 );
+
+$DEFAULT_OUTPUT_FORMAT = main::default_output_format();
 
 sub set_conf($$;$)
 {
@@ -1298,6 +1333,29 @@ require "$T2H_HOME/texi2html.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/texi2html.init" && -r "$T2H_HOME/texi2html.init");
 
+# @INIT_HTML@
+
+require "$T2H_HOME/formats/html.init" 
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/formats/html.init" && -r "$T2H_HOME/formats/html.init");
+
+# @INIT_INFO@
+
+require "$T2H_HOME/formats/info.init" 
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/formats/info.init" && -r "$T2H_HOME/formats/info.init");
+
+# @INIT_DOCBOOK@
+
+require "$T2H_HOME/formats/docbook.init"
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/formats/docbook.init" && -r "$T2H_HOME/formats/docbook.init");
+
+# @INIT_XML@
+
+require "$T2H_HOME/formats/xml.init"
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/formats/xml.init" && -r "$T2H_HOME/formats/xml.init");
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
 
@@ -2517,7 +2575,7 @@ $T2H_OPTIONS -> {'no-split'} =
  noHelp => 1,
 };
 
-$T2H_OPTIONS -> {'header'} =
+$T2H_OPTIONS -> {'headers'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
@@ -2783,6 +2841,24 @@ $T2H_OPTIONS -> {'monolithic'} =
  noHelp => 1
 };
 
+my %output_format_names = (
+  'info' => 'Info',
+  'html' => 'HTML',
+  'docbook' => 'Docbook XML',
+  'xml' => 'Texinfo XML',
+  'plaintext' => 'plain text',
+);
+
+foreach my $output_format (keys(%output_format_names))
+{
+  next if ($output_format eq $default_output_format);
+  $T2H_OPTIONS -> {$output_format} =
+  {
+    type => '',
+    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0]);},
+    verbose => "output $output_format_names{$output_format} rather than $output_format_names{$default_output_format}.",
+  }
+}
 
 ##
 ## obsolete cmd line options
@@ -3165,6 +3241,10 @@ if ($progdir && ($progdir ne './'))
 # evaluation of cmd line options
 #                                                                              #
 #---############################################################################
+
+# load the chosen format
+
+#Texi2HTML::Config::t2h_default_load_format('html');
 
 # set the default 'args' entry to normal for each style hash (and each command
 # within)
@@ -9122,7 +9202,8 @@ sub end_format($$$$$)
         add_prev($text, $stack, &$Texi2HTML::Config::float($format_ref->{'text'}, $state->{'float'}, $caption_text, $shortcaption_text));
         delete $state->{'float'};
     }
-    elsif (exists ($Texi2HTML::Config::complex_format_map->{$format}))
+    elsif (exists ($Texi2HTML::Config::complex_format_map->{$format}) and 
+        ($format_type{$format} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
     {
         $state->{'preformatted'}--;
         pop @{$state->{'preformatted_stack'}};
@@ -9447,7 +9528,8 @@ sub begin_format($$$$$$)
         push @$stack, { 'format' => 'deff_item', 'text' => '', 'only_inter_commands' => 1, 'format_ref' => $top_format, 'orig_command' => $orig_command};
         begin_paragraph_after_command($state, $stack, $macro, $line);
     }
-    elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
+    elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}) and
+        ($format_type{$macro} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
     { # handle menu if SIMPLE_MENU. see texi2html.init
         my $complex_format =  $Texi2HTML::Config::complex_format_map->{$macro};
         my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $complex_format->{'pre_style'} };

@@ -27,6 +27,33 @@ use strict;
 
 $Data::Dumper::Maxdepth = 12;
 
+sub info_default_load();
+
+if ($DEFAULT_OUTPUT_FORMAT eq 'info')
+{
+   info_default_load();
+}
+
+my %info_default_indented_commands;
+my %info_default_format;
+my %info_default_enable_encoding_accents;
+my @simple_quoted_commands;
+my @asis_commands;
+my @chevron_commands;
+my %info_default_accent_commands = ();
+my %info_default_leaf_command = ();
+my @info_default_normal_formats;
+my $info_default_end_sentence_character;
+my $info_default_after_punctuation_characters;
+my $info_default_indent_length;
+my %info_default_indent_format_length;
+my %default_info_level_to_symbol;
+my $info_default_index_length_to_node;
+my $info_default_listoffloat_caption_entry_length;
+my $info_default_listoffloat_append;
+
+sub info_default_load()
+{
 
 $USE_NODES = 1;
 $USE_SECTIONS = 0;
@@ -70,14 +97,14 @@ $misc_command{'indent'}->{'keep'} = 1;
 );
 
 # sc and var upcase.
-my @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
+@simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp');
 # slanted? 
-my @asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r', 
+@asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r', 
   'slanted', 'var', 'titlefont', 'verb', 'clickstyle');
-my @chevron_commands = ('key', 'indicateurl');
+@chevron_commands = ('key', 'indicateurl');
 
-my %info_default_accent_commands = ();
+%info_default_accent_commands = ();
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
@@ -119,7 +146,7 @@ $style_map{'emph'}->{'begin'} = '_';
 $style_map{'emph'}->{'end'} = '_';
 
 
-my %info_default_leaf_command = ();
+%info_default_leaf_command = ();
 foreach my $command ('uref', 'url', 'email', 'click')
 {
    $info_default_leaf_command{$command} = 1;
@@ -154,40 +181,41 @@ foreach my $command (keys(%style_map))
 }
 
 $special_list_commands{'itemize'} = {};
-my @info_default_normal_formats = ('table', 'vtable', 'ftable', 'enumerate',
+@info_default_normal_formats = ('table', 'vtable', 'ftable', 'enumerate',
    'itemize');
 foreach my $format (@info_default_normal_formats, 'group', 'cartouche')
 {
     $format_map{$format} = '';
 }
 
-my %info_default_indented_commands;
 foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
 
-my %info_default_format;
 foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'menu', 'flushright', 'flushleft', 'center')
 {
     $info_default_format{$command} = 1;
 } 
 
-$info_default_indented_commands{'format'} = 0;
-$info_default_indented_commands{'smallformat'} = 0;
+foreach my $non_indented_command('format', 'smallformat', 'menu', 
+  'detailmenu', 'direntry')
+{
+    $info_default_indented_commands{$non_indented_command} = 0;
+}
 
-my $info_default_end_sentence_character = quotemeta($punctuation_characters);
-my $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
-my $info_default_indent_length = 5;
+$info_default_end_sentence_character = quotemeta($punctuation_characters);
+$info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
+$info_default_indent_length = 5;
 
-my %info_default_indent_format_length = ('enumerate' => 2,
+%info_default_indent_format_length = ('enumerate' => 2,
     'itemize' => 3,
     'table' => 0,
     'vtable' => 0,
     'ftable' => 0,
  );
 
-my %default_info_level_to_symbol = (
+%default_info_level_to_symbol = (
   0 => '*',
   1 => '*',
   2 => '=',
@@ -195,14 +223,14 @@ my %default_info_level_to_symbol = (
   4 => '.'
 );
 
-my $info_default_index_length_to_node = 41;
+$info_default_index_length_to_node = 41;
 
-my $info_default_listoffloat_caption_entry_length = 41;
-my $info_default_listoffloat_append = '...:    ';
+$info_default_listoffloat_caption_entry_length = 41;
+$info_default_listoffloat_append = '...:    ';
 
 push @command_handler_init, \&info_default_init_accent_enable_encoding;
+push @command_handler_init, \&info_default_init_variables;
 
-my %info_default_enable_encoding_accents;
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
@@ -272,6 +300,8 @@ $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
 $element_file_name  = \&info_default_element_file_name;
 
+}
+
 # FIXME initialize
 my %info_default_state_map = ();
 my $info_default_out_file_nr = 1;
@@ -284,6 +314,21 @@ my %info_default_index_line_string_length = ();
 my %info_default_index_entries = ();
 my $info_default_footnote_index = 0;
 my $info_default_current_node = undef;
+
+sub info_default_init_variables()
+{
+   %info_default_state_map = ();
+   $info_default_out_file_nr = 1;
+   $info_default_dir_specification = '';
+   @info_default_pending_indirect = ();
+   @info_default_pending_footnotes = ();
+   $info_default_state_nr = 0;
+
+   %info_default_index_line_string_length = ();
+   %info_default_index_entries = ();
+   $info_default_footnote_index = 0;
+   $info_default_current_node = undef;
+}
 
 # this is put in command_handler_init such that it sets things right
 # in case $ENABLE_ENCODING is set and haslead to modification of the 
@@ -1873,7 +1918,7 @@ sub info_default_empty_preformatted($)
 {
     my $text = shift;
     my $result = info_default_preformatted($text, undef, undef, undef, undef,
-            undef, undef, undef, undef);
+            undef, undef, undef, undef, undef, undef, undef);
     return 0;
 }
 

@@ -1,5 +1,16 @@
 use strict;
 
+my @xml_multitable_stack = ();
+my @xml_table_stack = ();
+
+my @xml_ignored_misc_commands;
+my %xml_misc_elements_with_arg_map;
+my @xml_misc_elements_with_arg;
+my %def_format_xml; 
+
+sub xml_default_load()
+{
+
 $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">';
 $USE_MENU_DIRECTIONS = 0;
@@ -83,6 +94,11 @@ foreach my $complex_format (keys(%$complex_format_map))
    $complex_format_map->{$complex_format}->{'end'} = "\"</$complex_format>\"";
    $complex_format_map->{$complex_format}->{'style'} = $style if (defined($style));
 }
+foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
+{
+  $complex_format_map->{$menu_command} = undef;
+  delete $complex_format_map->{$menu_command};
+}
 
 delete $iso_symbols{'`'};
 delete $iso_symbols{"'"};
@@ -102,70 +118,11 @@ $special_accents{'ogonek'} = 'aeiuAEIU';
 
 %style_map_pre = %style_map;
 
-sub xml_macron($$)
-{
-    my $accent = shift;
-    my $args = shift;
-    return $args->[0] . "&macr;";
-}
-
-sub xml_email($$)
-{
-    my $command = shift;
-    my $args = shift;
-    my $mail = shift @$args;
-    my $text = shift @$args;
-    $mail = main::normalise_space($mail);
-    my $result = "<email><emailaddress>$mail</emailaddress>";
-    if (defined($text) and $text =~ /\S/)
-    {
-        $result .= "<emailname>".main::normalise_space($text)."</emailname>";
-    }
-    return $result . '</email>';
-}
-
-sub xml_uref($$)
-{
-    shift;
-    my $args = shift;
-    my $url = shift @$args;
-    my $text = shift @$args;
-    my $replacement = shift @$args;
-    $url = main::normalise_space($url);
-    $replacement = '' if (!defined($replacement));
-    $replacement = main::normalise_space($replacement);
-    $text = '' if (!defined($text));
-    $text = main::normalise_space($text);
-    my $result = "<uref><urefurl>$url</urefurl>";
-    $result .= "<urefdesc>$text</urefdesc>" if ($text ne '');
-    $result .= "<urefreplacement>$replacement</urefreplacement>" if ($replacement ne '');
-    return $result.'</uref>';
-}
-
-
-sub xml_titlefont($$)
-{
-    shift;
-    my $args = shift;
-    return "<titlefont>$args->[0]</ititlefont>" if ($args->[0] =~ /\S/);
-    return '';
-}
-
-sub xml_math($$)
-{
-    shift;
-    my $args = shift;
-    my $text = shift @$args;
-    $text =~ s/[{}]//g;
-    return "<math>$text</math>";
-}
-
-
 $no_paragraph_commands{'cindex'} = 0;
 
 #my @xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude');
 
-my @xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude', 'clickstyle', 
+@xml_ignored_misc_commands = ('bye', 'sp', 'verbatiminclude', 'clickstyle', 
   'defcodeindex',
   'syncodeindex', 'paragraphindent', 'shorttitlepage', 'refill', 'noindent');
 
@@ -244,6 +201,90 @@ $about_body = \&xml_noop;
 $print_page_foot = \&xml_print_page_foot;
 $end_section = \&xml_end_section;
 $one_section = \&xml_one_section;
+
+%xml_misc_elements_with_arg_map = (
+  'title'     => 'booktitle',
+  'subtitle'  => 'booksubtitle'
+);
+
+@xml_misc_elements_with_arg = ('author',
+  'dircategory', 'settitle');
+#my @xml_misc_elements_with_arg = ('author', 'shorttitlepage',
+#  'vskip', 'dircategory', 'settitle');
+
+%def_format_xml = (
+  'deffn' => [ ['category', 'category'], ['function', 'name'] ],
+   'defvr' => [ ['category', 'category'], ['variable', 'name'] ],
+   'deftypefn' => [ ['category', 'category'], ['type', 'type'], ['function', 'name'] ], 
+   'deftypeop' => [ ['category', 'category'], ['type', 'type'], ['operation', 'name'] ], 
+   'deftypevr' => [ ['category', 'category'], ['type', 'type'], ['variable', 'name'] ], 
+   'defcv' => [ ['category' , 'category'], ['class', 'class'], ['classvar', 'name'] ], 
+   'deftypecv' => [ ['category', 'category'], ['type', 'type'], ['classvar', 'name'] ], 
+   'defop' => [ ['category', 'category'], ['class', 'class'], ['operation', 'name'] ], 
+   'deftp' => [ ['category', 'category'], ['datatype', 'name'] ] 
+);
+
+
+}
+
+sub xml_macron($$)
+{
+    my $accent = shift;
+    my $args = shift;
+    return $args->[0] . "&macr;";
+}
+
+sub xml_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    my $result = "<email><emailaddress>$mail</emailaddress>";
+    if (defined($text) and $text =~ /\S/)
+    {
+        $result .= "<emailname>".main::normalise_space($text)."</emailname>";
+    }
+    return $result . '</email>';
+}
+
+sub xml_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    $url = main::normalise_space($url);
+    $replacement = '' if (!defined($replacement));
+    $replacement = main::normalise_space($replacement);
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    my $result = "<uref><urefurl>$url</urefurl>";
+    $result .= "<urefdesc>$text</urefdesc>" if ($text ne '');
+    $result .= "<urefreplacement>$replacement</urefreplacement>" if ($replacement ne '');
+    return $result.'</uref>';
+}
+
+
+sub xml_titlefont($$)
+{
+    shift;
+    my $args = shift;
+    return "<titlefont>$args->[0]</ititlefont>" if ($args->[0] =~ /\S/);
+    return '';
+}
+
+sub xml_math($$)
+{
+    shift;
+    my $args = shift;
+    my $text = shift @$args;
+    $text =~ s/[{}]//g;
+    return "<math>$text</math>";
+}
+
 
 sub xml_menu_description($$$)
 {
@@ -479,16 +520,6 @@ sub xml_preformatted($$$$$$$$$$$$)
 
     return $text;
 }
-
-my %xml_misc_elements_with_arg_map = (
-  'title'     => 'booktitle',
-  'subtitle'  => 'booksubtitle'
-);
-
-my @xml_misc_elements_with_arg = ('author',
-  'dircategory', 'settitle');
-#my @xml_misc_elements_with_arg = ('author', 'shorttitlepage',
-#  'vskip', 'dircategory', 'settitle');
 
 sub xml_misc_commands($$$$$)
 {
@@ -738,9 +769,6 @@ sub xml_list_item($$$$$$$$$)
     return '<item>' . $text . "</item>\n";
 }
 
-my @xml_multitable_stack = ();
-my @xml_table_stack = ();
-
 sub xml_init_variables()
 {
    @xml_multitable_stack = ();
@@ -878,18 +906,6 @@ sub xml_begin_format_texi($$$)
     push (@xml_table_stack, 0) if ($command =~ /^(v|f)?table/);
     return $line;
 }
-
-my %def_format_xml = (
-  'deffn' => [ ['category', 'category'], ['function', 'name'] ],
-   'defvr' => [ ['category', 'category'], ['variable', 'name'] ],
-   'deftypefn' => [ ['category', 'category'], ['type', 'type'], ['function', 'name'] ], 
-   'deftypeop' => [ ['category', 'category'], ['type', 'type'], ['operation', 'name'] ], 
-   'deftypevr' => [ ['category', 'category'], ['type', 'type'], ['variable', 'name'] ], 
-   'defcv' => [ ['category' , 'category'], ['class', 'class'], ['classvar', 'name'] ], 
-   'deftypecv' => [ ['category', 'category'], ['type', 'type'], ['classvar', 'name'] ], 
-   'defop' => [ ['category', 'category'], ['class', 'class'], ['operation', 'name'] ], 
-   'deftp' => [ ['category', 'category'], ['datatype', 'name'] ] 
-);
 
 sub xml_def_line($$$$$$$$$$$$$$$)
 {

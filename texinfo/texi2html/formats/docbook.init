@@ -23,6 +23,24 @@
 
 use strict;
 
+my %docbook_complex_format;
+my $kept_footnote_function;
+my $docbook_in_footnote;
+my %docbook_sections;
+my %def_format_docbook;
+my %def_argument_types_docbook;
+
+my $docbook_pending_node_id;
+my @docbook_multitable_stack = ();
+my @docbook_table_stack = ();
+my @docbook_special_quotation;
+
+
+sub docbook_default_load()
+{
+
+html_default_load();
+
 $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY tex "TeX">
@@ -83,7 +101,7 @@ delete $style_map{'samp'}->{'attribute'};
 #$style_map{'samp'}->{'begin'} = '&lsquo;';
 #$style_map{'samp'}->{'end'} = '&rsquo;';
 
-my $kept_footnote_function = $style_map{'footnote'}->{'function'};
+$kept_footnote_function = $style_map{'footnote'}->{'function'};
 $style_map{'footnote'}->{'function'} = \&docbook_footnote;
 
 #use Data::Dumper;
@@ -125,77 +143,6 @@ foreach my $style (keys(%style_map))
    delete ($style_map{$style}->{'quote'});
 }
 
-my $docbook_in_footnote;
-sub docbook_footnote($$$$$)
-{
-    $docbook_in_footnote = 1;
-    my $result = &$kept_footnote_function(@_);
-    $docbook_in_footnote = 0;
-    return $result;
-}
-
-sub docbook_macron($$)
-{
-    my $accent = shift;
-    my $args = shift;
-    return $args->[0] . "&macr;";
-}
-
-sub docbook_samp($$)
-{
-    shift;
-    my $args = shift;
-    return "&lsquo;<literal>$args->[0]</literal>&rsquo;";
-}
-
-sub docbook_email($$)
-{
-    my $command = shift;
-    my $args = shift;
-    my $mail = shift @$args;
-    my $text = shift @$args;
-    $mail = main::normalise_space($mail);
-    if (defined($text) and $text =~ /\S/)
-    {
-        return docbook_add_id('ulink').' url="mailto:'.main::normalise_space($mail).'">'.$text.'</ulink>';
-    }
-    return docbook_add_id('email').">$mail</email>";
-}
-
-sub docbook_uref($$)
-{
-    shift;
-    my $args = shift;
-    my $url = shift @$args;
-    my $text = shift @$args;
-    my $replacement = shift @$args;
-    $url = main::normalise_space($url);
-    $text = '' if (!defined($text));
-    $replacement = '' if (!defined($replacement));
-    $replacement = $text if ($replacement eq '');
-    $replacement = $url if ($replacement eq '');
-    $replacement = main::normalise_space($replacement);
-    
-    return docbook_add_id('ulink')." url=\"$url\">$replacement</ulink>";
-}
-
-# FIXME
-sub docbook_titlefont($$)
-{
-    shift;
-    my $args = shift;
-    return "$args->[0]";
-}
-
-sub docbook_math($$)
-{
-    shift;
-    my $args = shift;
-    my $text = shift @$args;
-    $text =~ s/[{}]//g;
-    return $text;
-}
-
 $simple_map{' '} = ' ';
 # or '' ?
 $simple_map{'*'} = "\n";
@@ -227,7 +174,7 @@ $things_map{'quotesinglbase'} = '&lsquor;';
 #$no_paragraph_commands{'cindex'} = 0;
 $no_paragraph_commands{'float'} = 0;
 
-my %docbook_complex_format = (
+%docbook_complex_format = (
    'example' => 'screen',
    'smallexample' => 'screen',
    'display' => 'literallayout',
@@ -237,6 +184,42 @@ my %docbook_complex_format = (
    'format' => 'abstract',
    'smallformat' => 'screen'
 );
+
+%docbook_sections = (
+  'top'  => 'chapter',
+  'chapter'  => 'chapter',
+  'unnumbered'  => 'chapter',
+  'centerchap'  => 'chapter',
+  'appendix' => 'appendix',
+  'majorheading' => 'other',
+  'chapheading' => 'other',
+  'heading' => 'sect1',
+  'subheading' => 'sect2',
+  'subsubheading' => 'sect3',
+  2 => 'sect1',
+  3 => 'sect2',
+  4 => 'sect3'
+);
+
+%def_format_docbook = (
+  'deffn' => [ ['function', 'name'] ],
+   'defvr' => [ ['varname', 'name'] ],
+   'deftypefn' => [ [ 'returnvalue', 'type' ], ['function', 'name'] ], 
+   'deftypeop' => [ ['returnvalue', 'type'], ['methodname', 'name'] ], 
+   'deftypevr' => [ ['returnvalue', 'type'], ['varname', 'name'] ], 
+   'defcv' => [ ['classname', 'class'], ['property', 'name'] ], 
+   'deftypecv' => [ ['returnvalue', 'type'], ['property', 'name'] ], 
+   'defop' => [ ['classname', 'class'], ['methodname', 'name'] ], 
+   'deftp' => [ ['structname', 'name'] ] 
+);
+
+%def_argument_types_docbook = (
+  'param' => 'replaceable', 
+  'paramtype' => 'type', 
+  'delimiter' => ''
+);
+
+@docbook_special_quotation = ('note', 'caution', 'important', 'tip', 'warning');
 
 $region_formats_kept{'copying'} = 1;
 
@@ -307,6 +290,79 @@ $quotation_prepend_text = \&docbook_quotation_prepend_text;
 $style = \&docbook_style;
 $insertcopying = \&docbook_insertcopying;
 
+}
+
+sub docbook_footnote($$$$$)
+{
+    $docbook_in_footnote = 1;
+    my $result = &$kept_footnote_function(@_);
+    $docbook_in_footnote = 0;
+    return $result;
+}
+
+sub docbook_macron($$)
+{
+    my $accent = shift;
+    my $args = shift;
+    return $args->[0] . "&macr;";
+}
+
+sub docbook_samp($$)
+{
+    shift;
+    my $args = shift;
+    return "&lsquo;<literal>$args->[0]</literal>&rsquo;";
+}
+
+sub docbook_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    if (defined($text) and $text =~ /\S/)
+    {
+        return docbook_add_id('ulink').' url="mailto:'.main::normalise_space($mail).'">'.$text.'</ulink>';
+    }
+    return docbook_add_id('email').">$mail</email>";
+}
+
+sub docbook_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    $url = main::normalise_space($url);
+    $text = '' if (!defined($text));
+    $replacement = '' if (!defined($replacement));
+    $replacement = $text if ($replacement eq '');
+    $replacement = $url if ($replacement eq '');
+    $replacement = main::normalise_space($replacement);
+    
+    return docbook_add_id('ulink')." url=\"$url\">$replacement</ulink>";
+}
+
+# FIXME
+sub docbook_titlefont($$)
+{
+    shift;
+    my $args = shift;
+    return "$args->[0]";
+}
+
+sub docbook_math($$)
+{
+    shift;
+    my $args = shift;
+    my $text = shift @$args;
+    $text =~ s/[{}]//g;
+    return $text;
+}
+
+
 sub docbook_print_page_head($)
 {
     my $fh = shift;
@@ -331,22 +387,6 @@ End:
 -->
 EOT
 }
-
-my %docbook_sections = (
-  'top'  => 'chapter',
-  'chapter'  => 'chapter',
-  'unnumbered'  => 'chapter',
-  'centerchap'  => 'chapter',
-  'appendix' => 'appendix',
-  'majorheading' => 'other',
-  'chapheading' => 'other',
-  'heading' => 'sect1',
-  'subheading' => 'sect2',
-  'subsubheading' => 'sect3',
-  2 => 'sect1',
-  3 => 'sect2',
-  4 => 'sect3'
-);
 
 sub docbook_print_Top($$$)
 {
@@ -373,9 +413,6 @@ sub docbook_node_id($)
    return &$protect_text($node);
 }
 
-my $docbook_pending_node_id;
-my @docbook_multitable_stack = ();
-my @docbook_table_stack = ();
 sub docbook_initialize_variables()
 {
     $docbook_pending_node_id = undef;
@@ -514,23 +551,6 @@ sub docbook_paragraph($$$$$$$$$$$$)
     return $text;
 }
 
-my %def_format_docbook = (
-  'deffn' => [ ['function', 'name'] ],
-   'defvr' => [ ['varname', 'name'] ],
-   'deftypefn' => [ [ 'returnvalue', 'type' ], ['function', 'name'] ], 
-   'deftypeop' => [ ['returnvalue', 'type'], ['methodname', 'name'] ], 
-   'deftypevr' => [ ['returnvalue', 'type'], ['varname', 'name'] ], 
-   'defcv' => [ ['classname', 'class'], ['property', 'name'] ], 
-   'deftypecv' => [ ['returnvalue', 'type'], ['property', 'name'] ], 
-   'defop' => [ ['classname', 'class'], ['methodname', 'name'] ], 
-   'deftp' => [ ['structname', 'name'] ] 
-);
-
-my %def_argument_types_docbook = (
-  'param' => 'replaceable', 
-  'paramtype' => 'type', 
-  'delimiter' => ''
-);
 
 sub docbook_def_line($$$$$$$$$$$$$$$)
 {
@@ -1388,8 +1408,6 @@ sub docbook_format($$)
     }
     return docbook_add_id($format_map{$name}).'>' .$text."</$format_map{$name}>";
 }
-
-my @docbook_special_quotation = ('note', 'caution', 'important', 'tip', 'warning');
 
 sub docbook_quotation_prepend_text($$)
 {
