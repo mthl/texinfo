@@ -39,8 +39,6 @@ my @docbook_special_quotation;
 sub docbook_default_load()
 {
 
-html_default_load();
-
 $EXTENSION = "xml";
 $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY tex "TeX">
@@ -279,6 +277,7 @@ $float = \&docbook_float;
 #$caption_shortcaption = \&docbook_caption_shortcaption;
 #$caption_shortcaption_command = \&docbook_caption_shortcaption_command;
 $normal_text = \&docbook_normal_text;
+$protect_text = \&xml_default_protect_text;
 #$paragraph_style_command = \&docbook_paragraph_style_command;
 $raw = \&docbook_raw;
 $cartouche = \&docbook_cartouche;

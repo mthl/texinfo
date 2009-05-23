@@ -101,7 +101,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         fi
         cp -r "$out_dir/$dir/"* "$res_dir/$dir/"
         rm -f "$res_dir/$dir/"*.png "$res_dir/$dir/"*_l2h.css
-        [ z"$do_info" = z'yes' ] && rm "$res_dir/$dir/$basename.2"
+        #[ z"$do_info" = z'yes' ] && rm "$res_dir/$dir/$basename.2"
       else
         echo "No dir $out_dir/$dir" 1>&2
       fi
@@ -205,9 +205,9 @@ do
       rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"
     fi
     if [ -d "$results_dir/$dir" ]; then
-      exclude_info=
-      [ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
-      diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' $exclude_info -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
+      #exclude_info=
+      #[ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
+      diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"

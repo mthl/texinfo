@@ -3090,8 +3090,6 @@ Index
  [index ]
 * Menu:
 
-* `commitinfo':                          commitinfo.          (line   6)
-* `verifymsg' (admin file):              verifymsg.           (line   6)
 * !, in modules file:                    Excluding directories.
                                                               (line   6)
 * #cvs.lock, removing:                   Concurrency.         (line  11)
@@ -3103,10 +3101,6 @@ Index
 * #cvs.wfl, removing:                    Concurrency.         (line  11)
 * #cvs.wfl, technical details:           Locks.               (line   6)
 * &, in modules file:                    Ampersand modules.   (line   6)
-* `verifymsg', changing the log message: verifymsg.           (line  31)
-* `verifymsg', changing the log message: config.              (line  67)
-* `commitinfo', command environment:     commitinfo.          (line  30)
-* `commitinfo', working directory:       commitinfo.          (line  30)
 * -a, in modules file:                   Alias modules.       (line   6)
 * -d, in modules file:                   Module options.      (line   9)
 * -e, in modules file:                   Module options.      (line  12)
@@ -3153,6 +3147,12 @@ Index
 * =======:                               Conflicts example.   (line  96)
 * >>>>>>>:                               Conflicts example.   (line  96)
 * __ files (VMS):                        update output.       (line  49)
+* `commitinfo':                          commitinfo.          (line   6)
+* `commitinfo', command environment:     commitinfo.          (line  30)
+* `commitinfo', working directory:       commitinfo.          (line  30)
+* `verifymsg' (admin file):              verifymsg.           (line   6)
+* `verifymsg', changing the log message: verifymsg.           (line  31)
+* `verifymsg', changing the log message: config.              (line  67)
 * Abandoning work:                       Editing files.       (line  33)
 * Access a branch:                       Accessing branches.  (line   6)
 * add (subcommand):                      Adding files.        (line  29)
@@ -3365,9 +3365,9 @@ Index
 * Dates:                                 Common options.      (line  18)
 * Dead state:                            Attic.               (line  17)
 * Decimal revision number:               Revision numbers.    (line   6)
-* DEFAULT in `verifymsg':                verifymsg.           (line  25)
 * DEFAULT in commitinfo:                 commitinfo.          (line  23)
 * DEFAULT in editinfo:                   editinfo.            (line  38)
+* DEFAULT in `verifymsg':                verifymsg.           (line  25)
 * Defining a module:                     Defining the module. (line   6)
 * Defining modules (intro):              Intro administrative files.
                                                               (line   6)
@@ -3427,12 +3427,12 @@ Index
 * Example, branch merge:                 Merging a branch.    (line  15)
 * Excluding directories, in modules file: Excluding directories.
                                                               (line   6)
-* Exit status, of `verifymsg':           verifymsg.           (line  28)
 * Exit status, of commitinfo:            commitinfo.          (line  19)
 * Exit status, of CVS:                   Exit status.         (line   6)
 * Exit status, of editor:                Error messages.      (line 297)
 * Exit status, of taginfo:               user-defined logging.
                                                               (line  19)
+* Exit status, of `verifymsg':           verifymsg.           (line  28)
 * export (subcommand):                   export.              (line   6)
 * Export program:                        Module options.      (line  12)
 * Fetching source:                       Getting the source.  (line   6)

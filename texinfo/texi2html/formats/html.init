@@ -6,11 +6,13 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.1 2009-05-22 18:50:29 pertusus Exp $
+# $Id: html.init,v 1.2 2009-05-23 17:09:39 pertusus Exp $
 
 use strict;
 
-if ($DEFAULT_OUTPUT_FORMAT eq 'html')
+sub html_default_load();
+
+if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'html')
 {
    html_default_load();
 }
@@ -345,59 +347,58 @@ $USE_LINKS = 0;
 
 $ICONS = 0;
 
-# insert here name of icon images for buttons
-# Icons are used, if $ICONS and resp. value are set
-%ACTIVE_ICONS =
-    (
-     'Top',         '',
-     'Contents',    '',
-     'Overview',    '',
-     'Index',       '',
-     'This',        '',
-     'Back',        '',
-     'FastBack',    '',
-     'Prev',        '',
-     'Up',          '',
-     'Next',        '',
-     'NodeUp',      '',
-     'NodeNext',    '',
-     'NodePrev',    '',
-     'Following',   '',
-     'Forward',     '',
-     'FastForward', '',
-     'About' ,      '',
-     'First',       '',
-     'Last',        '',
-     'NextFile',    '',
-     'PrevFile',    '',
-     ' ',           '',
-    );
+%BUTTONS_ACCESSKEY =
+(
+ 'Top',         '',
+ 'Contents',    '',
+ 'Overview',    '',
+ 'Index',       '',
+ 'This',        '',
+ 'Back',        'p',
+ 'FastBack',    '',
+ 'Prev',        'p',
+ 'Up',          'u',
+ 'Next',        'n',
+ 'NodeUp',      'u',
+ 'NodeNext',    'n',
+ 'NodePrev',    'p',
+ 'Following',   '',
+ 'Forward',     'n',
+ 'FastForward', '',
+ 'About' ,      '',
+ 'First',       '',
+ 'Last',        '',
+ 'NextFile',    '',
+ 'PrevFile',    '',
+);
 
-# insert here name of icon images for these, if button is inactive
-%PASSIVE_ICONS =
-    (
-     'Top',         '',
-     'Contents',    '',
-     'Overview',    '',
-     'Index',       '',
-     'This',        '',
-     'Back',        '',
-     'FastBack',    '',
-     'Prev',        '',
-     'Up',          '',
-     'Next',        '',
-     'NodeUp',      '',
-     'NodeNext',    '',
-     'NodePrev',    '',
-     'Following',   '',
-     'Forward',     '',
-     'FastForward', '',
-     'About',       '',
-     'First',       '',
-     'Last',        '',
-     'NextFile',    '',
-     'PrevFile',    '',
-    );
+# see http://www.w3.org/TR/REC-html40/types.html#type-links
+%BUTTONS_REL =
+(
+ 'Top',         'start',
+ 'Contents',    'contents',
+ 'Overview',    '',
+ 'Index',       'index',
+ 'This',        '',
+ 'Back',        'previous',
+ 'FastBack',    '',
+ 'Prev',        'previous',
+ 'Up',          'up',
+ 'Next',        'next',
+ 'NodeUp',      'up',
+ 'NodeNext',    'next',
+ 'NodePrev',    'previous',
+ 'Following',   '',
+ 'Forward',     'next',
+ 'FastForward', '',
+ 'About' ,      'help',
+ 'First',       '',
+ 'Last',        '',
+ 'NextFile',    'next',
+ 'PrevFile',    'previous',
+);
+
+
 
 # PRE_ABOUT can be a function reference or a scalar.
 # Note that if it is a scalar, T2H_InitGlobals has not been called,
@@ -448,6 +449,7 @@ $AFTER_ABOUT = '';
 $BODYTEXT = undef;
 
 $init_out    = \&html_default_init_out;
+$translate_names = \&html_default_translate_names;
 
 
 ########################################################################
@@ -547,11 +549,9 @@ $print_navigation	      = \&HTML_DEFAULT_print_navigation;
 $about_body		      = \&HTML_DEFAULT_about_body;
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
-#$toc_body                 = \&HTML_DEFAULT_toc_body;
+$toc_body                 = \&HTML_DEFAULT_toc_body;
 $titlepage                 = \&HTML_DEFAULT_titlepage;
-$css_lines                 = \&HTML_DEFAULT_css_lines;
 $print_redirection_page    = \&HTML_DEFAULT_print_redirection_page;
-$node_file_name            = \&HTML_DEFAULT_node_file_name;
 $inline_contents           = \&HTML_DEFAULT_inline_contents;
 
 ########################################################################
@@ -673,28 +673,6 @@ $pre_map{'dots'} = '...';
 $pre_map{'enddots'} = '...';
 #$pre_map{'br'} = "\n";
 
-# symbols used for the commands if $USE_ISO is true.
-%iso_symbols = (
-         'equiv'     => '&equiv;',
-         'dots'      => '&hellip;',
-         'bullet'    => '&bull;',
-         'result'    => '&rArr;',
-         'expansion' => '&rarr;',
-         'arrow'     => '&rarr;',
-         'point'     => '&lowast;',
-         "'"         => '&rsquo;',
-         '`'         => '&lsquo;',
-        );
-
-# on bug-texinfo verified that code_style shouldn't be used for anything
-# else than node.
-# anyway it doesn't make sense since the section name normally formatted
-# is used
-#%format_code_style = (
-#  'menu_name' => 1,
-#  'menu_description' => 1
-#);
-
 # default is {'args' => ['normal'], 'attribute' => ''},   
 my %style_map_html = (
       'b',          {'attribute' => 'b'},
@@ -758,6 +736,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
      $style_map{$accent_command} = { 'function' => \&html_default_accent };
      $style_map_texi{$accent_command} = { 'function' => \&t2h_default_ascii_accent };
+     $style_map_pre{$accent_command} = { 'function' => \&html_default_accent };
 }
 
 $style_map_pre{'sc'} = {};
@@ -912,9 +891,6 @@ $def               = \&html_default_def;
 $menu_command      = \&html_default_menu_command;
 $menu_link         = \&html_default_menu_link;
 $menu_description  = \&html_default_menu_description;
-$external_ref      = \&html_default_external_ref;
-$external_href     = \&html_default_external_href;
-$internal_ref      = \&html_default_internal_ref;
 $table_item        = \&html_default_table_item;
 $table_line        = \&html_default_table_line;
 $table_list        = \&html_default_table_list;
@@ -940,13 +916,10 @@ $index_entry_command = \&html_default_index_entry_command;
 $index_letter      = \&html_default_index_letter;
 #$printindex       = \&html_default_printindex;
 $print_index       = \&html_default_print_index;
-$protect_text      = \&html_default_protect_text;
 $normal_text       = \&html_default_normal_text;
 $complex_format    = \&html_default_complex_format;
 $cartouche         = \&html_default_cartouche;
 $sp                = \&html_default_sp;
-$copying_comment          = \&html_default_copying_comment;
-$documentdescription      = \&html_default_documentdescription;
 $empty_line               = \&html_default_empty_line;
 $caption_shortcaption     = \&html_default_caption_shortcaption;
 $caption_shortcaption_command  = \&html_default_caption_shortcaption_command;
@@ -967,6 +940,7 @@ $tab_item_texi              = \&html_default_tab_item_texi;
 $insertcopying              = \&html_default_insertcopying;
 $line_command               = \&html_default_line_command;
 
+$protect_text      = \&xml_default_protect_text;
 }
 
 my  @html_default_multitable_stack;
@@ -992,6 +966,38 @@ sub html_default_init_out()
     {
         $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
     }
+}
+
+sub html_default_translate_names()
+{
+    t2h_default_translate_names();
+
+    %NAVIGATION_TEXT =
+    (
+     'Top',         &$I('Top'),
+     'Contents',    &$I('Contents'),
+     'Overview',    &$I('Overview'),
+     'Index',       &$I('Index'),
+     ' ',           ' &nbsp; ',
+     'This',        &$I('current'),
+     'Back',        ' &lt; ',
+     'FastBack',    ' &lt;&lt; ',
+     'Prev',        &$I('Prev'),
+     'Up',          &$I(' Up '),
+     'Next',        &$I('Next'),
+     'NodeUp',      &$I('Node up'),
+     'NodeNext',    &$I('Next node'),
+     'NodePrev',    &$I('Previous node'),
+     'Following',   &$I('Following node'),
+     'Forward',     ' &gt; ',
+     'FastForward', ' &gt;&gt; ',
+     'About',       ' ? ',
+     'First',       ' |&lt; ',
+     'Last',        ' &gt;| ',
+     'NextFile',    &$I('Next file'),
+     'PrevFile',    &$I('Previous file'),
+    );
+
 }
 
 ########################################################################
@@ -1568,41 +1574,6 @@ EOT
     print $fh "</body></html>\n";
 }
 
-# This subroutine is intended to fill @Texi2HTML::TOC_LINES and 
-# @Texi2HTML::OVERVIEW with the table of contents and short table of
-# contents.
-#
-# arguments:
-# ref on an array containing all the elements
-
-# each element is a reference on a hash. The following keys might be of
-# use:
-# 'top': true if this is the top element
-# 'toc_level': level of the element in the table of content. Highest level
-#              is 1 for the @top element and for chapters, appendix and so on,
-#              2 for section, unnumberedsec and so on... 
-# 'tocid': label used for reference linking to the element in table of
-#          contents
-# 'file': the file containing the element, usefull to do href to that file
-#         in case the document is split.
-# 'text': text of the element, with section number
-# 'text_nonumber': text of the element, without section number
-
-# Relevant configuration variables are:
-# $NUMBER_SECTIONS
-# $NO_BULLET_LIST_ATTRIBUTE: usefull in case a list is used
-# $FRAMES: @Texi2HTML::OVERVIEW is used in one of the frames. 
-# $BEFORE_OVERVIEW
-# $AFTER_OVERVIEW
-# $BEFORE_TOC_LINES
-# $AFTER_TOC_LINES
-# $CONTENTS
-# $SHORTCONTENTS
-
-sub HTML_DEFAULT_toc_body($)
-{
-}
-
 sub HTML_DEFAULT_inline_contents($$$)
 {
     my $fh = shift;
@@ -1631,33 +1602,6 @@ sub HTML_DEFAULT_inline_contents($$$)
     }
 
     return $result;
-}
-
-sub HTML_DEFAULT_css_lines ($$)
-{
-    my $import_lines = shift;
-    my $rule_lines = shift;
-#    return if (defined($CSS_LINES) or (!@$rule_lines and !@$import_lines and (! keys(%css_map))));
-    if (defined($CSS_LINES))
-    { # if predefined, use CSS_LINES.
-       $Texi2HTML::THISDOC{'CSS_LINES'} = $CSS_LINES;
-       return;
-    }
-    return if (!@$rule_lines and !@$import_lines and (! keys(%css_map)));
-    my $css_lines = "<style type=\"text/css\">\n<!--\n";
-    $css_lines .= join('',@$import_lines) . "\n" if (@$import_lines);
-    foreach my $css_rule (sort(keys(%css_map)))
-    {
-        next unless ($css_map{$css_rule});
-        $css_lines .= "$css_rule {$css_map{$css_rule}}\n";
-    }
-    $css_lines .= join('',@$rule_lines) . "\n" if (@$rule_lines);
-    $css_lines .= "-->\n</style>\n";
-    foreach my $ref (@CSS_REFS)
-    {
-        $css_lines .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
-    }
-    $Texi2HTML::THISDOC{'CSS_LINES'} = $css_lines;
 }
 
 ######################################################################
@@ -1834,40 +1778,6 @@ $AFTER_BODY_OPEN
 <p>$string</p>
 </body>
 EOT
-}
-
-sub HTML_DEFAULT_node_file_name($$)
-{
-    my $node = shift;
-    my $type = shift;
-    return undef if ($node->{'external_node'}
-       or ($type eq 'top' and !$NEW_CROSSREF_STYLE));
-    my $node_file_base;
-    if ($type eq 'top' and defined($TOP_NODE_FILE))
-    {
-        $node_file_base = $TOP_NODE_FILE;
-    }
-    elsif ($NEW_CROSSREF_STYLE)
-    {
-        if ($TRANSLITERATE_NODE)
-        {
-            $node_file_base = $node->{'cross_manual_file'};
-        }
-        else
-        {
-            $node_file_base = $node->{'cross_manual_target'};
-        }
-    }
-    else
-    {
-         $node_file_base = main::remove_texi($node->{'texi'});
-         $node_file_base =~ s/[^\w\.\-]/-/g;
-    }
-    if (defined($NODE_FILE_EXTENSION) and $NODE_FILE_EXTENSION ne '')
-    {
-        return ($node_file_base . ".$NODE_FILE_EXTENSION");
-    }
-    return $node_file_base;
 }
 
 sub html_default_accent($$)
@@ -2198,21 +2108,6 @@ sub html_default_insertcopying($$$)
     return $text;
 }
 
-# This function is used to protect characters which are special in html 
-# in inline text:  &, ", <, and >. 
-#
-# argument:
-# text to be protected
-sub html_default_protect_text($)
-{
-   my $text = shift;
-   $text =~ s/&/&amp;/g;
-   $text =~ s/</&lt;/g;
-   $text =~ s/>/&gt;/g;
-   $text =~ s/\"/&quot;/g;
-   return $text;
-}
-
 sub html_default_normal_text($$$$$$;$)
 {
    my $text = shift;
@@ -2474,305 +2369,6 @@ sub html_default_menu_description($$$$)
         $text = '' if (html_simplify_text($element_text) eq html_simplify_text($text));
     }
     return "<td align=\"left\" valign=\"top\">$text</td></tr>\n";
-}
-
-# Construct a href to an external source of information.
-# node is the node with texinfo @-commands
-# node_id is the node transliterated and transformed as explained in the
-#         texinfo manual
-# node_xhtml_id is the node transformed such that it is unique and can 
-#     be used to make an html cross ref as explained in the texinfo manual
-# file is the file in '(file)node'
-sub html_default_external_href($$$)
-{
-    my $node = shift;
-    my $node_id = shift;
-    my $node_xhtml_id = shift;
-    my $file = shift;
-    $file = '' if (!defined($file));
-    my $default_target_split = $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'};
-    my $target_split;
-    my $target_mono;
-    my $href_split;
-    my $href_mono;
-    if ($file ne '')
-    {
-         if ($NEW_CROSSREF_STYLE)
-         {
-             $file =~ s/\.[^\.]*$//;
-             $file =~ s/^.*\///;
-             my $href;
-             if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}))
-             {
-                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}))
-                  {
-                       $target_split = 1;
-                       $href_split =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}->{'href'};
-                  }
-                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}))
-                  {
-                       $target_mono = 1;
-                       $href_mono =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}->{'href'};
-                  }
-             }
-
-             if ((not $target_mono) and (not $target_split))
-             { # nothing specified for that manual, use default
-                  $target_split = $default_target_split;
-             }
-             elsif ($target_split and $target_mono)
-             { # depends on the splitting of the manual
-                  $target_split = get_conf('SPLIT');
-             }
-             elsif ($target_mono)
-             { # only mono specified
-                  $target_split = 0;
-             }
-
-             if ($target_split)
-             {
-                  if (defined($href_split))
-                  {
-                       $file = "$href_split";
-                  }
-                  elsif (defined($EXTERNAL_DIR))
-                  {
-                       $file = "$EXTERNAL_DIR/$file";
-                  }
-                  elsif (get_conf('SPLIT'))
-                  {
-                       $file = "../$file";
-                  }
-                  $file .= "/";
-             }
-             else
-             {# target not split
-                  if (defined($href_mono))
-                  {
-                       $file = "$href_mono";
-                  }
-                  else
-                  {
-                       if (defined($EXTERNAL_DIR))
-                       {
-                            $file = "$EXTERNAL_DIR/$file";
-                       }
-                       elsif (get_conf('SPLIT'))
-                       {
-                           $file = "../$file";
-                       }
-                       $file .= "." . $NODE_FILE_EXTENSION;
-                  }
-             }
-         }
-         else
-         {
-             $file .= "/";
-             if (defined($EXTERNAL_DIR))
-             {
-                 $file = $EXTERNAL_DIR . $file;
-             }
-             else
-             {
-                 $file = '../' . $file;
-             } 
-         }
-    }
-    else
-    {
-        $target_split = $default_target_split;
-    }
-    if ($node eq '')
-    {
-         if ($NEW_CROSSREF_STYLE)
-         {
-             if ($target_split)
-             {
-                 return $file . $TOP_NODE_FILE . '.' . $NODE_FILE_EXTENSION . '#Top';
-                 # or ?
-                 #return $file . '#Top';
-             }
-             else
-             {
-                  return $file . '#Top';
-             }
-         }
-         else
-         {
-             return $file;
-         }
-    }
-    my $target;
-    if ($NEW_CROSSREF_STYLE)
-    {
-         $node = $node_id;
-         $target = $node_xhtml_id;
-    }
-    else
-    {
-         $node = main::remove_texi($node);
-         $node =~ s/[^\w\.\-]/-/g;
-    }
-    my $file_basename = $node;
-    $file_basename = $TOP_NODE_FILE if ($node =~ /^top$/i);
-    if ($NEW_CROSSREF_STYLE)
-    {
-        if ($target_split)
-        {
-            return $file . $file_basename . ".$NODE_FILE_EXTENSION" . '#' . $target;
-        }
-        else
-        {
-            return $file . '#' . $target;
-        }
-    }
-    else
-    {
-        return $file . $file_basename . ".$NODE_FILE_EXTENSION";
-    }
-}
-
-# format a reference external to the generated manual. This produces a full 
-# reference with introductive words and the reference itself.
-#
-# arguments:
-# type of the reference: xref (reference at the beginning of a sentence),
-#     pxref (reference in a parenthesis),  
-# section in the book. This might be undef.
-# book name.
-# node and file name formatted according to the convention used in info
-#     '(file)node' and no node means the Top node.
-# href linking to the html page containing the referenced node. A typical
-#     use for this href is a href attribute in an <a> element
-# an optionnal cross reference name
-sub html_default_external_ref($$$$$$$$)
-{
-    my $type = shift;
-    my $section = shift;
-    my $book = shift;
-    my $file_node = shift;
-    my $href = shift;
-    my $cross_ref = shift;
-    my $args_texi = shift;
-    my $formatted_args = shift;
-
-    $file_node = "$cross_ref: $file_node" if (($file_node ne '') and ($cross_ref ne ''));
-    $file_node = &$anchor('', $href, $file_node) if ($file_node ne '');
-
-    # Yes, this is ugly, but this helps internationalization
-    if ($type eq 'pxref')
-    {
-         if (($book ne '') and ($file_node ne ''))
-         {
-              return &$I('see %{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('see %{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($book ne '')
-         {
-              return &$I('see section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('see @cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($file_node ne '')
-         {
-              return &$I('see %{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
-         }
-    }
-    if ($type eq 'xref' or $type eq 'inforef')
-    {
-         if (($book ne '') and ($file_node ne ''))
-         {
-              return &$I('See %{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('See %{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($book ne '')
-         {
-              return &$I('See section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('See @cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($file_node ne '')
-         {
-              return &$I('See %{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
-         }
-    }
-    if ($type eq 'ref')
-    {
-         if (($book ne '') and ($file_node ne ''))
-         {
-              return &$I('%{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('%{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($book ne '')
-         {
-              return &$I('section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('@cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
-         }
-         elsif ($file_node ne '')
-         {
-              return &$I('%{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
-         }
-    }
-    return '';
-}
-
-# format a reference to a node or a section in the generated manual. This 
-# produces a full reference with introductive words and the reference itself.
-#
-# arguments:
-# type of the reference: xref (reference at the beginning of a sentence),
-#     pxref (reference in a parenthesis),  
-# href linking to the html page containing the node or the section. A typical
-#     use for this href is a href attribute in an <a> element
-# short name for this reference
-# name for this reference
-# boolean true if the reference is a reference to a section
-# 
-# $SHORT_REF should be used.
-sub html_default_internal_ref($$$$$$$$)
-{
-    my $type = shift;
-    my $href = shift;
-    my $short_name = shift;
-    my $name = shift;
-    my $is_section = shift;
-    my $args_texi = shift;
-    my $formatted_args = shift;
-    my $element = shift;
-
-    if (! $SHORT_REF)
-    {
-        $name = &$anchor('', $href, $name);
-        if ($type eq 'pxref')
-        {
-            return &$I('see section %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
-            return &$I('see %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-        elsif ($type eq 'xref' or $type eq 'inforef')
-        {
-            return &$I('See section %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
-            return &$I('See %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-        elsif ($type eq 'ref')
-        {
-            return &$I('%{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-    }
-    else
-    {
-        $name = &$anchor('', $href, $short_name);
-        if ($type eq 'pxref')
-        {
-            return &$I('see %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-        elsif ($type eq 'xref' or $type eq 'inforef')
-        {
-            return &$I('See %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-        elsif ($type eq 'ref')
-        {
-            return &$I('%{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
-        }
-    }
-    return '';
 }
 
 sub html_teletyped_in_stack($)
@@ -3651,50 +3247,6 @@ sub html_default_index_entry($$$$$$$$$)
     . "</td></tr>\n";
 }
 
-
-sub html_default_copying_comment($$$$)
-{
-    my $copying_lines = shift;
-    my $copying_text = shift;
-    my $copying_no_texi = shift;
-    my $copying_simple_text = shift;
-    return '' if ($copying_no_texi eq '');
-    my $text = &$comment($copying_no_texi);
-    return $text;
-}
-
-# return value is currently ignored
-sub html_default_documentdescription($$$$)
-{
-    my $decription_lines = shift;
-    my $description_text = shift;
-    my $description_no_texi = shift;
-    my $description_simple_text = shift;
-
-    if (defined($DOCUMENT_DESCRIPTION))
-    {
-        $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = $DOCUMENT_DESCRIPTION;
-        return $DOCUMENT_DESCRIPTION;
-    }
-
-    #return '' if ($description_no_texi eq ''); 
-    #my @documentdescription = split (/\n/, $description_no_texi);
-    if ($description_simple_text eq '')
-    {
-        $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = undef;
-        return undef;
-    }
-    my @documentdescription = split (/\n/, $description_simple_text);
-    my $document_description = shift @documentdescription;
-    chomp $document_description;
-    foreach my $line (@documentdescription)
-    {
-        chomp $line;
-        $document_description .= ' ' . $line;
-    }
-    $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'} = $document_description;
-    return $document_description;
-}
 
 # format an index summary. This is a list of letters linking to the letter
 # entries.

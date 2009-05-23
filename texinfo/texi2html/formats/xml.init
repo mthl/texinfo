@@ -187,6 +187,7 @@ $float = \&xml_float;
 $caption_shortcaption = \&xml_caption_shortcaption;
 $caption_shortcaption_command = \&xml_caption_shortcaption_command;
 $normal_text = \&xml_normal_text;
+$protect_text = \&xml_default_protect_text;
 $paragraph_style_command = \&xml_paragraph_style_command;
 $raw = \&xml_raw;
 $cartouche = \&xml_cartouche;

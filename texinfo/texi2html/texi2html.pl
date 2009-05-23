@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.288 2009-05-22 18:50:28 pertusus Exp $
+# $Id: texi2html.pl,v 1.289 2009-05-23 17:09:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -207,7 +207,6 @@ my %command_format = (
 
 if ($command_format{$my_command_name})
 {
-   #$DEFAULT_OUTPUT_FORMAT = $command_format{$my_command_name};
    $default_output_format = $command_format{$my_command_name};
 }
 
@@ -692,13 +691,13 @@ $I = \&Texi2HTML::I18n::get_string;
 # things coded by Olaf -- Pat).
 #
 
-$toc_body                 = \&T2H_GPL_toc_body;
+#$toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
 $printindex               = \&t2h_GPL_default_printindex;
 $summary_letter           = \&t2h_default_summary_letter;
 
-sub T2H_GPL_toc_body($)
+sub HTML_DEFAULT_toc_body($)
 {
     my $elements_list = shift;
     return unless (Texi2HTML::Config::get_conf('contents') or 
@@ -1356,6 +1355,7 @@ require "$T2H_HOME/formats/docbook.init"
 require "$T2H_HOME/formats/xml.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/formats/xml.init" && -r "$T2H_HOME/formats/xml.init");
+
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
 
@@ -1369,60 +1369,6 @@ require "$T2H_HOME/$translation_file"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/$translation_file" && -r "$T2H_HOME/$translation_file");
 
-#
-# Some functions used to override normal formatting functions in specific 
-# cases. The user shouldn't want to change them, but can use them.
-#
-
-# used to utf8 encode the result
-sub t2h_utf8_accent($$$)
-{
-    my $accent = shift;
-    my $args = shift;
-    my $style_stack = shift;
-  
-    my $text = $args->[0];
-    #print STDERR "$accent\[".scalar(@$style_stack) ."\] (@$style_stack)\n"; 
-
-    # special handling of @dotless{i}
-    if ($accent eq 'dotless')
-    { 
-        if (($text eq 'i') and (!defined($style_stack->[-1]) or (!defined($unicode_accents{$style_stack->[-1]})) or ($style_stack->[-1] eq 'tieaccent')))
-        {
-             return "\x{0131}";
-        }
-        #return "\x{}" if ($text eq 'j'); # not found !
-        return $text;
-    }
-        
-    # FIXME \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
-    return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritical{$accent}))) 
-        if (defined($unicode_diacritical{$accent}));
-    return ascii_accents($text, $accent);
-}
-
-sub t2h_utf8_normal_text($$$$$$;$)
-{
-    my $text = shift;
-    my $in_raw_text = shift;
-    my $in_preformatted = shift;
-    my $in_code = shift;
-    my $in_simple = shift;
-    my $style_stack = shift;
-    my $state = shift;
-
-    $text = &$protect_text($text) unless($in_raw_text);
-    $text = uc($text) if (in_small_caps($style_stack));
-
-    if (!$in_code and !$in_preformatted)
-    {
-        $text =~ s/---/\x{2014}/g;
-        $text =~ s/--/\x{2013}/g;
-        $text =~ s/``/\x{201C}/g;
-        $text =~ s/''/\x{201D}/g;
-    }
-    return Unicode::Normalize::NFC($text);
-}
 
 # these are unlikely to be used by users, as they are essentially
 # used to follow the html external refs specification in texinfo
@@ -1615,11 +1561,12 @@ require "$T2H_HOME/MySimple.pm"
 # This way, you can directly run texi2html.pl, if $T2H_HOME/T2h_i18n.pm
 # exists.
 
+{
 # @T2H_I18N@
 require "$T2H_HOME/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/T2h_i18n.pm" && -r "$T2H_HOME/T2h_i18n.pm");
-
+}
 
 #########################################################################
 #
@@ -1655,7 +1602,7 @@ my $AUTO_PREFIX;
 my $CHILDLINE;
 my $DEBUG;
 my $DESTDIR;
-my $DVIPS;
+my $DVIPS = 'dvips';
 my $ERROR;
 my $EXTERNAL_FILE;
 my $EXTERNAL_IMAGES;
@@ -2851,12 +2798,25 @@ my %output_format_names = (
 
 foreach my $output_format (keys(%output_format_names))
 {
-  next if ($output_format eq $default_output_format);
+  next if (defined($default_output_format) and $output_format eq $default_output_format);
+  my $text_default_output_format = 'raw text';
+  $text_default_output_format = $output_format_names{$default_output_format} if (defined($default_output_format) and defined($output_format_names{$default_output_format}));
   $T2H_OPTIONS -> {$output_format} =
   {
     type => '',
     linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0]);},
-    verbose => "output $output_format_names{$output_format} rather than $output_format_names{$default_output_format}.",
+    verbose => "output $output_format_names{$output_format} rather than $text_default_output_format.",
+  }
+}
+
+if (defined($default_output_format))
+{
+  $T2H_OPTIONS -> {$default_output_format} =
+  {
+    type => '',
+    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0]);},
+    verbose => "output default format.",
+    noHelp => 2
   }
 }
 
@@ -7128,7 +7088,8 @@ sub enter_index_entry($$$$$)
            'command'  => $command,
            'hidden'   => $index_entry_hidden,
            'region'   => $region,
-           'line_nr'  => $line_nr
+           'line_nr'  => $line_nr,
+           'index_name' => $index_prefix_to_name{$prefix}
     };
             
     print STDERR "# enter \@$command ${prefix}index($key) [$entry] with id $id ($index_entry)\n"
@@ -10545,6 +10506,11 @@ sub get_index_entry_infos($$;$)
     my $index_heading_element = $entry->{'element'};
     my $entry_heading_element = $index_heading_element;
     my $real_index_element = $entry->{'real_element'};
+
+    if (!defined($entry->{'real_element'}))
+    {
+        print STDERR "BUG: entry->{'real_element'} not defined\n";
+    }
     # we always use the associated element_ref, instead of the original
     # element
     $entry_heading_element = $entry_heading_element->{'element_ref'} 
@@ -10556,8 +10522,17 @@ sub get_index_entry_infos($$;$)
     else
     {
        $real_index_element = $entry->{'real_element'}->{'element_ref'};
+       ########################### debug
+       if (!defined($real_index_element))
+       {
+          print STDERR "BUG: element_ref not defined, real_element $entry->{'real_element'}\n";
+          foreach my $key (keys(%{$entry->{'real_element'}}))
+          {
+             print STDERR " -> $key: $entry->{'real_element'}->{$key}\n";
+          }
+       }
+       ########################### end debug
     }
-    print STDERR "BUG: element_ref not defined, real_element $entry->{'real_element'} $entry->{'real_element'}->{'texi'}\n" if (!defined($real_index_element));
 
     my $origin_href = '';
     print STDERR "BUG: entry->{'file'} not defined for `$entry->{'entry'}'\n"
@@ -10618,10 +10593,11 @@ sub simple_format($$@)
     return $text;
 }
 
-sub index_entry_command_prefix($;$)
+sub index_entry_command_prefix($$$)
 {
     my $command = shift;
     my $line = shift;
+    my $line_nr = shift;
     if ($command =~ /^(v|f)table$/)
     {
        return $1;
@@ -10631,10 +10607,9 @@ sub index_entry_command_prefix($;$)
        my ($prefix, $entry, $argument) = get_deff_index($command, $line, undef, 0);
        return $prefix;
     }
-    else
-    {
-       return index_command_prefix($command);
-    }
+    my $prefix = index_command_prefix($command);
+    echo_error("No prefix found for \@$command $line",$line_nr) if ($prefix eq '');
+    return $prefix;
 }
 
 sub enter_table_index_entry($$$$)
@@ -12611,9 +12586,9 @@ sub scan_line($$$$;$)
                      #print STDERR "# Stacked $macro (@{$state->{'command_stack'}})\n" if ($T2H_DEBUG); 
                 }
                 # FIXME give line, and modify line?
-                &$Texi2HTML::Config::begin_style_texi($macro, $state, $stack, $real_style_command)
+                &$Texi2HTML::Config::begin_style_texi($macro, $state, $stack, $real_style_command, $state->{'remove_texi'})
                   if (defined($Texi2HTML::Config::begin_style_texi) 
-                      and !($state->{'keep_texi'} or $state->{'remove_texi'}));
+                      and !($state->{'keep_texi'}));
                 next;
             }
 
@@ -14438,12 +14413,16 @@ sub do_index_entry_label($$$$;$)
         # error, putting an index entry in a snippet that can be expanded
         # more than once and is not strictly associated with a node/section.
 
+        my $prefix = index_entry_command_prefix($command, $line, $line_nr);
+        my $index_name = undef;
+        $index_name = $index_prefix_to_name{$prefix} if ($prefix ne '');
         # FIXME 'entry' could be @code{$entry_texi}
         $entry = {
           'command' => $command,
           'texi' => $entry_texi,
           'entry' => $entry_texi,
-          'prefix' => index_entry_command_prefix($command, $line)
+          'prefix' => $prefix,
+          'index_name' => $index_name,
         };
     }
 #    return '' if ($state->{'multiple_pass'} or $state->{'outside_document'});
@@ -14459,17 +14438,18 @@ sub do_index_entry_label($$$$;$)
         echo_warn ("Waiting for index `$entry->{'texi'}', got `$entry_texi'", $line_nr);
     }
     
+    my $index_name = $index_prefix_to_name{$entry->{'prefix'}};
     # =========== debug
     my $id = 'no id';
     $id = $entry->{'id'} if (defined($entry->{'id'}));
-    print STDERR "(index $command) [$entry->{'entry'}] $entry->{'id'}\n"
+    print STDERR "(index($index_name) $command) [$entry->{'entry'}] $entry->{'id'}\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
     # =========== end debug
     #return (undef,'','') if ($state->{'region'});
     my $formatted_entry = substitute_line($entry->{'entry'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state),$entry->{'line_nr'});
     my $formatted_entry_reference = substitute_line($entry->{'texi'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));
     return ($entry, $formatted_entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, $formatted_entry, 
-      $index_prefix_to_name{$entry->{'prefix'}},
+      $index_name,
        $command, $entry->{'texi'}, $formatted_entry_reference, $entry)); 
 }
 

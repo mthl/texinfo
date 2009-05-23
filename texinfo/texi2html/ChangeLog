@@ -1,3 +1,11 @@
+2009-05-23   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: remove html formatting
+	from texi2html.init, where only raw text formatting should be 
+	done.
+	* formats/info.init: remove the debugging output and fix minor
+	bugs.
+
 2009-05-22   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init, 

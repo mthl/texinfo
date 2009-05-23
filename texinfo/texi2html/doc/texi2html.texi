@@ -1985,12 +1985,12 @@ Several variables may be used to control the formatting of table of contents
 and short table of contents:
 
 @vtable @code
-@item $DO_CONTENTS
+@item $CONTENTS
 If the variable is true a table of contents is done even if there is no
 @code{@@contents} command. 
 If it is defined and false, no table of contents 
 is done even if there is a @code{@@contents} command.
-@item $DO_SCONTENTS
+@item $SHORTCONTENTS
 If the variable is true a short table of contents is done even if there is no
 @code{@@summarycontents} command.
 If it is defined and false, no short table of contents 
