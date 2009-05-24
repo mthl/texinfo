@@ -57,9 +57,10 @@ sub T2H_XHTML_print_page_head
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
     $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
+    my $doctype = get_conf('doctype');
     print $fh <<EOT;
 <?xml version="1.0" encoding="iso-8859-1"?>
-$T2H_DOCTYPE
+$doctype
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$T2H_LANG" lang="$T2H_LANG">
 $T2H_THISDOC{'copying'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program} -->
 <!--

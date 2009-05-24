@@ -1,3 +1,20 @@
+2009-05-24   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: add an array for the 
+	format specific expansion T2H_FORMAT_EXPAND to separate from the 
+	expansion information from the command-line.
+	Reset defaults for the customization variables each time a format
+	is loaded with t2h_default_set_variables_default and 
+	t2h_default_set_variables_xml.
+	Default for the customization variables are the makeinfo defaults,
+	except when called as texi2html and output is html, in that case
+	a function is used t2h_default_set_variables_texi2html.
+	replace $TRANSLITERATE_NODE by $TRANSLITERATE_FILE_NAMES.
+	replace $SECTION_NAVIGATION by $HEADERS.
+	rename ascii_* by default_*.
+	* test/*, test/macros/res_*/: test for texi2html called as 
+	makeinfo or texi2all.
+
 2009-05-23   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: remove html formatting

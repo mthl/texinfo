@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.289 2009-05-23 17:09:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.290 2009-05-24 22:29:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -215,6 +215,11 @@ sub default_output_format()
    return $default_output_format;
 }
 
+sub default_command_name()
+{
+   return $my_command_name;
+}
+
 {
 package Texi2HTML::Config;
 
@@ -277,11 +282,11 @@ $USE_SECTIONS
 $USE_NODE_TARGET
 $USE_UNICODE
 $USE_UNIDECODE
-$TRANSLITERATE_NODE
+$TRANSLITERATE_FILE_NAMES
 $NODE_FILES
 $NODE_NAME_IN_MENU
 $AVOID_MENU_REDUNDANCY
-$SECTION_NAVIGATION
+$HEADERS
 $MONOLITHIC
 $SHORTEXTN 
 $EXTENSION
@@ -315,6 +320,7 @@ $FIRSTPARAGRAPHINDENT
 $ENABLE_ENCODING
 $INTERNAL_LINKS
 $DEFAULT_OUTPUT_FORMAT
+$COMMAND_NAME
 );
 
 # customization variables
@@ -373,6 +379,7 @@ $TOP_HEADING_AT_BEGINNING
 $USER
 $USE_NUMERIC_ENTITY
 $USE_SETFILENAME
+$USE_SETFILENAME_EXTENSION
 $SEPARATE_DESCRIPTION
 $IGNORE_BEFORE_SETFILENAME
 $OVERVIEW_LINK_TO_TOC
@@ -386,6 +393,7 @@ $DATE
 %BUTTONS_EXAMPLE
 %BUTTONS_ACCESSKEY
 %BUTTONS_REL
+@T2H_FORMAT_EXPAND
 @CHAPTER_BUTTONS
 @MISC_BUTTONS
 @SECTION_BUTTONS
@@ -588,8 +596,13 @@ $complex_format_map
 %transliterate_accent_map
 %no_transliterate_map
 %ascii_character_map
-%ascii_simple_map
-%ascii_things_map
+%default_simple_map
+%default_things_map
+%default_texi_map
+%default_style_map
+%default_style_map_pre
+%default_style_map_texi
+%default_simple_format_style_map_texi
 %numeric_entity_map
 %perl_charset_to_html
 %misc_pages_targets
@@ -626,6 +639,7 @@ use vars qw(
 );
 
 $DEFAULT_OUTPUT_FORMAT = main::default_output_format();
+$COMMAND_NAME = main::default_command_name();
 
 sub set_conf($$;$)
 {
@@ -668,6 +682,8 @@ my %config_map = (
    'SPLIT_SIZE' => \$SPLIT_SIZE,
    'contents' => \$CONTENTS,
    'shortcontents' => \$SHORTCONTENTS,
+   'doctype' => \$DOCTYPE,
+   'headers' => \$HEADERS,
 );
 
 sub get_conf($)
@@ -681,6 +697,23 @@ sub get_conf($)
     #print STDERR "Unknown conf string: $name\n";
 }
 
+# used to manage expanded sections
+sub set_expansion($$)
+{
+    my $region = shift;
+    my $set = shift;
+    $set = 1 if (!defined($set));
+    if ($set)
+    {
+         push (@EXPAND, $region) unless (grep {$_ eq $region} @EXPAND);
+    }
+    else
+    {
+         @EXPAND = grep {$_ ne $region} @EXPAND;
+         @T2H_FORMAT_EXPAND = grep {$_ ne $region} @T2H_FORMAT_EXPAND;
+    }
+}
+
 # needed in this namespace for translations
 $I = \&Texi2HTML::I18n::get_string;
 
@@ -692,10 +725,10 @@ $I = \&Texi2HTML::I18n::get_string;
 #
 
 #$toc_body                 = \&T2H_GPL_toc_body;
-$style                    = \&T2H_GPL_style;
-$format                   = \&T2H_GPL_format;
-$printindex               = \&t2h_GPL_default_printindex;
-$summary_letter           = \&t2h_default_summary_letter;
+#$style                    = \&T2H_GPL_style;
+#$format                   = \&T2H_GPL_format;
+#$printindex               = \&t2h_GPL_default_printindex;
+#$summary_letter           = \&t2h_default_summary_letter;
 
 sub HTML_DEFAULT_toc_body($)
 {
@@ -1171,7 +1204,7 @@ my $t2h_symbol_indices = 0;
 
 # This should better be in texi2html.init, but $t2h_symbol_indices
 # has to be in the same file scope than printindeex.
-sub t2h_default_summary_letter($$$$$$$)
+sub html_default_summary_letter($$$$$$$)
 {
    my $letter = shift;
    my $file = shift;
@@ -2060,21 +2093,6 @@ sub set_document_language ($)
     return 0;
 }
 
-# used to manage expanded sections from the command line
-sub set_expansion($$)
-{
-    my $region = shift;
-    my $set = shift;
-    $set = 1 if (!defined($set));
-    if ($set)
-    {
-         push (@Texi2HTML::Config::EXPAND, $region) unless (grep {$_ eq $region} @Texi2HTML::Config::EXPAND);
-    }
-    else
-    {
-         @Texi2HTML::Config::EXPAND = grep {$_ ne $region} @Texi2HTML::Config::EXPAND;
-    }
-}
 
 # manage footnote style
 sub set_footnote_style($$;$)
@@ -2296,7 +2314,7 @@ $T2H_OPTIONS -> {'debug'} =
 $T2H_OPTIONS -> {'doctype'} =
 {
  type => '=s',
- linkage => \$Texi2HTML::Config::DOCTYPE,
+ linkage => sub {Texi2HTML::Config::set_conf('doctype', $_[1], 1);},
  verbose => 'document type which is output in header of HTML files',
  noHelp => 1
 };
@@ -2343,7 +2361,7 @@ $T2H_OPTIONS -> {'macro-expand'} =
 $T2H_OPTIONS -> {'expand'} =
 {
  type => '=s',
- linkage => sub {set_expansion($_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_expansion($_[1], 1);},
  verbose => 'Expand info|tex|none section of texinfo source',
  noHelp => 1,
 };
@@ -2351,7 +2369,7 @@ $T2H_OPTIONS -> {'expand'} =
 $T2H_OPTIONS -> {'no-expand'} =
 {
  type => '=s',
- linkage => sub {set_expansion ($_[1], 0);},
+ linkage => sub {Texi2HTML::Config::set_expansion ($_[1], 0);},
  verbose => 'Don\'t expand the given section of texinfo source',
 };
 
@@ -2366,42 +2384,42 @@ $T2H_OPTIONS -> {'noexpand'} =
 $T2H_OPTIONS -> {'ifhtml'} =
 {
  type => '!',
- linkage => sub { set_expansion('html', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('html', $_[1]); },
  verbose => "expand ifhtml and html sections",
 };
 
 $T2H_OPTIONS -> {'ifinfo'} =
 {
  type => '!',
- linkage => sub { set_expansion('info', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('info', $_[1]); },
  verbose => "expand ifinfo",
 };
 
 $T2H_OPTIONS -> {'ifxml'} =
 {
  type => '!',
- linkage => sub { set_expansion('xml', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('xml', $_[1]); },
  verbose => "expand ifxml and xml sections",
 };
 
 $T2H_OPTIONS -> {'ifdocbook'} =
 {
  type => '!',
- linkage => sub { set_expansion('docbook', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('docbook', $_[1]); },
  verbose => "expand ifdocbook and docbook sections",
 };
 
 $T2H_OPTIONS -> {'iftex'} =
 {
  type => '!',
- linkage => sub { set_expansion('tex', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('tex', $_[1]); },
  verbose => "expand iftex and tex sections",
 };
 
 $T2H_OPTIONS -> {'ifplaintext'} =
 {
  type => '!',
- linkage => sub { set_expansion('plaintext', $_[1]); },
+ linkage => sub { Texi2HTML::Config::set_expansion('plaintext', $_[1]); },
  verbose => "expand ifplaintext sections",
 };
 
@@ -2525,7 +2543,7 @@ $T2H_OPTIONS -> {'no-split'} =
 $T2H_OPTIONS -> {'headers'} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
  verbose => 'output navigation headers for each section',
 };
 
@@ -2723,7 +2741,7 @@ $T2H_OPTIONS -> {'css-ref'} =
 $T2H_OPTIONS -> {'transliterate-file-names'} =
 {
  type => '!',
- linkage=> \$Texi2HTML::Config::TRANSLITERATE_NODE,
+ linkage=> \$Texi2HTML::Config::TRANSLITERATE_FILE_NAMES,
  verbose => 'produce file names in ASCII transliteration',
 };
 
@@ -2950,15 +2968,15 @@ $T2H_OBSOLETE_OPTIONS -> {short_ext} =
 $T2H_OBSOLETE_OPTIONS -> {sec_nav} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
- verbose => 'obsolete, use "-header" instead',
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
+ verbose => 'obsolete, use "-headers" instead',
  noHelp  => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'sec-nav'} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
  verbose => 'obsolete, use "--header" instead',
  noHelp  => 2
 };
@@ -3014,7 +3032,7 @@ $T2H_OBSOLETE_OPTIONS -> {frameset_doctype} =
 $T2H_OBSOLETE_OPTIONS -> {'no-section_navigation'} =
 {
  type => '!',
- linkage => sub {$Texi2HTML::Config::SECTION_NAVIGATION = 0;},
+ linkage => sub {Texi2HTML::Config::set_conf('headers', 0, 1);},
  verbose => 'obsolete, use -nosec_nav',
  noHelp => 2,
 };
@@ -3072,7 +3090,7 @@ $T2H_OBSOLETE_OPTIONS -> {output_file} =
 $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
  verbose => 'obsolete, use --sec-nav instead',
  noHelp => 2,
 };
@@ -3305,6 +3323,8 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 # retro compatibility for $Texi2HTML::Config::EXPAND
 push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Config::EXPAND);
 
+push (@Texi2HTML::Config::EXPAND, @Texi2HTML::Config::T2H_FORMAT_EXPAND);
+
 # correct %Texi2HTML::Config::texi_formats_map based on command line and init
 # variables
 $Texi2HTML::Config::texi_formats_map{'menu'} = 'normal' if ($Texi2HTML::Config::SHOW_MENU);
@@ -3443,7 +3463,7 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
                  $cross_ref_texi_map{$key} = chr($char_nr);
              }
              # cross_transliterate_texi_map is only used if 
-             # USE_UNIDECODE is unset and TRANSLITERATE_NODE is set
+             # USE_UNIDECODE is unset and TRANSLITERATE_FILE_NAMES is set
              if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
              {
                 $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
@@ -3456,7 +3476,7 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
         else
         {
             $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
-             # cross_transliterate_texi_map is used if TRANSLITERATE_NODE is set
+             # cross_transliterate_texi_map is used if TRANSLITERATE_FILE_NAMES is set
              if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
              {
                  $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
@@ -3468,8 +3488,8 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
         }
     }
 }
-#if ($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::TRANSLITERATE_NODE
-if ($Texi2HTML::Config::TRANSLITERATE_NODE and (
+#if ($Texi2HTML::Config::USE_UNICODE and $Texi2HTML::Config::TRANSLITERATE_FILE_NAMES
+if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES and (
     ($Texi2HTML::Config::USE_UNICODE and ! $Texi2HTML::Config::USE_UNIDECODE)
     or !$Texi2HTML::Config::USE_UNICODE))
 {
@@ -3492,7 +3512,7 @@ foreach my $key (keys(%cross_ref_style_map_texi))
         {
              $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_nounicode_cross_manual_accent;
         }
-        # this is only used if TRANSLITERATE_NODE is set and USE_UNICODE
+        # this is only used if TRANSLITERATE_FILE_NAMES is set and USE_UNICODE
         # or USE_UNIDECODE is not set
         $cross_transliterate_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_transliterate_cross_manual_accent;
     }
@@ -5392,7 +5412,7 @@ sub cross_manual_links()
             if ($Texi2HTML::Config::USE_UNICODE)
             {
                 $node->{'cross_manual_target'} = Unicode::Normalize::NFC($node->{'cross_manual_target'});
-                if ($Texi2HTML::Config::TRANSLITERATE_NODE and $Texi2HTML::Config::USE_UNIDECODE)
+                if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES and $Texi2HTML::Config::USE_UNIDECODE)
                 {
                      $node->{'cross_manual_file'} = 
                        unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_target'}));
@@ -5424,7 +5444,7 @@ sub cross_manual_links()
     }
 
     
-    if ($Texi2HTML::Config::TRANSLITERATE_NODE and 
+    if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES and 
          (!$Texi2HTML::Config::USE_UNICODE or !$Texi2HTML::Config::USE_UNIDECODE))
     {
         $::style_map_texi_ref = \%cross_transliterate_style_map_texi;
@@ -5455,7 +5475,7 @@ sub cross_manual_links()
             if ($Texi2HTML::Config::USE_UNICODE)
             {
                 $entry->{'cross'} = Unicode::Normalize::NFC($entry->{'cross'});
-                if ($Texi2HTML::Config::TRANSLITERATE_NODE and $Texi2HTML::Config::USE_UNIDECODE) # USE_UNIDECODE is redundant
+                if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES and $Texi2HTML::Config::USE_UNIDECODE) # USE_UNIDECODE is redundant
                 {
                      $entry->{'cross'} = 
                        unicode_to_protected(unicode_to_transliterate($entry->{'cross'}));
@@ -7413,7 +7433,7 @@ sub pass_text($$)
         }
     }
 
-    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not Texi2HTML::Config::get_conf('SPLIT') and not $Texi2HTML::Config::SECTION_NAVIGATION));
+    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not Texi2HTML::Config::get_conf('SPLIT') and not Texi2HTML::Config::get_conf('headers')));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
@@ -8521,14 +8541,14 @@ sub do_external_href($)
          if (exists($nodes{$texi_node}) and ($nodes{$texi_node}->{'cross_manual_target'})) 
          {
                $node_id = $nodes{$texi_node}->{'cross_manual_target'};
-               if ($Texi2HTML::Config::TRANSLITERATE_NODE)
+               if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES)
                {
                    $node_file = $nodes{$texi_node}->{'cross_manual_file'};
                }
          }
          else 
          {
-              if ($Texi2HTML::Config::TRANSLITERATE_NODE)
+              if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES)
               {
                   ($node_id, $node_file) = cross_manual_line($texi_node,1);
               }
@@ -8538,7 +8558,7 @@ sub do_external_href($)
               }
          }
          $node_xhtml_id = node_to_id($node_id);
-         $node_file = $node_id unless ($Texi2HTML::Config::TRANSLITERATE_NODE);
+         $node_file = $node_id unless ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES);
     }
     return &$Texi2HTML::Config::external_href($texi_node, $node_file, 
         $node_xhtml_id, $file);
@@ -13526,7 +13546,7 @@ sub do_simple($$$;$$$$)
             my $result;
             if ($state->{'remove_texi'})
             {
-#print STDERR "REMOVE $macro, $style_map_texi_ref->{$macro}, fun $style_map_texi_ref->{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_ascii_accent;
+#print STDERR "REMOVE $macro, $style_map_texi_ref->{$macro}, fun $style_map_texi_ref->{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_accent;
                 $style = $::style_map_texi_ref->{$macro};
             }
             elsif ($state->{'preformatted'})

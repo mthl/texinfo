@@ -29,11 +29,6 @@ $Data::Dumper::Maxdepth = 12;
 
 sub info_default_load();
 
-if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'info')
-{
-   info_default_load();
-}
-
 my %info_default_indented_commands;
 my %info_default_format;
 my %info_default_enable_encoding_accents;
@@ -51,40 +46,39 @@ my $info_default_index_length_to_node;
 my $info_default_listoffloat_caption_entry_length;
 my $info_default_listoffloat_append;
 
+if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'info')
+{
+   info_default_load();
+}
+
 sub info_default_load()
 {
 
-$USE_NODES = 1;
+t2h_default_set_variables_default();
 $USE_SECTIONS = 0;
-@EXPAND = ('info', 'direntry');
+@T2H_FORMAT_EXPAND = ('info', 'direntry');
 $EXTENSION = 'info';
 $SHOW_MENU = 1;
-$USE_SETFILENAME = 1;
-$IGNORE_BEFORE_SETFILENAME = 1;
-$NODE_NAME_IN_MENU = 1;
-$SPLIT_INDEX = 0;
-$FOOTNOTESTYLE = 'end';
-$INLINE_CONTENTS = 1;
+$USE_SETFILENAME_EXTENSION = 1;
 $INLINE_INSERTCOPYING = 1;
 $SIMPLE_MENU = 1;
 $MENU_SYMBOL = '*';
-$USE_MENU_DIRECTIONS = 0;
-$USE_UP_FOR_ADJACENT_NODES = 0;
 $USE_ISO = 0;
 $ENABLE_ENCODING_USE_ENTITY = 0;
 $ENABLE_ENCODING = 1;
 @IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
 $CAPTION_STYLE = 'asis';
 $DEFAULT_ENCODING = 'ascii';
+$HEADERS = 1;
 
 
 $no_paragraph_commands{'anchor'} = 1;
 
-%simple_map = %ascii_simple_map;
+%simple_map = %default_simple_map;
 %simple_map_pre = %simple_map;
 %simple_map_texi = %simple_map;
 
-%things_map = %ascii_things_map;
+%things_map = %default_things_map;
 %pre_map = %things_map;
 
 $misc_command{'exdent'}->{'keep'} = 1;
@@ -104,6 +98,8 @@ $misc_command{'indent'}->{'keep'} = 1;
 @chevron_commands = ('key', 'indicateurl');
 
 %info_default_accent_commands = ();
+
+t2h_default_copy_style_map (\%default_style_map, \%style_map);
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
@@ -264,6 +260,7 @@ $image_files           = \&info_default_image_files;
 $index_summary      = \&info_default_index_summary;
 $summary_letter     = \&info_default_summary_letter;
 $index_entry        = \&info_default_index_entry;
+$index_entry_command        = \&t2h_default_index_entry_command;
 $index_letter       = \&info_default_index_letter;
 $print_index        = \&info_default_print_index;
 $index_entry_label  = \&info_default_index_entry_label;
@@ -289,7 +286,7 @@ $listoffloats       = \&info_default_listoffloats;
 $colon_command      = \&info_default_colon_command;
 $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
-$element_file_name  = \&info_default_element_file_name;
+$comment            = \&t2h_default_comment;
 
 }
 
@@ -330,9 +327,9 @@ sub info_default_init_accent_enable_encoding()
    foreach my $key (keys(%unicode_accents), 'dotless')
    {
      $info_default_enable_encoding_accents{$key} = 1;
-     $t2h_enable_encoding_default_accent{'normal'}->{$key} = \&t2h_default_ascii_accent;
-     $t2h_enable_encoding_default_accent{'texi'}->{$key} = \&t2h_default_ascii_accent;
-     $t2h_enable_encoding_default_accent{'pre'}->{$key} = \&t2h_default_ascii_accent;
+     $t2h_enable_encoding_default_accent{'normal'}->{$key} = \&t2h_default_accent;
+     $t2h_enable_encoding_default_accent{'texi'}->{$key} = \&t2h_default_accent;
+     $t2h_enable_encoding_default_accent{'pre'}->{$key} = \&t2h_default_accent;
      $style_map{$key}->{'function'} = \&info_default_accent;
      $style_map_texi{$key}->{'function'} = \&info_default_accent;
      $style_map_pre{$key}->{'function'} = \&info_default_accent;
@@ -389,7 +386,7 @@ sub info_default_accent($$$)
     }
     else
     {
-        $result = &t2h_default_ascii_accent(@args);
+        $result = &t2h_default_accent(@args);
     }
     if (scalar(@$style_stack) and $info_default_accent_commands{$style_stack->[-1]})
     {
@@ -1593,15 +1590,15 @@ sub info_default_close_command($$;$$$)
    print STDERR "TREE: Closing $command\n" if ($DEBUG);
    if (!defined($info_state->{'current'}))
    {
-      print STDERR "info_state->{'current'} not defined\n";
+      print STDERR "info_state->{'current'} not defined (closing $command)\n";
    }
    elsif (!defined($info_state->{'current'}->{'command'}))
    {
-      print STDERR "info_state->{'current'}->{'command'} not defined\n";
+      print STDERR "info_state->{'current'}->{'command'} not defined (closing $command)\n";
    }
    elsif ($command ne $info_state->{'current'}->{'command'})
    {
-     print STDERR "Was waiting for $info_state->{'current'}->{'command'}\n";
+     print STDERR "Was waiting for $info_state->{'current'}->{'command'} (closing $command)\n";
    }
    #return if $no_close;
    $command_entries->{'begin'} = $begin;
@@ -3088,6 +3085,7 @@ sub info_default_raw($$)
     my $style = shift;
     my $text = shift;
     my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    # no warning for unknown raw formats
     if ($style eq 'verbatim' or $style eq 'verbatiminclude' or $expanded)
     {
         return info_default_store_text(undef,$text, $style);
@@ -3107,26 +3105,5 @@ sub info_default_line_command($$$$)
     return '';
 }
 
-# info is special, since it doesn't use the basename but directly the 
-# setfilename output, contrary to all the other formats
-sub info_default_element_file_name($$$)
-{
-    my $element = shift;
-    my $type = shift;
-    my $prefix = shift;
-
-    my $outname;
-    $outname = $OUT if (defined($OUT) and $OUT ne '' and $OUT !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
-    if ($type eq 'doc') 
-    {
-       if (defined($Texi2HTML::THISDOC{'setfilename'}) and !defined($outname))
-       {
-          $Texi2HTML::THISDOC{'extension'} = '';
-          return $Texi2HTML::THISDOC{'setfilename'};
-       }
-    }
-
-    return undef;
-}
 
 1;

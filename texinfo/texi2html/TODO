@@ -400,3 +400,39 @@ overridden by a command line option.  The possible values are:
 
      docbook  html  info  plaintext  xml
 
+
+Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)
+Valid on 2009-05-23, before this was ameliorated, by introducing 
+t2h_default_set_variables_default and t2h_default_set_variables_texi2html.
+
+CAPTION_STYLE                                        i asis              
+DEFAULT_ENCODING                                     ascii
+DOCYTPE                          d c        h c                x c      
+ENABLE_ENCODING                                       i 1
+ENABLE_ENCODING_USE_ENTITY                  h 1       i 0
+EXTENSION                       d xml     h html     i info   x xml
+FOOTNOTESTYLE                              h sep     i end              m end
+INLINE_CONTENTS                                       i 1                m 1
+INLINE_INSERTCOPYING             d 1                  i 1
+MENU_SYMBOL                               h &bull;    i *                m *
+NODE_FILE_EXTENSION                       h html                         
+NODE_NAME_IN_MENU                                                        m 1
+NUMBER_SECTIONS                             h 1                          m 1
+OVERVIEW_LINK_TO_TOC                        h 0                          m 1
+SECTION_NAVIGATION               d 0        h 1                x 0       m 1
+SEPARATE_DESCRIPTION                        h 0                x 1
+SHORT_REF                                                                m 1
+SHOW_MENU                        d 0        h 1       i 1      x 1       m 1
+SIMPLE_MENU                                 h 0       i 1
+TOP_FILE                                                              index.html
+USE_ACCESSKEY                               h 0                          m 1
+USE_ISO                          d 1        h 1       i 0      x 0    
+USE_LINKS                                   h 0                          m 1
+USE_MENU_DIRECTIONS              d 0        h 1       i 0      x 0
+USE_NODES                                 h undef     i 1      x 1       m 1
+USE_NUMERIC_ENTITY               d 0        h 1                x 0
+USE_REL_REV                                 h 0                          m 1
+USE_SECTIONS                                h 1       i 0                
+USE_SETFILENAME                  d 1                  i 1      x 1       m 1
+USE_SETFILENAME_EXTENSION        d 0                  i 1
+USE_UP_FOR_ADJACENT_NODES        d 0        h 1       i 0      x 0

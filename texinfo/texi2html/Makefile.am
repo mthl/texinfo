@@ -149,10 +149,10 @@ dist_images_DATA = images/a_begin.png \
 #	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" \
 #	    -e "/@T2H_L2H@/r $(srcdir)/T2h_l2h.pm" $< >$@
 #	chmod a+x $@
-texi2html.interm: $(texi2html_sources)
+texi2html.temp: $(texi2html_sources)
 	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
 
-texi2html: texi2html.interm $(texi2html_formats)
+texi2html: texi2html.temp $(texi2html_formats)
 	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
@@ -179,4 +179,4 @@ translations.pl: $(dist_i18n_DATA)
 html-local: texi2html
 
 clean-local:
-	-rm -f texi2html texi2html.interm
+	-rm -f texi2html texi2html.temp

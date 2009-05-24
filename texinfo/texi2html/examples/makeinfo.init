@@ -22,12 +22,15 @@
 #
 #-##############################################################################
 
+html_default_load();
+
 $TOP_FILE = 'index.html';
 
 $SHOW_MENU = 1;
 
 $USE_NODES = 1;
 
+# to be like makeinfo
 #$ONLY_NODES = 1;
 
 $SPLIT = 'node';
@@ -36,14 +39,12 @@ $NODE_FILES = 1;
 
 $USE_SETFILENAME = 1;
 
-$IGNORE_BEFORE_SETFILENAME = 1;
-
-# to mimic makeinfo the following have to be set.
+# to mimic makeinfo the 2 following have to be set 1.
 #$USE_MENU_DIRECTIONS = 0;
 
 #$USE_UP_FOR_ADJACENT_NODES = 0;
 
-$SECTION_NAVIGATION = 1;
+$HEADERS = 1;
 
 $SHORT_REF = 1;
 

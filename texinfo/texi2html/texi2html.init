@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.199 2009-05-23 17:09:38 pertusus Exp $
+# $Id: texi2html.init,v 1.200 2009-05-24 22:29:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -58,7 +58,7 @@ $SPLIT = '';
 # -separated-footnotes
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
-$FOOTNOTESTYLE = 'separate';
+$FOOTNOTESTYLE = 'end';
 
 # -fill-column
 $FILLCOLUMN = 72;
@@ -79,7 +79,8 @@ $NUMBER_SECTIONS = 1;
 # This is most useful if you do not want to have section navigation
 # with -split chapter. There will be chapter navigation panel at the 
 # beginning and at the end of chapters anyway.
-$SECTION_NAVIGATION = 1;
+# this is mostly not used in the default case, important for html.
+$HEADERS = 0;
 
 # -o filename
 # If this is set a monolithic document is outputted into $filename.
@@ -111,7 +112,7 @@ $DOCUMENTLANGUAGE = 'en';
 
 # -transliterate-file-names 
 # transliterate node names for external refs (and internal if NODE_FILES)
-$TRANSLITERATE_NODE = 1;
+$TRANSLITERATE_FILE_NAMES = 1;
 
 # --error-limit
 # quit after NUM errors (default 1000).
@@ -169,7 +170,7 @@ $DUMP_TEXI = 0;
 
 # -expand
 # the @EXPAND array contains the expanded section names.
-@EXPAND = ('plaintext');
+@EXPAND = ();
 
 # -invisible
 # This seems obsolete and is not used anywhere.
@@ -244,8 +245,8 @@ $SHORTEXTN = 0;
 $PREFIX = '';
 
 # -short-ref
-# if this is set cross-references are given without section numbers.
-$SHORT_REF = '';
+# if this is set cross-references are given without section.
+$SHORT_REF = 0;
 
 # -idx-sum
 # if value is set, then for each @printindex <index name>
@@ -317,40 +318,24 @@ $L2H_CLEAN = 1;
 
 $FIRSTPARAGRAPHINDENT = 'none';
 
+@T2H_FORMAT_EXPAND = ('plaintext');
+
 # If true do table of contents even if there is no @content
 $CONTENTS = undef;
 
 # If true do short table of contents even if there is no @shortcontent
 $SHORTCONTENTS = undef;
 
-# if set, output the contents where the command is located
-$INLINE_CONTENTS = 0;
-
-# if this variable is true, numeric entities are used when there is no
-# corresponding textual entity.
-$USE_NUMERIC_ENTITY = 1;
-
 # if set, the image files are completed to be relative from the
 # document directory, to the source manual directory and then to
 # the image
 $COMPLETE_IMAGE_PATHS = 0;
 
-# if this variable is true, @setfilename is used if found to determine the
-# out file name
-$USE_SETFILENAME = 0;
-
 # if true, begin outputting at @setfilename, if this command is present.
 $IGNORE_BEFORE_SETFILENAME = 1;
 
 # if true the link in Overview link to the corresponding Toc entry.
-$OVERVIEW_LINK_TO_TOC = 0;
-
-# if set always separate description and menu link, even in 
-# preformatted environment
-$SEPARATE_DESCRIPTION = 0;
-
-# if set, then use node names in menu entries, instead of section names
-$NODE_NAME_IN_MENU = 0;
+$OVERVIEW_LINK_TO_TOC = 1;
 
 # if set, use node anchors for sections targets
 $USE_NODE_TARGET = 1;
@@ -359,15 +344,7 @@ $USE_NODE_TARGET = 1;
 $NEW_CROSSREF_STYLE = 1;
 
 # top heading is always at the beginning of the element.
-$TOP_HEADING_AT_BEGINNING = 1;
-
-# if set and menu entry equals menu description, then do not print 
-# menu description.
-# Likewise, if node name equals entry name, do not print entry name.
-$AVOID_MENU_REDUNDANCY = 1;
-
-# if true, use the original command if the result is an entity
-$ENABLE_ENCODING_USE_ENTITY = 1;
+$TOP_HEADING_AT_BEGINNING = 0;
 
 # if set, center @image by default
 # otherwise, do not center by default
@@ -399,21 +376,10 @@ $TOP_HEADING = '';
 # use first chapter with @printindex
 $INDEX_CHAPTER = '';
 
-# if set and $SPLIT is set, then split index pages at the next letter
-# after they have more than that many entries
-$SPLIT_INDEX = 0;
-
-# symbol put at the beginning of nodes entry in menu (and optionnaly of 
-# unnumbered in menus, see next variable)
-$MENU_SYMBOL = '*';
-#$MENU_SYMBOL = '*';
-
 $SIMPLE_MENU = 1;
 
 $OPEN_QUOTE_SYMBOL = "\`";
 $CLOSE_QUOTE_SYMBOL = "'";
-
-$CAPTION_STYLE = 'strong';
 
 # if true put a $MENU_SYMBOL before unnumbered in menus
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
@@ -490,20 +456,165 @@ $VERTICAL_HEAD_NAVIGATION = 0;
 # html version for latex2html
 $L2H_HTML_VERSION = "4.0";
 
+# use icons.
+$ICONS = 0;
+
+sub t2h_default_set_variables_default()
+{
+  $CAPTION_STYLE = 'strong';
+
+# if this variable is true, @setfilename is used if found to determine the
+# out file name
+  $USE_SETFILENAME = 1;
+
+# if true, use the filename and extension from setfilename. For Info.
+  $USE_SETFILENAME_EXTENSION = 0;
+
+# FIXME is this right?
+# default used in init_out for the setting of the ENCODING_NAME variable
+  $DEFAULT_ENCODING = 'utf8';
+
+# if set and menu entry equals menu description, then do not print 
+# menu description.
+# Likewise, if node name equals entry name, do not print entry name.
+  $AVOID_MENU_REDUNDANCY = 0;
+
+# if true, use the original command if the result is an entity
+  $ENABLE_ENCODING_USE_ENTITY = 0;
+
+# if set, output the contents where the command is located
+  $INLINE_CONTENTS = 1;
+
+# symbol put at the beginning of nodes entry in menu (and optionnaly of 
+# unnumbered in menus, see UNNUMBERED_SYMBOL_IN_MENU variable)
+  $MENU_SYMBOL = '*';
+
+# if set, then use node names in menu entries, instead of section names
+  $NODE_NAME_IN_MENU = 1;
+
+# if set always separate description and menu link, even in 
+# preformatted environment
+  $SEPARATE_DESCRIPTION = 0;
+
 # use the information given by menus to complete the node directions
-$USE_MENU_DIRECTIONS = 1;
+  $USE_MENU_DIRECTIONS = 0;
 
 # try up sections to complete the node directions
-$USE_UP_FOR_ADJACENT_NODES = 1;
+  $USE_UP_FOR_ADJACENT_NODES = 0;
 
 # use accesskey in hrefs
-$USE_ACCESSKEY = 0;
+  $USE_ACCESSKEY = 1;
 
 # use rel= and rev= in hrefs. Currently only rel is used
-$USE_REL_REV = 0;
+  $USE_REL_REV = 1;
 
 # generate <link> elements in head
-$USE_LINKS = 0;
+  $USE_LINKS = 1;
+
+# if this variable is true, numeric entities are used when there is no
+# corresponding textual entity.
+  $USE_NUMERIC_ENTITY = 0;
+
+# if set and $SPLIT is set, then split index pages at the next letter
+# after they have more than that many entries
+  $SPLIT_INDEX = 0;
+
+  $FOOTNOTESTYLE = 'end';
+
+  $DOCTYPE = '';
+
+  $USE_ISO = 0;
+
+  $NUMBER_SECTIONS = 1;
+  
+  $TOP_FILE = '';
+
+  $USE_NODES = 1;
+
+  $USE_SECTIONS = 1;
+
+# these are more or less the documented vanilla versions, so they
+# are reset
+$unknown                  = \&t2h_default_unknown;
+$unknown_style            = \&t2h_default_unknown_style;
+$external_ref      = \&t2h_default_external_ref;
+$internal_ref      = \&t2h_default_internal_ref;
+$tab_item_texi              = \&t2h_default_tab_item_texi;
+$complex_format    = \&t2h_default_complex_format;
+# reset in docbook and info.
+$style                    = \&T2H_GPL_style;
+$format                   = \&T2H_GPL_format;
+# reset in html and xml
+$caption_shortcaption     = \&t2h_default_caption_shortcaption;
+$caption_shortcaption_command  = \&t2h_default_caption_shortcaption_command;
+# reset in docbook and xml. Not really vanilla, but documented.
+$printindex        = \&t2h_GPL_default_printindex;
+# reset by xml and html
+$misc_element_label         = \&t2h_default_misc_element_label;
+# set in html
+$init_out    = \&t2h_default_init_out;
+
+# in info
+$footnote_texi = undef;
+$begin_paragraph_texi = undef;
+$begin_style_texi = undef;
+$begin_special_region = undef;
+$end_special_region = undef;
+$empty_preformatted = undef;
+
+%line_command_map = (
+       'title'    => '',
+       'subtitle' => '',
+       'author'   => '',
+);
+
+%format_in_paragraph = (
+);
+# map mapping css specification to style
+
+%css_map = 
+     (
+     );
+
+}
+
+t2h_default_set_variables_default();
+
+sub t2h_default_set_variables_xml()
+{
+  t2h_default_set_variables_default();
+  $ENABLE_ENCODING_USE_ENTITY = 1;
+  $EXTENSION = 'xml';
+  $USE_ISO = 1;
+
+  $empty_line = \&t2h_default_empty_line;
+  $comment = \&xml_default_comment;
+}
+
+sub t2h_default_set_variables_texi2html()
+{
+  $USE_SETFILENAME = 0;
+  $USE_SETFILENAME_EXTENSION = 0;
+  $FOOTNOTESTYLE = 'separate';
+  $INLINE_CONTENTS = 0;
+  $AVOID_MENU_REDUNDANCY = 1;
+  $TOP_HEADING_AT_BEGINNING = 1;
+  $TOP_FILE = '';
+  $USE_ACCESSKEY = 0;
+  $NODE_NAME_IN_MENU = 0;
+  $OVERVIEW_LINK_TO_TOC = 0;
+  $USE_MENU_DIRECTIONS = 1;
+  $USE_UP_FOR_ADJACENT_NODES = 1;
+  $USE_ACCESSKEY = 0;
+  $USE_REL_REV = 0;
+  $USE_LINKS = 0;
+  $USE_NODES = undef;
+  $USE_NUMERIC_ENTITY = 1;
+  $SPLIT_INDEX = 100;
+
+  $ENABLE_ENCODING_USE_ENTITY = 1;
+  $USE_ISO = 1;
+}
 
 # specify in this array which "buttons" should appear in which order
 # in the navigation panel for sections; use ' ' for empty buttons (space)
@@ -518,7 +629,7 @@ $USE_LINKS = 0;
 @MISC_BUTTONS = ('Top', 'Contents', 'Index', 'About');
 
 # buttons for chapter file footers
-# (and headers but only if SECTION_NAVIGATION is false)
+# (and headers but only if HEADERS is false)
 @CHAPTER_BUTTONS =
     (
      'FastBack', 'FastForward', ' ',
@@ -545,7 +656,6 @@ $USE_LINKS = 0;
       'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
     );
 
-$ICONS = 0;
 
 # insert here name of icon images for buttons
 # Icons are used, if $ICONS and resp. value are set
@@ -622,7 +732,6 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp')
   $null_device_file{'NUL'} = 1;
 }
 
-$init_out    = \&t2h_default_init_out;
 $finish_out    = \&t2h_default_finish_out;
 $translate_names = \&t2h_default_translate_names;
 
@@ -935,9 +1044,6 @@ sub t2h_default_finish_out()
 #
 #######################################################################
 
-# default used in init_out for the setting of the ENCODING_NAME variable
-$DEFAULT_ENCODING = 'utf8';
-
 # In file encoding. The @documentencoding allows autodetection of 
 # that variable.
 $DOCUMENT_ENCODING = undef;
@@ -1070,6 +1176,7 @@ $print_redirection_page    = \&T2H_DEFAULT_print_redirection_page;
 $node_file_name            = \&T2H_DEFAULT_node_file_name;
 $inline_contents           = \&T2H_DEFAULT_inline_contents;
 $program_string            = \&T2H_DEFAULT_program_string;
+$element_file_name         = \&t2h_default_element_file_name;
  
 ########################################################################
 # Layout for html for every sections
@@ -1157,7 +1264,7 @@ sub T2H_DEFAULT_print_About
 {
     # if there is no section navigation and it is not split, the 
     # navigation information is useless
-    return &$print_misc(@_) if (get_conf('SPLIT') or $SECTION_NAVIGATION);
+    return &$print_misc(@_) if (get_conf('SPLIT') or get_conf('headers'));
 }
 
 sub T2H_DEFAULT_print_misc_header
@@ -1414,7 +1521,7 @@ sub T2H_DEFAULT_toc_body($)
       $level = 1 if ($level < 1);
       my $text =  $element->{'name'};
       $text = $element->{'text'} if ($NUMBER_SECTIONS);
-      my $result =  (' ' x ($level - 1)) . $text;
+      my $result =  (' ' x ($level - 1)) . $text ."\n";
       push @{$Texi2HTML::TOC_LINES}, $result if (get_conf('contents'));
       push @{$Texi2HTML::OVERVIEW}, $result if (get_conf('shortcontents') and $level == 1);
    }
@@ -1599,7 +1706,7 @@ sub T2H_DEFAULT_node_file_name($$)
     }
     elsif ($NEW_CROSSREF_STYLE)
     {
-        if ($TRANSLITERATE_NODE)
+        if ($TRANSLITERATE_FILE_NAMES)
         {
             $node_file_base = $node->{'cross_manual_file'};
         }
@@ -1665,7 +1772,7 @@ sub T2H_DEFAULT_node_file_name($$)
 
 #
 # ascii representation of texinfo "simple things" @-commands
-%ascii_simple_map = (
+%default_simple_map = (
            '*', "\n",
            ' ', ' ',
            "\t", ' ',
@@ -1683,14 +1790,14 @@ sub T2H_DEFAULT_node_file_name($$)
 );
 
 # texinfo "simple things" @-commands
-%simple_map = %ascii_simple_map;
+%simple_map = %default_simple_map;
 
 # this map is used in preformatted text
 %simple_map_pre = %simple_map;
 
 # This map is used when texi elements are removed and replaced 
 # by simple text
-%simple_map_texi = %ascii_simple_map;
+%simple_map_texi = %default_simple_map;
 
 # maps for the math specific commands
 %simple_map_math = (
@@ -1711,7 +1818,7 @@ $punctuation_characters = '.?!';
 $after_punctuation_characters = '"\')]';
 
 
-%ascii_things_map = (
+%default_things_map = (
                'TeX'          => 'TeX',
                'LaTeX'          => 'LaTeX',
                'bullet'       => '*',
@@ -1770,7 +1877,7 @@ $after_punctuation_characters = '"\')]';
                'guilsinglright'          => '>',
 );
 
-%things_map = %ascii_things_map;
+%things_map = %default_things_map;
 
 # This map is used in preformatted environments
 %pre_map = %things_map;
@@ -1778,7 +1885,7 @@ $after_punctuation_characters = '"\')]';
 # text replacing macros when texi commands are removed and plain text is 
 # produced.
 # Also used for index sorting.
-%texi_map = %ascii_things_map;
+%texi_map = %default_things_map;
 
 foreach my $accent_letter ('o','O','l','L')
 {
@@ -1787,6 +1894,7 @@ foreach my $accent_letter ('o','O','l','L')
 $texi_map{'copyright'} = 'C';
 $texi_map{'registeredsymbol'} = 'R';
 
+%default_texi_map = %texi_map;
 
 # taken from
 #Latin extended additionnal
@@ -2614,6 +2722,29 @@ my %old_style_map = (
       'w',          '',
      );
 
+sub t2h_default_copy_style_map ($$;$)
+{
+  my $from = shift;
+  my $to = shift;
+  my $merge = shift;
+
+  foreach my $command (keys(%$from))
+  {
+     foreach my $key (keys(%{$from->{$command}}))
+     {
+        next if (exists($to->{$command}->{$key}) and $merge);
+        if ($key eq 'args')
+        {
+           $to->{$command}->{$key} = [ @{$from->{$command}->{$key}} ];
+        }
+        else
+        {
+           $to->{$command}->{$key} = $from->{$command}->{$key};
+        }
+     }
+  }
+}
+
 # default is {'args' => ['normal'], 'attribute' => ''},   
 %style_map = (
       'asis',       {},
@@ -2678,11 +2809,6 @@ foreach my $style (keys(%style_map))
    }
 }
 
-%line_command_map = (
-       'title'    => '',
-       'subtitle' => '',
-       'author'   => '',
-);
 
 %unicode_diacritical = (
        'H'          => '030B', 
@@ -3040,6 +3166,14 @@ foreach my $style (keys(%style_map))
     },
 );
 
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
+{
+     $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
+     $old_style_map{$accent_command} = '&default_accent';
+     $style_map_texi{$accent_command} = { 'function' => \&t2h_default_accent };
+}
+
+
 %transliterate_accent_map = ();
 foreach my $command (keys(%unicode_accents))
 {
@@ -3063,13 +3197,6 @@ foreach my $command (keys(%unicode_accents))
 # however this doesn't seems to work in firefox
 #      'ogonek'     => 'aeiuAEIU',
 );
-
-foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
-{
-     $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
-     $old_style_map{$accent_command} = '&default_accent';
-     $style_map_texi{$accent_command} = { 'function' => \&t2h_default_ascii_accent };
-}
 
 sub default_accent($$)
 {
@@ -3113,6 +3240,34 @@ sub ascii_accents($$)
     return $text . '<' if ($accent eq 'v');
     return $text . ';' if ($accent eq 'ogonek');
     return $text . $accent if (defined($accent_map{$accent}));
+}
+
+sub xml_default_accent($$)
+{
+    my $accent = shift;
+    my $args = shift;
+
+    my $text = $args->[0];
+
+    return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
+    return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return $text . '&lt;' if ($accent eq 'v');
+# FIXME here there could be a conversion to the character in the right 
+# encoding, like 
+#    if ($USE_UNICODE and defined($OUT_ENCODING) and $OUT_ENCODING ne '' 
+#        and exists($unicode_accents{$accent}) and  exists($unicode_accents{$accent}->{$text}))
+#    {
+#          my $encoded_char =  Encode::encode($OUT_ENCODING, chr(hex($unicode_map{$thing})), Encode::FB_QUIET);
+#          return $encoded_char if ($encoded_char ne '');
+#    }
+    if ($USE_NUMERIC_ENTITY)
+    {
+        if (exists($unicode_accents{$accent}) and exists($unicode_accents{$accent}->{$text}))
+        {
+             return ('&#' . hex($unicode_accents{$accent}->{$text}) . ';');
+        }
+    }
+    return ascii_accents($text, $accent);
 }
 
 # used to utf8 encode the result
@@ -3505,15 +3660,6 @@ sub t2h_default_hyphenation($$)
     }
 }
 
-sub t2h_default_ascii_accent($$$$)
-{
-    my $accent = shift;
-    my $args = shift;
-
-    my $text = $args->[0];
-    return ascii_accents($text, $accent);
-}
-
 sub t2h_default_no_texi_email
 {
     my $command = shift;
@@ -3655,6 +3801,25 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 #    $simple_format_style_map_texi{$accent_command}->{'args'} = ['normal'];
     $simple_format_style_map_texi{$accent_command}->{'function'} = \&t2h_default_accent;
 }
+
+foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi, \%simple_format_style_map_texi)
+{
+  foreach my $style (keys(%{$hash}))
+  {
+    $hash->{$style}->{'args'} = ['normal'] if (!exists($hash->{$style}->{'args'}));
+  } 
+}
+
+%default_style_map = ();
+%default_style_map_pre = ();
+%default_style_map_texi = ();
+%default_simple_format_style_map_texi = ();
+
+t2h_default_copy_style_map(\%style_map, \%default_style_map);
+t2h_default_copy_style_map(\%style_map_pre, \%default_style_map_pre);
+t2h_default_copy_style_map(\%style_map_texi, \%default_style_map_texi);
+t2h_default_copy_style_map(\%simple_format_style_map_texi, \%default_simple_format_style_map_texi);
+
 
 # regions expanded or not depending on the value of this hash.
 # @EXPAND sets entries in this hash, and you should better use
@@ -4002,14 +4167,6 @@ my %misc_command_old = (
         'filbreak', 1,
      );
 
-%format_in_paragraph = (
-);
-# map mapping css specification to style
-
-%css_map = 
-     (
-     );
-
 # The command_handler arrays are for commands formatted externally.
 # The function references in @command_handler_init are called
 # before the second pass, before the @-commands text collection.
@@ -4039,9 +4196,6 @@ $menu_link         = \&t2h_default_menu_link;
 #$menu_comment      = \&t2h_default_menu_comment;
 $menu_description  = \&t2h_default_menu_description;
 #$simple_menu_link  = \&t2h_default_simple_menu_link;
-$external_ref      = \&t2h_default_external_ref;
-$external_href     = \&t2h_default_external_href;
-$internal_ref      = \&t2h_default_internal_ref;
 $table_item        = \&t2h_default_table_item;
 $table_line        = \&t2h_default_table_line;
 $table_list        = \&t2h_default_table_list;
@@ -4056,6 +4210,7 @@ $raw_no_texi       = \&t2h_default_raw_no_texi;
 $heading           = \&t2h_default_heading;
 $element_heading   = \&t2h_default_element_heading;
 $heading_no_texi   = \&t2h_default_heading_no_texi;
+$external_href     = \&t2h_default_external_href;
 $paragraph         = \&t2h_default_paragraph;
 $preformatted      = \&t2h_default_preformatted;
 $foot_line_and_ref = \&t2h_default_foot_line_and_ref;
@@ -4065,7 +4220,7 @@ $image             = \&t2h_default_image;
 $address           = \&t2h_default_address;
 $index_entry_label = \&t2h_default_index_entry_label;
 $index_summary     = \&t2h_default_index_summary;
-#$summary_letter    = \&t2h_default_summary_letter;
+$summary_letter    = \&t2h_default_summary_letter;
 $index_entry       = \&t2h_default_index_entry;
 $index_entry_command = \&t2h_default_index_entry_command;
 $index_letter      = \&t2h_default_index_letter;
@@ -4073,7 +4228,6 @@ $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_print_index;
 $protect_text      = \&t2h_default_protect_text;
 $normal_text       = \&t2h_default_normal_text;
-$complex_format    = \&t2h_default_complex_format;
 $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
 $definition_category      = \&t2h_default_definition_category;
@@ -4084,10 +4238,6 @@ $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
 $index_summary_file_end   = \&t2h_default_index_summary_file_end;
 $index_summary_file_begin = \&t2h_default_index_summary_file_begin;
 $empty_line               = \&t2h_default_empty_line;
-$unknown                  = \&t2h_default_unknown;
-$unknown_style            = \&t2h_default_unknown_style;
-$caption_shortcaption     = \&t2h_default_caption_shortcaption;
-$caption_shortcaption_command  = \&t2h_default_caption_shortcaption_command;
 $float                     = \&t2h_default_float;
 $listoffloats             = \&t2h_default_listoffloats;
 $listoffloats_entry       = \&t2h_default_listoffloats_entry;
@@ -4101,12 +4251,10 @@ $paragraph_style_command  = \&t2h_default_paragraph_style_command;
 $heading_texi             = \&t2h_default_heading_texi;
 $index_element_heading_texi = \&t2h_default_index_element_heading_texi;
 $element_label              = \&t2h_default_element_label;
-$misc_element_label         = \&t2h_default_misc_element_label;
 $anchor_label               = \&t2h_default_anchor_label;
 $preserve_misc_command      = \&t2h_default_preserve_misc_command;
 $format_list_item_texi      = \&t2h_default_format_list_item_texi;
 $begin_format_texi          = \&t2h_default_begin_format_texi;
-$tab_item_texi              = \&t2h_default_tab_item_texi;
 $insertcopying              = \&t2h_default_insertcopying;
 $colon_command              = \&t2h_default_colon_command;
 $simple_command             = \&t2h_default_simple_command;
@@ -4676,6 +4824,20 @@ sub t2h_default_definition_index_entry($$$$)
         return $name;
     }
 }
+
+sub t2h_default_summary_letter($$$$$$$)
+{
+   my $letter = shift;
+   my $file = shift;
+   my $default_identifier = shift;
+   my $index_element_id = shift;
+   my $number = shift;
+   my $index_element = shift;
+   my $index_name = shift;
+
+   return '';
+}
+
 
 # format the container for the @deffn line and text
 # 
@@ -5247,6 +5409,14 @@ sub t2h_default_comment($)
     return '';
 }
 
+# an xml comment
+sub xml_default_comment($)
+{
+    my $text = shift;
+    $text =~ s/--+/-/go;
+    return '<!-- ' . $text . ' -->' . "\n";
+}
+
 sub t2h_collect_styles($)
 {
     my $cmd_stack = shift;
@@ -5442,20 +5612,28 @@ sub t2h_default_heading($$$$$;$$)
     my $one_section = shift;
     my $element_heading = shift;
 
+    my $level = $element->{'level'};
     if ($element->{'node'})
     {
-        return '';
+        if ($element->{'text'} =~ /^top$/i)
+        {
+          $level = 0;
+        }
+        else
+        {
+          $level = 3;
+        }
     }
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
     $text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
-    $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
+    $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $level <= 1);
     my $result = $text . "\n" .
-       ($t2h_default_underline_symbol{$element->{'level'}} x length($text)) . "\n";
+       ($t2h_default_underline_symbol{$level} x length($text)) . "\n";
 
-   $result .= "\n";
+   #$result .= "\n";
    return $result;
 }
 
@@ -5670,7 +5848,6 @@ sub t2h_default_index_entry_label($$$$$$$$)
 
     return '' if (!defined($identifier) or ($identifier !~ /\S/));
     my $label = &$anchor($identifier);
-    return $label . "\n" if (!$preformatted);
     return $label;
 }
 
@@ -6056,7 +6233,7 @@ sub t2h_default_tab_item_texi($$$$$$)
    return undef;
 }
 
-sub t2h_default_line_command($$$$)
+sub xml_default_line_command($$$$)
 {
     my $command = shift;
     my $arg_text = shift;
@@ -6079,4 +6256,36 @@ sub t2h_default_line_command($$$$)
     return $arg_text;
 }
 
+sub t2h_default_line_command($$$$)
+{
+    my $command = shift;
+    my $arg_text = shift;
+    my $arg_texi = shift;
+    my $state = shift;
+
+    return $arg_text;
+}
+
+# info is special, since it doesn't use the basename but directly the 
+# setfilename output, contrary to all the other formats
+sub t2h_default_element_file_name($$$)
+{
+    my $element = shift;
+    my $type = shift;
+    my $prefix = shift;
+
+    my $outname;
+    return unless ($USE_SETFILENAME_EXTENSION);
+    $outname = $OUT if (defined($OUT) and $OUT ne '' and $OUT !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
+    if ($type eq 'doc') 
+    {
+       if (defined($Texi2HTML::THISDOC{'setfilename'}) and !defined($outname))
+       {
+          $Texi2HTML::THISDOC{'extension'} = '';
+          return $Texi2HTML::THISDOC{'setfilename'};
+       }
+    }
+
+    return undef;
+}
 1;

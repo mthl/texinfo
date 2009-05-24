@@ -45,6 +45,10 @@ This file records noteworthy changes.
 
 * replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by $SHORTCONTENTS.
 
+* replace $TRANSLITERATE_NODE by $TRANSLITERATE_FILE_NAMES.
+
+* replace $SECTION_NAVIGATION by $HEADERS.
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

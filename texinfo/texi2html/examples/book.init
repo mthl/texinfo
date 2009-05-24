@@ -87,14 +87,14 @@ sub book_print_element_header($$)
     my $buttons = \@SECTION_BUTTONS;
     my $result;
 
-    if ($first_in_page and $SECTION_NAVIGATION)
+    if ($first_in_page and get_conf('headers'))
     {
         $result = book_print_up_toc($Texi2HTML::THIS_ELEMENT);
         $result .= &$print_head_navigation(undef, $buttons);
     }
     else
     { # got to do this here, as it isn't done in print_head_navigation
-        $result = &$print_navigation($buttons) if ($SECTION_NAVIGATION);
+        $result = &$print_navigation($buttons) if (get_conf('headers'));
     }
     return $result;
 }

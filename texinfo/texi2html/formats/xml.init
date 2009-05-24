@@ -11,18 +11,15 @@ my %def_format_xml;
 sub xml_default_load()
 {
 
-$EXTENSION = "xml";
+t2h_default_set_variables_xml();
 $DOCTYPE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">';
-$USE_MENU_DIRECTIONS = 0;
-$USE_UP_FOR_ADJACENT_NODES = 0;
-$USE_NUMERIC_ENTITY = 0;
-$USE_SETFILENAME = 1;
+$SIMPLE_MENU = 0;
 $SEPARATE_DESCRIPTION = 1;
-$USE_NODES = 1;
-@EXPAND = ('xml', 'direntry');
-
+@T2H_FORMAT_EXPAND = ('xml', 'direntry');
 $USE_ISO = 0;
-$SECTION_NAVIGATION = 0;
+$HEADERS = 0;
+$INLINE_INSERTCOPYING = 0;
+$SHOW_MENU = 1;
 
 push @Texi2HTML::Config::command_handler_process, \&xml_init_variables;
 
@@ -74,10 +71,16 @@ foreach my $region ('titlepage', 'documentdescription', 'copying')
    $region_formats_kept{$region} = 1;
 }
 
+t2h_default_copy_style_map (\%default_style_map, \%style_map);
+
 foreach my $style (keys(%style_map))
 {
-    next if grep {$style eq $_} ('asis', 'ctrl', 'w', 'tieaccent', 'dotless',  keys(%unicode_accents));
-    if (!exists($style_map{$style}->{'args'}) or (scalar(@{$style_map{$style}->{'args'}}) eq 1 and $style_map{$style}->{'args'}->[0] eq 'code'))
+    next if grep {$style eq $_} ('asis', 'ctrl', 'w');
+    if (grep {$style eq $_} ('tieaccent', 'dotless', keys(%unicode_accents)))
+    {
+     $style_map{$style} = { 'function' => \&xml_default_accent };
+    }
+    elsif (!exists($style_map{$style}->{'args'}) or (scalar(@{$style_map{$style}->{'args'}}) eq 1 and ($style_map{$style}->{'args'}->[0] eq 'code' or $style_map{$style}->{'args'}->[0] eq 'normal')))
     {
         $style_map{$style}->{'attribute'} = $style;
         delete ($style_map{$style}->{'quote'});
@@ -315,9 +318,10 @@ sub xml_print_page_head($)
     $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.$EXTENSION</setfilename>" 
         unless (defined($Texi2HTML::THISDOC{'setfilename'}) and $Texi2HTML::THISDOC{'setfilename'} ne '');
     my $language = get_conf('documentlanguage');
+    my $doctype = get_conf('doctype');
     print $fh <<EOT;
 <?xml version="1.0"?>
-$DOCTYPE
+$doctype
 <texinfo xml:lang="$language">
 $setfilename
 EOT
