@@ -1,0 +1,52 @@
+\input texinfo.tex
+
+@setfilename imbricated_macros
+
+@node Top
+
+
+
+
+
+@c the arguments are broken at , before macro expansion 
+@c @ protect the following @.
+@c 
+a, coucou  after arg
+text for macro2
+&&&& 
+
+@c the macro inside @macro1 is expanded before the remaining args
+@c are appended.
+
+a, macro2text for macro2
+&&&& 
+
+@verb{% @macro2 %}
+@c @macro4
+@pagesizes 4 1
+2
+3
+4
+@headings doubleafter 1
+2
+3
+4
+@verbatim
+@macro2
+@end verbatim
+macro7 defined
+1
+2
+3
+4
+1
+2
+3
+4
+
+&&&& 
+
+Call macro7
+@emph{aaa}
+
+@bye

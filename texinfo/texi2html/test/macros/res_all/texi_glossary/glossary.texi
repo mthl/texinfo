@@ -1,0 +1,29 @@
+\input texinfo.tex
+
+@setfilename glossary
+
+
+
+
+@node Top
+@top Top
+
+@menu 
+* glossary::
+@end menu
+
+The name1 (@pxref{id1})
+ is used in many cases while
+name2 (@pxref{id2})
+ is quite specific
+
+@node glossary
+@chapter glossary
+@table @asis
+@item name1 @anchor{id1}
+text1, arg1 
+@item name2 @anchor{id2}
+text2
+@end table
+
+

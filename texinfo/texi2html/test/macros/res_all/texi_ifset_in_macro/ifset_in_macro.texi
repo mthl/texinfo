@@ -1,0 +1,10 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename ifset_in_macro.info
+
+@node Top
+
+
+text
+
+@bye

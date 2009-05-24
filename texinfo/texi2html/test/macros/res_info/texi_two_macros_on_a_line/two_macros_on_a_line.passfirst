@@ -1,0 +1,27 @@
+two_macros_on_a_line.texi(,2) 
+two_macros_on_a_line.texi(,3) @setfilename two_macros_on_a_line
+two_macros_on_a_line.texi(,4) 
+two_macros_on_a_line.texi(,5) @node Top
+two_macros_on_a_line.texi(,6) @top top
+two_macros_on_a_line.texi(,7) 
+two_macros_on_a_line.texi(,11) 
+two_macros_on_a_line.texi(,17) 
+two_macros_on_a_line.texi(,18) 
+two_macros_on_a_line.texi(,19) @@mymacro@{@} @@mymacro@{@}
+two_macros_on_a_line.texi(mymacro,20) in mymacro in mymacro
+two_macros_on_a_line.texi(,21) 
+two_macros_on_a_line.texi(,22) @@mymacro @@mymacro@{@}
+two_macros_on_a_line.texi(mymacro,23) in mymacro in mymacro
+two_macros_on_a_line.texi(,24) 
+two_macros_on_a_line.texi(,25) @@mymacro@{@} @@mymacro
+two_macros_on_a_line.texi(mymacro,26) in mymacro in mymacro
+two_macros_on_a_line.texi(,27) 
+two_macros_on_a_line.texi(,28) with args
+two_macros_on_a_line.texi(mymacro_with_args,32) in with args
+two_macros_on_a_line.texi(mymacro_with_args,32) now the arg an
+two_macros_on_a_line.texi(mymacro_with_args,32) arg
+two_macros_on_a_line.texi(mymacro_with_args,32) 
+two_macros_on_a_line.texi(mymacro_with_args,32) in macro
+two_macros_on_a_line.texi(mymacro_with_args,32) after in mymacro
+two_macros_on_a_line.texi(,33) 
+two_macros_on_a_line.texi(,34) @bye

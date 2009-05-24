@@ -1,0 +1,22 @@
+macro_in_pass_texi_commands.texi(,2) 
+macro_in_pass_texi_commands.texi(,9) 
+macro_in_pass_texi_commands.texi(begin_file,10) @setfilename macro_in_passtexi_commands.info
+macro_in_pass_texi_commands.texi(,11) 
+macro_in_pass_texi_commands.texi(,16) 
+macro_in_pass_texi_commands.texi(,20) 
+macro_in_pass_texi_commands.texi(,24) 
+macro_in_pass_texi_commands.texi(documentencoding_command,25) @documentencoding ISO-8859-1
+macro_in_pass_texi_commands.texi(,26) 
+macro_in_pass_texi_commands.texi(,27) 
+macro_in_pass_texi_commands.texi(,32) 
+macro_in_pass_texi_commands.texi(,33) @node Top
+macro_in_pass_texi_commands.texi(,34) @top top
+macro_in_pass_texi_commands.texi(,35) 
+inc_file.texi(,1) In included file.
+macro_in_pass_texi_commands.texi(,37) 
+macro_in_pass_texi_commands.texi(themacro,38) in themacro
+macro_in_pass_texi_commands.texi(,39) 
+macro_in_pass_texi_commands.texi(,40) macro_in_pass_texi_commands@{info@}
+macro_in_pass_texi_commands.texi(end_file_name,41) texi_commands.info
+macro_in_pass_texi_commands.texi(,42) 
+macro_in_pass_texi_commands.texi(,43) @bye

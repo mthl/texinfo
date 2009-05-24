@@ -1,0 +1,12 @@
+top
+***
+
+In included file.
+
+in themacro
+
+macro_in_pass_texi_commands{info}
+texi_commands.info
+
+In included file.
+

@@ -1,0 +1,245 @@
+bib-example.texi(,2) @c % Copyright (C) 2004  Aaron S. Hawley
+bib-example.texi(,3) 
+bib-example.texi(,4) @c % Author: Aaron S. Hawley <ashawley@gnu.uvm.edu>
+bib-example.texi(,5) @c % Keywords: docs, texinfo, extensions, bib
+bib-example.texi(,6) 
+bib-example.texi(,7) @c % This file is free software; you can redistribute it and/or modify
+bib-example.texi(,8) @c % it under the terms of the GNU General Public License as published by
+bib-example.texi(,9) @c % the Free Software Foundation; either version 2, or (at your option)
+bib-example.texi(,10) @c % any later version.
+bib-example.texi(,11) 
+bib-example.texi(,12) @c % This file is distributed in the hope that it will be useful,
+bib-example.texi(,13) @c % but WITHOUT ANY WARRANTY; without even the implied warranty of
+bib-example.texi(,14) @c % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+bib-example.texi(,15) @c % GNU General Public License for more details.
+bib-example.texi(,16) 
+bib-example.texi(,17) @c % You should have received a copy of the GNU General Public License
+bib-example.texi(,18) @c % along with texi2html; see the file COPYING.  If not, write to
+bib-example.texi(,19) @c % the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+bib-example.texi(,20) @c % Boston, MA 02111-1307, USA.
+bib-example.texi(,21) 
+bib-example.texi(,22) @comment %**start of header
+bib-example.texi(,23) @setfilename my-file-with-bib.info
+bib-example.texi(,24) @settitle Texinfo with a Bibliography and References
+bib-example.texi(,25) 
+my-bib-macros.texi(,1) @c \input texinfo   @c -*-texinfo-*-
+my-bib-macros.texi(,2) @c %% my-bib-macros.texi --- Texinfo macros providing a crude
+my-bib-macros.texi(,3) @c %% bibliography and citation capability.
+my-bib-macros.texi(,4) 
+my-bib-macros.texi(,5) @c % Copyright (C) 2004  Aaron S. Hawley
+my-bib-macros.texi(,6) 
+my-bib-macros.texi(,7) @c % Author: Aaron S. Hawley <ashawley@gnu.uvm.edu>
+my-bib-macros.texi(,8) @c % Keywords: docs, texinfo, extensions, bib
+my-bib-macros.texi(,9) 
+my-bib-macros.texi(,10) @c % This file is free software; you can redistribute it and/or modify
+my-bib-macros.texi(,11) @c % it under the terms of the GNU General Public License as published by
+my-bib-macros.texi(,12) @c % the Free Software Foundation; either version 2, or (at your option)
+my-bib-macros.texi(,13) @c % any later version.
+my-bib-macros.texi(,14) 
+my-bib-macros.texi(,15) @c % This file is distributed in the hope that it will be useful,
+my-bib-macros.texi(,16) @c % but WITHOUT ANY WARRANTY; without even the implied warranty of
+my-bib-macros.texi(,17) @c % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+my-bib-macros.texi(,18) @c % GNU General Public License for more details.
+my-bib-macros.texi(,19) 
+my-bib-macros.texi(,20) @c % You should have received a copy of the GNU General Public License
+my-bib-macros.texi(,21) @c % along with texi2html; see the file COPYING.  If not, write to
+my-bib-macros.texi(,22) @c % the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+my-bib-macros.texi(,23) @c % Boston, MA 02111-1307, USA.
+my-bib-macros.texi(,24) 
+my-bib-macros.texi(,25) @c %% Commentary:
+my-bib-macros.texi(,26) 
+my-bib-macros.texi(,27) @c %%% Introduction
+my-bib-macros.texi(,28) 
+my-bib-macros.texi(,29) @c %% Creates references to a ``Bibliography'' or ``References''
+my-bib-macros.texi(,30) @c %% section of a Texinfo document, using Texinfo's
+my-bib-macros.texi(,31) @c %% macro system.  Although not as terse a way to cite systems as is
+my-bib-macros.texi(,32) @c %% found in document systems like TeX, the format is simpler and
+my-bib-macros.texi(,33) @c %% the rendering  is easier for non-academic readers.
+my-bib-macros.texi(,34) 
+my-bib-macros.texi(,35) @c %
+my-bib-macros.texi(,36) 
+my-bib-macros.texi(,37) @c %%% Usage
+my-bib-macros.texi(,38) 
+my-bib-macros.texi(,39) @c %% References to cited works can be put in any section of a document.
+my-bib-macros.texi(,40) @c %% The cited works must be put in either a Texinfo table (for
+my-bib-macros.texi(,41) @c %% instance with ``@table @asis ... @end table'') or within a
+my-bib-macros.texi(,42) @c %% Texinfo list (something like ``@enumerate ... @end enumerate''
+my-bib-macros.texi(,43) @c %% or ``@itemize @bullet ... @end itemize'').  They are created
+my-bib-macros.texi(,44) @c %% with the command ``@mybibitem{REF-NAME}''.  To cite a reference
+my-bib-macros.texi(,45) @c %% with a @mybibitem use ``@mybibcite{REF-NAME}''.
+my-bib-macros.texi(,46) 
+my-bib-macros.texi(,47) @c %% The beginning of a document must include (using the @include
+my-bib-macros.texi(,48) @c %% command) the file my-bib-macros.texi, which should be made
+my-bib-macros.texi(,49) @c %% available in the current directory of the parent file.  A single
+my-bib-macros.texi(,50) @c %% call should be made to choose to use a list or a table.  The
+my-bib-macros.texi(,51) @c %% command to chose is called @mybibuselist{NODE}, where NODE is
+my-bib-macros.texi(,52) @c %% the node containing the location where the references are listed.
+my-bib-macros.texi(,53) 
+my-bib-macros.texi(,54) @c %
+my-bib-macros.texi(,55) 
+my-bib-macros.texi(,56) @c %%% Example
+my-bib-macros.texi(,57) 
+my-bib-macros.texi(,58) @c %% \input texinfo   @c -*-texinfo-*-
+my-bib-macros.texi(,59) @c %% @comment %**start of header
+my-bib-macros.texi(,60) @c %% @setfilename my-file-with-bib.info
+my-bib-macros.texi(,61) @c %% @settitle Texinfo with a Bibliography and References
+my-bib-macros.texi(,62) @c %%
+my-bib-macros.texi(,63) @c %% @include my-bib-macros.texi
+my-bib-macros.texi(,64) @c %% @mybibuselist{References}
+my-bib-macros.texi(,65) @c %%
+my-bib-macros.texi(,66) @c %% @comment %**end of header
+my-bib-macros.texi(,67) @c %%
+my-bib-macros.texi(,68) @c %% @node Top
+my-bib-macros.texi(,69) @c %% @top Top
+my-bib-macros.texi(,70) @c %%
+my-bib-macros.texi(,71) @c %% @menu
+my-bib-macros.texi(,72) @c %% * Introduction::
+my-bib-macros.texi(,73) @c %% * @mybibnode{}::
+my-bib-macros.texi(,74) @c %%
+my-bib-macros.texi(,75) @c %% @end menu
+my-bib-macros.texi(,76) @c %%
+my-bib-macros.texi(,77) @c %% @node Introduction
+my-bib-macros.texi(,78) @c %% @chapter Introduction
+my-bib-macros.texi(,79) @c %%
+my-bib-macros.texi(,80) @c %% The ability of a documentation format to make cross references to a
+my-bib-macros.texi(,81) @c %% bibliography, a feature of LaTeX @mybibcite{LaTeX2e}, isn't
+my-bib-macros.texi(,82) @c %% currently supported in Texinfo.
+my-bib-macros.texi(,83) @c %%
+my-bib-macros.texi(,84) @c %% @node @mybibnode{}
+my-bib-macros.texi(,85) @c %% @chapter References
+my-bib-macros.texi(,86) @c %%
+my-bib-macros.texi(,87) @c %% @itemize @asis
+my-bib-macros.texi(,88) @c %%
+my-bib-macros.texi(,89) @c %% @mybibitem{LaTeX2e} Leslie Lamport, LaTeX User's Guide and
+my-bib-macros.texi(,90) @c %% Reference Manual, 2nd edition, Addison-Wesley, Reading,
+my-bib-macros.texi(,91) @c %% Massachusetts, 1994.
+my-bib-macros.texi(,92) @c %%
+my-bib-macros.texi(,93) @c %% @end itemize
+my-bib-macros.texi(,94) @c %%
+my-bib-macros.texi(,95) @c %% @bye
+my-bib-macros.texi(,96) 
+my-bib-macros.texi(,97) @c %%
+my-bib-macros.texi(,98) 
+my-bib-macros.texi(,99) @c %% This example produces (in Info):
+my-bib-macros.texi(,100) 
+my-bib-macros.texi(,101) @c %%       1 Introduction
+my-bib-macros.texi(,102) @c %%       **************
+my-bib-macros.texi(,103) @c %%
+my-bib-macros.texi(,104) @c %%       The ability of a documentation format to make cross
+my-bib-macros.texi(,105) @c %%       references to a bibliography, a feature of LaTeX (See item
+my-bib-macros.texi(,106) @c %%       [LaTeX2e] in *Note LaTeX2e: References.), is not currently
+my-bib-macros.texi(,107) @c %%       supported in Texinfo.
+my-bib-macros.texi(,108) @c %%
+my-bib-macros.texi(,109) @c %%
+my-bib-macros.texi(,110) @c %%       2 References
+my-bib-macros.texi(,111) @c %%       ************
+my-bib-macros.texi(,112) @c %%
+my-bib-macros.texi(,113) @c %%       [LaTeX2e] Leslie Lamport, LaTeX User's Guide and Reference
+my-bib-macros.texi(,114) @c %%       Manual, 2nd edition, Addison-Wesley, Reading,
+my-bib-macros.texi(,115) @c %%       Massachusetts, 1994.
+my-bib-macros.texi(,116) 
+my-bib-macros.texi(,117) @c %% and (in printed output):
+my-bib-macros.texi(,118) 
+my-bib-macros.texi(,119) @c %%       1 Introduction
+my-bib-macros.texi(,120) @c %%       **************
+my-bib-macros.texi(,121) @c %%
+my-bib-macros.texi(,122) @c %%       The ability of a documentation format to make cross
+my-bib-macros.texi(,123) @c %%       references to a bibliography, a feature of LaTeX (See item
+my-bib-macros.texi(,124) @c %%       [LaTeX2e] in Chapter 2 [References], page 3.), is not
+my-bib-macros.texi(,125) @c %%       currently supported in Texinfo.
+my-bib-macros.texi(,126) @c %%
+my-bib-macros.texi(,127) @c %%
+my-bib-macros.texi(,128) @c %%       2 References
+my-bib-macros.texi(,129) @c %%       ************
+my-bib-macros.texi(,130) @c %%
+my-bib-macros.texi(,131) @c %%       [LaTeX2e] Leslie Lamport, LaTeX User's Guide and Reference
+my-bib-macros.texi(,132) @c %%       Manual, 2nd edition, Addison-Wesley, Reading,
+my-bib-macros.texi(,133) @c %%       Massachusetts, 1994.
+my-bib-macros.texi(,134) 
+my-bib-macros.texi(,135) @c %
+my-bib-macros.texi(,136) 
+my-bib-macros.texi(,137) @c %%% Notes
+my-bib-macros.texi(,138) 
+my-bib-macros.texi(,139) @c %% The pointers to references will be functional in hypertext
+my-bib-macros.texi(,140) @c %% documentation (info, HTML, XML and others) and properly rendered
+my-bib-macros.texi(,141) @c %% in print documents, because they are implemented with Texinfo's
+my-bib-macros.texi(,142) @c %% cross referencing capabilities (using @anchor and @ref).  Failures
+my-bib-macros.texi(,143) @c %% by an author to make proper references with ``my-bib-macros'' in
+my-bib-macros.texi(,144) @c %% their document will give cross referencing errors by Texinfo
+my-bib-macros.texi(,145) @c %% conversion tools.
+my-bib-macros.texi(,146) 
+my-bib-macros.texi(,147) @c %% Only one ``Reference'' section is allowed per document.
+my-bib-macros.texi(,148) 
+my-bib-macros.texi(,149) @c %% An improvement of this system would create cross references
+my-bib-macros.texi(,150) @c %% (with @xref) at each cited work to all the originating cross
+my-bib-macros.texi(,151) @c %% refererences.
+my-bib-macros.texi(,152) 
+my-bib-macros.texi(,153) @c %
+my-bib-macros.texi(,154) 
+my-bib-macros.texi(,155) @c %% Code:
+my-bib-macros.texi(,156) 
+my-bib-macros.texi(,157) @c % Configuration Options
+my-bib-macros.texi(,158) 
+my-bib-macros.texi(,159) @c %% @mybibsetrefnode : Defines the name of the node to contain
+my-bib-macros.texi(,160) @c %% references.
+my-bib-macros.texi(,161) 
+my-bib-macros.texi(,165) 
+my-bib-macros.texi(,166) @c %% @mybibnode{} : Macro to be placed at node containing references
+my-bib-macros.texi(,167) @c %% and calls to @mybibcite{}
+my-bib-macros.texi(,168) 
+my-bib-macros.texi(,172) 
+my-bib-macros.texi(,173) @c %% @mybibusetable : Whether each @mybibitem will be put in a
+my-bib-macros.texi(,174) @c %% table.
+my-bib-macros.texi(,175) 
+my-bib-macros.texi(,183) 
+my-bib-macros.texi(,184) @c %% @mybibuselist : Whether each @mybibitem will be put in a
+my-bib-macros.texi(,185) @c %% list.
+my-bib-macros.texi(,186) 
+my-bib-macros.texi(,194) 
+my-bib-macros.texi(,195) 
+my-bib-macros.texi(,196) @c %% @mybibcite{REF} : Cites the cross reference REF.
+my-bib-macros.texi(,197) 
+my-bib-macros.texi(,208) 
+my-bib-macros.texi(,212) 
+my-bib-macros.texi(,213) @c %% @mybibcite{REF} : Creates a cross referenced citation REF.
+my-bib-macros.texi(,214) 
+my-bib-macros.texi(,231) 
+my-bib-macros.texi(,232) @c %% my-bib-macros.texi ends here
+bib-example.texi(mybibuselist,27) @set mybiblist true
+bib-example.texi(mybibuselist,27) @set mybibrefnode References
+bib-example.texi(,28) 
+bib-example.texi(,29) @comment %**end of header
+bib-example.texi(,30) 
+bib-example.texi(,31) @node Top
+bib-example.texi(,32) @top Top
+bib-example.texi(,33) 
+bib-example.texi(,34) @menu
+bib-example.texi(,35) * Introduction::
+bib-example.texi(mybibnode,36) * bib-example.texi(mybibnode,36) References::
+bib-example.texi(,37) 
+bib-example.texi(,38) @end menu
+bib-example.texi(,39) 
+bib-example.texi(,40) @node Introduction
+bib-example.texi(,41) @chapter Introduction
+bib-example.texi(,42) 
+bib-example.texi(,43) The ability of a documentation format to make cross references to a
+bib-example.texi(mybibcite,44) bibliography, a feature of LaTeX bib-example.texi(mybibcite,44) @c %**else if
+bib-example.texi(mybibcite,44) (See item [LaTeX2e] in @ref{References, LaTeX2e}.)
+bib-example.texi(mybibcite,44) , isn't
+bib-example.texi(,45) currently supported in Texinfo.
+bib-example.texi(,46) 
+bib-example.texi(mybibnode,47) @node bib-example.texi(mybibnode,47) References
+bib-example.texi(,48) @chapter References
+bib-example.texi(,49) 
+bib-example.texi(,50) @itemize @asis
+bib-example.texi(,51) 
+bib-example.texi(mybibitem,52) @item
+bib-example.texi(mybibitem,52) @anchor{LaTeX2e}[LaTeX2e]
+bib-example.texi(mybibitem,52) @c %**else if
+bib-example.texi(mybibitem,52)  Leslie Lamport, LaTeX User's Guide and
+bib-example.texi(,53) Reference Manual, 2nd edition, Addison-Wesley, Reading,
+bib-example.texi(,54) Massachusetts, 1994.
+bib-example.texi(,55) 
+bib-example.texi(,56) @end itemize
+bib-example.texi(,57) 
+bib-example.texi(,58) @bye

@@ -1,0 +1,100 @@
+This is value_in_misc.info, produced by makeinfo version 4.13 from
+value_in_misc_valid.texi.
+
+
+File: value_in_misc.info,  Node: Top,  Next: node atext,  Up: (dir)
+
+top atext
+*********
+
+Comment like: atext
+-------------------
+
+Text line followed by a comment on the same line and another below
+
+   :bar:
+
+   *very strong* *very strong*
+
+   (strong: is it really strong? :) (strong: is it really strong? :)
+
+   `something before kbdinputstyle'
+
+   `truc'
+
+     `example'
+
+   `false
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
+   `true
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
+command removed
+---------------
+
+@page
+   @noindent @refill  something
+
+noindent at beginning of line noindent on the preceding line   noindent
+after space at beginning of line
+   page at beginning of line
+
+   After page on it's own line.
+
+   @page
+   @noindent @refill
+
+special
+-------
+
+Only valid between iftex: Unknown ???
+
+   And now sp:
+
+
+
+* Menu:
+
+* node atext::
+* bidule::
+* bidule2::
+
+
+File: value_in_misc.info,  Node: node atext,  Next: bidule,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+* Menu:
+
+* truc::
+
+
+File: value_in_misc.info,  Node: truc,  Up: node atext
+
+1.1 section
+===========
+
+
+File: value_in_misc.info,  Node: bidule,  Next: bidule2,  Prev: node atext,  Up: Top
+
+2 bidule
+********
+
+
+File: value_in_misc.info,  Node: bidule2,  Prev: bidule,  Up: Top
+
+3 last
+******
+
+
+
+Tag Table:
+Node: Top94
+Node: node atext1125
+Node: truc1249
+Node: bidule1332
+Node: bidule21439
+
+End Tag Table

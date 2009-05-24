@@ -1,0 +1,115 @@
+top atext
+*********
+Comment like: atext
+-------------------
+
+Text line followed by a comment on the same line and another below 
+
+
+
+
+
+
+
+
+:bar:
+
+
+very strong
+very strong
+
+
+(strong: is it really strong? :)
+(strong: is it really strong? :)
+
+something before kbdinputstyle
+
+
+truc
+
+example
+
+
+
+
+
+
+false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+command removed
+---------------
+
+
+
+
+@page  @noindent @refill  something
+
+noindent at beginning of line
+noindent on the preceding line
+  noindent after space at beginning of line
+         page at beginning of line
+
+After page on it's own line.
+
+@page    @noindent @refill 
+
+Table of Contents
+*****************
+
+top atext
+1. chapter
+ 1.1 section
+2. bidule
+3. last
+
+special
+-------
+
+Only valid between iftex:
+Unknown ???
+
+
+And now sp:
+
+
+
+
+
+
+* node atext::
+* bidule::
+* bidule2::
+
+
+1 chapter
+*********
+* truc::
+
+1.1 section
+===========
+
+Table of Contents
+*****************
+
+top atext
+1. chapter
+ 1.1 section
+2. bidule
+3. last
+
+2 bidule
+********
+
+Short Table of Contents
+***********************
+
+top atext
+1. chapter
+2. bidule
+3. last
+
+3 last
+******
+

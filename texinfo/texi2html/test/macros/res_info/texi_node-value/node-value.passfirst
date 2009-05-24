@@ -1,0 +1,14 @@
+node-value.texi(,2) @setfilename node-value.info
+node-value.texi(,3) @set a--foo bar
+node-value.texi(,4) 
+node-value.texi(,5) @node Top, bar, (dir), (dir)
+node-value.texi(,6) @top Var bar
+node-value.texi(,7) bar
+node-value.texi(,8) 
+node-value.texi(,9) @node bar, BarFoo, Top, (dir)
+node-value.texi(,10) @chapter BarFoo
+node-value.texi(,11) 
+node-value.texi(,12) @node BarFoo, , bar, (dir)
+node-value.texi(,13) @chapter bar
+node-value.texi(,14) 
+node-value.texi(,15) @bye

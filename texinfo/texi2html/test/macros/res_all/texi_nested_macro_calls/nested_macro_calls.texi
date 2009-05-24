@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nested_macro_calls
+
+@node Top
+
+
+
+Before (machin)
+ after truc. 

@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename no_arg_macro.info
+
+@node Top
+
+
+  This is a more low-level API.  The word break property is a property defined
+  in Unicode Standard Annex #29, section ``Word Boundaries'', see
+  @url{http://www.unicode.org/reports/tr29/#Word_Boundaries}.  It is used
+  for determining the word breaks in a string.
+
+
+
+  This is a more low-level API.  The word break property is a property defined
+  in Unicode Standard Annex #29, section ``Word Boundaries'', see
+  @url{http://www.unicode.org/reports/tr29/#Word_Boundaries}.  It is used
+  for determining the word breaks in a string.
+
+@bye

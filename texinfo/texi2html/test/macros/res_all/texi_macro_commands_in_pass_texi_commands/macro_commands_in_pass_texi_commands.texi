@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+
+@setfilename macro_i--n_pass@@texi_commands.info
+
+
+
+
+@documentencoding ISO-8859-1@@
+
+
+
+@node Top
+@top top
+
+In included file.
+
+in themacro
+
+macro_in_pass_texi_commands@{info@}
+texi_commands.info
+
+@verbatiminclude inc_@@f--ile.texi
+
+@bye

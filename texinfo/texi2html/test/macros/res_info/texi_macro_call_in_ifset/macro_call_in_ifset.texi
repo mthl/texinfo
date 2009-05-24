@@ -1,0 +1,13 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename macro_in_ifset.info
+
+
+@node Top
+@top Top
+
+ 
+
+24 text
+
+@bye

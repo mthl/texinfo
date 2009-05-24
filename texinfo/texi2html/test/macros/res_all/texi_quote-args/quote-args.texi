@@ -1,0 +1,13 @@
+\input texinfo 
+@smallbook
+@setfilename quote-args.info
+@settitle Quote-args facility in macros
+
+
+
+@node Top, , (dir), (dir)
+
+@noindent
+@strong{FIXME: Many arguments, separated by commas, are processed here}
+natopocotuototam
+@bye

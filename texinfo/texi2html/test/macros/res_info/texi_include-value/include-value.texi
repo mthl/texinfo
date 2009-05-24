@@ -1,0 +1,31 @@
+\input texinfo
+@setfilename include-value.info
+@c 
+
+@set testvar incl-incl.txi
+
+@c test - in the variable name, and concatenation of text after.
+@set test-var incl-incl.tx
+
+@c test - in the variable name, and concatenation of text before and after.
+@set test_var ncl-incl.tx
+
+
+@node Top
+
+testvar include: This is the @emph{included} file (include-value2.txi).
+
+testvar verbatiminclude: @verbatiminclude incl-incl.txi
+
+
+test-var include: This is the @emph{included} file (include-value2.txi).
+
+test-var verbatiminclude: @verbatiminclude incl-incl.txi
+
+
+test_var include: This is the @emph{included} file (include-value2.txi).
+
+test_var verbatiminclude: @verbatiminclude incl-incl.txi
+
+
+@bye

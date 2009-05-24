@@ -1,0 +1,109 @@
+This is macro_in_misc.info, produced by makeinfo version 4.13 from
+macro_in_misc.texi.
+
+
+File: macro_in_misc.info,  Node: Top,  Next: node atext,  Up: (dir)
+
+top atext
+*********
+
+Comment like: atext
+-------------------
+
+Text line followed by a comment on the same line and another below
+
+   @definfoenclose phoo,//,\\ //bar\\
+
+   :bar:
+
+   *very strong*
+
+   (strong: is it really strong? :)
+
+   `something before kbdinputstyle'
+
+   `truc'
+
+     `example'
+
+    `false
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
+    `true
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
+command removed
+---------------
+
+@page
+    @noindent @refill  something
+
+noindent at beginning of line noindent on the preceding line   noindent
+after space at beginning of line
+    page at beginning of line
+
+    After page on it's own line.
+
+    @page
+    @noindent @refill
+
+special
+-------
+
+Only valid between iftex: Unknown ???
+
+    line after exdent
+
+    And now sp:
+
+
+
+* Menu:
+
+* node atext::
+* bidule::
+* bidule2::
+
+
+File: macro_in_misc.info,  Node: node atext,  Next: bidule,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+* Menu:
+
+* truc::
+
+
+File: macro_in_misc.info,  Node: truc,  Up: node atext
+
+1.1 section
+===========
+
+
+File: macro_in_misc.info,  Node: bidule,  Next: bidule2,  Prev: node atext,  Up: Top
+
+2 bidule
+********
+
+
+File: macro_in_misc.info,  Node: bidule2,  Prev: bidule,  Up: Top
+
+3 last
+******
+
+
+
+Tag Table:
+Node: Top88
+Node: node atext1142
+Node: truc1266
+Node: bidule1349
+Node: bidule21456
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

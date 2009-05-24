@@ -1,0 +1,143 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename macro_in_misc.info
+
+@hyphenation{some-where 
+be-low   
+  may-be to-morow 
+ }
+
+
+@node Top
+@top top atext
+@subheading Comment like: atext
+
+Text line followed by a comment on the same line and another below @c comment @text{}
+@c comment @text{}
+
+
+
+@pagesizes 200mm,150mm
+@afourpaper
+@headings on line following headings atext
+@oddfooting some text ignored atext
+@everyheading on line following everyheading atext
+
+
+@need 0.1
+
+@raisesections
+@lowersections
+
+@c tex error: Use of \ doesn't match its definition.
+@@definfoenclose phoo,//,\\  
+//bar\\
+
+
+@c this is required
+
+:bar:
+
+
+@strong{very strong}
+
+
+(strong: is it really strong? :)
+
+@kbd{something before kbdinputstyle}
+
+@kbdinputstyle code
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+
+@paragraphindent asis
+@paragraphindent 0
+@paragraphindent none
+@paragraphindent 4
+@firstparagraphindent none
+@exampleindent 6
+
+@footnotestyle end
+@footnotestyle separate 
+
+@documentencoding ISO-8859-1
+
+@frenchspacing on
+@frenchspacing off
+
+@c accepts 10 or 11
+@fonttextsize 10
+@c accept false or true
+@c makeinfo don't care about the arg and remove the remainiing of the line
+@allowcodebreaks false
+@code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@allowcodebreaks true
+@code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+
+@subheading command removed
+
+@finalout
+
+
+@@page @page @@noindent @noindent @@refill @refill something
+
+@noindent     noindent at beginning of line
+@noindent  
+noindent on the preceding line
+  @noindent    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @page   @@noindent @noindent    @@refill @refill
+
+@contents
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@exdent line after exdent
+
+And now sp:
+
+@sp 2
+
+
+@clickstyle @result
+
+@menu
+* node atext::
+* bidule::
+* bidule2::
+@end menu
+
+
+@node node atext
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+@contents
+
+@node bidule
+@chapter bidule
+
+@shortcontents
+
+@node bidule2
+@chapter last
+
+@bye

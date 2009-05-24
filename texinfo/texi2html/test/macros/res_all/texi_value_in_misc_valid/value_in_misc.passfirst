@@ -1,0 +1,171 @@
+value_in_misc_valid.texi(,2) @setfilename value_in_misc.info
+value_in_misc_valid.texi(,3) 
+value_in_misc_valid.texi(,4) @hyphenation{some-where 
+value_in_misc_valid.texi(,5) be-low   
+value_in_misc_valid.texi(,6)   may-be to-morow 
+value_in_misc_valid.texi(,7)  }
+value_in_misc_valid.texi(,8) 
+value_in_misc_valid.texi(,9) @set text atext
+value_in_misc_valid.texi(,10) 
+value_in_misc_valid.texi(,11) @node Top
+value_in_misc_valid.texi(,12) @top top atext
+value_in_misc_valid.texi(,13) @subheading Comment like: atext
+value_in_misc_valid.texi(,14) 
+value_in_misc_valid.texi(,15) Text line followed by a comment on the same line and another below @c comment @value{text}
+value_in_misc_valid.texi(,16) @c comment @value{text}
+value_in_misc_valid.texi(,17) 
+value_in_misc_valid.texi(,18) @set pagesizes_arg 200mm,150mm
+value_in_misc_valid.texi(,19) @set afourpaper_macro @afourpaper
+value_in_misc_valid.texi(,20) 
+value_in_misc_valid.texi(,22) @pagesizes 200mm,150mm
+value_in_misc_valid.texi(,24) @afourpaper
+value_in_misc_valid.texi(,25) @headings on line following headings atext
+value_in_misc_valid.texi(,26) @oddfooting some text ignored atext
+value_in_misc_valid.texi(,27) @everyheading on line following everyheading atext
+value_in_misc_valid.texi(,28) 
+value_in_misc_valid.texi(,29) @set need_arg 0.1
+value_in_misc_valid.texi(,30) 
+value_in_misc_valid.texi(,32) @need 0.1
+value_in_misc_valid.texi(,34) 
+value_in_misc_valid.texi(,35) @set raisesections_macro @raisesections
+value_in_misc_valid.texi(,36) @raisesections
+value_in_misc_valid.texi(,37) @set lowersections_macro @lowersections
+value_in_misc_valid.texi(,38) @lowersections
+value_in_misc_valid.texi(,39) 
+value_in_misc_valid.texi(,40) @c tex error: Use of \ doesn't match its definition.
+value_in_misc_valid.texi(,43) @@definfoenclose phoo,//,\\  
+value_in_misc_valid.texi(,44) //bar\\
+value_in_misc_valid.texi(,46) 
+value_in_misc_valid.texi(,47) @set definfoenclose_name phi
+value_in_misc_valid.texi(,49) 
+value_in_misc_valid.texi(,56) 
+value_in_misc_valid.texi(,57) :bar:
+value_in_misc_valid.texi(,58) 
+value_in_misc_valid.texi(,59) @set strong_macro @strong
+value_in_misc_valid.texi(,60) @set strong_name strong
+value_in_misc_valid.texi(,61) 
+value_in_misc_valid.texi(,65) @strong{very strong}
+value_in_misc_valid.texi(,66) 
+value_in_misc_valid.texi(,68) 
+value_in_misc_valid.texi(,72) (strong: is it really strong? :)
+value_in_misc_valid.texi(,73) 
+value_in_misc_valid.texi(,74) @kbd{something before kbdinputstyle}
+value_in_misc_valid.texi(,75) 
+value_in_misc_valid.texi(,76) @set kbdinputstyle_arg code
+value_in_misc_valid.texi(,78) @kbdinputstyle code
+value_in_misc_valid.texi(,80) 
+value_in_misc_valid.texi(,81) @kbd{truc}
+value_in_misc_valid.texi(,82) 
+value_in_misc_valid.texi(,83) @example
+value_in_misc_valid.texi(,84) @kbd{example}
+value_in_misc_valid.texi(,85) @end example
+value_in_misc_valid.texi(,86) 
+value_in_misc_valid.texi(,87) @set asis_arg asis
+value_in_misc_valid.texi(,88) @set zero 0
+value_in_misc_valid.texi(,89) @set none_arg none
+value_in_misc_valid.texi(,90) @set four 4
+value_in_misc_valid.texi(,91) @set six 6
+value_in_misc_valid.texi(,92) 
+value_in_misc_valid.texi(,94) @paragraphindent asis
+value_in_misc_valid.texi(,95) @paragraphindent 0
+value_in_misc_valid.texi(,96) @paragraphindent none
+value_in_misc_valid.texi(,97) @paragraphindent 4
+value_in_misc_valid.texi(,98) @firstparagraphindent none
+value_in_misc_valid.texi(,99) @exampleindent 6
+value_in_misc_valid.texi(,101) 
+value_in_misc_valid.texi(,102) @set end_arg end
+value_in_misc_valid.texi(,103) @set separate_arg separate 
+value_in_misc_valid.texi(,104) @footnotestyle end
+value_in_misc_valid.texi(,105) @footnotestyle separate 
+value_in_misc_valid.texi(,106) 
+value_in_misc_valid.texi(,107) @set latin1 ISO-8859-1
+value_in_misc_valid.texi(,109) @documentencoding ISO-8859-1
+value_in_misc_valid.texi(,111) 
+value_in_misc_valid.texi(,112) @set on_arg on
+value_in_misc_valid.texi(,113) @set off_arg off
+value_in_misc_valid.texi(,115) @frenchspacing on
+value_in_misc_valid.texi(,116) @frenchspacing off
+value_in_misc_valid.texi(,118) 
+value_in_misc_valid.texi(,119) @c accepts 10 or 11
+value_in_misc_valid.texi(,120) @set ten 10
+value_in_misc_valid.texi(,122) @fonttextsize 10
+value_in_misc_valid.texi(,124) @c accept false or true
+value_in_misc_valid.texi(,125) @c makeinfo don't care about the arg and remove the remainiing of the line
+value_in_misc_valid.texi(,126) @set false_arg false
+value_in_misc_valid.texi(,127) @set true_arg true
+value_in_misc_valid.texi(,129) @allowcodebreaks false
+value_in_misc_valid.texi(,131) @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+value_in_misc_valid.texi(,132) 
+value_in_misc_valid.texi(,134) @allowcodebreaks true
+value_in_misc_valid.texi(,136) @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+value_in_misc_valid.texi(,137) 
+value_in_misc_valid.texi(,138) @subheading command removed
+value_in_misc_valid.texi(,139) 
+value_in_misc_valid.texi(,140) @finalout
+value_in_misc_valid.texi(,141) 
+value_in_misc_valid.texi(,142) @set page_macro @page
+value_in_misc_valid.texi(,143) @set noindent_macro @noindent
+value_in_misc_valid.texi(,144) @set refill_macro @refill
+value_in_misc_valid.texi(,145) 
+value_in_misc_valid.texi(,146) @@page @page @@noindent @noindent @@refill @refill something
+value_in_misc_valid.texi(,147) 
+value_in_misc_valid.texi(,148) @noindent     noindent at beginning of line
+value_in_misc_valid.texi(,149) @noindent  
+value_in_misc_valid.texi(,150) noindent on the preceding line
+value_in_misc_valid.texi(,151)   @noindent    noindent after space at beginning of line
+value_in_misc_valid.texi(,152) @page         page at beginning of line
+value_in_misc_valid.texi(,153) @page
+value_in_misc_valid.texi(,154) After page on it's own line.
+value_in_misc_valid.texi(,155) 
+value_in_misc_valid.texi(,156) @@page @page   @@noindent @noindent    @@refill @refill
+value_in_misc_valid.texi(,157) 
+value_in_misc_valid.texi(,158) @set contents_macro @contents
+value_in_misc_valid.texi(,159) @contents
+value_in_misc_valid.texi(,160) 
+value_in_misc_valid.texi(,161) @subheading special
+value_in_misc_valid.texi(,162) 
+value_in_misc_valid.texi(,163) Only valid between iftex:
+value_in_misc_valid.texi(,164) @c @@vskip @vskip @@cropmarks @cropmarks
+value_in_misc_valid.texi(,165) Unknown ???
+value_in_misc_valid.texi(,166) @c @@fillbreak  @fillbreak eol
+value_in_misc_valid.texi(,167) 
+value_in_misc_valid.texi(,168) @set exdent_macro @exdent
+value_in_misc_valid.texi(,170) @exdent line after exdent
+value_in_misc_valid.texi(,172) 
+value_in_misc_valid.texi(,173) And now sp:
+value_in_misc_valid.texi(,174) 
+value_in_misc_valid.texi(,175) @set two 2
+value_in_misc_valid.texi(,181) @sp 2
+value_in_misc_valid.texi(,182) 
+value_in_misc_valid.texi(,183) @set result_macro @result
+value_in_misc_valid.texi(,184) 
+value_in_misc_valid.texi(,185) @clickstyle @result
+value_in_misc_valid.texi(,186) 
+value_in_misc_valid.texi(,187) @menu
+value_in_misc_valid.texi(,188) * node atext::
+value_in_misc_valid.texi(,189) * bidule::
+value_in_misc_valid.texi(,190) * bidule2::
+value_in_misc_valid.texi(,191) @end menu
+value_in_misc_valid.texi(,192) 
+value_in_misc_valid.texi(,193) 
+value_in_misc_valid.texi(,194) @node node atext
+value_in_misc_valid.texi(,195) @chapter chapter
+value_in_misc_valid.texi(,196) @menu
+value_in_misc_valid.texi(,197) * truc::
+value_in_misc_valid.texi(,198) @end menu
+value_in_misc_valid.texi(,199) 
+value_in_misc_valid.texi(,200) @node truc
+value_in_misc_valid.texi(,201) @section section
+value_in_misc_valid.texi(,202) 
+value_in_misc_valid.texi(,203) @contents
+value_in_misc_valid.texi(,204) 
+value_in_misc_valid.texi(,205) @node bidule
+value_in_misc_valid.texi(,206) @chapter bidule
+value_in_misc_valid.texi(,207) 
+value_in_misc_valid.texi(,208) @set shortcontents_macro @shortcontents
+value_in_misc_valid.texi(,209) @shortcontents
+value_in_misc_valid.texi(,210) 
+value_in_misc_valid.texi(,211) @node bidule2
+value_in_misc_valid.texi(,212) @chapter last
+value_in_misc_valid.texi(,213) 
+value_in_misc_valid.texi(,214) @bye

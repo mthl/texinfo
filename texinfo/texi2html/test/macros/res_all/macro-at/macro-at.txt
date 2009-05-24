@@ -1,0 +1,21 @@
+AUTHORS - who did what on GNU LilyPond
+**************************************
+* AUTHORS -- who did what on GNU LilyPond:: AUTHORS - who did what.
+
+1 AUTHORS - who did what on GNU LilyPond?
+*****************************************
+
+This file lists authors of GNU LilyPond, and what they wrote.
+It also uses foobar{.
+
+*  Franc,ois Pinard <mailto:pinard@iro.montreal.ca>,
+  parts of Documentation.
+*  The Foobar <mailto:foobar@baz@>,
+  the usual foobarical thing.
+*  Buzzer <mailto:another@foobar{>,
+  buzzed all the way.
+* <mailto:foo-expansion@bar-expansion>,
+  also helped.
+*  Tom Cato Amundsen <mailto:tomcato@xoommail.com>,
+  cembalo-partita in mundela.
+

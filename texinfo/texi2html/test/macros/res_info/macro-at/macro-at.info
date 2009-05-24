@@ -1,0 +1,41 @@
+This is macro-at.info, produced by makeinfo version 4.13 from
+macro-at.texi.
+
+
+File: macro-at.info,  Node: Top,  Prev: AUTHORS -- who did what on GNU LilyPond,  Up: (dir)
+
+AUTHORS - who did what on GNU LilyPond
+**************************************
+
+* Menu:
+
+* AUTHORS -- who did what on GNU LilyPond:: AUTHORS - who did what.
+
+
+File: macro-at.info,  Node: AUTHORS -- who did what on GNU LilyPond,  Next: Top,  Up: Top
+
+1 AUTHORS - who did what on GNU LilyPond?
+*****************************************
+
+This file lists authors of GNU LilyPond, and what they wrote.  It also
+uses foobar{.
+
+   * Franc,ois Pinard <pinard@iro.montreal.ca>,   parts of
+     Documentation.
+
+   * The Foobar <foobar@baz@>,   the usual foobarical thing.
+
+   * Buzzer <another@foobar{>,   buzzed all the way.
+
+   * <foo-expansion@bar-expansion>,   also helped.
+
+   * Tom Cato Amundsen <tomcato@xoommail.com>,   cembalo-partita in
+     mundela.
+
+
+
+Tag Table:
+Node: Top78
+Node: AUTHORS -- who did what on GNU LilyPond330
+
+End Tag Table

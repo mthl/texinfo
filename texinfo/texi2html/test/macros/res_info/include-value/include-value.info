@@ -1,0 +1,27 @@
+This is include-value.info, produced by makeinfo version 4.13 from
+include-value.texi.
+
+
+File: include-value.info,  Node: Top,  Up: (dir)
+
+testvar include: This is the _included_ file (include-value2.txi).
+
+   testvar verbatiminclude:
+This is the @emph{included} file (include-value2.txi).
+
+   test-var include: This is the _included_ file (include-value2.txi).
+
+   test-var verbatiminclude:
+This is the @emph{included} file (include-value2.txi).
+
+   test_var include: This is the _included_ file (include-value2.txi).
+
+   test_var verbatiminclude:
+This is the @emph{included} file (include-value2.txi).
+
+
+
+Tag Table:
+Node: Top88
+
+End Tag Table

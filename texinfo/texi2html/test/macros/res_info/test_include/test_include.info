@@ -1,0 +1,16 @@
+This is test_include.info, produced by makeinfo version 4.13 from
+test_include.texi.
+
+
+File: test_include.info,  Node: Top,  Up: (dir)
+
+This is a very simple texi manual.  In included file.
+
+   After inclusion.
+
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table

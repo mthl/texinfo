@@ -1,0 +1,30 @@
+include-value.texi(,2) @setfilename include-value.info
+include-value.texi(,3) @c 
+include-value.texi(,4) 
+include-value.texi(,5) @set testvar incl-incl.txi
+include-value.texi(,6) 
+include-value.texi(,7) @c test - in the variable name, and concatenation of text after.
+include-value.texi(,8) @set test-var incl-incl.tx
+include-value.texi(,9) 
+include-value.texi(,10) @c test - in the variable name, and concatenation of text before and after.
+include-value.texi(,11) @set test_var ncl-incl.tx
+include-value.texi(,12) 
+include-value.texi(,13) 
+include-value.texi(,14) @node Top
+include-value.texi(,15) 
+incl-incl.txi(,1) testvar include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,17) 
+include-value.texi(,18) testvar verbatiminclude: @verbatiminclude incl-incl.txi
+include-value.texi(,19) 
+include-value.texi(,20) 
+incl-incl.txi(,1) test-var include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,22) 
+include-value.texi(,23) test-var verbatiminclude: @verbatiminclude incl-incl.txi
+include-value.texi(,24) 
+include-value.texi(,25) 
+incl-incl.txi(,1) test_var include: incl-incl.txi(,1) This is the @emph{included} file (include-value2.txi).
+include-value.texi(,27) 
+include-value.texi(,28) test_var verbatiminclude: @verbatiminclude incl-incl.txi
+include-value.texi(,29) 
+include-value.texi(,30) 
+include-value.texi(,31) @bye

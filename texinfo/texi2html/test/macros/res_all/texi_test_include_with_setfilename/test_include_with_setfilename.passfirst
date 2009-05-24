@@ -1,0 +1,12 @@
+test_include_with_setfilename.texi(,2) 
+test_include_with_setfilename.texi(,3) @setfilename test_include_with_setfilename.info
+test_include_with_setfilename.texi(,4) 
+test_include_with_setfilename.texi(,5) @node Top
+test_include_with_setfilename.texi(,6) 
+test_include_with_setfilename.texi(,7) Include a file that has a @@setfilename.
+included_file_with_setfilename.texi(,1) 
+included_file_with_setfilename.texi(,2) In included file.
+included_file_with_setfilename.texi(,3) 
+test_include_with_setfilename.texi(,9) After inclusion.
+test_include_with_setfilename.texi(,10) 
+test_include_with_setfilename.texi(,11) @bye

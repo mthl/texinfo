@@ -1,0 +1,18 @@
+This is test_include_with_setfilename.info, produced by makeinfo version
+4.13 from test_include_with_setfilename.texi.
+
+
+File: test_include_with_setfilename.info,  Node: Top,  Up: (dir)
+
+Include a file that has a @setfilename.
+
+   In included file.
+
+   After inclusion.
+
+
+
+Tag Table:
+Node: Top120
+
+End Tag Table
