@@ -60,6 +60,7 @@ $misc_command{'c'}->{'keep'} = 1;
 $misc_command{'comment'}->{'keep'} = 1;
 $misc_command{'settitle'}->{'keep'} = 1;
 
+%style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
@@ -106,21 +107,14 @@ delete $style_map{'samp'}->{'attribute'};
 $kept_footnote_function = $style_map{'footnote'}->{'function'};
 $style_map{'footnote'}->{'function'} = \&docbook_footnote;
 
-#use Data::Dumper;
-foreach my $command (keys(%style_map))
+foreach my $style (keys(%style_map))
 {
-    $style_map_pre{$command} = {};
-#    $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
-#    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
-#        if (exists($style_map{$command}->{'args'}));
- #print STDERR "COMMAND $command";
-
-    foreach my $key (keys(%{$style_map{$command}}))
-    {
-        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
-    }
+   delete ($style_map{$style}->{'quote'});
 }
-#    print STDERR "". Data::Dumper->Dump([\%style_map_texi]);
+
+#use Data::Dumper;
+%style_map_pre = ();
+t2h_default_copy_style_map (\%style_map, \%style_map_pre);
 
 $style_map_pre{'b'}->{'attribute'} = 'lineannotation';
 $style_map_pre{'i'}->{'attribute'} = 'lineannotation';
@@ -131,7 +125,7 @@ $colon_command_punctuation_characters{':'} = '&colon;';
 $colon_command_punctuation_characters{'?'} = '&quest;';
 $colon_command_punctuation_characters{'!'} = '&excl;';
 
-delete $stop_paragraph_command{'titlefont'};
+$stop_paragraph_command{'titlefont'} = 0;
 
 # FIXME
 #$no_paragraph_commands{'anchor'} = 0;
@@ -140,17 +134,7 @@ delete $stop_paragraph_command{'titlefont'};
 delete $special_accents{'ringaccent'};
 $special_accents{'ogonek'} = 'aeiuAEIU';
 
-foreach my $style (keys(%style_map))
-{
-   delete ($style_map{$style}->{'quote'});
-}
-
-$simple_map{' '} = ' ';
-# or '' ?
-$simple_map{'*'} = "\n";
-$simple_map{"\t"} = ' ';
-$simple_map{"\n"} = ' ';
-
+%simple_map = %default_simple_map;
 %simple_map_pre = %simple_map;
 
 # FIXME right?
@@ -164,6 +148,7 @@ $things_map{'minus'} = '&minus;';
 $iso_symbols{'point'} = '-!-';
 # FIXME &equiv;
 $iso_symbols{'equiv'} = '==';
+# FIXME
 delete $iso_symbols{"'"};
 delete $iso_symbols{'`'};
 $things_map{'quotedblbase'} = '&ldquor;';
@@ -225,20 +210,14 @@ $no_paragraph_commands{'float'} = 0;
 
 $region_formats_kept{'copying'} = 1;
 
-$format_map{'copying'} = 'copying';
+%format_map = (
+       'group'       =>  '',
+       'copying'     =>  'copying',
+       );
 
-delete $format_map{'enumerate'};
-foreach my $table ('table', 'ftable', 'vtable')
-{
-   #$format_map{$table} = 'table';
-   delete $format_map{$table};
-}
-
-delete $iso_symbols{'`'};
 $print_Top = \&docbook_print_Top;
 $print_Top_footer = \&docbook_print_Top_footer;
 $print_page_head = \&docbook_print_page_head;
-#$print_navigation = \&docbook_noop;
 $print_foot_navigation = \&docbook_noop;
 $toc_body = \&docbook_noop;
 $about_body = \&docbook_noop;
@@ -246,52 +225,48 @@ $print_page_foot = \&docbook_print_page_foot;
 $end_section = \&docbook_end_section;
 $one_section = \&docbook_one_section;
 
-$heading = \&docbook_heading;
-#$heading_texi = \&docbook_heading_texi;
-$paragraph = \&docbook_paragraph;
-$preformatted = \&docbook_preformatted;
-$misc_element_label = \&docbook_noop;
-$element_label = \&docbook_element_label;
-$anchor_label = \&docbook_anchor_label;
-$index_entry_label = \&docbook_index_entry_label;
-$index_entry_command = \&docbook_index_entry_command;
-$listoffloats = \&docbook_noop;
-$acronym_like = \&docbook_acronym_like;
-$foot_line_and_ref = \&docbook_foot_line_and_ref;
-$image = \&docbook_image;
-$image_files = \&docbook_image_files;
-$sp = \&docbook_sp;
-$table_list = \&docbook_table_list;
-$row = \&docbook_row;
-$cell = \&docbook_cell;
-$list_item = \&docbook_list_item;
+$acronym_like          = \&docbook_acronym_like;
+$anchor_label          = \&docbook_anchor_label;
+$begin_format_texi     = \&docbook_begin_format_texi;
+$cartouche             = \&docbook_cartouche;
+$cell                  = \&docbook_cell;
+$complex_format        = \&docbook_complex_format;
+$def                   = \&docbook_def;
+$def_line              = \&docbook_def_line;
+$def_item              = \&docbook_def_item;
+$element_label         = \&docbook_element_label;
+$external_ref          = \&docbook_external_ref;
+$float                 = \&docbook_float;
+$foot_line_and_ref     = \&docbook_foot_line_and_ref;
+$format                = \&docbook_format;
 $format_list_item_texi = \&docbook_format_list_item_texi;
-$unknown = \&docbook_misc_commands;
-$begin_format_texi = \&docbook_begin_format_texi;
-$def_line = \&docbook_def_line;
-$def = \&docbook_def;
-$def_item = \&docbook_def_item;
-$printindex = \&docbook_printindex;
-$index_summary = \&docbook_index_summary;
-$external_ref = \&docbook_external_ref;
-$internal_ref = \&docbook_internal_ref;
-$table_item = \&docbook_table_item;
-$table_line = \&docbook_table_line;
-$float = \&docbook_float;
-#$caption_shortcaption = \&docbook_caption_shortcaption;
-#$caption_shortcaption_command = \&docbook_caption_shortcaption_command;
-$normal_text = \&docbook_normal_text;
-$protect_text = \&xml_default_protect_text;
-#$paragraph_style_command = \&docbook_paragraph_style_command;
-$raw = \&docbook_raw;
-$cartouche = \&docbook_cartouche;
-
-$complex_format = \&docbook_complex_format;
-$format = \&docbook_format;
-$quotation = \&docbook_quotation;
+$heading               = \&docbook_heading;
+$image                 = \&docbook_image;
+$image_files           = \&docbook_image_files;
+$index_entry_command   = \&docbook_index_entry_command;
+$index_entry_label     = \&docbook_index_entry_label;
+$index_summary         = \&docbook_index_summary;
+$internal_ref          = \&docbook_internal_ref;
+$insertcopying         = \&docbook_insertcopying;
+$list_item             = \&docbook_list_item;
+$misc_element_label    = \&docbook_noop;
+$normal_text           = \&docbook_normal_text;
+$paragraph             = \&docbook_paragraph;
+$preformatted          = \&docbook_preformatted;
+$printindex            = \&docbook_printindex;
+$protect_text          = \&xml_default_protect_text;
+$quotation              = \&docbook_quotation;
 $quotation_prepend_text = \&docbook_quotation_prepend_text;
-$style = \&docbook_style;
-$insertcopying = \&docbook_insertcopying;
+$listoffloats          = \&docbook_noop;
+$raw                   = \&docbook_raw;
+$row                   = \&docbook_row;
+$sp                    = \&docbook_sp;
+$style                 = \&docbook_style;
+$table_item            = \&docbook_table_item;
+$table_line            = \&docbook_table_line;
+$table_list            = \&docbook_table_list;
+$unknown               = \&docbook_misc_commands;
+
 
 }
 

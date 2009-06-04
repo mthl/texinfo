@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Hello (version 4.2, 28 March 2002),
+which prints a friendly greeting (and serves as an example GNU package).
+
+Copyright C 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License".
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Hello 4.2: 3. Invoking hello</title>
+
+<meta name="description" content="GNU Hello 4.2: 3. Invoking hello">
+<meta name="keywords" content="GNU Hello 4.2: 3. Invoking hello">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Invoking-hello"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Reporting-bugs.html#Reporting-bugs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Reporting-bugs.html#Reporting-bugs" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="hello_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concept-index.html#Concept-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="hello_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<a name="Invoking-hello-1"></a>
+<h1 class="chapter">3. Invoking <code>hello</code></h1>
+
+<a name="index-invoking"></a>
+<a name="index-options"></a>
+<a name="index-usage"></a>
+<a name="index-help"></a>
+
+<p>The format for running the <code>hello</code> program is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">hello <var>option</var> &hellip;
+</pre></td></tr></table>
+
+<p>With no options, <code>hello</code> prints the greeting &lsquo;<samp>Hello,
+world!</samp>&rsquo;.
+</p>
+<p><code>hello</code> supports the following options:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>--greeting=<var>text</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-g <var>text</var></samp>&rsquo;</dt>
+<dd><a name="index-_002d_002dgreeting"></a>
+<a name="index-_002dg"></a>
+<p>Output <var>text</var> instead of the default greeting.
+</p>
+</dd>
+<dt>&lsquo;<samp>--help</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-h</samp>&rsquo;</dt>
+<dd><a name="index-_002d_002dhelp-1"></a>
+<a name="index-_002dh"></a>
+<p>Print an informative help message on standard output and exit
+successfully.
+</p>
+<a name="index-environment-variables_002c-help-for"></a>
+<p>For the &lsquo;<samp>--help</samp>&rsquo; output of GNU programs, it&rsquo;s strongly
+encouraged to include a brief (one or two sentences) description of
+what the program does, as well as the synopsis of how to run the
+program.  Any environment variables which affect execution should also
+be mentioned (Hello doesn&rsquo;t have any).
+</p>
+</dd>
+<dt>&lsquo;<samp>--next-generation</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-n</samp>&rsquo;</dt>
+<dd><a name="index-_002d_002dnext_002dgeneration"></a>
+<a name="index-_002dn"></a>
+<p>Output &lsquo;<samp>Hello, world!</samp>&rsquo;, but possibly including box-drawing
+characters or other fancy stuff, especially in translated locales.
+(If you would like to volunteer to translate messages for GNU packages,
+please see <a href="http://translationproject.org">http://translationproject.org</a>.)
+</p>
+</dd>
+<dt>&lsquo;<samp>--traditional</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
+<dd><a name="index-_002d_002dtraditional"></a>
+<a name="index-_002dt"></a>
+<a name="index-traditional"></a>
+<a name="index-modern"></a>
+<p>Output the traditional greeting message &lsquo;<samp>hello, world</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>--version</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-v</samp>&rsquo;</dt>
+<dd><a name="index-_002d_002dversion"></a>
+<a name="index-_002dv"></a>
+<p>Print the version number and licensing information of Hello on
+standard output and then exit successfully.
+</p>
+</dd>
+</dl>
+
+<p>If more than one of the greeting options (&lsquo;<samp>-g</samp>&rsquo;, &lsquo;<samp>-n</samp>&rsquo;,
+&lsquo;<samp>-t</samp>&rsquo;, and their long-named equivalents) is specified, whichever
+comes last takes precedence.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Reporting-bugs.html#Reporting-bugs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Reporting-bugs.html#Reporting-bugs" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="hello_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concept-index.html#Concept-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="hello_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

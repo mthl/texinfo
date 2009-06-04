@@ -1,0 +1,18 @@
+This is test_two_include.info, produced by makeinfo version 4.13 from
+test_two_include.texi.
+
+
+File: test_two_include.info,  Node: Top,  Up: (dir)
+
+Include version
+
+   include inc_file In included file.
+
+   After inclusion.
+
+
+
+Tag Table:
+Node: Top94
+
+End Tag Table

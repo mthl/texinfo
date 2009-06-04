@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.290 2009-05-24 22:29:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.291 2009-06-04 22:58:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -320,6 +320,7 @@ $FIRSTPARAGRAPHINDENT
 $ENABLE_ENCODING
 $INTERNAL_LINKS
 $DEFAULT_OUTPUT_FORMAT
+$OUTPUT_FORMAT
 $COMMAND_NAME
 );
 
@@ -639,6 +640,7 @@ use vars qw(
 );
 
 $DEFAULT_OUTPUT_FORMAT = main::default_output_format();
+$OUTPUT_FORMAT = $DEFAULT_OUTPUT_FORMAT;
 $COMMAND_NAME = main::default_command_name();
 
 sub set_conf($$;$)
@@ -1834,11 +1836,11 @@ $reference_sec2level{'majorheading'} = 1;
 $reference_sec2level{'chapheading'} = 1;
 $reference_sec2level{'centerchap'} = 1;
 
-foreach my $section_command(keys(%reference_sec2level))
+sub stop_paragraph_command($)
 {
-   $Texi2HTML::Config::stop_paragraph_command{$section_command} = 1;
+   my $command = shift;
+   return 1 if ($Texi2HTML::Config::stop_paragraph_command{$command} or $reference_sec2level{$command});
 }
-
 
 sub set_no_line_macro($$)
 {
@@ -3220,10 +3222,6 @@ if ($progdir && ($progdir ne './'))
 #                                                                              #
 #---############################################################################
 
-# load the chosen format
-
-#Texi2HTML::Config::t2h_default_load_format('html');
-
 # set the default 'args' entry to normal for each style hash (and each command
 # within)
 my $name_index = -1;
@@ -3696,7 +3694,7 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
 # documents override variables in config files. It is only relevant
 # if the variables are set to 0, however, since the @-command is a 
 # no-op if already set to 1.
-foreach my $global_conf_vars('contents','shortcontents','SPLIT', 'SPLIT_SIZE')
+foreach my $global_conf_vars('contents','shortcontents')
 {
     Texi2HTML::Config::set_conf($global_conf_vars,Texi2HTML::Config::get_conf($global_conf_vars),1);
 }
@@ -6031,7 +6029,11 @@ sub rearrange_elements()
         }
 
         # Find next node if not already found
-        if ($node->{'nodenext'}) {}
+        if ($node->{'nodenext'}) 
+        {
+            # doing the following would be wrong:
+            #$node->{'nodenext'}->{'nodeprev'} = $node if (!defined($node->{'nodenext'}->{'nodeprev'}));
+        }
         elsif ($node->{'texi'} eq 'Top' and $node->{'automatic_directions'})
         { # special case as said in the texinfo manual
             if ($node->{'menu_child'})
@@ -6074,7 +6076,12 @@ sub rearrange_elements()
             $node->{'nodenext'} = $node->{'menu_next'};
         }
         # Find prev node
-        if (!$node->{'nodeprev'} and $node->{'automatic_directions'})
+        if ($node->{'nodeprev'})
+        {
+            # doing the following would be wrong:
+            #$node->{'nodeprev'}->{'nodenext'} = $node if (!defined($node->{'nodeprev'}->{'nodenext'}));
+        }
+        elsif ($node->{'automatic_directions'})
         {
             if (defined($node->{'with_section'}))
             {
@@ -6095,7 +6102,7 @@ sub rearrange_elements()
             $node->{'nodeprev'} = $node->{'menu_prev'};
         }
         # the prev node is the parent node
-        elsif (!defined($node->{'nodeprev'}) and $node->{'menu_up'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
+        elsif (!defined($node->{'nodeprev'}) and $node->{'menu_up'} and ($node->{'menu_up'}->{'menu_child'} eq $node) and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
         {
             $node->{'nodeprev'} = $node->{'menu_up'};
         }
@@ -7064,7 +7071,8 @@ sub enter_index_entry($$$$$)
     #if (!exists($current_element->{'tag'}) and !$current_element->{'footnote'})
     if ($current_element eq $element_before_anything)
     {
-        echo_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
+        #echo_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
+        echo_error ("Entry for index `$index_prefix_to_name{$prefix}' outside of any node.", $line_nr);
     }
     #print STDERR "($region) $key" if $region;
     $entry =~ s/\s+$//;
@@ -7571,7 +7579,6 @@ sub pass_text($$)
 
                 # The element begins a new section if there is no previous
                 # or the reference element is not the same
-                #if (!$Texi2HTML::THIS_ELEMENT or (defined($current_element->{'element_ref'}) and $current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT))
                 if (defined($current_element->{'element_ref'}) and (!$Texi2HTML::THIS_ELEMENT or ($current_element->{'element_ref'} ne $Texi2HTML::THIS_ELEMENT)))
                 {
                     $new_element = $current_element->{'element_ref'};
@@ -12183,7 +12190,7 @@ sub scan_line($$$$;$)
             my $next_command = next_tag($cline);
             if (defined($next_command) and defined($Texi2HTML::Config::line_command_map{$next_command}))
             {
-                close_paragraph($text, $stack, $state, "\@$next_command", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_command});
+                close_paragraph($text, $stack, $state, "\@$next_command", $line_nr, 1) if (stop_paragraph_command($next_command));
                 my $arg_texi = $cline;
                 $arg_texi =~ s/^\s*\@$next_command\s*//;
                 $arg_texi =~ s/\s*$//;
@@ -12199,7 +12206,7 @@ sub scan_line($$$$;$)
             while (1)
             {
                 my $next_tag = next_tag($cline);
-                close_paragraph($text, $stack, $state, "\@$next_tag", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$next_tag});
+                close_paragraph($text, $stack, $state, "\@$next_tag", $line_nr, 1) if (stop_paragraph_command($next_tag));
                 if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
                 {
                     $cline =~ s/^(\s*)\@$next_tag//;
@@ -12509,7 +12516,7 @@ sub scan_line($$$$;$)
 	    #print STDERR "LINE $cline";
 	    #dump_stack ($text, $stack, $state);
 
-            close_paragraph($text, $stack, $state, "\@$macro", $line_nr, 1) if ($Texi2HTML::Config::stop_paragraph_command{$macro} and !$state->{'keep_texi'});
+            close_paragraph($text, $stack, $state, "\@$macro", $line_nr, 1) if (stop_paragraph_command($macro) and !$state->{'keep_texi'});
 
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
@@ -14690,6 +14697,13 @@ while(@input_files)
 
    %Texi2HTML::THISDOC = ();
    $Texi2HTML::THIS_ELEMENT = undef;
+
+   # Otherwise Texi2HTML::THISDOC wouldn't be set in case there was no call
+   # to set_conf.
+   foreach my $global_conf_vars('SPLIT', 'SPLIT_SIZE')
+   {
+      $Texi2HTML::THISDOC{$global_conf_vars} = Texi2HTML::Config::get_conf($global_conf_vars);
+   }
 
    foreach my $global_key (keys(%Texi2HTML::GLOBAL))
    {

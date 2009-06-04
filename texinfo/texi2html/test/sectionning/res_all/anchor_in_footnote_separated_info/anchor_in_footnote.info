@@ -1,0 +1,38 @@
+This is anchor_in_footnote.info, produced by makeinfo version 4.13 from
+anchor_in_footnote.texi.
+
+
+File: anchor_in_footnote.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top
+***
+
+In top node(1) (*note Top-Footnote-1::)
+
+* Menu:
+
+* chapter::
+
+
+File: anchor_in_footnote.info,  Node: Top-Footnotes,  Up: Top
+
+   (1) in footnote .
+
+
+File: anchor_in_footnote.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 Chap
+******
+
+*note Anchor in footnote::.
+
+
+
+Tag Table:
+Node: Top98
+Node: Top-Footnotes243
+Ref: Top-Footnote-1308
+Ref: Anchor in footnote327
+Node: chapter330
+
+End Tag Table

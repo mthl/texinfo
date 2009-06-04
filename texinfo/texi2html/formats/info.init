@@ -56,6 +56,8 @@ sub info_default_load()
 
 t2h_default_set_variables_default();
 $USE_SECTIONS = 0;
+#set_conf('SPLIT', 0, 1);
+$SPLIT = '';
 @T2H_FORMAT_EXPAND = ('info', 'direntry');
 $EXTENSION = 'info';
 $SHOW_MENU = 1;
@@ -99,6 +101,7 @@ $misc_command{'indent'}->{'keep'} = 1;
 
 %info_default_accent_commands = ();
 
+%style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
@@ -109,7 +112,6 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys
 
 foreach my $command (keys(%style_map))
 {
-    delete $style_map{$command}->{'attribute'} if (exists($style_map{$command}->{'attribute'}));
     delete $style_map{$command}->{'quote'} if (exists($style_map{$command}->{'quote'}));
     if (grep {$_ eq $command} @simple_quoted_commands)
     {
@@ -164,20 +166,16 @@ $style_map{'uref'}->{'function'} = \&info_default_uref;
 $style_map{'url'}->{'function'} = \&info_default_uref;
 $style_map{'email'}->{'function'} = \&info_default_email;
 
-foreach my $command (keys(%style_map))
-{
-    $style_map_pre{$command} = {};
-    $style_map_texi{$command} = {};
-    foreach my $key (keys(%{$style_map{$command}}))
-    {
-        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
-        $style_map_texi{$command}->{$key} = $style_map{$command}->{$key};
-    }
-}
+%style_map_pre = ();
+%style_map_texi = ();
+t2h_default_copy_style_map (\%style_map, \%style_map_pre);
+t2h_default_copy_style_map (\%style_map, \%style_map_texi);
 
 $special_list_commands{'itemize'} = {};
 @info_default_normal_formats = ('table', 'vtable', 'ftable', 'enumerate',
    'itemize');
+
+%format_map = ();
 foreach my $format (@info_default_normal_formats, 'group', 'cartouche')
 {
     $format_map{$format} = '';
@@ -1965,11 +1963,20 @@ sub info_default_element_heading($$$$$$$$$$$$)
 
     # FIXME use $element or $Texi2HTML::THIS_ELEMENT? Main program should 
     # ensure they are the same. 
-    if ($new_element and ($element ne $new_element or !$element->{'node'}))
+#    if ($new_element and ($element ne $new_element or !$element->{'node'}))
+    if ($new_element and ($element ne $new_element and $element->{'node'}))
     {
-        die "There is a new element, but element $element->{'texi'} is not a node or not the new element\n";
+        #die "There is a new element, but element `$element->{'texi'}' is not a node or not the new element\n";
+        die "There is a new element, but element `$element->{'texi'}' is not the new element\n";
     }
-    return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading) unless ($new_element);
+    # FIXME
+    # non node element may appear if the element appears before the first
+    # node/section element. For example `element not associated with a node'
+    # won't be associated with a node.
+    # @unnumbered element not associated with a node
+    # @node Top
+    # @top Top element
+    return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading) unless ($element->{'node'});
 
     my $before = '';
     $element->{'info_offset'} = $info_state->{'offset_in_file'};
@@ -2665,14 +2672,29 @@ sub info_default_index_entry($$$$$$$$)
     {
        $result .= ' ' x($info_default_index_length_to_node - length($result));
     }
-    my $element = $index_entry_ref->{'real_element'};
-    $element = $element->{'element_ref'} if ($element->{'element_ref'});
-    $result .= $element->{'text'} . '.';
+
     my $info_index_entry_ref = $info_default_index_entries{$index_entry_ref};
     my $line_nr = $info_index_entry_ref->{'line_nr'};
-    # this happens for index entries appearing after @printindex. In that case
-    # it is considered that they are at the beginning of the node.
-    $line_nr = 4 if (!defined($line_nr) or $line_nr < 4);
+
+    my $real_element_text;
+    my $element = $index_entry_ref->{'real_element'};
+    # in case $element->{'text'} is not defined, it certainly means that we
+    # are n a special elemet, most likely the virtual element appearing 
+    # before anything else
+    if (!defined($element->{'text'}))
+    {
+       $real_element_text = &$I('(outside of any node)');
+       $line_nr = 0;
+    }
+    else
+    {
+       $element = $element->{'element_ref'} if ($element->{'element_ref'});
+       $real_element_text = $element->{'text'};
+       # this happens for index entries appearing after @printindex. In that case
+       # it is considered that they are at the beginning of the node.
+       $line_nr = 4 if (!defined($line_nr) or $line_nr < 4);
+    }
+    $result .= $real_element_text . '.';
     my $max_len = $info_default_index_line_string_length{$index_entry_ref->{'index_name'}};
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";

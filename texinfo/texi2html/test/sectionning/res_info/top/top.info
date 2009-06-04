@@ -1,0 +1,29 @@
+This is top.info, produced by makeinfo version 4.13 from top.texi.
+
+
+File: top.info,  Node: Top,  Next: Subnode,  Up: (dir)
+
+Top test
+********
+
+Typical top node.
+
+* Menu:
+
+* Subnode::
+
+
+File: top.info,  Node: Subnode,  Prev: Top,  Up: Top
+
+1 Subnode
+*********
+
+Subnode.
+
+
+
+Tag Table:
+Node: Top68
+Node: Subnode186
+
+End Tag Table

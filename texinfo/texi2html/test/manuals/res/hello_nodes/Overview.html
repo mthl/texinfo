@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Hello (version 4.2, 28 March 2002),
+which prints a friendly greeting (and serves as an example GNU package).
+
+Copyright C 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License".
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Hello 4.2: 1. Overview</title>
+
+<meta name="description" content="GNU Hello 4.2: 1. Overview">
+<meta name="keywords" content="GNU Hello 4.2: 1. Overview">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Overview"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="hello.html#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="hello_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concept-index.html#Concept-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="hello_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<a name="Overview-1"></a>
+<h1 class="chapter">1. Overview</h1>
+
+<a name="index-greetings"></a>
+<a name="index-overview"></a>
+
+<p>The GNU <code>hello</code> program
+(<a href="http://www.gnu.org/software/hello/">http://www.gnu.org/software/hello/</a>) produces a familiar,
+friendly greeting.  It allows nonprogrammers to use a classic computer
+science tool which would otherwise be unavailable to them.  Because it
+is protected by the GNU General Public License, users are free (in
+perpetuity) to share and change it.
+</p>
+<a name="index-joke_002c-not"></a>
+<p>Not to spoil the joke, but of course the practical purpose of GNU
+Hello is to serve as a minimal example of a GNU package.  So, although
+most manuals don&rsquo;t need to discuss the implementation of the programs
+they document, that is part of the goal here.
+</p>
+<a name="index-GNU-coding-standards"></a>
+<a name="index-GNU-maintainer-standards"></a>
+<a name="index-standards_002c-GNU-coding"></a>
+<a name="index-standards_002c-GNU-maintainer"></a>
+<p>First, GNU Hello follows the GNU coding standards
+(see <a href="../standards/index.html#Top">(standards)Top</a> section &lsquo;Preface&rsquo; in <cite>GNU Coding Standards</cite>) and GNU
+maintainer standards (see <a href="../maintain/index.html#Top">(maintain)Top</a> section &lsquo;Preface&rsquo; in <cite>Information for GNU Maintainers</cite>).  These are the basic documents which all GNU
+packages should adhere to.
+</p>
+<p>The Hello package also implements recommended development practices
+not embodied in the standards, using other GNU packages and features:
+</p>
+<ul>
+<li>
+<a name="index-Automake"></a>
+<a name="index-Autoconf"></a>
+It uses Automake (see <a href="../Automake/index.html#Top">(Automake)Top</a> section &lsquo;Introduction&rsquo; in <cite>GNU Automake</cite>) and
+hence also Autoconf (see <a href="../Autoconf/index.html#Top">(Autoconf)Top</a> section &lsquo;Introduction&rsquo; in <cite>GNU Autoconf</cite>)
+for configuration.
+
+</li><li>
+<a name="index-Gnulib"></a>
+It uses Gnulib (see <a href="../gnulib/index.html#Top">(gnulib)Top</a> section &lsquo;Gnulib&rsquo; in <cite>GNU Gnulib</cite>) to enhance
+portability and avoid duplication of common sources.
+
+</li><li>
+<a name="index-Gettext"></a>
+GNU Gettext (see <a href="../gettext/index.html#Top">(gettext)Top</a> section &lsquo;Introduction&rsquo; in <cite>GNU Gettext</cite>) is used
+for internationalization support.  Hello&rsquo;s greeting has been translated
+into many languages.
+
+</li><li>
+<a name="index-_002d_002dhelp"></a>
+Internally, Hello uses the GNU <code>getopt_long</code> function
+(see <a href="../libc/Getopt-Long-Options.html#Getopt-Long-Options">(libc)Getopt Long Options</a> section &lsquo;Getopt Long Options&rsquo; in <cite>GNU C Library</cite>) to parse options,
+thus supporting GNU-style long options such as &lsquo;<samp>--help</samp>&rsquo;.
+
+</li><li>
+<a name="index-Help2man"></a>
+Man pages are generated with GNU <code>help2man</code>
+(see <a href="../help2man/index.html#Top">(help2man)Top</a> section &lsquo;Overview&rsquo; in <cite>GNU <code>help2man</code></cite>) from the
+&lsquo;<samp>--help</samp>&rsquo; output.  This relieves the maintainers of the burden
+of maintaining man documentation separately, yet provides a reasonable
+overview for man devotees.
+
+</li><li>
+<a name="index-Texinfo"></a>
+Finally, Texinfo (see <a href="../texinfo/index.html#Top">(texinfo)Top</a> section &lsquo;Introduction&rsquo; in <cite>Texinfo</cite>) is the
+documentation format for this manual.  It supports output in Info,
+HTML, PDF, DVI, plain text, XML, and other formats.
+
+</li></ul>
+
+<p>GNU Hello is implemented in C.  GNU Gettext contains &ldquo;hello world&rdquo;
+examples in a variety of other programming languages; see the Gettext
+home page at <a href="http://www.gnu.org/software/gettext/">http://www.gnu.org/software/gettext/</a>.  
+</p>
+<a name="index-authors"></a>
+<a name="index-Haertel_002c-Mike"></a>
+<a name="index-MacKenzie_002c-David"></a>
+<a name="index-Brittenson_002c-Jan"></a>
+<a name="index-Hannum_002c-Charles"></a>
+<a name="index-McGrath_002c-Roland"></a>
+<a name="index-Friedman_002c-Noah"></a>
+<a name="index-Eichwalder_002c-Karl"></a>
+<a name="index-King_002c-The"></a>
+<a name="index-Berry_002c-Karl"></a>
+<p>GNU Hello was written by Mike Haertel, David MacKenzie, Jan
+Brittenson, Charles Hannum, Roland McGrath, Noah Friedman, Karl
+Eichwalder, Karl Berry, and The King.
+</p>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="hello.html#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Sample-output.html#Sample-output" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="hello.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="hello_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concept-index.html#Concept-index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="hello_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

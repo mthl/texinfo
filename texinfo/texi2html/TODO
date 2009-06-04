@@ -400,6 +400,8 @@ overridden by a command line option.  The possible values are:
 
      docbook  html  info  plaintext  xml
 
+* ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
+
 
 Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)
 Valid on 2009-05-23, before this was ameliorated, by introducing 

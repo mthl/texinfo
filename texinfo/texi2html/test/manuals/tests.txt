@@ -2,6 +2,9 @@ texi info-stnd.texi
 texi texinfo.texi -ifinfo
 texi cvs.texi
 texi mini_ker.texi
+texi hello.texi
+hello hello.texi
+hello_nodes hello.texi -split node -node-files hello.texi
 info-stnd info-stnd.texi -split chapter -node-files 
 texinfo texinfo.texi -split chapter -ifinfo -idx-sum
 texinfo_nodes texinfo.texi -split node -node-files -ifinfo

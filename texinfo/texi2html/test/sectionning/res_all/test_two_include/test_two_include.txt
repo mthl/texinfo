@@ -1,0 +1,10 @@
+Top
+***
+
+Include version
+
+include inc_file
+In included file.
+
+After inclusion.
+

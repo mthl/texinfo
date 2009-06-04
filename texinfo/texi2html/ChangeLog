@@ -1,3 +1,7 @@
+2009-06-05   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: better initializations.
+
 2009-05-24   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: add an array for the 

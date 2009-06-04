@@ -61,6 +61,8 @@ $stop_paragraph_command{'shortcaption'} = 1;
 
 %line_command_map = ();
 
+%format_map = ();
+
 $format_map{'copying'} = '';
 $format_map{'titlepage'} = 'titlepage';
 $format_map{'documentdescription'} = 'documentdescription';
@@ -71,6 +73,7 @@ foreach my $region ('titlepage', 'documentdescription', 'copying')
    $region_formats_kept{$region} = 1;
 }
 
+%style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
 
 foreach my $style (keys(%style_map))
@@ -145,12 +148,6 @@ $format_map{'menu'} = 'menu';
 $format_map{'detailmenu'} = 'detailmenu';
 $format_map{'direntry'} = 'direntry';
 $format_map{'menu_comment'} = '';
-delete $format_map{'enumerate'};
-foreach my $table ('table', 'ftable', 'vtable')
-{
-   #$format_map{$table} = 'table';
-   delete $format_map{$table};
-}
 
 $menu_description = \&xml_menu_description;
 $menu_link = \&xml_menu_link;

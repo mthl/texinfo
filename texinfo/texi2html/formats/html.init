@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.3 2009-05-24 22:29:10 pertusus Exp $
+# $Id: html.init,v 1.4 2009-06-04 22:58:02 pertusus Exp $
 
 use strict;
 
@@ -149,6 +149,9 @@ $NODE_FILE_EXTENSION = 'html';
 
 # extension
 $EXTENSION = 'html';
+
+# default is to split the html output
+$SPLIT = 'node';
 
 # this resets all the variables to the texi2html specific values if
 # called as texi2html
@@ -462,111 +465,25 @@ $inline_contents           = \&HTML_DEFAULT_inline_contents;
 #
 # texinfo "simple things" (@foo) to HTML ones
 #
-%simple_map = (
-           '*', "<br>",     # HTML+
-           ' ', '&nbsp;',
-           "\t", '&nbsp;',
-           "\n", '&nbsp;',
+%simple_map = %default_simple_map;
+$simple_map{'*'} = '<br>';     # HTML+
+$simple_map{' '} = '&nbsp;';
+$simple_map{"\t"} = '&nbsp;';
+$simple_map{"\n"} = '&nbsp;';
      # "&#173;" or "&shy;" could also be possible for @-, but it seems
      # that some browser will consider this as an always visible hyphen mark
      # which is not what we want (see http://www.cs.tut.fi/~jkorpela/shy.html)
-           '-', '',  # hyphenation hint
-           '|', '',  # used in formatting commands @evenfooting and friends
-           '/', '',
-       # spacing commands
-           ':', '',
-           '!', '!',
-           '?', '?',
-           '.', '.',
-           '@', '@',
-           '}', '}',
-           '{', '{',
-          );
+#$simple_map{'-'} = '';  # hyphenation hint
 
 # this map is used in preformatted text
 %simple_map_pre = %simple_map;
 $simple_map_pre{'*'} = "\n";
 
-# maps for the math specific commands
-%simple_map_math = (
-           '\\', '\\'
-           );
+$things_map{'dots'} = '<small class="dots">...</small>';
+$things_map{'enddots'} = '<small class="enddots">...</small>';
 
-%simple_map_pre_math = %simple_map_math;
-%simple_map_texi_math = %simple_map_math;
-
-#
-# texinfo "things" (@foo{}) to HTML ones
-#
-%things_map = (
-               'TeX'          => 'TeX',
-               'LaTeX'          => 'LaTeX',
-# pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
-#               'br', '<br>',     # paragraph break
-               'bullet'       => '*',
-#               #'copyright' => '(C)',
-               'copyright'    => '&copy;',
-               'registeredsymbol'   => '&reg;',
-               'dots'         => '<small class="dots">...</small>',
-               'enddots'      => '<small class="enddots">...</small>',
-               'equiv'        => '==',
-# FIXME i18n
-               'error'        => 'error--&gt;',
-               'expansion'    => '==&gt;',
-               'arrow'        => '->',
-               'minus'        => '-',
-               'point'        => '-!-',
-               'print'        => '-|',
-               'result'       => '=&gt;',
-               # set in code using the language
-               # 'today', &pretty_date,
-               'today'        => '',
-               'aa'           => '&aring;',
-               'AA'           => '&Aring;',
-               'ae'           => '&aelig;',
-               'oe'           => '&oelig;', #pertusus: also &#156;. &oelig; not in html 3.2
-               'AE'           => '&AElig;',
-               'OE'           => '&OElig;', #pertusus: also &#140;. &OElig; not in html 3.2
-               'o'            =>  '&oslash;',
-               'O'            =>  '&Oslash;',
-               'ss'           => '&szlig;',
-               'DH'           => '&ETH;',
-               'dh'           => '&eth;',
-               'TH'           => '&THORN;',
-               'th'           => '&thorn',
-               'l'            => '&#322;',
-               'L'            => '&#321;',
-               'exclamdown'   => '&iexcl;',
-               'questiondown' => '&iquest;',
-               'pounds'       => '&pound;',
-               'ordf'         => '&ordf;',
-               'ordm'         => '&ordm;',
-               'comma'        => ',',
-               'euro'         => '&euro;',
-               'geq'          => '&ge;',
-               'leq'          => '&le;',
-               'tie'          => '&nbsp;',
-               'textdegree'          => '&deg;',
-               'quotedblleft'          => '&ldquo;',
-               'quotedblright'          => '&rdquo;',
-               'quoteleft'          => '&lsquo;',
-               'quoteright'          => '&rsquo;',
-               'quotedblbase'          => '&bdquo;',
-               'quotesinglbase'          => '&sbquo;',
-               'guillemetleft'          => '&laquo;',
-               'guillemetright'          => '&raquo;',
-               'guillemotleft'          => '&laquo;',
-               'guillemotright'          => '&raquo;',
-               'guilsinglleft'          => '&lsaquo;',
-               'guilsinglright'          => '&rsaquo;',
-             );
-
-# This map is used in preformatted environments
-%pre_map = %things_map;
-$pre_map{'dots'} = '...';
-$pre_map{'enddots'} = '...';
-#$pre_map{'br'} = "\n";
-
+%style_map = ();
+%style_map_pre = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
 t2h_default_copy_style_map (\%default_style_map_pre, \%style_map_pre);
 # default is {'args' => ['normal'], 'attribute' => ''},   
@@ -625,40 +542,11 @@ $style_map_pre{'sc'} = {};
 $style_map_pre{'titlefont'} = {};
 $style_map_pre{'click'}->{'function'} = \&t2h_default_click_pre;
 
-
-#foreach my $command (keys(%style_map))
-#{
-#    print STDERR "STYLE_MAP_TEXI $command($style_map_texi{$command}) ";
-#    print STDERR "ARGS $style_map_texi{$command}->{'args'} " if (defined($style_map_texi{$command}->{'args'}));
-#    print STDERR "FUN $style_map_texi{$command}->{'function'} " if (defined($style_map_texi{$command}->{'function'}));
-#    print STDERR "\n";
-#}
-
 # uncomment to use the old interface
 #%style_map = %old_style_map;
 #%style_map_pre = %old_style_map_pre;
 
 %simple_format_simple_map_texi = %simple_map_pre;
-%simple_format_texi_map = %pre_map;
-%simple_format_style_map_texi = ();
-
-foreach my $command (keys(%style_map_texi))
-{
-    #$simple_format_style_map_texi{$command} = {};
-    foreach my $key (keys (%{$style_map_texi{$command}}))
-    {
-    #print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
-        $simple_format_style_map_texi{$command}->{$key} = 
-             $style_map_texi{$command}->{$key};
-    }
-    $simple_format_style_map_texi{$command} = {} if (!defined($simple_format_style_map_texi{$command}));
-}
-
-foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
-{
-#    $simple_format_style_map_texi{$accent_command}->{'args'} = ['normal'];
-    $simple_format_style_map_texi{$accent_command}->{'function'} = \&xml_default_accent;
-}
 
 %format_map = (
 #       'quotation'   =>  'blockquote',
@@ -767,59 +655,56 @@ $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
 # formatting functions
 
+$acronym_like      = \&html_default_acronym_like;
 $anchor            = \&html_default_anchor;
-$def_item          = \&html_default_def_item;
-$def               = \&html_default_def;
-$menu_command      = \&html_default_menu_command;
-$menu_link         = \&html_default_menu_link;
-$menu_description  = \&html_default_menu_description;
-$table_item        = \&html_default_table_item;
-$table_line        = \&html_default_table_line;
-$table_list        = \&html_default_table_list;
-$row               = \&html_default_row;
-$cell              = \&html_default_cell;
-$list_item         = \&html_default_list_item;
-$def_line          = \&html_default_def_line;
-$raw               = \&html_default_raw;
-$heading           = \&html_default_heading;
-$element_heading   = \&html_default_element_heading;
-$paragraph         = \&html_default_paragraph;
-$preformatted      = \&html_default_preformatted;
-$foot_line_and_ref = \&html_default_foot_line_and_ref;
-$foot_section      = \&html_default_foot_section;
-$image_files       = \&html_default_image_files;
-$image             = \&html_default_image;
-$index_entry_label = \&html_default_index_entry_label;
-$index_summary     = \&html_default_index_summary;
-$summary_letter    = \&html_default_summary_letter;
-$index_entry       = \&html_default_index_entry;
-$index_entry_command = \&html_default_index_entry_command;
-$index_letter      = \&html_default_index_letter;
-#$printindex       = \&html_default_printindex;
-$print_index       = \&html_default_print_index;
-$normal_text       = \&html_default_normal_text;
-$cartouche         = \&html_default_cartouche;
-$sp                = \&html_default_sp;
+$anchor_label      = \&html_default_anchor_label;
+$begin_format_texi = \&html_default_begin_format_texi;
 $caption_shortcaption     = \&html_default_caption_shortcaption;
 $caption_shortcaption_command  = \&html_default_caption_shortcaption_command;
-$float                     = \&html_default_float;
+$cartouche         = \&html_default_cartouche;
+$cell              = \&html_default_cell;
+$def               = \&html_default_def;
+$def_item          = \&html_default_def_item;
+$def_line          = \&html_default_def_line;
+$element_label     = \&html_default_element_label;
+$float             = \&html_default_float;
+$foot_line_and_ref = \&html_default_foot_line_and_ref;
+$foot_section      = \&html_default_foot_section;
+$format_list_item_texi      = \&html_default_format_list_item_texi;
+$heading           = \&html_default_heading;
+$image             = \&html_default_image;
+$image_files       = \&html_default_image_files;
+$index_entry       = \&html_default_index_entry;
+$index_entry_command = \&html_default_index_entry_command;
+$index_entry_label = \&html_default_index_entry_label;
+$index_letter      = \&html_default_index_letter;
+$index_summary     = \&html_default_index_summary;
+$insertcopying              = \&html_default_insertcopying;
+$line_command      = \&html_default_line_command;
+$list_item         = \&html_default_list_item;
 $listoffloats             = \&html_default_listoffloats;
 $listoffloats_entry       = \&html_default_listoffloats_entry;
 $listoffloats_caption     = \&html_default_listoffloats_caption;
 $listoffloats_float_style = \&html_default_listoffloats_float_style;
-$acronym_like             = \&html_default_acronym_like;
-$quotation                = \&html_default_quotation;
-$paragraph_style_command  = \&html_default_paragraph_style_command;
-$element_label              = \&html_default_element_label;
+$menu_command      = \&html_default_menu_command;
+$menu_link         = \&html_default_menu_link;
+$menu_description  = \&html_default_menu_description;
 $misc_element_label         = \&html_default_misc_element_label;
-$anchor_label               = \&html_default_anchor_label;
-$format_list_item_texi      = \&html_default_format_list_item_texi;
-$begin_format_texi          = \&html_default_begin_format_texi;
-$tab_item_texi              = \&html_default_tab_item_texi;
-$insertcopying              = \&html_default_insertcopying;
-$line_command               = \&html_default_line_command;
-
+$normal_text       = \&html_default_normal_text;
+$paragraph         = \&html_default_paragraph;
+$preformatted      = \&html_default_preformatted;
+$print_index       = \&html_default_print_index;
 $protect_text      = \&xml_default_protect_text;
+$quotation         = \&html_default_quotation;
+$sp                = \&html_default_sp;
+$summary_letter    = \&html_default_summary_letter;
+$tab_item_texi     = \&html_default_tab_item_texi;
+$table_item        = \&html_default_table_item;
+$table_line        = \&html_default_table_line;
+$table_list        = \&html_default_table_list;
+$raw               = \&html_default_raw;
+$row               = \&html_default_row;
+
 }
 
 
@@ -2579,41 +2464,6 @@ sub html_default_preformatted($$$$$$$$$$$$)
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-sub html_default_element_heading($$$$$$$$$$$$)
-{
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-    my $first_in_page = shift;
-    my $is_top = shift;
-    my $previous_is_top = shift;
-    my $command_line = shift;
-    my $element_id = shift;
-    my $new_element = shift;
-#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
-
-    my $result = &$element_label($element_id, $element, $command, $command_line);
-    if ($new_element and !$one_section)
-    {
-       if (!$element->{'element_ref'}->{'top'})
-       {
-    #return $result if (defined($command) and $command eq 'node' and !$element_heading);
-           $result .= &$print_element_header($first_in_page, $previous_is_top);
-       }
-       else
-       {
-           $result .= &$print_head_navigation(undef, \@MISC_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
-       }
-    }
-
-    return $result if (!$element_heading);
-    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
-}
-
 sub html_default_heading($$$$$;$$)
 {
     my $element = shift;
@@ -2973,18 +2823,6 @@ sub html_default_quotation($$$$)
     my $class_text = '';
     $class_text = " class=\"$command\"" if ($command ne 'quotation');
     return "<blockquote$class_text>" . $text . "</blockquote>\n";
-}
-
-# format the text within a paragraph style format,
-#
-# argument:
-# format name
-# text within the format
-sub html_default_paragraph_style_command($$)
-{
-    my $format = shift;
-    my $text = shift;
-    return $text;
 }
 
 # format a whole index

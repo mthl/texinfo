@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.200 2009-05-24 22:29:09 pertusus Exp $
+# $Id: texi2html.init,v 1.201 2009-06-04 22:58:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -459,6 +459,12 @@ $L2H_HTML_VERSION = "4.0";
 # use icons.
 $ICONS = 0;
 
+
+
+# this resets some defaults, those that are also set in formats and
+# not set in every formats.
+#
+# this is called below after %default_style_map_texi is defined
 sub t2h_default_set_variables_default()
 {
   $CAPTION_STYLE = 'strong';
@@ -519,6 +525,9 @@ sub t2h_default_set_variables_default()
 # after they have more than that many entries
   $SPLIT_INDEX = 0;
 
+  $USE_SECTIONS = 1;
+
+# also set by command line options
   $FOOTNOTESTYLE = 'end';
 
   $DOCTYPE = '';
@@ -531,15 +540,15 @@ sub t2h_default_set_variables_default()
 
   $USE_NODES = 1;
 
-  $USE_SECTIONS = 1;
+  $ENABLE_ENCODING = 0;
 
 # these are more or less the documented vanilla versions, so they
 # are reset
-$unknown                  = \&t2h_default_unknown;
-$unknown_style            = \&t2h_default_unknown_style;
+$unknown           = \&t2h_default_unknown;
+$unknown_style     = \&t2h_default_unknown_style;
 $external_ref      = \&t2h_default_external_ref;
 $internal_ref      = \&t2h_default_internal_ref;
-$tab_item_texi              = \&t2h_default_tab_item_texi;
+$tab_item_texi     = \&t2h_default_tab_item_texi;
 $complex_format    = \&t2h_default_complex_format;
 # reset in docbook and info.
 $style                    = \&T2H_GPL_style;
@@ -553,6 +562,25 @@ $printindex        = \&t2h_GPL_default_printindex;
 $misc_element_label         = \&t2h_default_misc_element_label;
 # set in html
 $init_out    = \&t2h_default_init_out;
+# set in info and xml
+$paragraph_style_command  = \&t2h_default_paragraph_style_command;
+# set in info
+$colon_command            = \&t2h_default_colon_command;
+# set in docbook
+$quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
+
+# set in html and info
+$print_section            = \&T2H_DEFAULT_print_section;
+
+# set in docbook and xml
+%colon_command_punctuation_characters = (
+   '.' => '.',
+   ':' => ':',
+   '?' => '?',
+   '!' => '!'
+);
+
+
 
 # in info
 $footnote_texi = undef;
@@ -576,9 +604,61 @@ $empty_preformatted = undef;
      (
      );
 
+%region_formats_kept = ();
+
+%style_map_texi = ();
+t2h_default_copy_style_map (\%default_style_map_texi, \%style_map_texi);
+
+# modified in docbook
+%special_accents = (
+      'ringaccent' => 'aA',
+      "'"          => 'aeiouyAEIOUY',
+      ','          => 'cC',
+      '^'          => 'aeiouAEIOU',
+      '`'          => 'aeiouAEIOU',
+      '~'          => 'nNaoAO',
+      '"'          => 'aeiouyAEIOU',
+# according to http://www2.lib.virginia.edu/small/vhp/download/ISO.txt
+# however this doesn't seems to work in firefox
+#      'ogonek'     => 'aeiuAEIU',
+);
+
+# modified by info, xml, docbook
+# %no_paragraph_commands should not be reset since it has been 
+# filled with defaults for many other commands.
+
+# FIXME this prevents the user from setting those entries.
+$no_paragraph_commands{'cindex'} = 1;
+$no_paragraph_commands{'float'} = 1;
+delete $no_paragraph_commands{'anchor'};
+
+# symbols used for the commands if $USE_ISO is true.
+# modified in docbook
+%iso_symbols = (
+         'equiv'     => '&equiv;',
+         'dots'      => '&hellip;',
+         'bullet'    => '&bull;',
+         'result'    => '&rArr;',
+         'expansion' => '&rarr;',
+         'arrow'     => '&rarr;',
+         'point'     => '&lowast;',
+         "'"         => '&rsquo;',
+         '`'         => '&lsquo;',
+        );
+
+# modified in docbook and xml
+%stop_paragraph_command = (
+ 'titlefont' => 1,
+ 'insertcopying' => 1,
+ 'sp' => 1,
+ 'verbatiminclude' => 1,
+ 'page' => 1
+);
+
 }
 
-t2h_default_set_variables_default();
+my %things_map_xml;
+my %pre_map_xml;
 
 sub t2h_default_set_variables_xml()
 {
@@ -589,6 +669,21 @@ sub t2h_default_set_variables_xml()
 
   $empty_line = \&t2h_default_empty_line;
   $comment = \&xml_default_comment;
+  $element_heading = \&xml_default_element_heading;
+  $line_command = \&xml_default_line_command;
+ 
+  %things_map = %things_map_xml;
+  %pre_map = %pre_map_xml;
+  %simple_format_texi_map = %pre_map;
+
+  %simple_format_style_map_texi = ();
+  t2h_default_copy_style_map (\%default_style_map_texi, \%simple_format_style_map_texi);
+  foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
+  {
+#    $simple_format_style_map_texi{$accent_command}->{'args'} = ['normal'];
+    $simple_format_style_map_texi{$accent_command}->{'function'} = \&xml_default_accent;
+  }
+
 }
 
 sub t2h_default_set_variables_texi2html()
@@ -610,6 +705,7 @@ sub t2h_default_set_variables_texi2html()
   $USE_LINKS = 0;
   $USE_NODES = undef;
   $USE_NUMERIC_ENTITY = 1;
+  $SPLIT = '';
   $SPLIT_INDEX = 100;
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
@@ -945,6 +1041,7 @@ sub t2h_default_load_format($)
   if (defined($t2h_default_formats_load_table{$format}))
   {
      &{$t2h_default_formats_load_table{$format}};
+     $OUTPUT_FORMAT = $format;
   }
   else
   {
@@ -1142,7 +1239,6 @@ $DATE = undef;
 #
 # There are the following subs which control the layout:
 #
-$print_section            = \&T2H_DEFAULT_print_section;
 $end_section              = \&T2H_DEFAULT_end_section;
 $one_section              = \&T2H_DEFAULT_one_section;
 $print_Top_header         = \&T2H_DEFAULT_print_Top_header;
@@ -1807,13 +1903,6 @@ sub T2H_DEFAULT_node_file_name($$)
 %simple_map_pre_math = %simple_map_math;
 %simple_map_texi_math = %simple_map_math;
 
-%colon_command_punctuation_characters = (
-   '.' => '.',
-   ':' => ':',
-   '?' => '?',
-   '!' => '!'
-);
-
 $punctuation_characters = '.?!';
 $after_punctuation_characters = '"\')]';
 
@@ -1895,6 +1984,75 @@ $texi_map{'copyright'} = 'C';
 $texi_map{'registeredsymbol'} = 'R';
 
 %default_texi_map = %texi_map;
+
+#
+# texinfo "things" (@foo{}) to XML ones
+#
+%things_map_xml = (
+               'TeX'          => 'TeX',
+               'LaTeX'          => 'LaTeX',
+# pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
+#               'br', '<br>',     # paragraph break
+               'bullet'       => '*',
+#               #'copyright' => '(C)',
+               'copyright'    => '&copy;',
+               'registeredsymbol'   => '&reg;',
+               'dots'         => '...',
+               'enddots'      => '...',
+               'equiv'        => '==',
+# FIXME i18n
+               'error'        => 'error--&gt;',
+               'expansion'    => '==&gt;',
+               'arrow'        => '->',
+               'minus'        => '-',
+               'point'        => '-!-',
+               'print'        => '-|',
+               'result'       => '=&gt;',
+               # set in code using the language
+               # 'today', &pretty_date,
+               'today'        => '',
+               'aa'           => '&aring;',
+               'AA'           => '&Aring;',
+               'ae'           => '&aelig;',
+               'oe'           => '&oelig;', #pertusus: also &#156;. &oelig; not in html 3.2
+               'AE'           => '&AElig;',
+               'OE'           => '&OElig;', #pertusus: also &#140;. &OElig; not in html 3.2
+               'o'            =>  '&oslash;',
+               'O'            =>  '&Oslash;',
+               'ss'           => '&szlig;',
+               'DH'           => '&ETH;',
+               'dh'           => '&eth;',
+               'TH'           => '&THORN;',
+               'th'           => '&thorn',
+               'l'            => '&#322;',
+               'L'            => '&#321;',
+               'exclamdown'   => '&iexcl;',
+               'questiondown' => '&iquest;',
+               'pounds'       => '&pound;',
+               'ordf'         => '&ordf;',
+               'ordm'         => '&ordm;',
+               'comma'        => ',',
+               'euro'         => '&euro;',
+               'geq'          => '&ge;',
+               'leq'          => '&le;',
+               'tie'          => '&nbsp;',
+               'textdegree'          => '&deg;',
+               'quotedblleft'          => '&ldquo;',
+               'quotedblright'          => '&rdquo;',
+               'quoteleft'          => '&lsquo;',
+               'quoteright'          => '&rsquo;',
+               'quotedblbase'          => '&bdquo;',
+               'quotesinglbase'          => '&sbquo;',
+               'guillemetleft'          => '&laquo;',
+               'guillemetright'          => '&raquo;',
+               'guillemotleft'          => '&laquo;',
+               'guillemotright'          => '&raquo;',
+               'guilsinglleft'          => '&lsaquo;',
+               'guilsinglright'          => '&rsaquo;',
+             );
+
+# This map is used in preformatted environments
+%pre_map_xml = %things_map_xml;
 
 # taken from
 #Latin extended additionnal
@@ -2651,27 +2809,6 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
    $t2h_encoding_aliases{$perl_charset_to_html{$perl_charset}} = $perl_charset_to_html{$perl_charset};
 }
 
-# symbols used for the commands if $USE_ISO is true.
-%iso_symbols = (
-         'equiv'     => '&equiv;',
-         'dots'      => '&hellip;',
-         'bullet'    => '&bull;',
-         'result'    => '&rArr;',
-         'expansion' => '&rarr;',
-         'arrow'     => '&rarr;',
-         'point'     => '&lowast;',
-         "'"         => '&rsquo;',
-         '`'         => '&lsquo;',
-        );
-
-%stop_paragraph_command = (
- 'titlefont' => 1,
- 'insertcopying' => 1,
- 'sp' => 1,
- 'verbatiminclude' => 1,
- 'page' => 1
-);
-
 # not used currently for html, but used in chm.init
 %numeric_entity_map = ();
 
@@ -2730,6 +2867,7 @@ sub t2h_default_copy_style_map ($$;$)
 
   foreach my $command (keys(%$from))
   {
+     $to->{$command} = {} if (!exists($to->{$command}));
      foreach my $key (keys(%{$from->{$command}}))
      {
         next if (exists($to->{$command}->{$key}) and $merge);
@@ -3184,19 +3322,6 @@ foreach my $command (keys(%unicode_accents))
           unless (exists($transliterate_map{$unicode_accents{$command}->{$letter}}));
     }
 }
-
-%special_accents = (
-      'ringaccent' => 'aA',
-      "'"          => 'aeiouyAEIOUY',
-      ','          => 'cC',
-      '^'          => 'aeiouAEIOU',
-      '`'          => 'aeiouAEIOU',
-      '~'          => 'nNaoAO',
-      '"'          => 'aeiouyAEIOU',
-# according to http://www2.lib.virginia.edu/small/vhp/download/ISO.txt
-# however this doesn't seems to work in firefox
-#      'ogonek'     => 'aeiuAEIU',
-);
 
 sub default_accent($$)
 {
@@ -3706,17 +3831,15 @@ $old_style_map_pre{'titlefont'} = '';
 
 foreach my $command (keys(%style_map))
 {
-    $style_map_pre{$command} = {};
     $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
-    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
+    $style_map_texi{$command}->{'args'} = [ @{$style_map{$command}->{'args'}} ]
         if (exists($style_map{$command}->{'args'}));
  #print STDERR "COMMAND $command";
-    
-    foreach my $key (keys(%{$style_map{$command}}))
-    {
-        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
-    }
 }
+
+%style_map_pre = ();
+
+t2h_default_copy_style_map(\%style_map, \%style_map_pre);
 
 $style_map_pre{'sc'} = {};
 $style_map_pre{'titlefont'} = {};
@@ -3784,17 +3907,7 @@ foreach my $special (keys(%special_style))
 %simple_format_texi_map = %pre_map;
 %simple_format_style_map_texi = ();
 
-foreach my $command (keys(%style_map_texi))
-{
-    #$simple_format_style_map_texi{$command} = {};
-    foreach my $key (keys (%{$style_map_texi{$command}}))
-    {
-    #print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
-        $simple_format_style_map_texi{$command}->{$key} = 
-             $style_map_texi{$command}->{$key};
-    }
-    $simple_format_style_map_texi{$command} = {} if (!defined($simple_format_style_map_texi{$command}));
-}
+t2h_default_copy_style_map(\%style_map_texi, \%simple_format_style_map_texi);
 
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 {
@@ -3820,6 +3933,8 @@ t2h_default_copy_style_map(\%style_map_pre, \%default_style_map_pre);
 t2h_default_copy_style_map(\%style_map_texi, \%default_style_map_texi);
 t2h_default_copy_style_map(\%simple_format_style_map_texi, \%default_simple_format_style_map_texi);
 
+# called here because %default_style_map_texi is used.
+t2h_default_set_variables_default();
 
 # regions expanded or not depending on the value of this hash.
 # @EXPAND sets entries in this hash, and you should better use
@@ -4246,7 +4361,6 @@ $listoffloats_float_style = \&t2h_default_listoffloats_float_style;
 $listoffloats_style       = \&t2h_default_listoffloats_style;
 $acronym_like             = \&t2h_default_acronym_like;
 $quotation                = \&t2h_default_quotation;
-$quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
 $paragraph_style_command  = \&t2h_default_paragraph_style_command;
 $heading_texi             = \&t2h_default_heading_texi;
 $index_element_heading_texi = \&t2h_default_index_element_heading_texi;
@@ -4256,7 +4370,6 @@ $preserve_misc_command      = \&t2h_default_preserve_misc_command;
 $format_list_item_texi      = \&t2h_default_format_list_item_texi;
 $begin_format_texi          = \&t2h_default_begin_format_texi;
 $insertcopying              = \&t2h_default_insertcopying;
-$colon_command              = \&t2h_default_colon_command;
 $simple_command             = \&t2h_default_simple_command;
 $thing_command              = \&t2h_default_thing_command;
 $line_command               = \&t2h_default_line_command;
@@ -5562,19 +5675,6 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
     return $text;
 }
 
-# This function formats a heading for an element
-#
-# argument:
-# an element. It is a hash reference for a node or a sectionning command.
-#             it may be the wrong one in case of headings.
-# The interesting keys are:
-# 'text': the heading text
-# 'text_nonumber': the heading text without section number
-# 'node': true if it is a node
-# 'level': level of the element. 0 for @top, 1 for chapter, heading, 
-#      appendix..., 2 for section and so on...
-# 'tag_level': the sectionning element name, raisesections and lowersections
-#      taken into account
 sub t2h_default_element_heading($$$$$$$$$$$$)
 {
     my $element = shift;
@@ -5602,6 +5702,56 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
     return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
 }
 
+# common for html and docbook
+sub xml_default_element_heading($$$$$$$$$$$$)
+{   
+    my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+    my $first_in_page = shift;
+    my $is_top = shift;
+    my $previous_is_top = shift;
+    my $command_line = shift;
+    my $element_id = shift;
+    my $new_element = shift;
+#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
+
+    my $result = &$element_label($element_id, $element, $command, $command_line);
+    if ($new_element and !$one_section)
+    {
+       if (!$element->{'element_ref'}->{'top'})
+       {
+    #return $result if (defined($command) and $command eq 'node' and !$element_heading);
+           $result .= &$print_element_header($first_in_page, $previous_is_top);
+       }
+       else
+       {
+           $result .= &$print_head_navigation(undef, \@MISC_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
+       }
+    }
+
+    return $result if (!$element_heading);
+    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
+}
+
+
+# This function formats a heading for an element
+#
+# argument:
+# an element. It is a hash reference for a node or a sectionning command.
+#             it may be the wrong one in case of headings.
+# The interesting keys are:
+# 'text': the heading text
+# 'text_nonumber': the heading text without section number
+# 'node': true if it is a node
+# 'level': level of the element. 0 for @top, 1 for chapter, heading, 
+#      appendix..., 2 for section and so on...
+# 'tag_level': the sectionning element name, raisesections and lowersections
+#      taken into account
 sub t2h_default_heading($$$$$;$$)
 {
     my $element = shift;
@@ -6095,10 +6245,21 @@ sub t2h_default_index_entry($$$$$$$$$)
     return '' if ($index_entry_ref->{'hidden'});
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
 
+    my $real_element_text;
     my $element = $index_entry_ref->{'real_element'};
-    $element = $element->{'element_ref'} if ($element->{'element_ref'});
-
-    return "* $entry: ".$element->{'text'} . '.'."\n";
+    # in case $element->{'text'} is not defined, it certainly means that we
+    # are n a special elemet, most likely the virtual element appearing 
+    # before anything else
+    if (defined($element->{'text'}))
+    {
+       $element = $element->{'element_ref'} if ($element->{'element_ref'});
+       $real_element_text = $element->{'text'};
+    }
+    else
+    {
+       $real_element_text = &$I('(outside of any element)');
+    }
+    return "* $entry: ".$real_element_text . '.'."\n";
 }
 
 
