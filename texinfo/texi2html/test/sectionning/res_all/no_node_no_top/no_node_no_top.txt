@@ -1,0 +1,37 @@
+Garbage
+
+unnumbered
+**********
+
+in unnumbered
+
+1 First chapter
+***************
+In first chapter.
+
+
+1.1 second
+==========
+
+second node
+
+2 Chapter
+*********
+
+Text of chapter
+
+2.1 Section of chapter
+======================
+
+2.1.1 subsection 1
+------------------
+
+2.1.2 subsection 2
+------------------
+
+3 Chapter 2
+***********
+
+
+Text of chapter 2
+

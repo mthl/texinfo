@@ -1,0 +1,26 @@
+This is no_section_no_top, produced by makeinfo version 4.13 from
+no_section_no_top.texi.
+
+Garbage
+
+
+File: no_section_no_top,  Node: first,  Up: (dir)
+
+   first node
+
+* Menu:
+
+* second node::
+
+
+File: no_section_no_top,  Node: second node,  Prev: first,  Up: first
+
+   second node
+
+
+
+Tag Table:
+Node: first100
+Node: second node194
+
+End Tag Table

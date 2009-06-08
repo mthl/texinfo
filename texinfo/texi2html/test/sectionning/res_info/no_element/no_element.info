@@ -1,0 +1,34 @@
+This is no_element.info, produced by makeinfo version 4.13 from
+no_element.texi.
+
+Ref to the anchor: *note An anchor::
+
+   Ref to the anchor in footnote: *note Anchor in footnote::.
+
+   (1)
+
+In float
+
+1
+
+   Ref to float *note 1: float anchor.
+
+* Menu:
+
+* An anchor::                menu entry pointing to the anchor.
+
+   ---------- Footnotes ----------
+
+   (1) In footnote.
+
+   Ref to main text anchor *note An anchor::
+
+
+
+Tag Table:
+Ref: An anchor0
+Ref: float anchor109
+Ref: -Footnote-1354
+Ref: Anchor in footnote375
+
+End Tag Table

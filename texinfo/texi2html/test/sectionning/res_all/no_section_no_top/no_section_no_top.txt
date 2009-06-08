@@ -1,0 +1,12 @@
+Garbage
+
+first
+-----
+first node
+
+* second node::
+
+second node
+-----------
+second node
+

@@ -1,0 +1,36 @@
+Garbage
+
+A title font in the text before a node
+**************************************
+
+
+first
+-----
+node in first but not the first...
+
+
+
+
+* first::
+* node1::
+* node inexistant in menu:: non existing
+* node1:description.  Description and node reversed
+* description:node1.  Right description and node
+* (info)::
+
+Top
+***
+This is the top node...
+
+
+
+
+
+node1 text
+
+node below node1
+----------------
+
+Should be a warning for not being in menus and not having a menu entry in
+node1
+

@@ -1,0 +1,17 @@
+Garbage
+
+before nodes
+************
+
+in unnumbered
+
+top section
+***********
+Top node
+
+
+0.1 second
+==========
+
+second node
+

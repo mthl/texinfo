@@ -1,0 +1,29 @@
+Garbage
+ref to Top Top.
+Hey(1).
+An anchor .
+
+* node1::
+
+top @top section
+****************
+Node top
+
+ref to anchor1(2), which is before @node Top: anchor1.
+* node1::
+
+1 node1 chapter
+***************
+
+* Index:
+* index entry before anything: (outside of any element).
+
+Footnotes
+*********
+
+(1)
+a footnote
+
+(2)
+another footnote
+

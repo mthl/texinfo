@@ -1,0 +1,25 @@
+before top
+----------
+
+Top
+***
+
+Equivalent nodes in node line and in menu.
+
+* node::
+
+node
+----
+
+A figure
+
+Figure 1
+
+* List of Figure:
+* Figure 1: `node'.
+
+
+Ref to node node.
+
+Ref to @samp{node} Figure 1.
+

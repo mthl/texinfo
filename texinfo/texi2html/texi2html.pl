@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.291 2009-06-04 22:58:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.292 2009-06-08 00:01:31 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -234,7 +234,7 @@ sub load($)
     {
       if ($file =~ /\/$format\.init$/)
       {
-         t2h_default_load_format($format);
+         t2h_default_load_format($format, 1);
          return 1;
       }
     }
@@ -691,7 +691,6 @@ my %config_map = (
 sub get_conf($)
 {
     my $name = shift;
-#    return $Texi2HTML::GLOBAL{$name} if (defined($Texi2HTML::GLOBAL{$name}));
     return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
     return ${$config_map{$name}} if (defined($config_map{$name}));
     # there is no default value for many @-commmands, like kbdinputstyle,
@@ -2824,7 +2823,7 @@ foreach my $output_format (keys(%output_format_names))
   $T2H_OPTIONS -> {$output_format} =
   {
     type => '',
-    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0]);},
+    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
     verbose => "output $output_format_names{$output_format} rather than $text_default_output_format.",
   }
 }
@@ -2834,7 +2833,7 @@ if (defined($default_output_format))
   $T2H_OPTIONS -> {$default_output_format} =
   {
     type => '',
-    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0]);},
+    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
     verbose => "output default format.",
     noHelp => 2
   }
@@ -3239,35 +3238,18 @@ foreach my $hash (\%Texi2HTML::Config::style_map, \%Texi2HTML::Config::style_map
     }
 }
 
-my (%cross_ref_simple_map_texi, %cross_ref_style_map_texi, 
-  %cross_ref_texi_map, %cross_transliterate_style_map_texi,
-  %cross_transliterate_texi_map);
-
 # setup hashes used for html manual cross references in texinfo
-%cross_ref_texi_map = %Texi2HTML::Config::texi_map;
+my %cross_ref_texi_map = %Texi2HTML::Config::default_texi_map;
+my %cross_transliterate_texi_map = %cross_ref_texi_map;
 
-$cross_ref_texi_map{'enddots'} = '...';
-
-%cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
-
-%cross_transliterate_texi_map = %cross_ref_texi_map;
-
-foreach my $command (keys(%Texi2HTML::Config::style_map_texi))
-{
-    $cross_ref_style_map_texi{$command} = {}; 
-    $cross_transliterate_style_map_texi{$command} = {};
-    foreach my $key (keys (%{$Texi2HTML::Config::style_map_texi{$command}}))
-    {
-#print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
-         $cross_ref_style_map_texi{$command}->{$key} = 
-              $Texi2HTML::Config::style_map_texi{$command}->{$key};
-         $cross_transliterate_style_map_texi{$command}->{$key} = 
-              $Texi2HTML::Config::style_map_texi{$command}->{$key};
-    }
-}
-
-$cross_ref_simple_map_texi{"\n"} = ' ';
+my %cross_ref_simple_map_texi = %Texi2HTML::Config::default_simple_map;
 $cross_ref_simple_map_texi{"*"} = ' ';
+
+my %cross_ref_style_map_texi = ();
+my %cross_transliterate_style_map_texi = ();
+Texi2HTML::Config::t2h_default_copy_style_map(\%Texi2HTML::Config::default_style_map_texi, \%cross_ref_style_map_texi);
+Texi2HTML::Config::t2h_default_copy_style_map(\%Texi2HTML::Config::default_style_map_texi, \%cross_transliterate_style_map_texi);
+
 
 
 # Fill in the %style_type hash, a hash associating style @-comand with 
@@ -3772,7 +3754,7 @@ sub set_docu_names($$)
    $docu_rdir = '';
    my $null_output;
    if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0) and $Texi2HTML::Config::null_device_file{$Texi2HTML::Config::OUT})
-   { # this overrides the GLOBAL setting for this file. set_conf
+   { # this overrides the setting for this file.
       $Texi2HTML::THISDOC{'SPLIT'} = '';
       $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef;
       $null_output = 1;
@@ -3911,10 +3893,6 @@ sub set_docu_names($$)
       {
          $docu_top = $Texi2HTML::Config::TOP_FILE;
       }
-      else
-      { 
-         $docu_top = $docu_doc;
-      }
    }
    else
    {
@@ -3930,27 +3908,28 @@ sub set_docu_names($$)
          $out_file =~ s|.*/|| unless ($null_output);
          $docu_doc = $out_file if ($out_file !~ /^\s*$/);
       }
-      if (defined $Texi2HTML::Config::element_file_name)
-      {
-         my $docu_doc_set = &$Texi2HTML::Config::element_file_name
-           (undef, "doc", $docu_name);
-         $docu_doc = $docu_doc_set if (defined($docu_doc_set));
-      } 
-      $docu_top = $docu_doc;
    }
+
+   if (defined $Texi2HTML::Config::element_file_name)
+   {
+      my $docu_doc_set = &$Texi2HTML::Config::element_file_name
+        (undef, 'doc', $docu_name);
+      $docu_doc = $docu_doc_set if (defined($docu_doc_set));
+   } 
+   $docu_top = $docu_doc if (!defined($docu_top));
 
    if (Texi2HTML::Config::get_conf('SPLIT') or !$Texi2HTML::Config::MONOLITHIC)
    {
       if (defined $Texi2HTML::Config::element_file_name)
       {
          $docu_toc = &$Texi2HTML::Config::element_file_name
-            (undef, "toc", $docu_name);
+            (undef, 'toc', $docu_name);
          $docu_stoc = &$Texi2HTML::Config::element_file_name
-            (undef, "stoc", $docu_name);
+            (undef, 'stoc', $docu_name);
          $docu_foot = &$Texi2HTML::Config::element_file_name
-            (undef, "foot", $docu_name);
+            (undef, 'foot', $docu_name);
          $docu_about = &$Texi2HTML::Config::element_file_name
-            (undef, "about", $docu_name);
+            (undef, 'about', $docu_name);
 	# $docu_top may be overwritten later.
       }
       if (!defined($docu_toc))
@@ -3994,9 +3973,9 @@ sub set_docu_names($$)
       if (defined $Texi2HTML::Config::element_file_name)
       {
          $docu_frame = &$Texi2HTML::Config::element_file_name
-            (undef, "frame", $docu_name);
+            (undef, 'frame', $docu_name);
          $docu_toc_frame = &$Texi2HTML::Config::element_file_name
-           (undef, "toc_frame", $docu_name);
+           (undef, 'toc_frame', $docu_name);
       }
    }
 
@@ -5342,10 +5321,11 @@ sub menu_entry_texi($$$)
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
         $node_menu_ref->{'menu_up_hash'}->{$state->{'node_ref'}->{'texi'}} = 1;
     }
-    else
-    {
-        echo_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
-    }
+    #there is a warning for the menu as a whole
+#    else
+#    {
+#        echo_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
+#    }
     if ($state->{'prev_menu_node'})
     {
         $node_menu_ref->{'menu_prev'} = $state->{'prev_menu_node'};
@@ -5385,11 +5365,13 @@ sub cross_manual_links()
     print STDERR "# Doing ".scalar(keys(%nodes))." cross manual links ".
       scalar(@index_labels). "index entries\n" 
        if ($T2H_DEBUG);
-    my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $::style_map_texi_ref = \%cross_ref_style_map_texi;
     $::texi_map_ref = \%cross_ref_texi_map;
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+    my $style_kept = $Texi2HTML::Config::style;
+    $Texi2HTML::Config::style = \&Texi2HTML::Config::T2H_GPL_style;
 
     foreach my $key (keys(%nodes))
     {
@@ -5488,6 +5470,7 @@ sub cross_manual_links()
     }
 
     $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $Texi2HTML::Config::style = $style_kept;
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::texi_map;
@@ -5506,6 +5489,8 @@ sub cross_manual_line($;$)
     $::texi_map_ref = \%cross_ref_texi_map;
     my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+    my $style_kept = $Texi2HTML::Config::style;
+    $Texi2HTML::Config::style = \&Texi2HTML::Config::T2H_GPL_style;
     
     my ($cross_ref_target, $cross_ref_file);
     if ($Texi2HTML::Config::USE_UNICODE)
@@ -5535,6 +5520,7 @@ sub cross_manual_line($;$)
     }
 
     $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $Texi2HTML::Config::style = $style_kept;
     $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $::texi_map_ref = \%Texi2HTML::Config::texi_map;
@@ -5553,6 +5539,7 @@ sub equivalent_nodes($)
 #print STDERR "equivalent_nodes $name\n";
     my $node = normalise_node($name);
     $name = cross_manual_line($node);
+#print STDERR "equivalent_nodes `$node' `$name'\n";
     my @equivalent_nodes = ();
     if (exists($cross_reference_nodes{$name}))
     {
@@ -5598,7 +5585,7 @@ sub do_element_targets($;$)
    my $element = shift;
    my $use_node_file = shift;
    my $is_top = '';
-   $is_top = "top" if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top));
+   $is_top = 'top' if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top));
    my $file_index_split = Texi2HTML::Config::t2h_default_associate_index_element($element, $is_top, $docu_name, $use_node_file);
    $element->{'file'} = $file_index_split if (defined($file_index_split));
    if (defined($Texi2HTML::Config::element_file_name))
@@ -6616,7 +6603,7 @@ sub rearrange_elements()
         do_node_target_file($node,'');
     }
     
-    print STDERR "# split and set files\n" 
+    print STDERR "# split(".Texi2HTML::Config::get_conf('SPLIT').") and set files\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     # find document nr and document file for sections and nodes. 
     # Split according to Texi2HTML::Config::SPLIT.
@@ -11772,6 +11759,12 @@ sub scan_structure($$$$;$)
                     if ($macro eq 'menu')
                     {
                        delete ($state->{'prev_menu_node'});
+                       if (!$state->{'node_ref'})
+                       {
+                          # FIXME make it echo_error
+                          echo_warn ("\@menu seen before first \@node", $line_nr);
+                          echo_warn ("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?", $line_nr);
+                       }
                     }
                     $state->{$macro}++;
                     push @{$state->{'text_macro_stack'}}, $macro;

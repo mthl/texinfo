@@ -1,0 +1,22 @@
+This is double_top, produced by makeinfo version 4.13 from
+double_top.texi.
+
+
+File: double_top,  Node: Top,  Next: Top
+
+Top node
+
+* Menu:
+
+* top::
+* TOP:: myself
+
+   second node (@node top,,ToP,Top).  anchor{TOP} .  ref to TOP: *note
+TOP::.
+
+
+
+Tag Table:
+Node: Top77
+
+End Tag Table

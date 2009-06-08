@@ -1,0 +1,24 @@
+This is one_section, produced by makeinfo version 4.13 from
+one_section.texi.
+
+Garbage
+
+1 The subsection
+----------------
+
+anchor ref .
+
+* Menu:
+
+* (gcc):: ref to gcc
+
+   ref to ref *note ref::.
+
+   Some text.
+
+
+
+Tag Table:
+Ref: ref55
+
+End Tag Table

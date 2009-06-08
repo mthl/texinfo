@@ -1,0 +1,72 @@
+This is menutextorder.texi, produced by makeinfo version 4.13 from
+menutextorder.texi.
+
+* Menu:
+
+* foo::
+* bar::
+
+
+File: menutextorder.texi,  Node: bar,  Next: foo
+
+1 bar
+*****
+
+* Menu:
+
+* onesub2::
+
+
+File: menutextorder.texi,  Node: onesub1,  Next: onesub2,  Up: bar
+
+1.1 One sub 1
+=============
+
+
+File: menutextorder.texi,  Node: onesub2,  Prev: onesub1,  Up: bar
+
+1.2 One sub 2
+=============
+
+
+File: menutextorder.texi,  Node: foo,  Prev: bar
+
+2 foo
+*****
+
+* Menu:
+
+* sub1::
+* sub3::
+* sub2::
+
+
+File: menutextorder.texi,  Node: sub1,  Next: sub2,  Up: foo
+
+2.1 Sub1
+========
+
+
+File: menutextorder.texi,  Node: sub2,  Next: sub3,  Prev: sub1,  Up: foo
+
+2.2 Sub2
+========
+
+
+File: menutextorder.texi,  Node: sub3,  Prev: sub2,  Up: foo
+
+2.3 Sub3
+========
+
+
+
+Tag Table:
+Node: bar114
+Node: onesub1201
+Node: onesub2300
+Node: foo399
+Node: sub1501
+Node: sub2584
+Node: sub3680
+
+End Tag Table

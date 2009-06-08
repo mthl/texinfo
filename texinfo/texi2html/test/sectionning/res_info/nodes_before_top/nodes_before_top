@@ -1,0 +1,48 @@
+This is nodes_before_top, produced by makeinfo version 4.13 from
+nodes_before_top.texi.
+
+
+File: nodes_before_top,  Node: first,  Next: Top,  Up: (dir)
+
+in first node
+
+* Menu:
+
+* node in menu before top::
+
+A titlefont in a node
+
+
+File: nodes_before_top,  Node: node in menu before top,  Up: first
+
+   node in menu before top text
+
+
+File: nodes_before_top,  Node: Top,  Prev: first
+
+top section
+***********
+
+Top node
+
+* Menu:
+
+* second node::
+
+
+File: nodes_before_top,  Node: second node,  Up: Top
+
+1 a chapter
+***********
+
+second node
+
+
+
+Tag Table:
+Node: first89
+Node: node in menu before top229
+Node: Top332
+Node: second node445
+
+End Tag Table

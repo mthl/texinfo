@@ -1,0 +1,68 @@
+This is raiselowersections.info, produced by makeinfo version 4.13 from
+raiselowersections.texi.
+
+
+File: raiselowersections.info,  Node: Top,  Next: Chapter,  Up: (dir)
+
+* Menu:
+
+* Chapter::
+* Second chapter::
+
+
+File: raiselowersections.info,  Node: Chapter,  Next: Second chapter,  Prev: Top,  Up: Top
+
+1 Chapter
+*********
+
+* Menu:
+
+* Chapter in included file::
+
+   \input texinfo
+
+
+File: raiselowersections.info,  Node: Chapter in included file,  Up: Chapter
+
+1.1 Chapter in included file
+============================
+
+* Menu:
+
+* Section::
+
+
+File: raiselowersections.info,  Node: Section,  Up: Chapter in included file
+
+1.1.1 Section
+-------------
+
+* Menu:
+
+* Subsection::
+
+
+File: raiselowersections.info,  Node: Subsection,  Up: Section
+
+1.1.1.1 Subsection
+..................
+
+
+File: raiselowersections.info,  Node: Second chapter,  Prev: Chapter,  Up: Top
+
+2 Second chapter
+****************
+
+Second chapter
+
+
+
+Tag Table:
+Node: Top98
+Node: Chapter212
+Node: Chapter in included file385
+Node: Section546
+Node: Subsection680
+Node: Second chapter785
+
+End Tag Table

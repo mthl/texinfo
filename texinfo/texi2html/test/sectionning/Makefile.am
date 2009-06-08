@@ -9,7 +9,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  test_refs.texi equivalent_nodes.texi nodename_parentheses.texi \
  section_file.texi html-top.texi menu-whitespace.texi nodes_id.texi \
  node-whitespace.texi two_footnotes_in_nodes.texi section_in_unnumbered.texi \
- top.texi more_nodes_than_sections.texi \
+ top.texi more_nodes_than_sections.texi no_node_no_top.texi \
  placed_things_before_element.texi menutextorder.texi semi_auto.texi \
  no_element.texi anchor_in_footnote.texi test_two_include.texi \
  test_directions.init tests.txt res

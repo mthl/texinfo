@@ -1,0 +1,35 @@
+This is one_node_and_section, produced by makeinfo version 4.13 from
+one_node_and_section.texi.
+
+Garbage
+
+
+File: one_node_and_section,  Node: one node
+
+   Top node
+
+   anchor ref .
+
+1 One section
+-------------
+
+* Menu:
+
+* (gcc):: ref to gcc
+
+   ref to ref *note ref::.
+
+   Some text(1).
+
+   ---------- Footnotes ----------
+
+   (1) A footnote
+
+
+
+Tag Table:
+Node: one node106
+Ref: ref180
+Ref: one node-Footnote-1325
+
+End Tag Table

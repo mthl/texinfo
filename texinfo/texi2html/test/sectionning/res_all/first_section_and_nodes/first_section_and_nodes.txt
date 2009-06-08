@@ -1,0 +1,31 @@
+Garbage
+
+Example with a section before the top node and another node
+***********************************************************
+
+
+before nodes
+************
+
+in unnumbered
+
+Top
+***
+Top node
+
+
+This is the top node
+********************
+
+second titlefont
+****************
+
+
+second node
+-----------
+
+This is the second node
+***********************
+
+second node
+

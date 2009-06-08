@@ -442,8 +442,8 @@ the file:
 
 File: cvs.info,  Node: Invoking CVS,  Next: Administrative files,  Prev: CVS commands,  Up: Top
 
-Annexe B Quick reference to CVS commands
-****************************************
+Appendix B Quick reference to CVS commands
+******************************************
 
 This appendix describes how to invoke CVS, with references to where each
 command or feature is described in detail.  For other references run the
@@ -1256,8 +1256,8 @@ command or feature is described in detail.  For other references run the
 
 File: cvs.info,  Node: Administrative files,  Next: Environment variables,  Prev: Invoking CVS,  Up: Top
 
-Annexe C Reference manual for Administrative files
-**************************************************
+Appendix C Reference manual for Administrative files
+****************************************************
 
 Inside the repository, in the directory `$CVSROOT/CVSROOT', there are a
 number of supportive files for CVS.  You can use CVS in a limited
@@ -2350,8 +2350,8 @@ Extraneous spaces or tabs are not permitted.
 
 File: cvs.info,  Node: Environment variables,  Next: Compatibility,  Prev: Administrative files,  Up: Top
 
-Annexe D All environment variables which affect CVS
-***************************************************
+Appendix D All environment variables which affect CVS
+*****************************************************
 
 This is a complete list of all environment variables that affect CVS.
 
@@ -2497,8 +2497,8 @@ This is a complete list of all environment variables that affect CVS.
 
 File: cvs.info,  Node: Compatibility,  Next: Troubleshooting,  Prev: Environment variables,  Up: Top
 
-Annexe E Compatibility between CVS Versions
-*******************************************
+Appendix E Compatibility between CVS Versions
+*********************************************
 
 The repository format is compatible going back to CVS 1.3.  But see
 *note Watches Compatibility::, if you have copies of CVS 1.6 or older
@@ -2519,8 +2519,8 @@ new features and bugfixes, however.
 
 File: cvs.info,  Node: Troubleshooting,  Next: Credits,  Prev: Compatibility,  Up: Top
 
-Annexe F Troubleshooting
-************************
+Appendix F Troubleshooting
+**************************
 
 If you are having trouble with CVS, this appendix may help.  If there is
 a particular error message which you are seeing, then you can look up
@@ -2972,8 +2972,8 @@ They are in no particular order.
 
 File: cvs.info,  Node: Credits,  Next: BUGS,  Prev: Troubleshooting,  Up: Top
 
-Annexe G Credits
-****************
+Appendix G Credits
+******************
 
 Roland Pesch, then of Cygnus Support <roland@wrs.com> wrote the manual
 pages which were distributed with CVS 1.3.  Much of their text was
@@ -3009,8 +3009,8 @@ complete list of who has contributed to this manual see the file
 
 File: cvs.info,  Node: BUGS,  Next: Index,  Prev: Credits,  Up: Top
 
-Annexe H Dealing with bugs in CVS or this manual
-************************************************
+Appendix H Dealing with bugs in CVS or this manual
+**************************************************
 
 Neither CVS nor this manual is perfect, and they probably never will be.
 If you are having trouble using CVS, or think you have found a bug,

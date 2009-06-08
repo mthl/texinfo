@@ -1,0 +1,31 @@
+Top
+***
+Top node
+
+* second node::
+* node following second::
+
+second node
+-----------
+second node (@node second node,,top,TOP).
+
+* other node::
+* second node::
+
+other node
+----------
+
+* other node::
+
+node up node following second
+-----------------------------
+* node following second::
+
+in node up node following second
+
+node following second
+---------------------
+
+in node following second
+* node up node following second::
+

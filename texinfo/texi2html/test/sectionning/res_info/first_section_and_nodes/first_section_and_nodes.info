@@ -1,0 +1,33 @@
+This is first_section_and_nodes.info, produced by makeinfo version 4.13
+from first_section_and_nodes.texi.
+
+Garbage
+
+Example with a section before the top node and another node
+
+before nodes
+************
+
+in unnumbered
+
+
+File: first_section_and_nodes.info,  Node: Top,  Up: (dir)
+
+   Top node
+
+   This is the top node
+second titlefont
+
+
+File: first_section_and_nodes.info,  Node: second node,  Up: (dir)
+
+This is the second node
+   second node
+
+
+
+Tag Table:
+Node: Top220
+Node: second node337
+
+End Tag Table

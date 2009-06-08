@@ -1,0 +1,15 @@
+Garbage
+
+one node
+--------
+Top node
+
+anchor ref .
+
+* (gcc):: ref to gcc
+
+
+ref to ref ref.
+
+Some text.
+

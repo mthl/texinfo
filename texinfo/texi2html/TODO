@@ -394,6 +394,14 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   instead of node name and line numbers in printindex. 
   multiple index entries have <1>... appended.
 
+* A lone node without associated sectionning command nor directions leads
+  to an error message in makeinfo. Since there is no way to go out of the 
+  node, it should certainly be noticed. Another possibility would be to
+  have automatic directions set in that case too, and use the @menu stuff
+  to determine the directions, and warn if the node is not the top node and 
+  don't appear in menu.
+../../node_footnote.texi:14: Node `@'a' requires a sectioning command (e.g., @top).
+
 *   `makeinfo' also reads the environment variable
 `TEXINFO_OUTPUT_FORMAT' to determine the output format, if not
 overridden by a command line option.  The possible values are:
@@ -401,6 +409,54 @@ overridden by a command line option.  The possible values are:
      docbook  html  info  plaintext  xml
 
 * ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
+
+* warning when doing info and there is no node at all
+  warning when doing info and there is no Top node
+
+* Perhaps we should also make an option -Werror which turns all warnings
+  into errors.
+
+* footnote before any node should trigger an error in info:
+  ../../before_node_and_section.texi:8: Footnote defined without parent node.
+
+* in novalidate.texi, fifth node argument should trigger an error
+  @node other node in menu before top, node not existing,,,first
+
+* no line number (though there is line number in makeinfo) for
+  ** `node1' is up for `node below node1', but has no menu entry for this node
+
+* makeinfo creates a Top node when there is a menu seen before any @node
+  example in sectionning/one_section
+../../one_section.texi:11: warning: @menu seen before first @node, creating `Top' node.
+
+* error messages
+  ** `second node' doesn't appear in menus
+  warning: unreferenced node `second node'.
+
+  ** node_prev `nonexistant node in prev for @@top' for `lop' not found (l. 13)
+  Prev reference to nonexistent node `nonexistant node in prev for @@top' (perhaps incorrect sectioning?).
+
+  ** `node1' is up for `node below node1', but has no menu entry for this node
+  Node `node1' lacks menu item for `node below node1' despite being its Up target.
+
+  *** Unknown node in menu entry `node inexistant in menu' (l. 19)
+  Menu reference to nonexistent node `node inexistant in menu' (perhaps incorrect sectioning?).
+
+* generic tests missing, in sectionning:
+  novalidate menu-whitespace node-whitespace two_footnotes_in_nodes
+  
+  macros:
+  value_in_pass0_macros macros_in_pass0_macros node-expand
+
+
+
+
+
+
+
+
+
+
 
 
 Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)

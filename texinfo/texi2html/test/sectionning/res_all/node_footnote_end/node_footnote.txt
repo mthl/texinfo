@@ -1,0 +1,43 @@
+Top
+***
+
+* a'::
+* a^::
+* chapter::
+* a`::
+
+a'
+--
+
+node a',
+Footnote 1(1).
+
+a^
+--
+
+node a^,
+Footnote 2(2).
+
+1 chapter
+*********
+
+* a`::
+
+a`
+--
+
+node a`,
+Footnote 3(3).
+
+Footnotes
+*********
+
+(1)
+foot 1 a'
+
+(2)
+foot 2 a^
+
+(3)
+foot 3 a`
+

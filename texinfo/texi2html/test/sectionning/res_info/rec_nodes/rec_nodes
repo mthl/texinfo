@@ -1,0 +1,58 @@
+This is rec_nodes, produced by makeinfo version 4.13 from
+rec_nodes.texi.
+
+
+File: rec_nodes,  Node: Top,  Next: second node,  Up: (dir)
+
+Top node
+
+* Menu:
+
+* second node::
+* node following second::
+
+
+File: rec_nodes,  Node: second node,  Prev: Top,  Up: Top
+
+   second node (@node second node,,top,TOP).
+
+* Menu:
+
+* other node::
+* second node::
+
+
+File: rec_nodes,  Node: other node,  Up: second node
+
+* Menu:
+
+* other node::
+
+
+File: rec_nodes,  Node: node up node following second,  Up: node following second
+
+* Menu:
+
+* node following second::
+
+   in node up node following second
+
+
+File: rec_nodes,  Node: node following second,  Up: node up node following second
+
+   in node following second
+
+* Menu:
+
+* node up node following second::
+
+
+
+Tag Table:
+Node: Top75
+Node: second node200
+Node: other node348
+Node: node up node following second429
+Node: node following second587
+
+End Tag Table

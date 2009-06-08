@@ -1,0 +1,147 @@
+This is sectionning.info, produced by makeinfo version 4.13 from
+sectionning.texi.
+
+
+File: sectionning.info,  Node: Top,  Next: First node,  Prev: (dir)
+
+* Menu:
+
+* First node::    node 1
+  explaination no heading ?
+* and here ?
+With command i^ and
+a `me'.
+
+heading
+* between node:: 
+node in between
+
+heading 
+or not ?
+* Second node::   node 2
+
+heading with spaces around
+
+* Third node unnumbered:: unnumbered in Top menu
+* Last node no description::
+
+description here
+
+
+File: sectionning.info,  Node: First node,  Prev: Top,  Up: Top
+
+1 first node chapter
+********************
+
+first node chapter text
+
+* Menu:
+
+* unnumbered:: un
+* unnumbered2:: un2
+* numbered:: nu
+
+
+File: sectionning.info,  Node: unnumbered,  Next: unnumbered2,  Up: First node
+
+unnumbered section
+==================
+
+* Menu:
+
+* unnumbered sub:: un
+* numbered sub:: nu
+* unnumbered sub2:: un2
+* numbered sub2:: nu2
+
+
+File: sectionning.info,  Node: unnumbered sub,  Next: numbered sub,  Up: unnumbered
+
+unnumbered subsection
+---------------------
+
+
+File: sectionning.info,  Node: numbered sub,  Next: unnumbered sub2,  Prev: unnumbered sub,  Up: unnumbered
+
+1.0.1 numbered subsection
+-------------------------
+
+
+File: sectionning.info,  Node: unnumbered sub2,  Next: numbered sub2,  Prev: numbered sub,  Up: unnumbered
+
+unnumbered subsection2
+----------------------
+
+
+File: sectionning.info,  Node: numbered sub2,  Prev: unnumbered sub2,  Up: unnumbered
+
+1.0.2 numbered subsection2
+--------------------------
+
+
+File: sectionning.info,  Node: unnumbered2,  Next: numbered,  Prev: unnumbered,  Up: First node
+
+unnumbered section2
+===================
+
+* Menu:
+
+*  numbered sub3::
+
+
+File: sectionning.info,  Node: numbered sub3,  Up: unnumbered2
+
+1.0.3 numbered subsection3
+--------------------------
+
+
+File: sectionning.info,  Node: numbered,  Prev: unnumbered2,  Up: First node
+
+1.1 numbered section
+====================
+
+
+File: sectionning.info,  Node: between node,  Up: Top
+
+between node, node without sectionning node
+
+
+File: sectionning.info,  Node: Second node,  Next: Third node unnumbered,  Up: Top
+
+   Second node text
+
+2 second node chapter
+*********************
+
+second node chapter text.
+
+
+File: sectionning.info,  Node: Third node unnumbered,  Prev: Second node,  Up: Top
+
+unnumbered chapter
+******************
+
+unnumbered chapter text.
+
+
+File: sectionning.info,  Node: Last node no description,  Prev: Third node unnumbered,  Up: Top
+
+
+
+Tag Table:
+Node: Top84
+Node: First node471
+Node: unnumbered670
+Node: unnumbered sub889
+Node: numbered sub1021
+Node: unnumbered sub21185
+Node: numbered sub21342
+Node: unnumbered21486
+Node: numbered sub31655
+Node: numbered1776
+Node: between node1899
+Node: Second node2001
+Node: Third node unnumbered2180
+Node: Last node no description2331
+
+End Tag Table

@@ -5161,8 +5161,8 @@ during repository transactions.
 
 File: cvs.info,  Node: CVS commands,  Next: Invoking CVS,  Prev: Special Files,  Up: Top
 
-Annexe A Guide to CVS commands
-******************************
+Appendix A Guide to CVS commands
+********************************
 
 This appendix describes the overall structure of CVS commands, and
 describes some commands in detail (others are described elsewhere; for a

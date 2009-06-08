@@ -1,0 +1,39 @@
+This is equivalent_nodes.info, produced by makeinfo version 4.13 from
+equivalent_nodes.texi.
+
+
+File: equivalent_nodes.info,  Node: before top,  Next: `node',  Up: (dir)
+
+
+File: equivalent_nodes.info,  Node: Top,  Next: *node*,  Up: (dir)
+
+Equivalent nodes in node line and in menu.
+
+* Menu:
+
+* *node*::
+
+
+File: equivalent_nodes.info,  Node: node
+
+A figure
+
+Figure 1
+
+* Menu:
+
+* Figure 1:                              `node'.
+
+   Ref to node *note node::.
+
+   Ref to @samp{node} *note Figure 1: `node'.
+
+
+
+Tag Table:
+Node: before top94
+Node: Top171
+Node: node306
+Ref: `node'350
+
+End Tag Table

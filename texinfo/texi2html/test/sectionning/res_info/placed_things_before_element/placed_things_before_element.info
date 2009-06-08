@@ -1,0 +1,41 @@
+This is placed_things_before_element.info, produced by makeinfo version
+4.13 from placed_things_before_element.texi.
+
+Ref to the anchor: *note An anchor::
+
+   Ref to the anchor in footnote: *note Anchor in footnote::.
+
+   (1)
+
+In float
+
+1.1
+
+   Ref to float *note 1.1: float anchor.
+
+* Menu:
+
+* An anchor::                menu entry pointing to the anchor.
+
+1 section
+=========
+
+Ref to anchor *note An anchor::
+
+   Ref to footnote anchor *note Anchor in footnote::
+
+   ---------- Footnotes ----------
+
+   (1) In footnote.
+
+   Ref to main text anchor *note An anchor::
+
+
+
+Tag Table:
+Ref: An anchor0
+Ref: float anchor109
+Ref: -Footnote-1502
+Ref: Anchor in footnote523
+
+End Tag Table

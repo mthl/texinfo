@@ -51,8 +51,10 @@ if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'info')
    info_default_load();
 }
 
-sub info_default_load()
+sub info_default_load(;$)
 {
+my $from_command_line = shift;
+$OUTPUT_FORMAT = 'info';
 
 t2h_default_set_variables_default();
 $USE_SECTIONS = 0;
@@ -314,10 +316,11 @@ sub info_default_init_variables()
    %info_default_index_entries = ();
    $info_default_footnote_index = 0;
    $info_default_current_node = undef;
+   $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'info');
 }
 
 # this is put in command_handler_init such that it sets things right
-# in case $ENABLE_ENCODING is set and haslead to modification of the 
+# in case $ENABLE_ENCODING is set and has lead to modification of the 
 # accent functions
 sub info_default_init_accent_enable_encoding()
 {
@@ -387,7 +390,7 @@ sub info_default_accent($$$)
         $result = &t2h_default_accent(@args);
     }
     if (scalar(@$style_stack) and $info_default_accent_commands{$style_stack->[-1]})
-    {
+    { # still more accents on the stack
         return $result;
     }
     return info_default_store_text($state,$result,'accents_commands');
@@ -520,6 +523,11 @@ sub info_default_iterator_next($$$)
    }
 }
 
+# return ($current_next, $index_next, $close_next, $text, $command);
+# 
+# returns the next in tree, identified by the triplet 
+# ($current_next, $index_next, $close_next) and also the command 
+# and/or text if defined, in $text and $command.
 sub info_default_next($$$)
 {
     my $current = shift;
@@ -1153,6 +1161,17 @@ sub info_default_process_content($$)
                   $text_added .= $content->{'text'};
                   goto new_text;
               }
+              elsif ($content->{'command'} eq 'ref')
+              { # adds a . if needed.
+                  if ($content->{'text'} !~ /[\.,]$/ and $content->{'text'} !~ /::$/)
+                  {
+                     my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+                     if (!defined($text_next) or $text_next !~ /^[\.,]/)
+                     {
+                         $content->{'text'} .= '.';
+                     }
+                  }
+              }
               elsif ($content->{'definition_line'})
               {
                   
@@ -1625,10 +1644,12 @@ sub info_default_store_text($$;$$)
    my $info_state = info_default_get_state($state);
    return '' if ((!defined($text) or $text eq '') and !defined($command));
 
+   ################################## debug
    my $command_text = '';
    $command_text = "\[$command\]" if (defined($command));
    $command_text .= $text if (defined($text));
    print STDERR "TREE Storing: ${command_text}\n" if ($DEBUG);
+   ################################## end debug
 
    $text_entries->{'text'} = $text if (defined($text));
    $text_entries->{'command'} = $command if (defined($command));
@@ -1774,7 +1795,9 @@ sub info_default_style($$$$$$$$$)
       $args = \@formatted_args; 
    }
    if (defined($style->{'function'}))
-   {
+   { # in case of an accent, some text is returned here if there are still
+     # more accents on the command_stack, otherwise it is put in the tree.
+     # Other commands text results are put in the tree below.
       $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr);
    }
    if (defined($style->{'begin'}) and !$no_open)
@@ -1785,6 +1808,7 @@ sub info_default_style($$$$$$$$$)
    {
       $end = $style->{'end'};
    }
+   # normal style commands
    unless($special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
    {
       return info_default_close_command($state, $command, $begin, $end);
@@ -2009,7 +2033,7 @@ sub info_default_heading($$$$$;$$)
     $text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
-    $text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
+    $text = "Appendix $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $result = $text . "\n" . 
        ($t2h_default_underline_symbol{$element->{'level'}} x length($text)) . "\n";
 
@@ -2059,7 +2083,7 @@ sub info_default_normal_text($$$$$$;$)
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
       }
    }
-   # accented characters are not handled as text, but when the last 
+   # accented characters are not handled as normal text, but when the last 
    # accent command on the stack is closed.
    if ($style_stack and @$style_stack and $info_default_accent_commands{$style_stack->[-1]})
    {
@@ -2208,6 +2232,7 @@ sub info_default_print_section
         if (get_conf('footnotestyle') eq 'separate')
         {
             my $node_ref = $info_default_current_node;
+            # FIXME warning
             $node_ref = {'text' => 'no node', 'file' => ''} if (!defined($node_ref));
             $footnote_element = { 'NodeUp' => $node_ref, 
                        'text' => $node_ref->{'text'} . "-Footnotes", 
@@ -2752,7 +2777,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
          'footnote_index' => ${info_default_footnote_index}, 
          'node_name' => $node_name, 
          'footnote_info_state' => $footnote_info_state};
-    return ($lines,  $footnote_text);
+    return ([],  $footnote_text);
 }
 
 sub info_default_foot_lines($)

@@ -12,7 +12,7 @@ END-INFO-DIR-ENTRY
 
 Indirect:
 cvs.info-1: 336
-cvs.info-2: 301728
+cvs.info-2: 301732
 
 Tag Table:
 (Indirect)
@@ -130,78 +130,78 @@ Node: Multiple vendor branches217171
 Node: Builds218872
 Node: Special Files221551
 Node: CVS commands222200
-Node: Structure223658
-Node: Exit status224934
-Node: ~/.cvsrc225931
-Node: Global options227974
-Node: Common options233128
-Node: admin240815
-Node: admin options241999
-Node: checkout253182
-Node: checkout options255947
-Node: checkout examples260291
-Node: commit260577
-Node: commit options262449
-Node: commit examples263814
-Node: diff266206
-Node: diff options267109
-Node: Line group formats274953
-Node: Line formats280678
-Node: diff examples283894
-Node: export284863
-Node: export options286171
-Node: history287254
-Node: history options288041
-Node: import291560
-Node: import options294175
-Node: import output295440
-Node: import examples296514
-Node: log296693
-Node: log options297848
-Node: log examples301728
-Node: rdiff301885
-Node: rdiff options303203
-Node: rdiff examples304872
-Node: release305849
-Node: release options307155
-Node: release output307844
-Node: release examples309128
-Node: update309610
-Node: update options310671
-Node: update output314786
-Node: Invoking CVS317650
-Node: Administrative files339826
-Node: modules341092
-Node: Alias modules342445
-Node: Regular modules343503
-Node: Ampersand modules344905
-Node: Excluding directories346150
-Node: Module options346702
-Node: Module program options348282
-Node: Wrappers349067
-Node: commit files350770
-Node: syntax352769
-Node: commitinfo353677
-Node: verifymsg355843
-Node: editinfo360470
-Node: editinfo example362769
-Node: loginfo364077
-Node: loginfo example366663
-Node: Keeping a checked out copy367511
-Node: rcsinfo368541
-Node: cvsignore370099
-Node: checkoutlist373371
-Node: history file374704
-Node: Variables375362
-Node: config378914
-Node: Environment variables384053
-Node: Compatibility390049
-Node: Troubleshooting391068
-Node: Error messages391706
-Node: Connection407762
-Node: Other problems412701
-Node: Credits413639
-Node: BUGS415043
-Node: Index418649
+Node: Structure223662
+Node: Exit status224938
+Node: ~/.cvsrc225935
+Node: Global options227978
+Node: Common options233132
+Node: admin240819
+Node: admin options242003
+Node: checkout253186
+Node: checkout options255951
+Node: checkout examples260295
+Node: commit260581
+Node: commit options262453
+Node: commit examples263818
+Node: diff266210
+Node: diff options267113
+Node: Line group formats274957
+Node: Line formats280682
+Node: diff examples283898
+Node: export284867
+Node: export options286175
+Node: history287258
+Node: history options288045
+Node: import291564
+Node: import options294179
+Node: import output295444
+Node: import examples296518
+Node: log296697
+Node: log options297852
+Node: log examples301732
+Node: rdiff301889
+Node: rdiff options303207
+Node: rdiff examples304876
+Node: release305853
+Node: release options307159
+Node: release output307848
+Node: release examples309132
+Node: update309614
+Node: update options310675
+Node: update output314790
+Node: Invoking CVS317654
+Node: Administrative files339834
+Node: modules341104
+Node: Alias modules342457
+Node: Regular modules343515
+Node: Ampersand modules344917
+Node: Excluding directories346162
+Node: Module options346714
+Node: Module program options348294
+Node: Wrappers349079
+Node: commit files350782
+Node: syntax352781
+Node: commitinfo353689
+Node: verifymsg355855
+Node: editinfo360482
+Node: editinfo example362781
+Node: loginfo364089
+Node: loginfo example366675
+Node: Keeping a checked out copy367523
+Node: rcsinfo368553
+Node: cvsignore370111
+Node: checkoutlist373383
+Node: history file374716
+Node: Variables375374
+Node: config378926
+Node: Environment variables384065
+Node: Compatibility390065
+Node: Troubleshooting391088
+Node: Error messages391730
+Node: Connection407786
+Node: Other problems412725
+Node: Credits413663
+Node: BUGS415071
+Node: Index418681
 
 End Tag Table

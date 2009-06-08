@@ -1,0 +1,19 @@
+Top
+***
+
+In top node(1)
+
+* chapter::
+
+1 Chap
+******
+
+Anchor in footnote.
+
+Footnotes
+*********
+
+(1)
+in footnote
+.
+

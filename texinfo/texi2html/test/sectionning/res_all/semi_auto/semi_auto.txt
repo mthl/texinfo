@@ -1,0 +1,17 @@
+Top
+***
+
+* Chap1::
+* Section non auto::
+
+1 Chapter 1
+***********
+
+* Sec in chapter::
+
+1.1 Sec in chapter
+==================
+
+1.2 Section
+===========
+

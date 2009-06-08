@@ -1,0 +1,50 @@
+This is nodes_test.info, produced by makeinfo version 4.13 from
+nodes_test.texi.
+
+Garbage
+
+A title font in the text before a node
+
+
+File: nodes_test.info,  Node: first,  Next: node1,  Prev: lop,  Up: lop
+
+   node in first but not the first...
+
+
+File: nodes_test.info,  Node: lop,  Next: first,  Up: (texinfo) Copying
+
+* Menu:
+
+* first::
+* node1::
+* node inexistant in menu:: non existing
+* node1:description.  Description and node reversed
+* description:node1.  Right description and node
+* (info)::
+
+
+File: nodes_test.info,  Node: Top,  Up: (dir)
+
+   This is the top node...
+
+
+File: nodes_test.info,  Node: node1,  Up: lop
+
+node1 text
+
+
+File: nodes_test.info,  Node: node below node1,  Up: node1
+
+   Should be a warning for not being in menus and not having a menu
+entry in node1
+
+
+
+Tag Table:
+Node: first131
+Node: lop245
+Node: Top503
+Node: node1580
+Node: node below node1641
+
+End Tag Table

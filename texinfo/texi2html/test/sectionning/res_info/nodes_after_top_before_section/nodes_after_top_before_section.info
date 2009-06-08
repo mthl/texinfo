@@ -1,0 +1,32 @@
+This is nodes_after_top_before_section.info, produced by makeinfo
+version 4.13 from nodes_after_top_before_section.texi.
+
+
+File: nodes_after_top_before_section.info,  Node: Top,  Next: second node,  Up: (dir)
+
+Top node
+
+* Menu:
+
+* second node::
+* third node::
+
+
+File: nodes_after_top_before_section.info,  Node: second node,  Next: third node,  Prev: Top,  Up: Top
+
+   second node
+
+
+File: nodes_after_top_before_section.info,  Node: third node,  Prev: second node,  Up: Top
+
+1 subsection
+------------
+
+
+
+Tag Table:
+Node: Top122
+Node: second node262
+Node: third node384
+
+End Tag Table

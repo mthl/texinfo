@@ -1,0 +1,304 @@
+This is section_in_unnumbered.info, produced by makeinfo version 4.13
+from section_in_unnumbered.texi.
+
+
+File: section_in_unnumbered.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Test section in unnumbered
+**************************
+
+Menu:
+
+* Menu:
+
+* chapter::
+* unnumbered::
+* chapter 2::
+* chapter 3::
+* unnumbered 4::
+
+
+File: section_in_unnumbered.info,  Node: chapter,  Next: unnumbered,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+* Menu:
+
+* section in chapter::
+
+
+File: section_in_unnumbered.info,  Node: section in chapter,  Up: chapter
+
+1.1 section in chapter
+======================
+
+
+File: section_in_unnumbered.info,  Node: unnumbered,  Next: chapter 2,  Prev: chapter,  Up: Top
+
+unnumbered
+**********
+
+* Menu:
+
+* section in unnumbered::
+
+
+File: section_in_unnumbered.info,  Node: section in unnumbered,  Up: unnumbered
+
+1.2 section in unnumbered
+=========================
+
+
+File: section_in_unnumbered.info,  Node: chapter 2,  Next: chapter 3,  Prev: unnumbered,  Up: Top
+
+2 chapter 2
+***********
+
+* Menu:
+
+* unnumberedsec 2::
+* unnumberedsec 2-1::
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 2,  Next: unnumberedsec 2-1,  Up: chapter 2
+
+unnumbered section 2
+====================
+
+* Menu:
+
+* unnumbered sub 2::
+* numbered sub 2::
+* unnumbered sub2 2::
+* numbered sub2 2::
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub 2,  Next: numbered sub 2,  Up: unnumberedsec 2
+
+unnumbered subsection 2
+-----------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 2,  Next: unnumbered sub2 2,  Prev: unnumbered sub 2,  Up: unnumberedsec 2
+
+2.0.1 numbered subsection 2
+---------------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub2 2,  Next: numbered sub2 2,  Prev: numbered sub 2,  Up: unnumberedsec 2
+
+unnumbered subsection2 2
+------------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub2 2,  Prev: unnumbered sub2 2,  Up: unnumberedsec 2
+
+2.0.2 numbered subsection2 2
+----------------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 2-1,  Prev: unnumberedsec 2,  Up: chapter 2
+
+unnumberedsec 2-1
+=================
+
+* Menu:
+
+* numbered sub 2-1::
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 2-1,  Up: unnumberedsec 2-1
+
+2.0.3 numbered subsection 2-1
+-----------------------------
+
+
+File: section_in_unnumbered.info,  Node: chapter 3,  Next: unnumbered 4,  Prev: chapter 2,  Up: Top
+
+3 chapter 3
+***********
+
+* Menu:
+
+* unnumberedsec 3::
+* section 3-1::
+* unnumberedsec 3-2::
+* section 3-3::
+* unnumberedsec 3-4::
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 3,  Next: section 3-1,  Up: chapter 3
+
+unnumbered section 3
+====================
+
+* Menu:
+
+* unnumbered sub 3::
+* numbered sub 3::
+* unnumbered sub2 3::
+* numbered sub2 3::
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub 3,  Next: numbered sub 3,  Up: unnumberedsec 3
+
+unnumbered subsection 3
+-----------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 3,  Next: unnumbered sub2 3,  Prev: unnumbered sub 3,  Up: unnumberedsec 3
+
+3.0.1 numbered subsection 3
+---------------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub2 3,  Next: numbered sub2 3,  Prev: numbered sub 3,  Up: unnumberedsec 3
+
+unnumbered subsection2 3
+------------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub2 3,  Prev: unnumbered sub2 3,  Up: unnumberedsec 3
+
+3.0.2 numbered subsection2 3
+----------------------------
+
+
+File: section_in_unnumbered.info,  Node: section 3-1,  Next: unnumberedsec 3-2,  Prev: unnumberedsec 3,  Up: chapter 3
+
+3.1 section 3-1
+===============
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 3-2,  Next: section 3-3,  Prev: section 3-1,  Up: chapter 3
+
+unnumberedsec 3-2
+=================
+
+* Menu:
+
+* numbered sub 3-2::
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 3-2,  Up: unnumberedsec 3-2
+
+3.1.1 numbered subsection 3-2
+-----------------------------
+
+
+File: section_in_unnumbered.info,  Node: section 3-3,  Next: unnumberedsec 3-4,  Prev: unnumberedsec 3-2,  Up: chapter 3
+
+3.2 section 3-3
+===============
+
+* Menu:
+
+* subsection 3-3::
+
+
+File: section_in_unnumbered.info,  Node: subsection 3-3,  Up: section 3-3
+
+3.2.1 subsection 3-3
+--------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 3-4,  Prev: section 3-3,  Up: chapter 3
+
+unnumberedsec 3-4
+=================
+
+* Menu:
+
+* numbered sub 3-4::
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 3-4,  Up: unnumberedsec 3-4
+
+3.2.2 numbered subsection 3-4
+-----------------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumbered 4,  Prev: chapter 3,  Up: Top
+
+unnumbered 4
+************
+
+* Menu:
+
+* unnumberedsec 4::
+
+
+File: section_in_unnumbered.info,  Node: unnumberedsec 4,  Up: unnumbered 4
+
+unnumbered section 4
+====================
+
+* Menu:
+
+* unnumbered sub 4::
+* numbered sub 4::
+* unnumbered sub2 4::
+* numbered sub2 4::
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub 4,  Next: numbered sub 4,  Up: unnumberedsec 4
+
+unnumbered subsection 4
+-----------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub 4,  Next: unnumbered sub2 4,  Prev: unnumbered sub 4,  Up: unnumberedsec 4
+
+3.2.3 numbered subsection 4
+---------------------------
+
+
+File: section_in_unnumbered.info,  Node: unnumbered sub2 4,  Next: numbered sub2 4,  Prev: numbered sub 4,  Up: unnumberedsec 4
+
+unnumbered subsection2 4
+------------------------
+
+
+File: section_in_unnumbered.info,  Node: numbered sub2 4,  Prev: unnumbered sub2 4,  Up: unnumberedsec 4
+
+3.2.4 numbered subsection2 4
+----------------------------
+
+
+
+Tag Table:
+Node: Top104
+Node: chapter324
+Node: section in chapter471
+Node: unnumbered595
+Node: section in unnumbered753
+Node: chapter 2889
+Node: unnumberedsec 21067
+Node: unnumbered sub 21304
+Node: numbered sub 21459
+Node: unnumbered sub2 21648
+Node: numbered sub2 21830
+Node: unnumberedsec 2-11997
+Node: numbered sub 2-12167
+Node: chapter 32313
+Node: unnumberedsec 32547
+Node: unnumbered sub 32778
+Node: numbered sub 32933
+Node: unnumbered sub2 33122
+Node: numbered sub2 33304
+Node: section 3-13471
+Node: unnumberedsec 3-23626
+Node: numbered sub 3-23812
+Node: section 3-33958
+Node: subsection 3-34144
+Node: unnumberedsec 3-44264
+Node: numbered sub 3-44430
+Node: unnumbered 44576
+Node: unnumberedsec 44718
+Node: unnumbered sub 44932
+Node: numbered sub 45087
+Node: unnumbered sub2 45276
+Node: numbered sub2 45458
+
+End Tag Table

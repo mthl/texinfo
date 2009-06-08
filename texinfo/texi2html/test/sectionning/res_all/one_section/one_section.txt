@@ -1,0 +1,14 @@
+Garbage
+
+1 The subsection
+----------------
+
+anchor ref .
+
+* (gcc):: ref to gcc
+
+
+ref to ref ref.
+
+Some text.
+

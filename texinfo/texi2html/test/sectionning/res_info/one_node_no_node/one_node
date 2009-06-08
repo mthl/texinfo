@@ -1,0 +1,26 @@
+This is one_node, produced by makeinfo version 4.13 from one_node.texi.
+
+Garbage
+
+
+File: one_node,  Node: one node,  Up: (dir)
+
+   Top node
+
+   anchor ref .
+
+* Menu:
+
+* (gcc):: ref to gcc
+
+   ref to ref *note ref::.
+
+   Some text.
+
+
+
+Tag Table:
+Node: one node82
+Ref: ref156
+
+End Tag Table

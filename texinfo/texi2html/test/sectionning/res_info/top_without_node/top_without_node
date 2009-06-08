@@ -1,0 +1,45 @@
+This is top_without_node, produced by makeinfo version 4.13 from
+top_without_node.texi.
+
+Garbage
+
+
+File: top_without_node,  Node: a node,  Up: (dir)
+
+unnumbered
+**********
+
+in unnumbered
+
+top section
+***********
+
+Top section
+
+The top section, no top node
+
+
+File: top_without_node,  Node: second,  Up: (dir)
+
+0.1 second
+==========
+
+second node
+
+1 Chapter
+*********
+
+Text of chapter
+
+2 Chapter 2
+***********
+
+Text of chapter 2
+
+
+
+Tag Table:
+Node: a node98
+Node: second257
+
+End Tag Table

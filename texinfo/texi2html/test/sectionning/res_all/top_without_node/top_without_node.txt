@@ -1,0 +1,31 @@
+Garbage
+
+unnumbered
+**********
+
+in unnumbered
+
+top section
+***********
+Top section
+
+The top section, no top node
+****************************
+
+
+0.1 second
+==========
+
+second node
+
+1 Chapter
+*********
+
+Text of chapter
+
+2 Chapter 2
+***********
+
+
+Text of chapter 2
+

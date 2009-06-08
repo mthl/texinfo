@@ -1,0 +1,39 @@
+This is no_section, produced by makeinfo version 4.13 from
+no_section.texi.
+
+Garbage
+
+Titlefont before top node
+
+
+File: no_section,  Node: Top,  Next: second node,  Up: (dir)
+
+   Top node
+
+* Menu:
+
+* second node::
+* TOP:: myself
+
+
+File: no_section,  Node: second node,  Prev: Top,  Up: Top
+
+   second node (@node second node,,top,TOP).
+
+* Menu:
+
+* other node::
+
+
+File: no_section,  Node: other node,  Up: second node
+
+   ref to TOP *note TOP::.
+
+
+
+Tag Table:
+Node: Top113
+Node: second node231
+Node: other node364
+
+End Tag Table

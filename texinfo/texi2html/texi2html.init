@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.201 2009-06-04 22:58:01 pertusus Exp $
+# $Id: texi2html.init,v 1.202 2009-06-08 00:01:30 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1035,13 +1035,13 @@ my %t2h_default_formats_load_table = (
   'xml' => \&xml_default_load,
 );
 
-sub t2h_default_load_format($)
+sub t2h_default_load_format($;$)
 {
   my $format = shift;
+  my $from_command_line = shift;
   if (defined($t2h_default_formats_load_table{$format}))
   {
-     &{$t2h_default_formats_load_table{$format}};
-     $OUTPUT_FORMAT = $format;
+     &{$t2h_default_formats_load_table{$format}}($from_command_line);
   }
   else
   {
@@ -1787,6 +1787,7 @@ sub T2H_DEFAULT_titlepage($$$$)
 sub T2H_DEFAULT_print_redirection_page($)
 {
     my $fh = shift;
+    print $fh "Redirection files are not of use for the current format.\n";
 }
 
 sub T2H_DEFAULT_node_file_name($$)
@@ -6219,7 +6220,7 @@ sub t2h_default_index_letter($$$)
      my $letter = shift;
      my $id = shift;
      my $text = shift;
-     return '';
+     return $text;
 }
 
 # format an index entry (in a letter entry).
@@ -6437,8 +6438,9 @@ sub t2h_default_element_file_name($$$)
 
     my $outname;
     return unless ($USE_SETFILENAME_EXTENSION);
+#print STDERR "NNNNNN $type " . get_conf('SPLIT') ."\n";
     $outname = $OUT if (defined($OUT) and $OUT ne '' and $OUT !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
-    if ($type eq 'doc') 
+    if ($type eq 'doc' or !get_conf('SPLIT'))
     {
        if (defined($Texi2HTML::THISDOC{'setfilename'}) and !defined($outname))
        {

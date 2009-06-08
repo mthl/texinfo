@@ -1,0 +1,19 @@
+Garbage
+
+Top node
+
+anchor ref .
+
+1 One section
+-------------
+
+* (gcc):: ref to gcc
+
+
+ref to ref ref.
+
+Some text(1).
+
+(1)
+A footnote
+

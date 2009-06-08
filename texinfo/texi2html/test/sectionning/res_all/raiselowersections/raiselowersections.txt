@@ -1,0 +1,44 @@
+
+
+* Chapter::
+* Second chapter::
+
+1 Chapter
+*********
+
+* Chapter in included file::
+
+
+
+\input texinfo 
+
+1.1 Chapter in included file
+============================
+
+* Section::
+
+1.1.1 Section
+-------------
+
+* Subsection::
+
+1.1.1.1 Subsection
+..................
+
+
+
+
+2 Second chapter
+****************
+
+Second chapter
+
+Table of Contents
+*****************
+
+
+1. Chapter
+ 1.1 Chapter in included file
+  1.1.1 Section
+   1.1.1.1 Subsection
+2. Second chapter

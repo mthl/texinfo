@@ -1,0 +1,33 @@
+This is first_section_no_node, produced by makeinfo version 4.13 from
+first_section_no_node.texi.
+
+Garbage
+
+before nodes
+************
+
+in unnumbered
+
+
+File: first_section_no_node,  Node: Top,  Up: (dir)
+
+top section
+***********
+
+Top node
+
+
+File: first_section_no_node,  Node: second node,  Up: (dir)
+
+0.1 second
+==========
+
+second node
+
+
+
+Tag Table:
+Node: Top150
+Node: second node240
+
+End Tag Table

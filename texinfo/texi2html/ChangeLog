@@ -1,3 +1,11 @@
+2009-06-08   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: better initialization for the cross references hashes.
+	Always call element_file_name for 'doc'.
+	* texi2html.pl, formats/*: override splitting from command line.
+	* formats/info.init: add a dot after @ref if needed.
+	* tests/sectionning/*: add test results for info and raw plaintext.
+
 2009-06-05   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: better initializations.
