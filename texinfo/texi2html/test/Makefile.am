@@ -19,21 +19,21 @@ copy-base:
 	cp $(srcdir)/formatting/res/texi_formatting/formatting.texi $(srcdir)/formatting/formatting_for_makeinfo.texi
 
 copy-long:
-	$(srcdir)/tests.sh -copy $(long_tests)
+	$(srcdir)/tests.sh all -copy $(long_tests)
 
 clean-tests:
-	$(srcdir)/tests.sh -clean $(base_tests) $(long_tests)
+	$(srcdir)/tests.sh all -clean $(base_tests) $(long_tests)
 
 TESTS = base_tests
 
 # mimic automake check for an optional
 long-check:
 	@srcdir=$(srcdir); export srcdir; \
-	tst=long_tests; failed=0; \
+	tst=tests.sh; failed=0; \
 	if test -f ./$$tst; then dir=./; \
 	elif test -f $$tst; then dir=; \
 	else dir="$(srcdir)/"; fi; \
-	if $(TESTS_ENVIRONMENT) $${dir}$$tst; then :; \
+	if $(TESTS_ENVIRONMENT) $${dir}$$tst all $(long_tests); then :; \
 	else failed="1"; fi ; \
 	if  test "$$failed" -ne 0; then \
 	  echo "FAIL: long_test"; \

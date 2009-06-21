@@ -1,0 +1,47 @@
+This is pass0_macros.info, produced by makeinfo version 4.13 from
+pass0_macros.texi.
+
+
+File: pass0_macros.info,  Node: Top,  Next: First node,  Prev: (dir)
+
+pass0 macro
+***********
+
+* Menu:
+
+* First node::    node 1
+
+
+File: pass0_macros.info,  Node: First node,  Prev: Top,  Up: Top
+
+1 first node chapter
+********************
+
+before syncodeindex
+
+   syncodeindex on its line
+
+   line following syncodeindex
+
+   One more thing following syncodeindex     truc line following
+syncodeindex cp fn   truc
+
+   documentlanguage
+
+   documentlanguage on its line line following documentlanguage
+
+   double documentlanguage on its line line following documentlanguage
+
+   definedx truc after
+
+   definedx chose   machin after
+
+   Before bye
+
+
+
+Tag Table:
+Node: Top86
+Node: First node218
+
+End Tag Table

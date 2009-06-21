@@ -1,0 +1,45 @@
+pass0_macros.texi(,2) 
+pass0_macros.texi(,3) @node Top,First node,(dir)
+pass0_macros.texi(,4) @top pass0 macro
+pass0_macros.texi(,5) @menu
+pass0_macros.texi(,6) * First node::    node 1
+pass0_macros.texi(,7) @end menu
+pass0_macros.texi(,8) 
+pass0_macros.texi(,9) @node First node,,Top,Top
+pass0_macros.texi(,10) @chapter first node chapter
+pass0_macros.texi(,11) 
+pass0_macros.texi(,12) before syncodeindex @syncodeindex cp fn
+pass0_macros.texi(,13) 
+pass0_macros.texi(,14) syncodeindex on its line
+pass0_macros.texi(,15) @syncodeindex cp fn
+pass0_macros.texi(,16) line following syncodeindex
+pass0_macros.texi(,17) 
+pass0_macros.texi(,18) One more thing following syncodeindex
+pass0_macros.texi(,19) @syncodeindex cp fn    truc
+pass0_macros.texi(,20) line following syncodeindex cp fn   truc
+pass0_macros.texi(,21) 
+pass0_macros.texi(,22) documentlanguage @documentlanguage  en  
+pass0_macros.texi(,23) 
+pass0_macros.texi(,24) documentlanguage on its line
+pass0_macros.texi(,25) @documentlanguage  en  
+pass0_macros.texi(,26) line following documentlanguage
+pass0_macros.texi(,27) 
+pass0_macros.texi(,28) double documentlanguage on its line
+pass0_macros.texi(,29) @documentlanguage  en @documentlanguage  en  
+pass0_macros.texi(,30) line following documentlanguage
+pass0_macros.texi(,31) 
+pass0_macros.texi(,32) @documentlanguage  en  after documentlanguage
+pass0_macros.texi(,33) 
+pass0_macros.texi(,34) definedx truc
+pass0_macros.texi(,35) @defindex truc
+pass0_macros.texi(,36) after
+pass0_macros.texi(,37) 
+pass0_macros.texi(,38) definedx chose   machin
+pass0_macros.texi(,39) @defindex chose    machin 
+pass0_macros.texi(,40) after
+pass0_macros.texi(,41) 
+pass0_macros.texi(,42) @trucindex index truc
+pass0_macros.texi(,43) @c @choseindex index
+pass0_macros.texi(,44) @c @machinindex machin
+pass0_macros.texi(,45) 
+pass0_macros.texi(,46) Before bye @bye

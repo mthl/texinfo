@@ -64,6 +64,7 @@ top atext
 2. bidule
 3. last
 
+
 special
 -------
 
@@ -99,6 +100,7 @@ top atext
 2. bidule
 3. last
 
+
 2 bidule
 ********
 
@@ -109,6 +111,7 @@ top atext
 1. chapter
 2. bidule
 3. last
+
 
 3 last
 ******

@@ -1,0 +1,222 @@
+comments.texi(,2) @setfilename comments.info
+comments.texi(,3) 
+comments.texi(,4) @hyphenation{some-where 
+comments.texi(,5) be-low   
+comments.texi(,6)   may-be to-morow 
+comments.texi(,7)  }
+comments.texi(,8) 
+comments.texi(,9) @node Top
+comments.texi(,10) @top
+comments.texi(,11) @subheading Comment like:
+comments.texi(,12) 
+comments.texi(,13) Text line followed by a comment on the same line and another below @c comment
+comments.texi(,14) @c comment
+comments.texi(,15) Text line after the comment followed by a comment @comment c
+comments.texi(,16) Text line after the text line followed by the comment.
+comments.texi(,17) 
+comments.texi(,18) Comment at the end of the line @c comment
+comments.texi(,19) 
+comments.texi(,20) Example with comments 2 lines
+comments.texi(,21) @example 
+comments.texi(,22) line @c comment
+comments.texi(,23) second line @c comment
+comments.texi(,24) @end example
+comments.texi(,25) 
+comments.texi(,26) Example with comments 1 line
+comments.texi(,27) @example
+comments.texi(,28) line @c comment
+comments.texi(,29) @end example
+comments.texi(,30) 
+comments.texi(,31) No comments
+comments.texi(,32) @example
+comments.texi(,33) line 
+comments.texi(,34) @end example
+comments.texi(,35) 
+comments.texi(,36) The same but with oddfooting instead of comment:
+comments.texi(,37) Text line followed by a comment on the same line and another below @oddfooting comment
+comments.texi(,38) @oddfooting some text ignored
+comments.texi(,39) Text line after the comment followed by a comment @oddfooting c
+comments.texi(,40) Text line after the text line followed by the comment.
+comments.texi(,41) 
+comments.texi(,42) @@pagesizes @pagesizes 200mm,150mm following @@pagesizes arg
+comments.texi(,43) @@afourpaper @afourpaper on line following afourpaper
+comments.texi(,44) @@smallbook @smallbook on line following smallbook
+comments.texi(,45) @@headings @headings on line following headings
+comments.texi(,46) @@oddfooting @oddfooting on line following oddfooting
+comments.texi(,47) @@everyheading @everyheading on line following everyheading
+comments.texi(,48) @@everyfooting @everyfooting on line following everyfooting
+comments.texi(,49) @@evenheading @evenheading on line following evenheading
+comments.texi(,50) @@evenfooting @evenfooting on line following evenfooting
+comments.texi(,51) @@oddheading @oddheading on line following 
+comments.texi(,53) @@need @need 0.1 on line following
+comments.texi(,55) @@need @need 0.1 
+comments.texi(,56) @@setchapternewpage @setchapternewpage on line following setchapternewpage
+comments.texi(,57) @@raisesections @raisesections on line following raisesections
+comments.texi(,58) @@lowersections @lowersections on line following lowersections
+comments.texi(,59) @c @@kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
+comments.texi(,61) @@kbdinputstyle code @kbdinputstyle code something
+comments.texi(,63) @@afourpaper @afourpaper on line following afourpaper
+comments.texi(,64) @@afourlatex @afourlatex on line following afourlatex
+comments.texi(,65) @@afourwide @afourwide on line following afourwide
+comments.texi(,66) 
+comments.texi(,67) @c tex error: Use of \ doesn't match its definition.
+comments.texi(,70) @@definfoenclose phoo,//,\\  
+comments.texi(,71) //bar\\
+comments.texi(,73) 
+comments.texi(,75) @@definfoenclose phi,:,:  
+comments.texi(,76) @c this is required
+comments.texi(,80) 
+comments.texi(,81) :bar:
+comments.texi(,82) 
+comments.texi(,83) @strong{very strong}
+comments.texi(,84) 
+comments.texi(,86) 
+comments.texi(,87) (strong: is it really strong? :)
+comments.texi(,88) 
+comments.texi(,89) Makeinfo ignore @@kbdinputstyle:
+comments.texi(,90) 
+comments.texi(,91) @kbdinputstyle code
+comments.texi(,92) 
+comments.texi(,93) @kbd{truc}
+comments.texi(,94) 
+comments.texi(,95) @example
+comments.texi(,96) @kbd{example}
+comments.texi(,97) @end example
+comments.texi(,98) 
+comments.texi(,99) @subheading ignore arg
+comments.texi(,100) 
+comments.texi(,101) 
+comments.texi(,102) Commands doesn't accept anything after a non numerical arg on the line
+comments.texi(,103) and ignore things after a numerical arg
+comments.texi(,104) 
+comments.texi(,105) @@paragraphindent asis @paragraphindent asis
+comments.texi(,106) @@paragraphindent 0 @paragraphindent 0
+comments.texi(,107) @@paragraphindent none @paragraphindent none
+comments.texi(,108) @@paragraphindent 4 @paragraphindent 4
+comments.texi(,109) @@firstparagraphindent none @firstparagraphindent none
+comments.texi(,111) @@exampleindent 6 @exampleindent 6 on line following exampleindent
+comments.texi(,113) @@exampleindent 6 @exampleindent 6 
+comments.texi(,114) @@footnotestyle @footnotestyle end 
+comments.texi(,115) @@footnotestyle @footnotestyle separate 
+comments.texi(,116) 
+comments.texi(,117) Special arg for documentencoding. makeinfo complains, not tex
+comments.texi(,118) 
+comments.texi(,119) @documentencoding
+comments.texi(,120) @@documentencoding @documentencoding bad encoding name
+comments.texi(,121) @documentencoding ISO-8859-1
+comments.texi(,122) @c accepts on or off
+comments.texi(,123) @@frenchspacing @frenchspacing on
+comments.texi(,124) @@frenchspacing @frenchspacing off
+comments.texi(,125) @c accepts 10 or 11
+comments.texi(,126) @@fonttextsize @fonttextsize 10
+comments.texi(,127) @c @@fonttextsize @fonttextsize 11
+comments.texi(,128) @c accept bottom and top
+comments.texi(,129) @c tex keeps the line, makeinfo doesn't
+comments.texi(,130) @@everyheadingmarks @everyheadingmarks bottom on line following everyheadingmarks
+comments.texi(,131) @c accept false or true
+comments.texi(,132) @c makeinfo don't care about the arg and remove the remaining of the line
+comments.texi(,133) @allowcodebreaks false
+comments.texi(,134) @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+comments.texi(,135) 
+comments.texi(,136) @allowcodebreaks true
+comments.texi(,137) @code{true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+comments.texi(,138) 
+comments.texi(,145) 
+comments.texi(,146) @subheading command removed
+comments.texi(,147) 
+comments.texi(,148) And now finalout:
+comments.texi(,149) Text line followed by finalout on the same line and another below @finalout
+comments.texi(,150) @finalout
+comments.texi(,151) Text line after the finalout followed by a fianlout @finalout
+comments.texi(,152) Text line after the text line followed by the finalout.
+comments.texi(,153) 
+comments.texi(,154) Test text after finalout
+comments.texi(,155) @finalout a word after finalout
+comments.texi(,156) Line after finalout
+comments.texi(,157) 
+comments.texi(,158) @@page @page @@noindent @noindent @@refill @refill something
+comments.texi(,159) 
+comments.texi(,160) @noindent     noindent at beginning of line
+comments.texi(,161) @noindent  
+comments.texi(,162) noindent on the preceding line
+comments.texi(,163)   @noindent    noindent after space at beginning of line
+comments.texi(,164) @page         page at beginning of line
+comments.texi(,165) @page
+comments.texi(,166) After page on it's own line.
+comments.texi(,167) 
+comments.texi(,168) @@page @page   @@noindent @noindent    @@refill @refill @@novalidate @novalidate something
+comments.texi(,169) 
+comments.texi(,170) @@contents @contents something
+comments.texi(,171) 
+comments.texi(,178) 
+comments.texi(,179) @subheading special
+comments.texi(,180) 
+comments.texi(,181) Only valid between iftex:
+comments.texi(,182) @c @@vskip @vskip @@cropmarks @cropmarks
+comments.texi(,183) Unknown ???
+comments.texi(,184) @c @@fillbreak  @fillbreak eol
+comments.texi(,185) 
+comments.texi(,186) @@exdent @exdent line after exdent
+comments.texi(,187) 
+comments.texi(,188) And now sp:
+comments.texi(,189) Text line followed by a comment on the same line and another below @sp 1
+comments.texi(,190) @sp 2
+comments.texi(,191) Text line after the comment followed by a comment @sp 1
+comments.texi(,192) Text line after the text line followed by the comment.
+comments.texi(,194) @sp 2 a number after sp
+comments.texi(,196) 
+comments.texi(,197) @clickstyle @result
+comments.texi(,198) 
+comments.texi(,199) A @click{} (result).
+comments.texi(,200) 
+comments.texi(,202) @c invalid, makeinfo warns about @result needing braces
+comments.texi(,203) @c others are also invalid
+comments.texi(,204) @clickstyle @result on the same line
+comments.texi(,205) 
+comments.texi(,206) A @click{} (result on the same line).
+comments.texi(,207) 
+comments.texi(,208) @clickstyle @nocmd
+comments.texi(,209) 
+comments.texi(,210) A @click{} (nocmd).
+comments.texi(,211) 
+comments.texi(,212) @clickstyle something
+comments.texi(,213) 
+comments.texi(,214) A @click{} (something).
+comments.texi(,216) 
+comments.texi(,217) Menu:
+comments.texi(,218) @menu
+comments.texi(,219) * node::
+comments.texi(,220) * bidule::
+comments.texi(,221) * bidule2::
+comments.texi(,222) * undefined::
+comments.texi(,223) @end menu
+comments.texi(,224) 
+comments.texi(,225) @node node
+comments.texi(,226) @chapter chapter
+comments.texi(,227) @menu
+comments.texi(,228) * truc::
+comments.texi(,229) @end menu
+comments.texi(,230) 
+comments.texi(,231) @node truc
+comments.texi(,232) @section section
+comments.texi(,233) 
+comments.texi(,234) first @@contents @contents line following first content
+comments.texi(,235) second @@contents @contents line following second content
+comments.texi(,236) Third content on the following line on his own
+comments.texi(,237) @contents
+comments.texi(,238) Line following contents
+comments.texi(,239) 
+comments.texi(,240) @node bidule
+comments.texi(,241) @chapter bidule
+comments.texi(,242) 
+comments.texi(,243) @@shortcontents @shortcontents eol
+comments.texi(,244) @@shortcontents @shortcontents eol
+comments.texi(,245) @@summarycontents @summarycontents line following summarycontents
+comments.texi(,246) 
+comments.texi(,247) @node bidule2
+comments.texi(,248) @chapter last
+comments.texi(,249) 
+comments.texi(,250) @c no ref ignored because of novalidate
+comments.texi(,251) @ref{machin}
+comments.texi(,252) 
+comments.texi(,253) @bye

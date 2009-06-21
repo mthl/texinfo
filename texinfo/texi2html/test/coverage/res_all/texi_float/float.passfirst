@@ -1,0 +1,310 @@
+float.texi(,2) 
+float.texi(,3) @setfilename float.info
+float.texi(,4) 
+float.texi(,5) @node Top
+float.texi(,6) @top Test floats
+float.texi(,7) 
+float.texi(,8) A list of floats at the begining.
+float.texi(,9) @listoffloats Text
+float.texi(,10) 
+float.texi(,11) After the listoffloats.
+float.texi(,12) 
+float.texi(,13) @menu
+float.texi(,14) * chapter::
+float.texi(,15) * Unnumbered::
+float.texi(,16) * Chapter with unnumbsubsec::
+float.texi(,17) * list of floats::
+float.texi(,18) @end menu
+float.texi(,19) 
+float.texi(,20) @float Text, text with a lot of features
+float.texi(,21) An example of float @enddots{}
+float.texi(,22) 
+float.texi(,23) @c makeinfo --docbook segfaults
+float.texi(,25) An example.
+float.texi(,26) @example 
+float.texi(,27) example
+float.texi(,28) @end example
+float.texi(,29) 
+float.texi(,30) A multitable.
+float.texi(,31) @multitable {truc} {bidule}
+float.texi(,32) @item truc @tab bidule
+float.texi(,33) @item truc @tab bidule
+float.texi(,34) @end multitable
+float.texi(,36) 
+float.texi(,37) An index entry
+float.texi(,38) @cindex float example
+float.texi(,39) 
+float.texi(,40) A table.
+float.texi(,41) @table @emph
+float.texi(,42) @item truc 
+float.texi(,43) line
+float.texi(,44) @end table
+float.texi(,45) 
+float.texi(,46) An itemize.
+float.texi(,47) @itemize @minus
+float.texi(,48) @item truc 
+float.texi(,49) line
+float.texi(,50) @end itemize
+float.texi(,51) 
+float.texi(,52) A ref.
+float.texi(,53) @xref{Top,xref Text with features}.
+float.texi(,54) A footnote.
+float.texi(,55) @footnote{footnote Text with features}.
+float.texi(,56) 
+float.texi(,57) @TeX{} and @emph{@b{t@'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+float.texi(,58) 
+float.texi(,59) @caption{ An example of float caption@enddots{}
+float.texi(,60) An example.
+float.texi(,61) @example 
+float.texi(,62) example
+float.texi(,63) @end example
+float.texi(,64) 
+float.texi(,65) @anchor{Anchor in caption}
+float.texi(,66) 
+float.texi(,67) A table.
+float.texi(,68) @table @emph
+float.texi(,69) @item truc 
+float.texi(,70) line
+float.texi(,71) @end table
+float.texi(,72) 
+float.texi(,73) A multitable.
+float.texi(,74) @multitable {truc} {bidule}
+float.texi(,75) @item truc @tab bidule
+float.texi(,76) @item truc @tab bidule
+float.texi(,77) @end multitable
+float.texi(,78) An index entry
+float.texi(,79) @cindex float example in caption
+float.texi(,80) 
+float.texi(,81) An itemize.
+float.texi(,82) @itemize @minus
+float.texi(,83) @item truc 
+float.texi(,84) line
+float.texi(,85) @end itemize
+float.texi(,86) 
+float.texi(,87) A ref.
+float.texi(,88) @xref{Top,xref Text with features caption}.
+float.texi(,89) A footnote.
+float.texi(,90) @footnote{footnote Text with features caption}.
+float.texi(,91) 
+float.texi(,92) @TeX{} and @emph{@b{t@'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+float.texi(,93) }
+float.texi(,94) 
+float.texi(,95) @shortcaption{@TeX{} and @emph{@b{t@'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.}
+float.texi(,96) 
+float.texi(,97) @end float
+float.texi(,98) 
+float.texi(,99) 
+float.texi(,100) @float Text
+float.texi(,101) No label but caption and shortcaption.
+float.texi(,102) 
+float.texi(,103) @caption{No label}
+float.texi(,104) @shortcaption{No label}
+float.texi(,105) @end float
+float.texi(,106) 
+float.texi(,107) @float ,label but no type
+float.texi(,108) No type but caption and shortcaption.
+float.texi(,109) 
+float.texi(,110) @caption{No type}
+float.texi(,111) @shortcaption{No type}
+float.texi(,112) @end float
+float.texi(,113) 
+float.texi(,114) 
+float.texi(,115) @float ,label but no type and no caption
+float.texi(,116) No type but label and no caption nor shortcaption.
+float.texi(,117)                                                                                 
+float.texi(,118) @end float
+float.texi(,119) 
+float.texi(,120) 
+float.texi(,121) @float
+float.texi(,122) No label, no type, no caption no shortcaption.
+float.texi(,123) 
+float.texi(,124) @end float
+float.texi(,125) 
+float.texi(,126) @float
+float.texi(,127) No label, no type, but caption and shortcaption.
+float.texi(,128) @caption{No label, no type, but caption and shortcaption.}
+float.texi(,129) @shortcaption{No label, no type, but caption and shortcaption.}
+float.texi(,130) @end float
+float.texi(,131) 
+float.texi(,132) 
+float.texi(,133) 
+float.texi(,134) @float ,label but no type 2
+float.texi(,135) Second float with no type.
+float.texi(,136) 
+float.texi(,137) @caption{No type 2}
+float.texi(,138) @shortcaption{No type 2}
+float.texi(,139) @end float
+float.texi(,140) 
+float.texi(,141) @float Warning, warning in top
+float.texi(,142) A warning
+float.texi(,143) 
+float.texi(,144) @caption{A warning}
+float.texi(,145) @shortcaption{A warning}
+float.texi(,146) @end float
+float.texi(,147) 
+float.texi(,148) @node chapter
+float.texi(,149) @chapter A chapter
+float.texi(,150) 
+float.texi(,151) @float Text, text in chapter
+float.texi(,152) Text in chapter
+float.texi(,153) 
+float.texi(,154) @caption{Text in chapter}
+float.texi(,155) @end float
+float.texi(,156) 
+float.texi(,157) @float Text, float with a lot of features and no shortcaption
+float.texi(,158) 
+float.texi(,159) Float text of a float with a lot of features.
+float.texi(,160) 
+float.texi(,161) @caption{ An example of float caption@enddots{} 2
+float.texi(,162) An example 2.
+float.texi(,163) @example 
+float.texi(,164) example 2
+float.texi(,165) @end example
+float.texi(,166) 
+float.texi(,167) A table 2.
+float.texi(,168) @table @emph
+float.texi(,169) @item truc 2 
+float.texi(,170) line 2
+float.texi(,171) @end table
+float.texi(,172) 
+float.texi(,173) A multitable 2.
+float.texi(,174) @multitable {truc} {bidule}
+float.texi(,175) @item truc 2 @tab bidule
+float.texi(,176) @item truc 2 @tab bidule
+float.texi(,177) @end multitable
+float.texi(,178) An index entry 2
+float.texi(,179) @cindex float example in caption 2
+float.texi(,180) 
+float.texi(,181) An itemize 2.
+float.texi(,182) @itemize @minus
+float.texi(,183) @item truc 2
+float.texi(,184) line
+float.texi(,185) @end itemize
+float.texi(,186) 
+float.texi(,187) @anchor{Anchor in caption 2}
+float.texi(,188) 
+float.texi(,189) A ref 2.
+float.texi(,190) @xref{Top,xref Text with features caption}.
+float.texi(,191) A footnote 2.
+float.texi(,192) @footnote{footnote Text with features caption 2}.
+float.texi(,193) 
+float.texi(,194) @TeX{} and @emph{@b{t@'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+float.texi(,195) }
+float.texi(,196) 
+float.texi(,197) @end float
+float.texi(,198) 
+float.texi(,199) @float th@'eor@`eme, theoreme
+float.texi(,200) A th@'eor@`eme
+float.texi(,201) 
+float.texi(,202) @caption{A th@'eor@`eme}
+float.texi(,203) @end float
+float.texi(,204) 
+float.texi(,205) @float ,label but no type in chapter
+float.texi(,206) float with no type.
+float.texi(,207) 
+float.texi(,208) @caption{No type in chapter}
+float.texi(,209) @shortcaption{No type in chapter}
+float.texi(,210) @end float
+float.texi(,211) 
+float.texi(,212) @float Warning, warning in chapter
+float.texi(,213) A warning
+float.texi(,214) 
+float.texi(,215) @caption{A warning in chapter}
+float.texi(,216) @shortcaption{A warning in chapter}
+float.texi(,217) @end float
+float.texi(,218) 
+float.texi(,219) @menu
+float.texi(,220) * section::
+float.texi(,221) @end menu
+float.texi(,222) 
+float.texi(,223) @node section
+float.texi(,224) @section A section
+float.texi(,225) 
+float.texi(,226) @float Text, text in section
+float.texi(,227) 
+float.texi(,228) A text in float no caption a label a type.
+float.texi(,229) 
+float.texi(,230) @end float
+float.texi(,231) 
+float.texi(,232) @node Unnumbered
+float.texi(,233) @unnumbered Unnumbered
+float.texi(,234) 
+float.texi(,235) @menu
+float.texi(,236) * Section within unnumbered::
+float.texi(,237) @end menu
+float.texi(,238) @float Text, unnumbered float
+float.texi(,239) unnum
+float.texi(,240) @shortcaption{unnumbered float}
+float.texi(,241) @caption{unnumbered float}
+float.texi(,242) @end float
+float.texi(,243) 
+float.texi(,244) @float ,label but no type in unnumbered
+float.texi(,245) float with no type.
+float.texi(,246) 
+float.texi(,247) @caption{No type in unnumbered}
+float.texi(,248) @shortcaption{No type in unnumbered}
+float.texi(,249) @end float
+float.texi(,250) 
+float.texi(,251) 
+float.texi(,252) @node Section within unnumbered
+float.texi(,253) @section Section within unnumbered
+float.texi(,254) 
+float.texi(,255) 
+float.texi(,256) @float Text, Section within unnumbered float
+float.texi(,257) Section within unnumbered
+float.texi(,258) @shortcaption{Section within unnumbered}
+float.texi(,259) @caption{Section within unnumbered}
+float.texi(,260) @end float
+float.texi(,261) 
+float.texi(,262) @node Chapter with unnumbsubsec
+float.texi(,263) @chapter Chapter with unnumbsubsec
+float.texi(,264) 
+float.texi(,265) @menu
+float.texi(,266) * unnumbered sec::
+float.texi(,267) @end menu
+float.texi(,268) @float Text, Chapter with subsec float
+float.texi(,269) Chap
+float.texi(,270) @shortcaption{Chapter with subsec}
+float.texi(,271) @caption{Chapter with subsec}
+float.texi(,272) @end float
+float.texi(,273) 
+float.texi(,274) @node unnumbered sec
+float.texi(,275) @unnumberedsec unnumbered sec
+float.texi(,276) 
+float.texi(,277) @float Text, unnumbered sec float
+float.texi(,278) Chap
+float.texi(,279) @shortcaption{unnumbered sec float}
+float.texi(,280) @caption{unnumbered sec float}
+float.texi(,281) @end float
+float.texi(,282) 
+float.texi(,283) @float ,label but no type in unnumbered subsec in chapter
+float.texi(,284) float with no type.
+float.texi(,285) 
+float.texi(,286) @caption{No type in unnumbered subsec in chapter}
+float.texi(,287) @shortcaption{No type in unnumbered subsec in chapter}
+float.texi(,288) @end float
+float.texi(,289) 
+float.texi(,290) @node list of floats
+float.texi(,291) @unnumbered list of floats
+float.texi(,292) 
+float.texi(,293) See @ref{text in section}.
+float.texi(,294) And (@pxref{text in chapter}).
+float.texi(,295) @xref{text with a lot of features}.
+float.texi(,296) 
+float.texi(,297) And now a ref (without manual or printed manual) 
+float.texi(,298) @ref{text with a lot of features, cross ref, title}.
+float.texi(,299) 
+float.texi(,300) And now a ref (with manual without printed manual) 
+float.texi(,301) @ref{text with a lot of features, cross ref, title, manual}.
+float.texi(,302) 
+float.texi(,303) And now a ref (without manual with a printed manual) 
+float.texi(,304) @ref{text with a lot of features, cross ref, title,, printed manual title}.
+float.texi(,305) 
+float.texi(,306) A ref to float without type @ref{label but no type}.
+float.texi(,307) 
+float.texi(,308) @listoffloats Text
+float.texi(,309) @listoffloats th@'eor@`eme
+float.texi(,310) 
+float.texi(,311) @printindex cp
+float.texi(,312) 
+float.texi(,313) @bye

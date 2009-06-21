@@ -1,0 +1,317 @@
+Test floats
+***********
+
+A list of floats at the begining.
+* List of Text:
+* Text 1: TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
+* Text 1.1: Text in chapter
+* Text 1.2:  An example of float caption... 2
+* Text 1.3: text in section
+* Text 5: unnumbered float
+* Text 6: Section within unnumbered
+* Text 2.1: Chapter with subsec
+* Text 2.2: unnumbered sec float
+
+
+After the listoffloats.
+
+* chapter::
+* Unnumbered::
+* Chapter with unnumbsubsec::
+* list of floats::
+
+An example of float ...
+
+An example.
+example
+
+A multitable.
+ truc bidule
+ truc bidule
+
+An index entry
+
+A table.
+truc
+line
+
+An itemize.
+-- truc 
+line
+
+A ref.
+See xref Text with features.
+A footnote.
+(1).
+
+TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
+
+
+
+
+
+
+Text 1: An example of float caption...
+An example.
+example
+
+
+A table.
+truc
+line
+
+A multitable.
+ truc bidule
+ truc bidule
+An index entry
+
+An itemize.
+-- truc 
+line
+
+A ref.
+See xref Text with features caption.
+A footnote.
+(2).
+
+TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
+
+
+
+No label but caption and shortcaption.
+
+
+
+
+Text: No label
+
+
+No type but caption and shortcaption.
+
+
+
+
+1: No type
+
+
+
+No type but label and no caption nor shortcaption.
+                                                                                
+
+2
+
+
+No label, no type, no caption no shortcaption.
+
+
+
+No label, no type, but caption and shortcaption.
+
+
+
+No label, no type, but caption and shortcaption.
+
+
+
+
+Second float with no type.
+
+
+
+
+3: No type 2
+
+
+A warning
+
+
+
+
+Warning 1: A warning
+
+
+1 A chapter
+***********
+
+Text in chapter
+
+
+
+Text 1.1: Text in chapter
+
+
+
+Float text of a float with a lot of features.
+
+
+
+
+Text 1.2: An example of float caption... 2
+An example 2.
+example 2
+
+A table 2.
+truc 2
+line 2
+
+A multitable 2.
+ truc 2 bidule
+ truc 2 bidule
+An index entry 2
+
+An itemize 2.
+-- truc 2
+line
+
+
+A ref 2.
+See xref Text with features caption.
+A footnote 2.
+(3).
+
+TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
+
+
+A the'ore`me
+
+
+
+the'ore`me 1.1: A the'ore`me
+
+
+float with no type.
+
+
+
+
+1.1: No type in chapter
+
+
+A warning
+
+
+
+
+Warning 1.1: A warning in chapter
+
+
+* section::
+
+1.1 A section
+=============
+
+
+A text in float no caption a label a type.
+
+
+Text 1.3
+
+Unnumbered
+**********
+
+* Section within unnumbered::
+unnum
+
+
+
+Text 5: unnumbered float
+
+
+float with no type.
+
+
+
+
+5: No type in unnumbered
+
+
+
+1.2 Section within unnumbered
+=============================
+
+
+Section within unnumbered
+
+
+
+Text 6: Section within unnumbered
+
+
+2 Chapter with unnumbsubsec
+***************************
+
+* unnumbered sec::
+Chap
+
+
+
+Text 2.1: Chapter with subsec
+
+
+unnumbered sec
+==============
+
+Chap
+
+
+
+Text 2.2: unnumbered sec float
+
+
+float with no type.
+
+
+
+
+2.1: No type in unnumbered subsec in chapter
+
+
+list of floats
+**************
+
+See Text 1.3.
+And (see Text 1.1).
+See Text 1.
+
+And now a ref (without manual or printed manual) 
+title.
+
+And now a ref (with manual without printed manual) 
+cross ref: (manual)text with a lot of features.
+
+And now a ref (without manual with a printed manual) 
+section `title' in printed manual title.
+
+A ref to float without type 1.
+
+* List of Text:
+* Text 1: TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
+* Text 1.1: Text in chapter
+* Text 1.2:  An example of float caption... 2
+* Text 1.3: text in section
+* Text 5: unnumbered float
+* Text 6: Section within unnumbered
+* Text 2.1: Chapter with subsec
+* Text 2.2: unnumbered sec float
+
+* List of the'ore`me:
+* the'ore`me 1.1: A the'ore`me
+
+
+* Index:
+* float example: Test floats.
+* float example in caption: Test floats.
+* float example in caption 2: 1. A chapter.
+
+Footnotes
+*********
+
+(1)
+footnote Text with features
+
+(2)
+footnote Text with features caption
+
+(3)
+footnote Text with features caption 2
+

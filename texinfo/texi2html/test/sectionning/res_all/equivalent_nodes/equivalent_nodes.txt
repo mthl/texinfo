@@ -16,7 +16,7 @@ A figure
 Figure 1
 
 * List of Figure:
-* Figure 1: `node'.
+* Figure 1: `node'
 
 
 Ref to node node.

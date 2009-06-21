@@ -1,0 +1,214 @@
+
+
+* First node::    node 1
+* name:Second node.    node 2
+1 first node chapter
+********************
+
+
+
+2 second
+********
+
+Some text
+
+ -- Function: buffer-end flag
+A nice function
+
+makeinfo accepts a menu within defun but it isn't possible
+to follow it
+
+* node within defun menu::
+
+end of the function
+
+2.1 the node is within menu
+===========================
+
+Test @option inside @emph
+Foo emphasized and referring to `--some' option.
+
+Table imbricated in code:
+
+
+in code
+line
+text
+                           
+ref with uref within:
+                                                     
+cross ref with uref uref1 <href://http/myhost.com/index.html>: (info file with uref3 uref3 <href://http/myhost.com/index3.html>)node section `title with uref2 uref2 <href://http/myhost.com/index2.html>' in printed manual with uref4 uref4 <href://http/myhost.com/index4.html>
+
+footnote with code within:
+                                                                                
+(1)
+
+Refs in samp:
+
+
+Refs without samp: empty section name see other node.
+With a chapter: Second node.
+
+A ref in samp to a node with empty section name:
+see `other node'.
+
+Same but to a regular node associated with a chapter:
+see `Second node'.
+
+code with table and example within:
+                                                    
+
+in code
+line
+in code and table
+  in example
+
+
+* item
+
+
+an example
+
+
+after html in example
+
+
+two line breaks
+Tex doesn't like math in @example
+
+Now a content within example
+
+Table of Contents
+*****************
+
+
+1. first node chapter
+2. second
+ 2.1 the node is within menu
+  
+  
+
+
+* Index:
+* elem: 1. first node chapter.
+* index in example: 2.1 the node is within menu.
+* other entry: 2.1 the node is within menu.
+printindex  works but cannot be followed in info, in TeX
+the result is quite strange.
+
+and now yes---now and ``so''.
+
+after example and now yes--now and "so".
+
+is the text
+flushed right ?
+
+
+
+text flushed  right and then example
+
+it should be flushed
+
+example and then text flushed  right
+
+simple displayed text
+
+a display within example
+example
+display
+
+A cartouched text
+
+A cartouche within example
+example
+A cartouched text
+
+An example with table, multitable, quotation, enumerate 
+a table within example
+* item
+text
+a multitable
+ beginnin
+ ... a new column                          no splitting ???????????????????
+
+a menu
+* node menu::      a node in menu
+
+in menu comment
+html
+
+A ref in samp in menu comment to a node with empty section name:
+`other node'.
+
+Same but to a regular node associated with a chapter:
+`Second node'.
+
+* a menu name:other node. 
+      description of other
+      node
+
+
+A quotation
+This is a pre
+quotation
+
+
+Enumerate
+
+1. first item
+2. second  item
+
+still second
+
+
+example with deff-like commands
+deffs
+ -- Function: my def args arg ...
+ -- Function: other def no args
+ -- type: name and now the args
+ -- Variable: variables variable-name
+ -- Variable: variables too other-variable
+THis is the defvar
+
+A table within the def
+item
+text
+
+more text
+second item
+
+explanation
+
+
+table within display within example
+item
+Line
+
+table within example within display
+item
+Line
+
+
+
+
+
+
+
+Table of Contents
+*****************
+
+
+1. first node chapter
+2. second
+ 2.1 the node is within menu
+  
+  
+
+Footnotes
+*********
+
+(1)
+ in footnote  par1
+                                                                                
+par2
+

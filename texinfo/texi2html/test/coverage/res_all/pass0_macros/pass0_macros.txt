@@ -1,0 +1,33 @@
+pass0 macro
+***********
+* First node::    node 1
+
+1 first node chapter
+********************
+
+before syncodeindex 
+
+syncodeindex on its line
+
+line following syncodeindex
+
+One more thing following syncodeindex
+    truc
+line following syncodeindex cp fn   truc
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+double documentlanguage on its line
+line following documentlanguage
+
+
+definedx truc
+after
+
+definedx chose   machin
+after
+
+
+Before bye 

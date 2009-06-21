@@ -1,0 +1,150 @@
+
+
+Comment like:
+-------------
+
+Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+
+Comment at the end of the line 
+Example with comments 2 lines
+line second line 
+Example with comments 1 line
+line 
+No comments
+line 
+
+The same but with oddfooting instead of comment:
+Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+
+@pagesizes @afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
+@afourpaper @afourlatex @afourwide 
+@definfoenclose phoo,//,\\  
+//bar\\
+
+@definfoenclose phi,:,:  
+
+:bar:
+
+very strong
+
+
+(strong: is it really strong? :)
+
+Makeinfo ignore @kbdinputstyle:
+
+
+truc
+
+example
+
+ignore arg
+----------
+
+
+Commands doesn't accept anything after a non numerical arg on the line
+and ignore things after a numerical arg
+
+@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @exampleindent 6 @footnotestyle @footnotestyle 
+Special arg for documentencoding. makeinfo complains, not tex
+
+@documentencoding @frenchspacing @frenchspacing @fonttextsize 
+@everyheadingmarks false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+true aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+
+command removed
+---------------
+
+And now finalout:
+Text line followed by finalout on the same line and another below 
+
+Text line after the finalout followed by a fianlout 
+Text line after the text line followed by the finalout.
+
+Test text after finalout
+ a word after finalout
+Line after finalout
+
+@page  @noindent @refill  something
+
+noindent at beginning of line
+noindent on the preceding line
+  noindent after space at beginning of line
+         page at beginning of line
+
+After page on it's own line.
+
+@page    @noindent @refill  @novalidate  something
+
+@contents  something
+
+
+special
+-------
+
+Only valid between iftex:
+Unknown ???
+
+@exdent line after exdent
+
+And now sp:
+Text line followed by a comment on the same line and another below 
+
+
+Text line after the comment followed by a comment 
+Text line after the text line followed by the comment.
+
+
+
+
+A => (result).
+
+
+A => (result on the same line).
+
+
+A  (nocmd).
+
+
+A  (something).
+
+Menu:
+* node::
+* bidule::
+* bidule2::
+* undefined::
+
+1 chapter
+*********
+* truc::
+
+1.1 section
+===========
+
+first @contents  line following first content
+second @contents  line following second content
+Third content on the following line on his own
+Table of Contents
+*****************
+
+
+1. chapter
+ 1.1 section
+2. bidule
+3. last
+
+Line following contents
+
+2 bidule
+********
+
+@shortcontents  eol
+@shortcontents  eol
+@summarycontents  line following summarycontents
+
+3 last
+******
+
+machin
+
