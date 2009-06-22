@@ -1,3 +1,19 @@
+2009-06-22   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/html.init: reformat toc
+	lines with file information for inline contents.
+	* tests/contents/*: add test results for info and raw plaintext.
+
+2009-06-21   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: process @*contents within pass_text.
+	close previous def_item before calling begin_format_texi, if needed.
+	* texi2html.pl, formats/info.init: handle @printindex like a normal
+	@-command.
+	* formats/info.init: warn for missing file.txt for image only if
+	there is also no image file.
+	* tests/coverage/*: add test results for info and raw plaintext.
+
 2009-06-08   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: better initialization for the cross references hashes.

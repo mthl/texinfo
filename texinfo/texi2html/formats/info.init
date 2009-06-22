@@ -25,9 +25,9 @@ use Data::Dumper;
 
 use strict;
 
-$Data::Dumper::Maxdepth = 12;
+$Data::Dumper::Maxdepth = 25;
 
-sub info_default_load();
+sub info_default_load(;$);
 
 my %info_default_indented_commands;
 my %info_default_format;
@@ -74,6 +74,7 @@ $ENABLE_ENCODING = 1;
 $CAPTION_STYLE = 'asis';
 $DEFAULT_ENCODING = 'ascii';
 $HEADERS = 1;
+$INLINE_CONTENTS = 0;
 
 
 $no_paragraph_commands{'anchor'} = 1;
@@ -183,7 +184,7 @@ foreach my $format (@info_default_normal_formats, 'group', 'cartouche')
     $format_map{$format} = '';
 }
 
-foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'deff_item', 'deff_itemx')
+foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -193,8 +194,9 @@ foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float
     $info_default_format{$command} = 1;
 } 
 
+# it doesn't change anything for multitable
 foreach my $non_indented_command('format', 'smallformat', 'menu', 
-  'detailmenu', 'direntry')
+  'detailmenu', 'direntry', 'multitable')
 {
     $info_default_indented_commands{$non_indented_command} = 0;
 }
@@ -262,6 +264,7 @@ $summary_letter     = \&info_default_summary_letter;
 $index_entry        = \&info_default_index_entry;
 $index_entry_command        = \&t2h_default_index_entry_command;
 $index_letter       = \&info_default_index_letter;
+$printindex         = \&info_default_printindex;
 $print_index        = \&info_default_print_index;
 $index_entry_label  = \&info_default_index_entry_label;
 $foot_section       = \&info_default_foot_lines;
@@ -569,16 +572,38 @@ sub info_default_next($$$)
 }
 
 
+sub info_default_process_line_text($$$)
+{
+   my $text = shift;
+   my $line_char_counter = shift;
+   my $indent_length = shift;
+   $indent_length = 0 if (!defined($indent_length));
+
+   my $line_passed = 0;
+   my $chomped_text = $text;
+   chomp($chomped_text);
+   if ($indent_length > $line_char_counter and $chomped_text ne '')
+   {
+      $text = ' ' x ($indent_length - $line_char_counter) . $text;
+   }
+   $line_char_counter += length($text);
+   if (chomp($chomped_text))
+   {
+      $line_passed = 1;
+      $line_char_counter = 0;
+   }
+   return ($line_char_counter, $line_passed, $text);
+}
+
 # Beware that there is a pending word if the text doesn't end with
 # a space
-sub info_default_process_text($$$$$$$;$)
+sub info_default_process_para_text($$$$$$;$)
 {
    my $text = shift;
    my $line_char_counter = shift;
    my $pending_spaces = shift;
    my $pending_word = shift;
    my $indent_length = shift;
-   my $in_para = shift;
    my $max_column = shift;
 # indentation for the lines except for the first one
    my $indent_length_next = shift;
@@ -588,23 +613,7 @@ sub info_default_process_text($$$$$$$;$)
    my $line_passed = 0;
    my $result = '';
 
-   #print STDERR "process_text(indent($indent_length), in_para $in_para spaces `$pending_spaces') line_char_counter $line_char_counter `$text'\n";
-   if (!$in_para)
-   { # should never be in preformatted, but in string processing
-       my $chomped_text = $text;
-       chomp($chomped_text);
-       if ($indent_length > $line_char_counter and $chomped_text ne '')
-       {
-           $text = ' ' x ($indent_length - $line_char_counter) . $text;
-       }
-       $line_char_counter += length($text);
-       if (chomp($chomped_text))
-       {
-          $line_passed = 1;
-          $line_char_counter = 0;
-       }
-       return ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $text);
-   }
+   #print STDERR "process_text(indent($indent_length), spaces `$pending_spaces') line_char_counter $line_char_counter `$text'\n";
    
    while ($text ne '')
    {
@@ -707,7 +716,9 @@ sub info_default_skip_spaces($$$)
         }
         if (defined($content->{'text'}))
         {
-            #print STDERR "SKIP_SPACES text\n";
+            my $command = '';
+            $command = $content->{'command'} if (defined($content->{'command'}));
+            #print STDERR "SKIP_SPACES($command) text\n";
             $content->{'text'} =~ s/^\s*//;
             return if ($content->{'text'} ne '');
         }
@@ -732,8 +743,8 @@ sub info_default_store_pending($$$;$)
    my $indent_text = '';
    $indent_text = ' ' x $indent_length;
 
-   my $pending_word_text = 'undef';
-   $pending_word_text = $pending_word if (defined($pending_word));
+   #my $pending_word_text = 'undef';
+   #$pending_word_text = $pending_word if (defined($pending_word));
    #print STDERR "store_pending(spaces `$pending_spaces', indent($indent_length) `$indent_text' word `$pending_word_text'\n";
    my $result = $pending_spaces;
    $pending_spaces = '';
@@ -769,7 +780,6 @@ sub info_default_output($)
    return $result;
 }
 
-
 sub info_default_process_content($$)
 {
    my $current_command = shift;
@@ -793,6 +803,7 @@ sub info_default_process_content($$)
    my $max_column = get_conf('fillcolumn');
    my $direntry = 0;
    my $preformatted_format = 0;
+   my $indent_length = 0;
 
    # for formats that needs to process a full line (center and flushright) 
    # to know the line length before outputing
@@ -806,8 +817,23 @@ sub info_default_process_content($$)
       last if (!defined($current));
       my $content = $current->{'content'}->[$index];
       my $text_added = '';
-      my $item_line_added = 0;
+      my $line_added_before_item = 0;
       my $indentation_done = 0;
+      my $prepend_newline;
+      #$indent_length = $indent_level * $info_default_indent_length;
+      #my $indent_length_next_line;
+      # indent_length is also set here for table @item so in that case
+      # $info_default_indent_format_length{$item_pending} is not taken 
+      # into account, luckily it is 0.
+
+      #$indent_length = ($indent_level -1) * $info_default_indent_length
+      #      if ($indent_level and ($in_exdent or $table_item_line));
+      #if ($item_pending)
+      #{
+      #  $indent_length_next_line = $indent_length;
+      #  $indent_length = ($info_default_indent_format_length{$item_pending}
+      #             +($indent_level -1)* $info_default_indent_length);
+      #}
       if ($DEBUG)
       {
          my $text_item_pending = '';
@@ -820,21 +846,9 @@ sub info_default_process_content($$)
          $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
          my $pending_word_text = 'undef';
          $pending_word_text = "`$pending_word'" if (defined($pending_word));
-         print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending. spaces: `$pending_spaces' word: $pending_word_text\n";
-      }
-      my $indent_length = $indent_level * $info_default_indent_length;
-      my $indent_length_next_line;
-      # indent_length is also set here for table @item so in that case
-      # $info_default_indent_format_length{$item_pending} is not taken 
-      # into account, luckily it is 0.
-      $indent_length = ($indent_level -1) * $info_default_indent_length
-            if ($indent_level and ($in_exdent or $table_item_line));
-      my $item_indent_length = 0;
-      if ($item_pending)
-      {
-        $indent_length_next_line = $indent_length;
-        $indent_length = ($info_default_indent_format_length{$item_pending}
-                   +($indent_level -1)* $info_default_indent_length);
+         #my $indent_length_next_line_text = $indent_length_next_line;
+         #$indent_length_next_line_text = '' if (!defined($indent_length_next_line_text));
+         print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level($indent_length) in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending spaces: `$pending_spaces' word: $pending_word_text\n";
       }
       
       if ($close)
@@ -843,26 +857,44 @@ sub info_default_process_content($$)
           {
               $text_added .= $content->{'end'};
           }
+          if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
+          {
+              $preformatted_format--;
+          }
+          # check whether there is a blank line following, to avoid adding
+          # one when closing a format.
+          # This is not a required check if not in preformatted since doubled
+          # blank lines are discarded. 
+          my $followed_by_blank_line = 0;
+          if ($preformatted_format)
+          {
+              my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+              if (defined($command_next) and $command_next eq 'preformatted')
+              {
+                 ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
+                 $followed_by_blank_line = 1 if (defined($text_next) and $text_next =~ /^\s*$/);
+              }
+          }
           if ($info_default_indented_commands{$content->{'command'}})
           {
               $indent_level--;
-              if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$preformatted)
+              $indent_length = $indent_level * $info_default_indent_length;
+              # $preformatteed cannot be used here since preformatted 
+              # is closed before the end of a format
+              #if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$preformatted_format)
+              if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$followed_by_blank_line)
               {
                  $text_added .= "\n";
               }
               # this nullify a potential noindent in a random format
               $info_state->{'indent_para'} = undef;
           }
-          elsif ($complex_format_map->{$content->{'command'}} or $content->{'command'} eq 'cartouche')
+          elsif (($complex_format_map->{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
           {
-              if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level > 0) and !$preformatted)
+              if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level > 0) and !$followed_by_blank_line)
               {
                  $text_added .= "\n";
               }
-          }
-          if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
-          {
-              $preformatted_format--;
           }
           if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
           {
@@ -890,7 +922,8 @@ sub info_default_process_content($$)
           }
           elsif ($content->{'command'} eq 'float')
           {
-              $text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
+              #$text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
+              $prepend_newline = 1 unless ($info_state->{'blank_line'});
           }
           elsif ($paragraph_style{$content->{'command'}})
           {
@@ -904,6 +937,9 @@ sub info_default_process_content($$)
               $result = $multitable->{'result_kept'};
               $line_char_counter = $multitable->{'line_char_counter_kept'};
               $all_line_passed = $multitable->{'all_line_passed_kept'};
+              $indent_level = $multitable->{'indent_level_kept'};
+              $indent_length = $multitable->{'indent_length_kept'};
+              #$indent_length_next_line = undef;
               $length = $multitable->{'length_kept'};
               $info_state->{'offset_in_file'} = $multitable->{'offset_in_file_kept'};
               $info_state->{'line_count'} = $multitable->{'line_count_kept'};
@@ -926,6 +962,9 @@ sub info_default_process_content($$)
                   push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, @{$multitable->{'index_entries'}};
               }
               $text_added .= $multitable->{'result'};
+              $indentation_done = 1;
+
+              goto new_text;
           }
           elsif ($content->{'command'} eq 'multitable_cell')
           {
@@ -945,6 +984,8 @@ sub info_default_process_content($$)
           elsif ($content->{'command'} eq 'multitable_row')
           {
               my $multitable = $info_state->{'multitable_stack'}->[-1];
+              my $indent_len = $multitable->{'indent_length_kept'};
+              #print STDERR "INDENT: $indent_len\n";
               my $row_length = 0;
               my $row = '';
               my $max_lines = 0;
@@ -972,7 +1013,7 @@ sub info_default_process_content($$)
               #print STDERR "ROW cell_beginning $cell_beginning, max_lines $max_lines, previous_last_cell $previous_last_cell\n";
               for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++)
               {
-                  my $length = 0;
+                  my $length = $indent_len;
                   my $line = '';
                   # determine the last cell in the line, to fill spaces in 
                   # cells preceding that cell on the line
@@ -990,14 +1031,22 @@ sub info_default_process_content($$)
                       {
                           chomp($cell_text);
                           #print STDERR "$cell_text";
+                          if ($line eq '' and $cell_text ne '')
+                          {
+                              $line = ' ' x $indent_len;
+                          }
                           $line .= $cell_text;
                           $length += length($cell_text);
                       }
                       if ($cell_idx+1 < $last_cell)
                       {
-                          if ($length < $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
+                          if ($length < $indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
                           {
-                              my $spaces = ' ' x ($multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
+                              if ($line eq '')
+                              {
+                                  $line = ' ' x $indent_len;
+                              }
+                              my $spaces = ' ' x ($indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
                               $length += length($spaces);
                               $line .= $spaces;
                               #print STDERR "   Csp($length) `$spaces'";
@@ -1008,7 +1057,7 @@ sub info_default_process_content($$)
                   {
                       foreach my $anchor (@{$anchor_lines_array[$line_idx]})
                       {
-                          my $anchor_position = $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
+                          my $anchor_position = $indent_len + $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
                           if ($anchor_position > $length)
                           {
                               my $spaces = ' ' x ($anchor_position - $length);
@@ -1035,7 +1084,7 @@ sub info_default_process_content($$)
               {
                   # at this point cell_beginning is at the beginning of
                   # the cell following the end of the table -> full width
-                  my $line = '-' x $cell_beginning . "\n";
+                  my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
                   $row .= $line;
                   $row_length += length($line);
               }
@@ -1109,6 +1158,9 @@ sub info_default_process_content($$)
                  $text_added .=  $content->{'text'};
                  # just like following spaces
                  info_default_skip_spaces($current, $index, $close);
+                 # this isn't done otherwise, though, here it is not important
+                 # since this end the line
+                 $line_char_counter += length($content->{'text'});
                  goto new_text;
               }
               elsif ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
@@ -1121,7 +1173,9 @@ sub info_default_process_content($$)
                  {
                     info_default_skip_spaces($current, $index, $close);
                  }
-                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and  !($indent_level) and !scalar(@{$info_state->{'multitable_stack'}}) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
+                 # if within a format $content->{'paragraph_in_element_nr'} 
+                 # should not be defined so no indentation will take place
+                 if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
                  {
                     $text_added .= ' ' x $paragraphindent;
                  }
@@ -1146,6 +1200,7 @@ sub info_default_process_content($$)
                   {
                      $in_exdent = 1;
                   }
+                  $indent_length = ($indent_level -1) * $info_default_indent_length if ($indent_level > 0);
                  #goto new_text;
               }
               elsif ($content->{'command'} eq 'indent')
@@ -1159,6 +1214,13 @@ sub info_default_process_content($$)
               elsif ($content->{'command'} eq 'image' or $content->{'command'} eq 'sp')
               {
                   $text_added .= $content->{'text'};
+                  # this is not very important since @sp adds an end of line.
+                  # images are not taken into account in the length count
+                  # because their text isn't displayed. If they have a .txt
+                  # associated, and there is an end of line in it 
+                  # line_char_counter will be set below (counting undisplayed
+                  # characters, but this is not really important).
+                  $line_char_counter += length($content->{'text'}) if ($content->{'command'} ne 'image');
                   goto new_text;
               }
               elsif ($content->{'command'} eq 'ref')
@@ -1178,7 +1240,7 @@ sub info_default_process_content($$)
                   my $dummy_line_passed;
                   print STDERR "BUG: defined pending_word before DEFINITION_LINE\n" if defined($pending_word);
                   #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$indent_length,$in_para,$max_column): $content->{'text'}";
-                  ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($content->{'text'}, $line_char_counter, $pending_spaces, $pending_word, $indent_length, 1, $max_column, $indent_length+2*$info_default_indent_length);
+                  ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_para_text($content->{'text'}, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $max_column, $indent_length+2*$info_default_indent_length);
                   $text_added .= $pending_spaces;
                   $pending_spaces = '';
                   #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces) -> $text_added";
@@ -1209,17 +1271,37 @@ sub info_default_process_content($$)
                   if ($item_pending =~ /table$/)
                   {
                       $table_item_line = 1;
+                      $indent_length = ($indent_level -1) * $info_default_indent_length if ($indent_level > 0);
                       $in_table_item = 0;
                   }
-                  if (!$info_state->{'blank_line'} and ($content->{'command'} ne 'itemx') and (!$first_item or $indent_level != 1))
+                  else
                   {
-                      $text_added = "\n" . $text_added;
-                      $item_line_added = 1;
+                      $indent_length = ($info_default_indent_format_length{$item_pending}
+                        +($indent_level -1)* $info_default_indent_length);
                   }
+                  if (!$info_state->{'blank_line'} and ($content->{'command'} ne 'itemx') and (!$first_item or $indent_level > 1))
+                  {
+                      my $dummy_line_passed;
+                      ($line_char_counter, $dummy_line_passed, $text_added) = info_default_process_line_text($text_added, $line_char_counter, $indent_length);
+                      $indentation_done = 1;
+                      $line_added_before_item = 1;
+                      $prepend_newline = 1;
+                      #$text_added = "\n" . $text_added;
+                  }
+                  
+                  if ($item_pending =~ /table$/)
+                  {
                   # one less indentation level and no line break
-                  # adding item_line_added allows the table_item_line to 
+                  # adding line_added_before_item allows the table_item_line to 
                   # still be active after the additional blank line
-                  $table_item_line = 1+$item_line_added if ($item_pending =~ /table$/);
+                      $table_item_line = 1+$line_added_before_item;
+                  }
+                  else
+                  { 
+                      #my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+                      #info_default_skip_spaces($current_next, $index_next, $close_next) if (defined($current_next));
+                      info_default_skip_spaces($current, $index, $close);
+                  }
               }
               elsif ($content->{'command'} eq 'menu' or $content->{'command'} eq 'listoffloats' or $content->{'heading_command'})
               {
@@ -1253,6 +1335,7 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'multitable')
               {
+                  my $indent_length_kept = $indent_level * $info_default_indent_length;
                   my $multitable = {
                      'offset_in_file_kept' => $info_state->{'offset_in_file'},
                      'line_count_kept'     => $info_state->{'line_count'},
@@ -1265,6 +1348,8 @@ sub info_default_process_content($$)
                      'all_line_passed_kept' => $all_line_passed,
                      'line_char_counter_kept' => $line_char_counter,
                      'max_column_kept'     => $max_column,
+                     'indent_level_kept'   => $indent_level,
+                     'indent_length_kept'  => $indent_length_kept,
                   };
                   push @{$info_state->{'multitable_stack'}}, $multitable;
                   $info_state->{'offset_in_file'} = 0;
@@ -1287,6 +1372,8 @@ sub info_default_process_content($$)
                   $length = 0;
                   $all_line_passed = 0;
                   $line_char_counter = 0;
+                  $indent_level = 0;
+                  $indent_length = 0;
                   if (!$content->{'content'})
                   {# empty cell
                       $cell->{'result'} = $result;
@@ -1301,16 +1388,19 @@ sub info_default_process_content($$)
                   {
                      info_default_skip_spaces($current, $index, $close);
                   }
-                  elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
+                  #elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
+                  elsif (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
                   {
                      $text_added .= "\n";
                   }
                   # there is no close if !$content->{'content'}
                   $indent_level++ if ($content->{'content'});
+                  $indent_length = $indent_level * $info_default_indent_length;
               }
-              elsif ($complex_format_map->{$content->{'command'}} or $content->{'command'} eq 'cartouche')
+              elsif (($complex_format_map->{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
               {
-                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted)
+                  #if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted_format)
+                  if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
                   {
                      $text_added .= "\n";
                   }
@@ -1424,56 +1514,58 @@ sub info_default_process_content($$)
           # below.
           $indentation_done = 1;
           my $dummy_line_passed;
-          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $in_para, $max_column, $indent_length_next_line) if ($text_added ne '');
+          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_para_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $max_column, $indent_level * $info_default_indent_length) if ($text_added ne '');
       }
       elsif ($info_state->{'align_stack'}->[-1]->{'command'} ne 'center' and $info_state->{'align_stack'}->[-1]->{'command'} ne 'flushright')
       {
-          
-          my $chomped_text = $text_added;
-          chomp($chomped_text);
-          #print STDERR "NOT IN PARA text_added `$text_added' line_char_counter $line_char_counter\n";
-          if ($chomped_text ne '' and $line_char_counter < $indent_length)
-          {
-              #print STDERR "                     indent_length $indent_length\n";
-              $text_added =  ' ' x ($indent_length - $line_char_counter).$text_added;
-          }
-          $line_char_counter += length($text_added);
+          my $dummy_line_passed;
+          ($line_char_counter, $dummy_line_passed, $text_added) = info_default_process_line_text($text_added, $line_char_counter, $indent_length);
+          #$indentation_done = 1;
       }
       else
       {
           $line_char_counter += length($text_added);
       }
     new_text:
-      print STDERR "ADDING `$text_added'\n" if ($text_added ne '' and $DEBUG);
       if ($text_added ne '')
       {
-         if ($item_pending and !$item_line_added)
+         if ($item_pending and !$line_added_before_item)
          {
-             info_default_skip_spaces($current, $index, $close);
-             $item_pending = undef;
+            #info_default_skip_spaces($current, $index, $close);
+            $item_pending = undef;
          }
       }
-      # from here, the next cmmand is available
-      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
-
       if ($text_added =~ /\S/)
       {
          $in_table_item = 0 if ($in_table_item);
          $info_state->{'blank_line'} = 0;
       }
+      $text_added = "\n" . $text_added if ($prepend_newline);
+      print STDERR "TEXT_ADDED($indent_length) `$text_added'\n" if ($text_added ne '' and $DEBUG);
+      # from here, the next cmmand is available
+      ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
+
       my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($text_added, $indent_length, ($indentation_done
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'center' 
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
       $info_state->{'blank_line'} = 1 if ($blank_line);
+      print STDERR "ADDING `$text_indented'\n" if ($text_indented ne '' and $DEBUG);
       # only_space is set in all the conditionals
       if ($end_of_line)
       {
          $line_char_counter = 0;
-         $in_exdent-- if ($in_exdent);
+         if ($in_exdent)
+         {
+            $in_exdent--;
+         }
          if ($table_item_line)
          {
             $table_item_line--;
             $in_table_item = 1;
+         }
+         if (!$table_item_line and !$in_exdent and !$item_pending)
+         {
+            $indent_length = $indent_level * $info_default_indent_length;
          }
          $info_state->{'blank_line'} = 1 if ($info_state->{'only_spaces'} and ($last_line !~ /\S/));
          $info_state->{'only_spaces'} = 1;
@@ -1485,6 +1577,7 @@ sub info_default_process_content($$)
           # is reset to the last line length.
             $line_char_counter = length($last_line);
             $in_exdent = 0;
+            $indent_length = $indent_level * $info_default_indent_length;
             if ($last_line !~ /\S/)
             {
                $info_state->{'only_spaces'} = 1;
@@ -1660,6 +1753,37 @@ sub info_default_store_text($$;$$)
    return '';
 }
 
+sub info_default_increment_paragraph ($$$;$)
+{
+    my $in_format = shift;
+    my $parent_format = shift; 
+    my $info_state = shift;
+    my $command = shift;
+
+    if ($in_format)
+    {
+        $parent_format->{'paragraph_in_format_nr'} = 0 if (!defined($parent_format->{'paragraph_in_format_nr'}));
+        $parent_format->{'paragraph_in_format_nr'}++;
+    }
+    else
+    {
+        $info_state->{'paragraph_in_element_nr'}++;
+    }
+    ####################### debug
+    $command = 'PARA' if (!defined($command));
+    if (0)
+    #if (1)
+    {
+        my $format_info = '';
+        if ($in_format)
+        {
+           $format_info = "format: [$parent_format->{'command'}],$parent_format->{'paragraph_in_format_nr'}"
+        }
+        print STDERR "INCREMENT_PARA($command) $info_state->{'paragraph_in_element_nr'} $format_info\n";
+    }
+    ####################### end debug
+}
+
 sub info_default_begin_format_texi($$$)
 {
    my $command = shift;
@@ -1669,12 +1793,11 @@ sub info_default_begin_format_texi($$$)
    my $info_state = info_default_get_state ($state);
    my ($parent_format, $in_format);
    ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
-   $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+   info_default_increment_paragraph ($in_format, $parent_format, $info_state, $command);
 
-   $parent_format->{'paragraph_in_element_nr'} = 0 if (!defined($parent_format->{'paragraph_in_element_nr'}));
-   $parent_format->{'paragraph_in_element_nr'}++;
-
-   info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/);
+   # don't open a format if it is a @def*x command and we are already in the 
+   # corresponding @def* command
+   info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/ and defined($info_state->{'current'}->{'command'}) and "$info_state->{'current'}->{'command'}x" eq $command);
    return $line;
 }
 
@@ -1767,8 +1890,7 @@ sub info_default_style($$$$$$$$$)
 
    # note that the $text is always discarded for closed commands
 
-   # the formatting is done right here, without information on the current
-   # state, and the result is entered as text below.
+   # the formatting is done right here, and the result is entered as text below.
    if ($info_default_leaf_command{$command})
    {
       my $style_index = 0;
@@ -1776,15 +1898,17 @@ sub info_default_style($$$$$$$$$)
       foreach my $arg (@$args)
       {
          # we don't use style, since we only set 'orig_args' in style_map
-         # nad not in style_map_pre...
+         # and not in style_map_pre.
          my $arg_style = $style_map{$command}->{'orig_args'}->[$style_index];
+         my $new_state = main::duplicate_formatting_state($state);
          if ($arg_style eq 'normal')
          {
-            push @formatted_args, main::substitute_line($arg, "\@$command");
+            push @formatted_args, main::substitute_line($arg, "\@$command", $new_state);
          }
          elsif ($arg_style eq 'code')
          {
-            push @formatted_args, main::substitute_line($arg, "\@$command", {'code_style' => 1});
+            $new_state->{'code_style'} = 1;
+            push @formatted_args, main::substitute_line($arg, "\@$command", $new_state);
          }
          else
          {
@@ -1837,7 +1961,7 @@ sub info_default_header ()
     $basename = $STDIN_DOCU_NAME if ($basename eq '-');
     my $result = "This is $Texi2HTML::THISDOC{'filename'}->{'top'}, produced by makeinfo version 4.13 from $basename. ";
     my $dummy;
-    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_text($result, 0, '', undef, undef, 1, get_conf('fillcolumn'));
+    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, '', undef, undef, get_conf('fillcolumn'));
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     if ($info_default_dir_specification)
@@ -1872,6 +1996,7 @@ sub info_default_parent_format($)
             last;
         }
         last if (!defined($parent_format->{'parent'}));
+
         $parent_format = $parent_format->{'parent'};
     }
     return ($parent_format, $in_format);
@@ -1899,10 +2024,7 @@ sub info_default_paragraph($$$$$$$$$$$$)
     my $info_state = info_default_get_state ($state);
     my ($parent_format, $in_format);
     ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'}->{'parent'});
-    $parent_format->{'paragraph_in_format_nr'} = 0 if (!defined($parent_format->{'paragraph_in_format_nr'}));
-    $parent_format->{'paragraph_in_format_nr'}++;
-
-    $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+    info_default_increment_paragraph ($in_format, $parent_format, $info_state);
     my $additional_args = {'top_stack' => $top_stack, 'parent_format' => $parent_format};
     $additional_args->{'paragraph_in_element_nr'} = ($info_state->{'paragraph_in_element_nr'} - 1) if (!$in_format);
     
@@ -2089,6 +2211,7 @@ sub info_default_normal_text($$$$$$;$)
    {
       return $text;
    }
+#print STDERR "NORMAL\n";
    return info_default_store_text($state,$text);
 }
 
@@ -2205,8 +2328,11 @@ sub info_default_footnote_texi($$$)
     my $state = shift;
     my $style_stack = shift;
     
-    $info_default_footnote_index++;
-    return "($info_default_footnote_index) $text";
+    unless ($state->{'outside_document'} or $state->{'multiple_pass'})
+    {
+       $info_default_footnote_index++;
+       return "($info_default_footnote_index) $text";
+    }
 }
 
 sub info_default_print_section
@@ -2477,6 +2603,9 @@ sub info_default_normal_reference($$)
           $formatted_args->[$i] =~ /^\s*$/);
     }
     my $node = $formatted_args->[0];
+    # an error, should trigger the message: Undefined node `' in @ref.
+    # avoid undef value and use an empty string instead.
+    $node = '' if (!defined($node));
     my $name = $formatted_args->[1];
     $name =  $formatted_args->[2] if (!defined($name));
     my $file = $formatted_args->[3];
@@ -2601,7 +2730,7 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
           main::echo_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
        }
     }
-    else
+    elsif (!defined($found_file))
     {
         main::echo_warn ("Cannot find \@image file `$base.txt'", $line_nr);
     }
@@ -2630,6 +2759,12 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
     return '';
 }
 
+sub info_default_printindex($)
+{
+   my $index_name = shift;
+   return info_default_store_text(undef,t2h_GPL_default_printindex($index_name),'printindex');
+}
+
 sub info_default_print_index($$)
 {
     my $text = shift;
@@ -2640,17 +2775,9 @@ sub info_default_print_index($$)
     if (!$info_state->{'blank_line'})
     {
        $before = "\n";
-       $info_state->{'offset_in_file'} += length($before);
-       $info_state->{'line_count'}++;
-       $info_state->{'blank_line'} = 1;
     }
     return $before if (!defined($text));
     my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n" .$text."\n";
-    $info_state->{'offset_in_file'} += length($result);
-
-    my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($result);
-    $info_state->{'blank_line'} = 1 if (($last_line !~ /\S/ and $end_of_line) or ($blank_line));
-    $info_state->{'line_count'} += $line_passed;
     return $before.$result;
 }
 
@@ -2776,7 +2903,8 @@ sub info_default_foot_line_and_ref($$$$$$$$)
          'footnote_text' => $footnote_text, 
          'footnote_index' => ${info_default_footnote_index}, 
          'node_name' => $node_name, 
-         'footnote_info_state' => $footnote_info_state};
+         'footnote_info_state' => $footnote_info_state}
+       unless ($state->{'outside_document'} or $state->{'multiple_pass'});
     return ([],  $footnote_text);
 }
 
@@ -2803,13 +2931,12 @@ sub info_default_format_list_item_texi($$$$)
     $command = 'bullet' if ((!defined($command) or $command eq '') and (!defined($prepended) or $prepended eq '') and $format eq 'itemize');
     $prepended = "\@$command\{\}" if (defined($command) and $command ne '');
     $prepended = "$number." if (defined($number) and $number ne '');
+    
+    $line =~ s/^\s*//;
  
     if (defined($command) and $command ne '' and $format ne 'itemize')
     {
         #@*table
-        #info_default_begin_style_texi($command, $Texi2HTML::THISDOC{'state'}, undef, undef);
-        #$open_command = 1;
-        $line =~ s/^\s*//;
         $line =~ s/\s*$//;
         if (exists ($style_map{$command}))
         {
@@ -2824,18 +2951,17 @@ sub info_default_format_list_item_texi($$$$)
            $result_line = "\@$command $line\n";
         }
     }
-    elsif (defined($prepended) and $prepended ne '')
-    {
-         $prepended =~ s/^\s*//;
-         $prepended =~ s/\s*$//;
-         $line =~ s/^\s*//;
-         $result_line = $prepended . ' ' . $line;
-    }
+#    elsif (defined($prepended) and $prepended ne '')
+#    { # @enumerate and @itemize
+#         $prepended =~ s/^\s*//;
+#         $prepended =~ s/\s*$//;
+#         $result_line = $prepended . ' ' . $line;
+#    }
 
     return ($result_line, $open_command);
 }
 
-sub info_default_list_item($$$$$$$$$$$)
+sub info_default_list_item($$$$$$$$$$$$)
 {
     my $text = shift;
     my $format = shift;
@@ -2848,6 +2974,7 @@ sub info_default_list_item($$$$$$$$$$$)
     my $prepended_formatted = shift;
     my $only_inter_item_commands = shift;
     my $before_items = shift;
+    my $item_command = shift;
 
 #    my $prepend = '';
 #    if (defined($formatted_command) and $formatted_command ne '')
@@ -2855,6 +2982,36 @@ sub info_default_list_item($$$$$$$$$$$)
 #        $prepend = $formatted_command;
 #    }
 #    return $prepend . $text;
+#    $command = 'bullet' if ((!defined($command) or $command eq '') and (!defined($prepended) or $prepended eq '') and $format eq 'itemize');
+    $formatted_command = $things_map{'bullet'} if ((!defined($command) or $command eq '') and (!defined($prepended) or $prepended eq '') and $format eq 'itemize');
+
+    if ($format !~ /table$/)
+    {
+       my $result = '';
+       if ($format eq 'enumerate')
+       {
+          $result = $number.'.';
+       }
+       elsif ($format eq 'itemize')
+       {
+          if (defined($formatted_command) and $formatted_command ne '')
+          {
+             $result = $formatted_command;
+          }
+          elsif (defined ($prepended_formatted) and $prepended_formatted ne '')
+          {
+             $prepended_formatted =~ s/^\s*//;
+             $prepended_formatted =~ s/\s*$//;
+             $result = $prepended_formatted;
+          }
+       }
+       else
+       {
+          $result = '';
+       }
+       $result .= ' ' if ($result ne '');
+       return info_default_close_command (undef, $item_command, $result);
+    }
     return $text;
 }
 
@@ -2896,10 +3053,16 @@ sub info_default_tab_item_texi($$$$$$)
        }
        info_default_open_command($state, 'multitable_cell');
    }
-   else
+   elsif ($format =~ /table$/)
    {
        info_default_store_text ($state, undef, $command, {'format_name' => $format});
    }
+   else
+   {
+       info_default_open_command ($state, $command, {'format_name' => $format});
+   }
+   # this should have already been done for @item when the line
+   # is modified by the @-command and so on.
    $line =~ s/^\s*//;
    return $line;
 }
@@ -3123,7 +3286,7 @@ sub info_default_listoffloats($$$)
    my ($parent_format, $in_format);
    ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
    #print STDERR "\@listoffloats not at top level\n" if ($in_format);
-   $info_state->{'paragraph_in_element_nr'}++ if (!$in_format);
+   info_default_increment_paragraph ($in_format, $parent_format, $info_state, 'listoffloats');
    return info_default_store_text($state,$result,'listoffloats');
 }
 

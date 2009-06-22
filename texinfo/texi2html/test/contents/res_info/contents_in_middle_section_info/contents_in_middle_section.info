@@ -1,0 +1,51 @@
+This is contents_in_middle_section.info, produced by makeinfo version
+4.13 from contents_in_middle_section.texi.
+
+
+File: contents_in_middle_section.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Contents in section
+*******************
+
+Content in section.
+
+* Menu:
+
+* chapter::
+
+
+File: contents_in_middle_section.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 Chapter 1
+***********
+
+* Menu:
+
+* section::
+* section1::
+
+
+File: contents_in_middle_section.info,  Node: section,  Next: section1,  Up: chapter
+
+1.1 section
+===========
+
+The section with contents
+
+
+File: contents_in_middle_section.info,  Node: section1,  Prev: section,  Up: chapter
+
+1.2 section 1
+=============
+
+Section 1.
+
+
+
+Tag Table:
+Node: Top114
+Node: chapter279
+Node: section418
+Node: section1558
+
+End Tag Table

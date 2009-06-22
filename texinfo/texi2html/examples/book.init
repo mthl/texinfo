@@ -1,5 +1,7 @@
 # This is based on the scriptbasic style
 
+html_default_load();
+
 $CONTENTS = 1;
 
 $INLINE_CONTENTS = 1;

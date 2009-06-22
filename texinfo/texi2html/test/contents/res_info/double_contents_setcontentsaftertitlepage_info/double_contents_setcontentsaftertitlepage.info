@@ -1,0 +1,42 @@
+This is double_contents_setcontentsaftertitlepage.info, produced by
+makeinfo version 4.13 from
+double_contents_setcontentsaftertitlepage.texi.
+
+
+File: double_contents_setcontentsaftertitlepage.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Double contents
+***************
+
+Double contents.
+
+* Menu:
+
+* chapter::
+
+
+File: double_contents_setcontentsaftertitlepage.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 Chapter 1
+***********
+
+The chapter
+
+* Menu:
+
+* section::
+
+
+File: double_contents_setcontentsaftertitlepage.info,  Node: section,  Up: chapter
+
+1.1 section with contents
+=========================
+
+
+
+Tag Table:
+Node: Top144
+Node: chapter313
+Node: section467
+
+End Tag Table

@@ -1,0 +1,34 @@
+contents_in_middle_section.texi(,2) 
+contents_in_middle_section.texi(,3) @setfilename contents_in_middle_section.info
+contents_in_middle_section.texi(,4) 
+contents_in_middle_section.texi(,5) 
+contents_in_middle_section.texi(,6) @node Top
+contents_in_middle_section.texi(,7) @top Contents in section
+contents_in_middle_section.texi(,8) 
+contents_in_middle_section.texi(,9) Content in section.
+contents_in_middle_section.texi(,10) 
+contents_in_middle_section.texi(,11) @menu 
+contents_in_middle_section.texi(,12) * chapter::
+contents_in_middle_section.texi(,13) @end menu
+contents_in_middle_section.texi(,14) 
+contents_in_middle_section.texi(,15) @node chapter
+contents_in_middle_section.texi(,16) @chapter Chapter 1
+contents_in_middle_section.texi(,17) 
+contents_in_middle_section.texi(,18) 
+contents_in_middle_section.texi(,19) @menu
+contents_in_middle_section.texi(,20) * section::
+contents_in_middle_section.texi(,21) * section1::
+contents_in_middle_section.texi(,22) @end menu
+contents_in_middle_section.texi(,23) 
+contents_in_middle_section.texi(,24) @node section
+contents_in_middle_section.texi(,25) @section section
+contents_in_middle_section.texi(,26) 
+contents_in_middle_section.texi(,27) The section with contents
+contents_in_middle_section.texi(,28) @contents
+contents_in_middle_section.texi(,29) 
+contents_in_middle_section.texi(,30) @node section1
+contents_in_middle_section.texi(,31) @section section 1
+contents_in_middle_section.texi(,32) 
+contents_in_middle_section.texi(,33) Section 1.
+contents_in_middle_section.texi(,34) 
+contents_in_middle_section.texi(,35) @bye

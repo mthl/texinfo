@@ -56,6 +56,9 @@ h1 titlefont (@titlefont),
   new arguments and return args of index_summary_letter
   new argument of def
   new argument of def_item
+  new arguments of list_item
+  new argument of inline_content
+  shortcontents and contents
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -422,12 +425,13 @@ overridden by a command line option.  The possible values are:
 * in novalidate.texi, fifth node argument should trigger an error
   @node other node in menu before top, node not existing,,,first
 
-* no line number (though there is line number in makeinfo) for
-  ** `node1' is up for `node below node1', but has no menu entry for this node
-
 * makeinfo creates a Top node when there is a menu seen before any @node
   example in sectionning/one_section
 ../../one_section.texi:11: warning: @menu seen before first @node, creating `Top' node.
+
+* info/long_uref_after_item.texi report from Kevin Ryde,
+  it would be logical to treat the space after the itemize mark as 
+  a tie instead of a breakpoint.
 
 * error messages
   ** `second node' doesn't appear in menus

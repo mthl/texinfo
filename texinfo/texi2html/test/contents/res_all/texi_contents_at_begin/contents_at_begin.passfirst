@@ -1,0 +1,20 @@
+contents_at_begin.texi(,2) 
+contents_at_begin.texi(,3) @setfilename contents_at_begin.info
+contents_at_begin.texi(,4) 
+contents_at_begin.texi(,5) @contents
+contents_at_begin.texi(,6) 
+contents_at_begin.texi(,7) @node Top
+contents_at_begin.texi(,8) @top Contents at beginning
+contents_at_begin.texi(,9) 
+contents_at_begin.texi(,10) Content at the beginning.
+contents_at_begin.texi(,11) 
+contents_at_begin.texi(,12) @menu 
+contents_at_begin.texi(,13) * chapter::
+contents_at_begin.texi(,14) @end menu
+contents_at_begin.texi(,15) 
+contents_at_begin.texi(,16) @node chapter
+contents_at_begin.texi(,17) @chapter Chapter 1
+contents_at_begin.texi(,18) 
+contents_at_begin.texi(,19) The chapter
+contents_at_begin.texi(,20) 
+contents_at_begin.texi(,21) @bye

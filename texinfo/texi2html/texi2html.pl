@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.292 2009-06-08 00:01:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.293 2009-06-22 00:13:39 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -451,6 +451,8 @@ $about_body
 $print_frame
 $print_toc_frame
 $toc_body
+$contents
+$shortcontents
 $titlepage
 $insertcopying
 $css_lines
@@ -725,19 +727,49 @@ $I = \&Texi2HTML::I18n::get_string;
 # things coded by Olaf -- Pat).
 #
 
-#$toc_body                 = \&T2H_GPL_toc_body;
-#$style                    = \&T2H_GPL_style;
-#$format                   = \&T2H_GPL_format;
-#$printindex               = \&t2h_GPL_default_printindex;
-#$summary_letter           = \&t2h_default_summary_letter;
-
-sub HTML_DEFAULT_toc_body($)
+sub HTML_DEFAULT_shortcontents($$)
 {
     my $elements_list = shift;
-    return unless (Texi2HTML::Config::get_conf('contents') or 
-      Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
-    my $current_level = 0;
+    my $stoc_file = shift;
+    return unless (Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
     my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : ''; 
+    my @result = ();
+    foreach my $element (@$elements_list)
+    {
+        next if ($element->{'top'} or $element->{'toc_level'} != 1);
+        my $dest_for_stoc = $element->{'file'};
+        my $dest_target_for_stoc = $element->{'target'};
+        if ($Texi2HTML::Config::OVERVIEW_LINK_TO_TOC)
+        {
+            $dest_for_stoc = $Texi2HTML::THISDOC{'toc_file'};
+            $dest_target_for_stoc = $element->{'tocid'};
+        }
+        $dest_for_stoc = '' if ($dest_for_stoc eq $stoc_file);
+        my $text = $element->{'text'};
+        my $stoc_entry = "<li>" . &$anchor ($element->{'stocid'}, "$dest_for_stoc#$dest_target_for_stoc",$text);
+        push(@result, $stoc_entry. "</li>\n");
+    }
+    if (@result)
+    {
+        unshift @result, "<ul${ul_style}>\n";
+        push @result, "</ul>\n";
+        unshift @result, $BEFORE_OVERVIEW;
+        push @result, $AFTER_OVERVIEW;
+    }
+    return \@result;
+}
+
+
+sub HTML_DEFAULT_contents($$)
+{
+    my $elements_list = shift;
+    my $toc_file = shift;
+
+    return unless (Texi2HTML::Config::get_conf('contents'));
+
+    my $current_level = 0;
+    my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : '';
+    my @result = ();
     foreach my $element (@$elements_list)
     {
         next if ($element->{'top'});
@@ -751,7 +783,7 @@ sub HTML_DEFAULT_toc_body($)
                 $current_level++;
                 my $ln = "\n$ind<ul${ul_style}>\n";
                 $ind = '  ' x $current_level;
-                push(@{$Texi2HTML::TOC_LINES}, $ln);
+                push(@result, $ln);
             }
         }
         elsif ($level < $current_level)
@@ -762,57 +794,42 @@ sub HTML_DEFAULT_toc_body($)
                 $ind = '  ' x $current_level;
                 my $line = "</li>\n$ind</ul>";
                 $line .=  "</li>" if ($level == $current_level);
-                push(@{$Texi2HTML::TOC_LINES}, "$line\n");
-                
+                push(@result, "$line\n");
             }
         }
         else
         {
-            push(@{$Texi2HTML::TOC_LINES}, "</li>\n");
+            push(@result, "</li>\n");
         }
-        # if there is more than one toc, in different files, the toc in
-        # the file different from $Texi2HTML::THISDOC{'toc_file'} may have
-        # wrong links, that is links that point to the same file and are
-        # therefore empty, although the section isn't in the current file,
-        # since it is in $Texi2HTML::THISDOC{'toc_file'}.
         my $dest_for_toc = $element->{'file'};
         my $dest_for_stoc = $element->{'file'};
         my $dest_target_for_stoc = $element->{'target'};
-        if ($Texi2HTML::Config::OVERVIEW_LINK_TO_TOC)
-        {
-            $dest_for_stoc = $Texi2HTML::THISDOC{'toc_file'};
-            $dest_target_for_stoc = $element->{'tocid'};
-        }
-        $dest_for_toc = '' if ($dest_for_toc eq $Texi2HTML::THISDOC{'toc_file'});
-        $dest_for_stoc = '' if ($dest_for_stoc eq $Texi2HTML::THISDOC{'stoc_file'});
+        $dest_for_toc = '' if ($dest_for_toc eq $toc_file);
         my $text = $element->{'text'};
         #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
         my $toc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_toc#$element->{'target'}",$text);
-        my $stoc_entry = "<li>" . &$anchor ($element->{'stocid'}, "$dest_for_stoc#$dest_target_for_stoc",$text);
-        push (@{$Texi2HTML::TOC_LINES}, $ind . $toc_entry);
-        push(@{$Texi2HTML::OVERVIEW}, $stoc_entry. "</li>\n") if ($level == 1);
+        push (@result, $ind . $toc_entry);
     }
     while (0 < $current_level)
     {
         $current_level--;
         my $ind = '  ' x $current_level;
-        push(@{$Texi2HTML::TOC_LINES}, "</li>\n$ind</ul>\n");
+        push(@result, "</li>\n$ind</ul>\n");
     }
-    @{$Texi2HTML::TOC_LINES} = () unless (Texi2HTML::Config::get_conf('contents'));
-    if (@{$Texi2HTML::TOC_LINES})
+    if (@result)
     {
-        unshift @{$Texi2HTML::TOC_LINES}, $BEFORE_TOC_LINES;
-        push @{$Texi2HTML::TOC_LINES}, $AFTER_TOC_LINES;
+        unshift @result, $BEFORE_TOC_LINES;
+        push @result, $AFTER_TOC_LINES;
     }
-    @{$Texi2HTML::OVERVIEW} = () unless (Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
-    if (@{$Texi2HTML::OVERVIEW})
-    {
-        unshift @{$Texi2HTML::OVERVIEW}, "<ul${ul_style}>\n";
-        push @{$Texi2HTML::OVERVIEW}, "</ul>\n";
-        unshift @{$Texi2HTML::OVERVIEW}, $BEFORE_OVERVIEW;
-        push @{$Texi2HTML::OVERVIEW}, $AFTER_OVERVIEW;
-    }
+    return \@result;
 }
+
+#$toc_body                 = \&T2H_GPL_toc_body;
+#$style                    = \&T2H_GPL_style;
+#$format                   = \&T2H_GPL_format;
+#$printindex               = \&t2h_GPL_default_printindex;
+#$summary_letter           = \&t2h_default_summary_letter;
+
 
 sub T2H_GPL_style($$$$$$$$$)
 {                           # known style
@@ -1834,6 +1851,20 @@ $reference_sec2level{'appendixsection'} = 2;
 $reference_sec2level{'majorheading'} = 1;
 $reference_sec2level{'chapheading'} = 1;
 $reference_sec2level{'centerchap'} = 1;
+
+my %reference_content_element =
+   (
+     'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+         'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+         'contents' => 1, 'texi' => '_contents' },
+     'shortcontents' => { 
+        'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
+        'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
+        'shortcontents' => 1, 'texi' => '_shortcontents' },
+   );
+
+my %all_content_elements;
+my %aftertitlepage_command;
 
 sub stop_paragraph_command($)
 {
@@ -4666,7 +4697,7 @@ sub do_documentlanguage($$$$)
     my $silent = shift;
     my $line_nr = shift;
     my $return_value = 0;
-    if ($line =~ /\s+(\w+)/)
+    if ($line =~ s/\s+(\w+)\s*//)
     {
         my $lang = $1;
         my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
@@ -4679,6 +4710,7 @@ sub do_documentlanguage($$$$)
                 echo_error ("Translations for '$lang' not found. Reverting to '$prev_lang'.", $line_nr) unless ($silent);
             }
         }
+        # FIXME warn about stuff remaining on the line?
     }
     return $return_value;
 }
@@ -4718,9 +4750,10 @@ sub common_misc_commands($$$$)
     }
     elsif ($macro eq 'clickstyle')
     {
-        if ($line =~ /^\s+@([^\s\{\}\@]+)/)
+        if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//)
         {
             $Texi2HTML::THISDOC{$macro} = $1;
+            # FIXME warn about what remains on the line?
         }
         else
         {
@@ -4909,6 +4942,18 @@ sub misc_command_texi($$$$)
    return ($text, $line);
 }
 
+sub new_content_element($)
+{
+   my $command = shift;
+   $command = 'shortcontents' if ($command ne 'contents');
+   my $element;
+   foreach my $key (keys(%{$reference_content_element{$command}}))
+   {
+      $element->{$key} = $reference_content_element{$command}->{$key};
+   }
+   return $element;
+}
+
 # initial kdb styles
 my $kept_kdb_style;
 my $kept_kdb_pre_style;
@@ -4948,7 +4993,10 @@ sub misc_command_structure($$$$)
             $macro = 'shortcontents';
         }
         Texi2HTML::Config::set_conf($macro, 1);
-        push @{$state->{'place'}}, $content_element{$macro};
+        my $new_content_element = new_content_element($macro);
+        push @{$state->{'place'}}, $new_content_element;
+        push @{$all_content_elements{$macro}}, $new_content_element;
+        #push @{$state->{'place'}}, $content_element{$macro};
     }
     elsif ($macro eq 'dircategory' and ($line =~ /^\s+(.*)\s*$/))
     {
@@ -5131,7 +5179,8 @@ sub misc_command_structure($$$$)
         $Texi2HTML::THISDOC{$macro} = 1;
         my $tag = 'contents';
         $tag = 'shortcontents' if ($macro ne 'setcontentsaftertitlepage');
-        $content_element{$tag}->{'aftertitlepage'} = 1;
+        #$content_element{$tag}->{'aftertitlepage'} = 1;
+        $aftertitlepage_command{$tag} = 1;
     }
     elsif ($macro eq 'need')
     { # only a warning
@@ -6010,7 +6059,7 @@ sub rearrange_elements()
             # there may be infinite loops when finding following node (see below)
             unless (defined($node->{'menu_up_hash'}) and ($node->{'menu_up_hash'}->{$node->{'nodeup'}->{'texi'}}))
             {
-                print STDERR "$WARN `$node->{'nodeup'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node\n" if ($Texi2HTML::Config::SHOW_MENU);
+                echo_warn("`$node->{'nodeup'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node", $node->{'nodeup'}->{'line_nr'}) if ($Texi2HTML::Config::SHOW_MENU);
                 push @{$node->{'up_not_in_menu'}}, $node->{'nodeup'}->{'texi'};
             }
         }
@@ -6703,7 +6752,7 @@ sub rearrange_elements()
         do_place_target_file ($place, $footnote_element, 'footnotes');
     }
     # if setcontentsaftertitlepage is set, the contents should be associated
-    # with the titlepage. That's wat is done there.
+    # with the titlepage. That's what is done there.
     push @$no_element_associated_place, $content_element{'contents'} 
       if (Texi2HTML::Config::get_conf('contents') and $Texi2HTML::THISDOC{'setcontentsaftertitlepage'});
     push @$no_element_associated_place, $content_element{'shortcontents'} 
@@ -6720,10 +6769,18 @@ sub rearrange_elements()
         # with set*aftertitlepage, there will always be a href to Contents
         # or Overview pointing to the top element, even if there is no 
         # titlepage outputed.
-        if ((!defined($content_element{$content_type}->{'file'})) and $Texi2HTML::Config::INLINE_CONTENTS)
+        #if ((!defined($content_element{$content_type}->{'file'})) and $Texi2HTML::Config::INLINE_CONTENTS)
+        if (!scalar(@{$all_content_elements{$content_type}}))
         {
-            print STDERR "# No content $content_type\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            $content_element{$content_type} = undef;
+            if  ($Texi2HTML::Config::INLINE_CONTENTS)
+            {
+                print STDERR "# No content $content_type\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                $content_element{$content_type} = undef;
+            }
+        }
+        elsif ($Texi2HTML::Config::INLINE_CONTENTS and !$aftertitlepage_command{$content_type})
+        {
+            $content_element{$content_type} = $all_content_elements{$content_type}->[-1];
         }
     }
     my ($toc_file, $stoc_file);
@@ -7061,7 +7118,6 @@ sub enter_index_entry($$$$$)
         #echo_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
         echo_error ("Entry for index `$index_prefix_to_name{$prefix}' outside of any node.", $line_nr);
     }
-    #print STDERR "($region) $key" if $region;
     $entry =~ s/\s+$//;
     $entry =~ s/^\s*//;
     # The $key is mostly usefull for alphabetical sorting.
@@ -7106,8 +7162,12 @@ sub enter_index_entry($$$$$)
            'line_nr'  => $line_nr,
            'index_name' => $index_prefix_to_name{$prefix}
     };
-            
-    print STDERR "# enter \@$command ${prefix}index($key) [$entry] with id $id ($index_entry)\n"
+    
+    my $region_text = $region;
+    $region_text = 'main' if (!defined($region)); 
+    my $id_text = $id;
+    $id_text = 'NO ID' if (!defined($id));
+    print STDERR "# in $region_text enter \@$command ${prefix}index($key) [$entry] with id $id_text ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
     if ($entry =~ /^\s*$/)
     {
@@ -7463,7 +7523,7 @@ sub pass_text($$)
     foreach my $command ('contents', 'shortcontents')
     {
         next if (!defined($content_element{$command}));
-        my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $command, $content_element{$command});
+        my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $command, $content_element{$command}, \@elements_list);
         @{$Texi2HTML::THISDOC{'inline_contents'}->{$command}} = @$toc_lines if (defined($toc_lines));
     }
     
@@ -7630,44 +7690,6 @@ sub pass_text($$)
                 my $heading_formatted = &$Texi2HTML::Config::element_heading($current_element, $tag, $cmd_line, substitute_line($cmd_line, "\@$tag"), undef, $one_section, $current_element->{'this'}, $first_section, $current_element->{'top'}, $previous_is_top, $cline, $current_element->{'id'}, $new_element);
                 push @{$Texi2HTML::THIS_SECTION}, $heading_formatted if (defined($heading_formatted) and ($heading_formatted ne ''));
                 next;
-            }
-            elsif ($tag eq 'printindex')
-            {
-                $cline =~ s/\s+(\w+)\s*//;
-                my $name = $1;
-                close_paragraph(\$text, \@stack, \%state, "\@$tag");
-                if (!@stack)
-                {
-                    push @{$Texi2HTML::THIS_SECTION}, $text;
-                    $text = '';
-                }
-                add_prev(\$text, \@stack, &$Texi2HTML::Config::printindex($name));
-                if (!@stack)
-                {
-                    push @{$Texi2HTML::THIS_SECTION}, $text;
-                    $text = '';
-                }
-                begin_paragraph (\@stack, \%state) if ($state{'preformatted'});
-                next;
-            }
-            elsif (($tag eq 'contents') or ($tag eq 'summarycontents') or ($tag eq 'shortcontents'))
-            {
-                my $element_tag = $tag;
-                $element_tag = 'shortcontents' if ($element_tag ne 'contents');
-                # at that point the content_element is defined for sure since
-                # we already saw the tag
-                if ($Texi2HTML::Config::INLINE_CONTENTS and !$content_element{$element_tag}->{'aftertitlepage'})
-                {
-                    if (@stack or (defined($text) and $text ne ''))
-                    {# in pass text contents  shouldn't appear in formats
-                        close_stack(\$text, \@stack, \%state, $line_nr);
-                        push @{$Texi2HTML::THIS_SECTION}, $text;
-                        $text = '';
-                    }
-                    my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $tag, $content_element{$element_tag});
-                    push (@{$Texi2HTML::THIS_SECTION}, @$toc_lines) if (defined($toc_lines)) ;
-                }
-                next unless (exists($Texi2HTML::Config::misc_command{$tag}) and $Texi2HTML::Config::misc_command{$tag}->{'keep'});
             }
         }
         push @{$state{'keep_line_nr'}}, $line_nr if ($state{'keep_texi'});
@@ -8442,7 +8464,7 @@ sub get_format_command($)
     $format_name =  $format->{'format'} if (defined($format->{'format'}));
 
     return ($format_name,$command,\$format->{'paragraph_number'},$term,
-        $format->{'item_nr'}, $format->{'spec'},  $format->{'number'},
+        $format->{'item_nr'}, $format->{'spec'}, $format->{'number'},
         $format->{'stack_at_beginning'});
 }
 
@@ -9418,6 +9440,20 @@ sub begin_format($$$$$$)
         close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
     }
 
+    # close def_item if this is a matching @def*x command
+    if (defined($Texi2HTML::Config::def_map{$macro}))
+    {
+        my $top_format = top_format($stack);
+        if (defined($top_format) and ("$top_format->{'format'}x" eq $macro))
+        {
+          # this is a matching @DEFx command.
+             my $deff_item = pop @$stack;
+             add_prev($text, $stack, 
+                &$Texi2HTML::Config::def_item($deff_item->{'text'}, $deff_item->{'only_inter_commands'}, $deff_item->{'orig_command'}));
+             #print STDERR "DEFx $macro\n";
+        }
+    }
+
     $line = &$Texi2HTML::Config::begin_format_texi($macro, $line, $state)
         unless($fake_format{$macro});
 
@@ -9438,9 +9474,6 @@ sub begin_format($$$$$$)
           # command_stack, although there is no real format opening
              pop @{$state->{'command_stack'}};
              $macro =~ s/x$//o;
-             my $deff_item = pop @$stack;
-             add_prev($text, $stack, 
-                &$Texi2HTML::Config::def_item($deff_item->{'text'}, $deff_item->{'only_inter_commands'}, $deff_item->{'orig_command'}));
              #print STDERR "DEFx $macro\n";
         }
         else
@@ -9544,6 +9577,7 @@ sub begin_format($$$$$$)
             my $prepended;
             ($prepended, $command) = parse_format_command($line,$macro);
             $command = 'asis' if (($command eq '') and ($macro ne 'itemize'));
+            #$command = 'bullet' if ($macro eq 'itemize' and $prepended eq '' and $command eq '');
             my $prepended_formatted;
             $prepended_formatted = substitute_line($prepended, "prepended for \@$macro", prepare_state_multiple_pass('item', $state)) if (defined($prepended));
             $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'prepended_formatted' => $prepended_formatted };
@@ -12191,6 +12225,21 @@ sub scan_line($$$$;$)
                 add_prev ($text, $stack, &$Texi2HTML::Config::line_command($next_command, $arg_line, $arg_texi, $state));
                 return '';
             }
+            elsif (defined($next_command) and ($next_command eq 'contents') or ($next_command eq 'summarycontents') or ($next_command eq 'shortcontents'))
+            {
+                my $element_tag = $next_command;
+                $element_tag = 'shortcontents' if ($element_tag ne 'contents');
+                # at that point the content_element is defined for sure since
+                # we already saw the tag
+                if ($Texi2HTML::Config::INLINE_CONTENTS and !$aftertitlepage_command{$element_tag})
+                {
+                    my $content_element = shift (@{$all_content_elements{$element_tag}});
+                    #my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $next_command, $content_element{$element_tag});
+                    my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $element_tag, $content_element, \@elements_list);
+                    add_prev ($text, $stack, join('',@$toc_lines)) if (defined($toc_lines));
+                }
+                return '' unless (exists($Texi2HTML::Config::misc_command{$next_command}) and $Texi2HTML::Config::misc_command{$next_command}->{'keep'});
+            }
 
         # The commands to ignore are ignored now in case after ignoring them
         # there is an empty line, to be able to stop the paragraph
@@ -12220,7 +12269,14 @@ sub scan_line($$$$;$)
           # it is also possible to be in preformatted within a menu_description
             if ($cline =~ /^\s*$/)
             {
-                add_prev($text, $stack, do_text($cline,$state));
+                if ($state->{'raw'})
+                {
+                    add_prev($text, $stack, $cline);
+                }
+                else
+                {
+                    add_prev($text, $stack, do_text($cline,$state));
+                }
                 return;
             }
         }
@@ -12523,7 +12579,7 @@ sub scan_line($$$$;$)
                      next;
                 }
             }
-            if ($macro eq 'listoffloats')
+            if ($macro eq 'listoffloats' or $macro eq 'printindex')
             {
                 if ($state->{'keep_texi'})
                 {
@@ -12533,16 +12589,16 @@ sub scan_line($$$$;$)
                     }
                     next;
                 }
+                close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
                 return undef if ($state->{'remove_texi'});
-                
-                if ($cline =~ s/^(\s+)(.*)//o)
+                if ($macro eq 'listoffloats' and $cline =~ s/^(\s+)(.*)//o)
                 {
                     my $arg = $2;
                     my $style_id = cross_manual_line(normalise_space($arg));
                     my $style = substitute_line (&$Texi2HTML::Config::listoffloats_style($arg), "\@listoffloats type");
                     if (exists ($floats{$style_id}))
                     {
-                         close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
+                         #close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
                          my @listoffloats_entries = ();
                          foreach my $float (@{$floats{$style_id}->{'floats'}})
                          {
@@ -12564,10 +12620,16 @@ sub scan_line($$$$;$)
                          echo_warn ("Unknown float style $arg", $line_nr); 
                     }
                 }
+                elsif ($macro eq 'printindex' and $cline =~ s/\s+(\w+)\s*//)
+                {
+                    my $name = $1;
+                    add_prev($text, $stack, &$Texi2HTML::Config::printindex($name));
+                }
                 else
                 {
                     echo_error ("Bad \@$macro line: $cline", $line_nr);
                 }
+                begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 return undef;
             }
             # This is a @macroname{...} construct. We add it on top of stack
@@ -13430,8 +13492,31 @@ sub add_item($$$$)
     # preformatted, close_stack doesn't do that.
     my $item = pop @$stack;
     my $format = $stack->[-1];
+    my $item_command = $item->{'format'};
+    # first has no associated item, it is more like a 'title'
+    $item_command = '' if ($format->{'first'});
     
     $format->{'paragraph_number'} = 0;
+    
+    #dump_stack ($text, $stack, $state);
+    # the element following ol or ul must be li. Thus even though there
+    # is no @item we put a normal item.
+    # don't do an item if it is the first and it is empty
+    if (!$format->{'first'} or ($item->{'text'} =~ /\S/o))
+    {
+        my $formatted_command;
+        if (defined($format->{'command'}) and $format->{'command'} ne '')# and exists($::things_map_ref->{$format->{'command'}}))
+        {
+            $formatted_command = substitute_line("\@$format->{'command'}\{\}", "\@item \@$format->{'command'}", duplicate_formatting_state($state));#do_simple($format->{'command'}, '', $state);
+            $format->{'formatted_command'} = $formatted_command;
+        }
+	#chomp($item->{'text'});
+        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}, $format->{'prepended'}, $format->{'prepended_formatted'}, $item->{'only_inter_commands'}, $format->{'first'},$item_command));
+    } 
+    if ($format->{'first'})
+    {
+        $format->{'first'} = 0;
+    }
     if ($format->{'format'} eq 'enumerate')
     {
         $format->{'number'} = '';
@@ -13453,26 +13538,6 @@ sub add_item($$$$)
                 $format->{'number'} = chr($base_letter + $ord) . $format->{'number'};
             }
         }
-    }
-    
-    #dump_stack ($text, $stack, $state);
-    # the element following ol or ul must be li. Thus even though there
-    # is no @item we put a normal item.
-    # don't do an item if it is the first and it is empty
-    if (!$format->{'first'} or ($item->{'text'} =~ /\S/o))
-    {
-        my $formatted_command;
-        if (defined($format->{'command'}) and $format->{'command'} ne '')# and exists($::things_map_ref->{$format->{'command'}}))
-        {
-            $formatted_command = substitute_line("\@$format->{'command'}\{\}", "\@item \@$format->{'command'}", duplicate_formatting_state($state));#do_simple($format->{'command'}, '', $state);
-            $format->{'formatted_command'} = $formatted_command;
-        }
-	#chomp($item->{'text'});
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}, $format->{'prepended'}, $format->{'prepended_formatted'}, $item->{'only_inter_commands'}, $format->{'first'}));
-    } 
-    if ($format->{'first'})
-    {
-        $format->{'first'} = 0;
     }
 
     return $format;
@@ -14806,16 +14871,17 @@ while(@input_files)
        dump_texi(\@texi_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND);
    }
 
-   %content_element =
-   (
-     'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
-         'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
-         'contents' => 1, 'texi' => '_contents' },
-     'shortcontents' => { 
-        'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
-        'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
-        'shortcontents' => 1, 'texi' => '_shortcontents' },
-   );
+   %content_element = ();
+   foreach my $command('contents', 'shortcontents')
+   {
+       $all_content_elements{$command} = [];
+       foreach my $key (keys(%{$reference_content_element{$command}}))
+       {
+           $content_element{$command}->{$key} = $reference_content_element{$command}->{$key};
+       }
+   }
+
+   %aftertitlepage_command = ();
 
    %sec2level = %reference_sec2level;
 

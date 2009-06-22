@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.5 2009-06-08 00:01:31 pertusus Exp $
+# $Id: html.init,v 1.6 2009-06-22 00:13:41 pertusus Exp $
 
 use strict;
 
@@ -451,7 +451,9 @@ $print_navigation	      = \&HTML_DEFAULT_print_navigation;
 $about_body		      = \&HTML_DEFAULT_about_body;
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
-$toc_body                 = \&HTML_DEFAULT_toc_body;
+$contents                 = \&HTML_DEFAULT_contents;
+$shortcontents            = \&HTML_DEFAULT_shortcontents;
+#$toc_body                 = \&HTML_DEFAULT_toc_body;
 $titlepage                 = \&HTML_DEFAULT_titlepage;
 $print_redirection_page    = \&HTML_DEFAULT_print_redirection_page;
 $inline_contents           = \&HTML_DEFAULT_inline_contents;
@@ -1345,27 +1347,34 @@ EOT
     print $fh "</body></html>\n";
 }
 
-sub HTML_DEFAULT_inline_contents($$$)
+sub HTML_DEFAULT_inline_contents($$$$)
 {
     my $fh = shift;
     my $command = shift;
     my $element = shift;
+    my $elements_list = shift;
     my $name;
     my $lines;
+
+    my $toc_file = $element->{'file'};
 
     my $result = undef;
 
     if ($command eq 'contents')
     {
         $name = $Texi2HTML::NAME{'Contents'};
-        $lines = $Texi2HTML::TOC_LINES;
+        #$lines = $Texi2HTML::TOC_LINES;
+        $toc_file = $Texi2HTML::THISDOC{'toc_file'} if (!defined($toc_file));
+        $lines = &$contents($elements_list, $toc_file);
     }
     else
     {
         $name = $Texi2HTML::NAME{'Overview'};
-        $lines = $Texi2HTML::OVERVIEW;
+        $toc_file = $Texi2HTML::THISDOC{'stoc_file'} if (!defined($toc_file));
+        #$lines = $Texi2HTML::OVERVIEW;
+        $lines = &$shortcontents($elements_list, $toc_file);
     }
-    if (@{$lines})
+    if (defined($lines) and @{$lines})
     {
          $result = [ "".&$anchor($element->{'id'})."\n",
             "<h1>$name</h1>\n" ]; 
