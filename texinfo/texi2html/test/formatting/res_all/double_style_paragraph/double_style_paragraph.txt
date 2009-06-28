@@ -1,0 +1,10 @@
+2 style commands enclosing 2 paragraphs
+***************************************
+
+
+First para.
+
+Second para.
+
+
+

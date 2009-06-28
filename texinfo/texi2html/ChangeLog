@@ -1,3 +1,14 @@
+2009-06-28   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: use a specific handler to
+	handle misc commands, $misc_command_line, instead of turning the 
+	@-command into an unknown macro (and misc_command_line_texi if 
+	remove_texi).
+	With inline content use a different content element for each
+	@*content.
+	Check for a symbol following @end command argument.
+	* tests/formatting/*: add test results for info and raw plaintext.
+
 2009-06-22   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init: reformat toc

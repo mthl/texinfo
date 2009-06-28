@@ -1,0 +1,40 @@
+Element
+*******
+
+first item
+second itemx
+
+Text.
+
+example
+In example
+
+end example.
+empty line
+
+empty line.
+quotation
+Quotation
+
+quotation after a blank line
+
+quotation after a blank line
+
+item before ignored lines
+itemx now
+
+Description
+
+item
+itemx after an empty line
+
+Description.
+
+
+Something.
+in item
+Text without blank line
+second item
+Text without blank line 2
+After table.
+

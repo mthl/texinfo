@@ -1,0 +1,57 @@
+before Top
+==========
+
+Test headings
+*************
+
+in top @ heading
+================
+
+Before heading
+Heading within text
+===================
+After heading
+
+1 A chapter
+***********
+
+(1)
+
+First insertcopying:
+
+in copying @ heading
+====================
+
+second in copying @ subheading
+------------------------------
+
+Second insertcopying:
+
+in copying @ heading
+====================
+
+second in copying @ subheading
+------------------------------
+
+2 index
+*******
+
+* Index:
+* heading in footnote: 1. A chapter.
+* index entry after heading in top: Test headings.
+
+
+in quotation @ heading
+======================
+
+
+Footnotes
+*********
+
+(1)
+
+heading in footnote @ heading
+=============================
+second heading in footnote @ heading
+====================================
+

@@ -1,0 +1,61 @@
+simple_table.texi(,2) 
+simple_table.texi(,3) @setfilename simple_table.info
+simple_table.texi(,4) 
+simple_table.texi(,5) @node Top
+simple_table.texi(,6) @top Element
+simple_table.texi(,7) 
+simple_table.texi(,8) @table @emph
+simple_table.texi(,9) @item first item
+simple_table.texi(,10) @itemx second itemx
+simple_table.texi(,11) 
+simple_table.texi(,12) Text.
+simple_table.texi(,13) 
+simple_table.texi(,14) @item example
+simple_table.texi(,15) @example
+simple_table.texi(,16) In example
+simple_table.texi(,17) 
+simple_table.texi(,18) end example.
+simple_table.texi(,19) @end example
+simple_table.texi(,20) @item empty line
+simple_table.texi(,21) 
+simple_table.texi(,22) empty line.
+simple_table.texi(,23) @item quotation
+simple_table.texi(,24) @quotation
+simple_table.texi(,25) Quotation
+simple_table.texi(,26) @end quotation
+simple_table.texi(,27) 
+simple_table.texi(,28) @item quotation after a blank line
+simple_table.texi(,29) 
+simple_table.texi(,30) @quotation
+simple_table.texi(,31) quotation after a blank line
+simple_table.texi(,32) @end quotation
+simple_table.texi(,33) @end table
+simple_table.texi(,34) 
+simple_table.texi(,35) @vtable @strong
+simple_table.texi(,36) @item item before ignored lines
+simple_table.texi(,37) @c comment
+simple_table.texi(,38) @vindex vindex
+simple_table.texi(,39) @itemx itemx now
+simple_table.texi(,40) 
+simple_table.texi(,41) Description
+simple_table.texi(,42) @end vtable
+simple_table.texi(,43) 
+simple_table.texi(,44) @vtable @r
+simple_table.texi(,45) @item item
+simple_table.texi(,46) 
+simple_table.texi(,47) @itemx itemx after an empty line
+simple_table.texi(,48) 
+simple_table.texi(,49) Description.
+simple_table.texi(,50) 
+simple_table.texi(,51) @end vtable
+simple_table.texi(,52) 
+simple_table.texi(,53) Something.
+simple_table.texi(,54) @table @emph
+simple_table.texi(,55) @item in item
+simple_table.texi(,56) Text without blank line
+simple_table.texi(,57) @item second item
+simple_table.texi(,58) Text without blank line 2
+simple_table.texi(,59) @end table
+simple_table.texi(,60) After table.
+simple_table.texi(,61) 
+simple_table.texi(,62) @bye

@@ -1,0 +1,87 @@
+images.texi(,2) 
+images.texi(,3) @setfilename images.info
+images.texi(,4) 
+images.texi(,19) 
+images.texi(,20) @copying
+images.texi(,21) In copying.
+images.texi(,22) @image{f--ile}.
+images.texi(,23) 
+images.texi(,24) Text in copying.
+images.texi(files_char,25) File with @@-commands and special characters:
+images.texi(files_char,25) 
+images.texi(files_char,25) @c cannot test a file with newline, since perl says
+images.texi(files_char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,25) @c with a noon reproducible path
+images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) 
+images.texi(files_char,25) And also in alt, and with dimensions:
+images.texi(files_char,25) 
+images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,26) @end copying
+images.texi(,27) 
+images.texi(,28) @node Top
+images.texi(,29) @top top
+images.texi(,30) 
+images.texi(,31) 
+images.texi(,32) Insertcopying
+images.texi(,33) @insertcopying
+images.texi(,34) 
+images.texi(,35) In normal context
+images.texi(,36) @image{f--ile}.
+images.texi(,37) 
+images.texi(,38) On the same line, @code{f---ile}, @code{gr--a} extension @image{f---ile,,,,gr--a}.
+images.texi(,39) 
+images.texi(,40) Image sparated from text:
+images.texi(,41) 
+images.texi(,42) @image{f--ile}
+images.texi(,43) 
+images.texi(,44) And the same, followed by a dot:
+images.texi(,45) 
+images.texi(,46) @image{f--ile}.
+images.texi(,47) 
+images.texi(,48) In example:
+images.texi(,49) 
+images.texi(,50) @example
+images.texi(,51) Text. @code{f---ile} with jpeg extension.
+images.texi(,52) @image{f---ile,,,,jpeg}.
+images.texi(,53) 
+images.texi(,54) @image{f--ile}.
+images.texi(,55) 
+images.texi(,56) 
+images.texi(files_char,57) File with @@-commands and special characters:
+images.texi(files_char,57) 
+images.texi(files_char,57) @c cannot test a file with newline, since perl says
+images.texi(files_char,57) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,57) @c with a noon reproducible path
+images.texi(files_char,57) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,57) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,57) 
+images.texi(files_char,57) And also in alt, and with dimensions:
+images.texi(files_char,57) 
+images.texi(files_char,57) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,57) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,58) @end example
+images.texi(,59) 
+images.texi(,60) @float
+images.texi(,61) In float.
+images.texi(,62) @image{f--ile}.
+images.texi(,63) 
+images.texi(,64) @image{f--ile}.
+images.texi(,65) @end float
+images.texi(,66) 
+images.texi(files_char,67) File with @@-commands and special characters:
+images.texi(files_char,67) 
+images.texi(files_char,67) @c cannot test a file with newline, since perl says
+images.texi(files_char,67) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,67) @c with a noon reproducible path
+images.texi(files_char,67) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,67) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,67) 
+images.texi(files_char,67) And also in alt, and with dimensions:
+images.texi(files_char,67) 
+images.texi(files_char,67) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,67) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,68) 
+images.texi(,69) @bye

@@ -1,0 +1,22 @@
+html-para.texi(,2) @setfilename html-para.info
+html-para.texi(,3) @settitle HTML paragraph beginning test
+html-para.texi(,4) 
+html-para.texi(,5) @c <p> is emitted at paragraph beginning, which makes the text
+html-para.texi(,6) @c between START and END not exactly what some cm_xxx functions
+html-para.texi(,7) @c expect, when they are called by pop_and_call_brace.
+html-para.texi(,8) 
+html-para.texi(,9) @set val @@value@{@}
+html-para.texi(,11) 
+html-para.texi(,12) @node Top
+html-para.texi(,13) @top Top of HTML paragraph test
+html-para.texi(,14) 
+html-para.texi(,15) @@value@{@} should work at the beginning of a new paragraph.
+html-para.texi(,16) 
+html-para.texi(,17) @dotless{i} dotless should not trigger error messages at the beginning
+html-para.texi(,18) of a new paragraph.
+html-para.texi(,19) 
+html-para.texi(,20) @sc{small-caps} should work at the beginning of a new paragraph.
+html-para.texi(,21) 
+html-para.texi(,22) \\@@definfoenclose// should work at the beginning of a new paragraph.
+html-para.texi(,23) 
+html-para.texi(,24) @bye

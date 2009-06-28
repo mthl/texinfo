@@ -1,0 +1,98 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nested_table.info
+
+@node Top
+@top Element
+
+
+Quotation
+@quotation
+@vtable @asis
+@item first item
+@itemx second itemx
+
+Text.
+
+@item second item
+
+Text 2
+
+@item before empty itemx
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+@end quotation
+
+Example
+@example
+@vtable @asis
+@item first item
+@itemx second itemx
+
+Text.
+
+@item second item
+
+Text 2
+
+@item before empty itemx
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+@end example
+
+Double quotation
+@quotation
+@quotation
+@vtable @asis
+@item first item
+@itemx second itemx
+
+Text.
+
+@item second item
+
+Text 2
+
+@item before empty itemx
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+@end quotation
+@end quotation
+
+@bye

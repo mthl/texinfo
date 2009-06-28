@@ -1,0 +1,28 @@
+This is macro_in_menu.info, produced by makeinfo version 4.13 from
+macro_in_menu.texi.
+
+
+File: macro_in_menu.info,  Node: Top,  Next: (gcc),  Up: (dir)
+
+* Menu:
+
+* (gcc):: 
+
+   Some text.
+
+* Menu:
+
+* (manual):: desc
+comment
+* (info):: before verbatim 
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+
+   After menu
+
+
+
+Tag Table:
+Node: Top88
+
+End Tag Table

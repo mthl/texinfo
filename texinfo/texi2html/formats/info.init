@@ -86,10 +86,6 @@ $no_paragraph_commands{'anchor'} = 1;
 %things_map = %default_things_map;
 %pre_map = %things_map;
 
-$misc_command{'exdent'}->{'keep'} = 1;
-$misc_command{'noindent'}->{'keep'} = 1;
-$misc_command{'indent'}->{'keep'} = 1;
-
 %line_command_map = ( 
    'dircategory' => ''
 );
@@ -254,7 +250,7 @@ $menu_link             = \&info_default_menu_link;
 $menu_command          = \&info_default_menu_command;
 $complex_format        = \&info_default_complex_format;
 $quotation             = \&info_default_quotation;
-$unknown               = \&info_default_misc_commands;
+$misc_command_line     = \&info_default_misc_commands;
 $external_ref          = \&info_default_external_ref;
 $internal_ref          = \&info_default_internal_ref;
 $image                 = \&info_default_image;
@@ -1209,18 +1205,22 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'noindent')
               {
+
                   $info_state->{'indent_para'} = 0;
               }
-              elsif ($content->{'command'} eq 'image' or $content->{'command'} eq 'sp')
+              elsif ($content->{'command'} eq 'sp')
               {
                   $text_added .= $content->{'text'};
-                  # this is not very important since @sp adds an end of line.
-                  # images are not taken into account in the length count
-                  # because their text isn't displayed. If they have a .txt
-                  # associated, and there is an end of line in it 
-                  # line_char_counter will be set below (counting undisplayed
-                  # characters, but this is not really important).
-                  $line_char_counter += length($content->{'text'}) if ($content->{'command'} ne 'image');
+                  goto new_text;
+              }
+              elsif ($content->{'command'} eq 'image')
+              {
+                  # @image result count isn't counted in line_char_counter
+                  # since it is not displayed in info
+                  my $indent_added = 0;
+                  $indent_added = ($indent_length - $line_char_counter) if ($indent_length - $line_char_counter > 0);
+                  $text_added .= ' ' x $indent_added . $content->{'text'};
+                  $line_char_counter += $indent_added;
                   goto new_text;
               }
               elsif ($content->{'command'} eq 'ref')
@@ -1332,6 +1332,13 @@ sub info_default_process_content($$)
                       my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($verb_text);
                       $content->{'text'} .= "\n" unless ($blank_line or ($last_line =~ /^\s*$/));
                   }
+              }
+              # other raw commands
+              elsif ($content->{'raw_command'})
+              {
+                  # not considered as in a paragraph even if in a paragraph 
+                  $text_added .= $content->{'text'};
+                  goto new_text;
               }
               elsif ($content->{'command'} eq 'multitable')
               {
@@ -1794,7 +1801,8 @@ sub info_default_begin_format_texi($$$)
    my ($parent_format, $in_format);
    ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
    info_default_increment_paragraph ($in_format, $parent_format, $info_state, $command);
-
+   # remove space in front of center, unless it removes the end of line!
+   $line =~ s/^\s*// if ($command eq 'center' and $line =~ /\S/);
    # don't open a format if it is a @def*x command and we are already in the 
    # corresponding @def* command
    info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/ and defined($info_state->{'current'}->{'command'}) and "$info_state->{'current'}->{'command'}x" eq $command);
@@ -2551,15 +2559,12 @@ sub info_default_misc_commands($$$$$)
 {
     my $command = shift;
     my $line = shift;
-    my $pass = shift;
+    my $args = shift;
     my $stack = shift;
     my $state = shift;
 
-    return ($line, 0, undef, undef) unless ($pass == 2);
-    return ($line, 0, undef, undef) unless ($command eq 'exdent' or $command eq 'noindent' or $command eq 'indent');
-    my ($result_line, $text, $args) = &$preserve_misc_command ($line, $command);
-    info_default_store_text($state,undef,$command);
-    return ($result_line, 1, '', undef);
+    info_default_store_text($state,undef,$command) if ($command eq 'exdent' or $command eq 'noindent' or $command eq 'indent');
+    return ($command, $line, undef);
 }
 
 sub info_default_external_ref($$$$$$$$)
@@ -3042,8 +3047,12 @@ sub info_default_tab_item_texi($$$$$$)
    my $line = shift;
    my $line_nr = shift;
 
+   $line =~ s/^\s*//;
    my $format;
    $format = $commands_stack->[-1] if (defined($commands_stack) and @$commands_stack and $commands_stack->[-1]);
+   # in case of an @item or @tab outside of any format $format will be
+   # undefined, or not multitable for a @tab.
+   return $line if (!defined($format) or $command eq 'tab' and $format ne 'multitable');
    #print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $line_nr\n";
    if ($format eq 'multitable')
    {
@@ -3063,7 +3072,6 @@ sub info_default_tab_item_texi($$$$$$)
    }
    # this should have already been done for @item when the line
    # is modified by the @-command and so on.
-   $line =~ s/^\s*//;
    return $line;
 }
 
@@ -3298,7 +3306,7 @@ sub info_default_raw($$)
     # no warning for unknown raw formats
     if ($style eq 'verbatim' or $style eq 'verbatiminclude' or $expanded)
     {
-        return info_default_store_text(undef,$text, $style);
+        return info_default_store_text(undef, $text, $style, {'raw_command' => 1});
     }
     return '';
 }

@@ -32,6 +32,8 @@
 #    and $Texi2HTML::TeX4HT::tex4ht_options_tex
 
 
+if (defined($OUTPUT_FORMAT) and $OUTPUT_FORMAT eq 'html')
+{
 push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
 push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_process;
 push @command_handler_finish, \&Texi2HTML::TeX4HT::tex4ht_finish;
@@ -44,6 +46,7 @@ $command_handler{'tex'} =
      { 'init' => \&Texi2HTML::TeX4HT::tex4ht_to_latex,
        'expand' => \&Texi2HTML::TeX4HT::tex4ht_do_tex
      };
+}
 
 {
 use Cwd;

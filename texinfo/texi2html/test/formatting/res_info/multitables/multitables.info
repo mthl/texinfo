@@ -1,0 +1,29 @@
+This is multitables.info, produced by makeinfo version 4.13 from
+multitables.texi.
+
+
+File: multitables.info,  Node: Top,  Up: (dir)
+
+Test multitables
+****************
+
+truc  bidule
+begin begin
+item  tab
+      
+new   new
+paragraphparagraph
+in    in
+item. tab.
+
+     truc  bidule example
+     begin item examplebegin tab example
+           
+     new paragraph in item. examplenew paragraph in tab. example
+
+
+
+Tag Table:
+Node: Top84
+
+End Tag Table

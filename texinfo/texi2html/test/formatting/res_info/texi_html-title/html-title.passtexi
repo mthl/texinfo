@@ -1,0 +1,11 @@
+html-title.texi(,2) @setfilename html-title.info
+html-title.texi(,3) @settitle @@title @sc{html} @code{test}
+html-title.texi(,4) 
+html-title.texi(,5) @node Top
+html-title.texi(,6) @top Top of @@title @sc{html} @code{test}
+html-title.texi(,7) 
+html-title.texi(,8) Top.
+html-title.texi(,9) 
+html-title.texi(,10) Second paragraph.
+html-title.texi(,11) 
+html-title.texi(,12) @bye

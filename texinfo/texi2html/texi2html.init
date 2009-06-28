@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.203 2009-06-22 00:13:39 pertusus Exp $
+# $Id: texi2html.init,v 1.204 2009-06-28 23:45:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -555,6 +555,8 @@ $internal_ref      = \&t2h_default_internal_ref;
 $tab_item_texi     = \&t2h_default_tab_item_texi;
 $complex_format    = \&t2h_default_complex_format;
 $toc_body          = \&T2H_DEFAULT_toc_body;
+$misc_command_line = \&t2h_default_misc_command_line;
+$misc_command_line_texi = \&t2h_default_misc_command_line;
 # reset in html
 $inline_contents    = \&T2H_DEFAULT_inline_contents;
 # reset in docbook and info.
@@ -1659,9 +1661,11 @@ sub T2H_DEFAULT_shortcontents($$)
    return unless (get_conf('shortcontents'));
    foreach my $element (@$elements)
    {
-      next if ($element->{'toc_level'} > 1);
+      my $level = $element->{'toc_level'};
+      next if ($level > 1);
       $level = 1 if ($level < 1);
       my $text =  $element->{'name'};
+      $text = $element->{'text'} if ($NUMBER_SECTIONS);
       push @result, $text ."\n";
    }
    if (@result)
@@ -3750,8 +3754,9 @@ sub t2h_default_math($$)
     my $args = shift;
     my $text = shift @$args;
 #print STDERR "t2h_default_math $text\n";
-    $text =~ s/[{}]//g; 
-#    $text =~ s/\@\\/\\/g; 
+    # Karl was convinced that it was better to keep the braces to keep
+    # the grouping information.
+#    $text =~ s/[{}]//g; 
     return "$text";
 }
 
@@ -3775,6 +3780,11 @@ sub t2h_default_email($$)
     $mail = main::normalise_space($mail);
     #$mail =~ s/\s*$//;
     #$mail =~ s/^\s*//;
+    if (defined($text))
+    {
+       $text =~ s/^\s*//;
+       $text =~ s/^\s*$//;
+    }
     my $mailto = '';
     $mailto = "mailto:$mail" if ($mail ne '');
     return t2h_default_url_and_text($mailto, $text);
@@ -4548,6 +4558,8 @@ sub t2h_default_begin_format_texi($$$)
     my $line = shift;
     my $state = shift;
 
+   # remove space in front of center, unless it removes the end of line!
+    $line =~ s/^\s*// if ($command eq 'center' and $line =~ /\S/);
     return $line;
 }
 
@@ -4566,6 +4578,7 @@ sub t2h_default_complex_format($$)
     my $name = shift;
     my $text = shift;
     return '' if ($text eq '');
+    return '' if ($name eq 'direntry');
     my $beginning = eval "$complex_format_map->{$name}->{'begin'}";
     if ($@ ne '')
     {
@@ -5727,7 +5740,9 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
     {
        $text = t2h_end_style($style, $text, \%style_map_pre);
     }
-    return $text;
+    # add a new line at the end in case there is none
+    chomp($text);
+    return $text . "\n";
 }
 
 sub t2h_default_element_heading($$$$$$$$$$$$)
@@ -6232,6 +6247,12 @@ sub t2h_default_quotation($$$$)
     my $argument_text = shift;
     my $argument_text_texi = shift;
     my $class_text = '';
+    # this allows to add an end of line if there was none, which can happen 
+    # if there is an argument to @quotation, but an empty quotation, like
+    # @quotation something
+    # @end quotation
+    chomp($text);
+    $text .= "\n";
     return $text;
 }
 
@@ -6456,8 +6477,8 @@ sub xml_default_line_command($$$$)
     my $arg_texi = shift;
     my $state = shift;
 
-    return '' if ($arg_text eq '');
     my $style = $line_command_map{$command};
+    return '' if ($arg_text eq '' and !defined($style) or $style eq '');
     if ($style)
     {
         my $attribute_text = '';
@@ -6505,4 +6526,17 @@ sub t2h_default_element_file_name($$$)
 
     return undef;
 }
+
+sub t2h_default_misc_command_line($$$$$)
+{
+   my $macro = shift;
+   my $line = shift;
+   my $args = shift;
+   my $stack = shift;
+   my $state = shift;
+   
+   my $result;
+   return ($macro, $line, $result);
+}
+
 1;

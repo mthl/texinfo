@@ -1,0 +1,52 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename table_in_table_item.texi
+
+@node Top
+@top Test table nested in table item
+
+@table @asis
+@item item @table @asis
+   @item in nested table item
+   in nested table line
+   @end table
+in table line
+@end table
+
+And in code
+
+@code{
+@table @asis
+@item item @table @asis
+   @item in table in table item
+   in nested table line
+   @end table
+@end table
+}
+
+and in preformatted
+
+@example
+@table @asis
+@item item in preformatted @table @asis
+   @item in table in table item in preformatted
+   in nested table line in preformatted
+   @end table
+@end table
+@end example
+
+
+and in preformatted in code
+
+@code{
+@example
+@table @asis
+@item item in preformatted @table @asis
+   @item in table in table item in preformatted
+   in nested table line in preformatted
+   @end table
+@end table
+@end example
+}
+
+@bye

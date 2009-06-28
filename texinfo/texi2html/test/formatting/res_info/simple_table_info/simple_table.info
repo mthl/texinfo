@@ -1,0 +1,52 @@
+This is simple_table.info, produced by makeinfo version 4.13 from
+simple_table.texi.
+
+
+File: simple_table.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+_first item_
+_second itemx_
+     Text.
+
+_example_
+
+          In example
+
+          end example.
+
+_empty line_
+     empty line.
+
+_quotation_
+
+          Quotation
+
+_quotation after a blank line_
+
+          quotation after a blank line
+
+*item before ignored lines*
+*itemx now*
+     Description
+
+item
+itemx after an empty line
+     Description.
+
+   Something.
+_in item_
+     Text without blank line
+
+_second item_
+     Text without blank line 2
+   After table.
+
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table

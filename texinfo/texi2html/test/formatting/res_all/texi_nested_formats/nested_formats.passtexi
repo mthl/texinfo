@@ -1,0 +1,23 @@
+nested_formats.texi(,2) 
+nested_formats.texi(,3) @setfilename nested_formats.info
+nested_formats.texi(,4) 
+nested_formats.texi(,5) @node Top
+nested_formats.texi(,6) @top top
+nested_formats.texi(,7) 
+nested_formats.texi(,8) @format
+nested_formats.texi(,9) @example
+nested_formats.texi(,10) 
+nested_formats.texi(,11) in -- format/example
+nested_formats.texi(,12) 
+nested_formats.texi(,13) @end example
+nested_formats.texi(,14) @end format
+nested_formats.texi(,15) 
+nested_formats.texi(,16) @example
+nested_formats.texi(,17) @format
+nested_formats.texi(,18) 
+nested_formats.texi(,19) in -- example/format
+nested_formats.texi(,20) 
+nested_formats.texi(,21) @end format
+nested_formats.texi(,22) @end example
+nested_formats.texi(,23) 
+nested_formats.texi(,24) @bye

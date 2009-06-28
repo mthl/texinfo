@@ -1,0 +1,45 @@
+This is kbdinputstyle.info, produced by makeinfo version 4.13 from
+kbdinputstyle.texi.
+
+
+File: kbdinputstyle.info,  Node: Top,  Up: (dir)
+
+Test kbdinputstyle
+******************
+
+@kbdinputstyle code
+
+   `in code out of example `in nested code''.  `kbd out of example'.
+`kbd `in code''.
+
+   in example
+     `in code in example `in nested code''.
+     `kbd in example'.
+     `kbd `in code' in example'.
+
+   @kbdinputstyle example
+
+   `in code out of example `in nested code''.  `kbd out of example'.
+`kbd `in code''.
+
+   in example
+     `in code in example `in nested code''.
+     `kbd in example'.
+     `kbd `in code' in example'.
+
+   @kbdinputstyle distinct
+
+   `in code out of example `in nested code''.  `kbd out of example'.
+`kbd `in code''.
+
+   in example
+     `in code in example `in nested code''.
+     `kbd in example'.
+     `kbd `in code' in example'.
+
+
+
+Tag Table:
+Node: Top88
+
+End Tag Table

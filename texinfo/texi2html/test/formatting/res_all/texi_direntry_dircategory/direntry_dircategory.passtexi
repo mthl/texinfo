@@ -1,0 +1,36 @@
+direntry_dircategory.texi(,2) 
+direntry_dircategory.texi(,3) @setfilename direntry_dircategory.info
+direntry_dircategory.texi(,4) 
+direntry_dircategory.texi(,5) @dircategory ``category---@var{th  ere}?''
+direntry_dircategory.texi(,6) @direntry
+direntry_dircategory.texi(,7) * foo: (foo).   ``hello---@var{there}?''
+direntry_dircategory.texi(,8) @end direntry
+direntry_dircategory.texi(,9) 
+direntry_dircategory.texi(,10) @dircategory cat2
+direntry_dircategory.texi(,11) @direntry
+direntry_dircategory.texi(,12) * aaa ::               aaaa
+direntry_dircategory.texi(,13)                    bbbbb
+direntry_dircategory.texi(,14) 
+direntry_dircategory.texi(,15) menutitle
+direntry_dircategory.texi(,16) @end direntry
+direntry_dircategory.texi(,17) 
+direntry_dircategory.texi(,18) 
+direntry_dircategory.texi(,19) @node Top
+direntry_dircategory.texi(,20) @top Test dircategory and direntry
+direntry_dircategory.texi(,21) 
+direntry_dircategory.texi(,22) Text
+direntry_dircategory.texi(,23) @dircategory in text
+direntry_dircategory.texi(,24) @direntry
+direntry_dircategory.texi(,25) * in text: (in_text). in text
+direntry_dircategory.texi(,26) @end direntry
+direntry_dircategory.texi(,27) 
+direntry_dircategory.texi(,28) @menu
+direntry_dircategory.texi(,29) * chapter::
+direntry_dircategory.texi(,30) @end menu
+direntry_dircategory.texi(,31) 
+direntry_dircategory.texi(,32) @node chapter
+direntry_dircategory.texi(,33) @chapter chapter
+direntry_dircategory.texi(,34) 
+direntry_dircategory.texi(,35) In chapter
+direntry_dircategory.texi(,36) 
+direntry_dircategory.texi(,37) @bye

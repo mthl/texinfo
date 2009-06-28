@@ -1,0 +1,58 @@
+Symbol after block
+******************
+
+Html:
+
+. On the line.
+
+@ On the line.
+
+Verbatim:
+
+In verbatim
+;
+
+In verbatim
+@
+
+Table:
+
+* a
+l-ine
++
+* a
+l-ine
+@
+Itemize:
+
+ e-mph item
+"
+ e-mph item
+@
+Multitable:
+
+ mu-ltitable headitem another tab
+ mu-ltitable item multitable tab
+^
+ mu-ltitable headitem another tab
+ mu-ltitable item multitable tab
+{
+Flushleft:
+
+flushleft
+!
+flushleft
+@
+Copying:
+
+*
+
+@
+
+Copying
+Copying
+
+An html, all on one line:
+
+Hi, my name is .
+

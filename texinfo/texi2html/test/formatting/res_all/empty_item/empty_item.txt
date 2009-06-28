@@ -1,0 +1,21 @@
+Element
+*******
+
+
+Table asis
+
+first item
+
+after an empty itemx, before an empty item
+
+in item before end table
+
+
+VTable emph
+
+first item
+
+after an empty itemx, before an empty item
+
+in item before end table
+

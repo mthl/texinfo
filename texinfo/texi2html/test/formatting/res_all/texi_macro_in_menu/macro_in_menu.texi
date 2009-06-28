@@ -1,0 +1,24 @@
+\input texinfo @c -*-texinfo-*-
+
+
+@node Top
+
+@menu
+* (gcc):: @html
+bidule
+@end html
+@end menu
+
+Some text.
+
+@menu
+* (manual):: desc
+comment
+* (info):: before verbatim @verbatim
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+@end verbatim
+@end menu
+After menu
+
+@bye

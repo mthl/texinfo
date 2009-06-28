@@ -1,0 +1,74 @@
+This is quotation.info, produced by makeinfo version 4.13 from
+quotation.texi.
+
+
+File: quotation.info,  Node: Top,  Up: (dir)
+
+Quotations
+**********
+
+     A quot--ation
+
+     Note: A Note
+
+     note: A note
+
+     Caution: Caution
+
+     Important: Important
+
+     Tip: a Tip
+
+     Warning: a Warning.
+
+     something e' TeX: The something e' TeX is here.
+
+     @ at the end of line  A @ at the end of the @quotation line.
+
+     something, other thing: something, other thing
+
+     Note, the note: Note, the note
+
+     Empty:
+
+     :
+
+
+     :
+
+          A quot---ation
+
+          Note: A Note
+
+          note: A note
+
+          Caution: Caution
+
+          Important: Important
+
+          Tip: a Tip
+
+          Warning: a Warning.
+
+          something e' TeX: The something e' TeX is here.
+
+          @ at the end of line  A @ at the end of the @quotation line.
+
+          something, other thing: something, other thing
+
+          Note, the note: Note, the note
+
+
+          Empty: 
+
+          : 
+
+
+          : 
+
+
+
+Tag Table:
+Node: Top80
+
+End Tag Table

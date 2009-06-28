@@ -1,0 +1,67 @@
+This is block_EOL.info, produced by makeinfo version 4.13 from
+block_EOL.texi.
+
+
+File: block_EOL.info,  Node: Top,  Up: (dir)
+
+Test for end of lines and block commands
+****************************************
+
+html
+====
+
+Block commands on a line end commands on a line.
+
+   Block commands on a line. A dot in the end of the block end commands
+on a line, after the block with a dot.
+
+   Before the opening command end commands on a line.
+
+   Before the opening command  after the closing command.
+
+   Before the opening command . A symbol on a line.
+
+   Before the opening command . A symbol after the closing command.
+
+tex
+===
+
+Block commands on a line end commands on a line.
+
+   Before the opening command end commands on a line.
+
+   Before the opening command  after the closing command.
+
+   Before the opening command . A symbol on a line.
+
+   Before the opening command . A symbol after the closing command.
+
+verbatim
+========
+
+Block commands on a line
+in block
+   end commands on a line.
+
+   Before the opening command
+in block
+   end commands on a line.
+
+   Before the opening command
+in block
+ after the closing command.
+
+   Before the opening command
+in block
+   . A symbol on a line.
+
+   Before the opening command
+in block
+. A symbol after the closing command.
+
+
+
+Tag Table:
+Node: Top80
+
+End Tag Table

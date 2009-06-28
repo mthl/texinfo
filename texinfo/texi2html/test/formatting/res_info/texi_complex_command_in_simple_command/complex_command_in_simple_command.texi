@@ -1,0 +1,361 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename complex_command_in_simple_command.info
+
+@node Top
+@top Complex commands in simple commands
+
+The complex commands.
+
+Table 
+
+@table @asis
+@item item 
+line
+@end table
+After table.
+
+
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+
+Enumerate.
+
+@enumerate 1
+@item item
+@end enumerate
+
+After enumerate.
+
+Example
+
+@example
+Example
+@end example
+
+After example
+
+defun
+
+@defun name args...
+text
+@end defun
+
+After defun.
+
+Flushright
+
+@flushright
+in flushright
+@end flushright
+
+Centered line
+
+@center in centered line
+
+Before quotation
+
+@quotation
+a q--uotation
+@end quotation
+
+After quotation
+
+Before cartouche
+
+@cartouche
+Cartouche
+@end cartouche
+
+After cartouche
+
+@subheading In samp
+
+@samp{
+in code 
+
+Table 
+
+@table @asis
+@item item 
+line
+@end table
+After table.
+
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+
+After multitable.
+
+Enumerate.
+
+@enumerate 1
+@item item
+@end enumerate
+
+After enumerate.
+
+Example
+
+@example
+Example
+@end example
+
+After example
+
+defun
+
+@defun name args...
+text
+@end defun
+
+After defun.
+
+Flushright
+
+@flushright
+in flushright
+@end flushright
+
+Centered line
+
+@center in centered line
+
+Before quotation
+
+@quotation
+a q--uotation
+@end quotation
+
+After quotation
+
+Before cartouche
+
+@cartouche
+Cartouche
+@end cartouche
+
+After cartouche
+
+}
+
+@subheading in b
+
+@b{
+in b
+
+Table 
+
+@table @asis
+@item item 
+line
+@end table
+After table.
+
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+
+
+Enumerate.
+
+@enumerate 1
+@item item
+@end enumerate
+
+After enumerate.
+Example
+
+@example
+Example
+@end example
+
+After example
+
+defun
+
+@defun name args...
+text
+@end defun
+
+After defun.
+
+Flushright
+
+@flushright
+in flushright
+@end flushright
+
+Centered line
+
+@center in centered line
+
+Before quotation
+
+@quotation
+a q--uotation
+@end quotation
+
+After quotation
+
+Before cartouche
+
+@cartouche
+Cartouche
+@end cartouche
+
+After cartouche
+}
+
+@subheading in code
+@code{
+In code.
+
+Table 
+
+@table @asis
+@item item 
+line
+@end table
+After table.
+
+
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+
+Enumerate.
+
+@enumerate 1
+@item item
+@end enumerate
+
+After enumerate.
+
+Example
+
+@example
+Example
+@end example
+
+After example
+
+defun
+
+@defun name args...
+text
+@end defun
+
+After defun.
+
+Flushright
+
+@flushright
+in flushright
+@end flushright
+
+Centered line
+
+@center in centered line
+
+Before quotation
+
+@quotation
+a q--uotation
+@end quotation
+
+After quotation
+
+Before cartouche
+
+@cartouche
+Cartouche
+@end cartouche
+
+After cartouche
+}
+
+
+@subheading in b and samp
+@samp{
+In samp.
+@b{
+In b
+
+Table 
+
+@table @asis
+@item item 
+line
+@end table
+After table.
+
+
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+
+Enumerate.
+
+@enumerate 1
+@item item
+@end enumerate
+
+After enumerate.
+
+Example
+
+@example
+Example
+@end example
+
+After example
+
+defun
+
+@defun name args...
+text
+@end defun
+
+After defun.
+
+Flushright
+
+@flushright
+in flushright
+@end flushright
+
+Centered line
+
+@center in centered line
+
+Before quotation
+
+@quotation
+a q--uotation
+@end quotation
+
+After quotation
+
+Before cartouche
+
+@cartouche
+Cartouche
+@end cartouche
+
+After cartouche
+
+close b}
+and close samp
+}
+
+After the tests.
+
+@bye

@@ -1,0 +1,22 @@
+This is indicateurl_paragraph.info, produced by makeinfo version 4.13
+from indicateurl_paragraph.texi.
+
+
+File: indicateurl_paragraph.info,  Node: Top,  Up: (dir)
+
+Test a  indicateurl with end of line, and including a blank line. In
+texi2html indicateurl is a simple_style, meaning that it should not be
+cut by paragraph.
+
+   <http://begin continue on other line>
+
+   <http://begin2
+
+   cut by blank line
+
+
+
+Tag Table:
+Node: Top104
+
+End Tag Table

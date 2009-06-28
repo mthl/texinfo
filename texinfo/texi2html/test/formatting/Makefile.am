@@ -12,7 +12,8 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  kbdinputstyle.texi simple_images.texi simple_table.texi empty_item.texi \
  direntry_dircategory.texi nested_table.texi \
  f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
- simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res
+ simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res \
+ res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
@@ -20,4 +21,4 @@ distclean-local:
 	rm -rf out diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res* -name CVS`

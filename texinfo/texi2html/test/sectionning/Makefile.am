@@ -12,7 +12,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  top.texi more_nodes_than_sections.texi no_node_no_top.texi \
  placed_things_before_element.texi menutextorder.texi semi_auto.texi \
  no_element.texi anchor_in_footnote.texi test_two_include.texi \
- test_directions.init tests.txt res
+ test_directions.init tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
@@ -20,4 +20,4 @@ distclean-local:
 	rm -rf out diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res* -name CVS`

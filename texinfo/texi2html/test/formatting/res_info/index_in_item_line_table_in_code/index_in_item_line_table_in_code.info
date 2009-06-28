@@ -1,0 +1,25 @@
+This is index_in_item_line_table_in_code.info, produced by makeinfo
+version 4.13 from index_in_item_line_table_in_code.texi.
+
+
+File: index_in_item_line_table_in_code.info,  Node: Top,  Up: (dir)
+
+test index entries in @item @table in @code
+*******************************************
+
+`
+
+index
+     `opt' More text
+
+2 index
+     `nopt' Even more
+
+   '
+
+
+
+Tag Table:
+Node: Top126
+
+End Tag Table

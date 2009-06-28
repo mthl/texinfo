@@ -4,7 +4,7 @@ if [ z"$srcdir" = 'z' ]; then
   srcdir=.
 fi
 
-"$srcdir"/tests.sh \
+"$srcdir"/tests.sh all \
  macros sectionning coverage formatting encodings indices layout \
  nested_formats contents \
  htmlxref htmlxref-only_mono htmlxref-only_split invalid

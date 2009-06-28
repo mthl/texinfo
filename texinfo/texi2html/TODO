@@ -58,7 +58,8 @@ h1 titlefont (@titlefont),
   new argument of def_item
   new arguments of list_item
   new argument of inline_content
-  shortcontents and contents
+  $shortcontents and $contents
+  $misc_command_line
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -392,6 +393,9 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   should not be transliteration, but instead perl sorting and i18n stuff
   should be used. Cf testcases in encoding/encoding_index*.
 
+* formatting/indicateurl_paragraph.texi there should be a warning that
+  a simple_style was cut by a paragraph.
+
 * makeinfo: index entry out of document leads to a message 
   (outside of any node).
   instead of node name and line numbers in printindex. 
@@ -425,6 +429,9 @@ overridden by a command line option.  The possible values are:
 * in novalidate.texi, fifth node argument should trigger an error
   @node other node in menu before top, node not existing,,,first
 
+* only texi2html warns about:
+** Empty index entry for @vtable (l. 26)
+
 * makeinfo creates a Top node when there is a menu seen before any @node
   example in sectionning/one_section
 ../../one_section.texi:11: warning: @menu seen before first @node, creating `Top' node.
@@ -446,11 +453,38 @@ overridden by a command line option.  The possible values are:
   *** Unknown node in menu entry `node inexistant in menu' (l. 19)
   Menu reference to nonexistent node `node inexistant in menu' (perhaps incorrect sectioning?).
 
+* warning for @anchors and @float appearing before the first node, since
+  they are not recorded as Ref:. (for example formatting/float_copying).
+
+* in formatting/table_in_table_item.texi, some lines maybe have too much 
+  leading spaces (precisely in @code in @table in @table @item, line
+in nested table line
+
+* in formatting/inter_item_commands (in that case, near 
+  'Texte before first item'), a construct like
+
+@table 
+title
+@item item
+@end table
+
+  leads to
+
+    title
+item
+
+  without an empty line added after title. Maybe there should be one.
+  More generally a test of those 'titles' in all the formats with @item
+  could be nice.
+
 * generic tests missing, in sectionning:
   novalidate menu-whitespace node-whitespace two_footnotes_in_nodes
   
   macros:
   value_in_pass0_macros macros_in_pass0_macros node-expand
+
+  formatting:
+  simple_images html-extrali
 
 
 
@@ -498,3 +532,8 @@ USE_SECTIONS                                h 1       i 0
 USE_SETFILENAME                  d 1                  i 1      x 1       m 1
 USE_SETFILENAME_EXTENSION        d 0                  i 1
 USE_UP_FOR_ADJACENT_NODES        d 0        h 1       i 0      x 0
+
+
+
+
+formatting:

@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename empty_item.info
+
+@node Top
+@top Element
+
+@table @asis
+
+Table asis
+
+@item first item
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end table
+
+@c since spaces are removed after @item(x) the end of lines are removed
+@c after empty @item(x) leading to a weird output.
+@vtable @emph
+
+VTable emph
+
+@item first item
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+
+@bye

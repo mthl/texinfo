@@ -1,0 +1,54 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename kbdinputstyle.info
+
+@node Top
+@top Test kbdinputstyle
+
+
+@@kbdinputstyle code
+
+@kbdinputstyle code
+
+@code{in code out of example @code{in nested code}}.
+@kbd{kbd out of example}.
+@code{kbd @kbd{in code}}.
+
+in example
+@example
+@code{in code in example @code{in nested code}}.
+@kbd{kbd in example}.
+@code{kbd @kbd{in code} in example}.
+@end example
+
+@@kbdinputstyle example
+
+@kbdinputstyle example
+
+@code{in code out of example @code{in nested code}}.
+@kbd{kbd out of example}.
+@code{kbd @kbd{in code}}.
+
+in example
+@example
+@code{in code in example @code{in nested code}}.
+@kbd{kbd in example}.
+@code{kbd @kbd{in code} in example}.
+@end example
+
+@@kbdinputstyle distinct
+
+@kbdinputstyle distinct
+
+@code{in code out of example @code{in nested code}}.
+@kbd{kbd out of example}.
+@code{kbd @kbd{in code}}.
+
+in example
+@example
+@code{in code in example @code{in nested code}}.
+@kbd{kbd in example}.
+@code{kbd @kbd{in code} in example}.
+@end example
+
+@bye

@@ -1,0 +1,42 @@
+Annexe A Copying and floats
+***************************
+
+In the appendix, we print the references and the copying once more
+and the list of coyright notices (listoffloats).
+
+See the caption public domain anchor.
+
+See the float Copyright notice 1.
+
+
+
+
+Public domain is not really a licence, as it means than 
+the author abandon his copyright.
+
+
+
+Copyright notice 1: The Public Domain notice(1)
+
+
+
+Public domain is not really a licence, as it means than 
+the author abandon his copyright.
+
+
+
+Copyright notice 1: The Public Domain notice(1)
+
+
+listoffloats
+------------
+* List of Copyright notice:
+* Copyright notice 1: The Public Domain notice(1)
+
+
+printindex
+----------
+* Index:
+* listofloats: A. Copying and floats.
+* Top: Top.
+

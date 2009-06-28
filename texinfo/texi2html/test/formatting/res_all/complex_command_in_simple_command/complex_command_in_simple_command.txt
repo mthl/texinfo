@@ -1,0 +1,285 @@
+Complex commands in simple commands
+***********************************
+
+The complex commands.
+
+Table 
+
+item
+line
+After table.
+
+
+Multitable
+ truc machin
+
+Enumerate.
+
+1. item
+
+After enumerate.
+
+Example
+
+Example
+
+After example
+
+defun
+
+ -- Function: name args...
+text
+
+After defun.
+
+Flushright
+
+in flushright
+
+Centered line
+
+in centered line
+
+Before quotation
+
+a q-uotation
+
+After quotation
+
+Before cartouche
+
+Cartouche
+
+After cartouche
+
+In samp
+-------
+
+`
+in code 
+
+Table 
+
+item
+line
+After table.
+
+Multitable
+ truc machin
+
+After multitable.
+
+Enumerate.
+
+1. item
+
+After enumerate.
+
+Example
+
+Example
+
+After example
+
+defun
+
+ -- Function: name args...
+text
+
+After defun.
+
+Flushright
+
+in flushright
+
+Centered line
+
+in centered line
+
+Before quotation
+
+a q--uotation
+
+After quotation
+
+Before cartouche
+
+Cartouche
+
+After cartouche
+
+'
+
+in b
+----
+
+
+in b
+
+Table 
+
+item
+line
+After table.
+
+Multitable
+ truc machin
+
+
+Enumerate.
+
+1. item
+
+After enumerate.
+Example
+
+Example
+
+After example
+
+defun
+
+ -- Function: name args...
+text
+
+After defun.
+
+Flushright
+
+in flushright
+
+Centered line
+
+in centered line
+
+Before quotation
+
+a q-uotation
+
+After quotation
+
+Before cartouche
+
+Cartouche
+
+After cartouche
+
+
+in code
+-------
+
+In code.
+
+Table 
+
+item
+line
+After table.
+
+
+Multitable
+ truc machin
+
+Enumerate.
+
+1. item
+
+After enumerate.
+
+Example
+
+Example
+
+After example
+
+defun
+
+ -- Function: name args...
+text
+
+After defun.
+
+Flushright
+
+in flushright
+
+Centered line
+
+in centered line
+
+Before quotation
+
+a q--uotation
+
+After quotation
+
+Before cartouche
+
+Cartouche
+
+After cartouche
+
+
+
+in b and samp
+-------------
+`
+In samp.
+
+In b
+
+Table 
+
+item
+line
+After table.
+
+
+Multitable
+ truc machin
+
+Enumerate.
+
+1. item
+
+After enumerate.
+
+Example
+
+Example
+
+After example
+
+defun
+
+ -- Function: name args...
+text
+
+After defun.
+
+Flushright
+
+in flushright
+
+Centered line
+
+in centered line
+
+Before quotation
+
+a q--uotation
+
+After quotation
+
+Before cartouche
+
+Cartouche
+
+After cartouche
+
+close b
+and close samp
+'
+
+After the tests.
+

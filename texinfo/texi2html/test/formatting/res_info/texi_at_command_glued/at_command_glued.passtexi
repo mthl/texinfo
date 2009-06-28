@@ -1,0 +1,40 @@
+at_command_glued.texi(,2) 
+at_command_glued.texi(,3) @setfilename at_command_glued.info
+at_command_glued.texi(,4) 
+at_command_glued.texi(,5) @node Top
+at_command_glued.texi(,6) @top @@-commmands with some text preceding and following them
+at_command_glued.texi(,7) 
+at_command_glued.texi(,8) at@@.
+at_command_glued.texi(,9) TeX@TeX{}TeX.
+at_command_glued.texi(,10) code@code{in code}code.
+at_command_glued.texi(,11) acronym@acronym{ABC, aaa bb cc}acronym.
+at_command_glued.texi(,12) acronym2@acronym{ABC}acronym.
+at_command_glued.texi(,13) email@email{somebody, mali}email.
+at_command_glued.texi(,14) ref@ref{Top}ref.
+at_command_glued.texi(,15) Foornote@footnote{in footnote}after footnote.
+at_command_glued.texi(,16) accent@^{@dotless{i}}accent.
+at_command_glued.texi(,17) and star@*star.
+at_command_glued.texi(,18) noindent@noindent after noindent
+at_command_glued.texi(,19) sp@sp 4
+at_command_glued.texi(,20) anchor@anchor{anchor}anchor
+at_command_glued.texi(,21) index@cindex index
+at_command_glued.texi(,22) 
+at_command_glued.texi(,23) in example
+at_command_glued.texi(,24) @example
+at_command_glued.texi(,25) at@@.
+at_command_glued.texi(,26) TeX@TeX{}TeX.
+at_command_glued.texi(,27) code@code{in code}code.
+at_command_glued.texi(,28) acronym@acronym{ABC, aaa bb cc}acronym.
+at_command_glued.texi(,29) acronym2@acronym{ABC}acronym.
+at_command_glued.texi(,30) email@email{somebody, mali}email.
+at_command_glued.texi(,31) ref@ref{Top}ref.
+at_command_glued.texi(,32) Foornote@footnote{in footnote}after footnote.
+at_command_glued.texi(,33) accent@^{@dotless{i}}accent.
+at_command_glued.texi(,34) and star@*star.
+at_command_glued.texi(,35) noindent@noindent after noindent
+at_command_glued.texi(,36) sp@sp 4
+at_command_glued.texi(,37) anchor@anchor{anchor ex}anchor
+at_command_glued.texi(,38) index@cindex index ex
+at_command_glued.texi(,39) @end example
+at_command_glued.texi(,40) 
+at_command_glued.texi(,41) bye@bye

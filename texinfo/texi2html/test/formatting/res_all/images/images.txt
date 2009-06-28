@@ -1,0 +1,63 @@
+top
+***
+
+
+Insertcopying
+In copying.
+[ f--ile.png ].
+
+Text in copying.
+File with @-commands and special characters:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % "  ].
+
+And also in alt, and with dimensions:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " : alt i^-le..  a
+<"%@  < & @ % "  ].
+
+In normal context
+[ f--ile.png ].
+
+On the same line, f---ile, gr--a extension [ f---ile.gr--a ].
+
+Image sparated from text:
+
+[ f--ile.png ]
+
+And the same, followed by a dot:
+
+[ f--ile.png ].
+
+In example:
+
+Text. f---ile with jpeg extension.
+[ f---ile.jpeg ].
+
+[ f--ile.png ].
+
+
+File with @-commands and special characters:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % "  ].
+
+And also in alt, and with dimensions:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " : alt i^-le..  a
+<"%@  < & @ % "  ].
+
+In float.
+[ f--ile.png ].
+
+[ f--ile.png ].
+
+
+File with @-commands and special characters:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % "  ].
+
+And also in alt, and with dimensions:
+
+[ f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " : alt i^-le..  a
+<"%@  < & @ % "  ].
+

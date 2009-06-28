@@ -1,0 +1,34 @@
+This is empty_item.info, produced by makeinfo version 4.13 from
+empty_item.texi.
+
+
+File: empty_item.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+     Table asis
+
+first item
+
+after an empty itemx, before an empty item
+
+
+in item before end table
+
+     VTable emph
+
+_first item_
+__
+_after an empty itemx, before an empty item_
+
+__
+
+_in item before end table_
+
+
+
+Tag Table:
+Node: Top82
+
+End Tag Table

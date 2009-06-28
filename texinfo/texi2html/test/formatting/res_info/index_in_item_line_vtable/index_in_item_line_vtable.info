@@ -1,0 +1,21 @@
+This is index_in_item_line_vtable.info, produced by makeinfo version
+4.13 from index_in_item_line_vtable.texi.
+
+
+File: index_in_item_line_vtable.info,  Node: Top,  Up: (dir)
+
+test index entries in @item @table
+**********************************
+
+index
+     `opt' More text
+
+2 index
+     `nopt' Even more
+
+
+
+Tag Table:
+Node: Top112
+
+End Tag Table

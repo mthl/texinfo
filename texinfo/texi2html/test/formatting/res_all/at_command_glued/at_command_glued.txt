@@ -1,0 +1,47 @@
+@-commmands with some text preceding and following them
+*******************************************************
+
+at@.
+TeXTeXTeX.
+codein codecode.
+acronymABC (aaa bb cc)acronym.
+acronym2ABCacronym.
+emailmali <mailto:somebody>email.
+refTopref.
+Foornote(1)after footnote.
+accenti^accent.
+and star
+star.
+noindentafter noindent
+sp
+
+
+
+anchoranchor
+index
+in example
+at@.
+TeXTeXTeX.
+codein codecode.
+acronymABC (aaa bb cc)acronym.
+acronym2ABCacronym.
+emailmali <mailto:somebody>email.
+refTopref.
+Foornote(2)after footnote.
+accenti^accent.
+and star
+star.
+noindentafter noindent
+sp
+
+
+
+anchoranchor
+index
+
+bye(1)
+in footnote
+
+(2)
+in footnote
+

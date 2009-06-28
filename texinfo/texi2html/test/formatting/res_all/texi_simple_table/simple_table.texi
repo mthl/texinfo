@@ -1,0 +1,62 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_table.info
+
+@node Top
+@top Element
+
+@table @emph
+@item first item
+@itemx second itemx
+
+Text.
+
+@item example
+@example
+In example
+
+end example.
+@end example
+@item empty line
+
+empty line.
+@item quotation
+@quotation
+Quotation
+@end quotation
+
+@item quotation after a blank line
+
+@quotation
+quotation after a blank line
+@end quotation
+@end table
+
+@vtable @strong
+@item item before ignored lines
+@c comment
+@vindex vindex
+@itemx itemx now
+
+Description
+@end vtable
+
+@vtable @r
+@item item
+
+@itemx itemx after an empty line
+
+Description.
+
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+
+@bye

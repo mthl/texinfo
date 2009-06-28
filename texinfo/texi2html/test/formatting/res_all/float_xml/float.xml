@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>float.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>chapter</nodenext>
+<nodeup>(dir)</nodeup>
+<unnumbered>
+<title>Test floats</title>
+
+<para>A list of floats at the begining.
+</para><listoffloats type="Text"></listoffloats>
+<para>After the listoffloats.
+</para>
+<menu>
+<menuentry>
+<menunode> chapter</menunode>
+<menutitle> chapter</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode> Unnumbered</menunode>
+<menutitle> Unnumbered</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode> Chapter with unnumbsubsec</menunode>
+<menutitle> Chapter with unnumbsubsec</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode> list of floats</menunode>
+<menutitle> list of floats</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<float name="text with a lot of features">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>An example of float &enddots;
+</para>
+<!-- makeinfo -docbook segfaults -->
+<para>An example.
+</para><example xml:space="preserve">example
+</example>
+<para>A multitable.
+</para><multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<para>An index entry
+<indexterm index="cp">float example</indexterm></para>
+<para>A table.
+</para><table><tableitem><tableterm><emph>truc</emph></tableterm>
+<item><para>line
+</para></item></tableitem></table>
+
+<para>An itemize.
+</para><itemize><itemfunction>&minus;</itemfunction><item><para> truc 
+line
+</para></item>
+</itemize>
+
+<para>A ref.
+See <xref><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features</xrefinfoname></xref>.
+A footnote.
+<footnote><para>footnote Text with features
+</para></footnote>.
+</para>
+<para>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+</para>
+<caption> An example of float caption&enddots;
+An example.
+<example xml:space="preserve">example
+</example>
+
+
+A table.
+<table><tableitem><tableterm><emph>truc</emph></tableterm>
+<item><para>line
+</para></item></tableitem></table>
+
+A multitable.
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+An index entry
+<indexterm index="cp">float example in caption</indexterm>
+An itemize.
+<itemize><itemfunction>&minus;</itemfunction><item><para> truc 
+line
+</para></item>
+</itemize>
+
+A ref.
+See <xref><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features caption</xrefinfoname></xref>.
+A footnote.
+<footnote><para>footnote Text with features caption
+</para></footnote>.
+
+&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+</caption>
+
+<shortcaption>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+</shortcaption>
+
+</float>
+
+
+<float name="">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>No label but caption and shortcaption.
+</para>
+<caption>No label
+</caption>
+<shortcaption>No label
+</shortcaption>
+</float>
+
+<float name="label but no type">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>No type but caption and shortcaption.
+</para>
+<caption>No type
+</caption>
+<shortcaption>No type
+</shortcaption>
+</float>
+
+
+<float name="label but no type and no caption">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>No type but label and no caption nor shortcaption.
+</para>                                                                                
+</float>
+
+
+<float name="">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>No label, no type, no caption no shortcaption.
+</para>
+</float>
+
+<float name="">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>No label, no type, but caption and shortcaption.
+</para><caption>No label, no type, but caption and shortcaption.
+</caption>
+<shortcaption>No label, no type, but caption and shortcaption.
+</shortcaption>
+</float>
+
+
+
+<float name="label but no type 2">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>Second float with no type.
+</para>
+<caption>No type 2
+</caption>
+<shortcaption>No type 2
+</shortcaption>
+</float>
+
+<float name="warning in top">
+<floattype>Warning</floattype>
+<floatpos></floatpos>
+<para>A warning
+</para>
+<caption>A warning
+</caption>
+<shortcaption>A warning
+</shortcaption>
+</float>
+
+</unnumbered>
+</node>
+<node>
+<nodename>chapter</nodename>
+<nodenext>Unnumbered</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+<chapter>
+<title>A chapter</title>
+
+<float name="text in chapter">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>Text in chapter
+</para>
+<caption>Text in chapter
+</caption>
+</float>
+
+<float name="float with a lot of features and no shortcaption">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+
+<para>Float text of a float with a lot of features.
+</para>
+<caption> An example of float caption&enddots; 2
+An example 2.
+<example xml:space="preserve">example 2
+</example>
+A table 2.
+<table><tableitem><tableterm><emph>truc 2</emph></tableterm>
+<item><para>line 2
+</para></item></tableitem></table>
+
+A multitable 2.
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc 2 </entry><entry> bidule
+</entry></row><row><entry> truc 2 </entry><entry> bidule
+</entry></row></tbody></multitable>
+An index entry 2
+<indexterm index="cp">float example in caption 2</indexterm>
+An itemize 2.
+<itemize><itemfunction>&minus;</itemfunction><item><para> truc 2
+line
+</para></item>
+</itemize>
+
+
+
+A ref 2.
+See <xref><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features caption</xrefinfoname></xref>.
+A footnote 2.
+<footnote><para>footnote Text with features caption 2
+</para></footnote>.
+
+&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+</caption>
+
+</float>
+
+<float name="theoreme">
+<floattype>th&eacute;or&egrave;me</floattype>
+<floatpos></floatpos>
+<para>A th&eacute;or&egrave;me
+</para>
+<caption>A th&eacute;or&egrave;me
+</caption>
+</float>
+
+<float name="label but no type in chapter">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>float with no type.
+</para>
+<caption>No type in chapter
+</caption>
+<shortcaption>No type in chapter
+</shortcaption>
+</float>
+
+<float name="warning in chapter">
+<floattype>Warning</floattype>
+<floatpos></floatpos>
+<para>A warning
+</para>
+<caption>A warning in chapter
+</caption>
+<shortcaption>A warning in chapter
+</shortcaption>
+</float>
+
+<menu>
+<menuentry>
+<menunode> section</menunode>
+<menutitle> section</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</chapter>
+</node>
+<node>
+<nodename>section</nodename>
+<nodeup>chapter</nodeup>
+<section>
+<title>A section</title>
+
+<float name="text in section">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+
+<para>A text in float no caption a label a type.
+</para>
+</float>
+
+</section>
+</node>
+<node>
+<nodename>Unnumbered</nodename>
+<nodenext>Chapter with unnumbsubsec</nodenext>
+<nodeprev>chapter</nodeprev>
+<nodeup>Top</nodeup>
+<unnumbered>
+<title>Unnumbered</title>
+
+<menu>
+<menuentry>
+<menunode> Section within unnumbered</menunode>
+<menutitle> Section within unnumbered</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+<float name="unnumbered float">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>unnum
+</para><shortcaption>unnumbered float
+</shortcaption>
+<caption>unnumbered float
+</caption>
+</float>
+
+<float name="label but no type in unnumbered">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>float with no type.
+</para>
+<caption>No type in unnumbered
+</caption>
+<shortcaption>No type in unnumbered
+</shortcaption>
+</float>
+
+
+</unnumbered>
+</node>
+<node>
+<nodename>Section within unnumbered</nodename>
+<nodeup>Unnumbered</nodeup>
+<section>
+<title>Section within unnumbered</title>
+
+
+<float name="Section within unnumbered float">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>Section within unnumbered
+</para><shortcaption>Section within unnumbered
+</shortcaption>
+<caption>Section within unnumbered
+</caption>
+</float>
+
+</section>
+</node>
+<node>
+<nodename>Chapter with unnumbsubsec</nodename>
+<nodenext>list of floats</nodenext>
+<nodeprev>Unnumbered</nodeprev>
+<nodeup>Top</nodeup>
+<chapter>
+<title>Chapter with unnumbsubsec</title>
+
+<menu>
+<menuentry>
+<menunode> unnumbered sec</menunode>
+<menutitle> unnumbered sec</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+<float name="Chapter with subsec float">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>Chap
+</para><shortcaption>Chapter with subsec
+</shortcaption>
+<caption>Chapter with subsec
+</caption>
+</float>
+
+</chapter>
+</node>
+<node>
+<nodename>unnumbered sec</nodename>
+<nodeup>Chapter with unnumbsubsec</nodeup>
+<unnumberedsec>
+<title>unnumbered sec</title>
+
+<float name="unnumbered sec float">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>Chap
+</para><shortcaption>unnumbered sec float
+</shortcaption>
+<caption>unnumbered sec float
+</caption>
+</float>
+
+<float name="label but no type in unnumbered subsec in chapter">
+<floattype></floattype>
+<floatpos></floatpos>
+<para>float with no type.
+</para>
+<caption>No type in unnumbered subsec in chapter
+</caption>
+<shortcaption>No type in unnumbered subsec in chapter
+</shortcaption>
+</float>
+
+</unnumberedsec>
+</node>
+<node>
+<nodename>list of floats</nodename>
+<nodeprev>Chapter with unnumbsubsec</nodeprev>
+<nodeup>Top</nodeup>
+<unnumbered>
+<title>list of floats</title>
+
+<para>See <xref><xrefnodename>text in section</xrefnodename></xref>.
+And (see <xref><xrefnodename>text in chapter</xrefnodename></xref>).
+See <xref><xrefnodename>text with a lot of features</xrefnodename></xref>.
+</para>
+<para>And now a ref (without manual or printed manual) 
+<xref><xrefnodename>text with a lot of features</xrefnodename><xrefinfoname>cross ref</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>.
+</para>
+<para>And now a ref (with manual without printed manual) 
+<xref><xrefnodename>text with a lot of features</xrefnodename><xrefinfoname>cross ref</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>manual</xrefinfofile></xref>.
+</para>
+<para>And now a ref (without manual with a printed manual) 
+<xref><xrefnodename>text with a lot of features</xrefnodename><xrefinfoname>cross ref</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>printed manual title</xrefprintedname></xref>.
+</para>
+<para>A ref to float without type <xref><xrefnodename>label but no type</xrefnodename></xref>.
+</para>
+<listoffloats type="Text"></listoffloats><listoffloats type="th&eacute;or&egrave;me"></listoffloats>
+<printindex>cp</printindex>
+
+</unnumbered>
+</node>
+</texinfo>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-indent-step:1
+sgml-indent-data:nil
+End:
+-->

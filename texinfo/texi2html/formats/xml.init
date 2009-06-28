@@ -4,6 +4,7 @@ my @xml_multitable_stack = ();
 my @xml_table_stack = ();
 
 my @xml_ignored_misc_commands;
+my %xml_misc_command_output;
 my %xml_misc_elements_with_arg_map;
 my @xml_misc_elements_with_arg;
 my %def_format_xml; 
@@ -62,6 +63,10 @@ $stop_paragraph_command{'caption'} = 1;
 $stop_paragraph_command{'shortcaption'} = 1;
 
 %line_command_map = ();
+foreach my $command ('contents', 'shortcontents', 'summarycontents')
+{
+   $line_command_map{$command} = $command;
+}
 
 %format_map = ();
 
@@ -139,7 +144,7 @@ $no_paragraph_commands{'cindex'} = 0;
 foreach my $misc_command (keys(%misc_command))
 {
     next if (grep {$misc_command eq $_} @xml_ignored_misc_commands);
-    $misc_command{$misc_command}->{'keep'} = 1;
+    $xml_misc_command_output{$misc_command} = 1;
 }
 
 $format_map{'menu'} = 'menu';
@@ -174,7 +179,7 @@ $row = \&xml_row;
 $cell = \&xml_cell;
 $list_item = \&xml_list_item;
 $format_list_item_texi = \&xml_format_list_item_texi;
-$unknown = \&xml_misc_commands;
+$misc_command_line = \&xml_misc_commands;
 $begin_format_texi = \&xml_begin_format_texi;
 $def_line = \&xml_def_line;
 $def = \&xml_def;
@@ -527,14 +532,15 @@ sub xml_preformatted($$$$$$$$$$$$)
 
 sub xml_misc_commands($$$$$)
 {
-    my $macro = shift;
-    my $line = shift;
-    my $pass = shift;
-    my $stack = shift;
-    my $state = shift;
-#print STDERR "$macro $pass $line";
-    return ($line, 0, undef, undef) unless ($pass == 2);
-    return ($line, 0, undef, undef) unless defined($misc_command{$macro});
+   my $macro = shift;
+   my $line = shift;
+   my $args = shift;
+   my $stack = shift;
+   my $state = shift;
+
+#print STDERR "$macro $line";
+#print STDERR "ARGS @$args\n" if defined ($args);
+    return ($macro, $line, undef) unless($xml_misc_command_output{$macro});
 
     my $value_name = '';
     my $value = '';
@@ -552,9 +558,6 @@ sub xml_misc_commands($$$$$)
             }
         }
     }
-    my ($result_line, $text, $args) = &$preserve_misc_command ($line, $macro);
-#print STDERR "$macro $pass $line";
-#print STDERR "ARGS @$args\n" if defined ($args);
     my $result_text = "<${macro}></${macro}>";
     if ($macro eq 'set' or $macro eq 'clear')
     {
@@ -597,7 +600,7 @@ sub xml_misc_commands($$$$$)
        $arg =~ s/\.[^\.]*$//;
        $result_text = "<${macro}>${arg}.xml</${macro}>\n";
     }
-    return ($result_line, 1, $result_text, undef);
+    return ($macro, $line, $result_text);
 }
 
 

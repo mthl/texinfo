@@ -1,0 +1,21 @@
+This is def_end_of_line.info, produced by makeinfo version 4.13 from
+def_end_of_line.texi.
+
+
+File: def_end_of_line.info,  Node: Top,  Up: (dir)
+
+Test for end of line protected in definition commands
+*****************************************************
+
+ -- category: deffn_name arguments more args   with end of line within
+          with 3 @ @ one last arg
+     deffn
+
+ -- category2: deffn_name2 arguments2
+
+
+
+Tag Table:
+Node: Top92
+
+End Tag Table

@@ -1,0 +1,49 @@
+This is test_sp.info, produced by makeinfo version 4.13 from
+test_sp.texi.
+
+
+File: test_sp.info,  Node: Top,  Up: (dir)
+
+Test @sp
+********
+
+Para
+
+   other para Now lone @sp:
+
+
+
+
+   Para after sp
+
+   A
+
+
+   B
+
+   sp after para
+
+     Para
+
+     other para
+     Now lone @sp:
+
+
+
+
+
+     Para after sp
+
+     A
+
+
+     B
+
+     sp after para
+
+
+
+Tag Table:
+Node: Top76
+
+End Tag Table

@@ -1,0 +1,3343 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>formatting.xml</setfilename>
+<node>
+<nodename>Top</nodename>
+<nodenext>chapter</nodenext>
+<nodeup>(dir)</nodeup>
+<unnumbered>
+<title>Top section</title>
+
+<menu>
+<menuentry>
+<menunode> chapter</menunode>
+<menutitle> chapter</menutitle>
+<menucomment>               chapter
+</menucomment>
+</menuentry>
+<para>Menu comment
+</para>
+<menuentry>
+<menunode>chapter2</menunode>
+<menutitle> description</menutitle>
+<menucomment>   Chapter 2
+</menucomment>
+</menuentry></menu>
+
+
+<para>In copying
+</para>
+<para>&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+</para>
+<para>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &linebreak;
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+</para>
+<para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'&linebreak;
+</para>
+<para><indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm></para>
+<para>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+</para>
+<para>@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+</para>
+<para>foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+</para>
+<para>@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+</para>
+<para><code>@acronym{--a,an accronym}</code> <acronym><acronymword>&ndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>&ndash;a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <dfn>&ndash;a</dfn>
+<code>@dmn{--a}</code> <dmn>&ndash;a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>&ndash;a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>&ndash;a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>&ndash;a</sc>
+<code>@strong{--a}</code> <strong>&ndash;a</strong>
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
+<para><code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+</para>
+<para><code>@image{f--ile}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,l--i}</code> <inlineimage width="l--i" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,l--e}</code> <inlineimage width="" height="l--e" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,,alt}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext>alt</alttext></inlineimage>
+<code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
+<code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
+</para>
+<sp lines="2"></sp>
+
+<para><code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+</para>
+<quotation>
+<para>A quot&mdash;ation
+</para></quotation>
+
+<quotation>
+<para><b>Note:</b> A Note
+</para></quotation>
+
+<quotation>
+<para><b>note:</b> A note
+</para></quotation>
+
+<quotation>
+<para><b>Caution:</b> Caution
+</para></quotation>
+
+<quotation>
+<para><b>Important:</b> Important
+</para></quotation>
+
+<quotation>
+<para><b>Tip:</b> a Tip
+</para></quotation>
+
+<quotation>
+<para><b>Warning:</b> a Warning.
+</para></quotation>
+
+<quotation>
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</para></quotation>
+
+<quotation>
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</para></quotation>
+
+<quotation>
+<para><b>something, other thing:</b> something, other thing
+</para></quotation>
+
+<quotation>
+<para><b>Note, the note:</b> Note, the note
+</para></quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<para><b>Empty:</b> </para></quotation>
+
+<quotation>
+<para><b>:</b> </para></quotation>
+
+<quotation>
+<para><b>&linebreak;:</b> </para></quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
+</para></item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item><para> i&ndash;tem +
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> b&ndash;ullet
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item><para> minu&ndash;s
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><para><indexterm index="cp">index entry within itemize</indexterm></para></item>
+<item><para> i&ndash;tem 1
+</para></item>
+<item><para> i&ndash;tem 2
+</para></item>
+</itemize>
+
+<enumerate first="1"><item><para> e&ndash;numerate
+</para></item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu&ndash;ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d&ndash;isplay
+</display>
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f&ndash;ormat
+</format>
+<smallformat xml:space="preserve">s&ndash;mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;effn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem><para>def&ndash;fn
+</para></definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+<para>text in def item for second def item
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efvr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypeop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efcv
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftp
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmac
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efspec
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem><para>d&ndash;efvar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efopt
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;eftypeivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmethod
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypemethod
+</para></definitionitem></definition>
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+</para>
+<para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+</para>
+<para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+</para>
+<para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+</para>
+<para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+</para>
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<cartouche><para>c&ndash;artouche
+</para></cartouche>
+<para>f&ndash;lushleft
+</para>
+<para>f&ndash;lushright
+</para>
+<center><para> ce&ndash;ntered line
+</para></center>
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+
+<titlepage>
+<booktitle>title &ndash;a</booktitle>
+<booksubtitle>formatting subtitle &ndash;a</booksubtitle>
+<booksubtitle>subtitle 2 &ndash;a</booksubtitle>
+<author>author1 &ndash;a with accents in name T&eacute;&ccedil;a</author>
+<author>author2 &ndash;a</author>
+<para>In titlepage
+</para>
+<para>&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+</para>
+<para>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &linebreak;
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+</para>
+<para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'&linebreak;
+</para>
+<para><indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm></para>
+<para>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+</para>
+<para>@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+</para>
+<para>foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+</para>
+<para>@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+</para>
+<para><code>@acronym{--a,an accronym}</code> <acronym><acronymword>&ndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>&ndash;a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <dfn>&ndash;a</dfn>
+<code>@dmn{--a}</code> <dmn>&ndash;a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>&ndash;a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>&ndash;a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>&ndash;a</sc>
+<code>@strong{--a}</code> <strong>&ndash;a</strong>
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
+<para><code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+</para>
+<para><code>@image{f--ile}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,l--i}</code> <inlineimage width="l--i" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,l--e}</code> <inlineimage width="" height="l--e" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,,alt}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext>alt</alttext></inlineimage>
+<code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
+<code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
+</para>
+<sp lines="2"></sp>
+
+<para><code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+</para>
+<quotation>
+<para>A quot&mdash;ation
+</para></quotation>
+
+<quotation>
+<para><b>Note:</b> A Note
+</para></quotation>
+
+<quotation>
+<para><b>note:</b> A note
+</para></quotation>
+
+<quotation>
+<para><b>Caution:</b> Caution
+</para></quotation>
+
+<quotation>
+<para><b>Important:</b> Important
+</para></quotation>
+
+<quotation>
+<para><b>Tip:</b> a Tip
+</para></quotation>
+
+<quotation>
+<para><b>Warning:</b> a Warning.
+</para></quotation>
+
+<quotation>
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</para></quotation>
+
+<quotation>
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</para></quotation>
+
+<quotation>
+<para><b>something, other thing:</b> something, other thing
+</para></quotation>
+
+<quotation>
+<para><b>Note, the note:</b> Note, the note
+</para></quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<para><b>Empty:</b> </para></quotation>
+
+<quotation>
+<para><b>:</b> </para></quotation>
+
+<quotation>
+<para><b>&linebreak;:</b> </para></quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
+</para></item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item><para> i&ndash;tem +
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> b&ndash;ullet
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item><para> minu&ndash;s
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><para><indexterm index="cp">index entry within itemize</indexterm></para></item>
+<item><para> i&ndash;tem 1
+</para></item>
+<item><para> i&ndash;tem 2
+</para></item>
+</itemize>
+
+<enumerate first="1"><item><para> e&ndash;numerate
+</para></item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu&ndash;ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d&ndash;isplay
+</display>
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f&ndash;ormat
+</format>
+<smallformat xml:space="preserve">s&ndash;mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;effn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem><para>def&ndash;fn
+</para></definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+<para>text in def item for second def item
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efvr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypeop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efcv
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftp
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmac
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efspec
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem><para>d&ndash;efvar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efopt
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;eftypeivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmethod
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypemethod
+</para></definitionitem></definition>
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+</para>
+<para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+</para>
+<para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+</para>
+<para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+</para>
+<para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+</para>
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<cartouche><para>c&ndash;artouche
+</para></cartouche>
+<para>f&ndash;lushleft
+</para>
+<para>f&ndash;lushright
+</para>
+<center><para> ce&ndash;ntered line
+</para></center>
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+
+<para>Insercopying in titlepage
+</para><para>In copying
+</para>
+<para>&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+</para>
+<para>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &linebreak;
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+</para>
+<para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'&linebreak;
+</para>
+<para><indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm></para>
+<para>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+</para>
+<para>@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+</para>
+<para>foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+</para>
+<para>@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+</para>
+<para><code>@acronym{--a,an accronym}</code> <acronym><acronymword>&ndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>&ndash;a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <dfn>&ndash;a</dfn>
+<code>@dmn{--a}</code> <dmn>&ndash;a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>&ndash;a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>&ndash;a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>&ndash;a</sc>
+<code>@strong{--a}</code> <strong>&ndash;a</strong>
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
+<para><code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+</para>
+<para><code>@image{f--ile}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,l--i}</code> <inlineimage width="l--i" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,l--e}</code> <inlineimage width="" height="l--e" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,,alt}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext>alt</alttext></inlineimage>
+<code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
+<code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
+</para>
+<sp lines="2"></sp>
+
+<para><code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+</para>
+<quotation>
+<para>A quot&mdash;ation
+</para></quotation>
+
+<quotation>
+<para><b>Note:</b> A Note
+</para></quotation>
+
+<quotation>
+<para><b>note:</b> A note
+</para></quotation>
+
+<quotation>
+<para><b>Caution:</b> Caution
+</para></quotation>
+
+<quotation>
+<para><b>Important:</b> Important
+</para></quotation>
+
+<quotation>
+<para><b>Tip:</b> a Tip
+</para></quotation>
+
+<quotation>
+<para><b>Warning:</b> a Warning.
+</para></quotation>
+
+<quotation>
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</para></quotation>
+
+<quotation>
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</para></quotation>
+
+<quotation>
+<para><b>something, other thing:</b> something, other thing
+</para></quotation>
+
+<quotation>
+<para><b>Note, the note:</b> Note, the note
+</para></quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<para><b>Empty:</b> </para></quotation>
+
+<quotation>
+<para><b>:</b> </para></quotation>
+
+<quotation>
+<para><b>&linebreak;:</b> </para></quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
+</para></item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item><para> i&ndash;tem +
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> b&ndash;ullet
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item><para> minu&ndash;s
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><para><indexterm index="cp">index entry within itemize</indexterm></para></item>
+<item><para> i&ndash;tem 1
+</para></item>
+<item><para> i&ndash;tem 2
+</para></item>
+</itemize>
+
+<enumerate first="1"><item><para> e&ndash;numerate
+</para></item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu&ndash;ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d&ndash;isplay
+</display>
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f&ndash;ormat
+</format>
+<smallformat xml:space="preserve">s&ndash;mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;effn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem><para>def&ndash;fn
+</para></definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+<para>text in def item for second def item
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efvr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypeop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efcv
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftp
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmac
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efspec
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem><para>d&ndash;efvar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efopt
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;eftypeivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmethod
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypemethod
+</para></definitionitem></definition>
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+</para>
+<para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+</para>
+<para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+</para>
+<para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+</para>
+<para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+</para>
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<cartouche><para>c&ndash;artouche
+</para></cartouche>
+<para>f&ndash;lushleft
+</para>
+<para>f&ndash;lushright
+</para>
+<center><para> ce&ndash;ntered line
+</para></center>
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+</titlepage>
+
+<para>Insertcopying in normal text
+</para><para>In copying
+</para>
+<para>&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+</para>
+<para>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &linebreak;
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+</para>
+<para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'&linebreak;
+</para>
+<para><indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm></para>
+<para>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+</para>
+<para>@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+</para>
+<para>foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+</para>
+<para>@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+</para>
+<para><code>@acronym{--a,an accronym}</code> <acronym><acronymword>&ndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>&ndash;a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <dfn>&ndash;a</dfn>
+<code>@dmn{--a}</code> <dmn>&ndash;a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>&ndash;a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>&ndash;a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>&ndash;a</sc>
+<code>@strong{--a}</code> <strong>&ndash;a</strong>
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
+<para><code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+</para>
+<para><code>@image{f--ile}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,l--i}</code> <inlineimage width="l--i" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,l--e}</code> <inlineimage width="" height="l--e" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,,alt}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext>alt</alttext></inlineimage>
+<code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
+<code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
+</para>
+<sp lines="2"></sp>
+
+<para><code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+</para>
+<quotation>
+<para>A quot&mdash;ation
+</para></quotation>
+
+<quotation>
+<para><b>Note:</b> A Note
+</para></quotation>
+
+<quotation>
+<para><b>note:</b> A note
+</para></quotation>
+
+<quotation>
+<para><b>Caution:</b> Caution
+</para></quotation>
+
+<quotation>
+<para><b>Important:</b> Important
+</para></quotation>
+
+<quotation>
+<para><b>Tip:</b> a Tip
+</para></quotation>
+
+<quotation>
+<para><b>Warning:</b> a Warning.
+</para></quotation>
+
+<quotation>
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</para></quotation>
+
+<quotation>
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</para></quotation>
+
+<quotation>
+<para><b>something, other thing:</b> something, other thing
+</para></quotation>
+
+<quotation>
+<para><b>Note, the note:</b> Note, the note
+</para></quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<para><b>Empty:</b> </para></quotation>
+
+<quotation>
+<para><b>:</b> </para></quotation>
+
+<quotation>
+<para><b>&linebreak;:</b> </para></quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
+</para></item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item><para> i&ndash;tem +
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> b&ndash;ullet
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item><para> minu&ndash;s
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><para><indexterm index="cp">index entry within itemize</indexterm></para></item>
+<item><para> i&ndash;tem 1
+</para></item>
+<item><para> i&ndash;tem 2
+</para></item>
+</itemize>
+
+<enumerate first="1"><item><para> e&ndash;numerate
+</para></item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu&ndash;ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d&ndash;isplay
+</display>
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f&ndash;ormat
+</format>
+<smallformat xml:space="preserve">s&ndash;mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;effn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem><para>def&ndash;fn
+</para></definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+<para>text in def item for second def item
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efvr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypeop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efcv
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftp
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmac
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efspec
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem><para>d&ndash;efvar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efopt
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;eftypeivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmethod
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypemethod
+</para></definitionitem></definition>
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+</para>
+<para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+</para>
+<para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+</para>
+<para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+</para>
+<para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+</para>
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<cartouche><para>c&ndash;artouche
+</para></cartouche>
+<para>f&ndash;lushleft
+</para>
+<para>f&ndash;lushright
+</para>
+<center><para> ce&ndash;ntered line
+</para></center>
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+
+<para>Normal text
+</para>
+<para>&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+</para>
+<para>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &linebreak;
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+</para>
+<para>`<!-- /@w -->`simple-double-<!-- /@w -->-three&mdash;four&mdash;-'<!-- /@w -->'&linebreak;
+</para>
+<para><indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm></para>
+<para>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+</para>
+<para>@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+</para>
+<para>foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+</para>
+<para>@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+</para>
+<para><code>@acronym{--a,an accronym}</code> <acronym><acronymword>&ndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>&ndash;a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;&ndash;. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <dfn>&ndash;a</dfn>
+<code>@dmn{--a}</code> <dmn>&ndash;a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>&ndash;b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>&ndash;a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>&ndash;a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>&ndash;a</sc>
+<code>@strong{--a}</code> <strong>&ndash;a</strong>
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
+<para><code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>&ndash;c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+</para>
+<para><code>@image{f--ile}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,l--i}</code> <inlineimage width="l--i" height="" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,l--e}</code> <inlineimage width="" height="l--e" name="f--ile" extension=""><alttext></alttext></inlineimage>
+<code>@image{f--ile,,,alt}</code> <inlineimage width="" height="" name="f--ile" extension=""><alttext>alt</alttext></inlineimage>
+<code>@image{f--ile,,,,e-d-xt}</code> <inlineimage width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></inlineimage>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <inlineimage width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></inlineimage>
+<code>@image{f-ile,aze,,a--lt}</code> <inlineimage width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></inlineimage>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <inlineimage width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></inlineimage>
+</para>
+<sp lines="2"></sp>
+
+<para><code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+</para>
+<quotation>
+<para>A quot&mdash;ation
+</para></quotation>
+
+<quotation>
+<para><b>Note:</b> A Note
+</para></quotation>
+
+<quotation>
+<para><b>note:</b> A note
+</para></quotation>
+
+<quotation>
+<para><b>Caution:</b> Caution
+</para></quotation>
+
+<quotation>
+<para><b>Important:</b> Important
+</para></quotation>
+
+<quotation>
+<para><b>Tip:</b> a Tip
+</para></quotation>
+
+<quotation>
+<para><b>Warning:</b> a Warning.
+</para></quotation>
+
+<quotation>
+<para><b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</para></quotation>
+
+<quotation>
+<para><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</para></quotation>
+
+<quotation>
+<para><b>something, other thing:</b> something, other thing
+</para></quotation>
+
+<quotation>
+<para><b>Note, the note:</b> Note, the note
+</para></quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<para><b>Empty:</b> </para></quotation>
+
+<quotation>
+<para><b>:</b> </para></quotation>
+
+<quotation>
+<para><b>&linebreak;:</b> </para></quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> i&ndash;temize
+</para></item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item><para> i&ndash;tem +
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item><para> b&ndash;ullet
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item><para> minu&ndash;s
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item><para> e&ndash;mph item
+</para></item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><para><indexterm index="cp">index entry within itemize</indexterm></para></item>
+<item><para> i&ndash;tem 1
+</para></item>
+<item><para> i&ndash;tem 2
+</para></item>
+</itemize>
+
+<enumerate first="1"><item><para> e&ndash;numerate
+</para></item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu&ndash;ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d&ndash;isplay
+</display>
+<smalldisplay xml:space="preserve">s&ndash;malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f&ndash;ormat
+</format>
+<smallformat xml:space="preserve">s&ndash;mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;effn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem><para>def&ndash;fn
+</para></definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<para><indexterm index="cp">index entry within deffn</indexterm></para><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+<para>text in def item for second def item
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efvr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefn
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypeop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevr
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efcv
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efop
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftp
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmac
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efspec
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem><para>d&ndash;efvar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;efopt
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypefun
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem><para>d&ndash;eftypevar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;efivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem><para>d&ndash;eftypeivar
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem><para>d&ndash;efmethod
+</para></definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem><para>d&ndash;eftypemethod
+</para></definitionitem></definition>
+<para><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r&mdash;ef name@</xrefinfoname><xrefprinteddesc>t&mdash;itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma&mdash;nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+</para>
+<para><code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+</para>
+<para><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+</para>
+<para><code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+</para>
+
+<para><code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+</para>
+<para><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+</para>
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<para><indexterm index="cp">index entry between item and itemx</indexterm></para><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item><para>l&ndash;ine
+</para></item></tableitem></table>
+
+<cartouche><para>c&ndash;artouche
+</para></cartouche>
+<para>f&ndash;lushleft
+</para>
+<para>f&ndash;lushright
+</para>
+<center><para> ce&ndash;ntered line
+</para></center>
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+
+<para>In example.
+</para><example xml:space="preserve">
+&lt;
+&gt;
+&quot;
+&amp;
+'
+`
+
+``simple-double--three---four----''&linebreak;
+code: <code>``simple-double--three---four----''</code> &linebreak;
+asis: ``simple-double--three---four----'' &linebreak;
+strong: <strong>``simple-double--three---four----''</strong> &linebreak;
+kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
+
+`<!-- /@w -->`simple-double-<!-- /@w -->-three---four----'<!-- /@w -->'&linebreak;
+
+<indexterm index="cp">&ndash;option</indexterm><indexterm index="cp">&ldquo;</indexterm><indexterm index="fn">&ldquo;</indexterm><indexterm index="fn">&ndash;foption</indexterm>
+@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o&macr;
+@`i &igrave;
+@'{e} &eacute;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@`{@=E} E&macr;` 
+@l{} /l
+@,{@'C} C',
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; &linebreak;
+
+@* &linebreak;
+@ followed by a space
+&space;
+@ followed by a tab
+&space;
+@ followed by a new line
+&space;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> &eosexcl;
+<code>@?</code> &eosquest;
+<code>@.</code> &eosperiod;
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+
+foo vs&period; bar. 
+colon &colon;And something else.
+semi colon ;.
+And ? &quest;.
+Now ! &excl;@
+but , ,
+
+@TeX &tex;
+@LaTeX &latex;
+@bullet &bullet;
+@copyright &copyright;
+@dots &dots;
+@enddots &enddots;
+@equiv ==
+@error error--&gt;
+@expansion ==&gt;
+@minus &minus;
+@point -!-
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &registered;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+
+<code>@acronym{--a,an accronym}</code> <acronym><acronymword>--a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
+<code>@acronym{--a}</code> <acronym><acronymword>--a</acronymword></acronym>
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> <abbrev><abbrevword>&Eacute;--. ,A.</abbrevword><abbrevdesc>&Eacute;tude Autonome</abbrevdesc></abbrev>
+<code>@abbr{@'E--. @comma{}A.}</code> <abbrev><abbrevword>&Eacute;--. ,A.</abbrevword></abbrev>
+<code>@asis{--a}</code> --a
+<code>@b{--a}</code> <b>--a</b>
+<code>@cite{--a}</code> <cite>--a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <command>--a</command>
+<code>@ctrl{--a}</code> --a
+<code>@dfn{--a}</code> <dfn>--a</dfn>
+<code>@dmn{--a}</code> <dmn>--a</dmn>
+<code>@email{--a,--b}</code> <email><emailaddress>--a</emailaddress><emailname>--b</emailname></email>
+<code>@email{,--b}</code> <email><emailaddress></emailaddress><emailname>--b</emailname></email>
+<code>@email{--a}</code> <email><emailaddress>--a</emailaddress></email>
+<code>@emph{--a}</code> <emph>--a</emph>
+<code>@env{--a}</code> <env>--a</env>
+<code>@file{--a}</code> <file>--a</file>
+<code>@i{--a}</code> <i>--a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <key>--a</key>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
+<code>@option{--a}</code> <option>--a</option>
+<code>@r{--a}</code> <r>--a</r>
+<code>@samp{--a}</code> <samp>--a</samp>
+<code>@sc{--a}</code> <sc>--a</sc>
+<code>@strong{--a}</code> <strong>--a</strong>
+<code>@t{--a}</code> <tt>--a</tt>
+<code>@sansserif{--a}</code> <sansserif>--a</sansserif>
+<code>@titlefont{--a}</code> <titlefont>--a</titlefont>
+<code>@indicateurl{--a}</code> <url>--a</url>
+<code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc></uref>
+<code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc></uref>
+<code>@uref{--a,--b,--c}</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc><urefreplacement>--c</urefreplacement></uref>
+<code>@uref{,--b,--c}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc><urefreplacement>--c</urefreplacement></uref>
+<code>@uref{--a,,--c}</code> <uref><urefurl>--a</urefurl><urefreplacement>--c</urefreplacement></uref>
+<code>@uref{,,--c}</code> <uref><urefurl></urefurl><urefreplacement>--c</urefreplacement></uref>
+<code>@url{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc></uref>
+<code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
+<code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc></uref>
+<code>@var{--a}</code> <var>--a</var>
+<code>@verb{:--a:}</code> --a
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@w{}</code> <!-- /@w -->
+<code>@H{a}</code> a''
+<code>@H{--a}</code> --a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> --a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> --a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> --a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> --a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> --a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .--a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> --a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> --c,
+<code>@footnote{in footnote}</code> <footnote><para>in footnote
+</para></footnote>
+<code>@footnote{in footnote2}</code> <footnote><para>in footnote2
+</para></footnote>
+
+<code>@image{f--ile}</code> <image width="" height="" name="f--ile" extension=""><alttext></alttext></image>
+<code>@image{f--ile,l--i}</code> <image width="l--i" height="" name="f--ile" extension=""><alttext></alttext></image>
+<code>@image{f--ile,,l--e}</code> <image width="" height="l--e" name="f--ile" extension=""><alttext></alttext></image>
+<code>@image{f--ile,,,alt}</code> <image width="" height="" name="f--ile" extension=""><alttext>alt</alttext></image>
+<code>@image{f--ile,,,,e-d-xt}</code> <image width="" height="" name="f--ile" extension="e--xt"><alttext></alttext></image>
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image>
+<code>@image{f-ile,aze,,a--lt}</code> <image width="aze" height="" name="f-ile" extension=""><alttext>a&ndash;lt</alttext></image>
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <image width="aze" height="az" name="f--ile@." extension="file ext e--xt}"><alttext>alt</alttext></image>
+
+<sp lines="2"></sp>
+
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> <clicksequence>click <click></click> A</clicksequence>
+
+<quotation>
+A quot---ation
+</quotation>
+
+<quotation>
+<b>Note:</b> A Note
+</quotation>
+
+<quotation>
+<b>note:</b> A note
+</quotation>
+
+<quotation>
+<b>Caution:</b> Caution
+</quotation>
+
+<quotation>
+<b>Important:</b> Important
+</quotation>
+
+<quotation>
+<b>Tip:</b> a Tip
+</quotation>
+
+<quotation>
+<b>Warning:</b> a Warning.
+</quotation>
+
+<quotation>
+<b>something &eacute; &tex;:</b> The something &eacute; &tex; is here.
+</quotation>
+
+<quotation>
+<b>@ at the end of line </b> A @ at the end of the @quotation line.
+</quotation>
+
+<quotation>
+<b>something, other thing:</b> something, other thing
+</quotation>
+
+<quotation>
+<b>Note, the note:</b> Note, the note
+</quotation>
+
+<quotation>
+</quotation>
+
+<quotation>
+<b>Empty:</b> </quotation>
+
+<quotation>
+<b>:</b> </quotation>
+
+<quotation>
+<b>&linebreak;:</b> </quotation>
+
+
+<itemize><itemfunction>&bullet;</itemfunction><item> i--temize
+</item>
+</itemize>
+
+<itemize><itemfunction>+</itemfunction><item> i--tem +
+</item>
+</itemize>
+
+<itemize><itemfunction>&bullet;</itemfunction><item> b--ullet
+</item>
+</itemize>
+
+<itemize><itemfunction>&minus;</itemfunction><item> minu--s
+</item>
+</itemize>
+
+<itemize><itemfunction><emph></emph></itemfunction><item> e--mph item
+</item>
+</itemize>
+
+<itemize><itemfunction><emph>after emph</emph></itemfunction><item><!-- comment in itemize -->
+</item>
+<item> e--mph item
+</item>
+</itemize>
+
+<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item><indexterm index="cp">index entry within itemize</indexterm></item>
+<item> i--tem 1
+</item>
+<item> i--tem 2
+</item>
+</itemize>
+
+<enumerate first="1"><item> e--numerate
+</item>
+</enumerate>
+
+<multitable><columnfraction>600</columnfraction>
+<columnfraction>700</columnfraction>
+<thead><row><entry> mu--ltitable headitem </entry><entry> another tab
+</entry></row></thead><tbody><row><entry> mu--ltitable item </entry><entry> multitable tab
+<!-- comment in multitable -->
+</entry></row><row><entry> mu--ltitable item 2 </entry><entry> multitable tab 2
+<indexterm index="cp">index entry within multitable</indexterm></entry></row><row><entry> lone mu--ltitable item
+</entry></row></tbody></multitable>
+
+<multitable><columnfraction>6</columnfraction>
+<columnfraction>8</columnfraction>
+<tbody><row><entry> truc </entry><entry> bidule
+</entry></row></tbody></multitable>
+
+<example xml:space="preserve">e--xample  some
+   text
+</example>
+<smallexample xml:space="preserve">s--mallexample
+</smallexample>
+<display xml:space="preserve">d--isplay
+</display>
+<smalldisplay xml:space="preserve">s--malldisplay
+</smalldisplay>
+<lisp xml:space="preserve">l--isp
+</lisp>
+<smalllisp xml:space="preserve">s--malllisp
+</smalllisp>
+<format xml:space="preserve">f--ormat
+</format>
+<smallformat xml:space="preserve">s--mallformat
+</smallformat>
+<definition><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory><deffunction>d--effn_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--effn
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">de--ffn_name</indexterm><defcategory>cate--gory</defcategory><deffunction>de--ffn_name</deffunction><defparam> ar--guments</defparam><defparam> more</defparam><defparam> args</defparam><defparam> &linebreak;</defparam><defparam> even</defparam><defparam> more</defparam><defparam> so</defparam></definitionterm>
+<definitionitem>def--fn
+</definitionitem></definition> 
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<indexterm index="cp">index entry within deffn</indexterm><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory><deffunction>log trap</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"> log trap1</indexterm><defcategory>Command</defcategory><deffunction> log trap1</deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory><deffunction>log trap2 </deffunction><defparam> </defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory><deffunction><b>id ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory><deffunction><b>id <samp>i</samp> ule</b></deffunction><defparam> truc</defparam></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory><b>id <samp>i</samp> ule</b></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory>aaa</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory><deffunction>bidule machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory><deffunction>machin</deffunction></definitionterm>
+<definitionterm><indexterm index="fn"> </indexterm><defcategory>truc</defcategory><deffunction> </deffunction></definitionterm>
+<definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory><deffunction>followed</deffunction><defparam> by</defparam><defparam> a</defparam><defparam> comment</defparam></definitionterm>
+<!-- comment -->
+<definitionterm><indexterm index="fn"></indexterm><defcategory>truc</defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn"></indexterm><defcategory></defcategory><deffunction></deffunction></definitionterm>
+<definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory><deffunction>a</deffunction><defparam> b</defparam><defparam> c</defparam><defparam> d</defparam><defparam> e</defparam><defparam> <b>f g</b></defparam><defparam> h i</defparam></definitionterm>
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory><deffunction>deffnx</deffunction><defparam> before</defparam><defparam> end</defparam><defparam> deffn</defparam></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory><deffunction>deffn</deffunction><defparam> with</defparam><defparam> deffnx</defparam></definitionterm>
+<!-- comment between deffn and deffnx -->
+<definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory><deffunction>deffnx</deffunction></definitionterm>
+</definition>
+<definition><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory><deffunction><var>i</var></deffunction><defparam> a</defparam><defparam> g</defparam></definitionterm>
+<definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory><deffunction>truc</deffunction><defparam> </defparam></definitionterm>
+<definitionitem><!-- comment -->
+text in def item for second def item
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvr_name</indexterm><defcategory>c--ategory</defcategory><defvariable>d--efvr_name</defvariable></definitionterm>
+<definitionitem>d--efvr
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefn_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefn_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem>d--eftypefn
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypeop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defoperation>d--eftypeop_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem>d--eftypeop
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevr_name</indexterm><defcategory>c--ategory</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevr_name</defvariable></definitionterm>
+<definitionitem>d--eftypevr
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efcv_name</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defclassvar>d--efcv_name</defclassvar></definitionterm>
+<definitionitem>d--efcv
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efop_name on c--lass</indexterm><defcategory>c--ategory</defcategory><defclass>c--lass</defclass><defoperation>d--efop_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--efop
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="tp">d--eftp_name</indexterm><defcategory>c--ategory</defcategory><defdatatype>d--eftp_name</defdatatype><defparamtype> a--ttributes...</defparamtype></definitionterm>
+<definitionitem>d--eftp
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efun_name</indexterm><defcategory>Function</defcategory><deffunction>d--efun_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--efun
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmac_name</indexterm><defcategory>Macro</defcategory><deffunction>d--efmac_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--efmac
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efspec_name</indexterm><defcategory>Special Form</defcategory><deffunction>d--efspec_name</deffunction><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--efspec
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efvar_name</indexterm><defcategory>Variable</defcategory><defvariable>d--efvar_name</defvariable><defparamtype> argvar</defparamtype><defparam> argvar1</defparam></definitionterm>
+<definitionitem>d--efvar
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efopt_name</indexterm><defcategory>User Option</defcategory><defvariable>d--efopt_name</defvariable></definitionterm>
+<definitionitem>d--efopt
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypefun_name</indexterm><defcategory>Function</defcategory><deftype>t--ype</deftype><deffunction>d--eftypefun_name</deffunction><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem>d--eftypefun
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypevar_name</indexterm><defcategory>Variable</defcategory><deftype>t--ype</deftype><defvariable>d--eftypevar_name</defvariable></definitionterm>
+<definitionitem>d--eftypevar
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--efivar_name</indexterm><defcategory>Instance Variable</defcategory><defclass>c--lass</defclass><defclassvar>d--efivar_name</defclassvar></definitionterm>
+<definitionitem>d--efivar
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="vr">d--eftypeivar_name of c--lass</indexterm><defcategory>Instance Variable</defcategory><deftype>t--ype</deftype><defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<definitionitem>d--eftypeivar
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--efmethod_name on c--lass</indexterm><defcategory>Method</defcategory><defclass>c--lass</defclass><defoperation>d--efmethod_name</defoperation><defparam> a--rguments...</defparam></definitionterm>
+<definitionitem>d--efmethod
+</definitionitem></definition>
+<definition><definitionterm><indexterm index="fn">d--eftypemethod_name on c--lass</indexterm><defcategory>Method</defcategory><deftype>t--ype</deftype><defoperation>d--eftypemethod_name</defoperation><defparamtype> a--rguments...</defparamtype></definitionterm>
+<definitionitem>d--eftypemethod
+</definitionitem></definition>
+<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <xref><xrefnodename>c---hapter@</xrefnodename><xrefinfoname>cross r---ef name@</xrefinfoname><xrefprinteddesc>t---itle@</xrefprinteddesc><xrefinfofile>file n---ame@</xrefinfofile><xrefprintedname>ma---nual@</xrefprintedname></xref>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+
+<code>@ref{chapter}</code> <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@xref{chapter}</code> See <xref><xrefnodename>chapter</xrefnodename></xref>.
+<code>@pxref{chapter}</code> see <xref><xrefnodename>chapter</xrefnodename></xref>
+<code>@ref{s--ect@comma{}ion}</code> <xref><xrefnodename>s--ect,ion</xrefnodename></xref>
+
+<code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<xref><xrefnodename>s--ect,ion</xrefnodename><xrefinfoname>a , in cross ref</xrefinfoname><xrefprinteddesc>a comma, in title</xrefprinteddesc><xrefinfofile>a comma, in file</xrefinfofile><xrefprintedname>a , in manual name</xrefprintedname></xref>
+
+<code>@ref{chapter,cross ref name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{chapter,,title}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{chapter,cross ref name,,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,cross ref name,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title,file name}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{chapter,,title,,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,title, file name, manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{chapter,,,file name,manual}</code> <xref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+
+
+<code>@ref{(pman)anode,cross ref name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></xref>
+<code>@ref{(pman)anode,,title}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc></xref>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title,file name}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></xref>
+<code>@ref{(pman)anode,,title,,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+<code>@ref{(pman)anode,,,file name,manual}</code> <xref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>
+
+
+<code>@inforef{chapter, cross ref name, file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{chapter,,file name}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node, cross ref name, file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{node}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node, cross ref name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname></inforefinfoname></inforef>
+<code>@inforef{node,,file name}</code> See <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+
+<code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in cross ref</inforefrefname><inforefinfoname>a comma, in file</inforefinfoname></inforef>
+
+
+<table><!-- comment in table -->
+<tableitem><tableterm>&bullet; a</tableterm>
+<item>l--ine
+</item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="vr">a</indexterm>a</tableterm>
+<!-- comment between item and itemx -->
+<tableterm><indexterm index="vr">b</indexterm>b</tableterm>
+<item>l--ine
+</item></tableitem></table>
+
+<table><tableitem><tableterm><indexterm index="fn">a</indexterm>&minus; a</tableterm>
+<indexterm index="cp">index entry between item and itemx</indexterm><tableterm><indexterm index="fn">b</indexterm>&minus; b</tableterm>
+<item>l--ine
+</item></tableitem></table>
+
+<cartouche>c--artouche
+</cartouche>
+f--lushleft
+
+f--lushright
+
+ ce--ntered line
+
+<verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</verbatim>
+<verbatim xml:space="preserve">in verbatim ''
+</verbatim>
+<para> xml para </para> ''
+
+
+
+<majorheading>majorheading</majorheading>
+
+<chapheading>chapheading</chapheading>
+
+<heading>heading</heading>
+
+<subheading>subheading</subheading>
+
+<subsubheading>subsubheading</subsubheading>
+
+<!-- makeinfo cannot handle that -->
+
+
+<!-- invalid texinfo -->
+
+</example>
+<para><indexterm index="cp">t&ndash;ruc</indexterm><indexterm index="cp">T&ndash;ruc</indexterm><indexterm index="cp">.</indexterm><indexterm index="cp">?</indexterm><indexterm index="cp">a</indexterm><indexterm index="fn">t&ndash;ruc</indexterm><indexterm index="fn">T&ndash;ruc</indexterm><indexterm index="fn">.</indexterm><indexterm index="fn">?</indexterm><indexterm index="fn">a</indexterm></para>
+
+<para>cp
+</para><printindex>cp</printindex>
+
+<para>fn
+</para><printindex>fn</printindex>
+
+<para>vr
+</para><printindex>vr</printindex>
+
+<para>ky
+</para><printindex>ky</printindex>
+
+<para>pg
+</para><printindex>pg</printindex>
+
+<para>tp
+</para><printindex>tp</printindex>
+
+
+
+</unnumbered>
+</node>
+<node>
+<nodename>chapter</nodename>
+<nodenext>chapter2</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+<chapter>
+<title>chapter</title>
+
+<para><footnote><para>in footnote
+</para></footnote>
+</para>
+<format xml:space="preserve"><menu>
+<menuentry>
+<menunode> s--ect,ion</menunode>
+<menutitle> s&ndash;ect,ion</menutitle>
+<menucomment> s&ndash;ect,ion
+</menucomment>
+</menuentry>
+Menu comment
+&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;&linebreak;
+
+</menu>
+</format>
+</chapter>
+</node>
+<node>
+<nodename>s--ect,ion</nodename>
+<nodeup>chapter</nodeup>
+<section>
+<title>A section</title>
+
+<menu>
+<menuentry>
+<menunode> subsection</menunode>
+<menutitle> subsection</menutitle>
+<menucomment> 
+</menucomment>
+</menuentry></menu>
+
+</section>
+</node>
+<node>
+<nodename>subsection</nodename>
+<nodeup>s--ect,ion</nodeup>
+<subsection>
+<title>subsection</title>
+
+<menu>
+<menuentry>
+<menunode> subsubsection ``simple-double--three---four----''</menunode>
+<menutitle> subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<para><anchor name="anchor"></anchor>
+</para>
+</subsection>
+</node>
+<node>
+<nodename>subsubsection ``simple-double--three---four----''</nodename>
+<nodeup>subsection</nodeup>
+<subsubsection>
+<title>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</title>
+
+</subsubsection>
+</node>
+<node>
+<nodename>chapter2</nodename>
+<nodeprev>chapter</nodeprev>
+<nodeup>Top</nodeup>
+<unnumbered>
+<title>chapter 2</title>
+
+<printindex>cp</printindex>
+<printindex>fn</printindex>
+
+<contents></contents>
+<shortcontents></shortcontents>
+</unnumbered>
+</node>
+</texinfo>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-indent-step:1
+sgml-indent-data:nil
+End:
+-->

@@ -1,0 +1,7 @@
+Test for end of line protected in definition commands
+*****************************************************
+
+ -- category: deffn_name arguments more args   with end of line within with 3 @ @ one last arg
+deffn
+
+ -- category2: deffn_name2 arguments2

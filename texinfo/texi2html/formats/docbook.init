@@ -58,10 +58,6 @@ $SIMPLE_MENU = 0;
 
 push @command_handler_init, \&docbook_initialize_variables;
 
-$misc_command{'c'}->{'keep'} = 1;
-$misc_command{'comment'}->{'keep'} = 1;
-$misc_command{'settitle'}->{'keep'} = 1;
-
 %style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
 foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
@@ -267,7 +263,7 @@ $style                 = \&docbook_style;
 $table_item            = \&docbook_table_item;
 $table_line            = \&docbook_table_line;
 $table_list            = \&docbook_table_list;
-$unknown               = \&docbook_misc_commands;
+$misc_command_line     = \&docbook_misc_commands;
 
 
 }
@@ -667,15 +663,10 @@ sub docbook_misc_commands($$$$$)
 {
     my $macro = shift;
     my $line = shift;
-    my $pass = shift;
+    my $args = shift;
     my $stack = shift;
     my $state = shift;
-#print STDERR "$macro $pass $line";
-    return ($line, 0, undef, undef) unless ($pass == 2);
-    return ($line, 0, undef, undef) unless defined($misc_command{$macro});
-
-    my ($result_line, $text, $args) = &$preserve_misc_command ($line, $macro);
-#print STDERR "$macro $pass $line";
+#print STDERR "$macro $line";
 #print STDERR "ARGS @$args\n" if defined ($args);
     my $result_text = undef;
     if ($macro eq 'c' or $macro eq 'comment' and scalar(@$args))
@@ -694,11 +685,7 @@ sub docbook_misc_commands($$$$$)
        chomp($arg);
        $result_text = "<title>$arg</title>\n";
     }
-    else
-    {
-       return ($line, 0, undef, undef);
-    }
-    return ($result_line, 1, $result_text, undef);
+    return ($macro, $line, $result_text);
 }
 
 sub docbook_foot_line_and_ref($$$$$$$)

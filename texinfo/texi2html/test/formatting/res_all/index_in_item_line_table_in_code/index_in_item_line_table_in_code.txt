@@ -1,0 +1,13 @@
+test index entries in @item @table in @code
+*******************************************
+
+
+index
+`opt'
+More text
+2 index
+`nopt'
+Even more
+
+
+

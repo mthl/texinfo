@@ -1,0 +1,12 @@
+Test dircategory and direntry
+*****************************
+
+Text
+
+* chapter::
+
+1 chapter
+*********
+
+In chapter
+

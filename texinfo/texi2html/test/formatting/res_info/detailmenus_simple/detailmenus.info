@@ -1,0 +1,106 @@
+This is detailmenus.info, produced by makeinfo version 4.13 from
+detailmenus.texi.
+
+
+File: detailmenus.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+* chapter::               chapter
+
+Menu comment
+
+* chapter2:description.   Chapter 2
+* s--ect,ion:: s-ect,ion
+
+Menu comment
+"simple-double-three--four---"
+
+
+* subsection ``simple-double--three---four----'':: 
+* subsubsection::
+
+Other comment
+
+* chapter3::
+* s--ect,ion:: s-ect,ion
+
+Menu comment
+"simple-double-three--four---"
+
+
+* subsection ``simple-double--three---four----'':: 
+* subsubsection::
+* chapter4::
+
+
+File: detailmenus.info,  Node: chapter,  Next: chapter2,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+* Menu:
+
+* s--ect,ion:: s-ect,ion
+* subsubsection::                        FIXME this should lead to a warning
+
+
+File: detailmenus.info,  Node: s--ect,ion,  Up: chapter
+
+1.1 A section
+=============
+
+* Menu:
+
+* subsection ``simple-double--three---four----'':: 
+
+
+File: detailmenus.info,  Node: subsection ``simple-double--three---four----'',  Up: s--ect,ion
+
+1.1.1 subsection "simple-double-three--four---"
+-----------------------------------------------
+
+* Menu:
+
+* subsubsection::
+
+
+File: detailmenus.info,  Node: subsubsection,  Up: subsection ``simple-double--three---four----''
+
+1.1.1.1 subsubsection
+.....................
+
+
+File: detailmenus.info,  Node: chapter2,  Next: chapter3,  Prev: chapter,  Up: Top
+
+2 chapter 2
+***********
+
+
+File: detailmenus.info,  Node: chapter3,  Next: chapter4,  Prev: chapter2,  Up: Top
+
+3 chapter 3
+***********
+
+
+File: detailmenus.info,  Node: chapter4,  Prev: chapter3,  Up: Top
+
+4 chapter 4
+***********
+
+
+
+Tag Table:
+Node: Top84
+Node: chapter580
+Node: s--ect,ion794
+Node: subsection ``simple-double--three---four----''944
+Node: subsubsection1167
+Node: chapter21313
+Node: chapter31424
+Node: chapter41536
+
+End Tag Table

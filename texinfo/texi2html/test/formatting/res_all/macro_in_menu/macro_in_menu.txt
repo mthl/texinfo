@@ -1,0 +1,14 @@
+Top
+***
+
+* (gcc):: 
+
+Some text.
+
+* (manual):: desc
+comment
+* (info):: before verbatim 
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+After menu
+

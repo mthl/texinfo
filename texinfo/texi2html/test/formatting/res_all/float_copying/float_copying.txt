@@ -1,0 +1,28 @@
+Top
+***
+
+
+See the caption public domain anchor.
+
+See the float Copyright notice 1.
+
+
+
+Public domain is not really a licence, as it means than 
+the author abandon his copyright.
+
+
+
+Copyright notice 1: The Public Domain notice(1)
+
+
+* Copying and floats::
+
+(1)
+
+The caption copying footnote
+
+
+
+see Copying and floats.
+

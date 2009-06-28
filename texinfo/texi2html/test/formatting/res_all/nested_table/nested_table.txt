@@ -1,0 +1,73 @@
+Element
+*******
+
+
+Quotation
+first item
+second itemx
+
+Text.
+
+second item
+
+Text 2
+
+before empty itemx
+
+after an empty itemx, before an empty item
+
+in item before end table
+
+Something.
+in item
+Text without blank line
+second item
+Text without blank line 2
+After table.
+
+Example
+first item
+second itemx
+
+Text.
+
+second item
+
+Text 2
+
+before empty itemx
+
+after an empty itemx, before an empty item
+
+in item before end table
+
+Something.
+in item
+Text without blank line
+second item
+Text without blank line 2
+After table.
+
+Double quotation
+first item
+second itemx
+
+Text.
+
+second item
+
+Text 2
+
+before empty itemx
+
+after an empty itemx, before an empty item
+
+in item before end table
+
+Something.
+in item
+Text without blank line
+second item
+Text without blank line 2
+After table.
+

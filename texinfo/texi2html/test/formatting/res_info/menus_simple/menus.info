@@ -1,0 +1,133 @@
+This is menus.info, produced by makeinfo version 4.13 from menus.texi.
+
+
+File: menus.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2,   Chapter 2
+
+   Text.
+
+* Menu:
+
+* (gcc):: text 
+- item
+     table line
+
+   Some text.
+
+* Menu:
+
+* (manual):: desc
+comment
+* (info):: before verbatim 
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+
+* (manual2):: $Log $
+* (truc):: description
+acronym
+
+   After menu
+
+* Menu:
+
+* (manual):: 
+item
+
+     * (node)::
+     menu comment ?
+     * (node2):: description ?
+       description continue ?
+     comment.
+
+
+File: menus.info,  Node: chapter,  Next: chapter2,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+(1)
+
+* Menu:
+
+* s--ect,ion:: s-ect,ion
+
+Menu comment
+"simple-double-three--four---"
+
+
+   ---------- Footnotes ----------
+
+   (1) in footnote
+
+
+File: menus.info,  Node: s--ect,ion,  Up: chapter
+
+1.1 A section
+=============
+
+* Menu:
+
+* subsection ``simple-double--three---four----'':: 
+
+
+File: menus.info,  Node: subsection ``simple-double--three---four----'',  Up: s--ect,ion
+
+1.1.1 subsection "simple-double-three--four---"
+-----------------------------------------------
+
+* Menu:
+
+     * subsubsection::
+     Menu comment
+
+     * a description:(manual) other manual node.   Chapter 2
+     * Other file: (foo).            Test
+
+
+File: menus.info,  Node: subsubsection,  Up: subsection ``simple-double--three---four----''
+
+1.1.1.1 subsubsection
+.....................
+
+
+File: menus.info,  Node: chapter2,  Prev: chapter,  Up: Top
+
+2 chapter 2
+***********
+
+     * Menu:
+
+     * section in chapter 2:: in description 
+
+     in cartouche
+
+
+File: menus.info,  Node: section in chapter 2,  Up: chapter2
+
+2.1 section in chapter 2
+========================
+
+
+
+Tag Table:
+Node: Top72
+Node: chapter630
+Ref: chapter-Footnote-1848
+Node: s--ect,ion868
+Node: subsection ``simple-double--three---four----''1012
+Ref: anchor1356
+Node: subsubsection1356
+Node: chapter21496
+Node: section in chapter 21664
+
+End Tag Table

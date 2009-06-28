@@ -1,0 +1,23 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_in_item_line_table_in_code.info
+
+@node Top
+@top test index entries in @@item @@table in @@code
+
+@code{
+
+@table @asis
+@item @cindex index
+@option{opt}
+More text
+@item @cindex 2 index
+@option{nopt}
+Even more
+@end table
+
+}
+
+@vindex another index
+
+@bye

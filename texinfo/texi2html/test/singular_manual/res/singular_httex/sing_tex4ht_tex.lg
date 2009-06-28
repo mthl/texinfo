@@ -8,7 +8,6 @@ htfcss: cmmib font-style: italic; font-weight: bold;
 File: sing_tex4ht_tex.html
 File: sing_tex4ht_tex.css
 File: sing_tex4ht_tex.tmp
-Font_Class(1,"1"): <img  src="" alt="" class="%s-%dx-x-%x" />
 Css: p.noindent { text-indent: 0em }
 Css: td p.noindent { text-indent: 0em; margin-top:0em; }
 Css: p.nopar { text-indent: 0em; }
@@ -133,7 +132,6 @@ Font("cmmi","10","10","100")
 Font("cmmi","7","7","100")
 Font("cmmi","5","5","100")
 Font("cmsy","10","10","100")
---- needs --- sing_tex4ht_tex.idv[75] ==> cmsy10-32.png ---
 Font("cmsy","7","7","100")
 Font("cmsy","5","5","100")
 Font("cmex","10","10","100")

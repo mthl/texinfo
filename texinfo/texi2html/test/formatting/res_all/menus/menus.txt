@@ -1,0 +1,101 @@
+Top
+***
+
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2,   Chapter 2
+
+Text.
+
+* (gcc):: text 
+- item
+table line
+
+Some text.
+
+* (manual):: desc
+comment
+* (info):: before verbatim 
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+
+* (manual2):: $Log $
+* (truc):: description
+acronym
+After menu
+
+* (manual):: 
+item
+
+* (node)::
+menu comment ?
+* (node2):: description ?
+  description continue ?
+comment.
+
+1 chapter
+*********
+
+(1)
+
+* s--ect,ion:: s-ect,ion
+
+Menu comment
+"simple-double-three--four---"
+
+
+
+1.1 A section
+=============
+
+* subsection ``simple-double--three---four----'':: 
+
+1.1.1 subsection "simple-double-three--four---"
+-----------------------------------------------
+
+* subsubsection::
+Menu comment
+
+* a description:(manual) other manual node.   Chapter 2
+* Other file: (foo).            Test
+
+
+1.1.1.1 subsubsection
+.....................
+
+2 chapter 2
+***********
+
+* section in chapter 2:: in description 
+in cartouche
+
+2.1 section in chapter 2
+========================
+
+Table of Contents
+*****************
+
+Top
+1. chapter
+ 1.1 A section
+  1.1.1 subsection "simple-double-three--four---"
+   1.1.1.1 subsubsection
+2. chapter 2
+ 2.1 section in chapter 2
+
+Short Table of Contents
+***********************
+
+Top
+1. chapter
+2. chapter 2
+
+
+Footnotes
+*********
+
+(1)
+in footnote
+

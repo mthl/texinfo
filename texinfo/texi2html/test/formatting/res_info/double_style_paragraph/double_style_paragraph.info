@@ -1,0 +1,19 @@
+This is double_style_paragraph.info, produced by makeinfo version 4.13
+from double_style_paragraph.texi.
+
+
+File: double_style_paragraph.info,  Node: Top,  Up: (dir)
+
+2 style commands enclosing 2 paragraphs
+***************************************
+
+_* First para.
+
+   Second para.  * _
+
+
+
+Tag Table:
+Node: Top106
+
+End Tag Table

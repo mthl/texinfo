@@ -1,0 +1,40 @@
+Test kbdinputstyle
+******************
+
+
+@kbdinputstyle code
+
+
+in code out of example in nested code.
+kbd out of example.
+kbd in code.
+
+in example
+in code in example in nested code.
+kbd in example.
+kbd in code in example.
+
+@kbdinputstyle example
+
+
+in code out of example in nested code.
+kbd out of example.
+kbd in code.
+
+in example
+in code in example in nested code.
+kbd in example.
+kbd in code in example.
+
+@kbdinputstyle distinct
+
+
+in code out of example in nested code.
+kbd out of example.
+kbd in code.
+
+in example
+in code in example in nested code.
+kbd in example.
+kbd in code in example.
+

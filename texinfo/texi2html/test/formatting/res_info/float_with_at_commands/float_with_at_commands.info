@@ -1,0 +1,24 @@
+This is float_with_at_commands.info, produced by makeinfo version 4.13
+from float_with_at_commands.texi.
+
+
+File: float_with_at_commands.info,  Node: Top,  Up: (dir)
+
+Test floats with @-commands
+***************************
+
+Ceci est notre premie`re entre'e.
+
+entre'e 1: La premie`re entre'e est importante
+
+* Menu:
+
+* entre'e 1: La premie`re ...:           premie`re entre'e.
+
+
+
+Tag Table:
+Node: Top106
+Ref: premie`re entre'e224
+
+End Tag Table

@@ -1,0 +1,26 @@
+This is tables.info, produced by makeinfo version 4.13 from tables.texi.
+
+
+
+File: tables.info,  Node: Top,  Up: (dir)
+
+Test tables
+***********
+
+first item
+     First item text
+
+     *note title in first item second item @end table: Top.
+
+Unnumbered section
+******************
+
+*note title: Top.
+     long title Item line
+
+
+
+Tag Table:
+Node: Top75
+
+End Tag Table

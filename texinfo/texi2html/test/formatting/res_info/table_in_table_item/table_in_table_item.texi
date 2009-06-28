@@ -1,0 +1,49 @@
+This is table_in_table_item.texi, produced by makeinfo version 4.13 from
+table_in_table_item.texi.
+
+
+File: table_in_table_item.texi,  Node: Top,  Up: (dir)
+
+Test table nested in table item
+*******************************
+
+item         
+     in nested table item
+          in nested table line
+
+     in table line
+
+   And in code
+
+   `
+item         
+     in table in table item
+             in nested table line
+
+   '
+
+   and in preformatted
+
+     item in preformatted    
+
+          in table in table item in preformatted
+                  in nested table line in preformatted
+                  
+   and in preformatted in code
+
+   `
+
+     item in preformatted    
+
+          in table in table item in preformatted
+                  in nested table line in preformatted
+                  
+          '
+
+
+
+
+Tag Table:
+Node: Top100
+
+End Tag Table

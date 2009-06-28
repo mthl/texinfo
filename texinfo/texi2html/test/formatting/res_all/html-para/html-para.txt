@@ -1,0 +1,12 @@
+Top of HTML paragraph test
+**************************
+
+@value{} should work at the beginning of a new paragraph.
+
+i dotless should not trigger error messages at the beginning
+of a new paragraph.
+
+SMALL-CAPS should work at the beginning of a new paragraph.
+
+\\@definfoenclose// should work at the beginning of a new paragraph.
+

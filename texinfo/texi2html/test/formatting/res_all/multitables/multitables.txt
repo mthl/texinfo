@@ -1,0 +1,17 @@
+Test multitables
+****************
+
+ truc bidule
+ begin item
+
+new paragraph in item. begin tab
+
+new paragraph in tab.
+
+ truc bidule example
+ begin item example
+
+new paragraph in item. example begin tab example
+
+new paragraph in tab. example
+

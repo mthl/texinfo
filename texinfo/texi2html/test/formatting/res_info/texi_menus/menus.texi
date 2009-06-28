@@ -1,0 +1,114 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename menus.info
+
+@node Top
+@top Top
+
+@menu
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2,   Chapter 2
+@end menu
+
+Text.
+
+@menu
+* (gcc):: text @table @minus
+@item item
+table line
+@end table
+@end menu
+
+Some text.
+
+@menu
+* (manual):: desc
+comment
+* (info):: before verbatim @verbatim
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+
+@end verbatim
+* (manual2):: $@html
+
+<i></i>
+@end html
+Log $
+* (truc):: @acronym{description
+acronym}
+@end menu
+After menu
+
+@menu
+* (manual):: @table @asis
+@item item
+
+* (node)::
+menu comment ?
+* (node2):: description ?
+  description continue ?
+comment.
+@end table
+@end menu
+
+@node chapter
+@chapter chapter
+
+@footnote{in footnote}
+
+@format
+@menu 
+* s--ect@comma{}ion:: s--ect@comma{}ion
+
+Menu comment
+``simple-double--three---four----''@*
+
+@end menu
+@end format
+
+@node s--ect@comma{}ion
+@section A section
+
+@menu
+* subsection ``simple-double--three---four----'':: 
+@end menu
+
+@node subsection ``simple-double--three---four----''
+@subsection subsection ``simple-double--three---four----''
+
+@menu
+@example
+* subsubsection::
+Menu comment
+
+* a description:(manual) other manual node.   Chapter 2
+* Other file: (foo).            Test
+@end example
+@end menu
+
+@anchor{anchor}
+
+@node subsubsection
+@subsubsection subsubsection
+
+@node chapter2
+@chapter chapter 2
+
+@example
+@menu
+* section in chapter 2:: in description @cartouche
+in cartouche
+@end cartouche
+@end menu
+@end example
+
+@node section in chapter 2
+@section section in chapter 2
+
+@contents
+@shortcontents
+
+@bye

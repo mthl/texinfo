@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.293 2009-06-22 00:13:39 pertusus Exp $
+# $Id: texi2html.pl,v 1.294 2009-06-28 23:45:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -469,6 +469,8 @@ $inline_contents
 $program_string
 
 $preserve_misc_command
+$misc_command_line
+$misc_command_line_texi
 $protect_text
 $anchor
 $anchor_label
@@ -1517,6 +1519,8 @@ sub t2h_no_unicode_cross_manual_normal_text($$)
         else
         {
              echo_error("Bug: unknown character in cross ref (likely in infinite loop)");
+             print STDERR "Text: !!$text!!\n";
+             sleep 1;
         }
     }
    
@@ -1851,20 +1855,6 @@ $reference_sec2level{'appendixsection'} = 2;
 $reference_sec2level{'majorheading'} = 1;
 $reference_sec2level{'chapheading'} = 1;
 $reference_sec2level{'centerchap'} = 1;
-
-my %reference_content_element =
-   (
-     'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
-         'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
-         'contents' => 1, 'texi' => '_contents' },
-     'shortcontents' => { 
-        'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
-        'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
-        'shortcontents' => 1, 'texi' => '_shortcontents' },
-   );
-
-my %all_content_elements;
-my %aftertitlepage_command;
 
 sub stop_paragraph_command($)
 {
@@ -2252,6 +2242,10 @@ sub unicode_to_protected($)
 sub unicode_to_transliterate($)
 {
     my $text = shift;
+    if (chomp($text))
+    {
+       print STDERR "Strange: end of line to transliterate: $text\n";
+    }
     my $result = '';
     while ($text ne '')
     {
@@ -2299,6 +2293,7 @@ sub unicode_to_transliterate($)
         else
         {
              print STDERR "Bug: unknown character in cross ref transliteration (likely in infinite loop)\n";
+             print STDERR "Text: !!$text!!\n";
              sleep 1;
         }
     }
@@ -3284,7 +3279,7 @@ Texi2HTML::Config::t2h_default_copy_style_map(\%Texi2HTML::Config::default_style
 
 
 # Fill in the %style_type hash, a hash associating style @-comand with 
-# the type, 'accent', real 'style', simple' style, or 'special'.
+# the type, 'accent', real 'style', 'simple_style', or 'special'.
 # 'simple_style' styles don't extend accross lines.
 my %style_type = (); 
 my @simple_styles = ('ctrl', 'w', 'url','uref','indicateurl','email',
@@ -3529,7 +3524,7 @@ foreach my $key (keys(%cross_ref_style_map_texi))
     }
 }
 
-if ($Texi2HTML::Config::L2H)
+if ($Texi2HTML::Config::L2H and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'html')
 {
    push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
@@ -4260,6 +4255,22 @@ my %special_commands;       # hash for the commands specially handled
 
 # element for content and shortcontent if on a separate page
 my %content_element;
+my %reference_content_element =
+   (
+     'contents' => { 'id' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+         'target' => $Texi2HTML::Config::misc_pages_targets{'Contents'},
+         'contents' => 1, 'texi' => '_contents' },
+     'shortcontents' => { 
+        'id' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
+        'target' => $Texi2HTML::Config::misc_pages_targets{'Overview'}, 
+        'shortcontents' => 1, 'texi' => '_shortcontents' },
+   );
+
+# holds content elements located with @*contents commands
+my %all_content_elements;
+# FIXME use directly the @-commands and get_conf setcontentsaftertitlepage
+my %aftertitlepage_command;
+
 
 # common code for headings and sections
 sub new_section_heading($$$)
@@ -5226,7 +5237,7 @@ sub misc_command_text($$$$$$)
     my $state = shift;
     my $text = shift;
     my $line_nr = shift;
-    my ($skipped, $remaining, $args);
+    my ($skipped, $remaining, $args, $result);
 
     # The strange condition associated with 'keep_texi' is 
     # there because for an argument appearing on an @itemize 
@@ -5244,6 +5255,17 @@ sub misc_command_text($$$$$$)
 
     # if it is true the command args are kept so the user can modify how
     # they are skipped and handle them as unknown @-commands
+
+    ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
+
+    if ($state->{'remove_texi'})
+    {
+        ($macro, $line, $result) = &$Texi2HTML::Config::misc_command_line_texi($macro, $line, $args, $stack, $state);
+    }
+    else
+    {
+        ($macro, $line, $result) = &$Texi2HTML::Config::misc_command_line($macro, $line, $args, $stack, $state);
+    }
     my $keep = $Texi2HTML::Config::misc_command{$macro}->{'keep'};
 
     if ($macro eq 'sp')
@@ -5317,9 +5339,8 @@ sub misc_command_text($$$$$$)
         common_misc_commands($macro, $line, 2, $line_nr);
     }
 
-    ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $macro);
-    return ($skipped.$remaining) if ($keep);
-    return $remaining;
+    return ($skipped.$remaining, $result) if ($keep);
+    return ($remaining, $result);
 }
 
 # merge the things appearing before the first @node or sectionning command
@@ -5412,7 +5433,7 @@ my @index_labels;                  # array corresponding with @?index commands
 sub cross_manual_links()
 {
     print STDERR "# Doing ".scalar(keys(%nodes))." cross manual links ".
-      scalar(@index_labels). "index entries\n" 
+      scalar(@index_labels). " index entries\n" 
        if ($T2H_DEBUG);
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $::style_map_texi_ref = \%cross_ref_style_map_texi;
@@ -5483,6 +5504,7 @@ sub cross_manual_links()
         foreach my $key (keys(%nodes))
         {
             my $node = $nodes{$key};
+            #print STDERR "TRANSLITERATE:$key,$node\n";
             if (defined($node->{'texi'}))
             {
                  $node->{'cross_manual_file'} = remove_texi($node->{'texi'});
@@ -5492,6 +5514,7 @@ sub cross_manual_links()
 
         foreach my $entry (@index_labels, values(%sections), values(%headings))
         {
+            #print STDERR "TRANSLITERATE($entry) $entry->{'texi'}\n";
             $entry->{'cross'} = remove_texi($entry->{'texi'});
             $entry->{'cross'} = unicode_to_protected(unicode_to_transliterate($entry->{'cross'})) if ($Texi2HTML::Config::USE_UNICODE);
         }
@@ -11857,6 +11880,7 @@ sub scan_structure($$$$;$)
                         {
                             $cline =~ s/,.*$//;
                         }
+                        $label_texi = undef;
                     }
                     else
                     {
@@ -12011,6 +12035,19 @@ sub scan_structure($$$$;$)
     }
     return 1;
 } # end scan_structure
+
+sub check_bad_end_argument ($$$)
+{
+  my $command = shift;
+  my $line = shift;
+  my $line_nr = shift;
+
+  if ($line =~ /^(\S+)/)
+  {
+    my $symbols = $1;
+    echo_error ("Bad argument `${command}${symbols}' to `\@end', using `${command}'.", $line_nr);
+  }
+}
 
 sub close_style_command($$$$$;$)
 {
@@ -12243,7 +12280,7 @@ sub scan_line($$$$;$)
 
         # The commands to ignore are ignored now in case after ignoring them
         # there is an empty line, to be able to stop the paragraph
-            my $leading_spaces = '';
+            #my $leading_spaces = '';
             
             while (1)
             {
@@ -12252,15 +12289,18 @@ sub scan_line($$$$;$)
                 if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
                 {
                     $cline =~ s/^(\s*)\@$next_tag//;
-                    $leading_spaces .= $1;
-                    $cline = misc_command_text($cline, $next_tag, $stack, $state, $text, $line_nr);
+                    #$leading_spaces .= $1;
+                    add_prev ($text, $stack, do_text($1, $state));
+                    my $result;
+                    ($cline, $result) = misc_command_text($cline, $next_tag, $stack, $state, $text, $line_nr);
+                    add_prev($text, $stack, $result) if (defined($result));
                 }
                 else
                 {
                     last;
                 }
             }
-            add_prev ($text, $stack, $leading_spaces);
+            #add_prev ($text, $stack, $leading_spaces);
             return '' if (!defined($cline) or $cline eq '');
         }
         my $top_stack = top_stack($stack);
@@ -12271,6 +12311,7 @@ sub scan_line($$$$;$)
             {
                 if ($state->{'raw'})
                 {
+                    print STDERR "#within raw $state->{'raw'}(empty line):$cline" if ($T2H_DEBUG & $DEBUG_FORMATS);
                     add_prev($text, $stack, $cline);
                 }
                 else
@@ -12341,6 +12382,7 @@ sub scan_line($$$$;$)
             # don't protect html, it is done by Texi2HTML::Config::raw if needed
             {
                 $cline =~ s/^(.*?)\@end\s$state->{'raw'}//;
+                check_bad_end_argument ($state->{'raw'}, $cline, $line_nr);
                 print STDERR "# end raw $state->{'raw'}\n" if ($T2H_DEBUG & $DEBUG_FORMATS);
                 add_prev ($text, $stack, $1);
                 my $style = pop @$stack;
@@ -12462,6 +12504,7 @@ sub scan_line($$$$;$)
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
+            check_bad_end_argument ($end_tag, $cline, $line_nr);
             if (!close_menu_description($text, $stack, $state, "\@end $end_tag", $line_nr))
             {
                close_paragraph($text, $stack, $state, "\@end $end_tag", $line_nr); 
@@ -12570,7 +12613,9 @@ sub scan_line($$$$;$)
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
                 # Handle the misc command
-                $cline = misc_command_text($cline, $macro, $stack, $state, $text, $line_nr);
+                my $result;
+                ($cline, $result) = misc_command_text($cline, $macro, $stack, $state, $text, $line_nr);
+                add_prev($text, $stack, $result) if (defined($result));
                 return unless (defined($cline));
                 unless ($Texi2HTML::Config::misc_command{$macro}->{'keep'})
                 {
@@ -12994,9 +13039,11 @@ sub scan_line($$$$;$)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
                 my $ignore_center = 0;
+                # @center is forbidden in @-command with braces, @*table
+                # @item line, @multitable, or another @center
                 if ($macro eq 'center' and @$stack)
                 {
-                   my $top_stack = top_stack($stack);
+                   my $top_stack = top_stack($stack, 1);
                    if (exists($top_stack->{'style'}) or (defined($top_stack->{'format'}) and ($top_stack->{'format'} eq 'term' or $top_stack->{'format'} eq 'cell')) or $state->{'preformatted'} or $state->{'paragraph_style'}->[-1] eq 'center')
                    {
                        $ignore_center = 1;
@@ -13327,34 +13374,8 @@ sub add_term($$$$)
     my $term = pop @$stack;
     my $format = $stack->[-1];
     $format->{'paragraph_number'} = 0;
-#    my $formatted_command;
-#    my $leading_spaces;
-#    my $trailing_spaces;
-#    my $term_formatted;
     chomp ($term->{'text'});
-    #if (exists($::style_map_ref->{$format->{'command'}}) and ($style_type{$format->{'command'}} eq 'style'))
-# and 
-#       !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and ($style_type{$format->{'command'}} eq 'style'))
-    #{
-         #$leading_spaces = '';
-         #$trailing_spaces = '';
-         #$term_formatted = $term->{'text'};
-         #$term_formatted  =~ s/^(\s*)//o;
-         #$leading_spaces = $1 if (defined($1));
-         #$term_formatted  =~ s/(\s*)$//o;
-         #$trailing_spaces = $1 if (defined($1));
-         #unless ($format->{'command_opened'})
-         #{
-         #    open_arg($format->{'command'}, 0, $state);
-         #}
-         #$term_formatted = do_simple($format->{'command'}, $term_formatted, $state, [$term_formatted]); 
-#         $term->{'text'} = $leading_spaces. $term->{'text'} .$trailing_spaces;
-    #}
-    #elsif (exists($::things_map_ref->{$format->{'command'}}))
-    #{
-    #    $formatted_command = do_simple($format->{'command'}, '', $state);
-    #    $format->{'formatted_command'} = $formatted_command;
-    #}
+
     my ($index_label, $formatted_index_entry);
     if ($format->{'format'} =~ /^(f|v)/o)
     {
@@ -13362,9 +13383,9 @@ sub add_term($$$$)
         ($index_entry, $formatted_index_entry, $index_label) = do_index_entry_label($format->{'format'}, $state,$line_nr, $format->{'texi_line'});
         print STDERR "Bug: no index entry for $term->{'text'}\n" unless defined($index_label);
     }
+
     my $item_result = &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $state->{'command_stack'}, $format->{'item_cmd'}, $formatted_index_entry);
     add_prev($text, $stack, $item_result);
-    #$state->{'no_paragraph'}--;
     return $format;
 }
 

@@ -241,10 +241,14 @@ something, other thing: something, other thing
 Note, the note: Note, the note
 
 
+
 Empty: 
-: 
 
 : 
+
+
+: 
+
 A small quot--ation
 
 Note: A small Note
@@ -462,7 +466,7 @@ f-lushleft
 
 f-lushright
 
- ce-ntered line
+ce-ntered line
 
 \input texinfo @c -*-texinfo-*-
 
@@ -823,10 +827,14 @@ something, other thing: something, other thing
 Note, the note: Note, the note
 
 
+
 Empty: 
-: 
 
 : 
+
+
+: 
+
 A small quot--ation
 
 Note: A small Note
@@ -1044,7 +1052,7 @@ f-lushleft
 
 f-lushright
 
- ce-ntered line
+ce-ntered line
 
 \input texinfo @c -*-texinfo-*-
 
@@ -1403,10 +1411,14 @@ something, other thing: something, other thing
 Note, the note: Note, the note
 
 
+
 Empty: 
-: 
 
 : 
+
+
+: 
+
 A small quot---ation
 
 Note: A small Note

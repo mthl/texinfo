@@ -1,0 +1,79 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename commands_in_ifset.info
+@node Top
+@top Top section
+@c 
+@c test a lot of constructs in @ifset, imbricated ifset, macro expansion
+@c in ifset. The ifset are not set. Otherwise there would be a lot of
+@c syntax errors.
+
+@c test @definfoenclose and @documentencoding in ifset
+
+
+@strong{text}
+
+@c test all the regular constructs in ifset
+
+
+@c test @copying in ifset
+
+
+
+@c test indices, @contents and @bye in ifset
+
+
+@c test that @end ifset is ignored when appearing in @ignore
+
+
+@c test that lone braces are ignored in @ifset
+
+
+
+@c test that @end ifset is ignored when appearing in @verb, @verbatim,
+@c html,
+
+
+
+
+@c test that there is no error with a @table, @example, @deffn and
+@c @itemize opening in @ifset
+
+
+
+
+
+@c test that there is no error with a @table, @example, @deffn and
+@c @itemize end in @ifset
+
+
+
+
+
+@c test that @-command opening is ignored when appearing in @ignore
+
+
+@c test that @deffnx is ignored in @ifset
+
+
+@c test nested ifset
+
+
+@c test that some wrong constructs are rightly ignored in nested @ifset
+
+
+@c test for @node in @ifset
+
+
+@c test for @ifset without arg in @ifset
+
+
+@c define a macro and call it within a @ifset
+
+
+@c now call the macro within @ifset
+
+
+
+
+Line 1158 Before bye
+@bye

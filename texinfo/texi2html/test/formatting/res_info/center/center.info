@@ -1,0 +1,87 @@
+This is center.info, produced by makeinfo version 4.13 from center.texi.
+
+
+
+File: center.info,  Node: Top,  Up: (dir)
+
+Test @center
+************
+
+A center
+                             Centered line
+   And a center after empty line
+
+                    centered line after empty line
+
+   And a center at end of line
+
+   And an empty center
+
+                              *note Top::
+
+                      *note title very long: Top.
+
+     Centered text with a footnote(1) and text after the footnote.
+
+   center in a @code:
+
+   ` Centered code line'
+
+ centered text in item
+     table line
+                      centered text in table line
+          centered line with item second item on center line
+
+               unclosed command on center line `in code
+   Still in code'
+
+        unclosed command on center line with paragraph `in code
+
+   Still in code after paragraph'
+
+      unclosed command on center line with other center `in code
+              still in code on center line'. After code.
+
+unclosed command on center line with other center and paragraph `in code
+
+              still in code on center line'. After code.
+
+   `begin samp  center and end samp' after end of samp
+
+   Empty double center:
+
+                after first center  after second center
+
+                       `something  end of samp'
+
+               after first center ` after second center
+
+   End of samp'
+
+Heading
+*******
+
+truc  bidule
+      
+ctruc cbidule
+      
+cstruc
+
+                    before the table item in center
+   Line in center
+second item
+@end table
+   ---------- Footnotes ----------
+
+   (1) This footnote shows an important feature of the centered text.
+
+     item
+          line
+
+
+
+Tag Table:
+Node: Top75
+Ref: Top-Footnote-11579
+
+End Tag Table

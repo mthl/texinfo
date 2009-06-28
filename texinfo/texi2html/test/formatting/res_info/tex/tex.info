@@ -1,0 +1,36 @@
+This is tex.info, produced by makeinfo version 4.13 from tex.texi.
+
+
+File: tex.info,  Node: Top,  Up: (dir)
+
+Tests
+*****
+
+Now tex on the following line, valid fot tex (with @end tex on a line).
+ some
+
+tex \TeX 
+
+   Same that @html (but empty following line not ignored).
+
+   Test of @math Here some {x^i}\over{\tan y}.
+
+   Maths with protected \: a \ b.
+
+   Maths with code @-command:
+
+   `math code'
+
+   Maths with code @-command and braces:
+
+    \underline{`math \hbox{ code }}' \sum_{i}{\underline{f}}
+
+   @\ outside of math
+
+
+
+
+Tag Table:
+Node: Top68
+
+End Tag Table

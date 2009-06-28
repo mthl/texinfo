@@ -1,0 +1,57 @@
+This is at_command_glued.info, produced by makeinfo version 4.13 from
+at_command_glued.texi.
+
+
+File: at_command_glued.info,  Node: Top,  Up: (dir)
+
+@-commmands with some text preceding and following them
+*******************************************************
+
+at@.  TeXTeXTeX.  code`in code'code.  acronymABC (aaa bb cc)acronym.
+acronym2ABCacronym.  emailmali <somebody>email.  ref*note Top::ref.
+Foornote(1)after footnote.  accenti^accent.  and star
+star.  noindentafter noindent sp
+
+
+
+
+   anchoranchor index
+
+   in example
+     at@.
+     TeXTeXTeX.
+     code`in code'code.
+     acronymABC (aaa bb cc)acronym.
+     acronym2ABCacronym.
+     emailmali <somebody>email.
+     ref*note Top::ref.
+     Foornote(2)after footnote.
+     accenti^accent.
+     and star
+     star.
+     noindentafter noindent
+     sp
+
+
+
+     anchoranchor
+     index
+
+   bye
+
+   ---------- Footnotes ----------
+
+   (1) in footnote
+
+   (2) in footnote
+
+
+
+Tag Table:
+Node: Top94
+Ref: anchor499
+Ref: anchor ex822
+Ref: Top-Footnote-1885
+Ref: Top-Footnote-2905
+
+End Tag Table

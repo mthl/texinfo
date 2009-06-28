@@ -1,0 +1,77 @@
+Test inter item ignored commands
+********************************
+
+
+ e-mph item
+
+* i-tem 1
+* i-tem 2
+
+T-ext before items.
+* bullet item
+
+1. e-numerate
+
+ truc
+ trouc
+
+ mu-ltitable headitem another tab
+ mu-ltitable item multitable tab
+ mu-ltitable item 2 multitable tab 2
+ lone mu-ltitable item
+
+ -- fset: i a g
+ -- Command:  log trap1
+ -- cmde2: id `i' ule truc
+
+In deff item.
+
+a
+l-ine
+
+a
+b
+l-ine
+
+a
+b
+l-ine
+c
+d
+
+abb
+l-ine
+
+Texte before first item.
+abb
+
+cp
+* Index:
+* also a cindex in itemize: Test inter item ignored commands.
+* also a cindex in itemize: Test inter item ignored commands.
+* between deffnx: Test inter item ignored commands.
+* cindex in deff item: Test inter item ignored commands.
+* cindex in table: Test inter item ignored commands.
+* cindex in table: Test inter item ignored commands.
+* index entry between empty lines: Test inter item ignored commands.
+* index entry between item and itemx: Test inter item ignored commands.
+* index entry right after @item: Test inter item ignored commands.
+* index entry within itemize: Test inter item ignored commands.
+* index entry within multitable: Test inter item ignored commands.
+
+fn
+* Index:
+* a: Test inter item ignored commands.
+* b: Test inter item ignored commands.
+* c: Test inter item ignored commands.
+* d: Test inter item ignored commands.
+* i: Test inter item ignored commands.
+* id `i' ule: Test inter item ignored commands.
+* log trap1: Test inter item ignored commands.
+
+vr
+* Index:
+* a: Test inter item ignored commands.
+* a: Test inter item ignored commands.
+* b: Test inter item ignored commands.
+

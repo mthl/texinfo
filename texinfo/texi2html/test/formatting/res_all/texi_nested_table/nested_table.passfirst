@@ -1,0 +1,97 @@
+nested_table.texi(,2) 
+nested_table.texi(,3) @setfilename nested_table.info
+nested_table.texi(,4) 
+nested_table.texi(,5) @node Top
+nested_table.texi(,6) @top Element
+nested_table.texi(,7) 
+nested_table.texi(,35) 
+nested_table.texi(,36) Quotation
+nested_table.texi(,37) @quotation
+nested_table.texi(myvtable,38) @vtable @asis
+nested_table.texi(myvtable,38) @item first item
+nested_table.texi(myvtable,38) @itemx second itemx
+nested_table.texi(myvtable,38) 
+nested_table.texi(myvtable,38) Text.
+nested_table.texi(myvtable,38) 
+nested_table.texi(myvtable,38) @item second item
+nested_table.texi(myvtable,38) 
+nested_table.texi(myvtable,38) Text 2
+nested_table.texi(myvtable,38) 
+nested_table.texi(myvtable,38) @item before empty itemx
+nested_table.texi(myvtable,38) @itemx
+nested_table.texi(myvtable,38) @itemx after an empty itemx, before an empty item
+nested_table.texi(myvtable,38) @item 
+nested_table.texi(myvtable,38) @item in item before end table
+nested_table.texi(myvtable,38) @end vtable
+nested_table.texi(myvtable,38) 
+nested_table.texi(myvtable,38) Something.
+nested_table.texi(myvtable,38) @table @emph
+nested_table.texi(myvtable,38) @item in item
+nested_table.texi(myvtable,38) Text without blank line
+nested_table.texi(myvtable,38) @item second item
+nested_table.texi(myvtable,38) Text without blank line 2
+nested_table.texi(myvtable,38) @end table
+nested_table.texi(myvtable,38) After table.
+nested_table.texi(,39) @end quotation
+nested_table.texi(,40) 
+nested_table.texi(,41) Example
+nested_table.texi(,42) @example
+nested_table.texi(myvtable,43) @vtable @asis
+nested_table.texi(myvtable,43) @item first item
+nested_table.texi(myvtable,43) @itemx second itemx
+nested_table.texi(myvtable,43) 
+nested_table.texi(myvtable,43) Text.
+nested_table.texi(myvtable,43) 
+nested_table.texi(myvtable,43) @item second item
+nested_table.texi(myvtable,43) 
+nested_table.texi(myvtable,43) Text 2
+nested_table.texi(myvtable,43) 
+nested_table.texi(myvtable,43) @item before empty itemx
+nested_table.texi(myvtable,43) @itemx
+nested_table.texi(myvtable,43) @itemx after an empty itemx, before an empty item
+nested_table.texi(myvtable,43) @item 
+nested_table.texi(myvtable,43) @item in item before end table
+nested_table.texi(myvtable,43) @end vtable
+nested_table.texi(myvtable,43) 
+nested_table.texi(myvtable,43) Something.
+nested_table.texi(myvtable,43) @table @emph
+nested_table.texi(myvtable,43) @item in item
+nested_table.texi(myvtable,43) Text without blank line
+nested_table.texi(myvtable,43) @item second item
+nested_table.texi(myvtable,43) Text without blank line 2
+nested_table.texi(myvtable,43) @end table
+nested_table.texi(myvtable,43) After table.
+nested_table.texi(,44) @end example
+nested_table.texi(,45) 
+nested_table.texi(,46) Double quotation
+nested_table.texi(,47) @quotation
+nested_table.texi(,48) @quotation
+nested_table.texi(myvtable,49) @vtable @asis
+nested_table.texi(myvtable,49) @item first item
+nested_table.texi(myvtable,49) @itemx second itemx
+nested_table.texi(myvtable,49) 
+nested_table.texi(myvtable,49) Text.
+nested_table.texi(myvtable,49) 
+nested_table.texi(myvtable,49) @item second item
+nested_table.texi(myvtable,49) 
+nested_table.texi(myvtable,49) Text 2
+nested_table.texi(myvtable,49) 
+nested_table.texi(myvtable,49) @item before empty itemx
+nested_table.texi(myvtable,49) @itemx
+nested_table.texi(myvtable,49) @itemx after an empty itemx, before an empty item
+nested_table.texi(myvtable,49) @item 
+nested_table.texi(myvtable,49) @item in item before end table
+nested_table.texi(myvtable,49) @end vtable
+nested_table.texi(myvtable,49) 
+nested_table.texi(myvtable,49) Something.
+nested_table.texi(myvtable,49) @table @emph
+nested_table.texi(myvtable,49) @item in item
+nested_table.texi(myvtable,49) Text without blank line
+nested_table.texi(myvtable,49) @item second item
+nested_table.texi(myvtable,49) Text without blank line 2
+nested_table.texi(myvtable,49) @end table
+nested_table.texi(myvtable,49) After table.
+nested_table.texi(,50) @end quotation
+nested_table.texi(,51) @end quotation
+nested_table.texi(,52) 
+nested_table.texi(,53) @bye

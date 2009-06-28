@@ -1,0 +1,24 @@
+This is html-para.info, produced by makeinfo version 4.13 from
+html-para.texi.
+
+
+File: html-para.info,  Node: Top,  Up: (dir)
+
+Top of HTML paragraph test
+**************************
+
+@value{} should work at the beginning of a new paragraph.
+
+   i dotless should not trigger error messages at the beginning of a new
+paragraph.
+
+   SMALL-CAPS should work at the beginning of a new paragraph.
+
+   \\@definfoenclose// should work at the beginning of a new paragraph.
+
+
+
+Tag Table:
+Node: Top80
+
+End Tag Table

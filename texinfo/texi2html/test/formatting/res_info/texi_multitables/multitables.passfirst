@@ -1,0 +1,31 @@
+multitables.texi(,2) 
+multitables.texi(,3) @setfilename multitables.info
+multitables.texi(,4) 
+multitables.texi(,5) @node Top
+multitables.texi(,6) @top Test multitables
+multitables.texi(,7) 
+multitables.texi(,8) @multitable {AAA}  {BBB}
+multitables.texi(,9) @item truc @tab bidule
+multitables.texi(,10) @item begin item
+multitables.texi(,11) 
+multitables.texi(,12) new paragraph in item.
+multitables.texi(,13) 
+multitables.texi(,14) @tab begin tab
+multitables.texi(,15) 
+multitables.texi(,16) new paragraph in tab.
+multitables.texi(,17) @end multitable
+multitables.texi(,18) 
+multitables.texi(,19) @example
+multitables.texi(,20) @multitable {AAA}  {BBB}
+multitables.texi(,21) @item truc @tab bidule example
+multitables.texi(,22) @item begin item example
+multitables.texi(,23) 
+multitables.texi(,24) new paragraph in item. example
+multitables.texi(,25) 
+multitables.texi(,26) @tab begin tab example
+multitables.texi(,27) 
+multitables.texi(,28) new paragraph in tab. example
+multitables.texi(,29) @end multitable
+multitables.texi(,30) @end example
+multitables.texi(,31) 
+multitables.texi(,32) @bye

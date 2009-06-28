@@ -12,7 +12,7 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  inc_@f--ile.texi \
  file.texi inc_file.texi macro_included.texi my-bib-macros.texi \
  incl-incl.txi included_file_with_setfilename.texi \
- tests.txt res
+ tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
@@ -20,4 +20,4 @@ distclean-local:
 	rm -rf out diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res* -name CVS`

@@ -1,0 +1,23 @@
+This is direntry_dircategory.info, produced by makeinfo version 4.13
+from direntry_dircategory.texi.
+
+INFO-DIR-SECTION "category--TH  ERE?"
+START-INFO-DIR-ENTRY
+* foo: (foo).   "hello--THERE?"
+END-INFO-DIR-ENTRY
+INFO-DIR-SECTION cat2
+START-INFO-DIR-ENTRY
+* aaa ::               aaaa
+                   bbbbb
+
+menutitle
+END-INFO-DIR-ENTRY
+
+
+File: direntry_dircategory.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+In chapter
+

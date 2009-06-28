@@ -1,0 +1,16 @@
+Test floats with @-commands
+***************************
+
+
+Ceci est notre premie`re entre'e.
+
+
+
+entre'e 1: La premie`re entre'e est importante
+
+
+
+* List of entre'e:
+* entre'e 1: La premie`re entre'e est importante
+
+

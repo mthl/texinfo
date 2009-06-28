@@ -205,8 +205,13 @@ do
       sed -i -e 's/^texexpand.*/texexpand /' "${outdir}$dir/$basename.2"
       sed -i '/is no longer supported at.*line/d' "${outdir}$dir/$basename.2"
       if [ "$use_latex2html" = 'yes' ]; then
-        sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
-         's/with LaTeX2HTML.*/with LaTeX2HTML/' "${outdir}$dir/"*"_l2h.html"
+        # in case the output format is not html there won't be "*"_l2h.html files
+        for file in "${outdir}$dir/"*"_l2h.html"; do
+         if [ -f "$file" ]; then
+          sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
+            's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file"
+          fi
+        done
         # "*"_images.pl" files are not guaranteed to be present
         for file in "${outdir}$dir/"*"_images.pl" "${outdir}$dir/"*"_labels.pl"; do
          if [ -f "$file" ]; then
