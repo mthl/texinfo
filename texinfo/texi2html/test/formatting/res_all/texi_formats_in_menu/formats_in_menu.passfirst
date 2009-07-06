@@ -18,7 +18,7 @@ formats_in_menu.texi(,18) some @ verb{' atim
 formats_in_menu.texi(,19) * (texinfo):: in @ verbatim
 formats_in_menu.texi(,20) 
 formats_in_menu.texi(,21) @end verbatim
-formats_in_menu.texi(,22) * (manual2):: $@html
+formats_in_menu.texi(,22) * (manual2):: %@html
 formats_in_menu.texi(,23) 
 formats_in_menu.texi(,24) <i></i>
 formats_in_menu.texi(,25) @end html

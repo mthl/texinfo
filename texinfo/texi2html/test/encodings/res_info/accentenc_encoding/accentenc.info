@@ -1,0 +1,90 @@
+This is accentenc.info, produced by makeinfo version 4.13 from
+accentenc.texi.
+
+
+File: accentenc.info,  Node: Top,  Up: (dir)
+
+Accent encoding test top
+************************
+
+should be e`: è è
+
+   should be e': é é
+
+   should be e^: ê ê
+
+   should be u": ü ü
+
+   should be i`: ì ì
+
+   should be i': í í
+
+   should be i^: î î
+
+   should be u": ü ü
+
+   should be c,: ç ç
+
+   should be n~: ñ ñ
+
+   should be e=: e= e=
+
+   should be e'': e'' e''
+
+   should be e.: e. e.
+
+   should be e*: e* e*
+
+   should be ee[: ee[
+
+   should be e(: e( e(
+
+   should be e_: e_ e_
+
+   should be .e: .e .e
+
+   should be e<: e< e<
+
+   upside down: ¿ ¡
+
+   A-with-circle: å,Å
+
+   AE, OE ligatures: æ Æ oe OE
+
+   dotless i, j: i j
+
+   Polish suppressed-L: /l /L
+
+   O-with-slash: ø Ø
+
+   es-zet or sharp S: ß
+
+   pounds sterling: £
+
+   should be dotless i`: ì
+
+   should be dotless i': í
+
+   should be dotless i^: î
+
+   should be dotless i": ï
+
+   should be dotless j`: j`
+
+   should be dotless j': j'
+
+   should be dotless j^: j^
+
+   should be dotless j": j"
+
+
+
+Tag Table:
+Node: Top80
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

@@ -1,0 +1,14 @@
+1.5 With dotless i"
+===================
+
+before footnote See footanchor.
+
+(1)
+
+after footnote See footanchor.
+
+3.5 i`
+======
+4.5 i^
+======
+Test @^{@dotless{i}}.

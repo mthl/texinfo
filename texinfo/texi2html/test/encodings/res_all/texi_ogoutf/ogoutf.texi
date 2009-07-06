@@ -1,0 +1,26 @@
+\input texinfo
+@setfilename ogonek.info
+@documentencoding UTF-8
+@settitle Ogonek
+
+@titlepage
+@title AE ĄĘ ae ąę
+@subtitle AE @ogonek{A}@ogonek{E}
+@author J@ogonek{a}n Stępień @email{hello@@there}
+AE ĄĘ ae ąę, looks nice.
+@end titlepage
+
+@node Top
+@chapter Top AE @ogonek{a}@ogonek{e}
+
+@section AE ĄĘ ae ąę
+
+Zażółć gęślą jaźń!
+
+Zazolc gesla jazn!
+
+@cindex @ogonek{A}@ogonek{a}
+@cindex @ogonek{e}@ogonek{E}
+@printindex cp
+
+@bye

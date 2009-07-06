@@ -13,7 +13,7 @@ comment
 some @ verb{' atim
 * (texinfo):: in @ verbatim
 
-* (manual2):: $Log$
+* (manual2):: %Log$
 * (truc):: description
 acronym
 After menu

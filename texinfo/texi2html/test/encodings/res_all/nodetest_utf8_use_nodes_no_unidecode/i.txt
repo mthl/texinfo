@@ -1,0 +1,17 @@
+1.3 ï
+=====
+
+before footnote See footanchor.
+
+(1)
+
+after footnote See footanchor.
+
+2.3 i'
+======
+3.3 i`
+======
+4.3 î
+=====
+7.19 i
+======

@@ -1,0 +1,6 @@
+1.6 ÿ
+=====
+This is a ref to a node (see à).
+
+2.6 y'
+======

@@ -1,0 +1,413 @@
+
+
+* Umlaut::               Umlaut.
+
+
+Another Heading
+
+
+* acute accent::         acute accent.
+* grave accent::         grave accent.
+* circumflex accent::    circumflex accent.
+* tilde accent::         tilde accent.
+* cedilla accent::       cedilla accent.
+* rest::                 rest @aa{} etc.
+1 Umlaut
+********
+* a"::    a".
+* e"::    e".
+* i"::    i".
+* with brace i"::    i".
+* with dotless i"::   i".
+* o"::    o".
+* u"::    u".
+* y"::    y".
+* A"::    A".
+* E"::    E".
+* I"::    I".
+* O"::    O".
+* U"::    U".
+* ss::    ss.
+* no section::  Node without sectioning command.
+1.1 a"
+======
+ref to c, c,.
+1.2 e"
+======
+1.3 i"
+======
+1.4 With brace i"
+=================
+1.5 With dotless i"
+===================
+
+before footnote See footanchor.
+
+(1)
+
+after footnote See footanchor.
+
+1.6 o"
+======
+Ref to an anchor at the end of the doc 
+(see there is an o-e' could there be an i^).
+1.7 u"
+======
+Another ref to an anchor (see x-spot).
+1.8 y"
+======
+This is a ref to a node (see U').
+
+1.9 A"
+======
+
+Now a ref to a node without sectionning command, 
+no text (see no section).
+With text (see but a text).
+
+1.10 E"
+=======
+1.11 I"
+=======
+1.12 O"
+=======
+1.13 U"
+=======
+1.14 ss
+=======
+no section
+----------
+This is a node without sectioning command.
+2 acute accent
+**************
+* a'::    a'.
+* e'::    e'.
+* i'::    i'.
+* o'::    o'.
+* u'::    u'.
+* y'::    y'.
+* A'::    A'.
+* E'::    E'.
+* I'::    I'.
+* O'::    O'.
+* U'::    U'.
+* Y'::    Y'.
+2.1 a'
+======
+With brace a'. Testing ' " ` ^.
+2.2 e'
+======
+2.3 i'
+======
+2.4 o'
+======
+2.5 u'
+======
+2.6 y'
+======
+2.7 A'
+======
+2.8 E'
+======
+2.9 I'
+======
+2.10 O'
+=======
+2.11 U'
+=======
+2.12 Y'
+=======
+This is a ref to u" (see u").
+Another one, with node only (see u").
+
+
+3 grave accent
+**************
+* a`::    a`.
+* e`::    e`.
+* i`::    i`.
+* with brace i`::    i`.
+* with dotless i`::   i`.
+* o`::    o`.
+* u`::    u`.
+* A`::    A`.
+* E`::    E`.
+* I`::    I`.
+* O`::    O`.
+* U`::    U`.
+3.1 a`
+======
+3.2 e`
+======
+3.3 i`
+======
+3.4 i`
+======
+3.5 i`
+======
+3.6 o`
+======
+3.7 u`
+======
+3.8 A`
+======
+3.9 E`
+======
+3.10 I`
+=======
+3.11 O`
+=======
+3.12 U`
+=======
+4 circumflex accent
+*******************
+* a^::    a^.
+* e^::    e^.
+* i^::    i^.
+* with brace i^::    i^.
+* with dotless i^::   i^.
+* o^::    o^.
+* u^::    u^.
+* A^::    A^.
+* E^::    E^.
+* I^::    I^.
+* O^::    O^.
+* U^::    U^.
+4.1 a^
+======
+4.2 e^
+======
+4.3 i^
+======
+4.4 i^
+======
+Test @^{i}.
+4.5 i^
+======
+Test @^{@dotless{i}}.
+4.6 o^
+======
+4.7 u^
+======
+4.8 A^
+======
+4.9 E^
+======
+4.10 I^
+=======
+4.11 O^
+=======
+4.12 U^
+=======
+5 tilde accent
+**************
+* a~::    a~.
+* n~::    n~.
+* o~::    o~.
+* A~::    A~.
+* O~::    O~.
+5.1 a~
+======
+5.2 n~
+======
+5.3 o~
+======
+5.4 A~
+======
+5.5 O~
+======
+This marks the spot.
+A second one with accented char .
+6 cedilla accent
+****************
+* c,::    c,.
+* C,::    C,.
+* c, no brace:: c, no brace.
+6.1 c,
+======
+6.2 C,
+======
+6.3 c, no brace
+===============
+
+7 rest
+******
+* aa::  aa.
+* ae::  ae.
+* oe::  oe.
+* AA::  AA.
+* AE::  AE.
+* OE::  OE.
+* /l::  /l.
+* /o::  /o.
+* /L::  /L.
+* /O::  /O.
+* a''::  a''.
+* a(::  a(.
+* a<::  a<.
+* .a::  .a udotaccent.
+* a.::  a. dotaccent.
+* a*::  a* ringaccent.
+* a[::  a[ tieaccent.
+* a_::  a_ ubaraccent.
+* i::  i dotless i.
+* j::  j dotless j.
+* ,::     , comma
+7.1 aa
+======
+7.2 ae
+======
+7.3 oe
+======
+7.4 AA
+======
+7.5 AE
+======
+7.6 OE
+======
+7.7 /l
+======
+7.8 /o
+======
+7.9 /L
+======
+7.10 /O
+=======
+7.11 a''
+========
+7.12 a(
+=======
+7.13 a<
+=======
+7.14 .a
+=======
+Test udotaccent.
+7.15 a.
+=======
+Test dotaccent.
+7.16 a*
+=======
+7.17 a[
+=======
+7.18 a_
+=======
+7.19 i
+======
+7.20 j
+======
+        
+        ...
+
+	...
+
+	!
+
+	?
+
+	#
+
+	@- : 
+	@ followed by end of line:  	@ followed by tab:  
+	@ followed by space  
+	@*: 
+ and text followin @*.
+
+7.21 ,
+======
+Table of Contents
+*****************
+
+
+1. Umlaut
+ 1.1 a"
+ 1.2 e"
+ 1.3 i"
+ 1.4 With brace i"
+ 1.5 With dotless i"
+ 1.6 o"
+ 1.7 u"
+ 1.8 y"
+ 1.9 A"
+ 1.10 E"
+ 1.11 I"
+ 1.12 O"
+ 1.13 U"
+ 1.14 ss
+ no section
+2. acute accent
+ 2.1 a'
+ 2.2 e'
+ 2.3 i'
+ 2.4 o'
+ 2.5 u'
+ 2.6 y'
+ 2.7 A'
+ 2.8 E'
+ 2.9 I'
+ 2.10 O'
+ 2.11 U'
+ 2.12 Y'
+3. grave accent
+ 3.1 a`
+ 3.2 e`
+ 3.3 i`
+ 3.4 i`
+ 3.5 i`
+ 3.6 o`
+ 3.7 u`
+ 3.8 A`
+ 3.9 E`
+ 3.10 I`
+ 3.11 O`
+ 3.12 U`
+4. circumflex accent
+ 4.1 a^
+ 4.2 e^
+ 4.3 i^
+ 4.4 i^
+ 4.5 i^
+ 4.6 o^
+ 4.7 u^
+ 4.8 A^
+ 4.9 E^
+ 4.10 I^
+ 4.11 O^
+ 4.12 U^
+5. tilde accent
+ 5.1 a~
+ 5.2 n~
+ 5.3 o~
+ 5.4 A~
+ 5.5 O~
+6. cedilla accent
+ 6.1 c,
+ 6.2 C,
+ 6.3 c, no brace
+7. rest
+ 7.1 aa
+ 7.2 ae
+ 7.3 oe
+ 7.4 AA
+ 7.5 AE
+ 7.6 OE
+ 7.7 /l
+ 7.8 /o
+ 7.9 /L
+ 7.10 /O
+ 7.11 a''
+ 7.12 a(
+ 7.13 a<
+ 7.14 .a
+ 7.15 a.
+ 7.16 a*
+ 7.17 a[
+ 7.18 a_
+ 7.19 i
+ 7.20 j
+ 7.21 ,
+
+Footnotes
+*********
+
+(1)
+

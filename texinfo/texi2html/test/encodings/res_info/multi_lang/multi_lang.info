@@ -1,0 +1,73 @@
+This is multi_lang.info, produced by makeinfo version 4.13 from
+multi_lang.texi.
+
+
+File: multi_lang.info,  Node: Top,  Next: chapter fr_NOWHERE,  Up: (dir)
+
+Multi language file
+*******************
+
+This is in french
+
+* Menu:
+
+* chapter fr_NOWHERE::
+* chapter ja::
+* chapter en::
+* chapter pt_BR::
+
+
+File: multi_lang.info,  Node: chapter fr_NOWHERE,  Next: chapter ja,  Prev: Top,  Up: Top
+
+1 Fr_NOWHERE
+************
+
+In french. *Note Top::.
+
+* Menu:
+
+* sub fr_NOWHERE::
+
+
+File: multi_lang.info,  Node: sub fr_NOWHERE,  Up: chapter fr_NOWHERE
+
+1.1 fr_NOWHERE section
+======================
+
+In fr section.
+
+
+File: multi_lang.info,  Node: chapter ja,  Next: chapter en,  Prev: chapter fr_NOWHERE,  Up: Top
+
+2 ja
+****
+
+In japanese. *Note Top::.
+
+
+File: multi_lang.info,  Node: chapter en,  Next: chapter pt_BR,  Prev: chapter ja,  Up: Top
+
+3 en
+****
+
+In english. *Note Top::.
+
+
+File: multi_lang.info,  Node: chapter pt_BR,  Prev: chapter en,  Up: Top
+
+4 pt_bR
+*******
+
+In brazilian. *Note Top::.
+
+
+
+Tag Table:
+Node: Top82
+Node: chapter fr_NOWHERE299
+Node: sub fr_NOWHERE473
+Node: chapter ja609
+Node: chapter en747
+Node: chapter pt_BR879
+
+End Tag Table

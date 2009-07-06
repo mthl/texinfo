@@ -1,0 +1,760 @@
+This is nodetest_utf8.info, produced by makeinfo version 4.13 from
+nodetest_utf8.texi.
+
+
+File: nodetest_utf8.info,  Node: Top,  Next: Umlaut,  Prev: (dir)
+
+* Menu:
+
+* Umlaut::               Umlaut.
+
+
+Another Heading
+
+
+* acute accent::         acute accent.
+* grave accent::         grave accent.
+* circumflex accent::    circumflex accent.
+* tilde accent::         tilde accent.
+* cedilla accent::       cedilla accent.
+* rest::                 rest @aa{} etc.
+
+
+File: nodetest_utf8.info,  Node: Umlaut,  Prev: Top,  Up: Top
+
+1 Umlaut
+********
+
+* Menu:
+
+* ä::    ä.
+* ë::    ë.
+* ï::    ï.
+* ö::    ö.
+* ü::    ü.
+* ÿ::    ÿ.
+* Ä::    Ä.
+* Ë::    Ë.
+* Ï::    Ï.
+* Ö::    Ö.
+* Ü::    Ü.
+* ss::    ss.
+* no section::  Node without sectioning command.
+
+
+File: nodetest_utf8.info,  Node: ä,  Up: Umlaut
+
+1.1 ä
+======
+
+ref to ç *note ç::.
+
+
+File: nodetest_utf8.info,  Node: ë,  Up: Umlaut
+
+1.2 ë
+======
+
+
+File: nodetest_utf8.info,  Node: ï,  Up: Umlaut
+
+1.3 ï
+======
+
+before footnote *Note footanchor::.
+
+   (1)
+
+   after footnote *Note footanchor::.
+
+   ---------- Footnotes ----------
+
+   (1)
+
+
+File: nodetest_utf8.info,  Node: ö,  Up: Umlaut
+
+1.4 ö
+======
+
+Ref to an anchor at the end of the doc (*note there is an o-é could
+there be an i^: é-o.).
+
+
+File: nodetest_utf8.info,  Node: ü,  Up: Umlaut
+
+1.5 ü
+======
+
+Another ref to an anchor (*note x-spot::).
+
+
+File: nodetest_utf8.info,  Node: ÿ,  Up: Umlaut
+
+1.6 ÿ
+======
+
+This is a ref to a node (*note à: à.).
+
+
+File: nodetest_utf8.info,  Node: Ä,  Up: Umlaut
+
+1.7 Ä
+======
+
+Now a ref to a node without sectionning command, no text (*note no
+section::).  With text (*note but a text: no section.).
+
+
+File: nodetest_utf8.info,  Node: Ë,  Up: Umlaut
+
+1.8 Ë
+======
+
+
+File: nodetest_utf8.info,  Node: Ï,  Up: Umlaut
+
+1.9 Ï
+======
+
+
+File: nodetest_utf8.info,  Node: Ö,  Up: Umlaut
+
+1.10 Ö
+=======
+
+
+File: nodetest_utf8.info,  Node: Ü,  Up: Umlaut
+
+1.11 Ü
+=======
+
+
+File: nodetest_utf8.info,  Node: ss,  Up: Umlaut
+
+1.12 ss
+=======
+
+
+File: nodetest_utf8.info,  Node: no section,  Up: Umlaut
+
+This is a node without sectioning command.
+
+
+File: nodetest_utf8.info,  Node: acute accent,  Prev: Top,  Up: Top
+
+2 acute accent
+**************
+
+* Menu:
+
+* a'::    a'.
+* é::    é.
+* i'::    i'.
+* o'::    o'.
+* u'::    u'.
+* y'::    y'.
+* A'::    A'.
+* E'::    E'.
+* I'::    I'.
+* O'::    O'.
+* U'::    U'.
+* Y'::    Y'.
+
+
+File: nodetest_utf8.info,  Node: a',  Up: acute accent
+
+2.1 a'
+======
+
+With brace a'. Testing ' " ` ^.
+
+
+File: nodetest_utf8.info,  Node: é,  Up: acute accent
+
+2.2 é
+======
+
+
+File: nodetest_utf8.info,  Node: i',  Up: acute accent
+
+2.3 i'
+======
+
+
+File: nodetest_utf8.info,  Node: o',  Up: acute accent
+
+2.4 o'
+======
+
+
+File: nodetest_utf8.info,  Node: u',  Up: acute accent
+
+2.5 u'
+======
+
+
+File: nodetest_utf8.info,  Node: y',  Up: acute accent
+
+2.6 y'
+======
+
+
+File: nodetest_utf8.info,  Node: A',  Up: acute accent
+
+2.7 A'
+======
+
+
+File: nodetest_utf8.info,  Node: E',  Up: acute accent
+
+2.8 E'
+======
+
+
+File: nodetest_utf8.info,  Node: I',  Up: acute accent
+
+2.9 I'
+======
+
+
+File: nodetest_utf8.info,  Node: O',  Up: acute accent
+
+2.10 O'
+=======
+
+
+File: nodetest_utf8.info,  Node: U',  Up: acute accent
+
+2.11 U'
+=======
+
+
+File: nodetest_utf8.info,  Node: Y',  Up: acute accent
+
+2.12 Y'
+=======
+
+This is a ref to ü (*note ü: ü.).  Another one, with node only (*note
+ü::).
+
+
+File: nodetest_utf8.info,  Node: grave accent,  Prev: Top,  Up: Top
+
+3 grave accent
+**************
+
+* Menu:
+
+* à::    à.
+* è::    è.
+* i`::    i`.
+* with brace i`::    i`.
+* with dotless i`::   i`.
+* o`::    o`.
+* ù::    ù.
+* A`::    A`.
+* E`::    E`.
+* I`::    I`.
+* O`::    O`.
+* U`::    U`.
+
+
+File: nodetest_utf8.info,  Node: à,  Up: grave accent
+
+3.1 à
+======
+
+
+File: nodetest_utf8.info,  Node: è,  Up: grave accent
+
+3.2 è
+======
+
+
+File: nodetest_utf8.info,  Node: i`,  Up: grave accent
+
+3.3 i`
+======
+
+
+File: nodetest_utf8.info,  Node: with brace i`,  Up: grave accent
+
+3.4 i`
+======
+
+
+File: nodetest_utf8.info,  Node: with dotless i`,  Up: grave accent
+
+3.5 i`
+======
+
+
+File: nodetest_utf8.info,  Node: o`,  Up: grave accent
+
+3.6 o`
+======
+
+
+File: nodetest_utf8.info,  Node: ù,  Up: grave accent
+
+3.7 ù
+======
+
+
+File: nodetest_utf8.info,  Node: A`,  Up: grave accent
+
+3.8 A`
+======
+
+
+File: nodetest_utf8.info,  Node: E`,  Up: grave accent
+
+3.9 E`
+======
+
+
+File: nodetest_utf8.info,  Node: I`,  Up: grave accent
+
+3.10 I`
+=======
+
+
+File: nodetest_utf8.info,  Node: O`,  Up: grave accent
+
+3.11 O`
+=======
+
+
+File: nodetest_utf8.info,  Node: U`,  Up: grave accent
+
+3.12 U`
+=======
+
+
+File: nodetest_utf8.info,  Node: circumflex accent,  Prev: Top,  Up: Top
+
+4 circumflex accent
+*******************
+
+* Menu:
+
+* â::    â.
+* ê::    ê.
+* î::    î.
+* ô::    ô.
+* û::    û.
+* Â::    Â.
+* Ê::    Ê.
+* Î::    Î.
+* Ô::    Ô.
+* Û::    Û.
+
+
+File: nodetest_utf8.info,  Node: â,  Up: circumflex accent
+
+4.1 â
+======
+
+
+File: nodetest_utf8.info,  Node: ê,  Up: circumflex accent
+
+4.2 ê
+======
+
+
+File: nodetest_utf8.info,  Node: î,  Up: circumflex accent
+
+4.3 î
+======
+
+
+File: nodetest_utf8.info,  Node: ô,  Up: circumflex accent
+
+4.4 ô
+======
+
+
+File: nodetest_utf8.info,  Node: û,  Up: circumflex accent
+
+4.5 û
+======
+
+
+File: nodetest_utf8.info,  Node: Â,  Up: circumflex accent
+
+4.6 Â
+======
+
+
+File: nodetest_utf8.info,  Node: Ê,  Up: circumflex accent
+
+4.7 Ê
+======
+
+
+File: nodetest_utf8.info,  Node: Î,  Up: circumflex accent
+
+4.8 Î
+======
+
+
+File: nodetest_utf8.info,  Node: Ô,  Up: circumflex accent
+
+4.9 Ô
+======
+
+
+File: nodetest_utf8.info,  Node: Û,  Up: circumflex accent
+
+4.10 Û
+=======
+
+
+File: nodetest_utf8.info,  Node: tilde accent,  Prev: Top,  Up: Top
+
+5 tilde accent
+**************
+
+* Menu:
+
+* a~::    a~.
+* n~::    n~.
+* o~::    o~.
+* A~::    A~.
+* O~::    O~.
+
+
+File: nodetest_utf8.info,  Node: a~,  Up: tilde accent
+
+5.1 a~
+======
+
+
+File: nodetest_utf8.info,  Node: n~,  Up: tilde accent
+
+5.2 n~
+======
+
+
+File: nodetest_utf8.info,  Node: o~,  Up: tilde accent
+
+5.3 o~
+======
+
+
+File: nodetest_utf8.info,  Node: A~,  Up: tilde accent
+
+5.4 A~
+======
+
+
+File: nodetest_utf8.info,  Node: O~,  Up: tilde accent
+
+5.5 O~
+======
+
+This marks the spot.  A second one with accented char .
+
+
+File: nodetest_utf8.info,  Node: cedilla accent,  Prev: Top,  Up: Top
+
+6 cedilla accent
+****************
+
+* Menu:
+
+* ç::    ç.
+* C,::    C,.
+
+
+File: nodetest_utf8.info,  Node: ç,  Up: cedilla accent
+
+6.1 ç
+======
+
+
+File: nodetest_utf8.info,  Node: C,,  Up: cedilla accent
+
+6.2 C,
+======
+
+
+File: nodetest_utf8.info,  Node: rest,  Prev: Top,  Up: Top
+
+7 rest
+******
+
+* Menu:
+
+* aa::  aa.
+* ae::  ae.
+* oe::  oe.
+* AA::  AA.
+* AE::  AE.
+* OE::  OE.
+* /l::  /l.
+* /o::  /o.
+* /L::  /L.
+* /O::  /O.
+* a''::  a''.
+* a(::  a(.
+* a<::  a<.
+* .a::  .a udotaccent.
+* a.::  a. dotaccent.
+* a*::  a* ringaccent.
+* a[::  a[ tieaccent.
+* a_::  a_ ubaraccent.
+* i::  i dotless i.
+* j::  j dotless j.
+* ,::     , comma
+
+
+File: nodetest_utf8.info,  Node: aa,  Up: rest
+
+7.1 aa
+======
+
+
+File: nodetest_utf8.info,  Node: ae,  Up: rest
+
+7.2 ae
+======
+
+
+File: nodetest_utf8.info,  Node: oe,  Up: rest
+
+7.3 oe
+======
+
+
+File: nodetest_utf8.info,  Node: AA,  Up: rest
+
+7.4 AA
+======
+
+
+File: nodetest_utf8.info,  Node: AE,  Up: rest
+
+7.5 AE
+======
+
+
+File: nodetest_utf8.info,  Node: OE,  Up: rest
+
+7.6 OE
+======
+
+
+File: nodetest_utf8.info,  Node: /l,  Up: rest
+
+7.7 /l
+======
+
+
+File: nodetest_utf8.info,  Node: /o,  Up: rest
+
+7.8 /o
+======
+
+
+File: nodetest_utf8.info,  Node: /L,  Up: rest
+
+7.9 /L
+======
+
+
+File: nodetest_utf8.info,  Node: /O,  Up: rest
+
+7.10 /O
+=======
+
+
+File: nodetest_utf8.info,  Node: a'',  Up: rest
+
+7.11 a''
+========
+
+
+File: nodetest_utf8.info,  Node: a(,  Up: rest
+
+7.12 a(
+=======
+
+
+File: nodetest_utf8.info,  Node: a<,  Up: rest
+
+7.13 a<
+=======
+
+
+File: nodetest_utf8.info,  Node: .a,  Up: rest
+
+7.14 .a
+=======
+
+Test udotaccent.
+
+
+File: nodetest_utf8.info,  Node: a.,  Up: rest
+
+7.15 a.
+=======
+
+Test dotaccent.
+
+
+File: nodetest_utf8.info,  Node: a*,  Up: rest
+
+7.16 a*
+=======
+
+
+File: nodetest_utf8.info,  Node: a[,  Up: rest
+
+7.17 a[
+=======
+
+
+File: nodetest_utf8.info,  Node: a_,  Up: rest
+
+7.18 a_
+=======
+
+
+File: nodetest_utf8.info,  Node: i,  Up: rest
+
+7.19 i
+======
+
+
+File: nodetest_utf8.info,  Node: j,  Up: rest
+
+7.20 j
+======
+
+...
+
+   ...
+
+   !
+
+   ?
+
+   #
+
+   @- :  	@ followed by end of line:  	@ followed by tab:   	@ followed
+by space   	@*:
+and text followin @*.
+
+
+File: nodetest_utf8.info,  Node: ,,  Up: rest
+
+7.21 ,
+======
+
+An index entry with accented letter.
+
+ [index ]
+* Menu:
+
+* index entry with accented letter: à a`: ,.                   (line 6)
+* index entry with accented letter: â a`: ,.                   (line 6)
+
+
+
+Tag Table:
+Node: Top88
+Node: Umlaut463
+Node: ä774
+Node: ë864
+Node: ï931
+Ref: ï-Footnote-11118
+Ref: footanchor1125
+Node: ö1126
+Node: ü1287
+Node: ÿ1398
+Node: Ä1507
+Node: Ë1698
+Node: Ï1765
+Node: Ö1832
+Node: Ü1901
+Node: ss1970
+Node: no section2039
+Node: acute accent2143
+Node: a'2423
+Node: é2529
+Node: i'2602
+Node: o'2675
+Node: u'2748
+Node: y'2821
+Node: A'2894
+Node: E'2967
+Node: I'3040
+Node: O'3113
+Node: U'3188
+Node: Y'3263
+Node: grave accent3419
+Node: à3722
+Node: è3795
+Node: i`3868
+Node: with brace i`3941
+Node: with dotless i`4025
+Node: o`4111
+Node: ù4184
+Node: A`4257
+Node: E`4330
+Node: I`4403
+Node: O`4478
+Node: U`4553
+Node: circumflex accent4628
+Node: â4895
+Node: ê4973
+Node: î5051
+Node: ô5129
+Node: û5207
+Node: Â5285
+Node: Ê5363
+Node: Î5441
+Node: Ô5519
+Node: Û5597
+Node: tilde accent5677
+Node: a~5859
+Node: n~5932
+Node: o~6005
+Node: A~6078
+Node: O~6151
+Ref: x-spot6239
+Ref: é-o6278
+Node: cedilla accent6281
+Node: ç6427
+Node: C,6502
+Node: rest6577
+Node: aa6994
+Node: ae7059
+Node: oe7124
+Node: AA7189
+Node: AE7254
+Node: OE7319
+Node: /l7384
+Node: /o7449
+Node: /L7514
+Node: /O7579
+Node: a''7646
+Node: a(7716
+Node: a<7783
+Node: .a7850
+Node: a.7935
+Node: a*8019
+Node: a[8086
+Node: a_8153
+Node: i8220
+Node: j8284
+Node: ,8490
+
+End Tag Table
+
+
+Local Variables:
+coding: utf8
+End:

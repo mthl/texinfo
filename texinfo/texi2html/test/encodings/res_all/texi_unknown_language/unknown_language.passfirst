@@ -1,0 +1,15 @@
+unknown_language.texi(,2) 
+unknown_language.texi(,3) @setfilename unknown_language.info
+unknown_language.texi(,4) 
+unknown_language.texi(,5) @documentlanguage unknown
+unknown_language.texi(,6) 
+unknown_language.texi(,7) @node Top
+unknown_language.texi(,8) @top unknkown language
+unknown_language.texi(,9) 
+unknown_language.texi(,10) Unknown language. @xref{Top}.
+unknown_language.texi(,11) 
+unknown_language.texi(,12) @documentlanguage another_UNKNOWN
+unknown_language.texi(,13) 
+unknown_language.texi(,14) Another unknown language. @xref{Top}.
+unknown_language.texi(,15) 
+unknown_language.texi(,16) @bye

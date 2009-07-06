@@ -1,0 +1,81 @@
+accent.texi(,2) @setfilename accent.info
+accent.texi(,3) @settitle Accent test
+accent.texi(,4) 
+accent.texi(,5) @node Top
+accent.texi(,6) @top Accent test top
+accent.texi(,7) 
+accent-text.txi(,1) @c args with braces, without braces/following whitespace
+accent-text.txi(,2) 
+accent-text.txi(,3) should be e`: @`{e} @`e
+accent-text.txi(,4) 
+accent-text.txi(,5) should be e': @'{e} @'e
+accent-text.txi(,6) 
+accent-text.txi(,7) should be e^: @^{e} @^e
+accent-text.txi(,8) 
+accent-text.txi(,9) should be u": @"{u} @"u
+accent-text.txi(,10) 
+accent-text.txi(,11) should be i`: @`{i} @`i
+accent-text.txi(,12) 
+accent-text.txi(,13) should be i': @'{i} @'i
+accent-text.txi(,14) 
+accent-text.txi(,15) should be i^: @^{i} @^i
+accent-text.txi(,16) 
+accent-text.txi(,17) should be u": @"{u} @"u
+accent-text.txi(,18) 
+accent-text.txi(,19) should be c,: @,{c} @,c
+accent-text.txi(,20) 
+accent-text.txi(,21) should be n~: @~{n} @~n
+accent-text.txi(,22) 
+accent-text.txi(,23) should be e=: @={e} @=e
+accent-text.txi(,24) 
+accent-text.txi(,25) should be e@w{'}': @H{e} @H e
+accent-text.txi(,26) 
+accent-text.txi(,27) should be e.: @dotaccent{e} @dotaccent e
+accent-text.txi(,28) 
+accent-text.txi(,29) should be e*: @ringaccent{e} @ringaccent e
+accent-text.txi(,30) 
+accent-text.txi(,31) should be ee[: @tieaccent{ee}
+accent-text.txi(,32) 
+accent-text.txi(,33) should be e(: @u{e} @u e
+accent-text.txi(,34) 
+accent-text.txi(,35) should be e_: @ubaraccent{e} @ubaraccent e
+accent-text.txi(,36) 
+accent-text.txi(,37) should be .e: @udotaccent{e} @udotaccent e
+accent-text.txi(,38) 
+accent-text.txi(,39) should be e<: @v{e} @v e
+accent-text.txi(,40) 
+accent-text.txi(,41) upside down: @questiondown{} @exclamdown{}
+accent-text.txi(,42) 
+accent-text.txi(,43) A-with-circle: @aa{},@AA{}
+accent-text.txi(,44) 
+accent-text.txi(,45) AE, OE ligatures: @ae{} @AE{} @oe{} @OE{}
+accent-text.txi(,46) 
+accent-text.txi(,47) dotless i, j: @dotless{i} @dotless{j}
+accent-text.txi(,48) 
+accent-text.txi(,49) Polish suppressed-L: @l{} @L{}
+accent-text.txi(,50) 
+accent-text.txi(,51) O-with-slash: @o{} @O{}
+accent-text.txi(,52) 
+accent-text.txi(,53) es-zet or sharp S: @ss{}          
+accent-text.txi(,54) 
+accent-text.txi(,55) pounds sterling: @pounds{}      
+accent-text.txi(,56) 
+accent-text.txi(,57) @c arg is command -- @dotless{i} is special-cased for HTML
+accent-text.txi(,58) should be dotless i`: @`{@dotless{i}}
+accent-text.txi(,59) 
+accent-text.txi(,60) should be dotless i': @'{@dotless{i}}
+accent-text.txi(,61) 
+accent-text.txi(,62) should be dotless i^: @^{@dotless{i}}
+accent-text.txi(,63) 
+accent-text.txi(,64) should be dotless i": @"{@dotless{i}}
+accent-text.txi(,65) 
+accent-text.txi(,66) @c arg is command -- @dotless{j}
+accent-text.txi(,67) should be dotless j`: @`{@dotless{j}}
+accent-text.txi(,68) 
+accent-text.txi(,69) should be dotless j': @'{@dotless{j}}
+accent-text.txi(,70) 
+accent-text.txi(,71) should be dotless j^: @^{@dotless{j}}
+accent-text.txi(,72) 
+accent-text.txi(,73) should be dotless j": @"{@dotless{j}}
+accent.texi(,9) 
+accent.texi(,10) @bye

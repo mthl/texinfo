@@ -392,9 +392,13 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * when determining the different letters and later sorting them, there 
   should not be transliteration, but instead perl sorting and i18n stuff
   should be used. Cf testcases in encoding/encoding_index*.
+  Currently, for example for encoding_index-latin1 accented letters are
+  at the end. And degree is at o...
 
 * formatting/indicateurl_paragraph.texi there should be a warning that
   a simple_style was cut by a paragraph.
+
+* utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
 
 * makeinfo: index entry out of document leads to a message 
   (outside of any node).
@@ -426,11 +430,21 @@ overridden by a command line option.  The possible values are:
 * footnote before any node should trigger an error in info:
   ../../before_node_and_section.texi:8: Footnote defined without parent node.
 
+* error messages different from makeinfo
+@documentlanguage unknown
+@documentlanguage another_UNKNOWN
+../../unknown_language.texi:6: warning: no default territory known for language `unknown'.
+../../unknown_language.texi:6: warning: unknown is not a valid ISO 639 language code.
+../../unknown_language.texi:13: warning: another is not a valid ISO 639 language code.
+
 * in novalidate.texi, fifth node argument should trigger an error
   @node other node in menu before top, node not existing,,,first
 
 * only texi2html warns about:
 ** Empty index entry for @vtable (l. 26)
+
+* What are the encodings known by info/makeinfo? 
+  unrecognized encoding name `ascii'.
 
 * makeinfo creates a Top node when there is a menu seen before any @node
   example in sectionning/one_section
@@ -439,6 +453,14 @@ overridden by a command line option.  The possible values are:
 * info/long_uref_after_item.texi report from Kevin Ryde,
   it would be logical to treat the space after the itemize mark as 
   a tie instead of a breakpoint.
+
+* encodings/accentenc.texi.
+../..//accent-text.txi:45: warning: invalid encoded character `oelig'.
+../..//accent-text.txi:45: warning: invalid encoded character `OElig'.
+  Also OE is associated with both '00D8' and '0152'?
+
+* should include files be searched in current directory, input manual
+  directory or both?
 
 * error messages
   ** `second node' doesn't appear in menus
@@ -486,11 +508,7 @@ item
   formatting:
   simple_images html-extrali
 
-
-
-
-
-
+* In japanese.texi lines are not cut right.
 
 
 

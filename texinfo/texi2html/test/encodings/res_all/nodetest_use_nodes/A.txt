@@ -1,0 +1,15 @@
+1.9 A"
+======
+
+Now a ref to a node without sectionning command, 
+no text (see no section).
+With text (see but a text).
+
+2.7 A'
+======
+3.8 A`
+======
+4.8 A^
+======
+5.4 A~
+======

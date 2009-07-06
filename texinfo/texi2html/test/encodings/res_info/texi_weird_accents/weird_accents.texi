@@ -1,0 +1,19 @@
+\input texinfo
+@setfilename accentenc.info
+@settitle Complex accent encoding test
+@documentencoding ISO-8859-1
+
+@node Top
+@top Complex accent encoding test top
+
+@={@~{@dotless{i}}}
+
+@={@,{@~{n}}}
+
+@={@ubaraccent{a}}
+
+@^{@udotaccent{@`r}}
+
+@={@code{@'{@`{r}}}}
+
+@bye

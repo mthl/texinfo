@@ -19,7 +19,7 @@ some @ verb{' atim
 * (texinfo):: in @ verbatim
 
 @end verbatim
-* (manual2):: $@html
+* (manual2):: %@html
 
 <i></i>
 @end html

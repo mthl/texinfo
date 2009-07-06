@@ -1,0 +1,12 @@
+1.4 ö
+=====
+Ref to an anchor at the end of the doc 
+(see there is an o-é could there be an i^).
+2.4 o'
+======
+3.6 o`
+======
+4.4 ô
+=====
+5.3 o~
+======

@@ -1,0 +1,12 @@
+6 cedilla accent
+****************
+* c,::    c,.
+* C,::    C,.
+* c, no brace:: c, no brace.
+6.1 c,
+======
+6.2 C,
+======
+6.3 c, no brace
+===============
+

@@ -1,0 +1,17 @@
+OgoL2
+*****
+
+Latin 2 (precomposed).
+Aogonek: ¡
+aogonek: ±
+standalone ogonek: ²
+Eogonek: Ê
+eogonek: ê
+
+Accented.
+A; a;
+E; e;
+I; i;
+O; o;
+U; u;
+

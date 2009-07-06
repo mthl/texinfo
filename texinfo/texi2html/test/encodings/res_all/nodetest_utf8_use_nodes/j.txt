@@ -1,0 +1,19 @@
+7.20 j
+======
+        
+        ...
+
+	...
+
+	!
+
+	?
+
+	#
+
+	@- : 
+	@ followed by end of line:  	@ followed by tab:  
+	@ followed by space  
+	@*: 
+ and text followin @*.
+

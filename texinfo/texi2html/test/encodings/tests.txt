@@ -57,9 +57,9 @@ documentlanguage_set_option documentlanguage_set.texi -document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi -document-language unknown
 # iconv < encoding_index-utf8.texi -t latin1 |sed 's/utf8/latin1/' > encoding_index-latin1.texi
 encoding_index encoding_index.texi
-encoding_index_toutf8 encoding_index.texi -init utf8
+encoding_index_toutf8 encoding_index.texi -init utf8.init
 encoding_index-utf8 encoding_index-utf8.texi
-encoding_index-utf8_toutf8 encoding_index-utf8.texi -init utf8
+encoding_index-utf8_toutf8 encoding_index-utf8.texi -init utf8.init
 encoding_index-latin1 encoding_index-latin1.texi
-encoding_index-latin1_toutf8 encoding_index-latin1.texi -init utf8
+encoding_index-latin1_toutf8 encoding_index-latin1.texi -init utf8.init
 accentenc_info accentenc.texi -init info.init

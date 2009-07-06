@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.294 2009-06-28 23:45:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.295 2009-07-06 21:59:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -981,6 +981,7 @@ sub t2h_default_init_split_indices ()
              || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys(%{$t2h_default_index_letters_hash{$index_name}})))
       {
         my $letter_entry = {'letter' => $letter };
+        # FIXME sort without uc?
         foreach my $key (sort {uc($a) cmp uc($b)} (keys(%{$t2h_default_index_letters_hash{$index_name}->{$letter}})))
         {
           push @{$letter_entry->{'entries'}}, $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key};
@@ -3408,16 +3409,23 @@ if (!defined($Texi2HTML::Config::USE_UNICODE))
 # no user provided nor configured, run time test
 if ($Texi2HTML::Config::USE_UNICODE eq '@' .'USE_UNICODE@')
 {
-    $Texi2HTML::Config::USE_UNICODE = 1;
     eval {
         require Encode;
         require Unicode::Normalize; 
         Encode->import('encode');
     };
-    $Texi2HTML::Config::USE_UNICODE = 0 if ($@);
+    if ($@)
+    {
+        $Texi2HTML::Config::USE_UNICODE = 0 
+    }
+    else
+    {
+        $Texi2HTML::Config::USE_UNICODE = 1;
+    }
 }
-elsif ($Texi2HTML::Config::USE_UNICODE)
-{# user provided or set by configure
+
+if ($Texi2HTML::Config::USE_UNICODE)
+{
     require Encode;
     require Unicode::Normalize;
     Encode->import('encode');
@@ -3439,8 +3447,9 @@ if ($Texi2HTML::Config::USE_UNIDECODE eq '@' .'USE_UNIDECODE@')
     };
     $Texi2HTML::Config::USE_UNIDECODE = 0 if ($@);
 }
-elsif ($Texi2HTML::Config::USE_UNIDECODE)
-{# user provided or set by configure
+
+if ($Texi2HTML::Config::USE_UNIDECODE)
+{
     require Text::Unidecode;
     Text::Unidecode->import('unidecode');
 }
@@ -3541,7 +3550,14 @@ if ($Texi2HTML::Config::L2H and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $
 
 if ($Texi2HTML::Config::ENABLE_ENCODING)
 {
-   Texi2HTML::Config::t2h_enable_encoding_load();
+   if ($Texi2HTML::Config::USE_UNICODE)
+   {
+      Texi2HTML::Config::t2h_enable_encoding_load();
+   }
+   else
+   { # FIXME: only warn if ENABLE_ENCODING is set on the command line
+      #warn "** --enable-encoding requires utf-8 support\n";
+   }
 }
 
 # FIXME encoding for first file or all files?
@@ -4936,7 +4952,6 @@ sub misc_command_texi($$$$)
              my $filename = $line;
              $filename =~ s/^\s*//;
              $filename =~ s/\s*$//;
-             #$filename = substitute_line($filename, {'code_style' => 1});
              $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
              $Texi2HTML::THISDOC{$macro} = $filename;
              # remove extension

@@ -1,0 +1,27 @@
+ogolat2.texi(,2) @setfilename ogonek.info
+ogolat2.texi(,3) 
+ogolat2.texi(,4) @documentencoding ISO-8859-2
+ogolat2.texi(,5) 
+ogolat2.texi(,6) @node Top
+ogolat2.texi(,7) @top OgoL2
+ogolat2.texi(,8) 
+ogolat2.texi(,9) Latin 2 (precomposed).
+ogolat2.texi(,10) @c 0xa1=0241
+ogolat2.texi(,11) Aogonek: ¡
+ogolat2.texi(,12) @c 0xb1=0261
+ogolat2.texi(,13) aogonek: ±
+ogolat2.texi(,14) @c 0xb2=0262
+ogolat2.texi(,15) standalone ogonek: ²
+ogolat2.texi(,16) @c 0xca=0312
+ogolat2.texi(,17) Eogonek: Ê
+ogolat2.texi(,18) @c 0xea=0352
+ogolat2.texi(,19) eogonek: ê
+ogolat2.texi(,20) 
+ogolat2.texi(,21) @noindent Accented.
+ogolat2.texi(,22) @ogonek{A} @ogonek{a}
+ogolat2.texi(,23) @ogonek{E} @ogonek{e}
+ogolat2.texi(,24) @ogonek{I} @ogonek{i}
+ogolat2.texi(,25) @ogonek{O} @ogonek{o}
+ogolat2.texi(,26) @ogonek{U} @ogonek{u}
+ogolat2.texi(,27) 
+ogolat2.texi(,28) @bye

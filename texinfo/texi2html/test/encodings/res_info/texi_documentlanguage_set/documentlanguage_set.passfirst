@@ -1,0 +1,11 @@
+documentlanguage_set.texi(,2) @c
+documentlanguage_set.texi(,3) @setfilename documentlanguage_set.info
+documentlanguage_set.texi(,4) @documentlanguage pt
+documentlanguage_set.texi(,5) @settitle Test @@documentlanguage set
+documentlanguage_set.texi(,6) 
+documentlanguage_set.texi(,7) @node Top
+documentlanguage_set.texi(,8) @top @@documentlanguage set
+documentlanguage_set.texi(,9) 
+documentlanguage_set.texi(,10) Text.
+documentlanguage_set.texi(,11) 
+documentlanguage_set.texi(,12) @bye

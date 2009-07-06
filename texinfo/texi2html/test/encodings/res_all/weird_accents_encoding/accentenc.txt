@@ -1,0 +1,13 @@
+Complex accent encoding test top
+********************************
+
+i~=
+
+ñ,=
+
+a_=
+
+.r`^
+
+r`'=
+

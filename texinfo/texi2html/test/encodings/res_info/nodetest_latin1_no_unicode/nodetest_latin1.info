@@ -1,0 +1,760 @@
+This is nodetest_latin1.info, produced by makeinfo version 4.13 from
+nodetest_latin1.texi.
+
+
+File: nodetest_latin1.info,  Node: Top,  Next: Umlaut,  Prev: (dir)
+
+* Menu:
+
+* Umlaut::               Umlaut.
+
+
+Another Heading
+
+
+* acute accent::         acute accent.
+* grave accent::         grave accent.
+* circumflex accent::    circumflex accent.
+* tilde accent::         tilde accent.
+* cedilla accent::       cedilla accent.
+* rest::                 rest @aa{} etc.
+
+
+File: nodetest_latin1.info,  Node: Umlaut,  Prev: Top,  Up: Top
+
+1 Umlaut
+********
+
+* Menu:
+
+* ä::    ä.
+* ë::    ë.
+* ï::    ï.
+* ö::    ö.
+* ü::    ü.
+* ÿ::    ÿ.
+* Ä::    Ä.
+* Ë::    Ë.
+* Ï::    Ï.
+* Ö::    Ö.
+* Ü::    Ü.
+* ss::    ss.
+* no section::  Node without sectioning command.
+
+
+File: nodetest_latin1.info,  Node: ä,  Up: Umlaut
+
+1.1 ä
+=====
+
+ref to ç *note ç::.
+
+
+File: nodetest_latin1.info,  Node: ë,  Up: Umlaut
+
+1.2 ë
+=====
+
+
+File: nodetest_latin1.info,  Node: ï,  Up: Umlaut
+
+1.3 ï
+=====
+
+before footnote *Note footanchor::.
+
+   (1)
+
+   after footnote *Note footanchor::.
+
+   ---------- Footnotes ----------
+
+   (1)
+
+
+File: nodetest_latin1.info,  Node: ö,  Up: Umlaut
+
+1.4 ö
+=====
+
+Ref to an anchor at the end of the doc (*note there is an o-é could
+there be an i^: é-o.).
+
+
+File: nodetest_latin1.info,  Node: ü,  Up: Umlaut
+
+1.5 ü
+=====
+
+Another ref to an anchor (*note x-spot::).
+
+
+File: nodetest_latin1.info,  Node: ÿ,  Up: Umlaut
+
+1.6 ÿ
+=====
+
+This is a ref to a node (*note à: à.).
+
+
+File: nodetest_latin1.info,  Node: Ä,  Up: Umlaut
+
+1.7 Ä
+=====
+
+Now a ref to a node without sectionning command, no text (*note no
+section::).  With text (*note but a text: no section.).
+
+
+File: nodetest_latin1.info,  Node: Ë,  Up: Umlaut
+
+1.8 Ë
+=====
+
+
+File: nodetest_latin1.info,  Node: Ï,  Up: Umlaut
+
+1.9 Ï
+=====
+
+
+File: nodetest_latin1.info,  Node: Ö,  Up: Umlaut
+
+1.10 Ö
+======
+
+
+File: nodetest_latin1.info,  Node: Ü,  Up: Umlaut
+
+1.11 Ü
+======
+
+
+File: nodetest_latin1.info,  Node: ss,  Up: Umlaut
+
+1.12 ss
+=======
+
+
+File: nodetest_latin1.info,  Node: no section,  Up: Umlaut
+
+This is a node without sectioning command.
+
+
+File: nodetest_latin1.info,  Node: acute accent,  Prev: Top,  Up: Top
+
+2 acute accent
+**************
+
+* Menu:
+
+* a'::    a'.
+* é::    é.
+* i'::    i'.
+* o'::    o'.
+* u'::    u'.
+* y'::    y'.
+* A'::    A'.
+* E'::    E'.
+* I'::    I'.
+* O'::    O'.
+* U'::    U'.
+* Y'::    Y'.
+
+
+File: nodetest_latin1.info,  Node: a',  Up: acute accent
+
+2.1 a'
+======
+
+With brace a'. Testing ' " ` ^.
+
+
+File: nodetest_latin1.info,  Node: é,  Up: acute accent
+
+2.2 é
+=====
+
+
+File: nodetest_latin1.info,  Node: i',  Up: acute accent
+
+2.3 i'
+======
+
+
+File: nodetest_latin1.info,  Node: o',  Up: acute accent
+
+2.4 o'
+======
+
+
+File: nodetest_latin1.info,  Node: u',  Up: acute accent
+
+2.5 u'
+======
+
+
+File: nodetest_latin1.info,  Node: y',  Up: acute accent
+
+2.6 y'
+======
+
+
+File: nodetest_latin1.info,  Node: A',  Up: acute accent
+
+2.7 A'
+======
+
+
+File: nodetest_latin1.info,  Node: E',  Up: acute accent
+
+2.8 E'
+======
+
+
+File: nodetest_latin1.info,  Node: I',  Up: acute accent
+
+2.9 I'
+======
+
+
+File: nodetest_latin1.info,  Node: O',  Up: acute accent
+
+2.10 O'
+=======
+
+
+File: nodetest_latin1.info,  Node: U',  Up: acute accent
+
+2.11 U'
+=======
+
+
+File: nodetest_latin1.info,  Node: Y',  Up: acute accent
+
+2.12 Y'
+=======
+
+This is a ref to ü (*note ü: ü.).  Another one, with node only (*note
+ü::).
+
+
+File: nodetest_latin1.info,  Node: grave accent,  Prev: Top,  Up: Top
+
+3 grave accent
+**************
+
+* Menu:
+
+* à::    à.
+* è::    è.
+* i`::    i`.
+* with brace i`::    i`.
+* with dotless i`::   i`.
+* o`::    o`.
+* ù::    ù.
+* A`::    A`.
+* E`::    E`.
+* I`::    I`.
+* O`::    O`.
+* U`::    U`.
+
+
+File: nodetest_latin1.info,  Node: à,  Up: grave accent
+
+3.1 à
+=====
+
+
+File: nodetest_latin1.info,  Node: è,  Up: grave accent
+
+3.2 è
+=====
+
+
+File: nodetest_latin1.info,  Node: i`,  Up: grave accent
+
+3.3 i`
+======
+
+
+File: nodetest_latin1.info,  Node: with brace i`,  Up: grave accent
+
+3.4 i`
+======
+
+
+File: nodetest_latin1.info,  Node: with dotless i`,  Up: grave accent
+
+3.5 i`
+======
+
+
+File: nodetest_latin1.info,  Node: o`,  Up: grave accent
+
+3.6 o`
+======
+
+
+File: nodetest_latin1.info,  Node: ù,  Up: grave accent
+
+3.7 ù
+=====
+
+
+File: nodetest_latin1.info,  Node: A`,  Up: grave accent
+
+3.8 A`
+======
+
+
+File: nodetest_latin1.info,  Node: E`,  Up: grave accent
+
+3.9 E`
+======
+
+
+File: nodetest_latin1.info,  Node: I`,  Up: grave accent
+
+3.10 I`
+=======
+
+
+File: nodetest_latin1.info,  Node: O`,  Up: grave accent
+
+3.11 O`
+=======
+
+
+File: nodetest_latin1.info,  Node: U`,  Up: grave accent
+
+3.12 U`
+=======
+
+
+File: nodetest_latin1.info,  Node: circumflex accent,  Prev: Top,  Up: Top
+
+4 circumflex accent
+*******************
+
+* Menu:
+
+* â::    â.
+* ê::    ê.
+* î::    î.
+* ô::    ô.
+* û::    û.
+* Â::    Â.
+* Ê::    Ê.
+* Î::    Î.
+* Ô::    Ô.
+* Û::    Û.
+
+
+File: nodetest_latin1.info,  Node: â,  Up: circumflex accent
+
+4.1 â
+=====
+
+
+File: nodetest_latin1.info,  Node: ê,  Up: circumflex accent
+
+4.2 ê
+=====
+
+
+File: nodetest_latin1.info,  Node: î,  Up: circumflex accent
+
+4.3 î
+=====
+
+
+File: nodetest_latin1.info,  Node: ô,  Up: circumflex accent
+
+4.4 ô
+=====
+
+
+File: nodetest_latin1.info,  Node: û,  Up: circumflex accent
+
+4.5 û
+=====
+
+
+File: nodetest_latin1.info,  Node: Â,  Up: circumflex accent
+
+4.6 Â
+=====
+
+
+File: nodetest_latin1.info,  Node: Ê,  Up: circumflex accent
+
+4.7 Ê
+=====
+
+
+File: nodetest_latin1.info,  Node: Î,  Up: circumflex accent
+
+4.8 Î
+=====
+
+
+File: nodetest_latin1.info,  Node: Ô,  Up: circumflex accent
+
+4.9 Ô
+=====
+
+
+File: nodetest_latin1.info,  Node: Û,  Up: circumflex accent
+
+4.10 Û
+======
+
+
+File: nodetest_latin1.info,  Node: tilde accent,  Prev: Top,  Up: Top
+
+5 tilde accent
+**************
+
+* Menu:
+
+* a~::    a~.
+* n~::    n~.
+* o~::    o~.
+* A~::    A~.
+* O~::    O~.
+
+
+File: nodetest_latin1.info,  Node: a~,  Up: tilde accent
+
+5.1 a~
+======
+
+
+File: nodetest_latin1.info,  Node: n~,  Up: tilde accent
+
+5.2 n~
+======
+
+
+File: nodetest_latin1.info,  Node: o~,  Up: tilde accent
+
+5.3 o~
+======
+
+
+File: nodetest_latin1.info,  Node: A~,  Up: tilde accent
+
+5.4 A~
+======
+
+
+File: nodetest_latin1.info,  Node: O~,  Up: tilde accent
+
+5.5 O~
+======
+
+This marks the spot.  A second one with accented char .
+
+
+File: nodetest_latin1.info,  Node: cedilla accent,  Prev: Top,  Up: Top
+
+6 cedilla accent
+****************
+
+* Menu:
+
+* ç::    ç.
+* C,::    C,.
+
+
+File: nodetest_latin1.info,  Node: ç,  Up: cedilla accent
+
+6.1 ç
+=====
+
+
+File: nodetest_latin1.info,  Node: C,,  Up: cedilla accent
+
+6.2 C,
+======
+
+
+File: nodetest_latin1.info,  Node: rest,  Prev: Top,  Up: Top
+
+7 rest
+******
+
+* Menu:
+
+* aa::  aa.
+* ae::  ae.
+* oe::  oe.
+* AA::  AA.
+* AE::  AE.
+* OE::  OE.
+* /l::  /l.
+* /o::  /o.
+* /L::  /L.
+* /O::  /O.
+* a''::  a''.
+* a(::  a(.
+* a<::  a<.
+* .a::  .a udotaccent.
+* a.::  a. dotaccent.
+* a*::  a* ringaccent.
+* a[::  a[ tieaccent.
+* a_::  a_ ubaraccent.
+* i::  i dotless i.
+* j::  j dotless j.
+* ,::     , comma
+
+
+File: nodetest_latin1.info,  Node: aa,  Up: rest
+
+7.1 aa
+======
+
+
+File: nodetest_latin1.info,  Node: ae,  Up: rest
+
+7.2 ae
+======
+
+
+File: nodetest_latin1.info,  Node: oe,  Up: rest
+
+7.3 oe
+======
+
+
+File: nodetest_latin1.info,  Node: AA,  Up: rest
+
+7.4 AA
+======
+
+
+File: nodetest_latin1.info,  Node: AE,  Up: rest
+
+7.5 AE
+======
+
+
+File: nodetest_latin1.info,  Node: OE,  Up: rest
+
+7.6 OE
+======
+
+
+File: nodetest_latin1.info,  Node: /l,  Up: rest
+
+7.7 /l
+======
+
+
+File: nodetest_latin1.info,  Node: /o,  Up: rest
+
+7.8 /o
+======
+
+
+File: nodetest_latin1.info,  Node: /L,  Up: rest
+
+7.9 /L
+======
+
+
+File: nodetest_latin1.info,  Node: /O,  Up: rest
+
+7.10 /O
+=======
+
+
+File: nodetest_latin1.info,  Node: a'',  Up: rest
+
+7.11 a''
+========
+
+
+File: nodetest_latin1.info,  Node: a(,  Up: rest
+
+7.12 a(
+=======
+
+
+File: nodetest_latin1.info,  Node: a<,  Up: rest
+
+7.13 a<
+=======
+
+
+File: nodetest_latin1.info,  Node: .a,  Up: rest
+
+7.14 .a
+=======
+
+Test udotaccent.
+
+
+File: nodetest_latin1.info,  Node: a.,  Up: rest
+
+7.15 a.
+=======
+
+Test dotaccent.
+
+
+File: nodetest_latin1.info,  Node: a*,  Up: rest
+
+7.16 a*
+=======
+
+
+File: nodetest_latin1.info,  Node: a[,  Up: rest
+
+7.17 a[
+=======
+
+
+File: nodetest_latin1.info,  Node: a_,  Up: rest
+
+7.18 a_
+=======
+
+
+File: nodetest_latin1.info,  Node: i,  Up: rest
+
+7.19 i
+======
+
+
+File: nodetest_latin1.info,  Node: j,  Up: rest
+
+7.20 j
+======
+
+...
+
+   ...
+
+   !
+
+   ?
+
+   #
+
+   @- :  	@ followed by end of line:  	@ followed by tab:   	@ followed
+by space   	@*:
+and text followin @*.
+
+
+File: nodetest_latin1.info,  Node: ,,  Up: rest
+
+7.21 ,
+======
+
+An index entry with accented letter.
+
+ [index ]
+* Menu:
+
+* index entry with accented letter: à a`: ,.                    (line 6)
+* index entry with accented letter: â a`: ,.                    (line 6)
+
+
+
+Tag Table:
+Node: Top92
+Node: Umlaut469
+Node: ä760
+Node: ë847
+Node: ï913
+Ref: ï-Footnote-11099
+Ref: footanchor1106
+Node: ö1107
+Node: ü1265
+Node: ÿ1375
+Node: Ä1481
+Node: Ë1671
+Node: Ï1737
+Node: Ö1803
+Node: Ü1871
+Node: ss1939
+Node: no section2010
+Node: acute accent2116
+Node: a'2396
+Node: é2504
+Node: i'2576
+Node: o'2651
+Node: u'2726
+Node: y'2801
+Node: A'2876
+Node: E'2951
+Node: I'3026
+Node: O'3101
+Node: U'3178
+Node: Y'3255
+Node: grave accent3409
+Node: à3708
+Node: è3780
+Node: i`3852
+Node: with brace i`3927
+Node: with dotless i`4013
+Node: o`4101
+Node: ù4176
+Node: A`4248
+Node: E`4323
+Node: I`4398
+Node: O`4475
+Node: U`4552
+Node: circumflex accent4629
+Node: â4878
+Node: ê4955
+Node: î5032
+Node: ô5109
+Node: û5186
+Node: Â5263
+Node: Ê5340
+Node: Î5417
+Node: Ô5494
+Node: Û5571
+Node: tilde accent5650
+Node: a~5834
+Node: n~5909
+Node: o~5984
+Node: A~6059
+Node: O~6134
+Ref: x-spot6224
+Ref: é-o6263
+Node: cedilla accent6266
+Node: ç6412
+Node: C,6486
+Node: rest6563
+Node: aa6982
+Node: ae7049
+Node: oe7116
+Node: AA7183
+Node: AE7250
+Node: OE7317
+Node: /l7384
+Node: /o7451
+Node: /L7518
+Node: /O7585
+Node: a''7654
+Node: a(7726
+Node: a<7795
+Node: .a7864
+Node: a.7951
+Node: a*8037
+Node: a[8106
+Node: a_8175
+Node: i8244
+Node: j8310
+Node: ,8518
+
+End Tag Table
+
+
+Local Variables:
+coding: latin1
+End:

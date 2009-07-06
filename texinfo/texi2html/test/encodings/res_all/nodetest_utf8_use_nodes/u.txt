@@ -1,0 +1,9 @@
+1.5 ü
+=====
+Another ref to an anchor (see x-spot).
+2.5 u'
+======
+3.7 ù
+=====
+4.5 û
+=====

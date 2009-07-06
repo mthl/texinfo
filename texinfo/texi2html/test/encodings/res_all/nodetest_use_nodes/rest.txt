@@ -1,0 +1,23 @@
+7 rest
+******
+* aa::  aa.
+* ae::  ae.
+* oe::  oe.
+* AA::  AA.
+* AE::  AE.
+* OE::  OE.
+* /l::  /l.
+* /o::  /o.
+* /L::  /L.
+* /O::  /O.
+* a''::  a''.
+* a(::  a(.
+* a<::  a<.
+* .a::  .a udotaccent.
+* a.::  a. dotaccent.
+* a*::  a* ringaccent.
+* a[::  a[ tieaccent.
+* a_::  a_ ubaraccent.
+* i::  i dotless i.
+* j::  j dotless j.
+* ,::     , comma

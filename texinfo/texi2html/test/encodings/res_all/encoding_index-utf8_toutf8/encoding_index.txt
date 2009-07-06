@@ -1,0 +1,53 @@
+top
+***
+
+
+* Index:
+* ,: top.
+* 0: top.
+* 9: top.
+* ¡: top.
+* °: top.
+* “: top.
+* €: top.
+* ≥: top.
+* A: top.
+* a: top.
+* b: top.
+* B: top.
+* c: top.
+* d: top.
+* e: top.
+* f: top.
+* g: top.
+* h: top.
+* i: top.
+* ı ı (dotless): top.
+* j: top.
+* k: top.
+* l: top.
+* m: top.
+* n: top.
+* o: top.
+* p: top.
+* q: top.
+* r: top.
+* s: top.
+* ß: top.
+* t: top.
+* u: top.
+* v: top.
+* w: top.
+* x: top.
+* y: top.
+* z: top.
+* Æ: top.
+* é ééééé: top.
+* î î (dotless): top.
+* î îîîî: top.
+* ï ïïï: top.
+* Ð: top.
+* Þ: top.
+* ł: top.
+* Ł: top.
+

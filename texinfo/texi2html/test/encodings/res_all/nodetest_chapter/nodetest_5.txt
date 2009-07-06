@@ -1,0 +1,19 @@
+5 tilde accent
+**************
+* a~::    a~.
+* n~::    n~.
+* o~::    o~.
+* A~::    A~.
+* O~::    O~.
+5.1 a~
+======
+5.2 n~
+======
+5.3 o~
+======
+5.4 A~
+======
+5.5 O~
+======
+This marks the spot.
+A second one with accented char .

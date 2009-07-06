@@ -1,0 +1,19 @@
+ogoutf.texi(,2) @setfilename ogonek.info
+ogoutf.texi(,3) @documentencoding UTF-8
+ogoutf.texi(,4) @settitle Ogonek
+ogoutf.texi(,5) 
+ogoutf.texi(,12) 
+ogoutf.texi(,13) @node Top
+ogoutf.texi(,14) @chapter Top AE @ogonek{a}@ogonek{e}
+ogoutf.texi(,15) 
+ogoutf.texi(,16) @section AE ĄĘ ae ąę
+ogoutf.texi(,17) 
+ogoutf.texi(,18) Zażółć gęślą jaźń!
+ogoutf.texi(,19) 
+ogoutf.texi(,20) Zazolc gesla jazn!
+ogoutf.texi(,21) 
+ogoutf.texi(,22) @cindex @ogonek{A}@ogonek{a}
+ogoutf.texi(,23) @cindex @ogonek{e}@ogonek{E}
+ogoutf.texi(,24) @printindex cp
+ogoutf.texi(,25) 
+ogoutf.texi(,26) @bye

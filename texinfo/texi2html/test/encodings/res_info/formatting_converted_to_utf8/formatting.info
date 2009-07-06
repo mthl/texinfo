@@ -1,0 +1,1260 @@
+This is formatting.info, produced by makeinfo version 4.13 from
+formatting.texi.
+
+`'
+**
+`'
+
+   @ü@{}Ü@ñ@â@é@ō@ì@{}é@{@{}}í@{}ı@{}j@{@}Ḕ@{}ł@{@}Ḉ@ç@@çü
+
+   @
+@ @ @ `@'`@'`@'`@'!`@'?`@'.`@@'@`@}'}`@{'{`@'
+
+   .:?!@
+
+   @TeX@LaTeX@•@©@…@...@≡@error-->@→@−@★@⊣@⇒@a sunny
+day@å@Å@æ@œ@Æ@Œ@ø@Ø@ß@ł@Ł@Ð@Þ@ð@þ@¡@¿@£@®@ª@º@,@“@”@‘@’@„@‚@«@»@«@»@‹@›@°@€@→@≤@≥
+
+   `@{}'–a (an accronym)`@{}'–a`@{@@{}@}'É–. ,A. (Étude
+Autonome)`@{@@{}}'É–.
+,A.`@{}'`@{}'`@{}'`'`@{}'`'`@{}'`'`@{}'`@{}'""`@{}'`@{}'–b <--a>`@{}'–b
+<>`@{}'<--a>`@{}'__`@{}'`'`@{}'`'`@{}'`@{}'`'`@{}'<>`@{{{}{}}@{}}'−`@{}'`'`@{}'`@{}'`'`@{}'`@{}'**`@{}'`@{}'`@{}'
+
+   `@{}'<>`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'–c`@{}'–c`@{}'–c`@{}'–c`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'`@{}'`@{@}'`@{}'`@{}'a̋`@{}'–a̋`@{}'ȧ`@{}'–ȧ`@{}'å`@{}'–å`@{}'a[`@{}'–a[`@{}'ă`@{}'–ă`@{}'a̲`@{}'–a̲`@{}'ạ`@{}'–ạ`@{}'ǎ`@{}'–ǎ`@{}'ç`@{}'–ç`@{}'ą`@{}'–ą`@{}'(0)`@{}'(0)
+
+   `@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{@{}@@@@{}@}'
+
+
+
+   `@{@{}}'→⇒`@{@{}}'⇒
+
+     éTeXéTeX
+
+     @@@
+
+
+   • 
+   + 
+   • 
+   − 
+   __ 
+   __ 
+   • a–n itemize line 
+• a–n itemize line 
+  1. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ -- c--ategory: d--effn_name a--rguments...
+
+ -- cate--gory: de--ffn_name ar--guments more args 
+          even more so
+
+ -- fset:  a g
+ -- cmde: truc
+ -- Command: log trap
+ -- Command:  log trap1
+ -- Command: log trap2
+ -- cmde:  truc
+ -- cmde2: `' truc
+ -- `':
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- : machin
+ -- : bidule machin
+ -- truc: machin
+ -- truc:
+ -- truc: followed by a comment
+ -- truc:
+ -- :
+ -- truc: a b c d e  h i
+ -- truc: deffnx before end deffn
+
+ -- empty: deffn
+
+ -- empty: deffn with deffnx
+ -- empty: deffnx
+
+ -- fset:  a g
+ -- cmde: truc
+
+ -- c--ategory: d--efvr_name
+
+ -- c--ategory: t--ype d--eftypefn_name a--rguments...
+
+ -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+
+ -- c--ategory: t--ype d--eftypevr_name
+
+ -- c--ategory of c--lass: d--efcv_name
+
+ -- c--ategory on c--lass: d--efop_name a--rguments...
+
+ -- c--ategory: d--eftp_name a--ttributes...
+
+ -- Function: d--efun_name a--rguments...
+
+ -- Macro: d--efmac_name a--rguments...
+
+ -- Special Form: d--efspec_name a--rguments...
+
+ -- Variable: d--efvar_name argvar argvar1
+
+ -- User Option: d--efopt_name
+
+ -- Function: t--ype d--eftypefun_name a--rguments...
+
+ -- Variable: t--ype d--eftypevar_name
+
+ -- Instance Variable of c--lass: d--efivar_name
+
+ -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+
+ -- Method on c--lass: d--efmethod_name a--rguments...
+
+ -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+
+   `@{@@@@@@@@@@}'*Note cross r—ef name@: (file
+n---ame@)c---hapter@`@{}'*note cross ref name: (file
+name)chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+cross ref name: (file name)chapter
+
+   `@{}'*note chapter::`@{}'*Note chapter::`@{}'*note
+chapter::`@{@{}}'*note s--ect,ion::
+
+   `@{@{}@{}@{}@{}@{}}'*note a , in cross ref: (a comma, in
+file)s--ect,ion.
+
+   `@{}'*note cross ref name: chapter.`@{}'*note title:
+chapter.`@{}'*note chapter: (file name)chapter.`@{}'*note chapter:
+()chapter.`@{}'*note cross ref name: chapter.`@{}'*note cross ref name:
+(file name)chapter.`@{}'*note cross ref name: ()chapter.`@{}'*note cross
+ref name: (file name)chapter.`@{}'*note cross ref name:
+()chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+title: (file name)chapter.`@{}'*note title: ()chapter.`@{}'*note title:
+(file name)chapter.`@{}'*note chapter: (file name)chapter.
+
+   `@{}'*note cross ref name: (pman)anode.`@{}'*note title:
+(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.`@{}'*note
+(pman)anode: ()(pman)anode.`@{}'*note cross ref name:
+(pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note
+cross ref name: ()(pman)anode.`@{}'*note cross ref name: (file
+name)(pman)anode.`@{}'*note cross ref name: ()(pman)anode.`@{}'*note
+cross ref name: (file name)(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note title: ()(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.
+
+   `@{}'*note cross ref name: (file name)chapter`@{}'*note chapter:
+()chapter`@{}'*note cross ref name: ()chapter`@{}'*note chapter: (file
+name)chapter`@{}'*note cross ref name: (file name)node`@{}'*note node:
+()node`@{}'*note cross ref name: ()node`@{}'*note node: (file
+name)node`@{}'*note cross ref name: (file name, spurious arg)chapter
+
+   `@{@{}@{}@{}}'*note a , in cross ref: (a comma, in file)s--ect,ion
+
+•
+
+−−
+
+in verbatim ''
+
+majorheading
+************
+
+chapheading
+***********
+
+heading
+=======
+
+subheading
+----------
+
+subsubheading
+.............
+
+`@{@{}@{}}'–a (an accronym , ...)`@{@@{}@@{}@{}}'É–. ,A. (Étude–,
+)`@{@@{}}'É–. ,A.
+
+   `@{@{}{{}{}}}'−
+
+   `@{@{}}'`@{@{@}@{}}'`@{@{@}@{@}}'
+
+   @
+@
+@@@̧
+
+   @
+@
+@@@́
+
+   @{}truc@{}ij`@{}'–a`@{}'a
+
+   @TeX
+
+   `@'
+
+   `@{}'
+
+   `@{}'`@{}'`@{}'
+
+
+   @emph after emph 
+   • a–n itemize line 
+• a–n itemize line 
+ -- fun:
+ -- truc: machin bidule chose and
+ -- truc: machin bidule chose and  after
+ -- truc: machin bidule chose and {
+ -- truc: machin bidule chose and { and after
+ -- truc: followed by a comment
+ -- truc: after a deff item
+
+   `@{}'@ref{node}.
+
+   `@{}'@ref{,cross ref name}.`@{}'@ref{,,title}.`@{}'*note : (file
+name).`@{}'*note : ().`@{}'@ref{node,cross ref
+name}.`@{}'@ref{node,,title}.`@{}'*note node: (file name)node.`@{}'*note
+node: ()node.`@{}'@ref{node,cross ref name,title,}.`@{}'*note cross ref
+name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note cross
+ref name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note
+cross ref name: (file name)node.`@{}'*note title: (file
+name)node.`@{}'*note title: ()node.`@{}'*note title: (file
+name)chapter.`@{}'*note title: (file name)node.`@{}'*note node: (file
+name)node.`@{}'@ref{,cross ref name,title,}.`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note title: (file name).`@{}'*note title:
+().`@{}'*note title: (file name).`@{}'*note : (file name).
+
+   `@{}'`@{}'`@{}'`@{}'
+
+
+File: formatting.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top section
+***********
+
+* Menu:
+
+* chapter::* description:chapter2.
+
+`'
+**
+`'
+
+   @ü@{}Ü@ñ@â@é@ō@ì@{}é@{@{}}í@{}ı@{}j@{@}Ḕ@{}ł@{@}Ḉ@ç@@çü
+
+   @
+@ @ @ `@'`@'`@'`@'!`@'?`@'.`@@'@`@}'}`@{'{`@'
+
+   .:?!@
+
+   @TeX@LaTeX@•@©@…@...@≡@error-->@→@−@★@⊣@⇒@a sunny
+day@å@Å@æ@œ@Æ@Œ@ø@Ø@ß@ł@Ł@Ð@Þ@ð@þ@¡@¿@£@®@ª@º@,@“@”@‘@’@„@‚@«@»@«@»@‹@›@°@€@→@≤@≥
+
+   `@{}'–a (an accronym)`@{}'–a`@{@@{}@}'É–. ,A. (Étude
+Autonome)`@{@@{}}'É–.
+,A.`@{}'`@{}'`@{}'`'`@{}'`'`@{}'`'`@{}'`@{}'""`@{}'`@{}'–b <--a>`@{}'–b
+<>`@{}'<--a>`@{}'__`@{}'`'`@{}'`'`@{}'`@{}'`'`@{}'<>`@{{{}{}}@{}}'−`@{}'`'`@{}'`@{}'`'`@{}'`@{}'**`@{}'`@{}'`@{}'
+
+   `@{}'<>`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'–c`@{}'–c`@{}'–c`@{}'–c`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'`@{}'`@{@}'`@{}'`@{}'a̋`@{}'–a̋`@{}'ȧ`@{}'–ȧ`@{}'å`@{}'–å`@{}'a[`@{}'–a[`@{}'ă`@{}'–ă`@{}'a̲`@{}'–a̲`@{}'ạ`@{}'–ạ`@{}'ǎ`@{}'–ǎ`@{}'ç`@{}'–ç`@{}'ą`@{}'–ą`@{}'(1)`@{}'(2)
+
+   `@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{@{}@@@@{}@}'
+
+
+
+   `@{@{}}'→⇒`@{@{}}'⇒
+
+     éTeXéTeX
+
+     @@@
+
+
+   • 
+   + 
+   • 
+   − 
+   __ 
+   __ 
+   • a–n itemize line 
+• a–n itemize line 
+  1. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ -- c--ategory: d--effn_name a--rguments...
+
+ -- cate--gory: de--ffn_name ar--guments more args 
+          even more so
+
+ -- fset:  a g
+ -- cmde: truc
+ -- Command: log trap
+ -- Command:  log trap1
+ -- Command: log trap2
+ -- cmde:  truc
+ -- cmde2: `' truc
+ -- `':
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- : machin
+ -- : bidule machin
+ -- truc: machin
+ -- truc:
+ -- truc: followed by a comment
+ -- truc:
+ -- :
+ -- truc: a b c d e  h i
+ -- truc: deffnx before end deffn
+
+ -- empty: deffn
+
+ -- empty: deffn with deffnx
+ -- empty: deffnx
+
+ -- fset:  a g
+ -- cmde: truc
+
+ -- c--ategory: d--efvr_name
+
+ -- c--ategory: t--ype d--eftypefn_name a--rguments...
+
+ -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+
+ -- c--ategory: t--ype d--eftypevr_name
+
+ -- c--ategory of c--lass: d--efcv_name
+
+ -- c--ategory on c--lass: d--efop_name a--rguments...
+
+ -- c--ategory: d--eftp_name a--ttributes...
+
+ -- Function: d--efun_name a--rguments...
+
+ -- Macro: d--efmac_name a--rguments...
+
+ -- Special Form: d--efspec_name a--rguments...
+
+ -- Variable: d--efvar_name argvar argvar1
+
+ -- User Option: d--efopt_name
+
+ -- Function: t--ype d--eftypefun_name a--rguments...
+
+ -- Variable: t--ype d--eftypevar_name
+
+ -- Instance Variable of c--lass: d--efivar_name
+
+ -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+
+ -- Method on c--lass: d--efmethod_name a--rguments...
+
+ -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+
+   `@{@@@@@@@@@@}'*Note cross r—ef name@: (file
+n---ame@)c---hapter@`@{}'*note cross ref name: (file
+name)chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+cross ref name: (file name)chapter
+
+   `@{}'*note chapter::`@{}'*Note chapter::`@{}'*note
+chapter::`@{@{}}'*note s--ect,ion::
+
+   `@{@{}@{}@{}@{}@{}}'*note a , in cross ref: (a comma, in
+file)s--ect,ion.
+
+   `@{}'*note cross ref name: chapter.`@{}'*note title:
+chapter.`@{}'*note chapter: (file name)chapter.`@{}'*note chapter:
+()chapter.`@{}'*note cross ref name: chapter.`@{}'*note cross ref name:
+(file name)chapter.`@{}'*note cross ref name: ()chapter.`@{}'*note cross
+ref name: (file name)chapter.`@{}'*note cross ref name:
+()chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+title: (file name)chapter.`@{}'*note title: ()chapter.`@{}'*note title:
+(file name)chapter.`@{}'*note chapter: (file name)chapter.
+
+   `@{}'*note cross ref name: (pman)anode.`@{}'*note title:
+(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.`@{}'*note
+(pman)anode: ()(pman)anode.`@{}'*note cross ref name:
+(pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note
+cross ref name: ()(pman)anode.`@{}'*note cross ref name: (file
+name)(pman)anode.`@{}'*note cross ref name: ()(pman)anode.`@{}'*note
+cross ref name: (file name)(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note title: ()(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.
+
+   `@{}'*note cross ref name: (file name)chapter`@{}'*note chapter:
+()chapter`@{}'*note cross ref name: ()chapter`@{}'*note chapter: (file
+name)chapter`@{}'*note cross ref name: (file name)node`@{}'*note node:
+()node`@{}'*note cross ref name: ()node`@{}'*note node: (file
+name)node`@{}'*note cross ref name: (file name, spurious arg)chapter
+
+   `@{@{}@{}@{}}'*note a , in cross ref: (a comma, in file)s--ect,ion
+
+•
+
+−−
+
+in verbatim ''
+
+majorheading
+************
+
+chapheading
+***********
+
+heading
+=======
+
+subheading
+----------
+
+subsubheading
+.............
+
+`@{@{}@{}}'–a (an accronym , ...)`@{@@{}@@{}@{}}'É–. ,A. (Étude–,
+)`@{@@{}}'É–. ,A.
+
+   `@{@{}{{}{}}}'−
+
+   `@{@{}}'`@{@{@}@{}}'`@{@{@}@{@}}'
+
+   @
+@
+@@@̧
+
+   @
+@
+@@@́
+
+   @{}truc@{}ij`@{}'–a`@{}'a
+
+   @TeX
+
+   `@'
+
+   `@{}'
+
+   `@{}'`@{}'`@{}'
+
+
+   @emph after emph 
+   • a–n itemize line 
+• a–n itemize line 
+ -- fun:
+ -- truc: machin bidule chose and
+ -- truc: machin bidule chose and  after
+ -- truc: machin bidule chose and {
+ -- truc: machin bidule chose and { and after
+ -- truc: followed by a comment
+ -- truc: after a deff item
+
+   `@{}'@ref{node}.
+
+   `@{}'@ref{,cross ref name}.`@{}'@ref{,,title}.`@{}'*note : (file
+name).`@{}'*note : ().`@{}'@ref{node,cross ref
+name}.`@{}'@ref{node,,title}.`@{}'*note node: (file name)node.`@{}'*note
+node: ()node.`@{}'@ref{node,cross ref name,title,}.`@{}'*note cross ref
+name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note cross
+ref name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note
+cross ref name: (file name)node.`@{}'*note title: (file
+name)node.`@{}'*note title: ()node.`@{}'*note title: (file
+name)chapter.`@{}'*note title: (file name)node.`@{}'*note node: (file
+name)node.`@{}'@ref{,cross ref name,title,}.`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note title: (file name).`@{}'*note title:
+().`@{}'*note title: (file name).`@{}'*note : (file name).
+
+   `@{}'`@{}'`@{}'`@{}'
+
+`'
+**
+`'
+
+   @ü@{}Ü@ñ@â@é@ō@ì@{}é@{@{}}í@{}ı@{}j@{@}Ḕ@{}ł@{@}Ḉ@ç@@çü
+
+   @
+@ @ @ `@'`@'`@'`@'!`@'?`@'.`@@'@`@}'}`@{'{`@'
+
+   .:?!@
+
+   @TeX@LaTeX@•@©@…@...@≡@error-->@→@−@★@⊣@⇒@a sunny
+day@å@Å@æ@œ@Æ@Œ@ø@Ø@ß@ł@Ł@Ð@Þ@ð@þ@¡@¿@£@®@ª@º@,@“@”@‘@’@„@‚@«@»@«@»@‹@›@°@€@→@≤@≥
+
+   `@{}'–a (an accronym)`@{}'–a`@{@@{}@}'É–. ,A. (Étude
+Autonome)`@{@@{}}'É–.
+,A.`@{}'`@{}'`@{}'`'`@{}'`'`@{}'`'`@{}'`@{}'""`@{}'`@{}'–b <--a>`@{}'–b
+<>`@{}'<--a>`@{}'__`@{}'`'`@{}'`'`@{}'`@{}'`'`@{}'<>`@{{{}{}}@{}}'−`@{}'`'`@{}'`@{}'`'`@{}'`@{}'**`@{}'`@{}'`@{}'
+
+   `@{}'<>`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'–c`@{}'–c`@{}'–c`@{}'–c`@{}'–b (--a)`@{}'`--a'`@{}'–b
+()`@{}'`@{}'`@{@}'`@{}'`@{}'a̋`@{}'–a̋`@{}'ȧ`@{}'–ȧ`@{}'å`@{}'–å`@{}'a[`@{}'–a[`@{}'ă`@{}'–ă`@{}'a̲`@{}'–a̲`@{}'ạ`@{}'–ạ`@{}'ǎ`@{}'–ǎ`@{}'ç`@{}'–ç`@{}'ą`@{}'–ą`@{}'(3)`@{}'(4)
+
+   `@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{@{}@@@@{}@}'
+
+
+
+   `@{@{}}'→⇒`@{@{}}'⇒
+
+     éTeXéTeX
+
+     @@@
+
+
+   • 
+   + 
+   • 
+   − 
+   __ 
+   __ 
+   • a–n itemize line 
+• a–n itemize line 
+  1. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ -- c--ategory: d--effn_name a--rguments...
+
+ -- cate--gory: de--ffn_name ar--guments more args 
+          even more so
+
+ -- fset:  a g
+ -- cmde: truc
+ -- Command: log trap
+ -- Command:  log trap1
+ -- Command: log trap2
+ -- cmde:  truc
+ -- cmde2: `' truc
+ -- `':
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- : machin
+ -- : bidule machin
+ -- truc: machin
+ -- truc:
+ -- truc: followed by a comment
+ -- truc:
+ -- :
+ -- truc: a b c d e  h i
+ -- truc: deffnx before end deffn
+
+ -- empty: deffn
+
+ -- empty: deffn with deffnx
+ -- empty: deffnx
+
+ -- fset:  a g
+ -- cmde: truc
+
+ -- c--ategory: d--efvr_name
+
+ -- c--ategory: t--ype d--eftypefn_name a--rguments...
+
+ -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+
+ -- c--ategory: t--ype d--eftypevr_name
+
+ -- c--ategory of c--lass: d--efcv_name
+
+ -- c--ategory on c--lass: d--efop_name a--rguments...
+
+ -- c--ategory: d--eftp_name a--ttributes...
+
+ -- Function: d--efun_name a--rguments...
+
+ -- Macro: d--efmac_name a--rguments...
+
+ -- Special Form: d--efspec_name a--rguments...
+
+ -- Variable: d--efvar_name argvar argvar1
+
+ -- User Option: d--efopt_name
+
+ -- Function: t--ype d--eftypefun_name a--rguments...
+
+ -- Variable: t--ype d--eftypevar_name
+
+ -- Instance Variable of c--lass: d--efivar_name
+
+ -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+
+ -- Method on c--lass: d--efmethod_name a--rguments...
+
+ -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+
+   `@{@@@@@@@@@@}'*Note cross r—ef name@: (file
+n---ame@)c---hapter@`@{}'*note cross ref name: (file
+name)chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+cross ref name: (file name)chapter
+
+   `@{}'*note chapter::`@{}'*Note chapter::`@{}'*note
+chapter::`@{@{}}'*note s--ect,ion::
+
+   `@{@{}@{}@{}@{}@{}}'*note a , in cross ref: (a comma, in
+file)s--ect,ion.
+
+   `@{}'*note cross ref name: chapter.`@{}'*note title:
+chapter.`@{}'*note chapter: (file name)chapter.`@{}'*note chapter:
+()chapter.`@{}'*note cross ref name: chapter.`@{}'*note cross ref name:
+(file name)chapter.`@{}'*note cross ref name: ()chapter.`@{}'*note cross
+ref name: (file name)chapter.`@{}'*note cross ref name:
+()chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note
+title: (file name)chapter.`@{}'*note title: ()chapter.`@{}'*note title:
+(file name)chapter.`@{}'*note chapter: (file name)chapter.
+
+   `@{}'*note cross ref name: (pman)anode.`@{}'*note title:
+(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.`@{}'*note
+(pman)anode: ()(pman)anode.`@{}'*note cross ref name:
+(pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note
+cross ref name: ()(pman)anode.`@{}'*note cross ref name: (file
+name)(pman)anode.`@{}'*note cross ref name: ()(pman)anode.`@{}'*note
+cross ref name: (file name)(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note title: ()(pman)anode.`@{}'*note title: (file
+name)(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.
+
+   `@{}'*note cross ref name: (file name)chapter`@{}'*note chapter:
+()chapter`@{}'*note cross ref name: ()chapter`@{}'*note chapter: (file
+name)chapter`@{}'*note cross ref name: (file name)node`@{}'*note node:
+()node`@{}'*note cross ref name: ()node`@{}'*note node: (file
+name)node`@{}'*note cross ref name: (file name, spurious arg)chapter
+
+   `@{@{}@{}@{}}'*note a , in cross ref: (a comma, in file)s--ect,ion
+
+•
+
+−−
+
+in verbatim ''
+
+majorheading
+************
+
+chapheading
+***********
+
+heading
+=======
+
+subheading
+----------
+
+subsubheading
+.............
+
+`@{@{}@{}}'–a (an accronym , ...)`@{@@{}@@{}@{}}'É–. ,A. (Étude–,
+)`@{@@{}}'É–. ,A.
+
+   `@{@{}{{}{}}}'−
+
+   `@{@{}}'`@{@{@}@{}}'`@{@{@}@{@}}'
+
+   @
+@
+@@@̧
+
+   @
+@
+@@@́
+
+   @{}truc@{}ij`@{}'–a`@{}'a
+
+   @TeX
+
+   `@'
+
+   `@{}'
+
+   `@{}'`@{}'`@{}'
+
+
+   @emph after emph 
+   • a–n itemize line 
+• a–n itemize line 
+ -- fun:
+ -- truc: machin bidule chose and
+ -- truc: machin bidule chose and  after
+ -- truc: machin bidule chose and {
+ -- truc: machin bidule chose and { and after
+ -- truc: followed by a comment
+ -- truc: after a deff item
+
+   `@{}'@ref{node}.
+
+   `@{}'@ref{,cross ref name}.`@{}'@ref{,,title}.`@{}'*note : (file
+name).`@{}'*note : ().`@{}'@ref{node,cross ref
+name}.`@{}'@ref{node,,title}.`@{}'*note node: (file name)node.`@{}'*note
+node: ()node.`@{}'@ref{node,cross ref name,title,}.`@{}'*note cross ref
+name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note cross
+ref name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note
+cross ref name: (file name)node.`@{}'*note title: (file
+name)node.`@{}'*note title: ()node.`@{}'*note title: (file
+name)chapter.`@{}'*note title: (file name)node.`@{}'*note node: (file
+name)node.`@{}'@ref{,cross ref name,title,}.`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name:
+(file name).`@{}'*note title: (file name).`@{}'*note title:
+().`@{}'*note title: (file name).`@{}'*note : (file name).
+
+   `@{}'`@{}'`@{}'`@{}'
+
+
+     `'
+
+     **
+     `'
+
+     @ü@{}Ü@ñ@â@é@ō@ì@{}é@{@{}}í@{}ı@{}j@{@}Ḕ@{}ł@{@}Ḉ@ç@@çü
+     @
+     @ @ @ `@'`@'`@'`@'!`@'?`@'.`@@'@`@}'}`@{'{`@'.:?!@@TeX@LaTeX@•@©@…@...@≡@error-->@→@−@★@⊣@⇒@a sunny day@å@Å@æ@œ@Æ@Œ@ø@Ø@ß@ł@Ł@Ð@Þ@ð@þ@¡@¿@£@®@ª@º@,@“@”@‘@’@„@‚@«@»@«@»@‹@›@°@€@→@≤@≥`@{}'--a (an accronym)`@{}'--a`@{@@{}@}'É--. ,A. (Étude Autonome)`@{@@{}}'É--. ,A.`@{}'`@{}'`@{}'`'`@{}'`'`@{}'`'`@{}'`@{}'""`@{}'`@{}'--b <--a>`@{}'--b <>`@{}'<--a>`@{}'__`@{}'`'`@{}'`'`@{}'`@{}'`'`@{}'<>`@{{{}{}}@{}}'−`@{}'`'`@{}'`@{}'`'`@{}'`@{}'**`@{}'`@{}'`@{}'`@{}'<>`@{}'--b (--a)`@{}'`--a'`@{}'--b ()`@{}'--c`@{}'--c`@{}'--c`@{}'--c`@{}'--b (--a)`@{}'`--a'`@{}'--b ()`@{}'`@{}'`@{@}'`@{}'`@{}'a̋`@{}'--a̋`@{}'ȧ`@{}'--ȧ`@{}'å`@{}'--å`@{}'a[`@{}'--a[`@{}'ă`@{}'--ă`@{}'a̲`@{}'--a̲`@{}'ạ`@{}'--ạ`@{}'ǎ`@{}'--ǎ`@{}'ç`@{}'--ç`@{}'ą`@{}'--ą`@{}'(5)`@{}'(6)`@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{}'`@{@{}@@@@{}@}'
+
+     `@{@{}}'→⇒`@{@{}}'⇒
+
+          éTeXéTeX
+
+          @@@
+
+
+        • 
+
+        + 
+
+        • 
+
+        − 
+
+        __ 
+
+        __ 
+
+        • a–n itemize line 
+• a–n itemize line 
+
+       1. 
+     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      -- c--ategory: d--effn_name a--rguments...
+      -- cate--gory: de--ffn_name ar--guments more args 
+               even more so
+      -- fset:  a g
+      -- cmde: truc
+      -- Command: log trap
+      -- Command:  log trap1
+      -- Command: log trap2
+      -- cmde:  truc
+      -- cmde2: `' truc
+      -- `':
+      -- :
+      -- aaa:
+      -- :
+      -- :
+      -- : machin
+      -- : bidule machin
+      -- truc: machin
+      -- truc:
+      -- truc: followed by a comment
+      -- truc:
+      -- :
+      -- truc: a b c d e  h i
+      -- truc: deffnx before end deffn
+      -- empty: deffn
+      -- empty: deffn with deffnx
+      -- empty: deffnx
+      -- fset:  a g
+      -- cmde: truc
+      -- c--ategory: d--efvr_name
+      -- c--ategory: t--ype d--eftypefn_name a--rguments...
+      -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+      -- c--ategory: t--ype d--eftypevr_name
+      -- c--ategory of c--lass: d--efcv_name
+      -- c--ategory on c--lass: d--efop_name a--rguments...
+      -- c--ategory: d--eftp_name a--ttributes...
+      -- Function: d--efun_name a--rguments...
+      -- Macro: d--efmac_name a--rguments...
+      -- Special Form: d--efspec_name a--rguments...
+      -- Variable: d--efvar_name argvar argvar1
+      -- User Option: d--efopt_name
+      -- Function: t--ype d--eftypefun_name a--rguments...
+      -- Variable: t--ype d--eftypevar_name
+      -- Instance Variable of c--lass: d--efivar_name
+      -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+      -- Method on c--lass: d--efmethod_name a--rguments...
+      -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+     `@{@@@@@@@@@@}'*Note cross r---ef name@: (file n---ame@)c---hapter@`@{}'*note cross ref name: (file name)chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note cross ref name: (file name)chapter`@{}'*note chapter::`@{}'*Note chapter::`@{}'*note chapter::`@{@{}}'*note s--ect,ion::`@{@{}@{}@{}@{}@{}}'*note a , in cross ref: (a comma, in file)s--ect,ion.`@{}'*note cross ref name: chapter.`@{}'*note title: chapter.`@{}'*note chapter: (file name)chapter.`@{}'*note chapter: ()chapter.`@{}'*note cross ref name: chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note cross ref name: ()chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note cross ref name: ()chapter.`@{}'*note cross ref name: (file name)chapter.`@{}'*note title: (file name)chapter.`@{}'*note title: ()chapter.`@{}'*note title: (file name)chapter.`@{}'*note chapter: (file name)chapter.`@{}'*note cross ref name: (pman)anode.`@{}'*note title: (pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.`@{}'*note (pman)anode: ()(pman)anode.`@{}'*note cross ref name: (pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note cross ref name: ()(pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note cross ref name: ()(pman)anode.`@{}'*note cross ref name: (file name)(pman)anode.`@{}'*note title: (file name)(pman)anode.`@{}'*note title: ()(pman)anode.`@{}'*note title: (file name)(pman)anode.`@{}'*note (pman)anode: (file name)(pman)anode.`@{}'*note cross ref name: (file name)chapter`@{}'*note chapter: ()chapter`@{}'*note cross ref name: ()chapter`@{}'*note chapter: (file name)chapter`@{}'*note cross ref name: (file name)node`@{}'*note node: ()node`@{}'*note cross ref name: ()node`@{}'*note node: (file name)node`@{}'*note cross ref name: (file name, spurious arg)chapter`@{@{}@{}@{}}'*note a , in cross ref: (a comma, in file)s--ect,ion
+
+     •
+
+     −
+     −
+
+     in verbatim ''
+     
+     majorheading
+     ************
+
+     chapheading
+     ***********
+
+     heading
+     =======
+
+     subheading
+     ----------
+
+     subsubheading
+     .............
+
+     `@{@{}@{}}'--a (an accronym , ...)`@{@@{}@@{}@{}}'É--. ,A. (Étude--, )`@{@@{}}'É--. ,A.`@{@{}{{}{}}}'−`@{@{}}'`@{@{@}@{}}'`@{@{@}@{@}}'@
+     @
+     @@@̧@
+     @
+     @@@́@{}truc@{}ij`@{}'--a`@{}'a@TeX`@'`@{}'`@{}'`@{}'`@{}'
+
+        @emph after emph 
+
+        • a–n itemize line 
+• a–n itemize line 
+      -- fun:
+      -- truc: machin bidule chose and
+      -- truc: machin bidule chose and  after
+      -- truc: machin bidule chose and {
+      -- truc: machin bidule chose and { and after
+      -- truc: followed by a comment
+      -- truc: after a deff item
+     `@{}'@ref{node}.`@{}'@ref{,cross ref name}.`@{}'@ref{,,title}.`@{}'*note : (file name).`@{}'*note : ().`@{}'@ref{node,cross ref name}.`@{}'@ref{node,,title}.`@{}'*note node: (file name)node.`@{}'*note node: ()node.`@{}'@ref{node,cross ref name,title,}.`@{}'*note cross ref name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note cross ref name: (file name)node.`@{}'*note cross ref name: ()node.`@{}'*note cross ref name: (file name)node.`@{}'*note title: (file name)node.`@{}'*note title: ()node.`@{}'*note title: (file name)chapter.`@{}'*note title: (file name)node.`@{}'*note node: (file name)node.`@{}'@ref{,cross ref name,title,}.`@{}'*note cross ref name: (file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name: (file name).`@{}'*note cross ref name: ().`@{}'*note cross ref name: (file name).`@{}'*note title: (file name).`@{}'*note title: ().`@{}'*note title: (file name).`@{}'*note : (file name).`@{}'`@{}'`@{}'`@{}'
+
+ [index ]
+* Menu:
+
+* .:                                     Top.                 (line 595)
+* ?:                                     Top.                 (line 595)
+* –option:                               Top.                 (line  14)
+* –option:                               Top.                 (line 244)
+* –option:                               Top.                 (line 476)
+* “:                                     Top.                 (line  14)
+* “:                                     Top.                 (line 244)
+* “:                                     Top.                 (line 476)
+* a:                                     Top.                 (line 595)
+* index entry between item and itemx:    Top.                 (line 165)
+* index entry between item and itemx:    Top.                 (line 395)
+* index entry between item and itemx:    Top.                 (line 556)
+* index entry within deffn:              Top.                 (line  60)
+* index entry within deffn:              Top.                 (line 290)
+* index entry within deffn:              Top.                 (line 509)
+* index entry within itemize:            Top.                 (line  49)
+* index entry within itemize:            Top.                 (line 279)
+* index entry within itemize:            Top.                 (line 499)
+* index entry within multitable:         Top.                 (line  52)
+* index entry within multitable:         Top.                 (line 282)
+* index entry within multitable:         Top.                 (line 503)
+* t–ruc:                                 Top.                 (line 595)
+* T–ruc:                                 Top.                 (line 595)
+
+ [index ]
+* Menu:
+
+* :                                      Top.                 (line  59)
+* :                                      Top.                 (line  64)
+* :                                      Top.                 (line  86)
+* :                                      Top.                 (line 289)
+* :                                      Top.                 (line 294)
+* :                                      Top.                 (line 316)
+* :                                      Top.                 (line 508)
+* :                                      Top.                 (line 513)
+* :                                      Top.                 (line 532)
+* .:                                     Top.                 (line 595)
+* ?:                                     Top.                 (line 595)
+* `':                                    Top.                 (line  65)
+* `':                                    Top.                 (line 295)
+* `':                                    Top.                 (line 514)
+* –foption:                              Top.                 (line  14)
+* –foption:                              Top.                 (line 244)
+* –foption:                              Top.                 (line 476)
+* “:                                     Top.                 (line  14)
+* “:                                     Top.                 (line 244)
+* “:                                     Top.                 (line 476)
+* a:                                     Top.                 (line  78)
+* a:                                     Top.                 (line 165)
+* a:                                     Top.                 (line 308)
+* a:                                     Top.                 (line 395)
+* a:                                     Top.                 (line 527)
+* a:                                     Top.                 (line 556)
+* a:                                     Top.                 (line 595)
+* after:                                 Top.                 (line 219)
+* after:                                 Top.                 (line 449)
+* after:                                 Top.                 (line 592)
+* b:                                     Top.                 (line 165)
+* b:                                     Top.                 (line 395)
+* b:                                     Top.                 (line 557)
+* bidule machin:                         Top.                 (line  72)
+* bidule machin:                         Top.                 (line 302)
+* bidule machin:                         Top.                 (line 521)
+* deffn:                                 Top.                 (line  81)
+* deffn:                                 Top.                 (line  83)
+* deffn:                                 Top.                 (line 311)
+* deffn:                                 Top.                 (line 313)
+* deffn:                                 Top.                 (line 529)
+* deffn:                                 Top.                 (line 530)
+* deffnx:                                Top.                 (line  79)
+* deffnx:                                Top.                 (line  84)
+* deffnx:                                Top.                 (line 309)
+* deffnx:                                Top.                 (line 314)
+* deffnx:                                Top.                 (line 528)
+* deffnx:                                Top.                 (line 531)
+* de–ffn_name:                           Top.                 (line  56)
+* de–ffn_name:                           Top.                 (line 286)
+* de–ffn_name:                           Top.                 (line 506)
+* d–effn_name:                           Top.                 (line  54)
+* d–effn_name:                           Top.                 (line 284)
+* d–effn_name:                           Top.                 (line 505)
+* d–efmac_name:                          Top.                 (line 105)
+* d–efmac_name:                          Top.                 (line 335)
+* d–efmac_name:                          Top.                 (line 542)
+* d–efmethod_name on c–lass:             Top.                 (line 121)
+* d–efmethod_name on c–lass:             Top.                 (line 351)
+* d–efmethod_name on c–lass:             Top.                 (line 550)
+* d–efop_name on c–lass:                 Top.                 (line  99)
+* d–efop_name on c–lass:                 Top.                 (line 329)
+* d–efop_name on c–lass:                 Top.                 (line 539)
+* d–efspec_name:                         Top.                 (line 107)
+* d–efspec_name:                         Top.                 (line 337)
+* d–efspec_name:                         Top.                 (line 543)
+* d–eftypefn_name:                       Top.                 (line  91)
+* d–eftypefn_name:                       Top.                 (line 321)
+* d–eftypefn_name:                       Top.                 (line 535)
+* d–eftypefun_name:                      Top.                 (line 113)
+* d–eftypefun_name:                      Top.                 (line 343)
+* d–eftypefun_name:                      Top.                 (line 546)
+* d–eftypemethod_name on c–lass:         Top.                 (line 123)
+* d–eftypemethod_name on c–lass:         Top.                 (line 353)
+* d–eftypemethod_name on c–lass:         Top.                 (line 551)
+* d–eftypeop_name on c–lass:             Top.                 (line  93)
+* d–eftypeop_name on c–lass:             Top.                 (line 323)
+* d–eftypeop_name on c–lass:             Top.                 (line 536)
+* d–efun_name:                           Top.                 (line 103)
+* d–efun_name:                           Top.                 (line 333)
+* d–efun_name:                           Top.                 (line 541)
+* followed:                              Top.                 (line  75)
+* followed:                              Top.                 (line 218)
+* followed:                              Top.                 (line 305)
+* followed:                              Top.                 (line 448)
+* followed:                              Top.                 (line 524)
+* followed:                              Top.                 (line 591)
+* log trap:                              Top.                 (line  61)
+* log trap:                              Top.                 (line 291)
+* log trap:                              Top.                 (line 510)
+* log trap1:                             Top.                 (line  62)
+* log trap1:                             Top.                 (line 292)
+* log trap1:                             Top.                 (line 511)
+* log trap2:                             Top.                 (line  63)
+* log trap2:                             Top.                 (line 293)
+* log trap2:                             Top.                 (line 512)
+* machin:                                Top.                 (line  71)
+* machin:                                Top.                 (line  73)
+* machin:                                Top.                 (line 214)
+* machin:                                Top.                 (line 215)
+* machin:                                Top.                 (line 216)
+* machin:                                Top.                 (line 217)
+* machin:                                Top.                 (line 301)
+* machin:                                Top.                 (line 303)
+* machin:                                Top.                 (line 444)
+* machin:                                Top.                 (line 445)
+* machin:                                Top.                 (line 446)
+* machin:                                Top.                 (line 447)
+* machin:                                Top.                 (line 520)
+* machin:                                Top.                 (line 522)
+* machin:                                Top.                 (line 587)
+* machin:                                Top.                 (line 588)
+* machin:                                Top.                 (line 589)
+* machin:                                Top.                 (line 590)
+* truc:                                  Top.                 (line  60)
+* truc:                                  Top.                 (line  87)
+* truc:                                  Top.                 (line 290)
+* truc:                                  Top.                 (line 317)
+* truc:                                  Top.                 (line 509)
+* truc:                                  Top.                 (line 533)
+* T–ruc:                                 Top.                 (line 595)
+* t–ruc:                                 Top.                 (line 595)
+
+ [index ]
+* Menu:
+
+* a:                                     Top.                 (line 164)
+* a:                                     Top.                 (line 394)
+* a:                                     Top.                 (line 556)
+* b:                                     Top.                 (line 164)
+* b:                                     Top.                 (line 394)
+* b:                                     Top.                 (line 556)
+* d–efcv_name:                           Top.                 (line  97)
+* d–efcv_name:                           Top.                 (line 327)
+* d–efcv_name:                           Top.                 (line 538)
+* d–efivar_name:                         Top.                 (line 117)
+* d–efivar_name:                         Top.                 (line 347)
+* d–efivar_name:                         Top.                 (line 548)
+* d–efopt_name:                          Top.                 (line 111)
+* d–efopt_name:                          Top.                 (line 341)
+* d–efopt_name:                          Top.                 (line 545)
+* d–eftypeivar_name of c–lass:           Top.                 (line 119)
+* d–eftypeivar_name of c–lass:           Top.                 (line 349)
+* d–eftypeivar_name of c–lass:           Top.                 (line 549)
+* d–eftypevar_name:                      Top.                 (line 115)
+* d–eftypevar_name:                      Top.                 (line 345)
+* d–eftypevar_name:                      Top.                 (line 547)
+* d–eftypevr_name:                       Top.                 (line  95)
+* d–eftypevr_name:                       Top.                 (line 325)
+* d–eftypevr_name:                       Top.                 (line 537)
+* d–efvar_name:                          Top.                 (line 109)
+* d–efvar_name:                          Top.                 (line 339)
+* d–efvar_name:                          Top.                 (line 544)
+* d–efvr_name:                           Top.                 (line  89)
+* d–efvr_name:                           Top.                 (line 319)
+* d–efvr_name:                           Top.                 (line 534)
+
+ [index ]
+* Menu:
+
+* d–eftp_name:                           Top.                 (line 101)
+* d–eftp_name:                           Top.                 (line 331)
+* d–eftp_name:                           Top.                 (line 540)
+
+   ---------- Footnotes ----------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+File: formatting.info,  Node: chapter,  Next: chapter2,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+(1)
+
+* Menu:
+
+* s--ect,ion::,
+
+   ---------- Footnotes ----------
+
+
+
+
+File: formatting.info,  Node: s--ect,ion,  Up: chapter
+
+1.1 A section
+=============
+
+* Menu:
+
+* subsection::
+
+
+File: formatting.info,  Node: subsection,  Up: s--ect,ion
+
+1.1.1 subsection
+----------------
+
+* Menu:
+
+* subsubsection ``simple-double--three---four----''::
+
+
+
+File: formatting.info,  Node: subsubsection ``simple-double--three---four----'',  Up: subsection
+
+1.1.1.1 subsubsection “simple-double–three—four—-”
+..................................................
+
+
+File: formatting.info,  Node: chapter2,  Prev: chapter,  Up: Top
+
+chapter 2
+*********
+
+ [index ]
+* Menu:
+
+* .:                                     Top.                 (line 595)
+* ?:                                     Top.                 (line 595)
+* –option:                               Top.                 (line  14)
+* –option:                               Top.                 (line 244)
+* –option:                               Top.                 (line 476)
+* “:                                     Top.                 (line  14)
+* “:                                     Top.                 (line 244)
+* “:                                     Top.                 (line 476)
+* a:                                     Top.                 (line 595)
+* index entry between item and itemx:    Top.                 (line 165)
+* index entry between item and itemx:    Top.                 (line 395)
+* index entry between item and itemx:    Top.                 (line 556)
+* index entry within deffn:              Top.                 (line  60)
+* index entry within deffn:              Top.                 (line 290)
+* index entry within deffn:              Top.                 (line 509)
+* index entry within itemize:            Top.                 (line  49)
+* index entry within itemize:            Top.                 (line 279)
+* index entry within itemize:            Top.                 (line 499)
+* index entry within multitable:         Top.                 (line  52)
+* index entry within multitable:         Top.                 (line 282)
+* index entry within multitable:         Top.                 (line 503)
+* t–ruc:                                 Top.                 (line 595)
+* T–ruc:                                 Top.                 (line 595)
+
+ [index ]
+* Menu:
+
+* :                                      Top.                 (line  59)
+* :                                      Top.                 (line  64)
+* :                                      Top.                 (line  86)
+* :                                      Top.                 (line 289)
+* :                                      Top.                 (line 294)
+* :                                      Top.                 (line 316)
+* :                                      Top.                 (line 508)
+* :                                      Top.                 (line 513)
+* :                                      Top.                 (line 532)
+* .:                                     Top.                 (line 595)
+* ?:                                     Top.                 (line 595)
+* `':                                    Top.                 (line  65)
+* `':                                    Top.                 (line 295)
+* `':                                    Top.                 (line 514)
+* –foption:                              Top.                 (line  14)
+* –foption:                              Top.                 (line 244)
+* –foption:                              Top.                 (line 476)
+* “:                                     Top.                 (line  14)
+* “:                                     Top.                 (line 244)
+* “:                                     Top.                 (line 476)
+* a:                                     Top.                 (line  78)
+* a:                                     Top.                 (line 165)
+* a:                                     Top.                 (line 308)
+* a:                                     Top.                 (line 395)
+* a:                                     Top.                 (line 527)
+* a:                                     Top.                 (line 556)
+* a:                                     Top.                 (line 595)
+* after:                                 Top.                 (line 219)
+* after:                                 Top.                 (line 449)
+* after:                                 Top.                 (line 592)
+* b:                                     Top.                 (line 165)
+* b:                                     Top.                 (line 395)
+* b:                                     Top.                 (line 557)
+* bidule machin:                         Top.                 (line  72)
+* bidule machin:                         Top.                 (line 302)
+* bidule machin:                         Top.                 (line 521)
+* deffn:                                 Top.                 (line  81)
+* deffn:                                 Top.                 (line  83)
+* deffn:                                 Top.                 (line 311)
+* deffn:                                 Top.                 (line 313)
+* deffn:                                 Top.                 (line 529)
+* deffn:                                 Top.                 (line 530)
+* deffnx:                                Top.                 (line  79)
+* deffnx:                                Top.                 (line  84)
+* deffnx:                                Top.                 (line 309)
+* deffnx:                                Top.                 (line 314)
+* deffnx:                                Top.                 (line 528)
+* deffnx:                                Top.                 (line 531)
+* de–ffn_name:                           Top.                 (line  56)
+* de–ffn_name:                           Top.                 (line 286)
+* de–ffn_name:                           Top.                 (line 506)
+* d–effn_name:                           Top.                 (line  54)
+* d–effn_name:                           Top.                 (line 284)
+* d–effn_name:                           Top.                 (line 505)
+* d–efmac_name:                          Top.                 (line 105)
+* d–efmac_name:                          Top.                 (line 335)
+* d–efmac_name:                          Top.                 (line 542)
+* d–efmethod_name on c–lass:             Top.                 (line 121)
+* d–efmethod_name on c–lass:             Top.                 (line 351)
+* d–efmethod_name on c–lass:             Top.                 (line 550)
+* d–efop_name on c–lass:                 Top.                 (line  99)
+* d–efop_name on c–lass:                 Top.                 (line 329)
+* d–efop_name on c–lass:                 Top.                 (line 539)
+* d–efspec_name:                         Top.                 (line 107)
+* d–efspec_name:                         Top.                 (line 337)
+* d–efspec_name:                         Top.                 (line 543)
+* d–eftypefn_name:                       Top.                 (line  91)
+* d–eftypefn_name:                       Top.                 (line 321)
+* d–eftypefn_name:                       Top.                 (line 535)
+* d–eftypefun_name:                      Top.                 (line 113)
+* d–eftypefun_name:                      Top.                 (line 343)
+* d–eftypefun_name:                      Top.                 (line 546)
+* d–eftypemethod_name on c–lass:         Top.                 (line 123)
+* d–eftypemethod_name on c–lass:         Top.                 (line 353)
+* d–eftypemethod_name on c–lass:         Top.                 (line 551)
+* d–eftypeop_name on c–lass:             Top.                 (line  93)
+* d–eftypeop_name on c–lass:             Top.                 (line 323)
+* d–eftypeop_name on c–lass:             Top.                 (line 536)
+* d–efun_name:                           Top.                 (line 103)
+* d–efun_name:                           Top.                 (line 333)
+* d–efun_name:                           Top.                 (line 541)
+* followed:                              Top.                 (line  75)
+* followed:                              Top.                 (line 218)
+* followed:                              Top.                 (line 305)
+* followed:                              Top.                 (line 448)
+* followed:                              Top.                 (line 524)
+* followed:                              Top.                 (line 591)
+* log trap:                              Top.                 (line  61)
+* log trap:                              Top.                 (line 291)
+* log trap:                              Top.                 (line 510)
+* log trap1:                             Top.                 (line  62)
+* log trap1:                             Top.                 (line 292)
+* log trap1:                             Top.                 (line 511)
+* log trap2:                             Top.                 (line  63)
+* log trap2:                             Top.                 (line 293)
+* log trap2:                             Top.                 (line 512)
+* machin:                                Top.                 (line  71)
+* machin:                                Top.                 (line  73)
+* machin:                                Top.                 (line 214)
+* machin:                                Top.                 (line 215)
+* machin:                                Top.                 (line 216)
+* machin:                                Top.                 (line 217)
+* machin:                                Top.                 (line 301)
+* machin:                                Top.                 (line 303)
+* machin:                                Top.                 (line 444)
+* machin:                                Top.                 (line 445)
+* machin:                                Top.                 (line 446)
+* machin:                                Top.                 (line 447)
+* machin:                                Top.                 (line 520)
+* machin:                                Top.                 (line 522)
+* machin:                                Top.                 (line 587)
+* machin:                                Top.                 (line 588)
+* machin:                                Top.                 (line 589)
+* machin:                                Top.                 (line 590)
+* truc:                                  Top.                 (line  60)
+* truc:                                  Top.                 (line  87)
+* truc:                                  Top.                 (line 290)
+* truc:                                  Top.                 (line 317)
+* truc:                                  Top.                 (line 509)
+* truc:                                  Top.                 (line 533)
+* T–ruc:                                 Top.                 (line 595)
+* t–ruc:                                 Top.                 (line 595)
+
+
+
+Tag Table:
+Node: Top7007
+Ref: Top-Footnote-141401
+Ref: Top-Footnote-241403
+Ref: Top-Footnote-341405
+Ref: Top-Footnote-441407
+Ref: Top-Footnote-541409
+Ref: Top-Footnote-641411
+Node: chapter41413
+Ref: chapter-Footnote-141581
+Node: s--ect,ion41583
+Node: subsection41695
+Ref: anchor41855
+Node: subsubsection ``simple-double--three---four----''41855
+Node: chapter242058
+
+End Tag Table

@@ -323,7 +323,7 @@ sub info_default_init_variables()
 # accent functions
 sub info_default_init_accent_enable_encoding()
 {
-   return unless ($ENABLE_ENCODING);
+   return unless ($ENABLE_ENCODING and $USE_UNICODE);
    foreach my $key (keys(%unicode_accents), 'dotless')
    {
      $info_default_enable_encoding_accents{$key} = 1;
@@ -1320,7 +1320,7 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'verbatim' or $content->{'command'} eq 'verbatiminclude')
               {
-                  # $preformatteed cannot be used here since preformatted 
+                  # $preformatted cannot be used here since preformatted 
                   # is closed before a verbatim
                   if (!$preformatted_format and $indent_level != 0)
                   {
@@ -1424,7 +1424,9 @@ sub info_default_process_content($$)
               {
                   #print STDERR "IN_PARA text\n";
                   my $new_text = $content->{'text'};
-                  if ((!defined($content->{'command'}) or $content->{'command'} ne ':') and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
+                  # a punctuation at the end of a command is treated like a punctuation in 
+                  # plain text, except for @: and accent commands.
+                  if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
                   {
                       # the info_default_after_punctuation_characters should
                       # always be in the same text element. 
@@ -2186,7 +2188,7 @@ sub info_default_normal_text($$$$$$;$)
    # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
    # not when parsing commands in first or second pass, and removeing texi
    # like what is done for @setfilename.
-   if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8'))
+   if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8') and $USE_UNICODE)
    {
       $text = &t2h_utf8_normal_text(@initial_args);
    }
