@@ -92,7 +92,7 @@ EXTRA_libgnu_a_SOURCES += argz.c
 # The Automake-defined pkg* macros are appended, in the order
 # listed in the Automake 1.10a+ documentation.
 configmake.h: Makefile
-	rm -f $@-t $@
+	rm -f $@-t
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  echo '#define PREFIX "$(prefix)"'; \
 	  echo '#define EXEC_PREFIX "$(exec_prefix)"'; \
@@ -122,7 +122,12 @@ configmake.h: Makefile
 	  echo '#define PKGLIBDIR "$(pkglibdir)"'; \
 	  echo '#define PKGLIBEXECDIR "$(pkglibexecdir)"'; \
 	} | sed '/""/d' > $@-t
-	mv $@-t $@
+	if test -f $@ && cmp $@-t $@ > /dev/null; then \
+	  rm -f $@-t; \
+	else \
+	  rm -f $@; mv $@-t $@; \
+	fi
+
 BUILT_SOURCES += configmake.h
 CLEANFILES += configmake.h configmake.h-t
 
@@ -192,6 +197,15 @@ EXTRA_libgnu_a_SOURCES += getopt.c getopt1.c
 
 ## end   gnulib module getopt
 
+## begin gnulib module getpagesize
+
+
+EXTRA_DIST += getpagesize.c
+
+EXTRA_libgnu_a_SOURCES += getpagesize.c
+
+## end   gnulib module getpagesize
+
 ## begin gnulib module gettext
 
 # This is for those projects which use "gettextize --intl" to put a source-code
@@ -260,7 +274,8 @@ all-local: charset.alias ref-add.sed ref-del.sed
 
 charset_alias = $(DESTDIR)$(libdir)/charset.alias
 charset_tmp = $(DESTDIR)$(libdir)/charset.tmp
-install-exec-local: all-local
+install-exec-local: install-exec-localcharset
+install-exec-localcharset: all-local
 	if test $(GLIBC21) = no; then \
 	  case '$(host_os)' in \
 	    darwin[56]*) \
@@ -288,7 +303,8 @@ install-exec-local: all-local
 	  fi ; \
 	fi
 
-uninstall-local: all-local
+uninstall-local: uninstall-localcharset
+uninstall-localcharset: all-local
 	if test -f $(charset_alias); then \
 	  sed -f ref-del.sed $(charset_alias) > $(charset_tmp); \
 	  if grep '^# Packages using this file: $$' $(charset_tmp) \
@@ -409,6 +425,15 @@ libgnu_a_SOURCES += mbswidth.h mbswidth.c
 libgnu_a_SOURCES += mbuiter.h
 
 ## end   gnulib module mbuiter
+
+## begin gnulib module memchr
+
+
+EXTRA_DIST += memchr.c memchr.valgrind
+
+EXTRA_libgnu_a_SOURCES += memchr.c
+
+## end   gnulib module memchr
 
 ## begin gnulib module memcpy
 
@@ -643,6 +668,7 @@ string.h: string.in.h
 	      -e 's|@''GNULIB_MBSSPN''@|$(GNULIB_MBSSPN)|g' \
 	      -e 's|@''GNULIB_MBSSEP''@|$(GNULIB_MBSSEP)|g' \
 	      -e 's|@''GNULIB_MBSTOK_R''@|$(GNULIB_MBSTOK_R)|g' \
+	      -e 's|@''GNULIB_MEMCHR''@|$(GNULIB_MEMCHR)|g' \
 	      -e 's|@''GNULIB_MEMMEM''@|$(GNULIB_MEMMEM)|g' \
 	      -e 's|@''GNULIB_MEMPCPY''@|$(GNULIB_MEMPCPY)|g' \
 	      -e 's|@''GNULIB_MEMRCHR''@|$(GNULIB_MEMRCHR)|g' \
@@ -679,6 +705,7 @@ string.h: string.in.h
 	      -e 's|@''HAVE_DECL_STRERROR''@|$(HAVE_DECL_STRERROR)|g' \
 	      -e 's|@''HAVE_DECL_STRSIGNAL''@|$(HAVE_DECL_STRSIGNAL)|g' \
 	      -e 's|@''HAVE_STRVERSCMP''@|$(HAVE_STRVERSCMP)|g' \
+	      -e 's|@''REPLACE_MEMCHR''@|$(REPLACE_MEMCHR)|g' \
 	      -e 's|@''REPLACE_MEMMEM''@|$(REPLACE_MEMMEM)|g' \
 	      -e 's|@''REPLACE_STRCASESTR''@|$(REPLACE_STRCASESTR)|g' \
 	      -e 's|@''REPLACE_STRDUP''@|$(REPLACE_STRDUP)|g' \
@@ -718,6 +745,15 @@ EXTRA_libgnu_a_SOURCES += strnlen.c
 libgnu_a_SOURCES += strnlen1.h strnlen1.c
 
 ## end   gnulib module strnlen1
+
+## begin gnulib module strstr-simple
+
+
+EXTRA_DIST += str-two-way.h strstr.c
+
+EXTRA_libgnu_a_SOURCES += strstr.c
+
+## end   gnulib module strstr-simple
 
 ## begin gnulib module sys_stat
 
@@ -936,6 +972,7 @@ wchar.h: wchar.in.h
 	      -e 's|@''REPLACE_MBSNRTOWCS''@|$(REPLACE_MBSNRTOWCS)|g' \
 	      -e 's|@''REPLACE_WCRTOMB''@|$(REPLACE_WCRTOMB)|g' \
 	      -e 's|@''REPLACE_WCSRTOMBS''@|$(REPLACE_WCSRTOMBS)|g' \
+	      -e 's|@''REPLACE_WCSNRTOMBS''@|$(REPLACE_WCSNRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	    < $(srcdir)/wchar.in.h; \

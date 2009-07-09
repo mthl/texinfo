@@ -48,13 +48,15 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_ARGZ
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
-  AC_REQUIRE([gl_HEADER_ERRNO_H])
+  gl_HEADER_ERRNO_H
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   gl_EXITFAIL
   gl_GETOPT
+  gl_FUNC_GETPAGESIZE
+  gl_UNISTD_MODULE_INDICATOR([getpagesize])
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
   AM_GNU_GETTEXT_VERSION([0.17])
   AC_SUBST([LIBINTL])
@@ -80,6 +82,8 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mbsstr])
   gl_MBSWIDTH
   gl_MBITER
+  gl_FUNC_MEMCHR
+  gl_STRING_MODULE_INDICATOR([memchr])
   gl_FUNC_MEMCPY
   gl_FUNC_MEMMEM
   gl_FUNC_MEMMEM_SIMPLE
@@ -89,7 +93,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mempcpy])
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
-  AC_REQUIRE([gl_MULTIARCH])
+  gl_MULTIARCH
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
   AM_STDBOOL_H
@@ -106,6 +110,9 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([strndup])
   gl_FUNC_STRNLEN
   gl_STRING_MODULE_INDICATOR([strnlen])
+  gl_FUNC_STRSTR
+  gl_FUNC_STRSTR_SIMPLE
+  gl_STRING_MODULE_INDICATOR([strstr])
   gl_HEADER_SYS_STAT_H
   AC_PROG_MKDIR_P
   gl_HEADER_SYS_TIME_H
@@ -266,6 +273,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt.in.h
   lib/getopt1.c
   lib/getopt_int.h
+  lib/getpagesize.c
   lib/gettext.h
   lib/gettimeofday.c
   lib/intprops.h
@@ -288,6 +296,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbswidth.c
   lib/mbswidth.h
   lib/mbuiter.h
+  lib/memchr.c
+  lib/memchr.valgrind
   lib/memcpy.c
   lib/memmem.c
   lib/memmove.c
@@ -310,6 +320,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strnlen.c
   lib/strnlen1.c
   lib/strnlen1.h
+  lib/strstr.c
   lib/sys_stat.in.h
   lib/sys_time.in.h
   lib/tempname.c
@@ -340,6 +351,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/exitfail.m4
   m4/extensions.m4
   m4/getopt.m4
+  m4/getpagesize.m4
   m4/gettext.m4
   m4/gettimeofday.m4
   m4/glibc2.m4
@@ -373,11 +385,13 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbsinit.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
+  m4/memchr.m4
   m4/memcpy.m4
   m4/memmem.m4
   m4/memmove.m4
   m4/mempcpy.m4
   m4/mkstemp.m4
+  m4/mmap-anon.m4
   m4/multiarch.m4
   m4/nls.m4
   m4/onceonly.m4
@@ -396,6 +410,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/string_h.m4
   m4/strndup.m4
   m4/strnlen.m4
+  m4/strstr.m4
   m4/sys_stat_h.m4
   m4/sys_time_h.m4
   m4/tempname.m4
