@@ -1,0 +1,6 @@
+Test for indices
+****************
+* node with ftable and vtable::
+* node with printindex::
+* indices refs:: 
+

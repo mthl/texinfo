@@ -193,8 +193,8 @@ do
       echo "$command $dir" >> $logfile
       echo >> $stdout_file
       echo "  ----> $command $dir" >> $stdout_file
-      echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file >> $stdout_file 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file >> $stdout_file 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
@@ -219,6 +219,9 @@ do
          fi
         done
         rm -f "${outdir}$dir/"*".aux"  "${outdir}$dir/"*"_images.out"
+      fi
+      if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
+        rm -f "${outdir}$dir/$basename.1"
       fi
       if [ -d "$results_dir/$dir" ]; then
       #exclude_info=

@@ -510,9 +510,7 @@ item
 
 * In japanese.texi lines are not cut right.
 
-
-
-
+* formatting/float_copying index entries in insertcopying are not right.
 
 
 Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)

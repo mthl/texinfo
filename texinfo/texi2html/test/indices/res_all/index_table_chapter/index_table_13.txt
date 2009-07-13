@@ -1,0 +1,23 @@
+3 Indices refs: V - Z
+*********************
+* Index:
+* voncept: 3. Indices refs.
+* woncept: 3. Indices refs.
+* xoncept: 3. Indices refs.
+* yoncept: 3. Indices refs.
+* zoncept: 3. Indices refs.
+
+3.1 node
+========
+
+A section following the indices.
+
+Table of Contents
+*****************
+
+Test for indices
+1. first node chapter, with ftable and vtable
+2. node with printindex
+3. Indices refs
+ 3.1 node
+

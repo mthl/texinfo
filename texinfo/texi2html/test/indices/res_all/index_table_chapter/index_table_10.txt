@@ -1,0 +1,10 @@
+3 Indices refs: D - I
+*********************
+* Index:
+* doncept: 3. Indices refs.
+* eoncept: 3. Indices refs.
+* foncept: 3. Indices refs.
+* goncept: 3. Indices refs.
+* honcept: 3. Indices refs.
+* index entry in node: 1. first node chapter, with ftable and vtable.
+* ioncept: 3. Indices refs.

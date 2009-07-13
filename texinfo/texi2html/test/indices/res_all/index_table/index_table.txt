@@ -1,0 +1,317 @@
+Test for indices
+****************
+* node with ftable and vtable::
+* node with printindex::
+* indices refs:: 
+
+1 first node chapter, with ftable and vtable
+********************************************
+
+
+Some text
+
+
+
+* var1
+* var2
+var1 et var2
+
+an ftable 
+* fun1
+* fun2
+fun1 et fun2 
+* more fun
+and even more   
+
+2 node with printindex
+**********************
+
+* Index:
+* fun1: 1. first node chapter, with ftable and vtable.
+* fun2: 1. first node chapter, with ftable and vtable.
+* more fun: 1. first node chapter, with ftable and vtable.
+* Index:
+* var1: 1. first node chapter, with ftable and vtable.
+* var2: 1. first node chapter, with ftable and vtable.
+* Index:
+* !oncept: 3. Indices refs.
+* ,oncept: 3. Indices refs.
+* /oncept: 3. Indices refs.
+* ;oncept: 3. Indices refs.
+* ?oncept: 3. Indices refs.
+* an second index entry in node: 1. first node chapter, with ftable and vtable.
+* aoncept: 3. Indices refs.
+* boncept: 3. Indices refs.
+* c,ncept: 3. Indices refs.
+* cancept: 3. Indices refs.
+* cbncept: 3. Indices refs.
+* cdncept: 3. Indices refs.
+* cencept: 3. Indices refs.
+* cfncept: 3. Indices refs.
+* cgncept: 3. Indices refs.
+* chncept: 3. Indices refs.
+* cincept: 3. Indices refs.
+* cjncept: 3. Indices refs.
+* ckncept: 3. Indices refs.
+* clncept: 3. Indices refs.
+* cmncept: 3. Indices refs.
+* cnncept: 3. Indices refs.
+* concep: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* cpncept: 3. Indices refs.
+* cqncept: 3. Indices refs.
+* crncept: 3. Indices refs.
+* csdcept: 3. Indices refs.
+* csncept: 3. Indices refs.
+* ctncept: 3. Indices refs.
+* cuncept: 3. Indices refs.
+* cvncept: 3. Indices refs.
+* cxncept: 3. Indices refs.
+* cyncept: 3. Indices refs.
+* czncept: 3. Indices refs.
+* doncept: 3. Indices refs.
+* eoncept: 3. Indices refs.
+* foncept: 3. Indices refs.
+* goncept: 3. Indices refs.
+* honcept: 3. Indices refs.
+* index entry in node: 1. first node chapter, with ftable and vtable.
+* ioncept: 3. Indices refs.
+* joncept: 3. Indices refs.
+* koncept: 3. Indices refs.
+* loncept: 3. Indices refs.
+* moncept: 3. Indices refs.
+* noncept: 3. Indices refs.
+* ooncept: 3. Indices refs.
+* poncept: 3. Indices refs.
+* qoncept: 3. Indices refs.
+* roncept: 3. Indices refs.
+* roncept: 3. Indices refs.
+* rsconcept: 3. Indices refs.
+* soncept: 3. Indices refs.
+* toncept: 3. Indices refs.
+* uoncept: 3. Indices refs.
+* voncept: 3. Indices refs.
+* woncept: 3. Indices refs.
+* xoncept: 3. Indices refs.
+* yoncept: 3. Indices refs.
+* zoncept: 3. Indices refs.
+
+3 Indices refs
+**************
+* node::       node 
+
+* Index:
+* !oncept: 3. Indices refs.
+* ,oncept: 3. Indices refs.
+* /oncept: 3. Indices refs.
+* ;oncept: 3. Indices refs.
+* ?oncept: 3. Indices refs.
+* an second index entry in node: 1. first node chapter, with ftable and vtable.
+* aoncept: 3. Indices refs.
+* boncept: 3. Indices refs.
+* c,ncept: 3. Indices refs.
+* cancept: 3. Indices refs.
+* cbncept: 3. Indices refs.
+* cdncept: 3. Indices refs.
+* cencept: 3. Indices refs.
+* cfncept: 3. Indices refs.
+* cgncept: 3. Indices refs.
+* chncept: 3. Indices refs.
+* cincept: 3. Indices refs.
+* cjncept: 3. Indices refs.
+* ckncept: 3. Indices refs.
+* clncept: 3. Indices refs.
+* cmncept: 3. Indices refs.
+* cnncept: 3. Indices refs.
+* concep: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* concept: 3. Indices refs.
+* cpncept: 3. Indices refs.
+* cqncept: 3. Indices refs.
+* crncept: 3. Indices refs.
+* csdcept: 3. Indices refs.
+* csncept: 3. Indices refs.
+* ctncept: 3. Indices refs.
+* cuncept: 3. Indices refs.
+* cvncept: 3. Indices refs.
+* cxncept: 3. Indices refs.
+* cyncept: 3. Indices refs.
+* czncept: 3. Indices refs.
+* doncept: 3. Indices refs.
+* eoncept: 3. Indices refs.
+* foncept: 3. Indices refs.
+* goncept: 3. Indices refs.
+* honcept: 3. Indices refs.
+* index entry in node: 1. first node chapter, with ftable and vtable.
+* ioncept: 3. Indices refs.
+* joncept: 3. Indices refs.
+* koncept: 3. Indices refs.
+* loncept: 3. Indices refs.
+* moncept: 3. Indices refs.
+* noncept: 3. Indices refs.
+* ooncept: 3. Indices refs.
+* poncept: 3. Indices refs.
+* qoncept: 3. Indices refs.
+* roncept: 3. Indices refs.
+* roncept: 3. Indices refs.
+* rsconcept: 3. Indices refs.
+* soncept: 3. Indices refs.
+* toncept: 3. Indices refs.
+* uoncept: 3. Indices refs.
+* voncept: 3. Indices refs.
+* woncept: 3. Indices refs.
+* xoncept: 3. Indices refs.
+* yoncept: 3. Indices refs.
+* zoncept: 3. Indices refs.
+
+3.1 node
+========
+
+A section following the indices.
+
+Table of Contents
+*****************
+
+Test for indices
+1. first node chapter, with ftable and vtable
+2. node with printindex
+3. Indices refs
+ 3.1 node
+

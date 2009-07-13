@@ -1,0 +1,34 @@
+Not monolithic
+**************
+
+Not monolitic manual(1).
+
+
+* chapter::
+
+1 Chapter
+*********
+
+Chapter.
+
+Table of Contents
+*****************
+
+Not monolithic
+1. Chapter
+
+Short Table of Contents
+***********************
+
+Not monolithic
+1. Chapter
+
+
+* Index:
+* top: Not monolithic.
+Footnotes
+*********
+
+(1)
+my footnote
+

@@ -176,8 +176,8 @@ do
     echo "$dir" >> $logfile
     echo >> $stdout_file
     echo "  ----> $dir" >> $stdout_file
-    echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2" >> $logfile
-    eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file >> $stdout_file 2>$out_dir/$dir/$basename.2"
+    echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2" >> $logfile
+    eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2"
     ret=$?
     rm -f $out_dir/$dir/*_l2h_images.log $out_dir/$dir/*_tex4ht_*.log \
       $out_dir/$dir/*_tex4ht_*.idv $out_dir/$dir/*_tex4ht_*.dvi \

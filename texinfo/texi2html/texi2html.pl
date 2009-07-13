@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.295 2009-07-06 21:59:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.296 2009-07-13 22:34:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -367,6 +367,7 @@ $CLOSE_QUOTE_SYMBOL
 $NO_BULLET_LIST_STYLE
 $NO_BULLET_LIST_ATTRIBUTE
 $TOP_NODE_FILE
+$TOP_NODE_FILE_TARGET
 $TOP_NODE_UP
 $NODE_FILE_EXTENSION
 $STDIN_DOCU_NAME
@@ -1409,6 +1410,12 @@ require "$T2H_HOME/formats/docbook.init"
 require "$T2H_HOME/formats/xml.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/formats/xml.init" && -r "$T2H_HOME/formats/xml.init");
+
+# @INIT_PLAINTEXT@
+
+require "$T2H_HOME/formats/plaintext.init"
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/formats/plaintext.init" && -r "$T2H_HOME/formats/plaintext.init");
 
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
@@ -2571,7 +2578,11 @@ $T2H_OPTIONS -> {'no-split'} =
 $T2H_OPTIONS -> {'headers'} =
 {
  type => '!',
- linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
+ linkage => sub {
+    Texi2HTML::Config::set_conf('headers', $_[1], 1);
+    Texi2HTML::Config::t2h_default_load_format('plaintext', 1)
+        if (defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
+ },
  verbose => 'output navigation headers for each section',
 };
 
@@ -7822,8 +7833,7 @@ sub pass_text($$)
        (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS);
     $misc_page_infos{'Overview'}->{'do'} = 1 if
        (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS);
-    #FIXME: ... and $Texi2HTML::THISDOC{'do_about'}) ?
-    $misc_page_infos{'About'}->{'do'} = 1 if ($about_body);
+    $misc_page_infos{'About'}->{'do'} = 1 if ($about_body and $Texi2HTML::THISDOC{'do_about'});
          
     foreach my $misc_page('Footnotes', 'Contents', 'Overview', 'About')
     {

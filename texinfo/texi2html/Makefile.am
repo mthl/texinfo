@@ -22,7 +22,8 @@ texi2html_formats = \
 	formats/html.init \
 	formats/info.init \
 	formats/docbook.init \
-	formats/xml.init
+	formats/xml.init \
+	formats/plaintext.init
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 

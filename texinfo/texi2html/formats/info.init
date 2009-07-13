@@ -297,6 +297,8 @@ my @info_default_pending_indirect = ();
 my @info_default_pending_footnotes = ();
 my $info_default_state_nr = 0;
 
+# maximal length of index entries line number information. Each entry is 
+# an index name.
 my %info_default_index_line_string_length = ();
 my %info_default_index_entries = ();
 my $info_default_footnote_index = 0;
@@ -1128,6 +1130,7 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'index_label')
               {
+                  #print STDERR "FFFFFFFFF $all_line_passed + $info_state->{'line_count'} $content->{'texi_entry'}\n";
                   my $index_line_nr = $all_line_passed + $info_state->{'line_count'};
                   my $index_name = $content->{'index_entry_reference'}->{'index_name'};
                   $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
@@ -1966,6 +1969,7 @@ sub info_default_header ()
     # the following is wrong, $Texi2HTML::THISDOC{'input_file_name'} 
     # should be used 
     # directly, but then tests are not reproducible in out of source builds
+    # FIXME see Karl mail, it is right with the basename
     my $basename = $Texi2HTML::THISDOC{'input_file_name'};
     $basename =~ s/^.*\/// if ($TEST);
     $basename = $STDIN_DOCU_NAME if ($basename eq '-');
@@ -2807,8 +2811,8 @@ sub info_default_index_entry_label($$$$$$$$)
     my $formatted_entry = shift;
     my $index_entry_ref = shift;
 
-    my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command};
-    return info_default_store_text(undef,undef, 'index_label', $index_entry_stored);
+    my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'texi_entry' => $texi_entry};
+    return info_default_store_text(undef, undef, 'index_label', $index_entry_stored);
 }
 
 sub info_default_index_entry($$$$$$$$)
@@ -2851,10 +2855,12 @@ sub info_default_index_entry($$$$$$$$)
        $real_element_text = $element->{'text'};
        # this happens for index entries appearing after @printindex. In that case
        # it is considered that they are at the beginning of the node.
-       $line_nr = 4 if (!defined($line_nr) or $line_nr < 4);
+       $line_nr = 3 if (defined($line_nr) and $line_nr < 3);
+       $line_nr = 4 if (!defined($line_nr));
     }
     $result .= $real_element_text . '.';
     my $max_len = $info_default_index_line_string_length{$index_entry_ref->{'index_name'}};
+    $max_len = length($line_nr) if (!defined($max_len));
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
     #print STDERR "GGGGGGGGGG name: $index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";

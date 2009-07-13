@@ -25,6 +25,11 @@
 
 use strict;
 
+html_default_load();
+
+$TOP_NODE_FILE = undef;
+$TOP_FILE = undef;
+
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';

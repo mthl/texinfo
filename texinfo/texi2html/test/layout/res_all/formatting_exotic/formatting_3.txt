@@ -1,0 +1,123 @@
+chapter 2
+*********
+
+* Index:
+* ": Top section.
+* ": Top section.
+* -option: Top section.
+* -option: Top section.
+* .: Top section.
+* ?: Top section.
+* a: Top section.
+* index entry between item and itemx: Top section.
+* index entry between item and itemx: Top section.
+* index entry within deffn: Top section.
+* index entry within deffn: Top section.
+* index entry within itemize: Top section.
+* index entry within itemize: Top section.
+* index entry within multitable: Top section.
+* index entry within multitable: Top section.
+* t-ruc: Top section.
+* T-ruc: Top section.
+* Index:
+* ": Top section.
+* ": Top section.
+* -foption: Top section.
+* -foption: Top section.
+* .: Top section.
+* ?: Top section.
+* a: Top section.
+* a: Top section.
+* a: Top section.
+* a: Top section.
+* a: Top section.
+* after: Top section.
+* after: Top section.
+* b: Top section.
+* b: Top section.
+* bidule machin: Top section.
+* bidule machin: Top section.
+* d-effn_name: Top section.
+* d-effn_name: Top section.
+* d-efmac_name: Top section.
+* d-efmac_name: Top section.
+* d-efmethod_name on c-lass: Top section.
+* d-efmethod_name on c-lass: Top section.
+* d-efop_name on c-lass: Top section.
+* d-efop_name on c-lass: Top section.
+* d-efspec_name: Top section.
+* d-efspec_name: Top section.
+* d-eftypefn_name: Top section.
+* d-eftypefn_name: Top section.
+* d-eftypefun_name: Top section.
+* d-eftypefun_name: Top section.
+* d-eftypemethod_name on c-lass: Top section.
+* d-eftypemethod_name on c-lass: Top section.
+* d-eftypeop_name on c-lass: Top section.
+* d-eftypeop_name on c-lass: Top section.
+* d-efun_name: Top section.
+* d-efun_name: Top section.
+* de-ffn_name: Top section.
+* de-ffn_name: Top section.
+* deffn: Top section.
+* deffn: Top section.
+* deffn: Top section.
+* deffn: Top section.
+* deffnx: Top section.
+* deffnx: Top section.
+* deffnx: Top section.
+* deffnx: Top section.
+* followed: Top section.
+* followed: Top section.
+* followed: Top section.
+* followed: Top section.
+* i: Top section.
+* i: Top section.
+* i: Top section.
+* i: Top section.
+* id `i' ule: Top section.
+* id `i' ule: Top section.
+* id ule: Top section.
+* id ule: Top section.
+* log trap: Top section.
+* log trap: Top section.
+* log trap1: Top section.
+* log trap1: Top section.
+* log trap2: Top section.
+* log trap2: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* machin: Top section.
+* t-ruc: Top section.
+* T-ruc: Top section.
+* truc: Top section.
+* truc: Top section.
+* truc: Top section.
+* truc: Top section.
+
+Table of Contents
+*****************
+
+Top section
+chapter
+ A section
+  subsection
+   subsubsection "simple-double-three--four---"
+chapter 2
+
+Short Table of Contents
+***********************
+
+Top section
+chapter
+chapter 2
+
