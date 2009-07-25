@@ -1,0 +1,13 @@
+1 First chapter
+***************
+
+Text and then index entries
+
+* Index:
+* ! entry in node: 1. First chapter.
+* a concept in first: 1. First chapter.
+* another: 1.1 Section 1.
+* entry a: split indices.
+* entry after printindex: 1. First chapter.
+* entry in node: 1. First chapter.
+* entry in node: 1. First chapter.

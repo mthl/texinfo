@@ -999,9 +999,10 @@ sub xml_index_summary($$)
     return '';
 }
 
-sub xml_printindex($)
+sub xml_printindex($$)
 {
     my $name = shift;
+    my $printindex = shift;
     return "<printindex>$name</printindex>\n";
 }
 

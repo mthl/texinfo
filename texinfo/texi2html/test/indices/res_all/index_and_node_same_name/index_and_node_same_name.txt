@@ -1,0 +1,16 @@
+Test index entry with node name clash
+*************************************
+
+Text.
+
+
+* index node::
+
+1 index node
+************
+
+in index node node, with the same (croo_ref) name than index entry.
+
+* Index:
+* node: Test index entry with node name clash.
+

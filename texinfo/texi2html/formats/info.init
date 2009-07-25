@@ -773,6 +773,7 @@ sub info_default_output($)
    ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
    $info_state->{'offset_in_file'} += $characters_count;
    $info_state->{'line_count'} += $lines_count;
+   #print STDERR "HHHHHH($lines_count) $info_state->{'line_count'}: $result\n";
    info_default_reset_state($info_state) 
        if (!defined($info_state->{'current'}->{'command'}));
    return $result;
@@ -1130,12 +1131,26 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'index_label')
               {
-                  #print STDERR "FFFFFFFFF $all_line_passed + $info_state->{'line_count'} $content->{'texi_entry'}\n";
+                  #print STDERR "FFFFFFFFF($content->{'index_command'}) $all_line_passed + $info_state->{'line_count'} `$content->{'texi_entry'}'\n";
                   my $index_line_nr = $all_line_passed + $info_state->{'line_count'};
+                  if ($info_state->{'blank_line'} and $content->{'index_command'} =~ /index$/)
+                  {
+                     my ($current_next, $index_next, $close_nex) = info_default_iterator_next($current, $index, $close);
+                     $index_line_nr-- if (!defined($current_next));
+                  }
+                  elsif ($content->{'index_command'} =~ /^[vf]table$/)
+                  {
+                  # if in a table, index label is systematically entered after
+                  # the line is processed, as the line is processed with the 
+                  # item command, while the index entry is entered with the
+                  # index_label callback that is done much later.
+                     $index_line_nr--;
+                  }
+                  #print STDERR "index in a blank_line $content->{'index_command'} `$content->{'texi_entry'}'\n" if ($info_state->{'blank_line'});
                   my $index_name = $content->{'index_entry_reference'}->{'index_name'};
                   $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
                       if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < length($index_line_nr));
-                  #print STDERR "RRRRRRRRRRRRR $content->{'index_entry_reference'}->{'texi'}   name: $index_name line: $index_line_nr max: $info_default_index_line_string_length{$index_name}\n";
+                  #print STDERR "RRRRRRRRRRRRR($content->{'index_entry_reference'}) $content->{'index_entry_reference'}->{'texi'}   name: $index_name line: $index_line_nr max: $info_default_index_line_string_length{$index_name}\n";
                   my $index_ref = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr };
 #print STDERR "INDEX($index_name) line $index_line_nr\n";
                   $info_default_index_entries{$content->{'index_entry_reference'}} = $index_ref;
@@ -1554,6 +1569,7 @@ sub info_default_process_content($$)
       }
       $text_added = "\n" . $text_added if ($prepend_newline);
       print STDERR "TEXT_ADDED($indent_length) `$text_added'\n" if ($text_added ne '' and $DEBUG);
+      #print STDERR "TEXT_ADDED($indent_length) `$text_added'\n";
       # from here, the next cmmand is available
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
 
@@ -2096,6 +2112,7 @@ sub info_default_node_line($$)
        $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $element->{'NodeUp'}->{'text'}});
     }
     $result .= "\n\n";
+    # the line_count is ahead from the number of lines by one.
     $info_state->{'line_count'} = 3;
     $info_state->{'offset_in_file'} += length($result);
     $info_state->{'blank_line'} = 1;
@@ -2123,10 +2140,8 @@ sub info_default_element_heading($$$$$$$$$$$$)
 
     # FIXME use $element or $Texi2HTML::THIS_ELEMENT? Main program should 
     # ensure they are the same. 
-#    if ($new_element and ($element ne $new_element or !$element->{'node'}))
     if ($new_element and ($element ne $new_element and $element->{'node'}))
     {
-        #die "There is a new element, but element `$element->{'texi'}' is not a node or not the new element\n";
         die "There is a new element, but element `$element->{'texi'}' is not the new element\n";
     }
     # FIXME
@@ -2169,6 +2184,7 @@ sub info_default_heading($$$$$;$$)
     $text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
+    # FIXME i18n
     $text = "Appendix $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $result = $text . "\n" . 
        ($t2h_default_underline_symbol{$element->{'level'}} x length($text)) . "\n";
@@ -2241,11 +2257,13 @@ sub info_default_empty_line($$)
 }
 
 # change interface?
-sub info_default_anchor_label($$$)
+sub info_default_anchor_label($$$$)
 {
     my $id = shift;
     my $anchor_text = shift;
     my $anchor_reference = shift;
+    my $in_special_region = shift;
+    return '' if ($in_special_region);
     #print STDERR "Storing anchor $anchor_reference->{'text'}\n";
    return info_default_store_text(undef,undef,'anchor',{'anchor_reference' => $anchor_reference});
 }
@@ -2770,10 +2788,11 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
     return '';
 }
 
-sub info_default_printindex($)
+sub info_default_printindex($$)
 {
    my $index_name = shift;
-   return info_default_store_text(undef,t2h_GPL_default_printindex($index_name),'printindex');
+   my $printindex = shift;
+   return info_default_store_text(undef,t2h_GPL_default_printindex($index_name,$printindex),'printindex');
 }
 
 sub info_default_print_index($$)
@@ -2811,6 +2830,8 @@ sub info_default_index_entry_label($$$$$$$$)
     my $formatted_entry = shift;
     my $index_entry_ref = shift;
 
+    return '' if ($index_entry_ref->{'hidden'});
+    main::echo_warn("Entry for index `$index_entry_ref->{'index_name'}' outside of any node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
     my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'texi_entry' => $texi_entry};
     return info_default_store_text(undef, undef, 'index_label', $index_entry_stored);
 }
@@ -2836,6 +2857,7 @@ sub info_default_index_entry($$$$$$$$)
        $result .= ' ' x($info_default_index_length_to_node - length($result));
     }
 
+    #print STDERR "DDDDDDDDDDD $index_entry_ref `$index_entry_ref->{'texi'}'\n";
     my $info_index_entry_ref = $info_default_index_entries{$index_entry_ref};
     my $line_nr = $info_index_entry_ref->{'line_nr'};
 

@@ -1,0 +1,28 @@
+Annexe A Copying and indices
+****************************
+
+In the appendix, we print the indices and references.
+
+
+
+Copying information for the copying information.
+Public domain reference for reference on the licence.
+
+Titlepage anchor for the titlepage.
+Titlepage footnote anchor for reference on the titlepage.
+
+
+* Index:
+* Copying appendix: A. Copying and indices.
+* Index:
+* another fun: A. Copying and indices.
+* findex entry: 1. Chapter.
+* fun: 1. Chapter.
+
+Table of Contents
+*****************
+
+Top
+1. Chapter
+A. Copying and indices
+

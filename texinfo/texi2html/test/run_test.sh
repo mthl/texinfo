@@ -197,6 +197,9 @@ do
       done
       rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"
     fi
+    if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
+      rm -f "$out_dir/$dir/$basename.1"
+    fi
     if [ -d "$results_dir/$dir" ]; then
       #exclude_info=
       #[ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"

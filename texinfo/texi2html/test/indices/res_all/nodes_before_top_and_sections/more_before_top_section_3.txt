@@ -1,0 +1,11 @@
+1 A chapter
+***********
+
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: top section.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.

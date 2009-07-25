@@ -1,0 +1,13 @@
+syncodeindex and print both indices
+***********************************
+
+
+Print fn
+
+
+Print vr
+
+* Index:
+* fun: syncodeindex and print both indices.
+* var: syncodeindex and print both indices.
+

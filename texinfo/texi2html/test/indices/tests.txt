@@ -1,7 +1,7 @@
 index_table index_table.texi
 index_table_chapter index_table.texi -split chapter -init index_test.init
 split_chapter_index split_chapter_index.texi -split chapter -init index_test.init
-index_split index_split.texi -split chapter -init index_test.init -debug 255
+index_split index_split.texi -split chapter -init index_test.init
 # wrong because of a a printindex between node and section
 makeinfo_index_split index_split.texi -init makeinfo.init -init index_test.init
 index_no_node index_no_node.texi -split chapter -init index_test.init
@@ -21,5 +21,7 @@ index_and_node_same_name index_and_node_same_name.texi
 syncode_index_print_both syncode_index_print_both.texi
 recursive_synindex recursive_synindex.texi
 index_entry_in_footnote index_entry_in_footnote.texi
+index_one_node index_one_node.texi
+index_no_node_no_top index_no_node_no_top.texi
 index_entry_in_footnote_info index_entry_in_footnote.texi -init info.init
 index_entry_in_footnote_separated_info index_entry_in_footnote.texi -init info.init --footnote-style=separate

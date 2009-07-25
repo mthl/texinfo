@@ -45,6 +45,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'hyphenation'}
   $Texi2HTML::THISDOC{'do_about'}
   $Texi2HTML::THISDOC{'split_level'}
+  $Texi2HTML::THISDOC{'line_nr'}
 
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription
@@ -60,6 +61,7 @@ h1 titlefont (@titlefont),
   new argument of inline_content
   $shortcontents and $contents
   $misc_command_line
+  new argument of printindex
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -475,6 +477,9 @@ overridden by a command line option.  The possible values are:
   *** Unknown node in menu entry `node inexistant in menu' (l. 19)
   Menu reference to nonexistent node `node inexistant in menu' (perhaps incorrect sectioning?).
 
+  ** Bad index name: bidule (l. 11)
+  ../../index_no_node.texi:11: Unknown index `bidule' in @printindex.
+
 * warning for @anchors and @float appearing before the first node, since
   they are not recorded as Ref:. (for example formatting/float_copying).
 
@@ -508,10 +513,14 @@ item
   formatting:
   simple_images html-extrali
 
+  indices:
+  index_nodes
+
 * In japanese.texi lines are not cut right.
 
 * formatting/float_copying index entries in insertcopying are not right.
-
+  Maybe it is because they are in footnotes. Or maybe because they are
+  in a caption.
 
 Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)
 Valid on 2009-05-23, before this was ameliorated, by introducing 
@@ -548,8 +557,3 @@ USE_SECTIONS                                h 1       i 0
 USE_SETFILENAME                  d 1                  i 1      x 1       m 1
 USE_SETFILENAME_EXTENSION        d 0                  i 1
 USE_UP_FOR_ADJACENT_NODES        d 0        h 1       i 0      x 0
-
-
-
-
-formatting:

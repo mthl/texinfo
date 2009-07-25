@@ -1,0 +1,19 @@
+Garbage
+
+one node
+--------
+Top node
+
+anchor ref .
+
+* (gcc):: ref to gcc
+
+
+ref to ref ref.
+
+Some text.
+
+* Index:
+* before nodes: (outside of any element).
+* Top node: one node.
+

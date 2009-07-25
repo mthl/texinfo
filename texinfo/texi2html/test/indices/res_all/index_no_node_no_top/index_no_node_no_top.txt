@@ -1,0 +1,122 @@
+Garbage
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+
+
+unnumbered
+**********
+
+in unnumbered
+
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+
+top (chapter) section
+*********************
+
+Top node
+
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+
+
+
+0.1 second
+==========
+
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+second node
+
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+1 Chapter
+*********
+
+* Index:
+* chapter: 1. Chapter.
+* Chapter2: 1. Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section: top (chapter) section.
+* top section1: top (chapter) section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+Text of chapter
+
+2 Chapter 2
+***********
+
+In chapter 2
+

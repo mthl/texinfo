@@ -1,0 +1,55 @@
+first before top
+----------------
+
+in first node before printindex
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: top section.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in chapter: node in chapter.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+* top section: top section.
+in first node
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: top section.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in chapter: node in chapter.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+* top section: top section.
+after second printindex in first node
+* node in menu before top::
+
+node in menu before top
+-----------------------
+
+between node in menu before top and printindex
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: top section.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in chapter: node in chapter.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+* top section: top section.
+node in menu before top text after printindex
+
+
+

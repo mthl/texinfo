@@ -1352,6 +1352,7 @@ sub docbook_index_summary($$)
 sub docbook_printindex($$)
 {
     my $name = shift;
+    my $printindex = shift;
     return docbook_add_id('index')."></index>\n";
 }
 

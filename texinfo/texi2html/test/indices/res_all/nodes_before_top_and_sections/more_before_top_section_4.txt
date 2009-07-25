@@ -1,0 +1,13 @@
+1 A chapter: N - T
+******************
+* Index:
+* node in chapter: node in chapter.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+* top section: top section.
+
+node in chapter
+---------------
+
+

@@ -1,0 +1,33 @@
+recursive_synindex
+******************
+
+
+
+
+
+
+
+
+
+
+
+
+bbb
+* Index:
+* a entry: recursive_synindex.
+* b entry: recursive_synindex.
+* c index: recursive_synindex.
+* d index: recursive_synindex.
+* e index: recursive_synindex.
+
+aaa
+
+ccc
+
+ddd
+
+eee
+* Index:
+* e before synindex: recursive_synindex.
+
+

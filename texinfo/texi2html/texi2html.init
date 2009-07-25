@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.206 2009-07-13 22:34:27 pertusus Exp $
+# $Id: texi2html.init,v 1.207 2009-07-25 12:35:14 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1314,7 +1314,7 @@ sub T2H_DEFAULT_print_element_header
     return '';
 }
 
-sub T2H_DEFAULT_print_section
+sub T2H_DEFAULT_print_section($$$$)
 {
     my $fh = shift;
     my $first_in_page = shift;
@@ -6468,11 +6468,12 @@ sub t2h_default_misc_element_label($$)
     return &$anchor($id);
 }
 
-sub t2h_default_anchor_label($$$)
+sub t2h_default_anchor_label($$$$)
 {
     my $id = shift;
     my $anchor_text = shift;
     my $anchor_reference = shift;
+    my $in_special_region = shift;
     return &$anchor($id);
 }
 

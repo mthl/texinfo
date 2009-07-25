@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.296 2009-07-13 22:34:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.297 2009-07-25 12:35:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -962,45 +962,68 @@ sub t2h_default_init_split_indices ()
     $t2h_default_element_split_printindices = undef;
     $t2h_default_index_page_nr = 0;
     $t2h_default_file_number = 0;
+    my %indices_done;
 
-    foreach my $index_name (keys %{$Texi2HTML::THISDOC{'indices'}})
+    foreach my $region (keys %{$Texi2HTML::THISDOC{'indices'}})
     {
-      #print STDERR "Gathering and sorting $index_name letters\n";
-      foreach my $key (keys %{$Texi2HTML::THISDOC{'indices'}->{$index_name}->[0]->{'entries'}})
+      foreach my $index_name (keys %{$Texi2HTML::THISDOC{'indices'}->{$region}})
       {
-        my $letter = uc(substr($key, 0, 1));
-        $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key} = $Texi2HTML::THISDOC{'indices'}->{$index_name}->[0]->{'entries'}->{$key};
-      }
+        next if ($indices_done{$index_name});
+        $indices_done{$index_name} = 1;
+        #print STDERR "Gathering and sorting $index_name letters\n";
+        foreach my $key (keys %{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[0]->{'entries'}})
+        {
+          my $letter = uc(substr($key, 0, 1));
+          $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key} = $Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[0]->{'entries'}->{$key};
+        }
 
-      my $entries_count = 0;
-      my @letters = ();
-      # use cmp if only letters or only symbols, otherwise symbols before 
-      # letters
-      foreach my $letter (sort { 
-         ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or 
-          ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
+        my $entries_count = 0;
+        my @letters = ();
+        # use cmp if only letters or only symbols, otherwise symbols before 
+        # letters
+        foreach my $letter (sort { 
+           ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or 
+            ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
              || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys(%{$t2h_default_index_letters_hash{$index_name}})))
-      {
-        my $letter_entry = {'letter' => $letter };
-        # FIXME sort without uc?
-        foreach my $key (sort {uc($a) cmp uc($b)} (keys(%{$t2h_default_index_letters_hash{$index_name}->{$letter}})))
         {
-          push @{$letter_entry->{'entries'}}, $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key};
+          my $letter_entry = {'letter' => $letter };
+          # FIXME sort without uc?
+          # This sorts the entries for a given letter
+          foreach my $key (sort {uc($a) cmp uc($b)} (keys(%{$t2h_default_index_letters_hash{$index_name}->{$letter}})))
+          {
+            push @{$letter_entry->{'entries'}}, $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key};
+          }
+          push @letters, $letter_entry;
+          $entries_count += scalar(@{$letter_entry->{'entries'}});
+          #if ($SPLIT and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
+          # FIXME this is not right, above is right
+          # Don't split if document is not split
+          if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count > $SPLIT_INDEX)
+          {
+            push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ];
+            @letters = ();
+            $entries_count = 0;
+          }
         }
-        push @letters, $letter_entry;
-        $entries_count += scalar(@{$letter_entry->{'entries'}});
-        #if ($SPLIT and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
-        # FIXME this is not right, above is right
-        # Don't split if document is not split
-        if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count > $SPLIT_INDEX)
-        {
-          push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ];
-          @letters = ();
-          $entries_count = 0;
-        }
+        push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ] if (scalar(@letters));
       }
-      push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ] if (scalar(@letters));
     }
+}
+
+# this is used for indices that don't appear to be associated
+sub t2h_default_prepare_printindex_unsplit_groups($)
+{
+  my $printindex = shift;
+  my $index_name = $printindex->{'name'};
+  my @letter_groups = ();
+  return if (!exists($t2h_default_index_letters_array{$index_name}));
+  my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
+  foreach my $letters_split (@letters_split)
+  {
+     push @{$letter_groups[0]->{'letters'}}, @$letters_split;
+  }
+  $letter_groups[0]->{'element'} = {'file' => '', 'id' => "$printindex->{'region'}_printindex"};
+  $printindex->{'split_groups'} = \@letter_groups;
 }
 
 sub t2h_default_associate_index_element($$$$)
@@ -1072,7 +1095,11 @@ sub t2h_default_associate_index_element($$$$)
     }
     # the element is at the level of splitting, then we split according to
     # INDEX_SPLIT
-    elsif (!$element->{'top'} and get_conf('SPLIT') and ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})))
+    # the condition defined($printindex->{'associated_element'} implies 
+    # that we don't split printindex before first element, otherwise
+    # there will be a need to begin document without a first element 
+    # which would be annoying.
+    elsif (!$element->{'top'} and get_conf('SPLIT') and ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})) and defined($printindex->{'associated_element'}))
     {
       $t2h_default_split_files{$default_element_file} = 1;
       foreach my $letters_split (@letters_split)
@@ -1259,18 +1286,15 @@ sub html_default_summary_letter($$$$$$$)
 # this replaces do_index_page
 # args should be:
 # index_name
-sub t2h_GPL_default_printindex($)
+# printindex
+sub t2h_GPL_default_printindex($$)
 {
   my $index_name = shift;
+  my $printindex = shift;
+  # could be cross verified with argument
 
   my %letter_entries;
   my $identifier_index_nr = 0;
-  # could be cross verified with argument
-  my $printindex = shift @{$Texi2HTML::THISDOC{'printindices'}};
-  if ($printindex->{'name'} ne $index_name)
-  {
-    print STDERR "BUG: THISDOC{'printindices'} $printindex->{'name'} ne $index_name\n";
-  }
 #print STDERR "Doing printindex $index_name\n";
   return '' if (! defined($printindex->{'split_groups'}));
   my @split_letters = @{$printindex->{'split_groups'}};
@@ -1283,6 +1307,7 @@ sub t2h_GPL_default_printindex($)
     my @non_alpha = ();
     my @alpha = ();
     my $file = $split_group->{'element'}->{'file'};
+    #print STDERR "$index_name @{$split_group->{'letters'}}: $file\n";
     # letter_id could be done once for all instead of for each split_group
     # and outside of t2h_default_summary_letter (or t2h_default_summary_letter
     # could be simplified and inlined
@@ -1360,6 +1385,7 @@ sub t2h_GPL_default_printindex($)
     $current_page = shift @split_letters;
     last if (!defined($current_page));
 
+    # FIXME begin first element if not already done
     # end the previous element
     main::finish_element ($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT, $Texi2HTML::THIS_ELEMENT->{'Forward'}, 0);
 
@@ -4434,7 +4460,7 @@ sub pass_structure($$)
             #
             # analyze the tag
             #
-            if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or $tag eq 'printindex' or ($tag eq 'insertcopying' and $Texi2HTML::Config::INLINE_INSERTCOPYING))
+            if ($tag and $tag eq 'node' or (defined($sec2level{$tag}) and ($tag !~ /heading/)) or ($tag eq 'insertcopying' and $Texi2HTML::Config::INLINE_INSERTCOPYING))
             {
                 my @added_lines = ($cline);
                 my @added_numbers = ($line_nr);
@@ -4608,26 +4634,6 @@ sub pass_structure($$)
                            if $T2H_DEBUG & $DEBUG_ELEMENTS;
                         ################# end debug 
                     }
-                }
-                elsif ($cline =~ /^\@printindex\s+(\w+)/)
-                {
-                    unless (@all_elements)
-                    {
-                        echo_warn ("Printindex before document beginning: \@printindex $1", $line_nr);
-                        next;
-                    }
-                    my $index_name = $1;
-                    # $element_index is the first element with index
-                    $element_index = $all_elements[-1] unless (defined($element_index));
-                    if (!exists($index_names{$index_name}))
-                    {
-                        echo_warn ("Bad index name: $index_name", $line_nr);
-                    }
-                    # associate the index to the element
-                    my $printindex = { 'element' => $all_elements[-1], 'name' => $index_name, 'command' => 'printindex' };
-                    push @{$state->{'place'}}, $printindex;
-                    push @{$Texi2HTML::THISDOC{'indices'}->{$index_name}}, $printindex;
-                    push @{$Texi2HTML::THISDOC{'printindices'}}, $printindex;
                 }
                 elsif ($cline =~ /^\@insertcopying\s*/)
                 {
@@ -5439,14 +5445,18 @@ my %indices;                       # hash of indices names containing
 sub prepare_indices()
 {
   # over all the indices that had at least one printindex
-  foreach my $index_name (keys(%{$Texi2HTML::THISDOC{'indices'}}))
+  foreach my $region (keys(%{$Texi2HTML::THISDOC{'indices'}}))
   {
-    my $entries = $indices{$index_name};
-    foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$index_name}})
+    foreach my $index_name (keys(%{$Texi2HTML::THISDOC{'indices'}->{$region}}))
     {
-      $printindex->{'entries'} = $entries;
-    }
-  } 
+      my $entries = $indices{$index_name};
+      foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})
+      {
+        #print STDERR "PRINTINDEX filling($printindex) region $region name $index_name\n";
+        $printindex->{'entries'} = $entries;
+      }
+    } 
+  }
   Texi2HTML::Config::t2h_default_init_split_indices();
 }
 
@@ -6372,7 +6382,7 @@ sub rearrange_elements()
     #print STDERR "only_nodes: $only_nodes, only_sections $only_sections\n";
 
     my $prev_element;
-    print STDERR "# Build the elements list\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    print STDERR "# Build the elements list only_nodes: $only_nodes, only_sections $only_sections\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@all_elements)
     {
         if ($element->{'node'})
@@ -6411,7 +6421,7 @@ sub rearrange_elements()
                     add_t2h_dependent_element ($element, $node_top);
                 }
                 else
-                {
+                { # no section, not top, and $only_section
                     #print STDERR "node $element->{'texi'} not associated with an element\n";
                 }
             }
@@ -6427,6 +6437,10 @@ sub rearrange_elements()
             elsif (!$only_nodes)
             {
                 $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
+            }
+            else
+            { # no node, and $only_nodes
+                #print STDERR "$element->{'tag'} $element->{'texi'} not associated with an element\n";
             }
         }
     }
@@ -6795,6 +6809,19 @@ sub rearrange_elements()
             do_element_targets($element_before_anything);
         }
     }
+    # prepare printindices that are not in elements
+    foreach my $region (keys %{$Texi2HTML::THISDOC{'indices'}})
+    {
+        foreach my $index_name (keys %{$Texi2HTML::THISDOC{'indices'}->{$region}})
+        {
+            foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})
+            {
+                next if ($printindex->{'split_groups'});
+                Texi2HTML::Config::t2h_default_prepare_printindex_unsplit_groups($printindex);
+            }
+        }
+    }
+
     # correct the id and file for the things placed in footnotes
     foreach my $place(@{$footnote_element->{'place'}})
     {
@@ -7627,6 +7654,7 @@ sub pass_text($$)
              next;
         }
         $line_nr = shift (@$doc_numbers);
+        $Texi2HTML::THISDOC{'line_nr'} = $line_nr;
         print STDERR "BUG: line_nr not defined in pass_text. cline: $cline" if (!defined($cline));
         #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
 	#print STDERR "PASS_TEXT: $cline";
@@ -7683,8 +7711,8 @@ sub pass_text($$)
                     my $old = 'NO_OLD';
                     $old = $Texi2HTML::THIS_ELEMENT->{'texi'} if (defined($Texi2HTML::THIS_ELEMENT));
                     print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    # print the element that just finished
                     ########################### end debug
+                    # print the element that just finished
                     if ($Texi2HTML::THIS_ELEMENT)
                     {
                         finish_element($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT, $new_element, $first_section);
@@ -8486,6 +8514,7 @@ sub do_anchor_label($$$$)
     my $state = shift;
     my $line_nr = shift;
 
+    #print STDERR "do_anchor_label $state->{'region'} m_p $state->{'multiple_pass'} remove $state->{'remove_texi'} `$anchor'\n";
     # FIXME anchor may appear twice when outside document and first time
     # it appears in the document
     return '' if (($state->{'region'} and $state->{'multiple_pass'} > 0) or $state->{'remove_texi'});
@@ -8494,7 +8523,7 @@ sub do_anchor_label($$$$)
     {
         print STDERR "Bug: unknown anchor `$anchor'\n";
     }
-    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor, $nodes{$anchor});
+    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor, $nodes{$anchor}, $state->{'region'});
 }
 
 sub get_format_command($)
@@ -8800,12 +8829,21 @@ sub init_special($$)
 sub reset_index_entries($)
 {
     my $region = shift;
-    return if (!defined($Texi2HTML::THISDOC{'index_entries'}->{$region}));
-    foreach my $entry (values(%{$Texi2HTML::THISDOC{'index_entries'}->{$region}}))
+    if (defined($Texi2HTML::THISDOC{'index_entries'}->{$region}))
     {
-       if (scalar(@{$entry->{'entries'}}) > 1)
+       foreach my $entry (values(%{$Texi2HTML::THISDOC{'index_entries'}->{$region}}))
        {
-           $entry->{'index'} = 0;
+          if (scalar(@{$entry->{'entries'}}) > 1)
+          {
+              $entry->{'index'} = 0;
+          }
+       }
+    }
+    if (defined($Texi2HTML::THISDOC{'indices_numbers'}->{$region}))
+    {
+       foreach my $index_name (keys(%{$Texi2HTML::THISDOC{'indices_numbers'}->{$region}}))
+       {
+          $Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name} = undef;
        }
     }
 }
@@ -8831,7 +8869,7 @@ sub do_special_region_lines($;$$)
          
     }
 
-    print STDERR "# do_special_region_lines for region $region ($region_initial_state{$region}->{'multiple_pass'}, region_initial_state{$region}->{'region_pass'})" if ($T2H_DEBUG);
+    print STDERR "# do_special_region_lines for region $region ['multiple_pass','region_pass']: ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})" if ($T2H_DEBUG);
     if (!defined($state))
     {
         fill_state($state);
@@ -10618,16 +10656,11 @@ sub get_index_entry_infos($$;$)
     else
     {
        $real_index_element = $entry->{'real_element'}->{'element_ref'};
-       ########################### debug
        if (!defined($real_index_element))
-       {
-          print STDERR "BUG: element_ref not defined, real_element $entry->{'real_element'}\n";
-          foreach my $key (keys(%{$entry->{'real_element'}}))
-          {
-             print STDERR " -> $key: $entry->{'real_element'}->{$key}\n";
-          }
+       { # happens when $USE_NODES = 0 and there are only sections, 
+         # and vice-versa
+          $real_index_element = $entry->{'real_element'};
        }
-       ########################### end debug
     }
 
     my $origin_href = '';
@@ -11768,11 +11801,42 @@ sub scan_structure($$$$;$)
             $macro = $alias{$macro} if (exists($alias{$macro}));
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
-                 my $line;
-                 ($cline, $line) = misc_command_structure($cline, $macro, $state, 
-                       $line_nr);
-                 add_prev ($text, $stack, "\@$macro".$line); 
-                 next;
+                my $line;
+                ($cline, $line) = misc_command_structure($cline, $macro, $state, 
+                      $line_nr);
+                add_prev ($text, $stack, "\@$macro".$line); 
+                next;
+            }
+            elsif ($macro eq 'printindex' and ($cline =~ /^\s+(\w+)/))
+            {
+                my $index_name = $1;
+                if (!exists($index_names{$index_name}))
+                {
+                   echo_warn ("Bad index name: $index_name", $line_nr);
+                }
+                my $associated_element;
+                if ($state->{'current_element'} eq $element_before_anything)
+                {
+                   echo_warn ("Printindex before document beginning: \@printindex $index_name", $line_nr);
+                }
+                else
+                {
+                # $element_index is the first element with index
+                  $element_index = $state->{'current_element'} unless (defined($element_index));
+                  $associated_element = $state->{'current_element'};
+                }
+                my $region = $state->{'region'};
+                $region = 'document' if (!defined($region));
+                # 'associated_element' is almost not used, the @printindex
+                # is associated through a walk on the elements
+                my $printindex = { 'associated_element' => $associated_element, 'name' => $index_name, 'region' => $region, 'command' => 'printindex' };
+                # prepare association of the index to the element by 
+                # putting it in the current place
+                push @{$state->{'place'}}, $printindex;
+                push @{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}}, $printindex;
+                #print STDERR "PRINTINDEX add($printindex) region $region name $index_name, nr ".scalar(@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})."\n";
+                add_prev ($text, $stack, "\@$macro" .  $cline);
+                last;
             }
             elsif ($sec2level{$macro})
             {
@@ -12635,20 +12699,6 @@ sub scan_line($$$$;$)
 
             close_paragraph($text, $stack, $state, "\@$macro", $line_nr, 1) if (stop_paragraph_command($macro) and !$state->{'keep_texi'});
 
-            if (defined($Texi2HTML::Config::misc_command{$macro}))
-            {
-                # Handle the misc command
-                my $result;
-                ($cline, $result) = misc_command_text($cline, $macro, $stack, $state, $text, $line_nr);
-                add_prev($text, $stack, $result) if (defined($result));
-                return unless (defined($cline));
-                unless ($Texi2HTML::Config::misc_command{$macro}->{'keep'})
-                {
-                     begin_paragraph($stack, $state) if 
-                       (!no_paragraph($state,$cline));
-                     next;
-                }
-            }
             if ($macro eq 'listoffloats' or $macro eq 'printindex')
             {
                 if ($state->{'keep_texi'})
@@ -12692,8 +12742,36 @@ sub scan_line($$$$;$)
                 }
                 elsif ($macro eq 'printindex' and $cline =~ s/\s+(\w+)\s*//)
                 {
-                    my $name = $1;
-                    add_prev($text, $stack, &$Texi2HTML::Config::printindex($name));
+                    my $index_name = $1;
+                    my $region = $state->{'region'};
+                    $region = 'document' if (!defined($region));
+                    if (!defined($Texi2HTML::THISDOC{'indices'}->{$region}))
+                    {
+                      print STDERR "BUG: THISDOC{'indices'}->{$region} not defined\n";
+                    }
+                    if (!defined($Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}))
+                    {
+                      print STDERR "BUG: THISDOC{'indices'}->{$region}->{$index_name} not defined\n";
+                    }
+                    if (!defined($Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name}))
+                    {
+                      $Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name} = -1;
+                    }
+                    $Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name}++;
+                    my $printindex = $Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[$Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name}];
+                    if (!defined($printindex))
+                    {
+                      # this printindex hasn't been seen in the previous pass.
+                      #print STDERR "Index $index_name not in sync, number $Texi2HTML::THISDOC{'indices_numbers'}->{$index_name} not defined\n";
+                      echo_warn("\@printindex $index_name expanded more than once may lead to wrong references", $line_nr);
+                      $printindex = $Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[-1];
+                    }
+                    elsif ($printindex->{'name'} ne $index_name)
+                    {
+                      print STDERR "BUG: THISDOC{'indices'} $printindex->{'name'} ne $index_name\n";
+                    }
+                    #print STDERR "PRINTINDEX use($printindex) region $region, name $index_name number $Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name}\n";
+                    add_prev($text, $stack, &$Texi2HTML::Config::printindex($index_name, $printindex));
                 }
                 else
                 {
@@ -12701,6 +12779,20 @@ sub scan_line($$$$;$)
                 }
                 begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 return undef;
+            }
+            if (defined($Texi2HTML::Config::misc_command{$macro}))
+            {
+                # Handle the misc command
+                my $result;
+                ($cline, $result) = misc_command_text($cline, $macro, $stack, $state, $text, $line_nr);
+                add_prev($text, $stack, $result) if (defined($result));
+                return unless (defined($cline));
+                unless ($Texi2HTML::Config::misc_command{$macro}->{'keep'})
+                {
+                     begin_paragraph($stack, $state) if 
+                       (!no_paragraph($state,$cline));
+                     next;
+                }
             }
             # This is a @macroname{...} construct. We add it on top of stack
             # It will be handled when we encounter the '}'
