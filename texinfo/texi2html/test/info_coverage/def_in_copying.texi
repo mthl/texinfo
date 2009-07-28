@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def_in_copying.info
+
+
+@macro mymacro
+@deffn aa bb cc
+@deffnx aax bbx ccx
+deffnx lines
+@end deffn
+@end macro
+
+@node Top
+@top Test for definition commands
+
+@copying
+In copying
+@mymacro
+@end copying
+
+In text
+@mymacro
+
+@printindex fn
+
+@bye

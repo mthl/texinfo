@@ -1,0 +1,23 @@
+This is def_cmd_dble.info, produced by makeinfo version 4.13 from
+def_cmd_dble.texi.
+
+
+File: def_cmd_dble.info,  Node: Top,  Up: (dir)
+
+Test for double definition commands
+***********************************
+
+ -- func: plot (a, b, c, ...)  -- :
+          func plot2 (a, b, c, ..., d)
+     aaa
+
+ -- func: aaaa args  -- :
+          c--ategory d--efvr_name
+     bbb
+
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table

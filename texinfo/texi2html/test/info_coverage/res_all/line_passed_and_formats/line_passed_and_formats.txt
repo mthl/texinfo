@@ -1,0 +1,85 @@
+Element
+*******
+
+special: Quotation special.
+Nested quotation sdflkmsfdlkmfsdqmlkfsdq mlfdsqlkmfdsqmlkfdsq klm fsqdlkmfdsq
+fdsfsdqmlkfsqd m lqlkmf qskmlfq sklm fqds
+
+quotation  text
+example in   quotation
+
+ In  example.
+   In quotation   in example
+
+In 1 example
+In 2 example
+
+In 1 quotation
+In 2 quotation
+
+Quotation
+Nested quotation
+Quotation 2
+
+In  example.
+In quotation   in example
+In  example 2.
+
+quotation  text
+example in   quotation
+quotation  text 2
+
+Before quotation
+quotation  text
+after end
+
+Before example
+In example
+After example
+
+Before quotation and empty line
+
+In quotation
+
+After quotation
+
+Before example and empty line
+
+In example
+
+After example
+
+Nested and empty lines
+
+Quotation empty out, spaces inside
+
+
+In nested
+
+
+
+Quotation empty out, no spaces inside
+
+In nested
+
+
+Example empty out, spaces inside
+
+
+In nested
+
+
+
+Example empty out, no spaces inside
+
+In nested
+
+
+menu
+* node::
+end menu
+
+1 node
+******
+
+

@@ -1,0 +1,88 @@
+Test for definition commands
+****************************
+
+in text
+ -- fset: i a g
+deff lines
+
+ -- aa: bb cc
+ -- aax: bbx ccx
+deffnx lines
+
+Something
+ -- ggg: hhh ooo
+Something after
+
+ -- vgvg: bhbh njnj
+ -- colle: a la precendent
+
+ -- truc: aa
+ -- bidule: bb
+
+Para
+
+
+ -- eeeetruc: aeeea
+ -- eeeebidule: beeeb
+
+Para2
+
+
+ -- ffffftruc: afffa
+Para3
+
+
+ -- ggggggtruc: gggga
+
+Para4
+
+ -- now: with many para
+
+First para.
+
+Second para.
+
+
+
+In example
+ -- fset: i a g
+deff lines
+
+ -- aa: bb cc
+ -- aax: bbx ccx
+deffnx lines
+
+Something
+ -- ggg: hhh ooo
+Something after
+
+ -- vgvg: bhbh njnj
+ -- colle: a la precendent
+
+ -- truc: aa
+ -- bidule: bb
+
+Para
+
+
+ -- eeeetruc: aeeea
+ -- eeeebidule: beeeb
+
+Para2
+
+
+ -- ffffftruc: afffa
+Para3
+
+
+ -- ggggggtruc: gggga
+
+Para4
+
+ -- now: with many para
+
+First para.
+
+Second para.
+
+

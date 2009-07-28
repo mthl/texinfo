@@ -1,0 +1,21 @@
+tab_in_index.texi(,2) 
+tab_in_index.texi(,3) @setfilename tab_in_index.info
+tab_in_index.texi(,4) 
+tab_in_index.texi(,5) @node Top
+tab_in_index.texi(,6) @top Test for @@tab in @@index
+tab_in_index.texi(,7) 
+tab_in_index.texi(,8) @multitable {one nonlettered character} {normal text}
+tab_in_index.texi(,9) @item one nonlettered character @tab aaa
+tab_in_index.texi(,10) @vindex in index entry @tab in tab
+tab_in_index.texi(,11) @end multitable
+tab_in_index.texi(,12) 
+tab_in_index.texi(,13) @multitable {aaa} {bbb}
+tab_in_index.texi(,14) @vindex @item on item line
+tab_in_index.texi(,15) @end multitable
+tab_in_index.texi(,16) 
+tab_in_index.texi(,17) 
+tab_in_index.texi(,18) 
+tab_in_index.texi(,19) @printindex vr
+tab_in_index.texi(,20) 
+tab_in_index.texi(,21) 
+tab_in_index.texi(,22) @bye

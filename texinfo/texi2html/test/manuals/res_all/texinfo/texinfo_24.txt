@@ -1,0 +1,229 @@
+Annexe C Sample Texinfo Files
+*****************************
+
+The first example is from the first chapter (see Short Sample),
+given here in its entirety, without commentary.  The second sample
+includes the full texts to be used in GNU manuals.
+
+* Short Sample Texinfo File::   
+* GNU Sample Texts::            
+
+
+C.1 Short Sample
+================
+
+Here is a complete, short sample Texinfo file, without any commentary.
+You can see this file, with comments, in the first chapter.  See Short Sample.
+
+In a nutshell: The makeinfo program transforms a Texinfo
+source file such as this into an Info file or HTML; and TeX typesets
+it for a printed manual.
+
+
+
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample.info
+@settitle Sample Manual 1.0
+@c %**end of header
+
+@copying
+This is a short example of a complete Texinfo file.
+
+Copyright (C) 2002 Free Software Foundation, Inc.
+@end copying
+
+@titlepage
+@title Sample Title
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Output the table of the contents at the beginning.
+@contents
+
+@ifnottex
+@node Top
+
+@insertcopying
+@end ifnottex
+
+@menu
+* First Chapter::    The first chapter is the
+                       only chapter in this sample.
+* Index::            Complete index.
+@end menu
+
+
+@node First Chapter
+@chapter First Chapter
+
+@cindex chapter, first
+
+This is the first chapter.
+@cindex index entry, another
+
+Here is a numbered list.
+
+@enumerate
+@item
+This is the first item.
+
+@item
+This is the second item.
+@end enumerate
+
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye
+
+
+C.2 GNU Sample Texts
+====================
+
+
+Here is a sample Texinfo document with the full texts that should be
+used in GNU manuals.
+
+As well as the legal texts, it also serves as a practical example of how
+many elements in a GNU system can affect the manual.  If you're not
+familiar with all these different elements, don't worry.  They're not
+required and a perfectly good manual can be written without them.
+They're included here nonetheless because many manuals do (or could)
+benefit from them.
+
+See Short Sample, for a minimal example of a Texinfo file.
+See Beginning a File, for a full explanation of that minimal
+example.
+
+Here are some notes on the example:
+
+* The `Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $' comment is for CVS (see (cvs)Top section `Overview' in Concurrent Versions System) or RCS (see rcsintro(1)) version control
+systems, which expand it into a string such as:
+Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
+(This is useful in all sources that use version control, not just manuals.)
+
+* The `version.texi' in the @include command is maintained
+automatically by Automake (see (automake)Top section `Introduction' in GNU Automake).  It sets the `VERSION' and `UPDATED' values used
+elsewhere.  If your distribution doesn't use Automake, you can mimic
+these or equivalent settings.
+
+* The @syncodeindex command reflects the recommendation to use only
+one index if at all possible, to make it easier for readers.
+
+* The @dircategory is for constructing the Info directory.
+See Installing Dir Entries, which includes a variety of recommended
+category names.
+
+* The `Invoking' node is a GNU standard to help users find the basic
+information about command-line usage of a given program.  See (standards)Manual Structure Details section `Manual Structure Details' in GNU Coding Standards.
+
+* It is best to include the entire GNU Free Documentation License in a GNU
+manual, unless the manual is only a few pages long.  Of course this
+sample is even shorter than that, but it includes the FDL anyway in
+order to show one conventional way of doing so.  The `fdl.texi'
+file is available on the GNU machines (and in the Texinfo and other GNU
+distributions).
+
+The FDL provides for omitting itself under certain conditions, but in
+that case the sample texts given here have to be modified.  See GNU Free Documentation License.
+
+* If your manual has invariant sections (again, see the license itself for
+details), then don't forget to include them.
+
+Here is the sample document:
+
+\input texinfo    @c -*-texinfo-*-
+@comment Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
+@comment %**start of header
+@setfilename sample.info
+@include version.texi
+@settitle GNU Sample @value{VERSION}
+@syncodeindex pg cp
+@comment %**end of header
+@copying
+This manual is for GNU Sample
+(version @value{VERSION}, @value{UPDATED}),
+which is an example in the Texinfo documentation.
+
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+@end quotation
+@end copying
+
+@dircategory Texinfo documentation system
+@direntry
+* sample: (sample)Invoking sample.    
+@end direntry
+
+@titlepage
+@title GNU Sample
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author A.U. Thor (@email{bug-texinfo@@gnu.org})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top GNU Sample
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Invoking sample::
+* Copying This Manual::
+* Index::
+@end menu
+
+
+@node Invoking sample
+@chapter Invoking sample
+
+@pindex sample
+@cindex invoking @command{sample}
+
+This is a sample manual.  There is no sample program to
+invoke, but if there was, you could see its basic usage
+and command line options here.
+
+
+@node Copying This Manual
+@appendix Copying This Manual
+
+@menu
+* GNU Free Documentation License::  License for copying this manual.
+@end menu
+
+@include fdl.texi
+
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye
+
+

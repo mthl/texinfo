@@ -1,0 +1,358 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def_cmds_clean.info
+@node Top
+@top Test for definition commands
+
+@macro mymacro
+@deffn category deffn_name arguments...
+d--effn
+@end deffn
+
+@deffn category deffn_name arguments @
+   more args @* even more so
+def--fn
+@end deffn
+
+@deffn fset @var{i} a g
+@deffnx {cmde} truc {}
+@deffnx Command {log trap} {}
+@deffnx Command { log trap1} {}  
+@deffnx Command {log trap2 } {}
+@deffnx cmde @b{id ule} truc
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@deffnx @b{id @samp{i} ule}    
+@deffnx 
+@deffnx aaa
+@deffnx {} {}
+@deffnx{}
+@deffnx{} machin
+@deffnx{} {bidule machin}
+@deffnx{truc} machin
+@deffnx{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@deffnx {truc} followed by a comment
+@c comment
+@ifset texi2html
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+@end ifset
+Various deff lines
+@deffnx {truc} after a deff item
+@c comment
+text in def item for second def item
+@deffnx {truc} deffnx before end deffn
+@end deffn
+
+@deffn empty deffn
+@end deffn
+
+@deffn empty deffn with deffnx
+@deffnx empty deffnx
+@end deffn
+
+@defvr category defvr_name
+d--efvr
+@end defvr
+
+@deftypefn category type deftypefn_name arguments...
+d--eftypefn
+@end deftypefn
+
+@deftypeop category class type deftypeop_name arguments...
+d--eftypeop
+@end deftypeop
+
+@deftypevr category type deftypevr_name
+d--eftypevr
+@end deftypevr
+
+@defcv category class defcv_name
+d--efcv
+@end defcv
+
+@defop category class defop_name arguments...
+d--efop
+@end defop
+
+@deftp category deftp_name attributes...
+d--eftp
+@end deftp
+
+@defun defun_name arguments...
+d--efun
+@end defun
+
+@defmac defmac_name arguments...
+d--efmac
+@end defmac
+
+@defspec defspec_name arguments...
+d--efspec
+@end defspec
+
+@defvar defvar_name
+d--efvar
+@end defvar
+
+@defopt defopt_name
+d--efopt
+@end defopt
+
+@deftypefun type deftypefun_name arguments...
+d--eftypefun
+@end deftypefun
+
+@deftypevar type deftypevar_name
+d--eftypevar
+@end deftypevar
+
+@defivar class defivar_name
+d--efivar
+@end defivar
+
+@deftypeivar class type deftypeivar_name
+d--eftypeivar
+@end deftypeivar
+
+@defmethod class defmethod_name arguments...
+d--efmethod
+@end defmethod
+
+@deftypemethod class type deftypemethod_name arguments...
+d--eftypemethod
+@end deftypemethod
+
+@ifset texi2html
+@deffn category name args { @
+  more args
+deffn with @{
+@end deffn 
+
+@deffn category name args } @
+  more args
+deffn with @}
+@end deffn 
+@end ifset
+
+@end macro
+
+@mymacro{}
+
+@example
+@mymacro{}
+@end example
+
+@quotation 
+@mymacro{}
+@end quotation
+
+@example
+@quotation 
+@mymacro{}
+@end quotation
+@end example
+
+
+@c deffn
+@deffn Command @var{forwardchar} @var{nchars} {argument2} {argument3} @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deffn
+
+@c defvr
+@defvr Variable fill-column {argument1} {argument2} @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defvr
+
+@c deftypefn
+@deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
+@end deftypefn
+
+@deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar}) @
+        (arg in brace, {[something} @var{in var}, @b{in, b} {, comma} a@var{pref} p]) ct@*@* last
+@end deftypefn
+
+@deftypefn {Library Function} int foobug {[something}
+@end deftypefn
+
+@deftypefn stacks private push (@var{s}:in out stack; @
+                 @var{n}:in integer) ; ;barg aarg; ; end
+@end deftypefn
+
+@c deftypevr
+@deftypevr {Global Flag} int enable @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypevr
+
+@c deftp
+@deftp {Data type} pair car cdr @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftp
+
+@c defcv
+@defcv {Class Option} Window border-pattern @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defcv
+
+@c deftypecv
+@deftypecv {Class Option2} Window @code{int} border-pattern @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypecv
+
+@c defop
+@defop Operation windows expose @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defop
+
+@c deftypeop
+@deftypeop Operation2 W,indow @code{int} expose @
+        (arg in brace, [something @var{in var}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypeop
+
+@deftypeop Operation5 Window @code{int} expose type arg
+@end deftypeop
+
+@deftypeop Operation3 {W,indow} @code{int} {e,xpose} type arg
+@end deftypeop
+
+@deftypeop Operation4 {,Window} @code{int} {,expose} type arg
+@end deftypeop
+
+@deftypeop Operation6 W,indow @code{int} e,xpose type arg
+@end deftypeop
+
+@deftypeop Operation7 ,Window @code{int} ,expose type arg
+@end deftypeop
+
+@deftypeop Operation13 {W)indow} @code{int} {e)xpose} type arg
+@end deftypeop
+
+@deftypeop Operation14 {)Window} @code{int} {)expose} type arg
+@end deftypeop
+
+@deftypeop Operation16 W)indow @code{int} e)xpose type arg
+@end deftypeop
+
+@deftypeop Operation17 )Window @code{int} )expose type arg
+@end deftypeop
+
+@deftypeop Operation18 {W;indow} @code{int} {e;xpose} type arg
+@end deftypeop
+
+@deftypeop Operation19 {;Window} @code{int} {;expose} type arg
+@end deftypeop
+
+@deftypeop Operation20 W;indow @code{int} e;xpose type arg
+@end deftypeop
+
+@deftypeop Operation21 ;Window @code{int} ;expose type arg
+@end deftypeop
+
+@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+@end deftypeop
+
+@c deffn
+@deffn
+@end deffn
+
+@c defvr
+@defvr
+@end defvr
+
+@c deftypefn
+@deftypefn
+@end deftypefn
+
+@c deftypeop
+@deftypeop
+@end deftypeop
+
+@c deftypevr
+@deftypevr
+@end deftypevr
+
+@c defcv
+@defcv
+@end defcv
+
+@c deftypecv
+@deftypecv
+@end deftypecv
+
+@c defop
+@defop
+@end defop
+
+@c deftp
+@deftp
+@end deftp
+
+@c deffn
+@deffn @var{A1} @var{A2} @var{A3} @var{A4}
+@end deffn
+
+@deffn @code{A1} @code{A2} @code{A3} @code{A4}
+@end deffn
+
+@c defvr
+@defvr @var{A1} @var{A2} @var{A3} @var{A4}
+@end defvr
+
+@defvr @code{A1} @code{A2} @code{A3} @code{A4}
+@end defvr
+
+@c deftypefn
+@deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypefn
+
+@deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftypefn
+
+@c deftypevr
+@deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypevr
+
+@deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+@end deftypevr
+
+@c deftp
+@deftp @var{A1} @var{A2} @var{A3} @var{A4}
+@end deftp
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4}
+@end deftp
+
+@c defcv
+@defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defcv
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftp
+
+@c deftypecv
+@deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypecv
+
+@deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+@end deftypecv
+
+@c defop
+@defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defop
+
+@defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end defop
+
+@c deftypeop
+@deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypeop
+
+@deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+@end deftypeop
+
+@printindex vr
+@printindex fn
+
+@bye

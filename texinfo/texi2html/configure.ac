@@ -14,6 +14,7 @@ PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 
 dnl Checks for programs.
+AC_PROG_LN_S
 AC_ARG_VAR([PERL], [The path to the `perl' executable.])
 AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
@@ -111,6 +112,7 @@ AC_CONFIG_FILES([\
                  test/Makefile \
                  test/contents/Makefile \
                  test/coverage/Makefile \
+                 test/info_coverage/Makefile \
                  test/formatting/Makefile \
                  test/indices/Makefile \
                  test/invalid/Makefile \

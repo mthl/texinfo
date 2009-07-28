@@ -1,0 +1,690 @@
+19 Formatting and Printing Hardcopy
+***********************************
+
+There are three major shell commands for making a printed manual from a
+Texinfo file: one for converting the Texinfo file into a file that will be
+printed, a second for sorting indices, and a third for printing the
+formatted document.  When you use the shell commands, you can either
+work directly in the operating system shell or work within a shell
+inside GNU Emacs.
+
+If you are using GNU Emacs, you can use commands provided by Texinfo
+mode instead of shell commands.  In addition to the three commands to
+format a file, sort the indices, and print the result, Texinfo mode
+offers key bindings for commands to recenter the output buffer, show the
+print queue, and delete a job from the print queue.
+
+* Use TeX::                     Use TeX to format for hardcopy.
+* Format with tex/texindex::    How to format with explicit shell commands.
+* Format with texi2dvi::        A simpler way to format.
+* Print with lpr::              How to print.
+* Within Emacs::                How to format and print from an Emacs shell.
+* Texinfo Mode Printing::       How to format and print in Texinfo mode.
+* Compile-Command::             How to print using Emacs's compile command.
+* Requirements Summary::        TeX formatting requirements summary.
+* Preparing for TeX::           What to do before you use TeX.
+* Overfull hboxes::             What are and what to do with overfull hboxes.
+* smallbook::                   How to print small format books and manuals.
+* A4 Paper::                    How to print on A4 or A5 paper.
+* pagesizes::                   How to print with customized page sizes.
+* Cropmarks and Magnification::  How to print marks to indicate the size
+                                of pages and how to print scaled up output.
+* PDF Output::                  Portable Document Format output.
+
+19.1 Use TeX
+============
+
+The typesetting program called TeX is used for formatting a Texinfo
+file.  TeX is a very powerful typesetting program and, if used correctly,
+does an exceptionally good job.  (See How to Obtain TeX, for information on how to obtain TeX.)
+
+The standalone makeinfo program and Emacs functions
+texinfo-format-region and texinfo-format-buffer commands
+read the very same @-commands in the Texinfo file as does TeX, but
+process them differently to make an Info file (see Creating an Info File).
+
+
+19.2 Format with tex and texindex
+=================================
+
+Format the Texinfo file with the shell command tex followed by
+the name of the Texinfo file.  For example:
+
+tex foo.texi
+
+TeX will produce a DVI file as well as several auxiliary
+files containing information for indices, cross references, etc.  The
+DVI file (for DeVice Independent file) can be printed on virtually
+any device (see the following sections).
+
+The tex formatting command itself does not sort the indices; it
+writes an output file of unsorted index data.  (The texi2dvi
+command automatically generates indices; see Format with texi2dvi.)  To generate a printed index after
+running the tex command, you first need a sorted index to work
+from.  The texindex command sorts indices.  (The source file
+`texindex.c' comes as part of the standard Texinfo distribution,
+among other places.)
+
+The tex formatting command outputs unsorted index files under
+names that obey a standard convention: the name of your main input file
+with any `.tex' (or similar, see (web2c)tex invocation section `tex invocation' in Web2c) extension removed, followed by the two letter names of indices.
+For example, the raw index output files for the input file
+`foo.texinfo' would be `foo.cp', `foo.vr', `foo.fn',
+`foo.tp', `foo.pg' and `foo.ky'.  Those are exactly the
+arguments to give to texindex.
+
+Instead of specifying all the unsorted index file names explicitly, you
+can use `??' as shell wildcards and give the command in this
+form:
+
+texindex foo.??
+
+This command will run texindex on all the unsorted index files,
+including any that you have defined yourself using @defindex
+or @defcodeindex.  (You may execute `texindex foo.??'
+even if there are similarly named files with two letter extensions
+that are not index files, such as `foo.el'.  The texindex
+command reports but otherwise ignores such files.)
+
+For each file specified, texindex generates a sorted index file
+whose name is made by appending `s' to the input file name.  The
+@printindex command looks for a file with that name
+(see Printing Indices & Menus).  texindex does not alter the
+raw index output file.
+
+After you have sorted the indices, you need to rerun the tex
+formatting command on the Texinfo file.  This regenerates the DVI file,
+this time with up-to-date index entries.
+
+Finally, you may need to run tex one more time, to get the page
+numbers in the cross-references correct.
+
+To summarize, this is a five step process:
+
+1. Run tex on your Texinfo file.  This generates a DVI file (with
+undefined cross-references and no indices), and the raw index files
+(with two letter extensions).
+
+2. Run texindex on the raw index files.  This creates the
+corresponding sorted index files (with three letter extensions).
+
+3. Run tex again on your Texinfo file.  This regenerates the DVI
+file, this time with indices and defined cross-references, but with page
+numbers for the cross-references from last time, generally incorrect.
+
+4. Sort the indices again, with texindex.
+
+5. Run tex one last time.  This time the correct page numbers are
+written for the cross-references.
+
+Alternatively, it's a one-step process: run texi2dvi
+(see Format with texi2dvi).
+
+You need not run texindex each time after you run tex.  If
+you do not, on the next run, the tex formatting command will use
+whatever sorted index files happen to exist from the previous use of
+texindex.  This is usually ok while you are debugging.
+
+Sometimes you may wish to print a document while you know it is
+incomplete, or to print just one chapter of a document.  In that case,
+the usual auxiliary files that TeX creates and warnings TeX gives
+when cross-references are not satisfied are just nuisances.  You can
+avoid them with the @novalidate command, which you must give
+before the @setfilename command
+(see @setfilename).  Thus, the beginning of
+your file would look approximately like this:
+
+\input texinfo
+@novalidate
+@setfilename myfile.info
+...
+
+@novalidate also turns off validation in
+makeinfo, just like its --no-validate option
+(see Pointer Validation).
+
+
+19.3 Format with texi2dvi
+=========================
+
+The texi2dvi command automatically runs both tex and
+texindex as many times as necessary to produce a DVI file with
+sorted indices and all cross-references resolved.  It simplifies the
+tex--texindex--tex--tex sequence
+described in the previous section.
+
+To run texi2dvi on an input file `foo.texi', do this (where
+`prompt$ ' is your shell prompt):
+
+prompt$ texi2dvi foo.texi
+
+As shown in this example, the input filenames to texi2dvi must
+include any extension (`.texi', `.texinfo', etc.).  Under
+MS-DOS and perhaps in other circumstances, you may need to run `sh
+texi2dvi foo.texi' instead of relying on the operating system to invoke
+the shell on the `texi2dvi' script.
+
+Perhaps the most useful option to texi2dvi is
+`--texinfo=cmd'.  This inserts cmd on a line by itself
+after the @setfilename in a temporary copy of the input file
+before running TeX.  With this, you can specify different printing
+formats, such as @smallbook (see smallbook),
+@afourpaper (see A4 Paper), or @pagesizes
+(see pagesizes), without actually changing the document source.
+(You can also do this on a site-wide basis with `texinfo.cnf';
+see Preparing for TeX).
+
+For a list of other options, run `texi2dvi --help'.
+
+
+19.4 Shell Print Using lpr -d
+=============================
+
+The precise command to print a DVI file depends on your system
+installation.  Two common ones are `dvips foo.dvi -o' and `lpr
+-d foo.dvi'.  
+
+For example, the following commands will (perhaps) suffice to sort the
+indices, format, and print the Bison Manual:
+
+tex bison.texinfo
+texindex bison.??
+tex bison.texinfo
+lpr -d bison.dvi
+
+(Remember that the shell commands may be different at your site; but
+these are commonly used versions.)
+
+Using the texi2dvi shell script (see the previous section):
+
+texi2dvi bison.texinfo
+lpr -d bison.dvi
+# or perhaps dvips bison.dvi -o
+
+lpr is a standard program on Unix systems, but it is usually
+absent on MS-DOS/MS-Windows.  Some network packages come with a
+program named lpr, but these are usually limited to sending files
+to a print server over the network, and generally don't support the
+`-d' option.  If you are unfortunate enough to work on one of these
+systems, you have several alternative ways of printing DVI files:
+
+* Find and install a Unix-like lpr program, or its clone.
+If you can do that, you will be able to print DVI files just like
+described above.
+
+* Send the DVI files to a network printer queue for DVI files.
+Some network printers have special queues for printing DVI files.  You
+should be able to set up your network software to send files to that
+queue.  In some cases, the version of lpr which comes with your
+network software will have a special option to send a file to specific
+queues, like this:
+
+lpr -Qdvi -hprint.server.domain bison.dvi
+
+* Convert the DVI file to a Postscript or PCL file and send it to your
+local printer.  See (dvips)dvips invocation section `dvips invocation' in Dvips, and the man
+pages for dvilj, for detailed description of these tools.  Once
+the DVI file is converted to the format your local printer understands
+directly, just send it to the appropriate port, usually `PRN'.
+
+
+19.5 From an Emacs Shell
+========================
+
+You can give formatting and printing commands from a shell within GNU
+Emacs.  To create a shell within Emacs, type M-x shell.  In this
+shell, you can format and print the document.  See Format and Print Hardcopy, for details.
+
+You can switch to and from the shell buffer while tex is
+running and do other editing.  If you are formatting a long document
+on a slow machine, this can be very convenient.
+
+You can also use texi2dvi from an Emacs shell.  For example,
+here is how to use texi2dvi to format and print Using and
+Porting GNU CC from a shell within Emacs:
+
+texi2dvi gcc.texinfo
+lpr -d gcc.dvi
+
+See Texinfo Mode Printing, for more information about formatting
+and printing in Texinfo mode.
+
+
+19.6 Formatting and Printing in Texinfo Mode
+============================================
+
+Texinfo mode provides several predefined key commands for TeX
+formatting and printing.  These include commands for sorting indices,
+looking at the printer queue, killing the formatting job, and
+recentering the display of the buffer in which the operations
+occur.
+
+C-c C-t C-b
+M-x texinfo-tex-buffer
+Run texi2dvi on the current buffer.
+
+C-c C-t C-r
+M-x texinfo-tex-region
+Run TeX on the current region.
+
+C-c C-t C-i
+M-x texinfo-texindex
+Sort the indices of a Texinfo file formatted with
+texinfo-tex-region.
+
+C-c C-t C-p
+M-x texinfo-tex-print
+Print a DVI file that was made with texinfo-tex-region or
+texinfo-tex-buffer.
+
+C-c C-t C-q
+M-x tex-show-print-queue
+Show the print queue.
+
+C-c C-t C-d
+M-x texinfo-delete-from-print-queue
+Delete a job from the print queue; you will be prompted for the job
+number shown by a preceding C-c C-t C-q command
+(texinfo-show-tex-print-queue).
+
+C-c C-t C-k
+M-x tex-kill-job
+Kill the currently running TeX job started by either
+texinfo-tex-region or texinfo-tex-buffer, or any other
+process running in the Texinfo shell buffer.
+
+C-c C-t C-x
+M-x texinfo-quit-job
+Quit a TeX formatting job that has stopped because of an error by
+sending an <x> to it.  When you do this, TeX preserves a record
+of what it did in a `.log' file.
+
+C-c C-t C-l
+M-x tex-recenter-output-buffer
+Redisplay the shell buffer in which the TeX printing and formatting
+commands are run to show its most recent output.
+
+Thus, the usual sequence of commands for formatting a buffer is as
+follows (with comments to the right):
+
+C-c C-t C-b             Run texi2dvi on the buffer.
+C-c C-t C-p             Print the DVI file.
+C-c C-t C-q             Display the printer queue.
+
+The Texinfo mode TeX formatting commands start a subshell in Emacs
+called the `*tex-shell*'.  The texinfo-tex-command,
+texinfo-texindex-command, and tex-dvi-print-command
+commands are all run in this shell.
+
+You can watch the commands operate in the `*tex-shell*' buffer,
+and you can switch to and from and use the `*tex-shell*' buffer
+as you would any other shell buffer.
+
+The formatting and print commands depend on the values of several variables.
+The default values are:
+
+     Variable                              Default value
+
+texinfo-texi2dvi-command                  "texi2dvi"
+texinfo-tex-command                       "tex"
+texinfo-texindex-command                  "texindex"
+texinfo-delete-from-print-queue-command   "lprm"
+texinfo-tex-trailer                       "@bye"
+tex-start-of-header                       "%**start"
+tex-end-of-header                         "%**end"
+tex-dvi-print-command                     "lpr -d"
+tex-show-queue-command                    "lpq"
+
+You can change the values of these variables with the M-x
+edit-options command (see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual), with the M-x set-variable command
+(see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual), or with your `.emacs' initialization file
+(see (emacs)Init File section `Init File' in The GNU Emacs Manual).
+
+Beginning with version 20, GNU Emacs offers a user-friendly interface,
+called Customize, for changing values of user-definable variables.
+See (emacs)Easy Customization section `Easy Customization Interface' in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
+be found in the `Development/Docs/Texinfo' group, once you invoke
+the M-x customize command.
+
+
+19.7 Using the Local Variables List
+===================================
+
+Yet another way to apply the TeX formatting command to a Texinfo file
+is to put that command in a local variables list at the end of the
+Texinfo file.  You can then specify the tex or texi2dvi
+commands as a compile-command and have Emacs run it by typing
+M-x compile.  This creates a special shell called the
+`*compilation*' buffer in which Emacs runs the compile command.
+For example, at the end of the `gdb.texinfo' file, after the
+@bye, you could put the following:
+
+Local Variables:
+compile-command: "texi2dvi gdb.texinfo"
+End:
+
+This technique is most often used by programmers who also compile programs
+this way; see (emacs)Compilation section `Compilation' in The GNU Emacs Manual.
+
+
+19.8 TeX Formatting Requirements Summary
+========================================
+
+Every Texinfo file that is to be input to TeX must begin with a
+\input command and must contain an @setfilename command:
+
+\input texinfo
+@setfilename arg-not-used-by-TeX
+
+The first command instructs TeX to load the macros it needs to
+process a Texinfo file and the second command opens auxiliary files.
+
+Every Texinfo file must end with a line that terminates TeX's
+processing and forces out unfinished pages:
+
+@bye
+
+Strictly speaking, these lines are all a Texinfo file needs to be
+processed successfully by TeX.
+
+Usually, however, the beginning includes an @settitle command to
+define the title of the printed manual, an @setchapternewpage
+command, a title page, a copyright page, and permissions.  Besides an
+@bye, the end of a file usually includes indices and a table of
+contents.  (And of course most manuals contain a body of text as well.)
+
+For more information, see:
+* @settitle
+* @setchapternewpage
+* Page Headings
+* Titlepage & Copyright Page
+* Printing Indices & Menus
+* Contents
+
+
+19.9 Preparing for TeX
+======================
+
+TeX needs to know where to find the `texinfo.tex' file that the
+`\input texinfo' command on the first line reads.  The
+`texinfo.tex' file tells TeX how to handle @-commands; it is
+included in all standard GNU distributions.
+
+
+Usually, the installer has put the `texinfo.tex' file in the
+default directory that contains TeX macros when GNU Texinfo, Emacs or
+other GNU software is installed.  In this case, TeX will find the
+file and you do not need to do anything special.  If this has not been
+done, you can put `texinfo.tex' in the current directory when you
+run TeX, and TeX will find it there.
+
+Also, you should install `epsf.tex', if it is not already installed
+from another distribution.  More details are at the end of the description
+of the @image command (see Images).
+
+Likewise for `pdfcolor.tex', if it is not already installed and you
+use pdftex.
+
+Optionally, you may create an additional `texinfo.cnf', and install
+it as well.  This file is read by TeX when the @setfilename
+command is executed (see @setfilename).  You can put any
+commands you like there, according to local site-wide conventions.  They
+will be read by TeX when processing any Texinfo document.  For
+example, if `texinfo.cnf' contains the line `@afourpaper'
+(see A4 Paper), then all Texinfo documents will be processed with
+that page size in effect.  If you have nothing to put in
+`texinfo.cnf', you do not need to create it.
+
+If neither of the above locations for these system files suffice for
+you, you can specify the directories explicitly.  For
+`texinfo.tex', you can do this by writing the complete path for the
+file after the \input command.  Another way, that works for both
+`texinfo.tex' and `texinfo.cnf' (and any other file TeX
+might read), is to set the TEXINPUTS environment variable in your
+`.cshrc' or `.profile' file.
+
+Which you use of `.cshrc' or `.profile' depends on
+whether you use a Bourne shell-compatible (sh, bash,
+ksh, ...) or C shell-compatible (csh, tcsh)
+command interpreter.  The latter read the `.cshrc' file for
+initialization information, and the former read `.profile'.
+
+In a `.cshrc' file, you could use the following csh command
+sequence:
+
+setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+
+In a `.profile' file, you could use the following sh command
+sequence:
+
+TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+export TEXINPUTS
+
+On MS-DOS/MS-Windows, you would say it like this(10):
+
+set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+
+It is customary for DOS/Windows users to put such commands in the
+`autoexec.bat' file, or in the Windows Registry.
+
+These settings would cause TeX to look for `\input' file first
+in the current directory, indicated by the `.', then in a
+hypothetical user's `me/mylib' directory, and finally in a system
+directory `/usr/lib/tex/macros'.
+
+Finally, you may wish to dump a `.fmt' file (see (web2c)Memory dumps section `Memory dumps' in Web2c) so that TeX can load Texinfo faster.  (The
+disadvantage is that then updating `texinfo.tex' requires
+redumping.)  You can do this by running this command, assuming
+`epsf.tex' is findable by TeX:
+
+initex texinfo @dump
+
+(dump is a TeX primitive.)  Then, move `texinfo.fmt' to
+wherever your .fmt files are found; typically, this will be in the
+subdirectory `web2c' of your TeX installation.
+
+
+19.10 Overfull "hboxes"
+=======================
+
+TeX is sometimes unable to typeset a line without extending it into
+the right margin.  This can occur when TeX comes upon what it
+interprets as a long word that it cannot hyphenate, such as an
+electronic mail network address or a very long title.  When this
+happens, TeX prints an error message like this:
+
+Overfull @hbox (20.76302pt too wide)
+
+(In TeX, lines are in "horizontal boxes", hence the term, "hbox".
+`@hbox' is a TeX primitive not needed in the Texinfo language.)
+
+TeX also provides the line number in the Texinfo source file and
+the text of the offending line, which is marked at all the places that
+TeX considered hyphenation.
+See Catching Errors with TeX Formatting,
+for more information about typesetting errors.
+
+If the Texinfo file has an overfull hbox, you can rewrite the sentence
+so the overfull hbox does not occur, or you can decide to leave it.  A
+small excursion into the right margin often does not matter and may not
+even be noticeable.
+
+If you have many overfull boxes and/or an antipathy to rewriting, you
+can coerce TeX into greatly increasing the allowable interword
+spacing, thus (if you're lucky) avoiding many of the bad line breaks,
+like this:
+
+@tex
+\global\emergencystretch = .9\hsize
+@end tex
+
+(You should adjust the fraction as needed.)  This huge value for
+\emergencystretch cannot be the default, since then the typeset
+output would generally be of noticeably lower quality; the default
+is `.15\hsize'.  \hsize is the TeX dimension
+containing the current line width.
+
+For what overfull boxes you have, however, TeX will print a large,
+ugly, black rectangle beside the line that contains the overfull hbox
+unless told otherwise.  This is so you will notice the location of the
+problem if you are correcting a draft.
+
+To prevent such a monstrosity from marring your final printout, write
+the following in the beginning of the Texinfo file on a line of its own,
+before the @titlepage command:
+
+@finalout
+
+
+19.11 Printing "Small" Books
+============================
+
+By default, TeX typesets pages for printing in an 8.5 by 11 inch
+format.  However, you can direct TeX to typeset a document in a 7 by
+9.25 inch format that is suitable for bound books by inserting the
+following command on a line by itself at the beginning of the Texinfo
+file, before the title page:
+
+@smallbook
+
+(Since many books are about 7 by 9.25 inches, this command might better
+have been called the @regularbooksize command, but it came to be
+called the @smallbook command by comparison to the 8.5 by 11 inch format.)
+
+If you write the @smallbook command between the
+start-of-header and end-of-header lines, the Texinfo mode TeX
+region formatting command, texinfo-tex-region, will format the
+region in "small" book size (see Start of Header).
+
+See small, for information about
+commands that make it easier to produce examples for a smaller manual.
+
+See Format with texi2dvi, and Preparing for TeX, for other ways to format with @smallbook that do not
+require changing the source file.
+
+
+19.12 Printing on A4 Paper
+==========================
+
+You can tell TeX to format a document for printing on European size
+A4 paper (or A5) with the @afourpaper (or @afivepaper)
+command.  Write the command on a line by itself near the beginning of
+the Texinfo file, before the title page.  For example, this is how you
+would write the header for this manual:
+
+\input texinfo    @c -*-texinfo-*-
+@c %**start of header
+@setfilename texinfo
+@settitle Texinfo
+@afourpaper
+@c %**end of header
+
+See Format with texi2dvi, and Preparing for TeX, for other ways to format for different paper sizes that do not
+require changing the source file.
+
+You may or may not prefer the formatting that results from the command
+@afourlatex.  There's also @afourwide for A4 paper in
+wide format.
+
+19.13 @pagesizes [width][, height]: Custom page sizes
+=====================================================
+
+You can explicitly specify the height and (optionally) width of the main
+text area on the page with the @pagesizes command.  Write this
+on a line by itself near the beginning of the Texinfo file, before the
+title page.  The height comes first, then the width if desired,
+separated by a comma.  Examples:
+
+@pagesizes 200mm,150mm  
+and
+@pagesizes 11.5in      
+
+This would be reasonable for printing on B5-size paper.  To emphasize,
+this command specifies the size of the text area, not the size of
+the paper (which is 250mm by 177mm for B5, 14in by
+8.5in for legal).
+
+To make more elaborate changes, such as changing any of the page
+margins, you must define a new command in `texinfo.tex' (or
+`texinfo.cnf', see Preparing for TeX).
+
+See Format with texi2dvi, and Preparing for TeX, for other ways to specify @pagesizes that do not
+require changing the source file.
+
+@pagesizes is ignored by makeinfo.
+
+
+19.14 Cropmarks and Magnification
+=================================
+You can (attempt to) direct TeX to print cropmarks at the corners of
+pages with the @cropmarks command.  Write the @cropmarks
+command on a line by itself between @iftex and @end
+iftex lines near the beginning of the Texinfo file, before the title
+page, like this:
+
+@iftex
+@cropmarks
+@end iftex
+
+This command is mainly for printers that typeset several pages on one
+sheet of film; but you can attempt to use it to mark the corners of a
+book set to 7 by 9.25 inches with the @smallbook command.
+(Printers will not produce cropmarks for regular sized output that is
+printed on regular sized paper.)  Since different printing machines work
+in different ways, you should explore the use of this command with a
+spirit of adventure.  You may have to redefine the command in
+`texinfo.tex'.
+
+You can attempt to direct TeX to typeset pages larger or smaller than
+usual with the \mag TeX command.  Everything that is typeset
+is scaled proportionally larger or smaller.  (\mag stands for
+"magnification".)  This is not a Texinfo @-command, but is a
+plain TeX command that is prefixed with a backslash.  You have to
+write this command between @tex and @end tex
+(see Raw Formatter Commands).
+
+Follow the \mag command with an `=' and then a number that
+is 1000 times the magnification you desire.  For example, to print pages
+at 1.2 normal size, write the following near the beginning of the
+Texinfo file, before the title page:
+
+@tex
+\mag=1200
+@end tex
+
+With some printing technologies, you can print normal-sized copies that
+look better than usual by giving a larger-than-normal master to your
+print shop.  They do the reduction, thus effectively increasing the
+resolution.
+
+Depending on your system, DVI files prepared with a
+nonstandard-\mag may not print or may print only with certain
+magnifications.  Be prepared to experiment.
+
+
+19.15 PDF Output
+================
+
+You can generate a PDF output file from Texinfo source by using the
+pdftex program to process your file instead of plain
+tex.  Just run `pdftex foo.texi' instead of `tex
+foo.texi', or give the `--pdf' option to texi2dvi.
+
+PDF stands for `Portable Document Format'. It was invented by
+Adobe Systems some years ago for document interchange, based on their
+PostScript language.  A PDF reader <http://www.foolabs.com/xpdf/>
+for the X window system is freely available, as is the
+definition of the file format <http://partners.adobe.com/asn/developer/technotes/>.  Since PDF is a binary format, there are no
+`@ifpdf' or `@pdf' commands as with the other output
+formats.
+
+Despite the `portable' in the name, PDF files are nowhere near as
+portable in practice as the plain ASCII formats (Info, HTML) that
+Texinfo supports (DVI portability is arguable).  They also tend to be
+much larger and do not support the bitmap fonts used by TeX (by
+default) very well.  Nevertheless, a PDF file does preserve an actual
+printed document on a screen as faithfully as possible, so it has its place.
+
+PDF support in Texinfo is fairly rudimentary.
+
+

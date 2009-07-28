@@ -1,0 +1,91 @@
+This is simple_def.info, produced by makeinfo version 4.13 from
+simple_def.texi.
+
+
+File: simple_def.info,  Node: Top,  Up: (dir)
+
+Test for definition commands
+****************************
+
+in text
+ -- fset: I a g
+     deff lines
+
+ -- aa: bb cc
+ -- aax: bbx ccx
+     deffnx lines
+
+   Something
+ -- ggg: hhh ooo
+   Something after
+
+ -- vgvg: bhbh njnj
+ -- colle: a la precendent
+
+ -- truc: aa
+ -- bidule: bb
+     Para
+
+ -- eeeetruc: aeeea
+ -- eeeebidule: beeeb
+     Para2
+
+ -- ffffftruc: afffa
+     Para3
+
+ -- ggggggtruc: gggga
+     Para4
+
+ -- now: with many para
+     First para.
+
+     Second para.
+
+     In example
+      -- fset: I a g
+          deff lines
+
+      -- aa: bb cc
+      -- aax: bbx ccx
+          deffnx lines
+
+     Something
+      -- ggg: hhh ooo
+     Something after
+
+      -- vgvg: bhbh njnj
+      -- colle: a la precendent
+
+      -- truc: aa
+
+      -- bidule: bb
+
+          Para
+
+
+      -- eeeetruc: aeeea
+      -- eeeebidule: beeeb
+
+          Para2
+
+
+      -- ffffftruc: afffa
+          Para3
+
+
+      -- ggggggtruc: gggga
+
+          Para4
+
+      -- now: with many para
+
+          First para.
+
+          Second para.
+
+
+
+Tag Table:
+Node: Top82
+
+End Tag Table

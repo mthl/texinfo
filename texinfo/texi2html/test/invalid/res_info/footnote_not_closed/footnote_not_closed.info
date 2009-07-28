@@ -1,0 +1,52 @@
+This is footnote_not_closed.info, produced by makeinfo version 4.13 from
+footnote_not_closed.texi.
+
+
+File: footnote_not_closed.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top section
+***********
+
+texte(1)
+
+   ---------- Footnotes ----------
+
+   (1) We have a footnote.
+
+   This is an important footnote.
+
+* Menu:
+
+* chapter::           the chapter
+* chapter2::           the second chapter
+
+
+File: footnote_not_closed.info,  Node: chapter,  Next: chapter2,  Prev: Top,  Up: Top
+
+1 Chapter
+*********
+
+In chapter(1)
+
+   ---------- Footnotes ----------
+
+   (1) Another footnote
+
+     In a quotation
+
+
+File: footnote_not_closed.info,  Node: chapter2,  Prev: chapter,  Up: Top
+
+2 Chapter2
+**********
+
+
+
+Tag Table:
+Node: Top100
+Ref: Top-Footnote-1245
+Node: chapter394
+Ref: chapter-Footnote-1555
+Node: chapter2601
+
+End Tag Table

@@ -1,0 +1,13 @@
+Test for @tab in @index
+***********************
+
+ one nonlettered character aaa
+
+
+
+
+* Index:
+*  on item line: Test for @tab in @index.
+* in index entry  in tab: Test for @tab in @index.
+
+

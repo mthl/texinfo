@@ -1,0 +1,65 @@
+This is simple_float.info, produced by makeinfo version 4.13 from
+simple_float.texi.
+
+
+File: simple_float.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+float
+
+Text 1: Caption Label
+
+float no Shortcaption
+
+Text 2: Caption Label no sc
+
+float no Label
+
+Text: Caption no Label
+
+float no Caption
+
+Text 3
+
+Float no label no type.
+
+Caption no label no type
+
+Float no label no type shortcap.
+
+Caption no label no type shortcap
+
+Float label no type
+
+1: label no type
+
+Float label no type no cap
+
+2
+
+* Menu:
+
+* Text 1: Shortcaption Label:            Label.
+* Text 2: Caption Label no sc:           Label no sc.
+* Text 3:                                Label no cap.
+
+   Listoffloats
+
+* Menu:
+
+* 1: label no type:                      label no type.
+* 2:                                     label no type no cap.
+
+
+
+Tag Table:
+Node: Top86
+Ref: Label154
+Ref: Label no sc184
+Ref: Label no cap276
+Ref: label no type422
+Ref: label no type no cap461
+
+End Tag Table

@@ -6,12 +6,12 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
  index_and_node_same_name.texi recursive_synindex.texi \
  syncode_index_print_both.texi index_entry_in_footnote.texi \
  index_one_node.texi index_no_node_no_top.texi \
- index_test.init tests.txt res
+ index_test.init tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`

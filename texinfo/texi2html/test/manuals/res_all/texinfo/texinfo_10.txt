@@ -1,0 +1,692 @@
+9 Marking Words and Phrases
+***************************
+
+In Texinfo, you can mark words and phrases in a variety of ways.
+The Texinfo formatters use this information to determine how to
+highlight the text.
+You can specify, for example, whether a word or phrase is a
+defining occurrence, a metasyntactic variable, or a symbol used in a
+program.  Also, you can emphasize text, in several different ways.
+
+* Indicating::                  How to indicate definitions, files, etc.
+* Emphasis::                    How to emphasize text.
+
+
+9.1 Indicating Definitions, Commands, etc.
+==========================================
+
+Texinfo has commands for indicating just what kind of object a piece of
+text refers to.  For example, metasyntactic variables are marked by
+@var, and code by @code.  Since the pieces of text are
+labelled by commands that tell what kind of object they are, it is easy
+to change the way the Texinfo formatters prepare such text.  (Texinfo is
+an intentional formatting language rather than a typesetting
+formatting language.)
+
+For example, in a printed manual,
+code is usually illustrated in a typewriter font;
+@code tells TeX to typeset this text in this font.  But it
+would be easy to change the way TeX highlights code to use another
+font, and this change would not affect how keystroke examples are
+highlighted.  If straight typesetting commands were used in the body
+of the file and you wanted to make a change, you would need to check
+every single occurrence to make sure that you were changing code and
+not something else that should not be changed.
+
+* Useful Highlighting::         Highlighting provides useful information.
+* code::                        Indicating program code.
+* kbd::                         Showing keyboard input.
+* key::                         Specifying keys.
+* samp::                        A literal sequence of characters.
+* verb::                        A verbatim sequence of characters.
+* var::                         Indicating metasyntactic variables.
+* env::                         Indicating environment variables.
+* file::                        Indicating file names.
+* command::                     Indicating command names.
+* option::                      Indicating option names.
+* dfn::                         Specifying definitions.
+* cite::                        Referring to books not in the  Info system.
+* acronym::                     Indicating acronyms.
+* url::                         Indicating a World Wide Web reference.
+* email::                       Indicating an electronic mail address.
+
+
+Useful Highlighting
+-------------------
+Highlighting Commands are Useful
+--------------------------------
+
+The highlighting commands can be used to extract useful information
+from the file, such as lists of functions or file names.  It is
+possible, for example, to write a program in Emacs Lisp (or a keyboard
+macro) to insert an index entry after every paragraph that contains
+words or phrases marked by a specified command.  You could do this to
+construct an index of functions if you had not already made the
+entries.
+
+The commands serve a variety of purposes:
+
+@code{sample-code}
+Indicate text that is a literal example of a piece of a program.
+
+@kbd{keyboard-characters}
+Indicate keyboard input.
+
+@key{key-name}
+Indicate the conventional name for a key on a keyboard.
+
+@samp{text}
+Indicate text that is a literal example of a sequence of characters.
+
+@var{metasyntactic-variable}
+Indicate a metasyntactic variable.
+
+@env{environment-variable}
+Indicate an environment variable.
+
+@file{file-name}
+Indicate the name of a file.
+
+@command{command-name}
+Indicate the name of a command.
+
+@option{option}
+Indicate a command-line option.
+
+@dfn{term}
+Indicate the introductory or defining use of a term.
+
+@cite{reference}
+Indicate the name of a book.
+
+@acronym{acronym}
+Indicate an acronym.
+
+@url{uniform-resource-locator}
+Indicate a uniform resource locator for the World Wide Web.
+
+@email{email-address[, displayed-text]}
+Indicate an electronic mail address.
+
+
+
+9.1.1 @code{sample-code}
+------------------------
+
+Use the @code command to indicate text that is a piece of a
+program and which consists of entire syntactic tokens.  Enclose the
+text in braces.
+
+Thus, you should use @code for an expression in a program, for
+the name of a variable or function used in a program, or for a
+keyword in a programming language.
+
+Use @code for command names in languages that resemble
+programming languages, such as Texinfo.  For example, @code and
+@samp are produced by writing `@code{@@code}' and
+`@code{@@samp}' in the Texinfo source, respectively.
+
+It is incorrect to alter the case of a word inside an @code
+command when it appears at the beginning of a sentence.  Most computer
+languages are case sensitive.  In C, for example, Printf is
+different from the identifier printf, and most likely is a
+misspelling of it.  Even in languages which are not case sensitive, it
+is confusing to a human reader to see identifiers spelled in different
+ways.  Pick one spelling and always use that.  If you do not want to
+start a sentence with a command name written all in lower case, you
+should rearrange the sentence.
+
+In the printed manual, @code causes TeX to typeset the
+argument in a typewriter face.  In the Info file, it causes the Info
+formatting commands to use single quotation marks around the text.
+
+For example,
+
+The function returns @code{nil}.
+
+produces this in the printed manual:
+
+The function returns nil.
+
+
+Here are some cases for which it is preferable not to use @code:
+
+* For shell command names such as ls (use @command).
+
+* For shell options such as `-c' when such options stand alone (use
+@option).
+
+* Also, an entire shell command often looks better if written using
+@samp rather than @code.  In this case, the rule is to
+choose the more pleasing format.
+
+* For environment variable such as TEXINPUTS (use @env).
+
+* For a string of characters shorter than a syntactic token.  For example,
+if you are writing about `goto-ch', which is just a part of the
+name for the goto-char Emacs Lisp function, you should use
+@samp.
+
+* In general, when writing about the characters used in a token; for
+example, do not use @code when you are explaining what letters
+or printable symbols can be used in the names of functions.  (Use
+@samp.)  Also, you should not use @code to mark text
+that is considered input to programs unless the input is written in a
+language that is like a programming language.  For example, you should
+not use @code for the keystroke commands of GNU Emacs (use
+@kbd instead) although you may use @code for the names
+of the Emacs Lisp functions that the keystroke commands invoke.
+
+
+Since @command, @option, and @env were
+introduced relatively recently, it is acceptable to use @code or
+@samp for command names, options, and environment variables.
+The new commands allow you to express the markup more precisely, but
+there is no real harm in using the older commands, and of course the
+long-standing manuals do so.
+
+
+9.1.2 @kbd{keyboard-characters}
+-------------------------------
+
+Use the @kbd command for characters of input to be typed by
+users.  For example, to refer to the characters M-a,
+write
+
+@kbd{M-a}
+
+and to refer to the characters M-x shell, write
+
+@kbd{M-x shell}
+
+The @kbd command has the same effect as @code in Info,
+but by default produces a different font (slanted typewriter instead of
+normal typewriter) in the printed manual, so users can distinguish the
+characters they are supposed to type from those the computer outputs.
+
+Since the usage of @kbd varies from manual to manual, you can
+control the font switching with the @kbdinputstyle command.
+This command has no effect on Info output.  Write this command at the
+beginning of a line with a single word as an argument, one of the
+following:
+`code'
+Always use the same font for @kbd as @code.
+`example'
+Use the distinguishing font for @kbd only in @example
+and similar environments.
+`distinct'
+(the default) Always use the distinguishing font for @kbd.
+
+You can embed another @-command inside the braces of an @kbd
+command.  Here, for example, is the way to describe a command that
+would be described more verbosely as "press an `r' and then
+press the <RET> key":
+
+@kbd{r @key{RET}}
+
+This produces: r <RET>
+
+You also use the @kbd command if you are spelling out the letters
+you type; for example:
+
+To give the @code{logout} command,
+type the characters @kbd{l o g o u t @key{RET}}.
+
+This produces:
+
+To give the logout command,
+type the characters l o g o u t <RET>.
+
+(Also, this example shows that you can add spaces for clarity.  If you
+really want to mention a space character as one of the characters of
+input, write @key{SPC} for it.)
+
+
+9.1.3 @key{key-name}
+--------------------
+
+Use the @key command for the conventional name for a key on a
+keyboard, as in:
+
+@key{RET}
+
+You can use the @key command within the argument of an
+@kbd command when the sequence of characters to be typed
+includes one or more keys that are described by name.
+
+For example, to produce C-x <ESC> you would type:
+
+@kbd{C-x @key{ESC}}
+
+Here is a list of the recommended names for keys:
+
+SPC
+Space
+RET
+Return
+LFD
+Linefeed (however, since most keyboards nowadays do not have a Linefeed key,
+it might be better to call this character C-j.
+TAB
+Tab
+BS
+Backspace
+ESC
+Escape
+DEL
+Delete
+SHIFT
+Shift
+CTRL
+Control
+META
+Meta
+
+There are subtleties to handling words like `meta' or `ctrl' that are
+names of modifier keys.  When mentioning a character in which the
+modifier key is used, such as Meta-a, use the @kbd command
+alone; do not use the @key command; but when you are referring
+to the modifier key in isolation, use the @key command.  For
+example, write `@kbd{Meta-a}' to produce Meta-a and
+`@key{META}' to produce <META>.
+
+
+9.1.4 @samp{text}
+-----------------
+
+Use the @samp command to indicate text that is a literal example
+or `sample' of a sequence of characters in a file, string, pattern, etc.
+Enclose the text in braces.  The argument appears within single
+quotation marks in both the Info file and the printed manual; in
+addition, it is printed in a fixed-width font.
+
+To match @samp{foo} at the end of the line,
+use the regexp @samp{foo$}.
+
+produces
+
+To match `foo' at the end of the line, use the regexp
+`foo$'.
+
+Any time you are referring to single characters, you should use
+@samp unless @kbd or @key is more appropriate.
+Also, you may use @samp for entire statements in C and for entire
+shell commands--in this case, @samp often looks better than
+@code.  Basically, @samp is a catchall for whatever is
+not covered by @code, @kbd, or @key.
+
+Only include punctuation marks within braces if they are part of the
+string you are specifying.  Write punctuation marks outside the braces
+if those punctuation marks are part of the English text that surrounds
+the string.  In the following sentence, for example, the commas and
+period are outside of the braces:
+
+In English, the vowels are @samp{a}, @samp{e},
+@samp{i}, @samp{o}, @samp{u}, and sometimes
+@samp{y}.
+
+This produces:
+
+In English, the vowels are `a', `e',
+`i', `o', `u',  and sometimes
+`y'.
+
+
+9.1.5 @verb{<char>text<char>}
+-----------------------------
+
+Use the @verb command to print a verbatim sequence of
+characters.
+
+Like LaTeX's \verb command, the verbatim text can be quoted using
+any unique delimiter character.  Enclose the verbatim text, including the
+delimiters, in braces.  Text is printed in a fixed-width font:
+
+How many @verb{|@|}-escapes does one need to print this
+@verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
+
+produces
+
+How many @ -escapes does one need to print this
+@a @b @c string or these @'e?`{}!`\ this?
+
+This is in contrast to @samp (see the previous
+section), whose argument is normal Texinfo text, where the characters
+@{} are special; with @verb, nothing is special except
+the delimiter character you choose.
+
+
+9.1.6 @var{metasyntactic-variable}
+----------------------------------
+
+Use the @var command to indicate metasyntactic variables.  A
+metasyntactic variable is something that stands for another piece of
+text.  For example, you should use a metasyntactic variable in the
+documentation of a function to describe the arguments that are passed
+to that function.
+
+Do not use @var for the names of particular variables in
+programming languages.  These are specific names from a program, so
+@code is correct for them (see code).  For example, the
+Emacs Lisp variable texinfo-tex-command is not a metasyntactic
+variable; it is properly formatted using @code.
+
+Do not use @var for environment variables either; @env
+is correct for them (see the next section).
+
+The effect of @var in the Info file is to change the case of the
+argument to all upper case.  In the printed manual and HTML output, the
+argument is printed in slanted type.  
+
+For example,
+
+To delete file @var{filename},
+type @samp{rm @var{filename}}.
+
+produces
+
+To delete file filename, type `rm filename'.
+
+(Note that @var may appear inside @code,
+@samp, @file, etc.)
+
+Write a metasyntactic variable all in lower case without spaces, and
+use hyphens to make it more readable.  Thus, the Texinfo source for
+the illustration of how to begin a Texinfo manual looks like
+this:
+
+\input texinfo
+@@setfilename @var{info-file-name}
+@@settitle @var{name-of-manual}
+
+This produces:
+
+\input texinfo
+@setfilename info-file-name
+@settitle name-of-manual
+
+In some documentation styles, metasyntactic variables are shown with
+angle brackets, for example:
+
+..., type rm <filename>
+
+However, that is not the style that Texinfo uses.  (You can, of
+course, modify the sources to `texinfo.tex' and the Info formatting commands
+to output the <...> format if you wish.)
+
+
+9.1.7 @env{environment-variable}
+--------------------------------
+
+Use the @env command to indicate environment variables, as used
+by many operating systems, including GNU.  Do not use it for
+metasyntactic variables; use @var instead (see the previous
+section).
+
+@env is equivalent to @code in its effects.
+For example:
+
+The @env{PATH} environment variable ...
+produces
+The PATH environment variable ...
+
+
+9.1.8 @file{file-name}
+----------------------
+
+Use the @file command to indicate text that is the name of a
+file, buffer, or directory, or is the name of a node in Info.  You can
+also use the command for file name suffixes.  Do not use @file
+for symbols in a programming language; use @code.
+
+Currently, @file is equivalent to @samp in its effects.
+For example,
+
+The @file{.el} files are in
+the @file{/usr/local/emacs/lisp} directory.
+
+produces
+
+The `.el' files are in
+the `/usr/local/emacs/lisp' directory.
+
+
+9.1.9 @command{command-name}
+----------------------------
+
+Use the @command command to indicate command names, such as
+ls or cc.
+
+@command is equivalent to @code in its effects.
+For example:
+
+The command @command{ls} lists directory contents.
+produces
+The command ls lists directory contents.
+
+You should write the name of a program in the ordinary text font, rather
+than using @command, if you regard it as a new English word,
+such as `Emacs' or `Bison'.
+
+When writing an entire shell command invocation, as in `ls -l',
+you should use either @samp or @code at your discretion.
+
+
+9.1.10 @option{option-name}
+---------------------------
+
+Use the @option command to indicate a command-line option; for
+example, `-l' or `--version' or
+`--output=filename'.
+
+@option is equivalent to @samp in its effects.
+For example:
+
+The option @option{-l} produces a long listing.
+produces
+The option `-l' produces a long listing.
+
+In tables, putting options inside @code produces a
+more pleasing effect.
+
+9.1.11 @dfn{term}
+-----------------
+
+Use the @dfn command to identify the introductory or defining
+use of a technical term.  Use the command only in passages whose
+purpose is to introduce a term which will be used again or which the
+reader ought to know.  Mere passing mention of a term for the first
+time does not deserve @dfn.  The command generates italics in
+the printed manual, and double quotation marks in the Info file.  For
+example:
+
+Getting rid of a file is called @dfn{deleting} it.
+
+produces
+
+Getting rid of a file is called deleting it.
+
+As a general rule, a sentence containing the defining occurrence of a
+term should be a definition of the term.  The sentence does not need
+to say explicitly that it is a definition, but it should contain the
+information of a definition--it should make the meaning clear.
+
+9.1.12 @cite{reference}
+-----------------------
+
+Use the @cite command for the name of a book that lacks a
+companion Info file.  The command produces italics in the printed
+manual, and quotation marks in the Info file.
+
+If a book is written in Texinfo, it is better to use a cross reference
+command since a reader can easily follow such a reference in Info.
+See @xref.
+
+
+
+
+9.1.13 @acronym{acronym}
+------------------------
+
+Use the @acronym command for abbreviations written in all
+capital letters, such as `NASA'.  The abbreviation is given as
+the single argument in braces, as in `@acronym{NASA}'.  As
+a matter of style, or for particular abbreviations, you may prefer to
+use periods, as in `@acronym{F.B.I.}'.
+
+In TeX and HTML, the argument is printed in a slightly smaller font
+size.  In Info or plain text output, this command changes nothing.
+
+
+9.1.14 @url{uniform-resource-locator}
+-------------------------------------
+
+Use the @url command to indicate a uniform resource locator on
+the World Wide Web.  This is analogous to @file, @var,
+etc., and is purely for markup purposes.  It does not produce a link you
+can follow in HTML output (use the @uref command for that,
+see @uref).  It is useful for url's which do
+not actually exist.  For example:
+
+For example, the url might be @url{http://example.org/path}.
+
+which produces:
+
+For example, the url might be <http://example.org/path>.
+
+
+9.1.15 @email{email-address[, displayed-text]}
+----------------------------------------------
+
+Use the @email command to indicate an electronic mail address.
+It takes one mandatory argument, the address, and one optional argument, the
+text to display (the default is the address itself).
+
+In Info and TeX, the address is shown in angle brackets, preceded by
+the text to display if any.  In HTML output, @email produces a
+`mailto' link that usually brings up a mail composition window.
+For example:
+
+Send bug reports to @email{bug-texinfo@@gnu.org},
+suggestions to the @email{bug-texinfo@@gnu.org, same place}.
+produces
+Send bug reports to <mailto:bug-texinfo@gnu.org>,
+suggestions to the same place <mailto:bug-texinfo@gnu.org>.
+
+
+9.2 Emphasizing Text
+====================
+
+Usually, Texinfo changes the font to mark words in the text according to
+what category the words belong to; an example is the @code command.
+Most often, this is the best way to mark words.
+However, sometimes you will want to emphasize text without indicating a
+category.  Texinfo has two commands to do this.  Also, Texinfo has
+several commands that specify the font in which TeX will typeset
+text.  These commands have no effect on Info and only one of them,
+the @r command, has any regular use.
+
+* emph & strong::               How to emphasize text in Texinfo.
+* Smallcaps::                   How to use the small caps font.
+* Fonts::                       Various font commands for printed output.
+
+9.2.1 @emph{text} and @strong{text}
+-----------------------------------
+
+The @emph and @strong commands are for emphasis;
+@strong is stronger.  In printed output, @emph produces
+italics and @strong produces bold.
+
+For example,
+
+@quotation
+@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
+files in the directory.
+@end quotation
+
+produces:
+
+     *Caution*: `rm * .[^.]*' removes _all_
+     files in the directory.
+
+The @strong command is seldom used except to mark what is, in
+effect, a typographical element, such as the word `Caution' in the
+preceding example.
+
+In the Info output, @emph surrounds the text with underscores
+(`_'), and @strong puts asterisks around the text.
+
+Caution: Do not use @strong with the word `Note';
+Info will mistake the combination for a cross reference.  Use a phrase
+such as Please note or Caution instead.
+
+
+9.2.2 @sc{text}: The Small Caps Font
+------------------------------------
+
+Use the `@sc' command to set text in the printed and the HTML
+output in A SMALL CAPS FONT and set text in the Info file in upper
+case letters.  Write the text you want to be in small caps (where
+possible) between braces in lower case, like this:
+
+The @sc{acm} and @sc{ieee} are technical societies.
+
+This produces:
+
+The ACM and IEEE are technical societies.
+
+TeX typesets the small caps font in a manner that prevents the
+letters from `jumping out at you on the page'.  This makes small caps
+text easier to read than text in all upper case--but it's usually
+better to use regular mixed case anyway.  The Info formatting commands
+set all small caps text in upper case.  In HTML, the text is upper-cased
+and a smaller font is used to render it.
+
+If the text between the braces of an @sc command is uppercase,
+TeX typesets in FULL-SIZE CAPITALS.  Use full-size capitals
+sparingly, if ever, and since it's redundant to mark all-uppercase text
+with @sc, makeinfo warns about such usage.
+
+You may also use the small caps font for a jargon word such as
+ATO (a NASA word meaning `abort to orbit').
+
+There are subtleties to using the small caps font with a jargon word
+such as CDR, a word used in Lisp programming.  In this case, you
+should use the small caps font when the word refers to the second and
+subsequent elements of a list (the CDR of the list), but you
+should use `@code' when the word refers to the Lisp function of
+the same spelling.
+
+
+9.2.3 Fonts for Printing, Not Info
+----------------------------------
+
+Texinfo provides four font commands that specify font changes in the
+printed manual but have no effect in the Info file.  @i
+requests italic font (in some versions of TeX, a slanted font
+is used), @b requests bold face, @t requests the
+fixed-width, typewriter-style font used by @code, and @r requests a
+roman font, which is the usual font in which text is printed.  All
+four commands apply to an argument that follows, surrounded by
+braces.
+
+Only the @r command has much use: in example programs, you
+can use the @r command to convert code comments from the
+fixed-width font to a roman font.  This looks better in printed
+output.
+
+For example,
+
+@lisp
+(+ 2 2)    ; @r{Add two plus two.}
+@end lisp
+
+produces
+
+(+ 2 2)    ; Add two plus two.
+
+If possible, you should avoid using the other three font commands.  If
+you need to use one, it probably indicates a gap in the Texinfo
+language.
+
+

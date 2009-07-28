@@ -30,7 +30,7 @@ A center
  centered text in item
      table line
                       centered text in table line
-          centered line with item second item on center line
+          centered line with item  second item on center line
 
                unclosed command on center line `in code
    Still in code'
@@ -69,7 +69,7 @@ cstruc
 
                     before the table item in center
    Line in center
-second item
+ second item
 @end table
    ---------- Footnotes ----------
 
@@ -82,6 +82,6 @@ second item
 
 Tag Table:
 Node: Top75
-Ref: Top-Footnote-11579
+Ref: Top-Footnote-11581
 
 End Tag Table

@@ -2,13 +2,93 @@ punctuation.texi(,2)
 punctuation.texi(,3) @setfilename punctuation.info
 punctuation.texi(,4) 
 punctuation.texi(,5) @node Top
-punctuation.texi(,6) @top Punctuation commands.
+punctuation.texi(,6) @top Element
 punctuation.texi(,7) 
-punctuation.texi(,8) foo vs.@: bar. 
-punctuation.texi(,9) colon :@:And something else.
-punctuation.texi(,10) semi colon ;@:.
-punctuation.texi(,11) And ? ?@:.
-punctuation.texi(,12) Now ! !@:@@
-punctuation.texi(,13) but , ,@:
-punctuation.texi(,14) 
-punctuation.texi(,15) @bye
+punctuation.texi(,8) 
+punctuation.texi(,9) Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+punctuation.texi(,10) 
+punctuation.texi(,11) End of lines Dot.
+punctuation.texi(,12) Exclam!
+punctuation.texi(,13) Question?
+punctuation.texi(,14) End.
+punctuation.texi(,15) 
+punctuation.texi(,16) End of lines and spaces
+punctuation.texi(,17) Dot.   
+punctuation.texi(,18) Exclam!   
+punctuation.texi(,19) Question?   
+punctuation.texi(,20) End.
+punctuation.texi(,21) 
+punctuation.texi(,22) With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+punctuation.texi(,23) 
+punctuation.texi(,24) End of lines paren.)
+punctuation.texi(,25) Symb.)"']
+punctuation.texi(,26) End.
+punctuation.texi(,27) 
+punctuation.texi(,28) End of lines and spaces paren.)   
+punctuation.texi(,29) Symb.)"']   
+punctuation.texi(,30) End.
+punctuation.texi(,31) 
+punctuation.texi(,32) 
+punctuation.texi(,33) 
+punctuation.texi(,34) @heading End of sentences
+punctuation.texi(,35) 
+punctuation.texi(,36) Dot@. Exclam@! Question@? Dot@.  Exclam@!  Question@?  GAAA.
+punctuation.texi(,37) 
+punctuation.texi(,38) Enddots@enddots{} Enddots@enddots{}  GBBB.
+punctuation.texi(,39) 
+punctuation.texi(,40) End of lines Dot@.
+punctuation.texi(,41) Exclam@!
+punctuation.texi(,42) Question@?
+punctuation.texi(,43) Enddots@enddots{}
+punctuation.texi(,44) End.
+punctuation.texi(,45) 
+punctuation.texi(,46) End of lines and spaces
+punctuation.texi(,47) Dot@.   
+punctuation.texi(,48) Exclam@!   
+punctuation.texi(,49) Question@?   
+punctuation.texi(,50) Enddots@enddots{}   
+punctuation.texi(,51) End.
+punctuation.texi(,52) 
+punctuation.texi(,53) With paren@.) paren@.)  Symb@.)"'] Symb@.)"']  End.
+punctuation.texi(,54) 
+punctuation.texi(,55) End of lines paren@.)
+punctuation.texi(,56) Symb@.)"']
+punctuation.texi(,57) End.
+punctuation.texi(,58) 
+punctuation.texi(,59) End of lines and spaces paren@.)   
+punctuation.texi(,60) Symb@.)"']   
+punctuation.texi(,61) End.
+punctuation.texi(,62) 
+punctuation.texi(,63) @heading Not end of line
+punctuation.texi(,64) 
+punctuation.texi(,65) Dot.@: Exclam!@: Question?@: Dot.@:  Exclam!@:  Question?@:  GAAA.
+punctuation.texi(,66) 
+punctuation.texi(,67) End of lines Dot.@:
+punctuation.texi(,68) Exclam!@:
+punctuation.texi(,69) Question?@:
+punctuation.texi(,70) End.
+punctuation.texi(,71) 
+punctuation.texi(,72) End of lines and spaces
+punctuation.texi(,73) Dot.@:   
+punctuation.texi(,74) Exclam!@:   
+punctuation.texi(,75) Question?@:   
+punctuation.texi(,76) End.
+punctuation.texi(,77) 
+punctuation.texi(,78) With paren.@:) paren.@:)  Symb.@:)"'] Symb.@:)"']  End.
+punctuation.texi(,79) 
+punctuation.texi(,80) End of lines paren.@:)
+punctuation.texi(,81) Symb.@:)"']
+punctuation.texi(,82) End.
+punctuation.texi(,83) 
+punctuation.texi(,84) End of lines and spaces paren.@:)   
+punctuation.texi(,85) Symb.@:)"']   
+punctuation.texi(,86) End.
+punctuation.texi(,87) 
+punctuation.texi(,88) @heading Accent leading to a dot
+punctuation.texi(,89) 
+punctuation.texi(,90) @dotaccent{o} in sentence.
+punctuation.texi(,91) 
+punctuation.texi(,92) At the end of line @dotaccent{o}
+punctuation.texi(,93) text following.
+punctuation.texi(,94) 
+punctuation.texi(,95) @bye

@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def.info
+@node Top
+@top Test for definition commands
+
+@var{i}.
+
+@deffn fset @var{i} a g
+deff lines
+@end deffn
+
+@deffn aa bb cc
+@deffnx aax bbx ccx
+deffnx lines
+@end deffn
+
+
+@bye

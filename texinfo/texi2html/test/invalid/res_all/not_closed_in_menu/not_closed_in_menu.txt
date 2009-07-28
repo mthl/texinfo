@@ -1,0 +1,23 @@
+Top
+***
+
+* (gcc):: text 
+- item
+table line
+
+Some text.
+
+* (manual):: desc
+
+* item
+comment
+* (manual2)::
+
+* (info):: before deff 
+ -- bidule: truc chose
+
+deffn text
+After menu
+
+* (manual_in_menu):: desc2
+

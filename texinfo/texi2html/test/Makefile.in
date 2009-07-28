@@ -72,6 +72,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
+LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
@@ -140,12 +141,12 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = run_test.sh tests.sh $(TESTS) long_tests \
+EXTRA_DIST = run_test.sh run_test_all.sh tests.sh $(TESTS) long_tests \
  coverage_macro.texi
 
 base_tests = \
- macros sectionning formatting coverage encodings indices layout \
- nested_formats contents \
+ macros sectionning formatting coverage info_coverage encodings indices \
+ layout nested_formats contents \
  $(htmlxref_cnf_tests) invalid
 
 long_tests = \

@@ -1,0 +1,8 @@
+Element
+*******
+
+ -- a: b c
+* (mynode)::
+
+a
+

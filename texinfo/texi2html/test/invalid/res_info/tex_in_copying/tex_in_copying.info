@@ -1,0 +1,52 @@
+This is tex_in_copying.info, produced by makeinfo version 4.13 from
+tex_in_copying.texi.
+
+Some equation is indeed needed to understand the copyright of that file From @ someone <> !
+$$
+a = \phi
+$$
+
+
+File: tex_in_copying.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Top node
+********
+
+Some equation is indeed needed to understand the copyright of that file From @ someone <> !
+$$
+a = \phi
+$$
+
+* Menu:
+
+* chapter::
+
+   Some equation is indeed needed to understand the copyright of that
+file From @ someone <> !
+$$
+a = \phi
+$$
+
+
+File: tex_in_copying.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+The fundamental equation is $$
+2 a = \dot{\phi}
+$$
+
+   Some equation is indeed needed to understand the copyright of that
+file From @ someone <> !
+$$
+a = \phi
+$$
+
+
+
+Tag Table:
+Node: Top198
+Node: chapter527
+
+End Tag Table

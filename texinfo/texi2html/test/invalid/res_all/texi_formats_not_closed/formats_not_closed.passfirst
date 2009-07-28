@@ -1,0 +1,63 @@
+formats_not_closed.texi(,2) 
+formats_not_closed.texi(,3) @node Top
+formats_not_closed.texi(,4) 
+formats_not_closed.texi(,5) @example
+formats_not_closed.texi(,6) 
+formats_not_closed.texi(,7) @table @minus
+formats_not_closed.texi(,8) @item item
+formats_not_closed.texi(,9) table line
+formats_not_closed.texi(,10) 
+formats_not_closed.texi(,11) Some text.
+formats_not_closed.texi(,12) @enumerate
+formats_not_closed.texi(,13) 
+formats_not_closed.texi(,14) @item first item
+formats_not_closed.texi(,15) @item an item
+formats_not_closed.texi(,16) 
+formats_not_closed.texi(,17) @end example
+formats_not_closed.texi(,18) 
+formats_not_closed.texi(,19) 
+formats_not_closed.texi(,20) @section a section
+formats_not_closed.texi(,21) 
+formats_not_closed.texi(,22) Node text
+formats_not_closed.texi(,23) 
+formats_not_closed.texi(,24) an end table without correspondiing opening part
+formats_not_closed.texi(,25) @end table
+formats_not_closed.texi(,26) 
+formats_not_closed.texi(,27) Multitable not closed with item and tab
+formats_not_closed.texi(,28) 
+formats_not_closed.texi(,29) @multitable {r} {t}
+formats_not_closed.texi(,30) @item rt @tab ds
+formats_not_closed.texi(,31) 
+formats_not_closed.texi(,32) @section a section
+formats_not_closed.texi(,33) Multitable not closed with item
+formats_not_closed.texi(,34) 
+formats_not_closed.texi(,35) @multitable {r} {t}
+formats_not_closed.texi(,36) @item rt 
+formats_not_closed.texi(,37) 
+formats_not_closed.texi(,38) @section a section
+formats_not_closed.texi(,39) Multitable not closed
+formats_not_closed.texi(,40) @multitable {r} {t}
+formats_not_closed.texi(,41) 
+formats_not_closed.texi(,42) 
+formats_not_closed.texi(,43) @section a section
+formats_not_closed.texi(,44) @deffn truc bidule machin
+formats_not_closed.texi(,45) @deffnx truc chose args
+formats_not_closed.texi(,46) @defvar type1 var bidule
+formats_not_closed.texi(,47) 
+formats_not_closed.texi(,48) @section a section 
+formats_not_closed.texi(,49) 
+formats_not_closed.texi(,50) flushright not closed
+formats_not_closed.texi(,51) 
+formats_not_closed.texi(,52) @flushright
+formats_not_closed.texi(,53) 
+formats_not_closed.texi(,54) text flushed right
+formats_not_closed.texi(,55) 
+formats_not_closed.texi(,56) @section a section
+formats_not_closed.texi(,57) 
+formats_not_closed.texi(,58) group not closed
+formats_not_closed.texi(,59) 
+formats_not_closed.texi(,60) @group
+formats_not_closed.texi(,61) 
+formats_not_closed.texi(,62) text in group
+formats_not_closed.texi(,63) 
+formats_not_closed.texi(,64) @bye

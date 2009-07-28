@@ -1,0 +1,31 @@
+Test for bad nestings
+*********************
+
+Tests for environments not matching
+
+A quotation
+
+
+ -- Function Reference: print_navigation $filehandle
+Text
+
+item
+line
+
+ref
+example
+
+@end table
+
+in group
+
+
+in group 2
+
+
+cartouche
+
+
+carouche
+
+

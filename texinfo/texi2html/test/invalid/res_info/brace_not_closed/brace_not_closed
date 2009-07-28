@@ -1,0 +1,21 @@
+This is brace_not_closed, produced by makeinfo version 4.13 from
+brace_not_closed.texi.
+
+
+File: brace_not_closed,  Node: Top,  Up: (dir)
+
+Top node
+
+   `Closing' ` } without opening macro '.
+
+   anchor{truc} .
+
+   Some text .  More text
+
+
+
+Tag Table:
+Node: Top89
+Ref: truc208
+
+End Tag Table

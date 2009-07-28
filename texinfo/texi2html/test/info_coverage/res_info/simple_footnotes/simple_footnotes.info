@@ -1,0 +1,76 @@
+This is simple_footnotes.info, produced by makeinfo version 4.13 from
+simple_footnotes.texi.
+
+
+File: simple_footnotes.info,  Node: Top,  Next: name,  Up: (dir)
+
+Element
+*******
+
+before menu(1).
+
+* Menu:
+
+* name::            description(2)
+* name1::
+
+   ---------- Footnotes ----------
+
+   (1) first footnote
+
+   (2) in menu description
+
+
+File: simple_footnotes.info,  Node: name,  Next: name1,  Prev: Top,  Up: Top
+
+1 name
+******
+
+First para(1)
+
+   Text(2).
+
+   ---------- Footnotes ----------
+
+   (1) First para in footnote.
+
+   Second para in footnote.
+
+   Third one.
+
+   (2) Footnot long
+
+     Quotation in a footnote
+
+
+File: simple_footnotes.info,  Node: name1,  Prev: name,  Up: Top
+
+2 name1
+*******
+
+Texte(1).
+
+   Last text (2)
+
+   ---------- Footnotes ----------
+
+   (1)
+     in quotation on the first footnote line
+
+   (2)
+     in example
+
+
+
+Tag Table:
+Node: Top94
+Ref: Top-Footnote-1287
+Ref: Top-Footnote-2310
+Node: name338
+Ref: name-Footnote-1497
+Ref: name-Footnote-2573
+Node: name1624
+Ref: name1-Footnote-1774
+Ref: name1-Footnote-2827
+
+End Tag Table

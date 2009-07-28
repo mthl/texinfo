@@ -1,8 +1,8 @@
-EXTRA_DIST = run_test.sh tests.sh $(TESTS) long_tests \
+EXTRA_DIST = run_test.sh run_test_all.sh tests.sh $(TESTS) long_tests \
  coverage_macro.texi
 base_tests = \
- macros sectionning formatting coverage encodings indices layout \
- nested_formats contents \
+ macros sectionning formatting coverage info_coverage encodings indices \
+ layout nested_formats contents \
  $(htmlxref_cnf_tests) invalid
 long_tests = \
  misc manuals xemacs_manual texi2html_manual tar_manual singular_manual

@@ -1,0 +1,13 @@
+Test for definition commands
+****************************
+
+
+In text
+ -- aa: bb cc
+ -- aax: bbx ccx
+deffnx lines
+
+* Index:
+* bb: Test for definition commands.
+* bbx: Test for definition commands.
+

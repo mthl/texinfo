@@ -1,0 +1,50 @@
+This is anchor_paragraph.info, produced by makeinfo version 4.13 from
+anchor_paragraph.texi.
+
+This is a very simple texi manual followed by tab   <>.  followed by
+newline  followed by space  aa.
+
+   *aaa TeX _in emph_ after emph*.
+
+
+File: anchor_paragraph.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+Now .
+
+   No space.
+
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+   BBBB
+
+   AAA aflnfe ef fez f fe fez fe fez fez zef fe ezf fze
+after
+
+   This is a very simple texi manual followed by tab   <>.  followed by
+ newline  .  followed by space  aa.    space before and end para.
+
+   `env, alone'.
+
+   *aaa TeX _in emph_ after emph _emph2 _*.
+
+   Another para.
+
+   _*First strong para.
+
+   Second strong para.  * _
+
+
+
+Tag Table:
+Node: Top232
+Ref: anchor 0304
+Ref: anchor1308
+Ref: anchor2322
+Ref: anchor test paras470
+Ref: Anchor para 1552
+Ref: anchor in emph667
+
+End Tag Table

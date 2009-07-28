@@ -1,0 +1,33 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename star_at_command_in_formats.info
+
+@node Top
+@top Test star * at command and how spaces are ignored after
+
+@macro mymacro
+Some text @*
+mode text. @
+Even more text. @* not at eol.
+
+Now foloowed by @@ : followed@*@ 
+And now followed by a space and @@ : follow @* @ 
+And now followed by a space and @@ and text: follow @* @ text
+Followeed by empty asis and a space @asis{} 
+Followeed by asis with space and a space @asis{ } 
+And now with * empty @@asis: @*@asis{} 
+And now with * asis with space @@asis: @* @asis{ }
+And end para.
+@end macro
+
+@example
+Example
+@mymacro
+@end example
+
+@quotation
+Quotation
+@mymacro
+@end quotation
+
+@bye

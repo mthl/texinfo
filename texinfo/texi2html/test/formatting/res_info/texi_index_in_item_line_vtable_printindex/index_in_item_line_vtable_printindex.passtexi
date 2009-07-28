@@ -1,0 +1,22 @@
+index_in_item_line_vtable_printindex.texi(,2) 
+index_in_item_line_vtable_printindex.texi(,3) @setfilename index_in_item_line_vtable_printindex.info
+index_in_item_line_vtable_printindex.texi(,4) 
+index_in_item_line_vtable_printindex.texi(,5) @node Top
+index_in_item_line_vtable_printindex.texi(,6) @top test index entries in @@item @@table 
+index_in_item_line_vtable_printindex.texi(,7) 
+index_in_item_line_vtable_printindex.texi(,8) @vtable @asis
+index_in_item_line_vtable_printindex.texi(,9) @item @cindex index
+index_in_item_line_vtable_printindex.texi(,10) @option{opt}
+index_in_item_line_vtable_printindex.texi(,11) More text
+index_in_item_line_vtable_printindex.texi(,12) @item @cindex 2 index
+index_in_item_line_vtable_printindex.texi(,13) @option{nopt}
+index_in_item_line_vtable_printindex.texi(,14) Even more
+index_in_item_line_vtable_printindex.texi(,15) @end vtable
+index_in_item_line_vtable_printindex.texi(,16) 
+index_in_item_line_vtable_printindex.texi(,17) @vindex another index
+index_in_item_line_vtable_printindex.texi(,18) 
+index_in_item_line_vtable_printindex.texi(,19) @printindex vr
+index_in_item_line_vtable_printindex.texi(,20) 
+index_in_item_line_vtable_printindex.texi(,21) @printindex cp
+index_in_item_line_vtable_printindex.texi(,22) 
+index_in_item_line_vtable_printindex.texi(,23) @bye

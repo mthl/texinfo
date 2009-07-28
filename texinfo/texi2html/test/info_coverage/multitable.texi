@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename multitable.info
+
+@node Top
+@top Element
+
+@multitable {truc}    {bidule}
+@item truc @tab bidule
+@end multitable
+
+@multitable @columnfractions 0.3 0.7
+@item truc @tab bidule
+@end multitable
+
+@anchor{mark}
+@cindex index entry
+
+@printindex cp
+
+@bye

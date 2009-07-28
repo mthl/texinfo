@@ -1,0 +1,17 @@
+code_not_closed.texi(,2) @settitle code_not_closed
+code_not_closed.texi(,3) 
+code_not_closed.texi(,4) @node Top
+code_not_closed.texi(,5) @top Missing closing bracket
+code_not_closed.texi(,6) 
+code_not_closed.texi(,7) @menu
+code_not_closed.texi(,8) * chapter::
+code_not_closed.texi(,9) @end menu
+code_not_closed.texi(,10) 
+code_not_closed.texi(,11) @code{not closed
+code_not_closed.texi(,12) 
+code_not_closed.texi(,13) @node chapter
+code_not_closed.texi(,14) @chapter chapter
+code_not_closed.texi(,15) 
+code_not_closed.texi(,16) @code{still not closed
+code_not_closed.texi(,17) 
+code_not_closed.texi(,18) @bye

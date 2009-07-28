@@ -1,0 +1,63 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename itemize_long_item.info
+
+@node Top
+@top Element
+
+@itemize youhou itemize long item
+@item first item
+@item 
+@example
+In example
+
+end example.
+@end example
+@item 
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end itemize
+
+@itemize youhou itemize even more long item aaaaaaaaaaaaaaaa
+@item first item
+@item 
+@example
+In example
+
+end example.
+@end example
+@item 
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@item 
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end itemize
+
+@bye

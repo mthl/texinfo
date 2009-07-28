@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nested_multitable.info
+
+@node Top
+@top Element
+
+@multitable {truc AAAA   machin}    {bidule}
+@item 
+@multitable {AAAA} {machin}
+@item AAAA @tab machin
+@end multitable
+ @tab bidule
+@item other item @tab in tab
+@end multitable
+
+@printindex cp
+
+@bye

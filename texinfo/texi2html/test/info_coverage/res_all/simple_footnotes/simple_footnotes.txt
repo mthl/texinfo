@@ -1,0 +1,49 @@
+Element
+*******
+
+before menu(1).
+
+* name::            description(2)
+* name1::
+
+1 name
+******
+
+First para(3)
+
+Text(4).
+
+2 name1
+*******
+
+Texte(5).
+
+Last text (6)
+
+Footnotes
+*********
+
+(1)
+first footnote
+
+(2)
+in menu description
+
+(3)
+First para in footnote.
+
+Second para in footnote.
+
+Third one.
+
+(4)
+Footnot long
+
+Quotation in a footnote
+
+(5)
+in quotation on the first footnote line
+
+(6)
+in example
+

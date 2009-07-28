@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename thing_in_menu.info
+
+@node Top
+@top Element
+
+@'a. @^{a}. @^{@dotless{i}}. @v{@'r}. @v{@'{r}}.
+
+@menu
+* @error{}::
+@end menu
+
+@node @error{}
+@chapter @error{}
+
+@bye

@@ -5,9 +5,10 @@ This file records noteworthy changes.
 * NEW FEATURES
   ------------
 
-* new info backend, ready for world domination!
+* new info and plaintext backends, ready for world domination!
+  Corresponding test results are added.
 
-* main program handles --xml, --docbook, --info and html.
+* main program handles --xml, --docbook, --info and --html.
 
 * Handle @DH{}, @dh{}, @TH{}, @th{}. 
 

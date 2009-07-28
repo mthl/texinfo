@@ -1,3 +1,17 @@
+2009-07-28   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: warn for command in 'command_stack', that is 
+	command opened and not closed after a paragraph end in close_stack.
+	Don't call tab_item_texi if the cell is going to be ignored.
+	Don't make a character following an @-command part of the 
+	@-command.
+	* tests/invalid, tests/nested_formats: add test results for info 
+	and raw plaintext.
+	* tests/formatting/punctuation.texi: rename to simple_punctuation.texi
+	and replace with a more in-depth test file.
+	* tests/info_coverage: new tests, specifically used during info backend
+	developpement.
+
 2009-07-25   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: handle better printindex in special region,

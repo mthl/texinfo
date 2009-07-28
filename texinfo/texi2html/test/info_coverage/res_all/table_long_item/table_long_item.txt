@@ -1,0 +1,31 @@
+Element
+*******
+
+first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa
+second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
+
+Text.
+
+example
+In example
+
+end example.
+empty line
+
+empty line.
+quotation
+Quotation
+
+quotation after a blank line
+
+quotation after a blank line
+
+
+VTable
+
+first item
+
+after an empty itemx, before an empty item
+
+in item before end table
+

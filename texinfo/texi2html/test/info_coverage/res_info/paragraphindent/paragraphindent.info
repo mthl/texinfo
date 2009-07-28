@@ -1,0 +1,25 @@
+This is paragraphindent.info, produced by makeinfo version 4.13 from
+paragraphindent.texi.
+
+
+File: paragraphindent.info,  Node: Top,  Up: (dir)
+
+Element top
+***********
+
+First
+
+   aaa b default
+
+           aaa b asis
+
+aaa b 0
+
+       aaa b 7
+
+
+
+Tag Table:
+Node: Top92
+
+End Tag Table

@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename invalid_command_in_table.info
+
+@node Top
+Top node
+
+@table
+{ @itemTop,, title
+long title}
+Item line
+@end table
+
+@bye

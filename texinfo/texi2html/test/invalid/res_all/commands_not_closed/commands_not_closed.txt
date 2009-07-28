@@ -1,0 +1,31 @@
+
+e
+'
+1 Chapter 1
+***********
+
+
+2 Chapter 2
+***********
+
+See my anchor, and an anchor, and footnote anchor
+
+3 Chapter 3
+***********
+
+an anchor4 Chapter 4
+***********
+
+A
+5 Chapter 5
+***********
+
+Footnote(1)Footnotes
+*********
+
+(1)
+
+Footnote
+
+
+

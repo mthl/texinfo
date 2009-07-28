@@ -1,0 +1,47 @@
+This is commands_not_closed.info, produced by makeinfo version 4.13 from
+commands_not_closed.texi.
+
+
+File: commands_not_closed.info,  Node: Top,  Up: (dir)
+
+e
+'
+
+1 Chapter 1
+***********
+
+2 Chapter 2
+***********
+
+See *note my anchor::, and *note an anchor::, and *note footnote
+anchor::
+
+3 Chapter 3
+***********
+
+*note an anchor::
+
+4 Chapter 4
+***********
+
+A
+
+5 Chapter 5
+***********
+
+Footnote(1)
+
+   ---------- Footnotes ----------
+
+   (1) Footnote
+
+
+
+Tag Table:
+Node: Top100
+Ref: an anchor188
+Ref: my anchor188
+Ref: Top-Footnote-1434
+Ref: footnote anchor450
+
+End Tag Table

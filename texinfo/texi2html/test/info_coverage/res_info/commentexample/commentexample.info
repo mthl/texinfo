@@ -1,0 +1,23 @@
+This is commentexample.info, produced by makeinfo version 4.13 from
+commentexample.texi.
+
+Hello.
+
+     first example line with comment second example line after comment
+
+   Para.
+
+     comment, blank after 
+
+   Para.
+
+     comment, no blank after 
+   Para.
+
+     no comment, blank after
+
+   Para.
+
+     no comment, no blank after
+   Para.
+

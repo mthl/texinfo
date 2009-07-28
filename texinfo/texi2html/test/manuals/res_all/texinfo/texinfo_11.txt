@@ -1,0 +1,475 @@
+10 Quotations and Examples
+**************************
+
+Quotations and examples are blocks of text consisting of one or more
+whole paragraphs that are set off from the bulk of the text and
+treated differently.  They are usually indented.
+
+In Texinfo, you always begin a quotation or example by writing an
+@-command at the beginning of a line by itself, and end it by writing
+an @end command that is also at the beginning of a line by
+itself.  For instance, you begin an example by writing @example
+by itself at the beginning of a line and end the example by writing
+@end example on a line by itself, at the beginning of that
+line.
+
+* Block Enclosing Commands::    Different constructs for different purposes.
+* quotation::                   Writing a quotation.
+* example::                     Writing an example in a fixed-width font.
+* verbatim::                    Writing a verbatim example.
+* verbatiminclude::             Including a file verbatim.
+* lisp::                        Illustrating Lisp code.
+* small::                       Forms for @smallbook.
+* display::                     Writing an example in the current font.
+* format::                      Writing an example without narrowed margins.
+* exdent::                      Undo indentation on a line.
+* flushleft & flushright::      Pushing text flush left or flush right.
+* noindent::                    Preventing paragraph indentation.
+* cartouche::                   Drawing rounded rectangles around examples.
+
+
+10.1 Block Enclosing Commands
+=============================
+
+Here are commands for quotations and examples, explained further in the
+following sections:
+
+@quotation
+Indicate text that is quoted. The text is filled, indented, and
+printed in a roman font by default.
+
+@example
+Illustrate code, commands, and the like. The text is printed
+in a fixed-width font, and indented but not filled.
+
+@verbatim
+Mark a piece of text that is to be printed verbatim; no character 
+substitutions are made and all commands are ignored, until the next
+@end verbatim.  The text is printed in a fixed-width font, 
+and not indented or filled.  Extra spaces and blank lines are 
+significant, and tabs are expanded.
+
+@smallexample
+Same as @example, except that in TeX this command typesets
+text in a smaller font.
+
+@lisp
+Like @example, but specifically for illustrating Lisp code. The
+text is printed in a fixed-width font, and indented but not filled.
+
+@smalllisp
+Is to @lisp as @smallexample is to @example.
+
+@display
+Display illustrative text.  The text is indented but not filled, and
+no font is selected (so, by default, the font is roman).
+
+@smalldisplay
+Is to @display as @smallexample is to @example.
+
+@format
+Like @display (the text is not filled and no font is selected),
+but the text is not indented.
+
+@smallformat
+Is to @format as @smallexample is to @example.
+
+The @exdent command is used within the above constructs to
+undo the indentation of a line.
+
+The @flushleft and @flushright commands are used to line
+up the left or right margins of unfilled text.
+
+The @noindent command may be used after one of the above
+constructs to prevent the following text from being indented as a new
+paragraph.
+
+You can use the @cartouche command within one of the above
+constructs to highlight the example or quotation by drawing a box with
+rounded corners around it.  See Drawing Cartouches Around Examples.
+
+
+10.2 @quotation
+===============
+
+The text of a quotation is processed normally except that:
+
+* the margins are closer to the center of the page, so the whole of the
+quotation is indented;
+
+* the first lines of paragraphs are indented no more than other
+lines;
+
+* in the printed output, interparagraph spacing is reduced.
+
+This is an example of text written between an @quotation
+command and an @end quotation command.  An @quotation
+command is most often used to indicate text that is excerpted from
+another (real or hypothetical) printed work.
+
+Write an @quotation command as text on a line by itself.  This
+line will disappear from the output.  Mark the end of the quotation
+with a line beginning with and containing only @end quotation.
+The @end quotation line will likewise disappear from the
+output.  Thus, the following,
+
+@quotation
+This is
+a foo.
+@end quotation
+
+produces
+
+This is a foo.
+
+
+10.3 @example: Example Text
+===========================
+
+The @example command is used to indicate an example that is
+not part of the running text, such as computer input or output.
+
+This is an example of text written between an
+@example command
+and an @end example command.
+The text is indented but not filled.
+
+In the printed manual, the text is typeset in a
+fixed-width font, and extra spaces and blank lines are
+significant.  In the Info file, an analogous result is
+obtained by indenting each line with five spaces.
+
+Write an @example command at the beginning of a line by itself.
+Mark the end of the example
+with an @end example command, also written at the beginning of a
+line by itself.
+
+For example,
+
+@example
+mv foo bar
+@end example
+
+produces
+
+mv foo bar
+
+The lines containing @example and @end example
+will disappear from the output.
+To make the output look good,
+you should put a blank line before the
+@example and another blank line after the @end example.
+Note that blank lines inside the beginning
+@example and the ending @end example will appear in
+the output.
+
+Caution: Do not use tabs in the lines of an example or anywhere
+else in Texinfo (except in verbatim environments)!  The TeX
+implementation of Texinfo treats tabs as single spaces, and that is not
+what they look like.  (If necessary, in Emacs, you can use M-x
+untabify to convert tabs in a region to multiple spaces.)
+
+Examples are often, logically speaking, "in the middle" of a
+paragraph, and the text that continues after an example should not be
+indented.  The @noindent command prevents a piece of text from
+being indented as if it were a new paragraph.
+(See noindent.)
+
+(The @code command is used for examples of code that are
+embedded within sentences, not set off from preceding and following
+text.  See @code.)
+
+
+10.4 @verbatim: Literal Text
+============================
+
+Use the @verbatim environment for printing of text that may
+contain special characters or commands that should not be interpreted,
+such as computer input or output (@example interprets its text
+as regular Texinfo commands).  This is especially useful for including
+automatically generated output in a Texinfo manual.  Here is an example;
+the output you see is just the same as the input, with a line
+@verbatim before and a line @end verbatim after.
+
+This is an example of text written in a @verbatim
+block.  No character substitutions are made.  All commands
+are ignored, until `<at>end verbatim'.
+
+In the printed manual, the text is typeset in a
+fixed-width font, and not indented or filled.  All
+spaces and blank lines are significant, including tabs.
+
+Write a @verbatim command at the beginning of a line by itself.
+This line will disappear from the output.  Mark the end of the verbatim
+block with a @end verbatim command, also written at the
+beginning of a line by itself.  The @end verbatim will also
+disappear from the output.
+
+For example:
+
+@verbatim
+{
+<tab>@command with strange characters: @'e 
+expand<tab>me
+}
+@end verbatim
+
+produces
+
+{
+	@command with strange characters: @'e 
+expand	me
+}
+
+Since the lines containing @verbatim and @end verbatim
+produce no output, tyically you should put a blank line before the
+@verbatim and another blank line after the @end
+verbatim.  Blank lines between the beginning @verbatim and the
+ending @end verbatim will appear in the output.
+
+
+10.5 @verbatiminclude file: Include a File Verbatim
+===================================================
+
+You can include the exact contents of a file in the document with the
+@verbatiminclude command:
+
+@verbatiminclude filename
+
+The contents of filename is printed in a verbatim environment
+(see @verbatim).  Generally, the file is printed
+exactly as it is, with all special characters and white space retained.
+
+
+10.6 @lisp: Marking a Lisp Example
+==================================
+
+The @lisp command is used for Lisp code.  It is synonymous
+with the @example command.
+
+This is an example of text written between an
+@lisp command and an @end lisp command.
+
+Use @lisp instead of @example to preserve information
+regarding the nature of the example.  This is useful, for example, if
+you write a function that evaluates only and all the Lisp code in a
+Texinfo file.  Then you can use the Texinfo file as a Lisp
+library.(7)
+
+Mark the end of @lisp with @end lisp on a line by
+itself.
+
+
+10.7 @small... Block Commands
+=============================
+
+In addition to the regular @example and @lisp commands,
+Texinfo has "small" example-style commands.  These are
+@smalldisplay, @smallexample, @smallformat, and
+@smalllisp.
+
+In TeX, the @small... commands typeset text in a smaller
+font than the non-small example commands.  Consequently, many examples
+containing long lines fit on a page without needing to be shortened.
+
+In Info, the @small... commands are equivalent to their
+non-small companion commands.
+
+Mark the end of an @small... block with a corresponding
+@end small....  For example, pair @smallexample with
+@end smallexample.
+
+This is an example of text written between @smallexample and
+@end smallexample.  In Info this text appears in its normal size;
+but in a 7 by 9.25 inch manual, this text appears in a smaller font.
+
+The @small... commands make it easier to prepare manuals
+without forcing you to edit examples by hand to fit them onto narrower
+pages.
+
+As a general rule, a printed document looks better if you use only one
+of (for example) @example or in @smallexample
+consistently within a chapter.  Only occasionally should you mix the two
+formats.
+
+See Printing "Small" Books, for more information
+about the @smallbook command.
+
+
+10.8 @display and @smalldisplay
+===============================
+
+The @display command begins a kind of example.  It is like the
+@example command
+except that, in
+a printed manual, @display does not select the fixed-width
+font.  In fact, it does not specify the font at all, so that the text
+appears in the same font it would have appeared in without the
+@display command.
+
+This is an example of text written between an @display command
+and an @end display command.  The @display command
+indents the text, but does not fill it.
+
+Texinfo also provides a command @smalldisplay, which is like
+@display but uses a smaller font in @smallbook format.
+See small.
+
+
+10.9 @format and @smallformat
+=============================
+
+The @format command is similar to @example except
+that, in the printed manual, @format does not select the
+fixed-width font and does not narrow the margins.
+
+This is an example of text written between an @format command
+and an @end format command.  As you can see
+from this example,
+the @format command does not fill the text.
+
+Texinfo also provides a command @smallformat, which is like
+@format but uses a smaller font in @smallbook format.
+See small.
+
+
+
+10.10 @exdent: Undoing a Line's Indentation
+===========================================
+
+The @exdent command removes any indentation a line might have.
+The command is written at the beginning of a line and applies only to
+the text that follows the command that is on the same line.  Do not use
+braces around the text.  In a printed manual, the text on an
+@exdent line is printed in the roman font.
+
+@exdent is usually used within examples.  Thus,
+
+@example
+This line follows an @@example command.
+@exdent This line is exdented.
+This line follows the exdented line.
+The @@end example comes on the next line.
+@end group
+
+produces
+
+This line follows an @example command.
+This line is exdented.
+This line follows the exdented line.
+The @end example comes on the next line.
+
+In practice, the @exdent command is rarely used.
+Usually, you un-indent text by ending the example and
+returning the page to its normal width.
+
+
+10.11 @flushleft and @flushright
+================================
+
+The @flushleft and @flushright commands line up the
+ends of lines on the left and right margins of a page,
+but do not fill the text.  The commands are written on lines of their
+own, without braces.  The @flushleft and @flushright
+commands are ended by @end flushleft and @end
+flushright commands on lines of their own.
+
+For example,
+
+@flushleft
+This text is
+written flushleft.
+@end flushleft
+
+produces
+
+This text is
+written flushleft.
+
+
+@flushright produces the type of indentation often used in the
+return address of letters.  For example,
+
+@flushright
+Here is an example of text written
+flushright.  The @code{@flushright} command
+right justifies every line but leaves the
+left end ragged.
+@end flushright
+
+produces
+
+Here is an example of text written
+flushright.  The @flushright command
+right justifies every line but leaves the
+left end ragged.
+
+
+10.12 @noindent: Omitting Indentation
+=====================================
+
+An example or other inclusion can break a paragraph into segments.
+Ordinarily, the formatters indent text that follows an example as a new
+paragraph.  However, you can prevent this by writing @noindent
+at the beginning of a line by itself preceding the continuation
+text.
+
+For example:
+
+@example
+This is an example
+@end example
+
+@noindent
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+@code{@@display} and @code{@@end display}.)
+
+produces
+
+This is an example
+
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+@display and @end display.)
+
+To adjust the number of blank lines properly in the Info file output,
+remember that the line containing @noindent does not generate a
+blank line, and neither does the @end example line.
+
+In the Texinfo source file for this manual, each line that says
+`produces' is preceded by a line containing @noindent.
+
+Do not put braces after an @noindent command; they are not
+necessary, since @noindent is a command used outside of
+paragraphs (see Command Syntax).
+
+
+10.13 @cartouche: Rounded Rectangles Around Examples
+====================================================
+
+In a printed manual, the @cartouche command draws a box with
+rounded corners around its contents.  You can use this command to
+further highlight an example or quotation.  For instance, you could
+write a manual in which one type of example is surrounded by a cartouche
+for emphasis.
+
+@cartouche affects only the printed manual; it has no effect in
+other output files.
+
+For example,
+
+@example
+@cartouche
+% pwd
+/usr/local/share/emacs
+@end cartouche
+@end example
+
+surrounds the two-line example with a box with rounded corners, in the
+printed manual.
+
+
+

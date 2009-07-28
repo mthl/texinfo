@@ -1,0 +1,19 @@
+Element
+*******
+
+
+* chapter::
+* indices::
+
+1 Chapter
+*********
+
+
+
+
+Annexe A indices
+****************
+
+* Index:
+* index entry: 1. Chapter.
+

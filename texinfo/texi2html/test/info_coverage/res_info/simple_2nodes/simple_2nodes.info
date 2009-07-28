@@ -1,0 +1,36 @@
+This is simple_2nodes.info, produced by makeinfo version 4.13 from
+simple_2nodes.texi.
+
+
+File: simple_2nodes.info,  Node: Top,  Next: name,  Up: (dir)
+
+Element
+*******
+
+before menu.
+
+* Menu:
+
+* name::
+* name1::
+
+
+File: simple_2nodes.info,  Node: name,  Next: name1,  Prev: Top,  Up: Top
+
+1 name
+******
+
+
+File: simple_2nodes.info,  Node: name1,  Prev: name,  Up: Top
+
+2 name1
+*******
+
+
+
+Tag Table:
+Node: Top88
+Node: name213
+Node: name1305
+
+End Tag Table

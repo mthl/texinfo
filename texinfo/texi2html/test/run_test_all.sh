@@ -151,6 +151,13 @@ do
   for command_dir in $commands; do
     command=`echo $command_dir | cut -d':' -f1`
     dir_suffix=`echo $command_dir | cut -d':' -f2`
+    for command_location_dir in "$testdir/$srcdir_test/../../" ../../; do
+      if [ -f "$command_location_dir/$command" ]; then
+        command_run="$command_location_dir/$command"
+        break
+      fi
+    done
+    export T2H_HOME="`pwd`""/$testdir/$srcdir_test/../../"
     outdir="${out_dir}${dir_suffix}/"
     results_dir="$testdir/$srcdir_test/${res_dir}${dir_suffix}"
     if [ "z$current" = 'ztexi' ]; then
@@ -162,13 +169,14 @@ do
 
       [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
       mkdir "${outdir}$dir"
+      command_file=
       # -I $testdir/$srcdir_test/ is useful when file name is found using 
       # @setfilename
       echo "$command $dir" >> $logfile
-      echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>${outdir}$dir/$basename.2"
-      echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=${outdir}$dir/$basename.texi $remaining $src_file 2>>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=${outdir}$dir/$basename.texi $remaining $src_file 2>>${outdir}$dir/$basename.2" 
+      echo "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi $remaining $src_file 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=${outdir}$dir/$basename.texi $remaining $src_file 2>>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --macro-expand=${outdir}$dir/$basename.texi $remaining $src_file 2>>${outdir}$dir/$basename.2" 
       ret=$?
     else
       use_latex2html=no
@@ -193,8 +201,8 @@ do
       echo "$command $dir" >> $logfile
       echo >> $stdout_file
       echo "  ----> $command $dir" >> $stdout_file
-      echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \

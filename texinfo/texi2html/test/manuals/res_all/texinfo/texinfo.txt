@@ -1,0 +1,869 @@
+Short Table of Contents
+***********************
+
+Texinfo
+Texinfo Copying Conditions
+1. Overview of Texinfo
+2. Using Texinfo Mode
+Texinfo Mode Overview
+3. Beginning a Texinfo File
+4. Ending a Texinfo File
+5. Chapter Structuring
+6. Nodes
+7. Menus
+Menu Location
+8. Cross References
+References
+9. Marking Words and Phrases
+10. Quotations and Examples
+11. Lists and Tables
+Introducing Lists
+12. Indices
+13. Special Insertions
+14. Making and Preventing Breaks
+Break Commands
+15. Definition Commands
+16. Conditionally Visible Text
+17. Internationalization
+18. Defining New Texinfo Commands
+19. Formatting and Printing Hardcopy
+20. Creating and Installing Info Files
+A. @-Command List
+B. Tips and Hints
+C. Sample Texinfo Files
+D. Include Files
+E. Page Headings
+Headings Introduced
+F. Formatting Mistakes
+makeinfo Preferred
+G. Refilling Paragraphs
+H. @-Command Syntax
+I. How to Obtain TeX
+J. Copying This Manual
+Command and Variable Index
+Concept Index
+
+Table of Contents
+*****************
+
+Texinfo
+Texinfo Copying Conditions
+1. Overview of Texinfo
+ 1.1 Reporting Bugs
+ 1.2 Using Texinfo
+ 1.3 Info files
+ 1.4 Printed Books
+ 1.5 @-commands
+ 1.6 General Syntactic Conventions
+ 1.7 Comments
+ 1.8 What a Texinfo File Must Have
+ 1.9 Six Parts of a Texinfo File
+ 1.10 A Short Sample Texinfo File
+ 1.11 History
+2. Using Texinfo Mode
+Texinfo Mode Overview
+ 2.1 The Usual GNU Emacs Editing Commands
+ 2.2 Inserting Frequently Used Commands
+ 2.3 Showing the Section Structure of a File
+ 2.4 Updating Nodes and Menus
+ Updating Commands
+  2.4.1 Updating Requirements
+  2.4.2 Other Updating Commands
+ 2.5 Formatting for Info
+ 2.6 Formatting and Printing
+ 2.7 Texinfo Mode Summary
+3. Beginning a Texinfo File
+ 3.1 Sample Texinfo File Beginning
+ 3.2 Texinfo File Header
+  3.2.1 The First Line of a Texinfo File
+  3.2.2 Start of Header
+  3.2.3 @setfilename: Set the output file name
+  3.2.4 @settitle: Set the document title
+  3.2.5 End of Header
+ 3.3 Document Permissions
+  3.3.1 @copying: Declare copying permissions
+  3.3.2 @insertcopying: Include permissions text
+ 3.4 Title and Copyright Pages
+  3.4.1 @titlepage
+  3.4.2 @titlefont, @center, and @sp
+  3.4.3 @title, @subtitle, and @author
+  3.4.4 Copyright Page
+  3.4.5 Heading Generation
+  3.4.6 The @headings Command
+ 3.5 The `Top' Node and Master Menu
+  3.5.1 Top Node Example
+  3.5.2 Parts of a Master Menu
+ 3.6 Global Document Commands
+  3.6.1 @documentdescription: Summary text
+  3.6.2 @setchapternewpage:
+  3.6.3 Paragraph Indenting
+  3.6.4 @exampleindent: Environment Indenting
+ 3.7 Software Copying Permissions
+4. Ending a Texinfo File
+ 4.1 Printing Indices and Menus
+ 4.2 Generating a Table of Contents
+ 4.3 @bye File Ending
+5. Chapter Structuring
+ 5.1 Tree Structure of Sections
+ 5.2 Structuring Command Types
+ 5.3 @top
+ 5.4 @chapter
+ 5.5 @unnumbered and @appendix
+ 5.6 @majorheading, @chapheading
+ 5.7 @section
+ 5.8 @unnumberedsec, @appendixsec, @heading
+ 5.9 The @subsection Command
+ 5.10 The @subsection-like Commands
+ 5.11 The `subsub' Commands
+ 5.12 @raisesections and @lowersections
+6. Nodes
+ 6.1 Two Paths
+ 6.2 Node and Menu Illustration
+ 6.3 The @node Command
+  6.3.1 Choosing Node and Pointer Names
+  6.3.2 How to Write an @node Line
+  6.3.3 @node Line Tips
+  6.3.4 @node Line Requirements
+  6.3.5 The First Node
+  6.3.6 The @top Sectioning Command
+ 6.4 Creating Pointers with makeinfo
+ 6.5 @anchor: Defining Arbitrary Cross-reference Targets
+7. Menus
+Menu Location
+ 7.1 Writing a Menu
+ 7.2 The Parts of a Menu
+ 7.3 Less Cluttered Menu Entry
+ 7.4 A Menu Example
+ 7.5 Referring to Other Info Files
+8. Cross References
+References
+ 8.1 Different Cross Reference Commands
+ 8.2 Parts of a Cross Reference
+ 8.3 @xref
+ Reference Syntax
+  8.3.1 @xref with One Argument
+  8.3.2 @xref with Two Arguments
+  8.3.3 @xref with Three Arguments
+  8.3.4 @xref with Four and Five Arguments
+ 8.4 Naming a `Top' Node
+ 8.5 @ref
+ 8.6 @pxref
+ 8.7 @inforef
+ 8.8 @uref{url[, text][, replacement]}
+9. Marking Words and Phrases
+ 9.1 Indicating Definitions, Commands, etc.
+ Useful Highlighting
+  9.1.1 @code{sample-code}
+  9.1.2 @kbd{keyboard-characters}
+  9.1.3 @key{key-name}
+  9.1.4 @samp{text}
+  9.1.5 @verb{<char>text<char>}
+  9.1.6 @var{metasyntactic-variable}
+  9.1.7 @env{environment-variable}
+  9.1.8 @file{file-name}
+  9.1.9 @command{command-name}
+  9.1.10 @option{option-name}
+  9.1.11 @dfn{term}
+  9.1.12 @cite{reference}
+  9.1.13 @acronym{acronym}
+  9.1.14 @url{uniform-resource-locator}
+  9.1.15 @email{email-address[, displayed-text]}
+ 9.2 Emphasizing Text
+  9.2.1 @emph{text} and @strong{text}
+  9.2.2 @sc{text}: The Small Caps Font
+  9.2.3 Fonts for Printing, Not Info
+10. Quotations and Examples
+ 10.1 Block Enclosing Commands
+ 10.2 @quotation
+ 10.3 @example: Example Text
+ 10.4 @verbatim: Literal Text
+ 10.5 @verbatiminclude file: Include a File Verbatim
+ 10.6 @lisp: Marking a Lisp Example
+ 10.7 @small... Block Commands
+ 10.8 @display and @smalldisplay
+ 10.9 @format and @smallformat
+ 10.10 @exdent: Undoing a Line's Indentation
+ 10.11 @flushleft and @flushright
+ 10.12 @noindent: Omitting Indentation
+ 10.13 @cartouche: Rounded Rectangles Around Examples
+11. Lists and Tables
+Introducing Lists
+ 11.1 @itemize: Making an Itemized List
+ 11.2 @enumerate: Making a Numbered or Lettered List
+ 11.3 Making a Two-column Table
+ table
+  11.3.1 @ftable and @vtable
+  11.3.2 @itemx
+ 11.4 Multi-column Tables
+  11.4.1 Multitable Column Widths
+  11.4.2 Multitable Rows
+12. Indices
+ 12.1 Making Index Entries
+ 12.2 Predefined Indices
+ 12.3 Defining the Entries of an Index
+ 12.4 Combining Indices
+  12.4.1 @syncodeindex
+  12.4.2 @synindex
+ 12.5 Defining New Indices
+13. Special Insertions
+ 13.1 Inserting @ and Braces
+  13.1.1 Inserting `@' with @@
+  13.1.2 Inserting `{' and `}'with @{ and @}
+ 13.2 Inserting Space
+  13.2.1 Not Ending a Sentence
+  13.2.2 Ending a Sentence
+  13.2.3 Multiple Spaces
+  13.2.4 @dmn{dimension}: Format a Dimension
+ 13.3 Inserting Accents
+ 13.4 Inserting Ellipsis and Bullets
+  13.4.1 @dots{} (...) and @enddots{} (...)
+  13.4.2 @bullet{} (*)
+ 13.5 Inserting TeX and the Copyright Symbol
+  13.5.1 @TeX{} (TeX)
+  13.5.2 @copyright{} ((C))
+ 13.6 @pounds{} (#): Pounds Sterling
+ 13.7 @minus{} (-): Inserting a Minus Sign
+ 13.8 @math: Inserting Mathematical Expressions
+ 13.9 Glyphs for Examples
+  13.9.1 Glyphs Summary
+  13.9.2 @result{} (=>): Indicating Evaluation
+  13.9.3 @expansion{} (==>): Indicating an Expansion
+  13.9.4 @print{} (-|): Indicating Printed Output
+  13.9.5 @error{} (error-->): Indicating an Error Message
+  13.9.6 @equiv{} (==): Indicating Equivalence
+  13.9.7 @point{} (-!-): Indicating Point in a Buffer
+ 13.10 Footnotes
+  13.10.1 Footnote Commands
+  13.10.2 Footnote Styles
+ 13.11 Inserting Images
+14. Making and Preventing Breaks
+Break Commands
+ 14.1 @*: Generate Line Breaks
+ 14.2 @- and @hyphenation: Helping TeX hyphenate
+ 14.3 @w{text}: Prevent Line Breaks
+ 14.4 @sp n: Insert Blank Lines
+ 14.5 @page: Start a New Page
+ 14.6 @group: Prevent Page Breaks
+ 14.7 @need mils: Prevent Page Breaks
+15. Definition Commands
+ 15.1 The Template for a Definition
+ 15.2 Optional and Repeated Arguments
+ 15.3 Two or More `First' Lines
+ 15.4 The Definition Commands
+  15.4.1 Functions and Similar Entities
+  15.4.2 Variables and Similar Entities
+  15.4.3 Functions in Typed Languages
+  15.4.4 Variables in Typed Languages
+  15.4.5 Object-Oriented Programming
+  15.4.6 Data Types
+ 15.5 Conventions for Writing Definitions
+ 15.6 A Sample Function Definition
+16. Conditionally Visible Text
+ 16.1 Conditional Commands
+ 16.2 Conditional Not Commands
+ 16.3 Raw Formatter Commands
+ 16.4 @set, @clear, and @value
+  16.4.1 @set and @value
+  16.4.2 @ifset and @ifclear
+  16.4.3 @value Example
+17. Internationalization
+ 17.1 @documentlanguage cc: Set the Document Language
+ 17.2 @documentencoding enc: Set Input Encoding
+18. Defining New Texinfo Commands
+ 18.1 Defining Macros
+ 18.2 Invoking Macros
+ 18.3 Macro Details
+ 18.4 `@alias new=existing'
+ 18.5 `definfoenclose': Customized Highlighting
+19. Formatting and Printing Hardcopy
+ 19.1 Use TeX
+ 19.2 Format with tex and texindex
+ 19.3 Format with texi2dvi
+ 19.4 Shell Print Using lpr -d
+ 19.5 From an Emacs Shell
+ 19.6 Formatting and Printing in Texinfo Mode
+ 19.7 Using the Local Variables List
+ 19.8 TeX Formatting Requirements Summary
+ 19.9 Preparing for TeX
+ 19.10 Overfull "hboxes"
+ 19.11 Printing "Small" Books
+ 19.12 Printing on A4 Paper
+ 19.13 @pagesizes [width][, height]: Custom page sizes
+ 19.14 Cropmarks and Magnification
+ 19.15 PDF Output
+20. Creating and Installing Info Files
+ 20.1 Creating an Info File
+  20.1.1 makeinfo Preferred
+  20.1.2 Running makeinfo from a Shell
+  20.1.3 Options for makeinfo
+  20.1.4 Pointer Validation
+  20.1.5 Running makeinfo inside Emacs
+  20.1.6 The texinfo-format... Commands
+  20.1.7 Batch Formatting
+  20.1.8 Tag Files and Split Files
+  20.1.9 Generating HTML
+ 20.2 Installing an Info File
+  20.2.1 The Directory File `dir'
+  20.2.2 Listing a New Info File
+  20.2.3 Info Files in Other Directories
+  20.2.4 Installing Info Directory Files
+  20.2.5 Invoking install-info
+A. @-Command List
+B. Tips and Hints
+C. Sample Texinfo Files
+ C.1 Short Sample
+ C.2 GNU Sample Texts
+D. Include Files
+ D.1 How to Use Include Files
+ D.2 texinfo-multiple-files-update
+ D.3 Include File Requirements
+ D.4 Sample File with @include
+ D.5 Evolution of Include Files
+E. Page Headings
+Headings Introduced
+ E.1 Standard Heading Formats
+ E.2 Specifying the Type of Heading
+ E.3 How to Make Your Own Headings
+F. Formatting Mistakes
+makeinfo Preferred
+ F.1 Catching Errors with Info Formatting
+ F.2 Catching Errors with TeX Formatting
+ F.3 Using texinfo-show-structure
+ F.4 Using occur
+ F.5 Finding Badly Referenced Nodes
+  F.5.1 Running Info-validate
+  F.5.2 Creating an Unsplit File
+  F.5.3 Tagifying a File
+  F.5.4 Splitting a File Manually
+G. Refilling Paragraphs
+H. @-Command Syntax
+I. How to Obtain TeX
+J. Copying This Manual
+ J.1 GNU Free Documentation License
+  J.1.1 ADDENDUM: How to use this License for your documents
+Command and Variable Index
+Concept Index
+
+
+
+Texinfo
+*******
+
+This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+The first part of this master menu lists the major nodes in this Info
+document, including the @-command and concept indices.  The rest of
+the menu lists all the lower level nodes in the document.
+
+
+* Copying Conditions::          Your rights.
+* Overview::                    Texinfo in brief.
+* Texinfo Mode::                How to use Texinfo mode.
+* Beginning a File::            What is at the beginning of a Texinfo file?
+* Ending a File::               What is at the end of a Texinfo file?
+* Structuring::                 How to create chapters, sections, subsections,
+                                  appendices, and other parts.
+* Nodes::                       How to write nodes.
+* Menus::                       How to write menus.
+* Cross References::            How to write cross references.
+* Marking Text::                How to mark words and phrases as code,
+                                  keyboard input, meta-syntactic
+                                  variables, and the like.
+* Quotations and Examples::     How to write quotations, examples, etc.
+* Lists and Tables::            How to write lists and tables.
+* Indices::                     How to create indices.
+* Insertions::                  How to insert @-signs, braces, etc.
+* Breaks::                      How to force and prevent line and page breaks.
+* Definition Commands::         How to describe functions and the like
+                                  in a uniform manner.
+* Conditionals::                How to specify text for either TeX or Info.
+* Internationalization::        
+* Defining New Texinfo Commands::  
+* Hardcopy::                    How to convert a Texinfo file to a file
+                                  for printing and how to print that file.
+* Creating and Installing Info Files::  
+* Command List::                All the Texinfo @-commands.
+* Tips::                        Hints on how to write a Texinfo document.
+* Sample Texinfo Files::        Complete examples, including full texts.
+* Include Files::               How to incorporate other Texinfo files.
+* Headings::                    How to write page headings and footings.
+* Catching Mistakes::           How to find formatting mistakes.
+* Refilling Paragraphs::        All about paragraph refilling.
+* Command Syntax::              A description of @-Command syntax.
+* Obtaining TeX::               How to Obtain TeX.
+* Copying This Manual::         The GNU Free Documentation License.
+* Command and Variable Index::  A menu containing commands and variables.
+* Concept Index::               A menu covering many topics.
+
+ -- The Detailed Node Listing --
+
+Overview of Texinfo
+
+* Reporting Bugs::              Submitting effective bug reports.
+* Using Texinfo::               Create printed or online output.
+* Info Files::                  What is an Info file?
+* Printed Books::               Characteristics of a printed book or manual.
+* Formatting Commands::         @-commands are used for formatting.
+* Conventions::                 General rules for writing a Texinfo file.
+* Comments::                    Writing comments and ignored text in general.
+* Minimum::                     What a Texinfo file must have.
+* Six Parts::                   Usually, a Texinfo file has six parts.
+* Short Sample::                A short sample Texinfo file.
+* History::                     Acknowledgements, contributors and genesis.
+
+Using Texinfo Mode
+
+* Texinfo Mode Overview::       How Texinfo mode can help you.
+* Emacs Editing::               Texinfo mode adds to GNU Emacs' general
+                                  purpose editing features.
+* Inserting::                   How to insert frequently used @-commands.
+* Showing the Structure::       How to show the structure of a file.
+* Updating Nodes and Menus::    How to update or create new nodes and menus.
+* Info Formatting::             How to format for Info.
+* Printing::                    How to format and print part or all of a file.
+* Texinfo Mode Summary::        Summary of all the Texinfo mode commands.
+
+Updating Nodes and Menus
+
+* Updating Commands::           Five major updating commands.
+* Updating Requirements::       How to structure a Texinfo file for
+                                  using the updating command.
+* Other Updating Commands::     How to indent descriptions, insert
+                                  missing nodes lines, and update
+                                  nodes in sequence.
+
+Beginning a Texinfo File
+
+* Sample Beginning::            A sample beginning for a Texinfo file.
+* Texinfo File Header::         
+* Document Permissions::        
+* Titlepage & Copyright Page::  Creating the title and copyright pages.
+* The Top Node::                Creating the `Top' node and master menu.
+* Global Document Commands::    
+* Software Copying Permissions::  Ensure that you and others continue to
+                                    have the right to use and share software.
+
+Texinfo File Header
+
+* First Line::                  The first line of a Texinfo file.
+* Start of Header::             Formatting a region requires this.
+* setfilename::                 Tell Info the name of the Info file.
+* settitle::                    Create a title for the printed work.
+* End of Header::               Formatting a region requires this.
+
+Document Permissions
+
+* copying::                     Declare the document's copying permissions.
+* insertcopying::               Where to insert the permissions.
+
+Title and Copyright Pages
+
+* titlepage::                   Create a title for the printed document.
+* titlefont center sp::         The @titlefont, @center,
+                                  and @sp commands.
+* title subtitle author::       The @title, @subtitle,
+                                  and @author commands.
+* Copyright::                   How to write the copyright notice and
+                                  include copying permissions.
+* end titlepage::               Turn on page headings after the title and
+                                  copyright pages.
+* headings on off::             An option for turning headings on and off
+                                  and double or single sided printing.
+
+The `Top' Node and Master Menu
+
+* Top Node Example::            
+* Master Menu Parts::           
+
+Global Document Commands
+
+* documentdescription::         Document summary for the HTML output.
+* setchapternewpage::           Start chapters on right-hand pages.
+* paragraphindent::             Specify paragraph indentation.
+* exampleindent::               Specify environment indentation.
+
+Ending a Texinfo File
+
+* Printing Indices & Menus::    How to print an index in hardcopy and
+                                  generate index menus in Info.
+* Contents::                    How to create a table of contents.
+* File End::                    How to mark the end of a file.
+
+Chapter Structuring
+
+* Tree Structuring::            A manual is like an upside down tree ...
+* Structuring Command Types::   How to divide a manual into parts.
+* makeinfo top::                The @top command, part of the `Top' node.
+* chapter::                     
+* unnumbered & appendix::       
+* majorheading & chapheading::  
+* section::                     
+* unnumberedsec appendixsec heading::  
+* subsection::                  
+* unnumberedsubsec appendixsubsec subheading::  
+* subsubsection::               Commands for the lowest level sections.
+* Raise/lower sections::        How to change commands' hierarchical level.
+
+Nodes
+
+* Two Paths::                   Different commands to structure
+                                  Info output and printed output.
+* Node Menu Illustration::      A diagram, and sample nodes and menus.
+* node::                        Creating nodes, in detail.
+* makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
+* anchor::                      Defining arbitrary cross-reference targets.
+
+The @node Command
+
+* Node Names::                  How to choose node and pointer names.
+* Writing a Node::              How to write an @node line.
+* Node Line Tips::              Keep names short.
+* Node Line Requirements::      Keep names unique, without @-commands.
+* First Node::                  How to write a `Top' node.
+* makeinfo top command::        How to use the @top command.
+
+Menus
+
+* Menu Location::               Put a menu in a short node.
+* Writing a Menu::              What is a menu?
+* Menu Parts::                  A menu entry has three parts.
+* Less Cluttered Menu Entry::   Two part menu entry.
+* Menu Example::                Two and three part menu entries.
+* Other Info Files::            How to refer to a different Info file.
+
+Cross References
+
+* References::                  What cross references are for.
+* Cross Reference Commands::    A summary of the different commands.
+* Cross Reference Parts::       A cross reference has several parts.
+* xref::                        Begin a reference with `See' ...
+* Top Node Naming::             How to refer to the beginning of another file.
+* ref::                         A reference for the last part of a sentence.
+* pxref::                       How to write a parenthetical cross reference.
+* inforef::                     How to refer to an Info-only file.
+* uref::                        How to refer to a uniform resource locator.
+
+@xref
+
+* Reference Syntax::            What a reference looks like and requires.
+* One Argument::                @xref with one argument.
+* Two Arguments::               @xref with two arguments.
+* Three Arguments::             @xref with three arguments.
+* Four and Five Arguments::     @xref with four and five arguments.
+
+Marking Words and Phrases
+
+* Indicating::                  How to indicate definitions, files, etc.
+* Emphasis::                    How to emphasize text.
+
+Indicating Definitions, Commands, etc.
+
+* Useful Highlighting::         Highlighting provides useful information.
+* code::                        Indicating program code.
+* kbd::                         Showing keyboard input.
+* key::                         Specifying keys.
+* samp::                        A literal sequence of characters.
+* verb::                        A verbatim sequence of characters.
+* var::                         Indicating metasyntactic variables.
+* env::                         Indicating environment variables.
+* file::                        Indicating file names.
+* command::                     Indicating command names.
+* option::                      Indicating option names.
+* dfn::                         Specifying definitions.
+* cite::                        Referring to books not in the  Info system.
+* acronym::                     Indicating acronyms.
+* url::                         Indicating a World Wide Web reference.
+* email::                       Indicating an electronic mail address.
+
+Emphasizing Text
+
+* emph & strong::               How to emphasize text in Texinfo.
+* Smallcaps::                   How to use the small caps font.
+* Fonts::                       Various font commands for printed output.
+
+Quotations and Examples
+
+* Block Enclosing Commands::    Different constructs for different purposes.
+* quotation::                   Writing a quotation.
+* example::                     Writing an example in a fixed-width font.
+* verbatim::                    Writing a verbatim example.
+* verbatiminclude::             Including a file verbatim.
+* lisp::                        Illustrating Lisp code.
+* small::                       Forms for @smallbook.
+* display::                     Writing an example in the current font.
+* format::                      Writing an example without narrowed margins.
+* exdent::                      Undo indentation on a line.
+* flushleft & flushright::      Pushing text flush left or flush right.
+* noindent::                    Preventing paragraph indentation.
+* cartouche::                   Drawing rounded rectangles around examples.
+
+Lists and Tables
+
+* Introducing Lists::           Texinfo formats lists for you.
+* itemize::                     How to construct a simple list.
+* enumerate::                   How to construct a numbered list.
+* Two-column Tables::           How to construct a two-column table.
+* Multi-column Tables::         How to construct generalized tables.
+
+Making a Two-column Table
+
+* table::                       How to construct a two-column table.
+* ftable vtable::               Automatic indexing for two-column tables.
+* itemx::                       How to put more entries in the first column.
+
+Multi-column Tables
+
+* Multitable Column Widths::    Defining multitable column widths.
+* Multitable Rows::             Defining multitable rows, with examples.
+
+Indices
+
+* Index Entries::               Choose different words for index entries.
+* Predefined Indices::          Use different indices for different kinds
+                                  of entry.
+* Indexing Commands::           How to make an index entry.
+* Combining Indices::           How to combine indices.
+* New Indices::                 How to define your own indices.
+
+Combining Indices
+
+* syncodeindex::                How to merge two indices, using @code
+                                  font for the merged-from index.
+* synindex::                    How to merge two indices, using the
+                                  default font of the merged-to index.
+
+Special Insertions
+
+* Braces Atsigns::              How to insert braces, `@'.
+* Inserting Space::             How to insert the right amount of space
+                                  within a sentence.
+* Inserting Accents::           How to insert accents and special characters.
+* Dots Bullets::                How to insert dots and bullets.
+* TeX and copyright::           How to insert the TeX logo
+                                  and the copyright symbol.
+* pounds::                      How to insert the pounds currency symbol.
+* minus::                       How to insert a minus sign.
+* math::                        How to format a mathematical expression.
+* Glyphs::                      How to indicate results of evaluation,
+                                  expansion of macros, errors, etc.
+* Footnotes::                   How to include footnotes.
+* Images::                      How to include graphics.
+
+Inserting @ and Braces
+
+* Inserting An Atsign::         How to insert `@'.
+* Inserting Braces::            How to insert `{' and `}'.
+
+Inserting Space
+
+* Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
+* Ending a Sentence::           Sometimes it does.
+* Multiple Spaces::             Inserting multiple spaces.
+* dmn::                         How to format a dimension.
+
+Inserting Ellipsis and Bullets
+
+* dots::                        How to insert dots ...
+* bullet::                      How to insert a bullet.
+
+Inserting TeX and the Copyright Symbol
+
+* tex::                         How to insert the TeX logo.
+* copyright symbol::            How to use @copyright{}.
+
+Glyphs for Examples
+
+* Glyphs Summary::              
+* result::                      How to show the result of expression.
+* expansion::                   How to indicate an expansion.
+* Print Glyph::                 How to indicate printed output.
+* Error Glyph::                 How to indicate an error message.
+* Equivalence::                 How to indicate equivalence.
+* Point Glyph::                 How to indicate the location of point.
+
+Glyphs Summary
+
+* result::
+* expansion::
+* Print Glyph::
+* Error Glyph::
+* Equivalence::
+* Point Glyph::
+
+Footnotes
+
+* Footnote Commands::           How to write a footnote in Texinfo.
+* Footnote Styles::             Controlling how footnotes appear in Info.
+
+Making and Preventing Breaks
+
+* Break Commands::              Cause and prevent splits.
+* Line Breaks::                 How to force a single line to use two lines.
+* - and hyphenation::           How to tell TeX about hyphenation points.
+* w::                           How to prevent unwanted line breaks.
+* sp::                          How to insert blank lines.
+* page::                        How to force the start of a new page.
+* group::                       How to prevent unwanted page breaks.
+* need::                        Another way to prevent unwanted page breaks.
+
+Definition Commands
+
+* Def Cmd Template::            How to structure a description using a
+                                  definition command.
+* Optional Arguments::          How to handle optional and repeated arguments.
+* deffnx::                      How to group two or more `first' lines.
+* Def Cmds in Detail::          All the definition commands.
+* Def Cmd Conventions::         Conventions for writing definitions.
+* Sample Function Definition::  
+
+The Definition Commands
+
+* Functions Commands::          Commands for functions and similar entities.
+* Variables Commands::          Commands for variables and similar entities.
+* Typed Functions::             Commands for functions in typed languages.
+* Typed Variables::             Commands for variables in typed languages.
+* Abstract Objects::            Commands for object-oriented programming.
+* Data Types::                  The definition command for data types.
+
+Conditionally Visible Text
+
+* Conditional Commands::        Specifying text for HTML, Info, or TeX.
+* Conditional Not Commands::    Specifying text for not HTML, Info, or TeX.
+* Raw Formatter Commands::      Using raw TeX or HTML commands.
+* set clear value::             Designating which text to format (for
+                                  all output formats); and how to set a
+                                  flag to a string that you can insert.
+
+@set, @clear, and @value
+
+* set value::                   Expand a flag variable to a string.
+* ifset ifclear::               Format a region if a flag is set.
+* value Example::               An easy way to update edition information.
+
+Internationalization
+
+* documentlanguage::            Declaring the current language.
+* documentencoding::            Declaring the input encoding.
+
+Defining New Texinfo Commands
+
+* Defining Macros::             Defining and undefining new commands.
+* Invoking Macros::             Using a macro, once you've defined it.
+* Macro Details::               Beyond basic macro usage.
+* alias::                       Command aliases.
+* definfoenclose::              Customized highlighting.
+
+Formatting and Printing Hardcopy
+
+* Use TeX::                     Use TeX to format for hardcopy.
+* Format with tex/texindex::    How to format with explicit shell commands.
+* Format with texi2dvi::        A simpler way to format.
+* Print with lpr::              How to print.
+* Within Emacs::                How to format and print from an Emacs shell.
+* Texinfo Mode Printing::       How to format and print in Texinfo mode.
+* Compile-Command::             How to print using Emacs's compile command.
+* Requirements Summary::        TeX formatting requirements summary.
+* Preparing for TeX::           What to do before you use TeX.
+* Overfull hboxes::             What are and what to do with overfull hboxes.
+* smallbook::                   How to print small format books and manuals.
+* A4 Paper::                    How to print on A4 or A5 paper.
+* pagesizes::                   How to print with customized page sizes.
+* Cropmarks and Magnification::  How to print marks to indicate the size
+                                of pages and how to print scaled up output.
+* PDF Output::                  Portable Document Format output.
+
+Creating and Installing Info Files
+
+* Creating an Info File::       
+* Installing an Info File::     
+
+Creating an Info File
+
+* makeinfo advantages::         makeinfo provides better error checking.
+* Invoking makeinfo::           How to run makeinfo from a shell.
+* makeinfo options::            Specify fill-column and other options.
+* Pointer Validation::          How to check that pointers point somewhere.
+* makeinfo in Emacs::           How to run makeinfo from Emacs.
+* texinfo-format commands::     Two Info formatting commands written
+                                  in Emacs Lisp are an alternative
+                                  to makeinfo.
+* Batch Formatting::            How to format for Info in Emacs Batch mode.
+* Tag and Split Files::         How tagged and split files help Info
+                                  to run better.
+* makeinfo html::               Generating HTML output.
+
+Installing an Info File
+
+* Directory File::              The top level menu for all Info files.
+* New Info File::               Listing a new Info file.
+* Other Info Directories::      How to specify Info files that are
+                                  located in other directories.
+* Installing Dir Entries::      How to specify what menu entry to add
+                                  to the Info directory.
+* Invoking install-info::       install-info options.
+
+Sample Texinfo Files
+
+* Short Sample Texinfo File::   
+* GNU Sample Texts::            
+
+Include Files
+
+* Using Include Files::         How to use the @include command.
+* texinfo-multiple-files-update::  How to create and update nodes and
+                                  menus when using included files.
+* Include File Requirements::   What texinfo-multiple-files-update expects.
+* Sample Include File::         A sample outer file with included files
+                                  within it; and a sample included file.
+* Include Files Evolution::     How use of the @include command
+                                  has changed over time.
+
+Page Headings
+
+* Headings Introduced::         Conventions for using page headings.
+* Heading Format::              Standard page heading formats.
+* Heading Choice::              How to specify the type of page heading.
+* Custom Headings::             How to create your own headings and footings.
+
+Formatting Mistakes
+
+* makeinfo Preferred::          makeinfo finds errors.
+* Debugging with Info::         How to catch errors with Info formatting.
+* Debugging with TeX::          How to catch errors with TeX formatting.
+* Using texinfo-show-structure::  How to use texinfo-show-structure.
+* Using occur::                 How to list all lines containing a pattern.
+* Running Info-Validate::       How to find badly referenced nodes.
+
+Finding Badly Referenced Nodes
+
+* Using Info-validate::         How to run Info-validate.
+* Unsplit::                     How to create an unsplit file.
+* Tagifying::                   How to tagify a file.
+* Splitting::                   How to split a file manually.
+
+Copying This Manual
+
+* GNU Free Documentation License::  License for copying this manual.
+
+
+Documentation is like sex: when it is good, it is very, very good; and
+when it is bad, it is better than nothing.
+--Dick Brandon
+
+

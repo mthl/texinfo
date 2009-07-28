@@ -1,0 +1,49 @@
+anchor_paragraph anchor_paragraph.texi
+long_line long_line.texi
+star_at_command star_at_command.texi
+simple_2nodes simple_2nodes.texi
+simple_index simple_index.texi
+simple_footnotes simple_footnotes.texi
+simple_itemize simple_itemize.texi
+simple_enumerate simple_enumerate.texi
+comment_in_example comment_in_example.texi
+paragraphindent paragraphindent.texi
+commentexample commentexample.texi
+thing_in_menu thing_in_menu.texi
+star_at_command_in_formats star_at_command_in_formats.texi
+exdent_and_formats exdent_and_formats.texi
+noindent_after_smallexample noindent_after_smallexample.texi
+noindent_in_paragraph noindent_in_paragraph.texi
+line_passed_and_formats line_passed_and_formats.texi
+images_quotes images_quotes.texi
+center_flush center_flush.texi
+itemize_long_item itemize_long_item.texi
+table_long_item table_long_item.texi
+exdent_and_commands exdent_and_commands.texi 
+simple_multitable simple_multitable.texi
+multitable multitable.texi
+nested_multitable nested_multitable.texi
+nested_multitable_anchor_index nested_multitable_anchor_index.texi
+def def.texi
+def_in_copying def_in_copying.texi
+def_cmds ../formatting/def_cmds.texi -U texi2html
+simple_def simple_def.texi
+def_cmds_clean def_cmds_clean.texi -U texi2html
+simple_float simple_float.texi
+float ../coverage/float.texi -U texi2html
+simple_verbatim simple_verbatim.texi
+float_long_captions float_long_captions.texi
+simple_cartouche simple_cartouche.texi
+test_setfilename test_setfilename.texi
+space_in_menu space_in_menu.texi
+space_at_menu_end space_at_menu_end.texi
+def_in_example def_in_example.texi
+images_eol images_eol.texi
+long_uref_after_item long_uref_after_item.texi
+menu_in_deffn menu_in_deffn.texi
+multitable_in_example multitable_in_example.texi
+enumerate_in_example enumerate_in_example.texi
+itemize_in_example itemize_in_example.texi 
+cindex_at_end_node cindex_at_end_node.texi
+html_expanded html_expanded.texi --ifhtml
+headings_in_footnote headings_in_footnote.texi

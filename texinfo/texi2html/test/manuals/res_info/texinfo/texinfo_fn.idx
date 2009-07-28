@@ -1,0 +1,1902 @@
+key: ! (end of sentence)
+  origin_href: texinfo#index-_0021-_0028end-of-sentence_0029
+  entry: `! (end of sentence)'
+  texi_entry: @code{! @r{(end of sentence)}}
+  element_href: texinfo#Ending-a-Sentence
+  element_text: Ending a Sentence
+key: " (umlaut accent)
+  origin_href: texinfo#index-_0022-_0028umlaut-accent_0029
+  entry: `" (umlaut accent)'
+  texi_entry: @code{" @r{(umlaut accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ' (umlaut accent)
+  origin_href: texinfo#index-_0027-_0028umlaut-accent_0029
+  entry: `' (umlaut accent)'
+  texi_entry: @code{' @r{(umlaut accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: (newline)
+  origin_href: texinfo#index-_0028newline_0029
+  entry: `(newline)'
+  texi_entry: @code{(newline)}
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: (space)
+  origin_href: texinfo#index-_0028space_0029
+  entry: `(space)'
+  texi_entry: @code{(space)}
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: (tab)
+  origin_href: texinfo#index-_0028tab_0029
+  entry: `(tab)'
+  texi_entry: @code{(tab)}
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: * (force line break)
+  origin_href: texinfo#index-_002a-_0028force-line-break_0029
+  entry: `* (force line break)'
+  texi_entry: @code{* @r{(force line break)}}
+  element_href: texinfo#Line-Breaks
+  element_text: Line Breaks
+key: , (cedilla accent)
+  origin_href: texinfo#index-_002c-_0028cedilla-accent_0029
+  entry: `, (cedilla accent)'
+  texi_entry: @code{, @r{(cedilla accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: - (discretionary hyphen)
+  origin_href: texinfo#index-_002d-_0028discretionary-hyphen_0029
+  entry: `- (discretionary hyphen)'
+  texi_entry: @code{- @r{(discretionary hyphen)}}
+  element_href: texinfo#g_t_002d-and-hyphenation
+  element_text: - and hyphenation
+key: .  (end of sentence)
+  origin_href: texinfo#index-_002e--_0028end-of-sentence_0029
+  entry: `.  (end of sentence)'
+  texi_entry: @code{.  @r{(end of sentence)}}
+  element_href: texinfo#Ending-a-Sentence
+  element_text: Ending a Sentence
+key: <colon> (suppress widening)
+  origin_href: texinfo#index-_003ccolon_003e-_0028suppress-widening_0029
+  entry: `<colon> (suppress widening)'
+  texi_entry: @code{<colon> @r{(suppress widening)}}
+  element_href: texinfo#Not-Ending-a-Sentence
+  element_text: Not Ending a Sentence
+key: = (macron accent)
+  origin_href: texinfo#index-_003d-_0028macron-accent_0029
+  entry: `= (macron accent)'
+  texi_entry: @code{= @r{(macron accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ? (end of sentence)
+  origin_href: texinfo#index-_003f-_0028end-of-sentence_0029
+  entry: `? (end of sentence)'
+  texi_entry: @code{? @r{(end of sentence)}}
+  element_href: texinfo#Ending-a-Sentence
+  element_text: Ending a Sentence
+key: @ (literal `')
+  origin_href: texinfo#index-_0040-_0028literal-_0040_0029
+  entry: `@ (literal `@')'
+  texi_entry: @code{@@ @r{(literal @samp{@@})}}
+  element_href: texinfo#Inserting-An-Atsign
+  element_text: Inserting An Atsign
+key: AA
+  origin_href: texinfo#index-AA
+  entry: `AA'
+  texi_entry: @code{AA}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: AE
+  origin_href: texinfo#index-AE
+  entry: `AE'
+  texi_entry: @code{AE}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: H (Hungarian umlaut accent)
+  origin_href: texinfo#index-H-_0028Hungarian-umlaut-accent_0029
+  entry: `H (Hungarian umlaut accent)'
+  texi_entry: @code{H @r{(Hungarian umlaut accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Info-validate
+  origin_href: texinfo#index-Info_002dvalidate
+  entry: `Info-validate'
+  texi_entry: @code{Info-validate}
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: L
+  origin_href: texinfo#index-L
+  entry: `L'
+  texi_entry: @code{L}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: O
+  origin_href: texinfo#index-O
+  entry: `O'
+  texi_entry: @code{O}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: OE
+  origin_href: texinfo#index-OE-1
+  entry: `OE'
+  texi_entry: @code{OE}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: \ (literal \ in `math')
+  origin_href: texinfo#index-_005c-_0028literal-_005c-in-_0040math_0029
+  entry: `\ (literal \ in `@math')'
+  texi_entry: @code{\ @r{(literal \ in @code{@@math})}}
+  element_href: texinfo#math
+  element_text: math
+key: \emergencystretch
+  origin_href: texinfo#index-_005cemergencystretch
+  entry: `\emergencystretch'
+  texi_entry: @code{\emergencystretch}
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: \input (raw  startup)
+  origin_href: texinfo#index-_005cinput-_0028raw-TeX-startup_0029
+  entry: `\input (raw TeX startup)'
+  texi_entry: @code{\input @r{(raw @TeX{} startup)}}
+  element_href: texinfo#Minimum
+  element_text: Minimum
+key: \mag (raw  magnification)
+  origin_href: texinfo#index-_005cmag-_0028raw-TeX-magnification_0029
+  entry: `\mag (raw TeX magnification)'
+  texi_entry: @code{\mag @r{(raw @TeX{} magnification)}}
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: ^ (circumflex accent)
+  origin_href: texinfo#index-_005e-_0028circumflex-accent_0029
+  entry: `^ (circumflex accent)'
+  texi_entry: @code{^ @r{(circumflex accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ` (grave accent)
+  origin_href: texinfo#index-_0060-_0028grave-accent_0029
+  entry: `` (grave accent)'
+  texi_entry: @code{` @r{(grave accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: aa
+  origin_href: texinfo#index-aa
+  entry: `aa'
+  texi_entry: @code{aa}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: acronym
+  origin_href: texinfo#index-acronym
+  entry: `acronym'
+  texi_entry: @code{acronym}
+  element_href: texinfo#acronym
+  element_text: acronym
+key: ae
+  origin_href: texinfo#index-ae
+  entry: `ae'
+  texi_entry: @code{ae}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: afourlatex
+  origin_href: texinfo#index-afourlatex
+  entry: `afourlatex'
+  texi_entry: @code{afourlatex}
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: afourpaper
+  origin_href: texinfo#index-afourpaper
+  entry: `afourpaper'
+  texi_entry: @code{afourpaper}
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: afourwide
+  origin_href: texinfo#index-afourwide
+  entry: `afourwide'
+  texi_entry: @code{afourwide}
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: alias
+  origin_href: texinfo#index-alias
+  entry: `alias'
+  texi_entry: @code{alias}
+  element_href: texinfo#alias
+  element_text: alias
+key: anchor
+  origin_href: texinfo#index-anchor
+  entry: `anchor'
+  texi_entry: @code{anchor}
+  element_href: texinfo#anchor
+  element_text: anchor
+key: appendix
+  origin_href: texinfo#index-appendix
+  entry: `appendix'
+  texi_entry: @code{appendix}
+  element_href: texinfo#unnumbered-_0026-appendix
+  element_text: unnumbered & appendix
+key: appendixsec
+  origin_href: texinfo#index-appendixsec
+  entry: `appendixsec'
+  texi_entry: @code{appendixsec}
+  element_href: texinfo#unnumberedsec-appendixsec-heading
+  element_text: unnumberedsec appendixsec heading
+key: appendixsection
+  origin_href: texinfo#index-appendixsection
+  entry: `appendixsection'
+  texi_entry: @code{appendixsection}
+  element_href: texinfo#unnumberedsec-appendixsec-heading
+  element_text: unnumberedsec appendixsec heading
+key: appendixsubsec
+  origin_href: texinfo#index-appendixsubsec
+  entry: `appendixsubsec'
+  texi_entry: @code{appendixsubsec}
+  element_href: texinfo#unnumberedsubsec-appendixsubsec-subheading
+  element_text: unnumberedsubsec appendixsubsec subheading
+key: appendixsubsubsec
+  origin_href: texinfo#index-appendixsubsubsec
+  entry: `appendixsubsubsec'
+  texi_entry: @code{appendixsubsubsec}
+  element_href: texinfo#subsubsection
+  element_text: subsubsection
+key: apply
+  origin_href: texinfo#index-apply
+  entry: `apply'
+  texi_entry: @code{apply}
+  element_href: texinfo#Sample-Function-Definition
+  element_text: Sample Function Definition
+key: asis
+  origin_href: texinfo#index-asis
+  entry: `asis'
+  texi_entry: @code{asis}
+  element_href: texinfo#Using-the-_0040table-Command
+  element_text: Using the `@table' Command
+key: author
+  origin_href: texinfo#index-author
+  entry: `author'
+  texi_entry: @code{author}
+  element_href: texinfo#title-subtitle-author
+  element_text: title subtitle author
+key: b (bold font)
+  origin_href: texinfo#index-b-_0028bold-font_0029
+  entry: `b (bold font)'
+  texi_entry: @code{b @r{(bold font)}}
+  element_href: texinfo#Fonts
+  element_text: Fonts
+key: buffer-end
+  origin_href: texinfo#index-buffer_002dend
+  entry: `buffer-end'
+  texi_entry: @code{buffer-end}
+  element_href: texinfo#Def-Cmd-Template
+  element_text: Def Cmd Template
+key: bullet
+  origin_href: texinfo#index-bullet
+  entry: `bullet'
+  texi_entry: @code{bullet}
+  element_href: texinfo#bullet
+  element_text: bullet
+key: bye
+  origin_href: texinfo#index-bye
+  entry: `bye'
+  texi_entry: @code{bye}
+  element_href: texinfo#Ending-a-File
+  element_text: Ending a File
+key: bye 
+  origin_href: texinfo#index-bye-1
+  entry: `bye'
+  texi_entry: @code{bye}
+  element_href: texinfo#File-End
+  element_text: File End
+key: c (comment)
+  origin_href: texinfo#index-c-_0028comment_0029
+  entry: `c (comment)'
+  texi_entry: @code{c @r{(comment)}}
+  element_href: texinfo#Comments
+  element_text: Comments
+key: cartouche
+  origin_href: texinfo#index-cartouche
+  entry: `cartouche'
+  texi_entry: @code{cartouche}
+  element_href: texinfo#cartouche
+  element_text: cartouche
+key: center
+  origin_href: texinfo#index-center
+  entry: `center'
+  texi_entry: @code{center}
+  element_href: texinfo#titlefont-center-sp
+  element_text: titlefont center sp
+key: centerchap
+  origin_href: texinfo#index-centerchap
+  entry: `centerchap'
+  texi_entry: @code{centerchap}
+  element_href: texinfo#chapter
+  element_text: chapter
+key: chapheading
+  origin_href: texinfo#index-chapheading
+  entry: `chapheading'
+  texi_entry: @code{chapheading}
+  element_href: texinfo#majorheading-_0026-chapheading
+  element_text: majorheading & chapheading
+key: chapter
+  origin_href: texinfo#index-chapter
+  entry: `chapter'
+  texi_entry: @code{chapter}
+  element_href: texinfo#chapter
+  element_text: chapter
+key: cindex
+  origin_href: texinfo#index-cindex
+  entry: `cindex'
+  texi_entry: @code{cindex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: cite
+  origin_href: texinfo#index-cite
+  entry: `cite'
+  texi_entry: @code{cite}
+  element_href: texinfo#cite
+  element_text: cite
+key: code
+  origin_href: texinfo#index-code
+  entry: `code'
+  texi_entry: @code{code}
+  element_href: texinfo#code
+  element_text: code
+key: columnfractions
+  origin_href: texinfo#index-columnfractions
+  entry: `columnfractions'
+  texi_entry: @code{columnfractions}
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: command
+  origin_href: texinfo#index-command
+  entry: `command'
+  texi_entry: @code{command}
+  element_href: texinfo#command
+  element_text: command
+key: comment
+  origin_href: texinfo#index-comment
+  entry: `comment'
+  texi_entry: @code{comment}
+  element_href: texinfo#Comments
+  element_text: Comments
+key: contents
+  origin_href: texinfo#index-contents
+  entry: `contents'
+  texi_entry: @code{contents}
+  element_href: texinfo#Contents
+  element_text: Contents
+key: copying
+  origin_href: texinfo#index-copying
+  entry: `copying'
+  texi_entry: @code{copying}
+  element_href: texinfo#copying
+  element_text: copying
+key: copyright
+  origin_href: texinfo#index-copyright
+  entry: `copyright'
+  texi_entry: @code{copyright}
+  element_href: texinfo#copying
+  element_text: copying
+key: copyright 
+  origin_href: texinfo#index-copyright-1
+  entry: `copyright'
+  texi_entry: @code{copyright}
+  element_href: texinfo#copyright-symbol
+  element_text: copyright symbol
+key: cropmarks
+  origin_href: texinfo#index-cropmarks
+  entry: `cropmarks'
+  texi_entry: @code{cropmarks}
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: defcodeindex
+  origin_href: texinfo#index-defcodeindex
+  entry: `defcodeindex'
+  texi_entry: @code{defcodeindex}
+  element_href: texinfo#New-Indices
+  element_text: New Indices
+key: defcv
+  origin_href: texinfo#index-defcv
+  entry: `defcv'
+  texi_entry: @code{defcv}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: deffn
+  origin_href: texinfo#index-deffn
+  entry: `deffn'
+  texi_entry: @code{deffn}
+  element_href: texinfo#Functions-Commands
+  element_text: Functions Commands
+key: deffnx
+  origin_href: texinfo#index-deffnx
+  entry: `deffnx'
+  texi_entry: @code{deffnx}
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: defindex
+  origin_href: texinfo#index-defindex
+  entry: `defindex'
+  texi_entry: @code{defindex}
+  element_href: texinfo#New-Indices
+  element_text: New Indices
+key: definfoenclose
+  origin_href: texinfo#index-definfoenclose
+  entry: `definfoenclose'
+  texi_entry: @code{definfoenclose}
+  element_href: texinfo#definfoenclose
+  element_text: definfoenclose
+key: defivar
+  origin_href: texinfo#index-defivar
+  entry: `defivar'
+  texi_entry: @code{defivar}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: defmac
+  origin_href: texinfo#index-defmac
+  entry: `defmac'
+  texi_entry: @code{defmac}
+  element_href: texinfo#Functions-Commands
+  element_text: Functions Commands
+key: defmethod
+  origin_href: texinfo#index-defmethod
+  entry: `defmethod'
+  texi_entry: @code{defmethod}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: defmethod 
+  origin_href: texinfo#index-defmethod-1
+  entry: `defmethod'
+  texi_entry: @code{defmethod}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: defop
+  origin_href: texinfo#index-defop
+  entry: `defop'
+  texi_entry: @code{defop}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: defopt
+  origin_href: texinfo#index-defopt
+  entry: `defopt'
+  texi_entry: @code{defopt}
+  element_href: texinfo#Variables-Commands
+  element_text: Variables Commands
+key: defspec
+  origin_href: texinfo#index-defspec
+  entry: `defspec'
+  texi_entry: @code{defspec}
+  element_href: texinfo#Functions-Commands
+  element_text: Functions Commands
+key: deftp
+  origin_href: texinfo#index-deftp
+  entry: `deftp'
+  texi_entry: @code{deftp}
+  element_href: texinfo#Data-Types
+  element_text: Data Types
+key: deftypefn
+  origin_href: texinfo#index-deftypefn
+  entry: `deftypefn'
+  texi_entry: @code{deftypefn}
+  element_href: texinfo#Typed-Functions
+  element_text: Typed Functions
+key: deftypefun
+  origin_href: texinfo#index-deftypefun
+  entry: `deftypefun'
+  texi_entry: @code{deftypefun}
+  element_href: texinfo#Typed-Functions
+  element_text: Typed Functions
+key: deftypeivar
+  origin_href: texinfo#index-deftypeivar
+  entry: `deftypeivar'
+  texi_entry: @code{deftypeivar}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: deftypeop
+  origin_href: texinfo#index-deftypeop
+  entry: `deftypeop'
+  texi_entry: @code{deftypeop}
+  element_href: texinfo#Abstract-Objects
+  element_text: Abstract Objects
+key: deftypevar
+  origin_href: texinfo#index-deftypevar
+  entry: `deftypevar'
+  texi_entry: @code{deftypevar}
+  element_href: texinfo#Typed-Variables
+  element_text: Typed Variables
+key: deftypevr
+  origin_href: texinfo#index-deftypevr
+  entry: `deftypevr'
+  texi_entry: @code{deftypevr}
+  element_href: texinfo#Typed-Variables
+  element_text: Typed Variables
+key: defun
+  origin_href: texinfo#index-defun
+  entry: `defun'
+  texi_entry: @code{defun}
+  element_href: texinfo#Functions-Commands
+  element_text: Functions Commands
+key: defvar
+  origin_href: texinfo#index-defvar
+  entry: `defvar'
+  texi_entry: @code{defvar}
+  element_href: texinfo#Variables-Commands
+  element_text: Variables Commands
+key: defvr
+  origin_href: texinfo#index-defvr
+  entry: `defvr'
+  texi_entry: @code{defvr}
+  element_href: texinfo#Variables-Commands
+  element_text: Variables Commands
+key: dfn
+  origin_href: texinfo#index-dfn
+  entry: `dfn'
+  texi_entry: @code{dfn}
+  element_href: texinfo#dfn
+  element_text: dfn
+key: dircategory
+  origin_href: texinfo#index-dircategory
+  entry: `dircategory'
+  texi_entry: @code{dircategory}
+  element_href: texinfo#Installing-Dir-Entries
+  element_text: Installing Dir Entries
+key: direntry
+  origin_href: texinfo#index-direntry
+  entry: `direntry'
+  texi_entry: @code{direntry}
+  element_href: texinfo#Installing-Dir-Entries
+  element_text: Installing Dir Entries
+key: display
+  origin_href: texinfo#index-display
+  entry: `display'
+  texi_entry: @code{display}
+  element_href: texinfo#display
+  element_text: display
+key: dmn
+  origin_href: texinfo#index-dmn
+  entry: `dmn'
+  texi_entry: @code{dmn}
+  element_href: texinfo#dmn
+  element_text: dmn
+key: documentdescription
+  origin_href: texinfo#index-documentdescription
+  entry: `documentdescription'
+  texi_entry: @code{documentdescription}
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: documentencoding
+  origin_href: texinfo#index-documentencoding
+  entry: `documentencoding'
+  texi_entry: @code{documentencoding}
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: documentlanguage
+  origin_href: texinfo#index-documentlanguage
+  entry: `documentlanguage'
+  texi_entry: @code{documentlanguage}
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: dotaccent
+  origin_href: texinfo#index-dotaccent
+  entry: `dotaccent'
+  texi_entry: @code{dotaccent}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: dotless
+  origin_href: texinfo#index-dotless
+  entry: `dotless'
+  texi_entry: @code{dotless}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: dots
+  origin_href: texinfo#index-dots
+  entry: `dots'
+  texi_entry: @code{dots}
+  element_href: texinfo#dots
+  element_text: dots
+key: email
+  origin_href: texinfo#index-email
+  entry: `email'
+  texi_entry: @code{email}
+  element_href: texinfo#email
+  element_text: email
+key: emph
+  origin_href: texinfo#index-emph
+  entry: `emph'
+  texi_entry: @code{emph}
+  element_href: texinfo#emph-_0026-strong
+  element_text: emph & strong
+key: end
+  origin_href: texinfo#index-end
+  entry: `end'
+  texi_entry: @code{end}
+  element_href: texinfo#Quotations-and-Examples
+  element_text: Quotations and Examples
+key: end 
+  origin_href: texinfo#index-end-1
+  entry: `end'
+  texi_entry: @code{end}
+  element_href: texinfo#Introducing-Lists-1
+  element_text: Introducing Lists
+key: end titlepage
+  origin_href: texinfo#index-end-titlepage
+  entry: `end titlepage'
+  texi_entry: @code{end titlepage}
+  element_href: texinfo#end-titlepage
+  element_text: end titlepage
+key: enddots
+  origin_href: texinfo#index-enddots
+  entry: `enddots'
+  texi_entry: @code{enddots}
+  element_href: texinfo#dots
+  element_text: dots
+key: enumerate
+  origin_href: texinfo#index-enumerate
+  entry: `enumerate'
+  texi_entry: @code{enumerate}
+  element_href: texinfo#enumerate
+  element_text: enumerate
+key: env
+  origin_href: texinfo#index-env
+  entry: `env'
+  texi_entry: @code{env}
+  element_href: texinfo#env
+  element_text: env
+key: equiv
+  origin_href: texinfo#index-equiv
+  entry: `equiv'
+  texi_entry: @code{equiv}
+  element_href: texinfo#Equivalence
+  element_text: Equivalence
+key: error
+  origin_href: texinfo#index-error
+  entry: `error'
+  texi_entry: @code{error}
+  element_href: texinfo#Error-Glyph
+  element_text: Error Glyph
+key: evenfooting
+  origin_href: texinfo#index-evenfooting
+  entry: `evenfooting'
+  texi_entry: @code{evenfooting}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: evenheading
+  origin_href: texinfo#index-evenheading
+  entry: `evenheading'
+  texi_entry: @code{evenheading}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: everyfooting
+  origin_href: texinfo#index-everyfooting
+  entry: `everyfooting'
+  texi_entry: @code{everyfooting}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: everyheading
+  origin_href: texinfo#index-everyheading
+  entry: `everyheading'
+  texi_entry: @code{everyheading}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: example
+  origin_href: texinfo#index-example
+  entry: `example'
+  texi_entry: @code{example}
+  element_href: texinfo#example
+  element_text: example
+key: exampleindent
+  origin_href: texinfo#index-exampleindent
+  entry: `exampleindent'
+  texi_entry: @code{exampleindent}
+  element_href: texinfo#exampleindent
+  element_text: exampleindent
+key: exclamdown
+  origin_href: texinfo#index-exclamdown
+  entry: `exclamdown'
+  texi_entry: @code{exclamdown}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: exdent
+  origin_href: texinfo#index-exdent
+  entry: `exdent'
+  texi_entry: @code{exdent}
+  element_href: texinfo#exdent
+  element_text: exdent
+key: expansion
+  origin_href: texinfo#index-expansion
+  entry: `expansion'
+  texi_entry: @code{expansion}
+  element_href: texinfo#expansion
+  element_text: expansion
+key: file
+  origin_href: texinfo#index-file
+  entry: `file'
+  texi_entry: @code{file}
+  element_href: texinfo#file
+  element_text: file
+key: filll  dimension
+  origin_href: texinfo#index-filll-TeX-dimension
+  entry: `filll TeX dimension'
+  texi_entry: @code{filll @r{@TeX{} dimension}}
+  element_href: texinfo#Copyright
+  element_text: Copyright
+key: finalout
+  origin_href: texinfo#index-finalout
+  entry: `finalout'
+  texi_entry: @code{finalout}
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: findex
+  origin_href: texinfo#index-findex
+  entry: `findex'
+  texi_entry: @code{findex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: flushleft
+  origin_href: texinfo#index-flushleft
+  entry: `flushleft'
+  texi_entry: @code{flushleft}
+  element_href: texinfo#flushleft-_0026-flushright
+  element_text: flushleft & flushright
+key: flushright
+  origin_href: texinfo#index-flushright
+  entry: `flushright'
+  texi_entry: @code{flushright}
+  element_href: texinfo#flushleft-_0026-flushright
+  element_text: flushleft & flushright
+key: foobar
+  origin_href: texinfo#index-foobar
+  entry: `foobar'
+  texi_entry: @code{foobar}
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: footnote
+  origin_href: texinfo#index-footnote
+  entry: `footnote'
+  texi_entry: @code{footnote}
+  element_href: texinfo#Footnotes
+  element_text: Footnotes
+key: footnotestyle
+  origin_href: texinfo#index-footnotestyle
+  entry: `footnotestyle'
+  texi_entry: @code{footnotestyle}
+  element_href: texinfo#Footnote-Styles
+  element_text: Footnote Styles
+key: format
+  origin_href: texinfo#index-format
+  entry: `format'
+  texi_entry: @code{format}
+  element_href: texinfo#format
+  element_text: format
+key: forward-word
+  origin_href: texinfo#index-forward_002dword
+  entry: `forward-word'
+  texi_entry: @code{forward-word}
+  element_href: texinfo#Def-Cmd-Template
+  element_text: Def Cmd Template
+key: ftable
+  origin_href: texinfo#index-ftable
+  entry: `ftable'
+  texi_entry: @code{ftable}
+  element_href: texinfo#ftable-vtable
+  element_text: ftable vtable
+key: group
+  origin_href: texinfo#index-group
+  entry: `group'
+  texi_entry: @code{group}
+  element_href: texinfo#group
+  element_text: group
+key: hbox
+  origin_href: texinfo#index-hbox
+  entry: `hbox'
+  texi_entry: @code{hbox}
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: heading
+  origin_href: texinfo#index-heading
+  entry: `heading'
+  texi_entry: @code{heading}
+  element_href: texinfo#unnumberedsec-appendixsec-heading
+  element_text: unnumberedsec appendixsec heading
+key: headings
+  origin_href: texinfo#index-headings
+  entry: `headings'
+  texi_entry: @code{headings}
+  element_href: texinfo#headings-on-off
+  element_text: headings on off
+key: headword
+  origin_href: texinfo#index-headword
+  entry: `headword'
+  texi_entry: @code{headword}
+  element_href: texinfo#definfoenclose
+  element_text: definfoenclose
+key: html
+  origin_href: texinfo#index-html
+  entry: `html'
+  texi_entry: @code{html}
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: hyphenation
+  origin_href: texinfo#index-hyphenation
+  entry: `hyphenation'
+  texi_entry: @code{hyphenation}
+  element_href: texinfo#g_t_002d-and-hyphenation
+  element_text: - and hyphenation
+key: i (italic font)
+  origin_href: texinfo#index-i-_0028italic-font_0029
+  entry: `i (italic font)'
+  texi_entry: @code{i @r{(italic font)}}
+  element_href: texinfo#Fonts
+  element_text: Fonts
+key: ifclear
+  origin_href: texinfo#index-ifclear
+  entry: `ifclear'
+  texi_entry: @code{ifclear}
+  element_href: texinfo#ifset-ifclear
+  element_text: ifset ifclear
+key: ifhtml
+  origin_href: texinfo#index-ifhtml
+  entry: `ifhtml'
+  texi_entry: @code{ifhtml}
+  element_href: texinfo#Conditional-Commands
+  element_text: Conditional Commands
+key: ifhtml 
+  origin_href: texinfo#index-ifhtml-1
+  entry: `ifhtml'
+  texi_entry: @code{ifhtml}
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: ifinfo
+  origin_href: texinfo#index-ifinfo
+  entry: `ifinfo'
+  texi_entry: @code{ifinfo}
+  element_href: texinfo#Conditional-Commands
+  element_text: Conditional Commands
+key: ifnothtml
+  origin_href: texinfo#index-ifnothtml
+  entry: `ifnothtml'
+  texi_entry: @code{ifnothtml}
+  element_href: texinfo#Conditional-Not-Commands
+  element_text: Conditional Not Commands
+key: ifnotinfo
+  origin_href: texinfo#index-ifnotinfo
+  entry: `ifnotinfo'
+  texi_entry: @code{ifnotinfo}
+  element_href: texinfo#Conditional-Not-Commands
+  element_text: Conditional Not Commands
+key: ifnotplaintext
+  origin_href: texinfo#index-ifnotplaintext
+  entry: `ifnotplaintext'
+  texi_entry: @code{ifnotplaintext}
+  element_href: texinfo#Conditional-Not-Commands
+  element_text: Conditional Not Commands
+key: ifnottex
+  origin_href: texinfo#index-ifnottex
+  entry: `ifnottex'
+  texi_entry: @code{ifnottex}
+  element_href: texinfo#Conditional-Not-Commands
+  element_text: Conditional Not Commands
+key: ifplaintext
+  origin_href: texinfo#index-ifplaintext
+  entry: `ifplaintext'
+  texi_entry: @code{ifplaintext}
+  element_href: texinfo#Conditional-Commands
+  element_text: Conditional Commands
+key: ifset
+  origin_href: texinfo#index-ifset
+  entry: `ifset'
+  texi_entry: @code{ifset}
+  element_href: texinfo#ifset-ifclear
+  element_text: ifset ifclear
+key: iftex
+  origin_href: texinfo#index-iftex
+  entry: `iftex'
+  texi_entry: @code{iftex}
+  element_href: texinfo#Conditional-Commands
+  element_text: Conditional Commands
+key: ignore
+  origin_href: texinfo#index-ignore
+  entry: `ignore'
+  texi_entry: @code{ignore}
+  element_href: texinfo#Comments
+  element_text: Comments
+key: image
+  origin_href: texinfo#index-image
+  entry: `image'
+  texi_entry: @code{image}
+  element_href: texinfo#Images
+  element_text: Images
+key: include
+  origin_href: texinfo#index-include
+  entry: `include'
+  texi_entry: @code{include}
+  element_href: texinfo#Using-Include-Files
+  element_text: Using Include Files
+key: inforef
+  origin_href: texinfo#index-inforef
+  entry: `inforef'
+  texi_entry: @code{inforef}
+  element_href: texinfo#inforef
+  element_text: inforef
+key: insertcopying
+  origin_href: texinfo#index-insertcopying
+  entry: `insertcopying'
+  texi_entry: @code{insertcopying}
+  element_href: texinfo#insertcopying
+  element_text: insertcopying
+key: isearch-backward
+  origin_href: texinfo#index-isearch_002dbackward
+  entry: `isearch-backward'
+  texi_entry: @code{isearch-backward}
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: isearch-forward
+  origin_href: texinfo#index-isearch_002dforward
+  entry: `isearch-forward'
+  texi_entry: @code{isearch-forward}
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: item
+  origin_href: texinfo#index-item
+  entry: `item'
+  texi_entry: @code{item}
+  element_href: texinfo#itemize
+  element_text: itemize
+key: item 
+  origin_href: texinfo#index-item-1
+  entry: `item'
+  texi_entry: @code{item}
+  element_href: texinfo#Using-the-_0040table-Command
+  element_text: Using the `@table' Command
+key: item  
+  origin_href: texinfo#index-item-2
+  entry: `item'
+  texi_entry: @code{item}
+  element_href: texinfo#Multitable-Rows
+  element_text: Multitable Rows
+key: itemize
+  origin_href: texinfo#index-itemize
+  entry: `itemize'
+  texi_entry: @code{itemize}
+  element_href: texinfo#itemize
+  element_text: itemize
+key: itemx
+  origin_href: texinfo#index-itemx
+  entry: `itemx'
+  texi_entry: @code{itemx}
+  element_href: texinfo#itemx
+  element_text: itemx
+key: kbd
+  origin_href: texinfo#index-kbd
+  entry: `kbd'
+  texi_entry: @code{kbd}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: kbdinputstyle
+  origin_href: texinfo#index-kbdinputstyle
+  entry: `kbdinputstyle'
+  texi_entry: @code{kbdinputstyle}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: key
+  origin_href: texinfo#index-key
+  entry: `key'
+  texi_entry: @code{key}
+  element_href: texinfo#key
+  element_text: key
+key: kindex
+  origin_href: texinfo#index-kindex
+  entry: `kindex'
+  texi_entry: @code{kindex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: l
+  origin_href: texinfo#index-l
+  entry: `l'
+  texi_entry: @code{l}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: lisp
+  origin_href: texinfo#index-lisp
+  entry: `lisp'
+  texi_entry: @code{lisp}
+  element_href: texinfo#lisp
+  element_text: lisp
+key: lowersections
+  origin_href: texinfo#index-lowersections
+  entry: `lowersections'
+  texi_entry: @code{lowersections}
+  element_href: texinfo#Raise_002flower-sections
+  element_text: Raise/lower sections
+key: macro
+  origin_href: texinfo#index-macro
+  entry: `macro'
+  texi_entry: @code{macro}
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: majorheading
+  origin_href: texinfo#index-majorheading
+  entry: `majorheading'
+  texi_entry: @code{majorheading}
+  element_href: texinfo#majorheading-_0026-chapheading
+  element_text: majorheading & chapheading
+key: makeinfo-buffer
+  origin_href: texinfo#index-makeinfo_002dbuffer
+  entry: `makeinfo-buffer'
+  texi_entry: @code{makeinfo-buffer}
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: makeinfo-kill-job
+  origin_href: texinfo#index-makeinfo_002dkill_002djob
+  entry: `makeinfo-kill-job'
+  texi_entry: @code{makeinfo-kill-job}
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: makeinfo-recenter-output-buffer
+  origin_href: texinfo#index-makeinfo_002drecenter_002doutput_002dbuffer
+  entry: `makeinfo-recenter-output-buffer'
+  texi_entry: @code{makeinfo-recenter-output-buffer}
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: makeinfo-region
+  origin_href: texinfo#index-makeinfo_002dregion
+  entry: `makeinfo-region'
+  texi_entry: @code{makeinfo-region}
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: math
+  origin_href: texinfo#index-math
+  entry: `math'
+  texi_entry: @code{math}
+  element_href: texinfo#math
+  element_text: math
+key: menu
+  origin_href: texinfo#index-menu
+  entry: `menu'
+  texi_entry: @code{menu}
+  element_href: texinfo#Menus
+  element_text: Menus
+key: minus
+  origin_href: texinfo#index-minus
+  entry: `minus'
+  texi_entry: @code{minus}
+  element_href: texinfo#minus
+  element_text: minus
+key: multitable
+  origin_href: texinfo#index-multitable
+  entry: `multitable'
+  texi_entry: @code{multitable}
+  element_href: texinfo#Multi_002dcolumn-Tables
+  element_text: Multi-column Tables
+key: need
+  origin_href: texinfo#index-need
+  entry: `need'
+  texi_entry: @code{need}
+  element_href: texinfo#need
+  element_text: need
+key: next-error
+  origin_href: texinfo#index-next_002derror
+  entry: `next-error'
+  texi_entry: @code{next-error}
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: node
+  origin_href: texinfo#index-node
+  entry: `node'
+  texi_entry: @code{node}
+  element_href: texinfo#node
+  element_text: node
+key: noindent
+  origin_href: texinfo#index-noindent
+  entry: `noindent'
+  texi_entry: @code{noindent}
+  element_href: texinfo#noindent
+  element_text: noindent
+key: novalidate
+  origin_href: texinfo#index-novalidate
+  entry: `novalidate'
+  texi_entry: @code{novalidate}
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: o
+  origin_href: texinfo#index-o
+  entry: `o'
+  texi_entry: @code{o}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: occur
+  origin_href: texinfo#index-occur
+  entry: `occur'
+  texi_entry: @code{occur}
+  element_href: texinfo#Using-occur
+  element_text: Using occur
+key: occur-mode-goto-occurrence
+  origin_href: texinfo#index-occur_002dmode_002dgoto_002doccurrence
+  entry: `occur-mode-goto-occurrence'
+  texi_entry: @code{occur-mode-goto-occurrence}
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: oddfooting
+  origin_href: texinfo#index-oddfooting
+  entry: `oddfooting'
+  texi_entry: @code{oddfooting}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: oddheading
+  origin_href: texinfo#index-oddheading
+  entry: `oddheading'
+  texi_entry: @code{oddheading}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: oe
+  origin_href: texinfo#index-oe-1
+  entry: `oe'
+  texi_entry: @code{oe}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: option
+  origin_href: texinfo#index-option
+  entry: `option'
+  texi_entry: @code{option}
+  element_href: texinfo#option
+  element_text: option
+key: page
+  origin_href: texinfo#index-page
+  entry: `page'
+  texi_entry: @code{page}
+  element_href: texinfo#page
+  element_text: page
+key: page, within `titlepage'
+  origin_href: texinfo#index-page_002c-within-_0040titlepage
+  entry: `page, within `@titlepage''
+  texi_entry: @code{page@r{, within @code{@@titlepage}}}
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: pagesizes
+  origin_href: texinfo#index-pagesizes
+  entry: `pagesizes'
+  texi_entry: @code{pagesizes}
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: paragraphindent
+  origin_href: texinfo#index-paragraphindent
+  entry: `paragraphindent'
+  texi_entry: @code{paragraphindent}
+  element_href: texinfo#paragraphindent
+  element_text: paragraphindent
+key: phoo
+  origin_href: texinfo#index-phoo
+  entry: `phoo'
+  texi_entry: @code{phoo}
+  element_href: texinfo#definfoenclose
+  element_text: definfoenclose
+key: pindex
+  origin_href: texinfo#index-pindex
+  entry: `pindex'
+  texi_entry: @code{pindex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: point
+  origin_href: texinfo#index-point
+  entry: `point'
+  texi_entry: @code{point}
+  element_href: texinfo#Point-Glyph
+  element_text: Point Glyph
+key: pounds
+  origin_href: texinfo#index-pounds
+  entry: `pounds'
+  texi_entry: @code{pounds}
+  element_href: texinfo#pounds
+  element_text: pounds
+key: print
+  origin_href: texinfo#index-print
+  entry: `print'
+  texi_entry: @code{print}
+  element_href: texinfo#Print-Glyph
+  element_text: Print Glyph
+key: printindex
+  origin_href: texinfo#index-printindex
+  entry: `printindex'
+  texi_entry: @code{printindex}
+  element_href: texinfo#Printing-Indices-_0026-Menus
+  element_text: Printing Indices & Menus
+key: pxref
+  origin_href: texinfo#index-pxref
+  entry: `pxref'
+  texi_entry: @code{pxref}
+  element_href: texinfo#pxref
+  element_text: pxref
+key: questiondown
+  origin_href: texinfo#index-questiondown
+  entry: `questiondown'
+  texi_entry: @code{questiondown}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: quotation
+  origin_href: texinfo#index-quotation
+  entry: `quotation'
+  texi_entry: @code{quotation}
+  element_href: texinfo#quotation
+  element_text: quotation
+key: r (Roman font)
+  origin_href: texinfo#index-r-_0028Roman-font_0029
+  entry: `r (Roman font)'
+  texi_entry: @code{r @r{(Roman font)}}
+  element_href: texinfo#Fonts
+  element_text: Fonts
+key: raisesections
+  origin_href: texinfo#index-raisesections
+  entry: `raisesections'
+  texi_entry: @code{raisesections}
+  element_href: texinfo#Raise_002flower-sections
+  element_text: Raise/lower sections
+key: ref
+  origin_href: texinfo#index-ref
+  entry: `ref'
+  texi_entry: @code{ref}
+  element_href: texinfo#ref
+  element_text: ref
+key: refill
+  origin_href: texinfo#index-refill
+  entry: `refill'
+  texi_entry: @code{refill}
+  element_href: texinfo#Refilling-Paragraphs
+  element_text: Refilling Paragraphs
+key: result
+  origin_href: texinfo#index-result
+  entry: `result'
+  texi_entry: @code{result}
+  element_href: texinfo#result
+  element_text: result
+key: ringaccent
+  origin_href: texinfo#index-ringaccent
+  entry: `ringaccent'
+  texi_entry: @code{ringaccent}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: rmacro
+  origin_href: texinfo#index-rmacro
+  entry: `rmacro'
+  texi_entry: @code{rmacro}
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: samp
+  origin_href: texinfo#index-samp
+  entry: `samp'
+  texi_entry: @code{samp}
+  element_href: texinfo#samp
+  element_text: samp
+key: sc (small caps font)
+  origin_href: texinfo#index-sc-_0028small-caps-font_0029
+  entry: `sc (small caps font)'
+  texi_entry: @code{sc @r{(small caps font)}}
+  element_href: texinfo#Smallcaps
+  element_text: Smallcaps
+key: section
+  origin_href: texinfo#index-section
+  entry: `section'
+  texi_entry: @code{section}
+  element_href: texinfo#section
+  element_text: section
+key: setchapternewpage
+  origin_href: texinfo#index-setchapternewpage
+  entry: `setchapternewpage'
+  texi_entry: @code{setchapternewpage}
+  element_href: texinfo#setchapternewpage
+  element_text: setchapternewpage
+key: setcontentsaftertitlepage
+  origin_href: texinfo#index-setcontentsaftertitlepage
+  entry: `setcontentsaftertitlepage'
+  texi_entry: @code{setcontentsaftertitlepage}
+  element_href: texinfo#Contents
+  element_text: Contents
+key: setfilename
+  origin_href: texinfo#index-setfilename
+  entry: `setfilename'
+  texi_entry: @code{setfilename}
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: setshortcontentsaftertitlepage
+  origin_href: texinfo#index-setshortcontentsaftertitlepage
+  entry: `setshortcontentsaftertitlepage'
+  texi_entry: @code{setshortcontentsaftertitlepage}
+  element_href: texinfo#Contents
+  element_text: Contents
+key: settitle
+  origin_href: texinfo#index-settitle
+  entry: `settitle'
+  texi_entry: @code{settitle}
+  element_href: texinfo#settitle
+  element_text: settitle
+key: shortcontents
+  origin_href: texinfo#index-shortcontents
+  entry: `shortcontents'
+  texi_entry: @code{shortcontents}
+  element_href: texinfo#Contents
+  element_text: Contents
+key: shorttitlepage
+  origin_href: texinfo#index-shorttitlepage
+  entry: `shorttitlepage'
+  texi_entry: @code{shorttitlepage}
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: smallbook
+  origin_href: texinfo#index-smallbook
+  entry: `smallbook'
+  texi_entry: @code{smallbook}
+  element_href: texinfo#smallbook
+  element_text: smallbook
+key: smalldisplay
+  origin_href: texinfo#index-smalldisplay
+  entry: `smalldisplay'
+  texi_entry: @code{smalldisplay}
+  element_href: texinfo#small
+  element_text: small
+key: smalldisplay 
+  origin_href: texinfo#index-smalldisplay-1
+  entry: `smalldisplay'
+  texi_entry: @code{smalldisplay}
+  element_href: texinfo#display
+  element_text: display
+key: smallexample
+  origin_href: texinfo#index-smallexample
+  entry: `smallexample'
+  texi_entry: @code{smallexample}
+  element_href: texinfo#small
+  element_text: small
+key: smallformat
+  origin_href: texinfo#index-smallformat
+  entry: `smallformat'
+  texi_entry: @code{smallformat}
+  element_href: texinfo#small
+  element_text: small
+key: smallformat 
+  origin_href: texinfo#index-smallformat-1
+  entry: `smallformat'
+  texi_entry: @code{smallformat}
+  element_href: texinfo#format
+  element_text: format
+key: smalllisp
+  origin_href: texinfo#index-smalllisp
+  entry: `smalllisp'
+  texi_entry: @code{smalllisp}
+  element_href: texinfo#small
+  element_text: small
+key: sp (line spacing)
+  origin_href: texinfo#index-sp-_0028line-spacing_0029
+  entry: `sp (line spacing)'
+  texi_entry: @code{sp @r{(line spacing)}}
+  element_href: texinfo#sp
+  element_text: sp
+key: sp (titlepage line spacing)
+  origin_href: texinfo#index-sp-_0028titlepage-line-spacing_0029
+  entry: `sp (titlepage line spacing)'
+  texi_entry: @code{sp @r{(titlepage line spacing)}}
+  element_href: texinfo#titlefont-center-sp
+  element_text: titlefont center sp
+key: ss
+  origin_href: texinfo#index-ss
+  entry: `ss'
+  texi_entry: @code{ss}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: strong
+  origin_href: texinfo#index-strong
+  entry: `strong'
+  texi_entry: @code{strong}
+  element_href: texinfo#emph-_0026-strong
+  element_text: emph & strong
+key: subheading
+  origin_href: texinfo#index-subheading
+  entry: `subheading'
+  texi_entry: @code{subheading}
+  element_href: texinfo#unnumberedsubsec-appendixsubsec-subheading
+  element_text: unnumberedsubsec appendixsubsec subheading
+key: subsection
+  origin_href: texinfo#index-subsection
+  entry: `subsection'
+  texi_entry: @code{subsection}
+  element_href: texinfo#subsection
+  element_text: subsection
+key: subsubheading
+  origin_href: texinfo#index-subsubheading
+  entry: `subsubheading'
+  texi_entry: @code{subsubheading}
+  element_href: texinfo#subsubsection
+  element_text: subsubsection
+key: subsubsection
+  origin_href: texinfo#index-subsubsection
+  entry: `subsubsection'
+  texi_entry: @code{subsubsection}
+  element_href: texinfo#subsubsection
+  element_text: subsubsection
+key: subtitle
+  origin_href: texinfo#index-subtitle
+  entry: `subtitle'
+  texi_entry: @code{subtitle}
+  element_href: texinfo#title-subtitle-author
+  element_text: title subtitle author
+key: summarycontents
+  origin_href: texinfo#index-summarycontents
+  entry: `summarycontents'
+  texi_entry: @code{summarycontents}
+  element_href: texinfo#Contents
+  element_text: Contents
+key: syncodeindex
+  origin_href: texinfo#index-syncodeindex
+  entry: `syncodeindex'
+  texi_entry: @code{syncodeindex}
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: syncodeindex 
+  origin_href: texinfo#index-syncodeindex-1
+  entry: `syncodeindex'
+  texi_entry: @code{syncodeindex}
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: synindex
+  origin_href: texinfo#index-synindex
+  entry: `synindex'
+  texi_entry: @code{synindex}
+  element_href: texinfo#synindex
+  element_text: synindex
+key: t (typewriter font)
+  origin_href: texinfo#index-t-_0028typewriter-font_0029
+  entry: `t (typewriter font)'
+  texi_entry: @code{t @r{(typewriter font)}}
+  element_href: texinfo#Fonts
+  element_text: Fonts
+key: tab
+  origin_href: texinfo#index-tab
+  entry: `tab'
+  texi_entry: @code{tab}
+  element_href: texinfo#Multitable-Rows
+  element_text: Multitable Rows
+key: table
+  origin_href: texinfo#index-table
+  entry: `table'
+  texi_entry: @code{table}
+  element_href: texinfo#Two_002dcolumn-Tables
+  element_text: Two-column Tables
+key: tex
+  origin_href: texinfo#index-tex
+  entry: `tex'
+  texi_entry: @code{tex}
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: tex (command)
+  origin_href: texinfo#index-tex-_0028command_0029
+  entry: `tex (command)'
+  texi_entry: @code{tex (command)}
+  element_href: texinfo#tex
+  element_text: tex
+key: texinfo-all-menus-update
+  origin_href: texinfo#index-texinfo_002dall_002dmenus_002dupdate
+  entry: `texinfo-all-menus-update'
+  texi_entry: @code{texinfo-all-menus-update}
+  element_href: texinfo#The-Updating-Commands
+  element_text: The Updating Commands
+key: texinfo-every-node-update
+  origin_href: texinfo#index-texinfo_002devery_002dnode_002dupdate
+  entry: `texinfo-every-node-update'
+  texi_entry: @code{texinfo-every-node-update}
+  element_href: texinfo#The-Updating-Commands
+  element_text: The Updating Commands
+key: texinfo-format-buffer
+  origin_href: texinfo#index-texinfo_002dformat_002dbuffer
+  entry: `texinfo-format-buffer'
+  texi_entry: @code{texinfo-format-buffer}
+  element_href: texinfo#Info-Formatting
+  element_text: Info Formatting
+key: texinfo-format-buffer 
+  origin_href: texinfo#index-texinfo_002dformat_002dbuffer-1
+  entry: `texinfo-format-buffer'
+  texi_entry: @code{texinfo-format-buffer}
+  element_href: texinfo#texinfo_002dformat-commands
+  element_text: texinfo-format commands
+key: texinfo-format-buffer  
+  origin_href: texinfo#index-texinfo_002dformat_002dbuffer-2
+  entry: `texinfo-format-buffer'
+  texi_entry: @code{texinfo-format-buffer}
+  element_href: texinfo#texinfo_002dformat-commands
+  element_text: texinfo-format commands
+key: texinfo-format-region
+  origin_href: texinfo#index-texinfo_002dformat_002dregion
+  entry: `texinfo-format-region'
+  texi_entry: @code{texinfo-format-region}
+  element_href: texinfo#Info-Formatting
+  element_text: Info Formatting
+key: texinfo-format-region 
+  origin_href: texinfo#index-texinfo_002dformat_002dregion-1
+  entry: `texinfo-format-region'
+  texi_entry: @code{texinfo-format-region}
+  element_href: texinfo#texinfo_002dformat-commands
+  element_text: texinfo-format commands
+key: texinfo-format-region  
+  origin_href: texinfo#index-texinfo_002dformat_002dregion-2
+  entry: `texinfo-format-region'
+  texi_entry: @code{texinfo-format-region}
+  element_href: texinfo#texinfo_002dformat-commands
+  element_text: texinfo-format commands
+key: texinfo-indent-menu-description
+  origin_href: texinfo#index-texinfo_002dindent_002dmenu_002ddescription
+  entry: `texinfo-indent-menu-description'
+  texi_entry: @code{texinfo-indent-menu-description}
+  element_href: texinfo#Other-Updating-Commands
+  element_text: Other Updating Commands
+key: texinfo-insert-@code
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040code
+  entry: `texinfo-insert-@code'
+  texi_entry: @code{texinfo-insert-@@code}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@dfn
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040dfn
+  entry: `texinfo-insert-@dfn'
+  texi_entry: @code{texinfo-insert-@@dfn}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@end
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040end
+  entry: `texinfo-insert-@end'
+  texi_entry: @code{texinfo-insert-@@end}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@example
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040example
+  entry: `texinfo-insert-@example'
+  texi_entry: @code{texinfo-insert-@@example}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@item
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040item
+  entry: `texinfo-insert-@item'
+  texi_entry: @code{texinfo-insert-@@item}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@kbd
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040kbd
+  entry: `texinfo-insert-@kbd'
+  texi_entry: @code{texinfo-insert-@@kbd}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@node
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040node
+  entry: `texinfo-insert-@node'
+  texi_entry: @code{texinfo-insert-@@node}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@noindent
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040noindent
+  entry: `texinfo-insert-@noindent'
+  texi_entry: @code{texinfo-insert-@@noindent}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@samp
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040samp
+  entry: `texinfo-insert-@samp'
+  texi_entry: @code{texinfo-insert-@@samp}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@table
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040table
+  entry: `texinfo-insert-@table'
+  texi_entry: @code{texinfo-insert-@@table}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-@var
+  origin_href: texinfo#index-texinfo_002dinsert_002d_0040var
+  entry: `texinfo-insert-@var'
+  texi_entry: @code{texinfo-insert-@@var}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-braces
+  origin_href: texinfo#index-texinfo_002dinsert_002dbraces
+  entry: `texinfo-insert-braces'
+  texi_entry: @code{texinfo-insert-braces}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-insert-node-lines
+  origin_href: texinfo#index-texinfo_002dinsert_002dnode_002dlines
+  entry: `texinfo-insert-node-lines'
+  texi_entry: @code{texinfo-insert-node-lines}
+  element_href: texinfo#Other-Updating-Commands
+  element_text: Other Updating Commands
+key: texinfo-make-menu
+  origin_href: texinfo#index-texinfo_002dmake_002dmenu
+  entry: `texinfo-make-menu'
+  texi_entry: @code{texinfo-make-menu}
+  element_href: texinfo#The-Updating-Commands
+  element_text: The Updating Commands
+key: texinfo-master-menu
+  origin_href: texinfo#index-texinfo_002dmaster_002dmenu
+  entry: `texinfo-master-menu'
+  texi_entry: @code{texinfo-master-menu}
+  element_href: texinfo#The-Updating-Commands
+  element_text: The Updating Commands
+key: texinfo-multiple-files-update
+  origin_href: texinfo#index-texinfo_002dmultiple_002dfiles_002dupdate
+  entry: `texinfo-multiple-files-update'
+  texi_entry: @code{texinfo-multiple-files-update}
+  element_href: texinfo#texinfo_002dmultiple_002dfiles_002dupdate
+  element_text: texinfo-multiple-files-update
+key: texinfo-multiple-files-update (in brief)
+  origin_href: texinfo#index-texinfo_002dmultiple_002dfiles_002dupdate-_0028in-brief_0029
+  entry: `texinfo-multiple-files-update (in brief)'
+  texi_entry: @code{texinfo-multiple-files-update @r{(in brief)}}
+  element_href: texinfo#Other-Updating-Commands
+  element_text: Other Updating Commands
+key: texinfo-sequential-node-update
+  origin_href: texinfo#index-texinfo_002dsequential_002dnode_002dupdate
+  entry: `texinfo-sequential-node-update'
+  texi_entry: @code{texinfo-sequential-node-update}
+  element_href: texinfo#Other-Updating-Commands
+  element_text: Other Updating Commands
+key: texinfo-show-structure
+  origin_href: texinfo#index-texinfo_002dshow_002dstructure
+  entry: `texinfo-show-structure'
+  texi_entry: @code{texinfo-show-structure}
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: texinfo-show-structure 
+  origin_href: texinfo#index-texinfo_002dshow_002dstructure-1
+  entry: `texinfo-show-structure'
+  texi_entry: @code{texinfo-show-structure}
+  element_href: texinfo#Using-texinfo_002dshow_002dstructure
+  element_text: Using texinfo-show-structure
+key: texinfo-start-menu-description
+  origin_href: texinfo#index-texinfo_002dstart_002dmenu_002ddescription
+  entry: `texinfo-start-menu-description'
+  texi_entry: @code{texinfo-start-menu-description}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: texinfo-tex-buffer
+  origin_href: texinfo#index-texinfo_002dtex_002dbuffer
+  entry: `texinfo-tex-buffer'
+  texi_entry: @code{texinfo-tex-buffer}
+  element_href: texinfo#Printing
+  element_text: Printing
+key: texinfo-tex-print
+  origin_href: texinfo#index-texinfo_002dtex_002dprint
+  entry: `texinfo-tex-print'
+  texi_entry: @code{texinfo-tex-print}
+  element_href: texinfo#Printing
+  element_text: Printing
+key: texinfo-tex-region
+  origin_href: texinfo#index-texinfo_002dtex_002dregion
+  entry: `texinfo-tex-region'
+  texi_entry: @code{texinfo-tex-region}
+  element_href: texinfo#Printing
+  element_text: Printing
+key: texinfo-update-node
+  origin_href: texinfo#index-texinfo_002dupdate_002dnode
+  entry: `texinfo-update-node'
+  texi_entry: @code{texinfo-update-node}
+  element_href: texinfo#The-Updating-Commands
+  element_text: The Updating Commands
+key: thischapter
+  origin_href: texinfo#index-thischapter
+  entry: `thischapter'
+  texi_entry: @code{thischapter}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: thischaptername
+  origin_href: texinfo#index-thischaptername
+  entry: `thischaptername'
+  texi_entry: @code{thischaptername}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: thisfile
+  origin_href: texinfo#index-thisfile
+  entry: `thisfile'
+  texi_entry: @code{thisfile}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: thispage
+  origin_href: texinfo#index-thispage
+  entry: `thispage'
+  texi_entry: @code{thispage}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: thistitle
+  origin_href: texinfo#index-thistitle
+  entry: `thistitle'
+  texi_entry: @code{thistitle}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: tieaccent
+  origin_href: texinfo#index-tieaccent
+  entry: `tieaccent'
+  texi_entry: @code{tieaccent}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: tindex
+  origin_href: texinfo#index-tindex
+  entry: `tindex'
+  texi_entry: @code{tindex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: title
+  origin_href: texinfo#index-title
+  entry: `title'
+  texi_entry: @code{title}
+  element_href: texinfo#title-subtitle-author
+  element_text: title subtitle author
+key: titlefont
+  origin_href: texinfo#index-titlefont
+  entry: `titlefont'
+  texi_entry: @code{titlefont}
+  element_href: texinfo#titlefont-center-sp
+  element_text: titlefont center sp
+key: titlepage
+  origin_href: texinfo#index-titlepage
+  entry: `titlepage'
+  texi_entry: @code{titlepage}
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: today
+  origin_href: texinfo#index-today
+  entry: `today'
+  texi_entry: @code{today}
+  element_href: texinfo#Custom-Headings
+  element_text: Custom Headings
+key: top
+  origin_href: texinfo#index-top
+  entry: `top'
+  texi_entry: @code{top}
+  element_href: texinfo#The-Top-Node
+  element_text: The Top Node
+key: top (-command)
+  origin_href: texinfo#index-top-_0028_0040_002dcommand_0029
+  entry: `top (@-command)'
+  texi_entry: @code{top @r{(@@-command)}}
+  element_href: texinfo#makeinfo-top-command
+  element_text: makeinfo top command
+key: u (breve accent)
+  origin_href: texinfo#index-u-_0028breve-accent_0029
+  entry: `u (breve accent)'
+  texi_entry: @code{u @r{(breve accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ubaraccent
+  origin_href: texinfo#index-ubaraccent
+  entry: `ubaraccent'
+  texi_entry: @code{ubaraccent}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: udotaccent
+  origin_href: texinfo#index-udotaccent
+  entry: `udotaccent'
+  texi_entry: @code{udotaccent}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: unmacro
+  origin_href: texinfo#index-unmacro
+  entry: `unmacro'
+  texi_entry: @code{unmacro}
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: unnumbered
+  origin_href: texinfo#index-unnumbered
+  entry: `unnumbered'
+  texi_entry: @code{unnumbered}
+  element_href: texinfo#unnumbered-_0026-appendix
+  element_text: unnumbered & appendix
+key: unnumberedsec
+  origin_href: texinfo#index-unnumberedsec
+  entry: `unnumberedsec'
+  texi_entry: @code{unnumberedsec}
+  element_href: texinfo#unnumberedsec-appendixsec-heading
+  element_text: unnumberedsec appendixsec heading
+key: unnumberedsubsec
+  origin_href: texinfo#index-unnumberedsubsec
+  entry: `unnumberedsubsec'
+  texi_entry: @code{unnumberedsubsec}
+  element_href: texinfo#unnumberedsubsec-appendixsubsec-subheading
+  element_text: unnumberedsubsec appendixsubsec subheading
+key: unnumberedsubsubsec
+  origin_href: texinfo#index-unnumberedsubsubsec
+  entry: `unnumberedsubsubsec'
+  texi_entry: @code{unnumberedsubsubsec}
+  element_href: texinfo#subsubsection
+  element_text: subsubsection
+key: up-list
+  origin_href: texinfo#index-up_002dlist
+  entry: `up-list'
+  texi_entry: @code{up-list}
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: uref
+  origin_href: texinfo#index-uref
+  entry: `uref'
+  texi_entry: @code{uref}
+  element_href: texinfo#uref
+  element_text: uref
+key: url
+  origin_href: texinfo#index-url
+  entry: `url'
+  texi_entry: @code{url}
+  element_href: texinfo#url
+  element_text: url
+key: v (check accent)
+  origin_href: texinfo#index-v-_0028check-accent_0029
+  entry: `v (check accent)'
+  texi_entry: @code{v @r{(check accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: value
+  origin_href: texinfo#index-value
+  entry: `value'
+  texi_entry: @code{value}
+  element_href: texinfo#set-value
+  element_text: set value
+key: var
+  origin_href: texinfo#index-var
+  entry: `var'
+  texi_entry: @code{var}
+  element_href: texinfo#var
+  element_text: var
+key: verb
+  origin_href: texinfo#index-verb
+  entry: `verb'
+  texi_entry: @code{verb}
+  element_href: texinfo#verb
+  element_text: verb
+key: verbatim
+  origin_href: texinfo#index-verbatim
+  entry: `verbatim'
+  texi_entry: @code{verbatim}
+  element_href: texinfo#verbatim
+  element_text: verbatim
+key: verbatiminclude
+  origin_href: texinfo#index-verbatiminclude
+  entry: `verbatiminclude'
+  texi_entry: @code{verbatiminclude}
+  element_href: texinfo#verbatiminclude
+  element_text: verbatiminclude
+key: vindex
+  origin_href: texinfo#index-vindex
+  entry: `vindex'
+  texi_entry: @code{vindex}
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: vskip  vertical skip
+  origin_href: texinfo#index-vskip-TeX-vertical-skip
+  entry: `vskip TeX vertical skip'
+  texi_entry: @code{vskip @r{@TeX{} vertical skip}}
+  element_href: texinfo#Copyright
+  element_text: Copyright
+key: vtable
+  origin_href: texinfo#index-vtable
+  entry: `vtable'
+  texi_entry: @code{vtable}
+  element_href: texinfo#ftable-vtable
+  element_text: ftable vtable
+key: w (prevent line break)
+  origin_href: texinfo#index-w-_0028prevent-line-break_0029
+  entry: `w (prevent line break)'
+  texi_entry: @code{w @r{(prevent line break)}}
+  element_href: texinfo#w
+  element_text: w
+key: xref
+  origin_href: texinfo#index-xref
+  entry: `xref'
+  texi_entry: @code{xref}
+  element_href: texinfo#xref
+  element_text: xref
+key: { (literal `')
+  origin_href: texinfo#index-_007b-_0028literal-_007b_0029
+  entry: `{ (literal `{')'
+  texi_entry: @code{@{ @r{(literal @samp{@{})}}
+  element_href: texinfo#Inserting-Braces
+  element_text: Inserting Braces
+key: } (literal `')
+  origin_href: texinfo#index-_007d-_0028literal-_007d_0029
+  entry: `} (literal `}')'
+  texi_entry: @code{@} @r{(literal @samp{@}})}}
+  element_href: texinfo#Inserting-Braces
+  element_text: Inserting Braces
+key: ~ (tilde accent)
+  origin_href: texinfo#index-_007e-_0028tilde-accent_0029
+  entry: `~ (tilde accent)'
+  texi_entry: @code{~ @r{(tilde accent)}}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents

@@ -1,0 +1,25 @@
+This is caption_not_closed.info, produced by makeinfo version 4.13 from
+caption_not_closed.texi.
+
+
+File: caption_not_closed.info,  Node: Top,  Up: (dir)
+
+Test caption not closed
+***********************
+
+No label but caption.
+
+Text: Not closed caption
+
+   The caption trigger a keep_texi, so everything until the end of the
+file is in the caption. Also the caption is formatted twice which leads
+to 2 error messages.
+
+@end float
+
+
+
+Tag Table:
+Node: Top98
+
+End Tag Table

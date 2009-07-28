@@ -1,0 +1,17 @@
+test index entries in @item @table
+**********************************
+
+index
+`opt'
+More text
+2 index
+`nopt'
+Even more
+
+
+* Index:
+* 2 index: test index entries in @item @table.
+* another index: test index entries in @item @table.
+* index: test index entries in @item @table.
+
+

@@ -251,6 +251,9 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * verify that code_style is used for code_style style @-commands 
   in remove_texi.
 
+* test for something along:
+@setfilename ../../info/xemacs.info
+
 * docbook: in function no style. 
   replaceable is for @var or function argument. Only characters.
 
@@ -448,6 +451,8 @@ overridden by a command line option.  The possible values are:
 * What are the encodings known by info/makeinfo? 
   unrecognized encoding name `ascii'.
 
+* invalid/node_in_copying there is no error message
+
 * makeinfo creates a Top node when there is a menu seen before any @node
   example in sectionning/one_section
 ../../one_section.texi:11: warning: @menu seen before first @node, creating `Top' node.
@@ -455,6 +460,18 @@ overridden by a command line option.  The possible values are:
 * info/long_uref_after_item.texi report from Kevin Ryde,
   it would be logical to treat the space after the itemize mark as 
   a tie instead of a breakpoint.
+
+* certainly not a big deal, but in invalid/verb_not_closed @verb content
+  is not output
+
+* certainly not a big deal, but in invalid/bad_tab_nesting, the @code quotes
+  are not surrounding the @tab, although there is no error message
+
+* Should there be an error message with node only in @detailmenu? Asked
+  on bug-texinfo. See info output of texi2html_manual.
+
+* @insertcopying in @copying doesn't lead to error message with 
+  INLINE_INSERTCOPYING. See invalid/recursive_copying
 
 * encodings/accentenc.texi.
 ../..//accent-text.txi:45: warning: invalid encoded character `oelig'.
@@ -479,6 +496,40 @@ overridden by a command line option.  The possible values are:
 
   ** Bad index name: bidule (l. 11)
   ../../index_no_node.texi:11: Unknown index `bidule' in @printindex.
+
+  *** '}' without opening '{' before:  (l. 8)
+  ../../brace_not_closed.texi:8: Unmatched }.
+
+  *** '{' without macro. Before: truc@} @anchor{truc}. (l. 10)
+  ../../brace_not_closed.texi:10: Misplaced {.
+
+  *** waiting for end of quotation, found @end cartouche (l. 12)
+  ../../bad_nesting.texi:13: `@end' expected `quotation', but saw `cartouche'.
+
+  *** closing `group' (l. 36)
+  ../../bad_nesting.texi:34: No matching `@end group'.
+
+  closing @-command code (l. 18)
+  ../../code_not_closed.texi:16: @code missing close brace.
+
+  ** closing @-command footnote (l. 17)
+  ../../footnote_not_closed.texi:30: No closing brace for footnote `'.
+
+  *** closing `quotation' (l. 24)
+  ../../footnote_not_closed.texi:54: No matching `@end quotation'.
+
+  ** 2 @titlepage not closed (l. 16)
+  ../../titlepage_not_closed.texi:17: Expected `
+@end titlepage'.
+  
+  ** Unknown float style Text (l. 19)
+  ../../caption_not_closed.texi:20: warning: Requested float type `Text' not previously used.
+
+  not done in texi2html:
+  ../../invalid_command_in_table.texi:8: table requires an argument: the formatter for @item.
+
+  ** Unknown command `@itemTop,,' (left as is) (l. 9)
+  ../../invalid_command_in_table.texi:9: Unknown command `itemTop,,'.
 
 * warning for @anchors and @float appearing before the first node, since
   they are not recorded as Ref:. (for example formatting/float_copying).

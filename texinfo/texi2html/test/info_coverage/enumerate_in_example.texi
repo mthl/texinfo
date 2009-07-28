@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename enumerate_in_example.info
+
+@node Top
+@top Element
+
+@example
+@enumerate
+@item first
+
+more.
+@end enumerate
+@end example
+
+@bye

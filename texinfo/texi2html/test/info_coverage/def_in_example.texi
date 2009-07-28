@@ -1,0 +1,22 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename def_in_example.info
+
+@node Top
+@top Element
+
+@example
+@deffn c--ategory1 d--effn_name1 a--rguments...
+d--effn1
+@end deffn
+
+@multitable {truc} {bidule}
+@item truc
+@end multitable
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+@end example
+
+@bye

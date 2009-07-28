@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.297 2009-07-25 12:35:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.298 2009-07-28 18:41:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7674,14 +7674,13 @@ sub pass_text($$)
 
             if (($tag eq 'node') or (defined($sec2level{$tag}) and ($tag !~ /heading/)))
             {
-                if (@stack or (defined($text) and $text ne ''))
-                {# in pass text node and section shouldn't appear in formats
+                # in pass text node and section shouldn't appear in formats
 			#print STDERR "close_stack before \@$tag\n";
 			#print STDERR "text!$text%" if (! @stack);
-                    close_stack(\$text, \@stack, \%state, $line_nr);
-                    push @{$Texi2HTML::THIS_SECTION}, $text;
-                    $text = '';
-                }
+                close_stack(\$text, \@stack, \%state, $line_nr);
+                push @{$Texi2HTML::THIS_SECTION}, $text if ($text ne '');
+                $text = '';
+
                 $state{'sec_num'}++ if ($sec2level{$tag} and ($tag ne 'top'));
                 my $new_element;
                 my $current_element;
@@ -7784,10 +7783,8 @@ sub pass_text($$)
             $text = '';
         }
     }
-    if (@stack)
-    {# close stack at the end of pass text
-        close_stack(\$text, \@stack, \%state, $line_nr);
-    }
+    # close stack at the end of pass text
+    close_stack(\$text, \@stack, \%state, $line_nr);
     if (defined($text))
     {
         push @{$Texi2HTML::THIS_SECTION}, $text;
@@ -8233,9 +8230,10 @@ sub echo_error($;$)
     die "Max error number exceeded\n" if ($error_nrs >= $Texi2HTML::Config::ERROR_LIMIT);
 }
 
-sub format_line_number($)
+sub format_line_number(;$)
 {
     my $line_number = shift;
+    $line_number = $Texi2HTML::THISDOC{'line_nr'} if (!defined($line_number));
     my $macro_text = '';
     #$line_number = undef;
     return '' unless (defined($line_number));
@@ -8284,7 +8282,7 @@ sub next_tag($)
 {
     my $line = shift;
     # macro_regexp
-    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])/o or $line =~ /^\s*\@([a-zA-Z][\w-]*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z][\w-]*)$/)
+    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])/o or $line =~ /^\s*\@([a-zA-Z][\w-]*)/)
     {
         return ($1);
     }
@@ -11152,7 +11150,7 @@ sub scan_texi($$$$;$)
             next;
         }
         # macro_regexp
-        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)//o)
         {# ARG_EXPANSION
             add_prev($text, $stack, $1) unless $state->{'ignored'};
             my $macro = $2;
@@ -11791,9 +11789,8 @@ sub scan_structure($$$$;$)
             return if (end_format_structure($end_tag, $text, $stack, $state, $line_nr, $cline));
             next;
         }
-        #elsif ($cline =~ s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -12564,7 +12561,6 @@ sub scan_line($$$$;$)
             next;
         }
 	# macro_regexp
-        #if (s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)\s//o or s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)$//o)
         if ($cline =~ s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)//o)
         {
             add_prev($text, $stack, do_text($1, $state));
@@ -12680,7 +12676,7 @@ sub scan_line($$$$;$)
         # This is a macro
 	#elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
         # macro_regexp
-        elsif ($cline =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $cline =~ s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
+        elsif ($cline =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)//o)
         {
             my $before_macro = $1;
             my $macro = $2;
@@ -13095,11 +13091,6 @@ sub scan_line($$$$;$)
                     next;
                 }
                 $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
-                if (defined($Texi2HTML::Config::tab_item_texi))
-                {
-                    my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
-                    $cline = $resline if (defined($resline));
-                }
                 if (!$format)
                 {
                     echo_warn ("\@$macro outside of table or list", $line_nr);
@@ -13111,6 +13102,11 @@ sub scan_line($$$$;$)
                     $format->{'cell'} = 1;
                     if ($format->{'max_columns'})
                     {
+                        if (defined($Texi2HTML::Config::tab_item_texi))
+                        {
+                            my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                            $cline = $resline if (defined($resline));
+                        }
                         begin_paragraph_after_command($state,$stack,$macro,$cline);
                     }
                     else
@@ -13128,11 +13124,6 @@ sub scan_line($$$$;$)
                 close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
 
                 my $format = add_cell ($text, $stack, $state);
-                if (defined($Texi2HTML::Config::tab_item_texi))
-                {
-                   my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
-                   $cline = $resline if (defined($resline));
-                }
                 if (!$format)
                 {
                     echo_warn ("\@$macro outside of multitable", $line_nr);
@@ -13147,6 +13138,14 @@ sub scan_line($$$$;$)
                     elsif ($format->{'cell'} > $format->{'max_columns'})
                     {
                        echo_warn ("too much \@$macro (multitable has only $format->{'max_columns'} column(s))", $line_nr);
+                    }
+                    else
+                    {
+                       if (defined($Texi2HTML::Config::tab_item_texi))
+                       {
+                          my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
+                          $cline = $resline if (defined($resline));
+                       }
                     }
                 }
                 begin_paragraph_after_command($state,$stack,$macro,$cline);
@@ -14066,17 +14065,17 @@ sub close_stack($$$$;$)
     my $format = shift;
     
     #print STDERR "sub_close_stack\n";
-    return unless (@$stack);
-    
-    my $stack_level = $#$stack + 1;
-    
-    #debugging
-    #my $print_format = 'NO FORMAT';
-    #$print_format = $format if ($format);
-    #print STDERR "Close_stack: format $print_format\n";
-    
-    while ($stack_level--)
+    if (@$stack)
     {
+      my $stack_level = $#$stack + 1;
+    
+      #debugging
+      #my $print_format = 'NO FORMAT';
+      #$print_format = $format if ($format);
+      #print STDERR "Close_stack ".format_line_number($line_nr).": format $print_format\n";
+    
+      while ($stack_level--)
+      {
         if ($stack->[$stack_level]->{'format'})
         {
             my $stack_format = $stack->[$stack_level]->{'format'};
@@ -14129,6 +14128,30 @@ sub close_stack($$$$;$)
 
             add_prev($text, $stack, $result) if (defined($result));
         }
+      }
+    }
+
+    # This tries to avoid cases where the command_stack is not empty 
+    # for a good reason, for example when doing a @def formatting the 
+    # outside command_stack is preserved
+    return if ($format or $state->{'multiple_pass'} or $state->{'no_paragraph'}); 
+
+    # go through the command_stack and warn for each opened style format
+    # and remove it. Those should be there because there is an opened style
+    # that was stopped by a paragraph
+    my @command_stack = @{$state->{'command_stack'}};
+    @{$state->{'command_stack'}} = ();
+    while (@command_stack)
+    {
+       my $latest_command = pop @command_stack;
+       if (defined($style_type{$latest_command}) and $style_type{$latest_command} ne 'special')
+       {
+          echo_error ("\@$latest_command missing close brace.", $line_nr);
+       }
+       else
+       {
+          unshift @{$state->{'command_stack'}}, $latest_command;
+       }
     }
 }
 
@@ -14194,7 +14217,7 @@ sub close_paragraph($$$$;$$)
     # In general close_paragraph is called because of a end of line, or 
     # a format is opened or closed, or there is a @tab or @item and other 
     # similar cases. In most cases there is a paragraph to be closed or 
-    # there are noo style opened since most @-commands cause paragraph 
+    # there are no style opened since most @-commands cause paragraph 
     # opening and those that don't should not lead to a style opening.
     #
     # But in term or in @index (and maybe @node, @section, @ref), if 
@@ -14202,7 +14225,6 @@ sub close_paragraph($$$$;$$)
     # 'no_paragraph'. But @-commands that trigger close_paragraph should not 
     # be called when in those no_paragraph settings.
 
-    #if (!$state->{'paragraph_context'} and !$state->{'preformatted'})
     if ($state->{'no_paragraph'})
     {
         echo_warn("$reason should not appear in $state->{'no_paragraph_stack'}->[-1]", $line_nr);
@@ -14425,7 +14447,6 @@ sub pop_state()
 }
 
 sub substitute_line($$;$$)
-#sub substitute_line($;$$)
 {
     my $line = shift;
     my $context_string = shift;
@@ -14514,15 +14535,18 @@ sub substitute_text($$@)
         $result .= $text;
         $text = '';
     }
-    # FIXME could we have the line number ?
+    if ($line_nrs and @{$line_nrs})
+    {
+        $line_nr = shift @{$line_nrs};
+    }
     # close stack in substitute_text
     if ($state->{'texi'})
     {
-        close_stack_texi(\$text, \@stack, $state, undef);
+        close_stack_texi(\$text, \@stack, $state, $line_nr);
     }
     elsif ($state->{'structure'})
     {
-        close_stack_structure(\$text, \@stack, $state, undef);
+        close_stack_structure(\$text, \@stack, $state, $line_nr);
     }
     else
     {
@@ -14913,6 +14937,8 @@ while(@input_files)
    {
       $input_file_name = $input_file_arg.$suffix if (-e $input_file_arg.$suffix);
    }
+   # in case no file was found, stil set the file name
+   $input_file_name = $input_file_arg if (!defined($input_file_name));
 
    $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
    $Texi2HTML::THISDOC{'input_file_number'} = $file_number;

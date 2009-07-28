@@ -1,0 +1,13 @@
+html_not_closed.texi(,2) 
+html_not_closed.texi(,3) @node Top
+html_not_closed.texi(,4) 
+html_not_closed.texi(,5) texte
+html_not_closed.texi(,6) 
+html_not_closed.texi(,7) @html
+html_not_closed.texi(,8) 
+html_not_closed.texi(,9) This is some html
+html_not_closed.texi(,10) <address> my address </address>
+html_not_closed.texi(,11) 
+html_not_closed.texi(,12) 
+html_not_closed.texi(,13) 
+no file(,) @end html

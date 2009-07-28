@@ -1,0 +1,391 @@
+5 Chapter Structuring
+*********************
+
+The chapter structuring commands divide a document into a hierarchy of
+chapters, sections, subsections, and subsubsections.  These commands
+generate large headings; they also provide information for the table
+of contents of a printed manual (see Generating a Table of Contents).
+
+The chapter structuring commands do not create an Info node structure,
+so normally you should put an @node command immediately before
+each chapter structuring command (see Nodes).  The only time you
+are likely to use the chapter structuring commands without using the
+node structuring commands is if you are writing a document that
+contains no cross references and will never be transformed into Info
+format.
+
+It is unlikely that you will ever write a Texinfo file that is
+intended only as an Info file and not as a printable document.  If you
+do, you might still use chapter structuring commands to create a
+heading at the top of each node--but you don't need to.
+
+* Tree Structuring::            A manual is like an upside down tree ...
+* Structuring Command Types::   How to divide a manual into parts.
+* makeinfo top::                The @top command, part of the `Top' node.
+* chapter::                     
+* unnumbered & appendix::       
+* majorheading & chapheading::  
+* section::                     
+* unnumberedsec appendixsec heading::  
+* subsection::                  
+* unnumberedsubsec appendixsubsec subheading::  
+* subsubsection::               Commands for the lowest level sections.
+* Raise/lower sections::        How to change commands' hierarchical level.
+
+
+5.1 Tree Structure of Sections
+==============================
+
+A Texinfo file is usually structured like a book with chapters,
+sections, subsections, and the like.  This structure can be visualized
+as a tree (or rather as an upside-down tree) with the root at the top
+and the levels corresponding to chapters, sections, subsection, and
+subsubsections.
+
+Here is a diagram that shows a Texinfo file with three chapters,
+each of which has two sections.
+
+                          Top
+                           |
+         -------------------------------------
+        |                  |                  |
+     Chapter 1          Chapter 2          Chapter 3
+        |                  |                  |
+     --------           --------           --------
+    |        |         |        |         |        |
+ Section  Section   Section  Section   Section  Section
+   1.1      1.2       2.1      2.2       3.1      3.2
+
+
+In a Texinfo file that has this structure, the beginning of Chapter 2
+looks like this:
+
+@node    Chapter 2,  Chapter 3, Chapter 1, top
+@chapter Chapter 2
+
+The chapter structuring commands are described in the sections that
+follow; the @node and @menu commands are described in
+following chapters. (See Nodes, and see Menus.)
+
+
+5.2 Structuring Command Types
+=============================
+
+The chapter structuring commands fall into four groups or series, each
+of which contains structuring commands corresponding to the
+hierarchical levels of chapters, sections, subsections, and
+subsubsections.
+
+The four groups are the @chapter series, the
+@unnumbered series, the @appendix series, and the
+@heading series.
+
+Each command produces titles that have a different appearance on the
+printed page or Info file; only some of the commands produce
+titles that are listed in the table of contents of a printed book or
+manual.
+
+* The @chapter and @appendix series of commands produce
+numbered or lettered entries both in the body of a printed work and in
+its table of contents.
+
+* The @unnumbered series of commands produce unnumbered entries
+both in the body of a printed work and in its table of contents.  The
+@top command, which has a special use, is a member of this
+series (see @top).
+
+* The @heading series of commands produce unnumbered headings
+that do not appear in a table of contents.  The heading commands never
+start a new page.
+
+* The @majorheading command produces results similar to using
+the @chapheading command but generates a larger vertical
+whitespace before the heading.
+
+* When an @setchapternewpage command says to do so, the
+@chapter, @unnumbered, and @appendix commands
+start new pages in the printed manual; the @heading commands
+do not.
+
+Here are the four groups of chapter structuring commands:
+
+
+    No new page
+ Numbered Unnumbered Lettered/numbered Unnumbered
+ In contents In contents In contents Omitted from
+contents
+  @top  @majorheading
+ @chapter @unnumbered @appendix @chapheading
+ @section @unnumberedsec @appendixsec @heading
+ @subsection @unnumberedsubsec @appendixsubsec @subheading
+ @subsubsection @unnumberedsubsubsec @appendixsubsubsec @subsubheading
+
+
+5.3 @top
+========
+
+The @top command is a special sectioning command that you use
+only after an `@node Top' line at the beginning of a Texinfo file.
+The @top command tells the makeinfo formatter which node
+is the `Top' node, so it can use it as the root of the node tree if your
+manual uses implicit pointers.  It has the same typesetting effect as
+@unnumbered (see @unnumbered and @appendix).  For detailed information, see The @top Command.
+
+The @top node and its menu (if any) is conventionally wrapped in
+an @ifnottex conditional so that it will appear only in Info and
+HTML output, not TeX.
+
+
+5.4 @chapter
+============
+
+@chapter identifies a chapter in the document.  Write the
+command at the beginning of a line and follow it on the same line by
+the title of the chapter.
+
+For example, this chapter in this manual is entitled "Chapter
+Structuring"; the @chapter line looks like this:
+
+@chapter Chapter Structuring
+
+In TeX, the @chapter command creates a chapter in the
+document, specifying the chapter title.  The chapter is numbered
+automatically.
+
+In Info, the @chapter command causes the title to appear on a
+line by itself, with a line of asterisks inserted underneath.  Thus,
+in Info, the above example produces the following output:
+
+Chapter Structuring
+*******************
+
+Texinfo also provides a command @centerchap, which is analogous
+to @unnumbered, but centers its argument in the printed output.
+This kind of stylistic choice is not usually offered by Texinfo.
+
+
+5.5 @unnumbered and @appendix
+=============================
+
+Use the @unnumbered command to create a chapter that appears
+in a printed manual without chapter numbers of any kind.  Use the
+@appendix command to create an appendix in a printed manual
+that is labelled by letter instead of by number.
+
+For Info file output, the @unnumbered and @appendix
+commands are equivalent to @chapter: the title is printed on a
+line by itself with a line of asterisks underneath.  (See @chapter.)
+
+To create an appendix or an unnumbered chapter, write an
+@appendix or @unnumbered command at the beginning of a
+line and follow it on the same line by the title, as you would if you
+were creating a chapter.
+
+
+5.6 @majorheading, @chapheading
+===============================
+
+The @majorheading and @chapheading commands put
+chapter-like headings in the body of a document.
+
+However, neither command causes TeX to produce a numbered heading
+or an entry in the table of contents; and neither command causes
+TeX to start a new page in a printed manual.
+
+In TeX, an @majorheading command generates a larger vertical
+whitespace before the heading than an @chapheading command but
+is otherwise the same.
+
+In Info,
+the @majorheading and
+@chapheading commands are equivalent to
+@chapter: the title is printed on a line by itself with a line
+of asterisks underneath.  (See @chapter.)
+
+5.7 @section
+============
+
+In a printed manual, an @section command identifies a
+numbered section within a chapter.  The section title appears in the
+table of contents.  In Info, an @section command provides a
+title for a segment of text, underlined with `='.
+
+This section is headed with an @section command and looks like
+this in the Texinfo file:
+
+@section @code{@@section}
+
+To create a section, write the @section command at the
+beginning of a line and follow it on the same line by the section
+title.
+
+Thus,
+
+@section This is a section
+
+produces
+
+This is a section
+=================
+
+in Info.
+
+5.8 @unnumberedsec, @appendixsec, @heading
+==========================================
+
+The @unnumberedsec, @appendixsec, and @heading
+commands are, respectively, the unnumbered, appendix-like, and
+heading-like equivalents of the @section command.
+(See @section.)
+
+@unnumberedsec
+The @unnumberedsec command may be used within an
+unnumbered chapter or within a regular chapter or appendix to
+provide an unnumbered section.
+
+@appendixsec
+@appendixsection
+@appendixsection is a longer spelling of the
+@appendixsec command; the two are synonymous.
+
+Conventionally, the @appendixsec or @appendixsection
+command is used only within appendices.
+
+@heading
+You may use the @heading command anywhere you wish for a
+section-style heading that will not appear in the table of contents.
+
+5.9 The @subsection Command
+===========================
+
+Subsections are to sections as sections are to chapters.
+(See @section.)  In Info, subsection titles are
+underlined with `-'.  For example,
+
+@subsection This is a subsection
+
+produces
+
+This is a subsection
+--------------------
+
+In a printed manual, subsections are listed in the table of contents
+and are numbered three levels deep.
+
+5.10 The @subsection-like Commands
+==================================
+
+The @unnumberedsubsec, @appendixsubsec, and
+@subheading commands are, respectively, the unnumbered,
+appendix-like, and heading-like equivalents of the @subsection
+command.  (See @subsection.)
+
+In Info, the @subsection-like commands generate a title
+underlined with hyphens.  In a printed manual, an @subheading
+command produces a heading like that of a subsection except that it is
+not numbered and does not appear in the table of contents.  Similarly,
+an @unnumberedsubsec command produces an unnumbered heading like
+that of a subsection and an @appendixsubsec command produces a
+subsection-like heading labelled with a letter and numbers; both of
+these commands produce headings that appear in the table of
+contents.
+
+5.11 The `subsub' Commands
+==========================
+
+The fourth and lowest level sectioning commands in Texinfo are the
+`subsub' commands.  They are:
+
+@subsubsection
+Subsubsections are to subsections as subsections are to sections.
+(See @subsection.)  In a printed manual,
+subsubsection titles appear in the table of contents and are numbered
+four levels deep.
+
+@unnumberedsubsubsec
+Unnumbered subsubsection titles appear in the table of contents of a
+printed manual, but lack numbers.  Otherwise, unnumbered
+subsubsections are the same as subsubsections.  In Info, unnumbered
+subsubsections look exactly like ordinary subsubsections.
+
+@appendixsubsubsec
+Conventionally, appendix commands are used only for appendices and are
+lettered and numbered appropriately in a printed manual.  They also
+appear in the table of contents.  In Info, appendix subsubsections look
+exactly like ordinary subsubsections.
+
+@subsubheading
+The @subsubheading command may be used anywhere that you need
+a small heading that will not appear in the table of contents.  In
+Info, subsubheadings look exactly like ordinary subsubsection
+headings.
+
+In Info,  `subsub' titles are underlined with periods.
+For example,
+
+@subsubsection This is a subsubsection
+
+produces
+
+This is a subsubsection
+.......................
+
+5.12 @raisesections and @lowersections
+======================================
+
+The @raisesections and @lowersections commands raise and
+lower the hierarchical level of chapters, sections, subsections and the
+like.  The @raisesections command changes sections to chapters,
+subsections to sections, and so on.  The @lowersections command
+changes chapters to sections, sections to subsections, and so on.
+
+An @lowersections command is useful if you wish to include text
+that is written as an outer or standalone Texinfo file in another
+Texinfo file as an inner, included file.  If you write the command at
+the beginning of the file, all your @chapter commands are
+formatted as if they were @section commands, all your
+@section command are formatted as if they were
+@subsection commands, and so on.
+
+@raisesections raises a command one level in the chapter
+structuring hierarchy:
+
+  Change           To
+
+@subsection     @section,
+@section        @chapter,
+@heading        @chapheading,
+          etc.
+
+@lowersections lowers a command one level in the chapter
+structuring hierarchy:
+
+  Change           To
+
+@chapter        @section,
+@subsection     @subsubsection,
+@heading        @subheading,
+          etc.
+
+An @raisesections or @lowersections command changes only
+those structuring commands that follow the command in the Texinfo file.
+Write an @raisesections or @lowersections command on a
+line of its own.
+
+An @lowersections command cancels an @raisesections
+command, and vice versa.  Typically, the commands are used like this:
+
+@lowersections
+@include somefile.texi
+@raisesections
+
+Without the @raisesections, all the subsequent sections in your
+document will be lowered.
+
+Repeated use of the commands continue to raise or lower the hierarchical
+level a step at a time.
+
+An attempt to raise above `chapters' reproduces chapter commands; an
+attempt to lower below `subsubsections' reproduces subsubsection
+commands.
+

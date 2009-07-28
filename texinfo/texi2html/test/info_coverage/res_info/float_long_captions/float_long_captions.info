@@ -1,0 +1,26 @@
+This is float_long_captions.info, produced by makeinfo version 4.13 from
+float_long_captions.texi.
+
+
+File: float_long_captions.info,  Node: Top,  Up: (dir)
+
+Test floats with long captions
+******************************
+
+Text 1: AAAAAAAAAAAAAAAA BBBBB CCCCCCCCCCC
+
+Text 2: AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC
+
+* Menu:
+
+* Text 1: AAAAAAAAAAAAAAAA BBBBB ...:    text1.
+* Text 2: AAAAAAAAAAAAAAAA ...:          text2.
+
+
+
+Tag Table:
+Node: Top100
+Ref: text1221
+Ref: text2265
+
+End Tag Table

@@ -1,0 +1,28 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename itemize_in_example.info
+
+@node Top
+@top Element
+
+@example
+@itemize @bullet
+@item first
+
+more.
+@end itemize
+
+@itemize @asis
+@item as is
+@end itemize
+
+@itemize +
+@item item +
+@end itemize
+
+@itemize @bullet{} a--n itemize line
+@item in an itemize line
+@end itemize
+@end example
+
+@bye

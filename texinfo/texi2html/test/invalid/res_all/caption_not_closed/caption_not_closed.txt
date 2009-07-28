@@ -1,0 +1,15 @@
+Test caption not closed
+***********************
+
+No label but caption.
+
+
+Text: Not closed caption
+
+The caption trigger a keep_texi, so everything until the end of the file
+is in the caption. Also the caption is formatted twice which leads to 2
+error messages.
+
+@end float
+
+

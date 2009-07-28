@@ -1,0 +1,6 @@
+Test for bad @tab nesting with style @-command
+**********************************************
+
+
+ truc bidule
+

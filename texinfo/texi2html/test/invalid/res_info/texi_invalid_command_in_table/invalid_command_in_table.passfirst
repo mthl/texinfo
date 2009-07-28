@@ -1,0 +1,13 @@
+invalid_command_in_table.texi(,2) 
+invalid_command_in_table.texi(,3) @setfilename invalid_command_in_table.info
+invalid_command_in_table.texi(,4) 
+invalid_command_in_table.texi(,5) @node Top
+invalid_command_in_table.texi(,6) Top node
+invalid_command_in_table.texi(,7) 
+invalid_command_in_table.texi(,8) @table
+invalid_command_in_table.texi(,9) { @itemTop,, title
+invalid_command_in_table.texi(,10) long title}
+invalid_command_in_table.texi(,11) Item line
+invalid_command_in_table.texi(,12) @end table
+invalid_command_in_table.texi(,13) 
+invalid_command_in_table.texi(,14) @bye

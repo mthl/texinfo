@@ -1,0 +1,11 @@
+Test for double definition commands
+***********************************
+
+ -- func: plot (a, b, c, ...)  -- :
+ func plot2 (a, b, c, ..., d)
+aaa
+
+ -- func: aaaa args  -- :
+ c--ategory d--efvr_name
+bbb
+

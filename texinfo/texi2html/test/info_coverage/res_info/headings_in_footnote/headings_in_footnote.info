@@ -1,0 +1,34 @@
+This is headings_in_footnote.info, produced by makeinfo version 4.13
+from headings_in_footnote.texi.
+
+
+File: headings_in_footnote.info,  Node: Top,  Up: (dir)
+
+Top
+***
+
+AAA
+
+H0
+==
+
+BBB
+
+   T(1)
+
+   ---------- Footnotes ----------
+
+   (1) AAA
+
+H1
+==
+
+BBB
+
+
+
+Tag Table:
+Node: Top102
+Ref: Top-Footnote-1232
+
+End Tag Table

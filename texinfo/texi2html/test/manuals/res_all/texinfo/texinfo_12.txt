@@ -1,0 +1,458 @@
+11 Lists and Tables
+*******************
+
+Texinfo has several ways of making lists and tables.  Lists can be
+bulleted or numbered; two-column tables can highlight the items in
+the first column; multi-column tables are also supported.
+
+* Introducing Lists::           Texinfo formats lists for you.
+* itemize::                     How to construct a simple list.
+* enumerate::                   How to construct a numbered list.
+* Two-column Tables::           How to construct a two-column table.
+* Multi-column Tables::         How to construct generalized tables.
+
+Introducing Lists
+-----------------
+Introducing Lists
+=================
+
+Texinfo automatically indents the text in lists or tables, and numbers
+an enumerated list.  This last feature is useful if you modify the
+list, since you do not need to renumber it yourself.
+
+Numbered lists and tables begin with the appropriate @-command at the
+beginning of a line, and end with the corresponding @end
+command on a line by itself.  The table and itemized-list commands
+also require that you write formatting information on the same line as
+the beginning @-command.
+
+Begin an enumerated list, for example, with an @enumerate
+command and end the list with an @end enumerate command.
+Begin an itemized list with an @itemize command, followed on
+the same line by a formatting command such as @bullet, and end
+the list with an @end itemize command.
+
+Precede each element of a list with an @item or @itemx
+command.
+
+
+Here is an itemized list of the different kinds of table and lists:
+
+* Itemized lists with and without bullets.
+
+* Enumerated lists, using numbers or letters.
+
+* Two-column tables with highlighting.
+
+
+Here is an enumerated list with the same items:
+
+1. Itemized lists with and without bullets.
+
+2. Enumerated lists, using numbers or letters.
+
+3. Two-column tables with highlighting.
+
+
+And here is a two-column table with the same items and their
+@-commands:
+
+@itemize
+Itemized lists with and without bullets.
+
+@enumerate
+Enumerated lists, using numbers or letters.
+
+@table
+@ftable
+@vtable
+Two-column tables, optionally with indexing.
+
+
+11.1 @itemize: Making an Itemized List
+======================================
+
+The @itemize command produces sequences of indented
+paragraphs, with a bullet or other mark inside the left margin
+at the beginning of each paragraph for which such a mark is desired.
+
+Begin an itemized list by writing @itemize at the beginning of
+a line.  Follow the command, on the same line, with a character or a
+Texinfo command that generates a mark.  Usually, you will write
+@bullet after @itemize, but you can use
+@minus, or any command or character that results in a single
+character in the Info file.  If you don't want any mark at all, use
+@w.  (When you write the mark command such as
+@bullet after an @itemize command, you may omit the
+`{}'.)  If you don't specify a mark command, the default is
+@bullet.
+
+Write the text of the indented paragraphs themselves after the
+@itemize, up to another line that says @end
+itemize.
+
+Before each paragraph for which a mark in the margin is desired, write a
+line that says just @item.  It is ok to have text following the
+@item.
+
+Usually, you should put a blank line before an @item.  This
+puts a blank line in the Info file. (TeX inserts the proper
+interline whitespace in either case.)  Except when the entries are
+very brief, these blank lines make the list look better.
+
+Here is an example of the use of @itemize, followed by the
+output it produces.  @bullet produces an `*' in Info and a
+round dot in TeX.
+
+@itemize @bullet
+@item
+Some text for foo.
+
+@item
+Some text
+for bar.
+@end itemize
+
+This produces:
+
+* Some text for foo.
+
+* Some text
+for bar.
+
+Itemized lists may be embedded within other itemized lists.  Here is a
+list marked with dashes embedded in a list marked with bullets:
+
+@itemize @bullet
+@item
+First item.
+
+@itemize @minus
+@item
+Inner item.
+
+@item
+Second inner item.
+@end itemize
+
+@item
+Second outer item.
+@end itemize
+
+This produces:
+
+* First item.
+
+-- Inner item.
+
+-- Second inner item.
+
+* Second outer item.
+
+
+11.2 @enumerate: Making a Numbered or Lettered List
+===================================================
+
+@enumerate is like @itemize (see @itemize), except that the labels on the items are
+successive integers or letters instead of bullets.
+
+Write the @enumerate command at the beginning of a line.  The
+command does not require an argument, but accepts either a number or a
+letter as an option.  Without an argument, @enumerate starts the
+list with the number `1'.  With a numeric argument, such as
+`3', the command starts the list with that number.  With an upper
+or lower case letter, such as `a' or `A', the command starts
+the list with that letter.
+
+Write the text of the enumerated list in the same way you write an
+itemized list: put @item on a line of its own before the start
+of each paragraph that you want enumerated.  Do not write any other text
+on the line beginning with @item.
+
+You should put a blank line between entries in the list.
+This generally makes it easier to read the Info file.
+
+Here is an example of @enumerate without an argument:
+
+@enumerate
+@item
+Underlying causes.
+
+@item
+Proximate causes.
+@end enumerate
+
+This produces:
+
+1. Underlying causes.
+
+2. Proximate causes.
+
+Here is an example with an argument of 3:
+
+@enumerate 3
+@item
+Predisposing causes.
+
+@item
+Precipitating causes.
+
+@item
+Perpetuating causes.
+@end enumerate
+
+This produces:
+
+3. Predisposing causes.
+
+4. Precipitating causes.
+
+5. Perpetuating causes.
+
+Here is a brief summary of the alternatives.  The summary is constructed
+using @enumerate with an argument of a.
+
+a. @enumerate
+
+Without an argument, produce a numbered list, starting with the number
+1.
+
+b. @enumerate positive-integer
+
+With a (positive) numeric argument, start a numbered list with that
+number.  You can use this to continue a list that you interrupted with
+other text.
+
+c. @enumerate upper-case-letter
+
+With an upper case letter as argument, start a list
+in which each item is marked
+by a letter, beginning with that upper case letter.
+
+d. @enumerate lower-case-letter
+
+With a lower case letter as argument, start a list
+in which each item is marked by
+a letter, beginning with that lower case letter.
+
+You can also nest enumerated lists, as in an outline.
+
+11.3 Making a Two-column Table
+==============================
+
+@table is similar to @itemize (see @itemize), but allows you to specify a name or heading line for
+each item.  The @table command is used to produce two-column
+tables, and is especially useful for glossaries, explanatory
+exhibits, and command-line option summaries.
+
+* table::                       How to construct a two-column table.
+* ftable vtable::               Automatic indexing for two-column tables.
+* itemx::                       How to put more entries in the first column.
+
+table
+-----
+Using the @table Command
+------------------------
+
+Use the @table command to produce two-column tables.
+
+Write the @table command at the beginning of a line and follow
+it on the same line with an argument that is a Texinfo "indicating"
+command such as @code, @samp, @var, or
+@kbd (see Indicating).  Although these commands are usually
+followed by arguments in braces, in this case you use the command name
+without an argument because @item will supply the argument.
+This command will be applied to the text that goes into the first column
+of each item and determines how it will be highlighted.  For example,
+@code will cause the text in the first column to be highlighted
+with an @code command.  (We recommend @code for
+@table's of command-line options.)
+
+You may also choose to use the @asis command as an argument to
+@table.  @asis is a command that does nothing; if you
+use this command after @table, TeX and the Info formatting
+commands output the first column entries without added highlighting
+("as is").
+
+(The @table command may work with other commands besides those
+listed here.  However, you can only use commands that normally take
+arguments in braces.)
+
+Begin each table entry with an @item command at the beginning
+of a line.  Write the first column text on the same line as the
+@item command.  Write the second column text on the line
+following the @item line and on subsequent lines.  (You do not
+need to type anything for an empty second column entry.)  You may
+write as many lines of supporting text as you wish, even several
+paragraphs.  But only text on the same line as the @item will
+be placed in the first column, including any footnote.
+
+Normally, you should put a blank line before an @item line.
+This puts a blank like in the Info file.  Except when the entries are
+very brief, a blank line looks better.
+
+The following table, for example, highlights the text in the first
+column with an @samp command:
+
+@table @samp
+@item foo
+This is the text for
+@samp{foo}.
+
+@item bar
+Text for @samp{bar}.
+@end table
+
+This produces:
+
+`foo'
+This is the text for
+`foo'.
+`bar'
+Text for `bar'.
+
+If you want to list two or more named items with a single block of
+text, use the @itemx command.  (See @itemx.)
+
+
+11.3.1 @ftable and @vtable
+--------------------------
+
+The @ftable and @vtable commands are the same as the
+@table command except that @ftable automatically enters
+each of the items in the first column of the table into the index of
+functions and @vtable automatically enters each of the items in
+the first column of the table into the index of variables.  This
+simplifies the task of creating indices.  Only the items on the same
+line as the @item commands are indexed, and they are indexed in
+exactly the form that they appear on that line.  See Indices,
+for more information about indices.
+
+Begin a two-column table using @ftable or @vtable by
+writing the @-command at the beginning of a line, followed on the same
+line by an argument that is a Texinfo command such as @code,
+exactly as you would for an @table command; and end the table
+with an @end ftable or @end vtable command on a line by
+itself.
+
+See the example for @table in the previous section.
+
+11.3.2 @itemx
+-------------
+
+Use the @itemx command inside a table when you have two or more
+first column entries for the same item, each of which should appear on a
+line of its own.  Use @itemx for all but the first entry;
+@itemx should always follow an @item command.  The
+@itemx command works exactly like @item except that it
+does not generate extra vertical space above the first column text.
+
+For example,
+
+@table @code
+@item upcase
+@itemx downcase
+These two functions accept a character or a string as
+argument, and return the corresponding upper case (lower
+case) character or string.
+@end table
+
+This produces:
+
+upcase
+downcase
+These two functions accept a character or a string as
+argument, and return the corresponding upper case (lower
+case) character or string.
+
+(Note also that this example illustrates multi-line supporting text in
+a two-column table.)
+
+
+11.4 Multi-column Tables
+========================
+
+@multitable allows you to construct tables with any number of
+columns, with each column having any width you like.
+
+You define the column widths on the @multitable line itself, and
+write each row of the actual table following an @item command,
+with columns separated by an @tab command.  Finally, @end
+multitable completes the table.  Details in the sections below.
+
+* Multitable Column Widths::    Defining multitable column widths.
+* Multitable Rows::             Defining multitable rows, with examples.
+
+11.4.1 Multitable Column Widths
+-------------------------------
+
+You can define the column widths for a multitable in two ways: as
+fractions of the line length; or with a prototype row.  Mixing the two
+methods is not supported.  In either case, the widths are defined
+entirely on the same line as the @multitable command.
+
+1. To specify column widths as fractions of the line length, write
+@columnfractions and the decimal numbers (presumably less than
+1) after the @multitable command, as in:
+
+@multitable @columnfractions .33 .33 .33
+
+The fractions need not add up exactly to 1.0, as these do
+not.  This allows you to produce tables that do not need the full line
+length.  You can use a leading zero if you wish.
+
+2. To specify a prototype row, write the longest entry for each column
+enclosed in braces after the @multitable command.  For example:
+
+@multitable {some text for column one} {for column two}
+
+The first column will then have the width of the typeset `some text for
+column one', and the second column the width of `for column two'.
+
+The prototype entries need not appear in the table itself.
+
+Although we used simple text in this example, the prototype entries can
+contain Texinfo commands; markup commands such as @code are
+particularly likely to be useful.
+
+
+
+11.4.2 Multitable Rows
+----------------------
+
+After the @multitable command defining the column widths (see
+the previous section), you begin each row in the body of a multitable
+with @item, and separate the column entries with @tab.
+Line breaks are not special within the table body, and you may break
+input lines in your source file as necessary.
+
+Here is a complete example of a multi-column table (the text is from
+The GNU Emacs Manual, see (emacs)Split Window section `Splitting Windows' in The GNU Emacs Manual):
+
+@multitable @columnfractions .15 .45 .4
+@item Key @tab Command @tab Description
+@item C-x 2
+@tab @code{split-window-vertically}
+@tab Split the selected window into two windows,
+with one above the other.
+@item C-x 3
+@tab @code{split-window-horizontally}
+@tab Split the selected window into two windows
+positioned side by side.
+@item C-Mouse-2
+@tab
+@tab In the mode line or scroll bar of a window,
+split that window.
+@end multitable
+
+produces:
+
+ Key Command Description
+ C-x 2 split-window-vertically Split the selected window into two windows,
+with one above the other.
+ C-x 3 split-window-horizontally Split the selected window into two windows
+positioned side by side.
+ C-Mouse-2  In the mode line or scroll bar of a window,
+split that window.
+
+

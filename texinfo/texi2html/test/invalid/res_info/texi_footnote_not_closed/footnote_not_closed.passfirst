@@ -1,0 +1,28 @@
+footnote_not_closed.texi(,2) 
+footnote_not_closed.texi(,3) @setfilename footnote_not_closed.info
+footnote_not_closed.texi(,4) 
+footnote_not_closed.texi(,5) @node Top
+footnote_not_closed.texi(,6) @top Top section
+footnote_not_closed.texi(,7) 
+footnote_not_closed.texi(,8) texte@footnote{We have a footnote.
+footnote_not_closed.texi(,9) 
+footnote_not_closed.texi(,10) This is an important footnote.
+footnote_not_closed.texi(,11) 
+footnote_not_closed.texi(,12) @menu
+footnote_not_closed.texi(,13) * chapter::           the chapter
+footnote_not_closed.texi(,14) * chapter2::           the second chapter
+footnote_not_closed.texi(,15) @end menu
+footnote_not_closed.texi(,16) 
+footnote_not_closed.texi(,17) @node chapter
+footnote_not_closed.texi(,18) @chapter Chapter
+footnote_not_closed.texi(,19) 
+footnote_not_closed.texi(,20) In chapter@footnote{Another footnote
+footnote_not_closed.texi(,21) 
+footnote_not_closed.texi(,22) @quotation
+footnote_not_closed.texi(,23) In a quotation
+footnote_not_closed.texi(,24) 
+footnote_not_closed.texi(,25) @node chapter2
+footnote_not_closed.texi(,26) @chapter Chapter2
+footnote_not_closed.texi(,27) 
+footnote_not_closed.texi(,28) 
+footnote_not_closed.texi(,29) @bye

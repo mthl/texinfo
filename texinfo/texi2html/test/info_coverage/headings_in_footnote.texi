@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename headings_in_footnote.info
+
+@node Top
+@top Top 
+
+AAA
+@heading H0
+BBB
+
+T@footnote{
+AAA
+@heading H1
+@cindex ind e
+BBB
+}
+
+@bye

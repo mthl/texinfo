@@ -1,0 +1,46 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename table_long_item.info
+
+@node Top
+@top Element
+
+@table @emph
+@item first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa
+@itemx second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
+
+Text.
+
+@item example
+@example
+In example
+
+end example.
+@end example
+@item empty line
+
+empty line.
+@item quotation
+@quotation
+Quotation
+@end quotation
+
+@item quotation after a blank line
+
+@quotation
+quotation after a blank line
+@end quotation
+@end table
+
+@vtable @asis
+
+VTable
+
+@item first item
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+
+@bye

@@ -1,0 +1,23 @@
+This is menu_in_deffn.info, produced by makeinfo version 4.13 from
+menu_in_deffn.texi.
+
+
+File: menu_in_deffn.info,  Node: Top,  Next: (mynode),  Up: (dir)
+
+Element
+*******
+
+ -- a: b c
+     
+     * Menu:
+
+     * (mynode)::
+
+   a
+
+
+
+Tag Table:
+Node: Top88
+
+End Tag Table

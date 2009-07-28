@@ -1,0 +1,234 @@
+14 Making and Preventing Breaks
+*******************************
+
+Usually, a Texinfo file is processed both by TeX and by one of the
+Info formatting commands.  Line, paragraph, or page breaks sometimes
+occur in the `wrong' place in one or other form of output.  You must
+ensure that text looks right both in the printed manual and in the
+Info file.
+
+For example, in a printed manual, page breaks may occur awkwardly in
+the middle of an example; to prevent this, you can hold text together
+using a grouping command that keeps the text from being split across
+two pages.  Conversely, you may want to force a page break where none
+would occur normally.  Fortunately, problems like these do not often
+arise.  When they do, use the break, break prevention, or pagination
+commands.
+
+* Break Commands::              Cause and prevent splits.
+* Line Breaks::                 How to force a single line to use two lines.
+* - and hyphenation::           How to tell TeX about hyphenation points.
+* w::                           How to prevent unwanted line breaks.
+* sp::                          How to insert blank lines.
+* page::                        How to force the start of a new page.
+* group::                       How to prevent unwanted page breaks.
+* need::                        Another way to prevent unwanted page breaks.
+
+
+Break Commands
+--------------
+Break Commands
+==============
+
+The break commands create or allow line and paragraph breaks:
+
+@*
+Force a line break.
+
+@sp n
+Skip n blank lines.
+
+@-
+Insert a discretionary hyphen.
+
+@hyphenation{hy-phen-a-ted words}
+Define hyphen points in hy-phen-a-ted words.
+
+The line-break-prevention command holds text together all on one
+line:
+
+@w{text}
+Prevent text from being split and hyphenated across two lines.
+
+The pagination commands apply only to printed output, since Info
+files do not have pages.
+
+@page
+Start a new page in the printed manual.
+
+@group
+Hold text together that must appear on one printed page.
+
+@need mils
+Start a new printed page if not enough space on this one.
+
+14.1 @*: Generate Line Breaks
+=============================
+
+The @* command forces a line break in both the printed manual and
+in Info.
+
+For example,
+
+This line @* is broken @*in two places.
+
+produces
+
+This line
+ is broken
+in two places.
+
+(Note that the space after the first @* command is faithfully
+carried down to the next line.)
+
+The @* command is often used in a file's copyright page:
+
+This is edition 2.0 of the Texinfo documentation,@*
+and is for ...
+
+In this case, the @* command keeps TeX from stretching the
+line across the whole page in an ugly manner.
+
+Please note: Do not write braces after an @* command;
+they are not needed.
+
+Do not write an @refill command at the end of a paragraph
+containing an @* command; it will cause the paragraph to be
+refilled after the line break occurs, negating the effect of the line
+break.
+
+
+14.2 @- and @hyphenation: Helping TeX hyphenate
+===============================================
+
+
+Although TeX's hyphenation algorithm is generally pretty good, it
+does miss useful hyphenation points from time to time.  (Or, far more
+rarely, insert an incorrect hyphenation.)  So, for documents with an
+unusual vocabulary or when fine-tuning for a printed edition, you may
+wish to help TeX out.  Texinfo supports two commands for this:
+
+@-
+Insert a discretionary hyphen, i.e., a place where TeX can (but does
+not have to) hyphenate.  This is especially useful when you notice an
+overfull hbox is due to TeX missing a hyphenation (see Overfull hboxes).  TeX will not insert any hyphenation points itself into a
+word containing @-.
+
+@hyphenation{hy-phen-a-ted words}
+Tell TeX how to hyphenate hy-phen-a-ted words.  As shown, you
+put a `-' at each hyphenation point.  For example:
+@hyphenation{man-u-script man-u-scripts}
+TeX only uses the specified hyphenation points when the
+words match exactly, so give all necessary variants.
+
+Info output is not hyphenated, so these commands have no effect there.
+
+14.3 @w{text}: Prevent Line Breaks
+==================================
+
+@w{text} outputs text and prohibits line breaks
+within text.
+
+You can use the @w command to prevent TeX from automatically
+hyphenating a long name or phrase that happens to fall near the end of a
+line.  For example:
+
+You can copy GNU software from @w{@samp{ftp.gnu.org}}.
+
+produces
+
+You can copy GNU software from `ftp.gnu.org'.
+
+You can also use @w to produce a non-breakable space:
+
+None of the formatters will break at this@w{ }space.
+
+
+14.4 @sp n: Insert Blank Lines
+==============================
+
+A line beginning with and containing only @sp n
+generates n blank lines of space in both the printed manual and
+the Info file.  @sp also forces a paragraph break.  For
+example,
+
+@sp 2
+
+generates two blank lines.
+
+The @sp command is most often used in the title page.
+
+
+
+14.5 @page: Start a New Page
+============================
+
+A line containing only @page starts a new page in a printed
+manual.  The command has no effect on Info files since they are not
+paginated.  An @page command is often used in the @titlepage
+section of a Texinfo file to start the copyright page.
+
+
+14.6 @group: Prevent Page Breaks
+================================
+
+The @group command (on a line by itself) is used inside an
+@example or similar construct to begin an unsplittable vertical
+group, which will appear entirely on one page in the printed output.
+The group is terminated by a line containing only @end group.
+These two lines produce no output of their own, and in the Info file
+output they have no effect at all.
+
+Although @group would make sense conceptually in a wide
+variety of contexts, its current implementation works reliably only
+within @example and variants, and within @display,
+@format, @flushleft and @flushright.
+See Quotations and Examples.  (What all these commands have in
+common is that each line of input produces a line of output.)  In
+other contexts, @group can cause anomalous vertical
+spacing.
+
+This formatting requirement means that you should write:
+
+@example
+@group
+...
+@end group
+@end example
+
+with the @group and @end group commands inside the
+@example and @end example commands.
+
+The @group command is most often used to hold an example
+together on one page.  In this Texinfo manual, more than 100 examples
+contain text that is enclosed between @group and @end
+group.
+
+If you forget to end a group, you may get strange and unfathomable
+error messages when you run TeX.  This is because TeX keeps
+trying to put the rest of the Texinfo file onto the one page and does
+not start to generate error messages until it has processed
+considerable text.  It is a good rule of thumb to look for a missing
+@end group if you get incomprehensible error messages in
+TeX.
+
+14.7 @need mils: Prevent Page Breaks
+====================================
+
+A line containing only @need n starts
+a new page in a printed manual if fewer than n mils (thousandths
+of an inch) remain on the current page.  Do not use
+braces around the argument n.  The @need command has no
+effect on Info files since they are not paginated.
+
+This paragraph is preceded by an @need command that tells
+TeX to start a new page if fewer than 800 mils (eight-tenths
+inch) remain on the page.  It looks like this:
+
+@need 800
+This paragraph is preceded by ...
+
+The @need command is useful for preventing orphans (single
+lines at the bottoms of printed pages).
+
+

@@ -1,0 +1,26 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename exdent_and_commands.info
+
+@node Top
+@top Element
+
+@quotation
+quotation1
+@exdent in exdented protected eol @
+following
+@exdent in exdented a @@* @* and following
+after exdented
+@end quotation
+
+@example
+example
+@exdent in exdented protected eol @
+following
+@exdent in exdented a @@* @* and following
+after exdented
+@end example
+
+@anchor{Count}
+
+@bye

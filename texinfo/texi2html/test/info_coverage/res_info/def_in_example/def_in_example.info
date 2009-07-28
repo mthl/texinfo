@@ -1,0 +1,23 @@
+This is def_in_example.info, produced by makeinfo version 4.13 from
+def_in_example.texi.
+
+
+File: def_in_example.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+      -- c--ategory1: d--effn_name1 a--rguments...
+          d--effn1
+
+     truc
+
+      -- c--ategory: d--effn_name a--rguments...
+          d--effn
+
+
+
+Tag Table:
+Node: Top90
+
+End Tag Table

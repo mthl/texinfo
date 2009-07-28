@@ -1,0 +1,5 @@
+This is long_uref_after_item.info, produced by makeinfo version 4.13
+from long_uref_after_item.texi.
+
+   * 
+     `http://foo.org/some/long/url/which/goes/past/eighty/columns/and/has/no/alternative/text.html'

@@ -1,0 +1,24 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename paragraphindent.info
+
+@node Top
+@top Element top
+
+First
+
+           aaa b default
+
+@paragraphindent asis
+
+           aaa b asis
+
+@paragraphindent 0
+
+           aaa b 0
+
+@paragraphindent 7
+
+           aaa b 7
+
+@bye

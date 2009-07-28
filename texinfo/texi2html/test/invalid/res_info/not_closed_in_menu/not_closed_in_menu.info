@@ -1,0 +1,41 @@
+This is not_closed_in_menu.info, produced by makeinfo version 4.13 from
+not_closed_in_menu.texi.
+
+
+File: not_closed_in_menu.info,  Node: Top,  Next: (gcc),  Up: (dir)
+
+* Menu:
+
+* (gcc):: text 
+- item
+     table line
+
+   Some text.
+
+* Menu:
+
+* (manual):: desc
+
+* item
+     comment
+     * (manual2)::
+
+* Menu:
+
+* (info):: before deff 
+ -- bidule: truc chose
+
+     deffn text
+
+   After menu
+
+* Menu:
+
+* (manual_in_menu):: desc2
+
+
+
+Tag Table:
+Node: Top98
+
+End Tag Table

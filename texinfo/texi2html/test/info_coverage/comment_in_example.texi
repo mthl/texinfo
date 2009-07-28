@@ -1,0 +1,63 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename comment_in_example.info
+
+@node Top
+@top Element top
+
+@example
+In example @c comment
+@end example
+
+Para.
+
+@example
+In example, end on same line @end example
+
+@example
+First line @c 
+Second @c
+@end example
+
+@example
+First line 0 @c
+@example
+Nested example
+@end example
+In first one
+@end example
+
+@example
+First line 1 @c
+@example
+Nested example @c
+@end example
+In first one
+@end example
+
+@example
+First line 2 @c
+@example
+Nested example @c
+@end example
+In first one @c
+@end example
+
+Something @example
+in example
+Before end @end example
+After end
+
+@quotation
+Quotation @c
+@end quotation 
+
+Para.
+
+@quotation
+Quotation no space@c
+@end quotation 
+
+Para.
+
+@bye

@@ -1,0 +1,12 @@
+Missing closing bracket
+***********************
+
+* chapter::
+
+not closed
+
+1 chapter
+*********
+
+still not closed
+

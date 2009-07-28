@@ -1,0 +1,31 @@
+This is symbol_after_command.info, produced by makeinfo version 4.13
+from symbol_after_command.texi.
+
+
+File: symbol_after_command.info,  Node: Top,  Up: (dir)
+
+Command after block
+*******************
+
+. dot
+
+, comma
+
+@ @
+
+{ {
+
+! exclam
+
+" quotes
+
+: colon
+
+   @. {, @@ ?, !: @{ @" @:
+
+
+
+Tag Table:
+Node: Top102
+
+End Tag Table

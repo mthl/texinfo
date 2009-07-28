@@ -1,0 +1,14 @@
+simple_punctuation.texi(,2) 
+simple_punctuation.texi(,3) @setfilename simple_punctuation.info
+simple_punctuation.texi(,4) 
+simple_punctuation.texi(,5) @node Top
+simple_punctuation.texi(,6) @top Punctuation commands.
+simple_punctuation.texi(,7) 
+simple_punctuation.texi(,8) foo vs.@: bar. 
+simple_punctuation.texi(,9) colon :@:And something else.
+simple_punctuation.texi(,10) semi colon ;@:.
+simple_punctuation.texi(,11) And ? ?@:.
+simple_punctuation.texi(,12) Now ! !@:@@
+simple_punctuation.texi(,13) but , ,@:
+simple_punctuation.texi(,14) 
+simple_punctuation.texi(,15) @bye

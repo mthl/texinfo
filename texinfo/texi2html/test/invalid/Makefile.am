@@ -8,12 +8,13 @@ EXTRA_DIST = brace_not_closed.texi recursive_copying.texi \
  caption_not_closed.texi def_cmd_dble.texi style_not_closed_in_table_line.texi \
  style_not_closed_in_cartouche.texi multitable_too_much_col.texi \
  bad_style_nesting.texi tab_in_index.texi bad_tab_nesting.texi \
- tests.txt res
+ code_not_closed_no_newline.texi invalid_command_in_table.texi \
+ tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`

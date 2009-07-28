@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename html_expanded.info
+
+@node Top
+@top Element
+
+Before
+@html
+html
+@end html
+after.
+
+@bye

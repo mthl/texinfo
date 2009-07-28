@@ -1,0 +1,61 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_float.info
+
+@node Top
+@top Element
+
+@float Text, Label
+float
+
+@caption{Caption Label}
+@shortcaption{Shortcaption Label}
+@end float
+
+@float Text, Label no sc
+float no Shortcaption
+
+@caption{Caption Label no sc}
+@end float
+
+@float Text
+float no Label
+
+@caption{Caption no Label}
+@end float
+
+@float Text, Label no cap
+float no Caption
+
+@end float
+
+@float
+Float no label no type.
+
+@caption{Caption no label no type}
+@end float
+
+@float
+Float no label no type shortcap.
+
+@caption{Caption no label no type shortcap}
+@shortcaption{Caption no label no type shortcap}
+@end float
+
+@float , label no type
+
+Float label no type
+@caption{label no type}
+@end float
+
+@float , label no type no cap
+ 
+Float label no type no cap
+@end float
+
+@listoffloats Text
+
+Listoffloats
+@listoffloats
+
+@bye

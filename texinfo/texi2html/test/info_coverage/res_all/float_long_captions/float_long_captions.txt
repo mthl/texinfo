@@ -1,0 +1,18 @@
+Test floats with long captions
+******************************
+
+
+
+Text 1: AAAAAAAAAAAAAAAA BBBBB CCCCCCCCCCC
+
+
+
+
+Text 2: AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC
+
+
+* List of Text:
+* Text 1: AAAAAAAAAAAAAAAA BBBBB CCCCCCCCCCC
+* Text 2: AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC
+
+

@@ -1,0 +1,30 @@
+This is code_not_closed_no_newline.info, produced by makeinfo version
+4.13 from code_not_closed_no_newline.texi.
+
+
+File: code_not_closed_no_newline.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Missing closing bracket without a following newline
+***************************************************
+
+* Menu:
+
+* chapter::
+
+   `not closed '
+
+
+File: code_not_closed_no_newline.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+`still not closed '
+
+
+
+Tag Table:
+Node: Top114
+Node: chapter340
+
+End Tag Table

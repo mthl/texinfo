@@ -1,0 +1,298 @@
+12 Indices
+**********
+
+Using Texinfo, you can generate indices without having to sort and
+collate entries manually.  In an index, the entries are listed in
+alphabetical order, together with information on how to find the
+discussion of each entry.  In a printed manual, this information
+consists of page numbers.  In an Info file, this information is a menu
+entry leading to the first node referenced.
+
+Texinfo provides several predefined kinds of index: an index
+for functions, an index for variables, an index for concepts, and so
+on.  You can combine indices or use them for other than their
+canonical purpose.  If you wish, you can define your own indices.
+
+* Index Entries::               Choose different words for index entries.
+* Predefined Indices::          Use different indices for different kinds
+                                  of entry.
+* Indexing Commands::           How to make an index entry.
+* Combining Indices::           How to combine indices.
+* New Indices::                 How to define your own indices.
+
+12.1 Making Index Entries
+=========================
+
+When you are making index entries, it is good practice to think of the
+different ways people may look for something.  Different people
+do not think of the same words when they look something up.  A
+helpful index will have items indexed under all the different words
+that people may use.  For example, one reader may think it obvious that
+the two-letter names for indices should be listed under "Indices,
+two-letter names", since the word "Index" is the general concept.
+But another reader may remember the specific concept of two-letter
+names and search for the entry listed as "Two letter names for
+indices".  A good index will have both entries and will help both
+readers.
+
+Like typesetting, the construction of an index is a highly skilled,
+professional art, the subtleties of which are not appreciated until you
+need to do it yourself.
+
+See Printing Indices & Menus, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+
+12.2 Predefined Indices
+=======================
+
+Texinfo provides six predefined indices:
+
+* A concept index listing concepts that are discussed.
+
+* A function index listing functions (such as entry points of
+libraries).
+
+* A variables index listing variables (such as global variables
+of libraries).
+
+* A keystroke index listing keyboard commands.
+
+* A program index listing names of programs.
+
+* A data type index listing data types (such as structures defined in
+header files).
+
+Not every manual needs all of these, and most manuals use two or three
+of them.  This manual has two indices: a
+concept index and an @-command index (that is actually the function
+index but is called a command index in the chapter heading).  Two or
+more indices can be combined into one using the @synindex or
+@syncodeindex commands.  See Combining Indices.
+
+12.3 Defining the Entries of an Index
+=====================================
+
+The data to make an index come from many individual indexing commands
+scattered throughout the Texinfo source file.  Each command says to add
+one entry to a particular index; after formatting, the index will give
+the current page number or node name as the reference.
+
+An index entry consists of an indexing command at the beginning of a
+line followed, on the rest of the line, by the entry.
+
+For example, this section begins with the following five entries for
+the concept index:
+
+@cindex Defining indexing entries
+@cindex Index entries
+@cindex Entries for an index
+@cindex Specifying index entries
+@cindex Creating index entries
+
+Each predefined index has its own indexing command--@cindex
+for the concept index, @findex for the function index, and so
+on.
+
+Concept index entries consist of text.  The best way to write an index
+is to choose entries that are terse yet clear.  If you can do this,
+the index often looks better if the entries are not capitalized, but
+written just as they would appear in the middle of a sentence.
+(Capitalize proper names and acronyms that always call for upper case
+letters.)  This is the case convention we use in most GNU manuals'
+indices.
+
+If you don't see how to make an entry terse yet clear, make it longer
+and clear--not terse and confusing.  If many of the entries are several
+words long, the index may look better if you use a different convention:
+to capitalize the first word of each entry.  But do not capitalize a
+case-sensitive name such as a C or Lisp function name or a shell
+command; that would be a spelling error.
+
+Whichever case convention you use, please use it consistently!
+
+Entries in indices other than the concept index are symbol names in
+programming languages, or program names; these names are usually
+case-sensitive, so use upper and lower case as required for them.
+
+By default, entries for a concept index are printed in a small roman
+font and entries for the other indices are printed in a small
+@code font.  You may change the way part of an entry is
+printed with the usual Texinfo commands, such as @file for
+file names and @emph for emphasis (see Marking Text).
+
+The six indexing commands for predefined indices are:
+
+@cindex concept
+Make an entry in the concept index for concept.
+
+@findex function
+Make an entry in the function index for function.
+
+@vindex variable
+Make an entry in the variable index for variable.
+
+@kindex keystroke
+Make an entry in the key index for keystroke.
+
+@pindex program
+Make an entry in the program index for program.
+
+@tindex data type
+Make an entry in the data type index for data type.
+
+Caution: Do not use a colon in an index entry.  In Info, a
+colon separates the menu entry name from the node name, so a colon in
+the entry itself confuses Info.  See The Parts of a Menu, for more information about the structure of a menu entry.
+
+You are not actually required to use the predefined indices for their
+canonical purposes.  For example, suppose you wish to index some C
+preprocessor macros.  You could put them in the function index along
+with actual functions, just by writing @findex commands for
+them; then, when you print the "Function Index" as an unnumbered
+chapter, you could give it the title `Function and Macro Index' and
+all will be consistent for the reader.  Or you could put the macros in
+with the data types by writing @tindex commands for them, and
+give that index a suitable title so the reader will understand.
+(See Printing Indices & Menus.)
+
+12.4 Combining Indices
+======================
+
+Sometimes you will want to combine two disparate indices such as functions
+and concepts, perhaps because you have few enough of one of them that
+a separate index for them would look silly.
+
+You could put functions into the concept index by writing
+@cindex commands for them instead of @findex commands,
+and produce a consistent manual by printing the concept index with the
+title `Function and Concept Index' and not printing the `Function
+Index' at all; but this is not a robust procedure.  It works only if
+your document is never included as part of another
+document that is designed to have a separate function index; if your
+document were to be included with such a document, the functions from
+your document and those from the other would not end up together.
+Also, to make your function names appear in the right font in the
+concept index, you would need to enclose every one of them between
+the braces of @code.
+
+* syncodeindex::                How to merge two indices, using @code
+                                  font for the merged-from index.
+* synindex::                    How to merge two indices, using the
+                                  default font of the merged-to index.
+
+12.4.1 @syncodeindex
+--------------------
+
+When you want to combine functions and concepts into one index, you
+should index the functions with @findex and index the concepts
+with @cindex, and use the @syncodeindex command to
+redirect the function index entries into the concept index.
+
+The @syncodeindex command takes two arguments; they are the name
+of the index to redirect, and the name of the index to redirect it to.
+The template looks like this:
+
+@syncodeindex from to
+
+For this purpose, the indices are given two-letter names:
+
+`cp'
+concept index
+`fn'
+function index
+`vr'
+variable index
+`ky'
+key index
+`pg'
+program index
+`tp'
+data type index
+
+Write an @syncodeindex command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  For example,
+to merge a function index with a concept index, write the
+following:
+
+@syncodeindex fn cp
+
+This will cause all entries designated for the function index to merge
+in with the concept index instead.
+
+To merge both a variables index and a function index into a concept
+index, write the following:
+
+@syncodeindex vr cp
+@syncodeindex fn cp
+
+The @syncodeindex command puts all the entries from the `from'
+index (the redirected index) into the @code font, overriding
+whatever default font is used by the index to which the entries are
+now directed.  This way, if you direct function names from a function
+index into a concept index, all the function names are printed in the
+@code font as you would expect.
+
+12.4.2 @synindex
+----------------
+
+The @synindex command is nearly the same as the
+@syncodeindex command, except that it does not put the
+`from' index  entries into the @code font; rather it puts
+them in the roman font.  Thus, you use @synindex when you
+merge a concept index into a function index.
+
+See Printing Indices & Menus, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+
+12.5 Defining New Indices
+=========================
+
+In addition to the predefined indices, you may use the
+@defindex and @defcodeindex commands to define new
+indices.  These commands create new indexing @-commands with which
+you mark index entries.  The @defindex command is used like
+this:
+
+@defindex name
+
+The name of an index should be a two letter word, such as `au'.
+For example:
+
+@defindex au
+
+This defines a new index, called the `au' index.  At the same
+time, it creates a new indexing command, @auindex, that you
+can use to make index entries.  Use the new indexing command just as
+you would use a predefined indexing command.
+
+For example, here is a section heading followed by a concept index
+entry and two `au' index entries.
+
+@section Cognitive Semantics
+@cindex kinesthetic image schemas
+@auindex Johnson, Mark
+@auindex Lakoff, George
+
+(Evidently, `au' serves here as an abbreviation for "author".)
+Texinfo constructs the new indexing command by concatenating the name
+of the index with `index'; thus, defining an `au' index
+leads to the automatic creation of an @auindex command.
+
+Use the @printindex command to print the index, as you do with
+the predefined indices.  For example:
+
+@node Author Index, Subject Index, , Top
+@unnumbered Author Index
+
+@printindex au
+
+The @defcodeindex is like the @defindex command, except
+that, in the printed output, it prints entries in an @code font
+instead of a roman font.  Thus, it parallels the @findex command
+rather than the @cindex command.
+
+You should define new indices within or right after the end-of-header
+line of a Texinfo file, before any @synindex or
+@syncodeindex commands (see Texinfo File Header).
+
+

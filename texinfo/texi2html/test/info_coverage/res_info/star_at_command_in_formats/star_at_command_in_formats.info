@@ -1,0 +1,47 @@
+This is star_at_command_in_formats.info, produced by makeinfo version
+4.13 from star_at_command_in_formats.texi.
+
+
+File: star_at_command_in_formats.info,  Node: Top,  Up: (dir)
+
+Test star * at command and how spaces are ignored after
+*******************************************************
+
+     Example
+     Some text 
+
+     mode text.  Even more text. 
+      not at eol.
+
+     Now foloowed by @ : followed
+      
+     And now followed by a space and @ : follow 
+       
+     And now followed by a space and @ and text: follow 
+       text
+     Followeed by empty asis and a space  
+     Followeed by asis with space and a space   
+     And now with * empty @asis: 
+      
+     And now with * asis with space @asis: 
+       
+     And end para.
+
+     Quotation Some text
+     mode text.  Even more text.
+     not at eol.
+
+     Now foloowed by @ : followed
+     And now followed by a space and @ : follow
+     And now followed by a space and @ and text: follow
+     text Followeed by empty asis and a space  Followeed by asis with
+     space and a space   And now with * empty @asis:
+     And now with * asis with space @asis:
+       And end para.
+
+
+
+Tag Table:
+Node: Top114
+
+End Tag Table

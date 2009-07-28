@@ -1,0 +1,35 @@
+Element
+*******
+
+Now . 
+
+No space. 
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+                                       BBBB
+
+AAA
+aflnfe ef fez f fe fez fe fez fez zef fe ezf fze                         after
+
+
+ This is a very simple texi manual followed by tab   <>.       
+followed by   newline  .
+followed by space  aa.
+  space before
+and end para.
+
+
+env, alone.
+
+aaa TeX in emph after 
+emph emph2 .
+
+Another para.
+
+First strong para.
+
+Second strong para.
+
+
+

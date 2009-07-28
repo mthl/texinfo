@@ -1,0 +1,350 @@
+16 Conditionally Visible Text
+*****************************
+
+Sometimes it is good to use different text for different output formats.
+For example, you can use the conditional commands to specify
+different text for the printed manual and the Info output.
+
+Conditional commands may not be nested.
+
+The conditional commands comprise the following categories.
+
+* Commands for HTML, Info, or TeX.
+* Commands for not HTML, Info, or TeX.
+* Raw TeX or HTML commands.
+* Substituting text for all formats, and testing if a flag is set or clear.
+
+* Conditional Commands::        Specifying text for HTML, Info, or TeX.
+* Conditional Not Commands::    Specifying text for not HTML, Info, or TeX.
+* Raw Formatter Commands::      Using raw TeX or HTML commands.
+* set clear value::             Designating which text to format (for
+                                  all output formats); and how to set a
+                                  flag to a string that you can insert.
+
+
+16.1 Conditional Commands
+=========================
+
+Texinfo has a pair of commands for each output format, to allow
+conditional inclusion of text for a particular output format.
+
+@ifinfo begins segments of text that should be ignored by TeX
+when it typesets the printed manual.  The segment of text appears only
+in the Info file and (for historical compatibility) the plain text
+output.  The @ifinfo command should appear on a line by itself;
+end the Info-only text with a line containing @end ifinfo by
+itself.
+
+The @iftex and @end iftex commands are analogous to the
+@ifinfo and @end ifinfo commands; they specify text that
+will appear in the printed manual but not in the Info file.  Likewise
+for @ifhtml and @end ifhtml, which specify text to
+appear only in HTML output.  And for @ifplaintext and
+@end ifplaintext, which specify text to appear only in plain
+text output.
+
+For example,
+
+@iftex
+This text will appear only in the printed manual.
+@end iftex
+@ifinfo
+However, this text will appear only in Info (or plain text).
+@end ifinfo
+@ifhtml
+And this text will only appear in HTML.
+@end ifhtml
+@ifplaintext
+Whereas this text will only appear in plain text.
+@end ifplaintext
+
+The preceding example produces the following line:
+However, this text will appear only in Info (or plain text).
+Whereas this text will only appear in plain text.
+
+Notice that you only see one of the input lines, depending on which
+version of the manual you are reading.
+
+
+16.2 Conditional Not Commands
+=============================
+
+You can specify text to be included in any output format other
+than some given one with the @ifnot... commands:
+@ifnothtml ... @end ifnothtml
+@ifnotinfo ... @end ifnotinfo
+@ifnotplaintext ... @end ifnotplaintext
+@ifnottex ... @end ifnottex
+(The @ifnot... command and the @end command must
+appear on lines by themselves in your actual source file.)
+
+If the output file is not being made for the given format, the
+region is included.  Otherwise, it is ignored.
+
+With one exception (for historical compatibility): @ifnotinfo
+text is omitted for both Info and plain text output, not just Info.  To
+specify text which appears only in Info and not in plain text, use
+@ifnotplaintext, like this:
+
+The regions delimited by these commands are ordinary Texinfo source as
+with @iftex, not raw formatter source as with @tex
+(see Raw Formatter Commands).
+
+
+16.3 Raw Formatter Commands
+===========================
+
+Inside a region delineated by @iftex and @end iftex, you
+can embed some raw TeX commands.  Info will ignore these commands
+since they are only in that part of the file which is seen by TeX.
+You can write the TeX commands as you would write them in a normal
+TeX file, except that you must replace the `\' used by TeX
+with an `@'.  For example, in the @titlepage section of a
+Texinfo file, you can use the TeX command @vskip to format
+the copyright page.  (The @titlepage command causes Info to
+ignore the region automatically, as it does with the @iftex
+command.)
+
+However, many features of plain TeX will not work, as they are
+overridden by Texinfo features.
+
+You can enter plain TeX completely, and use `\' in the TeX
+commands, by delineating a region with the @tex and @end
+tex commands.  (The @tex command also causes Info to ignore the
+region, like the @iftex command.)  The sole exception is that the
+@ character still introduces a command, so that @end tex
+can be recognized properly.
+
+For example, here is a mathematical expression written in
+plain TeX:
+
+@tex
+$$ \chi^2 = \sum_{i=1}^N
+          \left (y_i - (a + b x_i)
+          \over \sigma_i\right)^2 $$
+@end tex
+
+The output of this example will appear only in a printed manual.  If
+you are reading this in Info, you will not see the equation that appears
+in the printed manual.
+
+
+Analogously, you can use @ifhtml ... @end ifhtml to delimit
+a region to be included in HTML output only, and @html ...
+@end html for a region of raw HTML (again, except that @ is
+still the escape character, so the @end command can be
+recognized.)
+
+
+16.4 @set, @clear, and @value
+=============================
+
+You can direct the Texinfo formatting commands to format or ignore parts
+of a Texinfo file with the @set, @clear, @ifset,
+and @ifclear commands.
+
+Brief descriptions:
+
+@set flag [value]
+Set the variable flag, to the optional value if specifed.
+
+@clear flag
+Undefine the variable flag, whether or not it was previously defined.
+
+@ifset flag
+If flag is set, text through the next @end ifset command
+is formatted.  If flag is clear, text through the following
+@end ifset command is ignored.
+
+@ifclear flag
+If flag is set, text through the next @end ifclear command
+is ignored.  If flag is clear, text through the following
+@end ifclear command is formatted.
+
+* set value::                   Expand a flag variable to a string.
+* ifset ifclear::               Format a region if a flag is set.
+* value Example::               An easy way to update edition information.
+
+
+16.4.1 @set and @value
+----------------------
+
+You use the @set command to specify a value for a flag, which is
+later expanded by the @value command.
+
+A flag is an identifier.  In general, it is best to use only
+letters and numerals in a flag name, not `-' or `_'--they
+will work in some contexts, but not all, due to limitations in TeX.
+
+The value is the remainder of the input line, and can contain anything.
+
+Write the @set command like this:
+
+@set foo This is a string.
+
+This sets the value of the flag foo to "This is a string.".
+
+The Texinfo formatters then replace an @value{flag}
+command with the string to which flag is set.  Thus, when
+foo is set as shown above, the Texinfo formatters convert this:
+
+@value{foo}
+to this:
+This is a string.
+
+You can write an @value command within a paragraph; but you
+must write an @set command on a line of its own.
+
+If you write the @set command like this:
+
+@set foo
+
+without specifying a string, the value of foo is the empty string.
+
+If you clear a previously set flag with @clear flag, a
+subsequent @value{flag} command will report an error.
+
+For example, if you set foo as follows:
+
+@set how-much very, very, very
+
+then the formatters transform
+
+It is a @value{how-much} wet day.
+into
+It is a very, very, very wet day.
+
+If you write
+
+@clear how-much
+
+then the formatters transform
+
+It is a @value{how-much} wet day.
+into
+It is a {No value for "how-much"} wet day.
+
+
+16.4.2 @ifset and @ifclear
+--------------------------
+
+When a flag is set, the Texinfo formatting commands format text
+between subsequent pairs of @ifset flag and @end
+ifset commands.  When the flag is cleared, the Texinfo formatting
+commands do not format the text.  @ifclear operates
+analogously.
+
+Write the conditionally formatted text between @ifset flag
+and @end ifset commands, like this:
+
+@ifset flag
+conditional-text
+@end ifset
+
+For example, you can create one document that has two variants, such as
+a manual for a `large' and `small' model:
+
+You can use this machine to dig up shrubs
+without hurting them.
+
+@set large
+
+@ifset large
+It can also dig up fully grown trees.
+@end ifset
+
+Remember to replant promptly ...
+
+In the example, the formatting commands will format the text between
+@ifset large and @end ifset because the large
+flag is set.
+
+When flag is cleared, the Texinfo formatting commands do
+not format the text between @ifset flag and
+@end ifset; that text is ignored and does not appear in either
+printed or Info output.
+
+For example, if you clear the flag of the preceding example by writing
+an @clear large command after the @set large command
+(but before the conditional text), then the Texinfo formatting commands
+ignore the text between the @ifset large and @end ifset
+commands.  In the formatted output, that text does not appear; in both
+printed and Info output, you see only the lines that say, "You can use
+this machine to dig up shrubs without hurting them.  Remember to replant
+promptly ...".
+
+If a flag is cleared with an @clear flag command, then
+the formatting commands format text between subsequent pairs of
+@ifclear and @end ifclear commands.  But if the flag
+is set with @set flag, then the formatting commands do
+not format text between an @ifclear and an @end
+ifclear command; rather, they ignore that text.  An @ifclear
+command looks like this:
+
+@ifclear flag
+
+
+16.4.3 @value Example
+---------------------
+
+You can use the @value command to minimize the number of places
+you need to change when you record an update to a manual.  See GNU Sample Texts, for an example of this same principle can work with
+Automake distributions, and full texts.
+
+Here is an example adapted from (make)Top section `Overview' in The GNU Make Manual):
+
+1. Set the flags:
+
+@set EDITION 0.35 Beta
+@set VERSION 3.63 Beta
+@set UPDATED 14 August 1992
+@set UPDATE-MONTH August 1992
+
+2. Write text for the @copying section (see copying):
+
+@copying
+This is Edition @value{EDITION},
+last updated @value{UPDATED},
+of @cite{The GNU Make Manual},
+for @code{make}, version @value{VERSION}.
+
+Copyright ...
+
+Permission is granted ...
+@end copying
+
+3. Write text for the title page, for people reading the printed manual:
+
+@titlepage
+@title GNU Make
+@subtitle A Program for Directing Recompilation
+@subtitle Edition @value{EDITION}, ...
+@subtitle @value{UPDATE-MONTH}
+@page
+@insertcopying
+...
+@end titlepage
+
+(On a printed cover, a date listing the month and the year looks less
+fussy than a date listing the day as well as the month and year.)
+
+4. Write text for the Top node, for people reading the Info file:
+
+@ifnottex
+@node Top
+@top Make
+
+@insertcopying
+...
+@end ifnottex
+
+After you format the manual, the @value constructs have been
+expanded, so the output contains text like this:
+
+This is Edition 0.35 Beta, last updated 14 August 1992,
+of `The GNU Make Manual', for `make', Version 3.63 Beta.
+
+When you update the manual, you change only the values of the flags; you
+do not need to edit the three sections.
+
+

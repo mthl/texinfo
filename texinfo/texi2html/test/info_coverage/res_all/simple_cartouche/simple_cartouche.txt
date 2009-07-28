@@ -1,0 +1,23 @@
+Top section
+***********
+
+Before cartouche
+In cartouche
+After cartouche
+
+Before cartouche empty line
+
+In cartouche
+
+After cartouche empty line
+
+Before cartouche
+
+In cartouche after and before empty line
+
+After cartouche
+
+In quotation
+In cartouche in quotation
+end quotation
+

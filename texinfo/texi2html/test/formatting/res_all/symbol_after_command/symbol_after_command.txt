@@ -1,0 +1,13 @@
+Command after block
+*******************
+
+. dot
+, comma
+@ @
+{ {
+! exclam
+" quotes
+: colon
+
+@. {, @@ ?, !: @{ @" @:
+

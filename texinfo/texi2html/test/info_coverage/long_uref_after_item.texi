@@ -1,0 +1,11 @@
+\input texinfo
+@c %**start of header
+@setfilename long_uref_after_item.info
+@c %**end of header
+
+@itemize
+@item
+@uref{http://foo.org/some/long/url/which/goes/past/eighty/columns/and/has/no/alternative/text.html}
+@end itemize
+@bye
+

@@ -1,0 +1,20 @@
+This is style_not_closed_in_table_line.info, produced by makeinfo
+version 4.13 from style_not_closed_in_table_line.texi.
+
+
+File: style_not_closed_in_table_line.info,  Node: Top,  Up: (dir)
+
+Test command not closed on table line
+*************************************
+
+first item
+     line line `in code
+
+in item
+
+
+
+Tag Table:
+Node: Top122
+
+End Tag Table

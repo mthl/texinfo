@@ -1,0 +1,51 @@
+
+
+- item
+table line
+
+Some text.
+1. first item
+2. an item
+
+
+
+1 a section
+===========
+
+Node text
+
+an end table without correspondiing opening part
+@end table
+
+Multitable not closed with item and tab
+
+ rt ds
+2 a section
+===========
+Multitable not closed with item
+
+ rt
+3 a section
+===========
+Multitable not closed
+4 a section
+===========
+ -- truc: bidule machin
+ -- truc: chose args
+ -- Variable: type1 var bidule
+5 a section
+===========
+
+flushright not closed
+
+
+text flushed right
+
+6 a section
+===========
+
+group not closed
+
+
+text in group
+

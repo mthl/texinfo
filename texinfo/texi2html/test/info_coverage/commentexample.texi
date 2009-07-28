@@ -1,0 +1,36 @@
+\input texinfo
+@setfilename commentexample.info
+
+Hello.
+
+@example
+first example line with comment @c comment
+second example line after comment
+@end example
+
+Para.
+
+@example
+comment, blank after @c comment
+@end example
+
+Para.
+
+@example
+comment, no blank after @c comment
+@end example
+Para.
+
+@example
+no comment, blank after
+@end example
+
+Para.
+
+@example
+no comment, no blank after
+@end example
+Para.
+
+
+@bye

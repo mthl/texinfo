@@ -1,0 +1,327 @@
+Command and Variable Index
+**************************
+
+This is an alphabetical list of all the @-commands, assorted Emacs Lisp
+functions, and several variables.  To make the list easier to use, the
+commands are listed without their preceding `@'.
+
+* Index:
+* ! (end of sentence): 13.2.2 Ending a Sentence.
+* " (umlaut accent): 13.3 Inserting Accents.
+* ' (umlaut accent): 13.3 Inserting Accents.
+* (newline): 13.2.3 Multiple Spaces.
+* (space): 13.2.3 Multiple Spaces.
+* (tab): 13.2.3 Multiple Spaces.
+* * (force line break): 14.1 @*: Generate Line Breaks.
+* , (cedilla accent): 13.3 Inserting Accents.
+* - (discretionary hyphen): 14.2 @- and @hyphenation: Helping TeX hyphenate.
+* .  (end of sentence): 13.2.2 Ending a Sentence.
+* <colon> (suppress widening): 13.2.1 Not Ending a Sentence.
+* = (macron accent): 13.3 Inserting Accents.
+* ? (end of sentence): 13.2.2 Ending a Sentence.
+* @ (literal `@'): 13.1.1 Inserting `@' with @@.
+* \ (literal \ in @math): 13.8 @math: Inserting Mathematical Expressions.
+* \emergencystretch: 19.10 Overfull "hboxes".
+* \input (raw TeX startup): 1.8 What a Texinfo File Must Have.
+* \mag (raw TeX magnification): 19.14 Cropmarks and Magnification.
+* ^ (circumflex accent): 13.3 Inserting Accents.
+* ` (grave accent): 13.3 Inserting Accents.
+* { (literal `{'): 13.1.2 Inserting `{' and `}'with @{ and @}.
+* } (literal `}'): 13.1.2 Inserting `{' and `}'with @{ and @}.
+* ~ (tilde accent): 13.3 Inserting Accents.
+* AA: 13.3 Inserting Accents.
+* aa: 13.3 Inserting Accents.
+* acronym: 9.1.13 @acronym{acronym}.
+* AE: 13.3 Inserting Accents.
+* ae: 13.3 Inserting Accents.
+* afourlatex: 19.12 Printing on A4 Paper.
+* afourpaper: 19.12 Printing on A4 Paper.
+* afourwide: 19.12 Printing on A4 Paper.
+* alias: 18.4 `@alias new=existing'.
+* anchor: 6.5 @anchor: Defining Arbitrary Cross-reference Targets.
+* appendix: 5.5 @unnumbered and @appendix.
+* appendixsec: 5.8 @unnumberedsec, @appendixsec, @heading.
+* appendixsection: 5.8 @unnumberedsec, @appendixsec, @heading.
+* appendixsubsec: 5.10 The @subsection-like Commands.
+* appendixsubsubsec: 5.11 The `subsub' Commands.
+* apply: 15.6 A Sample Function Definition.
+* asis: table.
+* author: 3.4.3 @title, @subtitle, and @author.
+* b (bold font): 9.2.3 Fonts for Printing, Not Info.
+* buffer-end: 15.1 The Template for a Definition.
+* bullet: 13.4.2 @bullet{} (*).
+* bye: 4. Ending a Texinfo File.
+* bye: 4.3 @bye File Ending.
+* c (comment): 1.7 Comments.
+* cartouche: 10.13 @cartouche: Rounded Rectangles Around Examples.
+* center: 3.4.2 @titlefont, @center, and @sp.
+* centerchap: 5.4 @chapter.
+* chapheading: 5.6 @majorheading, @chapheading.
+* chapter: 5.4 @chapter.
+* cindex: 12.3 Defining the Entries of an Index.
+* cite: 9.1.12 @cite{reference}.
+* code: 9.1.1 @code{sample-code}.
+* columnfractions: 11.4.1 Multitable Column Widths.
+* command: 9.1.9 @command{command-name}.
+* comment: 1.7 Comments.
+* contents: 4.2 Generating a Table of Contents.
+* copying: 3.3.1 @copying: Declare copying permissions.
+* copyright: 3.3.1 @copying: Declare copying permissions.
+* copyright: 13.5.2 @copyright{} ((C)).
+* cropmarks: 19.14 Cropmarks and Magnification.
+* defcodeindex: 12.5 Defining New Indices.
+* defcv: 15.4.5 Object-Oriented Programming.
+* deffn: 15.4.1 Functions and Similar Entities.
+* deffnx: 15.3 Two or More `First' Lines.
+* defindex: 12.5 Defining New Indices.
+* definfoenclose: 18.5 `definfoenclose': Customized Highlighting.
+* defivar: 15.4.5 Object-Oriented Programming.
+* defmac: 15.4.1 Functions and Similar Entities.
+* defmethod: 15.4.5 Object-Oriented Programming.
+* defmethod: 15.4.5 Object-Oriented Programming.
+* defop: 15.4.5 Object-Oriented Programming.
+* defopt: 15.4.2 Variables and Similar Entities.
+* defspec: 15.4.1 Functions and Similar Entities.
+* deftp: 15.4.6 Data Types.
+* deftypefn: 15.4.3 Functions in Typed Languages.
+* deftypefun: 15.4.3 Functions in Typed Languages.
+* deftypeivar: 15.4.5 Object-Oriented Programming.
+* deftypeop: 15.4.5 Object-Oriented Programming.
+* deftypevar: 15.4.4 Variables in Typed Languages.
+* deftypevr: 15.4.4 Variables in Typed Languages.
+* defun: 15.4.1 Functions and Similar Entities.
+* defvar: 15.4.2 Variables and Similar Entities.
+* defvr: 15.4.2 Variables and Similar Entities.
+* dfn: 9.1.11 @dfn{term}.
+* dircategory: 20.2.4 Installing Info Directory Files.
+* direntry: 20.2.4 Installing Info Directory Files.
+* display: 10.8 @display and @smalldisplay.
+* dmn: 13.2.4 @dmn{dimension}: Format a Dimension.
+* documentdescription: 3.6.1 @documentdescription: Summary text.
+* documentencoding: 17.2 @documentencoding enc: Set Input Encoding.
+* documentlanguage: 17.1 @documentlanguage cc: Set the Document Language.
+* dotaccent: 13.3 Inserting Accents.
+* dotless: 13.3 Inserting Accents.
+* dots: 13.4.1 @dots{} (...) and @enddots{} (...).
+* email: 9.1.15 @email{email-address[, displayed-text]}.
+* emph: 9.2.1 @emph{text} and @strong{text}.
+* end: 10. Quotations and Examples.
+* end: Introducing Lists.
+* end titlepage: 3.4.5 Heading Generation.
+* enddots: 13.4.1 @dots{} (...) and @enddots{} (...).
+* enumerate: 11.2 @enumerate: Making a Numbered or Lettered List.
+* env: 9.1.7 @env{environment-variable}.
+* equiv: 13.9.6 @equiv{} (==): Indicating Equivalence.
+* error: 13.9.5 @error{} (error-->): Indicating an Error Message.
+* evenfooting: E.3 How to Make Your Own Headings.
+* evenheading: E.3 How to Make Your Own Headings.
+* everyfooting: E.3 How to Make Your Own Headings.
+* everyheading: E.3 How to Make Your Own Headings.
+* example: 10.3 @example: Example Text.
+* exampleindent: 3.6.4 @exampleindent: Environment Indenting.
+* exclamdown: 13.3 Inserting Accents.
+* exdent: 10.10 @exdent: Undoing a Line's Indentation.
+* expansion: 13.9.3 @expansion{} (==>): Indicating an Expansion.
+* file: 9.1.8 @file{file-name}.
+* filll TeX dimension: 3.4.4 Copyright Page.
+* finalout: 19.10 Overfull "hboxes".
+* findex: 12.3 Defining the Entries of an Index.
+* flushleft: 10.11 @flushleft and @flushright.
+* flushright: 10.11 @flushleft and @flushright.
+* foobar: 15.2 Optional and Repeated Arguments.
+* footnote: 13.10 Footnotes.
+* footnotestyle: 13.10.2 Footnote Styles.
+* format: 10.9 @format and @smallformat.
+* forward-word: 15.1 The Template for a Definition.
+* ftable: 11.3.1 @ftable and @vtable.
+* group: 14.6 @group: Prevent Page Breaks.
+* H (Hungarian umlaut accent): 13.3 Inserting Accents.
+* hbox: 19.10 Overfull "hboxes".
+* heading: 5.8 @unnumberedsec, @appendixsec, @heading.
+* headings: 3.4.6 The @headings Command.
+* headword: 18.5 `definfoenclose': Customized Highlighting.
+* html: 16.3 Raw Formatter Commands.
+* hyphenation: 14.2 @- and @hyphenation: Helping TeX hyphenate.
+* i (italic font): 9.2.3 Fonts for Printing, Not Info.
+* ifclear: 16.4.2 @ifset and @ifclear.
+* ifhtml: 16.1 Conditional Commands.
+* ifhtml: 16.3 Raw Formatter Commands.
+* ifinfo: 16.1 Conditional Commands.
+* ifnothtml: 16.2 Conditional Not Commands.
+* ifnotinfo: 16.2 Conditional Not Commands.
+* ifnotplaintext: 16.2 Conditional Not Commands.
+* ifnottex: 16.2 Conditional Not Commands.
+* ifplaintext: 16.1 Conditional Commands.
+* ifset: 16.4.2 @ifset and @ifclear.
+* iftex: 16.1 Conditional Commands.
+* ignore: 1.7 Comments.
+* image: 13.11 Inserting Images.
+* include: D.1 How to Use Include Files.
+* Info-validate: F.5 Finding Badly Referenced Nodes.
+* inforef: 8.7 @inforef.
+* insertcopying: 3.3.2 @insertcopying: Include permissions text.
+* isearch-backward: 15.3 Two or More `First' Lines.
+* isearch-forward: 15.3 Two or More `First' Lines.
+* item: 11.1 @itemize: Making an Itemized List.
+* item: table.
+* item: 11.4.2 Multitable Rows.
+* itemize: 11.1 @itemize: Making an Itemized List.
+* itemx: 11.3.2 @itemx.
+* kbd: 9.1.2 @kbd{keyboard-characters}.
+* kbdinputstyle: 9.1.2 @kbd{keyboard-characters}.
+* key: 9.1.3 @key{key-name}.
+* kindex: 12.3 Defining the Entries of an Index.
+* l: 13.3 Inserting Accents.
+* L: 13.3 Inserting Accents.
+* lisp: 10.6 @lisp: Marking a Lisp Example.
+* lowersections: 5.12 @raisesections and @lowersections.
+* macro: 18.1 Defining Macros.
+* majorheading: 5.6 @majorheading, @chapheading.
+* makeinfo-buffer: 20.1.5 Running makeinfo inside Emacs.
+* makeinfo-kill-job: 20.1.5 Running makeinfo inside Emacs.
+* makeinfo-recenter-output-buffer: 20.1.5 Running makeinfo inside Emacs.
+* makeinfo-region: 20.1.5 Running makeinfo inside Emacs.
+* math: 13.8 @math: Inserting Mathematical Expressions.
+* menu: 7. Menus.
+* minus: 13.7 @minus{} (-): Inserting a Minus Sign.
+* multitable: 11.4 Multi-column Tables.
+* need: 14.7 @need mils: Prevent Page Breaks.
+* next-error: 20.1.5 Running makeinfo inside Emacs.
+* node: 6.3 The @node Command.
+* noindent: 10.12 @noindent: Omitting Indentation.
+* novalidate: 19.2 Format with tex and texindex.
+* O: 13.3 Inserting Accents.
+* o: 13.3 Inserting Accents.
+* occur: F.4 Using occur.
+* occur-mode-goto-occurrence: 2.3 Showing the Section Structure of a File.
+* oddfooting: E.3 How to Make Your Own Headings.
+* oddheading: E.3 How to Make Your Own Headings.
+* OE: 13.3 Inserting Accents.
+* oe: 13.3 Inserting Accents.
+* option: 9.1.10 @option{option-name}.
+* page: 14.5 @page: Start a New Page.
+* page, within @titlepage: 3.4.1 @titlepage.
+* pagesizes: 19.13 @pagesizes [width][, height]: Custom page sizes.
+* paragraphindent: 3.6.3 Paragraph Indenting.
+* phoo: 18.5 `definfoenclose': Customized Highlighting.
+* pindex: 12.3 Defining the Entries of an Index.
+* point: 13.9.7 @point{} (-!-): Indicating Point in a Buffer.
+* pounds: 13.6 @pounds{} (#): Pounds Sterling.
+* print: 13.9.4 @print{} (-|): Indicating Printed Output.
+* printindex: 4.1 Printing Indices and Menus.
+* pxref: 8.6 @pxref.
+* questiondown: 13.3 Inserting Accents.
+* quotation: 10.2 @quotation.
+* r (Roman font): 9.2.3 Fonts for Printing, Not Info.
+* raisesections: 5.12 @raisesections and @lowersections.
+* ref: 8.5 @ref.
+* refill: G. Refilling Paragraphs.
+* result: 13.9.2 @result{} (=>): Indicating Evaluation.
+* ringaccent: 13.3 Inserting Accents.
+* rmacro: 18.1 Defining Macros.
+* samp: 9.1.4 @samp{text}.
+* sc (small caps font): 9.2.2 @sc{text}: The Small Caps Font.
+* section: 5.7 @section.
+* setchapternewpage: 3.6.2 @setchapternewpage:.
+* setcontentsaftertitlepage: 4.2 Generating a Table of Contents.
+* setfilename: 3.2.3 @setfilename: Set the output file name.
+* setshortcontentsaftertitlepage: 4.2 Generating a Table of Contents.
+* settitle: 3.2.4 @settitle: Set the document title.
+* shortcontents: 4.2 Generating a Table of Contents.
+* shorttitlepage: 3.4.1 @titlepage.
+* smallbook: 19.11 Printing "Small" Books.
+* smalldisplay: 10.7 @small... Block Commands.
+* smalldisplay: 10.8 @display and @smalldisplay.
+* smallexample: 10.7 @small... Block Commands.
+* smallformat: 10.7 @small... Block Commands.
+* smallformat: 10.9 @format and @smallformat.
+* smalllisp: 10.7 @small... Block Commands.
+* sp (line spacing): 14.4 @sp n: Insert Blank Lines.
+* sp (titlepage line spacing): 3.4.2 @titlefont, @center, and @sp.
+* ss: 13.3 Inserting Accents.
+* strong: 9.2.1 @emph{text} and @strong{text}.
+* subheading: 5.10 The @subsection-like Commands.
+* subsection: 5.9 The @subsection Command.
+* subsubheading: 5.11 The `subsub' Commands.
+* subsubsection: 5.11 The `subsub' Commands.
+* subtitle: 3.4.3 @title, @subtitle, and @author.
+* summarycontents: 4.2 Generating a Table of Contents.
+* syncodeindex: 12.4.1 @syncodeindex.
+* syncodeindex: 12.4.1 @syncodeindex.
+* synindex: 12.4.2 @synindex.
+* t (typewriter font): 9.2.3 Fonts for Printing, Not Info.
+* tab: 11.4.2 Multitable Rows.
+* table: 11.3 Making a Two-column Table.
+* tex: 16.3 Raw Formatter Commands.
+* tex (command): 13.5.1 @TeX{} (TeX).
+* texinfo-all-menus-update: Updating Commands.
+* texinfo-every-node-update: Updating Commands.
+* texinfo-format-buffer: 2.5 Formatting for Info.
+* texinfo-format-buffer: 20.1.6 The texinfo-format... Commands.
+* texinfo-format-buffer: 20.1.6 The texinfo-format... Commands.
+* texinfo-format-region: 2.5 Formatting for Info.
+* texinfo-format-region: 20.1.6 The texinfo-format... Commands.
+* texinfo-format-region: 20.1.6 The texinfo-format... Commands.
+* texinfo-indent-menu-description: 2.4.2 Other Updating Commands.
+* texinfo-insert-@code: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@dfn: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@end: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@example: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@item: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@kbd: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@node: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@noindent: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@samp: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@table: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-@var: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-braces: 2.2 Inserting Frequently Used Commands.
+* texinfo-insert-node-lines: 2.4.2 Other Updating Commands.
+* texinfo-make-menu: Updating Commands.
+* texinfo-master-menu: Updating Commands.
+* texinfo-multiple-files-update: D.2 texinfo-multiple-files-update.
+* texinfo-multiple-files-update (in brief): 2.4.2 Other Updating Commands.
+* texinfo-sequential-node-update: 2.4.2 Other Updating Commands.
+* texinfo-show-structure: 2.3 Showing the Section Structure of a File.
+* texinfo-show-structure: F.3 Using texinfo-show-structure.
+* texinfo-start-menu-description: 2.2 Inserting Frequently Used Commands.
+* texinfo-tex-buffer: 2.6 Formatting and Printing.
+* texinfo-tex-print: 2.6 Formatting and Printing.
+* texinfo-tex-region: 2.6 Formatting and Printing.
+* texinfo-update-node: Updating Commands.
+* thischapter: E.3 How to Make Your Own Headings.
+* thischaptername: E.3 How to Make Your Own Headings.
+* thisfile: E.3 How to Make Your Own Headings.
+* thispage: E.3 How to Make Your Own Headings.
+* thistitle: E.3 How to Make Your Own Headings.
+* tieaccent: 13.3 Inserting Accents.
+* tindex: 12.3 Defining the Entries of an Index.
+* title: 3.4.3 @title, @subtitle, and @author.
+* titlefont: 3.4.2 @titlefont, @center, and @sp.
+* titlepage: 3.4.1 @titlepage.
+* today: E.3 How to Make Your Own Headings.
+* top: 3.5 The `Top' Node and Master Menu.
+* top (@-command): 6.3.6 The @top Sectioning Command.
+* u (breve accent): 13.3 Inserting Accents.
+* ubaraccent: 13.3 Inserting Accents.
+* udotaccent: 13.3 Inserting Accents.
+* unmacro: 18.1 Defining Macros.
+* unnumbered: 5.5 @unnumbered and @appendix.
+* unnumberedsec: 5.8 @unnumberedsec, @appendixsec, @heading.
+* unnumberedsubsec: 5.10 The @subsection-like Commands.
+* unnumberedsubsubsec: 5.11 The `subsub' Commands.
+* up-list: 2.2 Inserting Frequently Used Commands.
+* uref: 8.8 @uref{url[, text][, replacement]}.
+* url: 9.1.14 @url{uniform-resource-locator}.
+* v (check accent): 13.3 Inserting Accents.
+* value: 16.4.1 @set and @value.
+* var: 9.1.6 @var{metasyntactic-variable}.
+* verb: 9.1.5 @verb{<char>text<char>}.
+* verbatim: 10.4 @verbatim: Literal Text.
+* verbatiminclude: 10.5 @verbatiminclude file: Include a File Verbatim.
+* vindex: 12.3 Defining the Entries of an Index.
+* vskip TeX vertical skip: 3.4.4 Copyright Page.
+* vtable: 11.3.1 @ftable and @vtable.
+* w (prevent line break): 14.3 @w{text}: Prevent Line Breaks.
+* xref: 8.3 @xref.
+
+

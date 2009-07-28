@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+
+@insertcopying
+
+@copying
+
+This is a copyright notice
+
+
+@copying
+
+And a second one (?)
+

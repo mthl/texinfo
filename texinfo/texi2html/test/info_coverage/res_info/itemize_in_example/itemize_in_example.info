@@ -1,0 +1,25 @@
+This is itemize_in_example.info, produced by makeinfo version 4.13 from
+itemize_in_example.texi.
+
+
+File: itemize_in_example.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+        * first
+
+          more.
+
+        as is
+
+        + item +
+
+        * a-n itemize line in an itemize line
+
+
+
+Tag Table:
+Node: Top98
+
+End Tag Table

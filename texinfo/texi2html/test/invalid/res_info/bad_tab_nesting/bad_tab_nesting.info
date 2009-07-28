@@ -1,0 +1,18 @@
+This is bad_tab_nesting.info, produced by makeinfo version 4.13 from
+bad_tab_nesting.texi.
+
+
+File: bad_tab_nesting.info,  Node: Top,  Up: (dir)
+
+Test for bad @tab nesting with style @-command
+**********************************************
+
+truc   bidule'
+`
+
+
+
+Tag Table:
+Node: Top92
+
+End Tag Table

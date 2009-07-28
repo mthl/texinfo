@@ -1,0 +1,8 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename images_quotes.info
+@node Top
+@top Top section
+
+@image{f--ile""\,,,alt""\}
+
+@bye

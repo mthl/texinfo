@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename menu_in_deffn.info
+
+@node Top
+@top Element
+
+@deffn a b c 
+@menu
+* (mynode)::
+@end menu
+@end deffn
+
+a
+
+@bye
+

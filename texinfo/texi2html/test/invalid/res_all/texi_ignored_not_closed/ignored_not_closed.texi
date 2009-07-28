@@ -1,0 +1,6 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+

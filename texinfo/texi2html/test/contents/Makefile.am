@@ -7,7 +7,7 @@ EXTRA_DIST = contents_at_begin.texi contents_at_end.texi \
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res* -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`

@@ -1,0 +1,27 @@
+This is exdent_and_commands.info, produced by makeinfo version 4.13 from
+exdent_and_commands.texi.
+
+
+File: exdent_and_commands.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+     quotation1
+in exdented protected eol  following
+in exdented a @* 
+     and following after exdented
+
+     example
+in exdented protected eol  following
+in exdented a @* 
+      and following
+     after exdented
+
+
+
+Tag Table:
+Node: Top100
+Ref: Count390
+
+End Tag Table

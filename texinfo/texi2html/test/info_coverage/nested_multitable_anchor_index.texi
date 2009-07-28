@@ -1,0 +1,24 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nested_multitable_anchor_index.info
+
+@node Top
+@top Element
+
+@multitable {truc AAAA   machin}    {bidule}
+@item 
+@multitable {AAAA} {machin}
+@item AAAA @tab machin @anchor{mark inside}
+@cindex index entry inside
+@end multitable
+ @tab bidule
+@item other item @tab in tab @anchor{mark}
+@cindex index entry
+@end multitable
+
+@printindex cp
+
+@xref{mark}.
+@xref{mark inside}.
+
+@bye

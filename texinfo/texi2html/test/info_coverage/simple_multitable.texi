@@ -1,0 +1,83 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_multitable.info
+
+@node Top
+@top Element
+
+@multitable @columnfractions 0.4 0.6
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@c comment in multitable
+@item mu--ltitable item 2 @tab multitable tab 2
+@cindex index entry within multitable
+@anchor{anchor in multitable}
+@item lone mu--ltitable item
+@end multitable
+
+@multitable {truc}    {bidule}
+@item truc @tab bidule
+@item   truc2     @tab bidule2
+@end multitable
+
+@multitable {t}    {b}
+@item AAAAAAAAAAAA @tab BBBBBBBBBBBBBBB
+@item A @tab B
+@item AA @tab BB
+@item AAA @tab BBB
+@item AAAA @tab BBBB
+@item 1 1 @tab 1 2B
+@item 1 3BB @tab 1 4BBB
+@item 2A 1 @tab AA AA
+@item 2A 3BB @tab 2A 4BBB
+@item 3AA 1 @tab 3AA 2B
+@item 3AA 3BB @tab 3AA 4BBB
+@item 4AAA 1 @tab 4AAA 2B
+@item 4AAA 3BB @tab 4AAA 4BBB
+@headitem he @tab th
+@end multitable
+
+@multitable {AA} {BB}
+@item a b @tab AA BB
+@item aa b @tab AA B
+@item aaa b @tab A BB
+@end multitable
+
+@multitable {A}
+@item A
+B
+@item a b
+@end multitable
+
+@multitable {A} {B}
+@item U
+V
+@tab u
+v
+@item a b
+@tab A B
+@end multitable
+
+@multitable {A} {B}
+@item A
+B
+
+C
+@tab G
+@item lsfd mlkdsf lk s
+mlsdmjlfdsjm mdsfk 
+@cindex index entry
+@item lsfd2 mlkdsf2 lk2 s2
+mlsdmjlfdsjm mdsfk2
+@tab ATTTTTTTTTTTTTTTTTTTTT
+BTTTTTTt @anchor{mark}
+
+CTTTTTT
+
+@end multitable
+
+@printindex cp
+@ref{mark}
+@ref{anchor in multitable}
+
+@bye

@@ -1,0 +1,54 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename anchor_paragraph.info
+
+@copying
+This is a very simple texi manual followed by tab @	 <>.
+followed by newline @
+followed by space @ aa.
+
+@strong{aaa @TeX{} @emph{in emph} after emph}.
+@end copying
+
+@c @frenchspacing on
+
+@node Top
+@top Element
+@anchor{anchor 0}
+
+Now @anchor{anchor1}. 
+
+No space@anchor{anchor2}. 
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+                                       BBBB
+
+AAA
+aflnfe ef fez f fe fez fe fez fez zef fe ezf fze                         after
+
+@anchor{anchor test paras}
+
+ This is a very simple texi manual followed by tab @	 <>.       
+followed by @ @ newline @
+@anchor{Anchor para 1}.
+followed by space @ aa.
+  space before
+and end para.
+
+
+@env{env, alone}.
+
+@strong{aaa @TeX{} @emph{in emph} after 
+@c emph @emph{emph2 @anchor{anchor in emph} }}.
+emph @emph{emph2 @anchor{anchor in emph}}}.
+
+Another para.
+
+@emph{@strong{First strong para.
+
+Second strong para.
+}
+}
+
+@bye

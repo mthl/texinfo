@@ -1,0 +1,5 @@
+Element
+*******
+
+Just before an image [ this_is_a_long_unknown_file.png ] text after the image, and more text, and more [ this_is_a_long_unknown_file.png ] text.
+

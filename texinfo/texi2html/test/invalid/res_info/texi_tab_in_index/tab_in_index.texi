@@ -1,0 +1,22 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename tab_in_index.info
+
+@node Top
+@top Test for @@tab in @@index
+
+@multitable {one nonlettered character} {normal text}
+@item one nonlettered character @tab aaa
+@vindex in index entry @tab in tab
+@end multitable
+
+@multitable {aaa} {bbb}
+@vindex @item on item line
+@end multitable
+
+
+
+@printindex vr
+
+
+@bye

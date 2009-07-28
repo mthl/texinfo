@@ -1,0 +1,18 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename float_long_captions.info
+
+@node Top
+@top Test floats with long captions
+
+@float Text, text1
+@caption{AAAAAAAAAAAAAAAA BBBBB CCCCCCCCCCC}
+@end float
+
+@float Text, text2
+@caption{AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC}
+@end float
+
+@listoffloats Text
+
+@bye

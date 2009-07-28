@@ -1,0 +1,13 @@
+Test for definition commands
+****************************
+
+i.
+
+ -- fset: i a g
+deff lines
+
+ -- aa: bb cc
+ -- aax: bbx ccx
+deffnx lines
+
+

@@ -1,0 +1,11 @@
+Element
+*******
+
+You can obtain the newest version of `config.guess' and
+`config.sub' from the CVS of the `config' project at
+`http://savannah.gnu.org/'. The commands to fetch them are
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain'
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain'
+Less recent versions are also contained in the GNU automake and
+GNU libtool packages.
+

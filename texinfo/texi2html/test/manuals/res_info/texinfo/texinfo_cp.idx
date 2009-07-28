@@ -1,0 +1,4866 @@
+key: !
+  origin_href: texinfo#index-_00a1
+  entry: !
+  texi_entry: @exclamdown{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: $ 
+  origin_href: texinfo#index-_0024-
+  entry: $ 
+  texi_entry: $ @c Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $ comment
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: (dir) as Up node of Top node
+  origin_href: texinfo#index-_0028dir_0029-as-Up-node-of-Top-node
+  entry: (dir) as Up node of Top node
+  texi_entry: (dir) as Up node of Top node
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: -D DIR
+  origin_href: texinfo#index-_002dD-dir
+  entry: `-D DIR'
+  texi_entry: @code{-D @var{dir}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -D VAR
+  origin_href: texinfo#index-_002dD-var
+  entry: `-D VAR'
+  texi_entry: @code{-D @var{var}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -F
+  origin_href: texinfo#index-_002dF
+  entry: `-F'
+  texi_entry: @code{-F}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -I DIR
+  origin_href: texinfo#index-_002dI-dir
+  entry: `-I DIR'
+  texi_entry: @code{-I @var{dir}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -P DIR
+  origin_href: texinfo#index-_002dP-dir
+  entry: `-P DIR'
+  texi_entry: @code{-P @var{dir}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -V
+  origin_href: texinfo#index-_002dV
+  entry: `-V'
+  texi_entry: @code{-V}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -V 
+  origin_href: texinfo#index-_002dV-1
+  entry: `-V'
+  texi_entry: @code{-V}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -commands-in-node-names
+  origin_href: texinfo#index-_002d_002dcommands_002din_002dnode_002dnames
+  entry: `--commands-in-node-names'
+  texi_entry: @code{--commands-in-node-names}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -d NAME
+  origin_href: texinfo#index-_002dd-name
+  entry: `-d NAME'
+  texi_entry: @code{-d @var{name}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -delete
+  origin_href: texinfo#index-_002d_002ddelete
+  entry: `--delete'
+  texi_entry: @code{--delete}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -dir-file=NAME
+  origin_href: texinfo#index-_002d_002ddir_002dfile_003dname
+  entry: `--dir-file=NAME'
+  texi_entry: @code{--dir-file=@var{name}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -docbook
+  origin_href: texinfo#index-_002d_002ddocbook
+  entry: `--docbook'
+  texi_entry: @code{--docbook}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -e LIMIT
+  origin_href: texinfo#index-_002de-limit
+  entry: `-e LIMIT'
+  texi_entry: @code{-e @var{limit}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -e TEXT
+  origin_href: texinfo#index-_002de-text
+  entry: `-e TEXT'
+  texi_entry: @code{-e @var{text}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -entry=TEXT
+  origin_href: texinfo#index-_002d_002dentry_003dtext
+  entry: `--entry=TEXT'
+  texi_entry: @code{--entry=@var{text}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -error-limit=LIMIT
+  origin_href: texinfo#index-_002d_002derror_002dlimit_003dlimit
+  entry: `--error-limit=LIMIT'
+  texi_entry: @code{--error-limit=@var{limit}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -f WIDTH
+  origin_href: texinfo#index-_002df-width
+  entry: `-f WIDTH'
+  texi_entry: @code{-f @var{width}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -fill-column=WIDTH
+  origin_href: texinfo#index-_002d_002dfill_002dcolumn_003dwidth
+  entry: `--fill-column=WIDTH'
+  texi_entry: @code{--fill-column=@var{width}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -footnote-style=STYLE
+  origin_href: texinfo#index-_002d_002dfootnote_002dstyle_003dstyle
+  entry: `--footnote-style=STYLE'
+  texi_entry: @code{--footnote-style=@var{style}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -force
+  origin_href: texinfo#index-_002d_002dforce
+  entry: `--force'
+  texi_entry: @code{--force}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -h
+  origin_href: texinfo#index-_002dh
+  entry: `-h'
+  texi_entry: @code{-h}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -h 
+  origin_href: texinfo#index-_002dh-1
+  entry: `-h'
+  texi_entry: @code{-h}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -help
+  origin_href: texinfo#index-_002d_002dhelp
+  entry: `--help'
+  texi_entry: @code{--help}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -help 
+  origin_href: texinfo#index-_002d_002dhelp-1
+  entry: `--help'
+  texi_entry: @code{--help}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -html
+  origin_href: texinfo#index-_002d_002dhtml
+  entry: `--html'
+  texi_entry: @code{--html}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -i FILE
+  origin_href: texinfo#index-_002di-file
+  entry: `-i FILE'
+  texi_entry: @code{-i @var{file}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -info-dir=DIR
+  origin_href: texinfo#index-_002d_002dinfo_002ddir_003ddir
+  entry: `--info-dir=DIR'
+  texi_entry: @code{--info-dir=@var{dir}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -info-file=FILE
+  origin_href: texinfo#index-_002d_002dinfo_002dfile_003dfile
+  entry: `--info-file=FILE'
+  texi_entry: @code{--info-file=@var{file}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -item=TEXT
+  origin_href: texinfo#index-_002d_002ditem_003dtext
+  entry: `--item=TEXT'
+  texi_entry: @code{--item=@var{text}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -no-headers
+  origin_href: texinfo#index-_002d_002dno_002dheaders
+  entry: `--no-headers'
+  texi_entry: @code{--no-headers}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -no-number-footnotes
+  origin_href: texinfo#index-_002d_002dno_002dnumber_002dfootnotes
+  entry: `--no-number-footnotes'
+  texi_entry: @code{--no-number-footnotes}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -no-pointer-validate
+  origin_href: texinfo#index-_002d_002dno_002dpointer_002dvalidate
+  entry: `--no-pointer-validate'
+  texi_entry: @code{--no-pointer-validate}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -no-split
+  origin_href: texinfo#index-_002d_002dno_002dsplit
+  entry: `--no-split'
+  texi_entry: @code{--no-split}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -no-validate
+  origin_href: texinfo#index-_002d_002dno_002dvalidate
+  entry: `--no-validate'
+  texi_entry: @code{--no-validate}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -no-warn
+  origin_href: texinfo#index-_002d_002dno_002dwarn
+  entry: `--no-warn'
+  texi_entry: @code{--no-warn}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -number-sections
+  origin_href: texinfo#index-_002d_002dnumber_002dsections
+  entry: `--number-sections'
+  texi_entry: @code{--number-sections}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -o FILE
+  origin_href: texinfo#index-_002do-file
+  entry: `-o FILE'
+  texi_entry: @code{-o @var{file}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -output=FILE
+  origin_href: texinfo#index-_002d_002doutput_003dfile
+  entry: `--output=FILE'
+  texi_entry: @code{--output=@var{file}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -p INDENT
+  origin_href: texinfo#index-_002dp-indent
+  entry: `-p INDENT'
+  texi_entry: @code{-p @var{indent}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -paragraph-indent=INDENT
+  origin_href: texinfo#index-_002d_002dparagraph_002dindent_003dindent
+  entry: `--paragraph-indent=INDENT'
+  texi_entry: @code{--paragraph-indent=@var{indent}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -quiet
+  origin_href: texinfo#index-_002d_002dquiet
+  entry: `--quiet'
+  texi_entry: @code{--quiet}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -r
+  origin_href: texinfo#index-_002dr
+  entry: `-r'
+  texi_entry: @code{-r}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -r LIMIT
+  origin_href: texinfo#index-_002dr-limit
+  entry: `-r LIMIT'
+  texi_entry: @code{-r @var{limit}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -reference-limit=LIMIT
+  origin_href: texinfo#index-_002d_002dreference_002dlimit_003dlimit
+  entry: `--reference-limit=LIMIT'
+  texi_entry: @code{--reference-limit=@var{limit}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -remove
+  origin_href: texinfo#index-_002d_002dremove
+  entry: `--remove'
+  texi_entry: @code{--remove}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -s SEC
+  origin_href: texinfo#index-_002ds-sec
+  entry: `-s SEC'
+  texi_entry: @code{-s @var{sec}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -s STYLE
+  origin_href: texinfo#index-_002ds-style
+  entry: `-s STYLE'
+  texi_entry: @code{-s @var{style}}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -section=SEC
+  origin_href: texinfo#index-_002d_002dsection_003dsec
+  entry: `--section=SEC'
+  texi_entry: @code{--section=@var{sec}}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -verbose
+  origin_href: texinfo#index-_002d_002dverbose
+  entry: `--verbose'
+  texi_entry: @code{--verbose}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -version
+  origin_href: texinfo#index-_002d_002dversion
+  entry: `--version'
+  texi_entry: @code{--version}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: -version 
+  origin_href: texinfo#index-_002d_002dversion-1
+  entry: `--version'
+  texi_entry: @code{--version}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: -xml
+  origin_href: texinfo#index-_002d_002dxml
+  entry: `--xml'
+  texi_entry: @code{--xml}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: .cshrc initialization file
+  origin_href: texinfo#index-_002ecshrc-initialization-file
+  entry: .cshrc initialization file
+  texi_entry: @b{.cshrc} initialization file
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: .profile initialization file
+  origin_href: texinfo#index-_002eprofile-initialization-file
+  entry: .profile initialization file
+  texi_entry: @b{.profile} initialization file
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: <URL convention, not used
+  origin_href: texinfo#index-_003cURL-convention_002c-not-used
+  entry: <URL convention, not used
+  texi_entry: <URL convention, not used
+  element_href: texinfo#uref
+  element_text: uref
+key: <meta> HTML tag, and document description
+  origin_href: texinfo#index-_003cmeta_003e-HTML-tag_002c-and-document-description
+  entry: <meta> HTML tag, and document description
+  texi_entry: <meta> HTML tag, and document description
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: <title> HTML tag
+  origin_href: texinfo#index-_003ctitle_003e-HTML-tag
+  entry: <title> HTML tag
+  texi_entry: <title> HTML tag
+  element_href: texinfo#settitle
+  element_text: settitle
+key: ?
+  origin_href: texinfo#index-_00bf
+  entry: ?
+  texi_entry: @questiondown{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: @-command list
+  origin_href: texinfo#index-_0040_002dcommand-list
+  entry: @-command list
+  texi_entry: @@-command list
+  element_href: texinfo#Command-List
+  element_text: Command List
+key: @-command syntax
+  origin_href: texinfo#index-_0040_002dcommand-syntax
+  entry: @-command syntax
+  texi_entry: @@-command syntax
+  element_href: texinfo#Command-Syntax
+  element_text: Command Syntax
+key: @-commands
+  origin_href: texinfo#index-_0040_002dcommands
+  entry: @-commands
+  texi_entry: @@-commands
+  element_href: texinfo#Formatting-Commands
+  element_text: Formatting Commands
+key: @-commands in @node, limited support
+  origin_href: texinfo#index-_0040_002dcommands-in-_0040node_002c-limited-support
+  entry: @-commands in @node, limited support
+  texi_entry: @@-commands in @@node, limited support
+  element_href: texinfo#Pointer-Validation
+  element_text: Pointer Validation
+key: @-commands in nodename
+  origin_href: texinfo#index-_0040_002dcommands-in-nodename
+  entry: @-commands in nodename
+  texi_entry: @@-commands in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: @value in @node lines
+  origin_href: texinfo#index-_0040value-in-_0040node-lines
+  entry: @value in @node lines
+  texi_entry: @@value in @@node lines
+  element_href: texinfo#Pointer-Validation
+  element_text: Pointer Validation
+key: A4 paper, printing on
+  origin_href: texinfo#index-A4-paper_002c-printing-on
+  entry: A4 paper, printing on
+  texi_entry: A4 paper, printing on
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: A5 paper, printing on
+  origin_href: texinfo#index-A5-paper_002c-printing-on
+  entry: A5 paper, printing on
+  texi_entry: A5 paper, printing on
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: AA
+  origin_href: texinfo#index-AA-1
+  entry: AA
+  texi_entry: @AA{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: AE
+  origin_href: texinfo#index-AE-1
+  entry: AE
+  texi_entry: @AE{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ASCII text output
+  origin_href: texinfo#index-ASCII-text-output
+  entry: ASCII text output
+  texi_entry: ASCII text output
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Abbreviations for keys
+  origin_href: texinfo#index-Abbreviations-for-keys
+  entry: Abbreviations for keys
+  texi_entry: Abbreviations for keys
+  element_href: texinfo#key
+  element_text: key
+key: Abbreviations, tagging
+  origin_href: texinfo#index-Abbreviations_002c-tagging
+  entry: Abbreviations, tagging
+  texi_entry: Abbreviations, tagging
+  element_href: texinfo#acronym
+  element_text: acronym
+key: Abstract of document
+  origin_href: texinfo#index-Abstract-of-document
+  entry: Abstract of document
+  texi_entry: Abstract of document
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: Accents, inserting
+  origin_href: texinfo#index-Accents_002c-inserting
+  entry: Accents, inserting
+  texi_entry: Accents, inserting
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Acronyms, tagging
+  origin_href: texinfo#index-Acronyms_002c-tagging
+  entry: Acronyms, tagging
+  texi_entry: Acronyms, tagging
+  element_href: texinfo#acronym
+  element_text: acronym
+key: Acute accent
+  origin_href: texinfo#index-Acute-accent
+  entry: Acute accent
+  texi_entry: Acute accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Adding a new Info file
+  origin_href: texinfo#index-Adding-a-new-Info-file
+  entry: Adding a new Info file
+  texi_entry: Adding a new Info file
+  element_href: texinfo#New-Info-File
+  element_text: New Info File
+key: Aliases, command
+  origin_href: texinfo#index-Aliases_002c-command
+  entry: Aliases, command
+  texi_entry: Aliases, command
+  element_href: texinfo#alias
+  element_text: alias
+key: Alphabetical @-command list
+  origin_href: texinfo#index-Alphabetical-_0040_002dcommand-list
+  entry: Alphabetical @-command list
+  texi_entry: Alphabetical @@-command list
+  element_href: texinfo#Command-List
+  element_text: Command List
+key: Anchors
+  origin_href: texinfo#index-Anchors
+  entry: Anchors
+  texi_entry: Anchors
+  element_href: texinfo#anchor
+  element_text: anchor
+key: Another Info directory
+  origin_href: texinfo#index-Another-Info-directory
+  entry: Another Info directory
+  texi_entry: Another Info directory
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: Apostrophe in nodename
+  origin_href: texinfo#index-Apostrophe-in-nodename
+  entry: Apostrophe in nodename
+  texi_entry: Apostrophe in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Arguments, repeated and optional
+  origin_href: texinfo#index-Arguments_002c-repeated-and-optional
+  entry: Arguments, repeated and optional
+  texi_entry: Arguments, repeated and optional
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: Aspect ratio of images
+  origin_href: texinfo#index-Aspect-ratio-of-images
+  entry: Aspect ratio of images
+  texi_entry: Aspect ratio of images
+  element_href: texinfo#Images
+  element_text: Images
+key: Automatic pointer creation with `makeinfo'
+  origin_href: texinfo#index-Automatic-pointer-creation-with-makeinfo
+  entry: Automatic pointer creation with `makeinfo'
+  texi_entry: Automatic pointer creation with @code{makeinfo}
+  element_href: texinfo#makeinfo-Pointer-Creation
+  element_text: makeinfo Pointer Creation
+key: Automatically insert nodes, menus
+  origin_href: texinfo#index-Automatically-insert-nodes_002c-menus
+  entry: Automatically insert nodes, menus
+  texi_entry: Automatically insert nodes, menus
+  element_href: texinfo#Updating-Nodes-and-Menus
+  element_text: Updating Nodes and Menus
+key: Auxiliary files, avoiding
+  origin_href: texinfo#index-Auxiliary-files_002c-avoiding
+  entry: Auxiliary files, avoiding
+  texi_entry: Auxiliary files, avoiding
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: B5 paper, printing on
+  origin_href: texinfo#index-B5-paper_002c-printing-on
+  entry: B5 paper, printing on
+  texi_entry: B5 paper, printing on
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Backslash in macros
+  origin_href: texinfo#index-Backslash-in-macros
+  entry: Backslash in macros
+  texi_entry: Backslash in macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Backslash, and macros
+  origin_href: texinfo#index-Backslash_002c-and-macros
+  entry: Backslash, and macros
+  texi_entry: Backslash, and macros
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Badly referenced nodes
+  origin_href: texinfo#index-Badly-referenced-nodes
+  entry: Badly referenced nodes
+  texi_entry: Badly referenced nodes
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: Bastard title page
+  origin_href: texinfo#index-Bastard-title-page
+  entry: Bastard title page
+  texi_entry: Bastard title page
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: Batch formatting for Info
+  origin_href: texinfo#index-Batch-formatting-for-Info
+  entry: Batch formatting for Info
+  texi_entry: Batch formatting for Info
+  element_href: texinfo#Batch-Formatting
+  element_text: Batch Formatting
+key: Beginning a Texinfo file
+  origin_href: texinfo#index-Beginning-a-Texinfo-file
+  entry: Beginning a Texinfo file
+  texi_entry: Beginning a Texinfo file
+  element_href: texinfo#Beginning-a-File
+  element_text: Beginning a File
+key: Beginning line of a Texinfo file
+  origin_href: texinfo#index-Beginning-line-of-a-Texinfo-file
+  entry: Beginning line of a Texinfo file
+  texi_entry: Beginning line of a Texinfo file
+  element_href: texinfo#First-Line
+  element_text: First Line
+key: Berry, Karl
+  origin_href: texinfo#index-Berry_002c-Karl
+  entry: Berry, Karl
+  texi_entry: Berry, Karl
+  element_href: texinfo#History
+  element_text: History
+key: Big points
+  origin_href: texinfo#index-Big-points
+  entry: Big points
+  texi_entry: Big points
+  element_href: texinfo#Images
+  element_text: Images
+key: Black rectangle in hardcopy
+  origin_href: texinfo#index-Black-rectangle-in-hardcopy
+  entry: Black rectangle in hardcopy
+  texi_entry: Black rectangle in hardcopy
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Blank lines
+  origin_href: texinfo#index-Blank-lines
+  entry: Blank lines
+  texi_entry: Blank lines
+  element_href: texinfo#sp
+  element_text: sp
+key: BoTeX
+  origin_href: texinfo#index-BoTeX
+  entry: BoTeX
+  texi_entry: Bo@TeX{}
+  element_href: texinfo#History
+  element_text: History
+key: Body of a macro
+  origin_href: texinfo#index-Body-of-a-macro
+  entry: Body of a macro
+  texi_entry: Body of a macro
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Bolio
+  origin_href: texinfo#index-Bolio
+  entry: Bolio
+  texi_entry: Bolio
+  element_href: texinfo#History
+  element_text: History
+key: Book characteristics, printed
+  origin_href: texinfo#index-Book-characteristics_002c-printed
+  entry: Book characteristics, printed
+  texi_entry: Book characteristics, printed
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: Book, printing small
+  origin_href: texinfo#index-Book_002c-printing-small
+  entry: Book, printing small
+  texi_entry: Book, printing small
+  element_href: texinfo#smallbook
+  element_text: smallbook
+key: Box with rounded corners
+  origin_href: texinfo#index-Box-with-rounded-corners
+  entry: Box with rounded corners
+  texi_entry: Box with rounded corners
+  element_href: texinfo#cartouche
+  element_text: cartouche
+key: Box, ugly black in hardcopy
+  origin_href: texinfo#index-Box_002c-ugly-black-in-hardcopy
+  entry: Box, ugly black in hardcopy
+  texi_entry: Box, ugly black in hardcopy
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Braces and argument syntax
+  origin_href: texinfo#index-Braces-and-argument-syntax
+  entry: Braces and argument syntax
+  texi_entry: Braces and argument syntax
+  element_href: texinfo#Command-Syntax
+  element_text: Command Syntax
+key: Braces, in macro arguments
+  origin_href: texinfo#index-Braces_002c-in-macro-arguments
+  entry: Braces, in macro arguments
+  texi_entry: Braces, in macro arguments
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Braces, inserting
+  origin_href: texinfo#index-Braces_002c-inserting
+  entry: Braces, inserting
+  texi_entry: Braces, inserting
+  element_href: texinfo#Braces-Atsigns
+  element_text: Braces Atsigns
+key: Braces, when to use
+  origin_href: texinfo#index-Braces_002c-when-to-use
+  entry: Braces, when to use
+  texi_entry: Braces, when to use
+  element_href: texinfo#Formatting-Commands
+  element_text: Formatting Commands
+key: Breaks in a line
+  origin_href: texinfo#index-Breaks-in-a-line
+  entry: Breaks in a line
+  texi_entry: Breaks in a line
+  element_href: texinfo#Line-Breaks
+  element_text: Line Breaks
+key: Breve accent
+  origin_href: texinfo#index-Breve-accent
+  entry: Breve accent
+  texi_entry: Breve accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Buffer formatting and printing
+  origin_href: texinfo#index-Buffer-formatting-and-printing
+  entry: Buffer formatting and printing
+  texi_entry: Buffer formatting and printing
+  element_href: texinfo#Printing
+  element_text: Printing
+key: Bugs, reporting
+  origin_href: texinfo#index-Bugs_002c-reporting
+  entry: Bugs, reporting
+  texi_entry: Bugs, reporting
+  element_href: texinfo#Reporting-Bugs
+  element_text: Reporting Bugs
+key: Bullets, inserting
+  origin_href: texinfo#index-Bullets_002c-inserting
+  entry: Bullets, inserting
+  texi_entry: Bullets, inserting
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  origin_href: texinfo#index-CVS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo
+  entry: CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  texi_entry: CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: Case in node name
+  origin_href: texinfo#index-Case-in-node-name
+  entry: Case in node name
+  texi_entry: Case in node name
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Case, not altering in `code'
+  origin_href: texinfo#index-Case_002c-not-altering-in-_0040code
+  entry: Case, not altering in `@code'
+  texi_entry: Case, not altering in @code{@@code}
+  element_href: texinfo#code
+  element_text: code
+key: Catching errors with Info formatting
+  origin_href: texinfo#index-Catching-errors-with-Info-formatting
+  entry: Catching errors with Info formatting
+  texi_entry: Catching errors with Info formatting
+  element_href: texinfo#Debugging-with-Info
+  element_text: Debugging with Info
+key: Catching errors with TeX formatting
+  origin_href: texinfo#index-Catching-errors-with-TeX-formatting
+  entry: Catching errors with TeX formatting
+  texi_entry: Catching errors with @TeX{} formatting
+  element_href: texinfo#Debugging-with-TeX
+  element_text: Debugging with TeX
+key: Catching mistakes
+  origin_href: texinfo#index-Catching-mistakes
+  entry: Catching mistakes
+  texi_entry: Catching mistakes
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Cedilla accent
+  origin_href: texinfo#index-Cedilla-accent
+  entry: Cedilla accent
+  texi_entry: Cedilla accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Centimeters
+  origin_href: texinfo#index-Centimeters
+  entry: Centimeters
+  texi_entry: Centimeters
+  element_href: texinfo#Images
+  element_text: Images
+key: Chapter structuring
+  origin_href: texinfo#index-Chapter-structuring
+  entry: Chapter structuring
+  texi_entry: Chapter structuring
+  element_href: texinfo#Structuring
+  element_text: Structuring
+key: Chapters, formatting one at a time
+  origin_href: texinfo#index-Chapters_002c-formatting-one-at-a-time
+  entry: Chapters, formatting one at a time
+  texi_entry: Chapters, formatting one at a time
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Characteristics, printed books or manuals
+  origin_href: texinfo#index-Characteristics_002c-printed-books-or-manuals
+  entry: Characteristics, printed books or manuals
+  texi_entry: Characteristics, printed books or manuals
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: Characters, invalid in node name
+  origin_href: texinfo#index-Characters_002c-invalid-in-node-name
+  entry: Characters, invalid in node name
+  texi_entry: Characters, invalid in node name
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Chassell, Robert J.
+  origin_href: texinfo#index-Chassell_002c-Robert-J_002e
+  entry: Chassell, Robert J.
+  texi_entry: Chassell, Robert J.
+  element_href: texinfo#History
+  element_text: History
+key: Check accent
+  origin_href: texinfo#index-Check-accent
+  entry: Check accent
+  texi_entry: Check accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Checking for badly referenced nodes
+  origin_href: texinfo#index-Checking-for-badly-referenced-nodes
+  entry: Checking for badly referenced nodes
+  texi_entry: Checking for badly referenced nodes
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: Checklist for bug reports
+  origin_href: texinfo#index-Checklist-for-bug-reports
+  entry: Checklist for bug reports
+  texi_entry: Checklist for bug reports
+  element_href: texinfo#Reporting-Bugs
+  element_text: Reporting Bugs
+key: Ciceros
+  origin_href: texinfo#index-Ciceros
+  entry: Ciceros
+  texi_entry: Ciceros
+  element_href: texinfo#Images
+  element_text: Images
+key: Circumflex accent
+  origin_href: texinfo#index-Circumflex-accent
+  entry: Circumflex accent
+  texi_entry: Circumflex accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Colon in nodename
+  origin_href: texinfo#index-Colon-in-nodename
+  entry: Colon in nodename
+  texi_entry: Colon in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Column widths, defining for multitables
+  origin_href: texinfo#index-Column-widths_002c-defining-for-multitables
+  entry: Column widths, defining for multitables
+  texi_entry: Column widths, defining for multitables
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: Combining indices
+  origin_href: texinfo#index-Combining-indices
+  entry: Combining indices
+  texi_entry: Combining indices
+  element_href: texinfo#Combining-Indices
+  element_text: Combining Indices
+key: Comma in nodename
+  origin_href: texinfo#index-Comma-in-nodename
+  entry: Comma in nodename
+  texi_entry: Comma in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Comma, in macro arguments
+  origin_href: texinfo#index-Comma_002c-in-macro-arguments
+  entry: Comma, in macro arguments
+  texi_entry: Comma, in macro arguments
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Command aliases
+  origin_href: texinfo#index-Command-aliases
+  entry: Command aliases
+  texi_entry: Command aliases
+  element_href: texinfo#alias
+  element_text: alias
+key: Command definitions
+  origin_href: texinfo#index-Command-definitions
+  entry: Command definitions
+  texi_entry: Command definitions
+  element_href: texinfo#Sample-Function-Definition
+  element_text: Sample Function Definition
+key: Command names, indicating
+  origin_href: texinfo#index-Command-names_002c-indicating
+  entry: Command names, indicating
+  texi_entry: Command names, indicating
+  element_href: texinfo#command
+  element_text: command
+key: Command syntax
+  origin_href: texinfo#index-Command-syntax
+  entry: Command syntax
+  texi_entry: Command syntax
+  element_href: texinfo#Command-Syntax
+  element_text: Command Syntax
+key: Commands to insert special characters
+  origin_href: texinfo#index-Commands-to-insert-special-characters
+  entry: Commands to insert special characters
+  texi_entry: Commands to insert special characters
+  element_href: texinfo#Braces-Atsigns
+  element_text: Braces Atsigns
+key: Commands using raw HTML
+  origin_href: texinfo#index-Commands-using-raw-HTML
+  entry: Commands using raw HTML
+  texi_entry: Commands using raw HTML
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Commands using raw TeX
+  origin_href: texinfo#index-Commands-using-raw-TeX
+  entry: Commands using raw TeX
+  texi_entry: Commands using raw @TeX{}
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Commands, inserting them
+  origin_href: texinfo#index-Commands_002c-inserting-them
+  entry: Commands, inserting them
+  texi_entry: Commands, inserting them
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: Comments
+  origin_href: texinfo#index-Comments
+  entry: Comments
+  texi_entry: Comments
+  element_href: texinfo#Comments
+  element_text: Comments
+key: Compile command for formatting
+  origin_href: texinfo#index-Compile-command-for-formatting
+  entry: Compile command for formatting
+  texi_entry: Compile command for formatting
+  element_href: texinfo#Compile_002dCommand
+  element_text: Compile-Command
+key: Compressed files, reading
+  origin_href: texinfo#index-Compressed-files_002c-reading
+  entry: Compressed files, reading
+  texi_entry: Compressed files, reading
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: Conditionally visible text
+  origin_href: texinfo#index-Conditionally-visible-text
+  entry: Conditionally visible text
+  texi_entry: Conditionally visible text
+  element_href: texinfo#Conditionals
+  element_text: Conditionals
+key: Conditions for copying Texinfo
+  origin_href: texinfo#index-Conditions-for-copying-Texinfo
+  entry: Conditions for copying Texinfo
+  texi_entry: Conditions for copying Texinfo
+  element_href: texinfo#Copying-Conditions
+  element_text: Copying Conditions
+key: Contents, Table of
+  origin_href: texinfo#index-Contents_002c-Table-of
+  entry: Contents, Table of
+  texi_entry: Contents, Table of
+  element_href: texinfo#Contents
+  element_text: Contents
+key: Contents, after title page
+  origin_href: texinfo#index-Contents_002c-after-title-page
+  entry: Contents, after title page
+  texi_entry: Contents, after title page
+  element_href: texinfo#Contents
+  element_text: Contents
+key: Contents-like outline of file structure
+  origin_href: texinfo#index-Contents_002dlike-outline-of-file-structure
+  entry: Contents-like outline of file structure
+  texi_entry: Contents-like outline of file structure
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Conventions for writing definitions
+  origin_href: texinfo#index-Conventions-for-writing-definitions
+  entry: Conventions for writing definitions
+  texi_entry: Conventions for writing definitions
+  element_href: texinfo#Def-Cmd-Conventions
+  element_text: Def Cmd Conventions
+key: Conventions, syntactic
+  origin_href: texinfo#index-Conventions_002c-syntactic
+  entry: Conventions, syntactic
+  texi_entry: Conventions, syntactic
+  element_href: texinfo#Conventions
+  element_text: Conventions
+key: Conversion, from Docbook to Texinfo
+  origin_href: texinfo#index-Conversion_002c-from-Docbook-to-Texinfo
+  entry: Conversion, from Docbook to Texinfo
+  texi_entry: Conversion, from Docbook to Texinfo
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Copying Permissions
+  origin_href: texinfo#index-Copying-Permissions
+  entry: Copying Permissions
+  texi_entry: Copying Permissions
+  element_href: texinfo#Document-Permissions
+  element_text: Document Permissions
+key: Copying conditions
+  origin_href: texinfo#index-Copying-conditions
+  entry: Copying conditions
+  texi_entry: Copying conditions
+  element_href: texinfo#Copying-Conditions
+  element_text: Copying Conditions
+key: Copying software
+  origin_href: texinfo#index-Copying-software
+  entry: Copying software
+  texi_entry: Copying software
+  element_href: texinfo#Software-Copying-Permissions
+  element_text: Software Copying Permissions
+key: Copying text, including
+  origin_href: texinfo#index-Copying-text_002c-including
+  entry: Copying text, including
+  texi_entry: Copying text, including
+  element_href: texinfo#insertcopying
+  element_text: insertcopying
+key: Copyright owner for FSF works
+  origin_href: texinfo#index-Copyright-owner-for-FSF-works
+  entry: Copyright owner for FSF works
+  texi_entry: Copyright owner for FSF works
+  element_href: texinfo#copying
+  element_text: copying
+key: Copyright page
+  origin_href: texinfo#index-Copyright-page
+  entry: Copyright page
+  texi_entry: Copyright page
+  element_href: texinfo#Copyright
+  element_text: Copyright
+key: Copyright page, for plain text
+  origin_href: texinfo#index-Copyright-page_002c-for-plain-text
+  entry: Copyright page, for plain text
+  texi_entry: Copyright page, for plain text
+  element_href: texinfo#Titlepage-_0026-Copyright-Page
+  element_text: Titlepage & Copyright Page
+key: Copyright word, always in English
+  origin_href: texinfo#index-Copyright-word_002c-always-in-English
+  entry: Copyright word, always in English
+  texi_entry: Copyright word, always in English
+  element_href: texinfo#copying
+  element_text: copying
+key: Correcting mistakes
+  origin_href: texinfo#index-Correcting-mistakes
+  entry: Correcting mistakes
+  texi_entry: Correcting mistakes
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Create nodes, menus automatically
+  origin_href: texinfo#index-Create-nodes_002c-menus-automatically
+  entry: Create nodes, menus automatically
+  texi_entry: Create nodes, menus automatically
+  element_href: texinfo#Updating-Nodes-and-Menus
+  element_text: Updating Nodes and Menus
+key: Creating an Info file
+  origin_href: texinfo#index-Creating-an-Info-file
+  entry: Creating an Info file
+  texi_entry: Creating an Info file
+  element_href: texinfo#Creating-an-Info-File
+  element_text: Creating an Info File
+key: Creating an unsplit file
+  origin_href: texinfo#index-Creating-an-unsplit-file
+  entry: Creating an unsplit file
+  texi_entry: Creating an unsplit file
+  element_href: texinfo#Unsplit
+  element_text: Unsplit
+key: Creating index entries
+  origin_href: texinfo#index-Creating-index-entries
+  entry: Creating index entries
+  texi_entry: Creating index entries
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Creating pointers with `makeinfo'
+  origin_href: texinfo#index-Creating-pointers-with-makeinfo
+  entry: Creating pointers with `makeinfo'
+  texi_entry: Creating pointers with @code{makeinfo}
+  element_href: texinfo#makeinfo-Pointer-Creation
+  element_text: makeinfo Pointer Creation
+key: Cropmarks for printing
+  origin_href: texinfo#index-Cropmarks-for-printing
+  entry: Cropmarks for printing
+  texi_entry: Cropmarks for printing
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: Cross reference parts
+  origin_href: texinfo#index-Cross-reference-parts
+  entry: Cross reference parts
+  texi_entry: Cross reference parts
+  element_href: texinfo#Cross-Reference-Parts
+  element_text: Cross Reference Parts
+key: Cross references
+  origin_href: texinfo#index-Cross-references
+  entry: Cross references
+  texi_entry: Cross references
+  element_href: texinfo#Cross-References
+  element_text: Cross References
+key: Cross references using `inforef'
+  origin_href: texinfo#index-Cross-references-using-_0040inforef
+  entry: Cross references using `@inforef'
+  texi_entry: Cross references using @code{@@inforef}
+  element_href: texinfo#inforef
+  element_text: inforef
+key: Cross references using `pxref'
+  origin_href: texinfo#index-Cross-references-using-_0040pxref
+  entry: Cross references using `@pxref'
+  texi_entry: Cross references using @code{@@pxref}
+  element_href: texinfo#pxref
+  element_text: pxref
+key: Cross references using `ref'
+  origin_href: texinfo#index-Cross-references-using-_0040ref
+  entry: Cross references using `@ref'
+  texi_entry: Cross references using @code{@@ref}
+  element_href: texinfo#ref
+  element_text: ref
+key: Cross references using `xref'
+  origin_href: texinfo#index-Cross-references-using-_0040xref
+  entry: Cross references using `@xref'
+  texi_entry: Cross references using @code{@@xref}
+  element_href: texinfo#xref
+  element_text: xref
+key: Cross-reference targets, arbitrary
+  origin_href: texinfo#index-Cross_002dreference-targets_002c-arbitrary
+  entry: Cross-reference targets, arbitrary
+  texi_entry: Cross-reference targets, arbitrary
+  element_href: texinfo#anchor
+  element_text: anchor
+key: Custom page sizes
+  origin_href: texinfo#index-Custom-page-sizes
+  entry: Custom page sizes
+  texi_entry: Custom page sizes
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Customize Emacs package (Development/Docs/Texinfo)
+  origin_href: texinfo#index-Customize-Emacs-package-_0028Development_002fDocs_002fTexinfo_0029
+  entry: Customize Emacs package (Development/Docs/Texinfo)
+  texi_entry: Customize Emacs package (@t{Development/Docs/Texinfo})
+  element_href: texinfo#Texinfo-Mode-Printing
+  element_text: Texinfo Mode Printing
+key: Customized highlighting
+  origin_href: texinfo#index-Customized-highlighting
+  entry: Customized highlighting
+  texi_entry: Customized highlighting
+  element_href: texinfo#definfoenclose
+  element_text: definfoenclose
+key: Customizing of TeX for Texinfo
+  origin_href: texinfo#index-Customizing-of-TeX-for-Texinfo
+  entry: Customizing of TeX for Texinfo
+  texi_entry: Customizing of @TeX{} for Texinfo
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: DVI file
+  origin_href: texinfo#index-DVI-file
+  entry: DVI file
+  texi_entry: DVI file
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Debugging the Texinfo structure
+  origin_href: texinfo#index-Debugging-the-Texinfo-structure
+  entry: Debugging the Texinfo structure
+  texi_entry: Debugging the Texinfo structure
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Debugging with Info formatting
+  origin_href: texinfo#index-Debugging-with-Info-formatting
+  entry: Debugging with Info formatting
+  texi_entry: Debugging with Info formatting
+  element_href: texinfo#Debugging-with-Info
+  element_text: Debugging with Info
+key: Debugging with TeX formatting
+  origin_href: texinfo#index-Debugging-with-TeX-formatting
+  entry: Debugging with TeX formatting
+  texi_entry: Debugging with @TeX{} formatting
+  element_href: texinfo#Debugging-with-TeX
+  element_text: Debugging with TeX
+key: Defining indexing entries
+  origin_href: texinfo#index-Defining-indexing-entries
+  entry: Defining indexing entries
+  texi_entry: Defining indexing entries
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Defining macros
+  origin_href: texinfo#index-Defining-macros
+  entry: Defining macros
+  texi_entry: Defining macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Defining new Texinfo commands
+  origin_href: texinfo#index-Defining-new-Texinfo-commands
+  entry: Defining new Texinfo commands
+  texi_entry: Defining new Texinfo commands
+  element_href: texinfo#Defining-New-Texinfo-Commands
+  element_text: Defining New Texinfo Commands
+key: Defining new indices
+  origin_href: texinfo#index-Defining-new-indices
+  entry: Defining new indices
+  texi_entry: Defining new indices
+  element_href: texinfo#New-Indices
+  element_text: New Indices
+key: Definition commands
+  origin_href: texinfo#index-Definition-commands
+  entry: Definition commands
+  texi_entry: Definition commands
+  element_href: texinfo#Definition-Commands
+  element_text: Definition Commands
+key: Definition conventions
+  origin_href: texinfo#index-Definition-conventions
+  entry: Definition conventions
+  texi_entry: Definition conventions
+  element_href: texinfo#Def-Cmd-Conventions
+  element_text: Def Cmd Conventions
+key: Definition template
+  origin_href: texinfo#index-Definition-template
+  entry: Definition template
+  texi_entry: Definition template
+  element_href: texinfo#Def-Cmd-Template
+  element_text: Def Cmd Template
+key: Definitions grouped together
+  origin_href: texinfo#index-Definitions-grouped-together
+  entry: Definitions grouped together
+  texi_entry: Definitions grouped together
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: Delimiter character, for verbatim
+  origin_href: texinfo#index-Delimiter-character_002c-for-verbatim
+  entry: Delimiter character, for verbatim
+  texi_entry: Delimiter character, for verbatim
+  element_href: texinfo#verb
+  element_text: verb
+key: Depth of text area
+  origin_href: texinfo#index-Depth-of-text-area
+  entry: Depth of text area
+  texi_entry: Depth of text area
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Description for menu, start
+  origin_href: texinfo#index-Description-for-menu_002c-start
+  entry: Description for menu, start
+  texi_entry: Description for menu, start
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: Description of document
+  origin_href: texinfo#index-Description-of-document
+  entry: Description of document
+  texi_entry: Description of document
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: Details of macro usage
+  origin_href: texinfo#index-Details-of-macro-usage
+  entry: Details of macro usage
+  texi_entry: Details of macro usage
+  element_href: texinfo#Macro-Details
+  element_text: Macro Details
+key: Dido^t points
+  origin_href: texinfo#index-Didot-points
+  entry: Dido^t points
+  texi_entry: Did@^ot points
+  element_href: texinfo#Images
+  element_text: Images
+key: Different cross reference commands
+  origin_href: texinfo#index-Different-cross-reference-commands
+  entry: Different cross reference commands
+  texi_entry: Different cross reference commands
+  element_href: texinfo#Cross-Reference-Commands
+  element_text: Cross Reference Commands
+key: Dimension formatting
+  origin_href: texinfo#index-Dimension-formatting
+  entry: Dimension formatting
+  texi_entry: Dimension formatting
+  element_href: texinfo#dmn
+  element_text: dmn
+key: Dimensions and image sizes
+  origin_href: texinfo#index-Dimensions-and-image-sizes
+  entry: Dimensions and image sizes
+  texi_entry: Dimensions and image sizes
+  element_href: texinfo#Images
+  element_text: Images
+key: Dir files, compressed
+  origin_href: texinfo#index-Dir-files_002c-compressed
+  entry: Dir files, compressed
+  texi_entry: Dir files, compressed
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: Display formatting
+  origin_href: texinfo#index-Display-formatting
+  entry: Display formatting
+  texi_entry: Display formatting
+  element_href: texinfo#display
+  element_text: display
+key: Displayed equations
+  origin_href: texinfo#index-Displayed-equations
+  entry: Displayed equations
+  texi_entry: Displayed equations
+  element_href: texinfo#math
+  element_text: math
+key: Distorting images
+  origin_href: texinfo#index-Distorting-images
+  entry: Distorting images
+  texi_entry: Distorting images
+  element_href: texinfo#Images
+  element_text: Images
+key: Distribution
+  origin_href: texinfo#index-Distribution
+  entry: Distribution
+  texi_entry: Distribution
+  element_href: texinfo#Software-Copying-Permissions
+  element_text: Software Copying Permissions
+key: Docbook, converting to Texinfo
+  origin_href: texinfo#index-Docbook_002c-converting-to-Texinfo
+  entry: Docbook, converting to Texinfo
+  texi_entry: Docbook, converting to Texinfo
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Document Permissions
+  origin_href: texinfo#index-Document-Permissions
+  entry: Document Permissions
+  texi_entry: Document Permissions
+  element_href: texinfo#Document-Permissions
+  element_text: Document Permissions
+key: Document description
+  origin_href: texinfo#index-Document-description
+  entry: Document description
+  texi_entry: Document description
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: Document input encoding
+  origin_href: texinfo#index-Document-input-encoding
+  entry: Document input encoding
+  texi_entry: Document input encoding
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: Document language, declaring
+  origin_href: texinfo#index-Document-language_002c-declaring
+  entry: Document language, declaring
+  texi_entry: Document language, declaring
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: Dot accent
+  origin_href: texinfo#index-Dot-accent
+  entry: Dot accent
+  texi_entry: Dot accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Dotless i, j
+  origin_href: texinfo#index-Dotless-i_002c-j
+  entry: Dotless i, j
+  texi_entry: Dotless i, j
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Dots, inserting
+  origin_href: texinfo#index-Dots_002c-inserting
+  entry: Dots, inserting
+  texi_entry: Dots, inserting
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: Dots, inserting 
+  origin_href: texinfo#index-Dots_002c-inserting-1
+  entry: Dots, inserting
+  texi_entry: Dots, inserting
+  element_href: texinfo#dots
+  element_text: dots
+key: Double-colon menu entries
+  origin_href: texinfo#index-Double_002dcolon-menu-entries
+  entry: Double-colon menu entries
+  texi_entry: Double-colon menu entries
+  element_href: texinfo#Less-Cluttered-Menu-Entry
+  element_text: Less Cluttered Menu Entry
+key: Dumping a .fmt file
+  origin_href: texinfo#index-Dumping-a-_002efmt-file
+  entry: Dumping a .fmt file
+  texi_entry: Dumping a .fmt file
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Ellipsis, inserting
+  origin_href: texinfo#index-Ellipsis_002c-inserting
+  entry: Ellipsis, inserting
+  texi_entry: Ellipsis, inserting
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: Emacs
+  origin_href: texinfo#index-Emacs
+  entry: Emacs
+  texi_entry: Emacs
+  element_href: texinfo#Texinfo-Mode
+  element_text: Texinfo Mode
+key: Emacs shell, format, print from
+  origin_href: texinfo#index-Emacs-shell_002c-format_002c-print-from
+  entry: Emacs shell, format, print from
+  texi_entry: Emacs shell, format, print from
+  element_href: texinfo#Within-Emacs
+  element_text: Within Emacs
+key: Emphasizing text
+  origin_href: texinfo#index-Emphasizing-text
+  entry: Emphasizing text
+  texi_entry: Emphasizing text
+  element_href: texinfo#Emphasis
+  element_text: Emphasis
+key: Emphasizing text, font for
+  origin_href: texinfo#index-Emphasizing-text_002c-font-for
+  entry: Emphasizing text, font for
+  texi_entry: Emphasizing text, font for
+  element_href: texinfo#emph-_0026-strong
+  element_text: emph & strong
+key: Encoding, declaring
+  origin_href: texinfo#index-Encoding_002c-declaring
+  entry: Encoding, declaring
+  texi_entry: Encoding, declaring
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: End of header line
+  origin_href: texinfo#index-End-of-header-line
+  entry: End of header line
+  texi_entry: End of header line
+  element_href: texinfo#End-of-Header
+  element_text: End of Header
+key: End titlepage starts headings
+  origin_href: texinfo#index-End-titlepage-starts-headings
+  entry: End titlepage starts headings
+  texi_entry: End titlepage starts headings
+  element_href: texinfo#end-titlepage
+  element_text: end titlepage
+key: Ending a Sentence
+  origin_href: texinfo#index-Ending-a-Sentence
+  entry: Ending a Sentence
+  texi_entry: Ending a Sentence
+  element_href: texinfo#Ending-a-Sentence
+  element_text: Ending a Sentence
+key: Ending a Texinfo file
+  origin_href: texinfo#index-Ending-a-Texinfo-file
+  entry: Ending a Texinfo file
+  texi_entry: Ending a Texinfo file
+  element_href: texinfo#Ending-a-File
+  element_text: Ending a File
+key: Entries for an index
+  origin_href: texinfo#index-Entries-for-an-index
+  entry: Entries for an index
+  texi_entry: Entries for an index
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Entries, making index
+  origin_href: texinfo#index-Entries_002c-making-index
+  entry: Entries, making index
+  texi_entry: Entries, making index
+  element_href: texinfo#Index-Entries
+  element_text: Index Entries
+key: Enumeration
+  origin_href: texinfo#index-Enumeration
+  entry: Enumeration
+  texi_entry: Enumeration
+  element_href: texinfo#enumerate
+  element_text: enumerate
+key: Environment indentation
+  origin_href: texinfo#index-Environment-indentation
+  entry: Environment indentation
+  texi_entry: Environment indentation
+  element_href: texinfo#exampleindent
+  element_text: exampleindent
+key: Equations, displayed
+  origin_href: texinfo#index-Equations_002c-displayed
+  entry: Equations, displayed
+  texi_entry: Equations, displayed
+  element_href: texinfo#math
+  element_text: math
+key: Equivalence, indicating it
+  origin_href: texinfo#index-Equivalence_002c-indicating-it
+  entry: Equivalence, indicating it
+  texi_entry: Equivalence, indicating it
+  element_href: texinfo#Equivalence
+  element_text: Equivalence
+key: Error message, indicating it
+  origin_href: texinfo#index-Error-message_002c-indicating-it
+  entry: Error message, indicating it
+  texi_entry: Error message, indicating it
+  element_href: texinfo#Error-Glyph
+  element_text: Error Glyph
+key: Errors, parsing
+  origin_href: texinfo#index-Errors_002c-parsing
+  entry: Errors, parsing
+  texi_entry: Errors, parsing
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: Es-zet
+  origin_href: texinfo#index-Es_002dzet
+  entry: Es-zet
+  texi_entry: Es-zet
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: European A4 paper
+  origin_href: texinfo#index-European-A4-paper
+  entry: European A4 paper
+  texi_entry: European A4 paper
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: Evaluation glyph
+  origin_href: texinfo#index-Evaluation-glyph
+  entry: Evaluation glyph
+  texi_entry: Evaluation glyph
+  element_href: texinfo#result
+  element_text: result
+key: Example beginning of Texinfo file
+  origin_href: texinfo#index-Example-beginning-of-Texinfo-file
+  entry: Example beginning of Texinfo file
+  texi_entry: Example beginning of Texinfo file
+  element_href: texinfo#Sample-Beginning
+  element_text: Sample Beginning
+key: Example indentation
+  origin_href: texinfo#index-Example-indentation
+  entry: Example indentation
+  texi_entry: Example indentation
+  element_href: texinfo#exampleindent
+  element_text: exampleindent
+key: Example menu
+  origin_href: texinfo#index-Example-menu
+  entry: Example menu
+  texi_entry: Example menu
+  element_href: texinfo#Menu-Example
+  element_text: Menu Example
+key: Examples in smaller fonts
+  origin_href: texinfo#index-Examples-in-smaller-fonts
+  entry: Examples in smaller fonts
+  texi_entry: Examples in smaller fonts
+  element_href: texinfo#small
+  element_text: small
+key: Examples, formatting them
+  origin_href: texinfo#index-Examples_002c-formatting-them
+  entry: Examples, formatting them
+  texi_entry: Examples, formatting them
+  element_href: texinfo#example
+  element_text: example
+key: Examples, glyphs for
+  origin_href: texinfo#index-Examples_002c-glyphs-for
+  entry: Examples, glyphs for
+  texi_entry: Examples, glyphs for
+  element_href: texinfo#Glyphs
+  element_text: Glyphs
+key: Expanding macros
+  origin_href: texinfo#index-Expanding-macros
+  entry: Expanding macros
+  texi_entry: Expanding macros
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Expansion, indicating it
+  origin_href: texinfo#index-Expansion_002c-indicating-it
+  entry: Expansion, indicating it
+  texi_entry: Expansion, indicating it
+  element_href: texinfo#expansion
+  element_text: expansion
+key: Expressions in a program, indicating
+  origin_href: texinfo#index-Expressions-in-a-program_002c-indicating
+  entry: Expressions in a program, indicating
+  texi_entry: Expressions in a program, indicating
+  element_href: texinfo#code
+  element_text: code
+key: F.B.I., as acronym
+  origin_href: texinfo#index-F_002eB_002eI_002e_002c-as-acronym
+  entry: F.B.I., as acronym
+  texi_entry: F.B.I., as acronym
+  element_href: texinfo#acronym
+  element_text: acronym
+key: FDL, GNU Free Documentation License
+  origin_href: texinfo#index-FDL_002c-GNU-Free-Documentation-License
+  entry: FDL, GNU Free Documentation License
+  texi_entry: FDL, GNU Free Documentation License
+  element_href: texinfo#GNU-Free-Documentation-License
+  element_text: GNU Free Documentation License
+key: File beginning
+  origin_href: texinfo#index-File-beginning
+  entry: File beginning
+  texi_entry: File beginning
+  element_href: texinfo#Beginning-a-File
+  element_text: Beginning a File
+key: File ending
+  origin_href: texinfo#index-File-ending
+  entry: File ending
+  texi_entry: File ending
+  element_href: texinfo#Ending-a-File
+  element_text: Ending a File
+key: File name collision
+  origin_href: texinfo#index-File-name-collision
+  entry: File name collision
+  texi_entry: File name collision
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: File section structure, showing it
+  origin_href: texinfo#index-File-section-structure_002c-showing-it
+  entry: File section structure, showing it
+  texi_entry: File section structure, showing it
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Filling paragraphs
+  origin_href: texinfo#index-Filling-paragraphs
+  entry: Filling paragraphs
+  texi_entry: Filling paragraphs
+  element_href: texinfo#Refilling-Paragraphs
+  element_text: Refilling Paragraphs
+key: Final output
+  origin_href: texinfo#index-Final-output
+  entry: Final output
+  texi_entry: Final output
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Finding badly referenced nodes
+  origin_href: texinfo#index-Finding-badly-referenced-nodes
+  entry: Finding badly referenced nodes
+  texi_entry: Finding badly referenced nodes
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: Fine-tuning, and hyphenation
+  origin_href: texinfo#index-Fine_002dtuning_002c-and-hyphenation
+  entry: Fine-tuning, and hyphenation
+  texi_entry: Fine-tuning, and hyphenation
+  element_href: texinfo#g_t_002d-and-hyphenation
+  element_text: - and hyphenation
+key: First line of a Texinfo file
+  origin_href: texinfo#index-First-line-of-a-Texinfo-file
+  entry: First line of a Texinfo file
+  texi_entry: First line of a Texinfo file
+  element_href: texinfo#First-Line
+  element_text: First Line
+key: First node
+  origin_href: texinfo#index-First-node
+  entry: First node
+  texi_entry: First node
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: Floating accents, inserting
+  origin_href: texinfo#index-Floating-accents_002c-inserting
+  entry: Floating accents, inserting
+  texi_entry: Floating accents, inserting
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Flooding
+  origin_href: texinfo#index-Flooding
+  entry: Flooding
+  texi_entry: Flooding
+  element_href: texinfo#pxref
+  element_text: pxref
+key: Fonts for indices
+  origin_href: texinfo#index-Fonts-for-indices
+  entry: Fonts for indices
+  texi_entry: Fonts for indices
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: Fonts for printing, not for Info
+  origin_href: texinfo#index-Fonts-for-printing_002c-not-for-Info
+  entry: Fonts for printing, not for Info
+  texi_entry: Fonts for printing, not for Info
+  element_href: texinfo#Fonts
+  element_text: Fonts
+key: Footings
+  origin_href: texinfo#index-Footings
+  entry: Footings
+  texi_entry: Footings
+  element_href: texinfo#Headings
+  element_text: Headings
+key: Footnotes
+  origin_href: texinfo#index-Footnotes
+  entry: Footnotes
+  texi_entry: Footnotes
+  element_href: texinfo#Footnotes
+  element_text: Footnotes
+key: Format a dimension
+  origin_href: texinfo#index-Format-a-dimension
+  entry: Format a dimension
+  texi_entry: Format a dimension
+  element_href: texinfo#dmn
+  element_text: dmn
+key: Format and print hardcopy
+  origin_href: texinfo#index-Format-and-print-hardcopy
+  entry: Format and print hardcopy
+  texi_entry: Format and print hardcopy
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Format and print in Texinfo mode
+  origin_href: texinfo#index-Format-and-print-in-Texinfo-mode
+  entry: Format and print in Texinfo mode
+  texi_entry: Format and print in Texinfo mode
+  element_href: texinfo#Texinfo-Mode-Printing
+  element_text: Texinfo Mode Printing
+key: Format file, dumping
+  origin_href: texinfo#index-Format-file_002c-dumping
+  entry: Format file, dumping
+  texi_entry: Format file, dumping
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Format with the compile command
+  origin_href: texinfo#index-Format-with-the-compile-command
+  entry: Format with the compile command
+  texi_entry: Format with the compile command
+  element_href: texinfo#Compile_002dCommand
+  element_text: Compile-Command
+key: Format, print from Emacs shell
+  origin_href: texinfo#index-Format_002c-print-from-Emacs-shell
+  entry: Format, print from Emacs shell
+  texi_entry: Format, print from Emacs shell
+  element_href: texinfo#Within-Emacs
+  element_text: Within Emacs
+key: Formats for images
+  origin_href: texinfo#index-Formats-for-images
+  entry: Formats for images
+  texi_entry: Formats for images
+  element_href: texinfo#Images
+  element_text: Images
+key: Formatting a file for Info
+  origin_href: texinfo#index-Formatting-a-file-for-Info
+  entry: Formatting a file for Info
+  texi_entry: Formatting a file for Info
+  element_href: texinfo#Creating-an-Info-File
+  element_text: Creating an Info File
+key: Formatting commands
+  origin_href: texinfo#index-Formatting-commands
+  entry: Formatting commands
+  texi_entry: Formatting commands
+  element_href: texinfo#Formatting-Commands
+  element_text: Formatting Commands
+key: Formatting examples
+  origin_href: texinfo#index-Formatting-examples
+  entry: Formatting examples
+  texi_entry: Formatting examples
+  element_href: texinfo#example
+  element_text: example
+key: Formatting for Info
+  origin_href: texinfo#index-Formatting-for-Info
+  entry: Formatting for Info
+  texi_entry: Formatting for Info
+  element_href: texinfo#Info-Formatting
+  element_text: Info Formatting
+key: Formatting for printing
+  origin_href: texinfo#index-Formatting-for-printing
+  entry: Formatting for printing
+  texi_entry: Formatting for printing
+  element_href: texinfo#Printing
+  element_text: Printing
+key: Formatting headings and footings
+  origin_href: texinfo#index-Formatting-headings-and-footings
+  entry: Formatting headings and footings
+  texi_entry: Formatting headings and footings
+  element_href: texinfo#Headings
+  element_text: Headings
+key: Formatting requirements
+  origin_href: texinfo#index-Formatting-requirements
+  entry: Formatting requirements
+  texi_entry: Formatting requirements
+  element_href: texinfo#Requirements-Summary
+  element_text: Requirements Summary
+key: Formatting with `tex' and `texindex'
+  origin_href: texinfo#index-Formatting-with-tex-and-texindex
+  entry: Formatting with `tex' and `texindex'
+  texi_entry: Formatting with @code{tex} and @code{texindex}
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Formulas, mathematical
+  origin_href: texinfo#index-Formulas_002c-mathematical
+  entry: Formulas, mathematical
+  texi_entry: Formulas, mathematical
+  element_href: texinfo#math
+  element_text: math
+key: Fox, Brian
+  origin_href: texinfo#index-Fox_002c-Brian
+  entry: Fox, Brian
+  texi_entry: Fox, Brian
+  element_href: texinfo#History
+  element_text: History
+key: Frequently used commands, inserting
+  origin_href: texinfo#index-Frequently-used-commands_002c-inserting
+  entry: Frequently used commands, inserting
+  texi_entry: Frequently used commands, inserting
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: Full texts, GNU
+  origin_href: texinfo#index-Full-texts_002c-GNU
+  entry: Full texts, GNU
+  texi_entry: Full texts, GNU
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: Function definitions
+  origin_href: texinfo#index-Function-definitions
+  entry: Function definitions
+  texi_entry: Function definitions
+  element_href: texinfo#Sample-Function-Definition
+  element_text: Sample Function Definition
+key: GIF, unsupported due to patents
+  origin_href: texinfo#index-GIF_002c-unsupported-due-to-patents
+  entry: GIF, unsupported due to patents
+  texi_entry: GIF, unsupported due to patents
+  element_href: texinfo#Images
+  element_text: Images
+key: GNU Emacs
+  origin_href: texinfo#index-GNU-Emacs
+  entry: GNU Emacs
+  texi_entry: GNU Emacs
+  element_href: texinfo#Texinfo-Mode
+  element_text: Texinfo Mode
+key: GNU Emacs shell, format, print from
+  origin_href: texinfo#index-GNU-Emacs-shell_002c-format_002c-print-from
+  entry: GNU Emacs shell, format, print from
+  texi_entry: GNU Emacs shell, format, print from
+  element_href: texinfo#Within-Emacs
+  element_text: Within Emacs
+key: GNU sample texts
+  origin_href: texinfo#index-GNU-sample-texts
+  entry: GNU sample texts
+  texi_entry: GNU sample texts
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: General syntactic conventions
+  origin_href: texinfo#index-General-syntactic-conventions
+  entry: General syntactic conventions
+  texi_entry: General syntactic conventions
+  element_href: texinfo#Conventions
+  element_text: Conventions
+key: Generating menus with indices
+  origin_href: texinfo#index-Generating-menus-with-indices
+  entry: Generating menus with indices
+  texi_entry: Generating menus with indices
+  element_href: texinfo#Printing-Indices-_0026-Menus
+  element_text: Printing Indices & Menus
+key: Generating plain text files
+  origin_href: texinfo#index-Generating-plain-text-files
+  entry: Generating plain text files
+  texi_entry: Generating plain text files
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: German S
+  origin_href: texinfo#index-German-S
+  entry: German S
+  texi_entry: German S
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Global Document Commands
+  origin_href: texinfo#index-Global-Document-Commands
+  entry: Global Document Commands
+  texi_entry: Global Document Commands
+  element_href: texinfo#Global-Document-Commands
+  element_text: Global Document Commands
+key: Globbing
+  origin_href: texinfo#index-Globbing
+  entry: Globbing
+  texi_entry: Globbing
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Glyphs
+  origin_href: texinfo#index-Glyphs
+  entry: Glyphs
+  texi_entry: Glyphs
+  element_href: texinfo#Glyphs
+  element_text: Glyphs
+key: Going to other Info files' nodes
+  origin_href: texinfo#index-Going-to-other-Info-files_0027-nodes
+  entry: Going to other Info files' nodes
+  texi_entry: Going to other Info files' nodes
+  element_href: texinfo#Other-Info-Files
+  element_text: Other Info Files
+key: Grave accent
+  origin_href: texinfo#index-Grave-accent
+  entry: Grave accent
+  texi_entry: Grave accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Group (hold text together vertically)
+  origin_href: texinfo#index-Group-_0028hold-text-together-vertically_0029
+  entry: Group (hold text together vertically)
+  texi_entry: Group (hold text together vertically)
+  element_href: texinfo#group
+  element_text: group
+key: Grouping two definitions together
+  origin_href: texinfo#index-Grouping-two-definitions-together
+  entry: Grouping two definitions together
+  texi_entry: Grouping two definitions together
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: HTML
+  origin_href: texinfo#index-HTML
+  entry: HTML
+  texi_entry: HTML
+  element_href: texinfo#makeinfo-html
+  element_text: makeinfo html
+key: HTML commands, using ordinary
+  origin_href: texinfo#index-HTML-commands_002c-using-ordinary
+  entry: HTML commands, using ordinary
+  texi_entry: HTML commands, using ordinary
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Hardcopy, printing it
+  origin_href: texinfo#index-Hardcopy_002c-printing-it
+  entry: Hardcopy, printing it
+  texi_entry: Hardcopy, printing it
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Header for Texinfo files
+  origin_href: texinfo#index-Header-for-Texinfo-files
+  entry: Header for Texinfo files
+  texi_entry: Header for Texinfo files
+  element_href: texinfo#Texinfo-File-Header
+  element_text: Texinfo File Header
+key: Header of a Texinfo file
+  origin_href: texinfo#index-Header-of-a-Texinfo-file
+  entry: Header of a Texinfo file
+  texi_entry: Header of a Texinfo file
+  element_href: texinfo#First-Line
+  element_text: First Line
+key: Headings
+  origin_href: texinfo#index-Headings
+  entry: Headings
+  texi_entry: Headings
+  element_href: texinfo#Headings
+  element_text: Headings
+key: Headings, page, begin to appear
+  origin_href: texinfo#index-Headings_002c-page_002c-begin-to-appear
+  entry: Headings, page, begin to appear
+  texi_entry: Headings, page, begin to appear
+  element_href: texinfo#end-titlepage
+  element_text: end titlepage
+key: Height of images
+  origin_href: texinfo#index-Height-of-images
+  entry: Height of images
+  texi_entry: Height of images
+  element_href: texinfo#Images
+  element_text: Images
+key: Height of text area
+  origin_href: texinfo#index-Height-of-text-area
+  entry: Height of text area
+  texi_entry: Height of text area
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Highlighting text
+  origin_href: texinfo#index-Highlighting-text
+  entry: Highlighting text
+  texi_entry: Highlighting text
+  element_href: texinfo#Indicating
+  element_text: Indicating
+key: Highlighting, customized
+  origin_href: texinfo#index-Highlighting_002c-customized
+  entry: Highlighting, customized
+  texi_entry: Highlighting, customized
+  element_href: texinfo#definfoenclose
+  element_text: definfoenclose
+key: Hints
+  origin_href: texinfo#index-Hints
+  entry: Hints
+  texi_entry: Hints
+  element_href: texinfo#Tips
+  element_text: Tips
+key: History of Texinfo
+  origin_href: texinfo#index-History-of-Texinfo
+  entry: History of Texinfo
+  texi_entry: History of Texinfo
+  element_href: texinfo#History
+  element_text: History
+key: Holding text together vertically
+  origin_href: texinfo#index-Holding-text-together-vertically
+  entry: Holding text together vertically
+  texi_entry: Holding text together vertically
+  element_href: texinfo#group
+  element_text: group
+key: Hungarian umlaut accent
+  origin_href: texinfo#index-Hungarian-umlaut-accent
+  entry: Hungarian umlaut accent
+  texi_entry: Hungarian umlaut accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Hurricanes
+  origin_href: texinfo#index-Hurricanes
+  entry: Hurricanes
+  texi_entry: Hurricanes
+  element_href: texinfo#ref
+  element_text: ref
+key: Hyphenation patterns, language-dependent
+  origin_href: texinfo#index-Hyphenation-patterns_002c-language_002ddependent
+  entry: Hyphenation patterns, language-dependent
+  texi_entry: Hyphenation patterns, language-dependent
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: Hyphenation, helping TeX do
+  origin_href: texinfo#index-Hyphenation_002c-helping-TeX-do
+  entry: Hyphenation, helping TeX do
+  texi_entry: Hyphenation, helping @TeX{} do
+  element_href: texinfo#g_t_002d-and-hyphenation
+  element_text: - and hyphenation
+key: Hyphenation, preventing
+  origin_href: texinfo#index-Hyphenation_002c-preventing
+  entry: Hyphenation, preventing
+  texi_entry: Hyphenation, preventing
+  element_href: texinfo#w
+  element_text: w
+key: INFOPATH
+  origin_href: texinfo#index-INFOPATH
+  entry: `INFOPATH'
+  texi_entry: @code{INFOPATH}
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: ISO 639 codes
+  origin_href: texinfo#index-ISO-639-codes
+  entry: ISO 639 codes
+  texi_entry: ISO 639 codes
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: If text conditionally visible
+  origin_href: texinfo#index-If-text-conditionally-visible
+  entry: If text conditionally visible
+  texi_entry: If text conditionally visible
+  element_href: texinfo#Conditionals
+  element_text: Conditionals
+key: Ignored before `setfilename'
+  origin_href: texinfo#index-Ignored-before-_0040setfilename
+  entry: Ignored before `@setfilename'
+  texi_entry: Ignored before @code{@@setfilename}
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: Ignored text
+  origin_href: texinfo#index-Ignored-text
+  entry: Ignored text
+  texi_entry: Ignored text
+  element_href: texinfo#Comments
+  element_text: Comments
+key: Image formats
+  origin_href: texinfo#index-Image-formats
+  entry: Image formats
+  texi_entry: Image formats
+  element_href: texinfo#Images
+  element_text: Images
+key: Images, inserting
+  origin_href: texinfo#index-Images_002c-inserting
+  entry: Images, inserting
+  texi_entry: Images, inserting
+  element_href: texinfo#Images
+  element_text: Images
+key: Inches
+  origin_href: texinfo#index-Inches
+  entry: Inches
+  texi_entry: Inches
+  element_href: texinfo#Images
+  element_text: Images
+key: Include file requirements
+  origin_href: texinfo#index-Include-file-requirements
+  entry: Include file requirements
+  texi_entry: Include file requirements
+  element_href: texinfo#Include-File-Requirements
+  element_text: Include File Requirements
+key: Include file sample
+  origin_href: texinfo#index-Include-file-sample
+  entry: Include file sample
+  texi_entry: Include file sample
+  element_href: texinfo#Sample-Include-File
+  element_text: Sample Include File
+key: Include files
+  origin_href: texinfo#index-Include-files
+  entry: Include files
+  texi_entry: Include files
+  element_href: texinfo#Include-Files
+  element_text: Include Files
+key: Include files, and section levels
+  origin_href: texinfo#index-Include-files_002c-and-section-levels
+  entry: Include files, and section levels
+  texi_entry: Include files, and section levels
+  element_href: texinfo#Raise_002flower-sections
+  element_text: Raise/lower sections
+key: Including a file verbatim
+  origin_href: texinfo#index-Including-a-file-verbatim
+  entry: Including a file verbatim
+  texi_entry: Including a file verbatim
+  element_href: texinfo#verbatiminclude
+  element_text: verbatiminclude
+key: Including permissions text
+  origin_href: texinfo#index-Including-permissions-text
+  entry: Including permissions text
+  texi_entry: Including permissions text
+  element_href: texinfo#insertcopying
+  element_text: insertcopying
+key: Indentation undoing
+  origin_href: texinfo#index-Indentation-undoing
+  entry: Indentation undoing
+  texi_entry: Indentation undoing
+  element_href: texinfo#exdent
+  element_text: exdent
+key: Indenting environments
+  origin_href: texinfo#index-Indenting-environments
+  entry: Indenting environments
+  texi_entry: Indenting environments
+  element_href: texinfo#exampleindent
+  element_text: exampleindent
+key: Indenting paragraphs, control of
+  origin_href: texinfo#index-Indenting-paragraphs_002c-control-of
+  entry: Indenting paragraphs, control of
+  texi_entry: Indenting paragraphs, control of
+  element_href: texinfo#paragraphindent
+  element_text: paragraphindent
+key: Index entries
+  origin_href: texinfo#index-Index-entries
+  entry: Index entries
+  texi_entry: Index entries
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Index entries, making
+  origin_href: texinfo#index-Index-entries_002c-making
+  entry: Index entries, making
+  texi_entry: Index entries, making
+  element_href: texinfo#Index-Entries
+  element_text: Index Entries
+key: Index entry writing
+  origin_href: texinfo#index-Index-entry-writing
+  entry: Index entry writing
+  texi_entry: Index entry writing
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Index file names
+  origin_href: texinfo#index-Index-file-names
+  entry: Index file names
+  texi_entry: Index file names
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Index font types
+  origin_href: texinfo#index-Index-font-types
+  entry: Index font types
+  texi_entry: Index font types
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Indexing commands, predefined
+  origin_href: texinfo#index-Indexing-commands_002c-predefined
+  entry: Indexing commands, predefined
+  texi_entry: Indexing commands, predefined
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Indexing table entries automatically
+  origin_href: texinfo#index-Indexing-table-entries-automatically
+  entry: Indexing table entries automatically
+  texi_entry: Indexing table entries automatically
+  element_href: texinfo#ftable-vtable
+  element_text: ftable vtable
+key: Indicating commands, definitions, etc.
+  origin_href: texinfo#index-Indicating-commands_002c-definitions_002c-etc_002e
+  entry: Indicating commands, definitions, etc.
+  texi_entry: Indicating commands, definitions, etc.
+  element_href: texinfo#Indicating
+  element_text: Indicating
+key: Indicating evaluation
+  origin_href: texinfo#index-Indicating-evaluation
+  entry: Indicating evaluation
+  texi_entry: Indicating evaluation
+  element_href: texinfo#result
+  element_text: result
+key: Indices
+  origin_href: texinfo#index-Indices
+  entry: Indices
+  texi_entry: Indices
+  element_href: texinfo#Indices
+  element_text: Indices
+key: Indices, combining them
+  origin_href: texinfo#index-Indices_002c-combining-them
+  entry: Indices, combining them
+  texi_entry: Indices, combining them
+  element_href: texinfo#Combining-Indices
+  element_text: Combining Indices
+key: Indices, defining new
+  origin_href: texinfo#index-Indices_002c-defining-new
+  entry: Indices, defining new
+  texi_entry: Indices, defining new
+  element_href: texinfo#New-Indices
+  element_text: New Indices
+key: Indices, printing and menus
+  origin_href: texinfo#index-Indices_002c-printing-and-menus
+  entry: Indices, printing and menus
+  texi_entry: Indices, printing and menus
+  element_href: texinfo#Printing-Indices-_0026-Menus
+  element_text: Printing Indices & Menus
+key: Indices, sorting
+  origin_href: texinfo#index-Indices_002c-sorting
+  entry: Indices, sorting
+  texi_entry: Indices, sorting
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Indices, two letter names
+  origin_href: texinfo#index-Indices_002c-two-letter-names
+  entry: Indices, two letter names
+  texi_entry: Indices, two letter names
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: Indirect subfiles
+  origin_href: texinfo#index-Indirect-subfiles
+  entry: Indirect subfiles
+  texi_entry: Indirect subfiles
+  element_href: texinfo#Tag-and-Split-Files
+  element_text: Tag and Split Files
+key: Info batch formatting
+  origin_href: texinfo#index-Info-batch-formatting
+  entry: Info batch formatting
+  texi_entry: Info batch formatting
+  element_href: texinfo#Batch-Formatting
+  element_text: Batch Formatting
+key: Info file installation
+  origin_href: texinfo#index-Info-file-installation
+  entry: Info file installation
+  texi_entry: Info file installation
+  element_href: texinfo#Installing-an-Info-File
+  element_text: Installing an Info File
+key: Info file name, choosing
+  origin_href: texinfo#index-Info-file-name_002c-choosing
+  entry: Info file name, choosing
+  texi_entry: Info file name, choosing
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: Info file, listing a new
+  origin_href: texinfo#index-Info-file_002c-listing-a-new
+  entry: Info file, listing a new
+  texi_entry: Info file, listing a new
+  element_href: texinfo#New-Info-File
+  element_text: New Info File
+key: Info file, splitting manually
+  origin_href: texinfo#index-Info-file_002c-splitting-manually
+  entry: Info file, splitting manually
+  texi_entry: Info file, splitting manually
+  element_href: texinfo#Splitting
+  element_text: Splitting
+key: Info files
+  origin_href: texinfo#index-Info-files
+  entry: Info files
+  texi_entry: Info files
+  element_href: texinfo#Info-Files
+  element_text: Info Files
+key: Info formatting
+  origin_href: texinfo#index-Info-formatting
+  entry: Info formatting
+  texi_entry: Info formatting
+  element_href: texinfo#Info-Formatting
+  element_text: Info Formatting
+key: Info installed in another directory
+  origin_href: texinfo#index-Info-installed-in-another-directory
+  entry: Info installed in another directory
+  texi_entry: Info installed in another directory
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: Info validating a large file
+  origin_href: texinfo#index-Info-validating-a-large-file
+  entry: Info validating a large file
+  texi_entry: Info validating a large file
+  element_href: texinfo#Using-Info_002dvalidate
+  element_text: Using Info-validate
+key: Info, creating an online file
+  origin_href: texinfo#index-Info_002c-creating-an-online-file
+  entry: Info, creating an online file
+  texi_entry: Info, creating an online file
+  element_href: texinfo#Creating-an-Info-File
+  element_text: Creating an Info File
+key: Info-directory-list
+  origin_href: texinfo#index-Info_002ddirectory_002dlist
+  entry: `Info-directory-list'
+  texi_entry: @code{Info-directory-list}
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: Info; other files' nodes
+  origin_href: texinfo#index-Info_003b-other-files_0027-nodes
+  entry: Info; other files' nodes
+  texi_entry: Info; other files' nodes
+  element_href: texinfo#Other-Info-Files
+  element_text: Other Info Files
+key: Initialization file for TeX input
+  origin_href: texinfo#index-Initialization-file-for-TeX-input
+  entry: Initialization file for TeX input
+  texi_entry: Initialization file for @TeX{} input
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Input encoding, declaring
+  origin_href: texinfo#index-Input-encoding_002c-declaring
+  entry: Input encoding, declaring
+  texi_entry: Input encoding, declaring
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: Insert nodes, menus automatically
+  origin_href: texinfo#index-Insert-nodes_002c-menus-automatically
+  entry: Insert nodes, menus automatically
+  texi_entry: Insert nodes, menus automatically
+  element_href: texinfo#Updating-Nodes-and-Menus
+  element_text: Updating Nodes and Menus
+key: Inserting @, braces
+  origin_href: texinfo#index-Inserting-_0040_002c-braces
+  entry: Inserting @, braces
+  texi_entry: Inserting @@, braces
+  element_href: texinfo#Braces-Atsigns
+  element_text: Braces Atsigns
+key: Inserting accents
+  origin_href: texinfo#index-Inserting-accents
+  entry: Inserting accents
+  texi_entry: Inserting accents
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Inserting dots
+  origin_href: texinfo#index-Inserting-dots
+  entry: Inserting dots
+  texi_entry: Inserting dots
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: Inserting dots 
+  origin_href: texinfo#index-Inserting-dots-1
+  entry: Inserting dots
+  texi_entry: Inserting dots
+  element_href: texinfo#dots
+  element_text: dots
+key: Inserting ellipsis
+  origin_href: texinfo#index-Inserting-ellipsis
+  entry: Inserting ellipsis
+  texi_entry: Inserting ellipsis
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: Inserting frequently used commands
+  origin_href: texinfo#index-Inserting-frequently-used-commands
+  entry: Inserting frequently used commands
+  texi_entry: Inserting frequently used commands
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: Inserting space
+  origin_href: texinfo#index-Inserting-space
+  entry: Inserting space
+  texi_entry: Inserting space
+  element_href: texinfo#Inserting-Space
+  element_text: Inserting Space
+key: Inserting special characters and symbols
+  origin_href: texinfo#index-Inserting-special-characters-and-symbols
+  entry: Inserting special characters and symbols
+  texi_entry: Inserting special characters and symbols
+  element_href: texinfo#Insertions
+  element_text: Insertions
+key: Installing Info in another directory
+  origin_href: texinfo#index-Installing-Info-in-another-directory
+  entry: Installing Info in another directory
+  texi_entry: Installing Info in another directory
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: Installing an Info file
+  origin_href: texinfo#index-Installing-an-Info-file
+  entry: Installing an Info file
+  texi_entry: Installing an Info file
+  element_href: texinfo#Installing-an-Info-File
+  element_text: Installing an Info File
+key: Internationalization
+  origin_href: texinfo#index-Internationalization
+  entry: Internationalization
+  texi_entry: Internationalization
+  element_href: texinfo#Internationalization
+  element_text: Internationalization
+key: Introduction to Texinfo
+  origin_href: texinfo#index-Introduction-to-Texinfo
+  entry: Introduction to Texinfo
+  texi_entry: Introduction to Texinfo
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Introduction, as part of file
+  origin_href: texinfo#index-Introduction_002c-as-part-of-file
+  entry: Introduction, as part of file
+  texi_entry: Introduction, as part of file
+  element_href: texinfo#Software-Copying-Permissions
+  element_text: Software Copying Permissions
+key: Invalid characters in node names
+  origin_href: texinfo#index-Invalid-characters-in-node-names
+  entry: Invalid characters in node names
+  texi_entry: Invalid characters in node names
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Invoking macros
+  origin_href: texinfo#index-Invoking-macros
+  entry: Invoking macros
+  texi_entry: Invoking macros
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Itemization
+  origin_href: texinfo#index-Itemization
+  entry: Itemization
+  texi_entry: Itemization
+  element_href: texinfo#itemize
+  element_text: itemize
+key: JPG image format
+  origin_href: texinfo#index-JPG-image-format
+  entry: JPG image format
+  texi_entry: JPG image format
+  element_href: texinfo#Images
+  element_text: Images
+key: Keyboard input
+  origin_href: texinfo#index-Keyboard-input
+  entry: Keyboard input
+  texi_entry: Keyboard input
+  element_href: texinfo#kbd
+  element_text: kbd
+key: Keys, recommended names
+  origin_href: texinfo#index-Keys_002c-recommended-names
+  entry: Keys, recommended names
+  texi_entry: Keys, recommended names
+  element_href: texinfo#key
+  element_text: key
+key: Keywords, indicating
+  origin_href: texinfo#index-Keywords_002c-indicating
+  entry: Keywords, indicating
+  texi_entry: Keywords, indicating
+  element_href: texinfo#code
+  element_text: code
+key: Knuth, Donald
+  origin_href: texinfo#index-Knuth_002c-Donald
+  entry: Knuth, Donald
+  texi_entry: Knuth, Donald
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: L
+  origin_href: texinfo#index-L-1
+  entry: /L
+  texi_entry: @L{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Language codes
+  origin_href: texinfo#index-Language-codes
+  entry: Language codes
+  texi_entry: Language codes
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: Language, declaring
+  origin_href: texinfo#index-Language_002c-declaring
+  entry: Language, declaring
+  texi_entry: Language, declaring
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: Larger or smaller pages
+  origin_href: texinfo#index-Larger-or-smaller-pages
+  entry: Larger or smaller pages
+  texi_entry: Larger or smaller pages
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: Legal paper, printing on
+  origin_href: texinfo#index-Legal-paper_002c-printing-on
+  entry: Legal paper, printing on
+  texi_entry: Legal paper, printing on
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Length of file names
+  origin_href: texinfo#index-Length-of-file-names
+  entry: Length of file names
+  texi_entry: Length of file names
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: Less cluttered menu entry
+  origin_href: texinfo#index-Less-cluttered-menu-entry
+  entry: Less cluttered menu entry
+  texi_entry: Less cluttered menu entry
+  element_href: texinfo#Less-Cluttered-Menu-Entry
+  element_text: Less Cluttered Menu Entry
+key: License agreement
+  origin_href: texinfo#index-License-agreement
+  entry: License agreement
+  texi_entry: License agreement
+  element_href: texinfo#Software-Copying-Permissions
+  element_text: Software Copying Permissions
+key: Line breaks
+  origin_href: texinfo#index-Line-breaks
+  entry: Line breaks
+  texi_entry: Line breaks
+  element_href: texinfo#Breaks
+  element_text: Breaks
+key: Line breaks 
+  origin_href: texinfo#index-Line-breaks-1
+  entry: Line breaks
+  texi_entry: Line breaks
+  element_href: texinfo#Line-Breaks
+  element_text: Line Breaks
+key: Line breaks, preventing
+  origin_href: texinfo#index-Line-breaks_002c-preventing
+  entry: Line breaks, preventing
+  texi_entry: Line breaks, preventing
+  element_href: texinfo#w
+  element_text: w
+key: Line length, column widths as fraction of
+  origin_href: texinfo#index-Line-length_002c-column-widths-as-fraction-of
+  entry: Line length, column widths as fraction of
+  texi_entry: Line length, column widths as fraction of
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: Line spacing
+  origin_href: texinfo#index-Line-spacing
+  entry: Line spacing
+  texi_entry: Line spacing
+  element_href: texinfo#sp
+  element_text: sp
+key: Lisp example
+  origin_href: texinfo#index-Lisp-example
+  entry: Lisp example
+  texi_entry: Lisp example
+  element_href: texinfo#lisp
+  element_text: lisp
+key: Lisp examples in smaller fonts
+  origin_href: texinfo#index-Lisp-examples-in-smaller-fonts
+  entry: Lisp examples in smaller fonts
+  texi_entry: Lisp examples in smaller fonts
+  element_href: texinfo#small
+  element_text: small
+key: List of  @-commands
+  origin_href: texinfo#index-List-of--_0040_002dcommands
+  entry: List of  @-commands
+  texi_entry: List of  @@-commands
+  element_href: texinfo#Command-List
+  element_text: Command List
+key: Listing a new Info file
+  origin_href: texinfo#index-Listing-a-new-Info-file
+  entry: Listing a new Info file
+  texi_entry: Listing a new Info file
+  element_href: texinfo#New-Info-File
+  element_text: New Info File
+key: Lists and tables, making
+  origin_href: texinfo#index-Lists-and-tables_002c-making
+  entry: Lists and tables, making
+  texi_entry: Lists and tables, making
+  element_href: texinfo#Lists-and-Tables
+  element_text: Lists and Tables
+key: Local variables
+  origin_href: texinfo#index-Local-variables
+  entry: Local variables
+  texi_entry: Local variables
+  element_href: texinfo#Compile_002dCommand
+  element_text: Compile-Command
+key: Location of menus
+  origin_href: texinfo#index-Location-of-menus
+  entry: Location of menus
+  texi_entry: Location of menus
+  element_href: texinfo#Menus-Need-Short-Nodes
+  element_text: Menus Need Short Nodes
+key: Looking for badly referenced nodes
+  origin_href: texinfo#index-Looking-for-badly-referenced-nodes
+  entry: Looking for badly referenced nodes
+  texi_entry: Looking for badly referenced nodes
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: META key
+  origin_href: texinfo#index-META-key
+  entry: META key
+  texi_entry: META key
+  element_href: texinfo#key
+  element_text: key
+key: Macro definitions
+  origin_href: texinfo#index-Macro-definitions
+  entry: Macro definitions
+  texi_entry: Macro definitions
+  element_href: texinfo#Sample-Function-Definition
+  element_text: Sample Function Definition
+key: Macro definitions 
+  origin_href: texinfo#index-Macro-definitions-1
+  entry: Macro definitions
+  texi_entry: Macro definitions
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Macro details
+  origin_href: texinfo#index-Macro-details
+  entry: Macro details
+  texi_entry: Macro details
+  element_href: texinfo#Macro-Details
+  element_text: Macro Details
+key: Macro invocation
+  origin_href: texinfo#index-Macro-invocation
+  entry: Macro invocation
+  texi_entry: Macro invocation
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: Macron accent
+  origin_href: texinfo#index-Macron-accent
+  entry: Macron accent
+  texi_entry: Macron accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Macros
+  origin_href: texinfo#index-Macros
+  entry: Macros
+  texi_entry: Macros
+  element_href: texinfo#Defining-New-Texinfo-Commands
+  element_text: Defining New Texinfo Commands
+key: Macros in definition commands
+  origin_href: texinfo#index-Macros-in-definition-commands
+  entry: Macros in definition commands
+  texi_entry: Macros in definition commands
+  element_href: texinfo#Def-Cmd-Template
+  element_text: Def Cmd Template
+key: Macros, undefining
+  origin_href: texinfo#index-Macros_002c-undefining
+  entry: Macros, undefining
+  texi_entry: Macros, undefining
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Magnified printing
+  origin_href: texinfo#index-Magnified-printing
+  entry: Magnified printing
+  texi_entry: Magnified printing
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: Making a printed manual
+  origin_href: texinfo#index-Making-a-printed-manual
+  entry: Making a printed manual
+  texi_entry: Making a printed manual
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Making a tag table automatically
+  origin_href: texinfo#index-Making-a-tag-table-automatically
+  entry: Making a tag table automatically
+  texi_entry: Making a tag table automatically
+  element_href: texinfo#Tag-and-Split-Files
+  element_text: Tag and Split Files
+key: Making a tag table manually
+  origin_href: texinfo#index-Making-a-tag-table-manually
+  entry: Making a tag table manually
+  texi_entry: Making a tag table manually
+  element_href: texinfo#Unsplit
+  element_text: Unsplit
+key: Making cross references
+  origin_href: texinfo#index-Making-cross-references
+  entry: Making cross references
+  texi_entry: Making cross references
+  element_href: texinfo#Cross-References
+  element_text: Cross References
+key: Making line and page breaks
+  origin_href: texinfo#index-Making-line-and-page-breaks
+  entry: Making line and page breaks
+  texi_entry: Making line and page breaks
+  element_href: texinfo#Breaks
+  element_text: Breaks
+key: Making lists and tables
+  origin_href: texinfo#index-Making-lists-and-tables
+  entry: Making lists and tables
+  texi_entry: Making lists and tables
+  element_href: texinfo#Lists-and-Tables
+  element_text: Lists and Tables
+key: Man page output, not supported
+  origin_href: texinfo#index-Man-page-output_002c-not-supported
+  entry: Man page output, not supported
+  texi_entry: Man page output, not supported
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Man page, reference to
+  origin_href: texinfo#index-Man-page_002c-reference-to
+  entry: Man page, reference to
+  texi_entry: Man page, reference to
+  element_href: texinfo#uref
+  element_text: uref
+key: Manual characteristics, printed
+  origin_href: texinfo#index-Manual-characteristics_002c-printed
+  entry: Manual characteristics, printed
+  texi_entry: Manual characteristics, printed
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: Margins on page, not controllable
+  origin_href: texinfo#index-Margins-on-page_002c-not-controllable
+  entry: Margins on page, not controllable
+  texi_entry: Margins on page, not controllable
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Marking text within a paragraph
+  origin_href: texinfo#index-Marking-text-within-a-paragraph
+  entry: Marking text within a paragraph
+  texi_entry: Marking text within a paragraph
+  element_href: texinfo#Marking-Text
+  element_text: Marking Text
+key: Marking words and phrases
+  origin_href: texinfo#index-Marking-words-and-phrases
+  entry: Marking words and phrases
+  texi_entry: Marking words and phrases
+  element_href: texinfo#Marking-Text
+  element_text: Marking Text
+key: Master menu
+  origin_href: texinfo#index-Master-menu
+  entry: Master menu
+  texi_entry: Master menu
+  element_href: texinfo#Master-Menu-Parts
+  element_text: Master Menu Parts
+key: Mathematical expressions
+  origin_href: texinfo#index-Mathematical-expressions
+  entry: Mathematical expressions
+  texi_entry: Mathematical expressions
+  element_href: texinfo#math
+  element_text: math
+key: Mathematical expressions 
+  origin_href: texinfo#index-Mathematical-expressions-1
+  entry: Mathematical expressions
+  texi_entry: Mathematical expressions
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Menu description, start
+  origin_href: texinfo#index-Menu-description_002c-start
+  entry: Menu description, start
+  texi_entry: Menu description, start
+  element_href: texinfo#Inserting
+  element_text: Inserting
+key: Menu entries with two colons
+  origin_href: texinfo#index-Menu-entries-with-two-colons
+  entry: Menu entries with two colons
+  texi_entry: Menu entries with two colons
+  element_href: texinfo#Less-Cluttered-Menu-Entry
+  element_text: Less Cluttered Menu Entry
+key: Menu example
+  origin_href: texinfo#index-Menu-example
+  entry: Menu example
+  texi_entry: Menu example
+  element_href: texinfo#Menu-Example
+  element_text: Menu Example
+key: Menu location
+  origin_href: texinfo#index-Menu-location
+  entry: Menu location
+  texi_entry: Menu location
+  element_href: texinfo#Menus-Need-Short-Nodes
+  element_text: Menus Need Short Nodes
+key: Menu parts
+  origin_href: texinfo#index-Menu-parts
+  entry: Menu parts
+  texi_entry: Menu parts
+  element_href: texinfo#Menu-Parts
+  element_text: Menu Parts
+key: Menu writing
+  origin_href: texinfo#index-Menu-writing
+  entry: Menu writing
+  texi_entry: Menu writing
+  element_href: texinfo#Writing-a-Menu
+  element_text: Writing a Menu
+key: Menu, master
+  origin_href: texinfo#index-Menu_002c-master
+  entry: Menu, master
+  texi_entry: Menu, master
+  element_href: texinfo#Master-Menu-Parts
+  element_text: Master Menu Parts
+key: Menus
+  origin_href: texinfo#index-Menus
+  entry: Menus
+  texi_entry: Menus
+  element_href: texinfo#Menus
+  element_text: Menus
+key: Menus generated with indices
+  origin_href: texinfo#index-Menus-generated-with-indices
+  entry: Menus generated with indices
+  texi_entry: Menus generated with indices
+  element_href: texinfo#Printing-Indices-_0026-Menus
+  element_text: Printing Indices & Menus
+key: Menus, omitting
+  origin_href: texinfo#index-Menus_002c-omitting
+  entry: Menus, omitting
+  texi_entry: Menus, omitting
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Meta-syntactic chars for arguments
+  origin_href: texinfo#index-Meta_002dsyntactic-chars-for-arguments
+  entry: Meta-syntactic chars for arguments
+  texi_entry: Meta-syntactic chars for arguments
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: Millimeters
+  origin_href: texinfo#index-Millimeters
+  entry: Millimeters
+  texi_entry: Millimeters
+  element_href: texinfo#Images
+  element_text: Images
+key: Minimal Texinfo file (requirements)
+  origin_href: texinfo#index-Minimal-Texinfo-file-_0028requirements_0029
+  entry: Minimal Texinfo file (requirements)
+  texi_entry: Minimal Texinfo file (requirements)
+  element_href: texinfo#Minimum
+  element_text: Minimum
+key: Minimal requirements for formatting
+  origin_href: texinfo#index-Minimal-requirements-for-formatting
+  entry: Minimal requirements for formatting
+  texi_entry: Minimal requirements for formatting
+  element_href: texinfo#Requirements-Summary
+  element_text: Requirements Summary
+key: Mistakes, catching
+  origin_href: texinfo#index-Mistakes_002c-catching
+  entry: Mistakes, catching
+  texi_entry: Mistakes, catching
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Mode, using Texinfo
+  origin_href: texinfo#index-Mode_002c-using-Texinfo
+  entry: Mode, using Texinfo
+  texi_entry: Mode, using Texinfo
+  element_href: texinfo#Texinfo-Mode
+  element_text: Texinfo Mode
+key: Multiple spaces
+  origin_href: texinfo#index-Multiple-spaces
+  entry: Multiple spaces
+  texi_entry: Multiple spaces
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: Multitable column widths
+  origin_href: texinfo#index-Multitable-column-widths
+  entry: Multitable column widths
+  texi_entry: Multitable column widths
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: Multitable rows
+  origin_href: texinfo#index-Multitable-rows
+  entry: Multitable rows
+  texi_entry: Multitable rows
+  element_href: texinfo#Multitable-Rows
+  element_text: Multitable Rows
+key: Must have in Texinfo file
+  origin_href: texinfo#index-Must-have-in-Texinfo-file
+  entry: Must have in Texinfo file
+  texi_entry: Must have in Texinfo file
+  element_href: texinfo#Minimum
+  element_text: Minimum
+key: Mutually recursive macros
+  origin_href: texinfo#index-Mutually-recursive-macros
+  entry: Mutually recursive macros
+  texi_entry: Mutually recursive macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: NASA, as acronym
+  origin_href: texinfo#index-NASA_002c-as-acronym
+  entry: NASA, as acronym
+  texi_entry: NASA, as acronym
+  element_href: texinfo#acronym
+  element_text: acronym
+key: Names for indices
+  origin_href: texinfo#index-Names-for-indices
+  entry: Names for indices
+  texi_entry: Names for indices
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: Names of index files
+  origin_href: texinfo#index-Names-of-index-files
+  entry: Names of index files
+  texi_entry: Names of index files
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Names recommended for keys
+  origin_href: texinfo#index-Names-recommended-for-keys
+  entry: Names recommended for keys
+  texi_entry: Names recommended for keys
+  element_href: texinfo#key
+  element_text: key
+key: Naming a `Top' Node in references
+  origin_href: texinfo#index-Naming-a-_0060Top_0027-Node-in-references
+  entry: Naming a `Top' Node in references
+  texi_entry: Naming a `Top' Node in references
+  element_href: texinfo#Top-Node-Naming
+  element_text: Top Node Naming
+key: Navigation links, omitting
+  origin_href: texinfo#index-Navigation-links_002c-omitting
+  entry: Navigation links, omitting
+  texi_entry: Navigation links, omitting
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Need space at page bottom
+  origin_href: texinfo#index-Need-space-at-page-bottom
+  entry: Need space at page bottom
+  texi_entry: Need space at page bottom
+  element_href: texinfo#need
+  element_text: need
+key: New Info file, listing it in `dir' file
+  origin_href: texinfo#index-New-Info-file_002c-listing-it-in-dir-file
+  entry: New Info file, listing it in `dir' file
+  texi_entry: New Info file, listing it in @file{dir} file
+  element_href: texinfo#New-Info-File
+  element_text: New Info File
+key: New Texinfo commands, defining
+  origin_href: texinfo#index-New-Texinfo-commands_002c-defining
+  entry: New Texinfo commands, defining
+  texi_entry: New Texinfo commands, defining
+  element_href: texinfo#Defining-New-Texinfo-Commands
+  element_text: Defining New Texinfo Commands
+key: New index defining
+  origin_href: texinfo#index-New-index-defining
+  entry: New index defining
+  texi_entry: New index defining
+  element_href: texinfo#New-Indices
+  element_text: New Indices
+key: Next node of Top node
+  origin_href: texinfo#index-Next-node-of-Top-node
+  entry: Next node of Top node
+  texi_entry: Next node of Top node
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: Node line requirements
+  origin_href: texinfo#index-Node-line-requirements
+  entry: Node line requirements
+  texi_entry: Node line requirements
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Node line writing
+  origin_href: texinfo#index-Node-line-writing
+  entry: Node line writing
+  texi_entry: Node line writing
+  element_href: texinfo#Writing-a-Node
+  element_text: Writing a Node
+key: Node name must be unique
+  origin_href: texinfo#index-Node-name-must-be-unique
+  entry: Node name must be unique
+  texi_entry: Node name must be unique
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Node name, should not contain @-commands
+  origin_href: texinfo#index-Node-name_002c-should-not-contain-_0040_002dcommands
+  entry: Node name, should not contain @-commands
+  texi_entry: Node name, should not contain @@-commands
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Node names, choosing
+  origin_href: texinfo#index-Node-names_002c-choosing
+  entry: Node names, choosing
+  texi_entry: Node names, choosing
+  element_href: texinfo#Node-Names
+  element_text: Node Names
+key: Node separators, omitting
+  origin_href: texinfo#index-Node-separators_002c-omitting
+  entry: Node separators, omitting
+  texi_entry: Node separators, omitting
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Node, `Top'
+  origin_href: texinfo#index-Node_002c-_0060Top_0027
+  entry: Node, `Top'
+  texi_entry: Node, `Top'
+  element_href: texinfo#The-Top-Node
+  element_text: The Top Node
+key: Node, defined
+  origin_href: texinfo#index-Node_002c-defined
+  entry: Node, defined
+  texi_entry: Node, defined
+  element_href: texinfo#node
+  element_text: node
+key: Nodes for menus are short
+  origin_href: texinfo#index-Nodes-for-menus-are-short
+  entry: Nodes for menus are short
+  texi_entry: Nodes for menus are short
+  element_href: texinfo#Menus-Need-Short-Nodes
+  element_text: Menus Need Short Nodes
+key: Nodes in other Info files
+  origin_href: texinfo#index-Nodes-in-other-Info-files
+  entry: Nodes in other Info files
+  texi_entry: Nodes in other Info files
+  element_href: texinfo#Other-Info-Files
+  element_text: Other Info Files
+key: Nodes, catching mistakes
+  origin_href: texinfo#index-Nodes_002c-catching-mistakes
+  entry: Nodes, catching mistakes
+  texi_entry: Nodes, catching mistakes
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Nodes, checking for badly referenced
+  origin_href: texinfo#index-Nodes_002c-checking-for-badly-referenced
+  entry: Nodes, checking for badly referenced
+  texi_entry: Nodes, checking for badly referenced
+  element_href: texinfo#Running-Info_002dValidate
+  element_text: Running Info-Validate
+key: Non-breakable space
+  origin_href: texinfo#index-Non_002dbreakable-space
+  entry: Non-breakable space
+  texi_entry: Non-breakable space
+  element_href: texinfo#w
+  element_text: w
+key: Not ending a sentence
+  origin_href: texinfo#index-Not-ending-a-sentence
+  entry: Not ending a sentence
+  texi_entry: Not ending a sentence
+  element_href: texinfo#Not-Ending-a-Sentence
+  element_text: Not Ending a Sentence
+key: O
+  origin_href: texinfo#index-OE
+  entry: /O
+  texi_entry: @O{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: O'Dea, Brendan
+  origin_href: texinfo#index-O_0027Dea_002c-Brendan
+  entry: O'Dea, Brendan
+  texi_entry: O'Dea, Brendan
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: OE
+  origin_href: texinfo#index-OE-2
+  entry: OE
+  texi_entry: @OE{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Obtaining TeX
+  origin_href: texinfo#index-Obtaining-TeX
+  entry: Obtaining TeX
+  texi_entry: Obtaining @TeX{}
+  element_href: texinfo#Obtaining-TeX
+  element_text: Obtaining TeX
+key: Occurrences, listing with `occur'
+  origin_href: texinfo#index-Occurrences_002c-listing-with-_0040occur
+  entry: Occurrences, listing with `@occur'
+  texi_entry: Occurrences, listing with @code{@@occur}
+  element_href: texinfo#Using-occur
+  element_text: Using occur
+key: Optional and repeated arguments
+  origin_href: texinfo#index-Optional-and-repeated-arguments
+  entry: Optional and repeated arguments
+  texi_entry: Optional and repeated arguments
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: Options for `makeinfo'
+  origin_href: texinfo#index-Options-for-makeinfo
+  entry: Options for `makeinfo'
+  texi_entry: Options for @code{makeinfo}
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Ordinary HTML commands, using
+  origin_href: texinfo#index-Ordinary-HTML-commands_002c-using
+  entry: Ordinary HTML commands, using
+  texi_entry: Ordinary HTML commands, using
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Ordinary TeX commands, using
+  origin_href: texinfo#index-Ordinary-TeX-commands_002c-using
+  entry: Ordinary TeX commands, using
+  texi_entry: Ordinary @TeX{} commands, using
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Other Info files' nodes
+  origin_href: texinfo#index-Other-Info-files_0027-nodes
+  entry: Other Info files' nodes
+  texi_entry: Other Info files' nodes
+  element_href: texinfo#Other-Info-Files
+  element_text: Other Info Files
+key: Outline of file structure, showing it
+  origin_href: texinfo#index-Outline-of-file-structure_002c-showing-it
+  entry: Outline of file structure, showing it
+  texi_entry: Outline of file structure, showing it
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Output file splitting
+  origin_href: texinfo#index-Output-file-splitting
+  entry: Output file splitting
+  texi_entry: Output file splitting
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Output formats, supporting more
+  origin_href: texinfo#index-Output-formats_002c-supporting-more
+  entry: Output formats, supporting more
+  texi_entry: Output formats, supporting more
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Overfull `hboxes'
+  origin_href: texinfo#index-Overfull-hboxes
+  entry: Overfull `hboxes'
+  texi_entry: Overfull @samp{hboxes}
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Overview of Texinfo
+  origin_href: texinfo#index-Overview-of-Texinfo
+  entry: Overview of Texinfo
+  texi_entry: Overview of Texinfo
+  element_href: texinfo#Overview
+  element_text: Overview
+key: PDF output
+  origin_href: texinfo#index-PDF-output
+  entry: PDF output
+  texi_entry: PDF output
+  element_href: texinfo#PDF-Output
+  element_text: PDF Output
+key: PNG image format
+  origin_href: texinfo#index-PNG-image-format
+  entry: PNG image format
+  texi_entry: PNG image format
+  element_href: texinfo#Images
+  element_text: Images
+key: Page breaks
+  origin_href: texinfo#index-Page-breaks
+  entry: Page breaks
+  texi_entry: Page breaks
+  element_href: texinfo#Breaks
+  element_text: Breaks
+key: Page breaks 
+  origin_href: texinfo#index-Page-breaks-1
+  entry: Page breaks
+  texi_entry: Page breaks
+  element_href: texinfo#page
+  element_text: page
+key: Page delimiter in Texinfo mode
+  origin_href: texinfo#index-Page-delimiter-in-Texinfo-mode
+  entry: Page delimiter in Texinfo mode
+  texi_entry: Page delimiter in Texinfo mode
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Page headings
+  origin_href: texinfo#index-Page-headings
+  entry: Page headings
+  texi_entry: Page headings
+  element_href: texinfo#Headings
+  element_text: Headings
+key: Page numbering
+  origin_href: texinfo#index-Page-numbering
+  entry: Page numbering
+  texi_entry: Page numbering
+  element_href: texinfo#Headings
+  element_text: Headings
+key: Page sizes for books
+  origin_href: texinfo#index-Page-sizes-for-books
+  entry: Page sizes for books
+  texi_entry: Page sizes for books
+  element_href: texinfo#smallbook
+  element_text: smallbook
+key: Page sizes, customized
+  origin_href: texinfo#index-Page-sizes_002c-customized
+  entry: Page sizes, customized
+  texi_entry: Page sizes, customized
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Pages, starting odd
+  origin_href: texinfo#index-Pages_002c-starting-odd
+  entry: Pages, starting odd
+  texi_entry: Pages, starting odd
+  element_href: texinfo#setchapternewpage
+  element_text: setchapternewpage
+key: Paper size, A4
+  origin_href: texinfo#index-Paper-size_002c-A4
+  entry: Paper size, A4
+  texi_entry: Paper size, A4
+  element_href: texinfo#A4-Paper
+  element_text: A4 Paper
+key: Paragraph indentation control
+  origin_href: texinfo#index-Paragraph-indentation-control
+  entry: Paragraph indentation control
+  texi_entry: Paragraph indentation control
+  element_href: texinfo#paragraphindent
+  element_text: paragraphindent
+key: Paragraph, marking text within
+  origin_href: texinfo#index-Paragraph_002c-marking-text-within
+  entry: Paragraph, marking text within
+  texi_entry: Paragraph, marking text within
+  element_href: texinfo#Marking-Text
+  element_text: Marking Text
+key: Paragraphs, filling
+  origin_href: texinfo#index-Paragraphs_002c-filling
+  entry: Paragraphs, filling
+  texi_entry: Paragraphs, filling
+  element_href: texinfo#Refilling-Paragraphs
+  element_text: Refilling Paragraphs
+key: Parameters to macros
+  origin_href: texinfo#index-Parameters-to-macros
+  entry: Parameters to macros
+  texi_entry: Parameters to macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Parentheses in nodename
+  origin_href: texinfo#index-Parentheses-in-nodename
+  entry: Parentheses in nodename
+  texi_entry: Parentheses in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Parsing errors
+  origin_href: texinfo#index-Parsing-errors
+  entry: Parsing errors
+  texi_entry: Parsing errors
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: Part of file formatting and printing
+  origin_href: texinfo#index-Part-of-file-formatting-and-printing
+  entry: Part of file formatting and printing
+  texi_entry: Part of file formatting and printing
+  element_href: texinfo#Printing
+  element_text: Printing
+key: Parts of a cross reference
+  origin_href: texinfo#index-Parts-of-a-cross-reference
+  entry: Parts of a cross reference
+  texi_entry: Parts of a cross reference
+  element_href: texinfo#Cross-Reference-Parts
+  element_text: Cross Reference Parts
+key: Parts of a master menu
+  origin_href: texinfo#index-Parts-of-a-master-menu
+  entry: Parts of a master menu
+  texi_entry: Parts of a master menu
+  element_href: texinfo#Master-Menu-Parts
+  element_text: Master Menu Parts
+key: Parts of a menu
+  origin_href: texinfo#index-Parts-of-a-menu
+  entry: Parts of a menu
+  texi_entry: Parts of a menu
+  element_href: texinfo#Menu-Parts
+  element_text: Menu Parts
+key: Patches, contributing
+  origin_href: texinfo#index-Patches_002c-contributing
+  entry: Patches, contributing
+  texi_entry: Patches, contributing
+  element_href: texinfo#Reporting-Bugs
+  element_text: Reporting Bugs
+key: Period in nodename
+  origin_href: texinfo#index-Period-in-nodename
+  entry: Period in nodename
+  texi_entry: Period in nodename
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Periods, inserting
+  origin_href: texinfo#index-Periods_002c-inserting
+  entry: Periods, inserting
+  texi_entry: Periods, inserting
+  element_href: texinfo#Not-Ending-a-Sentence
+  element_text: Not Ending a Sentence
+key: Permissions text, including
+  origin_href: texinfo#index-Permissions-text_002c-including
+  entry: Permissions text, including
+  texi_entry: Permissions text, including
+  element_href: texinfo#insertcopying
+  element_text: insertcopying
+key: Permissions, printed
+  origin_href: texinfo#index-Permissions_002c-printed
+  entry: Permissions, printed
+  texi_entry: Permissions, printed
+  element_href: texinfo#Copyright
+  element_text: Copyright
+key: Picas
+  origin_href: texinfo#index-Picas
+  entry: Picas
+  texi_entry: Picas
+  element_href: texinfo#Images
+  element_text: Images
+key: Pictures, inserting
+  origin_href: texinfo#index-Pictures_002c-inserting
+  entry: Pictures, inserting
+  texi_entry: Pictures, inserting
+  element_href: texinfo#Images
+  element_text: Images
+key: Pinard, Franc,ois
+  origin_href: texinfo#index-Pinard_002c-Francois
+  entry: Pinard, Franc,ois
+  texi_entry: Pinard, Fran@,{c}ois
+  element_href: texinfo#History
+  element_text: History
+key: Plain text output
+  origin_href: texinfo#index-Plain-text-output
+  entry: Plain text output
+  texi_entry: Plain text output
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Point, indicating in a buffer
+  origin_href: texinfo#index-Point_002c-indicating-in-a-buffer
+  entry: Point, indicating in a buffer
+  texi_entry: Point, indicating in a buffer
+  element_href: texinfo#Point-Glyph
+  element_text: Point Glyph
+key: Pointer creation with `makeinfo'
+  origin_href: texinfo#index-Pointer-creation-with-makeinfo
+  entry: Pointer creation with `makeinfo'
+  texi_entry: Pointer creation with @code{makeinfo}
+  element_href: texinfo#makeinfo-Pointer-Creation
+  element_text: makeinfo Pointer Creation
+key: Pointer validation with `makeinfo'
+  origin_href: texinfo#index-Pointer-validation-with-makeinfo
+  entry: Pointer validation with `makeinfo'
+  texi_entry: Pointer validation with @code{makeinfo}
+  element_href: texinfo#Pointer-Validation
+  element_text: Pointer Validation
+key: Pointer validation, suppressing
+  origin_href: texinfo#index-Pointer-validation_002c-suppressing
+  entry: Pointer validation, suppressing
+  texi_entry: Pointer validation, suppressing
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Pointer validation, suppressing 
+  origin_href: texinfo#index-Pointer-validation_002c-suppressing-1
+  entry: Pointer validation, suppressing
+  texi_entry: Pointer validation, suppressing
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Points (dimension)
+  origin_href: texinfo#index-Points-_0028dimension_0029
+  entry: Points (dimension)
+  texi_entry: Points (dimension)
+  element_href: texinfo#Images
+  element_text: Images
+key: Predefined indexing commands
+  origin_href: texinfo#index-Predefined-indexing-commands
+  entry: Predefined indexing commands
+  texi_entry: Predefined indexing commands
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Predefined names for indices
+  origin_href: texinfo#index-Predefined-names-for-indices
+  entry: Predefined names for indices
+  texi_entry: Predefined names for indices
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: Preparing for TeX
+  origin_href: texinfo#index-Preparing-for-TeX
+  entry: Preparing for TeX
+  texi_entry: Preparing for @TeX{}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Preventing line and page breaks
+  origin_href: texinfo#index-Preventing-line-and-page-breaks
+  entry: Preventing line and page breaks
+  texi_entry: Preventing line and page breaks
+  element_href: texinfo#Breaks
+  element_text: Breaks
+key: Previous node of Top node
+  origin_href: texinfo#index-Previous-node-of-Top-node
+  entry: Previous node of Top node
+  texi_entry: Previous node of Top node
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: Print and format in Texinfo mode
+  origin_href: texinfo#index-Print-and-format-in-Texinfo-mode
+  entry: Print and format in Texinfo mode
+  texi_entry: Print and format in Texinfo mode
+  element_href: texinfo#Texinfo-Mode-Printing
+  element_text: Texinfo Mode Printing
+key: Print, format from Emacs shell
+  origin_href: texinfo#index-Print_002c-format-from-Emacs-shell
+  entry: Print, format from Emacs shell
+  texi_entry: Print, format from Emacs shell
+  element_href: texinfo#Within-Emacs
+  element_text: Within Emacs
+key: Printed book and manual characteristics
+  origin_href: texinfo#index-Printed-book-and-manual-characteristics
+  entry: Printed book and manual characteristics
+  texi_entry: Printed book and manual characteristics
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: Printed output, indicating it
+  origin_href: texinfo#index-Printed-output_002c-indicating-it
+  entry: Printed output, indicating it
+  texi_entry: Printed output, indicating it
+  element_href: texinfo#Print-Glyph
+  element_text: Print Glyph
+key: Printed permissions
+  origin_href: texinfo#index-Printed-permissions
+  entry: Printed permissions
+  texi_entry: Printed permissions
+  element_href: texinfo#Copyright
+  element_text: Copyright
+key: Printing DVI files, on MS-DOS/MS-Windows
+  origin_href: texinfo#index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows
+  entry: Printing DVI files, on MS-DOS/MS-Windows
+  texi_entry: Printing DVI files, on MS-DOS/MS-Windows
+  element_href: texinfo#Print-with-lpr
+  element_text: Print with lpr
+key: Printing a region or buffer
+  origin_href: texinfo#index-Printing-a-region-or-buffer
+  entry: Printing a region or buffer
+  texi_entry: Printing a region or buffer
+  element_href: texinfo#Printing
+  element_text: Printing
+key: Printing an index
+  origin_href: texinfo#index-Printing-an-index
+  entry: Printing an index
+  texi_entry: Printing an index
+  element_href: texinfo#Printing-Indices-_0026-Menus
+  element_text: Printing Indices & Menus
+key: Printing cropmarks
+  origin_href: texinfo#index-Printing-cropmarks
+  entry: Printing cropmarks
+  texi_entry: Printing cropmarks
+  element_href: texinfo#Cropmarks-and-Magnification
+  element_text: Cropmarks and Magnification
+key: Printing hardcopy
+  origin_href: texinfo#index-Printing-hardcopy
+  entry: Printing hardcopy
+  texi_entry: Printing hardcopy
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Problems, catching
+  origin_href: texinfo#index-Problems_002c-catching
+  entry: Problems, catching
+  texi_entry: Problems, catching
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Program names, indicating
+  origin_href: texinfo#index-Program-names_002c-indicating
+  entry: Program names, indicating
+  texi_entry: Program names, indicating
+  element_href: texinfo#command
+  element_text: command
+key: Prototype row, column widths defined by
+  origin_href: texinfo#index-Prototype-row_002c-column-widths-defined-by
+  entry: Prototype row, column widths defined by
+  texi_entry: Prototype row, column widths defined by
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: Quotations
+  origin_href: texinfo#index-Quotations
+  entry: Quotations
+  texi_entry: Quotations
+  element_href: texinfo#quotation
+  element_text: quotation
+key: RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  origin_href: texinfo#index-RCS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo
+  entry: RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  texi_entry: RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: Raising and lowering sections
+  origin_href: texinfo#index-Raising-and-lowering-sections
+  entry: Raising and lowering sections
+  texi_entry: Raising and lowering sections
+  element_href: texinfo#Raise_002flower-sections
+  element_text: Raise/lower sections
+key: Raw formatter commands
+  origin_href: texinfo#index-Raw-formatter-commands
+  entry: Raw formatter commands
+  texi_entry: Raw formatter commands
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: Recommended names for keys
+  origin_href: texinfo#index-Recommended-names-for-keys
+  entry: Recommended names for keys
+  texi_entry: Recommended names for keys
+  element_href: texinfo#key
+  element_text: key
+key: Rectangle, black in hardcopy
+  origin_href: texinfo#index-Rectangle_002c-black-in-hardcopy
+  entry: Rectangle, black in hardcopy
+  texi_entry: Rectangle, black in hardcopy
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Recursion, mutual
+  origin_href: texinfo#index-Recursion_002c-mutual
+  entry: Recursion, mutual
+  texi_entry: Recursion, mutual
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Recursive macro invocations
+  origin_href: texinfo#index-Recursive-macro-invocations
+  entry: Recursive macro invocations
+  texi_entry: Recursive macro invocations
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Reference to @-commands
+  origin_href: texinfo#index-Reference-to-_0040_002dcommands
+  entry: Reference to @-commands
+  texi_entry: Reference to @@-commands
+  element_href: texinfo#Command-List
+  element_text: Command List
+key: References
+  origin_href: texinfo#index-References
+  entry: References
+  texi_entry: References
+  element_href: texinfo#Cross-References
+  element_text: Cross References
+key: References using `inforef'
+  origin_href: texinfo#index-References-using-_0040inforef
+  entry: References using `@inforef'
+  texi_entry: References using @code{@@inforef}
+  element_href: texinfo#inforef
+  element_text: inforef
+key: References using `pxref'
+  origin_href: texinfo#index-References-using-_0040pxref
+  entry: References using `@pxref'
+  texi_entry: References using @code{@@pxref}
+  element_href: texinfo#pxref
+  element_text: pxref
+key: References using `ref'
+  origin_href: texinfo#index-References-using-_0040ref
+  entry: References using `@ref'
+  texi_entry: References using @code{@@ref}
+  element_href: texinfo#ref
+  element_text: ref
+key: References using `xref'
+  origin_href: texinfo#index-References-using-_0040xref
+  entry: References using `@xref'
+  texi_entry: References using @code{@@xref}
+  element_href: texinfo#xref
+  element_text: xref
+key: Referring to other Info files
+  origin_href: texinfo#index-Referring-to-other-Info-files
+  entry: Referring to other Info files
+  texi_entry: Referring to other Info files
+  element_href: texinfo#Other-Info-Files
+  element_text: Other Info Files
+key: Refilling paragraphs
+  origin_href: texinfo#index-Refilling-paragraphs
+  entry: Refilling paragraphs
+  texi_entry: Refilling paragraphs
+  element_href: texinfo#Refilling-Paragraphs
+  element_text: Refilling Paragraphs
+key: Region formatting and printing
+  origin_href: texinfo#index-Region-formatting-and-printing
+  entry: Region formatting and printing
+  texi_entry: Region formatting and printing
+  element_href: texinfo#Printing
+  element_text: Printing
+key: Region printing in Texinfo mode
+  origin_href: texinfo#index-Region-printing-in-Texinfo-mode
+  entry: Region printing in Texinfo mode
+  texi_entry: Region printing in Texinfo mode
+  element_href: texinfo#Texinfo-Mode-Printing
+  element_text: Texinfo Mode Printing
+key: Reid, Brian
+  origin_href: texinfo#index-Reid_002c-Brian
+  entry: Reid, Brian
+  texi_entry: Reid, Brian
+  element_href: texinfo#History
+  element_text: History
+key: Repeated and optional arguments
+  origin_href: texinfo#index-Repeated-and-optional-arguments
+  entry: Repeated and optional arguments
+  texi_entry: Repeated and optional arguments
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: Reporting bugs
+  origin_href: texinfo#index-Reporting-bugs
+  entry: Reporting bugs
+  texi_entry: Reporting bugs
+  element_href: texinfo#Reporting-Bugs
+  element_text: Reporting Bugs
+key: Required in Texinfo file
+  origin_href: texinfo#index-Required-in-Texinfo-file
+  entry: Required in Texinfo file
+  texi_entry: Required in Texinfo file
+  element_href: texinfo#Minimum
+  element_text: Minimum
+key: Requirements for formatting
+  origin_href: texinfo#index-Requirements-for-formatting
+  entry: Requirements for formatting
+  texi_entry: Requirements for formatting
+  element_href: texinfo#Requirements-Summary
+  element_text: Requirements Summary
+key: Requirements for include files
+  origin_href: texinfo#index-Requirements-for-include-files
+  entry: Requirements for include files
+  texi_entry: Requirements for include files
+  element_href: texinfo#Include-File-Requirements
+  element_text: Include File Requirements
+key: Requirements for updating commands
+  origin_href: texinfo#index-Requirements-for-updating-commands
+  entry: Requirements for updating commands
+  texi_entry: Requirements for updating commands
+  element_href: texinfo#Updating-Requirements
+  element_text: Updating Requirements
+key: Reserved words, indicating
+  origin_href: texinfo#index-Reserved-words_002c-indicating
+  entry: Reserved words, indicating
+  texi_entry: Reserved words, indicating
+  element_href: texinfo#code
+  element_text: code
+key: Restrictions on node names
+  origin_href: texinfo#index-Restrictions-on-node-names
+  entry: Restrictions on node names
+  texi_entry: Restrictions on node names
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Result of an expression
+  origin_href: texinfo#index-Result-of-an-expression
+  entry: Result of an expression
+  texi_entry: Result of an expression
+  element_href: texinfo#result
+  element_text: result
+key: Ring accent
+  origin_href: texinfo#index-Ring-accent
+  entry: Ring accent
+  texi_entry: Ring accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Rounded rectangles, around examples
+  origin_href: texinfo#index-Rounded-rectangles_002c-around-examples
+  entry: Rounded rectangles, around examples
+  texi_entry: Rounded rectangles, around examples
+  element_href: texinfo#cartouche
+  element_text: cartouche
+key: Rows, of a multitable
+  origin_href: texinfo#index-Rows_002c-of-a-multitable
+  entry: Rows, of a multitable
+  texi_entry: Rows, of a multitable
+  element_href: texinfo#Multitable-Rows
+  element_text: Multitable Rows
+key: Running `Info-validate'
+  origin_href: texinfo#index-Running-Info_002dvalidate
+  entry: Running `Info-validate'
+  texi_entry: Running @code{Info-validate}
+  element_href: texinfo#Using-Info_002dvalidate
+  element_text: Using Info-validate
+key: Running `makeinfo' in Emacs
+  origin_href: texinfo#index-Running-makeinfo-in-Emacs
+  entry: Running `makeinfo' in Emacs
+  texi_entry: Running @code{makeinfo} in Emacs
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: Running an Info formatter
+  origin_href: texinfo#index-Running-an-Info-formatter
+  entry: Running an Info formatter
+  texi_entry: Running an Info formatter
+  element_href: texinfo#Info-Formatting
+  element_text: Info Formatting
+key: Running macros
+  origin_href: texinfo#index-Running-macros
+  entry: Running macros
+  texi_entry: Running macros
+  element_href: texinfo#Invoking-Macros
+  element_text: Invoking Macros
+key: SGML-tools output format
+  origin_href: texinfo#index-SGML_002dtools-output-format
+  entry: SGML-tools output format
+  texi_entry: SGML-tools output format
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Sample Texinfo file, no comments
+  origin_href: texinfo#index-Sample-Texinfo-file_002c-no-comments
+  entry: Sample Texinfo file, no comments
+  texi_entry: Sample Texinfo file, no comments
+  element_href: texinfo#Short-Sample-Texinfo-File
+  element_text: Short Sample Texinfo File
+key: Sample Texinfo file, with comments
+  origin_href: texinfo#index-Sample-Texinfo-file_002c-with-comments
+  entry: Sample Texinfo file, with comments
+  texi_entry: Sample Texinfo file, with comments
+  element_href: texinfo#Short-Sample
+  element_text: Short Sample
+key: Sample Texinfo files
+  origin_href: texinfo#index-Sample-Texinfo-files
+  entry: Sample Texinfo files
+  texi_entry: Sample Texinfo files
+  element_href: texinfo#Sample-Texinfo-Files
+  element_text: Sample Texinfo Files
+key: Sample `include' file
+  origin_href: texinfo#index-Sample-_0040include-file
+  entry: Sample `@include' file
+  texi_entry: Sample @code{@@include} file
+  element_href: texinfo#Sample-Include-File
+  element_text: Sample Include File
+key: Sample function definition
+  origin_href: texinfo#index-Sample-function-definition
+  entry: Sample function definition
+  texi_entry: Sample function definition
+  element_href: texinfo#Sample-Function-Definition
+  element_text: Sample Function Definition
+key: Sample texts, GNU
+  origin_href: texinfo#index-Sample-texts_002c-GNU
+  entry: Sample texts, GNU
+  texi_entry: Sample texts, GNU
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: Scaled points
+  origin_href: texinfo#index-Scaled-points
+  entry: Scaled points
+  texi_entry: Scaled points
+  element_href: texinfo#Images
+  element_text: Images
+key: Schwab, Andreas
+  origin_href: texinfo#index-Schwab_002c-Andreas
+  entry: Schwab, Andreas
+  texi_entry: Schwab, Andreas
+  element_href: texinfo#History
+  element_text: History
+key: Scribe
+  origin_href: texinfo#index-Scribe
+  entry: Scribe
+  texi_entry: Scribe
+  element_href: texinfo#History
+  element_text: History
+key: Sea surges
+  origin_href: texinfo#index-Sea-surges
+  entry: Sea surges
+  texi_entry: Sea surges
+  element_href: texinfo#ref
+  element_text: ref
+key: Section structure of a file, showing it
+  origin_href: texinfo#index-Section-structure-of-a-file_002c-showing-it
+  entry: Section structure of a file, showing it
+  texi_entry: Section structure of a file, showing it
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Sections, raising and lowering
+  origin_href: texinfo#index-Sections_002c-raising-and-lowering
+  entry: Sections, raising and lowering
+  texi_entry: Sections, raising and lowering
+  element_href: texinfo#Raise_002flower-sections
+  element_text: Raise/lower sections
+key: Sentence ending punctuation
+  origin_href: texinfo#index-Sentence-ending-punctuation
+  entry: Sentence ending punctuation
+  texi_entry: Sentence ending punctuation
+  element_href: texinfo#Ending-a-Sentence
+  element_text: Ending a Sentence
+key: Sentence non-ending punctuation
+  origin_href: texinfo#index-Sentence-non_002dending-punctuation
+  entry: Sentence non-ending punctuation
+  texi_entry: Sentence non-ending punctuation
+  element_href: texinfo#Not-Ending-a-Sentence
+  element_text: Not Ending a Sentence
+key: Sharp S
+  origin_href: texinfo#index-Sharp-S
+  entry: Sharp S
+  texi_entry: Sharp S
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Shell formatting with `tex' and `texindex'
+  origin_href: texinfo#index-Shell-formatting-with-tex-and-texindex
+  entry: Shell formatting with `tex' and `texindex'
+  texi_entry: Shell formatting with @code{tex} and @code{texindex}
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Shell printing, on MS-DOS/MS-Windows
+  origin_href: texinfo#index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows
+  entry: Shell printing, on MS-DOS/MS-Windows
+  texi_entry: Shell printing, on MS-DOS/MS-Windows
+  element_href: texinfo#Print-with-lpr
+  element_text: Print with lpr
+key: Shell, format, print from
+  origin_href: texinfo#index-Shell_002c-format_002c-print-from
+  entry: Shell, format, print from
+  texi_entry: Shell, format, print from
+  element_href: texinfo#Within-Emacs
+  element_text: Within Emacs
+key: Shell, running `makeinfo' in
+  origin_href: texinfo#index-Shell_002c-running-makeinfo-in
+  entry: Shell, running `makeinfo' in
+  texi_entry: Shell, running @code{makeinfo} in
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: Short nodes for menus
+  origin_href: texinfo#index-Short-nodes-for-menus
+  entry: Short nodes for menus
+  texi_entry: Short nodes for menus
+  element_href: texinfo#Menus-Need-Short-Nodes
+  element_text: Menus Need Short Nodes
+key: Short table of contents
+  origin_href: texinfo#index-Short-table-of-contents
+  entry: Short table of contents
+  texi_entry: Short table of contents
+  element_href: texinfo#Contents
+  element_text: Contents
+key: Showing the section structure of a file
+  origin_href: texinfo#index-Showing-the-section-structure-of-a-file
+  entry: Showing the section structure of a file
+  texi_entry: Showing the section structure of a file
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Showing the structure of a file
+  origin_href: texinfo#index-Showing-the-structure-of-a-file
+  entry: Showing the structure of a file
+  texi_entry: Showing the structure of a file
+  element_href: texinfo#Using-texinfo_002dshow_002dstructure
+  element_text: Using texinfo-show-structure
+key: Site-wide Texinfo configuration file
+  origin_href: texinfo#index-Site_002dwide-Texinfo-configuration-file
+  entry: Site-wide Texinfo configuration file
+  texi_entry: Site-wide Texinfo configuration file
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Size of printed book
+  origin_href: texinfo#index-Size-of-printed-book
+  entry: Size of printed book
+  texi_entry: Size of printed book
+  element_href: texinfo#smallbook
+  element_text: smallbook
+key: Small book size
+  origin_href: texinfo#index-Small-book-size
+  entry: Small book size
+  texi_entry: Small book size
+  element_href: texinfo#smallbook
+  element_text: smallbook
+key: Small caps font
+  origin_href: texinfo#index-Small-caps-font
+  entry: Small caps font
+  texi_entry: Small caps font
+  element_href: texinfo#Smallcaps
+  element_text: Smallcaps
+key: Small examples
+  origin_href: texinfo#index-Small-examples
+  entry: Small examples
+  texi_entry: Small examples
+  element_href: texinfo#small
+  element_text: small
+key: Software copying permissions
+  origin_href: texinfo#index-Software-copying-permissions
+  entry: Software copying permissions
+  texi_entry: Software copying permissions
+  element_href: texinfo#Software-Copying-Permissions
+  element_text: Software Copying Permissions
+key: Sorting indices
+  origin_href: texinfo#index-Sorting-indices
+  entry: Sorting indices
+  texi_entry: Sorting indices
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: Source file
+  origin_href: texinfo#index-Source-file
+  entry: Source file
+  texi_entry: Source file
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Space, inserting horizontal
+  origin_href: texinfo#index-Space_002c-inserting-horizontal
+  entry: Space, inserting horizontal
+  texi_entry: Space, inserting horizontal
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: Space, inserting vertical
+  origin_href: texinfo#index-Space_002c-inserting-vertical
+  entry: Space, inserting vertical
+  texi_entry: Space, inserting vertical
+  element_href: texinfo#sp
+  element_text: sp
+key: Spaces in macros
+  origin_href: texinfo#index-Spaces-in-macros
+  entry: Spaces in macros
+  texi_entry: Spaces in macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Spaces, in menus
+  origin_href: texinfo#index-Spaces_002c-in-menus
+  entry: Spaces, in menus
+  texi_entry: Spaces, in menus
+  element_href: texinfo#Writing-a-Menu
+  element_text: Writing a Menu
+key: Spacing, inserting
+  origin_href: texinfo#index-Spacing_002c-inserting
+  entry: Spacing, inserting
+  texi_entry: Spacing, inserting
+  element_href: texinfo#Inserting-Space
+  element_text: Inserting Space
+key: Special characters, commands to insert
+  origin_href: texinfo#index-Special-characters_002c-commands-to-insert
+  entry: Special characters, commands to insert
+  texi_entry: Special characters, commands to insert
+  element_href: texinfo#Braces-Atsigns
+  element_text: Braces Atsigns
+key: Special insertions
+  origin_href: texinfo#index-Special-insertions
+  entry: Special insertions
+  texi_entry: Special insertions
+  element_href: texinfo#Insertions
+  element_text: Insertions
+key: Special typesetting commands
+  origin_href: texinfo#index-Special-typesetting-commands
+  entry: Special typesetting commands
+  texi_entry: Special typesetting commands
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: Specifying index entries
+  origin_href: texinfo#index-Specifying-index-entries
+  entry: Specifying index entries
+  texi_entry: Specifying index entries
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: Splitting an Info file manually
+  origin_href: texinfo#index-Splitting-an-Info-file-manually
+  entry: Splitting an Info file manually
+  texi_entry: Splitting an Info file manually
+  element_href: texinfo#Splitting
+  element_text: Splitting
+key: Splitting of output files
+  origin_href: texinfo#index-Splitting-of-output-files
+  entry: Splitting of output files
+  texi_entry: Splitting of output files
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: Stallman, Richard M.
+  origin_href: texinfo#index-Stallman_002c-Richard-M_002e
+  entry: Stallman, Richard M.
+  texi_entry: Stallman, Richard M.
+  element_href: texinfo#History
+  element_text: History
+key: Start of header line
+  origin_href: texinfo#index-Start-of-header-line
+  entry: Start of header line
+  texi_entry: Start of header line
+  element_href: texinfo#Start-of-Header
+  element_text: Start of Header
+key: Starting chapters
+  origin_href: texinfo#index-Starting-chapters
+  entry: Starting chapters
+  texi_entry: Starting chapters
+  element_href: texinfo#setchapternewpage
+  element_text: setchapternewpage
+key: Structure of a file, showing it
+  origin_href: texinfo#index-Structure-of-a-file_002c-showing-it
+  entry: Structure of a file, showing it
+  texi_entry: Structure of a file, showing it
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Structure, catching mistakes in
+  origin_href: texinfo#index-Structure_002c-catching-mistakes-in
+  entry: Structure, catching mistakes in
+  texi_entry: Structure, catching mistakes in
+  element_href: texinfo#Catching-Mistakes
+  element_text: Catching Mistakes
+key: Structuring of chapters
+  origin_href: texinfo#index-Structuring-of-chapters
+  entry: Structuring of chapters
+  texi_entry: Structuring of chapters
+  element_href: texinfo#Structuring
+  element_text: Structuring
+key: Subsection-like commands
+  origin_href: texinfo#index-Subsection_002dlike-commands
+  entry: Subsection-like commands
+  texi_entry: Subsection-like commands
+  element_href: texinfo#unnumberedsubsec-appendixsubsec-subheading
+  element_text: unnumberedsubsec appendixsubsec subheading
+key: Subsub commands
+  origin_href: texinfo#index-Subsub-commands
+  entry: Subsub commands
+  texi_entry: Subsub commands
+  element_href: texinfo#subsubsection
+  element_text: subsubsection
+key: Suggestions for Texinfo, making
+  origin_href: texinfo#index-Suggestions-for-Texinfo_002c-making
+  entry: Suggestions for Texinfo, making
+  texi_entry: Suggestions for Texinfo, making
+  element_href: texinfo#Reporting-Bugs
+  element_text: Reporting Bugs
+key: Summary of document
+  origin_href: texinfo#index-Summary-of-document
+  entry: Summary of document
+  texi_entry: Summary of document
+  element_href: texinfo#documentdescription
+  element_text: documentdescription
+key: Syntactic conventions
+  origin_href: texinfo#index-Syntactic-conventions
+  entry: Syntactic conventions
+  texi_entry: Syntactic conventions
+  element_href: texinfo#Conventions
+  element_text: Conventions
+key: Syntactic tokens, indicating
+  origin_href: texinfo#index-Syntactic-tokens_002c-indicating
+  entry: Syntactic tokens, indicating
+  texi_entry: Syntactic tokens, indicating
+  element_href: texinfo#code
+  element_text: code
+key: Syntax, of @-commands
+  origin_href: texinfo#index-Syntax_002c-of-_0040_002dcommands
+  entry: Syntax, of @-commands
+  texi_entry: Syntax, of @@-commands
+  element_href: texinfo#Command-Syntax
+  element_text: Command Syntax
+key: Syntax, optional & repeated arguments
+  origin_href: texinfo#index-Syntax_002c-optional-_0026-repeated-arguments
+  entry: Syntax, optional & repeated arguments
+  texi_entry: Syntax, optional & repeated arguments
+  element_href: texinfo#Optional-Arguments
+  element_text: Optional Arguments
+key: TEXINPUTS
+  origin_href: texinfo#index-TEXINPUTS
+  entry: `TEXINPUTS'
+  texi_entry: @code{TEXINPUTS}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: TEXINPUTS 
+  origin_href: texinfo#index-TEXINPUTS-1
+  entry: `TEXINPUTS'
+  texi_entry: @code{TEXINPUTS}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: Table of contents
+  origin_href: texinfo#index-Table-of-contents
+  entry: Table of contents
+  texi_entry: Table of contents
+  element_href: texinfo#Contents
+  element_text: Contents
+key: Table of contents, after title page
+  origin_href: texinfo#index-Table-of-contents_002c-after-title-page
+  entry: Table of contents, after title page
+  texi_entry: Table of contents, after title page
+  element_href: texinfo#Contents
+  element_text: Contents
+key: Tables and lists, making
+  origin_href: texinfo#index-Tables-and-lists_002c-making
+  entry: Tables and lists, making
+  texi_entry: Tables and lists, making
+  element_href: texinfo#Lists-and-Tables
+  element_text: Lists and Tables
+key: Tables with indexes
+  origin_href: texinfo#index-Tables-with-indexes
+  entry: Tables with indexes
+  texi_entry: Tables with indexes
+  element_href: texinfo#ftable-vtable
+  element_text: ftable vtable
+key: Tables, making multi-column
+  origin_href: texinfo#index-Tables_002c-making-multi_002dcolumn
+  entry: Tables, making multi-column
+  texi_entry: Tables, making multi-column
+  element_href: texinfo#Multi_002dcolumn-Tables
+  element_text: Multi-column Tables
+key: Tables, making two-column
+  origin_href: texinfo#index-Tables_002c-making-two_002dcolumn
+  entry: Tables, making two-column
+  texi_entry: Tables, making two-column
+  element_href: texinfo#Two_002dcolumn-Tables
+  element_text: Two-column Tables
+key: Tabs; don't use!
+  origin_href: texinfo#index-Tabs_003b-don_0027t-use_0021
+  entry: Tabs; don't use!
+  texi_entry: Tabs; don't use!
+  element_href: texinfo#Conventions
+  element_text: Conventions
+key: Tag table, making automatically
+  origin_href: texinfo#index-Tag-table_002c-making-automatically
+  entry: Tag table, making automatically
+  texi_entry: Tag table, making automatically
+  element_href: texinfo#Tag-and-Split-Files
+  element_text: Tag and Split Files
+key: Tag table, making manually
+  origin_href: texinfo#index-Tag-table_002c-making-manually
+  entry: Tag table, making manually
+  texi_entry: Tag table, making manually
+  element_href: texinfo#Unsplit
+  element_text: Unsplit
+key: Targets for cross-references, arbitrary
+  origin_href: texinfo#index-Targets-for-cross_002dreferences_002c-arbitrary
+  entry: Targets for cross-references, arbitrary
+  texi_entry: Targets for cross-references, arbitrary
+  element_href: texinfo#anchor
+  element_text: anchor
+key: TeX commands, using ordinary
+  origin_href: texinfo#index-TeX-commands_002c-using-ordinary
+  entry: TeX commands, using ordinary
+  texi_entry: @TeX{} commands, using ordinary
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: TeX index sorting
+  origin_href: texinfo#index-TeX-index-sorting
+  entry: TeX index sorting
+  texi_entry: @TeX{} index sorting
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: TeX input initialization
+  origin_href: texinfo#index-TeX-input-initialization
+  entry: TeX input initialization
+  texi_entry: @TeX{} input initialization
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: TeX, how to obtain
+  origin_href: texinfo#index-TeX_002c-how-to-obtain
+  entry: TeX, how to obtain
+  texi_entry: @TeX{}, how to obtain
+  element_href: texinfo#Obtaining-TeX
+  element_text: Obtaining TeX
+key: Template for a definition
+  origin_href: texinfo#index-Template-for-a-definition
+  entry: Template for a definition
+  texi_entry: Template for a definition
+  element_href: texinfo#Def-Cmd-Template
+  element_text: Def Cmd Template
+key: Texinfo commands, defining new
+  origin_href: texinfo#index-Texinfo-commands_002c-defining-new
+  entry: Texinfo commands, defining new
+  texi_entry: Texinfo commands, defining new
+  element_href: texinfo#Defining-New-Texinfo-Commands
+  element_text: Defining New Texinfo Commands
+key: Texinfo file beginning
+  origin_href: texinfo#index-Texinfo-file-beginning
+  entry: Texinfo file beginning
+  texi_entry: Texinfo file beginning
+  element_href: texinfo#Beginning-a-File
+  element_text: Beginning a File
+key: Texinfo file ending
+  origin_href: texinfo#index-Texinfo-file-ending
+  entry: Texinfo file ending
+  texi_entry: Texinfo file ending
+  element_href: texinfo#Ending-a-File
+  element_text: Ending a File
+key: Texinfo file header
+  origin_href: texinfo#index-Texinfo-file-header
+  entry: Texinfo file header
+  texi_entry: Texinfo file header
+  element_href: texinfo#Texinfo-File-Header
+  element_text: Texinfo File Header
+key: Texinfo file minimum
+  origin_href: texinfo#index-Texinfo-file-minimum
+  entry: Texinfo file minimum
+  texi_entry: Texinfo file minimum
+  element_href: texinfo#Minimum
+  element_text: Minimum
+key: Texinfo file section structure, showing it
+  origin_href: texinfo#index-Texinfo-file-section-structure_002c-showing-it
+  entry: Texinfo file section structure, showing it
+  texi_entry: Texinfo file section structure, showing it
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: Texinfo history
+  origin_href: texinfo#index-Texinfo-history
+  entry: Texinfo history
+  texi_entry: Texinfo history
+  element_href: texinfo#History
+  element_text: History
+key: Texinfo mode
+  origin_href: texinfo#index-Texinfo-mode
+  entry: Texinfo mode
+  texi_entry: Texinfo mode
+  element_href: texinfo#Texinfo-Mode
+  element_text: Texinfo Mode
+key: Texinfo overview
+  origin_href: texinfo#index-Texinfo-overview
+  entry: Texinfo overview
+  texi_entry: Texinfo overview
+  element_href: texinfo#Overview
+  element_text: Overview
+key: Texinfo printed book characteristics
+  origin_href: texinfo#index-Texinfo-printed-book-characteristics
+  entry: Texinfo printed book characteristics
+  texi_entry: Texinfo printed book characteristics
+  element_href: texinfo#Printed-Books
+  element_text: Printed Books
+key: Texinfo requires `setfilename'
+  origin_href: texinfo#index-Texinfo-requires-_0040setfilename
+  entry: Texinfo requires `@setfilename'
+  texi_entry: Texinfo requires @code{@@setfilename}
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: Texinfo, introduction to
+  origin_href: texinfo#index-Texinfo_002c-introduction-to
+  entry: Texinfo, introduction to
+  texi_entry: Texinfo, introduction to
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Text width and height
+  origin_href: texinfo#index-Text-width-and-height
+  entry: Text width and height
+  texi_entry: Text width and height
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Text, conditionally visible
+  origin_href: texinfo#index-Text_002c-conditionally-visible
+  entry: Text, conditionally visible
+  texi_entry: Text, conditionally visible
+  element_href: texinfo#Conditionals
+  element_text: Conditionals
+key: Text, marking up
+  origin_href: texinfo#index-Text_002c-marking-up
+  entry: Text, marking up
+  texi_entry: Text, marking up
+  element_href: texinfo#Marking-Text
+  element_text: Marking Text
+key: Thin space between number, dimension
+  origin_href: texinfo#index-Thin-space-between-number_002c-dimension
+  entry: Thin space between number, dimension
+  texi_entry: Thin space between number, dimension
+  element_href: texinfo#dmn
+  element_text: dmn
+key: Tie-after accent
+  origin_href: texinfo#index-Tie_002dafter-accent
+  entry: Tie-after accent
+  texi_entry: Tie-after accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Tied space
+  origin_href: texinfo#index-Tied-space
+  entry: Tied space
+  texi_entry: Tied space
+  element_href: texinfo#w
+  element_text: w
+key: Tilde accent
+  origin_href: texinfo#index-Tilde-accent
+  entry: Tilde accent
+  texi_entry: Tilde accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Tips
+  origin_href: texinfo#index-Tips
+  entry: Tips
+  texi_entry: Tips
+  element_href: texinfo#Tips
+  element_text: Tips
+key: Title page
+  origin_href: texinfo#index-Title-page
+  entry: Title page
+  texi_entry: Title page
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: Title page, bastard
+  origin_href: texinfo#index-Title-page_002c-bastard
+  entry: Title page, bastard
+  texi_entry: Title page, bastard
+  element_href: texinfo#titlepage
+  element_text: titlepage
+key: Title page, for plain text
+  origin_href: texinfo#index-Title-page_002c-for-plain-text
+  entry: Title page, for plain text
+  texi_entry: Title page, for plain text
+  element_href: texinfo#Titlepage-_0026-Copyright-Page
+  element_text: Titlepage & Copyright Page
+key: Titlepage end starts headings
+  origin_href: texinfo#index-Titlepage-end-starts-headings
+  entry: Titlepage end starts headings
+  texi_entry: Titlepage end starts headings
+  element_href: texinfo#end-titlepage
+  element_text: end titlepage
+key: Top node
+  origin_href: texinfo#index-Top-node
+  entry: Top node
+  texi_entry: Top node
+  element_href: texinfo#The-Top-Node
+  element_text: The Top Node
+key: Top node example
+  origin_href: texinfo#index-Top-node-example
+  entry: Top node example
+  texi_entry: Top node example
+  element_href: texinfo#Top-Node-Example
+  element_text: Top Node Example
+key: Top node is first
+  origin_href: texinfo#index-Top-node-is-first
+  entry: Top node is first
+  texi_entry: Top node is first
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: Tree structuring
+  origin_href: texinfo#index-Tree-structuring
+  entry: Tree structuring
+  texi_entry: Tree structuring
+  element_href: texinfo#Tree-Structuring
+  element_text: Tree Structuring
+key: Two `First' Lines for `deffn'
+  origin_href: texinfo#index-Two-_0060First_0027-Lines-for-_0040deffn
+  entry: Two `First' Lines for `@deffn'
+  texi_entry: Two `First' Lines for @code{@@deffn}
+  element_href: texinfo#deffnx
+  element_text: deffnx
+key: Two letter names for indices
+  origin_href: texinfo#index-Two-letter-names-for-indices
+  entry: Two letter names for indices
+  texi_entry: Two letter names for indices
+  element_href: texinfo#syncodeindex
+  element_text: syncodeindex
+key: Two named items for `table'
+  origin_href: texinfo#index-Two-named-items-for-_0040table
+  entry: Two named items for `@table'
+  texi_entry: Two named items for @code{@@table}
+  element_href: texinfo#itemx
+  element_text: itemx
+key: Two part menu entry
+  origin_href: texinfo#index-Two-part-menu-entry
+  entry: Two part menu entry
+  texi_entry: Two part menu entry
+  element_href: texinfo#Less-Cluttered-Menu-Entry
+  element_text: Less Cluttered Menu Entry
+key: Typesetting commands for dots, etc.
+  origin_href: texinfo#index-Typesetting-commands-for-dots_002c-etc_002e
+  entry: Typesetting commands for dots, etc.
+  texi_entry: Typesetting commands for dots, etc.
+  element_href: texinfo#Dots-Bullets
+  element_text: Dots Bullets
+key: URI syntax for Info
+  origin_href: texinfo#index-URI-syntax-for-Info
+  entry: URI syntax for Info
+  texi_entry: URI syntax for Info
+  element_href: texinfo#Info-Files
+  element_text: Info Files
+key: URL, indicating
+  origin_href: texinfo#index-URL_002c-indicating
+  entry: URL, indicating
+  texi_entry: URL, indicating
+  element_href: texinfo#url
+  element_text: url
+key: URL, referring to
+  origin_href: texinfo#index-URL_002c-referring-to
+  entry: URL, referring to
+  texi_entry: URL, referring to
+  element_href: texinfo#uref
+  element_text: uref
+key: Ugly black rectangles in hardcopy
+  origin_href: texinfo#index-Ugly-black-rectangles-in-hardcopy
+  entry: Ugly black rectangles in hardcopy
+  texi_entry: Ugly black rectangles in hardcopy
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: Umlaut accent
+  origin_href: texinfo#index-Umlaut-accent
+  entry: Umlaut accent
+  texi_entry: Umlaut accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Unbreakable space
+  origin_href: texinfo#index-Unbreakable-space
+  entry: Unbreakable space
+  texi_entry: Unbreakable space
+  element_href: texinfo#w
+  element_text: w
+key: Uncluttered menu entry
+  origin_href: texinfo#index-Uncluttered-menu-entry
+  entry: Uncluttered menu entry
+  texi_entry: Uncluttered menu entry
+  element_href: texinfo#Less-Cluttered-Menu-Entry
+  element_text: Less Cluttered Menu Entry
+key: Undefining macros
+  origin_href: texinfo#index-Undefining-macros
+  entry: Undefining macros
+  texi_entry: Undefining macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Underbar accent
+  origin_href: texinfo#index-Underbar-accent
+  entry: Underbar accent
+  texi_entry: Underbar accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Underdot accent
+  origin_href: texinfo#index-Underdot-accent
+  entry: Underdot accent
+  texi_entry: Underdot accent
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: Uniform resource locator, indicating
+  origin_href: texinfo#index-Uniform-resource-locator_002c-indicating
+  entry: Uniform resource locator, indicating
+  texi_entry: Uniform resource locator, indicating
+  element_href: texinfo#url
+  element_text: url
+key: Uniform resource locator, referring to
+  origin_href: texinfo#index-Uniform-resource-locator_002c-referring-to
+  entry: Uniform resource locator, referring to
+  texi_entry: Uniform resource locator, referring to
+  element_href: texinfo#uref
+  element_text: uref
+key: Unique nodename requirement
+  origin_href: texinfo#index-Unique-nodename-requirement
+  entry: Unique nodename requirement
+  texi_entry: Unique nodename requirement
+  element_href: texinfo#Node-Line-Requirements
+  element_text: Node Line Requirements
+key: Unprocessed text
+  origin_href: texinfo#index-Unprocessed-text
+  entry: Unprocessed text
+  texi_entry: Unprocessed text
+  element_href: texinfo#Comments
+  element_text: Comments
+key: Unsplit file creation
+  origin_href: texinfo#index-Unsplit-file-creation
+  entry: Unsplit file creation
+  texi_entry: Unsplit file creation
+  element_href: texinfo#Unsplit
+  element_text: Unsplit
+key: Up node of Top node
+  origin_href: texinfo#index-Up-node-of-Top-node
+  entry: Up node of Top node
+  texi_entry: Up node of Top node
+  element_href: texinfo#First-Node
+  element_text: First Node
+key: Updating nodes and menus
+  origin_href: texinfo#index-Updating-nodes-and-menus
+  entry: Updating nodes and menus
+  texi_entry: Updating nodes and menus
+  element_href: texinfo#Updating-Nodes-and-Menus
+  element_text: Updating Nodes and Menus
+key: Updating requirements
+  origin_href: texinfo#index-Updating-requirements
+  entry: Updating requirements
+  texi_entry: Updating requirements
+  element_href: texinfo#Updating-Requirements
+  element_text: Updating Requirements
+key: Usage tips
+  origin_href: texinfo#index-Usage-tips
+  entry: Usage tips
+  texi_entry: Usage tips
+  element_href: texinfo#Tips
+  element_text: Tips
+key: User options, marking
+  origin_href: texinfo#index-User-options_002c-marking
+  entry: User options, marking
+  texi_entry: User options, marking
+  element_href: texinfo#Variables-Commands
+  element_text: Variables Commands
+key: User-defined Texinfo commands
+  origin_href: texinfo#index-User_002ddefined-Texinfo-commands
+  entry: User-defined Texinfo commands
+  texi_entry: User-defined Texinfo commands
+  element_href: texinfo#Defining-New-Texinfo-Commands
+  element_text: Defining New Texinfo Commands
+key: Using Texinfo in general
+  origin_href: texinfo#index-Using-Texinfo-in-general
+  entry: Using Texinfo in general
+  texi_entry: Using Texinfo in general
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: Validating a large file
+  origin_href: texinfo#index-Validating-a-large-file
+  entry: Validating a large file
+  texi_entry: Validating a large file
+  element_href: texinfo#Using-Info_002dvalidate
+  element_text: Using Info-validate
+key: Validation of pointers
+  origin_href: texinfo#index-Validation-of-pointers
+  entry: Validation of pointers
+  texi_entry: Validation of pointers
+  element_href: texinfo#Pointer-Validation
+  element_text: Pointer Validation
+key: Value of an expression, indicating
+  origin_href: texinfo#index-Value-of-an-expression_002c-indicating
+  entry: Value of an expression, indicating
+  texi_entry: Value of an expression, indicating
+  element_href: texinfo#result
+  element_text: result
+key: Verbatim environment
+  origin_href: texinfo#index-Verbatim-environment
+  entry: Verbatim environment
+  texi_entry: Verbatim environment
+  element_href: texinfo#verbatim
+  element_text: verbatim
+key: Verbatim in-line text
+  origin_href: texinfo#index-Verbatim-in_002dline-text
+  entry: Verbatim in-line text
+  texi_entry: Verbatim in-line text
+  element_href: texinfo#verb
+  element_text: verb
+key: Verbatim, include file
+  origin_href: texinfo#index-Verbatim_002c-include-file
+  entry: Verbatim, include file
+  texi_entry: Verbatim, include file
+  element_href: texinfo#verbatiminclude
+  element_text: verbatiminclude
+key: Vertically holding text together
+  origin_href: texinfo#index-Vertically-holding-text-together
+  entry: Vertically holding text together
+  texi_entry: Vertically holding text together
+  element_href: texinfo#group
+  element_text: group
+key: Visibility of conditional text
+  origin_href: texinfo#index-Visibility-of-conditional-text
+  entry: Visibility of conditional text
+  texi_entry: Visibility of conditional text
+  element_href: texinfo#Conditionals
+  element_text: Conditionals
+key: Weinberg, Zack
+  origin_href: texinfo#index-Weinberg_002c-Zack
+  entry: Weinberg, Zack
+  texi_entry: Weinberg, Zack
+  element_href: texinfo#History
+  element_text: History
+key: Weisshaus, Melissa
+  origin_href: texinfo#index-Weisshaus_002c-Melissa
+  entry: Weisshaus, Melissa
+  texi_entry: Weisshaus, Melissa
+  element_href: texinfo#History
+  element_text: History
+key: White space, excessive
+  origin_href: texinfo#index-White-space_002c-excessive
+  entry: White space, excessive
+  texi_entry: White space, excessive
+  element_href: texinfo#Breaks
+  element_text: Breaks
+key: Whitespace in macros
+  origin_href: texinfo#index-Whitespace-in-macros
+  entry: Whitespace in macros
+  texi_entry: Whitespace in macros
+  element_href: texinfo#Defining-Macros
+  element_text: Defining Macros
+key: Whitespace, inserting
+  origin_href: texinfo#index-Whitespace_002c-inserting
+  entry: Whitespace, inserting
+  texi_entry: Whitespace, inserting
+  element_href: texinfo#Multiple-Spaces
+  element_text: Multiple Spaces
+key: Width of images
+  origin_href: texinfo#index-Width-of-images
+  entry: Width of images
+  texi_entry: Width of images
+  element_href: texinfo#Images
+  element_text: Images
+key: Width of text area
+  origin_href: texinfo#index-Width-of-text-area
+  entry: Width of text area
+  texi_entry: Width of text area
+  element_href: texinfo#pagesizes
+  element_text: pagesizes
+key: Widths, defining multitable column
+  origin_href: texinfo#index-Widths_002c-defining-multitable-column
+  entry: Widths, defining multitable column
+  texi_entry: Widths, defining multitable column
+  element_href: texinfo#Multitable-Column-Widths
+  element_text: Multitable Column Widths
+key: Wildcards
+  origin_href: texinfo#index-Wildcards
+  entry: Wildcards
+  texi_entry: Wildcards
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: Words and phrases, marking them
+  origin_href: texinfo#index-Words-and-phrases_002c-marking-them
+  entry: Words and phrases, marking them
+  texi_entry: Words and phrases, marking them
+  element_href: texinfo#Marking-Text
+  element_text: Marking Text
+key: Writing a menu
+  origin_href: texinfo#index-Writing-a-menu
+  entry: Writing a menu
+  texi_entry: Writing a menu
+  element_href: texinfo#Writing-a-Menu
+  element_text: Writing a Menu
+key: Writing an `node' line
+  origin_href: texinfo#index-Writing-an-_0040node-line
+  entry: Writing an `@node' line
+  texi_entry: Writing an @code{@@node} line
+  element_href: texinfo#Writing-a-Node
+  element_text: Writing a Node
+key: Writing index entries
+  origin_href: texinfo#index-Writing-index-entries
+  entry: Writing index entries
+  texi_entry: Writing index entries
+  element_href: texinfo#Indexing-Commands
+  element_text: Indexing Commands
+key: XPM image format
+  origin_href: texinfo#index-XPM-image-format
+  entry: `XPM image format'
+  texi_entry: @code{XPM image format}
+  element_href: texinfo#Images
+  element_text: Images
+key: Years, in copyright line
+  origin_href: texinfo#index-Years_002c-in-copyright-line
+  entry: Years, in copyright line
+  texi_entry: Years, in copyright line
+  element_href: texinfo#copying
+  element_text: copying
+key: Zaretskii, Eli
+  origin_href: texinfo#index-Zaretskii_002c-Eli
+  entry: Zaretskii, Eli
+  texi_entry: Zaretskii, Eli
+  element_href: texinfo#History
+  element_text: History
+key: Zuhn, David D.
+  origin_href: texinfo#index-Zuhn_002c-David-D_002e
+  entry: Zuhn, David D.
+  texi_entry: Zuhn, David D.
+  element_href: texinfo#History
+  element_text: History
+key: `End' node footnote style
+  origin_href: texinfo#index-End-node-footnote-style
+  entry: `End' node footnote style
+  texi_entry: @samp{@r{End}} node footnote style
+  element_href: texinfo#Footnote-Styles
+  element_text: Footnote Styles
+key: `INSTALL' file, generating
+  origin_href: texinfo#index-INSTALL-file_002c-generating
+  entry: `INSTALL' file, generating
+  texi_entry: @file{INSTALL} file, generating
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: `Separate' footnote style
+  origin_href: texinfo#index-Separate-footnote-style
+  entry: `Separate' footnote style
+  texi_entry: @samp{@r{Separate}} footnote style
+  element_href: texinfo#Footnote-Styles
+  element_text: Footnote Styles
+key: `TEXINPUTS' environment variable
+  origin_href: texinfo#index-TEXINPUTS-environment-variable
+  entry: `TEXINPUTS' environment variable
+  texi_entry: @code{TEXINPUTS} environment variable
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: `Top' node naming for references
+  origin_href: texinfo#index-Top-node-naming-for-references
+  entry: `Top' node naming for references
+  texi_entry: @samp{@r{Top}} node naming for references
+  element_href: texinfo#Top-Node-Naming
+  element_text: Top Node Naming
+key: `\input' source line ignored
+  origin_href: texinfo#index-_005cinput-source-line-ignored
+  entry: `\input' source line ignored
+  texi_entry: @samp{\input} source line ignored
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: `dir' directory for Info installation
+  origin_href: texinfo#index-dir-directory-for-Info-installation
+  entry: `dir' directory for Info installation
+  texi_entry: @file{dir} directory for Info installation
+  element_href: texinfo#Installing-an-Info-File
+  element_text: Installing an Info File
+key: `dir' file listing
+  origin_href: texinfo#index-dir-file-listing
+  entry: `dir' file listing
+  texi_entry: @file{dir} file listing
+  element_href: texinfo#New-Info-File
+  element_text: New Info File
+key: `dir' file, creating your own
+  origin_href: texinfo#index-dir-file_002c-creating-your-own
+  entry: `dir' file, creating your own
+  texi_entry: @file{dir} file, creating your own
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: `dir' files and Info directories
+  origin_href: texinfo#index-dir-files-and-Info-directories
+  entry: `dir' files and Info directories
+  texi_entry: @file{dir} files and Info directories
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: `dir', created by `install-info'
+  origin_href: texinfo#index-dir_002c-created-by-install_002dinfo
+  entry: `dir', created by `install-info'
+  texi_entry: @file{dir}, created by @code{install-info}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: `hboxes', overfull
+  origin_href: texinfo#index-hboxes_002c-overfull
+  entry: `hboxes', overfull
+  texi_entry: @samp{hboxes}, overfull
+  element_href: texinfo#Overfull-hboxes
+  element_text: Overfull hboxes
+key: `href', producing HTML
+  origin_href: texinfo#index-href_002c-producing-HTML
+  entry: `href', producing HTML
+  texi_entry: @code{href}, producing HTML
+  element_href: texinfo#uref
+  element_text: uref
+key: `include' file sample
+  origin_href: texinfo#index-_0040include-file-sample
+  entry: `@include' file sample
+  texi_entry: @code{@@include} file sample
+  element_href: texinfo#Sample-Include-File
+  element_text: Sample Include File
+key: `makeinfo' inside Emacs
+  origin_href: texinfo#index-makeinfo-inside-Emacs
+  entry: `makeinfo' inside Emacs
+  texi_entry: @code{makeinfo} inside Emacs
+  element_href: texinfo#makeinfo-in-Emacs
+  element_text: makeinfo in Emacs
+key: `makeinfo' options
+  origin_href: texinfo#index-makeinfo-options
+  entry: `makeinfo' options
+  texi_entry: @code{makeinfo} options
+  element_href: texinfo#makeinfo-options
+  element_text: makeinfo options
+key: `menu' parts
+  origin_href: texinfo#index-_0040menu-parts
+  entry: `@menu' parts
+  texi_entry: @code{@@menu} parts
+  element_href: texinfo#Menu-Parts
+  element_text: Menu Parts
+key: `node' line writing
+  origin_href: texinfo#index-_0040node-line-writing
+  entry: `@node' line writing
+  texi_entry: @code{@@node} line writing
+  element_href: texinfo#Writing-a-Node
+  element_text: Writing a Node
+key: `txi-CC.tex'
+  origin_href: texinfo#index-txi_002dcc_002etex
+  entry: `txi-CC.tex'
+  texi_entry: @file{txi-@var{cc}.tex}
+  element_href: texinfo#documentlanguage
+  element_text: documentlanguage
+key: `w', for blank items
+  origin_href: texinfo#index-_0040w_002c-for-blank-items
+  entry: `@w', for blank items
+  texi_entry: @code{@@w}, for blank items
+  element_href: texinfo#itemize
+  element_text: itemize
+key: aa
+  origin_href: texinfo#index-aa-1
+  entry: aa
+  texi_entry: @aa{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: ae
+  origin_href: texinfo#index-ae-1
+  entry: ae
+  texi_entry: @ae{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: alt attribute for images
+  origin_href: texinfo#index-alt-attribute-for-images
+  entry: alt attribute for images
+  texi_entry: alt attribute for images
+  element_href: texinfo#Images
+  element_text: Images
+key: alternate text for images
+  origin_href: texinfo#index-alternate-text-for-images
+  entry: alternate text for images
+  texi_entry: alternate text for images
+  element_href: texinfo#Images
+  element_text: Images
+key: autoexec.bat
+  origin_href: texinfo#index-autoexec_002ebat
+  entry: `autoexec.bat'
+  texi_entry: @code{autoexec.bat}
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: automake, and version info
+  origin_href: texinfo#index-automake_002c-and-version-info
+  entry: `automake, and version info'
+  texi_entry: @code{automake@r{, and version info}}
+  element_href: texinfo#GNU-Sample-Texts
+  element_text: GNU Sample Texts
+key: code, arg to kbdinputstyle
+  origin_href: texinfo#index-code_002c-arg-to-_0040kbdinputstyle
+  entry: `code, arg to @kbdinputstyle'
+  texi_entry: @code{code@r{, arg to @@kbdinputstyle}}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: colon, last in `INFOPATH'
+  origin_href: texinfo#index-colon_002c-last-in-INFOPATH
+  entry: colon, last in `INFOPATH'
+  texi_entry: colon, last in @env{INFOPATH}
+  element_href: texinfo#Other-Info-Directories
+  element_text: Other Info Directories
+key: distinct, arg to kbdinputstyle
+  origin_href: texinfo#index-distinct_002c-arg-to-_0040kbdinputstyle
+  entry: `distinct, arg to @kbdinputstyle'
+  texi_entry: @code{distinct@r{, arg to @@kbdinputstyle}}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: em-dash
+  origin_href: texinfo#index-em_002ddash
+  entry: em-dash
+  texi_entry: em-dash
+  element_href: texinfo#minus
+  element_text: minus
+key: epsf.tex
+  origin_href: texinfo#index-epsf_002etex
+  entry: `epsf.tex'
+  texi_entry: @code{epsf.tex}
+  element_href: texinfo#Images
+  element_text: Images
+key: epsf.tex, installing
+  origin_href: texinfo#index-epsf_002etex_002c-installing
+  entry: `epsf.tex, installing'
+  texi_entry: @code{epsf.tex@r{, installing}}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: example, arg to kbdinputstyle
+  origin_href: texinfo#index-example_002c-arg-to-_0040kbdinputstyle
+  entry: `example, arg to @kbdinputstyle'
+  texi_entry: @code{example@r{, arg to @@kbdinputstyle}}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: help2man
+  origin_href: texinfo#index-help2man
+  entry: `help2man'
+  texi_entry: @code{help2man}
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: http-equiv, and charset
+  origin_href: texinfo#index-http_002dequiv_002c-and-charset
+  entry: http-equiv, and charset
+  texi_entry: http-equiv, and charset
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: hyphen
+  origin_href: texinfo#index-hyphen
+  entry: hyphen
+  texi_entry: hyphen
+  element_href: texinfo#minus
+  element_text: minus
+key: i
+  origin_href: texinfo#index-i
+  entry: i
+  texi_entry: @dotless{i}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: install-info
+  origin_href: texinfo#index-install_002dinfo
+  entry: `install-info'
+  texi_entry: @code{install-info}
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info
+key: j
+  origin_href: texinfo#index-j
+  entry: j
+  texi_entry: @dotless{j}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: l
+  origin_href: texinfo#index-l-1
+  entry: /l
+  texi_entry: @l{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: lpr (DVI print command)
+  origin_href: texinfo#index-lpr-_0028DVI-print-command_0029
+  entry: `lpr (DVI print command)'
+  texi_entry: @code{lpr @r{(DVI print command)}}
+  element_href: texinfo#Print-with-lpr
+  element_text: Print with lpr
+key: lpr-d, replacements on MS-DOS/MS-Windows
+  origin_href: texinfo#index-lpr_002dd_002c-replacements-on-MS_002dDOS_002fMS_002dWindows
+  entry: `lpr-d, replacements on MS-DOS/MS-Windows'
+  texi_entry: @code{lpr@r{-d, replacements on MS-DOS/MS-Windows}}
+  element_href: texinfo#Print-with-lpr
+  element_text: Print with lpr
+key: mailto link
+  origin_href: texinfo#index-mailto-link
+  entry: mailto link
+  texi_entry: mailto link
+  element_href: texinfo#email
+  element_text: email
+key: makeinfo
+  origin_href: texinfo#index-makeinfo
+  entry: `makeinfo'
+  texi_entry: @code{makeinfo}
+  element_href: texinfo#Using-Texinfo
+  element_text: Using Texinfo
+key: meta HTML tag, and charset
+  origin_href: texinfo#index-meta-HTML-tag_002c-and-charset
+  entry: meta HTML tag, and charset
+  texi_entry: meta HTML tag, and charset
+  element_href: texinfo#documentencoding
+  element_text: documentencoding
+key: o
+  origin_href: texinfo#index-oe
+  entry: /o
+  texi_entry: @o{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: oe
+  origin_href: texinfo#index-oe-2
+  entry: oe
+  texi_entry: @oe{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: page-delimiter
+  origin_href: texinfo#index-page_002ddelimiter
+  entry: `page-delimiter'
+  texi_entry: @code{page-delimiter}
+  element_href: texinfo#Showing-the-Structure
+  element_text: Showing the Structure
+key: pdfcolor.tex, installing
+  origin_href: texinfo#index-pdfcolor_002etex_002c-installing
+  entry: `pdfcolor.tex, installing'
+  texi_entry: @code{pdfcolor.tex@r{, installing}}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: pdftex
+  origin_href: texinfo#index-pdftex
+  entry: `pdftex'
+  texi_entry: @code{pdftex}
+  element_href: texinfo#PDF-Output
+  element_text: PDF Output
+key: pdftex, and images
+  origin_href: texinfo#index-pdftex_002c-and-images
+  entry: `pdftex, and images'
+  texi_entry: @code{pdftex@r{, and images}}
+  element_href: texinfo#Images
+  element_text: Images
+key: plain TeX
+  origin_href: texinfo#index-plain-TeX
+  entry: plain TeX
+  texi_entry: plain @TeX{}
+  element_href: texinfo#Raw-Formatter-Commands
+  element_text: Raw Formatter Commands
+key: ragged left
+  origin_href: texinfo#index-ragged-left
+  entry: ragged left
+  texi_entry: ragged left
+  element_href: texinfo#flushleft-_0026-flushright
+  element_text: flushleft & flushright
+key: ragged right
+  origin_href: texinfo#index-ragged-right
+  entry: ragged right
+  texi_entry: ragged right
+  element_href: texinfo#flushleft-_0026-flushright
+  element_text: flushleft & flushright
+key: ridt.eps
+  origin_href: texinfo#index-ridt_002eeps
+  entry: `ridt.eps'
+  texi_entry: @code{ridt.eps}
+  element_href: texinfo#Images
+  element_text: Images
+key: shrubbery
+  origin_href: texinfo#index-shrubbery
+  entry: shrubbery
+  texi_entry: shrubbery
+  element_href: texinfo#ifset-ifclear
+  element_text: ifset ifclear
+key: slanted typewriter font, for `kbd'
+  origin_href: texinfo#index-slanted-typewriter-font_002c-for-_0040kbd
+  entry: slanted typewriter font, for `@kbd'
+  texi_entry: slanted typewriter font, for @code{@@kbd}
+  element_href: texinfo#kbd
+  element_text: kbd
+key: ss
+  origin_href: texinfo#index-ss-1
+  entry: ss
+  texi_entry: @ss{}
+  element_href: texinfo#Inserting-Accents
+  element_text: Inserting Accents
+key: texi2dvi
+  origin_href: texinfo#index-texi2dvi
+  entry: `texi2dvi'
+  texi_entry: @code{texi2dvi}
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: texi2dvi (shell script)
+  origin_href: texinfo#index-texi2dvi-_0028shell-script_0029
+  entry: `texi2dvi (shell script)'
+  texi_entry: @code{texi2dvi @r{(shell script)}}
+  element_href: texinfo#Format-with-texi2dvi
+  element_text: Format with texi2dvi
+key: texi2roff, unsupported software
+  origin_href: texinfo_fot.info#index-texi2roff_002c-unsupported-software
+  entry: `texi2roff, unsupported software'
+  texi_entry: @code{texi2roff@r{, unsupported software}}
+  element_href: texinfo_fot.info#SEC_Foot
+  element_text: Footnotes
+key: texindex
+  origin_href: texinfo#index-texindex
+  entry: `texindex'
+  texi_entry: @code{texindex}
+  element_href: texinfo#Hardcopy
+  element_text: Hardcopy
+key: texindex 
+  origin_href: texinfo#index-texindex-1
+  entry: `texindex'
+  texi_entry: @code{texindex}
+  element_href: texinfo#Format-with-tex_002ftexindex
+  element_text: Format with tex/texindex
+key: texinfo.cnf
+  origin_href: texinfo#index-texinfo_002ecnf
+  entry: `texinfo.cnf'
+  texi_entry: @code{texinfo.cnf}
+  element_href: texinfo#setfilename
+  element_text: setfilename
+key: texinfo.cnf installation
+  origin_href: texinfo#index-texinfo_002ecnf-installation
+  entry: `texinfo.cnf installation'
+  texi_entry: @code{texinfo.cnf @r{installation}}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: texinfo.tex, installing
+  origin_href: texinfo#index-texinfo_002etex_002c-installing
+  entry: `texinfo.tex, installing'
+  texi_entry: @code{texinfo.tex@r{, installing}}
+  element_href: texinfo#Preparing-for-TeX
+  element_text: Preparing for TeX
+key: user input
+  origin_href: texinfo#index-user-input
+  entry: user input
+  texi_entry: user input
+  element_href: texinfo#kbd
+  element_text: kbd
+key: version number, finding
+  origin_href: texinfo#index-version-number_002c-finding
+  entry: version number, finding
+  texi_entry: version number, finding
+  element_href: texinfo#Invoking-install_002dinfo
+  element_text: Invoking install-info

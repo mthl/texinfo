@@ -1,0 +1,16 @@
+Element
+*******
+
+quotation1
+in exdented protected eol  following
+in exdented a @* 
+ and following
+after exdented
+
+example
+in exdented protected eol  following
+in exdented a @* 
+ and following
+after exdented
+
+

@@ -1,0 +1,47 @@
+Element
+*******
+
+youhou first item
+youhou In example
+
+end example.
+youhou 
+empty line.
+youhou 
+In second example
+Quotation
+
+youhou 
+quotation after a blank line
+
+* first item
+* In example
+
+end example.
+* 
+empty line.
+* 
+In second example
+* Quotation
+
+* 
+quotation after a blank line
+
+An itemize
+-- truc 
+line
+After itemize
+
+
+A nested itemize
+-- truc 
+line
+* in nested itemize
+After inside nested itemize.
+After nested itemize
+
+* the version number of Texinfo and the program(s) or manual(s) involved.
+* hardware and operating system names and versions.
+* something aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaa
+b b bbbbbbbbbbbbbbbbbbbbbbb.
+

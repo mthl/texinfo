@@ -1,0 +1,41 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename center_flush.info
+
+@node Top
+@top Element
+
+@center centered
+
+@flushleft
+left and
+left2
+
+left3.
+
+
+left Last
+  with space.
+
+Now anchor
+@anchor{anchor in flushleft}
+after anchor
+@end flushleft
+
+@flushright
+right and
+right2
+
+Right3
+
+
+Right last
+  with space.     
+
+Now anchor
+@anchor{anchor in flushright}
+after anchor
+Second anchor in text @anchor{second anchor in flushright} after anchor.
+@end flushright
+
+@bye

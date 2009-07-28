@@ -1,0 +1,69 @@
+Element
+*******
+
+float
+
+
+
+
+Text 1: Caption Label
+
+
+float no Shortcaption
+
+
+
+Text 2: Caption Label no sc
+
+
+float no Label
+
+
+
+Text: Caption no Label
+
+
+float no Caption
+
+
+Text 3
+
+Float no label no type.
+
+
+
+Caption no label no type
+
+
+Float no label no type shortcap.
+
+
+
+
+Caption no label no type shortcap
+
+
+
+Float label no type
+
+
+1: label no type
+
+
+ 
+Float label no type no cap
+
+2
+
+* List of Text:
+* Text 1: Shortcaption Label
+* Text 2: Caption Label no sc
+* Text 3: Label no cap
+
+
+Listoffloats
+* List of :
+* 1: label no type
+* 2: label no type no cap
+
+

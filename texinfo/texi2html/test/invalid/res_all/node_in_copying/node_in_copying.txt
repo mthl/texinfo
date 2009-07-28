@@ -1,0 +1,10 @@
+Top section
+***********
+
+
+This is an unterminatted copyright notice
+
+
+
+This is a manual testing @node appearing within an unterminated @copying.
+

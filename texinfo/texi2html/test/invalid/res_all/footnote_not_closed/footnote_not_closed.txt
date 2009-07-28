@@ -1,0 +1,26 @@
+Top section
+***********
+
+texte(1)1 Chapter
+*********
+
+In chapter(2)2 Chapter2
+**********
+
+
+Footnotes
+*********
+
+(1)
+We have a footnote.
+
+This is an important footnote.
+
+* chapter::           the chapter
+* chapter2::           the second chapter
+
+(2)
+Another footnote
+
+In a quotation
+

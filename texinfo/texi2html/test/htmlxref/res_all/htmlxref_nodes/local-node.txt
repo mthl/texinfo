@@ -1,0 +1,4 @@
+local node
+----------
+id: local-node
+

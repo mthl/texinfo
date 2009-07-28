@@ -1,0 +1,22 @@
+This is node_in_copying.info, produced by makeinfo version 4.13 from
+node_in_copying.texi.
+
+This is an unterminatted copyright notice
+
+
+File: node_in_copying.info,  Node: Top,  Up: (dir)
+
+Top section
+***********
+
+This is an unterminatted copyright notice
+
+   This is a manual testing @node appearing within an unterminated
+@copying.
+
+
+
+Tag Table:
+Node: Top135
+
+End Tag Table

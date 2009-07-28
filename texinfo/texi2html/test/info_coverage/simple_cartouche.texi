@@ -1,0 +1,36 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename simple_cartouche.info
+@node Top
+@top Top section
+
+Before cartouche
+@cartouche 
+In cartouche
+@end cartouche
+After cartouche
+
+Before cartouche empty line
+
+@cartouche 
+In cartouche
+@end cartouche
+
+After cartouche empty line
+
+Before cartouche
+@cartouche 
+
+In cartouche after and before empty line
+
+@end cartouche
+After cartouche
+
+@quotation
+In quotation
+@cartouche
+In cartouche in quotation
+@end cartouche
+end quotation
+@end quotation
+
+@bye

@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename multitable_in_example.info
+
+@node Top
+@top Element
+
+@example
+@multitable {a} {b}
+@item beginnin
+
+end
+@end multitable
+
+@multitable {a} {b}
+@item aaa
+@tab
+
+a new column 
+@end multitable
+@end example
+
+
+
+@bye

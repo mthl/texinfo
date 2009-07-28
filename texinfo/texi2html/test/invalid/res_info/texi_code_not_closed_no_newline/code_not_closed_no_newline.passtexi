@@ -1,0 +1,15 @@
+code_not_closed_no_newline.texi(,2) @settitle code_not_closed_no_newline
+code_not_closed_no_newline.texi(,3) 
+code_not_closed_no_newline.texi(,4) @node Top
+code_not_closed_no_newline.texi(,5) @top Missing closing bracket without a following newline
+code_not_closed_no_newline.texi(,6) 
+code_not_closed_no_newline.texi(,7) @menu
+code_not_closed_no_newline.texi(,8) * chapter::
+code_not_closed_no_newline.texi(,9) @end menu
+code_not_closed_no_newline.texi(,10) 
+code_not_closed_no_newline.texi(,11) @code{not closed
+code_not_closed_no_newline.texi(,12) @node chapter
+code_not_closed_no_newline.texi(,13) @chapter chapter
+code_not_closed_no_newline.texi(,14) 
+code_not_closed_no_newline.texi(,15) @code{still not closed
+code_not_closed_no_newline.texi(,16) @bye

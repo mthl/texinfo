@@ -1,0 +1,19 @@
+symbol_after_command.texi(,2) 
+symbol_after_command.texi(,3) @setfilename symbol_after_command.info
+symbol_after_command.texi(,4) 
+symbol_after_command.texi(,5) @node Top
+symbol_after_command.texi(,6) @top Command after block
+symbol_after_command.texi(,7) 
+symbol_after_command.texi(,8) @table @asis
+symbol_after_command.texi(,9) @item. dot
+symbol_after_command.texi(,10) @item, comma
+symbol_after_command.texi(,11) @item@@ @@
+symbol_after_command.texi(,12) @item@{ @{
+symbol_after_command.texi(,13) @item! exclam
+symbol_after_command.texi(,14) @item'' quotes
+symbol_after_command.texi(,15) @item: colon
+symbol_after_command.texi(,16) @end table
+symbol_after_command.texi(,17) 
+symbol_after_command.texi(,18) @@. @{, @@@@ @?, @!: @@@{ @@'' @@:
+symbol_after_command.texi(,19) 
+symbol_after_command.texi(,20) @bye

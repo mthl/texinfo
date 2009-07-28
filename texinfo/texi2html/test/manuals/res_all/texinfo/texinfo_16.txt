@@ -1,0 +1,774 @@
+15 Definition Commands
+**********************
+
+The @deffn command and the other definition commands
+enable you to describe functions, variables, macros, commands, user
+options, special forms and other such artifacts in a uniform
+format.
+
+In the Info file, a definition causes the entity
+category--`Function', `Variable', or whatever--to appear at the
+beginning of the first line of the definition, followed by the
+entity's name and arguments.  In the printed manual, the command
+causes TeX to print the entity's name and its arguments on the left
+margin and print the category next to the right margin.  In both
+output formats, the body of the definition is indented.  Also, the
+name of the entity is entered into the appropriate index:
+@deffn enters the name into the index of functions,
+@defvr enters it into the index of variables, and so
+on.
+
+A manual need not and should not contain more than one definition for
+a given name.  An appendix containing a summary should use
+@table rather than the definition commands.
+
+* Def Cmd Template::            How to structure a description using a
+                                  definition command.
+* Optional Arguments::          How to handle optional and repeated arguments.
+* deffnx::                      How to group two or more `first' lines.
+* Def Cmds in Detail::          All the definition commands.
+* Def Cmd Conventions::         Conventions for writing definitions.
+* Sample Function Definition::  
+
+15.1 The Template for a Definition
+==================================
+
+The @deffn command is used for definitions of entities that
+resemble functions.  To write a definition using the @deffn
+command, write the @deffn command at the beginning of a line
+and follow it on the same line by the category of the entity, the name
+of the entity itself, and its arguments (if any).  Then write the body
+of the definition on succeeding lines.  (You may embed examples in the
+body.)  Finally, end the definition with an @end deffn command
+written on a line of its own.  (The other definition commands follow
+the same format.)
+
+The template for a definition looks like this:
+
+@deffn category name arguments...
+body-of-definition
+@end deffn
+
+For example,
+
+@deffn Command forward-word count
+This command moves point forward @var{count} words
+(or backward if @var{count} is negative). ...
+@end deffn
+
+produces
+
+ -- Command: forward-word count
+This function moves point forward count words
+(or backward if count is negative). ...
+
+Capitalize the category name like a title.  If the name of the
+category contains spaces, as in the phrase `Interactive Command',
+write braces around it.  For example:
+
+@deffn {Interactive Command} isearch-forward
+...
+@end deffn
+
+Otherwise, the second word will be mistaken for the name of the
+entity.
+
+Some of the definition commands are more general than others.  The
+@deffn command, for example, is the general definition command
+for functions and the like--for entities that may take arguments.  When
+you use this command, you specify the category to which the entity
+belongs.  The @deffn command possesses three predefined,
+specialized variations, @defun, @defmac, and
+@defspec, that specify the category for you: "Function",
+"Macro", and "Special Form" respectively.  (In Lisp, a special form
+is an entity much like a function.)  The @defvr command also is
+accompanied by several predefined, specialized variations for describing
+particular kinds of variables.
+
+The template for a specialized definition, such as @defun, is
+similar to the template for a generalized definition, except that you
+do not need to specify the category:
+
+@defun name arguments...
+body-of-definition
+@end defun
+
+Thus,
+
+@defun buffer-end flag
+This function returns @code{(point-min)} if @var{flag}
+is less than 1, @code{(point-max)} otherwise.
+...
+@end defun
+
+produces
+
+ -- Function: buffer-end flag
+This function returns (point-min) if flag is less than 1,
+(point-max) otherwise.  ...
+
+See A Sample Function Definition, for a more detailed example of a function
+definition, including the use of @example inside the
+definition.
+
+The other specialized commands work like @defun.
+
+Note that, due to implementation difficulties, macros are not expanded
+in @deffn and all the other definition commands.
+
+15.2 Optional and Repeated Arguments
+====================================
+
+Some entities take optional or repeated arguments, which may be
+specified by a distinctive glyph that uses square brackets and
+ellipses.  For example, a special form often breaks its argument list
+into separate arguments in more complicated ways than a
+straightforward function.
+
+An argument enclosed within square brackets is optional.
+Thus, [optional-arg] means that optional-arg is optional.
+An argument followed by an ellipsis is optional
+and may be repeated more than once.
+Thus, repeated-args... stands for zero or more arguments.
+Parentheses are used when several arguments are grouped
+into additional levels of list structure in Lisp.
+
+Here is the @defspec line of an example of an imaginary
+special form:
+
+ -- Special Form: foobar (var [from to [inc]]) body...
+
+In this example, the arguments from and to are optional,
+but must both be present or both absent.  If they are present,
+inc may optionally be specified as well.  These arguments are
+grouped with the argument var into a list, to distinguish them
+from body, which includes all remaining elements of the
+form.
+
+In a Texinfo source file, this @defspec line is written like
+this (except it would not be split over two lines, as it is in this
+example).
+
+@defspec foobar (@var{var} [@var{from} @var{to}
+     [@var{inc}]]) @var{body}@dots{}
+
+The function is listed in the Command and Variable Index under
+`foobar'.
+
+15.3 Two or More `First' Lines
+==============================
+
+To create two or more `first' or header lines for a definition, follow
+the first @deffn line by a line beginning with @deffnx.
+The @deffnx command works exactly like @deffn
+except that it does not generate extra vertical white space between it
+and the preceding line.
+
+For example,
+
+@deffn {Interactive Command} isearch-forward
+@deffnx {Interactive Command} isearch-backward
+These two search commands are similar except ...
+@end deffn
+
+produces
+
+ -- Interactive Command: isearch-forward
+ -- Interactive Command: isearch-backward
+These two search commands are similar except ...
+
+Each definition command has an `x' form: @defunx,
+@defvrx, @deftypefunx, etc.
+
+The `x' forms work just like @itemx; see @itemx.
+
+15.4 The Definition Commands
+============================
+
+Texinfo provides more than a dozen definition commands, all of which
+are described in this section.
+
+The definition commands automatically enter the name of the entity in
+the appropriate index: for example, @deffn, @defun,
+and @defmac enter function names in the index of functions;
+@defvr and @defvar enter variable names in the index
+of variables.
+
+Although the examples that follow mostly illustrate Lisp, the commands
+can be used for other programming languages.
+
+* Functions Commands::          Commands for functions and similar entities.
+* Variables Commands::          Commands for variables and similar entities.
+* Typed Functions::             Commands for functions in typed languages.
+* Typed Variables::             Commands for variables in typed languages.
+* Abstract Objects::            Commands for object-oriented programming.
+* Data Types::                  The definition command for data types.
+
+15.4.1 Functions and Similar Entities
+-------------------------------------
+
+This section describes the commands for describing functions and similar
+entities:
+
+@deffn category name arguments...
+The @deffn command is the general definition command for
+functions, interactive commands, and similar entities that may take
+arguments.  You must choose a term to describe the category of entity
+being defined; for example, "Function" could be used if the entity is
+a function.  The @deffn command is written at the beginning of a
+line and is followed on the same line by the category of entity being
+described, the name of this particular entity, and its arguments, if
+any.  Terminate the definition with @end deffn on a line of its
+own.
+
+For example, here is a definition:
+
+@deffn Command forward-char nchars
+Move point forward @var{nchars} characters.
+@end deffn
+
+This shows a rather terse definition for a "command" named
+forward-char with one argument, nchars.
+
+@deffn prints argument names such as nchars in italics or
+upper case, as if @var had been used, because we think of these
+names as metasyntactic variables--they stand for the actual argument
+values.  Within the text of the description, write an argument name
+explicitly with @var to refer to the value of the argument.  In
+the example above, we used `@var{nchars}' in this way.
+
+The template for @deffn is:
+
+@deffn category name arguments...
+body-of-definition
+@end deffn
+
+@defun name arguments...
+The @defun command is the definition command for functions.
+@defun is equivalent to `@deffn Function
+...'.
+
+For example,
+
+@defun set symbol new-value
+Change the value of the symbol @var{symbol}
+to @var{new-value}.
+@end defun
+
+shows a rather terse definition for a function set whose
+arguments are symbol and new-value.  The argument names on
+the @defun line automatically appear in italics or upper case as
+if they were enclosed in @var.  Terminate the definition with
+@end defun on a line of its own.
+
+The template is:
+
+@defun function-name arguments...
+body-of-definition
+@end defun
+
+@defun creates an entry in the index of functions.
+
+@defmac name arguments...
+The @defmac command is the definition command for macros.
+@defmac is equivalent to `@deffn Macro ...' and
+works like @defun.
+
+@defspec name arguments...
+The @defspec command is the definition command for special
+forms.  (In Lisp, a special form is an entity much like a function,
+see (elisp)Special Forms section `Special Forms' in GNU Emacs Lisp Reference Manual.)
+@defspec is equivalent to `@deffn {Special Form}
+...' and works like @defun.
+
+15.4.2 Variables and Similar Entities
+-------------------------------------
+
+Here are the commands for defining variables and similar
+entities:
+
+@defvr category name
+The @defvr command is a general definition command for
+something like a variable--an entity that records a value.  You must
+choose a term to describe the category of entity being defined; for
+example, "Variable" could be used if the entity is a variable.
+Write the @defvr command at the beginning of a line and
+follow it on the same line by the category of the entity and the
+name of the entity.
+
+Capitalize the category name like a title.  If the name of the category
+contains spaces, as in the name "User Option", enclose it in braces.
+Otherwise, the second word will be mistaken for the name of the entity.
+For example,
+
+@defvr {User Option} fill-column
+This buffer-local variable specifies
+the maximum width of filled lines.
+...
+@end defvr
+
+Terminate the definition with @end defvr on a line of its
+own.
+
+The template is:
+
+@defvr category name
+body-of-definition
+@end defvr
+
+@defvr creates an entry in the index of variables for name.
+
+@defvar name
+The @defvar command is the definition command for variables.
+@defvar is equivalent to `@defvr Variable
+...'.
+
+For example:
+
+@defvar kill-ring
+...
+@end defvar
+
+The template is:
+
+@defvar name
+body-of-definition
+@end defvar
+
+@defvar creates an entry in the index of variables for
+name.
+
+@defopt name
+The @defopt command is the definition command for user
+options, i.e., variables intended for users to change according to
+taste; Emacs has many such (see (emacs)Variables section `Variables' in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
+Option} ...' and works like @defvar.
+
+
+15.4.3 Functions in Typed Languages
+-----------------------------------
+
+The @deftypefn command and its variations are for describing
+functions in languages in which you must declare types of variables and
+functions, such as C and C++.
+
+@deftypefn category data-type name arguments...
+The @deftypefn command is the general definition command for
+functions and similar entities that may take arguments and that are
+typed.  The @deftypefn command is written at the beginning of
+a line and is followed on the same line by the category of entity
+being described, the type of the returned value, the name of this
+particular entity, and its arguments, if any.
+
+For example,
+
+@deftypefn {Library Function} int foobar
+   (int @var{foo}, float @var{bar})
+...
+@end deftypefn
+
+(where the text before the "...", shown above as two lines, would
+actually be a single line in a real Texinfo file) produces the following
+in Info:
+
+-- Library Function: int foobar (int FOO, float BAR)
+...
+
+This means that foobar is a "library function" that returns an
+int, and its arguments are foo (an int) and
+bar (a float).
+
+The argument names that you write in @deftypefn are not subject
+to an implicit @var--since the actual names of the arguments in
+@deftypefn are typically scattered among data type names and
+keywords, Texinfo cannot find them without help.  Instead, you must write
+@var explicitly around the argument names.  In the example
+above, the argument names are `foo' and `bar'.
+
+The template for @deftypefn is:
+
+@deftypefn category data-type name arguments ...
+body-of-description
+@end deftypefn
+
+Note that if the category or data type is more than one
+word then it must be enclosed in braces to make it a single argument.
+
+If you are describing a procedure in a language that has packages,
+such as Ada, you might consider using @deftypefn in a manner
+somewhat contrary to the convention described in the preceding
+paragraphs.
+
+For example:
+
+@deftypefn stacks private push
+        (@var{s}:in out stack;
+        @var{n}:in integer)
+...
+@end deftypefn
+
+(The @deftypefn arguments are shown split into three lines, but
+would be a single line in a real Texinfo file.)
+
+In this instance, the procedure is classified as belonging to the
+package stacks rather than classified as a `procedure' and its
+data type is described as private.  (The name of the procedure
+is push, and its arguments are s and n.)
+
+@deftypefn creates an entry in the index of functions for
+name.
+
+@deftypefun data-type name arguments...
+The @deftypefun command is the specialized definition command
+for functions in typed languages.  The command is equivalent to
+`@deftypefn Function ...'.
+
+Thus,
+
+@deftypefun int foobar (int @var{foo}, float @var{bar})
+...
+@end deftypefun
+
+produces the following in Info:
+
+-- Function: int foobar (int FOO, float BAR)
+...
+
+The template is:
+
+@deftypefun type name arguments...
+body-of-description
+@end deftypefun
+
+@deftypefun creates an entry in the index of functions for
+name.
+
+
+
+15.4.4 Variables in Typed Languages
+-----------------------------------
+
+Variables in typed languages are handled in a manner similar to
+functions in typed languages.  See Typed Functions.  The general
+definition command @deftypevr corresponds to
+@deftypefn and the specialized definition command
+@deftypevar corresponds to @deftypefun.
+
+@deftypevr category data-type name
+The @deftypevr command is the general definition command for
+something like a variable in a typed language--an entity that records
+a value.  You must choose a term to describe the category of the
+entity being defined; for example, "Variable" could be used if the
+entity is a variable.
+
+The @deftypevr command is written at the beginning of a line
+and is followed on the same line by the category of the entity
+being described, the data type, and the name of this particular
+entity.
+
+For example:
+
+@deftypevr {Global Flag} int enable
+...
+@end deftypevr
+
+produces the following in Info:
+
+-- Global Flag: int enable
+...
+
+The template is:
+
+@deftypevr category data-type name
+body-of-description
+@end deftypevr
+
+@deftypevr creates an entry in the index of variables for
+name.
+
+@deftypevar data-type name
+The @deftypevar command is the specialized definition command
+for variables in typed languages.  @deftypevar is equivalent
+to `@deftypevr Variable ...'.
+
+For example:
+
+@deftypevar int fubar
+...
+@end deftypevar
+
+produces the following in Info:
+
+-- Variable: int fubar
+...
+
+The template is:
+
+@deftypevar data-type name
+body-of-description
+@end deftypevar
+
+@deftypevar creates an entry in the index of variables for
+name.
+
+15.4.5 Object-Oriented Programming
+----------------------------------
+
+Here are the commands for formatting descriptions about abstract
+objects, such as are used in object-oriented programming.  A class is
+a defined type of abstract object.  An instance of a class is a
+particular object that has the type of the class.  An instance
+variable is a variable that belongs to the class but for which each
+instance has its own value.
+
+In a definition, if the name of a class is truly a name defined in the
+programming system for a class, then you should write an @code
+around it.  Otherwise, it is printed in the usual text font.
+
+@defcv category class name
+The @defcv command is the general definition command for
+variables associated with classes in object-oriented programming.  The
+@defcv command is followed by three arguments: the category of
+thing being defined, the class to which it belongs, and its
+name.  Thus,
+
+@defcv {Class Option} Window border-pattern
+...
+@end defcv
+
+illustrates how you would write the first line of a definition of the
+border-pattern class option of the class Window.
+
+The template is:
+@defcv category class name
+...
+@end defcv
+
+@defcv creates an entry in the index of variables.
+
+@defivar class name
+The @defivar command is the definition command for instance
+variables in object-oriented programming.  @defivar is
+equivalent to `@defcv {Instance Variable} ...'
+
+The template is:
+@defivar class instance-variable-name
+body-of-definition
+@end defivar
+
+@defivar creates an entry in the index of variables.
+
+@deftypeivar class data-type name
+The @deftypeivar command is the definition command for typed
+instance variables in object-oriented programming.  It is similar to
+@defivar with the addition of the data-type parameter to
+specify the type of the instance variable.  @deftypeivar creates an
+entry in the index of variables.
+
+@defop category class name arguments...
+The @defop command is the general definition command for
+entities that may resemble methods in object-oriented programming.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+
+For example, some systems have constructs called wrappers that
+are associated with classes as methods are, but that act more like
+macros than like functions.  You could use @defop Wrapper to
+describe one of these.
+
+Sometimes it is useful to distinguish methods and operations.
+You can think of an operation as the specification for a method.
+Thus, a window system might specify that all window classes have a
+method named expose; we would say that this window system
+defines an expose operation on windows in general.  Typically,
+the operation has a name and also specifies the pattern of arguments;
+all methods that implement the operation must accept the same
+arguments, since applications that use the operation do so without
+knowing which method will implement it.
+
+Often it makes more sense to document operations than methods.  For
+example, window application developers need to know about the
+expose operation, but need not be concerned with whether a
+given class of windows has its own method to implement this operation.
+To describe this operation, you would write:
+
+@defop Operation windows expose
+
+The @defop command is written at the beginning of a line and
+is followed on the same line by the overall name of the category of
+operation, the name of the class of the operation, the name of the
+operation, and its arguments, if any.
+
+The template is:
+@defop category class name arguments...
+body-of-definition
+@end defop
+
+@defop creates an entry, such as `expose on
+windows', in the index of functions.
+
+@deftypeop category class data-type name arguments...
+The @deftypeop command is the definition command for typed
+operations in object-oriented programming.  It is similar to
+@defop with the addition of the data-type parameter to
+specify the return type of the method.  @deftypeop creates an
+entry in the index of functions.
+
+@defmethod class name arguments...
+The @defmethod command is the definition command for methods
+in object-oriented programming.  A method is a kind of function that
+implements an operation for a particular class of objects and its
+subclasses.
+
+@defmethod is equivalent to `@defop Method ...'.
+The command is written at the beginning of a line and is followed by
+the name of the class of the method, the name of the method, and its
+arguments, if any.
+
+For example:
+@defmethod bar-class bar-method argument
+...
+@end defmethod
+
+illustrates the definition for a method called bar-method of
+the class bar-class.  The method takes an argument.
+
+The template is:
+
+@defmethod class method-name arguments...
+body-of-definition
+@end defmethod
+
+@defmethod creates an entry, such as `bar-method on
+bar-class', in the index of functions.
+
+
+@deftypemethod class data-type name arguments...
+The @deftypemethod command is the definition command for methods
+in object-oriented typed languages, such as C++ and Java.  It is similar
+to the @defmethod command with the addition of the
+data-type parameter to specify the return type of the method.
+
+
+
+15.4.6 Data Types
+-----------------
+
+Here is the command for data types:
+
+@deftp category name attributes...
+The @deftp command is the generic definition command for data
+types.  The command is written at the beginning of a line and is
+followed on the same line by the category, by the name of the type
+(which is a word like int or float), and then by names of
+attributes of objects of that type.  Thus, you could use this command
+for describing int or float, in which case you could use
+data type as the category.  (A data type is a category of
+certain objects for purposes of deciding which operations can be
+performed on them.)
+
+In Lisp, for example,  pair names a particular data
+type, and an object of that type has two slots called the
+CAR and the CDR.  Here is how you would write the first line
+of a definition of pair.
+
+@deftp {Data type} pair car cdr
+...
+@end deftp
+
+The template is:
+
+@deftp category name-of-type attributes...
+body-of-definition
+@end deftp
+
+@deftp creates an entry in the index of data types.
+
+15.5 Conventions for Writing Definitions
+========================================
+
+When you write a definition using @deffn, @defun, or
+one of the other definition commands, please take care to use
+arguments that indicate the meaning, as with the count argument
+to the forward-word function.  Also, if the name of an argument
+contains the name of a type, such as integer, take care that the
+argument actually is of that type.
+
+15.6 A Sample Function Definition
+=================================
+
+A function definition uses the @defun and @end defun
+commands.  The name of the function follows immediately after the
+@defun command and it is followed, on the same line, by the
+parameter list.
+
+Here is a definition from (elisp)Calling Functions section `Calling Functions' in The GNU Emacs Lisp Reference Manual.
+
+ -- Function: apply function &rest arguments
+apply calls function with arguments, just
+like funcall but with one difference: the last of
+arguments is a list of arguments to give to
+function, rather than a single argument.  We also say
+that this list is appended to the other arguments.
+
+apply returns the result of calling function.
+As with funcall, function must either be a Lisp
+function or a primitive function; special forms and macros
+do not make sense in apply.
+
+(setq f 'list)
+     => list
+(apply f 'x 'y 'z)
+error--> Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     => 10
+(apply '+ '(1 2 3 4))
+     => 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     => (a b c x y z)
+
+An interesting example of using apply is found in the description
+of mapcar.
+
+In the Texinfo source file, this example looks like this:
+
+@defun apply function &rest arguments
+@code{apply} calls @var{function} with
+@var{arguments}, just like @code{funcall} but with one
+difference: the last of @var{arguments} is a list of
+arguments to give to @var{function}, rather than a single
+argument.  We also say that this list is @dfn{appended}
+to the other arguments.
+
+@code{apply} returns the result of calling
+@var{function}.  As with @code{funcall},
+@var{function} must either be a Lisp function or a
+primitive function; special forms and macros do not make
+sense in @code{apply}.
+
+@example
+(setq f 'list)
+     @result{} list
+(apply f 'x 'y 'z)
+@error{} Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     @result{} 10
+(apply '+ '(1 2 3 4))
+     @result{} 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     @result{} (a b c x y z)
+@end example
+
+An interesting example of using @code{apply} is found
+in the description of @code{mapcar}.
+@end defun
+
+In this manual, this function is listed in the Command and Variable
+Index under apply.
+
+Ordinary variables and user options are described using a format like
+that for functions except that variables do not take arguments.
+
+

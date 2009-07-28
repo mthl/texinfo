@@ -6,7 +6,8 @@ find the same results, tex4ht, latex2HTML, perl with unicode support and
 the Text::Unidecode perl module have to be installed (with their 
 dependencies). It is possible that some test results involving tex4ht and 
 latex2HTML depend on the setup and version of these tools, so you may 
-get false negative.
+get false negative. If tex4ht or latex2HTML are not found, the corresponding
+tests are skipped.
 
 
 Running the testsuite
@@ -16,17 +17,24 @@ This testsuite can be run
 
 * using the makefile rules: check for the base tests, long-check for 
   the long tests, or all-checks for both.
+
 * using ./tests.sh with the list of directories in argument one want to
-  run the tests in.
-* by going in one directory and running ../run_test.sh, like
+  run the tests in. In general you should give all as first tests.sh
+  argument, like
+./tests.sh all <directories...>
+
+* by going in one directory and running ../run_test_all.sh, like
 $ cd formatting
-$ ../run_test.sh
+$ ../run_test_all.sh
 * by going in one directory and running one specific test, like
 $ cd formatting
-$ ../run_test.sh quotes
+$ ../run_test_all.sh quotes
 
-The test results are in the out/ directory; the reference results are
-in res/; the diffs are put in diffs. 
+The test results are in the out directories; the reference results are
+in res directories; there are 3 out and res directories, out/ and res/
+for the html results in the texi2html style, out_info and res_info
+for the info output a la makeinfo and out_all and res_all 
+for the texi2all output. diffs are put in diffs. 
 
 If a test failed,
  F: a_test_directory 
@@ -36,19 +44,19 @@ is printed. If there are no reference to compare with,
  no res: a_test_directory
 is printed.
 
-If a whole directory check run using ./tests.sh had no failure, 
+If a whole directory check run using './tests.sh all' had no failure, 
 the directory name is printed followed by a 0, it is followed 
 by a 1 if there was some failure.
 
-The test results are in a directory below the out/ directory. This 
+The test results are in a directory below the out directories. This 
 directory name can be considered as the test name. Let's call it a_test
 for the remaining of the explanation. The stderr output is in 
-out/a_test/a_test.2, stdout output is concatenated in tests.out. All 
+out/a_test/a_test.2, stdout output is in out/a_test/a_test.1. All 
 the commands called are output in tests.log.
 
-giving -copy in argument to tests.sh or ../run_test.sh will cause the
-references to be regenerated. This can also be achieved with the 
-copy-tests make target.
+giving -copy in argument to tests.sh all or ../run_test_all.sh will 
+cause the references to be regenerated. This can also be achieved with 
+the copy-tests make target.
 
 
 Tests specification

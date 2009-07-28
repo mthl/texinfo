@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename space_at_menu_end.info
+
+@node Top
+@top Element
+
+Para.
+
+@menu
+* (out)::
+
+@end menu
+
+A para.
+
+
+@bye

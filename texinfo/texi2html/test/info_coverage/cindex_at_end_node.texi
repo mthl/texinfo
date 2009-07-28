@@ -1,0 +1,26 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename cindex_at_end_node.info
+
+@node Top
+@top Element
+
+
+@menu
+* chapter::
+* indices::
+@end menu
+
+@node chapter
+@chapter Chapter
+
+
+
+@cindex index entry
+
+@node indices
+@appendix indices
+
+@printindex cp
+
+@bye

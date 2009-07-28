@@ -1,0 +1,10 @@
+tex_not_closed.texi(,2) 
+tex_not_closed.texi(,3) @node Top
+tex_not_closed.texi(,4) 
+tex_not_closed.texi(,5) texte
+tex_not_closed.texi(,6) 
+tex_not_closed.texi(,7) @tex
+tex_not_closed.texi(,8) 
+tex_not_closed.texi(,9) This is some \LaTeX{}
+tex_not_closed.texi(,10) 
+no file(,) @end tex

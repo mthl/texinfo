@@ -1,0 +1,13 @@
+verbatim_not_closed.texi(,2) 
+verbatim_not_closed.texi(,3) @node Top
+verbatim_not_closed.texi(,4) 
+verbatim_not_closed.texi(,5) texte
+verbatim_not_closed.texi(,6) 
+verbatim_not_closed.texi(,7) @verbatim
+verbatim_not_closed.texi(,8) 
+verbatim_not_closed.texi(,9) some verbatim @
+verbatim_not_closed.texi(,10) 
+verbatim_not_closed.texi(,11) @macro
+verbatim_not_closed.texi(,12) 
+verbatim_not_closed.texi(,13) 
+no file(,) @end verbatim

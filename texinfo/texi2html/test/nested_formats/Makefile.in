@@ -60,6 +60,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
+LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
@@ -129,7 +130,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = nested_formats.texi \
- tests.txt res
+ tests.txt res res_info res_all
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 all: all-am
@@ -298,10 +299,10 @@ uninstall-am:
 
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

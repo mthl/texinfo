@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename noindent_in_paragraph.info
+
+@node Top
+@top Element
+
+Begin para
+@noindent
+after noindent.
+
+Begin para2
+@noindent
+after noindent2.
+
+@bye

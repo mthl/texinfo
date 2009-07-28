@@ -1,0 +1,14 @@
+test multitable with too much cells
+***********************************
+
+
+
+ a
+ a1
+ a2
+ a3
+
+ first second
+ first1
+ first2 second2
+

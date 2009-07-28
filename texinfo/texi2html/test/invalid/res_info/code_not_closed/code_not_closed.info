@@ -1,0 +1,30 @@
+This is code_not_closed.info, produced by makeinfo version 4.13 from
+code_not_closed.texi.
+
+
+File: code_not_closed.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Missing closing bracket
+***********************
+
+* Menu:
+
+* chapter::
+
+   `not closed
+
+
+File: code_not_closed.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+`still not closed
+
+
+
+Tag Table:
+Node: Top92
+Node: chapter249
+
+End Tag Table

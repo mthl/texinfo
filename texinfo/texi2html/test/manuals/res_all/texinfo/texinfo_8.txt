@@ -1,0 +1,230 @@
+7 Menus
+*******
+
+Menus contain pointers to subordinate nodes.(6) In
+Info, you use menus to go to such nodes.  Menus have no effect in
+printed manuals and do not appear in them.
+
+By convention, a menu is put at the end of a node since a reader who
+uses the menu may not see text that follows it.  Furthermore, a node
+that has a menu should not contain much text. If you have a lot of text
+and a menu, move most of the text into a new subnode--all but a few
+lines.  Otherwise, a reader with a terminal that displays only a few
+lines may miss the menu and its associated text.  As a practical matter,
+you should locate a menu within 20 lines of the beginning of the
+node.
+
+* Menu Location::               Put a menu in a short node.
+* Writing a Menu::              What is a menu?
+* Menu Parts::                  A menu entry has three parts.
+* Less Cluttered Menu Entry::   Two part menu entry.
+* Menu Example::                Two and three part menu entries.
+* Other Info Files::            How to refer to a different Info file.
+
+
+Menu Location
+-------------
+Menus Need Short Nodes
+======================
+
+The short text before a menu may look awkward in a printed manual.  To
+avoid this, you can write a menu near the beginning of its node and
+follow the menu by an @node line, and then an @heading
+line located within @ifinfo and @end ifinfo.  This way,
+the menu, @node line, and title appear only in the Info file,
+not the printed document.
+
+For example, the preceding two paragraphs follow an Info-only menu,
+@node line, and heading, and look like this:
+
+@menu
+* Menu Location::             Put a menu in a short node.
+* Writing a Menu::            What is a menu?
+* Menu Parts::                A menu entry has three parts.
+* Less Cluttered Menu Entry:: Two part menu entry.
+* Menu Example::              Two and three part entries.
+* Other Info Files::          How to refer to a different
+                                Info file.
+@end menu
+
+@node Menu Location, Writing a Menu, , Menus
+@ifinfo
+@heading Menus Need Short Nodes
+@end ifinfo
+
+The Texinfo file for this document contains a number of
+examples of this procedure; one is at the beginning of this chapter.
+
+
+7.1 Writing a Menu
+==================
+
+A menu consists of an @menu command on a line by
+itself followed by menu entry lines or menu comment lines
+and then by an @end menu command on a line by
+itself.
+
+A menu looks like this:
+
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+
+In a menu, every line that begins with an `* ' is a menu
+entry.  (Note the space after the asterisk.)  A line that does not
+start with an `* ' may also appear in a menu.  Such a line is
+not a menu entry but is a menu comment line that appears in the Info
+file.  In the example above, the line `Larger Units of Text' is a
+menu comment line; the two lines starting with `* ' are menu
+entries.  Space characters in a menu are preserved as-is; this allows
+you to format the menu as you wish.
+
+
+7.2 The Parts of a Menu
+=======================
+
+A menu entry has three parts, only the second of which is required:
+
+1. The menu entry name (optional).
+
+2. The name of the node (required).
+
+3. A description of the item (optional).
+
+The template for a menu entry looks like this:
+
+* menu-entry-name: node-name.   description
+
+Follow the menu entry name with a single colon and follow the node name
+with tab, comma, period, or newline.
+
+In Info, a user selects a node with the m (Info-menu)
+command.  The menu entry name is what the user types after the m
+command.
+
+The third part of a menu entry is a descriptive phrase or sentence.
+Menu entry names and node names are often short; the description
+explains to the reader what the node is about.  A useful description
+complements the node name rather than repeats it.  The description,
+which is optional, can spread over two or more lines; if it does, some
+authors prefer to indent the second line while others prefer to align it
+with the first (and all others).  It's up to you.
+
+
+7.3 Less Cluttered Menu Entry
+=============================
+
+When the menu entry name and node name are the same, you can write
+the name immediately after the asterisk and space at the beginning of
+the line and follow the name with two colons.
+
+For example, write
+
+* Name::                                    description
+
+instead of
+
+* Name: Name.                               description
+
+You should use the node name for the menu entry name whenever possible,
+since it reduces visual clutter in the menu.
+
+7.4 A Menu Example
+==================
+
+A menu looks like this in Texinfo:
+
+@menu
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+@end menu
+
+This produces:
+
+* menu:
+
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+
+Here is an example as you might see it in a Texinfo file:
+
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+
+This produces:
+
+* menu:
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+
+In this example, the menu has two entries.  `Files' is both a menu
+entry name and the name of the node referred to by that name.
+`Multiples' is the menu entry name; it refers to the node named
+`Buffers'. The line `Larger Units of Text' is a comment; it
+appears in the menu, but is not an entry.
+
+Since no file name is specified with either `Files' or
+`Buffers', they must be the names of nodes in the same Info file
+(see Referring to Other Info Files).
+
+7.5 Referring to Other Info Files
+=================================
+
+You can create a menu entry that enables a reader in Info to go to a
+node in another Info file by writing the file name in parentheses just
+before the node name.  In this case, you should use the three-part menu
+entry format, which saves the reader from having to type the file
+name.
+
+The format looks like this:
+
+@menu
+* first-entry-name:(filename)nodename.     description
+* second-entry-name:(filename)second-node. description
+@end menu
+
+For example, to refer directly to the `Outlining' and
+`Rebinding' nodes in the Emacs Manual, you would write a
+menu like this:
+
+@menu
+* Outlining: (emacs)Outline Mode. The major mode for
+                                  editing outlines.
+* Rebinding: (emacs)Rebinding.    How to redefine the
+                                  meaning of a key.
+@end menu
+
+If you do not list the node name, but only name the file, then Info
+presumes that you are referring to the `Top' node.
+
+The `dir' file that contains the main menu for Info has menu
+entries that list only file names.  These take you directly to the `Top'
+nodes of each Info document.  (See Installing an Info File.)
+
+For example:
+
+* Info: (info).         Documentation browsing system.
+* Emacs: (emacs).       The extensible, self-documenting
+                        text editor.
+
+(The `dir' top level directory for the Info system is an Info file,
+not a Texinfo file, but a menu entry looks the same in both types of
+file.)
+
+The GNU Emacs Texinfo mode menu updating commands only work with nodes
+within the current buffer, so you cannot use them to create menus that
+refer to other files.  You must write such menus by hand.
+
+

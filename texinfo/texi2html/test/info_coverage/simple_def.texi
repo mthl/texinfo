@@ -1,0 +1,70 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename simple_def.info
+
+@macro mymacro
+@deffn fset @var{i} a g
+deff lines
+@end deffn
+
+@deffn aa bb cc
+@deffnx aax bbx ccx
+deffnx lines
+@end deffn
+
+Something
+@deffn ggg hhh ooo
+@end deffn
+Something after
+
+@deffn vgvg bhbh njnj
+@end deffn
+@deffn colle a la precendent
+@end deffn
+
+@deffn truc aa
+
+@deffnx bidule bb
+
+Para
+
+@end deffn
+
+@deffn eeeetruc aeeea
+@deffnx eeeebidule beeeb
+
+Para2
+
+@end deffn
+
+@deffn ffffftruc afffa
+Para3
+
+@end deffn
+
+@deffn ggggggtruc gggga
+
+Para4
+@end deffn
+
+@deffn now with many para
+
+First para.
+
+Second para.
+@end deffn
+
+@end macro
+
+@node Top
+@top Test for definition commands
+
+in text
+@mymacro
+
+
+@example
+In example
+@mymacro
+@end example
+
+@bye

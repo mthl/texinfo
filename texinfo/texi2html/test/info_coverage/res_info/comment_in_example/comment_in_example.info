@@ -1,0 +1,54 @@
+This is comment_in_example.info, produced by makeinfo version 4.13 from
+comment_in_example.texi.
+
+
+File: comment_in_example.info,  Node: Top,  Up: (dir)
+
+Element top
+***********
+
+     In example 
+
+   Para.
+
+     In example, end on same line 
+
+     First line Second 
+
+     First line 0 
+
+          Nested example
+
+     In first one
+
+     First line 1 
+
+          Nested example 
+
+     In first one
+
+     First line 2 
+
+          Nested example 
+
+     In first one 
+
+   Something
+     in example
+     Before end 
+   After end
+
+     Quotation
+
+   Para.
+
+     Quotation no space
+
+   Para.
+
+
+
+Tag Table:
+Node: Top98
+
+End Tag Table

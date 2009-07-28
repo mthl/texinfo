@@ -1,0 +1,22 @@
+Test star * at command and how spaces are ignored after
+*******************************************************
+
+Some text 
+
+mode text.  Even more text. 
+ not at eol.
+
+Now foloowed by @ : followed
+ 
+And now followed by a space and @ : follow 
+  
+And now followed by a space and @ and text: follow 
+  text
+Followeed by empty asis and a space  
+Followeed by asis with space and a space   
+And now with * empty @asis: 
+ 
+And now with * asis with space @asis: 
+  
+And end para.
+

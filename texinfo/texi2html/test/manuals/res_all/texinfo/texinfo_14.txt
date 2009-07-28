@@ -1,0 +1,827 @@
+13 Special Insertions
+*********************
+
+Texinfo provides several commands for inserting characters that have
+special meaning in Texinfo, such as braces, and for other graphic
+elements that do not correspond to simple characters you can type.
+
+
+* Braces Atsigns::              How to insert braces, `@'.
+* Inserting Space::             How to insert the right amount of space
+                                  within a sentence.
+* Inserting Accents::           How to insert accents and special characters.
+* Dots Bullets::                How to insert dots and bullets.
+* TeX and copyright::           How to insert the TeX logo
+                                  and the copyright symbol.
+* pounds::                      How to insert the pounds currency symbol.
+* minus::                       How to insert a minus sign.
+* math::                        How to format a mathematical expression.
+* Glyphs::                      How to indicate results of evaluation,
+                                  expansion of macros, errors, etc.
+* Footnotes::                   How to include footnotes.
+* Images::                      How to include graphics.
+
+
+13.1 Inserting @ and Braces
+===========================
+
+`@' and curly braces are special characters in Texinfo.  To insert
+these characters so they appear in text, you must put an `@' in
+front of these characters to prevent Texinfo from misinterpreting
+them.
+
+Do not put braces after any of these commands; they are not
+necessary.
+
+* Inserting An Atsign::         How to insert `@'.
+* Inserting Braces::            How to insert `{' and `}'.
+
+13.1.1 Inserting `@' with @@
+----------------------------
+
+@@ stands for a single `@' in either printed or Info
+output.
+
+Do not put braces after an @@ command.
+
+
+13.1.2 Inserting `{' and `}'with @{ and @}
+------------------------------------------
+
+@{ stands for a single `{' in either printed or Info
+output.
+
+@} stands for a single `}' in either printed or Info
+output.
+
+Do not put braces after either an @{ or an @}
+command.
+
+
+13.2 Inserting Space
+====================
+
+The following sections describe commands that control spacing of various
+kinds within and after sentences.
+
+* Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
+* Ending a Sentence::           Sometimes it does.
+* Multiple Spaces::             Inserting multiple spaces.
+* dmn::                         How to format a dimension.
+
+
+13.2.1 Not Ending a Sentence
+----------------------------
+
+Depending on whether a period or exclamation point or question mark is
+inside or at the end of a sentence, less or more space is inserted after
+a period in a typeset manual.  Since it is not always possible
+to determine when a period ends a sentence and when it is used
+in an abbreviation, special commands are needed in some circumstances.
+Usually, Texinfo can guess how to handle periods, so you do not need to
+use the special commands; you just enter a period as you would if you
+were using a typewriter, which means you put two spaces after the
+period, question mark, or exclamation mark that ends a sentence.
+
+Use the @: command after a period, question mark,
+exclamation mark, or colon that should not be followed by extra space.
+For example, use @: after periods that end abbreviations
+which are not at the ends of sentences.
+
+For example,
+
+The s.o.p.@: has three parts ...
+The s.o.p. has three parts ...
+
+produces
+
+The s.o.p. has three parts ...
+
+The s.o.p. has three parts ...
+
+(Incidentally, `s.o.p.' is an abbreviation for "Standard Operating
+Procedure".)
+
+@: has no effect on the Info output.  Do not put braces after
+@:.
+
+
+13.2.2 Ending a Sentence
+------------------------
+
+
+Use @. instead of a period, @! instead of an
+exclamation point, and @? instead of a question mark at the end
+of a sentence that ends with a single capital letter.  Otherwise, TeX
+will think the letter is an abbreviation and will not insert the correct
+end-of-sentence spacing.  Here is an example:
+
+Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+produces
+
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+In the Info file output, @. is equivalent to a simple
+`.'; likewise for @! and @?.
+
+The meanings of @: and @. in Texinfo are designed to
+work well with the Emacs sentence motion commands (see (emacs)Sentences section `Sentences' in The GNU Emacs Manual).
+
+Do not put braces after any of these commands.
+
+
+13.2.3 Multiple Spaces
+----------------------
+
+
+Ordinarily, TeX collapses multiple whitespace characters (space, tab,
+and newline) into a single space.  Info output, on the other hand,
+preserves whitespace as you type it, except for changing a newline into
+a space; this is why it is important to put two spaces at the end of
+sentences in Texinfo documents.
+
+Occasionally, you may want to actually insert several consecutive
+spaces, either for purposes of example (what your program does with
+multiple spaces as input), or merely for purposes of appearance in
+headings or lists.  Texinfo supports three commands:
+@SPACE, @TAB, and @NL, all of
+which insert a single space into the output.  (Here,
+@SPACE represents an `@' character followed by a
+space, i.e., `@ ', and TAB and NL represent the tab
+character and end-of-line, i.e., when `@' is the last character on
+a line.)
+
+For example,
+Spacey@ @ @ @
+example.
+
+produces
+
+Spacey    example.
+
+Other possible uses of @SPACE have been subsumed by
+@multitable (see Multi-column Tables).
+
+Do not follow any of these commands with braces.
+
+To produce a non-breakable space, see non-breakable space.
+
+
+13.2.4 @dmn{dimension}: Format a Dimension
+------------------------------------------
+
+At times, you may want to write `12pt' or
+`8.5in' with little or no space between the number and the
+abbreviation for the dimension.  You can use the @dmn command
+to do this.  On seeing the command, TeX inserts just enough space
+for proper typesetting; the Info formatting commands insert no space
+at all, since the Info file does not require it.
+
+To use the @dmn command, write the number and then follow it
+immediately, with no intervening space, by @dmn, and then by
+the dimension within braces.  For example,
+
+A4 paper is 8.27@dmn{in} wide.
+
+produces
+
+A4 paper is 8.27in wide.
+
+Not everyone uses this style.  Some people prefer `8.27 in.@:'
+or `8.27 inches' to `8.27@dmn{in}' in the Texinfo file.
+In these cases, however, the formatters may insert a line break between
+the number and the dimension, so use @w (see w).  Also, if
+you write a period after an abbreviation within a sentence, you should
+write `@:' after the period to prevent TeX from inserting extra
+whitespace, as shown here.  See Not Ending a Sentence.
+
+
+13.3 Inserting Accents
+======================
+
+
+Here is a table with the commands Texinfo provides for inserting
+floating accents.  The commands with non-alphabetic names do not take
+braces around their argument (which is taken to be the next character).
+(Exception: @, does take braces around its argument.)
+This is so as to make the source as convenient to type and read as
+possible, since accented characters are very common in some languages.
+
+ Command Output What
+ @"o o" umlaut accent
+ @'o o' acute accent
+ @,{c} c, cedilla accent
+ @=o o= macron/overbar accent
+ @^o o^ circumflex accent
+ @`o o` grave accent
+ @~o o~ tilde accent
+ @dotaccent{o} o. overdot accent
+ @H{o} o'' long Hungarian umlaut
+ @ringaccent{o} o* ring accent
+ @tieaccent{oo} oo[ tie-after accent
+ @u{o} o( breve accent
+ @ubaraccent{o} o_ underbar accent
+ @udotaccent{o} .o underdot accent
+ @v{o} o< hacek or check accent
+
+This table lists the Texinfo commands for inserting other characters
+commonly used in languages other than English.
+
+ @exclamdown{} ! upside-down !
+ @questiondown{} ? upside-down ?
+ @aa{},@AA{} aa,AA a,A with circle
+ @ae{},@AE{} ae,AE ae,AE ligatures
+ @dotless{i} i dotless i
+ @dotless{j} j dotless j
+ @l{},@L{} /l,/L suppressed-L,l
+ @o{},@O{} /o,/O O,o with slash
+ @oe{},@OE{} oe,OE oe,OE ligatures
+ @ss{} ss es-zet or sharp S
+
+
+13.4 Inserting Ellipsis and Bullets
+===================================
+
+An ellipsis (a line of dots) is not typeset as a string of
+periods, so a special command is used for ellipsis in Texinfo.  The
+@bullet command is special, too.  Each of these commands is
+followed by a pair of braces, `{}', without any whitespace
+between the name of the command and the braces.  (You need to use braces
+with these commands because you can use them next to other text; without
+the braces, the formatters would be confused.  See @-Command Syntax, for further information.)
+
+* dots::                        How to insert dots ...
+* bullet::                      How to insert a bullet.
+
+
+13.4.1 @dots{} (...) and @enddots{} (...)
+-----------------------------------------
+
+Use the @dots{} command to generate an ellipsis, which is
+three dots in a row, appropriately spaced, like this: `...'.  Do
+not simply write three periods in the input file; that would work for
+the Info file output, but would produce the wrong amount of space
+between the periods in the printed manual.
+
+Similarly, the @enddots{} command generates an
+end-of-sentence ellipsis (four dots) ...
+
+
+
+13.4.2 @bullet{} (*)
+--------------------
+
+Use the @bullet{} command to generate a large round dot, or
+the closest possible thing to one.  In Info, an asterisk is used.
+
+Here is a bullet: *
+
+When you use @bullet in @itemize, you do not need to
+type the braces, because @itemize supplies them.
+(See @itemize.)
+
+
+13.5 Inserting TeX and the Copyright Symbol
+===========================================
+
+The logo `TeX' is typeset in a special fashion and it needs an
+@-command.  The copyright symbol, `(C)', is also special.
+Each of these commands is followed by a pair of braces, `{}',
+without any whitespace between the name of the command and the
+braces.
+
+* tex::                         How to insert the TeX logo.
+* copyright symbol::            How to use @copyright{}.
+
+
+13.5.1 @TeX{} (TeX)
+-------------------
+
+Use the @TeX{} command to generate `TeX'.  In a printed
+manual, this is a special logo that is different from three ordinary
+letters.  In Info, it just looks like `TeX'.  The
+@TeX{} command is unique among Texinfo commands in that the
+`T' and the `X' are in upper case.
+
+
+13.5.2 @copyright{} ((C))
+-------------------------
+
+Use the @copyright{} command to generate `(C)'.  In
+a printed manual, this is a `c' inside a circle, and in Info,
+this is `(C)'.
+
+
+13.6 @pounds{} (#): Pounds Sterling
+===================================
+
+Use the @pounds{} command to generate `#'.  In a
+printed manual, this is the symbol for the currency pounds sterling.
+In Info, it is a `#'.  Other currency symbols are unfortunately not
+available.
+
+
+13.7 @minus{} (-): Inserting a Minus Sign
+=========================================
+
+Use the @minus{} command to generate a minus sign.  In a
+fixed-width font, this is a single hyphen, but in a proportional font,
+the symbol is the customary length for a minus sign--a little longer
+than a hyphen, shorter than an em-dash:
+
+`-' is a minus sign generated with `@minus{}',
+
+`-' is a hyphen generated with the character `-',
+
+`--' is an em-dash for text.
+
+In the fixed-width font used by Info, @minus{} is the same
+as a hyphen.
+
+You should not use @minus{} inside @code or
+@example because the width distinction is not made in the
+fixed-width font they use.
+
+When you use @minus to specify the mark beginning each entry in
+an itemized list, you do not need to type the braces
+(see @itemize.)
+
+
+13.8 @math: Inserting Mathematical Expressions
+==============================================
+
+You can write a short mathematical expression with the @math
+command.  Write the mathematical expression between braces, like this:
+
+@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+
+This produces the following in Info:
+
+(a + b)(a + b) = a^2 + 2ab + b^2
+
+Thus, the @math command has no effect on the Info output.
+
+@math implies @tex.  This not only makes it possible to
+write superscripts and subscripts (as in the above example), but also
+allows you to use any of the plain TeX math control sequences.  It's
+conventional to use `\' instead of `@' for these commands.
+As in:
+@math{\sin 2\pi \equiv \cos 3\pi}
+
+which looks like the input in Info and HTML:
+\sin 2\pi \equiv \cos 3\pi
+
+Since `\' is an escape character inside @math, you can use
+@\ to get a literal backslash (\\ will work in TeX,
+but you'll get the literal `\\' in Info).  @\ is not
+defined outside of @math, since a `\' ordinarily produces a
+literal `\'.
+
+
+For displayed equations, you must at present use TeX directly
+(see Raw Formatter Commands).  
+
+
+13.9 Glyphs for Examples
+========================
+
+In Texinfo, code is often illustrated in examples that are delimited
+by @example and @end example, or by @lisp and
+@end lisp.  In such examples, you can indicate the results of
+evaluation or an expansion using `=>' or
+`==>'.  Likewise, there are commands to insert glyphs
+to indicate
+printed output, error messages, equivalence of expressions, and the
+location of point.
+
+The glyph-insertion commands do not need to be used within an example, but
+most often they are.  Every  glyph-insertion command is followed by a pair of
+left- and right-hand braces.
+
+* Glyphs Summary::              
+* result::                      How to show the result of expression.
+* expansion::                   How to indicate an expansion.
+* Print Glyph::                 How to indicate printed output.
+* Error Glyph::                 How to indicate an error message.
+* Equivalence::                 How to indicate equivalence.
+* Point Glyph::                 How to indicate the location of point.
+
+
+13.9.1 Glyphs Summary
+---------------------
+
+Here are the different glyph commands:
+
+=>
+@result{} points to the result of an expression.
+
+==>
+@expansion{} shows the results of a macro expansion.
+
+-|
+@print{} indicates printed output.
+
+error-->
+@error{} indicates that the following text is an error
+message.
+
+==
+@equiv{} indicates the exact equivalence of two forms.
+
+-!-
+@point{} shows the location of point.
+
+* result::
+* expansion::
+* Print Glyph::
+* Error Glyph::
+* Equivalence::
+* Point Glyph::
+
+
+13.9.2 @result{} (=>): Indicating Evaluation
+--------------------------------------------
+
+Use the @result{} command to indicate the result of
+evaluating an expression.
+
+The @result{} command is displayed as `=>' in Info
+and as a double stemmed arrow in the printed output.
+
+Thus, the following,
+
+(cdr '(1 2 3))
+     => (2 3)
+
+may be read as "(cdr '(1 2 3)) evaluates to (2 3)".
+
+
+13.9.3 @expansion{} (==>): Indicating an Expansion
+--------------------------------------------------
+
+When an expression is a macro call, it expands into a new expression.
+You can indicate the result of the expansion with the
+@expansion{} command.
+
+The @expansion{} command is displayed as `==>'
+in Info and as a long arrow with a flat base in the printed output.
+
+For example, the following
+
+@lisp
+(third '(a b c))
+     @expansion{} (car (cdr (cdr '(a b c))))
+     @result{} c
+@end lisp
+
+produces
+
+(third '(a b c))
+     ==> (car (cdr (cdr '(a b c))))
+     => c
+
+which may be read as:
+
+(third '(a b c)) expands to (car (cdr (cdr '(a b c))));
+the result of evaluating the expression is c.
+
+Often, as in this case, an example looks better if the
+@expansion{} and @result{} commands are indented
+five spaces.
+
+
+13.9.4 @print{} (-|): Indicating Printed Output
+-----------------------------------------------
+
+Sometimes an expression will print output during its execution.  You
+can indicate the printed output with the @print{} command.
+
+The @print{} command is displayed as `-|' in Info
+and similarly, as a horizontal dash butting against a vertical bar, in
+the printed output.
+
+In the following example, the printed text is indicated with
+`-|', and the value of the expression follows on the
+last line.
+
+(progn (print 'foo) (print 'bar))
+     -| foo
+     -| bar
+     => bar
+
+In a Texinfo source file, this example is written as follows:
+
+@lisp
+(progn (print 'foo) (print 'bar))
+     @print{} foo
+     @print{} bar
+     @result{} bar
+@end lisp
+
+
+13.9.5 @error{} (error-->): Indicating an Error Message
+-------------------------------------------------------
+
+A piece of code may cause an error when you evaluate it.  You can
+designate the error message with the @error{} command.
+
+The @error{} command is displayed as `error-->' in Info
+and as the word `error' in a box in the printed output.
+
+Thus,
+
+@lisp
+(+ 23 'x)
+@error{} Wrong type argument: integer-or-marker-p, x
+@end lisp
+
+produces
+
+(+ 23 'x)
+error--> Wrong type argument: integer-or-marker-p, x
+
+This indicates that the following error message is printed
+when you evaluate the expression:
+
+Wrong type argument: integer-or-marker-p, x
+
+`error-->' itself is not part of the error message.
+
+
+13.9.6 @equiv{} (==): Indicating Equivalence
+--------------------------------------------
+
+Sometimes two expressions produce identical results.  You can indicate the
+exact equivalence of two forms with the @equiv{} command.
+
+The @equiv{} command is displayed as `==' in Info
+and as a three parallel horizontal lines in the printed output.
+
+Thus,
+
+@lisp
+(make-sparse-keymap) @equiv{} (list 'keymap)
+@end lisp
+
+produces
+
+(make-sparse-keymap) == (list 'keymap)
+
+This indicates that evaluating (make-sparse-keymap) produces
+identical results to evaluating (list 'keymap).
+
+
+13.9.7 @point{} (-!-): Indicating Point in a Buffer
+---------------------------------------------------
+
+Sometimes you need to show an example of text in an Emacs buffer.  In
+such examples, the convention is to include the entire contents of the
+buffer in question between two lines of dashes containing the buffer
+name.
+
+You can use the `@point{}' command to show the location of point
+in the text in the buffer.  (The symbol for point, of course, is not
+part of the text in the buffer; it indicates the place between
+two characters where point is located.)
+
+The @point{} command is displayed as `-!-' in Info
+and as a small five pointed star in the printed output.
+
+The following example shows the contents of buffer `foo' before
+and after evaluating a Lisp command to insert the word changed.
+
+---------- Buffer: foo ----------
+This is the -!-contents of foo.
+---------- Buffer: foo ----------
+
+
+(insert "changed ")
+     => nil
+---------- Buffer: foo ----------
+This is the changed -!-contents of foo.
+---------- Buffer: foo ----------
+
+
+In a Texinfo source file, the example is written like this:
+
+@example
+---------- Buffer: foo ----------
+This is the @point{}contents of foo.
+---------- Buffer: foo ----------
+
+(insert "changed ")
+     @result{} nil
+---------- Buffer: foo ----------
+This is the changed @point{}contents of foo.
+---------- Buffer: foo ----------
+@end example
+
+
+13.10 Footnotes
+===============
+
+A footnote is for a reference that documents or elucidates the
+primary text.(8)
+
+* Footnote Commands::           How to write a footnote in Texinfo.
+* Footnote Styles::             Controlling how footnotes appear in Info.
+
+
+13.10.1 Footnote Commands
+-------------------------
+
+In Texinfo, footnotes are created with the @footnote command.
+This command is followed immediately by a left brace, then by the text
+of the footnote, and then by a terminating right brace.  Footnotes may
+be of any length (they will be broken across pages if necessary), but
+are usually short.  The template is:
+
+ordinary text@footnote{text of footnote}
+
+As shown here, the @footnote command should come right after the
+text being footnoted, with no intervening space; otherwise, the footnote
+marker might end up starting a line.
+
+For example, this clause is followed by a sample footnote(9); in the Texinfo source, it looks like
+this:
+
+...a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source...
+
+As you can see, the source includes two punctuation marks next to each
+other; in this case, `.};' is the sequence.  This is normal (the
+first ends the footnote and the second belongs to the sentence being
+footnoted), so don't worry that it looks odd.
+
+In a printed manual or book, the reference mark for a footnote is a
+small, superscripted number; the text of the footnote appears at the
+bottom of the page, below a horizontal line.
+
+In Info, the reference mark for a footnote is a pair of parentheses
+with the footnote number between them, like this: `(1)'.  The
+reference mark is followed by a cross-reference link to the footnote's
+text.
+
+In the HTML output, footnote references are marked with a small,
+superscripted number which is rendered as a hypertext link to the
+footnote text.
+
+By the way, footnotes in the argument of an @item command for a
+@table must be on the same line as the @item
+(as usual).  See Two-column Tables.
+
+
+13.10.2 Footnote Styles
+-----------------------
+
+Info has two footnote styles, which determine where the text of the
+footnote is located:
+
+* In the `End' node style, all the footnotes for a single node
+are placed at the end of that node.  The footnotes are separated from
+the rest of the node by a line of dashes with the word
+`Footnotes' within it.  Each footnote begins with an
+`(n)' reference mark.
+
+Here is an example of a single footnote in the end of node style:
+
+ --------- Footnotes ---------
+
+(1)  Here is a sample footnote.
+
+* In the `Separate' node style, all the footnotes for a single
+node are placed in an automatically constructed node of
+their own.  In this style, a "footnote reference" follows
+each `(n)' reference mark in the body of the
+node.  The footnote reference is actually a cross reference
+which you use to reach the footnote node.
+
+The name of the node with the footnotes is constructed
+by appending `-Footnotes' to the name of the node
+that contains the footnotes. (Consequently, the footnotes'
+node for the `Footnotes' node is
+`Footnotes-Footnotes'!)  The footnotes' node has an
+`Up' node pointer that leads back to its parent node.
+
+Here is how the first footnote in this manual looks after being
+formatted for Info in the separate node style:
+
+File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+
+(1) The first syllable of "Texinfo" is pronounced like "speck", not
+"hex". ...
+
+A Texinfo file may be formatted into an Info file with either footnote
+style.
+
+Use the @footnotestyle command to specify an Info file's
+footnote style.  Write this command at the beginning of a line followed
+by an argument, either `end' for the end node style or
+`separate' for the separate node style.
+
+For example,
+
+@footnotestyle end
+or
+@footnotestyle separate
+
+Write an @footnotestyle command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  (If you
+include the @footnotestyle command between the start-of-header
+and end-of-header lines, the region formatting commands will format
+footnotes as specified.)
+
+If you do not specify a footnote style, the formatting commands use
+their default style.  Currently, texinfo-format-buffer and
+texinfo-format-region use the `separate' style and
+makeinfo uses the `end' style.
+
+This chapter contains two footnotes.
+
+
+13.11 Inserting Images
+======================
+
+
+You can insert an image given in an external file with the
+@image command:
+
+@image{filename, [width], [height], [alttext], [extension]}
+
+The filename argument is mandatory, and must not have an
+extension, because the different processors support different formats:
+* TeX reads the file `filename.eps' (Encapsulated PostScript
+format).
+* PDFTeX reads `filename.pdf' (Adobe's Portable Document Format).
+* makeinfo uses `filename.txt' verbatim for
+Info output (more or less as if it was an @example).
+* makeinfo
+uses the optional fifth argument to @image for the extension if
+you supply it.  For example:
+
+@image{foo,,,,xpm}
+
+will cause `makeinfo --html' to try `foo.xpm'.
+
+If you do not supply the optional fifth argument, `makeinfo
+---html' first tries `filename.png'; if that does not exist,
+it tries `filename.jpg'.  If that does not exist either, it
+complains.  (We cannot support GIF format directly due to software
+patents.)
+
+The optional width and height arguments specify the size to
+scale the image to (they are ignored for Info output).  If neither is
+specified, the image is presented in its natural size (given in the
+file); if only one is specified, the other is scaled proportionately;
+and if both are specified, both are respected, thus possibly distorting
+the original image by changing its aspect ratio.
+
+The width and height may be specified using any valid TeX
+dimension, namely:
+
+pt
+point (72.27pt = 1in)
+pc
+pica (1pc = 12pt)
+bp
+big point (72bp = 1in)
+in
+inch
+cm
+centimeter (2.54cm = 1in)
+mm
+millimeter (10mm = 1cm)
+dd
+dido^t point (1157dd = 1238pt)
+cc
+cicero (1cc = 12dd)
+sp
+scaled point (65536sp = 1pt)
+
+For example, the following will scale a file `ridt.eps' to one
+inch vertically, with the width scaled proportionately:
+
+@image{ridt,,1in}
+
+For @image to work with TeX, the file `epsf.tex' must be
+installed somewhere that TeX can find it.  (The standard location is
+`texmf/tex/generic/dvips/epsf.tex', where texmf is a
+root of your TeX directory tree.)  This file is included in the
+Texinfo distribution and is also available from
+<ftp://tug.org/tex/epsf.tex>, among other places.
+
+@image can be used within a line as well as for displayed
+figures.  Therefore, if you intend it to be displayed, be sure to leave
+a blank line before the command, or the output will run into the
+preceding text.
+
+When producing html, makeinfo sets the alt attribute for
+inline images to the optional fourth argument to @image, if
+supplied.  If not supplied, makeinfo uses the full file name of
+the image being displayed.
+
+

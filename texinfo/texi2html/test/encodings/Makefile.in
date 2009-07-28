@@ -60,6 +60,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
+LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
@@ -136,7 +137,7 @@ EXTRA_DIST = nodetest.texi nodetest_latin1.texi nodetest_utf8.texi \
  japanese.texi documentlanguage_set.texi \
  encoding_index-latin1.texi  encoding_index.texi  encoding_index-utf8.texi \
  enable_encoding_no_use_entity.init \
- no_unicode.init no_unidecode.init icons.init tests.txt res
+ no_unicode.init no_unidecode.init icons.init tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 all: all-am
@@ -305,10 +306,10 @@ uninstall-am:
 
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

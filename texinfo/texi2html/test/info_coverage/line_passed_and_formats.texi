@@ -1,0 +1,148 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename line_passed_and_formats.info
+
+@node Top
+@top Element
+
+@quotation special
+Quotation special.
+@quotation 
+Nested quotation sdflkmsfdlkmfsdqmlkfsdq mlfdsqlkmfdsqmlkfdsq klm fsqdlkmfdsq
+fdsfsdqmlkfsqd m lqlkmf qskmlfq sklm fqds
+@end quotation
+@end quotation
+
+@quotation
+quotation  text
+@example
+example in   quotation
+@end example
+@end quotation
+
+@example
+ In  example.
+@quotation
+   In quotation   in example
+@end quotation
+@end example
+
+@example
+In 1 example
+@end example
+@example
+In 2 example
+@end example
+
+@quotation
+In 1 quotation
+@end quotation
+@quotation
+In 2 quotation
+@end quotation
+
+@quotation 
+Quotation
+@quotation 
+Nested quotation
+@end quotation
+Quotation 2
+@end quotation
+
+@example
+In  example.
+@quotation
+In quotation   in example
+@end quotation
+In  example 2.
+@end example
+
+@quotation
+quotation  text
+@example
+example in   quotation
+@end example
+quotation  text 2
+@end quotation
+
+Before quotation
+@quotation
+quotation  text
+@end quotation
+after end
+
+Before example
+@example
+In example
+@end example
+After example
+
+Before quotation and empty line
+@quotation
+
+In quotation
+
+@end quotation
+After quotation
+
+Before example and empty line
+@example
+
+In example
+
+@end example
+After example
+
+Nested and empty lines
+
+Quotation empty out, spaces inside
+@quotation
+
+@quotation
+
+In nested
+
+@end quotation
+
+@end quotation
+
+Quotation empty out, no spaces inside
+@quotation
+
+@quotation
+In nested
+@end quotation
+
+@end quotation
+
+Example empty out, spaces inside
+@example
+
+@example
+
+In nested
+
+@end example
+
+@end example
+
+Example empty out, no spaces inside
+@example
+
+@example
+In nested
+@end example
+
+@end example
+
+menu
+@menu
+* node::
+@end menu
+end menu
+
+@node node
+@chapter node
+
+
+@bye

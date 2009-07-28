@@ -1,0 +1,291 @@
+18 Defining New Texinfo Commands
+********************************
+
+Texinfo provides several ways to define new commands:
+
+* A Texinfo macro allows you to define a new Texinfo command as any
+sequence of text and/or existing commands (including other macros).  The
+macro can have any number of parameters--text you supply each
+time you use the macro.
+
+Incidentally, these macros have nothing to do with the @defmac
+command, which is for documenting macros in the subject of the manual
+(see Def Cmd Template).
+
+* `@alias' is a convenient way to define a new name for an existing
+command.
+
+* `@definfoenclose' allows you to define new commands with
+customized output in the Info file.
+
+
+* Defining Macros::             Defining and undefining new commands.
+* Invoking Macros::             Using a macro, once you've defined it.
+* Macro Details::               Beyond basic macro usage.
+* alias::                       Command aliases.
+* definfoenclose::              Customized highlighting.
+
+
+18.1 Defining Macros
+====================
+
+You use the Texinfo @macro command to define a macro, like this:
+
+@macro macroname{param1, param2, ...}
+text ... \param1\ ...
+@end macro
+
+The parameters param1, param2, ... correspond to
+arguments supplied when the macro is subsequently used in the document
+(described in the next section).
+
+For a macro to work with TeX, macroname must consist entirely
+of letters: no digits, hyphens, underscores, or other special characters.
+
+If a macro needs no parameters, you can define it either with an empty
+list (`@macro foo {}') or with no braces at all (`@macro
+foo').
+
+The definition or body of the macro can contain most Texinfo
+commands, including previously-defined macros.  Not-yet-defined macro
+invocations are not allowed; thus, it is not possible to have mutually
+recursive Texinfo macros.  Also, a macro definition that defines another
+macro does not work in TeX due to limitations in the design of
+@macro.
+
+In the macro body, instances of a parameter name surrounded by
+backslashes, as in `\param1\' in the example above, are
+replaced by the corresponding argument from the macro invocation.  You
+can use parameter names any number of times in the body, including zero.
+
+To get a single `\' in the macro expansion, use `\\'.  Any
+other use of `\' in the body yields a warning.
+
+The newlines after the @macro line and before the @end
+macro line are ignored, that is, not included in the macro body.  All
+other whitespace is treated according to the usual Texinfo rules.
+
+To allow a macro to be used recursively, that is, in an argument to a
+call to itself, you must define it with `@rmacro', like this:
+
+@rmacro rmac {arg}
+a\arg\b
+@end rmacro
+...
+@rmac{1@rmac{text}2}
+
+This produces the output `a1atextb2b'.  With `@macro' instead of
+`@rmacro', an error message is given.
+
+You can undefine a macro foo with @unmacro foo.
+It is not an error to undefine a macro that is already undefined.
+For example:
+
+@unmacro foo
+
+
+18.2 Invoking Macros
+====================
+
+After a macro is defined (see the previous section), you can use
+(invoke) it in your document like this:
+
+@macroname {arg1, arg2, ...}
+
+and the result will be just as if you typed the body of
+macroname at that spot.  For example:
+
+@macro foo {p, q}
+Together: \p\ & \q\.
+@end macro
+@foo{a, b}
+
+produces:
+
+Together: a & b.
+
+Thus, the arguments and parameters are separated by commas and delimited
+by braces; any whitespace after (but not before) a comma is ignored.
+The braces are required in the invocation (but not the definition), even
+when the macro takes no arguments, consistent with all other Texinfo
+commands.  For example:
+
+@macro argless {}
+No arguments here.
+@end macro
+@argless{}
+
+produces:
+
+No arguments here.
+
+To insert a comma, brace, or backslash in an argument, prepend a
+backslash, as in
+
+@macname {\\\{\}\,}
+
+which will pass the (almost certainly error-producing) argument
+`\{},' to macname.  However, commas in parameters, even
+if escaped by a backslash, might cause trouble in TeX.
+
+If the macro is defined to take a single argument, and is invoked
+without any braces, the entire rest of the line after the macro name is
+supplied as the argument.  For example:
+
+@macro bar {p}
+Twice: \p\ & \p\.
+@end macro
+@bar aah
+
+produces:
+
+Twice: aah & aah.
+
+If the macro is defined to take a single argument, and is invoked with
+braces, the braced text is passed as the argument, regardless of
+commas.  For example:
+
+@macro bar {p}
+Twice: \p\ & \p\.
+@end macro
+@bar{a,b}
+
+produces:
+
+Twice: a,b & a,b.
+
+
+18.3 Macro Details
+==================
+
+Due to unavoidable disparities in the TeX and makeinfo
+implementations, Texinfo macros have the following limitations.
+
+* All macros are expanded inside at least one TeX group.  This means
+that @set and other such commands will have no effect inside a
+macro.
+
+* Macros containing a command which must be on a line by itself, such as a
+conditional, cannot be invoked in the middle of a line.
+
+* Commas in macro arguments, even if escaped by a backslash, don't
+always work.
+
+* The TeX implementation cannot construct macros that define macros in
+the natural way.  To do this, you must use conditionals and raw TeX.
+For example:
+
+@ifnottex
+@macro ctor {name, arg}
+@macro \name\
+something involving \arg\ somehow
+@end macro
+@end macro
+@end ifnottex
+@tex
+\gdef\ctor#1{\ctorx#1,}
+\gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
+@end tex
+
+* It is best to avoid comments inside macro definitions.
+
+
+If some macro feature causes errors when producing the printed version
+of a manual, try expanding the macros with makeinfo by
+invoking texi2dvi with the `-e' option; see Format with texi2dvi.
+
+18.4 `@alias new=existing'
+==========================
+
+The `@alias' command defines a new command to be just like an
+existing one.  This is useful for defining additional markup names, thus
+preserving semantic information in the input even though the output
+result may be the same.
+
+Write the `@alias' command on a line by itself, followed by the
+new command name, an equals sign, and the existing command name.
+Whitespace around the equals sign is ignored.  Thus:
+@alias new = existing
+
+For example, if your document contains citations for both books and
+some other media (movies, for example), you might like to define a
+macro @moviecite{} that does the same thing as an ordinary
+@cite{} but conveys the extra semantic information as well.
+You'd do this as follows:
+
+@alias moviecite = cite
+
+Macros do not always have the same effect due to vagaries of argument
+parsing.  Also, aliases are much simpler to define than macros.  So the
+command is not redundant.  (It was also heavily used in the Jargon File!)
+
+Aliases must not be recursive, directly or indirectly.
+
+18.5 `definfoenclose': Customized Highlighting
+==============================================
+
+A @definfoenclose command may be used to define a highlighting
+command for Info, but not for TeX.  A command defined using
+@definfoenclose marks text by enclosing it in strings that
+precede and follow the text.  You can use this to get closer control of
+your Info output.
+ 
+Presumably, if you define a command with @definfoenclose for Info,
+you will create a corresponding command for TeX, either in
+`texinfo.tex', `texinfo.cnf', or within an `@iftex' in
+your document.
+
+Write a @definfoenclose command on a line and follow it with
+three arguments separated by commas.  The first argument to
+@definfoenclose is the @-command name (without the @);
+the second argument is the Info start delimiter string; and the third
+argument is the Info end delimiter string.  The latter two arguments
+enclose the highlighted text in the Info file.  A delimiter string may
+contain spaces.  Neither the start nor end delimiter is required.  If
+you do not want a start delimiter but do want an end delimiter, you must
+follow the command name with two commas in a row; otherwise, the Info
+formatting commands will naturally misinterpret the end delimiter string
+you intended as the start delimiter string.
+
+If you do a @definfoenclose on the name of a pre-defined macro
+(such as @emph, @strong, @t, or @i), the
+enclosure definition will override the built-in definition.
+ 
+An enclosure command defined this way takes one argument in braces; this
+is intended for new markup commands (see Marking Text).
+
+For example, you can write:
+
+@definfoenclose phoo,//,\\
+
+near the beginning of a Texinfo file to define @phoo as an Info
+formatting command that inserts `//' before and `\\' after the argument
+to @phoo.  You can then write @phoo{bar} wherever you
+want `//bar\\' highlighted in Info.
+
+Also, for TeX formatting, you could write 
+
+@iftex
+@global@let@phoo=@i
+@end iftex
+
+to define @phoo as a command that causes TeX to typeset the
+argument to @phoo in italics.
+
+Each definition applies to its own formatter: one for TeX, the other
+for texinfo-format-buffer or texinfo-format-region.  The
+@definfoenclose command need not be within `@ifinfo', but
+the raw TeX commands do need to be in `@iftex'.
+
+Here is another example: write
+
+@definfoenclose headword, , :
+
+near the beginning of the file, to define @headword as an Info
+formatting command that inserts nothing before and a colon after the
+argument to @headword.
+
+`@definfoenclose' definitions must not be recursive, directly or
+indirectly.
+
+

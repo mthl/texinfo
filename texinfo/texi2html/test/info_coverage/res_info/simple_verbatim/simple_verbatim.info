@@ -1,0 +1,57 @@
+This is simple_verbatim.info, produced by makeinfo version 4.13 from
+simple_verbatim.texi.
+
+
+File: simple_verbatim.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+   Text before
+in verbatime
+   Text after
+
+     In quotation
+     
+     In verbatim in quotation
+     In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+   Before
+In verbatim test text
+   After
+
+Includede file.
+
+     In quotation include
+     
+     Includede file.
+
+   Before include
+Includede file.
+
+   After
+
+     In example
+
+     In verbatim in example
+     In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+     In quotation with spaces
+
+     In verbatim in quotation with spaces
+     In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+     In quotation
+
+     In verbatim in quotation
+
+     in quotation after end verbaatim
+
+
+
+Tag Table:
+Node: Top92
+
+End Tag Table

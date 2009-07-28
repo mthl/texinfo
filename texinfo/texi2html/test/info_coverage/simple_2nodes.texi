@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_2nodes.info
+
+@node Top
+@top Element
+
+before menu.
+
+@menu
+* name::
+* name1::
+@end menu
+
+@node name
+@chapter name
+
+@node name1
+@chapter name1
+
+@bye

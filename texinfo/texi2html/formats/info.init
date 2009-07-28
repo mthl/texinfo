@@ -927,7 +927,7 @@ sub info_default_process_content($$)
           elsif ($paragraph_style{$content->{'command'}})
           {
               my $popped = pop @{$info_state->{'align_stack'}};
-              print STDERR "BUG: align_stack, popped $popped->{'command'} ne command $content->{'command'}\n" if ($popped->{'command'} ne $content->{'command'});
+              print STDERR "BUG".main::format_line_number().": align_stack, popped $popped->{'command'} ne command $content->{'command'}\n" if ($popped->{'command'} ne $content->{'command'});
           }
           elsif ($content->{'command'} eq 'multitable')
           {
@@ -1101,7 +1101,7 @@ sub info_default_process_content($$)
           if ($content->{'command'})
           {
               my $pending_added_length = 0;
-              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp')
+              if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp' or $content->{'raw_command'})
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
@@ -1154,7 +1154,8 @@ sub info_default_process_content($$)
                   my $index_ref = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr };
 #print STDERR "INDEX($index_name) line $index_line_nr\n";
                   $info_default_index_entries{$content->{'index_entry_reference'}} = $index_ref;
-                  if (@{$info_state->{'multitable_stack'}})
+                  # there may be no cell in case of an empty multitable
+                  if (@{$info_state->{'multitable_stack'}} and $info_state->{'multitable_stack'}->[-1]->{'cells'})
                   {
                       push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'index_entries'}}, $index_ref;
                   }
@@ -1334,7 +1335,8 @@ sub info_default_process_content($$)
               }
               elsif ($paragraph_style{$content->{'command'}})
               {
-                  push @{$info_state->{'align_stack'}}, {'command' => $content->{'command'}};
+                 goto new_text if (!$content->{'content'});
+                 push @{$info_state->{'align_stack'}}, {'command' => $content->{'command'}};
               }
               elsif ($content->{'command'} eq 'verbatim' or $content->{'command'} eq 'verbatiminclude')
               {
@@ -3079,11 +3081,17 @@ sub info_default_tab_item_texi($$$$$$)
 
    $line =~ s/^\s*//;
    my $format;
-   $format = $commands_stack->[-1] if (defined($commands_stack) and @$commands_stack and $commands_stack->[-1]);
+   my $info_state = info_default_get_state ($state);
+   #$format = $commands_stack->[-1] if (defined($commands_stack) and @$commands_stack and $commands_stack->[-1]);
+   my ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
+   print STDERR "Not in_format in info_default_tab_item_texi\n" if (!$in_format);
+   $format = $parent_format->{'command'};
    # in case of an @item or @tab outside of any format $format will be
    # undefined, or not multitable for a @tab.
-   return $line if (!defined($format) or $command eq 'tab' and $format ne 'multitable');
-   #print STDERR "tab_item_texi $command $commands_stack, $stack, $state, $line, $line_nr\n";
+   # however the main program still do as if something was opened, plus
+   # it is checked there that the nesting is correct
+   #return $line if (!defined($format) or $command eq 'tab' and $format ne 'multitable');
+   #print STDERR "tab_item_texi $format $command $commands_stack, $stack, $state, $line, $line_nr\n";
    if ($format eq 'multitable')
    {
        if ($command ne 'tab')
@@ -3181,8 +3189,8 @@ sub info_default_table_list($$$$$$$$$)
        }
     }
     else 
-    {
-       print STDERR "Empty multitable?\n";
+    { # empty multitable
+       #print STDERR "Empty multitable?\n";
     }
 
     return info_default_close_command(undef, $format_command, undef, undef, {'columns_size' => $columnsize});

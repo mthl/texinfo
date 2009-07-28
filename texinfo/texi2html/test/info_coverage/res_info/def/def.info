@@ -1,0 +1,23 @@
+This is def.info, produced by makeinfo version 4.13 from def.texi.
+
+
+File: def.info,  Node: Top,  Up: (dir)
+
+Test for definition commands
+****************************
+
+I.
+
+ -- fset: I a g
+     deff lines
+
+ -- aa: bb cc
+ -- aax: bbx ccx
+     deffnx lines
+
+
+
+Tag Table:
+Node: Top68
+
+End Tag Table

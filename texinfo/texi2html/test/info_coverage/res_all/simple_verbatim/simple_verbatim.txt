@@ -1,0 +1,46 @@
+Element
+*******
+
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+Text before
+in verbatime
+Text after
+
+In quotation
+In verbatim in quotation
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+Before
+In verbatim test text
+After
+
+Includede file.
+
+
+In quotation include 
+Includede file.
+
+
+Before include
+Includede file.
+
+After
+
+In example
+
+In verbatim in example
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+
+In quotation with spaces
+
+In verbatim in quotation with spaces
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+
+
+In quotation 
+
+In verbatim in quotation
+in quotation after end verbaatim
+

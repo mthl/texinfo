@@ -10,7 +10,7 @@ Test tables
 first item
      First item text
 
-     *note title in first item second item @end table: Top.
+     *note title in first item  second item @end table: Top.
 
 Unnumbered section
 ******************

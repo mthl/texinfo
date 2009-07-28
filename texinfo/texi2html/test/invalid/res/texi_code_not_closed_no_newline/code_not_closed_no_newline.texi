@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+@settitle code_not_closed_no_newline
+
+@node Top
+@top Missing closing bracket without a following newline
+
+@menu
+* chapter::
+@end menu
+
+@code{not closed
+@node chapter
+@chapter chapter
+
+@code{still not closed
+@bye

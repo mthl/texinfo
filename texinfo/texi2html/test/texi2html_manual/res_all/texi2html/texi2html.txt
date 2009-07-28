@@ -1,0 +1,989 @@
+Short Table of Contents
+***********************
+
+Texi2html
+1. Overview about texi2html
+2. Installation of texi2html
+3. Customizing files
+4. Customizing what gets expanded
+5. Customizing page layout
+6. Customizing HTML
+7. Initialization file
+8. Command Line Options
+A. Function Reference
+B. Indices
+
+Table of Contents
+*****************
+
+Texi2html
+1. Overview about texi2html
+ 1.1 Ways to get HTML
+ 1.2 Why `texi2html' and not `makeinfo'?
+2. Installation of texi2html
+3. Customizing files
+4. Customizing what gets expanded
+5. Customizing page layout
+ 5.1 Tips how to create a new site design
+ 5.2 Page Layout and the philosophy
+  5.2.1 Navigation panels
+ 5.3 Top Page
+ 5.4 Section Pages
+ 5.5 Misc pages
+  5.5.1 Table Of Contents
+  5.5.2 Page header
+  5.5.3 Page footer
+6. Customizing HTML
+ 6.1 Body
+  6.1.1 Body Text
+  6.1.2 Body Text
+  6.1.3 After Body Text
+ 6.2 Head
+7. Initialization file
+ 7.1 The basics about init files
+ 7.2 Global initialization file
+ 7.3 User initialization file
+ 7.4 Loadable initialization file
+ 7.5 Initialization file options
+  7.5.1 Number sections.
+  7.5.2 Avoid menu redundancy
+  7.5.3 Center Image
+  7.5.4 Example Indent Cell
+  7.5.5 Small Example Indent
+  7.5.6 Small Font Size
+  7.5.7 Top Heading
+  7.5.8 Index Chapter
+  7.5.9 Split Index
+  7.5.10 HREF Dir Instead File.
+8. Command Line Options
+ 8.1 Debugging
+ 8.2 DocType
+ 8.3 Check
+ 8.4 Expand
+ 8.5 Glossary
+ 8.6 Invisible
+ 8.7 Iso
+ 8.8 Include Directory
+ 8.9 Top File
+ 8.10 Table Of content File
+ 8.11 Frames
+ 8.12 Menus
+ 8.13 Number sections
+ 8.14 Split
+ 8.15 Section navigation
+ 8.16 Subdirectory
+ 8.17 Short extension
+ 8.18 Prefix
+ 8.19 Output filename
+ 8.20 Short Cross References
+ 8.21 Index Summary
+ 8.22 Verbose output
+ 8.23 Language Support
+ 8.24 LaTeX2HTML for @math and @tex
+  8.24.1 Where to find latex2html
+  8.24.2 Skip calling LaTeX2HTML
+  8.24.3 Temporary files for LaTeX2HTML
+A. Function Reference
+ A.1 Print ToC Frame
+ A.2 Print Page Head
+B. Indices
+ B.1 Command Line Option Index
+ B.2 Variable Index
+ B.3 Concept Index
+
+Texi2html
+*********
+
+This Manual (Edition 0.21, last updated at
+14. August 2000) describes the texi2html Perl
+script which converters
+Texinfo (see (Texinfo)Top)
+into HTML.
+
+
+Please send bug reports about this manual to Karl Heinz
+Marbaise <mailto:khmarbaise@gmx.de>. Please state exact
+version/edition of the manual (can be found at start of
+Texinfo source file; use the entry Id under Revisions).
+
+Please note:
+This manual is currently under
+construction and of course incomplete ;-)
+
+1 Overview about texi2html
+**************************
+Texinfo <http://www.texinfo.org> is the official
+documentation format of the GNU <http://www.gnu.org>
+project. It uses a single source file to produce both
+online information and printed output.
+
+It is often proposed to have a way to produce
+HTML from Texinfo sources, like the GNU-Info
+format. It is much simpler to create one converter instead
+of writing all documentation new in HTML, cause
+there is so much documentation in Texinfo all over
+the world.
+
+A few time ago makeinfo wasn't able to produce
+HTML output format, but there are needth to have
+HTML. This was the borning hour for
+texi2html. The basic purpose of `texi2html'
+is to convert Texinfo documents into HTML.
+
+
+* HowToGetHTML::       Ways to get HTML files.
+* whytexi2html::       Why texi2html and not makeinfo?.
+1.1 Ways to get HTML
+====================
+You would like to HTML files out of your Texinfo
+files? There exist two ways which you can go.
+This first is to use makeinfo itself to produce
+HTML output. The second is to use
+texi2html.
+
+1.2 Why `texi2html' and not `makeinfo'?
+=======================================
+The basic idea of makeinfo's HTML
+output was to get an readable HTML output.
+Nothing sophisticated nor good styling just readable.
+
+The current development of texi2html is going into
+different direction.
+
+The main purpose is to get better styling, better design
+etc. of the created HTML pages. This way is
+supported using differnt command line options and of course
+possible changings of the initialization file to fit your
+own needs.
+
+The main disadvantage of makeinfo's
+HTML output is your getting only one big file.
+This is of course readable but not very usable. The problem
+of this is, while you like to have splitted chapters or
+nodes the Texinfo source has to be read at minimum twice
+times. This makes it impossible to implement this in
+makeinfo. This would result in complete new
+implementation of makeinfo's source.
+
+In contrast to the HTML produced by makeinfo
+--html (the makeinfo program is part of the
+Texinfo distribution), the HTML output of `texi2html'
+is highly configurable. Among other differences, with
+texi2html allows you to customize your entire
+page layout (like headers, footers, style sheets, etc),
+split documents at various levels, and use
+latex2html to convert @tex sections.
+
+texi2html should reasonably convert all Texinfo
+4.0 constructs. If not, please send a bug report to
+<mailto:texi2html@mathematik.uni-kl.de>.
+
+2 Installation of texi2html
+***************************
+description of the installation process.
+What do you need?
+How?
+
+3 Customizing files
+*******************
+Result based on using `-frames'
+
+texi2html -V -frames texi2html.texi
+Explanation of the output differences against default,
+whatever this is ;-)
+
+
+4 Customizing what gets expanded
+********************************
+Test starting.
+
+`-expand info'
+`-expand tex'
+Take a look at optionexpand.
+
+5 Customizing page layout
+*************************
+This chapter is designed to help you to change the
+complete layout of the HTML output if you like to
+do so.
+
+
+a) General: Philosophy, and how it works
+
+aa) Navigation panels
+
+b) Top page
+
+c) Section pages
+
+
+
+
+
+* TipsNewDesign::           .
+* CustPagePhil::            .
+* CustPagePhilNav::         .
+* CustPageTopPage::         .
+* CustPageSectionPages::    .
+* CustPageMiscPage::        .
+5.1 Tips how to create a new site design
+========================================
+
+Here you can find information how you should work to pick
+up a new design with texi2html.
+
+
+5.2 Page Layout and the philosophy
+==================================
+
+* CustPagePhilNav:: Navigation panels.
+5.2.1 Navigation panels
+-----------------------
+
+Head and foot Navigation panels.
+
+5.3 Top Page
+============
+5.4 Section Pages
+=================
+5.5 Misc pages
+==============
+Here you can find information about the creation of the
+ToC (Table Of content), About--Page
+etc. and specialy how to change them to get your own
+design.
+
+ToC T2H_DEFAULT_print_toc_frame in
+`texi2html.init'
+
+* CustPagePageHeadToc:: .
+* CustPagePageHead::    .
+* CustPagePageFoot::    .
+
+5.5.1 Table Of Contents
+-----------------------
+
+The following code is the original code out of the
+initialization file (see Initialization file).
+
+sub T2H_DEFAULT_print_toc_frame
+{
+  my $fh = shift;
+  &$T2H_print_page_head($fh);
+  print $fh <<EOT;
+<H2>Content</H2>
+EOT
+  print $fh map {s/HREF=/target=\"main\" HREF=/; $_;} @stoc_lines;
+  print $fh "</BODY></HTML>\n";
+}
+
+As you can see it is very simple Perl Code, which can
+be changed more or less simple to fit you requirements
+(see T2H_DEFAULT_print_page_head).
+
+
+5.5.2 Page header
+-----------------
+Page Head T2H_DEFAULT_print_page_head
+
+sub T2H_DEFAULT_print_page_head
+{
+  my $fh = shift; 
+  my $longtitle = "$T2H_THISDOC{title}: $T2H_NAME{This}";
+  print $fh <<EOT;
+<HTML>
+$T2H_DOCTYPE
+<!-- Created on $T2H_TODAY by $THISPROG -->
+<!-- 
+$T2H_AUTHORS 
+-->
+<HEAD>
+<TITLE>$longtitle</TITLE>
+
+<META NAME="description" CONTENT="$longtitle">
+<META NAME="keywords" CONTENT="$longtitle">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="$THISPROG">
+$T2H_EXTRA_HEAD
+</HEAD>
+
+<BODY $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+EOT
+}
+
+5.5.3 Page footer
+-----------------
+
+Page Foot T2H_DEFAULT_print_page_foot
+6 Customizing HTML
+******************
+If you like to read the following section, it is assumed
+you are famillar with HTML. If not, you shouldn't
+read this, cause you don't know what we are talking about.
+
+Here you can find information how to change the
+HTML parts of a document. These are the
+header, body etc.
+
+These are the defaults which are
+part of the distribution as `texi2html.init'.
+
+
+How to do changes of the customization...
+needed steps.
+
+* CustHTMLBody::        Customizing BODY Text.
+* CustHTMLHead::        Customizing Head.
+* CustHTMLBodyText::    Customizing Head.
+* CustHTMLPreBodyText:: Customizing Head.
+* CustHTMLAfterBody::   Customizing Head.
+6.1 Body
+========
+
+* CustHTMLBodyText::    Body Text.
+* CustHTMLPreBodyText:: PRE Body Text.
+* CustHTMLAfterBody::   After Body Text.
+6.1.1 Body Text
+---------------
+
+
+
+$T2H_BODYTEXT =
+    . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
+    . 'TEXT="#000000" LINK="#0000FF" '
+    . 'VLINK="#800080" ALINK="#FF0000"';
+
+If you like to change the basic color combination, you can
+change the entry T2H_BODYTEXT.
+
+6.1.2 Body Text
+---------------
+6.1.3 After Body Text
+---------------------
+
+
+
+# text inserted after <BODY ...>
+$T2H_AFTER_BODY_OPEN = '';
+
+#text inserted before </BODY>
+$T2H_PRE_BODY_CLOSE = '';
+
+# this is used in footer
+$T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
+$T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
+
+# this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
+# can be used for <style> <script>, <meta> tags
+$T2H_EXTRA_HEAD = '';
+
+The default output into the HTML file.
+See OptionDocType.
+
+
+The following code is produced by
+T2H_DEFAULT_print_page_head.
+
+Detailed information can be found at
+CustPagePageHead.
+
+<HTML>
+$T2H_DOCTYPE
+<!-- Created on $T2H_TODAY by $THISPROG -->
+<!-- 
+$T2H_AUTHORS
+-->
+<HEAD>
+<TITLE>$longtitle</TITLE>
+
+<META NAME="description" CONTENT="$longtitle">
+<META NAME="keywords" CONTENT="$longtitle">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="$THISPROG">
+$T2H_EXTRA_HEAD
+</HEAD>
+
+<BODY $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+
+6.2 Head
+========
+7 Initialization file
+*********************
+`texi2html.init'
+
+
+* InitFileBasics::     The basics about
+                         initialization files.
+* InitFileGlobal::     Global initialization file.
+* InitFileUser::       User initialization file.
+* InitFileLoad::       Loadable initialization file.
+
+7.1 The basics about init files
+===============================
+
+Initialization options are read first from
+`/usr/local/etc/texi2htmlrc' (the exact location being
+changeable with the `--sysconfdir=dir' option to the
+configure script), then from
+`$HOME/.texi2htmlrc', then any command-line options
+including `-init_file' option; with later settings
+overriding earlier ones.
+
+The default initialization options are defined in the
+`texi2html.init' file contained in the Texi2html
+distribution (which gets included near the beginning of the
+texi2html script that gets installed).
+
+To customize `texi2html' it is best if you copy the
+appropriate sections from the `texi2html.init'
+contents into an appropriate local initialization file,
+make the necessary changes there, and then have
+texi2html read this initialization file by one of
+the means described above.
+
+For an example on what you can produces with
+texi2html have a look at the following sites:
+<http://www.singular.uni-kl.de/Manual/html/>
+
+
+7.2 Global initialization file
+==============================
+7.3 User initialization file
+============================
+7.4 Loadable initialization file
+================================
+`-init_file'
+
+
+7.5 Initialization file options
+===============================
+This section describes in detail all options that can be used
+only in the initialization file (`texi2html.init'),
+and cannot be specified on the command line.
+This means the only way to change those
+options is first to copy the original `texi2html.init'
+to e.g. `texi2html.init.myown' and make changes to fit
+your needs.
+
+* IFOnumber::             Number sectioning.
+* IFOmenu::               Avoid menu redundancy.
+* IFOCenterImage::        Center Image.
+* IFOExampleIndentCell::  Example Indent Cell.
+* IFOSampleIndentCell::   Sample Indent Cell.
+* IFOSmallFontSize::      Small Font Size.
+* IFOTopHeading::         Top Heading.
+* IFOIndexChapter::       Index Chapter.
+* IFOSplitIndex::         Split Index.
+* IFOhrefDirInsteadFile:: HREF Dir Instead file.
+
+7.5.1 Number sections.
+----------------------
+if set, and $T2H_NUMBER_SECTIONS is set, then use node
+names in menu entries, instead of section names
+
+$T2H_NODE_NAME_IN_MENU = 0;
+
+7.5.2 Avoid menu redundancy
+---------------------------
+If set, and menu entry equals menu description, then do not print
+menu description.  Likewise, if node name equals entry name, do
+not print entry name.
+$T2H_AVOID_MENU_REDUNDANCY = 1;
+
+7.5.3 Center Image
+------------------
+if set, center @image by default
+otherwise, do not center by default
+$T2H_CENTER_IMAGE = 1;
+
+7.5.4 Example Indent Cell
+-------------------------
+used as indentation for block enclosing command
+@example, etc If not empty, must be enclosed in
+<td></td>
+$T2H_EXAMPLE_INDENT_CELL = '<td>&nbsp;</td>';
+
+7.5.5 Small Example Indent
+--------------------------
+same as above, only for @small
+$T2H_SMALL_EXAMPLE_INDENT_CELL = "<td>&nbsp;</td>";
+
+7.5.6 Small Font Size
+---------------------
+# font size for @small
+$T2H_SMALL_FONT_SIZE = "-1";
+
+7.5.7 Top Heading
+-----------------
+if non-empty, and no @..heading appeared in Top
+node, then use this as header for top node/section,
+otherwise use value of  @settitle or
+@shorttitle (in that order)
+$T2H_TOP_HEADING = "";
+
+7.5.8 Index Chapter
+-------------------
+if set, use this chapter for Index button, else
+use first chapter whose name matches index (case insensitive)
+$T2H_INDEX_CHAPTER = "";
+
+7.5.9 Split Index
+-----------------
+if set and $T2H_SPLIT is set, then split index pages
+at the next letter after they have more than that many
+entries
+
+$T2H_SPLIT_INDEX = 100;
+
+7.5.10 HREF Dir Instead File.
+-----------------------------
+if set (e.g., to `index.html') replace HREF's
+to this file  (i.e., to `index.html') by `./'
+
+$T2H_HREF_DIR_INSTEAD_FILE = "";
+8 Command Line Options
+**********************
+
+* OptionDebug::               Debugging.
+* OptionDocType::             DocType (HTML)
+* OptionCheck::               Checking files.
+* OptionExpand::              Expanding info, tex areas etc.
+* OptionGlossary::            Glossary.
+* OptionInvisible::           Invisible.
+* OptionIso::                 Iso.
+* OptionInclude::             Include directories.
+* OptionTopFile::             Top File.
+* OptionTocFile::             Table of content File.
+* OptionFrames::              Frames.
+* OptionMenu::                Menus.
+* OptionNumber::              Number sections.
+* OptionSplit::               Splitting.
+* OptionSectionNavigation::   Navigation.
+* OptionSubDir::              Subdirectory.
+* OptionShortExt::            Short extension.
+* OptionPrefix::              Prefix.
+* OptionOutput::              Output.
+* OptionShortRef::            Short Ref.
+* OptionIndexSummary::        Index Summary.
+* OptionVerbose::             Verbose.
+* OptionLanguage::            Language.
+* OptionL2H::                 LaTeX2HTML.
+
+
+8.1 Debugging
+=============
+
+`-debug'
+
+debugging: 0 -- no debugging; other values; see beginning
+of texi2html
+
+$DEBUG_TOC   =  1;
+$DEBUG_INDEX =  2;
+$DEBUG_BIB   =  4;
+$DEBUG_GLOSS =  8;
+$DEBUG_DEF   = 16;
+$DEBUG_HTML  = 32;
+$DEBUG_USER  = 64;
+$DEBUG_L2H   = 128;
+
+8.2 DocType
+===========
+`-doctype'
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+8.3 Check
+=========
+`-check'
+if set, only check files and give the list of all things
+that look like untranslated Texinfo commands
+
+8.4 Expand
+==========
+`-expand'
+if set to tex (or, info) expand
+@iftex and @tex (or, @ifinfo)
+sections else, neither expand @iftex, @tex,
+nor @ifinfo sections
+
+
+8.5 Glossary
+============
+`-glossary'
+if set, uses section named Footnotes for glossary
+
+8.6 Invisible
+=============
+`-invisible'
+$T2H_INVISIBLE_MARK is the text used to create
+invisible destination anchors for index links (you can for
+instance use the `invisible.xbm' file shipped with
+this program). This is a workaround for a known bug of many
+WWW browsers, including Netscape. For me, it
+works fine without it -- on the contrary: if there, it
+inserts space between headers and start of text (obachman
+3/99)
+
+$T2H_INVISIBLE_MARK = "";
+# $T2H_INVISIBLE_MARK = '&#160;';
+
+8.7 Iso
+=======
+`-iso'
+
+if set, ISO8859 characters are used for special symbols
+(like Copyright (C), etc)
+
+$T2H_USE_ISO = 0;
+
+8.8 Include Directory
+=====================
+`-I'
+
+list directories where @include files are searched for
+(besides the directory of the doc file) additional
+`-I' args are add to this list.
+
+@T2H_INCLUDE_DIRS = (".");
+
+8.9 Top File
+============
+`-top_file'
+uses file of this name for top-level file
+extension is manipulated appropriately, if necessary.
+If empty, `<basename of document>.html' is used.
+Typically, you would set this to `index.html'.
+
+$T2H_TOP_FILE = "";
+
+8.10 Table Of content File
+==========================
+`-toc_file'
+uses file of this name for table of contents.  File extension
+is manipulated appropriately, if necessary. If empty,
+`<basename of document>_toc.html' is used.
+
+$T2H_TOC_FILE = "";
+
+8.11 Frames
+===========
+`-frames'
+if set, output two additional files which use HTML 4.0
+frames.
+
+$T2H_FRAMES = 0;
+
+8.12 Menus
+==========
+`-menu' or `-nomenu' if set, show the Texinfo
+menus
+
+$T2H_SHOW_MENU = 1;
+
+8.13 Number sections
+====================
+`-number' `-nonumber'
+if set, number sections and show section names and numbers
+in references and menus
+
+
+8.14 Split
+==========
+`-split section|chapter|none'
+if set to section (resp. chapter) create one
+HTML file per (sub)section (resp. chapter) and
+separate pages for Top, ToC, Overview, Index, Glossary,
+About.  Otherwise, create a monolithic HTML file that
+contains the whole document.
+
+#$T2H_SPLIT = 'section';
+$T2H_SPLIT = undef;
+
+8.15 Section navigation
+=======================
+`-section_navigation'|
+`-no-section_navigation'
+
+if set, then navigation panels are printed at the beginning
+of each section and, possibly at the end (depending on
+whether or not there were more than 
+$T2H_WORDS_IN_PAGE words on page). This is most useful
+if you do not want to have section navigation on
+`-split chapter'
+
+
+8.16 Subdirectory
+=================
+`-subdir'
+If set, then put result files in the specified directory.
+If not set, then result files are put into the current directory.
+
+$T2H_SUBDIR = undef;
+
+8.17 Short extension
+====================
+`-short_extn'
+If this is set, then all HTML files will have extension
+`.htm' instead of `.html'. This is helpful when
+shipping the document to DOS-based systems.
+$T2H_SHORTEXTN = 0;
+
+8.18 Prefix
+===========
+`-prefix'
+Set the output file prefix, prepended to all `.html',
+`.gif' and `.pl' files.
+By default, this is the basename of the document
+
+$T2H_PREFIX = "";
+
+8.19 Output filename
+====================
+
+`-o filename'|`-out_file'
+If set, generate monolithic document output HTML
+into `filename'.
+
+8.20 Short Cross References
+===========================
+`-short_ref'
+if set cross-references are given without section numbers
+
+8.21 Index Summary
+==================
+`-idx_sum'
+If value is set, then for each @prinindex $what
+`$docu_name_$what.idx' is created which contains lines of the
+form $key\t$ref sorted alphabetically (case
+matters).
+
+8.22 Verbose output
+===================
+`-verbose'
+if set, chatter about what we are doing.
+
+8.23 Language Support
+=====================
+`-lang'
+For page titles, use
+$T2H_WORDS->{$T2H_LANG}->{...} as title. To add
+a new language, supply list of titles (see $T2H_WORDS),
+and use ISO 639 language codes (see e.g. perl module
+`Locale-Codes-1.02.tar.gz' for definitions).
+
+If you don't give a `-lang' then we got it from the
+Texinfo source file (@documentlanguage
+see (Texinfo)documentlanguage). If there is no
+@documentlanguage we use the default en for
+the language.
+8.24 LaTeX2HTML for @math and @tex
+==================================
+`-l2h'
+if set, uses latex2html for generation of math
+content.
+
+* OptionL2HL2H::    Where to find LaTeX2HTML.
+* OptionL2HSkip::   Skip calling LaTeX2HTML.
+* OptionL2Htmp::    Temporary files for LaTeX2HTML.
+
+8.24.1 Where to find latex2html
+-------------------------------
+`-l2h_l2h'
+name/location of latex2html program.
+
+8.24.2 Skip calling LaTeX2HTML
+------------------------------
+`-l2h_skip'
+If set, skips actual call to latex2html: tries to
+reuse previously generated content, instead.
+
+8.24.3 Temporary files for LaTeX2HTML
+-------------------------------------
+`-l2h_tmp'
+If set, l2h uses this directory for temporary files.  The
+path leading to this directory may not contain a dot (i.e.,
+a `.'); otherwise, l2h will fail.
+Annexe A Function Reference
+***************************
+
+* Refptocframe::           Print ToC Frame.
+* Refpphead::              Print page head.
+
+A.1 Print ToC Frame
+===================
+
+
+ -- Function: T2H_DEFAULT_print_toc_frame (FileName)
+
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+
+
+A.2 Print Page Head
+===================
+ -- Function: T2H_DEFAULT_print_page_head (FileName)
+
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+Annexe B Indices
+****************
+B.1 Command Line Option Index
+=============================
+* Index:
+* check: 8.3 Check.
+* debug: 8.1 Debugging.
+* doctype: 8.2 DocType.
+* expand: 8.4 Expand.
+* frames: 3. Customizing files.
+* frames: 8.11 Frames.
+* glossary: 8.5 Glossary.
+* I: 8.8 Include Directory.
+* idx_sum: 8.21 Index Summary.
+* init_file: 7. Initialization file.
+* init_file: 7.4 Loadable initialization file.
+* invisible: 8.6 Invisible.
+* iso: 8.7 Iso.
+* l2h: 8.24 LaTeX2HTML for @math and @tex.
+* l2h_l2h: 8.24.1 Where to find latex2html.
+* l2h_skip: 8.24.2 Skip calling LaTeX2HTML.
+* l2h_tmp: 8.24.3 Temporary files for LaTeX2HTML.
+* lang: 8.23 Language Support.
+* menu: 8.12 Menus.
+* no-section_navigation: 8.15 Section navigation.
+* nomenu: 8.12 Menus.
+* nonumber: 8.13 Number sections.
+* number: 8.13 Number sections.
+* o: 8.19 Output filename.
+* out_file: 8.19 Output filename.
+* prefix: 8.18 Prefix.
+* section_navigation: 8.15 Section navigation.
+* short_extn: 8.17 Short extension.
+* short_ref: 8.20 Short Cross References.
+* split: 8.14 Split.
+* sysconfdir: 7. Initialization file.
+* toc_file: 8.10 Table Of content File.
+* top_file: 8.9 Top File.
+* verbose: 8.22 Verbose output.
+B.2 Variable Index
+==================
+* Index:
+* $T2H_LANG: 8.23 Language Support.
+* $T2H_WORDS: 8.23 Language Support.
+* DEBUG_BIB: 8.1 Debugging.
+* DEBUG_DEF: 8.1 Debugging.
+* DEBUG_GLOSS: 8.1 Debugging.
+* DEBUG_HTML: 8.1 Debugging.
+* DEBUG_INDEX: 8.1 Debugging.
+* DEBUG_L2H: 8.1 Debugging.
+* DEBUG_TOC: 8.1 Debugging.
+* DEBUG_USER: 8.1 Debugging.
+* HTML 4.0, frames: 8.11 Frames.
+* HTML, frames: 8.11 Frames.
+* Include directories: 8.8 Include Directory.
+* T2H_AFTER_BODY_OPEN: 6.1.3 After Body Text.
+* T2H_AVOID_MENU_REDUNDANCY: 7.5.2 Avoid menu redundancy.
+* T2H_BODYTEXT: 6.1.1 Body Text.
+* T2H_CENTER_IMAGE: 7.5.3 Center Image.
+* T2H_CHECK: 8.3 Check.
+* T2H_DOCTYPE: 8.2 DocType.
+* T2H_EXAMPLE_INDENT_CELL: 7.5.4 Example Indent Cell.
+* T2H_EXPAND: 8.4 Expand.
+* T2H_EXTRA_HEAD: 6.1.3 After Body Text.
+* T2H_FRAMES: 8.11 Frames.
+* T2H_HREF_DIR_INSTEAD_FILE: 7.5.10 HREF Dir Instead File..
+* T2H_IDX_SUMMARY: 8.21 Index Summary.
+* T2H_INCLUDE_DIRS: 8.8 Include Directory.
+* T2H_INDEX_CHAPTER: 7.5.8 Index Chapter.
+* T2H_INVISIBLE_MARK: 8.6 Invisible.
+* T2H_L2H: 8.24 LaTeX2HTML for @math and @tex.
+* T2H_L2H_L2H: 8.24.1 Where to find latex2html.
+* T2H_L2H_SKIP: 8.24.2 Skip calling LaTeX2HTML.
+* T2H_L2H_TMP: 8.24.3 Temporary files for LaTeX2HTML.
+* T2H_NODE_NAME_IN_MENU: 7.5.1 Number sections..
+* T2H_NUMBER_SECTIONS: 7.5.1 Number sections..
+* T2H_NUMBER_SECTIONS: 8.13 Number sections.
+* T2H_OUT: 8.19 Output filename.
+* T2H_PREFIX: 8.18 Prefix.
+* T2H_PRE_BODY_CLOSE: 6.1.3 After Body Text.
+* T2H_SECTION_NAVIGATION: 8.15 Section navigation.
+* T2H_SHORTEXTN: 8.17 Short extension.
+* T2H_SHORT_REF: 8.20 Short Cross References.
+* T2H_SHOW_MENU: 8.12 Menus.
+* T2H_SMALL_EXAMPLE_INDENT_CELL: 7.5.5 Small Example Indent.
+* T2H_SMALL_FONT_SIZE: 7.5.6 Small Font Size.
+* T2H_SPLIT: 8.14 Split.
+* T2H_SPLIT_INDEX: 7.5.9 Split Index.
+* T2H_SUBDIR: 8.16 Subdirectory.
+* T2H_TOC_FILE: 8.10 Table Of content File.
+* T2H_TOP_FILE: 8.9 Top File.
+* T2H_TOP_HEADING: 7.5.7 Top Heading.
+* T2H_USE_GLOSSARY: 8.5 Glossary.
+* T2H_USE_ISO: 8.7 Iso.
+* T2H_VERBOSE: 8.22 Verbose output.
+B.3 Concept Index
+=================
+* Index:
+* .texi2htmlrc, user initialization: 7. Initialization file.
+* @math: 8.24 LaTeX2HTML for @math and @tex.
+* @tex: 8.24 LaTeX2HTML for @math and @tex.
+* Chapter, Index: 7.5.8 Index Chapter.
+* configure: 7. Initialization file.
+* Conversion of @math and @tex: 8.24 LaTeX2HTML for @math and @tex.
+* Copyright: 8.7 Iso.
+* Debugging: 8.1 Debugging.
+* Debugging, verbose output: 8.22 Verbose output.
+* example, indentation: 7.5.4 Example Indent Cell.
+* example, small indent: 7.5.5 Small Example Indent.
+* extension, .htm: 8.17 Short extension.
+* extension, .html: 8.17 Short extension.
+* File, split: 8.14 Split.
+* Filename, output: 8.19 Output filename.
+* Font Size, small: 7.5.6 Small Font Size.
+* HREF Dir instead file: 7.5.10 HREF Dir Instead File..
+* HTML, .htm extension: 8.17 Short extension.
+* HTML, .html extension: 8.17 Short extension.
+* HTML, Doc Type: 8.2 DocType.
+* HTML, Glossary: 8.5 Glossary.
+* HTML, Index: 8.21 Index Summary.
+* HTML, index.html: 8.9 Top File.
+* HTML, menu: 8.12 Menus.
+* HTML, Navigation: 8.15 Section navigation.
+* HTML, split: 8.14 Split.
+* images, center: 7.5.3 Center Image.
+* Index, split: 7.5.9 Split Index.
+* Index, Summary: 8.21 Index Summary.
+* Installation: 2. Installation of texi2html.
+* Installation: 3. Customizing files.
+* invisible, Mark: 8.6 Invisible.
+* ISO8859: 8.7 Iso.
+* Language Support: 8.23 Language Support.
+* LaTeX2HTML: 8.24 LaTeX2HTML for @math and @tex.
+* LaTeX2HTML, location: 8.24.1 Where to find latex2html.
+* LaTeX2HTML, skip calling: 8.24.2 Skip calling LaTeX2HTML.
+* LaTeX2HTML, Temporary files: 8.24.3 Temporary files for LaTeX2HTML.
+* location, LaTeX2HTML: 8.24.1 Where to find latex2html.
+* Mark, invisible: 8.6 Invisible.
+* menu, redundancy: 7.5.2 Avoid menu redundancy.
+* Output filename: 8.19 Output filename.
+* Output, verbose: 8.22 Verbose output.
+* Prefix: 8.18 Prefix.
+* References, short: 8.20 Short Cross References.
+* Section numbering: 8.13 Number sections.
+* sections without numbers: 8.20 Short Cross References.
+* Subdirectory: 8.16 Subdirectory.
+* Summary Index: 8.21 Index Summary.
+* Support different languages: 8.23 Language Support.
+* Table of content file: 8.10 Table Of content File.
+* Temporary, LaTeX2HTML: 8.24.3 Temporary files for LaTeX2HTML.
+* texi2html.init: 7. Initialization file.
+* texi2htmlrc, global initialization: 7. Initialization file.
+* Texinfo, checking: 8.3 Check.
+* Texinfo, Glossary: 8.5 Glossary.
+* Texinfo, menu: 8.12 Menus.
+* Top Level file: 8.9 Top File.
+* Verbose output: 8.22 Verbose output.

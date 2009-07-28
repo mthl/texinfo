@@ -1,0 +1,9 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename ttttt
+
+@node Top
+@top
+
+A.
+
+@bye

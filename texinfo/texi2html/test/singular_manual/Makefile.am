@@ -17,4 +17,4 @@ manual-titlepage.tex  singular.texi \
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
 distclean-local:
-	rm -rf out diffs
+	rm -rf out out_all out_info diffs

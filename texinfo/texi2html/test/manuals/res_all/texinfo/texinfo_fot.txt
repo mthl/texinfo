@@ -1,0 +1,89 @@
+Footnotes
+*********
+
+(1)
+The first syllable of "Texinfo" is pronounced
+like "speck", not "hex".  This odd pronunciation is derived from,
+but is not the same as, the pronunciation of TeX.  In the word
+TeX, the `X' is actually the Greek letter "chi" rather than
+the English letter "ex".  Pronounce TeX as if the `X' were the
+last sound in the name `Bach'; but pronounce Texinfo as if the `x'
+were a `k'.  Spell "Texinfo" with a capital "T" and the other
+letters in lower case.
+
+(2)
+In some documents, the first child has no `Previous'
+pointer.  Occasionally, the last child has the node name of the next
+following higher level node as its `Next' pointer.
+
+(3)
+You can also use the
+texi2roff <ftp://tug.org/texi2roff.tar.gz> program if you
+do not have TeX; since Texinfo is designed for use with TeX,
+texi2roff is not described here.  texi2roff is not part of
+the standard GNU distribution and is not maintained or up-to-date with
+all the Texinfo features described in this manual.
+
+(4)
+The word
+argument comes from the way it is used in mathematics and does not
+refer to a dispute between two people; it refers to the information
+presented to the command.  According to the Oxford English
+Dictionary, the word derives from the Latin for to make clear,
+prove; thus it came to mean `the evidence offered as proof', which is
+to say, `the information offered', which led to its mathematical
+meaning.  In its other thread of derivation, the word came to mean `to
+assert in a manner against which others may make counter assertions',
+which led to the meaning of `argument' as a dispute.
+
+(5)
+We have found
+that it is helpful to refer to versions of independent manuals as
+`editions' and versions of programs as `versions'; otherwise, we find we
+are liable to confuse each other in conversation by referring to both
+the documentation and the software with the same words.
+
+(6)
+Menus can
+carry you to any node, regardless of the hierarchical structure; even to
+nodes in a different Info file.  However, the GNU Emacs Texinfo mode
+updating commands work only to create menus of subordinate nodes.
+Conventionally, cross references are used to refer to other nodes.
+
+(7)
+It would be straightforward to extend Texinfo to work
+in a similar fashion for C, Fortran, or other languages.
+
+(8)
+A footnote should complement or expand upon
+the primary text, but a reader should not need to read a footnote to
+understand the primary text.  For a thorough discussion of footnotes,
+see The Chicago Manual of Style, which is published by the
+University of Chicago Press.
+
+(9)
+Here
+is the sample footnote.
+
+(10)
+Note the use
+of the `;' character, instead of `:', as directory separator
+on these systems.
+
+(11)
+On MS-DOS/MS-Windows systems, Info will
+try the `.inf' extension as well.
+
+(12)
+Note the
+use of `;' as the directory separator, and a different syntax for
+using values of other environment variables.
+
+(13)
+On MS-DOS/MS-Windows systems, use semi-colon instead.
+
+(14)
+Perhaps the command should have been
+called the @refillandindent command, but @refill is
+shorter and the name was chosen before indenting was possible.
+

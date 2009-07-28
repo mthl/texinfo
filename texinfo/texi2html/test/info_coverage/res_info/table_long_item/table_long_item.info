@@ -1,0 +1,45 @@
+This is table_long_item.info, produced by makeinfo version 4.13 from
+table_long_item.texi.
+
+
+File: table_long_item.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+_first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa_
+_second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b_
+     Text.
+
+_example_
+
+          In example
+
+          end example.
+
+_empty line_
+     empty line.
+
+_quotation_
+
+          Quotation
+
+_quotation after a blank line_
+
+          quotation after a blank line
+
+     VTable
+
+first item
+
+after an empty itemx, before an empty item
+
+
+in item before end table
+
+
+
+Tag Table:
+Node: Top92
+
+End Tag Table

@@ -1,0 +1,410 @@
+Test for definition commands
+****************************
+
+
+
+ -- c--ategory: d--effn_name a--rguments...
+d-effn
+
+ -- cate--gory: de--ffn_name ar--guments more args 
+ even more so
+def-fn
+
+ -- fset: i a g
+ -- cmde: truc
+ -- Command: log trap
+ -- Command:  log trap1
+ -- Command: log trap2
+ -- cmde: id ule truc
+ -- cmde2: id `i' ule truc
+ -- id `i' ule:
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- : machin
+ -- : bidule machin
+ -- truc: machin
+ -- truc:
+ -- truc:
+ -- :
+ -- truc: followed by a comment
+Various deff lines
+ -- truc: after a deff item
+text in def item for second def item
+ -- truc: deffnx before end deffn
+
+ -- empty: deffn
+
+ -- empty: deffn with deffnx
+ -- empty: deffnx
+
+ -- c--ategory: d--efvr_name
+d-efvr
+
+ -- c--ategory: t--ype d--eftypefn_name a--rguments...
+d-eftypefn
+
+ -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+d-eftypeop
+
+ -- c--ategory: t--ype d--eftypevr_name
+d-eftypevr
+
+ -- c--ategory of c--lass: d--efcv_name
+d-efcv
+
+ -- c--ategory on c--lass: d--efop_name a--rguments...
+d-efop
+
+ -- c--ategory: d--eftp_name a--ttributes...
+d-eftp
+
+ -- Function: d--efun_name a--rguments...
+d-efun
+
+ -- Macro: d--efmac_name a--rguments...
+d-efmac
+
+ -- Special Form: d--efspec_name a--rguments...
+d-efspec
+
+ -- Variable: d--efvar_name
+d-efvar
+
+ -- User Option: d--efopt_name
+d-efopt
+
+ -- Function: t--ype d--eftypefun_name a--rguments...
+d-eftypefun
+
+ -- Variable: t--ype d--eftypevar_name
+d-eftypevar
+
+ -- Instance Variable of c--lass: d--efivar_name
+d-efivar
+
+ -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+d-eftypeivar
+
+ -- Method on c--lass: d--efmethod_name a--rguments...
+d-efmethod
+
+ -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+d-eftypemethod
+
+
+
+ -- c--ategory: d--effn_name a--rguments...
+d--effn
+
+ -- cate--gory: de--ffn_name ar--guments more args 
+ even more so
+def--fn
+
+ -- fset: i a g
+ -- cmde: truc
+ -- Command: log trap
+ -- Command:  log trap1
+ -- Command: log trap2
+ -- cmde: id ule truc
+ -- cmde2: id `i' ule truc
+ -- id `i' ule:
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- : machin
+ -- : bidule machin
+ -- truc: machin
+ -- truc:
+ -- truc:
+ -- :
+ -- truc: followed by a comment
+Various deff lines
+ -- truc: after a deff item
+text in def item for second def item
+ -- truc: deffnx before end deffn
+
+ -- empty: deffn
+
+ -- empty: deffn with deffnx
+ -- empty: deffnx
+
+ -- c--ategory: d--efvr_name
+d--efvr
+
+ -- c--ategory: t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+
+ -- c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+
+ -- c--ategory: t--ype d--eftypevr_name
+d--eftypevr
+
+ -- c--ategory of c--lass: d--efcv_name
+d--efcv
+
+ -- c--ategory on c--lass: d--efop_name a--rguments...
+d--efop
+
+ -- c--ategory: d--eftp_name a--ttributes...
+d--eftp
+
+ -- Function: d--efun_name a--rguments...
+d--efun
+
+ -- Macro: d--efmac_name a--rguments...
+d--efmac
+
+ -- Special Form: d--efspec_name a--rguments...
+d--efspec
+
+ -- Variable: d--efvar_name
+d--efvar
+
+ -- User Option: d--efopt_name
+d--efopt
+
+ -- Function: t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+
+ -- Variable: t--ype d--eftypevar_name
+d--eftypevar
+
+ -- Instance Variable of c--lass: d--efivar_name
+d--efivar
+
+ -- Instance Variable of c--lass: t--ype d--eftypeivar_name
+d--eftypeivar
+
+ -- Method on c--lass: d--efmethod_name a--rguments...
+d--efmethod
+
+ -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+
+
+
+ -- Command: forward--char nchars argument2 argument3 (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Variable: fill-column argument1 argument2 (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Library Function: int foobar (int foo, float bar)
+
+ -- Library Function: int foobar (int foo, float bar) (arg in brace, [ in v--ar, in, b , comma apref p]) ct
+
+ last
+
+ -- Library Function: int foobug [
+
+ -- stacks: private push (s:in out stack; n:in integer) ; ;barg aarg; ; end
+
+ -- Global Flag: int enable (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Data type: pair car cdr (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Class Option of Window: border-pattern (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Class Option2 of Window: int border-pattern (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Operation on windows: expose (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Operation2 on W: , indow int expose (arg in brace, [something in v--ar, in, b , comma apref p]) last
+
+ -- Operation5 on Window: int expose type arg
+
+ -- Operation3 on W,indow: int e,xpose type arg
+
+ -- Operation4 on ,Window: int ,expose type arg
+
+ -- Operation6 on W: , indow int e,xpose type arg
+
+ -- Operation7 on ,: Window int ,expose type arg
+
+ -- Operation13 on W)indow: int e)xpose type arg
+
+ -- Operation14 on )Window: int )expose type arg
+
+ -- Operation16 on W: ) indow int e)xpose type arg
+
+ -- Operation17 on ): Window int )expose type arg
+
+ -- Operation18 on W;indow: int e;xpose type arg
+
+ -- Operation19 on ;Window: int ;expose type arg
+
+ -- Operation20 on W;indow: int e;xpose type arg
+
+ -- Operation21 on ;Window: int ;expose type arg
+
+ -- Command on com: Windowint exposeexp
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- A1: A2 A3 A4
+
+ -- A1: A2 A3 A4
+
+ -- A1: A2 A3 A4
+
+ -- A1: A2 A3 A4
+
+ -- A1: A2 A3 A4 A5
+
+ -- A1: A2 A3 A4 A5
+
+ -- A1: A2 A3 A4 A5
+
+ -- A1: A2 A3 A4 A5
+
+ -- A1: A2 A3 A4
+
+ -- A1: A2 A3 A4
+
+ -- A1 of A2: A3 A4 A5
+
+ -- A1: A2 A3 A4 A5
+
+ -- A1 of A2: A3 A4 A5 A6
+
+ -- A1 of A2: `A3' A4 A5 A6
+
+ -- A1 on A2: A3 A4 A5
+
+ -- A1 on A2: A3 A4 A5
+
+ -- A1 on A2: A3 A4 A5 A6
+
+ -- A1 on A2: A3 A4 A5 A6
+
+* Index:
+* A2: Test for definition commands.
+* A2: Test for definition commands.
+* A3: Test for definition commands.
+* A3: Test for definition commands.
+* A3: Test for definition commands.
+* A4 of A2: Test for definition commands.
+* A4 of A2: Test for definition commands.
+* border-pattern: Test for definition commands.
+* border-pattern of Window: Test for definition commands.
+* d-efcv_name: Test for definition commands.
+* d-efcv_name: Test for definition commands.
+* d-efivar_name: Test for definition commands.
+* d-efivar_name: Test for definition commands.
+* d-efopt_name: Test for definition commands.
+* d-efopt_name: Test for definition commands.
+* d-eftypeivar_name of c-lass: Test for definition commands.
+* d-eftypeivar_name of c-lass: Test for definition commands.
+* d-eftypevar_name: Test for definition commands.
+* d-eftypevar_name: Test for definition commands.
+* d-eftypevr_name: Test for definition commands.
+* d-eftypevr_name: Test for definition commands.
+* d-efvar_name: Test for definition commands.
+* d-efvar_name: Test for definition commands.
+* d-efvr_name: Test for definition commands.
+* d-efvr_name: Test for definition commands.
+* enable: Test for definition commands.
+* fill-column: Test for definition commands.
+* Index:
+* )expose on )Window: Test for definition commands.
+* ,expose on ,Window: Test for definition commands.
+* ;expose on ;Window: Test for definition commands.
+* ;expose on ;Window: Test for definition commands.
+* A2: Test for definition commands.
+* A2: Test for definition commands.
+* A3: Test for definition commands.
+* A3: Test for definition commands.
+* A3 on A2: Test for definition commands.
+* A3 on A2: Test for definition commands.
+* A4 on A2: Test for definition commands.
+* A4 on A2: Test for definition commands.
+* after: Test for definition commands.
+* after: Test for definition commands.
+* bidule machin: Test for definition commands.
+* bidule machin: Test for definition commands.
+* d-effn_name: Test for definition commands.
+* d-effn_name: Test for definition commands.
+* d-efmac_name: Test for definition commands.
+* d-efmac_name: Test for definition commands.
+* d-efmethod_name on c-lass: Test for definition commands.
+* d-efmethod_name on c-lass: Test for definition commands.
+* d-efop_name on c-lass: Test for definition commands.
+* d-efop_name on c-lass: Test for definition commands.
+* d-efspec_name: Test for definition commands.
+* d-efspec_name: Test for definition commands.
+* d-eftypefn_name: Test for definition commands.
+* d-eftypefn_name: Test for definition commands.
+* d-eftypefun_name: Test for definition commands.
+* d-eftypefun_name: Test for definition commands.
+* d-eftypemethod_name on c-lass: Test for definition commands.
+* d-eftypemethod_name on c-lass: Test for definition commands.
+* d-eftypeop_name on c-lass: Test for definition commands.
+* d-eftypeop_name on c-lass: Test for definition commands.
+* d-efun_name: Test for definition commands.
+* d-efun_name: Test for definition commands.
+* de-ffn_name: Test for definition commands.
+* de-ffn_name: Test for definition commands.
+* deffn: Test for definition commands.
+* deffn: Test for definition commands.
+* deffn: Test for definition commands.
+* deffn: Test for definition commands.
+* deffnx: Test for definition commands.
+* deffnx: Test for definition commands.
+* deffnx: Test for definition commands.
+* deffnx: Test for definition commands.
+* e)xpose on W)indow: Test for definition commands.
+* e,xpose on W,indow: Test for definition commands.
+* e;xpose on W;indow: Test for definition commands.
+* e;xpose on W;indow: Test for definition commands.
+* expose on com: Test for definition commands.
+* expose on Window: Test for definition commands.
+* expose on windows: Test for definition commands.
+* followed: Test for definition commands.
+* followed: Test for definition commands.
+* foobar: Test for definition commands.
+* foobar: Test for definition commands.
+* foobug: Test for definition commands.
+* forward-char: Test for definition commands.
+* i: Test for definition commands.
+* i: Test for definition commands.
+* id `i' ule: Test for definition commands.
+* id `i' ule: Test for definition commands.
+* id ule: Test for definition commands.
+* id ule: Test for definition commands.
+* indow on W: Test for definition commands.
+* indow on W: Test for definition commands.
+* indow on W: Test for definition commands.
+* int on ): Test for definition commands.
+* int on ,: Test for definition commands.
+* log trap: Test for definition commands.
+* log trap: Test for definition commands.
+* log trap1: Test for definition commands.
+* log trap1: Test for definition commands.
+* log trap2: Test for definition commands.
+* log trap2: Test for definition commands.
+* machin: Test for definition commands.
+* machin: Test for definition commands.
+* machin: Test for definition commands.
+* machin: Test for definition commands.
+* push: Test for definition commands.
+* truc: Test for definition commands.
+* truc: Test for definition commands.
+

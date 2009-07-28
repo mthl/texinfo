@@ -1,0 +1,32 @@
+Element
+*******
+
+centered
+
+left and
+left2
+
+left3.
+
+
+left Last
+  with space.
+
+Now anchor
+
+after anchor
+
+right and
+right2
+
+Right3
+
+
+Right last
+  with space.     
+
+Now anchor
+
+after anchor
+Second anchor in text  after anchor.
+

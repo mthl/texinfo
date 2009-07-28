@@ -1,0 +1,44 @@
+This is itemize_long_item.info, produced by makeinfo version 4.13 from
+itemize_long_item.texi.
+
+
+File: itemize_long_item.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+   youhou itemize long item first item
+
+   youhou itemize long item In example
+
+          end example.
+
+   youhou itemize long item empty line.
+
+   youhou itemize long item In second example
+
+          Quotation
+
+   youhou itemize long item quotation after a blank line
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa first item
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa In example
+
+          end example.
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa empty line.
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa In second example
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa Quotation
+
+   youhou itemize even more long item aaaaaaaaaaaaaaaa quotation after a
+          blank line
+
+
+
+Tag Table:
+Node: Top96
+
+End Tag Table

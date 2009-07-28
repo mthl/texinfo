@@ -1,0 +1,45 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_footnotes.info
+
+@node Top
+@top Element
+
+before menu@footnote{first footnote}.
+
+@menu
+* name::            description@footnote{in menu description}
+* name1::
+@end menu
+
+@node name
+@chapter name
+
+First para@footnote{First para in footnote.
+
+Second para in footnote.
+
+Third one.
+
+}
+
+Text@footnote{Footnot long
+
+@quotation
+Quotation in a footnote
+@end quotation}.
+
+@node name1
+@chapter name1
+
+Texte@footnote{@quotation
+in quotation on the first footnote line
+@end quotation}.
+
+Last text @footnote{@example
+in example
+@end example
+
+}
+
+@bye

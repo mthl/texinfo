@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename space_in_menu.info
+
+@node Top
+@top Element
+
+Text.
+
+@menu
+* node::           
+@end menu
+
+@node node
+@chapter node
+
+in chapter.
+
+@bye

@@ -11,6 +11,7 @@ texi detailmenus.texi
 texi commands_in_ifset.texi
 texi simplest.texi
 texi punctuation.texi
+texi simple_punctuation.texi
 texi def_end_of_line.texi
 texi center.texi
 texi tables.texi
@@ -21,6 +22,7 @@ texi quotes.texi
 texi indicateurl_paragraph.texi
 texi complex_command_in_simple_command.texi
 texi symbol_after_block.texi
+texi symbol_after_command.texi
 texi html-extrali.texi
 texi html-para.texi
 texi html-title.texi
@@ -28,6 +30,7 @@ texi images.texi -init docbook.init
 texi index_in_item_line_table.texi
 texi index_in_item_line_vtable.texi
 texi index_in_item_line_table_in_code.texi
+texi index_in_item_line_vtable_printindex.texi
 texi table_in_table_item.texi
 texi nested_formats.texi
 texi inter_item_commands.texi
@@ -59,6 +62,7 @@ detailmenus_simple detailmenus.texi -init simple_menu.init
 commands_in_ifset commands_in_ifset.texi
 simplest_test_css simplest.texi -css-include file.css
 punctuation punctuation.texi
+simple_punctuation simple_punctuation.texi
 def_end_of_line def_end_of_line.texi
 center center.texi
 tables tables.texi
@@ -69,6 +73,7 @@ quotes quotes.texi
 indicateurl_paragraph indicateurl_paragraph.texi
 complex_command_in_simple_command complex_command_in_simple_command.texi
 symbol_after_block symbol_after_block.texi
+symbol_after_command symbol_after_command.texi
 formatting_weird_quotes ../coverage/formatting.texi -init weird_quotes.init
 comments_redefine_need ../coverage/comments.texi -init redefine_need.init
 simplest_httex simplest.texi -init tex4ht.init --iftex
@@ -83,6 +88,7 @@ formatting_xml ../coverage/formatting.texi -init xml.init -U texi2html
 index_in_item_line_table index_in_item_line_table.texi 
 index_in_item_line_vtable index_in_item_line_vtable.texi
 index_in_item_line_table_in_code index_in_item_line_table_in_code.texi
+index_in_item_line_vtable_printindex index_in_item_line_vtable_printindex.texi
 table_in_table_item table_in_table_item.texi
 menus_xml menus.texi -init xml.init
 menus_xml_makeinfo menus.texi -init xml.init -U texi2html

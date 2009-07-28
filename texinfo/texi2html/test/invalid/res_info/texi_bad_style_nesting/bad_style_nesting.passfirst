@@ -1,0 +1,13 @@
+bad_style_nesting.texi(,2) 
+bad_style_nesting.texi(,3) @setfilename bad_style_nesting.info
+bad_style_nesting.texi(,4) 
+bad_style_nesting.texi(,5) @node Top
+bad_style_nesting.texi(,6) @top Test for bad style @@-command nestings
+bad_style_nesting.texi(,7) 
+bad_style_nesting.texi(,8) 
+bad_style_nesting.texi(,9) @code{
+bad_style_nesting.texi(,10) @quotation
+bad_style_nesting.texi(,11) in quotation}
+bad_style_nesting.texi(,12) @end quotation
+bad_style_nesting.texi(,13) 
+bad_style_nesting.texi(,14) @bye

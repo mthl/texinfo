@@ -1,0 +1,47 @@
+This is center_flush.info, produced by makeinfo version 4.13 from
+center_flush.texi.
+
+
+File: center_flush.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+                               centered
+
+left and
+left2
+
+left3.
+
+
+left Last
+  with space.
+
+Now anchor
+
+after anchor
+
+                                                              right and
+                                                                 right2
+
+                                                                 Right3
+
+
+                                                             Right last
+                                                            with space.
+
+                                                             Now anchor
+
+                                                           after anchor
+                                   Second anchor in text  after anchor.
+
+
+
+Tag Table:
+Node: Top86
+Ref: anchor in flushleft256
+Ref: anchor in flushright707
+Ref: second anchor in flushright815
+
+End Tag Table
