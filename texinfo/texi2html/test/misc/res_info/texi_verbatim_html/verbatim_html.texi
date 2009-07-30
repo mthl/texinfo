@@ -43,33 +43,6 @@ example
 @node First node
 @chapter first node chapter
 
-ref to a non existing node@ref{bidule}.
-
-a 2 paragraphs sample @samp{in first paragraph
-
-in second}.
-
-a 3 paragraphs sample @samp{in first paragraph
-
-in second
-
-in third}.
-
-Unknown macro @unknown{ first paragraph
-
-second paragraph}
-
-@unknown2{ first paragraph
-
-second paragraph
-
-third}
-
-
-
-Unknown thing @thing{}
-
-
 
 A list with bullet
 Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @c segfault <- @item on the same line that itemize

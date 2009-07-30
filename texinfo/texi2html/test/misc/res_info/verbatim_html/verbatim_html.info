@@ -41,32 +41,8 @@ File: verbatim_html.info,  Node: First node,  Next: node a',  Up: Top
 1 first node chapter
 ********************
 
-ref to a non existing node@ref{bidule}.
-
-   a 2 paragraphs sample `in first paragraph
-
-   in second'.
-
-   a 3 paragraphs sample `in first paragraph
-
-   in second
-
-   in third'.
-
-   Unknown macro  first paragraph
-
-   second paragraph
-
-    first paragraph
-
-   second paragraph
-
-   third
-
-   Unknown thing
-
-   A list with bullet Before itemize, in that case @bullet isn'right,
-one needs @bullet{} (in info)
+A list with bullet Before itemize, in that case @bullet isn'right, one
+needs @bullet{} (in info)
    * on the same line than item some text
 
    * more text
@@ -225,9 +201,9 @@ A node with gggggggg before example
 Tag Table:
 Node: Top88
 Node: First node580
-Node: node a'3879
-Ref: node a'-Footnote-14377
-Node: node da'4419
-Node: node4572
+Node: node a'3572
+Ref: node a'-Footnote-14070
+Node: node da'4112
+Node: node4265
 
 End Tag Table
