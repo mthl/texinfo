@@ -1,0 +1,74 @@
+Variable Index
+**************
+
+* Index:
+* buffer-read-only: 3.1 Rudimentary Changes.
+* ex-cycle-other-window: 3.1 Rudimentary Changes.
+* ex-cycle-through-non-files: 3.1 Rudimentary Changes.
+* function-key-map: 3.2 Key Bindings.
+* viper-allow-multiline-replace-regions: 3.1 Rudimentary Changes.
+* viper-always: 3.1 Rudimentary Changes.
+* viper-always: 3.2.1 Packages that Change Keymaps.
+* viper-auto-indent: 3.1 Rudimentary Changes.
+* viper-buffer-search-char: 3.1 Rudimentary Changes.
+* viper-buffer-search-char: 3.3 Viper Specials.
+* viper-case-fold-search: 3.1 Rudimentary Changes.
+* viper-command-ring-size: 3.3 Viper Specials.
+* viper-custom-file-name: 3.1 Rudimentary Changes.
+* viper-delete-backwards-in-replace: 3.1 Rudimentary Changes.
+* viper-dired-modifier-map: 3.3 Viper Specials.
+* viper-electric-mode: 3.1 Rudimentary Changes.
+* viper-emacs-global-user-map: 3.2 Key Bindings.
+* viper-emacs-state-hook: 3.1 Rudimentary Changes.
+* viper-emacs-state-mode-list: 3.2.1 Packages that Change Keymaps.
+* viper-ESC-key: 3.1 Rudimentary Changes.
+* viper-ESC-keyseq-timeout: 3.1 Rudimentary Changes.
+* viper-ESC-moves-cursor-back: 3.1 Rudimentary Changes.
+* viper-ex-style-editing: 3.1 Rudimentary Changes.
+* viper-ex-style-motion: 3.1 Rudimentary Changes.
+* viper-fast-keyseq-timeout: 3.1 Rudimentary Changes.
+* viper-insert-global-user-map: 3.2 Key Bindings.
+* viper-insert-state-cursor-color: 3.1 Rudimentary Changes.
+* viper-insert-state-hook: 3.1 Rudimentary Changes.
+* viper-insert-state-mode-list: 3.2.1 Packages that Change Keymaps.
+* viper-insertion-ring-size: 3.3 Viper Specials.
+* viper-keep-point-on-repeat: 3.1 Rudimentary Changes.
+* viper-keep-point-on-undo: 3.1 Rudimentary Changes.
+* viper-major-mode-modifier-list: 3.2 Key Bindings.
+* viper-mouse-insert-key: 3.3 Viper Specials.
+* viper-mouse-insert-key: 3.3 Viper Specials.
+* viper-multiclick-timeout: 3.3 Viper Specials.
+* viper-no-multiple-ESC: 3.1 Rudimentary Changes.
+* viper-parse-sexp-ignore-comments: 4.2.1 Move Commands.
+* viper-re-query-replace: 3.1 Rudimentary Changes.
+* viper-re-search: 3.1 Rudimentary Changes.
+* viper-read-buffer-function: 4.4 File and Buffer Handling.
+* viper-replace-overlay-cursor-color: 3.1 Rudimentary Changes.
+* viper-replace-overlay-face: 3.1 Rudimentary Changes.
+* viper-replace-region-end-symbol: 3.1 Rudimentary Changes.
+* viper-replace-region-start-symbol: 3.1 Rudimentary Changes.
+* viper-replace-state-hook: 3.1 Rudimentary Changes.
+* viper-search-face: 2.6 Improved Search.
+* viper-search-face: 3.1 Rudimentary Changes.
+* viper-search-scroll-threshold: 3.1 Rudimentary Changes.
+* viper-search-wrap-around: 3.1 Rudimentary Changes.
+* viper-shift-width: 3.1 Rudimentary Changes.
+* viper-slash-and-colon-map: 3.3 Viper Specials.
+* viper-smart-suffix-list: 3.3 Viper Specials.
+* viper-spell-function: 2.9 New Commands.
+* viper-spell-function: 3.1 Rudimentary Changes.
+* viper-surrounding-word-function: 3.1 Rudimentary Changes.
+* viper-syntax-preference: 2.8 Movement and Markers.
+* viper-syntax-preference: 4.1 Groundwork.
+* viper-tags-file-name: 3.1 Rudimentary Changes.
+* viper-toggle-key: 3.1 Rudimentary Changes.
+* viper-vi-global-user-map: 3.2 Key Bindings.
+* viper-vi-state-hook: 3.1 Rudimentary Changes.
+* viper-vi-state-mode-list: 3.2.1 Packages that Change Keymaps.
+* viper-vi-style-in-minibuffer: 3.1 Rudimentary Changes.
+* viper-want-ctl-h-help: 3.1 Rudimentary Changes.
+* viper-want-emacs-keys-in-insert: 3.1 Rudimentary Changes.
+* viper-want-emacs-keys-in-insert: 3.2.1 Packages that Change Keymaps.
+* viper-want-emacs-keys-in-vi: 3.1 Rudimentary Changes.
+* viper-want-emacs-keys-in-vi: 3.2.1 Packages that Change Keymaps.
+

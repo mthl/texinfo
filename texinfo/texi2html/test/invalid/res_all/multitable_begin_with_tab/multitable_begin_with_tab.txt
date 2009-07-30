@@ -1,0 +1,8 @@
+Test for tab beginning a multitable
+***********************************
+
+  t
+
+  t2
+ it
+

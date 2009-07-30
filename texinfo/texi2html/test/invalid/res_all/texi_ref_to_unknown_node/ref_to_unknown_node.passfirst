@@ -1,0 +1,9 @@
+ref_to_unknown_node.texi(,2) 
+ref_to_unknown_node.texi(,3) @setfilename ref_to_unknown_node.info
+ref_to_unknown_node.texi(,4) 
+ref_to_unknown_node.texi(,5) @node Top
+ref_to_unknown_node.texi(,6) @top Ref to nonexisting node.
+ref_to_unknown_node.texi(,7) 
+ref_to_unknown_node.texi(,8) ref to a non existing node@ref{bidule}.
+ref_to_unknown_node.texi(,9) 
+ref_to_unknown_node.texi(,10) @bye

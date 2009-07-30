@@ -13,6 +13,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  double_style_paragraph.texi at_command_glued.texi test_sp.texi \
  kbdinputstyle.texi simple_images.texi simple_table.texi empty_item.texi \
  direntry_dircategory.texi nested_table.texi symbol_after_command.texi \
+ paragraph_in_samp.texi \
  f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res \
  res_all res_info

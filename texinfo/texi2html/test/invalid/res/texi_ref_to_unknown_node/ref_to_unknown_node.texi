@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename ref_to_unknown_node.info
+
+@node Top
+@top Ref to nonexisting node.
+
+ref to a non existing node@ref{bidule}.
+
+@bye

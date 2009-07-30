@@ -1,0 +1,13 @@
+Test paragraph in @samp
+***********************
+
+a 2 paragraphs sample `in first paragraph
+
+in second'.
+
+a 3 paragraphs sample `in first paragraph
+
+in second
+
+in third'.
+

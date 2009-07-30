@@ -28,6 +28,9 @@ texi bad_style_nesting.texi
 texi tab_in_index.texi
 texi bad_tab_nesting.texi
 texi invalid_command_in_table.texi
+texi unknown_command_with_braces.texi
+texi multitable_begin_with_tab.texi
+texi ref_to_unknown_node.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -59,3 +62,6 @@ tab_in_index tab_in_index.texi
 bad_tab_nesting bad_tab_nesting.texi 
 #-debug 255
 invalid_command_in_table invalid_command_in_table.texi
+unknown_command_with_braces unknown_command_with_braces.texi
+multitable_begin_with_tab multitable_begin_with_tab.texi
+ref_to_unknown_node ref_to_unknown_node.texi

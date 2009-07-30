@@ -62,6 +62,8 @@ h1 titlefont (@titlefont),
   $shortcontents and $contents
   $misc_command_line
   new argument of printindex
+  new arguments of $unknown_style
+  NODE_FILENAMES
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -426,6 +428,8 @@ overridden by a command line option.  The possible values are:
 
 * ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
 
+* ../../templates.texi:287: warning: `.' or `,' must follow @xref, not `f'.
+
 * warning when doing info and there is no node at all
   warning when doing info and there is no Top node
 
@@ -530,6 +534,9 @@ overridden by a command line option.  The possible values are:
 
   ** Unknown command `@itemTop,,' (left as is) (l. 9)
   ../../invalid_command_in_table.texi:9: Unknown command `itemTop,,'.
+
+  *** Undefined node `EExpansion' in @xref (l. 263)
+  ../../templates.texi:287: Cross reference to nonexistent node `EExpansion' (perhaps incorrect sectioning?).
 
 * warning for @anchors and @float appearing before the first node, since
   they are not recorded as Ref:. (for example formatting/float_copying).

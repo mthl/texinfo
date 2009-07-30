@@ -1,0 +1,57 @@
+
+Viper
+*****
+
+We believe that one or more of the following statements are adequate
+descriptions of Viper:
+
+Viper Is a Package for Emacs Rebels;
+it is a VI Plan for Emacs Rescue
+and/or a venomous VI PERil.
+
+Technically speaking, Viper is a Vi emulation package for Emacs.  It
+implements all Vi and Ex commands, occasionally improving on them and
+adding many new features.  It gives the user the best of both worlds: Vi
+keystrokes for editing combined with the power of the Emacs environment.
+
+Viper emulates Vi at several levels, from the one that closely follows Vi
+conventions to the one that departs from many of them.  It has many
+customizable options, which can be used to tailor Viper to the work habits
+of various users.
+This manual describes Viper, concentrating on the differences from Vi and
+new features of Viper.
+
+Viper, formerly known as VIP-19, was written by Michael Kifer.  It is based
+on VIP version 3.5 by Masahiko Sato and VIP version 4.4 by Aamod Sane.
+About 15% of the code still comes from those older packages.
+
+Viper is intended to be usable without reading this manual -- the defaults
+are set to make Viper as close to Vi as possible.  At startup, Viper will
+try to set the most appropriate default environment for you, based on
+your familiarity with Emacs.  It will also tell you the basic GNU Emacs window
+management commands to help you start immediately.
+
+Although this manual explains how to customize Viper, some basic
+familiarity with Emacs Lisp is a plus.
+
+It is recommended that you read the Overview node.  The other nodes may
+be visited as needed.
+
+Comments and bug reports are welcome.
+kifer@cs.stonybrook.edu is the current address for Viper bug reports.
+Please use the Ex command :submitReport for this purpose.
+
+
+* Overview::                    Read for a smoother start
+* Improvements over Vi::        New features, Improvements
+* Customization::               How to customize Viper
+* Commands::                    Vi and Ex Commands
+
+* Key Index::                   Index of Vi and Ex Commands
+* Function Index::              Index of Viper Functions
+* Variable Index::              Index of Viper Variables
+* Package Index::               Index of Packages Mentioned in this Document
+* Concept Index::               Vi, Ex and Emacs concepts
+
+* Acknowledgments::
+

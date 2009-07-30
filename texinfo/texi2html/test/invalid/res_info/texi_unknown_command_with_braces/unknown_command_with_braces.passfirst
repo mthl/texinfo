@@ -1,0 +1,20 @@
+unknown_command_with_braces.texi(,2) 
+unknown_command_with_braces.texi(,3) @setfilename unknown_command_with_braces.info
+unknown_command_with_braces.texi(,4) 
+unknown_command_with_braces.texi(,5) @node Top 
+unknown_command_with_braces.texi(,6) @top Test unknown command with braces
+unknown_command_with_braces.texi(,7) 
+unknown_command_with_braces.texi(,8) Unknown macro @unknown{ first paragraph
+unknown_command_with_braces.texi(,9) 
+unknown_command_with_braces.texi(,10) second paragraph}
+unknown_command_with_braces.texi(,11) 
+unknown_command_with_braces.texi(,12) @unknown2{ first paragraph
+unknown_command_with_braces.texi(,13) 
+unknown_command_with_braces.texi(,14) second paragraph
+unknown_command_with_braces.texi(,15) 
+unknown_command_with_braces.texi(,16) third}
+unknown_command_with_braces.texi(,17) 
+unknown_command_with_braces.texi(,18) 
+unknown_command_with_braces.texi(,19) Unknown thing @thing{}
+unknown_command_with_braces.texi(,20) 
+unknown_command_with_braces.texi(,21) @bye

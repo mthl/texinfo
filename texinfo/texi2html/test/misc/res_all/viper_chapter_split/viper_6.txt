@@ -1,0 +1,69 @@
+Acknowledgments
+***************
+
+Viper, formerly known as VIP-19, was written by Michael Kifer.  Viper is
+based on the original VIP package by Masahiko Sato and on its enhancement,
+VIP 4.4, by Aamod Sane.  This manual is an adaptation of the manual for VIP
+4.4, which, in turn, was based on Sato's manual for VIP 3.5.
+
+Many contributors on the Net pointed out bugs and suggested a number of
+useful features. Scott Bronson and Samuel Padgett contributed patches that
+were incorporated in this code.  Here is a hopefully complete list of
+contributors:
+
+aaronl@vitelus.com (Aaron Lehmann),
+ahg@panix.com (Al Gelders),
+amade@diagram.fr (Paul-Bernard Amade),
+ascott@fws214.intel.com (Andy Scott),
+bronson@trestle.com (Scott Bronson),
+cook@biostat.wisc.edu (Tom Cook),
+csdayton@midway.uchicago.edu (Soren Dayton),
+dave@hellgate.utah.edu,
+dm@scs.cs.nyu.edu (David Mazieres),
+dominik@strw.LeidenUniv.nl (Carsten Dominik),
+dwallach@cs.princeton.edu (Dan Wallach),
+dwight@toolucky.llnl.gov (Dwight Shih),
+dxc@xprt.net (David X Callaway),
+edmonds@edmonds.home.cs.ubc.ca (Brian Edmonds),
+gin@mo.msk.ru (Golubev I.N.),
+gviswana@cs.wisc.edu (Guhan Viswanathan),
+gvr@halcyon.com (George V. Reilly),
+hatazaki@bach.convex.com (Takao Hatazaki),
+hpz@ibmhpz.aug.ipp-garching.mpg.de (Hans-Peter Zehrfeld),
+jackr@dblues.engr.sgi.com (Jack Repenning),
+jamesm@bga.com (D.J. Miller II),
+jjm@hplb.hpl.hp.com (Jean-Jacques Moreau),
+jl@cse.ogi.edu (John Launchbury),
+jobrien@hchp.org (John O'Brien),
+johnw@borland.com (John Wiegley),
+kanze@gabi-soft.fr (James Kanze),
+kin@isi.com (Kin Cho),
+kwzh@gnu.org (Karl Heuer),
+lindstro@biostat.wisc.edu (Mary Lindstrom),
+minakaji@osaka.email.ne.jp (Mikio Nakajima),
+Mark.Bordas@East.Sun.COM (Mark Bordas),
+meyering@comco.com (Jim Meyering),
+martin@xemacs.org (Martin Buchholz),
+mbutler@redfernnetworks.com (Malcolm Butler),
+mveiga@dit.upm.es (Marcelino Veiga Tuimil),
+paulk@summit.esg.apertus.com (Paul Keusemann),
+pfister@cs.stonybrook.edu (Hanspeter Pfister),
+phil_brooks@MENTORG.COM (Phil Brooks),
+pogrell@informatik.hu-berlin.de (Lutz Pogrell),
+pradyut@cs.uchicago.edu (Pradyut Shah),
+roderick@argon.org (Roderick Schertler),
+rxga@ulysses.att.com,
+sawdey@lcse.umn.edu (Aaron Sawdey),
+simonb@prl.philips.co.uk (Simon Blanchard),
+spadgett1@nc.rr.com (Samuel Padgett),
+stephen@farrell.org (Stephen Farrell),
+sudish@MindSpring.COM (Sudish Joseph),
+schwab@issan.informatik.uni-dortmund.de (Andreas Schwab)
+terra@diku.dk (Morten Welinder),
+thanh@informatics.muni.cz (Han The Thanh),
+toma@convex.convex.com,
+vrenjak@sun1.racal.com (Milan Vrenjak),
+whicken@dragon.parasoft.com (Wendell Hicken),
+zapman@cc.gatech.edu (Jason Zapman II),
+
+

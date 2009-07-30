@@ -4581,6 +4581,8 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @item replace $SECTION_NAVIGATION by $HEADERS.
 @item @@verbatiminclude is now a $raw command argument distinct from @@verbatim.
 @item @@direntry is formatted like a menu and passed down to $menu_command.
+@item add $NODE_FILENAMES to use node names for files associated with nodes, 
+  such that $NODE_FILES is only means creating redirection files.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

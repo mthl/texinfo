@@ -1,0 +1,5 @@
+Ref to nonexisting node.
+************************
+
+ref to a non existing node@ref{bidule}.
+

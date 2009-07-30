@@ -1,0 +1,27 @@
+This is unknown_command_with_braces.info, produced by makeinfo version
+4.13 from unknown_command_with_braces.texi.
+
+
+File: unknown_command_with_braces.info,  Node: Top,  Up: (dir)
+
+Test unknown command with braces
+********************************
+
+Unknown macro  first paragraph
+
+   second paragraph
+
+    first paragraph
+
+   second paragraph
+
+   third
+
+   Unknown thing
+
+
+
+Tag Table:
+Node: Top116
+
+End Tag Table

@@ -1,0 +1,744 @@
+This is templates.info, produced by makeinfo version 4.13 from
+templates.texi.
+
+This is the Emacs template package documentation, version 3.1c Copyright
+© 2008 Christoph Wedler, Vincent Belaïche.
+
+     Permission is granted to ...
+
+INFO-DIR-SECTION Emacs
+START-INFO-DIR-ENTRY
+* Templates: (templates). Creating templates for files creation.
+END-INFO-DIR-ENTRY
+
+
+File: templates.info,  Node: Top,  Up: (dir)top
+
+Top node.
+*********
+
+This is the manual of Emacs template package
+
+* Menu:
+
+* Overview:: Overview.
+* Installation:: how to install the template package.
+* Basics:: How to make and use templates.
+* Advanced:: Templates for advanced users.
+* Indexes:: Indexes for commands, keyword, and variable.
+* News:: News for Package Template.
+* Acknowledgements:: Acknowledgements.
+
+
+File: templates.info,  Node: Overview,  Up: Top
+
+1 Overview
+**********
+
+When you create a new file with Emacs, package Template supplies an
+initial buffer content via a template: a file with normal text and
+expansion forms.  There is a menu to easily create such templates.  You
+can also use new commands to decorate comments and update the buffer
+contents.
+
+   The main difference between Template and *note other similar
+packages: Related. is that you can define very flexible templates
+without having to learn Lisp or changing your Emacs init file.  This
+package does not help Lisp programmers to define complex macros.
+
+   * The template mechanism is hooked into the normal find/open file
+     command.  There are also new commands for creating a new file using
+     a template and inserting &amp; expanding a template.
+
+   * You do not have to enter the file name of the template file.  This
+     package uses a sophisticated search to find the most appropritate
+     template (supporting project- and subproject specific template
+     files).  You can change the suggestion, of course.
+
+   * A template file can be easily created.  Most of the file usually
+     contains simple text; only "expansion forms" which look like
+     `(>>>KEY<<<)' will get replaced.
+
+   * There are various useful predefined expansions: set point (the
+     cursor position), mark and registers to the current position;
+     insert various parts of the filename, the user/system name, the
+     current date/time in various formats, and some text to be entered
+     by the user.
+
+   * Template-specific expansions can be defined at the end of the
+     template file.  There are commands to create these definitions;
+     only complex expansions would require some knowledge of Lisp.
+
+   There is a menu to support the creation of template files.
+Additionally, this package provides the following features:
+
+   * When saving a buffer, some parts of the buffer contents (header and
+     time stamps) are automatically updated if necessary.
+
+   * There are commands to decorate comments with dashes and alike.
+     Works for languages with any comment style, even languages having
+     mixed comments like C++ and Java.
+
+
+File: templates.info,  Node: Related,  Up: Overview
+
+1.1 Packages Related to Template
+================================
+
+There are template packages of two different categories, which are
+determined by one question:
+
+   _What do you want to do with templates?_ Do you want to use templates
+when creating new files, or do you want to insert some stuff during
+editing (but you are not satisfied with the standard macro mechanism)?
+
+   Well, templates could be seen as both new-file templates and
+macro-like template, but the main application of templates determines
+the answers for the following questions:
+
+   * _How do you define a template?_ You can define it by one file per
+     template or by customizing some Emacs variables.  The first
+     solution (which is used by package Template) avoids Emacs hacking
+     but might not be optimal if you just want to define complex macros
+     or if you want to use templates to program a new Emacs major-mode.
+
+   * _How is an appropriate template selected?_ If you want to use
+     complex macro during editing, the answer is clear: the user have to
+     provide the name of the template.  For new files, the appropriate
+     template should be automatically selected.  But of course, you
+     don't want to loose any flexibility and you don't want to customize
+     your Emacs for every project you start.
+
+   * _How do you do "clever" things in the template?_ The aims are to
+     have many predefined expansions (e.g., the current date) and to
+     define some non-trivial things without learning Lisp.  Any
+     functionality here is the overlapping point of both template
+     categories.
+
+   Here is a little list of related files, collected around 1998, some
+discarded later (no URLs, no active updating, but you can send me a
+mail):
+
+   * Package `autoinsert.el' uses templates when creating new files.
+     These templates are defined via files or by customizing Emacs.  For
+     each new template you want to introduce, you must customize your
+     Emacs, the selection is restricted to one template per major-mode
+     or regexp match.  No predefined expansions; clever things are
+     provided by usual Lisp expressions or the macro-like templates of
+     package `skeleton'.
+
+   * Package `skeleton.el' is a Lisp language extension for writing
+     statement skeletons, i.e., you get macro-like Lisp commands.
+
+   * Package `tempo.el' helps you defining and using named macro-like
+     templates.  Its predefined macros are similar to some predefined
+     expansions of package Template.  A specific template is used by
+     <code class="lisp">html-helper-mode</code> when creating a new html
+     file.  (This is turned off with the default installation of package
+     Template.)
+
+   * Package `hm-html-menus' provides a command to insert templates
+     editing.  These templates are defined via files.  There are no
+     predefined expansions (except setting point), non-trivial
+     expansions are defined via Lisp.
+
+
+File: templates.info,  Node: Installation,  Up: Top
+
+2 Installation
+**************
+
+2.1 Installation Instructions
+=============================
+
+  1. Copy file `template/lisp/template.el' into your load-path and
+     byte-compile it.
+
+  2. Insert the following code into your Emacs init file (`~/.emacs'):
+
+          (require 'template)
+          (template-initialize)
+
+  3. If you want to customize package Template, use `M-x customize-group
+     <RET> template <RET>' or the customize entry in menu `Options'.
+
+  4. You might want to copy the template files from directory
+     `template/templates/' to `~/.templates/' and change them according
+     to your preferences.
+
+   Installation instructions with further explanations can be found in
+file `template/INSTALL' of the distribution.
+
+
+File: templates.info,  Node: Basics,  Up: Top
+
+3 Basics
+********
+
+Emacs, template, file template, comment decoration, auto-updating, time
+stamp, details
+
+* Menu:
+
+* menus:: Menus and Key-Bindings.
+* using:: Using a Template.
+* finding:: Finding a Template.
+* creating:: Creating a Template.
+* decorating:: Decorating a Comment.
+* updating:: Updating a Buffer.
+
+
+File: templates.info,  Node: menus,  Up: Basics
+
+3.1 Menus and Key-Bindings
+==========================
+
+For Emacs-21.1+ and XEmacs, this package defines the following menu
+entries and key-bindings:
+
+   * In menu `File' , there is a new menu item `New File Using
+     Template...'  .  The corresponding command is also bound to the key
+     sequence `C-x t'.
+
+   * At the end of menu `Cmds' (in XEmacs if it exists) or menu  `Edit'
+     , there is a new submenu `Template Creation'.
+
+   * Enter `C-x C-=' (command `template-single-comment') to insert
+     dashes and alike into the current line and end the comment.
+
+   * Enter `C-x C-;' (command `template-single-comment') to insert
+     dashes and alike around the current comment block.
+
+   * At the end of menu `Edit' , there is a new submenu `Comment'.  It
+     also contains the two commands just mentioned.
+
+
+File: templates.info,  Node: using,  Up: Basics
+
+3.2 Using a Template
+====================
+
+Package Template offers various ways how to use template files:
+
+   In Emacs, the usual way to create a new file is by typing `C-x C-f',
+using the menu or the toolbar (running command `find-file' or `ffap')
+and entering a non-existent file name.  In this case, you will be asked
+whether to use a template for the new file.  You can turn off this
+feature.
+
+   * Here a first undefined xref @xref{EExpansion}.  There is a new
+     command `template-new-file' (1) to create a new file using a
+     template.  Here, you have the chance to edit the name of the
+     template file.  This command also supports file name refinement
+     which is useful to create a file in a series of files like
+     `exercise2.tex' etc.
+
+   * There is also a command (`M-x template-expand-template') to insert
+     a template file into the current buffer and expand its expansion
+     forms.
+
+   For more `template-new-file' and `template-auto-insert',  *Note
+Expansion::.
+
+   ---------- Footnotes ----------
+
+   (1) for the menu entry and its key-binding type `C-h f
+template-new-file', @xref{EExpansion}
+
+
+File: templates.info,  Node: finding,  Up: Basics
+
+3.3 Finding a Template
+======================
+
+The algorithm for finding the most appropriate template can be best
+explained with a little example:
+
+   * You have a project `~/proj/' with subprojects `foo/' and `bar/'
+     containing `.java' files.
+
+   * You want to define a general template for the `.java' in your
+     project files, although `.java' files in subproject `foo/' should
+     use their own template.  You also want to define a special template
+     for all files `proj.java' in the project.
+
+   * Since you do not want to clutter the project directory with
+     template files, you first create a directory `~/proj/Templates/'.
+     In this directory, you create new files `TEMPLATE.java.tpl' and
+     `proj.java.tpl'.  In directory `~/proj/foo/', you create a new file
+     `TEMPLATE.java.tpl'.
+
+   The creation of the template files in the right directory is already
+enough for packages Template to find the most appropriate template for a
+new file:
+
+   * If you create a new file `~/proj/foo/abc.java', this package tries
+     to find a template based on the file extension of the new file.
+     The generic base file name for a template is `TEMPLATE' and the
+     additional extension is `.tpl', a file `TEMPLATE.java.tpl' exists
+     in `~/proj/foo/', so that file is used as the template.
+
+   * If you create a new file `~/proj/bar/abc.java', this package again
+     tries to find `TEMPLATE.java.tpl'.  Since this file doesn't exist
+     in `~/proj/bar/', it first inspects the subdirectory `Templates/'
+     which doesn't exist.  The search continues with the parent
+     directory `~/proj/' and then its subdirectory `Templates/'.  Thus
+     `~/proj/Templates/TEMPLATE.java.tpl' will be used.
+
+   * If you create a new file `~/proj/foo/proj.java', this package finds
+     a template file with the same base name: it uses
+     `~/proj/Templates/proj.java.tpl'.  You might argue that
+     `~/proj/foo/TEMPLATE.java.tpl' resides in a more specific
+     directory, but having the same base name is considered to be more
+     important (remember that some file like Makefiles do not have file
+     extensions).
+
+   * If you create a new file `~/other_proj/foo/proj.java', i.e., a
+     project where you have defined no template files, this package uses
+     one of the default templates, in this case
+     `~/.templates/TEMPLATE.java.tpl'.
+
+   For more on derivation *Note Derivation::.
+
+
+File: templates.info,  Node: creating,  Up: Basics
+
+3.4 Creating a Template
+=======================
+
+There are various predefined expansions which are probably enough for
+most templates.  A corresponding expansion forms can be easily inserted
+by selecting the appropriate entry in the new submenu  `Template
+Creation' :
+
+   * Remember positions: use `(>>>POINT<<<)' to set point (the cursor
+     position), `(>>>MARK<<<)' to set mark (e.g., the opposite position
+     when a region is highlighted), and `(>>>1<<<)' to `(>>>0<<<)' to
+     registers to the current position.  Remember that `C-x r j KEY'
+     jumps to the position stored in register KEY.
+
+   * Insert parts of the file name, e.g., when creating the new file
+     `~/proj/foo/abc1.java': `(>>>DIR<<<)' is replaced by
+     `/home/user/proj/foo/', `(>>>FILE<<<)' by `abc1.java',
+     `(>>>FILE_SANS<<<)' by `abc1' , `(>>>FILE_UPCASE<<<)' by `ABC1' ,
+     `(>>>FILE_RAW<<<)' by `abc', `(>>>FILE_NUM<<<)' by `1' , and
+     `(>>>FILE_EXT<<<)' by `java'.
+
+   * Insert the current date/time in two customizable and three fixed
+     formats: use `(>>>DATE<<<)' for `20 Feb 2002', `(>>>TIME<<<)' for
+     `20:01:13' , `(>>>YEAR<<<)' for `2002' , `(>>>ISO_DATE<<<)' for
+     `2002-02-20' , and `(>>>VC_DATE<<<)' for `2002/02/20 19:01:13'
+
+   * Insert the user/system name in various formats: use
+     `(>>>AUTHOR<<<)' for <Christoph Wedler <wedler@fmi.uni-passau.de>>,
+     `(>>>USER_NAME<<<)' for `Christoph Wedler' , `(>>>LOGIN_NAME<<<)'
+     for `wedler' , and `(>>>HOST_ADDR<<<)' for `fmi.uni-passau.de' .
+
+   * Ask the user for some initial comment.  If this expansion is used,
+     the buffer for the new file will be marked as modified.  For each
+     undefined expansion, the user is also asked.
+
+   * Disabling the search for expansion forms: `(>>>ZERO_FORM<<<)' can
+     be inserted into a string which will be otherwise regarded as an
+     expansion form, the region between `(>>>LITERAL<<<)' and the first
+     `(>>>/LITERAL<<<)' after it will be skipped.
+
+   You can define your own expansions in your Emacs init file and at the
+end of a template file.  A corresponding definition can be easily
+inserted by selecting the appropriate entry in the new submenu
+`Template Creation':
+
+   * `Define User Input' .  Ask the user to insert some text using some
+     specific prompt.  Optionally, ask for a text with completion, or
+     for a sequence of user input (exit with empty input).
+
+   * `Define Text Register' .  Define a text for register REG which can
+     be inserted with `C-x r i REG'.  Optionally, provide a comment for
+     it which will be temporarily shown at point.
+
+   * `Define Message' .  Define a message which will be temporarily
+     shown at point or before/after the expansion in a special buffer.
+     There is also a computed message in the echo area.
+
+   * Execute some Lisp coding defined at the end of the template.  By
+     default, you have to confirm it first, since it is insecure to
+     execute unchecked coding.  (You do not have menu support to define
+     this kind of expansion.)
+
+ -- User Option: template-default-expansion-alist
+ -- User Option: template-definition-start
+
+
+File: templates.info,  Node: decorating,  Up: Basics
+
+3.5 Decorating a Comment
+========================
+
+There are commands to decorate comments with dashes and alike (`-', `='
+and `#' by default).  Both commands are included in the new submenu
+`Comments' and bound to keys:
+
+   * Use command `template-single-comment' to jump to the end of the
+     current line and insert the dashes and the final comment end-string
+     up-to the fill position.  This command works with any comment
+     style, including for languages having mixed comments like C++ and
+     Java.  It also works in major modes without a defined comment
+     syntax.
+
+   * Use command `template-block-comment' to surround the current
+     comment block (i.e., contiguous comment lines) with extra lines
+     containing dashes and alike and to put the correct number of
+     newlines around the block.  This command only works with comments
+     which are terminated with the end of the line (like Java's `//'
+     comment).
+
+   The comment decoration style is highly customizable and can be
+controlled by
+
+   * The prefix argument given to the two commands.
+
+   * The existing comment decoration style when present.
+
+   * Determined by the indentation or the repetition of a
+     single-character comment start (like Emacs-Lisp's `;').
+
+   For more on comments *Note Comments::.
+
+
+File: templates.info,  Node: updating,  Up: Basics
+
+3.6 Updating a Buffer
+=====================
+
+A buffer is automatically updated according to some rules when saving
+the file.  This updating can be invoked explicitly by selecting the menu
+entry `Update Buffer' in the new submenu `Comments' .
+
+   * Update the file name in the first three lines of the buffer if the
+     file name is indicated by `@(#) FILENAME' or `;;; FILENAME --'
+     where `;;;' stands for any comment start (with optional repetition
+     of a single-character comment start).
+
+   * Update the date if it is the last text inside the `address' element
+     of a HTML buffer.
+
+   * Automatic updating is optional, as is user confirmation for it.
+     Automatic updating can be disabled for buffers whose file name
+     matches a regular expression.
+
+   * If nothing will be changed by the updating, there will be no user
+     confirmation and the buffer will not be marked as modified.
+
+ -- User Option: template-update-buffer
+ -- User Option: template-auto-update
+ -- User Option: template-update-buffer-alist
+ -- User Option: template-header-regexp-alist
+
+
+File: templates.info,  Node: Advanced,  Up: Top
+
+4 Templates for advanced users
+******************************
+
+* Menu:
+
+* Customization:: Templates customization.
+
+
+File: templates.info,  Node: Customization,  Up: Advanced
+
+4.1 Templates customization
+===========================
+
+* Menu:
+
+* Expansion:: Customization of keyword expansion rules.
+* Derivation:: Customization of how templates are derived.
+* Comments:: Customization of comments.
+
+
+File: templates.info,  Node: Expansion,  Up: Customization
+
+4.1.1 Customization of keyword expansion rules
+----------------------------------------------
+
+ -- Interactive Command: template-new-file file template with-undo
+     Open a new file FILE by using a TEMPLATE.  Using a template for
+     creating a new file consists of, steps 1 to 3 are only executed
+     when called interactively:
+
+       1. Prompt for the name of the new file.
+
+       2. Template derivation: suggest a reasonable template file to the
+          user see `template-derivation-alist'.
+
+       3. File name refinement: e.g., if the given file name is
+          `exercise' and there are two files `exercise1.tex' and
+          `exercise2.tex' in the same directory and if we have a
+          template `exercise.tex.tpl', the file name is refined to
+          `exercise3.tex'.  This is turned off when `C-x t' is called
+          with a prefix argument.
+
+       4. Template insertion: insert the template file into the empty
+          buffer.
+
+       5. Read per-template expansion definition section starting at
+          `template-definition-start' and delete it.
+
+       6. Display: before message in `template-message-buffer'.
+
+       7. Execute pre-expansion commands defined in the definition
+          section.
+
+       8. Set local variables defined in the definition section.
+
+       9. Expansion: expand the expansion forms (text matched by
+          `template-expansion-regexp') They are defined in the
+          definition section, in `template-expansion-alist', or provided
+          by default, see `template-expansion-regexp' and
+          `template-register-regexp'.
+
+       10. Execute post-expansion commands defined in the definition
+          section.
+
+       11. Run `normal-mode' and functions in `find-file-hooks'.
+
+       12. Update header according to `template-update-header' with
+          argument `if-exists'.
+
+       13. Display: after message in `template-message-buffer'.
+
+       14. Report: display a temporary message at point defined in the
+          definition section and an automatically generated message in
+          the minibuffer area, see `template-message-timeout'.
+
+     If optional WITH-UNDO is non-nil, store corresponding changes in
+     `buffer-undo-list'.  If FILE is nil, the buffer for FILE has
+     already been created and the accessible part will be replaced by
+     the expanded template.  If TEMPLATE is nil (empty input when called
+     interactively), do not use a template.
+
+ -- User Option: template-auto-insert
+
+
+File: templates.info,  Node: Derivation,  Up: Customization
+
+4.1.2 Customization of how templates are derived
+------------------------------------------------
+
+ -- User Option: template-derivation-alist
+
+
+File: templates.info,  Node: Comments,  Up: Customization
+
+4.1.3 Customization of comments
+-------------------------------
+
+ -- User Option: template-single-comment
+
+ -- Interactive command: template-block-comment arg
+     It is bound to `C-x C-;', and `<menu-bar> <edit> <Comment>
+     <Decorate Comment Block>'.
+
+     Decorate the current block of comment-only lines with dashes and
+     alike.  That is, surround the the contiguous comment-only lines
+     around point with extra lines containing dashes and alike and to
+     put the correct number of newlines around the block.
+
+     Barf if the comment syntax at point has a non-empty `comment-end'
+     or if point is not in a comment-only line.
+
+     A block comment consists of all neighboring lines which start with
+     spaces and `comment-start'.  If `comment-start' is a string of
+     length 1, the number of repetitions of `comment-start' must be the
+     same or larger than in the line where the command is invoked from,
+     too.
+
+     Prefix argument ARG and `template-comment-specification' determines
+     the comment style to use.  The length of the separator line is
+     determined by `template-max-column'.
+
+     This command can also be used with point in an empty line after a
+     block comment.  A second invocation of this command directly after
+     a successful invocation deletes the remaining empty lines from the
+     current line on.
+
+ -- User Option: template-comment-specification-alist
+     List of specifications for comment functions.  Each specification
+     at LEVEL, starting at 1, is a list `(SEPARATOR BEFORE-BLOCK
+     AFTER-BLOCK DELETE-LINES)'
+
+     SEPARATOR is the string which is inserted repeatedly by commands
+     `C-x C-=' and `C-x C-;' up to `template-max-column'.
+
+     After that, `C-x C-;' deletes DELETE-LINES after the comment block
+     and inserts string AFTER-BLOCK at the end of the block and
+     BEFORE-BLOCK at the front of the block.
+
+     The specification LEVEL to use is determined by:
+
+       1. If the prefix argument is non-nil and its numeric value is >
+          0, this value is the LEVEL.
+
+       2. If the prefix argument is nil, and there is an old comment
+          style, use old comment style.
+
+       3. If `template-comment-specification-special' is a function or
+          the current major mode has a property with this name and its
+          value is a function, this function returns the specification.
+
+       4. If `comment-end' is empty and `comment-start' is a string of
+          length 1: LEVEL is number of repetitions of `comment-start' at
+          the beginning of the line.  Otherwise, if the correctly
+          indented line starts at the beginning of the line, LEVEL=3,
+          else LEVEL=2.
+
+
+File: templates.info,  Node: Indexes,  Up: Top
+
+5 Indexes for commands, keyword, and variable
+*********************************************
+
+* Menu:
+
+* Keyword Index:: Keyword Index.
+* Command Index:: Command Index.
+* Variable Index:: Customizable Variable Index.
+
+
+File: templates.info,  Node: Keyword Index,  Up: Indexes
+
+5.1 Keyword Index
+=================
+
+
+File: templates.info,  Node: Command Index,  Up: Indexes
+
+5.2 Keyword Index
+=================
+
+ [index ]
+* Menu:
+
+* template-block-comment:                Comments.              (line 8)
+* template-new-file:                     Expansion.             (line 6)
+
+
+File: templates.info,  Node: Variable Index,  Up: Indexes
+
+5.3 Variable Index
+==================
+
+ [index ]
+* Menu:
+
+* template-auto-insert:                  Expansion.            (line 62)
+* template-auto-update:                  updating.             (line 26)
+* template-comment-specification-alist:  Comments.             (line 35)
+* template-default-expansion-alist:      creating.             (line 65)
+* template-definition-start:             creating.             (line 66)
+* template-derivation-alist:             Derivation.           (line  6)
+* template-header-regexp-alist:          updating.             (line 28)
+* template-single-comment:               Comments.             (line  6)
+* template-update-buffer:                updating.             (line 25)
+* template-update-buffer-alist:          updating.             (line 27)
+
+
+File: templates.info,  Node: News,  Up: Top
+
+6 News for Package Template
+***************************
+
+Latest Version:
+     *3.1c* (21 Aug 2003).
+
+Requirements:
+     `Emacs-20.2', `XEmacs-20.2', or higher.
+
+     No menu support for Emacs before Version 21.1.
+
+Licence:
+     `GNU General Public License'.
+
+6.1 Changes with Release 3.1c
+=============================
+
+   * Bug fix: on XEmacs, initialization would fail without menus "File"
+     and "Edit" in menubar.
+
+   * Allow messages to be displayed in a separate buffer "*Template
+     Messages*" instead at point.
+
+   * Correct and improve header updating.
+
+   * Extend use of `M-x template-single-comment'.
+
+   * Minor bug fixes.  Miscellaneous.
+
+6.2 Changes with Release 3.1
+============================
+
+   * Moved to SourceForge.net.  Less technical description on web page.
+
+   * Remove examples from distribution, they were more confusing than
+     helpful.
+
+   * Bug fix: would sometimes indent the current line when using the
+     menubar.
+
+   * Menus work with Emacs-21, too.  Rename some menu entries.
+
+   * Don't search further for remote templates.  Nuke this home/base
+     directory stuff, stop search at root.
+
+   * Don't rely on command `ffap' to always add an entry to
+     `command-history' if the filename is read from terminal.  Special
+     setup for `ffap' and `html-helper'.
+
+   * Make date/time formats work as names suggest.
+
+   * Command to insert & expand a template file.
+
+   * Allow user to define a choice in the definition section to be
+     answered via `y-or-n-p'.
+
+   * Various miscellaneous improvements.  Minor bug fixes.
+
+
+File: templates.info,  Node: Acknowledgements,  Up: Top
+
+   Christoph Wedler `http://sourceforge.net/users/wedler/', 21 Aug 2003
+
+
+
+Tag Table:
+Node: Top362
+Node: Overview784
+Node: Related2986
+Node: Installation5969
+Node: Basics6762
+Node: menus7125
+Node: using7991
+Ref: using-Footnote-19073
+Node: finding9170
+Node: creating11631
+Node: decorating14808
+Node: updating16159
+Node: Advanced17290
+Node: Customization17457
+Node: Expansion17740
+Node: Derivation20289
+Node: Comments20495
+Node: Indexes23246
+Node: Keyword Index23513
+Node: Command Index23610
+Node: Variable Index23875
+Node: News24727
+Node: Acknowledgements26342
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

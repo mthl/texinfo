@@ -1,0 +1,30 @@
+This is formats_titles.info, produced by makeinfo version 4.13 from
+formats_titles.texi.
+
+
+File: formats_titles.info,  Node: Top,  Up: (dir)
+
+Test formats with text before first item
+****************************************
+
+     before first itemize
+   * item
+
+     before first enumerate
+  1. enum
+
+     before first table
+_tab_
+
+     before first vtable
+vtab
+
+before first multitable
+item multit                          tab multit
+
+
+
+Tag Table:
+Node: Top90
+
+End Tag Table

@@ -1,0 +1,18 @@
+Test formats with text before first item
+****************************************
+
+before first itemize
+* item
+
+before first enumerate
+1. enum
+
+before first table
+tab
+
+before first vtable
+vtab
+
+ before first multitable
+ item multit tab multit
+

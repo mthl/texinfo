@@ -1,0 +1,33 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename formats_titles.info
+
+@node Top
+@top Test formats with text before first item
+
+@itemize
+before first itemize
+@item item
+@end itemize
+
+@enumerate
+before first enumerate
+@item enum
+@end enumerate
+
+@table @emph
+before first table
+@item tab
+@end table
+
+@vtable @asis
+before first vtable
+@item vtab
+@end vtable
+
+@multitable @columnfractions 0.5 0.5
+before first multitable
+@item item multit @tab tab multit
+@end multitable
+
+@bye

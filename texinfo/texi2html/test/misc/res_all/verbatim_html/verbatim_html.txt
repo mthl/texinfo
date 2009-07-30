@@ -1,0 +1,226 @@
+Tests
+*****
+* First node::    node 1
+* description: node a'.    node with braces
+* node: (manual)A node. node in another manual
+
+a verbatim in menu comment 
+ verbatim on same line than @verbatim
+
+bidule
+
+
+* node da'::       node without braces
+
+Tests for environments not matching
+
+A quotation
+
+
+ -- Function Reference: print_navigation $filehandle
+Text
+
+item
+line
+
+ref
+example
+
+@end table
+
+
+
+1 first node chapter
+********************
+
+ref to a non existing node@ref{bidule}.
+
+a 2 paragraphs sample `in first paragraph
+
+in second'.
+
+a 3 paragraphs sample `in first paragraph
+
+in second
+
+in third'.
+
+Unknown macro @unknown{ first paragraph
+
+second paragraph}
+
+@unknown2{ first paragraph
+
+second paragraph
+
+third}
+
+
+
+Unknown thing @thing{}
+
+
+
+A list with bullet
+Before itemize, in that case @bullet isn'right, one needs @bullet{} (in info) * on the same line than item
+some text
+* more text 
+A list with text before first @item:
+
+text * more
+text
+
+
+In tex, @end verbatim must be on its own on a line.
+
+A verbatim with begin and end on its own line
+verbatim @samp{item}
+
+
+
+
+Now html valid for TeX  Some text one the line following @end html
+
+And html on it's own line
+
+
+
+A sc: IEEE, and another one in example:
+AEEI
+
+
+Ignore is the same than @html.
+
+Now ifnothtml on same line  text following ifnothtml
+
+text following an empty line
+text before end ifnothtml 
+@end ifnothtml doesn't need to begin the line, and there can be more
+than one space between @end and ifnothtml, but nothing more
+on the line.
+
+Text on the line before ifnothtml with text following,
+ text following ifnothtml,
+Text on the line following ifnothtml.
+
+Text on the line before ifnothtml without text following,
+some text on a line between ifnothtml and end  ifnothtml,
+Text on the line following ifnothtml.
+
+Text on the line before ifnothtml,
+Text on the line following empty ifnothtml
+
+
+TeX has problems with the ftable.
+
+
+ outside format.
+
+ outside format.
+
+ truc before table beginning
+ first cell
+ second row
+
+before bad  multitable 
+right multitable
+ 1-1 1-2
+ 3-1 3-2
+
+Columnfraction multitable with an ignored cell
+ 1-1 1-2
+
+multitable beginning with @tab
+  after first tab
+ new line
+
+A flushright
+ some text flushed right
+
+A center Centered line
+And a center after empty line
+
+centered line after empty line
+
+And a center at end of line 
+And an empty center    
+
+An empty flushright 
+
+A verb follows:
+
+ a little
+
+very little
+verb 
+
+another with space as delimiter
+
+what@@
+
+@verb followed by end of line seems incorrect.
+Now verb delimited with *, with an empty line, a comment and @samp:
+
+with
+verb @c comment
+
+and samp @samp{text }
+
+
+
+
+2 node 'a with braces
+*********************
+In the node with braces
+
+A footnote with an empty line within.
+(1) 
+
+Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
+in that case in info. tex doesn't like the paragraph break in the ref
+
+Some @verbatim, @verb and @ignore within an xref, very hard for TeX:
+
+See no verb.
+
+3 node 'a without braces
+************************
+* node::       node 
+
+3.1 node
+========
+
+A node with gggggggg
+before example  after example
+
+the example
+before end example  
+
+after end example
+
+Text only after the end
+
+Example
+text following end example.
+
+ -- category: name args
+Deffn.
+text following end deffn.
+
+Table of Contents
+*****************
+
+Tests
+1. first node chapter
+2. node 'a with braces
+3. node 'a without braces
+ 3.1 node
+
+Footnotes
+*********
+
+(1)
+with empty line
+
+before before
+

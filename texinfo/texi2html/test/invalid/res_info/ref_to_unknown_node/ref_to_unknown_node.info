@@ -1,0 +1,17 @@
+This is ref_to_unknown_node.info, produced by makeinfo version 4.13 from
+ref_to_unknown_node.texi.
+
+
+File: ref_to_unknown_node.info,  Node: Top,  Up: (dir)
+
+Ref to nonexisting node.
+************************
+
+ref to a non existing node@ref{bidule}.
+
+
+
+Tag Table:
+Node: Top100
+
+End Tag Table

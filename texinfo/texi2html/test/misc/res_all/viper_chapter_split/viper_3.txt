@@ -1,0 +1,512 @@
+2 Improvements over Vi
+**********************
+
+Some common problems with Vi and Ex have been solved in Viper.  This
+includes better implementation of existing commands, new commands, and
+the facilities provided by Emacs.
+
+* Basics::                  Basic Viper differences, Multi-file effects.
+* Undo and Backups::        Multiple undo, auto-save, backups and changes
+* History::                 History for Ex and Vi commands.
+* Macros and Registers::    Keyboard Macros (extended ".") @reg execution.
+* Completion::              Filename and Command Completion for Ex.
+* Improved Search::         Incremental Search and Buffer Content Search.
+* Abbreviation Facilities:: Normal Abbrevs, Templates, and Dynamic Abbrevs.
+* Movement and Markers::    Screen Editor movements, viewing textmarkers.
+* New Commands::            Commands that do not exist in Vi.
+* Useful Packages::         A Sampling of some Emacs packages, and things
+                            you should know about.
+
+2.1 Basics
+==========
+
+The Vi command set is based on the idea of combining motion commands
+with other commands.  The motion command is used as a text region
+specifier for other commands.
+We classify motion commands into point commands and
+line commands.
+
+
+The point commands are:
+
+h, l, 0,  $, w, W, b, B,
+e, E, (, ), /, ?, `, f,
+F, t, T, %, ;, ,, ^
+
+
+The line commands are:
+
+j, k, +, -, H, M, L, {,
+}, G, ',  [[, ]], []
+
+
+If a point command is given as an argument to a modifying command, the
+region determined by the point command will be affected by the modifying
+command.  On the other hand, if a line command is given as an argument to a
+modifying command, the region determined by the line command will be
+enlarged so that it will become the smallest region properly containing the
+region and consisting of whole lines (we call this process expanding
+the region), and then the enlarged region will be affected by the modifying
+command.
+Text Deletion Commands (see Deleting Text), Change commands
+(see Changing Text), even Shell Commands (see Shell Commands)
+use these commands to describe a region of text to operate on.
+Thus, type dw to delete a word, >} to shift a paragraph, or
+!'afmt to format a region from `point' to textmarker
+`a'.
+
+
+Viper adds the region specifiers `r' and `R'.  Emacs has a
+special marker called mark.  The text-area between the current cursor
+position point and the mark is called the region.
+`r' specifies the raw region and `R' is the expanded region
+(i.e., the minimal contiguous chunk of full lines that contains the raw
+region).
+dr will now delete the region, >r will shift it, etc.
+r,R are not motion commands, however.  The special mark is set by
+m. and other commands.  See Marking, for more info.
+
+Viper also adds counts to most commands for which it would make sense.
+
+In the Overview chapter, some Multiple File issues were discussed
+(see Multiple Files in Viper).  In addition to the files, Emacs has
+buffers.  These can be seen in the :args list and switched using
+:next if you type :set ex-cycle-through-non-files t, or
+specify (setq ex-cycle-through-non-files t) in your `.viper'
+file.  See Customization, for details.
+
+2.2 Undo and Backups
+====================
+
+
+Viper provides multiple undo.  The number of undo's and the size is limited
+by the machine.  The Viper command u does an undo.  Undo can be
+repeated by typing . (a period).  Another u will undo the undo,
+and further
+. will repeat it.  Typing u does the first undo, and changes the
+direction.
+
+
+Since the undo size is limited, Viper can create backup files and
+auto-save files.  It will normally do this automatically.  It is possible
+to have numbered backups, etc.  For details, see (emacs)Backup section `Backup and Auto-Save' in The GNU Emacs Manual 
+
+
+The results of the 9 previous changes are available in the 9 numeric
+registers, as in Vi.  The extra goody is the ability to view these
+registers, in addition to being able to access them through p and
+M-y (See Insert State, for details.)
+The Viper command ] register will display the contents of any
+register, numeric or alphabetical.  The related command [ textmarker
+will show the text around the textmarker.  `register' and `textmarker'
+can be any letters from a through z.
+
+2.3 History
+===========
+
+
+History is provided for Ex commands, Vi searches, file names, pieces of
+text inserted in earlier commands that use Insert or Replace state, and for
+destructive commands in Vi state.  These are
+useful for fixing those small typos that screw up searches and :s,
+and for eliminating routine associated with repeated typing of file names
+or pieces of text that need to be inserted frequently.
+At the : or / prompts in the Minibuffer, you can do the following:
+
+M-p and M-n
+To move to previous and next history items.  This causes the history
+items to appear on the command line, where you can edit them, or
+simply type Return to execute.
+M-r and M-s
+To search backward and forward through the history.
+<RET>
+Type <RET> to accept a default (which is displayed in the prompt).
+
+The history of insertions  can be perused by
+typing C-c M-p and C-c M-n while in Insert or Replace state.
+The history of destructive Vi commands can be perused via the same keys
+when Viper is in Vi state.  See Viper Specials, for details.
+
+All Ex commands have a file history.  For instance, typing :e, space
+and then M-p will bring up the name of the previously typed file
+name.  Repeatedly typing M-p, M-n, etc., will let you browse
+through the file history.
+
+Similarly, commands that have to do with switching buffers
+have a buffer history, and commands that expect strings or regular
+expressions keep a history on those items.
+
+2.4 Macros and Registers
+========================
+
+
+Viper facilitates the use of Emacs-style keyboard macros.  @# will
+start a macro definition.  As you type, the commands will be executed, and
+remembered (This is called "learn mode" in some editors.)
+@register will complete the macro, putting it into `register',
+where `register' is any character from `a' through `z'.  Then
+you can execute this macro using @register.  It is, of course,
+possible to yank some text into a register and execute it using
+@register.  Typing @@, @RET, or @C-j will
+execute the last macro that was executed using @register.
+
+Viper will automatically lowercase the register, so that pressing the
+SHIFT key for @ will not create problems.  This is for
+@ macros and "p only.  In the case of y,
+"Ayy will append to register a.  For [,],',`, it
+is an error to use a Uppercase register name.
+
+
+The contents of a register can be seen by ]register.  ([textmarker
+will show the contents of a textmarker).
+
+
+The last keyboard macro can also be executed using
+*, and it can be yanked into a register using @!register.
+This is useful for Emacs style keyboard macros defined using C-x(
+and C-x).  Emacs keyboard macros have more capabilities.
+See (emacs)Keyboard Macros section `Keyboard Macros' in The GNU Emacs Manual, for
+details.
+
+Keyboard Macros allow an interesting form of Query-Replace:
+/pattern or n to go to the next pattern (the query), followed by a
+Keyboard Macro execution @@ (the replace).
+
+Viper also provides Vi-style macros.  See Vi Macros, for details.
+
+
+2.5 Completion
+==============
+
+
+Completion is done when you type <TAB>.  The Emacs completer does not
+grok wildcards in file names.  Once you type a wildcard, the completer will
+no longer work for that file name.  Remember that Emacs interprets a file name
+of the form /foo//bar as /bar and /foo/~/bar as
+~/bar.
+
+2.6 Improved Search
+===================
+
+
+Viper provides buffer search, the ability to search the buffer for a region
+under the cursor.  You have to turn this on in `.viper' either by calling
+
+(viper-buffer-search-enable)
+
+or by setting viper-buffer-search-char to, say, f3:
+(setq viper-buffer-search-char ?g)
+
+If the user calls viper-buffer-search-enable explicitly (the first
+method), then viper-buffer-search-char will be set to g.
+Regardless of how this feature is enabled, the key
+viper-buffer-search-char will take movement commands, like
+w,/,e, to find a region and then search for the contents of that
+region.  This command is very useful for searching for variable names, etc.,
+in a program.  The search can be repeated by n or reversed by N.
+
+
+Emacs provides incremental search.  As you type the string in, the
+cursor will move to the next match.  You can snarf words from the buffer
+as you go along.  Incremental Search is normally bound to C-s and
+C-r.  See Customization, to find out how to change the bindings
+of C-r or C-s.
+For details, see (emacs)Incremental Search section `Incremental Search' in The GNU Emacs Manual 
+
+
+Viper also provides a query replace function that prompts through the
+Minibuffer.  It is invoked by the Q key in Vi state.
+
+
+On a window display, Viper supports mouse search, i.e., you can search for a
+word by clicking on it.  See Viper Specials, for details.
+
+Finally, on a window display, Viper highlights search patterns as it finds
+them.  This is done through what is known as faces in Emacs.  The
+variable that controls how search patterns are highlighted is
+viper-search-face.  If you don't want any highlighting at all, put
+(copy-face 'default 'viper-search-face)
+in `~/.viper'.  If you want to change how patterns are highlighted, you
+will have to change viper-search-face to your liking.  The easiest
+way to do this is to use Emacs customization widget, which is accessible
+from the menubar.  Viper customization group is located under the
+Emulations customization group, which in turn is under the
+Editing group (or simply by typing :customize).  All Viper
+faces are grouped together under Viper's 
+Highlighting group.
+
+Try it: it is really simple!
+
+2.7 Abbreviation Facilities
+===========================
+
+
+It is possible in Emacs to define abbrevs based on the contents of the
+buffer.
+Sophisticated templates can be defined using the Emacs abbreviation
+facilities.  See (emacs)Abbrevs section `Abbreviations' in The GNU Emacs Manual, for
+details.
+
+
+Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
+will search the buffer to find an extension for this word.  For instance,
+one can type `Abbreviations' by typing `A', followed by a keystroke
+that completed the `A' to `Abbreviations'.  Repeated typing
+will search further back in the buffer, so that one could get
+`Abbrevs' by repeating the
+keystroke, which appears earlier in the text.  Emacs binds this to
+<ESC> /, so you will have to find a key and bind the function
+dabbrev-expand to that key.
+Facilities like this make Vi's :ab command obsolete.
+
+2.8 Movement and Markers
+========================
+
+
+Viper can be set free from the line-limited movements in Vi, such as l
+refusing to move beyond the line, <ESC> moving one character back,
+etc.  These derive from Ex, which is a line editor.  If your `.viper'
+contains
+
+(setq viper-ex-style-motion nil)
+
+the motion will be a true screen editor motion.  One thing you must then
+watch out for is that it is possible to be on the end-of-line character.
+The keys x and % will still work correctly, i.e., as if they
+were on the last character.
+
+
+The word-movement commands w, e, etc., and the associated
+deletion/yanking commands, dw, yw, etc., can be made to
+understand Emacs syntax tables.  If the variable
+viper-syntax-preference is set to strict-vi then
+the meaning of word is the same as in
+Vi.  However, if the value is reformed-vi (the default) then the
+alphanumeric symbols will be those specified by the current Emacs syntax
+table (which may be different for different major modes) plus the
+underscore symbol _, minus some non-word symbols, like '.;,|, etc.
+Both strict-vi and reformed-vi work close to Vi in
+traditional cases, but reformed-vi does a better job when editing
+text in non-Latin alphabets.
+
+The user can also specify the value emacs, which would
+make Viper use exactly the Emacs notion of word.  In particular, the
+underscore may not be part of a word.  Finally, if
+viper-syntax-preference is set to extended, Viper words would
+consist of characters that are classified as alphanumeric or as
+parts of symbols.  This is convenient for writing programs and in many other
+situations.
+
+viper-syntax-preference is a local variable, so it can have different
+values for different major modes.  For instance, in programming modes it can
+have the value extended.  In text modes where words contain special
+characters, such as European (non-English) letters, Cyrillic letters, etc.,
+the value can be reformed-vi or emacs.
+
+Changes to viper-syntax-preference should be done in the hooks to
+various major modes by executing viper-set-syntax-preference as in
+the following example:
+
+(viper-set-syntax-preference nil "emacs")
+
+
+The above discussion of the meaning of Viper's words concerns only Viper's
+movement commands.  In regular expressions, words remain the same as in
+Emacs.  That is, the expressions \w, \>, \<, etc., use
+Emacs' idea of what is a word, and they don't look into the value of
+variable viper-syntax-preference.  This is because Viper doesn't change
+syntax tables in fear of upsetting the various major modes that set these
+tables.
+
+
+Textmarkers in Viper remember the file and the position, so that you can
+switch files by simply doing 'a.  If you set up a regimen for using
+Textmarkers, this is very useful.  Contents of textmarkers can be viewed
+by [marker.  (Contents of registers can be viewed by ]register).
+
+2.9 New Commands
+================
+
+These commands have no Vi analogs.
+
+C-x, C-c
+These two keys invoke many important Emacs functions.  For example, if you
+hit C-x followed by 2, then the current window will be split
+into 2.  Except for novice users, C-c is also set to execute an Emacs
+command from the current major mode.  <ESC> will do the same, if you
+configure <ESC> as Meta by setting viper-no-multiple-ESC to nil
+in `.viper'.  See Customization.  C-\ in Insert, Replace, or Vi
+states will make Emacs think Meta has been hit.
+\
+Escape to Emacs to execute a single Emacs command.  For instance,
+\ <ESC> will act like a Meta key.
+Q
+Q is for query replace.  By default,
+each string to be replaced is treated as a regular expression.  You can use
+(setq viper-re-query-replace nil) in your `.emacs' file to
+turn this off.  (For normal searches, :se nomagic will work.  Note
+that :se nomagic turns Regexps off completely, unlike Vi).
+v
+V
+C-v
+These keys are used to visit files.  v will switch to a buffer
+visiting file whose name can be entered in the Minibuffer.  V is
+similar, but will use a window different from the current window.
+C-v is like V, except that a new frame (X window) will be used
+instead of a new Emacs window.
+#
+If followed by a certain character ch, it becomes an operator whose
+argument is the region determined by the motion command that follows
+(indicated as <move>).
+Currently, ch can be one of c, C, g, q, and
+s.  For instance, #qr will prompt you for a string and then
+prepend this string to each line in the buffer.
+# c
+Change upper-case characters in the region to lower-case
+(downcase-region).
+Emacs command M-l does the same for words.
+# C
+Change lower-case characters in the region to upper-case.  For instance,
+# C 3 w will capitalize 3 words from the current point
+(upcase-region).
+Emacs command M-u does the same for words.
+# g
+Execute last keyboard macro for each line in the region
+(viper-global-execute).
+# q
+Insert specified string at the beginning of each line in the region
+(viper-quote-region).  The default string is composed of the comment
+character(s) appropriate for the current major mode.
+# s
+Check spelling of words in the region (spell-region).
+The function used for spelling is determined from the variable
+viper-spell-function.
+*
+Call last keyboard macro.
+m .
+Set mark at point and push old mark off the ring
+m<
+m>
+Set mark at beginning and end of buffer, respectively.
+m,
+Jump to mark and pop mark off the ring.  See (emacs)Mark section `Mark' in The GNU Emacs Manual, for more info.
+] register
+View contents of register
+[ textmarker
+View filename and position of textmarker
+@#
+@register
+@!
+
+Begin/end keyboard macro.  @register has a different meaning when used after
+a @#.  See Macros and Registers, for details
+[]
+Go to end of heading.
+g <movement command>
+Search buffer for text delimited by movement command.  The canonical
+example is gw to search for the word under the cursor.
+See Improved Search, for details.
+C-g and C-]
+Quit and Abort Recursive edit.  These may be necessary on occasion.
+See Vi State, for a reason.
+C-c C-g
+Hitting C-c followed by C-g will display the information on the
+current buffer.  This is the same as hitting C-g in Vi, but, as
+explained above, C-g is needed for other purposes in Emacs.
+C-c /
+Without a prefix argument, this command toggles
+case-sensitive/case-insensitive search modes and plain vanilla/regular
+expression search.  With the prefix argument 1, i.e.,
+1 C-c /, this toggles case-sensitivity; with the prefix argument 2,
+toggles plain vanilla search and search using
+regular expressions.  See Viper Specials, for alternative ways to invoke
+this function.
+
+M-p and M-n
+In the Minibuffer, these commands navigate through the minibuffer
+histories, such as the history of search strings, Ex commands, etc.
+
+C-c M-p and C-c M-n
+
+In Insert or Replace state, these commands let  the user
+peruse the history of insertion strings used in previous insert or replace
+commands.  Try to hit C-c M-p or C-c M-n repeatedly and see what
+happens.  See Viper Specials, for more.
+
+In Vi state, these commands let the user peruse the history of Vi-style
+destructive commands, such as dw, J, a, etc.
+By repeatedly typing C-c M-p or C-c M-n you will cycle Viper
+through the recent history of Vi commands, displaying the commands one by
+one.  Once
+an appropriate command is found, it can be executed by typing `.'.
+
+Since typing C-c M-p is tedious, it is more convenient to bind an
+appropriate function to a function key on the keyboard and use that key.
+See Viper Specials, for details.
+
+Ex commands
+The commands :args, :next, :pre behave
+differently.  :pwd exists to get current directory.
+The commands :b and :B switch buffers around.  See File and Buffer Handling, for details.
+There are also the new commands :RelatedFile and
+PreviousRelatedFile (which abbreviate to R and P,
+respectively.  See Viper Specials, for details.
+
+Apart from the new commands, many old commands have been enhanced.  Most
+notably, Vi style macros are much more powerful in Viper than in Vi.  See Vi Macros, for details.
+
+2.10 Useful Packages
+====================
+
+Some Emacs packages are mentioned here as an aid to the new Viper user, to
+indicate what Viper is capable of.
+A vast number comes with the standard Emacs distribution, and many more exist
+on the net and on the archives.
+
+This manual also mentions some Emacs features a new user
+should know about.  The details of these are found in the GNU Emacs
+Manual.
+
+The features first.  For details, look up the Emacs Manual.
+
+`Make'
+
+Makes and Compiles can be done from the editor.  Error messages will be
+parsed and you can move to the error lines.
+`Shell'
+You can talk to Shells from inside the editor.  Your entire shell session
+can be treated as a file.
+`Mail'
+Mail can be read from and sent within the editor.  Several sophisticated
+packages exist.
+`Language Sensitive Editing'
+Editing modes are written for most computer languages in existence.  By
+controlling indentation, they catch punctuation errors.
+
+The packages, below, represents a drop in the sea of special-purpose
+packages that come with standard distribution of Emacs.
+
+`Transparent FTP'
+ange-ftp.el can ftp from the editor to files on other machines
+transparent to the user.
+`RCS Interfaces'
+vc.el for doing RCS commands from inside the editor
+`Directory Editor'
+dired.el for editing contents of directories and for navigating in
+the file system.
+`Syntactic Highlighting'
+font-lock.el for automatic highlighting various parts of a buffer
+using different fonts and colors.
+`Saving Emacs Configuration'
+desktop.el for saving/restoring configuration on Emacs exit/startup.
+`Spell Checker'
+ispell.el for spell checking the buffer, words, regions, etc.
+`File and Buffer Comparison'
+ediff.el for finding differences between files and for applying
+patches.
+
+Emacs Lisp archives exist on
+`archive.cis.ohio-state.edu'
+and `wuarchive.wustl.edu'
+
+

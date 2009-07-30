@@ -1,0 +1,7 @@
+Test empty multitable
+*********************
+
+In itemize at the beginning of an item
+a-n itemize line in macro
+
+

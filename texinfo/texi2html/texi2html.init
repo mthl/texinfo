@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.207 2009-07-25 12:35:14 pertusus Exp $
+# $Id: texi2html.init,v 1.208 2009-07-30 09:54:18 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -319,6 +319,10 @@ $L2H_CLEAN = 1;
 $FIRSTPARAGRAPHINDENT = 'none';
 
 @T2H_FORMAT_EXPAND = ('plaintext');
+
+# if set, node names are used to construct file names
+# if undef, it is set if split at node, or $NODE_FILES is set.
+$NODE_FILENAMES = undef;
 
 # If true do table of contents even if there is no @content
 $CONTENTS = undef;
@@ -731,6 +735,7 @@ sub t2h_default_set_variables_texi2html()
   $USE_REL_REV = 0;
   $USE_LINKS = 0;
   $USE_NODES = undef;
+  $NODE_FILENAMES = 0;
   $USE_NUMERIC_ENTITY = 1;
   $SPLIT = '';
   $SPLIT_INDEX = 100;
@@ -4634,11 +4639,13 @@ sub t2h_default_unknown($$$$$)
     return ($line, 0, undef, undef);
 }
 
-sub t2h_default_unknown_style($$$$)
+sub t2h_default_unknown_style($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $state = shift;
+    my $no_close = shift;
+    my $no_open = shift;
     
     my ($result, $result_text, $message);
     return (0, undef, undef);

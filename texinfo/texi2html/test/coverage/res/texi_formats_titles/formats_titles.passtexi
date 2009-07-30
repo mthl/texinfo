@@ -1,0 +1,32 @@
+formats_titles.texi(,2) 
+formats_titles.texi(,3) @setfilename formats_titles.info
+formats_titles.texi(,4) 
+formats_titles.texi(,5) @node Top
+formats_titles.texi(,6) @top Test formats with text before first item
+formats_titles.texi(,7) 
+formats_titles.texi(,8) @itemize
+formats_titles.texi(,9) before first itemize
+formats_titles.texi(,10) @item item
+formats_titles.texi(,11) @end itemize
+formats_titles.texi(,12) 
+formats_titles.texi(,13) @enumerate
+formats_titles.texi(,14) before first enumerate
+formats_titles.texi(,15) @item enum
+formats_titles.texi(,16) @end enumerate
+formats_titles.texi(,17) 
+formats_titles.texi(,18) @table @emph
+formats_titles.texi(,19) before first table
+formats_titles.texi(,20) @item tab
+formats_titles.texi(,21) @end table
+formats_titles.texi(,22) 
+formats_titles.texi(,23) @vtable @asis
+formats_titles.texi(,24) before first vtable
+formats_titles.texi(,25) @item vtab
+formats_titles.texi(,26) @end vtable
+formats_titles.texi(,27) 
+formats_titles.texi(,28) @multitable @columnfractions 0.5 0.5
+formats_titles.texi(,29) before first multitable
+formats_titles.texi(,30) @item item multit @tab tab multit
+formats_titles.texi(,31) @end multitable
+formats_titles.texi(,32) 
+formats_titles.texi(,33) @bye

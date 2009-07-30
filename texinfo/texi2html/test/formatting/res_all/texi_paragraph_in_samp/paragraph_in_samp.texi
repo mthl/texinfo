@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename paragraph_in_samp.info
+
+@node Top
+@top Test paragraph in @@samp
+
+a 2 paragraphs sample @samp{in first paragraph
+
+in second}.
+
+a 3 paragraphs sample @samp{in first paragraph
+
+in second
+
+in third}.
+
+@bye

@@ -25,6 +25,11 @@
 # [Definition:] The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
+
+use strict;
+
+html_default_load();
+
 $DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
 
 $FRAMESET_DOCTYPE = $DOCTYPE;
@@ -231,7 +236,7 @@ sub t2h_html32_raw($$)
     }
     elsif ($expanded)
     {
-        warn "$WARN (bug) unknown style $style\n";
+        warn "(bug) unknown style $style\n";
         return &$protect_text($text);
     }
     return '';

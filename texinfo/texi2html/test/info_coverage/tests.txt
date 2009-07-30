@@ -42,6 +42,7 @@ images_eol images_eol.texi
 long_uref_after_item long_uref_after_item.texi
 menu_in_deffn menu_in_deffn.texi
 multitable_in_example multitable_in_example.texi
+empty_multitable_in_itemize empty_multitable_in_itemize.texi
 enumerate_in_example enumerate_in_example.texi
 itemize_in_example itemize_in_example.texi 
 cindex_at_end_node cindex_at_end_node.texi

@@ -42,6 +42,7 @@ texi simple_table.texi
 texi empty_item.texi
 texi direntry_dircategory.texi
 texi nested_table.texi
+texi paragraph_in_samp.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -105,6 +106,8 @@ simple_table simple_table.texi
 empty_item empty_item.texi
 direntry_dircategory direntry_dircategory.texi
 nested_table nested_table.texi 
+paragraph_in_samp paragraph_in_samp.texi
+
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init
 kbdinputstyle_info kbdinputstyle.texi -init info.init

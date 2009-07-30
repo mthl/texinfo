@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename empty_multitable_in_itemize.info
+
+
+@node Top
+@top Test empty multitable
+
+In itemize at the beginning of an item
+@itemize a--n itemize line
+@item in macro
+
+@multitable
+@end multitable
+
+@end itemize
+@bye

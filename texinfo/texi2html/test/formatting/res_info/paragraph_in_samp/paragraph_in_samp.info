@@ -1,0 +1,25 @@
+This is paragraph_in_samp.info, produced by makeinfo version 4.13 from
+paragraph_in_samp.texi.
+
+
+File: paragraph_in_samp.info,  Node: Top,  Up: (dir)
+
+Test paragraph in @samp
+***********************
+
+a 2 paragraphs sample `in first paragraph
+
+   in second'.
+
+   a 3 paragraphs sample `in first paragraph
+
+   in second
+
+   in third'.
+
+
+
+Tag Table:
+Node: Top96
+
+End Tag Table

@@ -1,0 +1,18 @@
+This is empty_multitable_in_itemize.info, produced by makeinfo version
+4.13 from empty_multitable_in_itemize.texi.
+
+
+File: empty_multitable_in_itemize.info,  Node: Top,  Up: (dir)
+
+Test empty multitable
+*********************
+
+In itemize at the beginning of an item
+   a-n itemize line in macro
+
+
+
+Tag Table:
+Node: Top116
+
+End Tag Table

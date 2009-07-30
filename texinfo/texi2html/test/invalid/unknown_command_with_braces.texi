@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename unknown_command_with_braces.info
+
+@node Top 
+@top Test unknown command with braces
+
+Unknown macro @unknown{ first paragraph
+
+second paragraph}
+
+@unknown2{ first paragraph
+
+second paragraph
+
+third}
+
+
+Unknown thing @thing{}
+
+@bye

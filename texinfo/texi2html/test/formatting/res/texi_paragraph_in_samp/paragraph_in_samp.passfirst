@@ -1,0 +1,17 @@
+paragraph_in_samp.texi(,2) 
+paragraph_in_samp.texi(,3) @setfilename paragraph_in_samp.info
+paragraph_in_samp.texi(,4) 
+paragraph_in_samp.texi(,5) @node Top
+paragraph_in_samp.texi(,6) @top Test paragraph in @@samp
+paragraph_in_samp.texi(,7) 
+paragraph_in_samp.texi(,8) a 2 paragraphs sample @samp{in first paragraph
+paragraph_in_samp.texi(,9) 
+paragraph_in_samp.texi(,10) in second}.
+paragraph_in_samp.texi(,11) 
+paragraph_in_samp.texi(,12) a 3 paragraphs sample @samp{in first paragraph
+paragraph_in_samp.texi(,13) 
+paragraph_in_samp.texi(,14) in second
+paragraph_in_samp.texi(,15) 
+paragraph_in_samp.texi(,16) in third}.
+paragraph_in_samp.texi(,17) 
+paragraph_in_samp.texi(,18) @bye

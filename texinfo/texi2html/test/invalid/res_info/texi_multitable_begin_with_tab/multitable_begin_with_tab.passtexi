@@ -1,0 +1,16 @@
+multitable_begin_with_tab.texi(,2) 
+multitable_begin_with_tab.texi(,3) @setfilename multitable_begin_with_tab.info
+multitable_begin_with_tab.texi(,4) 
+multitable_begin_with_tab.texi(,5) @node Top
+multitable_begin_with_tab.texi(,6) @top Test for tab beginning a multitable
+multitable_begin_with_tab.texi(,7) 
+multitable_begin_with_tab.texi(,8) @multitable {a} {b}
+multitable_begin_with_tab.texi(,9) @tab t
+multitable_begin_with_tab.texi(,10) @end multitable
+multitable_begin_with_tab.texi(,11) 
+multitable_begin_with_tab.texi(,12) @multitable {c} {d}
+multitable_begin_with_tab.texi(,13) @tab t2
+multitable_begin_with_tab.texi(,14) @item it
+multitable_begin_with_tab.texi(,15) @end multitable
+multitable_begin_with_tab.texi(,16) 
+multitable_begin_with_tab.texi(,17) @bye

@@ -1,0 +1,128 @@
+Function Index
+**************
+
+* Index:
+* !!<cmd>: 4.6 Shell Commands.
+* !<cmd>: 4.6 Shell Commands.
+* !<move><cmd>: 4.6 Shell Commands.
+* :!! <args>: 4.6 Shell Commands.
+* :!<cmd>: 4.6 Shell Commands.
+* :<address>r !<cmd>: 4.6 Shell Commands.
+* :<address>r <name>: 4.6 Shell Commands.
+* :args: 2.9 New Commands.
+* :args: 4.4 File and Buffer Handling.
+* :cd [<dir>]: 4.4 File and Buffer Handling.
+* :copy [z]: 4.2.6 Changing Text.
+* :e [<files>]: 4.4 File and Buffer Handling.
+* :e!: 4.2.9 Undoing.
+* :e! [<files>]: 4.4 File and Buffer Handling.
+* :edit [<files>]: 4.4 File and Buffer Handling.
+* :edit! [<files>]: 4.4 File and Buffer Handling.
+* :f: 4.4 File and Buffer Handling.
+* :g: 4.2.7 Search and Replace.
+* :global: 4.2.7 Search and Replace.
+* :k: 4.2.2 Marking.
+* :make: 4.6 Shell Commands.
+* :map: 3.2 Key Bindings.
+* :map <char> <seq>: 4.5 Mapping.
+* :map! <char> <seq>: 4.5 Mapping.
+* :mark: 4.2.2 Marking.
+* :move [z]: 4.2.6 Changing Text.
+* :n: 2.9 New Commands.
+* :n [<count> | <file>]: 4.4 File and Buffer Handling.
+* :pre: 2.9 New Commands.
+* :pre: 4.4 File and Buffer Handling.
+* :PreviousRelatedFile: 2.9 New Commands.
+* :PreviousRelatedFile: 3.3 Viper Specials.
+* :pwd: 2.9 New Commands.
+* :pwd: 4.4 File and Buffer Handling.
+* :q: 4.4 File and Buffer Handling.
+* :q!: 4.2.9 Undoing.
+* :q!: 4.4 File and Buffer Handling.
+* :quit: 4.4 File and Buffer Handling.
+* :quit!: 4.4 File and Buffer Handling.
+* :r: 4.4 File and Buffer Handling.
+* :read: 4.4 File and Buffer Handling.
+* :rec: 4.2.9 Undoing.
+* :rec: 4.4 File and Buffer Handling.
+* :RelatedFile: 2.9 New Commands.
+* :RelatedFile: 3.3 Viper Specials.
+* :rew: 4.4 File and Buffer Handling.
+* :s/<pat>/<repl>/<f>: 4.2.6 Changing Text.
+* :set: 3.1 Rudimentary Changes.
+* :set <option>: 4.7 Options.
+* :set <option>=<value>: 4.7 Options.
+* :set ai: 4.7 Options.
+* :set autoindent: 4.7 Options.
+* :set ic: 4.7 Options.
+* :set ignorecase: 4.7 Options.
+* :set magic: 4.7 Options.
+* :set no<option>: 4.7 Options.
+* :set readonly: 4.7 Options.
+* :set ro: 4.7 Options.
+* :set sh=<string>: 4.7 Options.
+* :set shell=<string>: 4.7 Options.
+* :set shiftwidth=<count>: 4.7 Options.
+* :set showmatch: 4.7 Options.
+* :set sm: 4.7 Options.
+* :set sw=<count>: 4.7 Options.
+* :set tab-stop-local=<count>: 4.7 Options.
+* :set tabstop=<count>: 4.7 Options.
+* :set ts=<count>: 4.7 Options.
+* :set wm=<count>: 4.7 Options.
+* :set wrapmargin=<count>: 4.7 Options.
+* :set wrapscan: 4.7 Options.
+* :set ws: 4.7 Options.
+* :sh: 4.6 Shell Commands.
+* :stop: 4.4 File and Buffer Handling.
+* :substitute/<pat>/<repl>/<f>: 4.2.6 Changing Text.
+* :substitute/<pat>/<repl>/<f>: 4.2.7 Search and Replace.
+* :suspend: 4.4 File and Buffer Handling.
+* :t [z]: 4.2.6 Changing Text.
+* :tag <name>: 4.2.7 Search and Replace.
+* :unmap <char>: 4.5 Mapping.
+* :unmap! <char>: 4.5 Mapping.
+* :v: 4.2.7 Search and Replace.
+* :vglobal: 4.2.7 Search and Replace.
+* :W: 4.4 File and Buffer Handling.
+* :w !<cmd>: 4.6 Shell Commands.
+* :w <file>: 4.4 File and Buffer Handling.
+* :w >> <file>: 4.4 File and Buffer Handling.
+* :w! <file>: 4.4 File and Buffer Handling.
+* :wq: 4.4 File and Buffer Handling.
+* :Write: 4.4 File and Buffer Handling.
+* :write <file>: 4.4 File and Buffer Handling.
+* :write >> <file>: 4.4 File and Buffer Handling.
+* :write! <file>: 4.4 File and Buffer Handling.
+* :WW: 4.4 File and Buffer Handling.
+* :WWrite: 4.4 File and Buffer Handling.
+* :WWrite: 4.4 File and Buffer Handling.
+* :x: 4.4 File and Buffer Handling.
+* :x!: 4.4 File and Buffer Handling.
+* :x,y w !<cmd>: 4.6 Shell Commands.
+* :yank: 4.2.8 Yanking.
+* add-hook: 3.2.1 Packages that Change Keymaps.
+* remove-hook: 3.2.1 Packages that Change Keymaps.
+* toggle-viper-mode: 1.3 States in Viper.
+* toggle-viper-mode: 3.3 Viper Specials.
+* viper-add-local-keys: 3.2 Key Bindings.
+* viper-buffer-search-enable: 3.3 Viper Specials.
+* viper-describe-kbd-macros: 3.4 Vi Macros.
+* viper-glob-function: 3.1 Rudimentary Changes.
+* viper-go-away: 1.3 States in Viper.
+* viper-go-away: 3.3 Viper Specials.
+* viper-harness-minor-mode: 3.2.1 Packages that Change Keymaps.
+* viper-mode: 3.2.1 Packages that Change Keymaps.
+* viper-modify-major-mode: 3.2 Key Bindings.
+* viper-mouse-click-insert-word: 3.3 Viper Specials.
+* viper-mouse-click-search-word: 3.3 Viper Specials.
+* viper-set-emacs-state-searchstyle-macros: 3.3 Viper Specials.
+* viper-set-expert-level: 3.3 Viper Specials.
+* viper-set-hooks: 3.2.1 Packages that Change Keymaps.
+* viper-set-parsing-style-toggling-macro: 4.2.1 Move Commands.
+* viper-set-searchstyle-toggling-macros: 3.3 Viper Specials.
+* viper-set-syntax-preference: 2.8 Movement and Markers.
+* viper-set-syntax-preference: 4.1 Groundwork.
+* viper-unrecord-kbd-macro: 3.4 Vi Macros.
+* viper-zap-local-keys: 3.2 Key Bindings.
+

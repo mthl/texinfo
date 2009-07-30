@@ -1,3 +1,14 @@
+2009-07-30   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add $NODE_FILENAMES to use node
+	names for files associated with nodes, such that $NODE_FILES is 
+	only means creating redirection files.
+	Warn when there is a @tab before any @item in multitable.
+	Add no_open and no_close args to unknown_style.
+	* tests/*: move some tests from misc/verbatim_html to the main
+	test suite.
+	* tests/misc: add test results for info and raw plaintext.
+
 2009-07-28   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: warn for command in 'command_stack', that is 

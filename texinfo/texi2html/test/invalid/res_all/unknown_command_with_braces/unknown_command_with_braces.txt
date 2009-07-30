@@ -1,0 +1,16 @@
+Test unknown command with braces
+********************************
+
+Unknown macro @unknown{ first paragraph
+
+second paragraph}
+
+@unknown2{ first paragraph
+
+second paragraph
+
+third}
+
+
+Unknown thing @thing{}
+

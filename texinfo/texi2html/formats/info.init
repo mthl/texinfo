@@ -286,6 +286,7 @@ $colon_command      = \&info_default_colon_command;
 $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
 $comment            = \&t2h_default_comment;
+$unknown_style      = \&info_default_unknown_style;
 
 }
 
@@ -932,6 +933,12 @@ sub info_default_process_content($$)
           elsif ($content->{'command'} eq 'multitable')
           {
               my $multitable = pop @{$info_state->{'multitable_stack'}};
+              if (!defined($multitable->{'cells'}) and ($result ne ''))
+              {
+                  $multitable->{'result'} .= $result;
+                  $multitable->{'length'} += $length;
+                  $multitable->{'line_count'} += $all_line_passed;
+              }
               $max_column = $multitable->{'max_column_kept'};
               $result = $multitable->{'result_kept'};
               $line_char_counter = $multitable->{'line_char_counter_kept'};
@@ -1124,7 +1131,14 @@ sub info_default_process_content($$)
                   $content->{'anchor_reference'}->{'line_char_counter'} = $line_char_counter + $pending_added_length;
                   if (@{$info_state->{'multitable_stack'}})
                   {
-                      push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'anchors'}}, $content->{'anchor_reference'};
+                      if ($info_state->{'multitable_stack'}->[-1]->{'cells'})
+                      {
+                          push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'anchors'}}, $content->{'anchor_reference'};
+                      }
+                      else
+                      {
+                          push @{$info_state->{'multitable_stack'}->[-1]->{'anchors'}},  $content->{'anchor_reference'};
+                      }
                   }
                   push @{$info_state->{'pending_tags'}}, $content->{'anchor_reference'};
                   push @{$info_state->{'align_stack'}->[-1]->{'anchors'}}, $content->{'anchor_reference'} if ($info_state->{'align_stack'}->[-1]->{'command'} eq 'center' or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright');
@@ -1155,9 +1169,16 @@ sub info_default_process_content($$)
 #print STDERR "INDEX($index_name) line $index_line_nr\n";
                   $info_default_index_entries{$content->{'index_entry_reference'}} = $index_ref;
                   # there may be no cell in case of an empty multitable
-                  if (@{$info_state->{'multitable_stack'}} and $info_state->{'multitable_stack'}->[-1]->{'cells'})
+                  if (@{$info_state->{'multitable_stack'}})
                   {
-                      push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'index_entries'}}, $index_ref;
+                      if ($info_state->{'multitable_stack'}->[-1]->{'cells'})
+                      {
+                         push @{$info_state->{'multitable_stack'}->[-1]->{'cells'}->[-1]->{'index_entries'}}, $index_ref;
+                      }
+                      else
+                      {
+                         push @{$info_state->{'multitable_stack'}->[-1]->{'index_entries'}}, $index_ref;
+                      }
                   }
                   push @{$info_state->{'pending_index_entries'}}, $index_ref;
               }
@@ -1360,7 +1381,7 @@ sub info_default_process_content($$)
                   $text_added .= $content->{'text'};
                   goto new_text;
               }
-              elsif ($content->{'command'} eq 'multitable')
+              elsif ($content->{'command'} eq 'multitable' and $content->{'content'})
               {
                   my $indent_length_kept = $indent_level * $info_default_indent_length;
                   my $multitable = {
@@ -1381,10 +1402,24 @@ sub info_default_process_content($$)
                   push @{$info_state->{'multitable_stack'}}, $multitable;
                   $info_state->{'offset_in_file'} = 0;
                   $info_state->{'line_count'} = 0;
+                  $result = '';
+                  $length = 0;
+                  $all_line_passed = 0;
+                  $line_char_counter = 0;
+                  $indent_level = 0;
+                  $indent_length = 0;
               }
               elsif ($content->{'command'} eq 'multitable_row')
               {
-                  $info_state->{'multitable_stack'}->[-1]->{'cell_index'} = -1;
+                  my $multitable = $info_state->{'multitable_stack'}->[-1];
+                  if (!defined($multitable->{'cells'}) and ($result ne ''))
+                  {
+                      $multitable->{'result'} .= $result;
+                      $multitable->{'length'} += $length;
+                      $multitable->{'line_count'} += $all_line_passed;
+                      $multitable->{'cells'} = [];
+                  }
+                  $multitable->{'cell_index'} = -1;
               }
               elsif ($content->{'command'} eq 'multitable_cell')
               {
@@ -1714,7 +1749,7 @@ sub info_default_open_command($$;$)
 
    push @{$info_state->{'current'}->{'content'}}, $new_command;
    $info_state->{'current'} = $new_command;
-   print STDERR "TREE: Opened $command\n" if ($DEBUG); 
+   print STDERR "TREE($info_state->{'nr'}): Opened $command\n" if ($DEBUG); 
 }
 
 sub info_default_close_command($$;$$$)
@@ -1727,7 +1762,7 @@ sub info_default_close_command($$;$$$)
 
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
-   print STDERR "TREE: Closing $command\n" if ($DEBUG);
+   print STDERR "TREE($info_state->{'nr'}): Closing $command\n" if ($DEBUG);
    if (!defined($info_state->{'current'}))
    {
       print STDERR "info_state->{'current'} not defined (closing $command)\n";
@@ -1771,7 +1806,7 @@ sub info_default_store_text($$;$$)
    my $command_text = '';
    $command_text = "\[$command\]" if (defined($command));
    $command_text .= $text if (defined($text));
-   print STDERR "TREE Storing: ${command_text}\n" if ($DEBUG);
+   print STDERR "TREE($info_state->{'nr'}) Storing: ${command_text}\n" if ($DEBUG);
    ################################## end debug
 
    $text_entries->{'text'} = $text if (defined($text));
@@ -3091,10 +3126,11 @@ sub info_default_tab_item_texi($$$$$$)
    # however the main program still do as if something was opened, plus
    # it is checked there that the nesting is correct
    #return $line if (!defined($format) or $command eq 'tab' and $format ne 'multitable');
-   #print STDERR "tab_item_texi $format $command $commands_stack, $stack, $state, $line, $line_nr\n";
+   #print STDERR "tab_item_texi $format $command $commands_stack, $stack, $state, $line, ".main::format_line_number($line_nr)."\n";
    if ($format eq 'multitable')
-   {
-       if ($command ne 'tab')
+   { # even if it is a tab, if it is not already in a multitable_row, one
+     # should be started
+       if ($command ne 'tab' or $info_state->{'current'}->{'command'} ne 'multitable_row')
        {
            info_default_open_command($state, 'multitable_row');
        }
@@ -3138,6 +3174,7 @@ sub info_default_row($$$$$$$$)
     my $column_number = shift;
     my $only_inter_item_commands = shift;
     my $before_items = shift;
+    #print STDERR "info_default_row: $text\n";
 
     return info_default_close_command(undef, 'multitable_row', undef, undef, {'item_command' => $macro});
 }
@@ -3153,7 +3190,13 @@ sub info_default_cell($$$$$$$$)
     my $only_inter_item_commands = shift;
     my $before_items = shift;
 
-    return info_default_close_command(undef, 'multitable_cell');
+    # in general, when before_items, there will be no call to the function
+    # since there should never be a text sent back, so that this 
+    # function will not be called for the first row (the multitable title).
+    # However, if there is a @tab before the first @item, the main program
+    # is less careful and closes the cell in any case, so before_items
+    # has to be checked for that case.
+    return info_default_close_command(undef, 'multitable_cell') unless ($before_items);
 }
 
 sub info_default_table_list($$$$$$$$$)
@@ -3361,5 +3404,18 @@ sub info_default_line_command($$$$)
     return '';
 }
 
+sub info_default_unknown_style($$$$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $state = shift;
+    my $no_close = shift;
+    my $no_open = shift;
+    
+    my ($result, $result_text, $message);
+    $result_text = info_default_close_command(undef, $command, undef, undef, undef);
+    $message = "Unknown command with braces `\@$command'" if (!$no_open);
+    return (1, $result_text, $message);
+}
 
 1;

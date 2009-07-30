@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.298 2009-07-28 18:41:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.299 2009-07-30 09:54:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -284,6 +284,7 @@ $USE_UNICODE
 $USE_UNIDECODE
 $TRANSLITERATE_FILE_NAMES
 $NODE_FILES
+$NODE_FILENAMES
 $NODE_NAME_IN_MENU
 $AVOID_MENU_REDUNDANCY
 $HEADERS
@@ -3730,7 +3731,9 @@ else
     $Texi2HTML::Config::SPLIT = '';
 }
 
+# FIXME
 $Texi2HTML::Config::SPLIT_INDEX = 0 unless $Texi2HTML::Config::SPLIT;
+$Texi2HTML::Config::NODE_FILENAMES = 1 if ((!defined($Texi2HTML::Config::NODE_FILENAMES) and $Texi2HTML::Config::SPLIT eq 'node') or $Texi2HTML::Config::NODE_FILES);
 
 # Something like backward compatibility
 if ($Texi2HTML::Config::SPLIT and defined($Texi2HTML::Config::SUBDIR)
@@ -6754,7 +6757,7 @@ sub rearrange_elements()
                 $is_top = "top";
                 $element->{'file'} = $docu_top;
             }
-            elsif ($Texi2HTML::Config::NODE_FILES)
+            elsif ($Texi2HTML::Config::NODE_FILENAMES)
             {
                 $use_node_file = 1;
                 if ($new_file)
@@ -7657,7 +7660,7 @@ sub pass_text($$)
         $Texi2HTML::THISDOC{'line_nr'} = $line_nr;
         print STDERR "BUG: line_nr not defined in pass_text. cline: $cline" if (!defined($cline));
         #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $cline" if ($line_nr);
-	#print STDERR "PASS_TEXT: $cline";
+	#print STDERR "PASS_TEXT($line_nr->{'line_nr'}): $cline";
 	#dump_stack(\$text, \@stack, \%state);
 
         # make sure the current state from here is $Texi2HTML::THIS_ELEMENT
@@ -13123,7 +13126,7 @@ sub scan_line($$$$;$)
                 # FIXME let the user be able not to close the paragraph?
                 close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
 
-                my $format = add_cell ($text, $stack, $state);
+                my $format = add_cell ($text, $stack, $state, $line_nr);
                 if (!$format)
                 {
                     echo_warn ("\@$macro outside of multitable", $line_nr);
@@ -13560,18 +13563,28 @@ sub add_cell($$$$)
     my $line_nr = shift;
     my $top_format = top_stack($stack);
 
+    #print STDERR "ADD_CELL\n";
     return unless (defined($top_format) and $top_format->{'format'} eq 'cell');
+   # print STDERR "ADD_CELL, really\n";
 
     my $cell = pop @$stack;
     my $row = top_stack($stack);
     print STDERR "Bug: top_stack of cell not a row\n" if (!defined($row->{'format'}) or ($row->{'format'} ne 'row'));
     my $format = $stack->[-2];
     print STDERR "Bug under cell row not a multitable\n" if (!defined($format->{'format'}) or $format->{'format'} ne 'multitable'); 
+
+    if ($format->{'first'} and $format->{'cell'} == 1)
+    {
+        echo_warn( "\@tab before \@item", $line_nr);
+    }
+
     if ($format->{'cell'} <= $format->{'max_columns'})
     {
+        #print STDERR "ADD_CELL, really, really\n";
         add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}, $format->{'columnfractions'}, $format->{'prototype_row'}, $format->{'prototype_lengths'}, $format->{'max_columns'}, $cell->{'only_inter_commands'}, $format->{'first'}));
     }
     $format->{'cell'}++;
+    $format->{'first'} = 0 if ($format->{'first'});
     return $format;
 }
 
@@ -13797,7 +13810,7 @@ sub do_simple($$$;$$$$)
     }
     # Unknown macro
     my $result = '';
-    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text,$state);
+    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text,$state,$no_close, $no_open);
     if ($done)
     {
         echo_warn($message, $line_nr) if (defined($message));

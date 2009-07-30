@@ -1,0 +1,252 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top Tests
+@menu
+* First node::    node 1
+* description: node @'{a}.    node with braces
+* node: (manual)A node. node in another manual
+
+a verbatim in menu comment @verbatim verbatim on same line than @verbatim
+
+bidule
+
+@end verbatim
+
+* node d@'a::       node without braces
+@end menu
+
+Tests for environments not matching
+
+@quotation
+A quotation
+@end cartouche
+
+@deffn {Function Reference} print_navigation $filehandle
+Text
+@end deftypefun
+
+@table
+@item item
+line
+@end vtable
+
+@table @emph
+@item ref
+@example
+example
+@end display
+@end table
+
+
+
+@node First node
+@chapter first node chapter
+
+ref to a non existing node@ref{bidule}.
+
+a 2 paragraphs sample @samp{in first paragraph
+
+in second}.
+
+a 3 paragraphs sample @samp{in first paragraph
+
+in second
+
+in third}.
+
+Unknown macro @unknown{ first paragraph
+
+second paragraph}
+
+@unknown2{ first paragraph
+
+second paragraph
+
+third}
+
+
+
+Unknown thing @thing{}
+
+
+
+A list with bullet
+Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @c segfault <- @item on the same line that itemize
+@item on the same line than item
+some text
+@item
+more text @end  itemize
+
+A list with text before first @@item:
+
+@itemize @bullet
+text @item more
+text
+@end itemize
+
+
+In tex, @@end verbatim must be on its own on a line.
+
+A verbatim with begin and end on its own line
+@verbatim
+verbatim @samp{item}
+
+@end verbatim
+
+
+
+Now html valid for @TeX{}  @html 
+<b>
+some html </b> 
+@end html 
+Some text one the line following @@end html
+
+And html on it's own line
+
+@html
+<tt> an html tt</tt>
+@end html
+
+
+A sc: @sc{ieee}, and another one in example:
+@example
+@sc{aeei}
+@end example
+
+
+Ignore is the same than @@html.
+
+Now ifnothtml on same line  text following ifnothtml
+
+text following an empty line
+text before end ifnothtml 
+@@end ifnothtml doesn't need to begin the line, and there can be more
+than one space between @@end and ifnothtml, but nothing more
+on the line.
+
+Text on the line before ifnothtml with text following,
+ text following ifnothtml,
+Text on the line following ifnothtml.
+
+Text on the line before ifnothtml without text following,
+some text on a line between ifnothtml and end  ifnothtml,
+Text on the line following ifnothtml.
+
+Text on the line before ifnothtml,
+Text on the line following empty ifnothtml
+
+
+@TeX{} has problems with the ftable.
+
+
+@item outside format.
+
+@tab outside format.
+
+@multitable {@samp{bidule}}
+truc before table beginning @item first cell @tab ignored cell
+@itemx second row
+@end multitable
+
+before bad  multitable @multitable 6 7
+@item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+
+right multitable
+@multitable @columnfractions 6 7
+@item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+
+Columnfraction multitable with an ignored cell
+@multitable @columnfractions 0.3 0.4
+@item 1-1 @tab 1-2 @tab 1-3 (ignored)
+@end multitable
+
+multitable beginning with @@tab
+@multitable {@samp{@verb{.something.}}} {sec}
+@tab after first tab 
+@item new line
+@end multitable
+
+A flushright
+@flushright some text flushed right
+@end flushright
+
+A center @center Centered line
+And a center after empty line
+
+@center centered line after empty line
+
+And a center at end of line @center
+And an empty center @center   
+
+An empty flushright @flushright
+
+@end flushright
+
+A verb follows:
+
+@verb{' a little
+
+very little
+verb '}
+
+another with space as delimiter
+
+@verb{ what@@ }
+
+@@verb followed by end of line seems incorrect.
+Now verb delimited with *, with an empty line, a comment and @@samp:
+
+@verb{*with
+verb @c comment
+
+and samp @samp{text }
+*}
+
+
+
+@node node @'{a}, node d@'a, First node, Top
+@chapter node 'a with braces
+In the node with braces
+
+A footnote with an empty line within.
+@footnote{with empty line
+
+before before} 
+
+Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
+in that case in info. tex doesn't like the paragraph break in the ref
+
+Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
+
+@xref{First node,
+no verb}.
+
+@node node d@'a,, node @'{a}, Top
+@chapter node 'a without braces
+@menu
+* node::       node 
+@end menu
+
+@node node,,,
+@section node
+
+A node with gggggggg
+before example @example after example
+
+the example
+before end example  @end  example 
+after end example
+
+Text only after the end
+
+@example
+Example
+@end example text following end example.
+
+@deffn category name args
+Deffn.
+@end deffn text following end deffn.
+
+@contents
+@bye
