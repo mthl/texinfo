@@ -1,0 +1,19 @@
+This is def_bad_defx_command.info, produced by makeinfo version 4.13
+from def_bad_defx_command.texi.
+
+
+File: def_bad_defx_command.info,  Node: Top,  Up: (dir)
+
+Test wrong @def*x
+*****************
+
+ -- Function: my def args ARG ...
+      -- type: name and now the args
+          In defun.
+
+
+
+Tag Table:
+Node: Top102
+
+End Tag Table

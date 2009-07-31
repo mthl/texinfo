@@ -1,0 +1,9 @@
+Test wrong @def*x
+*****************
+
+ -- Function: my def args arg ...
+ -- type: name and now the args
+
+In defun.
+
+

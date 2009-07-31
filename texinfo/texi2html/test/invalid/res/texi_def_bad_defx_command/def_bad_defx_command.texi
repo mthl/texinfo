@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename def_bad_defx_command.info
+
+@node Top
+@top Test wrong @@def*x
+
+@defun {my def} args @var{arg} @dots{}
+@deffnx {type} {name} and now the args
+
+In defun.
+
+@end defun
+
+@bye

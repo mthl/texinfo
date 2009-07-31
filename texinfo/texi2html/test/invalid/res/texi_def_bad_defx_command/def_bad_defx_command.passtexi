@@ -1,0 +1,14 @@
+def_bad_defx_command.texi(,2) 
+def_bad_defx_command.texi(,3) @setfilename def_bad_defx_command.info
+def_bad_defx_command.texi(,4) 
+def_bad_defx_command.texi(,5) @node Top
+def_bad_defx_command.texi(,6) @top Test wrong @@def*x
+def_bad_defx_command.texi(,7) 
+def_bad_defx_command.texi(,8) @defun {my def} args @var{arg} @dots{}
+def_bad_defx_command.texi(,9) @deffnx {type} {name} and now the args
+def_bad_defx_command.texi(,10) 
+def_bad_defx_command.texi(,11) In defun.
+def_bad_defx_command.texi(,12) 
+def_bad_defx_command.texi(,13) @end defun
+def_bad_defx_command.texi(,14) 
+def_bad_defx_command.texi(,15) @bye

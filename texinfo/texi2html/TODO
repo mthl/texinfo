@@ -136,13 +136,6 @@ function clean_antispam() {
   menu_comment in makeinfo --xml treated as normal text.
   the documentation, however uses the same words than in texi2html.
 
-* tests/invalid/code_not_closed.texi should trigger 2 errors, none
-  are triggered currently.
-
-* a FIXME in test/formatting/detailmenus.texi with a warning missing 
-  for a menu entry for a spurious entry with no corresponding node entry.
-  more precisely the node is not among the direct subsections.
-
 * roff is not uptodate. At least the @quote* and @guillem* and many 
   others.
 
@@ -160,37 +153,7 @@ function clean_antispam() {
 
 * formatting/nodename_parentheses.texi gives wrong output.
 
-* in xml
-@itemize @bullet{} a--n itemize line
-@item i--tem 1
-@item i--tem 2
-@end itemize
-
-makeinfo:
-<itemize><itemfunction>&bullet; a--n itemize line</itemfunction><item>
-i--tem 1
-</item>
-<item>
-i--tem 2
-</item>
-        </itemize>
-texi2html:
-<itemize><itemfunction>&bullet; a&ndash;n itemize line</itemfunction><item> i--tem 1
-</item>
-<item> i--tem 2
-</item>
-</itemize>
-
 * add @detailmenu in coverage, and @group
-
-* in imbrications.texi there should be a warning for
-@defun aaaa
-@deffnx bbbb
-@end deffn
-@end defun
- Makeinfo gives:
-imbrications.texi:241: Must be in `@deffn' environment to use `@deffnx'.
-imbrications.texi:259: `@end' expected `defun', but saw `deffn'.
 
 * makeinfo doesn't warn for empty heading commands, like
 ** unnumberedsubsec without name (l. 284)
@@ -219,10 +182,6 @@ texi2html all the style commands are removed without extra formatting.
 * texinfo expands @-commands normally in @documentdescription, but keeps --,
   texi2html uses simple_format which removes most @commands but uses 
   entities
-
-* Certainly an obsolete issue, now @center cannot be in @item: 
-  if a 'term' triggers no_paragraph, the ouput 
-  may be more valid. But a center won't have any effect in it.
 
 * texi2dvi doesn't accept @table in @format
 
@@ -265,8 +224,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
   also use informaltable or table, for multitable?
 
-* to solve above issue, the definition arg formatted with simple_format 
-  should alo be passed down
+* to solve above issue (first issue), the definition arg formatted with 
+  simple_format should alo be passed down
 
 * in docbook, when there is only one section <article> should be better
   than book. Maybe the best way to do that would be passing the 
@@ -289,13 +248,17 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   $Texi2HTML::THISDOC{'VAR'} instead of $VAR. This is very bad since it
   means API breaking.
 
-* makeinfo --no-header implies --no-split (and default for out file is stdout).
+  All that is now more or less encapsulated in get_conf, but the 
+  problem remains.
 
 * makeinfo.init not uptodate with makeinfo --html. Index entries link back
   now. And also look at floats?
   menu name is used instead of node in menu links url text.
+  see Karl post on mailing list.
 
-* change LINK_BUTTONS for makeinfo.init to have next, up... nodes
+* change LINK_BUTTONS for makeinfo.init to have next, up... nodes.
+  Or have a config variable for the header style (like makeinfo, or
+  like texi2html) and have the LINK_BUTTONS match.
 
 * ignore spaces after @ command, before {, like texi2dvi does?
 
@@ -304,22 +267,10 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
                               should be in first.html?).
 
-* error message when xref is followed by something else than . is missing.
-
-* Certainly partly done: ignore spaces at end of @item line for @(|v|f)table. 
-  Also maybe after @item, but to be careful with things prepended or 
-  commands used in for the whole line.
-
 * add --command command line that gives inserted lines.
 
 * @ogonek has 2 test files, and is in coverage. Maybe add it to encoding/*
   where other accents are used too. Or maybe tests should be more focused?
-
-* empty macro in macros/empty_macro.texi is replaced by a new line, even 
-  without arg, ie the form
-@foo
-  Should the new line be stripped? makeinfo does the same, so things are 
-  likely to be right as is.
 
 * for makeinfo, the following are not the same, looks like -I is not taken
   into account with a leading ./:
@@ -379,22 +330,9 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * add tests for -o - and input coming from stdin, including check of 
   out file names.
-
-* texi2html doesn't understand `-o /dev/null'.  It aborts with
-      *** /dev/ not writable
-  report from Werner LEMBERG.
-
- /dev/null on unix and NUL on dos is acceptable as -o
- it is possible to use
-    $devnull = File::Spec->devnull();
- but maybe not on djgpp
- $Config{osname} $Config{osvers}
- dos djgpp
-
-  Also for -E and (unimplemented) links file, and also be careful with 
-  idx file.
-
-* warning if @direcategory/@direntry after first node or element.
+  also -o /dev/null and similar.
+  There is also a check in layout/formatting_exotic with 
+  --internal-links=/dev/null which is not portable
 
 * warning if macro without argument is called without a {}.
 
@@ -430,7 +368,8 @@ overridden by a command line option.  The possible values are:
 
 * ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
 
-* ../../templates.texi:287: warning: `.' or `,' must follow @xref, not `f'.
+* error message when xref is followed by something else than . is missing.
+  ../../templates.texi:287: warning: `.' or `,' must follow @xref, not `f'.
 
 * warning when doing info and there is no node at all
   warning when doing info and there is no Top node
@@ -552,22 +491,19 @@ overridden by a command line option.  The possible values are:
   leading spaces (precisely in @code in @table in @table @item, line
 in nested table line
 
-* in formatting/inter_item_commands (in that case, near 
-  'Texte before first item'), a construct like
+* in coverage/formats_titles.texi, a construct like
 
-@table 
-title
-@item item
+@table @emph
+before first table
+@item tab
 @end table
 
   leads to
 
-    title
-item
+    before first table
+_tab_
 
-  without an empty line added after title. Maybe there should be one.
-  More generally a test of those 'titles' in all the formats with @item
-  could be nice.
+  without an empty line added after the title. Maybe there should be one.
 
 * generic tests missing, in sectionning:
   novalidate menu-whitespace node-whitespace two_footnotes_in_nodes
@@ -586,39 +522,3 @@ item
 * formatting/float_copying index entries in insertcopying are not right.
   Maybe it is because they are in footnotes. Or maybe because they are
   in a caption.
-
-Defaults (d = docbook, h = html(texi2html), i = info, x = xml, m = makeinfo.ini)
-Valid on 2009-05-23, before this was ameliorated, by introducing 
-t2h_default_set_variables_default and t2h_default_set_variables_texi2html.
-
-CAPTION_STYLE                                        i asis              
-DEFAULT_ENCODING                                     ascii
-DOCYTPE                          d c        h c                x c      
-ENABLE_ENCODING                                       i 1
-ENABLE_ENCODING_USE_ENTITY                  h 1       i 0
-EXTENSION                       d xml     h html     i info   x xml
-FOOTNOTESTYLE                              h sep     i end              m end
-INLINE_CONTENTS                                       i 1                m 1
-INLINE_INSERTCOPYING             d 1                  i 1
-MENU_SYMBOL                               h &bull;    i *                m *
-NODE_FILE_EXTENSION                       h html                         
-NODE_NAME_IN_MENU                                                        m 1
-NUMBER_SECTIONS                             h 1                          m 1
-OVERVIEW_LINK_TO_TOC                        h 0                          m 1
-SECTION_NAVIGATION               d 0        h 1                x 0       m 1
-SEPARATE_DESCRIPTION                        h 0                x 1
-SHORT_REF                                                                m 1
-SHOW_MENU                        d 0        h 1       i 1      x 1       m 1
-SIMPLE_MENU                                 h 0       i 1
-TOP_FILE                                                              index.html
-USE_ACCESSKEY                               h 0                          m 1
-USE_ISO                          d 1        h 1       i 0      x 0    
-USE_LINKS                                   h 0                          m 1
-USE_MENU_DIRECTIONS              d 0        h 1       i 0      x 0
-USE_NODES                                 h undef     i 1      x 1       m 1
-USE_NUMERIC_ENTITY               d 0        h 1                x 0
-USE_REL_REV                                 h 0                          m 1
-USE_SECTIONS                                h 1       i 0                
-USE_SETFILENAME                  d 1                  i 1      x 1       m 1
-USE_SETFILENAME_EXTENSION        d 0                  i 1
-USE_UP_FOR_ADJACENT_NODES        d 0        h 1       i 0      x 0

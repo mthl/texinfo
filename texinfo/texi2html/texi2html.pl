@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.300 2009-07-31 10:16:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.301 2009-07-31 15:56:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5424,6 +5424,10 @@ sub menu_entry_texi($$$)
     return if ($state->{'detailmenu'});
     if ($state->{'node_ref'})
     {
+        if ($node_menu_ref->{'menu_up'} and !$node_menu_ref->{'external_node'})
+        {
+           echo_warn ("Double entry in menu for `$node' (also below `$node_menu_ref->{'menu_up'}->{'texi'}')", $line_nr);
+        }
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
         $node_menu_ref->{'menu_up_hash'}->{$state->{'node_ref'}->{'texi'}} = 1;
     }
@@ -6123,6 +6127,25 @@ sub rearrange_elements()
                 echo_warn("`$node->{'nodeup'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node", $node->{'nodeup'}->{'line_nr'}) if ($Texi2HTML::Config::SHOW_MENU);
                 push @{$node->{'up_not_in_menu'}}, $node->{'nodeup'}->{'texi'};
             }
+        }
+        # check that the up is in one of the menus
+        if ($Texi2HTML::Config::SHOW_MENU and $node->{'nodeup'} and $node->{'menu_up'})
+        {
+            my @equivalent_nodes = equivalent_nodes($node->{'nodeup'}->{'texi'});
+            my $found = 0;
+            foreach my $equivalent_node ($node->{'nodeup'}->{'texi'}, @equivalent_nodes)
+            {
+                if ($node->{'menu_up_hash'}->{$equivalent_node})
+                {
+                   $found = 1;
+                   last;
+                }
+            }
+            unless ($found)
+            {
+                warn "$WARN For `$node->{'texi'}', up in menu `$node->{'menu_up'}->{'texi'}' and up `$node->{'nodeup'}->{'texi'}' don't match\n";
+            }
+
         }
 
         # Find next node if not already found
@@ -9537,6 +9560,12 @@ sub begin_format($$$$$$)
              add_prev($text, $stack, 
                 &$Texi2HTML::Config::def_item($deff_item->{'text'}, $deff_item->{'only_inter_commands'}, $deff_item->{'orig_command'}));
              #print STDERR "DEFx $macro\n";
+        }
+        elsif ($macro =~ /x$/)
+        {
+            my $base_def_command = $macro;
+            $base_def_command =~ s/x$//;
+            echo_error("Must be in \@$base_def_command environment to use \@$macro", $line_nr);
         }
     }
 

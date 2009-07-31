@@ -2604,6 +2604,7 @@ sub info_default_complex_format($$)
     }
     elsif ($name eq 'direntry')
     {
+        main::echo_warn("\@direntry after first node", $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
         $begin = "START-INFO-DIR-ENTRY\n"; 
         $end = "END-INFO-DIR-ENTRY\n";
     }
@@ -3403,6 +3404,7 @@ sub info_default_line_command($$$$)
     my $arg_texi = shift;
     my $state = shift;
 
+    main::echo_warn("\@dircategory after first node", $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
     return '' if ($arg_text eq '');
     $info_default_dir_specification .= "INFO-DIR-SECTION $arg_text\n";
     return '';
