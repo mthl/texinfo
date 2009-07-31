@@ -1,0 +1,13 @@
+Annexe E Page Headings
+**********************
+
+Most printed manuals contain headings along the top of every page
+except the title and copyright pages.  Some manuals also contain
+footings.  (Headings and footings have no meaning to Info, which is
+not paginated.)
+
+* Headings Introduced::         Conventions for using page headings.
+* Heading Format::              Standard page heading formats.
+* Heading Choice::              How to specify the type of page heading.
+* Custom Headings::             How to create your own headings and footings.
+

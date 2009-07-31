@@ -1,0 +1,20 @@
+3 Beginning a Texinfo File
+**************************
+
+Certain pieces of information must be provided at the beginning of a
+Texinfo file, such as the name for the output file(s), the title of the
+document, and the Top node.
+
+This chapter expands on the minimal complete Texinfo source file
+previously given (see Six Parts).
+
+* Sample Beginning::            A sample beginning for a Texinfo file.
+* Texinfo File Header::         The first lines.
+* Document Permissions::        Ensuring your manual is free.
+* Titlepage & Copyright Page::  Creating the title and copyright pages.
+* The Top Node::                Creating the `Top' node and master menu.
+* Global Document Commands::    Affecting formatting throughout.
+* Software Copying Permissions::  Ensure that you and others continue to
+                                    have the right to use and share software.
+
+

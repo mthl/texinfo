@@ -1,0 +1,16 @@
+9.2 Emphasizing Text
+====================
+
+Usually, Texinfo changes the font to mark words in the text according to
+what category the words belong to; an example is the @code command.
+Most often, this is the best way to mark words.
+However, sometimes you will want to emphasize text without indicating a
+category.  Texinfo has two commands to do this.  Also, Texinfo has
+several commands that specify the font in which TeX will typeset
+text.  These commands have no effect on Info and only one of them,
+the @r command, has any regular use.
+
+* emph & strong::               How to emphasize text in Texinfo.
+* Smallcaps::                   How to use the small caps font.
+* Fonts::                       Various font commands for printed output.
+

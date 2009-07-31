@@ -1,0 +1,50 @@
+3 Invoking hello
+****************
+
+
+The format for running the hello program is:
+
+hello option ...
+
+With no options, hello prints the greeting `Hello,
+world!'.
+
+hello supports the following options:
+
+`--greeting=text'
+`-g text'
+Output text instead of the default greeting.
+
+`--help'
+`-h'
+Print an informative help message on standard output and exit
+successfully.
+
+For the `--help' output of GNU programs, it's strongly
+encouraged to include a brief (one or two sentences) description of
+what the program does, as well as the synopsis of how to run the
+program.  Any environment variables which affect execution should also
+be mentioned (Hello doesn't have any).
+
+`--next-generation'
+`-n'
+Output `Hello, world!', but possibly including box-drawing
+characters or other fancy stuff, especially in translated locales.
+(If you would like to volunteer to translate messages for GNU packages,
+please see <http://translationproject.org>.)
+
+`--traditional'
+`-t'
+Output the traditional greeting message `hello, world'.
+
+`--version'
+`-v'
+Print the version number and licensing information of Hello on
+standard output and then exit successfully.
+
+
+If more than one of the greeting options (`-g', `-n',
+`-t', and their long-named equivalents) is specified, whichever
+comes last takes precedence.
+
+

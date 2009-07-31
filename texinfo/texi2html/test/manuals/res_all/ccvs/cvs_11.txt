@@ -1,0 +1,42 @@
+11 Revision management
+**********************
+
+
+If you have read this far, you probably have a pretty
+good grasp on what CVS can do for you.  This
+chapter talks a little about things that you still have
+to decide.
+
+If you are doing development on your own using CVS
+you could probably skip this chapter.  The questions
+this chapter takes up become more important when more
+than one person is working in a repository.
+
+* When to commit::              Some discussion on the subject
+
+11.1 When to commit?
+====================
+
+Your group should decide which policy to use regarding
+commits.  Several policies are possible, and as your
+experience with CVS grows you will probably find
+out what works for you.
+
+If you commit files too quickly you might commit files
+that do not even compile.  If your partner updates his
+working sources to include your buggy file, he will be
+unable to compile the code.  On the other hand, other
+persons will not be able to benefit from the
+improvements you make to the code if you commit very
+seldom, and conflicts will probably be more common.
+
+It is common to only commit files after making sure
+that they can be compiled.  Some sites require that the
+files pass a test suite.  Policies like this can be
+enforced using the commitinfo file
+(see commitinfo), but you should think twice before
+you enforce such a convention.  By making the
+development environment too controlled it might become
+too regimented and thus counter-productive to the real
+goal, which is to get software written.
+

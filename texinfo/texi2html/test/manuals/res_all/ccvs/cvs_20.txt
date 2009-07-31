@@ -1,0 +1,23 @@
+Annexe E Compatibility between CVS Versions
+*******************************************
+
+The repository format is compatible going back to
+CVS 1.3.  But see Watches Compatibility, if
+you have copies of CVS 1.6 or older and you want
+to use the optional developer communication features.
+
+The working directory format is compatible going back
+to CVS 1.5.  It did change between CVS 1.3
+and CVS 1.5.  If you run CVS 1.5 or newer on
+a working directory checked out with CVS 1.3,
+CVS will convert it, but to go back to CVS
+1.3 you need to check out a new working directory with
+CVS 1.3.
+
+The remote protocol is interoperable going back to CVS 1.5, but no
+further (1.5 was the first official release with the remote protocol,
+but some older versions might still be floating around).  In many
+cases you need to upgrade both the client and the server to take
+advantage of new features and bugfixes, however.
+
+

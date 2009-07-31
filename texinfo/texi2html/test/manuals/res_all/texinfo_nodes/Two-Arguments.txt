@@ -1,0 +1,40 @@
+8.3.2 @xref with Two Arguments
+------------------------------
+
+With two arguments, the second is used as the name of the Info cross
+reference, while the first is still the name of the node to which the
+cross reference points.
+
+The template is like this:
+
+@xref{node-name, cross-reference-name}.
+
+For example,
+
+@xref{Electrical Effects, Lightning}.
+
+produces:
+
+*Note Lightning: Electrical Effects.
+
+and
+
+See Section 5.2 [Electrical Effects], page 57.
+
+(Note that in the preceding example the closing brace is followed by a
+period; and that the node name is printed, not the cross reference name.)
+
+You can write a clause after the cross reference, like this:
+
+@xref{Electrical Effects, Lightning}, for more info.
+
+which produces
+*Note Lightning: Electrical Effects, for more info.
+
+and
+
+See Section 5.2 [Electrical Effects], page 57, for more info.
+
+(Note that in the preceding example the closing brace is followed by a
+comma, and then by the clause, which is followed by a period.)
+

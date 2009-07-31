@@ -1,0 +1,35 @@
+5.1 Tree Structure of Sections
+==============================
+
+A Texinfo file is usually structured like a book with chapters,
+sections, subsections, and the like.  This structure can be visualized
+as a tree (or rather as an upside-down tree) with the root at the top
+and the levels corresponding to chapters, sections, subsection, and
+subsubsections.
+
+Here is a diagram that shows a Texinfo file with three chapters,
+each of which has two sections.
+
+                          Top
+                           |
+         -------------------------------------
+        |                  |                  |
+     Chapter 1          Chapter 2          Chapter 3
+        |                  |                  |
+     --------           --------           --------
+    |        |         |        |         |        |
+ Section  Section   Section  Section   Section  Section
+   1.1      1.2       2.1      2.2       3.1      3.2
+
+
+In a Texinfo file that has this structure, the beginning of Chapter 2
+looks like this:
+
+@node    Chapter 2,  Chapter 3, Chapter 1, top
+@chapter Chapter 2
+
+The chapter structuring commands are described in the sections that
+follow; the @node and @menu commands are described in
+following chapters. (See Nodes, and see Menus.)
+
+

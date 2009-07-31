@@ -1,0 +1,46 @@
+Reference Syntax
+----------------
+What a Reference Looks Like and Requires
+----------------------------------------
+
+Most often, an Info cross reference looks like this:
+
+*Note node-name::.
+
+or like this
+
+*Note cross-reference-name: node-name.
+
+In TeX, a cross reference looks like this:
+
+See Section section-number [node-name], page page.
+
+or like this
+
+See Section section-number [title-or-topic], page page.
+
+The @xref command does not generate a period or comma to end
+the cross reference in either the Info file or the printed output.
+You must write that period or comma yourself; otherwise, Info will not
+recognize the end of the reference.  (The @pxref command works
+differently.  See @pxref.)
+
+Please note: A period or comma must follow the closing
+brace of an @xref.  It is required to terminate the cross
+reference.  This period or comma will appear in the output, both in
+the Info file and in the printed manual.
+
+@xref must refer to an Info node by name.  Use @node
+to define the node (see Writing a Node).
+
+@xref is followed by several arguments inside braces, separated by
+commas.  Whitespace before and after these commas is ignored.
+
+A cross reference requires only the name of a node; but it may contain
+up to four additional arguments.  Each of these variations produces a
+cross reference that looks somewhat different.
+
+Please note: Commas separate arguments in a cross reference;
+avoid including them in the title or other part lest the formatters
+mistake them for separators.
+

@@ -1,0 +1,192 @@
+<div id="log-options"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: log--Print out log information for files#log  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: log examples#log-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: log--Print out log information for files#log  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="log-options-1"></div>
+==== log options ====
+
+<p>By default, <code>log</code> prints all information that is
+available.  All other options restrict the output.
+</p>
+<dl compact="compact">
+<dt><code>-b</code></dt>
+<dd><p>Print information about the revisions on the default
+branch, normally the highest branch on the trunk.
+</p>
+</dd>
+<dt><code>-d <var>dates</var></code></dt>
+<dd><p>Print information about revisions with a checkin
+date/time in the range given by the
+semicolon-separated list of dates.  The date formats
+accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
+many other <small>CVS</small> commands (see section [cvs: Common command options#Common-options Common command options]).
+Dates can be combined into ranges as follows:
+</p>
+<dl compact="compact">
+<dt><code><var>d1</var>&lt;<var>d2</var></code></dt>
+<dt><code><var>d2</var>&gt;<var>d1</var></code></dt>
+<dd><p>Select the revisions that were deposited between
+<var>d1</var> and <var>d2</var>.
+</p>
+</dd>
+<dt><code>&lt;<var>d</var></code></dt>
+<dt><code><var>d</var>&gt;</code></dt>
+<dd><p>Select all revisions dated <var>d</var> or earlier.
+</p>
+</dd>
+<dt><code><var>d</var>&lt;</code></dt>
+<dt><code>&gt;<var>d</var></code></dt>
+<dd><p>Select all revisions dated <var>d</var> or later.
+</p>
+</dd>
+<dt><code><var>d</var></code></dt>
+<dd><p>Select the single, latest revision dated <var>d</var> or
+earlier.
+</p></dd>
+</dl>
+
+<p>The &lsquo;<samp>&gt;</samp>&rsquo; or &lsquo;<samp>&lt;</samp>&rsquo; characters may be followed by
+&lsquo;<samp>=</samp>&rsquo; to indicate an inclusive range rather than an
+exclusive one.
+</p>
+<p>Note that the separator is a semicolon (;).
+</p>
+</dd>
+<dt><code>-h</code></dt>
+<dd><p>Print only the name of the <small>RCS</small> file, name
+of the file in the working directory, head,
+default branch, access list, locks, symbolic names, and
+suffix.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory.  (Default
+is to run recursively).
+</p>
+</dd>
+<dt><code>-N</code></dt>
+<dd><p>Do not print the list of tags for this file.  This
+option can be very useful when your site uses a lot of
+tags, so rather than &quot;more&quot;&rsquo;ing over 3 pages of tag
+information, the log information is presented without
+tags at all.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Print only the name of the <small>RCS</small> file.
+</p>
+</dd>
+<dt><code>-r<var>revisions</var></code></dt>
+<dd><p>Print information about revisions given in the
+comma-separated list <var>revisions</var> of revisions and
+ranges.  The following table explains the available
+range formats:
+</p>
+<dl compact="compact">
+<dt><code><var>rev1</var>:<var>rev2</var></code></dt>
+<dd><p>Revisions <var>rev1</var> to <var>rev2</var> (which must be on
+the same branch).
+</p>
+</dd>
+<dt><code><var>rev1</var>::<var>rev2</var></code></dt>
+<dd><p>The same, but excluding <var>rev1</var>.
+</p>
+</dd>
+<dt><code>:<var>rev</var></code></dt>
+<dt><code>::<var>rev</var></code></dt>
+<dd><p>Revisions from the beginning of the branch up to
+and including <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>rev</var>:</code></dt>
+<dd><p>Revisions starting with <var>rev</var> to the end of the
+branch containing <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>rev</var>::</code></dt>
+<dd><p>Revisions starting just after <var>rev</var> to the end of the
+branch containing <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>branch</var></code></dt>
+<dd><p>An argument that is a branch means all revisions on
+that branch.
+</p>
+</dd>
+<dt><code><var>branch1</var>:<var>branch2</var></code></dt>
+<dt><code><var>branch1</var>::<var>branch2</var></code></dt>
+<dd><p>A range of branches means all revisions
+on the branches in that range.
+</p>
+</dd>
+<dt><code><var>branch</var>.</code></dt>
+<dd><p>The latest revision in <var>branch</var>.
+</p></dd>
+</dl>
+
+<p>A bare &lsquo;<samp>-r</samp>&rsquo; with no revisions means the latest
+revision on the default branch, normally the trunk.
+There can be no space between the &lsquo;<samp>-r</samp>&rsquo; option and
+its argument.
+</p>
+</dd>
+<dt><code>-S</code></dt>
+<dd><p>Suppress the header if no revisions are selected.
+</p>
+</dd>
+<dt><code>-s <var>states</var></code></dt>
+<dd><p>Print information about revisions whose state
+attributes match one of the states given in the
+comma-separated list <var>states</var>.
+</p>
+</dd>
+<dt><code>-t</code></dt>
+<dd><p>Print the same as &lsquo;<samp>-h</samp>&rsquo;, plus the descriptive text.
+</p>
+</dd>
+<dt><code>-w<var>logins</var></code></dt>
+<dd><p>Print information about revisions checked in by users
+with login names appearing in the comma-separated list
+<var>logins</var>.  If <var>logins</var> is omitted, the user&rsquo;s
+login is assumed.  There can be no space between the
+&lsquo;<samp>-w</samp>&rsquo; option and its argument.
+</p></dd>
+</dl>
+
+<p><code>log</code> prints the intersection of the revisions
+selected with the options &lsquo;<samp>-d</samp>&rsquo;, &lsquo;<samp>-s</samp>&rsquo;, and
+&lsquo;<samp>-w</samp>&rsquo;, intersected with the union of the revisions
+selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: log--Print out log information for files#log  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: log examples#log-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: log--Print out log information for files#log  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,14 @@
+11.4 Multi-column Tables
+========================
+
+@multitable allows you to construct tables with any number of
+columns, with each column having any width you like.
+
+You define the column widths on the @multitable line itself, and
+write each row of the actual table following an @item command,
+with columns separated by an @tab command.  Finally, @end
+multitable completes the table.  Details in the sections below.
+
+* Multitable Column Widths::    Defining multitable column widths.
+* Multitable Rows::             Defining multitable rows, with examples.
+

@@ -1,0 +1,391 @@
+Annexe B Index
+**************
+
+* Index:
+* ', vi-like operation: 5. Selecting a Node.
+* ,: 6. Searching an Info File.
+* -: 10. Miscellaneous Commands.
+* --subnodes, command line option: 2. Invoking Info.
+* .info: 12. Customizing Key Bindings and Variables.
+* .infokey: 12. Customizing Key Bindings and Variables.
+* .infokey source format: 12.2 infokey source format.
+* /: 6. Searching an Info File.
+* 0 ... 9, vi-like operation: 10. Miscellaneous Commands.
+* 0, in Info windows: 7.2 Selecting Xrefs.
+* 1 ... 9, in Info windows: 7.2 Selecting Xrefs.
+* 1 ... 9, in Info windows: 7.2 Selecting Xrefs.
+* <: 5. Selecting a Node.
+* >: 5. Selecting a Node.
+* ?, in Info windows: 10. Miscellaneous Commands.
+* ?, in the echo area: 8.3 The Echo Area.
+* ?, vi-like operation: 6. Searching an Info File.
+* [: 5. Selecting a Node.
+* ]: 5. Selecting a Node.
+* _info file (MS-DOS): 12. Customizing Key Bindings and Variables.
+* _infokey file (MS-DOS): 12.1 Invoking infokey.
+* abort-key: 10. Miscellaneous Commands.
+* add-digit-to-numeric-arg: 10. Miscellaneous Commands.
+* ANSI escape sequences in man pages: 2. Invoking Info.
+* Apropos, in Info files: 2. Invoking Info.
+* arguments, command line: 2. Invoking Info.
+* arguments, negative: 10. Miscellaneous Commands.
+* automatic-footnotes: 11. Manipulating Variables.
+* automatic-tiling: 11. Manipulating Variables.
+* b, in Info windows: 3. Moving the Cursor.
+* b, vi-like operation: 4. Moving Text Within a Window.
+* BackTab, in Info windows: 7.2 Selecting Xrefs.
+* BackTab, in the echo area: 8.3 The Echo Area.
+* backward-char: 3. Moving the Cursor.
+* backward-word: 3. Moving the Cursor.
+* beginning-of-line: 3. Moving the Cursor.
+* beginning-of-node: 3. Moving the Cursor.
+* BS (backspace): 4. Moving Text Within a Window.
+* C-a, in Info windows: 3. Moving the Cursor.
+* C-a, in the echo area: 8.3 The Echo Area.
+* C-b, in Info windows: 3. Moving the Cursor.
+* C-b, in the echo area: 8.3 The Echo Area.
+* C-b, vi-like operation: 4. Moving Text Within a Window.
+* C-CENTER: 5. Selecting a Node.
+* C-d, in the echo area: 8.3 The Echo Area.
+* C-d, vi-like operation: 4. Moving Text Within a Window.
+* C-e, in Info windows: 3. Moving the Cursor.
+* C-e, in the echo area: 8.3 The Echo Area.
+* C-e, vi-like operation: 4. Moving Text Within a Window.
+* C-End: 3. Moving the Cursor.
+* C-f, in Info windows: 3. Moving the Cursor.
+* C-f, in the echo area: 8.3 The Echo Area.
+* C-f, vi-like operation: 4. Moving Text Within a Window.
+* C-g, in Info windows: 10. Miscellaneous Commands.
+* C-g, in the echo area: 8.3 The Echo Area.
+* C-h: 10. Miscellaneous Commands.
+* C-Home: 3. Moving the Cursor.
+* C-k, in the echo area: 8.3 The Echo Area.
+* C-k, vi-like operation: 4. Moving Text Within a Window.
+* C-l: 4. Moving Text Within a Window.
+* C-LEFT: 3. Moving the Cursor.
+* C-LEFT, in the echo area: 8.3 The Echo Area.
+* C-n: 3. Moving the Cursor.
+* C-n, vi-like operation: 4. Moving Text Within a Window.
+* C-NEXT: 5. Selecting a Node.
+* C-p: 3. Moving the Cursor.
+* C-p, vi-like operation: 4. Moving Text Within a Window.
+* C-PgDn: 5. Selecting a Node.
+* C-PgUp: 5. Selecting a Node.
+* C-PREVIOUS: 5. Selecting a Node.
+* C-q, in the echo area: 8.3 The Echo Area.
+* C-r: 6. Searching an Info File.
+* C-RIGHT: 3. Moving the Cursor.
+* C-RIGHT, in the echo area: 8.3 The Echo Area.
+* C-s: 6. Searching an Info File.
+* C-t, in the echo area: 8.3 The Echo Area.
+* C-u: 10. Miscellaneous Commands.
+* C-u cancels typeahead, vi-like operation: 10. Miscellaneous Commands.
+* C-u, in the echo area, vi-like operation: 8.3 The Echo Area.
+* C-u, vi-like operation: 4. Moving Text Within a Window.
+* C-UP: 5. Selecting a Node.
+* C-v: 4. Moving Text Within a Window.
+* C-v, in the echo area, vi-like operation: 8.3 The Echo Area.
+* C-w: 4. Moving Text Within a Window.
+* C-x 0: 8.2 Window Commands.
+* C-x 1: 8.2 Window Commands.
+* C-x 2: 8.2 Window Commands.
+* C-x b: 5. Selecting a Node.
+* C-x C-b: 5. Selecting a Node.
+* C-x C-c: 10. Miscellaneous Commands.
+* C-x C-f: 5. Selecting a Node.
+* C-x DEL, in the echo area: 8.3 The Echo Area.
+* C-x g, vi-like operation: 5. Selecting a Node.
+* C-x k: 5. Selecting a Node.
+* C-x N: 6. Searching an Info File.
+* C-x n: 6. Searching an Info File.
+* C-x n, vi-like operation: 5. Selecting a Node.
+* C-x o: 8.2 Window Commands.
+* C-x r, vi-like operation: 7.2 Selecting Xrefs.
+* C-x t: 8.2 Window Commands.
+* C-x u, vi-like operation: 5. Selecting a Node.
+* C-x ^: 8.2 Window Commands.
+* C-y, in the echo area: 8.3 The Echo Area.
+* C-y, vi-like operation: 4. Moving Text Within a Window.
+* cancelling the current operation: 10. Miscellaneous Commands.
+* cancelling typeahead: 10. Miscellaneous Commands.
+* case-sensitive search: 6. Searching an Info File.
+* case-sensitivity, and search: 6. Searching an Info File.
+* colors in man pages: 2. Invoking Info.
+* command line options: 2. Invoking Info.
+* command-line options, how to find: 2. Invoking Info.
+* commands, describing: 10. Miscellaneous Commands.
+* completion: 8.3 The Echo Area.
+* compressed Info files: 2. Invoking Info.
+* cursor, moving: 3. Moving the Cursor.
+* customizing key bindings: 12. Customizing Key Bindings and Variables.
+* d: 5. Selecting a Node.
+* d, vi-like operation: 4. Moving Text Within a Window.
+* default key bindings, overriding: 12. Customizing Key Bindings and Variables.
+* DEL, in Info windows: 4. Moving Text Within a Window.
+* DEL, in the echo area: 8.3 The Echo Area.
+* delete-window: 8.2 Window Commands.
+* describe-command: 10. Miscellaneous Commands.
+* describe-key: 10. Miscellaneous Commands.
+* describe-variable: 11. Manipulating Variables.
+* dir-node: 5. Selecting a Node.
+* directory path: 2. Invoking Info.
+* DOWN (an arrow key): 3. Moving the Cursor.
+* DOWN, vi-like operation: 4. Moving Text Within a Window.
+* down-line: 4. Moving Text Within a Window.
+* e, in Info windows: 3. Moving the Cursor.
+* echo area: 8.3 The Echo Area.
+* echo-area-abort: 8.3 The Echo Area.
+* echo-area-backward: 8.3 The Echo Area.
+* echo-area-backward-kill-line: 8.3 The Echo Area.
+* echo-area-backward-kill-word: 8.3 The Echo Area.
+* echo-area-backward-word: 8.3 The Echo Area.
+* echo-area-beg-of-line: 8.3 The Echo Area.
+* echo-area-complete: 8.3 The Echo Area.
+* echo-area-delete: 8.3 The Echo Area.
+* echo-area-end-of-line: 8.3 The Echo Area.
+* echo-area-forward: 8.3 The Echo Area.
+* echo-area-forward-word: 8.3 The Echo Area.
+* echo-area-insert: 8.3 The Echo Area.
+* echo-area-kill-line: 8.3 The Echo Area.
+* echo-area-kill-word: 8.3 The Echo Area.
+* echo-area-newline: 8.3 The Echo Area.
+* echo-area-possible-completions: 8.3 The Echo Area.
+* echo-area-quoted-insert: 8.3 The Echo Area.
+* echo-area-rubout: 8.3 The Echo Area.
+* echo-area-scroll-completions-window: 8.3 The Echo Area.
+* echo-area-tab-insert: 8.3 The Echo Area.
+* echo-area-transpose-chars: 8.3 The Echo Area.
+* echo-area-yank: 8.3 The Echo Area.
+* echo-area-yank-pop: 8.3 The Echo Area.
+* End: 3. Moving the Cursor.
+* end-of-line: 3. Moving the Cursor.
+* end-of-node: 3. Moving the Cursor.
+* errors-ring-bell: 11. Manipulating Variables.
+* ESC C-f: 10. Miscellaneous Commands.
+* ESC C-v, in Info windows: 8.2 Window Commands.
+* ESC C-v, in the echo area: 8.3 The Echo Area.
+* f: 7.2 Selecting Xrefs.
+* f, vi-like operation: 4. Moving Text Within a Window.
+* F1: 10. Miscellaneous Commands.
+* FDL, GNU Free Documentation License: A.1 GNU Free Documentation License.
+* file names, relative: 2. Invoking Info.
+* file, outputting to: 2. Invoking Info.
+* files, compressed: 2. Invoking Info.
+* find-menu: 7.2 Selecting Xrefs.
+* finding the Invocation node: 5. Selecting a Node.
+* first-node: 5. Selecting a Node.
+* footnotes, displaying: 10. Miscellaneous Commands.
+* format of .infokey source: 12.2 infokey source format.
+* forward-char: 3. Moving the Cursor.
+* forward-word: 3. Moving the Cursor.
+* functions, describing: 10. Miscellaneous Commands.
+* g: 5. Selecting a Node.
+* G: 5. Selecting a Node.
+* G, vi-like operation: 5. Selecting a Node.
+* g, vi-like operation: 5. Selecting a Node.
+* gc-compressed-files: 11. Manipulating Variables.
+* get-help-window: 10. Miscellaneous Commands.
+* get-info-help-node: 10. Miscellaneous Commands.
+* global-next-node: 5. Selecting a Node.
+* global-prev-node: 5. Selecting a Node.
+* goto-invocation: 5. Selecting a Node.
+* goto-node: 5. Selecting a Node.
+* grow-window: 8.2 Window Commands.
+* h: 10. Miscellaneous Commands.
+* h, vi-like operation: 10. Miscellaneous Commands.
+* history-node: 5. Selecting a Node.
+* Home: 3. Moving the Cursor.
+* i: 6. Searching an Info File.
+* I: 5. Selecting a Node.
+* incremental search: 6. Searching an Info File.
+* index search, selecting from the command line: 2. Invoking Info.
+* index, searching: 6. Searching an Info File.
+* index-apropos: 6. Searching an Info File.
+* index-search: 6. Searching an Info File.
+* Info file, selecting: 2. Invoking Info.
+* Info files, compressed: 2. Invoking Info.
+* Info files, relative: 2. Invoking Info.
+* Info files, searching all indices: 2. Invoking Info.
+* Info, invoking: 2. Invoking Info.
+* infokey: 12. Customizing Key Bindings and Variables.
+* infokey source format: 12.2 infokey source format.
+* infokey, invoking: 12.1 Invoking infokey.
+* INFO_PRINT_COMMAND, environment variable: 9. Printing Nodes.
+* invocation description, how to find: 2. Invoking Info.
+* invoking Info: 2. Invoking Info.
+* invoking infokey: 12.1 Invoking infokey.
+* isearch-backward: 6. Searching an Info File.
+* isearch-forward: 6. Searching an Info File.
+* ISO Latin characters: 11. Manipulating Variables.
+* ISO-Latin: 11. Manipulating Variables.
+* k, vi-like operation: 4. Moving Text Within a Window.
+* keep-one-window: 8.2 Window Commands.
+* key bindings, customizing: 12. Customizing Key Bindings and Variables.
+* keys, describing: 10. Miscellaneous Commands.
+* keystrokes, recording: 2. Invoking Info.
+* kill-node: 5. Selecting a Node.
+* l: 5. Selecting a Node.
+* last-menu-item: 7.2 Selecting Xrefs.
+* last-node: 5. Selecting a Node.
+* LEFT (an arrow key): 3. Moving the Cursor.
+* LEFT, in the echo area: 8.3 The Echo Area.
+* Less-like key bindings: 2. Invoking Info.
+* LFD, vi-like operation: 4. Moving Text Within a Window.
+* list-visited-nodes: 5. Selecting a Node.
+* local printer device: 9. Printing Nodes.
+* m: 7.2 Selecting Xrefs.
+* M-: 10. Miscellaneous Commands.
+* M-$, vi-like operation: 8.3 The Echo Area.
+* M-0 ... M-9: 10. Miscellaneous Commands.
+* M-0, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-0, vi-like operation: 7.2 Selecting Xrefs.
+* M-1 ... M-9, vi-like operation: 7.2 Selecting Xrefs.
+* M-1 ... M-9, vi-like operation: 7.2 Selecting Xrefs.
+* M-<: 3. Moving the Cursor.
+* M->: 3. Moving the Cursor.
+* M-b, in Info windows: 3. Moving the Cursor.
+* M-b, in the echo area: 8.3 The Echo Area.
+* M-b, vi-like operation: 3. Moving the Cursor.
+* M-BS, in the echo area: 8.3 The Echo Area.
+* M-d, in the echo area: 8.3 The Echo Area.
+* M-d, vi-like operation: 5. Selecting a Node.
+* M-DEL, in the echo area: 8.3 The Echo Area.
+* M-f, in Info windows: 3. Moving the Cursor.
+* M-f, in the echo area: 8.3 The Echo Area.
+* M-f, vi-like operation: 7.2 Selecting Xrefs.
+* M-g, vi-like operation: 7.2 Selecting Xrefs.
+* M-h, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-h, vi-like operation: 10. Miscellaneous Commands.
+* M-l, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-r: 3. Moving the Cursor.
+* M-SPC, vi-like operation: 4. Moving Text Within a Window.
+* M-t, vi-like operation: 5. Selecting a Node.
+* M-TAB, in Info windows: 7.2 Selecting Xrefs.
+* M-TAB, in the echo area: 8.3 The Echo Area.
+* M-v: 4. Moving Text Within a Window.
+* M-w, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-x, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-X, in the echo area, vi-like operation: 8.3 The Echo Area.
+* M-y, in the echo area: 8.3 The Echo Area.
+* menu, following: 2. Invoking Info.
+* menu, following, from inside Info: 5. Selecting a Node.
+* menu-digit: 7.2 Selecting Xrefs.
+* menu-item: 7.2 Selecting Xrefs.
+* menu-sequence: 5. Selecting a Node.
+* move-to-next-xref: 7.2 Selecting Xrefs.
+* move-to-prev-xref: 7.2 Selecting Xrefs.
+* move-to-window-line: 3. Moving the Cursor.
+* moving the cursor: 3. Moving the Cursor.
+* n: 5. Selecting a Node.
+* n, vi-like operation: 6. Searching an Info File.
+* n, vi-like operation: 6. Searching an Info File.
+* negative arguments: 10. Miscellaneous Commands.
+* NEXT: 4. Moving Text Within a Window.
+* next-index-match: 6. Searching an Info File.
+* next-line: 3. Moving the Cursor.
+* next-node: 5. Selecting a Node.
+* next-window: 8.2 Window Commands.
+* node, selecting from the command line: 2. Invoking Info.
+* nodes, selection of: 5. Selecting a Node.
+* numeric arguments: 10. Miscellaneous Commands.
+* numeric arguments, negative: 10. Miscellaneous Commands.
+* O: 5. Selecting a Node.
+* online help, using Info as: 2. Invoking Info.
+* options, command line: 2. Invoking Info.
+* outputting to a file: 2. Invoking Info.
+* overriding default key bindings: 12. Customizing Key Bindings and Variables.
+* p: 5. Selecting a Node.
+* PageDown: 4. Moving Text Within a Window.
+* PageUp: 4. Moving Text Within a Window.
+* prev-line: 3. Moving the Cursor.
+* prev-node: 5. Selecting a Node.
+* prev-window: 8.2 Window Commands.
+* PREVIOUS: 4. Moving Text Within a Window.
+* print-node: 9. Printing Nodes.
+* printing: 9. Printing Nodes.
+* printing characters, in the echo area: 8.3 The Echo Area.
+* printing nodes to the local printer: 9. Printing Nodes.
+* q: 10. Miscellaneous Commands.
+* quit: 10. Miscellaneous Commands.
+* quitting: 10. Miscellaneous Commands.
+* r: 7.2 Selecting Xrefs.
+* redraw-display: 4. Moving Text Within a Window.
+* relative Info file names: 2. Invoking Info.
+* remembering user keystrokes: 2. Invoking Info.
+* repeated search: 6. Searching an Info File.
+* replaying recorded keystrokes: 2. Invoking Info.
+* RET, in Info windows: 7.2 Selecting Xrefs.
+* RET, in the echo area: 8.3 The Echo Area.
+* RET, vi-like operation: 4. Moving Text Within a Window.
+* RIGHT (an arrow key): 3. Moving the Cursor.
+* RIGHT, in the echo area: 8.3 The Echo Area.
+* S: 6. Searching an Info File.
+* s: 6. Searching an Info File.
+* screen, changing the height of: 10. Miscellaneous Commands.
+* scroll-backward: 4. Moving Text Within a Window.
+* scroll-backward-page-only: 4. Moving Text Within a Window.
+* scroll-backward-page-only-set-window: 4. Moving Text Within a Window.
+* scroll-behavior: 11. Manipulating Variables.
+* scroll-forward: 4. Moving Text Within a Window.
+* scroll-forward-page-only: 4. Moving Text Within a Window.
+* scroll-forward-page-only-set-window: 4. Moving Text Within a Window.
+* scroll-half-screen-down: 4. Moving Text Within a Window.
+* scroll-half-screen-up: 4. Moving Text Within a Window.
+* scroll-other-window: 8.2 Window Commands.
+* scroll-step: 11. Manipulating Variables.
+* scrolling: 4. Moving Text Within a Window.
+* scrolling through node structure: 4. Moving Text Within a Window.
+* search: 6. Searching an Info File.
+* search, and case-sensitivity: 6. Searching an Info File.
+* search, case-sensitive: 6. Searching an Info File.
+* search-backward: 6. Searching an Info File.
+* search-case-sensitively: 6. Searching an Info File.
+* search-next: 6. Searching an Info File.
+* search-previous: 6. Searching an Info File.
+* searching: 6. Searching an Info File.
+* Searching all indices: 2. Invoking Info.
+* searching, in the indices: 6. Searching an Info File.
+* select-reference-this-line: 7.2 Selecting Xrefs.
+* select-visited-node: 5. Selecting a Node.
+* set-screen-height: 10. Miscellaneous Commands.
+* set-variable: 11. Manipulating Variables.
+* Shift-TAB, in Info windows: 7.2 Selecting Xrefs.
+* Shift-TAB, in the echo area: 8.3 The Echo Area.
+* Shift-TAB, in the echo area: 8.3 The Echo Area.
+* show-footnotes: 10. Miscellaneous Commands.
+* show-index-match: 11. Manipulating Variables.
+* SPC, in Info windows: 4. Moving Text Within a Window.
+* SPC, in the echo area: 8.3 The Echo Area.
+* speech synthesizers: 2. Invoking Info.
+* split-window: 8.2 Window Commands.
+* t: 5. Selecting a Node.
+* TAB, in Info windows: 7.2 Selecting Xrefs.
+* TAB, in the echo area: 8.3 The Echo Area.
+* tile-windows: 8.2 Window Commands.
+* tiling: 8.2 Window Commands.
+* toggle-wrap: 4. Moving Text Within a Window.
+* top-node: 5. Selecting a Node.
+* u: 5. Selecting a Node.
+* u, vi-like operation: 4. Moving Text Within a Window.
+* universal-argument: 10. Miscellaneous Commands.
+* UP (an arrow key): 3. Moving the Cursor.
+* UP, vi-like operation: 4. Moving Text Within a Window.
+* up-line: 4. Moving Text Within a Window.
+* up-node: 5. Selecting a Node.
+* variables, describing: 11. Manipulating Variables.
+* variables, setting: 11. Manipulating Variables.
+* version information: 2. Invoking Info.
+* vi-like key bindings: 2. Invoking Info.
+* view-file: 5. Selecting a Node.
+* visible-bell: 11. Manipulating Variables.
+* w, vi-like operation: 4. Moving Text Within a Window.
+* where-is: 10. Miscellaneous Commands.
+* windows, creating: 8.2 Window Commands.
+* windows, deleting: 8.2 Window Commands.
+* windows, manipulating: 8. Manipulating Multiple Windows.
+* windows, selecting: 8.2 Window Commands.
+* xref-item: 7.2 Selecting Xrefs.
+* y, vi-like operation: 4. Moving Text Within a Window.
+* z, vi-like operation: 4. Moving Text Within a Window.
+* ZZ, vi-like operation: 10. Miscellaneous Commands.
+

@@ -1,0 +1,16 @@
+17.2 @documentencoding enc: Set Input Encoding
+==============================================
+
+
+The @documentencoding command declares the input document
+encoding.  Write it on a line by itself, with a valid encoding
+specification following, such as `ISO-8859-1'.
+
+At present, this is used only in HTML output from makeinfo.  If a
+document encoding enc is specified, it is used in a
+`<meta>' tag included in the `<head>' of the output:
+
+<meta http-equiv="Content-Type" content="text/html;
+      charset=enc">
+
+

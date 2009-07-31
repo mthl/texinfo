@@ -1,0 +1,25 @@
+12.4 Combining Indices
+======================
+
+Sometimes you will want to combine two disparate indices such as functions
+and concepts, perhaps because you have few enough of one of them that
+a separate index for them would look silly.
+
+You could put functions into the concept index by writing
+@cindex commands for them instead of @findex commands,
+and produce a consistent manual by printing the concept index with the
+title `Function and Concept Index' and not printing the `Function
+Index' at all; but this is not a robust procedure.  It works only if
+your document is never included as part of another
+document that is designed to have a separate function index; if your
+document were to be included with such a document, the functions from
+your document and those from the other would not end up together.
+Also, to make your function names appear in the right font in the
+concept index, you would need to enclose every one of them between
+the braces of @code.
+
+* syncodeindex::                How to merge two indices, using @code
+                                  font for the merged-from index.
+* synindex::                    How to merge two indices, using the
+                                  default font of the merged-to index.
+

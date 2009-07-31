@@ -1,0 +1,23 @@
+9 Printing Nodes
+****************
+
+In general, we recommend that you use TeX to format the document and
+print sections of it, by running tex on the Texinfo source file.
+However, you may wish to print out the contents of a node as a quick
+reference document for later use, or if you don't have TeX installed.
+Info provides you with a command for doing this.
+
+M-x print-node
+Pipe the contents of the current node through the command in the
+environment variable INFO_PRINT_COMMAND.  If the variable does not
+exist, the node is simply piped to lpr (on DOS/Windows, the
+default is to print the node to the local printer device, `PRN').
+
+The value of INFO_PRINT_COMMAND may begin with the `>'
+character, as in `>/dev/printer', in which case Info treats the
+rest as the name of a file or a device.  Instead of piping to a command,
+Info opens the file, writes the node contents, and closes the file,
+under the assumption that text written to that file will be printed by
+the underlying OS.
+
+

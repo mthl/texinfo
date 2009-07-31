@@ -1,0 +1,245 @@
+10 Registers
+************
+
+  XEmacs registers are places in which you can save text or
+positions for later use.  Once you save text or a rectangle in a
+register, you can copy it into the buffer once or many times; a position
+saved in a register is used by moving point to that position.
+Rectangles can also be copied into and out of registers
+(see Rectangles).
+
+  Each register has a name which is a single character.  A register can
+store a piece of text, a rectangle, a position, a window configuration,
+or a file name, but only one thing at any given time.  Whatever you
+store in a register remains there until you store something else in that
+register.  To see what a register r contains, use M-x
+view-register.
+
+M-x view-register <RET> r
+Display a description of what register r contains.
+
+  M-x view-register reads a register name as an argument and then
+displays the contents of the specified register.
+
+* Position: RegPos.           Saving positions in registers.
+* Text: RegText.              Saving text in registers.
+* Rectangle: RegRect.         Saving rectangles in registers.
+* Configurations: RegConfig.  Saving window configurations in registers.
+* Files: RegFiles.            File names in registers.
+* Numbers: RegNumbers.        Numbers in registers.
+* Bookmarks::                 Bookmarks are like registers, but persistent.
+
+10.1 Saving Positions in Registers
+==================================
+
+  Saving a position records a place in a buffer so that you can move
+back there later.  Moving to a saved position switches to that buffer
+and moves point to that place in it.
+
+C-x r <SPC> r
+Save position of point in register r (point-to-register).
+C-x r j r
+Jump to the position saved in register r (jump-to-register).
+
+  To save the current position of point in a register, choose a name
+r and type C-x r <SPC> r.  The register r
+retains the position thus saved until you store something else in that
+register.
+
+  The command C-x r j r moves point to the position recorded
+in register r.  The register is not affected; it continues to
+record the same location.  You can jump to the same position using the
+same register as often as you want.
+
+  If you use C-x r j to go to a saved position, but the buffer it
+was saved from has been killed, C-x r j tries to create the buffer
+again by visiting the same file.  Of course, this works only for buffers
+that were visiting files.
+
+10.2 Saving Text in Registers
+=============================
+
+  When you want to insert a copy of the same piece of text many times, it
+can be impractical to use the kill ring, since each subsequent kill moves
+the piece of text further down on the ring.  It becomes hard to keep
+track of the argument needed to retrieve the same text with C-y.  An
+alternative is to store the text in a register with C-x r s
+(copy-to-register) and then retrieve it with C-x r i
+(insert-register).
+
+C-x r s r
+Copy region into register r (copy-to-register).
+C-x r g r
+C-x r i r
+Insert text contents of register r (insert-register).
+
+  C-x r s r stores a copy of the text of the region into the
+register named r.  Given a numeric argument, C-x r s r
+deletes the text from the buffer as well.
+
+  C-x r i r inserts the text from register r in the buffer.
+By default it leaves point before the text and places the mark after
+it. With a numeric argument (C-u), it puts point after the text
+and the mark before it.
+
+10.3 Saving Rectangles in Registers
+===================================
+
+  A register can contain a rectangle instead of lines of text.  The rectangle
+is represented as a list of strings.  See Rectangles, for basic
+information on rectangles and how to specify rectangles in a buffer.
+
+C-x r r r
+Copy the region-rectangle into register r
+(copy-rectangle-to-register).  With a numeric argument, delete it
+as well.
+C-x r g r
+C-x r i r
+Insert the rectangle stored in register r (if it contains a
+rectangle) (insert-register).
+
+  The C-x r i r command inserts linear text if the register
+  contains
+that, or inserts a rectangle if the register contains one.
+
+  See also the command sort-columns, which you can think of
+as sorting a rectangle.  See Sorting.
+
+10.4 Saving Window Configurations in Registers
+==============================================
+
+  You can save the window configuration of the selected frame in a
+register, or even the configuration of all windows in all frames, and
+restore the configuration later.
+
+C-x r w r
+Save the state of the selected frame's windows in register r
+(window-configuration-to-register).
+M-x frame-configuration-to-register <RET> r
+Save the state of all frames, including all their windows, in register
+r (frame-configuration-to-register).
+
+  Use C-x r j r to restore a window or frame configuration.
+This is the same command used to restore a cursor position.  When you
+restore a frame configuration, any existing frames not included in the
+configuration become invisible.  If you wish to delete these frames
+instead, use C-u C-x r j r.
+
+10.5 Keeping Numbers in Registers
+=================================
+
+  There are commands to store a number in a register, to insert
+the number in the buffer in decimal, and to increment it.  These commands
+can be useful in keyboard macros (see Keyboard Macros).
+
+C-u number C-x r n reg
+Store number into register reg (number-to-register).
+C-u number C-x r + reg
+Increment the number in register reg by number
+(increment-register).
+C-x r g reg
+Insert the number from register reg into the buffer.
+
+  C-x r g is the same command used to insert any other
+sort of register contents into the buffer.
+
+10.6 Keeping File Names in Registers
+====================================
+
+  If you visit certain file names frequently, you can visit them more
+conveniently if you put their names in registers.  Here's the Lisp code
+used to put a file name in a register:
+
+(set-register ?r '(file . name))
+
+For example,
+
+(set-register ?z '(file . "/usr/src/xemacs/src/ChangeLog"))
+
+puts the file name shown in register `z'.
+
+  To visit the file whose name is in register r, type C-x r j
+r.  (This is the same command used to jump to a position or
+restore a frame configuration.)
+
+10.7 Bookmarks
+==============
+
+  Bookmarks are somewhat like registers in that they record
+positions you can jump to.  Unlike registers, they have long names, and
+they persist automatically from one Emacs session to the next.  The
+prototypical use of bookmarks is to record "where you were reading" in
+various files.
+
+  Note: bookmark.el is distributed in edit-utils package.  You need to
+install that to use bookmark facility (see Packages).
+
+C-x r m <RET>
+Set the bookmark for the visited file, at point.
+
+C-x r m bookmark <RET>
+Set the bookmark named bookmark at point (bookmark-set).
+
+C-x r b bookmark <RET>
+Jump to the bookmark named bookmark (bookmark-jump).
+
+C-x r l
+List all bookmarks (list-bookmarks).
+
+M-x bookmark-save
+Save all the current bookmark values in the default bookmark file.
+
+  The prototypical use for bookmarks is to record one current position
+in each of several files.  So the command C-x r m, which sets a
+bookmark, uses the visited file name as the default for the bookmark
+name.  If you name each bookmark after the file it points to, then you
+can conveniently revisit any of those files with C-x r b, and move
+to the position of the bookmark at the same time.
+
+  To display a list of all your bookmarks in a separate buffer, type
+C-x r l (list-bookmarks).  If you switch to that buffer,
+you can use it to edit your bookmark definitions or annotate the
+bookmarks.  Type C-h m in that buffer for more information about
+its special editing commands.
+
+  When you kill XEmacs, XEmacs offers to save your bookmark values in
+your default bookmark file, `~/.emacs.bmk', if you have changed any
+bookmark values.  You can also save the bookmarks at any time with the
+M-x bookmark-save command.  The bookmark commands load your
+default bookmark file automatically.  This saving and loading is how
+bookmarks persist from one XEmacs session to the next.
+
+  If you set the variable bookmark-save-flag to 1, then each
+command that sets a bookmark will also save your bookmarks; this way,
+you don't lose any bookmark values even if XEmacs crashes.  (The value,
+if a number, says how many bookmark modifications should go by between
+saving.)
+
+  Bookmark position values are saved with surrounding context, so that
+bookmark-jump can find the proper position even if the file is
+modified slightly.  The variable bookmark-search-size says how
+many characters of context to record, on each side of the bookmark's
+position.
+
+  Here are some additional commands for working with bookmarks:
+
+M-x bookmark-load <RET> filename <RET>
+Load a file named filename that contains a list of bookmark
+values.  You can use this command, as well as bookmark-write, to
+work with other files of bookmark values in addition to your default
+bookmark file.
+
+M-x bookmark-write <RET> filename <RET>
+Save all the current bookmark values in the file filename.
+
+M-x bookmark-delete <RET> bookmark <RET>
+Delete the bookmark named bookmark.
+
+M-x bookmark-insert-location <RET> bookmark <RET>
+Insert in the buffer the name of the file that bookmark bookmark
+points to.
+
+M-x bookmark-insert <RET> bookmark <RET>
+Insert in the buffer the contents of the file that bookmark
+bookmark points to.
+

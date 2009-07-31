@@ -1,0 +1,48 @@
+10.4 @verbatim: Literal Text
+============================
+
+Use the @verbatim environment for printing of text that may
+contain special characters or commands that should not be interpreted,
+such as computer input or output (@example interprets its text
+as regular Texinfo commands).  This is especially useful for including
+automatically generated output in a Texinfo manual.  Here is an example;
+the output you see is just the same as the input, with a line
+@verbatim before and a line @end verbatim after.
+
+This is an example of text written in a @verbatim
+block.  No character substitutions are made.  All commands
+are ignored, until `<at>end verbatim'.
+
+In the printed manual, the text is typeset in a
+fixed-width font, and not indented or filled.  All
+spaces and blank lines are significant, including tabs.
+
+Write a @verbatim command at the beginning of a line by itself.
+This line will disappear from the output.  Mark the end of the verbatim
+block with a @end verbatim command, also written at the
+beginning of a line by itself.  The @end verbatim will also
+disappear from the output.
+
+For example:
+
+@verbatim
+{
+<tab>@command with strange characters: @'e 
+expand<tab>me
+}
+@end verbatim
+
+produces
+
+{
+	@command with strange characters: @'e 
+expand	me
+}
+
+Since the lines containing @verbatim and @end verbatim
+produce no output, tyically you should put a blank line before the
+@verbatim and another blank line after the @end
+verbatim.  Blank lines between the beginning @verbatim and the
+ending @end verbatim will appear in the output.
+
+

@@ -1,0 +1,100 @@
+19.2 Format with tex and texindex
+=================================
+
+Format the Texinfo file with the shell command tex followed by
+the name of the Texinfo file.  For example:
+
+tex foo.texi
+
+TeX will produce a DVI file as well as several auxiliary
+files containing information for indices, cross references, etc.  The
+DVI file (for DeVice Independent file) can be printed on virtually
+any device (see the following sections).
+
+The tex formatting command itself does not sort the indices; it
+writes an output file of unsorted index data.  (The texi2dvi
+command automatically generates indices; see Format with texi2dvi.)  To generate a printed index after
+running the tex command, you first need a sorted index to work
+from.  The texindex command sorts indices.  (The source file
+`texindex.c' comes as part of the standard Texinfo distribution,
+among other places.)
+
+The tex formatting command outputs unsorted index files under
+names that obey a standard convention: the name of your main input file
+with any `.tex' (or similar, see (web2c)tex invocation section `tex invocation' in Web2c) extension removed, followed by the two letter names of indices.
+For example, the raw index output files for the input file
+`foo.texinfo' would be `foo.cp', `foo.vr', `foo.fn',
+`foo.tp', `foo.pg' and `foo.ky'.  Those are exactly the
+arguments to give to texindex.
+
+Instead of specifying all the unsorted index file names explicitly, you
+can use `??' as shell wildcards and give the command in this
+form:
+
+texindex foo.??
+
+This command will run texindex on all the unsorted index files,
+including any that you have defined yourself using @defindex
+or @defcodeindex.  (You may execute `texindex foo.??'
+even if there are similarly named files with two letter extensions
+that are not index files, such as `foo.el'.  The texindex
+command reports but otherwise ignores such files.)
+
+For each file specified, texindex generates a sorted index file
+whose name is made by appending `s' to the input file name.  The
+@printindex command looks for a file with that name
+(see Printing Indices & Menus).  texindex does not alter the
+raw index output file.
+
+After you have sorted the indices, you need to rerun the tex
+formatting command on the Texinfo file.  This regenerates the DVI file,
+this time with up-to-date index entries.
+
+Finally, you may need to run tex one more time, to get the page
+numbers in the cross-references correct.
+
+To summarize, this is a five step process:
+
+1. Run tex on your Texinfo file.  This generates a DVI file (with
+undefined cross-references and no indices), and the raw index files
+(with two letter extensions).
+
+2. Run texindex on the raw index files.  This creates the
+corresponding sorted index files (with three letter extensions).
+
+3. Run tex again on your Texinfo file.  This regenerates the DVI
+file, this time with indices and defined cross-references, but with page
+numbers for the cross-references from last time, generally incorrect.
+
+4. Sort the indices again, with texindex.
+
+5. Run tex one last time.  This time the correct page numbers are
+written for the cross-references.
+
+Alternatively, it's a one-step process: run texi2dvi
+(see Format with texi2dvi).
+
+You need not run texindex each time after you run tex.  If
+you do not, on the next run, the tex formatting command will use
+whatever sorted index files happen to exist from the previous use of
+texindex.  This is usually ok while you are debugging.
+
+Sometimes you may wish to print a document while you know it is
+incomplete, or to print just one chapter of a document.  In that case,
+the usual auxiliary files that TeX creates and warnings TeX gives
+when cross-references are not satisfied are just nuisances.  You can
+avoid them with the @novalidate command, which you must give
+before the @setfilename command
+(see @setfilename).  Thus, the beginning of
+your file would look approximately like this:
+
+\input texinfo
+@novalidate
+@setfilename myfile.info
+...
+
+@novalidate also turns off validation in
+makeinfo, just like its --no-validate option
+(see Pointer Validation).
+
+

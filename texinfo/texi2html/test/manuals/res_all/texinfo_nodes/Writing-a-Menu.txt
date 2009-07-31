@@ -1,0 +1,28 @@
+7.1 Writing a Menu
+==================
+
+A menu consists of an @menu command on a line by
+itself followed by menu entry lines or menu comment lines
+and then by an @end menu command on a line by
+itself.
+
+A menu looks like this:
+
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+
+In a menu, every line that begins with an `* ' is a menu
+entry.  (Note the space after the asterisk.)  A line that does not
+start with an `* ' may also appear in a menu.  Such a line is
+not a menu entry but is a menu comment line that appears in the Info
+file.  In the example above, the line `Larger Units of Text' is a
+menu comment line; the two lines starting with `* ' are menu
+entries.  Space characters in a menu are preserved as-is; this allows
+you to format the menu as you wish.
+
+

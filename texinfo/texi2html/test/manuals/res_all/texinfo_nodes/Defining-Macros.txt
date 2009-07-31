@@ -1,0 +1,58 @@
+18.1 Defining Macros
+====================
+
+You use the Texinfo @macro command to define a macro, like this:
+
+@macro macroname{param1, param2, ...}
+text ... \param1\ ...
+@end macro
+
+The parameters param1, param2, ... correspond to
+arguments supplied when the macro is subsequently used in the document
+(described in the next section).
+
+For a macro to work with TeX, macroname must consist entirely
+of letters: no digits, hyphens, underscores, or other special characters.
+
+If a macro needs no parameters, you can define it either with an empty
+list (`@macro foo {}') or with no braces at all (`@macro
+foo').
+
+The definition or body of the macro can contain most Texinfo
+commands, including previously-defined macros.  Not-yet-defined macro
+invocations are not allowed; thus, it is not possible to have mutually
+recursive Texinfo macros.  Also, a macro definition that defines another
+macro does not work in TeX due to limitations in the design of
+@macro.
+
+In the macro body, instances of a parameter name surrounded by
+backslashes, as in `\param1\' in the example above, are
+replaced by the corresponding argument from the macro invocation.  You
+can use parameter names any number of times in the body, including zero.
+
+To get a single `\' in the macro expansion, use `\\'.  Any
+other use of `\' in the body yields a warning.
+
+The newlines after the @macro line and before the @end
+macro line are ignored, that is, not included in the macro body.  All
+other whitespace is treated according to the usual Texinfo rules.
+
+To allow a macro to be used recursively, that is, in an argument to a
+call to itself, you must define it with `@rmacro', like this:
+
+@rmacro rmac {arg}
+a\arg\b
+@end rmacro
+...
+@rmac{1@rmac{text}2}
+
+This produces the output `a1atextb2b'.  With `@macro' instead of
+`@rmacro', an error message is given.
+
+You can undefine a macro foo with @unmacro foo.
+It is not an error to undefine a macro that is already undefined.
+For example:
+
+@unmacro foo
+
+

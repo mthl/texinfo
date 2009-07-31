@@ -1,0 +1,55 @@
+8.7 @inforef
+============
+
+@inforef is used for cross references to Info files for which
+there are no printed manuals.  Even in a printed manual,
+@inforef generates a reference directing the user to look in
+an Info file.
+
+The command takes either two or three arguments, in the following
+order:
+
+1. The node name.
+
+2. The cross reference name (optional).
+
+3. The Info file name.
+
+Separate the arguments with commas, as with @xref.  Also, you
+must terminate the reference with a comma or period after the
+`}', as you do with @xref.
+
+The template is:
+
+@inforef{node-name, cross-reference-name, info-file-name},
+
+Thus,
+
+@inforef{Expert, Advanced Info commands, info},
+for more information.
+
+produces
+
+*Note Advanced Info commands: (info)Expert,
+for more information.
+
+and
+
+See Info file `info', node `Expert', for more information.
+
+Similarly,
+
+@inforef{Expert, , info}, for more information.
+
+produces
+
+*Note (info)Expert::, for more information.
+
+and
+
+See Info file `info', node `Expert', for more information.
+
+The converse of @inforef is @cite, which is used to
+refer to printed works for which no Info form exists.  See @cite.
+
+

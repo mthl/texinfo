@@ -1,0 +1,19 @@
+makeinfo Preferred
+------------------
+makeinfo Find Errors
+====================
+
+The makeinfo program does an excellent job of catching errors
+and reporting them--far better than texinfo-format-region or
+texinfo-format-buffer.  In addition, the various functions for
+automatically creating and updating node pointers and menus remove
+many opportunities for human error.
+
+If you can, use the updating commands to create and insert pointers
+and menus.  These prevent many errors.  Then use makeinfo (or
+its Texinfo mode manifestations, makeinfo-region and
+makeinfo-buffer) to format your file and check for other
+errors.  This is the best way to work with Texinfo.  But if you
+cannot use makeinfo, or your problem is very puzzling, then you
+may want to use the tools described in this appendix.
+

@@ -1,0 +1,27 @@
+12.2 Predefined Indices
+=======================
+
+Texinfo provides six predefined indices:
+
+* A concept index listing concepts that are discussed.
+
+* A function index listing functions (such as entry points of
+libraries).
+
+* A variables index listing variables (such as global variables
+of libraries).
+
+* A keystroke index listing keyboard commands.
+
+* A program index listing names of programs.
+
+* A data type index listing data types (such as structures defined in
+header files).
+
+Not every manual needs all of these, and most manuals use two or three
+of them.  This manual has two indices: a
+concept index and an @-command index (that is actually the function
+index but is called a command index in the chapter heading).  Two or
+more indices can be combined into one using the @synindex or
+@syncodeindex commands.  See Combining Indices.
+

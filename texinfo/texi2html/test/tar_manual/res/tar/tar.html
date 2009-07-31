@@ -604,8 +604,6 @@ concepts of using a Unix-type operating system; see section <a href="#Tutorial">
 <p>The third chapter presents the remaining five operations, and
 information about using <code>tar</code> options and option syntax.
 </p>
-
-
 <p>  The other chapters are meant to be used as a
 reference.  Each chapter presents everything that needs to be said
 about a specific topic.
@@ -716,8 +714,6 @@ pipes).  <code>tar</code> may even access remote devices or files (as archives).
 <p>You can use <code>tar</code> archives in many ways.  We want to stress a few
 of them: storage, backup, and transportation.
 </p>
-
-
 
 <dl compact="compact">
 <dt>Storage</dt>
@@ -835,10 +831,6 @@ file from the <acronym>GNU</acronym> <code>tar</code> distribution.
 
 
 
-
-
-
-
 <p>Jay Fenlason put together a draft of a <acronym>GNU</acronym> <code>tar</code>
 manual, borrowing notes from the original man page from John Gilmore.
 This was withdrawn in version 1.11.  Thomas Bushnell, n/BSG and Amy
@@ -887,9 +879,7 @@ Poznyakoff and Jeff Bailey.
 please report them to &lsquo;<tt>bug-tar@gnu.org</tt>&rsquo;.
 </p>
 <p>When reporting a bug, please be sure to include as much detail as
-possible, in order to reproduce it.  
-</p>
-<p>.
+possible, in order to reproduce it.  .
 </p>
 <hr size="6">
 <a name="Tutorial"></a>
@@ -977,8 +967,6 @@ in.  You should understand concepts such as standard output and standard
 input, what various definitions of the term &ldquo;argument&rdquo; mean, and the
 differences between relative and absolute path names.  
 
-
-
 </li><li>
 This manual assumes that you are working from your own home directory
 (unless we state otherwise).  In this tutorial, you will create a
@@ -998,8 +986,6 @@ Additionally, working with tapes is much more complicated than working
 with hard disks.  For these reasons, the tutorial does not cover working
 with tape drives.  See section <a href="#Media">Tapes and Other Archive Media</a>, for complete information on using
 <code>tar</code> archives with tape drives.
-
-
 
 
 </li></ul>
@@ -1076,9 +1062,7 @@ helping you type commands more carefully that they are effectively
 of three forms: long (mnemonic) form, short form, and old style.  Some
 of the operations and options have no short or &ldquo;old&rdquo; forms; however,
 the operations and options which we will cover in this tutorial have
-corresponding abbreviations.  
-</p>
-<p>We will indicate those abbreviations appropriately to get
+corresponding abbreviations.  We will indicate those abbreviations appropriately to get
 you used to seeing them.  (Note that the &ldquo;old style&rdquo; option forms
 exist in <acronym>GNU</acronym> <code>tar</code> for compatibility with Unix
 <code>tar</code>.  In this book we present a full discussion of this way
@@ -1739,8 +1723,6 @@ jazz
 <p>As you can see, the system responds the same no matter whether you use
 long or short option forms.
 </p>
-
-
 <p> One difference between using
 short and long option forms is that, although the exact placement of
 arguments following options is no more specific when using short forms,
@@ -2369,8 +2351,6 @@ practice/rock
 
 
 
-
-
 <p>Likewise, if you try to use this command,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -tvf music.tar folk jazz</kbd>
@@ -2383,8 +2363,6 @@ to extract the files from the archive.
 <p>If you have forgotten the correct names of the files in the archive,
 use <kbd>tar --list --verbose</kbd> to list them correctly.
 </p>
-
-
 
 
 <hr size="6">
@@ -2407,8 +2385,6 @@ use <kbd>tar --list --verbose</kbd> to list them correctly.
 </tr></table>
 <a name="Going-Further-Ahead-in-this-Manual"></a>
 <h2 class="section">2.9 Going Further Ahead in this Manual</h2>
-
-
 
 
 
@@ -2653,8 +2629,6 @@ form, short form, and old style.  These styles are discussed below.
 Both the options and the operations can be written in any of these three
 styles.
 </p>
-
-
 
 
 <hr size="6">
@@ -2995,9 +2969,7 @@ respectively.  The first two examples also specify a single non-option,
 <var>name</var> argument having the value &lsquo;<samp>archive.tar</samp>&rsquo;.  The last
 example contains only old style option letters (repeating option
 &lsquo;<samp>c</samp>&rsquo; twice), not all of which are meaningful (eg., &lsquo;<samp>.</samp>&rsquo;,
-&lsquo;<samp>h</samp>&rsquo;, or &lsquo;<samp>i</samp>&rsquo;), with no argument value.  
-</p>
-
+&lsquo;<samp>h</samp>&rsquo;, or &lsquo;<samp>i</samp>&rsquo;), with no argument value.  </p>
 
 <hr size="6">
 <a name="All-Options"></a>
@@ -4899,8 +4871,6 @@ error correction in special circumstances.
 </p>
 
 
-
-
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Operations">4.2.1 The Five Advanced <code>tar</code> Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -5058,8 +5028,6 @@ the command
 <p>would extract only the second copy.  See section <a href="#Option-Summary">&mdash;occurrence</a>, for the description of &lsquo;<samp>--occurrence</samp>&rsquo;
 option.
 </p>
-
-
 
 
 <a name="index-Members_002c-replacing-with-other-members"></a>
@@ -5260,8 +5228,6 @@ The operation will fail.
 </p>
 
 
-
-
 <p>Both &lsquo;<samp>--update</samp>&rsquo; and &lsquo;<samp>--append</samp>&rsquo; work by adding to the end
 of the archive.  When you extract a file from the archive, only the
 version stored last will wind up in the file system, unless you use
@@ -5371,8 +5337,6 @@ one given with the &lsquo;<samp>--file</samp>&rsquo; option.  As usual, if you o
 &lsquo;<samp>--file</samp>&rsquo;, <code>tar</code> will use the value of the environment
 variable <code>TAPE</code>, or, if this has not been set, the default archive name.
 </p>
-
-
 
 
 <p>To demonstrate how &lsquo;<samp>--concatenate</samp>&rsquo; works, create two small archives
@@ -5505,8 +5469,6 @@ jazz
 rock
 $
 </pre></td></tr></table>
-
-
 
 
 
@@ -5860,8 +5822,6 @@ of an archive.  See section <a href="#Blocking-Factor">The Blocking Factor of an
 
 
 
-
-
 <dl compact="compact">
 <dd><a name="index-read_002dfull_002drecords-1"></a>
 </dd>
@@ -5941,8 +5901,6 @@ encountered while reading an archive.  Use in conjunction with
 <h3 class="subsection">4.4.2 Changing How <code>tar</code> Writes Files</h3>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
-
-
 
 
 
@@ -6643,8 +6601,6 @@ option. This option is useful if you have set
 
 
 
-
-
 <dl compact="compact">
 <dd><a name="index-remove_002dfiles"></a>
 </dd>
@@ -6910,10 +6866,6 @@ set, the default is &lsquo;<samp>~</samp>&rsquo;, just as in Emacs.
 
 
 
-
-
-
-
 <a name="index-uuencode"></a>
 <p>You can easily use archive files to transport a group of files from
 one system to another: put all relevant files into an archive on one
@@ -6977,8 +6929,6 @@ arguments to <code>tar</code> (this can help you save time if you expect to
 archive the same list of files a number of times), and so forth.
 </p>
 
-
-
 <p>If there are too many files to conveniently list on the command line,
 you can list the names in a file, and <code>tar</code> will read that file.
 See section <a href="#files">Reading Names from a File</a>.
@@ -7025,8 +6975,6 @@ This is free software, and it is available at these places:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">http://www.cs.umd.edu/projects/amanda/amanda.html
 ftp://ftp.cs.umd.edu/pub/amanda
 </pre></td></tr></table>
-
-
 
 
 
@@ -8490,8 +8438,6 @@ $ <kbd>tar -c -v --null --files-from=long-files --file=big.tar</kbd>
 
 
 
-
-
 <hr size="6">
 <a name="exclude"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -8648,8 +8594,6 @@ syntax, when using exclude options in <code>tar</code>.  If you try to use
 might fail.
 
 </li><li>
-
-
  
 In earlier versions of <code>tar</code>, what is now the
 &lsquo;<samp>--exclude-from</samp>&rsquo; option was called &lsquo;<samp>--exclude</samp>&rsquo; instead.
@@ -8690,8 +8634,6 @@ purpose of explaining wildcard syntax for <code>tar</code>.
 </p>
 
 
-
-
 <p>A <var>pattern</var> should be written according to shell syntax, using wildcard
 characters to effect globbing.  Most characters in the pattern stand
 for themselves in the matched string, and case is significant: &lsquo;<samp>a</samp>&rsquo;
@@ -8725,8 +8667,6 @@ construction &lsquo;<samp>[<var>a</var>-<var>e</var>]</samp>&rsquo;, using an hy
 letters, is meant to represent all characters between <var>a</var> and
 <var>e</var>, inclusive.
 </p>
-
-
 
 
 <p>Periods (&lsquo;<samp>.</samp>&rsquo;) or forward slashes (&lsquo;<samp>/</samp>&rsquo;) are not considered
@@ -9507,8 +9447,6 @@ for proper way of creating incremental backups.
 
 
 
-
-
 <p>Usually, <code>tar</code> will recursively explore all directories (either
 those given on the command line or through the &lsquo;<samp>--files-from</samp>&rsquo;
 option) for the various files they contain.  However, you may not always
@@ -9656,8 +9594,6 @@ mentioned by name on the standard error.
 <h3 class="subsection">6.10.1 Changing the Working Directory</h3>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
-
-
 
 
 
@@ -9836,10 +9772,6 @@ may be more convenient than switching to root.
 
 
 
-
-
-
-
 <dl compact="compact">
 <dt>&lsquo;<samp>--absolute-names</samp>&rsquo;</dt>
 <dd><p>Preserves full file names (including superior directory names) when
@@ -9847,8 +9779,6 @@ archiving files.  Preserves leading slash when extracting files.
 </p>
 </dd>
 </dl>
-
-
 
 
 
@@ -11032,8 +10962,6 @@ time needed to process all files with this option is roughly twice
 the time needed to archive them without it.
 </p>
 
-
-
 <a name="index-sparse-formats_002c-defined"></a>
 <p>When using &lsquo;<samp>POSIX</samp>&rsquo; archive format, <acronym>GNU</acronym> <code>tar</code> is able to store
 sparse files using in three distinct ways, called <em>sparse
@@ -11220,8 +11148,6 @@ It is equivalent to &lsquo;<samp>--same-permissions</samp>&rsquo; plus &lsquo;<s
 </p>
 
 
-
-
 </dd>
 </dl>
 
@@ -11259,8 +11185,6 @@ archives to contain only regular files and directories, avoiding
 other kind of special files.  Do not attempt to save sparse files or
 contiguous files as such.  Let&rsquo;s discuss a few more problems, in turn.
 </p>
-
-
 
 
 <table class="menu" border="0" cellspacing="0">
@@ -11760,8 +11684,6 @@ be extracted by any tar implementation that understands older
 </p>
 
 
-
-
 <hr size="6">
 <a name="Other-Tars"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -12147,8 +12069,6 @@ Done
 <h2 class="section">8.4 Comparison of <code>tar</code> and <code>cpio</code></h2>
 <blockquote><p><em>(This message will disappear, once this node revised.)</em>
 </p></blockquote>
-
-
 
 
 
@@ -12840,8 +12760,6 @@ writing archives.
 </p>
 
 
-
-
 <p>Archives with blocking factors larger than 20 cannot be read
 by very old versions of <code>tar</code>, or by some newer versions
 of <code>tar</code> running on old machines with small address spaces.
@@ -13024,8 +12942,6 @@ soon as it read an incomplete record from the pipe.
 </p>
 
 
-
-
 <a name="index-blocking-factor"></a>
 <a name="index-tape-blocking"></a>
 
@@ -13091,8 +13007,6 @@ the error rates observed at rewriting time.
 </tr></table>
 <a name="Many-Archives-on-One-Tape"></a>
 <h2 class="section">9.5 Many Archives on One Tape</h2>
-
-
 
 
 
@@ -13263,8 +13177,6 @@ following:
 </p></blockquote>
 
 
-
-
 <p>See section <a href="#Blocking-Factor">The Blocking Factor of an Archive</a>.
 </p>
 <p>You can use the <code>mt</code> utility to advance or rewind a tape past a
@@ -13272,8 +13184,6 @@ specified number of archive files on the tape.  This will allow you
 to move to the beginning of an archive before extracting or reading
 it, or to the end of all the archives before writing a new one.
 </p>
-
-
 
 <p>The syntax of the <code>mt</code> command is:
 </p>
@@ -13284,8 +13194,6 @@ it, or to the end of all the archives before writing a new one.
 the number of times an operation is performed (with a default of one),
 and <var>operation</var> is one of the following:
 </p>
-
-
 
 
 <dl compact="compact">
@@ -13316,8 +13224,6 @@ and <var>operation</var> is one of the following:
 </p>
 </dd>
 </dl>
-
-
 
 
 
@@ -13757,8 +13663,6 @@ will usually see lots of spurious messages.
 </p>
 
 
-
-
 <hr size="6">
 <a name="label"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -14104,8 +14008,6 @@ up to and including 1.8.4 invoke tar with this option to produce
 distribution tarballs.  See section <a href="#Formats">v7</a>, for the detailed discussion
 of this issue and its implications.
 </p>
-
-
 <p>.
 See <a href="automake.html#Options">tar-v7: (automake)Options</a> section &lsquo;Changing Automake&rsquo;s Behavior&rsquo; in <cite>GNU Automake</cite>, for a description on how to use various
 archive formats with <code>automake</code>.
@@ -14423,7 +14325,6 @@ member name.  One way this situation can occur is if more than one
 version of a file has been stored in the archive.  For information
 about adding new versions of a file to an archive, see <a href="#update">Updating an Archive</a>.
 </p>
-
 <p>In addition to entries describing archive members, an archive may
 contain entries which <code>tar</code> itself uses to store information.
 See section <a href="#label">Including a Label in the Archive</a>, for an example of such an archive entry.
@@ -14704,8 +14605,6 @@ are zero-filled octal numbers in ASCII.  Each numeric field of width
 </p>
 
 
-
-
 <p>The <code>mode</code> field provides nine bits specifying file permissions
 and three bits to specify the Set UID, Set GID, and Save Text
 (<em>sticky</em>) modes.  Values for these bits are defined above.
@@ -14722,8 +14621,7 @@ ID of the file owners, respectively.  If the operating system does
 not support numeric user or group IDs, these fields should be ignored.
 </p>
 <p>The <code>size</code> field is the size of the file in bytes; linked files
-are archived with this field specified as zero.  
-</p>
+are archived with this field specified as zero.  </p>
 <p>The <code>mtime</code> field is the data modification time of the file at
 the time it was archived.  It is the ASCII representation of the octal
 value of the last time the file&rsquo;s contents were modified, represented
@@ -15718,9 +15616,7 @@ each file specified in the command line. This mode is toggled by
 &lsquo;<samp>--stat</samp>&rsquo; (&lsquo;<samp>-S</samp>&rsquo;) command line option. An optional argument to this
 option specifies output <em>format</em>: a comma-separated list of
 <code>struct stat</code> fields to be displayed. This list can contain
-following identifiers 
-</p>
-<p>:
+following identifiers :
 </p>
 <dl compact="compact">
 <dt>name</dt>

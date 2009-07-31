@@ -1,0 +1,43 @@
+14.6 @group: Prevent Page Breaks
+================================
+
+The @group command (on a line by itself) is used inside an
+@example or similar construct to begin an unsplittable vertical
+group, which will appear entirely on one page in the printed output.
+The group is terminated by a line containing only @end group.
+These two lines produce no output of their own, and in the Info file
+output they have no effect at all.
+
+Although @group would make sense conceptually in a wide
+variety of contexts, its current implementation works reliably only
+within @example and variants, and within @display,
+@format, @flushleft and @flushright.
+See Quotations and Examples.  (What all these commands have in
+common is that each line of input produces a line of output.)  In
+other contexts, @group can cause anomalous vertical
+spacing.
+
+This formatting requirement means that you should write:
+
+@example
+@group
+...
+@end group
+@end example
+
+with the @group and @end group commands inside the
+@example and @end example commands.
+
+The @group command is most often used to hold an example
+together on one page.  In this Texinfo manual, more than 100 examples
+contain text that is enclosed between @group and @end
+group.
+
+If you forget to end a group, you may get strange and unfathomable
+error messages when you run TeX.  This is because TeX keeps
+trying to put the rest of the Texinfo file onto the one page and does
+not start to generate error messages until it has processed
+considerable text.  It is a good rule of thumb to look for a missing
+@end group if you get incomprehensible error messages in
+TeX.
+

@@ -1,0 +1,20 @@
+6 Nodes
+*******
+
+Nodes are the primary segments of a Texinfo file.  They do not
+themselves impose a hierarchical or any other kind of structure on a file.
+Nodes contain node pointers that name other nodes, and can contain
+menus which are lists of nodes.  In Info, the movement commands
+can carry you to a pointed-to node or to a node listed in a menu.  Node
+pointers and menus provide structure for Info files just as chapters,
+sections, subsections, and the like, provide structure for printed
+books.
+
+* Two Paths::                   Different commands to structure
+                                  Info output and printed output.
+* Node Menu Illustration::      A diagram, and sample nodes and menus.
+* node::                        Creating nodes, in detail.
+* makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
+* anchor::                      Defining arbitrary cross-reference targets.
+
+

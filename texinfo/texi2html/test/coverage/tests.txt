@@ -5,7 +5,7 @@ texi float.texi
 texi imbrications.texi
 texi formats_titles.texi
 comments comments.texi
-formatting formatting.texi
+formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
 pass0_macros pass0_macros.texi
 float float.texi
 imbrications imbrications.texi

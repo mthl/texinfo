@@ -1,0 +1,52 @@
+12.4.1 @syncodeindex
+--------------------
+
+When you want to combine functions and concepts into one index, you
+should index the functions with @findex and index the concepts
+with @cindex, and use the @syncodeindex command to
+redirect the function index entries into the concept index.
+
+The @syncodeindex command takes two arguments; they are the name
+of the index to redirect, and the name of the index to redirect it to.
+The template looks like this:
+
+@syncodeindex from to
+
+For this purpose, the indices are given two-letter names:
+
+`cp'
+concept index
+`fn'
+function index
+`vr'
+variable index
+`ky'
+key index
+`pg'
+program index
+`tp'
+data type index
+
+Write an @syncodeindex command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  For example,
+to merge a function index with a concept index, write the
+following:
+
+@syncodeindex fn cp
+
+This will cause all entries designated for the function index to merge
+in with the concept index instead.
+
+To merge both a variables index and a function index into a concept
+index, write the following:
+
+@syncodeindex vr cp
+@syncodeindex fn cp
+
+The @syncodeindex command puts all the entries from the `from'
+index (the redirected index) into the @code font, overriding
+whatever default font is used by the index to which the entries are
+now directed.  This way, if you direct function names from a function
+index into a concept index, all the function names are printed in the
+@code font as you would expect.
+

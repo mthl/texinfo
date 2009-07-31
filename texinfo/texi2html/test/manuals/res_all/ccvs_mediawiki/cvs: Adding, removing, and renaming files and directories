@@ -1,0 +1,603 @@
+<div id="Adding-and-removing"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
+<td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
+== Adding, removing, and renaming files and directories ==
+
+<p>In the course of a project, one will often add new
+files.  Likewise with removing or renaming, or with
+directories.  The general concept to keep in mind in
+all these cases is that instead of making an
+irreversible change you want <small>CVS</small> to record the
+fact that a change has taken place, just as with
+modifying an existing file.  The exact mechanisms to do
+this in <small>CVS</small> vary depending on the situation.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Adding-files| Adding files]]::<nowiki>                Adding files
+</nowiki>&bull;[[#Removing-files| Removing files]]::<nowiki>              Removing files
+</nowiki>&bull;[[#Removing-directories| Removing directories]]::<nowiki>        Removing directories
+</nowiki>&bull;[[#Moving-files| Moving files]]::<nowiki>                Moving and renaming files
+</nowiki>&bull;[[#Moving-directories| Moving directories]]::<nowiki>          Moving and renaming directories
+</nowiki></pre>
+<hr size="6">
+<div id="Adding-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Adding-files-to-a-directory"></div>
+=== Adding files to a directory ===
+<div id="index-Adding-files"></div>
+
+<p>To add a new file to a directory, follow these steps.
+</p>
+<ul>
+<li>
+You must have a working copy of the directory.
+See section [cvs: Overview#Getting-the-source Getting the source].
+
+</li><li>
+Create the new file inside your working copy of the directory.
+
+</li><li>
+Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
+want to version control the file.  If the file contains
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section [cvs: Handling binary files#Binary-files Handling binary files]).
+
+</li><li>
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
+in the file into the repository.  Other developers
+cannot see the file until you perform this step.
+</li></ul>
+
+<p>You can also use the <code>add</code> command to add a new
+directory.
+</p>
+<p>Unlike most other commands, the <code>add</code> command is
+not recursive.  You cannot even type &lsquo;<samp>cvs add
+foo/bar</samp>&rsquo;!  Instead, you have to
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd foo
+$ cvs add bar
+</nowiki></pre></td></tr></table>
+
+<div id="index-add-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-add"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dd>
+<p>Schedule <var>files</var> to be added to the repository.
+The files or directories specified with <code>add</code> must
+already exist in the current directory.  To add a whole
+new directory hierarchy to the source repository (for
+example, files received from a third-party vendor), use
+the <code>import</code> command instead.  See section [cvs: Guide to CVS commands#import import&mdash;Import sources into CVS, using vendor branches].
+</p>
+<p>The added files are not placed in the source repository
+until you use <code>commit</code> to make the change
+permanent.  Doing an <code>add</code> on a file that was
+removed with the <code>remove</code> command will undo the
+effect of the <code>remove</code>, unless a <code>commit</code>
+command intervened.  See section [[#Removing-files|Removing files]], for an
+example.
+</p>
+<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
+this file will be checked out; for more information see
+[cvs: Keyword substitution#Substitution-modes Substitution modes].
+</p>
+<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
+file.  This description appears in the history log (if
+it is enabled, see section [cvs: Reference manual for Administrative files#history-file The history file]).  It will also be
+saved in the version history inside the repository when
+the file is committed.  The <code>log</code> command displays
+this description.  The description can be changed using
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin admin&mdash;Administration].  If you omit the
+&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
+be used.  You will not be prompted for a description.
+</p></dd></dl>
+
+<p>For example, the following commands add the file
+&lsquo;<tt>backend.c</tt>&rsquo; to the repository:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs add backend.c
+$ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
+</nowiki></pre></td></tr></table>
+
+<p>When you add a file it is added only on the branch
+which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+later merge the additions to another branch if you want
+(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
+</p>
+<hr size="6">
+<div id="Removing-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Removing-files-1"></div>
+=== Removing files ===
+<div id="index-Removing-files"></div>
+<div id="index-Deleting-files"></div>
+
+<p>Directories change.  New files are added, and old files
+disappear.  Still, you want to be able to retrieve an
+exact copy of old releases.
+</p>
+<p>Here is what you can do to remove a file,
+but remain able to retrieve old revisions:
+</p>
+<ul>
+<li>
+Make sure that you have not made any uncommitted
+modifications to the file.  See section [cvs: Overview#Viewing-differences Viewing differences],
+for one way to do that.  You can also use the
+<code>status</code> or <code>update</code> command.  If you remove
+the file without committing your changes, you will of
+course not be able to retrieve the file as it was
+immediately before you deleted it.
+
+</li><li>
+Remove the file from your working copy of the directory.
+You can for instance use <code>rm</code>.
+
+</li><li>
+Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
+you really want to delete the file.
+
+</li><li>
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
+perform the removal of the file from the repository.
+</li></ul>
+
+<p>When you commit the removal of the file, <small>CVS</small>
+records the fact that the file no longer exists.  It is
+possible for a file to exist on only some branches and
+not on others, or to re-add another file with the same
+name later.  <small>CVS</small> will correctly create or not create
+the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
+specified to <code>checkout</code> or <code>update</code>.
+</p>
+<div id="index-Remove-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-remove"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dd>
+<p>Schedule file(s) to be removed from the repository
+(files which have not already been removed from the
+working directory are not processed).  This command
+does not actually remove the file from the repository
+until you commit the removal.  For a full list of
+options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+</p></dd></dl>
+
+<p>Here is an example of removing several files:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd test
+$ rm *.c
+$ cvs remove
+cvs remove: Removing .
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</nowiki></pre></td></tr></table>
+
+<p>As a convenience you can remove the file and <code>cvs
+remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
+option.  For example, the above example could also be
+done like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd test
+$ cvs remove -f *.c
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</nowiki></pre></td></tr></table>
+
+<p>If you execute <code>remove</code> for a file, and then
+change your mind before you commit, you can undo the
+<code>remove</code> with an <code>add</code> command.
+</p>
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ ls
+CVS   ja.h  oj.c
+$ rm oj.c
+$ cvs remove oj.c
+cvs remove: scheduling oj.c for removal
+cvs remove: use 'cvs commit' to remove this file permanently
+$ cvs add oj.c
+U oj.c
+cvs add: oj.c, version 1.1.1.1, resurrected
+</nowiki></pre></td></tr></table>
+
+<p>If you realize your mistake before you run the
+<code>remove</code> command you can use <code>update</code> to
+resurrect the file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ rm oj.c
+$ cvs update oj.c
+cvs update: warning: oj.c was lost
+U oj.c
+</nowiki></pre></td></tr></table>
+
+<p>When you remove a file it is removed only on the branch
+which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+later merge the removals to another branch if you want
+(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
+</p>
+<hr size="6">
+<div id="Removing-directories"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Removing-directories-1"></div>
+=== Removing directories ===
+<div id="index-Removing-directories"></div>
+<div id="index-Directories_002c-removing"></div>
+
+<p>In concept removing directories is somewhat similar to
+removing files&mdash;you want the directory to not exist in
+your current working directories, but you also want to
+be able to retrieve old releases in which the directory
+existed.
+</p>
+<p>The way that you remove a directory is to remove all
+the files in it.  You don&rsquo;t remove the directory
+itself; there is no way to do that.
+Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
+<code>cvs update</code> or <code>cvs checkout</code>,
+which will cause <small>CVS</small> to remove empty
+directories from working directories.
+(Note that <code>cvs export</code> always removes empty directories.)
+Probably the
+best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
+you want an empty directory then put a dummy file (for
+example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
+removing it.
+</p>
+<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
+options of <code>checkout</code>.  This way
+<small>CVS</small> will be able to correctly create the directory
+or not depending on whether the particular version you
+are checking out contains any files in that directory.
+</p>
+<hr size="6">
+<div id="Moving-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Moving-and-renaming-files"></div>
+=== Moving and renaming files ===
+<div id="index-Moving-files"></div>
+<div id="index-Renaming-files"></div>
+<div id="index-Files_002c-moving"></div>
+
+<p>Moving files to a different directory or renaming them
+is not difficult, but some of the ways in which this
+works may be non-obvious.  (Moving or renaming a
+directory is even harder.  See section [[#Moving-directories|Moving and renaming directories]].).
+</p>
+<p>The examples below assume that the file <var>old</var> is renamed to
+<var>new</var>.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Outside| Outside]]::<nowiki>                     The normal way to Rename
+</nowiki>&bull;[[#Inside| Inside]]::<nowiki>                      A tricky, alternative way
+</nowiki>&bull;[[#Rename-by-copying| Rename by copying]]::<nowiki>           Another tricky, alternative way
+</nowiki></pre>
+<hr size="6">
+<div id="Outside"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="The-Normal-way-to-Rename"></div>
+==== The Normal way to Rename ====
+
+
+<p>The normal way to move a file is to copy <var>old</var> to
+<var>new</var>, and then issue the normal <small>CVS</small> commands
+to remove <var>old</var> from the repository, and add
+<var>new</var> to it.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ mv <var>old</var> <var>new</var>
+$ cvs remove <var>old</var>
+$ cvs add <var>new</var>
+$ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
+</nowiki></pre></td></tr></table>
+
+<p>This is the simplest way to move a file, it is not
+error-prone, and it preserves the history of what was
+done.  Note that to access the history of the file you
+must specify the old or the new name, depending on what
+portion of the history you are accessing.  For example,
+<code>cvs log <var>old</var></code> will give the log up until the
+time of the rename.
+</p>
+<p>When <var>new</var> is committed its revision numbers will
+start again, usually at 1.1, so if that bothers you,
+use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
+information see [cvs: Revisions#Assigning-revisions Assigning revisions].
+</p>
+<hr size="6">
+<div id="Inside"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Moving-the-history-file"></div>
+==== Moving the history file ====
+
+<p>This method is more dangerous, since it involves moving
+files inside the repository.  Read this entire section
+before trying it out!
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd $CVSROOT/<var>dir</var>
+$ mv <var>old</var>,v <var>new</var>,v
+</nowiki></pre></td></tr></table>
+
+<p>Advantages:
+</p>
+<ul>
+<li>
+The log of changes is maintained intact.
+
+</li><li>
+The revision numbers are not affected.
+</li></ul>
+
+<p>Disadvantages:
+</p>
+<ul>
+<li>
+Old releases cannot easily be fetched from the
+repository.  (The file will show up as <var>new</var> even
+in revisions from the time before it was renamed).
+
+</li><li>
+There is no log information of when the file was renamed.
+
+</li><li>
+Nasty things might happen if someone accesses the history file
+while you are moving it.  Make sure no one else runs any of the <small>CVS</small>
+commands while you move it.
+</li></ul>
+
+<hr size="6">
+<div id="Rename-by-copying"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Copying-the-history-file"></div>
+==== Copying the history file ====
+
+<p>This way also involves direct modifications to the
+repository.  It is safe, but not without drawbacks.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki># <span class="roman">Copy the RCS file inside the repository</span>
+$ cd $CVSROOT/<var>dir</var>
+$ cp <var>old</var>,v <var>new</var>,v
+# <span class="roman">Remove the old file</span>
+$ cd ~/<var>dir</var>
+$ rm <var>old</var>
+$ cvs remove <var>old</var>
+$ cvs commit <var>old</var>
+# <span class="roman">Remove all tags from <var>new</var></span>
+$ cvs update <var>new</var>
+$ cvs log <var>new</var>             # <span class="roman">Remember the non-branch tag names</span>
+$ cvs tag -d <var>tag1</var> <var>new</var>
+$ cvs tag -d <var>tag2</var> <var>new</var>
+&hellip;
+</nowiki></pre></td></tr></table>
+
+<p>By removing the tags you will be able to check out old
+revisions.
+</p>
+<p>Advantages:
+</p>
+<ul>
+<li>
+Checking out old revisions works correctly, as long as
+you use &lsquo;<samp>-r<var>tag</var></samp>&rsquo; and not &lsquo;<samp>-D<var>date</var></samp>&rsquo;
+to retrieve the revisions.
+
+</li><li>
+The log of changes is maintained intact.
+
+</li><li>
+The revision numbers are not affected.
+</li></ul>
+
+<p>Disadvantages:
+</p>
+<ul>
+<li>
+You cannot easily see the history of the file across the rename.
+
+</li></ul>
+
+<hr size="6">
+<div id="Moving-directories"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Moving-and-renaming-directories"></div>
+=== Moving and renaming directories ===
+<div id="index-Moving-directories"></div>
+<div id="index-Renaming-directories"></div>
+<div id="index-Directories_002c-moving"></div>
+
+<p>The normal way to rename or move a directory is to
+rename or move each file within it as described in
+[[#Outside|The Normal way to Rename]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in [[#Removing-directories|Removing directories]].
+</p>
+<p>If you really want to hack the repository to rename or
+delete a directory in the repository, you can do it
+like this:
+</p>
+<ol>
+<li>
+Inform everyone who has a checked out copy of the directory that the
+directory will be renamed.  They should commit all
+their changes, and remove their working copies,
+before you take the steps below.
+
+</li><li>
+Rename the directory inside the repository.
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd $CVSROOT/<var>parent-dir</var>
+$ mv <var>old-dir</var> <var>new-dir</var>
+</nowiki></pre></td></tr></table>
+
+</li><li>
+Fix the <small>CVS</small> administrative files, if necessary (for
+instance if you renamed an entire module).
+
+</li><li>
+Tell everyone that they can check out again and continue
+working.
+
+</li></ol>
+
+<p>If someone had a working copy the <small>CVS</small> commands will
+cease to work for him, until he removes the directory
+that disappeared inside the repository.
+</p>
+<p>It is almost always better to move the files in the
+directory instead of moving the directory.  If you move the
+directory you are unlikely to be able to retrieve old
+releases correctly, since they probably depend on the
+name of the directories.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

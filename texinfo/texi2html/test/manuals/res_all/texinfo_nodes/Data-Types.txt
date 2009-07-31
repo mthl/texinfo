@@ -1,0 +1,33 @@
+15.4.6 Data Types
+-----------------
+
+Here is the command for data types:
+
+@deftp category name attributes...
+The @deftp command is the generic definition command for data
+types.  The command is written at the beginning of a line and is
+followed on the same line by the category, by the name of the type
+(which is a word like int or float), and then by names of
+attributes of objects of that type.  Thus, you could use this command
+for describing int or float, in which case you could use
+data type as the category.  (A data type is a category of
+certain objects for purposes of deciding which operations can be
+performed on them.)
+
+In Lisp, for example,  pair names a particular data
+type, and an object of that type has two slots called the
+CAR and the CDR.  Here is how you would write the first line
+of a definition of pair.
+
+@deftp {Data type} pair car cdr
+...
+@end deftp
+
+The template is:
+
+@deftp category name-of-type attributes...
+body-of-definition
+@end deftp
+
+@deftp creates an entry in the index of data types.
+

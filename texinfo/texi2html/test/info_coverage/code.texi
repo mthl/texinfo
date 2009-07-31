@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename code.info
+
+@node Top
+@top Element
+
+Code: @code{in code}.
+
+Code in code: @code{in first @code{in nested}}.
+
+Code in @@example:
+
+@example 
+in example
+@code{in example in code}.
+@end example
+
+In format
+@format 
+in format
+@code{in format in code}.
+@end format
+
+@bye

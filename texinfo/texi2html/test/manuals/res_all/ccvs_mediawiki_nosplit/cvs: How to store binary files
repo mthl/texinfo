@@ -1,0 +1,114 @@
+<div id="Binary-howto"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The issues with binary files#Binary-why  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="How-to-store-binary-files"></div>
+=== How to store binary files ===
+
+<p>There are two issues with using <small>CVS</small> to store
+binary files.  The first is that <small>CVS</small> by default
+converts line endings between the canonical form in
+which they are stored in the repository (linefeed
+only), and the form appropriate to the operating system
+in use on the client (for example, carriage return
+followed by line feed for Windows NT).
+</p>
+<p>The second is that a binary file might happen to
+contain data which looks like a keyword (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), so keyword expansion must be turned
+off.
+</p>
+
+<p>The &lsquo;<samp>-kb</samp>&rsquo; option available with some <small>CVS</small>
+commands insures that neither line ending conversion
+nor keyword expansion will be done.
+</p>
+<p>Here is an example of how you can create a new file
+using the &lsquo;<samp>-kb</samp>&rsquo; flag:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ echo '$<i></i>Id$' &gt; kotest
+$ cvs add -kb -m&quot;A test file&quot; kotest
+$ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
+</nowiki></pre></td></tr></table>
+
+<p>If a file accidentally gets added without &lsquo;<samp>-kb</samp>&rsquo;,
+one can use the <code>cvs admin</code> command to recover.
+For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ echo '$<i></i>Id$' &gt; kotest
+$ cvs add -m&quot;A test file&quot; kotest
+$ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
+$ cvs admin -kb kotest
+$ cvs update -A kotest
+# <span class="roman">For non-unix systems:</span>
+# <span class="roman">Copy in a good copy of the file from outside CVS</span>
+$ cvs commit -m &quot;make it binary&quot; kotest
+</nowiki></pre></td></tr></table>
+
+<p>When you check in the file &lsquo;<tt>kotest</tt>&rsquo; the file is
+not preserved as a binary file, because you did not
+check it in as a binary file.  The <code>cvs
+admin -kb</code> command sets the default keyword
+substitution method for this file, but it does not
+alter the working copy of the file that you have.  If you need to
+cope with line endings (that is, you are using
+<small>CVS</small> on a non-unix system), then you need to
+check in a new copy of the file, as shown by the
+<code>cvs commit</code> command above.
+On unix, the <code>cvs update -A</code> command suffices.
+(Note that you can use <code>cvs log</code> to determine the default keyword
+substitution method for a file and <code>cvs status</code> to determine
+the keyword substitution method for a working copy.)
+</p>
+<p>However, in using <code>cvs admin -k</code> to change the
+keyword expansion, be aware that the keyword expansion
+mode is not version controlled.  This means that, for
+example, that if you have a text file in old releases,
+and a binary file with the same name in new releases,
+<small>CVS</small> provides no way to check out the file in text
+or binary mode depending on what version you are
+checking out.  There is no good workaround for this
+problem.
+</p>
+<p>You can also set a default for whether <code>cvs add</code>
+and <code>cvs import</code> treat a file as binary based on
+its name; for example you could say that files who
+names end in &lsquo;<samp>.exe</samp>&rsquo; are binary.  See section [cvs: The cvswrappers file#Wrappers The cvswrappers file].
+There is currently no way to have <small>CVS</small> detect
+whether a file is binary based on its contents.  The
+main difficulty with designing such a feature is that
+it is not clear how to distinguish between binary and
+non-binary files, and the rules to apply would vary
+considerably with the operating system.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The issues with binary files#Binary-why  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

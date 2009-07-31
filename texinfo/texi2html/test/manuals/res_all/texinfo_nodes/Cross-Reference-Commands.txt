@@ -1,0 +1,27 @@
+8.1 Different Cross Reference Commands
+======================================
+
+There are four different cross reference commands:
+
+@xref
+Used to start a sentence in the printed manual saying `See ...'
+or an Info cross-reference saying `*Note name: node.'.
+
+@ref
+Used within or, more often, at the end of a sentence; same as
+@xref for Info; produces just the reference in the printed
+manual without a preceding `See'.
+
+@pxref
+Used within parentheses to make a reference that suits both an Info
+file and a printed book.  Starts with a lower case `see' within the
+printed manual. (`p' is for `parenthesis'.)
+
+@inforef
+Used to make a reference to an Info file for which there is no printed
+manual.
+
+(The @cite command is used to make references to books and
+manuals for which there is no corresponding Info file and, therefore,
+no node to which to point.   See @cite.)
+

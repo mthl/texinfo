@@ -1,0 +1,30 @@
+10 Quotations and Examples
+**************************
+
+Quotations and examples are blocks of text consisting of one or more
+whole paragraphs that are set off from the bulk of the text and
+treated differently.  They are usually indented.
+
+In Texinfo, you always begin a quotation or example by writing an
+@-command at the beginning of a line by itself, and end it by writing
+an @end command that is also at the beginning of a line by
+itself.  For instance, you begin an example by writing @example
+by itself at the beginning of a line and end the example by writing
+@end example on a line by itself, at the beginning of that
+line.
+
+* Block Enclosing Commands::    Different constructs for different purposes.
+* quotation::                   Writing a quotation.
+* example::                     Writing an example in a fixed-width font.
+* verbatim::                    Writing a verbatim example.
+* verbatiminclude::             Including a file verbatim.
+* lisp::                        Illustrating Lisp code.
+* small::                       Forms for @smallbook.
+* display::                     Writing an example in the current font.
+* format::                      Writing an example without narrowed margins.
+* exdent::                      Undo indentation on a line.
+* flushleft & flushright::      Pushing text flush left or flush right.
+* noindent::                    Preventing paragraph indentation.
+* cartouche::                   Drawing rounded rectangles around examples.
+
+

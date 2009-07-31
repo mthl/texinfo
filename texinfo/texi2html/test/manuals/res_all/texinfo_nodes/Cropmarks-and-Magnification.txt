@@ -1,0 +1,48 @@
+19.14 Cropmarks and Magnification
+=================================
+You can (attempt to) direct TeX to print cropmarks at the corners of
+pages with the @cropmarks command.  Write the @cropmarks
+command on a line by itself between @iftex and @end
+iftex lines near the beginning of the Texinfo file, before the title
+page, like this:
+
+@iftex
+@cropmarks
+@end iftex
+
+This command is mainly for printers that typeset several pages on one
+sheet of film; but you can attempt to use it to mark the corners of a
+book set to 7 by 9.25 inches with the @smallbook command.
+(Printers will not produce cropmarks for regular sized output that is
+printed on regular sized paper.)  Since different printing machines work
+in different ways, you should explore the use of this command with a
+spirit of adventure.  You may have to redefine the command in
+`texinfo.tex'.
+
+You can attempt to direct TeX to typeset pages larger or smaller than
+usual with the \mag TeX command.  Everything that is typeset
+is scaled proportionally larger or smaller.  (\mag stands for
+"magnification".)  This is not a Texinfo @-command, but is a
+plain TeX command that is prefixed with a backslash.  You have to
+write this command between @tex and @end tex
+(see Raw Formatter Commands).
+
+Follow the \mag command with an `=' and then a number that
+is 1000 times the magnification you desire.  For example, to print pages
+at 1.2 normal size, write the following near the beginning of the
+Texinfo file, before the title page:
+
+@tex
+\mag=1200
+@end tex
+
+With some printing technologies, you can print normal-sized copies that
+look better than usual by giving a larger-than-normal master to your
+print shop.  They do the reduction, thus effectively increasing the
+resolution.
+
+Depending on your system, DVI files prepared with a
+nonstandard-\mag may not print or may print only with certain
+magnifications.  Be prepared to experiment.
+
+

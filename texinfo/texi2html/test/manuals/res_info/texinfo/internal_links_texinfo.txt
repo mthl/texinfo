@@ -1,0 +1,1424 @@
+texinfo#Top	toc	Top
+texinfo#Copying-Conditions	toc	Copying Conditions
+texinfo#Overview	toc	Overview
+texinfo#Reporting-Bugs	toc	Reporting Bugs
+texinfo#Using-Texinfo	toc	Using Texinfo
+texinfo#Info-Files	toc	Info Files
+texinfo#Printed-Books	toc	Printed Books
+texinfo#Formatting-Commands	toc	Formatting Commands
+texinfo#Conventions	toc	Conventions
+texinfo#Comments	toc	Comments
+texinfo#Minimum	toc	Minimum
+texinfo#Six-Parts	toc	Six Parts
+texinfo#Short-Sample	toc	Short Sample
+texinfo#History	toc	History
+texinfo#Texinfo-Mode	toc	Texinfo Mode
+texinfo#Texinfo-Mode-Overview	toc	Texinfo Mode Overview
+texinfo#Emacs-Editing	toc	Emacs Editing
+texinfo#Inserting	toc	Inserting
+texinfo#Showing-the-Structure	toc	Showing the Structure
+texinfo#Updating-Nodes-and-Menus	toc	Updating Nodes and Menus
+texinfo#Updating-Commands	toc	Updating Commands
+texinfo#Updating-Requirements	toc	Updating Requirements
+texinfo#Other-Updating-Commands	toc	Other Updating Commands
+texinfo#Info-Formatting	toc	Info Formatting
+texinfo#Printing	toc	Printing
+texinfo#Texinfo-Mode-Summary	toc	Texinfo Mode Summary
+texinfo#Beginning-a-File	toc	Beginning a File
+texinfo#Sample-Beginning	toc	Sample Beginning
+texinfo#Texinfo-File-Header	toc	Texinfo File Header
+texinfo#First-Line	toc	First Line
+texinfo#Start-of-Header	toc	Start of Header
+texinfo#setfilename	toc	setfilename
+texinfo#settitle	toc	settitle
+texinfo#End-of-Header	toc	End of Header
+texinfo#Document-Permissions	toc	Document Permissions
+texinfo#copying	toc	copying
+texinfo#insertcopying	toc	insertcopying
+texinfo#Titlepage-_0026-Copyright-Page	toc	Titlepage & Copyright Page
+texinfo#titlepage	toc	titlepage
+texinfo#titlefont-center-sp	toc	titlefont center sp
+texinfo#title-subtitle-author	toc	title subtitle author
+texinfo#Copyright	toc	Copyright
+texinfo#end-titlepage	toc	end titlepage
+texinfo#headings-on-off	toc	headings on off
+texinfo#The-Top-Node	toc	The Top Node
+texinfo#Top-Node-Example	toc	Top Node Example
+texinfo#Master-Menu-Parts	toc	Master Menu Parts
+texinfo#Global-Document-Commands	toc	Global Document Commands
+texinfo#documentdescription	toc	documentdescription
+texinfo#setchapternewpage	toc	setchapternewpage
+texinfo#paragraphindent	toc	paragraphindent
+texinfo#exampleindent	toc	exampleindent
+texinfo#Software-Copying-Permissions	toc	Software Copying Permissions
+texinfo#Ending-a-File	toc	Ending a File
+texinfo#Printing-Indices-_0026-Menus	toc	Printing Indices & Menus
+texinfo#Contents	toc	Contents
+texinfo#File-End	toc	File End
+texinfo#Structuring	toc	Structuring
+texinfo#Tree-Structuring	toc	Tree Structuring
+texinfo#Structuring-Command-Types	toc	Structuring Command Types
+texinfo#makeinfo-top	toc	makeinfo top
+texinfo#chapter	toc	chapter
+texinfo#unnumbered-_0026-appendix	toc	unnumbered & appendix
+texinfo#majorheading-_0026-chapheading	toc	majorheading & chapheading
+texinfo#section	toc	section
+texinfo#unnumberedsec-appendixsec-heading	toc	unnumberedsec appendixsec heading
+texinfo#subsection	toc	subsection
+texinfo#unnumberedsubsec-appendixsubsec-subheading	toc	unnumberedsubsec appendixsubsec subheading
+texinfo#subsubsection	toc	subsubsection
+texinfo#Raise_002flower-sections	toc	Raise/lower sections
+texinfo#Nodes	toc	Nodes
+texinfo#Two-Paths	toc	Two Paths
+texinfo#Node-Menu-Illustration	toc	Node Menu Illustration
+texinfo#node	toc	node
+texinfo#Node-Names	toc	Node Names
+texinfo#Writing-a-Node	toc	Writing a Node
+texinfo#Node-Line-Tips	toc	Node Line Tips
+texinfo#Node-Line-Requirements	toc	Node Line Requirements
+texinfo#First-Node	toc	First Node
+texinfo#makeinfo-top-command	toc	makeinfo top command
+texinfo#makeinfo-Pointer-Creation	toc	makeinfo Pointer Creation
+texinfo#anchor	toc	anchor
+texinfo#Menus	toc	Menus
+texinfo#Menu-Location	toc	Menu Location
+texinfo#Writing-a-Menu	toc	Writing a Menu
+texinfo#Menu-Parts	toc	Menu Parts
+texinfo#Less-Cluttered-Menu-Entry	toc	Less Cluttered Menu Entry
+texinfo#Menu-Example	toc	Menu Example
+texinfo#Other-Info-Files	toc	Other Info Files
+texinfo#Cross-References	toc	Cross References
+texinfo#References	toc	References
+texinfo#Cross-Reference-Commands	toc	Cross Reference Commands
+texinfo#Cross-Reference-Parts	toc	Cross Reference Parts
+texinfo#xref	toc	xref
+texinfo#Reference-Syntax	toc	Reference Syntax
+texinfo#One-Argument	toc	One Argument
+texinfo#Two-Arguments	toc	Two Arguments
+texinfo#Three-Arguments	toc	Three Arguments
+texinfo#Four-and-Five-Arguments	toc	Four and Five Arguments
+texinfo#Top-Node-Naming	toc	Top Node Naming
+texinfo#ref	toc	ref
+texinfo#pxref	toc	pxref
+texinfo#inforef	toc	inforef
+texinfo#uref	toc	uref
+texinfo#Marking-Text	toc	Marking Text
+texinfo#Indicating	toc	Indicating
+texinfo#Useful-Highlighting	toc	Useful Highlighting
+texinfo#code	toc	code
+texinfo#kbd	toc	kbd
+texinfo#key	toc	key
+texinfo#samp	toc	samp
+texinfo#verb	toc	verb
+texinfo#var	toc	var
+texinfo#env	toc	env
+texinfo#file	toc	file
+texinfo#command	toc	command
+texinfo#option	toc	option
+texinfo#dfn	toc	dfn
+texinfo#cite	toc	cite
+texinfo#acronym	toc	acronym
+texinfo#url	toc	url
+texinfo#email	toc	email
+texinfo#Emphasis	toc	Emphasis
+texinfo#emph-_0026-strong	toc	emph & strong
+texinfo#Smallcaps	toc	Smallcaps
+texinfo#Fonts	toc	Fonts
+texinfo#Quotations-and-Examples	toc	Quotations and Examples
+texinfo#Block-Enclosing-Commands	toc	Block Enclosing Commands
+texinfo#quotation	toc	quotation
+texinfo#example	toc	example
+texinfo#verbatim	toc	verbatim
+texinfo#verbatiminclude	toc	verbatiminclude
+texinfo#lisp	toc	lisp
+texinfo#small	toc	small
+texinfo#display	toc	display
+texinfo#format	toc	format
+texinfo#exdent	toc	exdent
+texinfo#flushleft-_0026-flushright	toc	flushleft & flushright
+texinfo#noindent	toc	noindent
+texinfo#cartouche	toc	cartouche
+texinfo#Lists-and-Tables	toc	Lists and Tables
+texinfo#Introducing-Lists	toc	Introducing Lists
+texinfo#itemize	toc	itemize
+texinfo#enumerate	toc	enumerate
+texinfo#Two_002dcolumn-Tables	toc	Two-column Tables
+texinfo#table	toc	table
+texinfo#ftable-vtable	toc	ftable vtable
+texinfo#itemx	toc	itemx
+texinfo#Multi_002dcolumn-Tables	toc	Multi-column Tables
+texinfo#Multitable-Column-Widths	toc	Multitable Column Widths
+texinfo#Multitable-Rows	toc	Multitable Rows
+texinfo#Indices	toc	Indices
+texinfo#Index-Entries	toc	Index Entries
+texinfo#Predefined-Indices	toc	Predefined Indices
+texinfo#Indexing-Commands	toc	Indexing Commands
+texinfo#Combining-Indices	toc	Combining Indices
+texinfo#syncodeindex	toc	syncodeindex
+texinfo#synindex	toc	synindex
+texinfo#New-Indices	toc	New Indices
+texinfo#Insertions	toc	Insertions
+texinfo#Braces-Atsigns	toc	Braces Atsigns
+texinfo#Inserting-An-Atsign	toc	Inserting An Atsign
+texinfo#Inserting-Braces	toc	Inserting Braces
+texinfo#Inserting-Space	toc	Inserting Space
+texinfo#Not-Ending-a-Sentence	toc	Not Ending a Sentence
+texinfo#Ending-a-Sentence	toc	Ending a Sentence
+texinfo#Multiple-Spaces	toc	Multiple Spaces
+texinfo#dmn	toc	dmn
+texinfo#Inserting-Accents	toc	Inserting Accents
+texinfo#Dots-Bullets	toc	Dots Bullets
+texinfo#dots	toc	dots
+texinfo#bullet	toc	bullet
+texinfo#TeX-and-copyright	toc	TeX and copyright
+texinfo#tex	toc	tex
+texinfo#copyright-symbol	toc	copyright symbol
+texinfo#pounds	toc	pounds
+texinfo#minus	toc	minus
+texinfo#math	toc	math
+texinfo#Glyphs	toc	Glyphs
+texinfo#Glyphs-Summary	toc	Glyphs Summary
+texinfo#result	toc	result
+texinfo#expansion	toc	expansion
+texinfo#Print-Glyph	toc	Print Glyph
+texinfo#Error-Glyph	toc	Error Glyph
+texinfo#Equivalence	toc	Equivalence
+texinfo#Point-Glyph	toc	Point Glyph
+texinfo#Footnotes	toc	Footnotes
+texinfo#Footnote-Commands	toc	Footnote Commands
+texinfo#Footnote-Styles	toc	Footnote Styles
+texinfo#Images	toc	Images
+texinfo#Breaks	toc	Breaks
+texinfo#Break-Commands	toc	Break Commands
+texinfo#Line-Breaks	toc	Line Breaks
+texinfo#g_t_002d-and-hyphenation	toc	- and hyphenation
+texinfo#w	toc	w
+texinfo#sp	toc	sp
+texinfo#page	toc	page
+texinfo#group	toc	group
+texinfo#need	toc	need
+texinfo#Definition-Commands	toc	Definition Commands
+texinfo#Def-Cmd-Template	toc	Def Cmd Template
+texinfo#Optional-Arguments	toc	Optional Arguments
+texinfo#deffnx	toc	deffnx
+texinfo#Def-Cmds-in-Detail	toc	Def Cmds in Detail
+texinfo#Functions-Commands	toc	Functions Commands
+texinfo#Variables-Commands	toc	Variables Commands
+texinfo#Typed-Functions	toc	Typed Functions
+texinfo#Typed-Variables	toc	Typed Variables
+texinfo#Abstract-Objects	toc	Abstract Objects
+texinfo#Data-Types	toc	Data Types
+texinfo#Def-Cmd-Conventions	toc	Def Cmd Conventions
+texinfo#Sample-Function-Definition	toc	Sample Function Definition
+texinfo#Conditionals	toc	Conditionals
+texinfo#Conditional-Commands	toc	Conditional Commands
+texinfo#Conditional-Not-Commands	toc	Conditional Not Commands
+texinfo#Raw-Formatter-Commands	toc	Raw Formatter Commands
+texinfo#set-clear-value	toc	set clear value
+texinfo#set-value	toc	set value
+texinfo#ifset-ifclear	toc	ifset ifclear
+texinfo#value-Example	toc	value Example
+texinfo#Internationalization	toc	Internationalization
+texinfo#documentlanguage	toc	documentlanguage
+texinfo#documentencoding	toc	documentencoding
+texinfo#Defining-New-Texinfo-Commands	toc	Defining New Texinfo Commands
+texinfo#Defining-Macros	toc	Defining Macros
+texinfo#Invoking-Macros	toc	Invoking Macros
+texinfo#Macro-Details	toc	Macro Details
+texinfo#alias	toc	alias
+texinfo#definfoenclose	toc	definfoenclose
+texinfo#Hardcopy	toc	Hardcopy
+texinfo#Use-TeX	toc	Use TeX
+texinfo#Format-with-tex_002ftexindex	toc	Format with tex/texindex
+texinfo#Format-with-texi2dvi	toc	Format with texi2dvi
+texinfo#Print-with-lpr	toc	Print with lpr
+texinfo#Within-Emacs	toc	Within Emacs
+texinfo#Texinfo-Mode-Printing	toc	Texinfo Mode Printing
+texinfo#Compile_002dCommand	toc	Compile-Command
+texinfo#Requirements-Summary	toc	Requirements Summary
+texinfo#Preparing-for-TeX	toc	Preparing for TeX
+texinfo#Overfull-hboxes	toc	Overfull hboxes
+texinfo#smallbook	toc	smallbook
+texinfo#A4-Paper	toc	A4 Paper
+texinfo#pagesizes	toc	pagesizes
+texinfo#Cropmarks-and-Magnification	toc	Cropmarks and Magnification
+texinfo#PDF-Output	toc	PDF Output
+texinfo#Creating-and-Installing-Info-Files	toc	Creating and Installing Info Files
+texinfo#Creating-an-Info-File	toc	Creating an Info File
+texinfo#makeinfo-advantages	toc	makeinfo advantages
+texinfo#Invoking-makeinfo	toc	Invoking makeinfo
+texinfo#makeinfo-options	toc	makeinfo options
+texinfo#Pointer-Validation	toc	Pointer Validation
+texinfo#makeinfo-in-Emacs	toc	makeinfo in Emacs
+texinfo#texinfo_002dformat-commands	toc	texinfo-format commands
+texinfo#Batch-Formatting	toc	Batch Formatting
+texinfo#Tag-and-Split-Files	toc	Tag and Split Files
+texinfo#makeinfo-html	toc	makeinfo html
+texinfo#Installing-an-Info-File	toc	Installing an Info File
+texinfo#Directory-File	toc	Directory File
+texinfo#New-Info-File	toc	New Info File
+texinfo#Other-Info-Directories	toc	Other Info Directories
+texinfo#Installing-Dir-Entries	toc	Installing Dir Entries
+texinfo#Invoking-install_002dinfo	toc	Invoking install-info
+texinfo#Command-List	toc	Command List
+texinfo#Tips	toc	Tips
+texinfo#Sample-Texinfo-Files	toc	Sample Texinfo Files
+texinfo#Short-Sample-Texinfo-File	toc	Short Sample Texinfo File
+texinfo#GNU-Sample-Texts	toc	GNU Sample Texts
+texinfo#Include-Files	toc	Include Files
+texinfo#Using-Include-Files	toc	Using Include Files
+texinfo#texinfo_002dmultiple_002dfiles_002dupdate	toc	texinfo-multiple-files-update
+texinfo#Include-File-Requirements	toc	Include File Requirements
+texinfo#Sample-Include-File	toc	Sample Include File
+texinfo#Include-Files-Evolution	toc	Include Files Evolution
+texinfo#Headings	toc	Headings
+texinfo#Headings-Introduced	toc	Headings Introduced
+texinfo#Heading-Format	toc	Heading Format
+texinfo#Heading-Choice	toc	Heading Choice
+texinfo#Custom-Headings	toc	Custom Headings
+texinfo#Catching-Mistakes	toc	Catching Mistakes
+texinfo#makeinfo-Preferred	toc	makeinfo Preferred
+texinfo#Debugging-with-Info	toc	Debugging with Info
+texinfo#Debugging-with-TeX	toc	Debugging with TeX
+texinfo#Using-texinfo_002dshow_002dstructure	toc	Using texinfo-show-structure
+texinfo#Using-occur	toc	Using occur
+texinfo#Running-Info_002dValidate	toc	Running Info-Validate
+texinfo#Using-Info_002dvalidate	toc	Using Info-validate
+texinfo#Unsplit	toc	Unsplit
+texinfo#Tagifying	toc	Tagifying
+texinfo#Splitting	toc	Splitting
+texinfo#Refilling-Paragraphs	toc	Refilling Paragraphs
+texinfo#Command-Syntax	toc	Command Syntax
+texinfo#Obtaining-TeX	toc	Obtaining TeX
+texinfo#Copying-This-Manual	toc	Copying This Manual
+texinfo#GNU-Free-Documentation-License	toc	GNU Free Documentation License
+texinfo#Command-and-Variable-Index	toc	Command and Variable Index
+texinfo#Concept-Index	toc	Concept Index
+texinfo#index-_00a1	cp	!
+texinfo#index-_0024-	cp	$ 
+texinfo#index-_0028dir_0029-as-Up-node-of-Top-node	cp	(dir) as Up node of Top node
+texinfo#index-_002dD-dir	cp	-D DIR
+texinfo#index-_002dD-var	cp	-D VAR
+texinfo#index-_002dF	cp	-F
+texinfo#index-_002dI-dir	cp	-I DIR
+texinfo#index-_002dP-dir	cp	-P DIR
+texinfo#index-_002dV	cp	-V
+texinfo#index-_002dV-1	cp	-V 
+texinfo#index-_002d_002dcommands_002din_002dnode_002dnames	cp	-commands-in-node-names
+texinfo#index-_002dd-name	cp	-d NAME
+texinfo#index-_002d_002ddelete	cp	-delete
+texinfo#index-_002d_002ddir_002dfile_003dname	cp	-dir-file=NAME
+texinfo#index-_002d_002ddocbook	cp	-docbook
+texinfo#index-_002de-limit	cp	-e LIMIT
+texinfo#index-_002de-text	cp	-e TEXT
+texinfo#index-_002d_002dentry_003dtext	cp	-entry=TEXT
+texinfo#index-_002d_002derror_002dlimit_003dlimit	cp	-error-limit=LIMIT
+texinfo#index-_002df-width	cp	-f WIDTH
+texinfo#index-_002d_002dfill_002dcolumn_003dwidth	cp	-fill-column=WIDTH
+texinfo#index-_002d_002dfootnote_002dstyle_003dstyle	cp	-footnote-style=STYLE
+texinfo#index-_002d_002dforce	cp	-force
+texinfo#index-_002dh	cp	-h
+texinfo#index-_002dh-1	cp	-h 
+texinfo#index-_002d_002dhelp	cp	-help
+texinfo#index-_002d_002dhelp-1	cp	-help 
+texinfo#index-_002d_002dhtml	cp	-html
+texinfo#index-_002di-file	cp	-i FILE
+texinfo#index-_002d_002dinfo_002ddir_003ddir	cp	-info-dir=DIR
+texinfo#index-_002d_002dinfo_002dfile_003dfile	cp	-info-file=FILE
+texinfo#index-_002d_002ditem_003dtext	cp	-item=TEXT
+texinfo#index-_002d_002dno_002dheaders	cp	-no-headers
+texinfo#index-_002d_002dno_002dnumber_002dfootnotes	cp	-no-number-footnotes
+texinfo#index-_002d_002dno_002dpointer_002dvalidate	cp	-no-pointer-validate
+texinfo#index-_002d_002dno_002dsplit	cp	-no-split
+texinfo#index-_002d_002dno_002dvalidate	cp	-no-validate
+texinfo#index-_002d_002dno_002dwarn	cp	-no-warn
+texinfo#index-_002d_002dnumber_002dsections	cp	-number-sections
+texinfo#index-_002do-file	cp	-o FILE
+texinfo#index-_002d_002doutput_003dfile	cp	-output=FILE
+texinfo#index-_002dp-indent	cp	-p INDENT
+texinfo#index-_002d_002dparagraph_002dindent_003dindent	cp	-paragraph-indent=INDENT
+texinfo#index-_002d_002dquiet	cp	-quiet
+texinfo#index-_002dr	cp	-r
+texinfo#index-_002dr-limit	cp	-r LIMIT
+texinfo#index-_002d_002dreference_002dlimit_003dlimit	cp	-reference-limit=LIMIT
+texinfo#index-_002d_002dremove	cp	-remove
+texinfo#index-_002ds-sec	cp	-s SEC
+texinfo#index-_002ds-style	cp	-s STYLE
+texinfo#index-_002d_002dsection_003dsec	cp	-section=SEC
+texinfo#index-_002d_002dverbose	cp	-verbose
+texinfo#index-_002d_002dversion	cp	-version
+texinfo#index-_002d_002dversion-1	cp	-version 
+texinfo#index-_002d_002dxml	cp	-xml
+texinfo#index-_002ecshrc-initialization-file	cp	.cshrc initialization file
+texinfo#index-_002eprofile-initialization-file	cp	.profile initialization file
+texinfo#index-_003cURL-convention_002c-not-used	cp	<URL convention, not used
+texinfo#index-_003cmeta_003e-HTML-tag_002c-and-document-description	cp	<meta> HTML tag, and document description
+texinfo#index-_003ctitle_003e-HTML-tag	cp	<title> HTML tag
+texinfo#index-_00bf	cp	?
+texinfo#index-_0040_002dcommand-list	cp	@-command list
+texinfo#index-_0040_002dcommand-syntax	cp	@-command syntax
+texinfo#index-_0040_002dcommands	cp	@-commands
+texinfo#index-_0040_002dcommands-in-_0040node_002c-limited-support	cp	@-commands in @node, limited support
+texinfo#index-_0040_002dcommands-in-nodename	cp	@-commands in nodename
+texinfo#index-_0040value-in-_0040node-lines	cp	@value in @node lines
+texinfo#index-A4-paper_002c-printing-on	cp	A4 paper, printing on
+texinfo#index-A5-paper_002c-printing-on	cp	A5 paper, printing on
+texinfo#index-AA-1	cp	AA
+texinfo#index-AE-1	cp	AE
+texinfo#index-ASCII-text-output	cp	ASCII text output
+texinfo#index-Abbreviations-for-keys	cp	Abbreviations for keys
+texinfo#index-Abbreviations_002c-tagging	cp	Abbreviations, tagging
+texinfo#index-Abstract-of-document	cp	Abstract of document
+texinfo#index-Accents_002c-inserting	cp	Accents, inserting
+texinfo#index-Acronyms_002c-tagging	cp	Acronyms, tagging
+texinfo#index-Acute-accent	cp	Acute accent
+texinfo#index-Adding-a-new-Info-file	cp	Adding a new Info file
+texinfo#index-Aliases_002c-command	cp	Aliases, command
+texinfo#index-Alphabetical-_0040_002dcommand-list	cp	Alphabetical @-command list
+texinfo#index-Anchors	cp	Anchors
+texinfo#index-Another-Info-directory	cp	Another Info directory
+texinfo#index-Apostrophe-in-nodename	cp	Apostrophe in nodename
+texinfo#index-Arguments_002c-repeated-and-optional	cp	Arguments, repeated and optional
+texinfo#index-Aspect-ratio-of-images	cp	Aspect ratio of images
+texinfo#index-Automatic-pointer-creation-with-makeinfo	cp	Automatic pointer creation with `makeinfo'
+texinfo#index-Automatically-insert-nodes_002c-menus	cp	Automatically insert nodes, menus
+texinfo#index-Auxiliary-files_002c-avoiding	cp	Auxiliary files, avoiding
+texinfo#index-B5-paper_002c-printing-on	cp	B5 paper, printing on
+texinfo#index-Backslash-in-macros	cp	Backslash in macros
+texinfo#index-Backslash_002c-and-macros	cp	Backslash, and macros
+texinfo#index-Badly-referenced-nodes	cp	Badly referenced nodes
+texinfo#index-Bastard-title-page	cp	Bastard title page
+texinfo#index-Batch-formatting-for-Info	cp	Batch formatting for Info
+texinfo#index-Beginning-a-Texinfo-file	cp	Beginning a Texinfo file
+texinfo#index-Beginning-line-of-a-Texinfo-file	cp	Beginning line of a Texinfo file
+texinfo#index-Berry_002c-Karl	cp	Berry, Karl
+texinfo#index-Big-points	cp	Big points
+texinfo#index-Black-rectangle-in-hardcopy	cp	Black rectangle in hardcopy
+texinfo#index-Blank-lines	cp	Blank lines
+texinfo#index-BoTeX	cp	BoTeX
+texinfo#index-Body-of-a-macro	cp	Body of a macro
+texinfo#index-Bolio	cp	Bolio
+texinfo#index-Book-characteristics_002c-printed	cp	Book characteristics, printed
+texinfo#index-Book_002c-printing-small	cp	Book, printing small
+texinfo#index-Box-with-rounded-corners	cp	Box with rounded corners
+texinfo#index-Box_002c-ugly-black-in-hardcopy	cp	Box, ugly black in hardcopy
+texinfo#index-Braces-and-argument-syntax	cp	Braces and argument syntax
+texinfo#index-Braces_002c-in-macro-arguments	cp	Braces, in macro arguments
+texinfo#index-Braces_002c-inserting	cp	Braces, inserting
+texinfo#index-Braces_002c-when-to-use	cp	Braces, when to use
+texinfo#index-Breaks-in-a-line	cp	Breaks in a line
+texinfo#index-Breve-accent	cp	Breve accent
+texinfo#index-Buffer-formatting-and-printing	cp	Buffer formatting and printing
+texinfo#index-Bugs_002c-reporting	cp	Bugs, reporting
+texinfo#index-Bullets_002c-inserting	cp	Bullets, inserting
+texinfo#index-CVS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo	cp	CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+texinfo#index-Case-in-node-name	cp	Case in node name
+texinfo#index-Case_002c-not-altering-in-_0040code	cp	Case, not altering in `code'
+texinfo#index-Catching-errors-with-Info-formatting	cp	Catching errors with Info formatting
+texinfo#index-Catching-errors-with-TeX-formatting	cp	Catching errors with TeX formatting
+texinfo#index-Catching-mistakes	cp	Catching mistakes
+texinfo#index-Cedilla-accent	cp	Cedilla accent
+texinfo#index-Centimeters	cp	Centimeters
+texinfo#index-Chapter-structuring	cp	Chapter structuring
+texinfo#index-Chapters_002c-formatting-one-at-a-time	cp	Chapters, formatting one at a time
+texinfo#index-Characteristics_002c-printed-books-or-manuals	cp	Characteristics, printed books or manuals
+texinfo#index-Characters_002c-invalid-in-node-name	cp	Characters, invalid in node name
+texinfo#index-Chassell_002c-Robert-J_002e	cp	Chassell, Robert J.
+texinfo#index-Check-accent	cp	Check accent
+texinfo#index-Checking-for-badly-referenced-nodes	cp	Checking for badly referenced nodes
+texinfo#index-Checklist-for-bug-reports	cp	Checklist for bug reports
+texinfo#index-Ciceros	cp	Ciceros
+texinfo#index-Circumflex-accent	cp	Circumflex accent
+texinfo#index-Colon-in-nodename	cp	Colon in nodename
+texinfo#index-Column-widths_002c-defining-for-multitables	cp	Column widths, defining for multitables
+texinfo#index-Combining-indices	cp	Combining indices
+texinfo#index-Comma-in-nodename	cp	Comma in nodename
+texinfo#index-Comma_002c-in-macro-arguments	cp	Comma, in macro arguments
+texinfo#index-Command-aliases	cp	Command aliases
+texinfo#index-Command-definitions	cp	Command definitions
+texinfo#index-Command-names_002c-indicating	cp	Command names, indicating
+texinfo#index-Command-syntax	cp	Command syntax
+texinfo#index-Commands-to-insert-special-characters	cp	Commands to insert special characters
+texinfo#index-Commands-using-raw-HTML	cp	Commands using raw HTML
+texinfo#index-Commands-using-raw-TeX	cp	Commands using raw TeX
+texinfo#index-Commands_002c-inserting-them	cp	Commands, inserting them
+texinfo#index-Comments	cp	Comments
+texinfo#index-Compile-command-for-formatting	cp	Compile command for formatting
+texinfo#index-Compressed-files_002c-reading	cp	Compressed files, reading
+texinfo#index-Conditionally-visible-text	cp	Conditionally visible text
+texinfo#index-Conditions-for-copying-Texinfo	cp	Conditions for copying Texinfo
+texinfo#index-Contents_002c-Table-of	cp	Contents, Table of
+texinfo#index-Contents_002c-after-title-page	cp	Contents, after title page
+texinfo#index-Contents_002dlike-outline-of-file-structure	cp	Contents-like outline of file structure
+texinfo#index-Conventions-for-writing-definitions	cp	Conventions for writing definitions
+texinfo#index-Conventions_002c-syntactic	cp	Conventions, syntactic
+texinfo#index-Conversion_002c-from-Docbook-to-Texinfo	cp	Conversion, from Docbook to Texinfo
+texinfo#index-Copying-Permissions	cp	Copying Permissions
+texinfo#index-Copying-conditions	cp	Copying conditions
+texinfo#index-Copying-software	cp	Copying software
+texinfo#index-Copying-text_002c-including	cp	Copying text, including
+texinfo#index-Copyright-owner-for-FSF-works	cp	Copyright owner for FSF works
+texinfo#index-Copyright-page	cp	Copyright page
+texinfo#index-Copyright-page_002c-for-plain-text	cp	Copyright page, for plain text
+texinfo#index-Copyright-word_002c-always-in-English	cp	Copyright word, always in English
+texinfo#index-Correcting-mistakes	cp	Correcting mistakes
+texinfo#index-Create-nodes_002c-menus-automatically	cp	Create nodes, menus automatically
+texinfo#index-Creating-an-Info-file	cp	Creating an Info file
+texinfo#index-Creating-an-unsplit-file	cp	Creating an unsplit file
+texinfo#index-Creating-index-entries	cp	Creating index entries
+texinfo#index-Creating-pointers-with-makeinfo	cp	Creating pointers with `makeinfo'
+texinfo#index-Cropmarks-for-printing	cp	Cropmarks for printing
+texinfo#index-Cross-reference-parts	cp	Cross reference parts
+texinfo#index-Cross-references	cp	Cross references
+texinfo#index-Cross-references-using-_0040inforef	cp	Cross references using `inforef'
+texinfo#index-Cross-references-using-_0040pxref	cp	Cross references using `pxref'
+texinfo#index-Cross-references-using-_0040ref	cp	Cross references using `ref'
+texinfo#index-Cross-references-using-_0040xref	cp	Cross references using `xref'
+texinfo#index-Cross_002dreference-targets_002c-arbitrary	cp	Cross-reference targets, arbitrary
+texinfo#index-Custom-page-sizes	cp	Custom page sizes
+texinfo#index-Customize-Emacs-package-_0028Development_002fDocs_002fTexinfo_0029	cp	Customize Emacs package (Development/Docs/Texinfo)
+texinfo#index-Customized-highlighting	cp	Customized highlighting
+texinfo#index-Customizing-of-TeX-for-Texinfo	cp	Customizing of TeX for Texinfo
+texinfo#index-DVI-file	cp	DVI file
+texinfo#index-Debugging-the-Texinfo-structure	cp	Debugging the Texinfo structure
+texinfo#index-Debugging-with-Info-formatting	cp	Debugging with Info formatting
+texinfo#index-Debugging-with-TeX-formatting	cp	Debugging with TeX formatting
+texinfo#index-Defining-indexing-entries	cp	Defining indexing entries
+texinfo#index-Defining-macros	cp	Defining macros
+texinfo#index-Defining-new-Texinfo-commands	cp	Defining new Texinfo commands
+texinfo#index-Defining-new-indices	cp	Defining new indices
+texinfo#index-Definition-commands	cp	Definition commands
+texinfo#index-Definition-conventions	cp	Definition conventions
+texinfo#index-Definition-template	cp	Definition template
+texinfo#index-Definitions-grouped-together	cp	Definitions grouped together
+texinfo#index-Delimiter-character_002c-for-verbatim	cp	Delimiter character, for verbatim
+texinfo#index-Depth-of-text-area	cp	Depth of text area
+texinfo#index-Description-for-menu_002c-start	cp	Description for menu, start
+texinfo#index-Description-of-document	cp	Description of document
+texinfo#index-Details-of-macro-usage	cp	Details of macro usage
+texinfo#index-Didot-points	cp	Dido^t points
+texinfo#index-Different-cross-reference-commands	cp	Different cross reference commands
+texinfo#index-Dimension-formatting	cp	Dimension formatting
+texinfo#index-Dimensions-and-image-sizes	cp	Dimensions and image sizes
+texinfo#index-Dir-files_002c-compressed	cp	Dir files, compressed
+texinfo#index-Display-formatting	cp	Display formatting
+texinfo#index-Displayed-equations	cp	Displayed equations
+texinfo#index-Distorting-images	cp	Distorting images
+texinfo#index-Distribution	cp	Distribution
+texinfo#index-Docbook_002c-converting-to-Texinfo	cp	Docbook, converting to Texinfo
+texinfo#index-Document-Permissions	cp	Document Permissions
+texinfo#index-Document-description	cp	Document description
+texinfo#index-Document-input-encoding	cp	Document input encoding
+texinfo#index-Document-language_002c-declaring	cp	Document language, declaring
+texinfo#index-Dot-accent	cp	Dot accent
+texinfo#index-Dotless-i_002c-j	cp	Dotless i, j
+texinfo#index-Dots_002c-inserting	cp	Dots, inserting
+texinfo#index-Dots_002c-inserting-1	cp	Dots, inserting 
+texinfo#index-Double_002dcolon-menu-entries	cp	Double-colon menu entries
+texinfo#index-Dumping-a-_002efmt-file	cp	Dumping a .fmt file
+texinfo#index-Ellipsis_002c-inserting	cp	Ellipsis, inserting
+texinfo#index-Emacs	cp	Emacs
+texinfo#index-Emacs-shell_002c-format_002c-print-from	cp	Emacs shell, format, print from
+texinfo#index-Emphasizing-text	cp	Emphasizing text
+texinfo#index-Emphasizing-text_002c-font-for	cp	Emphasizing text, font for
+texinfo#index-Encoding_002c-declaring	cp	Encoding, declaring
+texinfo#index-End-of-header-line	cp	End of header line
+texinfo#index-End-titlepage-starts-headings	cp	End titlepage starts headings
+texinfo#index-Ending-a-Sentence	cp	Ending a Sentence
+texinfo#index-Ending-a-Texinfo-file	cp	Ending a Texinfo file
+texinfo#index-Entries-for-an-index	cp	Entries for an index
+texinfo#index-Entries_002c-making-index	cp	Entries, making index
+texinfo#index-Enumeration	cp	Enumeration
+texinfo#index-Environment-indentation	cp	Environment indentation
+texinfo#index-Equations_002c-displayed	cp	Equations, displayed
+texinfo#index-Equivalence_002c-indicating-it	cp	Equivalence, indicating it
+texinfo#index-Error-message_002c-indicating-it	cp	Error message, indicating it
+texinfo#index-Errors_002c-parsing	cp	Errors, parsing
+texinfo#index-Es_002dzet	cp	Es-zet
+texinfo#index-European-A4-paper	cp	European A4 paper
+texinfo#index-Evaluation-glyph	cp	Evaluation glyph
+texinfo#index-Example-beginning-of-Texinfo-file	cp	Example beginning of Texinfo file
+texinfo#index-Example-indentation	cp	Example indentation
+texinfo#index-Example-menu	cp	Example menu
+texinfo#index-Examples-in-smaller-fonts	cp	Examples in smaller fonts
+texinfo#index-Examples_002c-formatting-them	cp	Examples, formatting them
+texinfo#index-Examples_002c-glyphs-for	cp	Examples, glyphs for
+texinfo#index-Expanding-macros	cp	Expanding macros
+texinfo#index-Expansion_002c-indicating-it	cp	Expansion, indicating it
+texinfo#index-Expressions-in-a-program_002c-indicating	cp	Expressions in a program, indicating
+texinfo#index-F_002eB_002eI_002e_002c-as-acronym	cp	F.B.I., as acronym
+texinfo#index-FDL_002c-GNU-Free-Documentation-License	cp	FDL, GNU Free Documentation License
+texinfo#index-File-beginning	cp	File beginning
+texinfo#index-File-ending	cp	File ending
+texinfo#index-File-name-collision	cp	File name collision
+texinfo#index-File-section-structure_002c-showing-it	cp	File section structure, showing it
+texinfo#index-Filling-paragraphs	cp	Filling paragraphs
+texinfo#index-Final-output	cp	Final output
+texinfo#index-Finding-badly-referenced-nodes	cp	Finding badly referenced nodes
+texinfo#index-Fine_002dtuning_002c-and-hyphenation	cp	Fine-tuning, and hyphenation
+texinfo#index-First-line-of-a-Texinfo-file	cp	First line of a Texinfo file
+texinfo#index-First-node	cp	First node
+texinfo#index-Floating-accents_002c-inserting	cp	Floating accents, inserting
+texinfo#index-Flooding	cp	Flooding
+texinfo#index-Fonts-for-indices	cp	Fonts for indices
+texinfo#index-Fonts-for-printing_002c-not-for-Info	cp	Fonts for printing, not for Info
+texinfo#index-Footings	cp	Footings
+texinfo#index-Footnotes	cp	Footnotes
+texinfo#index-Format-a-dimension	cp	Format a dimension
+texinfo#index-Format-and-print-hardcopy	cp	Format and print hardcopy
+texinfo#index-Format-and-print-in-Texinfo-mode	cp	Format and print in Texinfo mode
+texinfo#index-Format-file_002c-dumping	cp	Format file, dumping
+texinfo#index-Format-with-the-compile-command	cp	Format with the compile command
+texinfo#index-Format_002c-print-from-Emacs-shell	cp	Format, print from Emacs shell
+texinfo#index-Formats-for-images	cp	Formats for images
+texinfo#index-Formatting-a-file-for-Info	cp	Formatting a file for Info
+texinfo#index-Formatting-commands	cp	Formatting commands
+texinfo#index-Formatting-examples	cp	Formatting examples
+texinfo#index-Formatting-for-Info	cp	Formatting for Info
+texinfo#index-Formatting-for-printing	cp	Formatting for printing
+texinfo#index-Formatting-headings-and-footings	cp	Formatting headings and footings
+texinfo#index-Formatting-requirements	cp	Formatting requirements
+texinfo#index-Formatting-with-tex-and-texindex	cp	Formatting with `tex' and `texindex'
+texinfo#index-Formulas_002c-mathematical	cp	Formulas, mathematical
+texinfo#index-Fox_002c-Brian	cp	Fox, Brian
+texinfo#index-Frequently-used-commands_002c-inserting	cp	Frequently used commands, inserting
+texinfo#index-Full-texts_002c-GNU	cp	Full texts, GNU
+texinfo#index-Function-definitions	cp	Function definitions
+texinfo#index-GIF_002c-unsupported-due-to-patents	cp	GIF, unsupported due to patents
+texinfo#index-GNU-Emacs	cp	GNU Emacs
+texinfo#index-GNU-Emacs-shell_002c-format_002c-print-from	cp	GNU Emacs shell, format, print from
+texinfo#index-GNU-sample-texts	cp	GNU sample texts
+texinfo#index-General-syntactic-conventions	cp	General syntactic conventions
+texinfo#index-Generating-menus-with-indices	cp	Generating menus with indices
+texinfo#index-Generating-plain-text-files	cp	Generating plain text files
+texinfo#index-German-S	cp	German S
+texinfo#index-Global-Document-Commands	cp	Global Document Commands
+texinfo#index-Globbing	cp	Globbing
+texinfo#index-Glyphs	cp	Glyphs
+texinfo#index-Going-to-other-Info-files_0027-nodes	cp	Going to other Info files' nodes
+texinfo#index-Grave-accent	cp	Grave accent
+texinfo#index-Group-_0028hold-text-together-vertically_0029	cp	Group (hold text together vertically)
+texinfo#index-Grouping-two-definitions-together	cp	Grouping two definitions together
+texinfo#index-HTML	cp	HTML
+texinfo#index-HTML-commands_002c-using-ordinary	cp	HTML commands, using ordinary
+texinfo#index-Hardcopy_002c-printing-it	cp	Hardcopy, printing it
+texinfo#index-Header-for-Texinfo-files	cp	Header for Texinfo files
+texinfo#index-Header-of-a-Texinfo-file	cp	Header of a Texinfo file
+texinfo#index-Headings	cp	Headings
+texinfo#index-Headings_002c-page_002c-begin-to-appear	cp	Headings, page, begin to appear
+texinfo#index-Height-of-images	cp	Height of images
+texinfo#index-Height-of-text-area	cp	Height of text area
+texinfo#index-Highlighting-text	cp	Highlighting text
+texinfo#index-Highlighting_002c-customized	cp	Highlighting, customized
+texinfo#index-Hints	cp	Hints
+texinfo#index-History-of-Texinfo	cp	History of Texinfo
+texinfo#index-Holding-text-together-vertically	cp	Holding text together vertically
+texinfo#index-Hungarian-umlaut-accent	cp	Hungarian umlaut accent
+texinfo#index-Hurricanes	cp	Hurricanes
+texinfo#index-Hyphenation-patterns_002c-language_002ddependent	cp	Hyphenation patterns, language-dependent
+texinfo#index-Hyphenation_002c-helping-TeX-do	cp	Hyphenation, helping TeX do
+texinfo#index-Hyphenation_002c-preventing	cp	Hyphenation, preventing
+texinfo#index-INFOPATH	cp	INFOPATH
+texinfo#index-ISO-639-codes	cp	ISO 639 codes
+texinfo#index-If-text-conditionally-visible	cp	If text conditionally visible
+texinfo#index-Ignored-before-_0040setfilename	cp	Ignored before `setfilename'
+texinfo#index-Ignored-text	cp	Ignored text
+texinfo#index-Image-formats	cp	Image formats
+texinfo#index-Images_002c-inserting	cp	Images, inserting
+texinfo#index-Inches	cp	Inches
+texinfo#index-Include-file-requirements	cp	Include file requirements
+texinfo#index-Include-file-sample	cp	Include file sample
+texinfo#index-Include-files	cp	Include files
+texinfo#index-Include-files_002c-and-section-levels	cp	Include files, and section levels
+texinfo#index-Including-a-file-verbatim	cp	Including a file verbatim
+texinfo#index-Including-permissions-text	cp	Including permissions text
+texinfo#index-Indentation-undoing	cp	Indentation undoing
+texinfo#index-Indenting-environments	cp	Indenting environments
+texinfo#index-Indenting-paragraphs_002c-control-of	cp	Indenting paragraphs, control of
+texinfo#index-Index-entries	cp	Index entries
+texinfo#index-Index-entries_002c-making	cp	Index entries, making
+texinfo#index-Index-entry-writing	cp	Index entry writing
+texinfo#index-Index-file-names	cp	Index file names
+texinfo#index-Index-font-types	cp	Index font types
+texinfo#index-Indexing-commands_002c-predefined	cp	Indexing commands, predefined
+texinfo#index-Indexing-table-entries-automatically	cp	Indexing table entries automatically
+texinfo#index-Indicating-commands_002c-definitions_002c-etc_002e	cp	Indicating commands, definitions, etc.
+texinfo#index-Indicating-evaluation	cp	Indicating evaluation
+texinfo#index-Indices	cp	Indices
+texinfo#index-Indices_002c-combining-them	cp	Indices, combining them
+texinfo#index-Indices_002c-defining-new	cp	Indices, defining new
+texinfo#index-Indices_002c-printing-and-menus	cp	Indices, printing and menus
+texinfo#index-Indices_002c-sorting	cp	Indices, sorting
+texinfo#index-Indices_002c-two-letter-names	cp	Indices, two letter names
+texinfo#index-Indirect-subfiles	cp	Indirect subfiles
+texinfo#index-Info-batch-formatting	cp	Info batch formatting
+texinfo#index-Info-file-installation	cp	Info file installation
+texinfo#index-Info-file-name_002c-choosing	cp	Info file name, choosing
+texinfo#index-Info-file_002c-listing-a-new	cp	Info file, listing a new
+texinfo#index-Info-file_002c-splitting-manually	cp	Info file, splitting manually
+texinfo#index-Info-files	cp	Info files
+texinfo#index-Info-formatting	cp	Info formatting
+texinfo#index-Info-installed-in-another-directory	cp	Info installed in another directory
+texinfo#index-Info-validating-a-large-file	cp	Info validating a large file
+texinfo#index-Info_002c-creating-an-online-file	cp	Info, creating an online file
+texinfo#index-Info_002ddirectory_002dlist	cp	Info-directory-list
+texinfo#index-Info_003b-other-files_0027-nodes	cp	Info; other files' nodes
+texinfo#index-Initialization-file-for-TeX-input	cp	Initialization file for TeX input
+texinfo#index-Input-encoding_002c-declaring	cp	Input encoding, declaring
+texinfo#index-Insert-nodes_002c-menus-automatically	cp	Insert nodes, menus automatically
+texinfo#index-Inserting-_0040_002c-braces	cp	Inserting @, braces
+texinfo#index-Inserting-accents	cp	Inserting accents
+texinfo#index-Inserting-dots	cp	Inserting dots
+texinfo#index-Inserting-dots-1	cp	Inserting dots 
+texinfo#index-Inserting-ellipsis	cp	Inserting ellipsis
+texinfo#index-Inserting-frequently-used-commands	cp	Inserting frequently used commands
+texinfo#index-Inserting-space	cp	Inserting space
+texinfo#index-Inserting-special-characters-and-symbols	cp	Inserting special characters and symbols
+texinfo#index-Installing-Info-in-another-directory	cp	Installing Info in another directory
+texinfo#index-Installing-an-Info-file	cp	Installing an Info file
+texinfo#index-Internationalization	cp	Internationalization
+texinfo#index-Introduction-to-Texinfo	cp	Introduction to Texinfo
+texinfo#index-Introduction_002c-as-part-of-file	cp	Introduction, as part of file
+texinfo#index-Invalid-characters-in-node-names	cp	Invalid characters in node names
+texinfo#index-Invoking-macros	cp	Invoking macros
+texinfo#index-Itemization	cp	Itemization
+texinfo#index-JPG-image-format	cp	JPG image format
+texinfo#index-Keyboard-input	cp	Keyboard input
+texinfo#index-Keys_002c-recommended-names	cp	Keys, recommended names
+texinfo#index-Keywords_002c-indicating	cp	Keywords, indicating
+texinfo#index-Knuth_002c-Donald	cp	Knuth, Donald
+texinfo#index-L-1	cp	L
+texinfo#index-Language-codes	cp	Language codes
+texinfo#index-Language_002c-declaring	cp	Language, declaring
+texinfo#index-Larger-or-smaller-pages	cp	Larger or smaller pages
+texinfo#index-Legal-paper_002c-printing-on	cp	Legal paper, printing on
+texinfo#index-Length-of-file-names	cp	Length of file names
+texinfo#index-Less-cluttered-menu-entry	cp	Less cluttered menu entry
+texinfo#index-License-agreement	cp	License agreement
+texinfo#index-Line-breaks	cp	Line breaks
+texinfo#index-Line-breaks-1	cp	Line breaks 
+texinfo#index-Line-breaks_002c-preventing	cp	Line breaks, preventing
+texinfo#index-Line-length_002c-column-widths-as-fraction-of	cp	Line length, column widths as fraction of
+texinfo#index-Line-spacing	cp	Line spacing
+texinfo#index-Lisp-example	cp	Lisp example
+texinfo#index-Lisp-examples-in-smaller-fonts	cp	Lisp examples in smaller fonts
+texinfo#index-List-of--_0040_002dcommands	cp	List of  @-commands
+texinfo#index-Listing-a-new-Info-file	cp	Listing a new Info file
+texinfo#index-Lists-and-tables_002c-making	cp	Lists and tables, making
+texinfo#index-Local-variables	cp	Local variables
+texinfo#index-Location-of-menus	cp	Location of menus
+texinfo#index-Looking-for-badly-referenced-nodes	cp	Looking for badly referenced nodes
+texinfo#index-META-key	cp	META key
+texinfo#index-Macro-definitions	cp	Macro definitions
+texinfo#index-Macro-definitions-1	cp	Macro definitions 
+texinfo#index-Macro-details	cp	Macro details
+texinfo#index-Macro-invocation	cp	Macro invocation
+texinfo#index-Macron-accent	cp	Macron accent
+texinfo#index-Macros	cp	Macros
+texinfo#index-Macros-in-definition-commands	cp	Macros in definition commands
+texinfo#index-Macros_002c-undefining	cp	Macros, undefining
+texinfo#index-Magnified-printing	cp	Magnified printing
+texinfo#index-Making-a-printed-manual	cp	Making a printed manual
+texinfo#index-Making-a-tag-table-automatically	cp	Making a tag table automatically
+texinfo#index-Making-a-tag-table-manually	cp	Making a tag table manually
+texinfo#index-Making-cross-references	cp	Making cross references
+texinfo#index-Making-line-and-page-breaks	cp	Making line and page breaks
+texinfo#index-Making-lists-and-tables	cp	Making lists and tables
+texinfo#index-Man-page-output_002c-not-supported	cp	Man page output, not supported
+texinfo#index-Man-page_002c-reference-to	cp	Man page, reference to
+texinfo#index-Manual-characteristics_002c-printed	cp	Manual characteristics, printed
+texinfo#index-Margins-on-page_002c-not-controllable	cp	Margins on page, not controllable
+texinfo#index-Marking-text-within-a-paragraph	cp	Marking text within a paragraph
+texinfo#index-Marking-words-and-phrases	cp	Marking words and phrases
+texinfo#index-Master-menu	cp	Master menu
+texinfo#index-Mathematical-expressions	cp	Mathematical expressions
+texinfo#index-Mathematical-expressions-1	cp	Mathematical expressions 
+texinfo#index-Menu-description_002c-start	cp	Menu description, start
+texinfo#index-Menu-entries-with-two-colons	cp	Menu entries with two colons
+texinfo#index-Menu-example	cp	Menu example
+texinfo#index-Menu-location	cp	Menu location
+texinfo#index-Menu-parts	cp	Menu parts
+texinfo#index-Menu-writing	cp	Menu writing
+texinfo#index-Menu_002c-master	cp	Menu, master
+texinfo#index-Menus	cp	Menus
+texinfo#index-Menus-generated-with-indices	cp	Menus generated with indices
+texinfo#index-Menus_002c-omitting	cp	Menus, omitting
+texinfo#index-Meta_002dsyntactic-chars-for-arguments	cp	Meta-syntactic chars for arguments
+texinfo#index-Millimeters	cp	Millimeters
+texinfo#index-Minimal-Texinfo-file-_0028requirements_0029	cp	Minimal Texinfo file (requirements)
+texinfo#index-Minimal-requirements-for-formatting	cp	Minimal requirements for formatting
+texinfo#index-Mistakes_002c-catching	cp	Mistakes, catching
+texinfo#index-Mode_002c-using-Texinfo	cp	Mode, using Texinfo
+texinfo#index-Multiple-spaces	cp	Multiple spaces
+texinfo#index-Multitable-column-widths	cp	Multitable column widths
+texinfo#index-Multitable-rows	cp	Multitable rows
+texinfo#index-Must-have-in-Texinfo-file	cp	Must have in Texinfo file
+texinfo#index-Mutually-recursive-macros	cp	Mutually recursive macros
+texinfo#index-NASA_002c-as-acronym	cp	NASA, as acronym
+texinfo#index-Names-for-indices	cp	Names for indices
+texinfo#index-Names-of-index-files	cp	Names of index files
+texinfo#index-Names-recommended-for-keys	cp	Names recommended for keys
+texinfo#index-Naming-a-_0060Top_0027-Node-in-references	cp	Naming a `Top' Node in references
+texinfo#index-Navigation-links_002c-omitting	cp	Navigation links, omitting
+texinfo#index-Need-space-at-page-bottom	cp	Need space at page bottom
+texinfo#index-New-Info-file_002c-listing-it-in-dir-file	cp	New Info file, listing it in `dir' file
+texinfo#index-New-Texinfo-commands_002c-defining	cp	New Texinfo commands, defining
+texinfo#index-New-index-defining	cp	New index defining
+texinfo#index-Next-node-of-Top-node	cp	Next node of Top node
+texinfo#index-Node-line-requirements	cp	Node line requirements
+texinfo#index-Node-line-writing	cp	Node line writing
+texinfo#index-Node-name-must-be-unique	cp	Node name must be unique
+texinfo#index-Node-name_002c-should-not-contain-_0040_002dcommands	cp	Node name, should not contain @-commands
+texinfo#index-Node-names_002c-choosing	cp	Node names, choosing
+texinfo#index-Node-separators_002c-omitting	cp	Node separators, omitting
+texinfo#index-Node_002c-_0060Top_0027	cp	Node, `Top'
+texinfo#index-Node_002c-defined	cp	Node, defined
+texinfo#index-Nodes-for-menus-are-short	cp	Nodes for menus are short
+texinfo#index-Nodes-in-other-Info-files	cp	Nodes in other Info files
+texinfo#index-Nodes_002c-catching-mistakes	cp	Nodes, catching mistakes
+texinfo#index-Nodes_002c-checking-for-badly-referenced	cp	Nodes, checking for badly referenced
+texinfo#index-Non_002dbreakable-space	cp	Non-breakable space
+texinfo#index-Not-ending-a-sentence	cp	Not ending a sentence
+texinfo#index-OE	cp	O
+texinfo#index-O_0027Dea_002c-Brendan	cp	O'Dea, Brendan
+texinfo#index-OE-2	cp	OE
+texinfo#index-Obtaining-TeX	cp	Obtaining TeX
+texinfo#index-Occurrences_002c-listing-with-_0040occur	cp	Occurrences, listing with `occur'
+texinfo#index-Optional-and-repeated-arguments	cp	Optional and repeated arguments
+texinfo#index-Options-for-makeinfo	cp	Options for `makeinfo'
+texinfo#index-Ordinary-HTML-commands_002c-using	cp	Ordinary HTML commands, using
+texinfo#index-Ordinary-TeX-commands_002c-using	cp	Ordinary TeX commands, using
+texinfo#index-Other-Info-files_0027-nodes	cp	Other Info files' nodes
+texinfo#index-Outline-of-file-structure_002c-showing-it	cp	Outline of file structure, showing it
+texinfo#index-Output-file-splitting	cp	Output file splitting
+texinfo#index-Output-formats_002c-supporting-more	cp	Output formats, supporting more
+texinfo#index-Overfull-hboxes	cp	Overfull `hboxes'
+texinfo#index-Overview-of-Texinfo	cp	Overview of Texinfo
+texinfo#index-PDF-output	cp	PDF output
+texinfo#index-PNG-image-format	cp	PNG image format
+texinfo#index-Page-breaks	cp	Page breaks
+texinfo#index-Page-breaks-1	cp	Page breaks 
+texinfo#index-Page-delimiter-in-Texinfo-mode	cp	Page delimiter in Texinfo mode
+texinfo#index-Page-headings	cp	Page headings
+texinfo#index-Page-numbering	cp	Page numbering
+texinfo#index-Page-sizes-for-books	cp	Page sizes for books
+texinfo#index-Page-sizes_002c-customized	cp	Page sizes, customized
+texinfo#index-Pages_002c-starting-odd	cp	Pages, starting odd
+texinfo#index-Paper-size_002c-A4	cp	Paper size, A4
+texinfo#index-Paragraph-indentation-control	cp	Paragraph indentation control
+texinfo#index-Paragraph_002c-marking-text-within	cp	Paragraph, marking text within
+texinfo#index-Paragraphs_002c-filling	cp	Paragraphs, filling
+texinfo#index-Parameters-to-macros	cp	Parameters to macros
+texinfo#index-Parentheses-in-nodename	cp	Parentheses in nodename
+texinfo#index-Parsing-errors	cp	Parsing errors
+texinfo#index-Part-of-file-formatting-and-printing	cp	Part of file formatting and printing
+texinfo#index-Parts-of-a-cross-reference	cp	Parts of a cross reference
+texinfo#index-Parts-of-a-master-menu	cp	Parts of a master menu
+texinfo#index-Parts-of-a-menu	cp	Parts of a menu
+texinfo#index-Patches_002c-contributing	cp	Patches, contributing
+texinfo#index-Period-in-nodename	cp	Period in nodename
+texinfo#index-Periods_002c-inserting	cp	Periods, inserting
+texinfo#index-Permissions-text_002c-including	cp	Permissions text, including
+texinfo#index-Permissions_002c-printed	cp	Permissions, printed
+texinfo#index-Picas	cp	Picas
+texinfo#index-Pictures_002c-inserting	cp	Pictures, inserting
+texinfo#index-Pinard_002c-Francois	cp	Pinard, Franc,ois
+texinfo#index-Plain-text-output	cp	Plain text output
+texinfo#index-Point_002c-indicating-in-a-buffer	cp	Point, indicating in a buffer
+texinfo#index-Pointer-creation-with-makeinfo	cp	Pointer creation with `makeinfo'
+texinfo#index-Pointer-validation-with-makeinfo	cp	Pointer validation with `makeinfo'
+texinfo#index-Pointer-validation_002c-suppressing	cp	Pointer validation, suppressing
+texinfo#index-Pointer-validation_002c-suppressing-1	cp	Pointer validation, suppressing 
+texinfo#index-Points-_0028dimension_0029	cp	Points (dimension)
+texinfo#index-Predefined-indexing-commands	cp	Predefined indexing commands
+texinfo#index-Predefined-names-for-indices	cp	Predefined names for indices
+texinfo#index-Preparing-for-TeX	cp	Preparing for TeX
+texinfo#index-Preventing-line-and-page-breaks	cp	Preventing line and page breaks
+texinfo#index-Previous-node-of-Top-node	cp	Previous node of Top node
+texinfo#index-Print-and-format-in-Texinfo-mode	cp	Print and format in Texinfo mode
+texinfo#index-Print_002c-format-from-Emacs-shell	cp	Print, format from Emacs shell
+texinfo#index-Printed-book-and-manual-characteristics	cp	Printed book and manual characteristics
+texinfo#index-Printed-output_002c-indicating-it	cp	Printed output, indicating it
+texinfo#index-Printed-permissions	cp	Printed permissions
+texinfo#index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows	cp	Printing DVI files, on MS-DOS/MS-Windows
+texinfo#index-Printing-a-region-or-buffer	cp	Printing a region or buffer
+texinfo#index-Printing-an-index	cp	Printing an index
+texinfo#index-Printing-cropmarks	cp	Printing cropmarks
+texinfo#index-Printing-hardcopy	cp	Printing hardcopy
+texinfo#index-Problems_002c-catching	cp	Problems, catching
+texinfo#index-Program-names_002c-indicating	cp	Program names, indicating
+texinfo#index-Prototype-row_002c-column-widths-defined-by	cp	Prototype row, column widths defined by
+texinfo#index-Quotations	cp	Quotations
+texinfo#index-RCS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo	cp	RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo
+texinfo#index-Raising-and-lowering-sections	cp	Raising and lowering sections
+texinfo#index-Raw-formatter-commands	cp	Raw formatter commands
+texinfo#index-Recommended-names-for-keys	cp	Recommended names for keys
+texinfo#index-Rectangle_002c-black-in-hardcopy	cp	Rectangle, black in hardcopy
+texinfo#index-Recursion_002c-mutual	cp	Recursion, mutual
+texinfo#index-Recursive-macro-invocations	cp	Recursive macro invocations
+texinfo#index-Reference-to-_0040_002dcommands	cp	Reference to @-commands
+texinfo#index-References	cp	References
+texinfo#index-References-using-_0040inforef	cp	References using `inforef'
+texinfo#index-References-using-_0040pxref	cp	References using `pxref'
+texinfo#index-References-using-_0040ref	cp	References using `ref'
+texinfo#index-References-using-_0040xref	cp	References using `xref'
+texinfo#index-Referring-to-other-Info-files	cp	Referring to other Info files
+texinfo#index-Refilling-paragraphs	cp	Refilling paragraphs
+texinfo#index-Region-formatting-and-printing	cp	Region formatting and printing
+texinfo#index-Region-printing-in-Texinfo-mode	cp	Region printing in Texinfo mode
+texinfo#index-Reid_002c-Brian	cp	Reid, Brian
+texinfo#index-Repeated-and-optional-arguments	cp	Repeated and optional arguments
+texinfo#index-Reporting-bugs	cp	Reporting bugs
+texinfo#index-Required-in-Texinfo-file	cp	Required in Texinfo file
+texinfo#index-Requirements-for-formatting	cp	Requirements for formatting
+texinfo#index-Requirements-for-include-files	cp	Requirements for include files
+texinfo#index-Requirements-for-updating-commands	cp	Requirements for updating commands
+texinfo#index-Reserved-words_002c-indicating	cp	Reserved words, indicating
+texinfo#index-Restrictions-on-node-names	cp	Restrictions on node names
+texinfo#index-Result-of-an-expression	cp	Result of an expression
+texinfo#index-Ring-accent	cp	Ring accent
+texinfo#index-Rounded-rectangles_002c-around-examples	cp	Rounded rectangles, around examples
+texinfo#index-Rows_002c-of-a-multitable	cp	Rows, of a multitable
+texinfo#index-Running-Info_002dvalidate	cp	Running `Info-validate'
+texinfo#index-Running-makeinfo-in-Emacs	cp	Running `makeinfo' in Emacs
+texinfo#index-Running-an-Info-formatter	cp	Running an Info formatter
+texinfo#index-Running-macros	cp	Running macros
+texinfo#index-SGML_002dtools-output-format	cp	SGML-tools output format
+texinfo#index-Sample-Texinfo-file_002c-no-comments	cp	Sample Texinfo file, no comments
+texinfo#index-Sample-Texinfo-file_002c-with-comments	cp	Sample Texinfo file, with comments
+texinfo#index-Sample-Texinfo-files	cp	Sample Texinfo files
+texinfo#index-Sample-_0040include-file	cp	Sample `include' file
+texinfo#index-Sample-function-definition	cp	Sample function definition
+texinfo#index-Sample-texts_002c-GNU	cp	Sample texts, GNU
+texinfo#index-Scaled-points	cp	Scaled points
+texinfo#index-Schwab_002c-Andreas	cp	Schwab, Andreas
+texinfo#index-Scribe	cp	Scribe
+texinfo#index-Sea-surges	cp	Sea surges
+texinfo#index-Section-structure-of-a-file_002c-showing-it	cp	Section structure of a file, showing it
+texinfo#index-Sections_002c-raising-and-lowering	cp	Sections, raising and lowering
+texinfo#index-Sentence-ending-punctuation	cp	Sentence ending punctuation
+texinfo#index-Sentence-non_002dending-punctuation	cp	Sentence non-ending punctuation
+texinfo#index-Sharp-S	cp	Sharp S
+texinfo#index-Shell-formatting-with-tex-and-texindex	cp	Shell formatting with `tex' and `texindex'
+texinfo#index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows	cp	Shell printing, on MS-DOS/MS-Windows
+texinfo#index-Shell_002c-format_002c-print-from	cp	Shell, format, print from
+texinfo#index-Shell_002c-running-makeinfo-in	cp	Shell, running `makeinfo' in
+texinfo#index-Short-nodes-for-menus	cp	Short nodes for menus
+texinfo#index-Short-table-of-contents	cp	Short table of contents
+texinfo#index-Showing-the-section-structure-of-a-file	cp	Showing the section structure of a file
+texinfo#index-Showing-the-structure-of-a-file	cp	Showing the structure of a file
+texinfo#index-Site_002dwide-Texinfo-configuration-file	cp	Site-wide Texinfo configuration file
+texinfo#index-Size-of-printed-book	cp	Size of printed book
+texinfo#index-Small-book-size	cp	Small book size
+texinfo#index-Small-caps-font	cp	Small caps font
+texinfo#index-Small-examples	cp	Small examples
+texinfo#index-Software-copying-permissions	cp	Software copying permissions
+texinfo#index-Sorting-indices	cp	Sorting indices
+texinfo#index-Source-file	cp	Source file
+texinfo#index-Space_002c-inserting-horizontal	cp	Space, inserting horizontal
+texinfo#index-Space_002c-inserting-vertical	cp	Space, inserting vertical
+texinfo#index-Spaces-in-macros	cp	Spaces in macros
+texinfo#index-Spaces_002c-in-menus	cp	Spaces, in menus
+texinfo#index-Spacing_002c-inserting	cp	Spacing, inserting
+texinfo#index-Special-characters_002c-commands-to-insert	cp	Special characters, commands to insert
+texinfo#index-Special-insertions	cp	Special insertions
+texinfo#index-Special-typesetting-commands	cp	Special typesetting commands
+texinfo#index-Specifying-index-entries	cp	Specifying index entries
+texinfo#index-Splitting-an-Info-file-manually	cp	Splitting an Info file manually
+texinfo#index-Splitting-of-output-files	cp	Splitting of output files
+texinfo#index-Stallman_002c-Richard-M_002e	cp	Stallman, Richard M.
+texinfo#index-Start-of-header-line	cp	Start of header line
+texinfo#index-Starting-chapters	cp	Starting chapters
+texinfo#index-Structure-of-a-file_002c-showing-it	cp	Structure of a file, showing it
+texinfo#index-Structure_002c-catching-mistakes-in	cp	Structure, catching mistakes in
+texinfo#index-Structuring-of-chapters	cp	Structuring of chapters
+texinfo#index-Subsection_002dlike-commands	cp	Subsection-like commands
+texinfo#index-Subsub-commands	cp	Subsub commands
+texinfo#index-Suggestions-for-Texinfo_002c-making	cp	Suggestions for Texinfo, making
+texinfo#index-Summary-of-document	cp	Summary of document
+texinfo#index-Syntactic-conventions	cp	Syntactic conventions
+texinfo#index-Syntactic-tokens_002c-indicating	cp	Syntactic tokens, indicating
+texinfo#index-Syntax_002c-of-_0040_002dcommands	cp	Syntax, of @-commands
+texinfo#index-Syntax_002c-optional-_0026-repeated-arguments	cp	Syntax, optional & repeated arguments
+texinfo#index-TEXINPUTS	cp	TEXINPUTS
+texinfo#index-TEXINPUTS-1	cp	TEXINPUTS 
+texinfo#index-Table-of-contents	cp	Table of contents
+texinfo#index-Table-of-contents_002c-after-title-page	cp	Table of contents, after title page
+texinfo#index-Tables-and-lists_002c-making	cp	Tables and lists, making
+texinfo#index-Tables-with-indexes	cp	Tables with indexes
+texinfo#index-Tables_002c-making-multi_002dcolumn	cp	Tables, making multi-column
+texinfo#index-Tables_002c-making-two_002dcolumn	cp	Tables, making two-column
+texinfo#index-Tabs_003b-don_0027t-use_0021	cp	Tabs; don't use!
+texinfo#index-Tag-table_002c-making-automatically	cp	Tag table, making automatically
+texinfo#index-Tag-table_002c-making-manually	cp	Tag table, making manually
+texinfo#index-Targets-for-cross_002dreferences_002c-arbitrary	cp	Targets for cross-references, arbitrary
+texinfo#index-TeX-commands_002c-using-ordinary	cp	TeX commands, using ordinary
+texinfo#index-TeX-index-sorting	cp	TeX index sorting
+texinfo#index-TeX-input-initialization	cp	TeX input initialization
+texinfo#index-TeX_002c-how-to-obtain	cp	TeX, how to obtain
+texinfo#index-Template-for-a-definition	cp	Template for a definition
+texinfo#index-Texinfo-commands_002c-defining-new	cp	Texinfo commands, defining new
+texinfo#index-Texinfo-file-beginning	cp	Texinfo file beginning
+texinfo#index-Texinfo-file-ending	cp	Texinfo file ending
+texinfo#index-Texinfo-file-header	cp	Texinfo file header
+texinfo#index-Texinfo-file-minimum	cp	Texinfo file minimum
+texinfo#index-Texinfo-file-section-structure_002c-showing-it	cp	Texinfo file section structure, showing it
+texinfo#index-Texinfo-history	cp	Texinfo history
+texinfo#index-Texinfo-mode	cp	Texinfo mode
+texinfo#index-Texinfo-overview	cp	Texinfo overview
+texinfo#index-Texinfo-printed-book-characteristics	cp	Texinfo printed book characteristics
+texinfo#index-Texinfo-requires-_0040setfilename	cp	Texinfo requires `setfilename'
+texinfo#index-Texinfo_002c-introduction-to	cp	Texinfo, introduction to
+texinfo#index-Text-width-and-height	cp	Text width and height
+texinfo#index-Text_002c-conditionally-visible	cp	Text, conditionally visible
+texinfo#index-Text_002c-marking-up	cp	Text, marking up
+texinfo#index-Thin-space-between-number_002c-dimension	cp	Thin space between number, dimension
+texinfo#index-Tie_002dafter-accent	cp	Tie-after accent
+texinfo#index-Tied-space	cp	Tied space
+texinfo#index-Tilde-accent	cp	Tilde accent
+texinfo#index-Tips	cp	Tips
+texinfo#index-Title-page	cp	Title page
+texinfo#index-Title-page_002c-bastard	cp	Title page, bastard
+texinfo#index-Title-page_002c-for-plain-text	cp	Title page, for plain text
+texinfo#index-Titlepage-end-starts-headings	cp	Titlepage end starts headings
+texinfo#index-Top-node	cp	Top node
+texinfo#index-Top-node-example	cp	Top node example
+texinfo#index-Top-node-is-first	cp	Top node is first
+texinfo#index-Tree-structuring	cp	Tree structuring
+texinfo#index-Two-_0060First_0027-Lines-for-_0040deffn	cp	Two `First' Lines for `deffn'
+texinfo#index-Two-letter-names-for-indices	cp	Two letter names for indices
+texinfo#index-Two-named-items-for-_0040table	cp	Two named items for `table'
+texinfo#index-Two-part-menu-entry	cp	Two part menu entry
+texinfo#index-Typesetting-commands-for-dots_002c-etc_002e	cp	Typesetting commands for dots, etc.
+texinfo#index-URI-syntax-for-Info	cp	URI syntax for Info
+texinfo#index-URL_002c-indicating	cp	URL, indicating
+texinfo#index-URL_002c-referring-to	cp	URL, referring to
+texinfo#index-Ugly-black-rectangles-in-hardcopy	cp	Ugly black rectangles in hardcopy
+texinfo#index-Umlaut-accent	cp	Umlaut accent
+texinfo#index-Unbreakable-space	cp	Unbreakable space
+texinfo#index-Uncluttered-menu-entry	cp	Uncluttered menu entry
+texinfo#index-Undefining-macros	cp	Undefining macros
+texinfo#index-Underbar-accent	cp	Underbar accent
+texinfo#index-Underdot-accent	cp	Underdot accent
+texinfo#index-Uniform-resource-locator_002c-indicating	cp	Uniform resource locator, indicating
+texinfo#index-Uniform-resource-locator_002c-referring-to	cp	Uniform resource locator, referring to
+texinfo#index-Unique-nodename-requirement	cp	Unique nodename requirement
+texinfo#index-Unprocessed-text	cp	Unprocessed text
+texinfo#index-Unsplit-file-creation	cp	Unsplit file creation
+texinfo#index-Up-node-of-Top-node	cp	Up node of Top node
+texinfo#index-Updating-nodes-and-menus	cp	Updating nodes and menus
+texinfo#index-Updating-requirements	cp	Updating requirements
+texinfo#index-Usage-tips	cp	Usage tips
+texinfo#index-User-options_002c-marking	cp	User options, marking
+texinfo#index-User_002ddefined-Texinfo-commands	cp	User-defined Texinfo commands
+texinfo#index-Using-Texinfo-in-general	cp	Using Texinfo in general
+texinfo#index-Validating-a-large-file	cp	Validating a large file
+texinfo#index-Validation-of-pointers	cp	Validation of pointers
+texinfo#index-Value-of-an-expression_002c-indicating	cp	Value of an expression, indicating
+texinfo#index-Verbatim-environment	cp	Verbatim environment
+texinfo#index-Verbatim-in_002dline-text	cp	Verbatim in-line text
+texinfo#index-Verbatim_002c-include-file	cp	Verbatim, include file
+texinfo#index-Vertically-holding-text-together	cp	Vertically holding text together
+texinfo#index-Visibility-of-conditional-text	cp	Visibility of conditional text
+texinfo#index-Weinberg_002c-Zack	cp	Weinberg, Zack
+texinfo#index-Weisshaus_002c-Melissa	cp	Weisshaus, Melissa
+texinfo#index-White-space_002c-excessive	cp	White space, excessive
+texinfo#index-Whitespace-in-macros	cp	Whitespace in macros
+texinfo#index-Whitespace_002c-inserting	cp	Whitespace, inserting
+texinfo#index-Width-of-images	cp	Width of images
+texinfo#index-Width-of-text-area	cp	Width of text area
+texinfo#index-Widths_002c-defining-multitable-column	cp	Widths, defining multitable column
+texinfo#index-Wildcards	cp	Wildcards
+texinfo#index-Words-and-phrases_002c-marking-them	cp	Words and phrases, marking them
+texinfo#index-Writing-a-menu	cp	Writing a menu
+texinfo#index-Writing-an-_0040node-line	cp	Writing an `node' line
+texinfo#index-Writing-index-entries	cp	Writing index entries
+texinfo#index-XPM-image-format	cp	XPM image format
+texinfo#index-Years_002c-in-copyright-line	cp	Years, in copyright line
+texinfo#index-Zaretskii_002c-Eli	cp	Zaretskii, Eli
+texinfo#index-Zuhn_002c-David-D_002e	cp	Zuhn, David D.
+texinfo#index-End-node-footnote-style	cp	`End' node footnote style
+texinfo#index-INSTALL-file_002c-generating	cp	`INSTALL' file, generating
+texinfo#index-Separate-footnote-style	cp	`Separate' footnote style
+texinfo#index-TEXINPUTS-environment-variable	cp	`TEXINPUTS' environment variable
+texinfo#index-Top-node-naming-for-references	cp	`Top' node naming for references
+texinfo#index-_005cinput-source-line-ignored	cp	`\input' source line ignored
+texinfo#index-dir-directory-for-Info-installation	cp	`dir' directory for Info installation
+texinfo#index-dir-file-listing	cp	`dir' file listing
+texinfo#index-dir-file_002c-creating-your-own	cp	`dir' file, creating your own
+texinfo#index-dir-files-and-Info-directories	cp	`dir' files and Info directories
+texinfo#index-dir_002c-created-by-install_002dinfo	cp	`dir', created by `install-info'
+texinfo#index-hboxes_002c-overfull	cp	`hboxes', overfull
+texinfo#index-href_002c-producing-HTML	cp	`href', producing HTML
+texinfo#index-_0040include-file-sample	cp	`include' file sample
+texinfo#index-makeinfo-inside-Emacs	cp	`makeinfo' inside Emacs
+texinfo#index-makeinfo-options	cp	`makeinfo' options
+texinfo#index-_0040menu-parts	cp	`menu' parts
+texinfo#index-_0040node-line-writing	cp	`node' line writing
+texinfo#index-txi_002dcc_002etex	cp	`txi-CC.tex'
+texinfo#index-_0040w_002c-for-blank-items	cp	`w', for blank items
+texinfo#index-aa-1	cp	aa
+texinfo#index-ae-1	cp	ae
+texinfo#index-alt-attribute-for-images	cp	alt attribute for images
+texinfo#index-alternate-text-for-images	cp	alternate text for images
+texinfo#index-autoexec_002ebat	cp	autoexec.bat
+texinfo#index-automake_002c-and-version-info	cp	automake, and version info
+texinfo#index-code_002c-arg-to-_0040kbdinputstyle	cp	code, arg to kbdinputstyle
+texinfo#index-colon_002c-last-in-INFOPATH	cp	colon, last in `INFOPATH'
+texinfo#index-distinct_002c-arg-to-_0040kbdinputstyle	cp	distinct, arg to kbdinputstyle
+texinfo#index-em_002ddash	cp	em-dash
+texinfo#index-epsf_002etex	cp	epsf.tex
+texinfo#index-epsf_002etex_002c-installing	cp	epsf.tex, installing
+texinfo#index-example_002c-arg-to-_0040kbdinputstyle	cp	example, arg to kbdinputstyle
+texinfo#index-help2man	cp	help2man
+texinfo#index-http_002dequiv_002c-and-charset	cp	http-equiv, and charset
+texinfo#index-hyphen	cp	hyphen
+texinfo#index-i	cp	i
+texinfo#index-install_002dinfo	cp	install-info
+texinfo#index-j	cp	j
+texinfo#index-l-1	cp	l
+texinfo#index-lpr-_0028DVI-print-command_0029	cp	lpr (DVI print command)
+texinfo#index-lpr_002dd_002c-replacements-on-MS_002dDOS_002fMS_002dWindows	cp	lpr-d, replacements on MS-DOS/MS-Windows
+texinfo#index-mailto-link	cp	mailto link
+texinfo#index-makeinfo	cp	makeinfo
+texinfo#index-meta-HTML-tag_002c-and-charset	cp	meta HTML tag, and charset
+texinfo#index-oe	cp	o
+texinfo#index-oe-2	cp	oe
+texinfo#index-page_002ddelimiter	cp	page-delimiter
+texinfo#index-pdfcolor_002etex_002c-installing	cp	pdfcolor.tex, installing
+texinfo#index-pdftex	cp	pdftex
+texinfo#index-pdftex_002c-and-images	cp	pdftex, and images
+texinfo#index-plain-TeX	cp	plain TeX
+texinfo#index-ragged-left	cp	ragged left
+texinfo#index-ragged-right	cp	ragged right
+texinfo#index-ridt_002eeps	cp	ridt.eps
+texinfo#index-shrubbery	cp	shrubbery
+texinfo#index-slanted-typewriter-font_002c-for-_0040kbd	cp	slanted typewriter font, for `kbd'
+texinfo#index-ss-1	cp	ss
+texinfo#index-texi2dvi	cp	texi2dvi
+texinfo#index-texi2dvi-_0028shell-script_0029	cp	texi2dvi (shell script)
+texinfo_fot.info#index-texi2roff_002c-unsupported-software	cp	texi2roff, unsupported software
+texinfo#index-texindex	cp	texindex
+texinfo#index-texindex-1	cp	texindex 
+texinfo#index-texinfo_002ecnf	cp	texinfo.cnf
+texinfo#index-texinfo_002ecnf-installation	cp	texinfo.cnf installation
+texinfo#index-texinfo_002etex_002c-installing	cp	texinfo.tex, installing
+texinfo#index-user-input	cp	user input
+texinfo#index-version-number_002c-finding	cp	version number, finding
+texinfo#index-_0021-_0028end-of-sentence_0029	fn	! (end of sentence)
+texinfo#index-_0022-_0028umlaut-accent_0029	fn	" (umlaut accent)
+texinfo#index-_0027-_0028umlaut-accent_0029	fn	' (umlaut accent)
+texinfo#index-_0028newline_0029	fn	(newline)
+texinfo#index-_0028space_0029	fn	(space)
+texinfo#index-_0028tab_0029	fn	(tab)
+texinfo#index-_002a-_0028force-line-break_0029	fn	* (force line break)
+texinfo#index-_002c-_0028cedilla-accent_0029	fn	, (cedilla accent)
+texinfo#index-_002d-_0028discretionary-hyphen_0029	fn	- (discretionary hyphen)
+texinfo#index-_002e--_0028end-of-sentence_0029	fn	.  (end of sentence)
+texinfo#index-_003ccolon_003e-_0028suppress-widening_0029	fn	<colon> (suppress widening)
+texinfo#index-_003d-_0028macron-accent_0029	fn	= (macron accent)
+texinfo#index-_003f-_0028end-of-sentence_0029	fn	? (end of sentence)
+texinfo#index-_0040-_0028literal-_0040_0029	fn	@ (literal `')
+texinfo#index-AA	fn	AA
+texinfo#index-AE	fn	AE
+texinfo#index-H-_0028Hungarian-umlaut-accent_0029	fn	H (Hungarian umlaut accent)
+texinfo#index-Info_002dvalidate	fn	Info-validate
+texinfo#index-L	fn	L
+texinfo#index-O	fn	O
+texinfo#index-OE-1	fn	OE
+texinfo#index-_005c-_0028literal-_005c-in-_0040math_0029	fn	\ (literal \ in `math')
+texinfo#index-_005cemergencystretch	fn	\emergencystretch
+texinfo#index-_005cinput-_0028raw-TeX-startup_0029	fn	\input (raw  startup)
+texinfo#index-_005cmag-_0028raw-TeX-magnification_0029	fn	\mag (raw  magnification)
+texinfo#index-_005e-_0028circumflex-accent_0029	fn	^ (circumflex accent)
+texinfo#index-_0060-_0028grave-accent_0029	fn	` (grave accent)
+texinfo#index-aa	fn	aa
+texinfo#index-acronym	fn	acronym
+texinfo#index-ae	fn	ae
+texinfo#index-afourlatex	fn	afourlatex
+texinfo#index-afourpaper	fn	afourpaper
+texinfo#index-afourwide	fn	afourwide
+texinfo#index-alias	fn	alias
+texinfo#index-anchor	fn	anchor
+texinfo#index-appendix	fn	appendix
+texinfo#index-appendixsec	fn	appendixsec
+texinfo#index-appendixsection	fn	appendixsection
+texinfo#index-appendixsubsec	fn	appendixsubsec
+texinfo#index-appendixsubsubsec	fn	appendixsubsubsec
+texinfo#index-apply	fn	apply
+texinfo#index-asis	fn	asis
+texinfo#index-author	fn	author
+texinfo#index-b-_0028bold-font_0029	fn	b (bold font)
+texinfo#index-buffer_002dend	fn	buffer-end
+texinfo#index-bullet	fn	bullet
+texinfo#index-bye	fn	bye
+texinfo#index-bye-1	fn	bye 
+texinfo#index-c-_0028comment_0029	fn	c (comment)
+texinfo#index-cartouche	fn	cartouche
+texinfo#index-center	fn	center
+texinfo#index-centerchap	fn	centerchap
+texinfo#index-chapheading	fn	chapheading
+texinfo#index-chapter	fn	chapter
+texinfo#index-cindex	fn	cindex
+texinfo#index-cite	fn	cite
+texinfo#index-code	fn	code
+texinfo#index-columnfractions	fn	columnfractions
+texinfo#index-command	fn	command
+texinfo#index-comment	fn	comment
+texinfo#index-contents	fn	contents
+texinfo#index-copying	fn	copying
+texinfo#index-copyright	fn	copyright
+texinfo#index-copyright-1	fn	copyright 
+texinfo#index-cropmarks	fn	cropmarks
+texinfo#index-defcodeindex	fn	defcodeindex
+texinfo#index-defcv	fn	defcv
+texinfo#index-deffn	fn	deffn
+texinfo#index-deffnx	fn	deffnx
+texinfo#index-defindex	fn	defindex
+texinfo#index-definfoenclose	fn	definfoenclose
+texinfo#index-defivar	fn	defivar
+texinfo#index-defmac	fn	defmac
+texinfo#index-defmethod	fn	defmethod
+texinfo#index-defmethod-1	fn	defmethod 
+texinfo#index-defop	fn	defop
+texinfo#index-defopt	fn	defopt
+texinfo#index-defspec	fn	defspec
+texinfo#index-deftp	fn	deftp
+texinfo#index-deftypefn	fn	deftypefn
+texinfo#index-deftypefun	fn	deftypefun
+texinfo#index-deftypeivar	fn	deftypeivar
+texinfo#index-deftypeop	fn	deftypeop
+texinfo#index-deftypevar	fn	deftypevar
+texinfo#index-deftypevr	fn	deftypevr
+texinfo#index-defun	fn	defun
+texinfo#index-defvar	fn	defvar
+texinfo#index-defvr	fn	defvr
+texinfo#index-dfn	fn	dfn
+texinfo#index-dircategory	fn	dircategory
+texinfo#index-direntry	fn	direntry
+texinfo#index-display	fn	display
+texinfo#index-dmn	fn	dmn
+texinfo#index-documentdescription	fn	documentdescription
+texinfo#index-documentencoding	fn	documentencoding
+texinfo#index-documentlanguage	fn	documentlanguage
+texinfo#index-dotaccent	fn	dotaccent
+texinfo#index-dotless	fn	dotless
+texinfo#index-dots	fn	dots
+texinfo#index-email	fn	email
+texinfo#index-emph	fn	emph
+texinfo#index-end	fn	end
+texinfo#index-end-1	fn	end 
+texinfo#index-end-titlepage	fn	end titlepage
+texinfo#index-enddots	fn	enddots
+texinfo#index-enumerate	fn	enumerate
+texinfo#index-env	fn	env
+texinfo#index-equiv	fn	equiv
+texinfo#index-error	fn	error
+texinfo#index-evenfooting	fn	evenfooting
+texinfo#index-evenheading	fn	evenheading
+texinfo#index-everyfooting	fn	everyfooting
+texinfo#index-everyheading	fn	everyheading
+texinfo#index-example	fn	example
+texinfo#index-exampleindent	fn	exampleindent
+texinfo#index-exclamdown	fn	exclamdown
+texinfo#index-exdent	fn	exdent
+texinfo#index-expansion	fn	expansion
+texinfo#index-file	fn	file
+texinfo#index-filll-TeX-dimension	fn	filll  dimension
+texinfo#index-finalout	fn	finalout
+texinfo#index-findex	fn	findex
+texinfo#index-flushleft	fn	flushleft
+texinfo#index-flushright	fn	flushright
+texinfo#index-foobar	fn	foobar
+texinfo#index-footnote	fn	footnote
+texinfo#index-footnotestyle	fn	footnotestyle
+texinfo#index-format	fn	format
+texinfo#index-forward_002dword	fn	forward-word
+texinfo#index-ftable	fn	ftable
+texinfo#index-group	fn	group
+texinfo#index-hbox	fn	hbox
+texinfo#index-heading	fn	heading
+texinfo#index-headings	fn	headings
+texinfo#index-headword	fn	headword
+texinfo#index-html	fn	html
+texinfo#index-hyphenation	fn	hyphenation
+texinfo#index-i-_0028italic-font_0029	fn	i (italic font)
+texinfo#index-ifclear	fn	ifclear
+texinfo#index-ifhtml	fn	ifhtml
+texinfo#index-ifhtml-1	fn	ifhtml 
+texinfo#index-ifinfo	fn	ifinfo
+texinfo#index-ifnothtml	fn	ifnothtml
+texinfo#index-ifnotinfo	fn	ifnotinfo
+texinfo#index-ifnotplaintext	fn	ifnotplaintext
+texinfo#index-ifnottex	fn	ifnottex
+texinfo#index-ifplaintext	fn	ifplaintext
+texinfo#index-ifset	fn	ifset
+texinfo#index-iftex	fn	iftex
+texinfo#index-ignore	fn	ignore
+texinfo#index-image	fn	image
+texinfo#index-include	fn	include
+texinfo#index-inforef	fn	inforef
+texinfo#index-insertcopying	fn	insertcopying
+texinfo#index-isearch_002dbackward	fn	isearch-backward
+texinfo#index-isearch_002dforward	fn	isearch-forward
+texinfo#index-item	fn	item
+texinfo#index-item-1	fn	item 
+texinfo#index-item-2	fn	item  
+texinfo#index-itemize	fn	itemize
+texinfo#index-itemx	fn	itemx
+texinfo#index-kbd	fn	kbd
+texinfo#index-kbdinputstyle	fn	kbdinputstyle
+texinfo#index-key	fn	key
+texinfo#index-kindex	fn	kindex
+texinfo#index-l	fn	l
+texinfo#index-lisp	fn	lisp
+texinfo#index-lowersections	fn	lowersections
+texinfo#index-macro	fn	macro
+texinfo#index-majorheading	fn	majorheading
+texinfo#index-makeinfo_002dbuffer	fn	makeinfo-buffer
+texinfo#index-makeinfo_002dkill_002djob	fn	makeinfo-kill-job
+texinfo#index-makeinfo_002drecenter_002doutput_002dbuffer	fn	makeinfo-recenter-output-buffer
+texinfo#index-makeinfo_002dregion	fn	makeinfo-region
+texinfo#index-math	fn	math
+texinfo#index-menu	fn	menu
+texinfo#index-minus	fn	minus
+texinfo#index-multitable	fn	multitable
+texinfo#index-need	fn	need
+texinfo#index-next_002derror	fn	next-error
+texinfo#index-node	fn	node
+texinfo#index-noindent	fn	noindent
+texinfo#index-novalidate	fn	novalidate
+texinfo#index-o	fn	o
+texinfo#index-occur	fn	occur
+texinfo#index-occur_002dmode_002dgoto_002doccurrence	fn	occur-mode-goto-occurrence
+texinfo#index-oddfooting	fn	oddfooting
+texinfo#index-oddheading	fn	oddheading
+texinfo#index-oe-1	fn	oe
+texinfo#index-option	fn	option
+texinfo#index-page	fn	page
+texinfo#index-page_002c-within-_0040titlepage	fn	page, within `titlepage'
+texinfo#index-pagesizes	fn	pagesizes
+texinfo#index-paragraphindent	fn	paragraphindent
+texinfo#index-phoo	fn	phoo
+texinfo#index-pindex	fn	pindex
+texinfo#index-point	fn	point
+texinfo#index-pounds	fn	pounds
+texinfo#index-print	fn	print
+texinfo#index-printindex	fn	printindex
+texinfo#index-pxref	fn	pxref
+texinfo#index-questiondown	fn	questiondown
+texinfo#index-quotation	fn	quotation
+texinfo#index-r-_0028Roman-font_0029	fn	r (Roman font)
+texinfo#index-raisesections	fn	raisesections
+texinfo#index-ref	fn	ref
+texinfo#index-refill	fn	refill
+texinfo#index-result	fn	result
+texinfo#index-ringaccent	fn	ringaccent
+texinfo#index-rmacro	fn	rmacro
+texinfo#index-samp	fn	samp
+texinfo#index-sc-_0028small-caps-font_0029	fn	sc (small caps font)
+texinfo#index-section	fn	section
+texinfo#index-setchapternewpage	fn	setchapternewpage
+texinfo#index-setcontentsaftertitlepage	fn	setcontentsaftertitlepage
+texinfo#index-setfilename	fn	setfilename
+texinfo#index-setshortcontentsaftertitlepage	fn	setshortcontentsaftertitlepage
+texinfo#index-settitle	fn	settitle
+texinfo#index-shortcontents	fn	shortcontents
+texinfo#index-shorttitlepage	fn	shorttitlepage
+texinfo#index-smallbook	fn	smallbook
+texinfo#index-smalldisplay	fn	smalldisplay
+texinfo#index-smalldisplay-1	fn	smalldisplay 
+texinfo#index-smallexample	fn	smallexample
+texinfo#index-smallformat	fn	smallformat
+texinfo#index-smallformat-1	fn	smallformat 
+texinfo#index-smalllisp	fn	smalllisp
+texinfo#index-sp-_0028line-spacing_0029	fn	sp (line spacing)
+texinfo#index-sp-_0028titlepage-line-spacing_0029	fn	sp (titlepage line spacing)
+texinfo#index-ss	fn	ss
+texinfo#index-strong	fn	strong
+texinfo#index-subheading	fn	subheading
+texinfo#index-subsection	fn	subsection
+texinfo#index-subsubheading	fn	subsubheading
+texinfo#index-subsubsection	fn	subsubsection
+texinfo#index-subtitle	fn	subtitle
+texinfo#index-summarycontents	fn	summarycontents
+texinfo#index-syncodeindex	fn	syncodeindex
+texinfo#index-syncodeindex-1	fn	syncodeindex 
+texinfo#index-synindex	fn	synindex
+texinfo#index-t-_0028typewriter-font_0029	fn	t (typewriter font)
+texinfo#index-tab	fn	tab
+texinfo#index-table	fn	table
+texinfo#index-tex	fn	tex
+texinfo#index-tex-_0028command_0029	fn	tex (command)
+texinfo#index-texinfo_002dall_002dmenus_002dupdate	fn	texinfo-all-menus-update
+texinfo#index-texinfo_002devery_002dnode_002dupdate	fn	texinfo-every-node-update
+texinfo#index-texinfo_002dformat_002dbuffer	fn	texinfo-format-buffer
+texinfo#index-texinfo_002dformat_002dbuffer-1	fn	texinfo-format-buffer 
+texinfo#index-texinfo_002dformat_002dbuffer-2	fn	texinfo-format-buffer  
+texinfo#index-texinfo_002dformat_002dregion	fn	texinfo-format-region
+texinfo#index-texinfo_002dformat_002dregion-1	fn	texinfo-format-region 
+texinfo#index-texinfo_002dformat_002dregion-2	fn	texinfo-format-region  
+texinfo#index-texinfo_002dindent_002dmenu_002ddescription	fn	texinfo-indent-menu-description
+texinfo#index-texinfo_002dinsert_002d_0040code	fn	texinfo-insert-@code
+texinfo#index-texinfo_002dinsert_002d_0040dfn	fn	texinfo-insert-@dfn
+texinfo#index-texinfo_002dinsert_002d_0040end	fn	texinfo-insert-@end
+texinfo#index-texinfo_002dinsert_002d_0040example	fn	texinfo-insert-@example
+texinfo#index-texinfo_002dinsert_002d_0040item	fn	texinfo-insert-@item
+texinfo#index-texinfo_002dinsert_002d_0040kbd	fn	texinfo-insert-@kbd
+texinfo#index-texinfo_002dinsert_002d_0040node	fn	texinfo-insert-@node
+texinfo#index-texinfo_002dinsert_002d_0040noindent	fn	texinfo-insert-@noindent
+texinfo#index-texinfo_002dinsert_002d_0040samp	fn	texinfo-insert-@samp
+texinfo#index-texinfo_002dinsert_002d_0040table	fn	texinfo-insert-@table
+texinfo#index-texinfo_002dinsert_002d_0040var	fn	texinfo-insert-@var
+texinfo#index-texinfo_002dinsert_002dbraces	fn	texinfo-insert-braces
+texinfo#index-texinfo_002dinsert_002dnode_002dlines	fn	texinfo-insert-node-lines
+texinfo#index-texinfo_002dmake_002dmenu	fn	texinfo-make-menu
+texinfo#index-texinfo_002dmaster_002dmenu	fn	texinfo-master-menu
+texinfo#index-texinfo_002dmultiple_002dfiles_002dupdate	fn	texinfo-multiple-files-update
+texinfo#index-texinfo_002dmultiple_002dfiles_002dupdate-_0028in-brief_0029	fn	texinfo-multiple-files-update (in brief)
+texinfo#index-texinfo_002dsequential_002dnode_002dupdate	fn	texinfo-sequential-node-update
+texinfo#index-texinfo_002dshow_002dstructure	fn	texinfo-show-structure
+texinfo#index-texinfo_002dshow_002dstructure-1	fn	texinfo-show-structure 
+texinfo#index-texinfo_002dstart_002dmenu_002ddescription	fn	texinfo-start-menu-description
+texinfo#index-texinfo_002dtex_002dbuffer	fn	texinfo-tex-buffer
+texinfo#index-texinfo_002dtex_002dprint	fn	texinfo-tex-print
+texinfo#index-texinfo_002dtex_002dregion	fn	texinfo-tex-region
+texinfo#index-texinfo_002dupdate_002dnode	fn	texinfo-update-node
+texinfo#index-thischapter	fn	thischapter
+texinfo#index-thischaptername	fn	thischaptername
+texinfo#index-thisfile	fn	thisfile
+texinfo#index-thispage	fn	thispage
+texinfo#index-thistitle	fn	thistitle
+texinfo#index-tieaccent	fn	tieaccent
+texinfo#index-tindex	fn	tindex
+texinfo#index-title	fn	title
+texinfo#index-titlefont	fn	titlefont
+texinfo#index-titlepage	fn	titlepage
+texinfo#index-today	fn	today
+texinfo#index-top	fn	top
+texinfo#index-top-_0028_0040_002dcommand_0029	fn	top (-command)
+texinfo#index-u-_0028breve-accent_0029	fn	u (breve accent)
+texinfo#index-ubaraccent	fn	ubaraccent
+texinfo#index-udotaccent	fn	udotaccent
+texinfo#index-unmacro	fn	unmacro
+texinfo#index-unnumbered	fn	unnumbered
+texinfo#index-unnumberedsec	fn	unnumberedsec
+texinfo#index-unnumberedsubsec	fn	unnumberedsubsec
+texinfo#index-unnumberedsubsubsec	fn	unnumberedsubsubsec
+texinfo#index-up_002dlist	fn	up-list
+texinfo#index-uref	fn	uref
+texinfo#index-url	fn	url
+texinfo#index-v-_0028check-accent_0029	fn	v (check accent)
+texinfo#index-value	fn	value
+texinfo#index-var	fn	var
+texinfo#index-verb	fn	verb
+texinfo#index-verbatim	fn	verbatim
+texinfo#index-verbatiminclude	fn	verbatiminclude
+texinfo#index-vindex	fn	vindex
+texinfo#index-vskip-TeX-vertical-skip	fn	vskip  vertical skip
+texinfo#index-vtable	fn	vtable
+texinfo#index-w-_0028prevent-line-break_0029	fn	w (prevent line break)
+texinfo#index-xref	fn	xref
+texinfo#index-_007b-_0028literal-_007b_0029	fn	{ (literal `')
+texinfo#index-_007d-_0028literal-_007d_0029	fn	} (literal `')
+texinfo#index-_007e-_0028tilde-accent_0029	fn	~ (tilde accent)

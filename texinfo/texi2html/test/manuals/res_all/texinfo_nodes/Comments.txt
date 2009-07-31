@@ -1,0 +1,35 @@
+1.7 Comments
+============
+
+
+You can write comments in a Texinfo file that will not appear in
+either the Info file or the printed manual by using the
+@comment command (which may be abbreviated to @c).
+Such comments are for the person who revises the Texinfo file.  All the
+text on a line that follows either @comment or @c is a
+comment; the rest of the line does not appear in either the Info file
+or the printed manual.
+
+Often, you can write the @comment or @c in the middle of
+a line, and only the text that follows after the @comment or
+@c command does not appear; but some commands, such as
+@settitle and @setfilename, work on a whole line.  You
+cannot use @comment or @c in a line beginning with such
+a command.
+
+You can write long stretches of text that will not appear in either
+the Info file or the printed manual by using the @ignore and
+@end ignore commands.  Write each of these commands on a line
+of its own, starting each command at the beginning of the line.  Text
+between these two commands does not appear in the processed output.
+You can use @ignore and @end ignore for writing
+comments.
+
+Text enclosed by @ignore or by failing @ifset or
+@ifclear conditions is ignored in the sense that it will not
+contribute to the formatted output.  However, TeX and makeinfo must
+still parse the ignored text, in order to understand when to stop
+ignoring text from the source file; that means that you may still get
+error messages if you have invalid Texinfo commands within ignored text.
+
+

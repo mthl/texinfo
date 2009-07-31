@@ -1,0 +1,53 @@
+5.2 Structuring Command Types
+=============================
+
+The chapter structuring commands fall into four groups or series, each
+of which contains structuring commands corresponding to the
+hierarchical levels of chapters, sections, subsections, and
+subsubsections.
+
+The four groups are the @chapter series, the
+@unnumbered series, the @appendix series, and the
+@heading series.
+
+Each command produces titles that have a different appearance on the
+printed page or Info file; only some of the commands produce
+titles that are listed in the table of contents of a printed book or
+manual.
+
+* The @chapter and @appendix series of commands produce
+numbered or lettered entries both in the body of a printed work and in
+its table of contents.
+
+* The @unnumbered series of commands produce unnumbered entries
+both in the body of a printed work and in its table of contents.  The
+@top command, which has a special use, is a member of this
+series (see @top).
+
+* The @heading series of commands produce unnumbered headings
+that do not appear in a table of contents.  The heading commands never
+start a new page.
+
+* The @majorheading command produces results similar to using
+the @chapheading command but generates a larger vertical
+whitespace before the heading.
+
+* When an @setchapternewpage command says to do so, the
+@chapter, @unnumbered, and @appendix commands
+start new pages in the printed manual; the @heading commands
+do not.
+
+Here are the four groups of chapter structuring commands:
+
+
+    No new page
+ Numbered Unnumbered Lettered/numbered Unnumbered
+ In contents In contents In contents Omitted from
+contents
+  @top  @majorheading
+ @chapter @unnumbered @appendix @chapheading
+ @section @unnumberedsec @appendixsec @heading
+ @subsection @unnumberedsubsec @appendixsubsec @subheading
+ @subsubsection @unnumberedsubsubsec @appendixsubsubsec @subsubheading
+
+

@@ -1,0 +1,24 @@
+13 Special Insertions
+*********************
+
+Texinfo provides several commands for inserting characters that have
+special meaning in Texinfo, such as braces, and for other graphic
+elements that do not correspond to simple characters you can type.
+
+
+* Braces Atsigns::              How to insert braces, `@'.
+* Inserting Space::             How to insert the right amount of space
+                                  within a sentence.
+* Inserting Accents::           How to insert accents and special characters.
+* Dots Bullets::                How to insert dots and bullets.
+* TeX and copyright::           How to insert the TeX logo
+                                  and the copyright symbol.
+* pounds::                      How to insert the pounds currency symbol.
+* minus::                       How to insert a minus sign.
+* math::                        How to format a mathematical expression.
+* Glyphs::                      How to indicate results of evaluation,
+                                  expansion of macros, errors, etc.
+* Footnotes::                   How to include footnotes.
+* Images::                      How to include graphics.
+
+

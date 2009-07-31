@@ -1,0 +1,41 @@
+10.11 @flushleft and @flushright
+================================
+
+The @flushleft and @flushright commands line up the
+ends of lines on the left and right margins of a page,
+but do not fill the text.  The commands are written on lines of their
+own, without braces.  The @flushleft and @flushright
+commands are ended by @end flushleft and @end
+flushright commands on lines of their own.
+
+For example,
+
+@flushleft
+This text is
+written flushleft.
+@end flushleft
+
+produces
+
+This text is
+written flushleft.
+
+
+@flushright produces the type of indentation often used in the
+return address of letters.  For example,
+
+@flushright
+Here is an example of text written
+flushright.  The @code{@flushright} command
+right justifies every line but leaves the
+left end ragged.
+@end flushright
+
+produces
+
+Here is an example of text written
+flushright.  The @flushright command
+right justifies every line but leaves the
+left end ragged.
+
+

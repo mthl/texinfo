@@ -319,6 +319,7 @@ sub info_default_init_variables()
    $info_default_footnote_index = 0;
    $info_default_current_node = undef;
    $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'info');
+   $FRAMES = 0 if ($OUTPUT_FORMAT eq 'info');
 }
 
 # this is put in command_handler_init such that it sets things right
@@ -2515,7 +2516,10 @@ sub info_default_end_section($$$)
           push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'pending_tags'}->[0]->{'info_offset'} };
        }
        $info_default_out_file_nr++;
-       close($Texi2HTML::THISDOC{'FH'});
+       # these file descriptors leak, but this allows the user to write a 
+       # foot navigation himself, otherwise he would write on a closed file
+       # descriptor
+       #close($Texi2HTML::THISDOC{'FH'});
        if (!$end_foot_navigation)
        {
            main::open_out_file("$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr");

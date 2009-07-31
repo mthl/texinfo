@@ -1,0 +1,45 @@
+3.4.4 Copyright Page
+--------------------
+
+By international treaty, the copyright notice for a book must be either
+on the title page or on the back of the title page.  When the copyright
+notice is on the back of the title page, that page is customarily not
+numbered.  Therefore, in Texinfo, the information on the copyright page
+should be within @titlepage and @end titlepage
+commands.
+
+Use the @page command to cause a page break.  To push the
+copyright notice and the other text on the copyright page towards the
+bottom of the page, use the following incantantion after @page:
+
+@vskip 0pt plus 1filll
+
+This is a TeX command that is not supported by the Info formatting
+commands.  The @vskip command inserts whitespace.  The `0pt
+plus 1filll' means to put in zero points of mandatory whitespace, and as
+much optional whitespace as needed to push the following text to the
+bottom of the page.  Note the use of three `l's in the word
+`filll'; this is correct.
+
+To insert the copyright text itself, write @insertcopying
+next (see Document Permissions):
+
+@insertcopying
+
+Follow the copying text by the publisher, ISBN numbers, cover art
+credits, and other such information.
+
+Here is an example putting all this together:
+
+@titlepage
+...
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+
+Published by ...
+
+Cover art by ...
+@end titlepage
+
+

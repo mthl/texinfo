@@ -1,0 +1,65 @@
+8.8 @uref{url[, text][, replacement]}
+=====================================
+
+@uref produces a reference to a uniform resource locator (url).
+It takes one mandatory argument, the url, and two optional arguments
+which control the text that is displayed.  In HTML output, @uref
+produces a link you can follow.
+
+The second argument, if specified, is the text to display (the default
+is the url itself); in Info and DVI output, but not in HTML output, the
+url is also output.
+
+The third argument, on the other hand, if specified is also the text to
+display, but the url is not output in any format.  This is useful
+when the text is already sufficiently referential, as in a man page.  If
+the third argument is given, the second argument is ignored.
+
+The simple one argument form, where the url is both the target and the
+text of the link:
+
+The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
+
+produces:
+The official GNU ftp site is <ftp://ftp.gnu.org/gnu>.
+
+
+An example of the two-argument form:
+The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
+holds programs and texts.
+
+produces:
+The official GNU ftp site <ftp://ftp.gnu.org/gnu>
+holds programs and texts.
+
+that is, the Info output is this:
+The official GNU ftp site (ftp://ftp.gnu.org/gnu)
+holds programs and texts.
+
+and the HTML output is this:
+The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
+holds programs and texts.
+
+
+An example of the three-argument form:
+The @uref{/man.cgi/1/ls,,ls(1)} program ...
+
+produces:
+The ls(1) </man.cgi/1/ls> program ...
+
+but with HTML:
+The <a href="/man.cgi/1/ls">ls(1)</a> program ...
+
+To merely indicate a url without creating a link people can follow, use
+@url (see @url).
+
+Some people prefer to display url's in the unambiguous format:
+
+<URL:http://host/path>
+
+You can use this form in the input file if you wish.  We feel it's not
+necessary to clutter up the output with the extra `<URL:' and
+`>', since any software that tries to detect url's in text already
+has to detect them without the `<URL:' to be useful.
+
+

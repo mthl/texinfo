@@ -1,0 +1,37 @@
+Break Commands
+--------------
+Break Commands
+==============
+
+The break commands create or allow line and paragraph breaks:
+
+@*
+Force a line break.
+
+@sp n
+Skip n blank lines.
+
+@-
+Insert a discretionary hyphen.
+
+@hyphenation{hy-phen-a-ted words}
+Define hyphen points in hy-phen-a-ted words.
+
+The line-break-prevention command holds text together all on one
+line:
+
+@w{text}
+Prevent text from being split and hyphenated across two lines.
+
+The pagination commands apply only to printed output, since Info
+files do not have pages.
+
+@page
+Start a new page in the printed manual.
+
+@group
+Hold text together that must appear on one printed page.
+
+@need mils
+Start a new printed page if not enough space on this one.
+

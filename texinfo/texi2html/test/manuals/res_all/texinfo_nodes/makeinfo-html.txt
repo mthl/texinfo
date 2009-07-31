@@ -1,0 +1,51 @@
+20.1.9 Generating HTML
+----------------------
+
+Besides generating output in the Info format, you can use the
+`--html' option to generate output in HTML format, for installation
+on a web site (for example).  By default, the HTML output is split at
+node level.
+
+When splitting, the HTML output files are written into a subdirectory.
+The subdirectory is named according to the name from
+@setfilename with any extension removed; for example, HTML
+output for @setfilename emacs.info would be written into a
+subdirectory named `emacs'.  If that directory cannot be created
+for any reason, then `.html' is appended to the directory name, as
+in `emacs.html' (this is necessary because sometimes the info file
+is named without an extension, e.g., `texinfo').  If the
+`name.html' directory can't be created either,
+makeinfo gives up.  In any case, the top-level output file within
+the directory is always named `index.html'.
+
+Monolithic output (--no-split) is named according to
+@setfilename or --outfile.  Cross-document node
+references are not supported in monolithic HTML.
+
+Texinfo input marked up with the @ifhtml command will produce
+output only with the `--html' option supplied.  Input marked up
+with the @html is passed literally to the output (suppressing
+the normal escaping of input `<', `>' and `&' characters
+which have special significance in HTML).
+
+The `--footnote-style' option is currently ignored for HTML output;
+footnotes are linked to the end of the output file.
+
+The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
+exception is that HTML 3.2 tables are generated from the
+@multitable command, but tagged to degrade as well as possible
+in browsers without table support.  The HTML 4 `lang' attribute on
+the `<html>' attribute is also used.  Please report output from an
+error-free run of makeinfo which has browser portability problems
+as a bug.
+
+Navigation bars are inserted at the start of nodes, similarly to Info
+output.  The `--no-headers' option will suppress this if used with
+`--no-split'.  Header <link> elements in split output can
+support info-like navigation with browsers like Lynx and Emacs W3
+which implement this HTML 1.0 feature.  `@xref' commands to
+other documents are generated assuming the other document is available
+in split HTML form, and installed in the same HTML documentation tree,
+at `../<info-document>/'.
+
+

@@ -1,0 +1,25 @@
+14.2 @- and @hyphenation: Helping TeX hyphenate
+===============================================
+
+
+Although TeX's hyphenation algorithm is generally pretty good, it
+does miss useful hyphenation points from time to time.  (Or, far more
+rarely, insert an incorrect hyphenation.)  So, for documents with an
+unusual vocabulary or when fine-tuning for a printed edition, you may
+wish to help TeX out.  Texinfo supports two commands for this:
+
+@-
+Insert a discretionary hyphen, i.e., a place where TeX can (but does
+not have to) hyphenate.  This is especially useful when you notice an
+overfull hbox is due to TeX missing a hyphenation (see Overfull hboxes).  TeX will not insert any hyphenation points itself into a
+word containing @-.
+
+@hyphenation{hy-phen-a-ted words}
+Tell TeX how to hyphenate hy-phen-a-ted words.  As shown, you
+put a `-' at each hyphenation point.  For example:
+@hyphenation{man-u-script man-u-scripts}
+TeX only uses the specified hyphenation points when the
+words match exactly, so give all necessary variants.
+
+Info output is not hyphenated, so these commands have no effect there.
+

@@ -1,0 +1,387 @@
+6 Tricks and pitfalls
+*********************
+
+
+* Limitations::
+* Major differences to the C programming language::
+* Miscellaneous oddities::
+* Identifier resolution::
+
+6.1 Limitations
+===============
+
+SINGULAR has the following limitations:
+* the characteristic of a prime field must be less than 2147483629 
+* the (weighted) degree of a monomial must be smaller than the largest long,
+usually 2147483648
+* the exponent of a ring variable must be smaller than 32768
+unless the ring ordering start with the pseudo ordering 
+L( max_exponent )
+* the rank of any free module must be smaller than the largest long,
+usually 2147483648
+* the number of parameters must be smaller than 32768
+* the number of ring variables must be smaller than 32768
+* the precision of long floating point numbers (for ground field real)
+must be smaller than 32768
+* integers (of type int) have the limited range
+from -2147483647 to 2147483647
+* floating point numbers (type number from field real) have
+a limited range which is machine dependent. A typical range is -1.0e-38
+to 1.0e+38.  The string representation of overflow and underflow is
+machine dependent, as well. For example "Inf" on Linux, or 
+"+.+00e+00" on HPUX.
+* the length of an identifier is unlimited but listvar
+displays only the first 20 characters
+* statements may not contain more than 10000 tokens
+* All input to Singular must be 7-bit clean, i.e. special characters like the
+the German Umlaute (a", o", etc.), or the French accent characters may 
+neither appear as input to SINGULAR, nor in libraries or procedure
+definitions.
+
+6.2 Major differences to the C programming language
+===================================================
+
+Although many constructs from SINGULAR's programming language are similar
+to those from the C programming language, there are some subtle
+differences. Most notably:
+
+* No rvalue of increments and assignments::
+* Evaluation of logical expressions::
+* No case or switch statement::
+* Usage of commas::
+* Usage of brackets::
+* Behavior of continue::
+* Return type of procedures::
+6.2.1 No rvalue of increments and assignments
+---------------------------------------------
+
+The increment operator ++ (resp. decrement operator --)
+has no rvalue, i.e., cannot be used on the right-hand sides of
+assignments.  So, instead of
+
+j = i++;  // WRONG!!!
+
+(which results in an error), it must be written
+
+i++; j = i;
+
+Likewise, an assignment expression does not have a result.  Therefore,
+compound assignments like i = j = k; are not allowed and result
+in an error.
+
+6.2.2 Evaluation of logical expressions
+---------------------------------------
+
+All arguments of a logical expression are first evaluated and
+then the value of the logical expression is determined. For example, the
+logical expressions (a || b) is evaluated by first evaluating
+a and b, even though the value of b has no
+influence on the value of (a || b), if a evaluates to
+true. 
+
+Note, that this evaluation is different from the left-to-right,
+conditional evaluation of logical expressions (as found in most
+programming languages). For example, in these other languages, the value
+of (1 || b) is determined without ever evaluating b.  This
+causes some problems with boolean tests on variables, which might not be
+defined at evaluation time. For example, the following results in an
+error, if the variable i is undefined:
+
+if (defined(i) && i > 0) {} // WRONG!!!
+
+This must be written instead as:
+
+if (defined(i))
+{
+  if (i > 0) {}
+}
+
+However, there are several short work-arounds for this problem:
+1. If a variable (say, i) is only to be used as a boolean flag, then
+define (value is TRUE) and undefine (value is FALSE) i instead of
+assigning a value. Using this scheme, it is sufficient to simply write
+
+if (defined(i))
+
+in order to check whether i is TRUE. Use the command kill
+to undefine a variable, i.e. to assign it a FALSE value (see kill).
+2. If a variable  can have more than two values, then
+define it, if necessary, before it is used for the first time.
+For example, if the following is used within a procedure
+
+if (! defined(DEBUG)) { int DEBUG = 1;}
+...
+if (DEBUG == 3)  {...}
+if (DEBUG == 2)  {...}
+...
+
+then a user of this procedure does not need to care about the existence
+of the DEBUG variable - this remains hidden from the
+user. However, if DEBUG exists globally, then its local default
+value is overwritten by its global one.
+
+6.2.3 No case or switch statement
+---------------------------------
+
+SINGULAR does not offer a case (or switch)
+statement. However, it can be imitated in the following way:
+
+while (1)
+{
+   if (choice == choice_1) { ...; break;}
+   ...
+   if (choice == choice_n) { ...; break;}
+   // default case
+   ...; break;
+}
+
+6.2.4 Usage of commas
+---------------------
+
+In SINGULAR, a comma separates list elements and the value of a comma
+expression is a list.
+Hence, commas can not be used to combine several expressions into
+a single expression. For example, instead of writing
+
+for (i=1, j=5; i<5 || j<10; i++, j++) {...} // WRONG!!!!!!
+
+one has to write
+
+for (i,j = 1,5; i<5 || j<10; i++, j++) {...}
+
+6.2.5 Usage of brackets
+-----------------------
+
+In SINGULAR, curly brackets ({ }) must
+always be used to enclose the statement body following such constructs
+like if, else, for, or while, even if this
+block consists of only a single statement. Similarly, in the return
+statement of a procedure, parentheses (( )) must
+always be used to enclose the return value.  Even if there is no value
+to return, parentheses have to be used after a return statement
+(i.e., return();).  For example,
+
+if (i == 1) return i;    // WRONG!!!!!
+
+results in an error. Instead, it must be written as
+
+if (i == 1) { return (i); }
+
+6.2.6 Behavior of continue
+--------------------------
+SINGULAR's continue construct is only valid inside the body
+of a for or while construct. It skips the rest of the
+loop-body and jumps to the beginning of the block. Unlike the
+C-construct SINGULAR's continue does not execute the
+increment statement. For example,
+
+for (int i = 1 ; i<=10; i=i+1)
+{
+   ...
+   if (i==3) { i=8;continue; }
+     // skip the rest if i is 3 and
+     // continue with the next i: 8
+   i;
+}
+==> 1
+==> 2
+==> 8
+==> 9
+==> 10
+6.2.7 Return type of procedures
+-------------------------------
+
+Although the SINGULAR language is a strongly typed programming
+language, the type of the
+return value of a procedure does not need to be specified. As a
+consequence, the return type of a procedure may vary, i.e., may, for
+example, depend on the input. However, the return value
+of such a procedure may then only be assigned to a variable of type
+def.
+
+proc type_return (int i)
+{
+  if (i > 0) {return (i);}
+  else {return (list(i));}
+}
+def t1 = type_return(1);
+def t2 = type_return(-1);
+typeof(t1); typeof(t2);
+==> int
+==> list
+
+Furthermore, it is mandatory to assign the return value of a procedure
+to a variable of type def, if a procedure changes the current
+ring using the keepring command (see keepring) and returns a
+ring-dependent value (like a polynomial or module).
+
+proc def_return
+{
+  ring r=0,(x,y),dp;
+  poly p = x;
+  keepring r;
+  return (x);
+}
+def p = def_return();
+// poly p = def_return(); would be WRONG!!!
+typeof(p);
+==> poly
+
+On the other hand, more than one value can be returned by a single
+return statement. For example,
+
+proc tworeturn () { return (1,2); }
+int i,j = tworeturn();
+
+
+6.3 Miscellaneous oddities
+==========================
+
+1. integer division
+
+If two numerical constants (i.e., two sequences of digits) are divided
+using the / operator, the surrounding whitespace determines
+which division to use: if there is no space between the constants and
+the / operator (e.g., "3/2"), both numerical constants are
+treated as of type number and the current ring division is
+used. If there is at least one space surrounding the / operator
+(e.g., "3 / 2"), both numerical constants are treated as of type
+int and an integer division is performed. To avoid confusion, use
+the div operator instead of / for integer division and an
+explicit type cast to number for ring division. Note, that this
+problem does only occur for divisions of numerical constants.
+  ring r=32002,x,dp;
+  3/2;    // ring division
+==> -15994
+  3 / 2;  // integer division
+==> 1
+  3 div 2;
+==> 1
+  number(3) / number(2);
+==> -15994
+  number a=3;
+  number b=2;
+  a/b;
+==> -15994
+  int c=3;
+  int d=2;
+  c / d;
+==> 1
+
+
+2. monomials and precedence
+
+The computation of a monomial has precedence over all operators:
+  ring r=0,(x,y),dp;
+  2xy^2 == (2*x*y)^2;
+==> 1
+  2xy^2 == 2x*y^2;
+==> 0
+  2x*y^2 == 2*x * (y^2);
+==> 1
+
+3. meaning of mult
+
+For an arbitrary ideal or module i, mult(i) returns the
+multiplicity of the ideal generated by the leading monomials of the
+given generators of i, hence depends on the monomial ordering!
+
+A standard mistake is to interpret degree(i) or mult(i)
+for an inhomogeneous ideal i as the degree of the homogenization
+or as something like the 'degree of the affine part'. For the ordering
+dp (degree reverse lexicographical) the converse is true: if
+i is given by a standard basis, mult(i) is the degree of
+the homogeneous ideal obtained by homogenization of i and then
+putting the homogenizing variable to 0, hence it is the degree of the
+part at infinity (this can also be checked by looking at the initial
+ideal).
+
+4. size of ideals
+
+size counts the non-zero entries of an ideal or module. Use
+ncols to determine the actual number of entries in the ideal or module.
+
+5. computations in qring
+
+In order to speed up computations in quotient rings, SINGULAR
+usually does not reduce polynomials w.r.t. the quotient ideal; rather
+the given representative is used as long as possible during
+computations. If it is necessary, reduction is done during standard base
+computations. To reduce a polynomial f by hand w.r.t. the
+current quotient ideal use the command reduce(f,std(0))
+(see reduce).
+
+6. substring selection
+
+To extract substrings from a string, square brackets are used,
+enclosing either two comma-separated ints or an
+intvec. Although two comma-separated ints represent an
+intvec, they mean different things in substring access. Square
+brackets enclosing two ints (e.g. s[2,6]) return a
+substring where the first integer denotes the starting position and the
+second integer denotes the length of the substring. The result is
+returned as a string. Square brackets enclosing an intvec
+(e.g. s[intvec(2,6)]) return the characters of the string at the
+position given by the values of the intvec. The result is
+returned as an expression list of strings. 
+
+  string s = "one-word";
+  s[2,6];     // a substring starting at the second char
+==> ne-wor
+  size(_);
+==> 6
+  intvec v = 2,6;
+  s[v];      // the second and the sixth char
+==> n o
+  string st = s[v];  // stick together by an assignment
+  st;
+==> no
+  size(_);
+==> 2
+  v = 2,6,8;
+  s[v];
+==> n o d
+
+
+
+6.4 Identifier resolution
+=========================
+
+In SINGULAR, an identifier (i.e., a "word") is resolved in the
+following way and order: It is checked for
+1. a reserved name (like ring, std, ...),
+2. a local  variable (w.r.t. a procedure),
+3. a local ring variable (w.r.t. the current basering locally set in a procedure),
+4. a global variable,
+5. a global ring variable (w.r.t. the current basering)
+6. a monomial consisting of local ring variables written without operators,
+7. a monomial consisting of global ring variables written without operators.
+
+Consequently, it is allowed to have general variables with the same name
+as ring  variables. However, the above identifier resolution order must
+be kept in mind. Otherwise, surprising results may come up.
+
+ring r=0,(x,y),dp;
+int x;
+x*y; // resolved product int*poly, i.e., 0*y
+==> 0
+xy; // "xy" is one identifier and resolved to monomial xy
+==> xy
+
+For these reasons, we strongly recommend not to use variables which
+have the same name(s) as ring variables.
+
+Moreover, we strongly recommend not to use ring variables whose name is
+fully contained in (i.e., is a substring of) another name of a ring
+variable. Otherwise, effects like the following might occur:
+
+
+ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
+x;x1;   // resolved poly x
+==> x
+==> x1
+short=0; 2x1; // resolved to monomial 2*x^1 !!!!!!
+==> 2*x
+2*x1; // resolved to product 2 times x1
+==> 2*x1
+

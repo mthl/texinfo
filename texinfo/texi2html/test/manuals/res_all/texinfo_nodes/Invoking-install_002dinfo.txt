@@ -1,0 +1,85 @@
+20.2.5 Invoking install-info
+----------------------------
+
+
+install-info inserts menu entries from an Info file into the
+top-level `dir' file in the Info system (see the previous sections
+for an explanation of how the `dir' file works).  It's most often
+run as part of software installation, or when constructing a `dir' file
+for all manuals on a system.  Synopsis:
+
+install-info [option]... [info-file [dir-file]]
+
+If info-file or dir-file are not specified, the options
+(described below) that define them must be.  There are no compile-time
+defaults, and standard input is never used.  install-info can
+read only one Info file and write only one `dir' file per invocation.
+
+If dir-file (however specified) does not exist,
+install-info creates it if possible (with no entries).
+
+If any input file is compressed with gzip (see (gzip)Invoking gzip section `Invoking gzip' in Gzip), install-info automatically uncompresses it
+for reading.  And if dir-file is compressed, install-info
+also automatically leaves it compressed after writing any changes.
+If dir-file itself does not exist, install-info tries to
+open `dir-file.gz'.
+
+Options:
+
+--delete
+Delete the entries in info-file from dir-file.  The file
+name in the entry in dir-file must be info-file (except for
+an optional `.info' in either one).  Don't insert any new entries.
+
+--dir-file=name
+-d name
+Specify file name of the Info directory file.  This is equivalent to
+using the dir-file argument.
+
+--entry=text
+-e text
+Insert text as an Info directory entry; text should have the
+form of an Info menu item line plus zero or more extra lines starting
+with whitespace.  If you specify more than one entry, they are all
+added.  If you don't specify any entries, they are determined from
+information in the Info file itself.
+
+--help
+-h
+Display a usage message listing basic usage and all available options,
+then exit successfully.
+
+--info-file=file
+-i file
+Specify Info file to install in the directory.
+Equivalent to using the info-file argument.
+
+--info-dir=dir
+-D dir
+Specify the directory where `dir' resides.
+Equivalent to `--dir-file=dir/dir'.
+
+--item=text
+Same as `--entry=text'.  An Info directory entry is actually
+a menu item.
+
+--quiet
+Suppress warnings.
+
+--remove
+-r
+Same as `--delete'.
+
+--section=sec
+-s sec
+Put this file's entries in section sec of the directory.  If you
+specify more than one section, all the entries are added in each of the
+sections.  If you don't specify any sections, they are determined from
+information in the Info file itself.
+
+--version
+-V
+Display version information and exit successfully.
+
+
+

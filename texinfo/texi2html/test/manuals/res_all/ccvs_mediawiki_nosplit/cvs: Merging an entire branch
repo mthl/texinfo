@@ -1,0 +1,98 @@
+<div id="Merging-a-branch"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Magic branch numbers#Magic-branch-numbers  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Merging from a branch several times#Merging-more-than-once  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Merging-an-entire-branch"></div>
+=== Merging an entire branch ===
+<div id="index-Merging-a-branch"></div>
+<div id="index-_002dj-_0028merging-branches_0029"></div>
+
+<p>You can merge changes made on a branch into your working copy by giving
+the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag to the <code>update</code> subcommand.  With one
+&lsquo;<samp>-j <var>branchname</var></samp>&rsquo; option it merges the changes made between the
+greatest common ancestor (GCA) of the branch and the destination revision (in
+the simple case below the GCA is the point where the branch forked) and the
+newest revision on that branch into your working copy.
+</p>
+<div id="index-Join"></div>
+<p>The &lsquo;<samp>-j</samp>&rsquo; stands for &ldquo;join&rdquo;.
+</p>
+<div id="index-Branch-merge-example"></div>
+<div id="index-Example_002c-branch-merge"></div>
+<div id="index-Merge_002c-branch-example"></div>
+<p>Consider this revision tree:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+
+! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
++-----+    +-----+    +-----+    +-----+
+                !
+                !
+                !   +---------+    +---------+
+Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                    +---------+    +---------+
+</nowiki></pre></td></tr></table>
+
+<p>The branch 1.2.2 has been given the tag (symbolic name) &lsquo;<samp>R1fix</samp>&rsquo;.  The
+following example assumes that the module &lsquo;<samp>mod</samp>&rsquo; contains only one
+file, &lsquo;<tt>m.c</tt>&rsquo;.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout mod               # <span class="roman">Retrieve the latest revision, 1.4</span>
+
+$ cvs update -j R1fix m.c        # <span class="roman">Merge all changes made on the branch,</span>
+                                 # <span class="roman">i.e. the changes between revision 1.2</span>
+                                 # <span class="roman">and 1.2.2.2, into your working copy</span>
+                                 # <span class="roman">of the file.</span>
+
+$ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision 1.5.</span>
+</nowiki></pre></td></tr></table>
+
+<p>A conflict can result from a merge operation.  If that
+happens, you should resolve it before committing the
+new revision.  See section [cvs: Conflicts example#Conflicts-example Conflicts example].
+</p>
+<p>If your source files contain keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
+you might be getting more conflicts than strictly necessary.  See
+[cvs: Merging and keywords#Merging-and-keywords Merging and keywords], for information on how to avoid this.
+</p>
+<p>The <code>checkout</code> command also supports the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag.  The
+same effect as above could be achieved with this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -j R1fix mod
+$ cvs commit -m &quot;Included R1fix&quot;
+</nowiki></pre></td></tr></table>
+
+<p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
+not produce the desired result.  See section [cvs: Merging can add or remove files#Merging-adds-and-removals Merging can add or remove files], for more.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Magic branch numbers#Magic-branch-numbers  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Merging from a branch several times#Merging-more-than-once  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

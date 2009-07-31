@@ -1,0 +1,176 @@
+<div id="config"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Expansions in administrative files#Variables  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="The-CVSROOT_002fconfig-configuration-file"></div>
+=== The CVSROOT/config configuration file ===
+
+<div id="index-config_002c-in-CVSROOT"></div>
+<div id="index-CVSROOT_002fconfig"></div>
+
+<p>The administrative file &lsquo;<tt>config</tt>&rsquo; contains various
+miscellaneous settings which affect the behavior of
+<small>CVS</small>.  The syntax is slightly different from the
+other administrative files.  Variables are not
+expanded.  Lines which start with &lsquo;<samp>#</samp>&rsquo; are
+considered comments.
+Other lines consist of a keyword, &lsquo;<samp>=</samp>&rsquo;, and a
+value.  Note that this syntax is very strict.
+Extraneous spaces or tabs are not permitted.
+</p>
+<p>Currently defined keywords are:
+</p>
+<dl compact="compact">
+<dd><div id="index-RCSBIN_002c-in-CVSROOT_002fconfig"></div>
+</dd>
+<dt><code>RCSBIN=<var>bindir</var></code></dt>
+<dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told
+<small>CVS</small> to look for <small>RCS</small> programs in the
+<var>bindir</var> directory.  Current versions of <small>CVS</small>
+do not run <small>RCS</small> programs; for compatibility this
+setting is accepted, but it does nothing.
+</p>
+<div id="index-SystemAuth_002c-in-CVSROOT_002fconfig"></div>
+</dd>
+<dt><code>SystemAuth=<var>value</var></code></dt>
+<dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then pserver should check
+for users in the system&rsquo;s user database if not found in
+&lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
+pserver users must exist in &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.
+The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
+[cvs: Direct connection with password authentication#Password-authenticated Direct connection with password authentication].
+</p>
+
+<div id="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></div>
+</dd>
+<dt><code>TopLevelAdmin=<var>value</var></code></dt>
+<dd><p>Modify the &lsquo;<samp>checkout</samp>&rsquo; command to create a
+&lsquo;<samp>CVS</samp>&rsquo; directory at the top level of the new
+working directory, in addition to &lsquo;<samp>CVS</samp>&rsquo;
+directories created within checked-out directories.
+The default value is &lsquo;<samp>no</samp>&rsquo;.
+</p>
+<p>This option is useful if you find yourself performing
+many commands at the top level of your working
+directory, rather than in one of the checked out
+subdirectories.  The &lsquo;<tt>CVS</tt>&rsquo; directory created there
+will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
+each command.  It also provides a place for the
+&lsquo;<tt>CVS/Template</tt>&rsquo; file (see section [cvs: How data is stored in the working directory#Working-directory-storage How data is stored in the working directory]).
+</p>
+<div id="index-LockDir_002c-in-CVSROOT_002fconfig"></div>
+</dd>
+<dt><code>LockDir=<var>directory</var></code></dt>
+<dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
+directly in the repository.  This is useful if you want
+to let users read from the repository while giving them
+write access only to <var>directory</var>, not to the
+repository.
+It can also be used to put the locks on a very fast
+in-memory file system to speed up locking and unlocking
+the repository.
+You need to create <var>directory</var>, but
+<small>CVS</small> will create subdirectories of <var>directory</var> as it
+needs them.  For information on <small>CVS</small> locks, see
+[cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS].
+</p>
+<p>Before enabling the LockDir option, make sure that you
+have tracked down and removed any copies of <small>CVS</small> 1.9 or
+older.  Such versions neither support LockDir, nor will
+give an error indicating that they don&rsquo;t support it.
+The result, if this is allowed to happen, is that some
+<small>CVS</small> users will put the locks one place, and others will
+put them another place, and therefore the repository
+could become corrupted.  <small>CVS</small> 1.10 does not support
+LockDir but it will print a warning if run on a
+repository with LockDir enabled.
+</p>
+<div id="index-LogHistory_002c-in-CVSROOT_002fconfig"></div>
+</dd>
+<dt><code>LogHistory=<var>value</var></code></dt>
+<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: history--Show status of files and users#history history&mdash;Show status of files and users]).
+Default of &lsquo;<samp>TOEFWUCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
+all transactions.  Any subset of the default is
+legal.  (For example, to only log transactions that modify the
+&lsquo;<tt>*,v</tt>&rsquo; files, use &lsquo;<samp>LogHistory=TMAR</samp>&rsquo;.)
+</p>
+<div id="index-RereadLogAfterVerify_002c-in-CVSROOT_002fconfig"></div>
+<div id="index-verifymsg_002c-changing-the-log-message-1"></div>
+</dd>
+<dt><code>RereadLogAfterVerify=<var>value</var></code></dt>
+<dd><p>Modify the &lsquo;<samp>commit</samp>&rsquo; command such that CVS will reread the
+log message after running the program specified by &lsquo;<tt>verifymsg</tt>&rsquo;.
+<var>value</var> may be one of &lsquo;<samp>yes</samp>&rsquo; or &lsquo;<samp>always</samp>&rsquo;, indicating that
+the log message should always be reread; &lsquo;<samp>no</samp>&rsquo;
+or &lsquo;<samp>never</samp>&rsquo;, indicating that it should never be
+reread; or <var>value</var> may be &lsquo;<samp>stat</samp>&rsquo;, indicating
+that the file should be checked with the filesystem
+&lsquo;<samp>stat()</samp>&rsquo; function to see if it has changed (see warning below)
+before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
+</p>
+<p><strong>Note: the &lsquo;stat&rsquo; mode can cause CVS to pause for up to
+one extra second per directory committed.  This can be less IO and
+CPU intensive but is not recommended for use with large repositories</strong>
+</p>
+<p>See section [cvs: Verifying log messages#verifymsg Verifying log messages], for more information on how verifymsg
+may be used.
+</p>
+<div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1"></div>
+</dd>
+<dt><code>UserAdminOptions=<var>value</var></code></dt>
+<dd><p>Control what options will be allowed with the <code>cvs admin</code>
+command (see section [cvs: admin--Administration#admin admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
+The <var>value</var> string is a list of single character options
+which should be allowed.  If a user who is not a member of the
+<code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
+option which is not listed they will will receive an error message
+reporting that the option is restricted.
+</p>
+<p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
+ignore the <code>UserAdminOptions</code> keyword (see section [cvs: admin--Administration#admin admin&mdash;Administration]).
+</p>
+<p>When not specified, <code>UserAdminOptions</code> defaults to
+&lsquo;<samp>k</samp>&rsquo;.  In other words, it defaults to allowing
+users outside of the <code>cvsadmin</code> group to use the
+<code>cvs admin</code> command only to change the default keyword
+expansion mode for files.
+</p>
+<p>As an example, to restrict users not in the <code>cvsadmin</code>
+group to using <code>cvs admin</code> to change the default keyword
+substitution mode, lock revisions, unlock revisions, and
+replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
+</p></dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Expansions in administrative files#Variables  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

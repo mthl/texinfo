@@ -1,0 +1,76 @@
+20.1.8 Tag Files and Split Files
+--------------------------------
+
+If a Texinfo file has more than 30,000 bytes,
+texinfo-format-buffer automatically creates a tag table
+for its Info file;  makeinfo always creates a tag table.  With
+a tag table, Info can jump to new nodes more quickly than it can
+otherwise.
+
+In addition, if the Texinfo file contains more than about 70,000
+bytes, texinfo-format-buffer and makeinfo split the
+large Info file into shorter indirect subfiles of about 50,000
+bytes each.  Big files are split into smaller files so that Emacs does
+not need to make a large buffer to hold the whole of a large Info
+file; instead, Emacs allocates just enough memory for the small, split-off
+file that is needed at the time.  This way, Emacs avoids wasting
+memory when you run Info.  (Before splitting was implemented, Info
+files were always kept short and include files were designed as
+a way to create a single, large printed manual out of the smaller Info
+files.  See Include Files, for more information.  Include files are
+still used for very large documents, such as The Emacs Lisp
+Reference Manual, in which each chapter is a separate file.)
+
+When a file is split, Info itself makes use of a shortened version of
+the original file that contains just the tag table and references to
+the files that were split off.  The split-off files are called
+indirect files.
+
+The split-off files have names that are created by appending `-1',
+`-2', `-3' and so on to the file name specified by the
+@setfilename command.  The shortened version of the original file
+continues to have the name specified by @setfilename.
+
+At one stage in writing this document, for example, the Info file was saved
+as the file `test-texinfo' and that file looked like this:
+
+Info file: test-texinfo,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: new-texinfo-manual.texinfo
+
+^_
+Indirect:
+test-texinfo-1: 102
+test-texinfo-2: 50422
+test-texinfo-3: 101300
+^_^L
+Tag table:
+(Indirect)
+Node: overview^?104
+Node: info file^?1271
+Node: printed manual^?4853
+Node: conventions^?6855
+...
+
+(But `test-texinfo' had far more nodes than are shown here.)  Each of
+the split-off, indirect files, `test-texinfo-1',
+`test-texinfo-2', and `test-texinfo-3', is listed in this file
+after the line that says `Indirect:'.  The tag table is listed after
+the line that says `Tag table:'. 
+
+In the list of indirect files, the number following the file name
+records the cumulative number of bytes in the preceding indirect files,
+not counting the file list itself, the tag table, or the permissions
+text in each file.  In the tag table, the number following the node name
+records the location of the beginning of the node, in bytes from the
+beginning of the (unsplit) output.
+
+If you are using texinfo-format-buffer to create Info files,
+you may want to run the Info-validate command.  (The
+makeinfo command does such a good job on its own, you do not
+need Info-validate.)  However, you cannot run the M-x
+Info-validate node-checking command on indirect files.  For
+information on how to prevent files from being split and how to
+validate the structure of the nodes, see Using Info-validate.
+
+

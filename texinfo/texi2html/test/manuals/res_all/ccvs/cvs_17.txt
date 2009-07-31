@@ -1,0 +1,788 @@
+Annexe B Quick reference to CVS commands
+****************************************
+
+This appendix describes how to invoke CVS, with
+references to where each command or feature is
+described in detail.  For other references run the
+cvs --help command, or see Index.
+
+A CVS command looks like:
+
+cvs [ global_options ] command [ command_options ] [ command_args ]
+
+Global options:
+
+--allow-root=rootdir
+Specify legal CVSROOT directory (server only) (not
+in CVS 1.9 and older).  See Password authentication server.
+
+-a
+Authenticate all communication (client only) (not in CVS
+1.9 and older).  See Global options.
+
+-b
+Specify RCS location (CVS 1.9 and older).  See
+Global options.
+
+-d root
+Specify the CVSROOT.  See Repository.
+
+-e editor
+Edit messages with editor.  See Committing your changes.
+
+-f
+Do not read the `~/.cvsrc' file.  See Global options.
+
+-H
+--help
+Print a help message.  See Global options.
+
+-l
+Do not log in `$CVSROOT/CVSROOT/history' file.  See Global options.
+
+-n
+Do not change any files.  See Global options.
+
+-Q
+Be really quiet.  See Global options.
+
+-q
+Be somewhat quiet.  See Global options.
+
+-r
+Make new working files read-only.  See Global options.
+
+-s variable=value
+Set a user variable.  See Variables.
+
+-T tempdir
+Put temporary files in tempdir.  See Global options.
+
+-t
+Trace CVS execution.  See Global options.
+
+-v
+--version
+Display version and copyright information for CVS.
+
+-w
+Make new working files read-write.  See Global options.
+
+-x
+Encrypt all communication (client only).
+See Global options.
+
+-z gzip-level
+Set the compression level (client only).
+See Global options.
+
+Keyword expansion modes (see Substitution modes):
+
+-kkv  $@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
+-kkvl $@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+-kk   $@splitrcskeyword{}Id$
+-kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
+-ko   no expansion
+-kb   no expansion, file is binary
+
+Keywords (see Keyword list):
+
+$@splitrcskeyword{}Author: joe $
+$@splitrcskeyword{}Date: 1993/12/09 03:21:13 $
+$@splitrcskeyword{}CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$@splitrcskeyword{}Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$@splitrcskeyword{}Locker: harry $
+$@splitrcskeyword{}Name: snapshot_1_14 $
+$@splitrcskeyword{}RCSfile: file1,v $
+$@splitrcskeyword{}Revision: 1.1 $
+$@splitrcskeyword{}Source: /home/files/file1,v $
+$@splitrcskeyword{}State: Exp $
+$@splitrcskeyword{}Log: file1,v $
+Revision 1.1  1993/12/09 03:30:17  joe
+Initial revision
+
+
+Commands, command options, and command arguments:
+
+add [options] [files...]
+Add a new file/directory.  See Adding files.
+
+-k kflag
+Set keyword expansion.
+
+-m msg
+Set file description.
+
+admin [options] [files...]
+Administration of history files in the repository.  See
+admin.
+
+-b[rev]
+Set default branch.  See Reverting local changes.
+
+-cstring
+Set comment leader.
+
+-ksubst
+Set keyword substitution.  See Keyword substitution.
+
+-l[rev]
+Lock revision rev, or latest revision.
+
+-mrev:msg
+Replace the log message of revision rev with
+msg.
+
+-orange
+Delete revisions from the repository.  See
+admin options.
+
+-q
+Run quietly; do not print diagnostics.
+
+-sstate[:rev]
+Set the state.
+
+-t
+Set file description from standard input.
+
+-tfile
+Set file description from file.
+
+-t-string
+Set file description to string.
+
+-u[rev]
+Unlock revision rev, or latest revision.
+
+annotate [options] [files...]
+Show last revision where each line was modified.  See
+annotate.
+
+-D date
+Annotate the most recent revision no later than
+date.  See Common options.
+
+-F
+Force annotation of binary files.  (Without this option,
+binary files are skipped with a message.)
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r tag
+Annotate revision tag.  See Common options.
+
+checkout [options] modules...
+Get a copy of the sources.  See checkout.
+
+-A
+Reset any sticky tags/date/options.  See Sticky tags and Keyword substitution.
+
+-c
+Output the module database.  See checkout options.
+
+-D date
+Check out revisions as of date (is sticky).  See
+Common options.
+
+-d dir
+Check out into dir.  See checkout options.
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-j rev
+Merge in changes.  See checkout options.
+
+-k kflag
+Use kflag keyword expansion.  See
+Substitution modes.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-N
+Don't "shorten" module paths if -d specified.  See
+checkout options.
+
+-n
+Do not run module program (if any).  See checkout options.
+
+-P
+Prune empty directories.  See Moving directories.
+
+-p
+Check out files to standard output (avoids
+stickiness).  See checkout options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r tag
+Checkout revision tag (is sticky).  See Common options.
+
+-s
+Like -c, but include module status.  See checkout options.
+
+commit [options] [files...]
+Check changes into the repository.  See commit.
+
+-F file
+Read log message from file.  See commit options.
+
+-f
+Force the file to be committed; disables recursion.
+See commit options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-m msg
+Use msg as log message.  See commit options.
+
+-n
+Do not run module program (if any).  See commit options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r rev
+Commit to rev.  See commit options.
+
+diff [options] [files...]
+Show differences between revisions.  See diff.
+In addition to the options shown below, accepts a wide
+variety of options to control output style, for example
+`-c' for context diffs.
+
+-D date1
+Diff revision for date against working file.  See
+diff options.
+
+-D date2
+Diff rev1/date1 against date2.  See
+diff options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-N
+Include diffs for added and removed files.  See
+diff options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r rev1
+Diff revision for rev1 against working file.  See
+diff options.
+
+-r rev2
+Diff rev1/date1 against rev2.  See diff options.
+
+edit [options] [files...]
+Get ready to edit a watched file.  See Editing files.
+
+-a actions
+Specify actions for temporary watch, where
+actions is edit, unedit,
+commit, all, or none.  See
+Editing files.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+editors [options] [files...]
+See who is editing a watched file.  See Watch information.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+export [options] modules...
+Export files from CVS.  See export.
+
+-D date
+Check out revisions as of date.  See
+Common options.
+
+-d dir
+Check out into dir.  See export options.
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-k kflag
+Use kflag keyword expansion.  See
+Substitution modes.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-N
+Don't "shorten" module paths if -d specified.  See
+export options.
+
+-n
+Do not run module program (if any).  See export options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r tag
+Checkout revision tag.  See Common options.
+
+history [options] [files...]
+Show repository access history.  See history.
+
+-a
+All users (default is self).  See history options.
+
+-b str
+Back to record with str in module/file/repos
+field.  See history options.
+
+-c
+Report on committed (modified) files.  See history options.
+
+-D date
+Since date.  See history options.
+
+-e
+Report on all record types.  See history options.
+
+-l
+Last modified (committed or modified report).  See history options.
+
+-m module
+Report on module (repeatable).  See history options.
+
+-n module
+In module.  See history options.
+
+-o
+Report on checked out modules.  See history options.
+
+-p repository
+In repository.  See history options.
+
+-r rev
+Since revision rev.  See history options.
+
+-T
+Produce report on all TAGs.  See history options.
+
+-t tag
+Since tag record placed in history file (by anyone).
+See history options.
+
+-u user
+For user user (repeatable).  See history options.
+
+-w
+Working directory must match.  See history options.
+
+-x types
+Report on types, one or more of
+TOEFWUCGMAR.  See history options.
+
+-z zone
+Output for time zone zone.  See history options.
+
+import [options] repository vendor-tag release-tags...
+Import files into CVS, using vendor branches.  See
+import.
+
+-b bra
+Import to vendor branch bra.  See
+Multiple vendor branches.
+
+-d
+Use the file's modification time as the time of
+import.  See import options.
+
+-k kflag
+Set default keyword substitution mode.  See
+import options.
+
+-m msg
+Use msg for log message.  See
+import options.
+
+-I ign
+More files to ignore (! to reset).  See
+import options.
+
+-W spec
+More wrappers.  See import options.
+
+init
+Create a CVS repository if it doesn't exist.  See
+Creating a repository.
+
+kserver
+Kerberos authenticated server.
+See Kerberos authenticated.
+
+log [options] [files...]
+Print out history information for files.  See log.
+
+-b
+Only list revisions on the default branch.  See log options.
+
+-d dates
+Specify dates (d1<d2 for range, d for
+latest before).  See log options.
+
+-h
+Only print header.  See log options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-N
+Do not list tags.  See log options.
+
+-R
+Only print name of RCS file.  See log options.
+
+-rrevs
+Only list revisions revs.  See log options.
+
+-s states
+Only list revisions with specified states.  See log options.
+
+-t
+Only print header and descriptive text.  See log options.
+
+-wlogins
+Only list revisions checked in by specified logins.  See log options.
+
+login
+Prompt for password for authenticating server.  See
+Password authentication client.
+
+logout
+Remove stored password for authenticating server.  See
+Password authentication client.
+
+pserver
+Password authenticated server.
+See Password authentication server.
+
+rannotate [options] [modules...]
+Show last revision where each line was modified.  See
+annotate.
+
+-D date
+Annotate the most recent revision no later than
+date.  See Common options.
+
+-F
+Force annotation of binary files.  (Without this option,
+binary files are skipped with a message.)
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r tag
+Annotate revision tag.  See Common options.
+
+rdiff [options] modules...
+Show differences between releases.  See rdiff.
+
+-c
+Context diff output format (default).  See rdiff options.
+
+-D date
+Select revisions based on date.  See Common options.
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r rev
+Select revisions based on rev.  See Common options.
+
+-s
+Short patch - one liner per file.  See rdiff options.
+
+-t
+Top two diffs - last change made to the file.  See
+diff options.
+
+-u
+Unidiff output format.  See rdiff options.
+
+-V vers
+Use RCS Version vers for keyword expansion (obsolete).  See
+rdiff options.
+
+release [options] directory
+Indicate that a directory is no longer in use.  See
+release.
+
+-d
+Delete the given directory.  See release options.
+
+remove [options] [files...]
+Remove an entry from the repository.  See Removing files.
+
+-f
+Delete the file before removing it.  See Removing files.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+rlog [options] [files...]
+Print out history information for modules.  See log.
+
+-b
+Only list revisions on the default branch.  See log options.
+
+-d dates
+Specify dates (d1<d2 for range, d for
+latest before).  See log options.
+
+-h
+Only print header.  See log options.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-N
+Do not list tags.  See log options.
+
+-R
+Only print name of RCS file.  See log options.
+
+-rrevs
+Only list revisions revs.  See log options.
+
+-s states
+Only list revisions with specified states.  See log options.
+
+-t
+Only print header and descriptive text.  See log options.
+
+-wlogins
+Only list revisions checked in by specified logins.  See log options.
+
+rtag [options] tag modules...
+Add a symbolic tag to a module.
+See Revisions and Branching and merging.
+
+-a
+Clear tag from removed files that would not otherwise
+be tagged.  See Tagging add/remove.
+
+-b
+Create a branch named tag.  See Branching and merging.
+
+-B
+Used in conjunction with -F or -d, enables movement and deletion of
+branch tags.  Use with extreme caution. 
+
+-D date
+Tag revisions as of date.  See Tagging by date/tag.
+
+-d
+Delete tag.  See Modifying tags.
+
+-F
+Move tag if it already exists.  See Modifying tags.
+
+-f
+Force a head revision match if tag/date not found.
+See Tagging by date/tag.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-n
+No execution of tag program.  See Common options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r rev
+Tag existing tag rev.  See Tagging by date/tag.
+
+server
+Rsh server.  See Connecting via rsh.
+
+status [options] files...
+Display status information in a working directory.  See
+File status.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-v
+Include tag information for file.  See Tags.
+
+tag [options] tag [files...]
+Add a symbolic tag to checked out version of files.
+See Revisions and Branching and merging.
+
+-b
+Create a branch named tag.  See Branching and merging.
+
+-c
+Check that working files are unmodified.  See
+Tagging the working directory.
+
+-D date
+Tag revisions as of date.  See Tagging by date/tag.
+
+-d
+Delete tag.  See Modifying tags.
+
+-F
+Move tag if it already exists.  See Modifying tags.
+
+-f
+Force a head revision match if tag/date not found.
+See Tagging by date/tag.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r rev
+Tag existing tag rev.  See Tagging by date/tag.
+
+unedit [options] [files...]
+Undo an edit command.  See Editing files.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+update [options] [files...]
+Bring work tree in sync with repository.  See
+update.
+
+-A
+Reset any sticky tags/date/options.  See Sticky tags and Keyword substitution.
+
+-C
+Overwrite locally modified files with clean copies from
+the repository (the modified file is saved in
+`.#file.revision', however).
+
+-D date
+Check out revisions as of date (is sticky).  See
+Common options.
+
+-d
+Create directories.  See update options.
+
+-f
+Use head revision if tag/date not found.  See
+Common options.
+
+-I ign
+More files to ignore (! to reset).  See
+import options.
+
+-j rev
+Merge in changes.  See update options.
+
+-k kflag
+Use kflag keyword expansion.  See
+Substitution modes.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-P
+Prune empty directories.  See Moving directories.
+
+-p
+Check out files to standard output (avoids
+stickiness).  See update options.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+-r tag
+Checkout revision tag (is sticky).  See Common options.
+
+-W spec
+More wrappers.  See import options.
+
+version
+
+Display the version of CVS being used.  If the repository
+is remote, display both the client and server versions.
+
+watch [on|off|add|remove] [options] [files...]
+
+on/off: turn on/off read-only checkouts of files.  See
+Setting a watch.
+
+add/remove: add or remove notification on actions.  See
+Getting Notified.
+
+-a actions
+Specify actions for temporary watch, where
+actions is edit, unedit,
+commit, all, or none.  See
+Editing files.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+watchers [options] [files...]
+See who is watching a file.  See Watch information.
+
+-l
+Local; run only in current working directory.  See Recursive behavior.
+
+-R
+Operate recursively (default).  See Recursive behavior.
+
+

@@ -1,0 +1,18 @@
+7.3 Less Cluttered Menu Entry
+=============================
+
+When the menu entry name and node name are the same, you can write
+the name immediately after the asterisk and space at the beginning of
+the line and follow the name with two colons.
+
+For example, write
+
+* Name::                                    description
+
+instead of
+
+* Name: Name.                               description
+
+You should use the node name for the menu entry name whenever possible,
+since it reduces visual clutter in the menu.
+

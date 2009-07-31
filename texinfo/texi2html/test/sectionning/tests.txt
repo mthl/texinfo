@@ -57,6 +57,8 @@ placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
 semi_auto semi_auto.texi
 anchor_in_footnote anchor_in_footnote.texi
+
+test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi -init info.init
 two_footnotes_in_nodes_info two_footnotes_in_nodes.texi -init info.init
 two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi -init info.init --separated-footnotes

@@ -1,0 +1,22 @@
+12 Indices
+**********
+
+Using Texinfo, you can generate indices without having to sort and
+collate entries manually.  In an index, the entries are listed in
+alphabetical order, together with information on how to find the
+discussion of each entry.  In a printed manual, this information
+consists of page numbers.  In an Info file, this information is a menu
+entry leading to the first node referenced.
+
+Texinfo provides several predefined kinds of index: an index
+for functions, an index for variables, an index for concepts, and so
+on.  You can combine indices or use them for other than their
+canonical purpose.  If you wish, you can define your own indices.
+
+* Index Entries::               Choose different words for index entries.
+* Predefined Indices::          Use different indices for different kinds
+                                  of entry.
+* Indexing Commands::           How to make an index entry.
+* Combining Indices::           How to combine indices.
+* New Indices::                 How to define your own indices.
+

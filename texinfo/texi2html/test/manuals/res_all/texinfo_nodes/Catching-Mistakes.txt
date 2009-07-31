@@ -1,0 +1,26 @@
+Annexe F Formatting Mistakes
+****************************
+
+Besides mistakes in the content of your documentation, there are two
+kinds of mistake you can make with Texinfo: you can make mistakes with
+@-commands, and you can make mistakes with the structure of the nodes
+and chapters.
+
+Emacs has two tools for catching the @-command mistakes and two for
+catching structuring mistakes.
+
+For finding problems with @-commands, you can run TeX or a region
+formatting command on the region that has a problem; indeed, you can
+run these commands on each region as you write it.
+
+For finding problems with the structure of nodes and chapters, you can use
+C-c C-s (texinfo-show-structure) and the related occur
+command and you can use the M-x Info-validate command.
+
+* makeinfo Preferred::          makeinfo finds errors.
+* Debugging with Info::         How to catch errors with Info formatting.
+* Debugging with TeX::          How to catch errors with TeX formatting.
+* Using texinfo-show-structure::  How to use texinfo-show-structure.
+* Using occur::                 How to list all lines containing a pattern.
+* Running Info-Validate::       How to find badly referenced nodes.
+

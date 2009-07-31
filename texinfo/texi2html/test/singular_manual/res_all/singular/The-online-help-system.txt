@@ -1,0 +1,182 @@
+3.1.3 The online help system
+----------------------------
+
+The online help system is invoked with the help command.
+? may be used as a synonym for help.  Simply typing
+help; displays the "top" of the help system (i.e., the title
+page of the SINGULAR manual) which offers a
+short table of contents.  Typing help topic; shows the
+available documentation on topic.  Here, topic may be either a function
+name or, more generally, any index entry of the SINGULAR
+manual. Furthermore, topic may contain wildcard characters.
+See help, for more information.
+
+Online help information can be displayed in various help browsers. The
+following table lists a summary of the supported browsers. See below for
+more details about particular browsers.
+
+ Browser Platform Description
+ html Windows displays html version of manual in your default html browser
+ winhlp Windows displays Windows help (.hlp) version of manual
+ netscape Unix, Windows uses netscape to display html version of manual
+ tkinfo Unix uses the tkinfo program to display texinfo version of manual
+ xinfo Unix, Windows uses the info program to display texinfo version of manual in an
+extra xterm
+ info Unix, Windows uses the info program to display texinfo version of manual
+ builtin all simply outputs the help information in plain ASCII format
+ emacs Unix, Windows when running SINGULAR within (X)emacs, display help in
+(X)emacs info buffer.
+ dummy all displays error message about no available help browser
+
+The browser which is used to display the help information, can be either
+set at startup time with the command line option  (see Command line options)
+--brower=<browser>
+or with the SINGULAR command (see system)
+system("--browser", <browser>);
+The  SINGULAR command
+system("browsers");
+lists all available browsers and the command
+system("--browser");
+returns the currently used browser.
+
+If no browser is explicitly set by the user, then the first (w.r.t. the
+order of the browsers in the table above) available browser is
+chosen. In other words, the default browser is netscape for Unix
+platforms, and html for Windows, unless
+your local set-up does not allow to run it.
+
+The .singularrc (see Startup sequence) file is a good place
+to set your default browser. Recall that if a file
+$HOME/.singularrc exists on your system, then the content of this
+file is executed before the first user input. Hence, putting
+if (system("version") >= 1306) // keep backwards-compatibility
+{
+  if (! system("--emacs")
+  {
+    // only set help browser if not running within emacs
+    system("--browser", "info");
+  }
+  // if help browser is later on set to netscape,
+  // allow it to fetch HTML pages from the net
+  system("--allow-net", 1);
+}; // the last semicolon is important: otherwise no ">", but "." prompt
+in your file $HOME/.singularrc sets your default browser to
+info, unless SINGULAR is run within emacs (in which case the
+default browser is set automatically to emacs).
+
+
+Obviously, certain external files and programs are required for the
+SINGULAR help system to work correctly. If something is not available
+or goes wrong, here are some tips for troubleshooting the help system:
+
+* Under Unix, the environment variable DISPLAY has to be set for
+the browsers netscape, tkinfo, and xinfo to work.
+
+* The help browsers netscape, tkinfo, xinfo, and
+info are only available if the respective programs are installed
+on your system (for xinfo, the programs xterm and
+info are necessary). You can explicitly specify which program to
+use, by setting appropriate environment variables (whose names
+are the names of the respective programs in all up-case letters).
+
+For example,
+to use the program navigator with a private colormap as
+netscape help browser, set the environment variable
+NETSCAPE to the value
+"navigator -install".
+
+* If the help browser netscape can not find the local html
+pages of the SINGULAR manual (which it looks for at
+$RootDir/html - see Loading of a library for more info on
+$RootDir) and the (command-line) option --allow-net
+has explicitly been set (see Command line options and
+system for more info on
+setting values of command-line options), then it dispatches the html
+pages from
+<http://www.singular.uni-kl.de/Manual> (note that
+the non-local net-access of HTML pages is disabled, by default).
+
+An
+alternative location of a local directory where the html pages reside
+can be specified by setting the environment variable
+SINGULAR_HTML_DIR.
+
+* The help browsers tkinfo, xinfo, info, and
+builtin need the (info) file singular.hlp which it looks
+for at $RootDir/info/singular.hlp (see Loading of a library
+for more info on $RootDir).  An alternative
+location of the info file of the manual can be specified by setting the
+environment variable SINGULAR_INFO_FILE.
+
+See also:
+Command line options;
+Loading of a library;
+Startup sequence;
+system.
+
+Info help browsers
+..................
+
+The help browsers tkinfo, xinfo and info (so-called
+info help browsers) are based on the
+info program from the Gnu texinfo package.  See An Introduction to Info: (info)Top section `Getting started' in The Info Manual, for more
+information.
+
+For info help browsers, the online manual is decomposed into "nodes"
+of information, closely
+related to the division of the printed manual into sections and
+subsections.  A node contains text describing a specific topic at a
+specific level of detail.  The top line of a node is its "header".
+The node's header tells the name of the current node (Node:), the
+name of the next node (Next:), the name of the previous node
+(Prev:), and the name of the upper node (Up:).
+
+To move within info, type commands consisting of single characters.  Do
+not type RETURN.  Do not use cursor keys, either.  Using some of
+the cursor keys by accident might pop to some totally different node.
+Type l to return to the original node.  Some of the info
+commands read input from the command line at the bottom line.  The
+TAB key may be used to complete partially entered input.
+
+The most important commands are:
+q
+leaves the online help system
+n
+goes to the next node
+p
+goes to the previous node
+u
+goes to the upper node
+m
+picks a menu item specified by name
+f
+follows a cross reference
+l
+goes to the previously visited node
+b
+goes to the beginning of the current node
+e
+goes to the end of the current node
+SPACE
+scrolls forward a page
+DEL
+scrolls backward a page
+h
+invokes info tutorial (use l to return to the manual or
+CTRL-X 0 to remove extra window)
+CTRL-H
+shows a short overview on the online help system (use l to return
+to the manual or CTRL-X 0 to remove extra window)
+s
+searches through the manual for a specified string, and selects the node in
+which the next occurrence is found
+1, ..., 9
+picks i-th subtopic from a menu
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

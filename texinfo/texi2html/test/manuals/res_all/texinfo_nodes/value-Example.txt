@@ -1,0 +1,64 @@
+16.4.3 @value Example
+---------------------
+
+You can use the @value command to minimize the number of places
+you need to change when you record an update to a manual.  See GNU Sample Texts, for an example of this same principle can work with
+Automake distributions, and full texts.
+
+Here is an example adapted from (make)Top section `Overview' in The GNU Make Manual):
+
+1. Set the flags:
+
+@set EDITION 0.35 Beta
+@set VERSION 3.63 Beta
+@set UPDATED 14 August 1992
+@set UPDATE-MONTH August 1992
+
+2. Write text for the @copying section (see copying):
+
+@copying
+This is Edition @value{EDITION},
+last updated @value{UPDATED},
+of @cite{The GNU Make Manual},
+for @code{make}, version @value{VERSION}.
+
+Copyright ...
+
+Permission is granted ...
+@end copying
+
+3. Write text for the title page, for people reading the printed manual:
+
+@titlepage
+@title GNU Make
+@subtitle A Program for Directing Recompilation
+@subtitle Edition @value{EDITION}, ...
+@subtitle @value{UPDATE-MONTH}
+@page
+@insertcopying
+...
+@end titlepage
+
+(On a printed cover, a date listing the month and the year looks less
+fussy than a date listing the day as well as the month and year.)
+
+4. Write text for the Top node, for people reading the Info file:
+
+@ifnottex
+@node Top
+@top Make
+
+@insertcopying
+...
+@end ifnottex
+
+After you format the manual, the @value constructs have been
+expanded, so the output contains text like this:
+
+This is Edition 0.35 Beta, last updated 14 August 1992,
+of `The GNU Make Manual', for `make', Version 3.63 Beta.
+
+When you update the manual, you change only the values of the flags; you
+do not need to edit the three sections.
+
+

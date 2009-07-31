@@ -1,0 +1,9 @@
+13.1.1 Inserting `@' with @@
+----------------------------
+
+@@ stands for a single `@' in either printed or Info
+output.
+
+Do not put braces after an @@ command.
+
+

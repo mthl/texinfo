@@ -1,0 +1,19 @@
+20.1.1 makeinfo Preferred
+-------------------------
+
+The makeinfo utility creates an Info file from a Texinfo source
+file more quickly than either of the Emacs formatting commands and
+provides better error messages.  We recommend it.  makeinfo is a
+C program that is independent of Emacs.  You do not need to run Emacs to
+use makeinfo, which means you can use makeinfo on machines
+that are too small to run Emacs.  You can run makeinfo in any one
+of three ways: from an operating system shell, from a shell inside
+Emacs, or by typing the C-c C-m C-r or the C-c C-m C-b
+command in Texinfo mode in Emacs.
+
+
+The texinfo-format-region and the texinfo-format-buffer
+commands are useful if you cannot run makeinfo.  Also, in some
+circumstances, they format short regions or buffers more quickly than
+makeinfo.
+

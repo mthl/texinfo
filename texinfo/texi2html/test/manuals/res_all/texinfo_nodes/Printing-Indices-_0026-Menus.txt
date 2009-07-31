@@ -1,0 +1,64 @@
+4.1 Printing Indices and Menus
+==============================
+
+To print an index means to include it as part of a manual or Info file.
+This does not happen automatically just because you use @cindex
+or other index-entry generating commands in the Texinfo file; those just
+cause the raw data for the index to be accumulated.  To generate an
+index, you must include the @printindex command at the place in
+the document where you want the index to appear.  Also, as part of the
+process of creating a printed manual, you must run a program called
+texindex (see Hardcopy) to sort the raw data to produce a
+sorted index file.  The sorted index file is what is actually used to
+print the index.
+
+Texinfo offers six separate types of predefined index, each with a
+two-letter abbreviation, as illustrated in the following table.
+However, you may merge indices (see Combining Indices) or define
+your own indices (see New Indices).
+
+Here are the predefined indices, their abbreviations, and the
+corresponding index entry commands:
+
+`cp'
+concept index (@cindex)
+`fn'
+function index (@findex)
+`vr'
+variable index (@index)
+`ky'
+key index (@kindex)
+`pg'
+program index (@pindex)
+`tp'
+data type index (@tindex)
+
+The @printindex command takes a two-letter index abbreviation,
+reads the corresponding sorted index file and formats it appropriately
+into an index.
+
+The @printindex command does not generate a chapter heading for
+the index.  Consequently, you should precede the @printindex
+command with a suitable section or chapter command (usually
+@appendix or @unnumbered) to supply the chapter heading
+and put the index into the table of contents.  Precede the
+@unnumbered command with an @node line.
+
+For example:
+
+@node Variable Index
+@unnumbered Variable Index
+
+@printindex vr
+
+@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+
+
+We recommend placing the concept index last, since that makes it easiest
+to find.  We also recommend having a single index whenever possible,
+since then readers have only one place to look (see Combining Indices).
+
+

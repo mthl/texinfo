@@ -1,0 +1,3748 @@
+3 General concepts
+******************
+
+
+* Interactive use::
+* Emacs user interface::
+* Rings and orderings::
+* Implemented algorithms::
+* The SINGULAR language::
+* Input and output::
+* Procedures::
+* Libraries::
+* Guidelines for writing a library::
+* Debugging tools::
+
+
+3.1 Interactive use
+===================
+
+In this section, aspects of interactive use are discussed.  This
+includes how to enter and exit SINGULAR, how to interpret its
+prompt, how to get the online help, and so on.
+
+There are a few important notes which one should not forget:
+* every command has to be terminated by a ; (semicolon) followed
+by a <RETURN>
+* the online help is accessible by means of the help function
+
+* How to enter and exit::
+* The SINGULAR prompt::
+* The online help system::
+* Interrupting SINGULAR::
+* Editing input::
+* Command line options::
+* Startup sequence::
+
+3.1.1 How to enter and exit
+---------------------------
+
+SINGULAR can either be run in ASCII-terminal or within Emacs.
+
+To start SINGULAR in its ASCII-terminal user interface,  enter
+Singular at the system prompt. The
+SINGULAR banner appears which, among others, reports the version
+and the compilation date.
+
+To start SINGULAR in its Emacs user interface, either enter
+ESingular at the system prompt, or type M-x singular
+within a running Emacs (provided you have loaded the file
+singular.el in your running Emacs, see Running SINGULAR under Emacs for details).
+
+Generally, we recommend to use SINGULAR in its Emacs interface,
+since this offers many more features and is more convenient to
+use than the ASCII-terminal interface (see Emacs user interface).
+
+To exit SINGULAR type quit;, exit; or $ (or,
+when running within Emacs preferably type C-c $).
+
+SINGULAR and ESingular may also be started with command line
+options and with
+filenames as arguments. More generally, the synopsis of SINGULAR is
+Singular  [options] [file1 [file2 ...]]
+ESingular  [options] [file1 [file2 ...]]
+
+See Command line options, Startup sequence, Running SINGULAR under Emacs.
+
+
+3.1.2 The SINGULAR prompt
+-------------------------
+The SINGULAR prompt > (larger than) asks the user for input
+of commands.  The "continuation" prompt . (period) asks the
+user for input of missing parts of a command (remember the semicolon at
+the end of every command).
+
+SINGULAR does not interpret the semicolon as the end of a command
+if it occurs inside a string.  Also, SINGULAR waits for blocks
+(sequences of commands enclosed in curly brackets) to be closed before
+prompting with > for more commands.  Thus, if SINGULAR does
+not respond with its regular prompt after typing a semicolon it may wait
+for a " or a } first.
+
+Additional semicolons will not harm SINGULAR since they are
+interpreted as empty statements.
+
+3.1.3 The online help system
+----------------------------
+
+The online help system is invoked with the help command.
+? may be used as a synonym for help.  Simply typing
+help; displays the "top" of the help system (i.e., the title
+page of the SINGULAR manual) which offers a
+short table of contents.  Typing help topic; shows the
+available documentation on topic.  Here, topic may be either a function
+name or, more generally, any index entry of the SINGULAR
+manual. Furthermore, topic may contain wildcard characters.
+See help, for more information.
+
+Online help information can be displayed in various help browsers. The
+following table lists a summary of the supported browsers. See below for
+more details about particular browsers.
+
+ Browser Platform Description
+ html Windows displays html version of manual in your default html browser
+ winhlp Windows displays Windows help (.hlp) version of manual
+ netscape Unix, Windows uses netscape to display html version of manual
+ tkinfo Unix uses the tkinfo program to display texinfo version of manual
+ xinfo Unix, Windows uses the info program to display texinfo version of manual in an
+extra xterm
+ info Unix, Windows uses the info program to display texinfo version of manual
+ builtin all simply outputs the help information in plain ASCII format
+ emacs Unix, Windows when running SINGULAR within (X)emacs, display help in
+(X)emacs info buffer.
+ dummy all displays error message about no available help browser
+
+The browser which is used to display the help information, can be either
+set at startup time with the command line option  (see Command line options)
+--brower=<browser>
+or with the SINGULAR command (see system)
+system("--browser", <browser>);
+The  SINGULAR command
+system("browsers");
+lists all available browsers and the command
+system("--browser");
+returns the currently used browser.
+
+If no browser is explicitly set by the user, then the first (w.r.t. the
+order of the browsers in the table above) available browser is
+chosen. In other words, the default browser is netscape for Unix
+platforms, and html for Windows, unless
+your local set-up does not allow to run it.
+
+The .singularrc (see Startup sequence) file is a good place
+to set your default browser. Recall that if a file
+$HOME/.singularrc exists on your system, then the content of this
+file is executed before the first user input. Hence, putting
+if (system("version") >= 1306) // keep backwards-compatibility
+{
+  if (! system("--emacs")
+  {
+    // only set help browser if not running within emacs
+    system("--browser", "info");
+  }
+  // if help browser is later on set to netscape,
+  // allow it to fetch HTML pages from the net
+  system("--allow-net", 1);
+}; // the last semicolon is important: otherwise no ">", but "." prompt
+in your file $HOME/.singularrc sets your default browser to
+info, unless SINGULAR is run within emacs (in which case the
+default browser is set automatically to emacs).
+
+
+Obviously, certain external files and programs are required for the
+SINGULAR help system to work correctly. If something is not available
+or goes wrong, here are some tips for troubleshooting the help system:
+
+* Under Unix, the environment variable DISPLAY has to be set for
+the browsers netscape, tkinfo, and xinfo to work.
+
+* The help browsers netscape, tkinfo, xinfo, and
+info are only available if the respective programs are installed
+on your system (for xinfo, the programs xterm and
+info are necessary). You can explicitly specify which program to
+use, by setting appropriate environment variables (whose names
+are the names of the respective programs in all up-case letters).
+
+For example,
+to use the program navigator with a private colormap as
+netscape help browser, set the environment variable
+NETSCAPE to the value
+"navigator -install".
+
+* If the help browser netscape can not find the local html
+pages of the SINGULAR manual (which it looks for at
+$RootDir/html - see Loading of a library for more info on
+$RootDir) and the (command-line) option --allow-net
+has explicitly been set (see Command line options and
+system for more info on
+setting values of command-line options), then it dispatches the html
+pages from
+<http://www.singular.uni-kl.de/Manual> (note that
+the non-local net-access of HTML pages is disabled, by default).
+
+An
+alternative location of a local directory where the html pages reside
+can be specified by setting the environment variable
+SINGULAR_HTML_DIR.
+
+* The help browsers tkinfo, xinfo, info, and
+builtin need the (info) file singular.hlp which it looks
+for at $RootDir/info/singular.hlp (see Loading of a library
+for more info on $RootDir).  An alternative
+location of the info file of the manual can be specified by setting the
+environment variable SINGULAR_INFO_FILE.
+
+
+Info help browsers
+..................
+
+The help browsers tkinfo, xinfo and info (so-called
+info help browsers) are based on the
+info program from the Gnu texinfo package.  See An Introduction to Info: (info)Top section `Getting started' in The Info Manual, for more
+information.
+
+For info help browsers, the online manual is decomposed into "nodes"
+of information, closely
+related to the division of the printed manual into sections and
+subsections.  A node contains text describing a specific topic at a
+specific level of detail.  The top line of a node is its "header".
+The node's header tells the name of the current node (Node:), the
+name of the next node (Next:), the name of the previous node
+(Prev:), and the name of the upper node (Up:).
+
+To move within info, type commands consisting of single characters.  Do
+not type RETURN.  Do not use cursor keys, either.  Using some of
+the cursor keys by accident might pop to some totally different node.
+Type l to return to the original node.  Some of the info
+commands read input from the command line at the bottom line.  The
+TAB key may be used to complete partially entered input.
+
+The most important commands are:
+q
+leaves the online help system
+n
+goes to the next node
+p
+goes to the previous node
+u
+goes to the upper node
+m
+picks a menu item specified by name
+f
+follows a cross reference
+l
+goes to the previously visited node
+b
+goes to the beginning of the current node
+e
+goes to the end of the current node
+SPACE
+scrolls forward a page
+DEL
+scrolls backward a page
+h
+invokes info tutorial (use l to return to the manual or
+CTRL-X 0 to remove extra window)
+CTRL-H
+shows a short overview on the online help system (use l to return
+to the manual or CTRL-X 0 to remove extra window)
+s
+searches through the manual for a specified string, and selects the node in
+which the next occurrence is found
+1, ..., 9
+picks i-th subtopic from a menu
+
+3.1.4 Interrupting SINGULAR
+---------------------------
+
+On Unix-like operating systems and on Windows NT, typing CTRL-C
+(or, alternatively C-c C-c, when running within Emacs),
+interrupts SINGULAR.  SINGULAR prints the current command and
+the current line and prompts for further action.  The following choices
+are available:
+a
+returns to the top level after finishing the current (kernel) command. Notice
+that commands of the SINGULAR kernel (like std) can not be
+aborted, i.e. (a)bort only happens whenever the interpreter is active.
+c
+continues
+q
+quits  SINGULAR
+
+3.1.5 Editing input
+-------------------
+
+
+The following keys can be used for editing the input and retrieving
+previous input lines:
+TAB
+provides command line completion for function names and file names
+CTRL-B
+moves cursor left
+CTRL-F
+moves cursor right
+CTRL-A
+moves cursor to beginning of line
+CTRL-E
+moves cursor to end of line
+CTRL-D
+deletes character under cursor
+
+ Warning: on an empty line, CTRL-D is interpreted as the
+EOF character which immediately terminates SINGULAR.
+BACKSPACE
+DELETE
+CTRL-H
+deletes character before cursor
+CTRL-K
+kills from cursor to end of line
+CTRL-U
+kills from cursor to beginning of line
+CTRL-N
+saves current line on history and gives next line
+CTRL-P
+saves current line on history and gives previous line
+RETURN
+saves the current line to the history and
+sends it to the SINGULAR parser for interpretation
+
+When run under a Unix-like operating system and in its ASCII-terminal
+user interface,   SINGULAR tries to dynamically link at runtime
+with the GNU Readline library. See GNU Readline Library: (readline)Command Line Editing section `Command Line Editing' in The GNU Readline Library Manual, for more information. If a shared version of this library can
+be found on your machine, then additional command-line editing
+features like  history completion are available.
+In particular, if SINGULAR is able to load that library and
+if the environment
+variable SINGULARHIST is set and has a name of a file as value,
+then the input history is stored across sessions using this
+file. Otherwise, i.e., if the environment variable SINGULARHIST
+is not set, then the history of the last inputs is only available for
+the commands of the current session.
+
+3.1.6 Command line options
+--------------------------
+
+The synopsis of SINGULAR is
+Singular  [options] [file1 [file2 ...]]
+ESingular  [options] [file1 [file2 ...]]
+Options can be given in both, their long and short format. The following
+options control the general behavior of SINGULAR:
+-d, --sdb
+Enable the use of the source code debugger.
+See Source code debugger.
+
+-e, --echo[=VAL]
+Set value of variable echo to VAL (integer in the range
+0, ..., 9). Without an argument, echo is set to 1, which echoes
+all input coming from a file. By default, the value of echo is
+0. See echo.
+
+-h, --help
+Print a one-line description of each command line option and exit.
+
+--allow-net
+Allow the netscape and html help browser to fetch HTML manual pages over
+the net from the WWW home-site of SINGULAR. See The online help system, for more info.
+
+--browser=VAL
+Use VAL as browser for the SINGULAR online manual.
+
+VAL may be one of html (Windows only), netscape, xinfo,
+tkinfo, info, builtin, or emacs. Depending
+on your platform and local
+installation, only some browsers might be available. The default browser
+is html for Windows and netscape for Unix
+platforms. See The online help system, for more info.
+
+--no-rc
+Do not execute the .singularrc file on start-up.  By default,
+this file is executed on start-up.  See Startup sequence.
+
+--no-stdlib
+Do not load the library standard.lib on start-up. By default,
+this library is loaded on start-up.  See Startup sequence.
+
+--no-warn
+Do not display warning messages.
+
+--no-out
+Suppress display of all output.
+
+-t, --no-tty
+Do not redefine the terminal characteristics.  This option should be
+used for batch processes.
+
+-q, --quiet
+Do not print the start-up banner and messages when loading
+libraries. Furthermore, redirect stderr
+(all error messages) to stdout (normal output channel).  This
+option should be used if SINGULAR's output is redirected to a file.
+
+-v, --verbose
+Print extended information about the version and configuration of
+SINGULAR  (used optional parts, compilation date, start of random
+generator etc.). This information should be included if a user reports
+an error to the authors.
+
+The following command line options allow manipulations of the timer and
+the pseudo random generator and enable the passing of commands and strings
+to SINGULAR:
+
+-c, --execute=STRING
+Execute STRING as (a sequence of) SINGULAR commands on
+start-up after the .singularrc file is executed, but prior to
+executing the files given on the command line.  E.g., Singular -c
+"help all.lib; quit;" shows the help for the library all.lib and
+exits.
+
+-u, --user-option=STRING
+Returns STRING on system("--user-option"). This is useful
+for passing arbitrary arguments from the command line to the
+SINGULAR interpreter.  E.g.,
+
+Singular -u "xxx.dump" -c 'getdump(system("--user-option"))'
+reads the file xxx.dump at
+start-up and allows the user to start working with all the objects
+defined in a previous session.
+
+-r, --random=SEED
+Seed (i.e., set the initial value of) the pseudo random generator with
+integer SEED.  If this option is not given, then the random
+generator is seeded with a time-based SEED (the number of
+seconds since January, 1, 1970, on Unix-like operating systems, to be
+precise).
+
+--min-time=SECS
+If the timer (see timer), resp.  rtimer
+(see rtimer) , variable is
+set, report only
+times larger than SECS seconds (SECS needs to be a
+floating point number greater than 0).  By default, this value is set to
+0.5 (i.e., half a second).  E.g., the option --min-time=0.01
+forces SINGULAR to report all times larger than 1/100 of a
+second.
+
+--ticks-per-sec=TICKS
+Set unit of timer to TICKS ticks per second (i.e., the value
+reported by the timer and rtimer variable divided by
+TICKS gives the time in seconds).  By default, this value is 1.
+
+
+The next three options are of interest for the use with MP links:
+-b, --batch
+Run in MP batch mode. Opens a TCP/IP connection with host specified by
+--MPhost at the port specified by --MPport. Input is read
+from and output is written to this connection in the MP format.
+See MPtcp links.
+
+--MPport=PORT
+Use PORT as default port number for MP connections (whenever not
+further specified). This option is mandatory when the --batch
+option is given.  See MPtcp links.
+
+--MPhost=HOST
+Use HOST as default host for MP connections (whenever not
+further specified).  This option is mandatory when the --batch
+option is given.  See MPtcp links.
+
+Finally, the following options are only available when running
+ESingular (see Running SINGULAR under Emacs for details).
+
+--emacs=EMACS
+Use EMACS as Emacs program to run the SINGULAR Emacs
+interface, where EMACS may e.g. be emacs ore xemacs.
+
+--emacs-dir=DIR
+Set the singular-emacs-home-directory, which is the directory where
+singular.el can be found, to DIR.
+
+--emacs-load=FILE
+Load FILE on Emacs start-up, instead of the default load file.
+
+--singular=PROG
+Start PROG as SINGULAR program within Emacs
+
+The value of options given to SINGULAR (resp. their default values,
+if an option was not given), can be checked with the command
+system("--long_option_name").  See system.
+  system("--quiet");    // if ``quiet'' 1, otherwise 0
+==> 1
+  system("--min-time"); // minimal reported time
+==> 0.5
+  system("--random");   // seed of the random generator
+==> 12345678
+
+Furthermore, the value of options (e.g., --browser) can be
+re-set while SINGULAR is running with the command
+system("--long_option_name_string ",expression). See system.
+  system("--browser", "builtin");  // sets browser to 'builtin'
+  system("--ticks-per-sec", 100);  // sets timer resolution to 100
+
+
+
+3.1.7 Startup sequence
+----------------------
+
+On start-up, SINGULAR
+1. loads the library standard.lib (provided the --no-stdlib
+option was not given),
+
+2. searches the current directory and then the
+home directory of the user, and then all directories contained in the
+library SearchPath (see Loading of a library for more info
+on SearchPath) for a file named .singularrc and
+executes it, if found (provided the --no-rc option was not
+given),
+
+3. executes the string specified with the --execute command line
+option,
+
+4. executes the files file1, file2 ...  (given on the command
+line) in that order.
+
+Note: .singularrc file(s) are an appropriate place for
+setting some default values of (command-line) options.
+
+For example, a system administrator might remove the locally installed
+HTML version of the manual and put a .singularrc file
+with the following content
+if (system("version") >= 1306) // assure backwards-compatibility
+{
+  system("--allow-net", 1);
+}; // the last semicolon is important: otherwise no ">", but "." prompt
+in the directory containing the SINGULAR libraries, thereby
+allowing to fetch the HTML on-line help from the WWW home-site of
+SINGULAR.
+
+On the other hand, a single user might put a .singularrc with the
+following content
+if (system("version") >= 1306) // assure backwards-compatibility
+{
+  if (! system("--emacs"))
+  {
+    // set default browser to info, unless we run within emacs
+    system("--browser", "info");
+  }
+}; // the last semicolon is important: otherwise no ">", but "." prompt
+in his home directory, which sets the default help browser to
+info (unless SINGULAR is run within emacs) and thereby
+prevents the execution of the"global"
+.singularrc file installed by the system administrator (since the
+.singularrc file of the user is found before the "global"
+.singularrc file installed by the system administrator).
+
+3.2 Emacs user interface
+========================
+
+Besides running SINGULAR in an ASCII-terminal, SINGULAR might
+also be run within Emacs. Emacs (or, XEmacs which is very similar) is a
+powerful and freely available text editor, which, among others,
+provides a framework for the implementation of interactive user
+interfaces. Starting from version 1.3.6, SINGULAR provides such an
+implementation, the so-called SINGULAR Emacs mode, or Emacs user
+interface.
+
+Generally, we recommend to use the Emacs interface,
+instead of the ASCII-terminal interface: The Emacs interface does not
+only provide everything the ASCII-terminal interface provides, but
+offers much more. Among others, it offers
+* color-highlighting
+* truncation of long lines
+* folding of input and output
+* TAB-completion for help topics
+* highlighting of matching parentheses
+* key-bindings and interactive menus for most user interface commands and
+for basic SINGULAR commands (such as loading of libraries and files)
+* a mode for running interactive SINGULAR demonstrations
+* convenient ways to edit SINGULAR input files
+* interactive customization of nearly all aspects of the user-interface.
+
+To use the SINGULAR-Emacs interface you need to have Emacs version
+20 or higher, or XEmacs
+version 20.3 or higher installed on your system. These
+editors can be downloaded for most hard- and software platforms
+(including Windows
+95/98/NT, but excluding the Macintosh), from either
+<http://www.fsf.org/software/emacs/emacs.html> (Emacs), from
+<http://www.xemacs.org> (XEmacs), or from our ftp site at
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils/>. The
+differences between Emacs and XEmacs w.r.t. the  SINGULAR-Emacs
+interface are marginal - which editor to use is mainly a matter of personal
+preferences.
+
+The simplest way to start-up SINGULAR in its Emacs interface is by
+running the program ESingular which is contained in the Singular
+distribution. Alternatively, SINGULAR can be started within an
+already running Emacs - see Running SINGULAR under Emacs for
+details.
+
+The next section gives  a tutorial-like introduction to Emacs. This
+introductory section is
+followed by sections which explain the functionality of various aspects
+of the Emacs user interface in more detail: how to start/restart/kill
+SINGULAR within Emacs, how to run an interactive demonstration, how
+to customize the Emacs user interface, etc. Finally, the 20 most
+important commands of the Emacs interface together with their key
+bindings are listed.
+
+* A quick guide to Emacs::
+* Running SINGULAR under Emacs::
+* Demo mode::
+* Customization of the Emacs interface::
+* Editing SINGULAR input files with Emacs::
+* Top 20 Emacs commands::
+
+3.2.1 A quick guide to Emacs
+----------------------------
+
+This section gives a tutorial-like introduction to Emacs. Especially to
+users who are not familiar with Emacs, we recommend that they go through
+this section and try out the described features.
+
+Emacs commands generally involve the CONTROL key (sometimes
+labeled CTRL or CTL) or the META key.  On some
+keyboards, the META key is labeled ALT or EDIT or
+something else (for example, on Sun keyboards, the diamond key to the
+left of the space-bar is META).  If there is no META key,
+the ESC key can be used, instead.  Rather than writing out
+META or
+CONTROL each time we want to prefix a character, we will use the
+following abbreviations:
+
+ C-<chr> means hold the CONTROL key while typing the character
+<chr>. Thus, C-f would be: hold the CONTROL key and
+type f.
+ M-<chr> means hold the META key down while typing <chr>.  If there
+is no META key, type <ESC>, release it, then type the
+character <chr>.
+
+For user new to Emacs, we highly recommend that they go through the
+interactive Emacs tutorial: type C-h t to start it.
+
+For others, it is important to understand the following Emacs concepts:
+window
+In Emacs terminology, a window refers to separate panes within the same
+window of the window system, and not to overlapping, separate
+windows. When using SINGULAR within Emacs, extra windows may appear
+which display help or output from certain commands. The most important
+window commands are:
+ C-x 1 File->Un-Split Un-Split window (i.e., kill other windows)
+ C-x o  Goto other window, i.e. move cursor into other window.
+
+cursor and point
+The location of the cursor in the text is also called "point".  To
+paraphrase, the cursor shows on the screen where point is located in
+the text. Here is a summary of simple cursor-moving operations:
+ C-f Move forward a character
+ C-b Move backward a character
+ M-f Move forward a word
+ M-b Move backward a word
+ C-a Move to the beginning of line
+ C-e Move to the end of line
+
+buffer
+Any text you see in an Emacs window is always part of some buffer. For
+example, each file you are editing with Emacs is stored inside a buffer,
+but also SINGULAR is running inside an Emacs buffer. Each buffer
+has a name: for example, the buffer of a file you edit usually has the
+same name as the file, SINGULAR is running in a buffer which has
+the name *singular* (or, *singular<2>*,
+*singular<3>*, etc., if you have multiple SINGULAR
+sessions within the same Emacs).
+
+When you are asked for input to an Emacs command, the cursor
+moves to the bottom line of Emacs, i.e., to a special buffer, called the
+"minibuffer". Typing <RETURN> within the minibuffer, ends the
+input, typing <SPACE> within the minibuffer, lists all possible
+input values to the interactive Emacs command.
+
+The most important buffer commands are
+ C-x b Switch buffer
+ C-x k Kill current buffer
+Alternatively, you can switch to or kill buffers using the Buffer
+menu.
+
+Executing commands
+Emacs commands are executed by typing M-x <command-name>
+(remember that <SPACE> completes partial
+command names). Important and frequently used commands have short-cuts
+for their execution: Key bindings or even menu entries. For example, a
+file can be loaded with M-x load-file, or C-x C-f, or with
+the File->Open menu.
+
+How to exit
+To end the Emacs (and, SINGULAR) session,
+type C-x C-c (two characters), or use the File -> Exit
+menu.
+
+When Emacs is hung
+If Emacs stops responding to your commands, you can stop it safely by
+typing C-g, or, if this fails, by typing C-].
+
+More help
+Nearly all aspects of Emacs are very well documented: type
+C-h  and then a character saying what kind of help you want.
+For example, typing C-h i enters the Info documentation
+browser.
+
+Using the mouse
+Emacs is fully integrated with the mouse. In particular, clicking the
+right mouse button brings up a pop-up menu which usually contains a few
+commonly used commands.
+
+3.2.2 Running SINGULAR under Emacs
+----------------------------------
+
+There are two ways to start the SINGULAR Emacs interface: Typing
+ESingular instead of Singular on the command shell
+launches a new Emacs process, initializes the interface and runs
+SINGULAR within Emacs. The other way is to start the interface in
+an already running Emacs, by typing M-x singular inside
+Emacs. This initializes the interface and runs SINGULAR within
+Emacs. Both ways are described in more detail below.
+
+Note: To properly run the Emacs interface, several files are needed
+which usually reside in the emacs subdirectory of your
+SINGULAR distribution. This directory is called
+singular-emacs-home-directory in the following.
+
+Starting the interface using ESingular
+--------------------------------------
+
+As mentioned above, ESingular is an "out-of-the-box" solution:
+You don't have to add special things to your .emacs startup file
+to initialize the interface; everything is done for you in a special
+file called .emacs-singular (which comes along with the
+SINGULAR distribution and resides in the
+singular-emacs-home-directory) which is automatically loaded on Emacs
+startup (and the loading of the .emacs file is automatically
+suppressed).
+
+The customizable variables of the SINGULAR Emacs interface are set
+to defaults which give the novice user a very shell like
+feeling of the interface. Nevertheless, these default settings can be
+changed, see Customization of the Emacs interface. Besides other
+Emacs initializations, such as fontification or blinking parentheses, a
+new menu item called Singular is added to the main menu,
+providing menu items for starting SINGULAR. On XEmacs, a button
+starting SINGULAR is added to the main toolbar.
+
+The SINGULAR interface is started automatically; once you see a
+buffer called *singular* and the SINGULAR prompt you are
+ready to start your SINGULAR session.
+
+ESingular inherits all Singular options. For a description
+off all these options, see Command line options. Additionally
+there are the following options which are special to ESingular:
+
+ command-line option /
+
+environment variable functionality
+ --emacs=EMACS
+
+ESINGULAR_EMACS Use EMACS as Emacs program to run the SINGULAR Emacs
+interface, where EMACS may e.g. be emacs or xemacs.
+ --emacs-dir=DIR
+
+ESINGULAR_EMACS_DIR Set the singular-emacs-home-directory, which is the directory where
+singular.el can be found,  to DIR.
+ --emacs-load=FILE
+
+ESINGULAR_EMACS_LOAD Load FILE on Emacs start-up, instead of the default load file.
+ --singular=PROG
+
+ESINGULAR_SINGULAR Start PROG as SINGULAR program within Emacs
+
+Notice that values of these options can also be given by setting the
+above mentioned environment variables (where values  given as
+command-line arguments take priority over values given by environment
+variables).
+
+Starting the interface within a running Emacs
+---------------------------------------------
+
+If you are a more experienced Emacs user and you already have your own
+local .emacs startup file, you might want to start the interface
+out of your running Emacs without using ESingular. For this, you
+should add the following lisp code to your .emacs file:
+
+(setq load-path (cons "<singular-emacs-home-directory>" load-path))
+(autoload 'singular "singular"
+  "Start Singular using default values." t)
+(autoload 'singular-other "singular"
+  "Ask for arguments and start Singular." t)
+
+Then typing M-x singular in a running Emacs session initializes
+the interface in a new buffer and launches a SINGULAR process. The
+SINGULAR prompt comes up and you are ready to start your
+SINGULAR session.
+
+It is a good idea to take a look at the (well documented) file
+.emacs-singular in the singular-emacs-home-directory, which comes
+along with the distribution. In it you find some useful initializations
+of the SINGULAR interface as well as some lisp code, which, for
+example, adds a button to the XEmacs toolbar. Some of this code might be
+useful for your .emacs file, too. And if you are a Emacs wizard,
+it is of course a good idea to take a look at singular.el in the
+singular-emacs-home-directory.
+
+Starting, interrupting and stopping SINGULAR
+--------------------------------------------
+
+There are the following commands to start and stop SINGULAR:
+
+* singular-other (or menu Singular, item
+Start...)
+
+Starts a SINGULAR process and asks for the following four
+parameters in the minibuffer area:
+
+1. The Singular executable. This can either be a file name with complete
+path, e.g., /local/bin/Singular. Then exactly this executable is
+started. The path may contain the character ~ denoting your home
+directory. Or it can be the name of a command without path, e.g.,
+Singular. Then the executable is searched for in your
+$PATH environment variable.
+
+2. The default working directory. This is the path to an existing
+directory, e.g., ~/work. The current directory is set to this
+directory before SINGULAR is started.
+
+3. Command line options. You can set any SINGULAR command line
+option (see Command line options).
+
+4. The buffer name. You can specify the name of the buffer the interface is
+running in.
+
+
+* singular (or menu Singular, item Start
+default)
+
+Starts SINGULAR with default settings for the executable, the
+working directory, command line switches, and the buffer name. You can
+customize this default settings, see
+Customization of the Emacs interface.
+
+* singular-exit-singular (bound to C-c $ or menu
+Singular, item Exit)
+
+Kills the running SINGULAR process of the current
+buffer (but does not kill the buffer). Once you have killed a
+SINGULAR process you can start a new one in the same buffer with
+the command singular (or select the item Start default of
+the Singular menu).
+
+* singular-restart (bound to C-c C-r or menu
+Singular, item Restart)
+
+Kills the running SINGULAR process of the current buffer and starts
+a new process in the same buffer with exactly the same command line
+arguments as before.
+
+* singular-control-c (bound to C-c C-c or menu Singular, item Interrupt)
+
+Interrupt the Singular process running in the current buffer. Asks
+whether to (a)bort the current SINGULAR command,
+(q)uit or (r)estart the current SINGULAR process, or
+(c)ontinue without doing anything (default).
+
+Whenever a SINGULAR process is started within the Emacs interface,
+the contents of a special startup file (by default
+~/.emacs-singularrc) is pasted as input to SINGULAR at the
+very end of the usual startup sequence (see Startup sequence). The
+name of the startup file can be changed, see
+Customization of the Emacs interface.
+
+
+3.2.3 Demo mode
+---------------
+
+The Emacs interface can be used to run interactive SINGULAR
+demonstrations. A demonstration is started by loading a so-called
+SINGULAR demo file with the Emacs command
+singular-demo-load, bound to
+C-c C-d, or with the menu Commands->Load Demo.
+
+A SINGULAR demo file should consist of SINGULAR commands
+separated by blank lines. When running a demo, the input up to the next
+blank line is echoed to the screen. Hitting <RETURN> executes the
+echoed commands and shows their output. Hitting <RETURN> again,
+echos the next commands to the screen, and so on, until all commands of
+the demo file are executed. While running a demo, you can
+execute other commands on the SINGULAR prompt: the next input of
+from the demo file is then echoed again, if you hit <RETURN> on
+an empty input line.
+
+A SINGULAR demo can prematurely be exited by either starting
+another demo, or by executing the Emacs command
+singular-demo-exit (menu: Commands->Exit Demo).
+
+Some aspects of running SINGULAR demos can be customized.
+See Customization of the Emacs interface, for more info.
+
+
+3.2.4 Customization of the Emacs interface
+------------------------------------------
+
+Emacs provides a convenient interface to customize the behavior of
+Emacs and the SINGULAR Emacs interface for your own needs. You enter the
+customize environment by either calling M-x customize (on XEmacs
+you afterwards have to enter emacs in the minibuffer area) or by
+selecting the menu item Options->Customize->Emacs... for XEmacs,
+and the menu item Help->Customize->Toplevel Customization Group
+for Emacs, resp. A brief introduction to the customization mode comes up
+with the customization buffer. All customizable parameters are
+hierarchically grouped and you can browse through all these groups and
+change the values of the parameters using the mouse. At the end you can
+safe the settings to a special file making your changes permanent.
+
+To change the settings of the SINGULAR Emacs interface you can
+either select the item Preferences of the Singular menu,
+call M-x customize-group and give the argument
+singular-interactive in the minibuffer area, or browse from the
+top-level customization group through the path
+External->Singular->Singular interactive.
+
+The SINGULAR interface customization buffer is divided into four
+groups:
+
+* Singular Faces
+
+Here you can specify various faces used if font-lock-mode is enabled
+(which it is, by default).
+
+* Singular Sections And Foldings
+
+Here you can specify special faces for SINGULAR input and output
+and change the text used as replacement for folded sections.
+
+For doing this, you also might
+find handy the function customize-face-at-point,
+which let's you customize the face at the current position of
+point. This function is automatically defined if you run
+ESingular). Otherwise, you should add its definition (see below)
+to your personal .emacs file.
+
+* Singular Interactive Miscellaneous
+
+Here you can specify various different things such as the behavior of
+the cursor keys, the name of the special SINGULAR startup file, the
+appearance of the help window, or the default values for the
+singular command.
+
+
+* Singular Demo Mode
+
+Here you can specify how chunks of the demo file are divided, or specify
+a default directory for demo files.
+
+When you run ESingular, the settings of customized variables are
+saved in the file $HOME/.emacs-singular-cust. Otherwise, the
+settings are appended to your .emacs file. Among others, this
+means that the customized settings of ESingular are not
+automatically  taken over by a "normal" Emacs, and vice versa.
+
+
+3.2.5 Editing SINGULAR input files with Emacs
+---------------------------------------------
+
+Since SINGULAR's programming language is similar to C, you
+should use the Emacs C/C++-mode to edit SINGULAR input files and
+SINGULAR libraries. Among others, this Emacs mode provides
+automatic indentation, line-breaking and keyword highlighting.
+
+When running ESingular, the C/C++-mode is automatically turned on
+whenever a file with the suffix .sing, or .lib is loaded.
+
+For Emacs sessions which were not started by ESingular,  you
+should add the following to your .emacs file:
+;; turn on c++-mode for files ending in ".sing" and ".lib"
+(setq auto-mode-alist (cons '("\\.sing\\'" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.lib\\'" .  c++-mode) auto-mode-alist))
+;; turn-on fontification for c++-mode
+(add-hook 'c++-mode-hook
+         (function (lambda () (font-lock-mode 1))))
+;; turn on aut-new line and hungry-delete
+(add-hook 'c++-mode-hook
+          (function (lambda () (c-toggle-auto-hungry-state 1))))
+;; a handy function for customization
+(defun customize-face-at-point ()
+  "Customize face which point is at."
+  (interactive)
+  (let ((face (get-text-property (point) 'face)))
+    (if face
+        (customize-face face)
+      (message "No face defined at point"))))
+
+
+Notice that you can change the default settings for source-code
+highlighting (colors, fonts, etc.) by customizing the respective faces
+using the Customize feature of Emacs. For doing this, you might
+find handy the above given function customize-face-at-point,
+which lets you customize the face of the current position of point (this
+function is automatically defined if you run ESingular).
+
+3.2.6 Top 20 Emacs commands
+---------------------------
+
+Here is a list of the 20 probably most useful commands when using the
+SINGULAR Emacs interface.
+
+Starting and stopping of SINGULAR:
+
+* singular (menu Singular->Start Default...): starts
+SINGULAR using default arguments.
+
+* singular-other (menu Singular->Start): starts
+SINGULAR asking for several arguments in the minibuffer area.
+
+* singular-exit (key C-c $ or menu
+Singular->Exit): kills the SINGULAR process running in the
+current buffer (but does not kill the buffer).
+
+* singular-restart (key C-c C-r or menu
+Singular->Restart): kills the SINGULAR process running in
+the current buffer and starts a new SINGULAR process with exactly
+the same arguments as before.
+
+
+Editing input and output:
+
+* singular-beginning-of-line (key C-a): moves point to
+beginning of line, then skip past the SINGULAR prompt, if any.
+
+* singular-toggle-truncate-lines (key C-c C-t or menu
+Commands->Truncate lines): toggles whether long lines should be
+truncated or not. If lines are not truncated, the commands
+singular-scroll-left and singular-scroll-right are useful
+to scroll left and right, resp.
+
+* singular-dynamic-complete (key TAB): performs
+context specific completion. If point is inside a string, file name
+completion is done. If point is at the end of a help command (i.e.,
+help or ?), completion on SINGULAR help topics is
+done. If point is at the end of an example command (i.e.,
+example), completion is done on SINGULAR examples. In all
+other cases, completion on SINGULAR commands is done.
+
+* singular-folding-toggle-fold-latest-output (key C-c
+C-o or menu Commands->Fold/ Unfold Latest Output): toggles
+folding of the latest output section. If your last SINGULAR command
+produced a huge output, simply type C-c C-o and it will be
+replaced by a single line.
+
+* singular-folding-toggle-fold-at-point (key C-c C-f
+or menu Commands->Fold/Unfold At Point): toggles folding of the
+section the point currently is in.
+
+* singular-folding-fold-all-output (menu Commands->Fold
+All Output): folds all SINGULAR output, replacing each output
+section by a single line.
+
+* singular-folding-unfold-all-output (menu
+Commands->Unfold All Output): unfolds all SINGULAR output
+sections showing their true contents.
+
+
+Loading of files and SINGULAR demo mode:
+
+* singular-load-library (key C-c C-l or menu
+Commands->Libraries->other...): asks for a standard library name
+or a library file in the minibuffer (hit TAB for completion) and
+loads the library into SINGULAR. The submenu Libraries of
+the Commands menu also provides a separate menu item for each
+standard library.
+
+* singular-load-file (key C-c < or menu
+Commands->Load File...): asks for a file name in the minibuffer
+(which is expanded using expand-file-name if given a prefix
+argument) and loads the file into SINGULAR.
+
+* singular-demo-load (key C-c C-d or menu
+Commands->Load Demo...): asks for a file name of a SINGULAR
+demo file in the minibuffer area (hit SPACE for completion) and
+enters the SINGULAR demo mode showing the first chunk of the demo.
+
+* singular-demo-exit (menu Commands->Exit Demo):
+exits from SINGULAR demo mode and cleans up everything that is
+left from the demo.
+
+
+Help and Customization:
+
+* singular-help (key C-h C-s or menu
+Singular->Singular Help): asks for a SINGULAR help topic in
+the minibuffer (hit TAB for completion) and shows the help text
+in a separate buffer.
+
+* singular-example (key C-c C-e or menu
+Singular->Singular Example): asks for a SINGULAR command in
+the minibuffer (hit TAB for completion) and executes the example
+of this command in the current SINGULAR buffer.
+
+* customize-group (menu Singular->Preferences): enters
+the customization group of the SINGULAR Emacs interface. (If called
+via M-x customize-group give argument singular-interactive
+in the minibuffer area.)
+
+
+
+3.3 Rings and orderings
+=======================
+
+All non-trivial algorithms in SINGULAR require the prior definition of
+a ring. Such a ring can be
+
+1. a polynomial ring over a field,
+2. a localization of a polynomial ring,
+3. a quotient ring by an ideal of one of 1. or 2.,
+4. a tensor product of one of 1. or 2.
+
+Except for quotient rings, all of these rings are realized by choosing a
+coefficient field, ring variables, and an appropriate global or local
+monomial ordering on the ring variables.  See Term orderings,
+Mathematical background.
+
+The coefficient field of the rings may be
+
+1. the field of rational numbers 
+,
+2. 3. 4. transcendental extension of 
+ or 
+,
+5. simple algebraic extension of 
+ or 
+,
+6. the field of real numbers represented by floating point
+numbers of a user defined precision.
+7. the field of complex numbers represented by (pairs of) floating point
+numbers of a user defined precision.
+
+Throughout this manual, the current active ring in SINGULAR is
+called basering.  The reserved name basering in SINGULAR is
+an alias for the current active ring.  The basering can be set by
+declaring a new ring as described in the following subsections or with
+the commands setring and keepring.  See keepring,
+setring.
+
+Objects of ring dependent types are local to a ring. To access them
+after a change of the basering they have to be mapped using map or by
+the functions imap or fetch.  See Objects, fetch,
+imap, map.
+
+All changes of the basering in a procedure are local to this procedure
+unless a keepring command is used as the last statement of the
+procedure.  See Procedures, keepring.
+
+* Examples of ring declarations::
+* General syntax of a ring declaration::
+* Term orderings::
+
+3.3.1 Examples of ring declarations
+-----------------------------------
+
+The exact syntax of a ring declaration is given in the next two
+subsections; this subsection lists some examples first. Note that the
+ordering has to be chosen such that the unit-elements of the
+ring are precisely those elements with leading monomial 1.  For more
+information, see Monomial orderings.
+
+Every floating point number in a ring consists of two parts, which may be
+chosen from the user. The leading part represents the number and the rest
+is for the numerical stability. Two numbers with a difference only in the
+rest are equal.
+
+* the ring 
+ with degree reverse lexicographical
+ordering.  The exact ring declaration may be omitted in the first
+example since this is the default ring:
+
+ring r;
+ring r = 32003,(x,y,z),dp;
+
+* the ring 
+ with lexicographical ordering:
+
+ring r = 0,(a,b,c,d),lp;
+
+* the ring 
+ with local degree reverse lexicographical
+ordering.  The non-prime 10 is converted to the next lower prime in the
+second example:
+
+ring r = 7,(x,y,z),ds;
+ring r = 10,(x,y,z),ds;
+
+* the ring
+with lexicographical ordering for
+and degree reverse lexicographical ordering for
+
+ring r = 7,(x(1..6)),(lp(3),dp);
+
+* the localization of 
+ at the maximal ideal
+
+:
+
+ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
+
+* the ring 
+ with weighted reverse lexicographical ordering.
+The variables 
+, 
+, and 
+ have the weights 2, 1,
+and 3, respectively, and  vectors are first ordered by components (in
+descending order) and then by monomials:
+ring r = 0,(x,y,z),(c,wp(2,1,3));
+For ascending component order, the component ordering C has to be
+used.
+
+* the ring 
+, where 
+ denotes the transcendental
+extension of 
+ by 
+, 
+ and 
+ with degree
+lexicographical ordering:
+
+ring r = (7,a,b,c),(x,y,z),Dp;
+
+* the ring 
+, where 
+ denotes the algebraic extension of
+degree 2 of 
+ by 
+ In other words, 
+ is the finite field with
+49 elements.  In the first case, 
+ denotes an algebraic
+element over 
+ with minimal polynomial
+in the second case, 
+
+refers to some generator of the cyclic group of units of 
+:
+
+ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
+ring r = (7^2,a),(x,y,z),dp;
+
+* the ring 
+, where 
+ denotes the field of real
+numbers represented by simple precision floating point numbers. This is
+a special case:
+
+ring r = real,(x,y,z),dp;
+
+* the ring 
+, where 
+ denotes the field of real
+numbers represented by floating point numbers of 50 valid decimal digits
+and the same number of digits for the rest:
+
+ring r = (real,50),(x,y,z),dp;
+
+* the ring 
+, where 
+ denotes the field of real
+numbers represented by floating point numbers of 10 valid decimal digits
+and with 50 digits for the rest:
+
+ring r = (real,10,50),(x,y,z),dp;
+
+* the ring 
+, where 
+ denotes the field of real
+numbers represented by floating point numbers of 30 valid decimal digits
+and the same number for the rest. 
+ denotes the imaginary unit.
+
+ring r = (complex,30,j),(x,y,z),dp;
+
+* the ring 
+, where 
+ denotes the field of real
+numbers represented by floating point numbers of 6 valid decimal digits
+and the same number for the rest. 
+ is the default for the imaginary unit.
+
+ring r = complex,(x,y,z),dp;
+
+* the quotient ring 
+ modulo the square of the maximal
+ideal 
+:
+
+ring R = 7,(x,y,z), dp;
+qring r = std(maxideal(2));
+
+3.3.2 General syntax of a ring declaration
+------------------------------------------
+
+Rings
+.....
+Syntax:
+ring name = (coefficient_field),
+  ( names_of_ring_variables ),
+  ( ordering );
+Default:
+32003,(x,y,z),(dp,C);
+Purpose:
+declares a ring and sets it as the current basering.
+
+The coefficient_field is given by one of the following:
+1. a non-negative int_expression less or equal 32003.
+
+ The int_expression should either be 0, specifying the field of
+rational numbers Q, or a prime number p, specifying the finite field
+with p elements.  If it is not a prime number, int_expression is
+converted to the next lower prime number.
+
+2. an expression_list of an int_expression and one or more names.
+
+ The int_expression specifies the characteristic of the coefficient
+field as described above. The names are used as parameters in
+transcendental or algebraic extensions of the coefficient
+field. Algebraic extensions are implemented for one parameter only. In
+this case, a minimal polynomial has to be defined by assignment to
+minpoly. See minpoly.
+
+3. an expression_list of an int_expression and a name.
+
+ The int_expression has to be a prime number p to the power of a
+positive integer n. This defines the Galois field
+The given name refers to a primitive element of
+generating the multiplicative group.  Due to a different internal
+representation, the arithmetic operations in these coefficient fields
+are faster than arithmetic operations in algebraic extensions as
+described above.
+
+4. an expression_list of the name real and two optional int_expression
+giving the precision in decimal digits and
+the size for the stabilizing rest. The default for the rest is the same size
+as for the representation.
+An exception is the name real without any integers.
+These numbers are implemented as machine floating point numbers
+of single precision.
+Note that computations over all these fields are not exact.
+
+5. an expression_list of the name complex,
+two optional int_expression and a name.
+This specifies the field of complex numbers represented with floating point
+numbers with a precision similar to real. An expression_list
+without int_expression defines a precision and rest with length 6.
+The name of the imaginary unit is given by the last parameter.
+Note that computations over these fields are not exact.
+
+'names_of_ring_variables' is a list of names or indexed names.
+
+'ordering' is a list of block orderings where each block ordering is either
+
+1. lp, dp, Dp, ls, ds, or Ds
+optionally followed by a size parameter in parentheses.
+
+2. wp, Wp, ws, Ws, or a followed by a
+weight vector given as an intvec_expression in parentheses.
+
+3. M followed by an intmat_expression in parentheses.
+
+4. c or C.
+
+For the definition of the orderings, see Monomial orderings.
+
+If one of coefficient_field, names_of_ring_variables, and ordering
+consists of only one entry, the parentheses around this entry may be
+omitted.
+
+Quotient rings
+..............
+Syntax:
+qring name = ideal_expression ;
+Default:
+none
+Purpose:
+declares a quotient ring as the basering modulo ideal_expression.  Sets
+it as current basering.
+
+ideal_expression has to be represented by a standard basis.
+
+The most convenient way to map objects from a ring to its quotient ring
+and vice versa is to use the fetch function (see fetch).
+
+SINGULAR computes in a quotient ring as long as possible with the
+given representative of a polynomial, say, f.  I.e., it usually
+does not reduce f w.r.t. the quotient ideal.  This is only done
+when necessary
+during standard bases computations or by an explicit reduction using
+the command reduce(f, std(0)) (see reduce).
+
+Example:
+  ring r=32003,(x,y),dp;
+  poly f=x3+yx2+3y+4;
+  qring q=std(maxideal(2));
+  basering;
+==> //   characteristic : 32003
+==> //   number of vars : 2
+==> //        block   1 : ordering dp
+==> //                  : names    x y 
+==> //        block   2 : ordering C
+==> // quotient ring from ideal
+==> _[1]=y2
+==> _[2]=xy
+==> _[3]=x2
+  poly g=fetch(r, f);
+  g;
+==> x3+x2y+3y+4
+  reduce(g,std(0));
+==> 3y+4
+
+
+3.3.3 Term orderings
+--------------------
+
+Any polynomial (resp. vector) in SINGULAR is ordered w.r.t. a
+term ordering (or, monomial ordering), which has to be specified
+together with the declaration of a ring. SINGULAR stores and
+displays a polynomial (resp. vector) w.r.t. this ordering, i.e., the
+greatest monomial (also called the leading monomial) is the first one
+appearing in the output polynomial, and the smallest monomial is the last one.
+
+Remark: The novice user should generally use the ordering
+dp for computations in the polynomial ring
+resp.  ds for computations in the localization
+For more details, see Polynomial data.
+
+In a ring declaration, SINGULAR offers the following orderings:
+1. Global orderings
+lp
+lexicographical ordering
+
+dp
+degree reverse lexicographical ordering
+
+Dp
+degree lexicographical ordering
+
+wp( intvec_expression )
+weighted reverse lexicographical ordering; the weight vector may
+consist of positive integers only.
+
+Wp( intvec_expression )
+weighted lexicographical ordering; the weight vector may consist of
+positive integers only.
+
+Global orderings are well-orderings, i.e., 
+ for each ring
+variable 
+. They are denoted by a p as the second
+character in their name.
+
+2. Local orderings
+ls
+negative lexicographical ordering
+
+ds
+negative degree reverse lexicographical ordering
+
+Ds
+negative degree lexicographical ordering
+
+ws( intvec_expression )
+(general) weighted reverse lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+
+Ws( intvec_expression )
+(general) weighted lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+
+Local orderings are not well-orderings. They are denoted by an s
+as the second character in their name.
+
+3. Matrix orderings
+M( intmat_expression )
+intmat_expression has to be an invertible square matrix
+
+Using matrix orderings, SINGULAR can compute standard bases
+w.r.t. any monomial ordering that is compatible with the natural
+semi-group structure on the monomials. In practice, the predefined global
+and local orderings together with the block orderings should be
+sufficient in most cases. These orderings are faster than their
+corresponding matrix orderings since evaluation of a matrix ordering is
+time consuming.
+
+4. Extra weight vector
+a( intvec_expression )
+an extra weight vector a( intvec_expression ) may precede
+any monomial ordering
+
+5. Product ordering
+( ordering [ ( int_expression ) ], ... )
+any of the above orderings and the extra weight vector may be combined
+to yield product or block orderings
+
+The orderings lp, dp, Dp, ls, ds, and
+Ds may be followed by an int_expression in parentheses giving the
+size of the block. For the last block the size is calculated
+automatically. For the weighted orderings the size of the block is given
+by the size of the weight vector. The same holds analogously for matrix
+orderings.
+
+6. Module orderings
+( ordering, ..., C )
+( ordering, ..., c )
+sort polynomial vectors by the monomial ordering first, then by
+components
+
+( C, ordering, ... )
+( c, ordering, ... )
+sort polynomial vectors by components first, then by the monomial
+ordering
+
+Here a capital C sorts generators in ascending order, i.e.,
+gen(1) < gen(2) < ... A small c sorts in
+descending order, i.e., gen(1) > gen(2) > ... It is
+not necessary to specify the module ordering explicitly since (
+ordering, ..., C ) is the default.
+
+In fact, c or C may be specified anywhere in a product
+ordering specification, not only at its beginning or end.  All monomial
+block orderings preceding the component ordering have higher precedence,
+all monomial block orderings following after it have lower precedence.
+
+For a mathematical description of these orderings, see
+Polynomial data.
+
+3.4 Implemented algorithms
+==========================
+
+The basic algorithm in SINGULAR is a general standard basis algorithm for
+any monomial ordering which is compatible with the natural semi-group
+structure of the exponents. This includes well-orderings
+(Buchberger algorithm to compute a Groebner basis)
+and tangent cone orderings (Mora algorithm) as special cases.
+
+Nonetheless, there are a lot of other important algorithms:
+* Algorithms to compute the standard operations on ideals and modules:
+intersection, ideal quotient, elimination, etc.
+
+* Different Syzygy algorithms and algorithms to compute free resolutions
+of modules.
+
+* Combinatorial algorithms to compute dimensions, Hilbert series,
+multiplicities, etc.
+
+* Algorithms for univariate and multivariate polynomial factorization,
+resultant and gcd computations.
+
+Commands to compute standard bases
+----------------------------------
+facstd
+facstd
+
+computes a list of Groebner bases via the Factorizing Groebner Basis
+Algorithm, i.e., their intersection has the same radical as the original ideal. It need not
+be a Groebner basis of the given ideal.
+
+The intersection of the zero-sets is the zero-set of the given ideal.
+fglm
+fglm
+
+computes a Groebner basis provided that a reduced Groebner basis
+w.r.t. another ordering is given.
+
+Implements the so-called FGLM (Faugere, Gianni, Lazard, Mora) algorithm.
+The given ideal must be zero-dimensional.
+groebner
+groebner
+
+computes a standard resp. Groebner bases using a heuristically chosen
+method.
+
+This is the preferred method to compute a standard resp. Groebner
+bases.
+mstd
+mstd
+
+computes a standard basis and a minimal set of generators.
+std
+std
+
+computes a standard resp. Groebner basis.
+stdfglm
+stdfglm
+
+computes a Groebner basis in a ring with a "difficult" ordering
+(e.g., lexicographical) via std w.r.t. a "simple" ordering and
+fglm.
+
+The given ideal must be zero-dimensional.
+stdhilb
+stdhilb
+
+computes a Groebner basis in a ring with a "difficult" ordering
+(e.g., lexicographical) via std w.r.t. a "simple" ordering
+and a std computation guided by the Hilbert series.
+
+Further processing of standard bases
+------------------------------------
+The next commands require the input to be a standard basis.
+
+degree
+degree
+
+computes the (Krull) dimension, codimension and the multiplicity.
+
+The result is only displayed on the screen.
+dim
+dim
+
+computes the dimension of the ideal resp. module.
+highcorner
+highcorner
+
+computes the smallest monomial not contained in the ideal resp. module.
+The ideal resp. module has to be finite dimensional as a vector space
+over the ground field.
+hilb
+hilb
+
+computes the first, and resp. or, second Hilbert series of an ideal
+resp. module.
+kbase
+kbase
+ computes a vector space basis (consisting of monomials) of
+the quotient of a ring by an ideal resp. of a free module by a
+submodule.
+
+The ideal resp. module has to be finite dimensional as a vector space
+over the ground field and has to be represented by a standard basis w.r.t.
+the ring ordering.
+mult
+mult
+
+computes the degree of the monomial ideal resp. module generated by
+the leading monomials of the input.
+reduce
+reduce
+
+reduces a polynomial, vector, ideal or module to its normal form with
+respect to an ideal or module represented by a standard basis.
+vdim
+vdim
+
+computes the vector space dimension of a ring (resp. free module)
+modulo an ideal (resp. module).
+
+Commands to compute resolutions
+-------------------------------
+res
+res
+
+computes a free resolution of an ideal or module using a heuristically
+chosen method.
+This is the preferred method to compute free resolutions of ideals or
+modules.
+lres
+lres
+
+computes a free resolution of an ideal or module with La Scala's
+method. The input needs to be homogeneous.
+mres
+mres
+
+computes a minimal free resolution of an ideal or module with the Syzygy
+method.
+sres
+sres
+
+computes a free resolution of an ideal or module with Schreyer's
+method. The input has to be a standard basis.
+nres
+nres
+
+computes a free resolution of an ideal or module with the standard basis
+method.
+syz
+syz
+
+computes the first Syzygy (i.e., the module of relations of the
+given generators).
+
+Further processing of resolutions
+---------------------------------
+betti
+betti
+
+computes the graded Betti numbers of a module from a free resolution.
+minres
+minres
+
+minimizes a free resolution of an ideal or module.
+regularity
+regularity
+
+computes the regularity of a homogeneous ideal resp. module from a given
+minimal free resolution.
+
+Processing of polynomials
+-------------------------
+char_series
+char_series
+
+computes characteristic sets of polynomial ideals.
+extgcd
+extgcd
+
+computes the extended gcd of two polynomials.
+
+Implemented as extended Euclidean Algorithm.  Applicable for univariate
+polynomials only.
+factorize
+factorize
+
+computes factorization of univariate and multivariate polynomials into
+irreducible factors.
+
+The most basic algorithm is univariate factorization in prime
+characteristic.  The Cantor-Zassenhaus Algorithm is used in this case.
+For characteristic 0, a univariate Hensel-lifting is done to lift from
+prime characteristic to characteristic 0.  For multivariate
+factorization in any characteristic, the problem is reduced to the
+univariate case first, then a multivariate Hensel-lifting is used to
+lift the univariate factorization.
+
+Note that there is no factorization of polynomials over algebraic
+extensions of Q.
+gcd
+gcd
+
+computes greatest common divisors of univariate and multivariate polynomials.
+
+For prime characteristic, a subresultant gcd is used.  In characteristic 0, a
+modular algorithm is used for the univariate case.  For the multivariate case,
+the EZGCD is used.
+
+Note that there is no gcd calculation for polynomials over algebraic
+extensions of Q.
+resultant
+resultant
+
+computes the resultant of two univariate polynomials using the subresultant
+algorithm.
+
+Multivariate polynomials are considered as univariate polynomials in the
+main variable (which has to be specified by the user).
+vandermonde
+vandermonde
+
+interpolates a polynomial from its values at several points
+
+Matrix computations
+-------------------
+bareiss
+bareiss
+
+implements sparse Gauss-Bareiss method for elimination (matrix
+triangularization) in arbitrary integral domains.
+det
+det
+
+computes the determinant of a square matrix.
+
+For matrices with integer entries a modular algorithm is used.  For
+other domains the Gauss-Bareiss method is used.
+minor
+minor
+
+computes all minors (=subdeterminants) of a given size for a matrix.
+
+Numeric computations
+--------------------
+laguerre
+laguerre
+
+computes all (complex) roots of a univariate polynomial
+uressolve
+uressolve
+
+find all roots of 0-dimensional ideal i with multivariate resultants
+
+Controlling computations
+------------------------
+option
+option
+
+allows setting of options for manipulating the behavior of computations
+(such as reduction strategies) and for showing protocol information indicating
+the progress of a computation.
+
+3.5 The SINGULAR language
+=========================
+
+SINGULAR interprets commands given interactively on the command
+line as well as given in the context of user-defined procedures.  In
+fact, SINGULAR makes no distinction between these two cases.
+Thus, SINGULAR offers a powerful programming language as well as
+an easy-to-use command line interface without differences in syntax or
+semantics.
+
+In the following, the basic language concepts such as commands,
+expressions, names, objects, etc., are discussed.  See Procedures,
+and Libraries,
+for the concepts of procedures
+and libraries.
+
+In many aspects, the SINGULAR language is similar to the C
+programming language.  For a description of some of the subtle
+differences, see Major differences to the C programming language.
+
+Elements of the language
+........................
+
+The major building blocks of the SINGULAR language  are
+expressions, commands, and control structures.  The notion of expressions
+in the SINGULAR and the C programming language are identical,
+whereas the notion of commands and control structures only roughly
+corresponds to the C statements.
+
+* An "expression" is a sequence of operators, functions, and operands
+that specifies a computation.  An expression always results in a
+value of a specific type.  See Data types, and its subsections (e.g.,
+poly expressions), for information on how to build expressions.
+
+* A "command" is either a declaration, an assignment, a call to a
+function without return value, or a print command.  For detailed
+information, see General command syntax.
+
+* "Control structures" determine the execution sequence of commands.
+SINGULAR provides control structures for conditional execution
+(if ... else) and iteration (for and
+while).  Commands may be grouped in pairs of { }
+(curly brackets) to form blocks.  See Control structures, for
+more information.
+
+Other notational conventions
+............................
+For user-defined functions, the notion of "procedure" and
+"function" are synonymous.
+
+As already mentioned above, functions without return values are called
+commands.  Furthermore, whenever convenient, the term "command" is
+used for a function, even if it does return a value.
+
+* General command syntax::
+* Special characters::
+* Names::
+* Objects::
+* Type conversion and casting::
+* Flow control::
+
+3.5.1 General command syntax
+----------------------------
+
+In SINGULAR a command is either a declaration, an assignment, a
+call to a function without return value, or a print command. The general
+form of a command is described in the following subsections.
+
+Declaration
+...........
+1. type name = expression ;
+
+ declares a variable with the given name of the given type and assigns
+the expression as initial value to it.  Expression is an expression of
+the specified type or one that can be converted to that type.
+See Type conversion and casting.
+
+2. type name_list = expression_list ;
+
+ declares variables with the given names and assigns successively each
+expression of expression_list to the corresponding name of
+name_list.  Both lists must be of the same length.  Each expression in
+expression_list is an expression of the specified type or one that can
+be converted to that type.  See Type conversion and casting.
+
+3. type name ;
+
+ declares a variable with the given name of the given type and assigns
+the default value of the specific type to it.
+
+See Names, for more information on declarations.  See Data types,
+for a description of all data types known to SINGULAR.
+
+ring r;                   // the default ring
+poly f,g = x^2+y^3,xy+z2; // the polynomials f=x^2+y^3 and g=x*y+z^2
+ideal I = f,g;            // the ideal generated by f and g
+matrix m[3][3];           // a 3 x 3 zero matrix
+int i=2;                  // the integer i=2
+
+Assignment
+..........
+4. name = expression ;
+
+ assigns expression to name.
+
+5. name_list = expression_list ;
+
+ assigns successively each expression of expression_list to the
+corresponding name of name_list. Both lists must be of the same
+length.  This is not a simultaneous assignment.  Thus, f, g = g, f; does
+not swap the values of f and g, but rather assigns
+g to both f and g.
+
+There must be a type conversion of the type of expression to the type of
+name. See Type conversion and casting.
+
+An assignment itself does not yield a value. Hence, compound assignments
+like i = j = k; are not allowed and result in an error.
+
+f = x^2 + y^2 ;      // overwrites the old value of f
+I = jacob(f);
+f,g = I[1],x^2+y^2 ; // overwrites the old values of f and g
+
+Function without return value
+.............................
+6. function_name [ ( argument_list ) ] ;
+
+ calls function function_name with arguments argument_list.
+
+The function may have output (not to be confused with a return value of
+type string). See Functions. Functions without a return value are
+specified there to have a return type 'none'.
+
+Some of these functions have to be called without parentheses, e.g.,
+help, LIB.
+
+  ring r;
+  ideal i=x2+y2,x;
+  i=std(i);
+  degree(i);        // degree has no return value but prints output
+==> 2
+
+Print command
+.............
+7. expression ;
+
+ prints the value of an expression, for example, of a variable.
+
+Use the function print (or the procedure show from inout.lib)
+to get a pretty output of various data
+types, e.g., matrix or intmat. See print.
+
+  int i=2;
+  i;
+==> 2
+  intmat m[2][2]=1,7,10,0;
+  print(m);
+==>      1     7
+==>     10     0
+
+3.5.2 Special characters
+------------------------
+The following characters and operators have special meaning:
+=
+assignment
+(, )
+in expressions, for indexed names and for argument lists
+[, ]
+access operator for strings, integer vectors, ideals, matrices,
+polynomials, resolutions, and lists.  Used to build vectors of
+polynomials.  Example: s[3], m[1,3], i[1..3],
+[f,g+x,0,0,1].
++
+addition operator
+-
+subtraction operator
+*
+multiplication operator
+/
+division  operator.  See Miscellaneous oddities, for the difference
+between the division operators / and div.
+%
+modulo operator
+^ or **
+exponentiation operator
+==
+comparison operator equal
+!= or <>
+comparison operator not equal
+>=
+comparison operator bigger or equal
+>
+comparison operator bigger
+<=
+comparison operator smaller or equal
+<
+comparison operator smaller.  Also used for file input.  See filecmd.
+!
+boolean operator not
+&&
+boolean operator and
+||
+boolean operator or
+"
+delimiter for string constants
+`
+delimiter for name substitution
+?
+synonym for help
+//
+comment delimiter.  Comment extends to end of line.
+/*
+comment delimiter.  Starts a comment which ends with */.
+*/
+comment delimiter.  Ends a comment which starts with /*.
+;
+statement separator
+,
+separator for expression lists and function arguments
+\
+escape character for " and \ within strings
+..
+interval specifier returning intvec.
+E.g., 1..3 which is equivalent to the intvec 1, 2, 3.
+_
+value of expression last displayed
+~
+breakpoint in procedures
+#
+list of parameters in procedures without explicit parameter list
+$
+terminates SINGULAR
+
+3.5.3 Names
+-----------
+
+SINGULAR is a strongly typed language.  This means that all names
+(= identifiers) have to be declared prior to their use.  For the general
+syntax of a declaration, see the description of declaration commands
+(see General command syntax).
+
+See Data types, for a description of SINGULAR's data types.
+See typeof, for a short overview of possible types.  To get information
+on a name and the object named by it, the type command may be
+used (see type).
+
+It is possible to redefine an already existing name if doing so does not
+change its type. A redefinition first sets the variable to the default
+value and then computes the expression. The difference between
+redefining and overwriting a variable is shown in the following example:
+
+  int i=3;
+  i=i+1;        // overwriting
+  i;
+==> 4
+  int i=i+1;    // redefinition
+==> // ** redefining i **
+  i;
+==> 1
+
+User defined names should start with a letter and consist of letters and
+digits only.  As an exception to this rule, the characters @,
+and _ may
+be used as part of a name, too.  Capital and small letters are
+distinguished.  Indexed names are built as a name followed by an
+int_expression in parentheses.  A list of indexed names can be built as
+a name followed by an intvec_expression in parentheses.
+
+  ring R;
+  int n=3;
+  ideal j(3);
+  ideal j(n);     // is equivalent to the above
+==> // ** redefining j(3) **
+  ideal j(2)=x;
+  j(2..3);
+==> j(2)[1]=x j(3)[1]=0
+
+Names may not coincide with reserved names (keywords).  Type
+reservedName(); to get a list of the reserved names.
+See reservedName.  Names should not interfere with names of ring
+variables or, more generally, with monomials.  See Identifier resolution.
+
+ The command listvar provides a list of the names in use
+(see listvar).
+
+The most recently printed expression is available
+under the special name _, e.g.,
+  ring r;
+  ideal i=x2+y3,y3+z4;
+  std(i);
+==> _[1]=y3+x2
+==> _[2]=z4-x2
+  ideal k=_;
+  k*k+x;
+==> _[1]=y6+2x2y3+x4
+==> _[2]=y3z4+x2z4-x2y3-x4
+==> _[3]=z8-2x2z4+x4
+==> _[4]=x
+  size(_[3]);
+==> 3
+
+A string_expression enclosed in `...` (back ticks)
+evaluates to the value of the variable named by the string_expression.
+This feature is referred to as name substitution.
+
+  int foo(1)=42;
+  string bar="foo";
+  `bar+"(1)"`;
+==> 42
+
+3.5.4 Objects
+-------------
+
+Every object in SINGULAR has a type and a value.  In most cases it
+has also a name and in some cases an attribute list.  The value of an
+object may be examined simply by printing it with a print command:
+object;.  The type of an object may be determined by means of the
+typeof function, the attributes by means of the attrib
+function (typeof, attrib):
+
+  ring r=0,x,dp;
+  typeof(10);
+==> int
+  typeof(10000000000000000);
+==> number
+  typeof(r);
+==> ring
+  attrib(x);
+==> no attributes
+  attrib(std(ideal(x)));
+==> attr:isSB, type int
+
+Each object of type
+poly,
+ideal,
+vector,
+module,
+map,
+matrix,
+number, or
+resolution
+belongs to a specific ring.  Also list, if at least one of the
+objects contained in the list belongs to a ring.  These objects are local
+to the ring.  Their names can be used for other objects in other rings.
+Objects from one ring can be mapped to another ring using maps or with the
+commands fetch or imap.  See map, fetch, imap.
+
+All other types do not belong to a ring and can be accessed within every
+ring and across rings.  They can be declared even if there is no active
+basering.
+
+3.5.5 Type conversion and casting
+---------------------------------
+
+Type conversion
+...............
+Assignments convert the type of the right-hand side to the type of the
+left-hand side of the assignment, if possible.  Operators and functions
+which require certain types of operands can also implicitly convert the
+type of an expression.  It is, for example, possible to multiply a
+polynomial by an integer because the integer is automatically converted to
+a polynomial.  Type conversions do not act transitively.  Possible
+conversions are:
+
+
+ 1. int ==> ideal
+ 2. poly ==> ideal
+ 3. intvec ==> intmat
+ 4. int ==> intvec
+ 5. int ==> intmat
+ 6. string ==> link
+ 7. resolution ==> list
+ 8. ideal ==> matrix
+ 9. int ==> matrix
+ 10. intmat ==> matrix
+ 11. intvec ==> matrix
+ 12. module ==> matrix
+ 13. number ==> matrix
+ 14. poly ==> matrix
+ 15. vector ==> matrix
+ 16. ideal ==> module
+ 17. matrix ==> module
+ 18. vector ==> module
+ 19. int ==> number
+ 20. int ==> poly
+ 21. number ==> poly
+ 22. string ==> proc
+ 23. list ==> resolution
+ 24. int ==> vector
+  (i ==> i*gen(1))
+ 25. poly ==> vector
+  (p ==> p*gen(1))
+
+Type casting
+............
+An expression can be casted to another type by using a type cast
+expression:
+
+ type ( expression ).
+
+Possible type casts are:
+
+  to from
+  ideal expression lists of int, number, poly
+  ideal int, matrix, module, number, poly, vector
+  int number, poly
+  intvec expression lists of int, intmat
+  intmat intvec (see intmat type cast)
+  list expression lists of any type
+  matrix module, ideal,
+vector, matrix.
+
+ There are two forms to convert something to a matrix: if matrix(
+expression ) is used then the size of the matrix is determined
+by the size of expression.
+
+ But matrix( expression , m , n ) may also be
+used - the result is a
+matrix (see matrix type cast)
+  module expression lists of int, number,
+poly, vector
+  module ideal, matrix, vector
+  number poly
+  poly int, number
+  string any type (see string type cast)
+
+Example:
+  ring r=0,x,(c,dp);
+  number(3x);
+==> 0
+  number(poly(3));
+==> 3
+  ideal i=1,2,3,4,5,6;
+  print(matrix(i));
+==> 1,2,3,4,5,6
+  print(matrix(i,3,2));
+==> 1,2,
+==> 3,4,
+==> 5,6 
+  vector v=[1,2];
+  print(matrix(v));
+==> 1,
+==> 2 
+  module(matrix(i,3,2));
+==> _[1]=[1,3,5]
+==> _[2]=[2,4,6]
+
+
+3.5.6 Flow control
+------------------
+
+A block is a sequence of commands surrounded by { and }.
+{
+   command;
+   ...
+}
+Blocks are used whenever SINGULAR is used as a structured programming
+language. The if and else structures allow conditional
+execution of blocks (see if, else). for and while
+loops are available for repeated execution of blocks (see for,
+while).
+In procedure definitions the main part and the example section are blocks
+as well(see proc).
+* break::
+* quit::
+* keepring::
+* export::
+* if::
+* else::
+* for::
+* while::
+* proc::
+* return::
+* continue::
+
+
+3.6 Input and output
+====================
+
+SINGULAR's input and output (short, I/O) is realized using links.
+Links are the communication channels of SINGULAR, i.e., something
+SINGULAR can write to and read from.  In this section, a short
+overview of the usage of links and of the different link types is given.
+
+For loading of libraries, see LIB. For executing program scripts,
+see filecmd.
+
+Monitoring
+----------
+A special form of I/O is monitoring.  When monitoring is enabled,
+SINGULAR makes a typescript of everything printed on your terminal
+to a file.  This is
+useful to create a protocol of a SINGULAR session.  The
+monitor command enables and disables this feature
+(see monitor).
+
+
+How to use links
+----------------
+Recall that links are the communication channels of SINGULAR, i.e.,
+something SINGULAR can write to and read from using the functions
+write and read. There are furthermore
+the functions dump and getdump which store resp.
+retrieve the content of an entire SINGULAR session to, resp. from,
+a link.  The dump and getdump commands are not available
+for DBM links.
+
+For more information, see write, read, dump,
+getdump.
+
+Example:
+  ring r; poly p = x+y;
+  dump("MPfile:w test.mp");   // dump the session to the file test.mp
+  kill r;                     // kill the basering
+  listvar();
+==> // LIB                  [0]  string standard.lib
+  getdump("MPfile:r test.mp");// read the dump from the file
+  listvar();
+==> // r                    [0]  *ring
+==> //      p                    [0]  poly
+==> // LIB                  [0]  string standard.lib
+
+Specifying a link can be as easy as specifying a filename as a string.
+Except for MPtcp links, links even do not need to be explicitly opened
+or closed before, resp. after, they are used.  To explicitly open or
+close a link, the open, resp. close, commands may be
+used (see open, close).
+
+Links have various properties which can be queried using the
+status function (see status).
+
+Example:
+  link l = "MPtcp:fork";
+  l;
+==> // type : MPtcp
+==> // mode : fork
+==> // name : 
+==> // open : no
+==> // read : not ready
+==> // write: not ready
+  open(l);
+  status(l, "open");
+==> yes
+  close(l);
+  status(l, "open");
+==> no
+
+ASCII links
+-----------
+Data that can be converted to a string that can be written into files for
+storage or communication with other programs. The data are written in
+plain ASCII format. Reading from an ASCII link returns a string --
+conversion into other data is up to the user. This can be done, for
+example, using the command execute (see execute).
+
+ASCII links should primarily be used for storing small amounts of data,
+especially if it might become necessary to manually inspect or
+manipulate the data.
+
+See ASCII links, for more information.
+
+Example:
+  // (over)write file test.ascii, link is specified as string
+  write(":w test.ascii", "int i =", 3, ";");
+  // reading simply returns the string
+  read("test.ascii");
+==> int i =
+==> 3
+==> ;
+==> 
+  // but now test.ascii is "executed"
+  execute(read("test.ascii"));
+  i;
+==> 3
+
+MPfile links
+------------
+Data is stored in the binary MP format.  Read and write access is very
+fast compared to ASCII links.  All data (including such data that cannot
+be converted to a string) can be written to an MPfile link.  Reading
+from an MPfile link returns the written expressions (i.e., not a string,
+in general).
+
+MPfile links should primarily be used for storing large amounts of data
+(like dumps of the content of an entire SINGULAR session), and if
+the data to be stored cannot be easily converted from or to a string
+(like rings, or maps).
+
+MPfile links are implemented on Unix-like operating systems only.
+
+See MPfile links, for more information.
+
+Example:
+  ring r;
+  // (over)write MPfile test.mp, link is specified as string
+  write("MPfile:w test.mp", x+y);
+  kill r;
+  def p = read("MPfile:r test.mp");
+  typeof(p); p;
+==> poly
+==> x+y
+
+MPtcp links
+-----------
+Data is communicated with other processes (e.g., SINGULAR
+processes) which may run on the same computer or on different ones.  Data
+exchange is accomplished using TCP/IP links in the binary MP format.
+Reading from an MPtcp link returns the written expressions (i.e., not a
+string, in general).
+
+MPtcp links should primarily be used for communications with other
+programs or for parallel computations (see, for example,
+Parallelization with MPtcp links).
+
+MPtcp links are implemented on Unix-like operating systems only.
+
+See MPtcp links, for more information.
+
+Example:
+  ring r;
+  link l = "MPtcp:launch"; // declare a link explicitly
+  open(l);  // needs an open, launches another SINGULAR as a server
+  write(l, x+y);
+  kill r;
+  def p = read(l);
+  typeof(p); p;
+==> poly
+==> x+y
+  close(l); // shuts down SINGULAR server
+
+DBM links
+---------
+Data is stored in and accessed from a data base.  Writing is
+accomplished by a key and a value and associates the value with the key
+in the specified data base.  Reading is accomplished w.r.t. a key,
+the value associated to it is returned.  Both the key and the value have to
+be specified as strings.  Hence, DBM links may be used only for data
+which may be converted to or from strings.
+
+DBM links should primarily be used when data needs to be accessed not in a
+sequential way (like with files) but in an associative way (like with
+data bases).
+
+See DBM links, for more information.
+
+Example:
+  ring r;
+  // associate "x+y" with "mykey"
+  write("DBM:w test.dbm", "mykey", string(x+y));
+  // get from data base what is stored under "mykey"
+  execute(read("DBM: test.dbm", "mykey"));
+==> x+y
+
+
+3.7 Procedures
+==============
+
+Procedures contain sequences of commands of the SINGULAR language.
+They are used to extend
+the set of commands with user defined commands.  Procedures are defined
+by either typing them on the command line or by loading them from a
+so-called library file with the LIB command, see LIB.  Procedures are
+invoked like normal built-in commands, i.e., by typing their name
+followed by the list of arguments in parentheses. The invocation then
+executes the sequence of commands stored in the specified procedure. All
+defined procedures can be displayed by the command listvar(proc);.
+
+* Procedure definition::
+* Names in procedures::
+* Parameter list::
+* Procedure commands::
+3.7.1 Procedure definition
+--------------------------
+Syntax:
+[static] proc proc_name [parameter_list]
+
+["help_text"]
+
+{
+
+
+   procedure_body
+
+}
+
+[example
+
+{
+
+
+   sequence_of_commands;
+
+}]
+Purpose:
+defines a new function, the proc proc_name, with the additional
+information help_text, which is copied to the screen by
+help proc_name; and the example section
+which is executed by example proc_name;.
+
+ The help_text, the parameter_list, and the example section are optional.
+The default for a parameter_list is (list #), see Parameter list.
+The help and example sections are ignored if the procedure is defined
+interactively, i.e., if it was not loaded from a file by a LIB command
+(LIB).
+
+ Specifying static in front of the proc-definition (in a library file)
+makes this procedure local to the library, i.e., accessible only for the other
+procedures in the same library, but not for the users. So there is no
+reason anymore to define a procedure within another one (it just makes
+debugging harder).
+
+Example of an interactive procedure definition
+..............................................
+  proc milnor_number (poly p)
+  {
+    ideal i= std(jacob(p));
+    int m_nr=vdim(i);
+    if (m_nr<0)
+    {
+      "// not an isolated singularity";
+    }
+    return(m_nr);         // the value of m_nr is returned
+  }
+  ring r1=0,(x,y,z),ds;
+  poly p=x^2+y^2+z^5;
+  milnor_number(p);
+==> 4
+
+Example of a procedure definition in a library
+..............................................
+First, the library definition:
+// Example of a user accessible procedure
+proc tab (int n)
+"USAGE:    tab(n);  (n integer)
+RETURNS:  string of n space tabs
+EXAMPLE:  example tab; shows an example"
+{ return(internal_tab(n)); }
+example
+{
+  "EXAMPLE:"; echo=2;
+  for(int n=0; n<=4; n=n+1)
+  { tab(4-n)+"*"+tab(n)+"+"+tab(n)+"*"; }
+}
+
+// Example of a static procedure
+static proc internal_tab (int n)
+{ return(" "[1,n]); }
+
+Now, we load the library and execute the procedures defined there:
+  LIB "sample.lib";        // load the library sample.lib
+  example tab;             // show an example
+==> // proc tab from lib sample.lib
+==> EXAMPLE:
+==>   for(int n=0; n<=4; n=n+1)
+==>   { tab(4-n)+"*"+tab(n)+"+"+tab(n)+"*"; }
+==>     *+*
+==>    * + *
+==>   *  +  *
+==>  *   +   *
+==> *    +    *
+==> 
+  "*"+tab(3)+"*";          // use the procedure tab
+==> *   *
+  // the static procedure internal_tab is not accessible
+  "*"+internal_tab(3)+"*";
+==>    ? 'sample.lib::internal_tab()' is a local procedure and cannot be acce\
+   ssed by an user.
+==>    ? error occurred in line 5: `  "*"+internal_tab(3)+"*";`
+  // show the help section for tab
+  help tab;
+==> // ** Could not get IdxFile. 
+==> // ** Either set environment variable SINGULAR_IDX_FILE to IdxFile,
+==> // ** or make sure that IdxFile is at /home/hannes/singular/2-0/doc/singu\
+   lar.idx
+==> // proc tab from lib sample.lib
+==> proc tab (int n)
+==> USAGE:    tab(n);  (n integer)
+==> RETURNS:  string of n space tabs
+==> EXAMPLE:  example tab; shows an example
+
+Guidelines for the help text of a procedure
+...........................................
+There are no enforced rules on the format of the help section of a
+procedure.
+
+Nevertheless, we recommend that the help text of a procedure should
+contain information about the usage,
+purpose, return values and generated objects. Particular assumptions or
+limitations should be listed. It should also be mentioned if global
+objects are generated or manipulated.
+
+The help text of procedures contained in libraries of the
+SINGULAR distribution
+should furthermore comply with  certain rules as explained in
+The help string of procedures.
+
+3.7.2 Names in procedures
+-------------------------
+
+All variables are local to the procedure they are defined in.
+Locally defined variables cannot interfere with names in other
+procedures and are automatically deleted after leaving
+the procedure.
+
+Internally, local variables are stored using the nesting level. A variable
+is said to have nesting level 1, if it is local to a procedure that was
+called interactively, nesting level 2, if it is local to a procedure that
+was called by a procedure of nesting level 1 etc. listvar() also
+displays the nesting level, nesting level 0 is used for global objects
+(see listvar). A ring may be 'moved up' by one nesting level
+with keepring (see keepring). All variables living in that
+ring are moved together with that ring.
+
+To keep local variables after leaving the procedure, they have to be
+exported (i.e. made known) to some higher level by the export
+command (see export).
+
+Example:
+proc xxx
+{
+  int k=4;        //defines a local variable k
+  int result=k+2;
+  export(result);  //defines the global variable "result".
+}
+xxx();
+listvar(all);
+==> // result               [0]  int 6
+==> // LIB                  [0]  string standard.lib
+Note that the variable result became a global variable after the
+execution of xxx.
+
+3.7.3 Parameter list
+--------------------
+Syntax:
+( )
+
+( parameter_definition )
+Purpose:
+defines the number, type and names of the
+arguments to a proc.
+
+The parameter_list is optional.
+The default for a parameter_list is (list #)
+which means the arguments are referenced by #[1], #[2], etc.
+Example:
+proc x0
+{
+    // can be called with
+... // any number of arguments of any type: #[1], #[2],...
+    // number of arguments: size(#)
+}
+
+proc x1 ()
+{
+... // can only be called without arguments
+}
+
+proc x2 (ideal i, int j)
+{
+... // can only be called with 2 arguments,
+    // which can be converted to ideal resp. int
+}
+
+proc x3 (i,j)
+{
+... // can only be called with 2 arguments
+    // of any type
+    // (i,j) is the same as (def i,def j)
+}
+
+proc x5 (i,list #)
+{
+... // can only be called with at least 1 argument
+    // number of arguments: size(#)+1
+}
+
+Note:
+
+ The parameter_list may stretch across multiple lines.
+
+ A parameter may have any type (including the types proc
+   and ring). If a parameter is of type ring, then it
+   can only be specified by name, but not with a type, e.g.
+proc x6 (r)
+{
+... // this is correct even if the parameter is a ring
+}
+
+proc x7 (ring r)
+{
+... // this is NOT CORRECT
+}
+
+3.7.4 Procedure commands
+------------------------
+
+Some commands only make sense inside a procedure, since they make
+objects known to the nesting level from which the procedure was called
+or to all nesting levels.
+
+
+3.8 Libraries
+=============
+
+A library is a collection of SINGULAR
+procedures in a file.
+
+SINGULAR reads a library with the command
+LIB. General information about the library is displayed by the command
+help libname_lib. After loading the library, its procedures can be used
+like the built-in SINGULAR functions.
+
+To have the full functionality of a built-in function libraries have to
+comply with the few syntax rules described below.
+
+Furthermore, libraries which are to be included in the SINGULAR
+distribution, have to comply with certain rules as explained in
+Guidelines for writing a library.
+
+* Loading of a library::
+* Format of a library::
+
+3.8.1 Loading of a library
+--------------------------
+
+Libraries can be loaded with the LIB command:
+
+Syntax:
+LIB string_expression ;
+Type:
+none
+Purpose:
+reads a library of procedures from a file. If the given filename does
+not start with . or / and can not be located in the current
+directory, each directory contained in the library
+SearchPath is searched for file of this name.
+Note on SearchPath:
+The the library SearchPath is constructed at SINGULAR
+start-up time as follows:
+1. the directories contained in the environment variable
+SINGULARPATH are appended
+
+2. the directories $BinDir/LIB, $RootDir/LIB,
+$RootDir/../LIB, $DefaultDir/LIB, $DefaultDir/../LIB
+are appended, where
+* $BinDir
+is the value of the environment variable
+SINGULAR_BIN_DIR, if set, or, if not set, the directory in which the
+SINGULAR program
+resides
+* $RootDir
+is the value of the environment variable
+SINGULAR_ROOT_DIR, if set, or, if not set, $BinDir/../.
+* $DefaultDir
+is the value of the environment variable
+SINGULAR_DEFAULT_DIR, if set, or /usr/local/Singular/ on a
+Unix platform, \Singular\ on a Windows 95/98/NT platform, and
+::Singular: on a Macintosh.
+
+3. all directories which do not exist are removed from the SearchPath.
+
+For setting environment variables see system, or consult the manual of
+your shell.
+
+The library SearchPath can be examined  by starting up
+SINGULAR with the option -v, or by issuing the command
+system("--version");.
+
+Note on standard.lib:
+Unless  SINGULAR is started with the --no-stdlib option, the
+library standard.lib is automatically loaded at start-up time.
+
+
+Only the names of the procedures in the library are loaded, the body of
+the procedures is read during the first call of this procedure. This minimizes
+memory consumption by unused procedures.  When SINGULAR is started
+with the -q or --quiet option, no message about the
+loading of a library is displayed.  More precisely, option -q (and
+likewise --quiet) unsets option loadLib to inhibit
+monitoring of library loading (see option).
+
+All loaded libraries are displayed by the LIB;
+command:
+  option(loadLib);   // show loading of libraries;
+                     // standard.lib is loaded
+  LIB;
+==> standard.lib
+                     // the names of the procedures of inout.lib
+  LIB "inout.lib";   // are now known to Singular
+==> // ** loaded inout.lib (1.21.2.5,2002/06/12)
+  LIB;
+==> standard.lib,inout.lib
+
+
+3.8.2 Format of a library
+-------------------------
+
+A library file can contain comments, a category-, info- and version-string
+definition, LIB commands, proc commands
+and proc commands with example and help sections,
+i.e., the following keywords are allowed:
+category,
+info,
+version,
+LIB,
+/* ... */,
+//,
+[static] proc.
+Anything else is not recognized by the parser of SINGULAR and leads
+to an error message while loading the library.
+If an error occurs, loading is aborted and an error message is displayed,
+specifying the type of error and the line where it was detected.
+
+The category-, info- and version-string are defined as follows:
+Syntax:
+info = string_constant ;
+Purpose:
+defines the general help for the library. This text is displayed on
+help libname_lib;.
+Example:
+info="
+      This could be the general help of a library.
+     Quotes must be escaped with a \ such as \"
+";
+Note:
+In the info-string the characters \ and " must be preceded by a \ (escaped).
+It is recommended that the info string is placed on the top of a
+library file and contains general information about the library as well
+as a listing of all procedures available to the users (with a one line
+description of each procedure).
+
+Although there is no enforced format of the info string of a library, we
+recommend that you follow certain rules as explained in
+The help string of a library.
+
+Syntax:
+version = string_constant ;
+Purpose:
+defines the version number for the library. It is displayed when the
+library is loaded.
+Example:
+version="$Id$";
+version="some version string";
+Note:
+It is common practice to simply define the version string to be
+"$Id$" and let a version control system expand it.
+
+Syntax:
+category = string_constant ;
+Purpose:
+defines the category for the library.
+Example:
+category="Utilities";
+Note:
+reserved for sorting the libraries into categories.
+
+3.9 Guidelines for writing a library
+====================================
+
+Although there are very few enforced rules on how libraries are written
+(see Libraries), it is recommended that the libraries comply with
+the guidelines explained in this section, so that debugging and
+understanding are made easier.
+
+Note: For libraries which are to be included in the SINGULAR
+distribution, the following guidelines are mandatory.
+
+* Procedures in a library::
+* Documentation of a library::
+* Typesetting of help strings::
+* The help string of a library::
+* The help string of procedures::
+* template_lib::
+
+
+3.9.1 Procedures in a library
+-----------------------------
+
+In this section we list miscellaneous recommendations on how procedures
+contained in a library should be implemented.
+1. The info- and version-string should appear at the beginning of the
+library, before procedure definitions.
+
+2. The info-string should have the format as explained in The help string of a library.
+
+3. Each procedure which should not be accessible by users should be
+declared static.
+
+4. Each procedure which is not declared static should have a
+help and example section as explained in Procedure definition.
+
+Such procedures should furthermore carefully check any assumptions
+made about their input (like the type of list elements), and, if
+necessary, omit an error using the  function ERROR.
+
+5. No procedures should be defined within the body of another procedure.
+
+6. If the value of
+the reserved variable printlevel (see printlevel) is greater
+than 0 then interactive user-input, i.e., the usage of functions like
+pause("..") or read(""); (see read), may be requested.
+
+7. If the value of
+the reserved variable printlevel (see printlevel) is 0
+then interactive user-input, i.e., the usage of functions like
+pause("..") or read(""); (see read), may not be
+requested. Instead, an error (using the function
+ERROR) should be reported together with the recommendation on
+increasing the value of the reserved variable printlevel.
+
+8. It is often useful for a procedure to print out comments, either to
+explain results or to display intermediate computations. However,
+if this procedure is called by another procedure, such comments are
+confusing and disturbing in most cases.
+
+SINGULAR offers an elegant solution, which requires the usage of
+the SINGULAR function dbprint and the reserved variables
+printlevel, and voice (voice counts the nesting of
+procedures; It has the value 1 on the top level, 2 inside the first
+procedure etc.; printlevel has the value 0 by default, but can be
+set to any integer value by the user).
+
+For example, if the following procedure Test is called
+directly from the top level then `comment1' is displayed (i.e.,
+printed out) but not
+`comment2'; and nothing is displayed if  Test is called
+from within any other procedure.
+However, if printlevel is set to  a value k with k>0, then
+`comment1' (resp. `comment2') is displayed provided that
+Test is called from other procedures, with a nesting level up to
+k (resp. k-1).
+
+Note furthermore, that the example part of a procedure
+behaves in this respect like a procedure (i.e., the value of voice
+is 1). Therefore, the command printlevel=1; is necessary for
+`comment1' to be displayed on  example Test;. However,
+since printlevel is a global variable, it should be reset to the old
+value at the end of the example part.
+
+proc Test
+"USAGE:   ...
+         ...
+EXAMPLE: example Test; shows an example
+"
+{   ...
+   int p = printlevel - voice + 3;
+    ...
+   dbprint(p,"comment1");
+   dbprint(p-1,"comment2");
+   // dbprint prints only if p > 0
+    ...
+}
+example
+{ "EXAMPLE:"; echo = 2;
+   int p = printlevel;   //store old value of printlevel
+   printlevel = 1;       //assign new value to printlevel
+    ...
+   Test();
+   printlevel = p;       //reset printlevel to old value
+}
+
+
+
+3.9.2 Documentation of a library
+--------------------------------
+
+The typesetting language in which the SINGULAR documentation is
+written is texinfo. Based on various tools, info, dvi, ps, and
+html versions of the texinfo documentation are generated.
+
+
+Starting with SINGULAR version 1-3, the texinfo
+documentation of all libraries of the SINGULAR distribution is
+generated automatically from their source code.
+
+More precisely, for each library,
+-- the info string of the library is parsed and typeset
+as explained in Typesetting of help strings.
+
+-- the help string of each procedure listed in the PROCEDURE:
+section of the library info string is parsed
+and typeset as explained in Typesetting of help strings.
+
+-- the example of each procedure listed in the PROCEDURE: section of
+the library info string is computed and its output is
+included into the documentation.
+
+For a uniform look-and-feel of the library documentation, library
+developers should
+-- follow the recommendation of
+The help string of a library and The help string of procedures.
+
+-- consult the source code of libraries like
+template.lib (see template_lib)
+for examples on how library documentations are
+written.
+
+-- make sure that each procedure listed in the PROCEDURE:
+section of the library info string has a help string and an example
+section.
+
+-- not use interactive functions like
+pause("..") or read(""); (see read) and should limit the
+length of input lines to 60 characters in the example section of
+procedures.
+
+-- carefully check the generated
+documentation of their libraries in its various formats using the
+lib2doc (see lib2doc) utility.
+
+* lib2doc::
+
+3.9.2.1 lib2doc
+...............
+
+
+lib2doc is a utility to generate the stand-alone documentation for 
+a SINGULAR library in various formats. 
+
+The lib2doc utility should be used by developers of SINGULAR
+libraries to check the generation of the documentation of their
+libraries.
+
+lib2doc can be downloaded from 
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/misc/lib2doc.tar.gz>
+
+
+Important: 
+
+To use lib2doc, you need 
+to have perl (version 5 or
+higher), texinfo (version 3.12 or higher)  and Singular
+and libparse (version 1-3-4 or higher) installed on your system.
+
+To generate the documentation for a library, follow these steps:
+1. Unpack lib2doc.tar.gz
+gzip -dc  lib2doc.tar.gz | tar -pxf -
+and 
+cd lib2doc
+
+2. Edit the beginning of the file Makefile, filling in the values for
+SINGULAR and LIBPARSE. Check also the values of PERL 
+and LATEX2HTML.
+
+3. Copy your library to the current directory:
+cp <path-where-your-lib-is>/mylib.lib .
+
+4. Now you can run the following commands:
+make mylib.hlp
+Generates the file mylib.hlp - the info file for the documentation
+of mylib.lib. This file can be viewed with
+info -f mylib.hlp
+make mylib.dvi
+Generates the file mylib.dvi - the dvi file for the documentation
+of mylib.lib. This file can be viewed with
+xdvi mylib.dvi
+make mylib.ps
+Generates the file mylib.ps - the PostScript file for the documentation
+of mylib.lib. This file can be viewed with (for example)
+ghostview mylib.dvi
+make mylib.html
+Generates the file mylib.html - the HTML file for the documentation
+of mylib.lib. This file can be viewed with (for example)
+netscape mylib.html
+make clean
+Deletes all generated files.
+
+
+Note that you can safely ignore messages complaining about undefined
+references.  
+
+
+
+3.9.3 Typesetting of help strings
+---------------------------------
+
+The help strings of procedures and info strings of libraries which are
+included in the
+distribution of SINGULAR are parsed and automatically converted
+into the texinfo format (the typesetting language in which the
+documentation  of SINGULAR is written).
+
+For optimal typesetting results, the guidelines for writing libraries
+and procedures should be followed, and the following points should be
+kept in mind:
+
+* If a help string starts with an @ sign, then no parsing is done,
+and the help string is assumed to be already in the texinfo format.
+* help strings are typeset within a @table @asis environment
+(which is similar to a latex description environment).
+* If a line starts with  only uppercase words and contains a colon, then
+the text up
+to the colon is taken to be the description-string of an item and the
+text following the colon is taken to be the content of the item.
+* If the description-string of an item matches
+EXAMPLE
+then this item and its content is ignored.
+SEE ALSO
+then the
+content of the item is assumed to be comma-separated words which are
+valid references to other texinfo nodes of the manual. (e.g., all
+procedure and command names are also texinfo nodes).
+KEYWORDS (or, KEYPHRASES)
+then the content of the item is assumed to be a
+semicolon-separated list of phrases which are taken as keys for the
+index of the manual (N.B. the name of a procedure/library is
+automatically added to the index keys).
+PROCEDURES
+then the
+content of the item is assumed to be a summary description of the
+procedures contained in the library. Separate texinfo nodes (subsections
+in printed documents) are
+only created out of the help strings of such procedures which
+appear in the summary description of a library.
+LIBRARY
+then the content of the item is assumed to be a one-line description of
+a library. If this one-line description consist of only uppercase
+characters, then it is typeset in all lowercase characters in the
+manual (otherwise it is left as is).
+
+* For the content of an item, the following texinfo markup elements
+are recognized (and, their content not further manipulated):
+@*
+to enforce a line-break.
+Example:
+old line @* new line
+
+ ==>
+
+ old line 
+ new line
+
+@ref{...}
+References to other parts of the SINGULAR manual can be set using
+one of the following @ref{node} constructs. Notice that
+node must be the name of a section of the SINGULAR
+manual. In particular, it may be a name of a function, library or library
+procedure.
+
+@xref{node}
+for a reference to the node node at the beginning of a sentence.
+@ref{node}
+for a reference to the node node at the end of a sentence.
+@pxref{node}
+for a reference to the node node within parenthesis.
+
+Example:
+@xref{Tropical Storms}, for more info.
+
+==>*Note Hurricanes::, for more info.
+
+==>See Section 3.1 [Hurricanes], page 24, for more info.
+
+For more information, see @ref{Hurricanes}.
+
+==>For more information, see *Note Hurricanes::.
+
+==>For more information, see Section 3.1 [Hurricanes], page 24.
+
+
+... storms cause flooding (@pxref{Hurricanes}) ...
+
+==>... storms cause flooding (*Note Hurricanes::) ...
+
+==>... storms cause flooding (see Section 3.1 [Hurricanes],
+page 24)
+
+@math{..}
+for typesetting of small (i.e., which do not go over
+multiple lines) mathematical expressions  in LaTeX math-mode
+syntax.
+Example:
+@math{\alpha}
+
+==>
+
+
+
+Note:
+Mathematical expressions inside @math{..} may
+not contain curly parenthesis and the "at" sign, i.e., may not contain
+{,},@.
+
+@code{..}
+for typesetting of small (i.e., which do not go over
+multiple lines) strings in typewriter font.
+Example:
+@code{typewriter font}
+
+==>
+
+typewriter font
+Note:
+The string inside @code{..} may
+not contain curly parenthesis and the "at" sign, i.e., may not contain
+{,},@.
+
+@example
+ ...
+@end example
+for pre-formatted text which is indented and typeset in typewriter
+font.
+Example:
+before example
+@example
+in              example
+notice extra identation and
+escape of special characters like @{,@},@@
+@end example
+after example
+==>
+
+before example
+in                example
+notice extra identation  and
+escape of special characters like {,},@
+after example
+Note:
+The characters {,},@ have to be escaped by an @ sign inside an
+@example environment.
+
+@format
+ ...
+@end format
+for pre-formatted text which is not indented and typeset in normal
+font.
+Example:
+before format
+@format
+in              format
+no extra identation but still
+escape of special characters like @{,@},@@
+@end format
+after format
+==>
+
+before format
+in              format
+no extra identation  but still
+escape of special characters like {,},@
+after format
+Note:
+The characters {,},@ have to be escaped by an @ sign inside an
+@example environment.
+
+
+@texinfo
+ ...
+@end texinfo
+for text which is written in pure texinfo.
+Example:
+@texinfo
+Among others, within a texinfo environment
+one can use the tex environment to typeset
+more complex mathematical like
+@tex
+$i_{1,1} $
+@tex
+@end texinfo
+
+==>
+
+Among others, within a texinfo environment one can use the tex environment
+to typeset more complex mathematical like
+
+
+Furthermore, a line-break is inserted in front of each line
+whose previous line is shorter than 60
+characters and does not contain any of the above described recognized
+texinfo markup elements.
+
+See also template_lib for an examples of the typesetting rules
+explained here.
+
+3.9.4 The help string of a library
+----------------------------------
+
+The help (or, info) string of a library should have the following format:
+
+info="
+LIBRARY: <library_name> <one line description of the content>
+AUTHOR:  <name, and email address of author>
+[SEE ALSO: <comma-separated words of cross references>]
+[KEYWORDS: <semicolon-separated phrases of index keys>]
+PROCEDURES:
+  <procedure1>;     <one line description of the purpose>
+   .
+   .
+  <procedureN>;     <one line description of the purpose>
+";
+Only such procedures should be listed in the PROCEDURE section
+which are not static and which
+have a help and example section.
+
+The purpose of the one line procedure descriptions is not to give a short help
+for the procedure, but to help the user decide what procedure might be
+the right one for the job. Details can then be found in the help section
+of each procedure. Therefore parameters may be omitted or abbreviated if
+necessary. If this description consists of only upper-case characters,
+then it will be typeset in all lowercase characters in the manual.
+
+For more information, see Typesetting of help strings. For an
+example, see template_lib.
+
+
+3.9.5 The help string of procedures
+-----------------------------------
+
+The help string of a procedure should have the following format:
+
+USAGE:    <proc_name>(<parameters>);   <explanation of parameters>
+[CREATE:  <description of created objects which are not returned>]
+RETURN:   <description of the purpose and return value>
+[NOTE:    <particular assumptions or limitations, details>]
+[SEE ALSO: <comma-separated names of related procedures/cross references>]
+[KEYWORDS: <semicolon-separated phrases of index keys>]
+EXAMPLE:  example <proc_name>; shows an example
+
+Further arbitrary items (like THEORY:, or BACKGROUND:) are
+recognized, as well, but should be used diligently.
+
+Remember that help strings are formatted as explained in
+Typesetting of help strings. In particular, descriptions may
+contain the texinfo markup elements @*, @math{..},
+@code{..}, @example, @format, @texinfo to better control their
+typesetting. See msum, mdouble, mtripple for examples.
+
+3.9.6 template_lib
+------------------
+
+First, we show the source-code of a template library:
+////////////////////////////////////////////////////////////////////
+// version string automatically expanded by CVS
+
+version="Id: general.tex,v 1.1 2003/08/08 14:27:06 pertusus Exp $";
+category="Miscellaneous";
+// summary description of the library
+info="
+LIBRARY:   template.lib  A Template for a Singular Library
+AUTHOR:    Olaf Bachmann, email: obachman@mathematik.uni-kl.de
+
+SEE ALSO:  standard_lib, Guidelines for writing a library,
+           Typesetting of help strings
+
+KEYWORDS: library, template.lib; template.lib; library, info string
+
+PROCEDURES:
+  mdouble(int)           return double of int argument
+  mtripple(int)          return three times int argument
+  msum([int,..,int])     sum of int arguments
+";
+////////////////////////////////////////////////////////////////////
+proc mdouble(int i)
+"USAGE:    mdouble(i); i int
+RETURN:   int: i+i
+NOTE:     Help string is in pure ASCII
+          this line starts on a new line since previous line is short
+          mdouble(i): no new line
+SEE ALSO: msum, mtripple, Typesetting of help strings
+KEYWORDS: procedure, ASCII help
+EXAMPLE:  example mdouble; shows an example"
+{
+  return (i + i);
+}
+example
+{ "EXAMPLE:"; echo = 2;
+  mdouble(0);
+  mdouble(-1);
+}
+////////////////////////////////////////////////////////////////////
+proc mtripple(int i)
+"@c we do texinfo here
+@table @asis
+@item @strong{Usage:}
+@code{mtripple(i)}; @code{i} int
+
+@item @strong{Return:}
+int: @math{i+i+i}
+@item @strong{Note:}
+Help is in pure Texinfo
+@*This help string is written in texinfo, which enables you to use,
+among others, the @@math command for mathematical typesetting (like
+@math{\alpha, \beta}).
+@*It also gives more control over the layout, but is, admittingly,
+more cumbersome to write.
+@end table
+@c use @c ref contstuct for references
+@cindex procedure, texinfo help
+@c ref
+@strong{See also:}
+@ref{mdouble}, @ref{msum}, @ref{Typesetting of help strings}
+@c ref
+"
+{
+  return (i + i + i);
+}
+example
+{ "EXAMPLE:"; echo = 2;
+  mtripple(0);
+  mtripple(-1);
+}
+////////////////////////////////////////////////////////////////////
+proc msum(list #)
+"USAGE:  msum([i_1,..,i_n]); @code{i_1,..,i_n} def
+RETURN:  Sum of int arguments
+NOTE:    This help string is written in a mixture of ASCII and texinfo
+         @* Use a @ref constructs for references (like @pxref{mtripple})
+         @* Use @code  for typewriter font (like @code{i_1})
+         @* Use @math  for simple math mode typesetting (like @math{i_1}).
+         @* Note: No parenthesis like } are allowed inside @math and @code
+         @* Use @example for indented preformatted text typeset in typewriter
+         font like
+@example
+         this  --> that
+@end example
+        Use @format  for preformatted text typeset in normal font
+@format
+         this --> that
+@end format
+        Use @texinfo for text in pure texinfo
+@texinfo
+@expansion{}
+@tex
+$i_{1,1}$
+@end tex
+
+@end texinfo
+        Notice that
+        automatic linebreaking         is still in affect (like on this line).
+SEE ALSO: mdouble, mtripple, Typesetting of help strings
+KEYWORDS: procedure, ASCII/Texinfo help
+EXAMPLE: example msum; shows an example"
+{
+  if (size(#) == 0) { return (0);}
+  if (size(#) == 1) { return (#[1]);}
+  int i;
+  def s = #[1];
+  for (i=2; i<=size(#); i++)
+  {
+    s = s + #[i];
+  }
+  return (s);
+}
+example
+{ "EXAMPLE:"; echo = 2;
+  msum();
+  msum(4);
+  msum(1,2,3,4);
+}
+
+After typesetting, the library appears in the document as follows (with
+one subsection for each procedure):
+
+Library:
+template.lib
+Purpose:
+  A Template for a Singular Library
+Author:
+Olaf Bachmann, email: obachman@mathematik.uni-kl.de
+
+
+Procedures:
+* mdouble:: return double of int argument
+* mtripple:: return three times int argument
+* msum:: sum of int arguments
+
+
+3.9.6.1 mdouble
+...............
+Procedure from library template.lib (see template_lib).
+
+Usage:
+mdouble(i); i int
+
+Return:
+int: i+i
+
+Note:
+Help string is in pure ASCII
+
+this line starts on a new line since previous line is short
+mdouble(i): no new line
+
+Example:
+LIB "template.lib";
+mdouble(0);
+==> 0
+mdouble(-1);
+==> -2
+
+
+3.9.6.2 mtripple
+................
+Procedure from library template.lib (see template_lib).
+
+Usage:
+mtripple(i); i int
+
+Return:
+int: 
+
+Note:
+Help is in pure Texinfo
+
+This help string is written in texinfo, which enables you to use,
+among others, the @math command for mathematical typesetting (like
+
+).
+
+It also gives more control over the layout, but is, admittingly,
+more cumbersome to write.
+
+Example:
+LIB "template.lib";
+mtripple(0);
+==> 0
+mtripple(-1);
+==> -3
+
+3.9.6.3 msum
+............
+Procedure from library template.lib (see template_lib).
+
+Usage:
+msum([i_1,..,i_n]); i_1,..,i_n def
+
+Return:
+Sum of int arguments
+
+Note:
+This help string is written in a mixture of ASCII and texinfo
+
+ Use a @ref constructs for references (like see mtripple)
+
+ Use @code for typewriter font (like i_1)
+
+ Use @math for simple math mode typesetting (like 
+).
+
+ Note: No parenthesis like } are allowed inside @math and @code
+
+ Use @example for indented preformatted text typeset in typewriter
+font like
+         this  --> that
+Use @format for preformatted text typeset in normal font
+         this -> that
+Use @texinfo for text in pure texinfo
+
+==>
+
+
+Notice that
+
+automatic linebreaking is still in affect (like on this line).
+
+Example:
+LIB "template.lib";
+msum();
+==> 0
+msum(4);
+==> 4
+msum(1,2,3,4);
+==> 10
+
+
+3.10 Debugging tools
+====================
+
+If SINGULAR does not come back to the prompt while calling a user
+defined procedure, probably a bracket or a " is missing.  The
+easiest way to leave the procedure is to type some brackets or "
+and then <RETURN> .
+
+* Tracing of procedures::
+* Source code debugger::
+* Break points::
+* Printing of data::
+* libparse::
+
+3.10.1 Tracing of procedures
+----------------------------
+Setting the TRACE variable to 1 (resp. 3) results in a listing of
+the called procedures (resp. together with line numbers).
+If TRACE is set to 4, Singular
+displays each line before its interpretation and waits for the <RETURN>
+key being pressed.
+* TRACE var::
+
+Example:
+  proc t1
+  {
+    int i=2;
+    while (i>0)
+    { i=i-1; }
+  }
+  TRACE=3;
+  t1();
+==> 
+==> entering t1 (level 0)
+==> {1}{2}{3}{4}{5}{4}{5}{6}{7}{4}{5}{6}{7}{4}{6}{7}{8}
+==> leaving  t1 (level 0)
+
+3.10.2 Source code debugger
+---------------------------
+
+
+The source code debugger (sdb) is an experimental feature, it's
+interface may change in future versions of Singular.  
+To enable the
+use of the source code debugger SINGULAR has to be started with the
+option -d or --sdb (see Command line options).
+
+
+sdb commands
+............
+Each sdb command consist of one character which may be followed by
+a parameter.
+b
+print backtrace of calling stack
+c
+continue
+e
+edit the current procedure and reload it (current call will be aborted)
+
+ only available on UNIX systems
+h,?
+display help screen
+n
+execute current line, sdb break at next line
+p <identifier>
+display type and value of the variable given by <identifier>
+Q
+quit this Singular session
+q <flags>
+quit debugger, set debugger flags(0,1,2)
+
+ 0: continue, disable the debugger
+
+ 1: continue
+
+ 2: throw an error, return to toplevel
+
+
+Syntactical errors in procedures
+................................
+If SINGULAR was started with the command line option -d or
+--sdb a syntactical error in a procedure will start the
+source code debugger instead of returning to the top level with an
+error message. The commands q 1 and q 2 are equivalent in this
+case.
+
+SDB breakpoints in procedures
+.............................
+Up to seven SDB breakpoints can be set.
+To set a breakpoint at a procedure use
+breakpoint. (See breakpoint).
+
+These breakpoints can be cleared with the command d breakpoint_no
+from within the debugger or with
+breakpoint( proc_name ,-1);.
+
+
+3.10.3 Break points
+-------------------
+A break point can be put into a proc by inserting the command ~.
+If Singular reaches a break point it asks for lines of commands
+(line-length must be less than 80 characters)
+from the user. It returns to normal execution if given an empty line.
+See ~.
+
+
+Example:
+proc t
+{
+  int i=2;
+  ~;
+  return(i+1);
+}
+t();
+==> -- break point in t --
+==> -- 0: called    from STDIN --
+i;               // here local variables of the procedure can be accessed
+==> 2
+==> -- break point in t --
+
+==> 3
+
+
+
+3.10.4 Printing of data
+-----------------------
+The procedure dbprint is useful for optional output of data:
+it takes 2 arguments and prints the second argument, if the first
+argument is positive; it does nothing otherwise.
+* dbprint::
+* voice::
+
+3.10.5 libparse
+---------------
+
+libparse is a stand-alone program contained in the SINGULAR
+distribution (at the place where the SINGULAR executable program
+resides), which cannot be called inside of SINGULAR. It is a
+debugging tool for libraries which performs exactly the same checks as
+the LIB command in SINGULAR, but generates more output during
+parsing.  libparse is useful if an error
+occurs while loading the library, but the whole block around the line
+specified seems to be correct. In these situations the real error might
+be hundreds of lines earlier in the library.
+
+Usage:
+
+libparse [options] singular-library
+
+Options:
+-d Debuglevel
+increases the amount of output during parsing, where Debuglevel is an integer
+between 0 and 4. Default is 0.
+-s
+turns on reporting about violations of unenforced syntax rules
+
+The following syntax checks are performed in any case:
+* counting of pairs of brackets {,} , [,] and (,)
+    (number of { has to match number of }, same for [,] and (,) ).
+* counting of "
+    ( number of " must be even ).
+* general library syntax
+    ( only LIB, static, proc (with parameters, help, body and example)
+and comments, i.e // and /* ... */, are allowed).
+Its output lists all procedures that have been parsed successfully:
+
+$ libparse sample.lib
+Checking library 'sample.lib'
+  Library         function      line,start-eod line,body-eob  line,example-eoe
+Version:0.0.0;
+g Sample               tab line    9,  149-165   13,  271-298   14,  300-402
+l Sample      internal_tab line   24,  450-475   25,  476-496    0,    0-496
+
+where the following abbreviations are used:
+* g: global procedure (default)
+* l: static procedure, i.e., local to the library.
+
+each of the following is the position of the byte in the library.
+* start: begin of 'proc'
+* eod: end of parameters
+* body: start of procedure body '{'
+* eob:  end of procedure body '}'
+* example: position of 'example'
+* eoe: end of example '}'
+
+Hence in the above example, the first procedure of the library
+sample.lib is user-accessible and its name is tab. The procedure
+starts in line 9, at character 149. The head of the procedure
+ends at character 165, the body starts in line 13 at character 271
+and ends at character 298. The example section extends from line 14
+character 300 to character 402.
+
+The following example shows the result of a missing close-bracket } in
+line 26 of the library sample.lib.
+
+LIB "sample.lib";
+==>    ? Library sample.lib: ERROR occurred: in line 26, 497.
+==>    ? missing close bracket '}' at end of library in line 26.
+==>    ? Cannot load library,... aborting.
+==>    ? error occurred in STDIN line 1: `LIB "sample.lib";`
+

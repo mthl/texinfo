@@ -1,0 +1,25 @@
+16.2 Conditional Not Commands
+=============================
+
+You can specify text to be included in any output format other
+than some given one with the @ifnot... commands:
+@ifnothtml ... @end ifnothtml
+@ifnotinfo ... @end ifnotinfo
+@ifnotplaintext ... @end ifnotplaintext
+@ifnottex ... @end ifnottex
+(The @ifnot... command and the @end command must
+appear on lines by themselves in your actual source file.)
+
+If the output file is not being made for the given format, the
+region is included.  Otherwise, it is ignored.
+
+With one exception (for historical compatibility): @ifnotinfo
+text is omitted for both Info and plain text output, not just Info.  To
+specify text which appears only in Info and not in plain text, use
+@ifnotplaintext, like this:
+
+The regions delimited by these commands are ordinary Texinfo source as
+with @iftex, not raw formatter source as with @tex
+(see Raw Formatter Commands).
+
+

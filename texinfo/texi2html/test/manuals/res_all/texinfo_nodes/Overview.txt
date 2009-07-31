@@ -1,0 +1,23 @@
+1 Overview of Texinfo
+*********************
+
+Texinfo(1)  is a documentation system that uses a single
+source file to produce both online information and printed output.  This
+means that instead of writing two different documents, one for the
+online information and the other for a printed work, you need write only
+one document.  Therefore, when the work is revised, you need revise only
+that one document.
+
+* Reporting Bugs::              Submitting effective bug reports.
+* Using Texinfo::               Create printed or online output.
+* Info Files::                  What is an Info file?
+* Printed Books::               Characteristics of a printed book or manual.
+* Formatting Commands::         @-commands are used for formatting.
+* Conventions::                 General rules for writing a Texinfo file.
+* Comments::                    Writing comments and ignored text in general.
+* Minimum::                     What a Texinfo file must have.
+* Six Parts::                   Usually, a Texinfo file has six parts.
+* Short Sample::                A short sample Texinfo file.
+* History::                     Acknowledgements, contributors and genesis.
+
+

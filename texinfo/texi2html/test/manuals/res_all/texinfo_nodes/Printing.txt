@@ -1,0 +1,53 @@
+2.6 Formatting and Printing
+===========================
+
+Typesetting and printing a Texinfo file is a multi-step process in which
+you first create a file for printing (called a DVI file), and then
+print the file.  Optionally, you may also create indices.  To do this,
+you must run the texindex command after first running the
+tex typesetting command; and then you must run the tex
+command again.  Or else run the texi2dvi command which
+automatically creates indices as needed (see Format with texi2dvi).
+
+Often, when you are writing a document, you want to typeset and print
+only part of a file to see what it will look like.  You can use the
+texinfo-tex-region and related commands for this purpose.  Use
+the texinfo-tex-buffer command to format all of a
+buffer.
+
+C-c C-t C-b
+M-x texinfo-tex-buffer
+Run texi2dvi on the buffer.  In addition to running TeX on the
+buffer, this command automatically creates or updates indices as
+needed.
+
+C-c C-t C-r
+M-x texinfo-tex-region
+Run TeX on the region.
+
+C-c C-t C-i
+M-x texinfo-texindex
+Run texindex to sort the indices of a Texinfo file formatted with
+texinfo-tex-region.  The texinfo-tex-region command does
+not run texindex automatically; it only runs the tex
+typesetting command.  You must run the texinfo-tex-region command
+a second time after sorting the raw index files with the texindex
+command.  (Usually, you do not format an index when you format a region,
+only when you format a buffer.  Now that the texi2dvi command
+exists, there is little or no need for this command.)
+
+C-c C-t C-p
+M-x texinfo-tex-print
+Print the file (or the part of the file) previously formatted with
+texinfo-tex-buffer or texinfo-tex-region.
+
+For texinfo-tex-region or texinfo-tex-buffer to work, the
+file must start with a `\input texinfo' line and must
+include an @settitle line.  The file must end with @bye
+on a line by itself.  (When you use texinfo-tex-region, you must
+surround the @settitle line with start-of-header and
+end-of-header lines.)
+
+See Hardcopy, for a description of the other TeX related
+commands, such as tex-show-print-queue.
+

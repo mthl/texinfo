@@ -1,0 +1,30 @@
+This is kbd.info, produced by makeinfo version 4.13 from kbd.texi.
+
+
+File: kbd.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+kbd: `in kbd'.
+
+   kbd in code: `in first `in nested kbd''.
+
+   kbd in kbd: `in top kbd `in nested kbd''.
+
+   kbd in @example:
+
+     in example
+     `in example in kbd'.
+
+   kbd in @format:
+
+in format
+`in format in kbd'.
+
+
+
+Tag Table:
+Node: Top68
+
+End Tag Table

@@ -1,0 +1,66 @@
+table
+-----
+Using the @table Command
+------------------------
+
+Use the @table command to produce two-column tables.
+
+Write the @table command at the beginning of a line and follow
+it on the same line with an argument that is a Texinfo "indicating"
+command such as @code, @samp, @var, or
+@kbd (see Indicating).  Although these commands are usually
+followed by arguments in braces, in this case you use the command name
+without an argument because @item will supply the argument.
+This command will be applied to the text that goes into the first column
+of each item and determines how it will be highlighted.  For example,
+@code will cause the text in the first column to be highlighted
+with an @code command.  (We recommend @code for
+@table's of command-line options.)
+
+You may also choose to use the @asis command as an argument to
+@table.  @asis is a command that does nothing; if you
+use this command after @table, TeX and the Info formatting
+commands output the first column entries without added highlighting
+("as is").
+
+(The @table command may work with other commands besides those
+listed here.  However, you can only use commands that normally take
+arguments in braces.)
+
+Begin each table entry with an @item command at the beginning
+of a line.  Write the first column text on the same line as the
+@item command.  Write the second column text on the line
+following the @item line and on subsequent lines.  (You do not
+need to type anything for an empty second column entry.)  You may
+write as many lines of supporting text as you wish, even several
+paragraphs.  But only text on the same line as the @item will
+be placed in the first column, including any footnote.
+
+Normally, you should put a blank line before an @item line.
+This puts a blank like in the Info file.  Except when the entries are
+very brief, a blank line looks better.
+
+The following table, for example, highlights the text in the first
+column with an @samp command:
+
+@table @samp
+@item foo
+This is the text for
+@samp{foo}.
+
+@item bar
+Text for @samp{bar}.
+@end table
+
+This produces:
+
+`foo'
+This is the text for
+`foo'.
+`bar'
+Text for `bar'.
+
+If you want to list two or more named items with a single block of
+text, use the @itemx command.  (See @itemx.)
+
+

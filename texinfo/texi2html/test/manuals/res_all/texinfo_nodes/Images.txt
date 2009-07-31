@@ -1,0 +1,82 @@
+13.11 Inserting Images
+======================
+
+
+You can insert an image given in an external file with the
+@image command:
+
+@image{filename, [width], [height], [alttext], [extension]}
+
+The filename argument is mandatory, and must not have an
+extension, because the different processors support different formats:
+* TeX reads the file `filename.eps' (Encapsulated PostScript
+format).
+* PDFTeX reads `filename.pdf' (Adobe's Portable Document Format).
+* makeinfo uses `filename.txt' verbatim for
+Info output (more or less as if it was an @example).
+* makeinfo
+uses the optional fifth argument to @image for the extension if
+you supply it.  For example:
+
+@image{foo,,,,xpm}
+
+will cause `makeinfo --html' to try `foo.xpm'.
+
+If you do not supply the optional fifth argument, `makeinfo
+---html' first tries `filename.png'; if that does not exist,
+it tries `filename.jpg'.  If that does not exist either, it
+complains.  (We cannot support GIF format directly due to software
+patents.)
+
+The optional width and height arguments specify the size to
+scale the image to (they are ignored for Info output).  If neither is
+specified, the image is presented in its natural size (given in the
+file); if only one is specified, the other is scaled proportionately;
+and if both are specified, both are respected, thus possibly distorting
+the original image by changing its aspect ratio.
+
+The width and height may be specified using any valid TeX
+dimension, namely:
+
+pt
+point (72.27pt = 1in)
+pc
+pica (1pc = 12pt)
+bp
+big point (72bp = 1in)
+in
+inch
+cm
+centimeter (2.54cm = 1in)
+mm
+millimeter (10mm = 1cm)
+dd
+dido^t point (1157dd = 1238pt)
+cc
+cicero (1cc = 12dd)
+sp
+scaled point (65536sp = 1pt)
+
+For example, the following will scale a file `ridt.eps' to one
+inch vertically, with the width scaled proportionately:
+
+@image{ridt,,1in}
+
+For @image to work with TeX, the file `epsf.tex' must be
+installed somewhere that TeX can find it.  (The standard location is
+`texmf/tex/generic/dvips/epsf.tex', where texmf is a
+root of your TeX directory tree.)  This file is included in the
+Texinfo distribution and is also available from
+<ftp://tug.org/tex/epsf.tex>, among other places.
+
+@image can be used within a line as well as for displayed
+figures.  Therefore, if you intend it to be displayed, be sure to leave
+a blank line before the command, or the output will run into the
+preceding text.
+
+When producing html, makeinfo sets the alt attribute for
+inline images to the optional fourth argument to @image, if
+supplied.  If not supplied, makeinfo uses the full file name of
+the image being displayed.
+
+

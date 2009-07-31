@@ -1,0 +1,64 @@
+F.3 Using texinfo-show-structure
+================================
+
+It is not always easy to keep track of the nodes, chapters, sections, and
+subsections of a Texinfo file.  This is especially true if you are revising
+or adding to a Texinfo file that someone else has written.
+
+In GNU Emacs, in Texinfo mode, the texinfo-show-structure
+command lists all the lines that begin with the @-commands that
+specify the structure: @chapter, @section,
+@appendix, and so on.  With an argument (C-u
+as prefix argument, if interactive),
+the command also shows the @node lines.  The
+texinfo-show-structure command is bound to C-c C-s in
+Texinfo mode, by default.
+
+The lines are displayed in a buffer called the `*Occur*' buffer,
+indented by hierarchical level.  For example, here is a part of what was
+produced by running texinfo-show-structure on this manual:
+
+ Lines matching "^@\\(chapter \\|sect\\|subs\\|subh\\|
+ unnum\\|major\\|chapheading \\|heading \\|appendix\\)"
+ in buffer texinfo.texi.
+ ...
+ 4177:@chapter Nodes
+ 4198:    @heading Two Paths
+ 4231:    @section Node and Menu Illustration
+ 4337:    @section The @code{@@node} Command
+ 4393:        @subheading Choosing Node and Pointer Names
+ 4417:        @subsection How to Write an @code{@@node} Line
+ 4469:        @subsection @code{@@node} Line Tips
+ ...
+
+This says that lines 4337, 4393, and 4417 of `texinfo.texi' begin
+with the @section, @subheading, and @subsection
+commands respectively.  If you move your cursor into the `*Occur*'
+window, you can position the cursor over one of the lines and use the
+C-c C-c command (occur-mode-goto-occurrence), to jump to
+the corresponding spot in the Texinfo file.  See (emacs)Other Repeating Search section `Using Occur' in The GNU Emacs Manual, for more
+information about occur-mode-goto-occurrence.
+
+The first line in the `*Occur*' window describes the regular
+expression specified by texinfo-heading-pattern.  This regular
+expression is the pattern that texinfo-show-structure looks for.
+See (emacs)Regexps section `Using Regular Expressions' in The GNU Emacs Manual,
+for more information.
+
+When you invoke the texinfo-show-structure command, Emacs will
+display the structure of the whole buffer.  If you want to see the
+structure of just a part of the buffer, of one chapter, for example,
+use the C-x n n (narrow-to-region) command to mark the
+region.  (See (emacs)Narrowing section `Narrowing' in The GNU Emacs Manual.)  This is
+how the example used above was generated.  (To see the whole buffer
+again, use C-x n w (widen).)
+
+If you call texinfo-show-structure with a prefix argument by
+typing C-u C-c C-s, it will list lines beginning with
+@node as well as the lines beginning with the @-sign commands
+for @chapter, @section, and the like.
+
+You can remind yourself of the structure of a Texinfo file by looking at
+the list in the `*Occur*' window; and if you have mis-named a node
+or left out a section, you can correct the mistake.
+

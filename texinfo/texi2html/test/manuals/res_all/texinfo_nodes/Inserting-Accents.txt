@@ -1,0 +1,43 @@
+13.3 Inserting Accents
+======================
+
+
+Here is a table with the commands Texinfo provides for inserting
+floating accents.  The commands with non-alphabetic names do not take
+braces around their argument (which is taken to be the next character).
+(Exception: @, does take braces around its argument.)
+This is so as to make the source as convenient to type and read as
+possible, since accented characters are very common in some languages.
+
+ Command Output What
+ @"o o" umlaut accent
+ @'o o' acute accent
+ @,{c} c, cedilla accent
+ @=o o= macron/overbar accent
+ @^o o^ circumflex accent
+ @`o o` grave accent
+ @~o o~ tilde accent
+ @dotaccent{o} o. overdot accent
+ @H{o} o'' long Hungarian umlaut
+ @ringaccent{o} o* ring accent
+ @tieaccent{oo} oo[ tie-after accent
+ @u{o} o( breve accent
+ @ubaraccent{o} o_ underbar accent
+ @udotaccent{o} .o underdot accent
+ @v{o} o< hacek or check accent
+
+This table lists the Texinfo commands for inserting other characters
+commonly used in languages other than English.
+
+ @exclamdown{} ! upside-down !
+ @questiondown{} ? upside-down ?
+ @aa{},@AA{} aa,AA a,A with circle
+ @ae{},@AE{} ae,AE ae,AE ligatures
+ @dotless{i} i dotless i
+ @dotless{j} j dotless j
+ @l{},@L{} /l,/L suppressed-L,l
+ @o{},@O{} /o,/O O,o with slash
+ @oe{},@OE{} oe,OE oe,OE ligatures
+ @ss{} ss es-zet or sharp S
+
+

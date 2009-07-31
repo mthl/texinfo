@@ -1,0 +1,23 @@
+19.12 Printing on A4 Paper
+==========================
+
+You can tell TeX to format a document for printing on European size
+A4 paper (or A5) with the @afourpaper (or @afivepaper)
+command.  Write the command on a line by itself near the beginning of
+the Texinfo file, before the title page.  For example, this is how you
+would write the header for this manual:
+
+\input texinfo    @c -*-texinfo-*-
+@c %**start of header
+@setfilename texinfo
+@settitle Texinfo
+@afourpaper
+@c %**end of header
+
+See Format with texi2dvi, and Preparing for TeX, for other ways to format for different paper sizes that do not
+require changing the source file.
+
+You may or may not prefer the formatting that results from the command
+@afourlatex.  There's also @afourwide for A4 paper in
+wide format.
+

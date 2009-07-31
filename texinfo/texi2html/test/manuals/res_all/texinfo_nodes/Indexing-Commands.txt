@@ -1,0 +1,86 @@
+12.3 Defining the Entries of an Index
+=====================================
+
+The data to make an index come from many individual indexing commands
+scattered throughout the Texinfo source file.  Each command says to add
+one entry to a particular index; after formatting, the index will give
+the current page number or node name as the reference.
+
+An index entry consists of an indexing command at the beginning of a
+line followed, on the rest of the line, by the entry.
+
+For example, this section begins with the following five entries for
+the concept index:
+
+@cindex Defining indexing entries
+@cindex Index entries
+@cindex Entries for an index
+@cindex Specifying index entries
+@cindex Creating index entries
+
+Each predefined index has its own indexing command--@cindex
+for the concept index, @findex for the function index, and so
+on.
+
+Concept index entries consist of text.  The best way to write an index
+is to choose entries that are terse yet clear.  If you can do this,
+the index often looks better if the entries are not capitalized, but
+written just as they would appear in the middle of a sentence.
+(Capitalize proper names and acronyms that always call for upper case
+letters.)  This is the case convention we use in most GNU manuals'
+indices.
+
+If you don't see how to make an entry terse yet clear, make it longer
+and clear--not terse and confusing.  If many of the entries are several
+words long, the index may look better if you use a different convention:
+to capitalize the first word of each entry.  But do not capitalize a
+case-sensitive name such as a C or Lisp function name or a shell
+command; that would be a spelling error.
+
+Whichever case convention you use, please use it consistently!
+
+Entries in indices other than the concept index are symbol names in
+programming languages, or program names; these names are usually
+case-sensitive, so use upper and lower case as required for them.
+
+By default, entries for a concept index are printed in a small roman
+font and entries for the other indices are printed in a small
+@code font.  You may change the way part of an entry is
+printed with the usual Texinfo commands, such as @file for
+file names and @emph for emphasis (see Marking Text).
+
+The six indexing commands for predefined indices are:
+
+@cindex concept
+Make an entry in the concept index for concept.
+
+@findex function
+Make an entry in the function index for function.
+
+@vindex variable
+Make an entry in the variable index for variable.
+
+@kindex keystroke
+Make an entry in the key index for keystroke.
+
+@pindex program
+Make an entry in the program index for program.
+
+@tindex data type
+Make an entry in the data type index for data type.
+
+Caution: Do not use a colon in an index entry.  In Info, a
+colon separates the menu entry name from the node name, so a colon in
+the entry itself confuses Info.  See The Parts of a Menu, for more information about the structure of a menu entry.
+
+You are not actually required to use the predefined indices for their
+canonical purposes.  For example, suppose you wish to index some C
+preprocessor macros.  You could put them in the function index along
+with actual functions, just by writing @findex commands for
+them; then, when you print the "Function Index" as an unnumbered
+chapter, you could give it the title `Function and Macro Index' and
+all will be consistent for the reader.  Or you could put the macros in
+with the data types by writing @tindex commands for them, and
+give that index a suitable title so the reader will understand.
+(See Printing Indices & Menus.)
+

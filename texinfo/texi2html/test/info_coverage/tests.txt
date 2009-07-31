@@ -48,3 +48,5 @@ itemize_in_example itemize_in_example.texi
 cindex_at_end_node cindex_at_end_node.texi
 html_expanded html_expanded.texi --ifhtml
 headings_in_footnote headings_in_footnote.texi
+code code.texi
+kbd kbd.texi

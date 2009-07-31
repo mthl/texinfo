@@ -1,0 +1,26 @@
+19.15 PDF Output
+================
+
+You can generate a PDF output file from Texinfo source by using the
+pdftex program to process your file instead of plain
+tex.  Just run `pdftex foo.texi' instead of `tex
+foo.texi', or give the `--pdf' option to texi2dvi.
+
+PDF stands for `Portable Document Format'. It was invented by
+Adobe Systems some years ago for document interchange, based on their
+PostScript language.  A PDF reader <http://www.foolabs.com/xpdf/>
+for the X window system is freely available, as is the
+definition of the file format <http://partners.adobe.com/asn/developer/technotes/>.  Since PDF is a binary format, there are no
+`@ifpdf' or `@pdf' commands as with the other output
+formats.
+
+Despite the `portable' in the name, PDF files are nowhere near as
+portable in practice as the plain ASCII formats (Info, HTML) that
+Texinfo supports (DVI portability is arguable).  They also tend to be
+much larger and do not support the bitmap fonts used by TeX (by
+default) very well.  Nevertheless, a PDF file does preserve an actual
+printed document on a screen as faithfully as possible, so it has its place.
+
+PDF support in Texinfo is fairly rudimentary.
+
+

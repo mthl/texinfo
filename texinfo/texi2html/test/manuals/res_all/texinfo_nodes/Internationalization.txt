@@ -1,0 +1,13 @@
+17 Internationalization
+***********************
+
+Texinfo has some support for writing in languages other than English,
+although this area still needs considerable work.
+
+For a list of the various accented and special characters Texinfo
+supports, see Inserting Accents.
+
+* documentlanguage::            Declaring the current language.
+* documentencoding::            Declaring the input encoding.
+
+

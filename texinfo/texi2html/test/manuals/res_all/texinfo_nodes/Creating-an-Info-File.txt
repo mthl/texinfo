@@ -1,0 +1,25 @@
+20.1 Creating an Info File
+==========================
+
+makeinfo is a program that converts a Texinfo file into an Info
+file, HTML file, or plain text.  texinfo-format-region and
+texinfo-format-buffer are GNU Emacs functions that convert
+Texinfo to Info.
+
+For information on installing the Info file in the Info system,
+see Installing an Info File.
+
+* makeinfo advantages::         makeinfo provides better error checking.
+* Invoking makeinfo::           How to run makeinfo from a shell.
+* makeinfo options::            Specify fill-column and other options.
+* Pointer Validation::          How to check that pointers point somewhere.
+* makeinfo in Emacs::           How to run makeinfo from Emacs.
+* texinfo-format commands::     Two Info formatting commands written
+                                  in Emacs Lisp are an alternative
+                                  to makeinfo.
+* Batch Formatting::            How to format for Info in Emacs Batch mode.
+* Tag and Split Files::         How tagged and split files help Info
+                                  to run better.
+* makeinfo html::               Generating HTML output.
+
+

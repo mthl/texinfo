@@ -1,0 +1,16 @@
+Element
+*******
+
+Code: in code.
+
+Code in code: in first in nested.
+
+Code in @example:
+
+in example
+in example in code.
+
+In format
+in format
+in format in code.
+

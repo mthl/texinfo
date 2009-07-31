@@ -1,0 +1,22 @@
+3.5.1 Top Node Example
+----------------------
+
+
+Here is an example of a Top node.
+
+@ifnottex
+@node Top
+@top Sample Title
+
+@insertcopying
+
+Additional general information.
+
+@menu
+* First Chapter::
+* Second Chapter::
+...
+* Index::
+@end menu
+
+

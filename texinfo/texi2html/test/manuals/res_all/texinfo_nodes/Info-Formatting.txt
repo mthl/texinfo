@@ -1,0 +1,43 @@
+2.5 Formatting for Info
+=======================
+
+Texinfo mode provides several commands for formatting part or all of a
+Texinfo file for Info.  Often, when you are writing a document, you
+want to format only part of a file--that is, a region.
+
+You can use either the texinfo-format-region or the
+makeinfo-region command to format a region:
+
+C-c C-e C-r
+M-x texinfo-format-region
+C-c C-m C-r
+M-x makeinfo-region
+Format the current region for Info.
+
+You can use either the texinfo-format-buffer or the
+makeinfo-buffer command to format a whole buffer:
+
+C-c C-e C-b
+M-x texinfo-format-buffer
+C-c C-m C-b
+M-x makeinfo-buffer
+Format the current buffer for Info.
+
+For example, after writing a Texinfo file, you can type the following:
+
+C-u C-c C-u m
+or
+C-u M-x texinfo-master-menu
+
+This updates all the nodes and menus.  Then type the following to create
+an Info file:
+
+C-c C-m C-b
+or
+M-x makeinfo-buffer
+
+For TeX or the Info formatting commands to work, the file must
+include a line that has @setfilename in its header.
+
+See Creating an Info File, for details about Info formatting.
+

@@ -1,0 +1,13 @@
+13.5 Inserting TeX and the Copyright Symbol
+===========================================
+
+The logo `TeX' is typeset in a special fashion and it needs an
+@-command.  The copyright symbol, `(C)', is also special.
+Each of these commands is followed by a pair of braces, `{}',
+without any whitespace between the name of the command and the
+braces.
+
+* tex::                         How to insert the TeX logo.
+* copyright symbol::            How to use @copyright{}.
+
+

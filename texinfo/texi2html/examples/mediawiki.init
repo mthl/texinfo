@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.15 2009-05-17 15:35:16 pertusus Exp $
+# $Id: mediawiki.init,v 1.16 2009-07-31 10:16:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -24,6 +24,8 @@
 # values set in these files overwrite values set by the command-line
 # options appearing before -init-file and might still be overwritten by
 # command-line arguments following the -init-file option.
+
+html_default_load();
 
 # -number | -nonumber
 # if this is set the sections are numbered, and section names and numbers 
@@ -537,7 +539,10 @@ sub mediawiki_element_file_name
     }
     else
     {
-	$file = "$docu_name" . ($type ? "" : ": " . $element->{'texi'});
+	my $name = main::substitute_line($element->{'texi'}, 'file name', {'remove_texi' => 1}, $element->{'line_nr'});
+	$name =~ s,/,%47,g;
+	$name =~ s,\\,%92,g;
+	$file = "$docu_name" . ($type ? "" : ": " . $name);
 	$doc_nr_to_file{$element->{'doc_nr'}} = $file;
     }
     return $file;

@@ -13,7 +13,6 @@ command=texi2html.pl
 diffs_dir=diffs
 
 logfile=tests.log
-stdout_file=tests.out
 
 commands='texi2html.pl: makeinfo.pl:_info texi2all.pl:_all'
 
@@ -131,7 +130,6 @@ else
 fi
 
 echo "base_result_dir $base_results_dir, driving_file $driving_file" > $logfile
-echo "" > $stdout_file
 
 return_code=0
 
@@ -198,11 +196,10 @@ do
       dir=$current
       [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
       mkdir "${outdir}$dir"
+      remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir" >> $logfile
-      echo >> $stdout_file
-      echo "  ----> $command $dir" >> $stdout_file
-      echo "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \

@@ -40,7 +40,6 @@ h1 titlefont (@titlefont),
   $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT, $INLINE_INSERTCOPYING
   $OVERVIEW_LINK_TO_TOC
   $Texi2HTML::THISDOC{'htmlxref'}
-  $Texi2HTML::THISDOC{'current_lang'}
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
   $Texi2HTML::THISDOC{'do_about'}
@@ -264,6 +263,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
   also informalfigure in @float
 
+  also use informaltable or table, for multitable?
+
 * to solve above issue, the definition arg formatted with simple_format 
   should alo be passed down
 
@@ -348,6 +349,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   means distinguish between preformatted, code_style and normal text 
   when formatting @kbd. Should this distinction hold for every command?
   Also it should be dynamical, ie in pass 2 too (FIXME in the code).
+  In info it is right to have it always in quotes.
 
 * @image in info, remove last end of line in file.txt
 
@@ -439,12 +441,11 @@ overridden by a command line option.  The possible values are:
 * footnote before any node should trigger an error in info:
   ../../before_node_and_section.texi:8: Footnote defined without parent node.
 
-* error messages different from makeinfo
-@documentlanguage unknown
-@documentlanguage another_UNKNOWN
-../../unknown_language.texi:6: warning: no default territory known for language `unknown'.
-../../unknown_language.texi:6: warning: unknown is not a valid ISO 639 language code.
-../../unknown_language.texi:13: warning: another is not a valid ISO 639 language code.
+* missing error messages
+../..//rendition.texi:59: warning: @allow-recursion is deprecated; please use @rmacro instead.
+../..//rendition.texi:60: warning: @quote-arg is deprecated; arguments are quoted by default.
+
+../..//d2t_singular/brnoeth_lib.tex:1097: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that.
 
 * in novalidate.texi, fifth node argument should trigger an error
   @node other node in menu before top, node not existing,,,first
@@ -486,6 +487,12 @@ overridden by a command line option.  The possible values are:
   directory or both?
 
 * error messages
+@documentlanguage unknown
+@documentlanguage another_UNKNOWN
+../../unknown_language.texi:6: warning: no default territory known for language `unknown'.
+../../unknown_language.texi:6: warning: unknown is not a valid ISO 639 language code.
+../../unknown_language.texi:13: warning: another is not a valid ISO 639 language code.
+
   ** `second node' doesn't appear in menus
   warning: unreferenced node `second node'.
 

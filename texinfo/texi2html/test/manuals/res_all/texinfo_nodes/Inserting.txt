@@ -1,0 +1,118 @@
+2.2 Inserting Frequently Used Commands
+======================================
+
+Texinfo mode provides commands to insert various frequently used
+@-commands into the buffer.  You can use these commands to save
+keystrokes.
+
+The insert commands are invoked by typing C-c twice and then the
+first letter of the @-command:
+
+C-c C-c c
+M-x texinfo-insert-@code
+Insert @code{} and put the
+cursor between the braces.
+
+C-c C-c d
+M-x texinfo-insert-@dfn
+Insert @dfn{} and put the
+cursor between the braces.
+
+C-c C-c e
+M-x texinfo-insert-@end
+Insert @end and attempt to insert the correct following word,
+such as `example' or `table'.  (This command does not handle
+nested lists correctly, but inserts the word appropriate to the
+immediately preceding list.)
+
+C-c C-c i
+M-x texinfo-insert-@item
+Insert @item and put the
+cursor at the beginning of the next line.
+
+C-c C-c k
+M-x texinfo-insert-@kbd
+Insert @kbd{} and put the
+cursor between the braces.
+
+C-c C-c n
+M-x texinfo-insert-@node
+Insert @node and a comment line
+listing the sequence for the `Next',
+`Previous', and `Up' nodes.
+Leave point after the @node.
+
+C-c C-c o
+M-x texinfo-insert-@noindent
+Insert @noindent and put the
+cursor at the beginning of the next line.
+
+C-c C-c s
+M-x texinfo-insert-@samp
+Insert @samp{} and put the
+cursor between the braces.
+
+C-c C-c t
+M-x texinfo-insert-@table
+Insert @table followed by a <SPC>
+and leave the cursor after the <SPC>.
+
+C-c C-c v
+M-x texinfo-insert-@var
+Insert @var{} and put the
+cursor between the braces.
+
+C-c C-c x
+M-x texinfo-insert-@example
+Insert @example and put the
+cursor at the beginning of the next line.
+
+C-c C-c {
+M-x texinfo-insert-braces
+Insert {} and put the cursor between the braces.
+
+C-c C-c }
+C-c C-c ]
+M-x up-list
+Move from between a pair of braces forward past the closing brace.
+Typing C-c C-c ] is easier than typing C-c C-c }, which
+is, however, more mnemonic; hence the two keybindings.  (Also, you can
+move out from between braces by typing C-f.)
+
+To put a command such as @code{...} around an
+existing word, position the cursor in front of the word and type
+C-u 1 C-c C-c c.  This makes it easy to edit existing plain text.
+The value of the prefix argument tells Emacs how many words following
+point to include between braces--`1' for one word, `2' for
+two words, and so on.  Use a negative argument to enclose the previous
+word or words.  If you do not specify a prefix argument, Emacs inserts
+the @-command string and positions the cursor between the braces.  This
+feature works only for those @-commands that operate on a word or words
+within one line, such as @kbd and @var.
+
+This set of insert commands was created after analyzing the frequency
+with which different @-commands are used in the GNU Emacs
+Manual and the GDB Manual.  If you wish to add your own insert
+commands, you can bind a keyboard macro to a key, use abbreviations,
+or extend the code in `texinfo.el'.
+
+C-c C-c C-d (texinfo-start-menu-description) is an insert
+command that works differently from the other insert commands.  It
+inserts a node's section or chapter title in the space for the
+description in a menu entry line.  (A menu entry has three parts, the
+entry name, the node name, and the description.  Only the node name is
+required, but a description helps explain what the node is about.
+See The Parts of a Menu.)
+
+To use texinfo-start-menu-description, position point in a menu
+entry line and type C-c C-c C-d.  The command looks for and copies
+the title that goes with the node name, and inserts the title as a
+description; it positions point at beginning of the inserted text so you
+can edit it.  The function does not insert the title if the menu entry
+line already contains a description.
+
+This command is only an aid to writing descriptions; it does not do the
+whole job.  You must edit the inserted text since a title tends to use
+the same words as a node name but a useful description uses different
+words.
+

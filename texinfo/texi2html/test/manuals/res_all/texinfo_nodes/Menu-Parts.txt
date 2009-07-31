@@ -1,0 +1,31 @@
+7.2 The Parts of a Menu
+=======================
+
+A menu entry has three parts, only the second of which is required:
+
+1. The menu entry name (optional).
+
+2. The name of the node (required).
+
+3. A description of the item (optional).
+
+The template for a menu entry looks like this:
+
+* menu-entry-name: node-name.   description
+
+Follow the menu entry name with a single colon and follow the node name
+with tab, comma, period, or newline.
+
+In Info, a user selects a node with the m (Info-menu)
+command.  The menu entry name is what the user types after the m
+command.
+
+The third part of a menu entry is a descriptive phrase or sentence.
+Menu entry names and node names are often short; the description
+explains to the reader what the node is about.  A useful description
+complements the node name rather than repeats it.  The description,
+which is optional, can spread over two or more lines; if it does, some
+authors prefer to indent the second line while others prefer to align it
+with the first (and all others).  It's up to you.
+
+

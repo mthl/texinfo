@@ -1,0 +1,22 @@
+3.2.2 Start of Header
+---------------------
+
+A start-of-header line is a Texinfo comment that looks like this:
+
+@c %**start of header
+
+Write the start-of-header line on the second line of a Texinfo file.
+Follow the start-of-header line with @setfilename and
+@settitle lines and, optionally, with other commands that
+globally affect the document formatting, such as @synindex or
+@footnotestyle; and then by an end-of-header line (see End of Header).
+
+The start- and end-of-header lines allow you to format only part of a
+Texinfo file for Info or printing.  See texinfo-format commands.
+
+The odd string of characters, `%**', is to ensure that no other
+comment is accidentally taken for a start-of-header line.  You can
+change it if you wish by setting the tex-start-of-header and/or
+tex-end-of-header Emacs variables.  See Texinfo Mode Printing.
+
+

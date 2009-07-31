@@ -1,0 +1,84 @@
+6.2 Node and Menu Illustration
+==============================
+
+Here is a copy of the diagram shown earlier that illustrates a Texinfo
+file with three chapters, each of which contains two sections.
+
+The "root" is at the top of the diagram and the "leaves" are at the
+bottom.  This is how such a diagram is drawn conventionally; it
+illustrates an upside-down tree.  For this reason, the root node is
+called the `Top' node, and `Up' node pointers carry you closer to the
+root.
+
+                          Top
+                           |
+         -------------------------------------
+        |                  |                  |
+     Chapter 1          Chapter 2          Chapter 3
+        |                  |                  |
+     --------           --------           --------
+    |        |         |        |         |        |
+ Section  Section   Section  Section   Section  Section
+   1.1      1.2       2.1      2.2       3.1      3.2
+
+The fully-written command to start Chapter 2 would be this:
+
+@node     Chapter 2,  Chapter 3, Chapter 1, Top
+@comment  node-name,  next,      previous,  up
+
+This @node line says that the name of this node is "Chapter
+2", the name of the `Next' node is "Chapter 3", the name of the
+`Previous' node is "Chapter 1", and the name of the `Up' node is
+"Top".  You can omit writing out these node names if your document is
+hierarchically organized (see makeinfo Pointer Creation), but the
+pointer relationships still obtain.
+
+Please Note: `Next' refers to the next node at the same
+hierarchical level in the manual, not necessarily to the next node
+within the Texinfo file.  In the Texinfo file, the subsequent node may
+be at a lower level--a section-level node most often follows a
+chapter-level node, for example.  `Next' and `Previous' refer to nodes
+at the same hierarchical level.  (The `Top' node contains the
+exception to this rule.  Since the `Top' node is the only node at that
+level, `Next' refers to the first following node, which is almost always
+a chapter or chapter-level node.)
+
+To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
+2.  (See Menus.)  You would write the menu just
+before the beginning of Section 2.1, like this:
+
+    @menu
+    * Sect. 2.1::    Description of this section.
+    * Sect. 2.2::
+    @end menu
+
+Write the node for Sect. 2.1 like this:
+
+    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+    @comment  node-name, next,      previous,  up
+
+In Info format, the `Next' and `Previous' pointers of a node usually
+lead to other nodes at the same level--from chapter to chapter or from
+section to section (sometimes, as shown, the `Previous' pointer points
+up); an `Up' pointer usually leads to a node at the level above (closer
+to the `Top' node); and a `Menu' leads to nodes at a level below (closer
+to `leaves').  (A cross reference can point to a node at any level;
+see Cross References.)
+
+Usually, an @node command and a chapter structuring command are
+used in sequence, along with indexing commands.  (You may follow the
+@node line with a comment line that reminds you which pointer is
+which.)
+
+Here is the beginning of the chapter in this manual called "Ending a
+Texinfo File".  This shows an @node line followed by a comment
+line, an @chapter line, and then by indexing lines.
+
+@node    Ending a File, Structuring, Beginning a File, Top
+@comment node-name,     next,        previous,         up
+@chapter Ending a Texinfo File
+@cindex Ending a Texinfo file
+@cindex Texinfo file ending
+@cindex File ending
+
+

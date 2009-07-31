@@ -1,0 +1,580 @@
+Annexe C Mathematical background
+********************************
+
+
+This chapter introduces some of the mathematical notions and definitions used
+throughout the manual. It is mostly a collection of the
+most prominent definitions and properties. For details, please, refer to
+some articles or text books (see References).
+
+* Standard bases::
+* Hilbert function::
+* Syzygies and resolutions::
+* Characteristic sets::
+* Gauss-Manin connection::
+* Toric ideals and integer programming::
+* References::
+C.1 Standard bases
+==================
+
+Definition
+----------
+
+Properties
+----------
+normal form:
+ideal membership:
+Hilbert function:
+
+C.2 Hilbert function
+====================
+
+
+
+
+
+C.3 Syzygies and resolutions
+============================
+
+Syzygies
+--------
+
+The k-th syzygy module is defined inductively to be the module
+of syzygies of the
+ syzygy module.
+
+
+Example:
+  ring R= 0,(u,v,x,y,z),dp;
+  ideal i=ux, vx, uy, vy;
+  print(syz(i));
+==> -y,0, -v,0, 
+==> 0, -y,u, 0, 
+==> x, 0, 0, -v,
+==> 0, x, 0, u  
+
+Free resolutions
+----------------
+
+where the columns of the matrix
+generate 
+. Note, that resolutions need not to be finite (i.e., of
+finite length). The Hilbert Syzygy Theorem states, that for 
+there exists a ("minimal") resolution of length not exceeding the number of
+variables.
+
+Example:
+  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+==>  1      4      4      1      
+==> R <--  R <--  R <--  R
+==> 
+==> 0      1      2      3      
+==> 
+  // The matrix A_1 is given by
+  print(matrix(resI[1]));
+==> vy,uy,vx,ux
+  // We see that the columns of A_1 generate I.
+  // The matrix A_2 is given by
+  print(matrix(resI[3]));
+==> u, 
+==> -v,
+==> -x,
+==> y  
+
+Betti numbers and regularity
+----------------------------
+
+The regularity of 
+ is the smallest integer 
+
+such that
+
+Example:
+  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+==>  1      4      4      1      
+==> R <--  R <--  R <--  R
+==> 
+==> 0      1      2      3      
+==> 
+  // the betti number:
+  print(betti(resI), "betti");
+==>            0     1     2     3
+==> ------------------------------
+==>     0:     1     -     -     -
+==>     1:     -     4     4     1
+==> ------------------------------
+==> total:     1     4     4     1
+  // the regularity:
+  regularity(resI);
+==> 2
+C.4 Characteristic sets
+=======================
+
+
+Example:
+  ring R= 0,(x,y,z,u),dp;
+  ideal i=-3zu+y2-2x+2,
+          -3x2u-4yz-6xz+2y2+3xy,
+          -3z2u-xu+y2z+y;
+  print(char_series(i));
+==> _[1,1],3x2z-y2+2yz,3x2u-3xy-2y2+2yu,
+==> x,     -y+2z,      -2y2+3yu-4       
+C.5 Gauss-Manin connection
+==========================
+
+
+
+
+Let us consider as an example 
+.
+First, we compute a matrix 
+ such that
+is a monodromy matrix of 
+ and the Jordan normal form of 
+:
+  LIB "gaussman.lib";
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=monodromy(f);
+  matrix M=jordanmatrix(l[1],l[2],l[3]);
+  print(M);
+==> 1/2,0,  0,   0,   0,   0,   0,0,    0,    0,    0,   
+==> 1,  1/2,0,   0,   0,   0,   0,0,    0,    0,    0,   
+==> 0,  0,  7/10,0,   0,   0,   0,0,    0,    0,    0,   
+==> 0,  0,  0,   7/10,0,   0,   0,0,    0,    0,    0,   
+==> 0,  0,  0,   0,   9/10,0,   0,0,    0,    0,    0,   
+==> 0,  0,  0,   0,   0,   9/10,0,0,    0,    0,    0,   
+==> 0,  0,  0,   0,   0,   0,   1,0,    0,    0,    0,   
+==> 0,  0,  0,   0,   0,   0,   0,11/10,0,    0,    0,   
+==> 0,  0,  0,   0,   0,   0,   0,0,    11/10,0,    0,   
+==> 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
+==> 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
+
+Now, we compute the V-filtration on 
+ and the spectrum:
+  LIB "gaussman.lib";
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=vfilt(f);
+  print(l[1]);
+==> -1/2,
+==> -3/10,
+==> -1/10,
+==> 0,
+==> 1/10,
+==> 3/10,
+==> 1/2
+  print(l[2]);
+==> 1,2,2,1,2,2,1
+  print(l[3]);
+==> [1]:
+==>    _[1]=gen(11)
+==> [2]:
+==>    _[1]=gen(10)
+==>    _[2]=gen(6)
+==> [3]:
+==>    _[1]=gen(9)
+==>    _[2]=gen(4)
+==> [4]:
+==>    _[1]=gen(5)
+==> [5]:
+==>    _[1]=gen(3)
+==>    _[2]=gen(8)
+==> [6]:
+==>    _[1]=gen(2)
+==>    _[2]=gen(7)
+==> [7]:
+==>    _[1]=gen(1)
+  print(l[4]);
+==> y5,
+==> y4,
+==> y3,
+==> y2,
+==> xy,
+==> y,
+==> x4,
+==> x3,
+==> x2,
+==> x,
+==> 1
+Here l[1] contains the spectral numbers, l[2] the corresponding multiplicities, l[3] a 
+-basis of the V-filtration on 
+ in terms of the monomial basis of
+in l[4].
+
+
+
+Let us calculate one specific example, the maximal number 
+of triple points of type
+of degree seven.
+This calculation can be done over the rationals.
+So choose a local ordering on 
+. Here we take the
+negative degree lexicographical ordering which is denoted
+ds in SINGULAR:
+
+ring r=0,(x,y,z),ds;
+LIB "spectrum.lib";
+poly f=x^7+y^7+z^7;
+list s1=spectrumnd( f );
+s1;
+==> [1]:
+==>    _[1]=-4/7
+==>    _[2]=-3/7
+==>    _[3]=-2/7
+==>    _[4]=-1/7
+==>    _[5]=0
+==>    _[6]=1/7
+==>    _[7]=2/7
+==>    _[8]=3/7
+==>    _[9]=4/7
+==>    _[10]=5/7
+==>    _[11]=6/7
+==>    _[12]=1
+==>    _[13]=8/7
+==>    _[14]=9/7
+==>    _[15]=10/7
+==>    _[16]=11/7
+==> [2]:
+==>    1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
+
+The command spectrumnd(f) computes the spectrum of 
+ and
+returns a list with six entries:
+The Milnor number
+and the number of different spectrum numbers.
+The other three entries are of type intvec.
+They contain the numerators, denominators and
+multiplicities of the spectrum numbers. So
+has Milnor number 216 and geometrical
+genus 35. Its spectrum consists of the 16 different rationals
+
+
+
+appearing with multiplicities
+
+1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1.
+
+Therefore they have all the same spectrum, which we compute
+for 
+
+poly g=x^3+y^3+z^3;
+list s2=spectrumnd(g);
+s2;
+==> [1]:
+==>    8
+==> [2]:
+==>    1
+==> [3]:
+==>    4
+==> [4]:
+==>    1,4,5,2
+==> [5]:
+==>    1,3,3,1
+==> [6]:
+==>    1,3,3,1
+Evaluating semicontinuity is very easy:
+semicont(s1,s2);
+==> 18
+
+This tells us that there are at most 18 singularities of type
+is semiquasihomogeneous (sqh), so we can also apply the stronger
+form of semicontinuity:
+
+semicontsqh(s1,s2);
+==> 17
+
+So in fact a septic has at most 17 triple points of type
+
+Note that spectrumnd(f) works only if 
+ has nondegenerate
+principal part. In fact spectrumnd will detect a degenerate
+principal part in many cases and print out an error message.
+However if it is known in advance that 
+ has nondegenerate
+principal part, then the spectrum may be computed much faster
+using spectrumnd(f,1).
+
+C.6 Toric ideals and integer programming
+========================================
+
+* Toric ideals::                Definition and computation.
+* Integer programming::         An algorithm using toric ideals.
+* Relevant References::
+
+
+C.6.1 Toric ideals
+------------------
+
+
+
+The required lattice basis can be computed using the LLL-algorithm (see [Coh93]). For the computation of the saturation, there are various
+possibilities described in the
+
+* Algorithms::             Various algorithms for computing toric ideals.
+* Buchberger algorithm::   Specializing it for toric ideals.
+
+C.6.2 Algorithms
+----------------
+
+The following algorithms are implemented in toric_lib.
+
+* Conti and Traverso::
+* Pottier::
+* Hosten and Sturmfels::
+* Di Biase and Urbanke::
+* Bigatti and La Scala and Robbiano::
+
+
+C.6.2.1 The algorithm of Conti and Traverso
+...........................................
+
+
+The algorithm of Conti and Traverso (see [CoTr91])
+
+Because of the big number of auxiliary variables needed to compute a
+toric ideal, this algorithm is rather slow in practice. However, it has
+a special importance in the application to integer programming
+(see Integer programming).
+
+
+C.6.2.2 The algorithm of Pottier
+................................
+
+
+The algorithm of Pottier (see [Pot94]) starts by computing a lattice
+
+
+
+C.6.2.3 The algorithm of Hosten and Sturmfels
+.............................................
+
+
+The algorithm of Hosten and Sturmfels (see [HoSt95]) allows to
+(see [HoSh98]), and the single
+computations - except from the first one - show to be easy and fast in
+practice.
+
+
+C.6.2.4 The algorithm of Di Biase and Urbanke
+.............................................
+
+Like the algorithm of Hosten and Sturmfels, the algorithm of Di Biase
+and Urbanke (see [DBUr95]) performs up
+
+
+C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano
+.......................................................
+
+The algorithm of Bigatti, La Scala and Robbiano (see [BLR98]) combines the ideas of
+the algorithms of Pottier and of Hosten and Sturmfels. The
+computations are performed on a graded ideal with one auxiliary
+
+There is another algorithm of the authors which tries to parallelize
+the computations (but which is not implemented in this library).
+
+
+C.6.3 The Buchberger algorithm for toric ideals
+-----------------------------------------------
+
+Toric ideals have a very special structure that allows us to improve
+the Buchberger algorithm in many respects: They are prime ideals and
+generated by binomials. Pottier used this fact to describe all
+operations of the Buchberger algorithm on the ideal generators in terms
+of vector additions and subtractions. Some other strategies like
+multiple reduction (see [CoTr91]) or the use of bit
+vectors to represent the support of a monomial (see [Big97]) may be
+applied to more general ideals, but show to
+be especially useful in the toric case.
+
+
+C.6.4 Integer programming
+-------------------------
+
+
+
+* (1) Compute the toric ideal I(A) using one of the algorithms in the previous section.
+* (2) Compute the reduced Groebner basis G(c) of I(A) w.r.t. 
+.
+* (3) Reduce 
+ modulo G(c) using the Hironaka division algorithm.
+If the result of this reduction is 
+, then 
+ is an optimal
+solution of the given instance.
+
+If no initial solution is known, we are nevertheless able to solve the
+problem with similar techniques. For this purpose we replace our
+instance by an extended instance with the matrix used
+in the Conti-Traverso algorithm. Indeed, the Conti-Traverso
+algorithm offers the possibility to verify solvability of a given
+instance and to find an initial solution in the case of existence (but
+none of the other algorithms does!). Details can be found in [CoTr91]
+and [The99].
+
+An implementation of the above algorithm and some examples can be found in intprog_lib.
+
+Classical methods for solving IP instances like Branch-and-Bound
+methods seem to be faster in general than the methods using toric
+ideals. But the latter have one great advantage: If one wants to solve
+various instances that differ only by the vector 
+, one has to
+perform steps (1) and (2) above only once. As the running time of step (3)
+is very short, solving all the instances is not much harder than
+solving one single instance.
+
+For a detailed discussion see [The99].
+
+C.6.5 Relevant References
+-------------------------
+
+* [Big97]  Bigatti, A.M.: 
+   Computation of Hilbert-Poincare series.
+   Journal of Pure and Applied Algebra (1997) 199, 237-253
+
+* [BLR98]  Bigatti, A.M.; La Scala, R.; Robbiano, L.: 
+   Computing toric ideals.
+   Journal of Symbolic Computation (to appear)
+
+* [Coh93]  Cohen, H.: 
+   A Course in Computational Algebraic Number Theory.
+   Springer (1997)
+
+* [CoTr91]  Conti, P.; Traverso, C.: 
+   Buchberger algorithm and integer programming.
+   Proceedings AAECC-9 (new Orleans), Springer LNCS (1991) 539,
+   130-139
+
+* [DBUr95]  Di Biase, F.; Urbanke, R.: 
+   An algorithm to calculate the kernel of certain polynomial ring
+   homomorphisms.
+   Experimental Mathematics (1995) 4, 227-234
+
+* [HoSh98]  Hosten, S.; Shapiro, J.: 
+   Primary decomposition of lattice basis ideals.
+   (to appear)
+
+* [HoSt95]  Hosten, S.; Sturmfels, B.: 
+   GRIN: An implementation of Groebner bases for integer programming.
+   in Balas, E.; Clausen, J. (editors): Integer Programming and
+   Combinatorial Optimization.
+   Springer LNCS (1995) 920, 267-276
+
+* [Pot94]  Pottier, L.: 
+   Groebner bases of toric ideals.
+   Rapport de recherche 2224 (1997), INRIA Sophia Antipolis
+
+* [Stu96]  Sturmfels, B.: 
+   Groebner Bases and Convex Polytopes.
+   University Lecture Series, Volume 8 (1996), American Mathematical
+   Society
+
+* [The99]  Theis, C.: 
+   Der Buchberger-Algorithmus fuer torische Ideale und seine Anwendung
+   in der ganzzahligen Optimierung.
+   Diplomarbeit, Universitaet des Saarlandes (1999), Saarbruecken
+   (Germany)
+
+
+C.7 References
+==============
+
+The Centre for Computer Algebra Kaiserslautern publishes a series of preprints
+which are electronically available at
+http://www.mathematik.uni-kl.de/~zca/Reports_on_ca.
+Other sources to check are http://symbolicnet.mcs.kent.edu/,
+http://www.can.nl/,... and the following list of books:
+
+Text books on computational algebraic geometry
+----------------------------------------------
+* Adams, W.; Loustaunau, P.: An Introduction to Gro"bner Bases. Providence, RI,
+AMS, 1996
+
+* Becker, T.; Weisspfenning, V.:
+Gro"bner Bases - A Computational Approach to Commutative Algebra. Springer, 1993
+
+* Cohen, H.:
+A Course in Computational Algebraic Number Theory,
+Springer, 1995
+
+* Cox, D.; Little, J.; O'Shea, D.:
+Ideals, Varieties and Algorithms. Springer, 1996
+
+* Eisenbud, D.: Commutative Algebra with a View Toward Algebraic Geometry.
+Springer, 1995
+
+* Greuel, G.-M.; Pfister, G.: A SINGULAR Introduction to Commuative Algebra, Springer, 2002
+
+* Mishra, B.: Algorithmic Algebra, Texts and Monographs in Computer Science.
+Springer, 1993
+* Sturmfels, B.: Algorithms in Invariant Theory. Springer 1993
+
+* Vasconcelos, W.: Computational Methods in Commutative Algebra and Algebraic
+Geometry. Springer, 1998
+
+Descriptions of algorithms
+--------------------------
+* Bareiss, E.:
+Sylvester's identity and multistep integer-preserving Gaussian elimination.
+Math. Comp. 22 (1968), 565-578
+
+* Campillo, A.: Algebroid curves in positive characteristic. SLN 813, 1980
+
+* Chou, S.:
+Mechanical Geometry Theorem Proving.
+D.Reidel Publishing Company, 1988
+
+* Decker, W.; Greuel, G.-M.; Pfister, G.:
+Primary decomposition: algorithms and
+comparisons.  Preprint, Univ. Kaiserslautern, 1998.
+To appear in: Greuel, G.-M.; Matzat, B. H.; Hiss, G. (Eds.),
+Algorithmic Algebra and Number Theory. Springer Verlag, Heidelberg, 1998
+
+* Decker, W.; Greuel, G.-M.; de Jong, T.; Pfister, G.:
+The normalization: a new algorithm,
+implementation and comparisons. Preprint, Univ. Kaiserslautern, 1998
+
+* Decker, W.; Heydtmann, A.; Schreyer, F. O.: Generating a Noetherian Normalization of
+the Invariant Ring of a Finite Group, 1997, to appear in Journal of
+Symbolic Computation
+
+* J. C.; Gianni, P.; Lazard, D.; Mora, T.: Efficient computation
+of zero-dimensional
+Gro"bner bases by change of ordering. Journal of Symbolic Computation, 1989
+
+* Gra"be, H.-G.: On factorized Gro"bner bases, Univ. Leipzig, Inst. fu"r
+Informatik, 1994
+
+* Grassmann, H.; Greuel, G.-M.; Martin, B.; Neumann,
+W.; Pfister, G.; Pohl, W.; Scho"nemann, H.; Siebert, T.:  On an
+implementation of standard bases and syzygies in  SINGULAR.
+Proceedings of the Workshop  Computational Methods in Lie theory in AAECC (1995)
+
+* Greuel, G.-M.; Pfister, G.:
+Advances and improvements in the theory of standard bases and
+syzygies. Arch. d. Math. 63(1995)
+
+* Kemper; Generating Invariant Rings of Finite Groups over Arbitrary
+Fields. 1996, to appear in Journal of Symbolic Computation
+
+* Kemper and Steel: Some Algorithms in Invariant Theory of Finite Groups. 1997
+
+* Lee, H.R.; Saunders, B.D.: Fraction Free Gaussian Elimination for
+Sparse Matrices. Journal of Symbolic Computation (1995) 19, 393-402
+
+* Scho"nemann, H.:
+Algorithms in SINGULAR,
+Reports on Computer Algebra 2(1996), Kaiserslautern
+
+* Siebert, T.:
+On strategies and implementations for computations of free resolutions.
+Reports on Computer Algebra 8(1996), Kaiserslautern
+
+* Wang, D.:
+Characteristic Sets and Zero Structure of Polynomial Sets.
+Lecture Notes, RISC Linz, 1989
+

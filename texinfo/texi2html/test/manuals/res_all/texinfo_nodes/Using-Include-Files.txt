@@ -1,0 +1,38 @@
+D.1 How to Use Include Files
+============================
+
+To include another file within a Texinfo file, write the
+@include command at the beginning of a line and follow it on
+the same line by the name of a file to be included.  For
+example:
+
+@include buffers.texi
+
+An included file should simply be a segment of text that you expect to
+be included as is into the overall or outer Texinfo file; it
+should not contain the standard beginning and end parts of a Texinfo
+file.  In particular, you should not start an included file with a
+line saying `\input texinfo'; if you do, that phrase is inserted
+into the output file as is.  Likewise, you should not end an included
+file with an @bye command; nothing after @bye is
+formatted.
+
+In the past, you were required to write an @setfilename line at the
+beginning of an included file, but no longer.  Now, it does not matter
+whether you write such a line.  If an @setfilename line exists
+in an included file, it is ignored.
+
+Conventionally, an included file begins with an @node line that
+is followed by an @chapter line.  Each included file is one
+chapter.  This makes it easy to use the regular node and menu creating
+and updating commands to create the node pointers and menus within the
+included file.  However, the simple Emacs node and menu creating and
+updating commands do not work with multiple Texinfo files.  Thus you
+cannot use these commands to fill in the `Next', `Previous', and `Up'
+pointers of the @node line that begins the included file.  Also,
+you cannot use the regular commands to create a master menu for the
+whole file.  Either you must insert the menus and the `Next',
+`Previous', and `Up' pointers by hand, or you must use the GNU Emacs
+Texinfo mode command, texinfo-multiple-files-update, that is
+designed for @include files.
+

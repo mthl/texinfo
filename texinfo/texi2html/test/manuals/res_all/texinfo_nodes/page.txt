@@ -1,0 +1,9 @@
+14.5 @page: Start a New Page
+============================
+
+A line containing only @page starts a new page in a printed
+manual.  The command has no effect on Info files since they are not
+paginated.  An @page command is often used in the @titlepage
+section of a Texinfo file to start the copyright page.
+
+

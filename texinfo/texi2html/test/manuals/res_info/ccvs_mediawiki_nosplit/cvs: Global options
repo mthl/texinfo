@@ -1,0 +1,221 @@
+<div id="Global-options"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Common command options#Common-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Global-options-1"></div>
+=== Global options ===
+<div id="index-Options_002c-global"></div>
+<div id="index-Global-options"></div>
+<div id="index-Left_002dhand-options"></div>
+
+<p>The available &lsquo;<samp>cvs_options</samp>&rsquo; (that are given to the
+left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
+</p>
+<dl compact="compact">
+<dt><code>--allow-root=<var>rootdir</var></code></dt>
+<dd><p>Specify legal <small>CVSROOT</small> directory.  See
+[cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication].
+</p>
+<div id="index-Authentication_002c-stream"></div>
+<div id="index-Stream-authentication"></div>
+</dd>
+<dt><code>-a</code></dt>
+<dd><p>Authenticate all communication between the client and
+the server.  Only has an effect on the <small>CVS</small> client.
+As of this writing, this is only implemented when using
+a GSSAPI connection (see section [cvs: Direct connection with GSSAPI#GSSAPI-authenticated Direct connection with GSSAPI]).
+Authentication prevents certain sorts of attacks
+involving hijacking the active <small>TCP</small> connection.
+Enabling authentication does not enable encryption.
+</p>
+<div id="index-RCSBIN_002c-overriding"></div>
+<div id="index-Overriding-RCSBIN"></div>
+</dd>
+<dt><code>-b <var>bindir</var></code></dt>
+<dd><p>In <small>CVS</small> 1.9.18 and older, this specified that
+<small>RCS</small> programs are in the <var>bindir</var> directory.
+Current versions of <small>CVS</small> do not run <small>RCS</small>
+programs; for compatibility this option is accepted,
+but it does nothing.
+</p>
+<div id="index-TMPDIR_002c-overriding"></div>
+<div id="index-Overriding-TMPDIR"></div>
+</dd>
+<dt><code>-T <var>tempdir</var></code></dt>
+<dd><p>Use <var>tempdir</var> as the directory where temporary files are
+located.  Overrides the setting of the <code>$TMPDIR</code> environment
+variable and any precompiled directory.  This parameter should be
+specified as an absolute pathname.
+(When running client/server, &lsquo;<samp>-T</samp>&rsquo; affects only the local process;
+specifying &lsquo;<samp>-T</samp>&rsquo; for the client has no effect on the server and
+vice versa.)
+</p>
+<div id="index-CVSROOT_002c-overriding"></div>
+<div id="index-Overriding-CVSROOT"></div>
+</dd>
+<dt><code>-d <var>cvs_root_directory</var></code></dt>
+<dd><p>Use <var>cvs_root_directory</var> as the root directory
+pathname of the repository.  Overrides the setting of
+the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repository#Repository The Repository].
+</p>
+<div id="index-EDITOR_002c-overriding"></div>
+<div id="index-Overriding-EDITOR"></div>
+</dd>
+<dt><code>-e <var>editor</var></code></dt>
+<dd><p>Use <var>editor</var> to enter revision log information.  Overrides the
+setting of the <code>$CVSEDITOR</code> and <code>$EDITOR</code>
+environment variables.  For more information, see
+[cvs: Committing your changes#Committing-your-changes Committing your changes].
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>Do not read the &lsquo;<tt>~/.cvsrc</tt>&rsquo; file.  This
+option is most often used because of the
+non-orthogonality of the <small>CVS</small> option set.  For
+example, the &lsquo;<samp>cvs log</samp>&rsquo; option &lsquo;<samp>-N</samp>&rsquo; (turn off
+display of tag names) does not have a corresponding
+option to turn the display on.  So if you have
+&lsquo;<samp>-N</samp>&rsquo; in the &lsquo;<tt>~/.cvsrc</tt>&rsquo; entry for &lsquo;<samp>log</samp>&rsquo;,
+you may need to use &lsquo;<samp>-f</samp>&rsquo; to show the tag names.
+</p>
+</dd>
+<dt><code>-H</code></dt>
+<dt><code>--help</code></dt>
+<dd><p>Display usage information about the specified &lsquo;<samp>cvs_command</samp>&rsquo;
+(but do not actually execute the command).  If you don&rsquo;t specify
+a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
+<small>CVS</small>, including a list of other help options.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Do not log the &lsquo;<samp>cvs_command</samp>&rsquo; in the command history (but execute it
+anyway).  See section [cvs: history--Show status of files and users#history history&mdash;Show status of files and users], for information on command history.
+</p>
+<div id="index-Read_002donly-repository-mode"></div>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Turns on read-only repository mode.  This allows one to check out from a
+read-only repository, such as within an anoncvs server, or from a CDROM
+repository.
+</p>
+<p>Same effect as if the <code>CVSREADONLYFS</code> environment
+variable is set. Using &lsquo;<samp>-R</samp>&rsquo; can also considerably
+speed up checkout&rsquo;s over NFS.
+</p>
+<div id="index-Read_002donly-mode"></div>
+</dd>
+<dt><code>-n</code></dt>
+<dd><p>Do not change any files.  Attempt to execute the
+&lsquo;<samp>cvs_command</samp>&rsquo;, but only to issue reports; do not remove,
+update, or merge any existing files, or create any new files.
+</p>
+<p>Note that <small>CVS</small> will not necessarily produce exactly
+the same output as without &lsquo;<samp>-n</samp>&rsquo;.  In some cases
+the output will be the same, but in other cases
+<small>CVS</small> will skip some of the processing that would
+have been required to produce the exact same output.
+</p>
+</dd>
+<dt><code>-Q</code></dt>
+<dd><p>Cause the command to be really quiet; the command will only
+generate output for serious problems.
+</p>
+</dd>
+<dt><code>-q</code></dt>
+<dd><p>Cause the command to be somewhat quiet; informational messages,
+such as reports of recursion through subdirectories, are
+suppressed.
+</p>
+<div id="index-Read_002donly-files_002c-and-_002dr"></div>
+</dd>
+<dt><code>-r</code></dt>
+<dd><p>Make new working files read-only.  Same effect
+as if the <code>$CVSREAD</code> environment variable is set
+(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).  The default is to
+make working files writable, unless watches are on
+(see section [cvs: Mechanisms to track who is editing files#Watches Mechanisms to track who is editing files]).
+</p>
+</dd>
+<dt><code>-s <var>variable</var>=<var>value</var></code></dt>
+<dd><p>Set a user variable (see section [cvs: Expansions in administrative files#Variables Expansions in administrative files]).
+</p>
+<div id="index-Trace"></div>
+</dd>
+<dt><code>-t</code></dt>
+<dd><p>Trace program execution; display messages showing the steps of
+<small>CVS</small> activity.  Particularly useful with &lsquo;<samp>-n</samp>&rsquo; to explore the
+potential impact of an unfamiliar command.
+</p>
+</dd>
+<dt><code>-v</code></dt>
+<dt><code>--version</code></dt>
+<dd><p>Display version and copyright information for <small>CVS</small>.
+</p>
+<div id="index-CVSREAD_002c-overriding"></div>
+<div id="index-Overriding-CVSREAD"></div>
+</dd>
+<dt><code>-w</code></dt>
+<dd><p>Make new working files read-write.  Overrides the
+setting of the <code>$CVSREAD</code> environment variable.
+Files are created read-write by default, unless <code>$CVSREAD</code> is
+set or &lsquo;<samp>-r</samp>&rsquo; is given.
+</p>
+</dd>
+<dt><code>-x</code></dt>
+<dd><div id="index-Encryption"></div>
+<p>Encrypt all communication between the client and the
+server.  Only has an effect on the <small>CVS</small> client.  As
+of this writing, this is only implemented when using a
+GSSAPI connection (see section [cvs: Direct connection with GSSAPI#GSSAPI-authenticated Direct connection with GSSAPI]) or a
+Kerberos connection (see section [cvs: Direct connection with kerberos#Kerberos-authenticated Direct connection with kerberos]).
+Enabling encryption implies that message traffic is
+also authenticated.  Encryption support is not
+available by default; it must be enabled using a
+special configure option, &lsquo;<tt>--enable-encryption</tt>&rsquo;,
+when you build <small>CVS</small>.
+</p>
+</dd>
+<dt><code>-z <var>gzip-level</var></code></dt>
+<dd><div id="index-Compression"></div>
+<div id="index-Gzip"></div>
+<p>Set the compression level.
+Valid levels are 1 (high speed, low compression) to
+9 (low speed, high compression), or 0 to disable
+compression (the default).
+Only has an effect on the <small>CVS</small> client.
+</p>
+</dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Common command options#Common-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

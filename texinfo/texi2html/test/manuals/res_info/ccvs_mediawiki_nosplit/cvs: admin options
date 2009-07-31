@@ -1,0 +1,369 @@
+<div id="admin-options"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: admin--Administration#admin  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: admin--Administration#admin  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="admin-options-1"></div>
+==== admin options ====
+
+<p>Some of these options have questionable usefulness for
+<small>CVS</small> but exist for historical purposes.  Some even
+make it impossible to use <small>CVS</small> until you undo the
+effect!
+</p>
+<dl compact="compact">
+<dt><code>-A<var>oldfile</var></code></dt>
+<dd><p>Might not work together with <small>CVS</small>.  Append the
+access list of <var>oldfile</var> to the access list of the
+<small>RCS</small> file.
+</p>
+</dd>
+<dt><code>-a<var>logins</var></code></dt>
+<dd><p>Might not work together with <small>CVS</small>.  Append the
+login names appearing in the comma-separated list
+<var>logins</var> to the access list of the <small>RCS</small> file.
+</p>
+</dd>
+<dt><code>-b[<var>rev</var>]</code></dt>
+<dd><p>Set the default branch to <var>rev</var>.  In <small>CVS</small>, you
+normally do not manipulate default branches; sticky
+tags (see section [cvs: Sticky tags#Sticky-tags Sticky tags]) are a better way to decide
+which branch you want to work on.  There is one reason
+to run <code>cvs admin -b</code>: to revert to the vendor&rsquo;s
+version when using vendor branches (see section [cvs: Reverting to the latest vendor release#Reverting-local-changes Reverting to the latest vendor release]).
+There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
+</p>
+<div id="index-Comment-leader"></div>
+</dd>
+<dt><code>-c<var>string</var></code></dt>
+<dd><p>Sets the comment leader to <var>string</var>.  The comment
+leader is not used by current versions of <small>CVS</small> or
+<small>RCS</small> 5.7.  Therefore, you can almost surely not
+worry about it.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+</p>
+</dd>
+<dt><code>-e[<var>logins</var>]</code></dt>
+<dd><p>Might not work together with <small>CVS</small>.  Erase the login
+names appearing in the comma-separated list
+<var>logins</var> from the access list of the RCS file.  If
+<var>logins</var> is omitted, erase the entire access list.
+There can be no space between &lsquo;<samp>-e</samp>&rsquo; and its argument.
+</p>
+</dd>
+<dt><code>-I</code></dt>
+<dd><p>Run interactively, even if the standard input is not a
+terminal.  This option does not work with the
+client/server <small>CVS</small> and is likely to disappear in
+a future release of <small>CVS</small>.
+</p>
+</dd>
+<dt><code>-i</code></dt>
+<dd><p>Useless with <small>CVS</small>.  This creates and initializes a
+new <small>RCS</small> file, without depositing a revision.  With
+<small>CVS</small>, add files with the <code>cvs add</code> command
+(see section [cvs: Adding files to a directory#Adding-files Adding files to a directory]).
+</p>
+</dd>
+<dt><code>-k<var>subst</var></code></dt>
+<dd><p>Set the default keyword
+substitution to <var>subst</var>.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
+<code>cvs update</code>, <code>cvs export</code>, or <code>cvs
+checkout</code> overrides this default.
+</p>
+</dd>
+<dt><code>-l[<var>rev</var>]</code></dt>
+<dd><p>Lock the revision with number <var>rev</var>.  If a branch
+is given, lock the latest revision on that branch.  If
+<var>rev</var> is omitted, lock the latest revision on the
+default branch.  There can be no space between
+&lsquo;<samp>-l</samp>&rsquo; and its argument.
+</p>
+<p>This can be used in conjunction with the
+&lsquo;<tt>rcslock.pl</tt>&rsquo; script in the &lsquo;<tt>contrib</tt>&rsquo;
+directory of the <small>CVS</small> source distribution to
+provide reserved checkouts (where only one user can be
+editing a given file at a time).  See the comments in
+that file for details (and see the &lsquo;<tt>README</tt>&rsquo; file
+in that directory for disclaimers about the unsupported
+nature of contrib).  According to comments in that
+file, locking must set to strict (which is the default).
+</p>
+</dd>
+<dt><code>-L</code></dt>
+<dd><p>Set locking to strict.  Strict locking means that the
+owner of an RCS file is not exempt from locking for
+checkin.  For use with <small>CVS</small>, strict locking must be
+set; see the discussion under the &lsquo;<samp>-l</samp>&rsquo; option above.
+</p>
+<div id="index-Changing-a-log-message"></div>
+<div id="index-Replacing-a-log-message"></div>
+<div id="index-Correcting-a-log-message"></div>
+<div id="index-Fixing-a-log-message"></div>
+<div id="index-Log-message_002c-correcting"></div>
+</dd>
+<dt><code>-m<var>rev</var>:<var>msg</var></code></dt>
+<dd><p>Replace the log message of revision <var>rev</var> with
+<var>msg</var>.
+</p>
+
+</dd>
+<dt><code>-N<var>name</var>[:[<var>rev</var>]]</code></dt>
+<dd><p>Act like &lsquo;<samp>-n</samp>&rsquo;, except override any previous
+assignment of <var>name</var>.  For use with magic branches,
+see [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers].
+</p>
+</dd>
+<dt><code>-n<var>name</var>[:[<var>rev</var>]]</code></dt>
+<dd><p>Associate the symbolic name <var>name</var> with the branch
+or revision <var>rev</var>.  It is normally better to use
+&lsquo;<samp>cvs tag</samp>&rsquo; or &lsquo;<samp>cvs rtag</samp>&rsquo; instead.  Delete the
+symbolic name if both &lsquo;<samp>:</samp>&rsquo; and <var>rev</var> are
+omitted; otherwise, print an error message if
+<var>name</var> is already associated with another number.
+If <var>rev</var> is symbolic, it is expanded before
+association.  A <var>rev</var> consisting of a branch number
+followed by a &lsquo;<samp>.</samp>&rsquo; stands for the current latest
+revision in the branch.  A &lsquo;<samp>:</samp>&rsquo; with an empty
+<var>rev</var> stands for the current latest revision on the
+default branch, normally the trunk.  For example,
+&lsquo;<samp>cvs admin -n<var>name</var>:</samp>&rsquo; associates <var>name</var> with the
+current latest revision of all the RCS files;
+this contrasts with &lsquo;<samp>cvs admin -n<var>name</var>:$</samp>&rsquo; which
+associates <var>name</var> with the revision numbers
+extracted from keyword strings in the corresponding
+working files.
+</p>
+<div id="index-Deleting-revisions"></div>
+<div id="index-Outdating-revisions"></div>
+<div id="index-Saving-space"></div>
+</dd>
+<dt><code>-o<var>range</var></code></dt>
+<dd><p>Deletes (<em>outdates</em>) the revisions given by
+<var>range</var>.
+</p>
+<p>Note that this command can be quite dangerous unless
+you know <em>exactly</em> what you are doing (for example
+see the warnings below about how the
+<var>rev1</var>:<var>rev2</var> syntax is confusing).
+</p>
+<p>If you are short on disc this option might help you.
+But think twice before using it&mdash;there is no way short
+of restoring the latest backup to undo this command!
+If you delete different revisions than you planned,
+either due to carelessness or (heaven forbid) a <small>CVS</small>
+bug, there is no opportunity to correct the error
+before the revisions are deleted.  It probably would be
+a good idea to experiment on a copy of the repository
+first.
+</p>
+<p>Specify <var>range</var> in one of the following ways:
+</p>
+<dl compact="compact">
+<dt><code><var>rev1</var>::<var>rev2</var></code></dt>
+<dd><p>Collapse all revisions between rev1 and rev2, so that
+<small>CVS</small> only stores the differences associated with going
+from rev1 to rev2, not intermediate steps.  For
+example, after &lsquo;<samp>-o 1.3::1.5</samp>&rsquo; one can retrieve
+revision 1.3, revision 1.5, or the differences to get
+from 1.3 to 1.5, but not the revision 1.4, or the
+differences between 1.3 and 1.4.  Other examples:
+&lsquo;<samp>-o 1.3::1.4</samp>&rsquo; and &lsquo;<samp>-o 1.3::1.3</samp>&rsquo; have no
+effect, because there are no intermediate revisions to
+remove.
+</p>
+</dd>
+<dt><code>::<var>rev</var></code></dt>
+<dd><p>Collapse revisions between the beginning of the branch
+containing <var>rev</var> and <var>rev</var> itself.  The
+branchpoint and <var>rev</var> are left intact.  For
+example, &lsquo;<samp>-o ::1.3.2.6</samp>&rsquo; deletes revision 1.3.2.1,
+revision 1.3.2.5, and everything in between, but leaves
+1.3 and 1.3.2.6 intact.
+</p>
+</dd>
+<dt><code><var>rev</var>::</code></dt>
+<dd><p>Collapse revisions between <var>rev</var> and the end of the
+branch containing <var>rev</var>.  Revision <var>rev</var> is
+left intact but the head revision is deleted.
+</p>
+</dd>
+<dt><code><var>rev</var></code></dt>
+<dd><p>Delete the revision <var>rev</var>.  For example, &lsquo;<samp>-o
+1.3</samp>&rsquo; is equivalent to &lsquo;<samp>-o 1.2::1.4</samp>&rsquo;.
+</p>
+</dd>
+<dt><code><var>rev1</var>:<var>rev2</var></code></dt>
+<dd><p>Delete the revisions from <var>rev1</var> to <var>rev2</var>,
+inclusive, on the same branch.  One will not be able to
+retrieve <var>rev1</var> or <var>rev2</var> or any of the
+revisions in between.  For example, the command
+&lsquo;<samp>cvs admin -oR_1_01:R_1_02 .</samp>&rsquo; is rarely useful.
+It means to delete revisions up to, and including, the
+tag R_1_02.  But beware!  If there are files that have not
+changed between R_1_02 and R_1_03 the file will have
+<em>the same</em> numerical revision number assigned to
+the tags R_1_02 and R_1_03.  So not only will it be
+impossible to retrieve R_1_02; R_1_03 will also have to
+be restored from the tapes!  In most cases you want to
+specify <var>rev1</var>::<var>rev2</var> instead.
+</p>
+</dd>
+<dt><code>:<var>rev</var></code></dt>
+<dd><p>Delete revisions from the beginning of the
+branch containing <var>rev</var> up to and including
+<var>rev</var>.
+</p>
+</dd>
+<dt><code><var>rev</var>:</code></dt>
+<dd><p>Delete revisions from revision <var>rev</var>, including
+<var>rev</var> itself, to the end of the branch containing
+<var>rev</var>.
+</p></dd>
+</dl>
+
+<p>None of the revisions to be deleted may have
+branches or locks.
+</p>
+<p>If any of the revisions to be deleted have symbolic
+names, and one specifies one of the &lsquo;<samp>::</samp>&rsquo; syntaxes,
+then <small>CVS</small> will give an error and not delete any
+revisions.  If you really want to delete both the
+symbolic names and the revisions, first delete the
+symbolic names with <code>cvs tag -d</code>, then run
+<code>cvs admin -o</code>.  If one specifies the
+non-&lsquo;<samp>::</samp>&rsquo; syntaxes, then <small>CVS</small> will delete the
+revisions but leave the symbolic names pointing to
+nonexistent revisions.  This behavior is preserved for
+compatibility with previous versions of <small>CVS</small>, but
+because it isn&rsquo;t very useful, in the future it may
+change to be like the &lsquo;<samp>::</samp>&rsquo; case.
+</p>
+<p>Due to the way <small>CVS</small> handles branches <var>rev</var>
+cannot be specified symbolically if it is a branch.
+See section [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers], for an explanation.
+</p>
+<p>Make sure that no-one has checked out a copy of the
+revision you outdate.  Strange things will happen if he
+starts to edit it and tries to check it back in.  For
+this reason, this option is not a good way to take back
+a bogus commit; commit a new revision undoing the bogus
+change instead (see section [cvs: Merging differences between any two revisions#Merging-two-revisions Merging differences between any two revisions]).
+</p>
+</dd>
+<dt><code>-q</code></dt>
+<dd><p>Run quietly; do not print diagnostics.
+</p>
+</dd>
+<dt><code>-s<var>state</var>[:<var>rev</var>]</code></dt>
+<dd><p>Useful with <small>CVS</small>.  Set the state attribute of the
+revision <var>rev</var> to <var>state</var>.  If <var>rev</var> is a
+branch number, assume the latest revision on that
+branch.  If <var>rev</var> is omitted, assume the latest
+revision on the default branch.  Any identifier is
+acceptable for <var>state</var>.  A useful set of states is
+&lsquo;<samp>Exp</samp>&rsquo; (for experimental), &lsquo;<samp>Stab</samp>&rsquo; (for
+stable), and &lsquo;<samp>Rel</samp>&rsquo; (for released).  By default,
+the state of a new revision is set to &lsquo;<samp>Exp</samp>&rsquo; when
+it is created.  The state is visible in the output from
+<var>cvs log</var> (see section [cvs: log--Print out log information for files#log log&mdash;Print out log information for files]), and in the
+&lsquo;<samp>$<i></i>Log$</samp>&rsquo; and &lsquo;<samp>$<i></i>State$</samp>&rsquo; keywords
+(see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  Note that <small>CVS</small>
+uses the <code>dead</code> state for its own purposes; to
+take a file to or from the <code>dead</code> state use
+commands like <code>cvs remove</code> and <code>cvs add</code>, not
+<code>cvs admin -s</code>.
+</p>
+</dd>
+<dt><code>-t[<var>file</var>]</code></dt>
+<dd><p>Useful with <small>CVS</small>.  Write descriptive text from the
+contents of the named <var>file</var> into the RCS file,
+deleting the existing text.  The <var>file</var> pathname
+may not begin with &lsquo;<samp>-</samp>&rsquo;.  The descriptive text can be seen in the
+output from &lsquo;<samp>cvs log</samp>&rsquo; (see section [cvs: log--Print out log information for files#log log&mdash;Print out log information for files]).
+There can be no space between &lsquo;<samp>-t</samp>&rsquo; and its argument.
+</p>
+<p>If <var>file</var> is omitted,
+obtain the text from standard input, terminated by
+end-of-file or by a line containing &lsquo;<samp>.</samp>&rsquo; by itself.
+Prompt for the text if interaction is possible; see
+&lsquo;<samp>-I</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>-t-<var>string</var></code></dt>
+<dd><p>Similar to &lsquo;<samp>-t<var>file</var></samp>&rsquo;. Write descriptive text
+from the <var>string</var> into the <small>RCS</small> file, deleting
+the existing text.
+There can be no space between &lsquo;<samp>-t</samp>&rsquo; and its argument.
+</p>
+
+</dd>
+<dt><code>-U</code></dt>
+<dd><p>Set locking to non-strict.  Non-strict locking means
+that the owner of a file need not lock a revision for
+checkin.  For use with <small>CVS</small>, strict locking must be
+set; see the discussion under the &lsquo;<samp>-l</samp>&rsquo; option
+above.
+</p>
+</dd>
+<dt><code>-u[<var>rev</var>]</code></dt>
+<dd><p>See the option &lsquo;<samp>-l</samp>&rsquo; above, for a discussion of
+using this option with <small>CVS</small>.  Unlock the revision
+with number <var>rev</var>.  If a branch is given, unlock
+the latest revision on that branch.  If <var>rev</var> is
+omitted, remove the latest lock held by the caller.
+Normally, only the locker of a revision may unlock it;
+somebody else unlocking a revision breaks the lock.
+This causes the original locker to be sent a <code>commit</code>
+notification (see section [cvs: Telling CVS to notify you#Getting-Notified Telling CVS to notify you]).
+There can be no space between &lsquo;<samp>-u</samp>&rsquo; and its argument.
+</p>
+</dd>
+<dt><code>-V<var>n</var></code></dt>
+<dd><p>In previous versions of <small>CVS</small>, this option meant to
+write an <small>RCS</small> file which would be acceptable to
+<small>RCS</small> version <var>n</var>, but it is now obsolete and
+specifying it will produce an error.
+</p>
+</dd>
+<dt><code>-x<var>suffixes</var></code></dt>
+<dd><p>In previous versions of <small>CVS</small>, this was documented
+as a way of specifying the names of the <small>RCS</small>
+files.  However, <small>CVS</small> has always required that the
+<small>RCS</small> files used by <small>CVS</small> end in &lsquo;<samp>,v</samp>&rsquo;, so
+this option has never done anything useful.
+</p>
+</dd>
+</dl>
+
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: admin--Administration#admin  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: admin--Administration#admin  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

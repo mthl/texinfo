@@ -1,0 +1,19 @@
+10.6 @lisp: Marking a Lisp Example
+==================================
+
+The @lisp command is used for Lisp code.  It is synonymous
+with the @example command.
+
+This is an example of text written between an
+@lisp command and an @end lisp command.
+
+Use @lisp instead of @example to preserve information
+regarding the nature of the example.  This is useful, for example, if
+you write a function that evaluates only and all the Lisp code in a
+Texinfo file.  Then you can use the Texinfo file as a Lisp
+library.(7)
+
+Mark the end of @lisp with @end lisp on a line by
+itself.
+
+

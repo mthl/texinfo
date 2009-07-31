@@ -1,0 +1,59 @@
+5.12 @raisesections and @lowersections
+======================================
+
+The @raisesections and @lowersections commands raise and
+lower the hierarchical level of chapters, sections, subsections and the
+like.  The @raisesections command changes sections to chapters,
+subsections to sections, and so on.  The @lowersections command
+changes chapters to sections, sections to subsections, and so on.
+
+An @lowersections command is useful if you wish to include text
+that is written as an outer or standalone Texinfo file in another
+Texinfo file as an inner, included file.  If you write the command at
+the beginning of the file, all your @chapter commands are
+formatted as if they were @section commands, all your
+@section command are formatted as if they were
+@subsection commands, and so on.
+
+@raisesections raises a command one level in the chapter
+structuring hierarchy:
+
+  Change           To
+
+@subsection     @section,
+@section        @chapter,
+@heading        @chapheading,
+          etc.
+
+@lowersections lowers a command one level in the chapter
+structuring hierarchy:
+
+  Change           To
+
+@chapter        @section,
+@subsection     @subsubsection,
+@heading        @subheading,
+          etc.
+
+An @raisesections or @lowersections command changes only
+those structuring commands that follow the command in the Texinfo file.
+Write an @raisesections or @lowersections command on a
+line of its own.
+
+An @lowersections command cancels an @raisesections
+command, and vice versa.  Typically, the commands are used like this:
+
+@lowersections
+@include somefile.texi
+@raisesections
+
+Without the @raisesections, all the subsequent sections in your
+document will be lowered.
+
+Repeated use of the commands continue to raise or lower the hierarchical
+level a step at a time.
+
+An attempt to raise above `chapters' reproduces chapter commands; an
+attempt to lower below `subsubsections' reproduces subsubsection
+commands.
+

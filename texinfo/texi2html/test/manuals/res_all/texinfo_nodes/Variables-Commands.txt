@@ -1,0 +1,64 @@
+15.4.2 Variables and Similar Entities
+-------------------------------------
+
+Here are the commands for defining variables and similar
+entities:
+
+@defvr category name
+The @defvr command is a general definition command for
+something like a variable--an entity that records a value.  You must
+choose a term to describe the category of entity being defined; for
+example, "Variable" could be used if the entity is a variable.
+Write the @defvr command at the beginning of a line and
+follow it on the same line by the category of the entity and the
+name of the entity.
+
+Capitalize the category name like a title.  If the name of the category
+contains spaces, as in the name "User Option", enclose it in braces.
+Otherwise, the second word will be mistaken for the name of the entity.
+For example,
+
+@defvr {User Option} fill-column
+This buffer-local variable specifies
+the maximum width of filled lines.
+...
+@end defvr
+
+Terminate the definition with @end defvr on a line of its
+own.
+
+The template is:
+
+@defvr category name
+body-of-definition
+@end defvr
+
+@defvr creates an entry in the index of variables for name.
+
+@defvar name
+The @defvar command is the definition command for variables.
+@defvar is equivalent to `@defvr Variable
+...'.
+
+For example:
+
+@defvar kill-ring
+...
+@end defvar
+
+The template is:
+
+@defvar name
+body-of-definition
+@end defvar
+
+@defvar creates an entry in the index of variables for
+name.
+
+@defopt name
+The @defopt command is the definition command for user
+options, i.e., variables intended for users to change according to
+taste; Emacs has many such (see (emacs)Variables section `Variables' in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
+Option} ...' and works like @defvar.
+
+

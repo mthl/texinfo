@@ -1,0 +1,32 @@
+3.2 Texinfo File Header
+=======================
+
+Texinfo files start with at least three lines that provide Info and
+TeX with necessary information.  These are the \input texinfo
+line, the @settitle line, and the @setfilename line.
+
+Also, if you want to format just part of the Texinfo file, you must
+write the @settitle and @setfilename lines between
+start-of-header and end-of-header lines.  The start- and end-of-header
+lines are optional, but they do no harm, so you might as well always
+include them.
+
+Any command that affects document formatting as a whole makes sense to
+include in the header.  @synindex (see synindex), for
+instance, is another command often included in the header.  See GNU Sample Texts, for complete sample texts.
+
+Thus, the beginning of a Texinfo file generally looks like this:
+
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample.info
+@settitle Sample Manual 1.0
+@c %**end of header
+
+* First Line::                  The first line of a Texinfo file.
+* Start of Header::             Formatting a region requires this.
+* setfilename::                 Tell Info the name of the Info file.
+* settitle::                    Create a title for the printed work.
+* End of Header::               Formatting a region requires this.
+
+

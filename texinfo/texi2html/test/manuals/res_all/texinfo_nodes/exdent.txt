@@ -1,0 +1,30 @@
+10.10 @exdent: Undoing a Line's Indentation
+===========================================
+
+The @exdent command removes any indentation a line might have.
+The command is written at the beginning of a line and applies only to
+the text that follows the command that is on the same line.  Do not use
+braces around the text.  In a printed manual, the text on an
+@exdent line is printed in the roman font.
+
+@exdent is usually used within examples.  Thus,
+
+@example
+This line follows an @@example command.
+@exdent This line is exdented.
+This line follows the exdented line.
+The @@end example comes on the next line.
+@end group
+
+produces
+
+This line follows an @example command.
+This line is exdented.
+This line follows the exdented line.
+The @end example comes on the next line.
+
+In practice, the @exdent command is rarely used.
+Usually, you un-indent text by ending the example and
+returning the page to its normal width.
+
+

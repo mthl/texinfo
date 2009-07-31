@@ -1,0 +1,113 @@
+<div id="checkout"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: admin options#admin-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout options#checkout-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
+=== checkout&mdash;Check out sources for editing ===
+<div id="index-checkout-_0028subcommand_0029"></div>
+<div id="index-co-_0028subcommand_0029"></div>
+
+<ul>
+<li>
+Synopsis: checkout [options] modules&hellip;
+</li><li>
+Requires: repository.
+</li><li>
+Changes: working directory.
+</li><li>
+Synonyms: co, get
+</li></ul>
+
+<p>Create or update a working directory containing copies of the
+source files specified by <var>modules</var>.  You must execute
+<code>checkout</code> before using most of the other <small>CVS</small>
+commands, since most of them operate on your working
+directory.
+</p>
+<p>The <var>modules</var> are either
+symbolic names for some
+collection of source directories and files, or paths to
+directories or files in the repository.  The symbolic
+names are defined in the &lsquo;<samp>modules</samp>&rsquo; file.
+See section [cvs: The modules file#modules The modules file].
+</p>
+<p>Depending on the modules you specify, <code>checkout</code> may
+recursively create directories and populate them with
+the appropriate source files.  You can then edit these
+source files at any time (regardless of whether other
+software developers are editing their own copies of the
+sources); update them to include new changes applied by
+others to the source repository; or commit your work as
+a permanent change to the source repository.
+</p>
+<p>Note that <code>checkout</code> is used to create
+directories.  The top-level directory created is always
+added to the directory where <code>checkout</code> is
+invoked, and usually has the same name as the specified
+module.  In the case of a module alias, the created
+sub-directory may have a different name, but you can be
+sure that it will be a sub-directory, and that
+<code>checkout</code> will show the relative path leading to
+each file as it is extracted into your private work
+area (unless you specify the &lsquo;<samp>-Q</samp>&rsquo; global option).
+</p>
+<p>The files created by <code>checkout</code> are created
+read-write, unless the &lsquo;<samp>-r</samp>&rsquo; option to <small>CVS</small>
+(see section [cvs: Global options#Global-options Global options]) is specified, the
+<code>CVSREAD</code> environment variable is specified
+(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), or a watch is in
+effect for that file (see section [cvs: Mechanisms to track who is editing files#Watches Mechanisms to track who is editing files]).
+</p>
+<p>Note that running <code>checkout</code> on a directory that was already
+built by a prior <code>checkout</code> is also permitted.
+This is similar to specifying the &lsquo;<samp>-d</samp>&rsquo; option
+to the <code>update</code> command in the sense that new
+directories that have been created in the repository
+will appear in your work area.
+However, <code>checkout</code> takes a module name whereas
+<code>update</code> takes a directory name.  Also
+to use <code>checkout</code> this way it must be run from the
+top level directory (where you originally ran
+<code>checkout</code> from), so before you run
+<code>checkout</code> to update an existing directory, don&rsquo;t
+forget to change your directory to the top level
+directory.
+</p>
+<p>For the output produced by the <code>checkout</code> command
+see [cvs: update output#update-output update output].
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: checkout options#checkout-options  checkout options]::<nowiki>            checkout options
+</nowiki>&bull;[cvs: checkout examples#checkout-examples  checkout examples]::<nowiki>           checkout examples
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: admin options#admin-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout options#checkout-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,180 @@
+<div id="checkout-options"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout examples#checkout-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="checkout-options-1"></div>
+==== checkout options ====
+
+<p>These standard options are supported by <code>checkout</code>
+(see section [cvs: Common command options#Common-options Common command options], for a complete description of
+them):
+</p>
+<dl compact="compact">
+<dt><code>-D <var>date</var></code></dt>
+<dd><p>Use the most recent revision no later than <var>date</var>.
+This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.  See
+[cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>Only useful with the &lsquo;<samp>-D <var>date</var></samp>&rsquo; or &lsquo;<samp>-r
+<var>tag</var></samp>&rsquo; flags.  If no matching revision is found,
+retrieve the most recent revision (instead of ignoring
+the file).
+</p>
+</dd>
+<dt><code>-k <var>kflag</var></code></dt>
+<dd><p>Process keywords according to <var>kflag</var>.  See
+[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+This option is sticky; future updates of
+this file in this working directory will use the same
+<var>kflag</var>.  The <code>status</code> command can be viewed
+to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], for
+more information on the <code>status</code> command.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory.
+</p>
+</dd>
+<dt><code>-n</code></dt>
+<dd><p>Do not run any checkout program (as specified
+with the &lsquo;<samp>-o</samp>&rsquo; option in the modules file;
+see section [cvs: The modules file#modules The modules file]).
+</p>
+</dd>
+<dt><code>-P</code></dt>
+<dd><p>Prune empty directories.  See [cvs: Moving and renaming directories#Moving-directories Moving and renaming directories].
+</p>
+</dd>
+<dt><code>-p</code></dt>
+<dd><p>Pipe files to the standard output.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Checkout directories recursively.  This option is on by default.
+</p>
+</dd>
+<dt><code>-r <var>tag</var></code></dt>
+<dd><p>Use revision <var>tag</var>.  This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.
+See [cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+</p></dd>
+</dl>
+
+<p>In addition to those, you can use these special command
+options with <code>checkout</code>:
+</p>
+<dl compact="compact">
+<dt><code>-A</code></dt>
+<dd><p>Reset any sticky tags, dates, or &lsquo;<samp>-k</samp>&rsquo; options.
+See [cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+</p>
+</dd>
+<dt><code>-c</code></dt>
+<dd><p>Copy the module file, sorted, to the standard output,
+instead of creating or modifying any files or
+directories in your working directory.
+</p>
+</dd>
+<dt><code>-d <var>dir</var></code></dt>
+<dd><p>Create a directory called <var>dir</var> for the working
+files, instead of using the module name.  In general,
+using this flag is equivalent to using &lsquo;<samp>mkdir
+<var>dir</var>; cd <var>dir</var></samp>&rsquo; followed by the checkout
+command without the &lsquo;<samp>-d</samp>&rsquo; flag.
+</p>
+<p>There is an important exception, however.  It is very
+convenient when checking out a single item to have the
+output appear in a directory that doesn&rsquo;t contain empty
+intermediate directories.  In this case <em>only</em>,
+<small>CVS</small> tries to &ldquo;shorten&rdquo; pathnames to avoid those empty
+directories.
+</p>
+<p>For example, given a module &lsquo;<samp>foo</samp>&rsquo; that contains
+the file &lsquo;<samp>bar.c</samp>&rsquo;, the command &lsquo;<samp>cvs co -d dir
+foo</samp>&rsquo; will create directory &lsquo;<samp>dir</samp>&rsquo; and place
+&lsquo;<samp>bar.c</samp>&rsquo; inside.  Similarly, given a module
+&lsquo;<samp>bar</samp>&rsquo; which has subdirectory &lsquo;<samp>baz</samp>&rsquo; wherein
+there is a file &lsquo;<samp>quux.c</samp>&rsquo;, the command &lsquo;<samp>cvs co
+-d dir bar/baz</samp>&rsquo; will create directory &lsquo;<samp>dir</samp>&rsquo; and
+place &lsquo;<samp>quux.c</samp>&rsquo; inside.
+</p>
+<p>Using the &lsquo;<samp>-N</samp>&rsquo; flag will defeat this behavior.
+Given the same module definitions above, &lsquo;<samp>cvs co
+-N -d dir foo</samp>&rsquo; will create directories &lsquo;<samp>dir/foo</samp>&rsquo;
+and place &lsquo;<samp>bar.c</samp>&rsquo; inside, while &lsquo;<samp>cvs co -N -d
+dir bar/baz</samp>&rsquo; will create directories &lsquo;<samp>dir/bar/baz</samp>&rsquo;
+and place &lsquo;<samp>quux.c</samp>&rsquo; inside.
+</p>
+</dd>
+<dt><code>-j <var>tag</var></code></dt>
+<dd><p>With two &lsquo;<samp>-j</samp>&rsquo; options, merge changes from the
+revision specified with the first &lsquo;<samp>-j</samp>&rsquo; option to
+the revision specified with the second &lsquo;<samp>j</samp>&rsquo; option,
+into the working directory.
+</p>
+<p>With one &lsquo;<samp>-j</samp>&rsquo; option, merge changes from the
+ancestor revision to the revision specified with the
+&lsquo;<samp>-j</samp>&rsquo; option, into the working directory.  The
+ancestor revision is the common ancestor of the
+revision which the working directory is based on, and
+the revision specified in the &lsquo;<samp>-j</samp>&rsquo; option.
+</p>
+<p>In addition, each -j option can contain an optional
+date specification which, when used with branches, can
+limit the chosen revision to one within a specific
+date.  An optional date is specified by adding a colon
+(:) to the tag:
+&lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
+</p>
+<p>See section [cvs: Branching and merging#Branching-and-merging Branching and merging].
+</p>
+</dd>
+<dt><code>-N</code></dt>
+<dd><p>Only useful together with &lsquo;<samp>-d <var>dir</var></samp>&rsquo;.  With
+this option, <small>CVS</small> will not &ldquo;shorten&rdquo; module paths
+in your working directory when you check out a single
+module.  See the &lsquo;<samp>-d</samp>&rsquo; flag for examples and a
+discussion.
+</p>
+</dd>
+<dt><code>-s</code></dt>
+<dd><p>Like &lsquo;<samp>-c</samp>&rsquo;, but include the status of all modules,
+and sort it by the status string.  See section [cvs: The modules file#modules The modules file], for
+info about the &lsquo;<samp>-s</samp>&rsquo; option that is used inside the
+modules file to set the module status.
+</p></dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout examples#checkout-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: checkout--Check out sources for editing#checkout  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,85 @@
+1.3 Info files
+==============
+
+An Info file is a Texinfo file formatted so that the Info documentation
+reading program can operate on it.  (makeinfo
+and texinfo-format-buffer are two commands that convert a Texinfo file
+into an Info file.)
+
+Info files are divided into pieces called nodes, each of which
+contains the discussion of one topic.  Each node has a name, and
+contains both text for the user to read and pointers to other nodes,
+which are identified by their names.  The Info program displays one node
+at a time, and provides commands with which the user can move to other
+related nodes.
+
+See info: (info)Top, for more information about using Info.
+
+Each node of an Info file may have any number of child nodes that
+describe subtopics of the node's topic.  The names of child
+nodes are listed in a menu within the parent node; this
+allows you to use certain Info commands to move to one of the child
+nodes.  Generally, an Info file is organized like a book.  If a node
+is at the logical level of a chapter, its child nodes are at the level
+of sections; likewise, the child nodes of sections are at the level
+of subsections.
+
+All the children of any one parent are linked together in a
+bidirectional chain of `Next' and `Previous' pointers.  The `Next'
+pointer provides a link to the next section, and the `Previous' pointer
+provides a link to the previous section.  This means that all the nodes
+that are at the level of sections within a chapter are linked together.
+Normally the order in this chain is the same as the order of the
+children in the parent's menu.  Each child node records the parent node
+name as its `Up' pointer.  The last child has no `Next' pointer, and the
+first child has the parent both as its `Previous' and as its `Up'
+pointer.(2)
+
+The book-like structuring of an Info file into nodes that correspond
+to chapters, sections, and the like is a matter of convention, not a
+requirement.  The `Up', `Previous', and `Next' pointers of a node can
+point to any other nodes, and a menu can contain any other nodes.
+Thus, the node structure can be any directed graph.  But it is usually
+more comprehensible to follow a structure that corresponds to the
+structure of chapters and sections in a printed book or report.
+
+In addition to menus and to `Next', `Previous', and `Up' pointers, Info
+provides pointers of another kind, called references, that can be
+sprinkled throughout the text.  This is usually the best way to
+represent links that do not fit a hierarchical structure.
+
+Usually, you will design a document so that its nodes match the
+structure of chapters and sections in the printed output.  But
+occasionally there are times when this is not right for the material
+being discussed.  Therefore, Texinfo uses separate commands to specify
+the node structure for the Info file and the section structure for the
+printed output.
+
+Generally, you enter an Info file through a node that by convention is
+named `Top'.  This node normally contains just a brief summary of the
+file's purpose, and a large menu through which the rest of the file is
+reached.  From this node, you can either traverse the file
+systematically by going from node to node, or you can go to a specific
+node listed in the main menu, or you can search the index menus and then
+go directly to the node that has the information you want.  Alternatively,
+with the standalone Info program, you can specify specific menu items on
+the command line (see (info)Top section `Top' in Info).
+
+If you want to read through an Info file in sequence, as if it were a
+printed manual, you can hit <SPC> repeatedly, or you get the whole
+file with the advanced Info command g *.  (See Advanced Info commands: (info)Expert.)
+
+The `dir' file in the `info' directory serves as the
+departure point for the whole Info system.  From it, you can reach the
+`Top' nodes of each of the documents in a complete Info system.
+
+If you wish to refer to an Info file in a URI, you can use the
+(unofficial) syntax exemplified in the following.  This works with
+Emacs/W3, for example:
+info:///usr/info/emacs#Dissociated%20Press
+info:emacs#Dissociated%20Press
+info://localhost/usr/info/emacs#Dissociated%20Press
+
+The info program itself does not follow URI's of any kind.
+
+

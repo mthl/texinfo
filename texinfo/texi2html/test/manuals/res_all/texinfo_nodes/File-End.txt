@@ -1,0 +1,16 @@
+4.3 @bye File Ending
+====================
+
+An @bye command terminates TeX or Info formatting.  None of
+the formatting commands reading anything following @bye.  The
+@bye command should be on a line by itself.
+
+If you wish, you may follow the @bye line with notes. These
+notes will not be formatted and will not appear in either Info or a
+printed manual; it is as if text after @bye were within
+@ignore ... @end ignore.  Also, you may follow the
+@bye line with a local variables list for Emacs.
+See Using Local Variables and the Compile Command,
+for more information.
+
+

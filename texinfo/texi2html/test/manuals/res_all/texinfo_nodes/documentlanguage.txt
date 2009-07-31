@@ -1,0 +1,71 @@
+17.1 @documentlanguage cc: Set the Document Language
+====================================================
+
+
+The @documentlanguage command declares the current document
+language.  Write it on a line by itself, with a two-letter ISO-639
+language code following (list is included below).  If you have a
+multilingual document, the intent is to be able to use this command
+multiple times, to declare each language change.  If the command is not
+used at all, the default is en for English.
+
+At present, this command is ignored in Info and HTML output.  For
+TeX, it causes the file `txi-cc.tex' to be read (if it
+exists).  Such a file appropriately redefines the various English words
+used in TeX output, such as `Chapter', `See', and so on.
+
+It would be good if this command also changed TeX's ideas of the
+current hyphenation patterns (via the TeX primitive
+\language), but this is unfortunately not currently implemented.
+
+Hereare the valid language codes, from ISO-639.
+
+ aa Afar ab Abkhazian af Afrikaans
+ am Amharic ar Arabic as Assamese
+ ay Aymara az Azerbaijani ba Bashkir
+ be Byelorussian bg Bulgarian bh Bihari
+ bi Bislama bn Bengali; Bangla bo Tibetan
+ br Breton ca Catalan co Corsican
+ cs Czech cy Welsh da Danish
+ de German dz Bhutani el Greek
+ en English eo Esperanto es Spanish
+ et Estonian eu Basque fa Persian
+ fi Finnish fj Fiji fo Faroese
+ fr French fy Frisian ga Irish
+ gd Scots Gaelic gl Galician gn Guarani
+ gu Gujarati ha Hausa he Hebrew
+ hi Hindi hr Croatian hu Hungarian
+ hy Armenian ia Interlingua id Indonesian
+ ie Interlingue ik Inupiak is Icelandic
+ it Italian iu Inuktitut ja Japanese
+ jw Javanese ka Georgian kk Kazakh
+ kl Greenlandic km Cambodian kn Kannada
+ ks Kashmiri ko Korean ku Kurdish
+ ky Kirghiz la Latin ln Lingala
+ lt Lithuanian lo Laothian lv Latvian, Lettish
+ mg Malagasy mi Maori mk Macedonian
+ ml Malayalam mn Mongolian mo Moldavian
+ mr Marathi ms Malay mt Maltese
+ my Burmese na Nauru ne Nepali
+ nl Dutch no Norwegian oc Occitan
+ om (Afan) Oromo or Oriya pa Punjabi
+ pl Polish ps Pashto, Pushto pt Portuguese
+ qu Quechua rm Rhaeto-Romance rn Kirundi
+ ro Romanian ru Russian rw Kinyarwanda
+ sa Sanskrit sd Sindhi sg Sangro
+ sh Serbo-Croatian si Sinhalese sk Slovak
+ sl Slovenian sm Samoan sn Shona
+ so Somali sq Albanian sr Serbian
+ ss Siswati st Sesotho su Sundanese
+ sv Swedish sw Swahili ta Tamil
+ te Telugu tg Tajik th Thai
+ ti Tigrinya tk Turkmen tl Tagalog
+ tn Setswana to Tonga tr Turkish
+ ts Tsonga tt Tatar tw Twi
+ ug Uighur uk Ukrainian ur Urdu
+ uz Uzbek vi Vietnamese vo Volapuk
+ wo Wolof xh Xhosa yi Yiddish
+ yo Yoruba za Zhuang zh Chinese
+ zu Zulu
+
+

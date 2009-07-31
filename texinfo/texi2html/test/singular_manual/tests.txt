@@ -1,3 +1,4 @@
 texi singular.texi
+singular_plain singular.texi -split chapter
 singular singular.texi -init-file t2h_singular.init -init l2h_tmp_dir.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose
 singular_httex singular.texi -init-file t2h_singular.init -init tex4ht.init -short-ext -prefix sing -top-file index.htm -noVerbose

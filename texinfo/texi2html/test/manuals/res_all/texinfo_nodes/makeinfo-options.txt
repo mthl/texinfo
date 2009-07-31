@@ -1,0 +1,192 @@
+20.1.3 Options for makeinfo
+---------------------------
+
+The makeinfo command takes a number of options.  Most often,
+options are used to set the value of the fill column and specify the
+footnote style.  Each command line option is a word preceded by
+`--' or a letter preceded by `-'.  You can use abbreviations
+for the long option names as long as they are unique.
+
+For example, you could use the following shell command to create an Info
+file for `bison.texinfo' in which each line is filled to only 68
+columns:
+
+makeinfo --fill-column=68 bison.texinfo
+
+You can write two or more options in sequence, like this:
+
+makeinfo --no-split --fill-column=70 ...
+
+This would keep the Info file together as one possibly very long
+file and would also set the fill column to 70.
+
+The options are:
+
+-D var
+Cause the variable var to be defined.  This is equivalent to
+@set var in the Texinfo file (see set clear value).
+
+--commands-in-node-names
+Allow @-commands in node names.  This is not recommended, as it
+can probably never be implemented in TeX.  It also makes
+makeinfo much slower.  Also, this option is ignored when
+`--no-validate' is used.  See Pointer Validation, for more
+details.
+
+--docbook
+Generate DocBook output rather than Info.  
+
+--error-limit=limit
+-e limit
+Set the maximum number of errors that makeinfo will report
+before exiting (on the assumption that continuing would be useless);
+default 100.
+
+--fill-column=width
+-f width
+Specify the maximum number of columns in a line; this is the right-hand
+edge of a line.  Paragraphs that are filled will be filled to this
+width.  (Filling is the process of breaking up and connecting lines so
+that lines are the same length as or shorter than the number specified
+as the fill column.  Lines are broken between words.) The default value
+is 72.  Ignored with `--html'.
+
+--footnote-style=style
+-s style
+Set the footnote style to style, either `end' for the end
+node style (the default) or `separate' for the separate node style.
+The value set by this option overrides the value set in a Texinfo file
+by an @footnotestyle command (see Footnotes).  When the
+footnote style is `separate', makeinfo makes a new node
+containing the footnotes found in the current node.  When the footnote
+style is `end', makeinfo places the footnote references at
+the end of the current node.  Ignored with `--html'.
+
+--force
+-F
+Ordinarily, if the input file has errors, the output files are not
+created.  With this option, they are preserved.
+
+--help
+-h
+Print a usage message listing all available options, then exit successfully.
+
+--html
+Generate HTML output rather than Info.  See makeinfo html.  By
+default, the HTML output is split into one output file per source node,
+and the split output is written into a subdirectory with the name of the
+top-level info file.
+
+-I dir
+Append dir to the directory search list for finding files that
+are included using the @include command.  By default,
+makeinfo searches only the current directory.  If dir is
+not given, the current directory `.' is appended.  Note that
+dir can actually be a list of several directories separated by the
+usual path separator character (`:' on Unix, `;' on
+MS-DOS/MS-Windows).
+
+--macro-expand=file
+-E file
+Output the Texinfo source with all the macros expanded to the named
+file.  Normally, the results of macro expansion are used internally by
+makeinfo and then discarded.  This option is used by
+texi2dvi if you are using an old version of `texinfo.tex'
+that does not support @macro.
+
+--no-headers
+For Info output, do not include menus or node separator lines in the
+output.  This results in a simple plain text file that you can (for
+example) send in email without complications, or include in a
+distribution (as in an `INSTALL' file).
+
+For HTML output, likewise omit menus.  And if `--no-split' is also
+specified, do not include a navigation links at the top of each node
+(these are never included in the default case of split output).
+See makeinfo html.
+
+In both cases, write to standard output by default (can still be
+overridden by `-o').
+
+--no-split
+Suppress the splitting stage of makeinfo.  By default, large
+output files (where the size is greater than 70k bytes) are split into
+smaller subfiles.  For Info output, each one is approximately 50k bytes.
+For HTML output, each file contains one node (see makeinfo html).
+
+--no-pointer-validate
+--no-validate
+Suppress the pointer-validation phase of makeinfo.  This can also
+be done with the @novalidate command (see Use TeX).  Normally, after a Texinfo file is processed, some consistency
+checks are made to ensure that cross references can be resolved, etc.
+See Pointer Validation.
+
+--no-warn
+Suppress warning messages (but not error messages).  You might
+want this if the file you are creating has examples of Texinfo cross
+references within it, and the nodes that are referenced do not actually
+exist.
+
+--number-sections
+Output chapter, section, and appendix numbers as in printed manuals.
+
+--no-number-footnotes
+Suppress automatic footnote numbering.  By default, makeinfo
+numbers each footnote sequentially in a single node, resetting the
+current footnote number to 1 at the start of each node.
+
+--output=file
+-o file
+Specify that the output should be directed to file and not to the
+file name specified in the @setfilename command found in the
+Texinfo source (see setfilename).  If file is `-', output
+goes to standard output and `--no-split' is implied.  For split
+HTML output, file is the name for the directory into which all
+HTML nodes are written (see makeinfo html).
+
+-P dir
+Prepend dir to the directory search list for @include.
+If dir is not given, the current directory `.' is prepended.
+See `-I' for more details.
+
+--paragraph-indent=indent
+-p indent
+Set the paragraph indentation style to indent.  The value set by
+this option overrides the value set in a Texinfo file by an
+@paragraphindent command (see paragraphindent).  The value
+of indent is interpreted as follows:
+
+`asis'
+Preserve any existing indentation at the starts of paragraphs.
+
+`0' or `none'
+Delete any existing indentation.
+
+num
+Indent each paragraph by num spaces.
+
+--reference-limit=limit
+-r limit
+Set the value of the number of references to a node that
+makeinfo will make without reporting a warning.  If a node has more
+than this number of references in it, makeinfo will make the
+references but also report a warning.  The default is 1000.
+
+-U var
+Cause var to be undefined.  This is equivalent to
+@clear var in the Texinfo file (see set clear value).
+
+--verbose
+Cause makeinfo to display messages saying what it is doing.
+Normally, makeinfo only outputs messages if there are errors or
+warnings.
+
+--version
+-V
+Print the version number, then exit successfully.
+
+--xml
+Generate XML output rather than Info.  
+
+
+

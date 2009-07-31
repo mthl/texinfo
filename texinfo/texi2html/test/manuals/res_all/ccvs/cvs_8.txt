@@ -1,0 +1,111 @@
+8 History browsing
+******************
+
+
+Once you have used CVS to store a version control
+history--what files have changed when, how, and by
+whom, there are a variety of mechanisms for looking
+through the history.
+
+* log messages::                Log messages
+* history database::            The history database
+* user-defined logging::        User-defined logging
+* annotate::                    What revision modified each line of a file?
+
+8.1 Log messages
+================
+
+Whenever you commit a file you specify a log message.
+
+To look through the log messages which have been
+specified for every revision which has been committed,
+use the cvs log command (see log).
+
+8.2 The history database
+========================
+
+You can use the history file (see history file) to
+log various CVS actions.  To retrieve the
+information from the history file, use the cvs
+history command (see history).
+
+Note: you can control what is logged to this file by using the
+`LogHistory' keyword in the `CVSROOT/config' file
+(see config).
+
+
+8.3 User-defined logging
+========================
+
+You can customize CVS to log various kinds of
+actions, in whatever manner you choose.  These
+mechanisms operate by executing a script at various
+times.  The script might append a message to a file
+listing the information and the programmer who created
+it, or send mail to a group of developers, or, perhaps,
+post a message to a particular newsgroup.  To log
+commits, use the `loginfo' file (see loginfo).
+To log commits, checkouts, exports, and tags,
+respectively, you can also use the `-i',
+`-o', `-e', and `-t' options in the
+modules file.  For a more flexible way of giving
+notifications to various users, which requires less in
+the way of keeping centralized scripts up to date, use
+the cvs watch add command (see Getting Notified); this command is useful even if you are not
+using cvs watch on.
+
+The `taginfo' file defines programs to execute
+when someone executes a tag or rtag
+command.  The `taginfo' file has the standard form
+for administrative files (see Administrative files), where each line is a regular expression
+followed by a command to execute.  The arguments passed
+to the command are, in order, the tagname,
+operation (add for tag,
+mov for tag -F, and del for
+tag -d), repository, and any remaining are
+pairs of filename revision.  A non-zero
+exit of the filter program will cause the tag to be
+aborted.
+
+Here is an example of using taginfo to log tag and rtag
+commands.  In the taginfo file put:
+
+ALL /usr/local/cvsroot/CVSROOT/loggit
+
+Where `/usr/local/cvsroot/CVSROOT/loggit' contains the
+following script:
+
+#!/bin/sh
+echo "$@" >>/home/kingdon/cvsroot/CVSROOT/taglog
+
+8.4 Annotate command
+====================
+
+ -- Command: cvs annotate [-FflR] [-r rev|-D date] files ...
+
+For each file in files, print the head revision
+of the trunk, together with information on the last
+modification for each line.  For example:
+
+$ cvs annotate ssfile
+Annotations for ssfile
+***************
+1.1          (mary     27-Mar-96): ssfile line 1
+1.2          (joe      28-Mar-96): ssfile line 2
+
+The file `ssfile' currently contains two lines.
+The ssfile line 1 line was checked in by
+mary on March 27.  Then, on March 28, joe
+added a line ssfile line 2, without modifying
+the ssfile line 1 line.  This report doesn't
+tell you anything about lines which have been deleted
+or replaced; you need to use cvs diff for that
+(see diff).
+
+
+The options to cvs annotate are listed in
+Invoking CVS, and can be used to select the files
+and revisions to annotate.  The options are described
+in more detail there and in Common options.
+
+

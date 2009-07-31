@@ -1,0 +1,20 @@
+20.1.2 Running makeinfo from a Shell
+------------------------------------
+
+To create an Info file from a Texinfo file, type makeinfo
+followed by the name of the Texinfo file.  Thus, to create the Info
+file for Bison, type the following to the shell:
+
+makeinfo bison.texinfo
+
+(You can run a shell inside Emacs by typing M-x shell.)
+
+Sometimes you will want to specify options.  For example, if you wish
+to discover which version of makeinfo you are using,
+type:
+
+makeinfo --version
+
+See makeinfo options, for more information.
+
+

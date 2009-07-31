@@ -1,0 +1,71 @@
+3.4.3 @title, @subtitle, and @author
+------------------------------------
+
+You can use the @title, @subtitle, and @author
+commands to create a title page in which the vertical and horizontal
+spacing is done for you automatically.  This contrasts with the method
+described in the previous section, in which the @sp command is
+needed to adjust vertical spacing.
+
+Write the @title, @subtitle, or @author
+commands at the beginning of a line followed by the title, subtitle,
+or author.
+
+The @title command produces a line in which the title is set
+flush to the left-hand side of the page in a larger than normal font.
+The title is underlined with a black rule.  Only a single line is
+allowed; the @* command may not be used to break the title into
+two lines.  To handle very long titles, you may find it profitable to
+use both @title and @titlefont; see the final example in
+this section.
+
+The @subtitle command sets subtitles in a normal-sized font
+flush to the right-hand side of the page.
+
+The @author command sets the names of the author or authors in
+a middle-sized font flush to the left-hand side of the page on a line
+near the bottom of the title page.  The names are underlined with a
+black rule that is thinner than the rule that underlines the title.
+(The black rule only occurs if the @author command line is
+followed by an @page command line.)
+
+There are two ways to use the @author command: you can write
+the name or names on the remaining part of the line that starts with
+an @author command:
+
+@author by Jane Smith and John Doe
+
+or you can write the names one above each other by using two (or more)
+@author commands:
+
+@author Jane Smith
+@author John Doe
+
+(Only the bottom name is underlined with a black rule.)
+
+A template for this method looks like this:
+
+@titlepage
+@title name-of-manual-when-printed
+@subtitle subtitle-if-any
+@subtitle second-subtitle
+@author author
+@page
+...
+@end titlepage
+
+You may also combine the @titlefont method described in the
+previous section and @title method described in this one.  This
+may be useful if you have a very long title.  Here is a real-life example:
+
+@titlepage
+@titlefont{GNU Software}
+@sp 1
+@title for MS-Windows and MS-DOS
+@subtitle Edition @value{e} for Release @value{cde}
+@author by Daniel Hagerty, Melissa Weisshaus
+@author and Eli Zaretskii
+
+(The use of @value here is explained in value Example.
+
+

@@ -1,0 +1,21 @@
+Annexe D Include Files
+**********************
+
+When TeX or an Info formatting command sees an @include
+command in a Texinfo file, it processes the contents of the file named
+by the command and incorporates them into the DVI or Info file being
+created.  Index entries from the included file are incorporated into
+the indices of the output file.
+
+Include files let you keep a single large document as a collection of
+conveniently small parts.
+
+* Using Include Files::         How to use the @include command.
+* texinfo-multiple-files-update::  How to create and update nodes and
+                                  menus when using included files.
+* Include File Requirements::   What texinfo-multiple-files-update expects.
+* Sample Include File::         A sample outer file with included files
+                                  within it; and a sample included file.
+* Include Files Evolution::     How use of the @include command
+                                  has changed over time.
+

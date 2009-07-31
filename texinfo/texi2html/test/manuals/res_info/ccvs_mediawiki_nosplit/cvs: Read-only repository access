@@ -1,0 +1,121 @@
+<div id="Read_002donly-access"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Connecting with fork#Connecting-via-fork  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Temporary directories for the server#Server-temporary-directory  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Read_002donly-repository-access"></div>
+=== Read-only repository access ===
+<div id="index-Read_002donly-repository-access"></div>
+<div id="index-readers-_0028admin-file_0029"></div>
+<div id="index-writers-_0028admin-file_0029"></div>
+
+<p>        It is possible to grant read-only repository
+access to people using the password-authenticated
+server (see section [cvs: Direct connection with password authentication#Password-authenticated Direct connection with password authentication]).  (The
+other access methods do not have explicit support for
+read-only users because those methods all assume login
+access to the repository machine anyway, and therefore
+the user can do whatever local file permissions allow
+her to do.)
+</p>
+<p>        A user who has read-only access can do only
+those <small>CVS</small> operations which do not modify the
+repository, except for certain &ldquo;administrative&rdquo; files
+(such as lock files and the history file).  It may be
+desirable to use this feature in conjunction with
+user-aliasing (see section [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication]).
+</p>
+<p>Unlike with previous versions of <small>CVS</small>, read-only
+users should be able merely to read the repository, and
+not to execute programs on the server or otherwise gain
+unexpected levels of access.  Or to be more accurate,
+the <em>known</em> holes have been plugged.  Because this
+feature is new and has not received a comprehensive
+security audit, you should use whatever level of
+caution seems warranted given your attitude concerning
+security.
+</p>
+<p>        There are two ways to specify read-only access
+for a user: by inclusion, and by exclusion.
+</p>
+<p>        &quot;Inclusion&quot; means listing that user
+specifically in the &lsquo;<tt>$CVSROOT/CVSROOT/readers</tt>&rsquo;
+file, which is simply a newline-separated list of
+users.  Here is a sample &lsquo;<tt>readers</tt>&rsquo; file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>melissa
+splotnik
+jrandom
+</nowiki></pre></td></tr></table>
+
+<p>        (Don&rsquo;t forget the newline after the last user.)
+</p>
+<p>        &quot;Exclusion&quot; means explicitly listing everyone
+who has <em>write</em> access&mdash;if the file
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$CVSROOT/CVSROOT/writers
+</nowiki></pre></td></tr></table>
+
+<p>exists, then only
+those users listed in it have write access, and
+everyone else has read-only access (of course, even the
+read-only users still need to be listed in the
+<small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file).  The
+&lsquo;<tt>writers</tt>&rsquo; file has the same format as the
+&lsquo;<tt>readers</tt>&rsquo; file.
+</p>
+<p>        Note: if your <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo;
+file maps cvs users onto system users (see section [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication]), make sure you deny or grant
+read-only access using the <em>cvs</em> usernames, not
+the system usernames.  That is, the &lsquo;<tt>readers</tt>&rsquo; and
+&lsquo;<tt>writers</tt>&rsquo; files contain cvs usernames, which may
+or may not be the same as system usernames.
+</p>
+<p>        Here is a complete description of the server&rsquo;s
+behavior in deciding whether to grant read-only or
+read-write access:
+</p>
+<p>        If &lsquo;<tt>readers</tt>&rsquo; exists, and this user is
+listed in it, then she gets read-only access.  Or if
+&lsquo;<tt>writers</tt>&rsquo; exists, and this user is NOT listed in
+it, then she also gets read-only access (this is true
+even if &lsquo;<tt>readers</tt>&rsquo; exists but she is not listed
+there).  Otherwise, she gets full read-write access.
+</p>
+<p>        Of course there is a conflict if the user is
+listed in both files.  This is resolved in the more
+conservative way, it being better to protect the
+repository too much than too little: such a user gets
+read-only access.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Connecting with fork#Connecting-via-fork  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Temporary directories for the server#Server-temporary-directory  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,210 @@
+3.9.3 Typesetting of help strings
+---------------------------------
+
+The help strings of procedures and info strings of libraries which are
+included in the
+distribution of SINGULAR are parsed and automatically converted
+into the texinfo format (the typesetting language in which the
+documentation  of SINGULAR is written).
+
+For optimal typesetting results, the guidelines for writing libraries
+and procedures should be followed, and the following points should be
+kept in mind:
+
+* If a help string starts with an @ sign, then no parsing is done,
+and the help string is assumed to be already in the texinfo format.
+* help strings are typeset within a @table @asis environment
+(which is similar to a latex description environment).
+* If a line starts with  only uppercase words and contains a colon, then
+the text up
+to the colon is taken to be the description-string of an item and the
+text following the colon is taken to be the content of the item.
+* If the description-string of an item matches
+EXAMPLE
+then this item and its content is ignored.
+SEE ALSO
+then the
+content of the item is assumed to be comma-separated words which are
+valid references to other texinfo nodes of the manual. (e.g., all
+procedure and command names are also texinfo nodes).
+KEYWORDS (or, KEYPHRASES)
+then the content of the item is assumed to be a
+semicolon-separated list of phrases which are taken as keys for the
+index of the manual (N.B. the name of a procedure/library is
+automatically added to the index keys).
+PROCEDURES
+then the
+content of the item is assumed to be a summary description of the
+procedures contained in the library. Separate texinfo nodes (subsections
+in printed documents) are
+only created out of the help strings of such procedures which
+appear in the summary description of a library.
+LIBRARY
+then the content of the item is assumed to be a one-line description of
+a library. If this one-line description consist of only uppercase
+characters, then it is typeset in all lowercase characters in the
+manual (otherwise it is left as is).
+
+* For the content of an item, the following texinfo markup elements
+are recognized (and, their content not further manipulated):
+@*
+to enforce a line-break.
+Example:
+old line @* new line
+
+ ==>
+
+ old line 
+ new line
+
+@ref{...}
+References to other parts of the SINGULAR manual can be set using
+one of the following @ref{node} constructs. Notice that
+node must be the name of a section of the SINGULAR
+manual. In particular, it may be a name of a function, library or library
+procedure.
+
+@xref{node}
+for a reference to the node node at the beginning of a sentence.
+@ref{node}
+for a reference to the node node at the end of a sentence.
+@pxref{node}
+for a reference to the node node within parenthesis.
+
+Example:
+@xref{Tropical Storms}, for more info.
+
+==>*Note Hurricanes::, for more info.
+
+==>See Section 3.1 [Hurricanes], page 24, for more info.
+
+For more information, see @ref{Hurricanes}.
+
+==>For more information, see *Note Hurricanes::.
+
+==>For more information, see Section 3.1 [Hurricanes], page 24.
+
+
+... storms cause flooding (@pxref{Hurricanes}) ...
+
+==>... storms cause flooding (*Note Hurricanes::) ...
+
+==>... storms cause flooding (see Section 3.1 [Hurricanes],
+page 24)
+
+@math{..}
+for typesetting of small (i.e., which do not go over
+multiple lines) mathematical expressions  in LaTeX math-mode
+syntax.
+Example:
+@math{\alpha}
+
+==>
+
+
+$\alpha$
+
+Note:
+Mathematical expressions inside @math{..} may
+not contain curly parenthesis and the "at" sign, i.e., may not contain
+{,},@.
+
+@code{..}
+for typesetting of small (i.e., which do not go over
+multiple lines) strings in typewriter font.
+Example:
+@code{typewriter font}
+
+==>
+
+typewriter font
+Note:
+The string inside @code{..} may
+not contain curly parenthesis and the "at" sign, i.e., may not contain
+{,},@.
+
+@example
+ ...
+@end example
+for pre-formatted text which is indented and typeset in typewriter
+font.
+Example:
+before example
+@example
+in              example
+notice extra identation and
+escape of special characters like @{,@},@@
+@end example
+after example
+==>
+
+before example
+in                example
+notice extra identation  and
+escape of special characters like {,},@
+after example
+Note:
+The characters {,},@ have to be escaped by an @ sign inside an
+@example environment.
+
+@format
+ ...
+@end format
+for pre-formatted text which is not indented and typeset in normal
+font.
+Example:
+before format
+@format
+in              format
+no extra identation but still
+escape of special characters like @{,@},@@
+@end format
+after format
+==>
+
+before format
+in              format
+no extra identation  but still
+escape of special characters like {,},@
+after format
+Note:
+The characters {,},@ have to be escaped by an @ sign inside an
+@example environment.
+
+
+@texinfo
+ ...
+@end texinfo
+for text which is written in pure texinfo.
+Example:
+@texinfo
+Among others, within a texinfo environment
+one can use the tex environment to typeset
+more complex mathematical like
+@tex
+$i_{1,1} $
+@tex
+@end texinfo
+
+==>
+
+Among others, within a texinfo environment one can use the tex environment
+to typeset more complex mathematical like
+$ i_{1,1} $
+
+
+Furthermore, a line-break is inserted in front of each line
+whose previous line is shorter than 60
+characters and does not contain any of the above described recognized
+texinfo markup elements.
+
+See also template_lib for an examples of the typesetting rules
+explained here.
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

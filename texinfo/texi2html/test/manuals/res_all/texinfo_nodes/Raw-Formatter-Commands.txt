@@ -1,0 +1,45 @@
+16.3 Raw Formatter Commands
+===========================
+
+Inside a region delineated by @iftex and @end iftex, you
+can embed some raw TeX commands.  Info will ignore these commands
+since they are only in that part of the file which is seen by TeX.
+You can write the TeX commands as you would write them in a normal
+TeX file, except that you must replace the `\' used by TeX
+with an `@'.  For example, in the @titlepage section of a
+Texinfo file, you can use the TeX command @vskip to format
+the copyright page.  (The @titlepage command causes Info to
+ignore the region automatically, as it does with the @iftex
+command.)
+
+However, many features of plain TeX will not work, as they are
+overridden by Texinfo features.
+
+You can enter plain TeX completely, and use `\' in the TeX
+commands, by delineating a region with the @tex and @end
+tex commands.  (The @tex command also causes Info to ignore the
+region, like the @iftex command.)  The sole exception is that the
+@ character still introduces a command, so that @end tex
+can be recognized properly.
+
+For example, here is a mathematical expression written in
+plain TeX:
+
+@tex
+$$ \chi^2 = \sum_{i=1}^N
+          \left (y_i - (a + b x_i)
+          \over \sigma_i\right)^2 $$
+@end tex
+
+The output of this example will appear only in a printed manual.  If
+you are reading this in Info, you will not see the equation that appears
+in the printed manual.
+
+
+Analogously, you can use @ifhtml ... @end ifhtml to delimit
+a region to be included in HTML output only, and @html ...
+@end html for a region of raw HTML (again, except that @ is
+still the escape character, so the @end command can be
+recognized.)
+
+

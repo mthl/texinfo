@@ -1,0 +1,2549 @@
+<div id="Repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Overview#Viewing-differences  &lt; ]|</td>
+<td valign="middle" align="left">|[[#Specifying-a-repository| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="The-Repository"></div>
+== The Repository ==
+<div id="index-Repository-_0028intro_0029"></div>
+<div id="index-Repository_002c-example"></div>
+<div id="index-Layout-of-repository"></div>
+<div id="index-Typical-repository"></div>
+<div id="index-_002fusr_002flocal_002fcvsroot_002c-as-example-repository"></div>
+<div id="index-cvsroot"></div>
+
+<p>The <small>CVS</small> <em>repository</em> stores a complete copy of
+all the files and directories which are under version
+control.
+</p>
+<p>Normally, you never access any of the files in the
+repository directly.  Instead, you use <small>CVS</small>
+commands to get your own copy of the files into a
+<em>working directory</em>, and then
+work on that copy.  When you&rsquo;ve finished a set of
+changes, you check (or <em>commit</em>) them back into the
+repository.  The repository then contains the changes
+which you have made, as well as recording exactly what
+you changed, when you changed it, and other such
+information.  Note that the repository is not a
+subdirectory of the working directory, or vice versa;
+they should be in separate locations.
+</p>
+<div id="index-_003alocal_003a_002c-setting-up"></div>
+<p><small>CVS</small> can access a repository by a variety of
+means.  It might be on the local computer, or it might
+be on a computer across the room or across the world.
+To distinguish various ways to access a repository, the
+repository name can start with an <em>access method</em>.
+For example, the access method <code>:local:</code> means to
+access a repository directory, so the repository
+<code>:local:/usr/local/cvsroot</code> means that the
+repository is in &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; on the
+computer running <small>CVS</small>.  For information on other
+access methods, see [[#Remote-repositories|Remote repositories]].
+</p>
+<p>If the access method is omitted, then if the repository
+starts with &lsquo;<samp>/</samp>&rsquo;, then <code>:local:</code> is
+assumed.  If it does not start with &lsquo;<samp>/</samp>&rsquo; then either
+<code>:ext:</code> or <code>:server:</code> is assumed.  For
+example, if you have a local repository in
+&lsquo;<tt>/usr/local/cvsroot</tt>&rsquo;, you can use
+<code>/usr/local/cvsroot</code> instead of
+<code>:local:/usr/local/cvsroot</code>.  But if (under
+Windows NT, for example) your local repository is
+&lsquo;<tt>c:\src\cvsroot</tt>&rsquo;, then you must specify the access
+method, as in <code>:local:c:/src/cvsroot</code>.
+</p>
+<p>The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains
+administrative files for <small>CVS</small>.  The other directories contain the actual
+user-defined modules.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Specifying-a-repository| Specifying a repository]]::<nowiki>     Telling CVS where your repository is
+</nowiki>&bull;[[#Repository-storage| Repository storage]]::<nowiki>          The structure of the repository
+</nowiki>&bull;[[#Working-directory-storage| Working directory storage]]::<nowiki>   The structure of working directories
+</nowiki>&bull;[[#Intro-administrative-files| Intro administrative files]]::<nowiki>  Defining modules
+</nowiki>&bull;[[#Multiple-repositories| Multiple repositories]]::<nowiki>       Multiple repositories
+</nowiki>&bull;[[#Creating-a-repository| Creating a repository]]::<nowiki>       Creating a repository
+</nowiki>&bull;[[#Backing-up| Backing up]]::<nowiki>                  Backing up a repository
+</nowiki>&bull;[[#Moving-a-repository| Moving a repository]]::<nowiki>         Moving a repository
+</nowiki>&bull;[[#Remote-repositories| Remote repositories]]::<nowiki>         Accessing repositories on remote machines
+</nowiki>&bull;[[#Read_002donly-access| Read-only access]]::<nowiki>            Granting read-only access to the repository
+</nowiki>&bull;[[#Server-temporary-directory| Server temporary directory]]::<nowiki>  The server creates temporary directories
+</nowiki></pre>
+<hr size="6">
+<div id="Specifying-a-repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Telling-CVS-where-your-repository-is"></div>
+=== Telling CVS where your repository is ===
+
+<p>There are several ways to tell <small>CVS</small>
+where to find the repository.  You can name the
+repository on the command line explicitly, with the
+<code>-d</code> (for &quot;directory&quot;) option:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot checkout yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+<div id="index-_002eprofile_002c-setting-CVSROOT-in"></div>
+<div id="index-_002ecshrc_002c-setting-CVSROOT-in"></div>
+<div id="index-_002etcshrc_002c-setting-CVSROOT-in"></div>
+<div id="index-_002ebashrc_002c-setting-CVSROOT-in"></div>
+<div id="index-CVSROOT_002c-environment-variable"></div>
+<p>        Or you can set the <code>$CVSROOT</code> environment
+variable to an absolute path to the root of the
+repository, &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; in this example.
+To set <code>$CVSROOT</code>, <code>csh</code> and <code>tcsh</code>
+users should have this line in their &lsquo;<tt>.cshrc</tt>&rsquo; or
+&lsquo;<tt>.tcshrc</tt>&rsquo; files:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>setenv CVSROOT /usr/local/cvsroot
+</nowiki></pre></td></tr></table>
+
+<p><code>sh</code> and <code>bash</code> users should instead have these lines in their
+&lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.bashrc</tt>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>CVSROOT=/usr/local/cvsroot
+export CVSROOT
+</nowiki></pre></td></tr></table>
+
+<div id="index-Root-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fRoot-file"></div>
+<p>        A repository specified with <code>-d</code> will
+override the <code>$CVSROOT</code> environment variable.
+Once you&rsquo;ve checked a working copy out from the
+repository, it will remember where its repository is
+(the information is recorded in the
+&lsquo;<tt>CVS/Root</tt>&rsquo; file in the working copy).
+</p>
+<p>The <code>-d</code> option and the &lsquo;<tt>CVS/Root</tt>&rsquo; file both
+override the <code>$CVSROOT</code> environment variable.  If
+<code>-d</code> option differs from &lsquo;<tt>CVS/Root</tt>&rsquo;, the
+former is used.  Of course, for proper operation they
+should be two ways of referring to the same repository.
+</p>
+<hr size="6">
+<div id="Repository-storage"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-data-is-stored-in-the-repository"></div>
+=== How data is stored in the repository ===
+<div id="index-Repository_002c-how-data-is-stored"></div>
+
+<p>For most purposes it isn&rsquo;t important <em>how</em>
+<small>CVS</small> stores information in the repository.  In
+fact, the format has changed in the past, and is likely
+to change in the future.  Since in almost all cases one
+accesses the repository via <small>CVS</small> commands, such
+changes need not be disruptive.
+</p>
+<p>However, in some cases it may be necessary to
+understand how <small>CVS</small> stores data in the repository,
+for example you might need to track down <small>CVS</small> locks
+(see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]) or you might need to deal with
+the file permissions appropriate for the repository.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Repository-files| Repository files]]::<nowiki>            What files are stored in the repository
+</nowiki>&bull;[[#File-permissions| File permissions]]::<nowiki>            File permissions
+</nowiki>&bull;[[#Windows-permissions| Windows permissions]]::<nowiki>         Issues specific to Windows
+</nowiki>&bull;[[#Attic| Attic]]::<nowiki>                       Some files are stored in the Attic
+</nowiki>&bull;[[#CVS-in-repository| CVS in repository]]::<nowiki>           Additional information in CVS directory
+</nowiki>&bull;[[#Locks| Locks]]::<nowiki>                       CVS locks control concurrent accesses
+</nowiki>&bull;[[#CVSROOT-storage| CVSROOT storage]]::<nowiki>             A few things about CVSROOT are different
+</nowiki></pre>
+<hr size="6">
+<div id="Repository-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#File-permissions| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Where-files-are-stored-within-the-repository"></div>
+==== Where files are stored within the repository ====
+
+
+<p>The overall structure of the repository is a directory
+tree corresponding to the directories in the working
+directory.  For example, supposing the repository is in
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot
+</nowiki></pre></td></tr></table>
+
+<p>here is a possible directory tree (showing only the
+directories):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki><tt>/usr</tt>
+ |
+ +--<tt>local</tt>
+ |   |
+ |   +--<tt>cvsroot</tt>
+ |   |    |
+ |   |    +--<tt>CVSROOT</tt>
+          |      (administrative files)
+          |
+          +--<tt>gnu</tt>
+          |   |
+          |   +--<tt>diff</tt>
+          |   |   (source code to GNU diff)
+          |   |
+          |   +--<tt>rcs</tt>
+          |   |   (source code to RCS)
+          |   |
+          |   +--<tt>cvs</tt>
+          |       (source code to CVS)
+          |
+          +--<tt>yoyodyne</tt>
+              |
+              +--<tt>tc</tt>
+              |    |
+              |    +--<tt>man</tt>
+              |    |
+              |    +--<tt>testing</tt>
+              |
+              +--(other Yoyodyne software)
+</nowiki></pre></td></tr></table>
+
+<p>With the directories are <em>history files</em> for each file
+under version control.  The name of the history file is
+the name of the corresponding file with &lsquo;<samp>,v</samp>&rsquo;
+appended to the end.  Here is what the repository for
+the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>  <code>$CVSROOT</code>
+    |
+    +--<tt>yoyodyne</tt>
+    |   |
+    |   +--<tt>tc</tt>
+    |   |   |
+            +--<tt>Makefile,v</tt>
+            +--<tt>backend.c,v</tt>
+            +--<tt>driver.c,v</tt>
+            +--<tt>frontend.c,v</tt>
+            +--<tt>parser.c,v</tt>
+            +--<tt>man</tt>
+            |    |
+            |    +--<tt>tc.1,v</tt>
+            |
+            +--<tt>testing</tt>
+                 |
+                 +--<tt>testpgm.t,v</tt>
+                 +--<tt>test2.t,v</tt>
+</nowiki></pre></td></tr></table>
+
+<div id="index-History-files"></div>
+<div id="index-RCS-history-files"></div>
+<p>The history files contain, among other things, enough
+information to recreate any revision of the file, a log
+of all commit messages and the user-name of the person
+who committed the revision.  The history files are
+known as <em>RCS files</em>, because the first program to
+store files in that format was a version control system
+known as <small>RCS</small>.  For a full
+description of the file format, see the <code>man</code> page
+<cite>rcsfile(5)</cite>, distributed with <small>RCS</small>, or the
+file &lsquo;<tt>doc/RCSFILES</tt>&rsquo; in the <small>CVS</small> source
+distribution.  This
+file format has become very common&mdash;many systems other
+than <small>CVS</small> or <small>RCS</small> can at least import history
+files in this format.
+</p>
+<p>The <small>RCS</small> files used in <small>CVS</small> differ in a few
+ways from the standard format.  The biggest difference
+is magic branches; for more information see [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers].  Also in <small>CVS</small> the valid tag names
+are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
+rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
+</p>
+<hr size="6">
+<div id="File-permissions"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Windows-permissions| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="File-permissions-1"></div>
+==== File permissions ====
+<div id="index-Security_002c-file-permissions-in-repository"></div>
+<div id="index-File-permissions_002c-general"></div>
+<div id="index-Permissions_002c-general"></div>
+<div id="index-Group"></div>
+<div id="index-Read_002donly-files_002c-in-repository"></div>
+<p>All &lsquo;<samp>,v</samp>&rsquo; files are created read-only, and you
+should not change the permission of those files.  The
+directories inside the repository should be writable by
+the persons that have permission to modify the files in
+each directory.  This normally means that you must
+create a UNIX group (see group(5)) consisting of the
+persons that are to edit the files in a project, and
+set up the repository so that it is that group that
+owns the directory.
+(On some systems, you also need to set the set-group-ID-on-execution bit
+on the repository directories (see chmod(1)) so that newly-created files
+and directories get the group-ID of the parent directory rather than
+that of the current process.)
+</p>
+
+<p>This means that you can only control access to files on
+a per-directory basis.
+</p>
+<p>Note that users must also have write access to check
+out files, because <small>CVS</small> needs to create lock files
+(see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]).  You can use LockDir in CVSROOT/config
+to put the lock files somewhere other than in the repository
+if you want to allow read-only access to some directories
+(see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+</p>
+<p>Also note that users must have write access to the
+&lsquo;<tt>CVSROOT/val-tags</tt>&rsquo; file.  <small>CVS</small> uses it to keep
+track of what tags are valid tag names (it is sometimes
+updated when tags are used, as well as when they are
+created).
+</p>
+<p>Each <small>RCS</small> file will be owned by the user who last
+checked it in.  This has little significance; what
+really matters is who owns the directories.
+</p>
+<div id="index-CVSUMASK_002c-environment-variable"></div>
+<div id="index-Umask_002c-for-repository-files"></div>
+<p><small>CVS</small> tries to set up reasonable file permissions
+for new directories that are added inside the tree, but
+you must fix the permissions manually when a new
+directory should have different permissions than its
+parent directory.  If you set the <code>CVSUMASK</code>
+environment variable that will control the file
+permissions which <small>CVS</small> uses in creating directories
+and/or files in the repository.  <code>CVSUMASK</code> does
+not affect the file permissions in the working
+directory; such files have the permissions which are
+typical for newly created files, except that sometimes
+<small>CVS</small> creates them read-only (see the sections on
+watches, [cvs: Multiple developers#Setting-a-watch Telling CVS to watch certain files]; -r, [cvs: Guide to CVS commands#Global-options Global options]; or <code>CVSREAD</code>, [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).
+</p>
+<p>Note that using the client/server <small>CVS</small>
+(see section [[#Remote-repositories|Remote repositories]]), there is no good way to
+set <code>CVSUMASK</code>; the setting on the client machine
+has no effect.  If you are connecting with <code>rsh</code>, you
+can set <code>CVSUMASK</code> in &lsquo;<tt>.bashrc</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo;, as
+described in the documentation for your operating
+system.  This behavior might change in future versions
+of <small>CVS</small>; do not rely on the setting of
+<code>CVSUMASK</code> on the client having no effect.
+</p>
+<p>Using pserver, you will generally need stricter
+permissions on the <small>CVSROOT</small> directory and
+directories above it in the tree; see [[#Password-authentication-security|Security considerations with password authentication]].
+</p>
+<div id="index-Setuid"></div>
+<div id="index-Setgid"></div>
+<div id="index-Security_002c-setuid"></div>
+<div id="index-Installed-images-_0028VMS_0029"></div>
+<p>Some operating systems have features which allow a
+particular program to run with the ability to perform
+operations which the caller of the program could not.
+For example, the set user ID (setuid) or set group ID
+(setgid) features of unix or the installed image
+feature of VMS.  <small>CVS</small> was not written to use such
+features and therefore attempting to install <small>CVS</small> in
+this fashion will provide protection against only
+accidental lapses; anyone who is trying to circumvent
+the measure will be able to do so, and depending on how
+you have set it up may gain access to more than just
+<small>CVS</small>.  You may wish to instead consider pserver.  It
+shares some of the same attributes, in terms of
+possibly providing a false sense of security or opening
+security holes wider than the ones you are trying to
+fix, so read the documentation on pserver security
+carefully if you are considering this option
+([[#Password-authentication-security|Security considerations with password authentication]]).
+</p>
+<hr size="6">
+<div id="Windows-permissions"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Attic| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="File-Permission-issues-specific-to-Windows"></div>
+==== File Permission issues specific to Windows ====
+<div id="index-Windows_002c-and-permissions"></div>
+<div id="index-File-permissions_002c-Windows_002dspecific"></div>
+<div id="index-Permissions_002c-Windows_002dspecific"></div>
+
+<p>Some file permission issues are specific to Windows
+operating systems (Windows 95, Windows NT, and
+presumably future operating systems in this family.
+Some of the following might apply to OS/2 but I&rsquo;m not
+sure).
+</p>
+<p>If you are using local <small>CVS</small> and the repository is on a
+networked file system which is served by the Samba SMB
+server, some people have reported problems with
+permissions.  Enabling WRITE=YES in the samba
+configuration is said to fix/workaround it.
+Disclaimer: I haven&rsquo;t investigated enough to know the
+implications of enabling that option, nor do I know
+whether there is something which <small>CVS</small> could be doing
+differently in order to avoid the problem.  If you find
+something out, please let us know as described in
+[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].
+</p>
+<hr size="6">
+<div id="Attic"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#CVS-in-repository| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="The-attic"></div>
+==== The attic ====
+<div id="index-Attic"></div>
+
+<p>You will notice that sometimes <small>CVS</small> stores an
+<small>RCS</small> file in the <code>Attic</code>.  For example, if the
+<small>CVSROOT</small> is &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; and we are
+talking about the file &lsquo;<tt>backend.c</tt>&rsquo; in the
+directory &lsquo;<tt>yoyodyne/tc</tt>&rsquo;, then the file normally
+would be in
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc/backend.c,v
+</nowiki></pre></td></tr></table>
+
+<p>but if it goes in the attic, it would be in
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
+</nowiki></pre></td></tr></table>
+
+<div id="index-Dead-state"></div>
+<p>instead.  It should not matter from a user point of
+view whether a file is in the attic; <small>CVS</small> keeps
+track of this and looks in the attic when it needs to.
+But in case you want to know, the rule is that the RCS
+file is stored in the attic if and only if the head
+revision on the trunk has state <code>dead</code>.  A
+<code>dead</code> state means that file has been removed, or
+never added, for that revision.  For example, if you
+add a file on a branch, it will have a trunk revision
+in <code>dead</code> state, and a branch revision in a
+non-<code>dead</code> state.
+</p>
+<hr size="6">
+<div id="CVS-in-repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Locks| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="The-CVS-directory-in-the-repository"></div>
+==== The CVS directory in the repository ====
+<div id="index-CVS-directory_002c-in-repository"></div>
+
+<p>The &lsquo;<tt>CVS</tt>&rsquo; directory in each repository directory
+contains information such as file attributes (in a file
+called &lsquo;<tt>CVS/fileattr</tt>&rsquo;.  In the
+future additional files may be added to this directory,
+so implementations should silently ignore additional
+files.
+</p>
+<p>This behavior is implemented only by <small>CVS</small> 1.7 and
+later; for details see [cvs: Multiple developers#Watches-Compatibility Using watches with old versions of CVS].
+</p>
+<p>The format of the fileattr file is a series of entries
+of the following form (where &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;
+means the text between the braces can be repeated zero
+or more times):
+</p>
+<p><var>ent-type</var> <var>filename</var> &lt;tab&gt; <var>attrname</var> = <var>attrval</var>
+  {; <var>attrname</var> = <var>attrval</var>} &lt;linefeed&gt;
+</p>
+<p><var>ent-type</var> is &lsquo;<samp>F</samp>&rsquo; for a file, in which case the entry specifies the
+attributes for that file.
+</p>
+<p><var>ent-type</var> is &lsquo;<samp>D</samp>&rsquo;,
+and <var>filename</var> empty, to specify default attributes
+to be used for newly added files.
+</p>
+<p>Other <var>ent-type</var> are reserved for future expansion.  <small>CVS</small> 1.9 and older
+will delete them any time it writes file attributes.
+<small>CVS</small> 1.10 and later will preserve them.
+</p>
+<p>Note that the order of the lines is not significant;
+a program writing the fileattr file may
+rearrange them at its convenience.
+</p>
+<p>There is currently no way of quoting tabs or linefeeds in the
+filename, &lsquo;<samp>=</samp>&rsquo; in <var>attrname</var>,
+&lsquo;<samp>;</samp>&rsquo; in <var>attrval</var>, etc.  Note: some implementations also
+don&rsquo;t handle a NUL character in any of the fields, but
+implementations are encouraged to allow it.
+</p>
+<p>By convention, <var>attrname</var> starting with &lsquo;<samp>_</samp>&rsquo; is for an attribute given
+special meaning by <small>CVS</small>; other <var>attrname</var>s are for user-defined attributes
+(or will be, once implementations start supporting user-defined attributes).
+</p>
+<p>Builtin attributes:
+</p>
+<dl compact="compact">
+<dt><code>_watched</code></dt>
+<dd><p>Present means the file is watched and should be checked out
+read-only.
+</p>
+</dd>
+<dt><code>_watchers</code></dt>
+<dd><p>Users with watches for this file.  Value is
+<var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> }
+where <var>watcher</var> is a username, and <var>type</var>
+is zero or more of edit,unedit,commit separated by
+&lsquo;<samp>+</samp>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
+</p>
+</dd>
+<dt><code>_editors</code></dt>
+<dd><p>Users editing this file.  Value is
+<var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> }
+where <var>editor</var> is a username, and <var>val</var> is
+<var>time</var>+<var>hostname</var>+<var>pathname</var>, where
+<var>time</var> is when the <code>cvs edit</code> command (or
+equivalent) happened,
+and <var>hostname</var> and <var>pathname</var> are for the working directory.
+</p></dd>
+</dl>
+
+<p>Example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
+Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
+D _watched=
+</nowiki></pre></td></tr></table>
+
+<p>means that the file &lsquo;<tt>file1</tt>&rsquo; should be checked out
+read-only.  Furthermore, joe is watching for edits and
+mary is watching for commits.  The file &lsquo;<tt>file2</tt>&rsquo;
+should be checked out read-only; sue started editing it
+on 8 Jan 1975 in the directory &lsquo;<tt>/home/sue/cvs</tt>&rsquo; on
+the machine <code>workstn1</code>.  Future files which are
+added should be checked out read-only.  To represent
+this example here, we have shown a space after
+&lsquo;<samp>D</samp>&rsquo;, &lsquo;<samp>Ffile1</samp>&rsquo;, and &lsquo;<samp>Ffile2</samp>&rsquo;, but in fact
+there must be a single tab character there and no spaces.
+</p>
+<hr size="6">
+<div id="Locks"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#CVSROOT-storage| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="CVS-locks-in-the-repository"></div>
+==== CVS locks in the repository ====
+
+<div id="index-_0023cvs_002erfl_002c-technical-details"></div>
+<div id="index-_0023cvs_002ewfl_002c-technical-details"></div>
+<div id="index-_0023cvs_002elock_002c-technical-details"></div>
+<div id="index-Locks_002c-cvs_002c-technical-details"></div>
+<p>For an introduction to <small>CVS</small> locks focusing on
+user-visible behavior, see [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS].  The
+following section is aimed at people who are writing
+tools which want to access a <small>CVS</small> repository without
+interfering with other tools accessing the same
+repository.  If you find yourself confused by concepts
+described here, like <em>read lock</em>, <em>write lock</em>,
+and <em>deadlock</em>, you might consult the literature on
+operating systems or databases.
+</p>
+<div id="index-_0023cvs_002etfl"></div>
+<p>Any file in the repository with a name starting
+with &lsquo;<tt>#cvs.rfl.</tt>&rsquo; is a read lock.  Any file in
+the repository with a name starting with
+&lsquo;<tt>#cvs.wfl</tt>&rsquo; is a write lock.  Old versions of <small>CVS</small>
+(before <small>CVS</small> 1.5) also created files with names starting
+with &lsquo;<tt>#cvs.tfl</tt>&rsquo;, but they are not discussed here.
+The directory &lsquo;<tt>#cvs.lock</tt>&rsquo; serves as a master
+lock.  That is, one must obtain this lock first before
+creating any of the other locks.
+</p>
+<p>To obtain a readlock, first create the &lsquo;<tt>#cvs.lock</tt>&rsquo;
+directory.  This operation must be atomic (which should
+be true for creating a directory under most operating
+systems).  If it fails because the directory already
+existed, wait for a while and try again.  After
+obtaining the &lsquo;<tt>#cvs.lock</tt>&rsquo; lock, create a file
+whose name is &lsquo;<tt>#cvs.rfl.</tt>&rsquo; followed by information
+of your choice (for example, hostname and process
+identification number).  Then remove the
+&lsquo;<tt>#cvs.lock</tt>&rsquo; directory to release the master lock.
+Then proceed with reading the repository.  When you are
+done, remove the &lsquo;<tt>#cvs.rfl</tt>&rsquo; file to release the
+read lock.
+</p>
+<p>To obtain a writelock, first create the
+&lsquo;<tt>#cvs.lock</tt>&rsquo; directory, as with a readlock.  Then
+check that there are no files whose names start with
+&lsquo;<tt>#cvs.rfl.</tt>&rsquo;.  If there are, remove
+&lsquo;<tt>#cvs.lock</tt>&rsquo;, wait for a while, and try again.  If
+there are no readers, then create a file whose name is
+&lsquo;<tt>#cvs.wfl</tt>&rsquo; followed by information of your choice
+(for example, hostname and process identification
+number).  Hang on to the &lsquo;<tt>#cvs.lock</tt>&rsquo; lock.  Proceed
+with writing the repository.  When you are done, first
+remove the &lsquo;<tt>#cvs.wfl</tt>&rsquo; file and then the
+&lsquo;<tt>#cvs.lock</tt>&rsquo; directory. Note that unlike the
+&lsquo;<tt>#cvs.rfl</tt>&rsquo; file, the &lsquo;<tt>#cvs.wfl</tt>&rsquo; file is just
+informational; it has no effect on the locking operation
+beyond what is provided by holding on to the
+&lsquo;<tt>#cvs.lock</tt>&rsquo; lock itself.
+</p>
+<p>Note that each lock (writelock or readlock) only locks
+a single directory in the repository, including
+&lsquo;<tt>Attic</tt>&rsquo; and &lsquo;<tt>CVS</tt>&rsquo; but not including
+subdirectories which represent other directories under
+version control.  To lock an entire tree, you need to
+lock each directory (note that if you fail to obtain
+any lock you need, you must release the whole tree
+before waiting and trying again, to avoid deadlocks).
+</p>
+<p>Note also that <small>CVS</small> expects writelocks to control
+access to individual &lsquo;<tt>foo,v</tt>&rsquo; files.  <small>RCS</small> has
+a scheme where the &lsquo;<tt>,foo,</tt>&rsquo; file serves as a lock,
+but <small>CVS</small> does not implement it and so taking out a
+<small>CVS</small> writelock is recommended.  See the comments at
+rcs_internal_lockfile in the <small>CVS</small> source code for
+further discussion/rationale.
+</p>
+<hr size="6">
+<div id="CVSROOT-storage"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Working-directory-storage| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-files-are-stored-in-the-CVSROOT-directory"></div>
+==== How files are stored in the CVSROOT directory ====
+<div id="index-CVSROOT_002c-storage-of-files"></div>
+
+<p>The &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directory contains the
+various administrative files.  In some ways this
+directory is just like any other directory in the
+repository; it contains <small>RCS</small> files whose names end
+in &lsquo;<samp>,v</samp>&rsquo;, and many of the <small>CVS</small> commands operate
+on it the same way.  However, there are a few
+differences.
+</p>
+<p>For each administrative file, in addition to the
+<small>RCS</small> file, there is also a checked out copy of the
+file.  For example, there is an <small>RCS</small> file
+&lsquo;<tt>loginfo,v</tt>&rsquo; and a file &lsquo;<tt>loginfo</tt>&rsquo; which
+contains the latest revision contained in
+&lsquo;<tt>loginfo,v</tt>&rsquo;.  When you check in an administrative
+file, <small>CVS</small> should print
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
+</nowiki></pre></td></tr></table>
+
+<p>and update the checked out copy in
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
+something wrong (see section [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual]).  To add your own files
+to the files to be updated in this fashion, you can add
+them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
+(see section [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file]).
+</p>
+<div id="index-modules_002edb"></div>
+<div id="index-modules_002epag"></div>
+<div id="index-modules_002edir"></div>
+<p>By default, the &lsquo;<tt>modules</tt>&rsquo; file behaves as
+described above.  If the modules file is very large,
+storing it as a flat text file may make looking up
+modules slow (I&rsquo;m not sure whether this is as much of a
+concern now as when <small>CVS</small> first evolved this
+feature; I haven&rsquo;t seen benchmarks).  Therefore, by
+making appropriate edits to the <small>CVS</small> source code
+one can store the modules file in a database which
+implements the <code>ndbm</code> interface, such as Berkeley
+db or GDBM.  If this option is in use, then the modules
+database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
+&lsquo;<tt>modules.pag</tt>&rsquo;, and/or &lsquo;<tt>modules.dir</tt>&rsquo;.
+</p>
+<p>For information on the meaning of the various
+administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files].
+</p>
+<hr size="6">
+<div id="Working-directory-storage"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Intro-administrative-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-data-is-stored-in-the-working-directory"></div>
+=== How data is stored in the working directory ===
+
+
+<div id="index-CVS-directory_002c-in-working-directory"></div>
+<p>While we are discussing <small>CVS</small> internals which may
+become visible from time to time, we might as well talk
+about what <small>CVS</small> puts in the &lsquo;<tt>CVS</tt>&rsquo; directories
+in the working directories.  As with the repository,
+<small>CVS</small> handles this information and one can usually
+access it via <small>CVS</small> commands.  But in some cases it
+may be useful to look at it, and other programs, such
+as the <code>jCVS</code> graphical user interface or the
+<code>VC</code> package for emacs, may need to look at it.
+Such programs should follow the recommendations in this
+section if they hope to be able to work with other
+programs which use those files, including future
+versions of the programs just mentioned and the
+command-line <small>CVS</small> client.
+</p>
+<p>The &lsquo;<tt>CVS</tt>&rsquo; directory contains several files.
+Programs which are reading this directory should
+silently ignore files which are in the directory but
+which are not documented here, to allow for future
+expansion.
+</p>
+<p>The files are stored according to the text file
+convention for the system in question.  This means that
+working directories are not portable between systems
+with differing conventions for storing text files.
+This is intentional, on the theory that the files being
+managed by <small>CVS</small> probably will not be portable between
+such systems either.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<tt>Root</tt>&rsquo;</dt>
+<dd><p>This file contains the current <small>CVS</small> root, as
+described in [[#Specifying-a-repository|Telling CVS where your repository is]].
+</p>
+<div id="index-Repository-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fRepository-file"></div>
+</dd>
+<dt>&lsquo;<tt>Repository</tt>&rsquo;</dt>
+<dd><p>This file contains the directory within the repository
+which the current directory corresponds with.  It can
+be either an absolute pathname or a relative pathname;
+<small>CVS</small> has had the ability to read either format
+since at least version 1.3 or so.  The relative
+pathname is relative to the root, and is the more
+sensible approach, but the absolute pathname is quite
+common and implementations should accept either.  For
+example, after the command
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+<p>&lsquo;<tt>Root</tt>&rsquo; will contain
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>:local:/usr/local/cvsroot
+</nowiki></pre></td></tr></table>
+
+<p>and &lsquo;<tt>Repository</tt>&rsquo; will contain either
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+<p>or
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+<p>If the particular working directory does not correspond
+to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo;
+should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;.
+<div id="index-Emptydir_002c-in-CVSROOT-directory"></div>
+<div id="index-CVSROOT_002fEmptydir-directory"></div>
+</p>
+<div id="index-Entries-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fEntries-file"></div>
+</dd>
+<dt>&lsquo;<tt>Entries</tt>&rsquo;</dt>
+<dd><p>This file lists the files and directories in the
+working directory.
+The first character of each line indicates what sort of
+line it is.  If the character is unrecognized, programs
+reading the file should silently skip that line, to
+allow for future expansion.
+</p>
+<p>If the first character is &lsquo;<samp>/</samp>&rsquo;, then the format is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
+</nowiki></pre></td></tr></table>
+
+<p>where &lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo; are not part of the entry,
+but instead indicate that the &lsquo;<samp>+</samp>&rsquo; and conflict
+marker are optional.  <var>name</var> is the name of the
+file within the directory.  <var>revision</var> is the
+revision that the file in the working derives from, or
+&lsquo;<samp>0</samp>&rsquo; for an added file, or &lsquo;<samp>-</samp>&rsquo; followed by a
+revision for a removed file.  <var>timestamp</var> is the
+timestamp of the file at the time that <small>CVS</small> created
+it; if the timestamp differs with the actual
+modification time of the file it means the file has
+been modified.  It is stored in
+the format used by the ISO C asctime() function (for
+example, &lsquo;<samp>Sun Apr  7 01:29:26 1996</samp>&rsquo;).  One may
+write a string which is not in that format, for
+example, &lsquo;<samp>Result of merge</samp>&rsquo;, to indicate that the
+file should always be considered to be modified.  This
+is not a special case; to see whether a file is
+modified a program should take the timestamp of the file
+and simply do a string compare with <var>timestamp</var>.
+If there was a conflict, <var>conflict</var> can be set to
+the modification time of the file after the file has been
+written with conflict markers (see section [cvs: Multiple developers#Conflicts-example Conflicts example]).
+Thus if <var>conflict</var> is subsequently the same as the actual
+modification time of the file it means that the user
+has obviously not resolved the conflict.  <var>options</var>
+contains sticky options (for example &lsquo;<samp>-kb</samp>&rsquo; for a
+binary file).  <var>tagdate</var> contains &lsquo;<samp>T</samp>&rsquo; followed
+by a tag name, or &lsquo;<samp>D</samp>&rsquo; for a date, followed by a
+sticky tag or date.  Note that if <var>timestamp</var>
+contains a pair of timestamps separated by a space,
+rather than a single timestamp, you are dealing with a
+version of <small>CVS</small> earlier than <small>CVS</small> 1.5 (not
+documented here).
+</p>
+<p>The timezone on the timestamp in CVS/Entries (local or
+universal) should be the same as the operating system
+stores for the timestamp of the file itself.  For
+example, on Unix the file&rsquo;s timestamp is in universal
+time (UT), so the timestamp in CVS/Entries should be
+too.  On <small>VMS</small>, the file&rsquo;s timestamp is in local
+time, so <small>CVS</small> on <small>VMS</small> should use local time.
+This rule is so that files do not appear to be modified
+merely because the timezone changed (for example, to or
+from summer time).
+</p>
+<p>If the first character of a line in &lsquo;<tt>Entries</tt>&rsquo; is
+&lsquo;<samp>D</samp>&rsquo;, then it indicates a subdirectory.  &lsquo;<samp>D</samp>&rsquo;
+on a line all by itself indicates that the program
+which wrote the &lsquo;<tt>Entries</tt>&rsquo; file does record
+subdirectories (therefore, if there is such a line and
+no other lines beginning with &lsquo;<samp>D</samp>&rsquo;, one knows there
+are no subdirectories).  Otherwise, the line looks
+like:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
+</nowiki></pre></td></tr></table>
+
+<p>where <var>name</var> is the name of the subdirectory, and
+all the <var>filler</var> fields should be silently ignored,
+for future expansion.  Programs which modify
+<code>Entries</code> files should preserve these fields.
+</p>
+<p>The lines in the &lsquo;<tt>Entries</tt>&rsquo; file can be in any order.
+</p>
+<div id="index-Entries_002eLog-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fEntries_002eLog-file"></div>
+</dd>
+<dt>&lsquo;<tt>Entries.Log</tt>&rsquo;</dt>
+<dd><p>This file does not record any information beyond that
+in &lsquo;<tt>Entries</tt>&rsquo;, but it does provide a way to update
+the information without having to rewrite the entire
+&lsquo;<tt>Entries</tt>&rsquo; file, including the ability to preserve
+the information even if the program writing
+&lsquo;<tt>Entries</tt>&rsquo; and &lsquo;<tt>Entries.Log</tt>&rsquo; abruptly aborts.
+Programs which are reading the &lsquo;<tt>Entries</tt>&rsquo; file
+should also check for &lsquo;<tt>Entries.Log</tt>&rsquo;.  If the latter
+exists, they should read &lsquo;<tt>Entries</tt>&rsquo; and then apply
+the changes mentioned in &lsquo;<tt>Entries.Log</tt>&rsquo;.  After
+applying the changes, the recommended practice is to
+rewrite &lsquo;<tt>Entries</tt>&rsquo; and then delete &lsquo;<tt>Entries.Log</tt>&rsquo;.
+The format of a line in &lsquo;<tt>Entries.Log</tt>&rsquo; is a single
+character command followed by a space followed by a
+line in the format specified for a line in
+&lsquo;<tt>Entries</tt>&rsquo;.  The single character command is
+&lsquo;<samp>A</samp>&rsquo; to indicate that the entry is being added,
+&lsquo;<samp>R</samp>&rsquo; to indicate that the entry is being removed,
+or any other character to indicate that the entire line
+in &lsquo;<tt>Entries.Log</tt>&rsquo; should be silently ignored (for
+future expansion).  If the second character of the line
+in &lsquo;<tt>Entries.Log</tt>&rsquo; is not a space, then it was
+written by an older version of <small>CVS</small> (not documented
+here).
+</p>
+<p>Programs which are writing rather than reading can
+safely ignore &lsquo;<tt>Entries.Log</tt>&rsquo; if they so choose.
+</p>
+<div id="index-Entries_002eBackup-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fEntries_002eBackup-file"></div>
+</dd>
+<dt>&lsquo;<tt>Entries.Backup</tt>&rsquo;</dt>
+<dd><p>This is a temporary file.  Recommended usage is to
+write a new entries file to &lsquo;<tt>Entries.Backup</tt>&rsquo;, and
+then to rename it (atomically, where possible) to &lsquo;<tt>Entries</tt>&rsquo;.
+</p>
+<div id="index-Entries_002eStatic-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fEntries_002eStatic-file"></div>
+</dd>
+<dt>&lsquo;<tt>Entries.Static</tt>&rsquo;</dt>
+<dd><p>The only relevant thing about this file is whether it
+exists or not.  If it exists, then it means that only
+part of a directory was gotten and <small>CVS</small> will
+not create additional files in that directory.  To
+clear it, use the <code>update</code> command with the
+&lsquo;<samp>-d</samp>&rsquo; option, which will get the additional files
+and remove &lsquo;<tt>Entries.Static</tt>&rsquo;.
+</p>
+<div id="index-Tag-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fTag-file"></div>
+<div id="index-Sticky-tags_002fdates_002c-per_002ddirectory"></div>
+<div id="index-Per_002ddirectory-sticky-tags_002fdates"></div>
+</dd>
+<dt>&lsquo;<tt>Tag</tt>&rsquo;</dt>
+<dd><p>This file contains per-directory sticky tags or dates.
+The first character is &lsquo;<samp>T</samp>&rsquo; for a branch tag,
+&lsquo;<samp>N</samp>&rsquo; for a non-branch tag, or &lsquo;<samp>D</samp>&rsquo; for a date,
+or another character to mean the file should be
+silently ignored, for future expansion.  This character
+is followed by the tag or date.  Note that
+per-directory sticky tags or dates are used for things
+like applying to files which are newly added; they
+might not be the same as the sticky tags or dates on
+individual files.  For general information on sticky
+tags and dates, see [cvs: Revisions#Sticky-tags Sticky tags].
+</p>
+<div id="index-Notify-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fNotify-file"></div>
+</dd>
+<dt>&lsquo;<tt>Notify</tt>&rsquo;</dt>
+<dd><p>This file stores notifications (for example, for
+<code>edit</code> or <code>unedit</code>) which have not yet been
+sent to the server.  Its format is not yet documented
+here.
+</p>
+<div id="index-Notify_002etmp-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fNotify_002etmp-file"></div>
+</dd>
+<dt>&lsquo;<tt>Notify.tmp</tt>&rsquo;</dt>
+<dd><p>This file is to &lsquo;<tt>Notify</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
+is to &lsquo;<tt>Entries</tt>&rsquo;.  That is, to write &lsquo;<tt>Notify</tt>&rsquo;,
+first write the new contents to &lsquo;<tt>Notify.tmp</tt>&rsquo; and
+then (atomically where possible), rename it to
+&lsquo;<tt>Notify</tt>&rsquo;.
+</p>
+<div id="index-Base-directory_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fBase-directory"></div>
+</dd>
+<dt>&lsquo;<tt>Base</tt>&rsquo;</dt>
+<dd><p>If watches are in use, then an <code>edit</code> command
+stores the original copy of the file in the &lsquo;<tt>Base</tt>&rsquo;
+directory.  This allows the <code>unedit</code> command to
+operate even if it is unable to communicate with the
+server.
+</p>
+<div id="index-Baserev-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fBaserev-file"></div>
+</dd>
+<dt>&lsquo;<tt>Baserev</tt>&rsquo;</dt>
+<dd><p>The file lists the revision for each of the files in
+the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>B<var>name</var>/<var>rev</var>/<var>expansion</var>
+</nowiki></pre></td></tr></table>
+
+<p>where <var>expansion</var> should be ignored, to allow for
+future expansion.
+</p>
+<div id="index-Baserev_002etmp-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fBaserev_002etmp-file"></div>
+</dd>
+<dt>&lsquo;<tt>Baserev.tmp</tt>&rsquo;</dt>
+<dd><p>This file is to &lsquo;<tt>Baserev</tt>&rsquo; as &lsquo;<tt>Entries.Backup</tt>&rsquo;
+is to &lsquo;<tt>Entries</tt>&rsquo;.  That is, to write &lsquo;<tt>Baserev</tt>&rsquo;,
+first write the new contents to &lsquo;<tt>Baserev.tmp</tt>&rsquo; and
+then (atomically where possible), rename it to
+&lsquo;<tt>Baserev</tt>&rsquo;.
+</p>
+<div id="index-Template-file_002c-in-CVS-directory"></div>
+<div id="index-CVS_002fTemplate-file"></div>
+</dd>
+<dt>&lsquo;<tt>Template</tt>&rsquo;</dt>
+<dd><p>This file contains the template specified by the
+&lsquo;<tt>rcsinfo</tt>&rsquo; file (see section [cvs: Reference manual for Administrative files#rcsinfo Rcsinfo]).  It is only used
+by the client; the non-client/server <small>CVS</small> consults
+&lsquo;<tt>rcsinfo</tt>&rsquo; directly.
+</p></dd>
+</dl>
+
+<hr size="6">
+<div id="Intro-administrative-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-administrative-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="The-administrative-files"></div>
+=== The administrative files ===
+<div id="index-Administrative-files-_0028intro_0029"></div>
+<div id="index-Modules-file"></div>
+<div id="index-CVSROOT_002c-module-name"></div>
+<div id="index-Defining-modules-_0028intro_0029"></div>
+
+
+<p>The directory &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains some <em>administrative
+files</em>.  See section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files], for a complete description.
+You can use <small>CVS</small> without any of these files, but
+some commands work better when at least the
+&lsquo;<tt>modules</tt>&rsquo; file is properly set up.
+</p>
+<p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
+file.  It defines all modules in the repository.  This
+is a sample &lsquo;<tt>modules</tt>&rsquo; file.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>CVSROOT         CVSROOT
+modules         CVSROOT modules
+cvs             gnu/cvs
+rcs             gnu/rcs
+diff            gnu/diff
+tc              yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+<p>The &lsquo;<tt>modules</tt>&rsquo; file is line oriented.  In its
+simplest form each line contains the name of the
+module, whitespace, and the directory where the module
+resides.  The directory is a path relative to
+<code>$CVSROOT</code>.  The last four lines in the example
+above are examples of such lines.
+</p>
+
+<p>The line that defines the module called &lsquo;<samp>modules</samp>&rsquo;
+uses features that are not explained here.
+See section [cvs: Reference manual for Administrative files#modules The modules file], for a full explanation of all the
+available features.
+</p>
+<hr size="6">
+<div id="Editing-administrative-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-repositories| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Intro-administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+==== Editing administrative files ====
+<div id="index-Editing-administrative-files"></div>
+<div id="index-Administrative-files_002c-editing-them"></div>
+
+<p>You edit the administrative files in the same way that you would edit
+any other module.  Use &lsquo;<samp>cvs checkout CVSROOT</samp>&rsquo; to get a working
+copy, edit it, and commit your changes in the normal way.
+</p>
+<p>It is possible to commit an erroneous administrative
+file.  You can often fix the error and check in a new
+revision, but sometimes a particularly bad error in the
+administrative file makes it impossible to commit new
+revisions.
+</p>
+<hr size="6">
+<div id="Multiple-repositories"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating-a-repository| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Multiple-repositories-1"></div>
+=== Multiple repositories ===
+<div id="index-Multiple-repositories"></div>
+<div id="index-Repositories_002c-multiple"></div>
+<div id="index-Many-repositories"></div>
+<div id="index-Parallel-repositories"></div>
+<div id="index-Disjoint-repositories"></div>
+<div id="index-CVSROOT_002c-multiple-repositories"></div>
+
+<p>In some situations it is a good idea to have more than
+one repository, for instance if you have two
+development groups that work on separate projects
+without sharing any code.  All you have to do to have
+several repositories is to specify the appropriate
+repository, using the <code>CVSROOT</code> environment
+variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (once
+you have checked out a working directory) by simply
+allowing <small>CVS</small> to use the repository that was used
+to check out the working directory
+(see section [[#Specifying-a-repository|Telling CVS where your repository is]]).
+</p>
+<p>The big advantage of having multiple repositories is
+that they can reside on different servers.  With <small>CVS</small>
+version 1.10, a single command cannot recurse into
+directories from different repositories.  With development
+versions of <small>CVS</small>, you can check out code from multiple
+servers into your working directory.  <small>CVS</small> will
+recurse and handle all the details of making
+connections to as many server machines as necessary to
+perform the requested command.  Here is an example of
+how to set up a working directory:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d server1:/cvs co dir1
+cd dir1
+cvs -d server2:/root co sdir
+cvs update
+</nowiki></pre></td></tr></table>
+
+<p>The <code>cvs co</code> commands set up the working
+directory, and then the <code>cvs update</code> command will
+contact server2, to update the dir1/sdir subdirectory,
+and server1, to update everything else.
+</p>
+
+<hr size="6">
+<div id="Creating-a-repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Backing-up| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Creating-a-repository-1"></div>
+=== Creating a repository ===
+
+<div id="index-Repository_002c-setting-up"></div>
+<div id="index-Creating-a-repository"></div>
+<div id="index-Setting-up-a-repository"></div>
+
+<p>To set up a <small>CVS</small> repository, first choose the
+machine and disk on which you want to store the
+revision history of the source files.  CPU and memory
+requirements are modest, so most machines should be
+adequate.  For details see [[#Server-requirements|Server requirements]].
+</p>
+<p>To estimate disk space
+requirements, if you are importing RCS files from
+another system, the size of those files is the
+approximate initial size of your repository, or if you
+are starting without any version history, a rule of
+thumb is to allow for the server approximately three
+times the size of the code to be under <small>CVS</small> for the
+repository (you will eventually outgrow this, but not
+for a while).  On the machines on which the developers
+will be working, you&rsquo;ll want disk space for
+approximately one working directory for each developer
+(either the entire tree or a portion of it, depending
+on what each developer uses).
+</p>
+<p>The repository should be accessible
+(directly or via a networked file system) from all
+machines which want to use <small>CVS</small> in server or local
+mode; the client machines need not have any access to
+it other than via the <small>CVS</small> protocol.  It is not
+possible to use <small>CVS</small> to read from a repository
+which one only has read access to; <small>CVS</small> needs to be
+able to create lock files (see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]).
+</p>
+<div id="index-init-_0028subcommand_0029"></div>
+<p>To create a repository, run the <code>cvs init</code>
+command.  It will set up an empty repository in the
+<small>CVS</small> root specified in the usual way
+(see section [[#Repository|The Repository]]).  For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot init
+</nowiki></pre></td></tr></table>
+
+<p><code>cvs init</code> is careful to never overwrite any
+existing files in the repository, so no harm is done if
+you run <code>cvs init</code> on an already set-up
+repository.
+</p>
+<p><code>cvs init</code> will enable history logging; if you
+don&rsquo;t want that, remove the history file after running
+<code>cvs init</code>.  See section [cvs: Reference manual for Administrative files#history-file The history file].
+</p>
+<hr size="6">
+<div id="Backing-up"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-a-repository| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Backing-up-a-repository"></div>
+=== Backing up a repository ===
+<div id="index-Repository_002c-backing-up"></div>
+<div id="index-Backing-up_002c-repository"></div>
+
+<p>There is nothing particularly magical about the files
+in the repository; for the most part it is possible to
+back them up just like any other files.  However, there
+are a few issues to consider.
+</p>
+<div id="index-Locks_002c-cvs_002c-and-backups"></div>
+<div id="index-_0023cvs_002erfl_002c-and-backups"></div>
+<p>The first is that to be paranoid, one should either not
+use <small>CVS</small> during the backup, or have the backup
+program lock <small>CVS</small> while doing the backup.  To not
+use <small>CVS</small>, you might forbid logins to machines which
+can access the repository, turn off your <small>CVS</small>
+server, or similar mechanisms.  The details would
+depend on your operating system and how you have
+<small>CVS</small> set up.  To lock <small>CVS</small>, you would create
+&lsquo;<tt>#cvs.rfl</tt>&rsquo; locks in each repository directory.
+See [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS], for more on <small>CVS</small> locks.
+Having said all this, if you just back up without any
+of these precautions, the results are unlikely to be
+particularly dire.  Restoring from backup, the
+repository might be in an inconsistent state, but this
+would not be particularly hard to fix manually.
+</p>
+<p>When you restore a repository from backup, assuming
+that changes in the repository were made after the time
+of the backup, working directories which were not
+affected by the failure may refer to revisions which no
+longer exist in the repository.  Trying to run <small>CVS</small>
+in such directories will typically produce an error
+message.  One way to get those changes back into the
+repository is as follows:
+</p>
+<ul>
+<li>
+Get a new working directory.
+
+</li><li>
+Copy the files from the working directory from before
+the failure over to the new working directory (do not
+copy the contents of the &lsquo;<tt>CVS</tt>&rsquo; directories, of
+course).
+
+</li><li>
+Working in the new working directory, use commands such
+as <code>cvs update</code> and <code>cvs diff</code> to figure out
+what has changed, and then when you are ready, commit
+the changes into the repository.
+</li></ul>
+
+<hr size="6">
+<div id="Moving-a-repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Moving-a-repository-1"></div>
+=== Moving a repository ===
+<div id="index-Repository_002c-moving"></div>
+<div id="index-Moving-a-repository"></div>
+<div id="index-Copying-a-repository"></div>
+
+<p>Just as backing up the files in the repository is
+pretty much like backing up any other files, if you
+need to move a repository from one place to another it
+is also pretty much like just moving any other
+collection of files.
+</p>
+<p>The main thing to consider is that working directories
+point to the repository.  The simplest way to deal with
+a moved repository is to just get a fresh working
+directory after the move.  Of course, you&rsquo;ll want to
+make sure that the old working directory had been
+checked in before the move, or you figured out some
+other way to make sure that you don&rsquo;t lose any
+changes.  If you really do want to reuse the existing
+working directory, it should be possible with manual
+surgery on the &lsquo;<tt>CVS/Repository</tt>&rsquo; files.  You can
+see [[#Working-directory-storage|How data is stored in the working directory]], for information on
+the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; files, but
+unless you are sure you want to bother, it probably
+isn&rsquo;t worth it.
+</p>
+<hr size="6">
+<div id="Remote-repositories"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Server-requirements| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Remote-repositories-1"></div>
+=== Remote repositories ===
+<div id="index-Repositories_002c-remote"></div>
+<div id="index-Remote-repositories"></div>
+<div id="index-Client_002fServer-Operation"></div>
+<div id="index-Server_002c-CVS"></div>
+<div id="index-Remote-repositories_002c-port-specification"></div>
+<div id="index-Repositories_002c-remote_002c-port-specification"></div>
+<div id="index-Client_002fServer-Operation_002c-port-specification"></div>
+<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-port_002c-specifying-for-remote-repositories"></div>
+
+<p>        Your working copy of the sources can be on a
+different machine than the repository.  Using <small>CVS</small>
+in this manner is known as <em>client/server</em>
+operation.  You run <small>CVS</small> on a machine which can
+mount your working directory, known as the
+<em>client</em>, and tell it to communicate to a machine
+which can mount the repository, known as the
+<em>server</em>.  Generally, using a remote
+repository is just like using a local one, except that
+the format of the repository name is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
+</nowiki></pre></td></tr></table>
+
+<p>Specifying a password in the repository name is not recommended during
+checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
+password in each created directory.  <code>cvs login</code> first instead
+(see section [[#Password-authentication-client|Using the client with password authentication]]).
+</p>
+<p>The details of exactly what needs to be set up depend
+on how you are connecting to the server.
+</p>
+<p>If <var>method</var> is not specified, and the repository
+name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
+or <code>server</code>, depending on your platform; both are
+described in [[#Connecting-via-rsh|Connecting with rsh]].
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Server-requirements| Server requirements]]::<nowiki>         Memory and other resources for servers
+</nowiki>&bull;[[#Connecting-via-rsh| Connecting via rsh]]::<nowiki>          Using the <code>rsh</code> program to connect
+</nowiki>&bull;[[#Password-authenticated| Password authenticated]]::<nowiki>      Direct connections using passwords
+</nowiki>&bull;[[#GSSAPI-authenticated| GSSAPI authenticated]]::<nowiki>        Direct connections using GSSAPI
+</nowiki>&bull;[[#Kerberos-authenticated| Kerberos authenticated]]::<nowiki>      Direct connections with kerberos
+</nowiki>&bull;[[#Connecting-via-fork| Connecting via fork]]::<nowiki>         Using a forked <code>cvs server</code> to connect
+</nowiki></pre>
+<hr size="6">
+<div id="Server-requirements"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-rsh| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Server-requirements-1"></div>
+==== Server requirements ====
+
+<p>The quick answer to what sort of machine is suitable as
+a server is that requirements are modest&mdash;a server
+with 32M of memory or even less can handle a fairly
+large source tree with a fair amount of activity.
+</p>
+<p>The real answer, of course, is more complicated.
+Estimating the known areas of large memory consumption
+should be sufficient to estimate memory requirements.
+There are two such areas documented here; other memory
+consumption should be small by comparison (if you find
+that is not the case, let us know, as described in
+[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual], so we can update this documentation).
+</p>
+<p>The first area of big memory consumption is large
+checkouts, when using the <small>CVS</small> server.  The server
+consists of two processes for each client that it is
+serving.  Memory consumption on the child process
+should remain fairly small.  Memory consumption on the
+parent process, particularly if the network connection
+to the client is slow, can be expected to grow to
+slightly more than the size of the sources in a single
+directory, or two megabytes, whichever is larger.
+</p>
+<p>Multiplying the size of each <small>CVS</small> server by the
+number of servers which you expect to have active at
+one time should give an idea of memory requirements for
+the server.  For the most part, the memory consumed by
+the parent process probably can be swap space rather
+than physical memory.
+</p>
+
+<p>The second area of large memory consumption is
+<code>diff</code>, when checking in large files.  This is
+required even for binary files.  The rule of thumb is
+to allow about ten times the size of the largest file
+you will want to check in, although five times may be
+adequate.  For example, if you want to check in a file
+which is 10 megabytes, you should have 100 megabytes of
+memory on the machine doing the checkin (the server
+machine for client/server, or the machine running
+<small>CVS</small> for non-client/server).  This can be swap
+space rather than physical memory.  Because the memory
+is only required briefly, there is no particular need
+to allow memory for more than one such checkin at a
+time.
+</p>
+<p>Resource consumption for the client is even more
+modest&mdash;any machine with enough capacity to run the
+operating system in question should have little
+trouble.
+</p>
+<p>For information on disk space requirements, see
+[[#Creating-a-repository|Creating a repository]].
+</p>
+<hr size="6">
+<div id="Connecting-via-rsh"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Connecting-with-rsh"></div>
+==== Connecting with rsh ====
+
+<div id="index-rsh"></div>
+<p><small>CVS</small> uses the &lsquo;<samp>rsh</samp>&rsquo; protocol to perform these
+operations, so the remote user host needs to have a
+&lsquo;<tt>.rhosts</tt>&rsquo; file which grants access to the local
+user. Note that the program that <small>CVS</small> uses for this
+purpose may be specified using the &lsquo;<tt>--with-rsh</tt>&rsquo;
+flag to configure.
+</p>
+<p>For example, suppose you are the user &lsquo;<samp>mozart</samp>&rsquo; on
+the local machine &lsquo;<samp>toe.example.com</samp>&rsquo;, and the
+server machine is &lsquo;<samp>faun.example.org</samp>&rsquo;.  On
+faun, put the following line into the file
+&lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<samp>bach</samp>&rsquo;&rsquo;s home directory:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>toe.example.com  mozart
+</nowiki></pre></td></tr></table>
+
+<p>Then test that &lsquo;<samp>rsh</samp>&rsquo; is working with
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>rsh -l bach faun.example.org 'echo $PATH'
+</nowiki></pre></td></tr></table>
+
+<div id="index-CVS_005fSERVER_002c-environment-variable"></div>
+<p>Next you have to make sure that <code>rsh</code> will be able
+to find the server.  Make sure that the path which
+<code>rsh</code> printed in the above example includes the
+directory containing a program named <code>cvs</code> which
+is the server.  You need to set the path in
+&lsquo;<tt>.bashrc</tt>&rsquo;, &lsquo;<tt>.cshrc</tt>&rsquo;, etc., not &lsquo;<tt>.login</tt>&rsquo;
+or &lsquo;<tt>.profile</tt>&rsquo;.  Alternately, you can set the
+environment variable <code>CVS_SERVER</code> on the client
+machine to the filename of the server you want to use,
+for example &lsquo;<tt>/usr/local/bin/cvs-1.6</tt>&rsquo;.
+</p>
+<p>There is no need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; or start a
+<small>CVS</small> server daemon.
+</p>
+<div id="index-_003aserver_003a_002c-setting-up"></div>
+<div id="index-_003aext_003a_002c-setting-up"></div>
+<div id="index-Kerberos_002c-using-kerberized-rsh"></div>
+<div id="index-SSH-_0028rsh-replacement_0029"></div>
+<div id="index-rsh-replacements-_0028Kerberized_002c-SSH_002c-_0026c_0029"></div>
+<p>There are two access methods that you use in <code>CVSROOT</code>
+for rsh.  <code>:server:</code> specifies an internal rsh
+client, which is supported only by some <small>CVS</small> ports.
+<code>:ext:</code> specifies an external rsh program.  By
+default this is <code>rsh</code> (unless otherwise specified
+by the &lsquo;<tt>--with-rsh</tt>&rsquo; flag to configure) but you may set the
+<code>CVS_RSH</code> environment variable to invoke another
+program which can access the remote server (for
+example, <code>remsh</code> on HP-UX 9 because <code>rsh</code> is
+something different).  It must be a program which can
+transmit data to and from the server without modifying
+it; for example the Windows NT <code>rsh</code> is not
+suitable since it by default translates between CRLF
+and LF.  The OS/2 <small>CVS</small> port has a hack to pass &lsquo;<samp>-b</samp>&rsquo;
+to <code>rsh</code> to get around this, but since this could
+potentially cause problems for programs other than the
+standard <code>rsh</code>, it may change in the future.  If
+you set <code>CVS_RSH</code> to <code>SSH</code> or some other rsh
+replacement, the instructions in the rest of this
+section concerning &lsquo;<tt>.rhosts</tt>&rsquo; and so on are likely
+to be inapplicable; consult the documentation for your rsh
+replacement.
+</p>
+<p>Continuing our example, supposing you want to access
+the module &lsquo;<tt>foo</tt>&rsquo; in the repository
+&lsquo;<tt>/usr/local/cvsroot/</tt>&rsquo;, on machine
+&lsquo;<tt>faun.example.org</tt>&rsquo;, you are ready to go:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
+</nowiki></pre></td></tr></table>
+
+<p>(The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
+the same on both the local and remote hosts.)
+</p>
+
+<hr size="6">
+<div id="Password-authenticated"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-server| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Direct-connection-with-password-authentication"></div>
+==== Direct connection with password authentication ====
+
+<p>The <small>CVS</small> client can also connect to the server
+using a password protocol.  This is particularly useful
+if using <code>rsh</code> is not feasible (for example,
+the server is behind a firewall), and Kerberos also is
+not available.
+</p>
+<p>        To use this method, it is necessary to make
+some adjustments on both the server and client sides.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Password-authentication-server| Password authentication server]]::<nowiki>     Setting up the server
+</nowiki>&bull;[[#Password-authentication-client| Password authentication client]]::<nowiki>     Using the client
+</nowiki>&bull;[[#Password-authentication-security| Password authentication security]]::<nowiki>   What this method does and does not do
+</nowiki></pre>
+<hr size="6">
+<div id="Password-authentication-server"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-client| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Setting-up-the-server-for-password-authentication"></div>
+===== Setting up the server for password authentication =====
+
+<p>First of all, you probably want to tighten the
+permissions on the &lsquo;<tt>$CVSROOT</tt>&rsquo; and
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See [[#Password-authentication-security|Security considerations with password authentication]], for more details.
+</p>
+<div id="index-pserver-_0028subcommand_0029"></div>
+<div id="index-Remote-repositories_002c-port-specification-1"></div>
+<div id="index-Repositories_002c-remote_002c-port-specification-1"></div>
+<div id="index-Client_002fServer-Operation_002c-port-specification-1"></div>
+<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1"></div>
+<div id="index-port_002c-specifying-for-remote-repositories-1"></div>
+<div id="index-Password-server_002c-setting-up"></div>
+<div id="index-Authenticating-server_002c-setting-up"></div>
+<div id="index-inetd_002c-configuring-for-pserver"></div>
+<div id="index-xinetd_002c-configuring-for-pserver"></div>
+<p>On the server side, the file &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;
+needs to be edited so <code>inetd</code> knows to run the
+command <code>cvs pserver</code> when it receives a
+connection on the right port.  By default, the port
+number is 2401; it would be different if your client
+were compiled with <code>CVS_AUTH_PORT</code> defined to
+something else, though.  This can also be specified in the CVSROOT variable
+(see section [[#Remote-repositories|Remote repositories]]) or overridden with the CVS_CLIENT_PORT
+environment variable (see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).
+</p>
+<p>        If your <code>inetd</code> allows raw port numbers in
+&lsquo;<tt>/etc/inetd.conf</tt>&rsquo;, then the following (all on a
+single line in &lsquo;<tt>inetd.conf</tt>&rsquo;) should be sufficient:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>2401  stream  tcp  nowait  root  /usr/local/bin/cvs
+cvs -f --allow-root=/usr/cvsroot pserver
+</nowiki></pre></td></tr></table>
+
+<p>(You could also use the
+&lsquo;<samp>-T</samp>&rsquo; option to specify a temporary directory.)
+</p>
+<p>The &lsquo;<samp>--allow-root</samp>&rsquo; option specifies the allowable
+<small>CVSROOT</small> directory.  Clients which attempt to use a
+different <small>CVSROOT</small> directory will not be allowed to
+connect.  If there is more than one <small>CVSROOT</small>
+directory which you want to allow, repeat the option.
+(Unfortunately, many versions of <code>inetd</code> have very small
+limits on the number of arguments and/or the total length
+of the command.  The usual solution to this problem is
+to have <code>inetd</code> run a shell script which then invokes
+<small>CVS</small> with the necessary arguments.)
+</p>
+<p>        If your <code>inetd</code> wants a symbolic service
+name instead of a raw port number, then put this in
+&lsquo;<tt>/etc/services</tt>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvspserver      2401/tcp
+</nowiki></pre></td></tr></table>
+
+<p>and put <code>cvspserver</code> instead of <code>2401</code> in &lsquo;<tt>inetd.conf</tt>&rsquo;.
+</p>
+<p>If your system uses <code>xinetd</code> instead of <code>inetd</code>,
+the procedure is slightly different.
+Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing the following:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>service cvspserver
+{
+   port        = 2401
+   socket_type = stream
+   protocol    = tcp
+   wait        = no
+   user        = root
+   passenv     = PATH
+   server      = /usr/local/bin/cvs
+   server_args = -f --allow-root=/usr/cvsroot pserver
+}
+</nowiki></pre></td></tr></table>
+
+<p>(If <code>cvspserver</code> is defined in &lsquo;<tt>/etc/services</tt>&rsquo;, you can omit
+the <code>port</code> line.)
+</p>
+<p>        Once the above is taken care of, restart your
+<code>inetd</code>, or do whatever is necessary to force it
+to reread its initialization files.
+</p>
+<p>If you are having trouble setting this up, see
+[cvs: Troubleshooting#Connection Trouble making a connection to a CVS server].
+</p>
+<div id="index-CVS-passwd-file"></div>
+<div id="index-passwd-_0028admin-file_0029"></div>
+<p>Because the client stores and transmits passwords in
+cleartext (almost&mdash;see [[#Password-authentication-security|Security considerations with password authentication]], for details), a separate <small>CVS</small> password
+file is generally used, so people don&rsquo;t compromise
+their regular passwords when they access the
+repository.  This file is
+&lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; (see section [[#Intro-administrative-files|The administrative files]]).  It uses a colon-separated
+format, similar to &lsquo;<tt>/etc/passwd</tt>&rsquo; on Unix systems,
+except that it has fewer fields: <small>CVS</small> username,
+optional password, and an optional system username for
+<small>CVS</small> to run as if authentication succeeds.  Here is
+an example &lsquo;<tt>passwd</tt>&rsquo; file with five entries:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>anonymous:
+bach:ULtgRLXo7NRxs
+spwang:1sOp854gDF3DY
+melissa:tGX1fS8sun6rY:pubcvs
+qproj:XR4EZcEs0szik:pubcvs
+</nowiki></pre></td></tr></table>
+
+<p>(The passwords are encrypted according to the standard
+Unix <code>crypt()</code> function, so it is possible to
+paste in passwords directly from regular Unix
+&lsquo;<tt>/etc/passwd</tt>&rsquo; files.)
+</p>
+<p>The first line in the example will grant access to any
+<small>CVS</small> client attempting to authenticate as user
+<code>anonymous</code>, no matter what password they use,
+including an empty password.  (This is typical for
+sites granting anonymous read-only access; for
+information on how to do the &quot;read-only&quot; part, see
+[[#Read_002donly-access|Read-only repository access]].)
+</p>
+<p>The second and third lines will grant access to
+<code>bach</code> and <code>spwang</code> if they supply their
+respective plaintext passwords.
+</p>
+<div id="index-User-aliases"></div>
+<p>The fourth line will grant access to <code>melissa</code>, if
+she supplies the correct password, but her <small>CVS</small>
+operations will actually run on the server side under
+the system user <code>pubcvs</code>.  Thus, there need not be
+any system user named <code>melissa</code>, but there
+<em>must</em> be one named <code>pubcvs</code>.
+</p>
+<p>The fifth line shows that system user identities can be
+shared: any client who successfully authenticates as
+<code>qproj</code> will actually run as <code>pubcvs</code>, just
+as <code>melissa</code> does.  That way you could create a
+single, shared system user for each project in your
+repository, and give each developer their own line in
+the &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; file.  The <small>CVS</small>
+username on each line would be different, but the
+system username would be the same.  The reason to have
+different <small>CVS</small> usernames is that <small>CVS</small> will log their
+actions under those names: when <code>melissa</code> commits
+a change to a project, the checkin is recorded in the
+project&rsquo;s history under the name <code>melissa</code>, not
+<code>pubcvs</code>.  And the reason to have them share a
+system username is so that you can arrange permissions
+in the relevant area of the repository such that only
+that account has write-permission there.
+</p>
+<p>If the system-user field is present, all
+password-authenticated <small>CVS</small> commands run as that
+user; if no system user is specified, <small>CVS</small> simply
+takes the <small>CVS</small> username as the system username and
+runs commands as that user.  In either case, if there
+is no such user on the system, then the <small>CVS</small>
+operation will fail (regardless of whether the client
+supplied a valid password).
+</p>
+<p>The password and system-user fields can both be omitted
+(and if the system-user field is omitted, then also
+omit the colon that would have separated it from the
+encrypted password).  For example, this would be a
+valid &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>anonymous::pubcvs
+fish:rKa5jzULzmhOo:kfogel
+sussman:1sOp854gDF3DY
+</nowiki></pre></td></tr></table>
+
+<p>When the password field is omitted or empty, then the
+client&rsquo;s authentication attempt will succeed with any
+password, including the empty string.  However, the
+colon after the <small>CVS</small> username is always necessary,
+even if the password is empty.
+</p>
+<p><small>CVS</small> can also fall back to use system authentication.
+When authenticating a password, the server first checks
+for the user in the &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo;
+file.  If it finds the user, it will use that entry for
+authentication as described above.  But if it does not
+find the user, or if the <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file
+does not exist, then the server can try to authenticate
+the username and password using the operating system&rsquo;s
+user-lookup routines (this &quot;fallback&quot; behavior can be
+disabled by setting <code>SystemAuth=no</code> in the
+<small>CVS</small> &lsquo;<tt>config</tt>&rsquo; file, see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+</p>
+<p>The default fallback behaviour is to look in 
+&lsquo;<tt>/etc/passwd</tt>&rsquo; for this system password unless your
+system has PAM (Pluggable Authentication Modules)
+and your <small>CVS</small> server executable was configured to
+use it at compile time (using <code>./configure --enable-pam</code> - see the
+INSTALL file for more).  In this case, PAM will be consulted instead.
+This means that <small>CVS</small> can be configured to use any password
+authentication source PAM can be configured to use (possibilities
+include a simple UNIX password, NIS, LDAP, and others) in its
+global configuration file (usually &lsquo;<tt>/etc/pam.conf</tt>&rsquo;
+or possibly &lsquo;<tt>/etc/pam.d/cvs</tt>&rsquo;).  See your PAM documentation
+for more details on PAM configuration.
+</p>
+<p>Note that PAM is an experimental feature in <small>CVS</small> and feedback is
+encouraged.  Please send a mail to one of the <small>CVS</small> mailing lists
+(<code>info-cvs@gnu.org</code> or <code>bug-cvs@gnu.org</code>) if you use the 
+<small>CVS</small> PAM support.
+</p>
+<p><strong>WARNING: Using PAM gives the system administrator much more 
+flexibility about how <small>CVS</small> users are authenticated but 
+no more security than other methods.  See below for more.</strong> 
+</p>
+<p>CVS needs an &quot;auth&quot; and &quot;account&quot; module in the 
+PAM configuration file. A typical PAM configuration 
+would therefore have the following lines 
+in &lsquo;<tt>/etc/pam.conf</tt>&rsquo; to emulate the standard <small>CVS</small> 
+system &lsquo;<tt>/etc/passwd</tt>&rsquo; authentication:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs	auth	    required	pam_unix.so
+cvs	account	    required	pam_unix.so
+</nowiki></pre></td></tr></table>
+
+<p>The the equivalent &lsquo;<tt>/etc/pam.d/cvs</tt>&rsquo; would contain
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>auth	    required	pam_unix.so
+account	    required	pam_unix.so
+</nowiki></pre></td></tr></table>
+
+<p>Some systems require a full path to the module so that
+&lsquo;<tt>pam_unix.so</tt>&rsquo; (Linux) would become something like 
+&lsquo;<tt>/usr/lib/security/$ISA/pam_unix.so.1</tt>&rsquo; (Sun Solaris).
+See the &lsquo;<tt>contrib/pam</tt>&rsquo; subdirectory of the <small>CVS</small>
+source distribution for further example configurations.
+</p>
+<p>The PAM service name given above as &quot;cvs&quot; is just
+the service name in the default configuration amd can be
+set using
+<code>./configure --with-hardcoded-pam-service-name=&lt;pam-service-name&gt;</code>
+before compiling.  <small>CVS</small> can also be configured to use whatever
+name it is invoked as as its PAM service name using
+<code>./configure --without-hardcoded-pam-service-name</code>, but this
+feature should not be used if you may not have control of the name
+<small>CVS</small> will be invoked as.
+</p>
+<p>Be aware, also, that falling back to system
+authentication might be a security risk: <small>CVS</small>
+operations would then be authenticated with that user&rsquo;s
+regular login password, and the password flies across
+the network in plaintext.  See [[#Password-authentication-security|Security considerations with password authentication]] for more on this.
+This may be more of a problem with PAM authentication
+because it is likely that the source of the system 
+password is some central authentication service like
+LDAP which is also used to authenticate other services.
+</p>
+<p>On the other hand, PAM makes it very easy to change your password
+regularly.  If they are given the option of a one-password system for
+all of their activities, users are often more willing to change their
+password on a regular basis.
+</p>
+<p>In the non-PAM configuration where the password is stored in the
+&lsquo;<tt>CVSROOT/passwd</tt>&rsquo; file, it is difficult to change passwords on a
+regular basis since only administrative users (or in some cases
+processes that act as an administrative user) are typicaly given
+access to modify this file.  Either there needs to be some
+hand-crafted web page or set-uid program to update the file, or the
+update needs to be done by submitting a request to an administrator to
+perform the duty by hand.  In the first case, having to remember to
+update a separate password on a periodic basis can be difficult.  In
+the second case, the manual nature of the change will typically mean
+that the password will not be changed unless it is absolutely
+necessary.
+</p>
+<p>Note that PAM administrators should probably avoid configuring
+one-time-passwords (OTP) for <small>CVS</small> authentication/authorization.  If
+OTPs are desired, the administrator may wish to encourage the use of
+one of the other Client/Server access methods.  See the section on
+see section [[#Remote-repositories|Remote repositories]] for a list of other methods.
+</p>
+<p>Right now, the only way to put a password in the
+<small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file is to paste it there from
+somewhere else.  Someday, there may be a <code>cvs
+passwd</code> command.
+</p>
+<p>Unlike many of the files in &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, it
+is normal to edit the &lsquo;<tt>passwd</tt>&rsquo; file in-place,
+rather than via <small>CVS</small>.  This is because of the
+possible security risks of having the &lsquo;<tt>passwd</tt>&rsquo;
+file checked out to people&rsquo;s working copies.  If you do
+want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file].
+</p>
+
+<hr size="6">
+<div id="Password-authentication-client"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-security| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Using-the-client-with-password-authentication"></div>
+===== Using the client with password authentication =====
+<div id="index-Login-_0028subcommand_0029"></div>
+<div id="index-Password-client_002c-using"></div>
+<div id="index-Authenticated-client_002c-using"></div>
+<div id="index-_003apserver_003a_002c-setting-up"></div>
+<p>To run a <small>CVS</small> command on a remote repository via
+the password-authenticating server, one specifies the
+<code>pserver</code> protocol, optional username, repository host, an
+optional port number, and path to the repository.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :pserver:faun.example.org:/usr/local/cvsroot checkout someproj
+</nowiki></pre></td></tr></table>
+
+<p>or
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>CVSROOT=:pserver:bach@faun.example.org:2401/usr/local/cvsroot
+cvs checkout someproj
+</nowiki></pre></td></tr></table>
+
+<p>However, unless you&rsquo;re connecting to a public-access
+repository (i.e., one where that username doesn&rsquo;t
+require a password), you&rsquo;ll need to supply a password or <em>log in</em> first.
+Logging in verifies your password with the repository and stores it in a file.
+It&rsquo;s done with the <code>login</code> command, which will
+prompt you interactively for the password if you didn&rsquo;t supply one as part of
+<var>$CVSROOT</var>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot login
+CVS password:
+</nowiki></pre></td></tr></table>
+
+<p>or
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :pserver:bach:p4ss30rd@faun.example.org:/usr/local/cvsroot login
+</nowiki></pre></td></tr></table>
+
+<p>After you enter the password, <small>CVS</small> verifies it with
+the server.  If the verification succeeds, then that
+combination of username, host, repository, and password
+is permanently recorded, so future transactions with
+that repository won&rsquo;t require you to run <code>cvs
+login</code>.  (If verification fails, <small>CVS</small> will exit
+complaining that the password was incorrect, and
+nothing will be recorded.)
+</p>
+<p>The records are stored, by default, in the file
+&lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.  That file&rsquo;s format is
+human-readable, and to a degree human-editable, but
+note that the passwords are not stored in
+cleartext&mdash;they are trivially encoded to protect them
+from &quot;innocent&quot; compromise (i.e., inadvertent viewing
+by a system administrator or other non-malicious
+person).
+</p>
+<div id="index-CVS_005fPASSFILE_002c-environment-variable"></div>
+<p>You can change the default location of this file by
+setting the <code>CVS_PASSFILE</code> environment variable.
+If you use this variable, make sure you set it
+<em>before</em> <code>cvs login</code> is run.  If you were to
+set it after running <code>cvs login</code>, then later
+<small>CVS</small> commands would be unable to look up the
+password for transmission to the server.
+</p>  
+<p>Once you have logged in, all <small>CVS</small> commands using
+that remote repository and username will authenticate
+with the stored password.  So, for example
+</p>  
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot checkout foo
+</nowiki></pre></td></tr></table>
+
+<p>should just work (unless the password changes on the
+server side, in which case you&rsquo;ll have to re-run
+<code>cvs login</code>).
+</p>
+<p>Note that if the &lsquo;<samp>:pserver:</samp>&rsquo; were not present in
+the repository specification, <small>CVS</small> would assume it
+should use <code>rsh</code> to connect with the server
+instead (see section [[#Connecting-via-rsh|Connecting with rsh]]).
+</p>
+<p>Of course, once you have a working copy checked out and
+are running <small>CVS</small> commands from within it, there is
+no longer any need to specify the repository
+explicitly, because <small>CVS</small> can deduce the repository
+from the working copy&rsquo;s &lsquo;<tt>CVS</tt>&rsquo; subdirectory.
+</p>
+<div id="index-Logout-_0028subcommand_0029"></div>
+<p>The password for a given remote repository can be
+removed from the <code>CVS_PASSFILE</code> by using the
+<code>cvs logout</code> command.
+</p>
+<hr size="6">
+<div id="Password-authentication-security"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#GSSAPI-authenticated| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Security-considerations-with-password-authentication"></div>
+===== Security considerations with password authentication =====
+
+<div id="index-Security_002c-of-pserver"></div>
+<p>The passwords are stored on the client side in a
+trivial encoding of the cleartext, and transmitted in
+the same encoding.  The encoding is done only to
+prevent inadvertent password compromises (i.e., a
+system administrator accidentally looking at the file),
+and will not prevent even a naive attacker from gaining
+the password.
+</p>
+<p>The separate <small>CVS</small> password file (see section [[#Password-authentication-server|Setting up the server for password authentication]]) allows people
+to use a different password for repository access than
+for login access.  On the other hand, once a user has
+non-read-only
+access to the repository, she can execute programs on
+the server system through a variety of means.  Thus, repository
+access implies fairly broad system access as well.  It
+might be possible to modify <small>CVS</small> to prevent that,
+but no one has done so as of this writing.
+</p>
+<p>Note that because the &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directory
+contains &lsquo;<tt>passwd</tt>&rsquo; and other files which are used
+to check security, you must control the permissions on
+this directory as tightly as the permissions on
+&lsquo;<tt>/etc</tt>&rsquo;.  The same applies to the &lsquo;<tt>$CVSROOT</tt>&rsquo;
+directory itself and any directory
+above it in the tree.  Anyone who has write access to
+such a directory will have the ability to become any
+user on the system.  Note that these permissions are
+typically tighter than you would use if you are not
+using pserver.
+</p>
+<p>In summary, anyone who gets the password gets
+repository access (which may imply some measure of general system
+access as well).  The password is available to anyone
+who can sniff network packets or read a protected
+(i.e., user read-only) file.  If you want real
+security, get Kerberos.
+</p>
+<hr size="6">
+<div id="GSSAPI-authenticated"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Kerberos-authenticated| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Direct-connection-with-GSSAPI"></div>
+==== Direct connection with GSSAPI ====
+
+<div id="index-GSSAPI"></div>
+<div id="index-Security_002c-GSSAPI"></div>
+<div id="index-_003agserver_003a_002c-setting-up"></div>
+<div id="index-Kerberos_002c-using-_003agserver_003a"></div>
+<p>GSSAPI is a generic interface to network security
+systems such as Kerberos 5.
+If you have a working GSSAPI library, you can have
+<small>CVS</small> connect via a direct <small>TCP</small> connection,
+authenticating with GSSAPI.
+</p>
+<p>To do this, <small>CVS</small> needs to be compiled with GSSAPI
+support; when configuring <small>CVS</small> it tries to detect
+whether GSSAPI libraries using kerberos version 5 are
+present.  You can also use the &lsquo;<tt>--with-gssapi</tt>&rsquo;
+flag to configure.
+</p>
+<p>The connection is authenticated using GSSAPI, but the
+message stream is <em>not</em> authenticated by default.
+You must use the <code>-a</code> global option to request
+stream authentication.
+</p>
+<p>The data transmitted is <em>not</em> encrypted by
+default.  Encryption support must be compiled into both
+the client and the server; use the
+&lsquo;<tt>--enable-encrypt</tt>&rsquo; configure option to turn it on.
+You must then use the <code>-x</code> global option to
+request encryption.
+</p>
+<p>GSSAPI connections are handled on the server side by
+the same server which handles the password
+authentication server; see [[#Password-authentication-server|Setting up the server for password authentication]].  If you are using a GSSAPI mechanism such as
+Kerberos which provides for strong authentication, you
+will probably want to disable the ability to
+authenticate via cleartext passwords.  To do so, create
+an empty &lsquo;<tt>CVSROOT/passwd</tt>&rsquo; password file, and set
+<code>SystemAuth=no</code> in the config file
+(see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+</p>
+<p>The GSSAPI server uses a principal name of
+cvs/<var>hostname</var>, where <var>hostname</var> is the
+canonical name of the server host.  You will have to
+set this up as required by your GSSAPI mechanism.
+</p>
+<p>To connect using GSSAPI, use &lsquo;<samp>:gserver:</samp>&rsquo;.  For
+example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
+</nowiki></pre></td></tr></table>
+
+<hr size="6">
+<div id="Kerberos-authenticated"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-fork| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Direct-connection-with-kerberos"></div>
+==== Direct connection with kerberos ====
+
+<div id="index-Kerberos_002c-using-_003akserver_003a"></div>
+<div id="index-Security_002c-kerberos"></div>
+<div id="index-_003akserver_003a_002c-setting-up"></div>
+<p>The easiest way to use kerberos is to use the kerberos
+<code>rsh</code>, as described in [[#Connecting-via-rsh|Connecting with rsh]].
+The main disadvantage of using rsh is that all the data
+needs to pass through additional programs, so it may be
+slower.  So if you have kerberos installed you can
+connect via a direct <small>TCP</small> connection,
+authenticating with kerberos.
+</p>
+<p>This section concerns the kerberos network security
+system, version 4.  Kerberos version 5 is supported via
+the GSSAPI generic network security interface, as
+described in the previous section.
+</p>
+<p>To do this, <small>CVS</small> needs to be compiled with kerberos
+support; when configuring <small>CVS</small> it tries to detect
+whether kerberos is present or you can use the
+&lsquo;<tt>--with-krb4</tt>&rsquo; flag to configure.
+</p>
+<p>The data transmitted is <em>not</em> encrypted by
+default.  Encryption support must be compiled into both
+the client and server; use the
+&lsquo;<tt>--enable-encryption</tt>&rsquo; configure option to turn it
+on.  You must then use the <code>-x</code> global option to
+request encryption.
+</p>
+<div id="index-CVS_005fCLIENT_005fPORT"></div>
+<p>You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
+machine to run <code>cvs kserver</code>.  The client uses
+port 1999 by default; if you want to use another port
+specify it in the <code>CVSROOT</code> (see section [[#Remote-repositories|Remote repositories]])
+or the <code>CVS_CLIENT_PORT</code> environment variable
+(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) on the client.
+</p>
+<div id="index-kinit"></div>
+<p>When you want to use <small>CVS</small>, get a ticket in the
+usual way (generally <code>kinit</code>); it must be a ticket
+which allows you to log into the server machine.  Then
+you are ready to go:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
+</nowiki></pre></td></tr></table>
+
+<p>Previous versions of <small>CVS</small> would fall back to a
+connection via rsh; this version will not do so.
+</p>
+<hr size="6">
+<div id="Connecting-via-fork"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Read_002donly-access| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Connecting-with-fork"></div>
+==== Connecting with fork ====
+
+<div id="index-fork_002c-access-method"></div>
+<div id="index-_003afork_003a_002c-setting-up"></div>
+<p>This access method allows you to connect to a
+repository on your local disk via the remote protocol.
+In other words it does pretty much the same thing as
+<code>:local:</code>, but various quirks, bugs and the like are
+those of the remote <small>CVS</small> rather than the local
+<small>CVS</small>.
+</p>
+<p>For day-to-day operations you might prefer either
+<code>:local:</code> or <code>:fork:</code>, depending on your
+preferences.  Of course <code>:fork:</code> comes in
+particularly handy in testing or
+debugging <code>cvs</code> and the remote protocol.
+Specifically, we avoid all of the network-related
+setup/configuration, timeouts, and authentication
+inherent in the other remote access methods but still
+create a connection which uses the remote protocol.
+</p>
+<p>To connect using the <code>fork</code> method, use
+&lsquo;<samp>:fork:</samp>&rsquo; and the pathname to your local
+repository.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :fork:/usr/local/cvsroot checkout foo
+</nowiki></pre></td></tr></table>
+
+<div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
+<p>As with <code>:ext:</code>, the server is called &lsquo;<samp>cvs</samp>&rsquo;
+by default, or the value of the <code>CVS_SERVER</code>
+environment variable.
+</p>
+<hr size="6">
+<div id="Read_002donly-access"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Server-temporary-directory| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Read_002donly-repository-access"></div>
+=== Read-only repository access ===
+<div id="index-Read_002donly-repository-access"></div>
+<div id="index-readers-_0028admin-file_0029"></div>
+<div id="index-writers-_0028admin-file_0029"></div>
+
+<p>        It is possible to grant read-only repository
+access to people using the password-authenticated
+server (see section [[#Password-authenticated|Direct connection with password authentication]]).  (The
+other access methods do not have explicit support for
+read-only users because those methods all assume login
+access to the repository machine anyway, and therefore
+the user can do whatever local file permissions allow
+her to do.)
+</p>
+<p>        A user who has read-only access can do only
+those <small>CVS</small> operations which do not modify the
+repository, except for certain &ldquo;administrative&rdquo; files
+(such as lock files and the history file).  It may be
+desirable to use this feature in conjunction with
+user-aliasing (see section [[#Password-authentication-server|Setting up the server for password authentication]]).
+</p>
+<p>Unlike with previous versions of <small>CVS</small>, read-only
+users should be able merely to read the repository, and
+not to execute programs on the server or otherwise gain
+unexpected levels of access.  Or to be more accurate,
+the <em>known</em> holes have been plugged.  Because this
+feature is new and has not received a comprehensive
+security audit, you should use whatever level of
+caution seems warranted given your attitude concerning
+security.
+</p>
+<p>        There are two ways to specify read-only access
+for a user: by inclusion, and by exclusion.
+</p>
+<p>        &quot;Inclusion&quot; means listing that user
+specifically in the &lsquo;<tt>$CVSROOT/CVSROOT/readers</tt>&rsquo;
+file, which is simply a newline-separated list of
+users.  Here is a sample &lsquo;<tt>readers</tt>&rsquo; file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>melissa
+splotnik
+jrandom
+</nowiki></pre></td></tr></table>
+
+<p>        (Don&rsquo;t forget the newline after the last user.)
+</p>
+<p>        &quot;Exclusion&quot; means explicitly listing everyone
+who has <em>write</em> access&mdash;if the file
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$CVSROOT/CVSROOT/writers
+</nowiki></pre></td></tr></table>
+
+<p>exists, then only
+those users listed in it have write access, and
+everyone else has read-only access (of course, even the
+read-only users still need to be listed in the
+<small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file).  The
+&lsquo;<tt>writers</tt>&rsquo; file has the same format as the
+&lsquo;<tt>readers</tt>&rsquo; file.
+</p>
+<p>        Note: if your <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo;
+file maps cvs users onto system users (see section [[#Password-authentication-server|Setting up the server for password authentication]]), make sure you deny or grant
+read-only access using the <em>cvs</em> usernames, not
+the system usernames.  That is, the &lsquo;<tt>readers</tt>&rsquo; and
+&lsquo;<tt>writers</tt>&rsquo; files contain cvs usernames, which may
+or may not be the same as system usernames.
+</p>
+<p>        Here is a complete description of the server&rsquo;s
+behavior in deciding whether to grant read-only or
+read-write access:
+</p>
+<p>        If &lsquo;<tt>readers</tt>&rsquo; exists, and this user is
+listed in it, then she gets read-only access.  Or if
+&lsquo;<tt>writers</tt>&rsquo; exists, and this user is NOT listed in
+it, then she also gets read-only access (this is true
+even if &lsquo;<tt>readers</tt>&rsquo; exists but she is not listed
+there).  Otherwise, she gets full read-write access.
+</p>
+<p>        Of course there is a conflict if the user is
+listed in both files.  This is resolved in the more
+conservative way, it being better to protect the
+repository too much than too little: such a user gets
+read-only access.
+</p>
+<hr size="6">
+<div id="Server-temporary-directory"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Temporary-directories-for-the-server"></div>
+=== Temporary directories for the server ===
+<div id="index-Temporary-directories_002c-and-server"></div>
+<div id="index-Server_002c-temporary-directories"></div>
+
+<p>While running, the <small>CVS</small> server creates temporary
+directories.  They are named
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs-serv<var>pid</var>
+</nowiki></pre></td></tr></table>
+
+<p>where <var>pid</var> is the process identification number of
+the server.
+They are located in the directory specified by 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see section [cvs: Guide to CVS commands#Global-options Global options]), 
+the <code>TMPDIR</code> environment variable (see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), 
+or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
+</p>
+<p>In most cases the server will remove the temporary
+directory when it is done, whether it finishes normally
+or abnormally.  However, there are a few cases in which
+the server does not or cannot remove the temporary
+directory, for example:
+</p>
+<ul>
+<li>
+If the server aborts due to an internal server error,
+it may preserve the directory to aid in debugging
+
+</li><li>
+If the server is killed in a way that it has no way of
+cleaning up (most notably, &lsquo;<samp>kill -KILL</samp>&rsquo; on unix).
+
+</li><li>
+If the system shuts down without an orderly shutdown,
+which tells the server to clean up.
+</li></ul>
+
+<p>In cases such as this, you will need to manually remove
+the &lsquo;<tt>cvs-serv<var>pid</var></tt>&rsquo; directories.  As long as
+there is no server running with process identification
+number <var>pid</var>, it is safe to do so.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

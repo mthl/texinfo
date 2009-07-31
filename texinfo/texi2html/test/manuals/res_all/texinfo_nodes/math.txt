@@ -1,0 +1,35 @@
+13.8 @math: Inserting Mathematical Expressions
+==============================================
+
+You can write a short mathematical expression with the @math
+command.  Write the mathematical expression between braces, like this:
+
+@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+
+This produces the following in Info:
+
+(a + b)(a + b) = a^2 + 2ab + b^2
+
+Thus, the @math command has no effect on the Info output.
+
+@math implies @tex.  This not only makes it possible to
+write superscripts and subscripts (as in the above example), but also
+allows you to use any of the plain TeX math control sequences.  It's
+conventional to use `\' instead of `@' for these commands.
+As in:
+@math{\sin 2\pi \equiv \cos 3\pi}
+
+which looks like the input in Info and HTML:
+\sin 2\pi \equiv \cos 3\pi
+
+Since `\' is an escape character inside @math, you can use
+@\ to get a literal backslash (\\ will work in TeX,
+but you'll get the literal `\\' in Info).  @\ is not
+defined outside of @math, since a `\' ordinarily produces a
+literal `\'.
+
+
+For displayed equations, you must at present use TeX directly
+(see Raw Formatter Commands).  
+
+

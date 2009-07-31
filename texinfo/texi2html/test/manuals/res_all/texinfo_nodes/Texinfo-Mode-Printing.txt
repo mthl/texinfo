@@ -1,0 +1,97 @@
+19.6 Formatting and Printing in Texinfo Mode
+============================================
+
+Texinfo mode provides several predefined key commands for TeX
+formatting and printing.  These include commands for sorting indices,
+looking at the printer queue, killing the formatting job, and
+recentering the display of the buffer in which the operations
+occur.
+
+C-c C-t C-b
+M-x texinfo-tex-buffer
+Run texi2dvi on the current buffer.
+
+C-c C-t C-r
+M-x texinfo-tex-region
+Run TeX on the current region.
+
+C-c C-t C-i
+M-x texinfo-texindex
+Sort the indices of a Texinfo file formatted with
+texinfo-tex-region.
+
+C-c C-t C-p
+M-x texinfo-tex-print
+Print a DVI file that was made with texinfo-tex-region or
+texinfo-tex-buffer.
+
+C-c C-t C-q
+M-x tex-show-print-queue
+Show the print queue.
+
+C-c C-t C-d
+M-x texinfo-delete-from-print-queue
+Delete a job from the print queue; you will be prompted for the job
+number shown by a preceding C-c C-t C-q command
+(texinfo-show-tex-print-queue).
+
+C-c C-t C-k
+M-x tex-kill-job
+Kill the currently running TeX job started by either
+texinfo-tex-region or texinfo-tex-buffer, or any other
+process running in the Texinfo shell buffer.
+
+C-c C-t C-x
+M-x texinfo-quit-job
+Quit a TeX formatting job that has stopped because of an error by
+sending an <x> to it.  When you do this, TeX preserves a record
+of what it did in a `.log' file.
+
+C-c C-t C-l
+M-x tex-recenter-output-buffer
+Redisplay the shell buffer in which the TeX printing and formatting
+commands are run to show its most recent output.
+
+Thus, the usual sequence of commands for formatting a buffer is as
+follows (with comments to the right):
+
+C-c C-t C-b             Run texi2dvi on the buffer.
+C-c C-t C-p             Print the DVI file.
+C-c C-t C-q             Display the printer queue.
+
+The Texinfo mode TeX formatting commands start a subshell in Emacs
+called the `*tex-shell*'.  The texinfo-tex-command,
+texinfo-texindex-command, and tex-dvi-print-command
+commands are all run in this shell.
+
+You can watch the commands operate in the `*tex-shell*' buffer,
+and you can switch to and from and use the `*tex-shell*' buffer
+as you would any other shell buffer.
+
+The formatting and print commands depend on the values of several variables.
+The default values are:
+
+     Variable                              Default value
+
+texinfo-texi2dvi-command                  "texi2dvi"
+texinfo-tex-command                       "tex"
+texinfo-texindex-command                  "texindex"
+texinfo-delete-from-print-queue-command   "lprm"
+texinfo-tex-trailer                       "@bye"
+tex-start-of-header                       "%**start"
+tex-end-of-header                         "%**end"
+tex-dvi-print-command                     "lpr -d"
+tex-show-queue-command                    "lpq"
+
+You can change the values of these variables with the M-x
+edit-options command (see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual), with the M-x set-variable command
+(see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual), or with your `.emacs' initialization file
+(see (emacs)Init File section `Init File' in The GNU Emacs Manual).
+
+Beginning with version 20, GNU Emacs offers a user-friendly interface,
+called Customize, for changing values of user-definable variables.
+See (emacs)Easy Customization section `Easy Customization Interface' in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
+be found in the `Development/Docs/Texinfo' group, once you invoke
+the M-x customize command.
+
+

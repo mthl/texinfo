@@ -1,0 +1,26 @@
+Table of Contents
+*****************
+
+GNU Hello
+1. Overview
+2. Sample output
+3. Invoking hello
+4. Reporting bugs
+A. GNU Free Documentation License
+Concept index
+
+
+
+GNU Hello
+*********
+
+This manual is for GNU Hello (version 4.2, 28 March 2002).
+
+* Overview::		General purpose and information.
+* Sample output::	Sample output from hello.
+* Invoking hello::	How to run hello.
+* Reporting bugs::	Sending bug reports and feature suggestions.
+* GNU Free Documentation License:: Copying and sharing this documentation.
+* Concept index::	Index of concepts.
+
+

@@ -1,0 +1,65 @@
+1.8 What a Texinfo File Must Have
+=================================
+
+By convention, the namea of a Texinfo file ends with (in order of
+preference) one of the extensions `.texinfo', `.texi',
+`.txi', or `.tex'.  The longer extensions are preferred since
+they describe more clearly to a human reader the nature of the file.
+The shorter extensions are for operating systems that cannot handle long
+file names.
+
+In order to be made into a printed manual and an Info file, a Texinfo
+file must begin with lines like this:
+
+\input texinfo
+@setfilename info-file-name
+@settitle name-of-manual
+
+The contents of the file follow this beginning, and then you
+must end a Texinfo file with a line like this:
+
+@bye
+
+Here's an explanation:
+
+* The `\input texinfo' line tells TeX to use the
+`texinfo.tex' file, which tells TeX how to translate the Texinfo
+@-commands into TeX typesetting commands.  (Note the use of the
+backslash, `\'; this is correct for TeX.)
+
+* The @setfilename line provides a name for the Info file and
+tells TeX to open auxiliary files.  All text before
+@setfilename is ignored!
+
+* The @settitle line specifies a title for the page headers (or
+footers) of the printed manual, and the default document description for
+the `<head>' in HTML format.  Strictly speaking, @settitle
+is optional--if you don't mind your document being titled `Untitled'.
+
+* The @bye line at the end of the file on a line of its own tells
+the formatters that the file is ended and to stop formatting.
+
+
+Typically, you will not use quite such a spare format, but will include
+mode setting and start-of-header and end-of-header lines at the
+beginning of a Texinfo file, like this:
+
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename info-file-name
+@settitle name-of-manual
+@c %**end of header
+
+In the first line, `-*-texinfo-*-' causes Emacs to switch into
+Texinfo mode when you edit the file.
+
+The @c lines which surround the @setfilename and
+@settitle lines are optional, but you need them in order to
+run TeX or Info on just part of the file.  (See Start of Header.)
+
+Furthermore, you will usually provide a Texinfo file with a title page,
+indices, and the like, all of which are explained in this manual.  But
+the minimum, which can be useful for short documents, is just the three
+lines at the beginning and the one line at the end.
+
+

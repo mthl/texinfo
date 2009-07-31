@@ -1,0 +1,140 @@
+15.4.5 Object-Oriented Programming
+----------------------------------
+
+Here are the commands for formatting descriptions about abstract
+objects, such as are used in object-oriented programming.  A class is
+a defined type of abstract object.  An instance of a class is a
+particular object that has the type of the class.  An instance
+variable is a variable that belongs to the class but for which each
+instance has its own value.
+
+In a definition, if the name of a class is truly a name defined in the
+programming system for a class, then you should write an @code
+around it.  Otherwise, it is printed in the usual text font.
+
+@defcv category class name
+The @defcv command is the general definition command for
+variables associated with classes in object-oriented programming.  The
+@defcv command is followed by three arguments: the category of
+thing being defined, the class to which it belongs, and its
+name.  Thus,
+
+@defcv {Class Option} Window border-pattern
+...
+@end defcv
+
+illustrates how you would write the first line of a definition of the
+border-pattern class option of the class Window.
+
+The template is:
+@defcv category class name
+...
+@end defcv
+
+@defcv creates an entry in the index of variables.
+
+@defivar class name
+The @defivar command is the definition command for instance
+variables in object-oriented programming.  @defivar is
+equivalent to `@defcv {Instance Variable} ...'
+
+The template is:
+@defivar class instance-variable-name
+body-of-definition
+@end defivar
+
+@defivar creates an entry in the index of variables.
+
+@deftypeivar class data-type name
+The @deftypeivar command is the definition command for typed
+instance variables in object-oriented programming.  It is similar to
+@defivar with the addition of the data-type parameter to
+specify the type of the instance variable.  @deftypeivar creates an
+entry in the index of variables.
+
+@defop category class name arguments...
+The @defop command is the general definition command for
+entities that may resemble methods in object-oriented programming.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+
+For example, some systems have constructs called wrappers that
+are associated with classes as methods are, but that act more like
+macros than like functions.  You could use @defop Wrapper to
+describe one of these.
+
+Sometimes it is useful to distinguish methods and operations.
+You can think of an operation as the specification for a method.
+Thus, a window system might specify that all window classes have a
+method named expose; we would say that this window system
+defines an expose operation on windows in general.  Typically,
+the operation has a name and also specifies the pattern of arguments;
+all methods that implement the operation must accept the same
+arguments, since applications that use the operation do so without
+knowing which method will implement it.
+
+Often it makes more sense to document operations than methods.  For
+example, window application developers need to know about the
+expose operation, but need not be concerned with whether a
+given class of windows has its own method to implement this operation.
+To describe this operation, you would write:
+
+@defop Operation windows expose
+
+The @defop command is written at the beginning of a line and
+is followed on the same line by the overall name of the category of
+operation, the name of the class of the operation, the name of the
+operation, and its arguments, if any.
+
+The template is:
+@defop category class name arguments...
+body-of-definition
+@end defop
+
+@defop creates an entry, such as `expose on
+windows', in the index of functions.
+
+@deftypeop category class data-type name arguments...
+The @deftypeop command is the definition command for typed
+operations in object-oriented programming.  It is similar to
+@defop with the addition of the data-type parameter to
+specify the return type of the method.  @deftypeop creates an
+entry in the index of functions.
+
+@defmethod class name arguments...
+The @defmethod command is the definition command for methods
+in object-oriented programming.  A method is a kind of function that
+implements an operation for a particular class of objects and its
+subclasses.
+
+@defmethod is equivalent to `@defop Method ...'.
+The command is written at the beginning of a line and is followed by
+the name of the class of the method, the name of the method, and its
+arguments, if any.
+
+For example:
+@defmethod bar-class bar-method argument
+...
+@end defmethod
+
+illustrates the definition for a method called bar-method of
+the class bar-class.  The method takes an argument.
+
+The template is:
+
+@defmethod class method-name arguments...
+body-of-definition
+@end defmethod
+
+@defmethod creates an entry, such as `bar-method on
+bar-class', in the index of functions.
+
+
+@deftypemethod class data-type name arguments...
+The @deftypemethod command is the definition command for methods
+in object-oriented typed languages, such as C++ and Java.  It is similar
+to the @defmethod command with the addition of the
+data-type parameter to specify the return type of the method.
+
+
+

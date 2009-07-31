@@ -1,0 +1,10 @@
+13.10 Footnotes
+===============
+
+A footnote is for a reference that documents or elucidates the
+primary text.(8)
+
+* Footnote Commands::           How to write a footnote in Texinfo.
+* Footnote Styles::             Controlling how footnotes appear in Info.
+
+

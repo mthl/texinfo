@@ -1,0 +1,61 @@
+10.1 Block Enclosing Commands
+=============================
+
+Here are commands for quotations and examples, explained further in the
+following sections:
+
+@quotation
+Indicate text that is quoted. The text is filled, indented, and
+printed in a roman font by default.
+
+@example
+Illustrate code, commands, and the like. The text is printed
+in a fixed-width font, and indented but not filled.
+
+@verbatim
+Mark a piece of text that is to be printed verbatim; no character 
+substitutions are made and all commands are ignored, until the next
+@end verbatim.  The text is printed in a fixed-width font, 
+and not indented or filled.  Extra spaces and blank lines are 
+significant, and tabs are expanded.
+
+@smallexample
+Same as @example, except that in TeX this command typesets
+text in a smaller font.
+
+@lisp
+Like @example, but specifically for illustrating Lisp code. The
+text is printed in a fixed-width font, and indented but not filled.
+
+@smalllisp
+Is to @lisp as @smallexample is to @example.
+
+@display
+Display illustrative text.  The text is indented but not filled, and
+no font is selected (so, by default, the font is roman).
+
+@smalldisplay
+Is to @display as @smallexample is to @example.
+
+@format
+Like @display (the text is not filled and no font is selected),
+but the text is not indented.
+
+@smallformat
+Is to @format as @smallexample is to @example.
+
+The @exdent command is used within the above constructs to
+undo the indentation of a line.
+
+The @flushleft and @flushright commands are used to line
+up the left or right margins of unfilled text.
+
+The @noindent command may be used after one of the above
+constructs to prevent the following text from being indented as a new
+paragraph.
+
+You can use the @cartouche command within one of the above
+constructs to highlight the example or quotation by drawing a box with
+rounded corners around it.  See Drawing Cartouches Around Examples.
+
+

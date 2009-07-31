@@ -1,0 +1,142 @@
+9 Handling binary files
+***********************
+
+The most common use for CVS is to store text
+files.  With text files, CVS can merge revisions,
+display the differences between revisions in a
+human-visible fashion, and other such operations.
+However, if you are willing to give up a few of these
+abilities, CVS can store binary files.  For
+example, one might store a web site in CVS
+including both text files and binary images.
+
+* Binary why::     More details on issues with binary files
+* Binary howto::   How to store them
+
+9.1 The issues with binary files
+================================
+
+While the need to manage binary files may seem obvious
+if the files that you customarily work with are binary,
+putting them into version control does present some
+additional issues.
+
+One basic function of version control is to show the
+differences between two revisions.  For example, if
+someone else checked in a new version of a file, you
+may wish to look at what they changed and determine
+whether their changes are good.  For text files,
+CVS provides this functionality via the cvs
+diff command.  For binary files, it may be possible to
+extract the two revisions and then compare them with a
+tool external to CVS (for example, word processing
+software often has such a feature).  If there is no
+such tool, one must track changes via other mechanisms,
+such as urging people to write good log messages, and
+hoping that the changes they actually made were the
+changes that they intended to make.
+
+Another ability of a version control system is the
+ability to merge two revisions.  For CVS this
+happens in two contexts.  The first is when users make
+changes in separate working directories
+(see Multiple developers).  The second is when one
+merges explicitly with the `update -j' command
+(see Branching and merging).
+
+In the case of text
+files, CVS can merge changes made independently,
+and signal a conflict if the changes conflict.  With
+binary files, the best that CVS can do is present
+the two different copies of the file, and leave it to
+the user to resolve the conflict.  The user may choose
+one copy or the other, or may run an external merge
+tool which knows about that particular file format, if
+one exists.
+Note that having the user merge relies primarily on the
+user to not accidentally omit some changes, and thus is
+potentially error prone.
+
+If this process is thought to be undesirable, the best
+choice may be to avoid merging.  To avoid the merges
+that result from separate working directories, see the
+discussion of reserved checkouts (file locking) in
+Multiple developers.  To avoid the merges
+resulting from branches, restrict use of branches.
+
+9.2 How to store binary files
+=============================
+
+There are two issues with using CVS to store
+binary files.  The first is that CVS by default
+converts line endings between the canonical form in
+which they are stored in the repository (linefeed
+only), and the form appropriate to the operating system
+in use on the client (for example, carriage return
+followed by line feed for Windows NT).
+
+The second is that a binary file might happen to
+contain data which looks like a keyword (see Keyword substitution), so keyword expansion must be turned
+off.
+
+
+The `-kb' option available with some CVS
+commands insures that neither line ending conversion
+nor keyword expansion will be done.
+
+Here is an example of how you can create a new file
+using the `-kb' flag:
+
+$ echo '$@splitrcskeyword{}Id$' > kotest
+$ cvs add -kb -m"A test file" kotest
+$ cvs ci -m"First checkin; contains a keyword" kotest
+
+If a file accidentally gets added without `-kb',
+one can use the cvs admin command to recover.
+For example:
+
+$ echo '$@splitrcskeyword{}Id$' > kotest
+$ cvs add -m"A test file" kotest
+$ cvs ci -m"First checkin; contains a keyword" kotest
+$ cvs admin -kb kotest
+$ cvs update -A kotest
+# For non-unix systems:
+# Copy in a good copy of the file from outside CVS
+$ cvs commit -m "make it binary" kotest
+
+When you check in the file `kotest' the file is
+not preserved as a binary file, because you did not
+check it in as a binary file.  The cvs
+admin -kb command sets the default keyword
+substitution method for this file, but it does not
+alter the working copy of the file that you have.  If you need to
+cope with line endings (that is, you are using
+CVS on a non-unix system), then you need to
+check in a new copy of the file, as shown by the
+cvs commit command above.
+On unix, the cvs update -A command suffices.
+(Note that you can use cvs log to determine the default keyword
+substitution method for a file and cvs status to determine
+the keyword substitution method for a working copy.)
+
+However, in using cvs admin -k to change the
+keyword expansion, be aware that the keyword expansion
+mode is not version controlled.  This means that, for
+example, that if you have a text file in old releases,
+and a binary file with the same name in new releases,
+CVS provides no way to check out the file in text
+or binary mode depending on what version you are
+checking out.  There is no good workaround for this
+problem.
+
+You can also set a default for whether cvs add
+and cvs import treat a file as binary based on
+its name; for example you could say that files who
+names end in `.exe' are binary.  See Wrappers.
+There is currently no way to have CVS detect
+whether a file is binary based on its contents.  The
+main difficulty with designing such a feature is that
+it is not clear how to distinguish between binary and
+non-binary files, and the rules to apply would vary
+considerably with the operating system.
+

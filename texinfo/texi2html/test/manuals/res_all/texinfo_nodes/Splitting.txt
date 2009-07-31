@@ -1,0 +1,40 @@
+F.5.4 Splitting a File Manually
+-------------------------------
+
+You should split a large file or else let the
+texinfo-format-buffer or makeinfo-buffer command do it
+for you automatically.  (Generally you will let one of the formatting
+commands do this job for you.  See Creating an Info File.)
+
+The split-off files are called the indirect subfiles.
+
+Info files are split to save memory.  With smaller files, Emacs does not
+have make such a large buffer to hold the information.
+
+If an Info file has more than 30 nodes, you should also make a tag
+table for it. See Using Info-validate, for information
+about creating a tag table.  (Again, tag tables are usually created
+automatically by the formatting command; you only need to create a tag
+table yourself if you are doing the job manually.  Most likely, you
+will do this for a large, unsplit file on which you have run
+Info-validate.)
+
+
+Visit the Info file you wish to tagify and split and type the two
+commands:
+
+M-x Info-tagify
+M-x Info-split
+
+(Note that the `I' in `Info' is upper case.)
+
+When you use the Info-split command, the buffer is modified into a
+(small) Info file which lists the indirect subfiles.  This file should be
+saved in place of the original visited file.  The indirect subfiles are
+written in the same directory the original file is in, with names generated
+by appending `-' and a number to the original file name.
+
+The primary file still functions as an Info file, but it contains just
+the tag table and a directory of subfiles.
+
+

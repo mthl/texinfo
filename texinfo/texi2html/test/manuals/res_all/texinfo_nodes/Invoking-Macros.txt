@@ -1,0 +1,71 @@
+18.2 Invoking Macros
+====================
+
+After a macro is defined (see the previous section), you can use
+(invoke) it in your document like this:
+
+@macroname {arg1, arg2, ...}
+
+and the result will be just as if you typed the body of
+macroname at that spot.  For example:
+
+@macro foo {p, q}
+Together: \p\ & \q\.
+@end macro
+@foo{a, b}
+
+produces:
+
+Together: a & b.
+
+Thus, the arguments and parameters are separated by commas and delimited
+by braces; any whitespace after (but not before) a comma is ignored.
+The braces are required in the invocation (but not the definition), even
+when the macro takes no arguments, consistent with all other Texinfo
+commands.  For example:
+
+@macro argless {}
+No arguments here.
+@end macro
+@argless{}
+
+produces:
+
+No arguments here.
+
+To insert a comma, brace, or backslash in an argument, prepend a
+backslash, as in
+
+@macname {\\\{\}\,}
+
+which will pass the (almost certainly error-producing) argument
+`\{},' to macname.  However, commas in parameters, even
+if escaped by a backslash, might cause trouble in TeX.
+
+If the macro is defined to take a single argument, and is invoked
+without any braces, the entire rest of the line after the macro name is
+supplied as the argument.  For example:
+
+@macro bar {p}
+Twice: \p\ & \p\.
+@end macro
+@bar aah
+
+produces:
+
+Twice: aah & aah.
+
+If the macro is defined to take a single argument, and is invoked with
+braces, the braced text is passed as the argument, regardless of
+commas.  For example:
+
+@macro bar {p}
+Twice: \p\ & \p\.
+@end macro
+@bar{a,b}
+
+produces:
+
+Twice: a,b & a,b.
+
+

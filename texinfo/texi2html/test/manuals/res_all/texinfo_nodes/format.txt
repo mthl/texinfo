@@ -1,0 +1,18 @@
+10.9 @format and @smallformat
+=============================
+
+The @format command is similar to @example except
+that, in the printed manual, @format does not select the
+fixed-width font and does not narrow the margins.
+
+This is an example of text written between an @format command
+and an @end format command.  As you can see
+from this example,
+the @format command does not fill the text.
+
+Texinfo also provides a command @smallformat, which is like
+@format but uses a smaller font in @smallbook format.
+See small.
+
+
+

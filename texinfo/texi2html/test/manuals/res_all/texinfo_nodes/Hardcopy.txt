@@ -1,0 +1,33 @@
+19 Formatting and Printing Hardcopy
+***********************************
+
+There are three major shell commands for making a printed manual from a
+Texinfo file: one for converting the Texinfo file into a file that will be
+printed, a second for sorting indices, and a third for printing the
+formatted document.  When you use the shell commands, you can either
+work directly in the operating system shell or work within a shell
+inside GNU Emacs.
+
+If you are using GNU Emacs, you can use commands provided by Texinfo
+mode instead of shell commands.  In addition to the three commands to
+format a file, sort the indices, and print the result, Texinfo mode
+offers key bindings for commands to recenter the output buffer, show the
+print queue, and delete a job from the print queue.
+
+* Use TeX::                     Use TeX to format for hardcopy.
+* Format with tex/texindex::    How to format with explicit shell commands.
+* Format with texi2dvi::        A simpler way to format.
+* Print with lpr::              How to print.
+* Within Emacs::                How to format and print from an Emacs shell.
+* Texinfo Mode Printing::       How to format and print in Texinfo mode.
+* Compile-Command::             How to print using Emacs's compile command.
+* Requirements Summary::        TeX formatting requirements summary.
+* Preparing for TeX::           What to do before you use TeX.
+* Overfull hboxes::             What are and what to do with overfull hboxes.
+* smallbook::                   How to print small format books and manuals.
+* A4 Paper::                    How to print on A4 or A5 paper.
+* pagesizes::                   How to print with customized page sizes.
+* Cropmarks and Magnification::  How to print marks to indicate the size
+                                of pages and how to print scaled up output.
+* PDF Output::                  Portable Document Format output.
+

@@ -1,0 +1,942 @@
+This is singular.hlp, produced by makeinfo version 4.13 from
+singular.texi.
+
+
+Indirect:
+singular.hlp-1: 139
+singular.hlp-2: 303540
+singular.hlp-3: 602824
+singular.hlp-4: 900632
+singular.hlp-5: 1200598
+
+Tag Table:
+(Indirect)
+Node: Top139
+Node: Preface673
+Node: Introduction5139
+Node: Background5336
+Node: How to use this manual7819
+Node: Getting started12030
+Node: First steps12749
+Node: Rings and standard bases16101
+Node: Procedures and libraries22353
+Node: Change of rings24715
+Node: Modules and their annihilator27191
+Node: Resolution29436
+Node: General concepts31922
+Node: Interactive use32297
+Node: How to enter and exit33032
+Node: The SINGULAR prompt34375
+Node: The online help system35241
+Node: Interrupting SINGULAR43298
+Node: Editing input44038
+Node: Command line options45897
+Node: Startup sequence52260
+Node: Emacs user interface54364
+Node: A quick guide to Emacs57242
+Node: Running SINGULAR under Emacs62405
+Node: Demo mode69670
+Node: Customization of the Emacs interface70926
+Node: Editing SINGULAR input files with Emacs73702
+Node: Top 20 Emacs commands75656
+Node: Rings and orderings80013
+Node: Examples of ring declarations82097
+Node: General syntax of a ring declaration86143
+Node: Term orderings90820
+Node: Implemented algorithms95310
+Node: The SINGULAR language103470
+Node: General command syntax106047
+Node: Special characters109562
+Node: Names111574
+Node: Objects114175
+Node: Type conversion and casting115545
+Node: Flow control118580
+Node: Input and output119335
+Node: Procedures125445
+Node: Procedure definition126272
+Node: Names in procedures130456
+Node: Parameter list131922
+Node: Procedure commands133670
+Node: Libraries134023
+Node: Loading of a library134816
+Node: Format of a library137880
+Node: Guidelines for writing a library140152
+Node: Procedures in a library140900
+Node: Documentation of a library144783
+Node: lib2doc146739
+Node: Typesetting of help strings148844
+Node: The help string of a library156380
+Node: The help string of procedures157793
+Node: template_lib158992
+Node: mdouble163639
+Node: mtripple164173
+Node: msum164900
+Node: Debugging tools166016
+Node: Tracing of procedures166499
+Node: Source code debugger167229
+Node: Break points168972
+Node: Printing of data169699
+Node: libparse170066
+Node: Data types172948
+Node: def173657
+Node: def declarations175400
+Node: ideal176015
+Node: ideal declarations176476
+Node: ideal expressions177172
+Node: ideal operations178298
+Node: ideal related functions179731
+Node: int183943
+Node: int declarations184813
+Node: int expressions185289
+Node: int operations187888
+Node: int related functions189276
+Node: boolean expressions191369
+Node: boolean operations193888
+Node: intmat194431
+Node: intmat declarations195082
+Node: intmat expressions196240
+Node: intmat type cast197236
+Node: intmat operations198245
+Node: intmat related functions199934
+Node: intvec200540
+Node: intvec declarations201062
+Node: intvec expressions201629
+Node: intvec operations202514
+Node: intvec related functions203788
+Node: link204592
+Node: link declarations205150
+Node: link expressions205943
+Node: link related functions206695
+Node: ASCII links207314
+Node: MP links210485
+Node: MPfile links211560
+Node: MPtcp links214875
+Node: DBM links221533
+Node: list223469
+Node: list declarations224339
+Node: list expressions225346
+Node: list operations226152
+Node: list related functions227231
+Node: map228421
+Node: map declarations230076
+Node: map expressions232075
+Node: map operations232388
+Node: matrix233087
+Node: matrix declarations233958
+Node: matrix expressions235837
+Node: matrix type cast236583
+Node: matrix operations237870
+Node: matrix related functions239493
+Node: module240751
+Node: module declarations241762
+Node: module expressions242646
+Node: module operations243167
+Node: module related functions243896
+Node: number247038
+Node: number declarations247700
+Node: number expressions250040
+Node: number operations251551
+Node: number related functions252900
+Node: poly253772
+Node: poly declarations254420
+Node: poly expressions255118
+Node: poly operations256711
+Node: poly related functions257980
+Node: proc259852
+Node: proc declaration260602
+Node: qring262293
+Node: qring declaration262694
+Node: resolution263411
+Node: resolution declarations264210
+Node: resolution expressions265083
+Node: resolution related functions265508
+Node: ring266216
+Node: ring declarations266610
+Node: ring related functions268124
+Node: ring operations268963
+Node: string269996
+Node: string declarations271726
+Node: string expressions272451
+Node: string type cast273595
+Node: string operations275683
+Node: string related functions276722
+Node: vector277796
+Node: vector declarations278703
+Node: vector expressions279310
+Node: vector operations280246
+Node: vector related functions280842
+Node: Functions and system variables282001
+Node: Functions282254
+Node: attrib284680
+Node: bareiss287363
+Node: betti291393
+Node: char294735
+Node: char_series295427
+Node: charstr296029
+Node: cleardenom296780
+Node: close297447
+Node: coef297860
+Node: coeffs299783
+Node: contract303540
+Node: dbprint304444
+Node: defined305526
+Node: deg306639
+Node: degree307646
+Node: delete308716
+Node: det309340
+Node: diff310159
+Node: dim311556
+Node: division312379
+Node: dump315052
+Node: eliminate317110
+Node: eval318736
+Node: ERROR319815
+Node: example320613
+Node: execute321118
+Node: exit322057
+Node: extgcd322295
+Node: facstd323283
+Node: factorize324850
+Node: fetch326266
+Node: fglm328113
+Node: fglmquot329511
+Node: filecmd330521
+Node: find330928
+Node: finduni331666
+Node: fprintf332548
+Node: freemodule335317
+Node: gcd335953
+Node: gen336833
+Node: getdump337421
+Node: groebner338250
+Node: help340983
+Node: highcorner343453
+Node: hilb344841
+Node: homog347150
+Node: hres348444
+Node: imap350136
+Node: impart351509
+Node: indepSet351926
+Node: insert353729
+Node: interred354529
+Node: intersect355788
+Node: jacob356858
+Node: jet357603
+Node: kbase360179
+Node: kill361617
+Node: killattrib362491
+Node: koszul363061
+Node: laguerre364530
+Node: lead365745
+Node: leadcoef366812
+Node: leadexp367499
+Node: leadmonom368246
+Node: LIB368961
+Node: lift370308
+Node: liftstd371826
+Node: listvar373319
+Node: lres376734
+Node: maxideal378418
+Node: memory378997
+Node: minbase381173
+Node: minor381946
+Node: minres383203
+Node: modulo384594
+Node: monitor385718
+Node: mpresmat386620
+Node: mres388056
+Node: mstd390049
+Node: mult391485
+Node: nameof392421
+Node: names393162
+Node: ncols394678
+Node: npars395493
+Node: nres395901
+Node: nrows397578
+Node: nvars398540
+Node: open398968
+Node: option399377
+Ref: option(prot)401671
+Node: ord407578
+Node: ordstr408375
+Node: par408783
+Node: pardeg409387
+Node: parstr409822
+Node: preimage410612
+Node: prime411777
+Node: print412279
+Node: printf415854
+Node: prune418538
+Node: qhweight419203
+Node: quot419751
+Node: quote422327
+Node: quotient423486
+Node: random424737
+Node: read426083
+Node: reduce427585
+Node: regularity430339
+Node: repart431826
+Node: res432254
+Node: reservedName435167
+Node: resultant435791
+Node: rvar436400
+Node: setring437246
+Node: simplex438248
+Node: simplify442229
+Node: size444408
+Node: sortvec446202
+Node: sprintf446776
+Node: sres449574
+Node: status452480
+Node: std454648
+Node: stdfglm457716
+Node: stdhilb458774
+Node: subst459878
+Node: system460825
+Node: syz465825
+Node: trace466377
+Node: transpose466937
+Node: type467589
+Node: typeof468147
+Node: uressolve469338
+Node: vandermonde471186
+Node: var472787
+Node: varstr473159
+Node: vdim473960
+Node: wedge474812
+Node: weight475344
+Node: write476287
+Node: Control structures478833
+Node: break479895
+Node: breakpoint480345
+Node: continue481192
+Node: else482067
+Node: export482721
+Node: for483600
+Node: if484587
+Node: keepring485261
+Node: quit486293
+Node: return486590
+Node: while487676
+Node: ~488573
+Node: System variables489460
+Node: degBound489786
+Node: echo490472
+Node: minpoly490901
+Node: multBound492000
+Node: noether492668
+Node: printlevel493349
+Node: short494032
+Node: timer494938
+Node: TRACE var496873
+Node: rtimer497788
+Node: voice498151
+Node: Tricks and pitfalls498690
+Node: Limitations498982
+Node: Major differences to the C programming language500648
+Node: No rvalue of increments and assignments501295
+Node: Evaluation of logical expressions501952
+Node: No case or switch statement504193
+Node: Usage of commas504729
+Node: Usage of brackets505283
+Node: Behavior of continue506080
+Node: Return type of procedures506822
+Node: Miscellaneous oddities508257
+Node: Identifier resolution512614
+Node: Examples514266
+Node: Milnor and Tjurina515074
+Node: Procedures and LIB519494
+Node: Critical points521936
+Node: Saturation524539
+Node: Long coefficients526403
+Node: Parameters531040
+Node: T1 and T2532197
+Node: Deformations537243
+Node: Finite fields542728
+Node: Elimination548739
+Node: Free resolution555632
+Node: Computation of Ext562263
+Node: Polar curves567685
+Node: Depth572398
+Node: Formatting output574752
+Node: Cyclic roots575791
+Node: G_a -Invariants577811
+Node: Invariants of a finite group579154
+Node: Factorization581628
+Node: Puiseux pairs582791
+Node: Primary decomposition587569
+Node: Normalization590796
+Node: Branches of an Isolated Space Curve Singularity592995
+Node: Kernel of module homomorphisms598815
+Node: Algebraic dependence599743
+Node: Classification602824
+Node: Fast lexicographical GB605999
+Node: Parallelization with MPtcp links607089
+Node: Polynomial data611133
+Node: Representation of mathematical objects611369
+Node: Monomial orderings616339
+Node: Introduction to orderings616711
+Node: General definitions for orderings617799
+Node: Global orderings619426
+Node: Local orderings620784
+Node: Module orderings622240
+Node: Matrix orderings624836
+Node: Product orderings628169
+Node: Extra weight vector629163
+Node: Mathematical background629831
+Node: Standard bases630465
+Node: Hilbert function631582
+Node: Syzygies and resolutions632579
+Node: Characteristic sets636023
+Node: Gauss-Manin connection637892
+Node: Toric ideals and integer programming645852
+Node: Toric ideals646241
+Node: Algorithms647465
+Node: Conti and Traverso647786
+Node: Pottier648976
+Node: Hosten and Sturmfels649655
+Node: Di Biase and Urbanke651257
+Node: Bigatti and La Scala and Robbiano652964
+Node: Buchberger algorithm653756
+Node: Integer programming654493
+Node: Relevant References656799
+Ref: [Big97]657002
+Ref: [BLR98]657169
+Ref: [Coh93]657276
+Ref: [CoTr91]657397
+Ref: [DBUr95]657576
+Ref: [HoSh98]657756
+Ref: [HoSt95]657871
+Ref: [Pot94]658119
+Ref: [Stu96]658247
+Ref: [The99]658398
+Node: References658595
+Node: SINGULAR libraries662470
+Node: standard_lib663099
+Node: General purpose664023
+Node: all_lib664517
+Node: general_lib667210
+Node: A_Z668676
+Node: ASCII669656
+Node: absValue671404
+Node: binomial672031
+Node: deleteSublist673292
+Node: factorial673878
+Node: fibonacci674766
+Node: kmemory675621
+Node: killall676468
+Node: number_e678643
+Node: number_pi679436
+Node: primes680184
+Node: product680840
+Node: sort682040
+Node: sum685239
+Node: watchdog686316
+Node: which687698
+Node: primecoeffs688162
+Node: primefactors689207
+Node: timeStd690405
+Node: timeFactorize691112
+Node: factorH692442
+Node: inout_lib693227
+Node: allprint694036
+Node: lprint694698
+Node: pmat696059
+Node: rMacaulay696784
+Node: show698728
+Node: showrecursive700861
+Node: split701834
+Node: tab702551
+Node: writelist703020
+Node: pause705254
+Node: poly_lib706459
+Node: cyclic707831
+Node: katsura708577
+Node: freerank709809
+Node: is_homog711093
+Node: is_zero712099
+Node: lcm712805
+Node: maxcoef713543
+Node: maxdeg714118
+Node: maxdeg1715011
+Node: mindeg716036
+Node: mindeg1716951
+Node: normalize717939
+Node: rad_con718664
+Node: content719207
+Node: numerator719716
+Node: denominator720152
+Node: mod2id720597
+Node: id2mod721752
+Node: substitute722761
+Node: subrInterred724011
+Node: hilbPoly725735
+Node: random_lib726472
+Node: genericid727446
+Node: randomid728421
+Node: randommat729334
+Node: sparseid730360
+Node: sparsematrix731201
+Node: sparsemat732301
+Node: sparsepoly733283
+Node: sparsetriag733954
+Node: triagmatrix735066
+Node: randomLast736178
+Node: randomBinomial736742
+Node: ring_lib737385
+Node: changechar738397
+Node: changeord740261
+Node: changevar742134
+Node: defring744285
+Node: defrings746313
+Node: defringp747739
+Node: extendring749168
+Node: fetchall753701
+Node: imapall755157
+Node: mapall756689
+Node: ord_test758718
+Node: ringtensor759209
+Node: ringweights762665
+Node: Linear algebra763534
+Node: matrix_lib763810
+Node: compress765537
+Node: concat766522
+Node: diag767289
+Node: dsum768150
+Node: flatten768779
+Node: genericmat769307
+Node: is_complex770383
+Node: outer771131
+Node: power771834
+Node: skewmat772629
+Node: submat773812
+Node: symmat774486
+Node: tensor775641
+Node: unitmat776345
+Node: gauss_col777000
+Node: gauss_row779613
+Node: addcol781803
+Node: addrow782398
+Node: multcol783003
+Node: multrow783572
+Node: permcol784152
+Node: permrow784714
+Node: rowred785272
+Node: colred787657
+Node: rm_unitrow790192
+Node: rm_unitcol790987
+Node: headStand791764
+Node: linalg_lib791938
+Node: inverse793477
+Node: inverse_B794668
+Node: inverse_L795368
+Node: sym_gauss796131
+Node: orthogonalize796573
+Node: diag_test797051
+Node: busadj797717
+Node: charpoly798699
+Node: adjoint799337
+Node: det_B799872
+Node: gaussred800327
+Node: gaussred_pivot801341
+Node: gauss_nf802258
+Node: mat_rk802700
+Node: U_D_O803086
+Node: pos_def804137
+Node: hessenberg804776
+Node: evnf805226
+Node: eigenvals805541
+Node: minipoly806111
+Node: jordan806735
+Node: jordanbasis807408
+Node: jordanmatrix808066
+Node: jordannf808595
+Node: Commutative algebra809035
+Node: algebra_lib809806
+Node: algebra_containment810895
+Node: module_containment813518
+Node: inSubring816431
+Node: algDependent817503
+Node: alg_kernel819645
+Node: is_injective821169
+Node: is_surjective823476
+Node: is_bijective824729
+Node: noetherNormal826113
+Node: mapIsFinite827268
+Node: finitenessTest827848
+Node: elim_lib829897
+Node: blowup0830554
+Node: elim833255
+Node: elim1834239
+Node: nselect835253
+Node: sat836062
+Node: select837291
+Node: select1838163
+Node: homolog_lib839063
+Node: cup840578
+Node: cupproduct843937
+Node: depth850965
+Node: Ext_R851965
+Node: Ext855238
+Node: fitting860703
+Node: flatteningStrat861610
+Node: Hom862820
+Node: homology867791
+Node: isCM869176
+Node: isFlat869800
+Node: isLocallyFree870704
+Node: isReg871423
+Node: kernel872199
+Node: kohom873498
+Node: kontrahom874209
+Node: KoszulHomology874971
+Node: tensorMod876154
+Node: Tor877224
+Node: mprimdec_lib882164
+Node: separator884026
+Node: PrimdecA884672
+Node: PrimdecB885809
+Node: modDec886953
+Node: zeroMod887816
+Node: GTZmod888994
+Node: dec1var889948
+Node: annil891023
+Node: splitting891547
+Node: primTest893057
+Node: preComp893794
+Node: indSet895191
+Node: GTZopt896616
+Node: zeroOpt897574
+Node: clrSBmod898759
+Node: minSatMod899272
+Node: specialModulesEqual899881
+Node: stdModulesEqual900632
+Node: modulesEqual901242
+Node: getData901807
+Node: mregular_lib903206
+Node: reg_CM904501
+Node: reg_curve906100
+Node: reg_moncurve908392
+Node: normal_lib910517
+Node: normal911222
+Node: HomJJ914320
+Node: genus916183
+Node: deltaLoc916953
+Node: primdec_lib918943
+Node: Ann920905
+Node: primdecGTZ921062
+Node: primdecSY922127
+Node: minAssGTZ923256
+Node: minAssChar924018
+Node: testPrimary924949
+Node: radical925569
+Node: radicalEHV926197
+Node: equiRadical926983
+Node: prepareAss927672
+Node: equidim928285
+Node: equidimMax929381
+Node: equidimMaxEHV929875
+Node: zerodec930447
+Node: primitiv_lib931431
+Node: primitive931933
+Node: primitive_extra933818
+Node: splitring935639
+Node: reesclos_lib937552
+Node: ReesAlgebra938913
+Node: normalI940240
+Node: primeClosure941353
+Node: closureRingtower944046
+Node: closureFrac945193
+Node: intprog_lib946257
+Node: solve_IP946649
+Node: toric_lib950746
+Node: toric_ideal951147
+Node: toric_std953173
+Node: Singularities955088
+Node: classify_lib955921
+Node: basicinvariants957357
+Node: classify957895
+Node: corank961331
+Node: Hcode961876
+Node: init_debug962382
+Node: internalfunctions963475
+Node: milnorcode966601
+Node: morsesplit967246
+Node: quickclass967999
+Node: singularity968721
+Node: swap969911
+Node: A_L970268
+Node: normalform971118
+Node: debug_log971526
+Node: deform_lib972529
+Node: versal973133
+Node: mod_versal975762
+Node: lift_kbase978658
+Node: lift_rel_kb979932
+Node: kill_rings981129
+Node: equising_lib981477
+Node: tau_es982173
+Node: esIdeal982962
+Node: esStratum984983
+Node: isEquising988345
+Node: control_Matrix989899
+Node: gaussman_lib991531
+Node: gmsring993087
+Node: gmsnf994412
+Node: gmscoeffs995198
+Node: bernstein996455
+Node: monodromy997235
+Node: spectrum998258
+Node: sppairs998998
+Node: spnf999878
+Node: sppnf1000193
+Node: vfilt1000524
+Node: vwfilt1002379
+Node: tmatrix1004386
+Node: endvfilt1006779
+Node: spprint1008546
+Node: sppprint1009040
+Node: spadd1009606
+Node: spsub1010342
+Node: spmul1011084
+Node: spissemicont1012020
+Node: spsemicont1012887
+Node: spmilnor1014092
+Node: spgeomgenus1014641
+Node: spgamma1015201
+Node: hnoether_lib1015737
+Node: hnexpansion1017574
+Node: sethnering1022868
+Node: develop1024267
+Node: extdevelop1027799
+Node: parametrisation1030177
+Node: displayHNE1033353
+Node: invariants1035399
+Node: displayInvariants1039155
+Node: multsequence1040501
+Node: displayMultsequence1043845
+Node: intersection1046044
+Node: stripHNE1046927
+Node: is_irred1048404
+Node: delta1049241
+Node: newtonpoly1050561
+Node: is_NND1051350
+Node: puiseux2generators1052242
+Node: separateHNE1052980
+Node: squarefree1053975
+Node: allsquarefree1054826
+Node: further_hn_proc1055628
+Node: mondromy_lib1057411
+Node: detadj1058496
+Node: invunit1059355
+Node: jacoblift1059971
+Node: monodromyB1060946
+Node: H2basis1062767
+Node: qhmoduli_lib1063854
+Node: ArnoldAction1064700
+Node: ModEqn1065988
+Node: QuotientEquations1067510
+Node: StabEqn1068721
+Node: StabEqnId1069911
+Node: StabOrder1071244
+Node: UpperMonomials1071674
+Node: Max1072251
+Node: Min1072628
+Node: Table1072996
+Node: sing_lib1073313
+Node: deform1074614
+Node: dim_slocus1075132
+Node: is_active1075543
+Node: is_ci1076389
+Node: is_is1077410
+Node: is_reg1078364
+Node: is_regs1079034
+Node: locstd1080375
+Node: milnor1081764
+Node: nf_icis1082560
+Node: slocus1083818
+Node: qhspectrum1084287
+Node: Tjurina1085280
+Node: tjurina1087683
+Node: T_11088205
+Node: T_21090488
+Node: T_121092304
+Node: tangentcone1094001
+Node: spcurve_lib1094608
+Node: isCMcod21095442
+Node: CMtype1095930
+Node: matrixT11096391
+Node: semiCMcod21097898
+Node: discr1098914
+Node: qhmatrix1100011
+Node: relweight1100856
+Node: posweight1101508
+Node: KSpencerKernel1102979
+Node: spectrum_lib1105659
+Node: spectrumnd1105999
+Node: Invariant theory1111478
+Node: finvar_lib1111955
+Node: invariant_ring1114363
+Node: invariant_ring_random1117365
+Node: primary_invariants1119898
+Node: primary_invariants_random1122380
+Node: cyclotomic1124934
+Node: group_reynolds1125530
+Node: molien1127500
+Node: reynolds_molien1130340
+Node: partial_molien1133870
+Node: evaluate_reynolds1135347
+Node: invariant_basis1136427
+Node: invariant_basis_reynolds1137335
+Node: primary_char01138991
+Node: primary_charp1140271
+Node: primary_char0_no_molien1141797
+Node: primary_charp_no_molien1143115
+Node: primary_charp_without1144441
+Node: primary_char0_random1145581
+Node: primary_charp_random1147043
+Node: primary_char0_no_molien_random1148756
+Node: primary_charp_no_molien_random1150261
+Node: primary_charp_without_random1151774
+Node: power_products1153079
+Node: secondary_char01154177
+Node: secondary_charp1155881
+Node: secondary_no_molien1157618
+Node: secondary_and_irreducibles_no_molien1159197
+Node: secondary_not_cohen_macaulay1160818
+Node: orbit_variety1161847
+Node: relative_orbit_variety1163298
+Node: image_of_variety1164857
+Node: ainvar_lib1165725
+Node: invariantRing1166610
+Node: derivate1169383
+Node: actionIsProper1170253
+Node: reduction1171133
+Node: completeReduction1172257
+Node: localInvar1173115
+Node: furtherInvar1174071
+Node: sortier1175320
+Node: rinvar_lib1175841
+Node: HilbertSeries1177476
+Node: HilbertWeights1178162
+Node: ImageVariety1178723
+Node: ImageGroup1179758
+Node: InvariantRing1181446
+Node: InvariantQ1182782
+Node: LinearizeAction1183458
+Node: LinearActionQ1185694
+Node: LinearCombinationQ1186603
+Node: MinimalDecomposition1187066
+Node: NullCone1188054
+Node: ReynoldsImage1189113
+Node: ReynoldsOperator1189507
+Node: SimplifyIdeal1190631
+Node: TransferIdeal1191228
+Node: stratify_lib1191417
+Node: prepMat1192034
+Node: stratify1194301
+Node: Symbolic-numerical solving1196575
+Node: presolve_lib1197091
+Node: degreepart1198436
+Node: elimlinearpart1199136
+Node: elimpart1200598
+Node: elimpartanyr1202683
+Node: fastelim1204627
+Node: findvars1205963
+Node: hilbvec1207137
+Node: linearpart1207930
+Node: tolessvars1208510
+Node: solvelinearpart1210409
+Node: sortandmap1212003
+Node: sortvars1214517
+Node: shortid1216887
+Node: valvars1217728
+Node: idealSimplify1220166
+Node: idealSplit1220863
+Node: solve_lib1223520
+Node: laguerre_solve1224655
+Node: solve1227670
+Node: ures_solve1230917
+Node: mp_res_mat1233551
+Node: interpolate1236788
+Node: fglm_solve1237787
+Node: lex_solve1239074
+Node: simplexOut1240444
+Node: triangLf_solve1241806
+Node: triangM_solve1243332
+Node: triangL_solve1244836
+Node: triang_solve1246338
+Node: triang_lib1247921
+Node: triangL1248495
+Node: triangLfak1249208
+Node: triangM1250046
+Node: triangMH1250975
+Node: ntsolve_lib1252091
+Node: nt_solve1252564
+Node: triMNewton1253959
+Node: zeroset_lib1255091
+Node: EGCD1257176
+Node: Factor1257761
+Node: Quotient1258961
+Node: Remainder1259716
+Node: Roots1260316
+Node: SQFRNorm1262037
+Node: ZeroSet1262894
+Node: EGCDMain1264960
+Node: FactorMain1265391
+Node: InvertNumberMain1265981
+Node: QuotientMain1266476
+Node: RemainderMain1267096
+Node: RootsMain1267617
+Node: SQFRNormMain1268433
+Node: ContainedQ1269114
+Node: SameQ1269666
+Node: Visualization1269990
+Node: graphics_lib1270356
+Node: staircase1270842
+Node: mathinit1271786
+Node: mplot1272240
+Node: latex_lib1274212
+Node: closetex1276068
+Node: opentex1276578
+Node: tex1277082
+Node: texdemo1278898
+Node: texfactorize1279289
+Node: texmap1280225
+Node: texname1282541
+Node: texobj1284148
+Node: texpoly1286793
+Node: texproc1287833
+Node: texring1289050
+Node: rmx1291401
+Node: xdvi1293308
+Node: paramet_lib1295159
+Node: parametrize1296009
+Node: parametrizepd1297143
+Node: parametrizesing1298659
+Node: surf_lib1299622
+Node: plot1300266
+Node: Coding theory1301210
+Node: brnoeth_lib1301425
+Node: Adj_div1303062
+Node: NSplaces1309212
+Node: BrillNoether1311763
+Node: Weierstrass1313574
+Node: extcurve1315439
+Node: AGcode_L1317741
+Node: AGcode_Omega1319759
+Node: prepSV1321703
+Node: decodeSV1325215
+Node: closed_points1327118
+Node: dual_code1328541
+Node: sys_code1329391
+Node: permute_L1331029
+Node: Release Notes1331784
+Node: News and changes1332085
+Node: Downloading instructions1335387
+Node: Unix installation instructions1341881
+Node: Windows installation instructions1352489
+Node: Macintosh installation instructions1361648
+Node: Index1366682
+
+End Tag Table

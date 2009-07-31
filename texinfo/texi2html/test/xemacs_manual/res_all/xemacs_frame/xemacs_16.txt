@@ -1,0 +1,141 @@
+13 Commands for Fixing Typos
+****************************
+
+  This chapter describes commands that are especially useful when you
+catch a mistake in your text just after you have made it, or when you 
+change your mind while composing text on line.
+
+* Kill Errors:: Commands to kill a batch of recently entered text.
+* Transpose::   Exchanging two characters, words, lines, lists...
+* Fixing Case:: Correcting case of last word entered.
+* Spelling::    Apply spelling checker to a word, or a whole file.
+
+13.1 Killing Your Mistakes
+==========================
+
+<DEL>
+Delete last character (delete-backward-char).
+M-<DEL>
+Kill last word (backward-kill-word).
+C-x <DEL>
+Kill to beginning of sentence (backward-kill-sentence).
+
+  The <DEL> character (delete-backward-char) is the most
+important correction command.  When used among graphic (self-inserting)
+characters, it can be thought of as canceling the last character typed.
+
+  When your mistake is longer than a couple of characters, it might be more
+convenient to use M-<DEL> or C-x <DEL>.
+M-<DEL> kills back to the start of the last word, and C-x
+<DEL> kills back to the start of the last sentence.  C-x
+<DEL> is particularly useful when you are thinking of what to write as
+you type it, in case you change your mind about phrasing.
+M-<DEL> and C-x <DEL> save the killed text for
+C-y and M-y to retrieve.  See Yanking.
+
+  M-<DEL> is often useful even when you have typed only a few
+characters wrong, if you know you are confused in your typing and aren't
+sure exactly what you typed.  At such a time, you cannot correct with
+<DEL> except by looking at the screen to see what you did.  It requires
+less thought to kill the whole word and start over.
+
+13.2 Transposing Text
+=====================
+
+C-t
+Transpose two characters (transpose-chars).
+M-t
+Transpose two words (transpose-words).
+C-M-t
+Transpose two balanced expressions (transpose-sexps).
+C-x C-t
+Transpose two lines (transpose-lines).
+
+  The common error of transposing two adjacent characters can be fixed
+with the C-t command (transpose-chars).  Normally,
+C-t transposes the two characters on either side of point.  When
+given at the end of a line, C-t transposes the last two characters
+on the line, rather than transposing the last character of the line with
+the newline, which would be useless.  If you catch a
+transposition error right away, you can fix it with just C-t.
+If you catch the error later,  move the cursor back to between
+the two transposed characters.  If you transposed a space with the last
+character of the word before it, the word motion commands are a good way
+of getting there.  Otherwise, a reverse search (C-r) is often the
+best way.  See Search.
+
+  Meta-t (transpose-words) transposes the word before point
+with the word after point.  It moves point forward over a word, dragging
+the word preceding or containing point forward as well.  The punctuation
+characters between the words do not move.  For example, `FOO, BAR'
+transposes into `BAR, FOO' rather than `BAR FOO,'.
+
+  C-M-t (transpose-sexps) is a similar command for transposing
+two expressions (see Lists), and C-x C-t (transpose-lines)
+exchanges lines.  It works like M-t but in determines the
+division of the text into syntactic units differently.
+
+  A numeric argument to a transpose command serves as a repeat count: it
+tells the transpose command to move the character (word, sexp, line) before
+or containing point across several other characters (words, sexps, lines).
+For example, C-u 3 C-t moves the character before point forward
+across three other characters.  This is equivalent to repeating C-t
+three times.  C-u - 4 M-t moves the word before point backward across
+four words.  C-u - C-M-t would cancel the effect of plain
+C-M-t.
+
+  A numeric argument of zero transposes the character (word, sexp, line)
+ending after point with the one ending after the mark (otherwise a
+command with a repeat count of zero would do nothing).
+
+13.3 Case Conversion
+====================
+
+M-- M-l
+Convert last word to lower case.  Note that Meta-- is "Meta-minus."
+M-- M-u
+Convert last word to all upper case.
+M-- M-c
+Convert last word to lower case with capital initial.
+
+  A  common error is to type words in the wrong case.  Because of this,
+the word case-conversion commands M-l, M-u, and M-c do
+not move the cursor when used with a negative argument.
+As soon as you see you have mistyped the last word, you can simply
+case-convert it and continue typing.  See Case.
+
+13.4 Checking and Correcting Spelling
+=====================================
+
+M-$
+Check and correct spelling of word (spell-word).
+M-x spell-buffer
+Check and correct spelling of each word in the buffer.
+M-x spell-region
+Check and correct spelling of each word in the region.
+M-x spell-string
+Check spelling of specified word.
+
+  To check the spelling of the word before point, and optionally correct
+it, use the command M-$ (spell-word).  This command runs an
+inferior process containing the spell program to see whether the
+word is correct English.  If it is not, it asks you to edit the word (in
+the minibuffer) into a corrected spelling, and then performs a
+query-replace to substitute the corrected spelling for the old
+one throughout the buffer.
+
+  If you exit the minibuffer without altering the original spelling, it
+means you do not want to do anything to that word.  In that case, the
+query-replace is not done.
+
+  M-x spell-buffer checks each word in the buffer the same way that
+spell-word does, doing a query-replace for
+every incorrect word if appropriate.
+
+  M-x spell-region is similar to spell-buffer but operates
+only on the region, not the entire buffer.
+
+  M-x spell-string reads a string as an argument and checks
+whether that is a correctly spelled English word.  It prints a message
+giving the answer in the echo area.
+

@@ -1,0 +1,27 @@
+19.11 Printing "Small" Books
+============================
+
+By default, TeX typesets pages for printing in an 8.5 by 11 inch
+format.  However, you can direct TeX to typeset a document in a 7 by
+9.25 inch format that is suitable for bound books by inserting the
+following command on a line by itself at the beginning of the Texinfo
+file, before the title page:
+
+@smallbook
+
+(Since many books are about 7 by 9.25 inches, this command might better
+have been called the @regularbooksize command, but it came to be
+called the @smallbook command by comparison to the 8.5 by 11 inch format.)
+
+If you write the @smallbook command between the
+start-of-header and end-of-header lines, the Texinfo mode TeX
+region formatting command, texinfo-tex-region, will format the
+region in "small" book size (see Start of Header).
+
+See small, for information about
+commands that make it easier to produce examples for a smaller manual.
+
+See Format with texi2dvi, and Preparing for TeX, for other ways to format with @smallbook that do not
+require changing the source file.
+
+

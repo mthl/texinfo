@@ -1,0 +1,1070 @@
+<div id="Multiple-developers"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
+<td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Multiple-developers-1"></div>
+== Multiple developers ==
+<div id="index-Multiple-developers"></div>
+<div id="index-Team-of-developers"></div>
+<div id="index-File-locking"></div>
+<div id="index-Locking-files"></div>
+<div id="index-Working-copy"></div>
+<div id="index-Reserved-checkouts"></div>
+<div id="index-Unreserved-checkouts"></div>
+<div id="index-RCS_002dstyle-locking"></div>
+
+<p>When more than one person works on a software project
+things often get complicated.  Often, two people try to
+edit the same file simultaneously.  One solution, known
+as <em>file locking</em> or <em>reserved checkouts</em>, is
+to allow only one person to edit each file at a time.
+This is the only solution with some version control
+systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
+the usual way to get reserved checkouts with <small>CVS</small>
+is the <code>cvs admin -l</code> command (see section [cvs: Guide to CVS commands#admin-options admin options]).  This is not as nicely integrated into
+<small>CVS</small> as the watch features, described below, but it
+seems that most people with a need for reserved
+checkouts find it adequate.
+It also may be possible to use the watches
+features described below, together with suitable
+procedures (not enforced by software), to avoid having
+two people edit at the same time.
+</p>
+<p>The default model with <small>CVS</small> is known as
+<em>unreserved checkouts</em>.  In this model, developers
+can edit their own <em>working copy</em> of a file
+simultaneously.  The first person that commits his
+changes has no automatic way of knowing that another
+has started to edit it.  Others will get an error
+message when they try to commit the file.  They must
+then use <small>CVS</small> commands to bring their working copy
+up to date with the repository revision.  This process
+is almost automatic.
+</p>
+<p><small>CVS</small> also supports mechanisms which facilitate
+various kinds of communication, without actually
+enforcing rules like reserved checkouts do.
+</p>
+<p>The rest of this chapter describes how these various
+models work, and some of the issues involved in
+choosing between them.
+</p>
+
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#File-status| File status]]::<nowiki>                 A file can be in several states
+</nowiki>&bull;[[#Updating-a-file| Updating a file]]::<nowiki>             Bringing a file up-to-date
+</nowiki>&bull;[[#Conflicts-example| Conflicts example]]::<nowiki>           An informative example
+</nowiki>&bull;[[#Informing-others| Informing others]]::<nowiki>            To cooperate you must inform
+</nowiki>&bull;[[#Concurrency| Concurrency]]::<nowiki>                 Simultaneous repository access
+</nowiki>&bull;[[#Watches| Watches]]::<nowiki>                     Mechanisms to track who is editing files
+</nowiki>&bull;[[#Choosing-a-model| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
+</nowiki></pre>
+<hr size="6">
+<div id="File-status"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="File-status-1"></div>
+=== File status ===
+<div id="index-File-status"></div>
+<div id="index-Status-of-a-file"></div>
+
+<p>Based on what operations you have performed on a
+checked out file, and what operations others have
+performed to that file in the repository, one can
+classify a file in a number of states.  The states, as
+reported by the <code>status</code> command, are:
+</p>
+<dl compact="compact">
+<dd><div id="index-Up_002dto_002ddate"></div>
+</dd>
+<dt>Up-to-date</dt>
+<dd><p>The file is identical with the latest revision in the
+repository for the branch in use.
+</p>
+</dd>
+<dt>Locally Modified</dt>
+<dd><div id="index-Locally-Modified"></div>
+<p>You have edited the file, and not yet committed your changes.
+</p>
+</dd>
+<dt>Locally Added</dt>
+<dd><div id="index-Locally-Added"></div>
+<p>You have added the file with <code>add</code>, and not yet
+committed your changes.
+</p>
+</dd>
+<dt>Locally Removed</dt>
+<dd><div id="index-Locally-Removed"></div>
+<p>You have removed the file with <code>remove</code>, and not yet
+committed your changes.
+</p>
+</dd>
+<dt>Needs Checkout</dt>
+<dd><div id="index-Needs-Checkout"></div>
+<p>Someone else has committed a newer revision to the
+repository.  The name is slightly misleading; you will
+ordinarily use <code>update</code> rather than
+<code>checkout</code> to get that newer revision.
+</p>
+</dd>
+<dt>Needs Patch</dt>
+<dd><div id="index-Needs-Patch"></div>
+<p>Like Needs Checkout, but the <small>CVS</small> server will send
+a patch rather than the entire file.  Sending a patch or
+sending an entire file accomplishes the same thing.
+</p>
+</dd>
+<dt>Needs Merge</dt>
+<dd><div id="index-Needs-Merge"></div>
+<p>Someone else has committed a newer revision to the repository, and you
+have also made modifications to the file.
+</p>
+</dd>
+<dt>Unresolved Conflict</dt>
+<dd><div id="index-Unresolved-Conflict"></div>
+<p>A file with the same name as this new file has been added to the repository
+from a second workspace.  This file will need to be moved out of the way
+to allow an <code>update</code> to complete.
+</p>
+</dd>
+<dt>File had conflicts on merge</dt>
+<dd><div id="index-File-had-conflicts-on-merge"></div>
+<p>This is like Locally Modified, except that a previous
+<code>update</code> command gave a conflict.  If you have not
+already done so, you need to
+resolve the conflict as described in [[#Conflicts-example|Conflicts example]].
+</p>
+</dd>
+<dt>Unknown</dt>
+<dd><div id="index-Unknown"></div>
+<p><small>CVS</small> doesn&rsquo;t know anything about this file.  For
+example, you have created a new file and have not run
+<code>add</code>.
+</p>
+</dd>
+</dl>
+
+<p>To help clarify the file status, <code>status</code> also
+reports the <code>Working revision</code> which is the
+revision that the file in the working directory derives
+from, and the <code>Repository revision</code> which is the
+latest revision in the repository for the branch in
+use.
+</p>
+<p>The options to <code>status</code> are listed in
+[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see [cvs: Revisions#Sticky-tags Sticky tags].
+For information on its <code>Sticky options</code> output,
+see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: Guide to CVS commands#update-options update options].
+</p>
+<p>You can think of the <code>status</code> and <code>update</code>
+commands as somewhat complementary.  You use
+<code>update</code> to bring your files up to date, and you
+can use <code>status</code> to give you some idea of what an
+<code>update</code> would do (of course, the state of the
+repository might change before you actually run
+<code>update</code>).  In fact, if you want a command to
+display file status in a more brief format than is
+displayed by the <code>status</code> command, you can invoke
+</p>
+<div id="index-update_002c-to-display-file-status"></div>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs -n -q update
+</nowiki></pre></td></tr></table>
+
+<p>The &lsquo;<samp>-n</samp>&rsquo; option means to not actually do the
+update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
+option avoids printing the name of each directory.  For
+more information on the <code>update</code> command, and
+these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+</p>
+<hr size="6">
+<div id="Updating-a-file"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Bringing-a-file-up-to-date"></div>
+=== Bringing a file up to date ===
+<div id="index-Bringing-a-file-up-to-date"></div>
+<div id="index-Updating-a-file"></div>
+<div id="index-Merging-a-file"></div>
+<div id="index-Update_002c-introduction"></div>
+
+<p>When you want to update or merge a file, use the <code>update</code>
+command.  For files that are not up to date this is roughly equivalent
+to a <code>checkout</code> command: the newest revision of the file is
+extracted from the repository and put in your working directory.
+</p>
+<p>Your modifications to a file are never lost when you
+use <code>update</code>.  If no newer revision exists,
+running <code>update</code> has no effect.  If you have
+edited the file, and a newer revision is available,
+<small>CVS</small> will merge all changes into your working copy.
+</p>
+<p>For instance, imagine that you checked out revision 1.4 and started
+editing it.  In the meantime someone else committed revision 1.5, and
+shortly after that revision 1.6.  If you run <code>update</code> on the file
+now, <small>CVS</small> will incorporate all changes between revision 1.4 and 1.6 into
+your file.
+</p>
+<div id="index-Overlap"></div>
+<p>If any of the changes between 1.4 and 1.6 were made too
+close to any of the changes you have made, an
+<em>overlap</em> occurs.  In such cases a warning is
+printed, and the resulting file includes both
+versions of the lines that overlap, delimited by
+special markers.
+See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository], for a complete description of the
+<code>update</code> command.
+</p>
+<hr size="6">
+<div id="Conflicts-example"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Conflicts-example-1"></div>
+=== Conflicts example ===
+<div id="index-Merge_002c-an-example"></div>
+<div id="index-Example-of-merge"></div>
+<div id="index-driver_002ec-_0028merge-example_0029"></div>
+
+<p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
+
+void main()
+{
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? 0 : 1);
+}
+</nowiki></pre></td></tr></table>
+
+<p>Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(!!nerr);
+}
+</nowiki></pre></td></tr></table>
+
+<p>Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
+1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    init_scanner();
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+</nowiki></pre></td></tr></table>
+
+<p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update driver.c
+RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
+retrieving revision 1.4
+retrieving revision 1.6
+Merging differences between 1.4 and 1.6 into driver.c
+rcsmerge warning: overlaps during merge
+cvs update: conflicts found in driver.c
+C driver.c
+</nowiki></pre></td></tr></table>
+
+<div id="index-Conflicts-_0028merge-example_0029"></div>
+<p><small>CVS</small> tells you that there were some conflicts.
+Your original working file is saved unmodified in
+&lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
+&lsquo;<tt>driver.c</tt>&rsquo; contains this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+=======
+    exit(!!nerr);
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
+}
+</nowiki></pre></td></tr></table>
+
+<div id="index-Markers_002c-conflict"></div>
+<div id="index-Conflict-markers"></div>
+<div id="index-_003c_003c_003c_003c_003c_003c_003c"></div>
+<div id="index-_003e_003e_003e_003e_003e_003e_003e"></div>
+<div id="index-_003d_003d_003d_003d_003d_003d_003d"></div>
+
+<p>Note how all non-overlapping modifications are incorporated in your working
+copy, and that the overlapping section is clearly marked with
+&lsquo;<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>&rsquo;, &lsquo;<samp>=======</samp>&rsquo; and &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>&rsquo;.
+</p>
+<div id="index-Resolving-a-conflict"></div>
+<div id="index-Conflict-resolution"></div>
+<p>You resolve the conflict by editing the file, removing the markers and
+the erroneous line.  Suppose you end up with this file:
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+</nowiki></pre></td></tr></table>
+
+<p>You can now go ahead and commit this as revision 1.7.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
+Checking in driver.c;
+/usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
+new revision: 1.7; previous revision: 1.6
+done
+</nowiki></pre></td></tr></table>
+
+<p>For your protection, <small>CVS</small> will refuse to check in a
+file if a conflict occurred and you have not resolved
+the conflict.  Currently to resolve a conflict, you
+must change the timestamp on the file.  In previous
+versions of <small>CVS</small>, you also needed to
+insure that the file contains no conflict markers.
+Because
+your file may legitimately contain conflict markers (that
+is, occurrences of &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>&rsquo; at the start of a
+line that don&rsquo;t mark a conflict), the current
+version of <small>CVS</small> will print a warning and proceed to
+check in the file.
+</p>
+<div id="index-emerge"></div>
+<p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
+Emacs front-end for <small>CVS</small>) you can use an Emacs
+package called emerge to help you resolve conflicts.
+See the documentation for pcl-cvs.
+</p>
+<hr size="6">
+<div id="Informing-others"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Informing-others-about-commits"></div>
+=== Informing others about commits ===
+<div id="index-Informing-others"></div>
+<div id="index-Spreading-information"></div>
+<div id="index-Mail_002c-automatic-mail-on-commit"></div>
+
+<p>It is often useful to inform others when you commit a
+new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
+&lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
+used to automate this process.  See section [cvs: Reference manual for Administrative files#modules The modules file].
+See section [cvs: Reference manual for Administrative files#loginfo Loginfo].  You can use these features of <small>CVS</small>
+to, for instance, instruct <small>CVS</small> to mail a
+message to all developers, or post a message to a local
+newsgroup.
+</p>
+<hr size="6">
+<div id="Concurrency"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
+=== Several developers simultaneously attempting to run CVS ===
+
+<div id="index-Locks_002c-cvs_002c-introduction"></div>
+<p>If several developers try to run <small>CVS</small> at the same
+time, one may get the following message:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
+</nowiki></pre></td></tr></table>
+
+<div id="index-_0023cvs_002erfl_002c-removing"></div>
+<div id="index-_0023cvs_002ewfl_002c-removing"></div>
+<div id="index-_0023cvs_002elock_002c-removing"></div>
+<p><small>CVS</small> will try again every 30 seconds, and either
+continue with the operation or print the message again,
+if it still needs to wait.  If a lock seems to stick
+around for an undue amount of time, find the person
+holding the lock and ask them about the cvs command
+they are running.  If they aren&rsquo;t running a cvs
+command, look in the repository directory mentioned in
+the message and remove files which they own whose names
+start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
+&lsquo;<tt>#cvs.wfl</tt>&rsquo;, or &lsquo;<tt>#cvs.lock</tt>&rsquo;.
+</p>
+<p>Note that these locks are to protect <small>CVS</small>&rsquo;s
+internal data structures and have no relationship to
+the word <em>lock</em> in the sense used by
+<small>RCS</small>&mdash;which refers to reserved checkouts
+(see section [[#Multiple-developers|Multiple developers]]).
+</p>
+<p>Any number of people can be reading from a given
+repository at a time; only when someone is writing do
+the locks prevent other people from reading or writing.
+</p>
+<div id="index-Atomic-transactions_002c-lack-of"></div>
+<div id="index-Transactions_002c-atomic_002c-lack-of"></div>
+<p>One might hope for the following property:
+</p>
+<blockquote><p>If someone commits some changes in one cvs command,
+then an update by someone else will either get all the
+changes, or none of them.
+</p></blockquote>
+
+<p>but <small>CVS</small> does <em>not</em> have this property.  For
+example, given the files
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>a/one.c
+a/two.c
+b/three.c
+b/four.c
+</nowiki></pre></td></tr></table>
+
+<p>if someone runs
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs ci a/two.c b/three.c
+</nowiki></pre></td></tr></table>
+
+<p>and someone else runs <code>cvs update</code> at the same
+time, the person running <code>update</code> might get only
+the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
+&lsquo;<tt>a/two.c</tt>&rsquo;.
+</p>
+<hr size="6">
+<div id="Watches"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Mechanisms-to-track-who-is-editing-files"></div>
+=== Mechanisms to track who is editing files ===
+<div id="index-Watches"></div>
+
+<p>For many groups, use of <small>CVS</small> in its default mode is
+perfectly satisfactory.  Users may sometimes go to
+check in a modification only to find that another
+modification has intervened, but they deal with it and
+proceed with their check in.  Other groups prefer to be
+able to know who is editing what files, so that if two
+people try to edit the same file they can choose to
+talk about who is doing what when rather than be
+surprised at check in time.  The features in this
+section allow such coordination, while retaining the
+ability of two developers to edit the same file at the
+same time.
+</p>
+<p>For maximum benefit developers should use <code>cvs
+edit</code> (not <code>chmod</code>) to make files read-write to
+edit them, and <code>cvs release</code> (not <code>rm</code>) to
+discard a working directory which is no longer in use,
+but <small>CVS</small> is not able to enforce this behavior.
+</p>
+
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-a-watch| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
+</nowiki>&bull;[[#Getting-Notified| Getting Notified]]::<nowiki>            Telling CVS to notify you
+</nowiki>&bull;[[#Editing-files| Editing files]]::<nowiki>               How to edit a file which is being watched
+</nowiki>&bull;[[#Watch-information| Watch information]]::<nowiki>           Information about who is watching and editing
+</nowiki>&bull;[[#Watches-Compatibility| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
+</nowiki></pre>
+<hr size="6">
+<div id="Setting-a-watch"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Telling-CVS-to-watch-certain-files"></div>
+==== Telling CVS to watch certain files ====
+
+<p>To enable the watch features, you first specify that
+certain files are to be watched.
+</p>
+<div id="index-watch-on-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-watch-on"></div><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<div id="index-Read_002donly-files_002c-and-watches"></div>
+<p>Specify that developers should run <code>cvs edit</code>
+before editing <var>files</var>.  <small>CVS</small> will create working
+copies of <var>files</var> read-only, to remind developers
+to run the <code>cvs edit</code> command before working on
+them.
+</p>
+<p>If <var>files</var> includes the name of a directory, <small>CVS</small>
+arranges to watch all files added to the corresponding
+repository directory, and sets a default for files
+added in the future; this allows the user to set
+notification policies on a per-directory basis.  The
+contents of the directory are processed recursively,
+unless the <code>-l</code> option is given.
+The <code>-R</code> option can be used to force recursion if the <code>-l</code>
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+</p>
+<p>If <var>files</var> is omitted, it defaults to the current directory.
+</p>
+<div id="index-watch-off-_0028subcommand_0029"></div>
+</dd></dl>
+
+<dl>
+<dt><div id="index-cvs-watch-off"></div><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Do not create <var>files</var> read-only on checkout; thus,
+developers will not be reminded to use <code>cvs edit</code>
+and <code>cvs unedit</code>.
+</p>
+<p>The <var>files</var> and options are processed as for <code>cvs
+watch on</code>.
+</p>
+</dd></dl>
+
+<hr size="6">
+<div id="Getting-Notified"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Telling-CVS-to-notify-you"></div>
+==== Telling CVS to notify you ====
+
+<p>You can tell <small>CVS</small> that you want to receive
+notifications about various actions taken on a file.
+You can do this without using <code>cvs watch on</code> for
+the file, but generally you will want to use <code>cvs
+watch on</code>, to remind developers to use the <code>cvs edit</code>
+command.
+</p>
+<div id="index-watch-add-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-watch-add"></div><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Add the current user to the list of people to receive notification of
+work done on <var>files</var>.
+</p>
+<p>The <code>-a</code> option specifies what kinds of events <small>CVS</small> should notify
+the user about.  <var>action</var> is one of the following:
+</p>
+<dl compact="compact">
+<dt><code>edit</code></dt>
+<dd><p>Another user has applied the <code>cvs edit</code> command (described
+below) to a watched file.
+</p>
+</dd>
+<dt><code>commit</code></dt>
+<dd><p>Another user has committed changes to one of the named <var>files</var>.
+</p>
+</dd>
+<dt><code>unedit</code></dt>
+<dd><p>Another user has abandoned editing a file (other than by committing changes).
+They can do this in several ways, by:
+</p>
+<ul>
+<li>
+applying the <code>cvs unedit</code> command (described below) to the file
+
+</li><li>
+applying the <code>cvs release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]) to the file&rsquo;s parent directory
+(or recursively to a directory more than one level up)
+
+</li><li>
+deleting the file and allowing <code>cvs update</code> to recreate it
+
+</li></ul>
+
+</dd>
+<dt><code>all</code></dt>
+<dd><p>All of the above.
+</p>
+</dd>
+<dt><code>none</code></dt>
+<dd><p>None of the above.  (This is useful with <code>cvs edit</code>,
+described below.)
+</p>
+</dd>
+</dl>
+
+<p>The <code>-a</code> option may appear more than once, or not at all.  If
+omitted, the action defaults to <code>all</code>.
+</p>
+<p>The <var>files</var> and options are processed as for
+<code>cvs watch on</code>.
+</p>
+</dd></dl>
+
+
+<div id="index-watch-remove-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-watch-remove"></div><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Remove a notification request established using <code>cvs watch add</code>;
+the arguments are the same.  If the <code>-a</code> option is present, only
+watches for the specified actions are removed.
+</p>
+</dd></dl>
+
+<div id="index-notify-_0028admin-file_0029"></div>
+<p>When the conditions exist for notification, <small>CVS</small>
+calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
+&lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
+files (see section [cvs: The Repository#Intro-administrative-files The administrative files]).  This
+file follows the usual conventions for administrative
+files (see section [cvs: Reference manual for Administrative files#syntax The common syntax]), where each line is a regular
+expression followed by a command to execute.  The
+command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
+which will be replaced by the user to notify; the rest
+of the information regarding the notification will be
+supplied to the command on standard input.  The
+standard thing to put in the <code>notify</code> file is the
+single line:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL mail %s -s &quot;CVS notification&quot;
+</nowiki></pre></td></tr></table>
+
+<p>This causes users to be notified by electronic mail.
+</p>
+<div id="index-users-_0028admin-file_0029"></div>
+<p>Note that if you set this up in the straightforward
+way, users receive notifications on the server machine.
+One could of course write a &lsquo;<tt>notify</tt>&rsquo; script which
+directed notifications elsewhere, but to make this
+easy, <small>CVS</small> allows you to associate a notification
+address for each user.  To do so create a file
+&lsquo;<tt>users</tt>&rsquo; in &lsquo;<tt>CVSROOT</tt>&rsquo; with a line for each
+user in the format <var>user</var>:<var>value</var>.  Then
+instead of passing the name of the user to be notified
+to &lsquo;<tt>notify</tt>&rsquo;, <small>CVS</small> will pass the <var>value</var>
+(normally an email address on some other machine).
+</p>
+<p><small>CVS</small> does not notify you for your own changes.
+Currently this check is done based on whether the user
+name of the person taking the action which triggers
+notification matches the user name of the person
+getting notification.  In fact, in general, the watches
+features only track one edit by each user.  It probably
+would be more useful if watches tracked each working
+directory separately, so this behavior might be worth
+changing.
+</p>
+<hr size="6">
+<div id="Editing-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-to-edit-a-file-which-is-being-watched"></div>
+==== How to edit a file which is being watched ====
+
+<div id="index-Checkout_002c-as-term-for-getting-ready-to-edit"></div>
+<p>Since a file which is being watched is checked out
+read-only, you cannot simply edit it.  To make it
+read-write, and inform others that you are planning to
+edit it, use the <code>cvs edit</code> command.  Some systems
+call this a <em>checkout</em>, but <small>CVS</small> uses that term
+for obtaining a copy of the sources (see section [cvs: Overview#Getting-the-source Getting the source]), an operation which those systems call a
+<em>get</em> or a <em>fetch</em>.
+</p>
+<div id="index-edit-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-edit"></div><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
+<var>files</var> read-write, and notifies users who have requested
+<code>edit</code> notification for any of <var>files</var>.
+</p>
+<p>The <code>cvs edit</code> command accepts the same options as the
+<code>cvs watch add</code> command, and establishes a temporary watch for the
+user on <var>files</var>; <small>CVS</small> will remove the watch when <var>files</var> are
+<code>unedit</code>ed or <code>commit</code>ted.  If the user does not wish to
+receive notifications, she should specify <code>-a none</code>.
+</p>
+<p>The <var>files</var> and the options are processed as for the <code>cvs
+watch</code> commands.
+</p>
+
+</dd></dl>
+
+<p>Normally when you are done with a set of changes, you
+use the <code>cvs commit</code> command, which checks in your
+changes and returns the watched files to their usual
+read-only state.  But if you instead decide to abandon
+your changes, or not to make any changes, you can use
+the <code>cvs unedit</code> command.
+</p>
+<div id="index-unedit-_0028subcommand_0029"></div>
+<div id="index-Abandoning-work"></div>
+<div id="index-Reverting-to-repository-version"></div>
+<dl>
+<dt><div id="index-cvs-unedit"></div><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>Abandon work on the working files <var>files</var>, and revert them to the
+repository versions on which they are based.  <small>CVS</small> makes those
+<var>files</var> read-only for which users have requested notification using
+<code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code>
+notification for any of <var>files</var>.
+</p>
+<p>The <var>files</var> and options are processed as for the
+<code>cvs watch</code> commands.
+</p>
+<p>If watches are not in use, the <code>unedit</code> command
+probably does not work, and the way to revert to the
+repository version is with the command <code>cvs update -C file</code>
+(see section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository]).
+The meaning is
+not precisely the same; the latter may also
+bring in some changes which have been made in the
+repository since the last time you updated.
+</p></dd></dl>
+
+<p>When using client/server <small>CVS</small>, you can use the
+<code>cvs edit</code> and <code>cvs unedit</code> commands even if
+<small>CVS</small> is unable to successfully communicate with the
+server; the notifications will be sent upon the next
+successful <small>CVS</small> command.
+</p>
+<hr size="6">
+<div id="Watch-information"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Information-about-who-is-watching-and-editing"></div>
+==== Information about who is watching and editing ====
+
+<div id="index-watchers-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-watchers"></div><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>List the users currently watching changes to <var>files</var>.  The report
+includes the files being watched, and the mail address of each watcher.
+</p>
+<p>The <var>files</var> and options are processed as for the
+<code>cvs watch</code> commands.
+</p>
+</dd></dl>
+
+
+<div id="index-editors-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-editors"></div><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dd>
+<p>List the users currently working on <var>files</var>.  The report
+includes the mail address of each user, the time when the user began
+working with the file, and the host and path of the working directory
+containing the file.
+</p>
+<p>The <var>files</var> and options are processed as for the
+<code>cvs watch</code> commands.
+</p>
+</dd></dl>
+
+<hr size="6">
+<div id="Watches-Compatibility"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Using-watches-with-old-versions-of-CVS"></div>
+==== Using watches with old versions of CVS ====
+
+<div id="index-CVS-1_002e6_002c-and-watches"></div>
+<p>If you use the watch features on a repository, it
+creates &lsquo;<tt>CVS</tt>&rsquo; directories in the repository and
+stores the information about watches in that directory.
+If you attempt to use <small>CVS</small> 1.6 or earlier with the
+repository, you get an error message such as the
+following (all on one line):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update: cannot open CVS/Entries for reading:
+No such file or directory
+</nowiki></pre></td></tr></table>
+
+<p>and your operation will likely be aborted.  To use the
+watch features, you must upgrade all copies of <small>CVS</small>
+which use that repository in local or server mode.  If
+you cannot upgrade, use the <code>watch off</code> and
+<code>watch remove</code> commands to remove all watches, and
+that will restore the repository to a state which
+<small>CVS</small> 1.6 can cope with.
+</p>
+<hr size="6">
+<div id="Choosing-a-model"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
+=== Choosing between reserved or unreserved checkouts ===
+<div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
+
+<p>Reserved and unreserved checkouts each have pros and
+cons.  Let it be said that a lot of this is a matter of
+opinion or what works given different groups&rsquo; working
+styles, but here is a brief description of some of the
+issues.  There are many ways to organize a team of
+developers.  <small>CVS</small> does not try to enforce a certain
+organization.  It is a tool that can be used in several
+ways.
+</p>
+<p>Reserved checkouts can be very counter-productive.  If
+two persons want to edit different parts of a file,
+there may be no reason to prevent either of them from
+doing so.  Also, it is common for someone to take out a
+lock on a file, because they are planning to edit it,
+but then forget to release the lock.
+</p>
+<p>People, especially people who are familiar with
+reserved checkouts, often wonder how often conflicts
+occur if unreserved checkouts are used, and how
+difficult they are to resolve.  The experience with
+many groups is that they occur rarely and usually are
+relatively straightforward to resolve.
+</p>
+<p>The rarity of serious conflicts may be surprising, until one realizes
+that they occur only when two developers disagree on the proper design
+for a given section of code; such a disagreement suggests that the
+team has not been communicating properly in the first place.  In order
+to collaborate under <em>any</em> source management regimen, developers
+must agree on the general design of the system; given this agreement,
+overlapping changes are usually straightforward to merge.
+</p>
+<p>In some cases unreserved checkouts are clearly
+inappropriate.  If no merge tool exists for the kind of
+file you are managing (for example word processor files
+or files edited by Computer Aided Design programs), and
+it is not desirable to change to a program which uses a
+mergeable data format, then resolving conflicts is
+going to be unpleasant enough that you generally will
+be better off to simply avoid the conflicts instead, by
+using reserved checkouts.
+</p>
+<p>The watches features described above in [[#Watches|Mechanisms to track who is editing files]]
+can be considered to be an intermediate model between
+reserved checkouts and unreserved checkouts.  When you
+go to edit a file, it is possible to find out who else
+is editing it.  And rather than having the system
+simply forbid both people editing the file, it can tell
+you what the situation is and let you figure out
+whether it is a problem in that particular case or not.
+Therefore, for some groups it can be considered the
+best of both the reserved checkout and unreserved
+checkout worlds.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

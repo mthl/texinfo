@@ -1,0 +1,46 @@
+7.4 A Menu Example
+==================
+
+A menu looks like this in Texinfo:
+
+@menu
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+@end menu
+
+This produces:
+
+* menu:
+
+* menu entry name: Node name.   A short description.
+* Node name::                   This form is preferred.
+
+Here is an example as you might see it in a Texinfo file:
+
+@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+
+This produces:
+
+* menu:
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+
+In this example, the menu has two entries.  `Files' is both a menu
+entry name and the name of the node referred to by that name.
+`Multiples' is the menu entry name; it refers to the node named
+`Buffers'. The line `Larger Units of Text' is a comment; it
+appears in the menu, but is not an entry.
+
+Since no file name is specified with either `Files' or
+`Buffers', they must be the names of nodes in the same Info file
+(see Referring to Other Info Files).
+

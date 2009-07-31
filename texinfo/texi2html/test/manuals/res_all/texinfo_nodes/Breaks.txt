@@ -1,0 +1,27 @@
+14 Making and Preventing Breaks
+*******************************
+
+Usually, a Texinfo file is processed both by TeX and by one of the
+Info formatting commands.  Line, paragraph, or page breaks sometimes
+occur in the `wrong' place in one or other form of output.  You must
+ensure that text looks right both in the printed manual and in the
+Info file.
+
+For example, in a printed manual, page breaks may occur awkwardly in
+the middle of an example; to prevent this, you can hold text together
+using a grouping command that keeps the text from being split across
+two pages.  Conversely, you may want to force a page break where none
+would occur normally.  Fortunately, problems like these do not often
+arise.  When they do, use the break, break prevention, or pagination
+commands.
+
+* Break Commands::              Cause and prevent splits.
+* Line Breaks::                 How to force a single line to use two lines.
+* - and hyphenation::           How to tell TeX about hyphenation points.
+* w::                           How to prevent unwanted line breaks.
+* sp::                          How to insert blank lines.
+* page::                        How to force the start of a new page.
+* group::                       How to prevent unwanted page breaks.
+* need::                        Another way to prevent unwanted page breaks.
+
+

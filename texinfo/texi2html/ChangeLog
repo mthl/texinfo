@@ -1,3 +1,11 @@
+2009-07-31   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: Implement --internal-links.
+	* tests/manuals: add test results for info and raw plaintext.
+	* tests/*: add info and raw results for remaining tests.
+	* examples/mediawiki.init: remove @-commands from file names
+	and protect / and \.
+
 2009-07-30   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: add $NODE_FILENAMES to use node

@@ -1,0 +1,9 @@
+20 Creating and Installing Info Files
+*************************************
+
+This chapter describes how to create and install Info files.  See Info Files, for general information about the file format itself.
+
+* Creating an Info File::       
+* Installing an Info File::     
+
+

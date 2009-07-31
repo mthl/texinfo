@@ -1,0 +1,27 @@
+This is code.info, produced by makeinfo version 4.13 from code.texi.
+
+
+File: code.info,  Node: Top,  Up: (dir)
+
+Element
+*******
+
+Code: `in code'.
+
+   Code in code: `in first `in nested''.
+
+   Code in @example:
+
+     in example
+     `in example in code'.
+
+   In format
+in format
+`in format in code'.
+
+
+
+Tag Table:
+Node: Top70
+
+End Tag Table

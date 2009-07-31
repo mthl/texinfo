@@ -1,0 +1,146 @@
+2.7 Texinfo Mode Summary
+========================
+
+In Texinfo mode, each set of commands has default keybindings that
+begin with the same keys.  All the commands that are custom-created
+for Texinfo mode begin with C-c.  The keys are somewhat
+mnemonic.
+
+Insert Commands
+---------------
+
+The insert commands are invoked by typing C-c twice and then the
+first letter of the @-command to be inserted.  (It might make more
+sense mnemonically to use C-c C-i, for `custom insert', but
+C-c C-c is quick to type.)
+
+C-c C-c c       Insert `@code'.
+C-c C-c d       Insert `@dfn'.
+C-c C-c e       Insert `@end'.
+C-c C-c i       Insert `@item'.
+C-c C-c n       Insert `@node'.
+C-c C-c s       Insert `@samp'.
+C-c C-c v       Insert `@var'.
+C-c C-c {       Insert braces.
+C-c C-c ]
+C-c C-c }       Move out of enclosing braces.
+
+C-c C-c C-d     Insert a node's section title
+                in the space for the description
+                in a menu entry line.
+
+Show Structure
+--------------
+
+The texinfo-show-structure command is often used within a
+narrowed region.
+
+C-c C-s         List all the headings.
+
+The Master Update Command
+-------------------------
+
+The texinfo-master-menu command creates a master menu; and can
+be used to update every node and menu in a file as well.
+
+C-c C-u m
+M-x texinfo-master-menu
+                Create or update a master menu.
+
+C-u C-c C-u m   With C-u as a prefix argument, first
+                create or update all nodes and regular
+                menus, and then create a master menu.
+
+Update Pointers
+---------------
+
+The update pointer commands are invoked by typing C-c C-u and
+then either C-n for texinfo-update-node or C-e for
+texinfo-every-node-update.
+
+C-c C-u C-n     Update a node.
+C-c C-u C-e     Update every node in the buffer.
+
+Update Menus
+------------
+
+Invoke the  update menu commands by typing C-c C-u
+and then either C-m for texinfo-make-menu or
+C-a for texinfo-all-menus-update.  To update
+both nodes and menus at the same time, precede C-c C-u
+C-a with C-u.
+
+C-c C-u C-m     Make or update a menu.
+
+C-c C-u C-a     Make or update all
+                menus in a buffer.
+
+C-u C-c C-u C-a With C-u as a prefix argument,
+                first create or update all nodes and
+                then create or update all menus.
+
+Format for Info
+---------------
+
+The Info formatting commands that are written in Emacs Lisp are
+invoked by typing C-c C-e and then either C-r for a region
+or C-b for the whole buffer.
+
+The Info formatting commands that are written in C and based on the
+makeinfo program are invoked by typing C-c C-m and then
+either C-r for a region or C-b for the whole buffer.
+
+Use the texinfo-format... commands:
+
+C-c C-e C-r     Format the region.
+C-c C-e C-b     Format the buffer.
+
+Use makeinfo:
+
+C-c C-m C-r     Format the region.
+C-c C-m C-b     Format the buffer.
+C-c C-m C-l     Recenter the makeinfo output buffer.
+C-c C-m C-k     Kill the makeinfo formatting job.
+
+Typeset and Print
+-----------------
+
+The TeX typesetting and printing commands are invoked by typing
+C-c C-t and then another control command: C-r for
+texinfo-tex-region, C-b for texinfo-tex-buffer,
+and so on.
+
+C-c C-t C-r     Run TeX on the region.
+C-c C-t C-b     Run texi2dvi on the buffer.
+C-c C-t C-i     Run texindex.
+C-c C-t C-p     Print the DVI file.
+C-c C-t C-q     Show the print queue.
+C-c C-t C-d     Delete a job from the print queue.
+C-c C-t C-k     Kill the current TeX formatting job.
+C-c C-t C-x     Quit a currently stopped TeX formatting job.
+C-c C-t C-l     Recenter the output buffer.
+
+Other Updating Commands
+-----------------------
+
+The remaining updating commands do not have standard keybindings because
+they are rarely used.
+
+M-x texinfo-insert-node-lines
+                Insert missing @node lines in region.
+                With C-u as a prefix argument,
+                use section titles as node names.
+
+M-x texinfo-multiple-files-update
+                Update a multi-file document.
+                With C-u 2 as a prefix argument,
+                create or update all nodes and menus
+                in all included files first.
+
+M-x texinfo-indent-menu-description
+                Indent descriptions.
+
+M-x texinfo-sequential-node-update
+                Insert node pointers in strict sequence.
+
+

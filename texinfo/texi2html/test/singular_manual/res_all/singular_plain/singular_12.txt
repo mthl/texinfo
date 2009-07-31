@@ -1,0 +1,2363 @@
+F Index
+*******
+* Index:
+* !: 3.5.2 Special characters.
+* !=: 3.5.2 Special characters.
+* !=: 4.3.5 boolean expressions.
+* ": 3.5.2 Special characters.
+* #: 3.5.2 Special characters.
+* $: 3.5.2 Special characters.
+* %: 3.5.2 Special characters.
+* &&: 3.5.2 Special characters.
+* &&: 4.3.6 boolean operations.
+* (: 3.5.2 Special characters.
+* ): 3.5.2 Special characters.
+* *: 3.5.2 Special characters.
+* **: 3.5.2 Special characters.
+* +: 3.5.2 Special characters.
+* -: 3.5.2 Special characters.
+* -allow-net: 3.1.6 Command line options.
+* -b: 3.1.6 Command line options.
+* -batch: 3.1.6 Command line options.
+* -browser: 3.1.6 Command line options.
+* -c: 3.1.6 Command line options.
+* -d: 3.1.6 Command line options.
+* -e: 3.1.6 Command line options.
+* -echo: 3.1.6 Command line options.
+* -emacs: 3.1.6 Command line options.
+* -emacs-dir: 3.1.6 Command line options.
+* -emacs-load: 3.1.6 Command line options.
+* -execute: 3.1.6 Command line options.
+* -h: 3.1.6 Command line options.
+* -help: 3.1.6 Command line options.
+* -min-time: 3.1.6 Command line options.
+* -MPhost: 3.1.6 Command line options.
+* -MPport: 3.1.6 Command line options.
+* -no-out: 3.1.6 Command line options.
+* -no-rc: 3.1.6 Command line options.
+* -no-stdlib: 3.1.6 Command line options.
+* -no-tty: 3.1.6 Command line options.
+* -no-warn: 3.1.6 Command line options.
+* -q: 3.1.6 Command line options.
+* -quiet: 3.1.6 Command line options.
+* -r: 3.1.6 Command line options.
+* -random: 3.1.6 Command line options.
+* -sdb: 3.1.6 Command line options.
+* -singular: 3.1.6 Command line options.
+* -ticks-per-sec: 3.1.6 Command line options.
+* -u: 3.1.6 Command line options.
+* -user-option: 3.1.6 Command line options.
+* -v: 3.1.6 Command line options.
+* -verbose: 3.1.6 Command line options.
+* ..: 3.5.2 Special characters.
+* .singularrc file: 3.1.7 Startup sequence.
+* .singularrc file, no loading: 3.1.6 Command line options.
+* /: 3.5.2 Special characters.
+* //: 3.5.2 Special characters.
+* //: 3.5.2 Special characters.
+* //: 3.5.2 Special characters.
+* ;: 3.5.2 Special characters.
+* <: 3.5.2 Special characters.
+* <: 5.1.34 files, input from.
+* <=: 3.5.2 Special characters.
+* <=: 4.3.5 boolean expressions.
+* <>: 3.5.2 Special characters.
+* <>: 4.3.5 boolean expressions.
+* =: 3.5.2 Special characters.
+* ==: 3.5.2 Special characters.
+* ==: 4.3.5 boolean expressions.
+* >: 3.5.2 Special characters.
+* >=: 3.5.2 Special characters.
+* >=: 4.3.5 boolean expressions.
+* ?: 3.5.2 Special characters.
+* ?: 5.1.43 help.
+* [: 3.5.2 Special characters.
+* \: 3.5.2 Special characters.
+* ]: 3.5.2 Special characters.
+* ^: 3.5.2 Special characters.
+* _: 3.5.2 Special characters.
+* `: 3.5.2 Special characters.
+* ||: 3.5.2 Special characters.
+* ||: 4.3.6 boolean operations.
+* ~: 3.5.2 Special characters.
+* ~: 5.2.12 ~ (break point).
+* a, ordering: B.2.8 Extra weight vector.
+* absValue: D.2.2.3 absValue.
+* actionIsProper: D.6.2.3 actionIsProper.
+* addcol: D.3.1.17 addcol.
+* addrow: D.3.1.18 addrow.
+* adjoint: D.3.2.9 adjoint.
+* adjunction divisor: D.9.1.1 Adj_div.
+* Adj_div: D.9.1.1 Adj_div.
+* AGcode_L: D.9.1.6 AGcode_L.
+* AGcode_Omega: D.9.1.7 AGcode_Omega.
+* ainvar.lib: D.6.2 ainvar_lib.
+* ainvar_lib: D.6.2 ainvar_lib.
+* algDependent: D.4.1.4 algDependent.
+* algebra.lib: D.4.1 algebra_lib.
+* Algebraic dependence: A.25 Algebraic dependence.
+* algebraic field extension: D.4.8.3 splitring.
+* Algebraic Geometry codes: D.9.1 brnoeth_lib.
+* algebra_containment: D.4.1.1 algebra_containment.
+* algebra_lib: D.4.1 algebra_lib.
+* algorithm of Bigatti, La Scala and Robbiano: C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano.
+* algorithm of Conti and Traverso: C.6.2.1 The algorithm of Conti and Traverso.
+* algorithm of Di Biase and Urbanke: C.6.2.4 The algorithm of Di Biase and Urbanke.
+* algorithm of Hosten and Sturmfels: C.6.2.3 The algorithm of Hosten and Sturmfels.
+* algorithm of Pottier: C.6.2.2 The algorithm of Pottier.
+* alg_kernel: D.4.1.5 alg_kernel.
+* all.lib: D.2.1 all_lib.
+* allowing net access: 3.1.6 Command line options.
+* allprint: D.2.3.1 allprint.
+* allsquarefree: D.5.5.20 allsquarefree.
+* all_lib: D.2.1 all_lib.
+* and: 4.3.6 boolean operations.
+* and: 6.2.2 Evaluation of logical expressions.
+* Ann: D.4.7.1 Ann.
+* annil: D.4.4.8 annil.
+* ArnoldAction: D.5.7.1 ArnoldAction.
+* ASCII: D.2.2.2 ASCII.
+* ASCII links: 4.6.4 ASCII links.
+* attrib: 5.1.1 attrib.
+* A_L: D.5.1.12 A_L.
+* A_Z: D.2.2.1 A_Z.
+* Bachmann, Olaf: 1. Preface.
+* Background: 2.1 Background.
+* bareiss: 5.1.2 bareiss.
+* basicinvariants: D.5.1.1 basicinvariants.
+* bernstein: D.5.4.4 bernstein.
+* Bernstein polynomial: D.5.4.4 bernstein.
+* betti: 5.1.3 betti.
+* Betti number: C.3 Syzygies and resolutions.
+* Bigatti-La Scala-Robbiano algorithm: C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano.
+* BinDir: 3.8.1 Loading of a library.
+* binomial: D.2.2.4 binomial.
+* block: 3.5.6 Flow control.
+* block: 5.2 Control structures.
+* blowup0: D.4.2.1 blowup0.
+* boolean expressions: 4.3.5 boolean expressions.
+* boolean operations: 4.3.6 boolean operations.
+* bracket: 6.2.5 Usage of brackets.
+* Branches of an Isolated Space Curve Singularity: A.23 Branches of an Isolated Space Curve Singularity.
+* break: 5.2.1 break.
+* break point: 5.2.12 ~ (break point).
+* breakpoint: 5.2.2 breakpoint.
+* Brieskorn lattice: D.5.4 gaussman_lib.
+* Brieskorn lattice: D.5.4.1 gmsring.
+* Brieskorn lattice: D.5.4.2 gmsnf.
+* Brieskorn lattice: D.5.4.3 gmscoeffs.
+* Brieskorn lattice: D.5.4.4 bernstein.
+* Brieskorn lattice: D.5.4.5 monodromy.
+* Brieskorn lattice: D.5.4.6 spectrum.
+* Brieskorn lattice: D.5.4.7 sppairs.
+* Brieskorn lattice: D.5.4.10 vfilt.
+* Brieskorn lattice: D.5.4.11 vwfilt.
+* Brieskorn lattice: D.5.4.12 tmatrix.
+* Brieskorn lattice: D.5.4.13 endvfilt.
+* Brieskorn lattice: D.5.6 mondromy_lib.
+* Brill-Noether algorithm: D.9.1 brnoeth_lib.
+* BrillNoether: D.9.1.3 BrillNoether.
+* brnoeth.lib: D.9.1 brnoeth_lib.
+* brnoeth_lib: D.9.1 brnoeth_lib.
+* browser, command line option: 3.1.6 Command line options.
+* browser, setting the: 5.1.125 system.
+* browsers: 3.1.3 The online help system.
+* browsers, setting the: 5.1.125 system.
+* Buchberger algorithm for toric ideals: C.6.3 The Buchberger algorithm for toric ideals.
+* bug, ESingular: E.3 Unix installation instructions.
+* busadj: D.3.2.7 busadj.
+* C programming language: 6.2 Major differences to the C programming language.
+* C, module ordering: B.2.5 Module orderings.
+* c, module ordering: B.2.5 Module orderings.
+* case: 6.2.3 No case or switch statement.
+* category in a library: 3.8.2 Format of a library.
+* Change of rings: 2.3.4 Change of rings.
+* changechar: D.2.6.1 changechar.
+* changeord: D.2.6.2 changeord.
+* changes: E.1 News and changes.
+* changevar: D.2.6.3 changevar.
+* char: 5.1.4 char.
+* characteristic exponents: D.5.5.7 invariants.
+* Characteristic sets: C.4 Characteristic sets.
+* charpoly: D.3.2.8 charpoly.
+* charstr: 5.1.6 charstr.
+* char_series: 5.1.5 char_series.
+* Classification: A.26 Classification.
+* classify: D.5.1.2 classify.
+* classify.lib: D.5.1 classify_lib.
+* classify_lib: D.5.1 classify_lib.
+* cleardenom: 5.1.7 cleardenom.
+* close: 5.1.8 close.
+* closed_points: D.9.1.10 closed_points.
+* closetex: D.8.2.1 closetex.
+* closureFrac: D.4.9.5 closureFrac.
+* closureRingtower: D.4.9.4 closureRingtower.
+* clrSBmod: D.4.4.15 clrSBmod.
+* CMtype: D.5.9.2 CMtype.
+* Coding theory: D.9 Coding theory.
+* coef: 5.1.9 coef.
+* coefficient field: 4.11 number.
+* coeffs: 5.1.10 coeffs.
+* colred: D.3.1.24 colred.
+* comma: 6.2.4 Usage of commas.
+* Command line options: 3.1.6 Command line options.
+* command-line option, setting value of: 5.1.125 system.
+* command-line option, value of: 5.1.125 system.
+* command-line options, print all values of: 5.1.125 system.
+* command-line options, short help: 3.1.6 Command line options.
+* Commands: 5. Functions and system variables.
+* Commutative algebra: D.4 Commutative algebra.
+* completeReduction: D.6.2.5 completeReduction.
+* complex: 3.3 Rings and orderings.
+* Components of Windows installation: E.4 Windows installation instructions.
+* compress: D.3.1.1 compress.
+* concat: D.3.1.2 concat.
+* conductor, degree: D.5.5.7 invariants.
+* ContainedQ: D.7.5.15 ContainedQ.
+* content: D.2.4.14 content.
+* Conti-Traverso algorithm: C.6.2.1 The algorithm of Conti and Traverso.
+* continue: 5.2.3 continue.
+* continue: 6.2.6 Behavior of continue.
+* contract: 5.1.11 contract.
+* contributors: 5.1.125 system.
+* Control structures: 5.2 Control structures.
+* control_Matrix: D.5.3.5 control_Matrix.
+* copyright: 1. Preface.
+* corank: D.5.1.3 corank.
+* Critical points: A.3 Critical points.
+* cup: D.4.3.1 cup.
+* cupproduct: D.4.3.2 cupproduct.
+* curve singularities: D.5.5 hnoether_lib.
+* curve singularities: D.8.3.3 parametrizesing.
+* Customization of the Emacs interface: 3.2.4 Customization of the Emacs interface.
+* cyclic: D.2.4.1 cyclic.
+* Cyclic roots: A.16 Cyclic roots.
+* cyclotomic: D.6.1.5 cyclotomic.
+* Data types: 4. Data types.
+* DBM links: 4.6.6 DBM links.
+* dbprint: 5.1.12 dbprint.
+* debugger: 3.10.2 Source code debugger.
+* debugging library code: 3.10.2 Source code debugger.
+* Debugging tools: 3.10 Debugging tools.
+* debugLib, option: 5.1.89 option.
+* debug_log: D.5.1.14 debug_log.
+* dec1var: D.4.4.7 dec1var.
+* decodeSV: D.9.1.9 decodeSV.
+* def: 4.1 def.
+* def declarations: 4.1.1 def declarations.
+* DefaultDir: 3.8.1 Loading of a library.
+* defined: 5.1.13 defined.
+* deform: D.5.8.1 deform.
+* deform.lib: D.5.2 deform_lib.
+* Deformations: A.8 Deformations.
+* deform_lib: D.5.2 deform_lib.
+* defring: D.2.6.4 defring.
+* defringp: D.2.6.6 defringp.
+* defrings: D.2.6.5 defrings.
+* deg: 5.1.14 deg.
+* degBound: 5.3.1 degBound.
+* degree: 5.1.15 degree.
+* degree: 6.3 Miscellaneous oddities.
+* degree lexicographical ordering: B.2.3 Global orderings.
+* degree reverse lexicographical ordering: B.2.3 Global orderings.
+* degreepart: D.7.1.1 degreepart.
+* delete: 5.1.16 delete.
+* deleteSublist: D.2.2.5 deleteSublist.
+* delta: D.5.5.14 delta.
+* delta invariant: D.4.6.4 deltaLoc.
+* delta invariant: D.5.5.14 delta.
+* delta invariant.: D.4.6.1 normal.
+* deltaLoc: D.4.6.4 deltaLoc.
+* Demo mode: 3.2.3 Demo mode.
+* denominator: D.2.4.16 denominator.
+* Depth: A.14 Depth.
+* depth: D.4.3.3 depth.
+* derivate: D.6.2.2 derivate.
+* det: 5.1.17 det.
+* detadj: D.5.6.1 detadj.
+* det_B: D.3.2.10 det_B.
+* develop: D.5.5.3 develop.
+* Di Biase-Urbanke algorithm: C.6.2.4 The algorithm of Di Biase and Urbanke.
+* diag: D.3.1.3 diag.
+* diag_test: D.3.2.6 diag_test.
+* diff: 5.1.18 diff.
+* dim: 5.1.19 dim.
+* dim_slocus: D.5.8.2 dim_slocus.
+* discr: D.5.9.5 discr.
+* DISPLAY environment variable: 3.1.3 The online help system.
+* displayHNE: D.5.5.6 displayHNE.
+* displayInvariants: D.5.5.8 displayInvariants.
+* displayMultsequence: D.5.5.10 displayMultsequence.
+* div: 4.3.3 int operations.
+* div: 6.3 Miscellaneous oddities.
+* division: 5.1.20 division.
+* Documentation of a library: 3.9.2 Documentation of a library.
+* downloading: E.2 Downloading instructions.
+* Dp, global ordering: B.2.3 Global orderings.
+* dp, global ordering: B.2.3 Global orderings.
+* Ds, local ordering: B.2.4 Local orderings.
+* ds, local ordering: B.2.4 Local orderings.
+* dsum: D.3.1.4 dsum.
+* dual_code: D.9.1.11 dual_code.
+* dump: 5.1.21 dump.
+* echo: 5.3.2 echo.
+* Editing input: 3.1.5 Editing input.
+* Editing SINGULAR input files with Emacs: 3.2.5 Editing SINGULAR input files with Emacs.
+* EGCD: D.7.5.1 EGCD.
+* EGCDMain: D.7.5.8 EGCDMain.
+* eigenvals: D.3.2.19 eigenvals.
+* elim: D.4.2.2 elim.
+* elim.lib: D.4.2 elim_lib.
+* elim1: D.4.2.3 elim1.
+* eliminate: 5.1.22 eliminate.
+* Elimination: A.10 Elimination.
+* elimlinearpart: D.7.1.2 elimlinearpart.
+* elimpart: D.7.1.3 elimpart.
+* elimpartanyr: D.7.1.4 elimpartanyr.
+* elim_lib: D.4.2 elim_lib.
+* else: 5.2.7 if.
+* Emacs: 3.2 Emacs user interface.
+* Emacs, a quick guide: 3.2.1 A quick guide to Emacs.
+* Emacs, customization of Singular mode: 3.2.4 Customization of the Emacs interface.
+* Emacs, editing Singular input files: 3.2.5 Editing SINGULAR input files with Emacs.
+* Emacs, important commands: 3.2.6 Top 20 Emacs commands.
+* Emacs, overview: 3.2.1 A quick guide to Emacs.
+* Emacs, running Singular under: 3.2.2 Running SINGULAR under Emacs.
+* Emacs, Singular demo mode: 3.2.3 Demo mode.
+* Emacs, user interface: 3.2 Emacs user interface.
+* endomorphism filtration: D.5.4.13 endvfilt.
+* endvfilt: D.5.4.13 endvfilt.
+* environment variable, DISPLAY: 3.1.3 The online help system.
+* equidim: D.4.7.11 equidim.
+* equidimMax: D.4.7.12 equidimMax.
+* equidimMaxEHV: D.4.7.13 equidimMaxEHV.
+* equiRadical: D.4.7.9 equiRadical.
+* equising.lib: D.5.3 equising_lib.
+* equisingular stratum: D.5.3.3 esStratum.
+* equisingularity ideal: D.5.3.2 esIdeal.
+* equising_lib: D.5.3 equising_lib.
+* ERROR: 5.1.24 ERROR.
+* error recovery: 3.1.2 The SINGULAR prompt.
+* esIdeal: D.5.3.2 esIdeal.
+* ESingular, no prompt: E.3 Unix installation instructions.
+* esStratum: D.5.3.3 esStratum.
+* eval: 5.1.23 eval.
+* evaluate_reynolds: D.6.1.10 evaluate_reynolds.
+* Evaluation of logical expressions: 6.2.2 Evaluation of logical expressions.
+* evnf: D.3.2.18 evnf.
+* example: 5.1.25 example.
+* Examples: A. Examples.
+* Examples of ring declarations: 3.3.1 Examples of ring declarations.
+* execute: 5.1.26 execute.
+* exit: 5.1.27 exit.
+* exit: 5.2.9 quit.
+* export: 5.2.5 export.
+* expression list: 4. Data types.
+* Ext: A.12 Computation of Ext.
+* Ext: D.4.3.5 Ext.
+* extcurve: D.9.1.5 extcurve.
+* extdevelop: D.5.5.4 extdevelop.
+* extendring: D.2.6.7 extendring.
+* extension of rings: D.4.8.3 splitring.
+* extgcd: 5.1.28 extgcd.
+* Extra weight vector: B.2.8 Extra weight vector.
+* Ext_R: D.4.3.4 Ext_R.
+* facstd: 5.1.29 facstd.
+* Factor: D.7.5.2 Factor.
+* factorH: D.2.2.22 factorH.
+* factorial: D.2.2.6 factorial.
+* Factorization: A.19 Factorization.
+* factorize: 5.1.30 factorize.
+* FactorMain: D.7.5.9 FactorMain.
+* factory: 1. Preface.
+* Fast lexicographical GB: A.27 Fast lexicographical GB.
+* fastelim: D.7.1.5 fastelim.
+* fastHC, option: 5.1.89 option.
+* fetch: 5.1.31 fetch.
+* fetchall: D.2.6.8 fetchall.
+* fglm: 5.1.32 fglm.
+* fglm: 5.1.122 stdfglm.
+* fglmquot: 5.1.33 fglmquot.
+* fglm_solve: D.7.2.6 fglm_solve.
+* fibonacci: D.2.2.7 fibonacci.
+* field: 4.11 number.
+* file, .singularrc: 3.1.7 Startup sequence.
+* filecmd: 5.1.34 files, input from.
+* find: 5.1.35 find.
+* finduni: 5.1.36 finduni.
+* findvars: D.7.1.6 findvars.
+* finite field: 4.11 number.
+* Finite fields: A.9 Finite fields.
+* finitenessTest: D.4.1.11 finitenessTest.
+* finvar.lib: D.6.1 finvar_lib.
+* finvar_lib: D.6.1 finvar_lib.
+* First steps: 2.3.1 First steps.
+* fitting: D.4.3.6 fitting.
+* flatten: D.3.1.5 flatten.
+* flatteningStrat: D.4.3.7 flatteningStrat.
+* Flow control: 3.5.6 Flow control.
+* for: 5.2.6 for.
+* Format of a library: 3.8.2 Format of a library.
+* Formatting output: A.15 Formatting output.
+* fprintf: 5.1.37 fprintf.
+* Free resolution: A.11 Free resolution.
+* freemodule: 5.1.38 freemodule.
+* freerank: D.2.4.3 freerank.
+* Fru"bis-Kru"ger, Anne: 1. Preface.
+* Functions: 5.1 Functions.
+* furtherInvar: D.6.2.7 furtherInvar.
+* further_hn_proc: D.5.5.21 further_hn_proc.
+* galois field: 4.11 number.
+* Gauss-Manin connection: C.5 Gauss-Manin connection.
+* Gauss-Manin connection: D.5.4 gaussman_lib.
+* Gauss-Manin connection: D.5.4.1 gmsring.
+* Gauss-Manin connection: D.5.4.2 gmsnf.
+* Gauss-Manin connection: D.5.4.3 gmscoeffs.
+* Gauss-Manin connection: D.5.4.4 bernstein.
+* Gauss-Manin connection: D.5.4.5 monodromy.
+* Gauss-Manin connection: D.5.4.6 spectrum.
+* Gauss-Manin connection: D.5.4.7 sppairs.
+* Gauss-Manin connection: D.5.4.10 vfilt.
+* Gauss-Manin connection: D.5.4.11 vwfilt.
+* Gauss-Manin connection: D.5.4.12 tmatrix.
+* Gauss-Manin connection: D.5.4.13 endvfilt.
+* Gauss-Manin connection: D.5.6 mondromy_lib.
+* Gauss-Manin connection: D.5.10.1 spectrumnd.
+* gaussman.lib: D.5.4 gaussman_lib.
+* gaussman_lib: D.5.4 gaussman_lib.
+* gaussred: D.3.2.11 gaussred.
+* gaussred_pivot: D.3.2.12 gaussred_pivot.
+* gauss_col: D.3.1.15 gauss_col.
+* gauss_nf: D.3.2.13 gauss_nf.
+* gauss_row: D.3.1.16 gauss_row.
+* gcd: 5.1.39 gcd.
+* gen: 5.1.40 gen.
+* General command syntax: 3.5.1 General command syntax.
+* General concepts: 3. General concepts.
+* General purpose: D.2 General purpose.
+* General syntax of a ring declaration: 3.3.2 General syntax of a ring declaration.
+* general weighted lexicographical ordering: B.2.4 Local orderings.
+* general weighted reverse lexicographical ordering: B.2.4 Local orderings.
+* general.lib: D.2.2 general_lib.
+* general_lib: D.2.2 general_lib.
+* genericid: D.2.5.1 genericid.
+* genericmat: D.3.1.6 genericmat.
+* genus: D.4.6.3 genus.
+* German Umlaute: 6.1 Limitations.
+* getData: D.4.4.20 getData.
+* getdump: 5.1.41 getdump.
+* getenv: 5.1.125 system.
+* Getting started: 2.3 Getting started.
+* Global orderings: B.2.3 Global orderings.
+* GMP: 1. Preface.
+* gmscoeffs: D.5.4.3 gmscoeffs.
+* gmsnf: D.5.4.2 gmsnf.
+* gmsring: D.5.4.1 gmsring.
+* graphics.lib: D.8.1 graphics_lib.
+* graphics_lib: D.8.1 graphics_lib.
+* Grassmann, Hubert: 1. Preface.
+* Greuel, Gert-Martin: 1. Preface.
+* groebner: 5.1.42 groebner.
+* ground field: 4.11 number.
+* group_reynolds: D.6.1.6 group_reynolds.
+* GTZmod: D.4.4.6 GTZmod.
+* GTZopt: D.4.4.13 GTZopt.
+* Guidelines for writing a library: 3.9 Guidelines for writing a library.
+* G_a -Invariants: A.17 G_a -Invariants.
+* H2basis: D.5.6.5 H2basis.
+* Hamburger-Noether expansion: D.5.5 hnoether_lib.
+* Hamburger-Noether expansions: D.9.1.1 Adj_div.
+* hardware platform: 5.1.125 system.
+* Hcode: D.5.1.4 Hcode.
+* headStand: D.3.1.27 headStand.
+* help: 5.1.43 help.
+* help browsers: 3.1.3 The online help system.
+* help browsers, dummy: 3.1.3 The online help system.
+* help browsers, dummy: 3.1.3 The online help system.
+* help browsers, emacs: 3.1.3 The online help system.
+* help browsers, html: 3.1.3 The online help system.
+* help browsers, info: 3.1.3 The online help system.
+* help browsers, netscape: 3.1.3 The online help system.
+* help browsers, setting command to use: 3.1.3 The online help system.
+* help browsers, setting the: 5.1.125 system.
+* help browsers, tkinfo: 3.1.3 The online help system.
+* help browsers, winhlp: 3.1.3 The online help system.
+* help browsers, xinfo: 3.1.3 The online help system.
+* help string of a library: 3.9.4 The help string of a library.
+* help string of a procedure: 3.9.5 The help string of procedures.
+* help, accessing over the net: 3.1.6 Command line options.
+* help, online help system: 3.1.3 The online help system.
+* hessenberg: D.3.2.17 hessenberg.
+* highcorner: 5.1.44 highcorner.
+* hilb: 5.1.45 hilb.
+* Hilbert function: 5.1.123 stdhilb.
+* Hilbert function: C.2 Hilbert function.
+* Hilbert series: C.2 Hilbert function.
+* HilbertSeries: D.6.3.1 HilbertSeries.
+* HilbertWeights: D.6.3.2 HilbertWeights.
+* hilbPoly: D.2.4.21 hilbPoly.
+* hilbvec: D.7.1.7 hilbvec.
+* hnexpansion: D.5.5.1 hnexpansion.
+* hnoether.lib: D.5.5 hnoether_lib.
+* hnoether_lib: D.5.5 hnoether_lib.
+* Hom: D.4.3.8 Hom.
+* HomJJ: D.4.6.2 HomJJ.
+* homog: 5.1.46 homog.
+* homolog.lib: D.4.3 homolog_lib.
+* homology: D.4.3.9 homology.
+* homolog_lib: D.4.3 homolog_lib.
+* Hosten-Sturmfels algorithm: C.6.2.3 The algorithm of Hosten and Sturmfels.
+* How to enter and exit: 3.1.1 How to enter and exit.
+* How to use this manual: 2.2 How to use this manual.
+* howto, download: E.2 Downloading instructions.
+* howto, install on Macintosh: E.5 Macintosh installation instructions.
+* howto, install on Unix: E.3 Unix installation instructions.
+* howto, install on Windows: E.4 Windows installation instructions.
+* hres: 5.1.47 hres.
+* html, default help: 3.1.3 The online help system.
+* html, default help: 3.1.3 The online help system.
+* hypersurface singularity: D.5.6 mondromy_lib.
+* id2mod: D.2.4.18 id2mod.
+* ideal: 4.2 ideal.
+* ideal declarations: 4.2.1 ideal declarations.
+* ideal expressions: 4.2.2 ideal expressions.
+* Ideal membership: C.1 Standard bases.
+* ideal operations: 4.2.3 ideal operations.
+* ideal related functions: 4.2.4 ideal related functions.
+* ideal, toric: C.6.1 Toric ideals.
+* ideals: 6.3 Miscellaneous oddities.
+* idealSimplify: D.7.1.15 idealSimplify.
+* idealSplit: D.7.1.16 idealSplit.
+* identifier: 6.4 Identifier resolution.
+* Identifiers, syntax of: 3.5.3 Names.
+* if: 5.2.7 if.
+* ImageGroup: D.6.3.4 ImageGroup.
+* ImageVariety: D.6.3.3 ImageVariety.
+* image_of_variety: D.6.1.31 image_of_variety.
+* imap: 5.1.48 imap.
+* Imap, option: 5.1.89 option.
+* imapall: D.2.6.9 imapall.
+* impart: 5.1.49 impart.
+* Implemented algorithms: 3.4 Implemented algorithms.
+* IN: 5.1.61 lead.
+* indepSet: 5.1.50 indepSet.
+* Index: F. Index.
+* indexed names: 3.5.2 Special characters.
+* indSet: D.4.4.12 indSet.
+* info: 3.1.3 The online help system.
+* info: 3.1.3 The online help system.
+* INFO environment variable: 3.1.3 The online help system.
+* info in a library: 3.8.2 Format of a library.
+* info string of a library: 3.9.4 The help string of a library.
+* init_debug: D.5.1.5 init_debug.
+* inout.lib: D.2.3 inout_lib.
+* inout_lib: D.2.3 inout_lib.
+* input: 3.6 Input and output.
+* insert: 5.1.51 insert.
+* instructions, downloading: E.2 Downloading instructions.
+* instructions, Macintosh installation: E.5 Macintosh installation instructions.
+* instructions, Unix installation: E.3 Unix installation instructions.
+* instructions, Windows installation: E.4 Windows installation instructions.
+* inSubring: D.4.1.3 inSubring.
+* int: 4.3 int.
+* int declarations: 4.3.1 int declarations.
+* int expressions: 4.3.2 int expressions.
+* int operations: 4.3.3 int operations.
+* int related functions: 4.3.4 int related functions.
+* integer division: 6.3 Miscellaneous oddities.
+* integer programming: C.6.4 Integer programming.
+* Interactive use: 3.1 Interactive use.
+* interface, Emacs: 3.2 Emacs user interface.
+* internalfunctions: D.5.1.6 internalfunctions.
+* interpolate: D.7.2.5 interpolate.
+* interred: 5.1.52 interred.
+* Interrupting SINGULAR: 3.1.4 Interrupting SINGULAR.
+* intersect: 5.1.53 intersect.
+* intersection: D.5.5.11 intersection.
+* intersection multiplicity: D.5.5.11 intersection.
+* intmat: 4.4 intmat.
+* intmat declarations: 4.4.1 intmat declarations.
+* intmat expressions: 4.4.2 intmat expressions.
+* intmat operations: 4.4.4 intmat operations.
+* intmat related functions: 4.4.5 intmat related functions.
+* intmat type cast: 4.4.3 intmat type cast.
+* intprog.lib: D.4.10 intprog_lib.
+* intprog_lib: D.4.10 intprog_lib.
+* Introduction: 2. Introduction.
+* intStrategy, option: 5.1.89 option.
+* intvec: 4.5 intvec.
+* intvec declarations: 4.5.1 intvec declarations.
+* intvec expressions: 4.5.2 intvec expressions.
+* intvec operations: 4.5.3 intvec operations.
+* intvec related functions: 4.5.4 intvec related functions.
+* Invariant theory: D.6 Invariant theory.
+* InvariantQ: D.6.3.6 InvariantQ.
+* InvariantRing: D.6.3.5 InvariantRing.
+* invariantRing: D.6.2.1 invariantRing.
+* invariants: D.5.5.7 invariants.
+* Invariants of a finite group: A.18 Invariants of a finite group.
+* invariant_basis: D.6.1.11 invariant_basis.
+* invariant_basis_reynolds: D.6.1.12 invariant_basis_reynolds.
+* invariant_ring: D.6.1.1 invariant_ring.
+* invariant_ring_random: D.6.1.2 invariant_ring_random.
+* inverse: D.3.2.1 inverse.
+* inverse_B: D.3.2.2 inverse_B.
+* inverse_L: D.3.2.3 inverse_L.
+* InvertNumberMain: D.7.5.10 InvertNumberMain.
+* invunit: D.5.6.2 invunit.
+* irreducible power series: D.5.5.13 is_irred.
+* isCM: D.4.3.10 isCM.
+* isCMcod2: D.5.9.1 isCMcod2.
+* isEquising: D.5.3.4 isEquising.
+* isFlat: D.4.3.11 isFlat.
+* isLocallyFree: D.4.3.12 isLocallyFree.
+* isReg: D.4.3.13 isReg.
+* is_active: D.5.8.3 is_active.
+* is_bijective: D.4.1.8 is_bijective.
+* is_ci: D.5.8.4 is_ci.
+* is_complex: D.3.1.7 is_complex.
+* is_homog: D.2.4.4 is_homog.
+* is_injective: D.4.1.6 is_injective.
+* is_irred: D.5.5.13 is_irred.
+* is_is: D.5.8.5 is_is.
+* is_NND: D.5.5.16 is_NND.
+* is_reg: D.5.8.6 is_reg.
+* is_regs: D.5.8.7 is_regs.
+* is_surjective: D.4.1.7 is_surjective.
+* is_zero: D.2.4.5 is_zero.
+* jacob: 5.1.54 jacob.
+* jacoblift: D.5.6.3 jacoblift.
+* jet: 5.1.55 jet.
+* jordan: D.3.2.21 jordan.
+* jordanbasis: D.3.2.22 jordanbasis.
+* jordanmatrix: D.3.2.23 jordanmatrix.
+* jordannf: D.3.2.24 jordannf.
+* katsura: D.2.4.2 katsura.
+* kbase: 5.1.56 kbase.
+* keepring: 5.2.8 keepring.
+* Keilen, Thomas: 1. Preface.
+* kernel: 5.1.95 preimage.
+* kernel: D.4.3.14 kernel.
+* Kernel of module homomorphisms: A.24 Kernel of module homomorphisms.
+* kill: 5.1.57 kill.
+* killall: D.2.2.9 killall.
+* killattrib: 5.1.58 killattrib.
+* kill_rings: D.5.2.5 kill_rings.
+* kmemory: D.2.2.8 kmemory.
+* kohom: D.4.3.15 kohom.
+* kontrahom: D.4.3.16 kontrahom.
+* koszul: 5.1.59 koszul.
+* KoszulHomology: D.4.3.17 KoszulHomology.
+* Kru"ger, Kai: 1. Preface.
+* KSpencerKernel: D.5.9.9 KSpencerKernel.
+* laguerre: 5.1.60 laguerre.
+* laguerre_solve: D.7.2.1 laguerre_solve.
+* latex.lib: D.8.2 latex_lib.
+* latex_lib: D.8.2 latex_lib.
+* lcm: D.2.4.6 lcm.
+* lead: 5.1.61 lead.
+* leadcoef: 5.1.62 leadcoef.
+* leadexp: 5.1.63 leadexp.
+* leadmonom: 5.1.64 leadmonom.
+* Levandovskyy, Viktor: 1. Preface.
+* lexicographical ordering: B.2.3 Global orderings.
+* lex_solve: D.7.2.7 lex_solve.
+* LIB: 5.1.65 LIB.
+* lib2doc: 3.9.2.1 lib2doc.
+* libfac: 1. Preface.
+* libparse: 3.10.5 libparse.
+* Libraries: 3.8 Libraries.
+* library, documentation: 3.9.2 Documentation of a library.
+* library, Guidelines for writing: 3.9 Guidelines for writing a library.
+* library, help string: 3.9.4 The help string of a library.
+* library, info string: 3.9.4 The help string of a library.
+* library, info string: 3.9.6 template_lib.
+* library, procedures: 3.9.1 Procedures in a library.
+* library, template: 3.9.6 template_lib.
+* library, template.lib: 3.9.6 template_lib.
+* library, typesetting of help strings: 3.9.3 Typesetting of help strings.
+* LIBs: D. SINGULAR libraries.
+* lift: 5.1.66 lift.
+* liftstd: 5.1.67 liftstd.
+* lift_kbase: D.5.2.3 lift_kbase.
+* lift_rel_kb: D.5.2.4 lift_rel_kb.
+* Limitations: 6.1 Limitations.
+* linalg.lib: D.3.2 linalg_lib.
+* linalg_lib: D.3.2 linalg_lib.
+* Linear algebra: D.3 Linear algebra.
+* linear code, dual: D.9.1.11 dual_code.
+* linear code, systematic: D.9.1.12 sys_code.
+* LinearActionQ: D.6.3.8 LinearActionQ.
+* LinearCombinationQ: D.6.3.9 LinearCombinationQ.
+* LinearizeAction: D.6.3.7 LinearizeAction.
+* linearpart: D.7.1.8 linearpart.
+* link: 4.6 link.
+* link: A.28 Parallelization with MPtcp links.
+* link declarations: 4.6.1 link declarations.
+* link expressions: 4.6.2 link expressions.
+* link related functions: 4.6.3 link related functions.
+* list: 4.7 list.
+* list declarations: 4.7.1 list declarations.
+* list expressions: 4.7.2 list expressions.
+* list operations: 4.7.3 list operations.
+* list related functions: 4.7.4 list related functions.
+* listvar: 5.1.68 listvar.
+* Loading of a library: 3.8.1 Loading of a library.
+* loadLib, option: 5.1.89 option.
+* loadProc, option: 5.1.89 option.
+* local names: 3.7.2 Names in procedures.
+* Local orderings: B.2.4 Local orderings.
+* local weighted lexicographical ordering: B.2.4 Local orderings.
+* local weighted reverse lexicographical ordering: B.2.4 Local orderings.
+* localInvar: D.6.2.6 localInvar.
+* locstd: D.5.8.8 locstd.
+* Long coefficients: A.5 Long coefficients.
+* Lossen, Christoph: 1. Preface.
+* lp, global ordering: B.2.3 Global orderings.
+* lprint: D.2.3.2 lprint.
+* lres: 5.1.69 lres.
+* ls, local ordering: B.2.4 Local orderings.
+* M, ordering: B.2.6 Matrix orderings.
+* Macintosh installation: E.5 Macintosh installation instructions.
+* map: 4.8 map.
+* map declarations: 4.8.1 map declarations.
+* map expressions: 4.8.2 map expressions.
+* map operations: 4.8.3 map operations.
+* mapall: D.2.6.10 mapall.
+* mapIsFinite: D.4.1.10 mapIsFinite.
+* Mathematical background: C. Mathematical background.
+* mathematical objects: B.1 Representation of mathematical objects.
+* mathinit: D.8.1.2 mathinit.
+* matrix: 4.9 matrix.
+* matrix declarations: 4.9.1 matrix declarations.
+* matrix expressions: 4.9.2 matrix expressions.
+* matrix operations: 4.9.4 matrix operations.
+* Matrix orderings: B.2.6 Matrix orderings.
+* matrix related functions: 4.9.5 matrix related functions.
+* matrix type cast: 4.9.3 matrix type cast.
+* matrix.lib: D.3.1 matrix_lib.
+* matrixT1: D.5.9.3 matrixT1.
+* matrix_lib: D.3.1 matrix_lib.
+* mat_rk: D.3.2.14 mat_rk.
+* Max: D.5.7.8 Max.
+* maxcoef: D.2.4.7 maxcoef.
+* maxdeg: D.2.4.8 maxdeg.
+* maxdeg1: D.2.4.9 maxdeg1.
+* maxideal: 5.1.70 maxideal.
+* mdouble: 3.9.6.1 mdouble.
+* mem, option: 5.1.89 option.
+* memory: 5.1.71 memory.
+* memory managment: 5.1.71 memory.
+* Milnor: A.1 Milnor and Tjurina.
+* milnor: D.5.8.9 milnor.
+* milnorcode: D.5.1.7 milnorcode.
+* Min: D.5.7.9 Min.
+* minAssChar: D.4.7.5 minAssChar.
+* minAssGTZ: D.4.7.4 minAssGTZ.
+* minbase: 5.1.72 minbase.
+* mindeg: D.2.4.10 mindeg.
+* mindeg1: D.2.4.11 mindeg1.
+* minimal display time, setting the: 5.1.125 system.
+* MinimalDecomposition: D.6.3.10 MinimalDecomposition.
+* minipoly: D.3.2.20 minipoly.
+* minor: 5.1.73 minor.
+* minpoly: 5.3.3 minpoly.
+* minres: 5.1.74 minres.
+* minRes, option: 5.1.89 option.
+* minSatMod: D.4.4.16 minSatMod.
+* mixed Hodge structure: D.5.4 gaussman_lib.
+* mixed Hodge structure: D.5.4.6 spectrum.
+* mixed Hodge structure: D.5.4.7 sppairs.
+* mixed Hodge structure: D.5.4.10 vfilt.
+* mixed Hodge structure: D.5.4.11 vwfilt.
+* mixed Hodge structure: D.5.4.12 tmatrix.
+* mixed Hodge structure: D.5.4.13 endvfilt.
+* mod: 4.3.3 int operations.
+* mod: 4.11.3 number operations.
+* mod2id: D.2.4.17 mod2id.
+* modDec: D.4.4.4 modDec.
+* ModEqn: D.5.7.2 ModEqn.
+* module: 4.10 module.
+* module declarations: 4.10.1 module declarations.
+* module expressions: 4.10.2 module expressions.
+* module operations: 4.10.3 module operations.
+* module ordering c: B.2.5 Module orderings.
+* module ordering C: B.2.5 Module orderings.
+* Module orderings: B.2.5 Module orderings.
+* module related functions: 4.10.4 module related functions.
+* Modules and and their annihilator: 2.3.5 Modules and their annihilator.
+* modulesEqual: D.4.4.19 modulesEqual.
+* module_containment: D.4.1.2 module_containment.
+* modulo: 5.1.75 modulo.
+* mod_versal: D.5.2.2 mod_versal.
+* molien: D.6.1.7 molien.
+* mondromy.lib: D.5.6 mondromy_lib.
+* mondromy_lib: D.5.6 mondromy_lib.
+* monitor: 5.1.76 monitor.
+* monodromy: D.5.4 gaussman_lib.
+* Monodromy: D.5.6 mondromy_lib.
+* monodromy: D.5.4.5 monodromy.
+* monodromy: D.5.4.5 monodromy.
+* monodromyB: D.5.6.4 monodromyB.
+* monomial orderings: B.2.2 General definitions for orderings.
+* Monomial orderings: B.2 Monomial orderings.
+* monomial orderings introduction: B.2.1 Introduction to orderings.
+* Monomial orderings, Term orderings: 3.3.3 Term orderings.
+* monomials and precedence: 6.3 Miscellaneous oddities.
+* morsesplit: D.5.1.8 morsesplit.
+* MP: 1. Preface.
+* MP links: 4.6.5 MP links.
+* MP, groebner basis computations: 5.1.42 groebner.
+* MPfile links: 4.6.5.1 MPfile links.
+* mplot: D.8.1.3 mplot.
+* mpresmat: 5.1.77 mpresmat.
+* mprimdec.lib: D.4.4 mprimdec_lib.
+* mprimdec_lib: D.4.4 mprimdec_lib.
+* MPtcp: A.28 Parallelization with MPtcp links.
+* MPtcp links: 4.6.5.2 MPtcp links.
+* mp_res_mat: D.7.2.4 mp_res_mat.
+* mregular.lib: D.4.5 mregular_lib.
+* mregular_lib: D.4.5 mregular_lib.
+* mres: 5.1.78 mres.
+* mstd: 5.1.79 mstd.
+* msum: 3.9.6.3 msum.
+* mtripple: 3.9.6.2 mtripple.
+* mult: 5.1.80 mult.
+* mult: 6.3 Miscellaneous oddities.
+* multBound: 5.3.4 multBound.
+* multcol: D.3.1.19 multcol.
+* multiplicities, sequence of: D.5.5.7 invariants.
+* multiplicity sequence: D.5.5.9 multsequence.
+* multrow: D.3.1.20 multrow.
+* multsequence: D.5.5.9 multsequence.
+* nameof: 5.1.81 nameof.
+* names: 5.1.82 names.
+* Names: 3.5.3 Names.
+* Names in procedures: 3.7.2 Names in procedures.
+* nblocks: 5.1.125 system.
+* ncols: 5.1.83 ncols.
+* negative degree lexicographical ordering: B.2.4 Local orderings.
+* negative degree reverse lexicographical ordering: B.2.4 Local orderings.
+* negative lexicographical ordering: B.2.4 Local orderings.
+* net access: 3.1.6 Command line options.
+* netscape: 3.1.3 The online help system.
+* NETSCAPE environment variable: 3.1.3 The online help system.
+* Neumann, Wolfgang: 1. Preface.
+* newline: 4.17 string.
+* news: E.1 News and changes.
+* Newton non-degenerate: D.5.5.16 is_NND.
+* Newton polygon: D.5.5.15 newtonpoly.
+* Newton polygon: D.5.5.16 is_NND.
+* newtonpoly: D.5.5.15 newtonpoly.
+* NF: 5.1.106 reduce.
+* nf_icis: D.5.8.10 nf_icis.
+* noether: 5.3.5 noether.
+* noetherNormal: D.4.1.9 noetherNormal.
+* non-english special characters: 6.1 Limitations.
+* none, option: 5.1.89 option.
+* normal: D.4.6.1 normal.
+* Normal form: C.1 Standard bases.
+* normal.lib: D.4.6 normal_lib.
+* normalform: D.5.1.13 normalform.
+* normalI: D.4.9.2 normalI.
+* Normalization: A.22 Normalization.
+* normalization: D.4.6.1 normal.
+* normalization: D.8.3.1 parametrize.
+* normalization: D.8.3.2 parametrizepd.
+* normalize: D.2.4.12 normalize.
+* normal_lib: D.4.6 normal_lib.
+* not: 4.3.6 boolean operations.
+* notBuckets, option: 5.1.89 option.
+* notRegularity, option: 5.1.89 option.
+* notSugar, option: 5.1.89 option.
+* npars: 5.1.84 npars.
+* nres: 5.1.85 nres.
+* nrows: 5.1.86 nrows.
+* nselect: D.4.2.4 nselect.
+* NSplaces: D.9.1.2 NSplaces.
+* ntsolve.lib: D.7.4 ntsolve_lib.
+* ntsolve_lib: D.7.4 ntsolve_lib.
+* nt_solve: D.7.4.1 nt_solve.
+* NullCone: D.6.3.11 NullCone.
+* number: 4.11 number.
+* number declarations: 4.11.1 number declarations.
+* number expressions: 4.11.2 number expressions.
+* number operations: 4.11.3 number operations.
+* number related functions: 4.11.4 number related functions.
+* number_e: D.2.2.10 number_e.
+* number_pi: D.2.2.11 number_pi.
+* numerator: D.2.4.15 numerator.
+* nvars: 5.1.87 nvars.
+* Objects: 3.5.4 Objects.
+* oldStd, option: 5.1.89 option.
+* online help: 3.1.3 The online help system.
+* open: 5.1.88 open.
+* opentex: D.8.2.2 opentex.
+* opposite Hodge filtration: D.5.4.12 tmatrix.
+* option: 5.1.89 option.
+* or: 4.3.6 boolean operations.
+* or: 6.2.2 Evaluation of logical expressions.
+* orbit_variety: D.6.1.29 orbit_variety.
+* ord: 5.1.90 ord.
+* orderings: B.2.2 General definitions for orderings.
+* orderings introduction: B.2.1 Introduction to orderings.
+* orderings, a: B.2.8 Extra weight vector.
+* orderings, global: B.2.3 Global orderings.
+* orderings, local: B.2.4 Local orderings.
+* orderings, M: B.2.6 Matrix orderings.
+* orderings, product: B.2.7 Product orderings.
+* ordstr: 5.1.91 ordstr.
+* ord_test: D.2.6.11 ord_test.
+* orthogonalize: D.3.2.5 orthogonalize.
+* outer: D.3.1.8 outer.
+* output: 3.6 Input and output.
+* par: 5.1.92 par.
+* Parallelization: A.28 Parallelization with MPtcp links.
+* paramet.lib: D.8.3 paramet_lib.
+* Parameter list: 3.7.3 Parameter list.
+* parameter, as numbers: 4.11 number.
+* Parameters: A.6 Parameters.
+* parametrisation: D.5.5.5 parametrisation.
+* parametrization: D.5.5.5 parametrisation.
+* parametrization: D.8.3.1 parametrize.
+* parametrization: D.8.3.2 parametrizepd.
+* parametrization: D.8.3.3 parametrizesing.
+* parametrize: D.8.3.1 parametrize.
+* parametrizepd: D.8.3.2 parametrizepd.
+* parametrizesing: D.8.3.3 parametrizesing.
+* paramet_lib: D.8.3 paramet_lib.
+* pardeg: 5.1.93 pardeg.
+* parstr: 5.1.94 parstr.
+* partial_molien: D.6.1.9 partial_molien.
+* path: 3.8.1 Loading of a library.
+* pause: D.2.3.10 pause.
+* permcol: D.3.1.21 permcol.
+* permrow: D.3.1.22 permrow.
+* permute_L: D.9.1.13 permute_L.
+* Pfister, Gerhard: 1. Preface.
+* pid: 5.1.125 system.
+* plot: D.8.4.1 plot.
+* pmat: D.2.3.3 pmat.
+* Pohl, Wilfred: 1. Preface.
+* Polar curves: A.13 Polar curves.
+* poly: 4.12 poly.
+* poly declarations: 4.12.1 poly declarations.
+* poly expressions: 4.12.2 poly expressions.
+* poly operations: 4.12.3 poly operations.
+* poly related functions: 4.12.4 poly related functions.
+* poly.lib: D.2.4 poly_lib.
+* Polynomial data: B. Polynomial data.
+* poly_lib: D.2.4 poly_lib.
+* posweight: D.5.9.8 posweight.
+* pos_def: D.3.2.16 pos_def.
+* Pottier algorithm: C.6.2.2 The algorithm of Pottier.
+* power: D.3.1.9 power.
+* power_products: D.6.1.23 power_products.
+* preComp: D.4.4.11 preComp.
+* Preface: 1. Preface.
+* preimage: 5.1.95 preimage.
+* prepareAss: D.4.7.10 prepareAss.
+* prepMat: D.6.4.1 prepMat.
+* prepSV: D.9.1.8 prepSV.
+* presolve.lib: D.7.1 presolve_lib.
+* presolve_lib: D.7.1 presolve_lib.
+* Primary decomposition: A.21 Primary decomposition.
+* primary_char0: D.6.1.13 primary_char0.
+* primary_char0_no_molien: D.6.1.15 primary_char0_no_molien.
+* primary_char0_no_molien_random: D.6.1.20 primary_char0_no_molien_random.
+* primary_char0_random: D.6.1.18 primary_char0_random.
+* primary_charp: D.6.1.14 primary_charp.
+* primary_charp_no_molien: D.6.1.16 primary_charp_no_molien.
+* primary_charp_no_molien_random: D.6.1.21 primary_charp_no_molien_random.
+* primary_charp_random: D.6.1.19 primary_charp_random.
+* primary_charp_without: D.6.1.17 primary_charp_without.
+* primary_charp_without_random: D.6.1.22 primary_charp_without_random.
+* primary_invariants: D.6.1.3 primary_invariants.
+* primary_invariants_random: D.6.1.4 primary_invariants_random.
+* primdec.lib: D.4.7 primdec_lib.
+* PrimdecA: D.4.4.2 PrimdecA.
+* PrimdecB: D.4.4.3 PrimdecB.
+* primdecGTZ: D.4.7.2 primdecGTZ.
+* primdecSY: D.4.7.3 primdecSY.
+* primdec_lib: D.4.7 primdec_lib.
+* prime: 5.1.96 prime.
+* primeClosure: D.4.9.3 primeClosure.
+* primecoeffs: D.2.2.18 primecoeffs.
+* primefactors: D.2.2.19 primefactors.
+* primes: D.2.2.12 primes.
+* primitiv.lib: D.4.8 primitiv_lib.
+* primitive: D.4.8.1 primitive.
+* primitive element: D.4.8.1 primitive.
+* primitive_extra: D.4.8.2 primitive_extra.
+* primitiv_lib: D.4.8 primitiv_lib.
+* primTest: D.4.4.10 primTest.
+* print: 5.1.97 print.
+* printf: 5.1.98 printf.
+* printlevel: 5.3.6 printlevel.
+* proc: 4.13 proc.
+* proc declaration: 4.13.1 proc declaration.
+* Procedure commands: 3.7.4 Procedure commands.
+* Procedure definition: 3.7.1 Procedure definition.
+* procedure, ASCII help: 3.9.6.1 mdouble.
+* procedure, ASCII/Texinfo help: 3.9.6.3 msum.
+* procedure, texinfo help: 3.9.6.2 mtripple.
+* Procedures: 3.7 Procedures.
+* Procedures and LIB: A.2 Procedures and LIB.
+* Procedures and libraries: 2.3.3 Procedures and libraries.
+* Procedures in a library: 3.9.1 Procedures in a library.
+* procedures, help string: 3.9.5 The help string of procedures.
+* procedures, static: 3.7.1 Procedure definition.
+* product: D.2.2.13 product.
+* Product orderings: B.2.7 Product orderings.
+* progress watch: 5.1.89 option.
+* prompt: 3.1.2 The SINGULAR prompt.
+* prompt, option: 5.1.89 option.
+* prot, option: 5.1.89 option.
+* protocoll of computations: 5.1.89 option.
+* prune: 5.1.99 prune.
+* Puiseux expansion: D.5.5 hnoether_lib.
+* Puiseux pairs: A.20 Puiseux pairs.
+* Puiseux pairs: D.5.5.7 invariants.
+* puiseux2generators: D.5.5.17 puiseux2generators.
+* qhmatrix: D.5.9.6 qhmatrix.
+* qhmoduli.lib: D.5.7 qhmoduli_lib.
+* qhmoduli_lib: D.5.7 qhmoduli_lib.
+* qhspectrum: D.5.8.12 qhspectrum.
+* qhweight: 5.1.100 qhweight.
+* qring: 4.14 qring.
+* qring: 6.3 Miscellaneous oddities.
+* qring declaration: 4.14.1 qring declaration.
+* quickclass: D.5.1.9 quickclass.
+* quit: 5.2.9 quit.
+* quot: 5.1.101 quot.
+* quote: 5.1.102 quote.
+* quotient: 5.1.103 quotient.
+* Quotient: D.7.5.3 Quotient.
+* QuotientEquations: D.5.7.3 QuotientEquations.
+* QuotientMain: D.7.5.11 QuotientMain.
+* radical: D.4.7.7 radical.
+* radicalEHV: D.4.7.8 radicalEHV.
+* rad_con: D.2.4.13 rad_con.
+* random: 5.1.104 random.
+* random number generator, seed: 5.1.125 system.
+* random.lib: D.2.5 random_lib.
+* randomBinomial: D.2.5.11 randomBinomial.
+* randomid: D.2.5.2 randomid.
+* randomLast: D.2.5.10 randomLast.
+* randommat: D.2.5.3 randommat.
+* random_lib: D.2.5 random_lib.
+* read: 5.1.105 read.
+* reading, option: 5.1.89 option.
+* readline: 1. Preface.
+* real: 3.3 Rings and orderings.
+* redefine, option: 5.1.89 option.
+* redSB, option: 5.1.89 option.
+* redTail, option: 5.1.89 option.
+* redThrough, option: 5.1.89 option.
+* reduce: 5.1.106 reduce.
+* reduced standard basis: 5.1.89 option.
+* reduction: D.6.2.4 reduction.
+* ReesAlgebra: D.4.9.1 ReesAlgebra.
+* reesclos.lib: D.4.9 reesclos_lib.
+* reesclos_lib: D.4.9 reesclos_lib.
+* References: C.7 References.
+* regularity: 5.1.107 regularity.
+* regularity: C.3 Syzygies and resolutions.
+* reg_CM: D.4.5.1 reg_CM.
+* reg_curve: D.4.5.2 reg_curve.
+* reg_moncurve: D.4.5.3 reg_moncurve.
+* relative_orbit_variety: D.6.1.30 relative_orbit_variety.
+* Release Notes: E. Release Notes.
+* relweight: D.5.9.7 relweight.
+* Remainder: D.7.5.4 Remainder.
+* RemainderMain: D.7.5.12 RemainderMain.
+* repart: 5.1.108 repart.
+* representation, math objects: B.1 Representation of mathematical objects.
+* res: 5.1.109 res.
+* reservedName: 5.1.110 reservedName.
+* Resolution: 2.3.6 Resolution.
+* resolution: 4.15 resolution.
+* resolution declarations: 4.15.1 resolution declarations.
+* resolution expressions: 4.15.2 resolution expressions.
+* resolution related functions: 4.15.3 resolution related functions.
+* resolution, computation of: 5.1.109 res.
+* resolution, hilbert-driven: 5.1.47 hres.
+* resolution, La Scala's method: 5.1.69 lres.
+* resultant: 5.1.111 resultant.
+* return: 5.2.10 return.
+* return type of procedures: 6.2.7 Return type of procedures.
+* returnSB, option: 5.1.89 option.
+* reverse lexicographical ordering: B.2.3 Global orderings.
+* ReynoldsImage: D.6.3.12 ReynoldsImage.
+* ReynoldsOperator: D.6.3.13 ReynoldsOperator.
+* reynolds_molien: D.6.1.8 reynolds_molien.
+* ring: 4.16 ring.
+* ring declarations: 4.16.1 ring declarations.
+* ring operations: 4.16.3 ring operations.
+* ring related functions: 4.16.2 ring related functions.
+* ring.lib: D.2.6 ring_lib.
+* Rings and orderings: 3.3 Rings and orderings.
+* Rings and standard bases: 2.3.2 Rings and standard bases.
+* ringtensor: D.2.6.12 ringtensor.
+* ringweights: D.2.6.13 ringweights.
+* ring_lib: D.2.6 ring_lib.
+* rinvar.lib: D.6.3 rinvar_lib.
+* rinvar_lib: D.6.3 rinvar_lib.
+* rMacaulay: D.2.3.4 rMacaulay.
+* rmx: D.8.2.12 rmx.
+* rm_unitcol: D.3.1.26 rm_unitcol.
+* rm_unitrow: D.3.1.25 rm_unitrow.
+* RootDir: 3.8.1 Loading of a library.
+* Roots: D.7.5.5 Roots.
+* RootsMain: D.7.5.13 RootsMain.
+* rowred: D.3.1.23 rowred.
+* rp, global ordering: B.2.3 Global orderings.
+* Running SINGULAR under Emacs: 3.2.2 Running SINGULAR under Emacs.
+* rvalue: 6.2.1 No rvalue of increments and assignments.
+* rvar: 5.1.112 rvar.
+* SameQ: D.7.5.16 SameQ.
+* sat: D.4.2.5 sat.
+* Saturation: A.4 Saturation.
+* Schmidt, Jens: 1. Preface.
+* Scho"nemann, Hans: 1. Preface.
+* Schulze, Mathias: 1. Preface.
+* SDB breakpoint: 3.10.2 Source code debugger.
+* SDB debugger: 3.10.2 Source code debugger.
+* sdb, source code debugger: 3.10.2 Source code debugger.
+* SearchPath: 3.8.1 Loading of a library.
+* secondary_and_irreducibles_no_molien: D.6.1.27 secondary_and_irreducibles_no_molien.
+* secondary_char0: D.6.1.24 secondary_char0.
+* secondary_charp: D.6.1.25 secondary_charp.
+* secondary_not_cohen_macaulay: D.6.1.28 secondary_not_cohen_macaulay.
+* secondary_no_molien: D.6.1.26 secondary_no_molien.
+* select: D.4.2.6 select.
+* select1: D.4.2.7 select1.
+* semiCMcod2: D.5.9.4 semiCMcod2.
+* semigroup of values: D.5.5.7 invariants.
+* separateHNE: D.5.5.18 separateHNE.
+* separator: D.4.4.1 separator.
+* setenv: 5.1.125 system.
+* sethnering: D.5.5.2 sethnering.
+* setring: 5.1.113 setring.
+* sh: 5.1.125 system.
+* short: 5.3.7 short.
+* shortid: D.7.1.13 shortid.
+* show: D.2.3.5 show.
+* showrecursive: D.2.3.6 showrecursive.
+* simplex: 5.1.114 simplex.
+* simplexOut: D.7.2.8 simplexOut.
+* simplify: 5.1.115 simplify.
+* SimplifyIdeal: D.6.3.14 SimplifyIdeal.
+* sing.lib: D.5.8 sing_lib.
+* Singular: 5.1.125 system.
+* SINGULAR libraries: D. SINGULAR libraries.
+* Singular, customization of Emacs user interface: 3.2.4 Customization of the Emacs interface.
+* Singular, demo mode: 3.2.3 Demo mode.
+* Singular, editing input files with Emacs: 3.2.5 Editing SINGULAR input files with Emacs.
+* Singular, important commands of Emacs interface: 3.2.6 Top 20 Emacs commands.
+* Singular, running within Emacs: 3.2.2 Running SINGULAR under Emacs.
+* SINGULARHIST: 3.1.5 Editing input.
+* singularities: D.5.4 gaussman_lib.
+* Singularities: D.5 Singularities.
+* singularities: D.5.4.1 gmsring.
+* singularities: D.5.4.2 gmsnf.
+* singularities: D.5.4.3 gmscoeffs.
+* singularities: D.5.4.4 bernstein.
+* singularities: D.5.4.5 monodromy.
+* singularities: D.5.4.6 spectrum.
+* singularities: D.5.4.7 sppairs.
+* singularities: D.5.4.10 vfilt.
+* singularities: D.5.4.11 vwfilt.
+* singularities: D.5.4.12 tmatrix.
+* singularities: D.5.4.13 endvfilt.
+* singularities: D.5.10.1 spectrumnd.
+* singularity: D.5.1.10 singularity.
+* SINGULARPATH: 3.8.1 Loading of a library.
+* singularrc: 3.1.7 Startup sequence.
+* sing_lib: D.5.8 sing_lib.
+* size: 5.1.116 size.
+* size: 6.3 Miscellaneous oddities.
+* skewmat: D.3.1.10 skewmat.
+* sleep: 5.1.120 status.
+* slocus: D.5.8.11 slocus.
+* solve: D.7.2.2 solve.
+* solve.lib: D.7.2 solve_lib.
+* solvelinearpart: D.7.1.10 solvelinearpart.
+* solve_IP: D.4.10.1 solve_IP.
+* solve_lib: D.7.2 solve_lib.
+* sort: D.2.2.14 sort.
+* sortandmap: D.7.1.11 sortandmap.
+* sortier: D.6.2.8 sortier.
+* sortvars: D.7.1.12 sortvars.
+* sortvec: 5.1.117 sortvec.
+* Source code debugger, invocation: 3.1.6 Command line options.
+* source code debugger, sdb: 3.10.2 Source code debugger.
+* spadd: D.5.4.16 spadd.
+* sparseid: D.2.5.4 sparseid.
+* sparsemat: D.2.5.6 sparsemat.
+* sparsematrix: D.2.5.5 sparsematrix.
+* sparsepoly: D.2.5.7 sparsepoly.
+* sparsetriag: D.2.5.8 sparsetriag.
+* spcurve.lib: D.5.9 spcurve_lib.
+* spcurve_lib: D.5.9 spcurve_lib.
+* Special characters: 3.5.2 Special characters.
+* special characters, non-english: 6.1 Limitations.
+* specialModulesEqual: D.4.4.17 specialModulesEqual.
+* spectral pairs: D.5.4 gaussman_lib.
+* spectral pairs: D.5.4.7 sppairs.
+* spectral pairs: D.5.4.11 vwfilt.
+* spectrum: D.5.4 gaussman_lib.
+* spectrum: D.5.4.6 spectrum.
+* spectrum: D.5.4.6 spectrum.
+* spectrum: D.5.4.7 sppairs.
+* spectrum: D.5.4.10 vfilt.
+* spectrum: D.5.4.11 vwfilt.
+* spectrum: D.5.10.1 spectrumnd.
+* spectrum.lib: D.5.10 spectrum_lib.
+* spectrumnd: D.5.10.1 spectrumnd.
+* spectrum_lib: D.5.10 spectrum_lib.
+* spgamma: D.5.4.23 spgamma.
+* spgeomgenus: D.5.4.22 spgeomgenus.
+* spissemicont: D.5.4.19 spissemicont.
+* split: D.2.3.7 split.
+* splitring: D.4.8.3 splitring.
+* splitting: D.4.4.9 splitting.
+* spmilnor: D.5.4.21 spmilnor.
+* spmul: D.5.4.18 spmul.
+* spnf: D.5.4.8 spnf.
+* sppairs: D.5.4.7 sppairs.
+* sppnf: D.5.4.9 sppnf.
+* sppprint: D.5.4.15 sppprint.
+* spprint: D.5.4.14 spprint.
+* sprintf: 5.1.118 sprintf.
+* spsemicont: D.5.4.20 spsemicont.
+* spsub: D.5.4.17 spsub.
+* SQFRNorm: D.7.5.6 SQFRNorm.
+* SQFRNormMain: D.7.5.14 SQFRNormMain.
+* squarefree: D.5.5.19 squarefree.
+* sres: 5.1.119 sres.
+* StabEqn: D.5.7.4 StabEqn.
+* StabEqnId: D.5.7.5 StabEqnId.
+* StabOrder: D.5.7.6 StabOrder.
+* staircase: D.8.1.1 staircase.
+* Standard bases: C.1 Standard bases.
+* standard.lib: D.1 standard_lib.
+* standard_lib: D.1 standard_lib.
+* Startup sequence: 3.1.7 Startup sequence.
+* static procedures: 3.7.1 Procedure definition.
+* status: 5.1.120 status.
+* std: 5.1.121 std.
+* stdfglm: 5.1.122 stdfglm.
+* stdhilb: 5.1.123 stdhilb.
+* stdModulesEqual: D.4.4.18 stdModulesEqual.
+* Stobbe, Ru"diger: 1. Preface.
+* stratify: D.6.4.2 stratify.
+* stratify.lib: D.6.4 stratify_lib.
+* stratify_lib: D.6.4 stratify_lib.
+* string: 4.17 string.
+* string: 6.3 Miscellaneous oddities.
+* string declarations: 4.17.1 string declarations.
+* string expressions: 4.17.2 string expressions.
+* string operations: 4.17.4 string operations.
+* string related functions: 4.17.5 string related functions.
+* string type cast: 4.17.3 string type cast.
+* stripHNE: D.5.5.12 stripHNE.
+* submat: D.3.1.11 submat.
+* subrInterred: D.2.4.20 subrInterred.
+* subst: 5.1.124 subst.
+* substitute: D.2.4.19 substitute.
+* sugarCrit, option: 5.1.89 option.
+* sum: D.2.2.15 sum.
+* surf.lib: D.8.4 surf_lib.
+* surf_lib: D.8.4 surf_lib.
+* SuSE, ESingular bug: E.3 Unix installation instructions.
+* suspend: 5.1.120 status.
+* SV-decoding algorithm: D.9.1.9 decodeSV.
+* SV-decoding algorithm, preprocessing: D.9.1.8 prepSV.
+* swap: D.5.1.11 swap.
+* switch: 6.2.3 No case or switch statement.
+* Symbolic-numerical solving: D.7 Symbolic-numerical solving.
+* symmat: D.3.1.12 symmat.
+* sym_gauss: D.3.2.4 sym_gauss.
+* system: 5.1.125 system.
+* System variables: 5.3 System variables.
+* system, -: 5.1.125 system.
+* system, -long_option_name: 5.1.125 system.
+* system, -long_option_name=value: 5.1.125 system.
+* system, browsers: 5.1.125 system.
+* system, contributors: 5.1.125 system.
+* system, gen: 5.1.125 system.
+* system, getenv: 5.1.125 system.
+* system, nblocks: 5.1.125 system.
+* system, pid: 5.1.125 system.
+* system, setenv: 5.1.125 system.
+* system, sh: 5.1.125 system.
+* system, Singular: 5.1.125 system.
+* system, tty: 5.1.125 system.
+* system, uname: 5.1.125 system.
+* system, version: 5.1.125 system.
+* sys_code: D.9.1.12 sys_code.
+* syz: 5.1.126 syz.
+* Syzygies and resolutions: C.3 Syzygies and resolutions.
+* T1: A.7 T1 and T2.
+* T2: A.7 T1 and T2.
+* tab: D.2.3.8 tab.
+* Table: D.5.7.10 Table.
+* tangentcone: D.5.8.18 tangentcone.
+* tau_es: D.5.3.1 tau_es.
+* Template for writing a library: 3.9.6 template_lib.
+* template.lib: 3.9.6 template_lib.
+* template.lib: 3.9.6 template_lib.
+* template_lib: 3.9.6 template_lib.
+* template_lib: 3.9.6 template_lib.
+* tensor: D.3.1.13 tensor.
+* tensorMod: D.4.3.18 tensorMod.
+* term orderings: B.2.2 General definitions for orderings.
+* term orderings introduction: B.2.1 Introduction to orderings.
+* testPrimary: D.4.7.6 testPrimary.
+* tex: D.8.2.3 tex.
+* texdemo: D.8.2.4 texdemo.
+* texfactorize: D.8.2.5 texfactorize.
+* texmap: D.8.2.6 texmap.
+* texname: D.8.2.7 texname.
+* texobj: D.8.2.8 texobj.
+* texpoly: D.8.2.9 texpoly.
+* texproc: D.8.2.10 texproc.
+* texring: D.8.2.11 texring.
+* The online help system: 3.1.3 The online help system.
+* The SINGULAR language: 3.5 The SINGULAR language.
+* time limit on computations: 5.1.42 groebner.
+* timeFactorize: D.2.2.21 timeFactorize.
+* timer: 5.3.8 timer.
+* timer: 5.3.10 rtimer.
+* timer resolution, setting the: 5.1.125 system.
+* timeStd: D.2.2.20 timeStd.
+* tjurina: D.5.8.14 tjurina.
+* Tjurina: A.1 Milnor and Tjurina.
+* Tjurina: D.5.8.13 Tjurina.
+* Tjurina number: D.4.6.4 deltaLoc.
+* tkinfo: 3.1.3 The online help system.
+* tmatrix: D.5.4.12 tmatrix.
+* tolessvars: D.7.1.9 tolessvars.
+* Top 20 Emacs commands: 3.2.6 Top 20 Emacs commands.
+* Tor: D.4.3.19 Tor.
+* toric ideals: C.6.1 Toric ideals.
+* Toric ideals and integer programming: C.6 Toric ideals and integer programming.
+* toric.lib: D.4.11 toric_lib.
+* toric_ideal: D.4.11.1 toric_ideal.
+* toric_lib: D.4.11 toric_lib.
+* toric_std: D.4.11.2 toric_std.
+* trace: 5.1.127 trace.
+* TRACE: 5.3.9 TRACE.
+* TransferIdeal: D.6.3.15 TransferIdeal.
+* transpose: 5.1.128 transpose.
+* triagmatrix: D.2.5.9 triagmatrix.
+* triang.lib: D.7.3 triang_lib.
+* triangL: D.7.3.1 triangL.
+* triangLfak: D.7.3.2 triangLfak.
+* triangLf_solve: D.7.2.9 triangLf_solve.
+* triangL_solve: D.7.2.11 triangL_solve.
+* triangM: D.7.3.3 triangM.
+* triangMH: D.7.3.4 triangMH.
+* triangM_solve: D.7.2.10 triangM_solve.
+* triang_lib: D.7.3 triang_lib.
+* triang_solve: D.7.2.12 triang_solve.
+* Tricks and pitfalls: 6. Tricks and pitfalls.
+* triMNewton: D.7.4.2 triMNewton.
+* tty: 5.1.125 system.
+* type: 5.1.129 type.
+* Type casting: 3.5.5 Type conversion and casting.
+* Type conversion: 3.5.5 Type conversion and casting.
+* typeof: 5.1.130 typeof.
+* Typesetting of help strings: 3.9.3 Typesetting of help strings.
+* T_1: D.5.8.15 T_1.
+* T_12: D.5.8.17 T_12.
+* T_2: D.5.8.16 T_2.
+* uname: 5.1.125 system.
+* unitmat: D.3.1.14 unitmat.
+* Unix installation: E.3 Unix installation instructions.
+* untyped definitions: 4.1 def.
+* UpperMonomials: D.5.7.7 UpperMonomials.
+* uressolve: 5.1.131 uressolve.
+* ures_solve: D.7.2.3 ures_solve.
+* usage, option: 5.1.89 option.
+* user interface, Emacs: 3.2 Emacs user interface.
+* U_D_O: D.3.2.15 U_D_O.
+* V-filtration: D.5.4 gaussman_lib.
+* V-filtration: D.5.4.6 spectrum.
+* V-filtration: D.5.4.7 sppairs.
+* V-filtration: D.5.4.10 vfilt.
+* V-filtration: D.5.4.11 vwfilt.
+* V-filtration: D.5.4.12 tmatrix.
+* V-filtration: D.5.4.13 endvfilt.
+* valvars: D.7.1.14 valvars.
+* vandermonde: 5.1.132 vandermonde.
+* var: 5.1.133 var.
+* varstr: 5.1.134 varstr.
+* vdim: 5.1.135 vdim.
+* vector: 4.18 vector.
+* vector declarations: 4.18.1 vector declarations.
+* vector expressions: 4.18.2 vector expressions.
+* vector operations: 4.18.3 vector operations.
+* vector related functions: 4.18.4 vector related functions.
+* versal: D.5.2.1 versal.
+* version: 5.1.125 system.
+* version in a library: 3.8.2 Format of a library.
+* vfilt: D.5.4.10 vfilt.
+* Visualization: D.8 Visualization.
+* voice: 5.3.11 voice.
+* vwfilt: D.5.4.11 vwfilt.
+* watchdog: D.2.2.16 watchdog.
+* wedge: 5.1.136 wedge.
+* Weierstrass: D.9.1.4 Weierstrass.
+* Weierstrass semigroup: D.9.1 brnoeth_lib.
+* weight: 5.1.137 weight.
+* weight filtration: D.5.4 gaussman_lib.
+* weight filtration: D.5.4.7 sppairs.
+* weight filtration: D.5.4.11 vwfilt.
+* weighted lexicographical ordering: B.2.3 Global orderings.
+* weighted reverse lexicographical ordering: B.2.3 Global orderings.
+* weightM, option: 5.1.89 option.
+* Westenberger, Eric: 1. Preface.
+* which: D.2.2.17 which.
+* while: 5.2.11 while.
+* Wichmann, Tim: 1. Preface.
+* Windows installation: E.4 Windows installation instructions.
+* Windows installation, components: E.4 Windows installation instructions.
+* wp, global ordering: B.2.3 Global orderings.
+* WP, global ordering: B.2.3 Global orderings.
+* write: 5.1.138 write.
+* writelist: D.2.3.9 writelist.
+* ws, local ordering: B.2.4 Local orderings.
+* Ws, local ordering: B.2.4 Local orderings.
+* xdvi: D.8.2.13 xdvi.
+* xinfo: 3.1.3 The online help system.
+* XINFO environment variable: 3.1.3 The online help system.
+* XTERM environment variable: 3.1.3 The online help system.
+* zerodec: D.4.7.14 zerodec.
+* zeroMod: D.4.4.5 zeroMod.
+* zeroOpt: D.4.4.14 zeroOpt.
+* ZeroSet: D.7.5.7 ZeroSet.
+* zeroset.lib: D.7.5 zeroset_lib.
+* zeroset_lib: D.7.5 zeroset_lib.
+
+Table of Contents
+*****************
+
+Top
+1. Preface
+2. Introduction
+ 2.1 Background
+ 2.2 How to use this manual
+ 2.3 Getting started
+  2.3.1 First steps
+  2.3.2 Rings and standard bases
+  2.3.3 Procedures and libraries
+  2.3.4 Change of rings
+  2.3.5 Modules and their annihilator
+  2.3.6 Resolution
+3. General concepts
+ 3.1 Interactive use
+  3.1.1 How to enter and exit
+  3.1.2 The SINGULAR prompt
+  3.1.3 The online help system
+  3.1.4 Interrupting SINGULAR
+  3.1.5 Editing input
+  3.1.6 Command line options
+  3.1.7 Startup sequence
+ 3.2 Emacs user interface
+  3.2.1 A quick guide to Emacs
+  3.2.2 Running SINGULAR under Emacs
+  3.2.3 Demo mode
+  3.2.4 Customization of the Emacs interface
+  3.2.5 Editing SINGULAR input files with Emacs
+  3.2.6 Top 20 Emacs commands
+ 3.3 Rings and orderings
+  3.3.1 Examples of ring declarations
+  3.3.2 General syntax of a ring declaration
+  3.3.3 Term orderings
+ 3.4 Implemented algorithms
+ 3.5 The SINGULAR language
+  3.5.1 General command syntax
+  3.5.2 Special characters
+  3.5.3 Names
+  3.5.4 Objects
+  3.5.5 Type conversion and casting
+  3.5.6 Flow control
+ 3.6 Input and output
+ 3.7 Procedures
+  3.7.1 Procedure definition
+  3.7.2 Names in procedures
+  3.7.3 Parameter list
+  3.7.4 Procedure commands
+ 3.8 Libraries
+  3.8.1 Loading of a library
+  3.8.2 Format of a library
+ 3.9 Guidelines for writing a library
+  3.9.1 Procedures in a library
+  3.9.2 Documentation of a library
+   3.9.2.1 lib2doc
+  3.9.3 Typesetting of help strings
+  3.9.4 The help string of a library
+  3.9.5 The help string of procedures
+  3.9.6 template_lib
+   3.9.6.1 mdouble
+   3.9.6.2 mtripple
+   3.9.6.3 msum
+ 3.10 Debugging tools
+  3.10.1 Tracing of procedures
+  3.10.2 Source code debugger
+  3.10.3 Break points
+  3.10.4 Printing of data
+  3.10.5 libparse
+4. Data types
+ 4.1 def
+  4.1.1 def declarations
+ 4.2 ideal
+  4.2.1 ideal declarations
+  4.2.2 ideal expressions
+  4.2.3 ideal operations
+  4.2.4 ideal related functions
+ 4.3 int
+  4.3.1 int declarations
+  4.3.2 int expressions
+  4.3.3 int operations
+  4.3.4 int related functions
+  4.3.5 boolean expressions
+  4.3.6 boolean operations
+ 4.4 intmat
+  4.4.1 intmat declarations
+  4.4.2 intmat expressions
+  4.4.3 intmat type cast
+  4.4.4 intmat operations
+  4.4.5 intmat related functions
+ 4.5 intvec
+  4.5.1 intvec declarations
+  4.5.2 intvec expressions
+  4.5.3 intvec operations
+  4.5.4 intvec related functions
+ 4.6 link
+  4.6.1 link declarations
+  4.6.2 link expressions
+  4.6.3 link related functions
+  4.6.4 ASCII links
+  4.6.5 MP links
+   4.6.5.1 MPfile links
+   4.6.5.2 MPtcp links
+  4.6.6 DBM links
+ 4.7 list
+  4.7.1 list declarations
+  4.7.2 list expressions
+  4.7.3 list operations
+  4.7.4 list related functions
+ 4.8 map
+  4.8.1 map declarations
+  4.8.2 map expressions
+  4.8.3 map operations
+ 4.9 matrix
+  4.9.1 matrix declarations
+  4.9.2 matrix expressions
+  4.9.3 matrix type cast
+  4.9.4 matrix operations
+  4.9.5 matrix related functions
+ 4.10 module
+  4.10.1 module declarations
+  4.10.2 module expressions
+  4.10.3 module operations
+  4.10.4 module related functions
+ 4.11 number
+  4.11.1 number declarations
+  4.11.2 number expressions
+  4.11.3 number operations
+  4.11.4 number related functions
+ 4.12 poly
+  4.12.1 poly declarations
+  4.12.2 poly expressions
+  4.12.3 poly operations
+  4.12.4 poly related functions
+ 4.13 proc
+  4.13.1 proc declaration
+ 4.14 qring
+  4.14.1 qring declaration
+ 4.15 resolution
+  4.15.1 resolution declarations
+  4.15.2 resolution expressions
+  4.15.3 resolution related functions
+ 4.16 ring
+  4.16.1 ring declarations
+  4.16.2 ring related functions
+  4.16.3 ring operations
+ 4.17 string
+  4.17.1 string declarations
+  4.17.2 string expressions
+  4.17.3 string type cast
+  4.17.4 string operations
+  4.17.5 string related functions
+ 4.18 vector
+  4.18.1 vector declarations
+  4.18.2 vector expressions
+  4.18.3 vector operations
+  4.18.4 vector related functions
+5. Functions and system variables
+ 5.1 Functions
+  5.1.1 attrib
+  5.1.2 bareiss
+  5.1.3 betti
+  5.1.4 char
+  5.1.5 char_series
+  5.1.6 charstr
+  5.1.7 cleardenom
+  5.1.8 close
+  5.1.9 coef
+  5.1.10 coeffs
+  5.1.11 contract
+  5.1.12 dbprint
+  5.1.13 defined
+  5.1.14 deg
+  5.1.15 degree
+  5.1.16 delete
+  5.1.17 det
+  5.1.18 diff
+  5.1.19 dim
+  5.1.20 division
+  5.1.21 dump
+  5.1.22 eliminate
+  5.1.23 eval
+  5.1.24 ERROR
+  5.1.25 example
+  5.1.26 execute
+  5.1.27 exit
+  5.1.28 extgcd
+  5.1.29 facstd
+  5.1.30 factorize
+  5.1.31 fetch
+  5.1.32 fglm
+  5.1.33 fglmquot
+  5.1.34 files, input from
+  5.1.35 find
+  5.1.36 finduni
+  5.1.37 fprintf
+  5.1.38 freemodule
+  5.1.39 gcd
+  5.1.40 gen
+  5.1.41 getdump
+  5.1.42 groebner
+  5.1.43 help
+  5.1.44 highcorner
+  5.1.45 hilb
+  5.1.46 homog
+  5.1.47 hres
+  5.1.48 imap
+  5.1.49 impart
+  5.1.50 indepSet
+  5.1.51 insert
+  5.1.52 interred
+  5.1.53 intersect
+  5.1.54 jacob
+  5.1.55 jet
+  5.1.56 kbase
+  5.1.57 kill
+  5.1.58 killattrib
+  5.1.59 koszul
+  5.1.60 laguerre
+  5.1.61 lead
+  5.1.62 leadcoef
+  5.1.63 leadexp
+  5.1.64 leadmonom
+  5.1.65 LIB
+  5.1.66 lift
+  5.1.67 liftstd
+  5.1.68 listvar
+  5.1.69 lres
+  5.1.70 maxideal
+  5.1.71 memory
+  5.1.72 minbase
+  5.1.73 minor
+  5.1.74 minres
+  5.1.75 modulo
+  5.1.76 monitor
+  5.1.77 mpresmat
+  5.1.78 mres
+  5.1.79 mstd
+  5.1.80 mult
+  5.1.81 nameof
+  5.1.82 names
+  5.1.83 ncols
+  5.1.84 npars
+  5.1.85 nres
+  5.1.86 nrows
+  5.1.87 nvars
+  5.1.88 open
+  5.1.89 option
+  5.1.90 ord
+  5.1.91 ordstr
+  5.1.92 par
+  5.1.93 pardeg
+  5.1.94 parstr
+  5.1.95 preimage
+  5.1.96 prime
+  5.1.97 print
+  5.1.98 printf
+  5.1.99 prune
+  5.1.100 qhweight
+  5.1.101 quot
+  5.1.102 quote
+  5.1.103 quotient
+  5.1.104 random
+  5.1.105 read
+  5.1.106 reduce
+  5.1.107 regularity
+  5.1.108 repart
+  5.1.109 res
+  5.1.110 reservedName
+  5.1.111 resultant
+  5.1.112 rvar
+  5.1.113 setring
+  5.1.114 simplex
+  5.1.115 simplify
+  5.1.116 size
+  5.1.117 sortvec
+  5.1.118 sprintf
+  5.1.119 sres
+  5.1.120 status
+  5.1.121 std
+  5.1.122 stdfglm
+  5.1.123 stdhilb
+  5.1.124 subst
+  5.1.125 system
+  5.1.126 syz
+  5.1.127 trace
+  5.1.128 transpose
+  5.1.129 type
+  5.1.130 typeof
+  5.1.131 uressolve
+  5.1.132 vandermonde
+  5.1.133 var
+  5.1.134 varstr
+  5.1.135 vdim
+  5.1.136 wedge
+  5.1.137 weight
+  5.1.138 write
+ 5.2 Control structures
+  5.2.1 break
+  5.2.2 breakpoint
+  5.2.3 continue
+  5.2.4 else
+  5.2.5 export
+  5.2.6 for
+  5.2.7 if
+  5.2.8 keepring
+  5.2.9 quit
+  5.2.10 return
+  5.2.11 while
+  5.2.12 ~ (break point)
+ 5.3 System variables
+  5.3.1 degBound
+  5.3.2 echo
+  5.3.3 minpoly
+  5.3.4 multBound
+  5.3.5 noether
+  5.3.6 printlevel
+  5.3.7 short
+  5.3.8 timer
+  5.3.9 TRACE
+  5.3.10 rtimer
+  5.3.11 voice
+6. Tricks and pitfalls
+ 6.1 Limitations
+ 6.2 Major differences to the C programming language
+  6.2.1 No rvalue of increments and assignments
+  6.2.2 Evaluation of logical expressions
+  6.2.3 No case or switch statement
+  6.2.4 Usage of commas
+  6.2.5 Usage of brackets
+  6.2.6 Behavior of continue
+  6.2.7 Return type of procedures
+ 6.3 Miscellaneous oddities
+ 6.4 Identifier resolution
+A. Examples
+ A.1 Milnor and Tjurina
+ A.2 Procedures and LIB
+ A.3 Critical points
+ A.4 Saturation
+ A.5 Long coefficients
+ A.6 Parameters
+ A.7 T1 and T2
+ A.8 Deformations
+ A.9 Finite fields
+ A.10 Elimination
+ A.11 Free resolution
+ A.12 Computation of Ext
+ A.13 Polar curves
+ A.14 Depth
+ A.15 Formatting output
+ A.16 Cyclic roots
+ A.17 G_a -Invariants
+ A.18 Invariants of a finite group
+ A.19 Factorization
+ A.20 Puiseux pairs
+ A.21 Primary decomposition
+ A.22 Normalization
+ A.23 Branches of an Isolated Space Curve Singularity
+ A.24 Kernel of module homomorphisms
+ A.25 Algebraic dependence
+ A.26 Classification
+ A.27 Fast lexicographical GB
+ A.28 Parallelization with MPtcp links
+B. Polynomial data
+ B.1 Representation of mathematical objects
+ B.2 Monomial orderings
+  B.2.1 Introduction to orderings
+  B.2.2 General definitions for orderings
+  B.2.3 Global orderings
+  B.2.4 Local orderings
+  B.2.5 Module orderings
+  B.2.6 Matrix orderings
+  B.2.7 Product orderings
+  B.2.8 Extra weight vector
+C. Mathematical background
+ C.1 Standard bases
+ C.2 Hilbert function
+ C.3 Syzygies and resolutions
+ C.4 Characteristic sets
+ C.5 Gauss-Manin connection
+ C.6 Toric ideals and integer programming
+  C.6.1 Toric ideals
+  C.6.2 Algorithms
+   C.6.2.1 The algorithm of Conti and Traverso
+   C.6.2.2 The algorithm of Pottier
+   C.6.2.3 The algorithm of Hosten and Sturmfels
+   C.6.2.4 The algorithm of Di Biase and Urbanke
+   C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano
+  C.6.3 The Buchberger algorithm for toric ideals
+  C.6.4 Integer programming
+  C.6.5 Relevant References
+ C.7 References
+D. SINGULAR libraries
+ D.1 standard_lib
+ D.2 General purpose
+  D.2.1 all_lib
+  D.2.2 general_lib
+   D.2.2.1 A_Z
+   D.2.2.2 ASCII
+   D.2.2.3 absValue
+   D.2.2.4 binomial
+   D.2.2.5 deleteSublist
+   D.2.2.6 factorial
+   D.2.2.7 fibonacci
+   D.2.2.8 kmemory
+   D.2.2.9 killall
+   D.2.2.10 number_e
+   D.2.2.11 number_pi
+   D.2.2.12 primes
+   D.2.2.13 product
+   D.2.2.14 sort
+   D.2.2.15 sum
+   D.2.2.16 watchdog
+   D.2.2.17 which
+   D.2.2.18 primecoeffs
+   D.2.2.19 primefactors
+   D.2.2.20 timeStd
+   D.2.2.21 timeFactorize
+   D.2.2.22 factorH
+  D.2.3 inout_lib
+   D.2.3.1 allprint
+   D.2.3.2 lprint
+   D.2.3.3 pmat
+   D.2.3.4 rMacaulay
+   D.2.3.5 show
+   D.2.3.6 showrecursive
+   D.2.3.7 split
+   D.2.3.8 tab
+   D.2.3.9 writelist
+   D.2.3.10 pause
+  D.2.4 poly_lib
+   D.2.4.1 cyclic
+   D.2.4.2 katsura
+   D.2.4.3 freerank
+   D.2.4.4 is_homog
+   D.2.4.5 is_zero
+   D.2.4.6 lcm
+   D.2.4.7 maxcoef
+   D.2.4.8 maxdeg
+   D.2.4.9 maxdeg1
+   D.2.4.10 mindeg
+   D.2.4.11 mindeg1
+   D.2.4.12 normalize
+   D.2.4.13 rad_con
+   D.2.4.14 content
+   D.2.4.15 numerator
+   D.2.4.16 denominator
+   D.2.4.17 mod2id
+   D.2.4.18 id2mod
+   D.2.4.19 substitute
+   D.2.4.20 subrInterred
+   D.2.4.21 hilbPoly
+  D.2.5 random_lib
+   D.2.5.1 genericid
+   D.2.5.2 randomid
+   D.2.5.3 randommat
+   D.2.5.4 sparseid
+   D.2.5.5 sparsematrix
+   D.2.5.6 sparsemat
+   D.2.5.7 sparsepoly
+   D.2.5.8 sparsetriag
+   D.2.5.9 triagmatrix
+   D.2.5.10 randomLast
+   D.2.5.11 randomBinomial
+  D.2.6 ring_lib
+   D.2.6.1 changechar
+   D.2.6.2 changeord
+   D.2.6.3 changevar
+   D.2.6.4 defring
+   D.2.6.5 defrings
+   D.2.6.6 defringp
+   D.2.6.7 extendring
+   D.2.6.8 fetchall
+   D.2.6.9 imapall
+   D.2.6.10 mapall
+   D.2.6.11 ord_test
+   D.2.6.12 ringtensor
+   D.2.6.13 ringweights
+ D.3 Linear algebra
+  D.3.1 matrix_lib
+   D.3.1.1 compress
+   D.3.1.2 concat
+   D.3.1.3 diag
+   D.3.1.4 dsum
+   D.3.1.5 flatten
+   D.3.1.6 genericmat
+   D.3.1.7 is_complex
+   D.3.1.8 outer
+   D.3.1.9 power
+   D.3.1.10 skewmat
+   D.3.1.11 submat
+   D.3.1.12 symmat
+   D.3.1.13 tensor
+   D.3.1.14 unitmat
+   D.3.1.15 gauss_col
+   D.3.1.16 gauss_row
+   D.3.1.17 addcol
+   D.3.1.18 addrow
+   D.3.1.19 multcol
+   D.3.1.20 multrow
+   D.3.1.21 permcol
+   D.3.1.22 permrow
+   D.3.1.23 rowred
+   D.3.1.24 colred
+   D.3.1.25 rm_unitrow
+   D.3.1.26 rm_unitcol
+   D.3.1.27 headStand
+  D.3.2 linalg_lib
+   D.3.2.1 inverse
+   D.3.2.2 inverse_B
+   D.3.2.3 inverse_L
+   D.3.2.4 sym_gauss
+   D.3.2.5 orthogonalize
+   D.3.2.6 diag_test
+   D.3.2.7 busadj
+   D.3.2.8 charpoly
+   D.3.2.9 adjoint
+   D.3.2.10 det_B
+   D.3.2.11 gaussred
+   D.3.2.12 gaussred_pivot
+   D.3.2.13 gauss_nf
+   D.3.2.14 mat_rk
+   D.3.2.15 U_D_O
+   D.3.2.16 pos_def
+   D.3.2.17 hessenberg
+   D.3.2.18 evnf
+   D.3.2.19 eigenvals
+   D.3.2.20 minipoly
+   D.3.2.21 jordan
+   D.3.2.22 jordanbasis
+   D.3.2.23 jordanmatrix
+   D.3.2.24 jordannf
+ D.4 Commutative algebra
+  D.4.1 algebra_lib
+   D.4.1.1 algebra_containment
+   D.4.1.2 module_containment
+   D.4.1.3 inSubring
+   D.4.1.4 algDependent
+   D.4.1.5 alg_kernel
+   D.4.1.6 is_injective
+   D.4.1.7 is_surjective
+   D.4.1.8 is_bijective
+   D.4.1.9 noetherNormal
+   D.4.1.10 mapIsFinite
+   D.4.1.11 finitenessTest
+  D.4.2 elim_lib
+   D.4.2.1 blowup0
+   D.4.2.2 elim
+   D.4.2.3 elim1
+   D.4.2.4 nselect
+   D.4.2.5 sat
+   D.4.2.6 select
+   D.4.2.7 select1
+  D.4.3 homolog_lib
+   D.4.3.1 cup
+   D.4.3.2 cupproduct
+   D.4.3.3 depth
+   D.4.3.4 Ext_R
+   D.4.3.5 Ext
+   D.4.3.6 fitting
+   D.4.3.7 flatteningStrat
+   D.4.3.8 Hom
+   D.4.3.9 homology
+   D.4.3.10 isCM
+   D.4.3.11 isFlat
+   D.4.3.12 isLocallyFree
+   D.4.3.13 isReg
+   D.4.3.14 kernel
+   D.4.3.15 kohom
+   D.4.3.16 kontrahom
+   D.4.3.17 KoszulHomology
+   D.4.3.18 tensorMod
+   D.4.3.19 Tor
+  D.4.4 mprimdec_lib
+   D.4.4.1 separator
+   D.4.4.2 PrimdecA
+   D.4.4.3 PrimdecB
+   D.4.4.4 modDec
+   D.4.4.5 zeroMod
+   D.4.4.6 GTZmod
+   D.4.4.7 dec1var
+   D.4.4.8 annil
+   D.4.4.9 splitting
+   D.4.4.10 primTest
+   D.4.4.11 preComp
+   D.4.4.12 indSet
+   D.4.4.13 GTZopt
+   D.4.4.14 zeroOpt
+   D.4.4.15 clrSBmod
+   D.4.4.16 minSatMod
+   D.4.4.17 specialModulesEqual
+   D.4.4.18 stdModulesEqual
+   D.4.4.19 modulesEqual
+   D.4.4.20 getData
+  D.4.5 mregular_lib
+   D.4.5.1 reg_CM
+   D.4.5.2 reg_curve
+   D.4.5.3 reg_moncurve
+  D.4.6 normal_lib
+   D.4.6.1 normal
+   D.4.6.2 HomJJ
+   D.4.6.3 genus
+   D.4.6.4 deltaLoc
+  D.4.7 primdec_lib
+   D.4.7.1 Ann
+   D.4.7.2 primdecGTZ
+   D.4.7.3 primdecSY
+   D.4.7.4 minAssGTZ
+   D.4.7.5 minAssChar
+   D.4.7.6 testPrimary
+   D.4.7.7 radical
+   D.4.7.8 radicalEHV
+   D.4.7.9 equiRadical
+   D.4.7.10 prepareAss
+   D.4.7.11 equidim
+   D.4.7.12 equidimMax
+   D.4.7.13 equidimMaxEHV
+   D.4.7.14 zerodec
+  D.4.8 primitiv_lib
+   D.4.8.1 primitive
+   D.4.8.2 primitive_extra
+   D.4.8.3 splitring
+  D.4.9 reesclos_lib
+   D.4.9.1 ReesAlgebra
+   D.4.9.2 normalI
+   D.4.9.3 primeClosure
+   D.4.9.4 closureRingtower
+   D.4.9.5 closureFrac
+  D.4.10 intprog_lib
+   D.4.10.1 solve_IP
+  D.4.11 toric_lib
+   D.4.11.1 toric_ideal
+   D.4.11.2 toric_std
+ D.5 Singularities
+  D.5.1 classify_lib
+   D.5.1.1 basicinvariants
+   D.5.1.2 classify
+   D.5.1.3 corank
+   D.5.1.4 Hcode
+   D.5.1.5 init_debug
+   D.5.1.6 internalfunctions
+   D.5.1.7 milnorcode
+   D.5.1.8 morsesplit
+   D.5.1.9 quickclass
+   D.5.1.10 singularity
+   D.5.1.11 swap
+   D.5.1.12 A_L
+   D.5.1.13 normalform
+   D.5.1.14 debug_log
+  D.5.2 deform_lib
+   D.5.2.1 versal
+   D.5.2.2 mod_versal
+   D.5.2.3 lift_kbase
+   D.5.2.4 lift_rel_kb
+   D.5.2.5 kill_rings
+  D.5.3 equising_lib
+   D.5.3.1 tau_es
+   D.5.3.2 esIdeal
+   D.5.3.3 esStratum
+   D.5.3.4 isEquising
+   D.5.3.5 control_Matrix
+  D.5.4 gaussman_lib
+   D.5.4.1 gmsring
+   D.5.4.2 gmsnf
+   D.5.4.3 gmscoeffs
+   D.5.4.4 bernstein
+   D.5.4.5 monodromy
+   D.5.4.6 spectrum
+   D.5.4.7 sppairs
+   D.5.4.8 spnf
+   D.5.4.9 sppnf
+   D.5.4.10 vfilt
+   D.5.4.11 vwfilt
+   D.5.4.12 tmatrix
+   D.5.4.13 endvfilt
+   D.5.4.14 spprint
+   D.5.4.15 sppprint
+   D.5.4.16 spadd
+   D.5.4.17 spsub
+   D.5.4.18 spmul
+   D.5.4.19 spissemicont
+   D.5.4.20 spsemicont
+   D.5.4.21 spmilnor
+   D.5.4.22 spgeomgenus
+   D.5.4.23 spgamma
+  D.5.5 hnoether_lib
+   D.5.5.1 hnexpansion
+   D.5.5.2 sethnering
+   D.5.5.3 develop
+   D.5.5.4 extdevelop
+   D.5.5.5 parametrisation
+   D.5.5.6 displayHNE
+   D.5.5.7 invariants
+   D.5.5.8 displayInvariants
+   D.5.5.9 multsequence
+   D.5.5.10 displayMultsequence
+   D.5.5.11 intersection
+   D.5.5.12 stripHNE
+   D.5.5.13 is_irred
+   D.5.5.14 delta
+   D.5.5.15 newtonpoly
+   D.5.5.16 is_NND
+   D.5.5.17 puiseux2generators
+   D.5.5.18 separateHNE
+   D.5.5.19 squarefree
+   D.5.5.20 allsquarefree
+   D.5.5.21 further_hn_proc
+  D.5.6 mondromy_lib
+   D.5.6.1 detadj
+   D.5.6.2 invunit
+   D.5.6.3 jacoblift
+   D.5.6.4 monodromyB
+   D.5.6.5 H2basis
+  D.5.7 qhmoduli_lib
+   D.5.7.1 ArnoldAction
+   D.5.7.2 ModEqn
+   D.5.7.3 QuotientEquations
+   D.5.7.4 StabEqn
+   D.5.7.5 StabEqnId
+   D.5.7.6 StabOrder
+   D.5.7.7 UpperMonomials
+   D.5.7.8 Max
+   D.5.7.9 Min
+   D.5.7.10 Table
+  D.5.8 sing_lib
+   D.5.8.1 deform
+   D.5.8.2 dim_slocus
+   D.5.8.3 is_active
+   D.5.8.4 is_ci
+   D.5.8.5 is_is
+   D.5.8.6 is_reg
+   D.5.8.7 is_regs
+   D.5.8.8 locstd
+   D.5.8.9 milnor
+   D.5.8.10 nf_icis
+   D.5.8.11 slocus
+   D.5.8.12 qhspectrum
+   D.5.8.13 Tjurina
+   D.5.8.14 tjurina
+   D.5.8.15 T_1
+   D.5.8.16 T_2
+   D.5.8.17 T_12
+   D.5.8.18 tangentcone
+  D.5.9 spcurve_lib
+   D.5.9.1 isCMcod2
+   D.5.9.2 CMtype
+   D.5.9.3 matrixT1
+   D.5.9.4 semiCMcod2
+   D.5.9.5 discr
+   D.5.9.6 qhmatrix
+   D.5.9.7 relweight
+   D.5.9.8 posweight
+   D.5.9.9 KSpencerKernel
+  D.5.10 spectrum_lib
+   D.5.10.1 spectrumnd
+ D.6 Invariant theory
+  D.6.1 finvar_lib
+   D.6.1.1 invariant_ring
+   D.6.1.2 invariant_ring_random
+   D.6.1.3 primary_invariants
+   D.6.1.4 primary_invariants_random
+   D.6.1.5 cyclotomic
+   D.6.1.6 group_reynolds
+   D.6.1.7 molien
+   D.6.1.8 reynolds_molien
+   D.6.1.9 partial_molien
+   D.6.1.10 evaluate_reynolds
+   D.6.1.11 invariant_basis
+   D.6.1.12 invariant_basis_reynolds
+   D.6.1.13 primary_char0
+   D.6.1.14 primary_charp
+   D.6.1.15 primary_char0_no_molien
+   D.6.1.16 primary_charp_no_molien
+   D.6.1.17 primary_charp_without
+   D.6.1.18 primary_char0_random
+   D.6.1.19 primary_charp_random
+   D.6.1.20 primary_char0_no_molien_random
+   D.6.1.21 primary_charp_no_molien_random
+   D.6.1.22 primary_charp_without_random
+   D.6.1.23 power_products
+   D.6.1.24 secondary_char0
+   D.6.1.25 secondary_charp
+   D.6.1.26 secondary_no_molien
+   D.6.1.27 secondary_and_irreducibles_no_molien
+   D.6.1.28 secondary_not_cohen_macaulay
+   D.6.1.29 orbit_variety
+   D.6.1.30 relative_orbit_variety
+   D.6.1.31 image_of_variety
+  D.6.2 ainvar_lib
+   D.6.2.1 invariantRing
+   D.6.2.2 derivate
+   D.6.2.3 actionIsProper
+   D.6.2.4 reduction
+   D.6.2.5 completeReduction
+   D.6.2.6 localInvar
+   D.6.2.7 furtherInvar
+   D.6.2.8 sortier
+  D.6.3 rinvar_lib
+   D.6.3.1 HilbertSeries
+   D.6.3.2 HilbertWeights
+   D.6.3.3 ImageVariety
+   D.6.3.4 ImageGroup
+   D.6.3.5 InvariantRing
+   D.6.3.6 InvariantQ
+   D.6.3.7 LinearizeAction
+   D.6.3.8 LinearActionQ
+   D.6.3.9 LinearCombinationQ
+   D.6.3.10 MinimalDecomposition
+   D.6.3.11 NullCone
+   D.6.3.12 ReynoldsImage
+   D.6.3.13 ReynoldsOperator
+   D.6.3.14 SimplifyIdeal
+   D.6.3.15 TransferIdeal
+  D.6.4 stratify_lib
+   D.6.4.1 prepMat
+   D.6.4.2 stratify
+ D.7 Symbolic-numerical solving
+  D.7.1 presolve_lib
+   D.7.1.1 degreepart
+   D.7.1.2 elimlinearpart
+   D.7.1.3 elimpart
+   D.7.1.4 elimpartanyr
+   D.7.1.5 fastelim
+   D.7.1.6 findvars
+   D.7.1.7 hilbvec
+   D.7.1.8 linearpart
+   D.7.1.9 tolessvars
+   D.7.1.10 solvelinearpart
+   D.7.1.11 sortandmap
+   D.7.1.12 sortvars
+   D.7.1.13 shortid
+   D.7.1.14 valvars
+   D.7.1.15 idealSimplify
+   D.7.1.16 idealSplit
+  D.7.2 solve_lib
+   D.7.2.1 laguerre_solve
+   D.7.2.2 solve
+   D.7.2.3 ures_solve
+   D.7.2.4 mp_res_mat
+   D.7.2.5 interpolate
+   D.7.2.6 fglm_solve
+   D.7.2.7 lex_solve
+   D.7.2.8 simplexOut
+   D.7.2.9 triangLf_solve
+   D.7.2.10 triangM_solve
+   D.7.2.11 triangL_solve
+   D.7.2.12 triang_solve
+  D.7.3 triang_lib
+   D.7.3.1 triangL
+   D.7.3.2 triangLfak
+   D.7.3.3 triangM
+   D.7.3.4 triangMH
+  D.7.4 ntsolve_lib
+   D.7.4.1 nt_solve
+   D.7.4.2 triMNewton
+  D.7.5 zeroset_lib
+   D.7.5.1 EGCD
+   D.7.5.2 Factor
+   D.7.5.3 Quotient
+   D.7.5.4 Remainder
+   D.7.5.5 Roots
+   D.7.5.6 SQFRNorm
+   D.7.5.7 ZeroSet
+   D.7.5.8 EGCDMain
+   D.7.5.9 FactorMain
+   D.7.5.10 InvertNumberMain
+   D.7.5.11 QuotientMain
+   D.7.5.12 RemainderMain
+   D.7.5.13 RootsMain
+   D.7.5.14 SQFRNormMain
+   D.7.5.15 ContainedQ
+   D.7.5.16 SameQ
+ D.8 Visualization
+  D.8.1 graphics_lib
+   D.8.1.1 staircase
+   D.8.1.2 mathinit
+   D.8.1.3 mplot
+  D.8.2 latex_lib
+   D.8.2.1 closetex
+   D.8.2.2 opentex
+   D.8.2.3 tex
+   D.8.2.4 texdemo
+   D.8.2.5 texfactorize
+   D.8.2.6 texmap
+   D.8.2.7 texname
+   D.8.2.8 texobj
+   D.8.2.9 texpoly
+   D.8.2.10 texproc
+   D.8.2.11 texring
+   D.8.2.12 rmx
+   D.8.2.13 xdvi
+  D.8.3 paramet_lib
+   D.8.3.1 parametrize
+   D.8.3.2 parametrizepd
+   D.8.3.3 parametrizesing
+  D.8.4 surf_lib
+   D.8.4.1 plot
+ D.9 Coding theory
+  D.9.1 brnoeth_lib
+   D.9.1.1 Adj_div
+   D.9.1.2 NSplaces
+   D.9.1.3 BrillNoether
+   D.9.1.4 Weierstrass
+   D.9.1.5 extcurve
+   D.9.1.6 AGcode_L
+   D.9.1.7 AGcode_Omega
+   D.9.1.8 prepSV
+   D.9.1.9 decodeSV
+   D.9.1.10 closed_points
+   D.9.1.11 dual_code
+   D.9.1.12 sys_code
+   D.9.1.13 permute_L
+E. Release Notes
+ E.1 News and changes
+ E.2 Downloading instructions
+ E.3 Unix installation instructions
+ E.4 Windows installation instructions
+ E.5 Macintosh installation instructions
+F. Index
+

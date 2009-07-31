@@ -1,0 +1,127 @@
+<div id="Modifying-tags"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Tagging and adding and removing files#Tagging-add_002fremove  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
+=== Deleting, moving, and renaming tags ===
+
+
+<p>Normally one does not modify tags.  They exist in order
+to record the history of the repository and so deleting
+them or changing their meaning would, generally, not be
+what you want.
+</p>
+<p>However, there might be cases in which one uses a tag
+temporarily or accidentally puts one in the wrong
+place.  Therefore, one might delete, move, or rename a
+tag.
+</p>
+<p><strong>WARNING: the commands in this section are
+dangerous; they permanently discard historical
+information and it can be difficult or impossible to
+recover from errors.  If you are a <small>CVS</small>
+administrator, you may consider restricting these
+commands with taginfo (see section [cvs: User-defined logging#user_002ddefined-logging User-defined logging]).</strong>
+</p>
+<div id="index-Deleting-tags"></div>
+<div id="index-Deleting-branch-tags"></div>
+<div id="index-Removing-tags"></div>
+<div id="index-Removing-branch-tags"></div>
+<div id="index-Tags_002c-deleting"></div>
+<div id="index-Branch-tags_002c-deleting"></div>
+<p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
+<code>cvs tag</code> or <code>cvs rtag</code>.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -d rel-0-4 tc
+</nowiki></pre></td></tr></table>
+
+<p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
+In the event that branch tags are encountered within the repository
+with the given name, a warning message will be issued and the branch 
+tag will not be deleted.  If you are absolutely certain you know what
+you are doing, the <code>-B</code> option may be specified to allow deletion
+of branch tags.  In that case, any non-branch tags encountered will
+trigger warnings and will not be deleted.
+</p>
+<p><strong>WARNING: Moving branch tags is very dangerous!  If you think
+you need the <code>-B</code> option, think again and ask your <small>CVS</small>
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
+another way to accomplish what you want to accomplish.</strong>
+</p>
+<div id="index-Moving-tags"></div>
+<div id="index-Moving-branch-tags"></div>
+<div id="index-Tags_002c-moving"></div>
+<div id="index-Branch-tags_002c-moving"></div>
+<p>When we say <em>move</em> a tag, we mean to make the same
+name point to different revisions.  For example, the
+<code>stable</code> tag may currently point to revision 1.4
+of &lsquo;<tt>backend.c</tt>&rsquo; and perhaps we want to make it
+point to revision 1.6.  To move a non-branch tag, specify the
+&lsquo;<samp>-F</samp>&rsquo; option to either <code>cvs tag</code> or <code>cvs
+rtag</code>.  For example, the task just mentioned might be
+accomplished as:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.6 -F stable backend.c
+</nowiki></pre></td></tr></table>
+
+<p>If any branch tags are encountered in the repository 
+with the given name, a warning is issued and the branch
+tag is not disturbed.  If you are absolutely certain you
+wish to move the branch tag, the <code>-B</code> option may be specified.
+In that case, non-branch tags encountered with the given
+name are ignored with a warning message.
+</p>
+<p><strong>WARNING: Moving branch tags is very dangerous!  If you think you
+need the <code>-B</code> option, think again and ask your <small>CVS</small>
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
+another way to accomplish what you want to accomplish.</strong>
+</p>
+<div id="index-Renaming-tags"></div>
+<div id="index-Tags_002c-renaming"></div>
+<p>When we say <em>rename</em> a tag, we mean to make a
+different name point to the same revisions as the old
+tag.  For example, one may have misspelled the tag name
+and want to correct it (hopefully before others are
+relying on the old spelling).  To rename a tag, first
+create a new tag using the &lsquo;<samp>-r</samp>&rsquo; option to
+<code>cvs rtag</code>, and then delete the old name.  (Caution:
+this method will not work with branch tags.) 
+This leaves the new tag on exactly the 
+same files as the old tag.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -r old-name-0-4 rel-0-4 tc
+cvs rtag -d old-name-0-4 tc
+</nowiki></pre></td></tr></table>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Tagging and adding and removing files#Tagging-add_002fremove  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,56 @@
+9.1.2 @kbd{keyboard-characters}
+-------------------------------
+
+Use the @kbd command for characters of input to be typed by
+users.  For example, to refer to the characters M-a,
+write
+
+@kbd{M-a}
+
+and to refer to the characters M-x shell, write
+
+@kbd{M-x shell}
+
+The @kbd command has the same effect as @code in Info,
+but by default produces a different font (slanted typewriter instead of
+normal typewriter) in the printed manual, so users can distinguish the
+characters they are supposed to type from those the computer outputs.
+
+Since the usage of @kbd varies from manual to manual, you can
+control the font switching with the @kbdinputstyle command.
+This command has no effect on Info output.  Write this command at the
+beginning of a line with a single word as an argument, one of the
+following:
+`code'
+Always use the same font for @kbd as @code.
+`example'
+Use the distinguishing font for @kbd only in @example
+and similar environments.
+`distinct'
+(the default) Always use the distinguishing font for @kbd.
+
+You can embed another @-command inside the braces of an @kbd
+command.  Here, for example, is the way to describe a command that
+would be described more verbosely as "press an `r' and then
+press the <RET> key":
+
+@kbd{r @key{RET}}
+
+This produces: r <RET>
+
+You also use the @kbd command if you are spelling out the letters
+you type; for example:
+
+To give the @code{logout} command,
+type the characters @kbd{l o g o u t @key{RET}}.
+
+This produces:
+
+To give the logout command,
+type the characters l o g o u t <RET>.
+
+(Also, this example shows that you can add spaces for clarity.  If you
+really want to mention a space character as one of the characters of
+input, write @key{SPC} for it.)
+
+

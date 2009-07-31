@@ -1,0 +1,29 @@
+Texinfo Mode Overview
+---------------------
+Texinfo Mode Overview
+=====================
+
+Texinfo mode provides special features for working with Texinfo
+files.
+You can:
+
+* Insert frequently used @-commands. 
+
+* Automatically create @node lines.
+
+* Show the structure of a Texinfo source file.
+
+* Automatically create or update the `Next',
+`Previous', and `Up' pointers of a node.
+
+* Automatically create or update menus.
+
+* Automatically create a master menu.
+
+* Format a part or all of a file for Info.
+
+* Typeset and print part or all of a file.
+
+Perhaps the two most helpful features are those for inserting frequently
+used @-commands and for creating node pointers and menus.
+

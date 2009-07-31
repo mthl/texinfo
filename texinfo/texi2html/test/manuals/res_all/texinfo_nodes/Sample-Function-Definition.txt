@@ -1,0 +1,78 @@
+15.6 A Sample Function Definition
+=================================
+
+A function definition uses the @defun and @end defun
+commands.  The name of the function follows immediately after the
+@defun command and it is followed, on the same line, by the
+parameter list.
+
+Here is a definition from (elisp)Calling Functions section `Calling Functions' in The GNU Emacs Lisp Reference Manual.
+
+ -- Function: apply function &rest arguments
+apply calls function with arguments, just
+like funcall but with one difference: the last of
+arguments is a list of arguments to give to
+function, rather than a single argument.  We also say
+that this list is appended to the other arguments.
+
+apply returns the result of calling function.
+As with funcall, function must either be a Lisp
+function or a primitive function; special forms and macros
+do not make sense in apply.
+
+(setq f 'list)
+     => list
+(apply f 'x 'y 'z)
+error--> Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     => 10
+(apply '+ '(1 2 3 4))
+     => 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     => (a b c x y z)
+
+An interesting example of using apply is found in the description
+of mapcar.
+
+In the Texinfo source file, this example looks like this:
+
+@defun apply function &rest arguments
+@code{apply} calls @var{function} with
+@var{arguments}, just like @code{funcall} but with one
+difference: the last of @var{arguments} is a list of
+arguments to give to @var{function}, rather than a single
+argument.  We also say that this list is @dfn{appended}
+to the other arguments.
+
+@code{apply} returns the result of calling
+@var{function}.  As with @code{funcall},
+@var{function} must either be a Lisp function or a
+primitive function; special forms and macros do not make
+sense in @code{apply}.
+
+@example
+(setq f 'list)
+     @result{} list
+(apply f 'x 'y 'z)
+@error{} Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     @result{} 10
+(apply '+ '(1 2 3 4))
+     @result{} 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     @result{} (a b c x y z)
+@end example
+
+An interesting example of using @code{apply} is found
+in the description of @code{mapcar}.
+@end defun
+
+In this manual, this function is listed in the Command and Variable
+Index under apply.
+
+Ordinary variables and user options are described using a format like
+that for functions except that variables do not take arguments.
+
+

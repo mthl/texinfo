@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3.7 Parameters</title>
+
+<meta name="description" content="Miniker 102 manual: 3.7 Parameters">
+<meta name="keywords" content="Miniker 102 manual: 3.7 Parameters">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Advanced-programming.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Rule-of-programming-non-continuous-models.html#Rule-of-programming-non-continuous-models" rel="previous" title="3.6 Rule of programming non continuous models">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Parameters"></a>
+<ul class="toc"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="Advanced-programming.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Rule-of-programming-non-continuous-models.html#Rule-of-programming-non-continuous-models" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Observations-and-data.html#Observations-and-data" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Parameters-1"></a>
+<h2 class="section"> 3.7 Parameters </h2>
+
+<p>It is possible to specify some Fortran variables as specific model parameters.
+Model parameters
+may be used in sensitivity studies (see <a href="Sensitivities.html#Sensitivity-to-a-parameter">Sensitivity to a parameter</a>)
+and in the adjoint model (see <a href="Adjoint-model-and-optimisation.html#Sensitivity-of-cost-function-to-parameters">Sensitivity of cost function to parameters</a>). 
+Nothing special is done with parameters with Kalman filtering.
+</p>
+
+<a name="index-Free_005fparameter"></a>
+
+<p>The parameters are fortran variables that should be initialized somewhere 
+in &lsquo;<tt>zinit</tt>&rsquo;. For a variable to be considered as a parameter, it should 
+be passed as an
+argument to the <code>Free_parameters</code> macro. For example if 
+<code>apar</code> and <code>cpar</code> (from the predator example) are to be considered
+as parameters, <code>Free_parameters</code> should be called with:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: apar, cpar;
+</pre></td></tr></table>
+
+
+
+<p>When used with grid1d models (see <a href="1D-gridded-model.html#g_t1D-gridded-model">Describing 1D gridded model</a>) the <code>inode</code> number may appear in 
+parenthesis:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: rd(1), rk(2);
+</pre></td></tr></table>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

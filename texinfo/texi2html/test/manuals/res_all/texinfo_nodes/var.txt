@@ -1,0 +1,59 @@
+9.1.6 @var{metasyntactic-variable}
+----------------------------------
+
+Use the @var command to indicate metasyntactic variables.  A
+metasyntactic variable is something that stands for another piece of
+text.  For example, you should use a metasyntactic variable in the
+documentation of a function to describe the arguments that are passed
+to that function.
+
+Do not use @var for the names of particular variables in
+programming languages.  These are specific names from a program, so
+@code is correct for them (see code).  For example, the
+Emacs Lisp variable texinfo-tex-command is not a metasyntactic
+variable; it is properly formatted using @code.
+
+Do not use @var for environment variables either; @env
+is correct for them (see the next section).
+
+The effect of @var in the Info file is to change the case of the
+argument to all upper case.  In the printed manual and HTML output, the
+argument is printed in slanted type.  
+
+For example,
+
+To delete file @var{filename},
+type @samp{rm @var{filename}}.
+
+produces
+
+To delete file filename, type `rm filename'.
+
+(Note that @var may appear inside @code,
+@samp, @file, etc.)
+
+Write a metasyntactic variable all in lower case without spaces, and
+use hyphens to make it more readable.  Thus, the Texinfo source for
+the illustration of how to begin a Texinfo manual looks like
+this:
+
+\input texinfo
+@@setfilename @var{info-file-name}
+@@settitle @var{name-of-manual}
+
+This produces:
+
+\input texinfo
+@setfilename info-file-name
+@settitle name-of-manual
+
+In some documentation styles, metasyntactic variables are shown with
+angle brackets, for example:
+
+..., type rm <filename>
+
+However, that is not the style that Texinfo uses.  (You can, of
+course, modify the sources to `texinfo.tex' and the Info formatting commands
+to output the <...> format if you wish.)
+
+

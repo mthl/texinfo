@@ -1,0 +1,78 @@
+1.2 Using Texinfo
+=================
+
+
+Using Texinfo, you can create a printed document with the normal
+features of a book, including chapters, sections, cross references, and
+indices.  From the same Texinfo source file, you can create a
+menu-driven, online Info file with nodes, menus, cross references, and
+indices.  You can also create from that same source file an HTML output
+file suitable for use with a web browser, or an XML file.  The GNU
+Emacs Manual is a good example of a Texinfo file, as is this manual.
+
+To make a printed document, you process a Texinfo source file with the
+TeX typesetting program (but the Texinfo language is very different
+and much stricter than TeX's usual language, plain TeX).  This
+creates a DVI file that you can typeset and print as a book or report
+(see Hardcopy).
+
+To output an Info file, process your Texinfo source with the
+makeinfo utility or Emacs's texinfo-format-buffer command.
+You can install the result in your Info tree (see Installing an Info File).
+
+To output an HTML file, run makeinfo --html on your Texinfo
+source.  You can (for example) install the result on your web site.
+
+To output an XML file, run makeinfo --xml on your Texinfo source.
+To output DocBook (a particular form of XML), run makeinfo
+--docbook.  If you want to convert from Docbook to Texinfo,
+please see <http://docbook2X.sourceforge.net/>.
+
+If you are a programmer and would like to contribute to the GNU project
+by implementing additional output formats for Texinfo, that would be
+excellent.  But please do not write a separate translator texi2foo for
+your favorite format foo!  That is the hard way to do the job, and makes
+extra work in subsequent maintenance, since the Texinfo language is
+continually being enhanced and updated.  Instead, the best approach is
+modify makeinfo to generate the new format, as it does now for
+Info, plain text, HTML, XML, and DocBook.
+
+TeX works with virtually all printers; Info works with virtually all
+computer terminals; the HTML output works with virtually all web
+browsers.  Thus Texinfo can be used by almost any computer user.
+
+A Texinfo source file is a plain ASCII file containing text and
+@-commands (words preceded by an `@') that tell the
+typesetting and formatting programs what to do.  You may edit a Texinfo
+file with any text editor; but it is especially convenient to use GNU
+Emacs since that editor has a special mode, called Texinfo mode, that
+provides various Texinfo-related features.  (See Texinfo Mode.)
+
+Before writing a Texinfo source file, you should learn about nodes,
+menus, cross references, and the rest, for example by reading this
+manual.
+
+You can use Texinfo to create both online help and printed manuals;
+moreover, Texinfo is freely redistributable.  For these reasons, Texinfo
+is the official documentation format of the GNU project.  More
+information is available at the GNU documentation web page <http://www.gnu.org/doc/>.
+
+From time to time, proposals are made to generate traditional Unix man
+pages from Texinfo source.  This is not likely to ever be supported,
+because man pages have a very strict conventional format.  Merely
+enhancing makeinfo to output troff format would be
+insufficient.  Generating a good man page therefore requires a
+completely different source than the typical Texinfo applications of
+writing a good user tutorial or a good reference manual.  This makes
+generating man pages incompatible with the Texinfo design goal of not
+having to document the same information in different ways for different
+output formats.  You might as well just write the man page directly.
+
+Man pages still have their place, and if you wish to support them, the
+program help2man may be useful; it generates a traditional man
+page from the `--help' output of a program.  In fact, this is
+currently used to generate man pages for the Texinfo programs
+themselves.  It is GNU software written by Brendan O'Dea, available from
+<ftp://ftp.gnu.org/gnu/help2man/>.
+
+

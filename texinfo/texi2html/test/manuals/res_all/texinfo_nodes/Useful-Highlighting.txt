@@ -1,0 +1,59 @@
+Useful Highlighting
+-------------------
+Highlighting Commands are Useful
+--------------------------------
+
+The highlighting commands can be used to extract useful information
+from the file, such as lists of functions or file names.  It is
+possible, for example, to write a program in Emacs Lisp (or a keyboard
+macro) to insert an index entry after every paragraph that contains
+words or phrases marked by a specified command.  You could do this to
+construct an index of functions if you had not already made the
+entries.
+
+The commands serve a variety of purposes:
+
+@code{sample-code}
+Indicate text that is a literal example of a piece of a program.
+
+@kbd{keyboard-characters}
+Indicate keyboard input.
+
+@key{key-name}
+Indicate the conventional name for a key on a keyboard.
+
+@samp{text}
+Indicate text that is a literal example of a sequence of characters.
+
+@var{metasyntactic-variable}
+Indicate a metasyntactic variable.
+
+@env{environment-variable}
+Indicate an environment variable.
+
+@file{file-name}
+Indicate the name of a file.
+
+@command{command-name}
+Indicate the name of a command.
+
+@option{option}
+Indicate a command-line option.
+
+@dfn{term}
+Indicate the introductory or defining use of a term.
+
+@cite{reference}
+Indicate the name of a book.
+
+@acronym{acronym}
+Indicate an acronym.
+
+@url{uniform-resource-locator}
+Indicate a uniform resource locator for the World Wide Web.
+
+@email{email-address[, displayed-text]}
+Indicate an electronic mail address.
+
+
+

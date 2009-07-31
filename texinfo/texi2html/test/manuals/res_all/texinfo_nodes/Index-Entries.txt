@@ -1,0 +1,22 @@
+12.1 Making Index Entries
+=========================
+
+When you are making index entries, it is good practice to think of the
+different ways people may look for something.  Different people
+do not think of the same words when they look something up.  A
+helpful index will have items indexed under all the different words
+that people may use.  For example, one reader may think it obvious that
+the two-letter names for indices should be listed under "Indices,
+two-letter names", since the word "Index" is the general concept.
+But another reader may remember the specific concept of two-letter
+names and search for the entry listed as "Two letter names for
+indices".  A good index will have both entries and will help both
+readers.
+
+Like typesetting, the construction of an index is a highly skilled,
+professional art, the subtleties of which are not appreciated until you
+need to do it yourself.
+
+See Printing Indices & Menus, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+

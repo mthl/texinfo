@@ -1,0 +1,32 @@
+15 Definition Commands
+**********************
+
+The @deffn command and the other definition commands
+enable you to describe functions, variables, macros, commands, user
+options, special forms and other such artifacts in a uniform
+format.
+
+In the Info file, a definition causes the entity
+category--`Function', `Variable', or whatever--to appear at the
+beginning of the first line of the definition, followed by the
+entity's name and arguments.  In the printed manual, the command
+causes TeX to print the entity's name and its arguments on the left
+margin and print the category next to the right margin.  In both
+output formats, the body of the definition is indented.  Also, the
+name of the entity is entered into the appropriate index:
+@deffn enters the name into the index of functions,
+@defvr enters it into the index of variables, and so
+on.
+
+A manual need not and should not contain more than one definition for
+a given name.  An appendix containing a summary should use
+@table rather than the definition commands.
+
+* Def Cmd Template::            How to structure a description using a
+                                  definition command.
+* Optional Arguments::          How to handle optional and repeated arguments.
+* deffnx::                      How to group two or more `first' lines.
+* Def Cmds in Detail::          All the definition commands.
+* Def Cmd Conventions::         Conventions for writing definitions.
+* Sample Function Definition::  
+

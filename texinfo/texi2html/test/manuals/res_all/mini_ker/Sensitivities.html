@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 4.1 Automatic sensitivity computation</title>
+
+<meta name="description" content="Miniker 102 manual: 4.1 Automatic sensitivity computation">
+<meta name="keywords" content="Miniker 102 manual: 4.1 Automatic sensitivity computation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Dynamic-system-analysis.html#Dynamic-system-analysis" rel="up" title="4. Dynamic analysis of systems in Miniker">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Dynamic-system-analysis.html#Dynamic-system-analysis" rel="previous" title="4. Dynamic analysis of systems in Miniker">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Sensitivities"></a>
+<ul class="toc"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="Dynamic-system-analysis.html#Dynamic-system-analysis">4. Dynamic analysis of systems in Miniker</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Dynamic-system-analysis.html#Dynamic-system-analysis" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sensitivity-to-a-parameter" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Automatic-sensitivity-computation"></a>
+<h2 class="section"> 4.1 Automatic sensitivity computation </h2>
+<ul class="toc">
+<li> <a href="#Sensitivity-to-a-parameter">4.1.1 Sensitivity to a parameter</a> </li>
+<li> <a href="#Advance-matrix-sensitivity">4.1.2 Advance matrix sensitivity</a> </li>
+</ul>
+
+<a name="index-sensitivities"></a>
+
+<p>An obvious advantage of having acces to the Jacobian matrices along the
+system trajectory concerns automatic sensitivity analyses, as either:
+</p><ul>
+<li> the sensitivity of all variables to perturbation in the initial condition
+      of one state variable;
+</li><li> the same sensitivities to an initial pulse (or step) on a transfer;
+</li><li> the same sensitivities to a series of pulses (or steps) on a transfer;
+</li><li> the same for a change in a parameter, eventually during the run;
+</li><li> the sensitivity of the matrix of advance in state space to a change
+ in a parameter.
+</li></ul>
+
+<p>This is declared in Zinit as:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">! -------------
+! Sensitivities
+! -------------
+Sensy_to_var
+&lt; var: eta_pray, pert: INIT;
+  var: eta_pred, pert: INIT;
+&gt;;
+</pre></td></tr></table>
+
+<p>Each variable at origin of a perturbation is declared as <code>var:</code>,
+and the type of perturbation in <code>pert:</code>. Here, INIT conditions are
+only allowed because the two variables are states variables. For transfers,
+<code>pert: pulse</code> corresponds to an initial pulse, <code>pert: step_resp</code>
+and  <code>pert: step_eff</code> to initial steps, the difference between 
+<code>_resp</code> (response form)
+and <code>_eff</code> (effect form) concerns the 
+diagonal only of the sensitivity matrix
+(see Feedback gains in non-linear models).
+</p>
+<p>Non initial perturbation can also be asked for:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  Sensy_to_var
+  &lt;
+!*     var: eta_courant_L, pert: init at 100;
+!*     var: ff_T_czcx,     pert: pulse at 100 every 20;
+!*     var: ff_Psi_Tczcx,  pert: step_eff;
+!*     var: ff_Psi_Tczcx,  pert: step_Resp at 10 every 100;
+! *** premiers tests identiques a lorhcl.ref
+    var: ff_courant_L , pert: step_eff;
+    var: ff_T_czcx    , pert: step_eff;
+    var: ff_Psi_Tczcx , pert: step_eff;
+    var: ff_Psi_Tsz   , pert: pulse at 100 every 50;
+  &gt;;
+</pre></td></tr></table>
+
+<p>In this example taken from &lsquo;<tt>lorhcl</tt>&rsquo;, a sensitivity can increase so as to
+trespass the Fortran capacity, so that each  sensitivity vector (matrix column)
+can be reset at some time-increment <code>at III every JJJ;</code>
+</p>
+<p>It is noteworthy that these sensitivity analyses are not based
+on difference between two runs with different initial states or
+parameter values, but on the formal derivatives of the model. This method 
+is not only numerically robust, but is also rigorously funded as based on 
+the TLS of the model<a name="DOCF5" href="#FOOT5">(5)</a>.
+</p>
+<p>If the <code>dimetaphi</code> sequence is built by the users, he should declare
+the number of perturbing variables as <code>nxp=</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">      parameter (nxp=np,nyp=0,nzp=0);
+</pre></td></tr></table>
+<p>here, all state variables are considered as perturbing variables.
+</p>
+<a name="index-sensitivity_002c-output"></a>
+<a name="index-output_002c-sensitivity"></a>
+<a name="index-sens_002edata"></a>
+<a name="index-sigma_002edata"></a>
+
+<p>The sensitivity vectors are output in the result files &lsquo;<tt>sens.data</tt>&rsquo; for 
+cells and &lsquo;<tt>sigma.data</tt>&rsquo; for transfers. In those files the first column
+corresponds again with time, and the other columns are relative sensitivities of the cell
+states (in &lsquo;<tt>sens.data</tt>&rsquo;) and transfers (in &lsquo;<tt>sigma.data</tt>&rsquo;)
+with respect to the initial value of the perturbed state. 
+</p>
+<p>In our predator-prey example, the second column of  &lsquo;<tt>sens.data</tt>&rsquo; will contain
+the derivative of       &#x03B7;1(t) with respect to       &#x03B7;1(t = 0).
+Drawing the
+second column of &lsquo;<tt>sens.data</tt>&rsquo; against the first one
+gives the time evolution of the sensitivity of <code>eta-pred</code>
+to a change in the initial value of <code>eta-pray</code>. One can check
+in that it is set to 1 at       t = 0:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray         3        eta_pred         5       
+# time \\  of: eta_pray     eta_pred     eta_pray     eta_pred    
+  0.00000E+00  1.00000E+00  0.00000E+00  0.00000E+00  1.00000E+00
+  1.00000E-02  9.90868E-01  1.11905E-02 -1.26414E-02  9.98859E-01
+</pre></td></tr></table>
+<p>The two last columns are the state sensitivity to a change in initial conditions
+of the number of predators.
+</p>
+<p>In the same way, the <var>j+1</var>th column of &lsquo;<tt>sigma.data</tt>&rsquo; will be the
+derivative of       &#x03D5;j(t) with respect to       &#x03B7;i(t = 0)
+. Here:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray     eta_pred    
+# time \\  of: ff_interact  ff_interact 
+  0.00000E+00  1.60683E+00  8.47076E-01
+  1.00000E-02  1.59980E+00  8.18164E-01
+</pre></td></tr></table>
+
+<p>the unique transfer variable gives rise to two sensitivity columns. 
+</p>
+<p>Sensitivity studies are usefull to assess the
+predictability properties of the corresponding system.
+</p>
+
+
+
+<hr size="2">
+<a name="Sensitivity-to-a-parameter"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Sensitivities" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advance-matrix-sensitivity" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Sensitivity-to-a-parameter-1"></a>
+<h3 class="subsection"> 4.1.1 Sensitivity to a parameter </h3>
+
+<p>A forward sensitivity to a parameter will be computed when specified as
+described in <a href="Parameters.html#Parameters">Parameters</a>. For example, suppose that
+the sensitivity to an initial change in the <code>apar</code> parameter of
+the predator model is of interest. 
+</p>
+<p>The sensitivity calculs is turned on as a forward
+parameter specified on the <code>Free_parameter</code> list:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [fwd: apar, cpar];
+</pre></td></tr></table>
+
+<p>The result are in &lsquo;<tt>sensp.data</tt>&rsquo; for cells and &lsquo;<tt>sigmap.data</tt>&rsquo;
+for transfers.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
+# time \\  of: eta_courant_ eta_T_czcx   eta_T_sz     eta_courant_ eta_T
+  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.000
+  2.00000E-03 -4.77172E-03 -3.99170E-05  3.55971E-05 -9.94770E-05 -1.004
+</pre></td></tr></table>
+<p>In the above example from &lsquo;<tt>lorhcl</tt>&rsquo; sensitivity of the three states with respect
+to an initial change in two parameters are independantly given (first line also numbers
+the column to easy gnuplot using).
+</p>
+<hr size="2">
+<a name="Advance-matrix-sensitivity"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Sensitivity-to-a-parameter" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Adjoint-model-and-optimisation.html#Adjoint-model-and-optimisation" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Advance-matrix-sensitivity-1"></a>
+<h3 class="subsection"> 4.1.2 Advance matrix sensitivity </h3>
+
+
+<p>It is possible to look at the sensitivity of the matrix of advance in 
+states space (the matrix <code>aspha</code>) with regard to a parameter. 
+The parameter must be accounted for in the parameter number and be in the 
+parameter list, flagged as the matrix <code>mx</code> parameter, like in
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [mx: apar], cpar;
+</pre></td></tr></table>
+
+<a name="index-d_005fpi_005faspha_0028_002e_002c_002e_0029"></a>
+
+<p>This feature is associated with a selecting flag, &lsquo;<samp>dPi_aspha</samp>&rsquo;. One gets
+the result in the matrix <code>d_pi_aspha(.,.)</code> of dimension 
+(<code>np</code>,<code>np</code>).
+</p>
+<p>This matrix may be used to compute other quantities, for example
+it may be used to compute the sensitivity of the eigenvalues of
+the state-advance matrix with regard to the <code>[fwd]</code> parameter.
+These additional computations have to be programmed by the user in 
+&lsquo;<tt>zsteer</tt>&rsquo; with matrices declared and initialized in 
+&lsquo;<tt>zinit</tt>&rsquo;. An example is given in the example &lsquo;<tt>lorhcl</tt>&rsquo;
+provided with the Miniker installation files, following a method proposed
+by Stephane Blanco.
+</p>
+<div class="footnote">
+<hr>
+<h3>Footnotes</h3>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<p>For a short introduction to automatic 
+sensitivity analysis, see the document:<br>
+<a href="http://lmd.jussieu.fr/zoom/doc/sensibilite.ps">http://lmd.jussieu.fr/zoom/doc/sensibilite.ps</a>, in French,
+or ask for the more complete research document to a member of the TEF-ZOOM
+collaboration
+</p></div>
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

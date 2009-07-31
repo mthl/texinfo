@@ -1,0 +1,225 @@
+11 Controlling the Display
+**************************
+
+  Since only part of a large buffer fits in the window, XEmacs tries to show
+the part that is likely to be interesting.  The display control commands
+allow you to specify which part of the text you want to see.
+
+C-l
+Clear frame and redisplay, scrolling the selected window to center
+point vertically within it (recenter).
+C-v
+pgdn
+next
+Scroll forward (a windowful or a specified number of lines) (scroll-up).
+On most X keyboards, you can get this functionality using the key
+labelled `Page Down', which generates either next or pgdn.
+M-v
+pgup
+prior
+Scroll backward (scroll-down).  On most X keyboards, you can get
+this functionality using the key labelled `Page Up', which
+generates either prior or pgup.
+arg C-l
+Scroll so point is on line arg (recenter).
+C-x <
+C-pgdn
+C-next
+Scroll text in current window to the left (scroll-left).
+C-x >
+C-pgup
+C-prior
+Scroll to the right (scroll-right).
+C-x $
+Make deeply indented lines invisible (set-selective-display).
+
+* Scrolling::	           Moving text up and down in a window.
+* Horizontal Scrolling::   Moving text left and right in a window.
+* Selective Display::      Hiding lines with lots of indentation.
+* Display Vars::           Information on variables for customizing display.
+
+11.1 Scrolling
+==============
+
+  If a buffer contains text that is too large to fit entirely within the
+window that is displaying the buffer, XEmacs shows a contiguous section of
+the text.  The section shown always contains point.
+
+  Scrolling means moving text up or down in the window so that
+different parts of the text are visible.  Scrolling forward means that text
+moves up, and new text appears at the bottom.  Scrolling backward moves
+text down and new text appears at the top.
+
+  Scrolling happens automatically if you move point past the bottom or top
+of the window.  You can also explicitly request scrolling with the commands
+in this section.
+
+C-l
+Clear frame and redisplay, scrolling the selected window to center
+point vertically within it (recenter).
+C-v
+pgdn
+next
+Scroll forward (a windowful or a specified number of lines) (scroll-up).
+M-v
+pgup
+prior
+Scroll backward (scroll-down).
+arg C-l
+Scroll so point is on line arg (recenter).
+
+  The most basic scrolling command is C-l (recenter) with no
+argument.  It clears the entire frame and redisplays all windows.  In
+addition, it scrolls the selected window so that point is halfway down
+from the top of the window.
+
+  The scrolling commands C-v and M-v let you move all the text
+in the window up or down a few lines.  C-v (scroll-up) with an
+argument shows you that many more lines at the bottom of the window, moving
+the text and point up together as C-l might.  C-v with a
+negative argument shows you more lines at the top of the window.
+Meta-v (scroll-down) is like C-v, but moves in the
+opposite direction.
+
+  To read the buffer a windowful at a time, use C-v with no
+argument.  C-v takes the last two lines at the bottom of the
+window and puts them at the top, followed by nearly a whole windowful of
+lines not previously visible.  Point moves to the new top of the window
+if it was in the text scrolled off the top.  M-v with no argument
+moves backward with similar overlap.  The number of lines of overlap
+across a C-v or M-v is controlled by the variable
+next-screen-context-lines; by default, it is two.
+
+  Another way to scroll is using C-l with a numeric argument.
+C-l does not clear the frame when given an argument; it only
+scrolls the selected window.  With a positive argument n, C-l
+repositions text to put point n lines down from the top.  An
+argument of zero puts point on the very top line.  Point does not move
+with respect to the text; rather, the text and point move rigidly on the
+frame.  C-l with a negative argument puts point that many lines
+from the bottom of the window.  For example, C-u - 1 C-l puts
+point on the bottom line, and C-u - 5 C-l puts it five lines from
+the bottom.  Just C-u as argument, as in C-u C-l, scrolls
+point to the center of the frame.
+
+  Scrolling happens automatically if point has moved out of the visible
+portion of the text when it is time to display.  Usually scrolling is
+done  to put point vertically centered within the window.  However, if
+the variable scroll-step has a non-zero value, an attempt is made to
+scroll the buffer by that many lines; if that is enough to bring point back
+into visibility, that is what happens.
+
+  Scrolling happens automatically if point has moved out of the visible
+portion of the text when it is time to display.  Usually scrolling is
+done  to put point vertically centered within the window.  However, if
+the variable scroll-step has a non-zero value, an attempt is made to
+scroll the buffer by that many lines; if that is enough to bring point back
+into visibility, that is what happens.
+
+  If you set scroll-step to a small value because you want to use 
+arrow keys to scroll the screen without recentering, the redisplay
+preemption will likely make XEmacs keep recentering the screen when
+scrolling fast, regardless of scroll-step.  To prevent this, set
+scroll-conservatively to a small value, which will have the
+result of overriding the redisplay preemption.
+
+11.2 Horizontal Scrolling
+=========================
+
+C-x <
+Scroll text in current window to the left (scroll-left).
+C-x >
+Scroll to the right (scroll-right).
+
+  The text in a window can also be scrolled horizontally.  This means that
+each line of text is shifted sideways in the window, and one or more
+characters at the beginning of each line are not displayed at all.  When a
+window has been scrolled horizontally in this way, text lines are truncated
+rather than continued (see Continuation Lines), with a `$' appearing
+in the first column when there is text truncated to the left, and in the
+last column when there is text truncated to the right.
+
+  The command C-x < (scroll-left) scrolls the selected
+window to the left by n columns with argument n.  With no
+argument, it scrolls by almost the full width of the window (two columns
+less, to be precise).  C-x > (scroll-right) scrolls
+similarly to the right.  The window cannot be scrolled any farther to
+the right once it is displaying normally (with each line starting at the
+window's left margin); attempting to do so has no effect.
+
+11.3 Selective Display
+======================
+
+  XEmacs can hide lines indented more than a certain number
+of columns (you specify how many columns).  This allows you  to get an
+overview of a part of a program.
+
+  To hide lines, type C-x $ (set-selective-display) with a
+numeric argument n.  (See Arguments, for information on giving
+the argument.)  Lines with at least n columns of indentation
+disappear from the screen.  The only indication of their presence are
+three dots (`...'), which appear at the end of each visible
+line that is followed by one or more invisible ones.
+
+  The invisible lines are still present in the buffer, and most editing
+commands see them as usual, so it is very easy to put point in the middle
+of invisible text.  When this happens, the cursor appears at the end of the
+previous line, after the three dots.  If point is at the end of the visible
+line, before the newline that ends it, the cursor appears before the three
+dots.
+
+  The commands C-n and C-p move across the invisible lines
+as if they were not there.
+
+  To make everything visible again, type C-x $ with no argument.
+
+11.4 Variables Controlling Display
+==================================
+
+  This section contains information for customization only.  Beginning
+users should skip it.
+
+  When you reenter XEmacs after suspending, XEmacs normally clears the
+screen and redraws the entire display.  On some terminals with more than
+one page of memory, it is possible to arrange the termcap entry so that
+the `ti' and `te' strings (output to the terminal when XEmacs
+is entered and exited, respectively) switch between pages of memory so
+as to use one page for XEmacs and another page for other output.  In that
+case, you might want to set the variable no-redraw-on-reenter to
+non-nil so that XEmacs will assume, when resumed, that the screen
+page it is using still contains what XEmacs last wrote there.
+
+  The variable echo-keystrokes controls the echoing of multi-character
+keys; its value is the number of seconds of pause required to cause echoing
+to start, or zero, meaning don't echo at all.  See Echo Area.
+
+  If the variable ctl-arrow is nil, control characters in the
+buffer are displayed with octal escape sequences, all except newline and
+tab.  If its value is t, then control characters will be printed 
+with an up-arrow, for example ^A.  
+
+If its value is not t and not nil, then characters whose
+code is greater than 160 (that is, the space character (32) with its
+high bit set) will be assumed to be printable, and will be displayed
+without alteration.  This is the default when running under X Windows,
+since XEmacs assumes an ISO/8859-1 character set (also known as
+"Latin1").  The ctl-arrow variable may also be set to an
+integer, in which case all characters whose codes are greater than or
+equal to that value will be assumed to be printable.
+
+Altering the value of ctl-arrow makes it local to the current
+buffer; until that time, the default value is in effect.  See Locals.
+
+  Normally, a tab character in the buffer is displayed as whitespace which
+extends to the next display tab stop position, and display tab stops come
+at intervals equal to eight spaces.  The number of spaces per tab is
+controlled by the variable tab-width, which is made local by
+changing it, just like ctl-arrow.  Note that how the tab character
+in the buffer is displayed has nothing to do with the definition of
+<TAB> as a command.
+
+  If you set the variable selective-display-ellipses to nil,
+the three dots at the end of a line that precedes invisible
+lines do not appear.  There is no visible indication of the invisible lines.
+This variable becomes local automatically when set.
+

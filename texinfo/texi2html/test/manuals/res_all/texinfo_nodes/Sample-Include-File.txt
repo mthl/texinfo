@@ -1,0 +1,57 @@
+D.4 Sample File with @include
+=============================
+
+Here is an example of a complete outer Texinfo file with @include files
+within it before running texinfo-multiple-files-update, which
+would insert a main or master menu:
+
+\input texinfo @c -*-texinfo-*-
+@setfilename  include-example.info
+@settitle Include Example
+
+@setchapternewpage odd
+@titlepage
+@sp 12
+@center @titlefont{Include Example}
+@sp 2
+@center by Whom Ever
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+@end titlepage
+
+@ifinfo
+@node Top, First, , (dir)
+@top Master Menu
+@end ifinfo
+
+@include foo.texinfo
+@include bar.texinfo
+@include concept-index.texinfo
+
+@summarycontents
+@contents
+
+@bye
+
+An included file, such as `foo.texinfo', might look like this:
+
+@node First, Second, , Top
+@chapter First Chapter
+
+Contents of first chapter ...
+
+The full contents of `concept-index.texinfo' might be as simple as this:
+
+@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+
+The outer Texinfo source file for The GNU Emacs Lisp Reference
+Manual is named `elisp.texi'.  This outer file contains a master
+menu with 417 entries and a list of 41 @include
+files.
+
+

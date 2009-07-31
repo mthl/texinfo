@@ -1,0 +1,30 @@
+20.1.6 The texinfo-format... Commands
+-------------------------------------
+
+In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
+file with the texinfo-format-region command.  This formats the
+current region and displays the formatted text in a temporary buffer
+called `*Info Region*'.
+
+Similarly, you can format a buffer with the
+texinfo-format-buffer command.  This command creates a new
+buffer and generates the Info file in it.  Typing C-x C-s will
+save the Info file under the name specified by the
+@setfilename line which must be near the beginning of the
+Texinfo file.
+
+C-c C-e C-r
+texinfo-format-region
+Format the current region for Info.
+
+C-c C-e C-b
+texinfo-format-buffer
+Format the current buffer for Info.
+
+The texinfo-format-region and texinfo-format-buffer
+commands provide you with some error checking, and other functions can
+provide you with further help in finding formatting errors.  These
+procedures are described in an appendix; see Catching Mistakes.
+However, the makeinfo program is often faster and
+provides better error checking (see makeinfo in Emacs).
+

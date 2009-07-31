@@ -1,0 +1,82 @@
+19.9 Preparing for TeX
+======================
+
+TeX needs to know where to find the `texinfo.tex' file that the
+`\input texinfo' command on the first line reads.  The
+`texinfo.tex' file tells TeX how to handle @-commands; it is
+included in all standard GNU distributions.
+
+
+Usually, the installer has put the `texinfo.tex' file in the
+default directory that contains TeX macros when GNU Texinfo, Emacs or
+other GNU software is installed.  In this case, TeX will find the
+file and you do not need to do anything special.  If this has not been
+done, you can put `texinfo.tex' in the current directory when you
+run TeX, and TeX will find it there.
+
+Also, you should install `epsf.tex', if it is not already installed
+from another distribution.  More details are at the end of the description
+of the @image command (see Images).
+
+Likewise for `pdfcolor.tex', if it is not already installed and you
+use pdftex.
+
+Optionally, you may create an additional `texinfo.cnf', and install
+it as well.  This file is read by TeX when the @setfilename
+command is executed (see @setfilename).  You can put any
+commands you like there, according to local site-wide conventions.  They
+will be read by TeX when processing any Texinfo document.  For
+example, if `texinfo.cnf' contains the line `@afourpaper'
+(see A4 Paper), then all Texinfo documents will be processed with
+that page size in effect.  If you have nothing to put in
+`texinfo.cnf', you do not need to create it.
+
+If neither of the above locations for these system files suffice for
+you, you can specify the directories explicitly.  For
+`texinfo.tex', you can do this by writing the complete path for the
+file after the \input command.  Another way, that works for both
+`texinfo.tex' and `texinfo.cnf' (and any other file TeX
+might read), is to set the TEXINPUTS environment variable in your
+`.cshrc' or `.profile' file.
+
+Which you use of `.cshrc' or `.profile' depends on
+whether you use a Bourne shell-compatible (sh, bash,
+ksh, ...) or C shell-compatible (csh, tcsh)
+command interpreter.  The latter read the `.cshrc' file for
+initialization information, and the former read `.profile'.
+
+In a `.cshrc' file, you could use the following csh command
+sequence:
+
+setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+
+In a `.profile' file, you could use the following sh command
+sequence:
+
+TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+export TEXINPUTS
+
+On MS-DOS/MS-Windows, you would say it like this(10):
+
+set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+
+It is customary for DOS/Windows users to put such commands in the
+`autoexec.bat' file, or in the Windows Registry.
+
+These settings would cause TeX to look for `\input' file first
+in the current directory, indicated by the `.', then in a
+hypothetical user's `me/mylib' directory, and finally in a system
+directory `/usr/lib/tex/macros'.
+
+Finally, you may wish to dump a `.fmt' file (see (web2c)Memory dumps section `Memory dumps' in Web2c) so that TeX can load Texinfo faster.  (The
+disadvantage is that then updating `texinfo.tex' requires
+redumping.)  You can do this by running this command, assuming
+`epsf.tex' is findable by TeX:
+
+initex texinfo @dump
+
+(dump is a TeX primitive.)  Then, move `texinfo.fmt' to
+wherever your .fmt files are found; typically, this will be in the
+subdirectory `web2c' of your TeX installation.
+
+

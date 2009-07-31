@@ -1,0 +1,14 @@
+13.4.1 @dots{} (...) and @enddots{} (...)
+-----------------------------------------
+
+Use the @dots{} command to generate an ellipsis, which is
+three dots in a row, appropriately spaced, like this: `...'.  Do
+not simply write three periods in the input file; that would work for
+the Info file output, but would produce the wrong amount of space
+between the periods in the printed manual.
+
+Similarly, the @enddots{} command generates an
+end-of-sentence ellipsis (four dots) ...
+
+
+

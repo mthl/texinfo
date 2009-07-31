@@ -1,0 +1,14 @@
+9.1.12 @cite{reference}
+-----------------------
+
+Use the @cite command for the name of a book that lacks a
+companion Info file.  The command produces italics in the printed
+manual, and quotation marks in the Info file.
+
+If a book is written in Texinfo, it is better to use a cross reference
+command since a reader can easily follow such a reference in Info.
+See @xref.
+
+
+
+

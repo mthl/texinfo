@@ -1,0 +1,32 @@
+E.2 Specifying the Type of Heading
+==================================
+
+TeX does not begin to generate page headings for a standard Texinfo
+file until it reaches the @end titlepage command.  Thus, the
+title and copyright pages are not numbered.  The @end
+titlepage command causes TeX to begin to generate page headings
+according to a standard format specified by the
+@setchapternewpage command that precedes the
+@titlepage section.
+
+There are four possibilities:
+
+No @setchapternewpage command
+Cause TeX to specify the single-sided heading format, with chapters
+on new pages. This is the same as @setchapternewpage on.
+
+@setchapternewpage on
+Specify the single-sided heading format, with chapters on new pages.
+
+@setchapternewpage off
+Cause TeX to start a new chapter on the same page as the last page of
+the preceding chapter, after skipping some vertical whitespace.  Also
+cause TeX to typeset for single-sided printing.  (You can override
+the headers format with the @headings double command; see
+The @headings Command.)
+
+@setchapternewpage odd
+Specify the double-sided heading format, with chapters on new pages.
+
+Texinfo lacks an @setchapternewpage even command.
+

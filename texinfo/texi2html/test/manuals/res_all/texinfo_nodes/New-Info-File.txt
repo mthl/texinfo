@@ -1,0 +1,23 @@
+20.2.2 Listing a New Info File
+------------------------------
+
+To add a new Info file to your system, you must write a menu entry to
+add to the menu in the `dir' file in the `info' directory.
+For example, if you were adding documentation for GDB, you would write
+the following new entry:
+
+* GDB: (gdb).           The source-level C debugger.
+
+The first part of the menu entry is the menu entry name, followed by a
+colon.  The second part is the name of the Info file, in parentheses,
+followed by a period.  The third part is the description.
+
+The name of an Info file often has a `.info' extension.  Thus, the
+Info file for GDB might be called either `gdb' or `gdb.info'.
+The Info reader programs automatically try the file name both with and
+without `.info'(11); so it is better to avoid
+clutter and not to write `.info' explicitly in the menu entry.  For
+example, the GDB menu entry should use just `gdb' for the file
+name, not `gdb.info'.
+
+

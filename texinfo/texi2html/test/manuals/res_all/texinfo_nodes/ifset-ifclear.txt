@@ -1,0 +1,59 @@
+16.4.2 @ifset and @ifclear
+--------------------------
+
+When a flag is set, the Texinfo formatting commands format text
+between subsequent pairs of @ifset flag and @end
+ifset commands.  When the flag is cleared, the Texinfo formatting
+commands do not format the text.  @ifclear operates
+analogously.
+
+Write the conditionally formatted text between @ifset flag
+and @end ifset commands, like this:
+
+@ifset flag
+conditional-text
+@end ifset
+
+For example, you can create one document that has two variants, such as
+a manual for a `large' and `small' model:
+
+You can use this machine to dig up shrubs
+without hurting them.
+
+@set large
+
+@ifset large
+It can also dig up fully grown trees.
+@end ifset
+
+Remember to replant promptly ...
+
+In the example, the formatting commands will format the text between
+@ifset large and @end ifset because the large
+flag is set.
+
+When flag is cleared, the Texinfo formatting commands do
+not format the text between @ifset flag and
+@end ifset; that text is ignored and does not appear in either
+printed or Info output.
+
+For example, if you clear the flag of the preceding example by writing
+an @clear large command after the @set large command
+(but before the conditional text), then the Texinfo formatting commands
+ignore the text between the @ifset large and @end ifset
+commands.  In the formatted output, that text does not appear; in both
+printed and Info output, you see only the lines that say, "You can use
+this machine to dig up shrubs without hurting them.  Remember to replant
+promptly ...".
+
+If a flag is cleared with an @clear flag command, then
+the formatting commands format text between subsequent pairs of
+@ifclear and @end ifclear commands.  But if the flag
+is set with @set flag, then the formatting commands do
+not format text between an @ifclear and an @end
+ifclear command; rather, they ignore that text.  An @ifclear
+command looks like this:
+
+@ifclear flag
+
+

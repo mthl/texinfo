@@ -1,0 +1,17 @@
+9.1.14 @url{uniform-resource-locator}
+-------------------------------------
+
+Use the @url command to indicate a uniform resource locator on
+the World Wide Web.  This is analogous to @file, @var,
+etc., and is purely for markup purposes.  It does not produce a link you
+can follow in HTML output (use the @uref command for that,
+see @uref).  It is useful for url's which do
+not actually exist.  For example:
+
+For example, the url might be @url{http://example.org/path}.
+
+which produces:
+
+For example, the url might be <http://example.org/path>.
+
+

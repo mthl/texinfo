@@ -1,0 +1,13 @@
+3.3 Document Permissions
+========================
+
+The copyright notice and copying permissions for a document need to
+appear in several places in the various Texinfo output formats.
+Therefore, Texinfo provides a command (@copying) to declare
+this text once, and another command (@insertcopying) to
+insert the text at appropriate points.
+
+* copying::                 Declare the document's copying permissions.
+* insertcopying::           Where to insert the permissions.
+
+

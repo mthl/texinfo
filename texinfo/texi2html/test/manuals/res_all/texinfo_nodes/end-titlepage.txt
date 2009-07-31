@@ -1,0 +1,33 @@
+3.4.5 Heading Generation
+------------------------
+
+The @end titlepage command must be written on a line by itself.
+It not only marks the end of the title and copyright pages, but also
+causes TeX to start generating page headings and page numbers.
+
+To repeat what is said elsewhere,  Texinfo has two standard page heading
+formats, one for documents which are printed on one side of each sheet of paper
+(single-sided printing), and the other for documents which are printed on both
+sides of each sheet (double-sided printing).
+You can specify these formats in different ways:
+
+* The conventional way is to write an @setchapternewpage command
+before the title page commands, and then have the @end
+titlepage command start generating page headings in the manner desired.
+(See setchapternewpage.)
+
+* Alternatively, you can use the @headings command to prevent page
+headings from being generated or to start them for either single or
+double-sided printing.  (Write an @headings command immediately
+after the @end titlepage command.  See The @headings Command, for more information.)
+
+* Or, you may specify your own page heading and footing format.
+See Page Headings, for detailed
+information about page headings and footings.
+
+Most documents are formatted with the standard single-sided or
+double-sided format, using @setchapternewpage odd for
+double-sided printing and no @setchapternewpage command for
+single-sided printing.
+
+

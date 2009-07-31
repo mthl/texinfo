@@ -1,0 +1,49 @@
+7.5 Referring to Other Info Files
+=================================
+
+You can create a menu entry that enables a reader in Info to go to a
+node in another Info file by writing the file name in parentheses just
+before the node name.  In this case, you should use the three-part menu
+entry format, which saves the reader from having to type the file
+name.
+
+The format looks like this:
+
+@menu
+* first-entry-name:(filename)nodename.     description
+* second-entry-name:(filename)second-node. description
+@end menu
+
+For example, to refer directly to the `Outlining' and
+`Rebinding' nodes in the Emacs Manual, you would write a
+menu like this:
+
+@menu
+* Outlining: (emacs)Outline Mode. The major mode for
+                                  editing outlines.
+* Rebinding: (emacs)Rebinding.    How to redefine the
+                                  meaning of a key.
+@end menu
+
+If you do not list the node name, but only name the file, then Info
+presumes that you are referring to the `Top' node.
+
+The `dir' file that contains the main menu for Info has menu
+entries that list only file names.  These take you directly to the `Top'
+nodes of each Info document.  (See Installing an Info File.)
+
+For example:
+
+* Info: (info).         Documentation browsing system.
+* Emacs: (emacs).       The extensible, self-documenting
+                        text editor.
+
+(The `dir' top level directory for the Info system is an Info file,
+not a Texinfo file, but a menu entry looks the same in both types of
+file.)
+
+The GNU Emacs Texinfo mode menu updating commands only work with nodes
+within the current buffer, so you cannot use them to create menus that
+refer to other files.  You must write such menus by hand.
+
+

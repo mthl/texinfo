@@ -1,0 +1,29 @@
+4 Reporting bugs
+****************
+
+
+To report bugs or suggest enhancements for GNU Hello, please
+send electronic mail to <mailto:bug-hello@gnu.org>.
+
+For bug reports, please include enough information for the maintainers
+to reproduce the problem.  Generally speaking, that means:
+
+* The version numbers of Hello (which you can find by running
+      `hello --version') and any other program(s) or
+      manual(s) involved.
+* Hardware and operating system names and versions.
+* The contents of any input files necessary to reproduce the bug.
+* The expected behavior and/or output.
+* A description of the problem and samples of any erroneous output.
+* Options you gave to configure other than specifying
+      installation directories.
+* Anything else that you think would be helpful.
+
+When in doubt whether something is needed or not, include it.  It's
+better to include too much than to leave out something important.
+
+Patches are welcome; if possible, please make them with `diff
+-c' (see (diff)Top section `Overview' in Comparing and Merging Files) and
+include `ChangeLog' entries (see (emacs)Change Log section `Change Log' in The GNU Emacs Manual).  Please follow the existing coding style.
+
+

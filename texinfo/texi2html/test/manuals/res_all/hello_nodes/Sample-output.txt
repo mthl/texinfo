@@ -1,0 +1,19 @@
+2 Sample output
+***************
+
+
+Here are some realistic examples of running GNU Hello.
+
+This is the output of the command `hello':
+
+Hello, world!
+
+This is the output of the command `hello --traditional':
+
+hello, world
+
+This is the output of the command `hello --greeting=hi':
+
+hi
+
+

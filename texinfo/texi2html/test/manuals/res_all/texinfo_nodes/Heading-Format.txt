@@ -1,0 +1,57 @@
+E.1 Standard Heading Formats
+============================
+
+Texinfo provides two standard heading formats, one for manuals printed
+on one side of each sheet of paper, and the other for manuals printed
+on both sides of the paper.
+
+By default, nothing is specified for the footing of a Texinfo file,
+so the footing remains blank.
+
+The standard format for single-sided printing consists of a header
+line in which the left-hand part contains the name of the chapter, the
+central part is blank, and the right-hand part contains the page
+number.
+
+A single-sided page looks like this:
+
+   _______________________
+  |                       |
+  | chapter   page number |
+  |                       |
+  | Start of text ...     |
+  | ...                   |
+  |                       |
+
+
+The standard format for two-sided printing depends on whether the page
+number is even or odd.  By convention, even-numbered pages are on the
+left- and odd-numbered pages are on the right.  (TeX will adjust the
+widths of the left- and right-hand margins.  Usually, widths are
+correct, but during double-sided printing, it is wise to check that
+pages will bind properly--sometimes a printer will produce output in
+which the even-numbered pages have a larger right-hand margin than the
+odd-numbered pages.)
+
+In the standard double-sided format, the left part of the left-hand
+(even-numbered) page contains the page number, the central part is
+blank, and the right part contains the title (specified by the
+@settitle command).  The left part of the right-hand
+(odd-numbered) page contains the name of the chapter, the central part
+is blank, and the right part contains the page number.
+
+Two pages, side by side as in an open book, look like this:
+
+   _______________________     _______________________
+  |                       |   |                       |
+  | page number     title |   | chapter   page number |
+  |                       |   |                       |
+  | Start of text ...     |   | More  text ...        |
+  | ...                   |   | ...                   |
+  |                       |   |                       |
+
+
+The chapter name is preceded by the word "Chapter", the chapter number
+and a colon.  This makes it easier to keep track of where you are in the
+manual.
+

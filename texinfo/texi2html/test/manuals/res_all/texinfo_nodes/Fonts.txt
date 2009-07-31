@@ -1,0 +1,32 @@
+9.2.3 Fonts for Printing, Not Info
+----------------------------------
+
+Texinfo provides four font commands that specify font changes in the
+printed manual but have no effect in the Info file.  @i
+requests italic font (in some versions of TeX, a slanted font
+is used), @b requests bold face, @t requests the
+fixed-width, typewriter-style font used by @code, and @r requests a
+roman font, which is the usual font in which text is printed.  All
+four commands apply to an argument that follows, surrounded by
+braces.
+
+Only the @r command has much use: in example programs, you
+can use the @r command to convert code comments from the
+fixed-width font to a roman font.  This looks better in printed
+output.
+
+For example,
+
+@lisp
+(+ 2 2)    ; @r{Add two plus two.}
+@end lisp
+
+produces
+
+(+ 2 2)    ; Add two plus two.
+
+If possible, you should avoid using the other three font commands.  If
+you need to use one, it probably indicates a gap in the Texinfo
+language.
+
+

@@ -1,0 +1,30 @@
+16.4 @set, @clear, and @value
+=============================
+
+You can direct the Texinfo formatting commands to format or ignore parts
+of a Texinfo file with the @set, @clear, @ifset,
+and @ifclear commands.
+
+Brief descriptions:
+
+@set flag [value]
+Set the variable flag, to the optional value if specifed.
+
+@clear flag
+Undefine the variable flag, whether or not it was previously defined.
+
+@ifset flag
+If flag is set, text through the next @end ifset command
+is formatted.  If flag is clear, text through the following
+@end ifset command is ignored.
+
+@ifclear flag
+If flag is set, text through the next @end ifclear command
+is ignored.  If flag is clear, text through the following
+@end ifclear command is formatted.
+
+* set value::                   Expand a flag variable to a string.
+* ifset ifclear::               Format a region if a flag is set.
+* value Example::               An easy way to update edition information.
+
+

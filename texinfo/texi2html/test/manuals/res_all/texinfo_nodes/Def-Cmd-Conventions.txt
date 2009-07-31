@@ -1,0 +1,10 @@
+15.5 Conventions for Writing Definitions
+========================================
+
+When you write a definition using @deffn, @defun, or
+one of the other definition commands, please take care to use
+arguments that indicate the meaning, as with the count argument
+to the forward-word function.  Also, if the name of an argument
+contains the name of a type, such as integer, take care that the
+argument actually is of that type.
+

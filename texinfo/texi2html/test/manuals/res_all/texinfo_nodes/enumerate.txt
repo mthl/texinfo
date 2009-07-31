@@ -1,0 +1,87 @@
+11.2 @enumerate: Making a Numbered or Lettered List
+===================================================
+
+@enumerate is like @itemize (see @itemize), except that the labels on the items are
+successive integers or letters instead of bullets.
+
+Write the @enumerate command at the beginning of a line.  The
+command does not require an argument, but accepts either a number or a
+letter as an option.  Without an argument, @enumerate starts the
+list with the number `1'.  With a numeric argument, such as
+`3', the command starts the list with that number.  With an upper
+or lower case letter, such as `a' or `A', the command starts
+the list with that letter.
+
+Write the text of the enumerated list in the same way you write an
+itemized list: put @item on a line of its own before the start
+of each paragraph that you want enumerated.  Do not write any other text
+on the line beginning with @item.
+
+You should put a blank line between entries in the list.
+This generally makes it easier to read the Info file.
+
+Here is an example of @enumerate without an argument:
+
+@enumerate
+@item
+Underlying causes.
+
+@item
+Proximate causes.
+@end enumerate
+
+This produces:
+
+1. Underlying causes.
+
+2. Proximate causes.
+
+Here is an example with an argument of 3:
+
+@enumerate 3
+@item
+Predisposing causes.
+
+@item
+Precipitating causes.
+
+@item
+Perpetuating causes.
+@end enumerate
+
+This produces:
+
+3. Predisposing causes.
+
+4. Precipitating causes.
+
+5. Perpetuating causes.
+
+Here is a brief summary of the alternatives.  The summary is constructed
+using @enumerate with an argument of a.
+
+a. @enumerate
+
+Without an argument, produce a numbered list, starting with the number
+1.
+
+b. @enumerate positive-integer
+
+With a (positive) numeric argument, start a numbered list with that
+number.  You can use this to continue a list that you interrupted with
+other text.
+
+c. @enumerate upper-case-letter
+
+With an upper case letter as argument, start a list
+in which each item is marked
+by a letter, beginning with that upper case letter.
+
+d. @enumerate lower-case-letter
+
+With a lower case letter as argument, start a list
+in which each item is marked by
+a letter, beginning with that lower case letter.
+
+You can also nest enumerated lists, as in an outline.
+

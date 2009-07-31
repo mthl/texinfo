@@ -1,0 +1,75 @@
+8.3.4 @xref with Four and Five Arguments
+----------------------------------------
+
+In a cross reference, a fourth argument specifies the name of another
+Info file, different from the file in which the reference appears, and
+a fifth argument specifies its title as a printed manual.
+
+Remember that a comma or period must follow the closing brace of an
+@xref command to terminate the cross reference.  In the
+following examples, a clause follows a terminating comma.
+
+The template is:
+
+@xref{node-name, cross-reference-name, title-or-topic,
+info-file-name, printed-manual-title}.
+
+For example,
+
+@xref{Electrical Effects, Lightning, Thunder and Lightning,
+weather, An Introduction to Meteorology}, for details.
+
+produces
+
+*Note Lightning: (weather)Electrical Effects, for details.
+
+The name of the Info file is enclosed in parentheses and precedes
+the name of the node.
+
+In a printed manual, the reference looks like this:
+
+See section "Thunder and Lightning" in An Introduction to
+Meteorology, for details.
+
+The title of the printed manual is typeset in italics; and the
+reference lacks a page number since TeX cannot know to which page a
+reference refers when that reference is to another manual.
+
+Often, you will leave out the second argument when you use the long
+version of @xref.  In this case, the third argument, the topic
+description, will be used as the cross reference name in Info.
+
+The template looks like this:
+
+@xref{node-name, , title-or-topic, info-file-name,
+printed-manual-title}, for details.
+
+which produces
+
+*Note title-or-topic: (info-file-name)node-name, for details.
+
+and
+
+See section title-or-topic in printed-manual-title, for details.
+
+For example,
+
+@xref{Electrical Effects, , Thunder and Lightning,
+weather, An Introduction to Meteorology}, for details.
+
+produces
+
+*Note Thunder and Lightning: (weather)Electrical Effects,
+for details.
+
+and
+
+See section "Thunder and Lightning" in An Introduction to
+Meteorology, for details.
+
+On rare occasions, you may want to refer to another Info file that
+is within a single printed manual--when multiple Texinfo files are
+incorporated into the same TeX run but make separate Info files.
+In this case, you need to specify only the fourth argument, and not
+the fifth.
+

@@ -1,0 +1,315 @@
+Annexe B Tips and Hints
+***********************
+
+Here are some tips for writing Texinfo documentation:
+
+* Write in the present tense, not in the past or the future.
+
+* Write actively!  For example, write "We recommend that ..." rather
+than "It is recommended that ...".
+
+* Use 70 or 72 as your fill column.  Longer lines are hard to read.
+
+* Include a copyright notice and copying permissions.
+
+Index, Index, Index!
+....................
+
+Write many index entries, in different ways.
+Readers like indices; they are helpful and convenient.
+
+Although it is easiest to write index entries as you write the body of
+the text, some people prefer to write entries afterwards.  In either
+case, write an entry before the paragraph to which it applies.  This
+way, an index entry points to the first page of a paragraph that is
+split across pages.
+
+Here are more hints we have found valuable:
+
+* Write each index entry differently, so each entry refers to a different
+place in the document.
+
+* Write index entries only where a topic is discussed significantly.  For
+example, it is not useful to index "debugging information" in a
+chapter on reporting bugs.  Someone who wants to know about debugging
+information will certainly not find it in that chapter.
+
+* Consistently capitalize the first word of every concept index entry,
+or else consistently use lower case.  Terse entries often call for
+lower case; longer entries for capitalization.  Whichever case
+convention you use, please use one or the other consistently!  Mixing
+the two styles looks bad.
+
+* Always capitalize or use upper case for those words in an index for
+which this is proper, such as names of countries or acronyms.  Always
+use the appropriate case for case-sensitive names, such as those in C or
+Lisp.
+
+* Write the indexing commands that refer to a whole section immediately
+after the section command, and write the indexing commands that refer to
+a paragraph before that paragraph.
+
+In the example that follows, a blank line comes after the index
+entry for "Leaping":
+
+@section The Dog and the Fox
+@cindex Jumping, in general
+@cindex Leaping
+
+@cindex Dog, lazy, jumped over
+@cindex Lazy dog jumped over
+@cindex Fox, jumps over dog
+@cindex Quick fox jumps over dog
+The quick brown fox jumps over the lazy dog.
+
+(Note that the example shows entries for the same concept that are
+written in different ways--`Lazy dog', and `Dog, lazy'--so
+readers can look up the concept in different ways.)
+
+Blank Lines
+...........
+
+* Insert a blank line between a sectioning command and the first following
+sentence or paragraph, or between the indexing commands associated with
+the sectioning command and the first following sentence or paragraph, as
+shown in the tip on indexing.  Otherwise, a formatter may fold title and
+paragraph together.
+
+* Always insert a blank line before an @table command and after an
+@end table command; but never insert a blank line after an
+@table command or before an @end table command.
+
+For example,
+
+Types of fox:
+
+@table @samp
+@item Quick
+Jump over lazy dogs.
+
+@item Brown
+Also jump over lazy dogs.
+@end table
+
+@noindent
+On the other hand, ...
+
+Insert blank lines before and after @itemize ... @end
+itemize and @enumerate ... @end enumerate in the
+same way.
+
+Complete Phrases
+................
+
+Complete phrases are easier to read than ...
+
+* Write entries in an itemized list as complete sentences; or at least, as
+complete phrases.  Incomplete expressions ... awkward ... like
+this.
+
+* Write the prefatory sentence or phrase for a multi-item list or table as
+a complete expression.  Do not write "You can set:"; instead, write
+"You can set these variables:".  The former expression sounds cut off.
+
+Editions, Dates and Versions
+............................
+
+Include edition numbers, version numbers, and dates in the
+@copying text (for people reading the Texinfo file, and for the
+legal copyright in the output files).  Then use @insertcopying
+in the @titlepage section (for people reading the printed
+output) and the Top node (for people reading the online output).
+
+It is easiest to do this using @set and @value.
+See @value Example, and GNU Sample Texts.
+
+
+Definition Commands
+...................
+
+Definition commands are @deffn, @defun,
+@defmac, and the like, and enable you to write descriptions in
+a uniform format.
+
+* Write just one definition command for each entity you define with a
+definition command.  The automatic indexing feature creates an index
+entry that leads the reader to the definition.
+
+* Use @table ... @end table in an appendix that
+contains a summary of functions, not @deffn or other definition
+commands.
+
+Capitalization
+..............
+
+* Capitalize "Texinfo"; it is a name.  Do not write the `x' or
+`i' in upper case.
+
+* Capitalize "Info"; it is a name.
+
+* Write TeX using the @TeX{} command.  Note the uppercase
+`T' and `X'.  This command causes the formatters to
+typeset the name according to the wishes of Donald Knuth, who wrote
+TeX.
+
+Spaces
+......
+
+Do not use spaces to format a Texinfo file, except inside of
+@example ... @end example and similar commands.
+
+For example, TeX fills the following:
+
+    @kbd{C-x v}
+    @kbd{M-x vc-next-action}
+       Perform the next logical operation
+       on the version-controlled file
+       corresponding to the current buffer.
+
+so it looks like this:
+
+`C-x v' `M-x vc-next-action' Perform the next logical operation on the
+version-controlled file corresponding to the current buffer.
+
+In this case, the text should be formatted with
+@table, @item, and @itemx, to create a table.
+
+@code, @samp, @var, and `---'
+.............................
+
+* Use @code around Lisp symbols, including command names.
+For example,
+
+The main function is @code{vc-next-action}, ...
+
+* Avoid putting letters such as `s' immediately after an
+`@code'.  Such letters look bad.
+
+* Use @var around meta-variables.  Do not write angle brackets
+around them.
+
+* Use three hyphens in a row, `---', to indicate a long dash.  TeX
+typesets these as a long dash and the Info formatters reduce three
+hyphens to two.
+
+Periods Outside of Quotes
+.........................
+
+Place periods and other punctuation marks outside of quotations,
+unless the punctuation is part of the quotation.  This practice goes
+against publishing conventions in the United States, but enables the
+reader to distinguish between the contents of the quotation and the
+whole passage.
+
+For example, you should write the following sentence with the period
+outside the end quotation marks:
+
+Evidently, `au' is an abbreviation for ``author''.
+
+since `au' does not serve as an  abbreviation for
+`author.' (with a period following the word).
+
+Introducing New Terms
+.....................
+
+* Introduce new terms so that a reader who does not know them can
+understand them from context; or write a definition for the term.
+
+For example, in the following, the terms "check in", "register" and
+"delta" are all appearing for the first time; the example sentence should be
+rewritten so they are understandable.
+
+The major function assists you in checking in a file to your
+version control system and registering successive sets of changes to
+it as deltas.
+
+* Use the @dfn command around a word being introduced, to indicate
+that the reader should not expect to know the meaning already, and
+should expect to learn the meaning from this passage.
+
+@pxref
+......
+
+Absolutely never use @pxref except in the special context for
+which it is designed: inside parentheses, with the closing parenthesis
+following immediately after the closing brace.  One formatter
+automatically inserts closing punctuation and the other does not.  This
+means that the output looks right both in printed output and in an Info
+file, but only when the command is used inside parentheses.
+
+Invoking from a Shell
+.....................
+
+You can invoke programs such as Emacs, GCC, and gawk from a
+shell.  The documentation for each program should contain a section that
+describes this.  Unfortunately, if the node names and titles for these
+sections are all different, they are difficult for users to find.
+
+So, there is a convention to name such sections with a phrase beginning
+with the word `Invoking', as in `Invoking Emacs'; this way, users can
+find the section easily.
+
+
+ANSI C Syntax
+.............
+
+When you use @example to describe a C function's calling
+conventions, use the ANSI C syntax, like this:
+
+void dld_init (char *@var{path});
+
+And in the subsequent discussion, refer to the argument values by
+writing the same argument names, again highlighted with
+@var.
+
+Avoid the obsolete style that looks like this:
+
+#include <dld.h>
+
+dld_init (path)
+char *path;
+
+Also, it is best to avoid writing #include above the
+declaration just to indicate that the function is declared in a
+header file.  The practice may give the misimpression that the
+#include belongs near the declaration of the function.  Either
+state explicitly which header file holds the declaration or, better
+yet, name the header file used for a group of functions at the
+beginning of the section that describes the functions.
+
+Bad Examples
+............
+
+Here are several examples of bad writing to avoid:
+
+In this example, say, " ... you must @dfn{check
+in} the new version."  That flows better.
+
+When you are done editing the file, you must perform a
+@dfn{check in}.
+
+In the following example, say, "... makes a unified interface such as VC
+mode possible."
+
+SCCS, RCS and other version-control systems all perform similar
+functions in broadly similar ways (it is this resemblance which makes
+a unified control mode like this possible).
+
+And in this example, you should specify what `it' refers to:
+
+If you are working with other people, it assists in coordinating
+everyone's changes so they do not step on each other.
+
+And Finally ...
+...............
+
+* Pronounce TeX as if the `X' were a Greek `chi', as the last
+sound in the name `Bach'.  But pronounce Texinfo as in `speck':
+"teckinfo".
+
+* Write notes for yourself at the very end of a Texinfo file after the
+@bye.  None of the formatters process text after the
+@bye; it is as if the text were within @ignore ...
+@end ignore.
+
+

@@ -1,0 +1,21 @@
+9.1.9 @command{command-name}
+----------------------------
+
+Use the @command command to indicate command names, such as
+ls or cc.
+
+@command is equivalent to @code in its effects.
+For example:
+
+The command @command{ls} lists directory contents.
+produces
+The command ls lists directory contents.
+
+You should write the name of a program in the ordinary text font, rather
+than using @command, if you regard it as a new English word,
+such as `Emacs' or `Bison'.
+
+When writing an entire shell command invocation, as in `ls -l',
+you should use either @samp or @code at your discretion.
+
+

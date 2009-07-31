@@ -1,0 +1,52 @@
+12.5 Defining New Indices
+=========================
+
+In addition to the predefined indices, you may use the
+@defindex and @defcodeindex commands to define new
+indices.  These commands create new indexing @-commands with which
+you mark index entries.  The @defindex command is used like
+this:
+
+@defindex name
+
+The name of an index should be a two letter word, such as `au'.
+For example:
+
+@defindex au
+
+This defines a new index, called the `au' index.  At the same
+time, it creates a new indexing command, @auindex, that you
+can use to make index entries.  Use the new indexing command just as
+you would use a predefined indexing command.
+
+For example, here is a section heading followed by a concept index
+entry and two `au' index entries.
+
+@section Cognitive Semantics
+@cindex kinesthetic image schemas
+@auindex Johnson, Mark
+@auindex Lakoff, George
+
+(Evidently, `au' serves here as an abbreviation for "author".)
+Texinfo constructs the new indexing command by concatenating the name
+of the index with `index'; thus, defining an `au' index
+leads to the automatic creation of an @auindex command.
+
+Use the @printindex command to print the index, as you do with
+the predefined indices.  For example:
+
+@node Author Index, Subject Index, , Top
+@unnumbered Author Index
+
+@printindex au
+
+The @defcodeindex is like the @defindex command, except
+that, in the printed output, it prints entries in an @code font
+instead of a roman font.  Thus, it parallels the @findex command
+rather than the @cindex command.
+
+You should define new indices within or right after the end-of-header
+line of a Texinfo file, before any @synindex or
+@syncodeindex commands (see Texinfo File Header).
+
+

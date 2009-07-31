@@ -1,0 +1,26 @@
+10.13 @cartouche: Rounded Rectangles Around Examples
+====================================================
+
+In a printed manual, the @cartouche command draws a box with
+rounded corners around its contents.  You can use this command to
+further highlight an example or quotation.  For instance, you could
+write a manual in which one type of example is surrounded by a cartouche
+for emphasis.
+
+@cartouche affects only the printed manual; it has no effect in
+other output files.
+
+For example,
+
+@example
+@cartouche
+% pwd
+/usr/local/share/emacs
+@end cartouche
+@end example
+
+surrounds the two-line example with a box with rounded corners, in the
+printed manual.
+
+
+

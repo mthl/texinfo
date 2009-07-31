@@ -1,0 +1,19 @@
+Element
+*******
+
+kbd: in kbd.
+
+kbd in code: in first in nested kbd.
+
+kbd in kbd: in top kbd in nested kbd.
+
+kbd in @example:
+
+in example
+in example in kbd.
+
+kbd in @format:
+
+in format
+in format in kbd.
+

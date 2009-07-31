@@ -1,0 +1,57 @@
+10.3 @example: Example Text
+===========================
+
+The @example command is used to indicate an example that is
+not part of the running text, such as computer input or output.
+
+This is an example of text written between an
+@example command
+and an @end example command.
+The text is indented but not filled.
+
+In the printed manual, the text is typeset in a
+fixed-width font, and extra spaces and blank lines are
+significant.  In the Info file, an analogous result is
+obtained by indenting each line with five spaces.
+
+Write an @example command at the beginning of a line by itself.
+Mark the end of the example
+with an @end example command, also written at the beginning of a
+line by itself.
+
+For example,
+
+@example
+mv foo bar
+@end example
+
+produces
+
+mv foo bar
+
+The lines containing @example and @end example
+will disappear from the output.
+To make the output look good,
+you should put a blank line before the
+@example and another blank line after the @end example.
+Note that blank lines inside the beginning
+@example and the ending @end example will appear in
+the output.
+
+Caution: Do not use tabs in the lines of an example or anywhere
+else in Texinfo (except in verbatim environments)!  The TeX
+implementation of Texinfo treats tabs as single spaces, and that is not
+what they look like.  (If necessary, in Emacs, you can use M-x
+untabify to convert tabs in a region to multiple spaces.)
+
+Examples are often, logically speaking, "in the middle" of a
+paragraph, and the text that continues after an example should not be
+indented.  The @noindent command prevents a piece of text from
+being indented as if it were a new paragraph.
+(See noindent.)
+
+(The @code command is used for examples of code that are
+embedded within sentences, not set off from preceding and following
+text.  See @code.)
+
+

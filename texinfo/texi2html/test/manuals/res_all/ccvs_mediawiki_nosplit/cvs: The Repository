@@ -1,0 +1,103 @@
+<div id="Repository"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Viewing differences#Viewing-differences  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Telling CVS where your repository is#Specifying-a-repository  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="The-Repository"></div>
+== The Repository ==
+<div id="index-Repository-_0028intro_0029"></div>
+<div id="index-Repository_002c-example"></div>
+<div id="index-Layout-of-repository"></div>
+<div id="index-Typical-repository"></div>
+<div id="index-_002fusr_002flocal_002fcvsroot_002c-as-example-repository"></div>
+<div id="index-cvsroot"></div>
+
+<p>The <small>CVS</small> <em>repository</em> stores a complete copy of
+all the files and directories which are under version
+control.
+</p>
+<p>Normally, you never access any of the files in the
+repository directly.  Instead, you use <small>CVS</small>
+commands to get your own copy of the files into a
+<em>working directory</em>, and then
+work on that copy.  When you&rsquo;ve finished a set of
+changes, you check (or <em>commit</em>) them back into the
+repository.  The repository then contains the changes
+which you have made, as well as recording exactly what
+you changed, when you changed it, and other such
+information.  Note that the repository is not a
+subdirectory of the working directory, or vice versa;
+they should be in separate locations.
+</p>
+<div id="index-_003alocal_003a_002c-setting-up"></div>
+<p><small>CVS</small> can access a repository by a variety of
+means.  It might be on the local computer, or it might
+be on a computer across the room or across the world.
+To distinguish various ways to access a repository, the
+repository name can start with an <em>access method</em>.
+For example, the access method <code>:local:</code> means to
+access a repository directory, so the repository
+<code>:local:/usr/local/cvsroot</code> means that the
+repository is in &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; on the
+computer running <small>CVS</small>.  For information on other
+access methods, see [cvs: Remote repositories#Remote-repositories Remote repositories].
+</p>
+<p>If the access method is omitted, then if the repository
+starts with &lsquo;<samp>/</samp>&rsquo;, then <code>:local:</code> is
+assumed.  If it does not start with &lsquo;<samp>/</samp>&rsquo; then either
+<code>:ext:</code> or <code>:server:</code> is assumed.  For
+example, if you have a local repository in
+&lsquo;<tt>/usr/local/cvsroot</tt>&rsquo;, you can use
+<code>/usr/local/cvsroot</code> instead of
+<code>:local:/usr/local/cvsroot</code>.  But if (under
+Windows NT, for example) your local repository is
+&lsquo;<tt>c:\src\cvsroot</tt>&rsquo;, then you must specify the access
+method, as in <code>:local:c:/src/cvsroot</code>.
+</p>
+<p>The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains
+administrative files for <small>CVS</small>.  The other directories contain the actual
+user-defined modules.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Telling CVS where your repository is#Specifying-a-repository  Specifying a repository]::<nowiki>     Telling CVS where your repository is
+</nowiki>&bull;[cvs: How data is stored in the repository#Repository-storage  Repository storage]::<nowiki>          The structure of the repository
+</nowiki>&bull;[cvs: How data is stored in the working directory#Working-directory-storage  Working directory storage]::<nowiki>   The structure of working directories
+</nowiki>&bull;[cvs: The administrative files#Intro-administrative-files  Intro administrative files]::<nowiki>  Defining modules
+</nowiki>&bull;[cvs: Multiple repositories#Multiple-repositories  Multiple repositories]::<nowiki>       Multiple repositories
+</nowiki>&bull;[cvs: Creating a repository#Creating-a-repository  Creating a repository]::<nowiki>       Creating a repository
+</nowiki>&bull;[cvs: Backing up a repository#Backing-up  Backing up]::<nowiki>                  Backing up a repository
+</nowiki>&bull;[cvs: Moving a repository#Moving-a-repository  Moving a repository]::<nowiki>         Moving a repository
+</nowiki>&bull;[cvs: Remote repositories#Remote-repositories  Remote repositories]::<nowiki>         Accessing repositories on remote machines
+</nowiki>&bull;[cvs: Read-only repository access#Read_002donly-access  Read-only access]::<nowiki>            Granting read-only access to the repository
+</nowiki>&bull;[cvs: Temporary directories for the server#Server-temporary-directory  Server temporary directory]::<nowiki>  The server creates temporary directories
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Viewing differences#Viewing-differences  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Telling CVS where your repository is#Specifying-a-repository  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,92 @@
+<div id="commit-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The cvswrappers file#Wrappers  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The common syntax#syntax  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="The-commit-support-files"></div>
+=== The commit support files ===
+<div id="index-Committing_002c-administrative-support-files"></div>
+
+<p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
+used to run a certain program whenever files are
+committed (see section [cvs: The modules file#modules The modules file]).  The files described in
+this section provide other, more flexible, ways to run
+programs whenever something is committed.
+</p>
+<p>There are three kind of programs that can be run on
+commit.  They are specified in files in the repository,
+as described below.  The following table summarizes the
+file names and the purpose of the corresponding
+programs.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<tt>commitinfo</tt>&rsquo;</dt>
+<dd><p>The program is responsible for checking that the commit
+is allowed.  If it exits with a non-zero exit status
+the commit will be aborted.
+</p>
+</dd>
+<dt>&lsquo;<tt>verifymsg</tt>&rsquo;</dt>
+<dd><p>The specified program is used to evaluate the log message,
+and possibly verify that it contains all required
+fields.  This is most useful in combination with the
+&lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
+template (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).
+</p>
+</dd>
+<dt>&lsquo;<tt>editinfo</tt>&rsquo;</dt>
+<dd><p>The specified program is used to edit the log message,
+and possibly verify that it contains all required
+fields.  This is most useful in combination with the
+&lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
+template (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).  (obsolete)
+</p>
+</dd>
+<dt>&lsquo;<tt>loginfo</tt>&rsquo;</dt>
+<dd><p>The specified program is called when the commit is
+complete.  It receives the log message and some
+additional information and can store the log message in
+a file, or mail it to appropriate persons, or maybe
+post it to a local newsgroup, or&hellip;  Your
+imagination is the limit!
+</p></dd>
+</dl>
+
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: The common syntax#syntax  syntax]::<nowiki>                      The common syntax
+</nowiki>&bull;[cvs: Commitinfo#commitinfo  commitinfo]::<nowiki>                  Pre-commit checking
+</nowiki>&bull;[cvs: Verifying log messages#verifymsg  verifymsg]::<nowiki>                   How are log messages evaluated?
+</nowiki>&bull;[cvs: Editinfo#editinfo  editinfo]::<nowiki>                    Specifying how log messages are created
+                                (obsolete)
+</nowiki>&bull;[cvs: Loginfo#loginfo  loginfo]::<nowiki>                     Where should log messages be sent?
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The cvswrappers file#Wrappers  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The common syntax#syntax  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,36 @@
+13.2.1 Not Ending a Sentence
+----------------------------
+
+Depending on whether a period or exclamation point or question mark is
+inside or at the end of a sentence, less or more space is inserted after
+a period in a typeset manual.  Since it is not always possible
+to determine when a period ends a sentence and when it is used
+in an abbreviation, special commands are needed in some circumstances.
+Usually, Texinfo can guess how to handle periods, so you do not need to
+use the special commands; you just enter a period as you would if you
+were using a typewriter, which means you put two spaces after the
+period, question mark, or exclamation mark that ends a sentence.
+
+Use the @: command after a period, question mark,
+exclamation mark, or colon that should not be followed by extra space.
+For example, use @: after periods that end abbreviations
+which are not at the ends of sentences.
+
+For example,
+
+The s.o.p.@: has three parts ...
+The s.o.p. has three parts ...
+
+produces
+
+The s.o.p. has three parts ...
+
+The s.o.p. has three parts ...
+
+(Incidentally, `s.o.p.' is an abbreviation for "Standard Operating
+Procedure".)
+
+@: has no effect on the Info output.  Do not put braces after
+@:.
+
+

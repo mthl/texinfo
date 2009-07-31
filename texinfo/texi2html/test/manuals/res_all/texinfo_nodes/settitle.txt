@@ -1,0 +1,50 @@
+3.2.4 @settitle: Set the document title
+---------------------------------------
+
+In order to be made into a printed manual, a Texinfo file must contain
+a line that looks like this:
+
+@settitle title
+
+Write the @settitle command at the beginning of a line and
+follow it on the same line by the title.  This tells TeX the title to
+use in a header or footer.  Do not write anything else on the line;
+anything on the line after the command is considered part of the title,
+including what would otherwise be a comment.
+
+The @settitle command should precede everything that generates
+actual output in TeX.
+
+In the HTML file produced by makeinfo, title also serves
+as the document `<title>' and the default document description in
+the `<head>' part; see documentdescription, for how to change
+that.
+
+The title in the @settitle command does not affect the title as
+it appears on the title page.  Thus, the two do not need not match
+exactly.  A practice we recommend is to include the version or edition
+number of the manual in the @settitle title; on the title page,
+the version number generally appears as a @subtitle so it would
+be omitted from the @title.  (See titlepage.)
+
+Conventionally, when TeX formats a Texinfo file for double-sided
+output, the title is printed in the left-hand (even-numbered) page
+headings and the current chapter title is printed in the right-hand
+(odd-numbered) page headings.  (TeX learns the title of each chapter
+from each @chapter command.)  By default, no page footer is
+printed.
+
+Even if you are printing in a single-sided style, TeX looks for an
+@settitle command line, in case you include the manual title
+in the heading.
+
+TeX prints page headings only for that text that comes after the
+@end titlepage command in the Texinfo file, or that comes
+after an @headings command that turns on headings.
+(See The @headings Command, for more
+information.)
+
+You may, if you wish, create your own, customized headings and footings.
+See Headings, for a detailed discussion of this.
+
+

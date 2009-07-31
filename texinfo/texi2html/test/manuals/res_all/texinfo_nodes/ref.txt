@@ -1,0 +1,44 @@
+8.5 @ref
+========
+
+@ref is nearly the same as @xref except that it does
+not generate a `See' in the printed output, just the reference itself.
+This makes it useful as the last part of a sentence.
+
+For example,
+
+For more information, see @ref{Hurricanes}.
+
+produces
+
+For more information, see *Note Hurricanes::.
+
+and
+
+For more information, see Section 8.2 [Hurricanes], page 123.
+
+The @ref command sometimes leads writers to express themselves
+in a manner that is suitable for a printed manual but looks awkward
+in the Info format.  Bear in mind that your audience will be using
+both the printed and the Info format.
+
+For example,
+
+Sea surges are described in @ref{Hurricanes}.
+
+produces
+
+Sea surges are described in Section 6.7 [Hurricanes], page 72.
+
+in a printed document, and the following in Info:
+
+Sea surges are described in *Note Hurricanes::.
+
+Caution: You must write a period, comma, or right
+parenthesis immediately after an @ref command with two or more
+arguments.  Otherwise, Info will not find the end of the cross reference
+entry and its attempt to follow the cross reference will fail.  As a
+general rule, you should write a period or comma after every
+@ref command.  This looks best in both the printed and the Info
+output.
+

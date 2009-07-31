@@ -1,0 +1,18 @@
+5.5 @unnumbered and @appendix
+=============================
+
+Use the @unnumbered command to create a chapter that appears
+in a printed manual without chapter numbers of any kind.  Use the
+@appendix command to create an appendix in a printed manual
+that is labelled by letter instead of by number.
+
+For Info file output, the @unnumbered and @appendix
+commands are equivalent to @chapter: the title is printed on a
+line by itself with a line of asterisks underneath.  (See @chapter.)
+
+To create an appendix or an unnumbered chapter, write an
+@appendix or @unnumbered command at the beginning of a
+line and follow it on the same line by the title, as you would if you
+were creating a chapter.
+
+

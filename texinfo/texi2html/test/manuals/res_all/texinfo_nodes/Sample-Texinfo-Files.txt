@@ -1,0 +1,11 @@
+Annexe C Sample Texinfo Files
+*****************************
+
+The first example is from the first chapter (see Short Sample),
+given here in its entirety, without commentary.  The second sample
+includes the full texts to be used in GNU manuals.
+
+* Short Sample Texinfo File::   
+* GNU Sample Texts::            
+
+

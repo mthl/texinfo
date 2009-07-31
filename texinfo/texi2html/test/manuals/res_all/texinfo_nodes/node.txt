@@ -1,0 +1,53 @@
+6.3 The @node Command
+=====================
+
+
+A node is a segment of text that begins at an @node
+command and continues until the next @node command.  The
+definition of node is different from that for chapter or section.  A
+chapter may contain sections and a section may contain subsections;
+but a node cannot contain subnodes; the text of a node continues only
+until the next @node command in the file.  A node usually
+contains only one chapter structuring command, the one that follows
+the @node line.  On the other hand, in printed output nodes
+are used only for cross references, so a chapter or section may
+contain any number of nodes.  Indeed, a chapter usually contains
+several nodes, one for each section, subsection, and
+subsubsection.
+
+To create a node, write an @node command at the beginning of a
+line, and follow it with up to four arguments, separated by commas, on
+the rest of the same line.  The first argument is required; it is the
+name of this node.  The subsequent arguments are the names of the
+`Next', `Previous', and `Up' pointers, in that order, and may be omitted
+if your Texinfo document is hierarchically organized (see makeinfo Pointer Creation).
+
+You may insert spaces before each name if you wish; the spaces are
+ignored.  You must write the name of the node and the names of the
+`Next', `Previous', and `Up' pointers all on the same line.  Otherwise,
+the formatters fail.  (See info: (info)Top, for more information
+about nodes in Info.)
+
+Usually, you write one of the chapter-structuring command lines
+immediately after an @node line--for example, an
+@section or @subsection line.  (See Structuring Command Types.)
+
+Please note: The GNU Emacs Texinfo mode updating commands work
+only with Texinfo files in which @node lines are followed by chapter
+structuring lines.  See Updating Requirements.
+
+TeX uses @node lines to identify the names to use for cross
+references.  For this reason, you must write @node lines in a
+Texinfo file that you intend to format for printing, even if you do not
+intend to format it for Info.  (Cross references, such as the one at the
+end of this sentence, are made with @xref and related commands;
+see Cross References.)
+
+* Node Names::                  How to choose node and pointer names.
+* Writing a Node::              How to write an @node line.
+* Node Line Tips::              Keep names short.
+* Node Line Requirements::      Keep names unique, without @-commands.
+* First Node::                  How to write a `Top' node.
+* makeinfo top command::        How to use the @top command.
+
+

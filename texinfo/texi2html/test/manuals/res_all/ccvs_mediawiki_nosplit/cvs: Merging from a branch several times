@@ -1,0 +1,99 @@
+<div id="Merging-more-than-once"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Merging an entire branch#Merging-a-branch  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Merging differences between any two revisions#Merging-two-revisions  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Merging-from-a-branch-several-times"></div>
+=== Merging from a branch several times ===
+
+<p>Continuing our example, the revision tree now looks
+like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
+! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
++-----+    +-----+    +-----+    +-----+    +-----+
+                !                           *
+                !                          *
+                !   +---------+    +---------+
+Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                    +---------+    +---------+
+</nowiki></pre></td></tr></table>
+
+<p>where the starred line represents the merge from the
+&lsquo;<samp>R1fix</samp>&rsquo; branch to the main trunk, as just
+discussed.
+</p>
+<p>Now suppose that development continues on the
+&lsquo;<samp>R1fix</samp>&rsquo; branch:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
+! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
++-----+    +-----+    +-----+    +-----+    +-----+
+                !                           *
+                !                          *
+                !   +---------+    +---------+    +---------+
+Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
+                    +---------+    +---------+    +---------+
+</nowiki></pre></td></tr></table>
+
+<p>and then you want to merge those new changes onto the
+main trunk.  If you just use the <code>cvs update -j
+R1fix m.c</code> command again, <small>CVS</small> will attempt to
+merge again the changes which you have already merged,
+which can have undesirable side effects.
+</p>
+<p>So instead you need to specify that you only want to
+merge the changes on the branch which have not yet been
+merged into the trunk.  To do that you specify two
+&lsquo;<samp>-j</samp>&rsquo; options, and <small>CVS</small> merges the changes from
+the first revision to the second revision.  For
+example, in this case the simplest way would be
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman">Merge changes from 1.2.2.2 to the</span>
+                                      # <span class="roman">head of the R1fix branch</span>
+</nowiki></pre></td></tr></table>
+
+<p>The problem with this is that you need to specify the
+1.2.2.2 revision manually.  A slightly better approach
+might be to use the date the last merge was done:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j R1fix:yesterday -j R1fix m.c
+</nowiki></pre></td></tr></table>
+
+<p>Better yet, tag the R1fix branch after every merge into
+the trunk, and then use that tag for subsequent merges:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
+</nowiki></pre></td></tr></table>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Merging an entire branch#Merging-a-branch  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Merging differences between any two revisions#Merging-two-revisions  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

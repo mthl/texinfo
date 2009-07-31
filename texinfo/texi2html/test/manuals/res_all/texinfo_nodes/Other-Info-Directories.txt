@@ -1,0 +1,101 @@
+20.2.3 Info Files in Other Directories
+--------------------------------------
+
+If an Info file is not in the `info' directory, there are three
+ways to specify its location:
+
+1. Write the pathname in the `dir' file as the second part of the menu.
+
+2. If you are using Emacs, list the name of the file in a second `dir'
+file, in its directory; and then add the name of that directory to the
+Info-directory-list variable in your personal or site
+initialization file.
+
+This variable tells Emacs where to look for `dir' files (the files
+must be named `dir').  Emacs merges the files named `dir' from
+each of the listed directories.  (In Emacs version 18, you can set the
+Info-directory variable to the name of only one
+directory.)
+
+3. Specify the Info directory name in the INFOPATH environment
+variable in your `.profile' or `.cshrc' initialization file.
+(Only you and others who set this environment variable will be able to
+find Info files whose location is specified this way.)
+
+For example, to reach a test file in the `/home/bob/info'
+directory, you could add an entry like this to the menu in the
+standard `dir' file:
+
+* Test: (/home/bob/info/info-test).  Bob's own test file.
+
+In this case, the absolute file name of the `info-test' file is
+written as the second part of the menu entry.
+
+Alternatively, you could write the following in your `.emacs' file:
+
+(require 'info)
+(setq Info-directory-list
+  (cons (expand-file-name "/home/bob/info")
+        Info-directory-list))
+
+This tells Emacs to merge the system `dir' file with the `dir'
+file in `/home/bob/info'.  Thus, Info will list the
+`/home/bob/info/info-test' file as a menu entry in the
+`/home/bob/info/dir' file.  Emacs does the merging only when
+M-x info is first run, so if you want to set
+Info-directory-list in an Emacs session where you've already run
+info, you must (setq Info-dir-contents nil) to force Emacs
+to recompose the `dir' file.
+
+Finally, you can tell Info where to look by setting the INFOPATH
+environment variable in your shell startup file, such as `.cshrc',
+`.profile' or `autoexec.bat'.  If you use a Bourne-compatible
+shell such as sh or bash for your shell command
+interpreter, you set the INFOPATH environment variable in the
+`.profile' initialization file; but if you use csh or
+tcsh, you set the variable in the `.cshrc' initialization
+file.  On MS-DOS/MS-Windows systems, you must set INFOPATH in
+your `autoexec.bat' file or in the Registry.  Each type of shell
+uses a different syntax.
+
+* In a `.cshrc' file, you could set the INFOPATH
+variable as follows:
+
+setenv INFOPATH .:~/info:/usr/local/emacs/info
+
+* In a `.profile' file, you would achieve the same effect by
+writing:
+
+INFOPATH=.:$HOME/info:/usr/local/emacs/info
+export INFOPATH
+
+* In a `autoexec.bat' file, you write this command(12):
+
+set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+
+The `.' indicates the current directory as usual.  Emacs uses the
+INFOPATH environment variable to initialize the value of Emacs's
+own Info-directory-list variable.  The stand-alone Info reader
+merges any files named `dir' in any directory listed in the
+INFOPATH variable into a single menu presented to you in the node
+called `(dir)Top'.
+
+However you set INFOPATH, if its last character is a
+colon(13), this
+is replaced by the default (compiled-in) path.  This gives you a way to
+augment the default path with new directories without having to list all
+the standard places.  For example (using sh syntax):
+
+INFOPATH=/local/info:
+export INFOPATH
+
+will search `/local/info' first, then the standard directories.
+Leading or doubled colons are not treated specially.
+
+When you create your own `dir' file for use with
+Info-directory-list or INFOPATH, it's easiest to start by
+copying an existing `dir' file and replace all the text after the
+`* Menu:' with your desired entries.  That way, the punctuation and
+special CTRL-_ characters that Info needs will be present.
+
+

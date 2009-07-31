@@ -1,0 +1,42 @@
+10.12 @noindent: Omitting Indentation
+=====================================
+
+An example or other inclusion can break a paragraph into segments.
+Ordinarily, the formatters indent text that follows an example as a new
+paragraph.  However, you can prevent this by writing @noindent
+at the beginning of a line by itself preceding the continuation
+text.
+
+For example:
+
+@example
+This is an example
+@end example
+
+@noindent
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+@code{@@display} and @code{@@end display}.)
+
+produces
+
+This is an example
+
+This line is not indented.  As you can see, the
+beginning of the line is fully flush left with the line
+that follows after it.  (This whole example is between
+@display and @end display.)
+
+To adjust the number of blank lines properly in the Info file output,
+remember that the line containing @noindent does not generate a
+blank line, and neither does the @end example line.
+
+In the Texinfo source file for this manual, each line that says
+`produces' is preceded by a line containing @noindent.
+
+Do not put braces after an @noindent command; they are not
+necessary, since @noindent is a command used outside of
+paragraphs (see Command Syntax).
+
+

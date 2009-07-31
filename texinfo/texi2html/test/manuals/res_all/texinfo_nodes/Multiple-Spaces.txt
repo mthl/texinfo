@@ -1,0 +1,37 @@
+13.2.3 Multiple Spaces
+----------------------
+
+
+Ordinarily, TeX collapses multiple whitespace characters (space, tab,
+and newline) into a single space.  Info output, on the other hand,
+preserves whitespace as you type it, except for changing a newline into
+a space; this is why it is important to put two spaces at the end of
+sentences in Texinfo documents.
+
+Occasionally, you may want to actually insert several consecutive
+spaces, either for purposes of example (what your program does with
+multiple spaces as input), or merely for purposes of appearance in
+headings or lists.  Texinfo supports three commands:
+@SPACE, @TAB, and @NL, all of
+which insert a single space into the output.  (Here,
+@SPACE represents an `@' character followed by a
+space, i.e., `@ ', and TAB and NL represent the tab
+character and end-of-line, i.e., when `@' is the last character on
+a line.)
+
+For example,
+Spacey@ @ @ @
+example.
+
+produces
+
+Spacey    example.
+
+Other possible uses of @SPACE have been subsumed by
+@multitable (see Multi-column Tables).
+
+Do not follow any of these commands with braces.
+
+To produce a non-breakable space, see non-breakable space.
+
+

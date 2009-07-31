@@ -1,0 +1,32 @@
+Annexe I How to Obtain TeX
+**************************
+
+TeX is freely redistributable.  You can obtain TeX for Unix
+systems via anonymous ftp or on physical media.  The core material
+consists of the Web2c TeX distribution (<http://tug.org/web2c>).
+
+Instructions for retrieval by anonymous ftp and information on other
+available distributions:
+<ftp://tug.org/tex/unixtex.ftp>
+<http://tug.org/unixtex.ftp>
+
+The Free Software Foundation provides a core distribution on its Source
+Code CD-ROM suitable for printing Texinfo manuals.  To order it, contact:
+
+Free Software Foundation, Inc.
+59 Temple Place Suite 330
+Boston, MA   02111-1307
+USA
+Telephone: +1-617-542-5942
+Fax: (including Japan) +1-617-542-2652
+Free Dial Fax (in Japan):
+      0031-13-2473 (KDD)
+      0066-3382-0158 (IDC)
+Electronic mail: gnu@gnu.org
+
+Many other TeX distributions are available; see
+<http://tug.org/>.
+
+
+
+

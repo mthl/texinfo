@@ -1,0 +1,39 @@
+9.1 Indicating Definitions, Commands, etc.
+==========================================
+
+Texinfo has commands for indicating just what kind of object a piece of
+text refers to.  For example, metasyntactic variables are marked by
+@var, and code by @code.  Since the pieces of text are
+labelled by commands that tell what kind of object they are, it is easy
+to change the way the Texinfo formatters prepare such text.  (Texinfo is
+an intentional formatting language rather than a typesetting
+formatting language.)
+
+For example, in a printed manual,
+code is usually illustrated in a typewriter font;
+@code tells TeX to typeset this text in this font.  But it
+would be easy to change the way TeX highlights code to use another
+font, and this change would not affect how keystroke examples are
+highlighted.  If straight typesetting commands were used in the body
+of the file and you wanted to make a change, you would need to check
+every single occurrence to make sure that you were changing code and
+not something else that should not be changed.
+
+* Useful Highlighting::         Highlighting provides useful information.
+* code::                        Indicating program code.
+* kbd::                         Showing keyboard input.
+* key::                         Specifying keys.
+* samp::                        A literal sequence of characters.
+* verb::                        A verbatim sequence of characters.
+* var::                         Indicating metasyntactic variables.
+* env::                         Indicating environment variables.
+* file::                        Indicating file names.
+* command::                     Indicating command names.
+* option::                      Indicating option names.
+* dfn::                         Specifying definitions.
+* cite::                        Referring to books not in the  Info system.
+* acronym::                     Indicating acronyms.
+* url::                         Indicating a World Wide Web reference.
+* email::                       Indicating an electronic mail address.
+
+

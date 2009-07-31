@@ -1,0 +1,1122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 2. Introduction</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 2. Introduction">
+<meta name="keywords" content="Singular 2-0-4 Manual: 2. Introduction">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Introduction"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="singular_1.html#Preface" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Background" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular_1.html#Preface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Introduction-1"></a>
+<h1 class="chapter">2. Introduction</h1>
+<a name="index-Introduction"></a>
+
+
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Background">2.1 Background</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#How-to-use-this-manual">2.2 How to use this manual</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Getting-started">2.3 Getting started</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Background"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Introduction" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-use-this-manual" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Background-1"></a>
+<h2 class="section">2.1 Background</h2>
+<a name="index-Background"></a>
+
+<p><small>SINGULAR</small> is a Computer Algebra system for polynomial
+computations with emphasis on the special needs of commutative
+algebra, algebraic geometry, and singularity theory.
+</p>
+<p><small>SINGULAR</small>&rsquo;s main computational objects are ideals and
+modules over a large variety of baserings. The baserings are polynomial
+rings or localizations thereof over a field (e.g., finite fields, the
+rationals, floats, algebraic extensions, transcendental extensions) or
+quotient rings with respect to an ideal.
+</p>
+<p><small>SINGULAR</small> features one of the fastest and most general
+implementations of various algorithms for computing Groebner
+resp. standard bases. The implementation includes Buchberger&rsquo;s algorithm
+(if the ordering is a well ordering) and Mora&rsquo;s algorithm (if the
+ordering is a tangent cone ordering) as special cases.  Furthermore, it
+provides polynomial factorizations, resultant, characteristic set and
+gcd computations, syzygy and free-resolution computations, and many more
+related functionalities.
+</p>
+<p>Based on an easy-to-use interactive shell and a C-like programming
+language, <small>SINGULAR</small>&rsquo;s internal functionality is augmented and
+user-extendible by libraries written in the <small>SINGULAR</small> programming
+language. A general and efficient implementation of communication links
+allows <small>SINGULAR</small> to make its functionality available to other
+programs.
+</p>
+<p><small>SINGULAR</small>&rsquo;s development started in 1984 with an implementation of
+Mora&rsquo;s Tangent Cone algorithm in Modula-2 on an Atari computer (K.P.
+Neuendorf, G. Pfister,
+ zu Berlin).  The need for a new system arose from the investigation of
+mathematical problems coming from singularity theory which none of the
+existing systems was able to compute.
+</p>
+<p>In the early 1990s <small>SINGULAR</small>&rsquo;s &quot;home-town&quot; moved to
+Kaiserslautern, a general standard basis algorithm was implemented in C
+and <small>SINGULAR</small> was ported to Unix, MS-DOS, Windows NT, and MacOS.
+</p>
+<p>Continuous extensions (like polynomial factorization, gcd computations,
+links) and refinements led in 1997 to the release of <small>SINGULAR</small>
+version 1.0 and in 1998 to the release of version 1.2
+(much faster standard and Groebner bases computations based on Hilbert series
+and on improved implementations of the algorithms,
+libraries for primary decomposition, ring normalization, etc.)
+</p>
+<p>For the highlights of the new <small>SINGULAR</small> version 2-0-4 see <a href="singular_11.html#News-and-changes">News and changes</a>.
+</p>
+
+<hr size="6">
+<a name="How-to-use-this-manual"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Background" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="How-to-use-this-manual-1"></a>
+<h2 class="section">2.2 How to use this manual</h2>
+<a name="index-How-to-use-this-manual"></a>
+
+<a name="For-the-impatient-user"></a>
+<h4 class="subsubheading">For the impatient user</h4>
+<p>In <a href="#Getting-started">Getting started</a>, some simple examples explain how to use
+<small>SINGULAR</small>  in a step-by-step manner.
+</p>
+<p><a href="singular_7.html#Examples">Examples</a> should come next for real learning-by-doing or to quickly
+solve some given mathematical problems without dwelling too deeply into
+<small>SINGULAR</small>.
+This chapter contains a lot of real-life examples and
+detailed instructions and explanations on how to solve mathematical
+problems using <small>SINGULAR</small>.
+</p>
+<a name="For-the-systematic-user"></a>
+<h4 class="subsubheading">For the systematic user</h4>
+<p>In <a href="singular_3.html#General-concepts">General concepts</a>, all basic concepts which are important to use
+and to understand <small>SINGULAR</small> are developed.  But even for users
+preferring the systematic approach it will be helpful to have a look at
+the examples in <a href="#Getting-started">Getting started</a>, every now and then. The topics in
+the chapter are organized more or less in the order the novice user has
+to deal with them.
+</p>
+<ul>
+<li>
+In <a href="singular_3.html#Interactive-use">Interactive use</a>, and its subsections there are some words on
+entering and exiting <small>SINGULAR</small>, followed by a number of other
+aspects concerning the interactive user-interface.
+
+</li><li>
+To do anything more than trivial integer computations, one needs to
+define a basering in <small>SINGULAR</small>.  This is explained in detail in
+<a href="singular_3.html#Rings-and-orderings">Rings and orderings</a>.
+
+</li><li>
+An overview of the algorithms implemented in the kernel of <small>SINGULAR</small>
+is given in <a href="singular_3.html#Implemented-algorithms">Implemented algorithms</a>.
+
+</li><li>
+In <a href="singular_3.html#The-SINGULAR-language">The SINGULAR language</a>, language specific concepts are
+introduced such as the notions of names and objects, data types and
+conversion between them, etc.
+
+</li><li>
+In <a href="singular_3.html#Input-and-output">Input and output</a>, <small>SINGULAR</small>&rsquo;s mechanisms to store and
+retrieve data are discussed.
+
+</li><li>
+The more complex concepts of procedures and libraries as
+well as tools to debug them are considered in the following sections:
+<a href="singular_3.html#Procedures">Procedures</a>, <a href="singular_3.html#Libraries">Libraries</a>, and <a href="singular_3.html#Debugging-tools">Debugging tools</a>.
+
+</li></ul>
+
+<p><a href="singular_4.html#Data-types">Data types</a>, is a complete treatment for <small>SINGULAR</small>&rsquo;s data types
+where each section corresponds to one data type, alphabetically sorted.
+For each data type, its purpose is explained, the syntax of its
+declaration is given, and related operations and functions are
+listed. Examples illustrate its usage.
+</p>
+<p><a href="singular_5.html#Functions-and-system-variables">Functions and system variables</a>, is an alphabetically ordered
+reference list of all of <small>SINGULAR</small>&rsquo;s functions, control structures,
+and system variables.  Each entry includes a description of the syntax
+and semantics of the item being explained as well as one or more
+examples on how to use it.
+</p>
+<a name="Miscellaneous"></a>
+<h4 class="subsubheading">Miscellaneous</h4>
+<p><a href="singular_6.html#Tricks-and-pitfalls">Tricks and pitfalls</a>, is a loose collection of limitations and
+features which may be unexpected by those who expect the
+<small>SINGULAR</small> language to be an exact copy of the C programming language or of
+some Computer Algebra system&rsquo;s languages.  But some mathematical hints are
+collected there, as well.
+</p>
+<p><a href="singular_9.html#Mathematical-background">Mathematical background</a>, introduces some of the mathematical
+notions and definitions used throughout this manual.  For example, if in
+doubt what exactly <small>SINGULAR</small> means by a &ldquo;negative degree reverse
+lexicographical ordering&rdquo; one should refer to this chapter.
+</p>
+<p><a href="singular_10.html#SINGULAR-libraries">SINGULAR libraries</a>, lists the
+libraries which come with <small>SINGULAR</small> and the functions contained in
+them, respectively.
+</p>
+<a name="Typographical-conventions"></a>
+<h4 class="subsubheading">Typographical conventions</h4>
+<p>Throughout this manual, the following typographical conventions are
+adopted:
+</p>
+<ul>
+<li>
+text in <code>typewriter</code> denotes <small>SINGULAR</small> input and output as well
+as reserved names:
+
+<ul class="toc">
+<li> The basering can be set using the command <code>setring</code>.
+</li></ul>
+
+</li><li>
+the arrow &rarr; denotes <small>SINGULAR</small> output:
+
+<ul class="toc">
+<li> <code>poly p=x+y+z;</code>
+</li><li> <code>p*p;</code>
+</li><li> <code>&rarr; x2+2xy+y2+2xz+2yz+z2</code>
+</li></ul>
+
+</li><li>
+square brackets are used to denote parts of syntax descriptions which
+are optional:
+
+<ul class="toc">
+<li>[optional_text] required_text
+</li></ul>
+
+</li><li>
+keys are denoted using typewriter, for example:
+
+<ul class="toc">
+<li> <code>N</code> (press the key <code>N</code> to get to the next node in help
+mode)
+</li><li> <code>RETURN</code> (press <code>RETURN</code> to finish an input line)
+</li><li> <code>CTRL-P</code> (press control key together with the key <code>P</code> to
+get the previous input line)
+</li></ul>
+
+</li></ul>
+
+<hr size="6">
+<a name="Getting-started"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#How-to-use-this-manual" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#First-steps" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Getting-started-1"></a>
+<h2 class="section">2.3 Getting started</h2>
+<a name="index-Getting-started"></a>
+
+<p><small>SINGULAR</small> is a special purpose system for polynomial
+computations. Hence, most of the powerful computations in <small>SINGULAR</small>
+require the prior definition of a ring. Most important rings are
+polynomial rings over a field, localizations hereof, or quotient rings of
+such rings modulo an ideal. However, some simple computations with
+integers (machine integers of limited size) and manipulations of strings
+are available without a ring.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#First-steps">2.3.1 First steps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Rings-and-standard-bases">2.3.2 Rings and standard bases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Procedures-and-libraries">2.3.3 Procedures and libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Change-of-rings">2.3.4 Change of rings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Modules-and-their-annihilator">2.3.5 Modules and their annihilator</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Resolution">2.3.6 Resolution</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="First-steps"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Getting-started" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rings-and-standard-bases" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="First-steps-1"></a>
+<h3 class="subsection">2.3.1 First steps</h3>
+<a name="index-First-steps"></a>
+
+<p>Once <small>SINGULAR</small> is started, it awaits an input after the prompt
+<code>&gt;</code>.  Every statement has to be terminated by <code>;</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">37+5;
+&rarr; 42
+</pre></td></tr></table>
+
+<p>All objects have a type, e.g., integer variables are defined by
+the word <code>int</code>. An assignment is done by the symbol <code>=</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int k = 2;
+</pre></td></tr></table>
+
+<p>Test for equality resp. inequality is done using <code>==</code>
+resp. <code>!=</code> (or <code>&lt;&gt;</code>), where <code>0</code> represents the boolean
+value FALSE, any other value represents TRUE.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">k == 2;
+&rarr; 1
+k != 2;
+&rarr; 0
+</pre></td></tr></table>
+
+<p>The value of an object is displayed by simply typing its name.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">k;
+&rarr; 2
+</pre></td></tr></table>
+
+<p>On the other hand the output is suppressed if an assignment
+is made.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int j;
+j = k+1;
+</pre></td></tr></table>
+
+<p>The last displayed (!) result is always available
+with the special symbol <code>_</code> .
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">2*_;   // the value from k displayed above
+&rarr; 4
+</pre></td></tr></table>
+
+<p>Text starting with <code>//</code> denotes a comment and is ignored in
+calculations, as seen in the previous example. Furthermore <small>SINGULAR</small>
+maintains a history of the previous lines of input, which may be accessed by
+<code>CTRL-P</code> (previous) and <code>CTRL-N</code> (next) or the arrows on the
+keyboard. Note that the history is not available on Macintosh systems.
+</p>
+<p>The whole manual is available online by typing the command <code>help;</code> .
+Explanation on single topics, e.g., on <code>intmat</code>, which defines a
+matrix of integers, are obtained by
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">help intmat;
+</pre></td></tr></table>
+
+<p>This shows the text of <a href="singular_4.html#intmat">intmat</a>, in the printed manual.
+</p>
+<p>Next, we define a
+ matrix of integers and initialize it with some values, row by row
+from left to right:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
+</pre></td></tr></table>
+
+<p>A single matrix entry may be selected and changed using
+square brackets <code>[</code> and <code>]</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">m[1,2]=0;
+m;
+&rarr; 1,0,3,
+&rarr; 4,5,6,
+&rarr; 7,8,9
+</pre></td></tr></table>
+
+<p>To calculate the trace of this matrix, we use a <code>for</code> loop. The
+curly brackets <code>{</code> and <code>}</code> denote the beginning resp.
+end of a block. If you define a variable without giving an initial
+value, as the variable <code>tr</code> in the example below, <small>SINGULAR</small>
+assigns a default value for the specific type. In this case, the default
+value for integers is <code>0</code>. Note that the integer variable <code>j</code>
+has already been defined above.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">int tr;
+for ( j=1; j &lt;= 3; j++ ) { tr=tr + m[j,j]; }
+tr;
+&rarr; 15
+</pre></td></tr></table>
+
+<p>Variables of type string can also be defined and used without a ring
+being active. Strings are delimited by <code>&quot;</code> (double quotes). They
+may be used to comment the output of a computation or to give it a nice
+format. If a string contains valid <small>SINGULAR</small> commands, it can be
+executed using the function <code>execute</code>. The result is the same as if
+the commands would have been written on the command line. This feature
+is especially useful to define new rings inside procedures.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">&quot;example for strings:&quot;;
+&rarr; example for strings:
+string s=&quot;The element of m &quot;;
+s = s + &quot;at position [2,3] is:&quot;;  // concatenation of strings by +
+s , m[2,3] , &quot;.&quot;;
+&rarr; The element of m at position [2,3] is: 6 .
+s=&quot;m[2,1]=0; m;&quot;;
+execute(s);
+&rarr; 1,0,3,
+&rarr; 0,5,6,
+&rarr; 7,8,9
+</pre></td></tr></table>
+
+<p>This example shows that expressions can be separated by <code>,</code> (comma)
+giving a list of expressions. <small>SINGULAR</small> evaluates each expression in
+this list and prints all results separated by spaces.
+</p>
+<hr size="6">
+<a name="Rings-and-standard-bases"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#First-steps" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Procedures-and-libraries" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Rings-and-standard-bases-1"></a>
+<h3 class="subsection">2.3.2 Rings and standard bases</h3>
+<a name="index-Rings-and-standard-bases"></a>
+
+<p>To calculate with objects as ideals, matrices, modules, and polynomial
+vectors, a ring has to be defined first.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),dp;
+</pre></td></tr></table>
+
+<p>The definition of a ring consists of three parts: the first part
+determines the ground field, the second part determines the names of the
+ring variables, and the third part determines the monomial ordering to
+be used. So the example above declares a polynomial ring called <code>r</code>
+with a ground field of characteristic 
+ (i.e., the rational
+numbers) and ring variables called <code>x</code>, <code>y</code>, and <code>z</code>. The
+<code>dp</code> at the end means that the degree reverse lexicographical
+ordering should be used.
+</p>
+<p>Other ring declarations:
+</p>
+<dl compact="compact">
+<dt><code>ring r1=32003,(x,y,z),dp;</code></dt>
+<dd><p>characteristic 32003, variables <code>x</code>, <code>y</code>, and <code>z</code> and
+ordering <code>dp</code>.
+</p>
+</dd>
+<dt><code>ring r2=32003,(a,b,c,d),lp;</code></dt>
+<dd><p>characteristic 32003, variable names <code>a</code>, <code>b</code>, <code>c</code>,
+<code>d</code> and lexicographical ordering.
+</p>
+</dd>
+<dt><code>ring r3=7,(x(1..10)),ds;</code></dt>
+<dd><p>characteristic 7, variable names <code>x(1)</code>,&hellip;,<code>x(10)</code>, negative
+degree reverse lexicographical ordering (<code>ds</code>).
+</p>
+</dd>
+<dt><code>ring r4=(0,a),(mu,nu),lp;</code></dt>
+<dd><p>transcendental extension of 
+ by 
+, variable names
+<code>mu</code> and <code>nu</code>.
+</p>
+</dd>
+<dt><code>ring r5=real,(a,b),lp;</code></dt>
+<dd><p>floating point numbers (single machine precision),
+variable names <code>a</code> and <code>b</code>.
+</p>
+</dd>
+<dt><code>ring r6=(real,50),(a,b),lp;</code></dt>
+<dd><p>floating point numbers with extended precision of 50 digits,
+variable names <code>a</code> and <code>b</code>.
+</p>
+</dd>
+<dt><code>ring r7=(complex,50,i),(a,b),lp;</code></dt>
+<dd><p>complex floating point numbers with extended precision of 50 digits
+and imaginary unit <code>i</code>,
+variable names <code>a</code> and <code>b</code>.
+</p></dd>
+</dl>
+
+<p>Typing the name of a ring prints its definition. The example below
+shows that the default ring in <small>SINGULAR</small> is 
+</p>
+<p>with degree reverse lexicographical ordering:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r8;
+r8;
+&rarr; //   characteristic : 32003
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y z 
+&rarr; //        block   2 : ordering C
+</pre></td></tr></table>
+
+<p>Defining a ring makes this ring the current active basering, so each
+ring definition above switches to a new basering. The concept of rings
+in <small>SINGULAR</small> is discussed in detail in
+<a href="singular_3.html#Rings-and-orderings">Rings and orderings</a>.
+</p>
+<p>The basering is now <code>r8</code>. Since we want to calculate in the ring
+<code>r</code>, which we defined first, we have to switch back to it. This can
+be done using the function <code>setring</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">setring r;
+</pre></td></tr></table>
+
+<p>Once a ring is active, we can define polynomials. A monomial, say
+may be entered in two ways: either using the power operator <code>^</code>,
+saying <code>x^3</code>, or in short-hand notation without operator, saying
+<code>x3</code>. Note that the short-hand notation is forbidden if the name
+of the ring variable consists of more than one character. Note, that
+<small>SINGULAR</small> always expands brackets and automatically sorts the terms
+with respect to the monomial ordering of the basering.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly f =  x3+y3+(x-y)*x2y2+z2;
+f;
+&rarr; x3y2-x2y3+x3+y3+z2
+</pre></td></tr></table>
+
+<p>The command <code>size</code> determines in general the number of &rdquo;single
+entries&ldquo; in an object. In particular, for polynomials, <code>size</code>
+determines the number of monomials.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(f);
+&rarr; 5
+</pre></td></tr></table>
+
+<p>A natural question is to ask if a point, e.g., <code>(x,y,z)=(1,2,0)</code>, lies
+on the variety defined by the polynomials <code>f</code> and <code>g</code>. For
+this we define an ideal generated by both polynomials, substitute the
+coordinates of the point for the ring variables, and check if the result
+is zero:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly g =  f^2 *(2x-y);
+ideal I = f,g;
+ideal J = subst(I,var(1),1);
+J = subst(J,var(2),2);
+J = subst(J,var(3),0);
+J;
+&rarr; J[1]=5
+&rarr; J[2]=0
+</pre></td></tr></table>
+
+<p>Since the result is not zero, the point <code>(1,2,0)</code> does
+not lie on the variety <code>V(f,g)</code>.
+</p>
+<p>Another question is to decide whether some function vanishes on a
+variety, or in algebraic terms if a polynomial is contained in a given
+ideal. For this we calculate a standard basis using the command
+<code>groebner</code> and afterwards reduce the polynomial with respect to
+this standard basis.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal sI = groebner(f);
+reduce(g,sI);
+&rarr; 0
+</pre></td></tr></table>
+
+<p>As the result is <code>0</code> the polynomial <code>g</code> belongs to the
+ideal defined by <code>f</code>.
+</p>
+<p>The function <code>groebner</code>, like many other functions in
+<small>SINGULAR</small>, prints a protocol during calculations, if desired. The
+command <code>option(prot);</code> enables protocolling whereas
+<code>option(noprot);</code> turns it off.
+<a href="singular_5.html#option">option</a>, explains the meaning
+of the different symbols printed during calculations.
+</p>
+<p>The command <code>kbase</code> calculates a basis of the polynomial ring
+modulo an ideal, if the quotient ring is finite dimensional.
+As an example we calculate the Milnor number of a
+hypersurface singularity in the global and local case. This is the
+vector space dimension of the polynomial ring modulo the Jacobian ideal
+in the global case resp. of the power series ring modulo the Jacobian
+ideal in the local case. See section <a href="singular_7.html#Critical-points">Critical points</a>, for a detailed
+explanation.
+</p>
+<p>The Jacobian ideal is obtained with the command <code>jacob</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal J = jacob(f);
+&rarr; // ** redefining J **
+J;
+&rarr; J[1]=3x2y2-2xy3+3x2
+&rarr; J[2]=2x3y-3x2y2+3y2
+&rarr; J[3]=2z
+</pre></td></tr></table>
+
+<p><small>SINGULAR</small> prints the line <code>// ** redefining J
+**</code>. This indicates that we have previously defined a variable with name
+<code>J</code> of type ideal (see above).
+</p>
+<p>To obtain a representing set of the quotient vector space we first
+calculate a standard basis, then we apply the function <code>kbase</code> to
+this standard basis.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">J = groebner(J);
+ideal K = kbase(J);
+K;
+&rarr; K[1]=y4
+&rarr; K[2]=xy3
+&rarr; K[3]=y3
+&rarr; K[4]=xy2
+&rarr; K[5]=y2
+&rarr; K[6]=x2y
+&rarr; K[7]=xy
+&rarr; K[8]=y
+&rarr; K[9]=x3
+&rarr; K[10]=x2
+&rarr; K[11]=x
+&rarr; K[12]=1
+</pre></td></tr></table>
+
+<p>Then
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(K);
+&rarr; 12
+</pre></td></tr></table>
+
+<p>gives the desired vector space dimension
+As in <small>SINGULAR</small> the functions may take the input directly from
+earlier calculations, the whole sequence of commands may be written
+in one single statement.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(kbase(groebner(jacob(f))));
+&rarr; 12
+</pre></td></tr></table>
+
+<p>When we are not interested in a basis of the quotient vector space, but
+only in the resulting dimension we may even use the command <code>vdim</code>
+and write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">vdim(groebner(jacob(f)));
+&rarr; 12
+</pre></td></tr></table>
+
+<hr size="6">
+<a name="Procedures-and-libraries"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Rings-and-standard-bases" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-of-rings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Procedures-and-libraries-1"></a>
+<h3 class="subsection">2.3.3 Procedures and libraries</h3>
+<a name="index-Procedures-and-libraries"></a>
+
+<p><small>SINGULAR</small> offers a comfortable programming language, with a syntax
+close to C. So it is possible to define procedures which collect several
+commands to a new one. Procedures are defined with the keyword
+<code>proc</code> followed by a name and an optional parameter list with
+specified types.  Finally, a procedure may return values using the
+command <code>return</code>.
+</p>
+<p>Define the following procedure called <code>Milnor</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc Milnor (poly h)
+{
+  return(vdim(groebner(jacob(h))));
+}
+</pre></td></tr></table>
+
+<p>Note: if you have entered the first line of the procedure and pressed
+<code>RETURN</code>, <small>SINGULAR</small> prints the prompt <code>.</code> (dot) instead of
+the usual prompt <code>&gt;</code> . This shows that the input is incomplete and
+<small>SINGULAR</small> expects more lines. After typing the closing curly
+bracket, <small>SINGULAR</small> prints the usual prompt indicating that the input
+is now complete.
+</p>
+<p>Then call the procedure:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">Milnor(f);
+&rarr; 12
+</pre></td></tr></table>
+
+<p>Note that the result may depend on the basering as we will
+see in the next chapter.
+</p>
+<p>The distribution of  <small>SINGULAR</small> contains  several libraries, each of
+which is a collection of useful
+procedures based on the kernel commands, which extend the functionality
+of <small>SINGULAR</small>. The command <code>help &quot;all.lib&quot;;</code> lists all libraries
+together with a one-line explanation.
+</p>
+<p>One of these libraries is <code>sing.lib</code> which already contains a
+procedure called <code>milnor</code> to calculate the Milnor number not only
+for hypersurfaces but more generally for complete intersection
+singularities.
+</p>
+<p>Libraries are loaded with the command <code>LIB</code>. Some additional
+information during the process of loading is displayed on the screen,
+which we omit here.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
+</pre></td></tr></table>
+
+<p>As all input in <small>SINGULAR</small> is case sensitive, there is no conflict with
+the previously  defined procedure <code>Milnor</code>, but the result is the same.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">milnor(f);
+&rarr; 12
+</pre></td></tr></table>
+
+<p>The procedures in a library have a help part
+which is displayed by typing
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">help milnor;
+</pre></td></tr></table>
+
+<p>as well as some examples, which are executed by
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">example milnor;
+</pre></td></tr></table>
+
+<p>Likewise, the library itself has a help part, to show a list of
+all the functions
+available for the user which are contained in the library.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">help sing.lib;
+</pre></td></tr></table>
+
+<p>The output of the help commands is omitted here.
+</p>
+<hr size="6">
+<a name="Change-of-rings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Procedures-and-libraries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Modules-and-their-annihilator" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Change-of-rings-1"></a>
+<h3 class="subsection">2.3.4 Change of rings</h3>
+<a name="index-Change-of-rings"></a>
+
+<p>To calculate the local Milnor number we have to do the calculation with the
+same commands in a ring with local ordering.
+Define the localization of the polynomial ring at the origin
+(see section <a href="singular_8.html#Polynomial-data">Polynomial data</a>, and <a href="singular_9.html#Mathematical-background">Mathematical background</a>).
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rl = 0,(x,y,z),ds;
+</pre></td></tr></table>
+
+<p>This ordering determines the standard basis which will be calculated.
+Fetch the polynomial defined in the ring <code>r</code> into this new ring,
+thus avoiding retyping the input.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly f = fetch(r,f);
+f;
+&rarr; z2+x3+y3+x3y2-x2y3
+</pre></td></tr></table>
+
+<p>Instead of <code>fetch</code> we can use the function <code>imap</code>
+which is more general but less efficient.
+The most general way to fetch data from one ring to another is to use maps,
+this will be explained in <a href="singular_4.html#map">map</a>.
+</p>
+<p>In this ring the terms are ordered by increasing exponents. The local Milnor
+number is now
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">Milnor(f);
+&rarr; 4
+</pre></td></tr></table>
+
+<p>This shows that <code>f</code> has outside the origin in affine 3-space
+singularities with local Milnor number adding up to
+Using global and local orderings as above is a convenient way to check
+whether a variety has singularities outside the origin.
+</p>
+<p>The command <code>jacob</code> applied twice gives the Hessian of <code>f</code>, a
+3x3 - matrix.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">matrix H = jacob(jacob(f));
+H;
+&rarr; H[1,1]=6x+6xy2-2y3
+&rarr; H[1,2]=6x2y-6xy2
+&rarr; H[1,3]=0
+&rarr; H[2,1]=6x2y-6xy2
+&rarr; H[2,2]=6y+2x3-6x2y
+&rarr; H[2,3]=0
+&rarr; H[3,1]=0
+&rarr; H[3,2]=0
+&rarr; H[3,3]=2
+</pre></td></tr></table>
+
+<p>The <code>print</code> command displays the matrix in a nicer form.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">print(H);
+&rarr; 6x+6xy2-2y3,6x2y-6xy2,  0,
+&rarr; 6x2y-6xy2,  6y+2x3-6x2y,0,
+&rarr; 0,          0,          2
+</pre></td></tr></table>
+
+<p>We may calculate the determinant and (the ideal generated by all) minors of
+a given size.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">det(H);
+&rarr; 72xy+24x4-72x3y+72xy3-24y4-48x4y2+64x3y3-48x2y4
+minor(H,1);  // the 1x1 - minors
+&rarr; _[1]=2
+&rarr; _[2]=6y+2x3-6x2y
+&rarr; _[3]=6x2y-6xy2
+&rarr; _[4]=6x2y-6xy2
+&rarr; _[5]=6x+6xy2-2y3
+</pre></td></tr></table>
+
+<p>The algorithm of the standard basis computations may be
+affected by the command <code>option</code>. For example, a reduced standard
+basis of the ideal generated by the
+ of H  is obtained in the following way:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">option(redSB);
+groebner(minor(H,1));
+&rarr; _[1]=1
+</pre></td></tr></table>
+
+<p>This shows that 1 is contained in the ideal of the
+hence the corresponding variety is empty.
+</p>
+
+<hr size="6">
+<a name="Modules-and-their-annihilator"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Change-of-rings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Resolution" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Modules-and-their-annihilator-1"></a>
+<h3 class="subsection">2.3.5 Modules and their annihilator</h3>
+<a name="index-Modules-and-and-their-annihilator"></a>
+
+<p>Now we shall give three more advanced examples.
+</p>
+<p><small>SINGULAR</small> is able to handle modules over all the rings,
+which can be defined as a basering. A free module of rank <code>n</code>
+is defined as follows:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rr;
+int n = 4;
+freemodule(4);
+&rarr; _[1]=gen(1)
+&rarr; _[2]=gen(2)
+&rarr; _[3]=gen(3)
+&rarr; _[4]=gen(4)
+typeof(_);
+&rarr; module
+print(freemodule(4));
+&rarr; 1,0,0,0,
+&rarr; 0,1,0,0,
+&rarr; 0,0,1,0,
+&rarr; 0,0,0,1
+</pre></td></tr></table>
+
+<p>To define a module, we give a list of vectors generating a submodule of
+a free module. Then this set of vectors may be identified with the
+columns of a matrix.  For that reason in <small>SINGULAR</small> matrices and
+modules may be interchanged. However, the representation is different
+(modules may be considered as sparse represented matrices).
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r =0,(x,y,z),dp;
+module MD = [x,0,x],[y,z,-y],[0,z,-2y];
+matrix MM = MD;
+print(MM);
+&rarr; x,y,0,
+&rarr; 0,z,z,
+&rarr; x,-y,-2y
+</pre></td></tr></table>
+
+<p>However the submodule 
+ may also be considered as the module
+of relations of the factor module
+In this way, <small>SINGULAR</small> can treat arbitrary finitely generated modules
+over the
+basering (see section <a href="singular_8.html#Representation-of-mathematical-objects">Representation of mathematical objects</a>).
+</p>
+<p>In order to get the module of relations of 
+,
+we use the command <code>syz</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">syz(MD);
+&rarr; _[1]=x*gen(3)-x*gen(2)+y*gen(1)
+</pre></td></tr></table>
+
+<p>We want to calculate, as an application, the annihilator of a given module.
+Let
+where U is our defining module of relations for the module
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
+</pre></td></tr></table>
+
+<p>Then, by definition, the annihilator of M is the ideal
+which is by the description of M the same as
+Hence we have to calculate the quotient
+The rank of the free module is determined by the choice of U and is the
+number of rows of the corresponding matrix. This may be determined by
+the function <code>nrows</code>. All we have to do now is the following:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">quotient(U,freemodule(nrows(U)));
+</pre></td></tr></table>
+
+<p>The result is too big to be shown here.
+</p>
+<hr size="6">
+<a name="Resolution"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Modules-and-their-annihilator" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-started" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Resolution-1"></a>
+<h3 class="subsection">2.3.6 Resolution</h3>
+<a name="index-Resolution"></a>
+
+<p>There are several commands in <small>SINGULAR</small> for computing free resolutions.
+The most general command is <code>res(... ,n)</code> which determines heuristically
+what method to use for the given problem. It computes the free resolution
+up to the length 
+, where 
+ corresponds to the full resolution.
+</p>
+<p>Here we use the possibility to inspect the calculation process using the
+option <code>prot</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R;      // the default ring in char 32003
+R;
+&rarr; //   characteristic : 32003
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y z
+&rarr; //        block   2 : ordering C
+ideal I = x4+x3y+x2yz,x2y2+xy2z+y2z2,x2z2+2xz3,2x2z2+xyz2;
+option(prot);
+resolution rs = res(I,0);
+&rarr; using lres
+&rarr; 4(m0)4(m1).5(m1)g.g6(m1)...6(m2)..
+</pre></td></tr></table>
+
+<p>Disable this protocol with
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">option(noprot);
+</pre></td></tr></table>
+
+<p>When we enter the name of the calculated resolution, we get a pictorial
+description of the minimized resolution where the exponents denote the rank of the
+free modules. Note that the calculated resolution itself may not yet be minimal.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs;
+&rarr; 1      4      5      2      0
+&rarr;R  &lt;-- R  &lt;-- R  &lt;-- R  &lt;-- R
+&rarr;
+&rarr;0      1      2      3      4
+print(betti(rs),&quot;betti&quot;);
+&rarr;            0     1     2     3
+&rarr; ------------------------------
+&rarr;     0:     1     -     -     -
+&rarr;     1:     -     -     -     -
+&rarr;     2:     -     -     -     -
+&rarr;     3:     -     4     1     -
+&rarr;     4:     -     -     1     -
+&rarr;     5:     -     -     3     2
+&rarr; ------------------------------
+&rarr; total:     1     4     5     2
+</pre></td></tr></table>
+
+<p>In order to minimize the resolution, that is to calculate the maps of the minimal 
+free resolution, we use the command <code>minres</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs=minres(rs);
+</pre></td></tr></table>
+
+<p>A single module in this resolution is obtained (as usual) with the
+brackets <code>[</code> and <code>]</code>. The <code>print</code> command can be used to
+display a module in a more readable format:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">print(rs[3]);
+&rarr; z3,   -xyz-y2z-4xz2+16z3,
+&rarr; 0,    -y2,
+&rarr; -y+4z,48z, 
+&rarr; x+2z, 48z, 
+&rarr; 0,    x+y-z  
+</pre></td></tr></table>
+
+<p>In this case, the output is to be interpreted as follows: the 3rd syzygy
+module of R/I, <code>rs[3]</code>, is the rank-2-submodule of
+generated by the vectors
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_3.html#General-concepts" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

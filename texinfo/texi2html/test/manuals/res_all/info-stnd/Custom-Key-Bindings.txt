@@ -1,0 +1,188 @@
+12 Customizing Key Bindings and Variables
+*****************************************
+
+
+For those whose editor/pager of choice is not Emacs and who are not
+entirely satisfied with the -vi-keys option (see --vi-keys), GNU
+Info provides a way to define different key-to-command bindings and
+variable settings from the defaults described in this document.
+
+On startup, GNU Info looks for a configuration file in the invoker's
+HOME directory called `.info'(7).  If it is present, and
+appears to contain Info configuration data, and was created with the
+current version of the infokey command, then Info adopts the
+key bindings and variable settings contained therein.
+
+The `.info' file contains compact, non-textual data for reasons of
+efficiency and because its design was lifted wholesale from the GNU Less
+program, which also does it that way.  It must be created by compiling a
+textual source file using the infokey command.
+
+* Invoking infokey::
+* infokey source format::
+
+
+12.1 Invoking infokey
+=====================
+
+
+infokey compiles a source file
+(`$HOME/.infokey'(8) by default) containing Info customizations
+into a binary format (`$HOME/.info' by default).  GNU Info reads
+the binary file at startup to override the default key bindings and
+variable definitions.  Synopsis:
+
+infokey [option...] [input-file]
+
+Besides the standard `--help' and `--version', the only
+option is `--output file'.  This tells infokey to
+write the binary data to file instead of `$HOME/.info'.
+
+
+12.2 infokey source format
+==========================
+
+
+The format of the source file read by infokey is most easily
+illustrated by example.  For instance, here is a sample `.infokey'
+source file suitable for aficionados of vi or less:
+
+#info
+j       next-line
+k       prev-line
+l       forward-char
+h       backward-char
+\kd     next-line
+\ku     prev-line
+\kr     forward-char
+\kl     backward-char
+\       scroll-forward
+\kD     scroll-forward-page-only
+b       scroll-backward
+\kU     scroll-backward-page-only
+g       beginning-of-node
+\kh     beginning-of-node
+G       end-of-node
+\ke     end-of-node
+\t      select-reference-this-line
+-       history-node
+n       next-node
+p       prev-node
+u       up-node
+t       top-node
+d       dir-node
+#var
+scroll-step=1
+
+The source file consists of one or more sections.
+Each section starts with a line that identifies the type of section.
+Possible sections are:
+
+#info
+Key bindings for Info windows.
+The start of this section is indicated by a line containing just
+#info by itself.  If this is the first section in the source
+file, the #info line can be omitted.  The rest of this section
+consists of lines of the form:
+
+string whitespace action [ whitespace [ # comment ] ] newline
+
+Whitespace is any sequence of one or more spaces and/or tabs.  Comment
+is any sequence of any characters, excluding newline.  string is
+the key sequence which invokes the action.  action is the name of
+an Info command.  The characters in string are interpreted
+literally or prefixed by a caret (^) to indicate a control
+character.  A backslash followed by certain characters specifies input
+keystrokes as follows:
+
+\b
+Backspace
+\e
+Escape (ESC)
+\n
+Newline
+\r
+Return
+\t
+Tab
+\ku
+Up arrow
+\kd
+Down arrow
+\kl
+Left arrow
+\kr
+Right arrow
+\kU
+Page Up
+\kD
+Page Down
+\kh
+HOME
+\ke
+END
+\kx
+Delete (DEL)
+\mx
+Meta-x where x is any character as described above.
+
+Backslash followed by any other character indicates that character is to
+be taken literally.  Characters which must be preceded by a backslash
+include caret, space, tab, and backslash itself.
+
+#echo-area
+Key bindings for the echo area.
+The start of this section is indicated by a line containing just
+#echo-area by itself.  The rest of this section has a syntax
+identical to that for the key definitions for the Info area, described
+above.
+
+#var
+Variable initializations.
+The start of this section is indicated by a line containing just
+#var by itself.  Following this line is a list of variable
+assignments, one per line.  Each line consists of a variable name
+(See Variables,) followed by = followed by a value.
+There may be no white space between the variable name and the =,
+and all characters following the =, including white space,
+are included in the value.
+
+Blank lines and lines starting with # are ignored, except for
+the special section header lines.
+
+Key bindings defined in the `.info' file take precedence over GNU
+Info's default key bindings, whether or not `--vi-keys' is used.  A
+default key binding may be disabled by overriding it in the `.info'
+file with the action invalid.  In addition, all default
+key bindings can be disabled by adding this line anywhere in the
+relevant section:
+
+#stop
+
+This will cause GNU Info to ignore all the default key commands for that
+section.
+
+Beware: #stop can be dangerous.  Since it disables all default
+key bindings, you must supply enough new key bindings to enable all
+necessary actions.  Failure to bind any key to the quit command,
+for example, can lead to frustration.
+
+The order in which key bindings are defined in the `.info' file is
+not important, except that the command summary produced by the
+get-help-window command only displays the first key that
+is bound to each command.
+
+
+
+
+(7)
+Due to the limitations of
+DOS filesystems, the MS-DOS version of Info looks for a file
+`_info' instead.  If the HOME variable is not defined, Info
+additionally looks in the current directory.
+
+(8)
+This file is named `_infokey' in
+the MS-DOS version, and is looked for in the current directory if
+HOME is undefined.
+

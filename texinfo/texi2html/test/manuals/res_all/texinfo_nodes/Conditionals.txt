@@ -1,0 +1,24 @@
+16 Conditionally Visible Text
+*****************************
+
+Sometimes it is good to use different text for different output formats.
+For example, you can use the conditional commands to specify
+different text for the printed manual and the Info output.
+
+Conditional commands may not be nested.
+
+The conditional commands comprise the following categories.
+
+* Commands for HTML, Info, or TeX.
+* Commands for not HTML, Info, or TeX.
+* Raw TeX or HTML commands.
+* Substituting text for all formats, and testing if a flag is set or clear.
+
+* Conditional Commands::        Specifying text for HTML, Info, or TeX.
+* Conditional Not Commands::    Specifying text for not HTML, Info, or TeX.
+* Raw Formatter Commands::      Using raw TeX or HTML commands.
+* set clear value::             Designating which text to format (for
+                                  all output formats); and how to set a
+                                  flag to a string that you can insert.
+
+

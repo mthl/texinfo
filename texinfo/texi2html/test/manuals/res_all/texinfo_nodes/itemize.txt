@@ -1,0 +1,81 @@
+11.1 @itemize: Making an Itemized List
+======================================
+
+The @itemize command produces sequences of indented
+paragraphs, with a bullet or other mark inside the left margin
+at the beginning of each paragraph for which such a mark is desired.
+
+Begin an itemized list by writing @itemize at the beginning of
+a line.  Follow the command, on the same line, with a character or a
+Texinfo command that generates a mark.  Usually, you will write
+@bullet after @itemize, but you can use
+@minus, or any command or character that results in a single
+character in the Info file.  If you don't want any mark at all, use
+@w.  (When you write the mark command such as
+@bullet after an @itemize command, you may omit the
+`{}'.)  If you don't specify a mark command, the default is
+@bullet.
+
+Write the text of the indented paragraphs themselves after the
+@itemize, up to another line that says @end
+itemize.
+
+Before each paragraph for which a mark in the margin is desired, write a
+line that says just @item.  It is ok to have text following the
+@item.
+
+Usually, you should put a blank line before an @item.  This
+puts a blank line in the Info file. (TeX inserts the proper
+interline whitespace in either case.)  Except when the entries are
+very brief, these blank lines make the list look better.
+
+Here is an example of the use of @itemize, followed by the
+output it produces.  @bullet produces an `*' in Info and a
+round dot in TeX.
+
+@itemize @bullet
+@item
+Some text for foo.
+
+@item
+Some text
+for bar.
+@end itemize
+
+This produces:
+
+* Some text for foo.
+
+* Some text
+for bar.
+
+Itemized lists may be embedded within other itemized lists.  Here is a
+list marked with dashes embedded in a list marked with bullets:
+
+@itemize @bullet
+@item
+First item.
+
+@itemize @minus
+@item
+Inner item.
+
+@item
+Second inner item.
+@end itemize
+
+@item
+Second outer item.
+@end itemize
+
+This produces:
+
+* First item.
+
+-- Inner item.
+
+-- Second inner item.
+
+* Second outer item.
+
+

@@ -1,0 +1,106 @@
+<div id="import"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: history options#history-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: import options#import-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
+=== import&mdash;Import sources into CVS, using vendor branches ===
+<div id="index-import-_0028subcommand_0029"></div>
+
+
+<ul>
+<li>
+Synopsis: import [-options] repository vendortag releasetag&hellip;
+</li><li>
+Requires: Repository, source distribution directory.
+</li><li>
+Changes: repository.
+</li></ul>
+
+<p>Use <code>import</code> to incorporate an entire source
+distribution from an outside source (e.g., a source
+vendor) into your source repository directory.  You can
+use this command both for initial creation of a
+repository, and for wholesale updates to the module
+from the outside source.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+a discussion on this subject.
+</p>
+<p>The <var>repository</var> argument gives a directory name
+(or a path to a directory) under the <small>CVS</small> root directory
+for repositories; if the directory did not exist,
+import creates it.
+</p>
+<p>When you use import for updates to source that has been
+modified in your source repository (since a prior
+import), it will notify you of any files that conflict
+in the two branches of development; use &lsquo;<samp>checkout
+-j</samp>&rsquo; to reconcile the differences, as import instructs
+you to do.
+</p>
+<p>If <small>CVS</small> decides a file should be ignored
+(see section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore]), it does not import it and prints
+&lsquo;<samp>I </samp>&rsquo; followed by the filename (see section [cvs: import output#import-output import output], for a
+complete description of the output).
+</p>
+<p>If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
+any file whose names match the specifications in that
+file will be treated as packages and the appropriate
+filtering will be performed on the file/directory
+before being imported.  See section [cvs: The cvswrappers file#Wrappers The cvswrappers file].
+</p>
+<p>The outside source is saved in a first-level
+branch, by default 1.1.1.  Updates are leaves of this
+branch; for example, files from the first imported
+collection of source will be revision 1.1.1.1, then
+files from the first imported update will be revision
+1.1.1.2, and so on.
+</p>
+<p>At least three arguments are required.
+<var>repository</var> is needed to identify the collection
+of source.  <var>vendortag</var> is a tag for the entire
+branch (e.g., for 1.1.1).  You must also specify at
+least one <var>releasetag</var> to identify the files at
+the leaves created each time you execute <code>import</code>.
+</p>
+<p>Note that <code>import</code> does <em>not</em> change the
+directory in which you invoke it.  In particular, it
+does not set up that directory as a <small>CVS</small> working
+directory; if you want to work with the sources import
+them first and then check them out into a different
+directory (see section [cvs: Getting the source#Getting-the-source Getting the source]).
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: import options#import-options  import options]::<nowiki>              import options
+</nowiki>&bull;[cvs: import output#import-output  import output]::<nowiki>               import output
+</nowiki>&bull;[cvs: import examples#import-examples  import examples]::<nowiki>             import examples
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: history options#history-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: import options#import-options  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

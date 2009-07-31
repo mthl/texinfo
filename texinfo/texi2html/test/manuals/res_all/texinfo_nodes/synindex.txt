@@ -1,0 +1,12 @@
+12.4.2 @synindex
+----------------
+
+The @synindex command is nearly the same as the
+@syncodeindex command, except that it does not put the
+`from' index  entries into the @code font; rather it puts
+them in the roman font.  Thus, you use @synindex when you
+merge a concept index into a function index.
+
+See Printing Indices & Menus, for information about printing an index
+at the end of a book or creating an index menu in an Info file.
+

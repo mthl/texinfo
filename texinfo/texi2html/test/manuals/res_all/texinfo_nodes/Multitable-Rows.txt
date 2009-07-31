@@ -1,0 +1,39 @@
+11.4.2 Multitable Rows
+----------------------
+
+After the @multitable command defining the column widths (see
+the previous section), you begin each row in the body of a multitable
+with @item, and separate the column entries with @tab.
+Line breaks are not special within the table body, and you may break
+input lines in your source file as necessary.
+
+Here is a complete example of a multi-column table (the text is from
+The GNU Emacs Manual, see (emacs)Split Window section `Splitting Windows' in The GNU Emacs Manual):
+
+@multitable @columnfractions .15 .45 .4
+@item Key @tab Command @tab Description
+@item C-x 2
+@tab @code{split-window-vertically}
+@tab Split the selected window into two windows,
+with one above the other.
+@item C-x 3
+@tab @code{split-window-horizontally}
+@tab Split the selected window into two windows
+positioned side by side.
+@item C-Mouse-2
+@tab
+@tab In the mode line or scroll bar of a window,
+split that window.
+@end multitable
+
+produces:
+
+ Key Command Description
+ C-x 2 split-window-vertically Split the selected window into two windows,
+with one above the other.
+ C-x 3 split-window-horizontally Split the selected window into two windows
+positioned side by side.
+ C-Mouse-2  In the mode line or scroll bar of a window,
+split that window.
+
+

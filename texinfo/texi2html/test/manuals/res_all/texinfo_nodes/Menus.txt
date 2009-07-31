@@ -1,0 +1,24 @@
+7 Menus
+*******
+
+Menus contain pointers to subordinate nodes.(6) In
+Info, you use menus to go to such nodes.  Menus have no effect in
+printed manuals and do not appear in them.
+
+By convention, a menu is put at the end of a node since a reader who
+uses the menu may not see text that follows it.  Furthermore, a node
+that has a menu should not contain much text. If you have a lot of text
+and a menu, move most of the text into a new subnode--all but a few
+lines.  Otherwise, a reader with a terminal that displays only a few
+lines may miss the menu and its associated text.  As a practical matter,
+you should locate a menu within 20 lines of the beginning of the
+node.
+
+* Menu Location::               Put a menu in a short node.
+* Writing a Menu::              What is a menu?
+* Menu Parts::                  A menu entry has three parts.
+* Less Cluttered Menu Entry::   Two part menu entry.
+* Menu Example::                Two and three part menu entries.
+* Other Info Files::            How to refer to a different Info file.
+
+

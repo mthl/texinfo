@@ -1,0 +1,57 @@
+3.4.6 The @headings Command
+---------------------------
+
+The @headings command is rarely used.  It specifies what kind of
+page headings and footings to print on each page.  Usually, this is
+controlled by the @setchapternewpage command.  You need the
+@headings command only if the @setchapternewpage command
+does not do what you want, or if you want to turn off pre-defined page
+headings prior to defining your own.  Write an @headings command
+immediately after the @end titlepage command.
+
+You can use @headings as follows:
+
+@headings off
+Turn off printing of page headings.
+
+@headings single
+Turn on page headings appropriate for single-sided printing.
+
+
+@headings double
+@headings on
+Turn on page headings appropriate for double-sided printing.  The two
+commands, @headings on and @headings double, are
+synonymous.
+
+@headings singleafter
+@headings doubleafter
+Turn on single or double headings, respectively, after the
+current page is output.
+
+@headings on
+Turn on page headings: single if `@setchapternewpage
+on', double otherwise.
+
+For example, suppose you write @setchapternewpage off before the
+@titlepage command to tell TeX to start a new chapter on the
+same page as the end of the last chapter.  This command also causes
+TeX to typeset page headers for single-sided printing.  To cause
+TeX to typeset for double sided printing, write @headings
+double after the @end titlepage command.
+
+You can stop TeX from generating any page headings at all by
+writing @headings off on a line of its own immediately after the
+line containing the @end titlepage command, like this:
+
+@end titlepage
+@headings off
+
+The @headings off command overrides the @end titlepage
+command, which would otherwise cause TeX to print page
+headings.
+
+You can also specify your own style of page heading and footing.
+See Page Headings, for more information.
+
+

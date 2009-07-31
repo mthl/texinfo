@@ -1,0 +1,56 @@
+1.4 Printed Books
+=================
+
+A Texinfo file can be formatted and typeset as a printed book or manual.
+To do this, you need TeX, a powerful, sophisticated typesetting
+program written by Donald Knuth.(3)
+
+A Texinfo-based book is similar to any other typeset, printed work: it
+can have a title page, copyright page, table of contents, and preface,
+as well as chapters, numbered or unnumbered sections and subsections,
+page headers, cross references, footnotes, and indices.
+
+You can use Texinfo to write a book without ever having the intention
+of converting it into online information.  You can use Texinfo for
+writing a printed novel, and even to write a printed memo, although
+this latter application is not recommended since electronic mail is so
+much easier.
+
+TeX is a general purpose typesetting program.  Texinfo provides a
+file `texinfo.tex' that contains information (definitions or
+macros) that TeX uses when it typesets a Texinfo file.
+(`texinfo.tex' tells TeX how to convert the Texinfo @-commands
+to TeX commands, which TeX can then process to create the typeset
+document.)  `texinfo.tex' contains the specifications for printing
+a document.  You can get the latest version of `texinfo.tex' from
+<ftp://ftp.gnu.org/gnu/texinfo.tex>.
+
+In the United States, documents are most often printed on 8.5 inch by 11
+inch pages (216mm by 280mm); this is the default size.  But
+you can also print for 7 inch by 9.25 inch pages (178mm by
+235mm, the @smallbook size; or on A4 or A5 size paper
+(@afourpaper, @afivepaper).  (See Printing "Small" Books.  Also, see Printing on A4 Paper.)
+
+By changing the parameters in `texinfo.tex', you can change the
+size of the printed document.  In addition, you can change the style in
+which the printed document is formatted; for example, you can change the
+sizes and fonts used, the amount of indentation for each paragraph, the
+degree to which words are hyphenated, and the like.  By changing the
+specifications, you can make a book look dignified, old and serious, or
+light-hearted, young and cheery.
+
+TeX is freely distributable.  It is written in a superset of Pascal
+called WEB and can be compiled either in Pascal or (by using a
+conversion program that comes with the TeX distribution) in C.
+(See (emacs)TeX Mode section `TeX Mode' in The GNU Emacs Manual, for information
+about TeX.)
+
+TeX is very powerful and has a great many features.  Because a
+Texinfo file must be able to present information both on a
+character-only terminal in Info form and in a typeset book, the
+formatting commands that Texinfo supports are necessarily limited.
+
+To get a copy of TeX, see
+How to Obtain TeX.
+
+

@@ -1,0 +1,17 @@
+13.9.2 @result{} (=>): Indicating Evaluation
+--------------------------------------------
+
+Use the @result{} command to indicate the result of
+evaluating an expression.
+
+The @result{} command is displayed as `=>' in Info
+and as a double stemmed arrow in the printed output.
+
+Thus, the following,
+
+(cdr '(1 2 3))
+     => (2 3)
+
+may be read as "(cdr '(1 2 3)) evaluates to (2 3)".
+
+

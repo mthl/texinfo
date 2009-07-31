@@ -1,0 +1,22 @@
+15.4 The Definition Commands
+============================
+
+Texinfo provides more than a dozen definition commands, all of which
+are described in this section.
+
+The definition commands automatically enter the name of the entity in
+the appropriate index: for example, @deffn, @defun,
+and @defmac enter function names in the index of functions;
+@defvr and @defvar enter variable names in the index
+of variables.
+
+Although the examples that follow mostly illustrate Lisp, the commands
+can be used for other programming languages.
+
+* Functions Commands::          Commands for functions and similar entities.
+* Variables Commands::          Commands for variables and similar entities.
+* Typed Functions::             Commands for functions in typed languages.
+* Typed Variables::             Commands for variables in typed languages.
+* Abstract Objects::            Commands for object-oriented programming.
+* Data Types::                  The definition command for data types.
+

@@ -1,0 +1,65 @@
+3.6.2 @setchapternewpage:
+-------------------------
+
+In an officially bound book, text is usually printed on both sides of
+the paper, chapters start on right-hand pages, and right-hand pages have
+odd numbers.  But in short reports, text often is printed only on one
+side of the paper.  Also in short reports, chapters sometimes do not
+start on new pages, but are printed on the same page as the end of the
+preceding chapter, after a small amount of vertical whitespace.
+
+You can use the @setchapternewpage command with various
+arguments to specify how TeX should start chapters and whether it
+should format headers for printing on one or both sides of the paper
+(single-sided or double-sided printing).
+
+Write the @setchapternewpage command at the beginning of a
+line followed by its argument.
+
+For example, you would write the following to cause each chapter to
+start on a fresh odd-numbered page:
+
+@setchapternewpage odd
+
+You can specify one of three alternatives with the
+@setchapternewpage command:
+
+@setchapternewpage off
+Cause TeX to typeset a new chapter on the same page as the last
+chapter, after skipping some vertical whitespace.  Also, cause TeX to
+format page headers for single-sided printing.
+
+@setchapternewpage on
+Cause TeX to start new chapters on new pages and to format page
+headers for single-sided printing.  This is the form most often used for
+short reports or personal printing. This is the default.
+
+@setchapternewpage odd
+Cause TeX to start new chapters on new, odd-numbered pages
+(right-handed pages) and to typeset for double-sided printing.  This is
+the form most often used for books and manuals.
+
+Texinfo does not have an @setchapternewpage even command,
+because there is no printing tradition of starting chapters or books on
+an even-numbered page.
+
+If you don't like the default headers that @setchapternewpage
+sets, you can explicit control them with the @headings command.
+See The @headings Command.
+
+At the beginning of a manual or book, pages are not numbered--for
+example, the title and copyright pages of a book are not numbered.  By
+convention, table of contents and frontmatter pages are numbered with
+roman numerals and not in sequence with the rest of the document.
+
+Since an Info file does not have pages, the @setchapternewpage
+command has no effect on it.
+
+We recommend not including any @setchapternewpage command in
+your manual sources at all, since the desired output is not intrinsic to
+the document.  For a particular hard copy run, if you don't want the
+default option (no blank pages, same headers on all pages) use the
+`--texinfo' option to texi2dvi to specify the output
+you want.
+
+

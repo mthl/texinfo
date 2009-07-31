@@ -1,0 +1,22 @@
+19.5 From an Emacs Shell
+========================
+
+You can give formatting and printing commands from a shell within GNU
+Emacs.  To create a shell within Emacs, type M-x shell.  In this
+shell, you can format and print the document.  See Format and Print Hardcopy, for details.
+
+You can switch to and from the shell buffer while tex is
+running and do other editing.  If you are formatting a long document
+on a slow machine, this can be very convenient.
+
+You can also use texi2dvi from an Emacs shell.  For example,
+here is how to use texi2dvi to format and print Using and
+Porting GNU CC from a shell within Emacs:
+
+texi2dvi gcc.texinfo
+lpr -d gcc.dvi
+
+See Texinfo Mode Printing, for more information about formatting
+and printing in Texinfo mode.
+
+

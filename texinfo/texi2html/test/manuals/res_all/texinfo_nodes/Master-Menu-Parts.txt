@@ -1,0 +1,56 @@
+3.5.2 Parts of a Master Menu
+----------------------------
+
+A master menu is a detailed main menu listing all the nodes in a
+file.
+
+A master menu is enclosed in @menu and @end menu
+commands and does not appear in the printed document.
+
+Generally, a master menu is divided into parts.
+
+* The first part contains the major nodes in the Texinfo file: the nodes
+for the chapters, chapter-like sections, and the appendices.
+
+* The second part contains nodes for the indices.
+
+* The third and subsequent parts contain a listing of the other, lower
+level nodes, often ordered by chapter.  This way, rather than go
+through an intermediary menu, an inquirer can go directly to a
+particular node when searching for specific information.  These menu
+items are not required; add them if you think they are a
+convenience.  If you do use them, put @detailmenu before the
+first one, and @end detailmenu after the last; otherwise,
+makeinfo will get confused.
+
+Each section in the menu can be introduced by a descriptive line.  So
+long as the line does not begin with an asterisk, it will not be
+treated as a menu entry.  (See Writing a Menu, for more
+information.)
+
+For example, the master menu for this manual looks like the following
+(but has many more entries):
+
+@menu
+* Copying Conditions::  Your rights.
+* Overview::            Texinfo in brief.
+...
+* Command and Variable Index::
+* Concept Index::       
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Overview of Texinfo
+
+* Reporting Bugs:: ...
+...
+
+Beginning a Texinfo File
+
+* Sample Beginning:: ...
+...
+@end detailmenu
+@end menu
+
+

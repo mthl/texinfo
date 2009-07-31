@@ -1,0 +1,35 @@
+19.8 TeX Formatting Requirements Summary
+========================================
+
+Every Texinfo file that is to be input to TeX must begin with a
+\input command and must contain an @setfilename command:
+
+\input texinfo
+@setfilename arg-not-used-by-TeX
+
+The first command instructs TeX to load the macros it needs to
+process a Texinfo file and the second command opens auxiliary files.
+
+Every Texinfo file must end with a line that terminates TeX's
+processing and forces out unfinished pages:
+
+@bye
+
+Strictly speaking, these lines are all a Texinfo file needs to be
+processed successfully by TeX.
+
+Usually, however, the beginning includes an @settitle command to
+define the title of the printed manual, an @setchapternewpage
+command, a title page, a copyright page, and permissions.  Besides an
+@bye, the end of a file usually includes indices and a table of
+contents.  (And of course most manuals contain a body of text as well.)
+
+For more information, see:
+* @settitle
+* @setchapternewpage
+* Page Headings
+* Titlepage & Copyright Page
+* Printing Indices & Menus
+* Contents
+
+

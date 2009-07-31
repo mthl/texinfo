@@ -1,0 +1,8 @@
+13.5.2 @copyright{} ((C))
+-------------------------
+
+Use the @copyright{} command to generate `(C)'.  In
+a printed manual, this is a `c' inside a circle, and in Info,
+this is `(C)'.
+
+

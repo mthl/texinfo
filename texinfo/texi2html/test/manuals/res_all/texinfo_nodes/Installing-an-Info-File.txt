@@ -1,0 +1,16 @@
+20.2 Installing an Info File
+============================
+
+Info files are usually kept in the `info' directory.  You can read
+Info files using the standalone Info program or the Info reader built
+into Emacs.  (See info: (info)Top, for an introduction to Info.)
+
+* Directory File::              The top level menu for all Info files.
+* New Info File::               Listing a new Info file.
+* Other Info Directories::      How to specify Info files that are
+                                  located in other directories.
+* Installing Dir Entries::      How to specify what menu entry to add
+                                  to the Info directory.
+* Invoking install-info::       install-info options.
+
+

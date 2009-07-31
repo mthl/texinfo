@@ -1,0 +1,118 @@
+<div id="update-output"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: update options#update-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: update--Bring work tree in sync with repository#update  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="update-output-1"></div>
+==== update output ====
+
+<p><code>update</code> and <code>checkout</code> keep you informed of
+their progress by printing a line for each file, preceded
+by one character indicating the status of the file:
+</p>
+<dl compact="compact">
+<dt><code>U <var>file</var></code></dt>
+<dd><p>The file was brought up to date with respect to the
+repository.  This is done for any file that exists in
+the repository but not in your source, and for files
+that you haven&rsquo;t changed but are not the most recent
+versions available in the repository.
+</p>
+</dd>
+<dt><code>P <var>file</var></code></dt>
+<dd><p>Like &lsquo;<samp>U</samp>&rsquo;, but the <small>CVS</small> server sends a patch instead of an entire
+file.  This accomplishes the same thing as &lsquo;<samp>U</samp>&rsquo; using less bandwidth.
+</p>
+</dd>
+<dt><code>A <var>file</var></code></dt>
+<dd><p>The file has been added to your private copy of the
+sources, and will be added to the source repository
+when you run <code>commit</code> on the file.  This is a
+reminder to you that the file needs to be committed.
+</p>
+</dd>
+<dt><code>R <var>file</var></code></dt>
+<dd><p>The file has been removed from your private copy of the
+sources, and will be removed from the source repository
+when you run <code>commit</code> on the file.  This is a
+reminder to you that the file needs to be committed.
+</p>
+</dd>
+<dt><code>M <var>file</var></code></dt>
+<dd><p>The file is modified in  your  working  directory.
+</p>
+<p>&lsquo;<samp>M</samp>&rsquo; can indicate one of two states for a file
+you&rsquo;re working on: either there were no modifications
+to the same file in the repository, so that your file
+remains as you last saw it; or there were modifications
+in the repository as well as in your copy, but they
+were merged successfully, without conflict, in your
+working directory.
+</p>
+<p><small>CVS</small> will print some messages if it merges your work,
+and a backup copy of your working file (as it looked
+before you ran <code>update</code>) will be made.  The exact
+name of that file is printed while <code>update</code> runs.
+</p>
+</dd>
+<dt><code>C <var>file</var></code></dt>
+<dd><div id="index-_002e_0023-files"></div>
+<div id="index-_005f_005f-files-_0028VMS_0029"></div>
+<p>A conflict was detected while trying to merge your
+changes to <var>file</var> with changes from the source
+repository.  <var>file</var> (the copy in your working
+directory) is now the result of attempting to merge
+the two revisions; an unmodified copy of your file
+is also in your working directory, with the name
+&lsquo;<tt>.#<var>file</var>.<var>revision</var></tt>&rsquo; where <var>revision</var>
+is the revision that your modified file started
+from.  Resolve the conflict as described in
+[cvs: Conflicts example#Conflicts-example Conflicts example].
+(Note that some systems automatically purge
+files that begin with &lsquo;<tt>.#</tt>&rsquo; if they have not been
+accessed for a few days.  If you intend to keep a copy
+of your original file, it is a very good idea to rename
+it.)  Under <small>VMS</small>, the file name starts with
+&lsquo;<tt>__</tt>&rsquo; rather than &lsquo;<tt>.#</tt>&rsquo;.
+</p>
+</dd>
+<dt><code>? <var>file</var></code></dt>
+<dd><p><var>file</var> is in your working directory, but does not
+correspond to anything in the source repository, and is
+not in the list of files for <small>CVS</small> to ignore (see the
+description of the &lsquo;<samp>-I</samp>&rsquo; option, and
+see section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore]).
+</p></dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: update options#update-options  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: update--Bring work tree in sync with repository#update  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

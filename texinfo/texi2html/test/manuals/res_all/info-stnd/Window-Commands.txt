@@ -1,0 +1,273 @@
+8 Manipulating Multiple Windows
+*******************************
+
+A window is a place to show the text of a node.  Windows have a
+view area where the text of the node is displayed, and an associated
+mode line, which briefly describes the node being viewed.
+
+GNU Info supports multiple windows appearing in a single screen; each
+window is separated from the next by its modeline.  At any time, there
+is only one active window, that is, the window in which the cursor
+appears.  There are commands available for creating windows, changing
+the size of windows, selecting which window is active, and for deleting
+windows.
+
+* The Mode Line::               What appears in the mode line?
+* Basic Windows::               Manipulating windows in Info.
+* The Echo Area::               Used for displaying errors and reading input.
+
+8.1 The Mode Line
+=================
+
+A mode line is a line of inverse video which appears at the bottom
+of an Info window.  It describes the contents of the window just above
+it; this information includes the name of the file and node appearing in
+that window, the number of screen lines it takes to display the node,
+and the percentage of text that is above the top of the window.  It can
+also tell you if the indirect tags table for this Info file needs to be
+updated, and whether or not the Info file was compressed when stored on
+disk.
+
+Here is a sample mode line for a window containing an uncompressed file
+named `dir', showing the node `Top'.
+
+-----Info: (dir)Top, 40 lines --Top-------------------------------------
+            ^^   ^   ^^^        ^^
+          (file)Node #lines    where
+
+When a node comes from a file which is compressed on disk, this is
+indicated in the mode line with two small `z''s.  In addition, if
+the Info file containing the node has been split into subfiles, the name
+of the subfile containing the node appears in the modeline as well:
+
+--zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
+
+Truncation of long lines (as opposed to wrapping them to the next
+display line, see toggle-wrap) is indicated by a
+`$' at the left edge of the mode line:
+
+--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
+
+When Info makes a node internally, such that there is no corresponding
+info file on disk, the name of the node is surrounded by asterisks
+(`*').  The name itself tells you what the contents of the window
+are; the sample mode line below shows an internally constructed node
+showing possible completions:
+
+-----Info: *Completions*, 7 lines --All---------------------------------
+
+8.2 Window Commands
+===================
+
+It can be convenient to view more than one node at a time.  To allow
+this, Info can display more than one window.  Each window has its
+own mode line (see The Mode Line) and history of nodes viewed in that
+window (see history-node).
+
+C-x <o> (next-window)
+Select the next window on the screen.  Note that the echo area can only be
+selected if it is already in use, and you have left it temporarily.
+Normally, `C-x o' simply moves the cursor into the next window on
+the screen, or if you are already within the last window, into the first
+window on the screen.  Given a numeric argument, `C-x o' moves over
+that many windows.  A negative argument causes `C-x o' to select
+the previous window on the screen.
+
+M-x prev-window
+Select the previous window on the screen.  This is identical to
+`C-x o' with a negative argument.
+
+C-x <2> (split-window)
+Split the current window into two windows, both showing the same node.
+Each window is one half the size of the original window, and the cursor
+remains in the original window.  The variable automatic-tiling
+can cause all of the windows on the screen to be resized for you
+automatically, please see automatic-tiling for more
+information.
+
+C-x <0> (delete-window)
+Delete the current window from the screen.  If you have made too many
+windows and your screen appears cluttered, this is the way to get rid of
+some of them.
+
+C-x <1> (keep-one-window)
+Delete all of the windows excepting the current one.
+
+ESC <C-v> (scroll-other-window)
+Scroll the other window, in the same fashion that `C-v' might
+scroll the current window.  Given a negative argument, scroll the
+"other" window backward.
+
+C-x <^> (grow-window)
+Grow (or shrink) the current window.  Given a numeric argument, grow
+the current window that many lines; with a negative numeric argument,
+shrink the window instead.
+
+C-x <t> (tile-windows)
+Divide the available screen space among all of the visible windows.
+Each window is given an equal portion of the screen in which to display
+its contents.  The variable automatic-tiling can cause
+tile-windows to be called when a window is created or deleted.
+See automatic-tiling.
+
+8.3 The Echo Area
+=================
+
+The echo area is a one line window which appears at the bottom of
+the screen.  It is used to display informative or error messages, and to
+read lines of input from you when that is necessary.  Almost all of the
+commands available in the echo area are identical to their Emacs
+counterparts, so please refer to that documentation for greater depth of
+discussion on the concepts of editing a line of text.  The following
+table briefly lists the commands that are available while input is being
+read in the echo area:
+
+<C-f> (echo-area-forward)
+<RIGHT> (an arrow key)
+<M-h>, vi-like operation
+Move forward a character.
+
+<C-b> (echo-area-backward)
+<LEFT> (an arrow key)
+<M-l>, vi-like operation
+Move backward a character.
+
+<C-a> (echo-area-beg-of-line)
+<M-0>, vi-like operation
+Move to the start of the input line.
+
+<C-e> (echo-area-end-of-line)
+<M-$>, vi-like operation
+Move to the end of the input line.
+
+<M-f> (echo-area-forward-word)
+<C-<RIGHT>> (DOS/Windows only)
+<M-w>, vi-like operation
+Move forward a word.
+
+On DOS/Windows, C-<RIGHT> moves forward by words.
+
+<M-b> (echo-area-backward-word)
+<C-<LEFT>> (DOS/Windows only)
+Move backward a word.
+
+On DOS/Windows, C-<LEFT> moves backward by words.
+
+<C-d> (echo-area-delete)
+<M-x>, vi-like operation
+Delete the character under the cursor.
+
+<DEL> (echo-area-rubout)
+Delete the character behind the cursor.
+
+On some keyboards, this key is designated <BS>, for
+`BackSpace'.  Those keyboards will usually bind <DEL> in the
+echo area to echo-area-delete.
+
+<C-g> (echo-area-abort)
+<C-u>, vi-like operation
+Cancel or quit the current operation.  If completion is being read, this
+command discards the text of the input line which does not match any
+completion.  If the input line is empty, it aborts the calling function.
+
+<RET> (echo-area-newline)
+Accept (or forces completion of) the current input line.
+
+<C-q> (echo-area-quoted-insert)
+<C-v>, vi-like operation
+Insert the next character verbatim.  This is how you can insert control
+characters into a search string, for example, or the `?' character
+when Info prompts with completion.
+
+printing character (echo-area-insert)
+Insert the character.  Characters that have their 8th bit set, and not
+bound to `M-' commands, are also inserted verbatim; this is useful
+for terminals which support Latin scripts.
+
+<M-TAB> (echo-area-tab-insert)
+<Shift-<TAB>> (on DOS/Windows only)
+Insert a TAB character.
+
+On DOS/Windows only, the Shift-<TAB> key is an alias for
+M-<TAB>.  This key is sometimes called `BackTab'.
+
+<C-t> (echo-area-transpose-chars)
+Transpose the characters at the cursor.
+
+The next group of commands deal with killing, and yanking
+text(6).   For an in depth discussion of killing and
+yanking, see (emacs)Killing section `Killing and Deleting' in the GNU Emacs Manual
+
+<M-d> (echo-area-kill-word)
+<M-X>, vi-like operation
+Kill the word following the cursor.
+
+<M-DEL> (echo-area-backward-kill-word)
+<M-<BS>>
+Kill the word preceding the cursor.
+
+On some keyboards, the Backspace key is used instead of
+DEL, so M-<Backspace> has the same effect as
+M-<DEL>.
+
+<C-k> (echo-area-kill-line)
+Kill the text from the cursor to the end of the line.
+
+C-x <DEL> (echo-area-backward-kill-line)
+Kill the text from the cursor to the beginning of the line.
+
+<C-y> (echo-area-yank)
+Yank back the contents of the last kill.
+
+<M-y> (echo-area-yank-pop)
+Yank back a previous kill, removing the last yanked text first.
+
+Sometimes when reading input in the echo area, the command that needed
+input will only accept one of a list of several choices.  The choices
+represent the possible completions, and you must respond with one
+of them.  Since there are a limited number of responses you can make,
+Info allows you to abbreviate what you type, only typing as much of the
+response as is necessary to uniquely identify it.  In addition, you can
+request Info to fill in as much of the response as is possible; this
+is called completion.
+
+The following commands are available when completing in the echo area:
+
+<TAB> (echo-area-complete)
+<SPC>
+Insert as much of a completion as is possible.
+
+<?> (echo-area-possible-completions)
+Display a window containing a list of the possible completions of what
+you have typed so far.  For example, if the available choices are:
+
+bar
+foliate
+food
+forget
+
+and you have typed an `f', followed by `?', Info will pop up a
+window showing a node called `*Completions*' which lists the
+possible completions like this:
+
+3 completions:
+foliate         food
+forget
+
+i.e., all of the choices which begin with `f'.  Pressing <SPC>
+or <TAB> would result in `fo' appearing in the echo area, since
+all of the choices which begin with `f' continue with `o'.
+Now, typing `l' followed by `TAB' results in `foliate'
+appearing in the echo area, since that is the only choice which begins
+with `fol'.
+
+<ESC C-v> (echo-area-scroll-completions-window)
+Scroll the completions window, if that is visible, or the "other"
+window if not.
+
+
+(6)
+
+Some people are used to calling these operations cut and
+paste, respectively.
+

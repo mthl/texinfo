@@ -1,0 +1,142 @@
+Updating Commands
+-----------------
+The Updating Commands
+---------------------
+
+You can use the updating commands to:
+
+* insert or update the `Next', `Previous', and `Up' pointers of a
+node,
+
+* insert or update the menu for a section, and
+
+* create a master menu for a Texinfo source file.
+
+You can also use the commands to update all the nodes and menus in a
+region or in a whole Texinfo file.
+
+The updating commands work only with conventional Texinfo files, which
+are structured hierarchically like books.  In such files, a structuring
+command line must follow closely after each @node line, except
+for the `Top' @node line.  (A structuring command line is
+a line beginning with @chapter, @section, or other
+similar command.)
+
+You can write the structuring command line on the line that follows
+immediately after an @node line or else on the line that
+follows after a single @comment line or a single
+@ifinfo line.  You cannot interpose more than one line between
+the @node line and the structuring command line; and you may
+interpose only an @comment line or an @ifinfo line.
+
+Commands which work on a whole buffer require that the `Top' node be
+followed by a node with an @chapter or equivalent-level command.
+The menu updating commands will not create a main or master menu for a
+Texinfo file that has only @chapter-level nodes!  The menu
+updating commands only create menus within nodes for lower level
+nodes.  To create a menu of chapters, you must provide a `Top'
+node.
+
+The menu updating commands remove menu entries that refer to other Info
+files since they do not refer to nodes within the current buffer.  This
+is a deficiency.  Rather than use menu entries, you can use cross
+references to refer to other Info files.  None of the updating commands
+affect cross references.
+
+Texinfo mode has five updating commands that are used most often: two
+are for updating the node pointers or menu of a single node (or a
+region); two are for updating every node pointer and menu in a file;
+and one, the texinfo-master-menu command, is for creating a
+master menu for a complete file, and optionally, for updating every
+node and menu in the whole Texinfo file.
+
+The texinfo-master-menu command is the primary command:
+
+C-c C-u m
+M-x texinfo-master-menu
+Create or update a master menu that includes all the other menus
+(incorporating the descriptions from pre-existing menus, if
+any).
+
+With an argument (prefix argument, C-u, if interactive), first create or
+update all the nodes and all the regular menus in the buffer before
+constructing the master menu.  (See The Top Node and Master Menu, for more about a master menu.)
+
+For texinfo-master-menu to work, the Texinfo file must have a
+`Top' node and at least one subsequent node.
+
+After extensively editing a Texinfo file, you can type the following:
+
+C-u M-x texinfo-master-menu
+or
+C-u C-c C-u m
+
+This updates all the nodes and menus completely and all at once.
+
+The other major updating commands do smaller jobs and are designed for
+the person who updates nodes and menus as he or she writes a Texinfo
+file.
+
+The commands are:
+
+C-c C-u C-n
+M-x texinfo-update-node
+Insert the `Next', `Previous', and `Up' pointers for the node that point is
+within (i.e., for the @node line preceding point).  If the
+@node line has pre-existing `Next', `Previous', or `Up'
+pointers in it, the old pointers are removed and new ones inserted.
+With an argument (prefix argument, C-u, if interactive), this command
+updates all @node lines in the region (which is the text
+between point and mark).
+
+C-c C-u C-m
+M-x texinfo-make-menu
+Create or update the menu in the node that point is within.
+With an argument (C-u as prefix argument, if
+interactive), the command makes or updates menus for the
+nodes which are either within or a part of the
+region.
+
+Whenever texinfo-make-menu updates an existing menu, the
+descriptions from that menu are incorporated into the new menu.  This
+is done by copying descriptions from the existing menu to the entries
+in the new menu that have the same node names.  If the node names are
+different, the descriptions are not copied to the new menu.
+
+C-c C-u C-e
+M-x texinfo-every-node-update
+Insert or update the `Next', `Previous', and `Up' pointers for every
+node in the buffer.
+
+C-c C-u C-a
+M-x texinfo-all-menus-update
+Create or update all the menus in the buffer.  With an argument
+(C-u as prefix argument, if interactive), first insert
+or update all the node
+pointers before working on the menus.
+
+If a master menu exists, the texinfo-all-menus-update command
+updates it; but the command does not create a new master menu if none
+already exists.  (Use the texinfo-master-menu command for
+that.)
+
+When working on a document that does not merit a master menu, you can
+type the following:
+
+C-u C-c C-u C-a
+or
+C-u M-x texinfo-all-menus-update
+
+This updates all the nodes and menus.
+
+The texinfo-column-for-description variable specifies the
+column to which menu descriptions are indented.  By default, the value
+is 32 although it is often useful to reduce it to as low as 24.  You
+can set the variable with the M-x edit-options command
+(see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual) or with the M-x set-variable command (see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual).
+
+Also, the texinfo-indent-menu-description command may be used to
+indent existing menu descriptions to a specified column.  Finally, if
+you wish, you can use the texinfo-insert-node-lines command to
+insert missing @node lines into a file.  (See Other Updating Commands, for more information.)
+

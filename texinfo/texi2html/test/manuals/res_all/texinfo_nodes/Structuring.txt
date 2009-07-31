@@ -1,0 +1,35 @@
+5 Chapter Structuring
+*********************
+
+The chapter structuring commands divide a document into a hierarchy of
+chapters, sections, subsections, and subsubsections.  These commands
+generate large headings; they also provide information for the table
+of contents of a printed manual (see Generating a Table of Contents).
+
+The chapter structuring commands do not create an Info node structure,
+so normally you should put an @node command immediately before
+each chapter structuring command (see Nodes).  The only time you
+are likely to use the chapter structuring commands without using the
+node structuring commands is if you are writing a document that
+contains no cross references and will never be transformed into Info
+format.
+
+It is unlikely that you will ever write a Texinfo file that is
+intended only as an Info file and not as a printable document.  If you
+do, you might still use chapter structuring commands to create a
+heading at the top of each node--but you don't need to.
+
+* Tree Structuring::            A manual is like an upside down tree ...
+* Structuring Command Types::   How to divide a manual into parts.
+* makeinfo top::                The @top command, part of the `Top' node.
+* chapter::                     
+* unnumbered & appendix::       
+* majorheading & chapheading::  
+* section::                     
+* unnumberedsec appendixsec heading::  
+* subsection::                  
+* unnumberedsubsec appendixsubsec subheading::  
+* subsubsection::               Commands for the lowest level sections.
+* Raise/lower sections::        How to change commands' hierarchical level.
+
+

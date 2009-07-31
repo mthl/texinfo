@@ -1,0 +1,41 @@
+9.1.4 @samp{text}
+-----------------
+
+Use the @samp command to indicate text that is a literal example
+or `sample' of a sequence of characters in a file, string, pattern, etc.
+Enclose the text in braces.  The argument appears within single
+quotation marks in both the Info file and the printed manual; in
+addition, it is printed in a fixed-width font.
+
+To match @samp{foo} at the end of the line,
+use the regexp @samp{foo$}.
+
+produces
+
+To match `foo' at the end of the line, use the regexp
+`foo$'.
+
+Any time you are referring to single characters, you should use
+@samp unless @kbd or @key is more appropriate.
+Also, you may use @samp for entire statements in C and for entire
+shell commands--in this case, @samp often looks better than
+@code.  Basically, @samp is a catchall for whatever is
+not covered by @code, @kbd, or @key.
+
+Only include punctuation marks within braces if they are part of the
+string you are specifying.  Write punctuation marks outside the braces
+if those punctuation marks are part of the English text that surrounds
+the string.  In the following sentence, for example, the commas and
+period are outside of the braces:
+
+In English, the vowels are @samp{a}, @samp{e},
+@samp{i}, @samp{o}, @samp{u}, and sometimes
+@samp{y}.
+
+This produces:
+
+In English, the vowels are `a', `e',
+`i', `o', `u',  and sometimes
+`y'.
+
+

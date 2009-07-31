@@ -1,0 +1,31 @@
+3.6.4 @exampleindent: Environment Indenting
+-------------------------------------------
+
+The Texinfo processors indent each line of @example and similar
+environments.  You can use the @exampleindent command to specify
+this indentation.  Write an @exampleindent command at the
+beginning of a line followed by either `asis' or a number:
+
+@exampleindent indent
+
+The indentation is according to the value of indent:
+
+asis
+Do not change the existing indentation (not implemented in TeX).
+
+0
+Omit all indentation.
+
+n
+Indent environments by n space characters in Info output, by
+n ems in TeX.
+
+
+The default value of indent is 5.  @exampleindent is
+ignored for HTML output.
+
+It is best to write the @exampleindent command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  See Start of Header.
+
+

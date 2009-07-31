@@ -1,0 +1,20 @@
+2.4 Updating Nodes and Menus
+============================
+
+Texinfo mode provides commands for automatically creating or updating
+menus and node pointers.  The commands are called "update" commands
+because their most frequent use is for updating a Texinfo file after you
+have worked on it; but you can use them to insert the `Next',
+`Previous', and `Up' pointers into an @node line that has none
+and to create menus in a file that has none.
+
+If you do not use the updating commands, you need to write menus and
+node pointers by hand, which is a tedious task.
+
+* Updating Commands::           Five major updating commands.
+* Updating Requirements::       How to structure a Texinfo file for
+                                  using the updating command.
+* Other Updating Commands::     How to indent descriptions, insert
+                                  missing nodes lines, and update
+                                  nodes in sequence.
+

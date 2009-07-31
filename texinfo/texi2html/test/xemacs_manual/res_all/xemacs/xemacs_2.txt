@@ -1,0 +1,36 @@
+Distribution
+************
+
+XEmacs is free; this means that everyone is free to use it and
+free to redistribute it on a free basis.  XEmacs is not in the public
+domain; it is copyrighted and there are restrictions on its
+distribution, but these restrictions are designed to permit everything
+that a good cooperating citizen would want to do.  What is not allowed
+is to try to prevent others from further sharing any version of XEmacs
+that they might get from you.  The precise conditions are found in
+the GNU General Public License that comes with XEmacs and also appears
+following this section.
+
+The easiest way to get a copy of XEmacs is from someone else who has it.
+You need not ask for permission to do so, or tell any one else; just copy
+it.
+
+If you have access to the Internet, you can get the latest version of
+XEmacs from the anonymous FTP server `ftp.xemacs.org' in the directory
+`/pub/xemacs'.  It can also be found at numerous other archive
+sites around the world; check the file `etc/DISTRIB' in an XEmacs
+distribution for the latest known list.
+
+
+Getting Other Versions of Emacs
+===============================
+
+The Free Software Foundation's version of Emacs (called FSF Emacs
+in this manual and often referred to as GNU Emacs) is available
+by anonymous FTP from `prep.ai.mit.edu'.
+
+Win-Emacs, an older version of XEmacs that runs on Microsoft Windows
+and Windows NT, is available by anonymous FTP from `ftp.netcom.com'
+in the directory `/pub/pe/pearl', or from `ftp.cica.indiana.edu'
+as the files `wemdemo*.zip' in the directory `/pub/pc/win3/demo'.
+

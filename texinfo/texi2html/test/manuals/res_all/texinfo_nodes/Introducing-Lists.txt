@@ -1,0 +1,58 @@
+Introducing Lists
+-----------------
+Introducing Lists
+=================
+
+Texinfo automatically indents the text in lists or tables, and numbers
+an enumerated list.  This last feature is useful if you modify the
+list, since you do not need to renumber it yourself.
+
+Numbered lists and tables begin with the appropriate @-command at the
+beginning of a line, and end with the corresponding @end
+command on a line by itself.  The table and itemized-list commands
+also require that you write formatting information on the same line as
+the beginning @-command.
+
+Begin an enumerated list, for example, with an @enumerate
+command and end the list with an @end enumerate command.
+Begin an itemized list with an @itemize command, followed on
+the same line by a formatting command such as @bullet, and end
+the list with an @end itemize command.
+
+Precede each element of a list with an @item or @itemx
+command.
+
+
+Here is an itemized list of the different kinds of table and lists:
+
+* Itemized lists with and without bullets.
+
+* Enumerated lists, using numbers or letters.
+
+* Two-column tables with highlighting.
+
+
+Here is an enumerated list with the same items:
+
+1. Itemized lists with and without bullets.
+
+2. Enumerated lists, using numbers or letters.
+
+3. Two-column tables with highlighting.
+
+
+And here is a two-column table with the same items and their
+@-commands:
+
+@itemize
+Itemized lists with and without bullets.
+
+@enumerate
+Enumerated lists, using numbers or letters.
+
+@table
+@ftable
+@vtable
+Two-column tables, optionally with indexing.
+
+

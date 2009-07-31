@@ -1,0 +1,166 @@
+<div id="Variables"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The history file#history-file  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The CVSROOT%47config configuration file#config  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Expansions-in-administrative-files"></div>
+=== Expansions in administrative files ===
+<div id="index-Internal-variables"></div>
+<div id="index-Variables"></div>
+
+<p>Sometimes in writing an administrative file, you might
+want the file to be able to know various things based
+on environment <small>CVS</small> is running in.  There are
+several mechanisms to do that.
+</p>
+<p>To find the home directory of the user running <small>CVS</small>
+(from the <code>HOME</code> environment variable), use
+&lsquo;<samp>~</samp>&rsquo; followed by &lsquo;<samp>/</samp>&rsquo; or the end of the line.
+Likewise for the home directory of <var>user</var>, use
+&lsquo;<samp>~<var>user</var></samp>&rsquo;.  These variables are expanded on
+the server machine, and don&rsquo;t get any reasonable
+expansion if pserver (see section [cvs: Direct connection with password authentication#Password-authenticated Direct connection with password authentication])
+is in use; therefore user variables (see below) may be
+a better choice to customize behavior based on the user
+running <small>CVS</small>.
+</p>
+<p>One may want to know about various pieces of
+information internal to <small>CVS</small>.  A <small>CVS</small> internal
+variable has the syntax <code>${<var>variable</var>}</code>,
+where <var>variable</var> starts with a letter and consists
+of alphanumeric characters and &lsquo;<samp>_</samp>&rsquo;.  If the
+character following <var>variable</var> is a
+non-alphanumeric character other than &lsquo;<samp>_</samp>&rsquo;, the
+&lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo; can be omitted.  The <small>CVS</small>
+internal variables are:
+</p>
+<dl compact="compact">
+<dt><code>CVSROOT</code></dt>
+<dd><div id="index-CVSROOT_002c-internal-variable"></div>
+<p>This is the absolute path to the current <small>CVS</small> root directory.
+See section [cvs: The Repository#Repository The Repository], for a description of the various
+ways to specify this, but note that the internal
+variable contains just the directory and not any
+of the access method information.
+</p>
+</dd>
+<dt><code>RCSBIN</code></dt>
+<dd><div id="index-RCSBIN_002c-internal-variable"></div>
+<p>In <small>CVS</small> 1.9.18 and older, this specified the
+directory where <small>CVS</small> was looking for <small>RCS</small>
+programs.  Because <small>CVS</small> no longer runs <small>RCS</small>
+programs, specifying this internal variable is now an
+error.
+</p>
+</dd>
+<dt><code>CVSEDITOR</code></dt>
+<dd><div id="index-CVSEDITOR_002c-internal-variable"></div>
+</dd>
+<dt><code>EDITOR</code></dt>
+<dd><div id="index-EDITOR_002c-internal-variable"></div>
+</dd>
+<dt><code>VISUAL</code></dt>
+<dd><div id="index-VISUAL_002c-internal-variable"></div>
+<p>These all expand to the same value, which is the editor
+that <small>CVS</small> is using.  See section [cvs: Global options#Global-options Global options], for how
+to specify this.
+</p>
+</dd>
+<dt><code>USER</code></dt>
+<dd><div id="index-USER_002c-internal-variable"></div>
+<p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
+server machine).
+When using pserver, this is the user specified in the repository
+specification which need not be the same as the username the
+server is running as (see section [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication]).
+Do not confuse this with the environment variable of the same name.
+</p></dd>
+</dl>
+
+<p>If you want to pass a value to the administrative files
+which the user who is running <small>CVS</small> can specify,
+use a user variable.
+<div id="index-User-variables"></div>
+To expand a user variable, the
+administrative file contains
+<code>${=<var>variable</var>}</code>.  To set a user variable,
+specify the global option &lsquo;<samp>-s</samp>&rsquo; to <small>CVS</small>, with
+argument <code><var>variable</var>=<var>value</var></code>.  It may be
+particularly useful to specify this option via
+&lsquo;<tt>.cvsrc</tt>&rsquo; (see section [cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+</p>
+<p>For example, if you want the administrative file to
+refer to a test directory you might create a user
+variable <code>TESTDIR</code>.  Then if <small>CVS</small> is invoked
+as
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -s TESTDIR=/work/local/tests
+</nowiki></pre></td></tr></table>
+
+<p>and the
+administrative file contains <code>sh
+${=TESTDIR}/runtests</code>, then that string is expanded
+to <code>sh /work/local/tests/runtests</code>.
+</p>
+<p>All other strings containing &lsquo;<samp>$</samp>&rsquo; are reserved;
+there is no way to quote a &lsquo;<samp>$</samp>&rsquo; character so that
+&lsquo;<samp>$</samp>&rsquo; represents itself.
+</p>
+<p>Environment variables passed to administrative files are:
+</p>
+<dl compact="compact">
+<dd><div id="index-environment-variables_002c-passed-to-administrative-files"></div>
+
+</dd>
+<dt><code>CVS_USER</code></dt>
+<dd><div id="index-CVS_005fUSER_002c-environment-variable"></div>
+<p>The <small>CVS</small>-specific username provided by the user, if it
+can be provided (currently just for the pserver access
+method), and to the empty string otherwise.  (<code>CVS_USER</code>
+and <code>USER</code> may differ when &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo;
+is used to map <small>CVS</small> usernames to system usernames.)
+</p>
+</dd>
+<dt><code>LOGNAME</code></dt>
+<dd><div id="index-LOGNAME_002c-environment-variable"></div>
+<p>The username of the system user.
+</p>
+</dd>
+<dt><code>USER</code></dt>
+<dd><div id="index-USER_002c-environment-variable"></div>
+<p>Same as <code>LOGNAME</code>.
+Do not confuse this with the internal variable of the same name.
+</p></dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The history file#history-file  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The CVSROOT%47config configuration file#config  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

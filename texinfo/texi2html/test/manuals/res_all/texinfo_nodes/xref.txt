@@ -1,0 +1,16 @@
+8.3 @xref
+=========
+
+The @xref command generates a cross reference for the
+beginning of a sentence.  The Info formatting commands convert it into
+an Info cross reference, which the Info `f' command can use to
+bring you directly to another node.  The TeX typesetting commands
+convert it into a page reference, or a reference to another book or
+manual.
+
+* Reference Syntax::            What a reference looks like and requires.
+* One Argument::                @xref with one argument.
+* Two Arguments::               @xref with two arguments.
+* Three Arguments::             @xref with three arguments.
+* Four and Five Arguments::     @xref with four and five arguments.
+

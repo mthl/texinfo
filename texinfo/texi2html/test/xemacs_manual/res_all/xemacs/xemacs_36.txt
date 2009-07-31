@@ -1,0 +1,1004 @@
+Concept Index
+*************
+* Index:
+* `$' in regexp: 12.5 Syntax of Regular Expressions.
+* `(' in regexp: 12.5 Syntax of Regular Expressions.
+* `)' in regexp: 12.5 Syntax of Regular Expressions.
+* `*' in regexp: 12.5 Syntax of Regular Expressions.
+* `*?' in regexp: 12.5 Syntax of Regular Expressions.
+* `+' in regexp: 12.5 Syntax of Regular Expressions.
+* `+?' in regexp: 12.5 Syntax of Regular Expressions.
+* `.' in regexp: 12.5 Syntax of Regular Expressions.
+* .mailrc file: 25.2 Mail Header Fields.
+* // in file name: 6.1 Minibuffers for File Names.
+* `?' in regexp: 12.5 Syntax of Regular Expressions.
+* `??' in regexp: 12.5 Syntax of Regular Expressions.
+* `[' in regexp: 12.5 Syntax of Regular Expressions.
+* `\' in regexp: 12.5 Syntax of Regular Expressions.
+* `\'' in regexp: 12.5 Syntax of Regular Expressions.
+* `\(?:' in regexp: 12.5 Syntax of Regular Expressions.
+* `\<' in regexp: 12.5 Syntax of Regular Expressions.
+* `\=' in regexp: 12.5 Syntax of Regular Expressions.
+* `\>' in regexp: 12.5 Syntax of Regular Expressions.
+* `\B' in regexp: 12.5 Syntax of Regular Expressions.
+* `\b' in regexp: 12.5 Syntax of Regular Expressions.
+* `\s' in regexp: 12.5 Syntax of Regular Expressions.
+* `\S' in regexp: 12.5 Syntax of Regular Expressions.
+* `\w' in regexp: 12.5 Syntax of Regular Expressions.
+* `\W' in regexp: 12.5 Syntax of Regular Expressions.
+* `\`' in regexp: 12.5 Syntax of Regular Expressions.
+* `\{n,m\} 'in regexp: 12.5 Syntax of Regular Expressions.
+* `]' in regexp: 12.5 Syntax of Regular Expressions.
+* `^' in regexp: 12.5 Syntax of Regular Expressions.
+* `^' in regexp: 12.5 Syntax of Regular Expressions.
+* `|' in regexp: 12.5 Syntax of Regular Expressions.
+* Abbrev mode: 27.1 Minor Modes.
+* abbrevs: 23. Abbrevs.
+* aborting: 27.11 Quitting and Aborting.
+* accumulating text: 9.7 Accumulating Text.
+* active fields (customization buffer): 27.2.2.1 Customization Groups.
+* active regions: 9.6.4 Active Regions.
+* adding menu items: 2.4.8 Customizing XEmacs Menus.
+* adding menus: 2.4.8 Customizing XEmacs Menus.
+* againformation: 26.11 Dissociated Press.
+* Apps menu: 2.4 XEmacs Pull-down Menus.
+* Apps menu: 2.4.3 The Apps Menu.
+* apropos: 8.4 Apropos.
+* architecture-specific directories: 3.3.3 Directories and Paths.
+* arguments (from shell): 3.2 Command Line Switches and Arguments.
+* arrow keys: 4.2 Changing the Location of Point.
+* ASCII: 2.1 Keystrokes as Building Blocks of Key Sequences.
+* Asm mode: 21.13 Asm Mode.
+* astronomical day numbers: 26.3 Supported Calendar Systems.
+* audible bell, changing: 27.7 Changing the Bell Sound.
+* Auto Delete Selection menu item: 2.4.4 The Options Menu.
+* Auto Fill mode: 20.6.1 Auto Fill Mode.
+* Auto Fill mode: 21.6.1 Multiple Lines of Comments.
+* Auto Fill mode: 27.1 Minor Modes.
+* Auto-Save mode: 14.5 Auto-Saving: Protection Against Disasters.
+* autoload: 22.3.1 Loading Libraries.
+* automatic package install: Automatically.
+* available packages: 22.8.10 Normal Packages.
+* backup file: 14.3.1 Backup Files.
+* batch mode: 3.2.2 Command Line Arguments (Beginning of Line Only).
+* beginning of line in regexp: 12.5 Syntax of Regular Expressions.
+* bell, changing: 27.7 Changing the Bell Sound.
+* binary packages: 22.8.3 Binary Packages.
+* binding: 2.3 Keys and Commands.
+* blank lines: 4.6 Blank Lines.
+* blank lines: 21.6.1 Multiple Lines of Comments.
+* body lines (Outline mode): 20.1.3.1 Format of Outlines.
+* bold font: 27.2.2.3 Customizing Faces.
+* bookmarks: 10.7 Bookmarks.
+* boredom: 26.13 Other Amusements.
+* buffer: 1. The XEmacs Frame.
+* buffer menu: 15.5 Operating on Several Buffers.
+* buffers: 15. Using Multiple Buffers.
+* Buffers menu: 2.4 XEmacs Pull-down Menus.
+* Buffers menu: 2.4.5 The Buffers Menu.
+* Buffers Menu Length... menu item: 2.4.4 The Options Menu.
+* Buffers Sub-Menus menu item: 2.4.4 The Options Menu.
+* buggestion: 26.11 Dissociated Press.
+* bugs: 27.13 Reporting Bugs.
+* building packages: 22.8.8 Prerequisites for Building Source Packages.
+* byte code: 22.3.2 Compiling Libraries.
+* C: 21. Editing Programs.
+* C mode: 21.1 Major Modes for Programming Languages.
+* C++ class browser, tags: 21.11 Tags Tables.
+* calendar: 26.1 Calendar Mode and the Diary.
+* calendar and LaTeX: 26.2 LaTeX Calendar.
+* calendar, first day of week: 26.1.1.2 Beginning or End of Week, Month or Year.
+* candle lighting times: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* case conversion: 13.3 Case Conversion.
+* case conversion: 20.7 Case Conversion Commands.
+* Case Sensitive Search menu item: 2.4.4 The Options Menu.
+* CCL programs: 17.5 Mule and Fonts.
+* centering: 20.6.2 Explicit Fill Commands.
+* change log: 21.10 Change Logs.
+* changing buffers: 15.1 Creating and Selecting Buffers.
+* changing menu items: 2.4.8 Customizing XEmacs Menus.
+* character set: 2.1 Keystrokes as Building Blocks of Key Sequences.
+* character set (in regexp): 12.5 Syntax of Regular Expressions.
+* checking in files: 14.6.1 Concepts of Version Control.
+* checking out files: 14.6.1 Concepts of Version Control.
+* Chinese: 17. World Scripts Support.
+* Chinese calendar: 26.3 Supported Calendar Systems.
+* choosing packages: 22.8.6 Choosing the Packages You Need.
+* choosing packages: Which Packages.
+* class browser, C++: 21.11 Tags Tables.
+* Clear menu item: 2.4.2 The Edit Menu.
+* clipboard selections: 9.6.1 The Clipboard Selection.
+* coding systems: 17.6 Coding Systems.
+* command: 2.3 Keys and Commands.
+* command: 27.4 Customizing Key Bindings.
+* command history: 6.5 Repeating Minibuffer Commands.
+* command line arguments: 3.2 Command Line Switches and Arguments.
+* command name: 27.4 Customizing Key Bindings.
+* comments: 21.6 Manipulating Comments.
+* comparing files: 14.8 Comparing Files.
+* comparing files: 14.8 Comparing Files.
+* compilation errors: 22.1 Running "make", or Compilers Generally.
+* compiling files: 22.1 Running "make", or Compilers Generally.
+* completion: 6.3 Completion.
+* completion (symbol names): 21.8 Completion for Lisp Symbols.
+* continuation line: 4.7 Continuation Lines.
+* Control-Meta: 21.2 Lists and Sexps.
+* Coptic calendar: 26.3 Supported Calendar Systems.
+* Copy menu item: 2.4.2 The Edit Menu.
+* copying files: 14.10 Miscellaneous File Operations.
+* copying text: 9.5 Yanking.
+* copying text: 9.7 Accumulating Text.
+* core distribution: 22.8.5 Getting Started.
+* crashes: 14.5 Auto-Saving: Protection Against Disasters.
+* creating directories: 14.1 File Names.
+* creating files: 14.2 Visiting Files.
+* creating packages: Creating Packages.
+* current buffer: 15. Using Multiple Buffers.
+* current stack frame: 22.5 The Emacs-Lisp Debugger.
+* cursor: 1.1 Point.
+* cursor: 4.1 Inserting Text.
+* cursor motion: 4.2 Changing the Location of Point.
+* customization: 2.3 Keys and Commands.
+* customization: 21.4.3 Customizing Lisp Indentation.
+* customization: 27. Customization.
+* customization buffer: 27.2.2 Easy Customization Interface.
+* customization groups: 27.2.2.1 Customization Groups.
+* customizing faces: 27.2.2.3 Customizing Faces.
+* cut buffers: 9.6.2 Miscellaneous X Selection Commands.
+* Cut menu item: 2.4.2 The Edit Menu.
+* cutting: 9.4 Deletion and Killing.
+* Cyrillic: 17. World Scripts Support.
+* day of year: 26.1.4 Miscellaneous Calendar Commands.
+* daylight savings time: 26.5.8.5 Daylight Savings Time.
+* debugger: 22.5 The Emacs-Lisp Debugger.
+* default argument: 6. The Minibuffer.
+* defuns: 21.3 Defuns.
+* Delete Frame menu item: 2.4.1 The File Menu.
+* deleting blank lines: 4.6 Blank Lines.
+* deleting characters and lines: 4.3 Erasing Text.
+* deleting menu items: 2.4.8 Customizing XEmacs Menus.
+* deleting packages: Removing Packages.
+* deletion: 4.1 Inserting Text.
+* deletion: 9.4 Deletion and Killing.
+* deletion (of files): 14.9 Dired, the Directory Editor.
+* deletion (of files): 14.10 Miscellaneous File Operations.
+* diary: 26.5.2 The Diary.
+* diary buffer: 26.5.8.8 Fancy Diary Display.
+* diary file: 26.5.4 The Diary File.
+* ding: 27.7 Changing the Bell Sound.
+* directories: 3.3 How XEmacs finds Directories and Files.
+* directory hierarchies: 3.3.1 XEmacs Directory Hierarchies.
+* directory listing: 14.7 Listing a File Directory.
+* Dired: 14.9 Dired, the Directory Editor.
+* disabled command: 27.4.3 Disabling Commands.
+* disabling menu items: 2.4.8 Customizing XEmacs Menus.
+* Distribution: Preamble.
+* doctor: 27.12.6 Help for Total Frustration.
+* double slash in file name: 6.1 Minibuffers for File Names.
+* drastic changes: 14.4 Reverting a Buffer.
+* dribble file: 27.13.2 How to Report a Bug.
+* early package hierarchies: 3.3.2 Package Hierarchies.
+* Ebrowse: 21.11 Tags Tables.
+* echo area: 1.2 The Echo Area.
+* Edit menu: 2.4 XEmacs Pull-down Menus.
+* Edit menu: 2.4.2 The Edit Menu.
+* editable fields (customization buffer): 27.2.2.1 Customization Groups.
+* editing level, recursive: 26.10 Recursive Editing Levels.
+* editing level, recursive: 27.11 Quitting and Aborting.
+* EDT: 26.14 Emulation.
+* Eliza: 27.12.6 Help for Total Frustration.
+* Emacs initialization file: 27.6 The Init File.
+* Emacs-Lisp mode: 22.4 Evaluating Emacs-Lisp Expressions.
+* enabling menu items: 2.4.8 Customizing XEmacs Menus.
+* encoding of characters: 17. World Scripts Support.
+* End Macro Recording menu item: 2.4.2 The Edit Menu.
+* entering XEmacs: 3. Entering and Exiting Emacs.
+* environment: 26.7.1 Single Shell Commands.
+* erasing characters and lines: 4.3 Erasing Text.
+* error log: 22.1 Running "make", or Compilers Generally.
+* etags program: 21.11.2 Creating Tags Tables.
+* Ethiopic calendar: 26.3 Supported Calendar Systems.
+* Execute Last Macro menu item: 2.4.2 The Edit Menu.
+* Exit Emacs menu item: 2.4.1 The File Menu.
+* exiting: 3.1 Exiting Emacs.
+* exiting: 26.10 Recursive Editing Levels.
+* expansion (of abbrevs): 23. Abbrevs.
+* expression: 21.2 Lists and Sexps.
+* file dates: 14.3.2 Protection Against Simultaneous Editing.
+* file directory: 14.7 Listing a File Directory.
+* File menu: 2.4 XEmacs Pull-down Menus.
+* File menu: 2.4.1 The File Menu.
+* file names: 14.1 File Names.
+* file protection: 14.3.2 Protection Against Simultaneous Editing.
+* files: 4.4 Files.
+* files: 14. File Handling.
+* files: 14.2 Visiting Files.
+* files, remote: 14. File Handling.
+* fill prefix: 20.6.3 The Fill Prefix.
+* filling: 20.6 Filling Text.
+* font encoding: 17.5 Mule and Fonts.
+* Font menu item: 2.4.4 The Options Menu.
+* font registry: 17.5 Mule and Fonts.
+* fonts: 17.5 Mule and Fonts.
+* fonts and faces: 27.2.2.3 Customizing Faces.
+* formfeed: 20.5 Pages.
+* Fortran mode: 21.12 Fortran Mode.
+* frame: 1. The XEmacs Frame.
+* French Revolutionary calendar: 26.3 Supported Calendar Systems.
+* function: 2.3 Keys and Commands.
+* function: 27.4 Customizing Key Bindings.
+* General Public License: GNU GENERAL PUBLIC LICENSE.
+* getting help with keys: 4.5 Help.
+* global keymap: 27.4.1 Keymaps.
+* global substitution: 12.7 Replacement Commands.
+* graphic characters: 4.1 Inserting Text.
+* Greek: 17. World Scripts Support.
+* Gregorian calendar: 26.2.4 Conversion To and From Other Calendars.
+* grinding: 21.4 Indentation for Programs.
+* hardcopy: 26.9 Hardcopy Output.
+* header (TeX mode): 20.1.2.2 TeX Printing Commands.
+* headers (of mail message): 25.2 Mail Header Fields.
+* heading lines (Outline mode): 20.1.3.1 Format of Outlines.
+* Hebrew calendar: 26.3 Supported Calendar Systems.
+* help: 8. Help.
+* Help menu: 2.4 XEmacs Pull-down Menus.
+* Help menu: 2.4.7 The Help Menu.
+* hierarchies: 3.3.1 XEmacs Directory Hierarchies.
+* history of commands: 6.5 Repeating Minibuffer Commands.
+* history of minibuffer input: 6.4 Minibuffer History.
+* holiday forms: 26.5.8.2 Customizing the Holidays.
+* holidays: 26.2.1 Holidays.
+* horizontal scrolling: 11.2 Horizontal Scrolling.
+* Icomplete mode: 6.3.4 Completion Options.
+* ignoriginal: 26.11 Dissociated Press.
+* indentation: 19. Indentation.
+* indentation: 19. Indentation.
+* indentation: 21.4 Indentation for Programs.
+* indentation: 21.6 Manipulating Comments.
+* inferior process: 22.1 Running "make", or Compilers Generally.
+* Info: 8.7 Other Help Commands.
+* init file: 27.6 The Init File.
+* input methods: 17.3 Input Methods.
+* Insert File... menu item: 2.4.1 The File Menu.
+* inserting blank lines: 4.6 Blank Lines.
+* insertion: 4.1 Inserting Text.
+* install: 22.8.5 Getting Started.
+* installing packages: 22.8.5 Getting Started.
+* international scripts: 17. World Scripts Support.
+* interval operator (in regexps): 21.11.3 Etags Regexps.
+* invisible lines: 20.1.3 Outline Mode.
+* IPA: 17. World Scripts Support.
+* Islamic calendar: 26.3 Supported Calendar Systems.
+* ISO commercial calendar: 26.3 Supported Calendar Systems.
+* italic font: 27.2.2.3 Customizing Faces.
+* Japanese: 17. World Scripts Support.
+* Julian calendar: 26.3 Supported Calendar Systems.
+* Julian day numbers: 26.3 Supported Calendar Systems.
+* justification: 20.6.2 Explicit Fill Commands.
+* key rebinding, permanent: 27.6 The Init File.
+* key rebinding, this session: 27.4.2 Changing Key Bindings.
+* keyboard macros: 27.3 Keyboard Macros.
+* keycode: 2.1.5 Assignment of the <SUPER> and <HYPER> Keys.
+* keymap: 2.3 Keys and Commands.
+* keymap: 27.4.1 Keymaps.
+* keystroke: 2.1 Keystrokes as Building Blocks of Key Sequences.
+* keysym: 2.1 Keystrokes as Building Blocks of Key Sequences.
+* keysyms: 2.1.5 Assignment of the <SUPER> and <HYPER> Keys.
+* Kill Buffer menu item: 2.4.1 The File Menu.
+* kill ring: 9.5 Yanking.
+* killing: 9.4 Deletion and Killing.
+* killing characters and lines: 4.3 Erasing Text.
+* killing Emacs: 3.1 Exiting Emacs.
+* Korean: 17. World Scripts Support.
+* language environments: 17.2 Language Environments.
+* last package hierarchies: 3.3.2 Package Hierarchies.
+* late package hierarchies: 3.3.2 Package Hierarchies.
+* LaTeX: 20.1.2 TeX Mode.
+* leaving Emacs: 3.1 Exiting Emacs.
+* libraries: 22.3 Libraries of Lisp Code for Emacs.
+* license to copy XEmacs: GNU GENERAL PUBLIC LICENSE.
+* line number: 4.8 Cursor Position Information.
+* line wrapping: 4.7 Continuation Lines.
+* Lisp: 21. Editing Programs.
+* Lisp mode: 21.1 Major Modes for Programming Languages.
+* list: 21.2 Lists and Sexps.
+* loading libraries: 22.3.1 Loading Libraries.
+* loading Lisp code: 22.3 Libraries of Lisp Code for Emacs.
+* local keymap: 27.4.1 Keymaps.
+* local variables: 27.2.4 Local Variables.
+* local variables in files: 27.2.5 Local Variables in Files.
+* local.rules: Local.rules File.
+* locking and version control: 14.6.1 Concepts of Version Control.
+* log entry: 14.6.2 Editing with Version Control.
+* mail: 25. Sending Mail.
+* mail: 26. Reading Mail.
+* major modes: 18. Major Modes.
+* make: 22.1 Running "make", or Compilers Generally.
+* manual package install: Manually.
+* manuals, on-line: 8.7 Other Help Commands.
+* mark: 9. Selecting Text.
+* mark ring: 9.1.4 The Mark Ring.
+* mark ring: 26.1.3 The Mark and the Region.
+* Markov chain: 26.11 Dissociated Press.
+* master file: 14.6.1 Concepts of Version Control.
+* matching parentheses: 21.5 Automatic Display of Matching Parentheses.
+* Mayan calendar: 26.3 Supported Calendar Systems.
+* Mayan calendar round: 26.5.1 Converting from the Mayan Calendar.
+* Mayan haab calendar: 26.5.1 Converting from the Mayan Calendar.
+* Mayan long count: 26.5.1 Converting from the Mayan Calendar.
+* Mayan tzolkin calendar: 26.5.1 Converting from the Mayan Calendar.
+* menus: 2.4 XEmacs Pull-down Menus.
+* menus: 16.5 Deleting and Rearranging Windows.
+* message: 25. Sending Mail.
+* message: 26. Reading Mail.
+* Meta: 20.2 Words.
+* minibuffer: 6. The Minibuffer.
+* minibuffer: 7. Running Commands by Name.
+* minibuffer: 27.4.1 Keymaps.
+* minibuffer history: 6.4 Minibuffer History.
+* minor modes: 27.1 Minor Modes.
+* mistakes, correcting: 5. Undoing Changes.
+* mistakes, correcting: 13. Commands for Fixing Typos.
+* mocklisp: 22.3.3 Converting Mocklisp to Lisp.
+* mode hook: 21.1 Major Modes for Programming Languages.
+* mode line: 1.3 The Mode Line.
+* mode line: 27.1 Minor Modes.
+* mode, Term: 26.7.5 Term Mode.
+* modified (buffer): 14.2 Visiting Files.
+* modifier key: 2.1 Keystrokes as Building Blocks of Key Sequences.
+* modifier mapping: 2.1.5 Assignment of the <SUPER> and <HYPER> Keys.
+* moon, phases of: 26.2.3 Phases of the Moon.
+* mouse operations: 9.3 Additional Mouse Operations.
+* mouse selection: 9.2 Selecting Text with the Mouse.
+* movement: 4.2 Changing the Location of Point.
+* moving inside the calendar: 26.1.1 Movement in the Calendar.
+* moving point: 4.2 Changing the Location of Point.
+* moving text: 9.5 Yanking.
+* moving the cursor: 4.2 Changing the Location of Point.
+* MULE: 17. World Scripts Support.
+* multi-frame XEmacs: 1.12 Using XEmacs Under the X Window System.
+* multibyte characters: 17. World Scripts Support.
+* named configurations (RCS): 14.6.9.2 Snapshot Caveats.
+* narrowing: 26.8 Narrowing.
+* New Frame menu item: 2.4.1 The File Menu.
+* newline: 4.1 Inserting Text.
+* non-incremental search: 12.2 Non-Incremental Search.
+* nroff: 20.1.1 Nroff Mode.
+* numeric arguments: 4.9 Numeric Arguments.
+* omer count: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* on-line manuals: 8.7 Other Help Commands.
+* Open File, New Frame... menu item: 2.4.1 The File Menu.
+* Open File... menu item: 2.4.1 The File Menu.
+* option: 27.2 Variables.
+* option: 27.2.1 Examining and Setting Variables.
+* Options menu: 2.4 XEmacs Pull-down Menus.
+* Options menu: 2.4.4 The Options Menu.
+* other editors: 26.14 Emulation.
+* outlines: 20.1.3 Outline Mode.
+* outragedy: 26.11 Dissociated Press.
+* Overstrike menu item: 2.4.4 The Options Menu.
+* Overwrite mode: 27.1 Minor Modes.
+* package building: 22.8.8 Prerequisites for Building Source Packages.
+* package distributions: 22.8.2 Package Distributions.
+* package hierarchies: 3.3.2 Package Hierarchies.
+* package path: 3.3.2 Package Hierarchies.
+* package tools: Automatically.
+* packages: 22.8 Packages.
+* packages: 22.8.10 Normal Packages.
+* page number: 4.8 Cursor Position Information.
+* pages: 20.5 Pages.
+* paragraphs: 20.4 Paragraphs.
+* parasha, weekly: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* Paren Highlighting menu item: 2.4.4 The Options Menu.
+* parentheses: 21.5 Automatic Display of Matching Parentheses.
+* Paste menu item: 2.4.2 The Edit Menu.
+* pasting: 9.5 Yanking.
+* path: 3.3 How XEmacs finds Directories and Files.
+* paths: 3.3.3 Directories and Paths.
+* per-buffer variables: 27.2.4 Local Variables.
+* Persian calendar: 26.3 Supported Calendar Systems.
+* phases of the moon: 26.2.3 Phases of the Moon.
+* pictures: 24. Editing Pictures.
+* point: 1.1 Point.
+* point: 4.1 Inserting Text.
+* pointer face: 9.2 Selecting Text with the Mouse.
+* pointer shapes: 9.2 Selecting Text with the Mouse.
+* prefix key sequence: 2.1.2 Representing Key Sequences.
+* presidentagon: 26.11 Dissociated Press.
+* primary selections: 9.6.2 Miscellaneous X Selection Commands.
+* Print Buffer menu item: 2.4.1 The File Menu.
+* prompt: 6. The Minibuffer.
+* properbose: 26.11 Dissociated Press.
+* Pull-down Menus: 2.4 XEmacs Pull-down Menus.
+* Pull-down Menus: 16.5 Deleting and Rearranging Windows.
+* query replace: 12.7.4 Query Replace.
+* quitting: 27.11 Quitting and Aborting.
+* quitting: 27.11 Quitting and Aborting.
+* quitting (in search): 12.1 Incremental Search.
+* quitting Emacs: 3.1 Exiting Emacs.
+* quoting: 4.1 Inserting Text.
+* random sentences: 26.12 CONX.
+* RCS: 14.6.1 Concepts of Version Control.
+* Read Only menu item: 2.4.4 The Options Menu.
+* read-only buffer: 15.3 Miscellaneous Buffer Operations.
+* rebinding keys, permanently: 27.6 The Init File.
+* rebinding keys, this session: 27.4.2 Changing Key Bindings.
+* rectangle: 10.3 Saving Rectangles in Registers.
+* rectangle: 24.4 Picture Mode Rectangle Commands.
+* rectangles: 9.8 Rectangles.
+* recursive editing level: 26.10 Recursive Editing Levels.
+* recursive editing level: 27.11 Quitting and Aborting.
+* redefining keys: 27.4.2.3 Using Strings for Changing Key Bindings.
+* regexp: 12.4 Regular Expression Search.
+* regexp alternative: 12.5 Syntax of Regular Expressions.
+* regexp grouping: 12.5 Syntax of Regular Expressions.
+* regexp grouping: 12.5 Syntax of Regular Expressions.
+* region: 9. Selecting Text.
+* region: 20.7 Case Conversion Commands.
+* registered file: 14.6.1 Concepts of Version Control.
+* registers: 10. Registers.
+* regular expression: 12.4 Regular Expression Search.
+* regular packages: 22.8.1 Package Flavors.
+* remote files: 14. File Handling.
+* removing directories: 14.1 File Names.
+* removing packages: Removing Packages.
+* replacement: 12.7 Replacement Commands.
+* restriction: 26.8 Narrowing.
+* Revert Buffer menu item: 2.4.1 The File Menu.
+* root of a hierarchy: 3.3.1 XEmacs Directory Hierarchies.
+* rosh hodesh: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* Russian: 17. World Scripts Support.
+* Save Buffer As ... menu item: 2.4.1 The File Menu.
+* Save Buffer menu item: 2.4.1 The File Menu.
+* Save Options: 2.4.4 The Options Menu.
+* saving: 14.2 Visiting Files.
+* saving option value: 27.2.2.2 Changing an Option.
+* SCCS: 14.6.1 Concepts of Version Control.
+* Scheme mode: 21.1 Major Modes for Programming Languages.
+* scrolling: 11.1 Scrolling.
+* scrolling in the calendar: 26.1.2 Scrolling the Calendar through Time.
+* searching: 12. Searching and Replacement.
+* selected buffer: 15. Using Multiple Buffers.
+* selected window: 16.1 Concepts of Emacs Windows.
+* selective display: 20.1.3 Outline Mode.
+* self-documentation: 8. Help.
+* sentences: 20.3 Sentences.
+* setting option value: 27.2.2.2 Changing an Option.
+* setting variables: 27.2.1 Examining and Setting Variables.
+* sexp: 21.2 Lists and Sexps.
+* sexp diary entries: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* shell commands: 26.7 Running Shell Commands from XEmacs.
+* Shell mode: 26.7.3 Shell Mode.
+* shift modifier: 2.1.1 Representing Keystrokes.
+* shrinking XEmacs frame: 3.1 Exiting Emacs.
+* simultaneous editing: 14.3.2 Protection Against Simultaneous Editing.
+* single-file packages: 22.8.1 Package Flavors.
+* site-specific directories: 3.3.3 Directories and Paths.
+* Size menu item: 2.4.4 The Options Menu.
+* slashes repeated in file name: 6.1 Minibuffers for File Names.
+* snapshots and version control: 14.6.9 Snapshots.
+* sorting: 26.6 Sorting Text.
+* sorting diary entries: 26.5.8.8 Fancy Diary Display.
+* source packages: 22.8.4 Source Packages.
+* spelling: 13.4 Checking and Correcting Spelling.
+* Split Frame: 2.4.1 The File Menu.
+* Start Macro Recording menu item: 2.4.2 The Edit Menu.
+* starting XEmacs: 3. Entering and Exiting Emacs.
+* startup paths: 3.3 How XEmacs finds Directories and Files.
+* string substitution: 12.7 Replacement Commands.
+* subshell: 26.7 Running Shell Commands from XEmacs.
+* subtree (Outline mode): 20.1.3.3 Outline Visibility Commands.
+* sumo package install: Sumo.
+* sunrise and sunset: 26.2.2 Times of Sunrise and Sunset.
+* suspending: 3.1 Exiting Emacs.
+* switching buffers: 15.1 Creating and Selecting Buffers.
+* Syntax Highlighting menu item: 2.4.4 The Options Menu.
+* syntax table: 20.2 Words.
+* syntax table: 27.5 The Syntax Table.
+* tags table: 21.11 Tags Tables.
+* tags, C++: 21.11 Tags Tables.
+* Teach Extended Commands menu item: 2.4.4 The Options Menu.
+* techniquitous: 26.11 Dissociated Press.
+* television: 9.5.2 Appending Kills.
+* Term mode: 26.7.5 Term Mode.
+* termscript file: 27.13.2 How to Report a Bug.
+* TeX: 20.1.2 TeX Mode.
+* text: 20. Commands for Human Languages.
+* Text mode: 20.1 Text Mode.
+* Tools menu: 2.4 XEmacs Pull-down Menus.
+* Tools menu: 2.4.6 The Tools Menu.
+* top level: 1.3 The Mode Line.
+* transposition: 13.2 Transposing Text.
+* transposition: 20.2 Words.
+* transposition: 21.2 Lists and Sexps.
+* truncation: 4.7 Continuation Lines.
+* typos: 13. Commands for Fixing Typos.
+* Un-split (Keep Others): 2.4.1 The File Menu.
+* Un-split (Keep This): 2.4.1 The File Menu.
+* undo: 5. Undoing Changes.
+* Undo menu item: 2.4.2 The Edit Menu.
+* variable: 27.2 Variables.
+* variables: 2.3 Keys and Commands.
+* version control: 14.6 Version Control.
+* version-specific directories: 3.3.3 Directories and Paths.
+* vi: 26.14 Emulation.
+* viewing: 14.10 Miscellaneous File Operations.
+* Viper: 26.14 Emulation.
+* visiting: 14.2 Visiting Files.
+* visiting files: 14.2 Visiting Files.
+* weeks, which day they start on: 26.1.1.2 Beginning or End of Week, Month or Year.
+* Weight menu item: 2.4.4 The Options Menu.
+* which packages: Which Packages.
+* widening: 26.8 Narrowing.
+* window: 1. The XEmacs Frame.
+* windows: 16. Multiple Windows.
+* Windows menu: 16.5 Deleting and Rearranging Windows.
+* word search: 12.3 Word Search.
+* words: 13.3 Case Conversion.
+* words: 20.2 Words.
+* words: 20.7 Case Conversion Commands.
+* work file: 14.6.1 Concepts of Version Control.
+* wrapping: 4.7 Continuation Lines.
+* X resources: 27.10 X Resources.
+* yahrzeits: 26.5 Converting From Other Calendars.
+* yahrzeits: 26.5.8.10 Sexp Entries and the Fancy Diary Display.
+* yanking: 9.5 Yanking.
+
+Short Table of Contents
+***********************
+
+The XEmacs Editor
+GNU GENERAL PUBLIC LICENSE
+Distribution
+Introduction
+1. The XEmacs Frame
+2. Keystrokes, Key Sequences, and Key Bindings
+3. Entering and Exiting Emacs
+4. Basic Editing Commands
+5. Undoing Changes
+6. The Minibuffer
+7. Running Commands by Name
+8. Help
+9. Selecting Text
+10. Registers
+11. Controlling the Display
+12. Searching and Replacement
+13. Commands for Fixing Typos
+14. File Handling
+15. Using Multiple Buffers
+16. Multiple Windows
+17. World Scripts Support
+18. Major Modes
+19. Indentation
+20. Commands for Human Languages
+21. Editing Programs
+22. Compiling and Testing Programs
+23. Abbrevs
+24. Editing Pictures
+25. Sending Mail
+26. Reading Mail
+27. Customization
+Glossary
+The GNU Manifesto
+Key (Character) Index
+Command and Function Index
+Variable Index
+Concept Index
+
+Table of Contents
+*****************
+
+The XEmacs Editor
+GNU GENERAL PUBLIC LICENSE
+ Preamble
+ Appendix: How to Apply These Terms to Your New Programs
+Distribution
+ Getting Other Versions of Emacs
+Introduction
+1. The XEmacs Frame
+ 1.1 Point
+ 1.2 The Echo Area
+ 1.3 The Mode Line
+ 1.4 GUI Components
+ 1.5 The XEmacs Menubar
+ 1.6 XEmacs Scrollbars
+ 1.7 XEmacs Mode Lines
+ 1.8 XEmacs Toolbars
+ 1.9 XEmacs Gutters
+ 1.10 Inhibiting Display of GUI Components
+ 1.11 Changing the Position, Orientation, and Appearance of GUI Components
+ 1.12 Using XEmacs Under the X Window System
+ 1.13 Using XEmacs Under Microsoft Windows
+2. Keystrokes, Key Sequences, and Key Bindings
+ 2.1 Keystrokes as Building Blocks of Key Sequences
+  2.1.1 Representing Keystrokes
+  2.1.2 Representing Key Sequences
+  2.1.3 String Key Sequences
+  2.1.4 Assignment of the <META> Key
+  2.1.5 Assignment of the <SUPER> and <HYPER> Keys
+ 2.2 Representation of Characters
+ 2.3 Keys and Commands
+ 2.4 XEmacs Pull-down Menus
+  2.4.1 The File Menu
+  2.4.2 The Edit Menu
+  2.4.3 The Apps Menu
+  2.4.4 The Options Menu
+  2.4.5 The Buffers Menu
+  2.4.6 The Tools Menu
+  2.4.7 The Help Menu
+  2.4.8 Customizing XEmacs Menus
+3. Entering and Exiting Emacs
+ 3.1 Exiting Emacs
+ 3.2 Command Line Switches and Arguments
+  3.2.1 Command Line Arguments for Any Position
+  3.2.2 Command Line Arguments (Beginning of Line Only)
+  3.2.3 Command Line Arguments (for XEmacs Under X)
+ 3.3 How XEmacs finds Directories and Files
+  3.3.1 XEmacs Directory Hierarchies
+  3.3.2 Package Hierarchies
+  3.3.3 Directories and Paths
+4. Basic Editing Commands
+ 4.1 Inserting Text
+ 4.2 Changing the Location of Point
+ 4.3 Erasing Text
+ 4.4 Files
+ 4.5 Help
+ 4.6 Blank Lines
+ 4.7 Continuation Lines
+ 4.8 Cursor Position Information
+ 4.9 Numeric Arguments
+5. Undoing Changes
+6. The Minibuffer
+ 6.1 Minibuffers for File Names
+ 6.2 Editing in the Minibuffer
+ 6.3 Completion
+  6.3.1 Completion Example
+  6.3.2 Completion Commands
+  6.3.3 Strict Completion
+  6.3.4 Completion Options
+ 6.4 Minibuffer History
+ 6.5 Repeating Minibuffer Commands
+7. Running Commands by Name
+8. Help
+ 8.1 Help Summary
+ 8.2 Documentation for a Key
+ 8.3 Help by Command or Variable Name
+ 8.4 Apropos
+ 8.5 Keyword Search for Lisp Libraries
+ 8.6 Help Mode Commands
+ 8.7 Other Help Commands
+9. Selecting Text
+ 9.1 The Mark and the Region
+  9.1.1 Setting the Mark
+  9.1.2 Operating on the Region
+  9.1.3 Commands to Mark Textual Objects
+  9.1.4 The Mark Ring
+ 9.2 Selecting Text with the Mouse
+ 9.3 Additional Mouse Operations
+ 9.4 Deletion and Killing
+  9.4.1 Deletion
+  9.4.2 Killing by Lines
+  9.4.3 Other Kill Commands
+ 9.5 Yanking
+  9.5.1 The Kill Ring
+  9.5.2 Appending Kills
+  9.5.3 Yanking Earlier Kills
+ 9.6 Using X Selections
+  9.6.1 The Clipboard Selection
+  9.6.2 Miscellaneous X Selection Commands
+  9.6.3 X Cut Buffers
+  9.6.4 Active Regions
+ 9.7 Accumulating Text
+ 9.8 Rectangles
+10. Registers
+ 10.1 Saving Positions in Registers
+ 10.2 Saving Text in Registers
+ 10.3 Saving Rectangles in Registers
+ 10.4 Saving Window Configurations in Registers
+ 10.5 Keeping Numbers in Registers
+ 10.6 Keeping File Names in Registers
+ 10.7 Bookmarks
+11. Controlling the Display
+ 11.1 Scrolling
+ 11.2 Horizontal Scrolling
+ 11.3 Selective Display
+ 11.4 Variables Controlling Display
+12. Searching and Replacement
+ 12.1 Incremental Search
+  12.1.1 Slow Terminal Incremental Search
+ 12.2 Non-Incremental Search
+ 12.3 Word Search
+ 12.4 Regular Expression Search
+ 12.5 Syntax of Regular Expressions
+ 12.6 Searching and Case
+ 12.7 Replacement Commands
+  12.7.1 Unconditional Replacement
+  12.7.2 Regexp Replacement
+  12.7.3 Replace Commands and Case
+  12.7.4 Query Replace
+ 12.8 Other Search-and-Loop Commands
+13. Commands for Fixing Typos
+ 13.1 Killing Your Mistakes
+ 13.2 Transposing Text
+ 13.3 Case Conversion
+ 13.4 Checking and Correcting Spelling
+14. File Handling
+ 14.1 File Names
+ 14.2 Visiting Files
+ 14.3 Saving Files
+  14.3.1 Backup Files
+   14.3.1.1 Single or Numbered Backups
+   14.3.1.2 Automatic Deletion of Backups
+   14.3.1.3 Copying vs. Renaming
+  14.3.2 Protection Against Simultaneous Editing
+ 14.4 Reverting a Buffer
+ 14.5 Auto-Saving: Protection Against Disasters
+  14.5.1 Auto-Save Files
+  14.5.2 Controlling Auto-Saving
+  14.5.3 Recovering Data from Auto-Saves
+ 14.6 Version Control
+  14.6.1 Concepts of Version Control
+  14.6.2 Editing with Version Control
+  14.6.3 Variables Affecting Check-in and Check-out
+  14.6.4 Log Entries
+  14.6.5 Change Logs and VC
+  14.6.6 Examining And Comparing Old Versions
+  14.6.7 VC Status Commands
+  14.6.8 Renaming VC Work Files and Master Files
+  14.6.9 Snapshots
+   14.6.9.1 Making and Using Snapshots
+   14.6.9.2 Snapshot Caveats
+  14.6.10 Inserting Version Control Headers
+ 14.7 Listing a File Directory
+ 14.8 Comparing Files
+ 14.9 Dired, the Directory Editor
+  14.9.1 Entering Dired
+  14.9.2 Editing in Dired
+  14.9.3 Deleting Files With Dired
+  14.9.4 Immediate File Operations in Dired
+ 14.10 Miscellaneous File Operations
+15. Using Multiple Buffers
+ 15.1 Creating and Selecting Buffers
+ 15.2 Listing Existing Buffers
+ 15.3 Miscellaneous Buffer Operations
+ 15.4 Killing Buffers
+ 15.5 Operating on Several Buffers
+16. Multiple Windows
+ 16.1 Concepts of Emacs Windows
+ 16.2 Splitting Windows
+ 16.3 Using Other Windows
+ 16.4 Displaying in Another Window
+ 16.5 Deleting and Rearranging Windows
+17. World Scripts Support
+ 17.1 What is Mule?
+ 17.2 Language Environments
+ 17.3 Input Methods
+ 17.4 Selecting an Input Method
+ 17.5 Mule and Fonts
+ 17.6 Coding Systems
+ 17.7 Recognizing Coding Systems
+ 17.8 Specifying a Coding System
+18. Major Modes
+ 18.1 Choosing Major Modes
+19. Indentation
+ 19.1 Indentation Commands and Techniques
+ 19.2 Tab Stops
+ 19.3 Tabs vs. Spaces
+20. Commands for Human Languages
+ 20.1 Text Mode
+  20.1.1 Nroff Mode
+  20.1.2 TeX Mode
+   20.1.2.1 TeX Editing Commands
+   20.1.2.2 TeX Printing Commands
+  20.1.3 Outline Mode
+   20.1.3.1 Format of Outlines
+   20.1.3.2 Outline Motion Commands
+   20.1.3.3 Outline Visibility Commands
+ 20.2 Words
+ 20.3 Sentences
+ 20.4 Paragraphs
+ 20.5 Pages
+ 20.6 Filling Text
+  20.6.1 Auto Fill Mode
+  20.6.2 Explicit Fill Commands
+  20.6.3 The Fill Prefix
+ 20.7 Case Conversion Commands
+21. Editing Programs
+ 21.1 Major Modes for Programming Languages
+ 21.2 Lists and Sexps
+ 21.3 Defuns
+ 21.4 Indentation for Programs
+  21.4.1 Basic Program Indentation Commands
+  21.4.2 Indenting Several Lines
+  21.4.3 Customizing Lisp Indentation
+  21.4.4 Customizing C Indentation
+ 21.5 Automatic Display of Matching Parentheses
+ 21.6 Manipulating Comments
+  21.6.1 Multiple Lines of Comments
+  21.6.2 Options Controlling Comments
+ 21.7 Editing Without Unbalanced Parentheses
+ 21.8 Completion for Lisp Symbols
+ 21.9 Documentation Commands
+ 21.10 Change Logs
+ 21.11 Tags Tables
+  21.11.1 Source File Tag Syntax
+  21.11.2 Creating Tags Tables
+  21.11.3 Etags Regexps
+  21.11.4 Selecting a Tags Table
+  21.11.5 Finding a Tag
+  21.11.6 Searching and Replacing with Tags Tables
+  21.11.7 Tags Table Inquiries
+ 21.12 Fortran Mode
+  21.12.1 Motion Commands
+  21.12.2 Fortran Indentation
+   21.12.2.1 Fortran Indentation Commands
+   21.12.2.2 Line Numbers and Continuation
+   21.12.2.3 Syntactic Conventions
+   21.12.2.4 Variables for Fortran Indentation
+  21.12.3 Comments
+  21.12.4 Columns
+  21.12.5 Fortran Keyword Abbrevs
+ 21.13 Asm Mode
+22. Compiling and Testing Programs
+ 22.1 Running "make", or Compilers Generally
+ 22.2 Major Modes for Lisp
+ 22.3 Libraries of Lisp Code for Emacs
+  22.3.1 Loading Libraries
+  22.3.2 Compiling Libraries
+  22.3.3 Converting Mocklisp to Lisp
+ 22.4 Evaluating Emacs-Lisp Expressions
+ 22.5 The Emacs-Lisp Debugger
+ 22.6 Lisp Interaction Buffers
+ 22.7 Running an External Lisp
+ 22.8 Packages
+  22.8.1 Package Flavors
+  22.8.2 Package Distributions
+  22.8.3 Binary Packages
+  22.8.4 Source Packages
+  22.8.5 Getting Started
+  22.8.6 Choosing the Packages You Need
+  22.8.7 XEmacs and Installing Packages
+  Sumo
+  Manually
+  Automatically
+  Which Packages
+  Removing Packages
+  22.8.8 Prerequisites for Building Source Packages
+  22.8.9 What You Can Do With Source Packages
+  Local.rules File
+  Creating Packages
+  22.8.10 Normal Packages
+  22.8.11 Mule Support (mule)
+23. Abbrevs
+ 23.1 Defining Abbrevs
+ 23.2 Controlling Abbrev Expansion
+ 23.3 Examining and Editing Abbrevs
+ 23.4 Saving Abbrevs
+ 23.5 Dynamic Abbrev Expansion
+24. Editing Pictures
+ 24.1 Basic Editing in Picture Mode
+ 24.2 Controlling Motion After Insert
+ 24.3 Picture Mode Tabs
+ 24.4 Picture Mode Rectangle Commands
+25. Sending Mail
+ 25.1 The Format of the Mail Buffer
+ 25.2 Mail Header Fields
+ 25.3 Mail Mode
+26. Reading Mail
+ 26.1 Calendar Mode and the Diary
+  26.1.1 Movement in the Calendar
+   26.1.1.1 Motion by Integral Days, Weeks, Months, Years
+   26.1.1.2 Beginning or End of Week, Month or Year
+   26.1.1.3 Particular Dates
+  26.1.2 Scrolling the Calendar through Time
+  26.1.3 The Mark and the Region
+  26.1.4 Miscellaneous Calendar Commands
+ 26.2 LaTeX Calendar
+  26.2.1 Holidays
+  26.2.2 Times of Sunrise and Sunset
+  26.2.3 Phases of the Moon
+  26.2.4 Conversion To and From Other Calendars
+ 26.3 Supported Calendar Systems
+ 26.4 Converting To Other Calendars
+ 26.5 Converting From Other Calendars
+  26.5.1 Converting from the Mayan Calendar
+  26.5.2 The Diary
+  26.5.3 Commands Displaying Diary Entries
+  26.5.4 The Diary File
+  26.5.5 Date Formats
+  26.5.6 Commands to Add to the Diary
+  26.5.7 Special Diary Entries
+  26.5.8 Customizing the Calendar and Diary
+   26.5.8.1 Customizing the Calendar
+   26.5.8.2 Customizing the Holidays
+   26.5.8.3 Date Display Format
+   26.5.8.4 Time Display Format
+   26.5.8.5 Daylight Savings Time
+   26.5.8.6 Customizing the Diary
+   26.5.8.7 Hebrew- and Islamic-Date Diary Entries
+   26.5.8.8 Fancy Diary Display
+   26.5.8.9 Included Diary Files
+   26.5.8.10 Sexp Entries and the Fancy Diary Display
+   26.5.8.11 Customizing Appointment Reminders
+ 26.6 Sorting Text
+ 26.7 Running Shell Commands from XEmacs
+  26.7.1 Single Shell Commands
+  26.7.2 Interactive Inferior Shell
+  26.7.3 Shell Mode
+  26.7.4 Interactive Inferior Shell with Terminal Emulator
+  26.7.5 Term Mode
+  26.7.6 Paging in the terminal emulator
+ 26.8 Narrowing
+ 26.9 Hardcopy Output
+ 26.10 Recursive Editing Levels
+ 26.11 Dissociated Press
+ 26.12 CONX
+ 26.13 Other Amusements
+ 26.14 Emulation
+27. Customization
+ 27.1 Minor Modes
+ 27.2 Variables
+  27.2.1 Examining and Setting Variables
+  27.2.2 Easy Customization Interface
+   27.2.2.1 Customization Groups
+   27.2.2.2 Changing an Option
+   27.2.2.3 Customizing Faces
+   27.2.2.4 Customizing Specific Items
+  27.2.3 Editing Variable Values
+  27.2.4 Local Variables
+  27.2.5 Local Variables in Files
+ 27.3 Keyboard Macros
+  27.3.1 Basic Use
+  27.3.2 Naming and Saving Keyboard Macros
+  27.3.3 Executing Macros With Variations
+ 27.4 Customizing Key Bindings
+  27.4.1 Keymaps
+  27.4.2 Changing Key Bindings
+   27.4.2.1 Changing Key Bindings Interactively
+   27.4.2.2 Changing Key Bindings Programmatically
+   27.4.2.3 Using Strings for Changing Key Bindings
+  27.4.3 Disabling Commands
+ 27.5 The Syntax Table
+  27.5.1 Information About Each Character
+  27.5.2 Altering Syntax Information
+ 27.6 The Init File
+  27.6.1 Init File Syntax
+  27.6.2 Init File Examples
+  27.6.3 Terminal-Specific Initialization
+ 27.7 Changing the Bell Sound
+ 27.8 Faces
+  27.8.1 Customizing Faces
+ 27.9 Frame Components
+ 27.10 X Resources
+  27.10.1 Geometry Resources
+  27.10.2 Iconic Resources
+  27.10.3 Resource List
+  27.10.4 Face Resources
+  27.10.5 Widgets
+  27.10.6 Menubar Resources
+ 27.11 Quitting and Aborting
+ 27.12 Dealing With Emacs Trouble
+  27.12.1 Recursive Editing Levels
+  27.12.2 Garbage on the Screen
+  27.12.3 Garbage in the Text
+  27.12.4 Spontaneous Entry to Incremental Search
+  27.12.5 Emergency Escape
+  27.12.6 Help for Total Frustration
+ 27.13 Reporting Bugs
+  27.13.1 When Is There a Bug
+  27.13.2 How to Report a Bug
+Glossary
+The GNU Manifesto
+ What's GNU? GNU's Not Unix!
+ Why I Must Write GNU
+ Why GNU Will Be Compatible With Unix
+ How GNU Will Be Available
+ Why Many Other Programmers Want to Help
+ How You Can Contribute
+ Why All Computer Users Will Benefit
+ Some Easily Rebutted Objections to GNU's Goals
+Key (Character) Index
+Command and Function Index
+Variable Index
+Concept Index
+

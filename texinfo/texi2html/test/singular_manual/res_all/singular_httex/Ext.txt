@@ -1,0 +1,150 @@
+D.4.3.5 Ext
+...........
+Procedure from library homolog.lib (see homolog_lib).
+
+Usage:
+Ext(v,M,N[,any]); v int resp. intvec, M,N modules
+
+Compute:
+A presentation of Ext^k(M',N'); for k=v[1],v[2],... where
+M'=coker(M) and N'=coker(N). Let
+       0 <-- M' <-- F0 <-M-- F1 <-- F2 <--... ,   
+       0 <-- N' <-- G0 <--N- G1
+be a free resolution of M', resp. a presentation of N'. Consider
+the commutative diagram
+           0                  0                  0
+           |^                 |^                 |^
+   --> Hom(Fk-1,N') -Ak-> Hom(Fk,N') -Ak+1-> Hom(Fk+1,N')
+           |^                 |^                 |^
+   --> Hom(Fk-1,G0) -Ak-> Hom(Fk,G0) -Ak+1-> Hom(Fk+1,G0)
+                              |^                 |^
+                              |C                 |B
+                          Hom(Fk,G1) ------> Hom(Fk+1,G1)
+
+      (Ak,Ak+1 induced by M and B,C induced by N).
+Let K=modulo(Ak+1,B), J=module(Ak)+module(C) and Ext=modulo(K,J),
+then we have exact sequences
+    R^p --K-> Hom(Fk,G0) --Ak+1-> Hom(Fk+1,G0)/im(B),
+
+    R^q -Ext-> R^p --K-> Hom(Fk,G0)/(im(Ak)+im(C)).
+Hence, Ext presents Ext^k(M',N').
+
+Return:
+- module Ext, a presentation of Ext^k(M',N') if v is of type int
+
+- a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.
+
+- In case of a third argument of any type return a list l:
+             l[1] = module Ext/list of Ext^k
+             l[2] = SB of Ext/list of SB of Ext^k
+             l[3] = matrix/list of matrices, each representing a kbase of Ext^k
+                       (if finite dimensional)
+
+Display:
+printlevel >=0: dimension, vdim of Ext^k for each k (default).
+
+ printlevel >=1: matrices Ak, Ak+1 and kbase of Ext^k in Hom(Fk,G0)
+(if finite dimensional)
+
+Note:
+In order to compute Ext^k(M,N) use the command Ext(k,syz(M),syz(N));
+or: list P=mres(M,2); list Q=mres(N,2); Ext(k,P[2],Q[2]);
+
+Example:
+LIB "homolog.lib";
+int p      = printlevel;
+printlevel = 1;
+ring r     = 0,(x,y),dp;
+ideal i    = x2-y3;
+ideal j    = x2-y5;
+list E     = Ext(0..2,i,j);    // Ext^k(r/i,r/j) for k=0,1,2 over r
+==> // Computing Ext^0 (help Ext; gives an explanation):
+==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+==> // then Hom(F0,G0)-->Hom(F1,G0) is given by:
+==> y3-x2
+==> // and Hom(F-1,G0) + Hom(F0,G1)-->Hom(F0,G0) is given by:
+==> 0,-y5+x2
+==> 
+==> // dimension of Ext^0:  -1
+==> 
+==> // Computing Ext^1 (help Ext; gives an explanation):
+==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
+==> 0
+==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
+==> y3-x2,-y5+x2
+==> 
+==> // dimension of Ext^1:  0
+==> // vdim of Ext^1:       10
+==> 
+==> // Computing Ext^2 (help Ext; gives an explanation):
+==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+==> // then Hom(F2,G0)-->Hom(F3,G0) is given by:
+==> 1
+==> // and Hom(F1,G0) + Hom(F2,G1)-->Hom(F2,G0) is given by:
+==> 0,-y5+x2
+==> 
+==> // dimension of Ext^2:  -1
+==> 
+qring R    = std(i);
+ideal j    = fetch(r,j);
+module M   = [-x,y],[-y2,x];
+printlevel = 2;
+module E1  = Ext(1,M,j);       // Ext^1(R^2/M,R/j) over R=r/i
+==> // Computing Ext^1 (help Ext; gives an explanation):
+==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
+==> x, -y,
+==> y2,-x 
+==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
+==> x, -y,-y5+x2,0,    
+==> y2,-x,0,     -y5+x2
+==> 
+==> // dimension of Ext^1:  -1
+==> 
+list l     = Ext(4,M,M,1);     // Ext^4(R^2/M,R^2/M) over R=r/i
+==> // Computing Ext^4 (help Ext; gives an explanation):
+==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+==> // then Hom(F4,G0)-->Hom(F5,G0) is given by:
+==> x, -y,0, 0, 
+==> y2,-x,0, 0, 
+==> 0, 0, x, -y,
+==> 0, 0, y2,-x 
+==> // and Hom(F3,G0) + Hom(F4,G1)-->Hom(F4,G0) is given by:
+==> x, -y,0, 0, -x,0, -y2,0,  
+==> y2,-x,0, 0, 0, -x,0,  -y2,
+==> 0, 0, x, -y,y, 0, x,  0,  
+==> 0, 0, y2,-x,0, y, 0,  x   
+==> 
+==> // dimension of Ext^4:  0
+==> // vdim of Ext^4:       2
+==> 
+==> // columns of matrix are kbase of Ext^4 in Hom(F4,G0)
+==> 1,0,
+==> 0,y,
+==> 0,1,
+==> 1,0 
+==> 
+==> // element 1 of kbase of Ext^4 in Hom(F4,G0)
+==> // as matrix: F4-->G0
+==> 1,0,
+==> 0,1 
+==> // element 2 of kbase of Ext^4 in Hom(F4,G0)
+==> // as matrix: F4-->G0
+==> 0,y,
+==> 1,0 
+==> 
+printlevel = p;
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

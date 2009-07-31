@@ -1,0 +1,12 @@
+11.3 Making a Two-column Table
+==============================
+
+@table is similar to @itemize (see @itemize), but allows you to specify a name or heading line for
+each item.  The @table command is used to produce two-column
+tables, and is especially useful for glossaries, explanatory
+exhibits, and command-line option summaries.
+
+* table::                       How to construct a two-column table.
+* ftable vtable::               Automatic indexing for two-column tables.
+* itemx::                       How to put more entries in the first column.
+

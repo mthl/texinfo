@@ -1,0 +1,77 @@
+15.4.1 Functions and Similar Entities
+-------------------------------------
+
+This section describes the commands for describing functions and similar
+entities:
+
+@deffn category name arguments...
+The @deffn command is the general definition command for
+functions, interactive commands, and similar entities that may take
+arguments.  You must choose a term to describe the category of entity
+being defined; for example, "Function" could be used if the entity is
+a function.  The @deffn command is written at the beginning of a
+line and is followed on the same line by the category of entity being
+described, the name of this particular entity, and its arguments, if
+any.  Terminate the definition with @end deffn on a line of its
+own.
+
+For example, here is a definition:
+
+@deffn Command forward-char nchars
+Move point forward @var{nchars} characters.
+@end deffn
+
+This shows a rather terse definition for a "command" named
+forward-char with one argument, nchars.
+
+@deffn prints argument names such as nchars in italics or
+upper case, as if @var had been used, because we think of these
+names as metasyntactic variables--they stand for the actual argument
+values.  Within the text of the description, write an argument name
+explicitly with @var to refer to the value of the argument.  In
+the example above, we used `@var{nchars}' in this way.
+
+The template for @deffn is:
+
+@deffn category name arguments...
+body-of-definition
+@end deffn
+
+@defun name arguments...
+The @defun command is the definition command for functions.
+@defun is equivalent to `@deffn Function
+...'.
+
+For example,
+
+@defun set symbol new-value
+Change the value of the symbol @var{symbol}
+to @var{new-value}.
+@end defun
+
+shows a rather terse definition for a function set whose
+arguments are symbol and new-value.  The argument names on
+the @defun line automatically appear in italics or upper case as
+if they were enclosed in @var.  Terminate the definition with
+@end defun on a line of its own.
+
+The template is:
+
+@defun function-name arguments...
+body-of-definition
+@end defun
+
+@defun creates an entry in the index of functions.
+
+@defmac name arguments...
+The @defmac command is the definition command for macros.
+@defmac is equivalent to `@deffn Macro ...' and
+works like @defun.
+
+@defspec name arguments...
+The @defspec command is the definition command for special
+forms.  (In Lisp, a special form is an entity much like a function,
+see (elisp)Special Forms section `Special Forms' in GNU Emacs Lisp Reference Manual.)
+@defspec is equivalent to `@deffn {Special Form}
+...' and works like @defun.
+

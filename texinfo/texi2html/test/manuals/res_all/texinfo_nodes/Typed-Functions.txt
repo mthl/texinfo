@@ -1,0 +1,100 @@
+15.4.3 Functions in Typed Languages
+-----------------------------------
+
+The @deftypefn command and its variations are for describing
+functions in languages in which you must declare types of variables and
+functions, such as C and C++.
+
+@deftypefn category data-type name arguments...
+The @deftypefn command is the general definition command for
+functions and similar entities that may take arguments and that are
+typed.  The @deftypefn command is written at the beginning of
+a line and is followed on the same line by the category of entity
+being described, the type of the returned value, the name of this
+particular entity, and its arguments, if any.
+
+For example,
+
+@deftypefn {Library Function} int foobar
+   (int @var{foo}, float @var{bar})
+...
+@end deftypefn
+
+(where the text before the "...", shown above as two lines, would
+actually be a single line in a real Texinfo file) produces the following
+in Info:
+
+-- Library Function: int foobar (int FOO, float BAR)
+...
+
+This means that foobar is a "library function" that returns an
+int, and its arguments are foo (an int) and
+bar (a float).
+
+The argument names that you write in @deftypefn are not subject
+to an implicit @var--since the actual names of the arguments in
+@deftypefn are typically scattered among data type names and
+keywords, Texinfo cannot find them without help.  Instead, you must write
+@var explicitly around the argument names.  In the example
+above, the argument names are `foo' and `bar'.
+
+The template for @deftypefn is:
+
+@deftypefn category data-type name arguments ...
+body-of-description
+@end deftypefn
+
+Note that if the category or data type is more than one
+word then it must be enclosed in braces to make it a single argument.
+
+If you are describing a procedure in a language that has packages,
+such as Ada, you might consider using @deftypefn in a manner
+somewhat contrary to the convention described in the preceding
+paragraphs.
+
+For example:
+
+@deftypefn stacks private push
+        (@var{s}:in out stack;
+        @var{n}:in integer)
+...
+@end deftypefn
+
+(The @deftypefn arguments are shown split into three lines, but
+would be a single line in a real Texinfo file.)
+
+In this instance, the procedure is classified as belonging to the
+package stacks rather than classified as a `procedure' and its
+data type is described as private.  (The name of the procedure
+is push, and its arguments are s and n.)
+
+@deftypefn creates an entry in the index of functions for
+name.
+
+@deftypefun data-type name arguments...
+The @deftypefun command is the specialized definition command
+for functions in typed languages.  The command is equivalent to
+`@deftypefn Function ...'.
+
+Thus,
+
+@deftypefun int foobar (int @var{foo}, float @var{bar})
+...
+@end deftypefun
+
+produces the following in Info:
+
+-- Function: int foobar (int FOO, float BAR)
+...
+
+The template is:
+
+@deftypefun type name arguments...
+body-of-description
+@end deftypefun
+
+@deftypefun creates an entry in the index of functions for
+name.
+
+
+

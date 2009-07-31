@@ -1,0 +1,25 @@
+13.9 Glyphs for Examples
+========================
+
+In Texinfo, code is often illustrated in examples that are delimited
+by @example and @end example, or by @lisp and
+@end lisp.  In such examples, you can indicate the results of
+evaluation or an expansion using `=>' or
+`==>'.  Likewise, there are commands to insert glyphs
+to indicate
+printed output, error messages, equivalence of expressions, and the
+location of point.
+
+The glyph-insertion commands do not need to be used within an example, but
+most often they are.  Every  glyph-insertion command is followed by a pair of
+left- and right-hand braces.
+
+* Glyphs Summary::              
+* result::                      How to show the result of expression.
+* expansion::                   How to indicate an expansion.
+* Print Glyph::                 How to indicate printed output.
+* Error Glyph::                 How to indicate an error message.
+* Equivalence::                 How to indicate equivalence.
+* Point Glyph::                 How to indicate the location of point.
+
+

@@ -1,0 +1,45 @@
+F.5.1 Running Info-validate
+---------------------------
+
+To use Info-validate, visit the Info file you wish to check and
+type:
+
+M-x Info-validate
+
+Note that the Info-validate command requires an upper case
+`I'.  You may also need to create a tag table before running
+Info-validate.  See Tagifying.
+
+If your file is valid, you will receive a message that says "File appears
+valid".  However, if you have a pointer that does not point to a node,
+error messages will be displayed in a buffer called `*problems in
+info file*'.
+
+For example, Info-validate was run on a test file that contained
+only the first node of this manual.  One of the messages said:
+
+In node "Overview", invalid Next: Texinfo Mode
+
+This meant that the node called `Overview' had a `Next' pointer that
+did not point to anything (which was true in this case, since the test file
+had only one node in it).
+
+Now suppose we add a node named `Texinfo Mode' to our test case
+but we do not specify a `Previous' for this node.  Then we will get
+the following error message:
+
+In node "Texinfo Mode", should have Previous: Overview
+
+This is because every `Next' pointer should be matched by a
+`Previous' (in the node where the `Next' points) which points back.
+
+Info-validate also checks that all menu entries and cross references
+point to actual nodes.
+
+Info-validate requires a tag table and does not work with files
+that have been split.  (The texinfo-format-buffer command
+automatically splits large files.)  In order to use Info-validate
+on a large file, you must run texinfo-format-buffer with an
+argument so that it does not split the Info file; and you must create a
+tag table for the unsplit file.
+

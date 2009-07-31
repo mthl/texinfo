@@ -1,0 +1,59 @@
+20.2.4 Installing Info Directory Files
+--------------------------------------
+
+When you install an Info file onto your system, you can use the program
+install-info to update the Info directory file `dir'.
+Normally the makefile for the package runs install-info, just
+after copying the Info file into its proper installed location.
+
+In order for the Info file to work with install-info, you include
+the commands @dircategory and
+@direntry...@end direntry in the Texinfo source
+file.  Use @direntry to specify the menu entries to add to the
+Info directory file, and use @dircategory to specify which part
+of the Info directory to put it in.  Here is how these commands are used
+in this manual:
+
+@dircategory Texinfo documentation system
+@direntry
+* Texinfo: (texinfo).           The GNU documentation format.
+* install-info: (texinfo)Invoking install-info. ...
+...
+@end direntry
+
+Here's what this produces in the Info file:
+
+INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* Texinfo: (texinfo).           The GNU documentation format.
+* install-info: (texinfo)Invoking install-info. ...
+...
+END-INFO-DIR-ENTRY
+
+The install-info program sees these lines in the Info file, and
+that is how it knows what to do.
+
+Always use the @direntry and @dircategory commands near
+the beginning of the Texinfo input, before the first @node
+command.  If you use them later on in the input, install-info
+will not notice them.
+
+If you use @dircategory more than once in the Texinfo source,
+each usage specifies the `current' category; any subsequent
+@direntry commands will add to that category.  
+
+Here are some recommended @dircategory categories:
+
+GNU packages
+GNU programming tools
+GNU programming documentation
+GNU Emacs Lisp
+GNU libraries
+TeX
+Individual utilities
+
+The idea is to include the `Invoking' node for every program installed
+by a package under `Individual utilities', and an entry for the manual
+as a whole in the appropriate other category.
+
+

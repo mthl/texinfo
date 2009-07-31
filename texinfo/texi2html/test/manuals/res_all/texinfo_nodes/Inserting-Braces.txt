@@ -1,0 +1,13 @@
+13.1.2 Inserting `{' and `}'with @{ and @}
+------------------------------------------
+
+@{ stands for a single `{' in either printed or Info
+output.
+
+@} stands for a single `}' in either printed or Info
+output.
+
+Do not put braces after either an @{ or an @}
+command.
+
+

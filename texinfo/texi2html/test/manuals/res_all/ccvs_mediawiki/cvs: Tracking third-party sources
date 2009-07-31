@@ -1,0 +1,348 @@
+<div id="Tracking-sources"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
+<td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Tracking-third_002dparty-sources"></div>
+== Tracking third-party sources ==
+<div id="index-Third_002dparty-sources"></div>
+<div id="index-Tracking-sources"></div>
+
+<p>If you modify a program to better fit your site, you
+probably want to include your modifications when the next
+release of the program arrives.  <small>CVS</small> can help you with
+this task.
+</p>
+<div id="index-Vendor"></div>
+<div id="index-Vendor-branch"></div>
+<div id="index-Branch_002c-vendor_002d"></div>
+<p>In the terminology used in <small>CVS</small>, the supplier of the
+program is called a <em>vendor</em>.  The unmodified
+distribution from the vendor is checked in on its own
+branch, the <em>vendor branch</em>.  <small>CVS</small> reserves branch
+1.1.1 for this use.
+</p>
+<p>When you modify the source and commit it, your revision
+will end up on the main trunk.  When a new release is
+made by the vendor, you commit it on the vendor branch
+and copy the modifications onto the main trunk.
+</p>
+<p>Use the <code>import</code> command to create and update
+the vendor branch.  When you import a new file,
+the vendor branch is made the &lsquo;head&rsquo; revision, so
+anyone that checks out a copy of the file gets that
+revision.  When a local modification is committed it is
+placed on the main trunk, and made the &lsquo;head&rsquo;
+revision.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#First-import| First import]]::<nowiki>                Importing for the first time
+</nowiki>&bull;[[#Update-imports| Update imports]]::<nowiki>              Updating with the import command
+</nowiki>&bull;[[#Reverting-local-changes| Reverting local changes]]::<nowiki>     Reverting to the latest vendor release
+</nowiki>&bull;[[#Binary-files-in-imports| Binary files in imports]]::<nowiki>     Binary files require special handling
+</nowiki>&bull;[[#Keywords-in-imports| Keywords in imports]]::<nowiki>         Keyword substitution might be undesirable
+</nowiki>&bull;[[#Multiple-vendor-branches| Multiple vendor branches]]::<nowiki>    What if you get sources from several places?
+</nowiki></pre>
+<hr size="6">
+<div id="First-import"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Importing-for-the-first-time"></div>
+=== Importing for the first time ===
+<div id="index-Importing-modules"></div>
+
+<p>Use the <code>import</code> command to check in the sources
+for the first time.  When you use the <code>import</code>
+command to track third-party sources, the <em>vendor
+tag</em> and <em>release tags</em> are useful.  The
+<em>vendor tag</em> is a symbolic name for the branch
+(which is always 1.1.1, unless you use the &lsquo;<samp>-b
+<var>branch</var></samp>&rsquo; flag&mdash;see [[#Multiple-vendor-branches|Multiple vendor branches]].).  The
+<em>release tags</em> are symbolic names for a particular
+release, such as &lsquo;<samp>FSF_0_04</samp>&rsquo;.
+</p>
+<p>Note that <code>import</code> does <em>not</em> change the
+directory in which you invoke it.  In particular, it
+does not set up that directory as a <small>CVS</small> working
+directory; if you want to work with the sources import
+them first and then check them out into a different
+directory (see section [cvs: Overview#Getting-the-source Getting the source]).
+</p>
+<div id="index-wdiff-_0028import-example_0029"></div>
+<p>Suppose you have the sources to a program called
+<code>wdiff</code> in a directory &lsquo;<tt>wdiff-0.04</tt>&rsquo;,
+and are going to make private modifications that you
+want to be able to use even when new releases are made
+in the future.  You start by importing the source to
+your repository:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd wdiff-0.04
+$ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
+</nowiki></pre></td></tr></table>
+
+<p>The vendor tag is named &lsquo;<samp>FSF_DIST</samp>&rsquo; in the above
+example, and the only release tag assigned is
+&lsquo;<samp>WDIFF_0_04</samp>&rsquo;.
+</p>
+<hr size="6">
+<div id="Update-imports"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Updating-with-the-import-command"></div>
+=== Updating with the import command ===
+
+<p>When a new release of the source arrives, you import it into the
+repository with the same <code>import</code> command that you used to set up
+the repository in the first place.  The only difference is that you
+specify a different release tag this time:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ tar xfz wdiff-0.05.tar.gz
+$ cd wdiff-0.05
+$ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
+</nowiki></pre></td></tr></table>
+
+<p>For files that have not been modified locally, the newly created
+revision becomes the head revision.  If you have made local
+changes, <code>import</code> will warn you that you must merge the changes
+into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; to do so:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
+</nowiki></pre></td></tr></table>
+
+<p>The above command will check out the latest revision of
+&lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
+since yesterday into the working copy.  If any conflicts arise during
+the merge they should be resolved in the normal way (see section [cvs: Multiple developers#Conflicts-example Conflicts example]).  Then, the modified files may be committed.
+</p>
+<p>However, it is much better to use the two release tags rather than using
+a date on the branch as suggested above:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
+</nowiki></pre></td></tr></table>
+
+<p>The reason this is better is that
+using a date, as suggested above, assumes that you do
+not import more than one release of a product per day.
+More importantly, using the release tags allows <small>CVS</small> to detect files
+that were removed between the two vendor releases and mark them for
+removal.  Since <code>import</code> has no way to detect removed files, you
+should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
+</p>
+<hr size="6">
+<div id="Reverting-local-changes"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Reverting-to-the-latest-vendor-release"></div>
+=== Reverting to the latest vendor release ===
+
+<p>You can also revert local changes completely and return
+to the latest vendor release by changing the &lsquo;head&rsquo;
+revision back to the vendor branch on all files.  For
+example, if you have a checked-out copy of the sources
+in &lsquo;<tt>~/work.d/wdiff</tt>&rsquo;, and you want to revert to the
+vendor&rsquo;s version for all the files in that directory,
+you would type:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ~/work.d/wdiff
+$ cvs admin -bWDIFF .
+</nowiki></pre></td></tr></table>
+
+<p>You must specify the &lsquo;<samp>-bWDIFF</samp>&rsquo; without any space
+after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin-options admin options].
+</p>
+<hr size="6">
+<div id="Binary-files-in-imports"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-to-handle-binary-files-with-cvs-import"></div>
+=== How to handle binary files with cvs import ===
+
+<p>Use the &lsquo;<samp>-k</samp>&rsquo; wrapper option to tell import which
+files are binary.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+</p>
+<hr size="6">
+<div id="Keywords-in-imports"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
+=== How to handle keyword substitution with cvs import ===
+
+<p>The sources which you are importing may contain
+keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
+the vendor may use <small>CVS</small> or some other system
+which uses similar keyword expansion syntax.  If you
+just import the files in the default fashion, then
+the keyword expansions supplied by the vendor will
+be replaced by keyword expansions supplied by your
+own copy of <small>CVS</small>.  It may be more convenient to
+maintain the expansions supplied by the vendor, so
+that this information can supply information about
+the sources that you imported from the vendor.
+</p>
+<p>To maintain the keyword expansions supplied by the
+vendor, supply the &lsquo;<samp>-ko</samp>&rsquo; option to <code>cvs
+import</code> the first time you import the file.
+This will turn off keyword expansion
+for that file entirely, so if you want to be more
+selective you&rsquo;ll have to think about what you want
+and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
+<code>cvs admin</code> as appropriate.
+</p>
+<hr size="6">
+<div id="Multiple-vendor-branches"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Multiple-vendor-branches-1"></div>
+=== Multiple vendor branches ===
+
+<p>All the examples so far assume that there is only one
+vendor from which you are getting sources.  In some
+situations you might get sources from a variety of
+places.  For example, suppose that you are dealing with
+a project where many different people and teams are
+modifying the software.  There are a variety of ways to
+handle this, but in some cases you have a bunch of
+source trees lying around and what you want to do more
+than anything else is just to all put them in <small>CVS</small> so
+that you at least have them in one place.
+</p>
+<p>For handling situations in which there may be more than
+one vendor, you may specify the &lsquo;<samp>-b</samp>&rsquo; option to
+<code>cvs import</code>.  It takes as an argument the vendor
+branch to import to.  The default is &lsquo;<samp>-b 1.1.1</samp>&rsquo;.
+</p>
+<p>For example, suppose that there are two teams, the red
+team and the blue team, that are sending you sources.
+You want to import the red team&rsquo;s efforts to branch
+1.1.1 and use the vendor tag RED.  You want to import
+the blue team&rsquo;s efforts to branch 1.1.3 and use the
+vendor tag BLUE.  So the commands you might use are:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs import dir RED RED_1-0
+$ cvs import -b 1.1.3 dir BLUE BLUE_1-5
+</nowiki></pre></td></tr></table>
+
+<p>Note that if your vendor tag does not match your
+&lsquo;<samp>-b</samp>&rsquo; option, <small>CVS</small> will not detect this case!  For
+example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs import -b 1.1.3 dir RED RED_1-0
+</nowiki></pre></td></tr></table>
+
+<p>Be careful; this kind of mismatch is sure to sow
+confusion or worse.  I can&rsquo;t think of a useful purpose
+for the ability to specify a mismatch here, but if you
+discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
+an error in some future release.
+</p>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

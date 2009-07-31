@@ -1,0 +1,24 @@
+3.2.1 The First Line of a Texinfo File
+--------------------------------------
+
+Every Texinfo file that is to be the top-level input to TeX must begin
+with a line that looks like this:
+
+\input texinfo   @c -*-texinfo-*-
+
+This line serves two functions:
+
+1. When the file is processed by TeX, the `\input texinfo' command
+tells TeX to load the macros needed for processing a Texinfo file.
+These are in a file called `texinfo.tex', which should have been
+installed on your system along with either the TeX or Texinfo
+software.  TeX uses the backslash, `\', to mark the beginning of
+a command, exactly as Texinfo uses `@'.  The `texinfo.tex'
+file causes the switch from `\' to `@'; before the switch
+occurs, TeX requires `\', which is why it appears at the
+beginning of the file.
+
+2. When the file is edited in GNU Emacs, the `-*-texinfo-*-' mode
+specification tells Emacs to use Texinfo mode.
+
+

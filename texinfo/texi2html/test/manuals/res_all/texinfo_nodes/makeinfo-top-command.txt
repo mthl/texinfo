@@ -1,0 +1,30 @@
+6.3.6 The @top Sectioning Command
+---------------------------------
+
+A special sectioning command, @top should be used with the
+@node Top line.  The @top sectioning command tells
+makeinfo that it marks the `Top' node in the file.  It provides
+the information that makeinfo needs to insert node pointers
+automatically.  Write the @top command at the beginning of the
+line immediately following the @node Top line.  Write the title
+on the remaining part of the same line as the @top command.
+
+In Info, the @top sectioning command causes the title to appear
+on a line by itself, with a line of asterisks inserted underneath, as
+other sectioning commands do.
+
+In TeX and texinfo-format-buffer, the @top
+sectioning command is merely a synonym for @unnumbered.
+Neither of these formatters require an @top command, and do
+nothing special with it.  You can use @chapter or
+@unnumbered after the @node Top line when you use
+these formatters.  Also, you can use @chapter or
+@unnumbered when you use the Texinfo updating commands to
+create or update pointers and menus.
+
+Thus, in practice, a Top node starts like this:
+
+@node Top
+@top Your Manual Title
+
+

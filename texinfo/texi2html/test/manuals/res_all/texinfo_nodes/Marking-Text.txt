@@ -1,0 +1,14 @@
+9 Marking Words and Phrases
+***************************
+
+In Texinfo, you can mark words and phrases in a variety of ways.
+The Texinfo formatters use this information to determine how to
+highlight the text.
+You can specify, for example, whether a word or phrase is a
+defining occurrence, a metasyntactic variable, or a symbol used in a
+program.  Also, you can emphasize text, in several different ways.
+
+* Indicating::                  How to indicate definitions, files, etc.
+* Emphasis::                    How to emphasize text.
+
+

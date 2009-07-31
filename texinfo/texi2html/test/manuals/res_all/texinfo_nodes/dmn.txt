@@ -1,0 +1,29 @@
+13.2.4 @dmn{dimension}: Format a Dimension
+------------------------------------------
+
+At times, you may want to write `12pt' or
+`8.5in' with little or no space between the number and the
+abbreviation for the dimension.  You can use the @dmn command
+to do this.  On seeing the command, TeX inserts just enough space
+for proper typesetting; the Info formatting commands insert no space
+at all, since the Info file does not require it.
+
+To use the @dmn command, write the number and then follow it
+immediately, with no intervening space, by @dmn, and then by
+the dimension within braces.  For example,
+
+A4 paper is 8.27@dmn{in} wide.
+
+produces
+
+A4 paper is 8.27in wide.
+
+Not everyone uses this style.  Some people prefer `8.27 in.@:'
+or `8.27 inches' to `8.27@dmn{in}' in the Texinfo file.
+In these cases, however, the formatters may insert a line break between
+the number and the dimension, so use @w (see w).  Also, if
+you write a period after an abbreviation within a sentence, you should
+write `@:' after the period to prevent TeX from inserting extra
+whitespace, as shown here.  See Not Ending a Sentence.
+
+

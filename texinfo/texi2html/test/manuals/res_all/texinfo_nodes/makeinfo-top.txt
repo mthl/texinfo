@@ -1,0 +1,15 @@
+5.3 @top
+========
+
+The @top command is a special sectioning command that you use
+only after an `@node Top' line at the beginning of a Texinfo file.
+The @top command tells the makeinfo formatter which node
+is the `Top' node, so it can use it as the root of the node tree if your
+manual uses implicit pointers.  It has the same typesetting effect as
+@unnumbered (see @unnumbered and @appendix).  For detailed information, see The @top Command.
+
+The @top node and its menu (if any) is conventionally wrapped in
+an @ifnottex conditional so that it will appear only in Info and
+HTML output, not TeX.
+
+

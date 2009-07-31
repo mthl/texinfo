@@ -1,0 +1,24 @@
+D.3 Include File Requirements
+=============================
+
+If you plan to use the texinfo-multiple-files-update command,
+the outer Texinfo file that lists included files within it should
+contain nothing but the beginning and end parts of a Texinfo file, and
+a number of @include commands listing the included files.  It
+should not even include indices, which should be listed in an included
+file of their own.
+
+Moreover, each of the included files must contain exactly one highest
+level node (conventionally, @chapter or equivalent),
+and this node must be the first node in the included file.
+Furthermore, each of these highest level nodes in each included file
+must be at the same hierarchical level in the file structure.
+Usually, each is an @chapter, an @appendix, or an
+@unnumbered node.  Thus, normally, each included file contains
+one, and only one, chapter or equivalent-level node.
+
+The outer file should contain only one node, the `Top' node.  It
+should not contain any nodes besides the single `Top' node.  The
+texinfo-multiple-files-update command will not process
+them.
+

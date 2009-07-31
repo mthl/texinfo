@@ -1,0 +1,26 @@
+4 Ending a Texinfo File
+***********************
+
+The end of a Texinfo file should include commands to create indices and
+(perhaps) to generate both the full and summary tables of contents.
+Finally, it must include the @bye command that marks the last
+line to be processed.
+
+For example:
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@shortcontents
+@contents
+
+@bye
+
+* Printing Indices & Menus::    How to print an index in hardcopy and
+                                  generate index menus in Info.
+* Contents::                    How to create a table of contents.
+* File End::                    How to mark the end of a file.
+
+

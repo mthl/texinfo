@@ -1,0 +1,363 @@
+8 Help
+******
+
+  XEmacs provides extensive help features accessible through a single
+character, C-h.  C-h is a prefix key that is used only for
+documentation-printing commands.  The characters that you can type after
+C-h are called help options.  One help option is C-h;
+that is how you ask for help about using C-h.  To cancel, type
+C-g.  The function key <F1> is equivalent to C-h.
+
+  C-h C-h (help-for-help) displays a list of the possible
+help options, and then asks you to type the desired option.  It prompts
+with the string:
+
+A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
+
+You should type one of those characters.
+
+  Typing a third C-h displays a description of what the options mean;
+Emacs still waits for you to type an option.  To cancel, type C-g.
+
+  Most help buffers use a special major mode, Help mode, which lets you
+scroll conveniently with <SPC> and <DEL> or <BS>.
+
+* Help Summary::	Brief list of all Help commands.
+* Key Help::		Asking what a key does in XEmacs.
+* Name Help::		Asking about a command, variable or function name.
+* Apropos::		Asking what pertains to a given topic.
+* Library Keywords::	Finding Lisp libraries by keywords (topics).
+* Help Mode::           Special features of Help mode and Help buffers.
+* Misc Help::		Other help commands.
+
+8.1 Help Summary
+================
+
+  Here is a summary of the defined help commands.
+
+C-h a regexp <RET>
+Display a list of functions and variables whose names match regexp
+(hyper-apropos).
+C-h A regexp
+Show all commands whose names contain matches for regexp
+(command-apropos).
+C-h b
+Display a table of all key bindings currently in effect, with local
+bindings of the current major mode first, followed by all global
+bindings (describe-bindings).
+C-h c key
+Print the name of the command that key runs
+(describe-key-briefly).  Here c stands for `character'.  For more
+extensive information on key, use C-h k.
+C-h d function <RET>
+C-h f function <RET>
+Display documentation on the Lisp function named function
+(describe-function).  Since commands are Lisp functions,
+a command name may be used.
+C-h i
+Run Info, the program for browsing documentation files (info).
+The complete XEmacs manual is available online in Info.
+C-h k key
+Display the name and documentation of the command that key runs
+(describe-key).
+C-h l
+Display a description of the last 100 characters you typed
+(view-lossage).
+C-h m
+Display documentation of the current major mode (describe-mode).
+C-h n
+C-h C-n
+Display documentation of XEmacs changes, most recent first
+(view-emacs-news).
+C-h p
+Find packages by topic keyword (finder-by-keyword).
+C-h C-p
+Display a table of all mouse bindings currently in effect now, with
+local bindings of the current major mode first, followed by all global
+bindings (describe-pointer).
+C-h s
+Display current contents of the syntax table, plus an explanation of
+what they mean (describe-syntax).  See Syntax.
+C-h t
+Enter the XEmacs interactive tutorial (help-with-tutorial).
+C-h v var <RET>
+Display the documentation of the Lisp variable var
+(describe-variable).
+C-h w command <RET>
+Print which keys run the command named command (where-is).
+C-h B <RET>
+Display info on how to deal with Beta versions of XEmacs
+(describe-beta).
+C-h C group <RET>
+Select customization buffer for group (customize).
+C-h F <RET>
+View the local copy of the XEmacs FAQ (xemacs-local-faq).
+C-h C-i file <RET>
+Read Info file file with Info browser (Info-query).
+C-h C-c command <RET>
+Look up an Emacs command command in the Emacs manual in the Info
+system (Info-goto-emacs-command-node).
+C-h C-f function <RET>
+Look up an Emacs Lisp function function in the Elisp manual in the
+Info system (Info-elisp-ref).
+
+8.2 Documentation for a Key
+===========================
+
+  The most basic C-h options are C-h c
+(describe-key-briefly) and C-h k (describe-key).
+C-h c key prints in the echo area the name of the command
+that key is bound to.  For example, C-h c C-f prints
+`forward-char'.  Since command names are chosen to describe what
+the commands do, this is a good way to get a very brief description of
+what key does.
+
+  C-h k key is similar to C-h c but gives more
+information.  It displays the documentation string of the function
+key is bound to as well as its name.  key is a string or
+vector of events.  When called interactively, key may also be a menu
+selection.  This information does not usually fit into the echo area, so a
+window is used for the display.
+
+  C-h c and C-h k work for any sort of key sequences,
+including function keys and mouse events.
+
+8.3 Help by Command or Variable Name
+====================================
+
+  C-h f (describe-function) reads the name of a Lisp
+function using the minibuffer, then displays that function's
+documentation string in a window.  Since commands are Lisp functions,
+you can use the argument function to get the documentation of a
+command that you know by name.  For example,
+
+C-h f auto-fill-mode <RET>
+
+displays the documentation for auto-fill-mode. Using C-h f
+is the only way to see the documentation of a command that is not bound
+to any key, that is, a command you would normally call using M-x.
+If the variable describe-function-show-arglist is t,
+describe-function shows its arglist if the function is not
+an autoload function.
+
+  C-h f is also useful for Lisp functions that you are planning to
+use in a Lisp program.  For example, if you have just written the
+expression (make-vector len) and want to make sure you are using
+make-vector properly, type C-h f make-vector <RET>.
+Because C-h f allows all function names, not just command names,
+you may find that some of your favorite abbreviations that work in
+M-x don't work in C-h f.  An abbreviation may be unique
+among command names, yet fail to be unique when other function names are
+allowed.
+
+  The function name for C-h f to describe has a default which is
+used if you type <RET> leaving the minibuffer empty.  The default is
+the function called by the innermost Lisp expression in the buffer
+around point, provided that is a valid, defined Lisp function
+name.  For example, if point is located following the text
+`(make-vector (car x)', the innermost list containing point is the
+one that starts with `(make-vector', so the default is to describe the
+function make-vector.
+
+  C-h f is often useful just to verify that you have the right
+spelling for the function name.  If C-h f mentions a name from the
+buffer as the default, that name must be defined as a Lisp function.  If
+that is all you want to know, just type C-g to cancel the C-h
+f command, then go on editing.
+
+  C-h w command <RET> (where-is) tells you what
+keys are bound to command.  It prints a list of the keys in the
+echo area. Alternatively, it informs you that a command is not bound to
+any keys, which implies that you must use M-x to call the
+command.
+
+  C-h v (describe-variable) is like C-h f but
+describes Lisp variables instead of Lisp functions.  Its default is the
+Lisp symbol around or before point, if that is the name of a known Lisp
+variable.  See Variables.
+
+8.4 Apropos
+===========
+
+
+C-h A
+Show only symbols that are names of commands
+(command-apropos).
+
+M-x apropos regexp
+Show all symbols whose names contain matches for regexp.
+
+  A more sophisticated sort of question to ask is, "What are the
+commands for working with files?"  To ask this question, type C-h
+a file <RET>, which displays a list of all command names that
+contain `file', including copy-file, find-file, and
+so on.  With each command name appears a brief description of how to use
+the command, and what keys you can currently invoke it with.  For
+example, it would say that you can invoke find-file by typing
+C-x C-f.  The A in C-h A stands for `Apropos';
+C-h A runs the command command-apropos.  This command
+normally checks only commands (interactive functions); if you specify a
+prefix argument, it checks noninteractive functions as well.
+
+  Because C-h A looks only for functions whose names contain the
+string you specify, you must use ingenuity in choosing the string.  If
+you are looking for commands for killing backwards and C-h a
+kill-backwards <RET> doesn't reveal any, don't give up.  Try just
+kill, or just backwards, or just back.  Be persistent.
+Pretend you are playing Adventure.  Also note that you can use a regular
+expression as the argument, for more flexibility (see Regexps).
+
+  Here is a set of arguments to give to C-h a that covers many
+classes of XEmacs commands, since there are strong conventions for
+naming the standard XEmacs commands.  By giving you a feel for the
+naming conventions, this set should also serve to aid you in developing
+a technique for picking apropos strings.
+
+char, line, word, sentence, paragraph, region, page, sexp, list, defun,
+rect, buffer, frame, window, face, file, dir, register, mode, beginning,
+end, forward, backward, next, previous, up, down, search, goto, kill,
+delete, mark, insert, yank, fill, indent, case, change, set, what, list,
+find, view, describe, default.
+
+  To list all Lisp symbols that contain a match for a regexp, not just
+the ones that are defined as commands, use the command M-x apropos
+instead of C-h A.  This command does not check key bindings by
+default; specify a numeric argument if you want it to check them.
+
+  The apropos-documentation command is like apropos except
+that it searches documentation strings for matches for the specified
+regular expression.
+
+  The apropos-value command is like apropos except that it
+searches symbols' values for matches for the specified regular
+expression.  This command does not check function definitions or
+property lists by default; specify a numeric argument if you want it to
+check them.
+
+  If the variable apropos-do-all is non-nil, the commands
+above all behave as if they had been given a prefix argument.
+
+  If you want more information about a function definition, variable or
+symbol property listed in the Apropos buffer, you can click on it with
+Mouse-2 or move there and type <RET>.
+
+8.5 Keyword Search for Lisp Libraries
+=====================================
+
+The C-h p command lets you search the standard Emacs Lisp
+libraries by topic keywords.  Here is a partial list of keywords you can
+use:
+
+abbrev        abbreviation handling, typing shortcuts, macros
+bib           code related to the `bib' bibliography processor
+c             C, C++, and Objective-C language support
+calendar      calendar and time management support
+comm          communications, networking, remote access to files
+data          support for editing files of data
+docs          support for Emacs documentation
+dumped        files preloaded into Emacs
+emulations    emulations of other editors
+extensions    Emacs Lisp language extensions
+faces         support for multiple fonts
+frames        support for Emacs frames and window systems
+games         games, jokes and amusements
+hardware      support for interfacing with exotic hardware
+help          support for on-line help systems
+hypermedia    support for links between text or other media types
+i18n          internationalization and alternate character-set support
+internal      code for Emacs internals, build process, defaults
+languages     specialized modes for editing programming languages
+lisp          Lisp support, including Emacs Lisp
+local         code local to your site
+maint         maintenance aids for the Emacs development group
+mail          modes for electronic-mail handling
+matching      various sorts of searching and matching
+mouse         mouse support
+mule          multi-language extensions
+news          support for netnews reading and posting
+oop           support for object-oriented programming
+outlines      support for hierarchical outlining
+processes     process, subshell, compilation, and job control support
+terminals     support for terminal types
+tex           code related to the TeX formatter
+tools         programming tools
+unix          front-ends/assistants for, or emulators of, UNIX features
+vms           support code for vms
+wp            word processing
+
+8.6 Help Mode Commands
+======================
+
+  Help buffers provide the commands of View mode (see Misc File Ops), plus a few special commands of their own.
+
+<SPC>
+Scroll forward.
+<DEL>
+<BS>
+Scroll backward.
+
+  When a command name (see Running Commands by Name) or
+variable name (see Variables) appears in the documentation, it
+normally appears inside paired single-quotes.
+
+8.7 Other Help Commands
+=======================
+
+  C-h i (info) runs the Info program, which is used for
+browsing through structured documentation files.  The entire XEmacs manual
+is available within Info.  Eventually all the documentation of the GNU
+system will be available.  Type h after entering Info to run
+a tutorial on using Info.
+
+  If you specify a numeric argument, C-h i prompts for the name of
+a documentation file.  This way, you can browse a file which doesn't
+have an entry in the top-level Info menu.  It is also handy when you
+need to get to the documentation quickly, and you know the exact name of
+the file.
+
+  There are two special help commands for accessing XEmacs documentation
+through Info.  C-h C-f function <RET> enters Info and
+goes straight to the documentation of the XEmacs function
+function.  C-h C-k key enters Info and goes straight
+to the documentation of the key key.  These two keys run the
+commands Info-elisp-ref and
+Info-goto-emacs-key-command-node.
+
+  If something surprising happens, and you are not sure what commands you
+typed, use C-h l (view-lossage).  C-h l prints the last
+100 command characters you typed in.  If you see commands that you don't
+know, you can use C-h c to find out what they do.
+
+  XEmacs has several major modes.  Each mode redefines a few keys and
+makes a few other changes in how editing works.  C-h m
+(describe-mode) prints documentation on the current major mode,
+which normally describes all the commands that are changed in this mode.
+
+  C-h b (describe-bindings) and C-h s
+(describe-syntax) present information about the current XEmacs
+mode that is not covered by C-h m.  C-h b displays a list of
+all the key bindings currently in effect, with the local bindings of the
+current major mode first, followed by the global bindings (see Key Bindings).  C-h s displays the contents of the syntax table with
+explanations of each character's syntax (see Syntax).
+
+  You can get a similar list for a particular prefix key by typing
+C-h after the prefix key.  (There are a few prefix keys for which
+this does not work--those that provide their own bindings for
+C-h.  One of these is <ESC>, because <ESC> C-h is
+actually C-M-h, which marks a defun.)
+
+  The other C-h options display various files of useful
+information.  C-h C-w (describe-no-warranty) displays the
+full details on the complete absence of warranty for XEmacs.  C-h
+n (view-emacs-news) displays the file `xemacs/etc/NEWS',
+which contains documentation on XEmacs changes arranged chronologically.
+C-h F (xemacs-local-faq) displays local version of the
+XEmacs frequently-answered-questions-list.  C-h t
+(help-with-tutorial) displays the learn-by-doing XEmacs
+tutorial. C-h C-c (describe-copying) displays the file
+`xemacs/etc/COPYING', which tells you the conditions you must obey
+in distributing copies of XEmacs.  C-h C-d
+(describe-distribution) displays another file named
+`xemacs/etc/DISTRIB', which tells you how you can order a copy of
+the latest version of XEmacs.
+

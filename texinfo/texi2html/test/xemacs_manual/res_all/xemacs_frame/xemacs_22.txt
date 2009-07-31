@@ -1,0 +1,153 @@
+19 Indentation
+**************
+
+<TAB>
+Indent current line "appropriately" in a mode-dependent fashion.
+<LFD>
+Perform <RET> followed by <TAB> (newline-and-indent).
+M-^
+Merge two lines (delete-indentation).  This would cancel out
+the effect of <LFD>.
+C-M-o
+Split line at point; text on the line after point becomes a new line
+indented to the same column that it now starts in (split-line).
+M-m
+Move (forward or back) to the first non-blank character on the current
+line (back-to-indentation).
+C-M-\
+Indent several lines to same column (indent-region).
+C-x <TAB>
+Shift block of lines rigidly right or left (indent-rigidly).
+M-i
+Indent from point to the next prespecified tab stop column
+(tab-to-tab-stop).
+M-x indent-relative
+Indent from point to under an indentation point in the previous line.
+
+  Most programming languages have some indentation convention.  For Lisp
+code, lines are indented according to their nesting in parentheses.  The
+same general idea is used for C code, though details differ.
+
+   Use the <TAB> command to indent a line whatever the language.
+Each major mode defines this command to perform indentation appropriate
+for the particular language.  In Lisp mode, <TAB> aligns a line
+according to its depth in parentheses.  No matter where in the line you
+are when you type <TAB>, it aligns the line as a whole.  In C mode,
+<TAB> implements a subtle and sophisticated indentation style that
+knows about many aspects of C syntax.
+
+  In Text mode, <TAB> runs the command tab-to-tab-stop, which
+indents to the next tab stop column.  You can set the tab stops with
+M-x edit-tab-stops.
+
+* Indentation Commands:: Various commands and techniques for indentation.
+* Tab Stops::            You can set arbitrary "tab stops" and then
+                         indent to the next tab stop when you want to.
+* Just Spaces::          You can request indentation using just spaces.
+
+19.1 Indentation Commands and Techniques
+========================================
+
+  If you just want to insert a tab character in the buffer, you can type
+C-q <TAB>.
+
+  To move over the indentation on a line, type Meta-m
+(back-to-indentation).  This command, given anywhere on a line,
+positions point at the first non-blank character on the line.
+
+  To insert an indented line before the current line, type C-a C-o
+<TAB>.  To make an indented line after the current line, use
+C-e <LFD>.
+
+  C-M-o (split-line) moves the text from point to the end of
+the line vertically down, so that the current line becomes two lines.
+C-M-o first moves point forward over any spaces and tabs.  Then it
+inserts after point a newline and enough indentation to reach the same
+column point is on.  Point remains before the inserted newline; in this
+regard, C-M-o resembles C-o.
+
+  To join two lines cleanly, use the Meta-^
+(delete-indentation) command to delete the indentation at the
+front of the current line, and the line boundary as well.  Empty spaces
+are replaced by a single space, or by no space if at the beginning of a
+line, before a close parenthesis, or after an open parenthesis.  
+To delete just the indentation of a line, go to the beginning of the 
+line and use Meta-\ (delete-horizontal-space), which 
+deletes all spaces and tabs around the cursor.
+
+  There are also commands for changing the indentation of several lines at
+once.  Control-Meta-\ (indent-region) gives each line which
+begins in the region the "usual" indentation by invoking <TAB> at the
+beginning of the line.  A numeric argument specifies the column to indent
+to.  Each line is shifted left or right so that its first non-blank
+character appears in that column.  C-x <TAB>
+(indent-rigidly) moves all the lines in the region right by its
+argument (left, for negative arguments).  The whole group of lines moves
+rigidly sideways, which is how the command gets its name.
+
+  M-x indent-relative indents at point based on the previous line
+(actually, the last non-empty line.)  It inserts whitespace at point, moving
+point, until it is underneath an indentation point in the previous line.
+An indentation point is the end of a sequence of whitespace or the end of
+the line.  If point is farther right than any indentation point in the
+previous line, the whitespace before point is deleted and the first
+indentation point then applicable is used.  If no indentation point is
+applicable even then, tab-to-tab-stop is run (see next section).
+
+  indent-relative is the definition of <TAB> in Indented Text
+mode.  See Text.
+
+19.2 Tab Stops
+==============
+
+  For typing in tables, you can use Text mode's definition of <TAB>,
+tab-to-tab-stop.  This command inserts indentation before point,
+enough to reach the next tab stop column.  Even if you are not in Text mode,
+this function is associated with M-i anyway.
+
+  You can arbitrarily set the tab stops used by M-i.  They are
+stored as a list of column-numbers in increasing order in the variable
+tab-stop-list.
+
+  The convenient way to set the tab stops is using M-x edit-tab-stops,
+which creates and selects a buffer containing a description of the tab stop
+settings.  You can edit this buffer to specify different tab stops, and
+then type C-c C-c to make those new tab stops take effect.  In the
+tab stop buffer, C-c C-c runs the function
+edit-tab-stops-note-changes rather than the default
+save-buffer.  edit-tab-stops records which buffer was current
+when you invoked it, and stores the tab stops in that buffer.  Normally
+all buffers share the same tab stops and changing them in one buffer
+affects all.  If you make tab-stop-list local in one
+buffer edit-tab-stops in that buffer edits only the local
+settings.
+
+  Below is the text representing ordinary tab stops every eight columns:
+
+        :       :       :       :       :       :
+0         1         2         3         4
+0123456789012345678901234567890123456789012345678
+To install changes, type C-c C-c
+
+  The first line contains a colon at each tab stop.  The remaining lines
+help you see where the colons are and tell you what to do.
+
+  Note that the tab stops that control tab-to-tab-stop have nothing
+to do with displaying tab characters in the buffer.  See Display Vars,
+for more information on that.
+
+19.3 Tabs vs. Spaces
+====================
+
+  Emacs normally uses both tabs and spaces to indent lines.  If you prefer,
+all indentation can be made from spaces only.  To request this, set
+indent-tabs-mode to nil.  This is a per-buffer variable;
+altering the variable affects only the current buffer, but there is a
+default value which you can change as well.  See Locals.
+
+  There are also commands to convert tabs to spaces or vice versa, always
+preserving the columns of all non-blank text.  M-x tabify scans the
+region for sequences of spaces, and converts sequences of at least three
+spaces to tabs if that is possible without changing indentation.  M-x
+untabify changes all tabs in the region to corresponding numbers of spaces.
+

@@ -1,0 +1,21 @@
+F.5 Finding Badly Referenced Nodes
+==================================
+
+You can use the Info-validate command to check whether any of
+the `Next', `Previous', `Up' or other node pointers fail to point to a
+node.  This command checks that every node pointer points to an
+existing node.  The Info-validate command works only on Info
+files, not on Texinfo files.
+
+The makeinfo program validates pointers automatically, so you
+do not need to use the Info-validate command if you are using
+makeinfo.  You only may need to use Info-validate if you
+are unable to run makeinfo and instead must create an Info file
+using texinfo-format-region or texinfo-format-buffer, or
+if you write an Info file from scratch.
+
+* Using Info-validate::         How to run Info-validate.
+* Unsplit::                     How to create an unsplit file.
+* Tagifying::                   How to tagify a file.
+* Splitting::                   How to split a file manually.
+

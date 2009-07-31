@@ -1,0 +1,467 @@
+6 The Minibuffer
+****************
+
+  The minibuffer is the facility used by XEmacs commands to read
+arguments more complicated than a single number.  Minibuffer arguments
+can be file names, buffer names, Lisp function names, XEmacs command
+names, Lisp expressions, and many other things, depending on the command
+reading the argument.  You can use the usual XEmacs editing commands in
+the minibuffer to edit the argument text.
+
+  When the minibuffer is in use, it appears in the echo area, and the
+cursor moves there.  The beginning of the minibuffer line displays a
+prompt which says what kind of input you should supply and how it
+will be used.  Often this prompt is derived from the name of the command
+that the argument is for.  The prompt normally ends with a colon.
+
+  Sometimes a default argument appears in parentheses after the
+colon; it, too, is part of the prompt.  The default is used as the
+argument value if you enter an empty argument (e.g., by just typing <RET>).
+For example, commands that read buffer names always show a default, which
+is the name of the buffer that will be used if you type just <RET>.
+
+  The simplest way to enter a minibuffer argument is to type the text
+you want, terminated by <RET> which exits the minibuffer.  You can
+cancel the command that wants the argument, and get out of the
+minibuffer, by typing C-g.
+
+  Since the minibuffer uses the screen space of the echo area, it can
+conflict with other ways XEmacs customarily uses the echo area.  Here is
+how XEmacs handles such conflicts:
+
+* If a command gets an error while you are in the minibuffer, this does
+not cancel the minibuffer.  However, the echo area is needed for the
+error message and therefore the minibuffer itself is hidden for a
+while.  It comes back after a few seconds, or as soon as you type
+anything.
+
+* If in the minibuffer you use a command whose purpose is to print a
+message in the echo area, such as C-x =, the message is printed
+normally, and the minibuffer is hidden for a while.  It comes back
+after a few seconds, or as soon as you type anything.
+
+* Echoing of keystrokes does not take place while the minibuffer is in
+use.
+
+* File: Minibuffer File.  Entering file names with the minibuffer.
+* Edit: Minibuffer Edit.  How to edit in the minibuffer.
+* Completion::		  An abbreviation facility for minibuffer input.
+* Minibuffer History::    Reusing recent minibuffer arguments.
+* Repetition::		  Re-executing commands that used the minibuffer.
+
+6.1 Minibuffers for File Names
+==============================
+
+  Sometimes the minibuffer starts out with text in it.  For example, when
+you are supposed to give a file name, the minibuffer starts out containing
+the default directory, which ends with a slash.  This is to inform
+you which directory the file will be found in if you do not specify a
+directory.
+
+  For example, the minibuffer might start out with these contents:
+
+Find File: /u2/emacs/src/
+
+where `Find File: ' is the prompt.  Typing buffer.c
+specifies the file `/u2/emacs/src/buffer.c'.  To find files in
+nearby directories, use ..; thus, if you type
+../lisp/simple.el, you will get the file named
+`/u2/emacs/lisp/simple.el'.  Alternatively, you can kill with
+M-<DEL> the directory names you don't want (see Words).
+
+  If you don't want any of the default, you can kill it with C-a
+C-k.  But you don't need to kill the default; you can simply ignore it.
+Insert an absolute file name, one starting with a slash or a tilde,
+after the default directory.  For example, to specify the file
+`/etc/termcap', just insert that name, giving these minibuffer
+contents:
+
+Find File: /u2/emacs/src//etc/termcap
+
+XEmacs gives a special meaning to a double slash (which is not normally
+a useful thing to write): it means, "ignore everything before the
+second slash in the pair."  Thus, `/u2/emacs/src/' is ignored in
+the example above, and you get the file `/etc/termcap'.
+
+If you set insert-default-directory to nil, the default
+directory is not inserted in the minibuffer.  This way, the minibuffer
+starts out empty.  But the name you type, if relative, is still
+interpreted with respect to the same default directory.
+
+6.2 Editing in the Minibuffer
+=============================
+
+  The minibuffer is an XEmacs buffer (albeit a peculiar one), and the
+usual XEmacs commands are available for editing the text of an argument
+you are entering.
+
+  Since <RET> in the minibuffer is defined to exit the minibuffer,
+you can't use it to insert a newline in the minibuffer.  To do that,
+type C-o or C-q C-j.  (Recall that a newline is really the
+character control-J.)
+
+  The minibuffer has its own window which always has space on the screen
+but acts as if it were not there when the minibuffer is not in use.
+When the minibuffer is in use, its window is just like the others; you
+can switch to another window with C-x o, edit text in other
+windows and perhaps even visit more files, before returning to the
+minibuffer to submit the argument.  You can kill text in another window,
+return to the minibuffer window, and then yank the text to use it in the
+argument.  See Windows.
+
+  There are some restrictions on the use of the minibuffer window,
+however.  You cannot switch buffers in it--the minibuffer and its
+window are permanently attached.  Also, you cannot split or kill the
+minibuffer window. But you can make it taller in the normal fashion with
+C-x ^.  If you enable Resize-Minibuffer mode, then the
+minibuffer window expands vertically as necessary to hold the text that
+you put in the minibuffer.  Use M-x resize-minibuffer-mode to
+enable or disable this minor mode (see Minor Modes).
+
+  If while in the minibuffer you issue a command that displays help text
+of any sort in another window, you can use the C-M-v command while
+in the minibuffer to scroll the help text.  This lasts until you exit
+the minibuffer.  This feature is especially useful if a completing
+minibuffer gives you a list of possible completions.  See Other Window.
+
+If the variable minibuffer-confirm-incomplete is t, you
+are asked for confirmation if there is no known completion for the text
+you typed. For example, if you attempted to visit a non-existent file,
+the minibuffer might read:
+        Find File: chocolate_bar.c [no completions, confirm]
+If you press Return again, that confirms the filename. Otherwise,
+you can continue editing it. 
+
+ XEmacs supports recursive use of the minibuffer.  However, it is easy
+to do this by accident (because of autorepeating keyboards, for example)
+and get confused.  Therefore, most XEmacs commands that use the
+minibuffer refuse to operate if the minibuffer window is selected.  If
+the minibuffer is active but you have switched to a different window,
+recursive use of the minibuffer is allowed--if you know enough to try
+to do this, you probably will not get confused.
+
+  If you set the variable enable-recursive-minibuffers to a
+non-nil, recursive use of the minibuffer is always allowed.
+
+6.3 Completion
+==============
+
+  For certain kinds of arguments, you can use completion to enter
+the argument value.  Completion means that you type part of the
+argument, then XEmacs visibly fills in the rest, or as much as
+can be determined from the part you have typed.
+
+  When completion is available, certain keys--<TAB>, <RET>, and
+<SPC>--are rebound to complete the text present in the
+minibuffer into a longer string that it stands for, by matching it
+against a set of completion alternatives provided by the command
+reading the argument.  ? is defined to display a list of possible
+completions of what you have inserted.
+
+  For example, when M-x uses the minibuffer to read the name of a
+command, it provides a list of all available XEmacs command names to
+complete against.  The completion keys match the text in the minibuffer
+against all the command names, find any additional name characters
+implied by the ones already present in the minibuffer, and add those
+characters to the ones you have given.  This is what makes it possible
+to type M-x inse <SPC> b <RET> instead of M-x
+insert-buffer <RET> (for example).
+
+  Case is normally significant in completion because it is significant
+in most of the names that you can complete (buffer names, file names and
+command names).  Thus, `fo' does not complete to `Foo'.  When
+you are completing a name in which case does not matter, case may be
+ignored for completion's sake if specified by program.
+
+When a completion list is displayed, the completions will highlight as
+you move the mouse over them.  Clicking the middle mouse button on any 
+highlighted completion will "select" it just as if you had typed it in
+and hit <RET>.
+
+* Example: Completion Example.
+* Commands: Completion Commands.
+* Strict Completion::
+* Options: Completion Options.
+
+6.3.1 Completion Example
+------------------------
+
+  A concrete example may help here.  If you type M-x au <TAB>,
+the <TAB> looks for alternatives (in this case, command names) that
+start with `au'.  There are several, including
+auto-fill-mode and auto-save-mode--but they are all the
+same as far as auto, so the `au' in the minibuffer changes
+to `auto'.
+
+  If you type <TAB> again immediately, there are multiple
+possibilities for the very next character--it could be any of
+`c-'--so no more characters are added; instead, <TAB>
+displays a list of all possible completions in another window.
+
+  If you go on to type -f <TAB>, this <TAB> sees
+`auto-f'.  The only command name starting this way is
+auto-fill-mode, so completion fills in the rest of that.  You now
+have `auto-fill-mode' in the minibuffer after typing just au
+<TAB> f <TAB>.  Note that <TAB> has this effect because in
+the minibuffer it is bound to the command minibuffer-complete
+when completion is available.
+
+6.3.2 Completion Commands
+-------------------------
+
+  Here is a list of the completion commands defined in the minibuffer
+when completion is available.
+
+<TAB>
+Complete the text in the minibuffer as much as possible
+(minibuffer-complete).
+<SPC>
+Complete the minibuffer text, but don't go beyond one word
+(minibuffer-complete-word).
+<RET>
+Submit the text in the minibuffer as the argument, possibly completing
+first as described below (minibuffer-complete-and-exit).
+?
+Print a list of all possible completions of the text in the minibuffer
+(minibuffer-list-completions).
+<button2>
+Select the highlighted text under the mouse as a minibuffer response.
+When the minibuffer is being used to prompt the user for a completion,
+any valid completions which are visible on the screen will be highlighted
+when the mouse moves over them.  Clicking <button2> will select the
+highlighted completion and exit the minibuffer.  
+(minibuf-select-highlighted-completion).
+
+  <SPC> completes much like <TAB>, but never goes beyond the
+next hyphen or space.  If you have `auto-f' in the minibuffer and
+type <SPC>, it finds that the completion is `auto-fill-mode',
+but it stops completing after `fill-'.  This gives
+`auto-fill-'.  Another <SPC> at this point completes all the
+way to `auto-fill-mode'.  <SPC> in the minibuffer when
+completion is available runs the command
+minibuffer-complete-word.
+
+  Here are some commands you can use to choose a completion from a
+window that displays a list of completions:
+
+button2up
+Clicking mouse button 2 on a completion in the list of possible
+completions chooses that completion (mouse-choose-completion).
+You normally use this command while point is in the minibuffer; but you
+must click in the list of completions, not in the minibuffer itself.
+
+<PRIOR>
+M-v
+Typing <PRIOR> or M-v, while in the minibuffer, selects the
+window showing the completion list buffer
+(switch-to-completions).  This paves the way for using the
+commands below.  (Selecting that window in the usual ways has the same
+effect, but this way is more convenient.)
+
+<RET>
+Typing <RET> in the completion list buffer chooses the
+completion that point is in or next to (choose-completion).  To
+use this command, you must first switch windows to the window that shows
+the list of completions.
+
+<RIGHT>
+<TAB>
+C-f
+Typing the right-arrow key <RIGHT>, <TAB> or C-f in
+the completion list buffer moves point to the following completion
+(next-list-mode-item).
+
+<LEFT>
+C-b
+Typing the left-arrow key <LEFT> or C-b in the
+completion list buffer moves point toward the beginning of the buffer,
+to the previous completion (previous-list-mode-item).
+
+6.3.3 Strict Completion
+-----------------------
+
+  There are three different ways that <RET> can work in completing
+minibuffers, depending on how the argument will be used.
+
+* Strict completion is used when it is meaningless to give any
+argument except one of the known alternatives.  For example, when
+C-x k reads the name of a buffer to kill, it is meaningless to
+give anything but the name of an existing buffer.  In strict
+completion, <RET> refuses to exit if the text in the minibuffer
+does not complete to an exact match.
+
+* Cautious completion is similar to strict completion, except that
+<RET> exits only if the text was an exact match already, not
+needing completion.  If the text is not an exact match, <RET> does
+not exit, but it does complete the text.  If it completes to an exact
+match, a second <RET> will exit.
+
+Cautious completion is used for reading file names for files that must
+already exist.
+
+* Permissive completion is used when any string whatever is
+meaningful, and the list of completion alternatives is just a guide.
+For example, when C-x C-f reads the name of a file to visit, any
+file name is allowed, in case you want to create a file.  In
+permissive completion, <RET> takes the text in the minibuffer
+exactly as given, without completing it.
+
+  The completion commands display a list of all possible completions in
+a window whenever there is more than one possibility for the very next
+character.  Also, typing ? explicitly requests such a list.  If
+the list of completions is long, you can scroll it with C-M-v
+(see Other Window).
+
+6.3.4 Completion Options
+------------------------
+
+  When completion is done on file names, certain file names are usually
+ignored.  The variable completion-ignored-extensions contains a
+list of strings; a file whose name ends in any of those strings is
+ignored as a possible completion.  The standard value of this variable
+has several elements including ".o", ".elc", ".dvi"
+and "~".  The effect is that, for example, `foo' can
+complete to `foo.c' even though `foo.o' exists as well.
+However, if all the possible completions end in "ignored"
+strings, then they are not ignored.  Ignored extensions do not apply to
+lists of completions--those always mention all possible completions.
+
+  If a completion command finds the next character is undetermined, it
+automatically displays a list of all possible completions.  If the variable
+completion-auto-help is set to nil, this does not happen,
+and you must type ? to display the possible completions.
+
+If the variable minibuffer-confirm-incomplete is set to t,
+then in contexts where completing-read allows answers that are
+not valid completions, an extra <RET> must be typed to confirm the
+response.  This is helpful for catching typos.
+
+  Icomplete mode presents a constantly-updated display that tells you
+what completions are available for the text you've entered so far.  The
+command to enable or disable this minor mode is M-x
+icomplete-mode.
+
+6.4 Minibuffer History
+======================
+
+  Every argument that you enter with the minibuffer is saved on a
+minibuffer history list so that you can use it again later in
+another argument.  Special commands load the text of an earlier argument
+in the minibuffer.  They discard the old minibuffer contents, so you can
+think of them as moving through the history of previous arguments.
+
+<UP>
+M-p
+Move to the next earlier argument string saved in the minibuffer history
+(previous-history-element).
+<DOWN>
+M-n
+Move to the next later argument string saved in the minibuffer history
+(next-history-element).
+M-r regexp <RET>
+Move to an earlier saved argument in the minibuffer history that has a
+match for regexp (previous-matching-history-element).
+M-s regexp <RET>
+Move to a later saved argument in the minibuffer history that has a
+match for regexp (next-matching-history-element).
+
+  The simplest way to reuse the saved arguments in the history list is
+to move through the history list one element at a time.  While in the
+minibuffer, use M-p or up-arrow (previous-history-element)
+to "move to" the next earlier minibuffer input, and use M-n or
+down-arrow (next-history-element) to "move to" the next later
+input.
+
+  The previous input that you fetch from the history entirely replaces
+the contents of the minibuffer.  To use it as the argument, exit the
+minibuffer as usual with <RET>.  You can also edit the text before
+you reuse it; this does not change the history element that you
+"moved" to, but your new argument does go at the end of the history
+list in its own right.
+
+  For many minibuffer arguments there is a "default" value.  In some
+cases, the minibuffer history commands know the default value.  Then you
+can insert the default value into the minibuffer as text by using
+M-n to move "into the future" in the history.
+
+  There are also commands to search forward or backward through the
+history; they search for history elements that match a regular
+expression that you specify with the minibuffer.  M-r
+(previous-matching-history-element) searches older elements in
+the history, while M-s (next-matching-history-element)
+searches newer elements.  By special dispensation, these commands can
+use the minibuffer to read their arguments even though you are already
+in the minibuffer when you issue them.  As with incremental searching,
+an uppercase letter in the regular expression makes the search
+case-sensitive (see Search Case).
+
+  All uses of the minibuffer record your input on a history list, but
+there are separate history lists for different kinds of arguments.  For
+example, there is a list for file names, used by all the commands that
+read file names.
+
+  There are several other very specific history lists, including one for
+command names read by M-x, one for buffer names, one for arguments
+of commands like query-replace, and one for compilation commands
+read by compile.  Finally, there is one "miscellaneous" history
+list that most minibuffer arguments use.
+
+
+6.5 Repeating Minibuffer Commands
+=================================
+
+  Every command that uses the minibuffer at least once is recorded on a
+special history list, together with the values of its arguments, so that
+you can repeat the entire command.  In particular, every use of
+M-x is recorded there, since M-x uses the minibuffer to read
+the command name.
+
+C-x <ESC> <ESC>
+Re-execute a recent minibuffer command (repeat-complex-command).
+M-p
+Within C-x <ESC> <ESC>, move to previous recorded command
+(previous-history-element).
+M-n
+Within C-x <ESC> <ESC>, move to the next (more recent)
+recorded command (next-history-element).
+M-x list-command-history
+Display the entire command history, showing all the commands
+C-x <ESC> <ESC> can repeat, most recent first.
+
+  C-x <ESC> <ESC> is used to re-execute a recent
+minibuffer-using command.  With no argument, it repeats the last such
+command.  A numeric argument specifies which command to repeat; one
+means the last one, and larger numbers specify earlier ones.
+
+  C-x <ESC> <ESC> works by turning the previous command
+into a Lisp expression and then entering a minibuffer initialized with
+the text for that expression.  If you type just <RET>, the command
+is repeated as before.  You can also change the command by editing the
+Lisp expression.  Whatever expression you finally submit is what will be
+executed.  The repeated command is added to the front of the command
+history unless it is identical to the most recently executed command
+already there.
+
+  Even if you don't understand Lisp syntax, it will probably be obvious
+which command is displayed for repetition.  If you do not change the text,
+you can be sure the command will repeat exactly as before.
+
+  If you are in the minibuffer for C-x <ESC> <ESC> and the
+command shown to you is not the one you want to repeat, you can move
+around the list of previous commands using M-n and M-p.
+M-p replaces the contents of the minibuffer with the next earlier
+recorded command, and M-n replaces it with the next later command.
+After finding the desired previous command, you can edit its expression
+and then resubmit it by typing <RET>.  Any editing you have done on
+the command to be repeated is lost if you use M-n or M-p.
+
+M-n and M-p are specially defined within C-x <ESC>
+<ESC> to run the commands previous-history-element and
+next-history-element.
+
+  The list of previous commands using the minibuffer is stored as a Lisp
+list in the variable command-history.  Each element of the list
+is a Lisp expression which describes one command and its arguments.
+Lisp programs can reexecute a command by feeding the corresponding
+command-history element to eval.
+

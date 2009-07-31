@@ -1,0 +1,39 @@
+1.9 Six Parts of a Texinfo File
+===============================
+
+Generally, a Texinfo file contains more than the minimal beginning and
+end described in the previous section--it usually contains the six
+parts listed below.  These are described fully in the following sections.
+
+1. Header
+The Header names the file, tells TeX which definitions file to
+use, and other such housekeeping tasks.
+
+2. Summary and Copyright
+The Summary and Copyright segment describes the document and
+contains the copyright notice and copying permissions.  This is done
+with the @copying command.
+
+3. Title and Copyright
+The Title and Copyright segment contains the title and copyright
+pages for the printed manual.  The segment must be enclosed between
+@titlepage and @end titlepage commands.  The title and
+copyright page appear only in the printed manual.
+
+4. `Top' Node and Master Menu
+The `Top' node starts off the online output; it does not appear in the
+printed manual.  We recommend including the copying permissions here as
+well as the segments above.  And it contains at least a top-level menu
+listing the chapters, and possibly a Master Menu listing all the
+nodes in the entire document.
+
+5. Body
+The Body of the document is typically structured like a
+traditional book or encyclopedia, but it may be free form.
+
+6. End
+The End segment contains commands for printing indices and
+generating the table of contents, and the @bye command on a line
+of its own.
+
+

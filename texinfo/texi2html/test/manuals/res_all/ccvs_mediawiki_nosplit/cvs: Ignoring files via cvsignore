@@ -1,0 +1,131 @@
+<div id="cvsignore"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Rcsinfo#rcsinfo  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The checkoutlist file#checkoutlist  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Ignoring-files-via-cvsignore"></div>
+=== Ignoring files via cvsignore ===
+<div id="index-cvsignore-_0028admin-file_0029_002c-global"></div>
+<div id="index-Global-cvsignore"></div>
+<div id="index-Ignoring-files"></div>
+
+<p>There are certain file names that frequently occur
+inside your working copy, but that you don&rsquo;t want to
+put under <small>CVS</small> control.  Examples are all the object
+files that you get while you compile your sources.
+Normally, when you run &lsquo;<samp>cvs update</samp>&rsquo;, it prints a
+line for each file it encounters that it doesn&rsquo;t know
+about (see section [cvs: update output#update-output update output]).
+</p>
+<p><small>CVS</small> has a list of files (or sh(1) file name patterns)
+that it should ignore while running <code>update</code>,
+<code>import</code> and <code>release</code>.
+This list is constructed in the following way.
+</p>
+<ul>
+<li>
+The list is initialized to include certain file name
+patterns: names associated with <small>CVS</small>
+administration, or with other common source control
+systems; common names for patch files, object files,
+archive files, and editor backup files; and other names
+that are usually artifacts of assorted utilities.
+Currently, the default list of ignored file name
+patterns is:
+
+<div id="index-Ignored-files"></div>
+<div id="index-Automatically-ignored-files"></div>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>    RCS     SCCS    CVS     CVS.adm
+    RCSLOG  cvslog.*
+    tags    TAGS
+    .make.state     .nse_depinfo
+    *~      #*      .#*     ,*      _$*     *$
+    *.old   *.bak   *.BAK   *.orig  *.rej   .del-*
+    *.a     *.olb   *.o     *.obj   *.so    *.exe
+    *.Z     *.elc   *.ln
+    core
+</nowiki></pre></td></tr></table>
+
+</li><li>
+The per-repository list in
+&lsquo;<tt>$CVSROOT/CVSROOT/cvsignore</tt>&rsquo; is appended to
+the list, if that file exists.
+
+</li><li>
+The per-user list in &lsquo;<tt>.cvsignore</tt>&rsquo; in your home
+directory is appended to the list, if it exists.
+
+</li><li>
+Any entries in the environment variable
+<code>$CVSIGNORE</code> is appended to the list.
+
+</li><li>
+Any &lsquo;<samp>-I</samp>&rsquo; options given to <small>CVS</small> is appended.
+
+</li><li>
+As <small>CVS</small> traverses through your directories, the contents
+of any &lsquo;<tt>.cvsignore</tt>&rsquo; will be appended to the list.
+The patterns found in &lsquo;<tt>.cvsignore</tt>&rsquo; are only valid
+for the directory that contains them, not for
+any sub-directories.
+</li></ul>
+
+<p>In any of the 5 places listed above, a single
+exclamation mark (&lsquo;<samp>!</samp>&rsquo;) clears the ignore list.
+This can be used if you want to store any file which
+normally is ignored by <small>CVS</small>.
+</p>
+<p>Specifying &lsquo;<samp>-I !</samp>&rsquo; to <code>cvs import</code> will import
+everything, which is generally what you want to do if
+you are importing files from a pristine distribution or
+any other source which is known to not contain any
+extraneous files.  However, looking at the rules above
+you will see there is a fly in the ointment; if the
+distribution contains any &lsquo;<tt>.cvsignore</tt>&rsquo; files, then
+the patterns from those files will be processed even if
+&lsquo;<samp>-I !</samp>&rsquo; is specified.  The only workaround is to
+remove the &lsquo;<tt>.cvsignore</tt>&rsquo; files in order to do the
+import.  Because this is awkward, in the future
+&lsquo;<samp>-I !</samp>&rsquo; might be modified to override
+&lsquo;<tt>.cvsignore</tt>&rsquo; files in each directory.
+</p>
+<p>Note that the syntax of the ignore files consists of a
+series of lines, each of which contains a space
+separated list of filenames.  This offers no clean way
+to specify filenames which contain spaces, but you can
+use a workaround like &lsquo;<tt>foo?bar</tt>&rsquo; to match a file
+named &lsquo;<tt>foo bar</tt>&rsquo; (it also matches &lsquo;<tt>fooxbar</tt>&rsquo;
+and the like).  Also note that there is currently no
+way to specify comments.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Rcsinfo#rcsinfo  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The checkoutlist file#checkoutlist  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

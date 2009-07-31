@@ -1,0 +1,38 @@
+8.3.1 @xref with One Argument
+-----------------------------
+
+The simplest form of @xref takes one argument, the name of
+another node in the same Info file.    The Info formatters produce
+output that the Info readers can use to jump to the reference; TeX
+produces output that specifies the page and section number for you.
+
+For example,
+
+@xref{Tropical Storms}.
+
+produces
+
+*Note Tropical Storms::.
+
+and
+
+See Section 3.1 [Tropical Storms], page 24.
+
+(Note that in the preceding example the closing brace is followed by a
+period.)
+
+You can write a clause after the cross reference, like this:
+
+@xref{Tropical Storms}, for more info.
+
+which produces
+
+*Note Tropical Storms::, for more info.
+
+and
+
+See Section 3.1 [Tropical Storms], page 24, for more info.
+
+(Note that in the preceding example the closing brace is followed by a
+comma, and then by the clause, which is followed by a period.)
+

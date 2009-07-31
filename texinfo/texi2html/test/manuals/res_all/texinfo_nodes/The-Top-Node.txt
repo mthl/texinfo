@@ -1,0 +1,26 @@
+3.5 The `Top' Node and Master Menu
+==================================
+
+The `Top' node is the node in which a reader enters an Info manual.  As
+such, it should begin with the @insertcopying command
+(see Document Permissions) to provide a brief description of the
+manual (including the version number) and copying permissions, and end
+with a master menu for the whole manual.  Of course you should include
+any other general information you feel a reader would find helpful.
+
+It is also conventional to write an @top sectioning command line
+containing the title of the document immediately after the @node
+Top line (see The @top Sectioning Command).
+
+The contents of the `Top' node should appear only in the online output;
+none of it should appear in printed output, so enclose it between
+@ifnottex and @end ifnottex commands.  (TeX does not
+print either an @node line or a menu; they appear only in Info;
+strictly speaking, you are not required to enclose these parts between
+@ifnottex and @end ifnottext, but it is simplest to do
+so.  See Conditionally Visible Text.)
+
+* Top Node Example::            
+* Master Menu Parts::           
+
+

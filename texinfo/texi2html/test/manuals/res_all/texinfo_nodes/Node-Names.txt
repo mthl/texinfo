@@ -1,0 +1,29 @@
+6.3.1 Choosing Node and Pointer Names
+-------------------------------------
+
+The name of a node identifies the node.  The pointers enable
+you to reach other nodes and consist of the names of those nodes.
+
+Normally, a node's `Up' pointer contains the name of the node whose menu
+mentions that node.  The node's `Next' pointer contains the name of the
+node that follows that node in that menu and its `Previous' pointer
+contains the name of the node that precedes it in that menu.  When a
+node's `Previous' node is the same as its `Up' node, both node pointers
+name the same node.
+
+Usually, the first node of a Texinfo file is the `Top' node, and its
+`Up' and `Previous' pointers point to the `dir' file, which
+contains the main menu for all of Info.
+
+The `Top' node itself contains the main or master menu for the manual.
+Also, it is helpful to include a brief description of the manual in the
+`Top' node.  See First Node, for information on how to write the
+first node of a Texinfo file.
+
+Even when you explicitly specify all pointers, that does not mean you
+can write the nodes in the Texinfo source file in an arbitrary order!
+Because TeX processes the file sequentially, irrespective of node
+pointers, you must write the nodes in the order you wish them to appear
+in the printed output.
+
+

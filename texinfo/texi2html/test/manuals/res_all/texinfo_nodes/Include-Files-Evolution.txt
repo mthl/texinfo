@@ -1,0 +1,38 @@
+D.5 Evolution of Include Files
+==============================
+
+When Info was first created, it was customary to create many small
+Info files on one subject.  Each Info file was formatted from its own
+Texinfo source file.  This custom meant that Emacs did not need to
+make a large buffer to hold the whole of a large Info file when
+someone wanted information; instead, Emacs allocated just enough
+memory for the small Info file that contained the particular
+information sought.  This way, Emacs could avoid wasting memory.
+
+References from one file to another were made by referring to the file
+name as well as the node name. (See Referring to Other Info Files.  Also, see @xref with Four and Five Arguments.)
+
+Include files were designed primarily as a way to create a single,
+large printed manual out of several smaller Info files.  In a printed
+manual, all the references were within the same document, so TeX
+could automatically determine the references' page numbers.  The Info
+formatting commands used include files only for creating joint
+indices; each of the individual Texinfo files had to be formatted for
+Info individually.  (Each, therefore, required its own
+@setfilename line.)
+
+However, because large Info files are now split automatically, it is
+no longer necessary to keep them small.
+
+Nowadays, multiple Texinfo files are used mostly for large documents,
+such as The GNU Emacs Lisp Reference Manual, and for projects
+in which several different people write different sections of a
+document simultaneously.
+
+In addition, the Info formatting commands have been extended to work
+with the @include command so as to create a single large Info
+file that is split into smaller files if necessary.  This means that
+you can write menus and cross references without naming the different
+Texinfo files.
+
+

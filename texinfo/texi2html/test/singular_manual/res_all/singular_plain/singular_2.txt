@@ -1,0 +1,776 @@
+2 Introduction
+**************
+
+
+
+
+* Background::
+* How to use this manual::
+* Getting started::
+
+2.1 Background
+==============
+
+SINGULAR is a Computer Algebra system for polynomial
+computations with emphasis on the special needs of commutative
+algebra, algebraic geometry, and singularity theory.
+
+SINGULAR's main computational objects are ideals and
+modules over a large variety of baserings. The baserings are polynomial
+rings or localizations thereof over a field (e.g., finite fields, the
+rationals, floats, algebraic extensions, transcendental extensions) or
+quotient rings with respect to an ideal.
+
+SINGULAR features one of the fastest and most general
+implementations of various algorithms for computing Groebner
+resp. standard bases. The implementation includes Buchberger's algorithm
+(if the ordering is a well ordering) and Mora's algorithm (if the
+ordering is a tangent cone ordering) as special cases.  Furthermore, it
+provides polynomial factorizations, resultant, characteristic set and
+gcd computations, syzygy and free-resolution computations, and many more
+related functionalities.
+
+Based on an easy-to-use interactive shell and a C-like programming
+language, SINGULAR's internal functionality is augmented and
+user-extendible by libraries written in the SINGULAR programming
+language. A general and efficient implementation of communication links
+allows SINGULAR to make its functionality available to other
+programs.
+
+SINGULAR's development started in 1984 with an implementation of
+Mora's Tangent Cone algorithm in Modula-2 on an Atari computer (K.P.
+Neuendorf, G. Pfister,
+ zu Berlin).  The need for a new system arose from the investigation of
+mathematical problems coming from singularity theory which none of the
+existing systems was able to compute.
+
+In the early 1990s SINGULAR's "home-town" moved to
+Kaiserslautern, a general standard basis algorithm was implemented in C
+and SINGULAR was ported to Unix, MS-DOS, Windows NT, and MacOS.
+
+Continuous extensions (like polynomial factorization, gcd computations,
+links) and refinements led in 1997 to the release of SINGULAR
+version 1.0 and in 1998 to the release of version 1.2
+(much faster standard and Groebner bases computations based on Hilbert series
+and on improved implementations of the algorithms,
+libraries for primary decomposition, ring normalization, etc.)
+
+For the highlights of the new SINGULAR version 2-0-4 see News and changes.
+
+
+2.2 How to use this manual
+==========================
+
+For the impatient user
+......................
+In Getting started, some simple examples explain how to use
+SINGULAR  in a step-by-step manner.
+
+Examples should come next for real learning-by-doing or to quickly
+solve some given mathematical problems without dwelling too deeply into
+SINGULAR.
+This chapter contains a lot of real-life examples and
+detailed instructions and explanations on how to solve mathematical
+problems using SINGULAR.
+
+For the systematic user
+.......................
+In General concepts, all basic concepts which are important to use
+and to understand SINGULAR are developed.  But even for users
+preferring the systematic approach it will be helpful to have a look at
+the examples in Getting started, every now and then. The topics in
+the chapter are organized more or less in the order the novice user has
+to deal with them.
+
+* In Interactive use, and its subsections there are some words on
+entering and exiting SINGULAR, followed by a number of other
+aspects concerning the interactive user-interface.
+
+* To do anything more than trivial integer computations, one needs to
+define a basering in SINGULAR.  This is explained in detail in
+Rings and orderings.
+
+* An overview of the algorithms implemented in the kernel of SINGULAR
+is given in Implemented algorithms.
+
+* In The SINGULAR language, language specific concepts are
+introduced such as the notions of names and objects, data types and
+conversion between them, etc.
+
+* In Input and output, SINGULAR's mechanisms to store and
+retrieve data are discussed.
+
+* The more complex concepts of procedures and libraries as
+well as tools to debug them are considered in the following sections:
+Procedures, Libraries, and Debugging tools.
+
+
+Data types, is a complete treatment for SINGULAR's data types
+where each section corresponds to one data type, alphabetically sorted.
+For each data type, its purpose is explained, the syntax of its
+declaration is given, and related operations and functions are
+listed. Examples illustrate its usage.
+
+Functions and system variables, is an alphabetically ordered
+reference list of all of SINGULAR's functions, control structures,
+and system variables.  Each entry includes a description of the syntax
+and semantics of the item being explained as well as one or more
+examples on how to use it.
+
+Miscellaneous
+.............
+Tricks and pitfalls, is a loose collection of limitations and
+features which may be unexpected by those who expect the
+SINGULAR language to be an exact copy of the C programming language or of
+some Computer Algebra system's languages.  But some mathematical hints are
+collected there, as well.
+
+Mathematical background, introduces some of the mathematical
+notions and definitions used throughout this manual.  For example, if in
+doubt what exactly SINGULAR means by a "negative degree reverse
+lexicographical ordering" one should refer to this chapter.
+
+SINGULAR libraries, lists the
+libraries which come with SINGULAR and the functions contained in
+them, respectively.
+
+Typographical conventions
+.........................
+Throughout this manual, the following typographical conventions are
+adopted:
+
+* text in typewriter denotes SINGULAR input and output as well
+as reserved names:
+
+ The basering can be set using the command setring.
+
+* the arrow ==> denotes SINGULAR output:
+
+ poly p=x+y+z;
+ p*p;
+ ==> x2+2xy+y2+2xz+2yz+z2
+
+* square brackets are used to denote parts of syntax descriptions which
+are optional:
+
+[optional_text] required_text
+
+* keys are denoted using typewriter, for example:
+
+ N (press the key N to get to the next node in help
+mode)
+ RETURN (press RETURN to finish an input line)
+ CTRL-P (press control key together with the key P to
+get the previous input line)
+
+
+2.3 Getting started
+===================
+
+SINGULAR is a special purpose system for polynomial
+computations. Hence, most of the powerful computations in SINGULAR
+require the prior definition of a ring. Most important rings are
+polynomial rings over a field, localizations hereof, or quotient rings of
+such rings modulo an ideal. However, some simple computations with
+integers (machine integers of limited size) and manipulations of strings
+are available without a ring.
+
+* First steps::
+* Rings and standard bases::
+* Procedures and libraries::
+* Change of rings::
+* Modules and their annihilator::
+* Resolution::
+
+2.3.1 First steps
+-----------------
+
+Once SINGULAR is started, it awaits an input after the prompt
+>.  Every statement has to be terminated by ; .
+
+37+5;
+==> 42
+
+All objects have a type, e.g., integer variables are defined by
+the word int. An assignment is done by the symbol = .
+
+int k = 2;
+
+Test for equality resp. inequality is done using ==
+resp. != (or <>), where 0 represents the boolean
+value FALSE, any other value represents TRUE.
+
+k == 2;
+==> 1
+k != 2;
+==> 0
+
+The value of an object is displayed by simply typing its name.
+
+k;
+==> 2
+
+On the other hand the output is suppressed if an assignment
+is made.
+
+int j;
+j = k+1;
+
+The last displayed (!) result is always available
+with the special symbol _ .
+
+2*_;   // the value from k displayed above
+==> 4
+
+Text starting with // denotes a comment and is ignored in
+calculations, as seen in the previous example. Furthermore SINGULAR
+maintains a history of the previous lines of input, which may be accessed by
+CTRL-P (previous) and CTRL-N (next) or the arrows on the
+keyboard. Note that the history is not available on Macintosh systems.
+
+The whole manual is available online by typing the command help; .
+Explanation on single topics, e.g., on intmat, which defines a
+matrix of integers, are obtained by
+
+help intmat;
+
+This shows the text of intmat, in the printed manual.
+
+Next, we define a
+ matrix of integers and initialize it with some values, row by row
+from left to right:
+
+intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
+
+A single matrix entry may be selected and changed using
+square brackets [ and ].
+
+m[1,2]=0;
+m;
+==> 1,0,3,
+==> 4,5,6,
+==> 7,8,9
+
+To calculate the trace of this matrix, we use a for loop. The
+curly brackets { and } denote the beginning resp.
+end of a block. If you define a variable without giving an initial
+value, as the variable tr in the example below, SINGULAR
+assigns a default value for the specific type. In this case, the default
+value for integers is 0. Note that the integer variable j
+has already been defined above.
+
+int tr;
+for ( j=1; j <= 3; j++ ) { tr=tr + m[j,j]; }
+tr;
+==> 15
+
+Variables of type string can also be defined and used without a ring
+being active. Strings are delimited by " (double quotes). They
+may be used to comment the output of a computation or to give it a nice
+format. If a string contains valid SINGULAR commands, it can be
+executed using the function execute. The result is the same as if
+the commands would have been written on the command line. This feature
+is especially useful to define new rings inside procedures.
+
+"example for strings:";
+==> example for strings:
+string s="The element of m ";
+s = s + "at position [2,3] is:";  // concatenation of strings by +
+s , m[2,3] , ".";
+==> The element of m at position [2,3] is: 6 .
+s="m[2,1]=0; m;";
+execute(s);
+==> 1,0,3,
+==> 0,5,6,
+==> 7,8,9
+
+This example shows that expressions can be separated by , (comma)
+giving a list of expressions. SINGULAR evaluates each expression in
+this list and prints all results separated by spaces.
+
+2.3.2 Rings and standard bases
+------------------------------
+
+To calculate with objects as ideals, matrices, modules, and polynomial
+vectors, a ring has to be defined first.
+
+ring r = 0,(x,y,z),dp;
+
+The definition of a ring consists of three parts: the first part
+determines the ground field, the second part determines the names of the
+ring variables, and the third part determines the monomial ordering to
+be used. So the example above declares a polynomial ring called r
+with a ground field of characteristic 
+ (i.e., the rational
+numbers) and ring variables called x, y, and z. The
+dp at the end means that the degree reverse lexicographical
+ordering should be used.
+
+Other ring declarations:
+
+ring r1=32003,(x,y,z),dp;
+characteristic 32003, variables x, y, and z and
+ordering dp.
+
+ring r2=32003,(a,b,c,d),lp;
+characteristic 32003, variable names a, b, c,
+d and lexicographical ordering.
+
+ring r3=7,(x(1..10)),ds;
+characteristic 7, variable names x(1),...,x(10), negative
+degree reverse lexicographical ordering (ds).
+
+ring r4=(0,a),(mu,nu),lp;
+transcendental extension of 
+ by 
+, variable names
+mu and nu.
+
+ring r5=real,(a,b),lp;
+floating point numbers (single machine precision),
+variable names a and b.
+
+ring r6=(real,50),(a,b),lp;
+floating point numbers with extended precision of 50 digits,
+variable names a and b.
+
+ring r7=(complex,50,i),(a,b),lp;
+complex floating point numbers with extended precision of 50 digits
+and imaginary unit i,
+variable names a and b.
+
+Typing the name of a ring prints its definition. The example below
+shows that the default ring in SINGULAR is 
+
+with degree reverse lexicographical ordering:
+
+ring r8;
+r8;
+==> //   characteristic : 32003
+==> //   number of vars : 3
+==> //        block   1 : ordering dp
+==> //                  : names    x y z 
+==> //        block   2 : ordering C
+
+Defining a ring makes this ring the current active basering, so each
+ring definition above switches to a new basering. The concept of rings
+in SINGULAR is discussed in detail in
+Rings and orderings.
+
+The basering is now r8. Since we want to calculate in the ring
+r, which we defined first, we have to switch back to it. This can
+be done using the function setring:
+
+setring r;
+
+Once a ring is active, we can define polynomials. A monomial, say
+may be entered in two ways: either using the power operator ^,
+saying x^3, or in short-hand notation without operator, saying
+x3. Note that the short-hand notation is forbidden if the name
+of the ring variable consists of more than one character. Note, that
+SINGULAR always expands brackets and automatically sorts the terms
+with respect to the monomial ordering of the basering.
+
+poly f =  x3+y3+(x-y)*x2y2+z2;
+f;
+==> x3y2-x2y3+x3+y3+z2
+
+The command size determines in general the number of "single
+entries" in an object. In particular, for polynomials, size
+determines the number of monomials.
+
+size(f);
+==> 5
+
+A natural question is to ask if a point, e.g., (x,y,z)=(1,2,0), lies
+on the variety defined by the polynomials f and g. For
+this we define an ideal generated by both polynomials, substitute the
+coordinates of the point for the ring variables, and check if the result
+is zero:
+
+poly g =  f^2 *(2x-y);
+ideal I = f,g;
+ideal J = subst(I,var(1),1);
+J = subst(J,var(2),2);
+J = subst(J,var(3),0);
+J;
+==> J[1]=5
+==> J[2]=0
+
+Since the result is not zero, the point (1,2,0) does
+not lie on the variety V(f,g).
+
+Another question is to decide whether some function vanishes on a
+variety, or in algebraic terms if a polynomial is contained in a given
+ideal. For this we calculate a standard basis using the command
+groebner and afterwards reduce the polynomial with respect to
+this standard basis.
+
+ideal sI = groebner(f);
+reduce(g,sI);
+==> 0
+
+As the result is 0 the polynomial g belongs to the
+ideal defined by f.
+
+The function groebner, like many other functions in
+SINGULAR, prints a protocol during calculations, if desired. The
+command option(prot); enables protocolling whereas
+option(noprot); turns it off.
+option, explains the meaning
+of the different symbols printed during calculations.
+
+The command kbase calculates a basis of the polynomial ring
+modulo an ideal, if the quotient ring is finite dimensional.
+As an example we calculate the Milnor number of a
+hypersurface singularity in the global and local case. This is the
+vector space dimension of the polynomial ring modulo the Jacobian ideal
+in the global case resp. of the power series ring modulo the Jacobian
+ideal in the local case. See Critical points, for a detailed
+explanation.
+
+The Jacobian ideal is obtained with the command jacob.
+
+ideal J = jacob(f);
+==> // ** redefining J **
+J;
+==> J[1]=3x2y2-2xy3+3x2
+==> J[2]=2x3y-3x2y2+3y2
+==> J[3]=2z
+
+SINGULAR prints the line // ** redefining J
+**. This indicates that we have previously defined a variable with name
+J of type ideal (see above).
+
+To obtain a representing set of the quotient vector space we first
+calculate a standard basis, then we apply the function kbase to
+this standard basis.
+
+J = groebner(J);
+ideal K = kbase(J);
+K;
+==> K[1]=y4
+==> K[2]=xy3
+==> K[3]=y3
+==> K[4]=xy2
+==> K[5]=y2
+==> K[6]=x2y
+==> K[7]=xy
+==> K[8]=y
+==> K[9]=x3
+==> K[10]=x2
+==> K[11]=x
+==> K[12]=1
+
+Then
+
+size(K);
+==> 12
+
+gives the desired vector space dimension
+As in SINGULAR the functions may take the input directly from
+earlier calculations, the whole sequence of commands may be written
+in one single statement.
+
+size(kbase(groebner(jacob(f))));
+==> 12
+
+When we are not interested in a basis of the quotient vector space, but
+only in the resulting dimension we may even use the command vdim
+and write:
+
+vdim(groebner(jacob(f)));
+==> 12
+
+2.3.3 Procedures and libraries
+------------------------------
+
+SINGULAR offers a comfortable programming language, with a syntax
+close to C. So it is possible to define procedures which collect several
+commands to a new one. Procedures are defined with the keyword
+proc followed by a name and an optional parameter list with
+specified types.  Finally, a procedure may return values using the
+command return.
+
+Define the following procedure called Milnor:
+
+proc Milnor (poly h)
+{
+  return(vdim(groebner(jacob(h))));
+}
+
+Note: if you have entered the first line of the procedure and pressed
+RETURN, SINGULAR prints the prompt . (dot) instead of
+the usual prompt > . This shows that the input is incomplete and
+SINGULAR expects more lines. After typing the closing curly
+bracket, SINGULAR prints the usual prompt indicating that the input
+is now complete.
+
+Then call the procedure:
+
+Milnor(f);
+==> 12
+
+Note that the result may depend on the basering as we will
+see in the next chapter.
+
+The distribution of  SINGULAR contains  several libraries, each of
+which is a collection of useful
+procedures based on the kernel commands, which extend the functionality
+of SINGULAR. The command help "all.lib"; lists all libraries
+together with a one-line explanation.
+
+One of these libraries is sing.lib which already contains a
+procedure called milnor to calculate the Milnor number not only
+for hypersurfaces but more generally for complete intersection
+singularities.
+
+Libraries are loaded with the command LIB. Some additional
+information during the process of loading is displayed on the screen,
+which we omit here.
+
+LIB "sing.lib";
+
+As all input in SINGULAR is case sensitive, there is no conflict with
+the previously  defined procedure Milnor, but the result is the same.
+
+milnor(f);
+==> 12
+
+The procedures in a library have a help part
+which is displayed by typing
+
+help milnor;
+
+as well as some examples, which are executed by
+
+example milnor;
+
+Likewise, the library itself has a help part, to show a list of
+all the functions
+available for the user which are contained in the library.
+
+help sing.lib;
+
+The output of the help commands is omitted here.
+
+2.3.4 Change of rings
+---------------------
+
+To calculate the local Milnor number we have to do the calculation with the
+same commands in a ring with local ordering.
+Define the localization of the polynomial ring at the origin
+(see Polynomial data, and Mathematical background).
+
+ring rl = 0,(x,y,z),ds;
+
+This ordering determines the standard basis which will be calculated.
+Fetch the polynomial defined in the ring r into this new ring,
+thus avoiding retyping the input.
+
+poly f = fetch(r,f);
+f;
+==> z2+x3+y3+x3y2-x2y3
+
+Instead of fetch we can use the function imap
+which is more general but less efficient.
+The most general way to fetch data from one ring to another is to use maps,
+this will be explained in map.
+
+In this ring the terms are ordered by increasing exponents. The local Milnor
+number is now
+
+Milnor(f);
+==> 4
+
+This shows that f has outside the origin in affine 3-space
+singularities with local Milnor number adding up to
+Using global and local orderings as above is a convenient way to check
+whether a variety has singularities outside the origin.
+
+The command jacob applied twice gives the Hessian of f, a
+3x3 - matrix.
+
+matrix H = jacob(jacob(f));
+H;
+==> H[1,1]=6x+6xy2-2y3
+==> H[1,2]=6x2y-6xy2
+==> H[1,3]=0
+==> H[2,1]=6x2y-6xy2
+==> H[2,2]=6y+2x3-6x2y
+==> H[2,3]=0
+==> H[3,1]=0
+==> H[3,2]=0
+==> H[3,3]=2
+
+The print command displays the matrix in a nicer form.
+
+print(H);
+==> 6x+6xy2-2y3,6x2y-6xy2,  0,
+==> 6x2y-6xy2,  6y+2x3-6x2y,0,
+==> 0,          0,          2
+
+We may calculate the determinant and (the ideal generated by all) minors of
+a given size.
+
+det(H);
+==> 72xy+24x4-72x3y+72xy3-24y4-48x4y2+64x3y3-48x2y4
+minor(H,1);  // the 1x1 - minors
+==> _[1]=2
+==> _[2]=6y+2x3-6x2y
+==> _[3]=6x2y-6xy2
+==> _[4]=6x2y-6xy2
+==> _[5]=6x+6xy2-2y3
+
+The algorithm of the standard basis computations may be
+affected by the command option. For example, a reduced standard
+basis of the ideal generated by the
+ of H  is obtained in the following way:
+option(redSB);
+groebner(minor(H,1));
+==> _[1]=1
+
+This shows that 1 is contained in the ideal of the
+hence the corresponding variety is empty.
+
+
+2.3.5 Modules and their annihilator
+-----------------------------------
+
+Now we shall give three more advanced examples.
+
+SINGULAR is able to handle modules over all the rings,
+which can be defined as a basering. A free module of rank n
+is defined as follows:
+
+ring rr;
+int n = 4;
+freemodule(4);
+==> _[1]=gen(1)
+==> _[2]=gen(2)
+==> _[3]=gen(3)
+==> _[4]=gen(4)
+typeof(_);
+==> module
+print(freemodule(4));
+==> 1,0,0,0,
+==> 0,1,0,0,
+==> 0,0,1,0,
+==> 0,0,0,1
+
+To define a module, we give a list of vectors generating a submodule of
+a free module. Then this set of vectors may be identified with the
+columns of a matrix.  For that reason in SINGULAR matrices and
+modules may be interchanged. However, the representation is different
+(modules may be considered as sparse represented matrices).
+
+ring r =0,(x,y,z),dp;
+module MD = [x,0,x],[y,z,-y],[0,z,-2y];
+matrix MM = MD;
+print(MM);
+==> x,y,0,
+==> 0,z,z,
+==> x,-y,-2y
+
+However the submodule 
+ may also be considered as the module
+of relations of the factor module
+In this way, SINGULAR can treat arbitrary finitely generated modules
+over the
+basering (see Representation of mathematical objects).
+
+In order to get the module of relations of 
+,
+we use the command syz.
+
+syz(MD);
+==> _[1]=x*gen(3)-x*gen(2)+y*gen(1)
+
+We want to calculate, as an application, the annihilator of a given module.
+Let
+where U is our defining module of relations for the module
+
+module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
+
+Then, by definition, the annihilator of M is the ideal
+which is by the description of M the same as
+Hence we have to calculate the quotient
+The rank of the free module is determined by the choice of U and is the
+number of rows of the corresponding matrix. This may be determined by
+the function nrows. All we have to do now is the following:
+
+quotient(U,freemodule(nrows(U)));
+
+The result is too big to be shown here.
+
+2.3.6 Resolution
+----------------
+
+There are several commands in SINGULAR for computing free resolutions.
+The most general command is res(... ,n) which determines heuristically
+what method to use for the given problem. It computes the free resolution
+up to the length 
+, where 
+ corresponds to the full resolution.
+
+Here we use the possibility to inspect the calculation process using the
+option prot.
+
+ring R;      // the default ring in char 32003
+R;
+==> //   characteristic : 32003
+==> //   number of vars : 3
+==> //        block   1 : ordering dp
+==> //                  : names    x y z
+==> //        block   2 : ordering C
+ideal I = x4+x3y+x2yz,x2y2+xy2z+y2z2,x2z2+2xz3,2x2z2+xyz2;
+option(prot);
+resolution rs = res(I,0);
+==> using lres
+==> 4(m0)4(m1).5(m1)g.g6(m1)...6(m2)..
+
+Disable this protocol with
+
+option(noprot);
+
+When we enter the name of the calculated resolution, we get a pictorial
+description of the minimized resolution where the exponents denote the rank of the
+free modules. Note that the calculated resolution itself may not yet be minimal.
+
+rs;
+==> 1      4      5      2      0
+==>R  <-- R  <-- R  <-- R  <-- R
+==>
+==>0      1      2      3      4
+print(betti(rs),"betti");
+==>            0     1     2     3
+==> ------------------------------
+==>     0:     1     -     -     -
+==>     1:     -     -     -     -
+==>     2:     -     -     -     -
+==>     3:     -     4     1     -
+==>     4:     -     -     1     -
+==>     5:     -     -     3     2
+==> ------------------------------
+==> total:     1     4     5     2
+
+In order to minimize the resolution, that is to calculate the maps of the minimal 
+free resolution, we use the command minres:
+
+rs=minres(rs);
+
+A single module in this resolution is obtained (as usual) with the
+brackets [ and ]. The print command can be used to
+display a module in a more readable format:
+
+print(rs[3]);
+==> z3,   -xyz-y2z-4xz2+16z3,
+==> 0,    -y2,
+==> -y+4z,48z, 
+==> x+2z, 48z, 
+==> 0,    x+y-z  
+
+In this case, the output is to be interpreted as follows: the 3rd syzygy
+module of R/I, rs[3], is the rank-2-submodule of
+generated by the vectors
+

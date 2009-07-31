@@ -1,0 +1,32 @@
+13.9.1 Glyphs Summary
+---------------------
+
+Here are the different glyph commands:
+
+=>
+@result{} points to the result of an expression.
+
+==>
+@expansion{} shows the results of a macro expansion.
+
+-|
+@print{} indicates printed output.
+
+error-->
+@error{} indicates that the following text is an error
+message.
+
+==
+@equiv{} indicates the exact equivalence of two forms.
+
+-!-
+@point{} shows the location of point.
+
+* result::
+* expansion::
+* Print Glyph::
+* Error Glyph::
+* Equivalence::
+* Point Glyph::
+
+

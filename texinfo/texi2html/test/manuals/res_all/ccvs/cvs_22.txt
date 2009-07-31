@@ -1,0 +1,40 @@
+Annexe G Credits
+****************
+
+Roland Pesch, then of Cygnus Support <roland@wrs.com>
+wrote the manual pages which were distributed with
+CVS 1.3.  Much of their text was copied into this
+manual.  He also read an early draft
+of this manual and contributed many ideas and
+corrections.
+
+The mailing-list info-cvs is sometimes
+informative. I have included information from postings
+made by the following persons:
+David G. Grubbs <dgg@think.com>.
+
+Some text has been extracted from the man pages for
+RCS.
+
+The CVS FAQ by David G. Grubbs has provided
+useful material.  The FAQ is no longer maintained,
+however, and this manual is about the closest thing there
+is to a successor (with respect to documenting how to
+use CVS, at least).
+
+In addition, the following persons have helped by
+telling me about mistakes I've made:
+
+Roxanne Brunskill <rbrunski@datap.ca>,
+Kathy Dyer <dyer@phoenix.ocf.llnl.gov>,
+Karl Pingle <pingle@acuson.com>,
+Thomas A Peterson <tap@src.honeywell.com>,
+Inge Wallin <ingwa@signum.se>,
+Dirk Koschuetzki <koschuet@fmi.uni-passau.de>
+and Michael Brown <brown@wi.extrel.com>.
+
+The list of contributors here is not comprehensive; for a more
+complete list of who has contributed to this manual see
+the file `doc/ChangeLog' in the CVS source
+distribution.
+

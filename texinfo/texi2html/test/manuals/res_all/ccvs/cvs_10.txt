@@ -1,0 +1,703 @@
+10 Multiple developers
+**********************
+
+When more than one person works on a software project
+things often get complicated.  Often, two people try to
+edit the same file simultaneously.  One solution, known
+as file locking or reserved checkouts, is
+to allow only one person to edit each file at a time.
+This is the only solution with some version control
+systems, including RCS and SCCS.  Currently
+the usual way to get reserved checkouts with CVS
+is the cvs admin -l command (see admin options).  This is not as nicely integrated into
+CVS as the watch features, described below, but it
+seems that most people with a need for reserved
+checkouts find it adequate.
+It also may be possible to use the watches
+features described below, together with suitable
+procedures (not enforced by software), to avoid having
+two people edit at the same time.
+
+The default model with CVS is known as
+unreserved checkouts.  In this model, developers
+can edit their own working copy of a file
+simultaneously.  The first person that commits his
+changes has no automatic way of knowing that another
+has started to edit it.  Others will get an error
+message when they try to commit the file.  They must
+then use CVS commands to bring their working copy
+up to date with the repository revision.  This process
+is almost automatic.
+
+CVS also supports mechanisms which facilitate
+various kinds of communication, without actually
+enforcing rules like reserved checkouts do.
+
+The rest of this chapter describes how these various
+models work, and some of the issues involved in
+choosing between them.
+
+
+* File status::                 A file can be in several states
+* Updating a file::             Bringing a file up-to-date
+* Conflicts example::           An informative example
+* Informing others::            To cooperate you must inform
+* Concurrency::                 Simultaneous repository access
+* Watches::                     Mechanisms to track who is editing files
+* Choosing a model::            Reserved or unreserved checkouts?
+
+10.1 File status
+================
+
+Based on what operations you have performed on a
+checked out file, and what operations others have
+performed to that file in the repository, one can
+classify a file in a number of states.  The states, as
+reported by the status command, are:
+
+Up-to-date
+The file is identical with the latest revision in the
+repository for the branch in use.
+
+Locally Modified
+You have edited the file, and not yet committed your changes.
+
+Locally Added
+You have added the file with add, and not yet
+committed your changes.
+
+Locally Removed
+You have removed the file with remove, and not yet
+committed your changes.
+
+Needs Checkout
+Someone else has committed a newer revision to the
+repository.  The name is slightly misleading; you will
+ordinarily use update rather than
+checkout to get that newer revision.
+
+Needs Patch
+Like Needs Checkout, but the CVS server will send
+a patch rather than the entire file.  Sending a patch or
+sending an entire file accomplishes the same thing.
+
+Needs Merge
+Someone else has committed a newer revision to the repository, and you
+have also made modifications to the file.
+
+Unresolved Conflict
+A file with the same name as this new file has been added to the repository
+from a second workspace.  This file will need to be moved out of the way
+to allow an update to complete.
+
+File had conflicts on merge
+This is like Locally Modified, except that a previous
+update command gave a conflict.  If you have not
+already done so, you need to
+resolve the conflict as described in Conflicts example.
+
+Unknown
+CVS doesn't know anything about this file.  For
+example, you have created a new file and have not run
+add.
+
+
+To help clarify the file status, status also
+reports the Working revision which is the
+revision that the file in the working directory derives
+from, and the Repository revision which is the
+latest revision in the repository for the branch in
+use.
+
+The options to status are listed in
+Invoking CVS.  For information on its Sticky tag
+and Sticky date output, see Sticky tags.
+For information on its Sticky options output,
+see the `-k' option in update options.
+
+You can think of the status and update
+commands as somewhat complementary.  You use
+update to bring your files up to date, and you
+can use status to give you some idea of what an
+update would do (of course, the state of the
+repository might change before you actually run
+update).  In fact, if you want a command to
+display file status in a more brief format than is
+displayed by the status command, you can invoke
+
+$ cvs -n -q update
+
+The `-n' option means to not actually do the
+update, but merely to display statuses; the `-q'
+option avoids printing the name of each directory.  For
+more information on the update command, and
+these options, see Invoking CVS.
+
+10.2 Bringing a file up to date
+===============================
+
+When you want to update or merge a file, use the update
+command.  For files that are not up to date this is roughly equivalent
+to a checkout command: the newest revision of the file is
+extracted from the repository and put in your working directory.
+
+Your modifications to a file are never lost when you
+use update.  If no newer revision exists,
+running update has no effect.  If you have
+edited the file, and a newer revision is available,
+CVS will merge all changes into your working copy.
+
+For instance, imagine that you checked out revision 1.4 and started
+editing it.  In the meantime someone else committed revision 1.5, and
+shortly after that revision 1.6.  If you run update on the file
+now, CVS will incorporate all changes between revision 1.4 and 1.6 into
+your file.
+
+If any of the changes between 1.4 and 1.6 were made too
+close to any of the changes you have made, an
+overlap occurs.  In such cases a warning is
+printed, and the resulting file includes both
+versions of the lines that overlap, delimited by
+special markers.
+See update, for a complete description of the
+update command.
+
+10.3 Conflicts example
+======================
+
+Suppose revision 1.4 of `driver.c' contains this:
+
+#include <stdio.h>
+
+void main()
+{
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+    exit(nerr == 0 ? 0 : 1);
+}
+
+Revision 1.6 of `driver.c' contains this:
+
+#include <stdio.h>
+
+int main(int argc,
+         char **argv)
+{
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, "tc: No args expected.\n");
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+    exit(!!nerr);
+}
+
+Your working copy of `driver.c', based on revision
+1.4, contains this before you run `cvs update':
+
+#include <stdlib.h>
+#include <stdio.h>
+
+void main()
+{
+    init_scanner();
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+
+You run `cvs update':
+
+$ cvs update driver.c
+RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
+retrieving revision 1.4
+retrieving revision 1.6
+Merging differences between 1.4 and 1.6 into driver.c
+rcsmerge warning: overlaps during merge
+cvs update: conflicts found in driver.c
+C driver.c
+
+CVS tells you that there were some conflicts.
+Your original working file is saved unmodified in
+`.#driver.c.1.4'.  The new version of
+`driver.c' contains this:
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, "tc: No args expected.\n");
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+<<<<<<< driver.c
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+=======
+    exit(!!nerr);
+>>>>>>> 1.6
+}
+
+
+Note how all non-overlapping modifications are incorporated in your working
+copy, and that the overlapping section is clearly marked with
+`<<<<<<<', `=======' and `>>>>>>>'.
+
+You resolve the conflict by editing the file, removing the markers and
+the erroneous line.  Suppose you end up with this file:
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, "tc: No args expected.\n");
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+
+You can now go ahead and commit this as revision 1.7.
+
+$ cvs commit -m "Initialize scanner. Use symbolic exit values." driver.c
+Checking in driver.c;
+/usr/local/cvsroot/yoyodyne/tc/driver.c,v  <--  driver.c
+new revision: 1.7; previous revision: 1.6
+done
+
+For your protection, CVS will refuse to check in a
+file if a conflict occurred and you have not resolved
+the conflict.  Currently to resolve a conflict, you
+must change the timestamp on the file.  In previous
+versions of CVS, you also needed to
+insure that the file contains no conflict markers.
+Because
+your file may legitimately contain conflict markers (that
+is, occurrences of `>>>>>>> ' at the start of a
+line that don't mark a conflict), the current
+version of CVS will print a warning and proceed to
+check in the file.
+
+If you use release 1.04 or later of pcl-cvs (a GNU
+Emacs front-end for CVS) you can use an Emacs
+package called emerge to help you resolve conflicts.
+See the documentation for pcl-cvs.
+
+10.4 Informing others about commits
+===================================
+
+It is often useful to inform others when you commit a
+new revision of a file.  The `-i' option of the
+`modules' file, or the `loginfo' file, can be
+used to automate this process.  See modules.
+See loginfo.  You can use these features of CVS
+to, for instance, instruct CVS to mail a
+message to all developers, or post a message to a local
+newsgroup.
+
+10.5 Several developers simultaneously attempting to run CVS
+============================================================
+
+If several developers try to run CVS at the same
+time, one may get the following message:
+
+[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
+
+CVS will try again every 30 seconds, and either
+continue with the operation or print the message again,
+if it still needs to wait.  If a lock seems to stick
+around for an undue amount of time, find the person
+holding the lock and ask them about the cvs command
+they are running.  If they aren't running a cvs
+command, look in the repository directory mentioned in
+the message and remove files which they own whose names
+start with `#cvs.rfl',
+`#cvs.wfl', or `#cvs.lock'.
+
+Note that these locks are to protect CVS's
+internal data structures and have no relationship to
+the word lock in the sense used by
+RCS--which refers to reserved checkouts
+(see Multiple developers).
+
+Any number of people can be reading from a given
+repository at a time; only when someone is writing do
+the locks prevent other people from reading or writing.
+
+One might hope for the following property:
+
+If someone commits some changes in one cvs command,
+then an update by someone else will either get all the
+changes, or none of them.
+
+but CVS does not have this property.  For
+example, given the files
+
+a/one.c
+a/two.c
+b/three.c
+b/four.c
+
+if someone runs
+
+cvs ci a/two.c b/three.c
+
+and someone else runs cvs update at the same
+time, the person running update might get only
+the change to `b/three.c' and not the change to
+`a/two.c'.
+
+10.6 Mechanisms to track who is editing files
+=============================================
+
+For many groups, use of CVS in its default mode is
+perfectly satisfactory.  Users may sometimes go to
+check in a modification only to find that another
+modification has intervened, but they deal with it and
+proceed with their check in.  Other groups prefer to be
+able to know who is editing what files, so that if two
+people try to edit the same file they can choose to
+talk about who is doing what when rather than be
+surprised at check in time.  The features in this
+section allow such coordination, while retaining the
+ability of two developers to edit the same file at the
+same time.
+
+For maximum benefit developers should use cvs
+edit (not chmod) to make files read-write to
+edit them, and cvs release (not rm) to
+discard a working directory which is no longer in use,
+but CVS is not able to enforce this behavior.
+
+
+* Setting a watch::             Telling CVS to watch certain files
+* Getting Notified::            Telling CVS to notify you
+* Editing files::               How to edit a file which is being watched
+* Watch information::           Information about who is watching and editing
+* Watches Compatibility::       Watches interact poorly with CVS 1.6 or earlier
+
+10.6.1 Telling CVS to watch certain files
+-----------------------------------------
+
+To enable the watch features, you first specify that
+certain files are to be watched.
+
+ -- Command: cvs watch on [-lR] [files]...
+
+Specify that developers should run cvs edit
+before editing files.  CVS will create working
+copies of files read-only, to remind developers
+to run the cvs edit command before working on
+them.
+
+If files includes the name of a directory, CVS
+arranges to watch all files added to the corresponding
+repository directory, and sets a default for files
+added in the future; this allows the user to set
+notification policies on a per-directory basis.  The
+contents of the directory are processed recursively,
+unless the -l option is given.
+The -R option can be used to force recursion if the -l
+option is set in `~/.cvsrc' (see ~/.cvsrc).
+
+If files is omitted, it defaults to the current directory.
+
+
+ -- Command: cvs watch off [-lR] [files]...
+
+Do not create files read-only on checkout; thus,
+developers will not be reminded to use cvs edit
+and cvs unedit.
+
+The files and options are processed as for cvs
+watch on.
+
+
+10.6.2 Telling CVS to notify you
+--------------------------------
+
+You can tell CVS that you want to receive
+notifications about various actions taken on a file.
+You can do this without using cvs watch on for
+the file, but generally you will want to use cvs
+watch on, to remind developers to use the cvs edit
+command.
+
+ -- Command: cvs watch add [-lR] [-a action]... [files]...
+
+Add the current user to the list of people to receive notification of
+work done on files.
+
+The -a option specifies what kinds of events CVS should notify
+the user about.  action is one of the following:
+
+edit
+Another user has applied the cvs edit command (described
+below) to a watched file.
+
+commit
+Another user has committed changes to one of the named files.
+
+unedit
+Another user has abandoned editing a file (other than by committing changes).
+They can do this in several ways, by:
+
+* applying the cvs unedit command (described below) to the file
+
+* applying the cvs release command (see release) to the file's parent directory
+(or recursively to a directory more than one level up)
+
+* deleting the file and allowing cvs update to recreate it
+
+
+all
+All of the above.
+
+none
+None of the above.  (This is useful with cvs edit,
+described below.)
+
+
+The -a option may appear more than once, or not at all.  If
+omitted, the action defaults to all.
+
+The files and options are processed as for
+cvs watch on.
+
+
+
+ -- Command: cvs watch remove [-lR] [-a action]... [files]...
+
+Remove a notification request established using cvs watch add;
+the arguments are the same.  If the -a option is present, only
+watches for the specified actions are removed.
+
+
+When the conditions exist for notification, CVS
+calls the `notify' administrative file.  Edit
+`notify' as one edits the other administrative
+files (see Intro administrative files).  This
+file follows the usual conventions for administrative
+files (see syntax), where each line is a regular
+expression followed by a command to execute.  The
+command should contain a single occurrence of `%s'
+which will be replaced by the user to notify; the rest
+of the information regarding the notification will be
+supplied to the command on standard input.  The
+standard thing to put in the notify file is the
+single line:
+
+ALL mail %s -s "CVS notification"
+
+This causes users to be notified by electronic mail.
+
+Note that if you set this up in the straightforward
+way, users receive notifications on the server machine.
+One could of course write a `notify' script which
+directed notifications elsewhere, but to make this
+easy, CVS allows you to associate a notification
+address for each user.  To do so create a file
+`users' in `CVSROOT' with a line for each
+user in the format user:value.  Then
+instead of passing the name of the user to be notified
+to `notify', CVS will pass the value
+(normally an email address on some other machine).
+
+CVS does not notify you for your own changes.
+Currently this check is done based on whether the user
+name of the person taking the action which triggers
+notification matches the user name of the person
+getting notification.  In fact, in general, the watches
+features only track one edit by each user.  It probably
+would be more useful if watches tracked each working
+directory separately, so this behavior might be worth
+changing.
+
+10.6.3 How to edit a file which is being watched
+------------------------------------------------
+
+Since a file which is being watched is checked out
+read-only, you cannot simply edit it.  To make it
+read-write, and inform others that you are planning to
+edit it, use the cvs edit command.  Some systems
+call this a checkout, but CVS uses that term
+for obtaining a copy of the sources (see Getting the source), an operation which those systems call a
+get or a fetch.
+
+ -- Command: cvs edit [-lR] [-a action]... [files]...
+
+Prepare to edit the working files files.  CVS makes the
+files read-write, and notifies users who have requested
+edit notification for any of files.
+
+The cvs edit command accepts the same options as the
+cvs watch add command, and establishes a temporary watch for the
+user on files; CVS will remove the watch when files are
+unedited or committed.  If the user does not wish to
+receive notifications, she should specify -a none.
+
+The files and the options are processed as for the cvs
+watch commands.
+
+
+
+Normally when you are done with a set of changes, you
+use the cvs commit command, which checks in your
+changes and returns the watched files to their usual
+read-only state.  But if you instead decide to abandon
+your changes, or not to make any changes, you can use
+the cvs unedit command.
+
+ -- Command: cvs unedit [-lR] [files]...
+
+Abandon work on the working files files, and revert them to the
+repository versions on which they are based.  CVS makes those
+files read-only for which users have requested notification using
+cvs watch on.  CVS notifies users who have requested unedit
+notification for any of files.
+
+The files and options are processed as for the
+cvs watch commands.
+
+If watches are not in use, the unedit command
+probably does not work, and the way to revert to the
+repository version is with the command cvs update -C file
+(see update).
+The meaning is
+not precisely the same; the latter may also
+bring in some changes which have been made in the
+repository since the last time you updated.
+
+When using client/server CVS, you can use the
+cvs edit and cvs unedit commands even if
+CVS is unable to successfully communicate with the
+server; the notifications will be sent upon the next
+successful CVS command.
+
+10.6.4 Information about who is watching and editing
+----------------------------------------------------
+
+ -- Command: cvs watchers [-lR] [files]...
+
+List the users currently watching changes to files.  The report
+includes the files being watched, and the mail address of each watcher.
+
+The files and options are processed as for the
+cvs watch commands.
+
+
+
+ -- Command: cvs editors [-lR] [files]...
+
+List the users currently working on files.  The report
+includes the mail address of each user, the time when the user began
+working with the file, and the host and path of the working directory
+containing the file.
+
+The files and options are processed as for the
+cvs watch commands.
+
+
+10.6.5 Using watches with old versions of CVS
+---------------------------------------------
+
+If you use the watch features on a repository, it
+creates `CVS' directories in the repository and
+stores the information about watches in that directory.
+If you attempt to use CVS 1.6 or earlier with the
+repository, you get an error message such as the
+following (all on one line):
+
+cvs update: cannot open CVS/Entries for reading:
+No such file or directory
+
+and your operation will likely be aborted.  To use the
+watch features, you must upgrade all copies of CVS
+which use that repository in local or server mode.  If
+you cannot upgrade, use the watch off and
+watch remove commands to remove all watches, and
+that will restore the repository to a state which
+CVS 1.6 can cope with.
+
+10.7 Choosing between reserved or unreserved checkouts
+======================================================
+
+Reserved and unreserved checkouts each have pros and
+cons.  Let it be said that a lot of this is a matter of
+opinion or what works given different groups' working
+styles, but here is a brief description of some of the
+issues.  There are many ways to organize a team of
+developers.  CVS does not try to enforce a certain
+organization.  It is a tool that can be used in several
+ways.
+
+Reserved checkouts can be very counter-productive.  If
+two persons want to edit different parts of a file,
+there may be no reason to prevent either of them from
+doing so.  Also, it is common for someone to take out a
+lock on a file, because they are planning to edit it,
+but then forget to release the lock.
+
+People, especially people who are familiar with
+reserved checkouts, often wonder how often conflicts
+occur if unreserved checkouts are used, and how
+difficult they are to resolve.  The experience with
+many groups is that they occur rarely and usually are
+relatively straightforward to resolve.
+
+The rarity of serious conflicts may be surprising, until one realizes
+that they occur only when two developers disagree on the proper design
+for a given section of code; such a disagreement suggests that the
+team has not been communicating properly in the first place.  In order
+to collaborate under any source management regimen, developers
+must agree on the general design of the system; given this agreement,
+overlapping changes are usually straightforward to merge.
+
+In some cases unreserved checkouts are clearly
+inappropriate.  If no merge tool exists for the kind of
+file you are managing (for example word processor files
+or files edited by Computer Aided Design programs), and
+it is not desirable to change to a program which uses a
+mergeable data format, then resolving conflicts is
+going to be unpleasant enough that you generally will
+be better off to simply avoid the conflicts instead, by
+using reserved checkouts.
+
+The watches features described above in Watches
+can be considered to be an intermediate model between
+reserved checkouts and unreserved checkouts.  When you
+go to edit a file, it is possible to find out who else
+is editing it.  And rather than having the system
+simply forbid both people editing the file, it can tell
+you what the situation is and let you figure out
+whether it is a problem in that particular case or not.
+Therefore, for some groups it can be considered the
+best of both the reserved checkout and unreserved
+checkout worlds.
+

@@ -1,0 +1,171 @@
+3.2.2 Running SINGULAR under Emacs
+----------------------------------
+
+There are two ways to start the SINGULAR Emacs interface: Typing
+ESingular instead of Singular on the command shell
+launches a new Emacs process, initializes the interface and runs
+SINGULAR within Emacs. The other way is to start the interface in
+an already running Emacs, by typing M-x singular inside
+Emacs. This initializes the interface and runs SINGULAR within
+Emacs. Both ways are described in more detail below.
+
+Note: To properly run the Emacs interface, several files are needed
+which usually reside in the emacs subdirectory of your
+SINGULAR distribution. This directory is called
+singular-emacs-home-directory in the following.
+
+Starting the interface using ESingular
+--------------------------------------
+
+As mentioned above, ESingular is an "out-of-the-box" solution:
+You don't have to add special things to your .emacs startup file
+to initialize the interface; everything is done for you in a special
+file called .emacs-singular (which comes along with the
+SINGULAR distribution and resides in the
+singular-emacs-home-directory) which is automatically loaded on Emacs
+startup (and the loading of the .emacs file is automatically
+suppressed).
+
+The customizable variables of the SINGULAR Emacs interface are set
+to defaults which give the novice user a very shell like
+feeling of the interface. Nevertheless, these default settings can be
+changed, see Customization of the Emacs interface. Besides other
+Emacs initializations, such as fontification or blinking parentheses, a
+new menu item called Singular is added to the main menu,
+providing menu items for starting SINGULAR. On XEmacs, a button
+starting SINGULAR is added to the main toolbar.
+
+The SINGULAR interface is started automatically; once you see a
+buffer called *singular* and the SINGULAR prompt you are
+ready to start your SINGULAR session.
+
+ESingular inherits all Singular options. For a description
+off all these options, see Command line options. Additionally
+there are the following options which are special to ESingular:
+
+ command-line option /
+
+environment variable functionality
+ --emacs=EMACS
+
+ESINGULAR_EMACS Use EMACS as Emacs program to run the SINGULAR Emacs
+interface, where EMACS may e.g. be emacs or xemacs.
+ --emacs-dir=DIR
+
+ESINGULAR_EMACS_DIR Set the singular-emacs-home-directory, which is the directory where
+singular.el can be found,  to DIR.
+ --emacs-load=FILE
+
+ESINGULAR_EMACS_LOAD Load FILE on Emacs start-up, instead of the default load file.
+ --singular=PROG
+
+ESINGULAR_SINGULAR Start PROG as SINGULAR program within Emacs
+
+Notice that values of these options can also be given by setting the
+above mentioned environment variables (where values  given as
+command-line arguments take priority over values given by environment
+variables).
+
+Starting the interface within a running Emacs
+---------------------------------------------
+
+If you are a more experienced Emacs user and you already have your own
+local .emacs startup file, you might want to start the interface
+out of your running Emacs without using ESingular. For this, you
+should add the following lisp code to your .emacs file:
+
+(setq load-path (cons "<singular-emacs-home-directory>" load-path))
+(autoload 'singular "singular"
+  "Start Singular using default values." t)
+(autoload 'singular-other "singular"
+  "Ask for arguments and start Singular." t)
+
+Then typing M-x singular in a running Emacs session initializes
+the interface in a new buffer and launches a SINGULAR process. The
+SINGULAR prompt comes up and you are ready to start your
+SINGULAR session.
+
+It is a good idea to take a look at the (well documented) file
+.emacs-singular in the singular-emacs-home-directory, which comes
+along with the distribution. In it you find some useful initializations
+of the SINGULAR interface as well as some lisp code, which, for
+example, adds a button to the XEmacs toolbar. Some of this code might be
+useful for your .emacs file, too. And if you are a Emacs wizard,
+it is of course a good idea to take a look at singular.el in the
+singular-emacs-home-directory.
+
+Starting, interrupting and stopping SINGULAR
+--------------------------------------------
+
+There are the following commands to start and stop SINGULAR:
+
+* singular-other (or menu Singular, item
+Start...)
+
+Starts a SINGULAR process and asks for the following four
+parameters in the minibuffer area:
+
+1. The Singular executable. This can either be a file name with complete
+path, e.g., /local/bin/Singular. Then exactly this executable is
+started. The path may contain the character ~ denoting your home
+directory. Or it can be the name of a command without path, e.g.,
+Singular. Then the executable is searched for in your
+$PATH environment variable.
+
+2. The default working directory. This is the path to an existing
+directory, e.g., ~/work. The current directory is set to this
+directory before SINGULAR is started.
+
+3. Command line options. You can set any SINGULAR command line
+option (see Command line options).
+
+4. The buffer name. You can specify the name of the buffer the interface is
+running in.
+
+
+* singular (or menu Singular, item Start
+default)
+
+Starts SINGULAR with default settings for the executable, the
+working directory, command line switches, and the buffer name. You can
+customize this default settings, see
+Customization of the Emacs interface.
+
+* singular-exit-singular (bound to C-c $ or menu
+Singular, item Exit)
+
+Kills the running SINGULAR process of the current
+buffer (but does not kill the buffer). Once you have killed a
+SINGULAR process you can start a new one in the same buffer with
+the command singular (or select the item Start default of
+the Singular menu).
+
+* singular-restart (bound to C-c C-r or menu
+Singular, item Restart)
+
+Kills the running SINGULAR process of the current buffer and starts
+a new process in the same buffer with exactly the same command line
+arguments as before.
+
+* singular-control-c (bound to C-c C-c or menu Singular, item Interrupt)
+
+Interrupt the Singular process running in the current buffer. Asks
+whether to (a)bort the current SINGULAR command,
+(q)uit or (r)estart the current SINGULAR process, or
+(c)ontinue without doing anything (default).
+
+Whenever a SINGULAR process is started within the Emacs interface,
+the contents of a special startup file (by default
+~/.emacs-singularrc) is pasted as input to SINGULAR at the
+very end of the usual startup sequence (see Startup sequence). The
+name of the startup file can be changed, see
+Customization of the Emacs interface.
+
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

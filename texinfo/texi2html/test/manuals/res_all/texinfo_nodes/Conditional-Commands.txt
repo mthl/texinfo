@@ -1,0 +1,44 @@
+16.1 Conditional Commands
+=========================
+
+Texinfo has a pair of commands for each output format, to allow
+conditional inclusion of text for a particular output format.
+
+@ifinfo begins segments of text that should be ignored by TeX
+when it typesets the printed manual.  The segment of text appears only
+in the Info file and (for historical compatibility) the plain text
+output.  The @ifinfo command should appear on a line by itself;
+end the Info-only text with a line containing @end ifinfo by
+itself.
+
+The @iftex and @end iftex commands are analogous to the
+@ifinfo and @end ifinfo commands; they specify text that
+will appear in the printed manual but not in the Info file.  Likewise
+for @ifhtml and @end ifhtml, which specify text to
+appear only in HTML output.  And for @ifplaintext and
+@end ifplaintext, which specify text to appear only in plain
+text output.
+
+For example,
+
+@iftex
+This text will appear only in the printed manual.
+@end iftex
+@ifinfo
+However, this text will appear only in Info (or plain text).
+@end ifinfo
+@ifhtml
+And this text will only appear in HTML.
+@end ifhtml
+@ifplaintext
+Whereas this text will only appear in plain text.
+@end ifplaintext
+
+The preceding example produces the following line:
+However, this text will appear only in Info (or plain text).
+Whereas this text will only appear in plain text.
+
+Notice that you only see one of the input lines, depending on which
+version of the manual you are reading.
+
+

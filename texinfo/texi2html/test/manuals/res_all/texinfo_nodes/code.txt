@@ -1,0 +1,76 @@
+9.1.1 @code{sample-code}
+------------------------
+
+Use the @code command to indicate text that is a piece of a
+program and which consists of entire syntactic tokens.  Enclose the
+text in braces.
+
+Thus, you should use @code for an expression in a program, for
+the name of a variable or function used in a program, or for a
+keyword in a programming language.
+
+Use @code for command names in languages that resemble
+programming languages, such as Texinfo.  For example, @code and
+@samp are produced by writing `@code{@@code}' and
+`@code{@@samp}' in the Texinfo source, respectively.
+
+It is incorrect to alter the case of a word inside an @code
+command when it appears at the beginning of a sentence.  Most computer
+languages are case sensitive.  In C, for example, Printf is
+different from the identifier printf, and most likely is a
+misspelling of it.  Even in languages which are not case sensitive, it
+is confusing to a human reader to see identifiers spelled in different
+ways.  Pick one spelling and always use that.  If you do not want to
+start a sentence with a command name written all in lower case, you
+should rearrange the sentence.
+
+In the printed manual, @code causes TeX to typeset the
+argument in a typewriter face.  In the Info file, it causes the Info
+formatting commands to use single quotation marks around the text.
+
+For example,
+
+The function returns @code{nil}.
+
+produces this in the printed manual:
+
+The function returns nil.
+
+
+Here are some cases for which it is preferable not to use @code:
+
+* For shell command names such as ls (use @command).
+
+* For shell options such as `-c' when such options stand alone (use
+@option).
+
+* Also, an entire shell command often looks better if written using
+@samp rather than @code.  In this case, the rule is to
+choose the more pleasing format.
+
+* For environment variable such as TEXINPUTS (use @env).
+
+* For a string of characters shorter than a syntactic token.  For example,
+if you are writing about `goto-ch', which is just a part of the
+name for the goto-char Emacs Lisp function, you should use
+@samp.
+
+* In general, when writing about the characters used in a token; for
+example, do not use @code when you are explaining what letters
+or printable symbols can be used in the names of functions.  (Use
+@samp.)  Also, you should not use @code to mark text
+that is considered input to programs unless the input is written in a
+language that is like a programming language.  For example, you should
+not use @code for the keystroke commands of GNU Emacs (use
+@kbd instead) although you may use @code for the names
+of the Emacs Lisp functions that the keystroke commands invoke.
+
+
+Since @command, @option, and @env were
+introduced relatively recently, it is acceptable to use @code or
+@samp for command names, options, and environment variables.
+The new commands allow you to express the markup more precisely, but
+there is no real harm in using the older commands, and of course the
+long-standing manuals do so.
+
+

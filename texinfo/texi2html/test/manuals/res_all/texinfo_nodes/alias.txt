@@ -1,0 +1,27 @@
+18.4 `@alias new=existing'
+==========================
+
+The `@alias' command defines a new command to be just like an
+existing one.  This is useful for defining additional markup names, thus
+preserving semantic information in the input even though the output
+result may be the same.
+
+Write the `@alias' command on a line by itself, followed by the
+new command name, an equals sign, and the existing command name.
+Whitespace around the equals sign is ignored.  Thus:
+@alias new = existing
+
+For example, if your document contains citations for both books and
+some other media (movies, for example), you might like to define a
+macro @moviecite{} that does the same thing as an ordinary
+@cite{} but conveys the extra semantic information as well.
+You'd do this as follows:
+
+@alias moviecite = cite
+
+Macros do not always have the same effect due to vagaries of argument
+parsing.  Also, aliases are much simpler to define than macros.  So the
+command is not redundant.  (It was also heavily used in the Jargon File!)
+
+Aliases must not be recursive, directly or indirectly.
+

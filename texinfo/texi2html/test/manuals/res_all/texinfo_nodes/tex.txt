@@ -1,0 +1,10 @@
+13.5.1 @TeX{} (TeX)
+-------------------
+
+Use the @TeX{} command to generate `TeX'.  In a printed
+manual, this is a special logo that is different from three ordinary
+letters.  In Info, it just looks like `TeX'.  The
+@TeX{} command is unique among Texinfo commands in that the
+`T' and the `X' are in upper case.
+
+

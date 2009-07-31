@@ -1,0 +1,102 @@
+6 Searching an Info File
+************************
+
+GNU Info allows you to search for a sequence of characters throughout an
+entire Info file, search through the indices of an Info file, or find
+areas within an Info file which discuss a particular topic.
+
+<s> (search)
+</>
+Read a string in the echo area and search for it.  If the string
+includes upper-case characters, the Info file is searched
+case-sensitively; otherwise Info ignores the letter case.  With a
+numeric argument of N, search for Nth occurrence of the
+string.  Negative arguments search backwards.
+
+<?> (search-backward, vi-like operation)
+Read a string in the echo area and search backward through the Info file
+for that string.  If the string includes upper-case characters, the Info
+file is searched case-sensitively; otherwise Info ignores the letter
+case.  With a numeric argument of N, search for Nth
+occurrence of the string.  Negative arguments search forward.
+
+<S> (search-case-sensitively
+Read a string in the echo area and search for it case-sensitively, even
+if the string includes only lower-case letters.  With a numeric argument
+of N, search for Nth occurrence of the string.  Negative
+arguments search backwards.
+
+C-x <n> (search-next)
+<n>, vi-like operation
+Search for the same string used in the last search command, in the same
+direction, and with the same case-sensitivity option.  With a numeric
+argument of N, search for Nth next occurrence.
+
+C-x <N> (search-previous)
+<N>, vi-like operation
+Search for the same string used in the last search command, and with the
+same case-sensitivity option, but in the reverse direction.  With a
+numeric argument of N, search for Nth previous occurrence.
+
+<C-s> (isearch-forward)
+Interactively search forward through the Info file for a string as you
+type it.  If the string includes upper-case characters, the search is
+case-sensitive; otherwise Info ignores the letter case.
+
+<C-r> (isearch-backward)
+Interactively search backward through the Info file for a string as
+you type it.  If the string includes upper-case characters, the search
+is case-sensitive; otherwise Info ignores the letter case.
+
+<i> (index-search)
+Look up a string in the indices for this Info file, and select a node
+where the found index entry points to.
+
+<,> (next-index-match)
+Move to the node containing the next matching index item from the last
+`i' command.
+
+M-x index-apropos
+Grovel the indices of all the known Info files on your system for a
+string, and build a menu of the possible matches.
+
+The most basic searching command is `s' or `/'
+(search).  The `s' command prompts you for a string in the
+echo area, and then searches the remainder of the Info file for an
+occurrence of that string.  If the string is found, the node containing
+it is selected, and the cursor is left positioned at the start of the
+found string.  Subsequent `s' commands show you the default search
+string within `[' and `]'; pressing <RET> instead of
+typing a new string will use the default search string.  Under
+`--vi-keys' (see --vi-keys), using the `n' or `N'
+commands is a faster way of searching for the same string.
+
+Incremental searching is similar to basic searching, but the
+string is looked up while you are typing it, instead of waiting until
+the entire search string has been specified.
+
+Both incremental and non-incremental search by default ignore the case
+of letters when comparing the Info file text with the search string.
+However, an uppercase letter in the search string makes the search
+case-sensitive.  You can force a case-sensitive non-incremental search,
+even for a string that includes only lower-case letters, by using the
+`S' command (search-case-sensitively).  The `n' and
+`N' commands operate case-sensitively if the last search command
+was `S'.
+
+The most efficient means of finding something quickly in a manual is
+the `i' command (index-search).  This command prompts for
+a string, and then looks for that string in all the indices of the
+current Info manual.  If it finds a matching index entry, it displays
+the node to which that entry refers and prints the full text of the
+entry in the echo area.  You can press `,'
+(next-index-match) to find more matches.  A good Info manual
+has all of its important concepts indexed, so the `i' command
+lets you use a manual as a reference.
+
+If you don't know what manual documents something, try the M-x
+index-apropos.  It prompts for a string and then looks up that string
+in all the indices of all the Info documents installed on your system.
+It can also be invoked from the command line; see --apropos.
+
+

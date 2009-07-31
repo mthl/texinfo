@@ -1,0 +1,98 @@
+<div id="editinfo"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Verifying log messages#verifymsg  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Editinfo example#editinfo-example  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The commit support files#commit-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Editinfo"></div>
+==== Editinfo ====
+<div id="index-editinfo-_0028admin-file_0029"></div>
+<div id="index-Editor_002c-specifying-per-module"></div>
+<div id="index-Per_002dmodule-editor"></div>
+<div id="index-Log-messages_002c-editing"></div>
+
+<p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
+rendered obsolete.  To set a default editor for log
+messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
+(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see section [cvs: Global options#Global-options Global options]).  See [cvs: Verifying log messages#verifymsg Verifying log messages],
+for information on the use of the &lsquo;<tt>verifymsg</tt>&rsquo;
+feature for evaluating log messages.</strong>
+</p>
+<p>If you want to make sure that all log messages look the
+same way, you can use the &lsquo;<tt>editinfo</tt>&rsquo; file to
+specify a program that is used to edit the log message.
+This program could be a custom-made editor that always
+enforces a certain style of the log message, or maybe a
+simple shell script that calls an editor, and checks
+that the entered message contains the required fields.
+</p>
+<p>If no matching line is found in the &lsquo;<tt>editinfo</tt>&rsquo;
+file, the editor specified in the environment variable
+<code>$CVSEDITOR</code> is used instead.  If that variable is
+not set, then the environment variable <code>$EDITOR</code>
+is used instead.  If that variable is not
+set a default will be used.  See [cvs: Committing your changes#Committing-your-changes Committing your changes].
+</p>
+<p>The &lsquo;<tt>editinfo</tt>&rsquo; file is often most useful together
+with the &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can be used to
+specify a log message template.
+</p>
+<p>Each line in the &lsquo;<tt>editinfo</tt>&rsquo; file consists of a
+regular expression and a command-line template.  The
+template must include a program name, and can include
+any number of arguments.  The full path to the current
+log message template file is appended to the template.
+</p>
+<p>One thing that should be noted is that the &lsquo;<samp>ALL</samp>&rsquo;
+keyword is not supported.  If more than one matching
+line is found, the first one is used.  This can be
+useful for specifying a default edit script in a
+module, and then overriding it in a subdirectory.
+</p>
+<div id="index-DEFAULT-in-editinfo"></div>
+<p>If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+line is used, if it is specified.
+</p>
+<p>If the edit script exits with a non-zero exit status,
+the commit is aborted.
+</p>
+<p>Note: when <small>CVS</small> is accessing a remote repository,
+or when the &lsquo;<samp>-m</samp>&rsquo; or &lsquo;<samp>-F</samp>&rsquo; options to <code>cvs
+commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
+There is no good workaround for this; use
+&lsquo;<tt>verifymsg</tt>&rsquo; instead.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Editinfo example#editinfo-example  editinfo example]::<nowiki>            Editinfo example
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Verifying log messages#verifymsg  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Editinfo example#editinfo-example  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The commit support files#commit-files  Up ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,50 @@
+3.2.3 @setfilename: Set the output file name
+--------------------------------------------
+
+In order to serve as the primary input file for either makeinfo
+or TeX, a Texinfo file must contain a line that looks like this:
+
+@setfilename info-file-name
+
+Write the @setfilename command at the beginning of a line and
+follow it on the same line by the Info file name.  Do not write anything
+else on the line; anything on the line after the command is considered
+part of the file name, including what would otherwise be a
+comment.
+
+The Info formatting commands ignore everything written before the
+@setfilename line, which is why the very first line of
+the file (the \input line) does not show up in the output.
+
+The @setfilename line specifies the name of the output file to
+be generated.  This name must be different from the name of the Texinfo
+file.  There are two conventions for choosing the name: you can either
+remove the extension (such as `.texi') entirely from the input file
+name, or, preferably, replace it with the `.info' extension.
+
+Although an explicit `.info' extension is preferable, some
+operating systems cannot handle long file names.  You can run into a
+problem even when the file name you specify is itself short enough.
+This occurs because the Info formatters split a long Info file into
+short indirect subfiles, and name them by appending `-1',
+`-2', ..., `-10', `-11', and so on, to the original
+file name.  (See Tag and Split Files.)  The subfile name
+`texinfo.info-10', for example, is too long for old systems with a
+14-character limit on filenames; so the Info file name for this document
+is `texinfo' rather than `texinfo.info'.  When makeinfo
+is running on operating systems such as MS-DOS which impose severe
+limits on file names, it may remove some characters from the original
+file name to leave enough space for the subfile suffix, thus producing
+files named `texin-10', `gcc.i12', etc.
+
+When producing HTML output, makeinfo will replace any extension
+with `html', or add `.html' if the given name has no
+extension.
+
+The @setfilename line produces no output when you typeset a
+manual with TeX, but it is nevertheless essential: it opens the
+index, cross-reference, and other auxiliary files used by Texinfo, and
+also reads `texinfo.cnf' if that file is present on your system
+(see Preparing for TeX).
+
+

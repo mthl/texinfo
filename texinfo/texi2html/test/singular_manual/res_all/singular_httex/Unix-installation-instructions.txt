@@ -1,0 +1,255 @@
+E.3 Unix installation instructions
+==================================
+
+
+
+
+
+
+To install SINGULAR on a
+Unix
+platform, you need the following two
+archives:
+Singular-2-0-4-share.tar.gz
+contains architecture independent data like documentation and libraries
+(alternatively, you may also download
+Singular-2-0-4-share.zip).
+Singular-2-0-4-<uname>.tar.gz
+contains architecture dependent executables, like the SINGULAR
+program.
+
+
+<uname> is a description of the processor and operating system
+for which SINGULAR is compiled (e.g, ix86-Linux). Please contact us if
+you can not find an appropriate architecture dependent archive.
+
+You can obtain these (and other) archives from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular>.
+
+
+To install SINGULAR
+===================
+
+Make sure that you have approximately 12MByte of free disk space and follow
+these steps.
+1. Simply change to the directory in which you wish to install
+SINGULAR (usually wherever you install 3rd-party software), for example:
+cd /usr/local
+or
+mkdir install;cd install 
+(you do not need root privileges in this case)
+
+SINGULAR specific subdirectories will be created in such a way
+that multiple versions and multiple architecture dependent files
+of SINGULAR can peaceably coexist under the same /usr/local
+tree.
+
+2. Unpack the archives:
+gzip -dc <path_to>/Singular-2-0-4-<uname>.tar.gz | tar -pxf -
+gzip -dc <path_to>/Singular-2-0-4-share.tar.gz | tar -pxf -
+
+This creates the the directory Singular/2-0-4 with 
+ (sub)directories which contain
+ <uname> Singular and ESingular executables
+ LIB SINGULAR libraries (*.lib files)
+ emacs files for the SINGULAR Emacs user interface
+ info info files of SINGULAR manual
+ html html files of SINGULAR manual
+ doc miscellaneous documentation files
+ examples SINGULAR examples (*.sing files)
+
+For the executable to work, the directory layout must look pretty much
+like this; the executable looks for "sibling" directories at run-time
+to figure out where its SINGULAR libraries and on-line
+documentation files are. These constraints on the local directory layout
+are necessary to avoid having to hard-code pathnames into the
+executables, or require that environment variables be set before
+running the executable. In particular, you must not move or copy
+the SINGULAR executables to another place, but use soft-links
+instead.
+
+The following steps are optional:
+
+* Arrange that typing Singular at the shell prompt starts up the
+installed SINGULAR executable.
+
+If you have root permission, do:
+ln -s `pwd`/Singular/2-0-4/<uname>/Singular  /usr/local/bin/Singular-2-0-4
+ln -s `pwd`/Singular/2-0-4/<uname>/ESingular  /usr/local/bin/ESingular-2-0-4
+ln -s /usr/local/bin/Singular-2-0-4 /usr/local/bin/Singular
+ln -s /usr/local/bin/ESingular-2-0-4 /usr/local/bin/ESingular
+	
+Otherwise, append the directory
+`pwd`/Singular/2-0-4/<uname>/ to your $PATH
+environment variable. For the csh (or, tcsh) shell do:
+set path=(`pwd`/Singular/2-0-4/<uname> $path)
+For the bash (or, ksh) shell do:
+export PATH=`pwd`/Singular/2-0-4/<uname>/:$PATH
+
+You also might want to adjust your personal start-up files
+(~/.cshrc for csh, ~/.tcshrc for tcsh, or
+~/.profile for bash) accordingly,
+so that the $PATH variable is set automatically each time you login.
+
+IMPORTANT: Do never move or copy the file
+Singular/2-0-4/<uname>/Singular to another
+place, but use soft-links instead.
+
+* If you wish to use any of following features of
+SINGULAR, make sure that the respective programs are installed on your system:
+
+ Feature Requires
+ running ESingular, or Singular within Emacs Emacs <http://www.fsf.org/software/emacs/emacs.html> version
+20 or higher, or, XEmacs <http://www.xemacs.org> version 20.3 or
+higher (ESingular is only included in the Linux distribution,
+on other Unix platforms you can download the
+Singular emacs lisp files <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/src/> but we give no warranties for specific platforms).
+ on-line html help netscape <http://www.netscape.com> browser
+ on-line info help info <http://www.texinfo.org>, or
+tkinfo <http://math-www.uni-paderborn.de/~axel/tkinfo/> texinfo browser programs
+ TAB completion and history mechanism of ASCII-terminal interface shared readline <ftp://ftp.de.uu.net/pub/gnu/readline/>
+library, i.e. /usr/lib/libreadline.so
+ visualization of curves and surfaces surf <http://www.mathematik.uni-mainz.de/AlgebraischeGeometrie/surf/surf.shtml>
+version 0.9 or higher (only available for Linux and Solaris).
+
+You may download most of these programs from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils/>.
+
+* Customize the on-line help system:
+
+By default, on-line help is displayed in the html format using
+the netscape program.
+
+However, this behavior can be customized in several ways
+using the SINGULAR commands system("--browser",<browser>)
+and system("--allow-net", 1) (or, by starting up SINGULAR
+with the respective command line options).
+
+In particular, creating the file
+Singular/2-0-4/LIB/.singularrc and putting the
+SINGULAR command
+system("--allow-net", 1);
+in it, allows the on-line help system to fetch its html pages
+from Singular's WWW home site <http://www.singular.uni-kl.de>
+in case its local html pages are not found. That is, you may delete your
+local html pages, after setting this option.
+
+See also
+The online help system, Command line options, and
+Startup sequence,
+for more details on customizing the on-line help system.
+
+* Add the line
+* Singular:(singular.hlp).     A system for polynomial computations
+to your system-wide dir file (usually /usr/info/dir or
+/usr/local/info/dir and  copy or soft-link the file
+Singular/2-0-4/info/singular.hlp
+to the directory of your dir file.
+
+This assures that the
+SINGULAR manual can be  accessed from stand-alone texinfo
+browser programs such as info or Emacs.
+(It is not necessary for the use of the help system from within Singular.)
+
+Troubleshooting
+===============
+
+* General: SINGULAR can not find its libraries or on-line help
+1. Make sure that you have read and/or execute permission the files and
+directories of the Singular distribution. If in doubt, cd to the
+directory where you unpacked SINGULAR, and do (as root, if
+necessary):
+chmod -R a+rX Singular
+
+2. Start up SINGULAR, and issue the command system("Singular");.
+If this does not return the correct and expanded location of the
+SINGULAR executable, then you found a bug in SINGULAR, which we
+ask you to report (see below).
+3. Check whether the directories containing the libraries and on-line help
+files can be found by SINGULAR: If $bindir denotes the
+directory where the SINGULAR executable resides, then SINGULAR
+looks for library files as follows:
+
+ (0) the current directory
+
+ (1) all dirs of the environment variable SINGULARPATH
+
+ (2) $bindir/LIB
+
+ (3) $bindir/../LIB
+
+ (4) /usr/local/Singular/2-0-4/LIB
+
+ (4) /usr/local/Singular/LIB
+
+ The on-line info files need to be at  $bindir/../info and the
+html pages at $bindir/../html.
+
+You can inspect the found library and info/html
+directories by starting up SINGULAR with the
+--version option, or by issuing the SINGULAR command
+system("--version");.
+
+* Under SuSE-Linux, ESINGULAR does not display a prompt:
+This is due to the very restrictive access rights of /dev/pty* of
+the standard SuSE <http:/www.suse.de> distribution (starting from
+version 6.3 on). As root, do one of the following: Either
+chmod 666 /dev/pty*
+or,
+chmod g+s $(which emacs)
+chgrp tty $(which emacs)
+chmod g+s $(which xemacs)
+chgrp tty $(which xemacs)
+See also <http://sdb.suse.de/sdb/de/html/ke_devpts-63.html> for
+details.
+
+* For HPUX systems:
+
+The /etc/termcap files which are pre-installed on these systems are
+broken which leads to messages like
+Name collision between 9826 9836
+when SINGULAR is started. To fix this, you can get fixed termcap
+files from <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils>
+by downloading the files termcap-<uname-description> and either
+replace your /etc/termcap file by the file found there, or view, and
+redo the respective changes by diff'ing the downloaded and the
+original file.
+
+* For ix86-Linux systems:
+
+Due to some incompatibilities of shared libraries, the start-up of
+SINGULAR might fail with messages like
+  Can not find shared library ...
+For DEBIAN systems, try to do
+ln -s /usr/lib/libncurses.so /usr/lib/libncurses.so.4.
+
+If this fails (and on other systems)
+download and install
+Singular-2-0-4-ix86-Linux-static.tar.gz.
+
+* For AIX systems:
+
+The default info program of the system is not GNU's texinfo
+browser which is used to display the on-line documentation in the
+info format. Therefore, the distribution of the AIX executable
+already contains the info browser program.
+If you remove this program, make sure that the GNU
+info program is executed if you call 'info' from your shell.
+
+* For any other troubles:
+
+Please send an email to <mailto:singular@mathematik.uni-kl.de>
+and include the header which is displayed by starting up SINGULAR
+with the -v option, and a description of your machine (issue the
+command uname -a on your shell) in your report.
+
+
+
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

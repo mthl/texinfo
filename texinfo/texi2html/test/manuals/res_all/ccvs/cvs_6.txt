@@ -1,0 +1,59 @@
+6 Recursive behavior
+********************
+
+Almost all of the subcommands of CVS work
+recursively when you specify a directory as an
+argument.  For instance, consider this directory
+structure:
+
+      $HOME
+        |
+        +--tc
+        |   |
+            +--CVS
+            |      (internal CVS files)
+            +--Makefile
+            +--backend.c
+            +--driver.c
+            +--frontend.c
+            +--parser.c
+            +--man
+            |    |
+            |    +--CVS
+            |    |  (internal CVS files)
+            |    +--tc.1
+            |
+            +--testing
+                 |
+                 +--CVS
+                 |  (internal CVS files)
+                 +--testpgm.t
+                 +--test2.t
+
+If `tc' is the current working directory, the
+following is true:
+
+* `cvs update testing' is equivalent to
+
+cvs update testing/testpgm.t testing/test2.t
+
+* `cvs update testing man' updates all files in the
+subdirectories
+
+* `cvs update .' or just `cvs update' updates
+all files in the tc directory
+
+If no arguments are given to update it will
+update all files in the current working directory and
+all its subdirectories.  In other words, `.' is a
+default argument to update.  This is also true
+for most of the CVS subcommands, not only the
+update command.
+
+The recursive behavior of the CVS subcommands can be
+turned off with the `-l' option.
+Conversely, the `-R' option can be used to force recursion if
+`-l' is specified in `~/.cvsrc' (see ~/.cvsrc).
+
+$ cvs update -l         # Don't update files in subdirectories
+

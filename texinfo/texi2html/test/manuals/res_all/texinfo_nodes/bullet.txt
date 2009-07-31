@@ -1,0 +1,13 @@
+13.4.2 @bullet{} (*)
+--------------------
+
+Use the @bullet{} command to generate a large round dot, or
+the closest possible thing to one.  In Info, an asterisk is used.
+
+Here is a bullet: *
+
+When you use @bullet in @itemize, you do not need to
+type the braces, because @itemize supplies them.
+(See @itemize.)
+
+

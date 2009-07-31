@@ -1,0 +1,27 @@
+F.5.3 Tagifying a File
+----------------------
+
+After creating an unsplit Info file, you must create a tag table for
+it.  Visit the Info file you wish to tagify and type:
+
+M-x Info-tagify
+
+(Note the upper case `I' in Info-tagify.)  This creates an
+Info file with a tag table that you can validate.
+
+The third step is to validate the Info file:
+
+M-x Info-validate
+
+(Note the upper case `I' in Info-validate.)
+In brief, the steps are:
+
+C-u M-x texinfo-format-buffer
+M-x Info-tagify
+M-x Info-validate
+
+After you have validated the node structure, you can rerun
+texinfo-format-buffer in the normal way so it will construct a
+tag table and split the file automatically, or you can make the tag
+table and split the file manually.
+

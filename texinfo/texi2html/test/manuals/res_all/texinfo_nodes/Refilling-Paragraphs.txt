@@ -1,0 +1,34 @@
+Annexe G Refilling Paragraphs
+*****************************
+
+The @refill command refills and, optionally, indents the first
+line of a paragraph.(14) The
+@refill command is no longer important, but we describe it here
+because you once needed it.  You will see it in many old Texinfo
+files.
+
+Without refilling, paragraphs containing long @-constructs may look
+bad after formatting because the formatter removes @-commands and
+shortens some lines more than others.  In the past, neither the
+texinfo-format-region command nor the
+texinfo-format-buffer command refilled paragraphs
+automatically.  The @refill command had to be written at the
+end of every paragraph to cause these formatters to fill them.  (Both
+TeX and makeinfo have always refilled paragraphs
+automatically.)  Now, all the Info formatters automatically fill and
+indent those paragraphs that need to be filled and indented.
+
+The @refill command causes texinfo-format-region and
+texinfo-format-buffer to refill a paragraph in the Info file
+after all the other processing has been done.  For this reason,
+you can not use @refill with a paragraph containing either
+@* or @w{ ... } since the refilling action will
+override those two commands.
+
+The texinfo-format-region and texinfo-format-buffer
+commands now automatically append @refill to the end of each
+paragraph that should be filled.  They do not append @refill to
+the ends of paragraphs that contain @* or @w{ ...}
+and therefore do not refill or indent them.
+
+

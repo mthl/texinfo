@@ -1,0 +1,118 @@
+<div id="Adding-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Removing files#Removing-files  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  Up ]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Adding-files-to-a-directory"></div>
+=== Adding files to a directory ===
+<div id="index-Adding-files"></div>
+
+<p>To add a new file to a directory, follow these steps.
+</p>
+<ul>
+<li>
+You must have a working copy of the directory.
+See section [cvs: Getting the source#Getting-the-source Getting the source].
+
+</li><li>
+Create the new file inside your working copy of the directory.
+
+</li><li>
+Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
+want to version control the file.  If the file contains
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section [cvs: Handling binary files#Binary-files Handling binary files]).
+
+</li><li>
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
+in the file into the repository.  Other developers
+cannot see the file until you perform this step.
+</li></ul>
+
+<p>You can also use the <code>add</code> command to add a new
+directory.
+</p>
+<p>Unlike most other commands, the <code>add</code> command is
+not recursive.  You cannot even type &lsquo;<samp>cvs add
+foo/bar</samp>&rsquo;!  Instead, you have to
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd foo
+$ cvs add bar
+</nowiki></pre></td></tr></table>
+
+<div id="index-add-_0028subcommand_0029"></div>
+<dl>
+<dt><div id="index-cvs-add"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dd>
+<p>Schedule <var>files</var> to be added to the repository.
+The files or directories specified with <code>add</code> must
+already exist in the current directory.  To add a whole
+new directory hierarchy to the source repository (for
+example, files received from a third-party vendor), use
+the <code>import</code> command instead.  See section [cvs: import--Import sources into CVS, using vendor branches#import import&mdash;Import sources into CVS, using vendor branches].
+</p>
+<p>The added files are not placed in the source repository
+until you use <code>commit</code> to make the change
+permanent.  Doing an <code>add</code> on a file that was
+removed with the <code>remove</code> command will undo the
+effect of the <code>remove</code>, unless a <code>commit</code>
+command intervened.  See section [cvs: Removing files#Removing-files Removing files], for an
+example.
+</p>
+<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
+this file will be checked out; for more information see
+[cvs: Substitution modes#Substitution-modes Substitution modes].
+</p>
+<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
+file.  This description appears in the history log (if
+it is enabled, see section [cvs: The history file#history-file The history file]).  It will also be
+saved in the version history inside the repository when
+the file is committed.  The <code>log</code> command displays
+this description.  The description can be changed using
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section [cvs: admin--Administration#admin admin&mdash;Administration].  If you omit the
+&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
+be used.  You will not be prompted for a description.
+</p></dd></dl>
+
+<p>For example, the following commands add the file
+&lsquo;<tt>backend.c</tt>&rsquo; to the repository:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs add backend.c
+$ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
+</nowiki></pre></td></tr></table>
+
+<p>When you add a file it is added only on the branch
+which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+later merge the additions to another branch if you want
+(see section [cvs: Merging can add or remove files#Merging-adds-and-removals Merging can add or remove files]).
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Removing files#Removing-files  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  Up ]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

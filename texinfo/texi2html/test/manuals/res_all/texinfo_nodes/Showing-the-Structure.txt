@@ -1,0 +1,49 @@
+2.3 Showing the Section Structure of a File
+===========================================
+
+You can show the section structure of a Texinfo file by using the
+C-c C-s command (texinfo-show-structure).  This command
+shows the section structure of a Texinfo file by listing the lines
+that begin with the @-commands for @chapter,
+@section, and the like.  It constructs what amounts
+to a table of contents.  These lines are displayed in another buffer
+called the `*Occur*' buffer.  In that buffer, you can position
+the cursor over one of the lines and use the C-c C-c command
+(occur-mode-goto-occurrence), to jump to the corresponding spot
+in the Texinfo file.
+
+C-c C-s
+M-x texinfo-show-structure
+Show the @chapter, @section, and such lines of a
+Texinfo file.
+
+C-c C-c
+M-x occur-mode-goto-occurrence
+Go to the line in the Texinfo file corresponding to the line under the
+cursor in the `*Occur*' buffer.
+
+If you call texinfo-show-structure with a prefix argument by
+typing C-u C-c C-s, it will list not only those lines with the
+@-commands for @chapter, @section, and the like, but
+also the @node lines.  You can use texinfo-show-structure
+with a prefix argument to check whether the `Next', `Previous', and `Up'
+pointers of an @node line are correct.
+
+Often, when you are working on a manual, you will be interested only
+in the structure of the current chapter.  In this case, you can mark
+off the region of the buffer that you are interested in by using the
+C-x n n (narrow-to-region) command and
+texinfo-show-structure will work on only that region.  To see
+the whole buffer again, use C-x n w (widen).
+(See (emacs)Narrowing section `Narrowing' in The GNU Emacs Manual, for more
+information about the narrowing commands.)
+
+In addition to providing the texinfo-show-structure command,
+Texinfo mode sets the value of the page delimiter variable to match
+the chapter-level @-commands.  This enables you to use the C-x
+] (forward-page) and C-x [ (backward-page)
+commands to move forward and backward by chapter, and to use the
+C-x p (narrow-to-page) command to narrow to a chapter.
+See (emacs)Pages section `Pages' in The GNU Emacs Manual, for more information
+about the page commands.
+

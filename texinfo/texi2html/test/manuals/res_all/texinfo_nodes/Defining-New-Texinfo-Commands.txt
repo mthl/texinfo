@@ -1,0 +1,28 @@
+18 Defining New Texinfo Commands
+********************************
+
+Texinfo provides several ways to define new commands:
+
+* A Texinfo macro allows you to define a new Texinfo command as any
+sequence of text and/or existing commands (including other macros).  The
+macro can have any number of parameters--text you supply each
+time you use the macro.
+
+Incidentally, these macros have nothing to do with the @defmac
+command, which is for documenting macros in the subject of the manual
+(see Def Cmd Template).
+
+* `@alias' is a convenient way to define a new name for an existing
+command.
+
+* `@definfoenclose' allows you to define new commands with
+customized output in the Info file.
+
+
+* Defining Macros::             Defining and undefining new commands.
+* Invoking Macros::             Using a macro, once you've defined it.
+* Macro Details::               Beyond basic macro usage.
+* alias::                       Command aliases.
+* definfoenclose::              Customized highlighting.
+
+

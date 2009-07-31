@@ -1,0 +1,192 @@
+3 Starting a project with CVS
+*****************************
+
+Because renaming files and moving them between
+directories is somewhat inconvenient, the first thing
+you do when you start a new project should be to think
+through your file organization.  It is not impossible
+to rename or move files, but it does increase the
+potential for confusion and CVS does have some
+quirks particularly in the area of renaming
+directories.  See Moving files.
+
+What to do next depends on the situation at hand.
+
+* Setting up the files::        Getting the files into the repository
+* Defining the module::         How to make a module of the files
+
+3.1 Setting up the files
+========================
+
+The first step is to create the files inside the repository.  This can
+be done in a couple of different ways.
+
+* From files::                  This method is useful with old projects
+                                where files already exists.
+* From other version control systems::  Old projects where you want to
+                                        preserve history from another system.
+* From scratch::                Creating a directory tree from scratch.
+
+3.1.1 Creating a directory tree from a number of files
+------------------------------------------------------
+
+When you begin using CVS, you will probably already have several
+projects that can be
+put under CVS control.  In these cases the easiest way is to use the
+import command.  An example is probably the easiest way to
+explain how to use it.  If the files you want to install in
+CVS reside in `wdir', and you want them to appear in the
+repository as `$CVSROOT/yoyodyne/rdir', you can do this:
+
+$ cd wdir
+$ cvs import -m "Imported sources" yoyodyne/rdir yoyo start
+
+Unless you supply a log message with the `-m'
+flag, CVS starts an editor and prompts for a
+message.  The string `yoyo' is a vendor tag,
+and `start' is a release tag.  They may fill
+no purpose in this context, but since CVS requires
+them they must be present.  See Tracking sources, for
+more information about them.
+
+You can now verify that it worked, and remove your
+original source directory.
+
+$ cd ..
+$ cvs checkout yoyodyne/rdir       # Explanation below
+$ diff -r wdir yoyodyne/rdir
+$ rm -r wdir
+
+Erasing the original sources is a good idea, to make sure that you do
+not accidentally edit them in wdir, bypassing CVS.
+Of course, it would be wise to make sure that you have
+a backup of the sources before you remove them.
+
+The checkout command can either take a module
+name as argument (as it has done in all previous
+examples) or a path name relative to $CVSROOT,
+as it did in the example above.
+
+It is a good idea to check that the permissions
+CVS sets on the directories inside $CVSROOT
+are reasonable, and that they belong to the proper
+groups.  See File permissions.
+
+If some of the files you want to import are binary, you
+may want to use the wrappers features to specify which
+files are binary and which are not.  See Wrappers.
+
+3.1.2 Creating Files From Other Version Control Systems
+-------------------------------------------------------
+
+If you have a project which you are maintaining with
+another version control system, such as RCS, you
+may wish to put the files from that project into
+CVS, and preserve the revision history of the
+files.
+
+From RCS
+If you have been using RCS, find the RCS
+files--usually a file named `foo.c' will have its
+RCS file in `RCS/foo.c,v' (but it could be
+other places; consult the RCS documentation for
+details).  Then create the appropriate directories in
+CVS if they do not already exist.  Then copy the
+files into the appropriate directories in the CVS
+repository (the name in the repository must be the name
+of the source file with `,v' added; the files go
+directly in the appropriate directory of the repository,
+not in an `RCS' subdirectory).  This is one of the
+few times when it is a good idea to access the CVS
+repository directly, rather than using CVS
+commands.  Then you are ready to check out a new
+working directory.
+
+The RCS file should not be locked when you move it
+into CVS; if it is, CVS will have trouble
+letting you operate on it.
+
+From another version control system
+Many version control systems have the ability to export
+RCS files in the standard format.  If yours does,
+export the RCS files and then follow the above
+instructions.
+
+Failing that, probably your best bet is to write a
+script that will check out the files one revision at a
+time using the command line interface to the other
+system, and then check the revisions into CVS.
+The `sccs2rcs' script mentioned below may be a
+useful example to follow.
+
+From SCCS
+There is a script in the `contrib' directory of
+the CVS source distribution called `sccs2rcs'
+which converts SCCS files to RCS files.
+Note: you must run it on a machine which has both
+SCCS and RCS installed, and like everything
+else in contrib it is unsupported (your mileage may
+vary).
+
+From PVCS
+There is a script in the `contrib' directory of
+the CVS source distribution called `pvcs_to_rcs'
+which converts PVCS archives to RCS files.
+You must run it on a machine which has both
+PVCS and RCS installed, and like everything
+else in contrib it is unsupported (your mileage may
+vary).  See the comments in the script for details.
+
+3.1.3 Creating a directory tree from scratch
+--------------------------------------------
+
+For a new project, the easiest thing to do is probably
+to create an empty directory structure, like this:
+
+$ mkdir tc
+$ mkdir tc/man
+$ mkdir tc/testing
+
+After that, you use the import command to create
+the corresponding (empty) directory structure inside
+the repository:
+
+$ cd tc
+$ cvs import -m "Created directory structure" yoyodyne/dir yoyo start
+
+Then, use add to add files (and new directories)
+as they appear.
+
+Check that the permissions CVS sets on the
+directories inside $CVSROOT are reasonable.
+
+3.2 Defining the module
+=======================
+
+The next step is to define the module in the
+`modules' file.  This is not strictly necessary,
+but modules can be convenient in grouping together
+related files and directories.
+
+In simple cases these steps are sufficient to define a module.
+
+1. Get a working copy of the modules file.
+
+$ cvs checkout CVSROOT/modules
+$ cd CVSROOT
+
+2. Edit the file and insert a line that defines the module.  See Intro administrative files, for an introduction.  See modules, for a full
+description of the modules file.  You can use the
+following line to define the module `tc':
+
+tc   yoyodyne/tc
+
+3. Commit your changes to the modules file.
+
+$ cvs commit -m "Added the tc module." modules
+
+4. Release the modules module.
+
+$ cd ..
+$ cvs release -d CVSROOT
+

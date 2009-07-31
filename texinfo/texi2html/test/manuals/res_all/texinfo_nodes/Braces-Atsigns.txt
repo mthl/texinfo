@@ -1,0 +1,14 @@
+13.1 Inserting @ and Braces
+===========================
+
+`@' and curly braces are special characters in Texinfo.  To insert
+these characters so they appear in text, you must put an `@' in
+front of these characters to prevent Texinfo from misinterpreting
+them.
+
+Do not put braces after any of these commands; they are not
+necessary.
+
+* Inserting An Atsign::         How to insert `@'.
+* Inserting Braces::            How to insert `{' and `}'.
+

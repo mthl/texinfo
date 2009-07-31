@@ -1,0 +1,25 @@
+5.8 @unnumberedsec, @appendixsec, @heading
+==========================================
+
+The @unnumberedsec, @appendixsec, and @heading
+commands are, respectively, the unnumbered, appendix-like, and
+heading-like equivalents of the @section command.
+(See @section.)
+
+@unnumberedsec
+The @unnumberedsec command may be used within an
+unnumbered chapter or within a regular chapter or appendix to
+provide an unnumbered section.
+
+@appendixsec
+@appendixsection
+@appendixsection is a longer spelling of the
+@appendixsec command; the two are synonymous.
+
+Conventionally, the @appendixsec or @appendixsection
+command is used only within appendices.
+
+@heading
+You may use the @heading command anywhere you wish for a
+section-style heading that will not appear in the table of contents.
+

@@ -1,0 +1,32 @@
+11.3.2 @itemx
+-------------
+
+Use the @itemx command inside a table when you have two or more
+first column entries for the same item, each of which should appear on a
+line of its own.  Use @itemx for all but the first entry;
+@itemx should always follow an @item command.  The
+@itemx command works exactly like @item except that it
+does not generate extra vertical space above the first column text.
+
+For example,
+
+@table @code
+@item upcase
+@itemx downcase
+These two functions accept a character or a string as
+argument, and return the corresponding upper case (lower
+case) character or string.
+@end table
+
+This produces:
+
+upcase
+downcase
+These two functions accept a character or a string as
+argument, and return the corresponding upper case (lower
+case) character or string.
+
+(Note also that this example illustrates multi-line supporting text in
+a two-column table.)
+
+

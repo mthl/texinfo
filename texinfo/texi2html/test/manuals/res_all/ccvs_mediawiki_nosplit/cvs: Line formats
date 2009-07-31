@@ -1,0 +1,150 @@
+<div id="Line-formats"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Line group formats#Line-group-formats  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff examples#diff-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff options#diff-options  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Line-formats-1"></div>
+===== Line formats =====
+
+<p>Line formats control how each line taken from an input file is
+output as part of a line group in if-then-else format.
+</p>
+<p>For example, the following command outputs text with a one-column
+change indicator to the left of the text.  The first column of output
+is &lsquo;<samp>-</samp>&rsquo; for deleted lines, &lsquo;<samp>|</samp>&rsquo; for added lines, and a space
+for unchanged lines.  The formats contain newline characters where
+newlines are desired on output.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
+   --old-line-format='-%l
+' \
+   --new-line-format='|%l
+' \
+   --unchanged-line-format=' %l
+' \
+   myfile
+</nowiki></pre></td></tr></table>
+
+<p>To specify a line format, use one of the following options.  You should
+quote <var>format</var>, since it often contains shell metacharacters.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>--old-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>formats lines just from the first file.
+</p>
+</dd>
+<dt>&lsquo;<samp>--new-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>formats lines just from the second file.
+</p>
+</dd>
+<dt>&lsquo;<samp>--unchanged-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>formats lines common to both files.
+</p>
+</dd>
+<dt>&lsquo;<samp>--line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>formats all lines; in effect, it sets all three above options simultaneously.
+</p></dd>
+</dl>
+
+<p>In a line format, ordinary characters represent themselves;
+conversion specifications start with &lsquo;<samp>%</samp>&rsquo; and have one of the
+following forms.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>%l</samp>&rsquo;</dt>
+<dd><p>stands for the contents of the line, not counting its trailing
+newline (if any).  This format ignores whether the line is incomplete.
+</p>
+</dd>
+<dt>&lsquo;<samp>%L</samp>&rsquo;</dt>
+<dd><p>stands for the contents of the line, including its trailing newline
+(if any).  If a line is incomplete, this format preserves its
+incompleteness.
+</p>
+</dd>
+<dt>&lsquo;<samp>%%</samp>&rsquo;</dt>
+<dd><p>stands for &lsquo;<samp>%</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>%c'<var>C</var>'</samp>&rsquo;</dt>
+<dd><p>where <var>C</var> is a single character, stands for <var>C</var>.
+<var>C</var> may not be a backslash or an apostrophe.
+For example, &lsquo;<samp>%c':'</samp>&rsquo; stands for a colon.
+</p>
+</dd>
+<dt>&lsquo;<samp>%c'\<var>O</var>'</samp>&rsquo;</dt>
+<dd><p>where <var>O</var> is a string of 1, 2, or 3 octal digits,
+stands for the character with octal code <var>O</var>.
+For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
+</p>
+</dd>
+<dt>&lsquo;<samp><var>F</var>n</samp>&rsquo;</dt>
+<dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
+stands for the line number formatted with <var>F</var>.
+For example, &lsquo;<samp>%.5dn</samp>&rsquo; prints the line number using the
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section [cvs: Line group formats#Line-group-formats Line group formats], for
+more about printf conversion specifications.
+</p>
+</dd>
+</dl>
+
+<p>The default line format is &lsquo;<samp>%l</samp>&rsquo; followed by a newline character.
+</p>
+<p>If the input contains tab characters and it is important that they line
+up on output, you should ensure that &lsquo;<samp>%l</samp>&rsquo; or &lsquo;<samp>%L</samp>&rsquo; in a line
+format is just after a tab stop (e.g. by preceding &lsquo;<samp>%l</samp>&rsquo; or
+&lsquo;<samp>%L</samp>&rsquo; with a tab character), or you should use the &lsquo;<samp>-t</samp>&rsquo; or
+&lsquo;<samp>--expand-tabs</samp>&rsquo; option.
+</p>
+<p>Taken together, the line and line group formats let you specify many
+different formats.  For example, the following command uses a format
+similar to <code>diff</code>&rsquo;s normal format.  You can tailor this command
+to get fine control over <code>diff</code>&rsquo;s output.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
+   --old-line-format='&lt; %l
+' \
+   --new-line-format='&gt; %l
+' \
+   --old-group-format='%df%(f=l?:,%dl)d%dE
+%&lt;' \
+   --new-group-format='%dea%dF%(F=L?:,%dL)
+%&gt;' \
+   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
+%&lt;---
+%&gt;' \
+   --unchanged-group-format='' \
+   myfile
+</nowiki></pre></td></tr></table>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Line group formats#Line-group-formats  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff examples#diff-examples  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff options#diff-options  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,0 +1,87 @@
+3 Moving the Cursor
+*******************
+
+Many people find that reading screens of text page by page is made
+easier when one is able to indicate particular pieces of text with some
+kind of pointing device.  Since this is the case, GNU Info (both the
+Emacs and standalone versions) have several commands which allow you to
+move the cursor about the screen.  The notation used in this manual to
+describe keystrokes is identical to the notation used within the Emacs
+manual, and the GNU Readline manual.  See (emacs)Characters section `Character Conventions' in the GNU Emacs Manual, if you are unfamiliar with the
+notation(4).
+
+The following table lists the basic cursor movement commands in Info.
+Each entry consists of the key sequence you should type to execute the
+cursor movement, the M-x(5) command name (displayed in parentheses), and a short
+description of what the command does.  All of the cursor motion commands
+can take a numeric argument (see to find out how to supply them.  With a
+numeric argument, the motion commands are simply executed that
+many times; for example, a numeric argument of 4 given to
+next-line causes the cursor to move down 4 lines.  With a
+negative numeric argument, the motion is reversed; an argument of -4
+given to the next-line command would cause the cursor to move
+up 4 lines.
+
+<C-n> (next-line)
+<DOWN> (an arrow key)
+Move the cursor down to the next line.
+
+<C-p> (prev-line)
+<UP> (an arrow key)
+Move the cursor up to the previous line.
+
+<C-a> (beginning-of-line)
+<Home> (on DOS/Windows only)
+Move the cursor to the start of the current line.
+
+<C-e> (end-of-line)
+<End> (on DOS/Windows only)
+Move the cursor to the end of the current line.
+
+<C-f> (forward-char)
+<RIGHT> (an arrow key)
+Move the cursor forward a character.
+
+<C-b> (backward-char)
+<LEFT> (an arrow key)
+Move the cursor backward a character.
+
+<M-f> (forward-word)
+C-<RIGHT> (on DOS/Windows only)
+Move the cursor forward a word.
+
+<M-b> (backward-word)
+C-<LEFT> (on DOS/Windows only)
+Move the cursor backward a word.
+
+<M-<> (beginning-of-node)
+<C-<Home>> (on DOS/Windows only)
+<b>
+<M-b>, vi-like operation
+Move the cursor to the start of the current node.
+
+<M->> (end-of-node)
+<C-<End>> (on DOS/Windows only)
+<e>
+Move the cursor to the end of the current node.
+
+<M-r> (move-to-window-line)
+Move the cursor to a specific line of the window.  Without a numeric
+argument, M-r moves the cursor to the start of the line in the
+center of the window.  With a numeric argument of n, M-r
+moves the cursor to the start of the nth line in the window.
+
+
+(4)
+
+Here's a short summary.  C-x means press the CTRL key
+and the key x.  M-x means press the META key and
+the key x.  On many terminals th META key is known as the
+ALT key.  SPC is the space bar.  The other keys are usually
+called by the names imprinted on them.
+
+(5)
+M-x is also a command; it
+invokes execute-extended-command.  See (emacs)M-x section `Executing an extended command' in the GNU Emacs Manual, for more detailed
+information.
+

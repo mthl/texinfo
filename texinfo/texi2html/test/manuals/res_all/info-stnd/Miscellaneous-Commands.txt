@@ -1,0 +1,114 @@
+10 Miscellaneous Commands
+*************************
+
+GNU Info contains several commands which self-document GNU Info:
+
+M-x describe-command
+Read the name of an Info command in the echo area and then display a
+brief description of what that command does.
+
+M-x describe-key
+Read a key sequence in the echo area, and then display the name and
+documentation of the Info command that the key sequence invokes.
+
+M-x describe-variable
+Read the name of a variable in the echo area and then display a brief
+description of what the variable affects.
+
+M-x where-is
+Read the name of an Info command in the echo area, and then display
+a key sequence which can be typed in order to invoke that command.
+
+<C-h> (get-help-window)
+<?>
+<F1> (on DOS/Windows only)
+h, vi-like operation
+Create (or Move into) the window displaying *Help*, and place
+a node containing a quick reference card into it.  This window displays
+the most concise information about GNU Info available.
+
+<h> (get-info-help-node)
+<M-h>, vi-like operation
+Try hard to visit the node (info)Help.  The Info file
+`info.texi' distributed with GNU Info contains this node.  Of
+course, the file must first be processed with makeinfo, and then
+placed into the location of your Info directory.
+
+Here are the commands for creating a numeric argument:
+
+<C-u> (universal-argument)
+Start (or multiply by 4) the current numeric argument.  `C-u' is
+a good way to give a small numeric argument to cursor movement or
+scrolling commands; `C-u C-v' scrolls the screen 4 lines, while
+`C-u C-u C-n' moves the cursor down 16 lines.  `C-u' followed
+by digit keys sets the numeric argument to the number thus typed:
+C-u 1 2 0 sets the argument to 120.
+
+<M-1> (add-digit-to-numeric-arg)
+<1>, vi-like operation
+<M-2> ... <M-9>
+<2> ... <9>, vi-like operation
+<M-0>
+<0>, vi-like operation
+Add the digit value of the invoking key to the current numeric
+argument.  Once Info is reading a numeric argument, you may just type
+the digits of the argument, without the Meta prefix.  For example, you
+might give `C-l' a numeric argument of 32 by typing:
+
+C-u 3 2 C-l
+
+or
+
+M-3 2 C-l
+
+<M--> (add-digit-to-numeric-arg
+<->
+To make a negative argument, type -.  Typing - alone makes a
+negative argument with a value of -1.  If you continue to type digit or
+Meta-digit keys after -, the result is a negative number produced
+by those digits.
+
+- doesn't work when you type in the echo area, because you need to
+be able to insert the `-' character itself; use M-- instead,
+if you need to specify negative arguments in the echo area.
+
+`C-g' is used to abort the reading of a multi-character key
+sequence, to cancel lengthy operations (such as multi-file searches) and
+to cancel reading input in the echo area.
+
+<C-g> (abort-key)
+<C-u>, vi-like operation
+Cancel current operation.
+
+The `q' command of Info simply quits running Info.  Under
+`--vi-keys' (see --vi-keys), you can also exit with `:q'
+or `ZZ'.
+
+<q> (quit)
+C-x C-c
+:q, vi-like operation
+ZZ, vi-like operation
+Exit GNU Info.
+
+If the operating system tells GNU Info that the screen is 60 lines tall,
+and it is actually only 40 lines tall, here is a way to tell Info that
+the operating system is correct.
+
+M-x set-screen-height
+Read a height value in the echo area and set the height of the
+displayed screen to that value.
+
+On MS-DOS/MS-Windows, this command actually tries to change the
+dimensions of the visible screen to the value you type in the echo
+area.
+
+Finally, Info provides a convenient way to display footnotes which might
+be associated with the current node that you are viewing:
+
+<ESC C-f> (show-footnotes)
+Show the footnotes (if any) associated with the current node in another
+window.  You can have Info automatically display the footnotes
+associated with a node when the node is selected by setting the variable
+automatic-footnotes.  See automatic-footnotes.
+
+

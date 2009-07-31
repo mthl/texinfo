@@ -1,0 +1,32 @@
+3.4 Title and Copyright Pages
+=============================
+
+In hard copy output, the manual's name and author are usually printed on
+a title page.  Copyright information is usually printed on the back of
+the title page.
+
+The title and copyright pages appear in the printed manual, but not in
+the Info file.  Because of this, it is possible to use several slightly
+obscure TeX typesetting commands that cannot be used in an Info file.
+In addition, this part of the beginning of a Texinfo file contains the
+text of the copying permissions that appears in the printed manual.
+
+You may wish to include titlepage-like information for plain text
+output.  Simply place any such leading material between
+@ifplaintext and @end ifplaintext; makeinfo
+includes this when writing plain text (`--no-headers'), along with
+an @insertcopying.
+
+* titlepage::                   Create a title for the printed document.
+* titlefont center sp::         The @titlefont, @center,
+                                  and @sp commands.
+* title subtitle author::       The @title, @subtitle,
+                                  and @author commands.
+* Copyright::                   How to write the copyright notice and
+                                  include copying permissions.
+* end titlepage::               Turn on page headings after the title and
+                                  copyright pages.
+* headings on off::             An option for turning headings on and off
+                                  and double or single sided printing.
+
+

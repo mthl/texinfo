@@ -1,0 +1,358 @@
+<div id="diff-options"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: diff--Show differences between revisions#diff  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Line group formats#Line-group-formats  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff--Show differences between revisions#diff  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="diff-options-1"></div>
+==== diff options ====
+
+<p>These standard options are supported by <code>diff</code>
+(see section [cvs: Common command options#Common-options Common command options], for a complete description of
+them):
+</p>
+<dl compact="compact">
+<dt><code>-D <var>date</var></code></dt>
+<dd><p>Use the most recent revision no later than <var>date</var>.
+See &lsquo;<samp>-r</samp>&rsquo; for how this affects the comparison.
+</p>
+</dd>
+<dt><code>-k <var>kflag</var></code></dt>
+<dd><p>Process keywords according to <var>kflag</var>.  See
+[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Examine directories recursively.  This option is on by
+default.
+</p>
+</dd>
+<dt><code>-r <var>tag</var></code></dt>
+<dd><p>Compare with revision <var>tag</var>.  Zero, one or two
+&lsquo;<samp>-r</samp>&rsquo; options can be present.  With no &lsquo;<samp>-r</samp>&rsquo;
+option, the working file will be compared with the
+revision it was based on.  With one &lsquo;<samp>-r</samp>&rsquo;, that
+revision will be compared to your current working file.
+With two &lsquo;<samp>-r</samp>&rsquo; options those two revisions will be
+compared (and your working file will not affect the
+outcome in any way).
+</p>
+<p>One or both &lsquo;<samp>-r</samp>&rsquo; options can be replaced by a
+&lsquo;<samp>-D <var>date</var></samp>&rsquo; option, described above.
+</p></dd>
+</dl>
+
+<p>The following options specify the format of the
+output.  They have the same meaning as in GNU diff.
+Most options have two equivalent names, one of which is a single letter
+preceded by &lsquo;<samp>-</samp>&rsquo;, and the other of which is a long name preceded by
+&lsquo;<samp>--</samp>&rsquo;.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-<var>lines</var></samp>&rsquo;</dt>
+<dd><p>Show <var>lines</var> (an integer) lines of context.  This option does not
+specify an output format by itself; it has no effect unless it is
+combined with &lsquo;<samp>-c</samp>&rsquo; or &lsquo;<samp>-u</samp>&rsquo;.  This option is obsolete.  For proper
+operation, <code>patch</code> typically needs at least two lines of context.
+</p>
+</dd>
+<dt>&lsquo;<samp>-a</samp>&rsquo;</dt>
+<dd><p>Treat all files as text and compare them line-by-line, even if they
+do not seem to be text.
+</p>
+</dd>
+<dt>&lsquo;<samp>-b</samp>&rsquo;</dt>
+<dd><p>Ignore trailing white space and consider all other sequences of one or
+more white space characters to be equivalent.
+</p>
+</dd>
+<dt>&lsquo;<samp>-B</samp>&rsquo;</dt>
+<dd><p>Ignore changes that just insert or delete blank lines.
+</p>
+</dd>
+<dt>&lsquo;<samp>--binary</samp>&rsquo;</dt>
+<dd><p>Read and write data in binary mode.
+</p>
+</dd>
+<dt>&lsquo;<samp>--brief</samp>&rsquo;</dt>
+<dd><p>Report only whether the files differ, not the details of the
+differences.
+</p>
+</dd>
+<dt>&lsquo;<samp>-c</samp>&rsquo;</dt>
+<dd><p>Use the context output format.
+</p>
+</dd>
+<dt>&lsquo;<samp>-C <var>lines</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--context<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dd><p>Use the context output format, showing <var>lines</var> (an integer) lines of
+context, or three if <var>lines</var> is not given.
+For proper operation, <code>patch</code> typically needs at least two lines of
+context.
+</p>
+</dd>
+<dt>&lsquo;<samp>--changed-group-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a line group containing differing lines from
+both files in if-then-else format.  See section [cvs: Line group formats#Line-group-formats Line group formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
+<dd><p>Change the algorithm to perhaps find a smaller set of changes.  This makes
+<code>diff</code> slower (sometimes much slower).
+</p>
+</dd>
+<dt>&lsquo;<samp>-e</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--ed</samp>&rsquo;</dt>
+<dd><p>Make output that is a valid <code>ed</code> script.
+</p>
+</dd>
+<dt>&lsquo;<samp>--expand-tabs</samp>&rsquo;</dt>
+<dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
+in the input files.
+</p>
+</dd>
+<dt>&lsquo;<samp>-f</samp>&rsquo;</dt>
+<dd><p>Make output that looks vaguely like an <code>ed</code> script but has changes
+in the order they appear in the file.
+</p>
+</dd>
+<dt>&lsquo;<samp>-F <var>regexp</var></samp>&rsquo;</dt>
+<dd><p>In context and unified format, for each hunk of differences, show some
+of the last preceding line that matches <var>regexp</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>--forward-ed</samp>&rsquo;</dt>
+<dd><p>Make output that looks vaguely like an <code>ed</code> script but has changes
+in the order they appear in the file.
+</p>
+</dd>
+<dt>&lsquo;<samp>-H</samp>&rsquo;</dt>
+<dd><p>Use heuristics to speed handling of large files that have numerous
+scattered small changes.
+</p>
+</dd>
+<dt>&lsquo;<samp>--horizon-lines=<var>lines</var></samp>&rsquo;</dt>
+<dd><p>Do not discard the last <var>lines</var> lines of the common prefix
+and the first <var>lines</var> lines of the common suffix.
+</p>
+</dd>
+<dt>&lsquo;<samp>-i</samp>&rsquo;</dt>
+<dd><p>Ignore changes in case; consider upper- and lower-case letters
+equivalent.
+</p>
+</dd>
+<dt>&lsquo;<samp>-I <var>regexp</var></samp>&rsquo;</dt>
+<dd><p>Ignore changes that just insert or delete lines that match <var>regexp</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ifdef=<var>name</var></samp>&rsquo;</dt>
+<dd><p>Make merged if-then-else output using <var>name</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-all-space</samp>&rsquo;</dt>
+<dd><p>Ignore white space when comparing lines.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-blank-lines</samp>&rsquo;</dt>
+<dd><p>Ignore changes that just insert or delete blank lines.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-case</samp>&rsquo;</dt>
+<dd><p>Ignore changes in case; consider upper- and lower-case to be the same.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-matching-lines=<var>regexp</var></samp>&rsquo;</dt>
+<dd><p>Ignore changes that just insert or delete lines that match <var>regexp</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>--ignore-space-change</samp>&rsquo;</dt>
+<dd><p>Ignore trailing white space and consider all other sequences of one or
+more white space characters to be equivalent.
+</p>
+</dd>
+<dt>&lsquo;<samp>--initial-tab</samp>&rsquo;</dt>
+<dd><p>Output a tab rather than a space before the text of a line in normal or
+context format.  This causes the alignment of tabs in the line to look
+normal.
+</p>
+</dd>
+<dt>&lsquo;<samp>-L <var>label</var></samp>&rsquo;</dt>
+<dd><p>Use <var>label</var> instead of the file name in the context format
+and unified format headers.
+</p>
+</dd>
+<dt>&lsquo;<samp>--label=<var>label</var></samp>&rsquo;</dt>
+<dd><p>Use <var>label</var> instead of the file name in the context format
+and unified format headers.
+</p>
+</dd>
+<dt>&lsquo;<samp>--left-column</samp>&rsquo;</dt>
+<dd><p>Print only the left column of two common lines in side by side format.
+</p>
+</dd>
+<dt>&lsquo;<samp>--line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output all input lines in if-then-else format.
+See section [cvs: Line formats#Line-formats Line formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>--minimal</samp>&rsquo;</dt>
+<dd><p>Change the algorithm to perhaps find a smaller set of changes.  This
+makes <code>diff</code> slower (sometimes much slower).
+</p>
+</dd>
+<dt>&lsquo;<samp>-n</samp>&rsquo;</dt>
+<dd><p>Output RCS-format diffs; like &lsquo;<samp>-f</samp>&rsquo; except that each command
+specifies the number of lines affected.
+</p>
+</dd>
+<dt>&lsquo;<samp>-N</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--new-file</samp>&rsquo;</dt>
+<dd><p>In directory comparison, if a file is found in only one directory,
+treat it as present but empty in the other directory.
+</p>
+</dd>
+<dt>&lsquo;<samp>--new-group-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a group of lines taken from just the second
+file in if-then-else format.  See section [cvs: Line group formats#Line-group-formats Line group formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>--new-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a line taken from just the second file in
+if-then-else format.  See section [cvs: Line formats#Line-formats Line formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>--old-group-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a group of lines taken from just the first
+file in if-then-else format.  See section [cvs: Line group formats#Line-group-formats Line group formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>--old-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a line taken from just the first file in
+if-then-else format.  See section [cvs: Line formats#Line-formats Line formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
+<dd><p>Show which C function each change is in.
+</p>
+</dd>
+<dt>&lsquo;<samp>--rcs</samp>&rsquo;</dt>
+<dd><p>Output RCS-format diffs; like &lsquo;<samp>-f</samp>&rsquo; except that each command
+specifies the number of lines affected.
+</p>
+</dd>
+<dt>&lsquo;<samp>--report-identical-files</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>-s</samp>&rsquo;</dt>
+<dd><p>Report when two files are the same.
+</p>
+</dd>
+<dt>&lsquo;<samp>--show-c-function</samp>&rsquo;</dt>
+<dd><p>Show which C function each change is in.
+</p>
+</dd>
+<dt>&lsquo;<samp>--show-function-line=<var>regexp</var></samp>&rsquo;</dt>
+<dd><p>In context and unified format, for each hunk of differences, show some
+of the last preceding line that matches <var>regexp</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>--side-by-side</samp>&rsquo;</dt>
+<dd><p>Use the side by side output format.
+</p>
+</dd>
+<dt>&lsquo;<samp>--speed-large-files</samp>&rsquo;</dt>
+<dd><p>Use heuristics to speed handling of large files that have numerous
+scattered small changes.
+</p>
+</dd>
+<dt>&lsquo;<samp>--suppress-common-lines</samp>&rsquo;</dt>
+<dd><p>Do not print common lines in side by side format.
+</p>
+</dd>
+<dt>&lsquo;<samp>-t</samp>&rsquo;</dt>
+<dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
+in the input files.
+</p>
+</dd>
+<dt>&lsquo;<samp>-T</samp>&rsquo;</dt>
+<dd><p>Output a tab rather than a space before the text of a line in normal or
+context format.  This causes the alignment of tabs in the line to look
+normal.
+</p>
+</dd>
+<dt>&lsquo;<samp>--text</samp>&rsquo;</dt>
+<dd><p>Treat all files as text and compare them line-by-line, even if they
+do not appear to be text.
+</p>
+</dd>
+<dt>&lsquo;<samp>-u</samp>&rsquo;</dt>
+<dd><p>Use the unified output format.
+</p>
+</dd>
+<dt>&lsquo;<samp>--unchanged-group-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a group of common lines taken from both files
+in if-then-else format.  See section [cvs: Line group formats#Line-group-formats Line group formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>--unchanged-line-format=<var>format</var></samp>&rsquo;</dt>
+<dd><p>Use <var>format</var> to output a line common to both files in if-then-else
+format.  See section [cvs: Line formats#Line-formats Line formats].
+</p>
+</dd>
+<dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unified<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dd><p>Use the unified output format, showing <var>lines</var> (an integer) lines of
+context, or three if <var>lines</var> is not given.
+For proper operation, <code>patch</code> typically needs at least two lines of
+context.
+</p>
+</dd>
+<dt>&lsquo;<samp>-w</samp>&rsquo;</dt>
+<dd><p>Ignore white space when comparing lines.
+</p>
+</dd>
+<dt>&lsquo;<samp>-W <var>columns</var></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--width=<var>columns</var></samp>&rsquo;</dt>
+<dd><p>Use an output width of <var>columns</var> in side by side format.
+</p>
+</dd>
+<dt>&lsquo;<samp>-y</samp>&rsquo;</dt>
+<dd><p>Use the side by side output format.
+</p></dd>
+</dl>
+
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Line group formats#Line-group-formats  Line group formats]::<nowiki>          Line group formats
+</nowiki>&bull;[cvs: Line formats#Line-formats  Line formats]::<nowiki>                Line formats
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: diff--Show differences between revisions#diff  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Line group formats#Line-group-formats  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: diff--Show differences between revisions#diff  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

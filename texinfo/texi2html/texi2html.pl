@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.299 2009-07-30 09:54:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.300 2009-07-31 10:16:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -454,6 +454,7 @@ $print_frame
 $print_toc_frame
 $toc_body
 $contents
+$internal_links
 $shortcontents
 $titlepage
 $insertcopying
@@ -5758,8 +5759,6 @@ sub add_t2h_dependent_element ($$)
 
 my %files = ();   # keys are files. This is used to avoid reusing an already
                   # used file name
-my %empty_indices = (); # value is true for an index name key if the index 
-                        # is empty
 my %printed_indices = (); # value is true for an index name not empty and
                           # printed
 # This is a virtual element used to have the right hrefs for index entries
@@ -15165,8 +15164,6 @@ while(@input_files)
 
    %files = ();   # keys are files. This is used to avoid reusing an already
                   # used file name
-   %empty_indices = (); # value is true for an index name key if the index 
-                        # is empty
    %printed_indices = (); # value is true for an index name not empty and
                           # printed
    prepare_indices();
@@ -15214,8 +15211,14 @@ while(@input_files)
    {
       foreach my $entry (keys(%index_names))
       {
-         do_index_summary_file($entry, $docu_name) unless ($empty_indices{$entry});
+         do_index_summary_file($entry, $docu_name);
       }
+   }
+   if (defined($Texi2HTML::Config::INTERNAL_LINKS))
+   {
+      my $FH = open_out($Texi2HTML::Config::INTERNAL_LINKS);
+      &$Texi2HTML::Config::internal_links($FH, \@elements_list, \%indices);
+      close ($FH);
    }
    do_node_files() if ($Texi2HTML::Config::NODE_FILES);
 #l2h_FinishFromHtml() if ($Texi2HTML::Config::L2H);

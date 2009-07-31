@@ -1,0 +1,40 @@
+6.3.5 The First Node
+--------------------
+
+The first node of a Texinfo file is the Top node, except in an
+included file (see Include Files).  The Top node should contain a
+short summary, copying permissions, and a master menu.  See The Top Node, for more information on the Top node contents and examples.
+
+Here is a description of the node pointers to be used in the Top node:
+
+* The Top node (which must be named `top' or `Top') should have
+as its `Up' node the name of a node in another file, where there is a
+menu that leads to this file.  Specify the file name in parentheses.
+
+Usually, all Info files are installed in the same Info directory tree;
+in this case, use `(dir)' as the parent of the Top node; this is
+short for `(dir)top', and specifies the Top node in the `dir'
+file, which contains the main menu for the Info system as a whole. 
+
+* On the other hand, do not define the `Previous' node of the Top node to
+be `(dir)', as it causes confusing behavior for users: if you are
+in the Top node and hits <DEL> to go backwards, you wind up in the
+middle of the some other entry in the `dir' file, which has nothing
+to do with what you were reading.
+
+* The `Next' node of the Top node should be the first chapter in your
+document.
+
+
+See Installing an Info File, for more information about installing
+an Info file in the `info' directory.
+
+For concreteness, here is an example with explicit pointers (which you
+can maintain automatically with the texinfo mode commands):
+
+Or you can leave the pointers off entirely and let the tools implicitly
+define them.  This is recommended.  Thus:
+
+@node Top
+
+

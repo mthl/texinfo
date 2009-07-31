@@ -1,0 +1,79 @@
+8.2 Parts of a Cross Reference
+==============================
+
+A cross reference command requires only one argument, which is the
+name of the node to which it refers.  But a cross reference command
+may contain up to four additional arguments.  By using these
+arguments, you can provide a cross reference name for Info, a topic
+description or section title for the printed output, the name of a
+different Info file, and the name of a different printed
+manual.
+
+Here is a simple cross reference example:
+
+@xref{Node name}.
+
+which produces
+
+*Note Node name::.
+
+and
+
+See Section nnn [Node name], page ppp.
+
+Here is an example of a full five-part cross reference:
+
+@xref{Node name, Cross Reference Name, Particular Topic,
+info-file-name, A Printed Manual}, for details.
+
+which produces
+
+*Note Cross Reference Name: (info-file-name)Node name,
+for details.
+
+in Info and
+
+See section "Particular Topic" in A Printed Manual, for details.
+
+in a printed book.
+
+The five possible arguments for a cross reference are:
+
+1. The node or anchor name (required).  This is the location to which the
+cross reference takes you.  In a printed document, the location of the
+node provides the page reference only for references within the same
+document.
+
+2. The cross reference name for the Info reference, if it is to be different
+from the node name.  If you include this argument, it becomes
+the first part of the cross reference.  It is usually omitted.
+
+3. A topic description or section name.  Often, this is the title of the
+section.  This is used as the name of the reference in the printed
+manual.  If omitted, the node name is used.
+
+4. The name of the Info file in which the reference is located, if it is
+different from the current file.  You need not include any `.info'
+suffix on the file name, since Info readers try appending it
+automatically.
+
+5. The name of a printed manual from a different Texinfo file.
+
+The template for a full five argument cross reference looks like
+this:
+
+@xref{node-name, cross-reference-name, title-or-topic,
+info-file-name, printed-manual-title}.
+
+Cross references with one, two, three, four, and five arguments are
+described separately following the description of @xref.
+
+Write a node name in a cross reference in exactly the same way as in
+the @node line, including the same capitalization; otherwise, the
+formatters may not find the reference.
+
+You can write cross reference commands within a paragraph, but note
+how Info and TeX format the output of each of the various commands:
+write @xref at the beginning of a sentence; write
+@pxref only within parentheses, and so on.
+

@@ -1,0 +1,132 @@
+7 Running Commands by Name
+**************************
+
+  The Emacs commands that are used often or that must be quick to type are
+bound to keys--short sequences of characters--for convenient use.  Other
+Emacs commands that are used more rarely are not bound to keys; to run
+them, you must refer to them by name.
+
+  A command name consists, by convention, of one or more words,
+separated by hyphens: for example, auto-fill-mode or
+manual-entry.  The use of English words makes the command name
+easier to remember than a key made up of obscure characters, even though
+it results in more characters to type.  You can run any command by name,
+even if it can be run by keys as well. 
+
+ To run a command by name, start with M-x, then type the
+command name, and finish with <RET>.  M-x uses the minibuffer
+to read the command name.  <RET> exits the minibuffer and runs the
+command.
+
+  Emacs uses the minibuffer for reading input for many different purposes;
+on this occasion, the string `M-x' is displayed at the beginning of
+the minibuffer as a prompt to remind you that your input should be
+the name of a command to be run.  See Minibuffer, for full information
+on the features of the minibuffer.
+
+  You can use completion to enter a command name.  For example, to
+invoke the command forward-char, type:
+
+M-x forward-char <RET>
+or
+M-x fo <TAB> c <RET>
+
+After you type in M-x fo TAB emacs will give you a possible list of 
+completions from which you can choose. Note that forward-char is the 
+same command that you invoke with the key C-f.  You can call any 
+command (interactively callable function) defined in Emacs by its name 
+using M-x regardless of whether or not any keys are bound to it.
+
+  If you type C-g while Emacs reads the command name, you cancel
+the M-x command and get out of the minibuffer, ending up at top level.
+
+  To pass a numeric argument to a command you are invoking with
+M-x, specify the numeric argument before the M-x.  M-x
+passes the argument along to the function that it calls.  The argument
+value appears in the prompt while the command name is being read.
+
+You can use the command M-x interactive to specify a way of
+parsing arguments for interactive use of a function.  For example, write:
+
+  (defun foo (arg) "Doc string" (interactive "p") ...use arg...)
+
+to make arg be the prefix argument when foo is called as a
+command.  The call to interactive is actually a declaration
+rather than a function; it tells call-interactively how to read
+arguments to pass to the function.  When actually called, interactive
+returns nil.
+
+The argument of interactive is usually a string containing a code
+letter followed by a prompt.  Some code letters do not use I/O to get
+the argument and do not need prompts.  To prompt for multiple arguments,
+you must provide a code letter, its prompt, a newline, and another code
+letter, and so forth.  If the argument is not a string, it is evaluated 
+to get a list of arguments to pass to the function.  If you do not provide an
+argument to interactive, no arguments are passed when calling
+interactively.
+
+Available code letters are:
+
+a
+Function name: symbol with a function definition
+b
+Name of existing buffer
+B
+Name of buffer, possibly nonexistent
+c
+Character
+C
+Command name: symbol with interactive function definition
+d
+Value of point as number (does not do I/O)
+D
+Directory name
+e
+Last mouse event
+f
+Existing file name
+F
+Possibly nonexistent file name
+k
+Key sequence (string)
+m
+Value of mark as number (does not do I/O)
+n
+Number read using minibuffer
+N
+Prefix arg converted to number, or if none, do like code n
+p
+Prefix arg converted to number (does not do I/O)
+P
+Prefix arg in raw form (does not do I/O)
+r
+Region: point and mark as two numeric arguments, smallest first (does
+not do I/O)
+s
+Any string
+S
+Any symbol
+v
+Variable name: symbol that is user-variable-p
+x
+Lisp expression read but not evaluated
+X
+Lisp expression read and evaluated
+
+In addition, if the string begins with `*', an error is
+signaled if the buffer is read-only.  This happens before reading any
+arguments.  If the string begins with `@', the window the mouse is
+over is selected before anything else is done.  You may use both
+`@' and `*'; they are processed in the order that they appear.
+
+Normally, when describing a command that is run by name, we omit the
+<RET> that is needed to terminate the name.  Thus we may refer to
+M-x auto-fill-mode rather than M-x auto-fill-mode <RET>.
+We mention the <RET> only when it is necessary to emphasize its
+presence, for example, when describing a sequence of input that contains
+a command name and arguments that follow it.
+
+  M-x is defined to run the command execute-extended-command,
+which is responsible for reading the name of another command and invoking
+it.
+

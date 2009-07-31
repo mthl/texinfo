@@ -1,0 +1,346 @@
+<div id="Starting-a-new-project"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: The Repository#Server-temporary-directory  &lt; ]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Starting-a-project-with-CVS"></div>
+== Starting a project with CVS ==
+<div id="index-Starting-a-project-with-CVS"></div>
+<div id="index-Creating-a-project"></div>
+
+<p>Because renaming files and moving them between
+directories is somewhat inconvenient, the first thing
+you do when you start a new project should be to think
+through your file organization.  It is not impossible
+to rename or move files, but it does increase the
+potential for confusion and <small>CVS</small> does have some
+quirks particularly in the area of renaming
+directories.  See section [cvs: Adding, removing, and renaming files and directories#Moving-files Moving and renaming files].
+</p>
+<p>What to do next depends on the situation at hand.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-up-the-files| Setting up the files]]::<nowiki>        Getting the files into the repository
+</nowiki>&bull;[[#Defining-the-module| Defining the module]]::<nowiki>         How to make a module of the files
+</nowiki></pre>
+<hr size="6">
+<div id="Setting-up-the-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Setting-up-the-files-1"></div>
+=== Setting up the files ===
+
+<p>The first step is to create the files inside the repository.  This can
+be done in a couple of different ways.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#From-files| From files]]::<nowiki>                  This method is useful with old projects
+                                where files already exists.
+</nowiki>&bull;[[#From-other-version-control-systems| From other version control systems]]::<nowiki>  Old projects where you want to
+                                        preserve history from another system.
+</nowiki>&bull;[[#From-scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
+</nowiki></pre>
+<hr size="6">
+<div id="From-files"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Creating-a-directory-tree-from-a-number-of-files"></div>
+==== Creating a directory tree from a number of files ====
+<div id="index-Importing-files"></div>
+
+<p>When you begin using <small>CVS</small>, you will probably already have several
+projects that can be
+put under <small>CVS</small> control.  In these cases the easiest way is to use the
+<code>import</code> command.  An example is probably the easiest way to
+explain how to use it.  If the files you want to install in
+<small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
+repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd <var>wdir</var>
+$ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
+</nowiki></pre></td></tr></table>
+
+<p>Unless you supply a log message with the &lsquo;<samp>-m</samp>&rsquo;
+flag, <small>CVS</small> starts an editor and prompts for a
+message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
+and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
+no purpose in this context, but since <small>CVS</small> requires
+them they must be present.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+more information about them.
+</p>
+<p>You can now verify that it worked, and remove your
+original source directory.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
+$ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman">Explanation below</span>
+$ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
+$ rm -r <var>wdir</var>
+</nowiki></pre></td></tr></table>
+
+<p>Erasing the original sources is a good idea, to make sure that you do
+not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
+Of course, it would be wise to make sure that you have
+a backup of the sources before you remove them.
+</p>
+<p>The <code>checkout</code> command can either take a module
+name as argument (as it has done in all previous
+examples) or a path name relative to <code>$CVSROOT</code>,
+as it did in the example above.
+</p>
+<p>It is a good idea to check that the permissions
+<small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
+are reasonable, and that they belong to the proper
+groups.  See section [cvs: The Repository#File-permissions File permissions].
+</p>
+<p>If some of the files you want to import are binary, you
+may want to use the wrappers features to specify which
+files are binary and which are not.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+</p>
+<hr size="6">
+<div id="From-other-version-control-systems"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Creating-Files-From-Other-Version-Control-Systems"></div>
+==== Creating Files From Other Version Control Systems ====
+<div id="index-Importing-files_002c-from-other-version-control-systems"></div>
+
+<p>If you have a project which you are maintaining with
+another version control system, such as <small>RCS</small>, you
+may wish to put the files from that project into
+<small>CVS</small>, and preserve the revision history of the
+files.
+</p>
+<dl compact="compact">
+<dd><div id="index-RCS_002c-importing-files-from"></div>
+</dd>
+<dt>From RCS</dt>
+<dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
+files&mdash;usually a file named &lsquo;<tt>foo.c</tt>&rsquo; will have its
+<small>RCS</small> file in &lsquo;<tt>RCS/foo.c,v</tt>&rsquo; (but it could be
+other places; consult the <small>RCS</small> documentation for
+details).  Then create the appropriate directories in
+<small>CVS</small> if they do not already exist.  Then copy the
+files into the appropriate directories in the <small>CVS</small>
+repository (the name in the repository must be the name
+of the source file with &lsquo;<samp>,v</samp>&rsquo; added; the files go
+directly in the appropriate directory of the repository,
+not in an &lsquo;<tt>RCS</tt>&rsquo; subdirectory).  This is one of the
+few times when it is a good idea to access the <small>CVS</small>
+repository directly, rather than using <small>CVS</small>
+commands.  Then you are ready to check out a new
+working directory.
+</p>
+<p>The <small>RCS</small> file should not be locked when you move it
+into <small>CVS</small>; if it is, <small>CVS</small> will have trouble
+letting you operate on it.
+</p>
+</dd>
+<dt>From another version control system</dt>
+<dd><p>Many version control systems have the ability to export
+<small>RCS</small> files in the standard format.  If yours does,
+export the <small>RCS</small> files and then follow the above
+instructions.
+</p>
+<p>Failing that, probably your best bet is to write a
+script that will check out the files one revision at a
+time using the command line interface to the other
+system, and then check the revisions into <small>CVS</small>.
+The &lsquo;<tt>sccs2rcs</tt>&rsquo; script mentioned below may be a
+useful example to follow.
+</p>
+<div id="index-SCCS_002c-importing-files-from"></div>
+</dd>
+<dt>From SCCS</dt>
+<dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
+the <small>CVS</small> source distribution called &lsquo;<tt>sccs2rcs</tt>&rsquo;
+which converts <small>SCCS</small> files to <small>RCS</small> files.
+Note: you must run it on a machine which has both
+<small>SCCS</small> and <small>RCS</small> installed, and like everything
+else in contrib it is unsupported (your mileage may
+vary).
+</p>
+<div id="index-PVCS_002c-importing-files-from"></div>
+</dd>
+<dt>From PVCS</dt>
+<dd><p>There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of
+the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo;
+which converts <small>PVCS</small> archives to <small>RCS</small> files.
+You must run it on a machine which has both
+<small>PVCS</small> and <small>RCS</small> installed, and like everything
+else in contrib it is unsupported (your mileage may
+vary).  See the comments in the script for details.
+</p></dd>
+</dl>
+
+<hr size="6">
+<div id="From-scratch"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Creating-a-directory-tree-from-scratch"></div>
+==== Creating a directory tree from scratch ====
+
+<p>For a new project, the easiest thing to do is probably
+to create an empty directory structure, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ mkdir tc
+$ mkdir tc/man
+$ mkdir tc/testing
+</nowiki></pre></td></tr></table>
+
+<p>After that, you use the <code>import</code> command to create
+the corresponding (empty) directory structure inside
+the repository:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
+$ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
+</nowiki></pre></td></tr></table>
+
+<p>Then, use <code>add</code> to add files (and new directories)
+as they appear.
+</p>
+<p>Check that the permissions <small>CVS</small> sets on the
+directories inside <code>$CVSROOT</code> are reasonable.
+</p>
+<hr size="6">
+<div id="Defining-the-module"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Defining-the-module-1"></div>
+=== Defining the module ===
+<div id="index-Defining-a-module"></div>
+<div id="index-Editing-the-modules-file"></div>
+<div id="index-Module_002c-defining"></div>
+<div id="index-Modules-file_002c-changing"></div>
+
+<p>The next step is to define the module in the
+&lsquo;<tt>modules</tt>&rsquo; file.  This is not strictly necessary,
+but modules can be convenient in grouping together
+related files and directories.
+</p>
+<p>In simple cases these steps are sufficient to define a module.
+</p>
+<ol>
+<li>
+Get a working copy of the modules file.
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout CVSROOT/modules
+$ cd CVSROOT
+</nowiki></pre></td></tr></table>
+
+</li><li>
+Edit the file and insert a line that defines the module.  See section [cvs: The Repository#Intro-administrative-files The administrative files], for an introduction.  See section [cvs: Reference manual for Administrative files#modules The modules file], for a full
+description of the modules file.  You can use the
+following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>tc   yoyodyne/tc
+</nowiki></pre></td></tr></table>
+
+</li><li>
+Commit your changes to the modules file.
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added the tc module.&quot; modules
+</nowiki></pre></td></tr></table>
+
+</li><li>
+Release the modules module.
+
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
+$ cvs release -d CVSROOT
+</nowiki></pre></td></tr></table>
+</li></ol>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

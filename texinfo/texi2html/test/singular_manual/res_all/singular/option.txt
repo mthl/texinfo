@@ -1,0 +1,212 @@
+5.1.89 option
+-------------
+Syntax:
+option ()
+Type:
+string
+Purpose:
+lists all defined options.
+
+
+Syntax:
+option ( option_name )
+Type:
+none
+Purpose:
+sets an option.
+Note:
+To disable an option, use the prefix no.
+
+
+Syntax:
+option ( get )
+Type:
+intvec
+Purpose:
+dumps the state of all options to an intvec.
+
+
+Syntax:
+option ( set, intvec_expression )
+Type:
+none
+Purpose:
+restores the state of all options from an intvec (produced by
+option(get)).
+
+Values:
+The following options are used to manipulate the behavior of
+computations and act like boolean switches. Use the prefix no to
+disable an option. Notice that some options are ring dependent and reset
+to their default values on a change of the current basering.
+none
+turns off all options (including the prompt option).
+returnSB
+the functions syz, intersect, quotient,
+modulo return a standard base instead of a generating set if
+returnSB is set. This option should not be used for lift.
+fastHC
+tries to the find the highest corner of the staircase (HC) as fast as
+possible during a standard basis computation (only used for local
+orderings).
+intStrategy
+avoids division of coefficients during standard basis
+computations. This option is ring dependent. By default, it is set for
+rings with characteristic 0 and not set for all other rings.
+oldStd
+uses a more lazy approach in std computations,
+which was used in Singular version before 2-0
+(and which may lead to faster or slower computations, depending on the example)
+minRes
+special (additional) minimizing during computations (res, mres),
+
+assumes homogeneous case and degree-compatible ordering.
+notRegularity
+disables the regularity bound for res and mres (see
+regularity).
+notSugar
+disables the sugar strategy during standard basis computation.
+
+notBuckets
+disables the bucket representation of polynomials during standard basis
+computations. This option usually decreases the memory usage but
+increases the computation time. It should only be set for
+memory-critical standard basis computations.
+prot
+shows protocol information indicating the
+progress during the following computations:
+facstd,
+fglm,
+groebner,
+lres,
+mres,
+minres,
+mstd,
+res,
+sres,
+std,
+stdfglm,
+stdhilb,
+syz.
+See below for more details.
+redSB
+computes a reduced standard basis in any standard basis computation.
+redTail
+reduction of the tails of polynomials during standard basis
+computations. This option is ring dependent. By default, it is set for
+rings with global degree orderings and not set for all other rings.
+redThrough
+for inhomogeneous input, polynomial reductions during standard basis
+computations are never postponed, but always finished through. This option
+is ring   dependent. By default, it is set for rings with global degree
+orderings and not set for all other rings.
+sugarCrit
+uses criteria similar to the homogeneous case to keep more useless pairs.
+weightM
+automatically computes suitable weights for the weighted ecart and the
+weighted sugar method.
+
+
+The following options, which also control computations, are special,
+since they are not manipulated by the option command but by a
+direct assignment of a value. Reset the option by assigning the value 0;
+the command option(none) will not reset them! If there is a
+non-zero value assigned, the command option() prints the option.
+multBound
+a multiplicity bound is set (see multBound).
+degBound
+a degree bound is set (see degBound).
+
+
+The last set of options controls the output of SINGULAR:
+Imap
+shows the mapping of variables with the fetch and imap commands.
+loadLib
+shows loading of libraries (set by default).
+debugLib
+warns about syntax errors during loading of libraries.
+loadProc
+shows loading of procedures from libraries.
+mem
+shows memory usage in square brackets (see memory).
+prompt
+shows prompt (>, resp. .) if ready for input (default).
+reading
+shows the number of characters read from a file.
+redefine
+warns about variable redefinitions (set by default).
+usage
+shows correct usage in error messages (set by default).
+Example:
+  option(prot);
+  option();
+==> //options: prot redefine usage prompt
+  option(notSugar);
+  option();
+==> //options: prot notSugar redefine usage prompt
+  option(noprot);
+  option();
+==> //options: notSugar redefine usage prompt
+  option(none);
+  option();
+==> //options: none
+  ring r=0,x,dp;
+  degBound=22;
+  option();
+==> //options: degBound redTail redThrough intStrategy
+  intvec i=option(get);
+  option(none);
+  option(set,i);
+  option();
+==> //options: degBound redTail redThrough intStrategy
+
+
+The output reported on option(prot) has the following meaning:
+  facstd F found a new factor
+    all other characters: like the output of std and reduce
+  fglm . basis monomial found
+   + edge monomial found
+   - border monomial found
+  groebner  all characters: like the output of std
+  lres . minimal syzygy found
+   n slanted degree, i.e., row of Betti matrix
+   (mn) calculate in module n
+   g pair found giving reductum and syzygy
+  mres [d] computations of the d-th syzygy module
+    all other characters: like the output of std
+  minres [d] minimizing of the d-th syzygy module
+  mstd  all characters: like the output of std
+  reduce r reduced a leading term
+   t reduced a non-leading term
+  res [d] computations of the d-th syzygy module
+    all other characters: like the output of std
+  sres . syzygy found
+   (n) n elements remaining
+   [n] finished module n
+  std [m:n] internal ring change to poly representation with exponent bound
+m and n words in exponent vector
+   s found a new element of the standard basis
+   - reduced a pair/S-polynomial to 0
+   . postponed a reduction of a pair/S-polynomial
+   h used Hilbert series criterion
+   H(d) found a 'highest corner' of degree d, no need to consider higher degrees
+   (n) n critical pairs are still to be reduced
+   (S:n) doing complete reduction of n elements
+   d the degree of the leading terms is currently d
+  stdfglm  all characters in first part: like the output of std
+    all characters in second part: like the output of fglm
+  stdhilb  all characters: like the output of std
+  syz  all characters: like the output of std
+
+
+See
+degBound;
+multBound;
+std.
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

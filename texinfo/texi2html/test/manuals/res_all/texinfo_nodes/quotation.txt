@@ -1,0 +1,34 @@
+10.2 @quotation
+===============
+
+The text of a quotation is processed normally except that:
+
+* the margins are closer to the center of the page, so the whole of the
+quotation is indented;
+
+* the first lines of paragraphs are indented no more than other
+lines;
+
+* in the printed output, interparagraph spacing is reduced.
+
+This is an example of text written between an @quotation
+command and an @end quotation command.  An @quotation
+command is most often used to indicate text that is excerpted from
+another (real or hypothetical) printed work.
+
+Write an @quotation command as text on a line by itself.  This
+line will disappear from the output.  Mark the end of the quotation
+with a line beginning with and containing only @end quotation.
+The @end quotation line will likewise disappear from the
+output.  Thus, the following,
+
+@quotation
+This is
+a foo.
+@end quotation
+
+produces
+
+This is a foo.
+
+

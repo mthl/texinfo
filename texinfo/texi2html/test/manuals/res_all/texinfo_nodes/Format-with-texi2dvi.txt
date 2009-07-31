@@ -1,0 +1,33 @@
+19.3 Format with texi2dvi
+=========================
+
+The texi2dvi command automatically runs both tex and
+texindex as many times as necessary to produce a DVI file with
+sorted indices and all cross-references resolved.  It simplifies the
+tex--texindex--tex--tex sequence
+described in the previous section.
+
+To run texi2dvi on an input file `foo.texi', do this (where
+`prompt$ ' is your shell prompt):
+
+prompt$ texi2dvi foo.texi
+
+As shown in this example, the input filenames to texi2dvi must
+include any extension (`.texi', `.texinfo', etc.).  Under
+MS-DOS and perhaps in other circumstances, you may need to run `sh
+texi2dvi foo.texi' instead of relying on the operating system to invoke
+the shell on the `texi2dvi' script.
+
+Perhaps the most useful option to texi2dvi is
+`--texinfo=cmd'.  This inserts cmd on a line by itself
+after the @setfilename in a temporary copy of the input file
+before running TeX.  With this, you can specify different printing
+formats, such as @smallbook (see smallbook),
+@afourpaper (see A4 Paper), or @pagesizes
+(see pagesizes), without actually changing the document source.
+(You can also do this on a site-wide basis with `texinfo.cnf';
+see Preparing for TeX).
+
+For a list of other options, run `texi2dvi --help'.
+
+

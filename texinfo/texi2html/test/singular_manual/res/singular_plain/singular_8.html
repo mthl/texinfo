@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: B. Polynomial data</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: B. Polynomial data">
+<meta name="keywords" content="Singular 2-0-4 Manual: B. Polynomial data">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Polynomial-data"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="singular_7.html#Parallelization-with-MPtcp-links" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Representation-of-mathematical-objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular_7.html#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Polynomial-data-1"></a>
+<h1 class="appendix">B. Polynomial data</h1>
+<a name="index-Polynomial-data"></a>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Representation-of-mathematical-objects">B.1 Representation of mathematical objects</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Monomial-orderings">B.2 Monomial orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Representation-of-mathematical-objects"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Representation-of-mathematical-objects-1"></a>
+<h2 class="section">B.1 Representation of mathematical objects</h2>
+<a name="index-mathematical-objects"></a>
+<a name="index-representation_002c-math-objects"></a>
+
+<p><small>SINGULAR</small> distinguishes between objects which do not belong to a ring
+and those which belong to a specific ring (see <a href="singular_3.html#Rings-and-orderings">Rings and orderings</a>).
+We comment only on the latter ones.
+</p>
+<p>Internally all ring-dependent objects are polynomials or structures built from
+polynomials (and some additional information).
+Note that <small>SINGULAR</small> stores (and hence prints) a polynomial automatically
+w.r.t. the monomial ordering.
+</p>
+<p>Hence, in order to define such an object in <small>SINGULAR</small>,
+one has to give a list of polynomials in a specific format.
+</p>
+<p>For ideals, resp. matrices, this is straight forward:
+The user gives a list of polynomials
+which generate the ideal, resp. which are the entries of the matrix.
+(The number of rows and columns has to be given when creating the matrix.)
+</p>
+<p>A vector  in <small>SINGULAR</small> is always an element of a free module over the
+basering. It is given as a list of polynomials in one of the following
+formats
+denotes the i-th canonical generator of a free module (with 1 at place i and
+0 everywhere else).
+Both forms are equivalent. A vector is internally represented in
+the second form with the
+being &quot;special&quot; ring variables, ordered accordingly to the monomial ordering.
+Therefore, the form
+is given as output only if the monomial ordering gives priority to the
+component, i.e., is of the form <code>(c,...)</code> (see <a href="#Module-orderings">Module orderings</a>).  However, in any case the procedure <code>show</code> from the
+library <code>inout.lib</code> displays the bracket format.
+</p>
+<p>A vector
+should always be considered as a column vector in a free module
+of rank equal to
+where 
+is equal to the maximal index 
+such that
+This is due to the fact, that internally 
+is a polynomial in a sparse representation, i.e.,
+is not stored if
+(for reasons of efficiency), hence the last 0-entries of 
+are lost.
+Only more complex structures are able to keep the rank.
+</p>
+<p>A module 
+in <small>SINGULAR</small> is given by a list of vectors
+which generate the module as a submodule of the free module of rank
+equal to 
+which is the maximum of
+</p>
+<p>If one wants to create a module with a larger rank than given by its
+generators, one has to use the command <code>attrib(M,&quot;rank&quot;,r)</code> (see
+<a href="singular_5.html#attrib">attrib</a>, <a href="singular_5.html#nrows">nrows</a>) or to define a matrix first, then converting it
+into a module.  Modules in <small>SINGULAR</small> are almost the same as
+matrices, they may be considered as sparse representations of matrices.
+A module of a matrix is generated by the columns of the matrix and a
+matrix of a module has as columns the generators of the module.  These
+conversions preserve the rank and the number of generators, resp. the
+number of rows and columns.
+</p>
+<p>By the above remarks it might appear that <small>SINGULAR</small> is only able to handle
+submodules of a free module. However, this is not true. <small>SINGULAR</small>
+can compute with any finitely generated module over the basering 
+Such a module, say 
+is not represented by its generators but by its
+(generators and) relations. This means that
+is the number of generators of 
+is the module of relations.
+In other words, defining  a module 
+as a submodule of a free module
+can also be considered as the definition of
+</p>
+<p>Note that most functions, when applied to a module 
+really deal with
+However, there are some functions which deal with 
+</p>
+<p>For example, <code>std(M)</code> computes a standard basis of 
+(and thus gives another representation of 
+However, <code>dim(M)</code>, resp. <code>vdim(M)</code>, returns
+(if M is given by a standard basis).
+</p>
+<p>The function <code>syz(M)</code>  returns the first syzygy module of 
+i.e., the module 
+of relations of the given generators of 
+which is equal to the second syzygy module of 
+Refer to the description of each function in
+<a href="singular_5.html#Functions">Functions</a> to get information which module the function deals with.
+</p>
+<p>The numbering in <code>res</code> and other commands for computing resolutions
+refers to a resolution of
+(see <a href="singular_5.html#res">res</a>; <a href="singular_9.html#Syzygies-and-resolutions">Syzygies and resolutions</a>).
+</p>
+<p>It is possible to compute in any field which is a valid ground field in
+<small>SINGULAR</small>.  For doing so, one has to define a ring with the desired
+ground field and at least one variable. The elements of the field are of
+type number, but may also be considered as polynomials (of degree
+0). Large computations should be faster if the elements of the field are
+defined as numbers.
+</p>
+<p>The above remarks do also apply to quotient rings. Polynomial data are
+stored internally in the same manner, the only difference is that this
+polynomial representation is in general not unique. <code>reduce(f,std(0))</code>
+computes a normal form of a polynomial f in a quotient ring (cf.
+<a href="singular_5.html#reduce">reduce</a>).
+</p>
+<hr size="6">
+<a name="Monomial-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Representation-of-mathematical-objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction-to-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Monomial-orderings-1"></a>
+<h2 class="section">B.2 Monomial orderings</h2>
+<a name="index-Monomial-orderings"></a>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Introduction-to-orderings">B.2.1 Introduction to orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#General-definitions-for-orderings">B.2.2 General definitions for orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Global-orderings">B.2.3 Global orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Local-orderings">B.2.4 Local orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Module-orderings">B.2.5 Module orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Matrix-orderings">B.2.6 Matrix orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Product-orderings">B.2.7 Product orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Extra-weight-vector">B.2.8 Extra weight vector</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Introduction-to-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Monomial-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#General-definitions-for-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Introduction-to-orderings-1"></a>
+<h3 class="subsection">B.2.1 Introduction to orderings</h3>
+<a name="index-orderings-introduction"></a>
+<a name="index-term-orderings-introduction"></a>
+<a name="index-monomial-orderings-introduction"></a>
+
+<p><small>SINGULAR</small> offers a great variety of monomial orderings which provide
+an enormous functionality, if used diligently. However, this
+flexibility might also be confusing for the novice user.  Therefore, we
+recommend to those not familiar with monomial orderings to generally use
+the ordering <code>dp</code> for computations in the polynomial ring
+resp.  <code>ds</code> for computations in the localization 
+</p>
+<p>For inhomogeneous input ideals,  standard (resp. groebner) bases
+computations are generally faster 
+with the orderings 
+(resp. 
+if the input is quasihomogeneous w.r.t. the weights 
+</p>
+<p>If the output needs to be &quot;triangular&quot; (resp. &quot;block-triangular&quot;), the
+lexicographical ordering <code>lp</code> (resp. lexicographical
+block-orderings) need to be used. However, these orderings usually
+result in much less efficient computations.
+</p>
+
+<hr size="6">
+<a name="General-definitions-for-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Introduction-to-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="General-definitions-for-orderings-1"></a>
+<h3 class="subsection">B.2.2 General definitions for orderings</h3>
+<a name="index-orderings"></a>
+<a name="index-term-orderings"></a>
+<a name="index-monomial-orderings"></a>
+
+<p> See the literature cited in <a href="singular_9.html#References">References</a>.
+</p>
+<p>It is known that any monomial ordering can be represented by a matrix 
+but, of course, only integer coefficients are of relevance in
+practice.
+</p>
+
+<p>Note that the definition of a ring includes the definition of its
+monomial ordering (see 
+<a href="singular_3.html#Rings-and-orderings">Rings and orderings</a>). <small>SINGULAR</small> offers the monomial orderings
+described in the following sections. 
+</p>
+
+<hr size="6">
+<a name="Global-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#General-definitions-for-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Local-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Global-orderings-1"></a>
+<h3 class="subsection">B.2.3 Global orderings</h3>
+<a name="index-Global-orderings"></a>
+<a name="index-orderings_002c-global"></a>
+
+
+<dl compact="compact">
+<dt>lp:</dt>
+<dd><p>lexicographical ordering:
+<a name="index-lp_002c-global-ordering"></a>
+<a name="index-lexicographical-ordering"></a>
+<br>
+</p></dd>
+<dt>rp:</dt>
+<dd><p>reverse lexicographical ordering:
+<a name="index-rp_002c-global-ordering"></a>
+<a name="index-reverse-lexicographical-ordering"></a>
+<br>
+</p></dd>
+<dt>dp:</dt>
+<dd><p>degree reverse lexicographical ordering:
+<a name="index-degree-reverse-lexicographical-ordering"></a>
+<a name="index-dp_002c-global-ordering"></a>
+<br>
+</p></dd>
+<dt>Dp:</dt>
+<dd><p>degree lexicographical ordering:
+<a name="index-degree-lexicographical-ordering"></a>
+<a name="index-Dp_002c-global-ordering"></a>
+<br>
+</p></dd>
+<dt>wp:</dt>
+<dd><p>weighted reverse lexicographical ordering:
+<a name="index-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-wp_002c-global-ordering"></a>
+<br>
+ is defined as <code>dp</code>
+ but with
+</p></dd>
+<dt>Wp:</dt>
+<dd><p>weighted lexicographical ordering:
+<a name="index-weighted-lexicographical-ordering"></a>
+<a name="index-WP_002c-global-ordering"></a>
+<br>
+ is defined as <code>Dp</code>
+ but with
+</p></dd>
+</dl>
+<hr size="6">
+<a name="Local-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Global-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Module-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Local-orderings-1"></a>
+<h3 class="subsection">B.2.4 Local orderings</h3>
+<a name="index-Local-orderings"></a>
+<a name="index-orderings_002c-local"></a>
+
+<p>For ls, ds, Ds and, if the weights are positive integers, also for ws and
+Ws,  we have
+ the localization of 
+at the maximal ideal
+</p>
+<dl compact="compact">
+<dt>ls:</dt>
+<dd><p>negative lexicographical ordering:
+<a name="index-negative-lexicographical-ordering"></a>
+<a name="index-ls_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>ds:</dt>
+<dd><p>negative degree reverse lexicographical ordering:
+<a name="index-negative-degree-reverse-lexicographical-ordering"></a>
+<a name="index-ds_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>Ds:</dt>
+<dd><p>negative degree lexicographical ordering:
+<a name="index-negative-degree-lexicographical-ordering"></a>
+<a name="index-Ds_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>ws:</dt>
+<dd><p>(general) weighted reverse lexicographical ordering:
+<a name="index-general-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-local-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-ws_002c-local-ordering"></a>
+<br>
+ a nonzero integer,
+ any integer (including 0),
+ is defined as <code>ds</code>
+ but with
+</p></dd>
+<dt>Ws:</dt>
+<dd><p>(general) weighted lexicographical ordering:
+<a name="index-general-weighted-lexicographical-ordering"></a>
+<a name="index-local-weighted-lexicographical-ordering"></a>
+<a name="index-Ws_002c-local-ordering"></a>
+<br>
+ a nonzero integer,
+ any integer (including 0),
+ is defined as <code>Ds</code>
+ but with
+</p></dd>
+</dl>
+
+<hr size="6">
+<a name="Module-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Local-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Matrix-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Module-orderings-1"></a>
+<h3 class="subsection">B.2.5 Module orderings</h3>
+<a name="index-Module-orderings"></a>
+
+<p><small>SINGULAR</small> offers also orderings on the set of &ldquo;monomials&rdquo;
+</p>
+<p>We have two possibilities: either to give priority to the component of a
+vector in 
+or (which is the default in <small>SINGULAR</small>) to give priority
+to the coefficients.
+The orderings <code>(&lt;,c)</code> and <code>(&lt;,C)</code> give priority to the
+coefficients; whereas
+<code>(c,&lt;)</code> and <code>(C,&lt;)</code> give priority to the components.
+<br>Let &lt; be any of the monomial orderings of 
+as above.
+</p>
+<dl compact="compact">
+<dt>(&lt;,C):</dt>
+<dd><a name="index-C_002c-module-ordering"></a>
+<a name="index-module-ordering-C"></a>
+<br>
+
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), ds;
+  // the same as ring r = 0, (x,y,z), (ds, C);
+  [x+y2,z3+xy];
+&rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></td></tr></table>
+
+</dd>
+<dt>(C,&lt;):</dt>
+<dd>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></td></tr></table>
+
+</dd>
+<dt>(&lt;,c):</dt>
+<dd><a name="index-c_002c-module-ordering"></a>
+<a name="index-module-ordering-c"></a>
+
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(1)+x*gen(2)+x*gen(3)
+</pre></td></tr></table>
+
+</dd>
+<dt>(c,&lt;):</dt>
+<dd>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
+  [x+y2,z3+xy];
+&rarr; [x+y2,xy+z3]
+  [x,x,x];
+&rarr; [x,x,x]
+</pre></td></tr></table>
+</dd>
+</dl>
+
+<p>(up to permutation) unless the ordering starts with <code>c</code>.
+In all cases <small>SINGULAR</small> can read input in both formats.
+</p>
+<hr size="6">
+<a name="Matrix-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Module-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Product-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Matrix-orderings-1"></a>
+<h3 class="subsection">B.2.6 Matrix orderings</h3>
+<a name="index-Matrix-orderings"></a>
+<a name="index-orderings_002c-M"></a>
+<a name="index-M_002c-ordering"></a>
+
+<p>Let 
+be an invertible 
+ with integer coefficients and
+</p>
+<p>The M-ordering &lt; is defined as follows:
+<br>
+</p>
+<p>Thus,
+with respect to the lexicographical ordering.
+</p>
+<p>The following matrices represent (for 3 variables) the global and
+local orderings defined above (note that the matrix is not uniquely determined
+by the ordering):
+</p>
+
+<p>Product orderings (see next section) represented by  a matrix:
+</p>
+
+<p>Orderings with extra weight vector (see below) represented by  a matrix:
+</p>
+
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), M(1, 0, 0,   0, 1, 0,   0, 0, 1);
+</pre></td></tr></table>
+<br><p>which may also be written as:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[3][3]=1, 0, 0, 0, 1, 0, 0, 0, 1;
+  m;
+&rarr; 1,0,0,
+&rarr; 0,1,0,
+&rarr; 0,0,1 
+  ring r = 0, (x,y,z), M(m);
+  r;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering M
+&rarr; //                  : names    x y z 
+&rarr; //                  : weights  1 0 0 
+&rarr; //                  : weights  0 1 0 
+&rarr; //                  : weights  0 0 1 
+&rarr; //        block   2 : ordering C
+</pre></td></tr></table>
+
+<p>If the ring has 
+variables and the matrix contains less than 
+entries an error message is given, if there are more entries,
+the last ones are ignored.
+</p>
+<p><strong>WARNING:</strong> <small>SINGULAR</small>
+does not check whether the matrix has full rank.   In such a case some
+computations might not terminate, others might give a nonsense result.
+</p>
+<p>Having these matrix orderings <small>SINGULAR</small> can compute standard bases for
+any monomial ordering which is compatible with the natural semigroup structure.
+In practice the global and local orderings together with block orderings should be
+sufficient in most cases. These orderings are faster than the corresponding
+matrix orderings, since evaluating a matrix product is time consuming.
+</p>
+<hr size="6">
+<a name="Product-orderings"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Matrix-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Extra-weight-vector" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Product-orderings-1"></a>
+<h3 class="subsection">B.2.7 Product orderings</h3>
+<a name="index-Product-orderings"></a>
+<a name="index-orderings_002c-product"></a>
+
+<p>Let
+be two ordered sets of variables,
+</p>
+<p>Inductively one defines the product ordering of more than two monomial
+orderings.
+</p>
+<p>In <small>SINGULAR</small>, any of the above global orderings, local orderings or matrix
+orderings may be combined (in an arbitrary manner and length) to a product
+ordering.   E.g., <code>(lp(3), M(1, 2, 3, 1, 1, 1, 1, 0, 0), ds(4),
+ws(1,2,3))</code> 
+defines: <code>lp</code> on the first 3 variables, the matrix ordering
+<code>M(1, 2, 3, 1, 1, 1, 1, 0, 0)</code> on the next 3 variables,
+<code>ds</code> on the next 4 variables and
+<code>ws(1,2,3)</code> on the last 3 variables.
+</p>
+<hr size="6">
+<a name="Extra-weight-vector"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Product-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Extra-weight-vector-1"></a>
+<h3 class="subsection">B.2.8 Extra weight vector</h3>
+<a name="index-Extra-weight-vector"></a>
+<a name="index-a_002c-ordering"></a>
+<a name="index-orderings_002c-a"></a>
+
+<p>any integers (including 0), defines
+and
+<br>
+<br>An extra weight vector does not define a monomial ordering by itself:
+it can only be used in combination with other orderings
+to insert an extra line of weights into the ordering
+matrix.
+</p>
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
+ring s = 0, (x,y,z),  (a(1,2,3),dp);
+ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
+</pre></td></tr></table>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_9.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

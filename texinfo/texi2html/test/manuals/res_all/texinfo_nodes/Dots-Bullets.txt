@@ -1,0 +1,15 @@
+13.4 Inserting Ellipsis and Bullets
+===================================
+
+An ellipsis (a line of dots) is not typeset as a string of
+periods, so a special command is used for ellipsis in Texinfo.  The
+@bullet command is special, too.  Each of these commands is
+followed by a pair of braces, `{}', without any whitespace
+between the name of the command and the braces.  (You need to use braces
+with these commands because you can use them next to other text; without
+the braces, the formatters would be confused.  See @-Command Syntax, for further information.)
+
+* dots::                        How to insert dots ...
+* bullet::                      How to insert a bullet.
+
+

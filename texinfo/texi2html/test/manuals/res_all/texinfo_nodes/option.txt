@@ -1,0 +1,17 @@
+9.1.10 @option{option-name}
+---------------------------
+
+Use the @option command to indicate a command-line option; for
+example, `-l' or `--version' or
+`--output=filename'.
+
+@option is equivalent to @samp in its effects.
+For example:
+
+The option @option{-l} produces a long listing.
+produces
+The option `-l' produces a long listing.
+
+In tables, putting options inside @code produces a
+more pleasing effect.
+

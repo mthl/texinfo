@@ -1,0 +1,12 @@
+13.2 Inserting Space
+====================
+
+The following sections describe commands that control spacing of various
+kinds within and after sentences.
+
+* Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
+* Ending a Sentence::           Sometimes it does.
+* Multiple Spaces::             Inserting multiple spaces.
+* dmn::                         How to format a dimension.
+
+

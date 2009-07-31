@@ -1,0 +1,55 @@
+1.6 General Syntactic Conventions
+=================================
+
+This section describes the general conventions used in all Texinfo documents.
+
+* All printable ASCII characters except `@', `{' and
+`}' can appear in a Texinfo file and stand for themselves.
+`@' is the escape character which introduces commands, while
+`{' and `}' are used to surround arguments to certain
+commands.  To put one of these special characters into the document, put
+an `@' character in front of it, like this: `@@',
+`@{', and `@}'.
+
+* It is customary in TeX to use doubled single-quote characters to
+begin and end quotations: ``...''.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled
+quotation marks, 
+and Info converts doubled single-quote characters to ASCII
+double-quotes: ``...'' becomes "...".
+
+* Use three hyphens in a row, `---', for a dash--like this.  In
+TeX, a single or double hyphen produces a printed dash that is
+shorter than the usual typeset dash. Info reduces three hyphens to two
+for display on the screen.
+
+* To prevent a paragraph from being indented in the printed manual, put
+the command @noindent on a line by itself before the
+paragraph.
+
+* If you mark off a region of the Texinfo file with the @iftex
+and @end iftex commands, that region will appear only in
+the printed copy; in that region, you can use certain commands
+borrowed from plain TeX that you cannot use in Info.  Conversely,
+text surrounded by @ifnottex and @end ifnottex will
+appear in all output formats except TeX.
+
+Each of the other output formats (html, info,
+plaintext) have an analogous pair of commands.  See Conditionals.
+
+Caution: Do not use tab characters in a Texinfo file (except in
+verbatim modes)!  TeX uses variable-width fonts, which means that it
+is impractical at best to define a tab to work in all circumstances.
+Consequently, TeX treats tabs like single spaces, and that is not
+what they look like.  Furthermore, makeinfo does nothing special
+with tabs, and thus a tab character in your input file may appear
+differently in the output, for example, in indented text.
+
+To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
+spaces when you press the <TAB> key.
+
+Also, you can run untabify in Emacs to convert tabs in a region
+to multiple spaces.
+
+

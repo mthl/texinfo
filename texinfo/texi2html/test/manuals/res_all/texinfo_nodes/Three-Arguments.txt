@@ -1,0 +1,68 @@
+8.3.3 @xref with Three Arguments
+--------------------------------
+
+A third argument replaces the node name in the TeX output.  The third
+argument should be the name of the section in the printed output, or
+else state the topic discussed by that section.  Often, you will want to
+use initial upper case letters so it will be easier to read when the
+reference is printed.  Use a third argument when the node name is
+unsuitable because of syntax or meaning.
+
+Remember to avoid placing a comma within the title or topic section of
+a cross reference, or within any other section.  The formatters divide
+cross references into arguments according to the commas; a comma
+within a title or other section will divide it into two arguments.  In
+a reference, you need to write a title such as "Clouds, Mist, and
+Fog" without the commas.
+
+Also, remember to write a comma or period after the closing brace of an
+@xref to terminate the cross reference.  In the following
+examples, a clause follows a terminating comma.
+
+
+The template is like this:
+
+@xref{node-name, cross-reference-name, title-or-topic}.
+
+For example,
+
+@xref{Electrical Effects, Lightning, Thunder and Lightning},
+for details.
+
+produces
+
+*Note Lightning: Electrical Effects, for details.
+
+and
+
+See Section 5.2 [Thunder and Lightning], page 57, for details.
+
+If a third argument is given and the second one is empty, then the
+third argument serves both.  (Note how two commas, side by side, mark
+the empty second argument.)
+
+@xref{Electrical Effects, , Thunder and Lightning},
+for details.
+
+produces
+
+*Note Thunder and Lightning: Electrical Effects, for details.
+
+and
+
+See Section 5.2 [Thunder and Lightning], page 57, for details.
+
+As a practical matter, it is often best to write cross references with
+just the first argument if the node name and the section title are the
+same, and with the first and third arguments if the node name and title
+are different.
+
+Here are several examples from The GNU Awk User's Guide:
+
+@xref{Sample Program}.
+@xref{Glossary}.
+@xref{Case-sensitivity, ,Case-sensitivity in Matching}.
+@xref{Close Output, , Closing Output Files and Pipes},
+   for more information.
+@xref{Regexp, , Regular Expressions as Patterns}.
+

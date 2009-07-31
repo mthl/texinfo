@@ -1,0 +1,24 @@
+9.1.5 @verb{<char>text<char>}
+-----------------------------
+
+Use the @verb command to print a verbatim sequence of
+characters.
+
+Like LaTeX's \verb command, the verbatim text can be quoted using
+any unique delimiter character.  Enclose the verbatim text, including the
+delimiters, in braces.  Text is printed in a fixed-width font:
+
+How many @verb{|@|}-escapes does one need to print this
+@verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
+
+produces
+
+How many @ -escapes does one need to print this
+@a @b @c string or these @'e?`{}!`\ this?
+
+This is in contrast to @samp (see the previous
+section), whose argument is normal Texinfo text, where the characters
+@{} are special; with @verb, nothing is special except
+the delimiter character you choose.
+
+

@@ -1,0 +1,29 @@
+13.9.5 @error{} (error-->): Indicating an Error Message
+-------------------------------------------------------
+
+A piece of code may cause an error when you evaluate it.  You can
+designate the error message with the @error{} command.
+
+The @error{} command is displayed as `error-->' in Info
+and as the word `error' in a box in the printed output.
+
+Thus,
+
+@lisp
+(+ 23 'x)
+@error{} Wrong type argument: integer-or-marker-p, x
+@end lisp
+
+produces
+
+(+ 23 'x)
+error--> Wrong type argument: integer-or-marker-p, x
+
+This indicates that the following error message is printed
+when you evaluate the expression:
+
+Wrong type argument: integer-or-marker-p, x
+
+`error-->' itself is not part of the error message.
+
+

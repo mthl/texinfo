@@ -1,0 +1,21 @@
+14.3 @w{text}: Prevent Line Breaks
+==================================
+
+@w{text} outputs text and prohibits line breaks
+within text.
+
+You can use the @w command to prevent TeX from automatically
+hyphenating a long name or phrase that happens to fall near the end of a
+line.  For example:
+
+You can copy GNU software from @w{@samp{ftp.gnu.org}}.
+
+produces
+
+You can copy GNU software from `ftp.gnu.org'.
+
+You can also use @w to produce a non-breakable space:
+
+None of the formatters will break at this@w{ }space.
+
+

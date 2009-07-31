@@ -1,0 +1,9 @@
+13.6 @pounds{} (#): Pounds Sterling
+===================================
+
+Use the @pounds{} command to generate `#'.  In a
+printed manual, this is the symbol for the currency pounds sterling.
+In Info, it is a `#'.  Other currency symbols are unfortunately not
+available.
+
+

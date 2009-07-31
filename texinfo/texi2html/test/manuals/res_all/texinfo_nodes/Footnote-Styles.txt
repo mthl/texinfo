@@ -1,0 +1,68 @@
+13.10.2 Footnote Styles
+-----------------------
+
+Info has two footnote styles, which determine where the text of the
+footnote is located:
+
+* In the `End' node style, all the footnotes for a single node
+are placed at the end of that node.  The footnotes are separated from
+the rest of the node by a line of dashes with the word
+`Footnotes' within it.  Each footnote begins with an
+`(n)' reference mark.
+
+Here is an example of a single footnote in the end of node style:
+
+ --------- Footnotes ---------
+
+(1)  Here is a sample footnote.
+
+* In the `Separate' node style, all the footnotes for a single
+node are placed in an automatically constructed node of
+their own.  In this style, a "footnote reference" follows
+each `(n)' reference mark in the body of the
+node.  The footnote reference is actually a cross reference
+which you use to reach the footnote node.
+
+The name of the node with the footnotes is constructed
+by appending `-Footnotes' to the name of the node
+that contains the footnotes. (Consequently, the footnotes'
+node for the `Footnotes' node is
+`Footnotes-Footnotes'!)  The footnotes' node has an
+`Up' node pointer that leads back to its parent node.
+
+Here is how the first footnote in this manual looks after being
+formatted for Info in the separate node style:
+
+File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+
+(1) The first syllable of "Texinfo" is pronounced like "speck", not
+"hex". ...
+
+A Texinfo file may be formatted into an Info file with either footnote
+style.
+
+Use the @footnotestyle command to specify an Info file's
+footnote style.  Write this command at the beginning of a line followed
+by an argument, either `end' for the end node style or
+`separate' for the separate node style.
+
+For example,
+
+@footnotestyle end
+or
+@footnotestyle separate
+
+Write an @footnotestyle command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  (If you
+include the @footnotestyle command between the start-of-header
+and end-of-header lines, the region formatting commands will format
+footnotes as specified.)
+
+If you do not specify a footnote style, the formatting commands use
+their default style.  Currently, texinfo-format-buffer and
+texinfo-format-region use the `separate' style and
+makeinfo uses the `end' style.
+
+This chapter contains two footnotes.
+
+

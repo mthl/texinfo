@@ -1,0 +1,40 @@
+5.11 The `subsub' Commands
+==========================
+
+The fourth and lowest level sectioning commands in Texinfo are the
+`subsub' commands.  They are:
+
+@subsubsection
+Subsubsections are to subsections as subsections are to sections.
+(See @subsection.)  In a printed manual,
+subsubsection titles appear in the table of contents and are numbered
+four levels deep.
+
+@unnumberedsubsubsec
+Unnumbered subsubsection titles appear in the table of contents of a
+printed manual, but lack numbers.  Otherwise, unnumbered
+subsubsections are the same as subsubsections.  In Info, unnumbered
+subsubsections look exactly like ordinary subsubsections.
+
+@appendixsubsubsec
+Conventionally, appendix commands are used only for appendices and are
+lettered and numbered appropriately in a printed manual.  They also
+appear in the table of contents.  In Info, appendix subsubsections look
+exactly like ordinary subsubsections.
+
+@subsubheading
+The @subsubheading command may be used anywhere that you need
+a small heading that will not appear in the table of contents.  In
+Info, subsubheadings look exactly like ordinary subsubsection
+headings.
+
+In Info,  `subsub' titles are underlined with periods.
+For example,
+
+@subsubsection This is a subsubsection
+
+produces
+
+This is a subsubsection
+.......................
+

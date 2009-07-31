@@ -1,0 +1,24 @@
+2 Using Texinfo Mode
+********************
+
+You may edit a Texinfo file with any text editor you choose.  A Texinfo
+file is no different from any other ASCII file.  However, GNU Emacs
+comes with a special mode, called Texinfo mode, that provides Emacs
+commands and tools to help ease your work.
+
+This chapter describes features of GNU Emacs' Texinfo mode but not any
+features of the Texinfo formatting language.  So if you are reading this
+manual straight through from the beginning, you may want to skim through
+this chapter briefly and come back to it after reading succeeding
+chapters which describe the Texinfo formatting language in detail.
+
+* Texinfo Mode Overview::       How Texinfo mode can help you.
+* Emacs Editing::               Texinfo mode adds to GNU Emacs' general
+                                  purpose editing features.
+* Inserting::                   How to insert frequently used @-commands.
+* Showing the Structure::       How to show the structure of a file.
+* Updating Nodes and Menus::    How to update or create new nodes and menus.
+* Info Formatting::             How to format for Info.
+* Printing::                    How to format and print part or all of a file.
+* Texinfo Mode Summary::        Summary of all the Texinfo mode commands.
+

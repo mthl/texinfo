@@ -1,0 +1,140 @@
+4 Moving Text Within a Window
+*****************************
+
+Sometimes you are looking at a screenful of text, and only part of the
+current paragraph you are reading is visible on the screen.  The
+commands detailed in this section are used to shift which part of the
+current node is visible on the screen.
+
+Scrolling commands are bound differently when `--vi-keys' operation
+(see --vi-keys) is in effect.  These key bindings are designated
+with "vi-like operation".
+
+<SPC> (scroll-forward)
+Shift the text in this window up.  That is, show more of the node which
+is currently below the bottom of the window.  With a numeric argument,
+show that many more lines at the bottom of the window; a numeric
+argument of 4 would shift all of the text in the window up 4 lines
+(discarding the top 4 lines), and show you four new lines at the bottom
+of the window.  Without a numeric argument, <SPC> takes the bottom
+two lines of the window and places them at the top of the window,
+redisplaying almost a completely new screenful of lines.  If you are at
+the end of a node, <SPC> takes you to the "next" node, so that you can
+read an entire manual from start to finish by repeating <SPC>.
+
+The default scroll size is one screen-full, but it can be changed by
+invoking the (scroll-forward-page-only-set-window) command,
+`z' under `--vi-keys', with a numeric argument.
+
+<NEXT> (an arrow key) (scroll-forward-page-only)
+<C-v>
+<C-f>, vi-like operation
+<f>, vi-like operation
+<M-SPC>, vi-like operation
+Shift the text in this window up.  This is identical to the <SPC>
+operation above, except that it never scrolls beyond the end of the
+current node.
+
+The <NEXT> key is known as the <PageDown> key on some
+keyboards.
+
+<z> (scroll-forward-page-only-set-window, vi-like operation)
+Scroll forward, like with <NEXT>, but if a numeric argument is
+specified, it becomes the default scroll size for subsequent
+scroll-forward and scroll-backward commands and their
+ilk.
+
+<DEL> (scroll-backward)
+Shift the text in this window down.  The inverse of
+scroll-forward.
+If you are at the start of a node, <DEL> takes you to the
+"previous" node, so that you can read an entire manual from finish to
+start by repeating <DEL>.  The default scroll size can be changed by
+invoking the (scroll-backward-page-only-set-window) command,
+`w' under `--vi-keys', with a numeric argument.
+
+<PREVIOUS> (arrow key) (scroll-backward-page-only)
+<PRIOR> (arrow key)
+<M-v>
+<b>, vi-like operation
+<C-b>, vi-like operation
+Shift the text in this window down.  The inverse of
+scroll-forward-page-only.  Does not scroll beyond the start of
+the current node.  The default scroll size can be changed by invoking
+the(scroll-backward-page-only-set-window) command, `w' under
+`--vi-keys', with a numeric argument.
+
+<w> (scroll-backward-page-only-set-window, vi-like operation)
+Scroll backward, like with <PREVIOUS>, but if a numeric argument is
+specified, it becomes the default scroll size for subsequent
+scroll-forward and scroll-backward commands.
+
+<C-n> (down-line, vi-like operation)
+<C-e>, vi-like operation
+<RET>, vi-like operation
+<LFD>, vi-like operation
+<DOWN>, vi-like operation
+Scroll forward by one line.  With a numeric argument, scroll forward
+that many lines.
+
+<C-p> (up-line, vi-like operation)
+<UP>, vi-like operation
+<y>, vi-like operation
+<k>, vi-like operation
+<C-k>, vi-like operation
+<C-y>, vi-like operation
+Scroll backward one line.  With a numeric argument, scroll backward that
+many lines.
+
+<d> (scroll-half-screen-down, vi-like operation)
+<C-d>, vi-like operation
+Scroll forward by half of the screen size.  With a numeric argument,
+scroll that many lines.  If an argument is specified, it becomes the new
+default number of lines to scroll for subsequent `d' and `u'
+commands.
+
+<u> (scroll-half-screen-up, vi-like operation)
+<C-u>, vi-like operation
+Scroll back by half of the screen size.  With a numeric argument,
+scroll that many lines.  If an argument is specified, it becomes the new
+default number of lines to scroll for subsequent `u' and `d'
+commands.
+
+The scroll-forward and scroll-backward commands can also
+move forward and backward through the node structure of the file.  If
+you press <SPC> while viewing the end of a node, or <DEL> while
+viewing the beginning of a node, what happens is controlled by the
+variable scroll-behavior.  See scroll-behavior, for more information.
+
+The scroll-forward-page-only and scroll-backward-page-only
+commands never scroll beyond the current node.
+
+The <PREVIOUS> key is the <PageUp> key on many keyboards.  Emacs
+refers to it by the name <PRIOR>.  When you use <PRIOR> or
+<PageUp> to scroll, Info never scrolls beyond the beginning of the
+current node.
+
+If your keyboard lacks the <DEL> key, look for a key called
+<BS>, or `BackSpace', sometimes designated with an arrow which
+points to the left, which should perform the same function.
+
+<C-l> (redraw-display)
+Redraw the display from scratch, or shift the line containing the cursor
+to a specified location.  With no numeric argument, `C-l' clears
+the screen, and then redraws its entire contents.  Given a numeric
+argument of n, the line containing the cursor is shifted so that
+it is on the nth line of the window.
+
+C-x <w> (toggle-wrap)
+Toggles the state of line wrapping in the current window.  Normally,
+lines which are longer than the screen width wrap, i.e., they are
+continued on the next line.  Lines which wrap have a `\' appearing
+in the rightmost column of the screen.  You can cause such lines to be
+terminated at the rightmost column by changing the state of line
+wrapping in the window with C-x w.  When a line which needs more
+space than one screen width to display is displayed, a `$' appears
+in the rightmost column of the screen, and the remainder of the line is
+invisible.  When long lines are truncated, the modeline displays the
+`$' character near its left edge.
+
+

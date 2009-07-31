@@ -1,0 +1,46 @@
+13.9.7 @point{} (-!-): Indicating Point in a Buffer
+---------------------------------------------------
+
+Sometimes you need to show an example of text in an Emacs buffer.  In
+such examples, the convention is to include the entire contents of the
+buffer in question between two lines of dashes containing the buffer
+name.
+
+You can use the `@point{}' command to show the location of point
+in the text in the buffer.  (The symbol for point, of course, is not
+part of the text in the buffer; it indicates the place between
+two characters where point is located.)
+
+The @point{} command is displayed as `-!-' in Info
+and as a small five pointed star in the printed output.
+
+The following example shows the contents of buffer `foo' before
+and after evaluating a Lisp command to insert the word changed.
+
+---------- Buffer: foo ----------
+This is the -!-contents of foo.
+---------- Buffer: foo ----------
+
+
+(insert "changed ")
+     => nil
+---------- Buffer: foo ----------
+This is the changed -!-contents of foo.
+---------- Buffer: foo ----------
+
+
+In a Texinfo source file, the example is written like this:
+
+@example
+---------- Buffer: foo ----------
+This is the @point{}contents of foo.
+---------- Buffer: foo ----------
+
+(insert "changed ")
+     @result{} nil
+---------- Buffer: foo ----------
+This is the changed @point{}contents of foo.
+---------- Buffer: foo ----------
+@end example
+
+

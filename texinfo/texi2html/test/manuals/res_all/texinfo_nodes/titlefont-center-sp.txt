@@ -1,0 +1,45 @@
+3.4.2 @titlefont, @center, and @sp
+----------------------------------
+
+You can use the @titlefont, @sp, and @center
+commands to create a title page for a printed document.  (This is the
+first of the two methods for creating a title page in Texinfo.)
+
+Use the @titlefont command to select a large font suitable for
+the title itself.  You can use @titlefont more than once if you
+have an especially long title.
+
+For example:
+
+@titlefont{Texinfo}
+
+Use the @center command at the beginning of a line to center
+the remaining text on that line.  Thus,
+
+@center @titlefont{Texinfo}
+
+centers the title, which in this example is "Texinfo" printed
+in the title font.
+
+Use the @sp command to insert vertical space.  For example:
+
+@sp 2
+
+This inserts two blank lines on the printed page.  (See @sp, for more information about the @sp
+command.)
+
+A template for this method looks like this:
+
+@titlepage
+@sp 10
+@center @titlefont{name-of-manual-when-printed}
+@sp 2
+@center subtitle-if-any
+@sp 2
+@center author
+...
+@end titlepage
+
+The spacing of the example fits an 8.5 by 11 inch manual.
+
+

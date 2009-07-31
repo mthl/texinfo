@@ -1,0 +1,84 @@
+<div id="Remote-repositories"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Moving a repository#Moving-a-repository  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Server requirements#Server-requirements  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Remote-repositories-1"></div>
+=== Remote repositories ===
+<div id="index-Repositories_002c-remote"></div>
+<div id="index-Remote-repositories"></div>
+<div id="index-Client_002fServer-Operation"></div>
+<div id="index-Server_002c-CVS"></div>
+<div id="index-Remote-repositories_002c-port-specification"></div>
+<div id="index-Repositories_002c-remote_002c-port-specification"></div>
+<div id="index-Client_002fServer-Operation_002c-port-specification"></div>
+<div id="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></div>
+<div id="index-port_002c-specifying-for-remote-repositories"></div>
+
+<p>        Your working copy of the sources can be on a
+different machine than the repository.  Using <small>CVS</small>
+in this manner is known as <em>client/server</em>
+operation.  You run <small>CVS</small> on a machine which can
+mount your working directory, known as the
+<em>client</em>, and tell it to communicate to a machine
+which can mount the repository, known as the
+<em>server</em>.  Generally, using a remote
+repository is just like using a local one, except that
+the format of the repository name is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
+</nowiki></pre></td></tr></table>
+
+<p>Specifying a password in the repository name is not recommended during
+checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
+password in each created directory.  <code>cvs login</code> first instead
+(see section [cvs: Using the client with password authentication#Password-authentication-client Using the client with password authentication]).
+</p>
+<p>The details of exactly what needs to be set up depend
+on how you are connecting to the server.
+</p>
+<p>If <var>method</var> is not specified, and the repository
+name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
+or <code>server</code>, depending on your platform; both are
+described in [cvs: Connecting with rsh#Connecting-via-rsh Connecting with rsh].
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Server requirements#Server-requirements  Server requirements]::<nowiki>         Memory and other resources for servers
+</nowiki>&bull;[cvs: Connecting with rsh#Connecting-via-rsh  Connecting via rsh]::<nowiki>          Using the <code>rsh</code> program to connect
+</nowiki>&bull;[cvs: Direct connection with password authentication#Password-authenticated  Password authenticated]::<nowiki>      Direct connections using passwords
+</nowiki>&bull;[cvs: Direct connection with GSSAPI#GSSAPI-authenticated  GSSAPI authenticated]::<nowiki>        Direct connections using GSSAPI
+</nowiki>&bull;[cvs: Direct connection with kerberos#Kerberos-authenticated  Kerberos authenticated]::<nowiki>      Direct connections with kerberos
+</nowiki>&bull;[cvs: Connecting with fork#Connecting-via-fork  Connecting via fork]::<nowiki>         Using a forked <code>cvs server</code> to connect
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Moving a repository#Moving-a-repository  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Server requirements#Server-requirements  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

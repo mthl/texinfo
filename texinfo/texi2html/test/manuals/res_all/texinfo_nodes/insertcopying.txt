@@ -1,0 +1,34 @@
+3.3.2 @insertcopying: Include permissions text
+----------------------------------------------
+
+The @insertcopying command is simply written on a line by
+itself, like this:
+
+@insertcopying
+
+It inserts the text previously defined by @copying.  Legally, it
+must be used on the copyright page in the printed manual
+(see Copyright).
+
+Although it's not a legal requirement, we also strongly recommend using
+@insertcopying in the Top node of your manual (see The Top Node).  Here's why:
+
+The @copying command itself causes the permissions text to
+appear in an Info file before the first node.  The text is also
+copied into the beginning of each split Info output file, as is legally
+necessary.  This location implies a human reading the manual using Info
+does not see this text (except when using the advanced Info
+command g *).  Therefore, an explicit @insertcopying
+in the Top node makes it apparent to readers that the manual is free.
+
+Similarly, the @copying text is automatically included at the
+beginning of each HTML output file, as an HTML comment.  Again, this
+text is not visible (unless the reader views the HTML source).  And
+therefore again, the @insertcopying in the Top node is valuable
+because it makes the copying permissions visible and thus promotes
+freedom.
+
+The permissions text defined by @copying also appears
+automatically at the beginning of the XML output file.
+
+

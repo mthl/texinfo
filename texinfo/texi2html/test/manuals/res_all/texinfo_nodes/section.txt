@@ -1,0 +1,28 @@
+5.7 @section
+============
+
+In a printed manual, an @section command identifies a
+numbered section within a chapter.  The section title appears in the
+table of contents.  In Info, an @section command provides a
+title for a segment of text, underlined with `='.
+
+This section is headed with an @section command and looks like
+this in the Texinfo file:
+
+@section @code{@@section}
+
+To create a section, write the @section command at the
+beginning of a line and follow it on the same line by the section
+title.
+
+Thus,
+
+@section This is a section
+
+produces
+
+This is a section
+=================
+
+in Info.
+

@@ -1,0 +1,44 @@
+13.10.1 Footnote Commands
+-------------------------
+
+In Texinfo, footnotes are created with the @footnote command.
+This command is followed immediately by a left brace, then by the text
+of the footnote, and then by a terminating right brace.  Footnotes may
+be of any length (they will be broken across pages if necessary), but
+are usually short.  The template is:
+
+ordinary text@footnote{text of footnote}
+
+As shown here, the @footnote command should come right after the
+text being footnoted, with no intervening space; otherwise, the footnote
+marker might end up starting a line.
+
+For example, this clause is followed by a sample footnote(9); in the Texinfo source, it looks like
+this:
+
+...a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source...
+
+As you can see, the source includes two punctuation marks next to each
+other; in this case, `.};' is the sequence.  This is normal (the
+first ends the footnote and the second belongs to the sentence being
+footnoted), so don't worry that it looks odd.
+
+In a printed manual or book, the reference mark for a footnote is a
+small, superscripted number; the text of the footnote appears at the
+bottom of the page, below a horizontal line.
+
+In Info, the reference mark for a footnote is a pair of parentheses
+with the footnote number between them, like this: `(1)'.  The
+reference mark is followed by a cross-reference link to the footnote's
+text.
+
+In the HTML output, footnote references are marked with a small,
+superscripted number which is rendered as a hypertext link to the
+footnote text.
+
+By the way, footnotes in the argument of an @item command for a
+@table must be on the same line as the @item
+(as usual).  See Two-column Tables.
+
+

@@ -1,0 +1,71 @@
+20.1.5 Running makeinfo inside Emacs
+------------------------------------
+
+You can run makeinfo in GNU Emacs Texinfo mode by using either the
+makeinfo-region or the makeinfo-buffer commands.  In
+Texinfo mode, the commands are bound to C-c C-m C-r and C-c
+C-m C-b by default.
+
+C-c C-m C-r
+M-x makeinfo-region
+Format the current region for Info.
+
+C-c C-m C-b
+M-x makeinfo-buffer
+Format the current buffer for Info.
+
+When you invoke either makeinfo-region or
+makeinfo-buffer, Emacs prompts for a file name, offering the
+name of the visited file as the default.  You can edit the default
+file name in the minibuffer if you wish, before pressing <RET> to
+start the makeinfo process.
+
+The Emacs makeinfo-region and makeinfo-buffer commands
+run the makeinfo program in a temporary shell buffer.  If
+makeinfo finds any errors, Emacs displays the error messages in
+the temporary buffer.
+
+You can parse the error messages by typing C-x `
+(next-error).  This causes Emacs to go to and position the
+cursor on the line in the Texinfo source that makeinfo thinks
+caused the error.  See (emacs)Compilation section `Running make or Compilers Generally' in The GNU Emacs Manual, for more
+information about using the next-error command.
+
+In addition, you can kill the shell in which the makeinfo
+command is running or make the shell buffer display its most recent
+output.
+
+C-c C-m C-k
+M-x makeinfo-kill-job
+Kill the current running makeinfo job
+(from makeinfo-region or makeinfo-buffer).
+
+C-c C-m C-l
+M-x makeinfo-recenter-output-buffer
+Redisplay the makeinfo shell buffer to display its most recent
+output.
+
+(Note that the parallel commands for killing and recentering a TeX
+job are C-c C-t C-k and C-c C-t C-l.  See Texinfo Mode Printing.)
+
+You can specify options for makeinfo by setting the
+makeinfo-options variable with either the M-x
+edit-options or the M-x set-variable command, or by setting the
+variable in your `.emacs' initialization file.
+
+For example, you could write the following in your `.emacs' file:
+
+(setq makeinfo-options
+      "--paragraph-indent=0 --no-split
+       --fill-column=70 --verbose")
+
+For more information, see
+
+(emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual,
+
+(emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual,
+
+(emacs)Init File section `Init File' in The GNU Emacs Manual, and
+
+Options for makeinfo.
+

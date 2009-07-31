@@ -1,0 +1,51 @@
+19.4 Shell Print Using lpr -d
+=============================
+
+The precise command to print a DVI file depends on your system
+installation.  Two common ones are `dvips foo.dvi -o' and `lpr
+-d foo.dvi'.  
+
+For example, the following commands will (perhaps) suffice to sort the
+indices, format, and print the Bison Manual:
+
+tex bison.texinfo
+texindex bison.??
+tex bison.texinfo
+lpr -d bison.dvi
+
+(Remember that the shell commands may be different at your site; but
+these are commonly used versions.)
+
+Using the texi2dvi shell script (see the previous section):
+
+texi2dvi bison.texinfo
+lpr -d bison.dvi
+# or perhaps dvips bison.dvi -o
+
+lpr is a standard program on Unix systems, but it is usually
+absent on MS-DOS/MS-Windows.  Some network packages come with a
+program named lpr, but these are usually limited to sending files
+to a print server over the network, and generally don't support the
+`-d' option.  If you are unfortunate enough to work on one of these
+systems, you have several alternative ways of printing DVI files:
+
+* Find and install a Unix-like lpr program, or its clone.
+If you can do that, you will be able to print DVI files just like
+described above.
+
+* Send the DVI files to a network printer queue for DVI files.
+Some network printers have special queues for printing DVI files.  You
+should be able to set up your network software to send files to that
+queue.  In some cases, the version of lpr which comes with your
+network software will have a special option to send a file to specific
+queues, like this:
+
+lpr -Qdvi -hprint.server.domain bison.dvi
+
+* Convert the DVI file to a Postscript or PCL file and send it to your
+local printer.  See (dvips)dvips invocation section `dvips invocation' in Dvips, and the man
+pages for dvilj, for detailed description of these tools.  Once
+the DVI file is converted to the format your local printer understands
+directly, just send it to the appropriate port, usually `PRN'.
+
+

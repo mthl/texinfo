@@ -1,0 +1,789 @@
+E Release Notes
+***************
+
+
+* News and changes::
+* Downloading instructions::
+* Unix installation instructions::
+* Windows installation instructions::
+* Macintosh installation instructions::
+
+E.1 News and changes
+====================
+
+
+NEWS in SINGULAR 2-0-4
+**********************
+
+
+
+The current version 2-0-4 is an update to the 
+release series version 2-0. 
+
+Changes with respect to version 2-0-3:
+
+Factorizing algorithms revisited
+================================
+Starting with version 2-0-4, we use NTL (by Victor Shoup) for factoring
+univariate polynomials. The multivariate factoring code in libfac/factory
+does now also work over algebraic extension fields.
+
+Help system is configurable via LIB/help.cnf
+============================================
+The help browsers of Singular can be configured via the file
+LIB/help.cnf, also the addition of new help browsers is possible.
+
+Extensions of the ring concept
+==============================
+
+new coefficient domains: arbitrary long real and complex numbers
+no restriction on number of parameters
+degree bound on exponent values (maximum is now 2^31, standard 2^15)
+non-positives weights get a better handling (converts wp/Wp to ws/Ws)
+handle blocks of mixed orders correctly
+maximal prime characteristic is now 2147483629 instead of 32003
+
+Changes in SINGULAR libraries
+=============================
+The documentation of libraries was generally improved.
+equising_lib
+procedures esStratum, isEquising now also for reducible polynomials
+
+new procedures: tau_es (codim of mu-const stratum in semi-universal def. base);
+esIdeal ((Wahl's) equisingularity ideal)
+gaussman_lib
+added bernstein: roots of the Bernstein polynomial of t
+hnoether_lib
+HNdevelop, reddevelop, essdevelop are obsolete, replaced by hnexpansion
+
+multsequence is "repaired" (since branches computed by hnexpansion
+et al) are now ordered according to the needs of multsequence.
+
+newtonpoly needs no longer that ordering of the basering is ls
+
+new procedures: is_NND      test if f is Newton non-degenerate
+homolog_lib
+new procedures: depth, fitting, flatteningStrat, isCM, isFlat, isLocallyFree,
+isReg, KoszulHomology, tensorMod, Tor
+matrix_lib
+in proc tensor(A,B):  check if ncols(A)==0
+normal_lib
+new procedure: deltaLoc(f,S);      (sum of) delta invariant(s) at conjugated
+singular points
+
+proc genus makes now use of is_NND of hnoether.lib
+primdec_lib
+optimizations again
+solve_lib
+procedure laguerre_solve ignores no longer the 2nd parameter (precision of 
+internal computation)
+
+ new procedure simplexOut:     prints solution of simplex in nice format
+
+Internal Changes
+================
+normal form computation uses
+Bucket representation of polynomials.
+factorization
+revisited, missing cases implemented
+NTL
+NTL is used for univariate factorization
+source code
+adapted for use with gcc 3.1/3.2, gmp 4.x
+
+Porting
+=======
+* Singular is available for ix86-libc5, ix86-libc6, HPUX_9, HPUX_10,
+SunOS-4, SunOS-5, IRIX-6, ix86-Win (Windows 95/98/ME/NT/2K/XP),
+FreeBSD 4.x, MacOS X
+Windows 95/98/ME/NT/2K/XP and MacOS X
+* MP functionality is not available on
+Windows 95/98/ME/NT/2K/XP and MacOS X.
+* Singular 2-0-2 was the last version for MacOS 9
+
+E.2 Downloading instructions
+============================
+
+SINGULAR is available as binary program for most common hard-
+and software platforms. Release versions of SINGULAR can be
+downloaded with ftp from our FTP site
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/>,
+or, using your favorite WWW browser, from
+<http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/>.
+
+
+
+To download SINGULAR for a Unix platform
+========================================
+
+Make sure that you have approximately 20 MByte of free disk space and follow
+these steps.
+
+1. You need to download two (archive) files:
+Singular-2-0-4-share.tar.gz
+contains architecture independent data like documentation and libraries
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-share.tar.gz>
+Singular-2-0-4-<uname>.tar.gz
+contains architecture dependent executables, like the SINGULAR
+program.
+<uname> is a description of the processor and operating
+system for which SINGULAR is compiled. Choose one of the following:
+ ix86-Linux PC's running under Linux with libc version 6 (e.g., for SuSe
+Linux distribution version >= 6; RedHat Linux distribution version >= 5.2).
+
+
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-ix86-Linux.tar.gz>
+ ix86-Linux-libc5 PC's running under Linux with libc version 5 (if you are not 
+sure which libc version you have, run ldd /bin/ls).
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-ix86-Linux-libc5.tar.gz>
+ ix86-freebsd 's running under FreeBSD
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-ix86-freebsd.tar.gz>
+ ix86-Win PC's running Windows 95/98/ME/NT/2K/XP which have Cygwin version 1.3.9 (or
+higher) already installed. Unless you are familiar with Cygwin, we
+recommend that you download one of the self-extracting archives as
+described below.
+ HPUX-9 HP workstations running under HPUX version 9
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-HPUX-9.tar.gz>
+ HPUX-10 HP workstations running under HPUX version 10
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-HPUX-10.tar.gz>
+ SunOS-5 Sun workstations running Solaris version 5
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-SunOS-5.tar.gz>
+ IRIX-6 IRIX workstations running IRIX version 6
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-IRIX-6.tar.gz>
+ AIX-4 AIX workstations running AIX version 4
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-AIX-4.tar.gz>
+ PowerMacintosh-darwin PowerMacintosh running Mac OS X
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/OsX/Singular-2-0-4-PowerMacintosh-darwin.tar.gz>
+ DecAlpha-Linux Digital Dec Alpha running Linux (RedHat 5.2)
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-DecAlpha-Linux.tar.gz>
+ DecAlpha-OSF1 Digital Dec Alpha running OSF 1
+
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/UNIX/Singular-2-0-4-DecAlpha-OSF1.tar.gz>
+Please contact us if
+you can not find an appropriate architecture dependent archive.
+
+2. Simply change to the directory in which you wish to install
+SINGULAR (usually wherever you install 3rd-party software):
+cd /usr/local/	
+
+SINGULAR specific subdirectories will be created in such a way
+that multiple versions and multiple architecture dependent files
+of SINGULAR can peaceably coexist under the same /usr/local/
+tree.
+
+3. Unpack the archives:
+gzip -dc Singular-2-0-4-<uname>.tar.gz | tar -pxf -
+gzip -dc Singular-2-0-4-share.tar.gz | tar -pxf -
+If you have downloaded Singular-2-0-4-share.zip,
+unpack with 
+unzip -u Singular-2-0-4-share.zip
+
+4. After unpacking, see the created file
+Singular/2-0-4/INSTALL (which is also located at
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/INSTALL_unix.html>
+for details on how to finish the installation.
+
+To download SINGULAR for Windows 95/98/ME/NT/2K/XP
+==================================================
+
+1. Download one of the following self-extracting archives:
+Singular-2-0-4-Compact.exe <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/Singular-2-0-4-Compact.exe>
+Minimal archive to download. Installs Singular and minimal set of needed
+tools and DLLs.
+Singular-2-0-4-Typical.exe <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/Singular-2-0-4-Typical.exe>
+Typical archive to download. Installs Singular and the XEmacs editor to
+run ESingular.
+
+2. Double-click (or, execute), the self-extracting archives, and
+carefully follow the instructions given there.
+
+3. If, while running setup, you obtain the following message 
+Setup failed to launch installation engine: 
+Error loading type library/DLL, then you need to download and execute Microsoft DCOM98 package
+<http://www.microsoft.com/com/dcom/dcom98/download.asp>. 
+Such a problem could appear on Win 95/98.
+
+4. In case of problems, see the created file 
+/etc/INSTALL.txt (which is also located at
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/WINDOWS/INSTALL_win.htm>
+for details on how to finish the installation.
+
+To download SINGULAR for the Macintosh
+======================================
+For the SINGULAR version for Mac OS X refer to the Unix section.
+
+The SINGULAR version for Mac OS 9 is available as 
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-2-html.sea.hqx> (documentation) and <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-2-ppc-MPW.sea.hqx> (binaries and libraries). 
+The file <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/INSTALL_mac.html>
+gives details on how to finish the installation.
+
+
+
+
+E.3 Unix installation instructions
+==================================
+
+
+
+
+
+
+To install SINGULAR on a
+Unix
+platform, you need the following two
+archives:
+Singular-2-0-4-share.tar.gz
+contains architecture independent data like documentation and libraries
+(alternatively, you may also download
+Singular-2-0-4-share.zip).
+Singular-2-0-4-<uname>.tar.gz
+contains architecture dependent executables, like the SINGULAR
+program.
+
+
+<uname> is a description of the processor and operating system
+for which SINGULAR is compiled (e.g, ix86-Linux). Please contact us if
+you can not find an appropriate architecture dependent archive.
+
+You can obtain these (and other) archives from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular>.
+
+
+To install SINGULAR
+===================
+
+Make sure that you have approximately 12MByte of free disk space and follow
+these steps.
+1. Simply change to the directory in which you wish to install
+SINGULAR (usually wherever you install 3rd-party software), for example:
+cd /usr/local
+or
+mkdir install;cd install 
+(you do not need root privileges in this case)
+
+SINGULAR specific subdirectories will be created in such a way
+that multiple versions and multiple architecture dependent files
+of SINGULAR can peaceably coexist under the same /usr/local
+tree.
+
+2. Unpack the archives:
+gzip -dc <path_to>/Singular-2-0-4-<uname>.tar.gz | tar -pxf -
+gzip -dc <path_to>/Singular-2-0-4-share.tar.gz | tar -pxf -
+
+This creates the the directory Singular/2-0-4 with 
+ (sub)directories which contain
+ <uname> Singular and ESingular executables
+ LIB SINGULAR libraries (*.lib files)
+ emacs files for the SINGULAR Emacs user interface
+ info info files of SINGULAR manual
+ html html files of SINGULAR manual
+ doc miscellaneous documentation files
+ examples SINGULAR examples (*.sing files)
+
+For the executable to work, the directory layout must look pretty much
+like this; the executable looks for "sibling" directories at run-time
+to figure out where its SINGULAR libraries and on-line
+documentation files are. These constraints on the local directory layout
+are necessary to avoid having to hard-code pathnames into the
+executables, or require that environment variables be set before
+running the executable. In particular, you must not move or copy
+the SINGULAR executables to another place, but use soft-links
+instead.
+
+The following steps are optional:
+
+* Arrange that typing Singular at the shell prompt starts up the
+installed SINGULAR executable.
+
+If you have root permission, do:
+ln -s `pwd`/Singular/2-0-4/<uname>/Singular  /usr/local/bin/Singular-2-0-4
+ln -s `pwd`/Singular/2-0-4/<uname>/ESingular  /usr/local/bin/ESingular-2-0-4
+ln -s /usr/local/bin/Singular-2-0-4 /usr/local/bin/Singular
+ln -s /usr/local/bin/ESingular-2-0-4 /usr/local/bin/ESingular
+	
+Otherwise, append the directory
+`pwd`/Singular/2-0-4/<uname>/ to your $PATH
+environment variable. For the csh (or, tcsh) shell do:
+set path=(`pwd`/Singular/2-0-4/<uname> $path)
+For the bash (or, ksh) shell do:
+export PATH=`pwd`/Singular/2-0-4/<uname>/:$PATH
+
+You also might want to adjust your personal start-up files
+(~/.cshrc for csh, ~/.tcshrc for tcsh, or
+~/.profile for bash) accordingly,
+so that the $PATH variable is set automatically each time you login.
+
+IMPORTANT: Do never move or copy the file
+Singular/2-0-4/<uname>/Singular to another
+place, but use soft-links instead.
+
+* If you wish to use any of following features of
+SINGULAR, make sure that the respective programs are installed on your system:
+
+ Feature Requires
+ running ESingular, or Singular within Emacs Emacs <http://www.fsf.org/software/emacs/emacs.html> version
+20 or higher, or, XEmacs <http://www.xemacs.org> version 20.3 or
+higher (ESingular is only included in the Linux distribution,
+on other Unix platforms you can download the
+Singular emacs lisp files <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/src/> but we give no warranties for specific platforms).
+ on-line html help netscape <http://www.netscape.com> browser
+ on-line info help info <http://www.texinfo.org>, or
+tkinfo <http://math-www.uni-paderborn.de/~axel/tkinfo/> texinfo browser programs
+ TAB completion and history mechanism of ASCII-terminal interface shared readline <ftp://ftp.de.uu.net/pub/gnu/readline/>
+library, i.e. /usr/lib/libreadline.so
+ visualization of curves and surfaces surf <http://www.mathematik.uni-mainz.de/AlgebraischeGeometrie/surf/surf.shtml>
+version 0.9 or higher (only available for Linux and Solaris).
+
+You may download most of these programs from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils/>.
+
+* Customize the on-line help system:
+
+By default, on-line help is displayed in the html format using
+the netscape program.
+
+However, this behavior can be customized in several ways
+using the SINGULAR commands system("--browser",<browser>)
+and system("--allow-net", 1) (or, by starting up SINGULAR
+with the respective command line options).
+
+In particular, creating the file
+Singular/2-0-4/LIB/.singularrc and putting the
+SINGULAR command
+system("--allow-net", 1);
+in it, allows the on-line help system to fetch its html pages
+from Singular's WWW home site <http://www.singular.uni-kl.de>
+in case its local html pages are not found. That is, you may delete your
+local html pages, after setting this option.
+
+See also
+The online help system, Command line options, and
+Startup sequence,
+for more details on customizing the on-line help system.
+
+* Add the line
+* Singular:(singular.hlp).     A system for polynomial computations
+to your system-wide dir file (usually /usr/info/dir or
+/usr/local/info/dir and  copy or soft-link the file
+Singular/2-0-4/info/singular.hlp
+to the directory of your dir file.
+
+This assures that the
+SINGULAR manual can be  accessed from stand-alone texinfo
+browser programs such as info or Emacs.
+(It is not necessary for the use of the help system from within Singular.)
+
+Troubleshooting
+===============
+
+* General: SINGULAR can not find its libraries or on-line help
+1. Make sure that you have read and/or execute permission the files and
+directories of the Singular distribution. If in doubt, cd to the
+directory where you unpacked SINGULAR, and do (as root, if
+necessary):
+chmod -R a+rX Singular
+
+2. Start up SINGULAR, and issue the command system("Singular");.
+If this does not return the correct and expanded location of the
+SINGULAR executable, then you found a bug in SINGULAR, which we
+ask you to report (see below).
+3. Check whether the directories containing the libraries and on-line help
+files can be found by SINGULAR: If $bindir denotes the
+directory where the SINGULAR executable resides, then SINGULAR
+looks for library files as follows:
+
+ (0) the current directory
+
+ (1) all dirs of the environment variable SINGULARPATH
+
+ (2) $bindir/LIB
+
+ (3) $bindir/../LIB
+
+ (4) /usr/local/Singular/2-0-4/LIB
+
+ (4) /usr/local/Singular/LIB
+
+ The on-line info files need to be at  $bindir/../info and the
+html pages at $bindir/../html.
+
+You can inspect the found library and info/html
+directories by starting up SINGULAR with the
+--version option, or by issuing the SINGULAR command
+system("--version");.
+
+* Under SuSE-Linux, ESINGULAR does not display a prompt:
+This is due to the very restrictive access rights of /dev/pty* of
+the standard SuSE <http:/www.suse.de> distribution (starting from
+version 6.3 on). As root, do one of the following: Either
+chmod 666 /dev/pty*
+or,
+chmod g+s $(which emacs)
+chgrp tty $(which emacs)
+chmod g+s $(which xemacs)
+chgrp tty $(which xemacs)
+See also <http://sdb.suse.de/sdb/de/html/ke_devpts-63.html> for
+details.
+
+* For HPUX systems:
+
+The /etc/termcap files which are pre-installed on these systems are
+broken which leads to messages like
+Name collision between 9826 9836
+when SINGULAR is started. To fix this, you can get fixed termcap
+files from <ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils>
+by downloading the files termcap-<uname-description> and either
+replace your /etc/termcap file by the file found there, or view, and
+redo the respective changes by diff'ing the downloaded and the
+original file.
+
+* For ix86-Linux systems:
+
+Due to some incompatibilities of shared libraries, the start-up of
+SINGULAR might fail with messages like
+  Can not find shared library ...
+For DEBIAN systems, try to do
+ln -s /usr/lib/libncurses.so /usr/lib/libncurses.so.4.
+
+If this fails (and on other systems)
+download and install
+Singular-2-0-4-ix86-Linux-static.tar.gz.
+
+* For AIX systems:
+
+The default info program of the system is not GNU's texinfo
+browser which is used to display the on-line documentation in the
+info format. Therefore, the distribution of the AIX executable
+already contains the info browser program.
+If you remove this program, make sure that the GNU
+info program is executed if you call 'info' from your shell.
+
+* For any other troubles:
+
+Please send an email to <mailto:singular@mathematik.uni-kl.de>
+and include the header which is displayed by starting up SINGULAR
+with the -v option, and a description of your machine (issue the
+command uname -a on your shell) in your report.
+
+
+
+
+E.4 Windows installation instructions
+=====================================
+
+
+
+
+
+
+For the impatient:
+==================
+* If you run Windows NT/2K/XP, make sure you are logged in with the
+Administrator rights.
+* If you have some older version of Singular installed, please uninstall it
+before installing Singular-2-0-4. It is recommended to
+install the new Singular in the same directory where the previous
+version was installed. Thus your existing environment will be used automatically.
+* If you have Cygwin or XEmacs installed and they do not belong
+of some previous Singular installation,
+please read the information below.
+* Execute the self-extracting installation archive and
+carefully follow the instructions given there. 
+Setup will analyze your system, create the corresponding configuration
+and give you further tips on the installation process.
+* In case of troubles, see the installed files /etc/INSTALL.txt,
+/etc/TROUBLESHOOTING.txt or visit
+the Singular Forum at <http://www.singular.uni-kl.de/forum>.
+
+
+Installation preliminaries
+==========================
+
+Running Singular on MS Windows requires that the Cygwin DLL
+(dynamically linked library) version 1.3.9 or higher is installed on your
+system (see <http://sources.redhat.com/cygwin/> for details about
+Cygwin). We install and configure Cygwin version 1.3.9 automatically, if
+the BasicCygwin component is selected (default setting).
+
+To run ESingular (i.e. Singular within its Emacs interface) on
+MS Windows requires furthermore that the XEmacs editor is installed on
+your system. We install and configure XEmacs version 21.1.13 automatically, if the XEmacs component is selected.
+
+
+The Singular installation is divided into the following
+components (you see them explicitly if you choose the Custom Setup Type
+during the installation):
+Program Files:
+        Singular
+Contains the Singular Program, documentation and example files.
+
+All files of this component are installed under the directory
+/usr/local/Singular/2-0-4
+BasicCygwin
+Contains the Cygwin DLL and basic tools/programs (like bash or
+info) of the  Cygwin environment.
+
+The Cygwin DLL and programs are installed in the directory
+/bin. Miscellaneous documentation and configuration files are
+installed into the directory /etc.
+XEmacs
+Contains the Cygwin port of the XEmacs editor (see
+<http://www.xemacs.org> for more about XEmacs) version 21.1.13.
+
+All files of this component are installed under the directory
+/usr/local.
+ESingular
+Contains the ESingular, the most comfortable Singular interface.
+Requires XEmacs to run.
+        Remark:
+All essential DLLs, some programs and symbolic links are installed in the directory
+/usr/local/Singular/2-0-4/ix86-Win, which must be present in your PATH system variable.
+Help Files:
+WinHelp
+Contains Singular Manual, converted to Windows help format (.hlp).
+We recommend to install it, because it is small in size. Moreover,
+we set it as default help browser in all the Singular executables.
+HTML Help
+Contains the "native" Singular Manual. It's not included by default,
+because it is much bigger than WinHelp, though it has better typesetting
+of mathematical formulae.
+
+The Typical Setup Type of the Singular-2-0-4-Typical.exe contains
+BasicCygwin, Singular, 
+XEmacs, ESingular, WinHelp and HTML Help 
+components. The Compact Setup Type does not contain only the HTML Help component.
+
+Downloading preliminaries
+=========================
+
+To install Singular on a PC running Windows 95/98/ME/NT/2K/XP, you need
+to download one of the following archive files:
+
+Minimal archive: Singular-2-0-4-Compact.exe <Singular-2-0-4-Compact.exe>      (BasicCygwin, Singular, WinHelp components)
+
+Typical archive : Singular-2-0-4-Typical.exe <Singular-2-0-4-Typical.exe>      (BasicCygwin, Singular, XEmacs, ESingular, WinHelp, HTML Help components)
+
+You can obtain these (and other) archives 
+either from the WINDOWS directory on the Singular CD or from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/>.
+
+
+
+Installing Singular
+===================
+
+The recent Setup program analyzes your system, e.g. it detects
+whether Cygwin and XEmacs are present and functional. Then it gives you
+hints and/or error messages with instructions during the installation.
+
+If you have Cygwin installed
+        If the version of cygwin1.dll is not less than 1.3.9,
+        you will be prompted that the BasicCygwin component will not
+        be installed. Moreover, the existing Cygwin root directory will be proposed as
+        the default installation directory. You can accept it, then
+        Singular will be placed into the existing Cygwin environment.
+        If you choose another destination, Singular will use Cygwin
+        programs anyway. If your Cygwin has incorrect settings (like
+        inconsistent mount points among the important ones), Singular
+        Setup will correct them. 
+
+      If setup could not detect cygwin, present in the system, you
+        can try to break the installation, start it once more, choose the
+        "Custom" setup type and unselect the BasicCygwin component.
+
+If you have XEmacs installed
+        The Cygwin port of XEmacs version 21.1.13 together 
+        with the most
+        important packages is included in the distribution. The use of 
+        non-Cygwin ports or earlier Cygwin ports has some 
+        quirks and does not work 
+        properly together with Singular (i.e., running ESingular 
+        results in problems). Nevertheless, if you want to test the
+        compatibility of ESingular with your own XEmacs, just
+        de-select the XEmacs component, but leave ESingular selected.
+        If your XEmacs happens to be incompatible with ESingular, you can
+        install just the XEmacs component and use in fact two different
+        XEmacs programs. 
+        The setup program will search for XEmacs and packages 
+        in <TARGETDIR>/usr/local/lib (here <TARGETDIR> is the directory which you selected while running setup). If you have Cygwin and the Cygwin port of
+        XEmacs, you might have XEmacs installed there. To avoid overwriting your XEmacs files, setup will ask you what to do.
+
+
+Customizing Singular
+====================
+
+The following step(s) are optional:
+* To conveniently access all files on your computer, mount the drives of
+your disk(s):
+1. Open a rxvt terminal (from Start->Programs->Singular 2.0->Tools).
+2. For each drive (letter) issue the following command (the drive C:
+is used in the example):
+mount -f -s -t C: /C
+After mounting the drive(s) this way, you can conveniently access the
+files on a drive from the bash shell and from XEmacs using the /C/ prefix. Otherwise, you need to type /cygdrive/C - that is
+the Cygwin convention. You can get more information on mount command by invoking mount --help. Command umount unmount the selected
+mount point.
+
+
+* Create your personal HOME directory.
+
+Various applications (e.g., bash or XEmacs) store
+user-specific configuration/customization files in the HOME
+directory of the current user. During the installation, the HOME
+directory is globally set for all users to /home/Singular. To
+create your individual  HOME directory follow these steps:
+1. Create a directory (folder), say, C:\home\MyHome.
+2. Copy all files from /home/Singular to C:\home\MyHome.
+3. Set the user environment variable HOME to C:\home\MyHome:
+
+On Windows 95/98/ME, edit the respective line the AUTOEXEC.BAT
+file.
+
+On Windows NT/2K/XP add an entry in your Environment control
+panel.
+4. Restart your computer (On Windows 95/98/ME).
+You may furthermore examine the files copied into your HOME
+directory and adjust (i.e. edit) them to your personal
+preferences/needs. System-wide settings are stored in the file 
+/etc/profile.
+
+
+Uninstalling Singular
+=====================
+
+You can uninstall individual or all installed components by opening the
+Software shortcut of the Control panel. 
+Simply double-click the Singular item and
+follow the instructions given there.
+
+
+For any other troubles,
+please send an email to <mailto:singular@mathematik.uni-kl.de>
+and include the header which is displayed by starting up Singular
+with the -v option, and a description of your machine and
+operating system.
+
+
+
+
+E.5 Macintosh installation instructions
+=======================================
+
+For the SINGULAR version for Mac OS X refer to the Unix section.
+The SINGULAR version for Mac OS 9 is available as
+`ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-4-html.sea.hqx'
+(documentation) and
+`ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/Singular-2-0-4-ppc-MPW.sea.hqx'
+(binaries and libraries).  The file
+`ftp://www.mathematik.uni-kl.de/pub/Math/Singular/MAC/classic/INSTALL_mac.txt'
+gives details on how to finish the installation.
+
+
+
+
+Installation preliminaries
+==========================
+
+This is the final distribution of SINGULAR as MPW tool.
+Newer versions of SINGULAR will only be available for MacOS X (which is handled like other UNIX-systems).
+To install SINGULAR on a Macintosh (PPC only), you need the file Singular-2-0-2-ppc-MPW.sea.hqx resp. Singular-2-0-2-ppc-MPW.hqx which you can obtain by public ftp from <ftp://www.mathematik.uni-kl.de/pub/Math/Singular>.
+Furthermore, you need MacOS version >= 8.5 with an installed MPW shell. 
+This version works also without Carbon.
+
+
+
+Installing SINGULAR on MacOS X
+==============================
+
+Please see <INSTALL_unix.html>. 
+In contrast to other Unix systems, under MacOS X, SINGULAR is only available as a shell command and there is no Emacs interface.
+Enter Singular in a terminal under Aqua to run SINGULAR.
+Alternatively, you may choose Terminal as the application to open the file Singular with and put it into the dock.
+
+
+Installing Singular
+===================
+
+1. Make sure that you have MPW  installed on your system. 
+See below for instructions on how to install MPW and how to avoid conflicts with the Carbon.lib.
+
+2. Download the file Singular-2-0-2-ppc-MPW.sea.hqx.
+
+3. Expand the downloaded file using a standard Expander (like Compact Pro or StuffIt) to obtain the corresponding self-extracting Singular-2-0-2-ppc-MPW.sea file.
+
+4. Click on the self-extracting Singular-2-0-2-ppc-MPW.sea file. 
+This  will create a new folder named Singular: which contains the SINGULAR program in the subfolder 2-0-2:ppc-MPW:. 
+Do not change the structure of the subfolders.
+
+5. Make the folder which contains the executable to the working directory of the MPW shell. 
+To start SINGULAR, you need to type Singular in the MPW worksheet. 
+Clicking on the SINGULAR icon on the desktop, starts up the MPW shell (the working directory of the MPW shell is then the directory of the executable). 
+If you start the MPW shell manually, you must set the working directory to the directory of the SINGULAR program. 
+You may use the directory menu or write into the startup file of the MPW shell the line
+setdirectory "{Boot}"Singular:2-0-2:ppc-MPW:
+if "{Boot}"Singular:2-0-2:ppc-MPW: is the folder of the executable.
+
+After unpacking, you will have a directory structure like:
+Singular:2-0-2:ppc-MPW:Singular
+Singular executable
+Singular:2-0-2:ppc-MPW:libparse
+parser for Singular libraries
+Singular:2-0-2:LIB:
+Singular libraries
+Singular:2-0-2:LIB:gftables:
+Singular gftables
+Singular:2-0-2:doc:singular.idx
+index of inline help
+Singular:2-0-2:doc:singular.hlp
+file for inline help
+Singular:2-0-2:README
+information of the distribution
+Singular:2-0-2:README.hlml
+Singular:2-0-2:COPYING
+license information
+Singular:2-0-2:COPYING.html
+Singular:2-0-2:NEWS
+news in the distribution
+Singular:2-0-2:NEWS.html
+Singular:2-0-2:INSTALL
+instructions like this file
+
+The SINGULAR libraries have a special form to work here. 
+Do not use the libraries from other distributions. 
+They are not compatible. 
+A supplementary file is Singular-2-0-2-html.sea.hqx which contains the html pages. 
+You can use this with a browser but not from the program SINGULAR.
+The self-extracting archive will create the folder html: and you may extract it at "{Boot}"Singular:2-0-2:.
+
+
+
+Installing MPW
+==============
+
+The final version of MPW is downloadable from Apple at <ftp://ftp.apple.com/developer/Tool_Chest/Core_Mac_OS_Tools/MPW_etc./MPW-GM_Images/>.
+Older versions of Carbon.lib may conflict with the latest MPW. 
+In this case, you need to update Carbon.lib or work without it.
+
+
+Restrictions
+============
+
+Some typical Unix features of SINGULAR are not working with MPW, e.g. links and cooperation with other programs like XEmacs and xterm.
+
+For any other troubles, please send an email to <mailto:singular@mathematik.uni-kl.de> and include the header which is displayed by starting up SINGULAR
+with the -v option, and a description of your machine and operating system.
+
+
+
+

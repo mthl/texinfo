@@ -1,0 +1,92 @@
+<div id="Multiple-developers"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: How to store binary files#Binary-howto  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: File status#File-status  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Multiple-developers-1"></div>
+== Multiple developers ==
+<div id="index-Multiple-developers"></div>
+<div id="index-Team-of-developers"></div>
+<div id="index-File-locking"></div>
+<div id="index-Locking-files"></div>
+<div id="index-Working-copy"></div>
+<div id="index-Reserved-checkouts"></div>
+<div id="index-Unreserved-checkouts"></div>
+<div id="index-RCS_002dstyle-locking"></div>
+
+<p>When more than one person works on a software project
+things often get complicated.  Often, two people try to
+edit the same file simultaneously.  One solution, known
+as <em>file locking</em> or <em>reserved checkouts</em>, is
+to allow only one person to edit each file at a time.
+This is the only solution with some version control
+systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
+the usual way to get reserved checkouts with <small>CVS</small>
+is the <code>cvs admin -l</code> command (see section [cvs: admin options#admin-options admin options]).  This is not as nicely integrated into
+<small>CVS</small> as the watch features, described below, but it
+seems that most people with a need for reserved
+checkouts find it adequate.
+It also may be possible to use the watches
+features described below, together with suitable
+procedures (not enforced by software), to avoid having
+two people edit at the same time.
+</p>
+<p>The default model with <small>CVS</small> is known as
+<em>unreserved checkouts</em>.  In this model, developers
+can edit their own <em>working copy</em> of a file
+simultaneously.  The first person that commits his
+changes has no automatic way of knowing that another
+has started to edit it.  Others will get an error
+message when they try to commit the file.  They must
+then use <small>CVS</small> commands to bring their working copy
+up to date with the repository revision.  This process
+is almost automatic.
+</p>
+<p><small>CVS</small> also supports mechanisms which facilitate
+various kinds of communication, without actually
+enforcing rules like reserved checkouts do.
+</p>
+<p>The rest of this chapter describes how these various
+models work, and some of the issues involved in
+choosing between them.
+</p>
+
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: File status#File-status  File status]::<nowiki>                 A file can be in several states
+</nowiki>&bull;[cvs: Bringing a file up to date#Updating-a-file  Updating a file]::<nowiki>             Bringing a file up-to-date
+</nowiki>&bull;[cvs: Conflicts example#Conflicts-example  Conflicts example]::<nowiki>           An informative example
+</nowiki>&bull;[cvs: Informing others about commits#Informing-others  Informing others]::<nowiki>            To cooperate you must inform
+</nowiki>&bull;[cvs: Several developers simultaneously attempting to run CVS#Concurrency  Concurrency]::<nowiki>                 Simultaneous repository access
+</nowiki>&bull;[cvs: Mechanisms to track who is editing files#Watches  Watches]::<nowiki>                     Mechanisms to track who is editing files
+</nowiki>&bull;[cvs: Choosing between reserved or unreserved checkouts#Choosing-a-model  Choosing a model]::<nowiki>            Reserved or unreserved checkouts?
+</nowiki></pre>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: How to store binary files#Binary-howto  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: File status#File-status  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

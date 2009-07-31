@@ -1,0 +1,68 @@
+18.5 `definfoenclose': Customized Highlighting
+==============================================
+
+A @definfoenclose command may be used to define a highlighting
+command for Info, but not for TeX.  A command defined using
+@definfoenclose marks text by enclosing it in strings that
+precede and follow the text.  You can use this to get closer control of
+your Info output.
+ 
+Presumably, if you define a command with @definfoenclose for Info,
+you will create a corresponding command for TeX, either in
+`texinfo.tex', `texinfo.cnf', or within an `@iftex' in
+your document.
+
+Write a @definfoenclose command on a line and follow it with
+three arguments separated by commas.  The first argument to
+@definfoenclose is the @-command name (without the @);
+the second argument is the Info start delimiter string; and the third
+argument is the Info end delimiter string.  The latter two arguments
+enclose the highlighted text in the Info file.  A delimiter string may
+contain spaces.  Neither the start nor end delimiter is required.  If
+you do not want a start delimiter but do want an end delimiter, you must
+follow the command name with two commas in a row; otherwise, the Info
+formatting commands will naturally misinterpret the end delimiter string
+you intended as the start delimiter string.
+
+If you do a @definfoenclose on the name of a pre-defined macro
+(such as @emph, @strong, @t, or @i), the
+enclosure definition will override the built-in definition.
+ 
+An enclosure command defined this way takes one argument in braces; this
+is intended for new markup commands (see Marking Text).
+
+For example, you can write:
+
+@definfoenclose phoo,//,\\
+
+near the beginning of a Texinfo file to define @phoo as an Info
+formatting command that inserts `//' before and `\\' after the argument
+to @phoo.  You can then write @phoo{bar} wherever you
+want `//bar\\' highlighted in Info.
+
+Also, for TeX formatting, you could write 
+
+@iftex
+@global@let@phoo=@i
+@end iftex
+
+to define @phoo as a command that causes TeX to typeset the
+argument to @phoo in italics.
+
+Each definition applies to its own formatter: one for TeX, the other
+for texinfo-format-buffer or texinfo-format-region.  The
+@definfoenclose command need not be within `@ifinfo', but
+the raw TeX commands do need to be in `@iftex'.
+
+Here is another example: write
+
+@definfoenclose headword, , :
+
+near the beginning of the file, to define @headword as an Info
+formatting command that inserts nothing before and a colon after the
+argument to @headword.
+
+`@definfoenclose' definitions must not be recursive, directly or
+indirectly.
+
+

@@ -1,0 +1,539 @@
+This file documents the XEmacs editor.
+
+Copyright (C) 1985, 1986, 1988 Richard M. Stallman.
+Copyright (C) 1991, 1992, 1993, 1994 Lucid, Inc.
+Copyright (C) 1993, 1994 Sun Microsystems, Inc.
+Copyright (C) 1995 Amdahl Corporation.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+sections entitled "The GNU Manifesto", "Distribution" and "GNU
+General Public License" are included exactly as in the original, and
+provided that the entire resulting derived work is distributed under the
+terms of a permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that the sections entitled "The GNU Manifesto",
+"Distribution" and "GNU General Public License" may be included in a
+translation approved by the author instead of in the original English.
+
+The XEmacs Editor
+*****************
+
+
+XEmacs is the extensible, customizable, self-documenting real-time
+display editor.  This Info file describes how to edit with Emacs
+and some of how to customize it, but not how to extend it.  It
+corresponds to XEmacs version 21.0.
+
+This manual is intended as a detailed reference to XEmacs.  If
+you are looking for an introductory manual, see the New User's
+Guide.
+
+* License::     The GNU General Public License gives you permission
+		to redistribute XEmacs on certain terms; and also
+		explains that there is no warranty.
+* Distrib::     How to get XEmacs.
+* Intro::       An introduction to XEmacs concepts.
+* Glossary::    The glossary.
+* Manifesto::   What's GNU?  Gnu's Not Unix!
+
+Indices, nodes containing large menus
+* Key Index::      An item for each standard XEmacs key sequence.
+* Command Index::  An item for each command name.
+* Variable Index:: An item for each documented variable.
+* Concept Index::  An item for each concept.
+
+Important General Concepts
+* Frame::      How to interpret what you see on the screen.
+* Keystrokes::  Keyboard gestures XEmacs recognizes.
+* Pull-down Menus:: 
+                The XEmacs Pull-down Menus available under X.
+* Entering Emacs::    
+                Starting Emacs from the shell.
+* Exiting::     Stopping or killing XEmacs.
+* Command Switches::  
+                Hairy startup options.
+* Startup Paths::
+                How XEmacs finds Directories and Files.
+* Packages::    How XEmacs organizes its high-level functionality.
+
+Fundamental Editing Commands
+* Basic::       The most basic editing commands.
+* Undo::        Undoing recently made changes in the text.
+* Minibuffer::  Entering arguments that are prompted for.
+* M-x::         Invoking commands by their names.
+* Help::        Commands for asking XEmacs about its commands.
+
+Important Text-Changing Commands
+* Mark::        The mark: how to delimit a "region" of text.
+* Mouse Selection:: 
+                Selecting text with the mouse.
+* Additional Mouse Operations::
+                Other operations available from the mouse.
+* Killing::     Killing text.
+* Yanking::     Recovering killed text.  Moving text.
+* Using X Selections::
+                Using primary selection, cut buffers, and highlighted regions.
+* Accumulating Text::
+                Other ways of copying text.
+* Rectangles::  Operating on the text inside a rectangle on the screen.
+* Registers::   Saving a text string or a location in the buffer.
+* Display::     Controlling what text is displayed.
+* Search::      Finding or replacing occurrences of a string.
+* Fixit::       Commands especially useful for fixing typos.
+
+Larger Units of Text
+* Files::       All about handling files.
+* Buffers::     Multiple buffers; editing several files at once.
+* Windows::     Viewing two pieces of text at once.
+* Mule::	Using world scripts.
+
+Advanced Features
+* Major Modes:: Text mode vs. Lisp mode vs. C mode ...
+* Indentation:: Editing the white space at the beginnings of lines.
+* Text::        Commands and modes for editing English.
+* Programs::    Commands and modes for editing programs.
+* Running::     Compiling, running and debugging programs.
+* Abbrevs::     How to define text abbreviations to reduce
+                 the number of characters you must type.
+* Picture::     Editing pictures made up of characters
+                 using the quarter-plane screen model.
+* Sending Mail:: Sending mail in XEmacs.
+* Reading Mail:: Reading mail in XEmacs.
+* Calendar/Diary:: A Calendar and diary facility in XEmacs.
+* Sorting::	Sorting lines, paragraphs or pages within XEmacs.
+* Shell::       Executing shell commands from XEmacs.
+* Narrowing::   Restricting display and editing to a portion
+                 of the buffer.
+* Hardcopy::	Printing buffers or regions.
+* Recursive Edit::
+                A command can allow you to do editing
+                 "within the command".  This is called a
+                 `recursive editing level'.
+* Dissociated Press::  Dissociating text for fun.
+* CONX::	       A different kind of dissociation.
+* Amusements::         Various games and hacks.
+* Emulation::	       Emulating some other editors with XEmacs.
+* Customization::      Modifying the behavior of XEmacs.
+
+Recovery from Problems.
+* Quitting::    Quitting and aborting.
+* Lossage::     What to do if XEmacs is hung or malfunctioning.
+* Bugs::        How and when to report a bug.
+
+Here are some other nodes which are really inferiors of the ones
+already listed, mentioned here so you can get to them in one step:
+
+ -- The Detailed Node Listing --
+
+The Organization of the Frame
+
+* Point::	        The place in the text where editing commands operate.  
+* Echo Area::           Short messages appear at the bottom of the frame.  
+* Mode Line::	        Interpreting the mode line.  
+* XEmacs under X::      Some information on using XEmacs under the X 
+                        Window System. 
+
+Keystrokes
+
+* Intro to Keystrokes::      Keystrokes as building blocks of key sequences.
+* Representing Keystrokes::  Using lists of modifiers and keysyms to
+                             represent keystrokes.
+* Key Sequences::            Combine key strokes into key sequences you can
+                             bind to commands.
+* String Key Sequences::     Available for upward compatibility.
+* Meta Key::                 Using <ESC> to represent <Meta>
+* Super and Hyper Keys::     Adding modifier keys on certain keyboards.
+* Character Representation:: How characters appear in XEmacs buffers.
+* Commands::                 How commands are bound to key sequences.
+                    
+Pull-down Menus
+
+* File Menu::           Items on the File menu.
+* Edit Menu::           Items on the Edit menu.
+* Apps Menu::		Items on the Apps menu.
+* Options Menu::        Items on the Options menu. 
+* Buffers Menu::        Information about the Buffers menu.
+* Tools Menu::		Items on the Tools menu.
+* Help Menu::           Items on the Help menu. 
+* Menu Customization::  Adding and removing menu items and related
+                        operations.
+
+Packages
+
+* Packages::            Introduction to XEmacs Packages.
+* Package Terminology:: Understanding different kinds of packages.
+* Installing Packages:: How to install packages.
+* Building Packages::   Building packages from sources.
+* Local.rules File::    An important part of building packages.
+* Creating Packages::   The basics.
+* Available Packages::  A brief directory of packaged LISP.
+
+Basic Editing Commands
+
+* Blank Lines::        Commands to make or delete blank lines.
+* Continuation Lines:: Lines too wide for the frame.
+* Position Info::      What page, line, row, or column is point on?
+* Arguments::	       Numeric arguments for repeating a command.
+
+The Minibuffer
+
+* File: Minibuffer File.  Entering file names with the minibuffer.
+* Edit: Minibuffer Edit.  How to edit in the minibuffer.
+* Completion::		  An abbreviation facility for minibuffer input.
+* Repetition::		  Re-executing commands that used the minibuffer.
+
+The Mark and the Region
+
+* Setting Mark::	Commands to set the mark.
+* Using Region::	Summary of ways to operate on contents of the region.
+* Marking Objects::	Commands to put region around textual units.
+* Mark Ring::   	Previous mark positions saved so you can go back there.
+
+Yanking
+
+* Kill Ring::       Where killed text is stored.  Basic yanking.
+* Appending Kills:: Several kills in a row all yank together.
+* Earlier Kills::   Yanking something killed some time ago.
+
+Using X Selections
+
+* X Clipboard Selection::     	Pasting to the X clipboard.
+* X Selection Commands::	Other operations on the selection.
+* X Cut Buffers::       	X cut buffers are available for compatibility.
+* Active Regions::      	Using zmacs-style highlighting of the
+                        	 selected region.
+
+Registers
+
+* Position: RegPos.           Saving positions in registers.
+* Text: RegText.              Saving text in registers.
+* Rectangle: RegRect.         Saving rectangles in registers.
+* Configurations: RegConfig.  Saving window configurations in registers.
+* Files: RegFiles.            File names in registers.
+* Numbers: RegNumbers.        Numbers in registers.
+* Bookmarks::                 Bookmarks are like registers, but persistent.
+
+Controlling the Display
+
+* Scrolling::	           Moving text up and down in a window.
+* Horizontal Scrolling::   Moving text left and right in a window.
+* Selective Display::      Hiding lines with lots of indentation.
+* Display Vars::           Information on variables for customizing display.
+
+Searching and Replacement
+
+* Incremental Search::     Search happens as you type the string.
+* Non-Incremental Search:: Specify entire string and then search.
+* Word Search::            Search for sequence of words.
+* Regexp Search::          Search for match for a regexp.
+* Regexps::                Syntax of regular expressions.
+* Search Case::            To ignore case while searching, or not.
+* Replace::                Search, and replace some or all matches.
+* Other Repeating Search:: Operating on all matches for some regexp.
+
+Replacement Commands
+
+* Unconditional Replace::  Replacing all matches for a string.
+* Regexp Replace::         Replacing all matches for a regexp.
+* Replacement and Case::   How replacements preserve case of letters.
+* Query Replace::          How to use querying.
+
+Commands for Fixing Typos
+
+* Kill Errors:: Commands to kill a batch of recently entered text.
+* Transpose::   Exchanging two characters, words, lines, lists...
+* Fixing Case:: Correcting case of last word entered.
+* Spelling::    Apply spelling checker to a word, or a whole file.
+
+File Handling
+
+* File Names::       How to type and edit file name arguments.
+* Visiting::         Visiting a file prepares XEmacs to edit the file.
+* Saving::           Saving makes your changes permanent.
+* Reverting::        Reverting cancels all the changes not saved.
+* Auto Save::        Auto Save periodically protects against loss of data.
+* Version Control::  Version control systems (RCS and SCCS).
+* ListDir::          Listing the contents of a file directory.
+* Comparing Files::  Finding where two files differ.
+* Dired::            "Editing" a directory to delete, rename, etc.
+                     the files in it.
+* Misc File Ops::    Other things you can do on files.
+
+Saving Files
+
+* Backup::       How XEmacs saves the old version of your file.
+* Interlocking:: How XEmacs protects against simultaneous editing
+                  of one file by two users.
+
+Backup Files
+
+* Names: Backup Names.		How backup files are named;
+				Choosing single or numbered backup files.
+* Deletion: Backup Deletion.	XEmacs deletes excess numbered backups.
+* Copying: Backup Copying.	Backups can be made by copying or renaming.
+
+Auto-Saving: Protection Against Disasters
+
+* Files: Auto Save Files.
+* Control: Auto Save Control.
+* Recover::		Recovering text from auto-save files.
+
+Version Control
+
+* Concepts of VC::		Basic version control information;
+				  checking files in and out.
+* Editing with VC::		Commands for editing a file maintained
+				  with version control.
+* Variables for Check-in/out::	Variables that affect the commands used
+				  to check files in or out.
+* Log Entries::			Logging your changes.
+* Change Logs and VC::		Generating a change log file from log
+				  entries. 
+* Old Versions::		Examining and comparing old versions.
+* VC Status::			Commands to view the VC status of files and
+				  look at log entries.
+* Renaming and VC::		A command to rename both the source and
+				  master file correctly.
+* Snapshots::			How to make and use snapshots, a set of
+				  file versions that can be treated as a unit.
+* Version Headers::		Inserting version control headers into
+				  working files.
+
+Snapshots
+
+* Making Snapshots::		The snapshot facilities.
+* Snapshot Caveats::		Things to be careful of when using snapshots.
+
+Dired, the Directory Editor
+
+* Enter: Dired Enter.         How to invoke Dired.
+* Edit: Dired Edit.           Editing the Dired buffer.
+* Deletion: Dired Deletion.   Deleting files with Dired.
+* Immed: Dired Immed.         Other file operations through Dired.
+
+Using Multiple Buffers
+
+* Select Buffer::   Creating a new buffer or reselecting an old one.
+* List Buffers::    Getting a list of buffers that exist.
+* Misc Buffer::     Renaming; changing read-onliness; copying text.
+* Kill Buffer::     Killing buffers you no longer need.
+* Several Buffers:: How to go through the list of all buffers
+                     and operate variously on several of them.
+
+Multiple Windows
+
+* Basic Window::     Introduction to XEmacs windows.
+* Split Window::     New windows are made by splitting existing windows.
+* Other Window::     Moving to another window or doing something to it.
+* Pop Up Window::    Finding a file or buffer in another window.
+* Change Window::    Deleting windows and changing their sizes.
+
+Major Modes
+
+* Choosing Modes::     How major modes are specified or chosen.
+
+Indentation
+
+* Indentation Commands:: Various commands and techniques for indentation.
+* Tab Stops::            You can set arbitrary "tab stops" and then
+                         indent to the next tab stop when you want to.
+* Just Spaces::          You can request indentation using just spaces.
+
+Commands for Human Languages
+
+* Text Mode::   The major modes for editing text files.
+* Nroff Mode::  The major mode for editing input to the formatter nroff.
+* TeX Mode::    The major modes for editing input to the formatter TeX.
+* Outline Mode:: The major mode for editing outlines.
+* Words::       Moving over and killing words.
+* Sentences::   Moving over and killing sentences.
+* Paragraphs::	Moving over paragraphs.
+* Pages::	Moving over pages.
+* Filling::     Filling or justifying text
+* Case::        Changing the case of text
+
+TeX Mode
+
+* Editing: TeX Editing.   Special commands for editing in TeX mode.
+* Printing: TeX Print.    Commands for printing part of a file with TeX.
+
+Outline Mode
+
+* Format: Outline Format.	  What the text of an outline looks like.
+* Motion: Outline Motion.	  Special commands for moving through outlines.
+* Visibility: Outline Visibility. Commands to control what is visible.
+
+Filling Text
+
+* Auto Fill::	  Auto Fill mode breaks long lines automatically.
+* Fill Commands:: Commands to refill paragraphs and center lines.
+* Fill Prefix::   Filling when every line is indented or in a comment, etc.
+
+Editing Programs
+
+* Program Modes::       Major modes for editing programs.
+* Lists::               Expressions with balanced parentheses.
+                         There are editing commands to operate on them.
+* Defuns::              Each program is made up of separate functions.
+                         There are editing commands to operate on them.
+* Grinding::            Adjusting indentation to show the nesting.
+* Matching::            Insertion of a close-delimiter flashes matching open.
+* Comments::            Inserting, filling and aligning comments.
+* Balanced Editing::    Inserting two matching parentheses at once, etc.
+* Lisp Completion::     Completion on symbol names in Lisp code.
+* Documentation::       Getting documentation of functions you plan to call.
+* Change Log::          Maintaining a change history for your program.
+* Tags::                Go directly to any function in your program in one
+                         command.  Tags remembers which file it is in.
+* Fortran::		Fortran mode and its special features.
+* Asm Mode::            Asm mode and its special features.
+
+Indentation for Programs
+
+* Basic Indent::
+* Multi-line Indent::   Commands to reindent many lines at once.
+* Lisp Indent::		Specifying how each Lisp function should be indented.
+* C Indent::		Choosing an indentation style for C code.
+
+Tags Tables
+
+* Tag Syntax::		Tag syntax for various types of code and text files.  
+* Create Tags Table::	Creating a tags table with etags.
+* Select Tags Table::	How to visit a tags table.
+* Find Tag::		Commands to find the definition of a specific tag. 
+* Tags Search::		Using a tags table for searching and replacing.
+* List Tags::		Listing and finding tags defined in a file.
+
+Fortran Mode
+
+* Motion: Fortran Motion.     Moving point by statements or subprograms.
+* Indent: Fortran Indent.     Indentation commands for Fortran.
+* Comments: Fortran Comments. Inserting and aligning comments.
+* Columns: Fortran Columns.   Measuring columns for valid Fortran.
+* Abbrev: Fortran Abbrev.     Built-in abbrevs for Fortran keywords.
+
+Fortran Indentation
+
+* Commands: ForIndent Commands. Commands for indenting Fortran.
+* Numbers:  ForIndent Num.      How line numbers auto-indent.
+* Conv:     ForIndent Conv.     Conventions you must obey to avoid trouble.
+* Vars:     ForIndent Vars.     Variables controlling Fortran indent style.
+
+Compiling and Testing Programs
+
+* Compilation::        Compiling programs in languages other than Lisp
+                        (C, Pascal, etc.)
+* Modes: Lisp Modes.   Various modes for editing Lisp programs, with
+                       different facilities for running the Lisp programs.
+* Libraries: Lisp Libraries.      Creating Lisp programs to run in XEmacs.
+* Eval: Lisp Eval.     Executing a single Lisp expression in XEmacs.
+* Debug: Lisp Debug.   Debugging Lisp programs running in XEmacs.
+* Interaction: Lisp Interaction.  Executing Lisp in an XEmacs buffer.
+* External Lisp::      Communicating through XEmacs with a separate Lisp.
+
+Lisp Libraries
+
+* Loading::		Loading libraries of Lisp code into XEmacs for use.
+* Compiling Libraries:: Compiling a library makes it load and run faster.
+* Mocklisp::		Converting Mocklisp to Lisp so XEmacs can run it.
+
+Abbrevs
+
+* Defining Abbrevs::  Defining an abbrev, so it will expand when typed.
+* Expanding Abbrevs:: Controlling expansion: prefixes, canceling expansion.
+* Editing Abbrevs::   Viewing or editing the entire list of defined abbrevs.
+* Saving Abbrevs::    Saving the entire list of abbrevs for another session.
+* Dynamic Abbrevs::   Abbreviations for words already in the buffer.
+
+Editing Pictures
+
+* Basic Picture::         Basic concepts and simple commands of Picture Mode.
+* Insert in Picture::     Controlling direction of cursor motion
+                           after "self-inserting" characters.
+* Tabs in Picture::       Various features for tab stops and indentation.
+* Rectangles in Picture:: Clearing and superimposing rectangles.
+
+Sending Mail
+
+* Format: Mail Format.    Format of the mail being composed.
+* Headers: Mail Headers.  Details of allowed mail header fields.
+* Mode: Mail Mode.        Special commands for editing mail being composed.
+
+Running Shell Commands from XEmacs
+
+* Single Shell::         How to run one shell command and return.
+* Interactive Shell::    Permanent shell taking input via XEmacs.
+* Shell Mode::           Special XEmacs commands used with permanent shell.
+
+Customization
+
+* Minor Modes::     Each minor mode is one feature you can turn on
+                     independently of any others.
+* Variables::       Many XEmacs commands examine XEmacs variables
+                     to decide what to do; by setting variables,
+                     you can control their functioning.
+* Keyboard Macros:: A keyboard macro records a sequence of keystrokes
+                     to be replayed with a single command.
+* Key Bindings::    The keymaps say what command each key runs.
+                     By changing them, you can "redefine keys".
+* Syntax::          The syntax table controls how words and expressions
+                     are parsed.
+* Init File::       How to write common customizations in the init file.
+* Audible Bell::    Changing how XEmacs sounds the bell. 
+* Faces::           Changing the fonts and colors of a region of text. 
+* X Resources::	    X resources controlling various aspects of the
+                     behavior of XEmacs.
+
+Variables
+
+* Examining::           Examining or setting one variable's value.
+* Easy Customization::  Convenient and easy customization of variables.
+* Edit Options::        Examining or editing list of all variables' values.
+* Locals::              Per-buffer values of variables.
+* File Variables::      How files can specify variable values.
+
+Keyboard Macros
+
+* Basic Kbd Macro::     Defining and running keyboard macros.
+* Save Kbd Macro::      Giving keyboard macros names; saving them in files.
+* Kbd Macro Query::     Keyboard macros that do different things each use.
+
+Customizing Key Bindings
+
+* Keymaps::    Definition of the keymap data structure.
+               Names of XEmacs's standard keymaps.
+* Rebinding::  How to redefine one key's meaning conveniently.
+* Disabling::  Disabling a command means confirmation is required
+                before it can be executed.  This is done to protect
+                beginners from surprises.
+
+The Syntax Table
+
+* Entry: Syntax Entry.    What the syntax table records for each character.
+* Change: Syntax Change.  How to change the information.
+
+The Init File
+
+* Init Syntax::     Syntax of constants in Emacs Lisp.
+* Init Examples::   How to do some things with an init file.
+* Terminal Init::   Each terminal type can have an init file.
+
+Dealing with XEmacs Trouble
+
+* Stuck Recursive::    `[...]' in mode line around the parentheses.
+* Screen Garbled::     Garbage on the screen.
+* Text Garbled::       Garbage in the text.
+* Unasked-for Search:: Spontaneous entry to incremental search.
+* Emergency Escape::   Emergency escape--
+                        What to do if XEmacs stops responding.
+* Total Frustration::  When you are at your wits' end.
+
+
+

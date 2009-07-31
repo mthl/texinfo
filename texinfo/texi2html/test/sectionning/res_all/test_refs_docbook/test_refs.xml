@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="test_refs.xml" lang="en">
+<chapter label="" xreflabel="Test refs" id="Top">
+<title>Test refs</title>
+
+
+<bridgehead renderas="sect2">Testing distant nodes</bridgehead>
+
+<para> a  node  
+
+</para><screen>mono : manual.html#a-node
+split: ../manual/a-node.html#a-node
+</screen>
+<para>: 
+</para><screen>mono : manual.html#_003a
+split: ../manual/_003a.html#_003a
+</screen>
+<para>Top 
+ 
+</para><screen>mono : manual.html#Top
+split: ../manual/index.html#Top
+</screen>
+<bridgehead renderas="sect2">Testing manual name</bridgehead>
+
+<para>../manual/doc.texi 
+
+</para><screen>mono : doc.html#node
+split: ../doc/node.html#node
+</screen>
+<bridgehead renderas="sect2">Testing local nodes</bridgehead>
+
+<para>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~ <xref linkend="!_-#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~"></xref>
+
+</para><screen>target: #_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+</screen>
+<para>Top <xref linkend="Top"></xref>
+</para><screen>target: #Top
+</screen>
+<para> local   node <xref linkend="local-node"></xref>
+</para><screen>target: #local-node
+</screen>
+</chapter>
+<chapter label="1" id="other-nodes">
+<title>Chapter with nodes</title>
+
+<screen>id: other-nodes
+</screen>
+<para>Top <xref linkend="Top"></xref>
+</para><screen>target: #Top
+</screen>
+
+<screen id="!_-#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~">id: _0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+</screen>
+<screen id="local-node">id: local-node
+</screen>
+</chapter>
+</book><!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-indent-step:1
+sgml-indent-data:nil
+End:
+-->

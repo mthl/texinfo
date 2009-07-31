@@ -1,0 +1,16 @@
+15 Special Files
+****************
+
+
+In normal circumstances, CVS works only with regular
+files.  Every file in a project is assumed to be
+persistent; it must be possible to open, read and close
+them; and so on.  CVS also ignores file permissions and
+ownerships, leaving such issues to be resolved by the
+developer at installation time.  In other words, it is
+not possible to "check in" a device into a repository;
+if the device file cannot be opened, CVS will refuse to
+handle it.  Files also lose their ownerships and
+permissions during repository transactions.
+
+

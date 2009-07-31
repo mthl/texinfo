@@ -1,0 +1,20 @@
+5.6 @majorheading, @chapheading
+===============================
+
+The @majorheading and @chapheading commands put
+chapter-like headings in the body of a document.
+
+However, neither command causes TeX to produce a numbered heading
+or an entry in the table of contents; and neither command causes
+TeX to start a new page in a printed manual.
+
+In TeX, an @majorheading command generates a larger vertical
+whitespace before the heading than an @chapheading command but
+is otherwise the same.
+
+In Info,
+the @majorheading and
+@chapheading commands are equivalent to
+@chapter: the title is printed on a line by itself with a line
+of asterisks underneath.  (See @chapter.)
+

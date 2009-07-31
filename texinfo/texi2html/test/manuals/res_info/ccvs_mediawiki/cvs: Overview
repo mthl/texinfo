@@ -1,0 +1,603 @@
+<div id="Overview"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Overview-1"></div>
+== Overview ==
+<div id="index-Overview"></div>
+
+<p>This chapter is for people who have never used
+<small>CVS</small>, and perhaps have never used version control
+software before.
+</p>
+<p>If you are already familiar with <small>CVS</small> and are just
+trying to learn a particular feature or remember a
+certain command, you can probably skip everything here.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What-is-CVS_003f| What is CVS?]]::<nowiki>                What you can do with CVS
+</nowiki>&bull;[[#What-is-CVS-not_003f| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
+</nowiki>&bull;[[#A-sample-session| A sample session]]::<nowiki>            A tour of basic CVS usage
+</nowiki></pre>
+<hr size="6">
+<div id="What-is-CVS_003f"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="What-is-CVS_003f-1"></div>
+=== What is CVS? ===
+<div id="index-What-is-CVS_003f"></div>
+<div id="index-Introduction-to-CVS"></div>
+<div id="index-CVS_002c-introduction-to"></div>
+
+<p><small>CVS</small> is a version control system.  Using it, you can
+record the history of your source files.
+</p>
+
+<p>For example, bugs sometimes creep in when
+software is modified, and you might not detect the bug
+until a long time after you make the modification.
+With <small>CVS</small>, you can easily retrieve old versions to see
+exactly which change caused the bug.  This can
+sometimes be a big help.
+</p>
+<p>You could of course save every version of every file
+you have ever created.  This would
+however waste an enormous amount of disk space.  <small>CVS</small>
+stores all the versions of a file in a single file in a
+clever way that only stores the differences between
+versions.
+</p>
+<p><small>CVS</small> also helps you if you are part of a group of people working
+on the same project.  It is all too easy to overwrite
+each others&rsquo; changes unless you are extremely careful.
+Some editors, like <small>GNU</small> Emacs, try to make sure that
+the same file is never modified by two people at the
+same time.  Unfortunately, if someone is using another
+editor, that safeguard will not work.  <small>CVS</small> solves this problem
+by insulating the different developers from each other.  Every
+developer works in his own directory, and <small>CVS</small> merges
+the work when each developer is done.
+</p>
+<div id="index-History-of-CVS"></div>
+<div id="index-CVS_002c-history-of"></div>
+<div id="index-Credits-_0028CVS-program_0029"></div>
+<div id="index-Contributors-_0028CVS-program_0029"></div>
+<p><small>CVS</small> started out as a bunch of shell scripts written by
+Dick Grune, posted to the newsgroup
+<code>comp.sources.unix</code> in the volume 6
+release of July, 1986.  While no actual code from
+these shell scripts is present in the current version
+of <small>CVS</small> much of the <small>CVS</small> conflict resolution algorithms
+come from them.
+</p>
+<p>In April, 1989, Brian Berliner designed and coded <small>CVS</small>.
+Jeff Polk later helped Brian with the design of the <small>CVS</small>
+module and vendor branch support.
+</p>
+<div id="index-Source_002c-getting-CVS-source"></div>
+<p>You can get <small>CVS</small> in a variety of ways, including
+free download from the internet.  For more information
+on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>http://www.cvshome.org/
+http://www.loria.fr/~molli/cvs-index.html
+</nowiki></pre></td></tr></table>
+
+<div id="index-Mailing-list"></div>
+<div id="index-List_002c-mailing-list"></div>
+<div id="index-Newsgroups"></div>
+<p>There is a mailing list, known as <code>info-cvs</code>,
+devoted to <small>CVS</small>.  To subscribe or
+unsubscribe
+write to
+<code>info-cvs-request@gnu.org</code>.
+If you prefer a usenet group, the right
+group is <code>comp.software.config-mgmt</code> which is for
+<small>CVS</small> discussions (along with other configuration
+management systems).  In the future, it might be
+possible to create a
+<code>comp.software.config-mgmt.cvs</code>, but probably only
+if there is sufficient <small>CVS</small> traffic on
+<code>comp.software.config-mgmt</code>.
+</p>
+<p>You can also subscribe to the <code>bug-cvs</code> mailing list,
+described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].  To subscribe
+send mail to <code>bug-cvs-request@gnu.org</code>.
+</p>
+<hr size="6">
+<div id="What-is-CVS-not_003f"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="What-is-CVS-not_003f-1"></div>
+=== What is CVS not? ===
+<div id="index-What-is-CVS-not_003f"></div>
+
+<p><small>CVS</small> can do a lot of things for you, but it does
+not try to be everything for everyone.
+</p>
+<dl compact="compact">
+<dt><small>CVS</small> is not a build system.</dt>
+<dd>
+<p>Though the structure of your repository and modules
+file interact with your build system
+(e.g. &lsquo;<tt>Makefile</tt>&rsquo;s), they are essentially
+independent.
+</p>
+<p><small>CVS</small> does not dictate how you build anything.  It
+merely stores files for retrieval in a tree structure
+you devise.
+</p>
+<p><small>CVS</small> does not dictate how to use disk space in the
+checked out working directories.  If you write your
+&lsquo;<tt>Makefile</tt>&rsquo;s or scripts in every directory so they
+have to know the relative positions of everything else,
+you wind up requiring the entire repository to be
+checked out.
+</p>
+<p>If you modularize your work, and construct a build
+system that will share files (via links, mounts,
+<code>VPATH</code> in &lsquo;<tt>Makefile</tt>&rsquo;s, etc.), you can
+arrange your disk usage however you like.
+</p>
+<p>But you have to remember that <em>any</em> such system is
+a lot of work to construct and maintain.  <small>CVS</small> does
+not address the issues involved.
+</p>
+<p>Of course, you should place the tools created to
+support such a build system (scripts, &lsquo;<tt>Makefile</tt>&rsquo;s,
+etc) under <small>CVS</small>.
+</p>
+<p>Figuring out what files need to be rebuilt when
+something changes is, again, something to be handled
+outside the scope of <small>CVS</small>.  One traditional
+approach is to use <code>make</code> for building, and use
+some automated tool for generating the dependencies which
+<code>make</code> uses.
+</p>
+<p>See [cvs: How your build system interacts with CVS#Builds How your build system interacts with CVS], for more information on doing builds
+in conjunction with <small>CVS</small>.
+</p>
+</dd>
+<dt><small>CVS</small> is not a substitute for management.</dt>
+<dd>
+<p>Your managers and project leaders are expected to talk
+to you frequently enough to make certain you are aware
+of schedules, merge points, branch names and release
+dates.  If they don&rsquo;t, <small>CVS</small> can&rsquo;t help.
+</p>
+<p><small>CVS</small> is an instrument for making sources dance to
+your tune.  But you are the piper and the composer.  No
+instrument plays itself or writes its own music.
+</p>
+</dd>
+<dt><small>CVS</small> is not a substitute for developer communication.</dt>
+<dd>
+<p>When faced with conflicts within a single file, most
+developers manage to resolve them without too much
+effort.  But a more general definition of &ldquo;conflict&rdquo;
+includes problems too difficult to solve without
+communication between developers.
+</p>
+<p><small>CVS</small> cannot determine when simultaneous changes
+within a single file, or across a whole collection of
+files, will logically conflict with one another.  Its
+concept of a <em>conflict</em> is purely textual, arising
+when two changes to the same base file are near enough
+to spook the merge (i.e. <code>diff3</code>) command.
+</p>
+<p><small>CVS</small> does not claim to help at all in figuring out
+non-textual or distributed conflicts in program logic.
+</p>
+<p>For example: Say you change the arguments to function
+<code>X</code> defined in file &lsquo;<tt>A</tt>&rsquo;.  At the same time,
+someone edits file &lsquo;<tt>B</tt>&rsquo;, adding new calls to
+function <code>X</code> using the old arguments.  You are
+outside the realm of <small>CVS</small>&rsquo;s competence.
+</p>
+<p>Acquire the habit of reading specs and talking to your
+peers.
+</p>
+
+</dd>
+<dt><small>CVS</small> does not have change control</dt>
+<dd>
+<p>Change control refers to a number of things.  First of
+all it can mean <em>bug-tracking</em>, that is being able
+to keep a database of reported bugs and the status of
+each one (is it fixed?  in what release?  has the bug
+submitter agreed that it is fixed?).  For interfacing
+<small>CVS</small> to an external bug-tracking system, see the
+&lsquo;<tt>rcsinfo</tt>&rsquo; and &lsquo;<tt>verifymsg</tt>&rsquo; files
+(see section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]).
+</p>
+<p>Another aspect of change control is keeping track of
+the fact that changes to several files were in fact
+changed together as one logical change.  If you check
+in several files in a single <code>cvs commit</code>
+operation, <small>CVS</small> then forgets that those files were
+checked in together, and the fact that they have the
+same log message is the only thing tying them
+together.  Keeping a <small>GNU</small> style &lsquo;<tt>ChangeLog</tt>&rsquo;
+can help somewhat.
+</p>
+<p>Another aspect of change control, in some systems, is
+the ability to keep track of the status of each
+change.  Some changes have been written by a developer,
+others have been reviewed by a second developer, and so
+on.  Generally, the way to do this with <small>CVS</small> is to
+generate a diff (using <code>cvs diff</code> or <code>diff</code>)
+and email it to someone who can then apply it using the
+<code>patch</code> utility.  This is very flexible, but
+depends on mechanisms outside <small>CVS</small> to make sure
+nothing falls through the cracks.
+</p>
+</dd>
+<dt><small>CVS</small> is not an automated testing program</dt>
+<dd>
+<p>It should be possible to enforce mandatory use of a
+testsuite using the <code>commitinfo</code> file.  I haven&rsquo;t
+heard a lot about projects trying to do that or whether
+there are subtle gotchas, however.
+</p>
+</dd>
+<dt><small>CVS</small> does not have a builtin process model</dt>
+<dd>
+<p>Some systems provide ways to ensure that changes or
+releases go through various steps, with various
+approvals as needed.  Generally, one can accomplish
+this with <small>CVS</small> but it might be a little more work.
+In some cases you&rsquo;ll want to use the &lsquo;<tt>commitinfo</tt>&rsquo;,
+&lsquo;<tt>loginfo</tt>&rsquo;, &lsquo;<tt>rcsinfo</tt>&rsquo;, or &lsquo;<tt>verifymsg</tt>&rsquo;
+files, to require that certain steps be performed
+before cvs will allow a checkin.  Also consider whether
+features such as branches and tags can be used to
+perform tasks such as doing work in a development tree
+and then merging certain changes over to a stable tree
+only once they have been proven.
+</p></dd>
+</dl>
+
+<hr size="6">
+<div id="A-sample-session"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="A-sample-session-1"></div>
+=== A sample session ===
+<div id="index-Example-of-a-work_002dsession"></div>
+<div id="index-Getting-started"></div>
+<div id="index-Work_002dsession_002c-example-of"></div>
+<div id="index-tc_002c-Trivial-Compiler-_0028example_0029"></div>
+<div id="index-Trivial-Compiler-_0028example_0029"></div>
+
+
+<p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
+typical work-session using <small>CVS</small>.  The first thing
+to understand is that <small>CVS</small> stores all files in a
+centralized <em>repository</em> (see section [cvs: The Repository#Repository The Repository]); this
+section assumes that a repository is set up.
+</p>
+<p>Suppose you are working on a simple compiler.  The source
+consists of a handful of C files and a &lsquo;<tt>Makefile</tt>&rsquo;.
+The compiler is called &lsquo;<samp>tc</samp>&rsquo; (Trivial Compiler),
+and the repository is set up so that there is a module
+called &lsquo;<samp>tc</samp>&rsquo;.
+</p>
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Getting-the-source| Getting the source]]::<nowiki>          Creating a workspace
+</nowiki>&bull;[[#Committing-your-changes| Committing your changes]]::<nowiki>     Making your work available to others
+</nowiki>&bull;[[#Cleaning-up| Cleaning up]]::<nowiki>                 Cleaning up
+</nowiki>&bull;[[#Viewing-differences| Viewing differences]]::<nowiki>         Viewing differences
+</nowiki></pre>
+<hr size="6">
+<div id="Getting-the-source"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Getting-the-source-1"></div>
+==== Getting the source ====
+<div id="index-Getting-the-source"></div>
+<div id="index-Checking-out-source"></div>
+<div id="index-Fetching-source"></div>
+<div id="index-Source_002c-getting-from-CVS"></div>
+<div id="index-Checkout_002c-example"></div>
+
+<p>The first thing you must do is to get your own working copy of the
+source for &lsquo;<samp>tc</samp>&rsquo;.  For this, you use the <code>checkout</code> command:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout tc
+</nowiki></pre></td></tr></table>
+
+<p>This will create a new directory called &lsquo;<tt>tc</tt>&rsquo; and populate it with
+the source files.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
+$ ls
+CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
+</nowiki></pre></td></tr></table>
+
+<p>The &lsquo;<tt>CVS</tt>&rsquo; directory is used internally by
+<small>CVS</small>.  Normally, you should not modify or remove
+any of the files in it.
+</p>
+<p>You start your favorite editor, hack away at &lsquo;<tt>backend.c</tt>&rsquo;, and a couple
+of hours later you have added an optimization pass to the compiler.
+A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
+you want to edit.  See section [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
+</p>
+<hr size="6">
+<div id="Committing-your-changes"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Committing-your-changes-1"></div>
+==== Committing your changes ====
+<div id="index-Committing-changes-to-files"></div>
+<div id="index-Log-message-entry"></div>
+
+<p>When you have checked that the compiler is still compilable you decide
+to make a new version of &lsquo;<tt>backend.c</tt>&rsquo;.  This will
+store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
+make it available to anyone else who is using that same
+repository.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit backend.c
+</nowiki></pre></td></tr></table>
+
+<p><small>CVS</small> starts an editor, to allow you to enter a log
+message.  You type in &ldquo;Added an optimization pass.&rdquo;,
+save the temporary file, and exit the editor.
+</p>
+<div id="index-CVSEDITOR_002c-environment-variable"></div>
+<div id="index-EDITOR_002c-environment-variable"></div>
+<p>The environment variable <code>$CVSEDITOR</code> determines
+which editor is started.  If <code>$CVSEDITOR</code> is not
+set, then if the environment variable <code>$EDITOR</code> is
+set, it will be used. If both <code>$CVSEDITOR</code> and
+<code>$EDITOR</code> are not set then there is a default
+which will vary with your operating system, for example
+<code>vi</code> for unix or <code>notepad</code> for Windows
+NT/95.
+</p>
+<div id="index-VISUAL_002c-environment-variable"></div>
+<p>In addition, <small>CVS</small> checks the <code>$VISUAL</code> environment
+variable.  Opinions vary on whether this behavior is desirable and
+whether future releases of <small>CVS</small> should check <code>$VISUAL</code> or
+ignore it.  You will be OK either way if you make sure that
+<code>$VISUAL</code> is either unset or set to the same thing as
+<code>$EDITOR</code>.
+</p>
+<p>When <small>CVS</small> starts the editor, it includes a list of
+files which are modified.  For the <small>CVS</small> client,
+this list is based on comparing the modification time
+of the file against the modification time that the file
+had when it was last gotten or updated.  Therefore, if
+a file&rsquo;s modification time has changed but its contents
+have not, it will show up as modified.  The simplest
+way to handle this is simply not to worry about it&mdash;if
+you proceed with the commit <small>CVS</small> will detect that
+the contents are not modified and treat it as an
+unmodified file.  The next <code>update</code> will clue
+<small>CVS</small> in to the fact that the file is unmodified,
+and it will reset its stored timestamp so that the file
+will not show up in future editor sessions.
+</p>
+<p>If you want to avoid
+starting an editor you can specify the log message on
+the command line using the &lsquo;<samp>-m</samp>&rsquo; flag instead, like
+this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
+</nowiki></pre></td></tr></table>
+
+<hr size="6">
+<div id="Cleaning-up"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Cleaning-up-1"></div>
+==== Cleaning up ====
+<div id="index-Cleaning-up"></div>
+<div id="index-Working-copy_002c-removing"></div>
+<div id="index-Removing-your-working-copy"></div>
+<div id="index-Releasing-your-working-copy"></div>
+
+<p>Before you turn to other tasks you decide to remove your working copy of
+tc.  One acceptable way to do that is of course
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
+$ rm -r tc
+</nowiki></pre></td></tr></table>
+
+<p>but a better way is to use the <code>release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
+$ cvs release -d tc
+M driver.c
+? tc
+You have [1] altered files in this repository.
+Are you sure you want to release (and delete) directory `tc': n
+** `release' aborted by user choice.
+</nowiki></pre></td></tr></table>
+
+<p>The <code>release</code> command checks that all your modifications have been
+committed.  If history logging is enabled it also makes a note in the
+history file.  See section [cvs: Reference manual for Administrative files#history-file The history file].
+</p>
+<p>When you use the &lsquo;<samp>-d</samp>&rsquo; flag with <code>release</code>, it
+also removes your working copy.
+</p>
+<p>In the example above, the <code>release</code> command wrote a couple of lines
+of output.  &lsquo;<samp>? tc</samp>&rsquo; means that the file &lsquo;<tt>tc</tt>&rsquo; is unknown to <small>CVS</small>.
+That is nothing to worry about: &lsquo;<tt>tc</tt>&rsquo; is the executable compiler,
+and it should not be stored in the repository.  See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore],
+for information about how to make that warning go away.
+See section [cvs: Guide to CVS commands#release-output release output], for a complete explanation of
+all possible output from <code>release</code>.
+</p>
+<p>&lsquo;<samp>M driver.c</samp>&rsquo; is more serious.  It means that the
+file &lsquo;<tt>driver.c</tt>&rsquo; has been modified since it was
+checked out.
+</p>
+<p>The <code>release</code> command always finishes by telling
+you how many modified files you have in your working
+copy of the sources, and then asks you for confirmation
+before deleting any files or making any note in the
+history file.
+</p>
+<p>You decide to play it safe and answer <kbd>n &lt;RET&gt;</kbd>
+when <code>release</code> asks for confirmation.
+</p>
+<hr size="6">
+<div id="Viewing-differences"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<div id="Viewing-differences-1"></div>
+==== Viewing differences ====
+<div id="index-Viewing-differences"></div>
+<div id="index-Diff"></div>
+
+<p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
+has happened to that file.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
+$ cvs diff driver.c
+</nowiki></pre></td></tr></table>
+
+<p>This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
+that you checked out with your working copy.  When you see the output
+you remember that you added a command line option that enabled the
+optimization pass.  You check it in, and release the module.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; driver.c
+Checking in driver.c;
+/usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
+new revision: 1.2; previous revision: 1.1
+done
+$ cd ..
+$ cvs release -d tc
+? tc
+You have [0] altered files in this repository.
+Are you sure you want to release (and delete) directory `tc': y
+</nowiki></pre></td></tr></table>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

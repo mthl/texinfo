@@ -1,0 +1,812 @@
+hello.texi(,2) @c %**start of header
+hello.texi(,3) @setfilename hello.info
+version.texi(,1) @set UPDATED 28 March 2002
+version.texi(,2) @set UPDATED-MONTH March 2002
+version.texi(,3) @set EDITION 4.2
+version.texi(,4) @set VERSION 4.2
+hello.texi(,5) @settitle GNU Hello 4.2
+hello.texi(,6) @c %**end of header
+hello.texi(,7) 
+hello.texi(,8) @copying
+hello.texi(,9) This manual is for GNU Hello (version 4.2, 28 March 2002),
+hello.texi(,10) which prints a friendly greeting (and serves as an example GNU package).
+hello.texi(,11) 
+hello.texi(,12) Copyright @copyright{} 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008
+hello.texi(,13) Free Software Foundation, Inc.
+hello.texi(,14) 
+hello.texi(,15) @quotation
+hello.texi(,16) Permission is granted to copy, distribute and/or modify this document
+hello.texi(,17) under the terms of the GNU Free Documentation License, Version 1.2 or
+hello.texi(,18) any later version published by the Free Software Foundation; with no
+hello.texi(,19) Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+hello.texi(,20) Texts.  A copy of the license is included in the section entitled
+hello.texi(,21) ``GNU Free Documentation License''.
+hello.texi(,22) @end quotation
+hello.texi(,23) @end copying
+hello.texi(,24) @c If your manual is published on paper by the FSF, it should include
+hello.texi(,25) @c the standard FSF Front-Cover and Back-Cover Texts, as given in
+hello.texi(,26) @c maintain.texi.
+hello.texi(,27) 
+hello.texi(,28) @c Define a new index for options.
+hello.texi(,29) @defcodeindex op
+hello.texi(,30) @c Combine everything into one index (arbitrarily chosen to be the
+hello.texi(,31) @c concept index).
+hello.texi(,32) @syncodeindex op cp
+hello.texi(,33) 
+hello.texi(,34) @dircategory Basics
+hello.texi(,35) @direntry
+hello.texi(,36) * Hello: (hello).               Hello, GNU world.
+hello.texi(,37) @end direntry
+hello.texi(,38) 
+hello.texi(,39) @titlepage
+hello.texi(,40) @title GNU Hello
+hello.texi(,41) @subtitle for version 4.2, 28 March 2002
+hello.texi(,42) @author GNU Hello Developers (@email{bug-hello@@gnu.org})
+hello.texi(,43) @page
+hello.texi(,44) @vskip 0pt plus 1filll
+hello.texi(,45) @insertcopying
+hello.texi(,46) @end titlepage
+hello.texi(,47) 
+hello.texi(,48) @contents
+hello.texi(,49) 
+hello.texi(,50) 
+hello.texi(,52) @node Top
+hello.texi(,53) @top GNU Hello
+hello.texi(,54) 
+hello.texi(,55) This manual is for GNU Hello (version 4.2, 28 March 2002).
+hello.texi(,57) 
+hello.texi(,58) @menu
+hello.texi(,59) * Overview::		General purpose and information.
+hello.texi(,60) * Sample output::	Sample output from @command{hello}.
+hello.texi(,61) * Invoking hello::	How to run @command{hello}.
+hello.texi(,62) * Reporting bugs::	Sending bug reports and feature suggestions.
+hello.texi(,63) * GNU Free Documentation License:: Copying and sharing this documentation.
+hello.texi(,64) * Concept index::	Index of concepts.
+hello.texi(,65) @end menu
+hello.texi(,66) 
+hello.texi(,67) 
+hello.texi(,68) @node Overview
+hello.texi(,69) @chapter Overview
+hello.texi(,70) 
+hello.texi(,71) @cindex greetings
+hello.texi(,72) @cindex overview
+hello.texi(,73) 
+hello.texi(,74) The GNU @command{hello} program
+hello.texi(,75) (@url{http://www.gnu.org/software/hello/}) produces a familiar,
+hello.texi(,76) friendly greeting.  It allows nonprogrammers to use a classic computer
+hello.texi(,77) science tool which would otherwise be unavailable to them.  Because it
+hello.texi(,78) is protected by the GNU General Public License, users are free (in
+hello.texi(,79) perpetuity) to share and change it.
+hello.texi(,80) 
+hello.texi(,81) @cindex joke, not
+hello.texi(,82) Not to spoil the joke, but of course the practical purpose of GNU
+hello.texi(,83) Hello is to serve as a minimal example of a GNU package.  So, although
+hello.texi(,84) most manuals don't need to discuss the implementation of the programs
+hello.texi(,85) they document, that is part of the goal here.
+hello.texi(,86) 
+hello.texi(,87) @cindex GNU coding standards
+hello.texi(,88) @cindex GNU maintainer standards
+hello.texi(,89) @cindex standards, GNU coding
+hello.texi(,90) @cindex standards, GNU maintainer
+hello.texi(,91) First, GNU Hello follows the GNU coding standards
+hello.texi(,92) (@pxref{Top,,Preface,standards, GNU Coding Standards}) and GNU
+hello.texi(,93) maintainer standards (@pxref{Top,,Preface,maintain, Information for
+hello.texi(,94) GNU Maintainers}).  These are the basic documents which all GNU
+hello.texi(,95) packages should adhere to.
+hello.texi(,96) 
+hello.texi(,97) The Hello package also implements recommended development practices
+hello.texi(,98) not embodied in the standards, using other GNU packages and features:
+hello.texi(,99) 
+hello.texi(,100) @itemize @bullet
+hello.texi(,101) 
+hello.texi(,102) @item
+hello.texi(,103) @cindex Automake
+hello.texi(,104) @cindex Autoconf
+hello.texi(,105) It uses Automake (@pxref{Top,,Introduction,Automake,GNU Automake}) and
+hello.texi(,106) hence also Autoconf (@pxref{Top,,Introduction,Autoconf,GNU Autoconf})
+hello.texi(,107) for configuration.
+hello.texi(,108) 
+hello.texi(,109) @item
+hello.texi(,110) @cindex Gnulib
+hello.texi(,111) It uses Gnulib (@pxref{Top,,Gnulib,gnulib,GNU Gnulib}) to enhance
+hello.texi(,112) portability and avoid duplication of common sources.
+hello.texi(,113) 
+hello.texi(,114) @item
+hello.texi(,115) @cindex Gettext
+hello.texi(,116) GNU Gettext (@pxref{Top,,Introduction,gettext,GNU Gettext}) is used
+hello.texi(,117) for internationalization support.  Hello's greeting has been translated
+hello.texi(,118) into many languages.
+hello.texi(,119) 
+hello.texi(,120) @item
+hello.texi(,121) @opindex --help
+hello.texi(,122) Internally, Hello uses the GNU @code{getopt_long} function
+hello.texi(,123) (@pxref{Getopt Long Options,,,libc,GNU C Library}) to parse options,
+hello.texi(,124) thus supporting GNU-style long options such as @option{--help}.
+hello.texi(,125) 
+hello.texi(,126) @item
+hello.texi(,127) @cindex Help2man
+hello.texi(,128) Man pages are generated with GNU @code{help2man}
+hello.texi(,129) (@pxref{Top,,Overview,help2man,GNU @code{help2man}}) from the
+hello.texi(,130) @option{--help} output.  This relieves the maintainers of the burden
+hello.texi(,131) of maintaining man documentation separately, yet provides a reasonable
+hello.texi(,132) overview for man devotees.
+hello.texi(,133) 
+hello.texi(,134) @item
+hello.texi(,135) @cindex Texinfo
+hello.texi(,136) Finally, Texinfo (@pxref{Top,,Introduction,texinfo,Texinfo}) is the
+hello.texi(,137) documentation format for this manual.  It supports output in Info,
+hello.texi(,138) HTML, PDF, DVI, plain text, XML, and other formats.
+hello.texi(,139) 
+hello.texi(,140) @end itemize
+hello.texi(,141) 
+hello.texi(,142) GNU Hello is implemented in C.  GNU Gettext contains ``hello world''
+hello.texi(,143) examples in a variety of other programming languages; see the Gettext
+hello.texi(,144) home page at @url{http://www.gnu.org/software/gettext/}.  
+hello.texi(,145) 
+hello.texi(,146) @cindex authors
+hello.texi(,147) @cindex Haertel, Mike
+hello.texi(,148) @cindex MacKenzie, David
+hello.texi(,149) @cindex Brittenson, Jan
+hello.texi(,150) @cindex Hannum, Charles
+hello.texi(,151) @cindex McGrath, Roland
+hello.texi(,152) @cindex Friedman, Noah
+hello.texi(,153) @cindex Eichwalder, Karl
+hello.texi(,154) @cindex King, The
+hello.texi(,155) @cindex Berry, Karl
+hello.texi(,156) GNU Hello was written by Mike Haertel, David MacKenzie, Jan
+hello.texi(,157) Brittenson, Charles Hannum, Roland McGrath, Noah Friedman, Karl
+hello.texi(,158) Eichwalder, Karl Berry, and @w{The King}.
+hello.texi(,159) 
+hello.texi(,160) 
+hello.texi(,161) @node Sample output
+hello.texi(,162) @chapter Sample output
+hello.texi(,163) 
+hello.texi(,164) @cindex sample output
+hello.texi(,165) @cindex examples
+hello.texi(,166) 
+hello.texi(,167) Here are some realistic examples of running GNU Hello.
+hello.texi(,168) 
+hello.texi(,169) This is the output of the command @samp{hello}:
+hello.texi(,170) 
+hello.texi(,171) @example
+hello.texi(,172) Hello, world!
+hello.texi(,173) @end example
+hello.texi(,174) 
+hello.texi(,175) This is the output of the command @samp{hello --traditional}:
+hello.texi(,176) 
+hello.texi(,177) @example
+hello.texi(,178) hello, world
+hello.texi(,179) @end example
+hello.texi(,180) 
+hello.texi(,181) This is the output of the command @samp{hello --greeting=hi}:
+hello.texi(,182) 
+hello.texi(,183) @example
+hello.texi(,184) hi
+hello.texi(,185) @end example
+hello.texi(,186) 
+hello.texi(,187) 
+hello.texi(,188) @node Invoking hello
+hello.texi(,189) @chapter Invoking @command{hello}
+hello.texi(,190) 
+hello.texi(,191) @cindex invoking
+hello.texi(,192) @cindex options
+hello.texi(,193) @cindex usage
+hello.texi(,194) @cindex help
+hello.texi(,195) 
+hello.texi(,196) The format for running the @command{hello} program is:
+hello.texi(,197) 
+hello.texi(,198) @example
+hello.texi(,199) hello @var{option} @dots{}
+hello.texi(,200) @end example
+hello.texi(,201) 
+hello.texi(,202) With no options, @command{hello} prints the greeting @samp{Hello,
+hello.texi(,203) world!}.
+hello.texi(,204) 
+hello.texi(,205) @command{hello} supports the following options:
+hello.texi(,206) 
+hello.texi(,207) @table @option
+hello.texi(,208) @item --greeting=@var{text}
+hello.texi(,209) @itemx -g @var{text}
+hello.texi(,210) @opindex --greeting
+hello.texi(,211) @opindex -g
+hello.texi(,212) Output @var{text} instead of the default greeting.
+hello.texi(,213) 
+hello.texi(,214) @item --help
+hello.texi(,215) @itemx -h
+hello.texi(,216) @opindex --help
+hello.texi(,217) @opindex -h
+hello.texi(,218) Print an informative help message on standard output and exit
+hello.texi(,219) successfully.
+hello.texi(,220) 
+hello.texi(,221) @cindex environment variables, help for
+hello.texi(,222) For the @option{--help} output of GNU programs, it's strongly
+hello.texi(,223) encouraged to include a brief (one or two sentences) description of
+hello.texi(,224) what the program does, as well as the synopsis of how to run the
+hello.texi(,225) program.  Any environment variables which affect execution should also
+hello.texi(,226) be mentioned (Hello doesn't have any).
+hello.texi(,227) 
+hello.texi(,228) @item --next-generation
+hello.texi(,229) @itemx -n
+hello.texi(,230) @opindex --next-generation
+hello.texi(,231) @opindex -n
+hello.texi(,232) Output @samp{Hello, world!}, but possibly including box-drawing
+hello.texi(,233) characters or other fancy stuff, especially in translated locales.
+hello.texi(,234) (If you would like to volunteer to translate messages for GNU packages,
+hello.texi(,235) please see @url{http://translationproject.org}.)
+hello.texi(,236) 
+hello.texi(,237) @item --traditional
+hello.texi(,238) @itemx -t
+hello.texi(,239) @opindex --traditional
+hello.texi(,240) @opindex -t
+hello.texi(,241) @cindex traditional
+hello.texi(,242) @cindex modern
+hello.texi(,243) Output the traditional greeting message @samp{hello, world}.
+hello.texi(,244) 
+hello.texi(,245) @item --version
+hello.texi(,246) @itemx -v
+hello.texi(,247) @opindex --version
+hello.texi(,248) @opindex -v
+hello.texi(,249) Print the version number and licensing information of Hello on
+hello.texi(,250) standard output and then exit successfully.
+hello.texi(,251) 
+hello.texi(,252) @end table
+hello.texi(,253) 
+hello.texi(,254) If more than one of the greeting options (@option{-g}, @option{-n},
+hello.texi(,255) @option{-t}, and their long-named equivalents) is specified, whichever
+hello.texi(,256) comes last takes precedence.
+hello.texi(,257) 
+hello.texi(,258) 
+hello.texi(,259) @node Reporting bugs
+hello.texi(,260) @chapter Reporting bugs
+hello.texi(,261) 
+hello.texi(,262) @cindex bug reporting
+hello.texi(,263) @cindex problems
+hello.texi(,264) @cindex reporting bugs
+hello.texi(,265) 
+hello.texi(,266) To report bugs or suggest enhancements for GNU Hello, please
+hello.texi(,267) send electronic mail to @email{bug-hello@@gnu.org}.
+hello.texi(,268) 
+hello.texi(,269) @cindex checklist for bug reports
+hello.texi(,270) For bug reports, please include enough information for the maintainers
+hello.texi(,271) to reproduce the problem.  Generally speaking, that means:
+hello.texi(,272) 
+hello.texi(,273) @itemize @bullet
+hello.texi(,274) @item The version numbers of Hello (which you can find by running
+hello.texi(,275)       @w{@samp{hello --version}}) and any other program(s) or
+hello.texi(,276)       manual(s) involved.
+hello.texi(,277) @item Hardware and operating system names and versions.
+hello.texi(,278) @item The contents of any input files necessary to reproduce the bug.
+hello.texi(,279) @item The expected behavior and/or output.
+hello.texi(,280) @item A description of the problem and samples of any erroneous output.
+hello.texi(,281) @item Options you gave to @command{configure} other than specifying
+hello.texi(,282)       installation directories.
+hello.texi(,283) @item Anything else that you think would be helpful.
+hello.texi(,284) @end itemize
+hello.texi(,285) 
+hello.texi(,286) When in doubt whether something is needed or not, include it.  It's
+hello.texi(,287) better to include too much than to leave out something important.
+hello.texi(,288) 
+hello.texi(,289) @cindex patches, contributing
+hello.texi(,290) Patches are welcome; if possible, please make them with @samp{@w{diff
+hello.texi(,291) -c}} (@pxref{Top,, Overview, diff, Comparing and Merging Files}) and
+hello.texi(,292) include @file{ChangeLog} entries (@pxref{Change Log,,, emacs, The GNU
+hello.texi(,293) Emacs Manual}).  Please follow the existing coding style.
+hello.texi(,294) 
+hello.texi(,295) 
+hello.texi(,296) @node GNU Free Documentation License
+hello.texi(,297) @appendix GNU Free Documentation License
+hello.texi(,298) 
+fdl-hello.texi(,1) @c The GNU Free Documentation License.
+fdl-hello.texi(,2) @center Version 1.3, 3 November 2008
+fdl-hello.texi(,3) 
+fdl-hello.texi(,4) @c This file is intended to be included within another document,
+fdl-hello.texi(,5) @c hence no sectioning command or @node.
+fdl-hello.texi(,6) 
+fdl-hello.texi(,7) @display
+fdl-hello.texi(,8) Copyright @copyright{} 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+fdl-hello.texi(,9) @uref{http://fsf.org/}
+fdl-hello.texi(,10) 
+fdl-hello.texi(,11) Everyone is permitted to copy and distribute verbatim copies
+fdl-hello.texi(,12) of this license document, but changing it is not allowed.
+fdl-hello.texi(,13) @end display
+fdl-hello.texi(,14) 
+fdl-hello.texi(,15) @enumerate 0
+fdl-hello.texi(,16) @item
+fdl-hello.texi(,17) PREAMBLE
+fdl-hello.texi(,18) 
+fdl-hello.texi(,19) The purpose of this License is to make a manual, textbook, or other
+fdl-hello.texi(,20) functional and useful document @dfn{free} in the sense of freedom: to
+fdl-hello.texi(,21) assure everyone the effective freedom to copy and redistribute it,
+fdl-hello.texi(,22) with or without modifying it, either commercially or noncommercially.
+fdl-hello.texi(,23) Secondarily, this License preserves for the author and publisher a way
+fdl-hello.texi(,24) to get credit for their work, while not being considered responsible
+fdl-hello.texi(,25) for modifications made by others.
+fdl-hello.texi(,26) 
+fdl-hello.texi(,27) This License is a kind of ``copyleft'', which means that derivative
+fdl-hello.texi(,28) works of the document must themselves be free in the same sense.  It
+fdl-hello.texi(,29) complements the GNU General Public License, which is a copyleft
+fdl-hello.texi(,30) license designed for free software.
+fdl-hello.texi(,31) 
+fdl-hello.texi(,32) We have designed this License in order to use it for manuals for free
+fdl-hello.texi(,33) software, because free software needs free documentation: a free
+fdl-hello.texi(,34) program should come with manuals providing the same freedoms that the
+fdl-hello.texi(,35) software does.  But this License is not limited to software manuals;
+fdl-hello.texi(,36) it can be used for any textual work, regardless of subject matter or
+fdl-hello.texi(,37) whether it is published as a printed book.  We recommend this License
+fdl-hello.texi(,38) principally for works whose purpose is instruction or reference.
+fdl-hello.texi(,39) 
+fdl-hello.texi(,40) @item
+fdl-hello.texi(,41) APPLICABILITY AND DEFINITIONS
+fdl-hello.texi(,42) 
+fdl-hello.texi(,43) This License applies to any manual or other work, in any medium, that
+fdl-hello.texi(,44) contains a notice placed by the copyright holder saying it can be
+fdl-hello.texi(,45) distributed under the terms of this License.  Such a notice grants a
+fdl-hello.texi(,46) world-wide, royalty-free license, unlimited in duration, to use that
+fdl-hello.texi(,47) work under the conditions stated herein.  The ``Document'', below,
+fdl-hello.texi(,48) refers to any such manual or work.  Any member of the public is a
+fdl-hello.texi(,49) licensee, and is addressed as ``you''.  You accept the license if you
+fdl-hello.texi(,50) copy, modify or distribute the work in a way requiring permission
+fdl-hello.texi(,51) under copyright law.
+fdl-hello.texi(,52) 
+fdl-hello.texi(,53) A ``Modified Version'' of the Document means any work containing the
+fdl-hello.texi(,54) Document or a portion of it, either copied verbatim, or with
+fdl-hello.texi(,55) modifications and/or translated into another language.
+fdl-hello.texi(,56) 
+fdl-hello.texi(,57) A ``Secondary Section'' is a named appendix or a front-matter section
+fdl-hello.texi(,58) of the Document that deals exclusively with the relationship of the
+fdl-hello.texi(,59) publishers or authors of the Document to the Document's overall
+fdl-hello.texi(,60) subject (or to related matters) and contains nothing that could fall
+fdl-hello.texi(,61) directly within that overall subject.  (Thus, if the Document is in
+fdl-hello.texi(,62) part a textbook of mathematics, a Secondary Section may not explain
+fdl-hello.texi(,63) any mathematics.)  The relationship could be a matter of historical
+fdl-hello.texi(,64) connection with the subject or with related matters, or of legal,
+fdl-hello.texi(,65) commercial, philosophical, ethical or political position regarding
+fdl-hello.texi(,66) them.
+fdl-hello.texi(,67) 
+fdl-hello.texi(,68) The ``Invariant Sections'' are certain Secondary Sections whose titles
+fdl-hello.texi(,69) are designated, as being those of Invariant Sections, in the notice
+fdl-hello.texi(,70) that says that the Document is released under this License.  If a
+fdl-hello.texi(,71) section does not fit the above definition of Secondary then it is not
+fdl-hello.texi(,72) allowed to be designated as Invariant.  The Document may contain zero
+fdl-hello.texi(,73) Invariant Sections.  If the Document does not identify any Invariant
+fdl-hello.texi(,74) Sections then there are none.
+fdl-hello.texi(,75) 
+fdl-hello.texi(,76) The ``Cover Texts'' are certain short passages of text that are listed,
+fdl-hello.texi(,77) as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+fdl-hello.texi(,78) the Document is released under this License.  A Front-Cover Text may
+fdl-hello.texi(,79) be at most 5 words, and a Back-Cover Text may be at most 25 words.
+fdl-hello.texi(,80) 
+fdl-hello.texi(,81) A ``Transparent'' copy of the Document means a machine-readable copy,
+fdl-hello.texi(,82) represented in a format whose specification is available to the
+fdl-hello.texi(,83) general public, that is suitable for revising the document
+fdl-hello.texi(,84) straightforwardly with generic text editors or (for images composed of
+fdl-hello.texi(,85) pixels) generic paint programs or (for drawings) some widely available
+fdl-hello.texi(,86) drawing editor, and that is suitable for input to text formatters or
+fdl-hello.texi(,87) for automatic translation to a variety of formats suitable for input
+fdl-hello.texi(,88) to text formatters.  A copy made in an otherwise Transparent file
+fdl-hello.texi(,89) format whose markup, or absence of markup, has been arranged to thwart
+fdl-hello.texi(,90) or discourage subsequent modification by readers is not Transparent.
+fdl-hello.texi(,91) An image format is not Transparent if used for any substantial amount
+fdl-hello.texi(,92) of text.  A copy that is not ``Transparent'' is called ``Opaque''.
+fdl-hello.texi(,93) 
+fdl-hello.texi(,94) Examples of suitable formats for Transparent copies include plain
+fdl-hello.texi(,95) @sc{ascii} without markup, Texinfo input format, La@TeX{} input
+fdl-hello.texi(,96) format, @acronym{SGML} or @acronym{XML} using a publicly available
+fdl-hello.texi(,97) @acronym{DTD}, and standard-conforming simple @acronym{HTML},
+fdl-hello.texi(,98) PostScript or @acronym{PDF} designed for human modification.  Examples
+fdl-hello.texi(,99) of transparent image formats include @acronym{PNG}, @acronym{XCF} and
+fdl-hello.texi(,100) @acronym{JPG}.  Opaque formats include proprietary formats that can be
+fdl-hello.texi(,101) read and edited only by proprietary word processors, @acronym{SGML} or
+fdl-hello.texi(,102) @acronym{XML} for which the @acronym{DTD} and/or processing tools are
+fdl-hello.texi(,103) not generally available, and the machine-generated @acronym{HTML},
+fdl-hello.texi(,104) PostScript or @acronym{PDF} produced by some word processors for
+fdl-hello.texi(,105) output purposes only.
+fdl-hello.texi(,106) 
+fdl-hello.texi(,107) The ``Title Page'' means, for a printed book, the title page itself,
+fdl-hello.texi(,108) plus such following pages as are needed to hold, legibly, the material
+fdl-hello.texi(,109) this License requires to appear in the title page.  For works in
+fdl-hello.texi(,110) formats which do not have any title page as such, ``Title Page'' means
+fdl-hello.texi(,111) the text near the most prominent appearance of the work's title,
+fdl-hello.texi(,112) preceding the beginning of the body of the text.
+fdl-hello.texi(,113) 
+fdl-hello.texi(,114) The ``publisher'' means any person or entity that distributes copies
+fdl-hello.texi(,115) of the Document to the public.
+fdl-hello.texi(,116) 
+fdl-hello.texi(,117) A section ``Entitled XYZ'' means a named subunit of the Document whose
+fdl-hello.texi(,118) title either is precisely XYZ or contains XYZ in parentheses following
+fdl-hello.texi(,119) text that translates XYZ in another language.  (Here XYZ stands for a
+fdl-hello.texi(,120) specific section name mentioned below, such as ``Acknowledgements'',
+fdl-hello.texi(,121) ``Dedications'', ``Endorsements'', or ``History''.)  To ``Preserve the Title''
+fdl-hello.texi(,122) of such a section when you modify the Document means that it remains a
+fdl-hello.texi(,123) section ``Entitled XYZ'' according to this definition.
+fdl-hello.texi(,124) 
+fdl-hello.texi(,125) The Document may include Warranty Disclaimers next to the notice which
+fdl-hello.texi(,126) states that this License applies to the Document.  These Warranty
+fdl-hello.texi(,127) Disclaimers are considered to be included by reference in this
+fdl-hello.texi(,128) License, but only as regards disclaiming warranties: any other
+fdl-hello.texi(,129) implication that these Warranty Disclaimers may have is void and has
+fdl-hello.texi(,130) no effect on the meaning of this License.
+fdl-hello.texi(,131) 
+fdl-hello.texi(,132) @item
+fdl-hello.texi(,133) VERBATIM COPYING
+fdl-hello.texi(,134) 
+fdl-hello.texi(,135) You may copy and distribute the Document in any medium, either
+fdl-hello.texi(,136) commercially or noncommercially, provided that this License, the
+fdl-hello.texi(,137) copyright notices, and the license notice saying this License applies
+fdl-hello.texi(,138) to the Document are reproduced in all copies, and that you add no other
+fdl-hello.texi(,139) conditions whatsoever to those of this License.  You may not use
+fdl-hello.texi(,140) technical measures to obstruct or control the reading or further
+fdl-hello.texi(,141) copying of the copies you make or distribute.  However, you may accept
+fdl-hello.texi(,142) compensation in exchange for copies.  If you distribute a large enough
+fdl-hello.texi(,143) number of copies you must also follow the conditions in section 3.
+fdl-hello.texi(,144) 
+fdl-hello.texi(,145) You may also lend copies, under the same conditions stated above, and
+fdl-hello.texi(,146) you may publicly display copies.
+fdl-hello.texi(,147) 
+fdl-hello.texi(,148) @item
+fdl-hello.texi(,149) COPYING IN QUANTITY
+fdl-hello.texi(,150) 
+fdl-hello.texi(,151) If you publish printed copies (or copies in media that commonly have
+fdl-hello.texi(,152) printed covers) of the Document, numbering more than 100, and the
+fdl-hello.texi(,153) Document's license notice requires Cover Texts, you must enclose the
+fdl-hello.texi(,154) copies in covers that carry, clearly and legibly, all these Cover
+fdl-hello.texi(,155) Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+fdl-hello.texi(,156) the back cover.  Both covers must also clearly and legibly identify
+fdl-hello.texi(,157) you as the publisher of these copies.  The front cover must present
+fdl-hello.texi(,158) the full title with all words of the title equally prominent and
+fdl-hello.texi(,159) visible.  You may add other material on the covers in addition.
+fdl-hello.texi(,160) Copying with changes limited to the covers, as long as they preserve
+fdl-hello.texi(,161) the title of the Document and satisfy these conditions, can be treated
+fdl-hello.texi(,162) as verbatim copying in other respects.
+fdl-hello.texi(,163) 
+fdl-hello.texi(,164) If the required texts for either cover are too voluminous to fit
+fdl-hello.texi(,165) legibly, you should put the first ones listed (as many as fit
+fdl-hello.texi(,166) reasonably) on the actual cover, and continue the rest onto adjacent
+fdl-hello.texi(,167) pages.
+fdl-hello.texi(,168) 
+fdl-hello.texi(,169) If you publish or distribute Opaque copies of the Document numbering
+fdl-hello.texi(,170) more than 100, you must either include a machine-readable Transparent
+fdl-hello.texi(,171) copy along with each Opaque copy, or state in or with each Opaque copy
+fdl-hello.texi(,172) a computer-network location from which the general network-using
+fdl-hello.texi(,173) public has access to download using public-standard network protocols
+fdl-hello.texi(,174) a complete Transparent copy of the Document, free of added material.
+fdl-hello.texi(,175) If you use the latter option, you must take reasonably prudent steps,
+fdl-hello.texi(,176) when you begin distribution of Opaque copies in quantity, to ensure
+fdl-hello.texi(,177) that this Transparent copy will remain thus accessible at the stated
+fdl-hello.texi(,178) location until at least one year after the last time you distribute an
+fdl-hello.texi(,179) Opaque copy (directly or through your agents or retailers) of that
+fdl-hello.texi(,180) edition to the public.
+fdl-hello.texi(,181) 
+fdl-hello.texi(,182) It is requested, but not required, that you contact the authors of the
+fdl-hello.texi(,183) Document well before redistributing any large number of copies, to give
+fdl-hello.texi(,184) them a chance to provide you with an updated version of the Document.
+fdl-hello.texi(,185) 
+fdl-hello.texi(,186) @item
+fdl-hello.texi(,187) MODIFICATIONS
+fdl-hello.texi(,188) 
+fdl-hello.texi(,189) You may copy and distribute a Modified Version of the Document under
+fdl-hello.texi(,190) the conditions of sections 2 and 3 above, provided that you release
+fdl-hello.texi(,191) the Modified Version under precisely this License, with the Modified
+fdl-hello.texi(,192) Version filling the role of the Document, thus licensing distribution
+fdl-hello.texi(,193) and modification of the Modified Version to whoever possesses a copy
+fdl-hello.texi(,194) of it.  In addition, you must do these things in the Modified Version:
+fdl-hello.texi(,195) 
+fdl-hello.texi(,196) @enumerate A
+fdl-hello.texi(,197) @item
+fdl-hello.texi(,198) Use in the Title Page (and on the covers, if any) a title distinct
+fdl-hello.texi(,199) from that of the Document, and from those of previous versions
+fdl-hello.texi(,200) (which should, if there were any, be listed in the History section
+fdl-hello.texi(,201) of the Document).  You may use the same title as a previous version
+fdl-hello.texi(,202) if the original publisher of that version gives permission.
+fdl-hello.texi(,203) 
+fdl-hello.texi(,204) @item
+fdl-hello.texi(,205) List on the Title Page, as authors, one or more persons or entities
+fdl-hello.texi(,206) responsible for authorship of the modifications in the Modified
+fdl-hello.texi(,207) Version, together with at least five of the principal authors of the
+fdl-hello.texi(,208) Document (all of its principal authors, if it has fewer than five),
+fdl-hello.texi(,209) unless they release you from this requirement.
+fdl-hello.texi(,210) 
+fdl-hello.texi(,211) @item
+fdl-hello.texi(,212) State on the Title page the name of the publisher of the
+fdl-hello.texi(,213) Modified Version, as the publisher.
+fdl-hello.texi(,214) 
+fdl-hello.texi(,215) @item
+fdl-hello.texi(,216) Preserve all the copyright notices of the Document.
+fdl-hello.texi(,217) 
+fdl-hello.texi(,218) @item
+fdl-hello.texi(,219) Add an appropriate copyright notice for your modifications
+fdl-hello.texi(,220) adjacent to the other copyright notices.
+fdl-hello.texi(,221) 
+fdl-hello.texi(,222) @item
+fdl-hello.texi(,223) Include, immediately after the copyright notices, a license notice
+fdl-hello.texi(,224) giving the public permission to use the Modified Version under the
+fdl-hello.texi(,225) terms of this License, in the form shown in the Addendum below.
+fdl-hello.texi(,226) 
+fdl-hello.texi(,227) @item
+fdl-hello.texi(,228) Preserve in that license notice the full lists of Invariant Sections
+fdl-hello.texi(,229) and required Cover Texts given in the Document's license notice.
+fdl-hello.texi(,230) 
+fdl-hello.texi(,231) @item
+fdl-hello.texi(,232) Include an unaltered copy of this License.
+fdl-hello.texi(,233) 
+fdl-hello.texi(,234) @item
+fdl-hello.texi(,235) Preserve the section Entitled ``History'', Preserve its Title, and add
+fdl-hello.texi(,236) to it an item stating at least the title, year, new authors, and
+fdl-hello.texi(,237) publisher of the Modified Version as given on the Title Page.  If
+fdl-hello.texi(,238) there is no section Entitled ``History'' in the Document, create one
+fdl-hello.texi(,239) stating the title, year, authors, and publisher of the Document as
+fdl-hello.texi(,240) given on its Title Page, then add an item describing the Modified
+fdl-hello.texi(,241) Version as stated in the previous sentence.
+fdl-hello.texi(,242) 
+fdl-hello.texi(,243) @item
+fdl-hello.texi(,244) Preserve the network location, if any, given in the Document for
+fdl-hello.texi(,245) public access to a Transparent copy of the Document, and likewise
+fdl-hello.texi(,246) the network locations given in the Document for previous versions
+fdl-hello.texi(,247) it was based on.  These may be placed in the ``History'' section.
+fdl-hello.texi(,248) You may omit a network location for a work that was published at
+fdl-hello.texi(,249) least four years before the Document itself, or if the original
+fdl-hello.texi(,250) publisher of the version it refers to gives permission.
+fdl-hello.texi(,251) 
+fdl-hello.texi(,252) @item
+fdl-hello.texi(,253) For any section Entitled ``Acknowledgements'' or ``Dedications'', Preserve
+fdl-hello.texi(,254) the Title of the section, and preserve in the section all the
+fdl-hello.texi(,255) substance and tone of each of the contributor acknowledgements and/or
+fdl-hello.texi(,256) dedications given therein.
+fdl-hello.texi(,257) 
+fdl-hello.texi(,258) @item
+fdl-hello.texi(,259) Preserve all the Invariant Sections of the Document,
+fdl-hello.texi(,260) unaltered in their text and in their titles.  Section numbers
+fdl-hello.texi(,261) or the equivalent are not considered part of the section titles.
+fdl-hello.texi(,262) 
+fdl-hello.texi(,263) @item
+fdl-hello.texi(,264) Delete any section Entitled ``Endorsements''.  Such a section
+fdl-hello.texi(,265) may not be included in the Modified Version.
+fdl-hello.texi(,266) 
+fdl-hello.texi(,267) @item
+fdl-hello.texi(,268) Do not retitle any existing section to be Entitled ``Endorsements'' or
+fdl-hello.texi(,269) to conflict in title with any Invariant Section.
+fdl-hello.texi(,270) 
+fdl-hello.texi(,271) @item
+fdl-hello.texi(,272) Preserve any Warranty Disclaimers.
+fdl-hello.texi(,273) @end enumerate
+fdl-hello.texi(,274) 
+fdl-hello.texi(,275) If the Modified Version includes new front-matter sections or
+fdl-hello.texi(,276) appendices that qualify as Secondary Sections and contain no material
+fdl-hello.texi(,277) copied from the Document, you may at your option designate some or all
+fdl-hello.texi(,278) of these sections as invariant.  To do this, add their titles to the
+fdl-hello.texi(,279) list of Invariant Sections in the Modified Version's license notice.
+fdl-hello.texi(,280) These titles must be distinct from any other section titles.
+fdl-hello.texi(,281) 
+fdl-hello.texi(,282) You may add a section Entitled ``Endorsements'', provided it contains
+fdl-hello.texi(,283) nothing but endorsements of your Modified Version by various
+fdl-hello.texi(,284) parties---for example, statements of peer review or that the text has
+fdl-hello.texi(,285) been approved by an organization as the authoritative definition of a
+fdl-hello.texi(,286) standard.
+fdl-hello.texi(,287) 
+fdl-hello.texi(,288) You may add a passage of up to five words as a Front-Cover Text, and a
+fdl-hello.texi(,289) passage of up to 25 words as a Back-Cover Text, to the end of the list
+fdl-hello.texi(,290) of Cover Texts in the Modified Version.  Only one passage of
+fdl-hello.texi(,291) Front-Cover Text and one of Back-Cover Text may be added by (or
+fdl-hello.texi(,292) through arrangements made by) any one entity.  If the Document already
+fdl-hello.texi(,293) includes a cover text for the same cover, previously added by you or
+fdl-hello.texi(,294) by arrangement made by the same entity you are acting on behalf of,
+fdl-hello.texi(,295) you may not add another; but you may replace the old one, on explicit
+fdl-hello.texi(,296) permission from the previous publisher that added the old one.
+fdl-hello.texi(,297) 
+fdl-hello.texi(,298) The author(s) and publisher(s) of the Document do not by this License
+fdl-hello.texi(,299) give permission to use their names for publicity for or to assert or
+fdl-hello.texi(,300) imply endorsement of any Modified Version.
+fdl-hello.texi(,301) 
+fdl-hello.texi(,302) @item
+fdl-hello.texi(,303) COMBINING DOCUMENTS
+fdl-hello.texi(,304) 
+fdl-hello.texi(,305) You may combine the Document with other documents released under this
+fdl-hello.texi(,306) License, under the terms defined in section 4 above for modified
+fdl-hello.texi(,307) versions, provided that you include in the combination all of the
+fdl-hello.texi(,308) Invariant Sections of all of the original documents, unmodified, and
+fdl-hello.texi(,309) list them all as Invariant Sections of your combined work in its
+fdl-hello.texi(,310) license notice, and that you preserve all their Warranty Disclaimers.
+fdl-hello.texi(,311) 
+fdl-hello.texi(,312) The combined work need only contain one copy of this License, and
+fdl-hello.texi(,313) multiple identical Invariant Sections may be replaced with a single
+fdl-hello.texi(,314) copy.  If there are multiple Invariant Sections with the same name but
+fdl-hello.texi(,315) different contents, make the title of each such section unique by
+fdl-hello.texi(,316) adding at the end of it, in parentheses, the name of the original
+fdl-hello.texi(,317) author or publisher of that section if known, or else a unique number.
+fdl-hello.texi(,318) Make the same adjustment to the section titles in the list of
+fdl-hello.texi(,319) Invariant Sections in the license notice of the combined work.
+fdl-hello.texi(,320) 
+fdl-hello.texi(,321) In the combination, you must combine any sections Entitled ``History''
+fdl-hello.texi(,322) in the various original documents, forming one section Entitled
+fdl-hello.texi(,323) ``History''; likewise combine any sections Entitled ``Acknowledgements'',
+fdl-hello.texi(,324) and any sections Entitled ``Dedications''.  You must delete all
+fdl-hello.texi(,325) sections Entitled ``Endorsements.''
+fdl-hello.texi(,326) 
+fdl-hello.texi(,327) @item
+fdl-hello.texi(,328) COLLECTIONS OF DOCUMENTS
+fdl-hello.texi(,329) 
+fdl-hello.texi(,330) You may make a collection consisting of the Document and other documents
+fdl-hello.texi(,331) released under this License, and replace the individual copies of this
+fdl-hello.texi(,332) License in the various documents with a single copy that is included in
+fdl-hello.texi(,333) the collection, provided that you follow the rules of this License for
+fdl-hello.texi(,334) verbatim copying of each of the documents in all other respects.
+fdl-hello.texi(,335) 
+fdl-hello.texi(,336) You may extract a single document from such a collection, and distribute
+fdl-hello.texi(,337) it individually under this License, provided you insert a copy of this
+fdl-hello.texi(,338) License into the extracted document, and follow this License in all
+fdl-hello.texi(,339) other respects regarding verbatim copying of that document.
+fdl-hello.texi(,340) 
+fdl-hello.texi(,341) @item
+fdl-hello.texi(,342) AGGREGATION WITH INDEPENDENT WORKS
+fdl-hello.texi(,343) 
+fdl-hello.texi(,344) A compilation of the Document or its derivatives with other separate
+fdl-hello.texi(,345) and independent documents or works, in or on a volume of a storage or
+fdl-hello.texi(,346) distribution medium, is called an ``aggregate'' if the copyright
+fdl-hello.texi(,347) resulting from the compilation is not used to limit the legal rights
+fdl-hello.texi(,348) of the compilation's users beyond what the individual works permit.
+fdl-hello.texi(,349) When the Document is included in an aggregate, this License does not
+fdl-hello.texi(,350) apply to the other works in the aggregate which are not themselves
+fdl-hello.texi(,351) derivative works of the Document.
+fdl-hello.texi(,352) 
+fdl-hello.texi(,353) If the Cover Text requirement of section 3 is applicable to these
+fdl-hello.texi(,354) copies of the Document, then if the Document is less than one half of
+fdl-hello.texi(,355) the entire aggregate, the Document's Cover Texts may be placed on
+fdl-hello.texi(,356) covers that bracket the Document within the aggregate, or the
+fdl-hello.texi(,357) electronic equivalent of covers if the Document is in electronic form.
+fdl-hello.texi(,358) Otherwise they must appear on printed covers that bracket the whole
+fdl-hello.texi(,359) aggregate.
+fdl-hello.texi(,360) 
+fdl-hello.texi(,361) @item
+fdl-hello.texi(,362) TRANSLATION
+fdl-hello.texi(,363) 
+fdl-hello.texi(,364) Translation is considered a kind of modification, so you may
+fdl-hello.texi(,365) distribute translations of the Document under the terms of section 4.
+fdl-hello.texi(,366) Replacing Invariant Sections with translations requires special
+fdl-hello.texi(,367) permission from their copyright holders, but you may include
+fdl-hello.texi(,368) translations of some or all Invariant Sections in addition to the
+fdl-hello.texi(,369) original versions of these Invariant Sections.  You may include a
+fdl-hello.texi(,370) translation of this License, and all the license notices in the
+fdl-hello.texi(,371) Document, and any Warranty Disclaimers, provided that you also include
+fdl-hello.texi(,372) the original English version of this License and the original versions
+fdl-hello.texi(,373) of those notices and disclaimers.  In case of a disagreement between
+fdl-hello.texi(,374) the translation and the original version of this License or a notice
+fdl-hello.texi(,375) or disclaimer, the original version will prevail.
+fdl-hello.texi(,376) 
+fdl-hello.texi(,377) If a section in the Document is Entitled ``Acknowledgements'',
+fdl-hello.texi(,378) ``Dedications'', or ``History'', the requirement (section 4) to Preserve
+fdl-hello.texi(,379) its Title (section 1) will typically require changing the actual
+fdl-hello.texi(,380) title.
+fdl-hello.texi(,381) 
+fdl-hello.texi(,382) @item
+fdl-hello.texi(,383) TERMINATION
+fdl-hello.texi(,384) 
+fdl-hello.texi(,385) You may not copy, modify, sublicense, or distribute the Document
+fdl-hello.texi(,386) except as expressly provided under this License.  Any attempt
+fdl-hello.texi(,387) otherwise to copy, modify, sublicense, or distribute it is void, and
+fdl-hello.texi(,388) will automatically terminate your rights under this License.
+fdl-hello.texi(,389) 
+fdl-hello.texi(,390) However, if you cease all violation of this License, then your license
+fdl-hello.texi(,391) from a particular copyright holder is reinstated (a) provisionally,
+fdl-hello.texi(,392) unless and until the copyright holder explicitly and finally
+fdl-hello.texi(,393) terminates your license, and (b) permanently, if the copyright holder
+fdl-hello.texi(,394) fails to notify you of the violation by some reasonable means prior to
+fdl-hello.texi(,395) 60 days after the cessation.
+fdl-hello.texi(,396) 
+fdl-hello.texi(,397) Moreover, your license from a particular copyright holder is
+fdl-hello.texi(,398) reinstated permanently if the copyright holder notifies you of the
+fdl-hello.texi(,399) violation by some reasonable means, this is the first time you have
+fdl-hello.texi(,400) received notice of violation of this License (for any work) from that
+fdl-hello.texi(,401) copyright holder, and you cure the violation prior to 30 days after
+fdl-hello.texi(,402) your receipt of the notice.
+fdl-hello.texi(,403) 
+fdl-hello.texi(,404) Termination of your rights under this section does not terminate the
+fdl-hello.texi(,405) licenses of parties who have received copies or rights from you under
+fdl-hello.texi(,406) this License.  If your rights have been terminated and not permanently
+fdl-hello.texi(,407) reinstated, receipt of a copy of some or all of the same material does
+fdl-hello.texi(,408) not give you any rights to use it.
+fdl-hello.texi(,409) 
+fdl-hello.texi(,410) @item
+fdl-hello.texi(,411) FUTURE REVISIONS OF THIS LICENSE
+fdl-hello.texi(,412) 
+fdl-hello.texi(,413) The Free Software Foundation may publish new, revised versions
+fdl-hello.texi(,414) of the GNU Free Documentation License from time to time.  Such new
+fdl-hello.texi(,415) versions will be similar in spirit to the present version, but may
+fdl-hello.texi(,416) differ in detail to address new problems or concerns.  See
+fdl-hello.texi(,417) @uref{http://www.gnu.org/copyleft/}.
+fdl-hello.texi(,418) 
+fdl-hello.texi(,419) Each version of the License is given a distinguishing version number.
+fdl-hello.texi(,420) If the Document specifies that a particular numbered version of this
+fdl-hello.texi(,421) License ``or any later version'' applies to it, you have the option of
+fdl-hello.texi(,422) following the terms and conditions either of that specified version or
+fdl-hello.texi(,423) of any later version that has been published (not as a draft) by the
+fdl-hello.texi(,424) Free Software Foundation.  If the Document does not specify a version
+fdl-hello.texi(,425) number of this License, you may choose any version ever published (not
+fdl-hello.texi(,426) as a draft) by the Free Software Foundation.  If the Document
+fdl-hello.texi(,427) specifies that a proxy can decide which future versions of this
+fdl-hello.texi(,428) License can be used, that proxy's public statement of acceptance of a
+fdl-hello.texi(,429) version permanently authorizes you to choose that version for the
+fdl-hello.texi(,430) Document.
+fdl-hello.texi(,431) 
+fdl-hello.texi(,432) @item
+fdl-hello.texi(,433) RELICENSING
+fdl-hello.texi(,434) 
+fdl-hello.texi(,435) ``Massive Multiauthor Collaboration Site'' (or ``MMC Site'') means any
+fdl-hello.texi(,436) World Wide Web server that publishes copyrightable works and also
+fdl-hello.texi(,437) provides prominent facilities for anybody to edit those works.  A
+fdl-hello.texi(,438) public wiki that anybody can edit is an example of such a server.  A
+fdl-hello.texi(,439) ``Massive Multiauthor Collaboration'' (or ``MMC'') contained in the
+fdl-hello.texi(,440) site means any set of copyrightable works thus published on the MMC
+fdl-hello.texi(,441) site.
+fdl-hello.texi(,442) 
+fdl-hello.texi(,443) ``CC-BY-SA'' means the Creative Commons Attribution-Share Alike 3.0
+fdl-hello.texi(,444) license published by Creative Commons Corporation, a not-for-profit
+fdl-hello.texi(,445) corporation with a principal place of business in San Francisco,
+fdl-hello.texi(,446) California, as well as future copyleft versions of that license
+fdl-hello.texi(,447) published by that same organization.
+fdl-hello.texi(,448) 
+fdl-hello.texi(,449) ``Incorporate'' means to publish or republish a Document, in whole or
+fdl-hello.texi(,450) in part, as part of another Document.
+fdl-hello.texi(,451) 
+fdl-hello.texi(,452) An MMC is ``eligible for relicensing'' if it is licensed under this
+fdl-hello.texi(,453) License, and if all works that were first published under this License
+fdl-hello.texi(,454) somewhere other than this MMC, and subsequently incorporated in whole
+fdl-hello.texi(,455) or in part into the MMC, (1) had no cover texts or invariant sections,
+fdl-hello.texi(,456) and (2) were thus incorporated prior to November 1, 2008.
+fdl-hello.texi(,457) 
+fdl-hello.texi(,458) The operator of an MMC Site may republish an MMC contained in the site
+fdl-hello.texi(,459) under CC-BY-SA on the same site at any time before August 1, 2009,
+fdl-hello.texi(,460) provided the MMC is eligible for relicensing.
+fdl-hello.texi(,461) 
+fdl-hello.texi(,462) @end enumerate
+fdl-hello.texi(,463) 
+fdl-hello.texi(,464) @page
+fdl-hello.texi(,465) @heading ADDENDUM: How to use this License for your documents
+fdl-hello.texi(,466) 
+fdl-hello.texi(,467) To use this License in a document you have written, include a copy of
+fdl-hello.texi(,468) the License in the document and put the following copyright and
+fdl-hello.texi(,469) license notices just after the title page:
+fdl-hello.texi(,470) 
+fdl-hello.texi(,471) @smallexample
+fdl-hello.texi(,472) @group
+fdl-hello.texi(,473)   Copyright (C)  @var{year}  @var{your name}.
+fdl-hello.texi(,474)   Permission is granted to copy, distribute and/or modify this document
+fdl-hello.texi(,475)   under the terms of the GNU Free Documentation License, Version 1.3
+fdl-hello.texi(,476)   or any later version published by the Free Software Foundation;
+fdl-hello.texi(,477)   with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+fdl-hello.texi(,478)   Texts.  A copy of the license is included in the section entitled ``GNU
+fdl-hello.texi(,479)   Free Documentation License''.
+fdl-hello.texi(,480) @end group
+fdl-hello.texi(,481) @end smallexample
+fdl-hello.texi(,482) 
+fdl-hello.texi(,483) If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+fdl-hello.texi(,484) replace the ``with@dots{}Texts.'' line with this:
+fdl-hello.texi(,485) 
+fdl-hello.texi(,486) @smallexample
+fdl-hello.texi(,487) @group
+fdl-hello.texi(,488)     with the Invariant Sections being @var{list their titles}, with
+fdl-hello.texi(,489)     the Front-Cover Texts being @var{list}, and with the Back-Cover Texts
+fdl-hello.texi(,490)     being @var{list}.
+fdl-hello.texi(,491) @end group
+fdl-hello.texi(,492) @end smallexample
+fdl-hello.texi(,493) 
+fdl-hello.texi(,494) If you have Invariant Sections without Cover Texts, or some other
+fdl-hello.texi(,495) combination of the three, merge those two alternatives to suit the
+fdl-hello.texi(,496) situation.
+fdl-hello.texi(,497) 
+fdl-hello.texi(,498) If your document contains nontrivial examples of program code, we
+fdl-hello.texi(,499) recommend releasing these examples in parallel under your choice of
+fdl-hello.texi(,500) free software license, such as the GNU General Public License,
+fdl-hello.texi(,501) to permit their use in free software.
+fdl-hello.texi(,502) 
+fdl-hello.texi(,503) @c Local Variables:
+fdl-hello.texi(,504) @c ispell-local-pdict: "ispell-dict"
+fdl-hello.texi(,505) @c End:
+fdl-hello.texi(,506) 
+hello.texi(,300) 
+hello.texi(,301) 
+hello.texi(,302) @node Concept index
+hello.texi(,303) @unnumbered Concept index
+hello.texi(,304) 
+hello.texi(,305) @printindex cp
+hello.texi(,306) 
+hello.texi(,307) @bye

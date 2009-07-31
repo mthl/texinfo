@@ -1,0 +1,20 @@
+14.7 @need mils: Prevent Page Breaks
+====================================
+
+A line containing only @need n starts
+a new page in a printed manual if fewer than n mils (thousandths
+of an inch) remain on the current page.  Do not use
+braces around the argument n.  The @need command has no
+effect on Info files since they are not paginated.
+
+This paragraph is preceded by an @need command that tells
+TeX to start a new page if fewer than 800 mils (eight-tenths
+inch) remain on the page.  It looks like this:
+
+@need 800
+This paragraph is preceded by ...
+
+The @need command is useful for preventing orphans (single
+lines at the bottoms of printed pages).
+
+

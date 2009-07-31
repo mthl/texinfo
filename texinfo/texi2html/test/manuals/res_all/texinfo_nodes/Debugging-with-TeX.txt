@@ -1,0 +1,106 @@
+F.2 Catching Errors with TeX Formatting
+=======================================
+
+You can also catch mistakes when you format a file with TeX.
+
+Usually, you will want to do this after you have run
+texinfo-format-buffer (or, better, makeinfo-buffer) on
+the same file, because texinfo-format-buffer sometimes displays
+error messages that make more sense than TeX.  (See Debugging with Info, for more information.)
+
+For example, TeX was run on a Texinfo file, part of which is shown
+here:
+
+---------- Buffer: texinfo.texi ----------
+name of the Texinfo file as an extension.  The
+@samp{??} are `wildcards' that cause the shell to
+substitute all the raw index files.  (@xref{sorting
+indices, for more information about sorting
+indices.)@refill
+---------- Buffer: texinfo.texi ----------
+
+(The cross reference lacks a closing brace.)
+TeX produced the following output, after which it stopped:
+
+---------- Buffer: *tex-shell* ----------
+Runaway argument?
+{sorting indices, for more information about sorting
+indices.) @refill @ETC.
+! Paragraph ended before @xref was complete.
+<to be read again>
+                   @par
+l.27
+
+?
+---------- Buffer: *tex-shell* ----------
+
+In this case, TeX produced an accurate and
+understandable error message:
+
+Paragraph ended before @xref was complete.
+
+`@par' is an internal TeX command of no relevance to Texinfo.
+`l.27' means that TeX detected the problem on line 27 of the
+Texinfo file.  The `?' is the prompt TeX uses in this
+circumstance.
+
+Unfortunately, TeX is not always so helpful, and sometimes you must
+truly be a Sherlock Holmes to discover what went wrong.
+
+In any case, if you run into a problem like this, you can do one of three
+things.
+
+1. You can tell TeX to continue running and ignore just this error by
+typing <RET> at the `?' prompt.
+
+2. You can tell TeX to continue running and to ignore all errors as best
+it can by typing r <RET> at the `?' prompt.
+
+This is often the best thing to do.  However, beware: the one error
+may produce a cascade of additional error messages as its consequences
+are felt through the rest of the file.  To stop TeX when it is
+producing such an avalanche of error messages, type C-c (or
+C-c C-c, if you are running a shell inside Emacs).
+
+3. You can tell TeX to stop this run by typing x <RET>
+at the `?' prompt.
+
+If you are running TeX inside Emacs, you need to switch to the shell
+buffer and line at which TeX offers the `?' prompt.
+
+Sometimes TeX will format a file without producing error messages even
+though there is a problem.  This usually occurs if a command is not ended
+but TeX is able to continue processing anyhow.  For example, if you fail
+to end an itemized list with the @end itemize command, TeX will
+write a DVI file that you can print out.  The only error message that
+TeX will give you is the somewhat mysterious comment that
+
+(@end occurred inside a group at level 1)
+
+However, if you print the DVI file, you will find that the text
+of the file that follows the itemized list is entirely indented as if
+it were part of the last item in the itemized list.  The error message
+is the way TeX says that it expected to find an @end
+command somewhere in the file; but that it could not determine where
+it was needed.
+
+Another source of notoriously hard-to-find errors is a missing
+@end group command.  If you ever are stumped by
+incomprehensible errors, look for a missing @end group command
+first.
+
+If the Texinfo file lacks header lines,
+TeX may stop in the
+beginning of its run and display output that looks like the following.
+The `*' indicates that TeX is waiting for input.
+
+This is TeX, Version 3.14159 (Web2c 7.0)
+(test.texinfo [1])
+*
+
+In this case, simply type \end <RET> after the asterisk.  Then
+write the header lines in the Texinfo file and run the TeX command
+again. (Note the use of the backslash, `\'.  TeX uses `\'
+instead of `@'; and in this circumstance, you are working
+directly with TeX, not with Texinfo.)
+

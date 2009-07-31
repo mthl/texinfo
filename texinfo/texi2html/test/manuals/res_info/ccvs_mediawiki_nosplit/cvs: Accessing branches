@@ -1,0 +1,133 @@
+<div id="Accessing-branches"></div>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Creating a branch#Creating-a-branch  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branches and revisions#Branches-and-revisions  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+<hr size="1">
+<div id="Accessing-branches-1"></div>
+=== Accessing branches ===
+<div id="index-Check-out-a-branch"></div>
+<div id="index-Retrieve-a-branch"></div>
+<div id="index-Access-a-branch"></div>
+<div id="index-Identifying-a-branch"></div>
+<div id="index-Branch_002c-check-out"></div>
+<div id="index-Branch_002c-retrieving"></div>
+<div id="index-Branch_002c-accessing"></div>
+<div id="index-Branch_002c-identifying"></div>
+
+<p>You can retrieve a branch in one of two ways: by
+checking it out fresh from the repository, or by
+switching an existing working copy over to the branch.
+</p>
+<p>To check out a branch from the repository, invoke
+&lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
+the tag name of the branch (see section [cvs: Creating a branch#Creating-a-branch Creating a branch]):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
+</nowiki></pre></td></tr></table>
+
+<p>Or, if you already have a working copy, you can switch
+it to a given branch with &lsquo;<samp>update -r</samp>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -r rel-1-0-patches tc
+</nowiki></pre></td></tr></table>
+
+<p>or equivalently:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
+$ cvs update -r rel-1-0-patches
+</nowiki></pre></td></tr></table>
+
+<p>It does not matter if the working copy was originally
+on the main trunk or on some other branch &ndash; the above
+command will switch it to the named branch.  And
+similarly to a regular &lsquo;<samp>update</samp>&rsquo; command,
+&lsquo;<samp>update -r</samp>&rsquo; merges any changes you have made,
+notifying you of conflicts where they occur.
+</p>
+<p>Once you have a working copy tied to a particular
+branch, it remains there until you tell it otherwise.
+This means that changes checked in from the working
+copy will add new revisions on that branch, while
+leaving the main trunk and other branches unaffected.
+</p>
+<div id="index-Branches_002c-sticky"></div>
+<p>To find out what branch a working copy is on, you can
+use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
+the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section [cvs: Sticky tags#Sticky-tags Sticky tags])
+&ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
+any, of the current working files:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs status -v driver.c backend.c
+===================================================================
+File: driver.c          Status: Up-to-date
+
+    Version:            1.7     Sat Dec  5 18:25:54 1992
+    RCS Version:        1.7     /u/cvsroot/yoyodyne/tc/driver.c,v
+    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+    Sticky Date:        (none)
+    Sticky Options:     (none)
+
+    Existing Tags:
+        rel-1-0-patches             (branch: 1.7.2)
+        rel-1-0                     (revision: 1.7)
+
+===================================================================
+File: backend.c         Status: Up-to-date
+
+    Version:            1.4     Tue Dec  1 14:39:01 1992
+    RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
+    Sticky Tag:         rel-1-0-patches (branch: 1.4.2)
+    Sticky Date:        (none)
+    Sticky Options:     (none)
+
+    Existing Tags:
+        rel-1-0-patches             (branch: 1.4.2)
+        rel-1-0                     (revision: 1.4)
+        rel-0-4                     (revision: 1.4)
+
+</nowiki></pre></td></tr></table>
+
+<p>Don&rsquo;t be confused by the fact that the branch numbers
+for each file are different (&lsquo;<samp>1.7.2</samp>&rsquo; and
+&lsquo;<samp>1.4.2</samp>&rsquo; respectively).  The branch tag is the
+same, &lsquo;<samp>rel-1-0-patches</samp>&rsquo;, and the files are
+indeed on the same branch.  The numbers simply reflect
+the point in each file&rsquo;s revision history at which the
+branch was made.  In the above example, one can deduce
+that &lsquo;<samp>driver.c</samp>&rsquo; had been through more changes than
+&lsquo;<samp>backend.c</samp>&rsquo; before this branch was created.
+</p>
+<p>See [cvs: Branches and revisions#Branches-and-revisions Branches and revisions] for details about how
+branch numbers are constructed.
+</p>
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[cvs: Creating a branch#Creating-a-branch  &lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branches and revisions#Branches-and-revisions  &gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  Up ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
+<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
+<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+</tr></table>
+This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

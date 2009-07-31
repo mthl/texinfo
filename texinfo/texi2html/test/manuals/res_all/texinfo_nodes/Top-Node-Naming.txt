@@ -1,0 +1,27 @@
+8.4 Naming a `Top' Node
+=======================
+
+In a cross reference, you must always name a node.  This means that in
+order to refer to a whole manual, you must identify the `Top' node by
+writing it as the first argument to the @xref command.  (This
+is different from the way you write a menu entry; see Referring to Other Info Files.)  At the same time, to
+provide a meaningful section topic or title in the printed cross
+reference (instead of the word `Top'), you must write an appropriate
+entry for the third argument to the @xref command.
+
+
+Thus, to make a cross reference to The GNU Make Manual,
+write:
+
+@xref{Top, , Overview, make, The GNU Make Manual}.
+
+which produces
+
+*Note Overview: (make)Top.
+
+and
+
+See section "Overview" in The GNU Make Manual.
+
+In this example, `Top' is the name of the first node, and
+`Overview' is the name of the first section of the manual.

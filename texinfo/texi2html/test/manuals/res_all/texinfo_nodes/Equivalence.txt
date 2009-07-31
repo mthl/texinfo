@@ -1,0 +1,23 @@
+13.9.6 @equiv{} (==): Indicating Equivalence
+--------------------------------------------
+
+Sometimes two expressions produce identical results.  You can indicate the
+exact equivalence of two forms with the @equiv{} command.
+
+The @equiv{} command is displayed as `==' in Info
+and as a three parallel horizontal lines in the printed output.
+
+Thus,
+
+@lisp
+(make-sparse-keymap) @equiv{} (list 'keymap)
+@end lisp
+
+produces
+
+(make-sparse-keymap) == (list 'keymap)
+
+This indicates that evaluating (make-sparse-keymap) produces
+identical results to evaluating (list 'keymap).
+
+

@@ -1,0 +1,201 @@
+2 Invoking Info
+***************
+
+
+GNU Info accepts several options to control the initial node being
+viewed, and to specify which directories to search for Info files.  Here
+is a template showing an invocation of GNU Info from the shell:
+
+info [option]... [menu-item...]
+
+The program accepts the following options:
+
+--apropos=string
+Specify a string to search in every index of every Info file installed
+on your system.  Info looks up the named string in all the indices
+it can find, prints the results to standard output, and then exits.  If
+you are not sure which Info file explains certain issues, this option is
+your friend.  Note that if your system has a lot of Info files
+installed, searching all of them might take some time.
+
+You can invoke the apropos command from inside Info; see
+Searching Commands.
+
+--directory directory-path
+-d directory-path
+Prepend directory-path to the list of directory paths searched
+when Info needs to find a file.  You may issue --directory
+multiple times; once for each directory which contains Info files.  The
+list of directories searched by Info is constructed from the value of
+the environment variable INFOPATH; --directory causes the
+named directory-path to be prepended to that list.  The value of
+INFOPATH is a list of directories usually separated by a colon;
+on MS-DOS/MS-Windows systems, the semicolon is used.  If you do not
+define INFOPATH, Info uses a default path defined when Info was
+built as the initial list of directories.  If the value of
+INFOPATH ends with a colon (or semicolon on MS-DOS/MS-Windows),
+the initial list of directories is constructed by appending the
+build-time default to the value of INFOPATH.
+
+--dribble=dribble-file
+Specify a file where all user keystrokes will be recorded.  This file
+can be used later to replay the same sequence of commands, see the
+`--restore' option below.
+
+--file filename
+-f filename
+Specify a particular Info file to visit.  By default, Info visits
+the file dir; if you use this option, Info will start with
+(filename)Top as the first file and node.
+
+If filename is an absolute file name, or begins with `./' or
+`../', Info looks for filename only in the directory of the
+specified filename, and adds the directory of filename to
+the value of INFOPATH.  In contrast, if filename is in the
+form of a relative file name, but without the `./' or `../'
+prefix, Info will only look for it in the directories specified in
+INFOPATH.  In other words, Info does not treat file names
+which lack `./' and `../' prefix as relative to the current
+directory.
+
+In every directory Info tries, if filename is not found, Info
+looks for it with a number of known extensions of Info files(1).  For every
+known extension, Info looks for a compressed file, if a regular file
+isn't found.  Info supports files compressed with gzip,
+bzip2, compress and yabba programs; it calls
+gunzip, bunzip2, uncompress and unyabba,
+accordingly, to decompress such files.  Compressed Info files are
+assumed to have `.z', `.gz', `.bz2', `.Z', or
+`.Y' extensions, possibly in addition to one of the known Info
+files extensions(2).
+
+--help
+-h
+Produces a relatively brief description of the available Info options.
+
+--index-search string
+After processing all command-line arguments, go to the index in the Info
+file and search for index entries which matche string.  If such an
+entry is found, the Info session begins with displaying the node pointed
+to by the first matching index entry; press , to step through the
+rest of the matching entries.  If no such entry exists, print `no
+entries found' and exit with nonzero status.  This can be used from
+another program as a way to provide online help, or as a quick way of
+starting to read an Info file at a certain node when you don't know the
+exact name of that node.
+
+This command can also be invoked from inside Info; see Searching Commands.
+
+--node nodename
+-n nodename
+Specify a particular node to visit in the initial file that Info
+loads.  This is especially useful in conjunction with
+--file(3).  You may specify --node multiple times; for
+an interactive Info, each nodename is visited in its own window,
+for a non-interactive Info (such as when --output is given) each
+nodename is processed sequentially.
+
+--output filename
+-o filename
+Specify filename as the name of a file to which to direct output.
+Each node that Info visits will be output to filename instead of
+interactively viewed.  A value of - for filename specifies
+the standard output.
+
+--raw-escapes
+-R
+Do not remove ANSI escape sequences from man pages.  Some versions of
+Groff, the GNU document formatter, produce man pages with ANSI escape
+sequences for bold, italics, and underlined characters, and for
+colorized text.  By default, Info removes those escape sequences
+before it displays the man page.  If your terminal supports these
+escapes, use --raw-escapes to let the terminal handle them and
+display the man pages with those attributes.
+
+--restore=dribble-file
+Read keystrokes from dribble-file, presumably recorded during
+previous Info session (see the description of the `--dribble'
+option above).  When the keystrokes in the files are all read, Info
+reverts its input to the usual interactive operation.
+
+--show-options
+--usage
+-O
+This option causes Info to look for the node that describes how to
+invoke the program and its command-line options, and begin the session
+by displaying that node.  It is provided to make it easier to find the
+most important usage information in a manual without the need to wade
+through complex menu hierarchies.  The effect is similar to the
+M-x goto-invocation command (see goto-invocation) from inside
+Info.
+
+--speech-friendly
+-b
+On MS-DOS/MS-Windows only, this option causes Info to use standard file
+I/O functions for screen writes.  (By default, Info uses direct writes
+to the video memory on these systems, for faster operation and colored
+display support.)  This allows the speech synthesizers used by blind
+persons to catch the output and convert it to audible speech.
+
+--subnodes
+This option only has meaning when given in conjunction with
+--output.  It means to recursively output the nodes appearing in
+the menus of each node being output.  Menu items which resolve to
+external Info files are not output, and neither are menu items which are
+members of an index.  Each node is only output once.
+
+--version
+Prints the version information of Info and exits.
+
+--vi-keys
+This option binds functions to keys differently, to emulate the key
+bindings of vi and Less.  The default key bindings are generally
+modeled after Emacs.
+(See Custom Key Bindings,
+for a more general way of altering GNU Info's key bindings.)
+
+menu-item
+
+Info treats its remaining arguments as the names of menu items.  The
+first argument is a menu item in the initial node visited (generally
+dir), the second argument is a menu item in the first argument's
+node, etc.  You can easily move to the node of your choice by specifying
+the menu names which describe the path to that node.  For example,
+
+info emacs buffers
+
+first selects the menu item `Emacs' in the node `(dir)Top',
+and then selects the menu item `Buffers' in the node
+`(emacs)Top'.
+
+To avoid searching the `dir' files and just show some arbitrary
+file, use `-f' and the filename, as in `info -f ./foo.info'.
+
+The index search and the search for the node which describes program
+invocation and command-line options begins after processing all
+the command-line menu items.  Therefore, the Info file searched for the
+index or the invocation node is the file where Info finds itself after
+following all the menu items given on the command line.  This is so
+`info emacs --show-options' does what you'd expect.
+
+
+
+(1)
+
+`.info', `-info', `/index', and `.inf'.
+
+(2)
+The MS-DOS version allows for the Info
+extension, such as .inf, and the short compressed file
+extensions, such as `.z' and `.gz', to be merged into a single
+extension, since DOS doesn't allow more than a single dot in the
+basename of a file.  Thus, on MS-DOS, if Info looks for `bison',
+file names like `bison.igz' and `bison.inz' will be found and
+decompressed by gunzip.
+
+(3)
+Of course, you can specify both the file and node
+in a --node command; but don't forget to escape the open and
+close parentheses and whitespace from the shell as in: info --node
+"(emacs)Buffers".
+

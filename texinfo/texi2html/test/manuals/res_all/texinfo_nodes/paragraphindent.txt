@@ -1,0 +1,38 @@
+3.6.3 Paragraph Indenting
+-------------------------
+
+The Texinfo processors may insert whitespace at the beginning of the
+first line of each paragraph, thereby indenting that paragraph.  You can
+use the @paragraphindent command to specify this indentation.
+Write an @paragraphindent command at the beginning of a line
+followed by either `asis' or a number:
+
+@paragraphindent indent
+
+The indentation is according to the value of indent:
+
+asis
+Do not change the existing indentation (not implemented in TeX).
+
+none
+0
+Omit all indentation.
+
+n
+Indent by n space characters in Info output, by n ems in
+TeX.
+
+
+The default value of indent is 3.  @paragraphindent is
+ignored for HTML output.
+
+It is best to write the @paragraphindent command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  See Start of Header.
+
+A peculiarity of the texinfo-format-buffer and
+texinfo-format-region commands is that they do not indent (nor
+fill) paragraphs that contain @w or @* commands.
+See Refilling Paragraphs, for further information.
+
+

@@ -1,0 +1,20 @@
+10.8 @display and @smalldisplay
+===============================
+
+The @display command begins a kind of example.  It is like the
+@example command
+except that, in
+a printed manual, @display does not select the fixed-width
+font.  In fact, it does not specify the font at all, so that the text
+appears in the same font it would have appeared in without the
+@display command.
+
+This is an example of text written between an @display command
+and an @end display command.  The @display command
+indents the text, but does not fill it.
+
+Texinfo also provides a command @smalldisplay, which is like
+@display but uses a smaller font in @smallbook format.
+See small.
+
+

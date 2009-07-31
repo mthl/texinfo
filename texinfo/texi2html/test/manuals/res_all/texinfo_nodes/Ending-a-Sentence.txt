@@ -1,0 +1,28 @@
+13.2.2 Ending a Sentence
+------------------------
+
+
+Use @. instead of a period, @! instead of an
+exclamation point, and @? instead of a question mark at the end
+of a sentence that ends with a single capital letter.  Otherwise, TeX
+will think the letter is an abbreviation and will not insert the correct
+end-of-sentence spacing.  Here is an example:
+
+Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+produces
+
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+
+In the Info file output, @. is equivalent to a simple
+`.'; likewise for @! and @?.
+
+The meanings of @: and @. in Texinfo are designed to
+work well with the Emacs sentence motion commands (see (emacs)Sentences section `Sentences' in The GNU Emacs Manual).
+
+Do not put braces after any of these commands.
+
+

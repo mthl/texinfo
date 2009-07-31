@@ -1,0 +1,13 @@
+3.6 Global Document Commands
+============================
+
+Besides the basic commands mentioned in the previous sections, here are
+additional commands which affect the document as a whole.  They are
+generally all given before the Top node, if they are given at all.
+
+* documentdescription::         Document summary for the HTML output.
+* setchapternewpage::           Start chapters on right-hand pages.
+* paragraphindent::             Specify paragraph indentation.
+* exampleindent::               Specify environment indentation.
+
+

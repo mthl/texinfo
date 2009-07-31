@@ -1,0 +1,113 @@
+7 Selecting Cross References
+****************************
+
+We have already discussed the `Next', `Prev', and `Up'
+pointers which appear at the top of a node.  In addition to these
+pointers, a node may contain other pointers which refer you to a
+different node, perhaps in another Info file.  Such pointers are called
+cross references, or xrefs for short.
+
+* Parts of an Xref::            What a cross reference is made of.
+* Selecting Xrefs::             Commands for selecting menu or note items.
+
+7.1 Parts of an Xref
+====================
+
+Cross references have two major parts: the first part is called the
+label; it is the name that you can use to refer to the cross
+reference, and the second is the target; it is the full name of
+the node that the cross reference points to.
+
+The target is separated from the label by a colon `:'; first the
+label appears, and then the target.  For example, in the sample menu
+cross reference below, the single colon separates the label from the
+target.
+
+* Foo Label: Foo Target.        More information about Foo.
+
+Note the `.' which ends the name of the target.  The `.' is
+not part of the target; it serves only to let Info know where the target
+name ends.
+
+A shorthand way of specifying references allows two adjacent colons to
+stand for a target name which is the same as the label name:
+
+* Foo Commands::                Commands pertaining to Foo.
+
+In the above example, the name of the target is the same as the name of
+the label, in this case Foo Commands.
+
+You will normally see two types of cross reference while viewing nodes:
+menu references, and note references.  Menu references
+appear within a node's menu; they begin with a `*' at the beginning
+of a line, and continue with a label, a target, and a comment which
+describes what the contents of the node pointed to contains.
+
+Note references appear within the body of the node text; they begin with
+*Note, and continue with a label and a target.
+
+Like `Next', `Prev', and `Up' pointers, cross references
+can point to any valid node.  They are used to refer you to a place
+where more detailed information can be found on a particular subject.
+Here is a cross reference which points to a node within the Texinfo
+documentation:  See (texinfo)xref section `Writing an Xref' in the Texinfo Manual, for more information on creating your own texinfo cross
+references.
+
+7.2 Selecting Xrefs
+===================
+
+The following table lists the Info commands which operate on menu items.
+
+<1> (menu-digit)
+<2> ... <9>
+<M-1>, vi-like operation
+<M-2> ... <M-9>, vi-like operation
+Within an Info window, pressing a single digit, (such as `1'),
+selects that menu item, and places its node in the current window.
+For convenience, there is one exception; pressing `0' selects the
+last item in the node's menu.  When `--vi-keys' is in
+effect, digits set the numeric argument, so these commands are remapped
+to their `M-' varieties.  For example, to select the last menu
+item, press <M-0>.
+
+<0> (last-menu-item)
+<M-0>, vi-like operation
+Select the last item in the current node's menu.
+
+<m> (menu-item)
+Reads the name of a menu item in the echo area and selects its node.
+Completion is available while reading the menu label.  See completion.
+
+M-x find-menu
+Move the cursor to the start of this node's menu.
+
+This table lists the Info commands which operate on cross references.
+
+<f> (xref-item)
+<r>
+<M-f>, vi-like operation
+C-x <r>, vi-like operation
+Reads the name of a note cross reference in the echo area and selects
+its node.  Completion is available while reading the cross reference
+label.  See completion.
+
+Finally, the next few commands operate on menu or note references alike:
+
+<TAB> (move-to-next-xref)
+Move the cursor to the start of the next nearest menu item or note
+reference in this node.  You can then use <RET>
+(select-reference-this-line) to select the menu or note reference.
+
+<M-TAB> (move-to-prev-xref)
+<Shift-<TAB>> (on DOS/Windows only)
+Move the cursor the start of the nearest previous menu item or note
+reference in this node.
+
+On DOS/Windows only, the Shift-<TAB> key is an alias for
+M-<TAB>.  This key is sometimes called `BackTab'.
+
+<RET> (select-reference-this-line)
+<M-g>, vi-like operation
+Select the menu item or note reference appearing on this line.
+
+

@@ -1,0 +1,13 @@
+10.5 @verbatiminclude file: Include a File Verbatim
+===================================================
+
+You can include the exact contents of a file in the document with the
+@verbatiminclude command:
+
+@verbatiminclude filename
+
+The contents of filename is printed in a verbatim environment
+(see @verbatim).  Generally, the file is printed
+exactly as it is, with all special characters and white space retained.
+
+

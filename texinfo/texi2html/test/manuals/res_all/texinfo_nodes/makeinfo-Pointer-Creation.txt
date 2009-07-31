@@ -1,0 +1,31 @@
+6.4 Creating Pointers with makeinfo
+===================================
+
+The makeinfo program has a feature for automatically defining
+node pointers for a hierarchically organized file.
+
+When you take advantage of this feature, you do not need to write the
+`Next', `Previous', and `Up' pointers after the name of a node.
+However, you must write a sectioning command, such as @chapter
+or @section, on the line immediately following each truncated
+@node line (except that comment lines may intervene).
+
+In addition, you must follow the `Top' @node line with a line
+beginning with @top to mark the `Top' node in the
+file.  See @top.
+
+Finally, you must write the name of each node (except for the `Top'
+node) in a menu that is one or more hierarchical levels above the
+node's hierarchical level.
+
+This node pointer insertion feature in makeinfo relieves you from
+the need to update menus and pointers manually or with Texinfo mode
+commands.  (See Updating Nodes and Menus.)
+
+In most cases, you will want to take advantage of this feature and not
+redundantly specify node pointers.  However, Texinfo documents are not
+required to be organized hierarchically or in fact contain sectioning
+commands at all.  For example, if you never intend the document to be
+printed.  In those cases, you will need to explicitly specify the pointers.
+
+

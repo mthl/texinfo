@@ -1,0 +1,34 @@
+13.9.3 @expansion{} (==>): Indicating an Expansion
+--------------------------------------------------
+
+When an expression is a macro call, it expands into a new expression.
+You can indicate the result of the expansion with the
+@expansion{} command.
+
+The @expansion{} command is displayed as `==>'
+in Info and as a long arrow with a flat base in the printed output.
+
+For example, the following
+
+@lisp
+(third '(a b c))
+     @expansion{} (car (cdr (cdr '(a b c))))
+     @result{} c
+@end lisp
+
+produces
+
+(third '(a b c))
+     ==> (car (cdr (cdr '(a b c))))
+     => c
+
+which may be read as:
+
+(third '(a b c)) expands to (car (cdr (cdr '(a b c))));
+the result of evaluating the expression is c.
+
+Often, as in this case, an example looks better if the
+@expansion{} and @result{} commands are indented
+five spaces.
+
+

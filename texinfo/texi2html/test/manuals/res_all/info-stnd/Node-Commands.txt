@@ -1,0 +1,178 @@
+5 Selecting a Node
+******************
+
+This section details the numerous Info commands which select a new node
+to view in the current window.
+
+The most basic node commands are `n', `p', `u', and
+`l'.  Note that the commands to select nodes are mapped differently
+when `--vi-keys' is in effect; these keybindings are designated
+below as "vi-like operation".
+
+When you are viewing a node, the top line of the node contains some Info
+pointers which describe where the next, previous, and up nodes
+are.  Info uses this line to move about the node structure of the file
+when you use the following commands:
+
+<n> (next-node)
+C-<NEXT> (on DOS/Windows only)
+C-x <n>, vi-like operation
+Select the `Next' node.
+
+The <NEXT> key is known as the <PgDn> key on some
+keyboards.
+
+<p> (prev-node)
+C-<PREVIOUS> (on DOS/Windows only)
+Select the `Prev' node.
+
+The <PREVIOUS> key is known as the <PgUp> key on some
+keyboards.
+
+<u> (up-node)
+C-<UP> (an arrow key on DOS/Windows only)
+C-x <u>, vi-like operation
+Select the `Up' node.
+
+You can easily select a node that you have already viewed in this window
+by using the `l' command - this name stands for "last", and
+actually moves backwards through the history of visited nodes for this
+window.  This is handy when you followed a reference to another node,
+possibly to read about a related issue, and would like then to resume
+reading at the same place where you started the excursion.
+
+Each node where you press `l' is discarded from the history.  Thus,
+by the time you get to the first node you visited in a window, the
+entire history of that window is discarded.
+
+<l> (history-node)
+<C-<CENTER>> (on DOS/Windows only)
+<'>, vi-like operation
+Pop the most recently selected node in this window from the node
+history.
+
+Two additional commands make it easy to select the most commonly
+selected nodes; they are `t' and `d'.
+
+<t> (top-node)
+<M-t>, vi-like operation
+Select the node `Top' in the current Info file.
+
+<d> (dir-node)
+<M-d>, vi-like operation
+Select the directory node (i.e., the node `(dir)').
+
+Here are some other commands which immediately result in the selection
+of a different node in the current window:
+
+<<> (first-node)
+<g>, vi-like operation
+Selects the first node which appears in this file.  This node is most
+often `Top', but it does not have to be.  With a numeric argument
+N, select the Nth node (the first node is node 1).  An
+argument of zero is the same as the argument of 1.
+
+<>> (last-node)
+<G>, vi-like operation
+Select the last node which appears in this file.  With a numeric argument
+N, select the Nth node (the first node is node 1).  An
+argument of zero is the same as no argument, i.e., it selects the last
+node.
+
+<]> (global-next-node)
+Move forward or down through node structure.  If the node that you are
+currently viewing has a `Next' pointer, that node is selected.
+Otherwise, if this node has a menu, the first menu item is selected.  If
+there is no `Next' and no menu, the same process is tried with the
+`Up' node of this node.
+
+<[> (global-prev-node)
+Move backward or up through node structure.  If the node that you are
+currently viewing has a `Prev' pointer, that node is selected.
+Otherwise, if the node has an `Up' pointer, that node is selected,
+and if it has a menu, the last item in the menu is selected.
+
+You can get the same behavior as global-next-node and
+global-prev-node while simply scrolling through the file with
+<SPC> and <DEL>; See scroll-behavior, for
+more information.
+
+<g> (goto-node)
+C-x <g>, vi-like operation
+Read the name of a node and select it.  While reading the node name,
+completion (see completion) is only done for the
+nodes which reside in one of the Info files that were loaded in the
+current Info session; if the desired node resides in some other file,
+you must type the node exactly as it appears in that Info file, and you
+must include the Info file of the other file.  For example,
+
+g(emacs)Buffers
+
+finds the node `Buffers' in the Info file `emacs'.
+
+<O> (goto-invocation
+<I>
+Read the name of a program and look for a node in the current Info file
+which describes the invocation and the command-line options for that
+program.  The default program name is derived from the name of the
+current Info file.  This command does the same as the
+`--show-options' command-line option (see --show-options), but
+it also allows to specify the program name; this is important for those
+manuals which describe several programs.
+
+If you need to find the Invocation node of a program that is documented
+in another Info file, you need to visit that file before invoking
+`I'.  For example, if you are reading the Emacs manual and want to
+see the command-line options of the makeinfo program, type g
+(texinfo) <RET> and then I makeinfo <RET>.  If you don't
+know what Info file documents the command, or if invoking `I'
+doesn't display the right node, go to the `(dir)' node (using the
+`d' command) and invoke `I' from there.
+
+<G> (menu-sequence)
+Read a sequence of menu entries and follow it.  Info prompts for a
+sequence of menu items separated by commas.  (Since commas are not
+allowed in a node name, they are a natural choice for a delimiter in a
+list of menu items.)  Info then looks up the first item in the menu of
+the node `(dir)' (if the `(dir)' node cannot be found, Info
+uses `Top').  If such an entry is found, Info goes to the node it
+points to and looks up the second item in the menu of that node, etc.
+In other words, you can specify a complete path which descends through
+the menu hierarchy of a particular Info file starting at the
+`(dir)' node.  This has the same effect as if you typed the menu
+item sequence on Info's command line, see Info command-line arguments processing.  For example,
+
+ G Texinfo,Overview,Reporting Bugs <RET>
+
+displays the node `Reporting Bugs' in the Texinfo manual.  (You
+don't actually need to type the menu items in their full length, or in
+their exact letter-case.  However, if you do type the menu items
+exactly, Info will find it faster.)
+
+If any of the menu items you type are not found, Info stops at the last
+entry it did find and reports an error.
+
+C-x <k> (kill-node)
+Kill a node.  The node name is prompted for in the echo area, with a
+default of the current node.  Killing a node means that Info tries
+hard to forget about it, removing it from the list of history nodes kept
+for the window where that node is found.  Another node is selected in
+the window which contained the killed node.
+
+C-x C-f (view-file)
+Read the name of a file and selects the entire file.  The command
+C-x C-f filename
+is equivalent to typing
+g(filename)*
+
+C-x C-b (list-visited-nodes)
+Make a window containing a menu of all of the currently visited nodes.
+This window becomes the selected window, and you may use the standard
+Info commands within it.
+
+C-x <b> (select-visited-node)
+Select a node which has been previously visited in a visible window.
+This is similar to `C-x C-b' followed by `m', but no window is
+created.
+
+

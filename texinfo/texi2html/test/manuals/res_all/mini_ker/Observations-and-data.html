@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3.8 Observations and data</title>
+
+<meta name="description" content="Miniker 102 manual: 3.8 Observations and data">
+<meta name="keywords" content="Miniker 102 manual: 3.8 Observations and data">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Advanced-programming.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Parameters.html#Parameters" rel="previous" title="3.7 Parameters">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Observations-and-data"></a>
+<ul class="toc"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="Advanced-programming.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Parameters.html#Parameters" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Observations" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Observations-and-data-1"></a>
+<h2 class="section"> 3.8 Observations and data </h2>
+<ul class="toc">
+<li> <a href="#Observations">3.8.1 Observations</a> </li>
+<li> <a href="#Data">3.8.2 Data</a> </li>
+</ul>
+
+<p>Some support for observations and interactions with data is available.
+The observations are functions of the model variables. They don&rsquo;t have 
+any action on the model result, but they may (in theory) be observed 
+and measured. The natural use of these observations is to be compared
+with data that correspond with the values from real measurements.
+They are used in the Kalman filter (see <a href="Kalman-filter.html#Kalman-filter">Kalman filter</a>).
+</p>
+<p>The (model) observation vector is noted       &#x03C9;
+and the observation function is noted       h:
+</p>
+<p>
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex14x.png" alt="&#x03C9; = h(&#x03B7;,&#x03C6; )  " class="math-display" ></center>  
+</p>
+
+<hr size="2">
+<a name="Observations"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Observations-and-data" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Observations-1"></a>
+<h3 class="subsection"> 3.8.1 Observations </h3>
+
+<a name="index-mobs"></a>
+
+<p>The observation functions are set in a <code>set_probe</code> block in 
+the &lsquo;<tt>zinit</tt>&rsquo; sequence.
+</p>
+<a name="index-observation-function"></a>
+
+
+<p>For example suppose that, in the predator-prey model, we only 
+have access to the total population of preys and predators, we would have:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">set_probe
+&lt; eqn: pop = eta_pred + eta_pray;
+&gt;;
+</pre></td></tr></table>
+
+
+<a name="index-obs_002edata"></a>
+
+<p>The number of observations is put in the integer variable <code>mobs</code>.
+The observation vector corresponds with the part of the <code>ff(.)</code> 
+array situated past the regular transferts, <code>ff(mp+.)</code>, and is output
+in the file &lsquo;<tt>obs.data</tt>&rsquo;.
+</p>
+
+<hr size="2">
+<a name="Data"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Observations" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Explicit-model-size.html#Explicit-model-size" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Data-1"></a>
+<h3 class="subsection"> 3.8.2 Data </h3>
+
+<a name="index-zgetobs"></a>
+<a name="index-vobs_0028_002e_0029"></a>
+<a name="index-data_002edata"></a>
+
+<p>Currently this code is only used if the Kalman code is activated. This
+may be changed in the future.
+</p>
+<p>The convention for data is that whenever some data are available, the 
+logical variable <code>zgetobs</code> should be set to &lsquo;<samp>.true.</samp>&rsquo;. And the
+<code>vobs(.)</code> vector should be filled with the data values. This 
+vector has the same dimension than the observation
+vector and each coordinate is meant to correspond with one
+coordinate of the observation vector.
+</p>
+<p>This feature is turned on by setting the logical variable <code>zdata</code>
+to &lsquo;<samp>.true.</samp>&rsquo;, and the <code>zgetobs</code> flag is typically set in the
+&lsquo;<tt>zsteer</tt>&rsquo; sequence (see <a href="Controlling-the-run.html#End-of-time-step">Executing code at the end of each time step</a>).
+Every instant data are available (<code>zgetobs</code> is true) the observations
+are written to the file &lsquo;<tt>data.data</tt>&rsquo;. With the Kalman filter more 
+informations are output to the &lsquo;<tt>data.data</tt>&rsquo; file, 
+see <a href="Kalman-filter.html#Kalman-filter-results">Kalman filter results</a>.
+</p>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

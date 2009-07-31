@@ -1,0 +1,36 @@
+10.7 @small... Block Commands
+=============================
+
+In addition to the regular @example and @lisp commands,
+Texinfo has "small" example-style commands.  These are
+@smalldisplay, @smallexample, @smallformat, and
+@smalllisp.
+
+In TeX, the @small... commands typeset text in a smaller
+font than the non-small example commands.  Consequently, many examples
+containing long lines fit on a page without needing to be shortened.
+
+In Info, the @small... commands are equivalent to their
+non-small companion commands.
+
+Mark the end of an @small... block with a corresponding
+@end small....  For example, pair @smallexample with
+@end smallexample.
+
+This is an example of text written between @smallexample and
+@end smallexample.  In Info this text appears in its normal size;
+but in a 7 by 9.25 inch manual, this text appears in a smaller font.
+
+The @small... commands make it easier to prepare manuals
+without forcing you to edit examples by hand to fit them onto narrower
+pages.
+
+As a general rule, a printed document looks better if you use only one
+of (for example) @example or in @smallexample
+consistently within a chapter.  Only occasionally should you mix the two
+formats.
+
+See Printing "Small" Books, for more information
+about the @smallbook command.
+
+

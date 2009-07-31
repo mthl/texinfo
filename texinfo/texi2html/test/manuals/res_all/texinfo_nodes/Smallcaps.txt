@@ -1,0 +1,37 @@
+9.2.2 @sc{text}: The Small Caps Font
+------------------------------------
+
+Use the `@sc' command to set text in the printed and the HTML
+output in A SMALL CAPS FONT and set text in the Info file in upper
+case letters.  Write the text you want to be in small caps (where
+possible) between braces in lower case, like this:
+
+The @sc{acm} and @sc{ieee} are technical societies.
+
+This produces:
+
+The ACM and IEEE are technical societies.
+
+TeX typesets the small caps font in a manner that prevents the
+letters from `jumping out at you on the page'.  This makes small caps
+text easier to read than text in all upper case--but it's usually
+better to use regular mixed case anyway.  The Info formatting commands
+set all small caps text in upper case.  In HTML, the text is upper-cased
+and a smaller font is used to render it.
+
+If the text between the braces of an @sc command is uppercase,
+TeX typesets in FULL-SIZE CAPITALS.  Use full-size capitals
+sparingly, if ever, and since it's redundant to mark all-uppercase text
+with @sc, makeinfo warns about such usage.
+
+You may also use the small caps font for a jargon word such as
+ATO (a NASA word meaning `abort to orbit').
+
+There are subtleties to using the small caps font with a jargon word
+such as CDR, a word used in Lisp programming.  In this case, you
+should use the small caps font when the word refers to the second and
+subsequent elements of a list (the CDR of the list), but you
+should use `@code' when the word refers to the Lisp function of
+the same spelling.
+
+

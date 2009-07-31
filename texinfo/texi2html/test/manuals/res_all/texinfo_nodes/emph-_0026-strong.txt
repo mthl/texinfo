@@ -1,0 +1,31 @@
+9.2.1 @emph{text} and @strong{text}
+-----------------------------------
+
+The @emph and @strong commands are for emphasis;
+@strong is stronger.  In printed output, @emph produces
+italics and @strong produces bold.
+
+For example,
+
+@quotation
+@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
+files in the directory.
+@end quotation
+
+produces:
+
+     *Caution*: `rm * .[^.]*' removes _all_
+     files in the directory.
+
+The @strong command is seldom used except to mark what is, in
+effect, a typographical element, such as the word `Caution' in the
+preceding example.
+
+In the Info output, @emph surrounds the text with underscores
+(`_'), and @strong puts asterisks around the text.
+
+Caution: Do not use @strong with the word `Note';
+Info will mistake the combination for a cross reference.  Use a phrase
+such as Please note or Caution instead.
+
+

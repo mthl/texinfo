@@ -1,0 +1,22 @@
+3.6.1 @documentdescription: Summary text
+----------------------------------------
+
+When producing HTML output for a document, makeinfo writes a
+`<meta>' element in the `<head>' to give some idea of the
+content of the document.  By default, this description is the title
+of the document, taken from the @settitle command
+(see settitle).  To change this, use the @documentdescription
+environment, as in:
+
+@documentdescription
+descriptive text.
+@end documentdescription
+
+This will produce the following output in the `<head>' of the HTML:
+
+<meta name=description content="descriptive text.">
+
+@documentdescription must be specified before the first node of
+the document.
+
+

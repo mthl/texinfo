@@ -1,0 +1,30 @@
+1.1 Reporting Bugs
+==================
+
+We welcome bug reports and suggestions for any aspect of the Texinfo system,
+programs, documentation, installation, anything.  Please email them to
+<mailto:bug-texinfo@gnu.org>.  You can get the latest version of Texinfo
+from <ftp://ftp.gnu.org/gnu/texinfo/> and its mirrors worldwide.
+
+For bug reports, please include enough information for the maintainers
+to reproduce the problem.  Generally speaking, that means:
+
+* the version number of Texinfo and the program(s) or manual(s) involved.
+* hardware and operating system names and versions.
+* the contents of any input files necessary to reproduce the bug.
+* a description of the problem and samples of any erroneous output.
+* any unusual options you gave to configure.
+* anything else that you think would be helpful.
+
+When in doubt whether something is needed or not, include it.  It's
+better to include too much than to leave out something important.
+
+Patches are most welcome; if possible, please make them with
+`diff -c' (see (diffutils)Top section `Overview' in Comparing and Merging Files) and include `ChangeLog' entries (see (emacs)Change Log section `Change Log' in The GNU Emacs Manual).
+
+When sending patches, if possible please do not encode or split them in
+any way; it's much easier to deal with one plain text message, however
+large, than many small ones.  GNU shar <ftp://ftp.gnu.org/gnu/sharutils/> is a convenient way of packaging multiple and/or binary files
+for email.
+
+

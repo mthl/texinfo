@@ -1,0 +1,19 @@
+9.1.15 @email{email-address[, displayed-text]}
+----------------------------------------------
+
+Use the @email command to indicate an electronic mail address.
+It takes one mandatory argument, the address, and one optional argument, the
+text to display (the default is the address itself).
+
+In Info and TeX, the address is shown in angle brackets, preceded by
+the text to display if any.  In HTML output, @email produces a
+`mailto' link that usually brings up a mail composition window.
+For example:
+
+Send bug reports to @email{bug-texinfo@@gnu.org},
+suggestions to the @email{bug-texinfo@@gnu.org, same place}.
+produces
+Send bug reports to <mailto:bug-texinfo@gnu.org>,
+suggestions to the same place <mailto:bug-texinfo@gnu.org>.
+
+

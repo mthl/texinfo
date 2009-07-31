@@ -1,0 +1,52 @@
+6.3.4 @node Line Requirements
+-----------------------------
+
+Here are several requirements for @node lines:
+
+* All the node names for a single Info file must be unique.
+
+Duplicates confuse the Info movement commands.  This means, for
+example, that if you end every chapter with a summary, you must name
+each summary node differently.  You cannot just call each one
+"Summary".  You may, however, duplicate the titles of chapters, sections,
+and the like.  Thus you can end each chapter in a book with a section
+called "Summary", so long as the node names for those sections are all
+different.
+
+* A pointer name must be the name of a node.
+
+The node to which a pointer points may come before or after the
+node containing the pointer.
+
+* @-commands used in node names generally confuse Info, so you
+should avoid them.  This includes punctuation characters that are
+escaped with a `@', such as @ and {.  For a few
+rare cases when this is useful, Texinfo has limited support for using
+@-commands in node names; see Pointer Validation.
+
+Thus, the beginning of the section called @chapter looks like
+this:
+
+@node  chapter, unnumbered & appendix, makeinfo top, Structuring
+@comment  node-name,  next,  previous,  up
+@section @code{@@chapter}
+@findex chapter
+
+* You cannot use parentheses in node names, because a node name such as
+`(foo)bar' is interpreted by the Info readers as a node
+`bar' in an Info file `foo'.
+
+* Unfortunately, you cannot use periods, commas, colons or apostrophes
+within a node name; these confuse TeX or the Info formatters.
+
+For example, the following is a section title:
+
+@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+
+The corresponding node name is:
+
+unnumberedsec appendixsec heading
+
+* Case is significant.
+
+

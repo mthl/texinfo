@@ -1,0 +1,11 @@
+3.2.5 End of Header
+-------------------
+
+Follow the header lines with an end-of-header line, which is a
+Texinfo comment that looks like this:
+
+@c %**end of header
+
+See Start of Header.
+
+

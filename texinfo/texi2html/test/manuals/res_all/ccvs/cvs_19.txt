@@ -1,0 +1,163 @@
+Annexe D All environment variables which affect CVS
+***************************************************
+
+This is a complete list of all environment variables
+that affect CVS.
+
+$CVSIGNORE
+A whitespace-separated list of file name patterns that
+CVS should ignore. See cvsignore.
+
+$CVSWRAPPERS
+A whitespace-separated list of file name patterns that
+CVS should treat as wrappers. See Wrappers.
+
+$CVSREAD
+If this is set, checkout and update will
+try hard to make the files in your working directory
+read-only.  When this is not set, the default behavior
+is to permit modification of your working files.
+
+$CVSREADONLYFS
+Turns on read-only repository mode. This allows one to
+check out from a read-only repository, such as within
+an anoncvs server, or from a CDROM repository.
+
+It has the same effect as if the `-R' command-line
+option is used. This can also allow the use of
+read-only NFS repositories.
+
+$CVSUMASK
+Controls permissions of files in the repository.  See
+File permissions.
+
+$CVSROOT
+Should contain the full pathname to the root of the CVS
+source repository (where the RCS files are
+kept).  This information must be available to CVS for
+most commands to execute; if $CVSROOT is not set,
+or if you wish to override it for one invocation, you
+can supply it on the command line: `cvs -d cvsroot
+cvs_command...' Once you have checked out a working
+directory, CVS stores the appropriate root (in
+the file `CVS/Root'), so normally you only need to
+worry about this when initially checking out a working
+directory.
+
+$CVSEDITOR
+$EDITOR
+$VISUAL
+Specifies the program to use for recording log messages
+during commit.  $CVSEDITOR overrides
+$EDITOR, which overrides $VISUAL.
+See Committing your changes for more or
+Global options for alternative ways of specifying a
+log editor.
+
+$PATH
+If $RCSBIN is not set, and no path is compiled
+into CVS, it will use $PATH to try to find all
+programs it uses.
+
+$HOME
+$HOMEPATH
+$HOMEDRIVE
+Used to locate the directory where the `.cvsrc'
+file, and other such files, are searched.  On Unix, CVS
+just checks for HOME.  On Windows NT, the system will
+set HOMEDRIVE, for example to `d:' and HOMEPATH,
+for example to `\joe'.  On Windows 95, you'll
+probably need to set HOMEDRIVE and HOMEPATH yourself.
+
+$CVS_RSH
+Specifies the external program which CVS connects with,
+when :ext: access method is specified.
+see Connecting via rsh.
+
+$CVS_SERVER
+Used in client-server mode when accessing a remote
+repository using RSH.  It specifies the name of
+the program to start on the server side (and any
+necessary arguments) when accessing a remote repository
+using the :ext:, :fork:, or :server: access methods.
+The default value for :ext: and :server: is cvs;
+the default value for :fork: is the name used to run the client.
+see Connecting via rsh
+
+$CVS_PASSFILE
+Used in client-server mode when accessing the cvs
+login server.  Default value is `$HOME/.cvspass'.
+see Password authentication client
+
+$CVS_CLIENT_PORT
+Used in client-server mode to set the port to use when accessing the server
+via Kerberos, GSSAPI, or CVS's password authentication protocol
+if the port is not specified in the CVSROOT.
+see Remote repositories
+
+$CVS_RCMD_PORT
+Used in client-server mode.  If set, specifies the port
+number to be used when accessing the RCMD demon on
+the server side. (Currently not used for Unix clients).
+
+$CVS_CLIENT_LOG
+Used for debugging only in client-server
+mode.  If set, everything sent to the server is logged
+into `$CVS_CLIENT_LOG.in' and everything
+sent from the server is logged into
+`$CVS_CLIENT_LOG.out'.
+
+$CVS_SERVER_SLEEP
+Used only for debugging the server side in
+client-server mode.  If set, delays the start of the
+server child process the specified amount of
+seconds so that you can attach to it with a debugger.
+
+$CVS_IGNORE_REMOTE_ROOT
+For CVS 1.10 and older, setting this variable
+prevents CVS from overwriting the `CVS/Root'
+file when the `-d' global option is specified.
+Later versions of CVS do not rewrite
+`CVS/Root', so CVS_IGNORE_REMOTE_ROOT has no
+effect.
+
+$CVS_LOCAL_BRANCH_NUM
+Setting this variable allows some control over the
+branch number that is assigned. This is specifically to
+support the local commit feature of CVSup. If one sets
+CVS_LOCAL_BRANCH_NUM to (say) 1000 then branches
+the local repository, the revision numbers will look
+like 1.66.1000.xx. There is almost a dead-set certainty
+that there will be no conflicts with version numbers.
+
+$COMSPEC
+Used under OS/2 only.  It specifies the name of the
+command interpreter and defaults to CMD.EXE.
+
+$TMPDIR
+$TMP
+$TEMP
+Directory in which temporary files are located.
+The CVS server uses
+TMPDIR.  See Global options, for a
+description of how to specify this.
+Some parts of CVS will always use `/tmp' (via
+the tmpnam function provided by the system).
+
+On Windows NT, TMP is used (via the _tempnam
+function provided by the system).
+
+The patch program which is used by the CVS
+client uses TMPDIR, and if it is not set, uses
+`/tmp' (at least with GNU patch 2.1).  Note that
+if your server and client are both running CVS
+1.9.10 or later, CVS will not invoke an external
+patch program.
+
+$CVS_PID
+This is the process identification (aka pid) number of
+the CVS process. It is often useful in the
+programs and/or scripts specified by the
+`commitinfo', `verifymsg', `loginfo'
+files.
+

@@ -1,0 +1,18 @@
+5.10 The @subsection-like Commands
+==================================
+
+The @unnumberedsubsec, @appendixsubsec, and
+@subheading commands are, respectively, the unnumbered,
+appendix-like, and heading-like equivalents of the @subsection
+command.  (See @subsection.)
+
+In Info, the @subsection-like commands generate a title
+underlined with hyphens.  In a printed manual, an @subheading
+command produces a heading like that of a subsection except that it is
+not numbered and does not appear in the table of contents.  Similarly,
+an @unnumberedsubsec command produces an unnumbered heading like
+that of a subsection and an @appendixsubsec command produces a
+subsection-like heading labelled with a letter and numbers; both of
+these commands produce headings that appear in the table of
+contents.
+

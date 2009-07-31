@@ -1,0 +1,43 @@
+6.3.2 How to Write an @node Line
+--------------------------------
+
+The easiest way to write an @node line is to write @node
+at the beginning of a line and then the name of the node, like
+this:
+
+@node node-name
+
+If you are using GNU Emacs, you can use the update node commands
+provided by Texinfo mode to insert the names of the pointers; or you
+can leave the pointers out of the Texinfo file and let makeinfo
+insert node pointers into the Info file it creates.  (See Texinfo Mode, and makeinfo Pointer Creation.)
+
+Alternatively, you can insert the `Next', `Previous', and `Up'
+pointers yourself.  If you do this, you may find it helpful to use the
+Texinfo mode keyboard command C-c C-c n.  This command inserts
+`@node' and a comment line listing the names of the pointers in
+their proper order.  The comment line helps you keep track of which
+arguments are for which pointers.  This comment line is especially useful
+if you are not familiar with Texinfo.
+
+The template for a fully-written-out node line with `Next', `Previous',
+and `Up' pointers looks like this:
+
+@node node-name, next, previous, up
+
+If you wish, you can ignore @node lines altogether in your first
+draft and then use the texinfo-insert-node-lines command to
+create @node lines for you.  However, we do not recommend this
+practice.  It is better to name the node itself at the same time that
+you write a segment so you can easily make cross references.  A large
+number of cross references are an especially important feature of a good
+Info file.
+
+After you have inserted an @node line, you should immediately
+write an @-command for the chapter or section and insert its name.
+Next (and this is important!), put in several index entries.  Usually,
+you will find at least two and often as many as four or five ways of
+referring to the node in the index.  Use them all.  This will make it
+much easier for people to find the node.
+
+

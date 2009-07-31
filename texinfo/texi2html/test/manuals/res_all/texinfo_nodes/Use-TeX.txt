@@ -1,0 +1,13 @@
+19.1 Use TeX
+============
+
+The typesetting program called TeX is used for formatting a Texinfo
+file.  TeX is a very powerful typesetting program and, if used correctly,
+does an exceptionally good job.  (See How to Obtain TeX, for information on how to obtain TeX.)
+
+The standalone makeinfo program and Emacs functions
+texinfo-format-region and texinfo-format-buffer commands
+read the very same @-commands in the Texinfo file as does TeX, but
+process them differently to make an Info file (see Creating an Info File).
+
+

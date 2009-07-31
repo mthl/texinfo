@@ -1,0 +1,59 @@
+16.4.1 @set and @value
+----------------------
+
+You use the @set command to specify a value for a flag, which is
+later expanded by the @value command.
+
+A flag is an identifier.  In general, it is best to use only
+letters and numerals in a flag name, not `-' or `_'--they
+will work in some contexts, but not all, due to limitations in TeX.
+
+The value is the remainder of the input line, and can contain anything.
+
+Write the @set command like this:
+
+@set foo This is a string.
+
+This sets the value of the flag foo to "This is a string.".
+
+The Texinfo formatters then replace an @value{flag}
+command with the string to which flag is set.  Thus, when
+foo is set as shown above, the Texinfo formatters convert this:
+
+@value{foo}
+to this:
+This is a string.
+
+You can write an @value command within a paragraph; but you
+must write an @set command on a line of its own.
+
+If you write the @set command like this:
+
+@set foo
+
+without specifying a string, the value of foo is the empty string.
+
+If you clear a previously set flag with @clear flag, a
+subsequent @value{flag} command will report an error.
+
+For example, if you set foo as follows:
+
+@set how-much very, very, very
+
+then the formatters transform
+
+It is a @value{how-much} wet day.
+into
+It is a very, very, very wet day.
+
+If you write
+
+@clear how-much
+
+then the formatters transform
+
+It is a @value{how-much} wet day.
+into
+It is a {No value for "how-much"} wet day.
+
+

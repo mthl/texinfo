@@ -1,0 +1,17 @@
+8 Cross References
+******************
+
+Cross references are used to refer the reader to other parts of the
+same or different Texinfo files.  In Texinfo, nodes and anchors are the
+places to which cross references can refer.
+
+* References::                  What cross references are for.
+* Cross Reference Commands::    A summary of the different commands.
+* Cross Reference Parts::       A cross reference has several parts.
+* xref::                        Begin a reference with `See' ...
+* Top Node Naming::             How to refer to the beginning of another file.
+* ref::                         A reference for the last part of a sentence.
+* pxref::                       How to write a parenthetical cross reference.
+* inforef::                     How to refer to an Info-only file.
+* uref::                        How to refer to a uniform resource locator.
+

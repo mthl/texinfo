@@ -1,0 +1,37 @@
+References
+----------
+What References Are For
+=======================
+
+Often, but not always, a printed document should be designed so that
+it can be read sequentially.  People tire of flipping back and forth
+to find information that should be presented to them as they need
+it.
+
+However, in any document, some information will be too detailed for
+the current context, or incidental to it; use cross references to
+provide access to such information.  Also, an online help system or a
+reference manual is not like a novel; few read such documents in
+sequence from beginning to end.  Instead, people look up what they
+need.  For this reason, such creations should contain many cross
+references to help readers find other information that they may not
+have read.
+
+In a printed manual, a cross reference results in a page reference,
+unless it is to another manual altogether, in which case the cross
+reference names that manual.
+
+In Info, a cross reference results in an entry that you can follow using
+the Info `f' command.  (See Some advanced Info commands: (info)Help-Adv.)
+
+The various cross reference commands use nodes (or anchors,
+see @anchor) to define cross reference locations.
+This is evident in Info, in which a cross reference takes you to the
+specified location.  TeX also uses nodes to define cross reference
+locations, but the action is less obvious.  When TeX generates a DVI
+file, it records each node's page number and uses the page numbers in making
+references.  Thus, if you are writing a manual that will only be
+printed, and will not be used online, you must nonetheless write
+@node lines to name the places to which you make cross
+references.
+

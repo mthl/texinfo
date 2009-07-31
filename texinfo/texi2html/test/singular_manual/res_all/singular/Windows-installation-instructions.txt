@@ -1,0 +1,205 @@
+E.4 Windows installation instructions
+=====================================
+
+
+
+
+
+
+For the impatient:
+==================
+* If you run Windows NT/2K/XP, make sure you are logged in with the
+Administrator rights.
+* If you have some older version of Singular installed, please uninstall it
+before installing Singular-2-0-4. It is recommended to
+install the new Singular in the same directory where the previous
+version was installed. Thus your existing environment will be used automatically.
+* If you have Cygwin or XEmacs installed and they do not belong
+of some previous Singular installation,
+please read the information below.
+* Execute the self-extracting installation archive and
+carefully follow the instructions given there. 
+Setup will analyze your system, create the corresponding configuration
+and give you further tips on the installation process.
+* In case of troubles, see the installed files /etc/INSTALL.txt,
+/etc/TROUBLESHOOTING.txt or visit
+the Singular Forum at <http://www.singular.uni-kl.de/forum>.
+
+
+Installation preliminaries
+==========================
+
+Running Singular on MS Windows requires that the Cygwin DLL
+(dynamically linked library) version 1.3.9 or higher is installed on your
+system (see <http://sources.redhat.com/cygwin/> for details about
+Cygwin). We install and configure Cygwin version 1.3.9 automatically, if
+the BasicCygwin component is selected (default setting).
+
+To run ESingular (i.e. Singular within its Emacs interface) on
+MS Windows requires furthermore that the XEmacs editor is installed on
+your system. We install and configure XEmacs version 21.1.13 automatically, if the XEmacs component is selected.
+
+
+The Singular installation is divided into the following
+components (you see them explicitly if you choose the Custom Setup Type
+during the installation):
+Program Files:
+        Singular
+Contains the Singular Program, documentation and example files.
+
+All files of this component are installed under the directory
+/usr/local/Singular/2-0-4
+BasicCygwin
+Contains the Cygwin DLL and basic tools/programs (like bash or
+info) of the  Cygwin environment.
+
+The Cygwin DLL and programs are installed in the directory
+/bin. Miscellaneous documentation and configuration files are
+installed into the directory /etc.
+XEmacs
+Contains the Cygwin port of the XEmacs editor (see
+<http://www.xemacs.org> for more about XEmacs) version 21.1.13.
+
+All files of this component are installed under the directory
+/usr/local.
+ESingular
+Contains the ESingular, the most comfortable Singular interface.
+Requires XEmacs to run.
+        Remark:
+All essential DLLs, some programs and symbolic links are installed in the directory
+/usr/local/Singular/2-0-4/ix86-Win, which must be present in your PATH system variable.
+Help Files:
+WinHelp
+Contains Singular Manual, converted to Windows help format (.hlp).
+We recommend to install it, because it is small in size. Moreover,
+we set it as default help browser in all the Singular executables.
+HTML Help
+Contains the "native" Singular Manual. It's not included by default,
+because it is much bigger than WinHelp, though it has better typesetting
+of mathematical formulae.
+
+The Typical Setup Type of the Singular-2-0-4-Typical.exe contains
+BasicCygwin, Singular, 
+XEmacs, ESingular, WinHelp and HTML Help 
+components. The Compact Setup Type does not contain only the HTML Help component.
+
+Downloading preliminaries
+=========================
+
+To install Singular on a PC running Windows 95/98/ME/NT/2K/XP, you need
+to download one of the following archive files:
+
+Minimal archive: Singular-2-0-4-Compact.exe <Singular-2-0-4-Compact.exe>      (BasicCygwin, Singular, WinHelp components)
+
+Typical archive : Singular-2-0-4-Typical.exe <Singular-2-0-4-Typical.exe>      (BasicCygwin, Singular, XEmacs, ESingular, WinHelp, HTML Help components)
+
+You can obtain these (and other) archives 
+either from the WINDOWS directory on the Singular CD or from
+<ftp://www.mathematik.uni-kl.de/pub/Math/Singular/>.
+
+
+
+Installing Singular
+===================
+
+The recent Setup program analyzes your system, e.g. it detects
+whether Cygwin and XEmacs are present and functional. Then it gives you
+hints and/or error messages with instructions during the installation.
+
+If you have Cygwin installed
+        If the version of cygwin1.dll is not less than 1.3.9,
+        you will be prompted that the BasicCygwin component will not
+        be installed. Moreover, the existing Cygwin root directory will be proposed as
+        the default installation directory. You can accept it, then
+        Singular will be placed into the existing Cygwin environment.
+        If you choose another destination, Singular will use Cygwin
+        programs anyway. If your Cygwin has incorrect settings (like
+        inconsistent mount points among the important ones), Singular
+        Setup will correct them. 
+
+      If setup could not detect cygwin, present in the system, you
+        can try to break the installation, start it once more, choose the
+        "Custom" setup type and unselect the BasicCygwin component.
+
+If you have XEmacs installed
+        The Cygwin port of XEmacs version 21.1.13 together 
+        with the most
+        important packages is included in the distribution. The use of 
+        non-Cygwin ports or earlier Cygwin ports has some 
+        quirks and does not work 
+        properly together with Singular (i.e., running ESingular 
+        results in problems). Nevertheless, if you want to test the
+        compatibility of ESingular with your own XEmacs, just
+        de-select the XEmacs component, but leave ESingular selected.
+        If your XEmacs happens to be incompatible with ESingular, you can
+        install just the XEmacs component and use in fact two different
+        XEmacs programs. 
+        The setup program will search for XEmacs and packages 
+        in <TARGETDIR>/usr/local/lib (here <TARGETDIR> is the directory which you selected while running setup). If you have Cygwin and the Cygwin port of
+        XEmacs, you might have XEmacs installed there. To avoid overwriting your XEmacs files, setup will ask you what to do.
+
+
+Customizing Singular
+====================
+
+The following step(s) are optional:
+* To conveniently access all files on your computer, mount the drives of
+your disk(s):
+1. Open a rxvt terminal (from Start->Programs->Singular 2.0->Tools).
+2. For each drive (letter) issue the following command (the drive C:
+is used in the example):
+mount -f -s -t C: /C
+After mounting the drive(s) this way, you can conveniently access the
+files on a drive from the bash shell and from XEmacs using the /C/ prefix. Otherwise, you need to type /cygdrive/C - that is
+the Cygwin convention. You can get more information on mount command by invoking mount --help. Command umount unmount the selected
+mount point.
+
+
+* Create your personal HOME directory.
+
+Various applications (e.g., bash or XEmacs) store
+user-specific configuration/customization files in the HOME
+directory of the current user. During the installation, the HOME
+directory is globally set for all users to /home/Singular. To
+create your individual  HOME directory follow these steps:
+1. Create a directory (folder), say, C:\home\MyHome.
+2. Copy all files from /home/Singular to C:\home\MyHome.
+3. Set the user environment variable HOME to C:\home\MyHome:
+
+On Windows 95/98/ME, edit the respective line the AUTOEXEC.BAT
+file.
+
+On Windows NT/2K/XP add an entry in your Environment control
+panel.
+4. Restart your computer (On Windows 95/98/ME).
+You may furthermore examine the files copied into your HOME
+directory and adjust (i.e. edit) them to your personal
+preferences/needs. System-wide settings are stored in the file 
+/etc/profile.
+
+
+Uninstalling Singular
+=====================
+
+You can uninstall individual or all installed components by opening the
+Software shortcut of the Control panel. 
+Simply double-click the Singular item and
+follow the instructions given there.
+
+
+For any other troubles,
+please send an email to <mailto:singular@mathematik.uni-kl.de>
+and include the header which is displayed by starting up Singular
+with the -v option, and a description of your machine and
+operating system.
+
+
+
+
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

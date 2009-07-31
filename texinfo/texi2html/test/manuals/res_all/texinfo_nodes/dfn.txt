@@ -1,0 +1,22 @@
+9.1.11 @dfn{term}
+-----------------
+
+Use the @dfn command to identify the introductory or defining
+use of a technical term.  Use the command only in passages whose
+purpose is to introduce a term which will be used again or which the
+reader ought to know.  Mere passing mention of a term for the first
+time does not deserve @dfn.  The command generates italics in
+the printed manual, and double quotation marks in the Info file.  For
+example:
+
+Getting rid of a file is called @dfn{deleting} it.
+
+produces
+
+Getting rid of a file is called deleting it.
+
+As a general rule, a sentence containing the defining occurrence of a
+term should be a definition of the term.  The sentence does not need
+to say explicitly that it is a definition, but it should contain the
+information of a definition--it should make the meaning clear.
+

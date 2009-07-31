@@ -1,0 +1,27 @@
+F.5.2 Creating an Unsplit File
+------------------------------
+
+You can run Info-validate only on a single Info file that has a
+tag table.  The command will not work on the indirect subfiles that
+are generated when a master file is split.  If you have a large file
+(longer than 70,000 bytes or so), you need to run the
+texinfo-format-buffer or makeinfo-buffer command in such
+a way that it does not create indirect subfiles.  You will also need
+to create a tag table for the Info file.  After you have done this,
+you can run Info-validate and look for badly referenced
+nodes.
+
+The first step is to create an unsplit Info file.  To prevent
+texinfo-format-buffer from splitting a Texinfo file into
+smaller Info files, give a prefix to the M-x
+texinfo-format-buffer command:
+
+C-u M-x texinfo-format-buffer
+
+or else
+
+C-u C-c C-e C-b
+
+When you do this, Texinfo will not split the file and will not create
+a tag table for it. 
+

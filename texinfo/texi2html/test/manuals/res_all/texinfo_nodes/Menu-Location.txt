@@ -1,0 +1,34 @@
+Menu Location
+-------------
+Menus Need Short Nodes
+======================
+
+The short text before a menu may look awkward in a printed manual.  To
+avoid this, you can write a menu near the beginning of its node and
+follow the menu by an @node line, and then an @heading
+line located within @ifinfo and @end ifinfo.  This way,
+the menu, @node line, and title appear only in the Info file,
+not the printed document.
+
+For example, the preceding two paragraphs follow an Info-only menu,
+@node line, and heading, and look like this:
+
+@menu
+* Menu Location::             Put a menu in a short node.
+* Writing a Menu::            What is a menu?
+* Menu Parts::                A menu entry has three parts.
+* Less Cluttered Menu Entry:: Two part menu entry.
+* Menu Example::              Two and three part entries.
+* Other Info Files::          How to refer to a different
+                                Info file.
+@end menu
+
+@node Menu Location, Writing a Menu, , Menus
+@ifinfo
+@heading Menus Need Short Nodes
+@end ifinfo
+
+The Texinfo file for this document contains a number of
+examples of this procedure; one is at the beginning of this chapter.
+
+

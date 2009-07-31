@@ -1,0 +1,42 @@
+20.2.1 The Directory File `dir'
+-------------------------------
+
+For Info to work, the `info' directory must contain a file that
+serves as a top level directory for the Info system.  By convention,
+this file is called `dir'.  (You can find the location of this file
+within Emacs by typing C-h i to enter Info and then typing
+C-x C-f to see the pathname to the `info' directory.)
+
+The `dir' file is itself an Info file.  It contains the top level
+menu for all the Info files in the system.  The menu looks like
+this:
+
+* Menu:
+* Info:    (info).     Documentation browsing system.
+* Emacs:   (emacs).    The extensible, self-documenting
+                       text editor.
+* Texinfo: (texinfo).  With one source file, make
+                       either a printed manual using
+                       @TeX{} or an Info file.
+...
+
+Each of these menu entries points to the `Top' node of the Info file
+that is named in parentheses.  (The menu entry does not need to
+specify the `Top' node, since Info goes to the `Top' node if no node
+name is mentioned.  See Nodes in Other Info Files.)
+
+Thus, the `Info' entry points to the `Top' node of the
+`info' file and the `Emacs' entry points to the `Top' node
+of the `emacs' file.
+
+In each of the Info files, the `Up' pointer of the `Top' node refers
+back to the dir file.  For example, the line for the `Top'
+node of the Emacs manual looks like this in Info:
+
+File: emacs  Node: Top, Up: (DIR), Next: Distrib
+
+In this case, the `dir' file name is written in upper case
+letters--it can be written in either upper or lower case.  This is not
+true in general, it is a special case for `dir'.
+
+

@@ -1,0 +1,58 @@
+D.2 texinfo-multiple-files-update
+=================================
+
+GNU Emacs Texinfo mode provides the texinfo-multiple-files-update
+command.  This command creates or updates `Next', `Previous', and `Up'
+pointers of included files as well as those in the outer or overall
+Texinfo file, and it creates or updates a main menu in the outer file.
+Depending whether you call it with optional arguments, the command
+updates only the pointers in the first @node line of the
+included files or all of them:
+
+M-x texinfo-multiple-files-update
+Called without any arguments:
+
+-- Create or update the `Next', `Previous', and `Up' pointers of the
+first @node line in each file included in an outer or overall
+Texinfo file.
+
+-- Create or update the `Top' level node pointers of the outer or
+overall file.
+
+-- Create or update a main menu in the outer file.
+
+C-u M-x texinfo-multiple-files-update
+Called with C-u as a prefix argument:
+
+-- Create or update pointers in the first @node line in each
+included file.
+
+-- Create or update the `Top' level node pointers of the outer file.
+
+-- Create and insert a master menu in the outer file.  The master menu
+is made from all the menus in all the included files.
+
+C-u 8 M-x texinfo-multiple-files-update
+Called with a numeric prefix argument, such as C-u 8:
+
+-- Create or update all the `Next', `Previous', and `Up' pointers
+of all the included files.
+
+-- Create or update all the menus of all the included
+files.
+
+-- Create or update the `Top' level node pointers of the outer or
+overall file.
+
+-- And then create a master menu in the outer file.  This is similar to
+invoking texinfo-master-menu with an argument when you are
+working with just one file.
+
+Note the use of the prefix argument in interactive use: with a regular
+prefix argument, just C-u, the
+texinfo-multiple-files-update command inserts a master menu;
+with a numeric prefix argument, such as C-u 8, the command
+updates every pointer and menu in all the files and then inserts a
+master menu.
+
+
