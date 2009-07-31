@@ -771,7 +771,7 @@ Table of Contents
  12.3 Avoiding substitution
  12.4 Substitution modes
  12.5 Configuring Keyord Expansion
- 12.6 Problems with the $@splitrcskeyword{}Log$ keyword.
+ 12.6 Problems with the $ Log$ keyword.
 13. Tracking third-party sources
  13.1 Importing for the first time
  13.2 Updating with the import command

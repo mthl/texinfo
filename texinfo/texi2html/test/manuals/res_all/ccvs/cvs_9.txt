@@ -87,7 +87,7 @@ nor keyword expansion will be done.
 Here is an example of how you can create a new file
 using the `-kb' flag:
 
-$ echo '$@splitrcskeyword{}Id$' > kotest
+$ echo '$ Id$' > kotest
 $ cvs add -kb -m"A test file" kotest
 $ cvs ci -m"First checkin; contains a keyword" kotest
 
@@ -95,7 +95,7 @@ If a file accidentally gets added without `-kb',
 one can use the cvs admin command to recover.
 For example:
 
-$ echo '$@splitrcskeyword{}Id$' > kotest
+$ echo '$ Id$' > kotest
 $ cvs add -m"A test file" kotest
 $ cvs ci -m"First checkin; contains a keyword" kotest
 $ cvs admin -kb kotest

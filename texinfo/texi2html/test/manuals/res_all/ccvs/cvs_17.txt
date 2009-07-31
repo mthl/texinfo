@@ -78,27 +78,27 @@ See Global options.
 
 Keyword expansion modes (see Substitution modes):
 
--kkv  $@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
--kkvl $@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
--kk   $@splitrcskeyword{}Id$
+-kkv  $ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
+-kkvl $ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+-kk   $ Id$
 -kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
 -ko   no expansion
 -kb   no expansion, file is binary
 
 Keywords (see Keyword list):
 
-$@splitrcskeyword{}Author: joe $
-$@splitrcskeyword{}Date: 1993/12/09 03:21:13 $
-$@splitrcskeyword{}CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$@splitrcskeyword{}Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$@splitrcskeyword{}Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$@splitrcskeyword{}Locker: harry $
-$@splitrcskeyword{}Name: snapshot_1_14 $
-$@splitrcskeyword{}RCSfile: file1,v $
-$@splitrcskeyword{}Revision: 1.1 $
-$@splitrcskeyword{}Source: /home/files/file1,v $
-$@splitrcskeyword{}State: Exp $
-$@splitrcskeyword{}Log: file1,v $
+$ Author: joe $
+$ Date: 1993/12/09 03:21:13 $
+$ CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$ Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$ Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+$ Locker: harry $
+$ Name: snapshot_1_14 $
+$ RCSfile: file1,v $
+$ Revision: 1.1 $
+$ Source: /home/files/file1,v $
+$ State: Exp $
+$ Log: file1,v $
 Revision 1.1  1993/12/09 03:30:17  joe
 Initial revision
 

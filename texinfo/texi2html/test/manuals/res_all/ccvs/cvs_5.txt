@@ -484,7 +484,7 @@ and your working directory is currently on the trunk
 results from a merge:
 
 $ cat file1
-key $@splitrcskeyword{}Revision: 1.2 $
+key $ Revision: 1.2 $
 . . .
 $ cvs update -j br1
 U file1
@@ -495,9 +495,9 @@ Merging differences between 1.1 and 1.1.2.1 into file1
 rcsmerge: warning: conflicts during merge
 $ cat file1
 <<<<<<< file1
-key $@splitrcskeyword{}Revision: 1.2 $
+key $ Revision: 1.2 $
 =======
-key $@splitrcskeyword{}Revision: 1.1.2.1 $
+key $ Revision: 1.1.2.1 $
 >>>>>>> 1.1.2.1
 . . .
 
@@ -512,7 +512,7 @@ working directory had contained Revision: 1.2.
 Here is what happens if you had used `-kk':
 
 $ cat file1
-key $@splitrcskeyword{}Revision: 1.2 $
+key $ Revision: 1.2 $
 . . .
 $ cvs update -kk -j br1
 U file1
@@ -521,7 +521,7 @@ retrieving revision 1.1
 retrieving revision 1.1.2.1
 Merging differences between 1.1 and 1.1.2.1 into file1
 $ cat file1
-key $@splitrcskeyword{}Revision$
+key $ Revision$
 . . .
 
 What is going on here is that revision 1.1 and 1.1.2.1

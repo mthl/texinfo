@@ -752,7 +752,7 @@ stable), and `Rel' (for released).  By default,
 the state of a new revision is set to `Exp' when
 it is created.  The state is visible in the output from
 cvs log (see log), and in the
-`$@splitrcskeyword{}Log$' and `$@splitrcskeyword{}State$' keywords
+`$ Log$' and `$ State$' keywords
 (see Keyword substitution).  Note that CVS
 uses the dead state for its own purposes; to
 take a file to or from the dead state use

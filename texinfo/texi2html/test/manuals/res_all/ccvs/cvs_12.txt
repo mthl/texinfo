@@ -23,7 +23,7 @@ a new revision of the file.
 * Avoiding substitution::          Avoiding substitution
 * Substitution modes::             Substitution modes
 * Configuring keyword expansion::  Configuring keyword expansion
-* Log keyword::                    Problems with the $@splitrcskeyword{}Log$ keyword.
+* Log keyword::                    Problems with the $ Log$ keyword.
 
 12.1 Keyword List
 =================
@@ -31,11 +31,11 @@ a new revision of the file.
 
 This is a list of the keywords:
 
-$@splitrcskeyword{Author}$
+$ Author$
 The login name of the user who checked in the revision.
 
-$@splitrcskeyword{CVSHeader}
-A standard header (similar to $@splitrcskeyword{Header}$, but with
+$ CVSHeader
+A standard header (similar to $ Header$, but with
 the CVS root stripped off). It contains the relative
 pathname of the RCS file to the CVS root, the
 revision number, the date (UTC), the author, the state,
@@ -44,49 +44,49 @@ be locked when you use CVS.
 
 Note that this keyword has only been recently
 introduced to CVS and may cause problems with
-existing installations if $@splitrcskeyword{CVSHeader}$ is already
+existing installations if $ CVSHeader$ is already
 in the files for a different purpose. This keyword may
 be excluded using the KeywordExpansion=eCVSHeader
 in the `CVSROOT/config' file. 
 See Configuring keyword expansion for more details.
 
-$@splitrcskeyword{Date}$
+$ Date$
 The date and time (UTC) the revision was checked in.
 
-$@splitrcskeyword{Header}$
+$ Header$
 A standard header containing the full pathname of the
 RCS file, the revision number, the date (UTC), the
 author, the state, and the locker (if locked).  Files
 will normally never be locked when you use CVS.
 
-$@splitrcskeyword{Id}$
-Same as $@splitrcskeyword{Header}$, except that the RCS
+$ Id$
+Same as $ Header$, except that the RCS
 filename is without a path.
 
-$@splitrcskeyword{Name}$
+$ Name$
 Tag name used to check out this file.  The keyword is
 expanded only if one checks out with an explicit tag
 name.  For example, when running the command cvs
 co -r first, the keyword expands to `Name: first'.
 
-$@splitrcskeyword{Locker}$
+$ Locker$
 The login name of the user who locked the revision
 (empty if not locked, which is the normal case unless
 cvs admin -l is in use).
 
-$@splitrcskeyword{Log}$
+$ Log$
 The log message supplied during commit, preceded by a
 header containing the RCS filename, the revision
 number, the author, and the date (UTC).  Existing log
 messages are not replaced.  Instead, the new log
-message is inserted after $@splitrcskeyword{Log:...}$.
+message is inserted after $ Log:...$.
 Each new line is prefixed with the same string which
 precedes the $Log keyword.  For example, if the
 file contains:
 
   /* Here is what people have been up to:
    *
-   * $@splitrcskeyword{}Log: frob.c,v $
+   * $ Log: frob.c,v $
    * Revision 1.1  1997/01/03 14:23:51  joe
    * Add the superfrobnicate option
    *
@@ -101,16 +101,16 @@ accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
 See Log keyword.
 
-$@splitrcskeyword{RCSfile}$
+$ RCSfile$
 The name of the RCS file without a path.
 
-$@splitrcskeyword{Revision}$
+$ Revision$
 The revision number assigned to the revision.
 
-$@splitrcskeyword{Source}$
+$ Source$
 The full pathname of the RCS file.
 
-$@splitrcskeyword{State}$
+$ State$
 The state assigned to the revision.  States can be
 assigned with cvs admin -s--see admin options.
 
@@ -120,13 +120,13 @@ may be used to specify a local keyword which is to be
 used as an alias for one of the other keywords. For
 example, if the `CVSROOT/config' file contains
 a line with LocalKeyword=MYBSD=CVSHeader, then a
-file with the local keyword $@splitrcskeyword{MYBSD}$ will be
-expanded as if it were a $@splitrcskeyword{CVSHeader}$ keyword. If
+file with the local keyword $ MYBSD$ will be
+expanded as if it were a $ CVSHeader$ keyword. If
 the src/frob.c file contained this keyword, it might
 look something like this:
 
   /*
-   * $@splitrcskeyword{}MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
+   * $ MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
    */
 
 Many repositories make use of a such a "local
@@ -141,9 +141,9 @@ See Configuring keyword expansion for more
 details.
 
 Examples from popular projects include:
-$@splitrcskeyword{FreeBSD}$, $@splitrcskeyword{NetBSD}$,
-$@splitrcskeyword{OpenBSD}$, $@splitrcskeyword{XFree86}$,
-$@splitrcskeyword{Xorg}$.
+$ FreeBSD$, $ NetBSD$,
+$ OpenBSD$, $ XFree86$,
+$ Xorg$.
 
 The advantage of this is that you can include your
 local version information in a file using this local
@@ -164,11 +164,11 @@ Configuring keyword expansion for more details.
 ===================
 
 To include a keyword string you simply include the
-relevant text string, such as $@splitrcskeyword{Id}$, inside the
+relevant text string, such as $ Id$, inside the
 file, and commit the file.  CVS will automatically
 expand the string as part of the commit operation.
 
-It is common to embed the $@splitrcskeyword{}Id$ string in
+It is common to embed the $ Id$ string in
 the source files so that it gets passed through to
 generated files.  For example, if you are managing
 computer program source code, you might include a
@@ -187,11 +187,11 @@ binary files.
 
 $ ident samp.c
 samp.c:
-     $@splitrcskeyword{}Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
+     $ Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 $ gcc samp.c
 $ ident a.out
 a.out:
-     $@splitrcskeyword{}Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
+     $ Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 
 SCCS is another popular revision control system.
 It has a command, what, which is very similar to
@@ -202,16 +202,16 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic SCCS phrase, like this:
 
-static char *id="@(#) $@splitrcskeyword{}Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $";
+static char *id="@(#) $ Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $";
 
 12.3 Avoiding substitution
 ==========================
 
 Keyword substitution has its disadvantages.  Sometimes
 you might want the literal text string
-`$@splitrcskeyword{}Author$' to appear inside a file without
+`$ Author$' to appear inside a file without
 CVS interpreting it as a keyword and expanding it
-into something like `$@splitrcskeyword{}Author: ceder $'.
+into something like `$ Author: ceder $'.
 
 There is unfortunately no way to selectively turn off
 keyword substitution.  You can use `-ko'
@@ -222,7 +222,7 @@ In many cases you can avoid using keywords in
 the source, even though they appear in the final
 product.  For example, the source for this manual
 contains `$@asis{}Author$' whenever the text
-`$@splitrcskeyword{}Author$' should appear.  In nroff
+`$ Author$' should appear.  In nroff
 and troff you can embed the null-character
 \& inside the keyword for a similar effect.
 
@@ -250,7 +250,7 @@ The modes available are:
 
 `-kkv'
 Generate keyword strings using the default form, e.g.
-$@splitrcskeyword{}Revision: 5.7 $ for the Revision
+$ Revision: 5.7 $ for the Revision
 keyword.
 
 `-kkvl'
@@ -262,8 +262,8 @@ The locker's name is only relevant if cvs admin
 `-kk'
 Generate only keyword names in keyword strings; omit
 their values.  For example, for the Revision
-keyword, generate the string $@splitrcskeyword{}Revision$
-instead of $@splitrcskeyword{}Revision: 5.7 $.  This option
+keyword, generate the string $ Revision$
+instead of $ Revision: 5.7 $.  This option
 is useful to ignore differences due to keyword
 substitution when comparing different revisions of a
 file (see Merging and keywords).
@@ -272,8 +272,8 @@ file (see Merging and keywords).
 Generate the old keyword string, present in the working
 file just before it was checked in.  For example, for
 the Revision keyword, generate the string
-$@splitrcskeyword{}Revision: 1.1 $ instead of
-$@splitrcskeyword{}Revision: 5.7 $ if that is how the
+$ Revision: 1.1 $ instead of
+$ Revision: 5.7 $ if that is how the
 string appeared when the file was checked in.
 
 `-kb'
@@ -292,10 +292,10 @@ specified on the command line.
 `-kv'
 Generate only keyword values for keyword strings.  For
 example, for the Revision keyword, generate the string
-5.7 instead of $@splitrcskeyword{}Revision: 5.7 $.
+5.7 instead of $ Revision: 5.7 $.
 This can help generate files in programming languages
 where it is hard to strip keyword delimiters like
-$@splitrcskeyword{}Revision: $ from a string.  However,
+$ Revision: $ from a string.  However,
 further keyword substitution cannot be performed once
 the keyword names are removed, so this option should be
 used with care.
@@ -311,10 +311,10 @@ handle an export containing binary files correctly.
 In a repository that includes third-party software on
 vendor branches, it is sometimes helpful to configure
 CVS to use a local keyword instead of the standard
-$@splitrcskeyword{Id}$ or $@splitrcskeyword{Header}$ keywords. Examples from
-real projects includ, $@splitrcskeyword{Xorg}$, $@splitrcskeyword{XFree86}$,
-$@splitrcskeyword{FreeBSD}$, $@splitrcskeyword{NetBSD}$,
-$@splitrcskeyword{OpenBSD}$, and even $@splitrcskeyword{dotat}$.
+$ Id$ or $ Header$ keywords. Examples from
+real projects includ, $ Xorg$, $ XFree86$,
+$ FreeBSD$, $ NetBSD$,
+$ OpenBSD$, and even $ dotat$.
 The advantage of this is that
 you can include your local version information in a
 file using this local keyword (sometimes called a
@@ -343,7 +343,7 @@ the `CVSROOT/config' file:
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD
 
-then only the $@splitrcskeyword{MyBSD}$ keyword would be expanded.
+then only the $ MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 
         # Add a "MyBSD" keyword and restrict keyword
@@ -351,8 +351,8 @@ A list may be used. The this example:
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD,Name,Date
 
-would allow $@splitrcskeyword{MyBSD}$, $@splitrcskeyword{Name}$, and
-$@splitrcskeyword{Date}$ to be expanded.
+would allow $ MyBSD$, $ Name$, and
+$ Date$ to be expanded.
 
 It is also possible to configure an exclusion list
 using the following:
@@ -361,7 +361,7 @@ using the following:
         KeywordExpand=eCVSHeader
 
 This allows CVS to ignore the recently introduced
-$@splitrcskeyword{CVSHeader}$ keyword and retain all of the
+$ CVSHeader$ keyword and retain all of the
 others. The exclusion entry could also contain the
 standard RCS keyword list, but this could be confusing
 to users that expect RCS keywords to be expanded, so
@@ -377,7 +377,7 @@ using the `CVSROOT/config' line:
 	KeywordExpand=i
 
 this could be confusing to users that expect RCS
-keywords like $@splitrcskeyword{Id}$ to be expanded properly,
+keywords like $ Id$ to be expanded properly,
 so care should be taken to properly set user
 expectations for a repository so configured.
 
@@ -388,19 +388,19 @@ implemented these features using tag= and
 tagexpand= keywords and those keywords are NOT
 recognized.
 
-12.6 Problems with the $@splitrcskeyword{}Log$ keyword.
-=======================================================
+12.6 Problems with the $ Log$ keyword.
+======================================
 
-The $@splitrcskeyword{}Log$ keyword is somewhat
+The $ Log$ keyword is somewhat
 controversial.  As long as you are working on your
 development system the information is easily accessible
-even if you do not use the $@splitrcskeyword{}Log$
+even if you do not use the $ Log$
 keyword--just do a cvs log.  Once you export
 the file the history information might be useless
 anyhow.
 
 A more serious concern is that CVS is not good at
-handling $@splitrcskeyword{}Log$ entries when a branch is
+handling $ Log$ entries when a branch is
 merged onto the main trunk.  Conflicts often result
 from the merging operation.
 
@@ -411,7 +411,7 @@ cvs log will not be consistent with the
 information inside the file.  This may or may not be a
 problem in real life.
 
-It has been suggested that the $@splitrcskeyword{}Log$
+It has been suggested that the $ Log$
 keyword should be inserted last in the file, and
 not in the files header, if it is to be used at all.
 That way the long list of change messages will not
