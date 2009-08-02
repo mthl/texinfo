@@ -211,7 +211,8 @@ $info_default_indent_length = 5;
 $info_default_index_length_to_node = 41;
 
 $info_default_listoffloat_caption_entry_length = 41;
-$info_default_listoffloat_append = '...:    ';
+#$info_default_listoffloat_append = '...:    ';
+$info_default_listoffloat_append = '...';
 
 push @command_handler_init, \&info_default_init_accent_enable_encoding;
 push @command_handler_init, \&info_default_init_variables;
@@ -2041,15 +2042,13 @@ sub info_default_style($$$$$$$$$)
 sub info_default_header ()
 {
     return $Texi2HTML::THISDOC{'info_header'} if (defined($Texi2HTML::THISDOC{'info_header'}));
-    #my $result = "This is $setfilename, produced by $Texi2HTML::THISDOC{program} from $Texi2HTML::THISDOC{'input_file_name'}.\n\n";
-    # the following is wrong, $Texi2HTML::THISDOC{'input_file_name'} 
-    # should be used 
-    # directly, but then tests are not reproducible in out of source builds
-    # FIXME see Karl mail, it is right with the basename
-    my $basename = $Texi2HTML::THISDOC{'input_file_name'};
-    $basename =~ s/^.*\/// if ($TEST);
-    $basename = $STDIN_DOCU_NAME if ($basename eq '-');
-    my $result = "This is $Texi2HTML::THISDOC{'filename'}->{'top'}, produced by makeinfo version 4.13 from $basename. ";
+# $Texi2HTML::THISDOC{'program'}
+    my $input_basename = $Texi2HTML::THISDOC{'input_file_name'};
+    $input_basename =~ s/^.*\///; # if ($TEST);
+    $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
+    my $output_basename = $Texi2HTML::THISDOC{'filename'}->{'top'};
+    $output_basename =~ s/^.*\///;
+    my $result = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename. ";
     my $dummy;
     ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, '', undef, undef, get_conf('fillcolumn'));
     $result .= "\n\n";
@@ -3380,7 +3379,7 @@ sub info_default_float($$$$$)
     return info_default_close_command(undef, 'float', undef, $caption_text, $additional_arguments);
 }
 
-sub  info_default_listoffloats_entry($$$$)
+sub info_default_listoffloats_entry($$$$)
 {
     my $style_texi = shift;
     my $float = shift;
@@ -3395,25 +3394,48 @@ sub  info_default_listoffloats_entry($$$$)
 
     my $result = '';
     $caption .= ':' if ($caption ne '');
-    my $caption_entry = "* $float_style: $caption";
-    my $length = 0;
-    while ($caption_entry =~ s/^(\S+\s*)//)
+    my $caption_entry = "* $float_style: $float->{'text'}.";
+    if (length($caption_entry) > $info_default_listoffloat_caption_entry_length)
     {
-       my $new_word = $1;
-       if (length($new_word) + $length > ($info_default_listoffloat_caption_entry_length - 3) or (length($new_word) + $length + length($info_default_listoffloat_append) >  $info_default_listoffloat_caption_entry_length and $caption_entry ne ''))
-       {
-           $result .= $info_default_listoffloat_append;
-           last;
-       }
-       else
-       {
-           $result .= $new_word;
-           $length += length($new_word);
-       }
+        $caption_entry .= "\n" . ' ' x $info_default_listoffloat_caption_entry_length;
     }
-    $result .= ' ' x ($info_default_listoffloat_caption_entry_length - length($result));
+    else
+    {
+        $caption_entry .= ' ' x ($info_default_listoffloat_caption_entry_length - length($caption_entry));
+    }
+    my $length = $info_default_listoffloat_caption_entry_length;
+    while ($caption =~ s/^(\S+\s*)//)
+    { 
+        my $new_word = $1;
+        if ((length($new_word) + $length) > get_conf('fillcolumn') - 3)
+        {
+            $caption_entry .= $info_default_listoffloat_append;
+            last;
+        }
+        else
+        {
+           $caption_entry .= $new_word; 
+           $length += length($new_word);
+        }
+    }
+    #while ($caption_entry =~ s/^(\S+\s*)//)
+    #{
+    #   my $new_word = $1;
+    #   if (length($new_word) + $length > ($info_default_listoffloat_caption_entry_length - 3) or (length($new_word) + $length + length($info_default_listoffloat_append) >  $info_default_listoffloat_caption_entry_length and $caption_entry ne ''))
+    #   {
+    #       $result .= $info_default_listoffloat_append;
+    #       last;
+    #   }
+    #   else
+    #   {
+    #       $result .= $new_word;
+    #       $length += length($new_word);
+    #   }
+    #}
+    #$result .= ' ' x ($info_default_listoffloat_caption_entry_length - length($result));
     
-    return "${result}$float->{'text'}.\n";
+    #return "${result}$float->{'text'}.\n";
+    return $caption_entry. "\n";
 }
 
 sub info_default_listoffloats($$$)

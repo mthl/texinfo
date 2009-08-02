@@ -455,34 +455,3 @@ _tab_
 * formatting/float_copying index entries in insertcopying are not right.
   Maybe it is because they are in footnotes. Or maybe because they are
   in a caption.
-
-* it would better to output just the basenames in the Info preamble.
-
-* This input:
-
----------------------------
-@float Figure,a44
-First figure.
-@caption{Example caption.}
-@end float
-
-List of figures:
-@listoffloats Figure
-@bye
---------------------
-
-should actually produce something like:
-
-------------------------------
-First figure.
-
-Figure 1: Example caption.
-
-   List of figures:
-
-* Menu:
-
-* Figure 1: a44.            Example caption.
-
-
-

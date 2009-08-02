@@ -1,5 +1,12 @@
 2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
 
+	* formats/info.init: put float text and caption in the right order
+	in listoffloats such that it is a menu entry that can be followed
+	in info.
+	Use the basenames in the Info preamble.
+
+2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: treat @alias like a normal misc
 	commmand.
 	Keep @macros definitions in output, treat them as raw environments
