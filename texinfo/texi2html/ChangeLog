@@ -1,3 +1,28 @@
+2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: treat @alias like a normal misc
+	commmand.
+	Keep @macros definitions in output, treat them as raw environments
+	that can be nested.
+	Warn for deprecated commands.
+	* texi2html.init: @syncodeindex and @finalout swallow end of line.
+	* formats/html.init: Don't double in title when the @top and 
+	@settitle are the same.
+	* texi2html.pl: add 0x7F as a comment character.
+	Still provide the default output with --macro-expand.
+	warning if macro with an argument number different than 1 
+	is called without a {}.
+	Read TEXINFO_OUTPUT_FORMAT in env to determine the output format, 
+	if not overridden by a command line option.
+	More error and warning messages, especially for info.
+	Warn for superfluous @node arguments.
+	Remove whitespaces after formats, even in last pass.
+	* Makefile.am, documentlanguages.pl, regenerate_documentlanguages.pl:
+	Gather language codes and regions from the iana registery file.
+	* formats/info.init: remove last end of line in @image file.txt
+	Warn if there is a float or anchor before first node.
+	* tests/*: run only once to generate the the texi_* output.
+
 2009-07-31   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: warn for double menu entry and also for up in 

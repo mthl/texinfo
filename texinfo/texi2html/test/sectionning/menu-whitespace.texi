@@ -3,7 +3,7 @@
 @node Top
 @top Top
 
-@menu
+@menu   
 * first::
 @end menu
 

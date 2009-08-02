@@ -63,6 +63,10 @@ h1 titlefont (@titlefont),
   new argument of printindex
   new arguments of $unknown_style
   NODE_FILENAMES
+  $Texi2HTML::THISDOC{'format_from_command_line'}
+  language_codes
+  region_codes
+  
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -70,8 +74,6 @@ h1 titlefont (@titlefont),
   Documentation should only done once the interface is stable.
 
 * document the new $image arguments/API
-
-* don't double in title when the @top and @settitle are the same
 
 * the following is erroneous, but maybe it could be better handled anyway
 -> error with @item on same line than @table
@@ -193,7 +195,7 @@ texi2html all the style commands are removed without extra formatting.
   smalldisplay will use the class of the above format, and lose the 
   small font property.
 
-* decide @documentencoding @. And maybe change regexp.
+* decide @documentencoding @. And maybe change regexp. (?)
 
 * html32 
 For headings. In normal it is strong.
@@ -235,7 +237,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * makeinfo has a lot of other short command line switches, but implement
   only those that are documented, in --help or info makeinfo.
 
-* does documentlanguage cmd line apply to first or all files? 
+* does --document-language cmd line apply to first or all files? 
   ask on bug-texinfo.
 
 * now config variables are read-only after command line switches
@@ -278,31 +280,14 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 @include d2t_singular/surf_lib_noEx.tex
   for texi2html they are the same.
 
-* makeinfo keeps @macro definitions in -E output. Maybe it should be done, 
-  too, for expansion in places that are only expanded by texi2dvi, namely
-  in @*headings, it could be better to delay @macro expansion to allow for
-  different expansions at different places in the document, something that 
-  cannot be done with texi2html -E.
-
-* add 0x7F as a comment character (ignore to eol).
-
-* texi2html's option -E suppresses creation of the default output
-     file.  Since texi2html shall replace makeinfo completely, it
-     should rather produce the output file instead for compatibility.
-  report from Werner LEMBERG.
-
 * @chapter following a @appendix still uses a number for numbering, and
-  is not affected by the @appendix number
-
-* @syncodeindex and @finalout should swallow end of line
+  is not affected by the @appendix number. Karl is ok with that.
 
 * @kbdinputstyle should be taken into account in html output, which
   means distinguish between preformatted, code_style and normal text 
   when formatting @kbd. Should this distinction hold for every command?
   Also it should be dynamical, ie in pass 2 too (FIXME in the code).
   In info it is right to have it always in quotes.
-
-* @image in info, remove last end of line in file.txt
 
 * have a special debug mode where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 
@@ -334,8 +319,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   There is also a check in layout/formatting_exotic with 
   --internal-links=/dev/null which is not portable
 
-* warning if macro without argument is called without a {}.
-
 * when determining the different letters and later sorting them, there 
   should not be transliteration, but instead perl sorting and i18n stuff
   should be used. Cf testcases in encoding/encoding_index*.
@@ -347,47 +330,20 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
 
-* makeinfo: index entry out of document leads to a message 
-  (outside of any node).
-  instead of node name and line numbers in printindex. 
-  multiple index entries have <1>... appended.
+* makeinfo: multiple index entries have <1>... appended.
+  or they are removed. Ask on the list.
 
 * A lone node without associated sectionning command nor directions leads
   to an error message in makeinfo. Since there is no way to go out of the 
   node, it should certainly be noticed. Another possibility would be to
   have automatic directions set in that case too, and use the @menu stuff
-  to determine the directions, and warn if the node is not the top node and 
-  don't appear in menu.
+  to determine the directions
 ../../node_footnote.texi:14: Node `@'a' requires a sectioning command (e.g., @top).
-
-*   `makeinfo' also reads the environment variable
-`TEXINFO_OUTPUT_FORMAT' to determine the output format, if not
-overridden by a command line option.  The possible values are:
-
-     docbook  html  info  plaintext  xml
 
 * ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
 
-* error message when xref is followed by something else than . is missing.
-  ../../templates.texi:287: warning: `.' or `,' must follow @xref, not `f'.
-
-* warning when doing info and there is no node at all
-  warning when doing info and there is no Top node
-
 * Perhaps we should also make an option -Werror which turns all warnings
   into errors.
-
-* footnote before any node should trigger an error in info:
-  ../../before_node_and_section.texi:8: Footnote defined without parent node.
-
-* missing error messages
-../..//rendition.texi:59: warning: @allow-recursion is deprecated; please use @rmacro instead.
-../..//rendition.texi:60: warning: @quote-arg is deprecated; arguments are quoted by default.
-
-../..//d2t_singular/brnoeth_lib.tex:1097: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that.
-
-* in novalidate.texi, fifth node argument should trigger an error
-  @node other node in menu before top, node not existing,,,first
 
 * only texi2html warns about:
 ** Empty index entry for @vtable (l. 26)
@@ -396,10 +352,6 @@ overridden by a command line option.  The possible values are:
   unrecognized encoding name `ascii'.
 
 * invalid/node_in_copying there is no error message
-
-* makeinfo creates a Top node when there is a menu seen before any @node
-  example in sectionning/one_section
-../../one_section.texi:11: warning: @menu seen before first @node, creating `Top' node.
 
 * info/long_uref_after_item.texi report from Kevin Ryde,
   it would be logical to treat the space after the itemize mark as 
@@ -426,12 +378,6 @@ overridden by a command line option.  The possible values are:
   directory or both?
 
 * error messages
-@documentlanguage unknown
-@documentlanguage another_UNKNOWN
-../../unknown_language.texi:6: warning: no default territory known for language `unknown'.
-../../unknown_language.texi:6: warning: unknown is not a valid ISO 639 language code.
-../../unknown_language.texi:13: warning: another is not a valid ISO 639 language code.
-
   ** `second node' doesn't appear in menus
   warning: unreferenced node `second node'.
 
@@ -443,6 +389,11 @@ overridden by a command line option.  The possible values are:
 
   *** Unknown node in menu entry `node inexistant in menu' (l. 19)
   Menu reference to nonexistent node `node inexistant in menu' (perhaps incorrect sectioning?).
+
+  ** macro `splitrcskeyword' already defined (l. 86) redefined (l. 103)
+  ../../cvs.texi:106: warning: macro `splitrcskeyword' previously defined.
+  ../../cvs.texi:86: warning: here is the previous definition of `splitrcskeyword'.
+
 
   ** Bad index name: bidule (l. 11)
   ../../index_no_node.texi:11: Unknown index `bidule' in @printindex.
@@ -478,14 +429,8 @@ overridden by a command line option.  The possible values are:
   not done in texi2html:
   ../../invalid_command_in_table.texi:8: table requires an argument: the formatter for @item.
 
-  ** Unknown command `@itemTop,,' (left as is) (l. 9)
-  ../../invalid_command_in_table.texi:9: Unknown command `itemTop,,'.
-
   *** Undefined node `EExpansion' in @xref (l. 263)
   ../../templates.texi:287: Cross reference to nonexistent node `EExpansion' (perhaps incorrect sectioning?).
-
-* warning for @anchors and @float appearing before the first node, since
-  they are not recorded as Ref:. (for example formatting/float_copying).
 
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
@@ -505,20 +450,39 @@ _tab_
 
   without an empty line added after the title. Maybe there should be one.
 
-* generic tests missing, in sectionning:
-  novalidate menu-whitespace node-whitespace two_footnotes_in_nodes
-  
-  macros:
-  value_in_pass0_macros macros_in_pass0_macros node-expand
-
-  formatting:
-  simple_images html-extrali
-
-  indices:
-  index_nodes
-
 * In japanese.texi lines are not cut right.
 
 * formatting/float_copying index entries in insertcopying are not right.
   Maybe it is because they are in footnotes. Or maybe because they are
   in a caption.
+
+* it would better to output just the basenames in the Info preamble.
+
+* This input:
+
+---------------------------
+@float Figure,a44
+First figure.
+@caption{Example caption.}
+@end float
+
+List of figures:
+@listoffloats Figure
+@bye
+--------------------
+
+should actually produce something like:
+
+------------------------------
+First figure.
+
+Figure 1: Example caption.
+
+   List of figures:
+
+* Menu:
+
+* Figure 1: a44.            Example caption.
+
+
+

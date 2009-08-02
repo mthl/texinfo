@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.209 2009-07-31 10:16:45 pertusus Exp $
+# $Id: texi2html.init,v 1.210 2009-08-02 14:12:10 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1073,6 +1073,7 @@ sub t2h_default_load_format($;$)
   if (defined($t2h_default_formats_load_table{$format}))
   {
      &{$t2h_default_formats_load_table{$format}}($from_command_line);
+     $Texi2HTML::THISDOC{'format_from_command_line'} = $format if ($from_command_line);
   }
   else
   {
@@ -1907,6 +1908,11 @@ sub T2H_DEFAULT_node_file_name($$)
 #     give them another name, and assign them to the respective
 #     $<fnc> variable (below).
 
+%deprecated_commands = (
+  'ctrl' => '',
+  'allow-recursion' => 'please use @macro instead.',
+  'quote-arg' => 'arguments are quoted by default.',
+);
 
 #
 # This hash should have keys corresponding with the nonletter command accent
@@ -4043,6 +4049,7 @@ t2h_default_set_variables_default();
      'ifnotdocbook' => 1, 
      'direntry' => 'normal',
      'verbatim' => 'raw', 
+     'macro' => 'raw', 
      'ifclear' => 'value', 
      'ifset' => 'value' ,
      );
@@ -4193,6 +4200,7 @@ foreach my $key (keys(%def_map))
         # set, clear
         'set' => {'skip' => 'line'}, # special arg
         'clear' => {'skip' => 'line'}, # special arg
+        'alias' => {'args' => 3, 'skip' => 'line'}, # special arg
         # comments
         'comment' => {'arg' => 'line'},
         'c' => {'arg' => 'line'},
@@ -4214,7 +4222,7 @@ foreach my $key (keys(%def_map))
                          # with direntry is significant
         'pagesizes' => {'skip' => 'line', 'arg' => 'line'}, # can have 2 args 
                                  # or one? 200mm,150mm 11.5in
-        'finalout' => {}, # no arg
+        'finalout' => {'skip' => 'line'}, # no arg
         'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
                              # or a number and forbids anything else on the line
         'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
@@ -4253,9 +4261,9 @@ foreach my $key (keys(%def_map))
         'author' => {'arg' => 'line'},
         'subtitle' => {'arg' => 'line'},
         'title' => {'arg' => 'line'},
-        'syncodeindex' => {'skip' => 'linespace', 'arg' => 2}, 
+        'syncodeindex' => {'skip' => 'line', 'arg' => 2}, 
                           # args are index identifiers
-        'synindex' => {'skip' => 'linespace', 'arg' => 2},
+        'synindex' => {'skip' => 'line', 'arg' => 2},
         'defindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
         'defcodeindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
         #'documentlanguage' => {'skip' => 'whitespace', 'arg' => 1}, 

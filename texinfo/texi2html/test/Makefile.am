@@ -15,7 +15,7 @@ copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
 
 copy-base:
-	$(srcdir)/tests.sh -copy $(base_tests)
+	$(srcdir)/tests.sh all -copy $(base_tests)
 	cp $(srcdir)/formatting/res/texi_formatting/formatting.texi $(srcdir)/formatting/formatting_for_makeinfo.texi
 
 copy-long:

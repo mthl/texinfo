@@ -16,7 +16,8 @@ texi2html_additional_scripts = \
 	texi2html.init \
 	translations.pl \
 	examples/l2h.init \
-	T2h_l2h.pm
+	T2h_l2h.pm \
+	documentlanguages.pl
 
 texi2html_formats = \
 	formats/html.init \
@@ -39,6 +40,7 @@ EXTRA_DIST = \
 	texi2html.spec \
 	texi2html.spec.in \
 	texi2html.pl \
+	regenerate_documentlanguages.pl \
 	$(texi2html_additional_scripts) \
 	$(texi2html_formats)
 
@@ -142,14 +144,6 @@ dist_images_DATA = images/a_begin.png \
 	images/xy_up.png \
 	images/xy_up_gr.png
 
-#texi2html: $(texi2html_sources)
-#	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
-#	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
-#	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
-#	    -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
-#	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" \
-#	    -e "/@T2H_L2H@/r $(srcdir)/T2h_l2h.pm" $< >$@
-#	chmod a+x $@
 texi2html.temp: $(texi2html_sources)
 	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
 

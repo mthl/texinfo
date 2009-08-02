@@ -1,0 +1,52 @@
+This is novalidate.info, produced by makeinfo version 4.13 from
+novalidate.texi.
+
+
+File: novalidate.info,  Node: first,  Next: Top,  Up: (dir)
+
+*Note it doesn't exists:: in first node
+
+* Menu:
+
+* node in menu before top::
+* other node in menu before top::
+
+
+File: novalidate.info,  Node: node in menu before top,  Up: first
+
+   node in menu before top text
+
+
+File: novalidate.info,  Node: other node in menu before top,  Next: node not existing
+
+
+File: novalidate.info,  Node: Top,  Prev: first
+
+top section
+***********
+
+Top node
+
+* Menu:
+
+* second node::
+* other node not existing::
+
+
+File: novalidate.info,  Node: second node,  Up: Top
+
+1 a chapter
+***********
+
+second node
+
+
+
+Tag Table:
+Node: first82
+Node: node in menu before top258
+Node: other node in menu before top360
+Node: Top449
+Node: second node589
+
+End Tag Table

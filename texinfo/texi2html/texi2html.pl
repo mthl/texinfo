@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.301 2009-07-31 15:56:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.302 2009-08-02 14:12:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -636,6 +636,9 @@ $after_punctuation_characters
 %command_handler
 %special_style
 %null_device_file
+%language_codes
+%region_codes
+%deprecated_commands
 );
 
 # subject to change
@@ -1405,6 +1408,17 @@ sub t2h_GPL_default_printindex($$)
   }
   return '';
 }
+
+# leave this within comments, and keep the require statement
+# This way, you can directly run texi2html.pl, 
+# if $T2H_HOME/documentlanguages.pl exists.
+#
+# @T2H_DOCUMENT_LANGUAGES@
+
+require "$T2H_HOME/documentlanguages.pl"
+    if ($0 =~ /\.pl$/ &&
+        -e "$T2H_HOME/documentlanguages.pl" && -r "$T2H_HOME/documentlanguages.pl");
+
 # leave this within comments, and keep the require statement
 # This way, you can directly run texi2html.pl, if 
 # $T2H_HOME/texi2html.init exists.
@@ -2112,19 +2126,38 @@ sub set_date($)
 
 #
 # called on -lang, and when a @documentlanguage appears
-sub set_document_language ($)
+sub set_document_language ($$;$)
 {
     my $lang = shift;
+    my $silent = shift;
+    my $line_nr = shift;
 
     my @langs = ($lang);
 
+    my $lang_code = $lang;
+    my $region_code;
+
     my $main_lang;
+
     if ($lang =~ /^([a-z]+)_([A-Z]+)/)
     {
         $main_lang = $1;
+        $region_code = $2;
+        $lang_code = $main_lang;
         push @langs, $main_lang;
     }
 
+    if (!$silent)
+    {
+        if (! $Texi2HTML::Config::language_codes{$lang_code})
+        { # i18n
+            always_warn("$lang_code is not a valid language code.", $line_nr);
+        }
+        if (defined($region_code) and ! $Texi2HTML::Config::region_codes{$region_code})
+        { # i18n
+            always_warn("$region_code is not a valid region code.", $line_nr);
+        }
+    }
     my @files = locate_init_file("$i18n_dir/$lang", 1);
     if (! scalar(@files) and defined($main_lang))
     {
@@ -3254,6 +3287,11 @@ if (@ARGV > 1)
     }
 }
 
+if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '')
+{
+  Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0); 
+}
+
 # $T2H_DEBUG and $T2H_VERBOSE are shorthands
 $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
@@ -4111,10 +4149,11 @@ sub texinfo_initialization($)
 
     # set the translations now. This means at the beginning of each phase.
     my $lang = Texi2HTML::Config::get_conf('documentlanguage');
-    if (!set_document_language($lang))
+#print STDERR "$pass $lang\n";
+    if (!set_document_language($lang, 1))
     {
        warn "Translations for '$lang' not found. Using 'en'.\n" if ($pass == 2);
-       set_document_language('en');
+       set_document_language('en', 1);
     }
     # All the initialization used the informations still there at the 
     # end of the previous pass.
@@ -4360,6 +4399,7 @@ sub scan_node_line($)
     my $node_arg = '';
     while (1)
     {
+        # macro_regexp
         if ($node_line =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $node_line =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $node_line =~ s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
         {
             $node_arg .= $1;
@@ -4490,6 +4530,10 @@ sub pass_structure($$)
                     my $auto_directions;
                     my @node_res = scan_node_line($cline);
                     $auto_directions = 1 if (scalar(@node_res) == 1);
+                    if (@node_res > 4)
+                    {
+                        echo_warn("Superfluous arguments for node", $line_nr);
+                    }
                     my ($node, $node_next, $node_prev, $node_up) = @node_res;
                     if (defined($node) and ($node ne ''))
                     {
@@ -4751,7 +4795,7 @@ sub do_documentlanguage($$$$)
         my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
         if ($lang and Texi2HTML::Config::set_conf('documentlanguage', $lang))
         {
-            $return_value = set_document_language($lang);
+            $return_value = set_document_language($lang, $silent, $line_nr);
             if (!$return_value)
             {
                 Texi2HTML::Config::set_conf('documentlanguage', $prev_lang);
@@ -4965,6 +5009,17 @@ sub misc_command_texi($$$$)
                }
             }
          }
+      }
+      elsif ($macro eq 'alias')
+      { 
+          if ($line =~ /(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)/)
+          {
+               $alias{$2} = $4;
+          }
+          else
+          {
+               echo_error ("bad \@alias line", $line_nr);
+          }
       }
       else
       {
@@ -5426,7 +5481,8 @@ sub menu_entry_texi($$$)
     {
         if ($node_menu_ref->{'menu_up'} and !$node_menu_ref->{'external_node'})
         {
-           echo_warn ("Double entry in menu for `$node' (also below `$node_menu_ref->{'menu_up'}->{'texi'}')", $line_nr);
+           # This is not an error. This is used a lot in real life manuals
+           #echo_warn ("Double entry in menu for `$node' (also below `$node_menu_ref->{'menu_up'}->{'texi'}')", $line_nr);
         }
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
         $node_menu_ref->{'menu_up_hash'}->{$state->{'node_ref'}->{'texi'}} = 1;
@@ -8221,6 +8277,8 @@ sub next_line($$)
         my $chomped_line = $line;
         $file->{'line_nr'}++ if (defined($line) and chomp($chomped_line));
         $line_number->{'line_nr'} = $file->{'line_nr'};
+        # do that right now, before any other treatement
+        $line =~ s/\x{7F}.*\s*// if (defined($line));
         return($line, $input_spool) if (defined($line));
         no strict "refs";
         close($fh);
@@ -8228,6 +8286,21 @@ sub next_line($$)
         shift(@fhs);
     }
     return(undef, $input_spool);
+}
+
+sub always_warn($;$)
+{
+    my $text = shift;
+    chomp ($text);
+    my $line_number = shift;
+    if (defined($line_number))
+    {
+         echo_warn ($text, $line_number);
+    }
+    else
+    {
+        warn "$text\n";
+    }
 }
 
 # echo a warning
@@ -9785,6 +9858,10 @@ sub begin_format($$$$$$)
             begin_format($text, $stack, $state, 'menu_comment', $line, $line_nr);
         }
     }
+    # this is useful for @©enter, and also if there was something on the 
+    # line after a format that isn't there anymore, like
+    # @format   @c
+    $line =~ s/^\s*// unless ($macro eq 'center' and $line =~ /^\s*$/);
     return $line;
 }
 
@@ -10798,18 +10875,20 @@ sub end_macro($$$)
     my $remaining_on_the_line = shift;
 
     $state->{'macro_inside'}--;
-    return 0 if ($state->{'ignored'});
+    return (0, undef) if ($state->{'ignored'});
     if ($state->{'macro_inside'})
     {
         $state->{'macro'}->{'body'} .= $end_string;
-        return 0;
+        return (0, undef);
     }
+    my $macro_text = $state->{'macro'}->{'header'} . $state->{'macro'}->{'body'}.$end_string;
     chomp $state->{'macro'}->{'body'};
     print STDERR "# end macro def. Body:\n$state->{'macro'}->{'body'}"
       if ($T2H_DEBUG & $DEBUG_MACROS);
+    $macros->{$state->{'macro'}->{'name'}} = $state->{'macro'} unless ($state->{'arg_expansion'});
     delete $state->{'macro'};
-    return 1 if ($remaining_on_the_line =~ /^\s*$/);
-    return 0;
+    return (1, $macro_text.$remaining_on_the_line) if ($remaining_on_the_line =~ /^\s*$/);
+    return (0, $macro_text);
 }
 
 sub close_macro_arg($$$)
@@ -10955,7 +11034,9 @@ sub scan_texi($$$$;$)
             #if ($cline =~ s/^(.*?)\@end\sr?macro$//o or $cline =~ s/^(.*?)\@end\sr?macro\s+//o)
             if ($cline =~ s/^(\@end\sr?macro)$//o or $cline =~ s/^(\@end\sr?macro\s+)//o)
             {
-                 return if (end_macro($state, $1, $cline));
+                 my ($no_remaining, $result) = end_macro($state, $1, $cline);
+                 add_prev ($text, $stack, $result) if (defined($result));
+                 return 1 if ($no_remaining);
                  next;
             }
 
@@ -10963,7 +11044,8 @@ sub scan_texi($$$$;$)
             {
                  $state->{'macro'}->{'body'} .= $cline unless ($state->{'ignored'});
                  $state->{'macro_inside'}++;
-                 return;
+                 #return;
+                 return 1;
             }
             elsif ($cline =~ s/^\@(.)//)
             {
@@ -10987,7 +11069,8 @@ sub scan_texi($$$$;$)
                  if ($cline =~ /^$/)
                  {
                       $state->{'macro'}->{'body'} .= $cline;
-                      return;
+                      #return;
+                      return 1;
                  }
                  next;
             }
@@ -11184,36 +11267,36 @@ sub scan_texi($$$$;$)
         elsif ($cline =~ s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $cline =~ s/^([^{}@]*)\@([a-zA-Z][\w-]*)//o)
         {# ARG_EXPANSION
             add_prev($text, $stack, $1) unless $state->{'ignored'};
-            my $macro = $2;
+            my $command = $2;
             # FIXME: if it is an alias, it is substituted below, in the
-            # diverse add_prev and output of \@$macro. Maybe it could be
+            # diverse add_prev and output of \@$command. Maybe it could be
             # kept and only substituted in the last passes?
-            $macro = $alias{$macro} if (exists($alias{$macro}));
-	    #print STDERR "MACRO $macro\n";
+            $command = $alias{$command} if (exists($alias{$command}));
+	    #print STDERR "MACRO $command\n";
             # handle skipped @-commands
-            $state->{'bye'} = 1 if ($macro eq 'bye' and !$state->{'ignored'} and !$state->{'arg_expansion'});
+            $state->{'bye'} = 1 if ($command eq 'bye' and !$state->{'ignored'} and !$state->{'arg_expansion'});
             # 'ignored' and 'arg_expansion' are handled in misc_command_texi
             # these are the commands in which the @value and @macro
             # and @-commands in general should not be expanded
-            if (defined($Texi2HTML::Config::misc_command{$macro}) and
-                 ($macro eq 'c' or $macro eq 'comment' or $macro eq 'set' 
-                   or $macro eq 'clear' or $macro eq 'bye'))
+            if (defined($Texi2HTML::Config::misc_command{$command}) and
+                 ($command eq 'c' or $command eq 'comment' or $command eq 'set' 
+                   or $command eq 'clear' or $command eq 'bye' or $command eq 'alias'))
             {
-                ($cline, $line) = misc_command_texi($cline, $macro, $state,
+                ($cline, $line) = misc_command_texi($cline, $command, $state,
                        $line_nr);
-                add_prev ($text, $stack, "\@$macro" . $line) unless $state->{'ignored'};
+                add_prev ($text, $stack, "\@$command" . $line) unless $state->{'ignored'};
             }
-            elsif ($macro eq 'setfilename' or $macro eq 'documentencoding'
-                      or $macro eq 'definfoenclose' or $macro eq 'include')
+            elsif ($command eq 'setfilename' or $command eq 'documentencoding'
+                      or $command eq 'definfoenclose' or $command eq 'include')
             { # special commands whose arguments will have @macro and
               # @value expanded, and that are processed in this pass
-                if ($state->{'ignored'} or ($line_nr->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'} and $macro eq 'setfilename'))
+                if ($state->{'ignored'} or ($line_nr->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'} and $command eq 'setfilename'))
                 {
                     $cline = '';
                 }
                 elsif ($state->{'arg_expansion'})
                 {
-                    add_prev($text, $stack, "\@$macro" . $cline);
+                    add_prev($text, $stack, "\@$command" . $cline);
                     return;
                 }
                 else
@@ -11225,13 +11308,13 @@ sub scan_texi($$$$;$)
                     $space = '' if (!defined($space));
                     if (!$state->{'line_command'})
                     { 
-                        #print STDERR "LINE_COMMAND Start line_command $macro, cline $cline";
-                        $state->{'line_command'} = $macro;
-                        push @$stack, { 'line_command' => $macro, 'text' => $space };
+                        #print STDERR "LINE_COMMAND Start line_command $command, cline $cline";
+                        $state->{'line_command'} = $command;
+                        push @$stack, { 'line_command' => $command, 'text' => $space };
                     }
                     else
                     {# FIXME warn/error? or just discard?
-                        add_prev($text, $stack, "\@$macro" . $space);
+                        add_prev($text, $stack, "\@$command" . $space);
                     }
                 }
             }
@@ -11243,43 +11326,47 @@ sub scan_texi($$$$;$)
             # args. Likewise it seems that the @value are not expanded
             # in macro definitions
 
-            elsif ($macro =~ /^r?macro$/)
-            { #FIXME what to do if 'arg_expansion' is true (ie within another
-              # macro call arguments?
+            elsif ($command =~ /^r?macro$/)
+            { # in 'arg_expansion' (ie within another macro call arguments)
+              # the macro is parsed as usual, but isn't registered in 
+              # end_macro.
                 if ($cline =~ /^\s+(\w[\w-]*)\s*(.*)/)
                 {
                     my $name = $1;
-                    unless ($state->{'ignored'})
+                    my $args_def = $2;
+                    unless ($state->{'ignored'} or $state->{'arg_expansion'})
                     {
                          if (exists($macros->{$name}))
                          {
                              echo_warn ("macro `$name' already defined " . 
                                  format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
                          }
-                         
                     }
                     $state->{'macro_inside'} = 1;
+
                     next if ($state->{'ignored'});
-                    # if in 'arg_expansion' we really want to take into account
-                    # that we are in an ignored ifclear.
                     my @args = ();
-                    @args = split(/\s*,\s*/ , $1)
-                       if ($2 =~ /^\s*{\s*(.*?)\s*}\s*/);
+                    if ($args_def =~ /^\s*{\s*(.*?)\s*}\s*/)
+                    {
+                        @args = split(/\s*,\s*/ , $1)
+                    }
                     # keep the context information of the definition
-                    $macros->{$name}->{'line_nr'} = { 'file_name' => $line_nr->{'file_name'}, 
+                    my $macro = { 'name' => $name };
+                    $macro->{'line_nr'} = { 'file_name' => $line_nr->{'file_name'}, 
                          'line_nr' => $line_nr->{'line_nr'}, 'macro' => $line_nr->{'macro'} } if (defined($line_nr));
-                    $macros->{$name}->{'args'} = \@args;
+                    $macro->{'args'} = \@args;
+                    $macro->{'header'} = "\@$command" .$cline;
                     my $arg_index = 0;
                     my $debug_msg = '';
                     foreach my $arg (@args)
                     { # when expanding macros, the argument index is retrieved
                       # with args_index
-                        $macros->{$name}->{'args_index'}->{$arg} = $arg_index;
+                        $macro->{'args_index'}->{$arg} = $arg_index;
                         $debug_msg .= "$arg($arg_index) ";
                         $arg_index++;
                     }
-                    $macros->{$name}->{'body'} = '';
-                    $state->{'macro'} = $macros->{$name};
+                    $macro->{'body'} = '';
+                    $state->{'macro'} = $macro;
                     print STDERR "# macro def $name: $debug_msg\n"
                          if ($T2H_DEBUG & $DEBUG_MACROS);
                 }
@@ -11288,33 +11375,33 @@ sub scan_texi($$$$;$)
                     echo_error ("Macro definition without macro name $cline", $line_nr)
                         unless ($state->{'ignored'});
                 }
-                return;
+                return 1;
             }
-            elsif (defined($Texi2HTML::Config::texi_formats_map{$macro}))
+            elsif (defined($Texi2HTML::Config::texi_formats_map{$command}))
             {
                 my $tag;
-                ($cline, $tag) = do_text_macro($macro, $cline, $state, $stack, $line_nr); 
+                ($cline, $tag) = do_text_macro($command, $cline, $state, $stack, $line_nr); 
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later, unless we are in an 'ignored'.
                 # if in 'arg_expansion' we keep everything.
-                my $macro_kept;
-                if ((($state->{'raw'} or ($Texi2HTML::Config::texi_formats_map{$macro} eq 'normal') or (exists($region_lines{$macro}))) and !$state->{'ignored'}) or $state->{'arg_expansion'})
+                my $command_kept;
+                if ((($state->{'raw'} or ($Texi2HTML::Config::texi_formats_map{$command} eq 'normal') or (exists($region_lines{$command}))) and !$state->{'ignored'}) or $state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, $tag);
-                    $macro_kept = 1;
+                    $command_kept = 1;
                 }
                 #dump_stack ($text, $stack, $state);
-                next if $macro_kept;
+                next if $command_kept;
                 return if ($cline =~ /^\s*$/);
             }
-            elsif ($macro eq 'value')
+            elsif ($command eq 'value')
             {
                 if ($cline =~ s/^{($VARRE)}//)
                 {
                     my $value = $1;
                     if ($state->{'arg_expansion'})
                     {
-                        add_prev($text, $stack, "\@$macro" .'{'. $value .'}');
+                        add_prev($text, $stack, "\@$command" .'{'. $value .'}');
                         next;
                     }
                     next if ($state->{'ignored'});
@@ -11326,14 +11413,14 @@ sub scan_texi($$$$;$)
                 {
                     if ($state->{'arg_expansion'})
                     {
-                        add_prev($text, $stack, "\@$macro");
+                        add_prev($text, $stack, "\@$command");
                         next;
                     }
                     next if ($state->{'ignored'});
                     echo_error ("bad \@value macro", $line_nr);
                 }
             }
-            elsif ($macro eq 'unmacro')
+            elsif ($command eq 'unmacro')
             { #FIXME with 'arg_expansion' should it be passed unmodified ?
                 if ($state->{'ignored'})
                 {
@@ -11346,26 +11433,7 @@ sub scan_texi($$$$;$)
                 return if ($cline =~ /^\s*$/);
                 $cline =~ s/^\s*//;
             }
-            elsif ($macro eq 'alias')
-            { # FIXME what to do with 'arg_expansion' ?
-                if ($cline =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//)
-                {
-                    if ($state->{'arg_expansion'})
-                    {
-                         my $line = "\@$macro" . $1.$2.$3.$4;
-                         $line .= $5 if (defined($4));
-                         add_prev($text, $stack, $line); 
-                         next;
-                    }
-                    next if $state->{'ignored'};
-                    $alias{$2} = $4;
-                }
-                else
-                {
-                    echo_error ("bad \@alias line", $line_nr);
-                }
-            }
-            elsif (exists($macros->{$macro}))
+            elsif (exists($macros->{$command}))
             {# it must be before the handling of {, otherwise it is considered
              # to be regular texinfo @-command. Maybe it could be placed higher
              # if we want user defined macros to override texinfo @-commands
@@ -11373,25 +11441,27 @@ sub scan_texi($$$$;$)
              # in 'ignored' we parse macro defined args anyway as it removes 
              # some text, but we don't expand the macro
 
-                my $ref = $macros->{$macro}->{'args'};
+                my $ref = $macros->{$command}->{'args'};
+                my $args_number = $#$ref +1;
                 # we remove any space/new line before the argument
                 if ($cline =~ s/^\s*{\s*//)
                 { # the macro has args
                     $state->{'macro_args'} = [ "" ];
-                    $state->{'macro_name'} = $macro;
+                    $state->{'macro_name'} = $command;
                     $state->{'macro_depth'} = 1;
                 }
-                elsif (($#$ref >= 1) or ($#$ref <0))
+                elsif (($args_number >= 2) or ($args_number <1))
                 { # no brace -> no arg
                     #$cline = 
-                    expand_macro ($macro, [], $cline, $line_nr, $state);
+                    echo_warn("\@$command defined with $args_number arguments should be invoked with {}", $line_nr);
+                    expand_macro ($command, [], $cline, $line_nr, $state);
                     return;
                 }
                 else
                 { # macro with one arg on the line
                     chomp $cline;
                     #$cline = 
-                    expand_macro ($macro, [$cline], "\n", $line_nr, $state);
+                    expand_macro ($command, [$cline], "\n", $line_nr, $state);
                     return;
                 }
             }
@@ -11401,7 +11471,7 @@ sub scan_texi($$$$;$)
              # we add it the comands even in 'ignored' as their result is 
              # discarded when the closing brace appear, or the ifset or 
              # iclear is closed.
-                if ($macro eq 'verb')
+                if ($command eq 'verb')
                 {
                     if ($cline =~ /^$/)
                     {
@@ -11414,11 +11484,11 @@ sub scan_texi($$$$;$)
                         $state->{'verb'} = $1;
                     }
                 }
-                push (@$stack, { 'style' => $macro, 'text' => '' });
+                push (@$stack, { 'style' => $command, 'text' => '' });
             }
             else
             {
-                $cline = do_unknown(0, $macro, $cline, $text, $stack, $state, $line_nr);
+                $cline = do_unknown(0, $command, $cline, $text, $stack, $state, $line_nr);
             }
             next;
         }
@@ -11765,11 +11835,28 @@ sub scan_structure($$$$;$)
                 exit 1;
             }
             ################# end debug 
+            if ($tag eq 'macro')
+            {
+                if ($cline =~ /^\s*\@macro\s+(\w[\w-]*)\s*(.*)/)
+                {
+                    $state->{$tag}++;
+                }
+            }
             # macro_regexp
             if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $tag))
             {
-                $cline =~ s/^(.*?)\@end\s$tag//;
+                $cline =~ s/^(.*?)(\@end\s$tag)//;
                 add_prev ($text, $stack, $1);
+                my $end_text = $2;
+                if ($tag eq 'macro')
+                {
+                    $state->{$tag}--;
+                    if ($state->{$tag})
+                    {
+                        add_prev ($text, $stack, $end_text);
+                        next;
+                    }
+                }
                 delete $state->{'raw'};
                 my $style = pop @$stack;
                 if (defined($Texi2HTML::Config::command_handler{$tag})) 
@@ -11778,7 +11865,6 @@ sub scan_structure($$$$;$)
                     {
                         add_prev ($text, $stack, init_special($style->{'style'}, $style->{'text'}));
                     }
-                    
                 }
                 else
                 {
@@ -11827,6 +11913,17 @@ sub scan_structure($$$$;$)
             my $macro = $2;
             #print STDERR "MACRO $macro\n";
             $macro = $alias{$macro} if (exists($alias{$macro}));
+            if (defined($Texi2HTML::Config::deprecated_commands{$macro}))
+            {
+                if ($Texi2HTML::Config::deprecated_commands{$macro} eq '')
+                {
+                   echo_warn("\@$macro is obsolete.", $line_nr);
+                }
+                else
+                {
+                   echo_warn("\@$macro is obsolete; $Texi2HTML::Config::deprecated_commands{$macro}", $line_nr);
+                }
+            }
             if (defined($Texi2HTML::Config::misc_command{$macro}))
             {
                 my $line;
@@ -11926,6 +12023,7 @@ sub scan_structure($$$$;$)
                 if ($Texi2HTML::Config::texi_formats_map{$macro} eq 'raw')
                 {
                     $state->{'raw'} = $macro;
+                    $state->{$macro}++ if ($macro eq 'macro');
                     #print STDERR "RAW\n";
                 }
                 elsif ($Texi2HTML::Config::texi_formats_map{$macro} eq 'normal')
@@ -12494,14 +12592,31 @@ sub scan_line($$$$;$)
         if (defined($state->{'raw'})) 
         {
             (dump_stack($text, $stack, $state), die "Bug for raw ($state->{'raw'})") if (! @$stack or ! ($stack->[-1]->{'style'} eq $state->{'raw'}));
+            if ($state->{'raw'} eq 'macro')
+            {
+                if ($cline =~ /^\s*\@macro\s+(\w[\w-]*)\s*(.*)/)
+                {
+                    $state->{$state->{'raw'}}++;
+                }
+            }
             # macro_regexp
             if ($cline =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $state->{'raw'}))
             # don't protect html, it is done by Texi2HTML::Config::raw if needed
             {
-                $cline =~ s/^(.*?)\@end\s$state->{'raw'}//;
+                $cline =~ s/^(.*?)(\@end\s$state->{'raw'})//;
+                my $remaining = $1;
+                my $end_text = $2;
+                if ($state->{'raw'} eq 'macro')
+                {
+                    $state->{$state->{'raw'}}--;
+                    if ($state->{$state->{'raw'}})
+                    {
+                        add_prev ($text, $stack, $remaining.$end_text);
+                        last;
+                    }
+                }
                 check_bad_end_argument ($state->{'raw'}, $cline, $line_nr);
-                print STDERR "# end raw $state->{'raw'}\n" if ($T2H_DEBUG & $DEBUG_FORMATS);
-                add_prev ($text, $stack, $1);
+                add_prev ($text, $stack, $remaining);
                 my $style = pop @$stack;
                 if ($style->{'text'} !~ /^\s*$/)
                 {
@@ -12878,7 +12993,7 @@ sub scan_line($$$$;$)
             if ($state->{'keep_texi'})
             {
                 # We treat specially formats accepting {} on command line
-                if ($macro eq 'multitable' or defined($Texi2HTML::Config::def_map{$macro}) or defined($sec2level{$macro}))
+                if ($macro eq 'multitable' or defined($Texi2HTML::Config::def_map{$macro}) or defined($sec2level{$macro}) or $macro eq 'macro')
                 {
                     add_prev($text, $stack, "\@$macro" . $cline);
                     $cline = '';
@@ -12898,6 +13013,7 @@ sub scan_line($$$$;$)
                 if ($Texi2HTML::Config::texi_formats_map{$macro} and $Texi2HTML::Config::texi_formats_map{$macro} eq 'raw')
                 {
                     $state->{'raw'} = $macro;
+                    $state->{$macro}++ if ($macro eq 'macro');
                     push (@$stack, {'style' => $macro, 'text' => ''});
                 }
                 next;
@@ -12916,7 +13032,8 @@ sub scan_line($$$$;$)
                 }
                 $state->{'raw'} = $macro;
                 push (@$stack, {'style' => $macro, 'text' => ''});
-                return if ($cline =~ /^\s*$/);
+                $state->{$macro}++ if ($macro eq 'macro');
+                return if ($cline =~ /^\s*$/ or ($macro eq 'macro'));
                 next;
             }
             my $simple_macro = 1;
@@ -13886,7 +14003,7 @@ sub do_unknown($$$$$$$)
     }
     elsif ($pass == 2)
     {
-         echo_warn ("Unknown command `\@$macro' (left as is)", $line_nr);
+         echo_warn ("Unknown command `\@$macro'", $line_nr);
          add_prev ($text, $stack, do_text("\@$macro"));
          return $line;
     }
@@ -13974,7 +14091,8 @@ sub close_stack_texi($$$$)
 
     if ($state->{'macro'})
     {
-       end_macro($state, '@end macro', '');
+       my ($no_remaining, $result) = end_macro($state, '@end macro', "\n");
+       add_prev ($text, $stack, $result) if (defined($result));
        echo_warn ("closing macro", $line_nr); 
     }
     elsif ($state->{'macro_name'})
@@ -15179,12 +15297,13 @@ while(@input_files)
       dump_texi($doc_lines, 'first', $doc_numbers);
       if (defined($Texi2HTML::Config::MACRO_EXPAND and $Texi2HTML::Config::DUMP_TEXI))
       {
-          unshift (@$doc_lines, @$first_texi_lines);
-          push (@$doc_lines, "\@bye\n");
-          dump_texi($doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
+          my @all_doc_lines = (@$first_texi_lines, @$doc_lines);
+          #push (@$doc_lines, "\@bye\n");
+          dump_texi(\@all_doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
       }
    }
-   next if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
+   # makeinfo also expands the format normally
+   next if ($Texi2HTML::Config::DUMP_TEXI);# or defined($Texi2HTML::Config::MACRO_EXPAND));
 
    foreach my $style (keys(%special_commands))
    {

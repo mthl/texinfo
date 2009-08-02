@@ -2,6 +2,7 @@ texi html-top.texi
 top top.texi
 sectionning sectionning.texi
 sectionning_directions sectionning.texi -init test_directions.init
+novalidate novalidate.texi
 makeinfo_novalidate_split novalidate.texi -init makeinfo.init -no-node-file
 makeinfo_novalidate_unsplit novalidate.texi -init makeinfo.init -split no -no-node-file
 first_section_no_node first_section_no_node.texi
@@ -44,11 +45,14 @@ at_commands_in_refs at_commands_in_refs.texi
 equivalent_nodes equivalent_nodes.texi --use-nodes
 equivalent_nodes_no_node equivalent_nodes.texi
 html-top_no_Top_node html-top.texi
+menu-whitespace_plain menu-whitespace.texi
 menu-whitespace menu-whitespace.texi -init makeinfo.init
 menu-whitespace_xml menu-whitespace.texi -init xml.init
+node-whitespace_plain node-whitespace.texi
 node-whitespace node-whitespace.texi -init makeinfo.init
 #nodename_parentheses nodename_parentheses.texi
 nodes_id_docbook nodes_id.texi --init docbook.init
+two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
 two_footnotes_in_nodes two_footnotes_in_nodes.texi -init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
 more_nodes_than_sections more_nodes_than_sections.texi -init makeinfo.init

@@ -1124,7 +1124,15 @@ sub info_default_process_content($$)
                       $text_added .= $pending;
                   }
               }
-              if ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
+              if ($content->{'command'} eq 'strong')
+              {
+                  my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+                  if (defined($text_next) and $text_next =~ /^Note\b/i)
+                  {
+                     main::echo_warn("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that.", $content->{'line_nr'});
+                  }
+              }
+              elsif ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
               {
                   #print STDERR "anchor: offset_in_file $info_state->{'offset_in_file'}, line_count $info_state->{'line_count'}, line_char_counter $line_char_counter pending_added_length $pending_added_length\n";
                   $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_length;
@@ -1246,7 +1254,6 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'noindent')
               {
-
                   $info_state->{'indent_para'} = 0;
               }
               elsif ($content->{'command'} eq 'sp')
@@ -1273,6 +1280,19 @@ sub info_default_process_content($$)
                      {
                          $content->{'text'} .= '.';
                      }
+                  }
+              }
+              elsif ($content->{'command'} eq 'xref')
+              { # warn if there is no punctuation following
+                  my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
+                  if (!defined($text_next) or $text_next !~ /^./)
+                  {
+                      main::echo_warn("`.' or `,' must follow \@xref.", $Texi2HTML::THISDOC{'line_nr'});
+                  }
+                  elsif ($text_next !~ /^[\.,]/)
+                  {
+                      my $char = substr($text_next, 0, 1);
+                      main::echo_warn("`.' or `,' must follow \@xref, not $char.", $Texi2HTML::THISDOC{'line_nr'});
                   }
               }
               elsif ($content->{'definition_line'})
@@ -1779,6 +1799,7 @@ sub info_default_close_command($$;$$$)
    #return if $no_close;
    $command_entries->{'begin'} = $begin;
    $command_entries->{'end'} = $end;
+   $command_entries->{'line_nr'} = $Texi2HTML::THISDOC{'line_nr'};
    foreach my $key (keys(%$command_entries))
    {
       $info_state->{'current'}->{$key} = $command_entries->{$key} 
@@ -1813,6 +1834,7 @@ sub info_default_store_text($$;$$)
    $text_entries->{'text'} = $text if (defined($text));
    $text_entries->{'command'} = $command if (defined($command));
    $text_entries->{'parent'} = $info_state->{'current'};
+   $text_entries->{'line_nr'} = $Texi2HTML::THISDOC{'line_nr'};
    push @{$info_state->{'current'}->{'content'}}, $text_entries;
    return info_default_output($info_state)
      if (!defined($info_state->{'current'}->{'command'}));
@@ -2303,6 +2325,7 @@ sub info_default_anchor_label($$$$)
     my $in_special_region = shift;
     return '' if ($in_special_region);
     #print STDERR "Storing anchor $anchor_reference->{'text'}\n";
+    main::echo_warn("anchor outside of any node, it won't be registered", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
    return info_default_store_text(undef,undef,'anchor',{'anchor_reference' => $anchor_reference});
 }
 
@@ -2333,7 +2356,11 @@ sub info_default_print_page_foot($)
    my $state = $Texi2HTML::THISDOC{'state'};
    my $info_state = info_default_get_state ($state);
    my $indirect = 0;
-   return unless (defined ($info_state->{'pending_tags'}));
+   if (!defined ($info_state->{'pending_tags'}))
+   { # i18n
+      warn "Document without nodes.\n";
+      return;
+   }
    $indirect = 1 if ($info_default_out_file_nr > 1);
    if ($indirect)
    {
@@ -2361,12 +2388,18 @@ sub info_default_print_page_foot($)
    {
        print $fh "(Indirect)\n";
    }
+   my $Top_seen;
    foreach my $element (@{$info_state->{'pending_tags'}})
    {
       my $prefix;
       $prefix = 'Node' if ($element->{'node'});
       $prefix = 'Ref' if ($element->{'anchor'} or $element->{'float'});
       print $fh "$prefix: $element->{'text'}\x{7F}$element->{'info_offset'}\n";
+      $Top_seen = 1 if ($element->{'text'} =~ /^top$/i);
+   }
+   if (!$Top_seen)
+   {# i18n
+      warn "Document without Top node.\n";
    }
    print $fh "\x{1F}\nEnd Tag Table\n";
    if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
@@ -2600,6 +2633,7 @@ sub info_default_complex_format($$)
     my ($begin, $end);
     if ($name eq 'menu')
     {
+        main::echo_warn("\@menu before first node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
         $begin = "* Menu:\n\n";
     }
     elsif ($name eq 'direntry')
@@ -2793,6 +2827,8 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
           {
               $text .= $img_txt;
           }
+          # remove last end of line
+          chomp ($text);
           $text .= ']' if ($in_paragraph or $preformatted);
           close(TXT);
        }
@@ -2892,6 +2928,14 @@ sub info_default_index_entry($$$$$$$$)
 
     return '' if ($index_entry_ref->{'hidden'});
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
+    #if (!defined($info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}}))
+    #{
+    #   $info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}} = 0;
+    #}
+    #else
+    #{
+    #   $info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}}++;
+    #}
 
     my $result = "* $entry: ";
     if (length($result) < $info_default_index_length_to_node)
@@ -2971,7 +3015,14 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     my $footnote_text = "($info_default_footnote_index)";
     my $node_name;
     $node_name = '';
-    $node_name = $info_default_current_node->{'text'} if defined($info_default_current_node);
+    if (defined($info_default_current_node))
+    {
+        $node_name = $info_default_current_node->{'text'};
+    }
+    else
+    { # i18n
+        main::echo_error("Footnote defined without parent node", $Texi2HTML::THISDOC{'line_nr'});
+    }
     if (get_conf('footnotestyle') eq 'separate')
     {
         $footnote_text .=  ' (' . info_default_normal_reference('pxref', ["${node_name}-Footnote-${info_default_footnote_index}"]) . ')';
@@ -3308,6 +3359,7 @@ sub info_default_float($$$$$)
     if (exists($float->{'id'}))
     {
         $additional_arguments->{'anchor_reference'} = $float;
+        main::echo_warn("float reference outside of any node, it won't be registered", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
     }
     my $caption_text = '';
 

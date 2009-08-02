@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.7 2009-07-06 21:59:18 pertusus Exp $
+# $Id: html.init,v 1.8 2009-08-02 14:12:11 pertusus Exp $
 
 use strict;
 
@@ -1027,7 +1027,7 @@ sub HTML_DEFAULT_print_page_head($)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
-    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and get_conf('SPLIT'));
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and get_conf('SPLIT') and ($Texi2HTML::THISDOC{'fulltitle_simple_format'} ne $Texi2HTML::SIMPLE_TEXT{'This'}));
     my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if

@@ -1,0 +1,37 @@
+This is top.info, produced by makeinfo version 4.13 from
+menu-whitespace.texi.
+
+
+File: top.info,  Node: Top,  Next: first,  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+* first::
+
+
+File: top.info,  Node: first,  Prev: Top,  Up: Top
+
+1 first
+*******
+
+* Menu:
+
+* second::
+
+
+File: top.info,  Node: second,  Up: first
+
+1.1 second
+==========
+
+
+
+Tag Table:
+Node: Top80
+Node: first165
+Node: second257
+
+End Tag Table

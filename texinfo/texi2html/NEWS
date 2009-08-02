@@ -8,11 +8,15 @@ This file records noteworthy changes.
 * new info and plaintext backends, ready for world domination!
   Corresponding test results are added.
 
-* main program handles --xml, --docbook, --info and --html.
+* main program handles --xml, --docbook, --info, --html and --plaintext.
 
 * Handle @DH{}, @dh{}, @TH{}, @th{}. 
 
 * Handle -o /dev/null (or NUL) like makeinfo.
+
+* Read TEXINFO_OUTPUT_FORMAT in env to determine the output format.
+
+* add 0x7F as a comment character.
 
 * BUG FIXES
   ---------
@@ -20,6 +24,10 @@ This file records noteworthy changes.
 * Handling of @itemize and @table arguments are more in line with makeinfo.
 
 * ignore @setfilename in @include'd files, as told in the texinfo manual.
+
+* many warning messages added, especially for Info to match makeinfo.
+
+* Still provide the default output with --macro-expand.
 
 * COMPATIBILITY
   -------------
